@@ -2,20 +2,20 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/13/2019
+ms.date: 02/14/2019
 ms.author: aahi
-ms.openlocfilehash: efeb8581bd300f393d3447e3303273f5139d86dd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b553cd2bed68bc8df7241f4f843b32ec13b1a08a
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054906"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77372359"
 ---
 <a name="HOLTop"></a>
 
 #### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-v3 [başvurusu belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b1/azure.ai.textanalytics.html) | v3 [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [V3 paketi (Pıy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+v3 [başvurusu belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | v3 [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [V3 paketi (Pıy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
 
@@ -66,9 +66,9 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 #### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-Metin Analizi istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulayan bir `TextAnalyticsClient` nesnesidir. İstemci, toplu olarak metin çözümlemek için çeşitli yöntemler sağlar. Bu hızlı başlangıç, tek bir belgeyi hızlı bir şekilde göndermek için bir işlevler koleksiyonu kullanır.
+Metin Analizi istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulayan bir `TextAnalyticsClient` nesnesidir. İstemci, toplu olarak metin çözümlemek için çeşitli yöntemler sağlar. 
 
-Toplu işlem metni, API 'ye `id`, `text`ve `language` özniteliklerinin bir bileşimini içeren `dictionary` nesneler olan `documents`bir liste olarak gönderilir. `text` özniteliği, kaynak `language`analiz edilecek metni depolar ve `id` herhangi bir değer olabilir. Tek belgeleri işlerken aşağıdaki örneklerde görünebileceği gibi yalnızca bir `text` girişi gerekir.  
+Toplu işlem metni, API 'ye `id`, `text`ve `language` özniteliklerinin bir bileşimini içeren `dictionary` nesneler olan `documents`bir liste olarak gönderilir. `text` özniteliği, kaynak `language`analiz edilecek metni depolar ve `id` herhangi bir değer olabilir. 
 
 Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir. 
 
@@ -84,65 +84,91 @@ Metin, kullanılan yönteme bağlı olarak `id`, `text`ve `language` öznitelikl
 
 Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Yaklaşım Analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
 
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+
+#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+
+`key` ve yukarıda oluşturulan `endpoint` `TextAnalyticsClient` nesnesini oluşturmak için bir işlev oluşturun. Ardından yeni bir istemci oluşturun. 
+
+```python
+from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
+
+def authenticate_client():
+    ta_credential = TextAnalyticsApiKeyCredential(key)
+    text_analytics_client = TextAnalyticsClient(
+            endpoint=endpoint, credential=ta_credential)
+    return text_analytics_client
+
+client = authenticate_client()
+```
+
+#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+
+[!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
+
+`key` ve yukarıda oluşturulan `endpoint` `TextAnalyticsClient` nesnesini oluşturmak için bir işlev oluşturun. Ardından yeni bir istemci oluşturun. 
+
+[!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
+
+--- 
+
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
 #### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-Uç nokta ve anahtarı bağımsız değişken olarak alan `sentiment_analysis_example()` adlı yeni bir işlev oluşturun ve sonra `single_analyze_sentiment()` işlevini çağırır. Döndürülen yanıt nesnesi, tüm giriş belgesi için yaklaşım etiketini ve Puanını, her tümce için de yaklaşım analizini içerir.
+İstemciyi bağımsız değişken olarak alan `sentiment_analysis_example()` adlı yeni bir işlev oluşturun ve sonra `analyze_sentiment()` işlevini çağırır. Döndürülen yanıt nesnesi, tüm giriş belgesi için yaklaşım etiketini ve Puanını, her tümce için de yaklaşım analizini içerir.
 
 
 ```python
-from azure.ai.textanalytics import single_analyze_sentiment
+def sentiment_analysis_example(client):
 
-def sentiment_analysis_example(endpoint, key):
-
-    document = "I had the best day of my life. I wish you were there with me."
-
-    response = single_analyze_sentiment(endpoint=endpoint, credential=key, input_text=document)
+    document = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(inputs=document)[0]
     print("Document Sentiment: {}".format(response.sentiment))
     print("Overall scores: positive={0:.3f}; neutral={1:.3f}; negative={2:.3f} \n".format(
-        response.document_scores.positive,
-        response.document_scores.neutral,
-        response.document_scores.negative,
+        response.sentiment_scores.positive,
+        response.sentiment_scores.neutral,
+        response.sentiment_scores.negative,
     ))
     for idx, sentence in enumerate(response.sentences):
         print("[Offset: {}, Length: {}]".format(sentence.offset, sentence.length))
         print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
         print("Sentence score:\nPositive={0:.3f}\nNeutral={1:.3f}\nNegative={2:.3f}\n".format(
-            sentence.sentence_scores.positive,
-            sentence.sentence_scores.neutral,
-            sentence.sentence_scores.negative,
+            sentence.sentiment_scores.positive,
+            sentence.sentiment_scores.neutral,
+            sentence.sentiment_scores.negative,
         ))
 
             
-sentiment_analysis_example(endpoint, key)
+sentiment_analysis_example(client)
 ```
 
 ### <a name="output"></a>Çıktı
 
 ```console
 Document Sentiment: positive
-Overall scores: positive=0.999; neutral=0.001; negative=0.000 
+Overall scores: positive=1.000; neutral=0.000; negative=0.000 
 
 [Offset: 0, Length: 30]
 Sentence 1 sentiment: positive
 Sentence score:
-positive=0.999
-neutral=0.001
-negative=0.000
+Positive=1.000
+Neutral=0.000
+Negative=0.000
 
 [Offset: 31, Length: 30]
 Sentence 2 sentiment: neutral
 Sentence score:
-positive=0.212
-neutral=0.771
-negative=0.017
+Positive=0.210
+Neutral=0.770
+Negative=0.020
 ```
 
 #### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
@@ -166,23 +192,21 @@ Document ID: 4 , Sentiment Score: 1.00
 
 #### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-Uç nokta ve anahtarı bağımsız değişken olarak alan `language_detection_example()` adlı yeni bir işlev oluşturun ve sonra `single_detect_languages()` işlevini çağırır. Döndürülen yanıt nesnesi, başarılı olursa `detected_languages` algılanan dili ve değilse bir `error` içerecektir.
+İstemciyi bağımsız değişken olarak alan `language_detection_example()` adlı yeni bir işlev oluşturun ve sonra `detect_language()` işlevini çağırır. Döndürülen yanıt nesnesi, başarılı olursa `primary_language` algılanan dili ve değilse bir `error` içerecektir.
 
 > [!Tip]
 > Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `country_hint` parametresini kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize `country_hint : ""`olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz. 
 
 ```python
-from azure.ai.textanalytics import single_detect_language
-
-def language_detection_example(endpoint, key):
+def language_detection_example(client):
     try:
-        document = "Ce document est rédigé en Français."
-        response = single_detect_language(endpoint=endpoint, credential=key, input_text= document)
+        document = ["Ce document est rédigé en Français."]
+        response = client.detect_language(inputs = document, country_hint = 'us')[0]
         print("Language: ", response.primary_language.name)
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-language_detection_example(endpoint, key)
+language_detection_example(client)
 ```
 
 
@@ -218,26 +242,24 @@ Document ID: 3 , Language: Chinese_Simplified
 > * NER kişisel bilgileri algılamak için ayrı yöntemler içerir. 
 > * Varlık bağlama, NER 'den ayrı bir istek.
 
-Uç nokta ve anahtarı bağımsız değişken olarak alan `entity_recognition_example` adlı yeni bir işlev oluşturun, sonra `single_recognize_entities()` işlevini çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa `entity` algılanan varlıkların listesini ve değilse bir `error` içerir. Algılanan her varlık için, türü ve alt türü varsa yazdırın.
+İstemciyi bağımsız değişken olarak alan `entity_recognition_example` adlı yeni bir işlev oluşturun, sonra `recognize_entities()` işlevini çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa `entity` algılanan varlıkların listesini ve değilse bir `error` içerir. Algılanan her varlık için, varsa kategorisini ve alt kategorisini yazdırın.
 
 ```python
-from azure.ai.textanalytics import single_recognize_entities
-
-def entity_recognition_example(endpoint, key):
+def entity_recognition_example(client):
 
     try:
-        document = "I had a wonderful trip to Seattle last week."
-        result = single_recognize_entities(endpoint=endpoint, credential=key, input_text= document)
-        
+        document = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(inputs= document)[0]
+
         print("Named Entities:\n")
         for entity in result.entities:
-                print("\tText: \t", entity.text, "\tType: \t", entity.type, "\tSubType: \t", entity.subtype,
+                print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
                       "\n\tOffset: \t", entity.offset, "\tLength: \t", entity.offset, 
                       "\tConfidence Score: \t", round(entity.score, 3), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-entity_recognition_example(endpoint, key)
+entity_recognition_example(client)
 ```
 
 ### <a name="output"></a>Çıktı
@@ -245,60 +267,56 @@ entity_recognition_example(endpoint, key)
 ```console
 Named Entities:
 
-    Text:    Seattle    Type:    Location   SubType:     None 
-    Offset:      26     Length:      26     Confidence Score:    0.806 
+    Text:    Seattle    Category:    Location   SubCategory:     GPE 
+    Offset:      26     Length:      26     Confidence Score:    0.92 
 
-    Text:    last week  Type:    DateTime   SubType:     DateRange 
+    Text:    last week  Category:    DateTime   SubCategory:     DateRange 
     Offset:      34     Length:      34     Confidence Score:    0.8 
 ```
 
 ## <a name="using-ner-to-detect-personal-information"></a>Kişisel bilgileri algılamak için NER kullanma
 
-Uç nokta ve anahtarı bağımsız değişken olarak alan `entity_pii_example()` adlı yeni bir işlev oluşturun, sonra `single_recognize_pii_entities()` işlevini çağırır ve sonucu alır. Ardından sonuçları yineleyin ve varlıkları yazdırın.
+İstemciyi bağımsız değişken olarak alan `entity_pii_example()` adlı yeni bir işlev oluşturun, sonra `recognize_pii_entities()` işlevini çağırır ve sonucu alır. Ardından sonuçları yineleyin ve varlıkları yazdırın.
 
 ```python
-from azure.ai.textanalytics import single_recognize_pii_entities
+def entity_pii_example(client):
 
-def entity_pii_example(endpoint, key):
-
-        document = "Insurance policy for SSN on file 123-12-1234 is here by approved."
+        document = ["Insurance policy for SSN on file 123-12-1234 is here by approved."]
 
 
-        result = single_recognize_pii_entities(endpoint=endpoint, credential=key, input_text= document)
+        result = client.recognize_pii_entities(inputs= document)[0]
         
         print("Personally Identifiable Information Entities: ")
         for entity in result.entities:
-            print("\tText: ",entity.text,"\tType: ", entity.type,"\tSub-Type: ", entity.subtype)
+            print("\tText: ",entity.text,"\tCategory: ", entity.category,"\tSubCategory: ", entity.subcategory)
             print("\t\tOffset: ", entity.offset, "\tLength: ", entity.length, "\tScore: {0:.3f}".format(entity.score), "\n")
         
-entity_pii_example(endpoint, key)
+entity_pii_example(client)
 ```
 
 ### <a name="output"></a>Çıktı
 
 ```console
 Personally Identifiable Information Entities: 
-    Text:  123-12-1234  Type:  U.S. Social Security Number (SSN)    Sub-Type:  
+    Text:  123-12-1234  Category:  U.S. Social Security Number (SSN)    SubCategory:  None
         Offset:  33     Length:  11     Score: 0.850 
 ```
 
 
 ## <a name="entity-linking"></a>Varlık Bağlama
 
-Uç nokta ve anahtarı bağımsız değişken olarak alan `entity_linking_example()` adlı yeni bir işlev oluşturun, sonra `single_recognize_linked_entities()` işlevini çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa `entities` algılanan varlıkların listesini ve değilse bir `error` içerir. Bağlantılı varlıklar benzersiz olarak tanımlandıklarından, aynı varlığın oluşumları bir `entity` nesnesi altında `match` nesnelerin listesi olarak gruplandırılır.
+İstemciyi bağımsız değişken olarak alan `entity_linking_example()` adlı yeni bir işlev oluşturun, sonra `recognize_linked_entities()` işlevini çağırır ve sonuçlar boyunca yinelenir. Döndürülen yanıt nesnesi, başarılı olursa `entities` algılanan varlıkların listesini ve değilse bir `error` içerir. Bağlantılı varlıklar benzersiz olarak tanımlandıklarından, aynı varlığın oluşumları bir `entity` nesnesi altında `match` nesnelerin listesi olarak gruplandırılır.
 
 ```python
-from azure.ai.textanalytics import single_recognize_linked_entities
-
-def entity_linking_example(endpoint, key):
+def entity_linking_example(client):
 
     try:
-        document = """Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
+        document = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
         to develop and sell BASIC interpreters for the Altair 8800. 
         During his career at Microsoft, Gates held the positions of chairman,
         chief executive officer, president and chief software architect, 
-        while also being the largest individual shareholder until May 2014."""
-        result = single_recognize_linked_entities(endpoint=endpoint, credential=key, input_text= document)
+        while also being the largest individual shareholder until May 2014."""]
+        result = client.recognize_linked_entities(inputs= document)[0]
 
         print("Linked Entities:\n")
         for entity in result.entities:
@@ -312,7 +330,7 @@ def entity_linking_example(endpoint, key):
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
-entity_linking_example(endpoint, key)
+entity_linking_example(client)
 ```
 
 ### <a name="output"></a>Çıktı
@@ -324,7 +342,7 @@ Linked Entities:
     Data Source:  Wikipedia
     Matches:
         Text: Altair 8800
-        Score: 0.777    Offset:  116    Length: 11
+        Score: 0.777    Offset:  125    Length: 11
 
     Name:  Bill Gates   Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
     Data Source:  Wikipedia
@@ -333,7 +351,7 @@ Linked Entities:
         Score: 0.555    Offset:  25     Length: 10
 
         Text: Gates
-        Score: 0.555    Offset:  161    Length: 5
+        Score: 0.555    Offset:  179    Length: 5
 
     Name:  Paul Allen   Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
     Data Source:  Wikipedia
@@ -348,7 +366,7 @@ Linked Entities:
         Score: 0.469    Offset:  0  Length: 9
 
         Text: Microsoft
-        Score: 0.469    Offset:  150    Length: 9
+        Score: 0.469    Offset:  168    Length: 9
 
     Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4 
     Data Source:  Wikipedia
@@ -360,7 +378,8 @@ Linked Entities:
     Data Source:  Wikipedia
     Matches:
         Text: BASIC
-        Score: 0.281    Offset:  89     Length: 5
+        Score: 0.281    Offset:  98     Length: 5
+
 ```
 
 #### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
@@ -418,17 +437,15 @@ Document ID: 2
 
 #### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-Uç nokta ve anahtarı bağımsız değişken olarak alan `key_phrase_extraction_example()` adlı yeni bir işlev oluşturun ve sonra `single_extract_key_phrases()` işlevini çağırır. Sonuç, başarılı olursa `key_phrases` algılanan anahtar tümceciklerin listesini ve değilse bir `error` içerir. Algılanan tüm anahtar tümceleri yazdır.
+İstemciyi bağımsız değişken olarak alan `key_phrase_extraction_example()` adlı yeni bir işlev oluşturun ve sonra `extract_key_phrases()` işlevini çağırır. Sonuç, başarılı olursa `key_phrases` algılanan anahtar tümceciklerin listesini ve değilse bir `error` içerir. Algılanan tüm anahtar tümceleri yazdır.
 
 ```python
-from azure.ai.textanalytics import single_extract_key_phrases
-
-def key_phrase_extraction_example(endpoint, key):
+def key_phrase_extraction_example(client):
 
     try:
-        document = "My cat might need to see a veterinarian."
+        document = ["My cat might need to see a veterinarian."]
 
-        response = single_extract_key_phrases(endpoint=endpoint, credential=key, input_text= document)
+        response = client.extract_key_phrases(inputs= document)[0]
 
         if not response.is_error:
             print("\tKey Phrases:")
@@ -440,7 +457,7 @@ def key_phrase_extraction_example(endpoint, key):
     except Exception as err:
         print("Encountered exception. {}".format(err))
         
-key_phrase_extraction_example(endpoint, key)
+key_phrase_extraction_example(client)
 ```
 
 

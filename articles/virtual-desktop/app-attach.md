@@ -185,7 +185,7 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
 
 1. Aşama
-2. Kaydolma
+2. Kaydet
 3. Kaydını silmek
 4. Gerçekleştirilen
 

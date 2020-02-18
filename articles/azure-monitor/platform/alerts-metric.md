@@ -4,19 +4,19 @@ description: Azure portal veya CLı kullanarak ölçüm uyarı kuralları oluşt
 author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 02/16/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ef712c38303de27214ce75c9ca2b8022a5410efc
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705539"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372763"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
 
-Azure İzleyici'deki ölçüm uyarıları, belirli bir eşiği aşan ölçümleriniz hakkında bildirim almak için kullanabileceğiniz bir yöntem sunar. Ölçüm uyarıları bir dizi çok boyutlu platform ölçümleri, özel ölçümler, Application Insights standart ve özel ölçümleri üzerinde çalışır. Bu makalede Azure portalı ve Azure CLI aracılığıyla ölçüm uyarı kurallarını oluşturma, görüntüleme ve yönetme işlemlerini açıklayacağız. Ayrıca, [ayrı bir makalede](alerts-metric-create-templates.md)açıklanan Azure Resource Manager şablonlarını kullanarak ölçüm uyarı kuralları da oluşturabilirsiniz.
+Azure Izleyici 'de ölçüm uyarıları, ölçümlerinizin bir eşiğin kesiştiği durumlarda bildirim almanın bir yolunu sağlar. Ölçüm uyarıları bir dizi çok boyutlu platform ölçümleri, özel ölçümler, Application Insights standart ve özel ölçümleri üzerinde çalışır. Bu makalede, Azure portal ve Azure CLı aracılığıyla ölçüm uyarı kuralları oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz. Ayrıca, [ayrı bir makalede](alerts-metric-create-templates.md)açıklanan Azure Resource Manager şablonlarını kullanarak da ölçüm uyarı kuralları oluşturabilirsiniz.
 
 Ölçüm uyarılarının [ölçüm uyarılarından genel bakışta](alerts-metric-overview.md)nasıl çalıştığı hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -39,21 +39,30 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
 
 6. Kaynak için desteklenen sinyallerin bir listesini göreceksiniz, üzerinde uyarı oluşturmak istediğiniz ölçümü seçin.
 
-7. İsteğe bağlı olarak, **dönemi** ve **toplamayı**ayarlayarak ölçüyü daraltın. Ölçümün boyutları varsa, **Boyutlar** tablosu görüntülenir. Her boyut için bir veya daha fazla değer seçin. Ölçüm uyarısı, seçilen tüm değer birleşimleri için koşulu değerlendir ' i çalıştırır. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](alerts-metric-overview.md). Boyutlardan herhangi biri için **\*da seçebilirsiniz** . **\*** , seçimi bir boyut için tüm geçerli ve gelecekteki değerlere dinamik olarak ölçeklendirecek.
+7. En son altı saat için ölçüm için bir grafik görürsünüz. Ölçüm için daha uzun geçmişi görmeyi seçmek için **grafik dönemi** açılan listesini kullanın.
 
-8. Son 6 saat için ölçüm için bir grafik görürsünüz. Uyarı parametrelerini tanımlayın; **Koşul türü**, **Sıklık**, **işleç** ve **eşik** veya **duyarlılık**, bu, ölçüm uyarı kuralının değerlendileceğini belirleyen mantığı tespit eder. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
+8. Ölçümün boyutları varsa, bir Boyutlar tablosu görürsünüz. Her boyut için bir veya daha fazla değer seçin.
+    - Görüntülenen boyut değerleri, son üç gündeki ölçüm verilerini temel alır.
+    - Aradığınız boyut değeri görüntülenmiyorsa, özel bir değer eklemek için "+" düğmesine tıklayın.
+    - Boyutlardan herhangi biri için **\*da seçebilirsiniz** . **\*** , seçimi bir boyut için tüm geçerli ve gelecekteki değerlere dinamik olarak ölçeklendirecek.
 
-9. Statik bir eşik kullanıyorsanız, ölçüm grafiği makul bir eşiğin ne olabileceğini belirlemenize yardımcı olabilir. Dinamik eşikler kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
+    Ölçüm uyarısı kuralı, seçilen tüm değer birleşimlerinin koşulunu değerlendirir. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](alerts-metric-overview.md).
 
-10. **Bitti**’ye tıklayın
+9. **Eşik** türü, **işleç**ve **toplama türünü**seçin. Bu, ölçüm uyarı kuralının değerlendileceğini belirten mantığı belirleyecek.
+    - **Statik** eşik kullanıyorsanız, bir **eşik değeri**tanımlamaya devam edin. Ölçüm grafiği ne kadar makul bir eşik olabileceğini belirlemenize yardımcı olabilir.
+    - **Dinamik** eşik kullanıyorsanız, **eşik duyarlılığını**tanımlamaya devam edin. Ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
 
-11. İsteğe bağlı olarak, karmaşık bir uyarı kuralını izlemek istiyorsanız başka ölçütler ekleyin. Şu anda kullanıcılar, dinamik eşik ölçütlerine sahip uyarı kurallarına tek bir ölçüt olarak sahip olabilir.
+10. İsteğe bağlı olarak, **toplama ayrıntı** düzeyini ve **değerlendirme sıklığını**ayarlayarak koşulu daraltın. 
 
-12. **Uyarı kuralı adı**, **Açıklama** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin
+11. **Bitti**’ye tıklayın.
 
-13. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
+12. İsteğe bağlı olarak, karmaşık bir uyarı kuralını izlemek istiyorsanız başka ölçütler ekleyin. Şu anda kullanıcılar, dinamik eşik ölçütlerine sahip uyarı kurallarına tek bir ölçüt olarak sahip olabilir.
 
-14. Ölçüm uyarı kuralını kaydetmek için **bitti** ' ye tıklayın.
+13. **Uyarı kuralı adı**, **açıklaması**ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+
+14. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
+
+15. Ölçüm uyarı kuralını kaydetmek için **bitti** ' ye tıklayın.
 
 > [!NOTE]
 > Portal üzerinden oluşturulan ölçüm uyarısı kuralları, hedef kaynakla aynı kaynak grubunda oluşturulur.
@@ -66,7 +75,7 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 2. **Uyarılar** ' a tıklayın ve **kuralları yönetin**
 
-3. **Kuralları Yönet** dikey penceresinde tüm uyarı kurallarınızı abonelikler arasında görüntüleyebilirsiniz. **Kaynak grubu**, **kaynak türü** ve **kaynak**kullanarak kurallara daha fazla filtre uygulayabilirsiniz. Yalnızca ölçüm uyarılarını görmek istiyorsanız, ölçüm olarak **sinyal türü** ' nü seçin.
+3. **Kuralları Yönet** dikey penceresinde tüm uyarı kurallarınızı abonelikler arasında görüntüleyebilirsiniz. **Kaynak grubu**, **kaynak türü**ve **kaynak**kullanarak kuralları daha fazla filtreleyebilirsiniz. Yalnızca ölçüm uyarılarını görmek istiyorsanız, ölçüm olarak **sinyal türü** ' nü seçin.
 
     > [!TIP]
     > **Kuralları Yönet** dikey penceresinde birden çok uyarı kuralı seçebilir ve bunları etkinleştirebilir/devre dışı bırakabilirsiniz. Bu, belirli hedef kaynakların bakım altına konulma ihtiyacı olduğunda yararlı olabilir
@@ -82,9 +91,9 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 ## <a name="with-azure-cli"></a>Azure CLI ile
 
-Önceki bölümlerde Azure portal kullanarak ölçüm uyarı kurallarının nasıl oluşturulacağı, görüntüleneceği ve yönetileceği açıklanmaktadır. Bu bölümde, platformlar arası [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanarak nasıl yapılacağı açıklanır. Azure CLı 'yı kullanmaya başlamanın en hızlı yolu [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)kullanmaktır. Bu makalede, Cloud Shell kullanacağız.
+Önceki bölümlerde Azure portal kullanarak ölçüm uyarı kurallarının nasıl oluşturulacağı, görüntüleneceği ve yönetileceği açıklanmaktadır. Bu bölümde, platformlar arası [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanarak nasıl yapılacağı açıklanır. Azure CLı 'yı kullanmaya başlamanın en hızlı yolu [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)kullanmaktır. Bu makalede Cloud Shell kullanacağız.
 
-1. Azure portal gidin, **Cloud Shell**' e tıklayın.
+1. Azure portal git **Cloud Shell**' e tıklayın.
 
 2. Komut isteminde, komutlar ve nasıl kullanılacağı hakkında daha fazla bilgi edinmek için ``--help`` seçeneğiyle komutları kullanabilirsiniz. Örneğin, aşağıdaki komut, ölçüm uyarılarını oluşturmak, görüntülemek ve yönetmek için kullanabileceğiniz komutların listesini gösterir
 

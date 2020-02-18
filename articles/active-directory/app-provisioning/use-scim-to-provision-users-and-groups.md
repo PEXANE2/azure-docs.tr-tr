@@ -509,7 +509,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 * Grup düzeltme eki isteğine güncelleştirme, yanıtta bir *HTTP 204 içeriği* getirmelidir. Tüm üyelerin listesini içeren bir gövde döndürülmesi önerilmez.
 * Grubun tüm üyelerini döndürmeyi desteklemek gerekli değildir.
 
-#### <a name="create-group"></a>Grup Oluşturma
+#### <a name="create-group"></a>{1&gt;Grup Oluştur&lt;1}
 
 ##### <a name="request-7"></a>İsteyen
 

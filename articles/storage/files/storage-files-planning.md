@@ -168,7 +168,7 @@ Azure Files Premium paylaşımları hem LRS hem de ZRS 'yi destekler, ZRS Şu an
 
 Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Premium dosya paylaşımları 100 TiB kapasitesinde kullanılabilir.
 
-### <a name="restrictions"></a>Kısıtlamalar
+### <a name="restrictions"></a>{1&gt;Kısıtlamalar&lt;1}
 
 - Büyük dosya paylaşımları etkin olan herhangi bir depolama hesabı için LRS/ZRS 'den GRS/GZRS hesabı dönüştürme mümkün olmayacaktır.
 

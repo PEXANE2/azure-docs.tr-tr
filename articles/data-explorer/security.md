@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271601"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373361"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure 'da Azure Veri Gezgini kümelerini güvenli hale getirme
 
@@ -24,7 +24,7 @@ Bulut uygulamalarının oluşturulması için kodunuzda kimlik bilgileri yöneti
 
 Azure kaynakları için Azure Active Directory (Azure AD) tarafından yönetilen kimlikler özelliği bu sorunu çözer. Bu özellik, Azure hizmetlerine Azure AD üzerinde otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği kullanarak, Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri olmadan kimlik doğrulaması yapabilirsiniz. Bu hizmet hakkında daha fazla bilgi için bkz. [Azure kaynaklarına yönelik yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview) genel bakış sayfası.
 
-## <a name="data-encryption"></a>Veri şifreleme
+## <a name="data-encryption"></a>Veri şifrelemesi
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
@@ -34,10 +34,10 @@ Azure kaynakları için Azure Active Directory (Azure AD) tarafından yönetilen
 
 Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, veri şifrelemesi için kullanmak üzere müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz. Verilerinizin şifrelemesini, kendi anahtarlarınız ile depolama düzeyinde yönetebilirsiniz. Müşteri tarafından yönetilen anahtar, tüm verileri şifrelemek ve şifresini çözmek için kullanılan kök şifreleme anahtarına erişimi korumak ve denetlemek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault kullanın. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtarlar oluşturmak için bir Azure Key Vault API kullanabilirsiniz. Azure Veri Gezgini kümesi ve Azure Key Vault aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](/azure/key-vault/key-vault-overview). Müşteri tarafından yönetilen anahtarlar hakkında ayrıntılı bir açıklama için bkz. [Azure Key Vault Ile müşteri tarafından yönetilen anahtarlar](/azure/storage/common/storage-service-encryption)
+Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault kullanın. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtarlar oluşturmak için bir Azure Key Vault API kullanabilirsiniz. Azure Veri Gezgini kümesi ve Azure Key Vault aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](/azure/key-vault/key-vault-overview). Müşteri tarafından yönetilen anahtarlar hakkında ayrıntılı bir açıklama için bkz. [Azure Key Vault Ile müşteri tarafından yönetilen anahtarlar](/azure/storage/common/storage-service-encryption). Azure Veri Gezgini kümenizdeki müşteri tarafından yönetilen anahtarları veya [Azure Resource Manager şablonunu](/azure/data-explorer/customer-managed-keys-resource-manager) kullanarak [C#](/azure/data-explorer/customer-managed-keys-csharp) yapılandırma
 
 > [!Note]
-> Müşteri tarafından yönetilen anahtarlar, Azure Active Directory (Azure AD) bir özelliği olan Azure kaynakları için yönetilen kimliklere bağımlıdır. Azure portal müşteri tarafından yönetilen anahtarları yapılandırmak için, kümenize bir **Systemassigned** yönetilen kimliği yapılandırmanız gerekir.
+> Müşteri tarafından yönetilen anahtarlar, Azure Active Directory (Azure AD) bir özelliği olan Azure kaynakları için yönetilen kimliklere bağımlıdır. Azure portal müşteri tarafından yönetilen anahtarları yapılandırmak için, [Azure Veri Gezgini kümeniz için yönetilen kimlikleri yapılandırma](/azure/data-explorer/managed-identities)bölümünde açıklandığı gibi, kümenize bir **systemassigned** yönetilen kimlik yapılandırmanız gerekir.
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde depola
 
@@ -60,8 +60,8 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gezgini kümeniz için Yönetilen kimlikler yapılandırma](managed-identities.md)
 * Bekleyen şifrelemeyi etkinleştirerek [Azure Veri Gezgini-Portal 'da kümenizin güvenliğini sağlayın](manage-cluster-security.md) .
+* [Azure Veri Gezgini kümeniz için Yönetilen kimlikler yapılandırma](managed-identities.md)
 * [Azure Resource Manager şablonunu kullanarak müşteri tarafından yönetilen anahtarları yapılandırma](customer-managed-keys-resource-manager.md)
 * [Müşteri tarafından yönetilen anahtarları kullanarak yapılandırmaC#](customer-managed-keys-csharp.md)
 

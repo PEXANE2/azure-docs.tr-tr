@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725981"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373382"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümeniz için Yönetilen kimlikler yapılandırma
 
-[Azure Active Directory yönetilen bir kimlik](/azure/active-directory/managed-identities-azure-resources/overview) , kümenizin Azure Key Vault gıbı diğer AAD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. Bu makalede, Azure Veri Gezgini kümeleri için yönetilen kimlik oluşturma gösterilmektedir. 
+[Azure Active Directory yönetilen bir kimlik](/azure/active-directory/managed-identities-azure-resources/overview) , kümenizin Azure Key Vault gıbı diğer AAD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. Bu makalede, Azure Veri Gezgini kümeleri için yönetilen kimlik oluşturma gösterilmektedir. Yönetilen kimlik yapılandırması şu anda yalnızca [kümeniz için müşteri tarafından yönetilen anahtarları etkinleştirmek](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)üzere desteklenmektedir.
 
 > [!Note]
 > Azure Veri Gezgini için Yönetilen kimlikler, uygulamanız abonelikler veya kiracılar arasında geçirilirse beklendiği gibi davranır. Uygulamanın, [bir kimlik kaldır](#remove-an-identity)kullanılarak özelliği devre dışı bırakıp yeniden etkinleştirerek yapılabilen yeni bir kimlik alması gerekir. Aşağı akış kaynaklarının erişim ilkelerinin da yeni kimliği kullanması için güncelleştirilmeleri gerekir.
@@ -92,7 +92,7 @@ Sistem tarafından atanan tür eklendiğinde Azure, kümenizin kimliğini oluşt
 }    
 ```
 
-Örneğin:
+Örnek:
 
 ```json
 {

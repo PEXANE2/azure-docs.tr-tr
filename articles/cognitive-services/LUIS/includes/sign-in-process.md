@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
-ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 5e7feac35ddd607d36cb0ddd3bae10cf1b9bc7a7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278592"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371719"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Lug portalında oturum açma
 
@@ -31,12 +31,12 @@ LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
     ![Yazma kaynağı oluşturma](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    **Yeni bir yazma kaynağı oluştururken**aşağıdaki bilgileri sağlayın: 
+    **Yeni bir yazma kaynağı oluştururken**aşağıdaki bilgileri sağlayın:
 
     * **Kaynak adı** -seçtiğiniz özel bir ad, yazma ve tahmin uç noktası sorgularınız için URL 'nin bir parçası olarak kullanılır.
-    * **Kiracı** -Azure aboneliğinizin ilişkilendirildiği kiracı. 
+    * **Kiracı** -Azure aboneliğinizin ilişkilendirildiği kiracı.
     * **Abonelik adı** -kaynak için faturalandırılacak abonelik.
-    * **Kaynak grubu** -seçtiğiniz veya oluşturduğunuz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır. 
+    * **Kaynak grubu** -seçtiğiniz veya oluşturduğunuz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır.
     * **Konum** -konum seçimi, **kaynak grubu** seçimini temel alır.
     * **Fiyatlandırma katmanı** -fiyatlandırma katmanı, saniye başına en fazla işlemi ve ayı belirler.
 
@@ -44,6 +44,6 @@ LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
     ![Yazma kaynağı oluşturma](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. **Devam**' i seçerek onaylayın. 
+1. **Devam**' i seçerek onaylayın.
 
     ![Yazma kaynağı oluşturma](../media/sign-in/sign-in-confirm-continue.png)

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure AD veri Bağlayıcısı başına Beekeeile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure AD veri Bağlayıcısı başına Azure Active Directory ve Beekeearasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Azure AD SSO başına Beekeeile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure AD SSO başına Azure Active Directory ve Beekeearasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7484d71c6032b97341537a0564d8d52b3996cc8e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bbac5f6b26ff5df9114eebdf850faff263f7cd78
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050329"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373175"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-data-connector"></a>Öğretici: Azure AD veri Bağlayıcısı başına Beekeeile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>Öğretici: Azure AD SSO 'SU başına Beekeeile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Azure AD veri Bağlayıcısı başına Beekeeto Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Azure ad veri Bağlayıcısı başına Beekeeı tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu öğreticide, Azure AD SSO başına BeekeeAzure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Azure AD SSO 'SU başına Beekeeyi tümleştirdiğinizde, şunları yapabilirsiniz:
 
-* Azure AD 'de, Azure AD veri Bağlayıcısı başına Beekee'e erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Azure AD veri Bağlayıcısı başına Beekeena otomatik olarak kaydolmalarına imkan tanıyın.
+* Azure AD 'de Azure AD SSO başına Beekee'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Azure AD SSO 'SU başına Beekeena otomatik olarak kaydolmalarına imkan tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -37,46 +37,45 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Azure AD veri Bağlayıcısı çoklu oturum açma (SSO) özellikli abonelik başına beekee.
+* Azure AD SSO çoklu oturum açma (SSO) özellikli abonelik başına beekee.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Azure AD veri Bağlayıcısı başına beekeesp **ve ıDP** başlatılan SSO 'yu destekler
-* Azure AD veri Bağlayıcısı başına beekee, **tam zamanında** Kullanıcı sağlamasını destekler
-* Azure AD veri Bağlayıcısı başına Beekeeyapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimlerini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Azure AD SSO başına beekeesp **ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Azure AD SSO 'SU başına **beekee, tam zamanında** Kullanıcı sağlamasını destekler
+* Azure AD SSO 'SU başına Beekeeyapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve ne zaman korumasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-beekeeper-azure-ad-data-connector-from-the-gallery"></a>Galeriden Azure AD veri Bağlayıcısı başına Beekeeekleme
+## <a name="adding-beekeeper-azure-ad-sso-from-the-gallery"></a>Galeriden Azure AD SSO 'SU başına Beekeeekleme
 
-Azure ad veri Bağlayıcısı başına Beekeeto Azure AD ile tümleştirmeyi yapılandırmak için, galerideki Azure AD veri bağlayıcısını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD SSO başına Beekeeto Azure AD ile tümleştirmeyi yapılandırmak için, Galeriden Azure AD SSO 'SU başına beekeeyi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Azure AD Data Connector başına beekeeyazın** .
-1. Sonuçlar panelinden **Azure ad veri Bağlayıcısı başına Beekeeı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Azure AD SSO 'Su başına beekeeyazın** .
+1. Sonuçlar panelinden **Azure AD SSO 'Su başına Beekeeı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-sso"></a>Azure AD SSO 'SU başına Beekeeiçin Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-data-connector"></a>Azure ad veri Bağlayıcısı başına Beekeeiçin Azure AD çoklu oturum açmayı yapılandırma ve test etme
+**B. Simon**adlı bir test kullanıcısını kullanarak Azure AD SSO 'Su başına Beekeeile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ve Azure AD SSO 'SU başına Beekeeiçindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Su başına Beekeeile Azure ad veri bağlayıcısını yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ve Azure AD veri Bağlayıcısı başına Beekeeiçindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
-
-Azure ad veri Bağlayıcısı başına Beekeeile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'SU başına Beekeeile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Azure AD Data Connector SSO 'Su başına Beekeeconfigure 'U yapılandırın](#configure-beekeeper-azure-ad-data-connector-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan Azure ad veri Bağlayıcısı başına beekeeto 'da B. Simon 'a sahip olmak için **[Beekeefor Azure AD Data Connector test kullanıcısı oluşturun](#create-beekeeper-azure-ad-data-connector-test-user)** .
+1. **[Azure AD SSO 'Su başına Beekeeyapılandır](#configure-beekeeper-azure-ad-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * Azure AD SSO 'su **[başına Beekeem](#create-beekeeper-azure-ad-sso-test-user)** , kullanıcının Azure AD gösterimine bağlı olan Azure AD SSO 'Su başına B. Simon 'a sahip olmak için.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/) **Azure ad veri Bağlayıcısı** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Azure AD SSO uygulama tümleştirmesi başına Beekee,** **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -104,13 +103,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<your_company>.beekeeper.io/login`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Azure ad veri Bağlayıcısı istemci destek ekibi başına Beekeeile](mailto:support@beekeeper.io) iletişime geçin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Azure AD SSO istemci desteği ekibi başına Beekeeile](mailto:support@beekeeper.io) iletişime geçin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Azure AD veri bağlayıcı uygulaması başına beekee, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Azure AD SSO uygulaması başına beekee, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdaki ' a ek olarak, Azure AD veri Bağlayıcısı uygulaması başına Beekee, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdaki şekilde, Azure AD SSO uygulaması başına Beekee, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
     | Adı | Kaynak özniteliği|
     | ------------ | --------- |
@@ -124,7 +123,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Azure ad veri Bağlayıcısı başına Beekeeayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Azure AD SSO başına Beekeeayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
@@ -142,10 +141,10 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure AD veri Bağlayıcısı başına Beekeeerişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, Azure AD SSO 'SU başına Beekee'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Azure ad veri Bağlayıcısı başına Beekeeu**seçin.
+1. Uygulamalar listesinde, **Azure AD SSO başına Beekeeu**seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
@@ -158,19 +157,19 @@ Bu bölümde, Azure AD veri Bağlayıcısı başına Beekeeerişimi vererek Azur
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-beekeeper-azure-ad-data-connector-sso"></a>Azure AD veri Bağlayıcısı SSO 'SU başına Beekeeyapılandırma
+## <a name="configure-beekeeper-azure-ad-sso"></a>Azure AD SSO 'SU başına Beekeeyapılandır
 
-**Azure ad veri Bağlayıcısı tarafında Beekeeon** 'da çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'sini ve Azure Portal ' den uygun KOPYALANMıŞ URL 'Leri [Azure ad veri Bağlayıcısı destek ekibi başına beekeeye](mailto:support@beekeeper.io)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Azure AD SSO tarafında Beekeeon** 'da çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun KOPYALANMıŞ URL 'leri [Azure ad SSO desteği ekibi başına Azure Portal beekeee](mailto:support@beekeeper.io)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
-### <a name="create-beekeeper-azure-ad-data-connector-test-user"></a>Azure AD veri Bağlayıcısı test kullanıcısı başına Beekeeoluştur
+### <a name="create-beekeeper-azure-ad-sso-test-user"></a>Azure AD SSO test kullanıcısı başına Beekeeoluştur
 
-Bu bölümde, Azure AD veri Bağlayıcısı başına Beekee, Britta Simon adlı bir Kullanıcı oluşturulur. Azure AD veri Bağlayıcısı başına beekee, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Azure AD veri Bağlayıcısı başına Beekeehenüz yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Azure AD SSO 'SU başına Beekee, Britta Simon adlı bir Kullanıcı oluşturulur. Azure AD SSO başına beekee, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Azure AD SSO 'SU başına Beekeede yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim panelinde Azure AD veri bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Azure AD veri Bağlayıcısı başına beekeede otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Azure AD SSO 'SU başına beekeetıkladığınızda, SSO 'yu ayarladığınız Azure AD SSO 'su başına beekeede otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -180,6 +179,6 @@ Erişim panelinde Azure AD veri bağlayıcı kutucuğuna tıkladığınızda, SS
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Azure AD veri Bağlayıcısı başına Beekeedene](https://aad.portal.azure.com/)
+- [Azure AD ile Azure AD SSO 'SU başına Beekeedene](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,25 +1,25 @@
 ---
 title: Yerleşik ilke tanımlarının listesi
 description: Azure Ilkesi için yerleşik ilke tanımlarını listeleyin. Kategoriler arasında Etiketler, mevzuat uyumluluğu, Key Vault, Kubernetes, Konuk yapılandırma ve daha fazlası bulunur.
-ms.date: 01/31/2020
+ms.date: 02/15/2020
 ms.topic: sample
-ms.openlocfilehash: a672089dd45169b59bfb87ff3b612bc029c02448
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172712"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371213"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Ilkesi yerleşik ilke tanımları
 
 Bu sayfa, Azure Ilkesi yerleşik ilke tanımlarının bir dizinidir.
 
-Her yerleşik ad, [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda ilke tanımı kaynağına bağlanır. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>Ctrl</kbd>-<kbd>F</kbd> kullanın.
+Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı adı. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **kaynak** sütunundaki bağlantıyı kullanın. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>Ctrl</kbd>-<kbd>F</kbd> kullanın.
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Policy GitHub deposu](https://github.com/Azure/azure-policy)'ndaki yerleşik bileşenler.
+- Yerleşik ilkeleri görmek için [Azure İlkesi GitHub deposuna](https://github.com/Azure/azure-policy) gidin.
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.

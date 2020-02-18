@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: aa1e6d8705cf4aed975ed0940087f243a06a9019
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836351"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372699"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
@@ -46,7 +46,7 @@ Uygulamalarınızı *b2clogin.com*'e geçirmek için yapmanız gerekebilecek bir
 
 * Kimlik sağlayıcınızın uygulamalarındaki yeniden yönlendirme URL 'sini *b2clogin.com*başvurusuna değiştirin.
 * Azure AD B2C uygulamalarınızı, Kullanıcı akışında ve belirteç uç noktası başvurularında *b2clogin.com* kullanacak şekilde güncelleştirin.
-* [Kullanıcı arabirimi özelleştirmesi](custom-policy-ui-customization-dynamic.md)için CORS ayarlarında tanımladığınız tüm **izin verilen kaynakları** güncelleştirin.
+* [Kullanıcı arabirimi özelleştirmesi](custom-policy-ui-customization.md)için CORS ayarlarında tanımladığınız tüm **izin verilen kaynakları** güncelleştirin.
 
 ## <a name="change-identity-provider-redirect-urls"></a>Kimlik sağlayıcısı yeniden yönlendirme URL 'Lerini Değiştir
 
@@ -58,7 +58,7 @@ B2clogin.com yeniden yönlendirme URL 'Leri için kullanabileceğiniz iki biçim
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-İkinci seçenek, `your-tenant-name.onmicrosoft.com`biçiminde kiracı etki alanı adınızı kullanır. Örneğin:
+İkinci seçenek, `your-tenant-name.onmicrosoft.com`biçiminde kiracı etki alanı adınızı kullanır. Örnek:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -66,7 +66,7 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Her iki biçim için:
 
-* Değiştirin `{your-tenant-name}` Azure AD B2C kiracınızın adı.
+* `{your-tenant-name}`, Azure AD B2C kiracınızın adıyla değiştirin.
 * URL 'de varsa `/te` kaldırın.
 
 ## <a name="update-your-applications-and-apis"></a>Uygulamalarınızı ve API 'lerinizi güncelleştirme
@@ -74,7 +74,7 @@ Her iki biçim için:
 Azure AD B2C özellikli uygulamalardaki ve API 'lerinizde bulunan kod, birkaç yerde `login.microsoftonline.com` başvurabilir. Örneğin, kodunuzun Kullanıcı akışlarına ve belirteç uç noktalarına başvuruları olabilir. `your-tenant-name.b2clogin.com`başvurusunu bunun yerine aşağıdaki şekilde güncelleştirin:
 
 * Yetkilendirme uç noktası
-* belirteç uç noktası
+* Belirteç uç noktası
 * Belirteç veren
 
 Örneğin, contoso kaydolma/oturum açma ilkesi için yetkili uç noktası şu şekilde olacaktır:

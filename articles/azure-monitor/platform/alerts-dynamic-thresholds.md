@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762530"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373401"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Izleyici 'de dinamik eşiklerle ölçüm uyarıları
 
@@ -92,11 +92,11 @@ Büyük olasılıkla değil. Dinamik eşikler, yavaş gelişen sorunlar yerine �
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Eşikleri önizlemek ve daha sonra hesaplamak için ne kadar veri kullanıldı?
 
-Ve uyarı ilk oluşturulduğunda, grafikte görünen eşikler saat veya günlük mevsimsel desenleri (10 gün) hesaplamak için yeterli geçmiş verilere göre hesaplanır. Bir uyarı kuralı oluşturulduktan sonra dinamik eşikler tüm gerekli geçmiş verileri kullanır ve eşiklerin daha doğru olmasını sağlamak için sürekli olarak yeni verilere göre öğrenve uyarlanacaktır. Bu, bu hesaplamadan sonra grafiğin haftalık desenleri de görüntüleyeceği anlamına gelir.
+Bir uyarı kuralı ilk oluşturulduğunda, grafikte görünen eşikler saat veya günlük dönemsel desenleri (10 gün) hesaplamak için yeterli geçmiş verileri temel alarak hesaplanır. Bir uyarı kuralı oluşturulduktan sonra dinamik eşikler tüm gerekli geçmiş verileri kullanır ve eşiklerin daha doğru olmasını sağlamak için sürekli olarak yeni verilere göre öğrenve uyarlanacaktır. Bu, bu hesaplamadan sonra grafiğin haftalık desenleri de görüntüleyeceği anlamına gelir.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Uyarı tetiklenmesi için ne kadar veri gerekiyor?
 
-Yeni bir kaynağınız varsa veya ölçüm verileriniz eksikse, doğru eşikleri sağlamak için üç günden daha önce, dinamik eşikler uyarıları tetiklemez.
+Yeni bir kaynağınız veya eksik ölçüm verileriniz varsa dinamik eşikler, doğru eşiklerin sağlamak için üç gün veya 30 örnek Ölçüm verisi kullanılmadan önce uyarıları tetiklemez.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dinamik eşikler en iyi uygulamaları
 

@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 6960a985a5c6a752ced9d176db6eb9368fdf0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d5cf28244fadd6dc0d1d06d5a84a2082a1d1e7e9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192816"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371618"
 ---
-|Ad |Açıklama |İlkeler |Sürüm |
+|Adı |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
 |[\[önizleme\]: denetim gereksinimlerini desteklemek için Kanada Federal PBMM denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Bu girişim, Kanada Federal PBMM denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/canadafederalPBMM-blueprint ziyaret edin |68 |1.0.0-Önizleme |
 |[\[Preview\]: bkz. Microsoft Azure CIS, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmayı destekler](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Bu girişim, bir CIS alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir Microsoft Azure, kıyaslama önerilerini temel alır. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/cisazure-blueprintziyaret edin. |84 |1.0.0-Önizleme |
@@ -26,4 +26,4 @@ ms.locfileid: "77192816"
 |[Denetim gereksinimlerini desteklemek için Fedrampa yüksek denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Bu girişim, Fedrampa H denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/fedramph-blueprintziyaret edin. |81 |1.0.0-Önizleme |
 |[Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Bu girişim, bir HITRUST/HIPAA denetimlerinin alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenecektir. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[America (MPAA) denetimlerinin denetim hareketi resmi Ilişkilendirmesi ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Bu girişim, Amerika (MPAA) güvenlik ve yönergeler denetimlerinin hareketli resim Ilişkilendirmesi alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/mpaa-blueprint ziyaret edin |45 |1.0.0-Önizleme |
-|[DoD etkisi düzeyi 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Belirli DoD etkisi düzeyi 4 (IL4) denetimlerine yönelik ilkeler atar. Daha fazla bilgi https://aka.ms/DoDIL4-blueprint. |81 |1.0.0-Önizleme |
+|[DoD Etki Düzeyi 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Belirli DoD etkisi düzeyi 4 (IL4) denetimlerine yönelik ilkeler atar. Daha fazla bilgi https://aka.ms/DoDIL4-blueprint. |81 |1.0.0-Önizleme |
