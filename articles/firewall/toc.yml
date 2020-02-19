@@ -35,8 +35,14 @@
       href: rule-processing.md
     - name: Hizmet etiketleri
       href: service-tags.md
+    - name: IP Grupları
+      href: ip-groups.md
+    - name: Zorlamalı tünel oluşturma
+      href: forced-tunneling.md
     - name: Uyumluluk sertifikasyonları
       href: compliance-certifications.md
+    - name: Merkezi yönetim
+      href: central-management.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure PowerShell’i kullanarak dağıtma
@@ -55,6 +61,10 @@
       href: integrate-lb.md
     - name: SQL FQDN’leri ile uygulama kuralları
       href: sql-fqdn-filtering.md
+    - name: SNAT özel aralıkları
+      href: snat-private-range.md
+    - name: IP Grupları oluşturma
+      href: create-ip-group.md
 - name: Başvuru
   items:
     - name: Azure CLI

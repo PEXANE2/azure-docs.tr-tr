@@ -34,7 +34,7 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Genel Sanal Ağ eşlemesini yapılandırma
       href: global-peering-vnet.md
-    - name: ExpressRoute üzerinde VPN bağlantısı oluşturma
+    - name: ExpressRoute şifrelemesini yapılandırma
       href: vpn-over-expressroute.md
     - name: Sanal WAN SKU'sunu yükseltme
       href: upgrade-virtual-wan.md

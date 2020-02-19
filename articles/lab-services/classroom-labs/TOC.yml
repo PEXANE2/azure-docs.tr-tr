@@ -52,16 +52,20 @@
           href: how-to-manage-lab-accounts.md
         - name: Laboratuvar hesaplarını yapılandırma
           href: how-to-configure-lab-accounts.md
+        - name: Laboratuvar oluşturucusu ekleme
+          href: add-lab-creator.md
         - name: Laboratuvar oluşturucunun laboratuvar konumunu seçmesine izin verme
           href: allow-lab-creator-pick-lab-location.md
-        - name: Laboratuvarlarınızı eş sanal ağa bağlama
+        - name: Eş sanal ağa bağlanma
           href: how-to-connect-peer-virtual-network.md
         - name: Paylaşılan görüntü galerisi ekleme ve kaldırma
           href: how-to-attach-detach-shared-image-gallery.md
-        - name: Sınıf laboratuvarına sahip olarak kullanıcı ekleme
+        - name: Sınıf laboratuvarına başka sahipler ekleme
           href: how-to-add-user-lab-owner.md
-        - name: Azure Lab Services için güvenlik duvarı ayarları
+        - name: Güvenlik duvarı ayarlarını yapılandırma
           href: how-to-configure-firewall-settings.md
+        - name: Laboratuvarlar için Market görüntülerini belirtme
+          href: specify-marketplace-images.md
     - name: Sınıf laboratuvarı oluşturma ve yapılandırma (eğitmen)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme

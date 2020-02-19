@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: Batch Yönetimi ile Azure AD
           href: batch-aad-auth-management.md
+        - name: Batch ile Key Vault’a güvenli erişim
+          href: credential-access-key-vault.md
     - name: Uygulama paketlerini kullanma
       href: batch-application-packages.md
     - name: Havuz oluşturma ve yönetme

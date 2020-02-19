@@ -351,6 +351,12 @@
           href: view-usage-reports.md
         - name: Hesap yönetimi
           href: manage-user-accounts-graph-api.md
+        - name: Azure Pipelines ile dağıtma
+          href: deploy-custom-policies-devops.md
+          displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
+        - name: PowerShell ile ilkeleri yönetme
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: Denetim günlükleri
       href: view-audit-logs.md
     - name: Kullanıcıları yönetme - Azure portalı

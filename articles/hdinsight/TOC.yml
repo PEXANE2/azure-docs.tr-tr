@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Kavramlar
       items:
+        - name: Kurumsal güvenlik genel yönergeleri
+          href: ./domain-joined/general-guidelines.md
         - name: ESP kümeleri için planlama
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight sanal ağ mimarisi
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: Müşteri tarafından yönetilen anahtar disk şifrelemesi
           href: ./disk-encryption.md
+        - name: Ranger ve Apache Ambari’de LDAP eşitlemesi
+          href: ./domain-joined/ldap-sync.md
     - name: Nasıl yapılır
       items:
         - name: Kimlik bilgileri yönetimi için Kimlik Aracısı kullanma

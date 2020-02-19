@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: GPU kaynaklarını kullanma (önizleme)
           href: container-instances-gpu.md
-        - name: SSL uç noktasını etkinleştirme
+        - name: Sepette SSL uç noktasını etkinleştirme
           href: container-instances-container-group-ssl.md
     - name: Veri birimlerini bağlama
       items:
