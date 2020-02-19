@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030821"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462182"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -23,10 +23,53 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
 
+## <a name="2020-02-18"></a>2020-02-18
+
+### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Python v 1.1.1 RC0 için SDK Azure Machine Learning
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **Azure-CLI-ml**
+    + Tek örnekli profil oluşturma bir öneri üretmek için düzeltildi ve temel SDK 'da kullanıma sunuldu.
+  + **azureml-oto ml-çekirdek**
+    + Hata günlüğü geliştirildi.
+  + **azureml-oto ml-çalışma zamanı**
+    + Veri kümesi uzun zaman aralıkları olan kısa grak içeriyorsa, tahminle ilgili sorun düzeltildi.
+    + Otomatik maks. ufuk açık olduğunda ve tarih sütunu dizeler biçimindeki tarihleri içerdiğinde sorun düzeltildi. Date 'e dönüştürme mümkün değilse uygun dönüştürme ve hatalı hata ekledik
+    + Filecacheser için ara verileri serileştirmek ve seri durumdan çıkarmak için yerel sayısal tuş y ve SciPy kullanma (yerel otomatik ml çalıştırmaları için kullanılır)
+    + Başarısız olan alt çalıştırmaların çalışma durumunda takılmasına neden olan bir hata düzeltildi.
+  + **azureml-CLI-ortak**
+    + Tek örnekli profil oluşturma bir öneri üretmek için düzeltildi ve temel SDK 'da kullanıma sunuldu.
+  + **azureml-çekirdek**
+    + `--grant-workspace-msi-access`, VNet 'in arkasındaki blob kapsayıcısını kaydetmenizi sağlayacak Azure Blob kapsayıcısını kaydettirmek için veri deposu CLı için ek bir parametre olarak eklendi
+    + Tek örnekli profil oluşturma bir öneri üretmek için düzeltildi ve temel SDK 'da kullanıma sunuldu.
+    + Sorun aks.py _deploy düzeltildi
+    + Sessiz depolama hatalarından kaçınmak için karşıya yüklenen modellerin bütünlüğünü doğrular.
+  + **azureml-yorumlama**
+    + azureml-yorumlama için azureml stili özel durumları eklendi
+    + keras modelleri için sabit DeepScoringExplainer serileştirmesi
+  + **azureml-işlem hattı-çekirdek**
+    + Ardışık düzen toplu işlem Puanlama Not defteri artık ParallelRunStep kullanıyor
+  + **azureml-işlem hattı-adımlar**
+    + `azureml-pipeline-steps` paketindeki `AutoMLStep` taşındı. `azureml-train-automl-runtime`içinde `AutoMLStep` kullanımdan kaldırıldı.
+  + **azureml-contrib-işlem hattı-adımlar**
+    + ParallelRunStep öğesine side_inputs isteğe bağlı parametre eklendi. Bu parametre, kapsayıcıya klasörü bağlamak için kullanılabilir. Şu anda desteklenen türler DataReference ve PipelineData.
+  + **azureml-tensorboard**
+    + , TensorFlow 2,0 desteği için azureml-tensorboard güncelleştirildi
+  + **azureml-tren-oto ml-istemci**
+    + Özel uygulanabilirlik yapılandırmasını filtreleyen sorunu geçersiz kılan sabit Korturizationconfig.
+  + **azureml-tren-oto ml-çalışma zamanı**
+    + `azureml-pipeline-steps` paketindeki `AutoMLStep` taşındı. `azureml-train-automl-runtime`içinde `AutoMLStep` kullanımdan kaldırıldı.
+  + **azureml-tren-çekirdek**
+    + PyTorch Estimator 'da PyTorch sürüm 1,4 ' i destekleme
+  
 ## <a name="2020-02-04"></a>2020-02-04
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Python v 1.1.0 RC0 için SDK Azure Machine Learning
 
++ **Son değişiklikler**
+  + **Anlamsal sürüm oluşturma 2.0.0**
+    + Sürüm 1,1 ' den başlayarak Azure ML Python SDK 'Sı 2.0.0 anlam sürümü oluşturma. [Burada daha fazla bilgi edinin](https://semver.org/). Sonraki tüm sürümler yeni numaralandırma düzenini ve anlamsal sürüm oluşturma sözleşmesini takip edecektir. 
+  
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-oto ml-çalışma zamanı**
     + Artırılan hız artar.
@@ -118,8 +161,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Model ve hizmet nesnelerine CreatedBy bilgileri eklendi. <var>aracılığıyla erişilebilir olabilir. created_by
     + Sabit Containerımage. Run (), Docker kapsayıcısının HTTP bağlantı noktasını doğru ayarlamamıştı.
     + `az ml dataset register` CLI komutu için isteğe bağlı `azureml-dataprep` yapma
-  + **azureml-dataprep**
-    + TabularDataset. to_pandas_dataframe 'in alternatif bir okuyucuya doğru bir şekilde geri dönebileceği ve bir uyarının yazdırılacağı bir hata düzeltildi.
+    + `TabularDataset.to_pandas_dataframe`, alternatif bir okuyucuya doğru bir şekilde geri dönebildiği ve bir uyarının yazdırılacağı bir hata düzeltildi.
   + **azureml-açıkla-model**
     + -Community-yorumlamaya yönelik Shap bağımlılığını yorumlamak için ertele
   + **azureml-işlem hattı-çekirdek**
@@ -1437,7 +1479,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
     Desteklenen grafik türleri:
     - Satır Grafiği
-    - Çubuk grafik
+    - Histogram
     - Yığılmış Çubuk Grafik
     - Kutu çizimi
     - Dağılım çizimi

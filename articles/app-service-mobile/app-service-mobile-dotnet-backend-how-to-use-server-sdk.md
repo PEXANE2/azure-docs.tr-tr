@@ -8,20 +8,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668870"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461547"
 ---
-# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps için .NET arka uç sunucu SDK’sı ile çalışma
+# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps .NET arka uç sunucu SDK 'Sı ile çalışma
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 Bu konu başlığında, .NET arka uç sunucu SDK 'sının anahtar Azure App Service Mobile Apps senaryolarında nasıl kullanılacağı gösterilmektedir. Azure Mobile Apps SDK, ASP.NET uygulamanızdan mobil istemcilerle çalışmanıza yardımcı olur.
 
@@ -34,7 +29,7 @@ Bu konu başlığında, .NET arka uç sunucu SDK 'sının anahtar Azure App Serv
 Sunucu SDK 'Sı için başvuru belgeleri şurada bulunur: [Azure Mobile Apps .net başvurusu][1].
 
 ## <a name="create-app"></a>Nasıl yapılır: .NET mobil uygulaması arka ucu oluşturma
-Yeni bir proje başlatıyorsanız, [Azure portalda] ya da Visual Studio kullanarak bir App Service uygulaması oluşturabilirsiniz. App Service uygulamayı yerel olarak çalıştırabilir veya projeyi bulut tabanlı App Service mobil uygulamanızda yayımlayabilirsiniz.
+Yeni bir proje başlatıyorsanız, [Azure portalında] ya da Visual Studio kullanarak bir App Service uygulaması oluşturabilirsiniz. App Service uygulamayı yerel olarak çalıştırabilir veya projeyi bulut tabanlı App Service mobil uygulamanızda yayımlayabilirsiniz.
 
 Mevcut bir projeye mobil özellikleri ekliyorsanız, [SDK 'Yı indirme ve başlatma](#install-sdk) bölümüne bakın.
 
@@ -67,7 +62,7 @@ Visual Studio 'da bir Azure Mobile Apps projesi oluşturmak için [.net Için Az
 3. **ASP.NET Web Uygulaması**'nı seçin.
 4. Proje adını girin. Daha sonra, **Tamam**'a tıklayın.
 5. *ASP.NET 4.5.2 şablonları*altında **Azure mobil uygulaması**' nı seçin. Bulutta bulunan **Konağı** denetleyerek bu projeyi yayımlayacağınız bulutta bir mobil arka uç oluşturun.
-6. **Tamam**’a tıklayın.
+6. **Tamam** düğmesine tıklayın.
 
 ## <a name="install-sdk"></a>Nasıl yapılır: SDK 'Yı Indirme ve başlatma
 SDK [NuGet.org]' de kullanılabilir. Bu paket, SDK 'Yı kullanmaya başlamak için gereken temel işlevselliği içerir. SDK 'yı başlatmak için **HttpConfiguration** nesnesi üzerinde eylemler gerçekleştirmeniz gerekir.
@@ -467,7 +462,7 @@ Mobil arka ucunuzun [Microsoft. Azure. Mobile. Server. Authentication] 'ın yük
 Yukarıdaki örnekte, HTTPS şemasını kullanarak Web. config dosyanızdaki *Authaudience* ve *authıssuer* uygulama ayarlarını uygulama köklerinizin URL 'si olacak şekilde yapılandırmanız gerekir. Benzer şekilde, *Authsigningkey* ' i uygulamanızın İmzalama anahtarının değeri olacak şekilde ayarlamanız gerekir.
 İmzalama anahtarını almak için:
 
-1. [Azure portalda] içinde uygulamanıza gidin
+1. [Azure portalında] içinde uygulamanıza gidin
 2. **Araçlar**, **kudu**, **Git**öğesine tıklayın.
 3. Kudu yönetim sitesinde **ortam**' a tıklayın.
 4. *Web sitesi\_kimlik doğrulaması\_imzalama\_anahtarı*için değeri bulur.
@@ -480,7 +475,7 @@ Yerel uygulama yapılandırma uygulamanızda *Authsigningkey* parametresi için 
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure portalda]: https://portal.azure.com
+[Azure portalında]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
 [Microsoft. Azure. Mobile. Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft. Azure. Mobile. Server. QuickStart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

@@ -1,21 +1,21 @@
 ---
-title: Azure Otomasyonu’nda rol tabanlı erişim denetimi
+title: Azure Automation’da Rol Tabanlı Erişim Denetimi
 description: Rol tabanlı erişim denetimi (RBAC), Azure kaynakları için erişim yönetimi sağlar. Bu makalede, Azure Automation’da RBAC’nin nasıl ayarlanacağı açıklanmaktadır.
 keywords: otomasyon rbac, rol tabanlı erişim denetimi, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 122e1f69e952acc00aba3cad2d75cb87b8fd08ee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8caf502db91ab09eea48fc8a902dacf6bf40f24c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421583"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462216"
 ---
-# <a name="role-based-access-control-in-azure-automation"></a>Azure Otomasyonu’nda rol tabanlı erişim denetimi
+# <a name="role-based-access-control-in-azure-automation"></a>Azure Automation’da Rol Tabanlı Erişim Denetimi
 
-Rol tabanlı erişim denetimi (RBAC), Azure kaynakları için erişim yönetimi sağlar. [RBAC](../role-based-access-control/overview.md)kullanarak, ekip dahilinde görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları kullanıcılara, gruplara ve uygulamalara erişim miktarını verebilirsiniz. Kullanıcılara rol tabanlı erişim Azure portalı, Azure Komut Satırı araçları ve Azure Management API'leri kullanılarak verilebilir.
+Rol tabanlı erişim denetimi (RBAC), Azure kaynakları için erişim yönetimi sağlar. [RBAC](../role-based-access-control/overview.md)kullanarak, ekip dahilinde görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları kullanıcılara, gruplara ve uygulamalara erişim miktarını verebilirsiniz. Azure portal, Azure komut satırı araçları veya Azure Yönetim API 'Lerini kullanarak kullanıcılara rol tabanlı erişim izni verebilirsiniz.
 
 ## <a name="roles-in-automation-accounts"></a>Otomasyon hesaplarındaki roller
 
@@ -26,7 +26,7 @@ Azure Automation’da, otomasyon hesabı kapsamında kullanıcılara, gruplara v
 | Sahip |Sahip rolü, Otomasyon hesabını yönetmek için diğer kullanıcılara, gruplara ve uygulamalara erişim sağlamak dahil olmak üzere Otomasyon hesabı içindeki tüm kaynaklara ve eylemlere erişim sağlar. |
 | Katılımcı |Katılımcı rolü, başka kullanıcının Otomasyon hesabına erişim izinlerini değiştirme dışında her şeyi yönetmenizi sağlar. |
 | Okuyucu |Okuyucu rolü, Otomasyon hesabında tüm kaynakları görmenizi sağlar; ancak değişiklik yapamazsınız. |
-| Otomasyon Operatörü |Otomasyon Işletmeni rolü, runbook adını ve özelliklerini görüntülemenize ve bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar. Bu rol, kimlik bilgileri varlıkları ve runbook'ları gibi Automation hesabı kaynaklarınızın görüntülenmesini veya değiştirilmesini engellemek, ancak yine de kuruluş üyelerinin bu runbook’ları yürütmesine izin vermek istiyorsanız yararlıdır. |
+| Otomasyon Operatörü |Otomasyon Işletmeni rolü, runbook adını ve özelliklerini görüntülemenize ve bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar. Bu rol, kimlik bilgileri varlıkları ve Runbook 'ları gibi Otomasyon hesabı kaynaklarınızı görüntülenmesini veya değiştirilmesini, ancak kuruluşunuzun üyelerinin bu runbook 'ları yürütmesine izin vermeyi hala sağlamak istiyorsanız yararlıdır. |
 |Automation Iş Işleci|Otomasyon Iş Işletmeni rolü, bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar.|
 |Otomasyon Runbook Işleci|Otomasyon Runbook Işleci rolü, bir runbook 'un adını ve özelliklerini görüntülemenize izin verir.|
 | Log Analytics Katkıda Bulunan | Log Analytics katkıda bulunan rolü, tüm izleme verilerini okumanızı ve izleme ayarlarını düzenlemenizi sağlar. İzleme ayarlarını Düzenle, VM 'Lerin sanal makinelere eklenmesini, Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okumayı, Otomasyon hesapları oluşturmayı ve yapılandırmayı, çözümleri eklemeyi ve üzerinde Azure tanılamayı yapılandırmayı içerir Tüm Azure kaynakları.|
@@ -204,7 +204,7 @@ Kullanıcı erişimi Yöneticisi, Azure kaynaklarına Kullanıcı erişimini yö
 |Microsoft. Authorization/*|Yetkilendirmeyi Yönetme|
 |Microsoft. support/*|Destek biletleri oluşturma ve yönetme|
 
-## <a name="onboarding"></a>Hazırlama
+## <a name="onboarding"></a>Ekleme
 
 Aşağıdaki tablolarda, değişiklik izleme veya güncelleştirme yönetimi çözümleri için sanal makineleri ekleme için gereken en düşük izinler gösterilmektedir.
 
@@ -216,13 +216,11 @@ Aşağıdaki tablolarda, değişiklik izleme veya güncelleştirme yönetimi ç�
 |Yeni kaynak grubu yaz      | Microsoft. resources/abonelikler/resourceGroups/Write        | Abonelik          |
 |Yeni varsayılan çalışma alanı oluştur      | Microsoft. Operationalınsights/çalışma alanları/yazma         | Kaynak grubu         |
 |Yeni hesap oluştur      |  Microsoft. Automation/automationAccounts/Write        |Kaynak grubu         |
-|Çalışma alanını ve hesabı bağla      |Microsoft. Operationalınsights/çalışma alanları/yazma</br>Microsoft. Automation/automationAccounts/Read|Çalışma Alanı</br>Otomasyon hesabı
-|Çözüm oluştur      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Kaynak grubu          |
+|Çalışma alanını ve hesabı bağla      |Microsoft. Operationalınsights/çalışma alanları/yazma</br>Microsoft. Automation/automationAccounts/Read|Çalışma alanı</br>Otomasyon hesabı
 |MMA uzantısı oluştur      | Microsoft. COMPUTE/virtualMachines/Write         | Sanal Makine         |
-|Kayıtlı arama oluştur      | Microsoft. Operationalınsights/çalışma alanları/yazma          | Çalışma Alanı         |
-|Kapsam yapılandırması oluştur      | Microsoft. Operationalınsights/çalışma alanları/yazma          | Çalışma Alanı         |
-|Çözümü Scope config 'e bağlama      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Çözüm         |
-|Ekleme durumu denetimi-okuma çalışma alanı      | Microsoft. Operationalınsights/çalışma alanları/okuma         | Çalışma Alanı         |
+|Kayıtlı arama oluştur      | Microsoft. Operationalınsights/çalışma alanları/yazma          | Çalışma alanı         |
+|Kapsam yapılandırması oluştur      | Microsoft. Operationalınsights/çalışma alanları/yazma          | Çalışma alanı         |
+|Ekleme durumu denetimi-okuma çalışma alanı      | Microsoft. Operationalınsights/çalışma alanları/okuma         | Çalışma alanı         |
 |Ekleme durumu denetimi-hesabın bağlantılı çalışma alanı özelliğini oku     | Microsoft. Automation/automationAccounts/Read      | Otomasyon hesabı        |
 |Ekleme durumu denetimi-çözümü oku      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Çözüm         |
 |Ekleme durumu denetimi-VM okuma      | Microsoft. COMPUTE/virtualMachines/okuma         | Sanal Makine         |
@@ -241,18 +239,16 @@ Aşağıdaki tablolarda, değişiklik izleme veya güncelleştirme yönetimi ç�
 |Automationekleme dikey penceresi-yeni çalışma alanı oluştur     |Microsoft. Operationalınsights/çalışma alanları/yazma           | Kaynak grubu        |
 |Automationekleme dikey penceresi-bağlantılı çalışma alanını oku     | Microsoft. Automation/automationAccounts/Read        | Otomasyon hesabı       |
 |Automationekleme dikey penceresi-çözümü oku     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Çözüm        |
-|Automationekleme dikey penceresi-çalışma alanını oku     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Çalışma Alanı        |
-|Çalışma alanı ve hesap için bağlantı oluştur     | Microsoft. Operationalınsights/çalışma alanları/yazma        | Çalışma Alanı        |
+|Automationekleme dikey penceresi-çalışma alanını oku     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Çalışma alanı        |
+|Çalışma alanı ve hesap için bağlantı oluştur     | Microsoft. Operationalınsights/çalışma alanları/yazma        | Çalışma alanı        |
 |ShoeBox için yazma hesabı      | Microsoft. Automation/automationAccounts/Write        | Hesap        |
-|Çözüm oluştur      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Kaynak Grubu         |
-|Kayıtlı aramayı Oluştur/Düzenle     | Microsoft. Operationalınsights/çalışma alanları/yazma        | Çalışma Alanı        |
-|Kapsam yapılandırması oluştur/Düzenle     | Microsoft. Operationalınsights/çalışma alanları/yazma        | Çalışma Alanı        |
-|Çözümü Scope config 'e bağlama      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Çözüm         |
+|Kayıtlı aramayı Oluştur/Düzenle     | Microsoft. Operationalınsights/çalışma alanları/yazma        | Çalışma alanı        |
+|Kapsam yapılandırması oluştur/Düzenle     | Microsoft. Operationalınsights/çalışma alanları/yazma        | Çalışma alanı        |
 | Log Analytics sağlayıcıyı kaydetme |Microsoft. Insights/Register/ACTION | Abonelik|
 |**2. adım-birden çok VM ekleme**     |         |         |
 |Vmontaslak dikey penceresi-MMA uzantısı oluşturma     | Microsoft. COMPUTE/virtualMachines/Write           | Sanal Makine        |
-|Kayıtlı aramayı Oluştur/Düzenle     | Microsoft. Operationalınsights/çalışma alanları/yazma           | Çalışma Alanı        |
-|Kapsam yapılandırması oluştur/Düzenle  | Microsoft. Operationalınsights/çalışma alanları/yazma   | Çalışma Alanı|
+|Kayıtlı aramayı Oluştur/Düzenle     | Microsoft. Operationalınsights/çalışma alanları/yazma           | Çalışma alanı        |
+|Kapsam yapılandırması oluştur/Düzenle  | Microsoft. Operationalınsights/çalışma alanları/yazma   | Çalışma alanı|
 
 ## <a name="update-management"></a>Güncelleştirme yönetimi
 
@@ -261,27 +257,27 @@ Güncelleştirme yönetimi, hizmeti sağlamak için birden çok hizmete ulaşır
 |**Kaynak**  |**Rol**  |**Kapsam**  |
 |---------|---------|---------|
 |Otomasyon hesabı     | Log Analytics Katkıda Bulunan       | Otomasyon hesabı        |
-|Otomasyon hesabı    | Sanal Makine Katkıda Bulunanı        | Hesabın kaynak grubu        |
+|Otomasyon hesabı    | Sanal makine Katılımcısı        | Hesabın kaynak grubu        |
 |Log Analytics çalışma alanı     | Log Analytics Katkıda Bulunan| Log Analytics çalışma alanı        |
 |Log Analytics çalışma alanı |Log Analytics Okuyucusu| Abonelik|
 |Çözüm     |Log Analytics Katkıda Bulunan         | Çözüm|
-|Sanal Makine     | Sanal Makine Katkıda Bulunanı        | Sanal Makine        |
+|Sanal Makine     | Sanal makine Katılımcısı        | Sanal Makine        |
 
 ## <a name="configure-rbac-for-your-automation-account"></a>Otomasyon hesabınız için RBAC yapılandırma
 
-Aşağıdaki bölümde [Portal](#configure-rbac-using-the-azure-portal) ve [PowerShell](#configure-rbac-using-powershell) aracılığıyla Otomasyon hesabınızda RBAC 'nin nasıl yapılandırılacağı gösterilmektedir
+Aşağıdaki bölümde [Portal](#configure-rbac-using-the-azure-portal) ve [PowerShell](#configure-rbac-using-powershell)aracılığıyla Otomasyon hesabınızda RBAC 'nin nasıl yapılandırılacağı gösterilmektedir.
 
 ### <a name="configure-rbac-using-the-azure-portal"></a>Azure portal kullanarak RBAC yapılandırma
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın Otomasyon Hesapları sayfasından Otomasyon hesabınızı açın.
-2. Sol üst köşedeki **erişim denetimi (IAM)** denetimine tıklayın. Bu, Otomasyon hesabınızı yönetmek için Yeni Kullanıcı, Grup ve uygulama ekleyebileceğiniz ve Otomasyon hesabı için yapılandırılabilecek mevcut rolleri görüntüleyebileceğiniz **erişim denetimi (IAM)** sayfasını açar.
-3. Tıklayın **rol atamaları** sekmesi.
+2. Sol üst köşedeki **erişim denetimi (IAM)** denetimine tıklayarak erişim denetımı (IAM) sayfasını açın. Otomasyon hesabınızı yönetmek ve Otomasyon hesabı için yapılandırılabilen mevcut rolleri görüntülemek için yeni kullanıcılar, gruplar ve uygulamalar eklemek üzere bu sayfayı kullanabilirsiniz.
+3. **Rol atamaları** sekmesine tıklayın.
 
    ![Erişim düğmesi](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Yeni kullanıcı ekleme ve rol atama
 
-1. **Erişim denetimi (IAM)** sayfasında **+ rol ataması** Ekle ' ye tıklayarak bir Kullanıcı, Grup veya uygulama ekleyebileceğiniz **rol ataması Ekle** sayfasını açın ve bunlara bir rol atayabilirsiniz.
+1. Erişim denetimi (ıAM) sayfasında **+ rol ataması Ekle**' ye tıklayın. Bu eylem, bir Kullanıcı, Grup veya uygulama ekleyebileceğiniz ve ilgili bir rol atayabileceğiniz rol ataması Ekle sayfasını açar.
 
 2. Kullanılabilir roller listesinden bir rol seçin. Otomasyon hesabının desteklediği kullanılabilir yerleşik rolleri veya tanımladığınız herhangi bir özel rolü seçebilirsiniz.
 
@@ -289,23 +285,23 @@ Aşağıdaki bölümde [Portal](#configure-rbac-using-the-azure-portal) ve [Powe
 
    ![Kullanıcı ekle](media/automation-role-based-access-control/automation-04-add-users.png)
 
-   Şimdi, seçilen rolün atandığı **Kullanıcılar** sayfasına eklenen kullanıcıyı görmeniz gerekir
+   Şimdi, seçilen rolün atandığı kullanıcılar sayfasına eklenen kullanıcıyı görmeniz gerekir.
 
    ![Kullanıcıları listele](media/automation-role-based-access-control/automation-05-list-users.png)
 
-   Kullanıcıya **Roller** sayfasından rol atayabilirsiniz.
-4. **Roller** sayfasını açmak için **ERIŞIM denetimi (IAM)** sayfasındaki **Roller** ' e tıklayın. Bu sayfadan rolün adını, bu role atanan kullanıcıların ve grupların sayısını görebilirsiniz.
+   Ayrıca roller sayfasından kullanıcıya bir rol atayabilirsiniz.
+4. Roller sayfasını açmak için erişim denetimi (ıAM) sayfasındaki **Roller** ' e tıklayın. Rolün adını ve bu role atanan kullanıcı ve grup sayısını görüntüleyebilirsiniz.
 
     ![Kullanıcılar sayfasından rol atama](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
 
    > [!NOTE]
-   > Rol tabanlı erişim denetimi yalnızca Otomasyon hesabı kapsamında ayarlanabilir, Otomasyon hesabının altındaki herhangi bir kaynakta bulunamaz.
+   > Yalnızca Otomasyon hesabı kapsamında rol tabanlı erişim denetimi ayarlayabilirsiniz; Otomasyon hesabının altındaki herhangi bir kaynakta değil.
 
 #### <a name="remove-a-user"></a>Kullanıcıyı kaldırma
 
 Otomasyon hesabını yönetmesiz veya kuruluş için artık çalışan bir kullanıcının erişim iznini kaldırabilirsiniz. Aşağıdaki adımları kullanarak kullanıcı kaldırabilirsiniz:
 
-1. **Erişim denetimi (IAM)** sayfasında, kaldırmak istediğiniz kullanıcıyı seçin ve **Kaldır**' ı tıklatın.
+1. Erişim denetimi (ıAM) sayfasında, kaldırılacak kullanıcıyı seçip **Kaldır**' a tıklayın.
 2. Atama ayrıntıları sayfasında **Kaldır** düğmesine tıklayın.
 3. Kaldırmayı onaylamak için **Evet**'e tıklayın.
 
@@ -313,9 +309,9 @@ Otomasyon hesabını yönetmesiz veya kuruluş için artık çalışan bir kulla
 
 ### <a name="configure-rbac-using-powershell"></a>PowerShell kullanarak RBAC yapılandırma
 
-Rol tabanlı erişim, aşağıdaki [Azure PowerShell cmdlet 'leri](../role-based-access-control/role-assignments-powershell.md)kullanılarak bir Otomasyon hesabına de yapılandırılabilir:
+Ayrıca, aşağıdaki [Azure PowerShell cmdlet 'lerini](../role-based-access-control/role-assignments-powershell.md)kullanarak bir Otomasyon hesabına rol tabanlı erişimi de yapılandırabilirsiniz:
 
-[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) , Azure Active Directory bulunan tüm RBAC rollerini listeler. Belirli bir rol tarafından gerçekleştirilebilen tüm eylemleri listelemek için bu komutu **Ad** özelliğiyle birlikte bu komutu kullanabilirsiniz.
+[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) , Azure Active Directory bulunan tüm RBAC rollerini listeler. Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i *Name* parametresiyle birlikte kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
@@ -334,8 +330,9 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-Azurermroleatama](/previous-versions/azure/mt619413(v=azure.100)) , belirtilen KAPSAMDAKI Azure AD RBAC rol atamalarını listeler. Hiçbir parametre olmadan, bu komut abonelik altında yapılan tüm rol atamalarını döndürür. Belirli kullanıcıların yanı sıra bu kullanıcıların üyesi olduğu gruplara da erişim atamalarını listelemek için **ExpandPrincipalGroups** parametresini kullanın.
-    **Örnek:** Otomasyon hesabı içinde tüm kullanıcıları ve rollerini listelemek için aşağıdaki komutu kullanın.
+[Get-Azurermroleatama](/previous-versions/azure/mt619413(v=azure.100)) , belirtilen KAPSAMDAKI Azure AD RBAC rol atamalarını listeler. Hiçbir parametre olmadan bu cmdlet, abonelik altında yapılan tüm rol atamalarını döndürür. Belirtilen kullanıcı için erişim atamalarını ve kullanıcının ait olduğu grupları listelemek için *Expandprincipalgroups* parametresini kullanın.
+
+**Örnek:** Bir Otomasyon hesabı içindeki tüm kullanıcıları ve rollerinin listesini listelemek için aşağıdaki cmdlet 'i kullanın.
 
 ```azurepowershell-interactive
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -355,8 +352,9 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azurermroleatama](/previous-versions/azure/mt603580(v=azure.100)) .
-    **Örnek:** Otomasyon hesabı kapsamındaki bir kullanıcı için "Otomasyon Işleci" rolünü atamak için aşağıdaki komutu kullanın.
+Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azurermroleatama](/previous-versions/azure/mt603580(v=azure.100)) kullanın.
+    
+**Örnek:** Otomasyon hesabı kapsamındaki bir kullanıcı için "Otomasyon Işleci" rolünü atamak için aşağıdaki komutu kullanın.
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -377,56 +375,56 @@ ObjectType         : User
 ```
 
 Belirli bir kapsamdaki belirtilen kullanıcı, Grup veya uygulamanın erişimini kaldırmak için [Remove-Azurermroleatamasını](/previous-versions/azure/mt603781(v=azure.100)) kullanın.
-    **Örnek:** Kullanıcıyı Otomasyon hesabı kapsamındaki "otomasyon operatörü" rolünden kaldırmak için aşağıdaki komutu kullanın.
+
+**Örnek:** Kullanıcıyı Otomasyon hesabı kapsamındaki "otomasyon operatörü" rolünden kaldırmak için aşağıdaki komutu kullanın.
 
 ```azurepowershell-interactive
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-Yukarıdaki örneklerde, **oturum açma kimliğini**, **abonelik kimliğini**, **kaynak grubu adını**ve **Otomasyon hesabı adını** hesap ayrıntılarınız ile değiştirin. Kullanıcı rolü atamasını kaldırmak için devam etmeden önce onaylamanız istendiğin **Evet**’i seçin.
+Yukarıdaki örneklerde, "kaldırmak istediğiniz kullanıcının oturum açma KIMLIĞI", "SubscriptionID", "kaynak grubu adı" ve Otomasyon hesabı adı "bilgilerini hesap ayrıntılarınız ile değiştirin. Kullanıcı rolü atamalarını kaldırmaya devam etmeden önce onaylamanız istendiğinde **Evet** ' i seçin.
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Otomasyon işletmeni rolü için Kullanıcı deneyimi-Otomasyon hesabı
 
-Otomasyon hesabı kapsamındaki otomasyon operatörü rolüne atanan bir Kullanıcı, kendilerine atanan Otomasyon hesabını görüntülediğinde, yalnızca runbook 'ların, runbook işlerinin ve otomasyon hesabında oluşturulan zamanlamaların listesini görüntüleyebilir, ancak bunları görüntüleyemez tanımı. Runbook işini başlatabilir, durdurabilir, askıya alabilir, sürdürebilir veya zamanlayabilirler. Kullanıcının, konfigürasyonlar, karma çalışan grupları veya DSC düğümleri gibi diğer otomasyon kaynaklarına erişimi yoktur.
+Otomasyon hesabı kapsamındaki otomasyon operatörü rolüne atanan bir Kullanıcı, kendisi/kişinin atandığı Otomasyon hesabını görüntülediğinde, Kullanıcı yalnızca runbook 'ların, runbook işlerinin ve otomasyon hesabında oluşturulan zamanlamaların listesini görüntüleyebilir. Bu Kullanıcı bu öğelerin tanımlarını görüntüleyemez. Kullanıcı runbook işini başlatabilir, durdurabilir, askıya alabilir, sürdürebilir veya zamanlayabilir. Ancak, kullanıcının yapılandırma, karma çalışan grupları veya DSC düğümleri gibi diğer otomasyon kaynaklarına erişimi yoktur.
 
 ![Kaynaklara erişim yok](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>Runbook 'Lar için RBAC yapılandırma
+## <a name="configure-rbac-for-runbooks"></a>Runbook 'lar için RBAC yapılandırma
 
-Azure Otomasyonu, belirli runbook 'lara RBAC atamanıza olanak tanır. Bunu yapmak için, belirli bir runbook 'a bir kullanıcı eklemek üzere aşağıdaki betiği çalıştırın. Aşağıdaki betik bir Otomasyon hesabı Yöneticisi veya kiracı yöneticisi tarafından çalıştırılabilir.
+Azure Otomasyonu, belirli runbook 'lara RBAC atamanıza olanak tanır. Bunu yapmak için, belirli bir runbook 'a bir kullanıcı eklemek üzere aşağıdaki betiği çalıştırın. Otomasyon hesabı Yöneticisi veya kiracı yöneticisi bu betiği çalıştırabilir.
 
 ```azurepowershell-interactive
-$rgName = "<Resource Group Name>" # Resource Group name for the Automation Account
-$automationAccountName ="<Automation Account Name>" # Name of the Automation Account
+$rgName = "<Resource Group Name>" # Resource Group name for the Automation account
+$automationAccountName ="<Automation account name>" # Name of the Automation account
 $rbName = "<Name of Runbook>" # Name of the runbook
 $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
 
-# Gets the Automation Account resource
+# Gets the Automation account resource
 $aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
 $rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
 
-# The Automation Job Operator role only needs to be ran once per user.
+# The Automation Job Operator role only needs to be run once per user.
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
 
 # Adds the user to the Automation Runbook Operator role to the Runbook scope
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-Çalıştırıldıktan sonra, kullanıcının Azure portal oturum açmasını ve **tüm kaynakları**görüntülemesini sağlar. Listede, runbook 'un için bir **Otomasyon Runbook işleci** olarak eklendiğini görürsünüz.
+Betik çalıştırıldığında, kullanıcının Azure portal oturum açmasını ve **tüm kaynakları**görüntülemesini sağlar. Listede, Kullanıcı kendisi için bir Otomasyon Runbook Işleci olarak eklenmiş runbook 'u görebilir.
 
 ![Portalda runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Otomasyon işletmeni rolü için Kullanıcı deneyimi-runbook
 
-Runbook kapsamındaki otomasyon operatörü rolüne atanan bir Kullanıcı, atandığı bir runbook 'u görüntülediğinde, runbook 'u başlatabilir ve Runbook işlerini görüntüleyebilir.
+Runbook kapsamındaki otomasyon operatörü rolüne atanan bir kullanıcı atanmış bir runbook 'u görüntülediğinde, Kullanıcı yalnızca runbook 'u başlatabilir ve Runbook işlerini görüntüleyebilir.
 
 ![Yalnızca başlangıç erişimi vardır](media/automation-role-based-access-control/automation-only-start.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Otomasyonu’nda RBAC yapılandırmak için çeşitli yollar hakkında daha fazla bilgi için bkz. [Azure PowerShell ile RBAC yönetme](../role-based-access-control/role-assignments-powershell.md).
-* Runbook başlatmak için çeşitli yollar hakkında daha fazla ayrıntı için bkz. [runbook başlatma](automation-starting-a-runbook.md)
-* Farklı runbook türleri hakkında daha fazla bilgi için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md)
-
+* Azure Otomasyonu için RBAC yapılandırma yolları hakkında daha fazla bilgi için, [Azure PowerShell Ile RBAC 'yi yönetme](../role-based-access-control/role-assignments-powershell.md)bölümüne bakın.
+* Runbook 'u başlatma yöntemlerinin ayrıntıları için bkz. [runbook 'U başlatma](automation-starting-a-runbook.md).
+* Runbook türleri hakkında daha fazla bilgi için [Azure Otomasyonu runbook türleri](automation-runbook-types.md)' ne bakın.

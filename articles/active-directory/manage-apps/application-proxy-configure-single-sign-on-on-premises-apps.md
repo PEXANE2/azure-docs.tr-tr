@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275579"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461292"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma
 
@@ -41,17 +41,15 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 1. Azure portal **Kurumsal uygulamaları > Azure Active Directory** seçin ve **Yeni uygulama**' yı seçin.
 
-2. Şirket **içi uygulamalar** bölümünde Şirket **içi uygulama ekle**' yi seçin.
+2. Yeni uygulamanız için görünen adı girin, **galeride bulamadıysanız diğer tüm uygulamaları tümleştirin**' ı seçin ve ardından **Oluştur**' u seçin.
 
-3. Yeni uygulamanız için görünen adı girin ve ardından **Ekle**' yi seçin.
+3. Uygulamanın **genel bakış** sayfasında, **Çoklu oturum açma**' yı seçin.
 
-4. Uygulamanın **genel bakış** sayfasında, **Çoklu oturum açma**' yı seçin.
+4. Çoklu oturum açma yöntemi olarak **SAML** ' yi seçin.
 
-5. Çoklu oturum açma yöntemi olarak **SAML** ' yi seçin.
+5. Önce SAML SSO 'yu kurumsal ağ üzerinde çalışırken çalışacak şekilde ayarlayın. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulamanın SAML tabanlı kimlik doğrulamasını yapılandırmak için [temel SAML yapılandırması girme](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) bölümündeki adımları izleyin.
 
-6. Önce SAML SSO 'yu kurumsal ağ üzerinde çalışırken çalışacak şekilde ayarlayın. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulamanın SAML tabanlı kimlik doğrulamasını yapılandırmak için [temel SAML yapılandırması girme](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) bölümündeki adımları izleyin.
-
-7. Uygulamaya en az bir kullanıcı ekleyin ve test hesabının uygulamaya erişimi olduğundan emin olun. Şirket ağına bağlıyken, uygulamada çoklu oturum açma olup olmadığını görmek için test hesabını kullanın. 
+6. Uygulamaya en az bir kullanıcı ekleyin ve test hesabının uygulamaya erişimi olduğundan emin olun. Şirket ağına bağlıyken, uygulamada çoklu oturum açma olup olmadığını görmek için test hesabını kullanın. 
 
    > [!NOTE]
    > Uygulama ara sunucusunu ayarladıktan sonra geri dönüp SAML **yanıt URL**'sini güncelleştirebilirsiniz.
@@ -74,7 +72,7 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 1. Uygulama Azure portal hala açıkken **Çoklu oturum açma**' yı seçin. 
 
-2. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulama ara sunucusu 'nda yapılandırdığınız **dış URL** , **tanımlayıcı**, **yanıt URL 'SI**ve **oturum kapatma URL 'si** alanlarını otomatik olarak doldurur. Uygulama proxy 'Sinin doğru çalışması için gerekli olduklarından, bu URL 'Leri düzenlemeyin.
+2. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulama ara sunucusu 'nda yapılandırdığınız **dış URL** 'nin **tanımlayıcı**, **yanıt URL 'SI**ve **oturum kapatma URL 'si** alanlarında doldurulduğundan emin olun. Uygulama proxy 'Sinin doğru çalışması için bu URL 'Ler gereklidir. 
 
 3. Daha önce yapılandırılan **yanıt URL** 'sini, etki alanına uygulama proxy 'si tarafından erişilebilmeleri için düzenleyin. Örneğin, **dış URL** 'niz `https://contosotravel-f128.msappproxy.net` ve özgün **yanıt URL 'si** `https://contosotravel.com/acs`, `https://contosotravel-f128.msappproxy.net/acs`için özgün **yanıt URL** 'sini güncelleştirmeniz gerekir. 
 

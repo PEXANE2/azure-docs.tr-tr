@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169762"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462011"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -111,6 +111,12 @@ Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 - `metadata`: Kullanıcı dostu bilgileri göstermek için öncelikle Azure portal tarafından kullanılan alt özellikleri tanımlar:
   - `description`: parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
   - `displayName`: parametre için portalda gösterilen kolay ad.
+  - `version`: (Isteğe bağlı) bir ilke tanımının içeriğinin sürümü hakkındaki ayrıntıları Izler.
+
+    > [!NOTE]
+    > Azure Ilke hizmeti, yerleşik bir ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için `version`, `preview`ve `deprecated` özelliklerini kullanır. `version` biçimi: `{Major}.{Minor}.{Patch}`. _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar `version` özelliğine ya da başka bir özelliğe **Boolean**olarak eklenir.
+
+  - `category`: (Isteğe bağlı) ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
   - `strongType`: (Isteğe bağlı) Portal aracılığıyla ilke tanımı atanırken kullanılır. Bağlama duyarlı bir liste sağlar. Daha fazla bilgi için bkz. [Strongtype](#strongtype).
   - `assignPermissions`: (Isteğe bağlı) ilke ataması sırasında Azure portal rol atamaları oluşturmak için _true_ olarak ayarlayın. Bu özellik, izinleri atama kapsamının dışına atamak istemeniz durumunda faydalıdır. İlkede rol tanımı başına bir rol ataması vardır (veya girişim içindeki tüm ilkelerin her biri için rol tanımı). Parametre değeri geçerli bir kaynak veya kapsam olmalıdır.
 - `defaultValue`: (Isteğe bağlı) değer verilmezse bir atamadaki parametresinin değerini ayarlar.
@@ -663,7 +669,7 @@ Diğer adlar listesini her zaman artmaktadır. Hangi diğer adlar şu anda Azure
 
 ### <a name="understanding-the--alias"></a>[*] Diğer anlama
 
-Kullanılabilir diğer adların bazıları, ' normal ' adı olarak görünen bir sürüme ve buna ekli **\]\[\*** . Örneğin:
+Kullanılabilir diğer adların bazıları, ' normal ' adı olarak görünen bir sürüme ve buna ekli **\]\[\*** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

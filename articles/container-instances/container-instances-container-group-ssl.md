@@ -1,16 +1,16 @@
 ---
-title: Bir kapsayıcı grubunda SSL 'yi etkinleştirme
-description: Azure Container Instances çalıştıran bir kapsayıcı grubu için SSL veya TLS uç noktası oluşturma
+title: Sepet kapsayıcısı ile SSL 'yi etkinleştirme
+description: Sepet kapsayıcısında NGINX 'i çalıştırarak Azure Container Instances çalıştıran bir kapsayıcı grubu için SSL veya TLS uç noktası oluşturma
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/14/2020
+ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773069"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460595"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Bir kapsayıcı grubunda SSL uç noktasını etkinleştirme
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Bir sepet kapsayıcısında SSL uç noktasını etkinleştirme
 
 Bu makalede, bir uygulama kapsayıcısına ve bir SSL sağlayıcısı çalıştıran bir sepet kapsayıcısına sahip bir [kapsayıcı grubu](container-instances-container-groups.md) oluşturma gösterilmektedir. Ayrı bir SSL uç noktasıyla bir kapsayıcı grubu ayarlayarak, uygulama kodunuzu değiştirmeden uygulamanız için SSL bağlantılarını etkinleştirirsiniz.
 
@@ -18,7 +18,9 @@ Bu makalede, bir uygulama kapsayıcısına ve bir SSL sağlayıcısı çalışt�
 * Genel Microsoft [aci-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) görüntüsünü kullanarak basit bir Web uygulaması çalıştıran bir uygulama kapsayıcısı. 
 * SSL kullanmak üzere yapılandırılmış genel [NGINX](https://hub.docker.com/_/nginx) görüntüsünü çalıştıran bir sepet kapsayıcısı. 
 
-Bu örnekte, kapsayıcı grubu yalnızca NGINX için 443 numaralı bağlantı noktasını genel IP adresiyle kullanıma sunar. NGINX, HTTPS isteklerini 80 numaralı bağlantı noktasında dinleme yaptığı yardımcı Web uygulamasına yönlendirir. Diğer bağlantı noktalarını dinleyen kapsayıcı uygulamalarına yönelik örneği uyarlayabilirsiniz. Bir kapsayıcı grubunda SSL 'yi etkinleştirmeye yönelik diğer yaklaşımlara yönelik [sonraki adımlara](#next-steps) bakın.
+Bu örnekte, kapsayıcı grubu yalnızca NGINX için 443 numaralı bağlantı noktasını genel IP adresiyle kullanıma sunar. NGINX, HTTPS isteklerini 80 numaralı bağlantı noktasında dinleme yaptığı yardımcı Web uygulamasına yönlendirir. Diğer bağlantı noktalarını dinleyen kapsayıcı uygulamalarına yönelik örneği uyarlayabilirsiniz. 
+
+Bir kapsayıcı grubunda SSL 'yi etkinleştirmeye yönelik diğer yaklaşımlara yönelik [sonraki adımlara](#next-steps) bakın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Kimlik bilgilerini eklemek için istemleri izleyin. Ortak ad için sertifikayla ilişkili ana bilgisayar adını girin. Parola istendiğinde, parola eklemeyi atlamak için yazmadan ENTER tuşuna basın.
 
-Sertifika isteğinden otomatik olarak imzalanan sertifika (. CRT dosyası) oluşturmak için aşağıdaki komutu çalıştırın. Örneğin:
+Sertifika isteğinden otomatik olarak imzalanan sertifika (. CRT dosyası) oluşturmak için aşağıdaki komutu çalıştırın. Örnek:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -50,13 +52,13 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 ### <a name="create-nginx-configuration-file"></a>NGINX yapılandırma dosyası oluştur
 
-Bu bölümde, NGINX 'in SSL kullanması için bir yapılandırma dosyası oluşturacaksınız. Aşağıdaki metni`nginx.conf`adlı yeni bir dosyaya kopyalayarak başlayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
+Bu bölümde, NGINX 'in SSL kullanması için bir yapılandırma dosyası oluşturacaksınız. Aşağıdaki metni `nginx.conf`adlı yeni bir dosyaya kopyalayarak başlayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
 
 ```console
 code nginx.conf
 ```
 
-`location`, `proxy_pass` uygulama için doğru bağlantı noktasıyla ayarladığınızdan emin olun. Bu örnekte, `aci-helloworld` kapsayıcısı için 80 numaralı bağlantı noktasını ayarlayacağız.
+`location`, `proxy_pass` uygulamanızın doğru bağlantı noktasıyla ayarladığınızdan emin olun. Bu örnekte, `aci-helloworld` kapsayıcısı için 80 numaralı bağlantı noktasını ayarlayacağız.
 
 ```console
 # nginx Configuration File
@@ -85,7 +87,7 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
@@ -125,9 +127,9 @@ http {
 Base64-NGINX yapılandırma dosyasını, SSL sertifikasını ve SSL anahtarını kodlayın. Sonraki bölümde, kodlanmış içeriği kapsayıcı grubunu dağıtmak için kullanılan bir YAML dosyasına girersiniz.
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>Kapsayıcı grubunu dağıt
@@ -216,17 +218,18 @@ Başarılı bir dağıtım için çıkış aşağıdakine benzer:
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="verify-ssl-connection"></a>SSL bağlantısını doğrula
 
-Çalışan uygulamayı görüntülemek için tarayıcınızda IP adresine gidin. Örneğin, bu örnekte gösterilen IP adresi `52.157.22.76`. NGINX sunucu yapılandırması nedeniyle, çalışan uygulamayı görmek için `https://<IP-ADDRESS>` kullanmanız gerekir. `http://<IP-ADDRESS>` bağlanma girişimleri başarısız olur.
+Kapsayıcı grubunun genel IP adresine gitmek için tarayıcınızı kullanın. Bu örnekte gösterilen IP adresi `52.157.22.76`, bu nedenle URL **https://52.157.22.76** . NGINX sunucu yapılandırması nedeniyle çalışan uygulamayı görmek için HTTPS kullanmanız gerekir. HTTP üzerinden bağlanma girişimleri başarısız olur.
 
 ![Bir Azure kapsayıcı örneğinde çalışan uygulamayı gösteren tarayıcı ekran görüntüsü](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Bu örnek, bir sertifika yetkilisinden değil, otomatik olarak imzalanan bir sertifika kullandığından, tarayıcıda HTTPS üzerinden bağlantı kurulurken bir güvenlik uyarısı görüntülenir. Bu beklenen bir davranıştır.
+> Bu örnek, bir sertifika yetkilisinden değil, otomatik olarak imzalanan bir sertifika kullandığından, tarayıcıda HTTPS üzerinden bağlantı kurulurken bir güvenlik uyarısı görüntülenir. Sayfaya ilerlemek için uyarıyı kabul etmeniz veya tarayıcı veya sertifika ayarlarını ayarlamanız gerekebilir. Bu beklenen bir davranıştır.
+
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -239,6 +242,4 @@ Kapsayıcı grubunuzu bir [Azure sanal ağında](container-instances-vnet.md)da�
 
 * [Azure İşlev Proxy'leri](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md)
-
-Uygulama Ağ Geçidi kullanmak için bkz. örnek [dağıtım şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).
+* [Azure Application Gateway](../application-gateway/overview.md) -örnek [Dağıtım şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)bakın.

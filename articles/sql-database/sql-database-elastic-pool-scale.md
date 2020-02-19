@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823807"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462607"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme
 
@@ -57,12 +57,12 @@ Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzu
 > - Bir veritabanını elastik bir havuza taşımak durumunda, elastik havuz tarafından kullanılan alana değil, yalnızca veritabanı tarafından kullanılan alan gecikmeyi etkiler.
 >
 > [!TIP]
-> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirirken veya işlem boyutunu yeniden oluştururken dikkat edilecek ek noktalar
 
 - Elastik havuz için sanal çekirdekleri veya eDTU 'ları yeniden boyutlandırdığınızda, kullanılan havuzun izin verilen en büyük boyuttan daha küçük olması gerekir ve havuz eDTU 'ları.
-- Elastik havuz için Vçekirdekleri veya eDTU 'ları yeniden oluştururken, (1) havuzun en büyük depolama boyutu hedef havuz tarafından destekleniyorsa ve (2) depolama en büyük boyutu hedef havuzun dahil edilen depolama miktarını aşarsa, ek bir depolama maliyeti uygulanır. Örneğin, en fazla 100 GB boyutundaki 100 eDTU standart havuzu bir 50 eDTU standart havuzuna yeniden boyutlandırıldıysa, hedef havuz en büyük boyut olan 100 GB 'ı desteklediğinden ve dahil edilen depolama miktarı yalnızca 50 GB olduğundan, ek bir depolama maliyeti uygulanır. Bu nedenle, ek depolama miktarı 100 GB – 50 GB = 50 GB olur. Ek Depolama fiyatlandırması için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan gerçek alan miktarı, dahil edilen depolama miktarından daha azsa, veritabanının maksimum boyutu dahil edilen tutara azaltılarak bu ek maliyetin önlenebilir olmasını sağlayabilirsiniz.
+- Elastik havuz için eDTU 'lar yeniden başlatıldığında, (1) havuzun en büyük depolama boyutu hedef havuz tarafından destekleniyorsa ve (2) depolama alanı üst sınırı hedef havuzun dahil edilen depolama miktarını aşarsa, ek bir depolama maliyeti geçerlidir. Örneğin, en fazla 100 GB boyutundaki 100 eDTU standart havuzu bir 50 eDTU standart havuzuna yeniden boyutlandırıldıysa, hedef havuz en büyük boyut olan 100 GB 'ı desteklediğinden ve dahil edilen depolama miktarı yalnızca 50 GB olduğundan, ek bir depolama maliyeti uygulanır. Bu nedenle, ek depolama miktarı 100 GB – 50 GB = 50 GB olur. Ek Depolama fiyatlandırması için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan gerçek alan miktarı, dahil edilen depolama miktarından daha azsa, veritabanının maksimum boyutu dahil edilen tutara azaltılarak bu ek maliyetin önlenebilir olmasını sağlayabilirsiniz.
 
 ### <a name="billing-during-rescaling"></a>Yeniden oluşturma sırasında faturalandırma
 
@@ -71,7 +71,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 ## <a name="change-elastic-pool-storage-size"></a>Elastik havuz depolama boyutunu değiştir
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
@@ -83,7 +83,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 - Elastik havuz için depolama fiyatı, depolama miktarıdır ve hizmet katmanının depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
@@ -92,7 +92,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 - Elastik havuz için ek depolama alanı fiyatı, ek depolama miktarıdır ve hizmet katmanının ek depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668756"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461462"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node. js SDK 'sını kullanma
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
->  Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 Bu makalede, Azure App Service Mobile Apps özelliğindeki Node. js arka ucu ile çalışmayı gösteren ayrıntılı bilgiler ve örnekler sağlanmaktadır.
 
@@ -136,7 +131,7 @@ Visual Studio 2015, IDE içinde Node. js uygulamaları geliştirmek için bir uz
 
 ### <a name="create-node-backend-portal"></a>Azure portal kullanarak bir Node. js arka ucu oluşturun
 
-[Azure portalda]bir Mobile Apps arka ucu oluşturabilirsiniz. [Mobil uygulama oluşturma](app-service-mobile-ios-get-started.md) öğreticisini izleyerek aşağıdaki adımları tamamlayabilir veya bir istemci ve sunucu oluşturabilirsiniz. Öğretici bu yönergelerin basitleştirilmiş bir sürümünü içerir ve en iyisi kavram kanıtı projelerine yöneliktir.
+[Azure portalında]bir Mobile Apps arka ucu oluşturabilirsiniz. [Mobil uygulama oluşturma](app-service-mobile-ios-get-started.md) öğreticisini izleyerek aşağıdaki adımları tamamlayabilir veya bir istemci ve sunucu oluşturabilirsiniz. Öğretici bu yönergelerin basitleştirilmiş bir sürümünü içerir ve en iyisi kavram kanıtı projelerine yöneliktir.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -333,7 +328,7 @@ Bir TCP/IP bağlantısı üzerinden veritabanına erişin. Bağlantı için bir 
 
 ### <a name="howto-config-localdev"></a>Projenizi yerel geliştirme için yapılandırma
 
-Mobile Apps, yerel dosya sisteminden *azureMobile. js* adlı bir JavaScript dosyasını okur. Üretimde Mobile Apps SDK 'Yı yapılandırmak için bu dosyayı kullanmayın. Bunun yerine, [Azure portalda] **uygulama ayarlarını** kullanın.
+Mobile Apps, yerel dosya sisteminden *azureMobile. js* adlı bir JavaScript dosyasını okur. Üretimde Mobile Apps SDK 'Yı yapılandırmak için bu dosyayı kullanmayın. Bunun yerine, [Azure portalında] **uygulama ayarlarını** kullanın.
 
 AzureMobile. js dosyası bir yapılandırma nesnesini dışarı aktarmalıdır. En yaygın ayarlar şunlardır:
 
@@ -361,25 +356,25 @@ module.exports = {
 };
 ```
 
-Parolaların bulutta depolanmasını engellemek için, **. gitignore** dosyanıza (veya diğer kaynak kodu denetimini yoksay dosyasına) **azureMobile. js** eklemenizi öneririz. [Azure portalda]içindeki **uygulama ayarlarında** her zaman üretim ayarlarını yapılandırın.
+Parolaların bulutta depolanmasını engellemek için, **. gitignore** dosyanıza (veya diğer kaynak kodu denetimini yoksay dosyasına) **azureMobile. js** eklemenizi öneririz. [Azure portalında]içindeki **uygulama ayarlarında** her zaman üretim ayarlarını yapılandırın.
 
 ### <a name="howto-appsettings"></a>Mobil uygulamanız için uygulama ayarlarını yapılandırma
 
-AzureMobile. js dosyasındaki çoğu ayar [Azure portalda]eşdeğer bir uygulama ayarına sahiptir. Uygulamanızı **uygulama ayarları**'nda yapılandırmak için aşağıdaki listeyi kullanın:
+AzureMobile. js dosyasındaki çoğu ayar [Azure portalında]eşdeğer bir uygulama ayarına sahiptir. Uygulamanızı **uygulama ayarları**'nda yapılandırmak için aşağıdaki listeyi kullanın:
 
 | Uygulama ayarı | azureMobile. js ayarı | Açıklama | Geçerli değerler |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |ad |Uygulamanın adı |string |
 | **MS_MobileLoggingLevel** |günlüğe kaydetme. düzeyi |Günlüğe kaydedilecek en düşük ileti günlük düzeyi |hata, uyarı, bilgi, ayrıntılı, hata ayıklama, Silly |
-| **MS_DebugMode** |h |Hata ayıklama modunu etkinleştirilir veya devre dışı bırakır |doğru, yanlış |
+| **MS_DebugMode** |hata ayıklama |Hata ayıklama modunu etkinleştirilir veya devre dışı bırakır |TRUE, false |
 | **MS_TableSchema** |Data. Schema |SQL tabloları için varsayılan şema adı |dize (varsayılan: dbo) |
-| **MS_DynamicSchema** |Data. dynamicSchema |Hata ayıklama modunu etkinleştirilir veya devre dışı bırakır |doğru, yanlış |
-| **MS_DisableVersionHeader** |sürüm (tanımsız olarak ayarlanır) |X-ZUMO-Server-Version üst bilgisini devre dışı bırakır |doğru, yanlış |
-| **MS_SkipVersionCheck** |SkipVersionCheck |İstemci API 'SI sürüm denetimini devre dışı bırakır |doğru, yanlış |
+| **MS_DynamicSchema** |Data. dynamicSchema |Hata ayıklama modunu etkinleştirilir veya devre dışı bırakır |TRUE, false |
+| **MS_DisableVersionHeader** |sürüm (tanımsız olarak ayarlanır) |X-ZUMO-Server-Version üst bilgisini devre dışı bırakır |TRUE, false |
+| **MS_SkipVersionCheck** |SkipVersionCheck |İstemci API 'SI sürüm denetimini devre dışı bırakır |TRUE, false |
 
 Bir uygulama ayarı ayarlamak için:
 
-1. [Azure portalda]’ında oturum açın.
+1. [Azure portalında] oturum açın.
 1. **Tüm kaynaklar** veya **uygulama hizmetleri**' ni seçin ve ardından mobil uygulamanızın adını seçin.
 1. **Ayarlar** bölmesi varsayılan olarak açılır. Değilse, **Ayarlar**' ı seçin.
 1. **Genel** menüsünde **uygulama ayarları**' nı seçin.
@@ -396,7 +391,7 @@ Bir uygulama ayarı ayarlamak için:
 
 Azure SQL veritabanı 'nı veri deposu olarak kullanmak tüm Azure App Service uygulama türlerinde aynıdır. Daha önce yapmadıysanız, bir Mobile Apps arka ucu oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalda]’ında oturum açın.
+1. [Azure portalında] oturum açın.
 1. Pencerenin sol üst kısmında, **Web ve mobil** **mobil uygulama**> > **+ yeni** düğmesini seçin ve ardından Mobile Apps arka ucu için bir ad sağlayın.
 1. **Kaynak grubu** kutusuna uygulamanız ile aynı adı girin.
 1. Varsayılan App Service planı seçilidir. App Service planınızı değiştirmek istiyorsanız:
@@ -410,7 +405,7 @@ Azure SQL veritabanı 'nı veri deposu olarak kullanmak tüm Azure App Service u
    d. **Seç** düğmesine tıklayın.
 
    e. **App Service planı** bölmesine geri dönüp **Tamam**' ı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Mobile Apps arka ucu sağlama işlemi birkaç dakika sürebilir. Mobile Apps arka ucu sağlandıktan sonra Portal, Mobile Apps arka ucunun **Ayarlar** bölmesini açar.
 
@@ -434,7 +429,7 @@ Veritabanının oluşturulması birkaç dakika sürebilir. Dağıtımın ilerlem
 
 ### <a name="howto-tables-auth"></a>Tablolara erişim için kimlik doğrulaması gerektir
 
-`tables` uç noktası ile App Service kimlik doğrulaması kullanmak istiyorsanız, önce [Azure portalda] App Service kimlik doğrulamasını yapılandırmanız gerekir. Daha fazla bilgi için, kullanmayı düşündüğünüz kimlik sağlayıcısı için yapılandırma kılavuzuna bakın:
+`tables` uç noktası ile App Service kimlik doğrulaması kullanmak istiyorsanız, önce [Azure portalında] App Service kimlik doğrulamasını yapılandırmanız gerekir. Daha fazla bilgi için, kullanmayı düşündüğünüz kimlik sağlayıcısı için yapılandırma kılavuzuna bakın:
 
 * [Azure Active Directory kimlik doğrulamasını yapılandırma]
 * [Facebook kimlik doğrulamasını yapılandırma]
@@ -745,7 +740,7 @@ Kimliği doğrulanmış bir istemciden anında iletme bildirimleri için kayıt 
 
 `/tables` uç noktası aracılığıyla veri erişimi API 'sine ek olarak, Mobile Apps özel API kapsamı sağlayabilir. Özel API 'Ler tablo tanımlarına benzer bir şekilde tanımlanır ve kimlik doğrulaması da dahil olmak üzere aynı tesislere erişebilir.
 
-Özel bir API ile App Service kimlik doğrulaması kullanmak istiyorsanız, önce [Azure portalda] App Service kimlik doğrulamasını yapılandırmanız gerekir. Daha fazla bilgi için, kullanmayı düşündüğünüz kimlik sağlayıcısı için yapılandırma kılavuzuna bakın:
+Özel bir API ile App Service kimlik doğrulaması kullanmak istiyorsanız, önce [Azure portalında] App Service kimlik doğrulamasını yapılandırmanız gerekir. Daha fazla bilgi için, kullanmayı düşündüğünüz kimlik sağlayıcısı için yapılandırma kılavuzuna bakın:
 
 * [Azure Active Directory kimlik doğrulamasını yapılandırma]
 * [Facebook kimlik doğrulamasını yapılandırma]
@@ -899,7 +894,7 @@ Node. js Mobile Apps arka uçta sorun gidermeye başlamak için aşağıdaki mak
 * [Azure App Service tanılama günlüğünü etkinleştirme]
 * [Visual Studio 'da Azure App Service sorunlarını giderme]
 
-Node. js uygulamalarının çok çeşitli tanılama günlüğü araçlarına erişimi vardır. Dahili olarak, Mobile Apps Node. js SDK 'Sı, tanılama günlüğü için [Winston] kullanır. Hata ayıklama modunu etkinleştirdiğinizde günlüğe kaydetme otomatik olarak etkinleştirilir veya [Azure portalda]`MS_DebugMode` uygulama ayarı true olarak ayarlanır. Oluşturulan Günlükler [Azure portalda]tanılama günlüklerinde görüntülenir.
+Node. js uygulamalarının çok çeşitli tanılama günlüğü araçlarına erişimi vardır. Dahili olarak, Mobile Apps Node. js SDK 'Sı, tanılama günlüğü için [Winston] kullanır. Hata ayıklama modunu etkinleştirdiğinizde günlüğe kaydetme otomatik olarak etkinleştirilir veya [Azure portalında]`MS_DebugMode` uygulama ayarı true olarak ayarlanır. Oluşturulan Günlükler [Azure portalında]tanılama günlüklerinde görüntülenir.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -935,7 +930,7 @@ Node. js uygulamalarının çok çeşitli tanılama günlüğü araçlarına eri
 [Express]: https://expressjs.com/
 [Swagger]: https://swagger.io/
 
-[Azure portalda]: https://portal.azure.com/
+[Azure portalında]: https://portal.azure.com/
 [OData]: https://www.odata.org
 [Ünü]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [GitHub 'da basicapp örneği]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app

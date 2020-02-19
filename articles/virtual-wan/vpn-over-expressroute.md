@@ -1,21 +1,20 @@
 ---
-title: Azure sanal WAN 'da ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı oluşturma | Microsoft Docs
+title: 'ExpressRoute şifrelemesini yapılandırma: Azure sanal WAN için ExpressRoute üzerinden IPSec'
 description: Bu öğreticide, ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı oluşturmak için Azure sanal WAN ' ı nasıl kullanacağınızı öğrenin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 02/18/2020
 ms.author: cherylmc
-Customer intent: I want to connect my on-premises networks to my virtual networks by using an S2S VPN connection over my ExpressRoute private peering through Azure Virtual WAN.
-ms.openlocfilehash: ae971bad47d84b6928ebea64e416d21af25528ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c74f703927999bf35dd2d8292b8fa0a6d3c55065
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896613"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459795"
 ---
-# <a name="create-a-site-to-site-vpn-connection-over-expressroute-private-peering-by-using-azure-virtual-wan"></a>Azure sanal WAN kullanarak ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı oluşturma
+# <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
 
 Bu makalede, Azure sanal WAN kullanarak Azure ExpressRoute bağlantı hattının özel eşlemesi aracılığıyla şirket içi ağınızdan Azure 'a bir IPSec/ıKE VPN bağlantısı kurma konusu gösterilmektedir. Bu teknik, genel İnternet üzerinden veya genel IP adreslerini kullanarak ExpressRoute üzerinden şirket içi ağlar ve Azure sanal ağları arasında şifrelenmiş bir aktarım sağlayabilir.
 

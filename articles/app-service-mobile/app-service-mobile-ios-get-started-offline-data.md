@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668490"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459183"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>İOS mobil uygulamalarıyla çevrimdışı eşitlemeyi etkinleştirme
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu öğretici, iOS için Azure App Service Mobile Apps özelliğiyle çevrimdışı eşitlemeyi ele alır. Çevrimdışı eşitleme ile son kullanıcılar, ağ bağlantısı olmasa bile verileri görüntülemek, eklemek veya değiştirmek için bir mobil uygulamayla etkileşim kurabilir. Değişiklikler yerel bir veritabanında depolanır. Cihaz yeniden çevrimiçi olduktan sonra değişiklikler uzak arka uca eşitlenir.
@@ -160,9 +155,9 @@ Uygulama, veriler her başlatıldığında (hedef-C) veya uygulama her başladı
 | --- | --- |
 | id | Tamsayı 64 |
 | ID | Dize |
-| properties | İkili veriler |
-| tablosundan | Dize |
-| Tablotürü | Tamsayı 16 |
+| properties | Binary Data |
+| tablo | Dize |
+| Tablotürü | Integer 16 |
 
 
 **MS_TableOperationErrors**
@@ -173,8 +168,8 @@ Uygulama, veriler her başlatıldığında (hedef-C) veya uygulama her başladı
 | --- | --- |
 | id |Dize |
 | operationId |Tamsayı 64 |
-| properties |İkili veriler |
-| Tablotürü |Tamsayı 16 |
+| properties |Binary Data |
+| Tablotürü |Integer 16 |
 
  **MS_TableConfig**
 
@@ -185,7 +180,7 @@ Uygulama, veriler her başlatıldığında (hedef-C) veya uygulama her başladı
 | id |Dize |
 | anahtar |Dize |
 | Anahtar |Tamsayı 64 |
-| tablosundan |Dize |
+| tablo |Dize |
 | değer |Dize |
 
 ### <a name="data-table"></a>Veri tablosu

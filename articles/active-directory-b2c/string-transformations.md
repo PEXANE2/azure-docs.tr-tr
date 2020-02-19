@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045360"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461224"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -30,8 +30,8 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) öğesinde kimlik deneyim
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | inputClaim1 | string | Karşılaştırılacak ilk talep türü. |
-| Inputclaim | inputClaim2 | string | Karşılaştırılan ikinci talebin türü. |
+| ınputclaim | inputClaim1 | string | Karşılaştırılacak ilk talep türü. |
+| ınputclaim | inputClaim2 | string | Karşılaştırılan ikinci talebin türü. |
 | InputParameter | stringComparison | string | dize karşılaştırma, değerlerden biri: Ordinal, OrdinalIgnoreCase. |
 
 **Assertstringclaimsareeþitclaim** dönüşümü, her zaman [kendi kendine onaylanan bir teknik profille](self-asserted-technical-profile.md)çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **Usermessageifclaimstransformationstringsarenotequal** kendiliğinden onaylanan teknik profil meta verileri, kullanıcıya sunulan hata iletisini denetler.
@@ -91,7 +91,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | inputClaim1 | string | Değiştirilecek ClaimType. |
+| ınputclaim | inputClaim1 | string | Değiştirilecek ClaimType. |
 | InputParameter | toCase | string | Şu değerlerden biri: `LOWER` veya `UPPER`. |
 | OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
@@ -155,8 +155,8 @@ Tek bir dize talebinin diğerine eşit olup olmadığını belirleme. Sonuç, `t
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | inputClaim1 | string | Karşılaştırılacak ilk talep türü. |
-| Inputclaim | inputClaim2 | string | Karşılaştırılacak ikinci talep türü. |
+| ınputclaim | inputClaim1 | string | Karşılaştırılacak ilk talep türü. |
+| ınputclaim | inputClaim2 | string | Karşılaştırılacak ikinci talep türü. |
 | InputParameter | operator | string | Olası değerler: `EQUAL` veya `NOT EQUAL`. |
 | InputParameter | ignoreCase | boole | Bu karşılaştırmanın karşılaştırılan dizelerin durumunu yoksayıp saymayacağını belirtir. |
 | OutputClaim | OutputClaim | boole | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
@@ -196,7 +196,7 @@ Bir talep değerinin giriş parametresi değerine eşit olup olmadığını beli
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | inputClaim1 | string | Karşılaştırılan talep türü. |
+| ınputclaim | inputClaim1 | string | Karşılaştırılan talep türü. |
 | InputParameter | operator | string | Olası değerler: `EQUAL` veya `NOT EQUAL`. |
 | InputParameter | compareTo | string | dize karşılaştırma, değerlerden biri: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | boole | Bu karşılaştırmanın karşılaştırılan dizelerin durumunu yoksayıp saymayacağını belirtir. |
@@ -295,7 +295,7 @@ Bir talebi, belirtilen biçim dizesine göre biçimlendirin. Bu dönüşüm C# `
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim |string |Dize biçimi {0} parametresi olarak davranan ClaimType. |
+| ınputclaim | ınputclaim |string |Dize biçimi {0} parametresi olarak davranan ClaimType. |
 | InputParameter | stringFormat | string | {0} parametresi dahil dize biçimi. |
 | OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
@@ -330,8 +330,8 @@ Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# `S
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim |string | Dize biçimi {0} parametresi olarak davranan ClaimType. |
-| Inputclaim | Inputclaim | string | Dize biçimi {1} parametresi olarak davranan ClaimType. |
+| ınputclaim | ınputclaim |string | Dize biçimi {0} parametresi olarak davranan ClaimType. |
+| ınputclaim | ınputclaim | string | Dize biçimi {1} parametresi olarak davranan ClaimType. |
 | InputParameter | stringFormat | string | {0} ve {1} parametreleri de dahil olmak üzere dize biçimi. |
 | OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
@@ -438,7 +438,7 @@ Talep **kısıtlama** koleksiyonundan bir öğe aranıyor.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Mapfromclaım | string | **Kısıtlama** koleksiyonuyla **restrictionValueClaim** taleplerde aranacak metni içeren talep.  |
+| ınputclaim | Mapfromclaım | string | **Kısıtlama** koleksiyonuyla **restrictionValueClaim** taleplerde aranacak metni içeren talep.  |
 | OutputClaim | restrictionValueClaim | string | **Kısıtlama** toplamayı içeren talep. Talep dönüştürme çağrıldıktan sonra, bu talebin değeri seçili öğenin değerini içerir. |
 
 Aşağıdaki örnek hata anahtarına bağlı olarak hata iletisi açıklamasını arar. **Responsemsg** talebi, son kullanıcıya sunmak veya bağlı olan tarafa gönderilmek üzere bir hata iletileri koleksiyonu içerir.
@@ -481,7 +481,7 @@ Bir değer listesinden, başka bir talebin değerine göre bir talep değeri ara
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | ınputparameterıd | string | Arama değerini içeren talep |
+| ınputclaim | ınputparameterıd | string | Arama değerini içeren talep |
 | InputParameter | |string | InputParameters koleksiyonu. |
 | InputParameter | errorOnFailedLookup | boole | Eşleşen arama olmadığında bir hatanın döndürülüp döndürülmeyeceğini denetleme. |
 | OutputClaim | ınputparameterıd | string | Bu talep dönüşümünde oluşturulacak ClaimTypes. Eşleşen `Id`değeri. |
@@ -523,9 +523,9 @@ Belirli bir talebin değerini temizleyin.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | string | Değerini NULL olarak talep edin. |
+| OutputClaim | claim_to_null | string | Talebin değeri NULL olarak ayarlandı. |
 
-Talep özelliği çantasından gereksiz verileri kaldırmak için bu talep dönüşümünü kullanın. Bu nedenle, oturum tanımlama bilgisi daha küçük olacaktır. Aşağıdaki örnek `TermsOfService` talep türünün değerini kaldırır.
+Bu talep dönüşümünü, oturum tanımlama bilgisinin daha küçük olması için talep özelliği çantasından gereksiz verileri kaldırmak için kullanın. Aşağıdaki örnek `TermsOfService` talep türünün değerini kaldırır.
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -546,7 +546,7 @@ Bir e-posta adresinin etki alanı kısmını alır.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | emailAddress | string | E-posta adresini içeren ClaimType. |
+| ınputclaim | emailAddress | string | E-posta adresini içeren ClaimType. |
 | OutputClaim | alanını | string | Bu talep dönüştürme işleminden sonra üretilen ClaimType, etki alanı. |
 
 Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu talep dönüşümünü kullanın. Aşağıdaki talep dönüşümünde, bir **e-posta** talebinde etki alanı adının nasıl ayrıştırılacağını gösterilmektedir.
@@ -575,7 +575,7 @@ Bir dize talebi `claimToMatch` ve `matchTo` giriş parametresinin eşit olup olm
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | claimToMatch | string | Karşılaştırılacak talep türü. |
+| ınputclaim | claimToMatch | string | Karşılaştırılacak talep türü. |
 | InputParameter | matchTo | string | Eşleştirilecek normal ifade. |
 | InputParameter | Outputclaimifeşleşti | string | Dizeler eşitse ayarlanacak değer. |
 | OutputClaim | OutputClaim | string | Normal ifade eşleşiyorsa, bu çıkış talebi `outputClaimIfMatched` giriş parametresinin değerini içerir. Ya da eşleşme yoksa null. |
@@ -616,7 +616,7 @@ Bir dize talebi ve `matchTo` giriş parametresinin eşit olup olmadığını den
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | string | Karşılaştırılacak talep türü. |
+| ınputclaim | ınputclaim | string | Karşılaştırılacak talep türü. |
 | InputParameter | matchTo | string | `inputClaim`Karşılaştırılacak dize. |
 | InputParameter | stringComparison | string | Olası değerler: `Ordinal` veya `OrdinalIgnoreCase`. |
 | InputParameter | stringMatchMsg | string | Dizeler eşitse ayarlanacak ilk değer. |
@@ -665,7 +665,7 @@ Bir dize talebi ve `matchTo` giriş parametresinin eşit olup olmadığını den
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | claimToMatch | string | Karşılaştırılacak talep türü. |
+| ınputclaim | claimToMatch | string | Karşılaştırılacak talep türü. |
 | InputParameter | matchTo | string | Inputclaim ile Karşılaştırılacak dize. |
 | InputParameter | stringComparison | string | Olası değerler: `Ordinal` veya `OrdinalIgnoreCase`. |
 | InputParameter | Outputclaimifeşleşti | string | Dizeler eşitse ayarlanacak değer. |
@@ -710,7 +710,7 @@ Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belir
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | string | Arama yapılacak talep türü. |
+| ınputclaim | ınputclaim | string | Arama yapılacak talep türü. |
 |InputParameter|içerir|string|Aranacak değer.|
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizenin durumunu yoksayıp saymayacağını belirtir.|
 | OutputClaim | OutputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Giriş talebi içinde alt dize gerçekleşirse Boole göstergesi. |
@@ -748,7 +748,7 @@ Bir dize talep türünün parçalarını, belirtilen konumdaki karakterden başl
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | string | Dizeyi içeren talep türü. |
+| ınputclaim | ınputclaim | string | Dizeyi içeren talep türü. |
 | InputParameter | startIndex | int | Bu örnekteki alt dizenin sıfır tabanlı başlangıç karakter konumu. |
 | InputParameter | {1&gt;length&lt;1} | int | Alt dizeden karakter sayısı. |
 | OutputClaim | OutputClaim | boole | Bu örnekte startIndex değerinde başlayan uzunluğunun alt dizesi ile eşdeğer veya startIndex, bu örneğin uzunluğuna eşitse ve length sıfır olduğunda boş olan bir dize. |
@@ -786,7 +786,7 @@ Belirtilen değer için bir talep türü dizesi arar ve geçerli dizedeki belirt
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | string | Dizeyi içeren talep türü. |
+| ınputclaim | ınputclaim | string | Dizeyi içeren talep türü. |
 | InputParameter | oldValue | string | Aranacak dize. |
 | InputParameter | Değer | string | Tüm `oldValue` tekrarlarının yerini alacak dize |
 | OutputClaim | OutputClaim | boole | Tüm oldValue örnekleri newValue ile değiştirilmeleri dışında, geçerli dize ile eşdeğer bir dize. OldValue geçerli örnekte bulunamazsa, yöntemi geçerli örneği değişmeden döndürür. |
@@ -824,7 +824,7 @@ Her öğe veya üye arasındaki belirtilen ayırıcıyı kullanarak belirtilen d
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | stringCollection | Birleştirilecek dizeleri içeren bir koleksiyon. |
+| ınputclaim | ınputclaim | stringCollection | Birleştirilecek dizeleri içeren bir koleksiyon. |
 | InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
 | OutputClaim | OutputClaim | string | `delimiter` giriş parametresiyle ayrılmış `inputClaim` dize koleksiyonunun üyelerinden oluşan bir dize. |
   
@@ -860,7 +860,7 @@ Bu örnekte belirtilen bir dizenin öğeleriyle ayrılmış alt dizeleri içeren
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | string | Bölünecek alt dizeleri içeren bir dize talep türü. |
+| ınputclaim | ınputclaim | string | Bölünecek alt dizeleri içeren bir dize talep türü. |
 | InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
 | OutputClaim | OutputClaim | stringCollection | Öğeleri bu dizedeki `delimiter` giriş parametresiyle ayrılmış alt dizeleri içeren bir dize koleksiyonu. |
   

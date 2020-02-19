@@ -2,17 +2,17 @@
 title: SKU kullanılamıyor hatası
 description: Azure Resource Manager ile kaynak dağıtımında SKU kullanılamıyor hatası ile ilgili sorunların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
-ms.date: 10/19/2018
-ms.openlocfilehash: a79f55b4d3baf33126807fa099ed2d7b8b48aac5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/18/2020
+ms.openlocfilehash: be341a5ed5321fe71b0e3b34ba5f6cc823958c8b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477466"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462301"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU kullanılamıyor için hataları çözün
 
-Bu makalede, **Skunotavailable** hatasının nasıl çözümleneceği açıklanır. Bu bölgede veya iş gereksinimlerinizi karşılayan alternatif bir bölgede uygun bir SKU bulamıyorsanız Azure desteği 'ne bir [SKU isteği](https://aka.ms/skurestriction) gönderebilirsiniz.
+Bu makalede, **Skunotavailable** hatasının nasıl çözümleneceği açıklanır. Bu bölgede/bölgede veya iş gereksinimlerinizi karşılayan alternatif bir bölgede/bölgede uygun bir SKU bulamıyorsanız Azure desteği 'ne bir [SKU isteği](https://aka.ms/skurestriction) gönderebilirsiniz.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ Bir kaynak (genellikle bir sanal makine) dağıttığınızda aşağıdaki hata 
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
+Message: The requested tier for resource '<resource>' is currently not available in location '<location>'
 for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 ```
 
@@ -34,7 +34,7 @@ Azure spot VM veya spot ölçek kümesi örneği dağıtıyorsanız, bu konumda 
 
 ## <a name="solution-1---powershell"></a>Çözüm 1 - PowerShell
 
-Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) komutunu kullanın. Sonuçları konuma göre filtreleyin. Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
+Bir bölgede/bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) komutunu kullanın. Sonuçları konuma göre filtreleyin. Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
@@ -43,12 +43,22 @@ Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 Sonuçlar, konum ve bu SKU için herhangi bir kısıtlama için SKU 'ların bir listesini içerir. SKU 'nun `NotAvailableForSubscription`olarak listelendiğine dikkat edin.
 
 ```powershell
-ResourceType          Name        Locations   Restriction                      Capability           Value
-------------          ----        ---------   -----------                      ----------           -----
-virtualMachines       Standard_A0 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   20480
-virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   71680
-virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
+ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
+------------          ----           ---------   ----      -----------                      ----------           -----
+virtualMachines       Standard_A0    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   20480
+virtualMachines       Standard_A1    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   71680
+virtualMachines       Standard_A2    centralus             NotAvailableForSubscription      MaxResourceVolumeMB  138240
+virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
+
+Bazı ek örnekler:
+
+```azurepowershell-interactive
+Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
+Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
+```
+
+"FC" sonuna ekleme daha fazla ayrıntı döndürüyor.
 
 ## <a name="solution-2---azure-cli"></a>Çözüm 2 - Azure CLI
 
@@ -80,7 +90,7 @@ Bir bölgede hangi SKU 'Ların kullanılabildiğini öğrenmek için [portalın�
 
 Kullanılabilir boyutlarda filtre uygulayabilir ve bu boyutları kaydırabilirsiniz.
 
-![Kullanılabilir SKU'lar](./media/error-sku-not-available/available-sizes.png)
+![Kullanılabilir SKU 'Lar](./media/error-sku-not-available/available-sizes.png)
 
 ## <a name="solution-4---rest"></a>Çözüm 4-REST
 

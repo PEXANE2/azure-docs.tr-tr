@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922281"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461666"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -22,15 +22,15 @@ Visual Studio 'da Analysis Services projelerine sahip veri veya tablo Içeri akt
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |Notlar |
 |---------|---------|---------|---------|
-|Azure SQL Veritabanı      |   Evet      |    Evet      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL Veri Ambarı      |   Evet      |   Evet       |<sup>[iki](#azprovider)</sup>|
-|Azure Blob Depolama      |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup> |
-|Azure Table Storage     |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Evet        |  Hayır        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight.    |     Evet     |   Hayır       |<sup>[1](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   Evet       |   Hayır       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
+|Azure SQL Veritabanı      |   Yes      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SYNAPSE Analytics (SQL veri ambarı)      |   Yes      |   Yes       |<sup>[iki](#azprovider)</sup>|
+|Azure Blob Depolama      |   Yes       |    Hayır      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    Hayır      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Yes        |  Hayır        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    Hayır      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Yes       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight.    |     Yes     |   Hayır       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Yes       |   Hayır       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
 **Notlar:**    
@@ -44,35 +44,35 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 
 |Veri kaynağı | Bellek içi | DirectQuery |Notlar   |
 |  --- | --- | --- | --- |
-|Access Veritabanı     |  Evet | Hayır |  |
-|Active Directory     |  Evet | Hayır | <sup>[inç](#tab1400b)</sup>  |
-|Analysis Services     |  Evet | Hayır |  |
-|Analytics platform sistemi     |  Evet | Hayır |  |
-|CSV dosyası  |Evet | Hayır |  |
-|Dynamics 365     |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Excel çalışma kitabı     |  Evet | Hayır |  |
-|Değiştirin      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Klasör      |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|IBM Informix  |Evet | Hayır |  |
-|JSON belgesi      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|İkili dosyadan satırlar      | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|MySQL Veritabanı     | Evet | Hayır |  |
-|OData Akışı      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|ODBC sorgusu     | Evet | Hayır |  |
-|OLE DB     |   Evet | Hayır |  |
-|Oracle  | Evet  |Evet  | <sup>[tuşlarına](#oracle)</sup> |
-|PostgreSQL Veritabanı   | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Salesforce Nesneleri|  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Salesforce Raporları |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|SAP HANA     |  Evet | Hayır |  |
-|SAP Business Warehouse    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|SharePoint Listesi      |   Evet | Hayır | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
-|SQL Server veri ambarı |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Sybase Veritabanı     |  Evet | Hayır |  |
-|Teradata | Evet  | Evet  | <sup>[(](#teradata)</sup> |
-|TXT dosyası  |Evet | Hayır |  |
-|XML tablosu    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Veritabanına erişin     |  Yes | Hayır |  |
+|Active Directory     |  Yes | Hayır | <sup>[inç](#tab1400b)</sup>  |
+|Analysis Services     |  Yes | Hayır |  |
+|Analytics platform sistemi     |  Yes | Hayır |  |
+|CSV dosyası  |Yes | Hayır |  |
+|Dynamics 365     |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Excel çalışma kitabı     |  Yes | Hayır |  |
+|Exchange      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Klasör      |Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|IBM Informix  |Yes | Hayır |  |
+|JSON belgesi      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|İkili dosyadan satırlar      | Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|MySQL Veritabanı     | Yes | Hayır |  |
+|OData akışı      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|ODBC sorgusu     | Yes | Hayır |  |
+|OLE DB     |   Yes | Hayır |  |
+|Oracle  | Yes  |Yes  | <sup>[tuşlarına](#oracle)</sup> |
+|PostgreSQL veritabanı   | Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Salesforce nesneleri|  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Salesforce raporları |Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|SAP HANA     |  Yes | Hayır |  |
+|SAP Business Warehouse    |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|SharePoint listesi      |   Yes | Hayır | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|SQL Server |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|SQL Server veri ambarı |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Sybase veritabanı     |  Yes | Hayır |  |
+|Teradata | Yes  | Yes  | <sup>[(](#teradata)</sup> |
+|TXT dosyası  |Yes | Hayır |  |
+|XML tablosu    |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
 | | | |
 
 **Notlar:**    
@@ -120,7 +120,7 @@ Bulut veri kaynakları için:
 
 ## <a name="oauth-credentials"></a>OAuth kimlik bilgileri
 
-Bellek içi modu, Azure SQL veritabanı, Azure SQL veri ambarı, Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablo modelleri için OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
+Bellek içi modu, Azure SQL veritabanı, Azure SYNAPSE Analytics (SQL veri ambarı), Dynamics 365 ve SharePoint listesi, OAuth kimlik bilgilerini destekleyen 1400 ve daha yüksek uyumluluk düzeyinde tablolu modeller için. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
 
 OAuth kimlik bilgileriyle doğrudan sorgu modu desteklenmez.
 

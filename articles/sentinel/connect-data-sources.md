@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976116"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462557"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -51,7 +51,7 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
     - [Azure AD Kimlik Koruması](connect-azure-ad-Identity-protection.md)
     - [Azure Güvenlik Merkezi](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Gelişmiş Tehdit Koruması](connect-azure-atp.md)
+    - [Azure Gelişmiş tehdit koruması](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Windows güvenlik olayları](connect-windows-security-events.md) 
     - [Windows Güvenlik Duvarı](connect-windows-firewall.md)
@@ -96,39 +96,39 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 
 | **Veri türü** | **Bağlanma** | **Veri Bağlayıcısı?** | **Açıklamalar** |
 |------|---------|-------------|------|
-| Awscses Izi | [AWS’yi bağlama](connect-aws.md) | V | |
-| AzureActivity | [Azure etkinliğine bağlanma](connect-azure-activity.md) ve [etkinlik günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)| V | |
-| AuditLogs | [Azure AD 'ye bağlanma](connect-azure-active-directory.md)  | V | |
-| SigninLogs | [Azure AD 'ye bağlanma](connect-azure-active-directory.md)  | V | |
-| AzureFirewall |[Azure Tanılama](../firewall/tutorial-diagnostics.md) | V | |
-| InformationProtectionLogs_CL  | [Azure Information Protection raporları](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection Bağlan](connect-azure-information-protection.md)  | V | Bu genellikle veri türüne ek olarak **ınformationprotectionevents** işlevini kullanır. Daha fazla bilgi için bkz [. raporları değiştirme ve özel sorgular oluşturma](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
+| Awscses Izi | [AWS 'yi bağlama](connect-aws.md) | Yönetim | |
+| AzureActivity | [Azure etkinliğine bağlanma](connect-azure-activity.md) ve [etkinlik günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)| Yönetim | |
+| AuditLogs | [Azure AD 'ye bağlanma](connect-azure-active-directory.md)  | Yönetim | |
+| Signınlogs | [Azure AD 'ye bağlanma](connect-azure-active-directory.md)  | Yönetim | |
+| AzureFirewall |[Azure Tanılama](../firewall/tutorial-diagnostics.md) | Yönetim | |
+| InformationProtectionLogs_CL  | [Azure Information Protection raporları](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection Bağlan](connect-azure-information-protection.md)  | Yönetim | Bu genellikle veri türüne ek olarak **ınformationprotectionevents** işlevini kullanır. Daha fazla bilgi için bkz [. raporları değiştirme ve özel sorgular oluşturma](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
 | AzureNetworkAnalytics_CL  | [Trafik analitik şeması](../network-watcher/traffic-analytics.md) [Trafik Analizi](../network-watcher/traffic-analytics.md)  | | |
-| CommonSecurityLog  | [CEF 'yi bağlama](connect-common-event-format.md)  | V | |
-| OfficeActivity | [Office 365’i bağlama](connect-office-365.md) | V | |
-| SecurityEvents | [Windows Güvenlik olaylarını bağlama](connect-windows-security-events.md)  | V | Güvenli olmayan protokoller çalışma kitapları için bkz. [güvenli olmayan protokoller çalışma kitabı kurulumu](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
-| Syslog | [Syslog 'ı bağla](connect-syslog.md) | V | |
-| Microsoft Web uygulaması güvenlik duvarı (WAF)-(AzureDiagnostics) |[Microsoft Web uygulaması güvenlik duvarını bağlama](connect-microsoft-waf.md) | V | |
-| SymantecICDx_CL | [Symantec 'e bağlanma](connect-symantec.md) | V | |
-| ThreatIntelligenceIndicator  | [Tehdit zekası bağlama](connect-threat-intelligence.md)  | V | |
+| CommonSecurityLog  | [CEF 'yi bağlama](connect-common-event-format.md)  | Yönetim | |
+| Officeetkinliği | [Office 365 'e bağlanma](connect-office-365.md) | Yönetim | |
+| SecurityEvents | [Windows Güvenlik olaylarını bağlama](connect-windows-security-events.md)  | Yönetim | Güvenli olmayan protokoller çalışma kitapları için bkz. [güvenli olmayan protokoller çalışma kitabı kurulumu](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
+| Syslog | [Syslog 'ı bağla](connect-syslog.md) | Yönetim | |
+| Microsoft Web uygulaması güvenlik duvarı (WAF)-(AzureDiagnostics) |[Microsoft Web uygulaması güvenlik duvarını bağlama](connect-microsoft-waf.md) | Yönetim | |
+| SymantecICDx_CL | [Symantec 'e bağlanma](connect-symantec.md) | Yönetim | |
+| Threatıntelligenceındicator  | [Tehdit zekası bağlama](connect-threat-intelligence.md)  | Yönetim | |
 | VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Izleyici hizmeti Haritası](../azure-monitor/insights/service-map.md)<br>[Azure Izleyici VM öngörüleri ekleme](../azure-monitor/insights/vminsights-onboard.md) <br> [Azure Izleyici VM öngörülerini etkinleştirin](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Tek VM 'Yi görsel taslak kullanma](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [Ilke aracılığıyla görsel taslak kullanma](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| X | VM öngörüleri çalışma kitabı  |
-| DnsEvents | [DNS bağlama](connect-dns.md) | V | |
+| DnsEvents | [DNS bağlama](connect-dns.md) | Yönetim | |
 | W3CIISLog | [IIS günlüklerini bağlama](../azure-monitor/platform/data-sources-iis-logs.md)  | X | |
 | Iletilen veri | [Kablo verilerini bağlama](../azure-monitor/insights/wire-data.md) | X | |
-| WindowsFirewall | [Windows güvenlik duvarını bağlama](connect-windows-firewall.md) | V | |
-| AADıP SecurityAlert  | [Azure AD Kimlik Koruması bağlantısı kurma](connect-azure-ad-identity-protection.md)  | V | |
-| AATP SecurityAlert  | [Azure ATP 'yi bağlama](connect-azure-atp.md) | V | |
-| ASC SecurityAlert  | [Azure Güvenlik Merkezi 'Ne bağlanma](connect-azure-security-center.md)  | V | |
-| MCAS SecurityAlert  | [Microsoft Cloud App Security Bağlan](connect-cloud-app-security.md)  | V | |
+| WindowsFirewall | [Windows güvenlik duvarını bağlama](connect-windows-firewall.md) | Yönetim | |
+| AADıP SecurityAlert  | [Azure AD Kimlik Koruması bağlantısı kurma](connect-azure-ad-identity-protection.md)  | Yönetim | |
+| AATP SecurityAlert  | [Azure ATP 'yi bağlama](connect-azure-atp.md) | Yönetim | |
+| ASC SecurityAlert  | [Azure Güvenlik Merkezi 'Ne bağlanma](connect-azure-security-center.md)  | Yönetim | |
+| MCAS SecurityAlert  | [Microsoft Cloud App Security Bağlan](connect-cloud-app-security.md)  | Yönetim | |
 | SecurityAlert | | | |
 | Sysmon (olay) | [Sysmon bağlama](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows olaylarını bağlama](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon ayrıştırıcısına ulaşın](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | Sysmon koleksiyonu, sanal makinelerde varsayılan olarak yüklü değildir. Sysmon aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [VM envanterini otomatikleştirme](../automation/automation-vm-inventory.md)| X | |
 | ConfigurationChange  | [VM izlemeyi otomatikleştirin](../automation/change-tracking.md) | X | |
-| F5 BIG-IP | [F5 BIG-IP bağlantısı](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
+| F5 BIG-IP | [F5 BIG-IP bağlantısı](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | X | |
 | McasShadowItReporting  |  | X | |
-| Barracuda_CL | [Barvacuda 'yı bağlama](connect-barracuda.md) | V | |
+| Barracuda_CL | [Barvacuda 'yı bağlama](connect-barracuda.md) | Yönetim | |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Sentinel ile çalışmaya başlamak için Microsoft Azure aboneliğine sahip olmanız gerekir. Bir aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
+- Azure Sentinel ile çalışmaya başlamak için Microsoft Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 - [Verilerinizi Azure Sentinel 'e](quickstart-onboard.md) [ekleme ve verilerinize ilişkin görünürlük alma ve olası tehditler](quickstart-get-visibility.md)hakkında bilgi edinin.

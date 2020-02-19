@@ -6,18 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 4d0b301dee363c2338cb13a9fc09ee17549467eb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668850"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461564"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps ve Mobile Services istemci ve sunucu sürümü oluşturma
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 Azure Mobile Services 'nin en son sürümü, Azure App Service **Mobile Apps** özelliğidir.
 
@@ -64,10 +60,10 @@ Sürüm denetimi aşağıdaki sunucu SDK sürümlerine dahildir:
 ### <a name="behavior-of-mobile-apps-backends"></a>Arka uçların Mobile Apps davranışı
 | ZUMO-API-SÜRÜMÜ | MS_SkipVersionCheck değeri | Yanıt |
 | --- | --- | --- |
-| x. y. z veya null |Doğru |200-TAMAM |
+| x. y. z veya null |True |200 - TAMAM |
 | Null |False/belirtilmemiş |400 - Hatalı İstek |
 | 1. x. y |False/belirtilmemiş |400 - Hatalı İstek |
-| 2.0.0-2. x. y |False/belirtilmemiş |200-TAMAM |
+| 2.0.0-2. x. y |False/belirtilmemiş |200 - TAMAM |
 | 3.0.0-3. x. y |False/belirtilmemiş |400 - Hatalı İstek |
 
 [Mobile Services clients]: #MobileServicesClients

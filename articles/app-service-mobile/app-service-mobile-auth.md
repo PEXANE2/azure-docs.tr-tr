@@ -3,19 +3,14 @@ title: Kimlik doğrulama ve yetkilendirme
 description: Özellikle mobil uygulamalar için Azure App Service kimlik doğrulama/yetkilendirme özelliğine kavramsal başvuru ve genel bakış.
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668523"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459472"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Mobil uygulamalar için Azure App Service kimlik doğrulaması ve yetkilendirme
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 Bu makalede, App Service arka ucu ile yerel mobil uygulamalar geliştirirken kimlik doğrulamanın ve yetkilendirmenin nasıl çalıştığı açıklanır. App Service, tümleşik kimlik doğrulaması ve yetkilendirme sağlar. böylece mobil uygulamalarınız, App Service hiçbir kodu değiştirmeden kullanıcıları oturum açabilirler. Uygulamanızı korumanın ve Kullanıcı başına verilerle çalışacak kolay bir yol sağlar. 
 
@@ -48,7 +43,7 @@ Bir sağlayıcı SDK 'yı ayarlamak istemiyorsanız, Azure App Service Mobile Ap
 Bu akışı başlatmak için kod, her platformun kimlik doğrulama öğreticisine dahildir. Akışın sonunda, istemci SDK bir App Service belirtecine sahiptir ve belirteç, uygulama arka ucuna tüm isteklere otomatik olarak eklenir.
 
 Kimlik doğrulama akışı hakkında daha fazla bilgi için bkz. [App Service kimlik doğrulaması akışı](../app-service/overview-authentication-authorization.md#authentication-flow). 
-## <a name="more-resources"></a>Daha fazla kaynak
+## <a name="more-resources"></a>Diğer kaynaklar
 
 Aşağıdaki öğreticiler, [sunucu ile yönlendirilen akışı](../app-service/overview-authentication-authorization.md#authentication-flow)kullanarak mobil istemcilerinize kimlik doğrulamanın nasıl ekleneceğini göstermektedir:
 

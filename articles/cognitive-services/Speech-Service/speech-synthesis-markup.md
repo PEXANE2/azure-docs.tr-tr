@@ -3,19 +3,19 @@ title: Konuşma birleştirme biçimlendirme dili (SSML)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Söyleniş ve metin okuma, prosody denetlemek için konuşma sentezi biçimlendirme dili kullanma.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: erhopf
-ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 02/18/2020
+ms.author: dapine
+ms.openlocfilehash: ac891e96e350f73b7728ee4b572d9e16a8794ff7
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562536"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461003"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
 
@@ -28,13 +28,13 @@ SSML konuşma hizmeti uygulamasının, World Wide Web Konsorsiyumu [konuşma Sen
 
 ## <a name="standard-neural-and-custom-voices"></a>Standart, sinir ve özel sesler
 
-Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve 4 dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Desteklenen dillerin, yerel ayarların ve seslerin (sinir ve standart) tüm listesi için bkz. [dil desteği](language-support.md).
+Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 45 ' den fazla dilde ve yerel ayarlarda 75 + standart sesler mevcuttur ve dört dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Desteklenen dillerin, yerel ayarların ve seslerin (sinir ve standart) tüm listesi için bkz. [dil desteği](language-support.md).
 
 Standart, sinir ve özel sesler hakkında daha fazla bilgi edinmek için bkz. [metinden konuşmaya genel bakış](text-to-speech.md).
 
 ## <a name="special-characters"></a>Özel karakterler
 
-Metin sentezleştirilmiş konuşmayı dönüştürmek için SSML kullanırken, XML gibi özel karakterlerin, tırnak işaretleri, kesme işareti ve köşeli ayraçlar gibi özel karakterler kaçışına dikkat edilmelidir. Daha fazla bilgi için bkz. [Genişletilebilir Biçimlendirme Dili (XML) 1,0: Ek D](https://www.w3.org/TR/xml/#sec-entexpand).
+SSML kullanırken, tırnak işaretleri, kesme işareti ve köşeli ayraç gibi özel karakterlerin kaçılması gerektiğini aklınızda bulundurun. Daha fazla bilgi için bkz. [Genişletilebilir Biçimlendirme Dili (XML) 1,0: Ek D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>Desteklenen SSML öğeleri
 
@@ -47,25 +47,25 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 `speak` kök öğesidir ve tüm SSML belgeleri için **gereklidir** . `speak` öğesi sürüm, dil ve biçimlendirme sözlük tanımı gibi önemli bilgiler içerir.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| version | Belge işaretlemesini yorumlamak için kullanılan SSML belirtiminin sürümünü gösterir. Geçerli sürüm 1,0 ' dir. | Gereklidir |
-| XML: lang | Kök belgenin dilini belirtir. Değer küçük harf, iki harfli dil kodu (örneğin, **en**) veya dil kodu ve büyük harfli ülke/bölge (örneğin, **en-US**) içerebilir. | Gereklidir |
-| özniteliði | SSML belgesinin biçimlendirme sözlüğünü (öğe türleri ve öznitelik adları) tanımlayan belgenin URI 'sini belirtir. Geçerli URI https://www.w3.org/2001/10/synthesis. | Gereklidir |
+| `version` | Belge işaretlemesini yorumlamak için kullanılan SSML belirtiminin sürümünü gösterir. Geçerli sürüm 1,0 ' dir. | Gerekli |
+| `xml:lang` | Kök belgenin dilini belirtir. Değer küçük harf, iki harfli dil kodu (örneğin, `en`) veya dil kodu ve büyük harfli ülke/bölge (örneğin, `en-US`) içerebilir. | Gerekli |
+| `xmlns` | SSML belgesinin biçimlendirme sözlüğünü (öğe türleri ve öznitelik adları) tanımlayan belgenin URI 'sini belirtir. Geçerli URI https://www.w3.org/2001/10/synthesis. | Gerekli |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Metinden konuşmaya için bir ses seçin
 
 `voice` öğesi gereklidir. Metin okuma için kullanılan sesi belirtmek için kullanılır.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```xml
 <voice name="string">
@@ -73,11 +73,11 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 </voice>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| ad | Metinden konuşmaya çıkış için kullanılan sesi tanımlar. Desteklenen seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech). | Gereklidir |
+| `name` | Metinden konuşmaya çıkış için kullanılan sesi tanımlar. Desteklenen seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech). | Gerekli |
 
 **Örnek**
 
@@ -86,7 +86,7 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -94,22 +94,93 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 ## <a name="use-multiple-voices"></a>Birden çok kişilerden daha fazlasını kullanın
 
-`speak` öğesi içinde, metinden konuşmaya çıkış için birden çok ses belirtebilirsiniz. Bu sesler farklı dillerde olabilir. Her ses için, metnin bir `voice` öğesinde sarmalanması gerekir.
+`speak` öğesi içinde, metinden konuşmaya çıkış için birden çok ses belirtebilirsiniz. Bu sesler farklı dillerde olabilir. Her ses için, metnin bir `voice` öğesinde sarmalanması gerekir. 
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| ad | Metinden konuşmaya çıkış için kullanılan sesi tanımlar. Desteklenen seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech). | Gereklidir |
+| `name` | Metinden konuşmaya çıkış için kullanılan sesi tanımlar. Desteklenen seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech). | Gerekli |
+
+> [!IMPORTANT]
+> Birden çok ses sözcük sınırı özelliğiyle uyumlu değil. Birden çok ses kullanabilmek için sözcük sınırı özelliğinin devre dışı bırakılması gerekir.
+
+### <a name="disable-word-boundary"></a>Sözcük sınırını devre dışı bırak
+
+Konuşma SDK diline bağlı olarak, `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` özelliğini `SpeechConfig` nesnesinin bir örneğinde `false` olarak ayarlarsınız.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`SetProperty` </a>.
+
+```csharp
+speechConfig.SetProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="c"></a>[C++](#tab/cpp)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`SetProperty` </a>.
+
+```cpp
+speechConfig->SetProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`setProperty` </a>.
+
+```java
+speechConfig.setProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`set_property_by_name` </a>.
+
+```python
+speech_config.set_property_by_name(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`setProperty` </a>.
+
+```javascript
+speechConfig.setProperty(
+    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
+```
+
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`setPropertyTo` </a>.
+
+```objectivec
+[speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
+```
+
+# <a name="swift"></a>[Swift](#tab/swift)
+
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">. <span class="docon docon-navigate-external x-hidden-focus"> </span>`setPropertyTo` </a>.
+
+```swift
+speechConfig!.setPropertyTo(
+    "false", byName: "SpeechServiceResponse_Synthesis_WordBoundaryEnabled")
+```
+
+---
 
 **Örnek**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         Good morning!
     </voice>
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         Good morning to you too Jessa!
     </voice>
 </speak>
@@ -118,7 +189,7 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 ## <a name="adjust-speaking-styles"></a>Konuşma stillerini ayarla
 
 > [!IMPORTANT]
-> Bu özellik yalnızca sinir seslerle çalışır.
+> Konuşma stillerinin ayarlanması yalnızca sinir seslerle çalışır.
 
 Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için bağımsız bir konuşma stili kullanarak metni birleştirir. Sinir seslerle konuşma stilini, `<mstts:express-as>` öğesiyle birlikte hızlı bir şekilde ifade etmek, empabilmek veya duygu yapmak için ayarlayabilirsiniz. Bu, konuşma hizmetine özgü olan isteğe bağlı bir öğedir.
 
@@ -128,36 +199,37 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 
 Değişiklikler tümce düzeyinde uygulanır ve stil sese göre farklılık gösterir. Bir stil desteklenmiyorsa, hizmet konuşmayı varsayılan nötr konuşma stilinde döndürür.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```xml
 <mstts:express-as type="string"></mstts:express-as>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| type | Konuşma stilini belirtir. Şu anda, konuşma stilleri sese özeldir. | Sinir Voice için konuşma stilini ayarlarken gereklidir. `mstts:express-as`kullanılıyorsa, tür sağlanmalıdır. Geçersiz bir değer sağlanmışsa, bu öğe yok sayılır. |
+| `type` | Konuşma stilini belirtir. Şu anda konuşma stilleri sese özgüdür. | Sinir Voice için konuşma stilini ayarlarken gereklidir. `mstts:express-as`kullanılıyorsa, tür sağlanmalıdır. Geçersiz bir değer sağlanmışsa, bu öğe yok sayılır. |
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
 | Ses | Tür | Açıklama |
 |-------|------|-------------|
-| `en-US-JessaNeural` | tür =`cheerful` | Olumlu ve mutlu bir ehareketini ifade eder |
-| | tür =`empathy` | Bir fikir ve anlalama hakkında ifade eder |
-| | tür =`chat` | Rastgele, gevşek bir tonda konuşabilirsiniz |
-| | tür =`newscast` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
-| | tür =`customerservice` | Müşteri Hizmetleri olarak kolay ve hasta bir şekilde konuşun |
-| `zh-CN-XiaoxiaoNeural` | tür =`newscast` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
-| | tür =`sentiment` | Dokunmadan bir ileti veya hikaye ileten |
+| `en-US-JessaNeural` | `type="cheerful"` | Olumlu ve mutlu bir ehareketini ifade eder |
+| | `type="empathy"` | Bir fikir ve anlalama hakkında ifade eder |
+| | `type="chat"` | Rastgele, gevşek bir tonda konuşabilirsiniz |
+| | `type="newscast"` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
+| | `type="customerservice"` | Müşteri Hizmetleri olarak kolay ve hasta bir şekilde konuşun |
+| `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
+| | `type="sentiment"` | Dokunmadan bir ileti veya hikaye ileten |
 
 **Örnek**
 
 Bu SSML kod parçacığı, konuşma stilini `cheerful`olarak değiştirmek için `<mstts:express-as>` öğesinin nasıl kullanıldığını gösterir.
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JessaNeural">
         <mstts:express-as type="cheerful">
             That'd be just amazing!
@@ -173,26 +245,26 @@ Sözcükler arasına duraklamalar (veya molalar) eklemek için `break` öğesini
 > [!NOTE]
 > Bu sözcük veya tümcecik için birleştirilmiş konuşma doğal olmayan bir sözcük veya tümcecik için metin okuma (TTS) varsayılan davranışını geçersiz kılmak için bu öğeyi kullanın. Metin okuma hizmeti tarafından otomatik olarak yerleştirilen bir bürünsel kesmesini engellemek için `strength` `none` olarak ayarlayın.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```xml
 <break strength="string" />
 <break time="string" />
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| gücüyle | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>tanımlayıcı</li><li>x-Strong</li></ul> | İsteğe Bağlı |
-| time | Saniye veya milisaniye cinsinden bir duraklama 'nin mutlak süresini belirtir. Geçerli değer örnekleri 2s ve 500 ' dir | İsteğe Bağlı |
+| `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>tanımlayıcı</li><li>x-Strong</li></ul> | İsteğe bağlı |
+| `time` | Saniye veya milisaniye cinsinden bir duraklama 'nin mutlak süresini belirtir. Geçerli değer örnekleri `2s` ve `500` | İsteğe bağlı |
 
 | Gücüyle | Açıklama |
 |----------|-------------|
-| Hiçbiri veya hiçbir değer sağlanmazsa | 0 ms |
+| Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS |
 | x-zayıf | 250 MS |
 | zayıf | 500 ms |
-| orta | 750 ms |
+| uzunlukta | 750 ms |
 | tanımlayıcı | 1000 ms |
 | x-Strong | 1250 MS |
 
@@ -201,7 +273,7 @@ Sözcükler arasına duraklamalar (veya molalar) eklemek için `break` öğesini
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -215,7 +287,7 @@ Sözcükler arasına duraklamalar (veya molalar) eklemek için `break` öğesini
 
 `s` öğesi metin ve şu öğeleri içerebilir: `audio`, `break`, `phoneme`, `prosody`, `say-as`, `mstts:express-as`ve `sub`.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```XML
 <p></p>
@@ -226,7 +298,7 @@ Sözcükler arasına duraklamalar (veya molalar) eklemek için `break` öğesini
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -245,24 +317,24 @@ Sözcükler arasına duraklamalar (veya molalar) eklemek için `break` öğesini
 
 Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üzerinde oluşan telefonlardan oluşur. Her telefonda benzersiz bir konuşma sesi açıklanır. Bu Latin alfabesinden farklıdır, burada herhangi bir harf birden çok konuşulan sesi temsil edebilir. "Candy" ve "işten" kelimelerdeki "c" harfinin farklı söylenmelerini veya "şeyler" ve "Bunlar" kelimelerinde "TH" harf birleşiminin farklı söylenmelerini göz önünde bulundurun.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| yi | `ph` özniteliğinde dizenin okunuşunu senilirken kullanılacak fonetik alfabesini belirtir. Alfabeyi belirten dize küçük harfle belirtilmelidir. Aşağıdakiler, belirtebileceğiniz olası harfler sonuçlardır.<ul><li>ipa &ndash; uluslararası fonetik alfabesi</li><li>sapı &ndash; konuşma API telefon kümesi</li><li>UPS &ndash; Evrensel telefon kümesi</li></ul>Alfabe yalnızca öğedeki Fonem için geçerlidir. Daha fazla bilgi için bkz. [Fonetik alfabe başvurusu](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | İsteğe Bağlı |
-| f | `phoneme` öğesinde sözcüğün söylenişini belirten telefonları içeren bir dize. Belirtilen dize tanınmayan telefonlar içeriyorsa, metinden konuşmaya (TTS) hizmeti SSML belgesinin tamamını reddeder ve belgede belirtilen konuşma çıktısından hiçbiri üretir. | Phonemes kullanılıyorsa gereklidir. |
+| `alphabet` | `ph` özniteliğinde dizenin okunuşunu senilirken kullanılacak fonetik alfabesini belirtir. Alfabeyi belirten dize küçük harfle belirtilmelidir. Aşağıdakiler, belirtebileceğiniz olası harfler sonuçlardır.<ul><li>ipa &ndash; uluslararası fonetik alfabesi</li><li>sapı &ndash; konuşma API telefon kümesi</li><li>UPS &ndash; Evrensel telefon kümesi</li></ul>Alfabe yalnızca öğedeki Fonem için geçerlidir. Daha fazla bilgi için bkz. [Fonetik alfabe başvurusu](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | İsteğe bağlı |
+| `ph` | `phoneme` öğesinde sözcüğün söylenişini belirten telefonları içeren bir dize. Belirtilen dize tanınmayan telefonlar içeriyorsa, metinden konuşmaya (TTS) hizmeti SSML belgesinin tamamını reddeder ve belgede belirtilen konuşma çıktısından hiçbiri üretir. | Phonemes kullanılıyorsa gereklidir. |
 
 **Örnekler**
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
@@ -270,7 +342,7 @@ Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üz
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
@@ -282,22 +354,22 @@ Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üz
 
 Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden, konuşma tanıyıcı atanan değerleri, seçili sesin gerçek bürünsel değerlerinin ne olduğuna ilişkin bir öneri olarak yorumlar. Metinden konuşmaya hizmeti, desteklenmeyen değerleri sınırlandırır veya yerini alır. Desteklenmeyen değerlere örnek olarak 1 MHz veya 120 birimi gösterilebilir.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| perde | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>orta</li><li>yüksek</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
-| kapalı | Sinir sesleriniz için kontur desteklenmez. Dağılım, konuşma çıkışında belirtilen zaman konumlarında bir hedef dizisi olarak konuşma içeriği için değişen değişiklik değişikliklerini temsil eder. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, aralığı yükseltmek veya azaltmak için miktarı belirtir (bkz. `pitch`). | İsteğe Bağlı |
-| aralık  | Metin için sıklık aralığını temsil eden bir değer. `pitch`anlatmak için kullanılan mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak `range` ifade edebilirsiniz. | İsteğe Bağlı |
-| oran  | Metnin konuşma oranını gösterir. `rate` şu şekilde ifade edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>yavaş</li><li>orta</li><li>Hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
-| duration  | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. | İsteğe Bağlı |
-| birim  | Konuşma sesinizin birim düzeyini gösterir. Birimi şu şekilde ifade edebilirsiniz:<ul><li>*Deetest* 'den *loudest*'e kadar 0,0 ile 100,0 arasında bir sayı olarak ifade edilen mutlak bir değer. Örneğin, 75. Varsayılan değer 100,0 ' dir.</li><li>Birimin değiştirileceği miktarı belirten, "+" veya "-" işaretinden önce gelen sayı olarak ifade edilen göreli bir değer. Örneğin + 10 veya-5,5.</li><li>Sabit değer:<ul><li>katılımı</li><li>x-Soft</li><li>yumuşatılmış</li><li>orta</li><li>DIN</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
+| `pitch` | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600 Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80 Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>uzunlukta</li><li>geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>arasında yetersiz alanla karşılaştı. | İsteğe bağlı |
+| `contour` | Sinir sesleriniz için kontur desteklenmez. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örnek: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, aralığı yükseltmek veya azaltmak için miktarı belirtir (bkz. `pitch`). | İsteğe bağlı |
+| `range` | Metin için sıklık aralığını temsil eden bir değer. `pitch`anlatmak için kullanılan mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak `range` ifade edebilirsiniz. | İsteğe bağlı |
+| `rate` | Metnin konuşma oranını gösterir. `rate` şu şekilde ifade edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *0,5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>uzunlukta</li><li>hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe bağlı |
+| `duration` | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. | İsteğe bağlı |
+| `volume` | Konuşma sesinizin birim düzeyini gösterir. Birimi şu şekilde ifade edebilirsiniz:<ul><li>*Deetest* 'den *loudest*'e kadar 0,0 ile 100,0 arasında bir sayı olarak ifade edilen mutlak bir değer. Örneğin, 75. Varsayılan değer 100,0 ' dir.</li><li>Birimin değiştirileceği miktarı belirten, "+" veya "-" işaretinden önce gelen sayı olarak ifade edilen göreli bir değer. Örneğin, + 10 veya-5,5.</li><li>Sabit değer:<ul><li>katılımı</li><li>x-Soft</li><li>yumuşatılmış</li><li>uzunlukta</li><li>DIN</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe bağlı |
 
 ### <a name="change-speaking-rate"></a>Konuşma hızını değiştirme
 
@@ -307,7 +379,7 @@ Konuşma ücreti, standart seslere veya tümce düzeyinde uygulanabilir. Konuşm
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -323,7 +395,7 @@ Birim değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir. B
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -339,7 +411,7 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -354,46 +426,46 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
     </voice>
 </speak>
 ```
-## <a name="say-as-element"></a>as öğesi  
+## <a name="say-as-element"></a>as öğesi
 
-`say-as`, öğe metninin (sayı veya tarih gibi) içerik türünü belirten isteğe bağlı bir öğedir. Bu, metnin nasıl pronounce hakkında konuşma birleştirme altyapısına kılavuzluk sağlar. 
+`say-as`, öğe metninin (sayı veya tarih gibi) içerik türünü belirten isteğe bağlı bir öğedir. Bu, metnin nasıl pronounce hakkında konuşma birleştirme altyapısına kılavuzluk sağlar.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| farklı yorumlama | Öğe metninin içerik türünü gösterir. Türlerin listesi için aşağıdaki tabloya bakın. | Gereklidir |
-| biçim | Belirsiz biçimleri olabilecek içerik türleri için öğenin metninin kesin biçimlendirmesi hakkında ek bilgiler sağlar. SSML bunları kullanan içerik türleri için biçimleri tanımlar (aşağıdaki tabloya bakın). | İsteğe Bağlı |
-| ayrıntılarını | Söylenen ayrıntı düzeyini gösterir. Örneğin, bu öznitelik konuşma senkiyle motor pronounce noktalama işaretlerinin olmasını isteyebilir. `detail`için tanımlanmış standart değer yok. | İsteğe Bağlı |
+| `interpret-as` | Öğe metninin içerik türünü gösterir. Türlerin listesi için aşağıdaki tabloya bakın. | Gerekli |
+| `format` | Belirsiz biçimleri olabilecek içerik türleri için öğenin metninin kesin biçimlendirmesi hakkında ek bilgiler sağlar. SSML bunları kullanan içerik türleri için biçimleri tanımlar (aşağıdaki tabloya bakın). | İsteğe bağlı |
+| `detail` | Söylenen ayrıntı düzeyini gösterir. Örneğin, bu öznitelik konuşma senkiyle motor pronounce noktalama işaretlerinin olmasını isteyebilir. `detail`için tanımlanmış standart değer yok. | İsteğe bağlı |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
 `interpret-as` ve `format` öznitelikleri için desteklenen içerik türleri aşağıda verilmiştir. `format` özniteliğini yalnızca `interpret-as` tarih ve saat olarak ayarlandıysa ekleyin.
 
-| farklı yorumlama | biçim | Yorum |
+| farklı yorumlama | format | Yorum |
 |--------------|--------|----------------|
-| address | | Metin bir adres olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Yani "150th mahkeme, Kuzey Doğu Redmond Washington." |
-| Kardinal, sayı | | Metin bir Kardinal sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"Üç alternatif vardır." |
-| karakterler, yazım denetimi | | Metin, tek tek harfler (yazılmış) olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T" olarak. |
-| date  | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. `format` özniteliği, tarihin biçimini belirtir (*d = Day, m = month ve y = Year*). Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
-| rakamlar, number_digit | | Metin, tek basamaklı bir dizi olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9" olarak |
-| dört | | Metin kesirli bir sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"Bir inç üç sekizde biri." |
-| ordinal  | | Metin bir sıra numarası olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />As "üçüncü seçeneği belirleyin". |
-| Telefon  | | Metin telefon numarası olarak konuşulur. `format` özniteliği bir ülke kodunu temsil eden rakamlar içerebilir. Örneğin, Birleşik Devletler için "1" veya Italya için "39". Konuşma birleştirme altyapısı, bu bilgileri bir telefon numarası söylenişini yönlendirecek şekilde kullanabilir. Telefon numarası da ülke kodunu içerebilir ve bu durumda `format`ülke kodundan önceliklidir. Konuşma birleştirme motoru pronounces:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As "My No Area Code 8 8 8 5 5 5 1 2 1 2." |
-| time | hms12, hms24 | Metin bir zaman olarak konuşulur. `format` özniteliği, saatin 12 saatlik bir saat (hms12) veya 24 saatlik saat (hms24) kullanılarak mı belirtilmediğini belirtir. Saatleri, dakikaları ve saniyeleri temsil eden sayıları ayırmak için iki nokta üst üste kullanın. Şu geçerli zaman örnekleri şunlardır: 12:35, 1:14:32, 08:15 ve 02:50:45. Konuşma birleştirme motoru pronounces:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"," Parçaları dört bir A 'da eğitme. " |
+| `address` | | Metin bir adres olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Yani "150th mahkeme, Kuzey Doğu Redmond Washington." |
+| `cardinal`, `number` | | Metin bir Kardinal sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"Üç alternatif vardır." |
+| `characters`, `spell-out` | | Metin, tek tek harfler (yazılmış) olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T" olarak. |
+| `date` | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. `format` özniteliği, tarihin biçimini belirtir (*d = Day, m = month ve y = Year*). Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
+| `digits`, `number_digit` | | Metin, tek basamaklı bir dizi olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9" olarak |
+| `fraction` | | Metin kesirli bir sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"Bir inç üç sekizde biri." |
+| `ordinal` | | Metin bir sıra numarası olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />As "üçüncü seçeneği belirleyin". |
+| `telephone` | | Metin telefon numarası olarak konuşulur. `format` özniteliği bir ülke kodunu temsil eden rakamlar içerebilir. Örneğin, Birleşik Devletler için "1" veya Italya için "39". Konuşma birleştirme altyapısı, bu bilgileri bir telefon numarası söylenişini yönlendirecek şekilde kullanabilir. Telefon numarası da ülke kodunu içerebilir ve bu durumda `format`ülke kodundan önceliklidir. Konuşma birleştirme motoru pronounces:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As "My No Area Code 8 8 8 5 5 5 1 2 1 2." |
+| `time` | hms12, hms24 | Metin bir zaman olarak konuşulur. `format` özniteliği, saatin 12 saatlik bir saat (hms12) veya 24 saatlik saat (hms24) kullanılarak mı belirtilmediğini belirtir. Saatleri, dakikaları ve saniyeleri temsil eden sayıları ayırmak için iki nokta üst üste kullanın. Şu geçerli zaman örnekleri şunlardır: 12:35, 1:14:32, 08:15 ve 02:50:45. Konuşma birleştirme motoru pronounces:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"," Parçaları dört bir A 'da eğitme. " |
 
 **Kullanım**
 
@@ -401,18 +473,18 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 
 **Örnek**
 
-Konuşma sennet12 35 Me motoru, "ilk isteğiniz," Ekim 20 10 ' de erken gelişle birlikte en fazla bir yere kadar bir odada yer aldığı için aşağıdaki örneği konuşuyor. "
+Konuşma sennet12 35 Me motoru, "ilk isteğiniz," Ekim 20 10 ' de erken gelişle birlikte, en az bir yere kadar bir yere vardı.
  
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
-    <p>
-    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
-    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
-    </p>
+    <voice name="en-US-Jessa24kRUS">
+        <p>
+        Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+        on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+        </p>
+    </voice>
 </speak>
 ```
-
 
 ## <a name="add-recorded-audio"></a>Kayıtlı ses ekleme
 
@@ -423,32 +495,35 @@ SSML belgesine dahil edilen tüm seslerin bu gereksinimleri karşılaması gerek
 * MP3, Internet erişimli bir HTTPS uç noktasında barındırılmalıdır. HTTPS gereklidir ve MP3 dosyasını barındıran etki alanı geçerli ve güvenilen bir SSL sertifikası sunmalıdır.
 * MP3 geçerli bir MP3 dosyası (MPEG v2) olmalıdır.
 * Bit hızının 48 kbps olması gerekir.
-* Örnek hız 16000 Hz olmalıdır.
+* Örnek hız 16.000 Hz olmalıdır.
 * Tek bir yanıttaki tüm metin ve ses dosyaları için Birleşik Toplam süre 90 (90) saniyeyi aşamaz.
 * MP3, müşteriye özgü veya diğer gizli bilgileri içermemelidir.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```xml
 <audio src="string"/></audio>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| YN | Ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde ses öğesi kullanılıyorsa gereklidir. |
+| `src` | Ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde ses öğesi kullanılıyorsa gereklidir. |
 
 **Örnek**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <p>
-        <audio src="https://contoso.com/opinionprompt.wav"/>
-        Thanks for offering your opinion. Please begin speaking after the beep.
-        <audio src="https://contoso.com/beep.wav">
-        Could not play the beep, please voice your opinion now. </audio>
-    </p>
+    <voice name="en-US-Jessa24kRUS">
+        <p>
+            <audio src="https://contoso.com/opinionprompt.wav"/>
+            Thanks for offering your opinion. Please begin speaking after the beep.
+            <audio src="https://contoso.com/beep.wav">
+                Could not play the beep, please voice your opinion now.
+            </audio>
+        </p>
+    </voice>
 </speak>
 ```
 
@@ -460,20 +535,20 @@ Belirtilen arka plan sesi metinden konuşmaya veya soluklaştırmadan kısaysa, 
 
 SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak, SSML belgenize Ek ses eklemek için `voice` öğesi içinde `audio` Etiketler oluşturabilirsiniz.
 
-**Söz dizimi**
+**Sözdizimi**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
 ```
 
-**Öznitelikler**
+**Özelliklerine**
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| YN | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
-| birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `100` dahil `0`. Varsayılan değer: `1`. | İsteğe Bağlı |
-| FADEIN | Arka plan sesinin saniye cinsinden silinme süresini belirtir. Varsayılan değer, belirme olmadan eşdeğer olan `0`. **Kabul edilen değerler**: `10000` dahil `0`.  | İsteğe Bağlı |
-| fadeout | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0`, soluklaştırma denk gelen. **Kabul edilen değerler**: `10000` dahil `0`.  | İsteğe Bağlı |
+| `src` | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
+| `volume` | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `100` dahil `0`. Varsayılan değer: `1`. | İsteğe bağlı |
+| `fadein` | Arka plan sesinin "belirme süresi" süresini milisaniye olarak belirtir. Varsayılan değer, belirme olmadan eşdeğer olan `0`. **Kabul edilen değerler**: `10000` dahil `0`.  | İsteğe bağlı |
+| `fadeout` | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0`, soluklaştırma denk gelen. **Kabul edilen değerler**: `10000` dahil `0`.  | İsteğe bağlı |
 
 **Örnek**
 

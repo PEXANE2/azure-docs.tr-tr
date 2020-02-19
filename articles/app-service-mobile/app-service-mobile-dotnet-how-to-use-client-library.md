@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668478"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459200"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps için yönetilen istemci kullanma
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, Windows ve Xamarin uygulamaları için Azure App Service Mobile Apps yönetilen istemci kitaplığını kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Mobile Apps yeni olduğunuzda, önce [Azure Mobile Apps hızlı başlangıç][1] öğreticisini tamamlamayı düşünmelisiniz. Bu kılavuzda, istemci tarafı yönetilen SDK 'ya odaklanıyoruz. Mobile Apps yönelik sunucu tarafı SDK 'Ları hakkında daha fazla bilgi için, [.NET Server SDK][2] veya [Node. js sunucu SDK][3]belgelerine bakın.
@@ -34,7 +29,7 @@ Bu kılavuzda, Windows ve Xamarin uygulamaları için Azure App Service Mobile A
 * API 19 ile 24 arasında Xamarin Android sürümleri (KitKat ile Nougat)
 * İOS sürümleri 8,0 ve üzeri için Xamarin iOS sürümleri
 * Evrensel Windows Platformu
-* Windows Phone 8,1
+* Windows Phone 8.1
 * Silverlight uygulamaları hariç Windows Phone 8,0
 
 "Sunucu-akışı" kimlik doğrulaması, sunulan kullanıcı arabirimi için bir WebView kullanır.  Cihaz bir WebView Kullanıcı arabirimini sunmıyorsa, diğer kimlik doğrulama yöntemleri gereklidir.  Bu SDK bu nedenle, Izleme türü veya benzer kısıtlanmış cihazlar için uygun değildir.
@@ -59,7 +54,7 @@ public class TodoItem
 
 [Jsonpropertyattribute][6] , istemci alanı ve tablo alanı arasındaki *PropertyName* eşlemesini tanımlamak için kullanılır.
 
-Mobile Apps arka ucunuzdaki tablo oluşturmayı öğrenmek için [.NET Server SDK konusuna][7] veya [Node. js sunucu SDK][8]konusuna bakın. Mobil uygulama arka ucunuzu hızlı başlangıç kullanarak Azure portal oluşturduysanız, [Azure portalda] **kolay tablolar** ayarını da kullanabilirsiniz.
+Mobile Apps arka ucunuzdaki tablo oluşturmayı öğrenmek için [.NET Server SDK konusuna][7] veya [Node. js sunucu SDK][8]konusuna bakın. Mobil uygulama arka ucunuzu hızlı başlangıç kullanarak Azure portal oluşturduysanız, [Azure portalında] **kolay tablolar** ayarını da kullanabilirsiniz.
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Nasıl yapılır: yönetilen istemci SDK paketini yüklemek
 [NuGet][9]'den Mobile Apps için YÖNETILEN istemci SDK paketini yüklemek için aşağıdaki yöntemlerden birini kullanın:
@@ -86,7 +81,7 @@ Aşağıdaki kod, mobil uygulama arka ucunuza erişmek için kullanılan [Mobile
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Yukarıdaki kodda `MOBILE_APP_URL`, [Azure portalda]mobil uygulamanızın arka ucunuzun dikey penceresinde bulunan mobil uygulama arka ucunun URL 'siyle değiştirin. MobileServiceClient nesnesi tek bir olmalıdır.
+Yukarıdaki kodda `MOBILE_APP_URL`, [Azure portalında]mobil uygulamanızın arka ucunuzun dikey penceresinde bulunan mobil uygulama arka ucunun URL 'siyle değiştirin. MobileServiceClient nesnesi tek bir olmalıdır.
 
 ## <a name="work-with-tables"></a>Tablolarla çalışma
 Aşağıdaki bölümde kayıtları arama ve alma ve tablodaki verileri değiştirme ayrıntıları yer alır.  Aşağıdaki konular ele alınmıştır:
@@ -651,7 +646,7 @@ Azure Active Directory kimlik doğrulaması kullanarak istemciden kullanıcı ki
 2. Visual Studio veya Xamarin Studio içinde projenizi açın ve `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet paketine bir başvuru ekleyin. Arama sırasında yayın öncesi sürümleri dahil edin.
 3. Aşağıdaki kodu, kullandığınız platforma göre uygulamanıza ekleyin. Her birinde aşağıdaki değişiklikleri yapın:
 
-   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.com olmalıdır. Bu değer, [Azure portalda]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
+   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portalında]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
    * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
    * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
    * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.
@@ -1065,7 +1060,7 @@ public class MyHandler : DelegatingHandler
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Olmadığı]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure portalda]: https://portal.azure.com/
+[Azure portalında]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

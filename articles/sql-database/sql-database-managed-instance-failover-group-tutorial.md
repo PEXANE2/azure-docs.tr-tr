@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552772"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462658"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
@@ -34,15 +34,15 @@ Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makale
   > - Yük devretme grubuna katılan yönetilen örnekler, [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN Ağ Geçidi gerektirir. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
@@ -55,7 +55,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Bu adımda, Azure portal veya PowerShell 'i kullanarak yük devretme grubunuz için kaynak grubunu ve birincil yönetilen örneği oluşturacaksınız. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 Azure portal kullanarak kaynak grubunu ve birincil yönetilen örneğinizi oluşturun. 
 
@@ -75,7 +75,7 @@ Azure portal kullanarak kaynak grubunu ve birincil yönetilen örneğinizi oluş
 1. Ayarları varsayılan değerlerinde bırakın ve yönetilen örnek ayarlarınızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 1. Birincil yönetilen örneğinizi oluşturmak için **Oluştur** ' u seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturun. 
 
@@ -405,7 +405,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturu
 ## <a name="2---create-secondary-virtual-network"></a>2-ikincil sanal ağ oluşturma
 Yönetilen örneğinizi oluşturmak için Azure portal kullanıyorsanız, birincil ve ikincil yönetilen örnek alt ağının çakışan aralıklar olmadığından, sanal ağı ayrı olarak oluşturmanız gerekecektir. Yönetilen örneğinizi yapılandırmak için PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 Birincil sanal ağınızın alt ağ aralığını doğrulamak için şu adımları izleyin:
 1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil örneğiniz için sanal ağı seçin. 
 1. **Ayarlar** altında **alt ağlar** ' ı seçin ve **adres aralığını**aklınızda edin. İkincil yönetilen örnek için sanal ağın alt ağ adres aralığı bu ile çakışamaz. 
@@ -433,7 +433,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
     ![İkincil sanal ağ değerleri](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Bu adım yalnızca, yönetilen örneğinizi dağıtmak için Azure portal kullanıyorsanız gereklidir. PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
 
@@ -446,7 +446,7 @@ Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu
 - Boş olmalıdır. 
 - Birincil yönetilen örnekten farklı bir alt ağa ve IP aralığına sahip olmak. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 Azure portal kullanarak ikincil yönetilen örnek oluşturun. 
 
@@ -482,7 +482,7 @@ Azure portal kullanarak ikincil yönetilen örnek oluşturun.
 1. İkincil yönetilen örneğinizin ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 1. İkincil yönetilen örneğinizi oluşturmak için **Oluştur** ' u seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak ikincil yönetilen örnek oluşturun. 
 
@@ -734,7 +734,7 @@ Yük devretme grubuna katılacak iki yönetilen örnek için, ağ iletişimine i
 Bu makalede, iki VPN ağ geçidini oluşturma ve bunları bağlama adımları sağlanır, ancak bunun yerine ExpressRoute 'u yapılandırdıysanız yük devretme grubunu oluşturmaya devam edebilirsiniz. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
 
@@ -773,7 +773,7 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
 1. Yeni sanal ağ geçidinizi oluşturmak için **Oluştur** ' u seçin. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak birincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
 
@@ -828,7 +828,7 @@ PowerShell kullanarak birincil yönetilen örneğinizin sanal ağı için ağ ge
 Bu adımda, Azure portal kullanarak ikincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun, 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını ve ağ geçidini oluşturmak üzere önceki bölümdeki adımları yineleyin. İkincil yönetilen örneğiniz için ağ geçidini yapılandırmak üzere gerekli alanları doldurun. 
 
@@ -851,7 +851,7 @@ Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını 
    ![İkincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak ikincil yönetilen örneğin sanal ağı için ağ geçidini oluşturun. 
 
@@ -908,7 +908,7 @@ PowerShell kullanarak ikincil yönetilen örneğin sanal ağı için ağ geçidi
 Bu adımda iki sanal ağın iki ağ geçidi arasında çift yönlü bir bağlantı oluşturun. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak iki ağ geçidini bağlayın. 
 
@@ -933,7 +933,7 @@ Azure portal kullanarak iki ağ geçidini bağlayın.
 1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantıyı oluşturmak için **Tamam** ' ı seçin. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak iki ağ geçidini bağlayın. 
 
@@ -967,7 +967,7 @@ PowerShell kullanarak iki ağ geçidini bağlayın.
 Bu adımda, yük devretme grubunu oluşturacak ve yönetilen örneklerin her ikisini de ekleyecek. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak yük devretme grubunu oluşturun. 
 
 
@@ -984,7 +984,7 @@ Azure portal kullanarak yük devretme grubunu oluşturun.
 1. Yük devretme grubu dağıtımı tamamlandıktan sonra, **Yük devretme grubu** sayfasına geri yönlendirilirsiniz. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell kullanarak yük devretme grubunu oluşturun. 
 
    ```powershell-interactive
@@ -1010,11 +1010,11 @@ PowerShell kullanarak yük devretme grubunu oluşturun.
 Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak yük devretmeyi test edin. 
 
 
-1. [Azure Portal](https://portal.azure.com) içinde yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
+1. [Azure Portal](https://portal.azure.com) içinde _İkincil_ yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
 1. Hangi yönetilen örnek birincil olduğunu ve hangi yönetilen örnek ikincil olduğunu gözden geçirin. 
 1. **Yük devretme** ' yı seçin ve sonra kesilmekte olan tds oturumlarının uyarısında **Evet** ' i seçin. 
 
@@ -1024,10 +1024,10 @@ Azure portal kullanarak yük devretmeyi test edin.
 
    ![Yönetilen örnekler, yük devretmeden sonra rolleri değiştirdi](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Birincil örnek birincil role geri dönmek için **Yük devretmeyi** bir kez daha seçin. 
+1. Yeni _İkincil_ yönetilen örneğe gidin ve birincil örnek birincil role geri dönmek Için **Yük devretmeyi** bir kez daha seçin. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell kullanarak yük devretmeyi test etme. 
 
    ```powershell-interactive
@@ -1076,14 +1076,14 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Önce yönetilen örneği, ardından sanal kümeyi, ardından kalan kaynakları ve son olarak kaynak grubunu silerek kaynakları temizleyin. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
 1. Yönetilen örnekleri seçin ve ardından **Sil**' i seçin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için etkinlik sekmesindeki silmeyi izleyin. 
 1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. 
 1. Kalan kaynakları silin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. 
 1. Kaynak grubunu Sil ' i seçerek kaynak grubunu **Sil**' i seçin, kaynak grubunun adını yazın, `myResourceGroup`ve ardından **Sil**' i seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Kaynak grubunu iki kez kaldırmanız gerekecektir. Kaynak grubunun ilk kez kaldırılması yönetilen örneği ve sanal kümeleri kaldırır, ancak `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`hata iletisiyle başarısız olur. Kalan kaynakları ve kaynak grubunu kaldırmak için Remove-AzResourceGroup komutunu ikinci kez çalıştırın.
 
@@ -1104,7 +1104,7 @@ Write-host "Removing residual resources and resouce group..."
 
 ## <a name="full-script"></a>Tam betik
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
@@ -1136,7 +1136,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [Switch-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Yönetilen örnek yük devretme grubunun yük devretmesini yürütür. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır. | 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 Azure portal için kullanılabilir komut yok.
 

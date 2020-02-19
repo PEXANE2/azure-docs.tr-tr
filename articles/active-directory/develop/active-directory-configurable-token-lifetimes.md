@@ -5,25 +5,24 @@ description: Azure AD tarafından verilen belirteçler için yaşam sürelerini 
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.custom: aaddev, annaba, identityplatformtop40
-ms.reviewer: hirsin
-ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40
+ms.reviewer: hirsin, jlu, annaba
+ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699028"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461207"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
-Azure Active Directory (Azure AD) tarafından verilen bir belirtecin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz.
+Azure Active Directory (Azure AD) tarafından verilen belirtecin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar için, çok kiracılı (çok kullanıcılı) bir uygulama veya kuruluşunuzdaki belirli bir hizmet sorumlusu için belirteç yaşam sürelerini ayarlayabilirsiniz.
 
 > [!IMPORTANT]
 > Önizleme sırasında müşterilerden bir duyduktan sonra Azure AD koşullu erişim 'de [kimlik doğrulama oturumu yönetimi özelliklerini](https://go.microsoft.com/fwlink/?linkid=2083106) uyguladık. Bu yeni özelliği, oturum açma sıklığını ayarlayarak yenileme belirteci yaşam sürelerini yapılandırmak için kullanabilirsiniz. 1 Mayıs 2020 ' den sonra, oturum yapılandırmak ve belirteçleri yenilemek için yapılandırılabilir belirteç yaşam süresi ilkesini kullanamazsınız. Kullanımdan kaldırıldıktan sonra erişim belirteci yaşam sürelerini yapılandırabilirsiniz.
@@ -33,9 +32,8 @@ Azure AD 'de bir ilke nesnesi, tek tek uygulamalarda veya bir kuruluştaki tüm 
 Bir ilkeyi kuruluşunuz için varsayılan ilke olarak belirleyebilirsiniz. İlke, daha yüksek önceliğe sahip bir ilke tarafından geçersiz kılınmadığı sürece, kuruluştaki herhangi bir uygulamaya uygulanır. Ayrıca, belirli uygulamalara bir ilke atayabilirsiniz. Öncelik sırası, ilke türüne göre farklılık gösterir.
 
 > [!NOTE]
-> Yapılandırılabilir belirteç ömür ilkesi, SharePoint Online için desteklenmiyor.  Bu ilkeyi PowerShell aracılığıyla oluşturma olanağına sahip olsanız da, SharePoint Online Bu ilkeyi kabul etmez. Boş oturum zaman aşımlarını yapılandırma hakkında daha fazla bilgi edinmek için [SharePoint Online bloguna](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) bakın.
->* SharePoint Online erişim belirtecinin varsayılan yaşam süresi 1 saattir. 
->* SharePoint Online yenileme belirtecinin varsayılan en fazla etkin olmayan süresi 90 gündür.
+> Yapılandırılabilir belirteç ömür ilkesi yalnızca SharePoint Online ve OneDrive Iş kaynaklarına erişen mobil ve Masaüstü istemcilerine uygulanır ve Web tarayıcı oturumları için geçerli değildir.
+> SharePoint Online ve OneDrive Iş için Web tarayıcısı oturumlarının ömrünü yönetmek üzere [koşullu erişim oturumu ömrü](../conditional-access/howto-conditional-access-session-lifetime.md) özelliğini kullanın. Boş oturum zaman aşımlarını yapılandırma hakkında daha fazla bilgi edinmek için [SharePoint Online bloguna](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) bakın.
 
 ## <a name="token-types"></a>Belirteç türleri
 
@@ -97,7 +95,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
 * <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 | Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |
@@ -210,7 +208,7 @@ Uygulamalar, hizmet sorumluları ve genel kuruluşunuz için belirteç yaşam s�
 * Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
 * Gelişmiş bir ilkeyi yönetme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki örneklerde uygulamalar, hizmet sorumluları ve genel kurumunuzun ilkelerini oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma](quickstart-create-new-tenant.md) hakkında bilgi almanızı öneririz.  
 
 Başlamak için aşağıdaki adımları uygulayın:

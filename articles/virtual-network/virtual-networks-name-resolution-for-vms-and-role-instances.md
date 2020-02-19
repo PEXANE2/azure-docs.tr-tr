@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991040"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462675"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarında kaynaklar için ad çözümlemesi
 
@@ -43,8 +43,8 @@ Kullandığınız ad çözümlemesi türü, kaynaklarınızın birbirleriyle nas
 | Bir sanal ağdaki App Service Web Apps farklı bir sanal ağdaki VM 'lere ad çözümleme. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayar ve hizmet adları, VM 'lerden veya Azure 'daki rol örneklerinden çözümlenmektedir. |Müşteri tarafından yönetilen DNS sunucuları (Şirket içi etki alanı denetleyicisi, yerel salt okuma etki alanı denetleyicisi veya bölge aktarımları kullanılarak eşitlenmiş bir DNS ikincil sunucu). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayarlardan Azure ana bilgisayar adları çözümlemesi. |Sorguları karşılık gelen sanal ağdaki müşteri tarafından yönetilen bir DNS proxy sunucusuna ilet, proxy sunucusu sorguları çözümlenmek üzere Azure 'a iletir. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
-| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Geçerli değil |
-| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Geçerli değil|
+| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Uygulanamaz |
+| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Uygulanamaz|
 
 ## <a name="azure-provided-name-resolution"></a>Azure tarafından sağlanmış ad çözümlemesi
 
@@ -105,8 +105,7 @@ Kullanılabilir farklı DNS önbelleğe alma paketleri vardır (dnsmasq gibi). A
 
 > [!NOTE]
 > Dnsmasq paketi yalnızca Linux için kullanılabilen birçok DNS Önbelleklerinden biridir. Kullanmadan önce, belirli gereksinimleriniz için uygunluğu denetleyin ve başka bir önbelleğin yüklenmediğini denetleyin.
->
->
+
     
 ### <a name="client-side-retries"></a>İstemci tarafı yeniden denemeleri
 
@@ -169,8 +168,7 @@ Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS ç�
 * Dış aracılardan oluşan tehditleri azaltmak için internet 'ten erişime karşı güvenli hale getirilmesi gerekir.
 
 > [!NOTE]
-> En iyi performansı elde etmek için, Azure VM 'lerini DNS sunucuları olarak kullanırken, IPv6 devre dışı bırakılmalıdır. Her DNS sunucusu VM 'sine [Genel BIR IP adresi](virtual-network-public-ip-address.md) atanmalıdır. DNS sunucunuz olarak Windows Server kullanırken ek performans analizi ve iyileştirmeler için bkz. [özyinelemeli bir WINDOWS DNS sunucusu 2012 R2 'Nin ad çözümleme performansı](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
-> 
+> En iyi performansı elde etmek için, Azure VM 'lerini DNS sunucuları olarak kullanırken, IPv6 devre dışı bırakılmalıdır. Her DNS sunucusu VM 'sine [Genel BIR IP adresi](virtual-network-public-ip-address.md) atanmalıdır. 
 > 
 
 ### <a name="web-apps"></a>Web uygulamaları

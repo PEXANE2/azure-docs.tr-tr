@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200053"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460220"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -77,7 +77,8 @@ Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | En fazla veritabanı sayısı | Sınırsız |
-| Paylaşılan verimlilik içeren bir veritabanında sağlanabilen en fazla kapsayıcı sayısı |25 |
+| Paylaşılan işleme ile veritabanı başına en fazla kapsayıcı sayısı |25 |
+| Adanmış aktarım hızı olan veritabanı veya hesap başına en fazla kapsayıcı sayısı  |sınırsız |
 | En fazla bölge sayısı | Sınır yok (tüm Azure bölgeleri) |
 
 ## <a name="per-container-limits"></a>Kapsayıcı başına sınırlar
@@ -103,7 +104,7 @@ Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondak
 | --- | --- |
 | En büyük öğe boyutu | 2 MB (UTF-8 JSON gösteriminin uzunluğu) |
 | Bölüm anahtarı değerinin uzunluk üst sınırı | 2048 bayt |
-| Maksimum kimlik değeri uzunluğu | 1024 bayt |
+| Maksimum kimlik değeri uzunluğu | 1023 bayt |
 | Öğe başına en fazla özellik sayısı | Pratik sınır yok |
 | En fazla iç içe geçme derinliği | Pratik sınır yok |
 | Özellik adının uzunluk üst sınırı | Pratik sınır yok |

@@ -7,39 +7,39 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 346a44f02667976d95125b72371b6e33715ee4b1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211158"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462539"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu isteklerini izleme
 
-Bu makalede, ölçüm kullanılarak sorgu performansının ve hacminin nasıl ölçülmesi açıklanmaktadır. Ayrıca, arama corpclarınızın yardımcı programını ve verimliliğini değerlendirmenize gerek duyduğunuzda, sorgularda kullanılan giriş koşullarının nasıl toplandığını da açıklar.
+Bu makalede, ölçüm ve tanılama günlüğü kullanılarak sorgu performansının ve hacminin nasıl ölçülmesi açıklanmaktadır. Ayrıca, arama corpclarınızın yardımcı programını ve verimliliğini değerlendirmenize gerek duyduğunuzda, sorgularda kullanılan giriş koşullarının nasıl toplandığını da açıklar.
 
-Ölçümlerde akışların bulunduğu geçmiş verileri 30 gün boyunca korunur. Daha uzun bekletme için veya işletimsel verileri ve Sorgu dizelerini raporlamak için, depolama seçeneğini belirten bir [Tanılama ayarını](search-monitor-logs.md) etkinleştirdiğinizden emin olun.
+Ölçümlerde akışların bulunduğu geçmiş verileri 30 gün boyunca korunur. Daha uzun bekletme için veya işletimsel verileri ve Sorgu dizelerini raporlamak için, günlüğe kaydedilen olayları ve ölçümleri kalıcı hale getiren bir depolama seçeneği belirten bir [Tanılama ayarını](search-monitor-logs.md) etkinleştirdiğinizden emin olun.
 
-Veri ölçümlerinin bütünlüğünü en üst düzeye çıkaran koşullar şunlardır:
+Veri ölçümünün bütünlüğünü en üst düzeye çıkaran koşullar şunlardır:
 
 + Faturalanabilir bir hizmet (temel veya Standart katmanda oluşturulan bir hizmet) kullanın. Ücretsiz hizmet birden çok abone tarafından paylaşılır ve bu, yükleme vardiyası olarak belirli bir miktar volame sağlar.
 
-+ Mümkünse, hesaplamaların bir makineyle sınırlı olması için tek bir çoğaltma kullanın. Birden çok çoğaltma kullanıyorsanız, sorgu ölçümlerinin birden çok düğüm arasında ortalaması alınır ve bazıları daha hızlı olabilir. Sorgu performansını ayarlamaya çalışıyorsanız, tek bir düğüm test için daha kararlı bir ortam sağlar.
++ İçerilen ve yalıtılmış bir ortam oluşturmak için, mümkünse tek bir çoğaltma ve bölüm kullanın. Birden çok çoğaltma kullanıyorsanız, sorgu ölçümlerinin birden çok düğüm arasında ortalaması alınır ve bu da sonuçların duyarlılığını azaltır. Benzer şekilde, birden çok bölüm verilerin bölündüğü anlamına gelir, çünkü dizin oluşturma işlemi de devam edecekse bazı bölümlerin farklı verileri olabilir. Sorgu performansını ayarlamaya çalışırken, tek bir düğüm ve bölüm test için daha kararlı bir ortam sağlar.
 
 > [!Tip]
 > Ek istemci tarafı kodu ve Application Insights ile, uygulama kullanıcılarınızın ilgisini duyma hakkında daha derin Öngörüler için tıklama verilerini de yakalayabilirsiniz. Daha fazla bilgi için bkz. [arama trafiği analizi](search-traffic-analytics.md).
 
 ## <a name="query-volume-qps"></a>Sorgu birimi (QPS)
 
-Birim, bir dakikalık bir pencerede yürütülen sorguların ortalama, sayı, minimum veya maksimum değerleri olarak rapor oluşturulabilecek yerleşik bir ölçüm olan **saniye başına arama sorgusu** (QPS) olarak ölçülür. Ölçümler için bir dakikalık aralıklar (Timegrek = "PT1M") sistem içinde düzeltilmiştir.
+Birim, tek dakikalık bir pencerede yürütülen sorguların ortalama, sayı, minimum veya maksimum değerleri olarak rapor oluşturulabilecek yerleşik bir ölçüm olan, **saniyedeki arama sorgusu** (QPS) olarak ölçülür. Ölçümler için bir dakikalık aralıklar (Timegrek = "PT1M") sistem içinde düzeltilmiştir.
 
 Sorguların milisaniye cinsinden yürütülmesi yaygındır, bu nedenle yalnızca saniyeler olarak ölçecek sorgular ölçümlerde görünür.
 
 | Toplama Türü | Açıklama |
 |------------------|-------------|
 | Ortalama | Sorgu yürütmenin gerçekleştiği bir dakika içinde ortalama saniye sayısı.|
-| Sayı | Günlüğe bir dakika aralığı içinde oluşturulan ölçüm sayısı. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Bir dakika içinde saniyede kayıtlı en yüksek arama sorgusu sayısı. |
 | Minimum | Bir dakika içinde saniyede kaydedilen arama sorgularının en düşük sayısı.  |
 | Toplam | Dakika içinde yürütülen tüm sorguların toplamı.  |
@@ -57,7 +57,7 @@ Hizmet genelinde, sorgu performansı arama gecikmesi (bir sorgunun tamamlandığ
 | Toplama Türü | Gecikme süresi | 
 |------------------|---------|
 | Ortalama | Milisaniye cinsinden ortalama sorgu süresi. | 
-| Sayı | Günlüğe bir dakika aralığı içinde oluşturulan ölçüm sayısı. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Örnekteki en uzun çalışan sorgu. | 
 | Minimum | Örnekteki en kısa çalışan sorgu.  | 
 | Toplam | Örnekteki tüm sorguların, Aralık içinde yürütülerek toplam yürütme süresi (bir dakika).  |
@@ -85,7 +85,7 @@ Kısıtlanmış sorguları onaylamak için, **Kısıtlanmış arama sorguları**
 | Toplama Türü | Azaltma |
 |------------------|-----------|
 | Ortalama | Aralık içinde bırakılan sorguların yüzdesi. |
-| Sayı | Günlüğe bir dakika aralığı içinde oluşturulan ölçüm sayısı. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Aralık içinde bırakılan sorguların yüzdesi.|
 | Minimum | Aralık içinde bırakılan sorguların yüzdesi. |
 | Toplam | Aralık içinde bırakılan sorguların yüzdesi. |
@@ -116,6 +116,45 @@ Daha derin araştırma için, **izleme** menüsünden Ölçüm Gezgini 'ni açı
 
 1. Çizgi grafik üzerinde ilgilendiğiniz bir alana yakınlaştırın. Fare işaretçisini alanın başlangıcına koyun, sol fare düğmesine tıklayın ve basılı tutun, alanın diğer tarafına sürükleyin ve düğmeyi bırakın. Grafik bu zaman aralığında yakınlaşacaktır.
 
+## <a name="identify-strings-used-in-queries"></a>Sorgularda kullanılan dizeleri tanımla
+
+Tanılama günlüğünü etkinleştirdiğinizde, sistem sorgu isteklerini **AzureDiagnostics** tablosunda yakalar. Bir önkoşul olarak, bir Log Analytics çalışma alanı ya da başka bir depolama seçeneği belirterek [Tanılama günlüğünü](search-monitor-logs.md)zaten etkinleştirmiş olmanız gerekir.
+
+1. Izleme bölümünde, Log Analytics ' de boş bir sorgu penceresi açmak için **Günlükler** ' i seçin.
+
+1. Sorgu. Search işlemlerini aramak için aşağıdaki ifadeyi çalıştırın, işlem adından, sorgu dizesinden, sorgulanan dizinden ve bulunan belge sayısından oluşan tablolu bir sonuç kümesi döndürür. Son iki deyim, bir boş veya belirtilmemiş aramadan oluşan sorgu dizelerini, örnek bir dizin üzerinden hariç tutar ve bu, sonuçlarınızda paraziti keser.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, Query_s, IndexName_s, Documents_d
+   | where OperationName == "Query.Search"
+   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where IndexName_s != "realestate-us-sample-index"
+   ```
+
+1. İsteğe bağlı olarak, belirli bir söz dizimi veya dizeyi aramak için *Query_s* bir sütun filtresi ayarlayın. Örneğin *, üzerine filtre* uygulayabilir `?api-version=2019-05-06&search=*&%24filter=HotelName`).
+
+   ![Günlüğe kaydedilen sorgu dizeleri](./media/search-monitor-usage/log-query-strings.png "Günlüğe kaydedilen sorgu dizeleri")
+
+Bu teknik geçici araştırma için çalışırken, bir rapor oluşturmak, Sorgu dizelerini bir düzen daha fazla şekilde analiz edilecek şekilde birleştirip sunmanıza olanak tanır.
+
+## <a name="identify-long-running-queries"></a>Uzun süre çalışan sorguları tanımla
+
+Yalnızca ölçüm olarak çekilen olanları değil, tüm sorguların numaralarını almak için Duration sütununu ekleyin. Bu verileri sıralamak, hangi sorguların ne kadar uzun sürme olduğunu gösterir.
+
+1. Izleme bölümünde günlük bilgilerini sorgulamak için **Günlükler** ' i seçin.
+
+1. Sorgu döndürmek için aşağıdaki sorguyu çalıştırın, milisaniye cinsinden süreye göre sıralanır. En uzun çalışan sorgular en üstte bulunur.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search"
+   | sort by DurationMs
+   ```
+
+   ![Sorguları süreye göre sırala](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Sorguları süreye göre sırala")
+
 ## <a name="create-a-metric-alert"></a>Ölçüm uyarısı oluşturma
 
 Ölçüm uyarısı, bir bildirim alacağınız veya önceden tanımladığınız bir düzeltici eylemi tetikleyen bir eşik oluşturur. 
@@ -144,31 +183,9 @@ Belirli bir çoğaltma bölümü yapılandırmasının sınırlarını gönderir
 
 Bir e-posta bildirimi belirttiyseniz, "Azure: Activated önem derecesi: 3 `<your rule name>`" konu satırıyla "Microsoft Azure" adresinden bir e-posta alırsınız.
 
-## <a name="query-strings-used-in-queries"></a>Sorgularda kullanılan sorgu dizeleri
+<!-- ## Report query data
 
-Tanılama günlüğünü etkinleştirdiğinizde, sistem sorgu isteklerini **AzureDiagnostics** tablosunda yakalar. Bir önkoşul olarak, bir Log Analytics çalışma alanı ya da başka bir depolama seçeneği belirterek [Tanılama günlüğünü](search-monitor-logs.md)zaten etkinleştirmiş olmanız gerekir.
-
-1. Izleme bölümünde, Log Analytics ' de boş bir sorgu penceresi açmak için **Günlükler** ' i seçin.
-
-1. Sorgu. Search işlemlerini aramak için aşağıdaki ifadeyi çalıştırın, işlem adından, sorgu dizesinden, sorgulanan dizinden ve bulunan belge sayısından oluşan tablolu bir sonuç kümesi döndürür. Son iki deyim, bir boş veya belirtilmemiş aramadan oluşan sorgu dizelerini, bir örnek dizin üzerinde dışlar ve bu da sonuçlarınızda paraziti keser.
-
-   ```
-    AzureDiagnostics 
-     | project OperationName, Query_s, IndexName_s, Documents_d 
-     | where OperationName == "Query.Search"
-     | where Query_s != "?api-version=2019-05-06&search=*"
-     | where IndexName_s != "realestate-us-sample-index"
-   ```
-
-1. İsteğe bağlı olarak, belirli bir söz dizimi veya dizeyi aramak için *Query_s* bir sütun filtresi ayarlayın. Örneğin *, üzerine filtre* uygulayabilir `?api-version=2019-05-06&search=*&%24filter=HotelName`).
-
-   ![Günlüğe kaydedilen sorgu dizeleri](./media/search-monitor-usage/log-query-strings.png "Günlüğe kaydedilen sorgu dizeleri")
-
-Bu teknik geçici araştırma için çalışırken, bir rapor oluşturmak, Sorgu dizelerini bir düzen daha fazla şekilde analiz edilecek şekilde birleştirip sunmanıza olanak tanır.
-
-## <a name="report-query-data"></a>Rapor sorgusu verileri
-
-Power BI, blob depolamada veya bir Log Analytics çalışma alanında depolanan günlük verilerine karşı kullanabileceğiniz bir analitik raporlama aracıdır.
+Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

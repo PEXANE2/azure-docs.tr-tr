@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 775e9fc737798a0e5517f9eb3314c71b14c5be07
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371900"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461886"
 ---
 Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
@@ -29,7 +29,7 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
    - **Kaynak grubu**: bir kaynak grubu seçin veya yeni bir tane oluşturun. Yeni bir tane oluşturmak için **Yeni oluştur** ' u seçin ve kullanmak istediğiniz adı girin. Var olan bir kaynak grubunu kullanmak için bu kaynak grubunu seçin. Daha fazla bilgi için bkz. [Azure Resource Manager kaynak gruplarını yönetme](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   - **Bölge**: hub 'ınızın bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin.
+   - **Bölge**: hub 'ınızın bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin. [IoT Hub cihaz akışları](../articles/iot-hub/iot-hub-device-streams-overview.md)gibi bazı özellikler yalnızca belirli bölgelerde kullanılabilir. Bu sınırlı Özellikler için desteklenen bölgelerden birini seçmeniz gerekir.
 
    - **IoT Hub adı**: hub 'ınız için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
 
@@ -41,9 +41,11 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
    ![Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlama](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-    Bu ekran aşağıdaki değerleri ayarlamanıza olanak sağlar:
+   Varsayılan ayarları burada kabul edebilirsiniz. İsterseniz, aşağıdaki alanlardan herhangi birini değiştirebilirsiniz: 
 
-    - **Fiyatlandırma ve ölçek katmanı**: seçtiğiniz katman. İstediğiniz sayıda özelliğe ve her gün çözümünüz aracılığıyla kaç tane ileti gönderdiğinize bağlı olarak çeşitli katmanlardan seçim yapabilirsiniz. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. 500 cihazların hub 'a ve günde en fazla 8.000 iletiye bağlanmasını sağlar. Her Azure aboneliği ücretsiz katmanda bir IoT Hub 'ı oluşturabilir.
+    - **Fiyatlandırma ve ölçek katmanı**: seçtiğiniz katman. İstediğiniz sayıda özelliğe ve her gün çözümünüz aracılığıyla kaç tane ileti gönderdiğinize bağlı olarak çeşitli katmanlardan seçim yapabilirsiniz. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. 500 cihazların hub 'a ve günde en fazla 8.000 iletiye bağlanmasını sağlar. Her Azure aboneliği ücretsiz katmanda bir IoT Hub 'ı oluşturabilir. 
+
+      IoT Hub cihaz akışları için bir hızlı başlangıç üzerinden çalışıyorsanız, ücretsiz katmanı seçin.
 
     - **IoT Hub birimler**: günlük birim başına izin verilen ileti sayısı, hub 'ın fiyatlandırma katmanına bağlıdır. Örneğin, hub 'ın 700.000 ileti girişini desteklemesini istiyorsanız iki adet S1 katmanı birimi seçersiniz.
     Diğer katman seçenekleri hakkında daha fazla bilgi için, bkz. [doğru IoT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md).
@@ -52,14 +54,14 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
     - **Gelişmiş ayarlar** **cihazdan buluta bölümler** > : Bu özellik cihazdan buluta iletileri, iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Çoğu hub 'da yalnızca dört bölüm gereklidir.
 
-1. Bu makalede, varsayılan seçimleri kabul edin ve ardından İleri **: Etiketler** ' i seçerek sonraki ekrana geçin.
+1.  Sonraki ekrana devam etmek için **İleri: Etiketler** ' i seçin.
 
     Etiketler ad/değer çiftleridir. Kaynakları kategorilere ayırarak ve faturalandırmayı birleştirmek için birden fazla kaynağa ve kaynak grubuna aynı etiketi atayabilirsiniz. daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md).
 
-   ![Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlama](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![Azure portal kullanarak hub için Etiketler atama](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-    **İleri ' yi seçin:** seçimlerinizi gözden geçirmek için ve Oluştur ' a tıklayın. Bu ekrana benzer bir şey görürsünüz.
+1.  **İleri ' yi seçin:** seçimlerinizi gözden geçirmek için ve Oluştur ' a tıklayın. Bu ekrana benzer bir şey görürsünüz, ancak hub 'ı oluştururken seçtiğiniz değerler vardır. 
 
-   ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1. Yeni hub 'ınızı oluşturmak için **Oluştur** ' u seçin. Hub 'ın oluşturulması birkaç dakika sürer.
+1.  Yeni hub 'ınızı oluşturmak için **Oluştur** ' u seçin. Hub 'ın oluşturulması birkaç dakika sürer.

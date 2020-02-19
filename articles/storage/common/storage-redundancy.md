@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162931"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462641"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -61,12 +61,12 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 
 |    Depolama hesabı türü    |    Desteklenen bölgeler    |    Desteklenen hizmetler    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Fransa Orta<br /> Japonya Doğu<br /> UK Güney<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
+|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
 |    BlockBlobStorage<sup>1</sup>    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca blok Blobları    |
 |    Dosya depolama    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
-<sup>2</sup> sanal makineler için hem yönetilen hem de yönetilmeyen diskler dahil olmak üzere Azure diskleri yalnızca LRS 'yi destekler. ZRS veya GZRS desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](/pricing/details/managed-disks/).
+<sup>2</sup> sanal makineler için hem yönetilen hem de yönetilmeyen diskler dahil olmak üzere Azure diskleri yalnızca LRS 'yi destekler. ZRS veya GZRS desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks).
 
 ZRS 'yi destekleyen bölgeler hakkında daha fazla bilgi için, [Azure kullanılabilirlik alanları nedir?](../../availability-zones/az-overview.md)bölümünde **bölgeye göre hizmetlere göre destek** bölümüne bakın.
 
@@ -109,7 +109,7 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 - Güneydoğu Asya
 - Kuzey Avrupa
 - Batı Avrupa
-- UK Güney
+- Güney Birleşik Krallık
 - ABD Doğu
 - ABD Doğu 2
 - ABD Orta
@@ -131,7 +131,7 @@ Depolama Hesabınız ikincil bölgeye okuma erişimi için yapılandırılmışs
 
 İkinciye okuma erişimi etkinleştirildiğinde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, BLOB depolama için birincil uç noktanız `myaccount.blob.core.windows.net`, ikincil uç nokta `myaccount-secondary.blob.core.windows.net`. Depolama hesabınızın hesap erişim anahtarları, hem birincil hem de ikincil uç noktalar için aynıdır.
 
-### <a name="check-the-last-sync-time-property"></a>Son eşitleme zamanı özelliğini denetleyin
+### <a name="check-the-last-sync-time-property"></a>Son Eşitleme Zamanı özelliğini denetleme
 
 Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltıldığından, ikincil bölge genellikle birincil bölgenin arkasında olur. Birincil bölgede bir hata oluşursa, birinciye yazma işlemleri henüz ikinciye çoğaltılmayacak.
 

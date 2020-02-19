@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: tutorial
 ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: fa3c83f82e1942ab76ffe039847d642448434d87
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444989"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459962"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi önizleme kullanarak hub Sanal ağınızı güvenli hale getirme 
 
@@ -62,9 +62,7 @@ Bu yolların nasıl oluşturulduğunu görmek için [Yolları Oluşturma](#creat
 >[!NOTE]
 >Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 >
->Azure Güvenlik Duvarı, zorlamalı tüneli destekleyecek şekilde yapılandırılabilir.
-
-<!---For more information, see [Azure Firewall forced tunneling](../firewall/forced-tunneling.md)--->
+>Azure Güvenlik Duvarı, zorlamalı tüneli destekleyecek şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](../firewall/forced-tunneling.md).
 
 >[!NOTE]
 >Doğrudan eşlenmiş sanal ağlar arasındaki trafik, bir UDR varsayılan ağ geçidi olarak Azure Güvenlik Duvarı 'na işaret ediyorsa doğrudan yönlendirilir. Alt ağ trafiğine Bu senaryodaki güvenlik duvarının alt ağını göndermek için, her iki alt ağda de bir UDR 'nin hedef alt ağ önekini açıkça içermesi gerekir.
@@ -343,7 +341,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 5. **Alt ağ**altında **sn-iş yükü**öğesini seçin.
 6. **Tamam**’ı seçin.
 
-## <a name="create-virtual-machines"></a>Sanal makineler oluşturun
+## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
 Artık bağlı olan iş yükünü ve şirket içi sanal makineleri oluşturun ve uygun alt ağlara yerleştirin.
 

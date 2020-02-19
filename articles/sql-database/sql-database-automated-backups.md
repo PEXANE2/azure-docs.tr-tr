@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157525"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461790"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
@@ -81,10 +81,14 @@ Saklama süresinden daha eski yedeklemeler, zaman damgalarına göre otomatik ol
 
 Azure SQL veritabanı, toplam bekletme yedekleme depolama alanınızı birikimli bir değer olarak hesaplacaktır. Bu değer, her ay sonunda tükeminizi hesaplamak üzere bu saatlik kullanımı sağlamaktan sorumlu olan Azure Faturalandırma ardışık düzenine bildirilir. Veritabanı bırakıldıktan sonra, tüketim yedekleme yaşı olarak azalır. Yedeklemeler, bekletme süresinden daha eski olduktan sonra faturalandırılır. 
 
+   > [!IMPORTANT]
+   > Veritabanı bırakılmış olsa bile, bir veritabanının yedeklemeleri belirtilen bekletme süresi boyunca tutulur. Bir veritabanını bırakma ve yeniden oluşturma işlemleri depolama ve işlem maliyetlerine göre sık sık kaydedilirken, her bırakılmış veritabanı için her çalıştırıldığında belirtilen bekletme süresi (en az 7 gün) için bir yedekleme tutdığımız için yedekleme depolama maliyetlerini artırabilir. 
 
-### <a name="monitoring-consumption"></a>Tüketim izleme
 
-Her yedekleme türü (tam, fark ve günlük), veritabanı izleme dikey penceresinde ayrı bir ölçüm olarak raporlanır. Aşağıdaki diyagramda, yedeklemelerin depolama tüketiminin nasıl izleneceği gösterilmektedir.  
+
+### <a name="monitor-consumption"></a>Tüketimi izleme
+
+Her yedekleme türü (tam, fark ve günlük), veritabanı izleme dikey penceresinde ayrı bir ölçüm olarak raporlanır. Aşağıdaki diyagramda tek bir veritabanı için yedek depolama tüketiminin nasıl izleneceği gösterilmektedir. Bu özellik şu anda yönetilen örnekler için kullanılamıyor.
 
 ![Azure portal veritabanı izleme dikey penceresinde veritabanı yedekleme tüketimini izleme](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Fazla yedekleme depolama alanı tüketimi, bireysel veritabanlarının iş yük�
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
 
+DTU modeli veya vCore modeli kullanıyorsanız, depolama alanı için fiyat değişir. 
 
 ### <a name="dtu-model"></a>DTU modeli
 
@@ -120,11 +125,14 @@ Veritabanında 744 GB yedekleme depolama alanı olduğunu ve bu miktarın tamam�
 
 Şimdi daha karmaşık bir örnek. Veritabanının, bekletmenin Ayın ortasında 14 güne yükseldiğini ve bu (hypothetically) Toplam yedekleme depolama alanının 1488 GB 'ye kattığı hakkında bir sonuç olduğunu varsayalım. SQL DB, 1-372 saatleri için 1 GB kullanım raporlar ve sonra da kullanımı saat 373-744 için 2 GB olarak bildirir. Bu, son 1116 GB/ay olan bir fatura olarak toplanır. 
 
-Azure abonelik maliyeti analizini, yedekleme depolamada geçerli harcamalarınızı öğrenmek için kullanabilirsiniz.
+### <a name="monitor-costs"></a>Maliyetleri izleme
+
+Yedekleme depolama maliyetlerini anlamak için Azure portal **maliyet yönetimi + faturalandırma** ' e gidin, **maliyet yönetimi**' ni seçin ve ardından **Maliyet Analizi**' ni seçin. **Kapsam**olarak istenen aboneliği seçin ve ilgilendiğiniz zaman aralığı ve hizmet için filtre uygulayın. 
+
+**Hizmet adı**için bir filtre ekleyin ve açılan listeden **SQL veritabanı** ' nı seçin. Hizmetiniz için faturalandırma sayacını seçmek üzere **ölçüm alt kategori** filtresini kullanın. Tek bir veritabanı veya elastik havuz için **tek/elastik havuz yedek depolama**' yı seçin. Yönetilen bir örnek için mı. **yedekleme depolama alanı**' nı seçin. **Depolama** ve **işlem** alt kategorileri, yedekleme depolama maliyetleriyle ilişkilendirilmese de sizi ilgilendirebilirler. 
 
 ![Yedekleme depolama maliyeti Analizi](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-Örneğin, yönetilen örnek için yedekleme depolama maliyetlerini anlamak için lütfen Azure portal ' de aboneliğinize gidin ve maliyet analizi dikey penceresini açın. Geçerli yedekleme maliyetinizi ve ücretlendirmesini görmek için alt kategori **mı \ yedekleme depolama alanı** ' nı seçin. Ayrıca, yedekleme depolama maliyetini diğer maliyet kategorilerine göre karşılaştırmak için, **yönetilen örnek genel amaçlı depolama alanı** veya **yönetilen örnek genel amaçlı işlem 5. nesil** gibi diğer ölçüm alt kategorilerini da dahil edebilirsiniz.
 
 ## <a name="backup-retention"></a>Yedekleri bekletme
 
@@ -169,13 +177,13 @@ Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kulla
 
 Azure portal kullanarak yedek saklama süresini değiştirmek için, saklama süresini portalda değiştirmek istediğiniz sunucu nesnesine gidin ve ardından değiştirmekte olduğunuz sunucu nesnesine göre uygun seçeneği belirleyin.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Tek veritabanı & elastik havuzlar](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[Tek veritabanı & elastik havuzlar](#tab/single-database)
 
 Tek Azure SQL veritabanı için yedek saklama bekletme değişikliği, sunucu düzeyinde gerçekleştirilir. Sunucu düzeyinde yapılan değişiklik, bu sunucudaki veritabanları için geçerlidir. Azure SQL veritabanı sunucusu için veri Azure portal ' dan değiştirmek için, sunucuya genel bakış dikey penceresine gidin, gezinti menüsünde Yedeklemeleri Yönet ' e tıklayın ve ardından Gezinti çubuğunda bekletme yapılandırması ' na tıklayın.
 
 ![Azure portal Değiştir](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
 SQL veritabanı yönetilen örneği için ara yedek saklama 'nın değiştirilmesi, tek bir veritabanı düzeyinde gerçekleştirilir. Azure portal bir örnek veritabanının ara veritabanı yedekleme bekletmesini değiştirmek için, tek tek veritabanına genel bakış dikey penceresine gidin ve ardından Gezinti çubuğunda yedekleme bekletmesini yapılandır seçeneğine tıklayın.
 

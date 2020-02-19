@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18c53a53a57b3ddca1168fc1075ae09bcd86f000
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765095"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462505"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na veri çoğaltma
 
@@ -28,12 +28,12 @@ Geçiş senaryoları için, [Azure veritabanı geçiş hizmeti](https://azure.mi
 ## <a name="limitations-and-considerations"></a>Sınırlamalar ve önemli noktalar
 
 ### <a name="data-not-replicated"></a>Çoğaltılan veriler
-Ana sunucudaki [*MySQL sistem veritabanı*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) çoğaltılmaz. Ana sunucudaki hesaplar ve izinler üzerinde yapılan değişiklikler çoğaltılmaz. Ana sunucuda bir hesap oluşturursanız ve bu hesabın çoğaltma sunucusuna erişmesi gerekiyorsa, çoğaltma sunucusu tarafında el ile aynı hesabı oluşturun. Hangi tabloların sistem veritabanına dahil olduğunu anlamak için [MySQL kılavuzuna](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)bakın.
+Ana sunucudaki [*MySQL sistem veritabanı*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) çoğaltılmaz. Ana sunucudaki hesaplar ve izinler üzerinde yapılan değişiklikler çoğaltılmaz. Ana sunucuda bir hesap oluşturursanız ve bu hesabın çoğaltma sunucusuna erişmesi gerekiyorsa, çoğaltma sunucusu tarafında el ile aynı hesabı oluşturun. Hangi tabloların sistem veritabanına dahil olduğunu anlamak için [MySQL kılavuzuna](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)bakın.
 
 ### <a name="requirements"></a>Gereksinimler
 - Ana sunucu sürümü en az MySQL sürüm 5,6 olmalıdır. 
 - Ana sunucu ve çoğaltma sunucusu sürümleri aynı olmalıdır. Örneğin, her ikisi de MySQL sürüm 5,6 olmalıdır veya her ikisi de MySQL sürüm 5,7 olmalıdır.
-- Her tablo bir birincil anahtara sahip olmalıdır.
+- Her tabloda bir birincil anahtarı olmalıdır.
 - Ana sunucu MySQL InnoDB altyapısını kullanmalıdır.
 - Kullanıcının, ikili günlüğü yapılandırma ve ana sunucuda yeni kullanıcılar oluşturma izinlerine sahip olması gerekir.
 - Ana sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının `mysql.az_replication_change_master` saklı yordamına eklendiğinden emin olun. Aşağıdaki [örneklere](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.

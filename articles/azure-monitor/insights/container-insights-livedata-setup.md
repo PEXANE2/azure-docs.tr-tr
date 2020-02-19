@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisini ayarlama Canlı veriler (Önizlem
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümünün nasıl ayarlanacağı açıklanır.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251796"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459931"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -48,7 +48,7 @@ Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgi
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>RBAC özellikli kümeler ile clusterMonitoringUser kullanma
 
-Kubernetes Kullanıcı kuralına, [RBAC yetkilendirmesini etkinleştirdikten](#configure-kubernetes-rbac-authorization) sonra küme **kullanıcısına** canlı veriler (Önizleme) özelliğine izin vermek için ek yapılandırma değişiklikleri uygulama gereksinimini ortadan kaldırmak için, aks, **clustermonitoringuser**adlı yeni bir Kubernetes kümesi rolü bağlamayı eklemiştir. Bu küme rolü bağlamasında, Kubernetes API 'sine ve Canlı veriler (Önizleme) özelliğinin kullanılmasıyla ilgili uç noktalara erişmek için gerekli tüm izinler bulunur. 
+Kubernetes Kullanıcı rolünün [RBAC yetkilendirmesini etkinleştirdikten](#configure-kubernetes-rbac-authorization) sonra **Kümekullanıcısına** canlı veriler (Önizleme) özelliğine bağlanmasına izin vermek için ek yapılandırma değişiklikleri uygulama gereksinimini ortadan kaldırmak için, aks, **clustermonitoringuser**adlı yeni bir Kubernetes kümesi rolü bağlamayı eklemiştir. Bu küme rolü bağlamasında, Kubernetes API 'sine ve Canlı veriler (Önizleme) özelliğinin kullanılmasıyla ilgili uç noktalara erişmek için gerekli tüm izinler bulunur.
 
 Bu yeni kullanıcıyla canlı veriler (Önizleme) özelliğini kullanmak için AKS küme kaynağında [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolünün bir üyesi olmanız gerekir. Etkin olduğunda kapsayıcılar için Azure Izleyici, varsayılan olarak bu kullanıcı kullanılarak kimlik doğrulaması yapacak şekilde yapılandırılmıştır. ClusterMonitoringUser rolü bağlama bir kümede yoksa, **clusteruser** bunun yerine kimlik doğrulaması için kullanılır.
 

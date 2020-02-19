@@ -4,21 +4,23 @@ description: Azure Analysis Services yönetim görevlerini otomatikleştirmek i�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251677"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461683"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
 Hizmet sorumluları, katılımsız kaynak ve hizmet düzeyinde işlemler gerçekleştirmek için kiracınızın içinde oluşturduğunuz bir Azure Active Directory uygulama kaynağıdır. Bunlar, bir uygulama KIMLIĞI ve parolası ya da sertifikası olan benzersiz bir *Kullanıcı kimliği* türüdür. Bir hizmet sorumlusu yalnızca atandığı roller ve izinler tarafından tanımlanan görevleri gerçekleştirmek için gerekli izinlere sahiptir. 
 
 Analysis Services, hizmet sorumluları, ortak görevleri otomatikleştirmek için Azure Otomasyonu, PowerShell katılımsız modu, özel istemci uygulamaları ve Web uygulamaları ile birlikte kullanılır. Örneğin, sunucuları sağlama, modelleri dağıtma, veri yenileme, ölçek artırma/azaltma ve duraklatma/devam etmeyi hizmet sorumluları kullanılarak otomatik hale getirilebilir. İzinler, normal Azure AD UPN hesaplarına benzer şekilde rol üyeliğiyle, hizmet sorumlularına atanır.
+
+Analysis Services Ayrıca, hizmet sorumlularını kullanan yönetilen kimlikler tarafından gerçekleştirilen işlemleri destekler. Daha fazla bilgi edinmek için bkz. Azure [kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) ve Azure [ad kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).  
 
 ## <a name="create-service-principals"></a>Hizmet sorumlusu oluşturma
  

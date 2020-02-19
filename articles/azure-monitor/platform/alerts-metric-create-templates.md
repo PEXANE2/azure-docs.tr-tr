@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425162"
+ms.locfileid: "77444018"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -1510,14 +1510,14 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Birden çok kaynağı izleyen bir ölçüm uyarısı şablonu
 
-Önceki bölümlerde, tek bir kaynağı izleyen ölçüm uyarıları oluşturmak için örnek Azure Resource Manager şablonlar açıklanmıştır. Azure Izleyici artık tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın izlenmesini desteklemektedir. Bu özellik şu anda yalnızca Azure genel bulutunda ve yalnızca sanal makineler, SQL veritabanları, SQL elastik havuzlar ve veri kutusu uç cihazları için desteklenir.
+Önceki bölümlerde, tek bir kaynağı izleyen ölçüm uyarıları oluşturmak için örnek Azure Resource Manager şablonlar açıklanmıştır. Azure Izleyici artık aynı Azure bölgesinde bulunan kaynaklar için tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın (aynı türden) izlenmesini desteklemektedir. Bu özellik şu anda yalnızca Azure genel bulutunda ve yalnızca sanal makineler, SQL Server veritabanları, SQL Server elastik havuzlar ve veri kutusu uç cihazları için desteklenir. Ayrıca, bu özellik yalnızca platform ölçümleri için kullanılabilir ve özel ölçümler için desteklenmez.
 
 Dinamik eşikler uyarıları kuralı, aynı anda yüzlerce ölçüm serisi (hatta farklı türler) için özel eşikler oluşturmaya da yardımcı olabilir. Bu, daha az uyarı kuralının yönetilmesine neden olur.
 
 Bu bölümde, tek bir kuralla birden çok kaynağı izlemek üzere üç senaryonun Azure Resource Manager şablonları açıklanır.
 
 - Bir veya daha fazla kaynak grubunda tüm sanal makineleri (bir Azure bölgesinde) izleme.
-- Bir abonelikteki tüm sanal makineleri (bir Azure bölgesinde) izleme
+- Bir abonelikteki tüm sanal makineleri (bir Azure bölgesinde) izleme.
 - Bir abonelikteki sanal makinelerin (bir Azure bölgesindeki) listesini izleme.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Bir veya daha fazla kaynak grubunda bulunan tüm sanal makinelerde statik eşik uyarısı

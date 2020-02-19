@@ -7,7 +7,6 @@ documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
-ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
@@ -15,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766515"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462233"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi’ne giriş
 
 Güvenlik yönetimini bütünleştirin ve hibrit bulut iş yükleri ve Azure IoT çözümünüz genelinde uçtan uca tehdit algılamayı ve analizini etkinleştirin. 
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT cihazlarınızın tamamındaki tüm IoT çözümünüzü Azure bulutuna güvenli hale getirin.
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT cihazlarınızın tamamındaki tüm IoT çözümünüzü Azure bulutuna güvenli hale getirin
 
 Sorunsuz aracısız çözümümüzden seçim yapın veya aracı tabanlı kapsamlı güvenlik avantajlarından yararlanın, IoT için Azure Güvenlik Merkezi, IoT varlıklarınızın tamamında IoT Edge ve IoT Hub her cihaz için tehdit önleme ve çözümleme sağlar.
 
@@ -38,7 +37,7 @@ IoT için Azure Güvenlik Merkezi, uçtan, şirket içinde, Azure 'da ve diğer 
 
 ### <a name="unified-visibility-and-control"></a>Birleşik görünürlük ve denetim
 
-Azure IoT çözümünüz de dahil olmak üzere tüm şirket içi ve bulut iş yüklerinizin güvenliğini gösteren birleşik bir görünüm elde edin. Güvenlik standartlarıyla uyumluluğu ve geliştirilmiş güvenlik duruşunu sağlamak için yeni cihazlar ekleme ve iş yükleriniz genelinde güvenlik ilkeleri uygulama (yaprak cihazlar, Microsoft Edge cihazları, IoT Hub). 
+Azure IoT çözümünüz dahil olmak üzere tüm şirket içi ve bulut iş yüklerinizde güvenliğin birleştirilmiş bir görünümünü alın. Güvenlik standartlarıyla uyumluluğu ve geliştirilmiş güvenlik duruşunu sağlamak için yeni cihazlar ekleme ve iş yükleriniz genelinde güvenlik ilkeleri uygulama (yaprak cihazlar, Microsoft Edge cihazları, IoT Hub). 
 
 ### <a name="adaptive-threat-prevention"></a>Uyarlamalı tehdit önleme
 
@@ -46,7 +45,7 @@ Makinelerdeki, ağların ve Azure hizmetlerinin güvenliğini sürekli olarak iz
 
 ### <a name="intelligent-threat-detection-and-response"></a>Akıllı tehdit algılama ve yanıt
 
-Gelişmiş analizler ve Microsoft Intelligent Security Graph gelişen Cyber saldırılarına karşı bir kenar almak için kullanın. Yerleşik davranış analizi ve makine öğrenimi, saldırıları ve sıfır günlük güvenlik açıklarını belirler. IoT çözümünüzü gelen saldırılara veya güvenlik ihlali sonrası etkinliklere karşı izleyin. Etkileşimli araçlar ve bağlamsal tehdit bilgileri ile cihaz araştırmasını ve düzeltmeyi kolaylaştırın.
+Gelişmiş analizler ve Microsoft Intelligent Security Graph gelişen Cyber saldırılarına karşı bir kenar almak için kullanın. Yerleşik davranış analizi ve makine öğrenimi, saldırıları ve sıfır günlük güvenlik açıklarını belirler. IoT çözümünüzü gelen saldırılar ve ihlal sonrası etkinlik için izleyin. Etkileşimli araçlar ve bağlamsal tehdit bilgileri ile cihaz araştırmasını ve düzeltmeyi kolaylaştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

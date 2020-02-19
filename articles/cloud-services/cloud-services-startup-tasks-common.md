@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385805"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462250"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Ortak bulut hizmeti başlangıç görevleri
 Bu makalede, bulut hizmetinizde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerinin bazı örnekleri verilmiştir. Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir. 
@@ -67,7 +67,7 @@ Bununla birlikte, bir başlangıç görevi olarak *Appcmd. exe* ' nin kullanım�
 ### <a name="example-of-managing-the-error-level"></a>Hata düzeyini yönetme örneği
 Bu örnek, hata işleme ve günlüğe kaydetme ile JSON için bir sıkıştırma bölümü ve *Web. config* dosyasına bir sıkıştırma girişi ekler.
 
-[ServiceDefinition.csdef] dosyasının ilgili bölümleri burada gösterilmektedir. Bu, *Appcmd. exe* ' [nin,](/previous-versions/azure/reference/gg557552(v=azure.100)#task) *Web. config* dosyasındaki ayarları değiştirmek için yeterli izinleri vermek üzere `elevated` olarak ayarlanmasını içerir:
+[ServiceDefinition. csdef] dosyasının ilgili bölümleri burada gösterilmektedir. Bu, *Appcmd. exe* ' [nin,](/previous-versions/azure/reference/gg557552(v=azure.100)#task) *Web. config* dosyasındaki ayarları değiştirmek için yeterli izinleri vermek üzere `elevated` olarak ayarlanmasını içerir:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -90,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Güvenlik duvarı kuralları ekleme
-Azure 'da, etkin olarak iki güvenlik duvarı vardır. İlk güvenlik duvarı, sanal makine ve dış dünya arasındaki bağlantıları denetler. Bu güvenlik duvarı, [ServiceDefinition.csdef] dosyasındaki [Uç Noktalar] öğesi tarafından denetlenir.
+Azure 'da, etkin olarak iki güvenlik duvarı vardır. İlk güvenlik duvarı, sanal makine ve dış dünya arasındaki bağlantıları denetler. Bu güvenlik duvarı, [ServiceDefinition. csdef] dosyasındaki [Noktalarının] öğesi tarafından denetlenir.
 
 İkinci güvenlik duvarı, sanal makine ile bu sanal makine içindeki süreçler arasındaki bağlantıları denetler. Bu güvenlik duvarı `netsh advfirewall firewall` komut satırı aracı tarafından denetlenebilir.
 
 Azure, rollerinizde başlatılan işlemlere yönelik güvenlik duvarı kuralları oluşturur. Örneğin, bir hizmet veya program başlattığınızda, Azure bu hizmetin Internet ile iletişim kurmasına izin vermek için gerekli güvenlik duvarı kurallarını otomatik olarak oluşturur. Ancak, rolünüzün dışındaki bir işlem (COM+ hizmeti veya Windows zamanlanmış görevi gibi) tarafından başlatılan bir hizmet oluşturursanız, bu hizmete erişime izin vermek için el ile bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu güvenlik duvarı kuralları, bir başlangıç görevi kullanılarak oluşturulabilir.
 
-Bir güvenlik duvarı kuralı oluşturan bir başlangıç görevinin bir [ExecutionContext][görev] **yükseltilmiş**olmalıdır. Aşağıdaki başlangıç görevini [ServiceDefinition.csdef] dosyasına ekleyin.
+Bir güvenlik duvarı kuralı oluşturan bir başlangıç görevinin bir [ExecutionContext][görev] **yükseltilmiş**olmalıdır. Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -155,7 +155,7 @@ IIS **Web. config** dosyanızı değiştirerek, belırlı bir IP adresi kümesin
 
 **ApplicationHost. config** dosyasının **ipsecurity** bölümünün kilidini açmak için, rol başlangıcında çalışan bir komut dosyası oluşturun. **Başlangıç** olarak adlandırılan Web rolünüzün kök düzeyinde bir klasör oluşturun ve bu klasör içinde, **Startup. cmd**adlı bir toplu iş dosyası oluşturun. Bu dosyayı Visual Studio projenize ekleyin ve paketinize eklendiğinden emin olmak için özellikleri **her zaman Kopyala** olarak ayarlayın.
 
-Aşağıdaki başlangıç görevini [ServiceDefinition.csdef] dosyasına ekleyin.
+Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -213,7 +213,7 @@ Bu örnek yapılandırma, tüm IP 'Lerin sunucuya erişimini **engeller** , ikis
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>PowerShell başlangıç görevi oluşturma
-Windows PowerShell betikleri doğrudan [ServiceDefinition.csdef] dosyasından çağrılamaz, ancak bir başlangıç toplu iş dosyası içinden çağrılabilir.
+Windows PowerShell betikleri doğrudan [ServiceDefinition. csdef] dosyasından çağrılamaz, ancak bir başlangıç toplu iş dosyası içinden çağrılabilir.
 
 PowerShell (varsayılan olarak) imzasız betikleri çalıştırmaz. Komut dosyanızı imzalayamadığınız takdirde, PowerShell 'i imzasız betikleri çalıştıracak şekilde yapılandırmanız gerekir. İmzasız betikleri çalıştırmak için, **ExecutionPolicy** **Kısıtlamasız**olarak ayarlanmalıdır. Kullandığınız **ExecutionPolicy** ayarı Windows PowerShell sürümünü temel alır.
 
@@ -244,7 +244,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>Yerel depolamada bir başlangıç görevinden dosyalar oluşturma
 Uygulamanız tarafından daha sonra erişilen başlangıç göreviniz tarafından oluşturulan dosyaları depolamak için yerel bir depolama kaynağı kullanabilirsiniz.
 
-Yerel depolama kaynağını oluşturmak için, [ServiceDefinition.csdef] dosyasına bir [localresources] bölümü ekleyin ve ardından [localStorage] alt öğesini ekleyin. Yerel depolama kaynağına, başlangıç göreviniz için benzersiz bir ad ve uygun bir boyut verin.
+Yerel depolama kaynağını oluşturmak için, [ServiceDefinition. csdef] dosyasına bir [localresources] bölümü ekleyin ve ardından [localStorage] alt öğesini ekleyin. Yerel depolama kaynağına, başlangıç göreviniz için benzersiz bir ad ve uygun bir boyut verin.
 
 Başlangıç görevinde yerel bir depolama kaynağı kullanmak için, yerel depolama kaynağı konumuna başvurmak üzere bir ortam değişkeni oluşturmanız gerekir. Ardından, başlangıç görevi ve uygulama dosyaları yerel depolama kaynağına okuyabilir ve yazabilir.
 
@@ -298,7 +298,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>Öykünücü veya bulutta Çalıştır
 Başlangıç göreviniz, bulut üzerinde çalışırken, işlem öykünücüsünde olduğu zaman ile karşılaştırıldığında farklı adımlar gerçekleştirmenizi sağlayabilir. Örneğin, SQL verilerinizin yeni bir kopyasını yalnızca öykünücüsünde çalışırken kullanmak isteyebilirsiniz. Ya da bulut için, öykünücüsünde çalışırken yapmanız gerekmeyen bazı performans iyileştirmeleri yapmak isteyebilirsiniz.
 
-Bu işlem öykünücüsü ve bulutu üzerinde farklı eylemler gerçekleştirebilme özelliği, [ServiceDefinition.csdef] dosyasında bir ortam değişkeni oluşturularak gerçekleştirilebilir. Daha sonra bu ortam değişkenini başlangıç görevinizdeki bir değer için test edersiniz.
+Bu işlem öykünücüsü ve bulutu üzerinde farklı eylemler gerçekleştirebilme özelliği, [ServiceDefinition. csdef] dosyasında bir ortam değişkeni oluşturularak gerçekleştirilebilir. Daha sonra bu ortam değişkenini başlangıç görevinizdeki bir değer için test edersiniz.
 
 Ortam değişkenini oluşturmak için/[Roleınstancevalue] öğesi [Değişken] ekleyin ve `/RoleEnvironment/Deployment/@emulated`bir XPath değeri oluşturun. **% ComputeEmulatorRunning%** ortam değişkeninin değeri, işlem öykünücüsü üzerinde çalışırken `true` ve bulutta çalışırken `false`.
 
@@ -500,7 +500,7 @@ Bulut [Hizmeti modelini ve paketini](cloud-services-model-and-package.md) gözde
 
 Bulut hizmeti paketinizi [oluşturun ve dağıtın](cloud-services-how-to-create-deploy-portal.md) .
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Görev]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
@@ -508,7 +508,7 @@ Bulut hizmeti paketinizi [oluşturun ve dağıtın](cloud-services-how-to-create
 [Değişken]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Uç Noktalar]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Noktalarının]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

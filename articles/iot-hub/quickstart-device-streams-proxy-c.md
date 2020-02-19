@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 03b0269b1a4500fd8ae26cd5e56f48427c5506aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f47c2c30f71d6510ee66bb19bdd936e0780e242c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429194"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461887"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -26,7 +26,7 @@ Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure
 
 Bu hızlı başlangıçta, cihaz akışları aracılığıyla tünel Secure Shell (SSH) trafiğinin (22 numaralı bağlantı noktasını kullanarak) kurulumu açıklanmaktadır. Uzak Masaüstü Protokolü (RDP) trafiği kurulumu benzerdir ve basit bir yapılandırma değişikliği gerektirir. Cihaz akışları uygulama ve protokol belirsiz olduğundan, bu hızlı başlangıcı diğer uygulama trafiği türlerine uyacak şekilde değiştirebilirsiniz.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Aşağıdaki şekilde, cihaz ve hizmet yerel proxy programlarının SSH istemcisi ile SSH Daemon işlemleriyle uçtan uca bağlantıyı nasıl etkinleştireceğinizi gösterilmektedir. Genel Önizleme sırasında, C SDK 'Sı cihaz akışlarını yalnızca cihaz tarafında destekler. Sonuç olarak, bu hızlı başlangıçta yalnızca cihaz yerel proxy uygulamasını çalıştırmaya yönelik yönergeler ele alınmaktadır. Eşlik eden hizmet tarafı uygulamasını derlemek ve çalıştırmak için aşağıdaki hızlı başlangıçlardan birindeki yönergeleri izleyin:
 
@@ -50,7 +50,7 @@ Aşağıdaki şekilde, cihaz ve hizmet yerel proxy programlarının SSH istemcis
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 
@@ -118,9 +118,9 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 

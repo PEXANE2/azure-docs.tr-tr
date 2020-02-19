@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c9891751ac24a630819d9b0a708ffbd288ac1327
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365164"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461088"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid bağlamaları
 
@@ -34,7 +34,7 @@ Bu başvurudaki kod, sürüm 2. x ve üzeri Işlevlerde kullanılan .NET Core s�
 
 ### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
 
-Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Uzantı diğer tüm uygulama türlerini paketlarken, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
+Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
 | Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
 |-------------------------------------------------|---------------------------------------------|-------------|

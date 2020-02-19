@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553078"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461824"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 
@@ -25,7 +25,7 @@ Bu konu, bir Azure SQL veritabanı için bir [otomatik yük devretme grubu](sql-
 ## <a name="single-database"></a>Tek veritabanı
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna tek bir veritabanı ekleyin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -33,7 +33,7 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 
 ### <a name="create-failover-group"></a>Yük devretme grubu oluştur
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin.
 
 
@@ -53,7 +53,7 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanını
         
     ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınızı buna ekleyin. 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınız�
 
 Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
@@ -129,7 +129,7 @@ Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
 1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
 1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.  
 
@@ -190,7 +190,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 ## <a name="elastic-pool"></a>Elastik havuz
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -200,7 +200,7 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 
 Azure portal veya PowerShell kullanarak elastik havuzunuz için yük devretme grubu oluşturun. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak elastik havuzunuzu ekleyin.
 
 1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
@@ -221,7 +221,7 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak elastik havuzunuzu
         
 1. Elastik havuz ayarlarınızı yük devretme grubuna uygulamak için **Seç** ' i seçin ve ardından yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. Elastik havuzun yük devretme grubuna eklenmesi, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Yük devretme grubunuzu oluşturun ve PowerShell kullanarak elastik havuzunuzu ekleyin. 
 
@@ -271,7 +271,7 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak elastik havuzunuzu e
 
 Azure portal veya PowerShell kullanarak elastik havuzunuzun yük devretmesini test edin. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Yük devretme grubunuzu ikincil sunucuya devreder ve Azure portal kullanarak yeniden devreder. 
 
@@ -293,7 +293,7 @@ Yük devretme grubunuzu ikincil sunucuya devreder ve Azure portal kullanarak yen
 1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
 1. Yük devretme grubundan özgün ayarlara geri dönmek için **Yük devretmeyi** yeniden seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
@@ -341,7 +341,7 @@ Azure portal veya PowerShell kullanarak iki yönetilen örnek arasında bir yük
 
 Her bir yönetilen örneğin sanal ağı için [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya ağ geçidi oluşturmanız gerekir, iki ağ geçidini birbirine bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
 - İkincil yönetilen örnek boş olmalıdır.
@@ -353,7 +353,7 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 
 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)'u yapılandırmadıysanız Azure Portal veya PowerShell ile birincil sanal ağ geçidini oluşturabilirsiniz. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak birincil sanal ağ geçidini oluşturun. 
 
@@ -390,7 +390,7 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
 
 1. Yeni sanal ağ geçidinizi oluşturmak için **Oluştur** ' u seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak birincil sanal ağ geçidini oluşturun. 
 
@@ -426,7 +426,7 @@ PowerShell kullanarak birincil sanal ağ geçidini oluşturun.
 
 Azure portal veya PowerShell kullanarak ikincil sanal ağ geçidini oluşturun. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 İkinci yönetilen örnek için sanal ağ alt ağını ve ağ geçidini oluşturmak üzere önceki bölümdeki adımları yineleyin. İkincil yönetilen örneğiniz için ağ geçidini yapılandırmak üzere gerekli alanları doldurun. 
 
    Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
@@ -447,7 +447,7 @@ Azure portal veya PowerShell kullanarak ikincil sanal ağ geçidini oluşturun.
 
    ![İkincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak ikincil sanal ağ geçidini oluşturun. 
 
@@ -488,7 +488,7 @@ Azure portal veya PowerShell kullanarak iki ağ geçidi arasında bağlantı olu
 
 Her iki bağlantı için de kullanılan paylaşılan anahtar her bağlantı için aynı olmalıdır. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak iki ağ geçidi arasında bağlantı oluşturun. 
 
 1. Azure portal **kaynak oluştur** ' u seçin [](https://portal.azure.com).
@@ -510,7 +510,7 @@ Azure portal kullanarak iki ağ geçidi arasında bağlantı oluşturun.
 
 1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantıyı oluşturmak için **Tamam** ' ı seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak iki ağ geçidi arasında bağlantı oluşturun. 
 
@@ -546,7 +546,7 @@ PowerShell kullanarak iki ağ geçidi arasında bağlantı oluşturun.
 ### <a name="create-the-failover-group"></a>Yük devretme grubu oluşturma 
 Azure portal veya PowerShell 'i kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun. 
 
@@ -562,7 +562,7 @@ Azure portal kullanarak yönetilen örneklerinizin yük devretme grubunu oluştu
 
 1. Yük devretme grubu dağıtımı tamamlandıktan sonra, **Yük devretme grubu** sayfasına geri yönlendirilirsiniz. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun. 
 
@@ -588,11 +588,11 @@ PowerShell kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturu
 
 Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
-1. [Azure Portal](https://portal.azure.com) içinde yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
+1. [Azure Portal](https://portal.azure.com) içinde _İkincil_ yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
 1. Hangi yönetilen örnek birincil olduğunu ve hangi yönetilen örnek ikincil olduğunu gözden geçirin. 
 1. **Yük devretme** ' yı seçin ve sonra kesilmekte olan tds oturumlarının uyarısında **Evet** ' i seçin. 
 
@@ -602,9 +602,9 @@ Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
    ![Yönetilen örnekler, yük devretmeden sonra rolleri değiştirdi](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Birincil örnek birincil role geri dönmek için **Yük devretmeyi** bir kez daha seçin. 
+1. Yeni _İkincil_ yönetilen örneğe gidin ve birincil örnek birincil role geri dönmek Için **Yük devretmeyi** bir kez daha seçin. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 

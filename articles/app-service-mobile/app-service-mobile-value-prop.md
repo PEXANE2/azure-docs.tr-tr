@@ -5,19 +5,14 @@ ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: d85ac89a4226b545419cea3413a04f4013a073be
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668716"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461445"
 ---
-# <a name="getting-started"> </a>Azure Uygulama Hizmetinde Mobile Apps Hakkında
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
+# <a name="getting-started"> </a>Azure App Service Mobile Apps hakkında
 
 Azure Uygulama Hizmeti, profesyonel geliştiricilere yönelik tam olarak yönetilen bir [hizmet olarak platform](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) teklifidir. Bu hizmet, web, mobil ve tümleştirme senaryoları için zengin bir özellik kümesi sağlar. 
 
@@ -69,7 +64,7 @@ Aşağıdaki platform özellikleri mobil üretim siteleri için yararlıdır:
 
 * **Sanal Ağ**: App Service; sanal ağ, Azure ExpressRoute ya da karma bağlantılar kullanarak şirket içi kaynaklara bağlanabilir.
 
-  [karma bağlantılar], [sanal ağlar], ve [ExpressRoute] hakkında daha fazlasını keşfedin.
+  [Karma bağlantılar], [sanal ağlar], ve [ExpressRoute] hakkında daha fazlasını keşfedin.
 
 * **Yalıtılmış ve ayrılmış ortamlar**: Azure App Service uygulamalarını güvenli bir şekilde çalıştırmak için, App Service’i tam yalıtılmış ve ayrılmış bir ortamda çalıştırabilirsiniz. Bu ortam, büyük ölçekli, yalıtım veya güvenli ağ erişimi gerektiren uygulama iş yükleri için idealdir.
 
@@ -80,7 +75,7 @@ Aşağıdaki platform özellikleri mobil üretim siteleri için yararlıdır:
 Azure Uygulama Hizmeti'nde Mobile Apps kullanmaya başlamak için [başlarken] öğreticisini tamamlayın. Bu öğretici, tercih ettiğiniz mobil arka ucu ve istemciyi oluşturma konusunda temel kavramları kapsar. Ayrıca kimlik doğrulama, çevrimdışı eşitleme ve anında iletme bildirimlerini tümleştirme konularını ele alır. Öğreticiyi her istemci uygulaması için birden çok kez tamamlayabilirsiniz.
 
 Mobile Apps hakkında daha fazla bilgi için [öğrenme haritamızı] gözden geçirin.
-Azure Uygulama Hizmeti platformu hakkında daha fazla bilgi için bkz. [Azure App Service].
+Azure Uygulama Hizmeti platformu hakkında daha fazla bilgi için bkz. [Azure Uygulama Hizmeti].
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
@@ -103,4 +98,4 @@ Azure Uygulama Hizmeti platformu hakkında daha fazla bilgi için bkz. [Azure Ap
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service ortamları]: ../app-service/environment/intro.md
 [öğrenme haritamızı]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
-[Azure App Service]: ../app-service/overview.md
+[Azure Uygulama Hizmeti]: ../app-service/overview.md

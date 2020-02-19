@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: cadee1b72c15ded7c29d1eea341c1ea21b346a37
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: df18e721a7400a1e45b7f1fcd74fdafdbfdf026c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976834"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462267"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Hızlı başlangıç: Java hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
@@ -78,8 +78,8 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
            ```
 
    2. TPM cihazı ayrıntıları ekleyin:
-       1. [TPM cihazını benzetme](quick-create-simulated-device.md#simulatetpm) bölümündeki adımları izleyerek TPM cihazı benzetmesinin *Kayıt Kimliği* ve *TPM onay anahtarı* değerlerini alın.
-       2. Önceki adımda aldığınız **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini **_ServiceEnrollmentSample.java_** örnek kod dosyasındaki `[RegistrationId]` ve `[TPM Endorsement Key]` değerlerinin yerine yazın:
+       1. *TPM cihazını benzetme* bölümündeki adımları izleyerek TPM cihazı benzetmesinin *Kayıt Kimliği* ve [TPM onay anahtarı](quick-create-simulated-device.md#simulatetpm) değerlerini alın.
+       2. Önceki adımda aldığınız **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini `[RegistrationId]``[TPM Endorsement Key]`ServiceEnrollmentSample.java **_örnek kod dosyasındaki_ ve**  değerlerinin yerine yazın:
         
            ```Java
            private static final String REGISTRATION_ID = "[RegistrationId]";
@@ -124,7 +124,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
     mvn install -DskipTests
     ```
 
-   Bu komut, [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven paketini makinenize indirir. Bu pakette örnek kodun derlenebilmesi için gerekli olan Java hizmeti SDK'sı ikili dosyaları bulunur. 
+   Bu komut, [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven paketini makinenize indirir. Bu pakette örnek kodun derlenebilmesi için gerekli olan Java hizmeti SDK'sı ikili dosyaları bulunur. 
 
 3. Komut penceresinde aşağıdaki komutları çalıştırarak örneği çalıştırın:
 

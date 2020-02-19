@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664864"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461258"
 ---
 # <a name="tutorial-configure-security-agents"></a>Öğretici: güvenlik aracılarını yapılandırma
 
@@ -131,22 +131,21 @@ Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da u
 
 ### <a name="supported-security-events"></a>Desteklenen güvenlik olayları
 
-|Olay adı| Başlaması | Varsayılan değer| Anlık görüntü olayı| Ayrıntılar durumu  |
+|Olay adı| ÖzellikAdı | Varsayılan Değer| Anlık görüntü olayı| Ayrıntılar durumu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Tanılama olayı|eventPriorityDiagnostic| Kapalı| Yanlış| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.| 
-|Yapılandırma hatası |eventPriorityConfigurationError |Düşük |Yanlış |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.| 
-|Bırakılan olay istatistikleri |eventPriorityDroppedEventsStatistics |Düşük |Doğru|Aracıyla ilgili olay istatistikleri. |
-|İleti istatistikleri|Eventpriorityiletilü |Düşük |Doğru |Aracıyla ilgili ileti istatistikleri. |
-|Bağlı donanım|eventPriorityConnectedHardware |Düşük |Doğru |Cihaza bağlı tüm donanımların anlık görüntüsü.|
-|Dinleme bağlantı noktaları|eventPriorityListeningPorts |Yüksek |Doğru |Cihazdaki tüm açık dinleme bağlantı noktalarının anlık görüntüsü.|
-|İşlem oluşturma |eventPriorityProcessCreate |Düşük |Yanlış |Cihazda oluşturma işlemini denetler.|
-|İşlem sonlandır|eventPriorityProcessTerminate |Düşük |Yanlış |Cihazdaki işlem sonlandırmasını denetler.| 
-|Sistem bilgileri |Eventprioritysystemınformation |Düşük |Doğru |Sistem bilgilerinin bir anlık görüntüsü (örneğin: OS veya CPU).| 
-|Yerel kullanıcılar| eventPriorityLocalUsers |Yüksek |Doğru|Sistem içindeki kayıtlı yerel kullanıcıların anlık görüntüsü. |
-|Oturum aç|  eventPriorityLogin |Yüksek|Yanlış|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
-|Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|Yanlış|Cihaza ve cihazdan oluşturulan TCP bağlantılarını denetler. |
-|Güvenlik duvarı yapılandırması| eventPriorityFirewallConfiguration|Düşük|Doğru|Cihaz Güvenlik Duvarı yapılandırmasının (güvenlik duvarı kuralları) anlık görüntüsü. |
-|İşletim sistemi temeli| eventPriorityOSBaseline| Düşük|Doğru|Cihaz işletim sistemi taban çizgisi denetiminin anlık görüntüsü.|
+|Tanılama olayı|eventPriorityDiagnostic| Kapalı| False| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.| 
+|Yapılandırma hatası |eventPriorityConfigurationError |Düşük |False |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.| 
+|Bırakılan olay istatistikleri |eventPriorityDroppedEventsStatistics |Düşük |True|Aracıyla ilgili olay istatistikleri. |
+|Bağlı donanım|eventPriorityConnectedHardware |Düşük |True |Cihaza bağlı tüm donanımların anlık görüntüsü.|
+|Dinleme bağlantı noktaları|eventPriorityListeningPorts |Yüksek |True |Cihazdaki tüm açık dinleme bağlantı noktalarının anlık görüntüsü.|
+|İşlem oluşturma |eventPriorityProcessCreate |Düşük |False |Cihazda oluşturma işlemini denetler.|
+|İşlem sonlandır|eventPriorityProcessTerminate |Düşük |False |Cihazdaki işlem sonlandırmasını denetler.| 
+|Sistem bilgileri |Eventprioritysystemınformation |Düşük |True |Sistem bilgilerinin bir anlık görüntüsü (örneğin: OS veya CPU).| 
+|Yerel kullanıcılar| eventPriorityLocalUsers |Yüksek |True|Sistem içindeki kayıtlı yerel kullanıcıların anlık görüntüsü. |
+|Oturum Aç|  eventPriorityLogin |Yüksek|False|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
+|Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|False|Cihaza ve cihazdan oluşturulan TCP bağlantılarını denetler. |
+|Güvenlik duvarı yapılandırması| eventPriorityFirewallConfiguration|Düşük|True|Cihaz Güvenlik Duvarı yapılandırmasının (güvenlik duvarı kuralları) anlık görüntüsü. |
+|İşletim sistemi temeli| eventPriorityOSBaseline| Düşük|True|Cihaz işletim sistemi taban çizgisi denetiminin anlık görüntüsü.|
 |
  
 

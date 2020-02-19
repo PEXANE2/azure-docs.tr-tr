@@ -6,20 +6,15 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668823"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461530"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Azure için JavaScript istemci kitaplığı 'nı kullanma Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuz, [Azure Mobile Apps için JavaScript SDK 'Sı]kullanarak genel senaryolar gerçekleştirmenizi öğretir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun ve bir tablo oluşturun. Bu kılavuzda, HTML/JavaScript Web uygulamalarında mobil arka ucunu kullanmaya odaklanıyoruz.
@@ -71,7 +66,7 @@ Birçok JavaScript uygulaması türü, OAuth UI akışlarını işlemek için bi
 
 Varsayılan olarak, App Service kimlik doğrulaması yalnızca mobil uygulama arka ucunuzun erişimine izin verecek şekilde yapılandırıldığından, yerel olarak çalıştırmak sorunlara yol açabilir. Sunucuyu yerel olarak çalıştırırken kimlik doğrulamasını etkinleştirmek üzere App Service ayarlarını değiştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure portalda]’nda oturum açın
+1. [Azure portalında]’nda oturum açın
 2. Mobil uygulama arka ucunuza gidin.
 3. **GELIŞTIRME araçları** menüsünde **Kaynak Gezgini** ' ni seçin.
 4. Yeni bir sekmede veya penceresinde mobil uygulama arka ucunuzun kaynak Gezginini açmak için **Git** ' e tıklayın.
@@ -89,7 +84,7 @@ Varsayılan olarak, App Service kimlik doğrulaması yalnızca mobil uygulama ar
 
 CORS beyaz listesi ayarlarına aynı geri döngü URL 'Lerini de eklemeniz gerekir:
 
-1. [Azure portalda]geri gidin.
+1. [Azure portalında]geri gidin.
 2. Mobil uygulama arka ucunuza gidin.
 3. **API** menüsünde **CORS** ' ye tıklayın.
 4. Her URL 'YI boş **Izin verilen** kaynaklar metin kutusuna girin.  Yeni bir metin kutusu oluşturulur.
@@ -102,6 +97,6 @@ Arka uç güncelleştirildikten sonra uygulamanızdaki yeni geri döngü URL 'Le
 [Kimlik doğrulaması ile çalışmaya başlama]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Azure portalda]: https://portal.azure.com/
+[Azure portalında]: https://portal.azure.com/
 [Azure Mobile Apps için JavaScript SDK 'Sı]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

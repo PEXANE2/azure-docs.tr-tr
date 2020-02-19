@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429299"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461752"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM korumalı anahtarları Key Vault içeri aktar (Önizleme)
 
@@ -52,13 +52,13 @@ Azure Key Vault için kendi anahtarınızı getir (BYOK) önkoşulları listesi 
 | Azure aboneliği |Azure Key Vault oluşturmak için bir Azure aboneliğine ihtiyacınız vardır: [ücretsiz deneme Için kaydolun](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM korumalı anahtarları içeri aktarmaya yönelik bir Anahtar Kasası (Premium SKU) |Azure Key Vault yönelik hizmet katmanları ve özellikleri hakkında daha fazla bilgi için [Azure Key Vault fiyatlandırma](https://azure.microsoft.com/pricing/details/key-vault/) Web sitesine bakın. |
 | HSM satıcınız tarafından sunulan BYOK aracı ve yönergeleriyle birlikte desteklenen HSM 'ler listesinden bir HSM | Bir donanım güvenlik modülüne erişiminizin olması ve HSM 'nizin temel operasyonel bilgisine sahip olmanız gerekir. Bkz. [desteklenen HSM](#supported-hsms)'ler. |
-| Azure CLı sürüm 2.0.82 veya üzeri | Daha fazla bilgi için lütfen bkz. [Azure CLI 'Yı yüklemeyin](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+| Azure CLı sürüm 2.1.0 veya üzeri | Daha fazla bilgi için lütfen bkz. [Azure CLI 'Yı yüklemeyin](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
 
 ## <a name="supported-hsms"></a>Desteklenen HSM 'ler
 
 |HSM satıcı adı|Desteklenen HSM modelleri|Ek ayrıntılar|
 |---|---|---|
-|Thales|Üretici yazılımı 7,3 veya daha yeni bir sürümü ile SafeNet Luna HSM 7 ailesi| [SafeNet Luna BYOK aracı ve belgeleri](https://safenet.gemalto.com/blah-blah)|
+|Thales|Üretici yazılımı 7,3 veya daha yeni bir sürümü ile SafeNet Luna HSM 7 ailesi| [SafeNet Luna BYOK aracı ve belgeleri](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
 
 > [!NOTE]

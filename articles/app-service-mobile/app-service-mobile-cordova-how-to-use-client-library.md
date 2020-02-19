@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: ecca8f719a01abe68b368987fce4ea883193e844
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cafeea8afe571fc81548833952eee72a695fed41
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668501"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459370"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure için Apache Cordova istemci kitaplığı 'nı kullanma Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuz, [Azure Mobile Apps Apache Cordova eklentisi]kullanarak genel senaryoları gerçekleştirmenizi öğretir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun, tablo oluşturun ve önceden oluşturulmuş bir Apache Cordova projesini indirin. Bu kılavuzda, istemci tarafı Apache Cordova eklentisine odaklanıyoruz.
@@ -91,7 +86,7 @@ Birçok Apache Cordova uygulama türü, OAuth Kullanıcı arabirimi akışların
 
 Yapılandırmaya yerel ayarlarınızı eklemek için aşağıdaki yönergeleri izleyin:
 
-1. [Azure portalda]’nda oturum açın
+1. [Azure portalında]’nda oturum açın
 2. **Tüm kaynaklar** veya **uygulama hizmetleri** ' ni seçin ve ardından mobil uygulamanızın adına tıklayın.
 3. **Araçlar** 'a tıklayın
 4. GÖZLEMLEME menüsünde **Kaynak Gezgini** ' ne tıklayın ve ardından **Git**' e tıklayın.  Yeni bir pencere veya sekme açılır.
@@ -111,7 +106,7 @@ Yapılandırmaya yerel ayarlarınızı eklemek için aşağıdaki yönergeleri i
 Ayarlar bu noktada kaydedilir.  Ayarlar kaydetme işlemi tamamlanana kadar tarayıcı penceresini kapatmayın.
 Ayrıca, bu geri döngü URL 'Lerini App Service CORS ayarlarına ekleyin:
 
-1. [Azure portalda]’nda oturum açın
+1. [Azure portalında]’nda oturum açın
 2. **Tüm kaynaklar** veya **uygulama hizmetleri** ' ni seçin ve ardından mobil uygulamanızın adına tıklayın.
 3. Ayarlar dikey penceresi otomatik olarak açılır.  Aksi takdirde, **Tüm ayarlar**' a tıklayın.
 4. API menüsünde **CORS** ' ye tıklayın.
@@ -168,7 +163,7 @@ Sunucudan anında iletme bildirimleri göndermek için Notification Hubs SDK 's�
 [API belgelerimizde](https://azure.github.io/azure-mobile-apps-js-client/)ayrıntılı API ayrıntılarını bulabilirsiniz.
 
 <!-- URLs. -->
-[Azure portalda]: https://portal.azure.com
+[Azure portalında]: https://portal.azure.com
 [Azure Mobile Apps hızlı başlangıç]: app-service-mobile-cordova-get-started.md
 [Kimlik doğrulaması ile çalışmaya başlama]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md

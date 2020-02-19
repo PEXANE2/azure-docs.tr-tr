@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
-ms.openlocfilehash: ba632a98c21926ec28606def128cc068abf47f53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646634"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460033"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight 'ta Python kullanarak Apache Storm topolojileri geliştirme
 
@@ -22,11 +22,11 @@ Python bileşenleri kullanan bir [Apache Storm](https://storm.apache.org/) topol
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, HDInsight 3,6 ' de fırtınası kullanılarak test edilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 
-* Yerel bir fırtınası geliştirme ortamı (Isteğe bağlı). Yerel bir fırtınası ortamı yalnızca, topolojiyi yerel olarak çalıştırmak istiyorsanız gereklidir. Daha fazla bilgi için bkz. [geliştirme ortamı kurma](http://storm.apache.org/releases/current/Setting-up-development-environment.html).
+* Yerel bir fırtınası geliştirme ortamı (Isteğe bağlı). Yerel bir fırtınası ortamı yalnızca, topolojiyi yerel olarak çalıştırmak istiyorsanız gereklidir. Daha fazla bilgi için bkz. [geliştirme ortamı kurma](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
 * [Python 2,7 veya üzeri](https://www.python.org/downloads/).
 
@@ -38,7 +38,7 @@ Python bileşenleri kullanan bir [Apache Storm](https://storm.apache.org/) topol
 
 Apache Storm, herhangi bir programlama dili kullanılarak yazılmış bileşenlerle çalışmak üzere tasarlanmıştır. Bileşenler, fırtınası için Thrift tanımıyla nasıl çalışacağınızı anlamalıdır. Python için, bir modül Apache Storm projenin bir parçası olarak sağlanır ve bu da, fırtınası ile kolayca arabirim oluşturmanızı sağlar. Bu modülü [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)' de bulabilirsiniz.
 
-Fırtınası Java Sanal Makinesi (JVM) üzerinde çalışan bir Java işlemidir. Diğer dillerde yazılan bileşenler alt işlem olarak yürütülür. Fırtınası, stdin/stdout üzerinden gönderilen JSON iletilerini kullanarak bu alt işlemlerle iletişim kurar. Bileşenler arasındaki iletişimle ilgili daha fazla ayrıntı, [Multi-Lang Protocol](https://storm.apache.org/documentation/Multilang-protocol.html) belgelerinde bulunabilir.
+Fırtınası Java Sanal Makinesi (JVM) üzerinde çalışan bir Java işlemidir. Diğer dillerde yazılan bileşenler alt işlem olarak yürütülür. Fırtınası, stdin/stdout üzerinden gönderilen JSON iletilerini kullanarak bu alt işlemlerle iletişim kurar. Bileşenler arasındaki iletişimle ilgili daha fazla ayrıntı, [Multi-Lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) belgelerinde bulunabilir.
 
 ## <a name="python-with-the-flux-framework"></a>Flox çerçevesiyle Python
 
@@ -76,7 +76,7 @@ Daha önce belirtildiği gibi, fırtınası için Thrift tanımını uygulayan b
 
 1. [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) adresinden projeyi indirin.
 
-1. Bir komut istemi açın ve proje köküne gidin: `hdinsight-python-storm-wordcount-master`. Aşağıdaki komutu kullanın:
+1. Bir komut istemi açın ve proje köküne gidin: `hdinsight-python-storm-wordcount-master`. Aşağıdaki komutu girin:
 
     ```cmd
     mvn clean compile package

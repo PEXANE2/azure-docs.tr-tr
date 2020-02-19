@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 69fe4b98c26ac2f67fc777b754f3bc391e3b71b5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023064"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461479"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin. Forms uygulamanıza anında iletme bildirimleri ekleme
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -28,7 +23,7 @@ Bu öğreticide, [Xamarin. Forms hızlı başlatmasından](app-service-mobile-xa
 
 İndirilen hızlı başlangıç sunucusu projesini kullanmıyorsanız, anında iletme bildirimi uzantı paketine ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure için .net arka uç sunucu SDK 'sı Mobile Apps çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İOS için bir [Apple Geliştirici Programı üyeliğine](https://developer.apple.com/programs/ios/) ve fiziksel bir iOS cihazına ihtiyacınız olacaktır. [İOS simülatörü anında iletme bildirimlerini desteklemez](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
@@ -59,7 +54,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
 1. **DROID** projesinde,, **NuGet Paketlerini Yönet > başvurular**' a sağ tıklayın....
 1. NuGet Paket Yöneticisi penceresinde, **Xamarin. Firebase. Messaging** paketini arayın ve projeye ekleyin.
 1. **DROID** projesinin proje özellikleri ' nde, uygulamayı Android sürüm 7,0 veya üstünü kullanarak derlemek üzere ayarlayın.
-1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için [Google Hizmetleri JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için bkz. [Google SERVICES JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Firebase Cloud Messaging ile kaydolma
 
@@ -115,9 +110,9 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    `FirebaseRegistrationService` sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. `OnTokenRefresh` Yöntemi uygulama FCM kayıt belirtecinizi aldığında çağrılır. Belirteçten yöntemi alır `FirebaseInstanceId.Instance.Token` özelliği FCM ile zaman uyumsuz olarak güncelleştirilir. `OnTokenRefresh` Yöntemi nadiren çağrılır, uygulamanın yüklenmesi veya kaldırılması, kullanıcı uygulama verileri sildiğinde uygulamanın örnek kimliği vuruşunu sildiğinde, belirteç yalnızca güncelleştirildiğinden veya güvenlik belirtecinin olduğunda gizliliği. Ayrıca, uygulama, belirteci düzenli olarak, genellikle her 6 ayda bir yenileme FCM örnek kimliği hizmeti ister.
+    `FirebaseRegistrationService` sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. Uygulama FCM 'den bir kayıt belirteci aldığında `OnTokenRefresh` yöntemi çağrılır. Yöntemi, FCM tarafından zaman uyumsuz olarak güncellenen `FirebaseInstanceId.Instance.Token` özelliğinden belirteci alır. `OnTokenRefresh` yöntemi nadiren çağrılır, çünkü belirteç yalnızca uygulama yüklendiğinde veya kaldırıldığında, Kullanıcı uygulama verilerini sildiğinde, uygulama örnek KIMLIĞINI sildiğinde veya belirtecin güvenliği tehlikeye atıldığında güncelleştirilir. Ayrıca, uygulama, belirteci düzenli olarak, genellikle her 6 ayda bir yenileme FCM örnek kimliği hizmeti ister.
 
-    `OnTokenRefresh` Yöntemini de çağırır `SendRegistrationTokenToAzureNotificationHub` Azure bildirim Hub'ınızla kullanıcının kayıt belirtecini ilişkilendirmek için kullanılan yöntem.
+    `OnTokenRefresh` yöntemi, kullanıcının kayıt belirtecini Azure Bildirim Hub 'ı ile ilişkilendirmek için kullanılan `SendRegistrationTokenToAzureNotificationHub` yöntemini de çağırır.
 
 #### <a name="registering-with-the-azure-notification-hub"></a>Azure bildirim Hub'ıyla
 
@@ -404,7 +399,7 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
 Anında iletme bildirimleri hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Azure Mobile Apps anında Iletme bildirimleri gönderme](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase bulut mesajlaşma](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Firebase Cloud Messaging ile uzak bildirimler](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Anında iletme bildirimi sorunlarını tanılama](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Bildirimlerin bırakılmış olmasının çeşitli nedenleri vardır veya cihazlar üzerinde bitmeyebilir. Bu konuda, anında iletme bildirimi hatalarının asıl nedenini çözümleme ve oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.

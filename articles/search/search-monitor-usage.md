@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443610"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462335"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
@@ -52,7 +52,7 @@ Kaynak kullanımında genel bakış sayfası raporuna yerleştirilmiş sekmeli s
 
 [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
 
-Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren bir özel çözüm oluşturmanız gerekir. Depolama ölçümleri hakkında daha fazla bilgi için bkz. [hizmet Istatistiklerini edinme](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
+Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren [bir özel çözüm](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) oluşturmanız gerekir. Depolama ölçümleri hakkında daha fazla bilgi için bkz. [hizmet Istatistiklerini edinme](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
 Portalda görsel izleme için **kullanım** sekmesi, hizmet katmanının uyguladığı geçerli [limitlere](search-limits-quotas-capacity.md) göre kaynak kullanılabilirliği gösterir. 
 

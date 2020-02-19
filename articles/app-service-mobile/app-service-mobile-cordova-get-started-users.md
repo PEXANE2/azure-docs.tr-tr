@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668562"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459428"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Apache Cordova uygulamanıza kimlik doğrulaması ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="summary"></a>Özet
 Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak Apache Cordova ToDoList hızlı başlangıç projesine kimlik doğrulaması eklersiniz. Bu öğretici, ilk olarak gerçekleştirmeniz gereken Mobile Apps öğreticiye [Mobile Apps kullanmaya başlayın] ' i temel alır.
@@ -32,7 +27,7 @@ Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak Apache Cordov
 ## <a name="permissions"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Şimdi, arka ucunuza anonim erişimin devre dışı bırakıldığını doğrulayabilirsiniz. Visual Studio 'da:
+Şimdi, arka ucunuza anonim erişimin devre dışı bırakıldığını doğrulayabilirsiniz. Visual Studio'da:
 
 * Öğreticiyi tamamladığınızda oluşturduğunuz projeyi açın [Mobile Apps kullanmaya başlayın].
 * Uygulamanızı **Google Android Emulator**içinde çalıştırın.
@@ -90,7 +85,7 @@ Ardından, mobil uygulama arka ucundan kaynakları isteyerek önce kullanıcıla
 4. Yeni eklediğiniz kodda `SDK_Provider_Name`, oturum açma sağlayıcınızın adıyla değiştirin. Örneğin, Azure Active Directory için `client.login('aad')`kullanın.
 5. Projenizi çalıştırın.  Projenin başlatılması tamamlandığında, uygulamanız seçilen kimlik doğrulama sağlayıcısı için OAuth oturum açma sayfasını gösterir.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 * Azure App Service ile [Kimlik doğrulaması hakkında] daha fazla bilgi edinin.
 * Apache Cordova uygulamanıza [anında Iletme bildirimleri] ekleyerek öğreticiye devam edin.
 

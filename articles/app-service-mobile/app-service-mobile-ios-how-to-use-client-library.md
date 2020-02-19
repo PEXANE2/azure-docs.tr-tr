@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 8f6307e37ff24d2a3f10bcf39ed989acdf3611f9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158001"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458928"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure için iOS Istemci kitaplığı 'Nı kullanma Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, en son [Azure Mobile Apps IOS SDK 'sını][1]kullanarak genel senaryolar gerçekleştirmenizi öğretilir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun, tablo oluşturun ve önceden oluşturulmuş bir IOS Xcode projesini indirin. Bu kılavuzda, istemci tarafı iOS SDK 'sına odaklanıyoruz. Arka uca yönelik sunucu tarafı SDK 'Sı hakkında daha fazla bilgi edinmek için bkz. Server SDK HOWTOs.
@@ -561,7 +556,7 @@ Azure Active Directory kullanarak uygulamanızdaki kullanıcıları imzalamak i�
 3. Terminal kullanarak, projenizi içeren dizinden `pod install` çalıştırın ve ardından oluşturulan Xcode çalışma alanını (proje değil) açın.
 4. Aşağıdaki kodu, kullanmakta olduğunuz dile göre uygulamanıza ekleyin. Her birinde şu değişiklikleri yapın:
 
-   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portal]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
+   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portalında]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
    * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
    * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
    * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.
@@ -897,7 +892,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-[Azure Portal]: https://portal.azure.com/
+[Azure portalında]: https://portal.azure.com/
 [Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx

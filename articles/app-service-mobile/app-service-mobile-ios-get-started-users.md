@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 925894cab00537cb9aeb03ca05c9699bb4bf6a84
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fd7860053e8c04ca9d5e355a721afd834835a441
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668447"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459032"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>İOS uygulamanıza kimlik doğrulaması ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
->
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak [iOS hızlı başlangıç] projesine kimlik doğrulaması eklersiniz. Bu öğretici, önce gerçekleştirmeniz gereken [iOS hızlı başlangıç] öğreticisini temel alır.
 
@@ -30,7 +25,7 @@ Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak [iOS hızlı 
 
 Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir.  Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar.  Bu öğreticide, üzerinde URL şeması _uygulamamız_ kullanırız.  Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz.  Bu, mobil uygulamanız için benzersiz olmalıdır.  Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
 
-1. [Azure portalda]App Service seçin.
+1. [Azure portalında]App Service seçin.
 
 2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
 
@@ -40,7 +35,7 @@ Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımla
 
 5. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`appname://easyauth.callback`girin.  Bu dizedeki _appname_ , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
 
-6. **Tamam**’a tıklayın.
+6. **Tamam** düğmesine tıklayın.
 
 7. **Kaydet** düğmesine tıklayın.
 
@@ -214,7 +209,7 @@ App Service kimlik doğrulaması, uygulamaların uygulamalar arası Iletişimini
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[Azure portalda]: https://portal.azure.com
+[Azure portalında]: https://portal.azure.com
 
 [iOS hızlı başlangıç]: app-service-mobile-ios-get-started.md
 

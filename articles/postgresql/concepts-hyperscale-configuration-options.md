@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975644"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462420"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>PostgreSQL için Azure veritabanı – Hyperscale (Citus) performans seçenekleri
 
@@ -33,20 +33,23 @@ ms.locfileid: "74975644"
 Hiper ölçek (Citus) sunucu grupları aşağıdaki Azure bölgelerinde kullanılabilir:
 
 * Kuzey
-    * Kanada Orta *
+    * Orta Kanada
+    * Orta ABD
     * Doğu ABD
     * Doğu ABD 2
-    * Orta Kuzey ABD *
+    * Orta Kuzey ABD
     * Batı ABD 2
 * Asya Pasifik:
-    * Avustralya Doğu *
+    * Doğu Avustralya
+    * Doğu Japonya
+    * Güney Kore - Orta
     * Güneydoğu Asya
 * 'Ya
     * Kuzey Avrupa
     * Güney Birleşik Krallık
     * Batı Avrupa
 
-Yıldız işareti (\*) olan bölgeler henüz [yüksek kullanılabilirliği](concepts-hyperscale-high-availability.md)desteklemez.
+Bu bölgelerden bazıları başlangıçta tüm Azure aboneliklerinde etkinleştirilmemiş olabilir. Yukarıdaki listeden bir bölge kullanmak ve bunu aboneliğinizde görmezseniz veya bu listede olmayan bir bölge kullanmak istiyorsanız, bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/postgresql/).

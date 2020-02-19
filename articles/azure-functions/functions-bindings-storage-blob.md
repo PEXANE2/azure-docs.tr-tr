@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 794e18590f554d1537449d2aee9451c0053ac4a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198437"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462318"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Azure Blob depolama bağlamaları genel bakış
 
@@ -26,7 +26,7 @@ Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings
 
 ### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
 
-Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Uzantı diğer tüm uygulama türlerini paketlarken, bir NuGet paketi .NET sınıf kitaplıkları için kullanılır.
+Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
 | Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
 |-------------------------------------------------|---------------------------------------------|-------------|
