@@ -55,10 +55,10 @@ Bu örnek aşağıdaki adımları uygulayın:
 
 |Örnek konuşmalar|
 |--|
-|bir bilgisayarı nasıl edinebilirim?|
-|Bir bilgisayarı nereden alabilirim?|
-|Bir bilgisayar almak istiyorum, nasıl gidebilirim?|
-|Bir bilgisayar ne zaman olabilir?| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 Buradaki temel terim, "bilgisayar" olarak farklılık gösterir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu veya hatta yalnızca makine gibi alternatifleri kullanın. LUU bağlamdaki Eşanlamlı sözcükleri akıllıca çıkarabilir, ancak eğitim için utumslar oluştururken bunları değiştirmek her zaman daha iyidir.
 
@@ -144,8 +144,8 @@ Aşağıdaki söyleyenlerdeki sözcük `fair` bir hograf. Aynı yazıldığında
 
 |İfade|
 |--|
-|Ne tür bir ilçe fairs yapıldığını Seattle alanında bu yaz?|
-|Geçerli derecelendirme Seattle gözden geçirilmek üzere adil mi?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, sözcüğü ilk utterde `fair` etiketleyin, ancak ikinciden değil.
 
