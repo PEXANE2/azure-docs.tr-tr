@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442998"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460476"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -129,7 +129,9 @@ Hedef IP adresi, [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına �
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Bir ağ sanal gerecine Zorlamalı tünel/zincir oluşturma işlemi destekleniyor mu?
 
-Zorlamalı tünel Şu anda desteklenmiyor. Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
+Zorlamalı tünel oluşturma destekleniyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel (Önizleme)](forced-tunneling.md). 
+
+Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 
 Yapılandırmanız şirket içi bir ağa Zorlamalı tünel gerektiriyorsa ve Internet hedefleriniz için hedef IP öneklerini belirleyebiliyorsanız, bu aralıkları şirket içi ağ ile bir Kullanıcı tanımlı yol aracılığıyla sonraki atlama olarak yapılandırabilirsiniz. AzureFirewallSubnet. Ya da bu yolları tanımlamak için BGP kullanabilirsiniz.
 
@@ -166,7 +168,7 @@ Hayır. Azure Güvenlik Duvarı/26 ' dan büyük bir alt ağa gerek yoktur.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Güvenlik Duvarı iş üretimini nasıl artırabilirim?
 
-Azure Güvenlik duvarının ilk verimlilik kapasitesi 2,5-3 Gbps 'dir. Şu anda, ölçeği genişletme yalnızca CPU kullanımına dayanır. Bazı durumlarda ağ kuralları bir güvenlik duvarı, CPU kullanımını önemli ölçüde etkilemediğinden, yalnızca aktarım hızını artırmak için ölçeklenmez. Güvenlik duvarınız için daha yüksek aktarım hızına ihtiyacınız varsa, güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
+Azure Güvenlik duvarının ilk verimlilik kapasitesi 2,5-3 Gbps 'dir. Şu anda, ölçeği genişletme CPU kullanımı ve aktarım hızını temel alır. Bazı durumlarda ağ kuralları bir güvenlik duvarı, CPU kullanımını önemli ölçüde etkilemediğinden, yalnızca aktarım hızını artırmak için ölçeklenmez. Güvenlik duvarınız için daha yüksek aktarım hızına ihtiyacınız varsa, güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Güvenlik duvarının ölçeği ne kadar sürer?
 

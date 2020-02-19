@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425298"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461275"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
 
@@ -29,6 +29,7 @@ Bu kılavuz, App Service ' de kullanarak Java geliştiricileri için temel kavra
 Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
 - . War dosyalarını Tomcat 'e dağıtmak için `/api/wardeploy/` uç noktasını kullanarak arşiv dosyanızı GÖNDERIN. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
+- . Jar dosyalarını Java &AMP; 'a dağıtmak için kudu sitesinin `/api/zipdeploy/` uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
 
 FTP kullanarak. war 'nizi dağıtmayın. FTP aracı başlangıç betiklerini, bağımlılıklarını veya diğer çalışma zamanı dosyalarını karşıya yüklemek üzere tasarlanmıştır. Web uygulamalarını dağıtmak için en iyi seçenek değildir.
 
@@ -128,9 +129,9 @@ App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güve
 
 **Kimlik doğrulama ve yetkilendirme** seçeneğiyle Azure Portal uygulama kimlik doğrulamasını ayarlayın. Buradan, Facebook, Google veya GitHub gibi Azure Active Directory veya sosyal oturum açma bilgilerini kullanarak kimlik doğrulamasını etkinleştirebilirsiniz. Azure portal yapılandırma yalnızca tek bir kimlik doğrulama sağlayıcısı yapılandırılırken kullanılabilir. Daha fazla bilgi için bkz. [App Service uygulamanızı Azure Active Directory oturum açma](configure-authentication-provider-aad.md) bilgilerini ve diğer kimlik sağlayıcılarının ilgili makalelerini kullanacak şekilde yapılandırma. Birden çok oturum açma sağlayıcısını etkinleştirmeniz gerekiyorsa, [App Service kimlik doğrulamasını özelleştirme](app-service-authentication-how-to.md) makalesindeki yönergeleri izleyin.
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat ve Yavaya
+#### <a name="tomcat"></a>Tomcat
 
-Tomcat veya Yavaya yönelik uygulamalar, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki kodda, `request` bir `HttpServletRequest`örneğidir.
+Tomcat uygulamanız, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki kodda, `request` bir `HttpServletRequest`örneğidir.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -287,6 +288,10 @@ Tomcat 'in `server.xml` veya diğer yapılandırma dosyalarını düzenlemek iç
 
 Son olarak, App Service yeniden başlatın. Dağıtımlarınız daha önce olduğu gibi `D:\home\site\wwwroot\webapps` gitmelidir.
 
+## <a name="configure-java-se"></a>Java 'yi yapılandırma
+
+Çalıştıran bir. Windows üzerinde bir Java 'da JAR uygulaması, `server.port` uygulamanız başladığı için bir komut satırı seçeneği olarak geçirilir. HTTP bağlantı noktasını, `HTTP_PLATFORM_PORT`ortam değişkeninden el ile çözebilirsiniz. Bu ortam değişkeninin değeri, uygulamanızın dinlemesi gereken HTTP bağlantı noktasıdır. 
+
 ## <a name="java-runtime-statement-of-support"></a>Java Runtime desteği
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve bakım
@@ -300,6 +305,8 @@ Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak �
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
 Önemli güvenlik açıklarına yönelik düzeltme ekleri ve düzeltmeler Azul sistemlerinden kullanılabilir hale geldiğinde serbest bırakılır. "Ana" güvenlik açığı, [NIST ortak güvenlik açığı Puanlama sistemi, sürüm 2](https://nvd.nist.gov/cvss.cfm)üzerinde 9,0 veya üzeri bir taban puanı tarafından tanımlanır.
+
+Tomcat 8,0 [, 30 eylül 2018 Itibariyle yaşam sonuna (EOL)](https://tomcat.apache.org/tomcat-80-eol.html)ulaştı. Çalışma zamanı Azure App Service devam ederken, Azure, Tomcat 8,0 güvenlik güncelleştirmelerini uygulamacaktır. Mümkünse, uygulamalarınızı Tomcat 8,5 veya 9,0 ' ye geçirin. Azure App Service hem Tomcat 8,5 hem de 9,0 kullanılabilir. Daha fazla bilgi için [resmi Tomcat sitesine](https://tomcat.apache.org/whichversion.html) bakın. 
 
 ### <a name="deprecation-and-retirement"></a>Kullanımdan kaldırma ve kullanımdan kaldırma
 
