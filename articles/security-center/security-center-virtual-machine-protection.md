@@ -11,32 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553010"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430706"
 ---
 # <a name="protect-your-machines-and-applications"></a>Makinelerinizi ve uygulamalarınızı koruyun
 Azure Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızın güvenliğini sağlamak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
 
 Bu makalede Güvenlik Merkezi 'nin kaynak güvenliği bölümünün **işlem ve uygulamalar** sayfası açıklanmaktadır.
 
-Bu sayfada görebileceğiniz önerilerin tam listesi için bkz. [veri ve depolama önerileri](recommendations-reference.md#recs-computeapp).
+Bu sayfada görebileceğiniz önerilerin tam listesi için bkz. [işlem ve uygulama önerileri](recommendations-reference.md#recs-computeapp).
 
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>İşlem ve uygulama kaynaklarınızın güvenliğini görüntüleme
 
-[![Güvenlik Merkezi panosu](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
+[![Güvenlik Merkezi panosu](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png)](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png#lightbox)
 
-İşlem ve uygulama kaynaklarınızın durumunu görüntülemek için, güvenlik merkezi kenar çubuğu 'ndaki **kaynaklar** altındaki **işlem & uygulamalar** ' ı seçin. Aşağıdaki sekmeler mevcuttur:
+İşlem ve uygulama kaynaklarınızın durumunu görüntülemek için, güvenlik merkezi 'nde sol bölmeden, **işlem & uygulamalar**' ı seçin. Aşağıdaki sekmeler mevcuttur:
 
 * **Genel bakış**: tüm bilgi işlem ve uygulama kaynaklarının yanı sıra geçerli güvenlik durumlarını listeler 
 
-* [**VM 'ler ve bilgisayarlar**](#vms-and-computers): sanal makinelerinize, bilgisayarlarınıza ve her birine ait geçerli güvenlik durumuna yönelik önerileri listeler
+* [**VM 'ler ve sunucular**](#vms-and-computers): sanal makinelerinize, bilgisayarlarınıza ve bunların her birinin geçerli güvenlik durumuna ilişkin önerileri listeler
 
 * [**VM Ölçek Kümeleri**](#vmscale-sets): ölçek kümelerinizin önerilerini listeler, 
 
@@ -44,7 +44,7 @@ Bu sayfada görebileceğiniz önerilerin tam listesi için bkz. [veri ve depolam
 
 * [**Uygulama hizmetleri**](#app-services): App Service ortamlarınızla ilgili önerileri ve her birinin geçerli güvenlik durumunu listeler
 
-* **Kapsayıcılar**: kapsayıcılarınızın ve yapılandırmalarının güvenlik değerlendirmelerine yönelik önerileri listeler
+* [**Kapsayıcılar**](#containers): kapsayıcılarınızın ve yapılandırmalarının güvenlik değerlendirmelerine yönelik önerileri listeler
 
 * **İşlem kaynakları**: Service Fabric kümeleri ve Olay Hub 'ları gibi işlem kaynaklarınızın önerilerini listeler
 
@@ -60,10 +60,13 @@ Her önerinin gerçekleştirebileceğiniz bir eylemler kümesi bulunur seçtikte
 > Güvenlik önerileri, **öneriler** sayfalıdakilerle aynıdır, ancak burada seçtiğiniz belirli kaynak türüne göre filtrelenmiştir. Önerilerin nasıl çözümleneceği hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 >
 
-### <a name="vms-and-computers"></a>VM 'Ler ve bilgisayarlar
+
+
+
+### <a name="vms-and-computers"></a>VM 'Ler ve sunucular
 VM 'Ler ve bilgisayarlar bölümü, sanal makinelerinize ve bilgisayarlarınıza yönelik tüm güvenlik önerilerine genel bir bakış sağlar. Dört tür makine mevcuttur:
 
-![Azure olmayan bilgisayar](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure olmayan bilgisayar.
+![Azure dışı bilgisayar](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure olmayan bilgisayar.
 
 ![Azure Resource Manager VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Azure Resource Manager sanal makinesi.
 
@@ -78,44 +81,8 @@ Burada VM'nin veya bilgisayar için güvenlik ayrıntılarını görürsünüz. 
 
 [![Cloud Services](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
-### <a name="cloud-services"></a>Bulut Hizmetleri
-Bulut hizmetleri için, işletim sistemi sürümü güncel olmadığında bir öneri oluşturulur.
-
-![Bulut hizmetleri](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
-
-Öneriniz olan bir senaryoda, işletim sistemini güncelleştirmek için önerideki adımları izleyin. Bir güncelleştirme kullanılabilir olduğunda, bir uyarısına (sorunun önem derecesine bağlı olarak kırmızı veya turuncu) sahip olursunuz. Bu öneriye ilişkin tam açıklama için, **Açıklama** sütununun altındaki **Işletim sistemi sürümünü Güncelleştir** ' e tıklayın.
-
-### <a name="app-services"></a>Uygulama Hizmetleri
-App Service bilgilerini görüntülemek için, güvenlik merkezi 'nin standart fiyatlandırma katmanında olmanız ve aboneliğinizde App Service etkinleştirmeniz gerekir. Bu özelliği etkinleştirme hakkında yönergeler için bkz. [Azure Güvenlik Merkezi ile App Service koruma](security-center-app-services.md).
 
 
-Altında **uygulama hizmetleri**, App service ortamları listesini bulmak ve Güvenlik Merkezi değerlendirmesini temel alan durum özeti gerçekleştirilir.
-
-![Uygulama hizmetleri](./media/security-center-virtual-machine-recommendations/app-services.png)
-
-Üç tür uygulama hizmeti görüntülenir:
-
-![App services ortamı](./media/security-center-virtual-machine-recommendations/ase.png) App services ortamı
-
-![Web uygulaması](./media/security-center-virtual-machine-recommendations/web-app.png) Web uygulaması
-
-![İşlev uygulaması](./media/security-center-virtual-machine-recommendations/function-app.png) İşlev uygulaması
-
-Bir Web uygulaması seçerseniz, üç sekmeden oluşan bir Özet görünümü açılır:
-
-   - **Öneriler**: Güvenlik Merkezi tarafından gerçekleştirilen değerlendirmelere göre başarısız oldu.
-   - **Değerlendirmeler geçirilen**: Güvenlik Merkezi tarafından geçirilen gerçekleştirdiği değerlendirmeler listesi.
-   - **Kullanılamayan iç değerlendirmeler**: bir hata veya öneri nedeniyle çalıştırılamadı değerlendirmelerinin listesini belirli bir App service için uygun değil
-
-   Altında **önerileri** Seçili web uygulaması için önerilerin bir listesi ve önerilerin önem derecesi.
-
-   ![Uygulama Hizmetleri önerileri](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
-
-Önerinin açıklamasını ve sağlıksız kaynakların, sağlıklı kaynakların ve taranmamış kaynakların bir listesini görmek için bir öneri seçin.
-
-   - **Geçirilen değerlendirmeler** sütunu, geçirilen değerlendirmelerin bir listesini gösterir. Bu değerlendirmeler önemini her zaman büyük/küçük harf yeşildir.
-
-   - Geçirilen bir değerlendirme, listenin değerlendirme açıklaması için sağlıksız ve iyi durumda kaynakların bir listesini ve Taranmayan kaynaklar listesini seçin. İyi durumda olmayan kaynaklar için bir sekme yoktur ancak değerlendirmede başarılı olduğundan bu liste her zaman boştur.
 
 ### <a name="vmscale-sets"></a>Sanal Makine Ölçek Kümeleri
 Güvenlik Merkezi, ölçek kümelerine sahip olup olmadığını otomatik olarak bulur ve bunlara Microsoft Monitoring Agent yüklemenizi önerir.
@@ -140,10 +107,101 @@ Yeni ölçek kümelerini Microsoft Monitoring Agent otomatik olarak yükleyecek 
 Microsoft Monitoring Agent yüklemek için tüm mevcut ölçek kümelerini ayarlamak istiyorsanız, Azure Ilkesinde, **Düzeltme** ' ye gidin ve mevcut ilkeyi mevcut ölçek kümelerine uygulayın.
 
 
+
+
+
+### <a name="cloud-services"></a>Bulut Hizmetleri
+Bulut hizmetleri için, işletim sistemi sürümü güncel olmadığında bir öneri oluşturulur.
+
+![Bulut hizmetleri](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
+
+Öneriniz olan bir senaryoda, işletim sistemini güncelleştirmek için önerideki adımları izleyin. Bir güncelleştirme kullanılabilir olduğunda, bir uyarısına (sorunun önem derecesine bağlı olarak kırmızı veya turuncu) sahip olursunuz. Bu öneriye ilişkin tam açıklama için, **Açıklama** sütununun altındaki **Işletim sistemi sürümünü Güncelleştir** ' e tıklayın.
+
+
+
+
+
+
+### <a name="app-services"></a>Uygulama Hizmetleri
+App Service bilgilerini görüntülemek için, güvenlik merkezi 'nin standart fiyatlandırma katmanında olmanız ve aboneliğinizde App Service etkinleştirmeniz gerekir. Bu özelliği etkinleştirme hakkında yönergeler için bkz. [Azure Güvenlik Merkezi ile App Service koruma](security-center-app-services.md).
+
+**Uygulama hizmetleri**altında, uygulama hizmeti ortamlarınızın listesini ve gerçekleştirilen değerlendirme güvenlik merkezini temel alan sistem durumu özetini bulabilirsiniz.
+
+![Uygulama hizmetleri](./media/security-center-virtual-machine-recommendations/app-services.png)
+
+Üç tür uygulama hizmeti görüntülenir:
+
+![App services ortamı](./media/security-center-virtual-machine-recommendations/ase.png) App services ortamı
+
+![Web uygulaması](./media/security-center-virtual-machine-recommendations/web-app.png) Web uygulaması
+
+![İşlev uygulaması](./media/security-center-virtual-machine-recommendations/function-app.png) İşlev uygulaması
+
+Bir Web uygulaması seçerseniz, üç sekmeden oluşan bir Özet görünümü açılır:
+
+   - **Öneriler**: Güvenlik Merkezi tarafından gerçekleştirilen değerlendirmelere göre başarısız oldu.
+   - **Başarılı değerlendirmeler**: Güvenlik Merkezi tarafından gerçekleştirilen değerlendirmelerin listesi.
+   - **Kullanılamayan değerlendirmeler**: bir hata nedeniyle çalıştırımayan değerlendirmelerin listesi veya öneri belirli bir App Service için uygun değil
+
+   **Öneriler** altında seçili Web uygulaması için önerilerin bir listesi ve her bir önerinin önem derecesi listelenmiştir.
+
+   ![Uygulama Hizmetleri önerileri](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
+
+Önerinin açıklamasını ve sağlıksız kaynakların, sağlıklı kaynakların ve taranmamış kaynakların bir listesini görmek için bir öneri seçin.
+
+   - **Geçirilen değerlendirmeler** sütunu, geçirilen değerlendirmelerin bir listesini gösterir. Bu değerlendirmeler önemini her zaman büyük/küçük harf yeşildir.
+
+   - Geçirilen bir değerlendirme, listenin değerlendirme açıklaması için sağlıksız ve iyi durumda kaynakların bir listesini ve Taranmayan kaynaklar listesini seçin. İyi durumda olmayan kaynaklar için bir sekme yoktur ancak değerlendirmede başarılı olduğundan bu liste her zaman boştur.
+
+
+
+
+
+### <a name="containers"></a>Kapsayıcıları
+
+Ortamınıza bağlı olarak **kapsayıcılar** sekmesini açtığınızda, üç türden kaynağı görebilirsiniz:
+
+![Kapsayıcı Konağı](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Kapsayıcı Konakları-Docker çalıştıran VM 'Ler 
+
+![Kubernetes hizmeti](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes hizmeti (AKS) kümeleri
+
+![Kapsayıcı kayıt defteri](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) kayıt defterleri-yalnızca standart fiyatlandırma katmanında olduğunuzda ve Azure Container Registry paketi etkinleştirildiğinde gösterilir.
+
+Kapsayıcı güvenlik özelliklerinin nasıl kullanılacağına ilişkin yönergeler için bkz. [kapsayıcılarınızın güvenliğini izleme](monitor-container-security.md).
+
+Azure Container Registry paketi 'nin avantajları [burada](azure-container-registry-integration.md) açıklanmıştır
+
+Kubernetes Services paketinin avantajları [burada](azure-kubernetes-service-integration.md) açıklanmıştır
+
+[![kapsayıcılar sekmesi](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
+
+Listedeki belirli bir kaynakla ilgili önerileri görmek için o kaynağa tıklayın.
+
+#### <a name="visibility-into-container-registries"></a>Kapsayıcı kayıt defterlerine görünürlük
+
+Örneğin, yukarıdaki grafikte gösterilen listede ASC-demo ACR kayıt defterine tıklanması bu ayrıntılar sayfasına yönlendirir:
+
+[belirli bir ACR kayıt defteri için ![önerileri](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
+
+
+#### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>IaaS Linux makinelerinde barındırılan kapsayıcıların görünürlüğü
+
+Docker çalıştıran VM 'lerden birine tıkladığınızda, Docker sürümü ve konakta çalışan görüntü sayısı gibi, makinedeki kapsayıcılarla ilgili bilgilerin bulunduğu Ayrıntılar sayfasını görürsünüz.
+
+![Docker çalıştıran bir VM için öneriler](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+
+
+#### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>Docker için CIS kıyaslaması tabanlı güvenlik önerileri
+
+Güvenlik Merkezi, Docker yapılandırmalarınızı tarar ve değerlendirilen başarısız kuralların listesini sunarak hatalı yapılandırmalar konusunda görünürlük sağlar. Güvenlik Merkezi, bu sorunları hızlı bir şekilde çözmenize ve zamandan tasarruf etmenize yardımcı olacak yönergeler sağlar. Güvenlik Merkezi, Docker yapılandırmalarını sürekli değerlendirir ve son durumlar hakkında bilgi verir.
+
+![kapsayıcı sekmesi](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer Azure kaynak türlerine uygulanan öneriler hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 * [Azure Güvenlik Merkezi 'nin güvenlik önerilerinin tam başvuru listesi](recommendations-reference.md)
 * [Azure Güvenlik Merkezi'nde kimliği ve erişimi izleme](security-center-identity-access.md)
 * [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
-* [Azure Güvenlik Merkezi'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
+* [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)

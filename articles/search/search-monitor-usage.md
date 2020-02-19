@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210559"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443610"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
 Bu makalede, hizmet (kaynak) düzeyinde izleme iş yükü düzeyinde (sorgular ve dizin oluşturma) açıklanır ve Kullanıcı erişimini izlemek için bir çerçeve önerilir.
 
-SPI genelinde, Azure Izleyici gibi yerleşik altyapının yanı sıra istatistik, sayı ve durum döndüren hizmet API 'Lerinin birleşimini kullanacaksınız. Özellik aralığını anlamak, ortaya çıkan sorunlara yönelik proaktif yanıtlar için etkin bir iletişim sistemi yapılandırmanıza veya oluşturmanıza yardımcı olur.
+SPI genelinde, Azure Izleyici gibi yerleşik altyapının yanı sıra istatistik, sayı ve durum döndüren hizmet API 'Lerinin birleşimini kullanacaksınız. Özellik aralığını anlamak, bir geri bildirim döngüsü oluşturmanıza yardımcı olabilir, böylece sorunları ortaya çıkan sorunları ele alabilirsiniz.
 
 ## <a name="use-azure-monitor"></a>Azure İzleyici’yi kullanma
 
@@ -52,9 +52,9 @@ Kaynak kullanımında genel bakış sayfası raporuna yerleştirilmiş sekmeli s
 
 [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
 
-Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi toplu **AzureMetrics**veya oturum açmamış. Kaynakla ilgili bildirimleri almak için özel bir çözüm oluşturmanız gerekir.
+Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren bir özel çözüm oluşturmanız gerekir. Depolama ölçümleri hakkında daha fazla bilgi için bkz. [hizmet Istatistiklerini edinme](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
-Portalda **kullanım** sekmesi, hizmet katmanının uyguladığı geçerli [limitlere](search-limits-quotas-capacity.md) göre kaynak kullanılabilirliği gösterir. 
+Portalda görsel izleme için **kullanım** sekmesi, hizmet katmanının uyguladığı geçerli [limitlere](search-limits-quotas-capacity.md) göre kaynak kullanılabilirliği gösterir. 
 
 Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
 
@@ -63,7 +63,7 @@ Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre olu�
 
 ## <a name="monitor-workloads"></a>İş yüklerini izleme
 
-Günlüğe kaydedilen olaylar, dizin oluşturma ve sorgularla ilgili olanları içerir. Log Analytics **Azure tanılama** tablosu sorgular ve dizin oluşturma ile ilgili işletimsel verileri toplar.
+Günlüğe kaydedilen olaylar, dizin oluşturma ve sorgularla ilgili olanları içerir. Log Analytics içindeki **AzureDiagnostics** tablosu sorgular ve dizin oluşturma ile ilgili işletimsel verileri toplar.
 
 Günlüğe kaydedilen verilerin çoğu salt okuma işlemlerine yöneliktir. Günlükte yakalanmayan diğer oluşturma-güncelleştirme silme işlemleri için, arama hizmetini sistem bilgileri için sorgulayabilirsiniz.
 
@@ -115,9 +115,9 @@ Hem Azure Bilişsel Arama REST API hem de .NET SDK, hizmet ölçümleri, dizin v
 
 ## <a name="monitor-user-access"></a>Kullanıcı erişimini izleme
 
-Arama dizinleri daha büyük bir istemci uygulamasının bileşeni olduğundan, bir dizine erişimi denetlemek için yerleşik, Kullanıcı başına yöntem yoktur. İsteklerin, yönetici ya da sorgu istekleri için bir istemci uygulamasından geldiği varsayılır. Yönetici okuma yazma işlemleri, tüm hizmet genelinde nesneleri oluşturma, güncelleştirme, silme işlemlerini içerir. Salt okuma işlemleri, tek bir dizin kapsamına alınmış belgeler koleksiyonuna yönelik sorgulardır. 
+Arama dizinleri daha büyük bir istemci uygulamasının bileşeni olduğundan, bir dizine Kullanıcı başına erişimi denetlemek veya izlemek için yerleşik bir yöntem yoktur. İsteklerin, yönetici ya da sorgu istekleri için bir istemci uygulamasından geldiği varsayılır. Yönetici okuma yazma işlemleri, tüm hizmet genelinde nesneleri oluşturma, güncelleştirme, silme işlemlerini içerir. Salt okuma işlemleri, tek bir dizin kapsamına alınmış belgeler koleksiyonuna yönelik sorgulardır. 
 
-Bu nedenle günlüklerde göreceğiniz özellikler, yönetici anahtarları veya sorgu anahtarları kullanılarak yapılan çağrılardır. İlgili anahtar, istemci kodundan kaynaklanan isteklere dahildir. Hizmet, kimlik belirteçlerini veya kimliğe bürünme işlemini işleyecek şekilde donatılmış değildir.
+Bu nedenle, etkinlik günlüklerinde göreceğiniz özellikler, yönetici anahtarları veya sorgu anahtarları kullanılarak yapılan çağrılara başvurudur. İlgili anahtar, istemci kodundan kaynaklanan isteklere dahildir. Hizmet, kimlik belirteçlerini veya kimliğe bürünme işlemini işleyecek şekilde donatılmış değildir.
 
 Kullanıcı başına yetkilendirme için iş gereksinimleri mevcut olduğunda, öneri Azure Active Directory ile tümleştirilir. Kullanıcının görmemelidir belgelerinin [arama sonuçlarını kırpmak](search-security-trimming-for-azure-search-with-aad.md) için $Filter ve Kullanıcı kimliklerini kullanabilirsiniz. 
 

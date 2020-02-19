@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206319"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430423"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -58,7 +58,7 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [Po
 
 Şu anda yalnızca şu bölgeler desteklenmektedir:
 
-- Doğu ABD, Batı ABD 2 ve Orta Güney ABD bölgelerinde bir GA teklifi olarak sunulmaktadır.
+- Doğu ABD, Batı ABD 2, Orta Güney ABD, UK Güney bölgelerinde bir GA teklifi olarak sunulmaktadır.
 - Orta Batı ABD, Doğu ABD 2, Kanada Orta ve Kuzey Avrupa bölgelerinde genel önizleme olarak kullanılabilir.
 
 ### <a name="restrictions"></a>Kısıtlamalar

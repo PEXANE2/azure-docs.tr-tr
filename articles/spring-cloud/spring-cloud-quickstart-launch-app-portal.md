@@ -4,14 +4,14 @@ description: Bu hızlı başlangıçta, Azure portal kullanarak Azure Spring bul
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251830"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431392"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma
 
@@ -54,20 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portal bir hizmet örneği sağlayın
 
-1. Bir Web tarayıcısında, [Azure Portal Azure Spring Cloud bağlantısını](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)açın.
+1. Yeni bir sekmede [Azure Portal](https://ms.portal.azure.com/)açın. 
 
-1. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
-    - Hizmet adı: hizmet örneğinizin adını belirtin.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
-    - Abonelik: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.  Bu aboneliğin Azure yay bulutu için izin verilenler listenize eklendiğinden emin olun.
-    - Kaynak grubu: yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır.
-    - Konum: hizmet örneğinizin konumunu seçin. Şu anda desteklenen konumlar Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya 'yı içerir.
+2. Üst arama kutusundan **Azure yay bulutu**' nı arayın.
 
-1. **Gözden geçir ve oluştur**' a tıklayın.
+3. Sonuçlardan **Azure yay bulutu** ' nı seçin.
 
-1. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
+ ![ASC simgesi](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
->[!Note]
-> Şablon doğrulamasının tamamlanmasını 3 dakikadan fazla sürerse, lütfen izlemeyi devre dışı bırakıp yeniden deneyin.
+4. Azure yay bulutu sayfasında **+ Ekle**' ye tıklayın.
+
+ ![ASC simgesi](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
+    - **Abonelik**: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.  Bu aboneliğin Azure yay bulutu için izin verilenler listenize eklendiğinden emin olun.
+    - **Kaynak grubu**: yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır.
+    - **Hizmet Ayrıntıları/adı**: hizmet örneğinizin adını belirtin.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
+    - **Konum**: hizmet örneğinizin konumunu seçin. Şu anda desteklenen konumlar Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya 'yı içerir.
+
+    ![ASC portalı başlangıcı](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. Aşağıdaki iletişim kutusunu açmak için **Tanılama ayarı** sekmesine tıklayın.
+
+7. Gereksinimlerinize göre **günlüğü** *Evet* veya *Hayır* olarak ayarlayabilirsiniz.
+
+    ![Günlükleri etkinleştirme](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. **İzleme** sekmesine tıklayın.
+
+9. **İzlemeyi** , gereksinimlerinize göre *Evet* veya *Hayır* olarak ayarlayabilirsiniz.  **Izlemeyi etkinleştir** ' i Evet olarak ayarlarsanız, var olan bir uygulama öngörüyü seçin veya yeni bir tane oluşturun. **Application Insights** belirtimi olmadan bir doğrulama hatası olur.
+
+
+    ![İzleme](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. **Gözden geçir ve oluştur**' a tıklayın.
+
+11. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
 
 Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **genel bakış** sayfası, dağıtıldıktan sonra görüntülenir.
 
@@ -79,9 +101,9 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu**' nu seçin.
 
-1. **Varsayılan depo** bölümünde, **urı** 'yi "https://github.com/Azure-Samples/piggymetrics-config" olarak ayarlayın.
+2. **Varsayılan depo** bölümünde, **urı** 'yi "https://github.com/Azure-Samples/piggymetrics-config" olarak ayarlayın.
 
-1. Değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+3. Değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -98,27 +120,27 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Kopyalanmış paketi oluşturun.
+2. Kopyalanmış paketi oluşturun.
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. Kaynak grubunuza ve hizmetinize ad atayın. Aşağıdaki yer tutucuları, bu öğreticide daha önce sağladığınız kaynak grubu adı ve hizmet adı ile değiştirdiğinizden emin olun.
+3. Kaynak grubunuza ve hizmetinize ad atayın. Aşağıdaki yer tutucuları, bu öğreticide daha önce sağladığınız kaynak grubu adı ve hizmet adı ile değiştirdiğinizden emin olun.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. `gateway` uygulamasını oluşturun ve JAR dosyasını dağıtın.
+4. `gateway` uygulamasını oluşturun ve JAR dosyasını dağıtın.
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Aynı kalıbı izleyerek `account-service` ve `auth-service` uygulamaları oluşturun ve JAR dosyalarını dağıtın.
+5. Aynı kalıbı izleyerek `account-service` ve `auth-service` uygulamaları oluşturun ve JAR dosyalarını dağıtın.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -127,7 +149,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Uygulamaların dağıtılmasının tamamlanmasının birkaç dakika sürer. Dağıtıldığını doğrulamak için Azure portal **uygulamalar** dikey penceresine gidin. Her üç uygulamanın bir satırını görmeniz gerekir.
+6. Uygulamaların dağıtılmasının tamamlanmasının birkaç dakika sürer. Dağıtıldığını doğrulamak için Azure portal **uygulamalar** dikey penceresine gidin. Her üç uygulamanın bir satırını görmeniz gerekir.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -136,13 +158,13 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Soldaki menüden **uygulamalar** sekmesini açın.
 
-1. **Genel bakış** sayfasını göstermek için `gateway` uygulamayı seçin.
+2. **Genel bakış** sayfasını göstermek için `gateway` uygulamayı seçin.
 
-1. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu işlem birkaç dakika sürebilir.
+3. Ağ geçidine genel bir uç nokta atamak için **uç nokta ata** ' yı seçin. Bu işlem birkaç dakika sürebilir.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. Çalışan uygulamanızı görüntülemek için tarayıcınıza atanan ortak uç noktayı ( **URL etiketli URL**) girin.
+4. Çalışan uygulamanızı görüntülemek için tarayıcınıza atanan ortak uç noktayı ( **URL etiketli URL**) girin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

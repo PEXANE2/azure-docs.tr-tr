@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278018"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443593"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Gelişmiş güvenli puan (Önizleme) 
 
@@ -101,7 +101,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
 |**Yoldaki verileri şifreleme**|4|-API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır<br>-İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır<br>-Yalnızca Redis Cache güvenli bağlantı etkinleştirilmelidir<br>-Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir<br>-Web uygulamasına yalnızca HTTPS üzerinden erişilebilir olması gerekir|
 |**Erişimi ve izinleri yönetme**|4|-Aboneliğiniz için en fazla 3 sahip belirtilmelidir<br>-Kullanımdan kaldırılan hesaplar aboneliğinizden kaldırılmalı (Önizleme)<br>-Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalı (Önizleme)<br>-Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalı (Önizleme)<br>-Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir<br>-Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir (Önizleme)<br>-Aboneliğinize birden fazla sahip atanmalıdır<br>-Rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır (Önizleme)<br>-Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır|
 |**Güvenlik yapılandırmalarını düzeltme**|4|-Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır (Önizleme)<br>-Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir<br>-Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>-Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı, sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir|
-|**Yetkisiz ağ erişimini kısıtla**|4|-Sanal makinenizde IP iletimi devre dışı bırakılmalıdır<br>-Yetkilendirilmiş IP aralıkları Kubernetes hizmetlerinde tanımlanmalıdır (Önizleme)<br>-Uygulama hizmetlerine erişim kısıtlı olmalıdır (Önizleme)<br>-IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır<br>-Sanal makinelerin bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir<br>-CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir<br>-CORS her kaynağın İşlev Uygulaması erişmesine izin vermemelidir<br>-CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir<br>-API uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-Web uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-Internet 'e yönelik VM 'lerle izin veren ağ güvenlik grupları için erişim kısıtlanması gerekir<br>-Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır|
+|**Yetkisiz ağ erişimini kısıtla**|4|-Sanal makinenizde IP iletimi devre dışı bırakılmalıdır<br>-Yetkilendirilmiş IP aralıkları Kubernetes hizmetlerinde tanımlanmalıdır (Önizleme)<br>-(Kullanım DıŞı) uygulama hizmetlerine erişim kısıtlı olmalıdır (Önizleme)<br>-(Kullanım DıŞı) IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır<br>-Sanal makinelerin bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir<br>-CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir<br>-CORS her kaynağın İşlev Uygulaması erişmesine izin vermemelidir<br>-CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir<br>-API uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-Web uygulaması için uzaktan hata ayıklama kapatılmalıdır<br>-Internet 'e yönelik VM 'lerle izin veren ağ güvenlik grupları için erişim kısıtlanması gerekir<br>-Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır|
 |**Uyarlamalı uygulama denetimi uygulama**|3|-Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir|
 |**Veri sınıflandırması Uygula**|2|-SQL veritabanlarınızdaki hassas verilerin sınıflandırılmalı (Önizleme)|
 |**DDoS saldırılarına karşı uygulamaları koruma**|2|-DDoS koruma standardı etkinleştirilmelidir|

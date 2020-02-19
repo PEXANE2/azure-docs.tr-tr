@@ -4,14 +4,14 @@ description: Bu hızlı başlangıçta, Azure CLı üzerinde Azure Spring Cloud 
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190781"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431273"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Java Spring uygulaması başlatma
 
@@ -143,28 +143,34 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta ata
 
-Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ihtiyacımız var. Ağ Geçidi uygulamamız, aşağıdaki komut kullanılarak atanabilecek, herkese açık bir uç nokta gerektirir:
+Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ihtiyacımız var. Ağ Geçidi uygulamamız, herkese açık bir uç nokta gerektirir.
+
+1. Aşağıdaki komutu kullanarak bitiş noktasını atayın:
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+2. Uygulamanın çalıştığını doğrulayabilmeniz için **ağ geçidi** uygulamasını ortak IP 'si için sorgulayın:
 
-Son olarak, uygulamanın çalıştığını doğrulayabilmeniz için **ağ geçidi** uygulamasını genel IP 'si için sorgulayın:
-
+Linux:
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
-
-Plımetrimetrik uygulamasını çalıştırmak için önceki komutun sunduğu URL 'ye gidin.
+Windows:
+```azurecli
+az spring-cloud app show --name gateway | findstr url
+```
+3. Plımetrimetrik uygulamasını çalıştırmak için önceki komutun sunduğu URL 'ye gidin.
     ](media/spring-cloud-quickstart-launch-app-cli/launch-app.png) çalıştıran Pıof ölçümlerinin ekran görüntüsünü ![
 
 URL 'YI bulmak için Azure portal de gidebilirsiniz. 
 1. Hizmete git
-1. **Uygulama** seçin
-1. **Ağ geçidini** seçin
+2. **Uygulama** seçin
+3. **Ağ geçidini** seçin
 
     ![Çalıştırılan POF ölçümleri ekran görüntüsü](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
-1. **Ağ geçidine genel bakış** sayfasında URL 'yi ![, çalışan pıof ölçümlerinin ekran görüntüsünü bulun](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+    
+4. **Ağ geçidine genel bakış** sayfasında URL 'yi ![, çalışan pıof ölçümlerinin ekran görüntüsünü bulun](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827521"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443984"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini [Python için bir veri istemci kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) sağlar. Bu kitaplık kodunuzdan verileri sorgulamanıza olanak tanır. Bu makalede, *Yardım kümesi* üzerinde öğrendiğimiz bir tabloya bağlanırsınız. Ardından bu kümedeki tabloyu sorgular ve sonuçları döndürürsünüz.
+Bu makalede, Azure Veri Gezgini kullanarak verileri sorgulayın. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir.
+
+Azure Veri Gezgini [Python için bir veri istemci kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) sağlar. Bu kitaplık kodunuzdan verileri sorgulamanıza olanak tanır. *Yardım kümesi* üzerinde öğrendiğimiz bir tabloya bağlanın. Bu kümedeki bir tabloyu sorgulayabilir ve sonuçları döndürebilirsiniz.
 
 Bu makale bir [Azure Not defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)olarak da kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Active Directory (AAD) üyesi olan bir kuruluş e-posta hesabı
+* [Python 3.4 +](https://www.python.org/downloads/)
 
-* Geliştirme bilgisayarınıza yüklenmiş [Python](https://www.python.org/downloads/)
+* Azure Active Directory (AAD) üyesi olan bir kuruluş e-posta hesabı
 
 ## <a name="install-the-data-library"></a>Veri kitaplığını yükleme
 
@@ -75,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Azure Veri Gezgini'ne bağlanma ve sorgu yürütme
 
-Kümede bir sorgu yürütün ve çıkışı bir veri çerçevesinde depolayın. Bu kod çalıştırıldığında, aşağıdakine benzer bir ileti döndürür: *Oturum açmak https://microsoft.com/devicelogin için, sayfayı açmak üzere bir Web tarayıcısı kullanın ve kimlik doğrulaması yapmak için F3W4VWZDM kodunu girin*. Adımları izleyerek oturum açın, sonra da dönüp bir sonraki kod bloğunu çalıştırın.
+Kümede bir sorgu yürütün ve çıkışı bir veri çerçevesinde depolayın. Bu kod çalıştırıldığında, şuna benzer bir ileti döndürür: *Oturum açmak için web tarayıcısını kullanarak https://microsoft.com/devicelogin sayfasını açın ve kimliği doğrulamak için F3W4VWZDM kodunu girin*. Adımları izleyerek oturum açın, sonra da dönüp bir sonraki kod bloğunu çalıştırın.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)

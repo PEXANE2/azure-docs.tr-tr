@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: a77fedd92800a73ef446f1f8241a518e42f977ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 62b6fe76fcd55df7f1fe65bd3d8d7d2aa7cc0841
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155981"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446060"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,7 +23,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. Visual Studio 'dan **HelloWorld. cpp**kaynak dosyasını açın.
 
@@ -56,8 +56,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
         // Set these
         std::string subscriptionKey("YourSubscriptionKey");
 
-        // Replace below with your own service region (e.g., "westus", use the one of SpeechSDKParameters
-        // from here: https://aka.ms/speech/sdkregion).   
+        // Replace below with your own region identifier from here: https://aka.ms/speech/sdkregion
         std::string region("YourServiceRegion");
         
         std::string speechLanguage("en-US");
@@ -199,9 +198,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     }
     ```
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Menü çubuğundan **dosya** > **Tümünü Kaydet**' i seçin.
 
@@ -287,7 +286,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 4. Visual Studio 'ya geri dönün ve önceki adımdaki konuşma KIMLIĞIYLE `int main()` işlevinizdeki `YourConversationId` değiştirin.
 
-5. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun hatasız olarak derlenmesi gerekir.
+5. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun hatasız derlenmesi gerekir.
 
 6. **HelloWorld** uygulamasını başlatmak Için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya <kbd>F5</kbd>tuşuna basın).
 

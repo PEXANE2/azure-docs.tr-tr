@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac31783f0eb270823b71c86cc8d7f0975d3a586a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 29b8a32989b5a1d60792fb5678f7ba8a9f12daba
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452277"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443814"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde runbook çalıştırma
 
@@ -86,7 +86,7 @@ Karma runbook çalışanında Azure kaynakları için yönetilen bir kimlik kull
 1. Azure VM oluşturma
 2. [SANAL makinenizde Azure kaynakları için Yönetilen kimlikler yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
 3. [VM 'nize bir kaynak grubuna erişim Izni verin Kaynak Yöneticisi](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) öğreticisi-Windows-VM-Access-ARM. MD # Get-a-Access-Token------VM-------------------------------Resource-Manager
-4. [Windows karma Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) 'ı sanal makineye yükler.
+4. [Windows karma Runbook Worker](automation-windows-hrw-install.md) 'ı sanal makineye yükler.
 
 Yukarıdaki adımlar tamamlandıktan sonra, Azure kaynaklarında kimlik doğrulaması yapmak için Runbook 'ta `Connect-AzureRmAccount -Identity` kullanabilirsiniz. Bu yapılandırma, farklı çalıştır hesabı kullanma gereksinimini azaltır ve farklı çalıştır hesabı için sertifikayı yönetir.
 

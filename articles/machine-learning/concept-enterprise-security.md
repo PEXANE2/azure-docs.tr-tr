@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312422"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444154"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -46,7 +46,7 @@ Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini des
 |Kimlik doğrulama Yöntemi|Açıklama|Azure Container Instances|AKS|
 |---|---|---|---|
 |Anahtar|Anahtarlar statiktir ve yenilenmek zorunda değildir. Anahtarlar el ile yeniden oluşturulabilir.|Varsayılan olarak devre dışı| Varsayılan olarak etkinleştirilen|
-|Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamıyor| Varsayılan olarak devre dışı |
+|Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamaz| Varsayılan olarak devre dışı |
 
 Kod örnekleri için, [Web hizmeti kimlik doğrulaması bölümüne](how-to-setup-authentication.md#web-service-authentication)bakın.
 
@@ -88,10 +88,10 @@ Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları I�
 
 | Kaynak | İzinler |
 | ----- | ----- |
-| Çalışma Alanı | Katılımcı |
+| Çalışma alanı | Katılımcı |
 | Depolama hesabı | Depolama Blobu veri Katılımcısı |
-| Key vault | Tüm anahtarlar, gizlilikler, sertifikalara erişim |
-| Azure Container Registry | Katılımcı |
+| Key Vault | Tüm anahtarlar, gizlilikler, sertifikalara erişim |
+| Azure Container Kayıt Defteri | Katılımcı |
 | Çalışma alanını içeren kaynak grubu | Katılımcı |
 | Anahtar kasasını içeren kaynak grubu (çalışma alanını içeren bunlardan farklıysa) | Katılımcı |
 
@@ -105,7 +105,7 @@ Azure Machine Learning, işlem kaynakları için diğer Azure hizmetlerini kulla
 
 Daha fazla bilgi için bkz. [Sanal ağda denemeleri ve çıkarımı çalıştırma](how-to-enable-virtual-network.md).
 
-## <a name="data-encryption"></a>Veri şifreleme
+## <a name="data-encryption"></a>Veri şifrelemesi
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
@@ -159,7 +159,7 @@ Bu Cosmos DB örneği, aboneliğinizdeki Microsoft tarafından yönetilen bir ka
 
 Cosmos DB ile müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure Cosmos DB hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma](../cosmos-db/how-to-setup-cmk.md).
 
-#### <a name="azure-container-registry"></a>Azure Container Registry
+#### <a name="azure-container-registry"></a>Azure Container Kayıt Defteri
 
 Kayıt defterinizde (Azure Container Registry) bulunan tüm kapsayıcı görüntüleri, bekleyen olarak şifrelenir. Azure, bir görüntüyü depolamadan önce otomatik olarak şifreler ve Azure Machine Learning görüntüyü aldığında şifresini çözer.
 
@@ -215,7 +215,7 @@ Her çalışma alanı, çalışma alanıyla aynı ada sahip ilişkili, sistem ta
 
 Microsoft, kaynak adları (örneğin, veri kümesi adı veya makine öğrenimi deneme adı) gibi kullanıcı olmayan tanımlama bilgilerini veya tanılama amacıyla iş ortamı değişkenlerini toplayabilir. Bu tür veriler, Microsoft 'un sahip olduğu aboneliklerde barındırılan depolamada Microsoft tarafından yönetilen anahtarlar kullanılarak depolanır ve [Microsoft 'un standart Gizlilik ilkesi ve veri işleme standartlarını](https://privacy.microsoft.com/privacystatement)izler.
 
-Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır.
+Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır. Benzer şekilde, [RunId](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)'yi adlandırırken Kullanıcı adları veya gizli proje adları gibi hassas bilgileri de eklemekten kaçının. Bu bilgiler, Microsoft Desteği mühendislerine erişilebilen telemetri günlüklerinde görünebilir.
 
 Çalışma alanını sağlarken `hbi_workspace` parametresini `TRUE` olarak ayarlayarak toplanan tanılama verilerinden bu verileri devre dışı kalabilirsiniz. Bu işlev, AzureML Python SDK 'Sı, CLı, REST API 'Leri veya Azure Resource Manager şablonları kullanılırken desteklenir.
 
@@ -251,8 +251,8 @@ Puanlama isteği ayrıntıları Application Insights depolanır. Application Ins
 * Kullanıcı
 * ComputeType
 * RequestUrl
-* StatusCode
-* RequestId
+* Durum
+* No
 * Süre
 
 > [!IMPORTANT]
@@ -333,9 +333,9 @@ Ayrıntılar aşağıda verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
+* [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Machine Learning modeli kullanma](how-to-consume-web-service.md)
-* [Batch Öngörüler çalıştırma](how-to-use-parallel-run-step.md)
+* [Toplu tahminleri çalıştırma](how-to-use-parallel-run-step.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

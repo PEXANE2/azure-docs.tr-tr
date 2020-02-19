@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156000"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446070"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -46,7 +46,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/android/from-microphone/app/src/main/res/layout/activity_main.xml)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `MainActivity.java` kaynak dosyasını açın. Bu dosyadaki tüm kodu aşağıdaki kodla değiştirin:
 
@@ -56,9 +56,9 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
    * `onSpeechButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Bir düğme, konuşmadan metne dökümü tetiklemesini tetikler.
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. Ayrıca dize `YourServiceRegion`, aboneliğiniz ile ilişkili [bölgeden](https://aka.ms/speech/sdkregion) "konuşma SDK parametresi" ile değiştirin. Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.
+1. Ayrıca dize `YourServiceRegion`, aboneliğiniz ile ilişkili [bölgeden](https://aka.ms/speech/sdkregion) **bölge tanımlayıcısı** ile değiştirin. Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 

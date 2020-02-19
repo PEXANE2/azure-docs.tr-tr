@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063892"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443627"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -52,6 +52,7 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 | Neden Hesabım etkinliklerim hakkında bildirimler alıyorum? | Kişisel Microsoft hesabı neler hakkında daha fazla bilgi sahibi olmaya devam etmek için, Microsoft Authenticator uygulamanıza etkinlik bildirimleri gönderiyoruz. Bu bildirimler bir değişiklik yaptıktan sonra, daha güvenli tutmaya yardımcı olmaya devam eden bir şekilde görünür. Daha önce bu bildirimleri e-posta ve SMS aracılığıyla gönderdik ve artık uygulamayı kapsayacak şekilde genişlettik. Bu etkinlik bildirimleri hakkında daha fazla bilgi için bkz. [hesabınızda olağan dışı oturum açma durumunda ne olur?](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in) Bildirimlerinizi nereden alacağınızı değiştirmek için hesabınızdaki [kritik olmayan hesap uyarıları ile sizinle iletişim kurduğumuz yerde](https://account.live.com/SecurityNotifications/Update) oturum açın. |
 | İOS ile gelen varsayılan posta uygulamasını kullanarak iş veya okul hesabınızda oturum açarken, güvenlik doğrulama bilgilerim için Microsoft Authenticator uygulaması tarafından SORULDUM. Bu bilgileri girdikten ve posta uygulamasına geri döndüğünüzde bir hata alıyorum. Ne yapabilirim? | Bu en büyük olasılıkla, oturum açma ve posta uygulamanız iki farklı uygulama arasında gerçekleştiğinden, ilk arka planda oturum açma işleminin çalışmayı durdurmasına ve başarısız olmasına neden olur. Bu hatayı gidermeyi denemek için, posta uygulamanızda oturum açarken ekranın sağ alt tarafındaki **Safari** simgesini seçmenizi öneririz. Safari 'ye geçerek, tüm oturum açma süreci tek bir uygulamada gerçekleşir ve uygulamada başarıyla oturum açmanızı sağlar. |
 | Tek seferlik parola (OTP) kodları çalışmıyor. Ne yapmalıyım? | Cihazınızdaki tarih ve saatin doğru olduğundan ve otomatik olarak eşitlendiğinden emin olun. Tarih ve saat yanlış ya da eşitlenmemiş ise, kod çalışmaz. |
+| Windows 10 Mobile işletim sistemi kullanım dışı bırakıldı Aralık 2019. Windows Mobile işletim sistemlerindeki Microsoft Authenticator de kullanım dışı bırakılacak mı? | Tüm Windows Mobile işletim sistemlerindeki Microsoft Authenticator uygulaması 28 Şubat 2020 ' den sonra desteklenmez. Kullanıcılar uygulamaya yeni güncelleştirmeler almak için uygun olmayacaktır. 28 Şubat 2020 ' den sonra, şu anda tüm Windows Mobile işletim sistemlerindeki Microsoft Authenticator kullanarak kimlik doğrulamaları destekledikleri Microsoft Hizmetleri, desteğini devre dışı bırakmaya başlayacak. Microsoft hizmetlerinde kimlik doğrulaması yapabilmek için, tüm kullanıcılarımızın bu tarihten önce alternatif bir kimlik doğrulama mekanizmasına geçiş yapmasını önemle öneririz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

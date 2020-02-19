@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/06/2020
-ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 93b8520c0f65f102c9adf64870b60506d890276d
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069600"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431409"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Eşleme veri akışı video öğreticileri
 
@@ -68,6 +68,8 @@ Azure Data Factory ekibi tarafından oluşturulan eşleme veri akışı öğreti
 [Koşullu bölünmüş dönüştürme](http://youtu.be/W1lQHojhKZw?hd=1)
 
 [Mevcut dönüştürme](http://youtu.be/GS8JVgNBMfs?hd=1)
+
+[Dinamik birleştirmeler ve dinamik aramalar](https://youtu.be/CMOPPie9bXM)
 
 ## <a name="source-and-sink"></a>Kaynak ve havuz
 

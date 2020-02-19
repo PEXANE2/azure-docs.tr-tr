@@ -1,6 +1,6 @@
 ---
-title: Kullanıcı Azure Lab Services laboratuvar sahibi olarak nasıl eklenir
-description: Bu makalede, bir yöneticinin bir kullanıcıyı bir laboratuvara sahip olarak nasıl ekleyebileceğiniz gösterilmektedir.
+title: Azure Lab Services 'de laboratuvara ek sahipler ekleme
+description: Bu makalede, bir yöneticinin Azure Lab Services bir laboratuvara sahip olarak Kullanıcı nasıl ekleyebileceğiniz gösterilmektedir.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,20 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480859"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443525"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services ' de bir derslik Laboratuvarı sahibi olarak Kullanıcı ekleme
-Bu makalede, Azure Lab Services ' de bir laboratuvarın sahibi olarak bir kullanıcı ekleme gösterilmektedir.
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services ' de var olan laboratuvara ek sahipler ekleme
+Bu makalede, yönetici olarak, var olan laboratuvara nasıl ek sahipler ekleyebileceğiniz gösterilmektedir.
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Laboratuvar hesabı için okuyucu rolüne kullanıcı ekleme
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+Bir kullanıcıyı mevcut bir laboratuvara ek bir sahip olarak eklemek için, önce laboratuvar hesabında kullanıcıya **okuma** izinleri vermeniz gerekir.
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **Laboratuvar Hizmetleri**araması yapın ve ardından seçin.
 3. Listeden **Laboratuvar hesabınızı** seçin. 
 2. **Laboratuvar hesabı sayfasında**sol menüdeki **Access Control (IAM)** öğesini seçin. 

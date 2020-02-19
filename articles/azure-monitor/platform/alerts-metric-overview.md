@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850066"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444171"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlama
 
@@ -20,7 +20,7 @@ Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine ça
 
 ## <a name="how-do-metric-alerts-work"></a>Ölçüm uyarıları nasıl çalışır?
 
-İzlenecek hedef kaynak, ölçüm adı, koşul türü (statik veya dinamik) ve koşul (bir operatör ve eşik/duyarlılık) ve uyarı kuralı tetiklendiğinde tetiklenecek bir eylem grubu belirterek bir ölçüm uyarı kuralı tanımlayabilirsiniz. Koşul türleri eşiklerin belirlendiği şekilde etkiler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
+İzlenecek hedef kaynak, ölçüm adı, koşul türü (statik veya dinamik) ve koşul (bir operatör ve eşik/duyarlılık) ve uyarı kuralı tetiklendiğinde tetiklenecek bir eylem grubu belirterek bir ölçüm uyarı kuralı tanımlayabilirsiniz. Koşul türleri eşiklerin nasıl belirleneceğini etkiler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
 
 ### <a name="alert-rule-with-static-condition-type"></a>Statik koşul türü ile uyarı kuralı
 
@@ -125,15 +125,15 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarılarını kullanarak ölçeğe göre izleme
 
-Şimdiye kadar, tek bir Azure kaynağıyla ilgili bir veya daha fazla ölçüm zaman serisini izlemek için tek bir ölçüm uyarısının nasıl kullanılabileceğini gördünüz. Birçok kez, aynı uyarı kuralının birçok kaynağa uygulanmasını isteyebilirsiniz. Azure Izleyici, tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın izlenmesini de destekler. Bu özellik şu anda yalnızca sanal makinelerde desteklenir, SQL Server veritabanları, SQL Server elastik havuzlar ve veri kutusu uç cihazları. Ayrıca tek bir ölçüm uyarısı, kaynakları tek bir Azure bölgesinde izleyebilir.
+Şimdiye kadar, tek bir Azure kaynağıyla ilgili bir veya daha fazla ölçüm zaman serisini izlemek için tek bir ölçüm uyarısının nasıl kullanılabileceğini gördünüz. Birçok kez, aynı uyarı kuralının birçok kaynağa uygulanmasını isteyebilirsiniz. Azure Izleyici aynı Azure bölgesinde bulunan kaynaklar için tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın (aynı türden) izlenmesini de destekler. Bu özellik şu anda yalnızca Azure genel bulutunda ve yalnızca sanal makineler, SQL Server veritabanları, SQL Server elastik havuzlar ve veri kutusu uç cihazları için desteklenir. Ayrıca, bu özellik yalnızca platform ölçümleri için kullanılabilir ve özel ölçümler için desteklenmez.
 
-Tek bir ölçüm uyarısı tarafından izlemenin kapsamını üç şekilde belirtebilirsiniz:
+Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz:
 
 - bir abonelik içindeki bir Azure bölgesindeki sanal makinelerin listesi olarak
 - bir abonelikteki bir veya daha fazla kaynak grubunda bulunan tüm sanal makineler (bir Azure bölgesinde)
 - bir abonelikteki tüm sanal makineler (bir Azure bölgesinde)
 
-Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir kaynağı izleyen [başka bir ölçüm uyarısı oluşturmak](alerts-metric.md) gibidir. Yalnızca fark, izlemek istediğiniz tüm kaynakları seçecekti. Ayrıca, bu kuralları [Azure Resource Manager şablonları](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. Her bir sanal makine için bireysel bildirimler alacaksınız.
+Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir kaynağı izleyen [başka bir ölçüm uyarısı oluşturmak](alerts-metric.md) gibidir. Yalnızca fark, izlemek istediğiniz tüm kaynakları seçecekti. Ayrıca, bu kuralları [Azure Resource Manager şablonları](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. İzlenen her kaynak için bireysel bildirimler alacaksınız.
 
 ## <a name="typical-latency"></a>Tipik gecikme süresi
 

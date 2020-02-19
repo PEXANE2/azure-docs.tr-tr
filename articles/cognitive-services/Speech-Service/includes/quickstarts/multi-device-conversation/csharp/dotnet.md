@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: 99c8b77328d9e42dd66428b202cbeb0644972ced
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 878d43bad514daa6711b0037d39521e12bc0fdbe
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156562"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445814"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,7 +23,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **Program.cs**açın ve içindeki tüm kodu aşağıdaki kodla değiştirin:
 
@@ -48,8 +48,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
                 // Replace these values with the details of your Cognitive Speech subscription
                 string subscriptionKey = "YourSubscriptionKey";
 
-                // Replace below with your own service region (e.g., "westus", use the one of SpeechSDKParameters
-                // from here: https://aka.ms/speech/sdkregion).                   
+                // Replace below with your region identifier from here: https://aka.ms/speech/sdkregion
                 string region = "YourServiceRegion";
     
                 // Sets source and target languages.
@@ -203,7 +202,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Aynı dosyada, dize `YourSubscriptionKey`, bilişsel konuşma abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Menü çubuğundan **dosya** > **Tümünü Kaydet**' i seçin.
 

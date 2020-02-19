@@ -1,6 +1,6 @@
 ---
-title: Azure AD 'den uygulamalara Kullanıcı hazırlama için bir SCıM uç noktası oluşturun
-description: Bir SCıM uç noktası oluşturmayı, SCıM API 'nizi Azure Active Directory ile tümleştirmeyi ve bulut uygulamalarınıza kullanıcıları ve grupları sağlamayı otomatik hale getirmeye başlamasını öğrenin.
+title: Azure AD 'den uygulamalara Kullanıcı hazırlama için bir SCıM uç noktası geliştirin
+description: Etki alanları arası kimlik yönetimi (SCıM) sistemi, otomatik Kullanıcı sağlamayı standartlaştırlar. Bir SCıM uç noktası geliştirmeyi, SCıM API 'nizi Azure Active Directory ile tümleştirmeyi ve bulut uygulamalarınıza kullanıcıları ve grupları sağlamayı otomatik hale getirmeye başlamasını öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/18/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d891dfcc2a37489953724ce22e0e0422d512ff
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368228"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442029"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -49,15 +49,53 @@ Bir uygulamaya sağlamanın otomatikleştirilmesi, Azure AD SCıM ile uyumlu bir
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>1\. Adım: Kullanıcı ve grup şemanızı tasarlama
 
-Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gerektirir. Uygulamanızın gerektirdiği nesneleri (Kullanıcı, Grup) ve öznitelikleri (ad, yönetici, iş unvanı vb.) tanımlayarak tümleştirmenizi başlatın. Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özniteliğe ve SCıM RFC 'ye nasıl eşlendiğini anlamak için aşağıdaki tabloyu kullanabilirsiniz. Özniteliklerin Azure AD ile SCıM uç noktanız arasında nasıl eşleştirildiğini [özelleştirebilirsiniz](customize-application-attributes.md) . 
+Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gerektirir. Uygulamanızın gerektirdiği nesneleri (Kullanıcı, Grup) ve öznitelikleri (ad, yönetici, iş unvanı vb.) tanımlayarak tümleştirmenizi başlatın. SCıM standardı, kullanıcıları ve grupları yönetmek için bir şema tanımlar. Çekirdek Kullanıcı şeması yalnızca üç öznitelik gerektirir: **kimlik** (hizmet sağlayıcı tanımlı tanımlayıcı), **externalId** (istemci tanımlı tanımlayıcı) ve **meta** (hizmet sağlayıcı tarafından tutulan salt okuma meta verileri). Diğer tüm öznitelikler isteğe bağlıdır. Çekirdek Kullanıcı şemasına ek olarak, SCıM standardı, uygulamanızın ihtiyaçlarını karşılamak için Kullanıcı şemasını genişletmek üzere bir kurumsal Kullanıcı uzantısı ve modeli tanımlar. Örneğin, uygulamanız bir kullanıcının yöneticisini gerektiriyorsa, kullanıcının yöneticisini toplamak için kuruluş Kullanıcı şemasını ve kullanıcının e-postasını toplamak için çekirdek şemayı kullanabilirsiniz. Şemanızı tasarlamak için aşağıdaki adımları izleyin:
+  1. Uygulamanızın gerektirdiği öznitelikleri listeleyin. Gereksinimleriniz, kimlik doğrulaması için gereken özniteliklere (örn. loginName ve e-posta), kullanıcının yaşam döngüsünü (ör. durum/etkin) yönetmek için gereken öznitelikleri ve belirli uygulamanızın çalışması için gereken diğer öznitelikleri (ör. yönetici, etiket) için gerekli olan özniteliklere bölmek faydalı olabilir.
+  2. Bu özniteliklerin zaten çekirdek Kullanıcı şemasında veya kurumsal Kullanıcı şemasında tanımlanmış olup olmadığını denetleyin. İhtiyacınız olan ve çekirdek ya da kurumsal Kullanıcı şemaları kapsamında olmayan herhangi bir öznitelik varsa, Kullanıcı şemasına, ihtiyacınız olan öznitelikleri içeren bir uzantı tanımlamanız gerekir. Aşağıdaki örnekte, bir kullanıcıya bir "Tag" sağlamaya izin vermek için kullanıcıya bir uzantı ekledik. Yalnızca çekirdek ve kurumsal Kullanıcı şemaları ile başlamak ve daha sonra ek özel şemalara genişletmek en iyisidir.  
+  3. SCıM özniteliklerini Azure AD 'deki Kullanıcı öznitelikleriyle eşleyin. SCıM uç noktanıza tanımladığınız özniteliklerden birinin Azure AD Kullanıcı şemasında açık bir karşılığı yoksa, verilerin çoğu kiracının üzerinde Kullanıcı nesnesinde depolanmadığından iyi bir şansınız olur. Bu özniteliğin Kullanıcı oluşturmak için isteğe bağlı olup olmadığını göz önünde bulundurun. Uygulamanızın çalışması için özniteliği önemliyse, kiracı yöneticisinin şemasını genişletmesine veya "Etiketler" özelliği için aşağıda gösterildiği gibi bir uzantı özniteliği kullanmasına kılavuzluk edin.
 
-Kullanıcı kaynakları, bu protokol belirtimine dahil olan `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`şema tanımlayıcısı tarafından tanımlanır: https://tools.ietf.org/html/rfc7643.  Azure AD 'deki kullanıcı özniteliklerinin özniteliklerin varsayılan eşlemesi, Tablo 1 ' de verilmiştir.  
+### <a name="table-1-outline-the-attributes-that-you-need"></a>Tablo 1: ihtiyacınız olan özniteliklerin anahatlarını belirleme 
+| 1\. Adım: uygulamanızın gerektirdiği öznitelikleri belirleme| 2\. Adım: uygulama gereksinimlerini SCıM standardına eşleme| 3\. Adım: SCıM özniteliklerini Azure AD öznitelikleriyle eşleme|
+|--|--|--|
+|loginName|userName adı|userPrincipalName|
+|firstName|name.givenName|givenName|
+|lastName|Name. lastName|lastName|
+|Iş posta|E-postalar [tür EQ "iş"]. değer|Mail|
+|Yöneticisi|Yöneticisi|Yöneticisi|
+|tag|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
+|status|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
 
-Grup kaynakları, `urn:ietf:params:scim:schemas:core:2.0:Group`şema tanımlayıcısı tarafından tanımlanır. Tablo 2, Azure AD 'deki grupların özniteliklerinin grup kaynaklarının özniteliklerine varsayılan eşlemesini gösterir.
+Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken "ID," "externalId" ve "meta" özniteliklerini içerir.
 
-Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm öznitelikleri desteklememeniz gerekmez. Bunlar, Azure AD 'deki özniteliklerin genellikle SCıM protokolündeki özelliklerle nasıl eşlendiğine yönelik bir başvurudur.  
+```json
+{
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "Manager": "123456"
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "tag": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ ```
 
-### <a name="table-1-default-user-attribute-mapping"></a>Tablo 1: Varsayılan kullanıcı öznitelik eşlemesi
+### <a name="table-2-default-user-attribute-mapping"></a>Tablo 2: varsayılan kullanıcı özniteliği eşleme
+Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özniteliğe ve SCıM RFC 'ye nasıl eşlendiğini anlamak için aşağıdaki tabloyu kullanabilirsiniz. Özniteliklerin Azure AD ile SCıM uç noktanız arasında nasıl eşlendiğini [özelleştirebilirsiniz](customize-application-attributes.md) . Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm öznitelikleri desteklememeniz gerekmez. Bunlar, Azure AD 'deki özniteliklerin genellikle SCıM protokolündeki özelliklerle nasıl eşlendiğine yönelik bir başvurudur. 
 
 | Azure Active Directory kullanıcısı | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -81,7 +119,7 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 | Kullanıcı PrincipalName |userName adı |
 
 
-### <a name="table-2-default-group-attribute-mapping"></a>Tablo 2: Varsayılan grup öznitelik eşlemesi
+### <a name="table-3-default-group-attribute-mapping"></a>Tablo 3: varsayılan Grup özniteliği eşleme
 
 | Azure Active Directory grubu | urn: IETF: params: Scim: schemas: Core: 2.0: Grup |
 | --- | --- |
@@ -91,6 +129,19 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 | üyeler |üyeler |
 | objectId |externalId |
 | proxyAddresses |e-postaları [type eq "diğer"]. Değer |
+
+SCıM RFC 'de tanımlanmış birkaç uç nokta vardır. /User uç noktası ile çalışmaya başlayabilir ve ardından buradan genişletebilirsiniz. /Schemas uç noktası özel öznitelikler kullanılırken veya şemanızın sıklıkla değiştiği durumlarda faydalıdır. İstemcinin en güncel şemayı otomatik olarak almasına olanak sağlar. /Bulk uç noktası özellikle destekleyici gruplar olduğunda faydalıdır. Aşağıdaki tabloda, SCıM standardında tanımlanan çeşitli uç noktalar açıklanmaktadır. /Schemas uç noktası özel öznitelikler kullanılırken veya şemanızın sıklıkla değiştiği durumlarda faydalıdır. Bir istemcinin en güncel şemayı otomatik olarak almasına olanak sağlar. /Bulk uç noktası özellikle destekleyici gruplar olduğunda faydalıdır. Aşağıdaki tabloda, SCıM standardında tanımlanan çeşitli uç noktalar açıklanmaktadır. 
+ 
+### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>Tablo 4: geliştirmek istediğiniz uç noktaları belirleme
+|BKZ|AÇIKLAMA|
+|--|--|
+|/User|Bir kullanıcı nesnesi üzerinde CRUD işlemleri gerçekleştirin.|
+|/Group|Bir grup nesnesi üzerinde CRUD işlemleri gerçekleştirin.|
+|/ServiceProviderConfig|Desteklenen SCıM standardının özelliklerine ilişkin ayrıntıları, örneğin desteklenen kaynakları ve kimlik doğrulama yöntemini sağlar.|
+|/ResourceTypes|Her kaynakla ilgili meta verileri belirtir|
+|/Schemas|Her istemci ve hizmet sağlayıcı tarafından desteklenen öznitelik kümesi farklılık gösterebilir. Bir hizmet sağlayıcı "ad", "başlık" ve "e-postalar" içerebilir, ancak başka bir hizmet sağlayıcı "ad", "başlık" ve "phoneNumbers" kullanır. Şemalar uç noktası desteklenen özniteliklerin bulunmasına izin verir.|
+|/Toplu|Toplu işlemler, tek bir işlemde büyük kaynak nesneleri koleksiyonu üzerinde işlemler gerçekleştirmenize olanak tanır (örneğin, büyük bir grup için üyelikleri güncelleştirme).|
+
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>2\. Adım: Azure AD SCıM uygulamasını anlama
 > [!IMPORTANT]
@@ -509,7 +560,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 * Grup düzeltme eki isteğine güncelleştirme, yanıtta bir *HTTP 204 içeriği* getirmelidir. Tüm üyelerin listesini içeren bir gövde döndürülmesi önerilmez.
 * Grubun tüm üyelerini döndürmeyi desteklemek gerekli değildir.
 
-#### <a name="create-group"></a>{1&gt;Grup Oluştur&lt;1}
+#### <a name="create-group"></a>Grup Oluşturma
 
 ##### <a name="request-7"></a>İsteyen
 
@@ -670,6 +721,34 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 ##### <a name="response-13"></a>Yanıtıyla
 
 *HTTP/1.1 204 Içerik yok*
+
+### <a name="security-requirements"></a>Güvenlik gereksinimleri
+**TLS protokol sürümleri**
+
+Kabul edilebilir tek TLS protokol sürümleri, TLS 1,2 ve TLS 1,3 ' dir. Başka TLS sürümüne izin verilmez. SSL sürümüne izin verilmez. 
+- RSA anahtarları en az 2.048 bit olmalıdır.
+- ECC anahtarları, onaylanmış bir eliptik eğri kullanılarak oluşturulan en az 256 bit olmalıdır
+
+
+**Anahtar uzunlukları**
+
+Tüm hizmetlerin, yeterli uzunlukta şifreleme anahtarları kullanılarak oluşturulan X. 509.440 sertifikalarını kullanması gerekir, anlamı:
+
+**Şifre paketleri**
+
+Tüm hizmetlerin aşağıdaki şifre paketlerini kullanmak için aşağıda belirtilen kesin sırada yapılandırılması gerekir. Yalnızca bir RSA sertifikanız varsa, yüklü ECDSA şifre paketlerinin herhangi bir etkisi olmadığını unutmayın. </br>
+
+TLS 1,2 şifre paketleri minimum çubuğu:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3\. Adım: SCıM uç noktası oluşturma
 
@@ -885,7 +964,7 @@ Hizmeti Internet Information Services içinde barındırmak için bir geliştiri
 
 ### <a name="handling-endpoint-authentication"></a>İşleme uç nokta kimlik doğrulaması
 
-Azure Active Directory gelen istekleri bir OAuth 2.0 taşıyıcı belirteci içerir. İsteği alan herhangi bir hizmet, Microsoft Graph API hizmetine erişim için, beklenen Azure Active Directory kiracısı için Azure Active Directory veren tarafından kimlik doğrulaması yapılmalıdır. Belirteçte veren, "iss" gibi bir ISS talebi tarafından tanımlanır: "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Bu örnekte, https://sts.windows.nettalep değerinin temel adresi veren olarak Azure Active Directory tanımlar, göreli adres segmenti, cbb1a5ac-f33b-45fa-9BF5-f37db0fed422, belirtecin verildiği Azure Active Directory kiracının benzersiz tanımlayıcısıdır. Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 ' dir. Galerideki her bir uygulama için uygulama şablonu KIMLIĞI değişir. Galeri uygulamasının uygulama şablonu KIMLIĞI hakkında sorularınız için lütfen ProvisioningFeedback@microsoft.com başvurun. Tek bir kiracıya kayıtlı uygulamaların her biri, SCıM istekleriyle aynı `iss` talebini alabilir.
+Azure Active Directory gelen istekleri bir OAuth 2.0 taşıyıcı belirteci içerir.   İsteği alan herhangi bir hizmet, Microsoft Graph API hizmetine erişim için, beklenen Azure Active Directory kiracısı için Azure Active Directory veren tarafından kimlik doğrulaması yapılmalıdır.  Belirteçte veren, "iss" gibi bir ISS talebi tarafından tanımlanır: "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Bu örnekte, https://sts.windows.nettalep değerinin temel adresi veren olarak Azure Active Directory tanımlar, göreli adres segmenti, cbb1a5ac-f33b-45fa-9BF5-f37db0fed422, belirtecin verildiği Azure Active Directory kiracının benzersiz tanımlayıcısıdır. Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 ' dir. Galerideki her bir uygulama için uygulama şablonu KIMLIĞI değişir. Galeri uygulamasının uygulama şablonu KIMLIĞI hakkında sorularınız için lütfen ProvisioningFeedback@microsoft.com başvurun. Tek bir kiracıya kayıtlı uygulamaların her biri, SCıM istekleriyle aynı `iss` talebini alabilir.
 
 Bir SCıM hizmeti oluşturmak için Microsoft tarafından sunulan CLı kitaplıklarını kullanan geliştiriciler, aşağıdaki adımları izleyerek Microsoft. Owin. Security. ActiveDirectory paketini kullanarak Azure Active Directory istekleri kimlik doğrulaması yapabilir: 
 
@@ -1370,11 +1449,20 @@ Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
 SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü düzen tanımlamaz. Mevcut sektör standartlarının kullanımını temel alır. Azure AD sağlama istemcisi galerideki uygulamalar için iki yetkilendirme yöntemini destekler. 
 
+|Yetkilendirme Yöntemi|Uzmanları|Simgeler|Destek|
+|--|--|--|--|
+|Kullanıcı adı ve parola (Azure AD tarafından önerilmez veya desteklenmez)|Kolayca uygulanır|Güvenli olmayan- [PA $ $Word önemi yoktur](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Galeri uygulamaları için büyük/küçük harf esasına göre desteklenir. Galeri olmayan uygulamalar için desteklenmez.|
+|Uzun süreli taşıyıcı belirteci (Şu anda Azure AD tarafından desteklenir)|Uzun süreli belirteçler için bir kullanıcının mevcut olması gerekmez. Yöneticiler, sağlama ayarlarken kolayca kullanılabilir.|Uzun süreli belirteçlerin, e-posta gibi güvenli olmayan yöntemler kullanmadan bir yönetici ile paylaşılması zor olabilir. |Galeri ve Galeri olmayan uygulamalar için desteklenir. |
+|OAuth yetkilendirme kodu verme (Şu anda Azure AD tarafından desteklenir)|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir.  İlk yetkilendirme sırasında, bir sorumluluk düzeyi ekleyerek gerçek bir kullanıcının mevcut olması gerekir. |Bir kullanıcının mevcut olmasını gerektirir. Kullanıcı kuruluştan ayrılırsa, belirteç geçersizdir ve yetkilendirmenin yeniden tamamlanması gerekir.|Galeri uygulamaları için desteklenir. Galeri olmayan uygulamalar için destek çalışma.|
+|OAuth istemci kimlik bilgileri verme (yol haritasında desteklenmez)|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir. Hem yetkilendirme kodu verme hem de istemci kimlik bilgileri, aynı tür erişim belirtecini oluşturur, bu nedenle bu yöntemler arasında geçiş yapmak API 'ye saydamdır.  Sağlama tamamen otomatikleştirilebilir ve yeni belirteçler Kullanıcı etkileşimi olmadan sessizce istenebilir. ||Galeri ve Galeri olmayan uygulamalar için desteklenmez. Destek kapsamımızda.|
+
 **OAuth yetkilendirme kodu verme akışı:** Sağlama hizmeti [yetkilendirme kodu vermeyi](https://tools.ietf.org/html/rfc6749#page-24)destekler. Uygulamanızı galeride yayımlama isteğinizi gönderdikten sonra, takımımız aşağıdaki bilgileri toplamak için sizinle birlikte çalışacaktır:
 *  Yetkilendirme URL 'SI: istemci tarafından, Kullanıcı Aracısı yeniden yönlendirme aracılığıyla kaynak sahibinden yetkilendirme elde etmek için bir URL. Kullanıcı, erişim yetkisi vermek için bu URL 'ye yeniden yönlendirilir. 
 *  Belirteç Exchange URL 'SI: bir erişim belirtecine, genellikle istemci kimlik doğrulamasıyla bir yetkilendirme izni vermek için istemcinin URL 'SI.
 *  İstemci KIMLIĞI: yetkilendirme sunucusu, kayıtlı istemciye, istemci tarafından sunulan kayıt bilgilerini temsil eden benzersiz bir dize olan istemci tanımlayıcısını verir.  İstemci tanımlayıcısı gizli değil; Kaynak sahibine gösterilir ve yalnızca istemci kimlik doğrulaması **için kullanılmamalıdır.**  
 *  Gizli anahtar: istemci parolası, yetkilendirme sunucusu tarafından oluşturulan bir gizli dizi. Bu, yalnızca yetkilendirme sunucusu için bilinen benzersiz bir değer olmalıdır. 
+
+İstemci parolasının pozlaması nedeniyle OAuth v1 'nin desteklenmediğini unutmayın. OAuth v2 desteklenir.  
 
 En iyi uygulamalar (önerilir ancak gerekli değildir):
 * Birden çok yeniden yönlendirme URL 'sini destekler. Yöneticiler, "portal.azure.com" ve "aad.portal.azure.com" ile sağlamayı yapılandırabilir. Birden çok yeniden yönlendirme URL 'Leri desteklemek, kullanıcıların her iki portaldan da erişim yetkisi alabilmek için

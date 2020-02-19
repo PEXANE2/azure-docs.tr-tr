@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583590"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443236"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Sanal makine havuzunu ayarlama ve yönetme 
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -96,6 +96,9 @@ Aşağıdaki koşullar karşılandığında laboratuvar Oluşturucu (eğitmen/me
  Öğrenci VM 'sine bağlanmak için, listedeki sanal makineye fare üzerine gelin ve bilgisayar düğmesini seçin.  
 
 ![Öğrenci VM 'sine bağlanma düğmesi](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+
+> [!NOTE]
+> Mesleme VM 'yi başlatır ve buna bağlanır, öğrenci kotası etkilenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sizin (Laboratuvar sahibi olarak) yapılandırabileceğiniz diğer öğrenci kullanım seçenekleri hakkında bilgi edinmek için şu makaleye bakın: [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).

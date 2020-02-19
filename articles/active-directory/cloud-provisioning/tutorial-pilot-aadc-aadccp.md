@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166578"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442131"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
 Bu öğreticide, zaten Azure Active Directory (Azure AD) Connect Sync kullanılarak eşitlenmiş bir test Active Directory ormanı için bulut sağlamasının nasıl ele aldığı anlatılmaktadır.
 
-![Oluştur](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Oluşturma](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
@@ -99,8 +99,8 @@ Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup
  2. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
     **Ad:** Kurala anlamlı bir ad verin<br>
-    **Açıklama:** Anlamlı bir açıklama ekleyin<br>**bağlı sistem  
-    :** için özel eşitleme KURALı yazarken AAD bağlayıcısını seçin<br>
+    **Açıklama:** Anlamlı bir açıklama ekleyin<br>
+    **Bağlı sistem:** Özel eşitleme kuralını yazmakta olduğunuz AAD bağlayıcısını seçin<br>
     **Bağlı sistem nesne türü:** Kullanıcısını<br>
     **Meta veri deposu nesne türü:** Kişiler<br>
     **Bağlantı türü:** JoinNoFlow<br>
@@ -143,7 +143,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları 
 
 1. Azure Portal’da oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure portalında](media/how-to-install/install6.png)</br>
 
 3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
 Azure AD sağlama](media/how-to-install/install7.png) ![</br>

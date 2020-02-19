@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252068"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443508"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
@@ -27,6 +27,9 @@ Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların ya
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Kullanıcı başına veya haftaya göre mi yoksa laboratuvarın tamamına mı göre kota mi? 
 Laboratuvar için ayarladığınız kota, tüm laboratuvarın süresi boyunca her öğrenciye yöneliktir. Ve [VM 'lerin zamanlanan çalışma süresi](how-to-create-schedules.md) , bir kullanıcıya ayrılan kotaya göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir.  Kotalar hakkında daha fazla bilgi için bkz. [kullanıcılar için kotaları ayarlama](how-to-configure-student-usage.md#set-quotas-for-users).
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Professlı bir öğrenci sanal makinesini kullanıyorsa, öğrenci kotasını da etkiler mi? 
+Hayır. Bunu yapmaz. Professlı, öğrenci sanal makinesini açtığında öğrenciye ayrılan kotayı etkilemez. 
 
 ## <a name="schedules"></a>Zamanlamalar
 
@@ -42,7 +45,9 @@ Sınıf laboratuvarları, Azure portal laboratuvar hesabınızı oluştururken b
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Laboratuvar sanal makinelerine RDP/SSH aracılığıyla bağlanmak için Kuruluşumun güvenlik duvarı ayarında hangi bağlantı noktası aralıklarının açılmalıyım?
 
-Bağlantı noktaları: 49152 – 65535. Sınıf laboratuvarları bir yük dengeleyicinin arkasına oturdum, böylece bir laboratuvardaki tüm sanal makinelerin tek IP adresi vardır ve laboratuvardaki her sanal makinenin benzersiz bir bağlantı noktası vardır. Laboratuvar her yeniden yayımlandığında bağlantı noktası numaraları ve genel IP adresi değişebilir.
+Bağlantı noktaları: 49152 – 65535. Sınıf laboratuvarları bir yük dengeleyicinin arkasına yaslar. Her laboratuvarın tek bir genel IP adresi vardır ve laboratuvardaki her sanal makinenin benzersiz bir bağlantı noktası vardır. 
+
+Ayrıca, Azure portal laboratuvar için ana sayfanın **sanal makine havuzu** sekmesinde her bir sanal makınenın özel IP adresini görebilirsiniz. Bir laboratuvarı yeniden yayımlarsanız, laboratuvarın genel IP adresi değişmez, ancak laboratuvardaki her bir sanal makinenin özel IP ve bağlantı noktası numarası değişebilir. Makalesinde daha fazla bilgi edinebilirsiniz: [Azure Lab Services Için güvenlik duvarı ayarları](how-to-configure-firewall-settings.md).
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Laboratuvar sanal makinelerine RDP/SSH aracılığıyla bağlanmak için Kuruluşumun güvenlik duvarı ayarlarında ne genel IP adresi aralığı açılmalıyım?
 Azure 'da veri merkezleri için genel IP adresi aralığı sağlayan [genel bulut olan Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)' ne bakın. Laboratuvar hesaplarınızın bulunduğu bölgelerin IP adreslerini açabilirsiniz.

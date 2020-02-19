@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502033"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443134"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış
 
@@ -20,23 +20,32 @@ ms.locfileid: "73502033"
 
 Azure Güvenlik Duvarı Yöneticisi önizlemesi dağıtmanın birden çok yolu vardır, ancak aşağıdaki genel süreç önerilir.
 
-## <a name="prerequisites"></a>Önkoşullar
-
-> [!IMPORTANT]
-> Azure Güvenlik Duvarı Yöneticisi önizlemenin `Register-AzProviderFeature` PowerShell komutu kullanılarak açıkça etkinleştirilmesi gerekir.
->PowerShell komut isteminden aşağıdaki komutları çalıştırın:
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. > Kayıt durumunuzu denetlemek için aşağıdaki komutu çalıştırın:
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
-
-
-
 ## <a name="general-deployment-process"></a>Genel dağıtım işlemi
+
+### <a name="hub-virtual-networks"></a>Hub sanal ağları
+
+1.  Güvenlik duvarı ilkesi oluşturma
+
+    - Yeni ilke oluşturma
+<br>*veya*<br>
+    - Temel ilke türetebilir ve yerel bir ilkeyi özelleştirin
+<br>*veya*<br>
+    - Mevcut bir Azure Güvenlik duvarındaki kuralları içeri aktarın. NAT kurallarını, birden çok güvenlik duvarı arasında uygulanması gereken ilkelerden kaldırdığınızdan emin olun
+1. Hub ve bağlı bileşen mimarinizi oluşturma
+   - Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak hub sanal ağı oluşturma ve sanal ağ eşlemesi kullanarak BT 'ye bağlı sanal ağlar
+<br>*veya*<br>
+    - Sanal ağ eşlemesi ile sanal ağ bağlantıları oluşturma ve sanal ağ bağlantılarını ve eş bağlı bileşen sanal ağlarını bu ağa ekleme
+
+3. Güvenlik sağlayıcıları ' nı seçin ve güvenlik duvarı ilkesini ilişkilendirin. Şu anda yalnızca Azure Güvenlik Duvarı desteklenen bir sağlayıcıdır.
+
+   - Bu, bir hub sanal ağı oluştururken yapılır
+<br>*veya*<br>
+    - Var olan bir sanal ağı hub sanal ağına dönüştürün. Birden çok sanal ağı dönüştürmek da mümkündür.
+
+4. Kullanıcı yapılandırma trafiği hub sanal ağ güvenlik duvarınızla yönlendirmek için yollar tanımlayın.
+
+
+### <a name="secured-virtual-hubs"></a>Güvenli sanal hub 'lar
 
 1. Hub ve bağlı bileşen mimarinizi oluşturma
 

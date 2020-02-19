@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111456"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444035"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -70,9 +70,9 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 **Senaryo** | **DPM/MABS**
 --- | ---
-**Azure VM 'de MABS** | Windows Server 2012 R2.<br/><br/> Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> İki çekirdek ve 3,5 GB RAM ile en az a2 standart.
-**Azure VM 'de DPM** | Güncelleştirme 3 veya sonraki sürümleri ile System Center 2012 R2.<br/><br/> [System Center için gereken](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)Windows işletim sistemi.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> İki çekirdek ve 3,5 GB RAM ile en az a2 standart.
-**Şirket içi MABS** | Desteklenen 64 bit işletim sistemleri:<br/><br/> MABS v3 ve üzeri: Windows Server 2019 (Standard, Datacenter, Essentials). <br/><br/> MABS v2 ve üzeri: Windows Server 2016 (Standard, Datacenter, Essentials).<br/><br/> Tüm MABS sürümleri: Windows Server 2012 R2.<br/><br/>Tüm MABS sürümleri: Windows Storage Server 2012 R2.
+**Azure VM 'de MABS** |  Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> Dört çekirdek ve 8 GB RAM içeren minimum Standard_A4_v2.
+**Azure VM 'de DPM** | Güncelleştirme 3 veya sonraki sürümleri ile System Center 2012 R2.<br/><br/> [System Center için gereken](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)Windows işletim sistemi.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> Dört çekirdek ve 8 GB RAM içeren minimum Standard_A4_v2.
+**Şirket içi MABS** |  MABS v3 ve üzeri: Windows Server 2016 veya Windows Server 2019
 **Şirket içi DPM** | Fiziksel sunucu/Hyper-V VM: System Center 2012 SP1 veya üzeri.<br/><br/> VMware VM: güncelleştirme 5 veya sonraki sürümleri ile System Center 2012 R2.
 
 >[!NOTE]

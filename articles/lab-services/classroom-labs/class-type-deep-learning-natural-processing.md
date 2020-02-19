@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133757"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444103"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
 Bu makalede, Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenime odaklanan bir laboratuvarı nasıl ayarlayabileceğiniz gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir.  
@@ -32,7 +32,7 @@ Laboratuvar hesabını oluşturduktan sonra laboratuvar hesabında aşağıdaki 
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ----------- | ------------ |  
-| Market görüntüleri | Laboratuvar hesabınızda kullanmak için Veri Bilimi Sanal Makinesi Linux (Ubuntu) görüntüsünü etkinleştirin.  Yönergeler için aşağıdaki makalelere bakın: [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtin](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
+| Market görüntüleri | Laboratuvar hesabınızda kullanmak için Veri Bilimi Sanal Makinesi Linux (Ubuntu) görüntüsünü etkinleştirin.  Yönergeler için aşağıdaki makaleye bakın: [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtin](specify-marketplace-images.md). | 
 
 Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu öğreticiyi](tutorial-setup-classroom-lab.md) izleyin:
 

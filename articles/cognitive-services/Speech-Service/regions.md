@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201161"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431171"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
@@ -44,11 +44,11 @@ Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**iç
 
 Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Genel bölge | Bölge           | Konuşma SDK parametresi |
+| Genel bölge | Bölge           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
-| Avustralya     | Avustralya Doğu   | `australiaeast`      |
+| Avustralya     | Doğu Avustralya   | `australiaeast`      |
 | Avrupa        | Kuzey Avrupa     | `northeurope`        |
 | Avrupa        | Batı Avrupa      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
@@ -57,7 +57,7 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
-| Güney Amerika | Brezilya Güney     | `brazilsouth`        |
+| Güney Amerika | Güney Brezilya     | `brazilsouth`        |
 
 Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 
@@ -65,7 +65,7 @@ Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-r
 
 [Konuşma SDK 'sı](speech-sdk.md) bu bölgelerde **sesli yardımcı** yeteneklerini destekler:
 
-| Bölge         | Konuşma SDK parametresi |
+| Bölge         | Bölge tanımlayıcısı |
 | -------------- | -------------------- |
 | Batı ABD        | `westus`             |
 | Batı ABD 2      | `westus2`            |

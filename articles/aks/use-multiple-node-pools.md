@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365185"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443933"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -483,7 +483,7 @@ az aks nodepool add \
 > [!NOTE]
 > Ayrıca, [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanırken ve küme oluşturma sırasında `--tags` parametresini de kullanabilirsiniz. Küme oluşturma sırasında `--tags` parametresi, etiketi kümeyle oluşturulan ilk düğüm havuzuna uygular. Tüm etiket adları, [Azure kaynaklarınızı düzenlemek Için kullanılan etiketlerle][tag-limitation]ilgili sınırlamalara uymalıdır. Bir düğüm havuzunu `--tags` parametresiyle güncelleştirmek, varolan tüm etiket değerlerini güncelleştirir ve yeni Etiketler ekler. Örneğin, düğüm havuzunuzun *Bölüm = It* ve *costcenter = 9999* etiketleri varsa ve bunu *Team = dev* ve *costcenter = 111* ile GÜNCELLEŞTIRDIYSENIZ, Etiketler için nodepool, *Bölüm = It*, *costcenter = 111*ve *Team = dev* olur.
 
-[Az aks nodepool List][az-aks-nodepool-list] komutundan aşağıdaki örnek çıktı, *taggednodepool* belirtilen *etikete*sahip düğümleri *oluşturuyor* olduğunu gösterir:
+[Az aks nodepool List][az-aks-nodepool-list] komutundan aşağıdaki örnek çıktı, *tagnodepool* belirtilen *etikete*sahip düğümleri *oluşturuyor* olduğunu gösterir:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster

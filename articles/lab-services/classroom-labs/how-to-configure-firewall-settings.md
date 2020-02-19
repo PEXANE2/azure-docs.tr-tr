@@ -3,15 +3,15 @@ title: Azure Lab Services için güvenlik duvarı ayarları
 description: Güvenlik duvarı kurallarına eklenmek üzere bir laboratuvardaki sanal makinelerin genel IP adresini ve bağlantı noktası numarası aralığını belirlemeyi öğrenin.
 author: emaher
 ms.author: enewman
-ms.date: 12/12/2019
+ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: da1614e4a3e02ed91ef2d3c59ac4eb3eac0dcc7c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692777"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443473"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services için güvenlik duvarı ayarları
 
@@ -24,10 +24,10 @@ Her laboratuvar tek genel IP adresi ve birden çok bağlantı noktası kullanır
 
 ## <a name="find-public-ip-for-a-lab"></a>Laboratuvar için genel IP bulma
 
-Her bir laboratuvarın genel IP adresleri, Laboratuvar Hizmetleri Laboratuvarı hesabının **Tüm laboratuvarları** dikey penceresinde listelenir.  **Tüm Labs** dikey penceresini bulma hakkında yönergeler için bkz. [Laboratuvar hesabındaki laboratuvarları yönetme](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Her bir laboratuvarın genel IP adresleri, Laboratuvar Hizmetleri Laboratuvarı hesabının **Tüm laboratuvarları** sayfasında listelenir.  **Tüm Labs** sayfasını bulma hakkında yönergeler için bkz. [Laboratuvar hesabındaki laboratuvarları yönetme](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
 
 > [!div class="mx-imgBorder"]
-> Tüm Labs dikey penceresi ![](../media/how-to-configure-firewall-settings/all-labs-properties.png)
+> Tüm laboratuvarlar sayfası](../media/how-to-configure-firewall-settings/all-labs-properties.png) ![
 
 >[!NOTE]
 >Laboratuvarınızın şablon makinesi henüz yayınlanmamışsa genel IP adresini görmezsiniz.
@@ -35,3 +35,13 @@ Her bir laboratuvarın genel IP adresleri, Laboratuvar Hizmetleri Laboratuvarı 
 ## <a name="conclusion"></a>Sonuç
 
 Artık laboratuvarın genel IP adresini biliyoruz.  Genel IP adresi ve 49152-65535 numaralı bağlantı noktası aralığı için kuruluşun güvenlik duvarı için gelen ve giden kuralları oluşturulabilir.  Kurallar güncelleştirildikten sonra, öğrenciler ağ güvenlik duvarı erişimi engellenmeksizin VM 'lerine erişebilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+Aşağıdaki makalelere bakın:
+
+- [Laboratuvar oluşturucusunun laboratuvar konumunu seçmesine izin ver](allow-lab-creator-pick-lab-location.md)
+- [Laboratuvarınızın ağını eş bir sanal ağla bağlama](how-to-connect-peer-virtual-network.md)
+- [Laboratuvara paylaşılan görüntü Galerisi iliştirme](how-to-attach-detach-shared-image-gallery.md)
+- [Laboratuvar sahibi olarak Kullanıcı ekleme](how-to-add-user-lab-owner.md)
+- [Laboratuvar için güvenlik duvarı ayarlarını görüntüleme](how-to-configure-firewall-settings.md)
+- [Laboratuvar için diğer ayarları yapılandırma](how-to-configure-lab-accounts.md)

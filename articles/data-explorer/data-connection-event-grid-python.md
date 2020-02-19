@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 9cf65edc3bdd5f675ba1972501139b9ecebcfafd
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1439383598517f57bc77e718d4ded7f53941d3bb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964405"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444205"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>Python kullanarak Azure Veri Gezgini için Event Grid veri bağlantısı oluşturma
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964405"
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager şablonu](data-connection-event-grid-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede, Python kullanarak Azure Veri Gezgini için Event Grid bir veri bağlantısı oluşturacaksınız.
+Bu makalede, Python kullanarak Azure Veri Gezgini için Event Grid bir veri bağlantısı oluşturacaksınız. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma veya veri yükleme işlemi sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Küme ve veritabanı](create-cluster-database-python.md) oluşturma
-* [Tablo ve sütun eşlemesi](python-ingest-data.md#create-a-table-on-your-cluster) oluştur
-* [Veritabanı ve tablo ilkelerini](database-table-policies-python.md) ayarlama (isteğe bağlı)
-* [Event Grid abonelikle bir depolama hesabı](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)oluşturun.
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Bir küme ve veritabanı](create-cluster-database-python.md).
+
+* [Tablo ve sütun eşleme](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Veritabanı ve tablo ilkeleri](database-table-policies-csharp.md) (isteğe bağlı).
+
+* [Event Grid aboneliği olan bir depolama hesabı](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

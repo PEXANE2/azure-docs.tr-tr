@@ -7,38 +7,41 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: f29f4b91b85c0027df4be2fd5f26ef8f9749fe33
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/15/2020
+ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165520"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441978"
 ---
-# <a name="knowledge-store-projections-how-to-shape-and-export-enrichments-to-the-knowledge-store"></a>Bilgi deposu projeksiyonları: bilgi deposuna zenginleştirme ve dışarı aktarma
+# <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Bilgi deposu projeksiyonları: zenginleştirme ve dışarı aktarma
 
 > [!IMPORTANT] 
 > Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Projeksiyonlar, bilgi deposundaki belgelerin fiziksel ifadesidir. Zenginleştirilmiş belgelerinizin etkili kullanımı yapı gerektirir. Bu makalede her iki yapıyı ve ilişkiyi keşfedeceğiz, projeksiyon özelliklerinin nasıl oluşturulduğunu öğrenerek, oluşturduğunuz yansıtma türleri arasında verilerin nasıl ilişkilendirileceğiyle karşılaşırsınız. 
 
-Bir yansıtma oluşturmak için, özel bir nesne oluşturmak veya satır içi şekillendirme sözdizimini kullanmak için, her bir beceriye kullanarak verileri şekillendirmelidir. Veri şekli, projeyi planladığınız tüm verileri içerir. Bu belge, her bir seçeneğe bir örnek verir, oluşturduğunuz projeksiyonlar için seçeneklerden birini kullanmayı tercih edebilirsiniz.
+Bir yansıtma oluşturmak için, özel bir nesne oluşturmak veya bir yansıtma tanımında satır içi şekillendirme sözdizimini kullanmak için, her bir [beceriye](cognitive-search-skill-shaper.md) kullanarak verileri şekillendirmelidir. 
 
+Bir veri şekli, proje için istediğiniz tüm verileri içerir, bu da düğümlerin hiyerarşisi olarak oluşturulur. Bu makalede, verileri şekillendirmeye, çözümlemeye veya aşağı akış işlemeye yönelik fiziksel yapılara yansıtılabilmesi için çeşitli teknikler gösterilmektedir. 
 
-Üç tür projeksiyonlar vardır:
+Bu makalede sunulan örnekler, bir HTTP istemcisinde indirebileceğiniz ve çalıştırabileceğiniz bu [REST API örneğinde](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json)bulunabilir.
+
+## <a name="introduction-to-the-examples"></a>Örneklere giriş
+
+[Projeksiyonlar](knowledge-store-projection-overview.md)hakkında bilginiz varsa, üç tür olduğunu hatırlayacaksınız:
+
 + Tablolar
 + Nesneler
 + Dosyalar
 
-Tablo projeksiyonları Azure Tablo depolama alanında depolanır. Nesne ve dosya projeksiyonları blob depolamaya yazılır, nesne projeksiyonları JSON dosyaları olarak kaydedilir ve belge ve tüm yetenek çıkışları ya da zenginler arasında içerik içerebilir. Zenginleştirme işlem hattı, görüntüler gibi ikilileri de ayıklayabilir, bu ikili dosyalar dosya projeksiyonları olarak yansıtılmış olabilir. Bir ikili nesne bir nesne projeksiyonu olarak yansıtıldığınızda, yalnızca onunla ilişkilendirilen meta veriler JSON blobu olarak kaydedilir. 
+Tablo projeksiyonları Azure Tablo depolama alanında depolanır. Nesne ve dosya projeksiyonları BLOB depolama alanına yazılır; burada nesne projeksiyonları JSON dosyaları olarak kaydedilir ve kaynak belgeden ve tüm beceri çıkışları ya da zenginler ile içerik içerebilir. Zenginleştirme işlem hattı, görüntüler gibi ikilileri de ayıklayabilir, bu ikili dosyalar dosya projeksiyonları olarak yansıtılmış olabilir. Bir ikili nesne bir nesne projeksiyonu olarak yansıtıldığınızda, yalnızca onunla ilişkilendirilen meta veriler JSON blobu olarak kaydedilir. 
 
 Veri şekillendirme ve projeksiyonlar arasındaki kesişmeyi anlamak için, çeşitli yapılandırmaların araştırmasına yönelik temel olarak aşağıdaki beceri kullanacağız. Bu beceri Ham görüntü ve metin içeriğini işler. Projeksiyonlar, desteklemek istediğimiz senaryolar için belge içerikleri ve yeteneklerin çıkışları için tanımlanır.
 
-Alternatif olarak, bu yönergedeki tüm çağrılarla bir [REST API örneğini](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json) indirebilir ve kullanabilirsiniz.
-
 > [!IMPORTANT] 
-> Projeksiyonlar ile denemeler yaparken, maliyet denetimini sağlamak için [Dizin Oluşturucu önbelleği özelliğini ayarlamak](search-howto-incremental-index.md) yararlı olur. Projeksiyonları düzenleme, Dizin Oluşturucu önbelleği ayarlanmamışsa tüm belgenin yeniden zenginleştirmesiyle sonuçlanır. Önbellek ayarlandığında ve yalnızca projeksiyonlar güncelleştirildikten sonra, daha önce zenginleştirilmiş belgeler için beceri yürütmeler, bilişsel hizmetler ücretlerine neden olmaz.
-
+> Projeksiyonlar ile denemeler yaparken, maliyet denetimini sağlamak için [Dizin Oluşturucu önbelleği özelliğini ayarlamak](search-howto-incremental-index.md) yararlı olur. Projeksiyonları düzenleme, Dizin Oluşturucu önbelleği ayarlanmamışsa tüm belgenin yeniden zenginleştirmesiyle sonuçlanır. Önbellek ayarlandığında ve yalnızca projeksiyonlar güncelleştirildikten sonra, daha önce zenginleştirilmiş belgeler için beceri yürütmeler yeni bilişsel hizmetler ücretlerine neden olmaz.
 
 ```json
 {
@@ -197,92 +200,113 @@ Alternatif olarak, bu yönergedeki tüm çağrılarla bir [REST API örneğini](
 }
 ```
 
-Artık `knowledgeStore` nesnesini ekleyebilir ve her bir senaryo için tahminleri gerektiği gibi yapılandırabiliriz. 
+Bu beceri kullanarak, null `knowledgeStore` temel olarak, ilk örneğimiz, diğer senaryolarda kullandığımız tablo veri yapılarını oluşturan yansıtmalarda yapılandırılmış `knowledgeStore` nesnesini doldurduk. 
 
-## <a name="projecting-to-tables-for-scenarios-like-power-bi"></a>Power BI gibi senaryolar için tablolara yansıtma
+## <a name="projecting-to-tables"></a>Tablolara yansıtma
+
+Azure Storage 'da tablolara yansıtma, Power BI gibi araçları kullanarak raporlama ve analizler için yararlıdır. Power BI tablolardan okuyabilir ve projeksiyon sırasında oluşturulan anahtarlara göre ilişkileri bulabilir. Bir pano oluşturmaya çalışıyorsanız ilgili verilerin bulunması bu görevi basitleştirir. 
+
+Belgelerden bir sözcük bulutu olarak ayıklanan anahtar tümceleri görselleştirebilmemiz için bir pano oluşturmayı denediğinizi varsayalım. Doğru veri yapısını oluşturmak için, belgeye özgü ayrıntıları ve anahtar tümceciklerini içeren özel bir şekil oluşturmak üzere beceri 'e bir beceri için bir mil ekleyebiliriz. Özel şekil, `document` kök düğümünde `pbiShape` çağrılır.
 
 > [!NOTE] 
-> Bilgi deposu bir Azure depolama hesabı olduğundan, tablo projeksiyonları Azure depolama tabloları ve tablolardaki depolama limitleriyle yönetilir. daha fazla bilgi için bkz. [Tablo depolama sınırları](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Varlık boyutunun 1 MB 'ı aşmaması ve tek bir özelliğin 64 KB 'den büyük olmaması gerektiğini bilmek yararlı olur. Bu kısıtlamalar, tabloları çok sayıda küçük varlığı depolamak için iyi bir çözüm yapar.
-
-Power BI tablolardan okuyabilir ve bilgi deposu projeksiyonun oluşturabileceği anahtarlara göre ilişkileri bulabilir, bu, zenginleştirilmiş verilerde bir pano oluşturmaya çalışırken tabloları proje verileri için iyi bir seçenek yapar. Belgelerden bir sözcük bulutu olarak ayıklanan anahtar tümceleri görselleştirdiğimiz bir pano oluşturmaya çalıştığımız varsayılarak, belgeye özgü ayrıntılar ve anahtar tümceciklerini içeren özel bir şekil oluşturmak için beceri 'e bir beceri eklemek için. ```document``````pbiShape``` adlı yeni bir zenginleştirme oluşturmak için, her bir beceriye beceri ekleyin.
+> Tablo projeksiyonları, Azure depolama tarafından uygulanan depolama limitleriyle yönetilen Azure depolama tablolarıdır. Daha fazla bilgi için bkz. [Tablo depolama sınırları](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Varlık boyutunun 1 MB 'ı aşmaması ve tek bir özelliğin 64 KB 'den büyük olmaması gerektiğini bilmek yararlı olur. Bu kısıtlamalar, tabloları çok sayıda küçük varlığı depolamak için iyi bir çözüm yapar.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Özel bir şekil oluşturmak için bir beceri başına mil kullanma
 
-Tablo depolamaya proje oluşturabileceğiniz özel bir şekil oluşturun. Özel bir şekil olmadan, projeksiyon yalnızca tek bir düğüme başvurabilir (çıktı başına bir projeksiyon). Özel bir şekil oluşturmak, çeşitli öğeleri tek bir tablo olarak yansıtılbilen veya dilimlenmiş ve bir tablo koleksiyonuna dağılmış yeni bir mantıksal bir tamamına toplamanızı sağlar. Bu örnekte, özel şekil meta verileri ve tanımlanan varlıkları ve anahtar tümceleri birleştirir. Nesnesi pbiShape olarak adlandırılır ve `/document`altında ana öğesi. 
+Tablo depolamaya proje oluşturabileceğiniz özel bir şekil oluşturun. Özel bir şekil olmadan, projeksiyon yalnızca tek bir düğüme başvurabilir (çıktı başına bir projeksiyon). Özel bir şekil oluşturmak, çeşitli öğeleri tek bir tablo olarak yansıtılbilen veya dilimlenmiş ve bir tablo koleksiyonuna dağılmış yeni bir mantıksal bir tamamına toplamanızı sağlar. 
+
+Bu örnekte, özel şekil meta verileri ve tanımlanan varlıkları ve anahtar tümceleri birleştirir. Nesne `pbiShape` olarak adlandırılır ve `/document`alt öğesi olarak kullanılır. 
 
 > [!IMPORTANT] 
-> Enzenginler için kaynak yollarının, yansıtılmadan önce düzgün biçimlendirilmiş JSON nesneleri olması gerekir. Zenginleştirme ağacı, doğru biçimlendirilmiş JSON olarak temsil edebilir, örneğin bir enzenginleştirme bir bir primitte ve bir dize gibi bir üst öğe olduğunda. `KeyPhrases` ve `Entities` `sourceContext`ile geçerli bir JSON nesnesine nasıl sarmalandığına, bu, `keyphrases` olarak gereklidir ve `entities`, temel elemanlar üzerinde zenginleştirilir ve yansıtılmadan önce geçerli JSON 'a dönüştürülmesi gerekir.
+> Şekillendirinin bir amacı, tüm zenginleştirme düğümlerinin, bilgi deposu 'nda yansıtma için gereken, iyi biçimlendirilmiş JSON 'da ifade olmasını sağlamaktır. Bu, bir zenginleştirme ağacı doğru biçimlendirilmiş JSON (örneğin, bir enzenginleştirme bir dize gibi bir temel öğenin üst öğesi olduğunda) içerdiğinde özellikle doğrudur.
+>
+> Son iki düğüm, `KeyPhrases` ve `Entities`dikkat edin. Bunlar, `sourceContext`geçerli bir JSON nesnesine sarmalanır. `keyphrases` olarak bu gereklidir ve `entities` temel elemanlar üzerinde zenginleştirilir ve yansıtılmadan önce geçerli JSON 'a dönüştürülmesi gerekir.
+>
+
 
 ```json
 {
-            "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-            "name": "ShaperForTables",
-            "description": null,
-            "context": "/document",
+    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+    "name": "ShaperForTables",
+    "description": null,
+    "context": "/document",
+    "inputs": [
+        {
+            "name": "metadata_storage_content_type",
+            "source": "/document/metadata_storage_content_type",
+            "sourceContext": null,
+            "inputs": []
+        },
+        {
+            "name": "metadata_storage_name",
+            "source": "/document/metadata_storage_name",
+            "sourceContext": null,
+            "inputs": []
+        },
+        {
+            "name": "metadata_storage_path",
+            "source": "/document/metadata_storage_path",
+            "sourceContext": null,
+            "inputs": []
+        },
+        {
+            "name": "metadata_content_type",
+            "source": "/document/metadata_content_type",
+            "sourceContext": null,
+            "inputs": []
+        },
+        {
+            "name": "keyPhrases",
+            "source": null,
+            "sourceContext": "/document/merged_content/keyphrases/*",
             "inputs": [
                 {
-                    "name": "metadata_storage_content_type",
-                    "source": "/document/metadata_storage_content_type",
-                    "sourceContext": null,
-                    "inputs": []
-                },
-                {
-                    "name": "metadata_storage_name",
-                    "source": "/document/metadata_storage_name",
-                    "sourceContext": null,
-                    "inputs": []
-                },
-                {
-                    "name": "metadata_storage_path",
-                    "source": "/document/metadata_storage_path",
-                    "sourceContext": null,
-                    "inputs": []
-                },
-                {
-                    "name": "metadata_content_type",
-                    "source": "/document/metadata_content_type",
-                    "sourceContext": null,
-                    "inputs": []
-                },
-                {
-                    "name": "keyPhrases",
-                    "source": null,
-                    "sourceContext": "/document/merged_content/keyphrases/*",
-                    "inputs": [
-                        {
-                            "name": "KeyPhrases",
-                            "source": "/document/merged_content/keyphrases/*"
-                        }
+                    "name": "KeyPhrases",
+                    "source": "/document/merged_content/keyphrases/*"
+                }
 
-                    ]
-                },
+            ]
+        },
+        {
+            "name": "Entities",
+            "source": null,
+            "sourceContext": "/document/merged_content/entities/*",
+            "inputs": [
                 {
                     "name": "Entities",
-                    "source": null,
-                    "sourceContext": "/document/merged_content/entities/*",
-                    "inputs": [
-                        {
-                            "name": "Entities",
-                            "source": "/document/merged_content/entities/*/name"
-                        }
+                    "source": "/document/merged_content/entities/*/name"
+                }
 
-                    ]
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "output",
-                    "targetName": "pbiShape"
-                }
             ]
         }
+    ],
+    "outputs": [
+        {
+            "name": "output",
+            "targetName": "pbiShape"
+        }
+    ]
+}
 ```
-Beceri ' de beceri listesi ' ne tanımlamış olduğumuz her yeteneği ekleyin. 
 
-Tablolara proje için gereken tüm verilere sahip olduğumuz için, knowledgeStore nesnesini tablo tanımlarına güncelleştirin. 
+Beceri başına yukarıdaki mil sayısını ekleyin. 
 
 ```json
+    "name": "azureblob-skillset",
+    "description": "A friendly description of the skillset goes here.",
+    "skills": [
+        {
+            Shaper skill goes here
+            }
+        ],
+    "cognitiveServices":  "A key goes here",
+    "knowledgeStore": []
+}  
+```
 
+Tablolara proje için gereken tüm verilere sahip olduğumuz için, knowledgeStore nesnesini tablo tanımlarına güncelleştirin. Bu örnekte, `tableName`, `source` ve `generatedKeyName` özellikleri ayarlanarak tanımlanmış üç tablonuz vardır.
+
+```json
 "knowledgeStore" : {
     "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
     "projections": [
@@ -311,22 +335,41 @@ Tablolara proje için gereken tüm verilere sahip olduğumuz için, knowledgeSto
 }
 ```
 
-```storageConnectionString``` özelliğini geçerli bir v2 genel amaçlı depolama hesabı bağlantı dizesi olarak ayarlayın. Bu senaryoda, ```tableName```, ```source``` ve ```generatedKeyName``` özelliklerini ayarlayarak İzdüşüm nesnesinde üç tablo tanımlayacağız. Artık PUT isteğini yayımlayarak beceri 'i güncelleştirebilirsiniz.
+Aşağıdaki adımları izleyerek çalışmanızı işleyebilirsiniz:
+
+1. ```storageConnectionString``` özelliğini geçerli bir v2 genel amaçlı depolama hesabı bağlantı dizesi olarak ayarlayın.  
+
+1. PUT isteğini vererek beceri güncelleştirin.
+
+1. Beceri güncelleştirildikten sonra, Dizin oluşturucuyu çalıştırın. 
+
+Artık üç tablo içeren bir çalışma projeksiyonu vardır. Bu tabloların Power BI içe aktarılması, ilişkilerin otomatik olarak keşfedilmesine Power BI neden olmalıdır.
+
+Sonraki örneğe geçmeden önce, tablo projeksiyonunun yeniden ziyaret etmenizi sağlar ve verilerin dilimlerinin ve ilgili olduğu unsurlarını anlayın.
 
 ### <a name="slicing"></a>Dilimleme 
 
-Bir birleştirilmiş şekil ile başlayarak, yansıtılması gereken tüm içeriklerin tek bir şekil (veya zenginleştirme düğümü) olması halinde, Dilimleme tek bir düğümü birden çok tabloya veya nesneye dilimleyebilme olanağı sağlar. Burada ```pbiShape``` nesnesi birden çok tabloya dilimlenebilir. Dilimleme özelliği, bir şeklin parçalarını, ```keyPhrases``` ve ```Entities``` ayrı tablolara çekmenize olanak sağlar. Bu, birden çok varlık olarak yararlı olur ve keyPhrases her belge ile ilişkilendirilir. Dilimleme implicity, üst ve alt tablolar arasında bir ilişki oluşturur ve üst tablodaki ```generatedKeyName``` kullanarak alt tabloda aynı ada sahip bir sütun oluşturur. 
+Dilimleme, bir bütün birleştirilmiş şekli alt bölümlere ayıran bir tekniktir. Sonuç, tek tek ile kullanabileceğiniz ayrı ancak ilgili tablolardan oluşur.
+
+Örnekte, `pbiShape` birleştirilmiş şekil (veya zenginleştirme düğümü). Projeksiyon tanımında `pbiShape`, şeklin parçalarını ```keyPhrases``` ve ```Entities```göndermenizi sağlayan ek tablolara dilimlenebilir. Power BI, bu, birden çok varlık olarak yararlı olur ve keyPhrases her belgeyle ilişkilendirilir ve sınıflandırılan veriler olarak varlıkları ve keyPhrases 'yi görebiliyorsanız daha fazla öngörü elde edersiniz.
+
+Alt tabloda aynı ada sahip bir sütun oluşturmak için üst tablodaki ```generatedKeyName``` kullanarak, Dilimleme, üst ve alt tablolar arasında örtük olarak bir ilişki oluşturur. 
 
 ### <a name="naming-relationships"></a>Adlandırma ilişkileri
-```generatedKeyName``` ve ```referenceKeyName``` özellikleri, verileri tablolar arasında veya yansıtma türleri arasında ilişkilendirmek için kullanılır. Alt tablodaki/projeksiyondaki her satır, üst öğeye işaret eden bir özelliğe sahiptir. Alt öğe içindeki sütunun veya özelliğin adı, üst öğeden ```referenceKeyName```. ```referenceKeyName``` sağlanmazsa, hizmet bunu üst öğeden ```generatedKeyName``` varsayılan olarak alır. PowerBI, tablolardaki ilişkileri saptamak için bu oluşturulan anahtarları kullanır. Alt tabloda farklı adlı bir sütuna ihtiyacınız varsa üst tablodaki ```referenceKeyName``` özelliğini ayarlayın. Bir örnek, pbiDocument tablosundaki KIMLIĞI as ```generatedKeyName``` ve ```referenceKeyName``` Belgetıd olarak ayarlamak olacaktır. Bu, Belgetıd olarak adlandırılan belge kimliğini içeren pbiEntities ve pbiKeyPhrases tablolarındaki sütuna neden olur.
 
-Güncelleştirilmiş beceri kaydedin ve Dizin oluşturucuyu çalıştırın, artık üç tablo içeren bir çalışma projeksiyonunuz vardır. Bu tabloların Power BI içe aktarılması, ilişkilerin otomatik olarak keşfedilmesine Power BI neden olmalıdır.
+```generatedKeyName``` ve ```referenceKeyName``` özellikleri, verileri tablolar arasında veya yansıtma türleri arasında ilişkilendirmek için kullanılır. Alt tablodaki/projeksiyondaki her satır, üst öğeye işaret eden bir özelliğe sahiptir. Alt öğe içindeki sütunun veya özelliğin adı, üst öğeden ```referenceKeyName```. ```referenceKeyName``` sağlanmazsa, hizmet bunu üst öğeden ```generatedKeyName``` varsayılan olarak alır. 
+
+Power BI tablolardaki ilişkileri saptamak için bu oluşturulan anahtarlara bağımlıdır. Alt tabloda farklı adlı bir sütuna ihtiyacınız varsa üst tablodaki ```referenceKeyName``` özelliğini ayarlayın. Bir örnek, pbiDocument tablosundaki KIMLIĞI as ```generatedKeyName``` ve ```referenceKeyName``` Belgetıd olarak ayarlamak olacaktır. Bu, Belgetıd olarak adlandırılan belge kimliğini içeren pbiEntities ve pbiKeyPhrases tablolarındaki sütuna neden olur.
 
 ## <a name="projecting-to-objects"></a>Nesnelere yansıtma
 
-Nesne projeksiyonları tablo projeksiyonlarıyla aynı sınırlamalara sahip değildir, büyük belgeleri yansıtmalarında daha uygundur. Bu örnekte, tüm belgeyi bir nesne projeksiyonu ile projeceğiz. Nesne projeksiyonu, kapsayıcıda tek bir projeksiyon ile sınırlıdır.
-Bir nesne projeksiyonu tanımlamak için projeksiyonlar içinde ```objects``` diziyi kullanacağız. Her yeteneği kullanarak yeni bir şekil oluşturabilir veya nesne projeksiyonu için satır içi şekillendirme kullanabilirsiniz. Tablolar örneği bir şekil ve dilimleme oluşturma yaklaşımını gösterirken, bu örnek satır içi şekillendirme kullanımını gösterir. Satır içi şekillendirme, bir projeksiyondaki girişlerin tanımında yeni bir şekil oluşturmanıza olanak sağlar. Satır içi şekillendirme, benzer bir biçimlendiriciyle aynı şekilde bir anonim nesne oluşturur. Yeniden kullanmayı planlamadığınız bir şekil tanımlıyorsanız satır içi şekillendirme yararlı olur.
-Tahminler özelliği bir dizidir, bu örnek için diziye yeni bir yansıtma örneği ekliyoruz. KnowledgeStore tanımını satır içi tanımlanan projeksiyonlar ile güncelleştirin, satır içi projeksiyonları kullanırken beceri başına bir mil gerekmez.
+Nesne projeksiyonları tablo projeksiyonlar ile aynı sınırlamalara sahip değildir ve büyük belgeleri yansıtmaları için daha uygundur. Bu örnekte, tüm belgeyi bir nesne projeksiyonu ile projeceğiz. Nesne projeksiyonu, kapsayıcıda tek bir projeksiyon ile sınırlıdır ve dilimlenemez.
+
+Bir nesne projeksiyonu tanımlamak için projeksiyonlar içinde ```objects``` diziyi kullanacağız. Her yeteneği kullanarak yeni bir şekil oluşturabilir veya nesne projeksiyonu için satır içi şekillendirme kullanabilirsiniz. Tablolar örneği bir şekil ve dilimleme oluşturma yaklaşımını gösterirken, bu örnek satır içi şekillendirme kullanımını gösterir. 
+
+Satır içi şekillendirme, projeksiyondaki girişlerin tanımında yeni bir şekil oluşturma olanağıdır. Satır içi şekillendirme, beceriye göre (bizim örneğimizde `pbiShape`) aynı olan anonim bir nesne oluşturur. Yeniden kullanmayı planlamadığınız bir şekil tanımlıyorsanız satır içi şekillendirme yararlı olur.
+
+Projeksiyonlar özelliği bir dizidir. Bu örnekte, diziye yeni bir projeksiyon örneği ekliyoruz, burada knowledgeStore tanımı satır içi projeksiyler içerir. Satır içi projeksiyonları kullanırken, her yetenek için mil 'yi atlayabilirsiniz.
 
 ```json
 "knowledgeStore" : {
@@ -378,9 +421,12 @@ Tahminler özelliği bir dizidir, bu örnek için diziye yeni bir yansıtma örn
         ]
     }
 ```
-## <a name="file-projections"></a>Dosya projeksiyonlarını
 
-Dosya projeksiyonları, zenginleştirme işleminden yansıtılabilen kaynak belgeden veya kendi zenginlerinin çıktılarından çıkarılan görüntülerdir. Nesne projeksiyonlarına benzer dosya projeksiyonları blob olarak uygulanır ve görüntüyü içerir. Bir dosya projeksiyonu oluşturmak için, İzdüşüm nesnesinde ```files``` dizisini kullanıyoruz. Bu örnek, belgeden ayıklanan tüm görüntüleri, `samplefile`adlı bir kapsayıcıya projeler.
+## <a name="projecting-to-file"></a>Dosyaya yansıtma
+
+Dosya projeksiyonları, zenginleştirme işleminden elde edilebilir kaynak belgeden veya zenginleştirme çıktılarından çıkarılan görüntülerdir. Nesne projeksiyonlarına benzer dosya projeksiyonları Azure Storage 'da blob olarak uygulanır ve görüntüyü içerir. 
+
+Bir dosya projeksiyonu oluşturmak için, İzdüşüm nesnesinde `files` dizisini kullanıyoruz. Bu örnek, belgeden ayıklanan tüm görüntüleri, `samplefile`adlı bir kapsayıcıya projeler.
 
 ```json
 "knowledgeStore" : {
@@ -402,83 +448,93 @@ Dosya projeksiyonları, zenginleştirme işleminden yansıtılabilen kaynak belg
 
 ## <a name="projecting-to-multiple-types"></a>Birden çok türe yansıtma
 
-Daha karmaşık bir senaryo, içerik yansıtma türleri arasında proje gerektirebilir. Örneğin, tablo için anahtar tümceleri ve varlıklar gibi bazı verileri bir proje yapmanız gerekiyorsa metin ve düzen metninin OCR sonuçlarını nesneler olarak kaydedin ve görüntüleri dosya olarak yansımış olursunuz. Bu beceri güncelleştirmesi şu şekilde olur:
+Daha karmaşık bir senaryo, içerik yansıtma türleri arasında proje gerektirebilir. Örneğin, tablo için anahtar tümceleri ve varlıklar gibi bazı verileri, metin ve düzen metninin OCR sonuçlarını nesneler olarak kaydedin ve ardından görüntüleri dosya olarak yansıdıysanız. 
+
+Bu örnekte, Beceri güncelleştirmeleri aşağıdaki değişiklikleri içerir:
 
 1. Her belge için bir satır içeren bir tablo oluşturun.
-2. Bu tabloda satır olarak tanımlanan her anahtar tümceciği içeren belge tablosuyla ilgili bir tablo oluşturun.
-3. Bu tabloda satır olarak tanımlanan her varlıkla birlikte belge tablosuyla ilgili bir tablo oluşturun.
-4. Her görüntü için Düzen metniyle bir nesne projeksiyonu oluşturun.
-5. Ayıklanan her görüntüyü yansıtarak bir dosya projeksiyonu oluşturun.
-6. Belge tablosuna başvuruları, düzen metni ve dosya projeksiyonu içeren nesne projeksiyonu içeren bir çapraz başvuru tablosu oluşturun.
+1. Bu tabloda satır olarak tanımlanan her anahtar tümceciği içeren belge tablosuyla ilgili bir tablo oluşturun.
+1. Bu tabloda satır olarak tanımlanan her varlıkla birlikte belge tablosuyla ilgili bir tablo oluşturun.
+1. Her görüntü için Düzen metniyle bir nesne projeksiyonu oluşturun.
+1. Ayıklanan her görüntüyü yansıtarak bir dosya projeksiyonu oluşturun.
+1. Belge tablosuna başvuruları, düzen metni ve dosya projeksiyonu içeren nesne projeksiyonu içeren bir çapraz başvuru tablosu oluşturun.
 
-Şekillendirilmiş bir nesne oluşturan yetenek dizisine bir yetenek başına yeni bir mil ekleyerek başlayın. 
+Bu değişiklikler knowledgeStore tanımına daha sonra yansıtılır. 
+
+### <a name="shape-data-for-cross-projection"></a>Çapraz projeksiyon için veri şekil
+
+Bu projeksiyonlar için ihtiyacımız olan şekilleri almak için, `crossProjection`adlı şekillendirilmiş bir nesne oluşturan yetenek başına yeni bir mil ekleyerek başlayın. 
 
 ```json
 {
-            "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-            "name": "ShaperForCross",
-            "description": null,
-            "context": "/document",
+    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+    "name": "ShaperForCross",
+    "description": null,
+    "context": "/document",
+    "inputs": [
+        {
+            "name": "metadata_storage_name",
+            "source": "/document/metadata_storage_name",
+            "sourceContext": null,
+            "inputs": []
+        },
+        {
+            "name": "keyPhrases",
+            "source": null,
+            "sourceContext": "/document/merged_content/keyphrases/*",
             "inputs": [
                 {
-                    "name": "metadata_storage_name",
-                    "source": "/document/metadata_storage_name",
-                    "sourceContext": null,
-                    "inputs": []
-                },
-                {
-                    "name": "keyPhrases",
-                    "source": null,
-                    "sourceContext": "/document/merged_content/keyphrases/*",
-                    "inputs": [
-                        {
-                            "name": "KeyPhrases",
-                            "source": "/document/merged_content/keyphrases/*"
-                        }
-
-                    ]
-                },
-                {
-                    "name": "entities",
-                    "source": null,
-                    "sourceContext": "/document/merged_content/entities/*",
-                    "inputs": [
-                        {
-                            "name": "Entities",
-                            "source": "/document/merged_content/entities/*/name"
-                        }
-
-                    ]
-                },
-                {
-                    "name": "images",
-                    "source": null,
-                    "sourceContext": "/document/normalized_images/*",
-                    "inputs": [
-                        {
-                            "name": "image",
-                            "source": "/document/normalized_images/*"
-                        },
-                        {
-                            "name": "layoutText",
-                            "source": "/document/normalized_images/*/layoutText"
-                        },
-                        {
-                            "name": "ocrText",
-                            "source": "/document/normalized_images/*/text"
-                        }
-                        ]
+                    "name": "KeyPhrases",
+                    "source": "/document/merged_content/keyphrases/*"
                 }
-                
-            ],
-            "outputs": [
-                {
-                    "name": "output",
-                    "targetName": "crossProjection"
-                }
+
             ]
+        },
+        {
+            "name": "entities",
+            "source": null,
+            "sourceContext": "/document/merged_content/entities/*",
+            "inputs": [
+                {
+                    "name": "Entities",
+                    "source": "/document/merged_content/entities/*/name"
+                }
+
+            ]
+        },
+        {
+            "name": "images",
+            "source": null,
+            "sourceContext": "/document/normalized_images/*",
+            "inputs": [
+                {
+                    "name": "image",
+                    "source": "/document/normalized_images/*"
+                },
+                {
+                    "name": "layoutText",
+                    "source": "/document/normalized_images/*/layoutText"
+                },
+                {
+                    "name": "ocrText",
+                    "source": "/document/normalized_images/*/text"
+                }
+                ]
         }
+ 
+    ],
+    "outputs": [
+        {
+            "name": "output",
+            "targetName": "crossProjection"
+        }
+    ]
+}
 ```
+
+### <a name="define-table-object-and-file-projections"></a>Tablo, nesne ve dosya projeksiyonlarını tanımlama
+
+Birleştirilmiş çapraz projeksiyon nesnesinden nesneyi birden çok tabloya dilimleyip OCR çıkışını blob olarak yakalayabilir ve sonra görüntüyü dosya olarak (BLOB depolama alanında da) kaydedebilirsiniz.
 
 ```json
 "knowledgeStore" : {
@@ -537,9 +593,14 @@ Daha karmaşık bir senaryo, içerik yansıtma türleri arasında proje gerektir
 
 Nesne projeksiyonu her projeksiyon için bir kapsayıcı adı gerektirir, nesne projeksiyonu veya dosya projeksiyonu bir kapsayıcıyı paylaşamaz. 
 
-### <a name="relationships"></a>İlişkiler
+### <a name="relationships-among-table-object-and-file-projections"></a>Tablo, nesne ve dosya projeksiyonları arasındaki ilişkiler
 
-Bu örnek ayrıca aynı projeksiyon nesnesi içinde birden çok tür projeksiyonu tanımlayarak farklı projeksiyonun bir özelliğini vurgular, projeksiyonun farklı türlerinde (tablolar, nesneler, dosyalar) ifade edilen bir ilişki vardır ve bu da buna izin verir bir belge için bir tablo satırıyla başlayıp nesne projeksiyonu içindeki bu belgedeki görüntülerin tüm OCR metinlerini bulabilirsiniz. Verilerin birbiriyle ilgili olmasını istemiyorsanız, farklı projeksiyon nesnelerinde projeksiyonları tanımlayın, örneğin, aşağıdaki kod parçacığı ilgili tabloların ilişkili olduğu, ancak tablolar ve OCR metin projeksiyonları arasında ilişki olmaması halinde olur. Yansıtma grupları, farklı şekillerde aynı verileri farklı şekillerde proje yapmak istediğinizde faydalıdır. Örneğin, Power BI panosu için bir yansıtma grubu ve bir yetenek için bir AI modelini eğitmek üzere verileri kullanmaya yönelik başka bir projeksiyon grubu.
+Bu örnek ayrıca projeksiyonun başka bir özelliğini de vurgular. Aynı projeksiyon nesnesi içinde birden çok tür projeksiyonları tanımlayarak, farklı türlerde (tablolar, nesneler, dosyalar) ifade edilen bir ilişki vardır ve bu, bir belge için bir tablo satırıyla başlayabilmenizi ve görüntüler için tüm OCR metinlerini bulmanızı sağlar nesne projeksiyonundaki bu belgenin içinde. 
+
+Verilerin birbiriyle ilgili olmasını istemiyorsanız, projeksiyonu farklı projeksiyon nesnelerinde tanımlayın. Örneğin, aşağıdaki kod parçacığı, tablolar ile nesne (OCR metni) projeksiyonları arasında ilişki olmadan, ilişkili olan tabloların oluşmasına neden olur. 
+
+Yansıtma grupları, farklı şekillerde aynı verileri farklı şekillerde proje yapmak istediğinizde faydalıdır. Örneğin, Power BI panosu için bir yansıtma grubu ve özel bir yeteneğe Sarmalanan makine öğrenimi modelini eğitmek için kullanılan verileri yakalamaya yönelik başka bir projeksiyon grubu.
+
 Farklı türlerin projeksiyonlarını oluştururken, önce dosya ve nesne projeksiyonları oluşturulur ve yollar tablolara eklenir.
 
 ```json
@@ -596,13 +657,21 @@ Farklı türlerin projeksiyonlarını oluştururken, önce dosya ve nesne projek
     }
 ```
 
-Bu örneklerde, projeksiyonların nasıl kullanılacağına ilişkin yaygın desenler gösterilmektedir. Ayrıca, özel senaryonuz için bir yansıtma oluşturma kavramlarını iyi anlamak da gerekir.
-
 ## <a name="common-issues"></a>Genel Sorunlar
 
-Projeksiyon tanımlarken, beklenmeyen sonuçlara neden olabilecek bazı yaygın sorunlar vardır.
+Projeksiyon tanımlarken, beklenmeyen sonuçlara neden olabilecek bazı yaygın sorunlar vardır. Bilgi deposunda çıkış beklediğiniz gibi değilse bu sorunları kontrol edin.
 
-1. Dize enzenginleştirmelerinin şekillendirmiyor. Dizeler uyumlu olduğunda (örneğin, anahtar tümcecikleriyle ```merged_content``` zenginleştirildikten sonra, zenginleştirme özelliği, zenginleştirme ağacı içinde merged_content alt öğesi olarak temsil edilir. Ancak, bu süre içinde, bu, bir adı ve değeri olan geçerli bir JSON nesnesine dönüştürülmesi gerekir.
-2. Kaynak yolunun sonundaki ```/*``` dışarıda. Örneğin, bir projeksiyonun kaynağı ```/document/pbiShape/keyPhrases```, anahtar tümceleri dizisi tek bir nesne/satır olarak yansıtıldır. Kaynak yolunun ```/document/pbiShape/keyPhrases/*``` ayarlanması, her anahtar tümceciği için tek bir satır veya nesne verir.
-3. Yol seçicileri büyük/küçük harfe duyarlıdır ve seçici için tam büyük/küçük harf kullanmıyorsanız eksik giriş uyarılarına yol açabilir.
++ Dize enzenginleştirmelerinin geçerli bir JSON 'a şekillendirmiyor. Dizeler uyumlu olduğunda (örneğin, anahtar tümcecikleriyle `merged_content` zenginleştirildikten sonra, zenginleştirme özelliği, zenginleştirme ağacı içinde `merged_content` alt öğesi olarak temsil edilir. Varsayılan Gösterim doğru biçimlendirilmiş JSON değil. Yansıtma zamanında, bir ad ve değer ile geçerli bir JSON nesnesine zenginleştirme dönüştürdiğinizden emin olun.
 
++ Kaynak yolunun sonundaki ```/*``` dışarıda. Projeksiyonun kaynağı `/document/pbiShape/keyPhrases`ise, anahtar tümceleri dizisi tek bir nesne/satır olarak yansıtıldır. Bunun yerine, anahtar tümceciklerin her biri için tek bir satır veya nesne sağlamak üzere kaynak yolunu `/document/pbiShape/keyPhrases/*` olarak ayarlayın.
+
++ Yol sözdizimi hataları. Yol seçicileri büyük/küçük harfe duyarlıdır ve seçici için tam büyük/küçük harf kullanmıyorsanız eksik giriş uyarılarına yol açabilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu makaledeki örneklerde, projeksiyonları oluşturma hakkında genel desenler gösterilmektedir. Kavramların iyi şekilde anlayışınız olduğuna göre, belirli senaryonuz için daha iyi bir geliştirme oluşturmaya daha iyi bir şekilde donatılmış olursunuz.
+
+Bilgi deposu tanımlarını yinelemenize göre, bir sonraki adımınız olarak artımlı zenginleştirme yapmayı düşünün. Artımlı zenginleştirme, daha önce bir beceri değişikliğinden etkilenmeyen tüm zenginler 'i yeniden kullanmanıza imkan tanıyan önbelleğe alma işlemini temel alır. Bu, özellikle OCR ve görüntü analizini içeren işlem hatları için yararlıdır.
+
+> [!div class="nextstepaction"]
+> [Artımlı zenginleştirme ve önbelleğe alma bilgilerine giriş](cognitive-search-incremental-indexing-conceptual.md)

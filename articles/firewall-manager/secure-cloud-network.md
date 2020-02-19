@@ -1,41 +1,38 @@
 ---
-title: "Öğretici: Azure portal kullanarak bulut ağınızı güvenli hale getirmek için Azure Güvenlik Duvarı Yöneticisi önizlemesi 'ni kullanın"
-description: Bu öğreticide, Azure portal kullanarak bulut ağınızın güvenliğini Azure Güvenlik Duvarı Yöneticisi ile nasıl sağlayacağınızı öğreneceksiniz.
+title: "Öğretici: Azure Güvenlik Duvarı Yöneticisi önizlemesi kullanarak sanal WAN 'nizin güvenliğini sağlama"
+description: Bu öğreticide, Azure portal kullanarak sanal WAN 'nizin güvenliğini Azure Güvenlik Duvarı Yöneticisi ile nasıl sağlayacağınızı öğreneceksiniz.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501914"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443066"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bulut ağınızı Azure Güvenlik Duvarı Yöneticisi önizleme ile koruyun
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi önizlemesi kullanarak sanal WAN 'nizin güvenliğini sağlama 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi 'ni kullanarak, özel IP adreslerine, Azure PaaS 'ye ve Internet 'e yönelik bulut ağ trafiğinizi güvenli hale getirmek için güvenli hub 'lar oluşturabilirsiniz. Güvenlik duvarındaki trafik yönlendirme otomatikleştirilmiştir, bu nedenle Kullanıcı tanımlı yollar (UDRs) oluşturmanız gerekmez.
+Azure Güvenlik Duvarı Yöneticisi önizlemesi 'ni kullanarak, özel IP adreslerine, Azure PaaS 'ye ve Internet 'e yönelik bulut ağ trafiğinizi güvenli hale getirmek için güvenli sanal hub 'lar oluşturabilirsiniz. Güvenlik duvarındaki trafik yönlendirme otomatikleştirilmiştir, bu nedenle Kullanıcı tanımlı yollar (UDRs) oluşturmanız gerekmez.
 
 ![bulut ağının güvenliğini sağlama](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+Güvenlik Duvarı Yöneticisi ayrıca bir hub sanal ağ mimarisini destekler. Güvenli sanal hub ve hub sanal ağ mimarisi türleri karşılaştırması için bkz [. Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?](vhubs-and-vnets.md)
 
-> [!IMPORTANT]
-> Azure Güvenlik Duvarı Yöneticisi önizlemenin `Register-AzProviderFeature` PowerShell komutu kullanılarak açıkça etkinleştirilmesi gerekir.
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
-PowerShell komut isteminden aşağıdaki komutları çalıştırın:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Kayıt durumunuzu denetlemek için şu komutu çalıştırın:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * Bağlı bileşen sanal ağını oluşturma
+> * Güvenli sanal hub oluşturma
+> * Hub ve bağlı bileşen VNET 'leri bağlama
+> * Bir güvenlik duvarı ilkesi oluşturma ve merkezinizi güvenli hale getirme
+> * Trafiği hub 'ınıza yönlendirin
+> * Güvenlik duvarını test etme
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Hub ve bağlı bileşen mimarisi oluşturma
 
@@ -79,7 +76,7 @@ Güvenlik Duvarı Yöneticisi 'Ni kullanarak güvenli sanal hub 'ınızı oluşt
 10. **İleri ' yi seçin: Azure Güvenlik Duvarı**.
 11. Varsayılan **Azure Güvenlik Duvarı** **etkin** ayarını kabul edin ve ardından **İleri: güvenilen güvenlik ortağı**' nı seçin.
 12. Varsayılan **güvenilir güvenlik Iş ortağı** **devre dışı** ayarını kabul edin ve ileri ' yi seçin **: gözden geçir + oluştur**.
-13. **Oluştur**'u seçin. Dağıtımı yaklaşık 30 dakika sürer.
+13. **Oluştur**’u seçin. Dağıtımı yaklaşık 30 dakika sürer.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>Hub ve bağlı bileşen VNET 'leri bağlama
 
@@ -115,7 +112,7 @@ Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub ü
 16. **İleri ' yi seçin: güvenli sanal hub 'lar**.
 17. **Güvenli sanal hub 'lar** sekmesinde **hub-01**' i seçin.
 19. **İncele ve oluştur**’u seçin.
-20. **Oluştur**'u seçin.
+20. **Oluştur**’u seçin.
 
 Bu işlem yaklaşık beş dakika veya daha uzun sürebilir.
 
@@ -151,7 +148,7 @@ Güvenlik Duvarı kurallarınızı test etmek için, birkaç sunucu dağıtmanı
    |Sanal makine adı     |**Geç-SRV**|
    |Bölge     |**ABD Doğu ABD)**|
    |Yönetici Kullanıcı adı     |**azureuser**|
-   |Parola     |**Azure123456!**|
+   |Parola     |parolanızı yazın|
 
 4. **Gelen bağlantı noktası kuralları**altında, **Genel gelen bağlantı noktaları**Için **Seçili bağlantı noktalarına izin ver**' i seçin
 5. **Gelen bağlantı noktaları Seç**için **RDP (3389)** seçeneğini belirleyin.
@@ -178,10 +175,10 @@ Bir Internet bağlantısı ile bağlantı kurulmasına izin vermek için, bir yo
 
 1. Azure portal **kaynak oluştur**' u seçin.
 2. Arama kutusuna **yol tablosu** yazın ve ardından **yol tablosu**' nu seçin.
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. **Ad**için **RT-01** yazın.
 5. Kaynak grubunun ve **(US) bölge Doğu ABD** için aboneliğinizi, **İlt-Manager** ' ı seçin.
-6. **Oluştur**'u seçin.
+6. **Oluştur**’u seçin.
 7. Dağıtım tamamlandığında **RT-01** yol tablosunu seçin.
 8. **Rotalar** ' ı seçin ve ardından **Ekle**' yi seçin.
 9. **Yol adı**için, **atlayın** yazın.

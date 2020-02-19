@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 292eba09b151d8de50fc379051091a4d2990a105
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1c5411778bf2e8ab25ce3e71dba92227b2653c3d
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156554"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445984"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -47,7 +47,7 @@ Bir `IntentRecognizer` nesnesi başlatabilmeniz için, LUSıS tahmin kaynağın�
 `recognizeIntent()` yöntemine bu kodu ekleyin. Bu değerleri güncelleştirdiğinizden emin olun:
 
 * `"YourLanguageUnderstandingSubscriptionKey"` değerini LUSıS tahmin anahtarınızla değiştirin.
-* `"YourLanguageUnderstandingServiceRegion"` değerini LUSıS konumunuz ile değiştirin.  [Bölgesinden](https://aka.ms/speech/sdkregion)"konuşma SDK 'sı parametresi" ni kullanın.
+* `"YourLanguageUnderstandingServiceRegion"` değerini LUSıS konumunuz ile değiştirin.  Bölgeden **bölge tanımlayıcısı** kullanın [.](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
 > Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).

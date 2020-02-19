@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 86e966cc3bf98e63edbe90d7649242dcb1ccdf42
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: cfd92546def21972e37781bd8a4b0bfefda9111f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964388"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444222"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Python kullanarak Azure Veri Gezgini için IoT Hub veri bağlantısı oluşturma (Önizleme)
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964388"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-iot-hub-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede, Python kullanarak Azure Veri Gezgini için IoT Hub bir veri bağlantısı oluşturacaksınız.
+Bu makalede, Python kullanarak Azure Veri Gezgini için IoT Hub bir veri bağlantısı oluşturacaksınız. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma veya veri yükleme işlemi sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Küme ve veritabanı](create-cluster-database-python.md) oluşturma
-* [Tablo ve sütun eşlemesi](python-ingest-data.md#create-a-table-on-your-cluster) oluştur
-* [Veritabanı ve tablo ilkelerini](database-table-policies-python.md) ayarlama (isteğe bağlı)
-* [Yapılandırılmış bir paylaşılan erişim ilkesiyle IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub)oluşturun.
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Bir küme ve veritabanı](/create-cluster-database-python.md).
+
+* [Tablo ve sütun eşleme](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Veritabanı ve tablo ilkeleri](database-table-policies-python.md) (isteğe bağlı).
+
+* [Paylaşılan erişim ilkesi yapılandırılmış bir IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 59ac2f74d4753c1f647bedfa2c402e729e25ee62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e629f3c83d847cf20eccbe7a3fb0d3f444dac62
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847816"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430338"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C parolalar için karmaşıklık gereksinimlerini yapılandırın
 
@@ -37,7 +37,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
@@ -46,10 +46,10 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ### <a name="comparison-chart"></a>Karşılaştırma grafiği
 
-| Karmaşıklığını | Açıklama |
+| Karmaşıklık | Açıklama |
 | --- | --- |
 | Basit | En az 8 ile 64 karakter uzunluğunda bir parola. |
-| Strong | En az 8 ile 64 karakter uzunluğunda bir parola. 3/4 küçük harf, büyük harf, sayı veya sembol gerektirir. |
+| Güçlü | En az 8 ile 64 karakter uzunluğunda bir parola. 3/4 küçük harf, büyük harf, sayı veya sembol gerektirir. |
 | Özel | Bu seçenek, parola karmaşıklığı kuralları üzerinde en çok denetim sağlar.  Özel bir uzunluk yapılandırmasına izin verir.  Ayrıca yalnızca sayı parolalarının kabul edilmesini sağlar (PIN 'ler). |
 
 ## <a name="custom-options"></a>Özel seçenekler
@@ -73,7 +73,7 @@ Parolanın uzunluk gereksinimlerini denetlemenize olanak tanır.
 Parolada kullanılan farklı karakter türlerini denetlemenizi sağlar.
 
 - **2/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** parolanın en az iki karakter türü içermesini sağlar. Örneğin, bir sayı ve küçük harfli bir karakter.
-- **3/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** , parolanın en az iki karakter türü içermesini sağlar. Örneğin, bir sayı, küçük harf ve bir büyük harf karakteri.
+- **3/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** parolanın en az üç karakter türü içerdiğini sağlar. Örneğin, bir sayı, küçük harf ve bir büyük harf karakteri.
 - **4/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** , parola tüm karakter türlerini içerir.
 
     > [!NOTE]

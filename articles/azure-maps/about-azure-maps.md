@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07a78dc81d121874db5e59ad267ea8eb08a69c91
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210149"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443758"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -45,13 +45,13 @@ Aşağıdaki videoda Azure Haritalar ayrıntılı olarak açıklanır:
 
 Azure Haritalar Web SDK 'Sı, etkileşimli haritaları kendi içerikleriyle ve Imagery ile özelleştirmenizi sağlar. Bu etkileşimli eşlemeyi Web veya mobil uygulamalarınız için kullanabilirsiniz. Harita denetimi WebGL kullanımını sağlar, böylece büyük veri kümelerini yüksek performanslı olarak işleyebilirsiniz. JavaScript veya TypeScript kullanarak SDK ile geliştirin.
 
-![Popülasyon değişikliğinin örnek Haritası](media/about-azure-maps/Introduction_WebMapControl.png)
+![Popülasyon değişikliğinin örnek Haritası](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 Mobil eşleme uygulamaları oluşturmak için Azure Haritalar Android SDK kullanın. 
 
-![Bir mobil cihazda örnek eşleme](media/about-azure-maps/AndroidSDK.png)
+![Bir mobil cihazda örnek eşleme](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Azure Haritalar'ın içindeki hizmetler
 
@@ -73,7 +73,7 @@ Hizmet hakkında daha fazla bilgi edinmek için bkz. [Mobility API 'si belgeleri
 
 Işleme hizmeti, geliştiricilerin eşleme özellikleriyle web uygulamaları ve mobil uygulamalar oluşturmalarına yardımcı olur. Hizmet, 19 yakınlaştırma düzeyine sahip yüksek kaliteli hücresel grafik görüntüler veya tamamen özelleştirilebilir vektör biçiminde harita görüntüleri kullanır.
 
-![Render Service 'ten bir harita örneği](media/about-azure-maps/Introduction_Map.png)
+![Render Service 'ten bir harita örneği](media/about-azure-maps/intro_map.png)
 
 İşleme hizmeti şimdi geliştiricilerin uydu görüntülemeyle çalışmasına olanak tanıyan önizleme API'leri sunar. Daha fazla ayrıntı için [işleme API 'si belgelerini](https://docs.microsoft.com/rest/api/maps/render)okuyun.
 
@@ -81,7 +81,7 @@ Işleme hizmeti, geliştiricilerin eşleme özellikleriyle web uygulamaları ve 
 
 Yönlendirme hizmeti, birden çok taşıma moduna yönelik gerçek dünya altyapısı ve yol tarifleri için sağlam geometri hesaplamaları içerir. Hizmet, geliştiricilerin otomobil, kamyon, Bisiklet veya yürüme gibi çeşitli seyahat modlarında yönleri hesaplamasını sağlar. Hizmet ayrıca trafik koşulları, ağırlık kısıtlamaları veya tehlikeli malzeme taşıma gibi girdileri de dikkate alır.
 
-![Yol hizmetinden bir harita örneği](media/about-azure-maps/Introduction_Route.png)
+![Yol hizmetinden bir harita örneği](media/about-azure-maps/intro_route.png)
 
 Rota hizmeti, gelişmiş özelliklerin bir önizlemesini sağlar, örneğin: 
 
@@ -95,7 +95,7 @@ Yönlendirme özellikleri hakkında ayrıntılı bilgi için [route API belgeler
 
 Arama hizmeti, geliştiricilerin adresleri, yerleri, iş listelerini ada veya kategoriye göre ve diğer coğrafi bilgileri aramasına yardımcı olur. Arama hizmeti, [kacode](https://en.wikipedia.org/wiki/Reverse_geocoding) adreslerini ve çapraz Streets 'leri, Latitudes ve Longitudes temelinde ters kaydedebilir.
 
-![Haritada arama örneği](media/about-azure-maps/Introduction_Search.png)
+![Haritada arama örneği](media/about-azure-maps/intro_search.png)
 
 Arama hizmeti Ayrıca, gibi gelişmiş özellikler de sağlar:
 
@@ -149,7 +149,7 @@ Trafik hizmeti, geliştiricilerin trafik bilgileri gerektiren Web uygulamaları 
 * Trafik akışı: ağdaki tüm anahtar yolların gerçek zamanlı gözlemlenen hızları ve seyahat süreleri.
 * Trafik olayları: trafik sıkışıklıklarının 'nin ve yol ağı çevresindeki olayların güncel görünümü.
 
-![Trafik bilgilerine sahip bir harita örneği](media/about-azure-maps/Introduction_Traffic.png)
+![Trafik bilgilerine sahip bir harita örneği](media/about-azure-maps/intro_traffic.png)
 
 Daha fazla bilgi için bkz. [trafik API 'si belgeleri](https://docs.microsoft.com/rest/api/maps/traffic).
 

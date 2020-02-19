@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ed37e4f5b84431355b63b3d59b0e49b78eaeed86
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156456"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445491"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -48,13 +48,13 @@ Ortak HelloWorld projesi, platformlar arası uygulamanız için platformdan bağ
 1. Kaynak dosyanın `OnRecognitionButtonClicked` işleyicisinde, `YourSubscriptionKey`dizesini bulun ve abonelik anahtarınızla değiştirin.
 
 
-1. `OnRecognitionButtonClicked` işleyicisinde, `YourServiceregion`dizesini bulun ve aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) "konuşma SDK 'sı parametresi" ile değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.)
+1. `OnRecognitionButtonClicked` işleyicisinde, `YourServiceregion`dizesini bulun ve aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) **bölge tanımlayıcısıyla** değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.)
 
 1. Daha sonra, UWP, Android ve iOS gibi farklı platform projelerinden gelen mikrofon izinlerini sorgulamak için kullanılan bir [Xamarin hizmeti](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)oluşturmanız gerekir. Bunu yapmak için HelloWorld projesi altında *Hizmetler* adlı yeni bir klasör ekleyin ve bunun altında yeni C# bir kaynak dosya oluşturun. *Hizmetler* klasörüne sağ tıklayıp > **Yeni öğe** > **kod dosyası** **Ekle** ' yi seçebilirsiniz. `IMicrophoneService.cs`dosyayı yeniden adlandırın ve aşağıdaki kod parçacığındaki tüm kodu bu dosyaya yerleştirin:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
+#### <a name="android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>`helloworld.Android` projesi için örnek kod ekleme
 
 Şimdi uygulamanın Android C# 'e özgü bölümünü tanımlayan kodu ekleyin.
@@ -75,7 +75,7 @@ Ortak HelloWorld projesi, platformlar arası uygulamanız için platformdan bağ
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
-#### <a name="iostabios"></a>[iOS](#tab/ios)
+#### <a name="ios"></a>[iOS](#tab/ios)
 ## <a name="add-sample-code-for-the-helloworldios-project"></a>`helloworld.iOS` projesi için örnek kod ekleme
 
 Şimdi uygulamanın iOS C# 'a özgü bölümünü tanımlayan kodu ekleyin. Ayrıca HelloWorld. iOS projesinde Apple cihaza özgü yapılandırma oluşturma.
@@ -100,7 +100,7 @@ Ortak HelloWorld projesi, platformlar arası uygulamanız için platformdan bağ
 
 1. Bir Windows BILGISAYAR üzerinde derleme yapıyorsanız, Mac > **iOS** > **Mac ile eşleştirme** **araçları** aracılığıyla oluşturmaya yönelik Mac cihazına bir bağlantı kurun. Mac cihazına bağlantıyı etkinleştirmek için Visual Studio tarafından sunulan yönerge Sihirbazı ' nı izleyin.
 
-#### <a name="uwptabhelloworlduwp"></a>[UWP](#tab/helloworlduwp)
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>`helloworld.UWP` projesi için örnek kod ekleme
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>HelloWorld için örnek kod ekleyin. UWP projesi

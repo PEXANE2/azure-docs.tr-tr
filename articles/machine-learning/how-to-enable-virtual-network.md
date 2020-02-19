@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169956"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444358"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Bir sanal ağda Azure Machine Learning işlem örneği veya işlem kümesi kulla
 > * Bir sanal ağa birden çok işlem örneği veya kümesi koyacaksanız bir veya daha fazla kaynağınız için bir kota artışı istemeniz gerekebilir.
 > * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Machine Learning işlem örneğiyle veya kümeyle aynı sanal ağda olmaları gerekir. 
 
-Machine Learning işlem örneği veya kümesi, sanal ağı içeren kaynak grubunda ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya kümesi için hizmet aşağıdaki kaynakları ayırır:
-
-* Bir ağ güvenlik grubu
-* Bir genel IP adresi
-* Bir yük dengeleyici
-
-Bu kaynaklar, aboneliğin [kaynak kotalarıyla](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) sınırlıdır.
+> [!TIP]
+> Machine Learning işlem örneği veya kümesi, sanal ağı içeren kaynak grubunda ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya kümesi için hizmet aşağıdaki kaynakları ayırır:
+> 
+> * Bir ağ güvenlik grubu
+> * Bir genel IP adresi
+> * Bir yük dengeleyici
+> 
+> Bu kaynaklar, aboneliğin [kaynak kotalarıyla](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) sınırlıdır.
 
 
 ### <a id="mlcports"></a>Gerekli bağlantı noktaları
@@ -500,6 +501,10 @@ Azure Güvenlik Duvarı 'nı kullanırken aşağıdaki adreslere gelen ve giden 
 Kural eklenirken, __Protokolü__ herhangi bir ve `*`bağlantı noktaları olarak ayarlayın.
 
 Ağ kuralını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+
+## <a name="use-azure-container-registry"></a>Azure Container Registry’yi kullanma
+
+Azure Machine Learning ile bir sanal ağ kullanırken, sanal ağa çalışma alanı için __Azure Container Registry yerleştirmeyin.__ Bu yapılandırma desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
