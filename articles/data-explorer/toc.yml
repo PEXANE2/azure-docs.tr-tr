@@ -56,6 +56,10 @@
           href: create-cluster-database-resource-manager.md
     - name: Veriyi çekme
       items:
+        - name: Tek tıklamayla veri alımı
+          href: ingest-data-one-click.md
+        - name: Akış alımı
+          href: ingest-data-streaming.md
         - name: Olay Hub'ı
           items:
             - name: Azure portal
@@ -86,10 +90,6 @@
               href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager şablonu
               href: data-connection-iot-hub-resource-manager.md
-        - name: Tek tıklamayla veri alımı
-          href: ingest-data-one-click.md
-        - name: Akış alımı
-          href: ingest-data-streaming.md
         - name: SDK'ları kullanma
           items:
             - name: Python
