@@ -8,12 +8,12 @@
   expanded: true
   items:
     - name: Terraform’u yükleme ve yapılandırma
-      href: /azure/virtual-machines/linux/terraform-install-configure
+      href: terraform-install-configure.md
       maintainContext: true
     - name: Terraform yapılandırması oluşturma
       href: terraform-create-configuration.md
     - name: Linux VM oluşturma
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      href: terraform-create-complete-vm.md
       maintainContext: true
 - name: Öğreticiler
   items:
@@ -35,8 +35,6 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Altyapı
       items:
-        - name: Azure kaynakları için etkin yönetilen kimliklerle bir Terraform VM’si oluşturma
-          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Terraform modülleri ile VM kümesi oluşturma
           href: terraform-create-vm-cluster-module.md
         - name: Terraform ve HCL ile VM kümesi oluşturma

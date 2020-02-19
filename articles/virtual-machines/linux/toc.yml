@@ -450,9 +450,9 @@
         - name: Terraform
           items:
             - name: Yükleme ve yapılandırma
-              href: terraform-install-configure.md
+              href: ../../terraform/terraform-install-configure.md
             - name: Tam VM oluşturma
-              href: terraform-create-complete-vm.md
+              href: ../../terraform/terraform-create-complete-vm.md
         - name: Cloud-init
           items:
             - name: Cloud-init genel bakış
