@@ -323,10 +323,10 @@
       items:
         - name: Temel Konular
           href: search-monitor-usage.md
-        - name: Sorgu etkinliğini izleme
-          href: search-monitor-queries.md
         - name: Tanılama günlüğüne kaydetme
           href: search-monitor-logs.md
+        - name: Sorgu etkinliğini izleme
+          href: search-monitor-queries.md
         - name: Arama trafiği analizi
           href: search-traffic-analytics.md
     - name: Sorun giderme
