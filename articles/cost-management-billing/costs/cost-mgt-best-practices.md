@@ -1,21 +1,20 @@
 ---
 title: Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme | Microsoft Docs
 description: Bu makale bulut yatırımlarınızdan en iyi şekilde yararlanmanıza, maliyetlerinizi azaltmanıza ve paranızın nereye harcandığını değerlendirmenize yardımcı olur.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988389"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201076"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -85,20 +84,20 @@ Maliyet Yönetimi deneyiminizi en üst düzeye çıkarmanın ilk adımı, sizin 
 
 Farklı seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure'ı satın alma](https://azure.microsoft.com/pricing/purchase-options/). En yaygın faturalandırma modellerinin bazıları aşağıda tanımlanmıştır.
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[Ücretsiz](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[Ücretsiz](https://azure.microsoft.com/free/)
 
 - Popüler ücretsiz hizmetleri 12 ay boyunca kullanma
 - 30 gün boyunca hizmetleri keşfetmek için 200 ABD doları kredi
 - 25'ten fazla hizmet her zaman ücretsizdir
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Minimum tutar veya taahhüt yoktur
 - Rekabetçi fiyatlar
 - Yalnızca kullandığınız kadar ödeyin
 - İstediğiniz zaman iptal edin
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - Peşin parasal taahhütler için seçenekler
 - Düşük Azure fiyatlarına erişim

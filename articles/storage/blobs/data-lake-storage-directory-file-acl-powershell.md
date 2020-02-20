@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: a5ad4cbd11d6468413a43576e2156ee807067aa8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a2f3dbf58363331cf6b1b05e759d246e68e7e7a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153358"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471219"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme (Önizleme)
 
@@ -28,7 +28,7 @@ Bu makalede, PowerShell kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmi�
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 > * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 > * .NET Framework, 4.7.2 veya üzeri bir sürümü yüklendi. Bkz. [indirme .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 > * PowerShell sürüm `5.1` veya üzeri.
@@ -339,7 +339,7 @@ Bu örnekte, sahip olan Kullanıcı ve sahip olan Grup yalnızca okuma ve yazma 
 
 Bir dizin veya dosyanın ACL 'sini almak için `Get-AzDataLakeGen2Item` cmdlet 'ini kullanın. Ardından, yeni bir ACL girişi oluşturmak için `New-AzDataLakeGen2ItemAclObject` cmdlet 'ini kullanın. Yeni ACL 'yi uygulamak için `Update-AzDataLakeGen2Item` cmdlet 'ini kullanın.
 
-Bu örnek, bir dizin üzerinde Kullanıcı yazma ve yürütme izni verir.
+Bu örnek bir dizin üzerinde bir grup yazma ve yürütme izni verir.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -370,7 +370,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-Bu örnek, bir dosya üzerinde Kullanıcı yazma ve yürütme izni verir.
+Bu örnek, bir dosya üzerinde bir grup yazma ve yürütme izni verir.
 
 ```powershell
 $filesystemName = "my-file-system"

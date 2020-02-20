@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108516"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468397"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI belirtimini içeri aktarma
 
 Bu makalede, https://conferenceapi.azurewebsites.net?format=json konumunda bulunan bir "OpenAPI belirtimi" arka uç API’sinin nasıl içeri aktarılacağı gösterilmektedir. Bu arka uç API’si, Microsoft tarafından sağlanır ve Azure’da barındırılır. Makale, APIM API’sinin nasıl test edileceğini de göstermektedir.
 
 > [!IMPORTANT]
-> OpenAPI içeri aktarma ile ilgili önemli bilgiler ve ipuçları için bu [belgeye](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) bakın.
+> OpenAPI içeri aktarma ile ilgili önemli bilgiler ve ipuçları için bu [belgeye](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/) bakın.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -39,7 +39,7 @@ Bu makalede şunları öğreneceksiniz:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Arka uç API’sini içeri aktarma ve yayımlama
+## <a name="create-api"> </a>Arka uç API 'sini içeri aktarma ve yayımlama
 
 1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
 2. **Yeni API ekle** listesinden **OpenAPI belirtimi**’ni seçin.
@@ -53,13 +53,13 @@ Bu makalede şunları öğreneceksiniz:
     |---|---|---|
     |**OpenAPI Belirtimi**|https://conferenceapi.azurewebsites.net?format=json|API’yi uygulayan hizmete başvurur. API Management istekleri bu adrese iletir.|
     |**Görünen ad**|*Tanıtım Konferansı API’si*|Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur. <br/>Bu ad, Geliştirici portalında görüntülenir.|
-    |**Adı**|*demo-conference-api*|API için benzersiz bir ad sağlar. <br/>Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur.|
+    |**Ad**|*demo-conference-api*|API için benzersiz bir ad sağlar. <br/>Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur.|
     |**Açıklama**|API için isteğe bağlı bir açıklama sağlayın.|Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur.|
     |**API URL’si soneki**|*conference*|Sonek, API yönetimi hizmetinin temel URL’sinin sonuna eklenir. API Management API'leri soneklerine bakarak ayırt eder; dolayısıyla belirli bir yayımcıdaki her API için sonekin benzersiz olması gerekir.|
     |**URL düzeni**|*HTTPS*|API’ye erişmek için hangi protokollerin kullanılabileceğini belirler. |
     |**Ürünler**|*Sınırsız*| API’yi bir ürünle ilişkilendirerek yayımlayın. İsteğe bağlı olarak bu yeni API’yi bir ürüne ekleyin, ürün adını yazın. Bu adım, API’yi birden fazla ürüne eklemek için birçok defa yinelenebilir.<br/>Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.<br/> Varsayılan olarak, her bir API Management örneği iki örnek ürün ile birlikte gelir: **Başlangıç** ve **Sınırsız**. |
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 > [!NOTE]
 > API içeri aktarma sınırlamaları, [başka bir makalede](api-management-api-import-restrictions.md)belgelenmiştir.

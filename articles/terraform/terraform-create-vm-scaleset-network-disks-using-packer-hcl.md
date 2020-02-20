@@ -3,18 +3,18 @@ title: Öğretici-Terrayform kullanarak Packer özel görüntüsünden Azure san
 description: Terraform kullanarak Packer tarafından oluşturulan özel bir görüntüden (sanal ağ ve takılmış disklere sahip) Azure sanal makine ölçek kümesi yapılandırın ve sürüm oluşturun.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159277"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472222"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Öğretici: Teroyform kullanarak Packer özel görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 
 Bu öğreticide [Terrayform](https://www.terraform.io/) kullanarak, [HashiCorp yapılandırma dilini](https://www.terraform.io/docs/configuration/syntax.html) (HCL) kullanan yönetilen disklerle birlikte [Packer](https://www.packer.io/intro/index.html) kullanılarak oluşturulan özel bir görüntüyle oluşturulmuş bir [Azure sanal makine ölçek kümesi](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) oluşturun ve dağıtın. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Terrayform dağıtımınızı ayarlayın.
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- **Terrayform**: [terrayform 'U yükler ve Azure 'a erişimi yapılandırır](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terrayform**: [terrayform 'U yükler ve Azure 'a erişimi yapılandırır](terraform-install-configure.md).
 - **SSH anahtar çifti**: [SSH anahtar çifti oluşturun](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Packer**: [Packer 'ı yükler](https://www.packer.io/docs/install/index.html).
 

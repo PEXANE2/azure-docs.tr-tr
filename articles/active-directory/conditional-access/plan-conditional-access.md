@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185896"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468446"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Nasıl yapılır: Azure Active Directory 'de koşullu erişim dağıtımınızı planlayın
 
@@ -31,6 +31,9 @@ Ek özellikler gerekliyse, ilgili lisansları da almanız gerekebilir. Örneğin
 İki tür koşullu erişim ilkesi vardır: taban çizgisi ve standart. [Temel ilke](baseline-protection.md) , önceden tanımlanmış bir koşullu erişim ilkesidir. Bu ilkelerin amacı, en azından güvenlik düzeyi etkin özelliğinin etkinleştirildiğinden emin olmaktır. Temel ilkeler. Temel ilkeler Azure AD 'nin tüm sürümlerinde kullanılabilir ve yalnızca sınırlı özelleştirme seçenekleri sağlar. Bir senaryo daha fazla esneklik gerektiriyorsa, temel ilkeyi devre dışı bırakın ve gereksinimlerinizi özel bir standart ilkeye uygulayın.
 
 Standart bir koşullu erişim ilkesinde, tüm ayarları özelleştirerek ilkeyi iş gereksinimlerinize göre ayarlayabilirsiniz. Standart ilkeler Azure AD Premium P1 lisansı gerektirir.
+
+>[!NOTE]
+> İlk cihaz kimlik doğrulamasından sonra en iyi uygulamayı almak için Azure AD cihaz tabanlı koşullu erişim ilkesini kullanmanızı öneririz. Bu, cihazın uyumluluk ve cihaz kod akışı dışında kalırsa kapatma oturumlarını içerir.
 
 ## <a name="draft-policies"></a>Taslak ilkeleri
 

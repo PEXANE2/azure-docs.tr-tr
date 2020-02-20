@@ -8,20 +8,22 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ce8fcc827afdf0102a459f2c6b58db45eff72fa0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928413"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467396"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Işlevleri 'nin desteklediği özellikler için Application Insights
 
 Azure Işlevleri, ILogger arabirimi aracılığıyla kullanılabilen Application Insights ile [yerleşik tümleştirme](../../azure-functions/functions-monitoring.md) sunar. Şu anda desteklenen özelliklerin listesi aşağıda verilmiştir. [Kullanmaya başlamak](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)Için Azure işlevleri Kılavuzu ' nu gözden geçirin.
 
+Çalışma zamanı sürümleri hakkında daha fazla bilgi için [buraya](../../azure-functions/functions-versions.md)bakın.
+
 ## <a name="supported-features"></a>Desteklenen özellikler
 
-| Azure İşlevleri                       | V1                | V2 (Ignite 2018)  | 
+| Azure İşlevleri                       | V1                | V2 & v3   | 
 |-----------------------------------    |---------------    |------------------ |
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
@@ -41,7 +43,7 @@ Azure Işlevleri, ILogger arabirimi aracılığıyla kullanılabilen Application
 | Örnekleme &bull;                     | Yes             | Yes               | 
 | &bull; sinyalleri                   |                 | Yes               | 
 | | | | 
-| **Bağıntı**                       |                   |                   |               
+| **Bağıntılı**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | Yes               | 
 | EventHub &bull;                       |                   | Yes               | 
 | | | | 

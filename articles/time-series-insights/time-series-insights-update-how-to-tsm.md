@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152366"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470760"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri modelleme
 
@@ -160,7 +160,7 @@ Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden *
 
 ### <a name="delete-a-type"></a>Bir tür silme
 
-1. Türü seçin ve **Sil** veya **çöp kutusu simgesini**seçin. .
+1. Türü seçin ve **Sil** veya **çöp kutusu simgesini**seçin. arasında yetersiz alanla karşılaştı.
 
    [![Sil ' i seçerek bir türü silin.](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png#lightbox)
 

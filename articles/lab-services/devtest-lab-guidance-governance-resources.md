@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981501"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470658"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs altyapı yönetimi-kaynaklar
 Bu makalede, kuruluşunuzdaki DevTest Labs için kaynakların hizalaması ve yönetimi ele alınmaktadır. 
@@ -38,7 +38,7 @@ Bir kuruluş genel uygulama geliştirme için Azure 'u kullanmaya başlamadan ö
 
 **Önerilen ilk yöntem** , kuruluşların Azure taksonomi 'yi, üretim ve geliştirme abonelikleri arasındaki bölümlerin ana hatlarıyla incelenmektir. Aşağıdaki diyagramda, önerilen taksonomi geliştirme/test ve üretim ortamlarının mantıksal ayrımı için izin verir. Bu yaklaşım sayesinde bir kuruluş, her ortamla ilişkili maliyetleri ayrı ayrı izlemek için fatura kodları ortaya çıkarabilir. Daha fazla bilgi için bkz. [seçkin abonelik](/azure/architecture/cloud-adoption/appendix/azure-scaffold)İdaresi. Ayrıca, izleme ve faturalama amaçlarıyla kaynakları düzenlemek için [Azure etiketlerini](../azure-resource-manager/management/tag-resources.md) de kullanabilirsiniz.
 
-Azure Enterprise Portal içinde DevTest aboneliğini etkinleştirmek **Önerilen ikinci uygulamadır** . Bir kuruluşun, genellikle bir Azure Kurumsal aboneliğinde bulunmayan istemci işletim sistemlerini çalıştırmasına izin verir. Daha sonra, yalnızca işlem için ödeme yaptığınız ve lisanslama hakkında endişelenmeyin, kurumsal yazılımı kullanın. Microsoft SQL Server gibi, IaaS içindeki galeri görüntüleri de dahil olmak üzere, belirlenen hizmetlerin faturalandırmasını yalnızca tüketimine göre sağlar. Azure DevTest aboneliğine ilişkin ayrıntılar [burada](https://azure.microsoft.com/offers/ms-azr-0148p/) kurumsal anlaşma (EA) müşterileri Için ve kullandıkça öde müşterileri için [burada bulunabilir](https://azure.microsoft.com/offers/ms-azr-0023p/) .
+Azure Enterprise Portal içinde DevTest aboneliğini etkinleştirmek **Önerilen ikinci uygulamadır** . Bir kuruluşun, genellikle bir Azure Kurumsal aboneliğinde bulunmayan istemci işletim sistemlerini çalıştırmasına izin verir. Daha sonra, yalnızca işlem için ödeme yapacağınız ve lisanslama hakkında endişelenmeniz gereken kurumsal yazılımları kullanın. Microsoft SQL Server gibi, IaaS içindeki galeri görüntüleri de dahil olmak üzere, belirlenen hizmetlerin faturalandırmasını yalnızca tüketimine göre sağlar. Azure DevTest aboneliğine ilişkin ayrıntılar [burada](https://azure.microsoft.com/offers/ms-azr-0148p/) kurumsal anlaşma (EA) müşterileri Için ve kullandıkça öde müşterileri için [burada bulunabilir](https://azure.microsoft.com/offers/ms-azr-0023p/) .
 
 ![Aboneliklerle kaynak hizalaması](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 

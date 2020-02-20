@@ -7,18 +7,18 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 1be97f9754733561111cedcf95fe237b7788583e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b929dd8979ecf587872092af2fa44e5ae03626d1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122577"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472494"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Öğretici: ML deneysel kodu üretim koduna Dönüştür
 
 Machine Learning projesi, gerçek veri kümelerini kullanarak Jupyter Notebook gibi çevik araçlarla deneme gerektirir. Model üretime hazırsa, model kodu bir üretim kodu deposuna yerleştirilmelidir. Bazı durumlarda, model kodu, üretim kodu deposuna yerleştirilecek Python betiklerine dönüştürülmelidir. Bu öğreticide, deneme kodunu Python betiklerine aktarma hakkında önerilen bir yaklaşım ele alınmaktadır.  
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Gereksiz kodu temizle
@@ -408,5 +408,5 @@ Değerlendirmeden kurtulmak için, DevOps işlem hattı değişkeni `RUN_EVALUAT
 Bir deneyden üretim koduna nasıl dönüştüreceğiniz artık, Web Hizmetleri olarak dağıtılan deneme çalıştırmalarını ve modellerini izlemeyi öğrenmek için aşağıdaki bağlantıları kullanın:
 
 > [!div class="nextstepaction"]
-> [Ml Web hizmeti uç noktalarından verileri izlemek ve toplamak](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insight)
+> [Ml Web hizmeti uç noktalarından verileri izlemek ve toplamak](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
 > [Azure ML deneme çalıştırmaları ve ölçümleri izleyin](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)

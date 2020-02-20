@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 32865b84de2dc1c1f8a3fd6beca80a2659f1e3d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74c8c7dfc2beda2d242bc21e12293dc6f3c1cffe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370774"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470845"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>SLES azure'daki SUSE Linux Enterprise Server üzerinde Pacemaker ayarlama
 
@@ -41,7 +41,7 @@ Bir ek sanal makineye yatırım yapmak istemiyorsanız, Azure çit Aracısı 'n�
 ![SLES genel SLES üzerinde pacemaker](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Düğümleri ve SBD cihazları planlama ve dağıtma Linux Pacemaker kümelenmiş, söz konusu sanal makineler arasında yönlendirme ve SBD onları barındıran VM üzerinden geçmiyor tam küme yapılandırması genel güvenilirliği için gereklidir herhangi bir cihaza ister [nva'ları](https://azure.microsoft.com/solutions/network-appliances/). Aksi takdirde, sorunları ve NVA ile bakım olayları kararlılık ve güvenilirlik genel küme yapılandırması üzerinde olumsuz bir etkiye sahip olabilir. Bu tür engelleri önlemek için, Linux Paceoluşturucu kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, NVA 'lar veya [Kullanıcı tanımlı yönlendirme kurallarının](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , NVA 'lar ve benzer cihazlar aracılığıyla trafiği yönlendiren yönlendirme kurallarını tanımlamayın. 
+> Linux pacemaker kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, tüm küme yapılandırmasının genel güvenilirliği, dahil edilen VM 'Ler ve SBD cihazlarını barındıran VM 'Ler arasındaki yönlendirmenin [NVA 'lar](https://azure.microsoft.com/solutions/network-appliances/)gibi başka herhangi bir cihazdan geçirilmediğinden emin olmak için gereklidir. Aksi takdirde, sorunları ve NVA ile bakım olayları kararlılık ve güvenilirlik genel küme yapılandırması üzerinde olumsuz bir etkiye sahip olabilir. Bu tür engelleri önlemek için, Linux Paceoluşturucu kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, NVA 'lar veya [Kullanıcı tanımlı yönlendirme kurallarının](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , NVA 'lar ve benzer cihazlar aracılığıyla trafiği yönlendiren yönlendirme kurallarını tanımlamayın. 
 >
 
 ## <a name="sbd-fencing"></a>SBD çitlemek
@@ -54,12 +54,15 @@ SBD cihaz için sınır kullanmak istiyorsanız aşağıdaki adımları izleyin.
 
 1. Yeni SLES 12 SP1 ya da daha yüksek sanal makineleri dağıtmak ve bunları ssh bağlanın. Makinelerin büyük olması gerekmez. Bir sanal makine boyutu Standard_E2s_v3 veya Standard_D2s_v3 gibi büyük/küçük harf yeterlidir. Premium depolama işletim sistemi diskini kullandığınızdan emin olun.
 
-Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere**.
+Tüm **iSCSI hedef sanal makinelerinde**aşağıdaki komutları çalıştırın.
 
 1. Güncelleştirme SLES
 
    <pre><code>sudo zypper update
    </code></pre>
+
+   > [!NOTE]
+   > İşletim sistemini yükselttikten veya güncelleştirdikten sonra işletim sistemini yeniden başlatmanız gerekebilir. 
 
 1. Paketleri kaldırın
 
@@ -81,7 +84,7 @@ Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere**.
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>İSCSI hedef sunucuda iSCSI cihazı oluşturma
 
-Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere** iSCSI disklerini, SAP sistemlerini tarafından kullanılan kümeler için oluşturulacak. Aşağıdaki örnekte, SBD cihazlar birden fazla küme için oluşturulur. Bir iSCSI hedef sunucusu birden fazla küme için nasıl kullanacağınız gösterilmektedir. SBD cihazlar, işletim sistemi diskinde yerleştirilir. Yeterli alana sahip olduğunuzdan emin olun.
+SAP sistemleriniz tarafından kullanılan kümeler için Iscsı diskleri oluşturmak üzere tüm **iSCSI hedef sanal makinelerinde** aşağıdaki komutları çalıştırın. Aşağıdaki örnekte, SBD cihazlar birden fazla küme için oluşturulur. Bir iSCSI hedef sunucusu birden fazla küme için nasıl kullanacağınız gösterilmektedir. SBD cihazlar, işletim sistemi diskinde yerleştirilir. Yeterli alana sahip olduğunuzdan emin olun.
 
 **`nfs`** , NFS kümesini tanımlamak için kullanılır. **ascsnw1** , **NW1**'nin ascs kümesini tanımlamak için kullanılır. **dbnw1** , NFS **-0** ve **NFS-1** **' in veritabanı**kümesini tanımlamak için kullanılır, NFS küme düğümlerinin ana bilgisayar adları, **NW1-xscs-0** ve **NW1-xscs-1** , **NW1** ascs küme düğümlerinin ana bilgisayar adları ve **NW1-DB-0** ve **NW1-DB-1** veritabanı kümesi düğümlerinin ana bilgisayar adı. Bunları, Küme düğümlerinizi ana bilgisayar adlarını ve SAP sisteminizin SID ile değiştirin.
 
@@ -175,9 +178,9 @@ o- / ...........................................................................
 
 Son adımda kümeden oluşturulduğu iSCSI cihazı bağlayın.
 Oluşturmak istediğiniz yeni küme düğümlerinde aşağıdaki komutları çalıştırın.
-Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]** - düğüm 1 yalnızca uygulanabilir veya **[2]** - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]**  İSCSI cihazları Bağlan
+1. **[A]** iSCSI cihazlarına bağlanma
 
    İlk olarak iSCSI ve SBD hizmetlerini etkinleştirin.
 
@@ -186,7 +189,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo systemctl enable sbd
    </code></pre>
 
-1. **[1]**  İlk düğümü üzerinde Başlatıcı adını değiştirin
+1. **[1]** ilk düğümde Başlatıcı adını değiştirin
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
@@ -196,7 +199,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-0.local:nfs-0</b>
    </code></pre>
 
-1. **[2]**  İkinci düğümü Başlatıcı adını değiştirin
+1. **[2]** ikinci düğümdeki Başlatıcı adını değiştirin
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
@@ -206,7 +209,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-1.local:nfs-1</b>
    </code></pre>
 
-1. **[A]**  İSCSI Hizmeti yeniden başlatın
+1. **[A]** iSCSI hizmetini yeniden başlatın
 
    Değişikliği uygulamak için iSCSI hizmetini şimdi yeniden Başlat
 
@@ -214,7 +217,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo systemctl restart iscsi
    </code></pre>
 
-   İSCSI cihazları bağlayın. Aşağıdaki örnekte, 10.0.0.17 iSCSI hedef sunucusunun IP adresi ve 3260'ın varsayılan bağlantı noktasıdır. <b>iqn.2006 04.nfs.local:nfs</b> (iscsiadm -m bulma) aşağıdaki ilk komutunu çalıştırdığınızda listelenen hedef adları biridir.
+   İSCSI cihazları bağlayın. Aşağıdaki örnekte, 10.0.0.17 iSCSI hedef sunucusunun IP adresi ve 3260'ın varsayılan bağlantı noktasıdır. <b>IQN. 2006-04. NFS. Local: NFS</b> , aşağıda yer alan ilk komutu çalıştırdığınızda listelenen hedef adlarından biridir (ı adm-d bulma).
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
@@ -268,10 +271,10 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    Her SBD cihaz için üç cihaz kimlikleri Listele komutu. SCSI-3, bu Yukarıdaki örnekteki ile başlayan kimliği kullanılması önerilir
 
    * **/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03**
-   * **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
+   * **/dev/disk/by-id/scsi-360014053fe4dad371a5a4bb69a419a4df**
    * **/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf**
 
-1. **[1]**  SBD cihaz oluşturma
+1. **[1]** SBD cihazı oluşturma
 
    Cihaz kimliği iSCSI cihazların ilk küme düğümüne yeni SBD cihazları oluşturmak için kullanın.
 
@@ -282,7 +285,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo sbd -d <b>/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf</b> -1 60 -4 120 create
    </code></pre>
 
-1. **[A]**  SBD config uyum
+1. **[A]** SBD yapılandırmasını uyarlayın
 
    SBD yapılandırma dosyasını aç
 
@@ -313,9 +316,9 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
 
 ## <a name="cluster-installation"></a>Küme yükleme
 
-Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]** - düğüm 1 yalnızca uygulanabilir veya **[2]** - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]**  Güncelleştirme SLES
+1. **[A] bir** güncelleştirme SLES
 
    <pre><code>sudo zypper update
    </code></pre>
@@ -343,7 +346,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo systemctl --no-pager show | grep DefaultTasksMax
    </code></pre>
 
-   Kirli önbellek boyutunu küçültün. Daha fazla bilgi için [düşük performans SLES 11/12 üzerinde yazma büyük RAM sunucularıyla](https://www.suse.com/support/kb/doc/?id=7010287).
+   Kirli önbellek boyutunu küçültün. Daha fazla bilgi için bkz. [büyük RAM Ile SLES 11/12 sunucularında düşük yazma performansı](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -364,7 +367,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
-1. **[1]**  Ssh erişimi etkinleştir
+1. **[1]** SSH erişimini etkinleştirme
 
    <pre><code>sudo ssh-keygen
    
@@ -376,7 +379,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. **[2]**  Ssh erişimi etkinleştir
+1. **[2]** SSH erişimini etkinleştirme
 
    <pre><code>
    sudo ssh-keygen
@@ -392,13 +395,13 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. **[1]**  Ssh erişimi etkinleştir
+1. **[1]** SSH erişimini etkinleştirme
 
    <pre><code># insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]**  Dilimi yükleme aracıları
+1. **[A]** sınır aracılarını yükler
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
@@ -425,7 +428,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
     sudo zypper in python3-azure-sdk
     </code></pre>
 
-1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
+1. **[A]** kurulum konak adı çözümlemesi
 
    Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
    IP adresi ve aşağıdaki komutlarda bulunan ana bilgisayar adını değiştirin. / Etc/hosts kullanmanın avantajı, kümenizin bir tek hata noktası çok olabilir DNS bağımsız olur.
@@ -441,7 +444,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[1]**  Küme yükleme
+1. **[1]** küme yüklemesi
 
    <pre><code>sudo ha-cluster-init -u
    
@@ -454,7 +457,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-1. **[2]**  Küme düğümü Ekle
+1. **[2]** kümeye düğüm Ekle
 
    <pre><code>sudo ha-cluster-join
    
@@ -464,7 +467,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
    </code></pre>
 
-1. **[A]**  Aynı parolayı hacluster parolasını değiştirme
+1. **[A]** hacluster parolasını aynı parolayla değiştirin
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -519,7 +522,7 @@ STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizme
 
 1. Şuraya gidin: <https://portal.azure.com>
 1. Azure Active Directory dikey penceresini açın  
-   Özellikler bölümüne gidin ve dizin kimliği yazma Bu **Kiracı kimliği**.
+   Özellikler bölümüne gidin ve dizin kimliği yazma Bu, **KIRACı kimliğidir**.
 1. Uygulama kayıtları tıklayın
 1. Yeni kayıt öğesine tıklayın
 1. Bir ad girin, "yalnızca bu kuruluş dizinindeki hesaplar" ı seçin 
@@ -527,12 +530,12 @@ STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizme
    Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
-1. Değeri yazın. Olarak kullanılan **parola** için hizmet sorumlusu
-1. Genel Bakış ' ı seçin. Uygulama Kimliği yazma Kullanıcı adı olarak kullanılır (**oturum açma kimliği** sonraki adımlarda), hizmet sorumlusu
+1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
+1. Genel Bakış ' ı seçin. Uygulama Kimliği yazma Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Sınır aracısı için özel bir rol oluşturun
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
-Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Başlatmak ve durdurmak için hizmet sorumlusu izinleri vermeniz gerekir (serbest bırakın) kümenin tüm sanal makineler. Özel rol zaten oluşturmadıysanız, bunu kullanarak oluşturabilirsiniz [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
+Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Başlatmak ve durdurmak için hizmet sorumlusu izinleri vermeniz gerekir (serbest bırakın) kümenin tüm sanal makineler. Zaten özel rolü oluşturmadıysanız, [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) kullanarak oluşturabilirsiniz
 
 Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içeriği için aboneliklerinizi uyum, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 aboneliğinizin kimliği ile değiştirin. İkinci girdi, yalnızca bir aboneliğiniz varsa, ın AssignableScopes içinde kaldırın.
 
@@ -568,11 +571,11 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içe
 1. Ekle rol ataması
 1. "Linux sınır Aracısı rolü" rolü seçin
 1. Yukarıda oluşturduğunuz uygulamanın adını girin
-1. Kaydet’e tıklayın
+1. Kaydet’e tıklayın.
 
 İkinci küme düğümü için yukarıdaki adımları yineleyin.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  STONITH cihazları oluşturun
+### <a name="1-create-the-stonith-devices"></a>**[1]** STONITH cihazlarını oluşturma
 
 Sanal makineler için izinleri düzenleme sonra kümedeki STONITH cihazları yapılandırabilirsiniz.
 
@@ -586,7 +589,7 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="default-pacemaker-configuration-for-sbd"></a>SBD için varsayılan Pacemaker yapılandırma
 
-1. **[1]**  STONITH cihaz kullanımını etkinleştirmek ve sınır gecikme ayarlama
+1. **[1]** bir STONITH cihazının kullanımını etkinleştirme ve çit gecikmesini ayarlama
 
 <pre><code>sudo crm configure property stonith-timeout=144
 sudo crm configure property stonith-enabled=true

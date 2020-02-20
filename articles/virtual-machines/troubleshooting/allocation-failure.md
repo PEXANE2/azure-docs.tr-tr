@@ -1,6 +1,6 @@
 ---
-title: Azure VM oluşan ayırma hatalarını giderme | Microsoft Docs
-description: Oluşturma, yeniden başlatma veya azure'da VM yeniden boyutlandırma karşılaşılan ayırma hatalarını giderme
+title: Azure VM ayırma hatalarında sorun giderme | Microsoft Docs
+description: Azure 'da VM oluşturma, yeniden başlatma veya yeniden boyutlandırma sırasında ayırma hatalarıyla ilgili sorunları giderme
 services: virtual-machines
 documentationcenter: ''
 author: JiangChen79
@@ -12,95 +12,97 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505828"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471899"
 ---
-# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Oluşturma, yeniden başlatma veya azure'da Vm'leri yeniden boyutlandırma karşılaşılan ayırma hatalarını giderme
+# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure 'da VM oluşturma, yeniden başlatma veya yeniden boyutlandırma sırasında oluşan ayırma hatalarıyla ilgili sorunları giderme
 
-Sanal makine (VM) oluşturma, durduruldu (serbest bırakıldı) Vm'leri yeniden başlatma veya VM'yi yeniden boyutlandırma, Microsoft Azure aboneliğinize işlem kaynakları ayırır. Biz sürekli olarak ek altyapı ve her zaman müşteri talebini desteklemek mevcut tüm VM türleri sahibiz emin olmak için Özellikler'de yatırım yapıyor. Ancak, belirli bölgelerde Azure Hizmetleri için talepte eşi görülmemiş büyüme nedeniyle bazen kaynak ayırma hatalarıyla karşılaşabilirsiniz. Bu sorun, oluşturma veya aşağıdaki hata kodu ve şu iletiyle Vm'leri görüntüleme sırada bir bölgede VM'lerin başlatma çalıştığınızda oluşabilir:
+Bir sanal makine (VM) oluşturduğunuzda, yeniden başlatma (serbest bırakıldı) VM 'Leri yeniden başlatın veya bir VM 'yi yeniden boyutlandırdığınızda Microsoft Azure işlem kaynaklarını aboneliğinize ayırır. Her zaman müşteri talebini desteklemek için kullanılabilir tüm VM türlerini kullandığınızdan emin olmak için ek altyapıya ve özelliklere sürekli yatırım yaptık. Bununla birlikte, belirli bölgelerde Azure hizmetleri için isteğe bağlı olarak daha fazla büyüme nedeniyle kaynak ayırma hatalarıyla karşılaşabilirsiniz. Bu sorun, bir bölgede VM 'Leri oluşturmaya veya başlatmaya çalıştığınızda oluşabilir ve VM 'Ler aşağıdaki hata kodunu ve iletisini görüntüler:
 
-**Hata kodu**: AllocationFailed veya ZonalAllocationFailed
+**Hata kodu**: allocationfailed veya ZonalAllocationFailed
 
-**Hata iletisi**: "Ayırma başarısız oldu. Bu bölgede biz istenen VM boyutu için yeterli kapasite yoktur. Https en başarılı ayırma olasılığını artırma hakkında daha fazla okuma:\//aka.ms/allocation-guidance "
+**Hata iletisi**: "ayırma başarısız oldu. Bu bölgedeki istenen VM boyutu için yeterli kapasiteye sahip değilsiniz. Https 'de ayırma başarısı olasılığını artırma hakkında daha fazla bilgi edinin:\//aka.ms/allocation-guidance "
 
-Bu makalede, ortak bir ayırma hatalarının bazı nedenleri açıklanır ve olası çözümler önerir.
+Bu makalede bazı yaygın ayırma hatalarının nedenleri açıklanmakta ve olası düzeltmeler önerilmektedir.
 
-Bu makalede Azure sorunu ele alınmamışsa ziyaret [MSDN ve Stack Overflow Azure forumları](https://azure.microsoft.com/support/forums/). Bu Forum veya çok sorun gönderebilir @AzureSupport Twitter'da. Ayrıca, Azure destek isteği Get destek seçerek dosya [Azure Destek](https://azure.microsoft.com/support/options/) site.
+Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow Azure forumlarını](https://azure.microsoft.com/support/forums/)ziyaret edin. Sorununuzu bu forumlarda veya Twitter üzerinde @AzureSupport gönderebilirsiniz. Ayrıca, [Azure](https://azure.microsoft.com/support/options/) destek sitesinde destek al ' ı seçerek bir Azure destek isteği oluşturabilirsiniz.
 
-Dağıtım sorunlarla aşağıdaki tabloda kılavuz geçici bir çözüm olarak dikkate alınması gereken müşteriler, tercih edilen sanal makine türünüzü tercih edilen Bölgenizde kullanılabilir oluncaya kadar biz önerin. 
+Tercih ettiğiniz sanal makine türü tercih ettiğiniz bölgede kullanılabilir olana kadar, dağıtım sorunlarıyla karşılaşan müşterilerimiz için aşağıdaki tabloda yer alan ve geçici bir geçici çözüm olarak kılavuzluk yapmayı öneririz. 
 
-Talebinize en iyi şekilde eşleşen bir senaryo belirleme ve sonra başarılı ayırma olasılığını artırmak için karşılık gelen önerilen geçici çözüm kullanılarak ayırma isteği yeniden deneyin. Alternatif olarak, her zaman daha sonra yeniden deneyebilir. Yeterli kaynaklar, küme, bölge veya isteğiniz uyum sağlamak için bölge boşaltılmış olmasıdır. 
+Büyük/küçük harflere en iyi eşleşen senaryoyu belirleyip, ayırma başarısını artırmak için ilgili önerilen geçici çözümü kullanarak ayırma isteğini yeniden deneyin. Alternatif olarak, daha sonra her zaman yeniden deneyebilirsiniz. Bunun nedeni, isteğinizi karşılamak için kümede, bölgede veya bölgede yeterli kaynak bırakılmış olabilir. 
 
 
 ## <a name="resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Bir veya birden çok VM'yi mevcut kullanılabilirlik kümesine yeniden boyutlandırma
 
 ### <a name="cause"></a>Nedeni
 
-VM'yi yeniden boyutlandırma veya mevcut bir kullanılabilirlik kümesi için bir VM konumundaki mevcut kullanılabilirlik barındıran özgün küme denenecek eklemek için bir istek ayarlayın. İstenen VM boyutu, küme tarafından desteklenir, ancak küme şu anda yeterli kapasiteye sahip olmayabilir. 
+Bir VM 'yi yeniden boyutlandırma veya var olan bir kullanılabilirlik kümesine VM ekleme isteği, var olan kullanılabilirlik kümesini barındıran orijinal kümede denenmelidir. İstenen VM boyutu küme tarafından destekleniyor, ancak küme şu anda yeterli kapasiteye sahip olmayabilir. 
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
-VM'yi farklı bir kullanılabilirlik kümesinin parçası olabilir (aynı bölgede) kümesi farklı bir kullanılabilirlik bir VM oluşturun. Bu yeni VM, sonra aynı sanal ağa eklenebilir.
+VM farklı bir kullanılabilirlik kümesinin parçası olabilir, farklı bir kullanılabilirlik kümesinde (aynı bölgede) bir VM oluşturun. Bu yeni VM daha sonra aynı sanal ağa eklenebilir.
 
-Durdurun (serbest bırakın) tüm VM'lerin aynı kullanılabilirlik kümesi ve ardından her biri yeniden başlatın.
-Durdurmak için: Kaynak Gruplar > [kaynak grubunuzun] > kaynak > [kullanılabilirlik kümesi] > sanal makineler > [sanal makinenizi] > Durdur.
-Tüm VM'lerin durdurduktan sonra ilk VM seçin ve ardından Başlat'a tıklayın.
-Bu adım, yeni bir ayırma girişimi çalıştırılır ve yeni bir küme, yeterli kapasiteye sahip seçilebileceğini emin olur.
+Aynı Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun (serbest bırakın) ve ardından her birini yeniden başlatın.
+Durdurmak için: kaynak grupları > [kaynak grubunuz] > Kaynaklar > [kullanılabilirlik kümesi] > sanal makineler > [sanal makineniz] > Durdur ' a tıklayın.
+Tüm VM 'Leri durdurduktan sonra, ilk VM 'yi seçin ve ardından Başlat ' a tıklayın.
+Bu adım, yeni bir ayırma denemesinin çalıştırılmasının ve yeterli kapasiteye sahip yeni bir kümenin seçilebileceğinden emin olmanızı sağlar.
 
 ## <a name="restart-partially-stopped-deallocated-vms"></a>Kısmen durdurulmuş (serbest bırakılmış) VM'leri yeniden başlatma
 
 ### <a name="cause"></a>Nedeni
 
-Kısmi ayırmayı kaldırma (serbest bırakıldı) bir veya daha fazla durduruldu, ancak tüm, Vm'leri bir kullanılabilirlik kümesi anlamına gelir. Bir VM'yi serbest bırakın, ilişkili kaynakları serbest bırakılır. Kısmen serbest kullanılabilirlik kümesindeki Vm'leri yeniden başlatma var olan bir kullanılabilirlik kümesine Vm'leri ekleme aynıdır. Bu nedenle, ayırma isteğinin özgün kümesine mevcut bir kullanılabilirlik kümesi konakları yeterli kapasiteye sahip olmayabilir çalıştı gerekir.
+Kısmi olarak ayırmayı kaldırma, bir kullanılabilirlik kümesindeki VM 'Leri bir veya daha fazla değil, bir veya daha fazla sanal makineyi durdurduğunuzun anlamına gelir. Bir VM 'yi serbest bırakırsanız, ilişkili kaynaklar serbest bırakılır. Bir kısmen serbest bırakılmış kullanılabilirlik kümesindeki VM 'Lerin yeniden başlatılması, mevcut bir kullanılabilirlik kümesine VM ekleme ile aynıdır. Bu nedenle, ayırma isteğinin yeterli kapasiteye sahip olmayan mevcut kullanılabilirlik kümesini barındıran orijinal kümede denenmelidir.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
-Durdurun (serbest bırakın) tüm VM'lerin aynı kullanılabilirlik kümesi ve ardından her biri yeniden başlatın.
-Durdurmak için: Kaynak Gruplar > [kaynak grubunuzun] > kaynak > [kullanılabilirlik kümesi] > sanal makineler > [sanal makinenizi] > Durdur.
-Tüm VM'lerin durdurduktan sonra ilk VM seçin ve ardından Başlat'a tıklayın.
-Bu yeni bir ayırma girişimi çalıştırılır ve yeni bir küme, yeterli kapasiteye sahip seçilebileceğini emin olmanızı sağlar.
+Aynı Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun (serbest bırakın) ve ardından her birini yeniden başlatın.
+Durdurmak için: kaynak grupları > [kaynak grubunuz] > Kaynaklar > [kullanılabilirlik kümesi] > sanal makineler > [sanal makineniz] > Durdur ' a tıklayın.
+Tüm VM 'Leri durdurduktan sonra, ilk VM 'yi seçin ve ardından Başlat ' a tıklayın.
+Bu, yeni bir ayırma denemesinin çalıştırılmasının ve yeterli kapasiteye sahip yeni bir kümenin seçilebileceğinden emin olur.
 
 ## <a name="restart-fully-stopped-deallocated-vms"></a>Tamamen durdurulmuş (serbest bırakılmış) VM'leri yeniden başlatma
 
 ### <a name="cause"></a>Nedeni
 
-Durduruldu tam ayırmayı kaldırma anlamına gelir (bir kullanılabilirlik kümesindeki tüm sanal makineler serbest bırakıldı). Bu Vm'leri yeniden başlatma ayırma isteği bölgeyi veya bölgenin içinde istenen boyut destekleyen tüm kümeleri hedefleyecektir. Bu makaledeki öneriler başına ayırma isteğiniz değiştirin ve başarılı ayırma olasılığını artırmak için isteği yeniden deneyin. 
+Tam kaldırma, bir kullanılabilirlik kümesindeki tüm VM 'Leri durdurduğunuzun (serbest bırakıldığı) anlamına gelir. Bu VM 'Leri yeniden başlatmaya yönelik ayırma isteği bölge veya bölge içinde istenen boyutu destekleyen tüm kümeleri hedefleyecektir. Bu makaledeki öneriler uyarınca ayırma isteğinizi değiştirin ve başarılı ayırma olasılığını artırmak için isteği yeniden deneyin. 
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
-Eski VM serisi veya boyutları, Dv1, DSv1, Av1, D15v2 veya DS15v2, gibi kullanırsanız yeni sürümlere taşıma göz önünde bulundurun. Bu önerileri belirli VM boyutları için bkz.
-Başka bir VM boyutu kullanma seçeneğiniz yoksa, aynı coğrafyadaki başka bir bölgeye dağıtmayı deneyin. Daha fazla bilgi için her bir bölgede kullanılabilen VM boyutları https://aka.ms/azure-regions
+Eski VM serisini veya Dv1, DSv1, AV1, D15v2 veya DS15v2 gibi boyutları kullanırsanız, daha yeni sürümlere geçmeyi göz önünde bulundurun. Belirli VM boyutları için bu önerilere bakın.
+Farklı bir VM boyutu kullanma seçeneğiniz yoksa, aynı coğrafi bölgede farklı bir bölgeye dağıtım yapmayı deneyin. https://aka.ms/azure-regions adresindeki her bölgede kullanılabilir VM boyutları hakkında daha fazla bilgi için
 
-Kullanılabilirlik alanları kullanıyorsanız, istenen VM boyutu için mevcut kapasiteyi olabilecek bölgede başka bir bölgeye deneyin.
+Kullanılabilirlik alanları kullanıyorsanız, bölge dahilinde istenen VM boyutu için kullanılabilir kapasiteye sahip olabilecek başka bir bölge deneyin.
 
-Ayırma isteğiniz büyükse (500'den fazla çekirdek), kılavuz aşağıdaki bölümlerde daha küçük dağıtımlar isteğe bölmeniz bakın.
+Ayırma isteğiniz büyükse (500 çekirdekten fazla), isteği daha küçük dağıtımlara bölmek için aşağıdaki bölümlerdeki kılavuza bakın.
 
-## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Eski sanal makine boyutları (Av1, Dv1, DSv1, D15v2, DS15v2, vb.) için ayırma hataları
+[VM 'yi yeniden dağıtmaya](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)çalışın. VM 'nin yeniden dağıtılması, VM 'yi bölge içindeki yeni bir kümeye ayırır.
 
-Biz, size Azure altyapı genişlettiğinizde, en son sanal makine türlerini desteklemek için tasarlanan yeni nesil donanımdan dağıtın. Bazı eski serisi VM'ler son nesil altyapımız üzerinde çalıştırmayın. Bu nedenle, müşterilerin bazen bu eski Sku'larda ayırma hatalarıyla karşılaşabilirsiniz. Bu sorunu önlemek için aşağıdaki önerileri başına eşdeğer yeni vm'lere taşıma dikkate alınması gereken eski serisi sanal makineler kullanan müşteriler öneririz: Bu VM'ler, daha iyi fiyat ve performans avantajlarından yararlanmanıza olanak tanıyacak ve en son donanım için iyileştirilmiştir. 
+## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Eski VM boyutları için ayırma başarısızlığı (AV1, Dv1, DSv1, D15v2, DS15v2, vb.)
 
-|Eski VM serisi/boyutu|Önerilen yeni VM serisi/boyut|Daha fazla bilgi|
+Azure altyapısını genişlettiğimiz gibi, en son sanal makine türlerini desteklemek için tasarlanan daha yeni nesil donanımlar dağıyoruz. Eski serisi sanal makinelerin bazıları en son nesil altyapımız üzerinde çalışmaz. Bu nedenle, müşteriler zaman zaman bu eski SKU 'Lar için ayırma hatalarıyla karşılaşabilir. Bu sorundan kaçınmak için, eski serisi sanal makineleri kullanan müşterilerin aşağıdaki önerilere göre eşdeğer yeni VM 'lere geçmeyi düşünmesi önerilir: Bu VM 'Ler en son donanımlar için iyileştirilmiştir ve daha iyi bir avantaj sağlar Fiyatlandırma ve performans. 
+
+|Eski VM-seri/boyut|Önerilen daha yeni VM-Serisi/boyutu|Daha fazla bilgi|
 |----------------------|----------------------------|--------------------|
-|Av1 serisi|[Av2 serisi](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 veya DSv1 serisi (D1 D5 için)|[Dv3 veya DSv3 serisi](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 veya DSv1 serisi (D11-D14)|[Ev3 veya ESv3 serisi](../windows/sizes-memory.md#ev3-series)|
-|D15v2 veya DS15v2|Büyük VM boyutları yararlanabilmek theResource Manager dağıtım modelini kullanıyorsanız D16v3/DS16v3 veya D32v3/DS32v3 taşımayı düşünün. Bu, en yeni nesil donanımlarda çalıştırmak için tasarlanmıştır. Sanal makine Örneğinize tek bir müşteriye özel donanımla yalıtılmıştır emin olmak için Resource Manager dağıtım modelini kullanıyorsanız, en yeni nesil donanımlarda çalıştırmak için tasarlanmış yeni yalıtılmış VM boyutları, E64i_v3 veya E64is_v3, geçmeyi göz önünde bulundurabilirsiniz. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+|AV1 serisi|[AV2 serisi](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 veya DSv1 serisi (D1 to D5)|[Dv3 veya DSv3 serisi](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 veya DSv1 serisi (D11 to D14)|[Ev3 veya ESv3 serisi](../windows/sizes-memory.md#ev3-series)|
+|D15v2 veya DS15v2|Daha büyük VM boyutlarının avantajlarından yararlanmak için Teresource Manager dağıtım modelini kullanıyorsanız, D16v3/DS16v3 veya D32v3/DS32v3 ' a geçmeyi düşünün. Bunlar, en son nesil donanımda çalışacak şekilde tasarlanmıştır. VM örneğinizin tek bir müşteriye ayrılmış donanıma yalıtılmış olduğundan emin olmak için Kaynak Yöneticisi dağıtım modelini kullanıyorsanız, en son nesil donanımda çalışacak şekilde tasarlanan, E64i_v3 veya E64is_v3 yeni yalıtılmış VM boyutlarına geçmeyi göz önünde bulundurun. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
-## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Ayırma hatalarının büyük dağıtımlarda (500'den fazla çekirdek)
+## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Büyük dağıtımlar için ayırma başarısızlığı (500 taneden fazla çekirdek)
 
-İstenen VM boyutu örnek sayısını azaltın ve ardından dağıtım işlemi yeniden deneyin. Ayrıca, daha büyük dağıtımlar için değerlendirmek istediğiniz [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Sanal makine örneği sayısını otomatik olarak artırabilir veya azaltabilirsiniz içinde tanımlanmış bir zamanlamaya veya talebe yanıt olarak ve dağıtımlar arasında birden fazla küme yayılıyor olabilir çünkü büyük bir başarılı ayırma olasılığını sahipsiniz. 
+İstenen VM boyutu örneklerinin sayısını azaltın ve dağıtım işlemini yeniden deneyin. Ayrıca, daha büyük dağıtımlar için [Azure sanal makine ölçek kümelerini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)değerlendirmek isteyebilirsiniz. Sanal makine örneklerinin sayısı isteğe bağlı olarak veya tanımlı bir zamanlamaya göre otomatik olarak artabilir veya azalabilir ve dağıtımlar birden fazla kümeye yayılabilecek olduğundan, başarılı bir ayırma şansınız olur. 
 
 ## <a name="background-information"></a>Arka plan bilgileri
-### <a name="how-allocation-works"></a>Ayırma nasıl çalışır?
-Azure veri merkezlerindeki sunucular kümelere bölünmüştür. Normalde, birden fazla kümede bir ayırma isteğinde bulunulur, ancak ayırma isteğindeki belirli kısıtlamalar, Azure platformunu yalnızca bir kümede istekte bulunmaya zorlar. Bu makalede, bu "bir kümeye sabitlenebilir."olarak diyoruz Aşağıdaki diyagramda 1 birden fazla kümede denenir normal bir ayırma durumunu gösterir. Diyagram 2 ayırma durumunu gösterir, varolan bir bulut hizmeti CS_1 veya kullanılabilirlik kümesini barındırıldığı olduğu için kümeye 2'ye sabitlenmiş.
-![Ayırma diyagramı](./media/virtual-machines-common-allocation-failure/Allocation1.png)
+### <a name="how-allocation-works"></a>Ayırma nasıl kullanılır?
+Azure veri merkezlerindeki sunucular kümelere bölünmüştür. Normalde, birden fazla kümede bir ayırma isteğinde bulunulur, ancak ayırma isteğindeki belirli kısıtlamalar, Azure platformunu yalnızca bir kümede istekte bulunmaya zorlar. Bu makalede, "bir kümeye sabitlenmiş" olarak başvuracağız. Aşağıdaki şekil 1 ' de, birden çok kümede denenen normal ayırmanın durumu gösterilmektedir. Diyagram 2 ' de, var olan bulut hizmeti CS_1 veya kullanılabilirlik kümesinin barındırıldığı yerde, küme 2 ' ye sabitlenmiş bir ayırmanın durumu gösterilmektedir.
+![ayırma diyagramı](./media/virtual-machines-common-allocation-failure/Allocation1.png)
 
-### <a name="why-allocation-failures-happen"></a>Ayırma hataları neden olması
-Ayırma isteği için bir küme sabitlenmiş olduğunda daha yüksek kullanılabilir bir kaynak havuzu daha küçük olduğundan ücretsiz kaynakları bulmak başarısız olan kaybedilebilir. Küme kaynakları serbest bırakmak olsa bile, ayrıca, bir kümeye, ayırma isteğinin sabitlenmiş ancak istediğiniz kaynak türünü, küme tarafından desteklenmiyor, isteğiniz başarısız olur. Aşağıdaki diyagram 3'te yalnızca aday küme kaynakları serbest bırakmak olmadığından burada sabitlenmiş bir ayırma başarısız durum gösterilir. Diyagram 4 yalnızca aday küme istenen VM boyutu desteklemediği için küme ücretsiz kaynaklara sahip olsa da burada bir Sabitlenmiş ayırma başarısız durumda gösterir.
+### <a name="why-allocation-failures-happen"></a>Ayırma hatalarının nedeni
+Bir ayırma isteği bir kümeye sabitlendiğinde, kullanılabilir kaynak havuzu daha küçük olduğundan, ücretsiz kaynakları bulmasının daha büyük bir olasılığı vardır. Ayrıca, ayırma isteğiniz bir kümeye sabitlenir ancak istediğiniz kaynak türü bu küme tarafından desteklenmiyorsa, kümede boş kaynaklar olsa bile isteğiniz başarısız olur. Aşağıdaki diyagram 3, tek aday kümenin ücretsiz kaynakları olmadığından, sabitlenmiş bir ayırmanın başarısız olduğu durumu gösterir. Diyagram 4 ' te, küme boş kaynaklara sahip olsa bile, tek aday kümesi istenen VM boyutunu desteklemediğinden, sabitlenmiş bir ayırmanın başarısız olduğu durum gösterilmektedir.
 
 ![Sabitlenmiş ayırma hatası](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 

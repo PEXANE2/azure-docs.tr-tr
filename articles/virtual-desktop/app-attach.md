@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 5db60160540fc59465e13bd2e68680f49ee0aa2b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367620"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470896"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -185,7 +185,7 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
 
 1. Aşama
-2. Kaydet
+2. Kaydolma
 3. Kaydını silmek
 4. Gerçekleştirilen
 
@@ -407,7 +407,7 @@ Lisans dosyalarını yüklemek için, WMI Köprüsü sağlayıcısında MDM_Ente
 
 Lisansları çevrimdışı kullanım için ayarlama: 
 
-1. Iş için Microsoft Store uygulama paketini, lisansları ve gerekli çerçeveleri indirin. Kodlanmış ve kodlanmamış lisans dosyalarının her ikisi de gereklidir. Ayrıntılı indirme yönergeleri [burada](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)bulunabilir.
+1. Iş için Microsoft Store uygulama paketini, lisansları ve gerekli çerçeveleri indirin. Kodlanmış ve kodlanmamış lisans dosyalarının her ikisi de gereklidir. Ayrıntılı indirme yönergeleri [burada](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)bulunabilir.
 2. 3\. adım için komut dosyasında aşağıdaki değişkenleri güncelleştirin:
       1. `$contentID`, kodlanmamış lisans dosyasından (. xml) ContentID değeridir. Lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
       2. `$licenseBlob`, kodlanmış lisans dosyasında (. bin), lisans blobu için tüm dizedir. Kodlanmış lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz. 

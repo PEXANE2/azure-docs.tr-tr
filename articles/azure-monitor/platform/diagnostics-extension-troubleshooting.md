@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425094"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467922"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
 Bu makalede Azure Tanılama kullanımı ile ilgili sorun giderme bilgileri açıklanmaktadır. Azure Tanılama hakkında daha fazla bilgi için bkz. [Azure tanılama genel bakış](diagnostics-extension-overview.md).
@@ -297,5 +297,5 @@ Sanal makinelerdeki Portal deneyimi, varsayılan olarak belirli performans saya�
 
 - Depolama alanındaki verilerin Ingilizce 'de sayaç adları olup olmadığı. Sayaç adları Ingilizce değilse, Portal ölçüm grafiği bunu tanıyamaz. **Risk azaltma**: makinenin dilini sistem hesapları için İngilizce olarak değiştirin. Bunu yapmak için, **yönetim** > **kopya ayarları** > **Denetim Masası** > **bölge** ' yi seçin. Ardından, özel dilin sistem hesabına uygulanmaması için **hoş geldiniz ekranının ve sistem hesaplarının** seçimini kaldırın.
 
-- Performans sayacı adlarında joker karakterler (\*) kullanıyorsanız, Portal, performans sayaçları Azure depolama havuzuna gönderildiğinde yapılandırılan ve toplanan sayacı ilişkilendiremez. **Risk azaltma**: joker karakter ve portalın (\*) genişletmesine sahip olduğunuzdan emin olmak için, performans Sayaçlarınızı ["Azure izleyici" havuzuna](diagnostics-extension-schema.md#diagnostics-extension-111)yönlendirin.
+- Performans sayacı adlarında joker karakterler (\*) kullanıyorsanız, Portal, performans sayaçları Azure depolama havuzuna gönderildiğinde yapılandırılan ve toplanan sayacı ilişkilendiremez. **Risk azaltma**: joker karakter ve portalın (\*) genişletmesine sahip olduğunuzdan emin olmak için performans Sayaçlarınızı Azure izleyici havuzuna yönlendirin.
 

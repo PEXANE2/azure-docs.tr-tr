@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894270"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471189"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri analiz etme
 
 HDInsight üzerinde Apache Kafka tarafından oluşturulan günlükleri çözümlemek için Azure Izleyici günlüklerini nasıl kullanacağınızı öğrenin.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>Günlük konumu
+
+Kümedeki Apache Kafka Günlükler `/var/log/kafka`konumunda bulunur. Yönetilen diskler kullanılıyorsa, Kafka günlükleri küme yaşam döngüleri arasında kaydedilmez veya kalıcı olmaz. Aşağıdaki tabloda kullanılabilir Günlükler gösterilmektedir.
+
+|Günlük |Açıklama |
+|---|---|
+|Kafka. Out|Kafka işleminin stdout ve stderr 'i. Bu dosyada Kafka başlangıç ve kapalı günlükleri bulacaksınız.|
+|Server. log|Ana Kafka sunucu günlüğü. Tüm Kafka Aracısı günlükleri burada sona erdir.|
+|Controller. log|Aracı denetleyici olarak hareket ettiğini denetleyici günlükleri.|
+|StateChange. log|Aracıların tüm durum değişikliği olayları bu dosyada günlüğe kaydedilir.|
+|Kafka-GC. log|Kafka çöp toplama istatistikleri.|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Apache Kafka için Azure Izleyici günlüklerini etkinleştirme
 

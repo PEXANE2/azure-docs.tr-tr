@@ -1,31 +1,23 @@
 ---
 title: REST API ile Azure kurumsal kayıt faturalama verilerini gözden geçirme | Microsoft Docs
 description: Kurumsal kayıt faturalama bilgilerini gözden geçirmek için Azure REST API’lerinin nasıl kullanılacağını öğrenin.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993472"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199577"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API’leri kullanarak kurumsal kayıt faturalamasını gözden geçirme
 
 Azure Raporlama API’leri, Azure maliyetlerinizi gözden geçirmenize ve yönetmenize yardımcı olur.
 
-Bu makalede, Azure REST API’leri kullanarak ödeme hesapları, bölüm veya kurumsal anlaşma (EA) kayıt hesaplarıyla ilişkili faturalama bilgilerini almayı öğrenirsiniz. 
+Bu makalede, Azure REST API’leri kullanarak ödeme hesapları, bölüm veya kurumsal anlaşma (EA) kayıt hesaplarıyla ilişkili faturalama bilgilerini almayı öğrenirsiniz.
 
 ## <a name="individual-account-billing"></a>Bireysel hesap faturalama
 
@@ -39,7 +31,7 @@ Authorization: Bearer
 
 `{billingAccountId}` parametresi gereklidir ve hesabın kimliğini içermelidir.
 
-Aşağıdaki üstbilgiler gereklidir: 
+Aşağıdaki üstbilgiler gereklidir:
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
@@ -80,9 +72,9 @@ Başarılı yanıt için, hesabın ayrıntılı maliyetlerinin listesini içeren
 
 Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Ödeme hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy).
 
-## <a name="department-billing"></a>Bölüm faturalaması 
+## <a name="department-billing"></a>Bölüm faturalaması
 
-Bir bölümdeki tüm hesaplar için toplanan kullanım ayrıntılarını alın. 
+Bir bölümdeki tüm hesaplar için toplanan kullanım ayrıntılarını alın.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,7 +84,7 @@ Authorization: Bearer
 
 `{departmentId}` parametresi gereklidir ve kayıt hesabında bölümün kimliğini içermelidir.
 
-Aşağıdaki üstbilgiler gereklidir: 
+Aşağıdaki üstbilgiler gereklidir:
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
@@ -148,7 +140,7 @@ Authorization: Bearer
 
 `{enrollmentAccountId}` parametresi gereklidir ve kayıt hesabının kimliğini içermelidir.
 
-Aşağıdaki üstbilgiler gereklidir: 
+Aşağıdaki üstbilgiler gereklidir:
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
@@ -185,11 +177,11 @@ Aşağıdaki örnekte, `1234` kurumsal kaydı için REST API çıktısı göster
     }
   ]
 }
-``` 
+```
 
 Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Kayıt hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy).
 
-## <a name="next-steps"></a>Sonraki adımlar 
+## <a name="next-steps"></a>Sonraki adımlar
 - [Kurumsal raporlamaya genel bakış](https://docs.microsoft.com/azure/billing/billing-enterprise-api) bölümünü gözden geçirin
 - [Kurumsal Faturalama REST API](https://docs.microsoft.com/rest/api/billing/)’yi araştırın   
 - [Azure REST API’yi kullanmaya başlayın](https://docs.microsoft.com/rest/api/azure/)   

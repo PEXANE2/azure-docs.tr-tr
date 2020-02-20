@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462581"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471882"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark
 
@@ -28,7 +28,7 @@ Bu öğreticide şunları yapacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Data Lake Storage 2. hesabı oluşturun.
 
@@ -65,7 +65,7 @@ Bu öğretici, bir ETL işleminin nasıl gerçekleştirileceğini göstermek iç
 
 Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
+1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks** seçeneklerini belirleyin.
 
     ![Azure portal databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -129,7 +129,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
    * `<storage-account-name>` yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-   * `<container-name>` yer tutucusunu, kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
+   * `<container-name>` yer tutucusunu, Depolama hesabınızdaki bir kapsayıcının adıyla değiştirin.
 
 ## <a name="create-a-container-and-mount-it"></a>Kapsayıcı oluşturma ve bağlama
 
@@ -161,20 +161,7 @@ Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacak
     extra_configs = configs)
     ```
 
-18. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `appId`, `password`, `tenant`ve `storage-account-name` yer tutucu değerlerini topladığınız değerlerle değiştirin. `container-name` yer tutucu değerini, önceki adımda kapsayıcıya verdiğiniz adla değiştirin.
-
-Bu değerleri, belirtilen yer tutucuları değiştirmek için kullanın.
-
-   * `appId`ve `password`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
-
-   * `tenant-id` aboneliğinizden.
-
-   * `storage-account-name`, Azure Data Lake Storage 2. depolama hesabınızın adıdır.
-
-   * `container-name` yer tutucusunu, kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
-
-   > [!NOTE]
-   > Bir üretim ayarında parolanızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, parola yerine kod blosonra bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
+18. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `appId`, `password`, `tenant`ve `storage-account-name` yer tutucu değerlerini topladığınız değerlerle değiştirin. `container-name` yer tutucu değerini kapsayıcının adıyla değiştirin.
 
 19. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 

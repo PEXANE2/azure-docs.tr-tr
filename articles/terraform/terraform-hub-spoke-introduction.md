@@ -3,12 +3,12 @@ title: Öğretici-Terrayform kullanarak Azure 'da merkez ve bağlı bileşen kar
 description: Terkform kullanarak Azure 'da karma ağ başvuru mimarisinin tamamının nasıl oluşturulacağını gösteren öğretici
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159024"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472188"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da merkez ve bağlı bileşen karma ağ topolojisi oluşturma
 
@@ -30,7 +30,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 - **Azure aboneliği**: henüz bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terrayform 'U yükleyip yapılandırma**: Azure 'Da VM 'leri ve diğer altyapıyı sağlamak Için [terrayform 'u yükleyip yapılandırın](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terrayform 'U yükleyip yapılandırma**: Azure 'Da VM 'leri ve diğer altyapıyı sağlamak Için [terrayform 'u yükleyip yapılandırın](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Hub ve bağlı bileşen topolojisi mimarisi
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205686"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474246"
 ---
 Oluşturup uygun ölçekte tutarlı bir şekilde Azure sanal makineleri (VM'ler) yönetmek için Otomasyon biçimi genellikle istenildiği gibi. Birçok araca ve tam Azure altyapı dağıtımı ve Yönetimi yaşam döngüsünü otomatikleştirmenize olanak tanıyan çözümler vardır. Bu makalede, Azure'da kullanabileceğiniz altyapı Otomasyonu araçlardan bazıları tanıtılmaktadır. Bu araçlar genellikle aşağıdaki yaklaşımlardan birini sığacak:
 
@@ -48,7 +48,7 @@ Oluşturup uygun ölçekte tutarlı bir şekilde Azure sanal makineleri (VM'ler)
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure Marketi 'Nden Pupevcil hayvan 'ı dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
+- [Azure Marketi 'Nden Pupevcil hayvan 'ı dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -99,8 +99,8 @@ Betikler Azure depolama veya GitHub deposu gibi genel bir konumdan indirilebilir
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure Ile Terrayform 'U yükleyip yapılandırın](../articles/virtual-machines/linux/terraform-install-configure.md).
-- [Terrayform ile bir Azure altyapısı oluşturun](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
+- [Azure Ile Terrayform 'U yükleyip yapılandırın](../articles/terraform/terraform-install-configure.md).
+- [Terrayform ile bir Azure altyapısı oluşturun](../articles/terraform/terraform-create-complete-vm.md).
 
 
 ## <a name="azure-automation"></a>Azure Otomasyonu

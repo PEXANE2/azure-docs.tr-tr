@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 9f18cb79e4c160271fbb3855b1fc6e05589cf854
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 62628b611c7df7aa0515cbb2cc938b02977e510e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899431"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467677"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposunu silme
 
@@ -30,11 +30,7 @@ Bu örnek betik bir Azure Uygulama yapılandırması örneğini siler.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
-
-Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
-
-        az extension add -n appconfig
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -53,7 +49,7 @@ Bu betik, bir uygulama yapılandırma deposunu silmek için aşağıdaki komutla
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig Delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Bir uygulama yapılandırma deposu kaynağını siler. |
+| [az appconfig Delete](/cli/azure/appconfig#az-appconfig-delete) | Bir uygulama yapılandırma deposu kaynağını siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

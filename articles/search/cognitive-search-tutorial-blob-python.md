@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d9ae7f4b7dd8b0f45ae02bd2a90aca78127fd3d3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563284"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472409"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Öğretici: REST ve Python kullanarak bir AI zenginleştirme işlem hattı oluşturma
 
@@ -31,7 +31,7 @@ Bu öğreticide, aşağıdaki görevleri yapmak için Python kullanacaksınız:
 
 Çıktı, Azure Bilişsel Arama 'te tam metin aranabilir bir dizindir. [Eş anlamlılar](search-synonyms.md), [puanlama profilleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [çözümleyiciler](search-analyzers.md) ve [filtreler](search-filters.md) gibi diğer standart özelliklerle dizini geliştirebilirsiniz. 
 
-Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Bu öğreticiyi aynı günde birden çok kez çalıştırmak istiyorsanız, daha fazla çalıştırmaya uyabilmeniz için daha küçük bir dosya kümesi kullanın.
+Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Bu öğreticiyi aynı günde birden çok kez çalıştırmak istiyorsanız, sayacı sıfırlamak için Dizin oluşturucuyu silin.
 
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
@@ -40,7 +40,7 @@ Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı g�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki hizmetler, Araçlar ve veriler bu öğreticide kullanılır. 
 
@@ -270,13 +270,13 @@ Beceri kümesinin grafiksel gösterimi aşağıda gösterilmektedir.
 
 Beceri kümesi temelleri hakkında daha fazla bilgi için bkz. [Beceri kümesini tanımlama](cognitive-search-defining-skillset.md).
 
-## <a name="create-an-index"></a>Dizin oluşturun
+## <a name="create-an-index"></a>Dizin oluşturma
 
 Bu bölümde, aranabilir dizine dahil edilecek alanları belirterek ve her bir alan için arama özniteliklerini ayarlayarak Dizin şemasını tanımlarsınız. Alanlar bir türe sahiptir ve alanın nasıl kullanıldığını (aranabilir, sıralanabilir vb.) belirleyen öznitelikleri alabilir. Bir dizindeki alan adlarının, kaynaktaki alan adlarıyla tamamen aynı olması gerekmez. Sonraki bir adımda, kaynak-hedef alanlarını bağlamak için dizin oluşturucuda alan eşlemeleri eklersiniz. Bu adım için, arama uygulamanızla ilgili alan adlandırma kurallarını kullanarak dizini tanımlayın.
 
 Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
-| alan adları: | id         | content   | languageCode | keyPhrases         | organizations     |
+| alan adları: | id         | içerik   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -456,7 +456,7 @@ Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yaln�
 
 Çıktı, her bir alanın adını, türünü ve özniteliklerini içeren dizin şemasıdır.
 
-`organizations` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `"*"` sorgusu gönderin.
+`"*"` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `organizations` sorgusu gönderin.
 
 ```python
 # Query the index to return the contents of organizations

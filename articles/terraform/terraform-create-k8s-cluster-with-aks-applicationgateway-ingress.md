@@ -3,12 +3,12 @@ title: Öğretici-Azure Kubernetes hizmetinde bir Application Gateway ingcontrol
 description: Azure Kubernetes hizmeti ile bir Kubernetes kümesinin giriş denetleyicisi olarak Application Gateway ile nasıl oluşturulacağını gösteren öğretici
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772864"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472273"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmetinde bir Application Gateway ingcontroller oluşturma
 
@@ -25,15 +25,15 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Bir Kubernetes kümesi oluşturmak için Terkform ve AKS ' i kullanın.
 > * Kubectl aracını kullanarak bir Kubernetes kümesinin kullanılabilirliğini test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure) makalesindeki yönergeleri izleyin
+- **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](terraform-install-configure.md) makalesindeki yönergeleri izleyin
 
 - **Azure Kaynak grubu**: demo için kullanabileceğiniz bir Azure Kaynak grubunuz yoksa, [bir Azure Kaynak grubu oluşturun](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Kaynak grubu adı ve konumunu, bu değerler tanıtımda kullanıldığı için bir yere göz atın.
 
-- **Azure hizmet sorumlusu**: [Azure CLI ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) makalesinin **Hizmet sorumlusunu oluşturma** bölümündeki yönergeleri izleyin. AppID, displayName ve Password değerlerini göz önünde atın.
+- **Azure hizmet sorumlusu**: **Azure CLI ile Azure hizmet sorumlusu oluşturma** makalesinin [Hizmet sorumlusunu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) bölümündeki yönergeleri izleyin. AppID, displayName ve Password değerlerini göz önünde atın.
 
 - **Hizmet sorumlusu nesne kimliğini edinin**: Cloud Shell şu komutu çalıştırın: `az ad sp list --display-name <displayName>`
 

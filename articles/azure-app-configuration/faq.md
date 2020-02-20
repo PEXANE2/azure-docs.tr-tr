@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904104"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467598"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
 Bu makalede, Azure Uygulama yapılandırması hakkında sık sorulan sorular ele alınmaktadır.
 
-## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Uygulama Yapılandırması’nın Azure Key Vault’tan farkı nedir?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Uygulama yapılandırması Azure Key Vault nasıl farklıdır?
 
 Uygulama yapılandırması farklı kullanım örnekleri kümesi için tasarlanmıştır: geliştiricilerin uygulama ayarlarını yönetmesine ve özellik kullanılabilirliğini denetlemesine yardımcı olur. Karmaşık yapılandırma verileriyle çalışan pek çok görevi basitleştirecek.
 
@@ -46,15 +46,15 @@ Key Vault depolanan gizli dizileri referans eden uygulama yapılandırma değerl
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Uygulama yapılandırması verilerimi şifreliyor mu?
 
-Evet. Uygulama yapılandırması, tuttuğu tüm anahtar değerlerini şifreler ve ağ iletişimini şifreler. Anahtar adları, yapılandırma verilerini almak için dizinler olarak kullanılır ve şifrelenmez.
+Evet. Uygulama yapılandırması, tuttuğu tüm anahtar değerlerini şifreler ve ağ iletişimini şifreler. Anahtar adları ve Etiketler, yapılandırma verilerini almak için dizinler olarak kullanılır ve şifrelenmez.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Uygulama yapılandırması Azure App Service ayarlarından farklı midir?
 
 Azure App Service, her bir App Service örneği için uygulama ayarlarını tanımlamanızı sağlar. Bu ayarlar, uygulama koduna ortam değişkenleri olarak geçirilir. İsterseniz bir ayarı belirli bir dağıtım yuvası ile ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [uygulama ayarlarını yapılandırma](/azure/app-service/configure-common#configure-app-settings).
 
-Buna karşılık, Azure Uygulama yapılandırması, App Service çalıştıran uygulamalar dahil olmak üzere birden çok uygulama arasında paylaşılabilen ayarları tanımlamanızı sağlar. Bu ayarlara, .NET ve Java için yapılandırma sağlayıcıları aracılığıyla, Azure SDK aracılığıyla veya doğrudan REST API 'Leri aracılığıyla uygulama kodundan erişilebilir.
+Buna karşılık, Azure Uygulama yapılandırması, birden çok uygulama arasında paylaşılabilen ayarları tanımlamanızı sağlar. Bu, App Service çalıştıran uygulamaları ve diğer platformları da içerir. Uygulama kodunuz, bu ayarlara .NET ve Java için yapılandırma sağlayıcıları aracılığıyla, Azure SDK aracılığıyla veya doğrudan REST API 'Leri aracılığıyla erişir.
 
-Ayrıca, App Service ile uygulama yapılandırması arasında ayarları içeri ve dışarı aktarabilirsiniz. Bu, mevcut App Service ayarlarını temel alarak yeni bir uygulama yapılandırma deposu ayarlamanıza veya yapılandırmayı App Service ayarları temel alan mevcut bir uygulamayla kolayca paylaşmanıza olanak sağlar.
+Ayrıca, App Service ile uygulama yapılandırması arasında ayarları içeri ve dışarı aktarabilirsiniz. Bu özellik, mevcut App Service ayarlarını temel alarak yeni bir uygulama yapılandırma deposu ayarlamanıza olanak sağlar. Ayrıca, yapılandırmayı App Service ayarlarını kullanan mevcut bir uygulamayla paylaşabilirsiniz.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Uygulama yapılandırmasında saklanan anahtarlar ve değerler üzerinde herhangi bir boyut sınırlaması var mı?
 
@@ -62,7 +62,7 @@ Tek bir anahtar-değer öğesi için 10 KB sınırı vardır.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Birden çok ortam için yapılandırma (test, hazırlama, üretim vb.) nasıl depolamalıyım?
 
-Şu anda uygulama yapılandırmasına kimin bir mağaza düzeyinde erişebileceğini kontrol edebilirsiniz. Farklı izinler gerektiren her ortam için ayrı bir depo kullanın. Bu yaklaşım size en iyi güvenlik yalıtımına sahip olmanızı sağlar.
+Şu anda uygulama yapılandırmasına kimin mağaza düzeyinde erişebileceğini kontrol edersiniz. Farklı izinler gerektiren her ortam için ayrı bir depo kullanın. Bu yaklaşım size en iyi güvenlik yalıtımına sahip olmanızı sağlar.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Uygulama yapılandırmasını kullanmanın önerilen yolları nelerdir?
 
@@ -70,7 +70,32 @@ Bkz. [en iyi uygulamalar](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Uygulama yapılandırma maliyeti ne kadar?
 
-Hizmet, genel önizleme sırasında ücretsiz olarak kullanılabilir.
+İki fiyatlandırma katmanı vardır: 1) ücretsiz katman ve 2) standart bir katman.
+
+Standart katmanın sunumundan önce bir mağaza oluşturduysanız, genel kullanıma sunulmadan otomatik olarak ücretsiz katmana taşınır. Standart katmana yükseltmeyi seçebilir veya gereksinimlerinizi karşılıyorsa ücretsiz katmanda kalabilirler.
+
+## <a name="which-app-configuration-tier-should-i-use"></a>Hangi uygulama yapılandırma katmanını kullanmalıyım?
+
+Her iki uygulama yapılandırma katmanı da yapılandırma ayarları, özellik bayrakları, Key Vault başvuruları, temel yönetim işlemleri, ölçümler ve günlükler dahil olmak üzere çekirdek işlevler sunar.
+
+Katman seçme konusunda dikkate alınması gereken noktalar aşağıda verilmiştir.
+
+- **Abonelik başına kaynaklar**: bir kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma deposuyla sınırlıdır. Abonelikler Standart katmanda sınırsız sayıda yapılandırma deposu olabilir.
+- **Kaynak başına depolama**: Ücretsiz katmanda, her yapılandırma deposu 10 MB depolama alanı ile sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama kullanabilir.
+- **Anahtar geçmişi**: uygulama yapılandırması anahtarlar üzerinde yapılan tüm değişikliklerin geçmişini depolar. Ücretsiz katmanda bu geçmiş yedi gün boyunca depolanır. Standart katmanda bu geçmiş 30 gün boyunca depolanır.
+- **Gün başına istek**: ücretsiz katman depoları, günde 1.000 istek ile sınırlıdır. Bir mağaza 1.000 istek ulaştığında, gece yarısı UTC tarihine kadar tüm istekler için 429 HTTP durum kodunu döndürür.
+
+    Standart katman depoları için her gün ilk 200.000 istek günlük ücretine dahil edilir. Ek istekler fazla kullanım olarak faturalandırılır.
+
+- **Hizmet düzeyi sözleşmesi**: Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
+- **Güvenlik özellikleri**: her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure ACTIVE DIRECTORY, RBAC desteği ve yönetilen kimlik aracılığıyla kimlik doğrulaması dahil temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
+- **Maliyet**: Standart katman mağazalarında günlük kullanım ücreti vardır. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
+
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Bir mağazayı ücretsiz katmandan Standart katmana yükseltebilir miyim? Standart katmandaki bir deponun ücretsiz katmana indirgenmesini sağlayabilir miyim?
+
+Ücretsiz katmandan Standart katmana dilediğiniz zaman yükseltebilirsiniz.
+
+Standart katmandan bir depoyu ücretsiz katmana indirgeyemezsiniz. Ücretsiz katmanda yeni bir mağaza oluşturup [Bu depoya yapılandırma verilerini içeri aktarabilirsiniz](howto-import-export-data.md).
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Yeni yayınlar ve uygulama yapılandırmasıyla ilgili diğer bilgiler hakkında duyurular nasıl alabilirim?
 

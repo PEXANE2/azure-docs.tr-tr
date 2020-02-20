@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898723"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468380"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposu oluşturma
 
@@ -23,11 +23,7 @@ Bu örnek betik, yeni bir kaynak grubunda rastgele bir ada sahip yeni bir Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
-
-Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
-
-        az extension add -n appconfig
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -71,8 +67,8 @@ Bu betik, yeni bir kaynak grubu ve bir uygulama yapılandırma deposu oluşturma
 | Komut | Notlar |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az appconfig Create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Bir uygulama yapılandırma deposu kaynağı oluşturur. |
-| [az appconfig kimlik bilgileri listesi](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Uygulama yapılandırma deposu için erişim anahtarlarını listeleyin. |
+| [az appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Bir uygulama yapılandırma deposu kaynağı oluşturur. |
+| [az appconfig kimlik bilgileri listesi](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Uygulama yapılandırma deposu için erişim anahtarlarını listeleyin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

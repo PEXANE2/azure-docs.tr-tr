@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e44a7e71858f028b798720c5505eacbfe8c2332
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188170"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472052"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure Veri Gezgini için Azure DevOps görevi
 
@@ -42,7 +42,7 @@ Git deponuzda aşağıdaki örnek klasörleri (*işlevler*, *ilkeler*, *Tablolar
 ![Klasör oluşturma](media/devops/create-folders.png)
 
 > [!TIP]
-> Kendi iş akışınızı oluştururken, kodunuzu ıdempotent yapmanızı öneririz. Örneğin. Create [-merge tablosunu](/azure/kusto/management/create-table-command#create-merge-table) kullanın. Create [Table](/azure/kusto/management/create-table-command)yerine [. Create](/azure/kusto/management/functions#create-function) [-or-alter](/azure/kusto/management/functions#create-or-alter-function) işlevini kullanın.
+> Kendi iş akışınızı oluştururken, kodunuzu ıdempotent yapmanızı öneririz. Örneğin. Create [-merge tablosunu](/azure/kusto/management/create-table-command#create-merge-table) kullanın. Create [Table](/azure/kusto/management/create-table-command)yerine [. Create](/azure/kusto/management/create-function) [-or-alter](/azure/kusto/management/create-alter-function) işlevini kullanın.
 
 ## <a name="create-a-release-pipeline"></a>Yayın işlem hattı oluşturma
 

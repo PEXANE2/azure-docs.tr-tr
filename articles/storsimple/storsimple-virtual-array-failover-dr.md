@@ -1,5 +1,5 @@
 ---
-title: StorSimple Sanal dizisi olağanüstü durum kurtarma ve cihaz yük devretmesi | Microsoft Docs
+title: StorSimple Sanal dizisi için yük devretme ve olağanüstü durum kurtarma
 description: StorSimple Sanal dizinizi yük devretme hakkında daha fazla bilgi edinin.
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190634"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467224"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure portal aracılığıyla StorSimple Sanal diziniz için olağanüstü durum kurtarma ve cihaz yük devretmesi
 

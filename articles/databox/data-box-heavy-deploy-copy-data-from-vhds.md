@@ -1,6 +1,7 @@
 ---
-title: Öğretici için vhd'lerden veri kopyalamak için yönetilen diskler ile Azure veri kutusu ağır | Microsoft Docs
-description: Veri Vhd'lerden şirket içi VM iş yüklerini, Azure veri kutusu ağır için kopyalama hakkında bilgi edinin
+title: "Öğretici: VHD 'lerden yönetilen disklere kopyalama"
+titleSuffix: Azure Data Box Heavy
+description: VHD 'lerden şirket içi VM iş yüklerinden verileri Azure Data Box Heavy kopyalama hakkında bilgi edinin
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,83 +9,83 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670833"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471338"
 ---
-# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Verileri içeri aktarmak için kullanım veri kutusu ağır yönetilen diskler azure'da
+# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box Heavy kullanma
 
-Bu öğreticide, Azure veri kutusu ağır şirket içi VHD'ler azure'da yönetilen disklere geçirmek için nasıl kullanılacağı açıklanır. Şirket içi Vm'leri Vhd'lerden sayfa blobları veri kutusu ağır kopyalanır ve Azure yönetilen diskler olarak yüklenir. Bu yönetilen diskler can sonra Azure Vm'lerine bağlı olmalıdır.
+Bu öğreticide, şirket içi VHD 'leri Azure 'da yönetilen disklere geçirmek için Azure Data Box Heavy nasıl kullanılacağı açıklanmaktadır. Şirket içi VM 'lerden VHD 'Ler, sayfa Blobları olarak Data Box Heavy kopyalanır ve yönetilen diskler olarak Azure 'a yüklenir. Bu yönetilen diskler daha sonra Azure VM 'lerine iliştirilebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Önkoşulları gözden geçirin
-> * Veri kutusu ağır için Bağlan
-> * Veri kutusu ağır için veri kopyalama
+> * Önkoşulları inceleyin
+> * Data Box Heavy’ye bağlanma
+> * Data Box Heavy’ye veri kopyalama
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. Tamamladınız [Öğreticisi: Azure veri kutusu ağır kümesi](data-box-heavy-deploy-set-up.md).
-2. Aldığınız, veri kutusu yoğun ve sipariş durumu Portalı'nda **teslim edildi**.
-3. Yüksek hızlı bir ağa bağlı olursunuz. Hızlı kopya hızları için iki 40 GbE bağlantılar (düğüm başına bir adet) paralel olarak yararlanılabilir. 40 GbE bağlantı kullanılabilir değilse, en az iki 10 GbE bağlantılar (düğüm başına bir tane) sahip olmasını öneririz. 
-4. Gözden geçirdiğimize göre:
+1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlama](data-box-heavy-deploy-set-up.md).
+2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
+3. Yüksek hızlı bir ağa bağlanırsınız. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
+4. Şunu gözden geçirdiniz:
 
-    - Desteklenen [yönetilen disk boyutları Azure nesne boyutu sınırları](data-box-heavy-limits.md#azure-object-size-limits).
-    - [Azure tanıtımını yönetilen diskler](/azure/virtual-machines/windows/managed-disks-overview). 
+    - [Azure nesne boyutu sınırları 'nda desteklenen yönetilen disk boyutları](data-box-heavy-limits.md#azure-object-size-limits).
+    - [Azure yönetilen disklere giriş](/azure/virtual-machines/windows/managed-disks-overview). 
 
-## <a name="connect-to-data-box-heavy"></a>Veri kutusu ağır için Bağlan
+## <a name="connect-to-data-box-heavy"></a>Data Box Heavy’ye bağlanma
 
-Belirtilen kaynak gruplarında bağlı olarak, veri kutusu ağır bir paylaşımı için düğüm başına her bir ilişkili kaynak grubu oluşturur. Örneğin, varsa `mydbmdrg1` ve `mydbmdrg2` olduğunda oluşturulan sipariş verme, aşağıdaki paylaşımları oluşturulur:
+Data Box Heavy, belirtilen kaynak gruplarına göre, düğüm başına her bir ilişkili kaynak grubu için bir paylaşma oluşturur. Örneğin, sipariş yerleştirilirken `mydbmdrg1` ve `mydbmdrg2` oluşturulduysa aşağıdaki paylaşımlar oluşturulur:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-İçinde her paylaşımı, depolama hesabınızdaki kapsayıcılar, karşılık gelen aşağıdaki üç klasör oluşturulur.
+Her paylaşımda, Depolama hesabınızdaki kapsayıcılara karşılık gelen aşağıdaki üç klasör oluşturulur.
 
 - Premium SSD
 - Standart HDD
 - Standart SSD
 
-Aşağıdaki tabloda, UNC yollarını paylaşımları, veri kutusu yoğun gösterilmektedir.
+Aşağıdaki tabloda Data Box Heavy paylaşımların UNC yolları gösterilmektedir.
  
-|        Bağlantı protokolü           |             Paylaşımının UNC yolu                                               |
+|        Bağlantı Protokolü           |             Paylaşımın UNC yolu                                               |
 |-------------------|--------------------------------------------------------------------------------|
 | SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
 | NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
 
-Olup, SMB veya NFS veri kutusu ağır paylaşımlarına bağlanmak için kullandığınıza bağlı olarak, bağlanma adımları farklıdır.
+Data Box Heavy paylaşımlarına bağlanmak için SMB veya NFS kullanıp kullanmayacağınızı temel alarak, bağlanma adımları farklıdır.
 
 > [!NOTE]
-> - REST bağlanmak için bu özellik desteklenmiyor.
-> - Veri kutusu ağır'ın ikinci düğüme bağlanmak connect yönergelerini yineleyin.
+> - REST aracılığıyla bağlanma bu özellik için desteklenmiyor.
+> - Data Box Heavy ikinci düğümüne bağlanmak için bağlanma yönergelerini tekrarlayın.
 
-### <a name="connect-to-data-box-heavy-via-smb"></a>Veri kutusu ağır SMB üzerinden bağlanma
+### <a name="connect-to-data-box-heavy-via-smb"></a>SMB üzerinden Data Box Heavy bağlanma
 
-Bir Windows Server ana bilgisayar kullanıyorsanız, veri kutusu ağır için bağlanmak için aşağıdaki adımları izleyin.
+Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak için aşağıdaki adımları izleyin.
 
-1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Tıklayın **kimlik bilgilerini alma** kaynak grubunuz ile ilişkili paylaşımlar için erişim kimlik bilgileri alınamıyor. Erişim kimlik bilgilerini de alabilirsiniz **cihaz ayrıntıları** Azure portalında.
+1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Kaynak grubuyla ilişkili paylaşımların erişim kimlik bilgilerini almak için **kimlik bilgilerini al** ' a tıklayın. Azure portal **cihaz ayrıntılarından** erişim kimlik bilgilerini de alabilirsiniz.
 
     > [!NOTE]
-    > Yönetilen disklere yönelik tüm paylaşımlar için kimlik bilgilerini aynıdır.
+    > Yönetilen disklerin tüm paylaşımlarının kimlik bilgileri aynıdır.
 
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Erişim paylaşımı ve kopyalama verileri iletişim kutusu, kopyalama **kullanıcıadı** ve **parola** paylaşım için. **Tamam**'ı tıklatın.
+2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam**'a tıklayın.
     
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Kaynağınız ile ilişkili paylaşımlara erişmek için (*mydbmdrg1* aşağıdaki örnekte), ana bilgisayardan bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdaki kaynakla ilişkili paylaşımlara (aşağıdaki örnekte*mydbmdrg1* ) erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Bu örnekte, UNC paylaşımı yolları aşağıdaki gibidir:
+    Bu örnekteki UNC paylaşma yollarınız aşağıdaki gibidir:
 
     - `\\169.254.250.200\mydbmdrg1_MDisk`
     - `\\169.254.250.200\mydbmdrg2_MDisk`
@@ -98,87 +99,87 @@ Bir Windows Server ana bilgisayar kullanıyorsanız, veri kutusu ağır için ba
     C: \>
     ```
 
-4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>\<ShareName>` değerini belirtin. Tıklayın **Tamam** dosya Gezgini'ni açın.
+4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>\<ShareName>` değerini belirtin. Dosya Gezgini'ni açmak için **Tamam**’a tıklayın.
     
     ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
-    Artık aşağıdaki klasörleri her paylaşımı içinde precreated görmeniz gerekir.
+    Artık her bir paylaşımda aşağıdaki daha önceden düzenlenen klasörleri görmeniz gerekir.
     
     ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
-### <a name="connect-to-data-box-heavy-via-nfs"></a>Veri kutusu ağır NFS aracılığıyla bağlanma
+### <a name="connect-to-data-box-heavy-via-nfs"></a>NFS aracılığıyla Data Box Heavy bağlanma
 
-Bir Linux ana bilgisayar kullanıyorsanız, NFS istemcilerinin erişmesine izin vermek için Cihazınızı yapılandırmak için aşağıdaki adımları gerçekleştirin.
+Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine erişime izin verecek şekilde yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
 1. Paylaşıma erişmesine izin verilen istemcilerin IP adreslerini sağlayın. Yerel web arabiriminde **Bağlan ve kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi**'ne tıklayın.
 
     ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'ı tıklatın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
 
     ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
 2. Linux ana bilgisayarında NFS istemcisinin [desteklenen sürümünün](data-box-system-requirements.md) yüklü olduğundan emin olun. Linux dağıtımınıza uygun sürümü kullanın.
 
-3. NFS İstemcisi yüklendikten sonra bir NFS paylaşımına Cihazınızda bağlamak için aşağıdaki komutu kullanın:
+3. NFS istemcisi yüklendikten sonra, cihazınıza NFS paylaşımından bağlamak için aşağıdaki komutu kullanın:
 
     `sudo mount <Data Box or Data Box Heavy IP>:/<NFS share on Data Box or Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Aşağıdaki örnek, bir Data Box veya veri kutusu ağır paylaşımına NFS bağlanmak gösterilmektedir. IP Data Box veya veri kutusu ağır cihaz `169.254.250.200`, paylaşım `mydbmdrg1_MDisk` olduğundan üzerinde ubuntuVM bağlanmış, bağlama noktası olan `/home/databoxubuntuhost/databox`.
+    Aşağıdaki örnek, NFS aracılığıyla bir Data Box veya Data Box Heavy paylaşıma nasıl bağlanılacağını gösterir. Data Box veya Data Box Heavy cihaz IP 'si `169.254.250.200`, Share `mydbmdrg1_MDisk` ubuntuVM 'ye bağlanır, bağlama noktası `/home/databoxubuntuhost/databox`.
 
     `sudo mount -t nfs 169.254.250.200:/mydbmdrg1_MDisk /home/databoxubuntuhost/databox`
 
 
-## <a name="copy-data-to-data-box-heavy"></a>Veri kutusu ağır için veri kopyalama
+## <a name="copy-data-to-data-box-heavy"></a>Data Box Heavy’ye veri kopyalama
 
-Veri sunucusuna bağlandıktan sonra sonraki adıma veri kopyalamaktır. VHD dosyası, sayfa blobu olarak hazırlama depolama hesabına kopyalanır. Sayfa blob'u ardından bir yönetilen diskin dönüştürülür ve bir kaynak grubuna taşındı.
+Veri sunucusuna bağlandıktan sonra, bir sonraki adım verileri kopyalayacağız. VHD dosyası, hazırlama depolama hesabına Sayfa Blobu olarak kopyalanır. Sayfa Blobu daha sonra yönetilen bir diske dönüştürülüp bir kaynak grubuna taşınır.
 
 Veri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
-- Her zaman VHD'lerin precreated klasörlerden birine kopyalayın. VHD'lerin dışında bu klasörleri veya oluşturduğunuz bir klasöre kopyalamak, VHD'ler sayfa blobları Azure depolama hesabına yüklenir ve yönetilen diskler değil.
-- Yönetilen disk oluşturmak için yalnızca sabit VHD'lerin karşıya yüklenebilir. VHDX dosyası veya dinamik ve fark kayıt VHD'leri desteklenmez.
-- Yalnızca bir kaynak grubunda belirli bir ada sahip bir yönetilen disk precreated klasörler arasında olabilir. Başka bir gelir precreated klasörlere karşıya VHD'ler benzersiz adlara sahip olmalıdır. Belirtilen ada, bir kaynak grubunda zaten mevcut bir yönetilen disk eşleşmiyor emin olun.
-- Yönetilen disk sınırları gözden [Azure nesne boyutu sınırları](data-box-heavy-limits.md#azure-object-size-limits).
+- VHD'leri her zaman önceden oluşturulmuş klasörlerden birine kopyalayın. VHD 'leri bu klasörlerin dışına veya oluşturduğunuz bir klasöre kopyalarsanız, VHD 'ler, yönetilen diskler değil, Azure depolama hesabına sayfa Blobları olarak yüklenir.
+- Yönetilen diskler oluşturmak için yalnızca sabit VHD'ler karşıya yüklenebilir. VHDX dosyaları veya dinamik ve fark kayıt vhd 'leri desteklenmez.
+- Yalnızca bir kaynak grubunda belirli bir ada sahip bir yönetilen diske, önceden düzenlenen tüm klasörler arasında sahip olabilirsiniz. Bu durum, önceden oluşturulan klasörlere yüklenen VHD'lerin benzersiz adlara sahip olması gerektiği anlamına gelir. Verilen adın bir kaynak grubunda zaten var olan bir yönetilen diskle eşleşmediğinden emin olun.
+- [Azure nesne boyut sınırları](data-box-heavy-limits.md#azure-object-size-limits)'ndaki yönetilen disk sınırlarını gözden geçirin.
 
-Olup, SMB veya NFS bağlanan bağlı olarak, şunları kullanabilirsiniz:
+SMB veya NFS aracılığıyla bağlanıp bağlandığınıza bağlı olarak şunları kullanabilirsiniz:
 
-- [SMB üzerinden veri kopyalama](data-box-heavy-deploy-copy-data.md#copy-data-to-data-box-heavy)
+- [SMB aracılığıyla veri kopyalama](data-box-heavy-deploy-copy-data.md#copy-data-to-data-box-heavy)
 - [NFS aracılığıyla veri kopyalama](data-box-heavy-deploy-copy-data-via-nfs.md#copy-data-to-data-box-heavy)
 
-Son kopyalama işlerinin tamamlanmasını bekleyin. Sonraki adıma geçmeden önce hatasız kopyası işleri tamamlandığından emin emin olun.
+Kopyalama işlerinin bitmesini bekleyin. Sonraki adıma geçmeden önce kopyalama işlerinin hatasız bitdiğinizden emin olun.
 
-![Herhangi bir hata ** Bağlan ve Kopyala ** sayfası](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
+![\* * Bağlan ve Kopyala * * sayfasında hata yok](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-Kopyalama işlemi sırasında bir hata varsa, günlükleri indirmek **Bağlan ve Kopyala** sayfası.
+Kopyalama işlemi sırasında hatalar varsa, **Bağlan ve Kopyala** sayfasından günlükleri indirin.
 
-- Hizalı değil 512 bayt olan dosya kopyaladıysanız, dosya hazırlama depolama hesabınıza sayfa blobu olarak karşıya değil. Günlüklerindeki bir hata görürsünüz. Dosyayı kaldırın ve 512 bayt hizalı bir dosyaya kopyalayın.
+- 512 bayt hizalı bir dosyayı kopyaladıysanız, dosya, hazırlama depolama hesabınıza Sayfa Blobu olarak yüklenmeyecektir. Günlüklerde bir hata görürsünüz. Dosyayı kaldırın ve 512 bayt hizalı bir dosyayı kopyalayın.
 
-- Uzun bir ada sahip bir VHDX (Bu dosyaları desteklenmez) kopyaladıysanız, günlüklerindeki bir hata görürsünüz.
+- Bir VHDX kopyaladıysanız (Bu dosyalar desteklenmez), uzun bir adla, günlüklerde bir hata görürsünüz.
 
-    ![Hata günlüklerinden ** Bağlan ve Kopyala ** sayfası](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
+    ![Günlüklere * * Bağlan ve Kopyala * * sayfasından hata](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 
-    Sonraki adıma devam etmeden önce hataları giderin.
+    Sonraki adıma geçmeden önce hataları çözün.
 
 Veri bütünlüğünü sağlamak için sağlama toplamı veri kopyalama sırasında satır içinde hesaplanır. Kopyalama tamamlandıktan sonra cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
     
 ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-Kopyalama işi tamamlandığında gidebilirsiniz **göndermeye hazırlama**.
+Kopyalama işi tamamlandıktan sonra **göndermeye hazırlama**' a gidebilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure veri kutusu ağır konuları hakkında gibi öğrendiniz:
+Bu öğreticide Azure Data Box Heavy ile ilgili aşağıdaki bilgileri öğrendiniz:
 
 > [!div class="checklist"]
-> * Önkoşulları gözden geçirin
-> * Veri kutusu ağır için Bağlan
-> * Veri kutusu ağır için veri kopyalama
+> * Önkoşulları inceleyin
+> * Data Box Heavy’ye bağlanma
+> * Data Box Heavy’ye veri kopyalama
 
 
-Veri kutusu ağır Microsoft'a göndermeye hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Data Box Heavy'yi Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Microsoft, Azure veri kutusu ağır gönderin](./data-box-heavy-deploy-picked-up.md)
+> [Azure Data Box Heavy’yi Microsoft'a gönderme](./data-box-heavy-deploy-picked-up.md)
 

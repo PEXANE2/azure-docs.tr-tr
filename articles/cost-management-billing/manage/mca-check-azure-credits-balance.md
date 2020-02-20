@@ -2,21 +2,18 @@
 title: Microsoft Müşteri Sözleşmesi için Azure kredi bakiyesini izleme
 description: Microsoft Müşteri Sözleşmesi için Azure kredi bakiyesinin nasıl denetleneceğini öğrenin.
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2019
 ms.author: banders
-ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75991340"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199696"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft Müşteri Sözleşmesi Azure kredi bakiyesini izleme
 
@@ -28,7 +25,7 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
 ## <a name="check-your-credit-balance"></a>Kredi bakiyenizi denetleme
 
-### <a name="azure-portaltabportal"></a>[Azure portalındaki](#tab/portal)
+### <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
@@ -99,7 +96,7 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
     ![Bir faturalama hesabı için kredi listesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
-### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+### <a name="rest-api"></a>[REST API](#tab/rest)
 
 Faturalandırma hesabınıza ait kredi bakiyesini programlama yoluyla almak için [Azure Faturalama](https://docs.microsoft.com/rest/api/billing/) ve [Tüketim](https://docs.microsoft.com/rest/api/consumption/) API'lerini kullanabilirsiniz.
 

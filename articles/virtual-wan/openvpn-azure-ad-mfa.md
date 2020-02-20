@@ -7,32 +7,32 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: alzam
-ms.openlocfilehash: fcb60e80189da89b3f634c14582be606307536e6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 13f012af95bb2b6098317e59e5293fb72804a6a6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166659"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471593"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN kullanıcıları için Azure Multi-Factor Authentication (MFA) etkinleştirme
 
-Erişim vermeden önce kullanıcılardan ikinci bir kimlik doğrulama faktörü istenmesini istiyorsanız, Azure AD kiracınız için Azure Multi-Factor Authentication (MFA) yapılandırabilirsiniz. Bu makaledeki adımlar, iki adımlı doğrulama gereksinimini etkinleştirmenize yardımcı olur.
+[!INCLUDE [overview](../../includes/vpn-gateway-vwan-openvpn-enable-mfa-overview.md)]
 
-## <a name="prereq"></a>Koşul
+## <a name="enableauth"></a>Kimlik doğrulamasını etkinleştir
 
-Bu yapılandırma için önkoşul, [Kiracı yapılandırma](openvpn-azure-ad-tenant.md)içindeki adımları kullanarak yapılandırılmış BIR Azure AD kiracısıdır.
-
-[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
+[!INCLUDE [enable authentication](../../includes/vpn-gateway-vwan-openvpn-enable-auth.md)]
 
 ## <a name="enablesign"></a>Oturum açma ayarlarını yapılandırma
 
-**Azure VPN-Özellikler** sayfasında, oturum açma ayarlarını yapılandırın.
+[!INCLUDE [sign in](../../includes/vpn-gateway-vwan-openvpn-sign-in.md)]
 
-1. **Kullanıcıların oturum açması Için etkinleştirildi mi?** **Evet**olarak ayarlandı. Bu, AD kiracısındaki tüm kullanıcıların VPN 'e başarıyla bağlanmasını sağlar.
-2. Oturum açma iznini yalnızca Azure VPN izinleri olan kullanıcılarla sınırlandırmak istiyorsanız, **Kullanıcı atamasını gerekli midir?** **Evet** olarak ayarlayın.
-3. Yaptığınız değişiklikleri kaydedin.
+## <a name="peruser"></a>Seçenek 1-Kullanıcı başına erişim
 
-   ![İzinler](./media/openvpn-azure-ad-mfa/user2.jpg)
+[!INCLUDE [per user](../../includes/vpn-gateway-vwan-openvpn-per-user.md)]
+
+## <a name="conditional"></a>Seçenek 2-Koşullu erişim
+
+[!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

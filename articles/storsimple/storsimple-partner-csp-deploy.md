@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple ve bulut çözüm sağlayıcısı programı genel bakış | Microsoft Docs
-description: StorSimple iş ortakları için bir genel bakış StorSimple ve CSP hakkında.
+title: Bulut çözümü sağlayıcısı programı için StorSimple Sanal dizisi dağıtma
+description: StorSimple iş ortakları için StorSimple ve CSP hakkında genel bakış.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630011"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466918"
 ---
-# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı için StorSimple sanal Dizini'ni dağıtma
+# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı için StorSimple Sanal dizisi dağıtma
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple sanal dizisi, bulut çözümü sağlayıcısı (CSP) iş ortakları, müşteriler tarafından dağıtılabilir. CSP iş ortağı, StorSimple cihaz Yöneticisi hizmeti oluşturabilirsiniz. Bu hizmet, dağıtma ve StorSimple sanal dizisi ve ilişkili paylaşımları, birimleri ve yedekleri yönetme sonra kullanılabilir.
+StorSimple Sanal dizisi, müşterileri için bulut çözümü sağlayıcısı (CSP) iş ortakları tarafından dağıtılabilir. CSP iş ortağı, StorSimple Aygıt Yöneticisi hizmeti oluşturabilir. Bu hizmet daha sonra StorSimple Sanal dizisini ve ilişkili paylaşımları, birimleri ve yedeklemeleri dağıtmak ve yönetmek için kullanılabilir.
 
-Bu makalede, nasıl bir CSP iş ortağı mevcut bir müşteri için bir müşteri ya da yeni bir abonelik ekleyin ve ardından bir StorSimple Virtual Array CSP'de dağıtmak için bir hizmet oluşturma açıklanır.
+Bu makalede, CSP iş ortağının mevcut bir müşteriye bir müşteri veya yeni abonelik ekleme ve ardından CSP 'de StorSimple Sanal dizisi dağıtmak üzere bir hizmet oluşturma işlemlerinin nasıl yapılacağı açıklanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce şunlardan emin olun:
+Başlamadan önce aşağıdakileri doğrulayın:
 
-- CSP programı kapsamında kaydedilir.
-- Geçerli sahip [iş ortağı Merkezi](https://partnercenter.microsoft.com/) oturum açma kimlik bilgileri. Kimlik bilgilerini, yeni müşteriler eklemek, müşterilerin arama veya iş ortağı panodan bir müşteri hesabına gidin için iş ortağı portalında oturum açmak etkinleştirin. CSP, Azure portalında müşteri adına bir StorSimple Yöneticisi olarak işlev görebilir.
+- CSP programına kaydolmuş olursunuz.
+- Geçerli [Iş Ortağı Merkezi](https://partnercenter.microsoft.com/) oturum açma kimlik bilgileriniz var. Kimlik bilgileri, yeni müşteriler eklemek, müşteri aramak veya Iş ortağı panosundan bir müşteri hesabına gitmek için Iş ortağı portalında oturum açmanızı sağlar. CSP, Azure portal müşteri adına StorSimple Yöneticisi olarak çalışabilir.
                              
-## <a name="add-a-customer"></a>Bir müşteri ekleyin
+## <a name="add-a-customer"></a>Müşteri ekleme
 
-Bir müşteri eklerseniz, bir aboneliği otomatik olarak oluşturulur. Bir müşteri ekleyin (ve otomatik olarak bir abonelik oluşturmak için), iş ortağı Portalı'nda aşağıdaki adımları gerçekleştirin.
+Bir müşteri eklerseniz, otomatik olarak bir abonelik oluşturulur. Bir müşteri eklemek (ve otomatik olarak bir abonelik oluşturmak) için Iş ortağı portalında aşağıdaki adımları gerçekleştirin.
 
-1. Git [iş ortağı Merkezi](https://partnercenter.microsoft.com/) CSP kimlik bilgilerinizi kullanarak oturum açın. Tıklayın **Pano**.
+1. [Iş Ortağı Merkezi](https://partnercenter.microsoft.com/) ' ne gıdın ve CSP kimlik bilgilerinizi kullanarak oturum açın. **Pano**' ya tıklayın.
 
-     ![İş ortağı merkezi bir Panoda](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Iş Ortağı Merkezi 'nde Pano](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. Sol bölmedeki **müşteriler**. Sağ bölmedeki **müşteriler ekleme**. Müşterinin ayrıntılarını girin. Tıklayın **sonraki: Abonelikleri** müşteri aboneliği oluşturmak için.
+2. Sol bölmede **müşteriler**' e tıklayın. Sağ bölmede, **Müşteri Ekle**' ye tıklayın. Müşterinin ayrıntılarını girin. Bir müşteri aboneliği oluşturmak için **İleri: abonelikler** ' e tıklayın.
 
     ![Müşteri Ekle](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  Seçin **Microsoft Azure** sunar. Sayfanın alt kısmına kaydırın ve tıklayın **gözden geçirme**.
+3.  Teklif **Microsoft Azure** seçin. Sayfanın alt kısmına ilerleyin ve **gözden geçir**' e tıklayın.
 
-    ![Abonelik bilgilerini gözden geçirin](./media/storsimple-partner-csp-deploy/image3.png)
+    ![Abonelik bilgilerini gözden geçirme](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. Bilgileri gözden geçirin ve tıklayın **Gönder**.
+4. Bilgileri gözden geçirin ve **Gönder**' e tıklayın.
 
-    ![Aboneliği Gönder](./media/storsimple-partner-csp-deploy/image4.png)
+    ![Abonelik gönder](./media/storsimple-partner-csp-deploy/image4.png)
 
-5. Gelecek başvurular için onay bilgileri kaydedin.
+5. Daha sonra başvurmak üzere onay bilgilerini kaydedin.
 
-    ![Onay Kaydet](./media/storsimple-partner-csp-deploy/image5.png)
+    ![Kaydetmeyi Onayla](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. Bulmak veya müşteriye gidin, yeni eklediğiniz. Tıklayın **şirket adı** ayrıntılarına detaya gitmek için.
+6. Yeni eklediğiniz müşteriyi bulun veya buraya gidin. Ayrıntıların detayına gitmek için **Şirket adına** tıklayın.
 
-    ![Müşteri arama](./media/storsimple-partner-csp-deploy/image6.png)  
+    ![Müşteriyi arayın](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. Sol bölmede seçin **Hizmet Yönetimi**. Sağ bölmede altında **yönetmek Hizmetleri**, tıklayın **Microsoft Azure Yönetim Portalı** müşterinizin Azure yönetici olarak oturum açmak için.
+7. Sol bölmede **hizmet yönetimi**' ni seçin. Sağ bölmede, **Hizmetleri Yönet**altında, müşteriniz Için bir Azure Yöneticisi olarak oturum açmak üzere **Microsoft Azure yönetim portalı** ' ye tıklayın.
 
     ![Azure portalında oturum açın](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple cihaz Yöneticisi'ni oluşturmak için tıklayın **+ yeni** ve arayın veya gidin **StorSimple sanal cihaz serisi**. Daha fazla bilgi için Git [StorSimple cihaz Yöneticisi hizmetini dağıtma](storsimple-virtual-array-manage-service.md).
+8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini**arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
-    ![StorSimple cihaz Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Aygıt Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
 
 
-## <a name="add-a-subscription"></a>Bir abonelik ekleyin
+## <a name="add-a-subscription"></a>Abonelik ekleme
 
-Bazı durumlarda, varolan bir müşteri olabilir ve bir abonelik eklemeniz gerekir. Mevcut bir müşteri için bir abonelik eklemek, iş ortağı Portalı'nda aşağıdaki adımları gerçekleştirin.
+Bazı örneklerde, mevcut bir müşteriniz olabilir ve bir abonelik eklemeniz gerekir. Mevcut bir müşteriye abonelik eklemek için Iş ortağı portalında aşağıdaki adımları gerçekleştirin.
 
-1. Git [iş ortağı Merkezi](https://partnercenter.microsoft.com/) CSP kimlik bilgilerinizi kullanarak oturum açın. Tıklayın **Pano**.
+1. [Iş Ortağı Merkezi](https://partnercenter.microsoft.com/) ' ne gıdın ve CSP kimlik bilgilerinizi kullanarak oturum açın. **Pano**' ya tıklayın.
 
-     ![İş ortağı merkezi bir Panoda](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Iş Ortağı Merkezi 'nde Pano](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. Sol bölmedeki **müşteriler**. Bulmak veya gitmek için bir abonelik eklemek istediğiniz müşteriye. Tıklayın ![genişletme onay simgesi](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) müşteriniz için şirket adı için satırı genişletmek için simge. Ayrıntılar, tıklatın **abonelik ekleme**.
+2. Sol bölmede **müşteriler**' e tıklayın. Abonelik eklemek istediğiniz müşteriyi bulun veya buraya gidin. Müşterinizin şirket adına ait satırı genişletmek için ![onay simgesini Genişlet](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) simgesine tıklayın. Ayrıntılar ' da, **Abonelik Ekle**' ye tıklayın.
 
     ![Müşteriler](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. Denetleme **Microsoft Azure** için **üst teklifler** abonelik tıklayıp **Gönder**. Bu, yeni bir abonelik oluşturur.
+3. Abonelikteki **en üstteki teklifler** için **Microsoft Azure** işaretleyin ve **Gönder**' e tıklayın. Bu yeni bir abonelik oluşturur.
 
     ![Yeni Abonelik Ekle](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. Yeni bir abonelik oluşturduktan sonra tıklayın **<--müşteriler** dönmek için sol bölmesinde **müşteriler** sayfası. Kendisi için bir abonelik oluşturduğunuz müşteri arayın. Tıklayın **şirket adı** ayrıntılarına detaya gitmek için.
+6. Yeni bir abonelik oluşturulduktan sonra, **müşteriler** sayfasına dönmek için **<--** sol bölmedeki müşteriler ' e tıklayın. Henüz bir abonelik oluşturduğunuz müşteriyi arayın. Ayrıntıların detayına gitmek için **Şirket adına** tıklayın.
 
-    ![Müşteri arama](./media/storsimple-partner-csp-deploy/image6.png)  
+    ![Müşteriyi arayın](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. Sol bölmede seçin **Hizmet Yönetimi**. Sağ bölmede altında **yönetmek Hizmetleri**, tıklayın **Microsoft Azure Yönetim Portalı** müşterinizin Azure yönetici olarak oturum açmak için.
+7. Sol bölmede **hizmet yönetimi**' ni seçin. Sağ bölmede, **Hizmetleri Yönet**altında, müşteriniz Için bir Azure Yöneticisi olarak oturum açmak üzere **Microsoft Azure yönetim portalı** ' ye tıklayın.
 
     ![Azure portalında oturum açın](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple cihaz Yöneticisi'ni oluşturmak için tıklayın **+ yeni** ve arayın veya gidin **StorSimple sanal cihaz serisi**. Daha fazla bilgi için Git [StorSimple cihaz Yöneticisi hizmetini dağıtma](storsimple-virtual-array-manage-service.md).
+8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini**arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
-    ![StorSimple cihaz Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Aygıt Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- CSP, StorSimple ile ilgili başka sorularım varsa, Git [CSP'de StorSimple: Sık sorulan sorular](storsimple-partner-csp-faq.md).
-- StorSimple'ınızı dağıtmak hazırsanız, Git [CSP'de StorSimple'ınızı dağıtın](storsimple-partner-csp-deploy.md).
+- CSP 'de StorSimple hakkında daha fazla sorunuz varsa, [CSP: sık sorulan sorular](storsimple-partner-csp-faq.md)sayfasına gidin.
+- StorSimple 'ı dağıtmaya hazırsanız, [StorSimple 'ı CSP 'de dağıtma](storsimple-partner-csp-deploy.md)bölümüne gidin.

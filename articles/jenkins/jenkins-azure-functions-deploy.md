@@ -4,12 +4,12 @@ description: Jenkins Azure Işlevleri eklentisini kullanarak Azure Işlevlerine 
 keywords: Jenkins, Azure, DevOps, Java, Azure işlevleri
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158780"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470675"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Jenkins Azure Işlevleri eklentisini kullanarak Azure Işlevlerine dağıtma
 
@@ -131,7 +131,7 @@ Bu bölümde, [Jenkins](https://jenkins.io/doc/book/pipeline/)işlem hattını o
 
 Jenkins işini çalıştırmak artık zaman alabilir.
 
-1. İlk olarak, [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) makalesindeki yönergeler aracılığıyla yetkilendirme anahtarını edinin.
+1. İlk olarak, [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys) makalesindeki yönergeler aracılığıyla yetkilendirme anahtarını edinin.
 
 1. Tarayıcınızda uygulamanın URL 'sini girin. Yer tutucuları uygun değerlerle değiştirin ve Java işlevi için girdi olarak **&lt;input_number >** için sayısal bir değer belirtin.
 

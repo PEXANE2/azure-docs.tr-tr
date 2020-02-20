@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754094"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472324"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST ve Postman kullanarak bilgi deposu oluşturma
 
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu hızlı başlangıç, AI için Azure Bilişsel Arama, Azure Blob depolama ve Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i kullanır. 
 
-İş yükü çok küçük olduğu için bilişsel hizmetler, Azure Bilişsel Arama çağrıldığında günlük olarak 20 ' ye kadar işlem için ücretsiz işleme sağlamak üzere arka planda dokunmakta. Sağladığımız örnek verileri kullandığınız sürece bilişsel hizmetler kaynağı oluşturma veya ekleme işlemini atlayabilirsiniz.
+İş yükü çok küçük olduğu için bilişsel hizmetler, her gün 20 ' ye kadar işlem için ücretsiz işleme sağlamak üzere arka planda dokunduğunda. Veri kümesi çok küçük olduğundan, bilişsel hizmetler kaynağı oluşturma veya ekleme işlemini atlayabilirsiniz.
 
 1. [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)' ye indirin. Bu veriler, bir CSV dosyasına kaydedilmiş (Kaggle.com kaynaklı) Otel gözden geçirme verileri ve tek bir otel hakkında yaklaşık 19 müşteri geri bildirimi içerir. 
 
@@ -78,7 +78,7 @@ Postman yükleme ve ayarlama.
 ![Postman uygulama değişkenleri sekmesi](media/knowledge-store-create-rest/postman-variables-window.png "Postman 'ın değişkenler penceresi")
 
 
-| Değişken    | Nerede edinilir? |
+| Değişken    | Nereden alınır? |
 |-------------|-----------------|
 | `admin-key` | Azure Bilişsel Arama hizmetinin **anahtarlar** sayfasında.  |
 | `api-version` | **2019-05-06-Preview**olarak bırakın. |

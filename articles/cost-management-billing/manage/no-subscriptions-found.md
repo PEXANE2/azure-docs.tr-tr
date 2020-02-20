@@ -1,27 +1,20 @@
 ---
 title: Abonelik bulunamadı hatası - Azure portalında oturum açma | Microsoft Docs
 description: Azure portalında veya Azure hesap merkezinde oturum açıldığında Abonelik bulunamadı hatasının oluştuğu bir sorunun çözümünü sağlar.
-services: ''
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
+ms.reviewer: dcscontentpm
 tags: billing
-ms.assetid: d1545298-99db-4941-8e97-f24a06bb7cb6
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 1573a5d5d9b537b208b2f6d6aea29b9738ddad3e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5011f0a09e33221650cf050578db5ab1d6b0a033
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988116"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200631"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portalı veya Azure hesap merkezi için Abonelik bulunamadı oturum açma hatası
 
@@ -33,11 +26,11 @@ ms.locfileid: "75988116"
 
 ## <a name="cause"></a>Nedeni
 
-Yanlış dizinde seçim yaptıysanız veya hesabınız yeterli izinlere sahip değilse bu sorun oluşur. 
+Yanlış dizinde seçim yaptıysanız veya hesabınız yeterli izinlere sahip değilse bu sorun oluşur.
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Senaryo 1: [Azure portalında](https://portal.azure.com) hata iletisi alınır
+### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>Senaryo 1: [Azure portalında](https://portal.azure.com) hata iletisi alınır
 
 Bu sorunu düzeltmek için:
 
@@ -46,7 +39,7 @@ Bu sorunu düzeltmek için:
   ![Azure portalının sağ üst köşesinde dizini seçin](./media/no-subscriptions-found/directory-switch.png)
 * Doğru Azure dizini seçili olduğu halde hata iletisini almaya devam ediyorsanız [hesabınıza Sahip rolünü atayın](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Senaryo 2: [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde hata iletisi alınır
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-center"></a>Senaryo 2: [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde hata iletisi alınır
 
 Kullandığınız hesabın Hesap Yöneticisi olup olmadığını denetleyin. Hesap Yöneticisinin kim olduğunu doğrulamak için şu adımları izleyin:
 

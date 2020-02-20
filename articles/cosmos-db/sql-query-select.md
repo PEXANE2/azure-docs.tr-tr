@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326799"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469944"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB yan tümce SEÇIN
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Sonuç kümesi için seçilecek özellikler veya değer.  
+  Özellikleri veya sonuç kümesi için seçilecek değeri.  
   
 - `'*'`  
 
-  Değerin herhangi bir değişiklik yapılmadan alınması gerektiğini belirtir. Özellikle işlenen değer bir nesnese, tüm özellikler alınır.  
+  Değer herhangi bir değişiklik yapmadan alınması gerektiğini belirtir. İşlenen değer bir nesne ise, özellikle, tüm özellikleri alınır.  
   
 - `<object_property_list>`  
   
-  Alınacak özelliklerin listesini belirtir. Döndürülen her değer, belirtilen özelliklerle bir nesne olacaktır.  
+  Alınacak özelliklerinin listesini belirtir. Her döndürülen değer, belirtilen özellikleri içeren bir nesne olacaktır.  
   
 - `VALUE`  
 
-  Tüm JSON nesnesi yerine JSON değerinin alınması gerektiğini belirtir. Bu, `<property_list>` ' dan farklı olarak, bir nesnedeki öngörülen değeri sarmaz.  
+  JSON değerinin yerine tam JSON nesne alınacağını belirtir. `<property_list>` aksine bu, bir nesnedeki öngörülen değeri sarmaz.  
  
 - `DISTINCT`
   
@@ -56,29 +56,29 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Hesaplanacağı değeri temsil eden ifade. Ayrıntılar için bkz. [skaler ifadeler](sql-query-scalar-expressions.md) bölümü.  
+  Hesaplanmasını değeri gösteren ifade. Ayrıntılar için bkz. [skaler ifadeler](sql-query-scalar-expressions.md) bölümü.  
 
 ## <a name="remarks"></a>Açıklamalar
 
-@No__t-0 sözdizimi yalnızca FROM yan tümcesi tam olarak bir diğer ad bildirmişse geçerlidir. `SELECT *`, projeksiyon gerekmiyorsa yararlı olabilecek bir kimlik projeksiyonu sağlar. SELECT * yalnızca FROM yan tümcesi belirtilmişse ve yalnızca tek bir giriş kaynağı tanıdığında geçerlidir.  
+`SELECT *` sözdizimi yalnızca FROM yan tümcesi tam olarak bir diğer ad bildirmişse geçerlidir. `SELECT *`, projeksiyon gerekmiyorsa yararlı olabilecek bir kimlik projeksiyonu sağlar. SEÇİN * yalnızca FROM yan tümcesi belirtilmiş ise geçerlidir ve yalnızca tek bir giriş kaynağı kullanıma sunulmuştur.  
   
-Hem `SELECT <select_list>` hem de `SELECT *` "sözdizimsel cukr" olur ve alternatif olarak aşağıda gösterildiği gibi basit SELECT deyimleri kullanılarak ifade edilebilir.  
+Hem `SELECT <select_list>` hem de `SELECT *` "sözdizimsel cukr" olur ve bunun yerine aşağıda gösterildiği gibi basit SELECT deyimleri kullanılarak ifade edilebilir.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   eşittir:  
+   eşdeğerdir:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   eşittir:  
+   eşdeğerdir:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki SELECT sorgusu örneği, `id` `AndersenFamily` ile eşleşen `Families` ' den `address` döndürür:
+Aşağıdaki SELECT sorgusu örneği, `id` `AndersenFamily`eşleşen `Families` `address` döndürür:
 
 ```sql
     SELECT f.address
@@ -109,7 +109,7 @@ Sonuçlar şunlardır:
 
 ### <a name="nested-properties"></a>İç içe Özellikler
 
-Aşağıdaki örnek, `f.address.state` ve `f.address.city` iç içe iki özelliği projeler.
+Aşağıdaki örnek, `f.address.state` ve `f.address.city`iki iç içe özelliği projeler.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Sonuçlar şunlardır:
     }]
 ```
 
-Yukarıdaki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını `$1` ' ı kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürüyor: `$1` ve `$2`.
+Önceki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce `$1`örtük bağımsız değişken adını kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürüyor: `$1` ve `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -168,6 +168,50 @@ Sonuçlar şunlardır:
         "name": "AndersenFamily"
       }
     }]
+```
+## <a name="reserved-keywords-and-special-characters"></a>Ayrılmış anahtar sözcükler ve özel karakterler
+
+Verileriniz, "Order" veya "Group" gibi ayrılmış anahtar sözcüklerle aynı adlara sahip özellikler içeriyorsa, bu belgelerde yapılan sorgular sözdizimi hatalarına neden olur. Sorguyu başarıyla çalıştırmak için, özelliği `[]` karaktere açıkça eklemeniz gerekir.
+
+Örneğin, aşağıdaki `order` adlı bir belge ve özel karakterler içeren bir özellik `price($)`.
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+`order` özelliğini veya `price($)` özelliğini içeren bir sorgu çalıştırırsanız bir sözdizimi hatası alırsınız.
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+Sonuç:
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+Aynı sorguları aşağıdaki gibi yeniden yazmanız gerekir:
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

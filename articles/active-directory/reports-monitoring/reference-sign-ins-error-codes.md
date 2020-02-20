@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/08/2019
+ms.date: 02/19/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cd37374ab6341356d84f205e92c9612d8481818f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898897"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468856"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -133,6 +133,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |50178|Geçiş kullanıcıları için oturum denetimi desteklenmez.|
 |50180|Windows Tümleşik kimlik doğrulaması gerekli. Sorunsuz SSO için kiracıyı etkinleştirin.|
 |50181|Oturum açma sırasında OTP ile ilgili hata. |
+|50194|' {AppID} ' ({appName}) uygulaması çok kiracılı bir uygulama olarak yapılandırılmamış. Sık karşılaşılan uç noktasının kullanımı, ' {Time} ' öğesinden sonra oluşturulan uygulamalar için desteklenmez. Kiracıya özgü bir uç nokta kullanın veya uygulamayı çok kiracılı olacak şekilde yapılandırın.|
 |50201|Bu ileti istemi kesmesi, kullanıcıya ek bilgi sağlanması gerektiğinde oturum açma sırasında kullanıcıya gösterilir.|
 |51001|Şirket içi güvenlik tanımlayıcısı-şirket Içi UPN ile etki alanı Ipucu yok.|
 |51004|Kullanıcı hesabı dizinde yok.|
@@ -185,16 +186,22 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |90010|İstek çeşitli nedenlerle desteklenmez. Örneğin, istek desteklenmeyen bir istek yöntemi kullanılarak yapılır (yalnızca POST yöntemi desteklenir) veya istenen belirteç imzalama algoritması desteklenmez. Uygulama geliştiricisine başvurun.|
 |90014| Protokol iletisi için gerekli bir alan eksikti, uygulama sahibine başvurun. Uygulama sahibiyseniz, oturum açma isteği için gerekli tüm parametrelere sahip olduğunuzdan emin olun. |
 |90051| Geçersiz temsili belirteci. Geçersiz National Cloud ID ({Cloudıd}) belirtildi.|
-|90072| Hesabın, önce kiracıya bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
+|90072| Hesabın önce kiracıda bir dış kullanıcı olarak eklenmesi gerekiyor. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
 |90094| Uygulama, oturum açmış kullanıcının izin verilmeyen ve Kullanıcı engellediği izinleri istedi. |
 |90095| Uygulama, oturum açmış kullanıcının izin verilmeyen izinleri istedi ve Kullanıcı [yönetici izin isteği](../manage-apps/configure-admin-consent-workflow.md) formunu gösterildi. |
+|130500|Telefon oturumu açma, Kullanıcı kimlik bilgileri Ilkesi nedeniyle engellendi.|
 |500011| <site address> adlı kaynak sorumlusu <tenant ID>adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulaması isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
+|500014|' {Identifier} ' kaynağı devre dışı bırakıldı.|
 |500021| Kiracı, şirket proxy 'si ile kısıtlıdır. Kaynak erişimini reddetme.|
 |500121| Tanımlayıcı kimlik doğrulama isteği sırasında kimlik doğrulaması başarısız oldu.|
 |500133| Onaylama işlemi geçerli zaman aralığı içinde değil. Kullanıcı onayı için kullanılmadan önce erişim belirtecinin dolmadığından emin olun veya yeni bir belirteç isteyin.|
+|500172|' {Issuer} ' tarafından verilen ' {name} ' sertifikası geçerli değil. Geçerli zaman: ' {curTime} '. Sertifika NotBefore: ' {startTime} '. Sertifika NotAfter: ' {BitişZamanı} '.|
+|501291|İstemci uygulaması bir mam uygulamasıdır, cihaz kayıtlı değildir ve istek bir aracı kullanılarak gönderilir. Uygulamaya erişilebilmesi için önce cihazın kaydedilmesi için iş yeri ekleme işlemi yapılmalıdır.|
+|530003|Bu kaynağa erişmek için cihazınızın yönetilmesi gerekir.|
 |530021|Uygulama, koşullu erişim onaylı uygulama gereksinimlerini karşılamıyor.|
 |530032|Güvenlik ilkesi tarafından engellendi.| 
 |700016|' {Appıdentifier} ' tanımlayıcılı uygulama ' {tenantName} ' dizininde bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
+|700051|' Token ' Response_type uygulama için etkinleştirilmemiş. Uygulama, şu nedenlerden dolayı desteklenmeyen bir yanıt türü istedi: response_type ' token ' uygulama için etkinleştirilmemiş. Örtük erişim belirteci vermeyi etkinleştirmek için uygulama sahibi Azure portal veya MS Graph 'ı çağırmalıdır.|
 |900432|Çapraz bulut isteğinde gizli Istemci desteklenmez.|
 |5000811|SAML belirteci imzası doğrulanamadı. İmzalama anahtarı tanımlayıcısı geçerli kayıtlı anahtarlarla eşleşmiyor.|
 |7000215|Geçersiz istemci parolası sağlandı.|

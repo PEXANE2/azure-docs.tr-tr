@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839803"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471797"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
 
@@ -55,7 +55,7 @@ Varsayılan olarak yeni oluşturulan tüm Azure SQL Veri Ambarı örneklerinin d
 
 Veri ambarınıza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları tamamlayın:
 
-1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
 2.  Görüntülemek istediğiniz veri ambarını seçin. 
 3.  Seçilen veri ambarı genel bakış dikey penceresinde açılır. Veri ambarına uygulanan bakım zamanlaması **bakım zamanlaması**altında görünür.
 
@@ -71,9 +71,9 @@ Bakım zamanlaması dilediğiniz zaman güncelleştirilebilirler veya değiştir
 Birincil ve ikincil pencerelerin ayrı gün aralıkları olmalıdır. Örnek olarak, Salı – Perşembe ve Cumartesi – Pazar ayının ikincili bir pencere yer aldığı bir örnektir.
 
 Veri ambarınızın bakım zamanlamasını değiştirmek için aşağıdaki adımları izleyin:
-1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
 2.  Güncelleştirmek istediğiniz veri ambarını seçin. Sayfa, genel bakış dikey penceresinde açılır. 
-3.  Genel Bakış dikey penceresinde **bakım zamanlaması (Önizleme) Özeti** bağlantısını seçerek bakım zamanlaması ayarları sayfasını açın. Ya da sol taraftaki kaynak menüsünde **bakım zamanlaması** seçeneğini belirleyin.  
+3.  Genel Bakış dikey penceresinde **bakım zamanlaması Özeti** bağlantısını seçerek bakım zamanlaması ayarları sayfasını açın. Ya da sol taraftaki kaynak menüsünde **bakım zamanlaması** seçeneğini belirleyin.  
 
     ![Genel Bakış dikey penceresi seçenekleri](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 

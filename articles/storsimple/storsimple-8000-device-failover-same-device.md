@@ -1,6 +1,6 @@
 ---
-title: StorSimple yük devretme, 8000 serisi cihazlar için olağanüstü durum kurtarma | Microsoft Docs
-description: StorSimple Cihazınızı aynı cihaza yük devretme öğrenin.
+title: Aynı StorSimple 8000 cihazına yük devretme ve olağanüstü durum kurtarma
+description: StorSimple cihazınızın yükünü aynı cihaza devretmek hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577400"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471814"
 ---
-# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple fiziksel Cihazınızı aynı cihaza yük devretme
+# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple fiziksel cihazınızı aynı cihaza devreder
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, bir StorSimple 8000 serisi fiziksel cihazının kendine olağanüstü bir durum olursa devretmek için gereken adımları açıklar. StorSimple, veri merkezindeki fiziksel kaynak CİHAZDAN başka bir fiziksel cihaza geçirmek için cihaz yük devretme özelliğini kullanır. Bu öğreticideki yönergeler fiziksel cihazlar yazılım sürümleri güncelleştirme 3 ve üzerini çalıştıran StorSimple 8000 serisi için geçerlidir.
+Bu öğreticide, bir olağanüstü durum varsa StorSimple 8000 serisi fiziksel cihazının kendine yük devri için gereken adımlar açıklanmaktadır. StorSimple, veri merkezindeki kaynak fiziksel cihazından başka bir fiziksel cihaza veri geçirmek için cihaz yük devretme özelliğini kullanır. Bu öğreticideki kılavuz, güncelleştirme 3 ve üzeri yazılım sürümlerini çalıştıran StorSimple 8000 serisi fiziksel cihazları için geçerlidir.
 
-Cihaz yük devretme ve olağanüstü durumdan kurtarmak için nasıl kullanıldığı hakkında daha fazla bilgi için şuraya gidin [StorSimple 8000 serisi cihazlar için yük devretme ve olağanüstü durum kurtarma](storsimple-8000-device-failover-disaster-recovery.md).
+Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kullanıldığı hakkında daha fazla bilgi edinmek için, [StorSimple 8000 Serisi Cihazlar Için yük devretme ve olağanüstü durum kurtarma](storsimple-8000-device-failover-disaster-recovery.md)bölümüne gidin.
 
-Fiziksel bir cihaz başka bir fiziksel cihaza yük devretme için şuraya gidin: [aynı StorSimple fiziksel cihaza yük devretme](storsimple-8000-device-failover-physical-device.md). StorSimple fiziksel cihazı StorSimple Cloud Appliance için yük devretme için şuraya gidin: [bir StorSimple bulut Gerecine yük devretme](storsimple-8000-device-failover-cloud-appliance.md).
+Fiziksel bir cihazı başka bir fiziksel cihaza devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-physical-device.md)üzere gidin. StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek için, [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)sayfasına gidin.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Cihaz yük devretme için değerlendirmeleri gözden geçirdiğinizden emin olun. Daha fazla bilgi için Git [cihaz yük devretme için ortak düşünceler](storsimple-8000-device-failover-disaster-recovery.md).
+- Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 
 
-## <a name="steps-to-fail-over-to-the-same-device"></a>Aynı cihaza yük devretme için adımları
+## <a name="steps-to-fail-over-to-the-same-device"></a>Aynı cihaza yük devretme adımları
 
-Aynı cihaza yük devretme gerekiyorsa aşağıdaki adımları gerçekleştirin.
+Aynı cihaza yük devri yapmanız gerekiyorsa aşağıdaki adımları gerçekleştirin.
 
-1. Tüm birimler bulut anlık görüntüleri kullanarak Cihazınızı alın. Daha fazla bilgi için Git [yedeklemeler oluşturmak için kullanımı StorSimple cihaz Yöneticisi hizmeti](storsimple-8000-manage-backup-policies-u2.md).
-2. Cihazınızı fabrika ayarlarına döndürebilir. Ayrıntılı yönergeleri izleyin [bir StorSimple cihazı varsayılan fabrika ayarlarına sıfırlama](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-3. StorSimple cihaz Yöneticisi hizmetine gidin ve ardından **cihazları**. İçinde **cihazları** dikey penceresinde eski cihaz olarak göstermelidir **çevrimdışı**.
+1. Cihazınızdaki tüm birimlerin bulut anlık görüntülerini alın. Daha fazla bilgi için bkz. [yedek oluşturmak Için StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
+2. Cihazınızı fabrika ayarlarına sıfırlayın. [StorSimple cihazını fabrika varsayılan ayarlarına sıfırlama](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)konusundaki ayrıntılı yönergeleri izleyin.
+3. StorSimple Aygıt Yöneticisi hizmetine gidin ve ardından **cihazlar**' ı seçin. **Cihazlar** dikey penceresinde eski cihaz **çevrimdışı**olarak gösterilmelidir.
 
     ![Kaynak cihaz çevrimdışı](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
-4. Cihazınızı yapılandırmak ve StorSimple cihaz Yöneticisi hizmetinize yeniden kaydedin. Yeni kaydettiğiniz cihazın olarak göstermelidir **kuruluma hazır**. Yeni cihaz için cihaz adı, eski cihaz ile aynıdır ancak cihazı fabrika varsayılan değerlerine sıfırlamak ve yeniden kayıtlı olduğunu belirten bir sayı ile eklenir.
+4. Cihazınızı yapılandırın ve StorSimple Aygıt Yöneticisi hizmetinize yeniden kaydedin. Yeni kaydedilen cihaz, **ayarlanmaya hazırlık**olarak gösterilmelidir. Yeni cihaz için cihaz adı eski cihazla aynıdır, ancak cihazın fabrika varsayılanına sıfırlandığını ve yeniden kaydedildiğini göstermek için bir sayıyla birlikte eklenir.
 
-    ![Yeni kaydettiğiniz cihazın kuruluma hazır](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Yeni cihaz için cihaz kurulumunu tamamlayın. Daha fazla bilgi için Git [4. adım: Minimum cihaz kurulumunu Tamamla](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Üzerinde **cihazları** dikey penceresinde cihazın durumu değişiklikleri **çevrimiçi**.
+    ![Yeni kayıtlı cihaz ayarlamaya hazırlanıyor](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
+5. Yeni cihaz için, cihaz kurulumunu doldurun. Daha fazla bilgi için 4. [Adım: en düşük cihaz kurulumunu tamamlayın](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup)bölümüne gidin. **Cihazlar** dikey penceresinde, cihazın durumu **çevrimiçi**olarak değişir.
 
    > [!IMPORTANT]
-   > **En düşük yapılandırmayı ilk tamamlamak veya DR'niz başarısız olabilir.**
+   > **Önce en düşük yapılandırmayı tamamladıktan sonra, DR başarısız olabilir.**
 
-    ![Yeni kaydettiğiniz cihaz çevrimiçi](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
+    ![Yeni kayıtlı cihaz çevrimiçi](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
 
-6. Eski cihaz (çevrimdışı durum) seçin ve Komut çubuğundaki **yük devretme**. İçinde **yük devretme** dikey penceresinde, kaynak olarak eski bir cihaz seçin ve yeni kaydettiğiniz cihazın hedef cihaz belirtin.
+6. Eski cihazı (çevrimdışı durum) seçin ve komut çubuğundan yük **devretme**' ye tıklayın. Yük **devretme** dikey penceresinde, kaynak olarak eski cihaz ' ı seçin ve hedef cihazı yeni kayıtlı cihaz olarak belirtin.
 
-    ![Yük devretme özeti](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
+    ![Yük devretme Özeti](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
-    Ayrıntılı yönergeler için başarısız için başka bir fiziksel cihaza üzerinden bakın.
+    Ayrıntılı yönergeler için başka bir fiziksel cihaza yük devretme bölümüne bakın.
 
-7. Bir cihaz geri yükleme iş öğesinden izleyebilirsiniz oluşturulur **işleri** dikey penceresi.
+7. **İşler** dikey penceresinden izleyebilmeniz için bir cihaz geri yükleme işi oluşturulur.
 
-8. İş başarıyla tamamlandıktan sonra yeni cihaz erişim ve gidin **birim kapsayıcıları** dikey penceresi. Eski bir CİHAZDAN tüm birim kapsayıcıları için yeni cihaz geçirildiğini doğrulayın.
+8. İş başarıyla tamamlandıktan sonra yeni cihaza erişin ve **birim kapsayıcıları** dikey penceresine gidin. Eski cihazdaki tüm birim kapsayıcılarının yeni cihaza geçirildiğini doğrulayın.
 
    ![Birim kapsayıcıları geçirildi](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
 
-9. Yük devretme işlemi tamamlandıktan sonra devre dışı bırakıp portaldan eski cihaz silme. Eski cihaz (çevrimdışı), sağ tıklama seçin ve ardından **devre dışı bırak**. Cihaz devre dışı bırakıldıktan sonra cihazın durumu güncelleştirilir.
+9. Yük devretme işlemi tamamlandıktan sonra, eski cihazı portaldan devre dışı bırakabilir ve silebilirsiniz. Eski cihazı (çevrimdışı) seçin, sağ tıklayın ve ardından **devre dışı bırak**' ı seçin. Cihaz devre dışı bırakıldıktan sonra cihazın durumu güncelleştirilir.
 
-     ![Kaynak cihaz devre dışı bırakıldı](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
+     ![Kaynak cihaz devre dışı](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
 
-10. Devre dışı bırakılmış bir cihaz, sağ tıklayın ve ardından seçin **Sil**. Bu, cihaz listesinden cihaz siler.
+10. Devre dışı bırakılmış cihazı seçin, sağ tıklayın ve ardından **Sil**' i seçin. Bu, cihazı cihaz listesinden siler.
 
     ![Kaynak cihaz silindi](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
 
@@ -81,6 +81,6 @@ Aynı cihaza yük devretme gerekiyorsa aşağıdaki adımları gerçekleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir yük devretme gerçekleştirdikten sonra gerekebilir [StorSimple Cihazınızı silme veya devre dışı bırakma](storsimple-8000-deactivate-and-delete-device.md).
-* StorSimple cihaz Yöneticisi hizmetini kullanma hakkında daha fazla bilgi için Git [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* Yük devretme gerçekleştirdikten sonra [StorSimple cihazınızı devre dışı bırakmanız veya silmeniz](storsimple-8000-deactivate-and-delete-device.md)gerekebilir.
+* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi için, StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
 

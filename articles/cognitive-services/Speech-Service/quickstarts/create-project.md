@@ -3,20 +3,20 @@ title: 'Hızlı başlangıç: proje oluşturma'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir hızlı başlangıcı tamamlamaya veya bir uygulama oluşturmaya yönelik kullanacağınız tercih ettiğiniz programlama dili için boş bir proje oluşturacaksınız.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/19/2019
-ms.author: erhopf
+ms.date: 02/19/2020
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: db2a25098bf9b7bf985783c8b2d5bf63e023669b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4091b2006f2263066e957946a936f045d0c9de82
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221853"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469910"
 ---
 # <a name="quickstart-create-a-project"></a>Hızlı başlangıç: proje oluşturma
 
@@ -24,31 +24,31 @@ Bu hızlı başlangıçta, bir hızlı başlangıcı tamamlamaya veya bir uygula
 
 ::: zone pivot="programming-language-csharp"
 **Hedef ortamınızı seçin**
-#### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+#### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 [!INCLUDE [vs](~/includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
-#### <a name="unitytabunity"></a>['Yi](#tab/unity)
-#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
+#### <a name="unity"></a>['Yi](#tab/unity)
+#### <a name="uwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [vs](~/includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
-#### <a name="xamarintabxaml"></a>[Xamarin](#tab/xaml)
+#### <a name="xamarin"></a>[Xamarin](#tab/xaml)
 [!INCLUDE [vs](~/includes/cognitive-services-speech-service-quickstart-xamarin-create-proj.md)]
 * * *
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 **Hedef ortamınızı seçin**
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 Bu örnekte, g + + ile derlememiz gerekir. bu nedenle, boş bir proje için tüm yapmanız gereken, en sevdiğiniz metin düzenleyicinizle bir HelloWorld. cpp oluşturmaktır.
-#### <a name="macostabmacos"></a>[macOS](#tab/macos)
+#### <a name="macos"></a>[macOS](#tab/macos)
 Bu örnekte, g + + ile derlememiz gerekir. bu nedenle, boş bir proje için tüm yapmanız gereken, en sevdiğiniz metin düzenleyicinizle bir HelloWorld. cpp oluşturmaktır.
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 [!INCLUDE [C++ quickstart](~/includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 **Hedef ortamınızı seçin**
-#### <a name="java-runtimetabjre"></a>[Java çalışma zamanı](#tab/jre)
+#### <a name="java-runtime"></a>[Java çalışma zamanı](#tab/jre)
 [!INCLUDE [jre](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
-#### <a name="androidtabandroid"></a>[Android](#tab/android)
+#### <a name="android"></a>[Android](#tab/android)
 [!INCLUDE [android](~/includes/cognitive-services-speech-service-quickstart-java-android-create-proj.md)]
 * * *
 ::: zone-end

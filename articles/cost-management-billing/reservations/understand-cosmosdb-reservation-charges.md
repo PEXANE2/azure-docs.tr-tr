@@ -1,20 +1,18 @@
 ---
 title: Rezervasyon indiriminin Azure Cosmos DB’ye nasıl uygulandığını anlama | Microsoft Docs
 description: Rezervasyon indiriminin Azure Cosmos DB’de sağlanan işleme hızına (RU/sn) nasıl uygulandığını öğrenin.
-services: cosmos-db
 author: bandersmsft
-manager: kfile
+ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.reviewer: sngun
-ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2477e1074ab90d36f92b647dd74513e3fa9ae70f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995565"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200308"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Rezervasyon indiriminin Azure Cosmos DB’ye nasıl uygulandığını anlama
 
@@ -45,10 +43,10 @@ Rezervasyon indirimi Azure Cosmos DB işleme hızı maliyetlerine saat bazında 
 |Azure Cosmos DB - 100 RU/sn/saat - KR Güney|    KR Güney     |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - AV Batı|    AV Batı     |      1   |
 |Azure Cosmos DB - 100 RU/sn/saat - KR Orta|   KR Orta    |       1  |
-|Azure Cosmos DB - 100 RU/sn/saat - UK Güney|   UK Güney      |     1    |
-|Azure Cosmos DB - 100 RU/sn/saat - UK Batı|   UK Batı      |    1     |
+|Azure Cosmos DB - 100 RU/sn/saat - Güney Birleşik Krallık|   Güney Birleşik Krallık      |     1    |
+|Azure Cosmos DB - 100 RU/sn/saat - Batı Birleşik Krallık|   Batı Birleşik Krallık      |    1     |
 |Azure Cosmos DB - 100 RU/sn/saat - UK Kuzey |   UK Kuzey    |     1    |
-|Azure Cosmos DB - 100 RU/sn/saat - UK Güney 2|   UK Güney 2      |     1    |
+|Azure Cosmos DB - 100 RU/sn/saat - Güney Birleşik Krallık 2|   Güney Birleşik Krallık 2      |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - ABD Doğu 2|  ABD Doğu 2     |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - ABD Orta Kuzey|   ABD Orta Kuzey      |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - ABD Batı|   ABD Batı      |     1    |

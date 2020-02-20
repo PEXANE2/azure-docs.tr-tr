@@ -3,12 +3,12 @@ title: Öğretici-Azure Terrayform Visual Studio Code uzantısını yapılandır
 description: Visual Studio Code'a Azure Terraform uzantısını yüklemeyi ve kullanmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159226"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472290"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Öğretici: Azure Terrayform Visual Studio Code uzantısını yapılandırma
 
@@ -23,7 +23,7 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terraform**: [Terraform’u yükleyin ve yapılandırın](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Terraform’u yükleyin ve yapılandırın](terraform-install-configure.md).
 
 - **Visual Studio Code**: Ortamınız için uygun [Visual Studio Code](https://code.visualstudio.com/download) sürümünü yükleyin.
 
@@ -44,7 +44,7 @@ HashiCorp [Install Terraform](https://www.terraform.io/intro/getting-started/ins
 >[!Tip]
 >PATH sistem değişkeninizi ayarlamayla ilgili yönergeleri izlediğinizden emin olun.
 
-### <a name="install-nodejs"></a>Node.js yükleme
+### <a name="install-nodejs"></a>Node.js’yi yükleme
 
 Terraform'u Cloud Shell'de kullanabilmek için [Node.js](https://nodejs.org/) 6.0+ sürümünü yüklemeniz gerekir.
 

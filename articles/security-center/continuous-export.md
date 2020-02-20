@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bad3be86bd85f7e5cebcf9445d14d836c73a87ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459194"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470810"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)
 
@@ -41,7 +41,7 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 
 1. "Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
 
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ## <a name="continuous-export-through-azure-event-hubs"></a>Azure Event Hubs aracılığıyla sürekli dışarı aktarma  
 
@@ -105,7 +105,7 @@ Artık, Azure Izleyici uyarıları 'ndaki yeni Azure Güvenlik Merkezi uyarılar
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Güvenlik uyarılarını el ile tek seferlik dışarı aktarma
 
-Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarıları** veya **öneriler** sayfasını açın ve **CSV raporu indir (Önizleme)** düğmesini tıklatın.
+Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarıları** veya **öneriler** sayfasını açın ve **CSV raporu indir** düğmesine tıklayın.
 
 [Uyarı verilerini CSV dosyası olarak Indirme ![](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 

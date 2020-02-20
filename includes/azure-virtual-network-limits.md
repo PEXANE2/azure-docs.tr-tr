@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020888"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466033"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** üzerinden yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
@@ -23,7 +23,7 @@ ms.locfileid: "76020888"
 | Kaynak | Varsayılan/en yüksek sınır | 
 | --- | --- |
 | Sanal ağlar |1000 |
-| Sanal ağ başına alt ağ sayısı |3\.000 |
+| Sanal ağ başına alt ağ sayısı |3,000 |
 | Sanal ağ başına sanal ağ eşlemeleri |500 |
 | [Sanal ağ başına sanal ağ geçitleri (VPN ağ geçitleri)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
 | [Sanal ağ başına sanal ağ geçitleri (ExpressRoute ağ geçitleri)](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
@@ -33,12 +33,12 @@ ms.locfileid: "76020888"
 | Sanal makine başına özel IP adresleri |256 |
 | Ağ arabirimi başına genel IP adresleri |256 |
 | Sanal makine başına genel IP adresleri |256 |
-| [Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| [Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500.000 |
 | Ağ arabirim kartları |65.536 |
 | Ağ Güvenlik Grupları |5\.000 |
 | NSG başına NSG kuralları |1000 |
 | Bir güvenlik grubundaki kaynak veya hedef için belirtilen IP adresleri ve aralıklar |4,000 |
-| Uygulama güvenliği grupları |3\.000 |
+| Uygulama güvenliği grupları |3,000 |
 | IP yapılandırması başına uygulama güvenlik grupları, NIC başına |20 |
 | Uygulama güvenlik grubu başına IP yapılandırması |4,000 |
 | Bir ağ güvenlik grubunun tüm güvenlik kuralları dahilinde belirtilenebilir uygulama güvenlik grupları |100 |
@@ -51,10 +51,13 @@ ms.locfileid: "76020888"
 #### <a name="publicip-address"></a>Genel IP adresi sınırları
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| Genel IP adresleri-dinamik | Temel için 1.000. |Desteğe başvurun. |
-| Genel IP adresleri-statik | Temel için 1.000. |Desteğe başvurun. |
-| Genel IP adresleri-statik | Standart için 1.000.|Desteğe başvurun. |
+| Genel IP adresleri<sup>1</sup> | Temel için 10. | Desteğe başvurun. |
+| Statik genel IP adresleri<sup>1</sup> | Temel için 10. | Desteğe başvurun. |
+| Standart genel IP adresleri<sup>1</sup> | 10 | Desteğe başvurun. |
+| Genel IP Ön Ekleri | bir abonelikte standart genel IP sayısıyla sınırlı | Desteğe başvurun. |
 | Genel IP öneki uzunluğu | /28 | Desteğe başvurun. |
+
+<sup>1</sup> Genel IP adresleri için varsayılan sınırlar, ücretsiz deneme, Kullandıkça öde, CSP gibi teklif kategorisi türüne göre farklılık gösterir. Örneğin, Kurumsal Anlaşma abonelikler için varsayılan değer 1000 ' dir.
 
 #### <a name="load-balancer"></a>Yük dengeleyici sınırları
 Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resource Manager ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.

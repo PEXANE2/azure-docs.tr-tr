@@ -3,16 +3,16 @@ title: Öğretici-modül kayıt defterini kullanarak Terrayform ile Azure VM kü
 description: Terraform modüllerini kullanarak Azure'da Windows sanal makine kümesi oluşturmayı öğrenin
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185557"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472221"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Öğretici: modül kayıt defterini kullanarak Terrayform ile Azure VM kümesi oluşturma
 
-Bu makalede Terraform [Azure işlem modülü](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2) ile küçük bir VM kümesi oluşturma adımları gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz: 
+Bu makalede Terraform [Azure işlem modülü](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2) ile küçük bir VM kümesi oluşturma adımları gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz: 
 
 > [!div class="checklist"]
 > * Azure ile kimlik doğrulamasını ayarlama
@@ -25,9 +25,9 @@ Terraform hakkında daha fazla bilgi için [Terraform belgelerini](https://www.t
 ## <a name="set-up-authentication-with-azure"></a>Azure ile kimlik doğrulamasını ayarlama
 
 > [!TIP]
-> [Terraform ortam değişkenlerini kullanıyorsanız](/azure/virtual-machines/linux/terraform-install-configure) veya bu [Azure Cloud Shell](/azure/cloud-shell/overview) öğreticisini çalıştırdıysanız bu adımı atlayın.
+> [Terraform ortam değişkenlerini kullanıyorsanız](terraform-install-configure.md) veya bu [Azure Cloud Shell](/azure/cloud-shell/overview) öğreticisini çalıştırdıysanız bu adımı atlayın.
 
- Azure hizmet sorumlusu oluşturmak için [Terraform'u yükleyin ve Azure erişimini yapılandırın](/azure/virtual-machines/linux/terraform-install-configure) sayfasını inceleyin. Aşağıdaki kodla boş bir dizinde yeni bir `azureProviderAndCreds.tf` dosyası oluşturmak için bu hizmet sorumlusunu kullanın:
+ Azure hizmet sorumlusu oluşturmak için [Terraform'u yükleyin ve Azure erişimini yapılandırın](terraform-install-configure.md) sayfasını inceleyin. Aşağıdaki kodla boş bir dizinde yeni bir `azureProviderAndCreds.tf` dosyası oluşturmak için bu hizmet sorumlusunu kullanın:
 
 ```hcl
 variable subscription_id {}

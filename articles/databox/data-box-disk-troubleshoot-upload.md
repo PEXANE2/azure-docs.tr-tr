@@ -1,6 +1,7 @@
 ---
-title: Azure Data Box Disk sorun giderme verilerini karşıya yükleme günlüklerini kullanarak sorunları | Microsoft Docs
-description: Günlükleri ve Azure Data Box Disk için karşıya veri yükleme sırasında görülen sorunlarını nasıl kullanılacağını açıklar.
+title: Günlükleri kullanarak karşıya veri yükleme sorunlarını giderme
+titleSuffix: Azure Data Box Disk
+description: Günlüklerin nasıl kullanılacağını ve Azure Data Box Disk verileri karşıya yüklerken görülen sorunları nasıl giderebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,44 +9,44 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: deaa9a220ee4d765650779b40742225e300ffdb7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807519"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471984"
 ---
-# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk verileri karşıya yükleme sorunlarını gidermek için günlükleri anlama
+# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk veri yükleme sorunlarını gidermek için günlükleri anlama
 
-Bu makale, Microsoft Azure Data Box Disk için geçerlidir ve verileri Azure'a karşıya yüklediğinizde gördüğünüz sorunları açıklar.
+Bu makale, Microsoft Azure Data Box Disk için geçerlidir ve Azure 'a veri yüklerken gördüğünüz sorunları açıklar.
 
-## <a name="about-upload-logs"></a>Karşıya yükleme günlükleri hakkında
+## <a name="about-upload-logs"></a>Günlükleri karşıya yükleme hakkında
 
-Veri merkezinde Azure'a yüklendiğinde `_error.xml` ve `_verbose.xml` dosyaları için her depolama hesabı oluşturulur. Bu günlükler, verileri karşıya yüklemek için kullanılan aynı depolama hesabına yüklenir. 
+Veriler veri merkezinde Azure 'a yüklendiğinde, her depolama hesabı için `_error.xml` ve `_verbose.xml` dosyaları oluşturulur. Bu Günlükler, verileri karşıya yüklemek için kullanılan depolama hesabına yüklenir. 
 
-Her iki günlük aynı biçimde olduğundan ve Azure depolama hesabına diskten verileri kopyalanırken gerçekleşen olayların XML açıklamaları içerir.
+Her iki günlük de aynı biçimde ve verileri diskten Azure depolama hesabına kopyalarken oluşan olayların XML açıklamalarını içerir.
 
-Hata günlüğü yalnızca bloblar veya karşıya yükleme sırasında hatalarla karşılaştı dosyaları bilgisini içerirken ayrıntılı günlüğü her blob veya dosya kopyalama işleminin durumunu ilgili eksiksiz bilgi içerir.
+Ayrıntılı günlük, her blob veya dosya için kopyalama işleminin durumuyla ilgili tüm bilgileri içerir, ancak hata günlüğü yalnızca blob veya karşıya yükleme sırasında hatalarla karşılaşan dosyalar için bilgileri içerir.
 
-Hata günlüğü, ayrıntılı günlük, ancak filtreler başarılı işlemler aynı yapıda sahiptir.
+Hata günlüğü, ayrıntılı günlük ile aynı yapıya sahip, ancak başarılı işlemleri filtreliyor.
 
-## <a name="download-logs"></a>İndirme günlükleri
+## <a name="download-logs"></a>Günlükleri indir
 
 Karşıya yükleme günlüklerini bulmak için aşağıdaki adımları uygulayın.
 
-1. Verileri Azure'a karşıya yüklerken herhangi bir hata varsa portalı tanılama günlüklerinin bulunduğu klasöre bir yol görüntüler.
+1. Verileri Azure 'a yüklerken bir hata oluşursa, Portal tanılama günlüklerinin bulunduğu klasörün yolunu görüntüler.
 
-    ![Portal'da günlüklerini bağlantı](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
+    ![Portalda günlüklere bağlantı](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. Git **waies**.
+2. **Gmallara**gidin.
 
-    ![hata ve ayrıntılı günlükleri](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
+    ![hata ve ayrıntılı Günlükler](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
-Her durumda, hata günlüklerini ve ayrıntılı günlüklere bakın. Her günlük seçin ve yerel bir kopyasını indirin.
+Her durumda, hata günlüklerini ve ayrıntılı günlükleri görürsünüz. Her günlüğü seçin ve Yerel kopyayı indirin.
 
-## <a name="sample-upload-logs"></a>Örnek günlükleri karşıya yükle
+## <a name="sample-upload-logs"></a>Örnek karşıya yükleme günlükleri
 
-Bir örnek `_verbose.xml` aşağıda gösterilmiştir. Bu durumda, sipariş hatasız başarıyla tamamlandı.
+`_verbose.xml` bir örneği aşağıda gösterilmiştir. Bu durumda, sipariş hatasız olarak başarıyla tamamlanır.
 
 ```xml
 
@@ -90,7 +91,7 @@ Bir örnek `_verbose.xml` aşağıda gösterilmiştir. Bu durumda, sipariş hata
 </DriveLog>
 ```
 
-Aynı sırada, bir örnek için `_error.xml` aşağıda gösterilmiştir.
+Aynı sırada `_error.xml` bir örneği aşağıda gösterilmiştir.
 
 ```xml
 
@@ -109,13 +110,13 @@ Aynı sırada, bir örnek için `_error.xml` aşağıda gösterilmiştir.
 </DriveLog>
 ```
 
-Bir örnek `_error.xml` nerede gösterilen siparişin hatalarla tamamlandı. 
+`_error.xml` bir örneği aşağıda gösterildiği gibi, sıranın hatalarla tamamlandığı yerdir. 
 
-Bu durumda hata dosyasına sahip bir `Summary` bölümü ve tüm dosya içeren başka bir bölüme düzeyi hataları. 
+Bu örnekte hata dosyası bir `Summary` bölümüne ve tüm dosya düzeyi hatalarını içeren başka bir bölüme sahiptir. 
 
-`Summary` İçeren `ValidationErrors` ve `CopyErrors`. Bu durumda, 8 dosyaları veya klasörleri Azure'a karşıya yüklendi ve doğrulama hataları vardı. Verileri Azure depolama hesabına kopyalandığında, 5 dosyaları veya klasörleri başarıyla karşıya yüklendi. Kalan 3 dosyaları veya klasörleri Azure kapsayıcı adlandırma kurallarına uygun olarak yeniden adlandırıldı ve Azure'a başarıyla karşıya yüklendi.
+`Summary`, `ValidationErrors` ve `CopyErrors`içerir. Bu durumda, 8 dosya veya klasör Azure 'a yüklenmiş ve doğrulama hatası yoktu. Veriler Azure Storage hesabına kopyalanırken, 5 dosya veya klasör başarıyla karşıya yüklenir. Geri kalan 3 dosya veya klasör, Azure Container adlandırma kurallarına göre yeniden adlandırıldı ve Azure 'a başarıyla yüklendi.
 
-Dosya düzeyi durumunu bulunduğunuz `BlobStatus` blobları karşıya yüklemek için gerçekleştirilen tüm eylemleri açıklar. Bu durumda, verilerin kopyalanacağı klasörler ile kapsayıcılar için Azure adlandırma kurallarına uymuyor çünkü üç kapsayıcı olarak adlandırılır. İçinde Bu kapsayıcılar karşıya yüklenen bloblara için yeni bir kapsayıcı adı, Azure blob yolu, özgün geçersiz dosya yolu ve blob boyutu dahil edilir.
+Dosya düzeyi durumu, Blobları karşıya yüklemek için gerçekleştirilen eylemleri açıklayan `BlobStatus`. Bu durumda, verilerin kopyalandığı klasörler kapsayıcılar için Azure adlandırma kurallarıyla uyumlu olmadığı için üç kapsayıcı yeniden adlandırılır. Bu kapsayıcılara yüklenen Bloblar için, yeni kapsayıcı adı, Azure 'daki Blobun yolu, özgün geçersiz dosya yolu ve BLOB boyutu dahildir.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -151,35 +152,35 @@ Dosya düzeyi durumunu bulunduğunuz `BlobStatus` blobları karşıya yüklemek 
     </DriveLog>
 ```
 
-## <a name="data-upload-errors"></a>Verileri karşıya yükleme hataları
+## <a name="data-upload-errors"></a>Karşıya veri yükleme hataları
 
-Verileri Azure'a karşıya yüklenirken oluşturulan hatalar aşağıdaki tabloda özetlenmiştir.
+Verileri Azure 'a yüklerken oluşturulan hatalar aşağıdaki tabloda özetlenmiştir.
 
 | Hata kodu | Açıklama                   |
 |-------------|------------------------------|
 |`None` |  Başarıyla tamamlandı.           |
-|`Renamed` | Başarılı bir şekilde blob'olarak yeniden adlandırıldı.   |
-|`CompletedWithErrors` | Karşıya yükleme hatalarla tamamlandı. Dosyaların hata ayrıntıları günlük dosyasında dahil edilir.  |
-|`Corrupted`|Veri alımı sırasında hesaplanan CRC karşıya yükleme sırasında hesaplanan CRC'yle eşleşmiyor.  |  
+|`Renamed` | Blob başarıyla yeniden adlandırıldı.   |
+|`CompletedWithErrors` | Karşıya yükleme hatalarla tamamlandı. Hata içindeki dosyaların ayrıntıları günlük dosyasına dahil edilir.  |
+|`Corrupted`|Veri alma sırasında hesaplanan CRC, karşıya yükleme sırasında hesaplanan CRC ile eşleşmiyor.  |  
 |`StorageRequestFailed` | Azure depolama isteği başarısız oldu.   |     
-|`LeasePresent` | Bu öğe kiralanmış ve başka bir kullanıcı tarafından kullanılıyor. |
+|`LeasePresent` | Bu öğe kiralanır ve başka bir kullanıcı tarafından kullanılıyor. |
 |`StorageRequestForbidden` |Kimlik doğrulama sorunları nedeniyle karşıya yüklenemedi. |
-|`ManagedDiskCreationTerminalFailure` | Yönetilen diskler olarak karşıya yüklenemedi. Dosyaları hazırlama depolama hesabında sayfa blobları kullanılabilir. Bu gibi durumlarda, sayfa BLOB'ları el ile yönetilen disklere dönüştürebilirsiniz.  |
-|`DiskConversionNotStartedTierInfoMissing` | Yönetilen disk, VHD dosyasının dışında precreated katmanı klasörleri kopyaladığınızdan oluşturulmadı. Dosya varsayılan olarak, sipariş oluşturma sırasında belirtilen Hazırlama depolama hesabına sayfa blobu olarak yüklenir. Bunu el ile bir yönetilen diskin dönüştürebilirsiniz.|
-|`InvalidWorkitem` | Azure adlandırma için uygun değil ve kuralları sınırlar verileri karşıya yüklenemedi.|
-|`InvalidPageBlobUploadAsBlockBlob` | Ön eki içeren bir kapsayıcıya blok blobları olarak karşıya `databoxdisk-invalid-pb-`.|
-|`InvalidAzureFileUploadAsBlockBlob` | Ön eki içeren bir kapsayıcıya blok blobları olarak karşıya `databoxdisk-invalid-af`-.|
-|`InvalidManagedDiskUploadAsBlockBlob` | Ön eki içeren bir kapsayıcıya blok blobları olarak karşıya `databoxdisk-invalid-md`-.|
-|`InvalidManagedDiskUploadAsPageBlob` |Sayfa blobları bir kapsayıcıda ön eki olarak karşıya `databoxdisk-invalid-md-`. |
-|`MovedToOverflowShare` |Yüklenen dosyalar için yeni bir paylaşım özgün paylaşım boyutu olarak maksimum Azure boyut sınırını aştı. Yeni dosya paylaşımı adı ile ve sonra özgün adına sahip `-2`.   |
-|`MovedToDefaultAzureShare` |Varsayılan Paylaşım herhangi bir klasöre bir parçası olmayan yüklenen dosyalar. Paylaşım adı ile başlayan `databox-`. |
-|`ContainerRenamed` |Bu dosyalar için kapsayıcı Azure adlandırma kurallarına uygun olmadı ve yeniden adlandırılır. Yeni adı ile başlayan `databox-` ve özgün adı SHA1 karması ile soneki |
-|`ShareRenamed` |Paylaşım için bu dosyalar Azure adlandırma kurallarına uygun olmadı ve adlandırılır. Yeni adı ile başlayan `databox-` ve özgün adı SHA1 karması ile soneki. |
-|`BlobRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun olmadı ve değiştirilmiştir. Denetleme `BlobPath` yeni ad alanı. |
-|`FileRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun olmadı ve değiştirilmiştir. Denetleme `FileStoragePath` yeni ad alanı. |
-|`DiskRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun olmadı ve değiştirilmiştir. Denetleme `BlobPath` yeni ad alanı. |
+|`ManagedDiskCreationTerminalFailure` | Yönetilen diskler olarak karşıya yüklenemedi. Dosyalar, hazırlama depolama hesabında sayfa Blobları olarak kullanılabilir. Sayfa bloblarını yönetilen disklere el ile dönüştürebilirsiniz.  |
+|`DiskConversionNotStartedTierInfoMissing` | VHD dosyası, önceden oluşturulmuş katman klasörlerinin dışına kopyalandığı için, yönetilen bir disk oluşturulmadı. Dosya, sipariş oluşturma sırasında belirtildiği gibi, hazırlama depolama hesabına Sayfa Blobu olarak yüklenir. Bunu yönetilen diske el ile dönüştürebilirsiniz.|
+|`InvalidWorkitem` | Azure adlandırma ve limit kurallarına uygun olmadığından veriler karşıya yüklenemedi.|
+|`InvalidPageBlobUploadAsBlockBlob` | Önek `databoxdisk-invalid-pb-`olan bir kapsayıcıda blok Blobları olarak karşıya yüklendi.|
+|`InvalidAzureFileUploadAsBlockBlob` | `databoxdisk-invalid-af`-önekli bir kapsayıcıda blok Blobları olarak karşıya yüklendi.|
+|`InvalidManagedDiskUploadAsBlockBlob` | `databoxdisk-invalid-md`-önekli bir kapsayıcıda blok Blobları olarak karşıya yüklendi.|
+|`InvalidManagedDiskUploadAsPageBlob` |Önek `databoxdisk-invalid-md-`olan bir kapsayıcıda sayfa Blobları olarak karşıya yüklendi. |
+|`MovedToOverflowShare` |Özgün paylaşımın boyutu en fazla Azure boyut sınırını aştığından dosya yeni bir paylaşıma yüklendi. Yeni dosya paylaşımının adının özgün adı `-2`ile düzeltildi.   |
+|`MovedToDefaultAzureShare` |Herhangi bir klasörün parçası olmayan dosyalar varsayılan bir paylaşıma yüklendi. Paylaşma adı `databox-`başlar. |
+|`ContainerRenamed` |Bu dosyaların kapsayıcısı Azure adlandırma kurallarına uymuyor ve yeniden adlandırıldı. Yeni ad `databox-` başlar ve özgün adın SHA1 karması ile sonekli olur |
+|`ShareRenamed` |Bu dosyaların paylaşılması Azure adlandırma kurallarına uymuyor ve yeniden adlandırıldı. Yeni ad `databox-` başlar ve özgün adın SHA1 karması ile sonekli olur. |
+|`BlobRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. Yeni ad için `BlobPath` alanını denetleyin. |
+|`FileRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. Yeni ad için `FileStoragePath` alanını denetleyin. |
+|`DiskRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. Yeni ad için `BlobPath` alanını denetleyin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Data Box Disk sorunları için bir destek bileti](data-box-disk-contact-microsoft-support.md).
+- [Data Box disk sorunları için bir destek bileti açın](data-box-disk-contact-microsoft-support.md).

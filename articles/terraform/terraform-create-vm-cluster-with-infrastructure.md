@@ -3,12 +3,12 @@ title: Öğretici-Terrayform ve HCL ile Azure VM kümesi oluşturma
 description: Azure 'da yük dengeleyiciye sahip bir Linux sanal makine kümesi oluşturmak için Terrayform ve HCL kullanma
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665366"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470879"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Öğretici: Terrayform ve HCL ile Azure VM kümesi oluşturma
 
@@ -28,11 +28,11 @@ Aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 ## <a name="1-set-up-azure-authentication"></a>1. Azure kimlik doğrulamasını ayarlama
 
 > [!NOTE]
-> [Terraform ortam değişkenlerini kullanıyorsanız](/azure/virtual-machines/linux/terraform-install-configure) veya bu [Azure Cloud Shell](terraform-cloud-shell.md) öğreticisini çalıştırdıysanız bu bölümü atlayın.
+> [Terraform ortam değişkenlerini kullanıyorsanız](terraform-install-configure.md) veya bu [Azure Cloud Shell](terraform-cloud-shell.md) öğreticisini çalıştırdıysanız bu bölümü atlayın.
 
 Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini içeren iki Terraform yapılandırma dosyası oluşturacaksınız.
 
-1. Terraform'un Azure'da kaynak sağlaması için bir [Azure AD hizmet sorumlusu ayarlayın](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure). Hizmet sorumlusunu oluştururken abonelik kimliği, kiracı, uygulama kimliği ve parola değerlerini not edin.
+1. Terraform'un Azure'da kaynak sağlaması için bir [Azure AD hizmet sorumlusu ayarlayın](terraform-install-configure.md#set-up-terraform-access-to-azure). Hizmet sorumlusunu oluştururken abonelik kimliği, kiracı, uygulama kimliği ve parola değerlerini not edin.
 
 2. Bir komut istemi açın.
 
@@ -58,7 +58,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
 
 6. Terraform değişkenlerinin değerlerini için yeni bir dosya oluşturun. Terartform değişken dosyanızı, geçerli dizinde varsa, `terraform.tfvars` adlı herhangi bir dosyayı (veya `*.auto.tfvars`bir desen takip eden) otomatik olarak yüklediği `terraform.tfvars` adlandırma yaygındır. 
 
-7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
+7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `tenant` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın. `client_id` için `appId` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın. `client_secret` için `password` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"

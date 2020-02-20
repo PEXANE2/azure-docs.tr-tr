@@ -1,5 +1,6 @@
 ---
-title: Azure Data Box, VHD 'lerden yönetilen disklere veri kopyalama öğreticisi | Microsoft Docs
+title: "Öğretici: VHD 'lerden yönetilen disklere kopyalama"
+titleSuffix: Azure Data Box
 description: VHD 'lerden şirket içi VM iş yüklerinden verileri Azure Data Box kopyalama hakkında bilgi edinin
 services: databox
 author: alkohli
@@ -8,21 +9,21 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240454"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471236"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box kullanma
 
 Bu öğreticide, şirket içi VHD 'leri Azure 'da yönetilen disklere geçirmek için Azure Data Box nasıl kullanılacağı açıklanmaktadır. Şirket içi VM 'lerden VHD 'Ler, sayfa Blobları olarak Data Box kopyalanır ve yönetilen diskler olarak Azure 'a yüklenir. Bu yönetilen diskler daha sonra Azure VM 'lerine iliştirilebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Önkoşulları gözden geçirin
+> * Önkoşulları inceleyin
 > * Data Box'a bağlanma
 > * Data Box'a veri kopyalama
 
@@ -31,8 +32,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. [Öğreticiyi tamamladınız: Azure Data Box](data-box-deploy-set-up.md)ayarlayın.
-2. Data Box aldınız ve portaldaki sipariş durumu **teslim edildi**.
+1. [Öğreticiyi tamamladınız: Azure Data Box ayarlama](data-box-deploy-set-up.md).
+2. Data Box’ı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. Yüksek hızlı bir ağa bağlanırsınız. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10-GbE bağlantı kullanılamıyorsa, 1-GbE veri bağlantısı kullanın, ancak kopyalama hızları bundan etkilenir.
 4. Şunu gözden geçirdiniz:
 
@@ -41,7 +42,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 ## <a name="connect-to-data-box"></a>Data Box'a bağlanma
 
-Data Box, belirtilen kaynak gruplarına bağlı olarak, her bir ilişkili kaynak grubu için bir paylaşma oluşturur. Örneğin, `mydbmdrg1` ve `mydbmdrg2` sipariş yerleştirilirken oluşturulduysa, aşağıdaki paylaşımlar oluşturulur:
+Data Box, belirtilen kaynak gruplarına bağlı olarak, her bir ilişkili kaynak grubu için bir paylaşma oluşturur. Örneğin, sipariş yerleştirilirken `mydbmdrg1` ve `mydbmdrg2` oluşturulduysa aşağıdaki paylaşımlar oluşturulur:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
@@ -66,7 +67,7 @@ Data Box paylaşımlarına bağlanmak için SMB veya NFS kullanıp kullanmayaca�
 
 ### <a name="connect-to-data-box-via-smb"></a>SMB üzerinden Data Box bağlanma
 
-Windows Server ana bilgisayar kullanıyorsanız, Data Box bağlanmak için aşağıdaki adımları izleyin.
+Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için aşağıdaki adımları izleyin.
 
 1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Kaynak grubuyla ilişkili paylaşımların erişim kimlik bilgilerini almak için **kimlik bilgilerini al** ' a tıklayın. Azure portal **cihaz ayrıntılarından** erişim kimlik bilgilerini de alabilirsiniz.
 
@@ -75,7 +76,7 @@ Windows Server ana bilgisayar kullanıyorsanız, Data Box bağlanmak için aşa�
 
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam**'ı tıklatın.
+2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam**'a tıklayın.
     
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -97,7 +98,7 @@ Windows Server ana bilgisayar kullanıyorsanız, Data Box bağlanmak için aşa�
     C: \>
     ```
 
-4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>\<ShareName>` değerini belirtin. Dosya Gezgini 'ni açmak için **Tamam** 'a tıklayın.
+4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>\<ShareName>` değerini belirtin. Dosya Gezgini'ni açmak için **Tamam**’a tıklayın.
     
     ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
@@ -114,7 +115,7 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
 
     ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'ı tıklatın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
 
     ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -135,9 +136,9 @@ Veri sunucusuna bağlandıktan sonra, bir sonraki adım verileri kopyalayacağı
 
 Veri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
-- VHD 'leri her zaman önceden düzenlenen klasörlerden birine kopyalayın. VHD 'leri bu klasörlerin dışına veya oluşturduğunuz bir klasöre kopyalarsanız, VHD 'ler, yönetilen diskler değil, Azure depolama hesabına sayfa Blobları olarak yüklenir.
-- Yönetilen diskler oluşturmak için yalnızca sabit VHD 'ler karşıya yüklenebilir. VHDX dosyaları veya dinamik ve fark kayıt vhd 'leri desteklenmez.
-- Yalnızca bir kaynak grubunda belirli bir ada sahip bir yönetilen diske, önceden düzenlenen tüm klasörler arasında sahip olabilirsiniz. Bu, önceden düzenlenen klasörlere yüklenen VHD 'Lerin benzersiz adlara sahip olması gerektiğini gösterir. Verilen adın bir kaynak grubunda zaten var olan bir yönetilen diskle eşleşmediğinden emin olun.
+- VHD'leri her zaman önceden oluşturulmuş klasörlerden birine kopyalayın. VHD 'leri bu klasörlerin dışına veya oluşturduğunuz bir klasöre kopyalarsanız, VHD 'ler, yönetilen diskler değil, Azure depolama hesabına sayfa Blobları olarak yüklenir.
+- Yönetilen diskler oluşturmak için yalnızca sabit VHD'ler karşıya yüklenebilir. VHDX dosyaları veya dinamik ve fark kayıt vhd 'leri desteklenmez.
+- Yalnızca bir kaynak grubunda belirli bir ada sahip bir yönetilen diske, önceden düzenlenen tüm klasörler arasında sahip olabilirsiniz. Bu durum, önceden oluşturulan klasörlere yüklenen VHD'lerin benzersiz adlara sahip olması gerektiği anlamına gelir. Verilen adın bir kaynak grubunda zaten var olan bir yönetilen diskle eşleşmediğinden emin olun.
 - [Azure nesne boyut sınırları](data-box-limits.md#azure-object-size-limits)'ndaki yönetilen disk sınırlarını gözden geçirin.
 
 SMB veya NFS aracılığıyla bağlanıp bağlandığınıza bağlı olarak şunları kullanabilirsiniz:
@@ -171,12 +172,12 @@ Kopyalama işi tamamlandıktan sonra **göndermeye hazırlama**' a gidebilirsini
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
-> * Önkoşulları gözden geçirin
+> * Önkoşulları inceleyin
 > * Data Box'a bağlanma
 > * Data Box'a veri kopyalama
 
 
-Data Box Microsoft 'a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Data Box'ı Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box verilerinizi Microsoft'a gönderme](./data-box-deploy-picked-up.md)
