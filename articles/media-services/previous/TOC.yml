@@ -1,5 +1,5 @@
 - name: Media Services Belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
   href: media-services-overview.md
   items:
