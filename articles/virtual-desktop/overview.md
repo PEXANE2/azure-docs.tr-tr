@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 6cb8362b2de1f8345f693b00df021afe84f2d5a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367288"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471780"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -72,7 +72,7 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
 
-* Bir [Azure Active Directory](/active-directory/)
+* Bir [Azure Active Directory](/azure/active-directory/)
 * Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, aşağıdakilerden biriyle yapılandırabilirsiniz:
   * Azure AD Connect (Hibrit kuruluşlar için)
   * Azure AD Domain Services (karma veya bulut kurumları için)

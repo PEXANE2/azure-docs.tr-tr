@@ -9,49 +9,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: a25bcc38c86d54b11ac1de0b3fbdfcdce1d1ac33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461960"
+ms.locfileid: "77471933"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla Node. js ' de bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)olarak desteklemektedir.
-
-[Cihaz akışları IoT Hub](./iot-hub-device-streams-overview.md) hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kolay bir şekilde iletişim kurmasına olanak tanır. Genel Önizleme sırasında Node. js SDK yalnızca hizmet tarafında cihaz akışlarını destekler. Sonuç olarak, bu hızlı başlangıç yalnızca hizmet tarafı uygulamasını çalıştırma yönergelerini ele alır. Aşağıdaki hızlı başlangıçlardan biri ile birlikte bir cihaz tarafı uygulaması çalıştırmalısınız:
-
-* [IoT Hub cihaz akışları aracılığıyla C 'de cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-c.md)
-
-* [IoT Hub cihaz akışlarındaki C# cihaz uygulamalarıyla iletişim kurun](./quickstart-device-streams-echo-csharp.md).
-
-Bu hızlı başlangıçta hizmet tarafı Node. js uygulaması aşağıdaki işlevlere sahiptir:
-
-* IoT cihazına bir cihaz akışı oluşturur.
-
-* Komut satırından girişi okur ve cihaz uygulamasına gönderir ve bunu yeniden yankılendirilecektir.
-
-Kod, bir cihaz akışının başlatma işlemini ve veri göndermek ve almak için nasıl kullanılacağını gösterir.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu hızlı başlangıçta, bir hizmet tarafı uygulaması çalıştırır ve cihaz akışlarını kullanarak bir cihaz ve hizmet arasında iletişim kurabilirsiniz. Azure IoT Hub cihaz akışları, hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kullanımı kolay bir şekilde iletişim kurmasına olanak tanır. Genel Önizleme sırasında Node. js SDK 'Sı yalnızca hizmet tarafında cihaz akışlarını destekler. Sonuç olarak, bu hızlı başlangıç yalnızca hizmet tarafı uygulamasını çalıştırma yönergelerini ele alır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
+* [IoT Hub cihaz akışları aracılığıyla C 'deki cihaz uygulamalarıyla Iletişim kurmayı](./quickstart-device-streams-echo-c.md) tamamlama veya [IoT Hub cihaz akışları C# aracılığıyla cihaz uygulamalarıyla iletişim](./quickstart-device-streams-echo-csharp.md)kurma.
 
-  * Orta ABD
-  * EUAP Orta ABD
-  * Kuzey Avrupa
-  * Güneydoğu Asya
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-Bu hızlı başlangıçta hizmet tarafı uygulamasını çalıştırmak için, geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
+* [Node. js 10 +](https://nodejs.org).
 
-[NodeJS.org](https://nodejs.org)adresinden birden çok platform için Node. js ' ye indirebilirsiniz.
+* [Örnek bir Node. js projesi](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
 Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
 
@@ -59,13 +38,25 @@ Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürüm�
 node --version
 ```
 
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti (DPS) komutları ekler.
+Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)olarak desteklemektedir.
+
+> [!IMPORTANT]
+> Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
+>
+> * Orta ABD
+> * EUAP Orta ABD
+> * Kuzey Avrupa
+> * Güneydoğu Asya
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
+
+Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti (DPS) komutları ekler.
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
-
-Örnek Node.js projesini önceden indirmediyseniz https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip adresinden indirip ZIP arşivini ayıklayın.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -109,13 +100,20 @@ Bu bölümde hem cihaz tarafı uygulamasını hem de hizmet tarafı uygulamasın
 
 Daha önce belirtildiği gibi, IoT Hub Node. js SDK yalnızca hizmet tarafında cihaz akışlarını destekler. Cihaz tarafı bir uygulama için, bu hızlı başlangıçlarda bulunan cihaz programlarından birini kullanın:
 
-   * [IoT Hub cihaz akışları aracılığıyla C 'de cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-c.md)
+* [IoT Hub cihaz akışları aracılığıyla C 'de cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-c.md)
 
-   * [IoT Hub cihaz akışları C# aracılığıyla cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-csharp.md)
+* [IoT Hub cihaz akışları C# aracılığıyla cihaz uygulamalarıyla iletişim kurma](./quickstart-device-streams-echo-csharp.md)
 
 Sonraki adıma geçmeden önce cihaz tarafı uygulamasının çalıştığından emin olun.
 
 ### <a name="run-the-service-side-application"></a>Hizmet tarafı uygulamasını çalıştırma
+
+Bu hızlı başlangıçta hizmet tarafı Node. js uygulaması aşağıdaki işlevlere sahiptir:
+
+* IoT cihazına bir cihaz akışı oluşturur.
+* Komut satırından girişi okur ve cihaz uygulamasına gönderir ve bunu yeniden yankılendirilecektir.
+
+Kod, bir cihaz akışının başlatma işlemini ve veri göndermek ve almak için nasıl kullanılacağını gösterir.
 
 Cihaz tarafı uygulamasının çalıştığını varsayarsak, Node. js ' de hizmet tarafı uygulamasını çalıştırmak için bir yerel Terminal penceresinde aşağıdaki adımları izleyin:
 

@@ -3,12 +3,12 @@ title: Hızlı başlangıç-Azure için Terrayform yapılandırması oluşturma
 description: Azure 'da bir Azure Cosmos DB ve Azure Container Instances dağıtarak Terrayform ile çalışmaya başlayın.
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159322"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470030"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Hızlı başlangıç: Azure için Terrayform yapılandırması oluşturma
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, Terrayform kullanarak Azure kaynakları oluşturursun
 
 Bu bölümde, bir Azure Cosmos DB örneği için yapılandırma oluşturacaksınız.
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. Azure Cloud Shell açın.
 
@@ -173,4 +173,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure kaynaklarını sağlamak Için Terrayform 'U yükleyip yapılandırın](../virtual-machines/linux/terraform-install-configure.md).
+> [Azure kaynaklarını sağlamak Için Terrayform 'U yükleyip yapılandırın](terraform-install-configure.md).

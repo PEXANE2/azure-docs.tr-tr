@@ -6,18 +6,16 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899337"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467564"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure Uygulama Yapılandırması nedir?
 
 Azure Uygulama yapılandırması, uygulama ayarlarını ve özellik bayraklarını merkezi olarak yönetmek için bir hizmet sağlar. Modern programlar, özellikle bir bulutta çalışan programlar, genellikle doğası halinde dağıtılan birçok bileşene sahiptir. Bu bileşenler genelinde yapılandırma ayarlarının yayılması, uygulama dağıtımı sırasında sorun gidermeye yönelik hatalara neden olabilir. Uygulamanızın tüm ayarlarını depolamak ve erişimlerini tek bir yerde güvenli hale getirmek için uygulama yapılandırması 'nı kullanın.
-
-Uygulama yapılandırması şu anda genel önizlemededir. Önizleme döneminde kullanımı ücretsizdir. [Azure Portal](https://portal.azure.com)için kaydolabilir.
 
 ## <a name="why-use-app-configuration"></a>Uygulama yapılandırması neden kullanılmalıdır?
 
@@ -53,12 +51,12 @@ Uygulama yapılandırması, uygulama gizli dizileri depolamak için kullanılan 
 
 Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 'un sağladığı bir istemci kitaplığı kullanmaktır. Programlama diline ve çerçevesine bağlı olarak, aşağıdaki en iyi yöntemler kullanılabilir.
 
-| Programlama dili ve Framework | Nasıl bağlanılır? |
+| Programlama dili ve Framework | Bağlanma |
 |---|---|
 | .NET Core ve ASP.NET Core | .NET Core için uygulama yapılandırma sağlayıcısı |
 | .NET Framework ve ASP.NET | .NET için uygulama yapılandırma Oluşturucusu |
 | Java Spring | Yay bulutu için uygulama yapılandırma istemcisi |
-| Diğerleri | Uygulama yapılandırma REST API |
+| Diğer | Uygulama yapılandırma REST API |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

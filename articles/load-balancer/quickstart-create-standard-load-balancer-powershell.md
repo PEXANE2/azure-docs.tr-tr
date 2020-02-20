@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846523"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470455"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Load Balancer oluşturma
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-Temel genel IP oluşturmak için ```-SKU Basic``` kullanın. Microsoft, üretim iş yükleri için standart kullanılmasını önerir.
+Temel genel IP oluşturmak için ```-SKU Basic``` kullanın. Temel genel IP 'Ler **Standart** yük dengeleyici ile uyumlu değildir. Microsoft, üretim iş yükleri için **Standart** kullanılmasını önerir.
+
+> [!IMPORTANT]
+> Bu hızlı başlangıçtaki geri kalanı, yukarıdaki SKU seçim sürecinde **Standart** SKU 'nun seçili olduğunu varsayar.
 
 ## <a name="create-load-balancer"></a>Yük Dengeleyici oluşturma
 
@@ -162,10 +165,13 @@ $lb = New-AzLoadBalancer `
 
 Temel bir Load Balancer oluşturmak için ```-SKU Basic``` kullanın. Microsoft, üretim iş yükleri için standart kullanılmasını önerir.
 
+> [!IMPORTANT]
+> Bu hızlı başlangıçtaki geri kalanı, yukarıdaki SKU seçim sürecinde **Standart** SKU 'nun seçili olduğunu varsayar.
+
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 Bazı VM’leri dağıtabilmeniz ve yük dengeleyicinizi test edebilmeniz için destekleyici ağ kaynakları (sanal ağ ve sanal NIC’ler) oluşturmanız gerekir. 
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+### <a name="create-a-virtual-network"></a>Sanal ağ oluştur
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek *mySubnet* alt ağına sahip *myVnet* adında bir sanal ağ oluşturur:
 
 ```azurepowershell
@@ -265,7 +271,7 @@ $nicVM3 = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location 
   -LoadBalancerInboundNatRule $natrule3 -Subnet $vnet.Subnets[0]
 ```
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
+### <a name="create-virtual-machines"></a>Sanal makineler oluşturun
 
 VM’ler için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
@@ -359,7 +365,7 @@ Get-AzPublicIPAddress `
   -Name "myPublicIP" | select IpAddress
 ```
 
-Sonra da genel IP adresini bir web tarayıcısına girebilirsiniz. Aşağıdaki örnekteki gibi yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adının dahil olduğu web sitesi görüntülenir:
+Daha sonra genel IP adresini bir web tarayıcısına girebilirsiniz. Aşağıdaki örnekteki gibi yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adının dahil olduğu web sitesi görüntülenir:
 
 ![Yük dengeleyiciyi test etme](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 

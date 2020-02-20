@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134502"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469053"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -57,7 +57,7 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir SQL API hesab�
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi kod ile çalışmaya geçelim. GitHub'dan bir SQL API'si uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu göreceksiniz. 
+Şimdi kod ile çalışmaya geçelim. GitHub'dan bir SQL API'si uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz. 
 
 Örnek depoyu kopyalamak için aşağıdaki komutu çalıştırın. Bu komut bilgisayarınızda örnek uygulamanın bir kopyasını oluşturur.
 
@@ -67,17 +67,19 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
+
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Zaman uyumlu (eşitleme) API 'sini kullanarak veritabanı kaynaklarını yönetme
 
 * `CosmosClient` başlatma. `CosmosClient`, Azure Cosmos veritabanı hizmeti için istemci tarafı mantıksal temsili sağlar. Bu istemci, istekleri hizmete göre yapılandırmak ve çalıştırmak için kullanılır.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* CosmosDatabase oluşturma.
+* `CosmosDatabase` oluşturma.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* CosmosContainer oluşturma.
+* `CosmosContainer` oluşturma.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -85,13 +87,41 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* Nokta okuma `getItem` ve `read` yöntemi kullanılarak gerçekleştirilir
+* Nokta okuma `readItem` yöntemi kullanılarak gerçekleştirilir.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
 * JSON üzerinden SQL sorguları `queryItems` yöntemi kullanılarak gerçekleştirilir.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Zaman uyumsuz (Async) API 'sini kullanarak veritabanı kaynaklarını yönetme
+
+* Zaman uyumsuz API çağrıları, sunucudan yanıt beklemeden hemen döndürülür. Bu, aşağıdaki kod parçacıkları, zaman uyumsuz API kullanarak önceki yönetim görevlerinin tümünü yerine getirmeye yönelik uygun tasarım düzenlerini gösterir.
+
+* `CosmosAsyncClient` başlatma. `CosmosAsyncClient`, Azure Cosmos veritabanı hizmeti için istemci tarafı mantıksal temsili sağlar. Bu istemci, hizmete karşı zaman uyumsuz istekleri yapılandırmak ve yürütmek için kullanılır.
+    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+
+* `CosmosAsyncDatabase` oluşturma.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+
+* `CosmosAsyncContainer` oluşturma.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+
+* Eşitleme API 'sinde olduğu gibi, öğe oluşturma `createItem` yöntemi kullanılarak gerçekleştirilir. Bu örnek, istekleri veren ve bildirimleri yazdıran bir reaktif akışa abone olarak çok sayıda zaman uyumsuz `createItem` isteği nasıl verimli bir şekilde verecağını gösterir. Bu basit örnek tamamlanana ve sonlanacak şekilde çalıştığından, programın öğe oluşturma sırasında sonlandırmadığından emin olmak için `CountDownLatch` örnekleri kullanılır. **Uygun zaman uyumsuz bir programlama uygulaması, zaman uyumsuz çağrılar üzerinde engellenmemelidir; gerçekçi olmayan kullanım örnekleri istekleri, sonsuza kadar çalıştırılan bir Main () döngüsünden oluşturulur ve zaman uyumsuz çağrılarda mandal ihtiyacını ortadan kaldırır.**
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+   
+* Eşitleme API 'sinde olduğu gibi, nokta okumaları `readItem` yöntemi kullanılarak gerçekleştirilir.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+
+* Eşitleme API 'sinde olduğu gibi, JSON üzerinden SQL sorguları `queryItems` yöntemi kullanılarak gerçekleştirilir.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
@@ -109,10 +139,10 @@ Bu adımda Azure portala dönerek bağlantı dizesi bilgilerinizi alın ve uç n
     mvn package
     ```
 
-3. git terminal penceresinde aşağıdaki komutu kullanarak Java uygulamasını başlatın (YOUR_COSMOS_DB_HOSTNAME yerine portaldan aldığınız URI değerini, YOUR_COSMOS_DB_MASTER_KEY yerine de portaldan aldığınız birincil anahtar değerini yazın)
+3. Git Terminal penceresinde, Java uygulamasını başlatmak için aşağıdaki komutu kullanın. (SYNCASYNCMODE 'u `sync` ile değiştirin veya `async`, çalıştırmak istediğiniz örnek koda göre YOUR_COSMOS_DB_HOSTNAME, portaldan alıntı yapılan URI değeriyle değiştirin ve YOUR_COSMOS_DB_MASTER_KEY, portaldan alıntı yapılan birincil anahtarla değiştirin)
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 

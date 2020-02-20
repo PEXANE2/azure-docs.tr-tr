@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838012"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472443"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de AI 'ye giriş
 
@@ -113,9 +113,9 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 | Belge çözme | Dizin oluşturma sırasında metin olmayan kaynaklardaki metin içeriğini ayıklama veya oluşturma işlemi. Optik karakter tanıma (OCR) bir örnektir, ancak genellikle Dizin Oluşturucu uygulama dosyalarından içerik çıkaran için temel Dizin Oluşturucu işlevselliğine başvurur. Kaynak dosya konumu sağlayan veri kaynağı ve alan eşlemeleri sağlayan Dizin Oluşturucu tanımı, belge çözme içindeki anahtar faktörlerdir. | Bkz. [Dizin oluşturuculara genel bakış](search-indexer-overview.md) |
 | Biçimlendirmesini | Metin parçalarını daha büyük bir yapıda birleştirin veya daha büyük bir şekilde daha fazla aşağı akış işleme için daha büyük metin öbeklerini yönetilebilir bir boyuta bölün. | Bkz. bağımsız [yetenek](cognitive-search-skill-shaper.md), [metin birleşme yeteneği](cognitive-search-skill-textmerger.md), [metin bölünmüş yetenek](cognitive-search-skill-textsplit.md) |
 | Zenginleştirilmiş belgeler | İşlem sırasında oluşturulan, son çıktı bir arama dizinine yansıtılmış bir geçişli iç yapı. Bir beceri, hangi enzenginlerin gerçekleştirileceğini belirler. Alan eşlemeleri dizine hangi veri öğelerinin ekleneceğini belirleme. İsteğe bağlı olarak, Depolama Gezgini, Power BI veya Azure Blob depolama alanına bağlanan herhangi bir araçla ilgili araçları kullanarak zenginleştirilmiş belgeleri kalıcı hale getirmek ve incelemek için bir bilgi deposu oluşturabilirsiniz. | [Bilgi deposuna bakın (Önizleme)](knowledge-store-concept-intro.md) |
-| Dizinleyici |  Bir dış veri kaynağından aranabilir verileri ve meta verileri çıkaran ve belge çözme için dizin ve veri kaynağınız arasındaki alan eşlemelerine göre bir dizini dolduran bir gezgin. AI zenginleştirmelerinde, Dizin Oluşturucu bir beceri çağırır ve zenginleştirme çıktısını dizindeki hedef alanlarla ilişkilendirirken alan eşlemelerini içerir. Dizin Oluşturucu tanımı, işlem hattı işlemlerine yönelik tüm yönergeleri ve başvuruları içerir ve Dizin oluşturucuyu çalıştırdığınızda işlem hattı çağrılır. Ek yapılandırma ile, var olan işlenmiş içeriği yeniden kullanabilir ve yalnızca değiştirilen adımları ve becerileri yürütebilirsiniz. | Bkz. [Dizin oluşturucular](search-indexer-overview.md) ve [artımlı zenginleştirme (Önizleme)](cognitive-search-incremental-indexing-conceptual.md). |
+| Dizinleyic |  Bir dış veri kaynağından aranabilir verileri ve meta verileri çıkaran ve belge çözme için dizin ve veri kaynağınız arasındaki alan eşlemelerine göre bir dizini dolduran bir gezgin. AI zenginleştirmelerinde, Dizin Oluşturucu bir beceri çağırır ve zenginleştirme çıktısını dizindeki hedef alanlarla ilişkilendirirken alan eşlemelerini içerir. Dizin Oluşturucu tanımı, işlem hattı işlemlerine yönelik tüm yönergeleri ve başvuruları içerir ve Dizin oluşturucuyu çalıştırdığınızda işlem hattı çağrılır. Ek yapılandırma ile, var olan işlenmiş içeriği yeniden kullanabilir ve yalnızca değiştirilen adımları ve becerileri yürütebilirsiniz. | Bkz. [Dizin oluşturucular](search-indexer-overview.md) ve [artımlı zenginleştirme (Önizleme)](cognitive-search-incremental-indexing-conceptual.md). |
 | Veri Kaynağı  | Azure üzerinde desteklenen türlerin dış veri kaynağına bağlanmak için bir Dizin Oluşturucu tarafından kullanılan nesne. | Bkz. [Dizin oluşturuculara genel bakış](search-indexer-overview.md) |
-| Dizin | Alan yapısını ve kullanımını tanımlayan bir dizin şemasından oluşturulan Azure Bilişsel Arama kalıcı arama dizini. | Bkz. [temel dizin oluşturma](search-what-is-an-index.md) | 
+| Dizin oluşturma | Alan yapısını ve kullanımını tanımlayan bir dizin şemasından oluşturulan Azure Bilişsel Arama kalıcı arama dizini. | Bkz. [temel dizin oluşturma](search-what-is-an-index.md) | 
 | Bilgi deposu | Zenginleştirilmiş belgelerin arama dizinine ek olarak şekillendirilmiş ve yansıtılbileceği bir depolama hesabı | Bkz. [bilgi deposuna giriş](knowledge-store-concept-intro.md) | 
 | Önbellek | Bir zenginleştirme işlem hattı tarafından oluşturulan önbelleğe alınmış çıktıyı içeren bir depolama hesabı. Önbelleğin etkinleştirilmesi, beceri veya enzenginleştirme işlem hattının diğer bileşenlerinde yapılan değişikliklerden etkilenmeden, var olan çıktıyı korur. | Bkz. [artımlı zenginleştirme](cognitive-search-incremental-indexing-conceptual.md) | 
 
@@ -131,7 +131,7 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 + [Öğretici (HTTP istekleri)](cognitive-search-tutorial-blob.md)
 + [Örnek: AI zenginleştirme (C#) için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 
-Ücretsiz hizmetin öğrenme amacıyla önerilmesini öneririz, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Hem hızlı başlangıç hem de Öğreticiyi bir gün içinde çalıştırmak için, her iki alıştırmada de sığdırabilmeniz için daha küçük bir dosya kümesi (10 belge) kullanın veya bir sayacı sıfıra geri almak için hızlı başlangıçta veya öğreticide kullandığınız dizin oluşturucuyu silebilirsiniz.
+Ücretsiz hizmetin öğrenme amacıyla önerilmesini öneririz, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Dersleri birden çok kez çalıştırmak için, oluşturucuyu silip yeniden oluşturun ve sayacı sıfıra sıfırlayın.
 
 **3. Adım: API 'YI gözden geçirme**
 
