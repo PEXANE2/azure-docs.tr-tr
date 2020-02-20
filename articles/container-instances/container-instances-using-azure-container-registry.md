@@ -1,23 +1,23 @@
 ---
 title: Azure Container Registry kapsayıcı görüntüsünü dağıtma
-description: Azure Container Registry 'de kapsayıcı görüntülerini kullanarak Azure Container Instances kapsayıcıları dağıtmayı öğrenin.
+description: Azure Container Registry 'den kapsayıcı görüntülerini çekerek Azure Container Instances kapsayıcıları dağıtmayı öğrenin.
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981681"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468924"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry Azure Container Instances dağıtım
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) , özel Docker kapsayıcı görüntülerini depolamak Için kullanılan Azure tabanlı, yönetilen bir kapsayıcı kayıt defteri hizmetidir. Bu makalede, Azure Container Instances için bir Azure Container Registry 'de depolanan kapsayıcı görüntülerinin nasıl dağıtılacağı açıklanır.
+[Azure Container Registry](../container-registry/container-registry-intro.md) , özel Docker kapsayıcı görüntülerini depolamak Için kullanılan Azure tabanlı, yönetilen bir kapsayıcı kayıt defteri hizmetidir. Bu makalede, Azure Container Instances dağıtım sırasında Azure Container Registry 'de depolanan kapsayıcı görüntülerinin nasıl çekeceğini açıklanmaktadır. Kayıt defteri erişimini yapılandırmak için önerilen bir yol, bir Azure Active Directory hizmet sorumlusu ve parolası oluşturmak ve oturum açma kimlik bilgilerini bir Azure anahtar kasasında depomaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 **Azure Container Registry**: Bu makaledeki adımları tamamlayabilmeniz Için bir Azure Container Registry 'ye ve kayıt defterinde en az bir kapsayıcı görüntüsüne ihtiyacınız vardır. Bir kayıt defterine ihtiyacınız varsa bkz. [Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-azure-cli.md).
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981681"
 "Gözetimsiz" hizmetlere ve uygulamalarına erişim sağlayan bir üretim senaryosunda, bir [hizmet sorumlusu](../container-registry/container-registry-auth-service-principal.md)kullanarak kayıt defteri erişiminin yapılandırılması önerilir. Hizmet sorumlusu kapsayıcı görüntülerinize [rol tabanlı erişim denetimi](../container-registry/container-registry-roles.md) sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
 
 Azure Container Registry ek [kimlik doğrulama seçenekleri](../container-registry/container-registry-authentication.md)sağlar.
+
+> [!NOTE]
+> Aynı kapsayıcı grubunda yapılandırılmış bir [yönetilen kimlik](container-instances-managed-identity.md) kullanarak, kapsayıcı grubu dağıtımı sırasında görüntü çekmek için Azure Container Registry kimlik doğrulaması yapamazsınız.
 
 Aşağıdaki bölümde, bir Azure Anahtar Kasası ve hizmet sorumlusu oluşturursunuz ve hizmet sorumlusunun kimlik bilgilerini kasada depoladığınızda. 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Bir Azure anahtar kasası oluşturdunuz ve içinde iki gizli dizi depoladınız:
+Bir Azure Anahtar Kasası oluşturdunuz ve içinde iki gizli dizi depolandı:
 
 * `$ACR_NAME-pull-usr`: Kapsayıcı kayıt defterinin **kullanıcı adı** olarak kullanılacak hizmet sorumlusu kimliği.
 * `$ACR_NAME-pull-pwd`: Kapsayıcı kayıt defterinin **parolası** olarak kullanılacak hizmet sorumlusu parolası.

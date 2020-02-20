@@ -1,32 +1,60 @@
 ---
-title: Azure Log Analytics aracısını log verileri toplama | Microsoft Docs
+title: Log Analytics aracısına genel bakış
 description: Bu konuda, veri toplamak ve Azure'da barındırılan bilgisayarlarını izlemek nasıl anlamanıza yardımcı olur şirket içinde veya diğer bulut ortamında Log Analytics ile.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/29/2020
-ms.openlocfilehash: 57e560c52c9a8f10586c31231bcc9d6acc667558
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/04/2020
+ms.openlocfilehash: bf2939c28afb682d4053a27920b9cf57795d2e86
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019545"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467241"
 ---
-# <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics aracısıyla günlük verilerini toplama
-
-Daha önce Microsoft Monitoring Agent (MMA) veya OMS Linux Aracısı olarak adlandırılan Azure Log Analytics Aracısı, şirket içi makineler, [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen bilgisayarlar ve herhangi bir buluttaki sanal makineler genelinde kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, Azure Izleyici 'ye ekler ve Log Analytics çalışma alanınızdaki farklı kaynaklardan toplanan günlük verilerini, ayrıca bir izleme çözümünde tanımlanan benzersiz Günlükler veya ölçümleri depolar. 
+# <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
+Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](), [Azure Güvenlik Merkezi]()ve [Azure Otomasyonu]()gibi diğer hizmetleri de destekler.
 
 Bu makalede, aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerini ayrıntılı bir genel bakış sağlar.
 
-## <a name="overview"></a>Genel Bakış
+> [!NOTE]
+> Ayrıca, Microsoft Monitoring Agent (MMA) veya OMS Linux Aracısı olarak adlandırılan Log Analytics aracısını da görebilirsiniz.
 
-![Log Analytics Aracısı iletişimi diyagramı](./media/log-analytics-agent/log-analytics-agent-01.png)
+> [!NOTE]
+> Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
-Toplanan verileri analiz etmek ve üzerinde işlem yapmadan önce, Azure Izleyici hizmetine veri göndermek istediğiniz tüm makineler için aracıları yüklemeniz ve bağlamanız gerekir. Windows ve Linux için ve Kurulum, komut satırı kullanarak karma bir ortamı veya makineleri ile Desired State Configuration (DSC) Azure automation'da Azure Log Analytics VM uzantısı kullanarak, Azure sanal makinelerinde aracıları yükleyebilirsiniz. 
+## <a name="comparison-to-azure-diagnostics-extension"></a>Azure tanılama uzantısına kıyasla
+Azure Izleyici 'de Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure sanal makinelerinin Konuk işletim sisteminden izleme verilerini toplamak için de kullanılabilir. Gereksinimlerinize bağlı olarak ya da her ikisini de kullanmayı seçebilirsiniz. Azure izleyici aracılarının ayrıntılı bir karşılaştırması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) . 
 
-Linux ve Windows için aracı, TCP bağlantı noktası 443 üzerinden Azure Izleyici hizmetine giden iletişim kurar ve makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırmasını anlamak için aşağıdaki gereksinimleri gözden geçirin Gerekli. BT güvenlik ilkeleriniz ağdaki bilgisayarların Internet 'e bağlanmasına izin vermediğinden, bir [Log Analytics ağ geçidi](gateway.md) ayarlayabilir ve ardından aracıyı ağ geçidinden Azure izleyici günlüklerine bağlanacak şekilde yapılandırabilirsiniz. Aracı daha sonra yapılandırma bilgilerini alabilir ve çalışma alanınızda etkinleştirdiğiniz veri toplama kurallarına ve izleme çözümlerine bağlı olarak toplanan verileri gönderebilir. 
+Dikkate alınması gereken önemli farklılıklar şunlardır:
+
+- Azure Tanılama uzantısı yalnızca Azure sanal makineler ile kullanılabilir. Log Analytics Aracısı, Azure 'da, diğer bulutlarda ve Şirket içindeki sanal makinelerle birlikte kullanılabilir.
+- Azure Tanılama uzantısı, verileri Azure depolama 'ya, [Azure Izleme ölçümlerine](data-platform-metrics.md) (yalnızca Windows) ve Event Hubs gönderir. Log Analytics Aracısı verileri [Azure Izleyici günlüklerine](data-platform-logs.md)toplar.
+- Log Analytics Aracısı, [Azure Güvenlik Merkezi](/azure/security-center/)gibi [çözümler](../monitor-reference.md#insights-and-core-solutions), [VM'ler için Azure izleyici](../insights/vminsights-overview.md)ve diğer hizmetler için gereklidir.
+
+## <a name="costs"></a>Maliyetler
+Log Analytics Aracısı için maliyet yoktur, ancak alınan veriler için ücret ödemeniz gerekebilir. Log Analytics çalışma alanında toplanan verilerin fiyatlandırmasıyla ilgili ayrıntılı bilgi için [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetin ' i](manage-cost-storage.md) işaretleyin.
+
+## <a name="data-collected"></a>Toplanan veriler
+Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics çalışma alanını yapılandırabileceğiniz veri türleri listelenmektedir. Diğer veri türlerini toplamak için Log Analytics aracısını kullanan Öngörüler, çözümler ve diğer çözümlerin listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
+
+| Veri Kaynağı | Açıklama |
+| --- | --- |
+| [Windows olay günlükleri](data-sources-windows-events.md) | Windows olay günlüğü sistemine gönderilen bilgiler. |
+| [Syslog](data-sources-syslog.md)                     | Linux olay günlüğü sistemine gönderilen bilgiler. |
+| [Performans](data-sources-performance-counters.md)  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
+| [IIS günlükleri](data-sources-iis-logs.md)                 | Konuk işletim sisteminde çalışan IIS Web siteleri için kullanım bilgileri. |
+| [Özel günlükler](data-sources-custom-logs.md)           | Hem Windows hem de Linux bilgisayarlardaki metin dosyalarından gelen olaylar. |
+
+## <a name="data-destinations"></a>Veri hedefleri
+Log Analytics Aracısı verileri Azure Izleyici 'de bir Log Analytics çalışma alanına gönderir. Birden çok çalışma alanına ve System Center Operations Manager yönetim grubuna veri göndermek için Windows aracısının birden çok bağlantısı olabilir. Linux Aracısı yalnızca tek bir hedefe gönderebilir.
+
+## <a name="other-services"></a>Diğer hizmetler
+Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor, karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking.md), [güncelleştirme yönetimi](../../automation/automation-update-management.md)ve [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu da destekler. Karma Runbook Worker rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyonu karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+
+## <a name="installation-and-configuration"></a>Yükleme ve yapılandırma
 
 Veri toplamak için Log Analytics aracılarını kullanırken, aracı dağıtımınızı planlamak için aşağıdakileri anlamanız gerekir:
 
@@ -40,7 +68,21 @@ System Center Operations Manager 2012 R2 veya sonraki bir sürümünü kullanıy
 * Bir yönetim grubuna rapor veren Linux bilgisayarların doğrudan bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırılması gerekir. Linux bilgisayarlarınız zaten bir çalışma alanına doğrudan raporlama yaptıysanız ve bunları Operations Manager izlemek istiyorsanız, [bir Operations Manager yönetim grubuna raporlamak](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)için aşağıdaki adımları izleyin.
 * Log Analytics Windows aracısını Windows bilgisayarına yükleyebilir ve hem bir çalışma alanıyla hem de bir çalışma alanı ile tümleşik Operations Manager, farklı bir çalışma alanı için rapor verebilirsiniz.
 
-Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor, karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking.md), [güncelleştirme yönetimi](../../automation/automation-update-management.md)ve [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu da destekler. Karma Runbook çalışanı rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyon karma Runbook çalışanı](../../automation/automation-hybrid-runbook-worker.md).  
+
+Log Analytics aracısını yüklemeye ve gereksinimlerinize bağlı olarak makinenizi Azure Izleyici 'ye bağlamaya yönelik birden çok yöntem vardır. Aşağıdaki tabloda, kuruluşunuzda en iyi şekilde çalıştığı belirlemek için her bir yöntemin vurgulanmaktadır.
+
+|Kaynak | Yöntem | Açıklama|
+|-------|-------------|-------------|
+|Azure VM| [Azure portal el ile](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Log Analytics çalışma alanından dağıtılacak VM 'Leri belirtin. |
+| | Azure CLı kullanarak veya bir Azure Resource Manager şablonuyla [Windows](../../virtual-machines/extensions/oms-windows.md) veya [LINUX](../../virtual-machines/extensions/oms-linux.md) için Log Analytics VM Uzantısı | Uzantı, Azure sanal makinelerinde Log Analytics aracısını yükler ve bunları mevcut bir Azure İzleyici çalışma alanına kaydeder. |
+| | [VM'ler için Azure İzleyici](../insights/vminsights-enable-overview.md) | VM'ler için Azure İzleyici izleme etkinleştirdiğinizde, Log Analytics uzantısı ve Aracısı yüklenir. |
+| | [Azure Güvenlik Merkezi otomatik sağlama](../../security-center/security-center-enable-data-collection.md) | Azure Güvenlik Merkezi, desteklenen tüm Azure VM 'lerinde Log Analytics aracısını ve güvenlik açıklarını ve tehditleri izlemek için bunu etkinleştirdiğinizde oluşturulan tüm yeni olanları temin edebilir. Etkinleştirilirse, yüklü bir aracı olmayan yeni veya mevcut VM 'ler temin edilir. |
+| Hibrit Windows bilgisayarı| [El ile yüklemesi](agent-windows.md) | Komut satırından Microsoft Monitoring Agent 'ı yükler. |
+| | [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | Yüklemeyi Azure Automation DSC ile otomatikleştirin. |
+| | [Azure Stack içeren şablon Kaynak Yöneticisi](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | Veri merkezinizde Microsoft Azure Stack dağıttıysanız bir Azure Resource Manager şablonu kullanın.| 
+| Hibrit Linux bilgisayarı| [El ile yüklemesi](../../azure-monitor/learn/quick-collect-linux-computer.md)|Github'da barındırılan bir sarmalayıcı betik çağırma Linux için aracıyı yükleyin. | 
+| System Center Operations Manager|[Operations Manager Log Analytics ile tümleştirin](../../azure-monitor/platform/om-agents.md) | Toplanan verileri Windows bilgisayarlardan bir yönetim grubuna iletmek için Operations Manager ile Azure Izleyici günlükleri arasındaki tümleştirmeyi yapılandırın.|  
+
 
 ## <a name="supported-windows-operating-systems"></a>Desteklenen Windows işletim sistemleri
 
@@ -60,7 +102,7 @@ Bu bölümde, desteklenen Linux dağıtımları hakkında ayrıntılar sağlar.
 Ağustos 2018 tarihinden sonraki sürümleri ile başlayarak, aşağıdaki değişiklikleri destek modelimizi yapıyoruz:  
 
 * Yalnızca sunucu sürümleri desteklenir, istemci değil.  
-* Yeni sürümlerini [Azure destekli Linux dağıtımları](../../virtual-machines/linux/endorsed-distros.md) her zaman desteklenir.  
+* Azure Linux tarafından onaylanan yeni [kaldırmalar](../../virtual-machines/linux/endorsed-distros.md) sürümleri her zaman desteklenmektedir.  
 * Listelenen her ana sürümünün tüm ikincil sürümleri desteklenir.
 * Üreticinin destek bitiş tarihi geçmiş sürümleri desteklenmez.  
 * AMI yeni sürümleri desteklenmez.  
@@ -98,25 +140,31 @@ Aşağıdaki tabloda, aracının yükleneceği desteklenen Linux destekleri içi
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 Protokolü
 
-Azure Izleyici günlüklerine geçiş sırasındaki verilerin güvenliğini sağlamak için aracıyı en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) daha eski sürümleri, savunmasız bulundu ve bunlar yine de şu anda geriye dönük uyumluluk izin vermek için çalışırken, bunlar **önerilmez**.  Ek bilgi için gözden [TLS 1.2 kullanarak güvenli bir şekilde veri gönderen](data-security.md#sending-data-securely-using-tls-12). 
+Azure Izleyici günlüklerine aktarılan verilerin güvenliğini sağlamak için, aracıyı en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**.  Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](data-security.md#sending-data-securely-using-tls-12)inceleyin. 
+
+
+## <a name="network-requirements"></a>Ağ gereksinimleri
+Linux ve Windows için aracı, TCP bağlantı noktası 443 üzerinden Azure Izleyici hizmetine giden iletişim kurar ve makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırmasını anlamak için aşağıdaki gereksinimleri gözden geçirin Gerekli. BT güvenlik ilkeleriniz ağdaki bilgisayarların Internet 'e bağlanmasına izin vermediğinden, bir [Log Analytics ağ geçidi](gateway.md) ayarlayabilir ve ardından aracıyı ağ geçidinden Azure izleyici günlüklerine bağlanacak şekilde yapılandırabilirsiniz. Aracı daha sonra yapılandırma bilgilerini alabilir ve çalışma alanınızda etkinleştirdiğiniz veri toplama kurallarına ve izleme çözümlerine bağlı olarak toplanan verileri gönderebilir.
+
+![Log Analytics Aracısı iletişimi diyagramı](./media/log-analytics-agent/log-analytics-agent-01.png)
+
 
 ## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
-
 Aşağıdaki bilgiler, Linux ve Windows aracısının Azure Izleyici günlükleriyle iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listeler.  
 
 |Aracı Kaynağı|Bağlantı Noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |  
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |  
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
 Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 
-Windows ve Linux Aracısı, HTTPS protokolünü kullanarak bir proxy sunucu aracılığıyla veya Azure Izleyici 'ye Log Analytics ağ geçidiyle iletişim kurmasını destekler.  Anonim ve temel kimlik doğrulaması (kullanıcı adı/parola) desteklenir.  Yüklemesi sırasında belirtilen hizmete doğrudan bağlı Windows aracısı için proxy yapılandırmasını veya [dağıtımdan sonra](agent-manage.md#update-proxy-settings) Denetim Masası'ndan veya PowerShell ile.  
+Windows ve Linux Aracısı, HTTPS protokolünü kullanarak bir proxy sunucu aracılığıyla veya Azure Izleyici 'ye Log Analytics ağ geçidiyle iletişim kurmasını destekler.  Anonim ve temel kimlik doğrulaması (kullanıcı adı/parola) desteklenir.  Doğrudan hizmete bağlı olan Windows Aracısı için, proxy yapılandırması yükleme sırasında veya denetim masasından ya da PowerShell ile [dağıtımdan sonra](agent-manage.md#update-proxy-settings) belirtilir.  
 
-Linux aracısı için proxy sunucusu yüklemesi sırasında belirtilen veya [yüklemeden sonra](agent-manage.md#update-proxy-settings) proxy.conf yapılandırma dosyasını değiştirerek.  Linux Aracısı proxy yapılandırması değeri sözdizimi aşağıdaki gibidir:
+Linux Aracısı için ara sunucu, yükleme sırasında veya proxy. conf yapılandırma dosyası değiştirilerek [yüklendikten sonra](agent-manage.md#update-proxy-settings) belirtilir.  Linux Aracısı proxy yapılandırması değeri sözdizimi aşağıdaki gibidir:
 
 `[protocol://][user:password@]proxyhost[:port]`
 
@@ -126,31 +174,21 @@ Linux aracısı için proxy sunucusu yüklemesi sırasında belirtilen veya [yü
 |Özellik| Açıklama |
 |--------|-------------|
 |Protokol | https |
-|user | Ara sunucu kimlik doğrulaması için isteğe bağlı bir kullanıcı adı |
-|parola | Proxy kimlik doğrulaması için isteğe bağlı parola |
+|kullanıcı | Ara sunucu kimlik doğrulaması için isteğe bağlı bir kullanıcı adı |
+|password | Proxy kimlik doğrulaması için isteğe bağlı parola |
 |proxyhost | Adresi veya FQDN proxy sunucusu/Log Analytics ağ geçidi |
 |port | Proxy sunucusu/Log Analytics ağ geçidi için isteğe bağlı bağlantı noktası numarası |
 
 Örneğin, `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Gibi özel karakterleri kullanırsanız "\@" parolanızı, değeri yanlış ayrıştırılır için proxy bağlantı hatası alırsınız.  Bu sorunu geçici olarak çözmek için parola gibi bir araç kullanarak URL kodlama [URLDecode](https://www.urldecoder.org/).  
+> Parolandaki "\@" gibi özel karakterler kullanırsanız, değer yanlış ayrıştırılacağından bir ara sunucu bağlantı hatası alırsınız.  Bu sorunu geçici olarak çözmek için URL 'deki parolayı [Urlşifre çözme](https://www.urldecoder.org/)gibi bir araç kullanarak kodlayın.  
 
-## <a name="install-and-configure-agent"></a>Aracıyı yükle ve yapılandır
 
-Azure aboneliğinizdeki veya karma ortamınızdaki makineleri doğrudan Azure Izleyici günlükleriyle bağlamak, gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tabloda, kuruluşunuzda en iyi şekilde çalıştığı belirlemek için her bir yöntemin vurgulanmaktadır.
-
-|Kaynak | Yöntem | Açıklama|
-|-------|-------------|-------------|
-|Azure VM| -Log Analytics VM uzantısı için [Windows](../../virtual-machines/extensions/oms-windows.md) veya [Linux](../../virtual-machines/extensions/oms-linux.md) Azure CLI kullanarak veya Azure Resource Manager şablonu ile<br>[Azure Portal el ile](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) - <br>[Azure Güvenlik Merkezi otomatik sağlama](../../security-center/security-center-enable-data-collection.md) - | -Uzantı Log Analytics aracısını Azure sanal makinelerine yükleyip mevcut bir Azure Izleyici çalışma alanına kaydeder.<br>-Azure Güvenlik Merkezi, desteklenen tüm Azure VM 'lerinde Log Analytics aracısını ve güvenlik açıklarını ve tehditleri izlemek için bu uygulamayı etkinleştirdiğinizde oluşturulan tüm yeni olanları temin edebilir. Etkinleştirilirse, yüklü bir aracı olmayan yeni veya mevcut VM 'ler temin edilir.|
-| Hibrit Windows bilgisayarı|- [El ile yükleme](agent-windows.md)<br>- [Azure Otomasyonu DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack ile Resource Manager şablonu](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Veri merkezinizde Microsoft Azure Stack dağıttıysanız, Microsoft Monitoring Agent 'ı komut satırından veya Azure Automation DSC, [Configuration Manager](https://docs.microsoft.com/configmgr/apps/deploy-use/deploy-applications)gibi otomatikleştirilmiş bir yöntem veya Azure Resource Manager şablonuyla birlikte kullanarak yükleyebilirsiniz.| 
-| Hibrit Linux bilgisayarı| [El ile yükleme](../../azure-monitor/learn/quick-collect-linux-computer.md)|Github'da barındırılan bir sarmalayıcı betik çağırma Linux için aracıyı yükleyin. | 
-| System Center Operations Manager|[Operations Manager'ı Log Analytics ile tümleştirme](om-agents.md) | Toplanan verileri Windows bilgisayarlardan bir yönetim grubuna iletmek için Operations Manager ile Azure Izleyici günlükleri arasındaki tümleştirmeyi yapılandırın.|  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Gözden geçirme [veri kaynakları](agent-data-sources.md) Windows veya Linux sisteminizden veri toplamak kullanılabilir veri kaynaklarını anlamasına olanak. 
+* Windows veya Linux sisteminizden veri toplamak için kullanılabilir veri kaynaklarını anlamak üzere [veri kaynaklarını](agent-data-sources.md) gözden geçirin. 
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
+* Azure Izleyici 'ye işlevsellik ekleyen ve ayrıca Log Analytics çalışma alanına veri toplayacağınız [çözümleri izleme](../insights/solutions.md) hakkında bilgi edinin.
 
-* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için. 
-
-* Hakkında bilgi edinin [izleme çözümleri](../insights/solutions.md) işlevselliği eklemek için Azure İzleyici ve ayrıca Log Analytics çalışma alanına veri toplayın.

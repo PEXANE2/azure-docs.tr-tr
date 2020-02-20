@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980069"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467190"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure Kaynak günlüklerini depolama hesabına arşivleme
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar.  Bu makalede, verilerin arşivlenmek üzere korunması için Azure depolama hesabına platform günlüklerinin toplanması açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Henüz yoksa bir [Azure depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olması koşuluyla, depolama hesabının, kaynak gönderme günlükleri ile aynı abonelikte olması gerekmez.
 
 
@@ -33,7 +33,7 @@ Azure kaynağı için bir tanılama ayarı oluşturarak, platform günlüklerini
 
 
 ## <a name="collect-data-from-compute-resources"></a>İşlem kaynaklarından veri toplama
-Tanılama ayarları, Azure işlem kaynakları için, Konuk işletim sistemleri veya iş yükleri değil, diğer kaynaklar gibi kaynak günlüklerini toplar. Bu verileri toplamak için [Windows Azure tanılama aracısını](diagnostics-extension-overview.md)yüklersiniz. Ayrıntılar için bkz. [Azure Storage 'da tanılama verilerini depolama ve görüntüleme](diagnostics-extension-to-storage.md) .
+Tanılama ayarları, Azure işlem kaynakları için, Konuk işletim sistemleri veya iş yükleri değil, diğer kaynaklar gibi kaynak günlüklerini toplar. Bu verileri toplamak için [Windows Azure tanılama aracısını](diagnostics-extension-overview.md)yüklersiniz. 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>Depolama hesabındaki platform günlüklerinin şeması

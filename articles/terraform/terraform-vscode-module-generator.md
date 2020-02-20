@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da Yeumman kullanarak bir Terrayform temel şablonu olu
 description: Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159158"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472154"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Öğretici: Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturma
 
@@ -25,7 +25,7 @@ Bu makalede, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğrenecek
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 - **Visual Studio Code**: platformunuz için [Visual Studio Code indirin](https://code.visualstudio.com/download) .
-- **Terrayform**: yeumman tarafından oluşturulan modülü çalıştırmak Için [terrayform 'u yükler](/azure/virtual-machines/linux/terraform-install-configure ) .
+- **Terrayform**: yeumman tarafından oluşturulan modülü çalıştırmak Için [terrayform 'u yükler](terraform-install-configure.md) .
 - **Docker**: yeumman Oluşturucu tarafından oluşturulan modülü çalıştırmak Için [Docker 'ı yükler](https://www.docker.com/get-started) .
 - **Go programlama dili**: [Install](https://golang.org/) , yeumman tarafından oluşturulan test çalışmaları go dilini kullanan koddur.
 
@@ -34,7 +34,7 @@ Bu makalede, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğrenecek
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
-### <a name="install-nodejs"></a>Node.js yükleme
+### <a name="install-nodejs"></a>Node.js’yi yükleme
 
 Terraform'u Cloud Shell'de kullanabilmek için [Node.js](https://nodejs.org/en/download/) 6.0+ sürümünü yüklemeniz gerekir.
 

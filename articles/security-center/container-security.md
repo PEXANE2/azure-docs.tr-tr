@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431001"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470777"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -71,9 +71,9 @@ Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar i�
 ## <a name="container-security-faq"></a>Kapsayıcı güvenliği SSS
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Güvenlik Merkezi tarayabilmesi gereken görüntü türleri nelerdir?
-Güvenlik Merkezi, Linux işletim sistemi tabanlı görüntüleri tarar. 
+Güvenlik Merkezi, kabuk erişimi sağlayan Linux işletim sistemi tabanlı görüntüleri tarar. 
 
-Qualys tarayıcısı, yalnızca uygulamanızı ve çalışma zamanı bağımlılıklarını içeren "distrouz" görüntülerini desteklemez.
+Qualys tarayıcısı, [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca uygulamanızı ve çalışma zamanı bağımlılıklarını (Paket Yöneticisi, kabuk veya işletim sistemi olmadan) Içeren "distroor" görüntülerini desteklemez.
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Azure Güvenlik Merkezi 'nin bir görüntüyü taramasını nasıl tarayıyoruz?
 Görüntü, kayıt defterinden ayıklanır. Daha sonra, bilinen güvenlik açıklarının listesini ayıklayan Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırılır.

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513856"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469145"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -64,6 +64,7 @@ Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyark
 
 - Kurtarma noktası kaynak grubunda bir kilit varsa, kurtarma noktalarının otomatik temizlenmesini engelliyorsa bu sorun oluşabilir.
 - Bu sorun, günlük birden çok yedeklemenin tetiklenmesi durumunda da gerçekleşebilir. Şu anda günde yalnızca bir yedekleme yapmanız önerilir, çünkü anında geri yükleme noktaları yapılandırılan anlık görüntü bekletmesine göre 1-5 gün boyunca korunur ve belirli bir zamanda bir VM ile yalnızca 18 anlık RPs ilişkilendirilebilir. <br>
+- Bir VM için geri yükleme noktası koleksiyonları ve kaynak grupları genelinde geri yükleme noktalarının sayısı 18 ' i aşamaz. Yeni bir geri yükleme noktası oluşturmak için lütfen mevcut geri yükleme noktalarını silin.
 
 Önerilen eylem:<br>
 Bu sorunu çözmek için VM 'nin kaynak grubundaki kilidi kaldırın ve temizleme işlemini tetiklemek için işlemi yeniden deneyin.
@@ -217,10 +218,10 @@ VMSnapshot uzantısını yeniden yüklemeye zorlamak için uzantıyı kaldırın
 Uzantıyı kaldırmak için:
 
 1. [Azure Portal](https://portal.azure.com/), yedekleme hatası yaşayan VM 'ye gidin.
-2. Seçin **ayarları**.
+2. **Ayarlar**' ı seçin.
 3. **Uzantılar**'ı seçin.
 4. **Anlık görüntü uzantısı**' nı seçin.
-5. **Kaldır**'ı seçin.
+5. **Kaldır**' ı seçin.
 
 Linux VM için, VMSnapshot uzantısı Azure portal görünmüyorsa, [Azure Linux aracısını güncelleştirin](../virtual-machines/linux/update-agent.md)ve sonra yedeklemeyi çalıştırın.
 
@@ -228,7 +229,7 @@ Bu adımların tamamlanması, uzantının bir sonraki yedekleme sırasında yeni
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_`<Geo>`_`<number>`.
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' e tıklayın.
@@ -257,7 +258,7 @@ Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu, geri yükl
 
 Kaynak grubundaki kilit nedeniyle temizlenmemiş geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Hub** menüsünde **tüm kaynaklar**' a tıklayın, aşağıdaki biçime sahip kaynak grubunu seçin AZUREBACKUPRG_`<Geo>`_`<number>` sanal makinenizin bulunduğu yer.
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/resource-group.png)

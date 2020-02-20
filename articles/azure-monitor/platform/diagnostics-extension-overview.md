@@ -1,90 +1,113 @@
 ---
-title: Azure Tanılama uzantısına genel bakış
+title: Azure Tanılama uzantıya genel bakış
 description: Azure tanılama 'yı kullanarak hata ayıklama, performans, izleme, bulut hizmetlerinde trafik analizi, sanal makineler ve Service Fabric
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/13/2019
-ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/14/2020
+ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395366"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468006"
 ---
-# <a name="what-is-azure-diagnostics-extension"></a>Azure Tanılama uzantısı nedir?
-Azure Tanılama uzantısı, dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını sağlayan Azure 'daki bir aracıdır. Tanılama uzantısını bir dizi farklı kaynaktan kullanabilirsiniz. Şu anda desteklenen Azure bulut hizmeti (klasik) Web ve çalışan rolleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric. Diğer Azure hizmetlerinde farklı tanılama yöntemleri vardır. Bkz. [Azure 'da Izlemeye genel bakış](../../azure-monitor/overview.md).
+# <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantıya genel bakış
+Azure Tanılama uzantısı, Azure [izleyici 'de](agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
 
-## <a name="linux-agent"></a>Linux Aracısı
-Linux çalıştıran sanal makinelerde [uzantının Linux sürümü](../../virtual-machines/extensions/diagnostics-linux.md) kullanılabilir. Toplanan istatistikler ve davranış Windows sürümünden farklıdır.
+> [!NOTE]
+> Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
-## <a name="data-you-can-collect"></a>Toplayabileceğiniz veriler
-Azure Tanılama uzantısı aşağıdaki veri türlerini toplayabilirler:
+## <a name="comparison-to-log-analytics-agent"></a>Log Analytics aracısına karşılaştırma
+Azure Izleyici 'deki Log Analytics Aracısı, sanal makinelerin Konuk işletim sisteminden izleme verileri toplamak için de kullanılabilir. Gereksinimlerinize bağlı olarak ya da her ikisini de kullanmayı seçebilirsiniz. Azure izleyici aracılarının ayrıntılı bir karşılaştırması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) . 
+
+Dikkate alınması gereken önemli farklılıklar şunlardır:
+
+- Azure Tanılama uzantısı yalnızca Azure sanal makineler ile kullanılabilir. Log Analytics Aracısı, Azure 'da, diğer bulutlarda ve Şirket içindeki sanal makinelerle birlikte kullanılabilir.
+- Azure Tanılama uzantısı, verileri Azure depolama 'ya, [Azure Izleme ölçümlerine](data-platform-metrics.md) (yalnızca Windows) ve Event Hubs gönderir. Log Analytics Aracısı verileri [Azure Izleyici günlüklerine](data-platform-logs.md)toplar.
+- Log Analytics Aracısı, [Azure Güvenlik Merkezi](/azure/security-center/)gibi [çözümler](../monitor-reference.md#insights-and-core-solutions), [VM'ler için Azure izleyici](../insights/vminsights-overview.md)ve diğer hizmetler için gereklidir.
+
+## <a name="costs"></a>Maliyetler
+Azure tanılama uzantısı için bir maliyet yoktur, ancak alınan veriler için ücret ödemeniz gerekebilir. Veri topladığınız hedef için [Azure izleyici fiyatlandırmasını](https://azure.microsoft.com/pricing/details/monitor/) denetleyin.
+
+## <a name="data-collected"></a>Toplanan veriler
+Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplanabilecek veriler listelenmektedir.
+
+### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
 | Veri Kaynağı | Açıklama |
 | --- | --- |
-| Performans sayacı ölçümleri |İşletim sistemi ve özel performans sayaçları |
-| Uygulama günlükleri |Uygulamanız tarafından yazılan izleme iletileri |
-| Windows Olay günlükleri |Windows olay günlüğü sistemine gönderilen bilgiler |
+| Windows Olay günlükleri   | Windows olay günlüğü 'nden olaylar. |
+| Performans sayaçları | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
+| IIS Günlükleri             | Konuk işletim sisteminde çalışan IIS Web siteleri için kullanım bilgileri. |
+| Uygulama günlükleri     | Uygulamanız tarafından yazılan izleme iletileri. |
 | .NET EventSource günlükleri |.NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) sınıfını kullanarak kod yazma olayları |
-| IIS Günlükleri |IIS Web siteleri hakkında bilgi |
-| [Bildirim tabanlı ETW günlükleri](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Herhangi bir işlem tarafından oluşturulan Windows olayları için olay Izleme. (1 |
-| Kilitlenme dökümü (Günlükler) |Uygulamanın kilitlenirse işlemin durumu hakkında bilgi |
-| Özel hata günlükleri |Uygulamanız veya hizmetiniz tarafından oluşturulan Günlükler |
-| Azure tanılama altyapı günlükleri |Azure Tanılama hakkında bilgi |
+| [Bildirim tabanlı ETW günlükleri](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Herhangi bir işlem tarafından oluşturulan Windows olayları için olay Izleme. |
+| Kilitlenme dökümü (Günlükler)   | Uygulamanın kilitlenirse işlemin durumu hakkında bilgiler. |
+| Dosya tabanlı Günlükler    | Uygulamanız veya hizmetiniz tarafından oluşturulan Günlükler. |
+| Aracı tanılama günlükleri | Azure Tanılama hakkında bilgi. |
 
-(1) ETW sağlayıcılarının bir listesini almak için `c:\Windows\System32\logman.exe query providers`, bilgi toplamak istediğiniz makinede bir konsol penceresinde çalıştırın.
 
-## <a name="data-storage"></a>Veri depolama
-Uzantı, verilerini belirttiğiniz bir [Azure depolama hesabında](diagnostics-extension-to-storage.md) depolar.
+### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 
-Ayrıca, [Application Insights](../../azure-monitor/app/cloudservices.md)gönderebilirsiniz. 
+| Veri Kaynağı | Açıklama |
+| --- | --- |
+| Syslog | Linux olay günlüğü sistemine gönderilen olaylar.   |
+| Performans sayaçları  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
+| Günlük dosyaları | Dosya tabanlı günlüğe gönderilen girişler.  |
 
-Diğer bir seçenek de [Olay Hub 'ına](../../event-hubs/event-hubs-about.md)akışını, daha sonra Azure olmayan izleme hizmetlerine göndermenizi sağlar.
+## <a name="data-destinations"></a>Veri hedefleri
+Hem Windows hem de Linux için Azure tanılama uzantısı her zaman bir Azure depolama hesabına veri toplar. Bkz. [Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma](diagnostics-extension-windows-install.md) ve bu verilerin toplandığı belirli tablo ve Blobların bir listesi için [ölçümleri ve günlükleri Izlemek üzere Linux Tanılama uzantısı 'nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md) .
 
-Verilerinizi Azure Izleyici ölçümleri zaman serisi veritabanına gönderme seçeneğiniz de vardır. Şu anda, bu havuz yalnızca performans sayaçları için geçerlidir. Performans sayaçlarını özel ölçümler olarak göndermenizi sağlar. Bu özellik önizleme aşamasındadır. Azure Izleyici havuzu şunları destekler:
-* Azure izleyici [ölçümleri API 'leri](https://docs.microsoft.com/rest/api/monitor/) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarını alma.
-* Azure izleyici 'de [ölçüm uyarıları](../../azure-monitor/platform/alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
-* Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor.  Örneğin, "MantıksalDisk (\*)/DiskWrites/sec" sayacını topladıysanız, sanal makine üzerindeki her bir mantıksal disk için (örneğin, C:) disk yazma/sn üzerinde disk yazma/sn üzerinde uyarı oluşturmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
+Diğer ek hedeflere veri göndermek için bir veya daha fazla *veri havuzları* yapılandırın. Aşağıdaki bölümlerde, Windows ve Linux Tanılama uzantısı için mevcut olan havuzlar listelenmektedir.
 
-Bu havuzun nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için [Azure tanılama şeması belgelerine bakın.](diagnostics-extension-schema-1dot3.md)
+### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-## <a name="costs"></a>Maliyetler
-Yukarıdaki seçeneklerin her biri maliyette bulunabilir. Beklenmedik faturaları önlemek için bunları araştırdığınızdan emin olun.  Application Insights, Olay Hub 'ı ve Azure Storage, giriş ve depolama ile ilişkili ayrı maliyetlere sahiptir. Azure depolama, belirli bir zaman süresinden sonra daha eski verileri temizlemek istiyorsanız, bazı verileri süresiz olarak tutar.    
+| Hedef | Açıklama |
+|:---|:---|
+| Azure Izleyici ölçümleri | Performans verilerini Azure Izleyici ölçümlerine toplayın. Bkz. [Azure izleyici ölçüm veritabanına Konuk işletim sistemi ölçümleri gönderme](collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. Bkz. [akış Azure Tanılama verileri Event Hubs](diagnostics-extension-stream-event-hubs.md) |
+| Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
+| Application Insights | Diğer uygulama izlemeyle tümleştirilecek Application Insights için sanal makinenizde çalışan uygulamalardan veri toplayın. Bkz. [Application Insights Tanılama verileri gönderme](diagnostics-extension-to-application-insights.md). |
 
-## <a name="versioning-and-configuration-schema"></a>Sürüm oluşturma ve yapılandırma şeması
-Bkz. [Azure tanılama sürümü geçmişi ve şeması](diagnostics-extension-schema.md).
+Ayrıca, Log Analytics Aracısı genellikle bu işlev için kullanılsa da, Azure Izleyici günlükleri ile analiz yapmak için depolama alanından WAD verileri toplayabilirsiniz Log Analytics bir çalışma alanına toplayabilirsiniz. Doğrudan bir Log Analytics çalışma alanına veri gönderebilir ve ek işlevsellik sağlayan çözümleri ve öngörüleri destekler.  Bkz. [Azure depolama 'Dan Azure tanılama günlüklerini toplama](diagnostics-extension-logs.md). 
 
+
+### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
+LAD, verileri Azure depolama 'daki tablolara yazar. Aşağıdaki tabloda yer aldığı havuzları destekler.
+
+| Hedef | Açıklama |
+|:---|:---|
+| Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. |
+| Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
+| Azure Izleyici ölçümleri | Telegraf aracısını, LAD 'ya ek olarak yükleme. Bkz. [etkileyen bir LINUX VM için özel ölçümleri toplama telegraf Aracısı](collect-custom-metrics-linux-telegraf.md).
+
+
+## <a name="installation-and-configuration"></a>Yükleme ve yapılandırma
+Tanılama uzantısı, Azure 'da bir [sanal makine uzantısı](/virtual-machines/extensions/overview) olarak uygulanır, bu nedenle Kaynak Yöneticisi şablonları, POWERSHELL ve CLI kullanarak aynı yükleme seçeneklerini destekler. Sanal makine uzantılarını yükleme ve sürdürme hakkında genel Ayrıntılar için bkz. [Windows](/virtual-machines/extensions/features-windows) ve sanal makine uzantıları ve [Linux için](/virtual-machines/extensions/features-linux) sanal makine uzantıları ve özellikleri.
+
+Ayrıca, sanal makine menüsünün **izleme** bölümündeki **tanılama ayarları** altında Azure Portal hem Windows hem de Linux Tanılama uzantısını yükleyip yapılandırabilirsiniz.
+
+Windows ve Linux için tanılama uzantısını yükleme ve yapılandırma hakkında ayrıntılı bilgi için aşağıdaki makalelere bakın.
+
+- [Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma](diagnostics-extension-windows-install.md)
+- [Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md)
+
+## <a name="other-documentation"></a>Diğer belgeler
+
+###  <a name="azure-cloud-service-classic-web-and-worker-roles"></a>Azure bulut hizmeti (klasik) Web ve çalışan rolleri
+- [Bulut hizmeti Izlemeye giriş](../../cloud-services/cloud-services-how-to-monitor.md)
+- [Azure Cloud Services Azure Tanılama etkinleştirme](../../cloud-services/cloud-services-dotnet-diagnostics.md)
+- [Azure Cloud Services için Application Insights](../app/cloudservices.md)<br>[Azure Tanılama bir Cloud Services uygulamasının akışını izleme](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md) 
+
+### <a name="azure-service-fabric"></a>Azure Service Fabric
+- [Yerel makine geliştirme kurulumundaki hizmetleri izleme ve tanılama](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tanılama 'yı toplamaya çalıştığınız hizmeti seçin ve başlamak için aşağıdaki makaleleri kullanın. Belirli görevler için başvuru için genel Azure tanılama bağlantılarını kullanın.
 
-## <a name="cloud-services-using-azure-diagnostics"></a>Azure Tanılama kullanarak Cloud Services
-* Visual Studio kullanıyorsanız bkz. başlamak için [Visual Studio 'yu kullanarak Cloud Services uygulamayı izleme](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) . Aksi takdirde, bkz.
-* [Azure Tanılama kullanarak bulut hizmetlerini izleme](../../cloud-services/cloud-services-how-to-monitor.md)
-* [Cloud Services uygulamasında Azure Tanılama ayarlama](../../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-Daha gelişmiş konular için bkz.
-
-* [Cloud Services için Application Insights ile Azure Tanılama kullanma](../../azure-monitor/app/cloudservices.md)
-* [Azure Tanılama bir Cloud Services uygulamasının akışını izleme](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [Cloud Services tanılamayı ayarlamak için PowerShell 'i kullanma](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-## <a name="virtual-machines"></a>Virtual Machines (Sanal Makineler)
-* Visual Studio kullanıyorsanız bkz. başlamak için [Azure sanal makinelerini izlemek üzere Visual Studio 'Yu kullanma](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) . Aksi takdirde, bkz.
-* [Azure sanal makinesinde Azure Tanılama ayarlama](/azure/virtual-machines/extensions/diagnostics-windows)
-
-Daha gelişmiş konular için bkz.
-
-* [Azure sanal makinelerinde tanılamayı ayarlamak için PowerShell 'i kullanma](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Azure Resource Manager şablonu kullanarak izleme ve Tanılama ile Windows sanal makinesi oluşturma](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-## <a name="service-fabric"></a>Service Fabric
-[Service Fabric uygulamayı izlemeye](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)başlayın. Diğer pek çok Service Fabric tanılama makalesi, bu makaleye ulaştıktan sonra sol taraftaki Gezinti ağacında bulunur.
-
-## <a name="general-articles"></a>Genel makaleler
 * [Azure tanılama 'de performans sayaçlarını kullanmayı](../../cloud-services/diagnostics-performance-counters.md)öğrenin.
 * Azure depolama tablolarında verilerinizi başlatma veya bulma ile ilgili sorun yaşıyorsanız, bkz. [sorun giderme Azure tanılama](diagnostics-extension-troubleshooting.md)
 

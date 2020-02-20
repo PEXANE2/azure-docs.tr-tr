@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja
+ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212237"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467768"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: çok kiracılı uygulama modelini kullanarak tüm Azure Active Directory kullanıcıları oturum açma
 
@@ -37,7 +37,7 @@ Uygulamanızı bir Azure AD çok kiracılı uygulamasına dönüştürmek için 
 3. [Kodunuzu birden çok veren değerini işleyecek şekilde güncelleştirin](#update-your-code-to-handle-multiple-issuer-values)
 4. [Kullanıcı ve yönetici onayını anlayın ve uygun kod değişikliklerini yapın](#understand-user-and-admin-consent)
 
-Her adıma ayrıntılı olarak bakalım. Ayrıca, [Bu çok kiracılı örnek listesine](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)doğrudan atlayabilirsiniz.
+Her adıma ayrıntılı olarak bakalım. Ayrıca, [Azure AD ve OpenID Connect kullanarak Microsoft Graph çağıran çok kiracılı SaaS Web uygulamasına](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)doğrudan örnek yapıya atlayabilirsiniz.
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Kaydı çok kiracılı olacak şekilde Güncelleştir
 
@@ -134,7 +134,7 @@ Uygulamanızın her biri Azure AD 'de kendi kaydıyla temsil edilen birden çok 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Tek bir kiracıda birden çok katman
 
-Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için kaynağın uygulama kaydı, istemci uygulama KIMLIĞINI [uygulama bildiriminde][AAD-App-Manifest]bir `knownClientApplications` olarak içermelidir. Örneğin:
+Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için kaynağın uygulama kaydı, istemci uygulama KIMLIĞINI [uygulama bildiriminde][AAD-App-Manifest]bir `knownClientApplications` olarak içermelidir. Örnek:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 

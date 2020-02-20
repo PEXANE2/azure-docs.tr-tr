@@ -8,17 +8,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 2f1843690861a463c634f523e82facffc72b6743
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/13/2020
+ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995513"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199305"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure Veritabanı Tek sunucuya rezervasyon indiriminin uygulanması
 
-Bir PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasitesi satın almanızın ardından, rezervasyonun öznitelikleriyle ve miktarıyla eşleşen PostgreSQL Tek sunucu veritabanlarına otomatik olarak rezervasyon indirimi uygulanır. Rezervasyon yalnızca PostgreSQL için Azure Veritabanı Tek sunucu işlem maliyetlerini kapsar. Depolama ve ağ iletişimi için normal fiyatlarla ücretlendirilirsiniz. 
+Bir PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasitesi satın almanızın ardından, rezervasyonun öznitelikleriyle ve miktarıyla eşleşen PostgreSQL Tek sunucu veritabanlarına otomatik olarak rezervasyon indirimi uygulanır. Rezervasyon yalnızca PostgreSQL için Azure Veritabanı Tek sunucu işlem maliyetlerini kapsar. Depolama ve ağ iletişimi için normal fiyatlarla ücretlendirilirsiniz.
 
 ## <a name="how-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 

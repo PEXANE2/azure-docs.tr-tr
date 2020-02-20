@@ -1,17 +1,17 @@
 ---
-title: StorSimple cihazlarını yönetmek için Azure Resource Manager betikleri kullanma
+title: StorSimple cihazlarını yönetmek için Azurere PowerShell betikleri kullanın
 description: StorSimple işlerini otomatikleştirmek için Azure Resource Manager betikleri kullanmayı öğrenin
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276641"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471967"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Resource Manager SDK tabanlı betikleri kullanma
 
@@ -19,7 +19,7 @@ Bu makalede, StorSimple 8000 serisi cihazınızı yönetmek için SDK tabanlı b
 
 Bu makale yalnızca Azure portal ' de çalışan StorSimple 8000 serisi cihazları için geçerlidir.
 
-## <a name="sample-scripts"></a>Örnek komut dosyaları
+## <a name="sample-scripts"></a>Örnek betikler
 
 Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek için kullanılabilir.
 
@@ -49,7 +49,7 @@ Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek i
 
 Bu bölüm örnek bir betiği alır ve betiği çalıştırmak için gereken çeşitli adımlara ilişkin ayrıntılar sağlar.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 

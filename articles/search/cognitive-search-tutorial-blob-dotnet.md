@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: efd4a9333b5fb02c18b2f6a6d0f8ce58bfb8f220
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185684"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472392"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Öğretici: ve .NET SDK kullanarak C# bir AI zenginleştirme Işlem hattı oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide, .NET SDK 'yı kullanarak aşağıdaki görevleri gerçekleştir
 
 Çıktı, Azure Bilişsel Arama 'te tam metin aranabilir bir dizindir. [Eş anlamlılar](search-synonyms.md), [puanlama profilleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [çözümleyiciler](search-analyzers.md) ve [filtreler](search-filters.md) gibi diğer standart özelliklerle dizini geliştirebilirsiniz.
 
-Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Bu öğreticiyi aynı günde birden çok kez çalıştırmak istiyorsanız, daha fazla çalıştırmaya uyabilmeniz için daha küçük bir dosya kümesi kullanın.
+Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Bu öğreticiyi aynı günde birden çok kez çalıştırmak istiyorsanız, sayacı sıfırlamak için Dizin oluşturucuyu silin.
 
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel hizmetler kaynağı eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
@@ -85,7 +85,7 @@ Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. 
 
 Paylaşılan erişim imzası sağlama gibi, bağlantı dizesini belirtmenin başka birçok yolu vardır. Veri kaynağı kimlik bilgileri hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Depolama Alanı dizinini oluşturma](search-howto-indexing-azure-blob-storage.md#Credentials).
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygulama projesi oluşturarak başlayın.
 
@@ -162,7 +162,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > 
 > 
 
-## <a name="create-a-data-source"></a>Bir veri kaynağı oluşturun
+## <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
 `DataSource.AzureBlobStorage`çağırarak yeni bir `DataSource` örneği oluşturun. `DataSource.AzureBlobStorage`, veri kaynağı adı, bağlantı dizesi ve BLOB kapsayıcısı adını belirtmenizi gerektirir.
 
@@ -409,7 +409,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="create-an-index"></a>Dizin oluşturun
+## <a name="create-an-index"></a>Dizin oluşturma
 
 Bu bölümde, aranabilir dizine dahil edilecek alanları ve her bir alana ilişkin arama özniteliklerini belirterek dizin şemasını tanımlarsınız. Alanlar bir türe sahiptir ve alanın nasıl kullanıldığını (aranabilir, sıralanabilir vb.) belirleyen öznitelikleri alabilir. Bir dizindeki alan adlarının, kaynaktaki alan adlarıyla tamamen aynı olması gerekmez. Sonraki bir adımda, kaynak-hedef alanlarını bağlamak için dizin oluşturucuda alan eşlemeleri eklersiniz. Bu adım için, arama uygulamanızla ilgili alan adlandırma kurallarını kullanarak dizini tanımlayın.
 

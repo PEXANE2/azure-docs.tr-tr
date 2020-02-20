@@ -1,5 +1,5 @@
 ---
-title: StorSimple 5000-7000 serisinden veri geçirme seçeneklerini değerlendirin | Microsoft Docs
+title: StorSimple 5000-7000 Serisi cihazlarından veri geçiş seçenekleri
 description: StorSimple 5000-7000 serisinden veri geçirme seçeneklerine genel bakış sağlar.
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227774"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471831"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 serisinden veri geçirme seçenekleri 
 
@@ -76,24 +76,24 @@ https://www.talonstorage.com/alliances/microsoft-storsimple' de bulutta birleşt
 
 ### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>S. StorSimple 5000 ve 7000 Serisi cihazlar hizmet sonuna ulaştığında ne zaman? 
 
-BİR. StorSimple 5000-7000 serisi [hizmet sonu](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) 2019 ' de sona ulaşın. Hizmet sonu, Microsoft 'un artık 2019 Temmuz 'dan sonra bu cihazların donanımı ve yazılımları için destek sağlayamayacağı anlamına gelir. Şimdi cihazlarınızdan verileri geçirmek için bir planı formülle açmanızı öneririz.
+A. StorSimple 5000-7000 serisi [hizmet sonu](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) 2019 ' de sona ulaşın. Hizmet sonu, Microsoft 'un artık 2019 Temmuz 'dan sonra bu cihazların donanımı ve yazılımları için destek sağlayamayacağı anlamına gelir. Şimdi cihazlarınızdan verileri geçirmek için bir planı formülle açmanızı öneririz.
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>S. Azure 'da depoladığınız verilere ne olur?  
 
-BİR. Verileri daha yeni bir hizmete geçirdikten sonra Azure 'da kullanmaya devam edebilirsiniz. 
+A. Verileri daha yeni bir hizmete geçirdikten sonra Azure 'da kullanmaya devam edebilirsiniz. 
 
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>S. StorSimple cihazım üzerinde yerel olarak depoladığınız verilere ne olur? 
 
-BİR. Yerel cihazdaki veriler, geçiş belgelerinde açıklandığı gibi yeni hizmete kopyalanabilir.
+A. Yerel cihazdaki veriler, geçiş belgelerinde açıklandığı gibi yeni hizmete kopyalanabilir.
 
 ### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>S. StorSimple 5000/7000 Serisi gerecimi korumak istersem ne olur? 
 
-BİR. Hizmetler çalışmaya devam edebilirken, Microsoft artık donanım ve yazılım desteği sağlayamayacaktır. Geçiş, iş sürekliliği için önerilir.
+A. Hizmetler çalışmaya devam edebilirken, Microsoft artık donanım ve yazılım desteği sağlayamayacaktır. Geçiş, iş sürekliliği için önerilir.
 
 ### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-5000-7000-series-devices"></a>S. StorSimple 5000-7000 Serisi cihazlarından verileri geçirmek için hangi seçenekler kullanılabilir? 
 
-BİR. StorSimple 5000-7000 Serisi kullanıcıları, senaryosuna bağlı olarak aşağıdaki geçiş seçeneklerine sahiptir. 
+A. StorSimple 5000-7000 Serisi kullanıcıları, senaryosuna bağlı olarak aşağıdaki geçiş seçeneklerine sahiptir. 
 
  - **8000 serisine Yükselt**: StorSimple platformunda devam etmek istediğinizde bu seçeneği kullanın. 
  - **Azure dosya eşitleme geçir**: Azure yerel biçimine geçmek istediğinizde bu seçeneği kullanın. Dosya paylaşımlarının merkezi yönetimi için Azure Dosya Eşitleme kullanabilirsiniz. 
@@ -102,15 +102,15 @@ Burada listelenmeyen geçiş seçeneklerini tartışmak için Microsoft Desteği
 
 ### <a name="q-is-migration-to-other-storage-solutions-supported"></a>S. Diğer depolama çözümlerine geçiş destekleniyor mu?
 
-BİR. Evet. Verilerin ana bilgisayar kopyası kullanılarak diğer depolama çözümlerine geçiş desteklenir.
+A. Evet. Verilerin ana bilgisayar kopyası kullanılarak diğer depolama çözümlerine geçiş desteklenir.
 
 ### <a name="q-is-migration-supported-by-microsoft"></a>S. Geçiş Microsoft tarafından destekleniyor mu? 
 
-BİR. 5000 veya 7000 serisinden geçiş, tam olarak desteklenen bir işlemdir. Aslında, Microsoft, Geçişe başlamadan önce destek 'e ulaşmasını önerir. Geçiş Şu anda yardımlı bir işlemdir. StorSimple 5000-7000 Serisi cihazınızdan veri geçirmeyi planlıyorsanız [bir destek bileti açın](storsimple-8000-contact-microsoft-support.md).
+A. 5000 veya 7000 serisinden geçiş, tam olarak desteklenen bir işlemdir. Aslında, Microsoft, Geçişe başlamadan önce destek 'e ulaşmasını önerir. Geçiş Şu anda yardımlı bir işlemdir. StorSimple 5000-7000 Serisi cihazınızdan veri geçirmeyi planlıyorsanız [bir destek bileti açın](storsimple-8000-contact-microsoft-support.md).
 
 ### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>S. Geçiş seçeneklerinin her ikisi için de fiyatlandırma modeli nedir?
 
-BİR. Geçiş maliyeti, belirlediğiniz seçeneğe bağlı olarak farklılık gösterir. Geçiş işlemi ücretsizdir, StorSimple 8000 serisine yükseltmeye karar verirseniz, donanım cihazının maliyeti olur. 
+A. Geçiş maliyeti, belirlediğiniz seçeneğe bağlı olarak farklılık gösterir. Geçiş işlemi ücretsizdir, StorSimple 8000 serisine yükseltmeye karar verirseniz, donanım cihazının maliyeti olur. 
 
 Benzer şekilde, Azure Dosya Eşitleme kullanırken hizmetin abonelik ücretleri de uygulanabilir. Her durumda, müşterilerin devam eden depolama maliyetlerini de ödeyecektir. Tahmin için aşağıdakilere bakın: 
 - [StorSimple fiyatlandırması](https://azure.microsoft.com/pricing/details/storsimple/)  
@@ -118,11 +118,11 @@ Benzer şekilde, Azure Dosya Eşitleme kullanırken hizmetin abonelik ücretleri
 
 ### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>S.  Geçişin tamamlanması ne kadar sürer?
 
-BİR. Verilerin geçirilmesi için geçen süre, veri miktarına ve yükseltme seçeneğinin seçili olmasına bağlıdır. 
+A. Verilerin geçirilmesi için geçen süre, veri miktarına ve yükseltme seçeneğinin seçili olmasına bağlıdır. 
 
 ### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>S. StorSimple 8000 serisi için destek tarihinin sonu nedir?
 
-BİR. StorSimple 8000 serisi için destek bitiş tarihi [burada](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)yayımlanır.
+A. StorSimple 8000 serisi için destek bitiş tarihi [burada](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)yayımlanır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

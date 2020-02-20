@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209282"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468771"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -93,7 +93,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özelliklerinin    
     
-        |Ad|Açıklama|
+        |Adı|Açıklama|
         |---|---|
         |id|Video KIMLIĞI|
         |durum|Video durumu|  
@@ -101,7 +101,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Ad|Açıklama|
+      |Adı|Açıklama|
       |---|---|
       |id| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
@@ -123,6 +123,10 @@ Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kull
 - `VideoOnly`-yalnızca video kullanarak Öngörüler oluştur ve Ayıkla (ses yok sayılıyor)
 - `Default`: Ses ve videoyu kullanarak öngörüler ayıklayın ve bunları dizinleyin
 - `DefaultWithNoiseReduction`: Ses akışına gürültü azaltma algoritmaları uygulayarak ses ve videodan öngörüler ayıklayın ve bunları dizinleyin
+
+> [!NOTE]
+> Video Indexer, sesin en fazla iki parçasını içerir. Dosyada daha fazla ses parçası varsa, bunlar tek bir izleme olarak kabul edilir.<br/>
+İzlemelerin ayrı olarak dizinini oluşturup, ilgili ses dosyasını ayıklamanız ve `AudioOnly`olarak dizinetmeniz gerekir.
 
 Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
 

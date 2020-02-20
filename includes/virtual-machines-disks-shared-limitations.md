@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4c150d874d56e3de495b0682bee979d13304a01d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77fc6070010791bf96c944114929eba95842c9d4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202222"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471728"
 ---
 Önizleme aşamasında, paylaşılan diskler etkinleştirilmiş yönetilen diskler aşağıdaki sınırlamalara tabidir:
 
@@ -26,4 +26,4 @@ ms.locfileid: "77202222"
 - Kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri, yalnızca 1 olarak ayarlanmış `FaultDomainCount` ile kullanılabilir.
 - Azure Backup ve Azure Site Recovery desteği henüz kullanılamıyor.
 
-Paylaşılan diskler gerçekleştirmeye ilgileniyorsanız, [önizlememiz için kaydolun](https://aka.ms/shareddisksignup).
+Paylaşılan diskler gerçekleştirmeye ilgileniyorsanız, [önizlememiz için kaydolun](https://aka.ms/AzureSharedDiskPreviewSignUp).

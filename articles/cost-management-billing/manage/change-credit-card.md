@@ -2,21 +2,18 @@
 title: Azure için kredi kartınızı değiştirme
 description: Azure aboneliğinin ödemesini yapmak için kullanılan kredi kartının nasıl değiştirileceğini açıklar.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 10d475b9c0c33dfd17c3d87beed00154511e1ab6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188433"
+ms.locfileid: "77199866"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme, güncelleştirme veya kaldırma
 
@@ -118,7 +115,7 @@ Kredi kartınız herhangi bir Microsoft aboneliğiniz için etkin ödeme yöntem
 
 Aşağıdaki bölümler, Microsoft Müşteri Sözleşmesi'ne sahip olan ve Azure'a çevrimiçi olarak kredi kartıyla kaydolmuş müşteriler için geçerlidir. [Microsoft Müşteri Sözleşmesi'ne sahip olup olmadığınızı nasıl denetleyebileceğinizi öğrenin](#check-the-type-of-your-account).
 
-### <a name="change-default-credit-card"></a>Varsayılan kredi kartını değiştirme 
+### <a name="change-default-credit-card"></a>Varsayılan kredi kartını değiştirme
 Microsoft Müşteri Sözleşmeniz varsa, kredi kartınız bir faturalama profiliyle ilişkilendirilir. Bir faturalama profilinin ödeme yöntemini değiştirmek için, Azure’a kaydolan ve ödeme hesabını oluşturan kişi siz olmalısınız.
 
 Faturalama profilinizin varsayılan ödeme yöntemini çek/havale olarak değiştirmek isterseniz bkz. [Azure abonelikleri için fatura ile ödeme](pay-by-invoice.md).

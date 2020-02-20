@@ -2,24 +2,21 @@
 title: Faturanızı gereksinimlerinize göre düzenleme - Azure
 description: Faturanızdaki maliyetleri nasıl düzenleyebileceğinizi öğrenin.
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843897"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200753"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Ödeme hesabınızı özelleştirerek maliyetleri düzenleme
 
-Microsoft Müşteri Sözleşmesi ödeme hesabınız, maliyetlerinizi gereksinimlerinizi dikkate alarak departman, proje veya geliştirme ortamı ölçütlerine göre düzenleme esnekliği sunar. 
+Microsoft Müşteri Sözleşmesi ödeme hesabınız, maliyetlerinizi gereksinimlerinizi dikkate alarak departman, proje veya geliştirme ortamı ölçütlerine göre düzenleme esnekliği sunar.
 
 Bu makalede Azure portalını kullanarak maliyetlerinizi nasıl düzenleyebileceğiniz anlatılmaktadır. Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
 
@@ -33,7 +30,7 @@ Microsoft Müşteri Sözleşmesi'nin ödeme hesabı bölümünde faturalama prof
 
 Faturalama profili, bir faturayı ve ödeme yöntemleri ve fatura adresi gibi ilgili ödeme bilgilerini temsil eder. Hesabınızdaki her bir faturalama profili için ay başında aylık bir fatura oluşturulur. Fatura, önceki aya ait Azure kullanımının ve diğer satın alımların ücretlerini içerir.
 
-Azure'a kaydolduğunuzda otomatik olarak bir faturalama profili ve ödeme hesabı oluşturulur. Maliyetlerinizi birden fazla aylık faturaya bölmek için ek faturalama profilleri oluşturabilirsiniz. 
+Azure'a kaydolduğunuzda otomatik olarak bir faturalama profili ve ödeme hesabı oluşturulur. Maliyetlerinizi birden fazla aylık faturaya bölmek için ek faturalama profilleri oluşturabilirsiniz.
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ Azure'a kaydolduğunuzda otomatik olarak bir faturalama profili ve ödeme hesab�
 
 ### <a name="invoice-section"></a>Fatura bölümü
 
-Fatura bölümü, faturanızdaki bir maliyet grubunu temsil eder. Hesabınızdaki her faturalama profili için otomatik olarak bir fatura bölümü oluşturulur. Maliyetlerinizi gereksinimlerinize göre düzenlemek için başka bölümler de oluşturabilirsiniz. Her bir fatura bölümü, ilgili ay için tahakkuk eden ücretlerle birlikte faturada görüntülenir. 
+Fatura bölümü, faturanızdaki bir maliyet grubunu temsil eder. Hesabınızdaki her faturalama profili için otomatik olarak bir fatura bölümü oluşturulur. Maliyetlerinizi gereksinimlerinize göre düzenlemek için başka bölümler de oluşturabilirsiniz. Her bir fatura bölümü, ilgili ay için tahakkuk eden ücretlerle birlikte faturada görüntülenir.
 
-Aşağıdaki görüntüde Mühendislik ve Pazarlama olmak üzere iki fatura bölümüne sahip olan bir fatura gösterilmektedir. Faturada her bir bölümün özeti ve ayrıntılı ücretleri görüntülenmiştir. Görüntüde yer alan fiyatlar yalnızca örnek amaçlıdır ve Azure hizmetlerinin gerçek fiyatlarını yansıtmamaktadır. 
+Aşağıdaki görüntüde Mühendislik ve Pazarlama olmak üzere iki fatura bölümüne sahip olan bir fatura gösterilmektedir. Faturada her bir bölümün özeti ve ayrıntılı ücretleri görüntülenmiştir. Görüntüde yer alan fiyatlar yalnızca örnek amaçlıdır ve Azure hizmetlerinin gerçek fiyatlarını yansıtmamaktadır.
 
 ![Bölümleri olan bir faturayı gösteren görüntü](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ Fatura bölümü oluşturmak için **faturalama profili sahibi** veya **faturala
 
    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-section-invoice/search-cmb.png)
 
-3. Soldaki bölmede **Faturalama profilleri**'ni seçin. Listeden bir faturalama profili seçin. Seçilen faturalama profilinin faturasında yeni bir bölümü görüntülenir. 
+3. Soldaki bölmede **Faturalama profilleri**'ni seçin. Listeden bir faturalama profili seçin. Seçilen faturalama profilinin faturasında yeni bir bölümü görüntülenir.
 
    [![Faturalama profili listesini gösteren ekran görüntüsü](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ Fatura bölümü oluşturmak için **faturalama profili sahibi** veya **faturala
 
    [![Fatura bölümlerinin eklenmesini gösteren ekran görüntüsü](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. Fatura bölümü için bir ad girin. 
+5. Fatura bölümü için bir ad girin.
 
    [![Fatura bölümü oluşturma sayfasını gösteren ekran görüntüsü](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 
 6. Aboneliğin ücretlerine bağlanacak fatura bölümünü seçin. Ücretler, faturalama profilinin faturasında bu bölümde görüntülenir.
 
-7. Bir Azure planı seçin ve aboneliğiniz için kolay ad girin. 
+7. Bir Azure planı seçin ve aboneliğiniz için kolay ad girin.
 
 9. **Oluştur**’a tıklayın.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Mevcut abonelikleri ve ürünleri bağlama
 
-Mevcut Azure abonelikleriniz veya Azure Market ve App Source kaynakları gibi diğer ürünleriniz varsa bunları mevcut fatura bölümünden başka bir fatura bölümüne taşıyarak maliyetlerinizi yeniden düzenleyebilirsiniz. 
+Mevcut Azure abonelikleriniz veya Azure Market ve App Source kaynakları gibi diğer ürünleriniz varsa bunları mevcut fatura bölümünden başka bir fatura bölümüne taşıyarak maliyetlerinizi yeniden düzenleyebilirsiniz.
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ Bu senaryoda 100 TB veri kullanmanın toplam ücreti **180,5** ABD doları olur.
 |---------|---------|---------|
 |İlk 50 TB/ay için TB başına 1,84    | 50 TB        | 92,0  |
 |Sonraki 450 TB/ay için TB başına 1,77    |  0 TB         | 0,0  |
-|Toplam     |     50 TB  | 92,0 
+|Toplam     |     50 TB  | 92,0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ Bu senaryoda 100 TB veri kullanmanın toplam ücreti **180,5** ABD doları olur.
 |---------|---------|---------|
 |İlk 50 TB/ay için TB başına 1,84    | 50 TB        | 92,0  |
 |Sonraki 450 TB/ay için TB başına 1,77    |  0 TB         | 0,0  |
-|Toplam     |     50 TB  | 92,0 
+|Toplam     |     50 TB  | 92,0
 
 Bu senaryoda 100 TB veri kullanmanın toplam ücreti **184,0** (92,0 * 2) ABD doları olur.
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Azure rezervasyon avantajları tüm abonelikler için uygulanmayabilir
 
-Paylaşılan kapsama sahip olan Azure rezervasyonları, tek bir faturalama profilindeki aboneliklere uygulanır ve farklı faturalama profilleri arasında paylaşılmaz. 
+Paylaşılan kapsama sahip olan Azure rezervasyonları, tek bir faturalama profilindeki aboneliklere uygulanır ve farklı faturalama profilleri arasında paylaşılmaz.
 
 ![Farklı ödeme hesabı yapılarındaki rezervasyon uygulamasını gösteren bilgi grafiği](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-Yukarıdaki görüntüde Contoso'nun iki aboneliği vardır. Azure rezervasyon avantajı, ödeme hesabının yapısına bağlı olarak farklı şekilde uygulanmıştır. Soldaki senaryoda rezervasyon avantajı, mühendislik faturalama profiline faturalanan iki aboneliğe de uygulanmıştır. Sağdaki senaryoda rezervasyon avantajı yalnızca mühendislik faturalama profiline faturalanan abonelik olan 1 numaralı aboneliğe uygulanacaktır. 
+Yukarıdaki görüntüde Contoso'nun iki aboneliği vardır. Azure rezervasyon avantajı, ödeme hesabının yapısına bağlı olarak farklı şekilde uygulanmıştır. Soldaki senaryoda rezervasyon avantajı, mühendislik faturalama profiline faturalanan iki aboneliğe de uygulanmıştır. Sağdaki senaryoda rezervasyon avantajı yalnızca mühendislik faturalama profiline faturalanan abonelik olan 1 numaralı aboneliğe uygulanacaktır.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

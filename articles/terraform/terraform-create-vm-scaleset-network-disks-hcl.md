@@ -3,12 +3,12 @@ title: Öğretici-Terrayform kullanarak Azure sanal makine ölçek kümesi oluş
 description: Terrayform kullanarak bir Azure sanal makine ölçek kümesi yapılandırma ve sürüm oluşturma hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369482"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472239"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Öğretici: Terrayform kullanarak Azure sanal makine ölçek kümesi oluşturma
 
@@ -26,11 +26,11 @@ Bu öğreticide, aşağıdaki görevleri yapmak için [Azure Cloud Shell](/azure
 > [!NOTE]
 > Bu makalede kullanılan Terrayform yapılandırma dosyalarının en son sürümü [GitHub 'Daki başar terrat deposundadır](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terraform'u yükleme**: [Terraform'u yükleme ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure) makalesindeki yönergeleri izleyin
+- **Terraform'u yükleme**: [Terraform'u yükleme ve Azure erişimini yapılandırma](terraform-install-configure.md) makalesindeki yönergeleri izleyin
 
 - **SSH anahtar çifti oluşturma**: daha fazla bilgi için bkz. [Azure 'Da Linux VM 'ler için SSH ortak ve özel anahtar çifti oluşturma ve kullanma](/azure/virtual-machines/linux/mac-create-ssh-keys).
 
@@ -209,7 +209,7 @@ Bu bölümde şablona aşağıdaki kaynakları eklemeyi öğreneceksiniz:
 - Yük dengeleyiciye atanacak Azure arka uç adres havuzu
 - Uygulama tarafından kullanılan ve yük dengeleyici üzerinde yapılandırılan sistem durumu yoklama bağlantı noktası
 - Bu makalenin önceki bölümlerinde dağıtılan sanal ağ üzerinde çalışan ve yük dengeleyicinin arkasında bulunan bir sanal makine ölçek kümesi
-- [cloud-init](https://cloudinit.readthedocs.io/en/latest/) kullanılarak yüklenen ve sanal makine ölçek kümesi düğümlerinde bulunan [Nginx](https://nginx.org/).
+- [cloud-init](https://nginx.org/) kullanılarak yüklenen ve sanal makine ölçek kümesi düğümlerinde bulunan [Nginx](https://cloudinit.readthedocs.io/en/latest/).
 
 Cloud Shell, aşağıdaki adımları uygulayın:
 

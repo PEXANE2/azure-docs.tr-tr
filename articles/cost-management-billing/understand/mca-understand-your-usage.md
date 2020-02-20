@@ -2,21 +2,18 @@
 title: Microsoft Müşteri Sözleşmesi Azure kullanım bilgilerini ve ücretlerini içeren dosya koşulları
 description: Faturalama profiliniz için Azure kullanım bilgilerini ve ücretlerini içeren CSV dosyasının bölümlerinin nasıl okunup anlaşılacağını öğrenin.
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 009a69baa68ed4a826d6a78c0df5d19d34bff006
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134575"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199169"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için Azure kullanımı ve ücretleri dosyasındaki terimler
 

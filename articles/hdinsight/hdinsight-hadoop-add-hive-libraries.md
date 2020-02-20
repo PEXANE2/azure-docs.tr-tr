@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.date: 12/23/2019
-ms.openlocfilehash: 57b4440a29dde470f91bbaae091bf65a0d2a1b51
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552279"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471032"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight kümenizi oluştururken özel Apache Hive kitaplıkları ekleyin
 
 HDInsight 'ta [Apache Hive](https://hive.apache.org/) kitaplıklarını önceden yüklemeyi öğrenin. Bu belge, küme oluşturma sırasında kitaplıkları önceden yüklemek için bir betik eylemi kullanmayla ilgili bilgiler içerir. Bu belgedeki adımlar kullanılarak eklenen kitaplıklar, Hive içinde genel kullanıma sunulmuştur. yüklemek için [jar Ekle](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) ' nin kullanılmasına gerek yoktur.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Bir küme oluştururken, küme düğümlerini oluşturuldukları sırada değiştirmek için bir betik eylemi kullanabilirsiniz. Bu belgedeki betik, kitaplıkların konumu olan tek bir parametreyi kabul eder. Bu konum bir Azure depolama hesabında olmalıdır ve kitaplıkların jar dosyaları olarak depolanması gerekir.
 
@@ -33,7 +33,7 @@ Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**içi
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**Gereksinimler**
+### <a name="requirements"></a>Gereksinimler
 
 * Betikler hem **baş düğümlere** hem de **çalışan düğümlerine**uygulanmalıdır.
 
@@ -50,7 +50,7 @@ Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**içi
 
 ## <a name="create-a-cluster-using-the-script"></a>Betiği kullanarak bir küme oluşturma
 
-1. [Linux 'Ta HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)bölümündeki adımları kullanarak bir kümeyi sağlamaya başlayın, ancak sağlamayı tamammayın. Bu betiği kullanarak bir küme oluşturmak için Azure PowerShell veya HDInsight .NET SDK 'sını de kullanabilirsiniz. Bu yöntemleri kullanma hakkında daha fazla bilgi için bkz. [HDInsight kümelerini betik eylemleriyle özelleştirme](hdinsight-hadoop-customize-cluster-linux.md). Azure portal için **Klasik deneyime git** seçeneğini ve ardından **özel (boyut, ayarlar, uygulamalar)** öğesini seçmeniz gerekir.
+1. [Linux 'Ta HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)bölümündeki adımları kullanarak bir kümeyi sağlamaya başlayın, ancak sağlamayı tamammayın. Bu betiği kullanarak bir küme oluşturmak için Azure PowerShell veya HDInsight .NET SDK 'sını de kullanabilirsiniz. Bu yöntemleri kullanma hakkında daha fazla bilgi için bkz. [HDInsight kümelerini betik eylemleriyle özelleştirme](hdinsight-hadoop-customize-cluster-linux.md). Azure portal için, **yapılandırma + fiyatlandırma** sekmesinden **+ betik Ekle eylemini**seçin.
 
 1. **Depolama**için, jar dosyalarının kitaplığını içeren depolama hesabı, küme için kullanılan hesaptan farklı olur, **ek depolama hesapları**doldurun.
 
@@ -59,10 +59,13 @@ Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**içi
     |Özellik |Değer |
     |---|---|
     |Betik türü|-Özel|
-    |Ad|Kitaplıklar |
+    |Adı|Kitaplıklar |
     |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Düğüm türleri|Baş, çalışan|
     |Parametreler|Cars 'ı içeren kapsayıcı ve depolama hesabına ait olan adresi girin. Örneğin, `wasbs://libs@mystorage.blob.core.windows.net/`.|
+
+    > [!NOTE]
+    > Apache Spark 2,1 için şu Bash betiği URI 'sini kullanın: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
 
 1. [Linux 'Ta HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)bölümünde açıklandığı gibi kümeyi sağlamaya devam edin.
 

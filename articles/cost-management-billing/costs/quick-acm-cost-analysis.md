@@ -1,21 +1,19 @@
 ---
 title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme | Microsoft Docs
 description: Bu hızlı başlangıç, Azure kurumsal maliyetlerinizi keşfetmek ve analiz etmek için maliyet analizini kullanmanıza yardımcı olur.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: micflan
+ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188644"
+ms.locfileid: "77201059"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -64,9 +62,9 @@ Veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için s
 
 ### <a name="understand-forecast"></a>Tahmini anlama
 
-Maliyet tahmini, seçili döneme ait maliyetlerinizle ilgili bir tahmin gösterir. Model, zaman serisi regresyon modelini temel alır. Maliyetleri doğru bir şekilde tahmin etmek için en az 10 günlük güncel maliyetler ve kullanım verileri gerekir. Belirli bir süre için tahmin modeli, tahmin dönemine ait eşit eğitim verilerine ihtiyaç duyar. Örneğin üç aylık tahmin için en az üç aylık güncel maliyet ve kullanım verileri gerekir. 
+Maliyet tahmini, seçili döneme ait maliyetlerinizle ilgili bir tahmin gösterir. Model, zaman serisi regresyon modelini temel alır. Maliyetleri doğru bir şekilde tahmin etmek için en az 10 günlük güncel maliyetler ve kullanım verileri gerekir. Belirli bir süre için tahmin modeli, tahmin dönemine ait eşit eğitim verilerine ihtiyaç duyar. Örneğin üç aylık tahmin için en az üç aylık güncel maliyet ve kullanım verileri gerekir.
 
-Model, en fazla altı aylık eğitim verilerini kullanarak bir yıllık maliyet tahmininde bulunabilir. Tahminini değiştirmek için en az yedi günlük eğitim verisine ihtiyaç duyar. Bu tahmin, maliyet ve kullanım düzenlerindeki ani artışlar ve düşüşler gibi önemli değişiklikleri temel alır. Tahmin, **Gruplama ölçütü** özelliklerindeki her bir öğe için ayrı tahminler oluşturmaz. Yalnızca toplam birikmiş maliyetlerle ilgili tahmin sunar. Birden çok para birimi kullanıyorsanız model yalnızca ABD doları cinsindeki maliyetler için tahmin sağlar. 
+Model, en fazla altı aylık eğitim verilerini kullanarak bir yıllık maliyet tahmininde bulunabilir. Tahminini değiştirmek için en az yedi günlük eğitim verisine ihtiyaç duyar. Bu tahmin, maliyet ve kullanım düzenlerindeki ani artışlar ve düşüşler gibi önemli değişiklikleri temel alır. Tahmin, **Gruplama ölçütü** özelliklerindeki her bir öğe için ayrı tahminler oluşturmaz. Yalnızca toplam birikmiş maliyetlerle ilgili tahmin sunar. Birden çok para birimi kullanıyorsanız model yalnızca ABD doları cinsindeki maliyetler için tahmin sağlar.
 
 
 ## <a name="customize-cost-views"></a>Maliyet görünümlerini özelleştirme

@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 366485c8c735af5689e1b2c2e63eb192218f5ce0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433571"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468194"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposundaki anahtar değerleriyle çalışma
 
@@ -30,11 +30,7 @@ Bu örnek betik, bir Azure uygulama yapılandırma deposunda yeni bir anahtar de
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
-
-Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
-
-        az extension add -n appconfig
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -89,9 +85,9 @@ Bu betik, bir uygulama yapılandırma deposundaki anahtar değerlerinde işlem y
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig kV set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Anahtar-değer oluşturur veya güncelleştirir. |
-| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Bir uygulama yapılandırma deposundaki anahtar değerlerini listeler. |
-| [az appconfig kV Delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Anahtar değerini siler. |
+| [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Anahtar-değer oluşturur veya güncelleştirir. |
+| [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Bir uygulama yapılandırma deposundaki anahtar değerlerini listeler. |
+| [az appconfig kV Delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Anahtar değerini siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

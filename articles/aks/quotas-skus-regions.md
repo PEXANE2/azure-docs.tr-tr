@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mlearned
-ms.openlocfilehash: a8b561780e2e81499d211252648aeef86561cb9b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1bb928f8e7a1f56c4b6b437f260d875662bff60f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658517"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469843"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği
 
@@ -33,7 +33,7 @@ Tüm diğer ağ, işlem ve depolama sınırları, sağlanan altyapıya uygulanı
 
 ## <a name="restricted-vm-sizes"></a>Kısıtlanmış VM boyutları
 
-Bir AKS kümesindeki her düğüm, vCPU ve bellek gibi sabit bir işlem kaynakları içerir. Aks düğümü yetersiz işlem kaynakları içeriyorsa, Pod düzgün çalışmayabilir. Gerekli *kuyaların* ve uygulamalarınızın güvenilir bir şekilde zamanlanmasını sağlamak için aks 'de aşağıdaki VM SKU 'larını kullanmayın:
+Bir AKS kümesindeki her düğüm, vCPU ve bellek gibi sabit bir işlem kaynakları içerir. Aks düğümü yetersiz işlem kaynakları içeriyorsa, Pod düzgün çalışmayabilir. Gerekli *kuyaların* ve uygulamalarınızın güvenilir bir şekilde zamanlanmasını sağlamak için **aks 'de aşağıdaki VM SKU 'larını kullanmayın**:
 
 - Standard_A0
 - Standard_A1
@@ -45,7 +45,7 @@ Bir AKS kümesindeki her düğüm, vCPU ve bellek gibi sabit bir işlem kaynakla
 
 VM türleri ve bunların işlem kaynakları hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için boyutlar][vm-skus].
 
-## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
+## <a name="region-availability"></a>Bölge kullanılabilirliği
 
 Kümeleri dağıtmak ve çalıştırmak için kullanabileceğiniz en son liste için bkz. [aks bölge kullanılabilirliği][region-availability].
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 59dd5d38b1cb89ce966a74284f0e392af52e9827
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 317e47144a716bd1bea5549aed1db0a02250d353
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457670"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466112"
 ---
 ## <a name="what-is-queue-storage"></a>Kuyruk depolama nedir?
 
@@ -26,7 +26,7 @@ Azure Kuyruk hizmeti aşağıdaki bileşenleri içerir:
   
     Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:  
   
-    `http://myaccount.queue.core.windows.net/images-to-download`
+    `http://myaccount.queue.core.windows.net/incoming-orders`
 
 * **Depolama Hesabı:** Tüm Azure Storage erişimi bir depolama hesabıyla yapılır. Depolama hesapları hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış] [.. /makalenles/Storage/Common/Storage-Account-Overview.exe].
 * **Kuyruk:** Kuyrukta bir dizi ileti vardır. Tüm iletiler bir kuyrukta olmalıdır. Kuyruk adının tamamen küçük harfli olması gerektiğini unutmayın. Kuyrukların adlandırılması hakkında daha fazla bilgi için bkz. [Kuyrukları ve Meta Verileri Adlandırma](https://msdn.microsoft.com/library/azure/dd179349.aspx).

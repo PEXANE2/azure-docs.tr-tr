@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9fe17c8657b183f9f5370b6096d678e12f7d629
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647518"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472511"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver yüksek kullanılabilirliği 'ni bir Windows Yük devretme kümesine ve Azure 'daki SAP Ass/SCS örnekleri için dosya paylaşımında yükler
 
@@ -199,7 +199,7 @@ ms.locfileid: "75647518"
 
 Bu makalede, Windows Server yük devretme kümesi (WSFC) ile Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı ve SAP Ass/SCS örneklerinin kümelenmesi için bir seçenek olarak Genişleme Dosya Sunucusu açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeye başlamadan önce aşağıdaki makaleleri gözden geçirin:
 
@@ -268,7 +268,7 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 $UsrSAPFolder = "C:\ClusterStorage\SAP$SAPSID\usr\sap\"
 
 # Create a SAPMNT file share and set share security
-New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $false -CachingMode None -Verbose
+New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $true -CachingMode None -Verbose
 
 # Get SAPMNT file share security settings
 Get-SmbShareAccess sapmnt
@@ -320,7 +320,7 @@ SAP ASCS/SCS örnek profilindeki parametreleri \<SID >_ascs/scs\<Nr >_ \<Host > 
 | Parametre adı | Parametre değeri |
 | --- | --- |
 | GW/netstat_once | **0** |
-| EnQue/encnı/set_so_keepalive  | **true** |
+| EnQue/encnı/set_so_keepalive  | **değeri** |
 | hizmet/ha_check_node | **1** |
 
 SAP ASCS/SCS örneğini yeniden başlatın. Hem SAP ASCS/SCS küme düğümlerinde hem de `KeepAlive` parametreleri ayarlama, [SAP ascs/SCS örneğinin küme düğümlerinde kayıt defteri girişlerini ayarlamak][high-availability-guide]için yönergeleri izleyin. 

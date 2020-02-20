@@ -2,21 +2,18 @@
 title: Azure portalındaki Hesap Yöneticisi görevleri
 description: Azure portalında ödeme işlemlerinin nasıl gerçekleştirileceğini açıklar
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132129"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201008"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portalındaki Hesap Yöneticisi görevleri
 
@@ -25,35 +22,35 @@ Bu makalede aşağıdaki görevlerin Azure portalında nasıl gerçekleştirilec
 - Aboneliğinizin harcama limitini kaldırma
 - Open ile Azure aboneliğinize kredi ekleme
 
-Bu görevleri gerçekleştirmek için Hesap Yöneticisi olmanız gerekir. 
+Bu görevleri gerçekleştirmek için Hesap Yöneticisi olmanız gerekir.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Aboneliğinizin ödeme yöntemlerine gitme
 
-1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın. 
+1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
 
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
-    
+
     ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/account-admin-tasks/search-bar.png)
 
-1. **Aboneliklerim** listesinde kredi kartını eklemek istediğiniz aboneliği seçin. 
-   
+1. **Aboneliklerim** listesinde kredi kartını eklemek istediğiniz aboneliği seçin.
+
    ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > Aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın. 
+   > Aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
 
 1. **Ödeme yöntemleri**'ni seçin.
 
     ![Seçilen dikey pencerede ödeme yöntemlerini gösteren ekran görüntüsü.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-Burada yeni bir kredi kartı ekleyebilir, etkin ödeme yöntemini değiştirebilir, kredi kartı ayrıntılarını düzenleyebilir ve kredi kartlarını silebilirsiniz. 
+Burada yeni bir kredi kartı ekleyebilir, etkin ödeme yöntemini değiştirebilir, kredi kartı ayrıntılarını düzenleyebilir ve kredi kartlarını silebilirsiniz.
 
 ### <a name="change-active-payment-method"></a>Etkin ödeme yöntemi değiştirme
 
 Yeni bir kredi kartı ekleyerek veya kayıtlı olan kartlardan birini seçerek etkin ödeme yöntemini değiştirebilirsiniz. Etkin ödeme yöntemini yeni bir kredi kartı olarak değiştirmek için:
 
 1. Sol üst köşede "+" işaretini seçerek bir kredi kartı ekleyin.
-    
+
     ![Artı işaretini gösteren ekran görüntüsü](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. Sağ taraftaki forma kredi kartı bilgilerini girin.
@@ -111,7 +108,7 @@ Fatura ile ödeme yapmak için onay almak isterseniz bkz. [Fatura ile ödeme yap
 
 ### <a name="edit-invoice-payment-address"></a>Fatura ile ödeme adresini düzenleme
 
-Fatura ödeme yönteminizin adresini düzenlemek için aboneliğinize ait ödeme yöntemleri listesinde **Fatura**'ya tıklayın. Sağ tarafta adres formu açılır. 
+Fatura ödeme yönteminizin adresini düzenlemek için aboneliğinize ait ödeme yöntemleri listesinde **Fatura**'ya tıklayın. Sağ tarafta adres formu açılır.
 
 ## <a name="remove-spending-limit"></a>Harcama limitini kaldırma
 
@@ -124,15 +121,15 @@ Harcama limiti, taahhüt planları veya kullandıkça öde fiyatlandırmasının
 
     ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/account-admin-tasks/search-bar.png)
 
-1. **Aboneliklerim** listesinde Visual Studio Enterprise aboneliğinizi seçin. 
+1. **Aboneliklerim** listesinde Visual Studio Enterprise aboneliğinizi seçin.
 
    ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Visual Studio aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
-    
+
 1. Harcama limitini kaldırmak için Abonelik genel görünümünde turuncu renkli başlığa tıklayın.
-    
+
     ![Harcama limitini kaldırma başlığını gösteren ekran görüntüsü](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. Harcama limitini süresiz olarak mı yoksa yalnızca geçerli fatura dönemi için mi kaldırmak istediğinizi seçin.
@@ -152,15 +149,15 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
 
     ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/account-admin-tasks/search-bar.png)
 
-1. **Aboneliklerim** listesinde Open ile Azure aboneliğinizi seçin. 
+1. **Aboneliklerim** listesinde Open ile Azure aboneliğinizi seçin.
 
     ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Aboneliğinizi burada görmüyorsanız, bunun nedeni dizinini değiştirmeniz olabilir. Aboneliğinizde özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
-    
+
 1. **Kredi geçmişi**'ni seçin.
-    
+
     ![Kredi geçmişini gösteren ekran görüntüsü](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. Sol üst köşede "+" işaretini seçerek kredi ekleyin.
@@ -168,7 +165,7 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
     ![Kredi ekleme düğmesini gösteren ekran görüntüsü](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. Açılan kutudan bir ödeme yöntemi türü seçin. Ürün anahtarı ekleyebilir veya kredi kartıyla kredi satın alabilirsiniz.
-    
+
     ![Kredi ekleme dikey penceresindeki ödeme yöntemini gösteren ekran görüntüsü](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. Ürün anahtarını tercih ederseniz:

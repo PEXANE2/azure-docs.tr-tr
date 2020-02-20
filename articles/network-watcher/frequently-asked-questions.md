@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029500"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471865"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
 [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
@@ -75,8 +75,11 @@ Paket yakalama, bağlantı sorunlarını giderme ve bağlantı Izleyicisi özell
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Ağ izleyicisinden kaynak sınırları nelerdir?
 Tüm sınırlar için [hizmet limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) sayfasına bakın.  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Bölge başına yalnızca bir ağ Izleyicisi örneğine izin veriliyor mu?
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Bölge başına yalnızca bir ağ Izleyicisi örneğine izin veriliyor mu? 
 Bu özelliğin çalışması için bir abonelik için ağ Izleyicisi 'nin etkinleştirilmesi yeterlidir, bu bir hizmet sınırı değildir.
+
+### <a name="how-can-i-manage-the-network-watcher-resource"></a>Ağ Izleyicisi kaynağını nasıl yönetebilirim? 
+Ağ Izleyicisi kaynağı, ağ Izleyicisi için arka uç hizmetini temsil eder ve Azure tarafından tam olarak yönetilir. Müşterilerin bunu yönetmesi gerekmez. Kaynak üzerinde taşıma gibi işlemler desteklenmez. Ancak, [kaynak silinebilir](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
 
 ## <a name="nsg-flow-logs"></a>NSG akış günlükleri
 

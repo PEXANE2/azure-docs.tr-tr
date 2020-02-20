@@ -1,19 +1,18 @@
 ---
 title: Rezervasyon indiriminin Azure Veri Gezgini'ne nasıl uygulandığını anlama
 description: Rezervasyon indiriminin Azure Veri Gezgini kar payı ölçümüne nasıl uygulandığını öğrenin.
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995630"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199339"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Rezervasyon indiriminin Azure Veri Gezgini'ne nasıl uygulandığını anlama
 
@@ -36,23 +35,23 @@ Rezervasyon indirimi Azure Veri Gezgini kar payı tüketimine saat bazında uygu
 ## <a name="examples"></a>Örnekler
 
 Aşağıdaki örneklerde, satın aldığınız kar payı birimi sayısına ve çalıştırılma zamanına bağlı olarak Azure Veri Gezgini ayrılmış kapasite indiriminin nasıl uygulandığı gösterilmektedir.
-Örneğin, şu altyapı kümesi boyutunu ele alalım: **2 D11_v2 VM** için toplam isteğe bağlı ücretleriniz, saatlik olarak hesaplanan dört Azure Veri Gezgini kar payı ölçümü birimi olur. 
+Örneğin, şu altyapı kümesi boyutunu ele alalım: **2 D11_v2 VM** için toplam isteğe bağlı ücretleriniz, saatlik olarak hesaplanan dört Azure Veri Gezgini kar payı ölçümü birimi olur.
 
-**Senaryo 1** 
+**Senaryo 1**
 
 8 Azure Veri Gezgini kar payı birimi için Azure Veri Gezgini ayrılmış kapasitesi satın aldığınızı düşünelim. Saatte 16 Azure Veri Gezgini kar payı birimi gerektiren ve rezervasyonun diğer öznitelikleriyle eşleşen, toplam 16 çekirdeğe sahip olan iki D13_v2 VM'den oluşan bir altyapı kümesi çalıştırıyorsunuz. Sekiz Azure Veri Gezgini işlem kullanımı çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve bir saatlik sekiz çekirdek Azure Veri Gezgini kar payı birimi kullanımı için rezervasyon indiriminden faydalanırsınız.
 
 Bu örneklerin geri kalanında, satın aldığınız Azure Veri Gezgini ayrılmış kapasitesinin 16 çekirdekli Azure Veri Gezgini kümesi için olduğunu ve rezervasyon özniteliklerinin geri kalanının, çalışmakta olan Azure Veri Gezgini kümesi ile eşleştiğini varsayın.
 
-**Senaryo 2** 
+**Senaryo 2**
 
 İki farklı bölgede yer alan ve her biri sekiz çekirdeğe sahip olan iki Azure Veri Gezgini altyapı kümesini bir saat boyunca çalıştırıyorsunuz. 16 çekirdek rezervasyon indirimi hem kümeye hem de tüketilen 16 Azure Veri Gezgini kar payı birimine uygulanır.
 
-**Senaryo 3** 
+**Senaryo 3**
 
 Saat 13:00 ile 13:30 arasında 16 çekirdekli bir Azure Veri Gezgini altyapı kümesi çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında 16 çekirdekli başka bir Azure Veri Gezgini altyapı kümesi çalıştırıyorsunuz. Her ikisi de rezervasyon indirimi kapsamındadır.
 
-**Senaryo 4** 
+**Senaryo 4**
 
 Saat 13:00 ile 13:45 arasında 16 çekirdekli bir Azure Veri Gezgini altyapı kümesi çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında 16 çekirdekli başka bir Azure Veri Gezgini altyapı kümesi çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca Azure Veri Gezgini kar payı kullanımına uygulanır.
 

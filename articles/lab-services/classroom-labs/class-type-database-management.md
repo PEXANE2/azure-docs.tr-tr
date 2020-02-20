@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 92152652ca264cace12d3f780ebec0f80bb2048a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233772"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469927"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>İlişkisel veritabanları için veritabanı yönetimine öğretmek üzere laboratuvar ayarlama
 
@@ -32,7 +32,7 @@ Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve lab
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
@@ -44,7 +44,7 @@ Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.
 
 | Laboratuvar ayarları | Değer/yönergeler |
 | ------------ | ------------------ |
-|Sanal makine boyutu| Orta. Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.|
+|Sanal Makine Boyutu| Orta. Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.|
 |Sanal makine görüntüsü| Windows Server 2019 üzerinde SQL Server 2019 standart|
 
 ## <a name="template-machine-configuration"></a>Şablon makine yapılandırması

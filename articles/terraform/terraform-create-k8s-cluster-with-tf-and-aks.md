@@ -3,12 +3,12 @@ title: Öğretici-Terkform kullanarak Azure Kubernetes Service (AKS) ile bir Kub
 description: Azure Kubernetes Service ve Terraform ile Kubernetes Kümesi oluşturmayı gösteren öğretici
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708283"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472256"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Öğretici: Terrayform kullanarak Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturma
 
@@ -21,13 +21,13 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Terraform ve AKS ile Kubernetes kümesi oluşturma
 > * kubectl aracıyla bir Kubernetes kümesinin kullanılabilirlik durumunu test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure) makalesindeki yönergeleri izleyin
+- **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](terraform-install-configure.md) makalesindeki yönergeleri izleyin
 
-- **Azure hizmet sorumlusu**: [Azure CLI ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) makalesinin **Hizmet sorumlusunu oluşturma** bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
+- **Azure hizmet sorumlusu**: **Azure CLI ile Azure hizmet sorumlusu oluşturma** makalesinin [Hizmet sorumlusunu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 

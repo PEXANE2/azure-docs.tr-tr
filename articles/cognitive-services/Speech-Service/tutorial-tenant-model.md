@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189011"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469026"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
 
@@ -55,14 +55,14 @@ Kiracı model örneğini devre dışı bırakmak için:
 
 Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
 
-1. [Azure Portal](https://aka.ms/azureportal)’ında oturum açın.
+1. [Azure Portal](https://aka.ms/azureportal) oturum açın.
 1. **Kaynak oluştur**' u seçin.
 1. **Arama** kutusuna **konuşma**yazın.
 1. Sonuçlar listesinde **konuşma**' yı seçin ve ardından **Oluştur**' u seçin.
 1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunları yaptığınızdan emin olun:
    * **Konum** **eastus** veya **westus**olarak ayarlanır.
    * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
 
@@ -81,7 +81,7 @@ Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Offic
    > Kuzey Amerika 'de Office 365 Kurumsal müşterileri bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Müşteri Kasası, müşteri anahtarı veya Office 365 Kamu müşterisiyseniz bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için bkz.:
    > * [Müşteri Kasası](/microsoft-365/compliance/customer-lockbox-requests)
    > * [Müşteri anahtarı](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365 Kamu](/microsoft-365/government)
+   > * [Office 365 Kamu](https://www.microsoft.com/microsoft-365/government)
 
 1. **Kabul et**’i seçin.
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Enterprise Portal'ı kullanmaya başlama
 description: Bu makalede Azure Kurumsal Anlaşma (Azure EA) müşterilerinin Azure Enterprise Portal'ı nasıl kullanacağı açıklanmaktadır.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023353"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200838"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -235,7 +234,7 @@ Hesapları aktarırken şu önemli bilgileri unutmayın:
   - Bir iş veya okul hesabından başka bir iş veya okul hesabına.
   - Bir Microsoft hesabından bir iş veya okul hesabına.
   - Bir Microsoft hesabından başka bir Microsoft hesabına.
-  
+
     Hedef hesabın aktarımlara yönelik geçerli bir hedef olması için geçerli bir Azure Ticari hesabı olması gerekir. Yeni hesaplar için, Azure Enterprise Portal'da oturum açarken bir Azure Ticari hesabı oluşturmanız istenir. Mevcut hesaplar için, hesabın uygun olabilmesi için yeni bir Azure aboneliği oluşturmanız gerekir.
 
 - İş veya okul hesabından Microsoft hesabına aktarım yapamazsınız.
@@ -285,7 +284,7 @@ Hesap sahipleri, abonelikleri görüntüleyebilir ve yönetebilir. Kuruluşunuzd
 
 Her uygulama ortamı için farklı abonelikler oluşturduğunuzda her bir ortamın güvenliğini sağlamaya yardımcı olursunuz.
 
-- Ayrıca, her abonelik için farklı bir hizmet yöneticisi hesabı da atayabilirsiniz. 
+- Ayrıca, her abonelik için farklı bir hizmet yöneticisi hesabı da atayabilirsiniz.
 - Abonelikleri dilediğiniz sayıda hizmet ile ilişkilendirebilirsiniz.
 - Hesap sahibi, abonelikler oluşturur ve hesaplarındaki her aboneliğe bir hizmet yöneticisi hesabı atar.
 
@@ -309,7 +308,7 @@ Abonelik eklemek için:
 1. **Abonelikler**'i ve ardından oluşturduğunuz aboneliği seçin.
 1. **Abonelik Ayrıntılarını Düzenle**'yi seçin.
 1. **Abonelik Adı** ve **Hizmet Yöneticisi**’ni düzenleyip onay işaretini seçin.
-  
+
    Abonelik adı raporlarda görünür. Geliştirme portalındaki abonelikle ilişkili projenin adıdır.
 
 Yeni aboneliklerin abonelikler listesinde görünmesi 24 saate kadar sürebilir. Bir abonelik oluşturduktan sonra şunları yapabilirsiniz:
@@ -509,14 +508,14 @@ Azure Enterprise Portal, kurumsal müşteriler için iki tür abonelik sunar:
 - Microsoft Azure Kurumsal; şu kullanımlar için idealdir:
   - Her türlü üretim amaçlı kullanımlar
   - Altyapı harcamasına göre en iyi fiyatlar
-  
+
   Daha fazla bilgi için [Azure satış ekibiyle iletişime geçin](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
 - Kurumsal Geliştirme ve Test; şu kullanımlar için idealdir:
   - Ekiple yürütülen tüm geliştirme ve test iş yükleri
   - Orta ve ağır düzeyde bireysel geliştirme/test iş yükleri
   - Özel MSDN görüntülerine erişim ve tercihe bağlı hizmet ücretleri
-  
+
   Daha fazla bilgi için bkz. [Kurumsal Geliştirme ve Test teklifi](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Aboneliğin sahipliği başka bir hesaba aktarılabilir mi?

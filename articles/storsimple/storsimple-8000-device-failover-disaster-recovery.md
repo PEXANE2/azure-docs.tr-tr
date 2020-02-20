@@ -1,6 +1,6 @@
 ---
-title: StorSimple yük devretme, 8000 serisi cihazlar için olağanüstü durum kurtarma | Microsoft Docs
-description: StorSimple Cihazınızı kendisi, başka bir fiziksel cihaz veya Bulut Gereci için yük devretme öğrenin.
+title: StorSimple 8000 serisi cihazlar için yük devretme ve olağanüstü durum kurtarma
+description: StorSimple cihazınızı, başka bir fiziksel cihaza veya bir bulut gerecine devretmek hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,130 +14,130 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576381"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468601"
 ---
-# <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi Cihazınızı için yük devretme ve olağanüstü durum kurtarma
+# <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınız için yük devretme ve olağanüstü durum kurtarma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, cihaz yük devretme özelliği StorSimple 8000 serisi cihazlar ve bir olağanüstü durum oluşursa, StorSimple cihazları kurtarmak için bu özelliği'nın nasıl kullanılabileceğini açıklar. StorSimple, veri merkezindeki bir kaynak CİHAZDAN başka bir hedef cihaza geçirmek için cihaz yük devretme kullanır. Bu makaledeki yönergeler, StorSimple 8000 serisi fiziksel cihazlar ve yazılım sürümlerini güncelleştirme 3 ve üzerini çalıştıran cloud appliance'lar için geçerlidir.
+Bu makalede, StorSimple 8000 serisi cihazların cihaz yük devretme özelliği ve bir olağanüstü durum oluşursa StorSimple cihazlarını kurtarmak için bu özelliğin nasıl kullanılabileceği açıklanmaktadır. StorSimple, veri merkezindeki bir kaynak cihazdan başka bir hedef cihaza geçiş yapmak için cihaz yük devretmesini kullanır. Bu makaledeki kılavuz, StorSimple 8000 serisi fiziksel cihazlara ve güncelleştirme 3 ve üzeri yazılım sürümlerini çalıştıran bulut gereçlerine yöneliktir.
 
-StorSimple kullanan **cihazları** olağanüstü bir cihaza yük devretme özelliğini başlatmak için dikey pencere. Bu dikey pencere, StorSimple cihaz Yöneticisi hizmetinize bağlanan tüm StorSimple cihazları listeler.
+StorSimple, cihaz yük devretme özelliğini bir olağanüstü durum durumunda başlatmak için **cihazlar** dikey penceresini kullanır. Bu dikey pencere, StorSimple Aygıt Yöneticisi hizmetinize bağlı olan tüm StorSimple cihazlarını listeler.
 
 ![Cihazlar dikey penceresi](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
-## <a name="disaster-recovery-dr-and-device-failover"></a>Olağanüstü Durum Kurtarma (DR) ve cihaz yük devretme
+## <a name="disaster-recovery-dr-and-device-failover"></a>Olağanüstü durum kurtarma (DR) ve cihaz yük devretmesi
 
-Bir olağanüstü durum kurtarma (DR) senaryosunda, kullanıcının birincil aygıtı çalışmayı durdurur. StorSimple, birincil cihaz olarak kullandığı _kaynak_ ve ilişkili bir bulut veri diğerine taşır _hedef_ cihaz. Bu işlem olarak adlandırılır *yük devretme*. Aşağıdaki grafikte, yük devretme işlemi gösterilmektedir.
+Olağanüstü durum kurtarma (DR) senaryosunda, birincil cihaz çalışmayı durduruyor. StorSimple birincil cihazı _kaynak_ olarak kullanır ve ilişkili bulut verilerini başka bir _hedef cihaza taşıtir_ . Bu işlem, *Yük devretme*olarak adlandırılır. Aşağıdaki grafikte yük devretme süreci gösterilmektedir.
 
-![Cihaz yük devretme kümesinde ne olacak?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
+![Cihaz yük devretmesinde ne olur?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
-Bir yük devretme için hedef cihazla, fiziksel bir cihaz veya Bulut Gereci olabilir. Hedef cihaz, aynı veya farklı bir coğrafi konumda kaynak cihaz bulunabilir.
+Yük devretme için hedef cihaz fiziksel bir cihaz veya hatta bir bulut gereci olabilir. Hedef cihaz aynı veya kaynak cihazdan farklı bir coğrafi konumda bulunabilir.
 
-Yük devretme sırasında geçiş için birim kapsayıcıları seçebilirsiniz. StorSimple, hedef cihaza kaynak CİHAZDAN bu birim kapsayıcıları sahipliği sonra değişir. Birim kapsayıcıları sahipliği değiştirdikten sonra StorSimple kaynak CİHAZDAN Bu kapsayıcıları siler. Silme işlemi tamamlandıktan sonra hedef cihaza geri dönebilirsiniz. _Yeniden çalışma_ özgün kaynak cihaz sahipliği aktarır.
+Yük devretme sırasında, geçiş için birim kapsayıcıları seçebilirsiniz. StorSimple daha sonra bu birim kapsayıcılarının sahipliğini kaynak cihazdan hedef cihaza değiştirir. Birim kapsayıcıları sahipliği değiştirdikten sonra StorSimple bu kapsayıcıları kaynak cihazdan siler. Silme işlemi tamamlandıktan sonra, hedef cihazın yükünü geri alabilirsiniz. Yeniden _çalışma_ , sahipliği özgün kaynak cihaza geri aktarır.
 
-### <a name="cloud-snapshot-used-during-device-failover"></a>Cihaz yük devretme sırasında kullanılan bulut anlık görüntüsü
+### <a name="cloud-snapshot-used-during-device-failover"></a>Cihaz yük devretmesi sırasında kullanılan bulut anlık görüntüsü
 
-Bir DR en son bulut yedekleme verileri hedef cihaza geri yüklemek için kullanılır. Bulut anlık görüntüleri hakkında daha fazla bilgi için bkz. [StorSimple cihaz Yöneticisi hizmetini el ile yedekleme kullanmak](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
+Bir DR 'yi takip eden en son bulut yedeklemesi, verileri hedef cihaza geri yüklemek için kullanılır. Bulut anlık görüntüleri hakkında daha fazla bilgi için bkz. [StorSimple Aygıt Yöneticisi hizmetini kullanarak el ile yedekleme yapın](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
 
-Bir StorSimple 8000 serisi, yedekleme ilkeleri yedekleme işlemleriyle ilişkilidir. Aynı birim için birden çok yedekleme ilkesi varsa, StorSimple yedekleme ilkesiyle birimlerin en büyük sayı seçer. StorSimple, seçilen yedekleme ilkesi en son yedeklemeden sonra hedef cihazdaki verileri geri yüklemek için kullanır.
+StorSimple 8000 serisinde yedekleme ilkeleri yedeklemelerle ilişkilendirilir. Aynı birim için birden çok yedekleme ilkesi varsa, StorSimple, en fazla birim sayısı ile yedekleme ilkesini seçer. StorSimple daha sonra hedef Cihazdaki verileri geri yüklemek için seçili yedekleme ilkesindeki en son yedeği kullanır.
 
-İki yedekleme ilkeleri vardır varsayalım *defaultPol* ve *customPol*:
+*Defaultpol* ve *custompol*olmak üzere iki yedekleme ilkesi olduğunu varsayalım:
 
-* *defaultPol*: Tek bir birim *vol1*, 10:30 PM günlük başlangıç çalıştırır.
-* *customPol*: Dört birim *vol1*, *vol2*, *vol3*, *vol4*, günlük 10: 00'dan başlayarak çalıştırır.
+* *Defaultpol*: bir birim, *Vol1*, 10:30 pm itibariyle günlük olarak çalışır.
+* *Custompol*: dört birim, *Vol1*, *VOL2*, *Vol3*, *VOL4*, 10:00 ile başlayarak günlük olarak çalışır.
 
-Bu durumda, StorSimple için kilitlenme tutarlılığı önceliklendirir ve kullandığı *customPol* , daha fazla birim içerdiğinden. Bu ilke en son yedekleme verilerini geri yüklemek için kullanılır. Yedekleme ilkeleri oluşturma ve yönetme konusunda daha fazla bilgi için Git [yedekleme ilkelerini yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
+Bu durumda, kilitlenme tutarlılığı için StorSimple önceliklendirir ve daha fazla birime sahip olan *Custompol* kullanır. Bu ilkeden en son yedekleme, verileri geri yüklemek için kullanılır. Yedekleme ilkeleri oluşturma ve yönetme hakkında daha fazla bilgi için, [yedekleme ilkelerini yönetmek üzere StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md)bölümüne gidin.
 
-## <a name="common-considerations-for-device-failover"></a>Cihaz yük devretme için ortak düşünceler
+## <a name="common-considerations-for-device-failover"></a>Cihaz yük devretmesi için genel hususlar
 
-Bir cihaz devretmeden önce aşağıdaki bilgileri gözden geçirin:
+Bir cihazın yükünü devretmek için aşağıdaki bilgileri gözden geçirin:
 
-* Cihaz yük devretme başlatılmadan önce birim kapsayıcıları içinde tüm birimleri çevrimdışı olması gerekir. Planlanmamış bir yük devretmede StotSimple birimleri otomatik olarak çevrimdışı geçer. Ancak, (DR test etmek için) planlanmış bir yük devretme gerçekleştiriliyorsa, tüm birimleri çevrimdışı duruma getirmeniz gerekir.
-* İlişkili olan birim kapsayıcılarını DR için bulut anlık görüntüsü listelenir. En az bir birim kapsayıcısı ile verileri kurtarmak için bir ilişkili bulut anlık görüntüsü olması gerekir.
-* StorSimple arasında birden çok birim kapsayıcıları kapsayan bulut anlık görüntüleri varsa, bu birim kapsayıcılarının yükü bir küme olarak başarısız olur. Nadir bir örneği arasında birden çok birim kapsayıcıları span yerel anlık görüntü, ancak ilişkili bir bulut anlık görüntüleri kullanmayın, StorSimple yerel anlık görüntüleri başarısız ve yerel veri DR sonra kaybolur.
-* Kullanılabilir hedef cihazlar DR için seçilen birim kapsayıcıları yerleştirmek için yeterli alanı olan cihazlardır. Yeterli alana sahip olmayan herhangi bir cihaza, hedef cihazları olarak listelenmez.
-* Aygıt, buluttan veri erişimi ve yerel olarak depolamak gerektiğinde sonra DR (için sınırlı bir süre), veri erişim performansını önemli ölçüde etkilenebilir.
+* Cihaz yük devretmesi başlamadan önce, birim kapsayıcıları içindeki tüm birimlerin çevrimdışı olması gerekir. Planlanmamış bir yük devretmede, StotSimple birimleri otomatik olarak çevrimdışı duruma geçer. Ancak planlı bir yük devretme gerçekleştiriyorsanız (DR 'yi test etmek için), tüm birimleri çevrimdışına almanız gerekir.
+* Yalnızca ilişkili bir bulut anlık görüntüsüne sahip birim kapsayıcıları DR için listelenir. Verileri kurtarmak için ilişkili bir bulut anlık görüntüsüne sahip en az bir birim kapsayıcısı olmalıdır.
+* Birden çok birim kapsayıcılarından yayılan bulut anlık görüntüleri varsa, StorSimple, bu birim kapsayıcılarının kümesini küme olarak devreder. Nadir bir örnekte, birden çok birim kapsayıcılarından yayılan ancak ilişkili bulut anlık görüntüleri olmayan yerel anlık görüntüler varsa, StorSimple yerel anlık görüntüler üzerinden yük devreder ve yerel veriler DR sonrasında kaybedilir.
+* DR için kullanılabilir hedef aygıtlar, seçilen birim kapsayıcılarına uyum sağlamak için yeterli alana sahip cihazlardır. Yeterli alana sahip olmayan cihazlar hedef cihaz olarak listelenmez.
+* Bir DR 'den sonra (sınırlı bir süre için), cihazın buluttan verilere erişmesi ve yerel olarak depolaması gerektiğinden, veri erişim performansı önemli ölçüde etkilenebilir.
 
-#### <a name="device-failover-across-software-versions"></a>Yazılım sürümleri arasında cihaz yük devretme
+#### <a name="device-failover-across-software-versions"></a>Yazılım sürümleri arasında cihaz yük devretmesi
 
-Bir StorSimple cihaz Yöneticisi hizmeti bir dağıtımda olabilir birden çok cihaz, fiziksel ve bulut, tüm çalışan farklı yazılım sürümleri.
+Bir dağıtımdaki StorSimple Aygıt Yöneticisi hizmeti, her ikisi de fiziksel ve bulut olan ve hepsi farklı yazılım sürümlerini çalıştıran birden fazla cihaza sahip olabilir.
 
-Yük devretme veya geri farklı yazılım sürümü ve birim türlerinden DR sırasında nasıl davranacağını çalıştıran başka bir cihazda başarısız olursa belirlemek için aşağıdaki tabloyu kullanın.
+Farklı bir yazılım sürümü çalıştıran başka bir cihaza yük devretmek veya geri dönüp yük devredebildiğini ve birim türlerinin DR sırasında nasıl davranacağını belirlemek için aşağıdaki tabloyu kullanın.
 
-#### <a name="failover-and-failback-across-software-versions"></a>Yük devretme ve yeniden çalışma yazılım sürümleri arasında
+#### <a name="failover-and-failback-across-software-versions"></a>Yazılım sürümleri arasında yük devretme ve yeniden çalışma
 
-| Yük devretme / geri başarısız | Fiziksel cihaz | Bulut gereci |
+| Yük devretme/geri dönme | Fiziksel cihaz | Bulut gereci |
 | --- | --- | --- |
-| Güncelleştirme 3, 4 güncelleştirmek için |Katmanlı birim katmanlı olarak tekrar başarısız. <br></br>Yerel olarak sabitlenmiş üzerinde yerel olarak sabitlenmiş birimler başarısız. <br></br> Güncelleştirme 4 cihazda bir anlık görüntüsünü alırken bir yük devretme aşağıdaki [ısı Haritası tabanlı izleme](storsimple-update4-release-notes.md#whats-new-in-update-4) devreye girer. |Yerel olarak katmanlı birimler yük devretme sabitlendi. |
-| Güncelleştirme 3'ü güncelleştirme 4 |Katmanlı birim katmanlı olarak tekrar başarısız. <br></br>Yerel olarak sabitlenmiş üzerinde yerel olarak sabitlenmiş birimler başarısız. <br></br> Yedeklemeleri geri yüklemek için kullanılan ısı Haritası meta verileri korur. <br></br>Isı Haritası tabanlı izleme, güncelleştirme bir geri dönme aşağıdaki 3'te kullanılamıyor. |Yerel olarak katmanlı birimler yük devretme sabitlendi. |
+| Güncelleştirme 3-güncelleştirme 4 |Katmanlı birimler katmanlı olarak yük devreder. <br></br>Yerel olarak sabitlenmiş birimler yerel olarak sabitlenmiş olarak yük devreder. <br></br> Güncelleştirme 4 cihazında bir anlık görüntü aldığınızda bir yük devretmenin ardından içindeki [heatmap tabanlı izleme](storsimple-update4-release-notes.md#whats-new-in-update-4) noktaları. |Yerel olarak sabitlenmiş birimler katmanlı olarak yük devreder. |
+| Güncelleştirme 4-güncelleştirme 3 |Katmanlı birimler katmanlı olarak yük devreder. <br></br>Yerel olarak sabitlenmiş birimler yerel olarak sabitlenmiş olarak yük devreder. <br></br> Geri yüklemek için kullanılan yedeklemeler, ısı haritasını meta verilerini korur. <br></br>Heatmap tabanlı izleme, yeniden çalışma sonrasında güncelleştirme 3 ' te kullanılamaz. |Yerel olarak sabitlenmiş birimler katmanlı olarak yük devreder. |
 
 
-## <a name="device-failover-scenarios"></a>Cihaz yük devretme senaryosu
+## <a name="device-failover-scenarios"></a>Cihaz yük devretme senaryoları
 
-Olağanüstü bir durum varsa, StorSimple Cihazınızda yük devretme gerçekleştirme tercih edebilirsiniz:
+Bir olağanüstü durum varsa, StorSimple cihazınızın yükünü devretmek isteyebilirsiniz:
 
-* [Fiziksel bir cihaz için](storsimple-8000-device-failover-physical-device.md).
-* [Kendisine](storsimple-8000-device-failover-same-device.md).
-* [Bulut Gereci için](storsimple-8000-device-failover-cloud-appliance.md).
+* [Fiziksel bir cihaza](storsimple-8000-device-failover-physical-device.md).
+* [.](storsimple-8000-device-failover-same-device.md)
+* [Bir bulut](storsimple-8000-device-failover-cloud-appliance.md)gerecine.
 
-Önceki makaleler her yukarıdaki yük devretme durumları için ayrıntılı adımlar sağlar.
+Yukarıdaki makaleler, yukarıdaki yük devretme durumlarının her biri için ayrıntılı adımlar sağlar.
 
 
 ## <a name="failback"></a>Yeniden çalışma
 
-Güncelleştirme 3 ve sonraki sürümler için StorSimple, yeniden çalışma da destekler. Yeniden çalışma yalnızca yük devretme tersidir, hedef kaynağı haline gelir ve özgün kaynak cihaz artık yük devretme sırasında hedef cihazı haline gelir. 
+StorSimple, güncelleştirme 3 ve sonraki sürümlerinde yeniden çalışmayı da destekler. Yeniden çalışma, yalnızca yük devretme işlemini geri alır, hedef kaynak olur ve yük devretme sırasında özgün kaynak cihaz artık hedef cihaz haline gelir. 
 
-Yeniden çalışma sırasında StorSimple verileri geri birincil konumu durur g/ç ve uygulama etkinlik yeniden eşitler ve geçişleri özgün konuma geri.
+Yeniden çalışma sırasında StorSimple, verileri birincil konuma geri eşitler, g/ç ve uygulama etkinliğini durdurur ve özgün konuma geri geçirir.
 
-StorSimple, bir yük devretme işlemi tamamlandıktan sonra aşağıdaki eylemleri gerçekleştirir:
+Yük devretme tamamlandıktan sonra StorSimple aşağıdaki eylemleri gerçekleştirir:
 
-* StorSimple, kaynak CİHAZDAN yük devretme birim kapsayıcıları siler.
-* StorSimple birim kapsayıcısı (üzerinden kaynağı cihazda başarısız) başına bir arka plan işi başlatır. Geri işi devam ederken başarısız çalışırsanız, belirten bir bildirim alırsınız. Yeniden başlatmak için iş tamamlanana kadar bekleyin.
-* Birim kapsayıcıları silme işlemini tamamlamak için harcanan süre, veri miktarı, işlem için verileri yedekleme sayısı ve kullanılabilir ağ bant genişliği yaşını gibi çeşitli faktörlere bağlıdır.
+* StorSimple, kaynak cihazdan yük devredilen birim kapsayıcılarını temizler.
+* StorSimple, kaynak cihazda birim kapsayıcısı başına (yük devredilme) bir arka plan işi başlatır. İş devam ederken yeniden oturum açmaya çalışırsanız, bu etkiye yönelik bir bildirim alırsınız. Yeniden çalışma işlemini başlatmak için iş tamamlanana kadar bekleyin.
+* Birim kapsayıcılarını silmenin tamamlanma süresi, veri miktarı, verilerin yaşı, yedeklemelerin sayısı ve işlem için kullanılabilir ağ bant genişliği gibi çeşitli faktörlere bağlıdır.
 
-Yük devretme testleri planlama veya test mantığın, daha az veri (GB) içeren birim kapsayıcılarını test etmenizi öneririz. Genellikle, 24 saat yük devretme işlemi tamamlandıktan sonra yeniden başlatabilirsiniz.
+Yük devretme testi veya yük devretme testi yapıyorsanız, birim kapsayıcılarını daha az veri (GB) ile test etmenizi öneririz. Genellikle, yük devretme tamamlandıktan sonra yeniden çalışmayı 24 saat sonra başlatabilirsiniz.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-S. **DR başarısız veya kısmen başarılı olursa ne olur?**
+S. **DR başarısız olursa veya kısmen başarılı olursa ne olur?**
 
-A. DR başarısız olursa yeniden denemenizi öneririz. İkinci bir cihaz yük devretme işi ilk işin ilerleme durumunu farkındadır ve sonraki sürümlerde bu noktadan itibaren başlar.
+A. DR başarısız olursa, yeniden denemeniz önerilir. İkinci cihaz yük devretme işi, ilk işin ilerlemesini algılar ve bu noktadan itibaren başlar.
 
-S. **Bir cihaz, cihaz yük devretme işlemi devam ederken silebilir miyim?**
+S. **Cihaz yük devretmesi devam ederken bir cihazı silebilir miyim?**
 
-A. Bir kurtarma işlemi devam ederken bir cihazı silemezsiniz. DR tamamlandıktan sonra yalnızca Cihazınızı silebilirsiniz. Cihaz yük devretme işi ilerleme durumunu izleyebilirsiniz **işleri** dikey penceresi.
+A. Bir DR devam ederken bir cihazı silemezsiniz. Cihazınızı yalnızca DR tamamlandıktan sonra silebilirsiniz. **İşler** dikey penceresinde cihaz yük devretme işinin ilerlemesini izleyebilirsiniz.
 
-S. **Ne zaman kaynak cihazdaki yerel veriler silinir, böylece çöp toplama kaynağı cihazda başlar?**
+S. **Kaynak cihazdaki yerel verilerin silinmesi için çöp toplama işlemi kaynak cihazda ne zaman başlar?**
 
-A. Çöp toplama, yalnızca cihazın tamamen temizlenmesi sonra kaynağı cihazda etkinleştirilir. Temizleme üzerinde kaynak cihazdaki birim, yedekleme nesneleri (verileri değil), birim kapsayıcıları ve ilkeleri gibi başarısız olan nesnelerin temizleme içerir.
+A. Çöp toplama, kaynak cihazda yalnızca cihaz tamamen temizlendikten sonra etkinleştirilir. Temizleme, birim, yedekleme nesneleri (veri değil), birim kapsayıcıları ve ilkeler gibi kaynak cihazdan yük devredilen nesneleri temizleme işlemini içerir.
 
-S. **Kaynak cihazdaki birim kapsayıcıları ile ilişkili silme işlemi başarısız olursa ne olur?**
+S. **Kaynak cihazdaki birim kapsayıcılarıyla ilişkili silme işi başarısız olursa ne olur?**
 
-A.  Silme işlemi başarısız olursa, birim kapsayıcıları el ile silebilirsiniz. İçinde **cihazları** dikey penceresinde, kaynak cihaz seçin ve tıklayın **birim kapsayıcıları**. Dikey pencerenin en altındaki ve üzerinden başarısız bir birim kapsayıcıları seçin, **Sil**. Tüm sildikten sonra başarısız kaynak cihazdaki birim kapsayıcıları yeniden başlatabilirsiniz. Daha fazla bilgi için Git [birim kapsayıcısını silme](storsimple-8000-manage-volume-containers.md#delete-a-volume-container).
+A.  Silme işi başarısız olursa, birim kapsayıcılarını el ile silebilirsiniz. **Cihazlar** dikey penceresinde, kaynak cihazınızı seçin ve **birim kapsayıcıları**' na tıklayın. Yük devretme işlemi yaptığınız birim kapsayıcılarını seçin ve dikey pencerenin alt kısmında **Sil**' e tıklayın. Kaynak cihazdaki yük devredilen tüm birim kapsayıcılarını sildikten sonra, yeniden çalışmayı başlatabilirsiniz. Daha fazla bilgi için [birim kapsayıcısını silme](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)bölümüne gidin.
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>İş sürekliliği, olağanüstü durum kurtarma (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>İş sürekliliği olağanüstü durum kurtarma (BCDR)
 
-İş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu, veri merkezinin tamamı Azure çalışmıyor oluşur. Bu senaryo, StorSimple cihaz Yöneticisi hizmetiniz ve ilişkili StorSimple cihazları etkileyebilir.
+Azure veri merkezinin tamamı çalışmayı durdurduğu zaman bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu senaryo, StorSimple Aygıt Yöneticisi hizmetinizi ve ilişkili StorSimple cihazlarını etkileyebilir.
 
-Bir StorSimple cihazı yalnızca bir olağanüstü durum oluşmadan önce kaydedildiyse, bu cihaz, Fabrika sıfırlaması yapmak gerekebilir. Olağanüstü durum sonrası StorSimple cihazı çevrimdışı olarak Azure portalda görüntülenir. Bu cihaz, portaldan silinmesi gerekir. Cihazı fabrika ayarlarına sıfırlama ve hizmetle birlikte yeniden kaydedin.
+Bir StorSimple cihazı bir olağanüstü durum olmadan hemen önce kaydedilmişse, bu cihazın bir fabrika sıfırlamasına ihtiyacı olabilir. Olağanüstü durum sonrasında, StorSimple cihazı Azure portal çevrimdışı olarak görünür. Bu cihazın portaldan silinmesi gerekir. Cihazı fabrika ayarlarına sıfırlayın ve hizmeti ile yeniden kaydedin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihaz yük devretme gerçekleştirmek hazır olduğunuzda, ayrıntılı yönergeler için aşağıdaki senaryolardan birini seçin:
+Bir cihaz yük devretmesini gerçekleştirmeye hazırsanız, ayrıntılı yönergeler için aşağıdaki senaryolarından birini seçin:
 
 - [Başka bir fiziksel cihaza yük devretme](storsimple-8000-device-failover-physical-device.md)
 - [Aynı cihaza yük devretme](storsimple-8000-device-failover-same-device.md)
-- [StorSimple bulut Gerecine yük devretme](storsimple-8000-device-failover-cloud-appliance.md)
+- [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)
 
-Cihazınızda yük başarısız olursa, aşağıdaki seçeneklerden birini seçin:
+Cihazınızın yük devretme durumunda, aşağıdaki seçeneklerden birini seçin:
 
-* [StorSimple Cihazınızı silme veya devre dışı bırakma](storsimple-8000-deactivate-and-delete-device.md).
-* [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* [StorSimple cihazınızı devre dışı bırakın veya silin](storsimple-8000-deactivate-and-delete-device.md).
+* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanın](storsimple-8000-manager-service-administration.md).
 

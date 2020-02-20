@@ -7,33 +7,33 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: denzilribeiro
+ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 03150ef3a8799cd0f84fb1bc03f2fd712cddd541
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b22ec475c0281a54d65921bc450b35723aa23219
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889806"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471661"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL veritabanı ve SQL Server için Spark Connector ile gerçek zamanlı büyük veri analizlerini hızlandırma
 
 Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı, Azure SQL veritabanı ve SQL Server dahil olmak üzere SQL veritabanlarının, Spark işleri için giriş veri kaynağı veya çıkış veri havuzu olarak çalışmasını sağlar. Büyük veri analizindeki gerçek zamanlı işlem verilerini kullanmanızı ve geçici sorgular veya raporlama sonuçlarını kalıcı hale getirme olanağı sağlar. Yerleşik JDBC Bağlayıcısı ile karşılaştırıldığında, bu bağlayıcı, verileri SQL veritabanlarına toplu olarak ekleme olanağı sunar. Satır ekleyerek 10 kat daha hızlı performans ile 20 kat daha hızlı performans sağlayabilir. Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı AAD kimlik doğrulamasını da destekler. AAD hesabınızı kullanarak Azure Databricks Azure SQL veritabanınıza güvenli bir şekilde bağlanmanızı sağlar. Yerleşik JDBC Bağlayıcısı ile benzer arabirimler sağlar. Mevcut Spark işlerinizin bu yeni bağlayıcıyı kullanmak için geçirilmesi kolaydır.
 
-## <a name="download"></a>İndir
+## <a name="download"></a>İndirme
 Başlamak için, GitHub 'daki [Azure-SQLDB-Spark deposundan](https://github.com/Azure/azure-sqldb-spark) Spark ' ı SQL DB bağlayıcısına indirin.
 
 ## <a name="official-supported-versions"></a>Resmi desteklenen sürümler
 
-| Bileşen                            |Sürüm                  |
-| :----------------------------------- | :---------------------- |
-| Apache Spark                         |2.0.2 veya üzeri           |
-| Scala                                |2,10 veya üzeri            |
-| SQL Server için Microsoft JDBC Sürücüsü |6,2 veya üzeri             |
-| Microsoft SQL Server                 |SQL Server 2008 veya üzeri |
-| Azure SQL Veritabanı                   |Destekleniyor                |
+| Bileşen                            | Sürüm                  |
+| :----------------------------------- | :----------------------- |
+| Apache Spark                         | 2.0.2 veya üzeri           |
+| Scala                                | 2,10 veya üzeri            |
+| SQL Server için Microsoft JDBC sürücüsü | 6,2 veya üzeri             |
+| Microsoft SQL Server                 | SQL Server 2008 veya üzeri |
+| Azure SQL Veritabanı                   | Destekleniyor                |
 
 Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı, verileri Spark çalışan düğümleri ve SQL veritabanları arasında taşımak için SQL Server Microsoft JDBC sürücüsü kullanır:
  
@@ -44,7 +44,7 @@ Veri akışı aşağıdaki gibidir:
 
 Aşağıdaki diyagramda veri akışı gösterilmektedir.
 
-   ![architecture](./media/sql-database-spark-connector/architecture.png)
+   ![mimari](./media/sql-database-spark-connector/architecture.png)
 
 ### <a name="build-the-spark-to-sql-db-connector"></a>Spark 'ı SQL DB bağlayıcısına oluşturma
 Şu anda bağlayıcı projesi Maven kullanır. Bağlayıcıyı bağımlılıklar olmadan derlemek için şunu çalıştırabilirsiniz:
@@ -89,7 +89,7 @@ val config = Config(Map(
 ))
 
 //Read all data in table dbo.Clients
-val collection = sqlContext.read.sqlDb(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -118,7 +118,7 @@ import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.query._
 val query = """
               |UPDATE Customers
-              |SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+              |SET ContactName = 'Alfred Schmidt', City = 'Frankfurt'
               |WHERE CustomerID = 1;
             """.stripMargin
 
@@ -146,13 +146,13 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"            -> "mysqlserver.database.windows.net",
   "databaseName"   -> "MyDatabase",
-  "user"           -> "username ",
+  "user"           -> "username",
   "password"       -> "*********",
   "authentication" -> "ActiveDirectoryPassword",
   "encrypt"        -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -169,12 +169,12 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"                   -> "mysqlserver.database.windows.net",
   "databaseName"          -> "MyDatabase",
-  "accessToken"           -> "access_token ",
+  "accessToken"           -> "access_token",
   "hostNameInCertificate" -> "*.database.windows.net",
   "encrypt"               -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -214,7 +214,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 ## <a name="next-steps"></a>Sonraki adımlar
 Henüz yapmadıysanız Azure SQL veritabanı için Spark bağlayıcısını indirin ve [Azure-SQLDB-Spark GitHub deposundan](https://github.com/Azure/azure-sqldb-spark) SQL Server ve depodaki ek kaynakları keşfedebilirsiniz:
 
--   [Örnek Azure Databricks Not defterleri](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Örnek Azure Databricks Not defterleri](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Örnek betikler (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 Ayrıca, [Apache Spark SQL, DataFrames ve veri kümeleri kılavuzunu](https://spark.apache.org/docs/latest/sql-programming-guide.html) ve [Azure Databricks belgelerini](https://docs.microsoft.com/azure/azure-databricks/)gözden geçirmek isteyebilirsiniz.

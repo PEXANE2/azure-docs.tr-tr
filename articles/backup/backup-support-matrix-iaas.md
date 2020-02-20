@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0bc66939fc6bd150d57242f144cdb032db8188d1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 5d83d3426a80acc12c2a53051dcfd7b889f47f02
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425060"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469009"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -171,6 +171,7 @@ Yinelenen yinelenenleri kaldırma & VM 'Leri/diskleri geri yükleme | Azure Back
 Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
 Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Genişleme Dosya Sunucusu kullanarak VM 'Leri yedekleme desteklenmez. Yedekleme sırasında CSV yazıcılarının başarısız olma olasılığı yüksektir. Geri yükleme sırasında CSV birimleri içeren diskler gelmeyebilir.
+[Paylaşılan diskler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Desteklenmiyor.
 
 ## <a name="vm-network-support"></a>VM ağı desteği
 

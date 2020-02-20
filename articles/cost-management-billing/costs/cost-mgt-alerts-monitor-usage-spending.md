@@ -1,21 +1,19 @@
 ---
 title: Maliyet uyarıları ile kullanımı ve harcamaları izleme | Microsoft Docs
 description: Bu makalede Azure Maliyet Yönetimi'ndeki maliyet uyarılarının kullanımı ve harcamaları izlemenize nasıl yardımcı olduğu anlatılmaktadır.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: alavital
+ms.reviewer: adwise
 ms.custom: ''
-ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3ce643767ad8ba6116c9e93f23b1c8a7819d7277
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988506"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199951"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Maliyet uyarılarını kullanarak kullanımı ve harcamayı izleme
 
