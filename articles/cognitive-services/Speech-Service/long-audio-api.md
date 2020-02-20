@@ -48,7 +48,7 @@ Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
   * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
   * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
 > [!NOTE]
-> Çince (Mainland), Çince (Hong Kong), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
+> Çince (Mainland), Çince (Hong Kong ÖİB), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
 
 ## <a name="submit-synthesis-requests"></a>Sensıs isteklerini gönder
 

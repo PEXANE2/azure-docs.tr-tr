@@ -63,7 +63,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | CD | Kongo Demokratik Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Kıyısı|
+| CI | Fildişi Sahili (Côte d’Ivoire)|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|

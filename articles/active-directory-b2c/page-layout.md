@@ -39,7 +39,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
   - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlar
   - Chrome çevirisi desteği
 - Birleşik ve kendinden onaylanan sayfalar
-  - Username/email ve Password alanları artık Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için `form` HTML öğesini kullanır.
+  - Username/email ve Password alanları artık Microsoft Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için `form` HTML öğesini kullanır.
 
 ## <a name="110"></a>1.1.0
 
