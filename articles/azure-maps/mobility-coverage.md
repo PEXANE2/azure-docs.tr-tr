@@ -56,7 +56,7 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 |--------|---------|
 | Avustralya      | <p>ADELAIDE, Gamze Sprdikler, Bowen, Brisbane, Mindaberg QLD, Burnie, CAIRNS, Canbera, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, manyetik Adası, Maryborough-Hervey Bay, Melbourne, Yeni Güney Galler, Perth, RockHampton, Güney Doğu Queensland, Sidney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Çin | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jina, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yanday, Yiing, Zhuhai, Shanghai, PI, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hong Kong SAR | Hong Kong çın ÖIB *|
+| Hong Kong SAR | Hong Kong ÖİB *|
 | Makao ÖİB | Makao ÖIB *|
 | Hindistan | Ahmedadbad, Bengaluru, Delhi, Mumbai, hayal uru, Pune|
 | Endonezya | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
