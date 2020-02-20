@@ -26,15 +26,17 @@
       href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL’i MySQL için Azure DB’ye çevrimiçi geçirme
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: PostgreSQL’i PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçirme
+    - name: PostgreSQL’i PostgreSQL için Azure DB’ye portal üzerinden çevrimiçi geçirme
+      href: tutorial-postgresql-azure-postgresql-online-portal.md
+    - name: PostgreSQL’i PostgreSQL için Azure DB’ye CLI üzerinden çevrimiçi geçirme
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: RDS PostgreSQL’i PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçirme
+    - name: RDS PostgreSQL’i çevrimiçi ortamda PostgreSQL için Azure DB‘ye geçirme
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: MongoDB'yi çevrimdışı ortamda Azure Cosmos DB Mongo API'sine geçirme
       href: tutorial-mongodb-cosmos-db.md
     - name: MongoDB'yi çevrimiçi ortamda Azure Cosmos DB Mongo API'sine geçirme
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Oracle'ı PostgreSQL için Azure Veritabanı-Tek sunucuya çevrimiçi geçirme
+    - name: Oracle’ı PostgreSQL için Azure DB’ye geçirme - Çevrimiçi tek sunucu
       href: tutorial-oracle-azure-postgresql-online.md
 - name: Nasıl yapılır kılavuzları
   items:
@@ -44,9 +46,9 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Geçiş etkinliğini izleme
       href: how-to-monitor-migration-activity.md
-    - name: SSIS paketlerini Azure SQL Veritabanı tek veritabanına yeniden dağıtma
+    - name: SSIS paketlerini Azure SQL DB tek veritabanına yeniden dağıtma
       href: how-to-migrate-ssis-packages.md
-    - name: SSIS paketlerini Azure SQL Veritabanı yönetilen örneğine yeniden dağıtma
+    - name: SSIS paketlerini Azure SQL DB yönetilen örneğine yeniden dağıtma
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Kaynaklar
   expanded: true
@@ -85,13 +87,13 @@
           href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
         - name: Önkoşulları belirleme ve bir DMS örneği oluşturma
           href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
-        - name: SQL Server 2008’i Azure SQL Veritabanı Yönetilen Örneğine geçirme
+        - name: SQL Server 2008’i Azure SQL DB yönetilen örneğine geçirme
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
-        - name: PostgreSQL’i PostgreSQL için Azure Veritabanı’na geçirme
+        - name: PostgreSQL’i PostgreSQL için Azure DB’ye geçirme
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
         - name: Çevrimiçi ortamdaki bir geçiş işlemini izleme ve tam geçiş gerçekleştirme
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
-        - name: Oracle’ı Azure SQL Veritabanı’na geçirme
+        - name: Oracle’ı Azure SQL DB’ye geçirme
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: MongoDB’yi Azure Cosmos DB’ye geçirme
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

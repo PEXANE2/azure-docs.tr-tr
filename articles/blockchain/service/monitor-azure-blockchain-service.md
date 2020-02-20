@@ -89,7 +89,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | NodeLocation  | Blok zinciri üyesinin dağıtıldığı Azure bölgesi.  |
 | BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
 | Etmi yöntemi  | Temel alınan blok zinciri protokolü tarafından çağrılan yöntem, çekirdekte eth_sendTransactions, eth_getBlockByNumber vb. olabilir.  |
-| Aracı  | Web tarayıcısı Mozilla, Edge vb. gibi bir kullanıcı adına davranan Kullanıcı Aracısı. Değer örnekleri şunlardır: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
+| Aracı  | Web tarayıcısı Mozilla, Microsoft Edge vb. gibi bir kullanıcı adına davranan Kullanıcı Aracısı. Değer örnekleri şunlardır: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
 | Kod   | HTTP hata kodları. Genellikle 4XX ve 5XX hata koşullarıdır.  |
 | NodeHost  | Düğümün DNS adı.   |
 | RequestMethodName | HTTP yöntemi çağrıldı, buradaki olası değerler üye Oluştur, var olan üyenin ayrıntılarını alma, silme üyesi için SILME, üyeyi güncelleştirmek için Düzeltme Eki.   |

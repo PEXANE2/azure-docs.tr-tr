@@ -1,4 +1,4 @@
-- name: Azure Uygulama Yapılandırması Önizlemesi belgeleri
+- name: Azure Uygulama Yapılandırması belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -59,6 +59,8 @@
   items:
     - name: Anahtar değeri deposu
       href: concept-key-value.md
+    - name: Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
+      href: concept-customer-managed-keys.md
     - name: Belirli bir noktanın anlık görüntüsü
       href: concept-point-time-snapshot.md
     - name: Özellik yönetimi
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: Olay işleme
       href: concept-app-configuration-event.md
+    - name: Kimlik Doğrulaması
+      items:
+        - name: Azure Yönetilen Kimliği ile tümleştirme
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: Azure Active Directory kullanarak erişimi etkinleştirme
+          href: concept-enable-rbac.md
     - name: Yüksek kullanılabilirlik
       items:
         - name: Dayanıklılık ve olağanüstü durum kurtarma
           href: concept-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure Yönetilen Kimliği ile tümleştirme
-      href: howto-integrate-azure-managed-service-identity.md
     - name: Yapılandırma verilerini içeri veya dışarı aktarma
       href: howto-import-export-data.md
     - name: Olayları özel bir uç noktaya yönlendirme
@@ -86,7 +92,7 @@
     - name: Yapılandırma
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core sağlayıcısı
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework derleyicisi

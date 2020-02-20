@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Uygulama Yapılandırması önizlemesi belgeleri
+title: Azure Uygulama Yapılandırması belgeleri
 summary: Geliştiricilerin uygulama ve özellik ayarlarını basit ve güvenli bir biçimde merkezileştirmesine yardımcı olan, yönetilen bir hizmet olan Azure Uygulama Yapılandırması’nı kullanmayı öğrenin.
 metadata:
-  title: Azure Uygulama Yapılandırması önizlemesi belgeleri
+  title: Azure Uygulama Yapılandırması belgeleri
   description: Geliştiricilerin uygulama ve özellik ayarlarını basit ve güvenli bir biçimde merkezileştirmesine yardımcı olan, yönetilen bir hizmet olan Azure Uygulama Yapılandırması’nı kullanmayı öğrenin.
   author: lisaguthrie
   ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 37f3581866a687cce3f65d17175a334f5bba11d7
-  ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+  ms.openlocfilehash: 15a1d5ddd84a9683a2666ecbd58918b99186278e
+  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/06/2020
-  ms.locfileid: "77047296"
+  ms.lasthandoff: 02/19/2020
+  ms.locfileid: "77468170"
 landingContent:
 - title: Azure Uygulama Yapılandırması hakkında
   linkLists:
@@ -119,7 +119,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest
+      url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
     - text: .NET Core sağlayıcısı
       url: https://go.microsoft.com/fwlink/?linkid=2074664
     - text: .NET Framework derleyicisi

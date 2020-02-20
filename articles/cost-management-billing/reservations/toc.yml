@@ -36,6 +36,8 @@
           href: exchange-and-refund-azure-reservations.md
         - name: Rezervasyonları yönetme
           href: manage-reserved-vm-instance.md
+        - name: İyileştirme ayarlarını değiştirme
+          href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Rezervasyonları görüntüleme
           href: view-reservations.md
     - name: Kavramlar

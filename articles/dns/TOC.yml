@@ -113,6 +113,10 @@
           href: dns-sdk.md
         - name: Azure kaynakları için özel etki alanları
           href: dns-custom-domain.md
+    - name: Özel DNS
+      items:
+        - name: Özel DNS bölgelerini ve kayıtlarını koruma
+          href: dns-protect-private-zones-recordsets.md
     - name: Sorun giderme
       items:
         - name: Sorun giderme kılavuzu

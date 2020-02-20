@@ -527,7 +527,7 @@
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs’a veri akışı sağlama
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: VM’leri ve işlemi izleme
+    - name: VM’leri ve konuk işletim sistemini izleme
       items:
         - name: Aracılar
           items:
@@ -537,13 +537,15 @@
               href: 'faq.md#agents'
             - name: Azure Tanılama uzantısı
               items:
+                - name: Genel Bakış
+                  href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: Genel Bakış
-                      href: platform/diagnostics-extension-overview.md
                     - name: Yükleme ve yapılandırma
                       items:
+                        - name: Yükleme seçenekleri
+                          href: platform/diagnostics-extension-windows-install.md
                         - name: PowerShell
                           href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                         - name: Resource Manager şablonu
@@ -561,13 +563,11 @@
                     - name: Event Hubs’a gönderme
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: Günlükler’e gönderme
-                      href: platform/azure-storage-iis-table.md
-                    - name: Azure Depolama’ya gönderme
-                      href: platform/diagnostics-extension-to-storage.md
+                      href: platform/diagnostics-extension-logs.md
                     - name: Application Insights’a gönderme
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Sürüm geçmişi
-                      href: platform/diagnostics-extension-schema.md
+                      href: platform/diagnostics-extension-versions.md
                     - name: JSON Satırları kaynak günlüklerinin biçimi
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Sorun giderme
@@ -588,9 +588,9 @@
                 - name: Linux aracıları
                   href: platform/agent-linux.md
                 - name: Windows için VM Uzantısı
-                  href: ../virtual-machines/windows/extensions-oms.md
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Linux için VM Uzantısı
-                  href: ../virtual-machines/linux/extensions-oms.md
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics ağ geçidi
                   href: platform/gateway.md
                 - name: Aracı yönetimi
@@ -1151,8 +1151,8 @@
       href: service-limits.md
     - name: Tanılama uzantısı
       items:
-        - name: Şema
-          href: platform/diagnostics-extension-schema-1dot3.md
+        - name: Windows yapılandırma şeması
+          href: platform/diagnostics-extension-schema-windows.md
     - name: Terminoloji değişiklikleri
       href: terminology.md
     - name: Application Insights

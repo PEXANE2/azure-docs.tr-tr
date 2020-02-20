@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: f72b43fe60676011819dc3aafe026017af6c62c0
+  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75437873"
+  ms.lasthandoff: 02/19/2020
+  ms.locfileid: "77471389"
 landingContent:
 - title: Azure Veritabanı Geçiş Hizmeti hakkında
   linkLists:
@@ -55,41 +55,43 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: SQL Veritabanı tek veritabanına geçirme - çevrimiçi
+    - text: SQL DB tek veritabanına geçiş - çevrimiçi
       url: tutorial-sql-server-azure-sql-online.md
-    - text: SQL Veritabanı tek veritabanına geçirme - çevrimdışı
+    - text: SQL DB tek veritabanına geçiş - çevrimdışı
       url: tutorial-sql-server-to-azure-sql.md
-    - text: SQL Veritabanı yönetilen örneğine geçirme - çevrimiçi
+    - text: SQL DB yönetilen örneğine geçiş - çevrimiçi
       url: tutorial-sql-server-managed-instance-online.md
-    - text: SQL Veritabanı yönetilen örneğine geçirme - çevrimdışı
+    - text: SQL DB yönetilen örneğine geçiş - çevrimdışı
       url: tutorial-sql-server-to-managed-instance.md
-    - text: RDS SQL Server’ı SQL Veritabanı tek veritabanına veya yönetilen örneğine geçirme - çevrimiçi
+    - text: RDS SQL Server’ı SQL DB tek veritabanına veya yönetilen örneğine geçirme - çevrimiçi
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: Bilinen sorunlar - SQL Veritabanı tek veritabanına çevrimiçi geçiş
+    - text: Bilinen sorunlar - SQL DB tek veritabanına çevrimiçi geçiş
       url: known-issues-azure-sql-online.md
-    - text: Bilinen sorunlar - SQL Veritabanı yönetilen örneğine çevrimiçi geçiş
+    - text: Bilinen Sorunlar - SQL DB yönetilen örneğine çevrimiçi geçiş
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: SQL Veritabanı yönetilen örneği geçişlerinin ağ topolojileri
+    - text: SQL DB yönetilen örneği geçişlerinin ağ topolojileri
       url: resource-network-topologies.md
-    - text: SQL Server'dan SQL Veritabanı yönetilen örneğine çevrimiçi geçişler için özel roller
+    - text: SQL Server’dan SQL DB yönetilen örneğine çevrimiçi geçişler için özel roller
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: SQL Server 2008’i SQL Veritabanı yönetilen örneğine geçirme
+    - text: SQL Server 2008’i SQL DB yönetilen örneğine geçirme
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: Açık kaynaklı veritabanlarını Azure’a geçirme
   linkLists:
   - linkListType: tutorial
     links:
-    - text: PostgreSQL için Azure Veritabanı’na geçiş - Tek Sunucu - çevrimiçi
+    - text: PostgreSQL için Azure DB’ye portal üzerinden çevrimiçi geçiş
+      url: tutorial-postgresql-azure-postgresql-online-portal.md
+    - text: PostgreSQL için Azure DB’ye CLI üzerinden çevrimiçi geçiş
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: RDS PostgreSQL’i PostgreSQL için Azure Veritabanı’na geçirme - Tek sunucu - çevrimiçi
+    - text: RDS PostgreSQL’i PostgreSQL için Azure DB’ye geçirme
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - text: MySQL için Azure Veritabanı'na geçiş - çevrimiçi
+    - text: MySQL için Azure DB’ye geçiş - çevrimiçi
       url: tutorial-mysql-azure-mysql-online.md
-    - text: RDS MySQL'i MySQL için Azure Veritabanı'na geçirme - çevrimiçi
+    - text: RDS MySQL’i MySQL için Azure DB’ye geçirme - çevrimiçi
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
     - text: Azure Cosmos DB Mongo API'sine geçiş - çevrimiçi
       url: tutorial-mongodb-cosmos-db-online.md
@@ -97,13 +99,13 @@ landingContent:
       url: tutorial-mongodb-cosmos-db.md
   - linkListType: reference
     links:
-    - text: Bilinen sorunlar - PostgreSQL için Azure Veritabanı’na geçiş - Tek sunucu
+    - text: Bilinen sorunlar - PostgreSQL için Azure DB’ye çevrimiçi geçiş - Tek sunucu
       url: known-issues-azure-postgresql-online.md
-    - text: Bilinen sorunlar - MySQL için Azure Veritabanı’na çevrimiçi geçiş
+    - text: Bilinen sorunlar - MySQL için Azure DB’ye çevrimiçi geçiş
       url: known-issues-azure-mysql-online.md
   - linkListType: video
     links:
-    - text: PostgreSQL’i PostgreSQL için Azure Veritabanı’na geçirme - Tek sunucu
+    - text: PostgreSQL’i PostgreSQL için Azure DB’ye geçirme - Tek sunucu
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
     - text: Azure Cosmos DB Mongo API'sine geçiş
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
