@@ -154,3 +154,5 @@
       href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Microsoft 365 yol haritası
       href: 'https://aka.ms/wvdroadmap'
+    - name: Azure Resource Manager şablonları
+      href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'

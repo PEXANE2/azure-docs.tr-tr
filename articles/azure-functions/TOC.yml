@@ -371,11 +371,23 @@
         - name: Notification Hubs
           href: functions-bindings-notification-hubs.md
         - name: Kuyruk depolama
-          href: functions-bindings-storage-queue.md
+          items:
+            - name: Genel Bakış
+              href: functions-bindings-storage-queue.md
+            - name: Tetikleyici
+              href: functions-bindings-storage-queue-trigger.md
+            - name: Çıktı
+              href: functions-bindings-storage-queue-output.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
-          href: functions-bindings-service-bus.md
+          items:
+            - name: Genel Bakış
+              href: functions-bindings-service-bus.md
+            - name: Tetikleyici
+              href: functions-bindings-service-bus-trigger.md
+            - name: Çıktı
+              href: functions-bindings-service-bus-output.md
         - name: SignalR Service
           href: functions-bindings-signalr-service.md
         - name: Table Storage
