@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024203"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498888"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için güvenlik uyarılarını yapılandırma
 
@@ -32,11 +32,11 @@ Privileged Identity Management (PıM), Azure Active Directory (Azure AD) kurulu�
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
-    ![Azure AD rolleri yeni sürüm](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Azure AD rollerinin güvenlik uyarılarını araştırmak için bu makaledeki adımları izleyin.
 
-# <a name="new-versiontabnew"></a>[Yeni sürüm](#tab/new)
+# <a name="new-version"></a>[Yeni sürüm](#tab/new)
 
 ![Azure AD rolleri-uyarıları ve önem derecesini listeleme uyarı bölmesi](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -135,7 +135,7 @@ Farklı uyarılardaki ayarları, ortamınız ve güvenlik hedeflerinizle çalı�
 
 ![Ayarları etkinleştirmek ve yapılandırmak için bir uyarının sayfası ayarlanıyor](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[Önceki sürüm](#tab/previous)
+# <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
 ![Azure AD rolleri-uyarıları ve önem derecesini listeleme uyarı bölmesi](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 

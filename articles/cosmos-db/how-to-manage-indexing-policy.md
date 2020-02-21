@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767985"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506245"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB Dizin oluşturma ilkelerini yönetme
 
@@ -342,11 +342,11 @@ Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-index
 > [!NOTE]
 > Dizin oluşturma ilkesi güncelleştirilirken Azure Cosmos DB yazma işlemleri kesintiye uğramadan olur. Yeniden dizinleme sırasında, Dizin güncelleştirildiğinden sorgular kısmi sonuçlar döndürebilir.
 
-## <a name="use-the-azure-portal"></a>Azure Portal’ı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğrudan düzenlemenize izin veren bir JSON belgesi olarak depolar.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -364,7 +364,7 @@ Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğruda
 
 Özel bir dizin oluşturma ilkesiyle kapsayıcı oluşturmak için bkz. [CLI kullanarak özel dizin ilkesiyle kapsayıcı oluşturma](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
-## <a name="use-powershell"></a>PowerShell'i kullanma
+## <a name="use-powershell"></a>PowerShell kullanma
 
 Özel bir dizin oluşturma ilkesiyle kapsayıcı oluşturmak için bkz. [PowerShell kullanarak özel dizin ilkesiyle kapsayıcı oluşturma](manage-with-powershell.md#create-container-custom-index)
 
@@ -472,7 +472,7 @@ indexingPolicy.setIndexingMode(IndexingMode.Consistent);
 // Add an included path
 
 Collection<IncludedPath> includedPaths = new ArrayList<>();
-ExcludedPath includedPath = new IncludedPath();
+IncludedPath includedPath = new IncludedPath();
 includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);

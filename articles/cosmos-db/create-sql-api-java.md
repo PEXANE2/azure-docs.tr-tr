@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3cdd558a8b14498e981c9c60a077a7286188e02e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469053"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500102"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -35,6 +35,18 @@ Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı olu�
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME` ortam değişkeninizi JDK 'nin yüklü olduğu klasöre getirin.
 - [Maven ikili Arşivi](https://maven.apache.org/download.cgi). Ubuntu 'da, Maven 'yi yüklemek için `apt-get install maven` çalıştırın.
 - [Git](https://www.git-scm.com/downloads). Ubuntu 'da git 'i yüklemek için `sudo apt-get install git` çalıştırın.
+
+## <a name="introductory-notes"></a>Giriş notları
+
+*Cosmos DB hesabının yapısı.* API veya programlama dilinden bağımsız olarak, bir Cosmos DB *hesabı* sıfır veya daha fazla *veritabanı*içerir, bir *veritabanı* (DB) sıfır veya daha fazla *kapsayıcı*içerir ve bir *kapsayıcı* , aşağıdaki diyagramda gösterildiği gibi sıfır veya daha fazla öğe içerir:
+
+![Azure Cosmos hesabı varlıklar](./media/databases-containers-items/cosmos-entities.png)
+
+Burada veritabanları, kapsayıcılar ve öğeler hakkında daha fazla bilgi edinebilirsiniz [.](databases-containers-items.md) Birkaç önemli özellik, kapsayıcı düzeyinde, *sağlanan aktarım hızı* ve *bölüm anahtarı*arasında tanımlanır. 
+
+Sağlanan aktarım hızı, parasal bir fiyata sahip olan Istek*birimleri (ru*) cinsinden ölçülür ve hesabın işletim maliyetinde faktörü önemli ölçüde belirler. Sağlanan aktarım hızı kapsayıcı başına ayrıntı düzeyi veya veritabanı başına ayrıntı düzeyinde seçilebilir, ancak kapsayıcı düzeyinde üretilen iş belirtimi genellikle tercih edilir. Burada üretilen iş sağlama hakkında daha fazla bilgi alabilirsiniz [.](set-throughput.md)
+
+Öğeler bir Cosmos DB kapsayıcısına eklendikçe, istekleri işlemek için daha fazla depolama ve işlem eklenerek veritabanı yatay olarak artar. Depolama ve işlem kapasitesi, *bölümler*olarak bilinen ayrı birimlere eklenir ve belgelerinizdeki bir alanı her belgeyi bir bölüme eşleyen bölüm anahtarı olacak şekilde seçmeniz gerekir. Bölümlerin yönetilme şekli, her bölüme bölüm anahtarı değerlerinin aralığından kabaca eşit bir dilim atanabileceği; Bu nedenle, görece rastgele veya eşit olarak dağıtılan bir bölüm anahtarı seçmeniz önerilir. Aksi halde, bazı bölümler önemli ölçüde daha az istek *(* *soğuk bölüm*) görür ve bu da kaçınılmaz. [Burada](partitioning-overview.md)bölümlendirme hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 

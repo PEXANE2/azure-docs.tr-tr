@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a44cf9aa5b3287a01617be6439cd04b9a5caa73
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484239"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522348"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -543,7 +543,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
     }
 }
 ```
-#### <a name="delete-user"></a>Kullanıcıyı Silme
+#### <a name="delete-user"></a>Kullanıcı silme
 
 ##### <a name="request-6"></a>İsteyen
 
@@ -712,7 +712,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *HTTP/1.1 204 Içerik yok*
 
-#### <a name="delete-group"></a>Grubu Silme
+#### <a name="delete-group"></a>Grubu Sil
 
 ##### <a name="request-13"></a>İsteyen
 
@@ -1497,7 +1497,7 @@ Birleşme tümleştirmemiz için bir tanıma ve talep konusunda yardımcı olmak
 
 Belirli uygulamalar, uygulamalarına gelen trafiğe izin verir. Azure AD sağlama hizmeti 'nin beklenen şekilde çalışması için, kullanılan IP adreslerine izin verilmelidir. Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Gerektiğinde bu IP 'Leri güvenlik duvarınızdan indirebilir ve programlayabilirsiniz. Azure AD sağlama için ayrılmış IP aralıkları "AzureActiveDirectoryDomainServices" altında bulunabilir.
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="related-articles"></a>İlgili makaleler
 
 * [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](user-provisioning.md)
 * [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)

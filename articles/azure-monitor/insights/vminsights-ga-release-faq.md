@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047840"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482893"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
 
@@ -24,7 +24,9 @@ VM'ler için Azure İzleyici yeni bir sürümünü yayımladık. VM 'Ler için A
 
 Bu yükseltme ile VM'ler için Azure İzleyici performans verileri, [kapsayıcılar Için Azure izleyici](container-insights-overview.md)olarak aynı *ınsightsölçümlerini* tablosunda depolanır ve bu da iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. 
 
-Sonraki hafta veya iki adımda, bu yeni tabloyu kullanmak için performans görünümlerimiz de güncelleştirilecektir.
+Performans görünümlerimiz artık *ınsightsölçümlerini* tablosunda depoladığınız verileri kullanıyor.  Çalışma alanınızda en son Vminsıghts çözümünü kullanmak için henüz yükseltmemiş olmanız durumunda, grafiklerinizde artık bilgi görüntülenmeyecektir.  Aşağıda açıklandığı gibi, **kullanmaya başlama** sayfamızı yükseltebilirsiniz.
+
+Bu yükseltme ile, VM'ler için Azure İzleyici performans verileri, iki veri kümesini sorgulamanızı kolaylaştıran [kapsayıcılar Için Azure izleyici](container-insights-overview.md) Ile aynı *ınsightsölçümlerini* tablosunda depolanır. Daha önce kullanılan tabloda depolayabildiğimiz daha farklı veri kümelerini de depolayabileceksiniz. 
 
 Var olan müşterilerin yükseltmesini isteyen iş akışının kesintiye uğramasına neden olduğunu fark ettik. bu nedenle, bu işlemi daha sonra daha sonra genel önizleme aşamasında yapmayı tercih ediyoruz.
 
@@ -34,6 +36,8 @@ Var olan müşterilerin yükseltmesini isteyen iş akışının kesintiye uğram
 Veri toplamaya yönelik ek yetenekler ve bu verileri Log Analytics çalışma alanınızda depolamak için yeni bir konum içeren Vminsıghts adlı yeni bir çözüm yayımladık. 
 
 Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve verileri *perf* tablosuna göndermek için Log Analytics çalışma alanınızdaki performans sayaçlarını ayarlayın. Bu yeni çözüm, verileri, kapsayıcılar için Azure Izleyici tarafından da kullanılan *ınsightsölçümlerini* adlı bir tabloya gönderir. Bu tablo şeması, *performans* Tablosu biçimiyle uyumlu olmayan ek ölçümleri ve hizmet veri kümelerini depolamamızı sağlar.
+
+Performans grafiklerimizi, *ınsightsölçümlerini* tablosunda depoladığınız verileri kullanacak şekilde güncelleştirdik. Aşağıda açıklandığı gibi, **kullanmaya başlama** sayfamızda bulunan *ınsightsölçümlerini* tablosunu kullanmak için yükseltebilirsiniz.
 
 
 ## <a name="how-do-i-upgrade"></a>Nasıl yaparım? yükseltmesi yapılsın mı?

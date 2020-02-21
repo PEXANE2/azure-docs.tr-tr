@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e3661797ea408f219a67a1862901fee7c27a1d58
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123909"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526425"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
 
@@ -35,18 +35,18 @@ ms.locfileid: "74123909"
 ## <a name="database-objects"></a>Veritabanı nesneleri
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
-| Veritabanı |En büyük boyut | Gen1:240 TB diskte sıkıştırılmış. Bu alan tempdb veya günlük alanından bağımsızdır ve bu nedenle bu alan kalıcı tablolara ayrılmıştır.  Kümelenmiş columnstore sıkıştırması, 5X ile tahmin edilir.  Bu sıkıştırma, tüm tablolar kümelenmiş columnstore (varsayılan tablo türü) olduğunda veritabanının yaklaşık 1 PB 'e büyümesine izin verir. <br/><br/> Gen2: rowstore için 240TB ve columnstore tabloları için sınırsız depolama |
-| Tablo |En büyük boyut |disk üzerinde 60 TB sıkıştırılmış |
-| Tablo |Veritabanı başına tablo | 100.000 |
+| Database |En büyük boyut | Gen1:240 TB diskte sıkıştırılmış. Bu alan tempdb veya günlük alanından bağımsızdır ve bu nedenle bu alan kalıcı tablolara ayrılmıştır.  Kümelenmiş columnstore sıkıştırması, 5X ile tahmin edilir.  Bu sıkıştırma, tüm tablolar kümelenmiş columnstore (varsayılan tablo türü) olduğunda veritabanının yaklaşık 1 PB 'e büyümesine izin verir. <br/><br/> Gen2: rowstore için 240TB ve columnstore tabloları için sınırsız depolama |
+| Tablo |En büyük boyut | Columnstore tabloları için, en fazla sınır yoktur. <br/><br/>Satır depolama tabloları için disk üzerinde 60 TB sıkıştırılmış |
+| Tablo |Veritabanı başına tablo | 100,000 |
 | Tablo |Tablo başına sütun |1024 sütun |
 | Tablo |Sütun başına bayt |Sütun [veri türüne](sql-data-warehouse-tables-data-types.md)bağımlıdır. Sınır, karakter veri türleri için 8000, nvarchar için 4000 veya en fazla veri türü için 2 GB 'dir. |
 | Tablo |Satır başına bayt, tanımlı boyut |8060 bayt<br/><br/>Satır başına bayt sayısı, sayfa sıkıştırması ile SQL Server için olduğu şekilde hesaplanır. SQL Server gibi, satır taşma alanı desteklenir ve bu da **değişken uzunluklu sütunların** satır dışı gönderilmesine olanak sağlar. Değişken uzunluk satırları satır dışı gönderildiğinde, ana kayıtta yalnızca 24 baytlık kök depolanır. Daha fazla bilgi için bkz. [8 kb aşan satır taşma verileri](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tablo |Tablo başına bölüm sayısı |15.000<br/><br/>Yüksek performans için, hala iş gereksinimlerinizi desteklerken ihtiyacınız olan bölüm sayısını en aza indirmenizi öneririz. Bölüm sayısı arttıkça, veri tanımlama dili (DDL) ve veri Işleme dili (DML) işlemleri için ek yükün büyümesi ve performansının yavaşlamasına neden olur. |
+| Tablo |Tablo başına bölüm sayısı |15,000<br/><br/>Yüksek performans için, hala iş gereksinimlerinizi desteklerken ihtiyacınız olan bölüm sayısını en aza indirmenizi öneririz. Bölüm sayısı arttıkça, veri tanımlama dili (DDL) ve veri Işleme dili (DML) işlemleri için ek yükün büyümesi ve performansının yavaşlamasına neden olur. |
 | Tablo |Bölüm sınırı değeri başına karakter. |4000 |
-| Dizin oluşturma |Tablo başına kümelenmemiş dizinler. |50<br/><br/>Yalnızca rowstore tabloları için geçerlidir. |
-| Dizin oluşturma |Tablo başına kümelenmiş dizinler. |1<br><br/>Hem rowstore hem de columnstore tabloları için geçerlidir. |
-| Dizin oluşturma |Dizin anahtar boyutu. |900 bayt.<br/><br/>Yalnızca rowstore dizinleri için geçerlidir.<br/><br/>Sütundaki mevcut veriler, Dizin oluşturulduğunda 900 baytı aşmazsa, varchar sütunlarındaki en fazla 900 bayttan daha fazla boyutu olan dizinler oluşturulabilir. Ancak, daha sonra toplam boyutun 900 baytı aşmasına neden olan sütunlara ekleme veya GÜNCELLEŞTIRME eylemleri başarısız olur. |
-| Dizin oluşturma |Dizin başına anahtar sütun sayısı. |16<br/><br/>Yalnızca rowstore dizinleri için geçerlidir. Kümelenmiş columnstore dizinleri tüm sütunları içerir. |
+| Dizin |Tablo başına kümelenmemiş dizinler. |50<br/><br/>Yalnızca rowstore tabloları için geçerlidir. |
+| Dizin |Tablo başına kümelenmiş dizinler. |1\.<br><br/>Hem rowstore hem de columnstore tabloları için geçerlidir. |
+| Dizin |Dizin anahtar boyutu. |900 bayt.<br/><br/>Yalnızca rowstore dizinleri için geçerlidir.<br/><br/>Sütundaki mevcut veriler, Dizin oluşturulduğunda 900 baytı aşmazsa, varchar sütunlarındaki en fazla 900 bayttan daha fazla boyutu olan dizinler oluşturulabilir. Ancak, daha sonra toplam boyutun 900 baytı aşmasına neden olan sütunlara ekleme veya GÜNCELLEŞTIRME eylemleri başarısız olur. |
+| Dizin |Dizin başına anahtar sütun sayısı. |16<br/><br/>Yalnızca rowstore dizinleri için geçerlidir. Kümelenmiş columnstore dizinleri tüm sütunları içerir. |
 | İstatistikler |Birleşik sütun değerlerinin boyutu. |900 bayt. |
 | İstatistikler |İstatistik nesnesi başına sütun. |32 |
 | İstatistikler |Tablo başına sütunlarda oluşturulan istatistikler. |30,000 |
@@ -56,7 +56,7 @@ ms.locfileid: "74123909"
 ## <a name="loads"></a>Sayfam
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
-| PolyBase yükleri |Satır başına MB |1<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/><br/> |
+| PolyBase yükleri |Satır başına MB |1\.<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/><br/> |
 
 ## <a name="queries"></a>Sorgular
 | Kategori | Açıklama | Maksimum |
@@ -74,7 +74,7 @@ ms.locfileid: "74123909"
 | İfade başına tanımlayıcılar |Başvurulan tanımlayıcıların sayısı |65,535<br/><br/> Sorgunun tek bir ifadesinde bulunabilecek tanımlayıcıların sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır. Daha fazla bilgi için bkz. [iç hata: bir ifade Hizmetleri sınırına ulaşıldı](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Dize sabit değerleri | Deyimdeki dize sabit değerlerinin sayısı | 20,000 <br/><br/>Bir sorgunun tek bir ifadesindeki dize sabitleri sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır.|
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta verileri
 | Sistem görünümü | En fazla satır |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10,000 |

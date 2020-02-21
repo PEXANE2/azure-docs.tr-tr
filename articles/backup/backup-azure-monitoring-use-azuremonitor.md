@@ -4,12 +4,12 @@ description: Azure Izleyici 'yi kullanarak Azure Backup iş yüklerini izleyin v
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 4ff51080d675c53e53397a070c1f6f1766aa9e85
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: acdd7ae870334fe3a77a37505fac5e02b3af360d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989595"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500677"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -63,64 +63,64 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Completed"
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     ````
 
 - Tüm başarısız yedekleme işleri
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Failed"
+    | where JobOperation=="Backup"
+    | where JobStatus=="Failed"
     ````
 
 - Tüm başarılı Azure VM yedekleme işleri
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Completed"
-| join kind=inner
-(
-    CoreAzureBackup
-    | where OperationName == "BackupItem"
-    | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-    | distinct BackupItemUniqueId, BackupItemFriendlyName
-)
-on BackupItemUniqueId
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
+    | join kind=inner
+    (
+        CoreAzureBackup
+        | where OperationName == "BackupItem"
+        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
+    )
+    on BackupItemUniqueId
     ````
 
 - Tüm başarılı SQL günlük yedekleme işleri
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup" and JobOperationSubType=="Log"
-| where JobStatus=="Completed"
-| join kind=inner
-(
-    CoreAzureBackup
-    | where OperationName == "BackupItem"
-    | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-    | distinct BackupItemUniqueId, BackupItemFriendlyName
-)
-on BackupItemUniqueId
+    | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | where JobStatus=="Completed"
+    | join kind=inner
+    (
+        CoreAzureBackup
+        | where OperationName == "BackupItem"
+        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
+    )
+    on BackupItemUniqueId
     ````
 
 - Tüm başarılı Azure Backup Aracısı işleri
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Completed"
-| join kind=inner
-(
-    CoreAzureBackup
-    | where OperationName == "BackupItem"
-    | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-    | distinct BackupItemUniqueId, BackupItemFriendlyName
-)
-on BackupItemUniqueId
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
+    | join kind=inner
+    (
+        CoreAzureBackup
+        | where OperationName == "BackupItem"
+        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
+    )
+    on BackupItemUniqueId
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Tanılama verileri güncelleştirme sıklığı
@@ -173,4 +173,4 @@ Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve u
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel sorgular oluşturmak için bkz. [veri modeli Log Analytics](backup-azure-log-analytics-data-model.md).
+Özel sorgular oluşturmak için bkz. [veri modeli Log Analytics](backup-azure-reports-data-model.md).

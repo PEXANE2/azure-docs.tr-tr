@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6ce52b9754f69ef9c6eaf1f59062b6366670985f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720200"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524045"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
@@ -23,14 +23,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure’da PostgreSQL veritabanı oluşturma
 > * Ruby on Rails uygulamasını PostgreSQL'e bağlama
-> * Uygulamayı Azure’da dağıtma
+> * Uygulamayı Azure'a dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -66,7 +66,7 @@ sudo -u postgres createuser -d <signed-in-user>
 ## <a name="create-a-ruby-on-rails-app-locally"></a>Yerel olarak bir Ruby on Rails uygulaması oluşturma
 Bu adımda Ruby on Rails örnek uygulaması edinir, veritabanı bağlantısını yapılandırır ve yerel olarak çalıştırırsınız. 
 
-### <a name="clone-the-sample"></a>Örneği
+### <a name="clone-the-sample"></a>Örneği kopyalama
 
 Terminal penceresinde, `cd` ile bir çalışma dizinine gidin.
 
@@ -124,7 +124,7 @@ Cloud Shell aşağıdaki komutu çalıştırın ve *\<Postgres-Server-name >* ye
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
 ```
 
-PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
+PostgreSQL için Azure Veritabanı sunucusu oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
 
 ```json
 {
@@ -275,7 +275,7 @@ git commit -m "database.yml updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure'a Dağıt
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -293,7 +293,7 @@ Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıt�
 
 ### <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma
 
-App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
+App Service’te, Cloud Shell'de[ komutunu kullanarak ortam değişkenlerini `az webapp config appsettings set`uygulama ayarları](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) olarak ayarlayabilirsiniz.
 
 Aşağıdaki Cloud Shell komutu `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _&lt;appname >_ ve _&lt;Postgres-server-name >_ yer tutucularını değiştirin.
 
@@ -368,7 +368,7 @@ Görevler senaryosu için, görevi tamamlandı olarak işaretleyebileceğiniz ş
 
 Terminalde Git deposunun kök dizinine gidin.
 
-`Tasks` tablosuna `Done` adlı bir Boole sütunu ekleyen yeni bir geçiş oluşturun:
+`Done` tablosuna `Tasks` adlı bir Boole sütunu ekleyen yeni bir geçiş oluşturun:
 
 ```bash
 rails generate migration AddDoneToTasks Done:boolean
@@ -498,7 +498,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * Azure'da Postgres veritabanı oluşturma
 > * Ruby on Rails uygulamasını Postgres'e bağlama
-> * Uygulamayı Azure’da dağıtma
+> * Uygulamayı Azure'a dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786784"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523179"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR hizmeti ile Azure Işlevleri geliştirme ve yapılandırma
 
@@ -27,12 +27,12 @@ Azure portal, SignalR hizmeti kaynağınızın *Ayarlar* sayfasını bulun. *Hiz
 
 ![SignalR hizmeti modu](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
-## <a name="azure-functions-development"></a>Azure Işlevleri geliştirme
+## <a name="azure-functions-development"></a>Azure İşlevleri geliştirme
 
-Azure Işlevleri ve Azure SignalR hizmeti ile oluşturulan sunucusuz gerçek zamanlı bir uygulama, genellikle iki Azure Işlevi gerektirir:
+Azure İşlevleri ve Azure SignalR Hizmeti ile oluşturulan sunucusuz bir gerçek zamanlı uygulama için genelde iki Azure İşlevi gerekir:
 
-* İstemcinin geçerli bir SignalR hizmeti erişim belirteci ve hizmet uç noktası URL 'SI almak için çağırdığı "anlaş" işlevi
-* İleti gönderen veya grup üyeliğini yöneten bir veya daha fazla işlev
+* Müşterinin geçerli bir SignalR Hizmeti erişim belirteci ve hizmet uç noktası URL’si almak için çağırdığı “negotiate” işlevi
+* İleti gönderen veya grup üyeliğini yöneten bir ya da daha fazla işlev
 
 ### <a name="negotiate-function"></a>Negotiate işlevi
 
@@ -40,7 +40,7 @@ Azure Işlevleri ve Azure SignalR hizmeti ile oluşturulan sunucusuz gerçek zam
 
 Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin `/negotiate`biten bir HTTP yolu olması gerekir.
 
-Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#input).
+Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Kimliği doğrulanmış bir belirteç oluşturma hakkında bilgi edinmek için [App Service kimlik doğrulaması kullanma](#using-app-service-authentication)konusuna bakın.
 
@@ -50,7 +50,7 @@ Azure SignalR hizmetine bağlı istemcilere ileti göndermek için *SignalR* ç�
 
 Kullanıcılar, bir veya daha fazla gruba eklenebilir. Ayrıca, Grup gruplarına/gruplardan Kullanıcı eklemek veya kaldırmak için *SignalR* çıktı bağlamasını da kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [ *SignalR* çıkış bağlama başvurusu](../azure-functions/functions-bindings-signalr-service.md#output).
+Daha fazla bilgi için bkz. [ *SignalR* çıkış bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>SignalR hub 'Ları
 
@@ -100,7 +100,7 @@ Ancak, SignalR hizmeti bağlamalarını kullanan uygulamalar için birkaç özel
 
 JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için Negotiate işlevine HTTP istekleri yapar. İstemci uygulaması, Azure Işlev uygulamasından farklı bir etki alanında barındırılıyorsa, Işlev uygulamasında çıkış noktaları arası kaynak paylaşımı (CORS) etkinleştirilmelidir veya tarayıcı istekleri engeller.
 
-#### <a name="localhost"></a>E
+#### <a name="localhost"></a>e
 
 Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken CORS 'yi etkinleştirmek için *yerel. Settings. JSON* öğesine bir `Host` bölümü ekleyebilirsiniz. `Host` bölümünde iki özellik ekleyin:
 

@@ -5,19 +5,19 @@ metadata:
   title: Uygulama sağlama belgeleri
   description: Azure Active Directory uygulama sağlama, bulut (SaaS) uygulamalarınızda kullanıcı kimliklerini otomatik olarak oluşturmanızı ve yönetmenizi sağlar. Azure AD ayrıca bulut tabanlı insan kaynakları (HR) uygulamalarıyla sağlama olanağı sunar. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle bulut uygulamasını ve İK sağlamayı nasıl yönetip dağıtacağınızı öğrenin.
   ms.service: active-directory
-  ms.subservice: app-mgmt
+  ms.subservice: app-provisioning
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 02/06/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
-  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.openlocfilehash: 0b6b3829f4111c57e20f495be962357832a5bfcd
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/07/2020
-  ms.locfileid: "77065510"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77522475"
 landingContent:
 - title: Bulut uygulamasına kullanıcı ve grup sağlama
   linkLists:

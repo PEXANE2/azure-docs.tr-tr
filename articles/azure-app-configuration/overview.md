@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467564"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523484"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure Uygulama Yapılandırması nedir?
 
@@ -19,9 +19,9 @@ Azure Uygulama yapılandırması, uygulama ayarlarını ve özellik bayrakların
 
 ## <a name="why-use-app-configuration"></a>Uygulama yapılandırması neden kullanılmalıdır?
 
-Bulut tabanlı uygulamalar genellikle birden çok bölgedeki birden çok sanal makine veya kapsayıcı üzerinde çalışır ve birden çok dış hizmet kullanır. Güçlü ve ölçeklenebilir olan böyle bir dağıtılmış uygulama oluşturmak bir zorluk sergilemektir.
+Bulut tabanlı uygulamalar genellikle birden çok bölgedeki birden çok sanal makine veya kapsayıcı üzerinde çalışır ve birden çok dış hizmet kullanır. Dağıtılmış bir ortamda güçlü ve ölçeklenebilir bir uygulama oluşturmak önemli bir zorluk gösterir.
 
-Çeşitli programlama yöntemleri, geliştiricilerin uygulama oluşturmanın artmasının karmaşıklığıyla uğraşmasını sağlamaya yardımcı olur. Örneğin, [on Iki öğeli uygulama](https://12factor.net/) , bulut uygulamalarıyla kullanılmak üzere çok iyi sınanmış mimari desenleri ve en iyi uygulamaları açıklar. Bu kılavuzun önemli bir önerisi, koddan yapılandırmanın ayrı olması olur. Bu durumda, bir uygulamanın yapılandırma ayarları, çalıştırılabilirinin dışarıdan tutulması ve çalışma zamanı ortamından veya bir dış kaynaktan okunmalıdır.
+Çeşitli programlama yöntemleri, geliştiricilerin uygulama oluşturmanın artmasının karmaşıklığıyla uğraşmasını sağlamaya yardımcı olur. Örneğin, [on Iki öğeli uygulama](https://12factor.net/) , bulut uygulamalarıyla kullanılmak üzere çok iyi sınanmış mimari desenleri ve en iyi uygulamaları açıklar. Bu kılavuzun önemli bir önerisi, koddan yapılandırmanın ayrı olması olur. Bir uygulamanın yapılandırma ayarları, çalıştırılabilirinin dışarıdan tutulması ve çalışma zamanı ortamından veya bir dış kaynaktan okunmalıdır.
 
 Herhangi bir uygulama uygulama yapılandırmasından yararlanabileceği sürece, aşağıdaki örnekler, kullanmanın avantajlarından yararlanan uygulama türleridir:
 
@@ -38,7 +38,7 @@ Uygulama yapılandırması aşağıdaki avantajları sunar:
 * Özellik bayrağı yönetimi için adanmış Kullanıcı arabirimi
 * Özel tanımlanmış boyutlarda iki yapılandırma kümesini karşılaştırma
 * Azure tarafından yönetilen kimlikler aracılığıyla geliştirilmiş güvenlik
-* Veri şifrelemeleri, bekleyen veya aktarımda tamamla
+* REST ve iletim sırasında hassas bilgilerin şifrelenmesi
 * Popüler çerçeveler ile yerel tümleştirme
 
 Uygulama yapılandırması, uygulama gizli dizileri depolamak için kullanılan [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)tamamlar. Uygulama yapılandırması aşağıdaki senaryoları uygulamayı kolaylaştırır:
@@ -49,7 +49,7 @@ Uygulama yapılandırması, uygulama gizli dizileri depolamak için kullanılan 
 
 ## <a name="use-app-configuration"></a>Uygulama yapılandırmasını kullan
 
-Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 'un sağladığı bir istemci kitaplığı kullanmaktır. Programlama diline ve çerçevesine bağlı olarak, aşağıdaki en iyi yöntemler kullanılabilir.
+Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu Microsoft tarafından sunulan bir istemci kitaplığı kullanmaktır. Seçtiğiniz dile ve çerçeveye bağlı olarak, uygulamanızla bağlantı kurmak için aşağıdaki yöntemler kullanılabilir
 
 | Programlama dili ve Framework | Bağlanma |
 |---|---|

@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470581"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484613"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
-Bu makalede, sık sorulan sorular yanıtlanacaktır ve Windows 10 Kurumsal Çoklu oturum için en iyi yöntemler ele alınacaktır.
+Bu makalede sık sorulan sorular yanıtlanmaktadır ve Windows 10 Kurumsal Çoklu oturum için en iyi yöntemler açıklanmaktadır.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise çoklu oturum nedir? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise çoklu oturum nedir?
 
-Daha önce Windows 10 Enterprise for Virtual masaüstleri (EVD) olarak bilinen Windows 10 Enterprise multi-session, daha önce yalnızca Windows Server 'ın yapabildiği birden çok eşzamanlı etkileşimli oturuma izin veren yeni bir Uzak Masaüstü Oturumu Ana Bilgisayarı. Bu özellik, birden çok oturumun maliyet avantajlarından faydalanabileceği ve RDS Istemci erişim lisansları (CAL) yerine mevcut Kullanıcı başına Windows lisanslamayı kullanmanın yanı sıra kullanıcılara tanıdık bir Windows 10 deneyimi sağlar. Lisanslar ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+Daha önce sanal masaüstleri için Windows 10 Enterprise (EVD) olarak bilinen Windows 10 Enterprise çoklu oturum, birden çok eşzamanlı etkileşimli oturuma izin veren yeni bir Uzak Masaüstü Oturumu Ana Bilgisayarı. Daha önce bu, yalnızca Windows Server tarafından gerçekleştirilebilir. Bu özellik, birden çok oturumun maliyet avantajlarından faydalanabileceği ve RDS Istemci erişim lisansları (CAL) yerine mevcut Kullanıcı başına Windows lisanslamayı kullanmanın yanı sıra kullanıcılara tanıdık bir Windows 10 deneyimi sağlar. Lisanslar ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise çoklu oturumunda kaç kullanıcının aynı anda etkileşimli oturumu olabilir?
 
@@ -40,7 +40,7 @@ Azure 'da bir sanal makineyi (VM) Windows 10 Windows 10 Enterprise çoklu oturum
  
 Başlamak için, Windows 10 Windows 10 Enterprise çoklu oturum ile Azure 'da bir VM oluşturun. VM 'yi Azure 'da başlatmak yerine doğrudan VHD 'yi indirebilirsiniz. Bundan sonra, Hyper-V ' y i destekleyen bir Windows 10 bilgisayarında yeni nesil 1 VM oluşturmak için indirdiğiniz VHD 'yi kullanabileceksiniz.
 
-LOB uygulamalarını ve Sysprep 'i yükleyerek görüntüyü gereksinimlerinize göre özelleştirin. Özelleştirmeyi bitirdiğinizde, içindeki VHD ile görüntüyü Azure 'a yükleyin. Bundan sonra, Azure Marketi 'nden Windows sanal masaüstü 'Nü alın ve özelleştirilmiş görüntüyle yeni bir konak havuzu dağıtmak için bu uygulamayı kullanın.
+LOB uygulamalarını ve Sysprep 'i yükleyerek görüntüyü gereksinimlerinize göre özelleştirin. Özelleştirmeyi bitirdiğinizde, içindeki VHD ile görüntüyü Azure 'a yükleyin. Bundan sonra, Azure Marketi 'nden Windows sanal masaüstü 'Nü alın ve özelleştirilmiş görüntüyle yeni bir konak havuzu dağıtmak için kullanın.
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Dağıtımdan sonra Windows 10 Enterprise çoklu oturum 'nı yönetmek Nasıl yaparım? mı?
 
@@ -71,6 +71,31 @@ FSLogix profil kapsayıcısını yapılandırma hakkında daha fazla bilgi için
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise çoklu oturumuna erişmek için hangi lisansa ihtiyacım var?
 
 Geçerli lisansların tam listesi için bkz. [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>Oturumu kapattıktan sonra Uygulamalarım neden kayboluyor?
+
+Bu durum, FSLogix gibi bir profil yönetimi çözümüyle Windows 10 Kurumsal Çoklu oturum kullanıyor olmanız nedeniyle oluşur. Yönetici veya profil çözümünüz, kullanıcılar oturumu kapattığınızda kullanıcı profillerini silmek için sisteminizi yapılandırdı. Bu yapılandırma, oturumunuzu kapattıktan sonra sistem Kullanıcı profilinizi sildiğinde, oturumunuz sırasında yüklediğiniz tüm uygulamaları da kaldıran anlamına gelir. Yüklediğiniz uygulamaları korumak istiyorsanız, yöneticinizden Windows sanal masaüstü ortamınızdaki tüm kullanıcılar için bu uygulamaları sağlamasını istemeniz gerekir.
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>Nasıl yaparım? kullanıcılar oturumunu kapattığınızda uygulamaların kaybolmadığından emin olun.
+
+En çok sanallaştırılmış ortamlar, kullanıcıların profillerine ek uygulamalar yüklemesini engellemek için varsayılan olarak yapılandırılır. Kullanıcı Windows Sanal Masaüstü oturumunu kapattığında uygulamanın kaybolmadığından emin olmak istiyorsanız, ortamınızdaki tüm Kullanıcı profilleri için bu uygulamayı sağlamanız gerekir. Uygulama sağlama hakkında daha fazla bilgi için şu kaynaklara göz atın:
+
+- [Windows sanal masaüstünde yerleşik uygulamaları yayımlama](publish-apps.md)
+- [DıSM uygulama paketi hizmet komut satırı seçenekleri](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Nasıl yaparım? kullanıcıların Microsoft Store uygulamaları indirmeyin ve yüklememelerini sağlayın mi?
+
+Kullanıcıların daha önce sağladığınız uygulamaların ötesinde ek uygulamalar indirmelerini sağlamak için Microsoft Store uygulamasını devre dışı bırakabilirsiniz.
+
+Mağaza uygulamasını devre dışı bırakmak için:
+
+1. Yeni bir grup ilkesi oluşturun.
+2. **Windows bileşenleri** > **Yönetim Şablonları** **bilgisayar yapılandırması** > seçin.
+3. **Mağaza**' ı seçin.
+4. **Mağaza uygulamasını**seçin.
+5. **Devre dışı**seçeneğini belirleyip **Tamam**' ı seçin.
+6. **Uygula**’yı seçin.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

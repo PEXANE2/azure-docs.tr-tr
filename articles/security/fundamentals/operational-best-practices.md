@@ -1,5 +1,6 @@
 ---
-title: Varlıklarınızı korumak için en iyi güvenlik yöntemleri-Microsoft Azure
+title: Azure varlıklarınız için en iyi güvenlik uygulamaları
+titleSuffix: Azure security
 description: Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219514"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500300"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -28,19 +29,19 @@ Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıklar�
 En iyi uygulamalar, görüşlerden oluşan yarışmaları temel alır ve geçerli Azure platformu özellikleri ve özellik kümeleriyle çalışır. Zamanla ve teknolojiler zaman içinde değişir ve bu makale, bu değişiklikleri yansıtacak şekilde düzenli olarak güncelleştirilir.
 
 ## <a name="define-and-deploy-strong-operational-security-practices"></a>Güçlü işlemsel güvenlik uygulamalarını tanımlama ve dağıtma
-Azure operasyonel güvenlik, Azure 'daki verilerini, uygulamalarını ve diğer varlıklarını korumak için kullanıcılara sunulan hizmetleri, denetimleri ve özellikleri ifade eder. Azure operasyonel güvenlik, [güvenlik geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/sdl), [Microsoft Güvenlik Yanıt Merkezi](https://www.microsoft.com/msrc?rtc=1) dahil olmak üzere Microsoft 'a özgü yetenekler aracılığıyla elde edilen bilgileri içeren bir çerçeve üzerine kurulmuştur. siber güvenlik tehdidi için program ve derin bir şekilde tanıma.
+Azure operasyonel güvenlik, Azure 'daki verilerini, uygulamalarını ve diğer varlıklarını korumak için kullanıcılara sunulan hizmetleri, denetimleri ve özellikleri ifade eder. Azure operasyonel güvenlik, [güvenlik geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/sdl), [Microsoft Güvenlik Yanıt Merkezi](https://www.microsoft.com/msrc?rtc=1) programı ve siber güvenlik tehdidi yatay 'ın derinlemesine farkında olmak üzere Microsoft 'a özgü yetenekler aracılığıyla elde edilen bilgileri içeren bir çerçeve üzerine kurulmuştur.
 
 ## <a name="manage-and-monitor-user-passwords"></a>Kullanıcı parolalarını yönetme ve izleme
 Aşağıdaki tabloda kullanıcı parolalarının yönetimiyle ilgili bazı en iyi uygulamalar listelenmektedir:
 
-**En iyi uygulama**: Bulutta uygun parola koruma düzeyine sahip olduğunuzdan emin olun.   
+**En iyi yöntem**: bulutta uygun parola koruma düzeyine sahip olduğunuzdan emin olun.   
 **Ayrıntı**: Microsoft kimlik platformları (Azure Active Directory, Active Directory ve Microsoft hesabı) kapsamındaki [Microsoft parola Kılavuzu](https://www.microsoft.com/research/publication/password-guidance/)'ndaki yönergeleri izleyin.
 
-**En iyi uygulama**: Kullanıcı hesaplarınızla ilgili şüpheli eylemleri izleyin.   
-**Ayrıntı**: Azure AD güvenlik raporlarını kullanarak [riskli kullanıcılar](/azure/active-directory/reports-monitoring/concept-user-at-risk) ve [riskli oturum açma](../../active-directory/reports-monitoring/concept-risk-events.md) işlemlerini izleyin.
+**En iyi yöntem**: Kullanıcı hesaplarınızla ilgili şüpheli eylemleri izleyin.   
+**Ayrıntı**: Azure AD güvenlik raporlarını kullanarak riskli ve riskli [oturum açma](../../active-directory/reports-monitoring/concept-risk-events.md) işlemlerini takip eden [kullanıcılara](/azure/active-directory/reports-monitoring/concept-user-at-risk) yönelik izleyici.
 
-**En iyi uygulama**: Yüksek riskli parolaları otomatik olarak algıla ve düzelt.   
-**Ayrıntı**: [Azure AD kimlik koruması](/azure/active-directory/identity-protection/overview) , aşağıdakileri yapmanızı sağlayan Azure AD Premium P2 sürümünün bir özelliğidir:
+**En iyi yöntem**: yüksek riskli parolaları otomatik olarak algıla ve düzelt.   
+**Ayrıntı**: [Azure AD kimlik koruması](/azure/active-directory/identity-protection/overview) Azure AD Premium P2 sürümünün şunları yapmanızı sağlayan bir özelliğidir:
 
 - Kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını algılama
 - Otomatik yanıtları, kuruluşunuzun kimlikleri ile ilgili şüpheli, algılanan şüpheli eylemler için yapılandırın
@@ -58,25 +59,25 @@ Bir dizinde yönetim gruplarının ve aboneliklerinin esnek bir yapısını olu�
 
 Yönetim gruplarını kullanmaya yönelik bazı en iyi yöntemler aşağıda verilmiştir:
 
-**En iyi uygulama**: Yeni aboneliklerin, eklendikçe ilkeler ve izinler gibi idare öğeleri uygulandığından emin olun.   
-**Ayrıntı**: Tüm Azure varlıkları için geçerli olan kurumsal çapta güvenlik öğeleri atamak için kök yönetim grubunu kullanın. İlkeler ve izinler, öğe örnekleridir.
+**En iyi uygulama**: yeni aboneliklerin, eklendikçe ilkeler ve izinler gibi idare öğeleri uygulandığından emin olun.   
+**Ayrıntı**: tüm Azure varlıkları için geçerli olan kurumsal çapta güvenlik öğeleri atamak için kök yönetim grubunu kullanın. İlkeler ve izinler, öğe örnekleridir.
 
-**En iyi uygulama**: Her segment içinde denetim ve ilke tutarlılığı için bir nokta sağlamak üzere yönetim gruplarının en üst düzeylerini segmentleme stratejisiyle hizalayın.   
-**Ayrıntı**: Kök yönetim grubu altındaki her segment için tek bir yönetim grubu oluşturun. Kök altında başka bir yönetim grubu oluşturmayın.
+**En iyi yöntem**: Her kesimde denetim ve ilke tutarlılığı için bir nokta sağlamak üzere, segment stratejisi olan yönetim gruplarının en üst düzeylerini hizalayın.   
+**Ayrıntı**: kök yönetim grubu altındaki her segment için tek bir yönetim grubu oluşturun. Kök altında başka bir yönetim grubu oluşturmayın.
 
-**En iyi uygulama**: Hem işlemleri hem de güvenliği engelleyen karışıklık oluşmasını önlemek için yönetim grubu derinliğini sınırlayın.   
-**Ayrıntı**: Hiyerarşinizi, kök dahil olmak üzere üç düzeyle sınırlayın.
+**En iyi yöntem**: hem işlemleri hem de güvenliği engelleyen karışıklık oluşmasını önlemek için yönetim grubu derinliğini sınırlayın.   
+**Ayrıntı**: hiyerarşinizi, kök dahil olmak üzere üç düzeyle sınırlayın.
 
-**En iyi uygulama**: Kök yönetim grubuyla tüm kuruluşa hangi öğelerin uygulanacağını dikkatle seçin.   
-**Ayrıntı**: Kök yönetim grubu öğelerinin her kaynak genelinde uygulanması ve düşük etkileri olduğundan emin olun.
+**En iyi yöntem**: kök yönetim grubuyla tüm kuruluşa hangi öğelerin uygulanacağını dikkatle seçin.   
+**Ayrıntı**: kök yönetim grubu öğelerinin her kaynak genelinde uygulanması ve düşük etkileri olduğundan emin olun.
 
 İyi adaylar şunlardır:
 
 - Açık bir iş etkisi olan mevzuata gereksinimleri (örneğin, veri ile ilgili kısıtlamalar)
 - Denetim efektinin ilkesi veya dikkatle incelenmiş RBAC izin atamaları gibi işlemler üzerinde neredeyse sıfır potansiyel olumsuz etkileri olan gereksinimler
 
-**En iyi uygulama**: Kök yönetim grubundaki tüm kurumsal çapta değişiklikleri uygulamadan önce dikkatle planlayın ve test edin (ilke, RBAC modeli vb.).   
-**Ayrıntı**: Kök yönetim grubundaki değişiklikler, Azure 'daki her kaynağı etkileyebilir. Kuruluşlar genelinde tutarlılık sağlamak için güçlü bir yol sağlarken, hatalar veya yanlış kullanımlar üretim işlemlerini olumsuz etkileyebilir. Test laboratuvarında veya üretim pilot ortamında kök yönetim grubundaki tüm değişiklikleri test edin.
+**En iyi yöntem**: kök yönetim grubundaki tüm kurumsal çapta değişiklikleri uygulamadan önce dikkatle planlayın ve test edin (Ilke, RBAC modeli vb.).   
+**Ayrıntı**: kök yönetim grubundaki değişiklikler, Azure 'daki her kaynağı etkileyebilir. Kuruluşlar genelinde tutarlılık sağlamak için güçlü bir yol sağlarken, hatalar veya yanlış kullanımlar üretim işlemlerini olumsuz etkileyebilir. Test laboratuvarında veya üretim pilot ortamında kök yönetim grubundaki tüm değişiklikleri test edin.
 
 ## <a name="streamline-environment-creation-with-blueprints"></a>Planlar ile ortam oluşturmayı kolaylaştırma
 [Azure şemaları hizmeti,](/azure/governance/blueprints/overview) bulut mimarlarının ve merkezi bilgi teknolojisi gruplarının, bir kuruluşun standartlarına, desenlerine ve gereksinimlerine uygun olan ve bunları uygulayan, yinelenebilir bir Azure kaynakları kümesi tanımlamasına olanak sağlar. Azure şemaları, geliştirme ekiplerinin yerleşik bir bileşen kümesi ve bu ortamları kurumsal uyumluluk kapsamında oluşturdukları güvenlerle hızlı bir şekilde oluşturmasını ve yeni ortamları kullanmasını mümkün kılar.
@@ -103,25 +104,25 @@ Neredeyse tüm kurumsal kuruluşların, farklı sinyal toplama cihazlarından g�
 
 Tehditleri önlemek, algılamak ve yanıtlamak için bazı en iyi yöntemler şunlardır:
 
-**En iyi uygulama**: Bulut tabanlı SıEM kullanarak SıEM çözümünüzün hızını ve ölçeklenebilirliğini artırın.   
+**En iyi yöntem**: bulut tabanlı SIEM kullanarak SIEM çözümünüzün hızını ve ölçeklenebilirliğini artırın.   
 **Ayrıntı**: [Azure Sentinel](/azure/sentinel/overview) 'in özelliklerini ve yeteneklerini araştırın ve şirket içinde kullanmakta olduğunuz özelliklerin özellikleriyle karşılaştırın. Kuruluşunuzun SıEM gereksinimlerini karşılıyorsa Azure Sentinel 'i benimseme seçeneğini göz önünde bulundurun.
 
-**En iyi uygulama**: Araştırmanın önceliklerini belirleyebilmeniz için en önemli güvenlik açıklarını bulun.   
-**Ayrıntı**: Azure Güvenlik Merkezi 'Nde yerleşik olarak bulunan Azure ilkelerinden ve girişimlerden kaynaklanan önerileri görmek için [Azure güvenli puanınızı](../../security-center/security-center-secure-score.md) gözden geçirin. Bu öneriler, güvenlik güncelleştirmeleri, uç nokta koruması, şifreleme, güvenlik yapılandırması, eksik WAF, internet 'e bağlı VM 'Ler ve çok daha fazlası gibi popüler riskleri ele almanıza yardımcı olur.
+**En iyi yöntem: araştırmanın**önceliklerini belirleyebilmeniz için en ciddi güvenlik açıklarını bulun.   
+**Ayrıntı**: Azure Güvenlik Merkezi 'nde yerleşik olarak bulunan Azure ilkelerinden ve girişimlerden kaynaklanan önerileri görmek için [Azure güvenli puanınızı](../../security-center/security-center-secure-score.md) gözden geçirin. Bu öneriler, güvenlik güncelleştirmeleri, uç nokta koruması, şifreleme, güvenlik yapılandırması, eksik WAF, internet 'e bağlı VM 'Ler ve çok daha fazlası gibi popüler riskleri ele almanıza yardımcı olur.
 
 Internet güvenliği (CIS) denetimlerinin merkezini temel alan güvenli puan, kuruluşunuzun Azure güvenliğini dış kaynaklara karşı kıyaslamanızı sağlar. Dış doğrulama, takımınızın güvenlik stratejisini doğrulamaya ve zenginleştirmenize yardımcı olur.
 
-**En iyi uygulama**: Olası güvenlik sorunlarını bulup önceliklendirmek için makinelerin, ağların, depolama ve veri hizmetlerinin ve uygulamaların güvenlik duruşunu izleyin.  
+**En iyi yöntem**: makinelerin, ağların, depolama ve veri hizmetlerinin ve uygulamaların güvenlik duruşunu, olası güvenlik sorunlarını bulma ve önceliklendirmesini izleyin.  
 **Ayrıntı**: Güvenlik Merkezi 'ndeki [güvenlik önerilerini](../../security-center/security-center-recommendations.md) , en yüksek öncelikli öğelerle başlayarak izleyin.
 
-**En iyi uygulama**: Güvenlik Merkezi uyarılarını güvenlik bilgileriniz ve olay yönetimi (SıEM) çözümünüzle tümleştirin.   
-**Ayrıntı**: SıEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [Güvenlik Merkezi 'nde güvenlik çözümlerini tümleştirme](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
+**En iyi yöntem**: Güvenlik Merkezi uyarılarını güvenlik bilgileriniz ve olay yönetimi (SIEM) çözümünüz ile tümleştirin.   
+**Ayrıntı**: BIR SIEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [Güvenlik Merkezi 'nde güvenlik çözümlerini tümleştirme](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
 
-**En iyi uygulama**: Azure günlüklerini SıEM 'inizle tümleştirin.   
-**Ayrıntı**: [Verileri toplamak ve dışarı aktarmak Için Azure izleyici 'yi](/azure/azure-monitor/overview#integrate-and-export-data)kullanın. Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
+**En iyi yöntem**: Azure günlüklerini SIEM 'inizle tümleştirin.   
+**Ayrıntı**: [Azure izleyici 'yi kullanarak veri toplayın ve dışarı aktarın](/azure/azure-monitor/overview#integrate-and-export-data). Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
 
-**En iyi uygulama**: Uç nokta algılama ve yanıt (EDR) yeteneklerini saldırı araştırmanıza tümleştirerek, araştırma ve işleme işlemlerinizi hızlandırın ve hatalı pozitif sonuçları azaltabilirsiniz.   
-**Ayrıntı**: Güvenlik Merkezi güvenlik ilkeniz aracılığıyla [Microsoft Defender ATP tümleştirmesini etkinleştirin](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
+**En iyi yöntem**: uç nokta algılama ve yanıt (EDR) yeteneklerini saldırı araştırmanıza tümleştirerek, araştırma ve işleme işlemlerinizi hızlandırın ve hatalı pozitif sonuçları azaltabilirsiniz.   
+**Ayrıntı**: Güvenlik Merkezi güvenlik Ilkeniz aracılığıyla [Microsoft Defender ATP tümleştirmesini etkinleştirin](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Uçtan uca senaryo tabanlı ağ izlemeyi izleme
 Müşteriler, ağ kaynaklarını bir sanal ağ, ExpressRoute, Application Gateway ve yük dengeleyiciler gibi birleştirerek Azure 'da uçtan uca bir ağ oluşturur. İzleme, ağ kaynaklarının her birinde kullanılabilir.
@@ -130,31 +131,31 @@ Müşteriler, ağ kaynaklarını bir sanal ağ, ExpressRoute, Application Gatewa
 
 Ağ izleme ve kullanılabilir araçlar için en iyi yöntemler aşağıda verilmiştir.
 
-**En iyi uygulama**: Paket yakalama ile uzak ağ izlemeyi otomatikleştirin.  
-**Ayrıntı**: Ağ Izleyicisi 'ni kullanarak sanal makinelerinize oturum açmadan ağ sorunlarını izleyin ve tanılayın. Uyarı ayarlayarak ve paket düzeyinde gerçek zamanlı performans bilgilerine erişim elde ederek [paket yakalamayı](../../network-watcher/network-watcher-alert-triggered-packet-capture.md) tetikleyin. Bir sorunla karşılaştığınızda, daha iyi tanılama için ayrıntılı olarak inceleme yapabilirsiniz.
+**En iyi yöntem**: paket yakalama ile uzak ağ izlemeyi otomatikleştirin.  
+**Ayrıntı**: Ağ İzleyicisi 'Ni kullanarak sanal makinelerinize oturum açmadan ağ sorunlarını izleyin ve tanılayın. Uyarı ayarlayarak ve paket düzeyinde gerçek zamanlı performans bilgilerine erişim elde ederek [paket yakalamayı](../../network-watcher/network-watcher-alert-triggered-packet-capture.md) tetikleyin. Bir sorun gördüğünüzde daha iyi tanılar için ayrıntılı araştırma yapabilirsiniz.
 
-**En iyi uygulama**: Akış günlüklerini kullanarak ağ trafiğinize ilişkin Öngörüler elde edin.  
-**Ayrıntı**: Ağ trafiği desenlerinizi [ağ güvenlik grubu akış günlüklerini](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)kullanarak daha ayrıntılı bir şekilde geliştirin. Akış günlüklerindeki bilgiler, ağ güvenlik profilinizi uyumluluk, denetleme ve izleme için veri toplamanıza yardımcı olur.
+**En iyi yöntem**: akış günlüklerini kullanarak ağ trafiğinize ilişkin Öngörüler elde edin.  
+**Ayrıntı**: ağ [güvenlik grubu akış günlüklerini](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)kullanarak ağ trafiği desenlerinizi daha ayrıntılı bir şekilde geliştirin. Akış günlüklerindeki bilgiler, ağ güvenlik profilinizi uyumluluk, denetleme ve izleme için veri toplamanıza yardımcı olur.
 
-**En iyi uygulama**: VPN bağlantı sorunlarını tanılayın.  
-**Ayrıntı**: [En yaygın VPN Gateway ve bağlantı sorunlarınızı tanılamak](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)Için Ağ İzleyicisi 'ni kullanın. Sorunu belirleyemezseniz de ayrıntılı günlükleri kullanarak daha fazla araştırma yapabilirsiniz.
+**En iyi yöntem**: VPN bağlantı sorunlarını tanılayın.  
+**Ayrıntı**: Ağ İzleyicisi 'ni kullanarak [en yaygın VPN Gateway ve bağlantı sorunlarınızı tanılayın](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Sorunu belirleyemezseniz de ayrıntılı günlükleri kullanarak daha fazla araştırma yapabilirsiniz.
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>Kanıtlanmış DevOps araçlarını kullanarak güvenli dağıtım
 Kurumsal ve takımlarınızın üretken ve verimli olmasını sağlamak için aşağıdaki DevOps en iyi yöntemlerini kullanın.
 
-**En iyi uygulama**: Hizmetlerin derlemesini ve dağıtımını otomatikleştirin.  
-**Ayrıntı**: [Kod olarak altyapı](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) , BT uzmanlarının, modüler altyapının günlük oluşturma ve yönetimi yükünü kaldırmasını sağlayan bir teknikler ve uygulamalar kümesidir. BT uzmanlarının, yazılım geliştiricilerinin uygulama kodu oluşturup bakımını yapma gibi bir şekilde modern sunucu ortamlarını oluşturup bakımını sağlar.
+**En iyi yöntem**: hizmetlerin derlemesini ve dağıtımını otomatikleştirin.  
+**Ayrıntı**: [kod olarak altyapı](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) , BT uzmanlarının, modüler altyapının günlük oluşturma ve yönetimi yükünü kaldırmasına yardımcı olan bir teknikler ve uygulamalar kümesidir. BT uzmanlarının, yazılım geliştiricilerinin uygulama kodu oluşturup bakımını yapma gibi bir şekilde modern sunucu ortamlarını oluşturup bakımını sağlar.
 
 Bildirim temelli bir şablon kullanarak uygulamalarınızı sağlamak için [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) kullanabilirsiniz. Tek bir şablonda birden çok hizmeti bağımlılıklarıyla birlikte dağıtabilirsiniz. Uygulama yaşam döngüsünün her aşamasında uygulamanızı tekrar tekrar dağıtmak için aynı şablonu kullanırsınız.
 
-**En iyi uygulama**: Otomatik olarak Azure Web Apps veya Cloud Services 'ı oluşturun ve dağıtın.  
-**Ayrıntı**: Azure DevOps Projeleri Azure Web Apps veya Cloud Services 'ı [otomatik olarak derlemek ve dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) için yapılandırabilirsiniz. Azure DevOps, her kod iadeden sonra Azure 'a bir derleme gerçekleştirdikten sonra ikilileri otomatik olarak dağıtır. Paket oluşturma işlemi, Visual Studio 'daki paket komutuna eşdeğerdir ve yayımlama adımları Visual Studio 'daki Yayımla komutuna eşdeğerdir.
+**En iyi yöntem**: otomatik olarak Azure Web Apps veya bulut hizmetleri oluşturun ve dağıtın.  
+**Ayrıntı**: Azure DevOps Projeleri, otomatik olarak Azure Web Apps veya bulut Hizmetleri [oluşturmak ve dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) için yapılandırabilirsiniz. Azure DevOps, her kod iadeden sonra Azure 'a bir derleme gerçekleştirdikten sonra ikilileri otomatik olarak dağıtır. Paket oluşturma işlemi, Visual Studio 'daki paket komutuna eşdeğerdir ve yayımlama adımları Visual Studio 'daki Yayımla komutuna eşdeğerdir.
 
-**En iyi uygulama**: Yayın yönetimini otomatikleştirin.  
+**En iyi yöntem**: Release Management 'ı otomatikleştirme.  
 **Ayrıntı**: [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) , birden çok aşamalı dağıtımı otomatikleştirmek ve yayın sürecini yönetmek için bir çözümdür. Hızla, kolayca ve sıklıkla yayınlamak için yönetilen sürekli dağıtım işlem hatları oluşturun. Azure Pipelines, yayın işleminizi otomatikleştirebilir ve önceden tanımlanmış onay iş akışlarına sahip olabilirsiniz. Şirket içinde ve buluta dağıtın, gereken şekilde genişletin ve özelleştirin.
 
-**En iyi uygulama**: Uygulamayı başlatıp üretim için güncelleştirmeleri dağıtmadan önce uygulamanızın performansını denetleyin.  
-**Ayrıntı**: Bulut tabanlı [yük testlerini](/azure/devops/test/load-test/overview#alternatives) şu şekilde çalıştırın:
+**En iyi yöntem**: uygulamayı çalıştırmadan veya üretime güncelleştirme dağıtmadan önce uygulamanızın performansını denetleyin.  
+**Ayrıntı**: bulut tabanlı [yük testlerini](/azure/devops/test/load-test/overview#alternatives) şu şekilde çalıştırın:
 
 - Uygulamanızdaki performans sorunlarını bulun.
 - Dağıtım kalitesini geliştirme.
@@ -163,28 +164,28 @@ Bildirim temelli bir şablon kullanarak uygulamalarınızı sağlamak için [Azu
 
 [Apache JMeter](https://jmeter.apache.org/) , güçlü bir topluluk yedeklemeli, popüler, popüler bir açık kaynak aracıdır.
 
-**En iyi uygulama**: Uygulama performansını izleyin.  
-**Ayrıntı**: [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı Web uygulamanızı izlemek için Application Insights kullanın. Performans bozuklulıkları otomatik olarak algılar. Sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır.
+**En iyi yöntem**: uygulama performansını izleyin.  
+**Ayrıntı**: [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans yönetimi (APM) hizmetidir. Canlı Web uygulamanızı izlemek için Application Insights kullanın. Performans bozuklulıkları otomatik olarak algılar. Sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>DDoS 'a karşı azaltma ve koruma
 Dağıtılmış hizmet reddi (DDoS), uygulama kaynaklarını tüketmeye çalışan bir saldırı türüdür. Amaç, uygulamanın kullanılabilirliğini ve meşru istekleri işleme yeteneğini etkiler. Bu saldırılar, boyut ve etki açısından daha karmaşık ve daha büyük hale geliyor. Bunlar, internet üzerinden genel olarak erişilebilen herhangi bir uç noktaya hedeflenebilir.
 
 DDoS dayanıklılığı için tasarlama ve oluşturma, çeşitli başarısızlık modları için planlama ve tasarlama gerektirir. Azure 'da DDoS-dayanıklı hizmetler oluşturmak için en iyi yöntemler aşağıda verilmiştir.
 
-**En iyi uygulama**: Tasarımın, bir uygulamanın tüm yaşam döngüsünün tamamında, tasarım ve uygulama ile dağıtım ve işlemlere kadar öncelikli olduğundan emin olun. Uygulamalar görece düşük bir istek hacminin çok fazla kaynak kullanmasına izin veren hatalara sahip olabilir ve bu da hizmet kesintisi oluşmasına neden olur.  
-**Ayrıntı**: Microsoft Azure üzerinde çalışan bir hizmetin korunmasına yardımcı olmak için, uygulama mimarinizi iyi bir şekilde kavramanız ve [yazılım kalitesinin beş](https://docs.microsoft.com/azure/architecture/guide/pillars)ile ilgili olarak odaklanmanız gerekir. Tipik trafik birimlerini, uygulama ve diğer uygulamalar arasındaki bağlantı modelini ve genel İnternet 'e açık olan hizmet uç noktalarını bilmeniz gerekir.
+**En iyi yöntem**: bir uygulamanın, tasarım ve uygulama açısından dağıtım ve işlemlere kadar tüm yaşam döngüsünün bir öncelik olduğundan emin olun. Uygulamalar görece düşük bir istek hacminin çok fazla kaynak kullanmasına izin veren hatalara sahip olabilir ve bu da hizmet kesintisi oluşmasına neden olur.  
+**Ayrıntı**: Microsoft Azure üzerinde çalışan bir hizmetin korunmasına yardımcı olmak için, uygulama mimarinizi iyi bir şekilde kavramanız ve [yazılım kalitesinin beş](https://docs.microsoft.com/azure/architecture/guide/pillars)bir yanındaki ile odaklanmanız gerekir. Tipik trafik birimlerini, uygulama ve diğer uygulamalar arasındaki bağlantı modelini ve genel İnternet 'e açık olan hizmet uç noktalarını bilmeniz gerekir.
 
 Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetecek kadar dayanıklı olmasını sağlamak, en önemli öneme sahiptir. Güvenlik ve gizlilik, [güvenlik geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/sdl)Ile başlayan Azure platformunda yerleşik olarak bulunur. SDL her geliştirme aşamasında güvenliği adresleyen ve Azure 'un sürekli olarak daha güvenli hale getirmek için güncelleştirilmesini sağlar.
 
-**En iyi uygulama**: Uygulamalarınızı, özellikle de DDoS saldırısı durumunda, yükseltilmiş bir yükün talebini karşılayacak şekilde [ölçeklendirmek](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) üzere tasarlayın. Uygulamanız bir hizmetin tek bir örneğine bağımlıysa, tek bir hata noktası oluşturur. Birden çok örneği sağlamak, sisteminizi daha dayanıklı ve daha ölçeklenebilir hale getirir.  
+**En iyi yöntem**: uygulamanızı, yükseltilmiş bir yükün taleplerini karşılamak üzere [yatay olarak ölçeklendirmek](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) üzere tasarlayın, özellikle de DDoS saldırısı durumunda. Uygulamanız bir hizmetin tek bir örneğine bağımlıysa, tek bir hata noktası oluşturur. Birden çok örneği sağlamak, sisteminizi daha dayanıklı ve daha ölçeklenebilir hale getirir.  
 **Ayrıntı**: [Azure App Service](/azure/app-service/app-service-value-prop-what-is)için, birden çok örnek sunan bir [App Service planı](../../app-service/overview-hosting-plans.md) seçin.
 
 Azure Cloud Services için, rollerinizin her birini [birden çok örnek](../../cloud-services/cloud-services-choose-me.md)kullanacak şekilde yapılandırın.
 
 [Azure sanal makineler](/azure/virtual-machines/windows/overview)için VM mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](/azure/virtual-machines/virtual-machines-windows-manage-availability)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için sanal makine ölçek kümeleri kullanmanızı öneririz.
 
-**En iyi uygulama**: Bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırı olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulayın.  
-**Ayrıntı**: Saldırının riski uygulamanın boyutuyla (yüzey alanı) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için, Beyaz listeyi kullanarak yüzey alanını azaltabilirsiniz.
+**En iyi yöntem**: bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırının olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulayın.  
+**Ayrıntı**: saldırının riski uygulamanın boyutuyla (yüzey alanı) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için, Beyaz listeyi kullanarak yüzey alanını azaltabilirsiniz.
 
 [Ağ güvenlik grupları](../../virtual-network/security-overview.md) , saldırı yüzeyini azaltmak için başka bir yoldur. Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) ve [uygulama güvenlik gruplarını](../../virtual-network/security-overview.md#application-security-groups) kullanabilirsiniz.
 
@@ -206,16 +207,16 @@ Kuruluşunuzun yazılı ilkesini izleyip zorlamak için Azure Ilkesini etkinleş
 
 Azure Ilkesini benimsedikten sonra izlenecek en iyi güvenlik uygulamaları aşağıda verilmiştir:
 
-**En iyi uygulama**: İlke çeşitli efekt türlerini destekler. [Azure ilke tanımı yapısında](../../governance/policy/concepts/definition-structure.md#policy-rule)bunlarla ilgili bilgi edinebilirsiniz. İş işlemleri, **reddetme** etkisinden olumsuz etkilenebilir ve bu **nedenle, ilkeden** olumsuz etkisi riskini sınırlamak için **Denetim** efektiyle başlayın.   
-**Ayrıntı**: [İlke dağıtımlarını denetim modunda başlatın](../../governance/policy/concepts/definition-structure.md#policy-rule) ve daha sonra **reddetme** **veya düzeltme**için ilerleme durumunu yapın. **Reddet** veya **Düzelt**'e geçmeden önce denetim efektinin sonuçlarını test edin ve gözden geçirin.
+**En iyi yöntem**: ilke çeşitli efekt türlerini destekler. [Azure ilke tanımı yapısında](../../governance/policy/concepts/definition-structure.md#policy-rule)bunlarla ilgili bilgi edinebilirsiniz. İş işlemleri, **reddetme** etkisinden olumsuz etkilenebilir ve bu **nedenle, ilkeden** olumsuz etkisi riskini sınırlamak için **Denetim** efektiyle başlayın.   
+**Ayrıntı**: [ilke dağıtımlarını denetim modunda başlatın](../../governance/policy/concepts/definition-structure.md#policy-rule) ve daha sonra **reddetme** veya düzeltme için ilerleme durumunu **yapın.** **Reddet** veya **Düzelt**'e geçmeden önce denetim efektinin sonuçlarını test edin ve gözden geçirin.
 
 Daha fazla bilgi için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yönetme](../../governance/policy/tutorials/create-and-manage.md).
 
-**En iyi uygulama**: İlke ihlallerinin izlenmesinden sorumlu rolleri ve doğru düzeltme eyleminin hızla alındığının belirlenmesi.   
-**Ayrıntı**: Atanan rol izleyicisine [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) veya [komut satırı](../../governance/policy/how-to/get-compliance-data.md#command-line)aracılığıyla uyumluluğunu sağlayabilirsiniz.
+**En iyi yöntem**: ilke ihlallerinin izlenmesinden sorumlu rolleri ve doğru düzeltme eyleminin hızlı bir şekilde alınmasını sağlar.   
+**Ayrıntı**: atanan rol izleyicisine [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) veya [komut satırı](../../governance/policy/how-to/get-compliance-data.md#command-line)aracılığıyla uyumluluğunu sağlayabilirsiniz.
 
-**En iyi uygulama**: Azure Ilkesi, kuruluşun yazılı ilkelerinin teknik bir gösterimidir. Karışıklığı azaltmak ve tutarlılığı artırmak için tüm Azure ilkelerini kuruluş ilkelerine eşleyin.   
-**Ayrıntı**: Azure [ilke açıklamasında](../../governance/policy/concepts/definition-structure.md#display-name-and-description) veya Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) açıklamasında kuruluş ilkesine bir başvuru ekleyerek kuruluşunuzun belgelerindeki veya Azure ilkesinin içinde belge eşlemesi.
+**En iyi yöntem**: Azure ilkesi, kuruluşun yazılı ilkelerinin teknik bir gösterimidir. Karışıklığı azaltmak ve tutarlılığı artırmak için tüm Azure ilkelerini kuruluş ilkelerine eşleyin.   
+**Ayrıntı**: Azure [Ilke açıklamasında](../../governance/policy/concepts/definition-structure.md#display-name-and-description) veya Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) açıklamasında kuruluş ilkesine bir başvuru ekleyerek kuruluşunuzun belgelerindeki veya Azure ilkesinin içindeki belge eşlemesini belgeleyin.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD risk raporlarını izleme
 Saldırganlar bir kullanıcının kimliğini çalarak bir ortama erişim kazanıyorsa güvenlik ihlallerinin büyük çoğunluğu bu şekilde gerçekleşir. Güvenliği aşılmış kimlikleri bulma işlemi kolay bir görev değildir. Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, [risk algılama](../../active-directory/reports-monitoring/concept-risk-events.md)adlı bir kayıtta saklanır. Risk algılamaları Azure AD güvenlik raporlarında kaydedilir. Daha fazla bilgi için [risk altındaki kullanıcılar güvenlik raporu](../../active-directory/reports-monitoring/concept-user-at-risk.md) ve [riskli oturum açma güvenlik raporu](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)hakkında bilgi edinin.
@@ -225,4 +226,4 @@ Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve 
 
 Aşağıdaki kaynaklar, Azure güvenliği ve ilgili Microsoft hizmetleri hakkında daha genel bilgiler sağlamak için kullanılabilir:
 * Azure [güvenlik ekibi blogu](https://blogs.msdn.microsoft.com/azuresecurity/) -Azure güvenliği ile ilgili en son bilgiler için
-* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ilesecure@microsoft.com
+* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına secure@microsoft.com bildirilebilir veya e-posta ile gönderebilirsiniz.

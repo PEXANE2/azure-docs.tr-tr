@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162166"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499973"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL veritabanı yedeklerini 10 yıla kadar depolayın
 
@@ -28,7 +28,13 @@ Birçok uygulamanın, veritabanı yedeklerini Azure SQL veritabanı [Otomatik ye
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL veritabanı uzun süreli saklama nasıl kullanılır
 
-Uzun süreli yedek saklama (LTR), nokta-saat geri yüklemeyi (ıNR) etkinleştirmek için [otomatik olarak oluşturulan](sql-database-automated-backups.md) tam veritabanı yedeklemelerini kullanır. Bir LTR ilkesi yapılandırılmışsa, bu yedeklemeler uzun vadeli depolama için farklı bloblara kopyalanır. Kopyalama işlemi, veritabanı iş yükü üzerinde performans etkisi olmayan bir arka plan işdir. LTR yedeklemeleri, LTR ilkesi tarafından belirlenen bir süre boyunca tutulur. Her SQL veritabanı için LTR ilkesi, LTR yedeklemelerin oluşturulma sıklığını da belirtebilir. Bu esnekliği etkinleştirmek için ilkeyi dört parametre birleşimi kullanarak tanımlayabilirsiniz: haftalık yedekleme bekletme (W), aylık yedekleme bekletme (e), yıllık yedekleme bekletme (Y) ve yılın haftası (WeekOfYear). W belirtirseniz, her hafta bir yedekleme uzun vadeli depolamaya kopyalanacaktır. D belirtirseniz, her ayın ilk haftası boyunca bir yedekleme uzun vadeli depolamaya kopyalanacaktır. Y belirtirseniz, WeekOfYear tarafından belirtilen hafta boyunca bir yedekleme uzun vadeli depolamaya kopyalanacaktır. Her yedekleme, bu parametreler tarafından belirtilen dönem için uzun vadeli depolama alanında tutulur. LTR ilkesinin herhangi bir değişikliği gelecekteki yedeklemeler için geçerlidir. Örneğin, belirtilen WeekOfYear, ilke yapılandırıldığında, ilk LTR yedeklemesi sonraki yıl oluşturulacaktır. 
+Uzun süreli yedek saklama (LTR), nokta-saat geri yüklemeyi (ıNR) etkinleştirmek için [otomatik olarak oluşturulan](sql-database-automated-backups.md) tam veritabanı yedeklemelerini kullanır. Bir LTR ilkesi yapılandırılmışsa, bu yedeklemeler uzun vadeli depolama için farklı bloblara kopyalanır. Kopya, veritabanı iş yükü üzerinde performans etkisi olmayan bir arka plan işi. Her SQL veritabanı için LTR ilkesi, LTR yedeklemelerin oluşturulma sıklığını da belirtebilir.
+
+LTR özelliğini etkinleştirmek için, dört parametre birleşimini kullanarak bir ilke tanımlayabilirsiniz: haftalık yedekleme bekletme (W), aylık yedekleme bekletme (e), yıllık yedekleme bekletme (Y) ve yılın haftası (WeekOfYear). W belirtirseniz, her hafta bir yedekleme uzun vadeli depolamaya kopyalanacaktır. D belirtirseniz, her ayın ilk yedeklemesi uzun vadeli depolamaya kopyalanacaktır. Y belirtirseniz, WeekOfYear tarafından belirtilen hafta boyunca bir yedekleme uzun vadeli depolamaya kopyalanacaktır. Belirtilen WeekOfYear, ilke yapılandırıldığında, ilk LTR yedeklemesi aşağıdaki yılda oluşturulur. Her yedekleme, LTR yedeklemesi oluşturulduğunda yapılandırılan ilke parametrelerine göre uzun vadeli depolamada tutulur.
+
+> [!NOTE]
+> LTR ilkesinde yapılan herhangi bir değişiklik yalnızca gelecekteki yedeklemeler için geçerlidir. Örneğin, haftalık yedekleme bekletme (W), aylık yedekleme bekletme (e) veya yıllık yedekleme bekletme (Y) değiştirilirse, yeni bekletme ayarı yalnızca yeni yedeklemeler için geçerlidir. Mevcut yedeklemelerin saklama süresi değiştirilmez. Amacınız, saklama süresi dolmadan eski LTR yedeklemeleri silmek istiyorsanız [yedeklemeleri el ile silmeniz](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups)gerekir.
+> 
 
 LTR ilkesinin örnekleri:
 
@@ -75,7 +81,7 @@ Azure portal veya PowerShell 'i kullanarak uzun süreli saklama yapılandırmay�
 
 ## <a name="restore-database-from-ltr-backup"></a>Veritabanı, LTR yedeğinden geri yükle
 
-Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya geri yüklenebilir. Veritabanınızı bir LTR yedeklemesinden geri yüklemeyi öğrenmek için Azure portal veya PowerShell 'i kullanarak bkz. [Azure SQL veritabanı uzun süreli yedekleme saklama](sql-database-long-term-backup-retention-configure.md).
+Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya geri yüklenebilir. Veritabanınızı bir LTR yedeklemesinden nasıl geri yükleyeceğinizi öğrenmek için, Azure portal veya PowerShell 'i kullanarak bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

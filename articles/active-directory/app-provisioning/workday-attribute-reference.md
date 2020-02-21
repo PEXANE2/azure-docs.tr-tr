@@ -7,27 +7,27 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d193fdd5336ab32b10038ee170aee22a7cea88fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 54b4eaf483fd6817fe73c87962d5f26533a2b507
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066063"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521940"
 ---
 # <a name="workday-attribute-reference"></a>Workday öznitelik başvurusu
 
 Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağlama uygulama Bağlayıcısı ile kutudan sevk edilen karşılık gelen XPATH ifadelerini yakalar. 
 
-| \# | Adı                                  | Workday API ifadesi                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Name                                  | Workday API ifadesi                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1  | Etkin                                | WD: Worker/WD: Worker\_Data/WD: Istihdam\_Data/WD: Worker\_durum\_Data/WD: etkin/metin\(\)                                                                                                                                                                                                                                                                                                                     |
+| 1\.  | Etkin                                | WD: Worker/WD: Worker\_Data/WD: Istihdam\_Data/WD: Worker\_durum\_Data/WD: etkin/metin\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | WD: Worker/WD: Worker\_Data/WD: Iş\_veri/WD: konum\_Data/WD: Iş\_sitesi\_Özet\_Data/WD: Address\_Data/WD: Address\_LINE\_2 '\[@wd:Type\_\_\]\(\)                                                                                                                                                                                                                             |
 | 3  | AddressLine3Data                      | WD: Worker/WD: Worker\_Data/WD: Iş\_veri/WD: konum\_Data/WD: Business\_site\_Summary\_Data/WD: Address\_Data/WD: Address\_Line\_3 '\[/Text @wd:Type\_\_\]\(\)                                                                                                                                                                                                                             |
 | 4  | AddressLine4Data                      | WD: Worker/WD: Worker\_Data/WD: Iş\_veri/WD: konum\_Data/WD: Iş\_sitesi\_Özet\_Data/WD: Address\_Data/WD: Address\_LINE\_Data\[@wd:Type\_\_\]\(\)                                                                                                                                                                                                                             |
@@ -58,7 +58,7 @@ Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağ
 | 29 | Locationıdentifier                    | WD: Worker/WD: Worker\_Data/WD: Istihdam\_Data/WD: Position\_Data/WD: Iş\_sitesi\_Summary\_Data/WD: Location\_Reference/WD: ID\[@wd:type= ' Location\_ID '\]/Text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker\_Data/WD: Management\_zinciri\_Data/WD: Worker\_Supervisbir\_yönetim\_zinciri\_veri\[konum\(\)= 1\]/WD: yönetim\_zinciri\_veri\[son\(\)= konum\(\)\]/WD: yönetici\_Reference/WD: ID\[@wd:type= ' WıD '\]/Text\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | WD: Worker/WD: Worker\_Data/WD: Personal\_Data/WD: ad\_Data/WD: yasal\_adı\_veri/WD: ad\_ayrıntı\_veri/WD: Orta\_ad/metin\(\)                                                                                                                                                                                                                                                                                |
-| 32 | Cep telefonu                                | WD: Worker/WD: Worker\_Data/WD: Personal\_Data/WD:\_Data/WD: Phone\_Data\[çeviri\(String\(WD: telefon\_cihaz\_türü\_Reference/@wd:Descriptor\), ' abcdefghgpqrstuerxyz ', ' ABCDEFGHGPQRSTUERXYZ ', ' , ' abcdefghgpqrstuıxyz ', ' ABCDEFGHGPQRSTUERXYZ '\)= ' WORK '\]/@wd:Formatted\_telefon\)\(\(\_\_\_Reference/@wd:Descriptor\)    |
+| 32 | Mobil                                | WD: Worker/WD: Worker\_Data/WD: Personal\_Data/WD:\_Data/WD: Phone\_Data\[çeviri\(String\(WD: telefon\_cihaz\_türü\_Reference/@wd:Descriptor\), ' abcdefghgpqrstuerxyz ', ' ABCDEFGHGPQRSTUERXYZ ', ' , ' abcdefghgpqrstuıxyz ', ' ABCDEFGHGPQRSTUERXYZ '\)= ' WORK '\]/@wd:Formatted\_telefon\)\(\(\_\_\_Reference/@wd:Descriptor\)    |
 | 33 | Belediye                          | WD: Worker/WD: Worker\_Data/WD: Istihdam\_Data/WD: Position\_Data/WD: Iş\_sitesi\_Summary\_Data/WD: Address\_Data/WD: Municipitesi/Text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionId                            | WD: Worker/WD: Worker\_Data/WD: Istihdam\_Data/WD: konum\_veri/WD: konum\_KIMLIĞI/metin\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker\_Data/WD: Istihdam\_Data/WD: konum\_veri/WD: konum\_başlık/metin\(\)                                                                                                                                                                                                                                                                                                                  |

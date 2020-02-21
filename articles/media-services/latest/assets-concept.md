@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186323"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505806"
 ---
 # <a name="assets-in-azure-media-services"></a>Azure Media Services varlıklar
 
@@ -28,7 +28,13 @@ Bir varlık, [Azure depolama hesabındaki](storage-account-concept.md) bir blob 
 
 **Arşiv** depolama katmanı yalnızca önceden kodlanmış çok büyük kaynak dosyaları için önerilir ve kodlama iş çıktısı bir çıkış blobu kapsayıcısına konur. Bir varlıkla ilişkilendirmek istediğiniz çıkış kapsayıcısındaki Bloblar, **sık** erişimli veya seyrek erişimli **bir depolama katmanında** bulunmalıdır.
 
-### <a name="naming-blobs"></a>Blob 'ları adlandırma
+### <a name="naming"></a>Adlandırma 
+
+#### <a name="assets"></a>Varlıklar
+
+Varlığın adları benzersiz olmalıdır. Media Services v3 kaynak adları (örneğin, varlıklar, Işler, dönüşümler) Azure Resource Manager adlandırma kısıtlamalarına tabidir. Daha fazla bilgi için bkz. [adlandırma kuralları](media-services-apis-overview.md#naming-conventions).
+
+#### <a name="blobs"></a>Bloblar
 
 Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksinimlerini](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) hem de [NTFS ad gereksinimlerini](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)izlemelidir. Bu gereksinimlerin nedeni, dosyaların işlenmek üzere blob depolamadan yerel bir NTFS diskine kopyalanmasını sağlayabilir.
 
@@ -118,8 +124,8 @@ Bekleyen veri varlıklarınızı korumanın varlıklar tarafından depolama tara
 |Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services'ı depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor.|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
-|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Desteklenir|Desteklenir|
-|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmez|Desteklenmez|
+|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor|Destekleniyor|
+|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmiyor|Desteklenmiyor|
 
 <sup>1</sup> Media Services hiçbir şifreleme formu olmadan açık/olmayan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 

@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 6f7497e62be0036c13d5c33fa82301469df16f26
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066193"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522365"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
 
@@ -31,14 +31,14 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 
 | \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem Türü |
 |----|----------------------------------------|------------------------------|----------------|
-| 1  | PerPerson                              | Personıdexternal             | Okuma           |
+| 1\.  | PerPerson                              | Personıdexternal             | Okuma           |
 | 2  | PerPerson                              | PersonID                     | Okuma           |
 | 3  | PerPerson                              | perPersonUuid                | Okuma           |
 | 4  | PerPersonal                            | displayName                  | Okuma           |
 | 5  | PerPersonal                            | firstName                    | Okuma           |
 | 6  | PerPersonal                            | cinsiyet                       | Okuma           |
 | 7  | PerPersonal                            | lastName                     | Okuma           |
-| 8  | PerPersonal                            | middleName                   | Okuma           |
+| 8  | PerPersonal                            | MiddleName                   | Okuma           |
 | 9  | PerPersonal                            | preferredName                | Okuma           |
 | 10 | Kullanıcı                                   | addressLine1                 | Okuma           |
 | 11 | Kullanıcı                                   | addressLine2                 | Okuma           |
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 | 32 | Kullanıcı                                   | homePhone                    | Okuma           |
 | 33 | Kullanıcı                                   | jobFamily                    | Okuma           |
 | 34 | Kullanıcı                                   | takma ad                     | Okuma           |
-| 35 | Kullanıcı                                   | durum                        | Okuma           |
+| 35 | Kullanıcı                                   | state                        | Okuma           |
 | 36 | Kullanıcı                                   | timeZone                     | Okuma           |
 | 37 | Kullanıcı                                   | kullanıcı adı                     | Okuma           |
 | 38 | Kullanıcı                                   | Posta kodu                      | Okuma           |
@@ -97,7 +97,7 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 | 63 | EmpJob\.CostCenter                     | Costcenterıd                 | Okuma           |
 | 64 | EmpJob\.CostCenter                     | costCenterDescription        | Okuma           |
 | 65 | EmpJob\.departmanı                     | Bölüm                   | Okuma           |
-| 66 | EmpJob\.departmanı                     | DepartmentId                 | Okuma           |
+| 66 | EmpJob\.departmanı                     | departmentId                 | Okuma           |
 | 67 | EmpJob\.bölümü                       | bölme                     | Okuma           |
 | 68 | EmpJob\.bölümü                       | divisionId                   | Okuma           |
 | 69 | EmpJob\.JobCode                        | jobCode                      | Okuma           |
@@ -118,7 +118,7 @@ Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure A
 
 | \# | Başarılı etken varlığı                  | Başarılı etken özniteliği | Varsayılan AD/Azure AD öznitelik eşlemesi   | İşlem açıklaması                                                                            |
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
-| 1  | PerPerson                              | Personıdexternal         | Çalışan                              | Eşleşen öznitelik olarak kullanıldı                                                                   |
+| 1\.  | PerPerson                              | Personıdexternal         | Çalışan                              | Eşleşen öznitelik olarak kullanıldı                                                                   |
 | 2  | PerPerson                              | perPersonUuid            | Kaynak Bağlayıcısı olarak kullanılan \- eşlenmemiş \[\] | İlk eşitleme sırasında, sağlama hizmeti personUuid var olan Objectguid\ dizinine bağlar.  |
 | 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
 | 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
@@ -126,7 +126,7 @@ Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure A
 | 6  | Kullanıcı                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | Kullanıcı                                   | city                     | m                                       | NA                                                                                           |
 | 8  | Kullanıcı                                   | ülke                  | Ortak                                      | NA                                                                                           |
-| 9  | Kullanıcı                                   | durum                    | St                                      | NA                                                                                           |
+| 9  | Kullanıcı                                   | state                    | St                                      | NA                                                                                           |
 | 10 | Kullanıcı                                   | kullanıcı adı                 | Hesap                          | NA                                                                                           |
 | 11 | Kullanıcı                                   | Posta kodu                  | posta kodu                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | posta                                    | NA                                                                                           |

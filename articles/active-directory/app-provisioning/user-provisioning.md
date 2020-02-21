@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d061d830df9cef305982ff54e91a886d4406d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 8a24a557cb436f18252abd88a4c82f15004f4390
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066089"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522059"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalara Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme
 
@@ -98,7 +98,7 @@ Galeride listelenen önceden tümleştirilmiş uygulamalar için, otomatik sağl
 SCıM 2,0 ' ı destekleyen diğer uygulamalar için, [SCIM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](use-scim-to-provision-users-and-groups.md)makalesindeki adımları izleyin.
 
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="related-articles"></a>İlgili makaleler
 
 - [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
 - [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)

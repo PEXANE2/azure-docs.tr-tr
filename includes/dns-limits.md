@@ -2,14 +2,14 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 6/15/2019
-ms.author: victorh
-ms.openlocfilehash: 2e6fa48894339b993410435f982d0948715de4e0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 2/14/2020
+ms.author: rohink
+ms.openlocfilehash: b674f8e31eb61328f60bb24866f73d02653b655f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211009"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495562"
 ---
 **Genel DNS bölgeleri**
 
@@ -26,5 +26,9 @@ ms.locfileid: "74211009"
 | Otomatik kayıt özellikli özel DNS bölgeleri başına sanal ağ bağlantıları |100|
 | Bir sanal ağın otomatik kayıt etkin ile bağlantılandırılan özel DNS bölgesi sayısı |1|
 | Bir sanal ağın bağlı olduğu özel DNS bölgesi sayısı |1000|
+| Bir sanal makinenin Azure DNS çözümleyici 'ye gönderebileceği DNS sorgularının sayısı (saniye başına) |500 <sup>2</sup> |
+| Sanal makine başına sıraya alınan en fazla DNS sorgusu sayısı (bekleyen yanıt) |200 <sup>2</sup> |
 
 <sup>1</sup> Bu sınırları artırmanız gerekiyorsa, Azure desteği 'ne başvurun.
+
+<sup>2</sup> Bu sınırlar, sanal ağ düzeyinde değil, her bir sanal makineye uygulanır. Bu sınırları aşan DNS sorguları bırakılır.

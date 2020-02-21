@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931592"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523026"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -44,6 +44,8 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 * Azure AD DS yönetilen etki alanına katılmış bir Windows Server VM 'si.
     * Gerekirse, [bir Windows Server VM 'si oluşturmak ve bunu yönetilen bir etki alanına katmak][create-join-windows-vm]için önceki öğreticiye bakın.
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
+* Azure AD DS sanal ağınıza dağıtılan bir Azure savunma ana bilgisayarı.
+    * Gerekirse, [bir Azure savunma ana bilgisayarı oluşturun][azure-bastion].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -84,16 +86,15 @@ Azure AD DS yönetilen etki alanı kilitlidir, bu nedenle etki alanında belirli
 Başlamak için Windows Server VM 'sine aşağıdaki şekilde bağlanın:
 
 1. Azure portal sol taraftaki **kaynak grupları** ' nı seçin. SANAL makinenizin oluşturulduğu kaynak grubunu ( *Myresourcegroup*gibi) seçin ve ardından VM 'yi seçin ( *myvm*gibi).
-1. VM 'nin **genel bakış** penceresinde **Bağlan**' ı seçin.
+1. VM 'nizin **genel bakış** bölmesinde **Bağlan** **' ı ve sonra da**' yi seçin.
 
-    ![Azure portal Windows sanal makinesine bağlanma](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Azure portal kullanarak Windows sanal makinesine bağlanma](./media/join-windows-vm/connect-to-vm.png)
 
-    Yalnızca SSL üzerinden Azure portal erişim sağlamak için [bir Azure savunma ana bilgisayarı oluşturup kullanabilirsiniz (Şu anda önizleme aşamasında)][azure-bastion] .
+1. SANAL makinenizin kimlik bilgilerini girip **Bağlan**' ı seçin.
 
-1. *RDP dosyasını indirme*seçeneğini belirleyin. Bu RDP dosyasını Web tarayıcınıza kaydedin.
-1. VM'nize bağlanmak için indirilen RDP dosyasını açın. İstendiğinde **Bağlan**’ı seçin.
-1. *Azure AD DC Administrators* grubunun parçası olan bir kullanıcının kimlik bilgilerini ( *contoso\dee* gibi) girin
-1. Oturum açma işlemi sırasında bir sertifika uyarısı görürseniz, **Evet** ' i seçin veya bağlanmaya **devam edin** .
+   ![Azure portal savunma ana bilgisayarıyla bağlantı](./media/join-windows-vm/connect-to-bastion.png)
+
+Gerekirse, Web tarayıcınızın görüntülenecek savunma bağlantısı için açılır pencereleri açmasına izin verin. VM 'nize bağlantı kurmak birkaç saniye sürer.
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory Yönetim Araçları 'nı yükler
 

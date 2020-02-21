@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118379"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485361"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -27,6 +27,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 - Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
+
+## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
 
@@ -70,7 +74,7 @@ Depolama hesabınızda CORS 'yi etkinleştirin. Azure portal depolama hesabını
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Örnek etiketleme aracına bağlanma
 
-Örnek etiketleme aracı bir kaynağa (özgün formlarınızın bulunduğu yer) ve bir hedefe (oluşturulan etiketlerin ve çıkış verilerinin dışarı aktardığı konum) bağlanır.
+Örnek etiketleme aracı bir kaynağa (özgün formlarınızın bulunduğu yer) ve bir hedefe (oluşturulan etiketlerin ve çıkış verilerinin dışarı aktardığı yere) bağlanır.
 
 Bağlantılar, projeler arasında ayarlanabilir ve paylaşılabilir. Bunlar bir Genişletilebilir sağlayıcı modeli kullandıkları için kolayca yeni kaynak/hedef sağlayıcılar ekleyebilirsiniz.
 
@@ -89,7 +93,7 @@ Alanları aşağıdaki değerlerle girin:
 Örnek etiketleme aracında, projeler yapılandırma ve ayarlarınızı depolar. Yeni bir proje oluşturun ve alanları aşağıdaki değerlerle girin:
 
 * **Görünen ad** -proje görünen adı
-* **Güvenlik belirteci** -bazı proje ayarları, API anahtarları veya diğer paylaşılan gizli diziler gibi hassas değerler içerebilir. Her proje, hassas proje ayarlarını şifrelemek/şifrelerini çözmek için kullanılabilen bir güvenlik belirteci oluşturur. Güvenlik belirteçleri, sol gezinti çubuğunun alt köşesindeki dişli simgesine tıklayarak uygulama ayarları ' nda bulunabilir.
+* **Güvenlik belirteci** -bazı proje ayarları, API anahtarları veya diğer paylaşılan gizli diziler gibi hassas değerler içerebilir. Her proje, hassas proje ayarlarını şifrelemek/şifrelerini çözmek için kullanılabilen bir güvenlik belirteci oluşturur. Sol gezinti çubuğunun alt köşesindeki dişli simgesine tıklayarak uygulama ayarlarında güvenlik belirteçlerini bulabilirsiniz.
 * **Kaynak bağlantısı** -bu proje için kullanmak istediğiniz önceki adımda oluşturduğunuz Azure Blob depolama bağlantısı.
 * **Klasör yolu** -isteğe bağlı-kaynak formlarınız blob kapsayıcısındaki bir klasörde yer alıyorsa, burada klasör adını belirtin
 * **Form tanıyıcı hizmeti URI 'si** -form tanıyıcı uç nokta URL 'si.
@@ -146,7 +150,7 @@ Eğitim bittikten sonra, **Ortalama doğruluk** değerini inceleyin. Düşükse,
 
 ## <a name="analyze-a-form"></a>Formu analiz etme
 
-Modelinizi test etmek için sol taraftaki tahmin (dikdörtgenler) simgesine tıklayın. Eğitim sürecinde kullandığınız bir form belgesini karşıya yükleyin. Ardından, form için anahtar/değer tahminleri elde etmek için sağdaki **tahmin** düğmesine tıklayın. Araç etiketleri sınırlayıcı kutulara uygular ve her bir etiketin güvenirliği rapor eder.
+Modelinizi test etmek için sol taraftaki tahmin (dikdörtgenler) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesini karşıya yükleyin. Ardından, form için anahtar/değer tahminleri elde etmek için sağdaki **tahmin** düğmesine tıklayın. Araç etiketleri sınırlayıcı kutulara uygular ve her bir etiketin güvenirliği rapor eder.
 
 > [!TIP]
 > Çözümle API 'sini bir REST çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
@@ -155,7 +159,7 @@ Modelinizi test etmek için sol taraftaki tahmin (dikdörtgenler) simgesine tık
 
 Bildirilen doğrulukla bağlı olarak, modeli geliştirmek için daha fazla eğitim yapmak isteyebilirsiniz. Tahmin tamamladıktan sonra, uygulanan etiketlerin her biri için güvenirlik değerlerini inceleyin. Ortalama doğruluk eğitim değeri yüksekse, ancak güven puanları düşükse (veya sonuçlar yanlış olursa), tahmin için kullanılan dosyayı eğitim kümesine eklemeli, etiketleyip yeniden eğitmelisiniz.
 
-Analiz edilen belgeler eğitiminde kullanılanlardan farklıysa, bildirilen ortalama doğruluk, güven puanı ve gerçek doğruluk tutarsız olabilir. Bazı belgelerin kişiler tarafından görüntülendiklerinde benzer olduğunu ancak AI modeline ayrı görünebileceğini aklınızda bulundurun. Örneğin, iki çeşitleme içeren bir form türüyle eğitebilirsiniz; burada eğitim kümesi %20 değişim A ve %80 değişim B ' den oluşur. Tahmin sırasında, A varyasyonuna ait belgelerin güvenilirlik puanları büyük olasılıkla daha düşüktür.
+Çözümlenen belgeler eğitiminde kullanılanlardan farklıysa, bildirilen ortalama doğruluk, güvenilirlik ve gerçek doğruluk tutarsız olabilir. Bazı belgelerin kişiler tarafından görüntülendiklerinde benzer olduğunu ancak AI modeline ayrı görünebileceğini aklınızda bulundurun. Örneğin, iki çeşitleme içeren bir form türüyle eğitebilirsiniz; burada eğitim kümesi %20 değişim A ve %80 değişim B ' den oluşur. Tahmin sırasında, A varyasyonuna ait belgelerin güvenilirlik puanları büyük olasılıkla daha düşüktür.
 
 ## <a name="save-a-project-and-resume-later"></a>Projeyi kaydetme ve daha sonra yeniden başlatma
 
@@ -165,7 +169,7 @@ Projenizi başka bir zamanda veya başka bir tarayıcıda duraklatmak için, pro
 Proje ayarları sayfanıza gidin (kaydırıcı simgesi) ve güvenlik belirteci adını göz önünde alın. Ardından, geçerli tarayıcı örneğinizdeki tüm güvenlik belirteçlerini gösteren uygulama ayarlarınıza (dişli simgesi) gidin. Projenizin güvenlik belirtecini bulun ve adını ve anahtar değerini güvenli bir konuma kopyalayın.
 
 ### <a name="restore-project-credentials"></a>Proje kimlik bilgilerini geri yükle
-Projenizi yeniden başlatmak istediğinizde, önce aynı BLOB depolama kapsayıcısına bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıdaki adımları izleyin. Ardından, uygulama ayarları sayfasına (dişli simgesi) gidin ve projenizin güvenlik belirtecinin orada olup olmadığını görün. Değilse, yeni bir güvenlik belirteci ekleyin ve önceki adımdan belirteç adınızın ve anahtarınızın üzerine kopyalayın. Sonra Ayarları Kaydet ' e tıklayın. 
+Projenizi yeniden başlatmak istediğinizde, önce aynı BLOB depolama kapsayıcısına bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıdaki adımları tekrarlayın. Ardından, uygulama ayarları sayfasına (dişli simgesi) gidin ve projenizin güvenlik belirtecinin orada olup olmadığını görün. Değilse, yeni bir güvenlik belirteci ekleyin ve önceki adımdan belirteç adınızın ve anahtarınızın üzerine kopyalayın. Sonra Ayarları Kaydet ' e tıklayın. 
 
 ### <a name="resume-a-project"></a>Projeyi sürdürür
 Son olarak ana sayfaya (kuruluş simgesi) gidin ve bulut projesini aç ' a tıklayın. Sonra blob Storage bağlantısını seçin ve projenizin *. vott* dosyasını seçin. Uygulama, güvenlik belirtecine sahip olduğundan projenin tüm ayarlarını yükler.

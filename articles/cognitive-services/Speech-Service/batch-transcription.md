@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200087"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500007"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -87,14 +87,55 @@ Yapılandırma parametreleri JSON olarak sağlanır:
 
 Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
-| Parametre | Açıklama |
-|-----------|-------------|
-| `ProfanityFilterMode` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `None`, küfür filtrelemeyi devre dışı bırakan, `Masked`, sonuçtan tüm küfür kaldıran `Removed` veya "küfür" etiketleri ekleyen `Tags`. Varsayılan ayar `Masked`. |
-| `PunctuationMode` | Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Kabul edilen değerler, noktalama işaretini devre dışı bırakan `None`, `Dictated` açık noktalama işareti olan `Automatic`, bu da kod çözücüsünün noktalama işaretleriyle veya dikte edilen noktalama işaretlerini veya otomatik olarak veya otomatik olarak kullanıldığı `DictatedAndAutomatic` |
-| `AddWordLevelTimestamps` | Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını ve `false` (varsayılan değer) devre dışı bırakmak için `true`. |
-| `AddSentiment` | Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) tarafından devre dışı bırakılacak `true`. |
-| `AddDiarization` | İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) sağlar. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.|
-|`TranscriptionResultsContainerUrl`|Azure 'da yazılabilir bir kapsayıcıya [HIZMET SAS](../../storage/common/storage-sas-overview.md) ile Isteğe bağlı URL. Sonuç bu kapsayıcıda depolanacak.
+:::row:::
+   :::column span="1":::
+      **Parametresinin**
+   :::column-end:::
+   :::column span="2":::
+      **Açıklama**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler, küfür filtrelemesini devre dışı bırakmak için `None`, küfür ile `Masked`, sonuçtan tüm küfür kaldırmak için `Removed` veya "küfür" etiketleri eklemek için `Tags`. Varsayılan ayar `Masked`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Kabul edilen değerler, noktalama işaretlerini devre dışı bırakmak için `None`, Açık (konuşulan) noktalama işareti `Dictated`, kod çözücüsünün noktalama ile başa çıkmasına izin vermek için `Automatic` veya dikte ve otomatik noktalama kullanımı `DictatedAndAutomatic`. Varsayılan ayar `DictatedAndAutomatic`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını etkinleştirmek için `true` ve devre dışı bırakmak için `false` (varsayılan değer).
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) `true` devre dışı bırakmak için kullanılır.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) etkinleştirir. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Azure 'da yazılabilir bir kapsayıcıya [HIZMET SAS](../../storage/common/storage-sas-overview.md) ile Isteğe bağlı URL. Sonuç bu kapsayıcıda depolanacak.
+:::row-end:::
 
 ### <a name="storage"></a>Depolama
 

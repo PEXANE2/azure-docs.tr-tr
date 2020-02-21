@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1f949a5c13393758d69223fa49e9e84d91e27310
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 21f4e4234025ab4b9bb14a1e1338aa4b748ef1a6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371197"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495382"
 ---
 |Adı |Açıklama |Efekt (ler) |Sürüm |Kaynak |
 |---|---|---|---|
@@ -22,6 +22,8 @@ ms.locfileid: "77371197"
 |[Kaynak grubundaki etiketi ve değerini ekleyin](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |Bu etikete sahip olmayan herhangi bir kaynak oluşturulduğu veya güncelleştirildiği zaman, belirtilen etiketi kaynak grubundaki değeri ile ekler. Bu ilke uygulanmadan önce oluşturulan kaynakların etiketlerini değiştirmez, bu kaynaklar değiştirilmez. Mevcut kaynaklardaki etiketlerin düzeltmesini destekleyen yeni ' Değiştir ' efekt ilkeleri mevcuttur (bkz. https://aka.ms/modifydoc). |ýna |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json)
 |[Kaynak grubundan bir etiketi devralma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcd3aa116-8754-49c9-a813-ad46512ece54) |Herhangi bir kaynak oluşturulduğunda veya güncelleştirilirken belirtilen etiketi ve değeri üst kaynak grubundan ekler veya değiştirir. Mevcut kaynaklar bir düzeltme görevi tetiklenerek düzeltilebilir. |Değiştirebilirler |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_Modify.json)
 |[Eksikse, kaynak grubundan bir etiketi devralma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea3f2387-9b95-492a-a190-fcdc54f7b070) |Bu etiketin oluşturulduğu veya güncelleştirildiği herhangi bir kaynakta, belirtilen etiketi üst kaynak grubundaki değeri ile ekler. Mevcut kaynaklar bir düzeltme görevi tetiklenerek düzeltilebilir. Etiket farklı bir değerle varsa, değiştirilmez. |Değiştirebilirler |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_Modify.json)
+|[Abonelikten bir etiket devralma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb27a0cbd-a167-4dfa-ae64-4337be671140) |Herhangi bir kaynak oluşturulduğunda veya güncelleştirilirse, belirtilen etiketi ve değeri kapsayan abonelikle ekler veya değiştirir. Mevcut kaynaklar bir düzeltme görevi tetiklenerek düzeltilebilir. |Değiştirebilirler |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_FromSubscription.json)
+|[Eksik olursa bir etiketi abonelikten devralma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40df99da-1232-49b1-a39a-6da8d878f469) |Bu etiketin oluşturulduğu veya güncelleştirildiği durumlarda, belirtilen etiketi içeren aboneliğin değeri ile ekler. Mevcut kaynaklar bir düzeltme görevi tetiklenerek düzeltilebilir. Etiket farklı bir değerle varsa, değiştirilmez. |Değiştirebilirler |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_FromSubscription.json)
 |[Belirtilen etiketi gerektir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F871b6d14-10aa-478d-b590-94f262ecfa99) |Bir etiketin varlığını zorlar. Kaynak grupları için geçerlidir. |reddedebilir |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTag_Deny.json)
 |[Kaynak gruplarında belirtilen etiketi gerektir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96670d01-0a4d-4649-9c89-2d3abc0a5025) |Kaynak gruplarında bir etiketin varlığını zorlar. |reddedebilir |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTag_Deny.json)
 |[Etiket ve değerini iste](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e30110a-5ceb-460c-a204-c1c3969c6d62) |Gerekli bir etiketi ve değerini uygular. Kaynak grupları için geçerlidir. |reddedebilir |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTagAndValue_Deny.json)

@@ -16,16 +16,21 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6251c1576d38b191ca1cba48075cc869c48d004
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048119"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498689"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD özel rollerini yapılandırma
 
 Ayrıcalıklı bir rol yöneticisi, bir kullanıcı için bir özel rol ve özel roller atayan diğer uygulama yöneticileri için kendilerine uygulanan rol ayarlarını değiştirebilir.
+
+> [!NOTE]
+> Azure AD özel rolleri, önizleme sırasında yerleşik Dizin rolleriyle tümleştirilmiştir. Yetenek genel kullanıma sunulduğunda, rol yönetimi yerleşik roller deneyiminde gerçekleşmeyecektir. Aşağıdaki başlığı görürseniz, bu rollerin [yerleşik roller deneyiminde](pim-how-to-activate-role.md) yönetilmesi gerekir ve bu makale uygulanmaz:
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Rol ayarlarını aç
 
@@ -95,7 +100,7 @@ Bir rolü etkinleştirmek için onay gerektirmek isterseniz, aşağıdaki adıml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD özel rolünü etkinleştirme](azure-ad-custom-roles-assign.md)
+- [Azure AD özel rolünü etkinleştirme](azure-ad-custom-roles-activate.md)
 - [Azure AD özel rolü atama](azure-ad-custom-roles-assign.md)
 - [Azure AD özel rol atamasını kaldırma veya güncelleştirme](azure-ad-custom-roles-update-remove.md)
 - [Azure AD 'de rol tanımları](../users-groups-roles/directory-assign-admin-roles.md)

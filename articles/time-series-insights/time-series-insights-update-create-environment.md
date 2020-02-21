@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 12/26/2019
+ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861821"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526832"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Öğretici: bir Azure zaman serisi öngörüleri Önizleme ortamı ayarlama
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md)konusunu okuyun.
 
@@ -79,7 +79,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
 1. Azure abonelik hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. 
 1. Üstteki menüden **+ Kaynak oluştur**'u seçin. 
-1. Seçin **nesnelerin interneti** kategori tıklayın ve ardından **Time Series Insights**. 
+1. **Nesnelerin interneti** kategorisini seçin ve ardından **Time Series Insights**' ı seçin. 
 
    [![Time Series Insights ortamı kaynağını seçin.](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
@@ -108,7 +108,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
    | Parametre | Eylem |
    | --- | --- |
    | **Olay kaynağı oluşturulsun mu?** | **Evet**’i seçin.|
-   | **Adı** | Olay kaynağı adı için benzersiz bir değer girin. |
+   | **Ad** | Olay kaynağı adı için benzersiz bir değer girin. |
    | **Kaynak türü** | **IoT Hub**seçin. |
    | **Bir hub seçin** | **Varolanı Seç ' i**seçin. |
    | **Abonelik** | Cihaz simülatörü için kullandığınız aboneliği seçin. |
@@ -159,7 +159,7 @@ Time Series Insights ortamınızı dağıttığınıza göre, analiz için veri 
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Adı** | Simülatör için benzersiz bir ad girin. |
+    | **Ad** | Simülatör için benzersiz bir ad girin. |
     | **Açıklama** | Bir tanım girin. |
     | **Benzetim süresi** | Süresiz olarak **çalışacak**şekilde ayarlayın. |
     | **Cihaz modeli** | \+ **Cihaz türü Ekle** ' ye tıklayın <br />**Ad**: **Asansör**girin. <br />**Tutar**: **3**girin. <br /> Kalan varsayılan değerleri bırakın |
@@ -173,7 +173,7 @@ Time Series Insights ortamınızı dağıttığınıza göre, analiz için veri 
 
     [Azure IoT simülasyonu panosu ![.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
-## <a name="analyze-data"></a>Verileri analiz edin
+## <a name="analyze-data"></a>Verileri analiz etme
 
 Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-insights-update-explorer.md)kullanarak zaman serisi verilerinizde temel analiz gerçekleştirirsiniz.
 
@@ -217,7 +217,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     | Parametre | Eylem |
     | --- | ---|
-    | **Adı** | **Asansör** girin |
+    | **Ad** | **Asansör** girin |
     | **Açıklama** | **Bu, Asansör için bir tür tanımı** girin |
 
 1. Sonra, **değişkenler** sekmesini seçin. 
@@ -226,7 +226,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Adı** | **Ort sıcaklık**girin. |
+    | **Ad** | **Ort sıcaklık**girin. |
     | **Denetlenmesi** | **Sayısal** seçin |
     | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
     | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
@@ -235,7 +235,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Adı** | **Ortalama titreşim**girin. |
+    | **Ad** | **Ortalama titreşim**girin. |
     | **Denetlenmesi** | **Sayısal** seçin |
     | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
     | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
@@ -244,7 +244,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Adı** | **Kat**girin. |
+    | **Ad** | **Kat**girin. |
     | **Denetlenmesi** | **Kategorik** seçin |
     | **Değer** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
     | **Kategorisine** | <span style="text-decoration: underline">Etiket</span>  - <span style="text-decoration: underline">değerleri</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
@@ -264,7 +264,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
    | Parametre | Eylem |
    | --- | ---|
-   | **Adı** | **Konum hiyerarşisini**girin. |
+   | **Ad** | **Konum hiyerarşisini**girin. |
    |**Düzeyleri**| **Ülkeyi** ilk düzeyin adı olarak girin <br> **+ Düzey Ekle** seçeneğini belirleyin <br> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
 
    **Kaydet**’i seçin.
@@ -276,7 +276,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | Parametre | Eylem |
     | --- | --- |
     | **Tür** | **Asansör**öğesini seçin. |
-    | **Adı** | **Asansör 1** girin|
+    | **Ad** | **Asansör 1** girin|
     | **Açıklama** | **Asansör 1 Için örnek** girin |
 
     **Örnek alanlarına** gidin ve aşağıdaki değerleri girin:
@@ -285,7 +285,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | --- | --- |
     | **Hiyerarşileri** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Şehir** | **Seattle** girin |
+    | **Baş** | **Seattle** girin |
     | **Yapım** | **Space iğne** girin |
 
     **Kaydet**’i seçin.
@@ -297,11 +297,11 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | Parametre | Eylem |
     | --- | --- |
     | **Tür** | **Asansör**öğesini seçin. |
-    | **Adı** | **Asansör 2** girin|
+    | **Ad** | **Asansör 2** girin|
     | **Açıklama** | **Asansör Için örnek girin 2** |
     | **Hiyerarşileri** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Şehir** | **Seattle** girin |
+    | **Baş** | **Seattle** girin |
     | **Yapım** | **Pasifik bilimi merkezini** girin |
 
     **Asansör 3 için:**
@@ -309,11 +309,11 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | Parametre | Eylem |
     | --- | --- |
     | **Tür** | **Asansör**öğesini seçin. |
-    | **Adı** | **Asansör 3** girin|
+    | **Ad** | **Asansör 3** girin|
     | **Açıklama** | **Asansör 3 Için örnek** girin |
     | **Hiyerarşileri** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Şehir** | **New York** girin |
+    | **Baş** | **New York** girin |
     | **Yapım** | **Empire durum oluşturmayı** girin |
 
     [![güncelleştirilmiş örnekleri görüntüleyin.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
@@ -353,9 +353,9 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Azure Time Series Insights depolama yapılandırması hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure zaman serisi öngörüleri Önizleme depolama ve giriş](./time-series-insights-update-storage-ingress.md)
+> [Azure Time Series Insights önizleme depolama ve giriş](./time-series-insights-update-storage-ingress.md)
 
 Zaman serisi modelleri hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure zaman serisi öngörüleri Önizleme veri modelleme](./time-series-insights-update-tsm.md)
+> [Azure Time Series Insights Preview veri modelleme](./time-series-insights-update-tsm.md)

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025155"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524265"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
 
@@ -58,7 +58,7 @@ Görevlerinizin oluşturduğu günlük dosyalarının bir kopyasını tutmak vey
 > 
 
 ## <a name="job-preparation-task"></a>İş hazırlama görevi
-Bir işin görevlerinin yürütülmesinden önce Batch, görevi çalıştırmak için zamanlanan her bir işlem düğümünde iş hazırlama görevini yürütür. Varsayılan olarak, Batch hizmeti, düğüm üzerinde yürütülmek üzere zamanlanan görevleri çalıştırmadan önce iş hazırlama görevinin tamamlanmasını bekler. Ancak, hizmeti beklememe için de yapılandırabilirsiniz. Düğüm yeniden başlatılırsa, iş hazırlama görevi yeniden çalışır, ancak bu davranışı da devre dışı bırakabilirsiniz.
+Bir işin görevlerinin yürütülmesinden önce Batch, görevi çalıştırmak için zamanlanan her bir işlem düğümünde iş hazırlama görevini yürütür. Varsayılan olarak, Batch hizmeti, düğüm üzerinde yürütülmek üzere zamanlanan görevleri çalıştırmadan önce iş hazırlama görevinin tamamlanmasını bekler. Ancak, hizmeti beklememe için de yapılandırabilirsiniz. Düğüm yeniden başlatılırsa, iş hazırlama görevi yeniden çalışır, ancak bu davranışı da devre dışı bırakabilirsiniz. İş hazırlama görevi ve bir iş Yöneticisi görevi yapılandırılmışsa iş hazırlama görevi, diğer tüm görevler için yaptığı gibi, İş Yöneticisi görevinden önce çalışır. İş hazırlama görevi her zaman önce çalışır.
 
 İş hazırlama görevi yalnızca bir görevi çalıştırmak için zamanlanan düğümlerde yürütülür. Bu, bir düğüme bir görevin atanmadığı durumlarda bir hazırlık görevinin gereksiz şekilde yürütülmesini önler. Bu durum, bir iş için görev sayısı bir havuzdaki düğüm sayısından az olduğunda meydana gelebilir. Aynı zamanda, görev sayısı toplam olası eşzamanlı görevden daha düşükse bazı düğümleri boşta bırakan, [eşzamanlı görev yürütme](batch-parallel-node-tasks.md) etkinleştirildiğinde da geçerlidir. Boştaki düğümlerde iş hazırlama görevini çalıştırmayan zaman, veri aktarımı ücretlerine göre daha az para harcamanız sağlayabilirsiniz.
 

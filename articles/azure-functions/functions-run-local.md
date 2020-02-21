@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208893"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523280"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -43,6 +43,9 @@ Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
 [Azure Functions Core Tools] , yerel geliştirme bilgisayarınızda çalıştırabileceğiniz Azure işlevleri çalışma zamanını destekleyen aynı çalışma zamanının bir sürümünü içerir. Ayrıca işlevler oluşturmak, Azure 'a bağlanmak ve işlev projelerini dağıtmak için komutlar sağlar.
 
+>[!IMPORTANT]
+>Azure Functions Core Tools 'ten Azure 'a yayımlayabilmek için [Azure CLI](/cli/azure/install-azure-cli) 'nın yerel olarak yüklü olması gerekir.  
+
 ### <a name="v2"></a>Sürüm 2. x ve 3. x
 
 Araçların sürüm 2. x/3. x, .NET Core üzerinde oluşturulan Azure Işlevleri çalışma zamanını kullanır. Bu sürüm, [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)ve [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2)dahil tüm platformlarda .NET Core desteği için desteklenir. 
@@ -50,7 +53,7 @@ Araçların sürüm 2. x/3. x, .NET Core üzerinde oluşturulan Azure Işlevleri
 > [!IMPORTANT]
 > [Uzantı demeti]'ni kullanarak .NET Core SDK yükleme gereksinimini atlayabilirsiniz.
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Aşağıdaki adımlarda, Windows 'a temel araçları yüklemek için NPM kullanılır. [Chocolatey](https://chocolatey.org/)de kullanabilirsiniz. Daha fazla bilgi için bkz. [temel araçlar Benioku](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
@@ -76,7 +79,7 @@ Aşağıdaki adımlarda, Windows 'a temel araçları yüklemek için NPM kullan�
 
 1. [Uzantı demeti]kullanmayı planlamıyorsanız, [Windows için .NET Core 2. x SDK 'sını](https://www.microsoft.com/net/download/windows)yükleyebilirsiniz.
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 Aşağıdaki adımlarda, macOS 'a çekirdek araçları yüklemek için homebrew kullanılır.
 
@@ -100,7 +103,7 @@ Aşağıdaki adımlarda, macOS 'a çekirdek araçları yüklemek için homebrew 
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları yüklemek için [apt](https://wiki.debian.org/Apt) kullanılır. Diğer Linux dağıtımları için bkz. [temel araçlar Benioku dosyası](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
@@ -230,7 +233,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
-- [Azure Portal], **depolama hesaplarını**arayıp seçin. 
+- [Azure portalında], **depolama hesaplarını**arayıp seçin. 
   Azure portal](./media/functions-run-local/select-storage-accounts.png) depolama hesapları ![seçin
   
   Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
@@ -455,6 +458,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
 
+>[!IMPORTANT]
+>Azure [CLI](/cli/azure/install-azure-cli) 'Yı temel araçlardan Azure 'da yayımlayabilmek için yerel olarak yüklü olmalıdır.  
+
 Proje klasörü, yayınlanmaması gereken dile özgü dosyalar ve dizinler içerebilir. Dışlanan öğeler kök proje klasöründeki bir. funcignore dosyasında listelenir.     
 
 ### <a name="project-file-deployment"></a>Dağıtım (proje dosyaları)
@@ -542,7 +548,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure portalında]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

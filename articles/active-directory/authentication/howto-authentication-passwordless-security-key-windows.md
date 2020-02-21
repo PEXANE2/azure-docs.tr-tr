@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3ebb40ff101f4d2e3fecd05afed834a9ddc688
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
-ms.translationtype: HT
+ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505699"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522042"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
 
@@ -107,7 +107,7 @@ Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz grupları
 
 ### <a name="enable-with-a-provisioning-package"></a>Sağlama paketiyle etkinleştir
 
-Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)yüklenebilir. Bir sağlama paketi oluşturmak için aşağıdaki adımları izleyin:
+Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/p/windows-configuration-designer/9nblggh4tx22)yüklenebilir. Bir sağlama paketi oluşturmak için aşağıdaki adımları izleyin:
 
 1. Windows yapılandırma Tasarımcısı 'nı başlatın.
 1. **Dosya** > **Yeni proje**' yi seçin.

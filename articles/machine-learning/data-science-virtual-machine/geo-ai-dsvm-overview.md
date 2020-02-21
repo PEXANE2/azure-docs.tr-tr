@@ -1,5 +1,5 @@
 ---
-title: Coğrafi yapay zeka DSVM nedir?
+title: Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
 titleSuffix: Azure Data Science Virtual Machine
 description: Coğrafi yapay zeka Veri Bilimi Sanal Makinesi, coğrafi verilerle çalışmaya yönelik ArcGIS Pro ve ML ve AI ile çalışmaya yönelik Python, R ve veri bilimi araç takımları sağlar.
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899915"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526070"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
 
@@ -44,5 +44,5 @@ Coğrafi AI Veri Bilimi VM'si, DSVM 'nin tahmine dayalı yeteneklerini Azure bul
 
 Coğrafi bir AI Veri Bilimi VM'si sağlayın ve aşağıdaki kaynaklardaki kılavuzlarla kullanmaya başlayın:
 
-* [Coğrafi AI veri bilimi sanal makinesi sağlama](provision-geo-ai-dsvm.md)
-* [Coğrafi AI veri bilimi VM'si kullanma](use-geo-ai-dsvm.md)
+* [Coğrafi bir AI Veri Bilimi VM'si sağlama](provision-geo-ai-dsvm.md)
+* [Coğrafi AI Veri Bilimi VM'si kullanın](use-geo-ai-dsvm.md)

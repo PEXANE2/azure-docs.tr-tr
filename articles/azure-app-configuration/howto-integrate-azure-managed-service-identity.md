@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212219"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500400"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure yönetilen kimliklerle tümleştirin
 
@@ -25,7 +25,7 @@ Bu öğretici ayrıca yönetilen kimliği uygulama yapılandırmasının Key Vau
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Uygulama yapılandırmasına yönetilen bir kimlik erişimi verin.
@@ -78,7 +78,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 1. *Azure. Identity* paketine bir başvuru ekleyin:
 
     ```cli
-    dotnet add package Azure.Identity --version 1.1.0
+    dotnet add package Azure.Identity
     ```
 
 1. Uygulama yapılandırma deponuzda uç noktayı bulun. Bu URL, Azure portal mağazanın **erişim tuşları** sekmesinde listelenir.
@@ -102,7 +102,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     > [!IMPORTANT]
     > `CreateHostBuilder` `CreateWebHostBuilder` .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -134,7 +134,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. Hem uygulama yapılandırma değerlerini hem de Key Vault başvurularını kullanmak için, aşağıda gösterildiği gibi *program.cs* güncelleştirin. Bu kod, bir `AzureServiceTokenProvider` kullanarak yeni bir `KeyVaultClient` oluşturur ve bu başvuruyu `UseAzureKeyVault` yöntemine yapılan çağrıya geçirir.
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -150,7 +150,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>

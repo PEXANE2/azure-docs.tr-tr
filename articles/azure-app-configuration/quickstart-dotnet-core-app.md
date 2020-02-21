@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 4d9ea8c7cc64a27ec6033ff084d5771328f89699
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27ad43fabbba92f97a4035b00f72a8a4af4cc5c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714664"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500208"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Hızlı başlangıç: uygulama yapılandırmasıyla .NET Core uygulaması oluşturma
 
@@ -52,7 +52,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 1. Aşağıdaki komutu çalıştırarak `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet paketine bir başvuru ekleyin:
 
     ```CLI
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 3.0.0-preview-011100001-1152
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
     ```
 
 2. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:

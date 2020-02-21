@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b05eefb2a0e516772390f898c22e723b08973338
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931476"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484460"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -108,7 +108,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 Bu yönerge, ara yazılım Web API 'sine eklenir:
 
 ```csharp
- services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+         .AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, bu kodu Startup.cs 'e ekleyerek şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:

@@ -1,23 +1,27 @@
 ---
-title: Azure SQL veritabanı için en iyi güvenlik uygulamaları PlayBook | Microsoft Docs
-description: Bu makalede, Azure SQL veritabanı 'nda en iyi güvenlik uygulamaları için genel rehberlik sunulmaktadır.
+title: Ortak güvenlik gereksinimlerini ele almak için PlayBook | Microsoft Docs
+titleSuffix: Azure SQL Database
+description: Bu makalede, Azure SQL veritabanı 'nda ortak güvenlik gereksinimleri ve en iyi uygulamalar sağlanmaktadır.
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845874"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506220"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL veritabanı güvenlik en iyi uygulamaları PlayBook
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL veritabanı ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 
-## <a name="overview"></a>Genel Bakış
+> [!NOTE]
+> Bu belge, ortak güvenlik gereksinimlerinin nasıl çözübir konusunda en iyi yöntemleri sağlar. Tüm gereksinimler tüm ortamlar için geçerli değildir ve uygulanacak özellikler hakkında veritabanınıza ve güvenlik ekibinize başvurmanız gerekir.
+
+## <a name="solving-common-security-requirements"></a>Ortak güvenlik gereksinimlerini çözme
 
 Bu belge, Azure SQL veritabanı 'nı kullanarak yeni veya mevcut uygulamalar için ortak güvenlik gereksinimlerinin nasıl çözülebileceğine ilişkin yönergeler sağlar. Bu, üst düzey güvenlik alanlarıyla düzenlenmiştir. Belirli tehditleri adreslemek için [ortak güvenlik tehditleri ve olası azaltmaları](#common-security-threats-and-potential-mitigations) bölümüne bakın. Şirket içinden Azure 'a uygulama geçirirken sunulan önerilerin bazıları uygulanabilir olsa da, geçiş senaryoları bu belgenin odağı değildir.
 
@@ -32,7 +36,7 @@ Bu belge, Azure SQL veritabanı 'nı kullanarak yeni veya mevcut uygulamalar iç
 - Azure SQL VM 'Leri (IaaS)
 - Şirket içi SQL Server
 
-### <a name="audience"></a>Hedef Kitle
+### <a name="audience"></a>Hedef kitle
 
 Bu kılavuza yönelik hedef kitleler, müşterilerin Azure SQL veritabanı 'nı güvenli hale getirmeye yönelik sorulardır. Bu en iyi uygulama makalesinde ilgilendiğiniz roller şunları içerir, ancak bunlarla sınırlı değildir:
 
@@ -66,6 +70,9 @@ Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işl
 - SQL kimlik doğrulaması
 - Azure Active Directory kimlik doğrulaması
 
+> [!NOTE]
+> Azure Active Directory kimlik doğrulaması, tüm araçlar ve üçüncü taraf uygulamalar için desteklenmez.
+
 ### <a name="central-management-for-identities"></a>Kimlikler için merkezi yönetim
 
 Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
@@ -82,7 +89,7 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 
 - Azure AD kiracısı oluşturun ve insan kullanıcılarını temsil eden [kullanıcılar oluşturun](../active-directory/fundamentals/add-users-azure-active-directory.md) ve uygulamaları, hizmetleri ve otomasyon araçlarını temsil etmek için [hizmet sorumluları](../active-directory/develop/app-objects-and-service-principals.md) oluşturun. Hizmet sorumluları, Windows ve Linux 'ta hizmet hesaplarıyla eşdeğerdir. 
 
-- Kaynaklara erişim haklarını Grup ataması aracılığıyla Azure AD sorumlularına atama: Azure AD grupları oluşturun, gruplara erişim izni verin ve gruplara ayrı ayrı Üyeler ekleyin. Veritabanınızda, Azure AD gruplarınızı eşleyen, kapsanan veritabanı kullanıcıları oluşturun. 
+- Kaynaklara erişim haklarını Grup ataması aracılığıyla Azure AD sorumlularına atama: Azure AD grupları oluşturun, gruplara erişim izni verin ve gruplara ayrı ayrı Üyeler ekleyin. Veritabanınızda, Azure AD gruplarınızı eşleyen, kapsanan veritabanı kullanıcıları oluşturun. Veritabanı içinde izinleri atamak için, kullanıcıları veritabanı rollerine uygun izinlerle yerleştirin.
   - SQL ile [Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](sql-database-aad-authentication-configure.md) ve [SQL ile kimlik doğrulaması Için Azure ad kullanma](sql-database-aad-authentication.md)makalelerini inceleyin.
   > [!NOTE]
   > Yönetilen bir örnekte, ana veritabanında Azure AD sorumluları ile eşlenen oturum açma işlemleri de oluşturabilirsiniz. Bkz. [oturum oluşturma (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
@@ -204,11 +211,6 @@ SQL kimlik doğrulaması, Kullanıcı adı ve parola kullanarak Azure SQL verita
 - Sunucu Yöneticisi olarak, oturum açma bilgileri ve kullanıcılar oluşturun. İçerilen veritabanı kullanıcıları parolalarla birlikte kullanmadıkça, tüm parolalar ana veritabanında depolanır.
   - [SQL veritabanı ve SQL veri ambarı 'na veritabanı erişimini denetleme ve verme](sql-database-manage-logins.md)makalesine bakın.
 
-- Parola yönetimi en iyi yöntemlerini izleyin:
-  - Latin büyük ve küçük harflerden, rakamlardan (0-9) ve alfasayısal olmayan karakterlerden ($,!, # veya%) oluşan karmaşık bir parola sağlayın.
-  - Rastgele seçili karakterler yerine daha uzun parolalar kullanın.
-  - En az 90 günde bir el ile parola değişikliği uygulayın.
-
 ## <a name="access-management"></a>Erişim yönetimi
 
 Erişim yönetimi, yetkili kullanıcıların Azure SQL veritabanı erişimini ve ayrıcalıklarını denetleme ve yönetme işlemidir.
@@ -250,24 +252,25 @@ Aşağıdaki en iyi yöntemler isteğe bağlıdır, ancak güvenlik stratejinizi
 
 - Bireysel kullanıcılara izin atamayı engellemez. Bunun yerine rolleri (veritabanı veya sunucu rolleri) sürekli olarak kullanın. Roller, raporlama ve sorun giderme izinlerinin büyük ölçüde sağlanmasına yardımcı olur. (Azure RBAC yalnızca roller aracılığıyla izin atamasını destekler.) 
 
-- Rollerin izinleri Kullanıcı için gereken izinlerle tam olarak eşleşiyorsa yerleşik rolleri kullanın. Kullanıcıları birden çok role atayabilirsiniz. 
-
-- Yerleşik roller çok fazla veya yetersiz izin vermekle özel roller oluşturup kullanın. Uygulamada kullanılan tipik roller: 
+- Gerekli izinlere sahip özel roller oluşturup kullanın. Uygulamada kullanılan tipik roller: 
   - Güvenlik dağıtımı 
   - Yönetici 
   - Geliştirici 
   - Destek personeli 
-  - Ekleme 
+  - Denetleyici 
   - Otomatikleştirilmiş süreçler 
   - Son kullanıcı 
+  
+- Yalnızca rollerin izinleri Kullanıcı için gerekli izinlere tam olarak eşleşiyorsa yerleşik rolleri kullanın. Kullanıcıları birden çok role atayabilirsiniz. 
 
 - SQL Server veritabanı altyapısındaki izinlerin aşağıdaki kapsamlara uygulanabileceğini unutmayın. Kapsam ne kadar küçükse, verilen izinlerin etkisi daha küçüktür: 
   - Azure SQL veritabanı sunucusu (ana veritabanında özel roller) 
-  - Veritabanı 
-  - Şema (Ayrıca bkz. [SQL Server Için şema tasarımı: güvenlik göz önünde bulundurularak şema tasarımı önerileri](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
+  - Database 
+  - Şema
+      - Bir veritabanı içinde izinler vermek için şemaları kullanmak en iyi uygulamadır. (Ayrıca bkz. [SQL Server Için şema tasarımı: güvenlik göz önünde bulundurularak şema tasarımı önerileri](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Nesne (tablo, görünüm, yordam, vb.) 
   > [!NOTE]
-  > Bu düzey, genel uygulamaya gereksiz karmaşıklık eklediğinden nesne düzeyinde izinlerin uygulanması önerilmez. Nesne düzeyi izinleri kullanmaya karar verirseniz, bunlar açıkça açıklanmalıdır. Aynı nedenlerden dolayı daha az recommendable olan sütun düzeyi izinler için de geçerlidir. [Reddetme](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) için standart kurallar sütunlar için uygulanmaz.
+  > Bu düzey, genel uygulamaya gereksiz karmaşıklık eklediğinden nesne düzeyinde izinlerin uygulanması önerilmez. Nesne düzeyi izinleri kullanmaya karar verirseniz, bunlar açıkça açıklanmalıdır. Aynı nedenlerden dolayı daha az recommendable olan sütun düzeyi izinler için de geçerlidir. Ayrıca, varsayılan olarak bir tablo düzeyinde [reddetme](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) , sütun DÜZEYINDE bir izni geçersiz kılmaz. Bu, [ortak ölçütler uyumluluk sunucusu yapılandırmasının](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option) etkinleştirilmesini gerektirir.
 
 - Çok fazla izin için test etmek üzere [güvenlik açığı değerlendirmesi (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) kullanarak düzenli denetimler gerçekleştirin.
 
@@ -320,7 +323,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 
 - Güvenlikle ilgili eylemler için her zaman bir denetim izlemesine sahip olduğunuzdan emin olun. 
 
-- Kullanılan izinleri görmek için yerleşik RBAC rollerinin tanımını alabilir ve bunları PowerShell aracılığıyla alıntıları ve birikmelerini temel alan özel bir rol oluşturabilirsiniz 
+- Kullanılan izinleri görmek için yerleşik RBAC rollerinin tanımını alabilir ve bunları PowerShell aracılığıyla alıntıları ve birikmelerini temel alan özel bir rol oluşturabilirsiniz.
 
 - Db_owner veritabanı rolünün herhangi bir üyesi Saydam Veri Şifrelemesi (TDE) gibi güvenlik ayarlarını değiştiremediğinden veya SLO 'yu değiştirebileceğinizden, bu üyelikle ilgili Üyelik verilmelidir. Ancak db_owner ayrıcalıkları gerektiren çok sayıda görev vardır. DB seçeneklerini değiştirme gibi herhangi bir veritabanı ayarını değiştirme gibi görev. Denetim, herhangi bir çözümde önemli bir rol oynar.
 
@@ -372,7 +375,7 @@ Görevlerin ayrımı, veritabanındaki verilerle sınırlı değildir, ancak uyg
 
 - Tüm kod değişiklikleri kaynaklarını bilindiğinizden emin olun. Kod T-SQL betiklerine ait olabilir. Bu, çalıştırılacak veya görünümler, Işlevler, Tetikleyiciler ve saklı yordamların formlarında dağıtılması için geçici komutlar olabilir. SQL Aracısı Iş tanımlarının (adımlar) bir parçası olabilir. Ayrıca, SSIS paketleri, Azure Data Factory ve diğer hizmetler içinden de yürütülebilir.
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
 Veri koruma, şifreleme veya gizleme ile önemli bilgilerin tehlikeye düşmesi için bir dizi özellik kümesidir.
 
@@ -409,6 +412,8 @@ Bekleyen şifreleme, veritabanı, günlük ve yedekleme dosyalarında kalıcı h
 
 Kullanılan veriler, SQL sorgularının yürütülmesi sırasında veritabanı sisteminde bellekte depolanan veriler. Veritabanınız hassas verileri depoluyorsa, kuruluşunuz, yüksek ayrıcalıklı kullanıcıların veritabanınızdaki hassas verileri görüntülemesi önlendiğinden emin olmak için gerekli olabilir. Kuruluşunuzdaki Microsoft işleçleri veya DBAs gibi yüksek ayrıcalıklı kullanıcıların veritabanını yönetebilmesi, ancak SQL Server işlemin belleğinden veya veritabanını sorgulayarak büyük olasılıkla hassas verileri görüntülemesini engellemiş olması gerekir.
 
+Hangi verilerin gizli olduğunu ve gizli verilerin bellekte şifrelenmesi gerekip gerekmediğini ve düz metin olarak yöneticilerin erişimine açık olup olmadığını belirleyen ilkeler, kuruluşunuza ve uyumlu olması için gereken uyumluluk düzenlemelerine özgüdür. Lütfen ilgili gereksinime bakın: [hassas verileri tanımlamak ve etiketleyerek](#identify-and-tag-sensitive-data).
+
 **Nasıl uygulanır**:
 
 - Hassas verilerin bellekte/kullanımda olsa bile Azure SQL veritabanı 'nda düz metin olarak gösterilmemesini sağlamak için [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) kullanın. Always Encrypted, veritabanı yöneticilerinin (DBAs) ve bulut yöneticilerinin (ya da yüksek ayrıcalıklı ancak yetkisiz kullanıcıların kimliğine bürünebilen kötü aktörlerin) verilerini korur ve verilerinize kimlerin erişebileceği hakkında daha fazla denetim sağlar.
@@ -416,6 +421,8 @@ Kullanılan veriler, SQL sorgularının yürütülmesi sırasında veritabanı s
 **En iyi uygulamalar**:
 
 - Always Encrypted, verileri bekleyen (TDE) veya aktarım (SSL/TLS) ile şifrelemek için bir alternatif değildir. Always Encrypted, performans ve işlevsellik etkilerini en aza indirmek için hassas olmayan veriler için kullanılmamalıdır. Verilerin Rest, aktarım sırasında ve kullanımda olan kapsamlı korunması için TDE ve Aktarım Katmanı Güvenliği (TLS) ile birlikte Always Encrypted kullanılması önerilir. 
+
+- Bir üretim veritabanında Always Encrypted dağıtmadan önce, tanımlanan hassas veri sütunlarını şifreleme etkisini değerlendirin. Genel olarak, Always Encrypted şifreli sütunlardaki sorguların işlevlerini azaltır ve [Always Encrypted Özellik ayrıntılarında](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)listelenen başka sınırlamalar vardır. Bu nedenle, işlevselliği yeniden uygulamak için uygulamanızı yeniden tetikleyebilmeniz gerekebilir, bir sorgu, istemci tarafında veya//ve saklı yordamların, işlevlerin, görünümlerin ve tetikleyicilerin tanımları dahil olmak üzere veritabanı şemanızı yeniden düzenleyebilir. Mevcut uygulamalar, Always Encrypted kısıtlamalarına ve kısıtlamalarına bağlı olmadıkları takdirde şifrelenmiş sütunlarla çalışmayabilir. Microsoft araçları, ürün ve Hizmetleri Always Encrypted destekleyen ekosistemi, şifrelenmiş sütunlarla birlikte çalışmaz. Bir sütunu şifrelemek, iş yükünüzün özelliklerine bağlı olarak sorgu performansını da etkileyebilir. 
 
 - Kötü amaçlı DBAs verilerini korumak için Always Encrypted kullanıyorsanız rol ayrımı ile Always Encrypted anahtarlarını yönetin. Rol ayrımı ile bir güvenlik yöneticisi fiziksel anahtarları oluşturur. DBA, veritabanında fiziksel anahtarları açıklayan sütun ana anahtarını ve sütun şifreleme anahtarı meta veri nesnelerini oluşturur. Bu işlem sırasında güvenlik yöneticisinin veritabanına erişmesi gerekmez ve DBA 'nın fiziksel anahtarlara düz metin olarak erişmesi gerekmez. 
   - Ayrıntılar için, [rol ayrımı Ile anahtarları yönetme](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation) makalesine bakın. 
@@ -705,7 +712,7 @@ Olası veritabanı güvenlik açıklarını bulup çözerek veritabanı güvenle
 
 ### <a name="identify-and-tag-sensitive-data"></a>Hassas verileri tanımla ve etiketleme 
 
-Büyük olasılıkla hassas veriler içeren sütunları bulur. Sütunları, gelişmiş duyarlılık tabanlı denetim ve koruma senaryolarını kullanacak şekilde sınıflandırın. 
+Büyük olasılıkla hassas veriler içeren sütunları bulur. Hassas veriler büyük ölçüde müşteriye, uyumluluk yönetmeine ve bu verilerin ücretlendirilmesi gereken kullanıcılar tarafından değerlendirilmelidir. Sütunları, gelişmiş duyarlılık tabanlı denetim ve koruma senaryolarını kullanacak şekilde sınıflandırın. 
 
 **Nasıl uygulanır**:
 

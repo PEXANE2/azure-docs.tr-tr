@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 02/20/2020
+ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045033"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500261"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzenine özel bir yetenek ekleme
 
@@ -33,6 +33,8 @@ Azure Bilişsel Arama 'deki bir [zenginleştirme ardışık düzeni](cognitive-s
         "uri": "https://[your custom skill uri goes here]",
         "timeout": "PT230S",
 ```
+
+URI 'nin güvenli (HTTPS) olduğundan emin olun.
 
 Şu anda, özel bir beceriyle etkileşimde bulunmak için tek mekanizma bir Web API arabirimi aracılığıyla yapılır. Web API 'sinin bu bölümde açıklanan gereksinimleri karşılaması gerekir.
 

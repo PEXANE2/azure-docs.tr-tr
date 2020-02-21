@@ -7,7 +7,7 @@ author: msmimart
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d6544d5e2f50f777714b1101a70d2525cd53deb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 6dff0d4f8f0062c00351b60174c63d9c19bdfa15
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492883"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522943"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -38,10 +38,10 @@ Bu makalede, Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokolüne u
 
 | **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  
 |---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | 
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | 
-|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | 
-|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | 
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | 
+|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | 
+|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Hizmet düzeltmeleri önceden mevcut SCIM uygulamama otomatik olarak uygulandı mi?
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433370"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523348"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme
 
@@ -51,7 +51,7 @@ Kötü `ThreadPool` ayarlarla birleştirilmiş trafik, Redsıs sunucusu tarafın
 - `IOCP` bölümünde ve `WORKER` bölümünde `Min` değerinden büyük bir `Busy` değeri olduğunu fark edersiniz. Bu fark, `ThreadPool` ayarlarınızda ayarlama yapması gereken anlamına gelir.
 - Ayrıca, `in: 64221`de görebilirsiniz. Bu değer, istemcinin çekirdek yuva katmanında 64.211 baytın alındığını, ancak uygulama tarafından okunmadığını gösterir. Bu fark genellikle uygulamanızın (örneğin, StackExchange. Redsıs), sunucu tarafından size gönderildiğinde, ağdan veri okuyamayacağı anlamına gelir.
 
-[`ThreadPool` ayarlarınızı](https://gist.github.com/JonCole/e65411214030f0d823cb) , iş parçacığı havuzunuzun patlama senaryolarında hızlı bir şekilde ölçeklendirdiğinizden emin olmak için yapılandırabilirsiniz.
+[`ThreadPool` ayarlarınızı](cache-faq.md#important-details-about-threadpool-growth) , iş parçacığı havuzunuzun patlama senaryolarında hızlı bir şekilde ölçeklendirdiğinizden emin olmak için yapılandırabilirsiniz.
 
 ## <a name="high-client-cpu-usage"></a>Yüksek istemci CPU kullanımı
 
@@ -102,7 +102,7 @@ Büyük yanıt boyutları için çözümler farklılaştırılabilecek ancak şu
 1. Uygulamanızın kullandığı bağlantı nesnelerinin sayısını artırın.
     - Farklı bağlantı nesneleri üzerinde istek yapmak için hepsini bir kez deneme yaklaşımı kullanın.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache sunucu tarafı sorunlarını giderme](cache-troubleshoot-server.md)
 - [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

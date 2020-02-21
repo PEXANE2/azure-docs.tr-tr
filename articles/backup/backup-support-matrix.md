@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936244"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505859"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -76,10 +76,11 @@ Linux makinelerini yedeklemek istiyorsanız, bu destek aşağıda verilmiştir:
 
 **Yedekleme türü** | **Linux (Azure onaysed)**
 --- | ---
-**Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmez. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
+**Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmiyor. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
 **Linux çalıştıran Azure VM 'yi yedeklemek için aracı uzantısı kullanma** | [Özel betikler](backup-azure-linux-app-consistent.md)kullanarak uygulamayla tutarlı yedekleme.<br/><br/> Dosya düzeyinde kurtarma.<br/><br/> Kurtarma noktasından veya diskten bir VM oluşturarak geri yükleyin.
-**Linux çalıştıran şirket içi veya Azure VM 'yi yedeklemek için DPM 'yi kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.<br/><br/> Dosya tutarlı yedekleme, Azure VM için kullanılamaz.
-**Linux çalıştıran şirket içi makineyi veya Azure VM 'yi yedeklemek için MABS kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.<br/><br/> Dosya tutarlı yedekleme, Azure VM 'Leri için kullanılamaz.
+**Linux çalıştıran şirket içi makineleri yedeklemek için DPM 'yi kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.
+**Linux çalıştıran şirket içi makineleri yedeklemek için MABS kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.
+**Linux Azure VM 'lerini yedeklemek için MABS veya DPM kullanma** | Desteklenmiyor.
 
 ## <a name="daylight-saving-time-support"></a>Gün ışığından yararlanma süresi desteği
 
@@ -114,10 +115,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makin** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
-**Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
+**Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -128,16 +129,16 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makin** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-**Şirket içi Windows makinelerini doğrudan yedekleme** | Yok | ![Evet][green]
-**VM uzantısı kullanarak Azure VM 'lerini yedekleme** | Yok | Yok
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
+**Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
+**VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
 **Ayar** | **Limitler**
 --- | ---
 **Korumalı örnek başına en fazla kurtarma noktası (makine veya iş yükü)** | 9\.999
-**Kurtarma noktası için en uzun süre sonu zamanı** | Sınırsız
+**Kurtarma noktası için en uzun süre sonu zamanı** | Sınır yok
 **DPM/MABS için maksimum yedekleme sıklığı** | SQL Server için 15 dakikada bir<br/><br/> Diğer iş yükleri için saatte bir
 **Kasadan maksimum yedekleme sıklığı** | Şirket **Içi Windows makineleri veya Mars çalıştıran Azure VM 'leri:** Günde üç<br/><br/> **DPM/MABS:** Günde iki<br/><br/> **Azure VM yedeklemesi:** Günde bir
 **Kurtarma noktası bekletme** | Günlük, haftalık, aylık, yıllık
@@ -148,7 +149,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlendirin ve müşterilere verileri ikincil bir bölgeye geri yüklemek için tam denetim sağlayan çapraz bölge geri yükleme özelliğini ekledi. Bu özelliği yapılandırmak için [çapraz bölge geri yüklemeyi ayarla makalesini](backup-create-rs-vault.md#set-cross-region-restore)ziyaret edin. Bu özellik aşağıdaki yönetim türleri için desteklenir:
 
-| Yedekleme yönetimi türü | Desteklenen                                                    | Desteklenen bölgeler |
+| Yedekleme yönetimi türü | Destekleniyor                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet. 4 TB 'den az diski olan şifrelenmiş VM 'Ler ve VM 'Ler için genel sınırlı Önizleme desteklenir | Orta Batı ABD   |
 | MARS Aracısı/şirket içi | Hayır                                                           | Yok               |

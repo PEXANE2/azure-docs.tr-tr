@@ -1,0 +1,427 @@
+---
+title: Azure Işlevleri için Azure kuyruk depolama çıkış bağlaması
+description: Azure Işlevleri 'nde Azure kuyruk depolama iletileri oluşturmayı öğrenin.
+author: craigshoemaker
+ms.topic: reference
+ms.date: 02/18/2020
+ms.author: cshoe
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 2c16cc965c1e7e98727170fd5896dd081482c692
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77493507"
+---
+# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
+
+Azure Işlevleri, çıkış bağlaması ayarlayarak yeni Azure kuyruk depolama iletileri oluşturabilir.
+
+## <a name="example"></a>Örnek
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Aşağıdaki örnek, alınan her http isteği için bir kuyruk iletisi oluşturan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
+
+```csharp
+[StorageAccount("MyStorageConnectionAppSetting")]
+public static class QueueFunctions
+{
+    [FunctionName("QueueOutput")]
+    [return: Queue("myqueue-items")]
+    public static string QueueOutput([HttpTrigger] dynamic input,  ILogger log)
+    {
+        log.LogInformation($"C# function processed: {input.Text}");
+        return input.Text;
+    }
+}
+```
+
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# betik (. CSX)](functions-reference-csharp.md) kodunda bir http tetikleyici bağlamasını gösterir. İşlevi, alınan her HTTP isteği için bir **Customqueuemessage** nesne yüküne sahip bir kuyruk öğesi oluşturur.
+
+İşte *function. JSON* dosyası:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "authLevel": "function",
+      "name": "input"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "$return",
+      "queueName": "outqueue",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+
+Tek bir C# sıra iletisi oluşturan betik kodu aşağıda verilmiştir:
+
+```cs
+public class CustomQueueMessage
+{
+    public string PersonName { get; set; }
+    public string Title { get; set; }
+}
+
+public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
+{
+    return input;
+}
+```
+
+Bir `ICollector` veya `IAsyncCollector` parametresini kullanarak birden fazla iletiyi aynı anda gönderebilirsiniz. Aşağıda, C# biri http istek verileriyle, diğeri ise sabit kodlanmış değerlerle birden çok ileti gönderen betik kodu verilmiştir:
+
+```cs
+public static void Run(
+    CustomQueueMessage input, 
+    ICollector<CustomQueueMessage> myQueueItems, 
+    ILogger log)
+{
+    myQueueItems.Add(input);
+    myQueueItems.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
+}
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Aşağıdaki örnek, bir *function. JSON* DOSYASıNDAKI bir http tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, alınan her HTTP isteği için bir kuyruk öğesi oluşturur.
+
+İşte *function. JSON* dosyası:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "authLevel": "function",
+      "name": "input"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "$return",
+      "queueName": "outqueue",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+
+JavaScript kod aşağıdaki gibidir:
+
+```javascript
+module.exports = function (context, input) {
+    context.done(null, input.body);
+};
+```
+
+`myQueueItem` çıkış bağlaması için bir ileti dizisi tanımlayarak bir kerede birden çok ileti gönderebilirsiniz. Aşağıdaki JavaScript kodu, alınan her HTTP isteği için sabit kodlanmış değerler içeren iki kuyruk iletisi gönderir.
+
+```javascript
+module.exports = function(context) {
+    context.bindings.myQueueItem = ["message 1","message 2"];
+    context.done();
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Aşağıdaki örnek, Depolama kuyruklarına tek ve birden çok değerin nasıl alınacağını gösterir. *Function. JSON* için gereken yapılandırma her iki yoldan de aynıdır.
+
+Bir depolama kuyruğu bağlama, *türü* `queue`olarak ayarlandığı *function. JSON* içinde tanımlanır.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureStorageQueuesConnectionString"
+    }
+  ]
+}
+```
+
+Kuyrukta tek bir ileti ayarlamak için `set` yöntemine tek bir değer geçirirsiniz.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+
+    input_msg = req.params.get('message')
+
+    msg.set(input_msg)
+
+    return 'OK'
+```
+
+Kuyrukta birden çok ileti oluşturmak için, uygun liste türü olarak bir parametre bildirin ve `set` yöntemine bir değer dizisi geçirin (liste türüyle eşleşen).
+
+```python
+import azure.functions as func
+import typing
+
+def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpResponse:
+
+    msg.set(['one', 'two'])
+
+    return 'OK'
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+ Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendiğinde kuyruk iletisi oluşturan bir Java işlevini gösterir.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri kuyruk depolamaya yazılacak olan parametrelerde `@QueueOutput` ek açıklamasını kullanın.  Parametre türü `OutputBinding<T>`olmalıdır; burada `T` bir POJO 'ın herhangi bir yerel Java türüdür.
+
+---
+
+## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs)' ı kullanın.
+
+Özniteliği bir `out` parametresi veya işlevin dönüş değeri için geçerlidir. Aşağıdaki örnekte gösterildiği gibi özniteliğin Oluşturucusu sıranın adını alır:
+
+```csharp
+[FunctionName("QueueOutput")]
+[return: Queue("myqueue-items")]
+public static string Run([HttpTrigger] dynamic input,  ILogger log)
+{
+    ...
+}
+```
+
+Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
+
+```csharp
+[FunctionName("QueueOutput")]
+[return: Queue("myqueue-items", Connection = "StorageConnectionAppSetting")]
+public static string Run([HttpTrigger] dynamic input,  ILogger log)
+{
+    ...
+}
+```
+
+Tüm örnek için bkz. [çıkış örneği](#example).
+
+Sınıf, yöntem veya parametre düzeyinde depolama hesabını belirtmek için `StorageAccount` özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. tetikleyici-öznitelikler.
+
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
+# <a name="java"></a>[Java](#tab/java)
+
+`QueueOutput` ek açıklaması, bir işlevin çıktısı olarak bir ileti yazmanızı sağlar. Aşağıdaki örnekte, bir kuyruk iletisi oluşturan HTTP ile tetiklenen bir işlev gösterilmektedir.
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| Özellik    | Açıklama |
+|-------------|-----------------------------|
+|`name`       | İşlev imzasında parametre adını bildirir. İşlev tetiklendiğinde, bu parametrenin değeri kuyruk iletisinin içeriğine sahiptir. |
+|`queueName`  | Depolama hesabındaki sıra adını bildirir. |
+|`connection` | Depolama hesabı bağlantı dizesine işaret eder. |
+
+`QueueOutput` ek açıklaması ile ilişkili parametre, bir [OutputBinding\<t\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) örneği olarak yazılır.
+
+---
+
+## <a name="configuration"></a>Yapılandırma
+
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Queue` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|---------|---------|----------------------|
+|**type** | yok | `queue`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | yok | `out`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.|
+|**Adı** |**Adı** | Kuyruğun adı. |
+|**bağlanma** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="usage"></a>Kullanım
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+`out T paramName`gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın. `out` parametresi yerine yöntem dönüş türünü kullanabilirsiniz ve `T` aşağıdaki türlerden herhangi biri olabilir:
+
+* JSON olarak seri hale getirilebilir bir nesne
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+`CloudQueueMessage` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
+
+C# Ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden çok kuyruk iletisi yazın: 
+
+* `ICollector<T>` veya `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+`out T paramName`gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın. `paramName`, *function. JSON*öğesinin `name` özelliğinde belirtilen değerdir. `out` parametresi yerine yöntem dönüş türünü kullanabilirsiniz ve `T` aşağıdaki türlerden herhangi biri olabilir:
+
+* JSON olarak seri hale getirilebilir bir nesne
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+`CloudQueueMessage` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
+
+C# Ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden çok kuyruk iletisi yazın: 
+
+* `ICollector<T>` veya `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Çıkış kuyruğu öğesi, `<NAME>` *function. JSON*içinde tanımlanan adla eşleşen `context.bindings.<NAME>` aracılığıyla kullanılabilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
+
+- **Dönüş değeri**: *function. JSON* içindeki `name` özelliğini `$return`olarak ayarlayın. Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
+
+- **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. `set` geçirilen değer kuyruk depolama iletisi olarak kalıcıdır.
+
+# <a name="java"></a>[Java](#tab/java)
+
+[Queueoutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) ek açıklamasını kullanarak bir Işlevden Olay Hub 'ı iletisini almak için iki seçenek vardır:
+
+- **Dönüş değeri**: ek açıklamanın işleve uygulanması için, işlevin dönüş değeri bir olay hub 'ı iletisi olarak kalıcıdır.
+
+- Zorunlu **: ileti**değerini açık olarak ayarlamak için, `T` bir Pojo veya herhangi bir yerel Java türü olan [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)türün belirli bir parametresine ek açıklamayı uygulayın. Bu yapılandırmayla, `setValue` yöntemine bir değer geçirilmesi değeri bir olay hub 'ı iletisi olarak devam ettirir.
+
+---
+
+## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
+
+| Bağlama |  Başvuru |
+|---|---|
+| Kuyruk | [Sıra hata kodları](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
+| Blob, tablo, kuyruk | [Depolama hatası kodları](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, tablo, kuyruk |  [Sorun giderme](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Host.JSON ayarları
+
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
+
+> [!NOTE]
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "queues": {
+            "maxPollingInterval": "00:00:02",
+            "visibilityTimeout" : "00:00:30",
+            "batchSize": 16,
+            "maxDequeueCount": 5,
+            "newBatchThreshold": 8
+        }
+    }
+}
+```
+
+|Özellik  |Varsayılan | Açıklama |
+|---------|---------|---------|
+|maxPollingInterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1\. x içinde veri türü milisaniyedir ve 2. x ve üzeri bir TimeSpan 'dir.|
+|visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |
+|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı `newBatchThreshold`dolduğunda, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` ve `newBatchThreshold`. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>En büyük `batchSize` 32 ' dir. |
+|maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.|
+|newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.|
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Bir işlevi kuyruk depolama veri değişiklikleri (tetikleyici) olarak çalıştırma](./functions-bindings-storage-queue-trigger.md)
+
+<!-- LINKS -->
+
+[CloudQueueMessage]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage

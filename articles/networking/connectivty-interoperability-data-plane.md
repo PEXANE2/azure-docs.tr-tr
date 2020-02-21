@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 11c964bedce7a8b979434b888d756c2121d06a60
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873837"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526646"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure arka uç bağlantısı özelliklerinde birlikte çalışabilirlik: veri düzlemi Analizi
 
@@ -171,14 +171,14 @@ Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli
 Bağlı olan VNet 'ten şirket içi konum 2 ' deki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
 
-    C:\Users\rb>tracert 10.2.30.10
+    C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+    Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
+      1    76 ms    75 ms    76 ms  10.10.30.134
       2     *        *        *     Request timed out.
       3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+      4    75 ms    75 ms    75 ms  10.1.31.10
 
     Trace complete.
 

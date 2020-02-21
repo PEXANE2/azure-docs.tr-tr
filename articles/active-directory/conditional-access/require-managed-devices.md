@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a16d28f31887c8bedcc95424382e674e037450e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 66e94393bef942d7bfad41a7dccc8b651696d4af
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468414"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484528"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -31,7 +31,7 @@ Bulut uygulama erişimi için yönetilen cihazların gerekli olması, **Azure AD
 - **[Azure Active Directory Koşullu erişim](../active-directory-conditional-access-azure-portal.md)** -Bu makalede, koşullu erişime ve ilgili terimlere kavramsal bir genel bakış sunulmaktadır.
 - **[Azure Active Directory cihaz yönetimine giriş](../devices/overview.md)** -Bu makalede, cihazları kurumsal denetim altında almak için sahip olduğunuz çeşitli seçeneklere genel bakış sunulmaktadır. 
 
->[!IMPORTANT] 
+>[!NOTE] 
 > İlk cihaz kimlik doğrulamasından sonra en iyi uygulamayı almak için Azure AD cihaz tabanlı koşullu erişim ilkesini kullanmanızı öneririz. Bu, cihazın uyumluluk ve cihaz kod akışı dışında kalırsa kapatma oturumlarını içerir.
 
 

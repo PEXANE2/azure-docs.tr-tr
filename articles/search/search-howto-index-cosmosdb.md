@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642174"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498639"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure 'da Dizin Oluşturucu kullanarak Cosmos DB verilerini dizin oluşturma Bilişsel Arama 
 
@@ -29,13 +29,13 @@ Bu makalede, içerik ayıklamak ve Azure Bilişsel Arama 'de aranabilir hale get
 
 Terminoloji kafa karıştırıcı olabileceğinden, [Azure Cosmos DB Dizin oluşturma](https://docs.microsoft.com/azure/cosmos-db/index-overview) ve [Azure bilişsel arama dizin oluşturma](search-what-is-an-index.md) 'nın her bir hizmete özgü ayrı işlemler olduğunu belirten bir değer vardır. Azure Bilişsel Arama Dizin oluşturmaya başlamadan önce Azure Cosmos DB veritabanınız zaten var olmalı ve veri içermeli.
 
-Azure Bilişsel Arama 'deki Cosmos DB Dizin Oluşturucu, farklı protokollerle erişilen [Azure Cosmos DB öğelerine](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) gezinebiliyor.
+Azure Bilişsel Arama 'deki Cosmos DB Dizin Oluşturucu, farklı protokollerle erişilen [Azure Cosmos DB öğelerine](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) gezinebiliyor. 
 
-+ Genel kullanıma sunulan [SQL API 'si](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)için [Portal](#cosmos-indexer-portal), [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)veya [.NET SDK 'sını](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)kullanabilirsiniz.
++ Genel olarak kullanılabilen [SQL API 'si](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)için, veri kaynağını ve Dizin oluşturucuyu oluşturmak üzere [Portal](#cosmos-indexer-portal), [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)veya [.NET SDK 'sını](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) kullanabilirsiniz.
 
-+ [MongoDB API (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) ve [Gremlin API (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)için, Dizin oluşturucuyu oluşturmak üzere [Portal](#cosmos-indexer-portal) 'ı veya [create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) çağrısını [REST API sürüm 2019-05-06-Preview](search-api-preview.md) kullanabilirsiniz.
++ [MongoDB API 'si (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)için, veri kaynağını ve Dizin oluşturucuyu oluşturmak üzere [portalı](#cosmos-indexer-portal) veya [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) ' yi kullanabilirsiniz.
 
-+ [Cassandra API (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)Için, [Create ıNDEXER (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) çağrısında yalnızca [REST API 2019-05-06-Preview sürümünü](search-api-preview.md) kullanabilirsiniz.
++ [Cassandra API (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) ve [GREMLIN API (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)için, yalnızca veri kaynağını ve dizin oluşturucuyu oluşturmak üzere [2019-05-06-Preview REST API sürümünü](search-api-preview.md) kullanabilirsiniz.
 
 
 > [!Note]
@@ -175,7 +175,7 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 
 | Alan   | Açıklama |
 |---------|-------------|
-| **Adı** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
+| **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
 |**type**| Gereklidir. `cosmosdb`olmalıdır. |
 |**Credentials** | Gereklidir. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/><br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Bilişsel Arama Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
 | **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |

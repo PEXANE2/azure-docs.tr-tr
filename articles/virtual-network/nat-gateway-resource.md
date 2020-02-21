@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/19/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 3ae1e3e595e9be9709e8a3d4808100d7f0e48eb8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485021"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526374"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
 
@@ -264,7 +264,7 @@ Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ 
 
 | Akış | Kaynak kayıt düzeni | Hedef kayıt düzeni |
 |:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
+| 1\. | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
@@ -273,7 +273,7 @@ Bu akışlar, PAT olduktan sonra şöyle görünebilir:
 
 | Akış | Kaynak kayıt düzeni | Snattoed kaynak kayıt düzeni | Hedef kayıt düzeni | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
+| 1\. | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
@@ -324,7 +324,7 @@ Boşta kalma zaman aşımı, tüm akışlar için 4 dakikadan (varsayılan) 120 
 
 Aşağıdaki zamanlayıcılar, SNAT bağlantı noktası sürümü için kullanılır:
 
-| Zamanlayıcı | Değer |
+| Zamanlayıcı | Value |
 |---|---|
 | TCP FIN | 60 saniye |
 | TCP RST | 10 saniye |
@@ -339,7 +339,6 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresi ve hedef bağ
 
 - NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
 - IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.
-- Alt ağ veya NIC üzerinde NSG, NAT kullanılarak genel uç noktalara giden akışlar için kabul edilemez.
 - NSG akış günlüğü, NAT kullanılırken desteklenmez.
 - NAT birden çok sanal ağa yayılamaz.
 

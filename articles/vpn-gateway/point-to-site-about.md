@@ -1,18 +1,18 @@
 ---
-title: Azure Noktadan siteye VPN bağlantıları hakkında | Microsoft Docs
+title: Azure Noktadan siteye VPN bağlantıları hakkında | VPN Gateway
 description: Bu makale, Noktadan siteye bağlantıları anlamanıza yardımcı olur ve hangi P2S VPN Gateway kimlik doğrulama türünün kullanılması gerektiğine karar vermenize yardımcı olur.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110434"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500610"
 ---
 # <a name="about-point-to-site-vpn"></a>Noktadan siteye VPN hakkında
 
@@ -53,16 +53,16 @@ Yüksek düzeyde, Azure AD kimlik doğrulamasını yapılandırmak için aşağ�
 
 1. [Azure AD kiracısı yapılandırma](openvpn-azure-ad-tenant.md)
 
-2. [Ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirme](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirme](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Azure VPN Istemcisini indirme ve yapılandırma](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) etki alanı sunucusu kullanarak kimlik doğrulama
 
-AD etki alanı kimlik doğrulaması, kullanıcıların kuruluş etki alanı kimlik bilgilerini kullanarak Azure 'a bağlanmasına olanak sağlar. AD sunucusu ile tümleşen bir RADIUS sunucusu gerektirir. Kuruluşlar, var olan RADIUS dağıtımlarından da faydalanabilir.   
+AD etki alanı kimlik doğrulaması, kullanıcıların kuruluş etki alanı kimlik bilgilerini kullanarak Azure 'a bağlanmasına olanak sağlar. AD sunucusu ile tümleşen bir RADIUS sunucusu gerektirir. Kuruluşlar, var olan RADIUS dağıtımlarından da faydalanabilir.
   
-RADIUS sunucusu şirket içinde veya Azure VNET 'te dağıtılabilir. Kimlik doğrulaması sırasında Azure VPN Gateway, kimlik doğrulama iletilerini RADIUS sunucusu ile bağlanan cihaz arasında ileri ve geri iletir. Bu nedenle, RADIUS sunucusuna ağ geçidi erişilebilirliği önemli. RADIUS sunucusu şirket içinde mevcutsa, ulaşılabilirlik için Azure 'dan şirket içi siteye bir VPN S2S bağlantısı gerekir.  
+RADIUS sunucusu şirket içinde veya Azure VNet 'te dağıtılabilir. Kimlik doğrulaması sırasında Azure VPN Gateway, kimlik doğrulama iletilerini RADIUS sunucusu ile bağlanan cihaz arasında ileri ve geri iletir. Bu nedenle, RADIUS sunucusuna ağ geçidi erişilebilirliği önemli. RADIUS sunucusu şirket içinde mevcutsa, ulaşılabilirlik için Azure 'dan şirket içi siteye bir VPN S2S bağlantısı gerekir.  
   
 RADIUS sunucusu, AD Sertifika Hizmetleri ile de tümleştirilebilir. Bu, Azure sertifika kimlik doğrulamasına alternatif olarak, RADIUS sunucusunu ve P2S sertifika kimlik doğrulaması için kuruluş sertifika dağıtımınızı kullanmanıza olanak sağlar. Bunun avantajı, kök sertifikaları ve iptal edilen sertifikaları Azure 'a yüklemeniz gerekmez.
 
@@ -156,9 +156,6 @@ ZIP dosyası Ayrıca, Azure tarafında bu cihazların kendi profilinizi oluştur
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>P2S bağlantısı Nasıl yaparım? mı?
 
 Bir P2S yapılandırması, çok sayıda belirli adım gerektirir. Aşağıdaki makalelerde P2S yapılandırmasına kılavuzluk eden adımlar ve VPN istemci cihazlarını yapılandırma bağlantıları bulunur:
@@ -169,11 +166,9 @@ Bir P2S yapılandırması, çok sayıda belirli adım gerektirir. Aşağıdaki m
 
 * [OpenVPN 'i yapılandırma](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>P2S bağlantısının yapılandırmasını kaldırmak Nasıl yaparım??
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Bir P2S bağlantısının yapılandırmasını kaldırmak için
 
-Az CLI ve aşağıdaki komut kullanılarak bir P2S yapılandırması kaldırılabilir: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+Adımlar için aşağıdaki [SSS](#removeconfig)bölümüne bakın.
  
 ## <a name="faqcert"></a>Yerel Azure sertifika kimlik doğrulaması hakkında SSS
 

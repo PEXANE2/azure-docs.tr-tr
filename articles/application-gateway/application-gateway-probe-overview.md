@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766822"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505902"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway sistem durumu izlemeye genel bakış
 
@@ -49,7 +49,7 @@ Aşağıdakiler eşleşen ölçütlerdir:
 
 `New-AzApplicationGatewayProbeHealthResponseMatch` cmdlet 'i kullanılarak eşleşme ölçütü belirtilebilir.
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -87,9 +87,9 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 
 | Araştırma özelliği | Açıklama |
 | --- | --- |
-| Ad |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
+| Adı |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
-| Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca Application Gateway 'de birden çok site yapılandırıldığında uygulanabilir, aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, VM ana bilgisayar adından farklıdır. |
+| Host |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca Application Gateway 'de birden çok site yapılandırıldığında uygulanabilir, aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. |
 | Interval |Saniye cinsinden yoklama aralığı. Bu değer, iki ardışık yoklamalar arasındaki zaman aralığıdır. |
 | Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir.  |
@@ -101,9 +101,11 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 
 ## <a name="nsg-considerations"></a>NSG konuları
 
-Bir uygulama ağ geçidi alt ağında ağ güvenlik grubu (NSG) varsa, gelen trafik için uygulama ağ geçidi alt ağında 65503-65534 numaralı bağlantı noktası aralığı açılmalıdır. Bu bağlantı noktaları, arka uç sistem durumu API 'sinin çalışması için gereklidir.
+Application Gateway v1 SKU 'SU için 65503-65534 TCP bağlantı noktalarında gelen Internet trafiğine ve **Gatewaymanager** hizmet **etiketi ile hedef** alt ağa sahip v2 SKU 'su için TCP bağlantı noktaları 65200-65535 ' ye izin vermelisiniz. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir.
 
-Ayrıca, giden Internet bağlantısı engellenmeyebilir ve AzureLoadBalancer etiketinden gelen trafiğe izin verilmelidir.
+Ayrıca, giden Internet bağlantısı engellenmeyebilir ve **AzureLoadBalancer** etiketinden gelen trafiğe izin verilmelidir.
+
+Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Application Gateway sistem durumu izleme hakkında bilgi aldıktan sonra, PowerShell ve Azure Resource Manager dağıtım modelini kullanarak Azure portal veya özel bir [sistem durumu araştırmasına](application-gateway-create-probe-ps.md) yönelik [özel bir sistem durumu araştırması](application-gateway-create-probe-portal.md) yapılandırabilirsiniz.

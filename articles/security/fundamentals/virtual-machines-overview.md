@@ -1,5 +1,6 @@
 ---
-title: Azure sanal makineler ile kullanılan güvenlik özellikleri-Azure güvenliği | Microsoft Docs
+title: Azure VM 'lerinde kullanılan güvenlik özellikleri
+titleSuffix: Azure security
 description: Bu makalede, Azure sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sunulmaktadır.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792628"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500375"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
@@ -37,7 +38,7 @@ Azure sayesinde, şu şekilde güvenliğe yönelik gelişmiş, uyumlu çözümle
 * Tehditleri belirleyip algılayın.
 * Uyumluluk gereksinimlerini karşılayın.  
 
-## <a name="antimalware"></a>Kötü Amaçlı Yazılımdan Koruma
+## <a name="antimalware"></a>Kötü amaçlı yazılımdan koruma
 
 Azure ile Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından kötü amaçlı yazılımdan koruma yazılımı kullanabilirsiniz. Bu yazılım, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumanıza yardımcı olur.
 
@@ -74,7 +75,7 @@ Daha fazla bilgi edinin:
 
 Anahtar güvenliğini iyileştirmek, şifreleme ve kimlik doğrulama korumalarını geliştirebilir. Kritik gizli dizilerlerinizin ve anahtarların yönetim ve güvenliğini Azure Key Vault içinde depolayarak kolaylaştırabilirsiniz.
 
-Key Vault, anahtarlarınızı FIPS 140-2 2. Düzey standartlarıyla sertifikalanmış olan donanım güvenlik modüllerinde (HSM'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
+Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
 
 Daha fazla bilgi edinin:
 
@@ -92,9 +93,9 @@ Daha fazla bilgi edinin:
 * [IaaS VM 'Leri için Azure disk şifrelemesi](/azure/security/azure-security-disk-encryption-overview)
 * [Hızlı başlangıç: Azure PowerShell ile Windows IaaS VM 'yi şifreleme](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
-## <a name="virtual-machine-backup"></a>Sanal makine yedekleme
+## <a name="virtual-machine-backup"></a>Sanal makine yedeklemesi
 
-Azure Backup, uygulama verilerinizi sıfır sermaye yatırımı ve en az işletim maliyetleriyle korumanıza yardımcı olan ölçeklenebilir bir çözümdür. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınızda hatalar oluşturabilir. Azure Backup, Windows ve Linux çalıştıran sanal makineleriniz korunur.
+Azure Backup, uygulama verilerinizi sıfır sermaye yatırımı ve en az işletim maliyetleriyle korumanıza yardımcı olan ölçeklenebilir bir çözümdür. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınıza hata verebilir. Azure Backup, Windows ve Linux çalıştıran sanal makineleriniz korunur.
 
 Daha fazla bilgi edinin:
 

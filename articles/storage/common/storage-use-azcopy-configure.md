@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905265"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526504"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -61,7 +61,7 @@ Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullan
 
 |    |     |
 |--------|-----------|
-| **Söz dizimi** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Sözdizimi** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Örnek** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -121,6 +121,8 @@ AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları a
 Günlükler başarısızlık durumunu (`UPLOADFAILED`, `COPYFAILED`ve `DOWNLOADFAILED`), tam yolu ve hatanın nedenini içerir.
 
 Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE%\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
+
+İlgili hata, dosyada görüntülenen ilk hata değildir. Ağ hataları, zaman aşımları ve sunucu meşgul hataları gibi hatalar için AzCopy en fazla 20 kez yeniden dener ve genellikle yeniden deneme işlemi başarılı olur.  Gördüğünüz ilk hata, başarıyla yeniden denenen bir zararsız olabilir.  Bu nedenle, dosyadaki ilk hataya bakmak yerine `UPLOADFAILED`, `COPYFAILED`veya `DOWNLOADFAILED`yakın hatalara bakın. 
 
 > [!IMPORTANT]
 > Microsoft Desteği bir istek gönderirken (veya herhangi bir üçüncü taraf ile ilgili sorunu gidermeye çalıştığınızda), yürütmek istediğiniz komutun Redaksiyonu yapılmış sürümünü paylaşabilirsiniz. Bu, SAS 'nin yanlışlıkla herhangi bir gövdele paylaşılmamasını sağlar. Redaksiyonu yapılmış sürümü günlük dosyasının başlangıcında bulabilirsiniz.

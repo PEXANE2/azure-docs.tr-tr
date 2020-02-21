@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: f0c38590b667894dd65d212124ef1d26c7918ff7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.date: 02/20/2020
+ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366411"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485055"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -155,7 +155,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 |------|--------------------|---------------------------------------|-------|
 | İleti boyutu | 100 MB | 200 MB | Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. |
 | Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p>Tümleştirme hizmeti ortamı için Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir, örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](https://docs.microsoft.com/connectors/azureblob/). Daha fazla bilgi parçalama için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
-|||||   
+|||||
 
 #### <a name="character-limits"></a>Karakter sınırları
 
@@ -248,12 +248,16 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 | Şema | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
 ||||
 
-| Çalışma zamanı uç noktası | Sınır | Notlar |
-|------------------|-------|-------|
-| 5 dakika başına çağrı okuma | 60,000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
-| 5 dakika başına çağrı çağır | 45,000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
-| 5 dakika başına çağrı izleme | 45,000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
-| Eşzamanlı çağrıları engelleme | ~1,000 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
+<a name="integration-account-throughput-limits"></a>
+
+### <a name="throughput-limits"></a>Verimlilik sınırları
+
+| Çalışma zamanı uç noktası | Ücretsiz | Temel | Standart | Notlar |
+|------------------|------|-------|----------|-------|
+| 5 dakika başına çağrı okuma | 3,000 | 30,000 | 60,000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
+| 5 dakika başına çağrı çağır | 3,000 | 30,000 | 45,000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
+| 5 dakika başına çağrı izleme | 3,000 | 30,000 | 45,000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
+| Eşzamanlı çağrıları engelleme | ~1,000 | ~1,000 | ~1,000 | Tüm SKU 'Lar için aynı. Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
 ||||
 
 <a name="b2b-protocol-limits"></a>

@@ -10,16 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5ab5d3c0fc1c37feaac2cc6b4b6837627c5a82df
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369698"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500634"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
+
+
+> [!IMPORTANT]
+> Azure Sentinel 'teki bazı Fusion özellikleri şu anda genel önizlemededir.
+> Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
 
 Azure Sentinel, Machine Learning 'i temel alan Fusion teknolojisini kullanarak çok aşamalı saldırıları otomatik olarak algılayabilir ve bu da sonlandırma zincirinin çeşitli aşamalarında gözlemlenen anormal davranışları ve şüpheli etkinlikleri birleştirerek. Azure Sentinel, daha sonra yakalamak çok zor olan olaylar oluşturur. Bu olaylar iki veya daha fazla uyarıyı veya etkinliği büyük bir şekilde kaydeder. Tasarım yaparak, bu olaylar düşük hacimdir, yüksek uygunlukta ve yüksek öneme sahiptir.
 
@@ -41,13 +48,32 @@ Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durum
 
 Kural şablonları gelişmiş çok aşamalı saldırı algılama için geçerli değildir.
 
+> [!NOTE]
+> Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel** \> **yapılandırma** \> **Analytics \> etkin kurallar \> gelişmiş çok aşamalı saldırı algılama** , **durum** sütununda **devre dışı bırak** ' ı seçin.
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Palo Alto Networks ve Microsoft Defender ATP kullanarak Fusion
 
-- XML 'nin anonim olarak oluşturulmasına yönelik ağ isteği, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenebilir
+Bu senaryolar, Güvenlik analistleri tarafından kullanılan temel günlüklerin ikisini birleştirir: Palo Alto Networks ve uç nokta algılama günlüklerinden Microsoft Defender ATP. Aşağıda listelenen tüm senaryolarda, bir dış IP adresi içeren bitiş noktasında şüpheli bir etkinlik algılanır, ardından bu, dış IP adresinden güvenlik duvarından geri gelen anormal trafik tarafından izlenir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar).
 
-- PowerShell, Palo Alto Networks güvenlik duvarı tarafından bayrak eklenmiş anormal trafik tarafından izlenen şüpheli bir ağ bağlantısı yaptı
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Anonim olarak çalışan hizmeti olan ağ isteği, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir.
 
-- , Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen, yetkisiz erişim girişimleri geçmişi ile IP 'ye giden bağlantı
+Bu senaryoda, Azure Sentinel önce, Microsoft Defender Gelişmiş tehdit koruması 'nın anormal etkinliklere yol açabilecek bir TOR anonim seçme hizmetine bir ağ isteği algıladığını belirten bir uyarı algılar. Bu, {Account Name} hesabı altında {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi.
+Daha sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağandışı etkinlik algılandı. Bu, ağınıza girilen kötü amaçlı trafiğin, ağ trafiği için hedef IP adresinin {Destinationıp} olduğunu gösterir.
+
+Bu senaryo şu anda genel önizlemededir.
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen şüpheli bir ağ bağlantısı yaptı.
+
+Bu senaryoda, Azure Sentinel önce, Microsoft Defender Gelişmiş tehdit koruması 'nın, PowerShell 'in bir Palo Alto ağı güvenlik duvarı tarafından algılanan anormal etkinlikte şüpheli bir ağ bağlantısı yaptığını algıladığını bildiren bir uyarı algılar. Bu, {Account Name} hesabı tarafından {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi. Daha sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağandışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiği anlamına gelir. Ağ trafiği için hedef IP adresi {Destinationıp}.
+
+Bu senaryo şu anda genel önizlemededir.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen, yetkisiz erişim girişimleri geçmişi ile IP 'ye giden bağlantı
+
+Bu senaryoda, Azure Sentinel, Microsoft Defender Gelişmiş tehdit koruması 'nın, Palo Alto tarafından algılanan anormal etkinliklere neden olan yetkisiz erişim denemelerinin geçmişini içeren bir IP adresine giden bağlantı algıladığını bildiren bir uyarı algılar. Ağlar güvenlik duvarı. Bu, {Account Name} hesabı tarafından {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi. Bundan sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağan dışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiği anlamına gelir. Ağ trafiği için hedef IP adresi {Destinationıp}.
+
+Bu senaryo şu anda genel önizlemededir.
 
 
 

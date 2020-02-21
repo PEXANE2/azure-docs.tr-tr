@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459614"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525541"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics 'de anomali algılama
 
@@ -21,6 +21,12 @@ Hem bulutta hem de Azure IoT Edge kullanılabilir Azure Stream Analytics, en yay
 Makine öğrenimi modelleri, tek bir örneklenmiş zaman serisini kabul eder. Zaman serisi Tekdüzen değilse, anomali algılama çağrısı yapmadan önce, atlayan bir pencereyle birlikte toplama adımı ekleyebilirsiniz.
 
 Machine Learning işlemleri, şu anda mevsimsellik eğilimlerini veya çok değişkenli bir bağıntıları desteklemez.
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics makine öğrenimi kullanarak anomali algılama
+
+Aşağıdaki videoda, Azure Stream Analytics ' deki makine öğrenimi işlevlerini kullanarak bir anomali 'in gerçek zamanlı olarak nasıl algılanacağı gösterilmektedir. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>Model davranışı
 
@@ -148,15 +154,9 @@ Yukarıdaki bölümlenmemiş yapılandırmaların çalıştırıldığı örnek 
 ### <a name="identifying-bottlenecks"></a>Performans sorunlarını belirleme
 İşlem hattınızdaki performans sorunlarını belirlemek için Azure Stream Analytics işinizin ölçümler bölmesini kullanın. İşin giriş oranına sahip olup olmadığını görmek için üretilen iş ve ["filigran gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **biriktirme listesi olayları** Için **giriş/çıkış olaylarını** gözden geçirin. Olay Hub 'ı ölçümleri için, **Kısıtlanmış istekleri** bulun ve eşik birimlerini uygun şekilde ayarlayın. Cosmos DB ölçümleri için, bölüm anahtarı aralıklarınızın her bir şekilde tüketildiğinden emin olmak için üretilen Iş birimi **anahtar aralığı başına en fazla ru/sn** 'yi gözden geçirin. Azure SQL DB için **günlük GÇ** ve **CPU 'yu**izleyin.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics makine öğrenimi kullanarak anomali algılama
-
-Aşağıdaki videoda, Azure Stream Analytics ' deki makine öğrenimi işlevlerini kullanarak bir anomali 'in gerçek zamanlı olarak nasıl algılanacağı gösterilmektedir. 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

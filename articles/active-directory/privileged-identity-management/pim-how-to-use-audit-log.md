@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024186"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498533"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>PıM 'de Azure AD rollerinin denetim geçmişini görüntüleme
 
@@ -32,9 +32,9 @@ Tüm ayrıcalıklı roller için son 30 gün içinde tüm rol atamalarını ve e
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
-    ![Azure AD rolleri yeni sürüm](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Yeni sürüm](#tab/new)
+# <a name="new-version"></a>[Yeni sürüm](#tab/new)
 
 Azure AD rollerinin denetim geçmişini görüntülemek için bu adımları izleyin.
 
@@ -50,7 +50,7 @@ Kaynak denetimi size Azure AD rolleriniz ile ilişkili tüm etkinliklerin bir g�
 
 1. Geçmişi önceden tanımlanmış bir tarih veya özel Aralık kullanarak filtreleyin.
 
-    ![Filtrelerle kaynak denetim listesi](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Filtrelerle kaynak denetim listesi](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>Denetmi görüntüle
 
@@ -66,9 +66,9 @@ My Audit, kişisel rol etkinliğinizi görüntülemenize olanak sağlar.
 
 1. Geçmişi önceden tanımlanmış bir tarih veya özel Aralık kullanarak filtreleyin.
 
-    ![Geçerli Kullanıcı için denetim listesi](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Geçerli Kullanıcı için denetim listesi](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[Önceki sürüm](#tab/previous)
+# <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
 ## <a name="view-audit-history"></a>Denetim geçmişini görüntüleme
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191077"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500418"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
@@ -98,7 +98,7 @@ Bağlantıları onaylama eylemi, özel bağlantı hizmetindeki otomatik onaylama
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>TCP proxy v2 kullanarak bağlantı bilgilerini alma
 
-Özel bağlantı hizmeti kullanılırken, Özel uç noktadan gelen paketlerin kaynak IP adresi, hizmet sağlayıcısı tarafında, sağlayıcının sanal ağından ayrılan NAT IP 'si kullanılarak ağ adresi çevirisi (NAT) olur. Bu nedenle, uygulamalar hizmet tüketicilerinin gerçek kaynak IP adresi yerine ayrılmış NAT IP adresini alır. Uygulamanızın Tüketici tarafında gerçek kaynak IP adresi gerekiyorsa, hizmetinize proxy protokolünü etkinleştirebilir ve proxy protokolü başlığından bilgileri alabilirsiniz. Kaynak IP adresine ek olarak, proxy protokol üstbilgisi de özel uç noktanın LinkId 'sini taşır. Kaynak IP adresi ve LinkId birleşimi, hizmet sağlayıcılarının tüketicilerini benzersiz bir şekilde belirlemesine yardımcı olabilir. Proxy protokolü hakkında daha fazla bilgi için buraya gidin. 
+Özel bağlantı hizmeti kullanılırken, Özel uç noktadan gelen paketlerin kaynak IP adresi, hizmet sağlayıcısı tarafında, sağlayıcının sanal ağından ayrılan NAT IP 'si kullanılarak ağ adresi çevirisi (NAT) olur. Bu nedenle, uygulamalar hizmet tüketicilerinin gerçek kaynak IP adresi yerine ayrılmış NAT IP adresini alır. Uygulamanızın Tüketici tarafında gerçek kaynak IP adresi gerekiyorsa, hizmetinize proxy protokolünü etkinleştirebilir ve proxy protokolü başlığından bilgileri alabilirsiniz. Kaynak IP adresine ek olarak, proxy protokol üstbilgisi de özel uç noktanın LinkId 'sini taşır. Kaynak IP adresi ve LinkId birleşimi, hizmet sağlayıcılarının tüketicilerini benzersiz bir şekilde belirlemesine yardımcı olabilir. Proxy protokolü hakkında daha fazla bilgi için [buraya](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)gidin. 
 
 Bu bilgiler, özel bir tür uzunluğu-değer (TLV) vektörü kullanılarak aşağıdaki şekilde kodlanır:
 

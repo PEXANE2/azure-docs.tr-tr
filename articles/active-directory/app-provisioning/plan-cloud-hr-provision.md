@@ -6,18 +6,18 @@ author: martincoetzer
 manager: CelesteDG
 tags: azuread
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 10bd6f1f8582ba048a3f77ff329d90f1b4463675
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066427"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522441"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -53,7 +53,7 @@ Azure AD Kullanıcı sağlama ile bulut HR uygulaması tümleştirmesi ideal ola
 - Yalnızca bulut HR uygulamasında algılanan değişiklik bilgilerini temel alan bir veya daha fazla Active Directory ormanlara, etki alanına ve OU 'Lara katılmayı zorunlu kılın.
 - E-posta için Office 365 kullanın.
 
-## <a name="learn"></a>Öğrenin
+## <a name="learn"></a>Bilgi edinin
 
 Kullanıcı hazırlama devam eden kimlik yönetimi için bir temel oluşturur. Yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
@@ -257,7 +257,7 @@ Varsayılan olarak, sağlama bağlayıcı uygulaması, Kullanıcı hesabının e
 
 Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| İşleme | Gereksinimler |
+| Process | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Kimlik yaşam döngüsü perspektifinden, yeniden oluşturma işlemlerinin nasıl yapılacağını nasıl işleyeceğinizi? Eski çalışan kimliklerini saklayın mi? |
 | | Gelecekteki ilerletlerinizi mi işletin, yoksa Active Directory hesapları mı oluşturdunuz? Bu hesaplar etkin veya devre dışı durumda mı oluşturulmuş? |
@@ -276,7 +276,7 @@ Her bir bulut HR uygulaması, eşlemeleri Active Directory için varsayılan bul
 
 Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| İşleme | Gereksinimler |
+| Process | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Active Directory hesabı oluşturma işlemi el ile, otomatikleştirilmiş veya kısmen otomatikleştirilebilir mi? |
 | | Bulut HR uygulamasından Active Directory 'e özel öznitelikler yaymaya planlansın mı? |

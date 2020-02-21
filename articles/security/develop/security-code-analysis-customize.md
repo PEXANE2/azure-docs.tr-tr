@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Güvenlik kodu analiz görevi Özelleştirme Kılavuzu
+title: Microsoft Güvenlik kodu analiz görevlerini özelleştirme
+titleSuffix: Azure
 description: Bu makalede, Microsoft Güvenlik kodu analiz uzantısı 'ndaki görevlerin özelleştirilmesi açıklanmaktadır
 author: vharindra
 manager: sukhans
@@ -12,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851545"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499998"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Derleme görevlerini yapılandırma ve özelleştirme
 
@@ -89,7 +90,7 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 
 ![Kimlik bilgisi tarayıcısı derleme görevini yapılandırma](./media/security-tools/3-taskdetails.png)
 
-Mevcut seçenekler şunlardır:
+Kullanılabilir seçenekler şunlardır:
 
   - **Çıktı biçimi**: mevcut değerler **TSV**, **CSV**, **Sarif**ve **PREfast**' i içerir.
   - **Araç sürümü**: **en son**' u seçmenizi öneririz.
@@ -146,7 +147,7 @@ Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen 
 
 Görev yapılandırmasının ayrıntıları aşağıdaki listede ve notta gösterilmiştir.
 
-Mevcut seçenekler şunlardır:
+Kullanılabilir seçenekler şunlardır:
 
 - **RuleSet**: değerler **SDL gerekir**, **SDL önerilir**veya kendi özel kural kümesidir.
 - **Çözümleyiciler sürümü**: **en son**' u seçmenizi öneririz.
