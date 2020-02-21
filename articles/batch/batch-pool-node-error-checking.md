@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449779"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484137"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -104,7 +104,7 @@ Batch, nedeni tespit edebilir, düğüm [hataları](https://docs.microsoft.com/r
 
 - Bir altyapı arızası veya alt düzey yükseltme nedeniyle VM taşınır. Batch, düğümü kurtarır.
 
-- Bir VM görüntüsü onu desteklemeyen bir donanımda dağıtıldı. Örneğin, bir [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM 'de CENTOS HPC görüntüsü çalıştırmaya çalışılıyor.
+- Bir VM görüntüsü onu desteklemeyen bir donanımda dağıtıldı. Örneğin, bir [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) VM 'de CENTOS HPC görüntüsü çalıştırmaya çalışılıyor.
 
 - VM 'Ler bir [Azure sanal ağında](batch-virtual-network.md)ve trafik anahtar bağlantı noktalarına engellenmiştir.
 

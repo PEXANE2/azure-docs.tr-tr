@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120887"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526238"
 ---
 # <a name="classroom-labs-concepts"></a>Sınıf Laboratuvarları kavramları
 
@@ -32,7 +32,13 @@ Kota, bir öğrencinin bir laboratuvar VM 'si kullanabilmesi için bir öğretme
 
 ## <a name="schedules"></a>Zamanlamalar
 
-Zamanlamalar, bir öğretmenin sınıf için oluşturabileceğiniz zaman yuvaları (bir kerelik veya yinelenen). Laboratuvardaki tüm sanal makineler, zamanlamanın başlangıcında otomatik olarak başlatılır ve zamanlamanın sonunda durdurulur. Bir zamanlama çalışırken kota saatleri kullanılmaz.
+Zamanlamalar, bir öğretmenin sınıf için oluşturabileceğiniz zaman yuvaları, bu nedenle öğrenci VM 'lerinin sınıf zamanı için kullanılabilir olmasını sağlayabilir.  Zamanlamalar bir kerelik veya yinelenen olabilir.  Bir zamanlama çalışırken kota saatleri kullanılmaz.
+
+Üç tür zamanlama vardır: Standart, yalnızca Başlat ve yalnızca durdur.
+
+- **Standart**.  Bu zamanlama, belirtilen başlangıç zamanında tüm öğrenci sanal makinelerini başlatacak ve belirtilen durdurma tarihinde tüm öğrenci sanal makinelerini kapatacaktır.
+- **Yalnızca Başlat**.   Bu zamanlama, tüm öğrenci sanal makinelerini belirtilen zamanda başlatacak.  Öğrenci VM 'Leri Azure Lab Services portalından veya yalnızca durdur zamanlaması oluştuktan sonra durduruluncaya kadar öğrenci VM 'Leri durdurulmaz.
+- **Yalnızca durdur**.  Bu zamanlama, belirtilen zamanda tüm öğrenci sanal makinelerini durdurur.  
 
 ## <a name="template-virtual-machine"></a>Şablon sanal makinesi
 

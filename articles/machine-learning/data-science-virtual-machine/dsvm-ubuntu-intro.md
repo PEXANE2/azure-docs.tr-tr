@@ -1,5 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Ubuntu DSVM oluşturma'
+title: 'Hızlı başlangıç: Ubuntu Veri Bilimi Sanal Makinesi oluşturma'
+titleSuffix: Azure Data Science Virtual Machine
 description: Analiz ve makine öğrenimi yapmak için bir Linux (Ubuntu) Veri Bilimi Sanal Makinesi yapılandırın ve oluşturun.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,18 +8,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612096"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526119"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
 Ubuntu 18,04 Veri Bilimi Sanal Makinesi ile çalışmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğinizin olması gerekir. [Azure 'ı ücretsiz deneyin](https://azure.com/free).
 Lütfen Azure Ücretsiz hesapları GPU etkin sanal makine SKU 'Larını desteklemez.
@@ -36,7 +37,7 @@ Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımla
    
 1. Sihirbazın her adımını yapılandırmak için aşağıdaki bilgileri girin:
 
-    1. **Temel**:
+    1. **Temel bilgiler**:
     
        * **Abonelik**: birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
        * **Kaynak grubu**: yeni bir grup oluşturun veya var olan bir grubu kullanın.
@@ -75,7 +76,7 @@ Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücrets
 
 ### <a name="ssh"></a>SSH
 
-VM oluşturulduktan sonra SSH erişimiyle yapılandırıldıysa, SSH kullanarak oturum açabilirsiniz. Oluşturduğunuz hesabı kimlik bilgilerini kullan **Temelleri** bölümünde metin kabuk arabirimi için adım 3. Windows üzerinde [Putty](https://www.putty.org)gıbı bir SSH istemci aracını indirebilirsiniz. Grafik Masaüstü (X pencere sistemi) tercih ediyorsanız, PuTTY üzerinde X11 iletmeyi kullanabilirsiniz.
+VM oluşturulduktan sonra SSH erişimiyle yapılandırıldıysa, SSH kullanarak oturum açabilirsiniz. Metin kabuğu arabirimi için adım 3 ' ün **temel kavramlar** bölümünde oluşturduğunuz hesap kimlik bilgilerini kullanın. Windows üzerinde [Putty](https://www.putty.org)gıbı bir SSH istemci aracını indirebilirsiniz. Grafik Masaüstü (X pencere sistemi) tercih ediyorsanız, PuTTY üzerinde X11 iletmeyi kullanabilirsiniz.
 
 > [!NOTE]
 > X2Go istemci testinde iletme X11 daha iyi gerçekleştirdi. X2Go istemci masaüstü bir grafik arabirim için kullanmanızı öneririz.
@@ -84,7 +85,7 @@ VM oluşturulduktan sonra SSH erişimiyle yapılandırıldıysa, SSH kullanarak 
 
 Linux VM, X2Go Server ile zaten sağlanmış ve istemci bağlantılarını kabul etmeye hazır. Linux VM grafik masaüstüne bağlanmak için istemcinizi aşağıdaki yordamı tamamlayın:
 
-1. İstemci platformunuza yönelik X2Go istemcisini indirme ve yükleme [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. İstemci platformunuz için X2Go istemcisini [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)adresinden indirin ve yükleyin.
 1. Yeni oluşturduğunuz sanal makineyi açarak Azure portal bulabileceğiniz sanal makinenin genel IP adresini unutmayın.
 
    ![Ubuntu makinesi IP adresi](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
@@ -92,13 +93,13 @@ Linux VM, X2Go Server ile zaten sağlanmış ve istemci bağlantılarını kabul
 1. X2Go istemcisini çalıştırın. "Yeni oturum" penceresi otomatik olarak açılamaz, oturum > yeni oturum ' a gidin.
 
 1. Elde edilen yapılandırma penceresinde aşağıdaki yapılandırma parametrelerini girin:
-   * **Oturum sekmesini**:
+   * **Oturum sekmesi**:
      * **Konak**: daha önce bir DEĞIŞIKLIK yaptığınız sanal makinenizin IP adresini girin.
      * **Oturum aç**: Linux VM 'de Kullanıcı adını girin.
-     * **SSH bağlantı noktası**: 22, varsayılan değeri bırakın.
-     * **Oturum türü**: değere değiştirin **XFCE**. Şu anda, Linux VM yalnızca XFCE masaüstünü destekler.
-   * **Ortam sekmesini**: ses desteği ve bunları kullanmak gerekmiyorsa Yazdırma İstemcisi kapat.
-   * **Paylaşılan Klasörler**: Linux VM'de bağlı istemci makinelerden dizinleri istiyorsanız, bu sekmedeki VM ile paylaşmak istediğiniz istemci makine dizinlerine ekleyin.
+     * **SSH bağlantı noktası**: 22 ' de varsayılan değer olarak bırakın.
+     * **Oturum türü**: değeri **Xfce**olarak değiştirin. Şu anda, Linux VM yalnızca XFCE masaüstünü destekler.
+   * **Medya sekmesi**: kullanmaya gerek duymuyorsanız, ses desteğini kapatabilir ve istemci yazdırmayı devre dışı bırakabilirsiniz.
+   * **Paylaşılan klasörler**: istemci makinelerinizdeki DIZINLERIN Linux sanal makinesine bağlanmasını istiyorsanız, bu sekmede VM ile paylaşmak istediğiniz istemci makine dizinlerini ekleyin.
 
    ![X2go yapılandırması](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. **Tamam**’ı seçin.
@@ -137,6 +138,6 @@ c.Spawner.default_url = '/lab'
 
 * [Linux için veri bilimi sanal makinesi veri bilimi](linux-dsvm-walkthrough.md) izlenecek yol, burada sağlanan Linux dsvm ile birkaç ortak veri bilimi görevinin nasıl yapılacağını gösterir. 
 * Bu makalede açıklanan araçları deneyerek DSVM 'deki çeşitli veri bilimi araçlarını inceleyin. Ayrıca, VM 'de yüklü araçlar hakkında daha fazla bilgi için temel bir giriş ve işaretçiler için sanal makine içinde kabukta `dsvm-more-info` de çalıştırabilirsiniz.  
-* Sistematik olarak kullanarak uçtan uca analitik çözümler oluşturmayı öğrenin [Team Data Science Process](https://aka.ms/tdsp).
-* Ziyaret [Azure AI Gallery](https://gallery.azure.ai/) Azure yapay ZEKA hizmetlerini kullanma makine öğrenimi ve veri analizi örnekleri için.
+* [Team Data Science işlemini](https://aka.ms/tdsp)kullanarak, sistematik olarak uçtan uca analitik çözümler oluşturmayı öğrenin.
+* Machine Learning ve Azure AI Hizmetleri 'ni kullanan veri analizi örnekleri için [Azure yapay zeka Galerisi](https://gallery.azure.ai/) ziyaret edin.
 * Bu sanal makine için uygun [başvuru belgelerine](./reference-ubuntu-vm.md) bakın.

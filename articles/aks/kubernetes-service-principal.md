@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867160"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524248"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
@@ -70,7 +70,10 @@ az aks create \
     --client-secret <password>
 ```
 
-Azure portalı kullanarak bir AKS kümesi dağıtırsanız, **Kubernetes kümesi oluştur** iletişim kutusunun *Kimlik doğrulaması* sayfasında **Hizmet sorumlusu yapılandır**’ı seçin. **Var olanı kullan**’ı seçin ve aşağıdaki değerleri belirtin:
+> [!NOTE]
+> Özelleştirilmiş gizli dizi var olan bir hizmet sorumlusunu kullanıyorsanız, gizliliğin 190 bayttan daha uzun olmadığından emin olun.
+
+Azure portalı kullanarak bir AKS kümesi dağıtırsanız, *Kubernetes kümesi oluştur* iletişim kutusunun **Kimlik doğrulaması** sayfasında **Hizmet sorumlusu yapılandır**’ı seçin. **Var olanı kullan**’ı seçin ve aşağıdaki değerleri belirtin:
 
 - **Hizmet sorumlusu istemci kimliği**, *appId*’nizdir
 - **Hizmet sorumlusu istemci parolası**, *parola* değeridir
@@ -91,11 +94,11 @@ Bir kaynağın `--scope`, */subscriptions/\<guıd\>/resourceGroups/myResourceGro
 
 Aşağıdaki bölümlerde, yapmanız gerekebilecek ortak temsilciler ayrıntılandırır.
 
-### <a name="azure-container-registry"></a>Azure Container Registry
+### <a name="azure-container-registry"></a>Azure Container Kayıt Defteri
 
 Kapsayıcı görüntü depolukça Azure Container Registry (ACR) kullanıyorsanız, görüntüleri okumak ve çekmek için AKS kümenizin hizmet sorumlusu için izinler vermeniz gerekir. Şu anda önerilen yapılandırma, [az aks Create][az-aks-create] veya [az aks Update][az-aks-update] komutunu bir kayıt defteriyle tümleştirilecek ve hizmet sorumlusu için uygun rolü atayacak şekilde kullanmaktır. Ayrıntılı adımlar için bkz. [Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması][aks-to-acr].
 
-### <a name="networking"></a>Networking (Ağ İletişimi)
+### <a name="networking"></a>Ağ
 
 Sanal ağ ve alt ağ ya da genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanabilirsiniz. Aşağıdaki rol izinleri kümesinden birini atayın:
 

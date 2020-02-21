@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 02/19/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1489ce6bee2ce25ffb268ef20cc8fa587664619
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848934"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483287"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Microsoft hesabı oturum açma ayarlama
 
@@ -24,16 +24,16 @@ ms.locfileid: "76848934"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak kullanıcıların Microsoft hesabı oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - Zaten bir Microsoft hesabı yoksa, [https://www.live.com/](https://www.live.com/)bir tane oluşturun.
 
-## <a name="add-an-application"></a>Uygulama ekleme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Microsoft hesabı kullanıcıların oturum açma özelliğini etkinleştirmek için Azure AD kiracısı içinde bir uygulamayı kaydetmeniz gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -47,11 +47,24 @@ Microsoft hesabı kullanıcıların oturum açma özelliğini etkinleştirmek i�
 1. Gizli anahtar için bir **Açıklama** girin, örneğin *MSA uygulama istemci parolası*ve ardından **Ekle**' ye tıklayın.
 1. **Değer** sütununda gösterilen uygulama parolasını kaydedin. Sonraki bölümde bu değeri kullanırsınız.
 
+## <a name="configuring-optional-claims"></a>İsteğe bağlı talepler yapılandırılıyor
+
+Azure AD 'den `family_name` ve `given_name` taleplerini almak istiyorsanız, Azure portal Kullanıcı arabirimi veya uygulama bildiriminde uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure AD uygulamanıza isteğe bağlı talepler sağlama](../active-directory/develop/active-directory-optional-claims.md).
+
+1. [Azure Portal](https://portal.azure.com) oturum açın. Arama yapın ve **Azure Active Directory**seçin.
+1. **Yönet** bölümünden **uygulama kayıtları**' yi seçin.
+1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
+1. **Yönet** bölümünde **belirteç yapılandırması (Önizleme)** öğesini seçin.
+1. **İsteğe bağlı talep Ekle**' yi seçin.
+1. Yapılandırmak istediğiniz belirteç türünü seçin.
+1. Eklenecek isteğe bağlı talepler ' i seçin.
+1. **Ekle**'ye tıklayın.
+
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
 Uygulamayı Azure AD kiracınızda oluşturduğunuza göre, bu uygulamanın istemci gizliliğini Azure AD B2C kiracınızda depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -60,7 +73,7 @@ Uygulamayı Azure AD kiracınızda oluşturduğunuza göre, bu uygulamanın iste
 1. İlke anahtarı için bir **ad** girin. Örneğin, `MSASecret`. `B2C_1A_` ön eki, anahtarınızın adına otomatik olarak eklenir.
 1. **Gizli**dizi ' da, önceki bölümde kaydettiğiniz istemci gizli anahtarını girin.
 1. **Anahtar kullanımı**için `Signature`' yi seçin.
-1. **Oluştur**’ tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -94,10 +107,12 @@ Azure AD 'yi, ilkenizin uzantı dosyasına **ClaimsProvider** öğesini ekleyere
             <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
             <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>

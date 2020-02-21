@@ -1,6 +1,6 @@
 ---
 title: Azure MFA 'yı nasıl Azure Active Directory?
-description: Azure Multi-Factor Authentication, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya da yardımcı olur.
+description: Azure Multi-Factor Authentication, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimin korunmasına yardımcı olur.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848689"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484069"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Nasıl kullanılır: Azure Multi-Factor Authentication
 
@@ -32,15 +32,15 @@ Kavramsal kimlik doğrulama yöntemleri görüntüsünü ![](./media/concept-mfa
 
 Azure Multi-Factor Authentication (MFA), kullanıcılar için basitlik sağlarken veri ve uygulamalara erişimin korunmasına yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay [kimlik doğrulama yöntemi](concept-authentication-methods.md)aracılığıyla güçlü kimlik doğrulaması sunar. Kullanıcılar, bir yöneticinin yaptığı yapılandırma kararlarından dolayı MFA 'ya yönelik olarak istenebilir veya olmayabilir.
 
-## <a name="how-to-get-multi-factor-authentication"></a>Multi-Factor Authentication’ı nasıl edinebilirim?
+## <a name="how-to-get-multi-factor-authentication"></a>Multi-Factor Authentication nasıl alınır?
 
-Multi-Factor Authentication aşağıdaki tekliflerin bir parçası olarak gelir:
+Multi-Factor Authentication, aşağıdaki tekliflerin bir parçası olarak gelir:
 
 * **Azure Active Directory Premium** veya **Microsoft 365 iş** -çok faktörlü kimlik doğrulaması gerektiren koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication 'ın tam özellikli kullanımı.
 
-* **Azure AD ücretsiz** veya tek başına **Office 365** lisansları-kullanıcılarınız ve yöneticileriniz için çok faktörlü kimlik doğrulaması gerektirmek üzere önceden oluşturulmuş [koşullu erişim temel koruma ilkelerini](../conditional-access/concept-baseline-protection.md) kullanın.
+* **Azure AD ücretsiz** veya tek başına **Office 365** lisansları-kullanıcılarınız ve yöneticileriniz için çok faktörlü kimlik doğrulaması gerektiren [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) kullanın.
 
-* **Azure Active Directory Genel Yöneticileri** - Genel yönetici hesaplarını korumanın bir yolu olarak Azure Multi-Factor Authentication özelliklerinin bir alt kümesi kullanılabilir.
+* **Azure Active Directory genel Yöneticiler** -küresel yönetici hesaplarını korumanın bir yolu olarak Azure Multi-Factor Authentication özellikleri 'nin bir alt kümesi sunulmaktadır.
 
 > [!NOTE]
 > Yeni müşteriler artık 1 Eylül 2018 ' de geçerli olan tek başına bir teklif olarak Azure Multi-Factor Authentication satın alabilirler. Multi-Factor Authentication, Azure AD Premium lisanlarında kullanılabilir bir özellik olmaya devam edecektir.

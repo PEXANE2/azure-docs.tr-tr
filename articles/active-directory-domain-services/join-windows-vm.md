@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40a3b1352c383b8b70a0b14f59265188b77a86d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474702"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523694"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Öğretici: Windows Server sanal makinesini yönetilen bir etki alanına ekleme
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Windows Server VM oluşturma
-> * Windows Server VM 'ye bir Azure sanal ağına bağlanma
+> * Windows Server VM 'sini bir Azure sanal ağına bağlama
 > * VM 'yi Azure AD DS yönetilen etki alanına katma
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
@@ -41,6 +41,8 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız va
     * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
     * Hesabın Azure AD DS yönetilen etki alanında oturum açabilmeleri için Azure AD Connect Parola karması eşitlemesi veya self servis parola sıfırlamasının gerçekleştirildiğinden emin olun.
+* Azure AD DS sanal ağınıza dağıtılan bir Azure savunma ana bilgisayarı.
+    * Gerekirse, [bir Azure savunma ana bilgisayarı oluşturun][azure-bastion].
 
 Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'Yi Azure AD DS yönetilen etki alanına katmak](#join-the-vm-to-the-azure-ad-ds-managed-domain)için bölümüne atlayın.
 
@@ -70,13 +72,13 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'Yi Azure AD DS yönet
     | Kullanıcı adı             | VM üzerinde oluşturulacak yerel yönetici hesabı için bir Kullanıcı adı girin; Örneğin, *azureuser* . |
     | Parola             | Yerel yönetici için VM 'de oluşturulacak güvenli bir parola girin ve ardından onaylayın. Bir etki alanı kullanıcı hesabının kimlik bilgilerini belirtmeyin. |
 
-1. Varsayılan olarak, Azure 'da oluşturulan sanal makinelere Internet 'ten erişilemez. Bu yapılandırma, sanal makinenin güvenliğini artırmaya yardımcı olur ve olası saldırı için alanı azaltır. Bu öğreticinin bir sonraki adımında, Uzak Masaüstü Protokolü (RDP) kullanarak VM 'ye bağlanmanız ve sonra Windows Server 'ı Azure AD DS yönetilen etki alanına eklemeniz gerekir.
+1. Varsayılan olarak, Azure 'da oluşturulan VM 'Ler, RDP kullanarak Internet 'ten erişilebilir. RDP etkinleştirildiğinde otomatik oturum açma saldırılarına neden olmuş olabilir. Bu, birden çok başarısız oturum açma denemesi nedeniyle *yönetici* veya *yönetici* gibi ortak adlara sahip hesapları devre dışı bırakabilen bir durum olabilir.
 
-    RDP etkinleştirildiğinde otomatik oturum açma saldırılarına neden olmuş olabilir. Bu, birden çok başarısız oturum açma denemesi nedeniyle *yönetici* veya *yönetici* gibi ortak adlara sahip hesapları devre dışı bırakabilen bir durum olabilir. RDP yalnızca gerektiğinde etkinleştirilmelidir ve bir yetkili IP aralığı kümesiyle sınırlıdır. Azure Güvenlik Merkezi 'nin bir parçası olarak [Azure tam ZAMANıNDA VM erişimi][jit-access] , bu kısa süreli, kısıtlı RDP oturumlarını etkinleştirebilir. Yalnızca SSL üzerinden Azure portal erişim sağlamak için [bir Azure savunma ana bilgisayarı oluşturup kullanabilirsiniz (Şu anda önizleme aşamasında)][azure-bastion] .
+    RDP yalnızca gerektiğinde etkinleştirilmelidir ve bir yetkili IP aralığı kümesiyle sınırlıdır. Bu yapılandırma, sanal makinenin güvenliğini artırmaya yardımcı olur ve olası saldırı için alanı azaltır. Veya, yalnızca SSL üzerinden Azure portal erişim sağlayan bir Azure savunma ana bilgisayarı oluşturup kullanın. Bu öğreticinin bir sonraki adımında, sanal makineye güvenli bir şekilde bağlanmak için bir Azure savunma ana bilgisayarı kullanırsınız.
 
-    Bu öğreticide, VM 'ye yönelik RDP bağlantılarını el ile etkinleştirin.
+    Şimdilik, VM 'ye doğrudan RDP bağlantılarını devre dışı bırakın.
 
-    **Ortak gelen bağlantı noktaları**altında, **Seçili bağlantı noktalarına izin verme**seçeneğini belirleyin. **Gelen bağlantı noktaları Seç**açılan menüsünde, *RDP (3389)* öğesini seçin.
+    **Ortak gelen bağlantı noktaları**altında *hiçbiri*' ni seçin.
 
 1. İşiniz bittiğinde **İleri: diskler**' i seçin.
 1. **Işletim sistemi diski türünün**açılan menüsünde *Standart SSD*' yi seçin ve ardından İleri ' yi seçin **: ağ**.
@@ -120,20 +122,23 @@ VM 'nin oluşturulması birkaç dakika sürer. Azure portal dağıtımın durumu
 
 ## <a name="connect-to-the-windows-server-vm"></a>Windows Server VM 'ye bağlanma
 
-Şimdi, RDP kullanarak yeni oluşturulan Windows Server VM 'sine bağlanalım ve Azure AD DS yönetilen etki alanına katılamadı. VM, önceki adımda oluşturulduğunda belirttiğiniz yerel yönetici kimlik bilgilerini, mevcut etki alanı kimlik bilgilerinin hiçbirini değil kullanın.
+Sanal makinelerinize güvenli bir şekilde bağlanmak için bir Azure savunma Konağı kullanın. Azure savunma sayesinde, yönetilen bir konak sanal ağınıza dağıtılır ve VM 'lere Web tabanlı RDP veya SSH bağlantıları sağlar. VM 'Ler için genel IP adresi gerekmez ve dış uzak trafik için ağ güvenlik grubu kuralları açmanız gerekmez. Web tarayıcınızdan Azure portal kullanarak VM 'lere bağlanırsınız.
 
-1. **Genel bakış** bölmesinde **Bağlan**' ı seçin.
+Sanal makinenize bağlanmak için bir savunma ana bilgisayarı kullanmak üzere aşağıdaki adımları izleyin:
 
-    ![Azure portal Windows sanal makinesine bağlanma](./media/join-windows-vm/connect-to-vm.png)
+1. VM 'nizin **genel bakış** bölmesinde **Bağlan** **' ı ve sonra da**' yi seçin.
 
-1. *RDP dosyasını indirme*seçeneğini belirleyin. Bu RDP dosyasını Web tarayıcınıza kaydedin.
-1. VM'nize bağlanmak için indirilen RDP dosyasını açın. İstendiğinde **Bağlan**’ı seçin.
-1. VM oluşturmak için önceki adımda girdiğiniz yerel yönetici kimlik bilgilerini girin, örneğin *localhost\azureuser* .
-1. Oturum açma işlemi sırasında bir sertifika uyarısı görürseniz, **Evet** ' i seçin veya bağlanmaya **devam edin** .
+    ![Azure portal kullanarak Windows sanal makinesine bağlanma](./media/join-windows-vm/connect-to-vm.png)
+
+1. VM 'niz için önceki bölümde belirttiğiniz kimlik bilgilerini girin ve ardından **Bağlan**' ı seçin.
+
+   ![Azure portal savunma ana bilgisayarıyla bağlantı](./media/join-windows-vm/connect-to-bastion.png)
+
+Gerekirse, Web tarayıcınızın görüntülenecek savunma bağlantısı için açılır pencereleri açmasına izin verin. VM 'nize bağlantı kurmak birkaç saniye sürer.
 
 ## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>VM 'yi Azure AD DS yönetilen etki alanına katma
 
-Oluşturulan VM ve bir RDP bağlantısı kurmak için Windows Server sanal makinesini Azure AD DS yönetilen etki alanına katalım. Bu işlem, düzenli bir şirket içi Active Directory Domain Services etki alanına bağlanan bir bilgisayarla aynıdır.
+Oluşturulan VM ve Azure savunma kullanılarak oluşturulan Web tabanlı bir RDP bağlantısı ile Windows Server sanal makinesini Azure AD DS yönetilen etki alanına katalım. Bu işlem, düzenli bir şirket içi Active Directory Domain Services etki alanına bağlanan bir bilgisayarla aynıdır.
 
 1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi**öğesini seçin.
 1. **Sunucu Yöneticisi** penceresinin sol bölmesinde **yerel sunucu**' yı seçin. Sağ bölmedeki **Özellikler** altında **çalışma grubu**' nu seçin.
@@ -174,22 +179,13 @@ Windows Server VM yeniden başlatıldıktan sonra, Azure AD DS yönetilen etki a
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Sonraki öğreticide, Azure AD DS yönetilen etki alanını yönetmenize olanak sağlayan yönetim araçlarını yüklemek için bu Windows Server VM 'sini kullanırsınız. Bu öğretici serisinde devam etmek istemiyorsanız, [RDP 'yi devre dışı bırakmak](#disable-rdp) veya [VM 'yi silmek](#delete-the-vm)için aşağıdaki Temizleme adımlarını gözden geçirin. Aksi takdirde, [sonraki öğreticiye geçin](#next-steps).
+Sonraki öğreticide, Azure AD DS yönetilen etki alanını yönetmenize olanak sağlayan yönetim araçlarını yüklemek için bu Windows Server VM 'sini kullanırsınız. Bu öğretici serisinde devam etmek istemiyorsanız, [VM 'yi silmek](#delete-the-vm)için aşağıdaki Temizleme adımlarını gözden geçirin. Aksi takdirde, [sonraki öğreticiye geçin](#next-steps).
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Azure AD DS yönetilen etki alanından VM 'yi kaldırın
 
 VM 'yi Azure AD DS yönetilen etki alanından kaldırmak için, [sanal makineyi bir etki alanına katmak](#join-the-vm-to-the-azure-ad-ds-managed-domain)üzere adımları yeniden izleyin. Azure AD DS yönetilen etki alanına katılmak yerine, varsayılan *çalışma grubu*gibi bir çalışma grubuna katılmayı seçin. VM yeniden başlatıldıktan sonra, bilgisayar nesnesi Azure AD DS yönetilen etki alanından kaldırılır.
 
 VM 'yi etki alanından çıkmadan [silerseniz](#delete-the-vm) , yalnız bırakılmış bir bilgisayar nesnesi Azure AD DS ' de bırakılır.
-
-### <a name="disable-rdp"></a>RDP 'yi devre dışı bırak
-
-Kendi uygulamalarınızı veya iş yüklerinizi çalıştırmak için bu öğreticide oluşturulan Windows Server VM 'sini kullanmaya devam ederseniz, RDP 'nin Internet üzerinden açık olduğunu hatırlayın. Güvenliği geliştirmek ve saldırı riskini azaltmak için, RDP 'nin Internet üzerinden devre dışı bırakılması gerekir. Internet üzerinden Windows Server VM 'sine RDP 'yi devre dışı bırakmak için aşağıdaki adımları izleyin:
-
-1. Sol taraftaki menüden **kaynak grupları** ' nı seçin.
-1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin.
-1. VM 'nizi ( *Myvm*gibi) seçip *ağ*' ı seçin.
-1. Ağ güvenlik grubu için **gelen ağ güvenlik kuralları** altında, RDP 'ye izin veren kuralı seçin ve **Sil**' i seçin. Gelen güvenlik kuralının kaldırılması birkaç saniye sürer.
 
 ### <a name="delete-the-vm"></a>VM’yi silin
 
@@ -249,6 +245,5 @@ Azure AD DS yönetilen etki alanınızı yönetmek için Active Directory Yönet
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: active-directory-ds-getting-started-password-sync.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

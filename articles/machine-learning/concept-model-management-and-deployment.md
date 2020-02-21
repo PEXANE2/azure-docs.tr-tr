@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122347"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486385"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -89,7 +89,7 @@ Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. �
 
 Görüntü oluşturulduğunda, Azure Machine Learning için gereken bileşenler de eklenir. Örneğin, Web hizmetini çalıştırmak ve IoT Edge etkileşimde bulunmak için gereken varlıklar.
 
-#### <a name="batch-scoring"></a>Toplu İşlem puanlama
+#### <a name="batch-scoring"></a>Batch puanlama
 Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](how-to-use-parallel-run-step.md).
 
 #### <a name="real-time-web-services"></a>Gerçek zamanlı Web Hizmetleri
@@ -120,7 +120,7 @@ Microsoft Power BI, veri analizi için makine öğrenimi modellerinin kullanılm
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Uçtan uca ML yaşam döngüsünü yakalamak için gereken idare verilerini yakalayın
 
-Azure ML, tüm ML varlıklarınızın uçtan uca denetim izlerini izleme olanağı sunar. Bu avantajlar şunlardır:
+Azure ML, tüm ML varlıklarınızın uçtan uca denetim izlerini izleme olanağı sunar. Daha ayrıntılı şekilde belirtmek gerekirse:
 
 - Azure ML, kodunuzun hangi depoya/dala/yürütmeye geldiğini izlemek için [Git ile tümleşir](how-to-set-up-training-targets.md#gitintegration) .
 - [Azure ML veri kümeleri](how-to-create-register-datasets.md) , verileri izlemenize, profillerinize ve sürümetmenize yardımcı olur. 
@@ -138,6 +138,19 @@ Azure ML, ML yaşam döngüsünün olaylarını bilgilendirmek ve otomatikleşti
 Bu bilgiler, modelinizin nasıl kullanıldığını anlamanıza yardımcı olur. Toplanan giriş verileri, modelin gelecek sürümlerini eğitmek için de yararlı olabilir.
 
 Daha fazla bilgi için bkz. [model veri toplamayı etkinleştirme](how-to-enable-data-collection.md).
+
+## <a name="retrain-your-model-on-new-data"></a>Yeni verilerde modelinize yeniden eğitme
+
+Genellikle, yeni bilgi aldığınızda modelinizi güncelleştirmek veya sıfırdan yeniden eğmeniz gerekecektir. Bazen, yeni veri alma, etki alanının beklenen bir parçasıdır. Diğer zamanlarda, [veri kümelerinde verileri algılama (Önizleme)](how-to-monitor-datasets.md)bölümünde açıklandığı gibi, model performansı, belirli bir sensörde değişiklik gibi doğal veri değişiklikleri, mevsimsel efektler gibi doğal veri değişiklikleri veya diğer özelliklerle ilişkili olarak değişen özellikler gibi, bu tür şeyler üzerinde azalabilir. 
+
+"Nasıl yaparım? yeniden eğitmem gerekip gerekmediğini bilmeniz" için evrensel yanıt yok mu? " Ancak daha önce tartışılan Azure ML olayı ve izleme araçları, otomasyon için iyi başlangıç noktalarıdır. Yeniden eğitmeye karar verdikten sonra şunları yapmalısınız: 
+
+- Yinelenebilir, otomatikleştirilmiş bir işlem kullanarak verilerinizi ön işleme
+- Yeni modelinizi eğitme
+- Yeni modelinizin çıkışlarını eski modelinizle karşılaştırın
+- Eski modelinizi değiştirip değiştiremeyeceğini seçmek için önceden tanımlı ölçütleri kullanın 
+
+Yukarıdaki adımların bir teması, yeniden eğitimin geçici bir şekilde değil otomatik hale gelmelidir. [Azure Machine Learning işlem hatları](concept-ml-pipelines.md) , veri hazırlama, eğitim, doğrulama ve dağıtımla ilgili iş akışları oluşturmak için iyi bir yanıttır. İşlem hatlarının ve Azure Machine Learning tasarımcısının bir yeniden eğitim senaryosuna nasıl uyduğunu görmek için [Azure Machine Learning Designer ile modelleri yeniden eğitme (Önizleme)](how-to-retrain-designer.md) makalesini okuyun. 
 
 ## <a name="automate-the-ml-lifecycle"></a>ML yaşam döngüsünü otomatikleştirin 
 

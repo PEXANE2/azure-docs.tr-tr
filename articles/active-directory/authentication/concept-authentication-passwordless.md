@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756802"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505760"
 ---
-# <a name="passwordless-authentication-options"></a>Passwordless kimlik doğrulama seçenekleri
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
 Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar genellikle parolalarını anımsamak için gereken ek güvenlik katmanını öğreniyor. Parola kaldırılıp, sizin veya bildiğiniz bir şey ile değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
 
@@ -26,7 +26,7 @@ Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika
 | --- | --- | --- |
 | Parolasız | Windows 10 cihaz, telefon veya güvenlik anahtarı | Biyometrik veya PIN |
 
-Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft üç adet parolasız kimlik doğrulama seçeneği sunar:
+Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft aşağıdaki üç passwordless kimlik doğrulama seçeneği sunar:
 
 - İş İçin Windows Hello
 - Microsoft Authenticator uygulaması
@@ -52,7 +52,7 @@ Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passwor
 
 FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishable standartlara dayalı, passwordless kimlik doğrulama yöntemidir. Hızlı kimlik çevrimiçi (FIDO), passwordless kimlik doğrulaması için açık bir standarttır. FIDO, kullanıcıların ve kuruluşların, bir dış güvenlik anahtarı veya bir cihaza yerleşik bir platform anahtarı kullanarak bir Kullanıcı adı veya parola olmadan kendi kaynaklarında oturum açmasını sağlar.
 
-Çalışanlar, genel önizleme için Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açma almak için güvenlik anahtarlarını kullanabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
+Çalışanlar, genel önizleme için güvenlik anahtarlarını kullanarak Azure AD 'ye veya karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açabilir ve bulutta ve şirket içi kaynaklarda çoklu oturum açma imkanı alabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

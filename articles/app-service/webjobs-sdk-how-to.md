@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549096"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486351"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay odaklı arka plan işleme için Azure Web Işleri SDK 'sını kullanma
 
@@ -277,9 +277,9 @@ static async Task Main()
 
 Bu tetikleyici ve bağlama türleri sürüm 2 ' ye dahildir. `Microsoft.Azure.WebJobs` paketinin *x* 'i:
 
-* Blob depolaması
+* Blob depolama
 * Kuyruk depolama
-* Tablo depolaması
+* Table Storage
 
 Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren NuGet paketini yükleyip `JobHostConfiguration` nesnesinde bir `Use<binding>` yöntemi çağırın. Örneğin, bir Zamanlayıcı tetikleyicisi kullanmak istiyorsanız, aşağıda gösterildiği gibi `Microsoft.Azure.WebJobs.Extensions` yükleyip `Main` yönteminde `UseTimers` çağırın:
 
@@ -295,7 +295,7 @@ static void Main()
 
 Dosya bağlamayı kullanmak için `Microsoft.Azure.WebJobs.Extensions` yükleyip `UseFiles`çağırın.
 
-### <a name="executioncontext"></a>executionContext
+### <a name="executioncontext"></a>ExecutionContext
 
 Web Işleri bir [`ExecutionContext`]bağlamanıza olanak tanır. Bu bağlama ile, [`ExecutionContext`] işlev İmzadaki bir parametre olarak erişebilirsiniz. Örneğin, aşağıdaki kod, belirli bir işlev çağrısı tarafından üretilen tüm günlükleri ilişkilendirmek için kullanabileceğiniz, çağırma KIMLIĞINE erişmek için bağlam nesnesini kullanır.  
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-Daha ayrıntılı bilgi için bkz. [kuyruk depolama bağlama](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) makalesi.
+Daha ayrıntılı bilgi için bkz. [kuyruk depolama bağlama](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties) makalesi.
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [Service Bus bağlama](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) makalesine bakın.
+Daha fazla ayrıntı için [Service Bus bağlama](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings) makalesine bakın.
 
 ### <a name="configuration-for-other-bindings"></a>Diğer bağlamaların yapılandırması
 
@@ -680,11 +680,11 @@ Daha fazla bilgi için bkz. Azure Işlevleri belgelerinde [çalışma zamanında
 
 Azure Işlevleri belgeleri, her bağlama türü hakkında başvuru bilgileri sağlar. Her bağlama başvuru makalesinde aşağıdaki bilgileri bulabilirsiniz. (Bu örnek, depolama kuyruğuna dayalıdır.)
 
-* [Paketler](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Web Işleri SDK projesinde bağlama desteğini dahil etmek için yüklemeniz gereken paket.
-* [Örnekler](../azure-functions/functions-bindings-storage-queue.md#trigger). Kod örnekleri. C# Sınıf kitaplığı örneği, Web İşleri SDK 'sı için geçerlidir. Yalnızca `FunctionName` özniteliğini atlayın.
-* [Öznitelikler](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Bağlama türü için kullanılacak öznitelikler.
-* [Yapılandırma](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Öznitelik özellikleri ve Oluşturucu parametrelerinin açıklamaları.
-* [Kullanım](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Bağlayacağınız türler ve bağlamanın nasıl çalıştığı hakkında bilgi alabilirsiniz. Örneğin: yoklama algoritması, zarar kuyruğu işleme.
+* [Paketler](../azure-functions/functions-bindings-storage-queue.md). Web Işleri SDK projesinde bağlama desteğini dahil etmek için yüklemeniz gereken paket.
+* [Örnekler](../azure-functions/functions-bindings-storage-queue-trigger.md). Kod örnekleri. C# Sınıf kitaplığı örneği, Web İşleri SDK 'sı için geçerlidir. Yalnızca `FunctionName` özniteliğini atlayın.
+* [Öznitelikler](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations). Bağlama türü için kullanılacak öznitelikler.
+* [Yapılandırma](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Öznitelik özellikleri ve Oluşturucu parametrelerinin açıklamaları.
+* [Kullanım](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Bağlayacağınız türler ve bağlamanın nasıl çalıştığı hakkında bilgi alabilirsiniz. Örneğin: yoklama algoritması, zarar kuyruğu işleme.
   
 Bağlama başvuru makalelerinin bir listesi için bkz. Azure Işlevleri için [Tetikleyiciler ve bağlamalar](../azure-functions/functions-triggers-bindings.md#supported-bindings) makalesindeki "desteklenen bağlamalar". Bu listede, HTTP, Web kancaları ve Event Grid bağlamaları yalnızca Azure Işlevleri tarafından desteklenir, Web Işleri SDK 'Sı tarafından desteklenmez.
 
@@ -821,7 +821,7 @@ ASP.NET için geliştirilen günlük çerçevesini öneririz. [Başlarken](webjo
 
 Bir `ILogger` örneği tarafından oluşturulan her günlüğün ilişkili bir `Category` ve `Level`vardır. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) bir numaralandırmadır ve tamsayı kodu göreli önemi gösterir:
 
-|GünlükDüzeyi    |Kodlayın|
+|LogLevel    |Kod|
 |------------|---|
 |İzleme       | 0 |
 |Hata ayıklama       | 1 |
@@ -829,7 +829,7 @@ Bir `ILogger` örneği tarafından oluşturulan her günlüğün ilişkili bir `
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Her kategoriyi bağımsız olarak belirli bir [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)filtreleyebilirsiniz. Örneğin, blob tetikleyicisi işleme için tüm günlükleri görmek isteyebilirsiniz, ancak diğer her şey için yalnızca `Error` ve üzeri.
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444154"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486402"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -112,6 +112,7 @@ Daha fazla bilgi için bkz. [Sanal ağda denemeleri ve çıkarımı çalıştır
 > [!IMPORTANT]
 > Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. Bu, Microsoft 'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft yönetilen ortamlarında ek şifrelemeye izin vermez.
 
+Azure 'da bekleyen şifrelemenin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [rest 'de Azure veri şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 #### <a name="azure-blob-storage"></a>Azure Blob depolama
 
@@ -189,7 +190,9 @@ Azure depolama 'da depolanan her işlem düğümü için işletim sistemi diski,
 
 Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici diski de vardır. İsterseniz eğitim verilerini hazırlamak için diski kullanabilirsiniz. Disk, `hbi_workspace` parametresi `TRUE`olarak ayarlanan çalışma alanları için varsayılan olarak şifrelenir. Bu ortam yalnızca çalıştırma süresince kısa ömürlü ve şifreleme desteği yalnızca sistem tarafından yönetilen anahtarlarla sınırlıdır.
 
-Azure 'da bekleyen şifrelemenin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [rest 'de Azure veri şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks, Azure Machine Learning işlem hatları içinde kullanılabilir. Varsayılan olarak, Azure Databricks tarafından kullanılan Databricks dosya sistemi (DBFS), Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Azure Databricks, müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırmak için, bkz. [varsayılan (root) için müşteri tarafından yönetilen anahtarları yapılandırma](/azure/databricks/security/customer-managed-keys-dbfs).
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188762"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525524"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Kapsayıcı ve veritabanlarına aktarım hızı sağlama
 
@@ -60,11 +60,10 @@ Sağlanan aktarım hızı ile bir veritabanı içinde oluşturulan tüm kapsayı
 
 Mantıksal bir bölümdeki iş yükü, belirli bir mantıksal bölüme ayrılan aktarım hızına göre daha fazla tüketir, işlemlerinizin hızı sınırlıdır. Oran sınırlaması gerçekleştiğinde, veritabanının tamamı için üretilen işi artırabilir veya işlemleri yeniden deneyebilirsiniz. Bölümlendirme hakkında daha fazla bilgi için bkz. [mantıksal bölümler](partition-data.md).
 
-Paylaşılan bir üretilen iş veritabanındaki kapsayıcılar, bu veritabanına ayrılan üretilen işi (RU/s) paylaşır. Paylaşılan bir üretilen iş veritabanında:
+Paylaşılan bir üretilen iş veritabanındaki kapsayıcılar, bu veritabanına ayrılan üretilen işi (RU/s) paylaşır. Veritabanında en az 400 RU/sn olan en fazla dört kapsayıcı olabilir. İlk dördü sonrasında her yeni kapsayıcı, en az 100 RU/s için ek bir değer gerektirir. Örneğin, sekiz kapsayıcı içeren paylaşılan bir işleme veritabanınız varsa, veritabanında en az RU/sn 800 RU/sn olacaktır.
 
-* Veritabanında en az 400 RU/sn olan en fazla dört kapsayıcı olabilir. İlk dördü sonrasında her yeni kapsayıcı, en az 100 RU/s için ek bir değer gerektirir. Örneğin, sekiz kapsayıcı içeren paylaşılan bir işleme veritabanınız varsa, veritabanında en az RU/sn 800 RU/sn olacaktır.
-
-* Veritabanında en fazla 25 kapsayıcı olabilir. Paylaşılan bir üretilen iş veritabanında 25 ' ten fazla kapsayıcınız varsa, kapsayıcı sayısı 25 ' ten küçük olana kadar ek kapsayıcılar oluşturabileceksiniz.
+> [!NOTE]
+> Paylaşılan bir üretilen iş veritabanında, veritabanında en fazla 25 kapsayıcı olabilir. Paylaşılan bir üretilen iş veritabanında 25 ' ten fazla kapsayıcınız varsa, kapsayıcı sayısı 25 ' ten küçük olana kadar ek kapsayıcılar oluşturabileceksiniz.
 
 İş yükleriniz bir veritabanındaki tüm koleksiyonları silmeyi ve yeniden oluşturmayı içeriyorsa, boş veritabanını bırakıp koleksiyon oluşturmadan önce yeni bir veritabanı oluşturmanız önerilir. Aşağıdaki görüntüde bir fiziksel bölümün, bir veritabanı içindeki farklı kapsayıcılara ait bir veya daha fazla mantıksal bölümü nasıl barındıragösterdiği gösterilmektedir:
 

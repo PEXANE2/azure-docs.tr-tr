@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443593"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500241"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Gelişmiş güvenli puan (Önizleme) 
 
@@ -65,15 +65,15 @@ Bir güvenlik denetimine yönelik tüm olası noktaları almak için, tüm kayna
 
 Yukarıdaki ekran görüntüsünde "sistem güncelleştirmelerini Uygula" güvenlik denetimi potansiyeli "2% (1 Point)" gösterir. Bu, bu denetimdeki tüm önerileri düzeltmeniz durumunda puanınızın %2 oranında (Bu durumda bir nokta) artıralacağını gösterir. Basitlik için, öneriler listesinin "olası artışı" sütunundaki değerler, tam sayılara yuvarlanır. Araç ipuçları kesin değerleri gösterir:
 
+* **Maksimum puan** -denetim içindeki tüm önerileri tamamlayarak elde edebilmeniz gereken en yüksek puan sayısıdır. Bir denetim için maksimum puan, bu denetimin göreli anlam olduğunu gösterir. İlk olarak hangi sorunların çalıştığını önceliklendirme için maksimum puan değerlerini kullanın. 
 * **Olası artış** -denetim içinde sizin için kullanılabilir olan diğer noktaları. Bu noktaları güvenli puanlarınıza eklemek için tüm denetim önerilerini düzeltin. Yukarıdaki örnekte, denetim için gösterilen bir nokta aslında 0,96 puntodur.
 * **Geçerli puan** -bu denetimin geçerli puanı. Her denetim toplam puanta katkıda bulunur. Bu örnekte denetim, toplamda 5,04 noktaya katkıda bulunur. 
-* **Maksimum puan** -önceki iki değerin toplamı.
 
 ### <a name="calculations---understanding-your-score"></a>Hesaplamalar-puanınızı anlama
 
 |Ölçüm|Formül ve örnek|
 |-|-|
-|**Güvenlik denetiminin geçerli puanı**|<br>Güvenlik denetiminin geçerli Puanını hesaplamak için ![denklemi](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç Ipuçları ![](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (74) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Güvenlik denetiminin geçerli puanı**|<br>Güvenlik denetiminin geçerli Puanını hesaplamak için ![denklemi](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç Ipuçları ![](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Güvenlik Puanı**<br>Tek abonelik|<br>![Geçerli güvenli puanı hesaplama denklemi](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Güvenlik Puanı**<br>Birden çok abonelik|<br>Tüm aboneliklerdeki tüm kaynakların geçerli puanı eklenir ve hesaplama daha sonra tek bir abonelikle aynı olur<br><br>Birden çok abonelik görüntülenirken, güvenli puan tüm etkin ilkelerin içindeki tüm kaynakları değerlendirir ve her bir güvenlik denetiminin en fazla puanı üzerinde Birleşik etkileri gruplandırır.<br>Tüm denetimler etkin olan birden çok abonelik için güvenli Puanlama ![](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Birleşik puan bir ortalama **değil** ; Bunun yerine, tüm aboneliklerdeki tüm kaynakların durumunun değerlendirilmiş bir şekilde olduğunu gösterir.<br>Burada, öneriler sayfasına giderseniz ve kullanılabilir olası noktaları eklerseniz, geçerli puan (24) ile kullanılabilir maksimum puan (60) arasındaki fark olduğunu göreceksiniz.|
 ||||

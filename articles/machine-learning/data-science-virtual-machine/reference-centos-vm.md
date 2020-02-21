@@ -1,5 +1,6 @@
 ---
-title: 'Başvuru: CentOS DSVM'
+title: 'Başvuru: CentOS Veri Bilimi Sanal Makinesi'
+titleSuffix: Azure Data Science Virtual Machine
 description: CentOS Veri Bilimi Sanal Makinesi bulunan araçlarla ilgili ayrıntılar
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493720"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525847"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Başvuru: CentOS (Linux) Veri Bilimi Sanal Makinesi
 
@@ -38,13 +39,13 @@ Bir Linux DSVM 'ye dahil edilen anahtar yazılım bileşenleri şunlardır:
 * Azure Machine Learning ve diğer Azure hizmetlerinde kullanılacak olan R ve Python kitaplıkları.
 * Geliştirme araçları ve düzenleyiciler (RStudio, Pylt, IntelliJ, Emacs, gedit, vi).
 
-Veri bilimi, bir dizi görev için yineleme içerir:
+Veri bilimi görevleri bir dizi üzerinde yineleme içerir:
 
 1. Verileri bulun, yükleyin ve ön işleme yapın.
-1. Yapı ve test modelleri.
-1. Akıllı uygulamalardaki tüketim modellerini dağıtın.
+1. Yapı ve model test edin.
+1. Akıllı uygulamalarda kullanılmak modelleri dağıtın.
 
-Veri bilimcileri, bu görevleri tamamlamaya yönelik çeşitli araçlar kullanır. Yazılımın doğru sürümlerini bulmak ve ardından yazılımı indirmek, derlemek ve yüklemek zaman alabilir.
+Veri bilimcileri, bu görevleri tamamlamak için çeşitli araçlar kullanın. Yazılımın doğru sürümlerini bulmak ve ardından yazılımı indirmek, derlemek ve yüklemek zaman alabilir.
 
 Linux DSVM bu yükü önemli ölçüde kolaylaştırabilir. Analiz projenize gitmek için Linux DSVM 'yi kullanın. Linux DSVM, R, Python, SQL, Java ve C++gibi çeşitli dillerdeki görevler üzerinde çalışmanıza yardımcı olur. Çakışan Küreler, kodunuzun geliştirilmesi ve test edilmesi için kullanımı kolay bir IDE sağlar. DSVM 'ye dahil edilen Azure SDK, Microsoft bulut platformu için Linux üzerinde çeşitli hizmetler kullanarak uygulamalarınızı oluşturmanıza yardımcı olur. Ruby, Perl, PHP ve Node. js dahil diğer diller önceden yüklenir.
 
@@ -53,9 +54,9 @@ DSVM görüntüsü için yazılım ücreti yok. Yalnızca DSVM görüntüsüyle 
 
 ## <a name="machine-learning-server"></a>Machine Learning Server
 
-R, veri analizi ve makine öğrenimi için en popüler dillerden biridir. Analiz etmeniz için R 'yi kullanmak istiyorsanız, DSVM 'nin Microsoft R Open ve Math Kernel kitaplığı ile Machine Learning Server vardır. Matematik Çekirdek Kitaplığı, analitik algoritmalarda ortak matematik işlemlerini iyileştirir. R Open, CRAN R ile tamamen uyumludur. CRAN içinde Yayınlanan R kitaplıklarının herhangi biri R Open 'a yüklenebilir. 
+R veri analizi ve makine öğrenimi için en popüler diller biridir. Analiz etmeniz için R 'yi kullanmak istiyorsanız, DSVM 'nin Microsoft R Open ve Math Kernel kitaplığı ile Machine Learning Server vardır. Matematik Çekirdek Kitaplığı, analitik algoritmalarda ortak matematik işlemlerini iyileştirir. R Open, CRAN R ile tamamen uyumludur. CRAN içinde Yayınlanan R kitaplıklarının herhangi biri R Open 'a yüklenebilir. 
 
-R modellerini Web Hizmetleri 'nde ölçeklendirmek ve kullanıma almak için Machine Learning Server kullanabilirsiniz. R programlarınızı, RStudio, vi veya Emacs gibi varsayılan düzenleyicilerden birinde düzenleyebilirsiniz. Emacs Düzenleyicisi DSVM 'ye önceden yüklenir. Emacs ESS (Emacs Hoparlörks Istatistikleri) paketi Emacs düzenleyicisinde R dosyalarıyla çalışmayı basitleştirir.
+R modellerini Web Hizmetleri 'nde ölçeklendirmek ve kullanıma almak için Machine Learning Server kullanabilirsiniz. RStudio, olduğu gibi vi veya Emacs gibi varsayılan düzenleyicilerden biriyle R programlarınızın düzenleyebilirsiniz. Emacs Düzenleyicisi DSVM 'ye önceden yüklenir. Emacs ESS (Emacs Hoparlörks Istatistikleri) paketi Emacs düzenleyicisinde R dosyalarıyla çalışmayı basitleştirir.
 
 R konsolunu açmak için, kabukta **r**yazın. Bu komut sizi etkileşimli bir ortama götürür. R programınızı geliştirmek için, genellikle Emacs veya VI gibi bir düzenleyici kullanır ve ardından komut dosyalarını R. RStudio 'da çalıştırmak, R programınızı geliştirmek için tam bir grafik IDE sunar.
 
@@ -63,9 +64,9 @@ R konsolunu açmak için, kabukta **r**yazın. Bu komut sizi etkileşimli bir or
 
 ## <a name="python"></a>Python
 
-Anaconda Python, Python 3,5 ve 2,7 ortamları ile birlikte yüklenir. 2,7 ortamına _kök_ adı verilir ve 3,5 ortamı _py35_olarak adlandırılır. Bu dağıtım, en popüler matematik, mühendislik ve veri analizi paketlerinin 300 hakkında temel Python 'u içerir.
+Anaconda Python, Python 3,5 ve 2,7 ortamları ile birlikte yüklenir. 2,7 ortamına _kök_ adı verilir ve 3,5 ortamı _py35_olarak adlandırılır. Bu dağıtım, temel bir Python yaklaşık 300 en popüler matematik, mühendislik ve veri analizi paketlerinin yanı sıra içerir.
 
-Py35 ortamı varsayılandır. Kök (2,7) ortamını etkinleştirmek için şu komutu kullanın:
+Varsayılan py35 ortamıdır. Kök (2,7) ortamını etkinleştirmek için şu komutu kullanın:
 
 ```bash
 source activate root
@@ -86,7 +87,7 @@ source activate root
 pip install <package>
 ```
 
-Ya da PIP 'nin tam yolunu belirtin:
+Veya pip için tam yolu belirtin:
 
 ```bash
 /anaconda/bin/pip install <package>
@@ -98,7 +99,7 @@ Conda 'nın her zaman ortam adını (py35 veya root) belirtmeniz gerekir:
 conda install <package> -n py35
 ```
 
-Grafik arabiriminiz varsa veya X11 iletmeyi ayarladıysanız, Pydüğme Python IDE 'yi açmak için **pydüğme** girebilirsiniz. Varsayılan metin düzenleyicilerini kullanabilirsiniz. Ayrıca, Anaconda Python dağıtımları ile paketlenmiş bir Python IDE olan Spyder kullanabilirsiniz. Spyder bir grafik masaüstü veya X11 iletme gerektirir. Grafik masaüstünde Spyder kısayolu bulunur.
+Grafik arabiriminiz varsa veya X11 iletmeyi ayarladıysanız, Pydüğme Python IDE 'yi açmak için **pydüğme** girebilirsiniz. Varsayılan metin düzenleyicisi kullanabilirsiniz. Ayrıca, Anaconda Python dağıtımları ile paketlenmiş bir Python IDE olan Spyder kullanabilirsiniz. Grafik bir masaüstü veya X11 Spyder gereken iletme. Grafik masaüstünde Spyder kısayolu bulunur.
 
 ## <a name="jupyter-notebook"></a>Jupyter Notebook
 
@@ -107,9 +108,9 @@ Anaconda dağıtımı, kod ve analiz paylaşmak için bir ortam Jupyter Notebook
 Jupyter Notebook sunucusu Python 2, Python 3 ve R kernels ile önceden yapılandırılmıştır. Tarayıcıyı açmak ve Jupyter Notebook sunucusuna erişmek için **Jupyter Notebook** masaüstü simgesini kullanın. DSVM 'ye SSH veya X2Go istemcisi aracılığıyla eriştiğinizde, https:\//localhost: 8000/konumundaki Jupyter Notebook sunucusuna da erişebilirsiniz.
 
 > [!NOTE]
-> Herhangi bir sertifika uyarısı alırsanız devam edin.
+> Hiçbir sertifika uyarısı alırsanız devam edin.
 
-Jupyter Not defteri sunucusuna herhangi bir konaktan erişebilirsiniz. **Https:\//\<DSVM DNS adını veya IP adresini girin\>: 8000/** .
+Jupyter notebook sunucusu herhangi bir ana bilgisayardan erişebilirsiniz. **Https:\//\<DSVM DNS adını veya IP adresini girin\>: 8000/** .
 
 > [!NOTE]
 > DSVM sağlandığında, bağlantı noktası 8000 güvenlik duvarında varsayılan olarak açılır. 
@@ -120,7 +121,7 @@ Microsoft, bir tane Python ve diğeri R 'de örnek Not defterleri paketlenir. Ye
 
 Spark bağımsız modunun bir örneği, bunları test etmeden ve bunları büyük kümelerle dağıtmadan önce yerel olarak Spark uygulamaları geliştirmenize yardımcı olmak için Linux DSVM 'ye önceden yüklenir. 
 
-PySpark programlarını Jupyıter çekirdeği aracılığıyla çalıştırabilirsiniz. Jupyter açtığınızda, **Yeni** düğmesini seçin ve kullanılabilir çekirdekler listesini görmeniz gerekir. **Spark-Python** , Python dilini kullanarak Spark uygulamaları oluşturmanıza olanak sağlayan pyspark çekirdeğidir. Spark programınızı oluşturmak için Pydüğme veya Spyder gibi bir Python IDE de kullanabilirsiniz. 
+PySpark programlar Jupyter çekirdek çalıştırabilirsiniz. Jupyter açtığınızda, **Yeni** düğmesini seçin ve kullanılabilir çekirdekler listesini görmeniz gerekir. **Spark-Python** , Python dilini kullanarak Spark uygulamaları oluşturmanıza olanak sağlayan pyspark çekirdeğidir. Spark programınızı oluşturmak için Pydüğme veya Spyder gibi bir Python IDE de kullanabilirsiniz. 
 
 Bu tek başına örneğinde, Spark Stack çağıran istemci programında çalışır. Bu özellik, Spark kümesinde geliştirme ile karşılaştırıldığında sorun gidermeyi daha hızlı ve kolay hale getirir.
 
@@ -128,7 +129,7 @@ Jupyter bir örnek PySpark Not defteri sağlar. Bu dosyayı jupi 'nın giriş di
 
 Spark için R 'de Programlama yapıyorsanız Machine Learning Server, parlak r veya parlak LYR ' yi kullanabilirsiniz. 
 
-Machine Learning Server bir Spark bağlamında çalıştırmadan önce, yerel bir tek düğümlü Hadoop ve YARN örneğini etkinleştirmek için bir kerelik Kurulum adımı yapmanız gerekir. Hadoop Hizmetleri varsayılan olarak DSVM 'de yüklüdür ancak devre dışı bırakılır. Hadoop hizmetlerini etkinleştirmek için, ilk kez kök olarak aşağıdaki komutları çalıştırın:
+Machine Learning Server bir Spark bağlamında çalıştırmadan önce, yerel bir tek düğümlü Hadoop ve YARN örneğini etkinleştirmek için bir kerelik Kurulum adımı yapmanız gerekir. Varsayılan olarak, Hadoop Hizmetleri yüklendi ancak DSVM'nin devre dışı. Hadoop hizmetlerini etkinleştirmek için, ilk kez kök olarak aşağıdaki komutları çalıştırın:
 
 ```bash
 echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -144,7 +145,7 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
 /Dsvm/samples/MRS dizini, uzak Spark bağlamında Machine Learning Server geliştirme ve test etme (DSVM 'deki tek başına Spark örneği) hakkında bir örnek sağlar.
 
-## <a name="ides-and-editors"></a>Ides ve düzenleyiciler
+## <a name="ides-and-editors"></a>IDE'ler ve düzenleyicilerden
 
 VI/VıM, Emacs, gedit, Pylt, RStudio, tutulma, LaTeX ve IntelliJ gibi çeşitli kod düzenleyicilerinden seçim yapabilirsiniz. 
 
@@ -178,13 +179,13 @@ SQUIRREL SQL, çeşitli veritabanlarına (SQL Server, PostgresSQL ve MySQL dahil
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
-İlk kullanmadan önce, sürücülerinizi ve veritabanı diğer adlarını ayarlayın. JDBC sürücüleri/usr/share/Java/jdbcdrivers. adresinde bulunur
+İlk kullanılmadan önce sürücüleri ve veritabanı diğer adlar ayarlayın. JDBC sürücüleri/usr/share/Java/jdbcdrivers. adresinde bulunur
 
 Daha fazla bilgi için bkz. [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
 ### <a name="command-line-tools-for-accessing-sql-server"></a>SQL Server erişmek için komut satırı araçları
 
-SQL Server ODBC sürücü paketi ayrıca iki komut satırı aracı ile birlikte gelir:
+SQL Server için ODBC sürücü paketi ayrıca iki komut satırı araçları ile birlikte gelir:
 
 * **bcp**: bcp Aracı, bir SQL Server örneği ve Kullanıcı tarafından belirtilen biçimdeki bir veri dosyası arasında verileri toplu olarak kopyalar. BCP aracını kullanarak çok sayıda yeni satırı SQL Server tablolarına aktarabilir veya tablolardaki verileri veri dosyalarına aktarabilirsiniz. Verileri bir tabloya aktarmak için, bu tablo için oluşturulmuş bir biçim dosyası kullanmanız gerekir. Ya da tablonun yapısını ve sütunlarının geçerli olan veri türlerini anlamanız gerekir.
 
@@ -197,7 +198,7 @@ SQL Server ODBC sürücü paketi ayrıca iki komut satırı aracı ile birlikte 
   > [!NOTE]
   > Bu araçta Linux ve Windows platformları arasında bazı farklılıklar vardır. Ayrıntılar için belgelere bakın.
 
-### <a name="database-access-libraries"></a>Veritabanı erişim kitaplıkları
+### <a name="database-access-libraries"></a>Veritabanı erişimi kitaplıkları
 
 Veritabanı erişimi kitaplıkları R ve Python 'da kullanılabilir:
 
@@ -209,12 +210,12 @@ Veritabanı erişimi kitaplıkları R ve Python 'da kullanılabilir:
 Aşağıdaki Azure Araçları DSVM 'ye yüklenir:
 
 * **Azure CLI**: Azure 'da kabuk komutları aracılığıyla Azure kaynakları oluşturmak ve yönetmek için komut satırı arabirimini kullanabilirsiniz. Azure araçlarını açmak için **Azure yardımı**'nı girin. Daha fazla bilgi için bkz. [Azure CLI belgeleri sayfası](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Depolama Gezgini**: Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesneler üzerinde gezinmek ve Azure bloblarına ve veri yüklemek için kullanabileceğiniz bir grafik aracıdır. Masaüstü kısayol simgesinden Depolama Gezgini erişebilirsiniz. Ayrıca, bunu bir kabuk isteminden **Storageexplorer**girerek açabilirsiniz. Bir X2Go istemcisinden oturum açmanız veya X11 iletme ayarlamış olmanız gerekir.
+* **Azure Depolama Gezgini**: Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesneler üzerinde gezinmek ve Azure bloblarına ve veri yüklemek için kullanabileceğiniz bir grafik aracıdır. Depolama Gezgini masaüstü kısayolu simgesinden erişebilirsiniz. Ayrıca, bunu bir kabuk isteminden **Storageexplorer**girerek açabilirsiniz. Bir X2Go istemcisinden oturum açmanız veya X11 iletme ayarlamış olmanız gerekir.
 * **Azure kitaplıkları**: aşağıdaki kitaplıklar dsvm 'ye önceden yüklenir:
   
-  * **Python**: Python 'daki Azure ile ilgili kitaplıklar *Azure*, *azureml*, *pydocumentdb*ve *pyodbc*. İlk üç kütüphaneden Azure depolama hizmetlerine, Azure Machine Learning ve Azure Cosmos DB (Azure 'da bir NoSQL veritabanı) erişebilirsiniz. Dördüncü kitaplık olan pyodbc (SQL Server için Microsoft ODBC sürücüsü ile birlikte), bir ODBC arabirimi kullanarak Python 'dan SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı 'na erişim sağlar. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Bu komutu hem Python 2,7 hem de 3,5 ortamlarında çalıştırmayı unutmayın.
+  * **Python**: Python 'daki Azure ile ilgili kitaplıklar *Azure*, *azureml*, *pydocumentdb*ve *pyodbc*. İlk üç kitaplıkları ile Azure depolama hizmetleri, Azure Machine Learning ve Azure Cosmos DB (Azure üzerinde bir NoSQL veritabanı) erişebilir. Dördüncü kitaplığı pyodbc (yanı sıra Microsoft ODBC sürücüsü için SQL Server) erişimi etkinleştirir SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı python'dan ODBC arabirimini kullanarak. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Hem Python 2.7 hem de 3,5 ortamlarında bu komutu çalıştırmak emin olun.
   * **R**: r 'deki Azure ile Ilgili kitaplıklar AZUREML ve rodbc.
-  * **Java**: dsvm 'de/dsvm/sdk/AzureSDKJava dizininde Azure Java kitaplıklarının listesi bulunabilir. Anahtar kitaplıkları, SQL Server için Azure depolama ve yönetim API 'Leri, Azure Cosmos DB ve JDBC sürücülerdir.  
+  * **Java**: dsvm 'de/dsvm/sdk/AzureSDKJava dizininde Azure Java kitaplıklarının listesi bulunabilir. Anahtar kitaplıkları, SQL Server için Azure depolama ve Yönetimi API'leri, Azure Cosmos DB ve JDBC sürücüleri vardır.  
 
 [Azure Portal](https://portal.azure.com) önceden yüklenmiş Firefox tarayıcısından erişebilirsiniz. Azure portal Azure kaynaklarını oluşturabilir, yönetebilir ve izleyebilirsiniz.
 
@@ -233,7 +234,7 @@ Azure Machine Learning için R ve Python modelleri dağıtma hakkında daha fazl
 > [!NOTE]
 > [Veri bilimi sanal makinesi üzerinde yapabileceğiniz on şey](vm-do-ten-things.md) , Dsvm 'nin Windows sürümü için yazılmıştır. Ancak Azure Machine Learning modelleri dağıtma hakkında bilgiler Linux DSVM için de geçerlidir.
 
-## <a name="machine-learning-tools"></a>Machine Learning araçları
+## <a name="machine-learning-tools"></a>Machine learning araçları
 
 DSVM, önceden derlenmiş ve yerel olarak önceden yüklenmiş birkaç makine öğrenimi aracı ve algoritmalarıyla birlikte gelir. Bunlar:
 
@@ -306,7 +307,7 @@ Bir. model dosyası belirtilen dizine yazılır. GitHub 'da bu tanıtım örneğ
 
 XGBoost hakkında daha fazla bilgi için, bkz. [xgboost belgeleri](https://xgboost.readthedocs.org/en/latest/) ve [Xgboost GitHub deposu](https://github.com/dmlc/xgboost).
 
-### <a name="rattle"></a>Rattle
+### <a name="rattle"></a>Çıngırağı
 
 Rattle (*R* *A*Nalitik *T*OOL *T*o *L*kazanın) GUI tabanlı veri araştırması ve modelleme kullanır. Rattle:
 - Verilerin istatistiksel ve görsel özetlerini sunar.

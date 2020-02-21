@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444392"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485021"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
 
@@ -341,7 +341,6 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresi ve hedef bağ
 - IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.
 - Alt ağ veya NIC üzerinde NSG, NAT kullanılarak genel uç noktalara giden akışlar için kabul edilemez.
 - NSG akış günlüğü, NAT kullanılırken desteklenmez.
-- Bir sanal ağda birden çok alt ağ olduğunda, her alt ağda farklı bir NAT yapılandırılmış olabilir.
 - NAT birden çok sanal ağa yayılamaz.
 
 ## <a name="preview-participation"></a>Önizleme katılımı

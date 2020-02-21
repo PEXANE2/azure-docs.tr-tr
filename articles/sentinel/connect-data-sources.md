@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 97b65c9f891d925e702c858753aa5e5feb9c9ac1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462557"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500701"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -45,35 +45,46 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
 
 - **Hizmetten hizmete tümleştirme**:<br> Bazı hizmetler yerel olarak (AWS ve Microsoft Hizmetleri gibi) bağlı olduğundan, bu hizmetler, kullanıma hazır tümleştirme için Azure Foundation 'dan yararlanır ve aşağıdaki çözümler birkaç tıklamayla bağlanabilir:
     - [Amazon Web Services-Cloudtratem](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD denetim günlükleri ve oturum açmalar](connect-azure-active-directory.md)
     - [Azure etkinliği](connect-azure-activity.md)
+    - [Azure AD denetim günlükleri ve oturum açmalar](connect-azure-active-directory.md)
     - [Azure AD Kimlik Koruması](connect-azure-ad-Identity-protection.md)
-    - [Azure Güvenlik Merkezi](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure Gelişmiş tehdit koruması](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Güvenlik Merkezi](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [Etki alanı adı sunucusu](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Web uygulaması güvenlik duvarı](connect-microsoft-waf.md)
     - [Windows güvenlik olayları](connect-windows-security-events.md) 
     - [Windows Güvenlik Duvarı](connect-windows-firewall.md)
+    - [Windows güvenlik olayları](connect-windows-security-events.md)
 
 - **API aracılığıyla dış çözümler**: bazı veri kaynakları, bağlı veri kaynağı tarafından sağlanmış API 'ler kullanılarak bağlanır. Genellikle, çoğu güvenlik teknolojisi, olay günlüklerinin alınabileceği bir API kümesi sağlar. API 'Ler Azure Sentinel 'e bağlanır ve belirli veri türlerini toplayıp Azure Log Analytics 'e gönderir. API aracılığıyla bağlı olan gereçler şunları içerir:
     - [Barracuda](connect-barracuda.md)
-    - ['E](connect-symantec.md)
+    - [Barbcuda CloudGen güvenlik duvarı](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (güvenlik)](connect-citrix-analytics.md)
+    - [F5 BIG-ıP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
+    - [Symantec IDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **Aracı aracılığıyla dış çözümler**: Azure Sentinel, bir aracı aracılığıyla Syslog protokolünü kullanarak gerçek zamanlı günlük akışı gerçekleştirebilen diğer tüm veri kaynaklarına bağlanabilir. <br>Çoğu gereçleri, günlüğü kapsayan olay iletilerini ve günlük bilgilerini içeren olay iletilerini göndermek için Syslog protokolünü kullanır. Günlüklerin biçimi değişir, ancak çoğu gereçte, günlük verilerine yönelik ortak olay biçimi (CEF) tabanlı biçimlendirme desteklenir. <br>Log Analytics aracısına dayalı Azure Sentinel Aracısı, CEF biçimli günlükleri Log Analytics tarafından kullanılabilecek bir biçime dönüştürür. Gereç türüne bağlı olarak, aracı doğrudan gereç üzerine ya da adanmış bir Linux sunucusuna yüklenir. Linux Aracısı, syslog arka plan programından UDP üzerinden olay alır, ancak bir Linux makinenin yüksek hacimli bir Syslog olayları toplaması bekleniyorsa, bunlar Syslog arka plan programından aracıya ve Log Analytics için Buradan TCP üzerinden gönderilir.
     - Güvenlik duvarları, proxy 'ler ve uç noktalar:
-        - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop açığa çıkar (x)](connect-extrahop.md)
+        - [F5](connect-f5.md)
+        - [Forcepoint ürünleri](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto ağları](connect-paloalto.md)
+        - [Bir kimlik koruma](connect-one-identity.md)
         - [Diğer CEF cihazları](connect-common-event-format.md)
         - [Diğer Syslog cihazları](connect-syslog.md)
-        - [Barbcuda CloudGen güvenlik duvarı](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop açığa çıkar (x)](connect-extrahop.md)
-        - [Bir kimlik koruma](connect-one-identity.md)
         - [Trend mikro derin güvenlik](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP çözümleri
     - [Tehdit bilgileri sağlayıcıları](connect-threat-intelligence.md)
     - DNS [makineleri](connect-dns.md) -aracı doğrudan DNS makinesine yüklendi

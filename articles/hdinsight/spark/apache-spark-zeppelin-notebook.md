@@ -5,25 +5,24 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664598"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484817"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
 
 HDInsight Spark kümeleri, [Apache Spark](https://spark.apache.org/) işleri çalıştırmak Için kullanabileceğiniz [Apache Zeppelin](https://zeppelin.apache.org/) not defterlerini içerir. Bu makalede, bir HDInsight kümesinde Zeppelin Not defterini kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
-* Kümelerinizin birincil depolama alanı için URI şeması. Bu, Azure Blob depolama için `wasb://`, Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya `adl://` `abfs://`. BLOB depolama için güvenli aktarım etkinse, URI `wasbs://`olur.  Daha fazla bilgi için Ayrıca bkz. [Azure Storage 'da güvenli aktarım gerektir](../../storage/common/storage-require-secure-transfer.md) .
+* Kümelerinizin birincil depolama alanı için URI şeması. Bu, Azure Blob depolama için `wasb://`, Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya `adl://` `abfs://`. BLOB depolama için güvenli aktarım etkinse, URI `wasbs://`olur.  Daha fazla bilgi için bkz. [Azure Storage 'da güvenli aktarım gerektir](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin Not defteri başlatma
 
@@ -154,7 +153,7 @@ Bu, Not defterini indirme konumunuza bir JSON dosyası olarak kaydeder.
 
 ## <a name="livy-session-management"></a>Livy oturum yönetimi
 
-Zeppelin Not defterinizde ilk kod paragrafı çalıştırdığınızda, HDInsight Spark kümenizde yeni bir Livy oturumu oluşturulur. Bu oturum, daha sonra oluşturduğunuz tüm Zeppelin Not defterleri genelinde paylaşılır. Herhangi bir nedenle, Livy oturumunun sonlandırısı (küme yeniden başlatma vb.) varsa, Zeppelin Not defterinden iş çalıştıramazsınız.
+Zeppelin Not defterinizde ilk kod paragrafı çalıştırdığınızda, HDInsight Spark kümenizde yeni bir Livy oturumu oluşturulur. Bu oturum, daha sonra oluşturduğunuz tüm Zeppelin Not defterleri genelinde paylaşılır. Herhangi bir nedenden dolayı, Livy oturumunun sonlandırısı (küme yeniden başlatma vb.) varsa, Zeppelin Not defterinden iş çalıştıramazsınız.
 
 Böyle bir durumda, bir Zeppelin Not defterinden iş çalıştırmaya başlayabilmeniz için aşağıdaki adımları gerçekleştirmeniz gerekir.  
 
@@ -168,9 +167,44 @@ Böyle bir durumda, bir Zeppelin Not defterinden iş çalıştırmaya başlayabi
 
 3. Mevcut bir Zeppelin Not defterinden kod hücresi çalıştırın. Bu, HDInsight kümesinde yeni bir Livy oturumu oluşturur.
 
-## <a name="seealso"></a>Ayrıca bkz.
+## <a name="general-information"></a>Genel bilgiler
 
-* [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
+### <a name="validate-service"></a>Hizmeti doğrula
+
+Hizmeti ambarı 'ndan doğrulamak için CLUSTERNAME öğesinin Kümenizin adı olduğu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` gidin.
+
+Hizmeti bir komut satırından ve SSH 'den baş düğüme doğrulamak için. Komut `sudo su zeppelin`kullanarak kullanıcıyı Zeppelin 'e geçirin. Durum komutları:
+
+|Komut |Açıklama |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Hizmet durumu.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Hizmet sürümü.|
+|`ps -aux | grep zeppelin`|PID 'yi belirler.|
+
+### <a name="log-locations"></a>Günlük konumları
+
+|Hizmet |Yol |
+|---|---|
+|Zeppelin-sunucu|/usr/HDP/Current/Zeppelin-Server/|
+|Sunucu Günlükleri|/var/log/Zeppelin|
+|Yapılandırma yorumlayıcısı, Shiro, site. xml, Log4J|/usr/HDP/Current/Zeppelin-Server/conf veya/etc/Zeppelin/conf|
+|PID dizini|/var/Run/Zeppelin|
+
+### <a name="enable-debug-logging"></a>Hata ayıklama günlük kaydını etkinleştirme
+
+1. CLUSTERNAME öğesinin Kümenizin adı olduğu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` gidin.
+
+1. **Gelişmiş Zeppelin-Log4J-properties** > **log4j_properties_content** **configs** > gidin.
+
+1. `log4j.appender.dailyfile.Threshold = INFO` `log4j.appender.dailyfile.Threshold = DEBUG`olarak değiştirin.
+
+1. `log4j.logger.org.apache.zeppelin.realm=DEBUG`ekleyin.
+
+1. Değişiklikleri kaydedin ve hizmeti yeniden başlatın.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Senaryolar
 

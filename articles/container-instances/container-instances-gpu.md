@@ -3,12 +3,12 @@ title: GPU özellikli kapsayıcı örneği dağıt
 description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygulamaları çalıştırmak için Azure Container Instances 'ı dağıtmayı öğrenin.
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: ea3b0ccba2d84487356f4bbd404cec3af1d0979a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.openlocfilehash: c3b202d1f35194d59090c3cc310226d6cfc4dfea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484191"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482964"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
 
@@ -42,9 +42,9 @@ Bir kapsayıcı örneğinde GPU 'ları kullanmak için aşağıdaki bilgileri i�
 
   | SKU | VM ailesi |
   | --- | --- |
-  | K80 | [KSK](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [KSK](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
@@ -56,7 +56,7 @@ GPU kaynaklarını dağıttığınızda, önceki tabloda gösterilen en fazla de
 
 * **Fiyatlandırma** -GPU kaynakları olmadan kapsayıcı gruplarına benzer, Azure, GPU kaynaklarıyla bir kapsayıcı grubu *süresince* tüketilen kaynaklar için Azure faturaları. Süre, kapsayıcı grubu sonlanana kadar ilk kapsayıcının görüntüsünü çekme zamanından hesaplanır. Kapsayıcı grubunun dağıtılacağı zaman dahil değildir.
 
-  [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/container-instances/) bakın.
+  [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/container-instances/)bakın.
 
 * **CUDA sürücüleri** -GPU kaynaklarıyla kapsayıcı ÖRNEKLERI, NVıDıA CUDA sürücüleriyle ve kapsayıcı çalışma zamanları ile önceden sağlanmış olduğundan CUDA iş yükleri için geliştirilmiş kapsayıcı görüntülerini kullanabilirsiniz.
 
@@ -206,7 +206,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örneğin:
+GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örnek:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table

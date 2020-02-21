@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847309"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483304"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -59,7 +59,7 @@ Hayır. Desteklenen sosyal kimlik sağlayıcıları kümesi için kullanılan va
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Uygulamamın Azure AD B2C ile çalışması için Azure 'da çalıştırılması gerekiyor mu?
 
-Hayır, uygulamanızı dilediğiniz yerde (bulutta veya şirket içinde) barındırabilirsiniz. Uygulamanın Azure AD B2C ile etkileşime geçmesi için yalnızca genel olarak erişilebilir uç noktalarında HTTP isteği gönderip alabilmesi yeterlidir.
+Hayır, uygulamanızı dilediğiniz yerde (bulutta veya şirket içinde) barındırabilirsiniz. Tek yapmanız gereken Azure AD B2C, genel olarak erişilebilen uç noktalarda HTTP istekleri gönderme ve alma olanağıdır.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Birden çok Azure AD B2C kiracım var. Azure portal bunları nasıl yönetebilirim?
 
@@ -78,7 +78,7 @@ E-posta imzası, Azure AD B2C kiracıyı ilk oluşturduğunuzda verdiğiniz Azur
 
 1. [Azure Portal](https://portal.azure.com/) genel yönetici olarak oturum açın.
 1. **Azure Active Directory** dikey penceresini açın.
-1. Tıklayın **özellikleri** sekmesi.
+1. **Özellikler** sekmesine tıklayın.
 1. **Ad** alanını değiştirin.
 1. Sayfanın üst kısmından **Kaydet**'e tıklayın.
 
@@ -86,15 +86,17 @@ E-posta imzası, Azure AD B2C kiracıyı ilk oluşturduğunuzda verdiğiniz Azur
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Var olan Kullanıcı adlarınızı, parolalarımı ve Profillerimi Veritabanım 'den Azure AD B2C 'a nasıl geçirebilirim?
 
-Geçiş aracınızı yazmak için Azure AD Graph API kullanabilirsiniz. Ayrıntılar için [Kullanıcı geçiş kılavuzuna](user-migration.md) bakın.
+Geçiş aracınızı yazmak için Microsoft Graph API 'sini kullanabilirsiniz. Ayrıntılar için [Kullanıcı geçiş kılavuzuna](user-migration.md) bakın.
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C yerel hesaplar için hangi parola Kullanıcı akışı kullanılır?
 
-Yerel hesaplar için Azure AD B2C parolası Kullanıcı akışı, Azure AD ilkesini temel alır. Azure AD B2C's kaydolma, kaydolma veya oturum açma ve parola sıfırlama Kullanıcı akışları "güçlü" parola gücünü kullanır ve herhangi bir parolayı sona ermez. Daha fazla bilgi için [Azure AD parola ilkesini](/previous-versions/azure/jj943764(v=azure.100)) okuyun. Hesap kilitlenmelerini ve parolaları hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C tehditler ve veriler için tehditleri yönetme](threat-management.md).
+Yerel hesaplar için Azure AD B2C parolası Kullanıcı akışı, Azure AD ilkesini temel alır. Azure AD B2C's kaydolma, kaydolma veya oturum açma ve parola sıfırlama Kullanıcı akışları "güçlü" parola gücünü kullanır ve herhangi bir parolayı sona ermez. Daha ayrıntılı bilgi için bkz. [Azure Active Directory parola ilkeleri ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+
+Hesap kilitlenmelerini ve parolaları hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C tehditler ve veriler için tehditleri yönetme](threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Şirket içi Active Directory depolanan tüketici kimliklerini Azure AD B2C 'e geçirmek için Azure AD Connect kullanabilir miyim?
 
-Hayır, Azure AD Connect Azure AD B2C çalışmak üzere tasarlanmamıştır. Kullanıcı geçişi için [Azure AD Graph API](manage-user-accounts-graph-api.md) kullanmayı göz önünde bulundurun. Ayrıntılar için [Kullanıcı geçiş kılavuzuna](user-migration.md) bakın.
+Hayır, Azure AD Connect Azure AD B2C çalışmak üzere tasarlanmamıştır. Kullanıcı geçişi için [MICROSOFT Graph API](manage-user-accounts-graph-api.md) 'sini kullanmayı düşünün. Ayrıntılar için [Kullanıcı geçiş kılavuzuna](user-migration.md) bakın.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Uygulamam iFrame içindeki Azure AD B2C sayfaları açabilir mi?
 
@@ -120,7 +122,7 @@ Hayır, Azure AD B2C Azure AD Premium aynı rapor kümesini desteklemez. Ancak b
 * **Denetim raporları** hem yönetici etkinliğini hem de uygulama etkinliğini içerir.
 * **Kullanım raporları** , kullanıcı sayısını, oturum açma SAYıSıNı ve MFA hacmini içerir.
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C tarafından sunulan sayfaların Kullanıcı arabirimini yerelleştirebilirim miyim? Hangi diller desteklenir?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C tarafından sunulan sayfaların Kullanıcı arabirimini yerelleştirebilirim miyim? Hangi diller destekleniyor?
 
 Evet, bkz. [dil özelleştirmesi](user-flow-language-customization.md). 36 dil için çeviriler sunuyoruz ve gereksinimlerinize uyacak şekilde herhangi bir dizeyi geçersiz kılabilirsiniz.
 
@@ -134,7 +136,7 @@ Azure AD B2C kiracınızı silmek için aşağıdaki adımları izleyin.
 
 Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
+#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
 1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi*olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
@@ -155,7 +157,7 @@ Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
 1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi*olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.

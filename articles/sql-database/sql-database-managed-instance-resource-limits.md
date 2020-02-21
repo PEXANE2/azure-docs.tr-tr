@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/18/2020
+ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201739"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526867"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -96,7 +96,7 @@ Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-s
 
 Genel Amaçlı hizmet katmanında her veritabanı dosyası, dosya boyutuna bağlı olarak adanmış ıOPS ve aktarım hızı alıyor. Daha büyük dosyalar daha fazla ıOPS ve aktarım hızı alıyor. Veritabanı dosyalarının GÇ özellikleri aşağıdaki tabloda gösterilmiştir:
 
-| Dosya boyutu           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+| Dosya boyutu | > = 0 ve < = 128 GiB | > 128 ve < = 256 GiB | > 256 ve < = 512 GiB | > 0,5 ve < = 1 TiB    | > 1 ve < = 2 TiB    | > 2 ve < = 4 TiB | > 4 ve < = 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Dosya başına ıOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
 | Dosya başına aktarım hızı | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MIB/sn | 250 MIB/sn | 480 MIB/sn | 

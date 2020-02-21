@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847764"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505631"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -53,12 +53,12 @@ Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 
 |Section|Alan|Açıklama|
 |-------|-----|-----------|
-| Etkinlik | Ad | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
+| Etkinlik | Adı | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
 | Başlatan (aktör) | ObjectId | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
 | Başlatan (aktör) | SPN | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 | Hedef (ler) | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |
-| Ek Ayrıntılar | Değerine | Azure AD B2C kiracının **KIRACı kimliği** . |
-| Ek Ayrıntılar | `PolicyId` | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
+| Ek Ayrıntılar | TenantId | Azure AD B2C kiracının **KIRACı kimliği** . |
+| Ek Ayrıntılar | PolicyId | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
 | Ek Ayrıntılar | ApplicationId | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Azure portal denetim günlüklerini görüntüleme
@@ -88,51 +88,15 @@ Denetim günlükleri, Azure Active Directory için diğer etkinliklerle aynı i�
 
 ### <a name="enable-reporting-api-access"></a>Raporlama API 'SI erişimini etkinleştir
 
-Azure AD Raporlama API 'sine betik veya uygulama tabanlı erişime izin vermek için, aşağıdaki API izinleriyle Azure AD B2C kiracınızda kayıtlı bir Azure Active Directory uygulamanız olması gerekir:
+Azure AD Raporlama API 'sine betik veya uygulama tabanlı erişime izin vermek için, aşağıdaki API izinleriyle Azure AD B2C kiracınızda kayıtlı bir uygulamaya ihtiyacınız vardır. Bu izinleri B2C kiracınızda var olan bir uygulama kaydında etkinleştirebilir veya bir özel olarak denetim günlüğü otomasyonu ile kullanmak için yeni bir tane oluşturabilirsiniz.
 
-* Microsoft Graph > Uygulama izinleri > Denetimgünlüğü. Read. All
+* Microsoft Graph > Uygulama izinleri > AuditLog > Denetimgünlüğü. Read. All
 
-Bu izinleri B2C kiracınızda mevcut bir Azure Active Directory Uygulama kaydında etkinleştirebilir veya özel olarak denetim günlüğü otomasyonu ile kullanmak için yeni bir tane oluşturabilirsiniz.
+Gerekli izinlere sahip bir uygulamayı kaydetmek için aşağıdaki makaledeki adımları izleyin:
 
-Bir uygulamayı kaydedin, gerekli Microsoft Graph API izinlerini verin ve ardından bir istemci gizli anahtarı oluşturun.
+[Microsoft Graph ile Azure AD B2C yönetme](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>Uygulamayı Azure Active Directory Kaydet
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>API erişim izinleri atama
-
-#### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
-
-1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
-1. **API erişimi**altında **gerekli izinler**' i seçin.
-1. **Ekle**' yi ve ardından **bir API 'yi seçin**.
-1. **Microsoft Graph**' yi seçin ve ardından öğesini **seçin**.
-1. **Uygulama izinleri**altında **tüm denetim günlüğü verilerini oku**' nı seçin.
-1. **Seç** düğmesini seçin ve **bitti**' yi seçin.
-1. Seçin **izinleri verin**ve ardından **Evet**.
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
-
-1. **Yönet**altında **API izinleri**' ni seçin.
-1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
-1. **Microsoft API 'leri** sekmesini seçin.
-1. **Microsoft Graph**seçin.
-1. **Uygulama izinleri**' ni seçin.
-1. **AuditLog** öğesini genişletin ve ardından **AuditLog. Read. All** onay kutusunu seçin.
-1. **Izin Ekle**' yi seçin. Yönlendirildiğinden, bir sonraki adıma geçmeden önce birkaç dakika bekleyin.
-1. **Yönetici onayı ver ' i (kiracı adınız)** seçin.
-1. *Genel yönetici* rolüne atanmış olan ve Azure AD B2C kiracınızda *genel yönetici* rolüne atanan bir hesapla oturum açmak için şu anda oturum açmış olan hesabınızı seçin.
-1. **Kabul Et**’i seçin.
-1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın *Denetimgünlüğü. Read. All* izninin **durumu** altında görünür. İzinlerin yayılması birkaç dakika sürebilir.
-
-* * *
-
-### <a name="create-client-secret"></a>İstemci parolası oluştur
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-Artık gerekli API erişimi, uygulama KIMLIĞI ve otomasyon betiklerinizde kullanabileceğiniz bir anahtar içeren bir uygulamanız var. Bir komut dosyasıyla etkinlik olaylarını nasıl alabileceğiniz hakkında bir örnek için bu makalenin ilerleyen kısımlarında bulunan PowerShell betiği bölümüne bakın.
+Uygun izinlerle bir uygulamayı kaydettikten sonra, bir komut dosyası ile etkinlik olaylarını nasıl alabileceğiniz hakkında bir örnek için bu makalenin ilerleyen kısımlarında bulunan PowerShell betiği bölümüne bakın.
 
 ### <a name="access-the-api"></a>API 'ye erişme
 
@@ -149,13 +113,14 @@ Aşağıdaki PowerShell betiği, Azure AD Raporlama API 'sinin nasıl sorgulanal
 Bu betiği [Azure Cloud Shell](overview.md)deneyebilirsiniz. Bunu uygulama KIMLIĞINIZ, gizli anahtar ve Azure AD B2C kiracınızın adı ile güncelleştirdiğinizden emin olun.
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -258,4 +223,4 @@ Makalenin önceki kısımlarında gösterilen örnek etkinlik olayının JSON te
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer yönetim görevlerini otomatikleştirebilir, örneğin, [.NET ile kullanıcıları yönetebilirsiniz](manage-user-accounts-graph-api.md).
+Diğer yönetim görevlerini otomatikleştirebilir, örneğin, [Microsoft Graph Azure AD B2C Kullanıcı hesaplarını yönetebilirsiniz](manage-user-accounts-graph-api.md).

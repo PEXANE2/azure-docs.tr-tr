@@ -8,12 +8,13 @@ ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: 3aa5b5085a6120ca513f0aeba344e7f541f0fd72
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+- cli-validate
+ms.openlocfilehash: 13431b62e64774a4c31cf95200def3ba77f973d7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713418"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523952"
 ---
 # <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması çalıştırma
 
@@ -21,7 +22,7 @@ ms.locfileid: "76713418"
 
 ![Azure App Service 'de Python Docgo Web uygulaması](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * PostgreSQL için Azure veritabanı veritabanı oluşturma ve bir Web uygulamasını buna bağlama
@@ -50,7 +51,7 @@ Yerel bir Terminal penceresinde, yerleşik `postgres` Kullanıcı olarak yerel P
 sudo su - postgres
 psql
 ```
-or
+veya
 ```PowerShell
 psql -U postgres
 ```
@@ -91,7 +92,7 @@ Uygulamanızı çalıştırmak için bir Python sanal ortamı oluşturun ve etki
 python3 -m venv venv
 source venv/bin/activate
 ```
-or
+veya
 ```PowerShell
 py -3 -m venv venv
 venv\scripts\activate
@@ -102,7 +103,7 @@ venv\scripts\activate
 ```bash
 source ./env.sh
 ```
-or
+veya
 ```PowerShell
 .\env.ps1
 ```
@@ -247,7 +248,7 @@ export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
 ```
-or
+veya
 ```powershell
 $Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
 $Env:DBUSER = "manager@<postgresql-name>"
@@ -259,7 +260,7 @@ Yerel Terminal pencerenizde `venv` ortamda, düzenlenen *env.sh* veya *env. ps1*
 ```bash
 source ./env.sh
 ```
-or
+veya
 ```PowerShell
 .\env.ps1
 ```

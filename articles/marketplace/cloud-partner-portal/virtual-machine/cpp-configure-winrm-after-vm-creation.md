@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817948"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481383"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Sanal makine oluşturulduktan sonra WinRM 'yi yapılandırma
 
@@ -25,7 +25,7 @@ Bu makalede, HTTPS üzerinden WinRM 'yi etkinleştirmek için mevcut bir Azure b
 
 ## <a name="enabling-port-traffic"></a>Bağlantı noktası trafiğini etkinleştirme
 
-HTTPS üzerinden WinRM protokolü, Azure Marketi 'nde sunulan önceden yapılandırılmış Windows VM 'lerde varsayılan olarak etkinleştirilmemiş 5896 numaralı bağlantı noktasını kullanır. Bu protokolü etkinleştirmek için aşağıdaki adımları kullanarak ağ güvenlik grubuna (NSG) [Azure Portal](https://portal.azure.com)yeni bir kural ekleyin.  NSG 'ler hakkında daha fazla bilgi için bkz. [güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview).
+HTTPS üzerinden WinRM protokolü, Azure Marketi 'nde sunulan önceden yapılandırılmış Windows VM 'lerde varsayılan olarak etkinleştirilmemiş 5986 numaralı bağlantı noktasını kullanır. Bu protokolü etkinleştirmek için aşağıdaki adımları kullanarak ağ güvenlik grubuna (NSG) [Azure Portal](https://portal.azure.com)yeni bir kural ekleyin.  NSG 'ler hakkında daha fazla bilgi için bkz. [güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
 1.    <*VM-adı*>   **> ayarları/ağ**> dikey pencere **sanal makinelerine** gidin.
 2.  Özelliklerini göstermek için NSG adına tıklayın (Bu örnekte, **testvm11002**):

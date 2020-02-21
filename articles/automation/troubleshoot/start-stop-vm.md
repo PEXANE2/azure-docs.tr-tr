@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966696"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505732"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü sorunlarını giderme
 
@@ -62,7 +62,7 @@ Dağıtımlar aşağıdaki nedenlerden biri nedeniyle başarısız olabilir:
 4. Log Analytics çalışma alanınızın üzerinde bir kilidi vardır.
 5. Eski bir Azurerd modülleri sürümüne veya Başlat/Durdur çözümüne sahipsiniz.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Sorununuz için olası çözümleri veya aranacak konumları görmek için aşağıdaki listeyi gözden geçirin:
 
@@ -92,7 +92,7 @@ Bu hata, aşağıdakilerden biri nedeniyle oluşabilir:
 3. Bir runbook 'ta çalıştırma hataları olabilir
 4. VM 'Ler dışarıda bırakılmış olabilir
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Sorununuz için olası çözümleri veya aranacak konumları görmek için aşağıdaki listeyi gözden geçirin:
 
@@ -110,7 +110,7 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* [Runas hesabınızın](../manage-runas-account.md) başlatılmaya veya durdurulmaya denediğiniz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama kimliğini sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
+* [Runas hesabınızın](../manage-runas-account.md) başlatılmaya veya durdurulmaya denediğiniz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
 
 * VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılamaz veya durdurulamaz. Çözümün dağıtıldığı Otomasyon hesabındaki **External_ExcludeVMNames** değişkeninde ayarlanan VM 'ler dışlandı. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
 
@@ -133,7 +133,7 @@ Bu hata, aşağıdakilerden biri nedeniyle oluşabilir:
 3. RunAs hesabı VM 'de yeterli izinlere sahip olmayabilir
 4. VM 'nin başlamasını veya durdurmasını durduran bir şey olabilir
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Sorununuz için olası çözümleri veya aranacak konumları görmek için aşağıdaki listeyi gözden geçirin:
 
@@ -149,9 +149,9 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* VM 'Leri başlatmak ve durdurmak için, Otomasyon hesabının RunAs hesabının VM 'de uygun izinlere sahip olması gerekir. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama kimliğini sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
+* VM 'Leri başlatmak ve durdurmak için, Otomasyon hesabının RunAs hesabının VM 'de uygun izinlere sahip olması gerekir. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
 
-* VM 'nin başlatma veya ayırmayı kaldırma konusunda bir sorun yaşıyorsanız, bu davranışa sanal makinenin bir sorunu neden olabilir. Bazı örnekler veya olası sorunlar, kapatmaya çalışırken bir güncelleştirme uygulanıyor, bir hizmetin askıda kalması ve daha fazlası). Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlüklerine** bakın. Ayrıca, olay günlüklerinde hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'niz hakkında sorun giderme hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde sorun giderme](../../virtual-machines/troubleshooting/index.md)
+* VM 'nin başlatma veya ayırmayı kaldırma konusunda bir sorun yaşıyorsanız, bu davranışa sanal makinenin bir sorunu neden olabilir. Bazı örnekler veya olası sorunlar, kapatmaya çalışırken bir güncelleştirme uygulanıyor, bir hizmetin askıda kalması ve daha fazlası). Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlüklerine** bakın. Ayrıca, olay günlüklerinde hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'niz hakkında sorun giderme hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde sorun giderme](../../virtual-machines/troubleshooting/index.yml)
 
 * Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin.
 
@@ -165,7 +165,7 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
 
 Hatanın nedeni birçok işlemlerden biri olabilir. Azure portal Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin. **İşler** sayfasından, iş başarısızlıklarını görüntülemek için Runbook 'ınızdan işler ' i arayın.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Azure Otomasyonu 'nda VM 'Leri başlatmak ve durdurmak için [saatlerin dışında VM 'Leri Başlat/Durdur çözümünün](../automation-solution-vm-management.md) kullanılması önerilir. Bu çözüm Microsoft tarafından yazılmıştır. Özel runbook 'lar Microsoft tarafından desteklenmez. [Runbook sorun giderme](runbooks.md) makalesini ziyaret ederek özel runbook için bir çözüm bulabilirsiniz. Bu makalede, tüm türlerdeki runbook 'lar için genel rehberlik ve sorun giderme işlemleri sağlanmaktadır. Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin.
 
@@ -179,7 +179,7 @@ Azure Otomasyonu 'nda VM 'Leri başlatmak ve durdurmak için [saatlerin dışın
 
 Bu, VM 'lerde hatalı etiketlemesinin oluşmasına neden olur.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Çözümün doğru yapılandırıldığından emin olmak için aşağıdaki adımları uygulayın.
 
@@ -199,7 +199,7 @@ Daha ayrıntılı ve VM 'Leri sırayla başlatmak ve durdurmak için çözümün
 
 Bu sorun, yanlış yapılandırılmış veya zaman aşımına uğramamış farklı çalıştır hesabından kaynaklanabilir. Ayrıca Otomasyon hesapları farklı çalıştır hesabı tarafından VM kaynaklarına yetersiz izinler nedeniyle olabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Farklı Çalıştır hesabınızın doğru şekilde yapılandırıldığını denetlemek için Azure portal Otomasyon hesabınıza gidin ve **Hesap ayarları**altında **Farklı Çalıştır hesapları** ' nı seçin. Burada, farklı çalıştır hesapları yanlış yapılandırılmamışsa veya zaman aşımına erdiyse bu durumda farklı çalıştır hesaplarınızın durumu görüntülenir.
 
@@ -207,7 +207,7 @@ Farklı Çalıştır hesabınız [yanlış yapılandırılmış](../manage-runas
 
 Farklı Çalıştır hesabınız için sertifikanın geçerliliği dolmuşsa, sertifikayı yenilemek için [otomatik olarak imzalanan sertifika yenilemesinde](../manage-runas-account.md#cert-renewal) listelenen adımları izleyin.
 
-Soruna eksik izinler neden olmuş olabilir. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama kimliğini sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
+Soruna eksik izinler neden olmuş olabilir. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
 
 ## <a name="other"></a>Senaryo: sorunum yukarıda listelenmiyor
 
@@ -222,7 +222,7 @@ Birçok kez hatanın nedeni çözümün eski ve güncel olmayan bir sürümü ku
 > [!NOTE]
 > VM'leri çalışma saatleri dışında başlat/durdur çözümü, çözümü dağıtırken Otomasyon hesabınıza içeri aktarılan Azure modülleri ile test edilmiştir. Çözüm şu anda Azure modülünün daha yeni sürümleriyle çalışmaz. Bu yalnızca VM'leri çalışma saatleri dışında başlat/durdur çözümünü çalıştırmak için kullandığınız Otomasyon hesabını etkiler. Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md) bölümünde açıklandığı gibi diğer otomasyon hesaplarınızda Azure modülünün daha yeni sürümlerini kullanmaya devam edebilirsiniz.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Birçok hatayı çözmek için çözümü kaldırmanız ve güncelleştirmeniz önerilir. Çözümü güncelleştirme hakkında bilgi edinmek için bkz. [saatlerde VM 'Leri Başlat/Durdur çözümünü güncelleştirme](../automation-solution-vm-management.md#update-the-solution). Ayrıca, herhangi bir hata aramak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) kontrol edebilirsiniz. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin.
 

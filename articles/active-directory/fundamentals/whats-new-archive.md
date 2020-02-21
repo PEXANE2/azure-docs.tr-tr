@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368009"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484494"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -1162,7 +1162,7 @@ Azure AD yöneticileri artık Microsoft Authenticator uygulama bildirimlerini ve
 
 - Telefon araması
 
-- SMS mesajı
+- Kısa mesaj
 
 Parolaları sıfırlamak için Microsoft Authenticator uygulamasını kullanma hakkında daha fazla bilgi için bkz. [Azure AD self servis parola sıfırlama-mobil uygulama ve SSPR (Önizleme)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr)
 
@@ -1426,7 +1426,7 @@ Dinamik üyelik kuralları için özel uzantı özellikleri kullanma hakkında d
 **Hizmet kategorisi:** Koşullu erişim  
 **Ürün yeteneği:** Kimlik güvenliği ve koruması
 
-Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)listesidir:
+Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)listesidir:
 
 - Microsoft To-Do
 
@@ -2753,7 +2753,7 @@ Aşağıdaki uygulamalar Şubat sonuna eklenecek:
 
 Daha fazla bilgi için bkz.
 
-- [Onaylanan istemci uygulaması gereksinimi](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Onaylanan istemci uygulaması gereksinimi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD uygulama tabanlı koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3044,14 +3044,14 @@ Daha fazla bilgi için bkz. [Azure AD 'de koşullu erişim](https://docs.microso
 **Hizmet kategorisi:** Koşullu erişim  
 **Ürün yeteneği:** Kimlik güvenliği ve koruması
 
-Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)listesidir:
+Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)listesidir:
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 Daha fazla bilgi için bkz.
 
-- [Onaylanan istemci uygulaması gereksinimi](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Onaylanan istemci uygulaması gereksinimi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD uygulama tabanlı koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Daha fazla bilgi için bkz. [Şirket içi tümleştirme](https://docs.microsoft.
 **Hizmet kategorisi:** Azure AD  
 **Ürün yeteneği:** Kimlik güvenliği ve koruması
 
-Artık Office 365 ve diğer Azure AD bağlı bulut uygulamalarına erişimi, [Azure AD uygulama tabanlı koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)kullanarak Intune uygulama koruma ilkelerini destekleyen [onaylanan istemci uygulamalarına](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) kısıtlayabilirsiniz. Intune uygulama koruma ilkelerini yapılandırma ve bu istemci uygulamalarını üzerindeki şirket verilerini korumak için kullanılır.
+Artık Office 365 ve diğer Azure AD bağlı bulut uygulamalarına erişimi, [Azure AD uygulama tabanlı koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)kullanarak Intune uygulama koruma ilkelerini destekleyen [onaylanan istemci uygulamalarına](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) kısıtlayabilirsiniz. Intune uygulama koruma ilkelerini yapılandırma ve bu istemci uygulamalarını üzerindeki şirket verilerini korumak için kullanılır.
 
 [Uygulama tabanlı](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) [cihaz tabanlı](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) koşullu erişim ilkeleriyle, kişisel ve şirket cihazlarındaki verileri koruma esnekliğine sahip olursunuz.
 
@@ -3189,14 +3189,14 @@ Azure AD Yönetim merkezinde artık şunları yapabilirsiniz:
 **Hizmet kategorisi:** Koşullu erişim  
 **Ürün yeteneği:** Kimlik güvenliği ve koruması
 
-[Onaylanan istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)listesine aşağıdaki uygulamalar eklenmiştir:
+[Onaylanan istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)listesine aşağıdaki uygulamalar eklenmiştir:
 
 - Microsoft Planner
 - Azure Information Protection 
 
 Daha fazla bilgi için bkz.
 
-- [Onaylanan istemci uygulaması gereksinimi](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Onaylanan istemci uygulaması gereksinimi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD uygulama tabanlı koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

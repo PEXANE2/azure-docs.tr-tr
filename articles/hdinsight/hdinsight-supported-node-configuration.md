@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775234"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484795"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight için varsayılan ve önerilen düğüm yapılandırması nelerdir?
 
@@ -30,7 +30,7 @@ Veri disklerine sahip tek küme türleri, hızlandırılmış yazma özelliği e
 
 Bu belgede kullanılan en düşük önerilen sanal makine türlerinin belirtimleri aşağıdaki tabloda özetlenmiştir.
 
-| Boyut              | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut              | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16/16x500           | 4 / 3000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32/32x500           | 8 / 6000                                       |
@@ -44,16 +44,16 @@ Bu belgede kullanılan en düşük önerilen sanal makine türlerinin belirtimle
 
 Her VM türünün belirtimleri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Genel amaçlı sanal makine boyutları: Dv2 serisi 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [Bellek için iyileştirilmiş sanal makine boyutları: Dv2 serisi 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [Genel amaçlı sanal makine boyutları: AV2 serisi 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [Genel amaçlı sanal makine boyutları: Dv2 serisi 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [Bellek için iyileştirilmiş sanal makine boyutları: Dv2 serisi 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [Genel amaçlı sanal makine boyutları: AV2 serisi 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Brezilya Güney ve Japonya Batı dışındaki tüm desteklenen bölgeler
 
 > [!Note]
 > PowerShell ve diğer betiklerdeki kullanım için SKU tanımlayıcısını almak üzere, aşağıdaki tablolardaki tüm VM SKU 'Larının başına `Standard_` ekleyin. Örneğin, `D12_v2` `Standard_D12_v2`hale gelir.
 
-| Küme türü | Hadoop | HBase | Etkileşimli Sorgu | Storm | Spark | ML Server | Kafka |
+| Küme türü | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Baş: varsayılan VM boyutu | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Baş: önerilen en düşük VM boyutları | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +68,7 @@ Her VM türünün belirtimleri hakkında daha fazla bilgi için aşağıdaki bel
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brezilya Güney ve Japonya Batı
 
-| Küme türü | Hadoop | HBase | Etkileşimli Sorgu | Storm | Spark | ML Services |
+| Küme türü | Hadoop | HBase | Interactive Query | Storm | Spark | ML Services |
 |---|---|---|---|---|---|---|
 | Baş: varsayılan VM boyutu | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Baş: önerilen en düşük VM boyutları | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

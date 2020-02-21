@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ab4569860d24a397816aa2e6c92f2e90f9a14ed1
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964660"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526558"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -36,12 +36,14 @@ Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilebilir o
 
 Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API sürümleri tüm Azure bölgelerinde kullanılabilir olmayabilir.
 
-Bölgeler                                        | Sonrası?                                 | Desteklenen Sürümler
+Regions                                        | Sonrası?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Çin 21Vianet](https://www.azure.cn/)                                            | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Çin 21Vianet](https://www.azure.cn/)                                            | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+
+Sürüm 2019-11-01 Şu anda dağıtıldı ve tüm bölgelerde kullanılamayabilir.
 
 Bu tablo, hizmet güncelleştirmeleri olduğunda ve/veya yeni desteklenen sürümler varsa güncelleştirilir.
 
@@ -102,9 +104,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Varsayılan olarak, Instance Metadata Service JSON biçiminde (`Content-Type: application/json`) verileri döndürür. Ancak, farklı API 'Ler isteniyorsa verileri farklı biçimlerde döndürür.
 Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir başvurusudur.
 
-eklentisi | Varsayılan veri biçimi | Diğer biçimler
+API | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | nesnesinde | metin
+/Instance | nesnesinde | text
 /scheduledevents | nesnesinde | yok
 /attested | nesnesinde | yok
 
@@ -126,11 +128,11 @@ Ayrıca, gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmam
 
 Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
 
-HTTP durum kodu | Neden
+HTTP Durum Kodu | Neden
 ----------------|-------
 200 TAMAM |
 400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
-404 Bulunamadı | İstenen öğe yok
+404 bulunamadı | İstenen öğe yok
 405 yöntemine Izin verilmiyor | Yalnızca `GET` istekleri destekleniyor
 429 çok fazla Istek | API Şu anda saniyede en çok 5 sorgu destekliyor
 500 hizmet hatası     | Bir süre sonra yeniden dene
@@ -451,7 +453,7 @@ Meta veri uç noktası aracılığıyla aşağıdaki API 'Ler mevcuttur:
 Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 kanıtlamak | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
-kimlik | Azure kaynakları için Yönetilen kimlikler. Bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+identity | Azure kaynakları için Yönetilen kimlikler. Bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 instance | Bkz. [örnek API 'si](#instance-api) | 2017-04-02
 scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 
@@ -474,12 +476,12 @@ placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../vi
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
-sağlayıcısını | VM sağlayıcısı | 2018-10-01
+sağlayıcısı | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM görüntüsünün yayımcısı | 2017-04-02
 resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
-isteyin | VM görüntüsü için belirli SKU | 2017-04-02
+sku | VM görüntüsü için belirli SKU | 2017-04-02
 storageProfile | [Depolama profilini](#storage-profile) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
 etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
@@ -721,7 +723,7 @@ AzurePublicCloud
 
 Azure ortamının bölgeleri ve değerleri aşağıda listelenmiştir.
 
- Bölgeler | Azure ortamı
+ Regions | Azure ortamı
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -826,7 +828,7 @@ zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu UTC zaman damga
 zaman damgası/expiresOn | İmzalanan belgenin süresi dolan UTC zaman damgası
 vmId |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | `2019-04-30` tanıtılan Sanal makine için Azure aboneliği
-isteyin | `2019-11-01` tanıtılan VM görüntüsü için belirli SKU
+sku | `2019-11-01` tanıtılan VM görüntüsü için belirli SKU
 
 #### <a name="verifying-the-signature"></a>İmza doğrulanıyor
 
@@ -913,17 +915,17 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veriler    | Açıklama
 --------|-----------------
-id      | Kaynak kimliği
+id      | Kaynak Kimliği
 teklif   | Platform veya Market görüntüsü teklifi
 publisher | Görüntü yayımcısı
-isteyin     | Görüntü SKU 'su
+sku     | Görüntü SKU 'su
 version | Platform veya Market görüntüsünün sürümü
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
 Veriler    | Açıklama
 --------|-----------------
-önbelleği | Önbelleğe alma gereksinimleri
+önbelleğe alma | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
 diffDiskSettings | Kısa ömürlü disk ayarları
 diskSizeGB | Diskin GB cinsinden boyutu
@@ -938,7 +940,7 @@ Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her
 
 Veriler    | Açıklama
 --------|-----------------
-önbelleği | Önbelleğe alma gereksinimleri
+önbelleğe alma | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
 diffDiskSettings | Kısa ömürlü disk ayarları
 diskSizeGB | Diskin GB cinsinden boyutu
@@ -1024,7 +1026,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 Dil | Örnek
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Git  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -1049,7 +1051,7 @@ Puppet | https://github.com/keirans/azuremetadata
 5. Hata `500 Internal Server Error`neden alıyorum?
    * İsteğinizi üstel geri dönüş sistemine göre yeniden deneyin. Sorun devam ederse Azure desteği ile iletişime geçin.
 6. Ek soruları/açıklamaları nerede paylaşabilirim?
-   * https://feedback.azure.com yorumlarınızı gönderin.
+   * https://feedback.azure.comyorumlarınızı gönderin.
 7. Bu, sanal makine ölçek kümesi örneği için mi çalışıyor?
    * Evet meta veri hizmeti ölçek kümesi örnekleri için kullanılabilir.
 8. Nasıl yaparım? hizmet için destek almak mı istiyorsunuz?

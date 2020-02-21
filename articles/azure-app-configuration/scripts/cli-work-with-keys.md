@@ -1,36 +1,34 @@
 ---
 title: Azure CLı betik örneği-uygulama yapılandırma deposundaki anahtar değerleriyle çalışma
 titleSuffix: Azure App Configuration
-description: Azure uygulama yapılandırma deposundaki anahtar değerleriyle çalışma hakkında bilgi sağlar
+description: Azure CLı betiği kullanarak uygulama yapılandırma deposundan anahtar değerleri oluşturun, görüntüleyin, güncelleştirin ve silin
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468194"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523666"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposundaki anahtar değerleriyle çalışma
 
-Bu örnek betik, bir Azure uygulama yapılandırma deposunda yeni bir anahtar değeri oluşturur, tüm mevcut anahtar değerlerini listeler, yeni oluşturulan anahtarın değerini güncelleştirir ve son olarak onu siler.
+Bu örnek betik nasıl yapılacağını göstermektedir:
+* Yeni bir anahtar-değer çifti oluşturun
+* Tüm mevcut anahtar-değer çiftlerini Listele
+* Yeni oluşturulan bir anahtarın değerini Güncelleştir
+* Yeni anahtar-değer çiftini Sil
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+Bu makale, Azure CLı sürüm 2,0 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu betik, bir uygulama yapılandırma deposundaki anahtar değerlerinde işlem yapmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu tabloda, örnek betiğimizde kullanılan komutlar listelenmektedir. 
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Anahtar-değer oluşturur veya güncelleştirir. |
-| [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Bir uygulama yapılandırma deposundaki anahtar değerlerini listeler. |
-| [az appconfig kV Delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Anahtar değerini siler. |
+| [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Anahtar-değer çifti oluşturun veya güncelleştirin. |
+| [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Bir uygulama yapılandırma deposundaki anahtar-değer çiftlerini listeleyin. |
+| [az appconfig kV Delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Anahtar-değer çiftini silin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

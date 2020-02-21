@@ -1,7 +1,7 @@
 ---
 title: Makine öğrenimi ardışık düzenleri hata ayıklama ve sorunlarını giderme
 titleSuffix: Azure Machine Learning
-description: Python için Azure Machine Learning SDK 'da makine öğrenimi ardışık düzenleri hata ayıklayın ve sorun giderin. İşlem hatları geliştirmek için ortak olan ve uzaktan yürütme sırasında ve betiklerinizde hata ayıklamanıza yardımcı olan ipuçları hakkında bilgi edinin.
+description: Python için Azure Machine Learning SDK 'da makine öğrenimi ardışık düzenleri hata ayıklayın ve sorun giderin. İşlem hatları geliştirmek için ortak olan ve uzaktan yürütme sırasında ve betiklerinizde hata ayıklamanıza yardımcı olan ipuçları hakkında bilgi edinin. Visual Studio Code kullanarak Machine Learning işlem hatlarınızı etkileşimli olarak hata ayıklamanızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,22 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769119"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485378"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenimi ardışık düzenleri hata ayıklama ve sorunlarını giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi](concept-ml-pipelines.md) işlem hatlarında hata ayıklamayı ve sorun gidermeyi öğreneceksiniz.
+Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi](concept-ml-pipelines.md) işlem hatlarında hata ayıklamayı ve sorun gidermeyi öğreneceksiniz. Bilgiler şu şekilde sunulmaktadır:
+
+* Azure Machine Learning SDK kullanarak hata ayıklama
+* Azure Machine Learning tasarımcısını kullanarak hata ayıklama
+* Application Insights kullanarak hata ayıkla
+* Visual Studio Code (VS Code) ve Visual Studio için Python Araçları (PTVSD) kullanarak etkileşimli olarak hata ayıklayın
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 'da hata ayıklama ve sorun giderme
 Aşağıdaki bölümler, işlem hatları oluştururken ortak olan genel bakışa genel bakış ve bir işlem hattında çalışan kodunuzda hata ayıklama için farklı stratejiler sağlar. İşlem hattını beklenen şekilde çalıştırmak için bir işlem hattı alırken sorun yaşadığınızda aşağıdaki ipuçlarını kullanın.
@@ -148,6 +153,239 @@ Ayrıca, işlem **hatları** veya **denemeleri** bölümlerindeki işlem hattı 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights hata ayıklama ve sorun giderme
 OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilgi için şu kılavuza bakın: [Application Insights Machine Learning işlem hatlarında hata ayıklama ve sorun giderme](how-to-debug-pipelines-application-insights.md)
+
+## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Visual Studio Code hata ayıklama ve sorun giderme
+
+Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Visual Studio Code (VS Code) ve Visual Studio için Python Araçları (PTVSD) kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
+
+### <a name="prerequisites"></a>Önkoşullar
+
+* __Azure sanal ağını__kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
+* İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.
+* __Sanal ağdaki__ bir Azure Machine Learning işlem kümesi ve __eğitim için işlem hattı tarafından kullanılır__.
+* __Sanal ağdaki__bir __geliştirme ortamı__ . Geliştirme ortamı aşağıdakilerden biri olabilir:
+
+    * Sanal ağdaki bir Azure sanal makinesi
+    * Sanal ağdaki bir not defteri VM 'sinin Işlem örneği
+    * Sanal bir özel ağ (VPN) tarafından sanal ağa bağlı bir istemci makinesi.
+
+Azure Machine Learning ile bir Azure sanal ağı kullanma hakkında daha fazla bilgi için bkz. Azure [sanal ağ Içindeki güvenli Azure ML deneme ve çıkarım işleri](how-to-enable-virtual-network.md).
+
+### <a name="how-it-works"></a>Nasıl çalışır?
+
+ML işlem hattı adımlarınız Python betikleri çalıştırır. Bu betikler aşağıdaki eylemleri gerçekleştirecek şekilde değiştirilir:
+    
+1. Çalıştıkları konağın IP adresini günlüğe kaydedin. Hata ayıklayıcıyı betiğe bağlamak için IP adresini kullanın.
+
+2. PTVSD hata ayıklama bileşenini başlatın ve bir hata ayıklayıcının bağlanmasını bekleyin.
+
+3. Geliştirme ortamınızdan, komut dosyasının çalıştığı IP adresini bulmak için eğitim süreci tarafından oluşturulan günlükleri izleyebilirsiniz.
+
+4. `launch.json` bir dosya kullanarak, hata ayıklayıcıyı bağlamak için IP adresine VS Code söylemiş olursunuz.
+
+5. Hata ayıklayıcıyı ekler ve komut dosyasında etkileşimli olarak ilereolursunuz.
+
+### <a name="configure-python-scripts"></a>Python betikleri yapılandırma
+
+Hata ayıklamayı etkinleştirmek için, ML işlem hattınızdaki adımlar tarafından kullanılan Python betiklerinde aşağıdaki değişiklikleri yapın:
+
+1. Aşağıdaki içeri aktarma deyimlerini ekleyin:
+
+    ```python
+    import ptvsd
+    import socket
+    from azureml.core import Run
+    ```
+
+1. Aşağıdaki bağımsız değişkenleri ekleyin. Bu bağımsız değişkenler, gereken şekilde hata ayıklayıcıyı etkinleştirmenizi ve hata ayıklayıcıyı iliştirmek için zaman aşımını ayarlamanıza olanak tanır:
+
+    ```python
+    parser.add_argument('--remote_debug', action='store_true')
+    parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the Azure ML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+    ```
+
+1. Aşağıdaki deyimleri ekleyin. Bu deyimler, kodun çalıştığı düğümün IP adresini günlüğe kaydetmek için geçerli çalışma bağlamını yükler:
+
+    ```python
+    global run
+    run = Run.get_context()
+    ```
+
+1. PTVSD ' i başlatan ve bir hata ayıklayıcının iliştirmesini bekleyen bir `if` deyimleri ekleyin. Zaman aşımından önce bir hata ayıklayıcı yoksa, komut dosyası normal olarak devam eder.
+
+    ```python
+    if args.remote_debug:
+        print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+        # Log the IP and port
+        ip = socket.gethostbyname(socket.gethostname())
+        print(f'ip_address: {ip}')
+        ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                            redirect_output=True)
+        # Wait for the timeout for debugger to attach
+        ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+        print(f'Debugger attached = {ptvsd.is_attached()}')
+    ```
+
+Aşağıdaki Python örneği, hata ayıklamayı sağlayan temel bir `train.py` dosyasını gösterir:
+
+```python
+# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license.
+
+import argparse
+import os
+import ptvsd
+import socket
+from azureml.core import Run
+
+print("In train.py")
+print("As a data scientist, this is where I use my training code.")
+
+parser = argparse.ArgumentParser("train")
+
+parser.add_argument("--input_data", type=str, help="input data")
+parser.add_argument("--output_train", type=str, help="output_train directory")
+
+# Argument check for remote debugging
+parser.add_argument('--remote_debug', action='store_true')
+parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the AML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+# Get run object, so we can find and log the IP of the host instance
+global run
+run = Run.get_context()
+
+args = parser.parse_args()
+
+# Start debugger if remote_debug is enabled
+if args.remote_debug:
+    print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+    # Log the IP and port
+    ip = socket.gethostbyname(socket.gethostname())
+    print(f'ip_address: {ip}')
+    ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                        redirect_output=True)
+    # Wait for the timeout for debugger to attach
+    ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+    print(f'Debugger attached = {ptvsd.is_attached()}')
+
+print("Argument 1: %s" % args.input_data)
+print("Argument 2: %s" % args.output_train)
+
+if not (args.output_train is None):
+    os.makedirs(args.output_train, exist_ok=True)
+    print("%s created" % args.output_train)
+```
+
+### <a name="configure-ml-pipeline"></a>ML ardışık düzenini yapılandırma
+
+PTVSD başlatmak ve çalıştırma bağlamını almak için gereken Python paketlerini sağlamak için bir [ortam]() oluşturun ve `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`ayarlayın. SDK sürümünü, kullanmakta olduğunuz bir sürümle eşleşecek şekilde değiştirin. Aşağıdaki kod parçacığı bir ortamın nasıl oluşturulacağını gösterir:
+
+```python
+# Use a RunConfiguration to specify some additional requirements for this step.
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# enable Docker 
+run_config.environment.docker.enabled = True
+
+# set Docker base image to the default CPU-based image
+run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+# use conda_dependencies.yml to create a conda environment in the Docker image for execution
+run_config.environment.python.user_managed_dependencies = False
+
+# specify CondaDependencies obj
+run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'],
+                                                                           pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
+```
+
+[Python betikleri Yapılandır](#configure-python-scripts) bölümünde, ml ardışık düzen adımlarınız tarafından kullanılan betiklerin iki yeni bağımsız değişkeni eklenmiştir. Aşağıdaki kod parçacığı, bileşen için hata ayıklamayı etkinleştirmek ve zaman aşımı ayarlamak için bu bağımsız değişkenlerin nasıl kullanılacağını gösterir. Ayrıca, `runconfig=run_config`ayarlayarak daha önce oluşturulan ortamın nasıl kullanılacağını gösterir:
+
+```python
+# Use RunConfig from a pipeline step
+step1 = PythonScriptStep(name="train_step",
+                         script_name="train.py",
+                         arguments=['--remote_debug', '--remote_debug_connection_timeout', 300],
+                         compute_target=aml_compute, 
+                         source_directory=source_directory,
+                         runconfig=run_config,
+                         allow_reuse=False)
+```
+
+İşlem hattı çalıştırıldığında, her adım bir alt çalıştırma oluşturur. Hata ayıklama etkinse, değiştirilen betik, alt çalıştırma için `70_driver_log.txt` aşağıdaki metne benzer bilgiler kaydeder:
+
+```text
+Timeout for debug connection: 300
+ip_address: 10.3.0.5
+```
+
+`ip_address` değerini kaydedin. Sonraki bölümde kullanılır.
+
+> [!TIP]
+> Bu işlem hattı adımı için alt çalıştırma için çalıştırma günlüklerinden IP adresini de bulabilirsiniz. Bu bilgileri görüntüleme hakkında daha fazla bilgi için bkz. [Azure ML deneme çalıştırmaları ve ölçümlerini izleme](how-to-track-experiments.md).
+
+### <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
+
+1. VS Code geliştirme ortamınıza Visual Studio için Python Araçları (PTVSD) yüklemek için şu komutu kullanın:
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    VS Code ile PTVSD kullanma hakkında daha fazla bilgi için bkz. [Uzaktan hata ayıklama](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
+
+1. Hata ayıklayıcıyı çalıştıran Azure Machine Learning işlem ile iletişim kurmak üzere VS Code yapılandırmak için yeni bir hata ayıklama yapılandırması oluşturun:
+
+    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __Launch. JSON__ adlı bir dosya açılır.
+
+    1. __Launch. JSON__ dosyasında `"configurations": [`içeren satırı bulun ve sonra aşağıdaki metni ekleyin. `"host": "10.3.0.5"` girişini, önceki bölümden günlüklerinizin döndürdüğü IP adresiyle değiştirin. `"localRoot": "${workspaceFolder}/code/step"` girdisini, hata ayıklanan betiğin bir kopyasını içeren bir yerel dizin olarak değiştirin:
+
+        ```json
+        {
+            "name": "Azure Machine Learning Compute: remote debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "10.3.0.5",
+            "redirectOutput": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/code/step1",
+                    "remoteRoot": "."
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > Konfigürasyonlar bölümünde zaten başka girdiler varsa, eklediğiniz koddan sonra bir virgül (,) ekleyin.
+
+        > [!TIP]
+        > En iyi yöntem, `localRoot` örnek değerin `/code/step1`başvurduğu neden olan ayrı dizinlerde komut dosyaları için kaynakların tutulmasını kullanmaktır.
+        >
+        > Birden çok betikte hata ayıklaması yapıyorsanız, farklı dizinlerde, her komut dosyası için ayrı bir yapılandırma bölümü oluşturun.
+
+    1. __Launch. JSON__ dosyasını kaydedin.
+
+### <a name="connect-the-debugger"></a>Hata ayıklayıcıyı bağlama
+
+1. VS Code açın ve betiğin yerel bir kopyasını açın.
+2. Komut dosyasının iliştirdikten sonra durdurulmasını istediğiniz kesme noktalarını ayarlayın.
+3. Alt işlem betiği çalıştırırken ve `Timeout for debug connection` günlüklerde görüntülenirken, F5 tuşunu kullanın veya __Hata Ayıkla__' yı seçin. İstendiğinde, __Azure Machine Learning işlem: uzaktan hata ayıklama__ yapılandırması ' nı seçin. Ayrıca, yan çubukta hata ayıklama simgesini, Azure Machine Learning: uzaktan hata ayıklama açılan menüsünden __Uzaktan hata ayıklama__ girişini seçebilir ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanabilirsiniz.
+
+    Bu noktada, VS Code işlem düğümündeki PTVSD öğesine bağlanır ve daha önce ayarladığınız kesme noktasında durmaktadır. Artık kodu çalışırken, değişkenleri görüntülerken vb. adımları izleyebilirsiniz.
+
+    > [!NOTE]
+    > Günlük `Debugger attached = False`belirten bir giriş görüntülüyorsa, zaman aşımı süresi doldu ve betik hata ayıklayıcı olmadan devam eder. İşlem hattını yeniden gönderme ve `Timeout for debug connection` iletiden sonra ve zaman aşımı süresi dolmadan önce hata ayıklayıcıyı bağlama.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

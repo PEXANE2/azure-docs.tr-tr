@@ -3,39 +3,39 @@ title: Azure uygulama yapılandırma eşitleme ile GitHub eylemlerini kullanma
 description: GitHub deposunda tanımlı eylemler gerçekleştirildiğinde uygulama yapılandırma örneğiniz için bir güncelleştirme tetiklemek üzere GitHub eylemlerini kullanın
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 01/14/2020
+ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9d60f1885a85fd7d45090f1cb4905a3d95d9d1d6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190389"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523722"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions kullanarak Uygulama Yapılandırması örneğinizi eşitleme
-Azure Uygulama yapılandırması, GitHub deposunda gerçekleştirilen bir eylem tarafından tetiklendiğinde bir uygulama yapılandırma örneğini güncelleştirmek için GitHub eylemlerini kullanır. Uygulama yapılandırmasını güncelleştirmek için GitHub iş akışlarından yararlanabilirsiniz ve uygulama yapılandırma güncelleştirmelerinin uygulama kodunu güncelleştirmek için kullanılan iş akışıyla tümleştirilmesini sağlayabilirsiniz.
+Azure Uygulama yapılandırması, GitHub deposunda gerçekleştirilen eylemlere göre bir uygulama yapılandırma örneğine yönelik güncelleştirmeleri tetiklemek için GitHub eylemlerini kullanır. GitHub iş akışları, yapılandırma güncelleştirmelerini tetikler ve bu güncelleştirmelerin uygulama kodunu güncelleştirmek için kullanılan iş akışında tümleştirilmesini etkinleştirir.
 
-GitHub eylemleri [iş akışı](https://help.github.com/articles/about-github-actions#workflow) , GitHub deponuzda tanımlanan otomatikleştirilmiş bir işlemdir. Bu işlem GitHub projenizi nasıl derleyip dağıtacağınızı gösterir. Azure Uygulama yapılandırması, kaynak deposunda değişiklik yapıldığında bir uygulama yapılandırma örneğinde güncelleştirmeleri etkinleştirmek için *Azure uygulama yapılandırma eşitleme* eylemini sağlar. 
+GitHub eylemleri [iş akışı](https://help.github.com/articles/about-github-actions#workflow) , GitHub deposunda otomatikleştirilmiş bir işlem tanımlar. Bu işlem GitHub projenizi nasıl derleyip dağıtacağınızı gösterir. Azure Uygulama yapılandırması, kaynak deposunda değişiklik yapıldığında bir uygulama yapılandırma örneğinde güncelleştirmeleri etkinleştirmek için *Azure uygulama yapılandırma eşitleme* eylemini sağlar. 
 
-Bir iş akışı, deponuzın `/.github/workflows/` yolunda bulunan bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını tanımlayan çeşitli adımları ve parametreleri içerir.
+Deponuzun `/.github/workflows/` yolunda bulunan bir YAML (. yıml) dosyası, iş akışınızı tanımlar. Bu tanım, iş akışının adımlarını ve parametrelerini içerir.
 
-Bir depoya gönderim gibi GitHub olayları bir GitHub eylem iş akışını tetikleyebilir.  Azure, belirtilen bir GitHub eylemi gerçekleştiğinde uygulama yapılandırma örneği güncelleştirmesini tetiklemeniz için *Azure uygulama yapılandırma eşitleme* eylemini sağlar. Bu, ekiplerin uygulama yapılandırma dosyalarını uygulama kodu ile yaptığı gibi gönderirken, gözden geçirirken veya dallandırırken GitHub 'ın temel özelliklerinden yararlanmasını sağlar.
+Bir depoya gönderim gibi GitHub olayları bir GitHub eylem iş akışını tetikleyebilir.  *Azure uygulama yapılandırma eşitleme* eylemi, belirtilen bir GitHub eylemi gerçekleştiğinde bir uygulama yapılandırma örneğinin güncelleştirilmesini tetiklemenize olanak sağlar. Uygulama kodu ile tıpkı uygulama yapılandırma dosyalarını gönderdiğinizde, gözden geçirirken veya dallandırdığınızda yapılandırma güncelleştirmelerini tetikleyebilirsiniz.
 
 GitHub [belgeleri](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) , GitHub iş akışlarının ve eylemlerinin ayrıntılı görünümünü sağlar. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Deponuzda GitHub eylemlerini etkinleştirme
-Bu GitHub eylemini kullanmaya başlamak için deponuza gidin ve **Eylemler** sekmesini seçin. "yeni iş akışı" na tıklayın ve ardından "iş akışını kendiniz ayarlayın". Buradan, Market 'te "Azure uygulama yapılandırma eşitlemesi" için arama yapın.
+Bu GitHub eylemini kullanmaya başlamak için deponuza gidin ve **Eylemler** sekmesini seçin. **Yeni Iş akışı**' na tıklayın, ardından **bir iş akışını kendiniz ayarlayın**. Son olarak, Market 'te "Azure uygulama yapılandırma eşitlemesi" için arama yapın.
 > [!div class="mx-imgBorder"]
 > ![Eylem sekmesini seçin](media/find-github-action.png)
 
 > [!div class="mx-imgBorder"]
-> ![uygulama yapılandırması SYN eylemini seçin](media/app-configuration-sync-action.png)
+> ![uygulama yapılandırma eşitleme eylemini seçin](media/app-configuration-sync-action.png)
 
 ## <a name="sync-configuration-files-after-a-push"></a>Bir gönderim sonrasında yapılandırma dosyalarını eşitleme
-Bu eylem, `appsettings.json`bir değişiklik gönderildiğinde Azure uygulama yapılandırma dosyalarını eşitler. Bir geliştirici `appsettings.json`bir değişiklik yaptığında ve bu değişikliği yaptığında, uygulama yapılandırma eşitleme eylemi uygulama yapılandırma örneğini yeni değerlerle güncelleştirir.
+Bu eylem, `appsettings.json`bir değişiklik gönderildiğinde Azure uygulama yapılandırma dosyalarını eşitler. Bir geliştirici `appsettings.json`bir değişiklik ilettiğinde, uygulama yapılandırma eşitleme eylemi uygulama yapılandırma örneğini yeni değerlerle güncelleştirir.
 
-Bu iş akışının ilk bölümü, eylemin *ana* dala `appsettings.json` içeren bir *gönderim* *üzerinde* tetikleyeceğini belirtir. İkinci bölüm, eylem tetiklendiğinde çalıştırılan işleri listeler. Eylem ilgili dosyaları denetler ve depoda gizli dizi olarak depolanan bağlantı dizesini kullanarak uygulama yapılandırma örneğini güncelleştirir.  GitHub 'da gizli dizileri kullanma hakkında daha fazla bilgi için, şifrelenmiş gizli dizileri oluşturma ve kullanma hakkında [Bu makaleye](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) bakın.
+Bu iş akışının ilk bölümü, eylemin *ana* dala `appsettings.json` içeren bir *gönderim* *üzerinde* tetikleyeceğini belirtir. İkinci bölüm, eylem tetiklendiğinde çalıştırılan işleri listeler. Eylem ilgili dosyaları denetler ve depoda gizli dizi olarak depolanan bağlantı dizesini kullanarak uygulama yapılandırma örneğini güncelleştirir.  GitHub 'da gizli dizileri kullanma hakkında daha fazla bilgi için bkz. [GitHub 'ın](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) şifrelenmiş gizli dizileri oluşturma ve kullanma hakkında daha fazla bilgi
 
 ```json
 on: 
@@ -62,7 +62,7 @@ jobs:
 ```
 
 ## <a name="use-a-dynamic-label-on-sync"></a>Eşitleme sırasında dinamik etiket kullan
-Önceki eylem, `appsettings.json` her güncelleştirildiğinde uygulama yapılandırma örneğini güncelleştirirler. Bu eylem her eşitleme için dinamik bir etiket ekler ve her eşitlemenin benzersiz şekilde tanımlanmasını sağlar.  Bu, kod değişikliklerinin hızlı bir şekilde yapılandırma değişiklikleriyle eşlenmenize olanak tanır.
+Önceki eylem, `appsettings.json` her güncelleştirildiğinde uygulama yapılandırma örneğini güncelleştirir. Bu eylem, her eşitlemede bir dinamik etiket ekler ve böylece her bir eşitleme benzersiz şekilde tanımlanabilir ve kod değişikliklerinin yapılandırma değişikliklerine eşlenmesine izin verebilir.
 
 Bu iş akışının ilk bölümü, eylemin *ana* dala `appsettings.json` içeren bir *gönderim* *üzerinde* tetikleyeceğini belirtir. İkinci bölüm, işleme karmasını temel alan yapılandırma güncelleştirmesi için benzersiz bir etiket oluşturan bir işi çalıştırır. Ardından iş, bu güncelleştirme için yeni değerlerle ve benzersiz etiketle birlikte uygulama yapılandırma örneğini güncelleştirir.
 
@@ -130,7 +130,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>GitHub eylemini sınırlandırmak için maksimum derinliği kullanın
 İç içe geçmiş JSON özniteliklerinin varsayılan davranışı nesnenin tamamını düzleştirebilir.  Aşağıdaki JSON bu anahtar-değer çiftini tanımlar:
 
-| Anahtar | Değer |
+| Anahtar | Value |
 | --- | --- |
 | Nesne: Iç: ınnerkey | Innervalue |
 
@@ -143,6 +143,7 @@ jobs:
     }
 }
 ```
+
 İç içe yerleştirilmiş nesnenin yapılandırma örneğine itilmiş olması amaçlanıyorsa, doğru derinlikte düzleştirmeyi durdurmak için *derinlik* değerini kullanabilirsiniz. 
 
 ```json
@@ -170,9 +171,9 @@ jobs:
           depth: 2 
 ```
 
-2 derinliği verildiğinde, yukarıdaki örnek şu anahtarı döndürür: değer çifti:
+2 derinliği verildiğinde, yukarıdaki örnek şu anahtar-değer çiftini döndürür:
 
-| Anahtar | Değer |
+| Anahtar | Value |
 | --- | --- |
 | Nesne: Iç | {"Innerkey": "ınnervalue"} |
 
@@ -183,9 +184,9 @@ Giriş parametreleri, çalışma zamanı sırasında eylem tarafından kullanıl
 > Giriş kimlikleri büyük/küçük harfe duyarlıdır.
 
 
-| Giriş adı | Gerekli mi? | Değer |
+| Giriş adı | Gerekli mi? | Value |
 |----|----|----|
-| configurationFile | Evet | Deponun köküne göre depodaki yapılandırma dosyasının yolu.  Glob desenleri desteklenir ve birden çok dosya içerebilir. |
+| configurationFile | Evet | Depodaki yapılandırma dosyasının göreli yolu.  Glob desenleri desteklenir ve birden çok dosya içerebilir. |
 | format | Evet | Yapılandırma dosyasının dosya biçimi.  Geçerli biçimler şunlardır: JSON, YAML, Özellikler. |
 | connectionString | Evet | Uygulama yapılandırma örneği için bağlantı dizesi. Bağlantı dizesi GitHub deposunda bir gizli dizi olarak depolanmalıdır ve yalnızca gizli ad iş akışında kullanılmalıdır. |
 | ayırıcı | Evet | Yapılandırma dosyası anahtar-değer çiftlerine düzleştirilmesi sırasında kullanılan ayırıcı.  Geçerli değerler:. , ; : - _ __ / |

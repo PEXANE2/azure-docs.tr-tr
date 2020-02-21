@@ -1,5 +1,5 @@
 ---
-title: DSVM 'deki üretkenlik araçları
+title: Üretkenlik araçları
 titleSuffix: Azure Data Science Virtual Machine
 description: Veri bilimi sanal makinelerinde üretkenlik araçları hakkında bilgi edinin.
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, team data science Process'i
@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: df415ce06afa8be80c0e0ed4375950e20474bcbb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cfafd680e4f4907248d3d79a504aa04696988021
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615482"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526085"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi üretkenlik araçları
 

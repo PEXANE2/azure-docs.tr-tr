@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896431"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499037"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için yönetim özellikleri
 
 Privileged Identity Management 'deki Azure AD rolleri için yönetim deneyimi, Azure AD rollerinin ve Azure Kaynak rollerinin nasıl yönetildiğini birleştirmek üzere güncelleştirilmiştir. Daha önce Azure Kaynak rollerinin Privileged Identity Management, Azure AD rolleri için kullanılamayan birkaç temel özellik içeriyordu.
 
 Güncelleştirme şu anda kullanıma sunulmakta olduğundan, ikisini tek bir yönetim deneyimine birleştiriyoruz ve Azure AD rolleri için Azure Kaynak rolleri için aynı işlevselliğe sahip olursunuz. Bu makalede, güncelleştirilmiş özellikler ve tüm gereksinimler hakkında bilgilendirir.
+
 
 ## <a name="time-bound-assignments"></a>Zamana sınırlı atamalar
 

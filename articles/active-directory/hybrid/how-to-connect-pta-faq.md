@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932385"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484426"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -35,16 +35,16 @@ Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulama hakkı
 
 Geçişli kimlik doğrulaması, ücretsiz bir özelliktir. Kullanmak için Azure AD 'nin ücretli sürümlerinin olması gerekmez.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>[Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [Microsoft Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)geçişli kimlik doğrulaması var mı?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>[Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [Microsoft Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)geçişli kimlik doğrulaması var mı?
 
 Hayır. Doğrudan kimlik doğrulaması yalnızca dünya çapındaki Azure AD örneğinde kullanılabilir.
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) doğrudan kimlik doğrulamasıyla çalışır mı?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) doğrudan kimlik doğrulamasıyla çalışır mı?
 
 Evet. Azure Multi-Factor Authentication dahil tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>"UserPrincipalName" yerine Kullanıcı adı olarak "alternatif KIMLIK" olarak geçiş kimlik doğrulamasını destekliyor mu?
-Sınırlı bir ölçüde, geçişli kimlik doğrulaması, Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak alternatif KIMLIĞI destekler. Önkoşul olarak Azure AD Connect, şirket içi Active Directory `UserPrincipalName` özniteliğini Azure AD 'ye eşitlemenizi gerektirir. Bu, şirket içi AD ve Azure AD 'deki `UserPrincipalName` özdeş hale gelmesine neden olur. Şirket içi AD 'den Azure AD 'ye UPN olarak eşitlemek için başka bir öznitelik kullanmak istiyorsanız, Parola karması eşitleme veya AD FS kullanmanız gerekir. Daha fazla bilgi için [Azure AD Connect özel yüklemesi](how-to-connect-install-custom.md). Tüm Office 365 uygulamaları `Alternate ID`desteklemez. Belirli uygulamanın belge desteği bildirimine bakın.
+Sınırlı bir ölçüde, geçişli kimlik doğrulaması, Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak alternatif KIMLIĞI destekler. Önkoşul olarak Azure AD Connect, şirket içi Active Directory `UserPrincipalName` özniteliğini Azure AD 'ye eşitlemenizi gerektirir. Bu, şirket içi AD ve Azure AD 'deki `UserPrincipalName` özdeş hale gelmesine neden olur. Şirket içi AD 'den Azure AD 'ye UPN olarak eşitlemek için başka bir öznitelik kullanmak istiyorsanız, Parola karması eşitleme veya AD FS kullanmanız gerekir. Daha fazla bilgi için bkz. [özel Azure AD Connect yüklemesi](how-to-connect-install-custom.md). Tüm Office 365 uygulamaları `Alternate ID`desteklemez. Belirli uygulamanın belge desteği bildirimine bakın.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Parola karması eşitlemesi doğrudan kimlik doğrulamasına geri dönüş görevi görür mi?
 
@@ -54,7 +54,7 @@ Hayır. Geçişli kimlik doğrulaması, Parola karması eşitlemesine otomatik o
 
 Parola karması eşitlemeden oturum açma yöntemini doğrudan kimlik doğrulamaya geçirmek için Azure AD Connect kullandığınızda, geçişli kimlik doğrulama, yönetilen etki alanlarında kullanıcılarınız için birincil oturum açma yöntemi olur. Lütfen daha önce parola karması eşitlemesi tarafından eşitlenen tüm kullanıcıların parola karmalarını Azure AD 'de depolandığına emin olun.
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Bir [Azure AD uygulama ara sunucusu](../manage-apps/application-proxy.md) bağlayıcısını doğrudan kimlik doğrulama aracısıyla aynı sunucuya yükleyebilir miyim?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Bir [Azure AD uygulama ara sunucusu](../manage-apps/application-proxy.md) bağlayıcısını doğrudan kimlik doğrulama aracısıyla aynı sunucuya yükleyebilir miyim?
 
 Evet. Doğrudan kimlik doğrulama aracısının yeniden markalı sürümleri, sürüm 1.5.193.0 veya üzeri, bu yapılandırmayı destekler.
 
@@ -107,7 +107,7 @@ Hayır, tek bir sunucuya yalnızca bir geçişli kimlik doğrulama aracısı yü
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Doğrudan kimlik doğrulama aracıları tarafından kullanılan sertifikaları el ile yenilemem gerekir mi?
 
-Her geçişli kimlik doğrulama Aracısı ve Azure AD arasındaki iletişimin sertifika tabanlı kimlik doğrulaması kullanılarak güvenliği sağlanır. Bu [Sertifikalar Azure AD tarafından her birkaç ayda bir otomatik olarak yenilenir](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Bu sertifikaları el ile yenilemeniz gerekmez. Daha eski olan sertifikaları gerektiği şekilde temizleyebilirsiniz.
+Her geçişli kimlik doğrulama Aracısı ve Azure AD arasındaki iletişimin sertifika tabanlı kimlik doğrulaması kullanılarak güvenliği sağlanır. Bu [Sertifikalar Azure AD tarafından her birkaç ayda bir otomatik olarak yenilenir](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). Bu sertifikaları el ile yenilemeniz gerekmez. Daha eski olan sertifikaları gerektiği şekilde temizleyebilirsiniz.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Doğrudan kimlik doğrulama aracısını kaldırmak Nasıl yaparım??
 

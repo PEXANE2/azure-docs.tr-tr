@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772406"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485463"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
@@ -23,7 +23,6 @@ MariaDB sunucusu için Azure veritabanı oluşturmak için üç farklı fiyatlan
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Sanal çekirdek başına bellek | 2 GB | 5 GB | 10 GB |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
-| Depolama türü | Azure Standart depolama | Azure Premium Depolama | Azure Premium Depolama |
 | Veritabanı yedekleme saklama süresi | 7-35 gün | 7-35 gün | 7-35 gün |
 
 Fiyatlandırma katmanını seçmek için, başlangıç noktası olarak aşağıdaki tabloyu kullanın.
@@ -46,7 +45,7 @@ Sağladığınız depolama alanı, MariaDB sunucusu için Azure veritabanınız 
 
 |    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
-| Depolama türü | Azure Standart depolama | Azure Premium Depolama | Azure Premium Depolama |
+| Depolama türü | Temel depolama | Genel Amaçlı depolama | Genel Amaçlı depolama |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
 | Depolama artış boyutu | 1 GB | 1 GB | 1 GB |
 | IOPS | Değişken |3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS |

@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c9eb8b3d909313470ee9febdc5b1c37eea834b08
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084504"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484052"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -91,6 +91,14 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. **ViewController. Swift** 'u düzenleyin ve ' Let kAuthority ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin:
+>    ```swift
+>    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
+>    ```
+> 1. **ViewController. Swift** 'u düzenleyin ve ' Let kGraphEndpoint ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin:
+>    ```swift
+>    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
+>    ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
 > 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp > **kaynak kodu** **olarak aç** ' ı seçin.
 > 1. Yalnızca iOS için, dict kök düğümünün altında `CFBundleURLSchemes`, portalda girdiğiniz ***paket kimliğiyle*** değiştirin.
@@ -117,6 +125,16 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. [Azure AD Ulusal bulutları](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)için bir uygulama oluşturuyorsanız, ' Let kGraphEndpoint ' ve ' Let kAuthority ' ile başlayan satırı doğru uç noktalarla değiştirin. Genel erişim için varsayılan değerleri kullanın:
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.com/"
+>     let kAuthority = "https://login.microsoftonline.com/common"
+>     ```
+> 1. Diğer uç noktalar [burada](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)belgelenmiştir. Örneğin, Azure AD Almanya ile hızlı başlangıcı çalıştırmak için aşağıdakileri kullanın:
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.de/"
+>     let kAuthority = "https://login.microsoftonline.de/common"
+>     ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
 > 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp > **kaynak kodu** **olarak aç** ' ı seçin.
 > 1. Yalnızca iOS için, dict kök düğümünün altında `Enter_the_bundle_Id_Here`, portalda kullandığınız ***paket kimliğiyle*** değiştirin.
@@ -170,7 +188,7 @@ CocoaPods yükleme komutunu çalıştır:
 import MSAL
 ```
 
-Sonra da şu kodu kullanarak MSAL başlatın:
+Sonra şu kodu kullanarak MSAL'yi başlatın:
 
 ```swift
 let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)

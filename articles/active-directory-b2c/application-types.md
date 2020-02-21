@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8c98149d9e9ff65b7b18762f0f17d19053f2f49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec97f986c4472f793c2d38ded2a1c6873b1ee08d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846763"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482794"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C kullanılabilecek uygulama türleri
 
@@ -109,7 +109,7 @@ Azure AD B2C'yi kullanarak bir web API'sini nasıl güvence altına alacağını
 
 Mobil ve Masaüstü uygulamaları gibi cihazlarda yüklü olan uygulamaların, genellikle kullanıcı adına arka uç hizmetlerine veya Web API 'Lerine erişmesi gerekir. Yerel uygulamalarınıza özelleştirilmiş kimlik yönetimi deneyimleri ekleyebilir ve Azure AD B2C ve [OAuth 2,0 yetkilendirme kodu akışını](authorization-code-flow.md)kullanarak arka uç hizmetlerini güvenle çağırabilirsiniz.
 
-Bu akışta, uygulama [ilkeleri](user-flow-overview.md) yürütür ve Kullanıcı ilkeyi tamamladıktan sonra Azure AD 'den bir `authorization_code` alır. `authorization_code`, uygulamanın, oturum açmış olan kullanıcı adına arka uç hizmetlerini çağırma iznini temsil eder. Uygulama daha sonra bir `access_token` ve `refresh_token`için arka planda `authorization_code` değiş tokuş edebilir.  Uygulama, HTTP isteklerindeki bir arka uç Web API 'sine kimlik doğrulaması yapmak için `access_token` kullanabilir. Ayrıca eskisinin süresi dolduğunda yeni bir `access_token` almak için `refresh_token` öğesini kullanabilir.
+Bu akışta, uygulama [ilkeleri](user-flow-overview.md) yürütür ve Kullanıcı ilkeyi tamamladıktan sonra Azure AD 'den bir `authorization_code` alır. `authorization_code`, uygulamanın, oturum açmış olan kullanıcı adına arka uç hizmetlerini çağırma iznini temsil eder. Uygulama daha sonra bir `access_token` ve `refresh_token`için arka planda `authorization_code` değiş tokuş edebilir.  Uygulama, HTTP isteklerindeki bir arka uç Web API 'sine kimlik doğrulaması yapmak için `access_token` kullanabilir. Ayrıca eskisinin süresi dolduğunda yeni bir `refresh_token` almak için `access_token` öğesini kullanabilir.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
@@ -125,7 +125,7 @@ Uzun süre çalışan süreçler içeren veya bir kullanıcının varlığı olm
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API'si zincirleri (temsili akış)
 
-Çoğu mimari başka bir aşağı akış web API'si çağırmayı gerektiren bir web API'si içerir; her iki API de Azure AD B2C tarafından güvence altına alınır. Bu senaryo, bir Web API 'SI arka ucuna sahip olan yerel istemcilerde ortaktır ve Microsoft Graph API 'SI veya Azure AD Graph API gibi bir Microsoft çevrimiçi hizmetini çağırır.
+Çoğu mimari başka bir aşağı akış web API'si çağırmayı gerektiren bir web API'si içerir; her iki API de Azure AD B2C tarafından güvence altına alınır. Bu senaryo, bir Web API 'SI arka ucuna sahip olan yerel istemcilerde ortaktır ve Microsoft Graph API gibi bir Microsoft Online hizmetini çağırır.
 
 Bu zincirli web API'si senaryosu, temsili akış olarak da bilinen OAuth 2.0 JWT taşıyıcı kimlik bilgisi yetkisi kullanılarak desteklenebilir.  Ancak temsili akış şu anda Azure AD B2C’de uygulanmamıştır.
 

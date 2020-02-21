@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425213"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484443"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
@@ -341,7 +341,7 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 
 ## <a name="queues"></a>sıralar
 
-Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
+Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue-output.md#host-json)bölümünde bulunabilir.  
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -349,7 +349,7 @@ Yapılandırma ayarı, [SendGrid Tetikleyicileri ve bağlamaları](functions-bin
 
 ## <a name="servicebus"></a>serviceBus
 
-Yapılandırma ayarı, [Service Bus Tetikleyiciler ve bağlamalarda](functions-bindings-service-bus.md#host-json)bulunabilir.
+Yapılandırma ayarı, [Service Bus Tetikleyiciler ve bağlamalarda](functions-bindings-service-bus-output.md#host-json)bulunabilir.
 
 ## <a name="singleton"></a>Adet
 

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896395"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526153"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -40,13 +40,15 @@ Faturalandırmayla ilgili [Tetikleyiciler](#triggers) ve [Eylemler](#actions)iç
 
 ## <a name="fixed-pricing-model"></a>Sabit fiyatlandırma modeli
 
-Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , bir Azure sanal ağındaki kaynaklara erişebilen Logic Apps oluşturmanız ve çalıştırmanız için özel, yalıtılmış ve ayrılmış bir yöntem sağlar. Bir ıSE içinde çalışan yeni Logic Apps için, bu yetenekler için [sabit bir aylık fiyat](https://azure.microsoft.com/pricing/details/logic-apps) ödeyin:
+Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , bir Azure sanal ağındaki kaynaklara erişebilen Logic Apps oluşturmanız ve çalıştırmanız için yalıtılmış bir yol sağlar. Bir ıSE içinde çalışan yeni Logic Apps için, bu yetenekler için [sabit bir aylık fiyat](https://azure.microsoft.com/pricing/details/logic-apps) ödeyin:
 
-* [Yerleşik Tetikleyiciler ve eylemler](../connectors/apis-list.md#built-in)
+* [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler
 
-* [Standart bağlayıcılar](../connectors/apis-list.md#managed-connectors)
+  Bir ıSE 'de, yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler ve Logic Apps ile aynı Ise 'de çalışır.
 
-* İstediğiniz kadar bağlantı olan [Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors)
+* [Standart](../connectors/apis-list.md#managed-connectors) bağlayıcılar ve [Kurumsal](../connectors/apis-list.md#enterprise-connectors) bağlayıcılar (istediğiniz kadar kurumsal bağlantı)
+
+   **Ise** etiketini görüntüleyen standart ve kurumsal bağlayıcılar, Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe ve genel Logic Apps hizmetinde çalışan bağlayıcılar. Sabit aylık fiyatlandırma Ayrıca, bunları bir ıSE içinde çalışan Logic Apps ile kullandığınızda küresel hizmette çalışan bağlayıcılar için de geçerlidir.
 
 * [Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'nuzu temel alarak, ek ücret ödemeden [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı:
 
@@ -60,12 +62,9 @@ Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-netwo
 
   * **Geliştirici SKU 'su**: 4 ' e kadar standart hesap veya toplam 5 Standart hesap. Temel hesap yok.
 
-Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
+  Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
 
-Premium ıSE SKU 'SU için, temel birim sabit kapasiteye sahiptir, bu nedenle daha fazla işleme gerekiyorsa, oluşturma sırasında veya [daha sonra daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). Geliştirici ıSE SKU 'SU daha fazla ölçek birimi ekleme yeteneğine sahip değildir. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir.
-
-> [!NOTE]
-> Bir ıSE 'de, yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler ve Logic Apps ile aynı Ise 'de çalışır. **Ise** etiketini görüntüleyen standart ve kurumsal bağlayıcılar, Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe ve genel Logic Apps hizmetinde çalışan bağlayıcılar.
+Premium ıSE SKU 'sunu seçerseniz, temel birim sabit kapasiteye sahiptir. Daha fazla işleme ihtiyacınız varsa, oluşturma sırasında veya [daha sonra daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). Geliştirici ıSE SKU 'SU daha fazla ölçek birimi ekleme yeteneğine sahip değildir. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir.
 
 Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
 

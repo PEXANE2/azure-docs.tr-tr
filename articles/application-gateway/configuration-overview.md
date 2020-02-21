@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714863"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485089"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -210,7 +210,7 @@ Yol tabanlı bir kural için, her bir URL yoluna karşılık gelen birden fazla 
 
 Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/\** tarafından belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
 
-Yeniden yönlendirmeler hakkında daha fazla bilgi için bkz. [Application Gateway yönlendirmeye genel bakış](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Yeniden yönlendirmeler hakkında daha fazla bilgi için bkz. [Application Gateway yönlendirmeye genel bakış](redirect-overview.md).
 
 #### <a name="redirection-type"></a>Yeniden yönlendirme türü
 
@@ -227,24 +227,24 @@ Trafiği bir dinleyicisinden ağ geçidinde diğerine yeniden yönlendirmek içi
 ![Application Gateway bileşenleri iletişim kutusu](./media/configuration-overview/configure-redirection.png)
 
 HTTP-HTTPS yeniden yönlendirmesi hakkında daha fazla bilgi için bkz.:
-- [Azure portal kullanarak HTTP-HTTPS yönlendirmesi](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [PowerShell kullanarak HTTP-to-HTTPS yönlendirmesi](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Azure CLı kullanarak HTTP-HTTPS yönlendirmesi](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [Azure portal kullanarak HTTP-HTTPS yönlendirmesi](redirect-http-to-https-portal.md)
+- [PowerShell kullanarak HTTP-to-HTTPS yönlendirmesi](redirect-http-to-https-powershell.md)
+- [Azure CLı kullanarak HTTP-HTTPS yönlendirmesi](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Dış site
 
 Bu kuralla ilişkilendirilen dinleyicide trafiği bir dış siteye yönlendirmek istediğinizde dış site ' yi seçin. Sorgu dizesini, yeniden yönlendirme hedefine iletilen istekteki özgün istekten eklemeyi seçebilirsiniz. Yolu özgün istekte bulunan dış siteye iletmeyin.
 
 Yeniden yönlendirme hakkında daha fazla bilgi için bkz.
-- [PowerShell kullanarak trafiği dış siteye yönlendirme](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [CLı kullanarak trafiği dış siteye yönlendirme](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [PowerShell kullanarak trafiği dış siteye yönlendirme](redirect-external-site-powershell.md)
+- [CLı kullanarak trafiği dış siteye yönlendirme](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>HTTP üstbilgisi ayarını yeniden yazın
 
 Bu ayar, istek ve yanıt paketleri istemci ile arka uç havuzları arasında hareket ederken HTTP isteği ve yanıt üst bilgilerini ekler, kaldırır veya günceller. Daha fazla bilgi için bkz.
 
- - [HTTP üstbilgilerini yeniden yazma genel bakış](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [HTTP üstbilgisini yeniden yazmayı yapılandırma](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [HTTP üstbilgilerini yeniden yazma genel bakış](rewrite-http-headers.md)
+ - [HTTP üstbilgisini yeniden yazmayı yapılandırma](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP ayarları
 
@@ -252,7 +252,18 @@ Application Gateway, burada belirttiğiniz yapılandırmayı kullanarak trafiği
 
 ### <a name="cookie-based-affinity"></a>Tanımlama bilgisi tabanlı benzeşim
 
-Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak istediğinizde yararlıdır. Ağ Geçidi ile yönetilen tanımlama bilgileri, Application Gateway 'in sonraki trafiği işlenmek üzere bir kullanıcı oturumundan aynı sunucuya yönlendirmesine izin verir. Oturum durumu, bir Kullanıcı oturumu için sunucuda yerel olarak kaydedildiğinde bu önemlidir. Uygulama, tanımlama bilgisi tabanlı benzeşimi işleyemez, bu özelliği kullanamazsınız. Bunu kullanmak için, istemcilerin tanımlama bilgilerini desteklemesini sağlayın.
+Azure Application Gateway, kullanıcı oturumlarını sürdürmek için ağ geçidi ile yönetilen tanımlama bilgilerini kullanır. Kullanıcı Application Gateway ilk isteği gönderdiğinde, benzeşim tanımlama bilgisini taşıyan sonraki isteklerin aynı arka uç sunucusuna yönlendirilmesi için oturum ayrıntılarını içeren bir karma değere sahip yanıtta benzeşim tanımlama bilgisini ayarlar. sürekliliği koruyun. 
+
+Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak ve oturum durumunun bir Kullanıcı oturumu için sunucuda yerel olarak kaydedilmesi durumunda yararlıdır. Uygulama, tanımlama bilgisi tabanlı benzeşimi işleyemez, bu özelliği kullanamazsınız. Bunu kullanmak için, istemcilerin tanımlama bilgilerini desteklemesini sağlayın.
+
+**19 şubat 2020**' den Itibaren, [kmıum](https://www.chromium.org/Home) [V80 güncelleştirmesi](https://chromiumdash.appspot.com/schedule) , SameSite özniteliği olmayan http çerezlerini SameSite = LAX olarak değerlendirilecek bir mantarih getirir. CORS (çıkış noktaları arası kaynak paylaşımı) istekleri söz konusu olduğunda, tanımlama bilgisinin bir üçüncü taraf bağlamında gönderilmesi gerekiyorsa, "SameSite = None; kullanması gerekir Güvenli "öznitelikleri ve yalnızca HTTPS üzerinden gönderilmesi gerekir. Aksi halde, yalnızca HTTP senaryosunda, tarayıcı tanımlama bilgilerini üçüncü taraf bağlamında göndermez. Bu güncelleştirmenin Chrome 'dan hedefi, güvenliği artırmaktır ve siteler arası Istek sahteciliği (CSRF) saldırılarından kaçınmaktır. 
+
+Bu değişikliği desteklemek için, Application Gateway (tüm SKU türleri), benzer olan mevcut **Applicationgatewaybenzeşim** tanımlama bilgisine ek olarak **Applicationgatewayaffinitycors** adlı başka bir özdeş tanımlama bilgisine ekleme ve bu tanımlama bilgisinin artık iki daha fazla özniteliğe **"SameSite = none;" sahip olacağı anlamına gelir. Güvenli "** , geçici kaynak istekleri için de yapışkan oturumun korunabilmesi için eklenmiştir.
+
+Varsayılan benzeşim tanımlama bilgisi adının **Applicationgatewaybenzeşim** olduğunu ve bu kullanıcının bu kullanıcı tarafından değiştirilebileceğini lütfen unutmayın. Özel bir benzeşim tanımlama bilgisi adı kullanıyorsanız, CORS olarak CORS ile ek bir tanımlama bilgisi eklenir. Örneğin, **customcookie enamecors**.
+
+> [!NOTE]
+> **SameSite = None** özniteliği ayarlanmamışsa, tanımlama bilgisinin da **güvenli** bayrağını içermesi ve **https**üzerinden gönderilmesi gerekir. Bu nedenle, CORS üzerinden oturum benzeşimi gerekliyse, iş yükünüzü HTTPS 'ye geçirmeniz gerekir. Burada Application Gateway için SSL yük boşaltma ve uçtan uca SSL belgelerine bakın: [genel bakış](ssl-overview.md), [SSL yük boşaltma 'Yı yapılandırma](create-ssl-portal.md)ve [uçtan uca SSL 'yi yapılandırma](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Bağlantı boşaltma
 
@@ -262,7 +273,7 @@ Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç h
 
 Application Gateway, arka uç sunucularına yönlendirme istekleri için hem HTTP hem de HTTPS 'yi destekler. HTTP ' yi seçerseniz, arka uç sunucularının trafiği şifrelenmemiş olur. Şifrelenmemiş iletişim kabul edilebilir değilse, HTTPS seçeneğini belirleyin.
 
-Dinleyicide HTTPS ile birleştirilmiş bu ayar [uçtan uca SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)'yi destekler. Bu, arka uca şifrelenmiş hassas verileri güvenli bir şekilde aktarmanıza olanak tanır. Uçtan uca SSL etkin olan arka uç havuzundaki her bir arka uç sunucusu, güvenli iletişime izin vermek için bir sertifikayla yapılandırılmalıdır.
+Dinleyicide HTTPS ile birleştirilmiş bu ayar [uçtan uca SSL](ssl-overview.md)'yi destekler. Bu, arka uca şifrelenmiş hassas verileri güvenli bir şekilde aktarmanıza olanak tanır. Uçtan uca SSL etkin olan arka uç havuzundaki her bir arka uç sunucusu, güvenli iletişime izin vermek için bir sertifikayla yapılandırılmalıdır.
 
 ### <a name="port"></a>Bağlantı noktası
 
@@ -301,7 +312,7 @@ Bu yalnızca Azure App Service arka ucu için gereken iki ayarı seçen bir UI k
 
 ### <a name="use-custom-probe"></a>Özel araştırma kullan
 
-Bu ayar özel bir [araştırmayı](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) bir http ayarıyla ilişkilendirir. HTTP ayarıyla yalnızca bir özel araştırma ilişkilendirebilirsiniz. Özel bir araştırmayı açık bir şekilde ilişkilendirmezseniz, arka ucun sistem durumunu izlemek için [varsayılan araştırma](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) kullanılır. Arka uçlarınızın sistem durumu izlemesi üzerinde daha fazla denetim için özel bir araştırma oluşturmanız önerilir.
+Bu ayar özel bir [araştırmayı](application-gateway-probe-overview.md#custom-health-probe) bir http ayarıyla ilişkilendirir. HTTP ayarıyla yalnızca bir özel araştırma ilişkilendirebilirsiniz. Özel bir araştırmayı açık bir şekilde ilişkilendirmezseniz, arka ucun sistem durumunu izlemek için [varsayılan araştırma](application-gateway-probe-overview.md#default-health-probe-settings) kullanılır. Arka uçlarınızın sistem durumu izlemesi üzerinde daha fazla denetim için özel bir araştırma oluşturmanız önerilir.
 
 > [!NOTE]
 > Özel araştırma, karşılık gelen HTTP ayarı açıkça bir dinleyiciyle ilişkilendirilmediği takdirde arka uç havuzunun sistem durumunu izlemez.
@@ -335,7 +346,7 @@ Bir arka uç havuzu oluşturduktan sonra, bir veya daha fazla istek yönlendirme
 
 ## <a name="health-probes"></a>Sistem durumu araştırmaları
 
-Bir Application Gateway, varsayılan olarak arka uçtaki tüm kaynakların sistem durumunu izler. Ancak sistem durumu izleme üzerinde daha fazla denetim sağlamak için her bir arka uç HTTP ayarı için özel bir araştırma oluşturmanız önemle tavsiye ederiz. Özel bir araştırmanın nasıl yapılandırılacağını öğrenmek için bkz. [özel durum araştırma ayarları](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
+Bir Application Gateway, varsayılan olarak arka uçtaki tüm kaynakların sistem durumunu izler. Ancak sistem durumu izleme üzerinde daha fazla denetim sağlamak için her bir arka uç HTTP ayarı için özel bir araştırma oluşturmanız önemle tavsiye ederiz. Özel bir araştırmanın nasıl yapılandırılacağını öğrenmek için bkz. [özel durum araştırma ayarları](application-gateway-probe-overview.md#custom-health-probe-settings).
 
 > [!NOTE]
 > Özel bir sistem durumu araştırması oluşturduktan sonra, bir arka uç HTTP ayarıyla ilişkilendirmeniz gerekir. Karşılık gelen HTTP ayarı bir kural kullanan bir dinleyiciyle açıkça ilişkilendirilmediği takdirde, özel bir araştırma arka uç havuzunun sistem durumunu izlemez.

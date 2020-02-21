@@ -1,18 +1,18 @@
 ---
 title: Olay kaynaklarını Azure Event Grid
-description: Bu makalede Azure Event Grid için desteklenen olay kaynakları açıklanmaktadır. Olay kaynağı, olayın gerçekleştiği yerdir.
+description: Azure abonelikleri, Container Registry, özel konular, Event Hubs, IoT Hub, Key Vault, Media Services, kaynak grupları, Service Bus, depolama, Haritalar, uygulama yapılandırması, sinyal R, Machine Learning.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 31923e1cb69eb6681367ed6ea71c10564ae6d489
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846389"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526391"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid içindeki olay kaynakları
 
@@ -32,7 +32,7 @@ Azure aboneliği genelinde kaynaklardaki değişikliklere yanıt vermek için Az
 | [PowerShell: bir Azure aboneliği için olaylara abone olma](./scripts/event-grid-powershell-azure-subscription.md)| Bir Azure aboneliğine Event Grid aboneliği oluşturan ve bir Web kancasına olay gönderen örnek komut dosyası. |
 | [Olay şeması](event-schema-subscriptions.md) | Azure abonelik olaylarında alanları gösterir. |
 
-## <a name="container-registry"></a>Container Registry
+## <a name="container-registry"></a>Container Kayıt Defteri
 
 Görüntülerdeki değişikliklere yanıt vermek için Container Registry olaylarına abone olun.
 
@@ -186,4 +186,4 @@ Model kaydına yanıt vermek için Azure Machine Learning çalışma alanı olay
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

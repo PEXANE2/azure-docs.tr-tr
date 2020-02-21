@@ -4,15 +4,15 @@ description: İşlem maliyetlerinizi kaydetmek için Azure Cosmos DB ayrılmış
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367654"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505959"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB ' de ayrılmış kapasiteyle maliyeti iyileştirin
 
@@ -30,7 +30,9 @@ Azure Cosmos DB ayrılmış kapasite, kaynaklarınız için sağlanan aktarım h
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>Satın almadan önce gereken aktarım hızını belirleme
 
-Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Cosmos DB kaynakların kullanacağı toplam aktarım hızı miktarına bağlı olmalıdır. Aşağıdaki adımları kullanarak, önerilen ayırma boyutlarını Azure portal görüntüleyebilirsiniz:
+Ayrılmış kapasite satın alma boyutunun, mevcut veya kısa süreli olarak dağıtılan Azure Cosmos DB kaynakların saatlik olarak kullanacağı toplam aktarım hızı miktarına bağlı olması gerekir. Örneğin: 30.000 RU/s ayrılmış kapasitesi, bu tutarlı saatlik kullanım düzeniniz ise satın alın. Bu örnekte, 30.000 RU/s üzerinden sağlanan tüm üretilen iş, Kullandıkça Öde tarifeniz kullanılarak faturalandırılır. Sağlanan aktarım hızı bir saatte 30.000 RU/s altındaysa, o saat için fazladan ayrılmış kapasite harcanacaktır.
+
+Saatlik kullanım örüntüsünün temelinde satın alma önerilerini hesapladık. Son 7, 30 ve 60 gün içinde kullanım çözümlenmekte ve tasarrufunuzu en üst düzeye çıkaran ayrılmış kapasite satın alma önerilir. Aşağıdaki adımları kullanarak, önerilen ayırma boyutlarını Azure portal görüntüleyebilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.  
 
@@ -46,7 +48,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Cosmos DB kaynakların k
 - **Faturalama sıklığı** (aylık veya upön)
 - **Aktarım hızı türü** (ru 'ın, çok yöneticili ru 'ler)
 
-Ayrıca, önerileri tek bir kaynak grubu, tek bir abonelik veya tüm Azure kaydınızda olacak şekilde tanımlayabilirsiniz. Son 7 gün, 30 gün veya 60 gün içinde kullanıma göre öneriler gösterebilirsiniz.
+Ayrıca, önerileri tek bir kaynak grubu, tek bir abonelik veya tüm Azure kaydınızda olacak şekilde tanımlayabilirsiniz. 
 
 Örnek bir öneri aşağıda verilmiştir:
 

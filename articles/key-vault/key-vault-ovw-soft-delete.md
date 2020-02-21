@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8559dc357d34d505d45cd0a6491183345ae5cf61
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845803"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526595"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici genel bakış
 
@@ -34,15 +34,13 @@ Azure Anahtar kasaları, Azure Resource Manager tarafından yönetilen, izlenen 
 
 ### <a name="soft-delete-behavior"></a>Geçici silme davranışı
 
-Bu özellik ile, bir Anahtar Kasası veya Anahtar Kasası nesnesindeki SILME işlemi, belirli bir bekletme dönemi (90 gün) için kaynakları etkin bir şekilde tutan, nesnenin silindiği görünümü vererek geçici silme işlemidir. Bu hizmet daha sonra silme işlemini geri almak için silinen nesneyi kurtarmaya yönelik bir mekanizma sağlar. 
+Geçici silme etkin olduğunda, silinen kaynaklar olarak işaretlenen kaynaklar belirli bir süre boyunca (varsayılan olarak 90 gün) tutulur. Bu hizmet daha sonra silme işlemini geri almak için silinen nesneyi kurtarmaya yönelik bir mekanizma sağlar.
 
-Geçici silme işlemi artık yeni oluşturulan anahtar kasaları için varsayılan olarak açık durumdadır. [Azure CLI](key-vault-soft-delete-cli.md) veya [Azure PowerShell](key-vault-soft-delete-powershell.md)aracılığıyla devre dışı bırakılabilir.
+Yeni bir Anahtar Kasası oluştururken geçici silme işlemi varsayılan olarak açık olur. [Azure CLI](key-vault-soft-delete-cli.md) veya [Azure PowerShell](key-vault-soft-delete-powershell.md)aracılığıyla geçici silme olmadan bir Anahtar Kasası oluşturabilirsiniz. Bir anahtar kasasında geçici silme etkinleştirildikten sonra devre dışı bırakılamaz
 
-Varsayılan saklama süresi 90 gündür, ancak bekletme ilkesi aralığını Azure portal ile 90 7 güne kadar bir değere ayarlamak mümkündür. Temizleme koruması bekletme ilkesi aynı aralığı kullanır. 
+Varsayılan saklama süresi 90 gündür ancak Anahtar Kasası oluşturma sırasında, bekletme ilkesi aralığını, Azure portal ile 90 gün arasında bir değere ayarlamak mümkündür. Temizleme koruması bekletme ilkesi aynı aralığı kullanır. Bir kez ayarlandıktan sonra bekletme ilkesi aralığı değiştirilemez.
 
-Bir anahtar kasasında geçici silme yapıldıktan sonra devre dışı bırakılamaz ve bekletme ilkesi aralığı değiştirilemez. 
-
-Saklama süresi geçene kadar geçici olarak silinen bir anahtar kasasının adını yeniden kullanamazsınız. 
+Saklama süresi geçene kadar geçici olarak silinen bir anahtar kasasının adını yeniden kullanamazsınız.
 
 ### <a name="purge-protection"></a>Korumayı temizle 
 

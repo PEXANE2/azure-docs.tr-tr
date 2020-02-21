@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118150"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482302"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme
 
@@ -28,9 +28,13 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
 - Aynı türde en az altı biçim kümesi. Bu verileri, modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
+## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-training-data"></a>Eğitim verilerini ayarlama
 
-Önce gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, özel bir modeli eğitmek için gerekenlerden daha fazla özel giriş gereksinimlerine sahiptir. 
+Daha sonra gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, özel bir modeli eğitmek için gerekenlerden daha fazla özel giriş gereksinimlerine sahiptir. 
 
 Tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimdeki formlara sahipseniz, bunları ortak biçime göre alt klasörlere göre düzenleyin. Eğitedığınızda, API 'yi bir alt klasöre yönlendirmeniz gerekir.
 

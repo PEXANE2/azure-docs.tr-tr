@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848451"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504950"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)
 
 Bugün parola kullanan ve paylaşılan bir BILGISAYAR ortamına sahip olan kuruluşlar için güvenlik anahtarları, çalışanların Kullanıcı adı veya parola girmeden kimlik doğrulamasının sorunsuz bir yolunu sağlar. Güvenlik anahtarları, çalışanlar için geliştirilmiş üretkenlik sağlar ve daha iyi güvenliğe sahiptir.
 
@@ -31,7 +31,7 @@ Bu belge güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkin
 
 ## <a name="requirements"></a>Gereksinimler
 
-- [Azure çok faktörlü kimlik doğrulaması](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
 - Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir * *
@@ -40,7 +40,9 @@ Web Apps ve hizmetlerinde oturum açmak için güvenlik anahtarlarını kullanma
 
 ## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
 
-İle pillendirilecektir, Windows 10 sürüm 1809 veya üstünü çalıştırıyor olmalıdır. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+Pilot ile birlikte çalıştığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1809 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+
+Karma Azure AD 'ye katılmış cihazlar Windows 10 Insider Build 18945 veya üstünü çalıştırmalıdır.
 
 ## <a name="enable-passwordless-authentication-method"></a>Passwordless kimlik doğrulama yöntemini Etkinleştir
 
@@ -50,7 +52,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 güvenlik anahtarı yöntemini Etkinleştir
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Kimlik doğrulama yöntemi ilkesi (Önizleme)**  > **Azure Active Directory** > **güvenlik** > **kimlik doğrulama yöntemlerini** inceleyin.
 1. Method **FIDO2 Security Key**altında aşağıdaki seçenekleri belirleyin:
    1. **Etkinleştir** -Evet veya Hayır
@@ -59,7 +61,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 güvenlik anahtarlarının Kullanıcı kaydı ve yönetimi
 
-1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com) adresine göz atın.
+1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gidin.
 1. Henüz yoksa oturum açın.
 1. **Güvenlik bilgileri**' ne tıklayın.
    1. Kullanıcının kayıtlı en az bir Azure Multi-Factor Authentication yöntemi zaten varsa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.
@@ -79,13 +81,13 @@ Aşağıdaki örnekte, bir Kullanıcı FIDO2 güvenlik anahtarını zaten sağla
 
 ## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
 
-Bu özelliğin önizlemesini yaparken geri bildirimde bulunmak veya sorun yaşarsanız, lütfen Windows Geri Bildirim Hub 'ı uygulaması aracılığıyla paylaşabilirsiniz.
+Bu özelliği önizlemede geri bildirimde bulunmak veya sorun yaşıyorsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
 
 1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
 1. Aşağıdaki kategoriye göre geri bildirim gönderin:
-   1. Kategori: güvenlik ve Gizlilik
-   1. Alt Kategori: FıDO
-1. Günlükleri yakalamak için, şu seçeneği kullanın: **sorunum yeniden oluştur**
+   - Kategori: güvenlik ve Gizlilik
+   - Alt Kategori: FıDO
+1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -95,7 +97,7 @@ Güvenlik anahtarlarının yönetici tarafından sağlanması ve devre dışı s
 
 ### <a name="upn-changes"></a>UPN değişiklikleri
 
-Bir kullanıcının UPN 'si değişirse değişiklik için FIDO2 güvenlik anahtarlarını artık değiştiremezsiniz. Çözüm, cihazı sıfırlamadır ve Kullanıcı FIDO2 güvenlik anahtarlarını yeniden kaydetmek zorunda olur.
+Karma Azure AD 'ye katılmış ve Azure AD 'ye katılmış cihazlarda UPN değişikliğine izin veren bir özelliği desteklemeye çalışıyoruz. Bir kullanıcının UPN 'si değişirse değişiklik için FIDO2 güvenlik anahtarlarını artık değiştiremezsiniz. Çözüm, cihazı sıfırlayıp kullanıcının yeniden kaydolmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

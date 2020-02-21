@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698178"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484511"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD uygulama onayı deneyimlerini anlama
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) uygulama onayı Kullanıcı deneyimi hakkında
 
 Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Bir yöneticiye veya kullanıcıya, kendi kuruluşlarına/bireysel verilerine erişim izni vermeniz istenebilir.
 
-İzin verme için gerçek kullanıcı deneyimi, kullanıcının kiracısında ayarlanan ilkelere, kullanıcının yetki kapsamına (veya role) ve istemci uygulaması tarafından istenen [izin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) türüne göre farklılık gösterir. Bu, uygulama geliştiricilerinin ve kiracı yöneticilerinin onay deneyimi üzerinde bir denetim sahibi olduğu anlamına gelir. Yöneticiler, kiracısındaki onay deneyimini denetlemek için bir kiracıya veya uygulamaya ilke ayarlama ve devre dışı bırakma esnekliğine sahiptir. Uygulama geliştiricileri ne tür izinlerin istenmekte olduğunu ve kullanıcılara Kullanıcı onay akışı veya yönetici onay akışı aracılığıyla rehberlik etmek istiyorlar.
+İzin verme için gerçek kullanıcı deneyimi, kullanıcının kiracısında ayarlanan ilkelere, kullanıcının yetki kapsamına (veya role) ve istemci uygulaması tarafından istenen [izin](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) türüne göre farklılık gösterir. Bu, uygulama geliştiricilerinin ve kiracı yöneticilerinin onay deneyimi üzerinde bir denetim sahibi olduğu anlamına gelir. Yöneticiler, kiracısındaki onay deneyimini denetlemek için bir kiracıya veya uygulamaya ilke ayarlama ve devre dışı bırakma esnekliğine sahiptir. Uygulama geliştiricileri ne tür izinlerin istenmekte olduğunu ve kullanıcılara Kullanıcı onay akışı veya yönetici onay akışı aracılığıyla rehberlik etmek istiyorlar.
 
 - **Kullanıcı onay akışı** , bir uygulama geliştiricisi kullanıcıları yalnızca geçerli kullanıcı için izin kaydetme amacını taşıyan yetkilendirme uç noktasına yönlendirirse.
 - **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için, uygulama geliştiricilerinin uygulama bildiriminde `RequiredResourceAccess` özelliğindeki tüm izinleri listebilmeleri gerekir. Daha fazla bilgi için bkz. [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).

@@ -10,23 +10,23 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 676427ca2985de51767939891b41f413446d4bb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d99aa2d2827716b2b04d059e47d9768eef8cd690
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446577"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485106"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Hızlı başlangıç: node. js için Bing Görsel Arama SDK 'sını kullanarak görüntü öngörülerini alın
 
 Node. js SDK 'sını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)' da bulunabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Node.js](https://www.nodejs.org/)
 * Node. js için Bing Görsel Arama SDK 'Sı
     * Bing Görsel Arama SDK kullanarak bir konsol uygulaması ayarlamak için aşağıdaki komutları çalıştırın:
         1. `npm install ms-rest-azure`
-        2. `npm install azure-cognitiveservices-search-visualSearch`.
+        2. `npm install azure-cognitiveservices-visualsearch`.
 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]

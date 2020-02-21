@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431426"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526323"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Sanal ağ NAT nedir (Genel Önizleme)?
 
@@ -130,7 +130,7 @@ Genel kullanılabilirlik aşamasında NAT veri yolu en az% 99,9 kullanılabilir.
 NAT Şu anda şu bölgelerde kullanılabilir:
 
 - Batı Avrupa
-- Doğu Japonya
+- Japonya Doğu
 - ABD Doğu 2
 - ABD Batı
 - ABD Batı 2
@@ -168,7 +168,7 @@ Aboneliklerin, genel önizlemeye katılımını sağlamak için kayıtlı olmas�
 2. kaydı etkinleştir
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>Fiyatlandırma
@@ -197,9 +197,7 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi g
 
 - NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
 - IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.
-- Alt ağ veya NIC üzerinde NSG, NAT kullanılarak genel uç noktalara giden akışlar için kabul edilemez.
 - NSG akış günlüğü, NAT kullanılırken desteklenmez.
-- Bir sanal ağda birden çok alt ağ olduğunda, her alt ağda farklı bir NAT yapılandırılmış olabilir.
 - NAT birden çok sanal ağa yayılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

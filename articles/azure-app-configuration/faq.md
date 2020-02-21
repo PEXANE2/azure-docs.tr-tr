@@ -1,31 +1,26 @@
 ---
-title: Azure Uygulama yapılandırması SSS | Microsoft Docs
+title: Azure uygulama yapılandırma hakkında SSS
 description: Azure Uygulama yapılandırması hakkında sık sorulan sorular
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467598"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523501"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
-Bu makalede, Azure Uygulama yapılandırması hakkında sık sorulan sorular ele alınmaktadır.
+Bu makalede, Azure Uygulama yapılandırması hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Uygulama yapılandırması Azure Key Vault nasıl farklıdır?
 
-Uygulama yapılandırması farklı kullanım örnekleri kümesi için tasarlanmıştır: geliştiricilerin uygulama ayarlarını yönetmesine ve özellik kullanılabilirliğini denetlemesine yardımcı olur. Karmaşık yapılandırma verileriyle çalışan pek çok görevi basitleştirecek.
+Uygulama yapılandırması, geliştiricilerin uygulama ayarlarını yönetmesine ve özellik kullanılabilirliğini denetlemesine yardımcı olur. Karmaşık yapılandırma verileriyle çalışan pek çok görevi basitleştirecek.
 
 Uygulama yapılandırması şunları destekler:
 
@@ -36,7 +31,7 @@ Uygulama yapılandırması şunları destekler:
 - Özel yönetim işlemleri
 - Özellik yönetimi Kullanıcı arabirimi
 
-Uygulama yapılandırması Key Vault için tamamlayıcı ve iki uygulama dağıtımında yan yana kullanılmalıdır.
+Uygulama yapılandırması Key Vault tamamlar ve iki uygulama dağıtımında yan yana kullanılmalıdır.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Gizli dizileri uygulama yapılandırmasında depolamam gerekir mi?
 
@@ -62,7 +57,7 @@ Tek bir anahtar-değer öğesi için 10 KB sınırı vardır.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Birden çok ortam için yapılandırma (test, hazırlama, üretim vb.) nasıl depolamalıyım?
 
-Şu anda uygulama yapılandırmasına kimin mağaza düzeyinde erişebileceğini kontrol edersiniz. Farklı izinler gerektiren her ortam için ayrı bir depo kullanın. Bu yaklaşım size en iyi güvenlik yalıtımına sahip olmanızı sağlar.
+Uygulama yapılandırmasına kimin bir mağaza düzeyinde erişebileceğini denetlersiniz. Farklı izinler gerektiren her ortam için ayrı bir depo kullanın. Bu yaklaşım, en iyi güvenlik yalıtımını sağlar.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Uygulama yapılandırmasını kullanmanın önerilen yolları nelerdir?
 
@@ -70,9 +65,14 @@ Bkz. [en iyi uygulamalar](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Uygulama yapılandırma maliyeti ne kadar?
 
-İki fiyatlandırma katmanı vardır: 1) ücretsiz katman ve 2) standart bir katman.
+İki fiyatlandırma katmanı vardır: 
 
-Standart katmanın sunumundan önce bir mağaza oluşturduysanız, genel kullanıma sunulmadan otomatik olarak ücretsiz katmana taşınır. Standart katmana yükseltmeyi seçebilir veya gereksinimlerinizi karşılıyorsa ücretsiz katmanda kalabilirler.
+- Ücretsiz katman
+- Standart katman.
+
+Standart katmanın sunumundan önce bir mağaza oluşturduysanız, genel kullanıma sunulmadan otomatik olarak ücretsiz katmana taşınır. Standart katmana yükseltmeyi seçebilir veya ücretsiz katmanda kalabilirler.
+
+Standart katmandan bir depoyu ücretsiz katmana indirgeyemezsiniz. Ücretsiz katmanda yeni bir mağaza oluşturup bu depoya yapılandırma verilerini içeri aktarabilirsiniz.
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>Hangi uygulama yapılandırma katmanını kullanmalıyım?
 

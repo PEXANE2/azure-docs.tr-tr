@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367969"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483763"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma Azure Active Directory
 
@@ -36,7 +36,7 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 ![Kesintisiz çoklu oturum açma](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Sorunsuz SSO Kullanıcı cihazının yalnızca **etki alanına katılmış** olmasını gerektirir, ancak [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) veya [karma Azure AD 'ye katılmış] (...) üzerinde kullanılmaz. /active-directory-azureadjoin-overview.md) cihazları. SSO, Azure AD 'ye katılmış ve hibrit Azure AD 'ye katılmış, [birincil yenileme belirteci] (.. /Active-Directory/Devices/Concept-Primary-Refresh-Token.exe)
+>Sorunsuz SSO Kullanıcı cihazının yalnızca **etki alanına katılmış** olmasını gerektirir, ancak [Azure AD 'ye katılmış](../devices/concept-azure-ad-join.md) veya [hibrit Azure AD 'ye katılmış](../devices/concept-azure-ad-join-hybrid.md) cihazlarda kullanılmaz. Azure AD 'ye katılmış ve hibrit Azure AD 'ye katılan SSO, [birincil yenileme belirtecine](../devices/concept-primary-refresh-token.md)göre çalışmaktadır.
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 
@@ -63,12 +63,12 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Evet|Evet|Evet\*\*\*|YOK
-|Windows 8.1|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows 8|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows 7|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows Server 2012 R2 veya üzeri|Evet\*\*|YOK|Evet|Evet\*\*\*|YOK
-|Mac OS X|YOK|YOK|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
+|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
+|Windows 8.1|Evet\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 8|Evet\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 7|Evet\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows Server 2012 R2 veya üzeri|Evet\*\*|Yok|Yes|Evet\*\*\*|Yok
+|Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 
 \*Için Internet Explorer sürümleri 10 veya üzeri gerekir
@@ -78,7 +78,7 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 \*\*\*[ek yapılandırma](how-to-connect-sso-quick-start.md#browser-considerations) gerektirir
 
 >[!NOTE]
->Windows 10 ' da, Azure AD 'ye yönelik en iyi çoklu oturum açma deneyimi için [Azure AD JOIN](../active-directory-azureadjoin-overview.md) 'in kullanılması önerilir.
+>Windows 10 ' da, Azure AD 'ye yönelik en iyi çoklu oturum açma deneyimi için [Azure AD JOIN](../devices/concept-azure-ad-join.md) 'in kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

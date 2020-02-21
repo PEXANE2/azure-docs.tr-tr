@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210251"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484800"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -92,11 +92,11 @@ Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılık
 
 Dilinize bağlı olarak, bu diğer dosyalar oluşturulur:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * İşlevi uygulayan [HttpExample.cs sınıf kitaplığı dosyası](functions-dotnet-class-library.md#functions-class-library-project) .
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Kök klasörde bir Package. JSON dosyası.
 
@@ -122,7 +122,7 @@ Bu noktada, [function. json dosyasını değiştirerek](#add-a-function-to-your-
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketlerinde uygulanır. Gereken Tetikleyiciler ve bağlamalar için uzantı paketlerini yüklemeniz gerekir. Bağlama Uzantıları yükleme işlemi projenizin diline bağlıdır.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal penceresinde [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın. Aşağıdaki komut blob, kuyruk ve tablo depolaması için bağlamaları uygulayan Azure Storage uzantısını yüklüyor.
 
@@ -130,7 +130,7 @@ Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal pe
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 Bu eylemin sonuçları projenizin diline bağlıdır:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Projenize yeni C# bir sınıf kitaplığı (. cs) dosyası eklenir.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Projede yeni bir klasör oluşturulur. Klasör yeni bir Function. JSON dosyası ve yeni JavaScript kod dosyası içeriyor.
 
@@ -158,7 +158,7 @@ Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Ba
 
 Aşağıdaki örnekler, depolama hesabının bağlantı dizesinin yerel. Settings. JSON içindeki `MyStorageConnection` uygulama ayarında ayarlandığı `outqueue`adlı bir depolama kuyruğuna bağlanır.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Aşağıdaki parametreyi `Run` yöntemi tanımına eklemek için işlev yöntemini güncelleştirin:
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` parametresi, işlev tamamlandığında çıkış bağlamaya yazılan bir ileti koleksiyonunu temsil eden bir `ICollector<T>` türüdür. Koleksiyona bir veya daha fazla ileti eklersiniz. Bu iletiler, işlev tamamlandığında kuyruğa gönderilir.
 
-Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output) belgeleri.
+Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue-output.md) belgeleri.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code, uygun bir istem kümesini izleyerek function. JSON dosyanıza bağlama eklemenizi sağlar. Bir bağlama oluşturmak için, işlev klasörünüzdeki **function. JSON** dosyasını sağ tıklatın (MacOS üzerinde CTRL + tıklama) ve **bağlama Ekle**' yi seçin:
 
@@ -212,7 +212,7 @@ Aynı bağlama tanımını doğrudan işleviniz. json ' a de ekleyebilirsiniz.
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Daha fazla bilgi edinmek için [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output) başvurusuna bakın.
+Daha fazla bilgi edinmek için [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue-output.md) başvurusuna bakın.
 
 ---
 

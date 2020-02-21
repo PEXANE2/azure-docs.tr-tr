@@ -1,5 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Coğrafi AI DSVM’si oluşturma'
+title: 'Hızlı başlangıç: coğrafi bir AI Veri Bilimi Sanal Makinesi oluşturma'
+titleSuffix: Azure Data Science Virtual Machine
 description: Jeo-uzamsal analiz ve makine öğrenimi için Azure 'da coğrafi bir AI Veri Bilimi Sanal Makinesi oluşturun ve oluşturun.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,16 +8,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170733"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525898"
 ---
-# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Hızlı Başlangıç: Azure 'da coğrafi yapay zeka sanal makinesi ayarlama 
+# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Hızlı başlangıç: Azure 'da coğrafi yapay zeka sanal makinesi ayarlama 
 
-Coğrafi AI Veri Bilimi Sanal Makinesi (coğrafi-DSVM), AI ve jeo-uzamsal analizlerini birleştirmek için özel olarak yapılandırılmış popüler [Azure veri bilimi sanal makinesi](https://aka.ms/dsvm) bir uzantısıdır. VM'de Jeo-uzamsal analiz tarafından desteklenen [Arcgıs Pro](https://www.arcgis.com/features/index.html). Veri Bilimi Sanal Makinesi (DSVM), makine öğrenimi ve hatta derin öğrenme modelleri için hızlı eğitim sunar. Bu modelleri geliştirmek için, coğrafi bilgilerle zenginleştirilmiş verileri kullanır. Coğrafi-DSVM yalnızca Windows 2016 DSVM 'de desteklenir. 
+Coğrafi AI Veri Bilimi Sanal Makinesi (coğrafi-DSVM), AI ve jeo-uzamsal analizlerini birleştirmek için özel olarak yapılandırılmış popüler [Azure veri bilimi sanal makinesi](https://aka.ms/dsvm) bir uzantısıdır. VM 'deki Jeo-uzamsal analizler, [argıs Pro](https://www.arcgis.com/features/index.html)ile desteklenir. Veri Bilimi Sanal Makinesi (DSVM), makine öğrenimi ve hatta derin öğrenme modelleri için hızlı eğitim sunar. Bu modelleri geliştirmek için, coğrafi bilgilerle zenginleştirilmiş verileri kullanır. Coğrafi-DSVM yalnızca Windows 2016 DSVM 'de desteklenir. 
 
 Coğrafi-DSVM 'ye dahil edilen AI araçları şunları içerir:
 
@@ -39,26 +40,26 @@ Coğrafi AI Veri Bilimi VM'si bir örneğini oluşturmak için aşağıdaki adı
 
 ### <a name="wizard-details"></a>Sihirbaz ayrıntıları ###
 
-**Temel**:
+**Temel bilgiler**:
 
-- **Ad**: Oluşturmakta olduğunuz veri bilimi sunucusunun adı.
+- **Ad**: oluşturmakta olduğunuz veri bilimi sunucusunun adı.
     
-- **Kullanıcı adı**: Yönetici hesabı oturum açma KIMLIĞI.
+- **Kullanıcı adı**: yönetici hesabı oturum açma kimliği.
     
-- **Parola**: Yönetici hesabı parolası.
+- **Parola**: yönetici hesabı parolası.
     
-- **Abonelik**: Birden fazla aboneliğiniz varsa, bir makine oluşturulması ve fatura olduğu seçin.
+- **Abonelik**: birden fazla aboneliğiniz varsa, makinenin oluşturulup faturalandırılabileceği bir tane seçin.
     
-- **Kaynak grubu**: Yeni bir tane oluşturabilir veya aboneliğinizde **boş** bir mevcut Azure Kaynak grubu kullanabilirsiniz.
+- **Kaynak grubu**: yeni bir tane oluşturabilir veya aboneliğinizde **boş** bir mevcut Azure Kaynak grubu kullanabilirsiniz.
     
-- **Konum**: En uygun veri merkezini seçin. Genellikle bu, verilerinizin büyük bir kısmının veya en hızlı ağ erişimi için fiziksel konumunuza en yakın olan biridir. Bir GPU üzerinde derin öğrenme çalıştırmayı planlıyorsanız, NC serisi GPU VM örnekleri içeren Azure 'daki konumlardan birini seçmeniz gerekir. Şu anda bu konumlar şunlardır: **Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Kuzey Avrupa, Batı Avrupa**. En son liste için [bölgeye göre Azure ürünleri](https://azure.microsoft.com/regions/services/) sayfasına bakın ve **Işlem**altında **NC serisi** ' ni arayın. 
+- **Konum**: en uygun veri merkezini seçin. Genellikle bu, verilerinizin büyük bir kısmının veya en hızlı ağ erişimi için fiziksel konumunuza en yakın olan biridir. Bir GPU üzerinde derin öğrenme çalıştırmayı planlıyorsanız, NC serisi GPU VM örnekleri içeren Azure 'daki konumlardan birini seçmeniz gerekir. Şu anda bu konumlar şunlardır: **Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Kuzey Avrupa, Batı Avrupa**. En son liste için [bölgeye göre Azure ürünleri](https://azure.microsoft.com/regions/services/) sayfasına bakın ve **Işlem**altında **NC serisi** ' ni arayın. 
     
     
-**Ayarları**: Coğrafi olarak öğrenimi bir GPU üzerinde, coğrafi olarak öğrenme çalıştırmayı planlıyorsanız, NC serisi GPU sanal makine boyutlarından birini seçin. Aksi takdirde, CPU tabanlı örneklerden birini seçebilirsiniz. Sanal Makineniz için bir depolama hesabı oluşturun. 
+**Ayarlar**: coğrafi BIR bir GPU üzerinde derin öğrenme çalıştırmayı planlıyorsanız, bir NC serisi GPU sanal makine boyutundan birini seçin. Aksi takdirde, CPU tabanlı örneklerden birini seçebilirsiniz. Sanal Makineniz için bir depolama hesabı oluşturun. 
        
-**Özet**: Girdiğiniz tüm bilgilerin doğru olduğundan emin olun.
+**Özet**: girdiğiniz tüm bilgilerin doğru olduğundan emin olun.
     
-**Satın alma**: Sağlama işlemini başlatmak için **satın al**' a tıklayın. Hizmet koşulları için bir bağlantı sağlanır. VM 'de, **Boyut** adımında seçtiğiniz sunucu boyutu için işlem ücretlerinin ötesinde ek ücret yoktur. 
+**Satın al**: sağlama işlemini başlatmak Için **satın al**' a tıklayın. Hizmet koşulları için bir bağlantı sağlanır. VM 'de, **Boyut** adımında seçtiğiniz sunucu boyutu için işlem ücretlerinin ötesinde ek ücret yoktur. 
  
  >[!NOTE]
  > Sağlama, yaklaşık 20 ila 30 dakika sürer. Sağlama durumunu Azure portalında görüntülenir.
@@ -87,4 +88,4 @@ Argıs hesabınız aracılığıyla argıs Pro Desktop 'ta oturum açtıktan son
 
 Aşağıdaki kaynaktaki kılavuzlarla coğrafi AI Veri Bilimi VM'si kullanmaya başlayın:
 
-* [Coğrafi AI veri bilimi VM'si kullanma](use-geo-ai-dsvm.md)
+* [Coğrafi AI Veri Bilimi VM'si kullanın](use-geo-ai-dsvm.md)

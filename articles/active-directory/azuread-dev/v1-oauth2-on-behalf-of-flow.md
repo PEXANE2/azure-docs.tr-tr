@@ -17,12 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: fbef4d84e86c3d35e35a8bbeb04a399ad87a1b89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 084c15c7ac3ec782dc48a55e65bf4d7aa43b58a1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164090"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484188"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
 
@@ -54,7 +54,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 
 ### <a name="register-the-middle-tier-service"></a>Orta katman hizmetini kaydetme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. En üstteki çubukta, hesabınızı seçin ve uygulamanız için Active Directory kiracı seçmek üzere **Dizin** listesi altına bakın.
 1. Sol bölmede **diğer hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
 1. **Uygulama kayıtları** ve ardından **Yeni kayıt**' ı seçin.
@@ -72,7 +72,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 
 ### <a name="register-the-client-application"></a>İstemci uygulamasını kaydetme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. En üstteki çubukta, hesabınızı seçin ve uygulamanız için Active Directory kiracı seçmek üzere **Dizin** listesi altına bakın.
 1. Sol bölmede **diğer hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
 1. **Uygulama kayıtları** ve ardından **Yeni kayıt**' ı seçin.
@@ -267,7 +267,7 @@ Yanıt, UTF8 ve Base64url içinde kodlanmış bir SAML belirteci içeriyor.
 - Bir **OBO çağrısından kaynaklanan BIR SAML onaylama işlemi Için SubjectConfirmationData**: hedef uygulamanın **SubjectConfirmationData**'de bir alıcı değeri olması gerekiyorsa, kaynak uygulama yapılandırmasındaki joker karakter olmayan bir yanıt URL 'si olmalıdır.
 - **SubjectConfirmationData düğümü**: bir SAML yanıtının parçası olmadığından, düğüm bir **InResponseTo** özniteliği içeremez. SAML belirtecini alan uygulamanın, bir **InResponseTo** ÖZNITELIĞI olmadan SAML onaylama işlemi kabul edebilmesi gerekir.
 
-- **Onay**: bir OAuth akışında Kullanıcı verilerini IÇEREN bir SAML belirteci almak için onay verilmelidir. İzinler ve yönetici onayı alma hakkında daha fazla bilgi için, [Azure Active Directory v 1.0 uç noktasındaki izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)konusuna bakın.
+- **Onay**: bir OAuth akışında Kullanıcı verilerini IÇEREN bir SAML belirteci almak için onay verilmelidir. İzinler ve yönetici onayı alma hakkında daha fazla bilgi için, [Azure Active Directory v 1.0 uç noktasındaki izinler ve onay](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)konusuna bakın.
 
 ### <a name="response-with-saml-assertion"></a>SAML onaylama ile yanıt
 

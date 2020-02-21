@@ -1,36 +1,35 @@
 ---
-title: Azure Scheduler ile zamanlanmış iş oluşturma - Azure portal | Microsoft Docs
-description: Azure Scheduler ile Azure portalda ilk otomatik işinizi oluşturmayı, zamanlamayı ve çalıştırmayı öğrenin
+title: Zamanlanmış işler oluşturma-Azure portal
+description: Azure Zamanlayıcı 'Yı kullanarak Azure portal ilk otomatikleştirilmiş işinizi oluşturma, zamanlama ve çalıştırma
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300984"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524810"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Azure Scheduler ile ilk işinizi oluşturun ve zamanlayın - Azure portal
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Azure Zamanlayıcı 'Yı kullanarak ilk işinizi oluşturma ve zamanlama-Azure portal
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa sürede [Azure Logic Apps geçirin](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
-Bu öğreticide bir iş oluşturma, zamanlama ve ardından bu işi izleyip yönetme adımları gösterilmektedir. 
+Bu öğreticide bir iş oluşturma, zamanlama ve ardından bu işi izleyip yönetme adımları gösterilmektedir.
 
-Azure aboneliğiniz yoksa <a href="https://azure.microsoft.com/free/" target="_blank">ücretsiz bir Azure hesabı için kaydolun</a>.
+Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="create-job"></a>İş oluştur
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.  
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. Azure ana menüsünde **Kaynak oluştur**'u seçin. Arama kutusuna "scheduler" yazın. Sonuç listesinden **Scheduler**'ı ve ardından **Oluştur**'u seçin.
+1. Azure Arama kutusuna filtreniz olarak `scheduler` girin. Sonuçlar listesinden **Zamanlayıcı Iş koleksiyonları**' nı seçin ve **Oluştur**' u seçin.
 
    ![Scheduler kaynağı oluşturma](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -40,7 +39,7 @@ Azure aboneliğiniz yoksa <a href="https://azure.microsoft.com/free/" target="_b
 
    | Özellik | Örnek değer | Açıklama |
    |----------|---------------|-------------| 
-   | **Name** | getMicrosoft | İşinizin adı | 
+   | **Ad** | getMicrosoft | İşinizin adı | 
    | **İş koleksiyonu** | <*job-collection-name*> | İş koleksiyonu oluşturun veya var olan bir koleksiyonu seçin. | 
    | **Abonelik** | <*Azure-subscription-name*> | Azure aboneliğinizin adı | 
    |||| 
@@ -93,7 +92,7 @@ Bu alanlar hakkında daha fazla bilgi için birini seçebilirsiniz:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Özellikler
 
 İşinizin yönetim meta verilerini tanımlayan salt okunur özellikleri görüntülemek için **Özellikler**'i seçin.
 

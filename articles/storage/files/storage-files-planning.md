@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 98965a50037558f512401e09915021234790840d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368603"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526487"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -129,7 +129,7 @@ Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç ö
 |10.240      | 10.240  | 30.720 kadar  | 675 | 450   |
 |33.792      | 33.792  | 100.000 kadar | 2\.088 | 1\.392   |
 |51.200      | 51.200  | 100.000 kadar | 3\.132 | 2\.088   |
-|102.400     | 100.000 | 100.000 kadar | 6\.204 | 4\.136   |
+|102.400     | 100,000 | 100.000 kadar | 6\.204 | 4\.136   |
 
 > [!NOTE]
 > Dosya paylaşımları performansı, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik özelliklerine tabidir. Örneğin, 8 KiB okuma/yazma GÇ boyutlarına sahip dahili teste bağlı olarak, SMB üzerinden Premium dosya paylaşımıyla bağlantılı tek bir Windows sanal makinesi, *standart F16s_v2*, 20K Okuma IOPS ve 15K Yazma IOPS elde edebilirler. 512 MIB okuma/yazma GÇ boyutları ile aynı VM, 1,1 GiB/sn çıkış ve 370 MIB/s giriş aktarım hızını elde edebilirler. En yüksek performans ölçeğini elde etmek için, yükü birden çok VM arasında yayın. Bazı yaygın performans sorunları ve geçici çözümler için lütfen [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
@@ -168,7 +168,7 @@ Azure Files Premium paylaşımları hem LRS hem de ZRS 'yi destekler, ZRS Şu an
 
 Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Premium dosya paylaşımları 100 TiB kapasitesinde kullanılabilir.
 
-### <a name="restrictions"></a>{1&gt;Kısıtlamalar&lt;1}
+### <a name="restrictions"></a>Kısıtlamalar
 
 - Büyük dosya paylaşımları etkin olan herhangi bir depolama hesabı için LRS/ZRS 'den GRS/GZRS hesabı dönüştürme mümkün olmayacaktır.
 
@@ -176,7 +176,7 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 100 TiB kapasite sınırına sahip standart dosya paylaşımları, genel olarak tüm Azure bölgelerinde kullanılabilir.
 
-- LRS: Güney Afrika Kuzey ve Güney Afrika Batı hariç tüm bölgeler.
+- LRS: Güney Afrika Kuzey, Güney Afrika Batı, Almanya Orta Batı ve Almanya Kuzey hariç tüm bölgeler.
 - ZRS: Japonya Doğu, Kuzey Avrupa, Güney Afrika Kuzey dışındaki tüm bölgeler.
 - GRS/GZRS: desteklenmiyor.
 

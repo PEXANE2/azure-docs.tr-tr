@@ -1,28 +1,26 @@
 ---
 title: Azure AD ile passwordless kimlik doğrulama dağıtımını tamamlandırma
-description: Azure Active Directory parolasız kimlik doğrulama dağıtımını tamamlandırma
+description: Azure Active Directory parolasız kimlik doğrulama uygulamasının nasıl planlanacağını ve dağıtılacağını öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4566c8ec58677589c044d79560bffa7616294d70
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512581"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505613"
 ---
-# <a name="complete-a-passwordless-authentication-deployment"></a>Parolasız kimlik doğrulama dağıtımını tamamlandırma
+# <a name="complete-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımını tamamlandırma
 
-Büyük bir kişi Kullanıcı adı ve parola ile birlikte bir kuruluştan başlar. 
-
-Kuruluşlar, kullanıcıların kullanmalarını isteyerek tehdit sayacını denemeye çalışır:
+Büyük bir kişi Kullanıcı adı ve parola ile birlikte bir kuruluştan başlar. Kuruluşlar, kullanıcıların aşağıdaki yaklaşımlardan birini kullanmalarını isteyerek tehdidi sayaca çalışır:
 
 - Uzun parolalar
 - Karmaşık parolalar
@@ -34,16 +32,16 @@ Microsoft 'un [araştırması](https://aka.ms/passwordguidance) , bu çabaları 
 Passwordless kimlik doğrulamasının dağıtımı aşağıdaki avantajları sağlar:
 
 - Artırılmış güvenlik. Parolaları saldırı yüzeyi olarak kaldırarak kimlik avı ve parola püskürtme saldırılarına karşı risk azaltma.
-- Daha iyi kullanıcı deneyimi. Kullanıcılara her yerden veri erişimi için uygun bir yol sağlayın ve mobil sırada Outlook, OneDrive, Office ve daha fazlasına kolay erişim sağlar.
+- Daha iyi kullanıcı deneyimi. Kullanıcılara her yerden veri erişimi için uygun bir yol sağlayın ve mobil durumdayken Outlook, OneDrive veya Office gibi uygulamalara ve hizmetlere kolay erişim sağlar.
 - Sağlam Öngörüler. Güçlü günlük kaydı ve denetimle kullanıcıların parolasız etkinlik hakkında öngörüler elde edin.
 
-Parola, sizin veya bildiğiniz bir şeyi içeren bir şeyle değiştirilmiştir. Örneğin, Iş için Windows Hello, yüz veya parmak izi gibi bir biyometri hareketi ya da bir ağ üzerinden aktarılamayan cihaza özgü PIN.
+Passwordless sayesinde parola, sizin veya bildiğiniz bir şey ile birlikte değişir. Örneğin, Iş için Windows Hello, yüz veya parmak izi gibi bir biyometri hareketi ya da bir ağ üzerinden aktarılamayan cihaza özgü PIN.
 
-Microsoft birçok senaryoyu kapsayan üç adet passwordless kimlik doğrulama seçeneği sunar. Bu yöntemler, birlikte kullanılabilir. 
+Microsoft birçok senaryoyu kapsayan üç adet passwordless kimlik doğrulama seçeneği sunar. Bu yöntemler art arda kullanılabilir:
 
 - [İş Için Windows Hello](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) , kullanıcıların adanmış Windows bilgisayarlarına en iyi şekilde yöneliktir.
-- [FIDO2 güvenlik anahtarlarıyla](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) güvenlik anahtarı oturum açma özelliği, özellikle de kiosks gibi paylaşılan makinelerde oturum açan kullanıcılar, telefon kullanımı sınırlı olduğu ve yüksek ayrıcalıklı kimlikler için yararlıdır.
-- [Microsoft Authenticator uygulamayla](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) telefon oturumu açmak, mobil cihazlara sahip kullanıcılar için passwordless bir seçenek sağlamak için yararlıdır. Her türlü iOS veya Android telefonunu, kullanıcıların herhangi bir platformda veya tarayıcıda oturum açmasına izin vererek güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar telefonlarına bir bildirim alarak oturum açıp ekranda görünen bir sayıyı telefondaki bir sayıyla eşleştirir, ardından biyometrik verilerini veya PIN 'ini kullanarak bunları doğrulamak için kullanın.
+- Güvenlik anahtarı ile oturum açma, [FIDO2 güvenlik anahtarları](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) ile, telefon kullanımı sınırlı olduğu durumlarda ve yüksek ayrıcalıklı kimlikler için kiosks gibi paylaşılan makinelerde oturum açan kullanıcılar için faydalıdır.
+- [Microsoft Authenticator uygulamayla](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) telefon oturumu açmak, mobil cihazlara sahip kullanıcılar için passwordless bir seçenek sağlamak için yararlıdır. Authenticator uygulaması tüm iOS veya Android telefonlarına, kullanıcıların herhangi bir platformda veya tarayıcıda oturum açmalarına izin vererek güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar telefonlarına bir bildirim alarak, ekranda görüntülenmekte olan bir sayı ile eşleşen bir sayıyla, ardından biyometrik verilerini veya PIN 'ini kullanarak oturum açabilirler.
 
 ## <a name="compare-passwordless-authentication-methods"></a>Passwordless kimlik doğrulama yöntemlerini karşılaştırın
 
@@ -55,21 +53,21 @@ Microsoft 'un parolasız kimlik doğrulama yöntemleri farklı senaryolara olana
 | --- | --- | --- | --- |
 | **Bilgisayar oturum açma**: <br> Atanan Windows 10 cihazından | **Hayır** | **Evet** <br> Biyometrik, PIN ile | **Evet**<br>Biyometrik tanıma ve veya PIN ile |
 | **Bilgisayar oturum açma**: <br> Paylaşılan Windows 10 cihazından | **Hayır** | **Evet** <br> Biyometrik, PIN ile  | **Hayır** |
-| **Web uygulaması oturum açma**: <br>Kullanıcı tarafından ayrılmış bir bilgisayardan | **Evet** | **Evet** <br> Uygulamalarda çoklu oturum açma, bilgisayar oturum açma tarafından etkinleştirildi | **Evet**<br> Uygulamalarda çoklu oturum açma, bilgisayar oturum açma tarafından etkinleştirildi |
+| **Web uygulaması oturum açma**: <br>Kullanıcı tarafından ayrılmış bir bilgisayardan | **Evet** | **Evet** <br> Uygulamalarda çoklu oturum açma, bilgisayar oturum açma işlemi tarafından etkinleştirildi | **Evet**<br> Uygulamalarda çoklu oturum açma, bilgisayar oturum açma işlemi tarafından etkinleştirildi |
 | **Web uygulaması oturum açma**: <br> Mobil veya Windows dışı bir cihazdan | **Evet** | **Hayır** | **Hayır** |
 | **Bilgisayar oturum açma**: <br> Windows dışı bilgisayar | **Hayır** | **Hayır** | **Hayır** |
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması için teknik konular
 
-**AD FS tümleştirme** -kullanıcı, Microsoft Authenticator paroladışı kimlik bilgisini etkinleştirmesidir, bu kullanıcı için kimlik doğrulaması, onay için bir bildirim gönderir. Karma Kiracıdaki kullanıcıların, "parolanızı kullan" seçeneğini seçmedikçe oturum açmak için ADFS 'ye yönlendirilmesi engellenir. Bu işlem, şirket içi koşullu erişim ilkelerinin yanı sıra geçişli kimlik doğrulama akışlarını da atlar. Ancak, bir login_hint belirtilirse, kullanıcı ADFS 'ye iletilir ve passwordless kimlik bilgisini kullanma seçeneğini atlayacaktır.
+**AD FS tümleştirme** -kullanıcı, Microsoft Authenticator paroladışı kimlik bilgisini etkinleştirmesidir, bu kullanıcı için kimlik doğrulaması, onay için bir bildirim gönderir. Karma Kiracıdaki kullanıcıların, "parolanızı kullan" seçeneğini seçmedikçe, oturum açma için ADFS 'ye yönlendirilmeleri engellenir. Bu işlem, şirket içi koşullu erişim ilkelerinin yanı sıra geçişli kimlik doğrulama akışlarını da atlar. Ancak, bir *login_hint* belirtilirse, kullanıcı ADFS 'ye iletilir ve passwordless kimlik bilgisini kullanma seçeneğini atlar.
 
-Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinleştirilen **Azure MFA sunucusu** son kullanıcıları, hala bir passworddaha az telefon oturum açma kimlik bilgisi oluşturabilir ve kullanabilir. Kullanıcı, kimlik bilgileriyle Microsoft Authenticator birden çok yüklemeyi (5 +) yükseltmeyi denerse, bu değişiklik hataya neden olabilir.
+Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinleştirilen **Azure MFA sunucusu** son kullanıcıları, tek bir parolasız telefon oturum açma kimlik bilgisi oluşturabilir ve kullanabilir. Kullanıcı, kimlik bilgileriyle Microsoft Authenticator birden çok yüklemeyi (5 veya daha fazla) yükseltmeyi denerse, bu değişiklik bir hata oluşmasına neden olabilir.
 
-**Cihaz kaydı** -kimlik doğrulayıcı uygulamasını passwordless kimlik doğrulaması için kullanmak Için CIHAZıN Azure AD kiracısında kayıtlı olması ve paylaşılan bir cihaz olması gerekir. Bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, kimlik doğrulayıcı uygulamasını kullanarak telefon oturum açma için yalnızca bir iş veya okul hesabının desteklendiği anlamına gelir.
+**Cihaz kaydı** -kimlik doğrulayıcı uygulamasını passwordless kimlik doğrulaması için kullanmak Için CIHAZıN Azure AD kiracısında kayıtlı olması ve paylaşılan bir cihaz olması gerekir. Bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, kimlik doğrulayıcı uygulamasını kullanarak telefon oturumu açma için yalnızca bir iş veya okul hesabının desteklendiği anlamına gelir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir.
+Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir:
 
 | Önkoşul | Authenticator uygulaması | FIDO2 güvenlik anahtarları |
 | --- | --- | --- |
@@ -92,7 +90,7 @@ Kullanıcılar, Azure MFA kayıt akışının bir parçası olarak parolasız y�
 
 Güvenlik anahtarları kaynaklarınıza erişimi etkinleştirir ve bu fiziksel cihazların yönetimini planlamanız gerekir.
 
-1. Anahtar dağıtımı: kuruluşunuza nasıl anahtar sağlayacağınızı planlayın. Merkezi bir sağlama işleminiz olabilir veya son kullanıcıların FIDO 2,0 ile uyumlu anahtarlar satın almasını sağlayabilirsiniz.
+1. Anahtar dağıtımı: kuruluşunuza anahtar sağlamayı planlayın. Merkezi bir sağlama işleminiz olabilir veya son kullanıcıların FIDO 2,0 ile uyumlu anahtarlar satın almasını sağlayabilirsiniz.
 1. Anahtar etkinleştirme: son kullanıcıların güvenlik anahtarını kendi kendine etkinleştirmeleri gerekir. Son kullanıcılar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) bir güvenlik anahtarını kaydeder ve ilk kullanımda ikinci faktörü (PIN veya biyometri) etkinleştirir.
 1. Bir anahtarı devre dışı bırakma: güvenlik anahtarı işlevselliği önizleme aşamasında olduğunda, yöneticinin bir kullanıcı hesabından anahtar kaldırması için bir yol yoktur. Kullanıcının onu kaldırması gerekir. Bir anahtar kaybolur veya çalınırsa:
    1. Parolayı, passwordless kimlik doğrulaması için etkinleştirilen herhangi bir gruptan kaldırın.
@@ -102,7 +100,7 @@ Güvenlik anahtarları kaynaklarınıza erişimi etkinleştirir ve bu fiziksel c
 
 ### <a name="enable-windows-10-support"></a>Windows 10 desteğini etkinleştir
 
-FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin etkinleştirilmesi, Windows 10 ' da kimlik bilgisi sağlayıcısı işlevinin etkinleştirilmesini gerektirir. İki yönden birini etkinleştirin:
+FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin etkinleştirilmesi için aşağıdaki yollarla Windows 10 ' da kimlik bilgisi sağlayıcısı işlevselliğinin etkinleştirilmesi gerekir:
 
 - [Intune ile kimlik bilgisi sağlayıcısını etkinleştirme](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
    - Intune dağıtımı önerilen seçenektir.
@@ -110,6 +108,15 @@ FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin
    - Intune dağıtımı mümkün değilse, yöneticilerin kimlik bilgisi sağlayıcısı işlevini etkinleştirmek için her makinede bir paket dağıtmaları gerekir. Paket yüklemesi aşağıdaki seçeneklerden biriyle gerçekleştirilebilir:
       - grup ilkesi veya Configuration Manager
       - Windows 10 makinesinde yerel yükleme
+- [grup ilkesi ile kimlik bilgisi sağlayıcısını etkinleştir](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Yalnızca karma Azure AD 'ye katılmış cihazlar için desteklenir.
+
+#### <a name="enable-on-premises-integration"></a>Şirket içi tümleştirmeyi etkinleştir
+
+Şirket içi kaynaklara erişimi etkinleştirmek için, Şirket [içi kaynaklarda (Önizleme) passwordless güvenlik anahtarı oturum açma 'Yı etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md)adımlarını izleyin.
+
+> [!IMPORTANT]
+> Bu adımların, karma Azure AD 'ye katılmış cihazların Windows 10 oturum açma için FIDO2 güvenlik anahtarlarını kullanmasını sağlamak için de tamamlanması gerekir.
 
 ### <a name="register-security-keys"></a>Güvenlik anahtarlarını Kaydet
 
@@ -131,12 +138,12 @@ Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özet
 
 | Alan | Açıklama |
 | --- | --- |
-| **Erişim** | Passwordless oturum açma, kurumsal ağ içinde veya dışında bir kurumsal veya kişisel cihazdan kullanılabilir. |
+| **Erişim** | Passwordless oturum açma, şirket ağı içindeki veya dışındaki bir kurumsal veya kişisel cihazdan kullanılabilir. |
 | **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
-| **Governance (İdare)** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
-| **Güvenlik** | Uygun kimlik doğrulama yöntemine erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. <br> Yalnızca yetkili kullanıcılar parolasız oturum açma kullanabilir. |
+| **#** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
+| **Güvenlik** | Uygun kimlik doğrulama yöntemine erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. <br> Yalnızca yetkili kullanıcılar, passwordless oturum açma kullanabilir. |
 | **Performans** | Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. <br> Oturum açma süreleri kullanım kolaylığı açısından ölçülür. |
-| **Kullanıcı deneyimi** | Kullanıcılar mobil uyumluluğun farkında değildir. <br> Kullanıcılar, kimlik doğrulayıcı uygulamasının parolasız oturum açmasını yapılandırabilir. |
+| **Kullanıcı deneyimi** | Kullanıcılar mobil uyumluluğun farkında değildir. <br> Kullanıcılar, kimlik doğrulayıcı uygulamasının parolasız oturum açma yapılandırmasını yapılandırabilir. |
 | **Destek** | Kullanıcılar, parolasız oturum açma sorunları için nasıl destek bulacağınızı öğrenirsiniz. |
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
@@ -147,45 +154,45 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlul
 
 İletişim, her yeni hizmetin başarısı için önemlidir. Kullanıcıların deneyiminin nasıl değiştirileceği, ne zaman değiştirileceği ve sorunlar yaşandıklarında nasıl destek kazanabilecekleri hakkında daha etkin bir şekilde iletişim kurun.
 
-Son kullanıcılara yönelik iletişimlerinizin şunları eklemesi gerekir:
+Son kullanıcılara yönelik iletişimlerinizin aşağıdaki bilgileri içermesi gerekir:
 
 - [Birleşik güvenlik kaydı deneyimini etkinleştirme](howto-authentication-passwordless-phone.md)
 - [Microsoft Authenticator uygulamasını indirme](../user-help/user-help-auth-app-download-install.md)
 - [Microsoft Authenticator uygulamasına kaydetme](howto-authentication-passwordless-phone.md)
 - [Telefonunuzla oturum açma](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft, iletişimlerinizin taslağını sağlamak için MFA [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki güvenlik bilgileri bağlantılarını seçerek doğrudan kaydettirmek üzere [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını sağlamak için MFA [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) gönderebilirsiniz.
 
 ### <a name="testing-passwordless"></a>Passwordless test ediliyor
 
-Dağıtımınızın her aşamasında, sonuçların beklendiği gibi olduğunu test etdiğinizden emin olun.
+Test senaryoları ve benimseme testi yaparken dağıtımınızın her aşamasında sonuçların beklenen şekilde yapıldığından emin olun.
 
 #### <a name="testing-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını test etme
 
-Microsoft Authenticator uygulamayla, passwordless kimlik doğrulaması için örnek test çalışmaları aşağıda verilmiştir
+Microsoft Authenticator uygulamayla, passwordless kimlik doğrulaması için örnek test çalışmaları aşağıda verilmiştir:
 
 | Senaryo | Beklenen sonuçlar |
 | --- | --- |
 | Kullanıcı Microsoft Authenticator uygulamayı kaydedebilir | Kullanıcı, uygulamayı aka.ms/mysecurityinfo 'tan kaydedebilir |
 | Kullanıcı telefonla oturum açmayı etkinleştirebilir | İş için yapılandırılmış telefon oturumu açma hesabı |
 | Kullanıcı, telefonla oturum açma ile bir uygulamaya erişebilir | Kullanıcı telefon oturum açma akışından geçer ve belirlenen uygulamaya ulaşır. |
-| Azure Active Directory portalındaki kimlik doğrulama yöntemleri ekranında Microsoft Authenticator parolasız oturum açma 'yı kapatarak telefonla oturum açma kaydını test edin | Daha önce etkinleştirilen kullanıcılar Microsoft Authenticator 'ten parolasız oturum açma kullanamaz. |
-| Microsoft Authenticator uygulamasından telefonla oturum açma kaldırılıyor | İş hesabı artık Microsoft Authenticator kullanılamıyor |
+| Azure Active Directory portalındaki kimlik doğrulama yöntemleri ekranında Microsoft Authenticator parolasız oturum açma 'yı kapatarak telefonla oturum açma kaydını geri alma testi yapın | Daha önce etkinleştirilen kullanıcılar Microsoft Authenticator ' den parolasız oturum açma kullanamaz. |
+| Microsoft Authenticator uygulamadan telefonla oturum açma kaldırılıyor | İş hesabı artık Microsoft Authenticator kullanılamıyor |
 
 #### <a name="testing-security-keys"></a>Güvenlik anahtarlarını test etme
 
 Aşağıda, güvenlik anahtarlarına sahip parolasız kimlik doğrulaması için örnek test çalışmaları verilmiştir.
 
-**Windows 10 cihazlarına Azure Active Directory için passwordless FıDO oturum açma**
+**Katılmış Windows 10 cihazlarına Azure Active Directory için passwordless FıDO oturum açma**
 
 | Senaryo | Beklenen sonuçlar |
 | --- | --- |
 | Kullanıcı FIDO2 cihazını kaydedebilir (1809) | Kullanıcı, FIDO2 cihaz ayarlarını > Hesaplar > oturum açma seçenekleri > güvenlik anahtarı ' nı kullanarak kaydedebilir |
 | Kullanıcı FIDO2 cihazını sıfırlayabilir (1809) | Kullanıcı üretici yazılımını kullanarak FIDO2 cihazını sıfırlayabilir |
-| Kullanıcı FIDO2 cihazla oturum açabilir (1809) | Kullanıcı oturum açma penceresinde güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
+| Kullanıcı FIDO2 cihazla oturum açabilir (1809) | Kullanıcı, oturum açma penceresinden güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
 | Kullanıcı FIDO2 cihazını kaydedebilir (1903) | Kullanıcı, FIDO2 cihaz ayarlarını > Hesaplar > oturum açma seçenekleri > güvenlik anahtarı ' na kaydedebilir |
 | Kullanıcı FIDO2 cihazını sıfırlayabilir (1903) | Kullanıcı, FIDO2 cihaz ayarlarını > Hesaplar > oturum açma seçenekleri > güvenlik anahtarı ' nda sıfırlayabilir |
-| Kullanıcı FIDO2 cihazla oturum açabilir (1903) | Kullanıcı oturum açma penceresinde güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
+| Kullanıcı FIDO2 cihazla oturum açabilir (1903) | Kullanıcı, oturum açma penceresinden güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
 
 **Azure AD Web Apps 'te passwordless FIDO oturum açma**
 
@@ -201,14 +208,14 @@ Aşağıda, güvenlik anahtarlarına sahip parolasız kimlik doğrulaması için
 
 Azure AD, teknik ve iş öngörüleri sağlayan raporlar içerir. İşletmenizin ve teknik uygulama sahiplerinizin sahipliğini varsaymasını ve kuruluşunuzun gereksinimlerine göre bu raporları kullanmasını sağlayabilirsiniz.
 
-Azure Active Directory portalındaki kimlik doğrulama yöntemleri bölümü, yöneticilerin parolasız kimlik bilgileri için ayarları etkinleştirebileceği ve yönetebilecekleri yerdir.
+Azure Active Directory portalındaki **kimlik doğrulama** yöntemleri bölümü, yöneticilerin parolasız kimlik bilgileri için ayarları etkinleştirebileceği ve yönetebilecekleri yerdir.
 
 Azure AD, şu durumlarda denetim günlüklerine girdi ekler:
 
 - Yönetici, kimlik doğrulama yöntemleri bölümünde değişiklik yapar.
 - Kullanıcı Azure Active Directory içindeki kimlik bilgileriyle ilgili her türlü değişikliği yapar.
 
-Aşağıdaki tabloda tipik raporlama senaryolarının bazı örnekleri verilmiştir.
+Aşağıdaki tabloda tipik raporlama senaryolarının bazı örnekleri verilmiştir:
 
 |   | Riski yönetin | Üretkenliği artırın | İdare ve uyum |
 | --- | --- | --- | --- |
@@ -219,15 +226,15 @@ Aşağıdaki tabloda tipik raporlama senaryolarının bazı örnekleri verilmiş
 
 Kullanıcılar, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)giderek kimlik bilgilerini kaydedebilir ve yönetebilir. Bu bağlantı, kullanıcıları birleştirilmiş SSPR/MFA kayıt deneyimi aracılığıyla etkinleştirilen Son Kullanıcı kimlik bilgileri yönetim deneyimine yönlendirir. FIDO2 güvenlik cihazlarının herhangi bir kaydı veya bir kullanıcı tarafından kimlik doğrulama yöntemlerine yapılan değişiklikler Azure Active Directory Denetim günlüklerine kaydedilir.
 
-Kullanıcılar bir güvenlik anahtarındaki hesabı etkinleştirir veya devre dışı bırakır veya Windows 10 makinelerinde güvenlik anahtarı için ikinci faktörü sıfırlarsa, güvenlik günlüğüne bir giriş eklenir ve aşağıdaki olay kimlikleri altında bulunur: 4670, 5382.
+Kullanıcılar bir güvenlik anahtarındaki hesabı etkinleştirir veya devre dışı bırakır veya Windows 10 makinelerinde güvenlik anahtarı için ikinci faktörü sıfırlarsa, güvenlik günlüğüne bir giriş eklenir ve aşağıdaki olay kimlikleri altında bulunur: *4670* ve *5382*.
 
 ### <a name="plan-for-rollback"></a>Geri alma planı
 
 Passwordless kimlik doğrulaması, son kullanıcılar üzerinde en az etkiyle hafif bir özelliktir ancak geri almak gerekebilir.
 
-Geri dönme, yöneticinin Azure Active Directory portalında oturum açmasını, istenen güçlü kimlik doğrulama yöntemlerini seçmesini ve Etkinleştir seçeneğini ' Hayır ' olarak değiştirmesini gerektirir. Bu işlem, tüm kullanıcılar için parolasız işlevselliği devre dışı bırakır.
+Geri dönme, yöneticinin Azure Active Directory portalında oturum açmasını, istenen güçlü kimlik doğrulama yöntemlerini seçmesini ve Etkinleştir seçeneğini **Hayır**olarak değiştirmesini gerektirir. Bu işlem, tüm kullanıcılar için parolasız işlevselliği kapatır.
 
-FIDO2 güvenlik cihazlarını zaten kaydetmiş olan kullanıcıların, bir sonraki oturum açma sırasında güvenlik cihazını kullanması istenir ve ardından aşağıdaki hatayı görür:
+FIDO2 güvenlik cihazlarını zaten kaydetmiş olan kullanıcıların, bir sonraki oturum açma sırasında güvenlik cihazını kullanması istenir ve aşağıdaki hatayı görürsünüz:
 
 ![oturum açmak için farklı bir yol seçin](./media/howto-authentication-passwordless-deployment/passwordless-choose-sign-in.png)
 
@@ -247,14 +254,14 @@ Aşağıdaki seçtiğiniz metoda hizalanmış adımları izleyin.
 
 | Azure AD rolü | Açıklama |
 | --- | --- |
-| Kimlik doğrulama Yöneticisi | Kimlik doğrulama yöntemlerini uygulayabilir ve yönetebilecek en az ayrıcalıklı rol |
+| Kimlik doğrulama Yöneticisi | Kimlik doğrulama yöntemlerini uygulayabilir ve yönetebilecek en az ayrıcalıklı rol. |
 | Kullanıcı | Cihazda Authenticator uygulamasını yapılandırmak veya Web veya Windows 10 oturum açma için güvenlik anahtarı cihazını kaydetmek için en az ayrıcalıklı rol. |
 
-### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla telefon oturumu açma
+### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla telefonla oturum açma dağıtımı
 
 Microsoft Authenticator uygulamayı kuruluşunuzda bir passwordless kimlik doğrulama yöntemi olarak etkinleştirmek için, makaledeki adımları izleyin, [Microsoft Authenticator uygulamayla passwordless oturum açma özelliğini etkinleştirin](howto-authentication-passwordless-phone.md) .
 
-### <a name="deploy-fido2-security-key-sign-in"></a>FIDO2 güvenlik anahtarını dağıtma oturum açma
+### <a name="deploy-fido2-security-key-sign-in"></a>FIDO2 güvenlik anahtarı oturumunu dağıtma
 
 Bu makaledeki adımları izleyerek, FIDO2 güvenlik anahtarlarını kuruluşunuzda passwordless kimlik doğrulama yöntemleri olarak etkinleştirmek için [Azure AD 'de passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin](howto-authentication-passwordless-security-key.md) .
 
@@ -262,21 +269,21 @@ Bu makaledeki adımları izleyerek, FIDO2 güvenlik anahtarlarını kuruluşunuz
 
 | Senaryo | Çözüm |
 | --- | --- |
-| Kullanıcı birleştirilmiş kayıt gerçekleştiremez | [Birleşik kaydın](concept-registration-mfa-sspr-combined.md) etkinleştirildiğinden emin olun. |
-| Kullanıcı telefonla oturum açma kimlik doğrulayıcı uygulamasında etkinleştirilemiyor | Kullanıcının dağıtım kapsamında olduğundan emin olun |
-| Kullanıcı, passwordless kimlik doğrulaması kapsamında DEĞIL, ancak tamamlanmayan parolasız oturum açma seçeneği ile sunulmaktadır. | Bu senaryo, Kullanıcı, oluşturulduktan sonra uygulamanın telefonda oturum açmasını etkinleştirmişse oluşur. <br> Oturum açmayı etkinleştirmek için: kullanıcıyı, parolasız oturum açma için etkinleştirilen kullanıcıların kapsamına ekleyin. <br> Oturum açmayı engellemek için: kullanıcının bu uygulamanın kimlik bilgilerini kaldırmasını sağlayabilirsiniz. |
+| Kullanıcı Birleşik kayıt gerçekleştiremez. | [Birleşik kaydın](concept-registration-mfa-sspr-combined.md) etkinleştirildiğinden emin olun. |
+| Kullanıcı, telefonla oturum açma kimlik doğrulayıcı uygulamasını etkinleştiremez. | Kullanıcının dağıtım kapsamında olduğundan emin olun. |
+| Kullanıcı, passwordless kimlik doğrulaması kapsamında DEĞIL, ancak tamamlanmayan parolasız oturum açma seçeneği ile sunulmaktadır. | Bu senaryo, Kullanıcı, oluşturulduktan sonra uygulamanın telefonda oturum açmasını etkinleştirmişse oluşur. <br> Oturum açmayı etkinleştirmek için: kullanıcıyı, passwordless oturum açma için etkinleştirilen kullanıcıların kapsamına ekleyin. <br> Oturum açmayı engellemek için: kullanıcının bu uygulamanın kimlik bilgilerini kaldırmasını sağlayabilirsiniz. |
 
 ### <a name="troubleshoot-security-key-sign-in"></a>Güvenlik anahtarı oturum açma sorunlarını giderme
 
 | Senaryo | Çözüm |
 | --- | --- |
-| Kullanıcı birleştirilmiş kayıt gerçekleştiremez | [Birleşik kaydın](concept-registration-mfa-sspr-combined.md) etkinleştirildiğinden emin olun. |
-| Kullanıcı [güvenlik ayarlarına](https://aka.ms/mysecurityinfo) bir güvenlik anahtarı ekleyemez | [Güvenlik anahtarlarının](howto-authentication-passwordless-security-key.md) etkinleştirildiğinden emin olun. |
-| Kullanıcı Windows 10 oturum açma seçeneklerinde güvenlik anahtarı ekleyemiyor | [Windows oturum açma güvenlik anahtarlarının oturum açmasını sağlayın](howto-authentication-passwordless-enable.md) |
+| Kullanıcı Birleşik kayıt gerçekleştiremez. | [Birleşik kaydın](concept-registration-mfa-sspr-combined.md) etkinleştirildiğinden emin olun. |
+| Kullanıcı [güvenlik ayarlarına](https://aka.ms/mysecurityinfo)bir güvenlik anahtarı ekleyemez. | [Güvenlik anahtarlarının](howto-authentication-passwordless-security-key.md) etkinleştirildiğinden emin olun. |
+| Kullanıcı Windows 10 oturum açma seçeneklerine güvenlik anahtarı ekleyemiyor. | [Windows oturum açma güvenlik anahtarlarının oturum açmasını sağlayın](howto-authentication-passwordless-enable.md) |
 | **Hata iletisi**: bu tarayıcının veya IŞLETIM sisteminin FIDO2 güvenlik anahtarlarını desteklemediğini algıladık. | Passwordless FIDO2 güvenlik cihazları, Windows 10 sürüm 1809 veya üzeri sürümlerde yalnızca desteklenen tarayıcılarda (Microsoft Edge, Firefox sürüm 67) kaydedilebilir. |
 | **Hata iletisi**: Şirket ilkeniz, oturum açmak için farklı bir yöntem kullanmanızı gerektirir. | Kiracıda güvenlik anahtarlarının etkin olmadığından emin değil. |
 | Kullanıcı Windows 10 sürüm 1809 üzerinde güvenlik anahtarımı yönemedi | Sürüm 1809, FIDO2 anahtar satıcısı tarafından sağlanmış olan güvenlik anahtarı yönetim yazılımını kullanmanızı gerektirir. Destek için satıcıya başvurun. |
-| FIDO2 güvenlik anahtarımın bozuk olabileceğini sanırım, nasıl test edebilirim? | [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)gidin, bir test hesabı için kimlik bilgilerini girin, şüpheli güvenlik anahtarını takın, ekranın sağ üst kısmındaki "+" düğmesine tıklayın, Oluştur ' a tıklayın ve oluşturma işlemi boyunca ilerleyin. Bu senaryo başarısız olursa, cihazınız bozulmuş olabilir. |
+| FIDO2 güvenlik anahtarımın bozulmuş olabileceğini sanırım, nasıl test edebilirim? | [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)gidin, bir test hesabı için kimlik bilgilerini girin, şüpheli güvenlik anahtarını takın, ekranın sağ üst kısmındaki **+** düğmesini seçin, Oluştur ' a tıklayın ve oluşturma işlemi boyunca ilerleyin. Bu senaryo başarısız olursa, cihazınız bozulmuş olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

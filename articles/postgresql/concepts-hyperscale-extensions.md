@@ -6,21 +6,21 @@ ms.author: raagyema
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 4f7a961b04290bd17657949877c0b81bc281da50
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/18/2020
+ms.openlocfilehash: 84b28096904db49f98c16601c5927928ad38743b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975559"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485412"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları – hiper ölçek (Citus)
 
-PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla veritabanınızdan yüklenebilecek veya kaldırılabileceği tek bir pakette birden fazla ilgili SQL nesnesini paketlemeye olanak tanır. Veritabanına yüklendikten sonra uzantılar, yerleşik özellikler gibi çalışabilir. PostgreSQL uzantıları hakkında daha fazla bilgi için bkz. [Package ile ilgili nesneler bir uzantıya](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
+PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla veritabanınızdan yüklenebilecek veya kaldırılabileceği tek bir pakette birden fazla ilgili SQL nesnesini paketlemeye olanak tanır. Veritabanına yüklendikten sonra uzantılar, yerleşik özellikler gibi çalışabilir. PostgreSQL uzantıları hakkında daha fazla bilgi için bkz. [Package ile ilgili nesneler bir uzantıya](https://www.postgresql.org/docs/current/static/extend-extensions.html).
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL uzantılarını kullanma
 
-PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, paketlenmiş nesneleri veritabanınıza yüklemek üzere psql aracından [uzantı oluştur](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) komutunu çalıştırın.
+PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, paketlenmiş nesneleri veritabanınıza yüklemek üzere psql aracından [uzantı oluştur](https://www.postgresql.org/docs/current/static/sql-createextension.html) komutunu çalıştırın.
 
 PostgreSQL için Azure veritabanı-hiper ölçek (Citus) Şu anda burada listelenen bir anahtar uzantıları alt kümesini desteklemektedir. Listelenenler dışındaki uzantılar desteklenmez. PostgreSQL için Azure veritabanı ile kendi uzantınızı oluşturamazsınız.
 
@@ -31,52 +31,53 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="data-types-extensions"></a>Veri türleri uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
-> | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | Büyük/küçük harf duyarsız bir karakter dizesi türü sağlar. |
-> | [ünüzde](https://www.postgresql.org/docs/9.6/static/cube.html) | Çok boyutlu küpler için bir veri türü sağlar. |
-> | [HStore](https://www.postgresql.org/docs/9.6/static/hstore.html) | Anahtar-değer çiftlerinin kümelerini depolamak için bir veri türü sağlar. |
-> | [değilse](https://www.postgresql.org/docs/9.6/static/isn.html) | Uluslararası ürün numaralandırma standartları için veri türleri sağlar. |
+> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Büyük/küçük harf duyarsız bir karakter dizesi türü sağlar. |
+> | [ünüzde](https://www.postgresql.org/docs/current/static/cube.html) | Çok boyutlu küpler için bir veri türü sağlar. |
+> | [HStore](https://www.postgresql.org/docs/current/static/hstore.html) | Anahtar-değer çiftlerinin kümelerini depolamak için bir veri türü sağlar. |
+> | [hll](https://github.com/citusdata/postgresql-hll) | Bir HyperLogLog veri yapısı sağlar. |
+> | [değilse](https://www.postgresql.org/docs/current/static/isn.html) | Uluslararası ürün numaralandırma standartları için veri türleri sağlar. |
 > | [verilsin](https://www.postgresql.org/docs/current/lo.html) | Büyük nesne bakımı. |
-> | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | Hiyerarşik ağaç benzeri yapılar için bir veri türü sağlar. |
+> | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Hiyerarşik ağaç benzeri yapılar için bir veri türü sağlar. |
 > | [SEG](https://www.postgresql.org/docs/current/seg.html) | Satır parçalarını veya kayan nokta aralıklarını göstermek için veri türü. |
 > | [üst n](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB için yazın. |
 
 ### <a name="full-text-search-extensions"></a>Tam metin arama uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
-> | [dict\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | Tamsayılar için bir metin arama sözlüğü şablonu sağlar. |
+> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | Tamsayılar için bir metin arama sözlüğü şablonu sağlar. |
 > | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Genişletilmiş eş anlamlı işleme için metin arama sözlüğü şablonu. |
-> | [vurgu kaldır](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Lexemes 'ten vurguları (aksan işaretleri) kaldıran bir metin arama sözlüğü. |
+> | [vurgu kaldır](https://www.postgresql.org/docs/current/static/unaccent.html) | Lexemes 'ten vurguları (aksan işaretleri) kaldıran bir metin arama sözlüğü. |
 
 ### <a name="functions-extensions"></a>İşlev uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
 > | [Oto](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Alanları tekrar arttırın işlevleri. |
-> | [earthdistance](https://www.postgresql.org/docs/9.6/static/earthdistance.html) | Dünya yüzeyinde büyük daire mesafelerini hesaplamak için bir yol sağlar. |
-> | [belirsizlik zystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | , Dizeler arasındaki benzerlikleri ve mesafeyi belirlemede çeşitli işlevler sağlar. |
+> | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Dünya yüzeyinde büyük daire mesafelerini hesaplamak için bir yol sağlar. |
+> | [belirsizlik zystrmatch](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | , Dizeler arasındaki benzerlikleri ve mesafeyi belirlemede çeşitli işlevler sağlar. |
 > | [\_Kullanıcı adı Ekle](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Bir tablonun kimin tarafından değiştirildiğini izlemeye yönelik işlevler. |
 > | [ıntagg](https://www.postgresql.org/docs/current/intagg.html) | Tamsayı toplayıcısı ve Numaralandırıcı (geçersiz). |
-> | [ıntarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Tamsayıların null ve boş dizilerini işlemek için işlevler ve işleçler sağlar. |
+> | [ıntarray](https://www.postgresql.org/docs/current/static/intarray.html) | Tamsayıların null ve boş dizilerini işlemek için işlevler ve işleçler sağlar. |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Son değiştirme süresini izlemek için işlevler. |
-> | [pgşifre](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | Şifreleme işlevleri sağlar. |
+> | [pgşifre](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Şifreleme işlevleri sağlar. |
 > | [PG\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Bölümlenmiş tabloları zamana veya KIMLIĞE göre yönetir. |
-> | [PG\_TRGM](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Trigram eşleştirmeye göre alfasayısal metnin benzerliğini belirlemek için işlevler ve işleçler sağlar. |
+> | [PG\_TRGM](https://www.postgresql.org/docs/current/static/pgtrgm.html) | Trigram eşleştirmeye göre alfasayısal metnin benzerliğini belirlemek için işlevler ve işleçler sağlar. |
 > | [refınt](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Bilgi tutarlılığı (kullanım dışı) uygulamak için işlevler. |
 > | oturum\_Analizi | HStore dizilerini sorgulamak için işlevler. |
-> | [tablofunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Çapraz tablo dahil olmak üzere tüm tabloları düzenleyen işlevler sağlar. |
+> | [tablofunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | Çapraz tablo dahil olmak üzere tüm tabloları düzenleyen işlevler sağlar. |
 > | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Tetiklenmiş değişiklik bildirimleri. |
 > | [timetralevel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Saat seyahati uygulama işlevleri. |
-> | [UUID-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Evrensel benzersiz tanımlayıcılar (UUID 'ler) oluşturur. |
+> | [UUID-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Evrensel benzersiz tanımlayıcılar (UUID 'ler) oluşturur. |
 
 ### <a name="hyperscale-extensions"></a>Hiper ölçek uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus dağıtılmış veritabanı. |
 > | parça\_yeniden dengeleyici | Düğüm ekleme veya kaldırma durumunda bir sunucu grubundaki verileri güvenli bir şekilde yeniden dengeleyin. |
@@ -84,37 +85,37 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="index-types-extensions"></a>Dizin türleri uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
 > | [Bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom erişim yöntemi-imza dosya tabanlı dizin. |
-> | [BTREE\_gın](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Belirli veri türleri için B-ağacı benzeri davranışı uygulayan örnek bir işleç sınıfları sağlar. |
-> | [BTREE\_GİST](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | B-ağacı uygulayan GiST Dizin işleci sınıfları sağlar. |
+> | [BTREE\_gın](https://www.postgresql.org/docs/current/static/btree-gin.html) | Belirli veri türleri için B-ağacı benzeri davranışı uygulayan örnek bir işleç sınıfları sağlar. |
+> | [BTREE\_GİST](https://www.postgresql.org/docs/current/static/btree-gist.html) | B-ağacı uygulayan GiST Dizin işleci sınıfları sağlar. |
 
 ### <a name="language-extensions"></a>Dil uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
-> | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL yüklenebilir yordam dili. |
+> | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL yüklenebilir yordam dili. |
 
 ### <a name="miscellaneous-extensions"></a>Çeşitli uzantılar
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
 > | [Yönetim Paketi](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL için yönetim işlevleri. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | İlişki bütünlüğünü doğrulamaya yönelik işlevler. |
 > | [dosya\_FDW](https://www.postgresql.org/docs/current/file-fdw.html) | Düz dosya erişimi için yabancı veri sarmalayıcısı. |
 > | [pageincele](https://www.postgresql.org/docs/current/pageinspect.html) | Veritabanı sayfalarının içeriğini düşük bir düzeyde inceleyin. |
-> | [PG\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | , Paylaşılan arabellek önbelleğinde gerçek zamanlı olarak neler olduğunu incelemek için bir yol sağlar. |
+> | [PG\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | , Paylaşılan arabellek önbelleğinde gerçek zamanlı olarak neler olduğunu incelemek için bir yol sağlar. |
 > | [PG\_cron](https://github.com/citusdata/pg_cron) | PostgreSQL için iş Zamanlayıcısı. |
 > | [PG\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Boş alan haritasını inceleyin (FSD). |
-> | [PG\_ön sıcak](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Arabellek önbelleğine ilişki verileri yüklemek için bir yol sağlar. |
-> | [PG\_stat\_deyimleri](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Bir sunucu tarafından yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izlemek için bir yol sağlar. Bu uzantı hakkında bilgi için "pg_stat_statements" bölümüne bakın. |
+> | [PG\_ön sıcak](https://www.postgresql.org/docs/current/static/pgprewarm.html) | Arabellek önbelleğine ilişki verileri yüklemek için bir yol sağlar. |
+> | [PG\_stat\_deyimleri](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | Bir sunucu tarafından yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izlemek için bir yol sağlar. Bu uzantı hakkında bilgi için "pg_stat_statements" bölümüne bakın. |
 > | [sayfalık\_görünürlüğü](https://www.postgresql.org/docs/current/pgvisibility.html) | Görünürlük haritasını (VM) ve sayfa düzeyi görünürlük bilgilerini inceleyin. |
-> | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Satır düzeyinde kilitleme bilgilerini göstermek için bir yol sağlar. |
-> | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Demet düzeyi istatistiklerini göstermek için bir yol sağlar. |
-> | [Postgres\_FDW](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Dış PostgreSQL sunucularında depolanan verilere erişmek için kullanılan yabancı veri sarmalayıcı. Bu uzantı hakkında bilgi için bkz. "dblink and postgres_fdw" bölümü.|
+> | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | Satır düzeyinde kilitleme bilgilerini göstermek için bir yol sağlar. |
+> | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | Demet düzeyi istatistiklerini göstermek için bir yol sağlar. |
+> | [Postgres\_FDW](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | Dış PostgreSQL sunucularında depolanan verilere erişmek için kullanılan yabancı veri sarmalayıcı. Bu uzantı hakkında bilgi için bkz. "dblink and postgres_fdw" bölümü.|
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | SSL sertifikaları hakkında bilgi. |
 > | [TSD\_sistem\_satırları](https://www.postgresql.org/docs/current/tsm-system-rows.html) | Bir sınır olarak satır sayısını kabul eden, bu yöntem. |
 > | [TSD\_sistem\_saati](https://www.postgresql.org/docs/current/tsm-system-time.html) | Bir sınır olarak milisaniye olarak zaman kabul eden, bu yöntem. |
@@ -126,7 +127,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="postgis-extensions"></a>PostGIS uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Uzantının** | **Açıklama** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/)postgıs\_topolojisi, postgıs\_Tiger\_Geocoder, postgıs\_sfcgal | PostgreSQL için uzamsal ve coğrafi nesneler. |
 > | Adres\_standartlayıcı, adres\_standartlayıcı\_veri\_ABD | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. Coğrafi kodlama adres normalleştirme adımını desteklemek için kullanılır. |

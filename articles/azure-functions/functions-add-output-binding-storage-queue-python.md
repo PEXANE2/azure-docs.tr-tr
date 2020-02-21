@@ -3,12 +3,12 @@ title: Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 description: Bir Azure depolama kuyruğunu bir çıkış bağlaması kullanarak bir Python işleviyle tümleştirin.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198488"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485174"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 
@@ -100,7 +100,7 @@ Bu işlevden bir Azure depolama kuyruğuna yazmak için, aşağıdaki kodda gös
 
 Bu durumda, `msg` işleve çıkış bağımsız değişkeni olarak verilir. `queue` bir tür için, `queueName` sıranın adını da belirtmeniz ve `connection`' deki Azure depolama bağlantısı 'nın ( *Local. Settings. JSON*' dan) *adını* sağlamanız gerekir.
 
-Bağlamaların ayrıntıları hakkında daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md) ve [sıra çıkış yapılandırması](functions-bindings-storage-queue.md#output---configuration).
+Bağlamaların ayrıntıları hakkında daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md) ve [sıra çıkış yapılandırması](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Çıkış bağlamayı kullanmak için kod ekleme
 
@@ -176,19 +176,19 @@ Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanı
 
 1. İşlevin proje *yerel. Setting. JSON* dosyasını açın ve bağlantı dizesi değerini kopyalayın. Bir Terminal veya komut penceresinde, `<connection_string>`yerine belirli bağlantı dizenizi yapıştırarak `AZURE_STORAGE_CONNECTION_STRING`adlı bir ortam değişkeni oluşturmak için aşağıdaki komutu çalıştırın. (Bu ortam değişkeni, `--connection-string` bağımsız değişkenini kullanarak sonraki her komuta bağlantı dizesi sağlamanız gerekmez.)
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanı
     
 1. Seçim Hesabınızdaki depolama kuyruklarını görüntülemek için [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) komutunu kullanın. Bu komutun çıktısı, işlev bu kuyruğa ilk iletisini yazmışsa oluşturulan `outqueue`adlı bir sıra içermelidir.
     
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -219,21 +219,21 @@ Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanı
     ---
 
 
-1. Bu kuyruktaki iletileri görüntülemek için [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) komutunu kullanın. Bu, daha önce işlev test edilirken kullandığınız ilk ad olmalıdır. Komut, sıradaki ilk iletiyi [Base64 kodlamasında](functions-bindings-storage-queue.md#encoding)alır, bu nedenle metin olarak görüntülemek için iletinin kodunu da çözmelisiniz.
+1. Bu kuyruktaki iletileri görüntülemek için [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) komutunu kullanın. Bu, daha önce işlev test edilirken kullandığınız ilk ad olmalıdır. Komut, sıradaki ilk iletiyi [Base64 kodlamasında](functions-bindings-storage-queue-trigger.md#encoding)alır, bu nedenle metin olarak görüntülemek için iletinin kodunu da çözmelisiniz.
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     İleti toplamayı başvuru yapmanız ve Base64 'den kod çözmelisiniz, PowerShell 'i çalıştırın ve PowerShell komutunu kullanın.
 
@@ -251,13 +251,13 @@ Artık işlevi yerel olarak test ettiğiniz ve Azure depolama kuyruğuna bir ile
     
 1. Önceki hızlı başlangıçta olduğu gibi, yeniden dağıtılan işlevi sınamak için bir tarayıcı veya KıVRıMLı kullanın.
 
-    # <a name="browsertabbrowser"></a>[Tarayıcı](#tab/browser)
+    # <a name="browser"></a>[Tarayıcı](#tab/browser)
     
     Yayımla komutunun çıktısında gösterilen tüm **çağırma URL** 'sini bir tarayıcı adres çubuğuna kopyalayın, `&name=Azure`sorgu parametresini ekleyin. , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
 
     ![Azure üzerinde çalışan işlevin çıktısı bir tarayıcıda](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[kıvr](#tab/curl)
+    # <a name="curl"></a>[kıvr](#tab/curl)
     
     `&name=Azure`parametresini ekleyerek **Invoke URL 'si**ile [kıvrımlı](https://curl.haxx.se/) çalıştırın. Komutun çıktısı, "Merhaba Azure" metni olmalıdır.
     

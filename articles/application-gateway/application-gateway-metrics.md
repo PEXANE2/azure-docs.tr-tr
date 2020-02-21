@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425265"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485191"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -22,7 +22,7 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
 ### <a name="timing-metrics"></a>Zamanlama ölçümleri
 
-Application Gateway, her türlü istek ve Yanıtla ilgili, milisaniye cinsinden ölçülen çeşitli yerleşik zamanlama ölçümleri sağlar. 
+Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölçülen çeşitli yerleşik zamanlama ölçümleri sağlar. 
 
 ![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
@@ -66,7 +66,7 @@ Bu ölçümler, gözlemlenen yavaşlamanın istemci ağı, Application Gateway p
 
 *Arka uç son bayt yanıt* süresi içinde bir ani artış fark ederseniz, ancak *arka uç ilk bayt yanıt süresi* kararlı olduğunda, bu durumda ani bir dosya istenmekte olduğundan emin olabilir.
 
-Benzer şekilde, *uygulama ağ geçidinin toplam süresi* bir ani, ancak *arka uç son bayt yanıt süresi* kararlı ise, Application Gateway bir performans sorunu ya da istemci ile Application Gateway arasında ağ üzerinde tıkanıklık olabilir. Ayrıca, *ISTEMCI RTT* de karşılık gelen bir ani ağa sahipse, bu, istemci ile Application Gateway arasındaki ağ nedeniyle düşüşün olduğunu gösterir.
+Benzer şekilde, *uygulama ağ geçidinin toplam süresi* bir ani, ancak *arka uç son bayt yanıt süresi* kararlı ise, Application Gateway bir performans sorunu ya da istemci ile Application Gateway arasında ağ üzerinde tıkanıklık olabilir. Ayrıca, *ISTEMCI RTT* de karşılık gelen bir ani ağa sahipse, istemci ile Application Gateway arasındaki ağ nedeniyle azalma olduğunu gösterir.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway ölçümleri
 
@@ -86,7 +86,7 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Geçerli kapasite birimleri**
 
-   Tüketilen Kapasite birimi sayısı. Kapasite birimleri, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyeti ölçer. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç belirleyici vardır. Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
+   Trafiğin yükünü dengelemek için tüketilen Kapasite birimi sayısı. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç belirleyici vardır. Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
 
 - **Geçerli işlem birimleri**
 
@@ -98,13 +98,15 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
    
 - **Tahmini faturalandırılan Kapasite birimleri**
 
-  Faturalandırmayı tahmin eden Kapasite birimi sayısı. Bu, *geçerli kapasite birimleri* ve *sabit faturalanabilir Kapasite birimleri*arasında daha büyük bir değer olarak kullanılır.  
+  V2 SKU 'SU ile fiyatlandırma modeli tüketim ile çalıştırılır. Kapasite birimleri, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyeti ölçer. *Tahmini faturalandırılan Kapasite birimleri* , faturalandırmayı tahmin eden Kapasite birimi sayısını belirtir. Bu, *geçerli kapasite birimleri* (trafiğin yükünü dengelemek için gereken kapasite birimleri) ve *sabit faturalanabilir Kapasite birimleri* (sağlanan minimum kapasite birimleri) arasında daha büyük bir değer olarak hesaplanır.
 
 - **Başarısız Istekler**
 
-   Application Gateway tarafından sunulan başarısız istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
+  Application Gateway tarafından sunulan başarısız istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
    
-- **Sabit faturalanabilir Kapasite birimleri** Application Gateway yapılandırmasındaki *Minimum ölçek birimi* ayarlarına göre sağlanmakta olan kapasite birimi sayısı alt sınırı.
+- **Sabit faturalanabilir Kapasite birimleri**
+
+  Application Gateway yapılandırmasındaki *Minimum ölçek birimi* ayarı (bir örnek 10 kapasite birimlerine çevrilir) için sağlanan Kapasite birimi sayısı alt sınırı.
    
  - **Saniyedeki yeni bağlantı sayısı**
 
@@ -143,7 +145,9 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
   Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
   
-- **Sağlıklı ana bilgisayar başına dakika başına istek** Bir arka uç havuzundaki her sağlıklı üye tarafından bir dakika içinde alınan isteklerin ortalama sayısı. *Backendpool HttpSettings* boyutunu kullanarak arka uç havuzunu belirtmeniz gerekir.  
+- **Sağlıklı ana bilgisayar başına dakika başına istek**
+
+  Bir arka uç havuzundaki her sağlıklı üye tarafından bir dakika içinde alınan isteklerin ortalama sayısı. *Backendpool HttpSettings* boyutunu kullanarak arka uç havuzunu belirtmeniz gerekir.  
   
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway v1 SKU 'SU tarafından desteklenen ölçümler

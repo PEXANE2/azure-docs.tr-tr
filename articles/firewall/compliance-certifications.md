@@ -1,22 +1,22 @@
 ---
-title: Azure Güvenlik Duvarı uyumluluk sertifikaları
-description: PCI, SOC ve ISO için Azure Güvenlik Duvarı uyumluluk sertifikalarının listesi
+title: Azure Güvenlik Duvarı sertifikaları
+description: PCI, SOC, ISO ve ıCSA Labs için Azure Güvenlik Duvarı sertifikalarının listesi
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158188"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482198"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Azure Güvenlik Duvarı uyumluluk sertifikaları
+# <a name="azure-firewall-certifications"></a>Azure Güvenlik Duvarı sertifikaları
 
-Azure Güvenlik Duvarı, ödeme kartı sektör (PCI), hizmet kuruluşu denetimleri (SOC), Uluslararası Standardizasyon Teşkilatı (ISO) ve HITRUST uyumlu.
+Azure Güvenlik Duvarı, ödeme kartı sektör (PCI), hizmet organizasyonu denetimleri (SOC), Uluslararası Standardizasyon Teşkilatı (ISO), ıCSA Labs ve HITRUST uyumlu.
 
 Aşağıdaki sertifikalar küresel Azure ve Azure Kamu içindir.
 
@@ -29,26 +29,26 @@ Aşağıdaki Azure Güvenlik Duvarı sertifikaları küresel Azure içindir:
 - AMF ve ACPR (Fransa)
 - APRA (Avustralya)
 - Arjantin PDPA
-- Avustralya IRAP
+- Avustralya ıRAP
 - CDSA
 - CFTC 1,31
-- CSA STAR Attestation
-- CSA STAR Sertifikası
-- CSA STAR Kendi Kendini Değerlendirme
+- CSA STAR kanıtlama
+- CSA STAR sertifika
+- CSA STAR kendini değerlendirme
 - Kanada gizlilik yasaları
 - DPP (UK)
 - AB ENıSA ıAF
-- AB Model Sözleşme Maddeleri
+- AB modeli yan tümceleri
 - Avrupa bankacılık yetkilisi
 - FCA ve PRA (UK)
 - FERPA (ABD)
 - FFIEC (ABD)
-- FINMA (İsviçre)
+- FINMA dili (Isviçre)
 - FSA (Danimarka)
-- GLBA (ABD)
+- GLBA DILI (US)
 - Almanya C5
 - GxP (FDA 21 CFR Part 11)
-- HITRUST
+- HıTRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
 - ISO 27001:2013
@@ -65,7 +65,7 @@ Aşağıdaki Azure Güvenlik Duvarı sertifikaları küresel Azure içindir:
 - NHS ıG araç seti (UK)
 - Hollanda bir 2012
 - OSFI (Kanada)
-- PCI DSS Düzey 1
+- PCI DSS düzeyi 1
 - RBI ve ıRDAI (Hindistan)
 - SOC 1 tür 2
 - SOC 2 tür 2
@@ -75,23 +75,23 @@ Aşağıdaki Azure Güvenlik Duvarı sertifikaları küresel Azure içindir:
 - TISAX
 - TruSight
 - UK G-Cloud
-- WCAG 2.0
+- WCAG 2,0
 
 
 ## <a name="azure-government-certifications"></a>Azure Kamu sertifikaları
 
 Aşağıdaki Azure Güvenlik Duvarı sertifikaları Azure Kamu içindir:
 
-- CJIS
+- CJıS
 - CNSSI 1253
-- CSA STAR Attestation
+- CSA STAR kanıtlama
 - DFARS
 - DoD DıŞA SRG düzeyi 2
 - Tikan 10 CFR bölüm 810
-- EAR
-- FIPS 140-2
-- FedRAMP Yüksek
-- HITRUST
+- HEDEFE
+- FıPS 140-2
+- FedRAMP High
+- HıTRUST
 - IRS 1075
 - ITAR
 - MARS-E (ABD)
@@ -102,7 +102,15 @@ Aşağıdaki Azure Güvenlik Duvarı sertifikaları Azure Kamu içindir:
 - SOC 2 tür 2
 - SOC 3
 - SOX (ABD)
-- Bölüm 508 VPAT'ler
+- Bölüm 508 VPATs
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs kurumsal güvenlik duvarı sertifikası
+
+![ICSA sertifikası](media/overview/icsa-cert-firewall-small.png)
+
+ICSA Labs, üçüncü taraf test ve güvenlik ve sağlık BT ürünlerinin yanı sıra ağa bağlı cihazlar için önde gelen bir satıcıdır. Dünyanın en popüler teknoloji satıcılarının çoğu için ürün uyumluluğunu, güvenilirliği ve performansı ölçer.
+
+Azure Güvenlik Duvarı, ıCSA Labs kurumsal güvenlik duvarı sertifikasını ulaşmak için ilk bulut güvenlik duvarı hizmetidir. Azure Güvenlik Duvarı sertifika raporu için [ICSA Labs sertifikasyon test ve denetim raporuna](https://aka.ms/ICSALabsCertification)bakın. Daha fazla bilgi için [ICSA Labs güvenlik duvarı sertifika programı](https://www.icsalabs.com/technology-program/firewalls) sayfasına bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

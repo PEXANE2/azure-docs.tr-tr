@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460476"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526521"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -117,7 +117,7 @@ Azure Güvenlik Duvarı hizmeti sınırları için bkz. [Azure aboneliği ve hiz
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Bir hub sanal ağında Azure Güvenlik Duvarı 'Nı iletebilir ve iki bağlı bileşen sanal ağı arasındaki ağ trafiğini filtreleyebilir miyim?
 
-Evet, iki bağlı bileşen sanal ağı arasındaki trafiği yönlendirmek ve filtrelemek için bir hub sanal ağında Azure Güvenlik Duvarı 'nı kullanabilirsiniz. Bu senaryonun düzgün çalışması için, bağlı olan sanal ağların her birinde bulunan alt ağların Azure Güvenlik duvarını varsayılan bir ağ geçidi olarak işaret ettiğinden, UDR 'nin aynı olması gerekir.
+Evet, iki bağlı bileşen sanal ağı arasındaki trafiği yönlendirmek ve filtrelemek için bir hub sanal ağında Azure Güvenlik Duvarı 'nı kullanabilirsiniz. Bu senaryonun düzgün çalışması için, bağlı olan sanal ağların her birinde alt ağın Azure Güvenlik duvarını varsayılan bir ağ geçidi olarak işaret eden bir UDR olması gerekir.
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Güvenlik Duvarı aynı sanal ağdaki veya eşlenen sanal ağlardaki alt ağlar arasında ağ trafiğini iletebilir ve filtreleyebilir mi?
 
@@ -137,7 +137,7 @@ Yapılandırmanız şirket içi bir ağa Zorlamalı tünel gerektiriyorsa ve Int
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Herhangi bir güvenlik duvarı kaynak grubu kısıtlaması var mı?
 
-Evet. Güvenlik duvarının, alt ağın, VNet 'in ve genel IP adresinin hepsi aynı kaynak grubunda olmalıdır.
+Evet. Güvenlik Duvarı, VNet ve genel IP adresi aynı kaynak grubunda olmalıdır.
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Gelen ağ trafiği için DNAT yapılandırılırken, bu trafiğe izin vermek için karşılık gelen bir ağ kuralı da yapılandırmam gerekir mi?
 
@@ -168,11 +168,11 @@ Hayır. Azure Güvenlik Duvarı/26 ' dan büyük bir alt ağa gerek yoktur.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Güvenlik Duvarı iş üretimini nasıl artırabilirim?
 
-Azure Güvenlik duvarının ilk verimlilik kapasitesi 2,5-3 Gbps 'dir. Şu anda, ölçeği genişletme CPU kullanımı ve aktarım hızını temel alır. Bazı durumlarda ağ kuralları bir güvenlik duvarı, CPU kullanımını önemli ölçüde etkilemediğinden, yalnızca aktarım hızını artırmak için ölçeklenmez. Güvenlik duvarınız için daha yüksek aktarım hızına ihtiyacınız varsa, güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
+Azure Güvenlik duvarının ilk üretilen iş verimlilik kapasitesi 2,5-3 Gbps ve 30 Gbps 'e ölçeklendirir. CPU kullanımı ve verimlilik temelinde ölçeği ölçeklendirir. Güvenlik duvarınız gereksinimlerinizi karşılayacak şekilde ölçeklenmezse ve daha yüksek aktarım hızı kapasitesine ihtiyaç duymanız halinde güvenlik duvarınızın verimlilik kapasitesini artırmak için desteğe başvurun.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Güvenlik duvarının ölçeği ne kadar sürer?
 
-Şu anda Azure Güvenlik duvarının ölçeğini genişletmek için beş ila yedi dakika sürer. Daha hızlı bir otomatik ölçeklendirme gerektiren artışlarıyla 'niz varsa, güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
+Azure Güvenlik duvarının ölçeği genişletmek için beş ila yedi dakika sürer. Daha hızlı bir otomatik ölçeklendirme gerektiren artışlarıyla 'niz varsa güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Güvenlik Duvarı varsayılan olarak Active Directory erişimine izin veriyor mu?
 

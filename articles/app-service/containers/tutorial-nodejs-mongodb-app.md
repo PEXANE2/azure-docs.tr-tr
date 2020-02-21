@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: a68392d003e4e2a81801a903302badd99c1e9e87
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688883"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524010"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Node. js ve MongoDB uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * MongoDB için Azure Cosmos DB API 'sini kullanarak veritabanı oluşturma
 > * Node.js uygulamasını MongoDB’ye bağlama
-> * Uygulamayı Azure’da dağıtma
+> * Uygulamayı Azure'a dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme
@@ -46,7 +46,7 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="test-local-mongodb"></a>Yerel MongoDB’yi test etme
 
-Terminal penceresini açın ve MongoDB yüklemenizin `bin` dizinine `cd` yazın. Bu öğreticideki tüm komutları çalıştırmak için bu terminal penceresini kullanabilirsiniz.
+Terminal penceresini açın ve MongoDB yüklemenizin `cd` dizinine `bin` yazın. Bu öğreticideki tüm komutları çalıştırmak için bu terminal penceresini kullanabilirsiniz.
 
 Yerel MongoDB sunucunuza bağlanmak için terminalde `mongo` komutunu çalıştırın.
 
@@ -76,7 +76,7 @@ Bu örnek depo, [MEAN.js deposu](https://github.com/meanjs/mean)’nun bir kopya
 
 ### <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Gerekli paketleri yüklemek ve uygulamayı başlatmak için aşağıdaki komutları çalıştırın.
+Gerekli paketleri yüklemek ve uygulamayı başlatmak için şu komutları çalıştırın.
 
 ```bash
 cd meanjs
@@ -177,9 +177,9 @@ Azure CLI aşağıdaki örneğe benzer bilgiler görüntüler:
 
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js uygulamanızda bağlantı dizesini yapılandırma
 
-Yerel MEAN.js deponuzda, _config/env/_ klasöründe _local-production.js_ adlı bir dosya oluşturun. Bu dosyayı deponun dışında tutmak için _.gitignore_ yapılandırılır.
+Yerel MEAN.js deponuzun içinde, _config/env/_ klasöründe _local-production.js_ adında bir dosya oluşturun. Bu dosyayı deponun dışında tutmak için _.gitignore_ yapılandırılır.
 
-Aşağıdaki kodu dosyanın içine kopyalayın. İki *\<cosmosdb-name >* yer tutucuları Cosmos DB veritabanı adınızla değiştirdiğinizden emin olun ve *\<birincil-ana anahtar >* yer tutucusunu, önceki adımda kopyaladığınız anahtarla değiştirin.
+Şu kodu içine kopyalayın. İki *\<cosmosdb-name >* yer tutucuları Cosmos DB veritabanı adınızla değiştirdiğinizden emin olun ve *\<birincil-ana anahtar >* yer tutucusunu, önceki adımda kopyaladığınız anahtarla değiştirin.
 
 ```javascript
 module.exports = {
@@ -189,7 +189,7 @@ module.exports = {
 };
 ```
 
-[Cosmos DB, SSL gerektirdiğinden](../../cosmos-db/connect-mongodb-account.md#connection-string-requirements) `ssl=true` seçeneği gereklidir.
+`ssl=true`Cosmos DB, SSL gerektirdiğinden[](../../cosmos-db/connect-mongodb-account.md#connection-string-requirements) seçeneği gereklidir.
 
 Yaptığınız değişiklikleri kaydedin.
 
@@ -291,10 +291,10 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
-Dağıtım işleminin `npm install` komutundan sonra [Gulp](https://gulpjs.com/)’ı çalıştırdığını fark etmişsinizdir. App Service, dağıtım sırasında Gulp veya Grunt görevlerini çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde iki ek dosya bulunur:
+Dağıtım işleminin [ komutundan sonra ](https://gulpjs.com/)Gulp`npm install`’ı çalıştırdığını fark etmişsinizdir. App Service, dağıtım sırasında Gulp veya Grunt görevlerini çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde iki ek dosya bulunur:
 
 - _.deployment_ - Bu dosya, App Service’ten özel dağıtım betiği olarak `bash deploy.sh` komutunu çalıştırmasını ister.
-- _deploy.sh_ - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `npm install` ve `bower install` komutundan sonra `gulp prod` çalıştırdığını görürsünüz.
+- _deploy.sh_ - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `gulp prod` ve `npm install` komutundan sonra `bower install` çalıştırdığını görürsünüz.
 
 Git tabanlı dağıtımınıza herhangi bir adım eklemek için bu yaklaşımı kullanabilirsiniz. Azure uygulamanızı herhangi bir noktada yeniden başlatırsanız App Service Bu Otomasyon görevlerini yeniden çalıştırmaz. Daha fazla bilgi için bkz. [Grsıt/Bower/Gulp çalıştırma](configure-language-nodejs.md#run-gruntbowergulp).
 
@@ -324,7 +324,7 @@ Bu adımda, `article` veri modelini değiştiriyorsunuz ve değişikliklerinizi 
 
 Yerel MEAN.js deponuzda, _modules/articles/server/models/article.server.model.js_ dosyasını açın.
 
-`ArticleSchema` içinde, `comment` adlı bir `String` türü ekleyin. İşiniz bittiğinde, şema kodunuz şu şekilde görünür:
+`ArticleSchema` içinde, `String` adlı bir `comment` türü ekleyin. İşiniz bittiğinde, şema kodunuz şu şekilde görünür:
 
 ```javascript
 let ArticleSchema = new Schema({
@@ -343,7 +343,7 @@ let ArticleSchema = new Schema({
 
 ### <a name="update-the-articles-code"></a>Makaleler kodunu güncelleştirme
 
-`comment` kullanmak için `articles` kodunuzun kalanını güncelleştirin.
+`articles` kullanmak için `comment` kodunuzun kalanını güncelleştirin.
 
 Değiştirmeniz gereken beş dosya vardır: sunucu denetleyici ve dört istemci görünümü. 
 
@@ -397,7 +397,7 @@ Gönder düğmesini içeren ve şuna benzeyen `<div class="form-group">` öğesi
 </div>
 ```
 
-Bu etiketin hemen üzerinde, kişilerin `comment` alanını düzenleyebilmesini sağlayan başka bir `<div class="form-group">` öğesi ekleyin. Yeni öğeniz şöyle görünmelidir:
+Bu etiketin hemen üzerinde, kişilerin `<div class="form-group">` alanını düzenleyebilmesini sağlayan başka bir `comment` öğesi ekleyin. Yeni öğeniz şöyle görünmelidir:
 
 ```HTML
 <div class="form-group">
@@ -469,7 +469,7 @@ Varsayılan olarak, Portal uygulamanızın **genel bakış** sayfasını göster
 > [!div class="checklist"]
 > * MongoDB için Azure Cosmos DB API 'sini kullanarak veritabanı oluşturma
 > * Bir Node. js uygulamasını bir veritabanına bağlama
-> * Uygulamayı Azure’da dağıtma
+> * Uygulamayı Azure'a dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki günlüklerin terminalinize akışını sağlama
 > * Uygulamayı Azure portalında yönetme

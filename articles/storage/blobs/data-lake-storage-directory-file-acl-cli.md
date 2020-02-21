@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835123"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486143"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme (Önizleme)
 
@@ -24,10 +24,10 @@ Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.c
 > Bu makalede tanıtılan `storage-preview` uzantısı Şu anda genel önizleme aşamasındadır.
 
 [Örnek](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 > * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 > * Azure CLı sürüm `2.0.67` veya üzeri.
 
@@ -42,7 +42,7 @@ Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.c
    ```
    Azure CLı sürümünüz `2.0.67`daha düşükse, daha sonra bir sürümü yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. `storage-preview` uzantısını yükleyin.
+3. `storage-preview` uzantısını yükler.
 
    ```azurecli
    az extension add -n storage-preview
@@ -77,7 +77,7 @@ Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. `az storage
 Bu örnek `my-file-system`adlı bir dosya sistemi oluşturur.
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
@@ -98,7 +98,7 @@ az storage blob directory create -c my-file-system -d my-directory --account-nam
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>Bir dizini yeniden adlandırma veya taşıma
+## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
 
 `az storage blob directory move` komutunu kullanarak bir dizini yeniden adlandırın veya taşıyın.
 
@@ -237,6 +237,12 @@ Bu örnek, ACL 'yi sahip olan Kullanıcı, sahip olan grup veya diğer kullanıc
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
+Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dizinde *varsayılan* ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
 Bir **dosyanın**ACL 'sini ayarlamak için `az storage blob access set` komutunu kullanın. 

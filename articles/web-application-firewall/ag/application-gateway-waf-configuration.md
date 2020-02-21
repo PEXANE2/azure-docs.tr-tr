@@ -4,15 +4,15 @@ description: Bu makalede, Azure portal Application Gateway Web uygulaması güve
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839964"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526799"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
 
@@ -26,7 +26,7 @@ WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek öznitelikle
 
 Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Seçilen alanın değerleri WAF kurallarına göre değerlendirilmez, ancak adları yine de olur (Aşağıdaki örnek 1 ' i inceleyin, Kullanıcı Aracısı üstbilgisinin değeri WAF değerlendirmesinden hariç tutulur). Dışlama Listeleri alanın değerinin incelemesini kaldırır.
 
-* İstek üst bilgileri
+* İstek Üstbilgileri
 * İstek tanımlama bilgileri
 * İstek özniteliği adı (args) bir dışlama öğesi olarak eklenebilir, örneğin:
 
@@ -91,7 +91,13 @@ Bu nedenle, URL `http://www.contoso.com/?user%281%29=fdafdasfda` WAF 'ye geçiri
 Web uygulaması güvenlik duvarı, istek boyutu sınırlarını alt ve üst sınırlar içinde yapılandırmanıza olanak tanır. Aşağıdaki iki boyut sınırı yapılandırması kullanılabilir:
 
 - En büyük istek gövdesi boyutu alanı kilobayt cinsinden belirtilir ve dosya yükleme işlemleri hariç olmak üzere genel istek boyutu sınırını denetler. Bu alan, 1 KB en az 128-KB maksimum değer arasında değişebilir. İstek gövdesi boyutu için varsayılan değer 128 KB 'tır.
-- Dosya karşıya yükleme sınırı alanı MB olarak belirtilir ve izin verilen en büyük dosya yükleme boyutunu yönetir. Orta SKU en fazla 100 MB olduğunda, bu alanın en az 1 MB, büyük SKU örnekleri için en fazla 500 MB olması gerekebilir. Karşıya dosya yükleme sınırı için varsayılan değer 100 MB 'tır.
+- Dosya karşıya yükleme sınırı alanı MB olarak belirtilir ve izin verilen en büyük dosya yükleme boyutunu yönetir. Bu alan en az 1 MB ve aşağıdaki en yüksek değer olabilir:
+
+   - V1 orta WAF ağ geçitleri için 100 MB
+   - V1 büyük WAF ağ geçitleri için 500 MB
+   - v2 WAF ağ geçitleri için 750 MB 
+
+ Karşıya dosya yükleme sınırı için varsayılan değer 100 MB 'tır.
 
 WAF, istek gövdesi incelemesini açmak veya kapatmak için yapılandırılabilir bir düğme de sunmaktadır. Varsayılan olarak, istek gövdesi incelemesi etkindir. İstek gövdesi incelemesi kapalıysa, WAF, HTTP ileti gövdesinin içeriğini değerlendirmez. Bu gibi durumlarda WAF, üst bilgiler, tanımlama bilgileri ve URI üzerinde WAF kurallarını uygulamaya devam eder. İstek gövdesi incelemesi kapalıysa, en fazla istek gövdesi boyutu alanı uygulanamaz ve ayarlanamaz. İstek gövdesi incelemesini kapatmak, 128 KB 'den büyük mesajların WAF 'ye gönderilmesini sağlar, ancak ileti gövdesi güvenlik açıkları için incelenemiyor.
 

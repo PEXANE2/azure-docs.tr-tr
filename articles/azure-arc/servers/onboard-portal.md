@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 12fc29cf12fba6325af3197e727d94b3073ef2ff
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3f4954b3a33cdd73c1e004ad1e643f9e24abf1e4
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192317"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485242"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -183,7 +183,7 @@ Bir makinenin sunucular için Azure Arc bağlantısını kesmek için (Önizleme
 1. Linux aracısını kaldırmak için aşağıdaki komutu çalıştırın:
 
       ```bash
-      sudo apt purge hybridagent
+      sudo apt purge azcmagent
       ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

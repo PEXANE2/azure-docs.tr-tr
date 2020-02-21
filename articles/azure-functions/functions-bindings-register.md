@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766241"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484732"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
 
@@ -26,7 +26,7 @@ Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 
 | Geliştirme ortamı |Kayıt<br/> 1\. x Işlevleri içinde  |Kayıt<br/> 2\. x Işlevleri  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure portalında|Automatic|Automatic|
+|Azure portalı|Automatic|Automatic|
 |Non-.NET dilleri veya yerel Azure Core araçları geliştirme|Automatic|[Azure Functions Core Tools ve uzantı paketleri kullanma](#extension-bundles)|
 |C#Visual Studio kullanarak sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
 |C#Visual Studio Code kullanarak sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
@@ -55,7 +55,7 @@ Uzantı paketlerini kullanmak için *Host. JSON* dosyasını `extensionBundle`i�
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Belirli bir bağlama için kullanılan paketin adı, söz konusu bağlamaya ilişkin başvuru makalesinde sunulmaktadır. Bir örnek için [Service Bus bağlama başvurusu makalesinin paketler bölümüne](functions-bindings-service-bus.md#packages---functions-1x)bakın.
+Belirli bir bağlama için kullanılan paketin adı, söz konusu bağlamaya ilişkin başvuru makalesinde sunulmaktadır. Bir örnek için [Service Bus bağlama başvurusu makalesinin paketler bölümüne](functions-bindings-service-bus.md#functions-1x)bakın.
 
 Örnekteki `<TARGET_VERSION>`, paketin `3.0.0-beta5`gibi belirli bir sürümü ile değiştirin. Geçerli sürümler, [NuGet.org](https://nuget.org)adresindeki ayrı paket sayfalarında listelenir. Çalışma zamanı 1. x veya 2. x Işlevlerine karşılık gelen ana sürümler bağlama için başvuru makalesinde belirtilmiştir.
 

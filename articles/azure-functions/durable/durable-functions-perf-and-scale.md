@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231336"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486269"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler performans ve ölçek (Azure Işlevleri)
 
@@ -129,7 +129,7 @@ Düzenleme örnekleri ve varlıklar tüm denetim kuyruğu örneklerine dağıtı
 
 Genellikle, Orchestrator işlevlerinin hafif olması amaçlanmıştır ve büyük miktarlarda bilgi işlem gücü gerektirmemelidir. Bu nedenle, düzenleme için harika verimlilik sağlamak üzere çok sayıda denetim kuyruğu bölümü oluşturmak gerekli değildir. Ağır çalışmanın çoğu, sonsuz bir şekilde ölçeklenebilen, durumsuz etkinlik işlevlerinde yapılmalıdır.
 
-## <a name="auto-scale"></a>Otomatik Ölçeklendirme
+## <a name="auto-scale"></a>Otomatik ölçeklendirme
 
 Tüketim ve elastik Premium planlarında çalışan tüm Azure Işlevlerinde olduğu gibi, Dayanıklı İşlevler [Azure işlevleri ölçek denetleyicisi](../functions-scale.md#runtime-scaling)aracılığıyla otomatik ölçeklendirmeyi destekler. Ölçek denetleyicisi, düzenli aralıklarla _göz atma_ komutları vererek tüm kuyrukların gecikmesini izler. Atılamıyor iletilerinin gecikme sürelerini temel alarak, ölçek denetleyicisi VM ekleme veya kaldırma konusunda karar verir.
 
@@ -251,9 +251,9 @@ Bir üretim uygulaması için Dayanıklı İşlevler kullanmayı planlarken, pla
 > [!TIP]
 > Fanı 'den farklı olarak, fanı-ın işlemleri tek bir VM ile sınırlıdır. Uygulamanız, fanı-Out, fanı-ın düzenlerini kullanıyorsa ve fan performansı hakkında endişeleriniz varsa, etkinlik işlevi fanı ' ı birden çok [alt](durable-functions-sub-orchestrations.md)düzenleme sırasında alt olarak bölüyi göz önünde bulundurun.
 
-Aşağıdaki tabloda, daha önce açıklanan senaryolar için beklenen *en fazla* aktarım hızı sayısı gösterilmektedir. "Örnek", Azure App Service bir tek küçük ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM üzerinde çalışan bir Orchestrator işlevinin tek bir örneğini ifade eder. Her durumda, [genişletilmiş oturumların](#orchestrator-function-replay) etkin olduğu varsayılır. Gerçek sonuçlar, işlev kodu tarafından gerçekleştirilen CPU veya g/ç çalışmasına bağlı olarak farklılık gösterebilir.
+Aşağıdaki tabloda, daha önce açıklanan senaryolar için beklenen *en fazla* aktarım hızı sayısı gösterilmektedir. "Örnek", Azure App Service bir tek küçük ([a1](../../virtual-machines/sizes-previous-gen.md)) VM üzerinde çalışan bir Orchestrator işlevinin tek bir örneğini ifade eder. Her durumda, [genişletilmiş oturumların](#orchestrator-function-replay) etkin olduğu varsayılır. Gerçek sonuçlar, işlev kodu tarafından gerçekleştirilen CPU veya g/ç çalışmasına bağlı olarak farklılık gösterebilir.
 
-| Senaryo | Aktarım hızı üst sınırı |
+| Senaryo | En yüksek aktarım hızı |
 |-|-|
 | Sıralı etkinlik yürütme | saniyede 5 etkinlik/örnek |
 | Paralel Etkinlik yürütme (fan-giden) | saniyede 100 etkinlik, örnek başına |

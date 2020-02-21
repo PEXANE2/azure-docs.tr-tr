@@ -1,26 +1,26 @@
 ---
 title: Passwordless güvenlik anahtarı oturum açma pencereleri-Azure Active Directory
-description: FIDO2 güvenlik anahtarlarını (Önizleme) kullanarak Azure AD 'de passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme
+description: FIDO2 güvenlik anahtarlarını (Önizleme) kullanarak Azure Active Directory için passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce2b420c2124c86610058ce2f31cd6d7bf620a97
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
-ms.translationtype: MT
+ms.openlocfilehash: fd3ebb40ff101f4d2e3fecd05afed834a9ddc688
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848468"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505699"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 cihazlarında passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
 
-Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkinleştirmeye odaklanır. Bu makalenin sonunda, bir FIDO2 güvenlik anahtarı kullanarak hem Web tabanlı uygulamalarda hem de Azure AD 'ye katılmış Windows 10 cihazlarında Azure AD hesabınızla oturum açabilirsiniz.
+Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkinleştirmeye odaklanır. Bu makalenin sonunda, bir FIDO2 güvenlik anahtarı kullanarak Azure AD ve hibrit Azure AD 'ye katılmış Windows 10 cihazlarında Azure AD hesabınızla oturum açabilirsiniz.
 
 |     |
 | --- |
@@ -29,93 +29,119 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 
 ## <a name="requirements"></a>Gereksinimler
 
-- [Azure çok faktörlü kimlik doğrulaması](howto-mfa-getstarted.md)
-- [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
-- Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir
-- [Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join.md) için Windows 10 sürüm 1809 veya üzeri gerekir
-- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (isteğe bağlı)
-- Sağlama paketi (Isteğe bağlı)
+| Cihaz Türü | Azure AD 'ye katılmış | Karma Azure AD 'ye katılmış |
+| --- | --- | --- |
+| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md) | X | X |
+| Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
+| WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir | X | X |
+| [Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join.md) için Windows 10 sürüm 1809 veya üzeri gerekir | X |   |
+| [Karma Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join-hybrid.md) için Windows 10 ınsider Build 18945 veya üzeri gerekir |   | X |
+| Tam düzeltme eki uygulanan Windows Server 2016/2019 etki alanı denetleyicileri. |   | X |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) sürüm 1.4.32.0 veya üzeri |   | X |
+| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (isteğe bağlı) | X | X |
+| Sağlama paketi (Isteğe bağlı) | X | X |
+| Grup ilkesi (Isteğe bağlı) |   | X |
 
 ### <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
-- Windows Server Active Directory Domain Services (AD DS) etki alanına katılmış (Şirket içi cihazlar) dağıtımı **desteklenmez**.
-- RDP, VDı ve Citrix senaryoları güvenlik anahtarı kullanılarak **desteklenmez** .
-- Güvenlik anahtarı kullanılarak S/MIME **desteklenmez** .
-- "Farklı çalıştır" güvenlik anahtarı kullanılarak **desteklenmez** .
-- Güvenlik anahtarı kullanılarak bir sunucuda oturum açma **desteklenmez**.
+Aşağıdaki senaryolar desteklenmez:
+
+- Windows Server Active Directory Domain Services (AD DS) etki alanına katılmış (Şirket içi cihazlar) dağıtımı.
+- Güvenlik anahtarı kullanan RDP, VDı ve Citrix senaryoları.
+- Bir güvenlik anahtarı kullanan S/MIME.
+- Güvenlik anahtarı kullanarak "farklı çalıştır".
+- Bir güvenlik anahtarı kullanarak bir sunucuda oturum açın.
 - Çevrimiçi ortamda cihazınızda oturum açmak için güvenlik anahtarınızı kullanmadıysanız, çevrimdışı oturum açmak veya oturumu açmak için kullanamazsınız.
-- Birden çok Azure AD hesabı içeren bir güvenlik anahtarıyla Windows 10 cihazının oturum açması veya kilidini açma. Bu senaryo, güvenlik anahtarına eklenen son hesabı kullanır. WebAuthN, kullanıcıların kullanmak istedikleri hesabı seçmesine izin verir.
+- Birden çok Azure AD hesabı içeren bir güvenlik anahtarıyla Windows 10 cihazının oturum açması veya kilidini açma. Bu senaryo, güvenlik anahtarına eklenen son hesabı kullanır. WebAuthN, kullanıcıların kullanmak istedikleri hesabı seçmesine olanak sağlar.
 
 ## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
 
-İle pillendirilebilecek Azure AD 'ye katılmış cihazların Windows 10 sürüm 1809 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+Özellik önizlemesi sırasında daha önce kullandığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1809 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+
+Karma Azure AD 'ye katılmış cihazlar Windows 10 Insider Build 18945 veya üstünü çalıştırmalıdır.
 
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Windows oturum açma için güvenlik anahtarlarını etkinleştir
 
-Kuruluşlar, kuruluşunuzun gereksinimlerine bağlı olarak Windows oturum açma için güvenlik anahtarlarının kullanımını etkinleştirmek üzere aşağıdaki yöntemlerden birini veya daha fazlasını kullanmayı seçebilir.
+Kuruluşlar, kuruluşunuzun gereksinimlerine bağlı olarak Windows oturum açma için güvenlik anahtarlarının kullanımını etkinleştirmek üzere aşağıdaki yöntemlerden birini veya daha fazlasını kullanmayı seçebilir:
 
 - [Intune ile etkinleştirme](#enable-with-intune)
 - [Hedeflenen Intune dağıtımı](#targeted-intune-deployment)
 - [Sağlama paketiyle etkinleştir](#enable-with-a-provisioning-package)
+- [Grup ilkesi ile etkinleştir (yalnızca karma Azure AD 'ye katılmış cihazlar)](#enable-with-group-policy)
+
+> [!IMPORTANT]
+> **Karma Azure AD 'ye katılmış cihazlara** sahip kuruluşlar, WINDOWS 10 FIDO2 güvenlik anahtarı kimlik doğrulamasının çalışması [için önce ŞIRKET içi kaynaklarda FIDO2 kimlik doğrulamasını etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md) makalesindeki adımları **da** tamamlamalıdır.
+>
+> **Azure AD 'ye katılmış cihazlara** sahip kuruluşlar, cihazları FIDO2 güvenlik anahtarlarıyla şirket içi kaynaklarda kimlik doğrulaması yapabilmek için bunu yapması gerekir.
 
 ### <a name="enable-with-intune"></a>Intune ile etkinleştirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+Intune kullanarak güvenlik anahtarlarının kullanımını etkinleştirmek için aşağıdaki adımları izleyin:
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Microsoft Intune** > **cihaz kaydına** gidin > **Windows kaydı** > **iş için Windows Hello** > **özellikleri**.
-1. **Ayarlar** ' ın altında **, oturum açma Için güvenlik anahtarlarını kullan '** ın altında **etkinleştirilmesi**.
+1. **Ayarlar**' ın altında, **oturum açma Için güvenlik anahtarlarını kullan** ' ı **etkin**olarak ayarlayın.
 
 Oturum açma için güvenlik anahtarlarının yapılandırılması, Iş için Windows Hello 'Yu yapılandırmaya bağlı değildir.
 
 ### <a name="targeted-intune-deployment"></a>Hedeflenen Intune dağıtımı
 
-Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz gruplarını hedeflemek için, Intune aracılığıyla aşağıdaki özel ayarları kullanın.
+Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz gruplarını hedeflemek için, Intune aracılığıyla aşağıdaki özel ayarları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Profil oluşturmak** >  > **cihaz yapılandırması** > **profillerine** gidin **Microsoft Intune** .
-1. Yeni profili aşağıdaki ayarlarla yapılandırın
-   1. Ad: Windows oturum açma için güvenlik anahtarları
-   1. Açıklama: Windows oturum açma sırasında FIDO güvenlik anahtarlarının kullanılmasını sağlar
-   1. Platform: Windows 10 ve üzeri
-   1. Profil türü: özel
-   1. Özel OMA-URI ayarları:
-      1. Ad: Windows oturum açma için FIDO güvenlik anahtarlarını açın
-      1. OMA-URI:./Device/Vendor/MSFT/passportforwork/SecurityKey/usesecuritykeyforsignın
-      1. Veri türü: tamsayı
-      1. Değer: 1
-1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
+1. Yeni profili aşağıdaki ayarlarla yapılandırın:
+   - Ad: Windows oturum açma için güvenlik anahtarları
+   - Açıklama: Windows oturum açma sırasında FIDO güvenlik anahtarlarının kullanılmasını sağlar
+   - Platform: Windows 10 ve üzeri
+   - Profil türü: özel
+   - Özel OMA-URI ayarları:
+      - Ad: Windows oturum açma için FIDO güvenlik anahtarlarını açın
+      - OMA-URI:./Device/Vendor/MSFT/passportforwork/SecurityKey/usesecuritykeyforsignın
+      - Veri türü: tamsayı
+      - Değer: 1
+1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. Daha fazla bilgi için bkz. [Microsoft Intune kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign).
 
 ![Intune özel cihaz yapılandırma ilkesi oluşturma](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
 ### <a name="enable-with-a-provisioning-package"></a>Sağlama paketiyle etkinleştir
 
-Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)yüklenebilir.
+Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek üzere bir sağlama paketi yükleyebilirsiniz. Windows yapılandırma Tasarımcısı uygulaması [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)yüklenebilir. Bir sağlama paketi oluşturmak için aşağıdaki adımları izleyin:
 
 1. Windows yapılandırma Tasarımcısı 'nı başlatın.
 1. **Dosya** > **Yeni proje**' yi seçin.
-1. Projenize bir ad verin ve projenizin oluşturulduğu yolu bir yere göz atın.
-1. **İleri**’yi seçin.
-1. **Seçili proje iş akışı** olarak **sağlama paketini** seçili bırakın ve **İleri ' yi**seçin.
-1. Görüntülenecek **ve yapılandırılacak ayarları seçin** altında **tüm Windows masaüstü sürümlerini** seçin ve **İleri ' yi**seçin.
+1. Projenize bir ad verin ve projenin oluşturulduğu yolu bir yere göz atın ve ardından **İleri**' yi seçin.
+1. **Seçili proje iş akışı** olarak *sağlama paketini* seçili bırakın ve **İleri ' yi**seçin.
+1. Görüntülenecek **ve yapılandırılacak ayarları seçin**altında *tüm Windows masaüstü sürümleri* ' ni seçin ve ardından **İleri**' yi seçin.
 1. **Son**’u seçin.
 1. Yeni oluşturduğunuz projenizde, **Windowshelloforbusiness** > **SecurityKeys** > **Usesecuritykeyforsign > ** **çalışma zamanı ayarları** ' na gidin.
-1. **Usesecuritykeyforsignın** öğesini **etkin**olarak ayarlayın.
+1. **Usesecuritykeyforsignın** öğesini *etkin*olarak ayarlayın.
 1.  > **sağlama paketini** **dışarı aktar** 'ı seçin
-1. **Sağlama paketini açıkla** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi**seçin.
+1. **Sağlama paketini açıkla**altında **derleme** penceresinde varsayılan değerleri bırakın ve ardından **İleri**' yi seçin.
 1. **Sağlama paketinin güvenlik ayrıntılarını Seç** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi**seçin.
 1. **Sağlama paketinin kaydedileceği yeri seçin** ' ın altında **derleme** pencereleri ' ne göz atın veya yolu değiştirin ve **İleri ' yi**seçin.
 1. **Sağlama paketini oluşturma** sayfasında **Oluştur** ' u seçin.
-1. Oluşturulan iki dosyayı (ppkg ve Cat), daha sonra makinelere uygulayabileceğiniz bir konuma kaydedin.
-1. Oluşturduğunuz sağlama paketini uygulamak için [bir sağlama paketi uygulama](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package)makalesindeki yönergeleri izleyin.
+1. Oluşturulan iki dosyayı (*ppkg* ve *Cat*), daha sonra makinelere uygulayabileceğiniz bir konuma kaydedin.
+1. Oluşturduğunuz sağlama paketini uygulamak için bkz. [sağlama paketi uygulama](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Windows 10 sürüm 1809 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (EnableSharedPCMode) etkinleştirmesi gerekir. Bu özellikleri etkinleştirme hakkında bilgi için, [Windows 10 ile paylaşılan veya Konuk BIR bilgisayar ayarlama](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc)makalesinde bulabilirsiniz.
+> Windows 10 sürüm 1809 çalıştıran cihazların Ayrıca paylaşılan bılgısayar modunu (*Enablesharedpcmode*) etkinleştirmesi gerekir. Bu işlevi etkinleştirme hakkında daha fazla bilgi için bkz. [Windows 10 ile paylaşılan veya konuk bilgisayar ayarlama](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
 
-## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>FIDO2 güvenlik anahtarıyla Windows 'da oturum açın
+### <a name="enable-with-group-policy"></a>grup ilkesi ile etkinleştir
 
-Aşağıdaki örnekte, Bala Sandhu bir Kullanıcı önceki makaledeki adımları kullanarak FIDO2 güvenlik anahtarını sağladı, [passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala, Windows 10 kilit ekranından güvenlik anahtarı kimlik bilgileri sağlayıcısını seçebilir ve Windows 'da oturum açmak için güvenlik anahtarını ekleyebilir.
+Kuruluşlar, **karma Azure AD 'ye katılmış cihazlarda**, Fido güvenlik anahtarı oturum açma özelliğini etkinleştirmek için aşağıdaki Grup İlkesi ayarını yapılandırabilir. Ayar, **Yönetim Şablonları** > **bilgisayar yapılandırması** altında bulunabilir > **sistem** > **oturum açma** > **güvenlik anahtarı oturumunu aç**:
 
-![Windows 10 kilit ekranında güvenlik anahtarı oturum açma](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
+- Bu ilkenin **etkin** olarak ayarlanması, kullanıcıların güvenlik anahtarlarıyla oturum açmasına olanak tanır.
+- Bu ilkenin **devre dışı** veya **yapılandırılmamış** olarak ayarlanması, kullanıcıların güvenlik anahtarlarıyla oturum açmasını engeller.
+
+Bu grup ilkesi ayarı, `credentialprovider.admx` grup ilkesi şablonunun güncelleştirilmiş bir sürümünü gerektirir. Bu yeni şablon, Windows Server 'ın bir sonraki sürümüyle ve Windows 10 20 H1 ile kullanılabilir. Bu ayar, Windows 'un bu yeni sürümlerinden birini çalıştıran bir cihazla veya destek konusundaki kılavuzu izleyerek, [Windows 'ta grup ilkesi Yönetim Şablonları Için merkezi mağaza oluşturma ve yönetme](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)ile yönetilebilir.
+
+## <a name="sign-in-with-fido2-security-key"></a>FIDO2 güvenlik anahtarıyla oturum açın
+
+Aşağıdaki örnekte, Bala Sandhu adlı bir Kullanıcı önceki makaledeki adımları kullanarak FIDO2 güvenlik anahtarını zaten sağladı, [passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Hibrit Azure AD 'ye katılmış cihazlar için, Şirket [içi kaynaklarda parolasız güvenlik anahtarı oturum açma](howto-authentication-passwordless-security-key-on-premises.md)özelliğinin de etkinleştirildiğinden emin olun. Bala, Windows 10 kilit ekranından güvenlik anahtarı kimlik bilgileri sağlayıcısını seçebilir ve Windows 'da oturum açmak için güvenlik anahtarını ekleyebilir.
+
+![Windows 10 kilit ekranında güvenlik anahtarı oturumu açma](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
 
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Güvenlik anahtarını biyometrik, PIN veya sıfırlama güvenlik anahtarını yönetme
 
@@ -125,37 +151,17 @@ Aşağıdaki örnekte, Bala Sandhu bir Kullanıcı önceki makaledeki adımları
 
 ## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
 
-Bu özelliğin önizlemesini yaparken geri bildirimde bulunmak veya sorun yaşarsanız, lütfen Windows Geri Bildirim Hub 'ı uygulaması aracılığıyla paylaşabilirsiniz.
+Bu özelliği önizlemede geri bildirimde bulunmak veya sorun yaşıyorsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
 
 1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
 1. Aşağıdaki kategoriye göre geri bildirim gönderin:
-   1. Kategori: güvenlik ve Gizlilik
-   1. Alt Kategori: FıDO
-1. Günlükleri yakalamak için, şu seçeneği kullanın: **sorunum yeniden oluştur**
-
-## <a name="frequently-asked-questions"></a>Sık sorulan sorular
-
-### <a name="does-this-work-in-my-on-premises-environment"></a>Bu, şirket içi ortammda mi çalışıyor?
-
-Bu özellik, saf şirket içi Active Directory Domain Services (AD DS) ortamları için çalışmaz.
-
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Kuruluşumun kaynaklara erişmesi için iki öğeli kimlik doğrulaması gerekiyor, bu gereksinimi desteklemek için ne yapabilirim?
-
-Güvenlik anahtarları çeşitli form faktörleri halinde gelir. Cihazların bir PIN veya biyometri ile ikinci bir faktör ile nasıl etkinleştirilenebileceği hakkında tartışmak için lütfen cihaz üreticisine başvurun.
-
-### <a name="can-admins-set-up-security-keys"></a>Yöneticiler güvenlik anahtarlarını ayarlayabilir mi?
-
-Bu özelliğin genel kullanılabilirliği (GA) için bu özellik üzerinde çalışıyoruz.
-
-### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Uyumlu güvenlik anahtarlarını bulmak için nereye gidebilirim?
-
-[FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
-
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Güvenlik Anahtarımı kaybedersem ne yapmam gerekiyor?
-
-Güvenlik bilgileri sayfasına giderek ve güvenlik anahtarını kaldırarak Azure portal anahtarları kaldırabilirsiniz.
+   - Kategori: güvenlik ve Gizlilik
+   - Alt Kategori: FıDO
+1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[Azure AD ve karma Azure AD 'ye katılmış cihazlar için şirket içi kaynaklara erişimi etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md)
 
 [Cihaz kaydı hakkında daha fazla bilgi edinin](../devices/overview.md)
 

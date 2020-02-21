@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: radeltch
-ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e48cb1baa515e6a1549bf913a3c3e4cf50e1fff6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314207"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525490"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
 
@@ -83,13 +83,13 @@ Başlamadan önce, önce aşağıdaki SAP notları ve incelemeleri inceleyin:
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
 * [SUSE SAP ha En Iyi Yöntem Kılavuzu][suse-ha-guide] Kılavuzlar, NetWeaver HA ayarlamak için gerekli tüm bilgileri ve şirket içi SAP HANA sistem çoğaltmasını içerir. Bu kılavuzlarınızı genel bir taban çizgisi olarak kullanın. Çok daha ayrıntılı bilgi sağlar.
 * [SUSE yüksek kullanılabilirlik uzantısı 12 SP3 sürüm notları][suse-ha-12sp3-relnotes]
-* [Çoklu SID kümesi için SUSE desteği](https://www.suse.com/c/sap-workloads-going-green/)
+* [SLES 12 ve SLES 15 için SUSE Multi-SID küme Kılavuzu](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
 
 ## <a name="overview"></a>Genel Bakış
 
 Kümede yer alan sanal makinelerin tüm kaynakları çalıştırabilmeleri için boyutlandırılması gerekir, bu durumda yük devretme gerçekleşmelidir. Her SAP SID, çok düzeyli yüksek kullanılabilirlik kümesinde birbirinden bağımsız yük devredebilirler.  SBD uçumlama kullanılıyorsa, SBD cihazları birden çok küme arasında paylaşılabilir.  
 
-SAP NetWeaver yüksek kullanılabilirlik elde etmek için yüksek oranda kullanılabilir NFS paylaşımları gerektirir. Bu örnekte SAP NFS paylaşımlarının, birden fazla SAP sistemi tarafından kullanılabilen, yüksek oranda kullanılabilir [NFS dosya sunucusunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)barındırıldığından varsayılmaktadır. Veya paylaşımlar, [Azure NetApp dosyaları NFS birimlerinde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)dağıtılır.  
+SAP NetWeaver yüksek kullanılabilirlik elde etmek için yüksek oranda kullanılabilir NFS paylaşımları gerektirir. Bu örnekte, SAP NFS paylaşımlarının, birden fazla SAP sistemi tarafından kullanılabilen, yüksek oranda kullanılabilir [NFS dosya sunucusu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)üzerinde barındırıldığını varsayıyoruz. Veya paylaşımlar, [Azure NetApp dosyaları NFS birimlerinde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)dağıtılır.  
 
 ![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -173,9 +173,9 @@ Yukarıda listelenen belgeler, gerekli altyapıları hazırlama, kümeyi oluştu
 
 Bu örnekte, sistem **NW1** zaten kümede dağıtıldığını varsaydık. Küme SAP Systems **NW2** ve **NW3**' de nasıl dağıtılacağı gösterilecektir. 
 
-Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]** - düğüm 1 yalnızca uygulanabilir veya **[2]** - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 
 > [!IMPORTANT]
 > Kümeye ek SAP sistemleri dağıtmaya yönelik yönergeleri izlemeden önce, ilk sistem dağıtımı sırasında yalnızca gerekli adımlar olduğundan, kümedeki ilk SAP sistemini dağıtmak için yönergeleri izleyin.  

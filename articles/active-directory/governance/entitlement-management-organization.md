@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548909"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483865"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -77,7 +77,7 @@ Bağlı bir kuruluş olarak dış bir Azure AD dizini veya etki alanı eklemek i
 1. Azure AD dizinini veya etki alanını eklemek için **Ekle** ' ye tıklayın. Şu anda, bağlı kuruluşa göre yalnızca bir Azure AD dizini veya etki alanı ekleyebilirsiniz.
 
     > [!NOTE]
-    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya engellenenler listesi tarafından engellenmediği durumlar dışında, dizinle ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için [B2B kullanıcıları için izin verilenler veya Engellenenler davetleri belirli kuruluşlardan](../b2b/allow-deny-list.md).
+    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya engellenenler listesi tarafından engellenmediği durumlar dışında, dizinle ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../b2b/allow-deny-list.md).
 
 1. Azure AD dizinini veya etki alanını ekledikten sonra **Seç**' e tıklayın.
 
@@ -96,6 +96,23 @@ Bağlı bir kuruluş olarak dış bir Azure AD dizini veya etki alanı eklemek i
 1. **Gözden geçir + oluştur** sekmesinde kuruluş ayarlarınızı gözden geçirin ve ardından **Oluştur**' a tıklayın.
 
     ![Erişim paketi-Ilke-bağlı kuruluş ekleme-gözden geçirme + Oluştur sekmesi](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>Bağlı bir kuruluşu güncelleştirme 
+
+Bağlı kuruluş farklı bir etki alanına değişirse, bu kuruluş için yeni bir adınız varsa veya sponsorları değiştirmek istiyorsanız bağlı kuruluşu güncelleştirebilirsiniz.
+
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya Konuk davetci
+
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+
+1. Sol menüde **bağlı kuruluşlar** ' a ve ardından bağlı kuruluşu açmak için ' ye tıklayın.
+
+1. Genel Bakış sayfasında, kuruluş adını veya açıklamasını değiştirmek için **Düzenle** ' ye tıklayın.  
+
+1. Dizin + etki alanı sayfasında, farklı bir dizin veya etki alanına geçmek için **dizin + etki alanını güncelleştir** ' e tıklayın.
+
+1. Sponsorlar sayfasında, **dahili sponsorlar Ekle** ' ye tıklayın veya **Harici sponsorlar ekleyerek** bir kullanıcıyı sponsor olarak ekleyin.  Bir sponsor kaldırmak için, sponsor öğesine tıklayın ve sağ taraftaki menüden **Sil**' e tıklayın.
+
 
 ## <a name="delete-a-connected-organization"></a>Bağlı bir kuruluşu silme
 

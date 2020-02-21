@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 35b5a85ea6fba87e785b581a7a20d0c28f312820
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906610"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484154"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
 
@@ -22,7 +22,7 @@ Bu makalede Azure portal, Azure CLı veya PowerShell kullanarak statik Web sites
 
 <a id="portal" />
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Adım adım bir öğretici için bkz. [öğretici: blob depolamada statik bir Web sitesi barındırma](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
 
@@ -38,7 +38,7 @@ Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen b�
 
 <a id="cli" />
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak statik Web sitesi barındırmayı etkinleştirebilirsiniz.
 
@@ -72,7 +72,7 @@ Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen b�
    Bu örnekte Azure Cloud Shell oturumundan komut çalıştırdığınız varsayılır.
 
    ```azurecli-interactive
-   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
    ```
 
    * `<storage-account-name>` yer tutucu değerini depolama hesabınızın adıyla değiştirin.
@@ -102,7 +102,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 <a id="powershell" />
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinleştirebilirsiniz.
 
@@ -157,6 +157,7 @@ Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinl
     ```powershell
     # upload a file
     set-AzStorageblobcontent -File "<path-to-file>" `
+    -Properties @{ ContentType = "text/html; charset=utf-8";} `
     -Container `$web `
     -Blob "<blob-name>" `
     -Context $ctx

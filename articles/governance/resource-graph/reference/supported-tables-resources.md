@@ -1,0 +1,461 @@
+---
+title: Desteklenen Kaynak Yöneticisi kaynak türleri
+description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
+ms.date: 02/20/2020
+ms.topic: reference
+ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77530230"
+---
+# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
+
+Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/management/overview.md)aşağıdaki **kaynak türlerini** destekler. Her **kaynak türü** kaynak grafiğindeki bir **tablonun** parçasıdır.
+
+## <a name="advisorresources"></a>danışmanlaştırın kaynakları
+
+- Microsoft. Advisor/Configurations
+- Microsoft. Advisor/öneriler
+- Microsoft. Advisor/suppressions
+
+## <a name="alertsmanagementresources"></a>alertsmanagementresources
+
+- Microsoft. alertsmanagement/uyarılar
+
+## <a name="maintenanceresources"></a>maintenanceresources
+
+- Microsoft. Maintenance/configurationatamalar
+- Microsoft. Maintenance/Updates
+
+## <a name="resourcecontainers"></a>resourcecontainers
+
+- Microsoft. resources/abonelikler
+- Microsoft. resources/abonelikler/ResourceGroups
+
+## <a name="resources"></a>resources
+
+- 84codes. cloudadmqp/sunucular
+- Citrix. Services/xenappessentials
+- Citrix. Services/xendesktopessentials
+- conexlink. mycloudıt/hesapları
+- Crypteron. Datasecurity/Apps
+- gridpro. evops/hesaplar
+- gridpro. evops/accounts/eventrules
+- gridpro. evops/accounts/requesttemplates
+- gridpro. evops/hesaplar/görünümler
+- Hive. akış/hizmetler
+- ıncapsula. WAF/hesaplar
+- liveari. Broadcast/Services
+- mailjet. e-posta/hizmetler
+- Microsoft. AAD/DomainServices
+- Microsoft. aadihar/kiracılar
+- Microsoft. alertsmanagement/actionrules
+- Microsoft. alertsmanagement/smartdetectoralertrules
+- Microsoft. AnalysisServices/sunucuları
+- Microsoft. apimanayönetimi/hizmeti
+- Microsoft. appconfiguration/configurationmağazaları
+- Microsoft. appplatform/yay
+- Microsoft. Archive/Koleksiyonlar
+- Microsoft. Automation/automationaccounts
+- Microsoft. Automation/automationaccounts/Configurations
+- Microsoft. Automation/automationaccounts/runbook 'lar
+- Microsoft. azconfig/configurationmağazaları
+- Microsoft. azureactivedirectory/b2cdirectories
+- Microsoft. azuredata/hybriddatayöneticileri
+- Microsoft. azuredata/postgresınstances
+- Microsoft. azuredata/sqlbigdatakümeler
+- Microsoft. azuredata/SQLInstances
+- Microsoft. azuredata/sqlserverkayıtları
+- Microsoft. azurestack/kayıtları
+- Microsoft. baremetal/consoleconnections
+- Microsoft. baremetal/crayservers
+- Microsoft. baremetal/monitoringservers
+- Microsoft. Batch/batchaccounts
+- Microsoft. batchaı/kümeler
+- Microsoft. batchaı/fileservers
+- Microsoft. batchaı/Jobs
+- Microsoft. batchaı/çalışma alanları
+- Microsoft. bingmaps/mapapsıs
+- Microsoft. biztalkservices/BizTalk
+- Microsoft. blockzincirine/blockchainmembers
+- Microsoft. blockzincirine/cordadmembers
+- Microsoft. blockzinciri/izleyicileri
+- Microsoft. botservice/botservices
+- Microsoft. Cache/redsıs
+- Microsoft. CDN/cdnwebapplicationfirewallpolicies
+- Microsoft. CDN/profiller
+- Microsoft. CDN/profiller/uç noktaları
+- Microsoft. certificateregistration/certificateorders
+- Microsoft. classiccompute/DomainNames
+- Microsoft. classiccompute/virtualmachines
+- Microsoft. classicnetwork/networksecuritygroups
+- Microsoft. classicnetwork/rezervedips
+- Microsoft. classicnetwork/virtualnetworks
+- Microsoft. classicstorage/storageaccounts
+- Microsoft. cloudes/hesaplar
+- Microsoft. cloudsearch/Indexes
+- Microsoft. bilticisi/syntheticsaccounts
+- Microsoft. biliveservices/hesapları
+- Microsoft. COMPUTE/kullanılabilirliği bilitysets
+- Microsoft. COMPUTE/diskencryptionsets
+- Microsoft. COMPUTE/diskler
+- Microsoft. COMPUTE/Galeriler
+- Microsoft. COMPUTE/galeriler/uygulamalar
+- Microsoft. COMPUTE/galeriler/uygulamalar/sürümler
+- Microsoft. COMPUTE/galeriler/görüntüler
+- Microsoft. COMPUTE/galeriler/resimler/sürümler
+- Microsoft. COMPUTE/hostgroups
+- Microsoft. COMPUTE/hostgroups/konaklar
+- Microsoft. COMPUTE/görüntüler
+- Microsoft. COMPUTE/proximityplacementgroups
+- Microsoft. COMPUTE/restorepointcollections
+- Microsoft. COMPUTE/sharedvmextensions
+- Microsoft. COMPUTE/sharedvmextensions/sürümleri
+- Microsoft. COMPUTE/sharedvmımages
+- Microsoft. COMPUTE/sharedvmımages/sürümler
+- Microsoft. COMPUTE/Snapshots
+- Microsoft. COMPUTE/virtualmachines
+- Microsoft. COMPUTE/virtualmachines/uzantıları
+- Microsoft. COMPUTE/virtualmachinescalesets
+- Microsoft. containerınstance/containergroups
+- Microsoft. containerregistry/kayıt defterleri
+- Microsoft. containerregistry/kayıt defterleri/BuildTasks
+- Microsoft. containerregistry/kayıt defterleri/çoğaltmalar
+- Microsoft. containerregistry/kayıt defterleri/taskçalıştırmaları
+- Microsoft. containerregistry/kayıt defterleri/görevler
+- Microsoft. containerregistry/kayıt defterleri/Web kancaları
+- Microsoft. Containerservice/containerservices
+- Microsoft. Containerservice/managedkümeler
+- Microsoft. Containerservice/openshiftmanagedclusters
+- Microsoft. contoso/çalışanlar
+- Microsoft. costmanagement/bağlayıcıları
+- Microsoft. customproviders/resourceproviders
+- Microsoft. databox/Jobs
+- Microsoft. databoxedge/databoxedgedevices
+- Microsoft. databricks/çalışma alanları
+- Microsoft. datacatalog/Catalogs
+- Microsoft. datacatalog/datacatalogs
+- Microsoft. DataFactory/DataFactory
+- Microsoft. DataFactory/Factory
+- Microsoft. datalakeanalytics/hesapları
+- Microsoft. datalakestore/accounts
+- Microsoft. datamigration/hizmetler
+- Microsoft. datamigration/hizmetler/projeler
+- Microsoft. datamigration/Yuvaları
+- Microsoft. DataProtection/backupkasaları
+- Microsoft. datashare/hesapları
+- Microsoft. dbformarıdb/sunucular
+- Microsoft. dbformyısql/sunucuları
+- Microsoft. dbforpostgresql/sunucugroups
+- Microsoft. dbforpostgresql/sunucuları
+- Microsoft. dbforpostgresql/serversv2
+- Microsoft. deploymentmanager/artifactsources
+- Microsoft. deploymentmanager/piyasaya çıkarma
+- Microsoft. deploymentmanager/servicetopolojileri
+- Microsoft. deploymentmanager/servicetopolojileri/Hizmetleri
+- Microsoft. deploymentmanager/servicetopolojileri/hizmetler/serviceunits
+- Microsoft. deploymentmanager/adımlar
+- Microsoft. desktopvirtualization/applicationgroups
+- Microsoft. desktopvirtualization/hostpools
+- Microsoft. desktopvirtualization/çalışma alanları
+- Microsoft. detoülke hizmeti/detoülke örnekleri
+- Microsoft. Devices/elaun havuzları
+- Microsoft. Devices/elaun havuzları/iothubkiracılar
+- Microsoft. Devices/iothubs
+- Microsoft. Devices/provisioningservices
+- Microsoft. DevOps/işlem hatları
+- Microsoft. devspaces/denetleyicileri
+- Microsoft. devtestlab/labcenters
+- Microsoft. devtestlab/Labs
+- Microsoft. devtestlab/Labs/servicerunkim
+- Microsoft. devtestlab/Labs/virtualmachines
+- Microsoft. devtestlab/zamanlamalar
+- Microsoft. digitaltwins/digitaltwınsınstances
+- Microsoft. DocumentDB/databaseaccounts
+- Microsoft. domainregistration/Domains
+- Microsoft. enterpriseknowledgegraph/hizmetler
+- Microsoft. eventgrid/Domains
+- Microsoft. eventgrid/partnernamespaces
+- Microsoft. eventgrid/partnerkayıtları
+- Microsoft. eventgrid/partnerkonuları
+- Microsoft. eventgrid/systemkonuları
+- Microsoft. eventgrid/konuları
+- Microsoft. eventhub/kümeler
+- Microsoft. eventhub/ad alanları
+- Microsoft. deneme/experimentworkspaces
+- Microsoft. Gaming/başlıklar
+- Microsoft. Genomiks/hesapları
+- Microsoft. guestconfiguration/oto managedaccounts
+- Microsoft. hanaonazure/hanaınstances
+- Microsoft. hanaonazure/sapizleyicileri
+- Microsoft. hardwaresecuritymodules/ayrılmış atedhsms
+- Microsoft. HDInsight/kümeler
+- Microsoft. healthgelişme API 'leri/Hizmetleri
+- Microsoft. hybridcompute/makineler
+- Microsoft. hybridcompute/makineler/uzantılar
+- Microsoft. hybriddata/datayöneticileri
+- Microsoft. Hydra/bileşenler
+- Microsoft. Hydra/networkscopes
+- Microsoft. ımportexport/işler
+- Microsoft. Insights/actiongroups
+- Microsoft. Insights/activitylogalerts
+- Microsoft. Insights/alertrules
+- Microsoft. Insights/oto scalesettings
+- Microsoft. Insights/bileşenler
+- Microsoft. Insights/datacollectionrules
+- Microsoft. Insights/guestdiagnosticsettings
+- Microsoft. Insights/metricalerts
+- Microsoft. Insights/notificationgroups
+- Microsoft. Insights/notificationrules
+- Microsoft. Insights/scheduledqueryrules
+- Microsoft. Insights/webtests
+- Microsoft. Insights/çalışma kitapları
+- Microsoft. Insights/workbooktemplates
+- Microsoft. ıotcentral/ıotapps
+- Microsoft. ıotspaces/Graph
+- Microsoft. keykasası/hsmpools
+- Microsoft. keykasası/kasa
+- Microsoft. Kubernetes/connectedkümeler
+- Microsoft. kusto/kümeler
+- Microsoft. kusto/kümeler/veritabanları
+- Microsoft. labservices/labaccounts
+- Microsoft. Logic/ıntegrationaccounts
+- Microsoft. Logic/ıntegrationserviceortamortamları
+- Microsoft. Logic/ıntegrationserviceortamlarını/managedap
+- Microsoft. Logic/iş akışları
+- Microsoft. machinöğrenim/commitmentplanlar
+- Microsoft. machinöğrenim/WebServices
+- Microsoft. machinöğrenim/çalışma alanları
+- Microsoft. machinelearningcompute/operationalizationkümeler
+- Microsoft. machinelearningservices/çalışma alanları
+- Microsoft. Maintenance/maintenanceconfigurations
+- Microsoft. Maintenance/maintenancepolicies
+- Microsoft. managedıdentity/gruplar
+- Microsoft. managedıdentity/useratandıdentities
+- Microsoft. managednetwork/managednetworkgroups
+- Microsoft. managednetwork/managednetworkpeeringpolicies
+- Microsoft. managednetwork/managednetworks
+- Microsoft. managednetwork/managednetworks/managednetworkgroups
+- Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
+- Microsoft. Maps/hesaplar
+- Microsoft. marketplaceapps/classicdevservices
+- Microsoft. Media/mediaservices
+- Microsoft. Media/mediaservices/liveevents
+- Microsoft. Media/mediaservices/streamingendpoints
+- Microsoft. Media/mediaservices/dönüşümler
+- Microsoft. microservices4spring/appkümeler
+- Microsoft. Migrate/assessmentprojects
+- Microsoft. Migrate/migrateprojects
+- Microsoft. Migrate/movecollections
+- Microsoft. Migrate/projeler
+- Microsoft. mixedreality/holographicsbroadcastaccounts
+- Microsoft. mixedreality/objectunderstandingaccounts
+- Microsoft. mixedreality/remoterenderingaccounts
+- Microsoft. mixedreality/spatialanchorsaccounts
+- Microsoft. mixedreality/surfacereconstructionaccounts
+- Microsoft. NetApp/netappaccounts
+- Microsoft. NetApp/netappaccounts/backuppolicies
+- Microsoft. NetApp/netappaccounts/capacityhavuzları
+- Microsoft. NetApp/netappaccounts/capacityhavuzları/birimleri
+- Microsoft. NetApp/netappaccounts/capacityhavuzlar/Volumes/Mount hedefleri
+- Microsoft. NetApp/netappaccounts/capacityhavuzlar/birimler/anlık görüntüler
+- Microsoft. Network/applicationgateway 'ler
+- Microsoft. Network/applicationgatewaywebapplicationfirewallpolicies
+- Microsoft. Network/applicationsecuritygroups
+- Microsoft. Network/azurefirewalls
+- Microsoft. Network/bastionhosts
+- Microsoft. Network/Connections
+- Microsoft. Network/ddoscustompolicies
+- Microsoft. Network/ddosprotectionplanlar
+- Microsoft. Network/dnszones
+- Microsoft. Network/expressroutedevreleri
+- Microsoft. Network/expressroutecrossconnections
+- Microsoft. Network/expressroutegateway 'ler
+- Microsoft. Network/expressrouteports
+- Microsoft. Network/firewallpolicies
+- Microsoft. Network/frontkapaklı
+- Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ıpgroups
+- Microsoft. Network/loadbalancers
+- Microsoft. Network/localnetworkgateway 'ler
+- Microsoft. Network/natgateway 'ler
+- Microsoft. Network/networkexperimentprofiles
+- Microsoft. Network/networkyoğunlutpolicies
+- Microsoft. Network/NetworkInterfaces
+- Microsoft. Network/networkprofiles
+- Microsoft. Network/networksecuritygroups
+- Microsoft. Network/networkwatchers
+- Microsoft. Network/networkwatchers/connectionmonitörleri
+- Microsoft. Network/networkwatchers/flowlogs
+- Microsoft. Network/networkwatchers/lenses
+- Microsoft. Network/networkwatchers/pingkafesler
+- Microsoft. Network/p2svpngateways
+- Microsoft. Network/privatednszones
+- Microsoft. Network/privatednszones/virtualnetworklinks
+- Microsoft. Network/privateendpointredirectmaps
+- Microsoft. Network/privateendpoints
+- Microsoft. Network/privatelinkservices
+- Microsoft. Network/publicıpaddresses
+- Microsoft. Network/publicıpöneklerini
+- Microsoft. Network/routefilters
+- Microsoft. Network/routetables
+- Microsoft. Network/sampleresonak
+- Microsoft. Network/serviceendpointpolicies
+- Microsoft. Network/trafficmanagerprofiles
+- Microsoft. Network/virtualhub 'ları
+- Microsoft. Network/virtualnetworkgateway 'ler
+- Microsoft. Network/virtualnetworks
+- Microsoft. Network/virtualnetworktaps
+- Microsoft. Network/virtualyönlendiriciler
+- Microsoft. Network/virtualwan 'lar
+- Microsoft. Network/vpngateway 'ler
+- Microsoft. Network/vpnserverconfigurations
+- Microsoft. Network/vpnsites
+- Microsoft. notificationhub 'lar/ad alanları
+- Microsoft. notificationhub 'lar/ad alanları/notificationhub 'lar
+- Microsoft. ObjectStore/osnamespaces
+- Microsoft. offazure/hypervsites
+- Microsoft. offazure/ımportsites
+- Microsoft. offazure/sunucusites
+- Microsoft. offazure/vmwaresites
+- Microsoft. operationalınsights/kümeler
+- Microsoft. operationalınsights/çalışma alanları
+- Microsoft. operationsmanagement/Solutions
+- Microsoft. operationsmanagement/views
+- Microsoft. eşleme/eşlemeler
+- Microsoft. eşleme/peeringservices
+- Microsoft. Portal/panolar
+- Microsoft. portalsdk/rootresources
+- Microsoft. PowerBI/workspacecollections
+- Microsoft. powerbiadanmış/kapasiteler
+- Microsoft. projectarcadia/çalışma alanları
+- Microsoft. projectarcadia/Workspaces/parlak hesaplar
+- Microsoft. projectarcadia/Workspaces/sqlhesaplar
+- Microsoft. projectbabylon/hesaplar
+- Microsoft. recoveryservices/kasa
+- Microsoft. redhatopenshıft/openshiftclusters
+- Microsoft. Relay/Namespace
+- Microsoft. RemoteApp/Koleksiyonlar
+- Microsoft. resourcegraph/sorgular
+- Microsoft. resources/deploymentscripts
+- Microsoft. SaaS/uygulamalar
+- Microsoft. Scheduler/jobcollections
+- Microsoft. Search/searchservices
+- Microsoft. Security/Automations
+- Microsoft. Security/ıotsecuritysolutions
+- Microsoft. ServiceBus/ad alanları
+- Microsoft. servicefabric/kümeler
+- Microsoft. servicefabric/containergroupsets
+- Microsoft. servicefabric/managedkümeler
+- Microsoft. servicefabrickafes/uygulamaları
+- Microsoft. servicefabrickafesi/ağ geçitleri
+- Microsoft. servicefabrickafes/Networks
+- Microsoft. servicefabrickafes/gizlilikler
+- Microsoft. servicefabrickafes/birimleri
+- Microsoft. signalrservice/SignalR
+- Microsoft. Solutions/appliancedefinitions
+- Microsoft. Solutions/gereçler
+- Microsoft. Solutions/applicationdefinitions
+- Microsoft. Solutions/Applications
+- Microsoft. Solutions/jrequests
+- Microsoft. spoolservice/spoir
+- Microsoft. SQL/ınstancepools
+- Microsoft. SQL/ManagedInstances
+- Microsoft. SQL/ManagedInstances/veritabanları
+- Microsoft. SQL/sunucuları
+- Microsoft. SQL/Servers/veritabanları
+- Microsoft. SQL/Servers/elaun havuzları
+- Microsoft. SQL/Servers/jobaccounts
+- Microsoft. SQL/Servers/jobagents
+- Microsoft. SQL/virtualkümeler
+- Microsoft. sqlvirtualmachine/sqlvirtualmachinegroups
+- Microsoft. sqlvirtualmachine/sqlvirtualmachines
+- Microsoft. sqlvm/dwvm
+- Microsoft. Storage/storageaccounts
+- Microsoft. storagecache/önbellekler
+- Microsoft. storagessync/storagesyncservices
+- Microsoft. storagesyncdev/storagesyncservices
+- Microsoft. storagesyncint/storagesyncservices
+- Microsoft. StorSimple/yöneticileri
+- Microsoft. streamanalytics/streamingjobs
+- Microsoft. support/supportbiletleri
+- Microsoft. SYNAPSE/çalışma alanları
+- Microsoft. SYNAPSE/Workspaces/bigdatapools
+- Microsoft. SYNAPSE/Workspaces/sqlhavuzlar
+- Microsoft. teroyformoss/providerkayıtları
+- Microsoft. timeseriesınsights/ortamlar
+- Microsoft. timeseriesınsights/ortamlar/EventSources
+- Microsoft. timeseriesınsights/ortamlar/referencedataset 'ler
+- Microsoft. Token/mağazaları
+- Microsoft. tokenkasasını/kasalarını
+- Microsoft. virtualmachineımages/ımagetemplates
+- Microsoft. VisualStudio/Account
+- Microsoft. VisualStudio/Account/Extension
+- Microsoft. VisualStudio/Account/Project
+- Microsoft. vmwarecses basit/ayrılmış cloudnodes
+- Microsoft. vmwarecses basit/ayrılmış cloudservices
+- Microsoft. vmwarechoparlör basit/virtualmachines
+- Microsoft. vmwareonazure/privatebulutlar
+- Microsoft. vmwarevirtustream/privatebulutlar
+- Microsoft. vnfmanager/cihazlar
+- Microsoft. vnfmanager/vnfs
+- Microsoft. vsonline/hesapları
+- Microsoft. vsonline/planlar
+- Microsoft. Web/apimanagementaccounts/API 'ler
+- Microsoft. Web/sertifikalar
+- Microsoft. Web/connectiongateway 'ler
+- Microsoft. Web/Connections
+- Microsoft. Web/customapsıs
+- Microsoft. Web/hostingenvironments
+- Microsoft. Web/sunucugrupları
+- Microsoft. Web/siteler
+- Microsoft. Web/Sites/premieraddons
+- Microsoft. Web/Sites/Yuvaları
+- Microsoft. Web/staticsites
+- Microsoft. windowsesu/multipleactivationkeys
+- Microsoft. windowsıot/deviceservices
+- myget. PackageManagement/Services
+- paraartık. cloudmonitorx/Hizmetleri
+- pokitdok. Platform/hizmetler
+- Providers. test/statefülibizaengines
+- sağlayıcılar. test/statefulresources
+- sağlayıcılar. test/statefulresources/nestedresources
+- Providers. test/statelessresources
+- çvenhq. db/veritabanları
+- Raygun. crashreporting/Apps
+- SendGrid. e-posta/hesaplar
+- Mini-posta. temel/hizmetler
+- stackbelirt. yeniden izleme/hizmetler
+- test. showebox/testresources
+- test. showebox/testresources2
+- trendmicro. ayrıntılı güvenlik/hesaplar
+- u2uconsult. theıdentityhub/Services
+- wandisco. Fusion/fusiongroups
+- wandisco. Fusion/fusiongroups/azurezones
+- wandisco. Fusion/fusiongroups/onpremzones
+- wandisco. Fusion/fusiongroups/replicationrules
+
+## <a name="securityresources"></a>securityresources
+
+- assessmentmetadata
+- Microsoft. Security/değerlendirmeleri
+- Microsoft. Security/değerlendirmeleri/subassessments
+- Microsoft. Security/pricler
+- Microsoft. Security/rereber ancestandards
+- Microsoft. Security/Re, daha karmaşık güvenlik standartları/redüzenleyicisi
+- Microsoft. Security/Re, güvenli standartlar/Düzenleyicisi/Re,
+- Microsoft. Security/securitydurumlar
+- Microsoft. Security/securitydurumlarının/containerhosts
+- Microsoft. Security/securitydurumlarının/onpremisemachines
+- Microsoft. Security/securitydurumlarının/sunucuları
+- Microsoft. Security/securitydurumlarının/alt ağları
+- Microsoft. Security/securitydurumlarının/virtualmachines
+- Microsoft. Security/securitystatusessummaries
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Sorgu dili](../concepts/query-language.md)hakkında daha fazla bilgi edinin.
+- [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- Bkz. [Başlangıç sorguları](../samples/starter.md)örnekleri.

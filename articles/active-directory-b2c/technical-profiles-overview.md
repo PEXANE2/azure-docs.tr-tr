@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136248"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505664"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -39,7 +39,7 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 - [SAML2](saml-technical-profile.md) -Federasyon protokol kimlik sağlayıcısıyla Federasyonu.
 - [Kendi kendine onaylanan](self-asserted-technical-profile.md) -kullanıcıyla etkileşime geçin. Örneğin, oturum açmak için kullanıcının kimlik bilgisini toplayın, kaydolma sayfasını veya parola sıfırlamayı izleyin.
 - [Oturum yönetimi](custom-policy-reference-sso.md) -farklı oturum türlerini işleyin.
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - [Bir kerelik parola](one-time-password-technical-profile.md) -tek seferlik parolanın oluşturulmasını ve doğrulanmasını yönetmek için destek sağlar. 
 
 ## <a name="technical-profile-flow"></a>Teknik profil akışı
@@ -51,7 +51,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler. 
 1. Giriş talepleri **dönüştürme** -her giriş [talebi dönüşümünün](claimstransformations.md) giriş talepleri, talep çantasından alınır.  Bir giriş talep dönüşümünün çıkış talepleri, sonraki bir giriş talebi dönüşümünün giriş talepleri olabilir.
 1. **Giriş talepleri** -talepler, talep çantasından alınır ve teknik profil için kullanılır. Örneğin, [kendinden onaylanan bir teknik profil](self-asserted-technical-profile.md) , kullanıcının sağladığı çıkış taleplerini önceden doldurmak için giriş taleplerini kullanır. REST API teknik bir profil, giriş parametrelerini REST API uç noktasına göndermek için giriş taleplerini kullanır. Azure Active Directory, hesap okumak, güncelleştirmek veya silmek için benzersiz bir tanımlayıcı olarak giriş talebi kullanır.
-1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örneğin:
+1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örnek:
     - Oturum açma işleminin tamamlanabilmesi için kullanıcıyı kimlik sağlayıcısına yönlendirin. Başarılı oturum açma işleminden sonra Kullanıcı geri döner ve teknik profil yürütme devam eder.
     - Parametreleri ınputtalepler olarak gönderirken ve Outputclaim olarak geri bilgi alırken bir REST API çağırın.
     - Kullanıcı hesabı oluşturun veya güncelleştirin.

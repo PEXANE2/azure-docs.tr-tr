@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid olay işleyicileri
-description: Azure Event Grid için desteklenen olay işleyicilerini açıklar. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir.
+description: Azure Event Grid için desteklenen olay işleyicilerini açıklar. Azure Otomasyonu, Işlevler, Event Hubs, Karma Bağlantılar, Logic Apps, Service Bus, kuyruk depolama, Web kancaları.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 3cef32cd204e8bd4b21353cf66575a721315b387
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 7ea00d663264e902c1818f7a4684e90eccd97b28
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511323"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525813"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid içindeki olay işleyicileri
 
@@ -75,7 +75,7 @@ Olaylara yanıt vermek için iş süreçlerini otomatikleştirmek için Logic Ap
 
 ## <a name="service-bus"></a>Service Bus
 
-### <a name="service-bus-queues"></a>Hizmet Veri Yolu kuyrukları
+### <a name="service-bus-queues"></a>Service Bus kuyrukları
 
 Event Grid olayları, ara belleğe almak veya komut & Denetim senaryolarında kurumsal uygulamalarda kullanmak üzere Service Bus sıralara doğrudan yönlendirebilirsiniz.
 
@@ -97,7 +97,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
 ```
 
-### <a name="service-bus-topics"></a>Hizmet Veri Yolu konuları
+### <a name="service-bus-topics"></a>Service Bus konuları
 
 Service Bus konular ile Azure sistem olaylarını işlemek veya komut & Denetim mesajlaşma senaryoları için Event Grid olayları doğrudan Service Bus konularına yönlendirebilirsiniz.
 
@@ -141,4 +141,4 @@ Olaylara yanıt veren özelleştirilebilir uç noktalar için Web kancalarını 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

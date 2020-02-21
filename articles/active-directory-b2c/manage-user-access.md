@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840443"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484120"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
@@ -46,7 +46,7 @@ Uygulama yönetmeliklerinize bağlı olarak, ebeveyn onayı yetişkin olarak do�
 
 Aşağıda, ebeveyn onayını toplamak için bir Kullanıcı akışı örneği verilmiştir:
 
-1. Bir [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) işlemi, kullanıcıyı küçük olarak tanımlar ve Kullanıcı verilerini, IMZASıZ bir JSON belirteci biçiminde uygulamaya döndürür.
+1. Bir [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) işlemi, kullanıcıyı küçük olarak tanımlar ve Kullanıcı verilerini, IMZASıZ bir JSON belirteci biçiminde uygulamaya döndürür.
 
 2. Uygulama JSON belirtecini işler ve küçük bir ekran gösterir ve bu, ebeveyn onayı 'nın gerekli olduğunu ve bir üst çevrimiçi onay isteğini ister.
 
@@ -54,9 +54,9 @@ Aşağıda, ebeveyn onayını toplamak için bir Kullanıcı akışı örneği v
 
 4. Uygulama, onayı iptal etmek için küçük bir seçenek sunar.
 
-5. İkincil veya yetişkin iptal edildiğinde, **consentProvidedForMinor** **DEğIşTIRMEk için Azure**ad Graph API kullanılabilir. Alternatif olarak, uygulama, onayı iptal edilmiş bir ikincil silme işlemi de seçebilir. Kullanıcı akışının, kimliği doğrulanmış alt öğe (veya ikincil hesabı kullanan üst) onayı iptal edebilmesi için, bu, isteğe bağlı olarak özelleştirilebilir. Azure AD B2C kayıtları **reddedildi**olarak **consentProvidedForMinor** .
+5. Küçük ya da yetişkin iptal edildiğinde, **consentProvidedForMinor** **değiştirmek için Microsoft Graph**API 'si kullanılabilir. Alternatif olarak, uygulama, onayı iptal edilmiş bir ikincil silme işlemi de seçebilir. Kullanıcı akışının, kimliği doğrulanmış alt öğe (veya ikincil hesabı kullanan üst) onayı iptal edebilmesi için, bu, isteğe bağlı olarak özelleştirilebilir. Azure AD B2C kayıtları **reddedildi**olarak **consentProvidedForMinor** .
 
-**Ligalagegroupclassification**, **ConsentProvidedForMinor**ve **agegroup**hakkında daha fazla bilgi için bkz. [Kullanıcı kaynak türü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Özel öznitelikler hakkında daha fazla bilgi için bkz. [Tüketicileriniz hakkında bilgi toplamak için özel öznitelikler kullanma](user-flow-custom-attributes.md). Azure AD Graph API kullanarak genişletilmiş öznitelikleri adresleyerek, özniteliğin uzun sürümünü kullanmanız gerekir (örneğin, *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*).
+**Ligalagegroupclassification**, **ConsentProvidedForMinor**ve **agegroup**hakkında daha fazla bilgi için bkz. [Kullanıcı kaynak türü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Özel öznitelikler hakkında daha fazla bilgi için bkz. [Tüketicileriniz hakkında bilgi toplamak için özel öznitelikler kullanma](user-flow-custom-attributes.md). Microsoft Graph API 'sini kullanarak genişletilmiş öznitelikleri adresleyerek, özniteliğin uzun sürümünü kullanmanız gerekir (örneğin, *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*).
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Doğum tarihi ve ülke/bölge verileri toplama
 
@@ -78,7 +78,7 @@ Aşağıdaki adımlarda, kullanıcının Doğum tarihinden sonra **Agegrubunu** 
 
 4. Hiçbir hesaplama true döndürürse, hesaplama **yetişkin**döndürür.
 
-Bir uygulama, başka yöntemlerle güvenilir bir şekilde DOB veya ülke/bölge verileri toplanmışsa, bu bilgileri kullanarak uygulama kullanıcı kaydını güncelleştirmek için Graph API kullanabilir. Örneğin:
+Bir uygulama, başka yöntemlerle güvenilir bir şekilde DOB veya ülke/bölge verileri toplanmışsa, bu bilgileri kullanarak uygulama kullanıcı kaydını güncelleştirmek için Graph API kullanabilir. Örnek:
 
 - Bir kullanıcının yetişkin olduğu bilindiğinde, bir **yetişme**değeri olan **agegroup** adlı dizin özniteliğini güncelleştirin.
 - Bir kullanıcının küçük olduğu bilindiğinde, dizin özniteliği **Agegroup** değerini bir **Minor** değeri ile güncelleştirin ve **consentProvidedForMinor**olarak ayarlayın.

@@ -1,5 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Windows DSVM oluşturma'
+title: 'Hızlı başlangıç: Windows Veri Bilimi Sanal Makinesi oluşturma'
+titleSuffix: Azure Data Science Virtual Machine
 description: Yapılandırma ve analiz için Azure'da bir veri bilimi sanal makinesi oluşturma ve makine öğrenimi.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611926"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525881"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
 
@@ -69,5 +70,5 @@ Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücrets
 * **Başlat** menüsünü açarak dsvm 'deki araçları araştırın.
 * [Azure Machine Learning ne olduğunu](../overview-what-is-azure-ml.md) okuyarak Azure Machine Learning hakkında bilgi edinin ve [öğreticiler](../index.yml)deneyin.
 * [Veri bilimi sanal makinesi için kullanabileceğiniz on şey](https://aka.ms/dsvmtenthings)makalesini okuyun.
-* Ziyaret [Azure AI Gallery](https://gallery.cortanaintelligence.com) Azure'da Azure Machine Learning ve ilgili verileri kullanan makine öğrenimi ve veri analizi için örnekleri Hizmetleri. Ayrıca, bu Galeri için **Başlat** menüsünde ve sanal makinenin masaüstüne bir simge sağladık.
+* Azure 'da Azure Machine Learning ve ilgili veri hizmetlerini kullanan Machine Learning ve veri analizi örnekleri için [Azure yapay zeka Galerisi](https://gallery.cortanaintelligence.com) ziyaret edin. Ayrıca, bu Galeri için **Başlat** menüsünde ve sanal makinenin masaüstüne bir simge sağladık.
 

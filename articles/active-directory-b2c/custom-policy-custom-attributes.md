@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847062"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482777"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: özel bir profilde özel öznitelikler kullanma ilke düzenleme
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847062"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) dizininizde özel bir öznitelik oluşturacaksınız. Bu yeni özniteliği Profil düzenleme Kullanıcı yolculuğunda özel bir talep olarak kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C: özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)makalesindeki adımları izleyin.
 
@@ -34,7 +34,7 @@ Azure AD B2C dizininiz yerleşik bir öznitelikler kümesiyle birlikte gelir. Ö
 * Bir kimlik sağlayıcısı, kaydedilmesi gereken **Uniqueuserguid** gibi benzersiz bir Kullanıcı tanımlayıcısına sahiptir.
 * Özel Kullanıcı yolculuğu, **Migrationstatus**gibi bir kullanıcının durumu için kalıcı hale getirilmesi gerekir.
 
-Azure AD B2C her kullanıcı hesabında depolanan özniteliklerin kümesini genişletir. Ayrıca, [Azure AD Graph API](manage-user-accounts-graph-api.md)kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz.
+Azure AD B2C her kullanıcı hesabında depolanan özniteliklerin kümesini genişletir. Ayrıca, [MICROSOFT Graph API](manage-user-accounts-graph-api.md)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz.
 
 Uzantı özellikleri, dizindeki Kullanıcı nesnelerinin şemasını genişletir. Terimler *uzantı özelliği*, *özel öznitelik*ve *özel talep* , bu makalenin bağlamıyla aynı şeyi ifade eder. Ad, uygulama, nesne veya ilke gibi içeriğe göre değişir.
 
@@ -297,7 +297,7 @@ Uygulamanıza geri gönderilen KIMLIK belirteci, yeni uzantı özelliğini **ext
 
 ## <a name="reference"></a>Başvuru
 
-Uzantı özellikleri hakkında daha fazla bilgi için [Dizin şeması uzantıları | makalesine bakın. Graph API kavramlar](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+Uzantı özellikleri hakkında daha fazla bilgi için, [uzantıları kullanarak kaynaklara özel veri ekleme](https://docs.microsoft.com/graph/extensibility-overview)makalesine bakın.
 
 > [!NOTE]
 > * Bir **teknisyen** , bir uç noktanın adını, meta verilerini ve protokolünü tanımlayan bir öğe türü veya işlevdir. **Teknisyen** , kimlik deneyimi çerçevesinin gerçekleştirdiği taleplerin değişimini ayrıntıdan yaşayın. Bu işlev bir düzenleme adımında ya da başka bir **teknisyen**tarafından çağrıldığında, **ınputclaim** ve **outputclaim** , çağıran tarafından parametre olarak sağlanır.

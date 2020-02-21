@@ -4,12 +4,12 @@ description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547379"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484715"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure Işlevleri geliştirme  
 
@@ -27,7 +27,7 @@ Bu makalede, Visual Studio kullanarak sınıf kitaplığı işlevleri geliştirm
 
 Aksi belirtilmediği takdirde, yordamlar ve örnekler Visual Studio 2019 içindir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Işlevleri araçları, Visual Studio 'nun Azure geliştirme iş yüküne Visual Studio 2017 ile başlayarak dahildir. **Azure geliştirme** Iş yükünü Visual Studio yüklemenize eklediğinizden emin olun.
 
@@ -42,7 +42,7 @@ Azure depolama hesabı gibi ihtiyacınız olan diğer kaynaklar, yayımlama işl
 
 ### <a name="check-your-tools-version"></a>Visual Studio 2017 ' de Araçlar sürümünüzü denetleyin
 
-1. Gelen **Araçları** menüsünde seçin **Uzantılar ve güncelleştirmeler**. **Yüklü** > **araçları** ' nı genişletin ve **Azure işlevleri ve Web işleri Araçları '** nı seçin.
+1. **Araçlar** menüsünde **Uzantılar ve güncelleştirmeler**' i seçin. **Yüklü** > **araçları** ' nı genişletin ve **Azure işlevleri ve Web işleri Araçları '** nı seçin.
 
     ![Işlevler araçları sürümünü doğrulama](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -136,7 +136,7 @@ C# Sınıf kitaplığı işlevlerinde, işlev tarafından kullanılan bağlamala
     }
     ```
 
-    Giriş noktası yöntemine sağlanan her bağlama parametresine bağlamaya özgü bir öznitelik uygulanır. Öznitelik, bağlama bilgilerini parametre olarak alır. Önceki örnekte, ilk parametrenin bir **Queuetrigger** özniteliği uygulanmış ve Queue tetiklenen işlevi olduğunu gösterir. Sıra adı ve bağlantı dizesi ayarı adı, **Queuetrigger** özniteliğine parametre olarak geçirilir. Daha fazla bilgi için bkz. [Azure Için Azure kuyruk depolama bağlamaları işlevleri](functions-bindings-storage-queue.md#trigger).
+    Giriş noktası yöntemine sağlanan her bağlama parametresine bağlamaya özgü bir öznitelik uygulanır. Öznitelik, bağlama bilgilerini parametre olarak alır. Önceki örnekte, ilk parametrenin bir **Queuetrigger** özniteliği uygulanmış ve Queue tetiklenen işlevi olduğunu gösterir. Sıra adı ve bağlantı dizesi ayarı adı, **Queuetrigger** özniteliğine parametre olarak geçirilir. Daha fazla bilgi için bkz. [Azure Için Azure kuyruk depolama bağlamaları işlevleri](functions-bindings-storage-queue-trigger.md).
 
 İşlev uygulaması projenize daha fazla işlev eklemek için yukarıdaki yordamı kullanabilirsiniz. Projedeki her bir işlev farklı bir tetikleyicisine sahip olabilir, ancak bir işlevin tam olarak bir tetikleyicisi olmalıdır. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 

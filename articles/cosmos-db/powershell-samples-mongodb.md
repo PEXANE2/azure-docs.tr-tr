@@ -6,16 +6,19 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 286b2fc349fc16a79dd3048a164f4c86924f0a1c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ca93b4fa85f5ef3ab87d108242e9cbfbd12036ab
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873582"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521872"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API 'SI için Azure PowerShell örnekleri
 
 Aşağıdaki tabloda, MongoDB API 'SI için Azure Cosmos DB örnek Azure PowerShell betiklerinin bağlantıları yer almaktadır.
+
+> [!NOTE]
+> Şu anda, PowerShell, CLı ve Kaynak Yöneticisi şablonları kullanarak yalnızca MongoDB hesapları için Azure Cosmos DB API 'sinin `*.documents.azure.com`biçimde uç noktasını kullanan hesaplar 3,2 oluşturabilirsiniz. Hesapların 3,6 sürümünü oluşturmak için bunun yerine Azure portal kullanın.
 
 | | |
 |---|---|

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847803"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484324"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışları
 
@@ -81,10 +81,8 @@ Bir Kullanıcı akışının parçası olarak bir e-posta adresi gerekebilir. Ku
 
 Bu durumda e-posta adresinin doğrulanması garanti edilmez. Bir kiracı yöneticisi, yerel hesaplar için temel ilkelerde e-posta doğrulamayı devre dışı bırakabilir. E-posta adresi doğrulama etkin olsa bile, bir sosyal kimlik sağlayıcısından geliyorsa ve değiştirilmedikleri durumlarda adresler doğrulanmaz.
 
-Yalnızca **Otherpostalarını** ve **signınnames** özellikleri Active Directory Graph API aracılığıyla sunulur. Güçlü kimlik doğrulama ayrıntısı özelliğindeki e-posta adresi kullanılamıyor.
+Microsoft Graph API 'SI aracılığıyla yalnızca **Otherpostalarını** ve **signınnames** özellikleri sunulur. Güçlü kimlik doğrulama ayrıntısı özelliğindeki e-posta adresi kullanılamıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Önerilen Kullanıcı akışlarını oluşturmak için [öğretici: Kullanıcı akışı oluşturma](tutorial-create-user-flows.md)' daki yönergeleri izleyin.
-
-

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: labrenne
-ms.openlocfilehash: 17cd9db1e86a66630d3b93c8295915933abb1ec2
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 22ee4aad6d2aabcc26dd97e50a2c716cb14be67a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023608"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483593"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch havuzlarında RDMA veya GPU örnekleri kullanma
 
-Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örneğin:
+Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örnek:
 
 * Çoklu örnek [MPI iş yüklerini](batch-mpi.md)çalıştırmak Için, H serisi veya uzak doğrudan bellek ERIŞIMI (RDMA) için bir ağ arabirimine sahip diğer boyutları seçin. Bu boyutlar, DEVI uygulamalarını hızlandırabilen, düğümler arası iletişim için bir InfiniBand ağına bağlanır. 
 
@@ -44,7 +44,7 @@ Batch 'de yoğun işlem yoğunluğu bulunan boyutlardaki RDMA veya GPU Özellikl
 
 | Boyut | Özellik | İşletim sistemleri | Gerekli yazılım | Havuz ayarları |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | ALıNMA | Ubuntu 16,04 LTS veya<br/>CentOS tabanlı HPC<br/>(Azure Marketi) | Intel MPı 5<br/><br/>Linux RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | ALıNMA | Ubuntu 16,04 LTS veya<br/>CentOS tabanlı HPC<br/>(Azure Marketi) | Intel MPı 5<br/><br/>Linux RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
 | [NC, NCv2, NCv3, NDv2 serisi](../virtual-machines/linux/n-series-driver-setup.md) | NVıDıA Tesla GPU (seriye göre değişir) | Ubuntu 16,04 LTS veya<br/>CentOS 7,3 veya 7,4<br/>(Azure Marketi) | NVıDıA CUDA veya CUDA araç seti sürücüleri | Yok | 
 | [NV, NVv2 serisi](../virtual-machines/linux/n-series-driver-setup.md) | NVıDıA Tesla M60 GPU | Ubuntu 16,04 LTS veya<br/>CentOS 7,3<br/>(Azure Marketi) | NVıDıA KıLAVUZ sürücüleri | Yok |
 
@@ -54,7 +54,7 @@ Batch 'de yoğun işlem yoğunluğu bulunan boyutlardaki RDMA veya GPU Özellikl
 
 | Boyut | Özellik | İşletim sistemleri | Gerekli yazılım | Havuz ayarları |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | ALıNMA | Windows Server 2016, 2012 R2 veya<br/>2012 (Azure Marketi) | Microsoft MPı 2012 R2 veya üzeri ya da<br/> Intel MPı 5<br/><br/>Windows RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | ALıNMA | Windows Server 2016, 2012 R2 veya<br/>2012 (Azure Marketi) | Microsoft MPı 2012 R2 veya üzeri ya da<br/> Intel MPı 5<br/><br/>Windows RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
 | [NC, NCv2, NCv3, ND, NDv2 serisi](../virtual-machines/windows/n-series-driver-setup.md) | NVıDıA Tesla GPU (seriye göre değişir) | Windows Server 2016 veya <br/>2012 R2 (Azure Marketi) | NVıDıA CUDA veya CUDA araç seti sürücüleri| Yok | 
 | [NV, NVv2 serisi](../virtual-machines/windows/n-series-driver-setup.md) | NVıDıA Tesla M60 GPU | Windows Server 2016 veya<br/>2012 R2 (Azure Marketi) | NVıDıA KıLAVUZ sürücüleri | Yok |
 
@@ -68,7 +68,7 @@ Batch 'de yoğun işlem yoğunluğu bulunan boyutlardaki RDMA veya GPU Özellikl
 
 | Boyut | Özellik | İşletim sistemleri | Gerekli yazılım | Havuz ayarları |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | ALıNMA | Windows Server 2016, 2012 R2, 2012 veya<br/>2008 R2 (konuk işletim sistemi ailesi) | Microsoft MPı 2012 R2 veya üzeri ya da<br/>Intel MPı 5<br/><br/>Windows RDMA sürücüleri | Düğüm içi iletişimi etkinleştir,<br/> eşzamanlı görev yürütmeyi devre dışı bırak |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md) | ALıNMA | Windows Server 2016, 2012 R2, 2012 veya<br/>2008 R2 (konuk işletim sistemi ailesi) | Microsoft MPı 2012 R2 veya üzeri ya da<br/>Intel MPı 5<br/><br/>Windows RDMA sürücüleri | Düğüm içi iletişimi etkinleştir,<br/> eşzamanlı görev yürütmeyi devre dışı bırak |
 
 ## <a name="pool-configuration-options"></a>Havuz yapılandırma seçenekleri
 
@@ -103,7 +103,7 @@ CUDA uygulamalarını bir Windows NC düğümü havuzunda çalıştırmak için 
 
 1. [NVIDIA Web sitesinden](https://www.nvidia.com/Download/index.aspx) (örneğin, [Sürüm 411,82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)) Windows Server 2016 ' de GPU sürücüleri için bir kurulum paketi indirin. *Gpudriversetup. exe*gibi kısa bir ad kullanarak dosyayı yerel olarak kaydedin.
 2. Paketin bir ZIP dosyasını oluşturun.
-3. Paketi Batch hesabınıza yükleyin. Adımlar için bkz. [uygulama paketleri](batch-application-packages.md) Kılavuzu. *Gpudriver*gibi bir uygulama kimliği ve *411,82*gibi bir sürüm belirtin.
+3. Paketi Batch hesabınıza yükleyin. Adımlar için bkz. [uygulama paketleri](batch-application-packages.md) Kılavuzu. *Gpudriver*gibi BIR uygulama kimliği ve *411,82*gibi bir sürüm belirtin.
 1. Batch API 'Lerini veya Azure portal kullanarak, sanal makine yapılandırmasında istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda, bir başlangıç görevi kullanarak NVıDıA GPU sürücülerini sessizce yüklemeye yönelik örnek ayarlar gösterilmektedir:
 
 | Ayar | Değer |
@@ -114,15 +114,15 @@ CUDA uygulamalarını bir Windows NC düğümü havuzunda çalıştırmak için 
 | **Sku** | 2016-veri merkezi |
 | **Düğüm boyutu** | NC6 standart |
 | **Uygulama paketi başvuruları** | GPUDriver, sürüm 411,82 |
-| **Başlangıç görevi etkin** | Doğru<br>**Komut satırı** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Kullanıcı kimliği** -havuz oto Kullanıcı, yönetici<br/>**Başarılı bekleme** -doğru
+| **Başlangıç görevi etkin** | True<br>**Komut satırı** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Kullanıcı kimliği** -havuz oto Kullanıcı, yönetici<br/>**Başarılı bekleme** -doğru
 
 ## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Örnek: Linux NC VM havuzunda NVıDıA GPU sürücüleri
 
 CUDA uygulamalarını bir Linux NC düğümü havuzunda çalıştırmak için, CUDA araç setinde gerekli NVıDıA Tesla GPU sürücülerini yüklemeniz gerekir. Aşağıdaki örnek adımlarda, GPU sürücüleriyle özel bir Ubuntu 16,04 LTS görüntüsü oluşturulur ve dağıtılır:
 
 1. Ubuntu 16,04 LTS çalıştıran bir Azure NC serisi VM dağıtın. Örneğin, ABD Orta Güney bölgesinde sanal makineyi oluşturun. 
-2. [Azure Portal, Azure aboneliğine bağlanan bir](../virtual-machines/extensions/hpccompute-gpu-linux.md
-) istemci bilgisayarı veya Azure Cloud Shell kullanarak NVIDIAGPUsürücüleriuzantısınısanalmakineyeekleyin. Alternatif olarak, sanal makineye bağlanma ve [CUDA sürücülerini](../virtual-machines/linux/n-series-driver-setup.md) el ile yüklemek için adımları izleyin.
+2. Azure portal, Azure aboneliğine bağlanan bir istemci bilgisayarı veya Azure Cloud Shell kullanarak [NVıDıA GPU sürücüleri UZANTıSıNı](../virtual-machines/extensions/hpccompute-gpu-linux.md
+) sanal makineye ekleyin. Alternatif olarak, sanal makineye bağlanma ve [CUDA sürücülerini](../virtual-machines/linux/n-series-driver-setup.md) el ile yüklemek için adımları izleyin.
 3. Toplu Iş için [paylaşılan bir görüntü Galerisi görüntüsü](batch-sig-images.md) oluşturma adımlarını izleyin.
 4. NC VM 'Leri destekleyen bir bölgede Batch hesabı oluşturun.
 5. Batch API 'Lerini veya Azure portal kullanarak, [özel görüntüyü kullanarak](batch-sig-images.md) ve istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda görüntünün örnek havuz ayarları gösterilmektedir:
@@ -139,8 +139,7 @@ CUDA uygulamalarını bir Linux NC düğümü havuzunda çalıştırmak için, C
 Windows MPı uygulamalarını bir Azure H16r VM düğümü havuzunda çalıştırmak için, HpcVmDrivers uzantısını yapılandırmanız ve [MICROSOFT MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)yüklemeniz gerekir. Gerekli sürücüler ve yazılımlarla özel bir Windows Server 2016 görüntüsünü dağıtmak için örnek adımlar aşağıda verilmiştir:
 
 1. Windows Server 2016 çalıştıran bir Azure H16r VM dağıtın. Örneğin, ABD Batı bölgesinde sanal makineyi oluşturun. 
-2. hpcvmdrivers uzantısını sanal makineye ekleyin [Azure aboneliğinize bağlanan bir istemci bilgisayarından bir Azure PowerShell komutu ](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
-) çalıştırarak veya Azure Cloud Shell kullanarak, 
+2. Azure aboneliğinize bağlanan bir istemci bilgisayarından bir [Azure PowerShell komutu çalıştırarak](../virtual-machines/sizes-hpc.md) veya Azure Cloud Shell kullanarak, HpcVmDrivers uzantısını sanal makineye ekleyin. 
 1. SANAL makineye Uzak Masaüstü bağlantısı oluşturun.
 1. Microsoft MPı 'nin en son sürümü için [Kurulum paketini](https://www.microsoft.com/download/details.aspx?id=57467) (msmpisetup. exe) Indirin ve Microsoft MPI 'yi yükleyin.
 1. Toplu Iş için [paylaşılan bir görüntü Galerisi görüntüsü](batch-sig-images.md) oluşturma adımlarını izleyin.
@@ -152,7 +151,7 @@ Windows MPı uygulamalarını bir Azure H16r VM düğümü havuzunda çalıştı
 | **Özel görüntü** | *Görüntünün adı* |
 | **Düğüm Aracısı SKU 'SU** | Batch. Node. Windows AMD64 |
 | **Düğüm boyutu** | H16r standart |
-| **Düğümler arası iletişim etkin** | Doğru |
+| **Düğümler arası iletişim etkin** | True |
 | **Düğüm başına en fazla görev** | 1 |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Örnek: Linux H16r VM havuzunda Intel MPı
@@ -168,7 +167,7 @@ Batch API 'Lerini veya Azure portal kullanarak, bu görüntüyü kullanarak ve i
 | **Teklif** | CentOS-HPC |
 | **Sku** | 7.4 |
 | **Düğüm boyutu** | H16r standart |
-| **Düğümler arası iletişim etkin** | Doğru |
+| **Düğümler arası iletişim etkin** | True |
 | **Düğüm başına en fazla görev** | 1 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

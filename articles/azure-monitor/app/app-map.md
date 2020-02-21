@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407673"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485157"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
 
@@ -45,7 +45,7 @@ Bu deneyimle önemli amaçların biri, yüzlerce bileşen ile karmaşık topoloj
 
 ![Açılır](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Hataları araştır
+### <a name="investigate-failures"></a>Sorunları araştırın
 
 Arızalar bölmesini başlatmak için **başarısızlığı araştır** ' ı seçin.
 
@@ -276,6 +276,6 @@ Geri bildirim sağlamak için geri bildirim seçeneğini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağıntıdan nasıl çalıştığı hakkında daha fazla bilgi edinmek için Application Insights [telemetri bağıntı makalesine](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)başvurun.
+* Bağıntıdan nasıl çalıştığı hakkında daha fazla bilgi edinmek için Application Insights [telemetri bağıntı makalesine](correlation.md)başvurun.
 * [Uçtan uca işlem tanılama deneyimi](transaction-diagnostics.md) , sunucu tarafı telemetrisini tüm Application Insights izlenen bileşenlerinizin tamamında tek bir görünümde ilişkilendirir.
 * ASP.NET Core ve ASP.NET ' deki gelişmiş bağıntı senaryoları için [özel işlemleri izleme](custom-operations-tracking.md) makalesine başvurun.

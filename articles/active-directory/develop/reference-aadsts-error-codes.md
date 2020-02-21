@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ba5af060a02e8525320f005b5d1c80534c5ca4ea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160386"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483933"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
@@ -133,7 +133,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50180 | WindowsIntegratedAuthMissing-tümleşik Windows kimlik doğrulaması gerekiyor. Sorunsuz SSO için kiracıyı etkinleştirin. |
 | AADSTS50187 | Deviceınformationnotsaðlanan-hizmet, cihaz kimlik doğrulaması yapamadı. |
 | AADSTS50196 | Loopalgılanan-bir istemci döngüsü algılandı. Belirtecin önbelleğe alma işleminin uygulandığından ve hata koşullarının doğru işlendiğinden emin olmak için uygulamanın mantığını denetleyin.  Uygulama, çok kısa bir süre içinde çok fazla sayıda istek yaptı. Bu, hatalı durumda olduğunu veya belirteç isteğinde bulunduğunu gösterir. |
-| AADSTS50199 | Bu kimlik doğrulaması için Cmsiınterrupt Kullanıcı etkileşimi gereklidir.  Bu bir "interaction_required" hatası olduğundan, istemcinin etkileşimli kimlik doğrulaması yapması gerekir.  Bu durum, yerel bir uygulama için belirteç istemek üzere kullanılan bir sistem Web görünümü olduğundan, kullanıcının oturum açmak istediği uygulama olup olmadığını istemesi gerekir.|
+| AADSTS50199 | Cmsiınterrupt-güvenlik nedenleriyle bu istek için Kullanıcı onayı gerekir.  Bu bir "interaction_required" hatası olduğundan, istemcinin etkileşimli kimlik doğrulaması yapması gerekir.  Bu durum, yerel bir uygulama için belirteç istemek üzere kullanılan bir sistem Web görünümü olduğundan, kullanıcının oturum açmak istediği uygulama olup olmadığını istemesi gerekir.|
 | AADSTS51000 | RequiredFeatureNotEnabled-özellik devre dışı bırakıldı. |
 | AADSTS51001 | Domainhintmustbesun-Domain ipucu, şirket içi güvenlik tanımlayıcısı veya şirket içi UPN ile birlikte bulunmalıdır. |
 | AADSTS51004 | UserAccountNotInDirectory-Kullanıcı hesabı dizinde yok. |

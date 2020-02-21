@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471899"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484409"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure 'da VM oluşturma, yeniden başlatma veya yeniden boyutlandırma sırasında oluşan ayırma hatalarıyla ilgili sorunları giderme
 
@@ -87,9 +87,9 @@ Azure altyapısını genişlettiğimiz gibi, en son sanal makine türlerini dest
 
 |Eski VM-seri/boyut|Önerilen daha yeni VM-Serisi/boyutu|Daha fazla bilgi|
 |----------------------|----------------------------|--------------------|
-|AV1 serisi|[AV2 serisi](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 veya DSv1 serisi (D1 to D5)|[Dv3 veya DSv3 serisi](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 veya DSv1 serisi (D11 to D14)|[Ev3 veya ESv3 serisi](../windows/sizes-memory.md#ev3-series)|
+|AV1 serisi|[AV2 serisi](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 veya DSv1 serisi (D1 to D5)|[Dv3 veya DSv3 serisi](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 veya DSv1 serisi (D11 to D14)|[Ev3 veya ESv3 serisi](../ev3-esv3-series.md)|
 |D15v2 veya DS15v2|Daha büyük VM boyutlarının avantajlarından yararlanmak için Teresource Manager dağıtım modelini kullanıyorsanız, D16v3/DS16v3 veya D32v3/DS32v3 ' a geçmeyi düşünün. Bunlar, en son nesil donanımda çalışacak şekilde tasarlanmıştır. VM örneğinizin tek bir müşteriye ayrılmış donanıma yalıtılmış olduğundan emin olmak için Kaynak Yöneticisi dağıtım modelini kullanıyorsanız, en son nesil donanımda çalışacak şekilde tasarlanan, E64i_v3 veya E64is_v3 yeni yalıtılmış VM boyutlarına geçmeyi göz önünde bulundurun. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Büyük dağıtımlar için ayırma başarısızlığı (500 taneden fazla çekirdek)

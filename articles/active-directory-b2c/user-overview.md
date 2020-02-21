@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f34fe324f22be41d8cdff0df67777bc254bbc290
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840069"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484273"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
 
@@ -27,7 +27,7 @@ Aşağıdaki hesap türleri kullanılabilir:
 - **Konuk hesabı** -bir Konuk hesabı yalnızca uygulamalara erişmek veya kiracılar yönetmek için kullanılabilecek bir Microsoft hesabı veya Azure Active Directory Kullanıcı olabilir.
 - **Tüketici hesabı** -bir tüketici hesabı, Azure AD B2C kaydettiğiniz uygulamaların bir kullanıcısı tarafından kullanılır. Tüketici hesapları şu şekilde oluşturulabilir:
   - Kullanıcı bir Azure AD B2C uygulamasındaki kaydolma Kullanıcı akışından geçiyor
-  - Azure AD Graph API kullanma
+  - Microsoft Graph API 'sini kullanma
   - Azure portalını kullanma
 
 ## <a name="work-account"></a>İş hesabı
@@ -49,21 +49,21 @@ Yeni bir iş hesabı eklediğinizde aşağıdaki yapılandırma ayarlarını gö
 
 Yeni bir iş hesabı oluşturmak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure portalında](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Kullanıcı profilini güncelleştirme
 
 Bir kullanıcının profilini güncelleştirmek için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure portalında](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Kullanıcı parolasını sıfırlama
 
 Bir kullanıcının parolasını sıfırlamak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure portalında](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Konuk Kullanıcı
@@ -76,12 +76,12 @@ Konuk Kullanıcı davet etmek için [MICROSOFT Graph API](https://docs.microsoft
 
 ## <a name="consumer-user"></a>Tüketici kullanıcısı
 
-Tüketici Kullanıcı Azure AD B2C tarafından güvenliği sağlanmış uygulamalarda oturum açabilir, ancak Azure portal gibi Azure kaynaklarına erişemez. Tüketici kullanıcısı, Facebook veya Twitter gibi yerel bir hesabı veya Federasyon hesaplarını kullanabilir. Bir tüketici hesabı bir [kaydolma veya oturum açma Kullanıcı akışı](user-flow-overview.md)kullanılarak, Azure AD Graph API kullanılarak veya Azure Portal kullanılarak oluşturulur.
+Tüketici Kullanıcı Azure AD B2C tarafından güvenliği sağlanmış uygulamalarda oturum açabilir, ancak Azure portal gibi Azure kaynaklarına erişemez. Tüketici kullanıcısı, Facebook veya Twitter gibi yerel bir hesabı veya Federasyon hesaplarını kullanabilir. Bir tüketici hesabı, Microsoft Graph API kullanılarak veya Azure portal kullanılarak [kaydolma veya oturum açma Kullanıcı akışı](user-flow-overview.md)kullanılarak oluşturulur.
 
 Özel Kullanıcı özniteliklerini kullanarak bir tüketici Kullanıcı hesabı oluşturulduğunda toplanan verileri belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C özel öznitelikleri tanımlama](user-flow-custom-attributes.md).
 
-Azure AD B2C bir tüketici hesabı oluşturmak için [Azure AD Graph API kullanma](manage-user-accounts-graph-api.md) konusunun **Tüketici Kullanıcı hesapları oluştur** bölümündeki bilgileri kullanabilirsiniz. Ayrıca, hesap özelliklerini yönetmek için aynı makalede bulunan **Müşteri Kullanıcı hesaplarını Güncelleştir** bölümündeki bilgileri de kullanabilirsiniz.
+Tüketici hesaplarını yönetme hakkında daha fazla bilgi için bkz. [Microsoft Graph Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md).
 
 ### <a name="migrate-consumer-user-accounts"></a>Tüketici Kullanıcı hesaplarını geçirme
 
-Mevcut tüketici Kullanıcı hesaplarını herhangi bir kimlik sağlayıcısından Azure AD B2C geçirmeniz gerekebilir. Daha fazla bilgi için bkz. [Kullanıcı geçişi](user-migration.md) veya [sosyal kimlikleri olan kullanıcıları geçirme](migrate-social-identities.md).
+Mevcut tüketici Kullanıcı hesaplarını herhangi bir kimlik sağlayıcısından Azure AD B2C geçirmeniz gerekebilir. Daha fazla bilgi için bkz. [Azure AD B2C kullanıcıları geçirme](user-migration.md).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463147"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498548"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
@@ -35,6 +35,7 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 
 * [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
+* [Yönetim uygulaması](microsoft-graph-get-started.md) kiracınızda Microsoft Graph API izin *ilkesi. ReadWrite. TrustFramework* ile kaydedildi
 * [Azure Işlem hattı](https://azure.microsoft.com/services/devops/pipelines/)ve bir [Azure DevOps Services projesine][devops-create-project] erişim
 
 ## <a name="client-credentials-grant-flow"></a>İstemci kimlik bilgileri verme akışı
@@ -43,47 +44,11 @@ Burada açıklanan senaryo, OAuth 2,0 [istemci kimlik bilgileri verme akışın�
 
 ## <a name="register-an-application-for-management-tasks"></a>Yönetim görevleri için bir uygulamayı kaydetme
 
-Azure Pipelines tarafından yürütülen PowerShell betiklerinizin Azure AD B2C iletişim kurmak için kullanacağı bir uygulama kaydı oluşturarak başlayın. Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, [Izinleri verme](#grant-permissions) bölümüne atlayabilirsiniz.
+[Önkoşullardan](#prerequisites)bahsedildiği gibi, PowerShell betiklerinizin (Azure Pipelines tarafından yürütülen), kiracınızdaki kaynaklara erişmek için kullanabileceği bir uygulama kaydına ihtiyacınız vardır.
 
-### <a name="register-application"></a>Uygulamayı Kaydet
+Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, uygulama kaydının **API izinleri** içinde **Microsoft Graph** > **ilkesi** > **Policy. ReadWrite. TrustFramework** izni verildiğinden emin olun.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="grant-permissions"></a>İzinleri verme
-
-Sonra, Azure AD B2C kiracınızdaki özel ilkeleri okumak ve yazmak için Microsoft Graph API 'sini kullanma izni verin.
-
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
-
-1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
-1. **API erişimi**altında **gerekli izinler**' i seçin.
-1. **Ekle**' yi seçin ve ardından **bir API seçin**.
-1. **Microsoft Graph**öğesini seçin ve ardından öğesini **seçin**.
-1. **Uygulama izinleri**altında, **Oku ve kuruluşunuzun güven çerçevesi ilkelerini yaz**' ı seçin.
-1. **Seç**' i ve sonra **bitti**' yi seçin.
-1. **Izin ver**' i seçin ve ardından **Evet**' i seçin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
-
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
-
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından Microsoft Graph API 'sine erişimi olması gereken Web uygulamasını seçin. Örneğin, *managementapp1*.
-1. **Yönet**altında **API izinleri**' ni seçin.
-1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
-1. **Microsoft API 'leri** sekmesini seçin ve ardından **Microsoft Graph**' yi seçin.
-1. **Uygulama izinleri**' ni seçin.
-1. **İlke** ' yi genişletin ve **Policy. ReadWrite. TrustFramework**öğesini seçin.
-1. **Izin Ekle**' yi seçin. Yönlendirildiğinden, bir sonraki adıma geçmeden önce birkaç dakika bekleyin.
-1. **Yönetici onayı ver ' i (kiracı adınız)** seçin.
-1. Şu anda oturum açmış olan yönetici hesabınızı seçin veya Azure AD B2C kiracınızda, en azından *bulut uygulama Yöneticisi* rolüne atanan bir hesapla oturum açın.
-1. **Kabul Et**’i seçin.
-1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın **durum**' un altında görüntülenir. İzinlerin yayılması birkaç dakika sürebilir.
-
-* * *
-
-### <a name="create-client-secret"></a>İstemci parolası oluştur
-
-Azure AD B2C kimlik doğrulaması yapmak için PowerShell betiğinizin uygulama için oluşturduğunuz bir istemci gizli anahtarı belirtmesi gerekir.
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
 ## <a name="configure-an-azure-repo"></a>Azure deposu yapılandırma
 
@@ -200,7 +165,7 @@ Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. Aracı işini kaydetmek için **Kaydet** ' i seçin.

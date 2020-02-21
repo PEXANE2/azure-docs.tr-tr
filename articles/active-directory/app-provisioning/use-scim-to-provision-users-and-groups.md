@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 9a44cf9aa5b3287a01617be6439cd04b9a5caa73
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461241"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484239"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -145,7 +145,7 @@ SCıM RFC 'de tanımlanmış birkaç uç nokta vardır. /User uç noktası ile �
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>2\. Adım: Azure AD SCıM uygulamasını anlama
 > [!IMPORTANT]
-> Azure AD SCıM uygulamasının davranışı en son 18 Aralık 2018 tarihinde güncelleştirildi. Nelerin değiştiği hakkında daha fazla bilgi için bkz. [Azure AD Kullanıcı sağlama hizmeti 'Nin SCIM 2,0 protokol uyumluluğu](../manage-apps/application-provisioning-config-problem-scim-compatibility.md).
+> Azure AD SCıM uygulamasının davranışı en son 18 Aralık 2018 tarihinde güncelleştirildi. Nelerin değiştiği hakkında daha fazla bilgi için bkz. [Azure AD Kullanıcı sağlama hizmeti 'Nin SCIM 2,0 protokol uyumluluğu](application-provisioning-config-problem-scim-compatibility.md).
 
 SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsanız, bu bölümde Azure AD SCıM istemcisinin nasıl uygulandığı ayrıntılı bilgiler açıklanmaktadır. Ayrıca, SCıM protokol isteği işleme ve yanıtlarınızı nasıl modellebileceğiniz gösterilmektedir. SCıM uç noktanızı uygulandıktan sonra, önceki bölümde açıklanan yordamı izleyerek test edebilirsiniz.
 

@@ -4,12 +4,12 @@ description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974249"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485140"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -75,11 +75,11 @@ $TriggerMetadata.sys
 
 | Özellik   | Açıklama                                     | Tür     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | UTC olarak işlev tetiklendiğinde        | Tarih Saat |
+| utcNow     | UTC olarak işlev tetiklendiğinde        | DateTime |
 | MethodName | Tetiklenen Işlevin adı     | string   |
 | RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | string   |
 
-Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin, `QueueTrigger` için `$TriggerMetadata` diğer şeyler arasındaki `InsertionTime`, `Id`, `DequeueCount`içerir. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue.md#trigger---message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
+Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin, `QueueTrigger` için `$TriggerMetadata` diğer şeyler arasındaki `InsertionTime`, `Id`, `DequeueCount`içerir. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue-trigger.md#message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
 
 ## <a name="bindings"></a>Bağlamalar
 
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Gönderme-OutputBinding örneği: kuyruk çıkış bağlaması
 
-`Push-OutputBinding`, [Azure kuyruk depolama çıkış bağlaması](functions-bindings-storage-queue.md#output)gibi çıkış bağlamalarına veri göndermek için kullanılır. Aşağıdaki örnekte, sıraya yazılan ileti "output #1" değerine sahiptir:
+`Push-OutputBinding`, [Azure kuyruk depolama çıkış bağlaması](functions-bindings-storage-queue-output.md)gibi çıkış bağlamalarına veri göndermek için kullanılır. Aşağıdaki örnekte, sıraya yazılan ileti "output #1" değerine sahiptir:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
