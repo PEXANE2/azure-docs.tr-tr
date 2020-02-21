@@ -710,7 +710,7 @@
             - name: SSS
               href: migration-classic-resource-manager-faq.md
 - name: Sorun giderme
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
     - name: Azure CLI

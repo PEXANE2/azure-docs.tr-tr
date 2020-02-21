@@ -4,20 +4,20 @@ description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle bar�
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/21/2018
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2eca624fabf30eae86c480ede6c4bdffc2226bc
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28848d8b676bb5f4182a887f5efdd48c6221041a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671119"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500057"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service’te CORS ile RESTful API barındırma
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Buna ek olarak, App Service'de RESTful API'ler için yerleşik [Çıkış Noktaları Arası Kaynak Paylaşımı (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) desteği vardır. Bu öğreticide CORS desteğiyle ASP.NET Core API uygulamasının App Service'e nasıl dağıtılacağı gösterilir. Komut satırı araçlarını kullanarak uygulamayı yapılandırır ve Git kullanarak dağıtırsınız. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure CLI kullanarak App Service kaynaklarını oluşturma
@@ -129,7 +129,7 @@ Tarayıcıda `http://<app_name>.azurewebsites.net/swagger` adresine gidin ve Swa
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
-Dağıtılan API'nizin _swagger.json_ dosyasını görmek için `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` adresine gidin.
+Dağıtılan API'nizin `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json`swagger.json_dosyasını görmek için_ adresine gidin.
 
 Dağıtılan API'nizin çalıştığını görmek için `http://<app_name>.azurewebsites.net/api/todo` adresine gidin.
 

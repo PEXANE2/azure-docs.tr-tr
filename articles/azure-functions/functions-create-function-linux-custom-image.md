@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210200"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482369"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -18,7 +18,7 @@ Bu öğreticide, bir Linux temel görüntüsü kullanarak özel bir Docker kapsa
 
 [Linux üzerinde barındırılan ilk işlevinizi oluşturma](functions-create-first-azure-function-azure-cli-linux.md)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure Functions Core Tools kullanarak bir işlev uygulaması ve Dockerfile oluşturun.
@@ -370,7 +370,7 @@ Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP 
 
 1. Azure portal kullanarak veya `az rest` komutuyla Azure CLı kullanarak, işlev URL 'sini erişim (işlev) anahtarıyla alın.)
 
-    # <a name="portaltabportal"></a>[Portal](#tab/portal)
+    # <a name="portal"></a>[Portal](#tab/portal)
 
     1. Azure portal oturum açın ve ardından sayfanın üst kısmındaki **arama** kutusuna işlev uygulamanızın adını girerek işlev uygulamanızı bulun. Sonuçlarda **App Service** kaynağını seçin.
 
@@ -387,7 +387,7 @@ Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP 
     > [!NOTE]  
     > İşlev uygulamanız bir kapsayıcı olarak dağıtıldığından, portalda işlev kodunuzda değişiklik yapamazsınız. Bunun yerine yerel görüntüde projeyi güncelleştirmeniz, görüntüyü kayıt defterine yeniden göndermeniz ve sonra Azure 'a yeniden dağıtmanız gerekir. Sonraki bölümde sürekli dağıtım ayarlayabilirsiniz.
     
-    # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
     1. `<subscription_id>`, `<resource_group>`ve `<app_name>` Azure abonelik KIMLIĞINIZLE, işlev uygulamanızın kaynak grubuyla ve işlev uygulamanızın adını sırasıyla değiştirerek aşağıdaki biçimde bir URL dizesi oluşturun:
 
@@ -877,19 +877,19 @@ Kuyruğu [Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) v
 
 1. İşlevin proje *yerel. Setting. JSON* dosyasını açın ve bağlantı dizesi değerini kopyalayın. Bir Terminal veya komut penceresinde, `<connection_string>`yerine belirli bağlantı dizenizi yapıştırarak `AZURE_STORAGE_CONNECTION_STRING`adlı bir ortam değişkeni oluşturmak için aşağıdaki komutu çalıştırın. (Bu ortam değişkeni, `--connection-string` bağımsız değişkenini kullanarak sonraki her komuta bağlantı dizesi sağlamanız gerekmez.)
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ Kuyruğu [Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) v
     
 1. Seçim Hesabınızdaki depolama kuyruklarını görüntülemek için [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) komutunu kullanın. Bu komutun çıktısı, işlev bu kuyruğa ilk iletisini yazmışsa oluşturulan `outqueue`adlı bir sıra içermelidir.
     
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -919,21 +919,21 @@ Kuyruğu [Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) v
     
     ---
 
-1. Bu kuyruktaki iletileri görüntülemek için [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) komutunu kullanın. Bu, daha önce işlev test edilirken kullandığınız ilk ad olmalıdır. Komut, sıradaki ilk iletiyi [Base64 kodlamasında](functions-bindings-storage-queue.md#encoding)alır, bu nedenle metin olarak görüntülemek için iletinin kodunu da çözmelisiniz.
+1. Bu kuyruktaki iletileri görüntülemek için [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) komutunu kullanın. Bu, daha önce işlev test edilirken kullandığınız ilk ad olmalıdır. Komut, sıradaki ilk iletiyi [Base64 kodlamasında](functions-bindings-storage-queue-trigger.md#encoding)alır, bu nedenle metin olarak görüntülemek için iletinin kodunu da çözmelisiniz.
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     İleti toplamayı başvuru yapmanız ve Base64 'den kod çözmelisiniz, PowerShell 'i çalıştırın ve PowerShell komutunu kullanın.
 

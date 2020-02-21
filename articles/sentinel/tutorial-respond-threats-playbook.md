@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
+ms.date: 02/18/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2a416fa4f9e02372e570b77b0e6fb1af2cad81fb
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113916"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500688"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Öğretici: Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama
 
@@ -62,9 +62,9 @@ Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki ad
 1. **Azure Sentinel** panosunu açın.
 2. **Yönetim**altında **playbooks**' ı seçin.
 
-   ![Mantıksal Uygulama](./media/tutorial-respond-threats-playbook/playbookimg.png)
+   ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. **Azure Sentinel-playbooks (Önizleme)** sayfasında **Ekle** düğmesine tıklayın.
+3. **Azure Sentinel-playbooks** sayfasında **Ekle** düğmesine tıklayın.
 
    ![Mantıksal uygulama oluşturma](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446518"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520692"
 ---
 Artımlı anlık görüntüler (Önizleme), alınan yönetilen diskler için zaman içinde son anlık görüntüden bu yana yapılan tüm değişikliklerden oluşur. Artımlı bir anlık görüntüyü indirmeye veya başka bir şekilde kullanmaya çalıştığınızda, tam VHD kullanılır. Yönetilen disk anlık görüntülerinin bu yeni özelliği, siz tercih etmediğiniz müddetçe her bir anlık görüntü ile tüm diski depolamak için artık gerekli olmadığından daha fazla maliyetli olabilir. Düzenli anlık görüntülerle olduğu gibi, artımlı anlık görüntüler tam yönetilen disk oluşturmak için veya düzenli bir anlık görüntü oluşturmak için kullanılabilir.
 
@@ -21,10 +21,15 @@ Artımlı anlık görüntü ve normal anlık görüntü arasında birkaç fark v
 
 Artımlı anlık görüntüler, yönetilen diskler için benzersiz olarak kullanılabilen bir fark özelliği de sunar. Bunlar, blok düzeyine kadar, aynı yönetilen disklerin iki artımlı anlık görüntüsü arasında değişiklik almanızı sağlar. Bu özelliği, anlık görüntüleri bölgeler arasında kopyalarken veri parmak izini azaltmak için kullanabilirsiniz.
 
-## <a name="restrictions"></a>{1&gt;Kısıtlamalar&lt;1}
+### <a name="supported-regions"></a>Desteklenen bölgeler
 
-- Artımlı anlık görüntüler şu anda yalnızca Doğu ABD, Doğu ABD 2, Orta ABD, Orta Batı ABD, Kanada Doğu, Kanada Orta, Kuzey Avrupa, Güney Doğu Asya içinde kullanılabilir.
-- Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz.
+Şu anda yalnızca şu bölgeler desteklenmektedir:
+
+- Orta Batı ABD, Kanada Doğu Kanada Orta bölgelerinde bir GA teklifi olarak sunulmaktadır.
+- Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Güney Doğu Asya bölgelerinde genel önizleme olarak kullanılabilir.
+
+## <a name="restrictions"></a>Kısıtlamalar
+- Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz (yalnızca önizleme sırasında).
 - Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
 - Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.
 - Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız.

@@ -1,11 +1,15 @@
 ---
-ms.openlocfilehash: bb96d48edf2b98c6c50b0477b4de748777b67eb8
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 34d33a4509df6b19488833cd0273756a17e73630
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77370907"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495416"
 ---
+## <a name="app-configuration"></a>Uygulama Yapılandırması
+
+[!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
+
 ## <a name="app-platform"></a>Uygulama platformu
 
 [!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
@@ -102,7 +106,7 @@ ms.locfileid: "77370907"
 
 [!INCLUDE [azure-policy-samples-policies-security-center](azure-policy-samples-policies-security-center.md)]
 
-## <a name="service-bus"></a>Hizmet Veri Yolu
+## <a name="service-bus"></a>Service Bus
 
 [!INCLUDE [azure-policy-samples-policies-service-bus](azure-policy-samples-policies-service-bus.md)]
 

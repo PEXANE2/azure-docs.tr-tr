@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722313"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482913"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
@@ -26,7 +26,7 @@ Bu makalede, ortamınız geliştirme ve dağıtım için hazırlanmanıza yardı
 
 Bu adım genellikle bir bulut geliştiricisi tarafından gerçekleştirilir. Bazı yazılımlar da bir veri bilimcı için yararlı olabilir.
 
-Zaten yapılandırılmış bir çok önkoşul içeren bir Azure sanal makinesi oluşturan bir PowerShell betiği oluşturduk. Oluşturduğumuz sanal makinenin [iç içe sanallaştırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)işleyebilmesi gerekir, bu nedenle [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) makine boyutu seçtik.
+Zaten yapılandırılmış bir çok önkoşul içeren bir Azure sanal makinesi oluşturan bir PowerShell betiği oluşturduk. Oluşturduğumuz sanal makinenin [iç içe sanallaştırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)işleyebilmesi gerekir, bu nedenle [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) makine boyutu seçtik.
 
 Geliştirme sanal makinesi şu şekilde ayarlanır:
 
@@ -35,7 +35,7 @@ Geliştirme sanal makinesi şu şekilde ayarlanır:
 * [Windows için Docker Desktop](https://www.docker.com/products/docker-desktop)
 * [Windows için Git](https://gitforwindows.org/)
 * [Windows için git kimlik bilgileri Yöneticisi](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [.Net Core SDK](https://dotnet.microsoft.com/)
+* [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)

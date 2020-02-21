@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772885"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505717"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
 
@@ -20,7 +20,7 @@ ms.locfileid: "76772885"
 
 Stream Analytics, HTTP tetikleyicileri aracılığıyla İşlevleri çağırır. İşlevlerin çıkış bağdaştırıcısı, kullanıcıların Stream Analytics sorgularına göre olayların tetiklenmesini sağlayacak şekilde Stream Analytics’e İşlevleri bağlamasına olanak tanır. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Stream Analytics işi oluşturma ve çalıştırma
@@ -144,7 +144,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
    |**Özellik adı**|**Açıklama**|
    |---|---|
-   |Çıkış diğer adı| İşin sorgusunda çıktıya başvurmak için kullandığınız kolay ad. |
+   |Çıktı diğer adı| İşin sorgusunda çıktıya başvurmak için kullandığınız kolay ad. |
    |İçeri aktarma seçeneği| Geçerli abonelikteki işlevi kullanabilir veya işlev başka bir abonelikte bulunuyorsa ayarları el ile sağlayabilirsiniz. |
    |İşlev Uygulaması| İşlevler uygulamanızın adı. |
    |İşlev| İşlevler uygulamanızdaki işlevin adı (run.csx işlevinizin adı).|
@@ -196,6 +196,8 @@ Olayları Azure Işlevlerine gönderirken bir hata oluşursa, en fazla işlem St
 Azure portalında En Büyük Toplu İş Boyutu/En Büyük Toplu İş Sayısı değerini boş (varsayılan) olarak sıfırlamaya çalıştığınızda değer kaydedildikten sonra daha önce girilen değerle değiştirilir. Bu durumda bu alanların varsayılan değerlerini el ile girin.
 
 Azure işlevlerinizin [http yönlendirme](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) kullanımı şu anda Stream Analytics tarafından desteklenmiyor.
+
+Bir sanal ağda barındırılan Azure Işlevlerine bağlanma desteği etkin değil.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

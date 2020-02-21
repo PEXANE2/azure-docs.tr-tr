@@ -381,7 +381,7 @@
         - name: Güncelleştirmeler ve düzeltme ekleri
           items:
             - name: Red Hat Güncelleştirme Altyapısı
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure VM aracısı
           items:
             - name: Genel Bakış
@@ -771,4 +771,4 @@
     - name: SSS
       href: faq.md
 - name: Sorun giderme
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml

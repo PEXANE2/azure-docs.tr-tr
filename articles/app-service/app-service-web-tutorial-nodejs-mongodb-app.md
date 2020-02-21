@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671316"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500031"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Öğretici: Azure 'da bir Node. js ve MongoDB uygulaması derleme
 
@@ -47,7 +47,7 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="test-local-mongodb"></a>Yerel MongoDB’yi test etme
 
-Terminal penceresini açın ve MongoDB yüklemenizin `bin` dizinine `cd` yazın. Bu öğreticideki tüm komutları çalıştırmak için bu terminal penceresini kullanabilirsiniz.
+Terminal penceresini açın ve MongoDB yüklemenizin `cd` dizinine `bin` yazın. Bu öğreticideki tüm komutları çalıştırmak için bu terminal penceresini kullanabilirsiniz.
 
 Yerel MongoDB sunucunuza bağlanmak için terminalde `mongo` komutunu çalıştırın.
 
@@ -77,7 +77,7 @@ Bu örnek depo, [MEAN.js deposu](https://github.com/meanjs/mean)’nun bir kopya
 
 ### <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Gerekli paketleri yüklemek ve uygulamayı başlatmak için aşağıdaki komutları çalıştırın.
+Gerekli paketleri yüklemek ve uygulamayı başlatmak için şu komutları çalıştırın.
 
 ```bash
 cd meanjs
@@ -186,9 +186,9 @@ Azure CLI aşağıdaki örneğe benzer bilgiler görüntüler:
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js uygulamanızda bağlantı dizesini yapılandırma
 
-Yerel MEAN.js deponuzda, _config/env/_ klasöründe _local-production.js_ adlı bir dosya oluşturun. Varsayılan olarak, _.gitignore_ bu dosyayı deponun dışında tutmak için yapılandırılmıştır. 
+Yerel MEAN.js deponuzun içinde, _config/env/_ klasöründe _local-production.js_ adında bir dosya oluşturun. Varsayılan olarak, _.gitignore_ bu dosyayı deponun dışında tutmak için yapılandırılmıştır. 
 
-Aşağıdaki kodu dosyanın içine kopyalayın. İki *\<cosmosdb_name>* yer tutucusunu Cosmos DB veritabanı adınız ile, *\<primary_master_key>* yer tutucusunu da önceki adımda kopyaladığınız anahtar ile değiştirdiğinizden emin olun.
+Şu kodu içine kopyalayın. İki *\<cosmosdb_name>* yer tutucusunu Cosmos DB veritabanı adınız ile, *\<primary_master_key>* yer tutucusunu da önceki adımda kopyaladığınız anahtar ile değiştirdiğinizden emin olun.
 
 ```javascript
 module.exports = {
@@ -198,7 +198,7 @@ module.exports = {
 };
 ```
 
-[Cosmos DB, SSL gerektirdiğinden](../cosmos-db/connect-mongodb-account.md#connection-string-requirements) `ssl=true` seçeneği gereklidir. 
+`ssl=true`Cosmos DB, SSL gerektirdiğinden[](../cosmos-db/connect-mongodb-account.md#connection-string-requirements) seçeneği gereklidir. 
 
 Yaptığınız değişiklikleri kaydedin.
 
@@ -304,10 +304,10 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ``` 
 
-Dağıtım işleminin `npm install` komutundan sonra [Gulp](https://gulpjs.com/)’ı çalıştırdığını fark etmişsinizdir. App Service, dağıtım sırasında Gulp veya Grunt görevlerini çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde iki ek dosya bulunur: 
+Dağıtım işleminin [ komutundan sonra ](https://gulpjs.com/)Gulp`npm install`’ı çalıştırdığını fark etmişsinizdir. App Service, dağıtım sırasında Gulp veya Grunt görevlerini çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde iki ek dosya bulunur: 
 
 - _.deployment_ - Bu dosya, App Service’ten özel dağıtım betiği olarak `bash deploy.sh` komutunu çalıştırmasını ister.
-- _deploy.sh_ - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `npm install` ve `bower install` komutundan sonra `gulp prod` çalıştırdığını görürsünüz. 
+- _deploy.sh_ - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `gulp prod` ve `npm install` komutundan sonra `bower install` çalıştırdığını görürsünüz. 
 
 Git tabanlı dağıtımınıza herhangi bir adım eklemek için bu yaklaşımı kullanabilirsiniz. Azure uygulamanızı herhangi bir noktada yeniden başlatırsanız App Service Bu Otomasyon görevlerini yeniden çalıştırmaz.
 
@@ -337,7 +337,7 @@ Bu adımda, `article` veri modelini değiştiriyorsunuz ve değişikliklerinizi 
 
 _modules/articles/server/models/article.server.model.js_ öğesini açın.
 
-`ArticleSchema` içinde, `comment` adlı bir `String` türü ekleyin. İşiniz bittiğinde, şema kodunuz şu şekilde görünür:
+`ArticleSchema` içinde, `String` adlı bir `comment` türü ekleyin. İşiniz bittiğinde, şema kodunuz şu şekilde görünür:
 
 ```javascript
 const ArticleSchema = new Schema({
@@ -356,7 +356,7 @@ const ArticleSchema = new Schema({
 
 ### <a name="update-the-articles-code"></a>Makaleler kodunu güncelleştirme
 
-`comment` kullanmak için `articles` kodunuzun kalanını güncelleştirin.
+`articles` kullanmak için `comment` kodunuzun kalanını güncelleştirin.
 
 Değiştirmeniz gereken beş dosya vardır: sunucu denetleyici ve dört istemci görünümü. 
 
@@ -410,7 +410,7 @@ Gönder düğmesini içeren ve şuna benzeyen `<div class="form-group">` öğesi
 </div>
 ```
 
-Bu etiketin hemen üzerinde, kişilerin `comment` alanını düzenleyebilmesini sağlayan başka bir `<div class="form-group">` öğesi ekleyin. Yeni öğeniz şöyle görünmelidir:
+Bu etiketin hemen üzerinde, kişilerin `<div class="form-group">` alanını düzenleyebilmesini sağlayan başka bir `comment` öğesi ekleyin. Yeni öğeniz şöyle görünmelidir:
 
 ```HTML
 <div class="form-group">
