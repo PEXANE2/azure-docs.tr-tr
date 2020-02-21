@@ -81,6 +81,9 @@
         - name: SAML hizmet sağlayıcısını kaydetme
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
+        - name: Graph uygulaması kaydetme
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: Web API'si uygulaması ekleme
           href: add-web-application.md
         - name: Yerel istemci uygulaması ekleme
@@ -377,8 +380,6 @@
       items:
         - name: Kullanıcıları geçirme
           href: user-migration.md
-        - name: Kullanıcıları dış kimlikleriyle geçirme
-          href: migrate-social-identities.md
 - name: Başvuru
   items:
     - name: Identity Experience Framework sürüm notları
@@ -392,9 +393,11 @@
       displayName: 'cookies, SameSite'
     - name: Hata kodları
       href: error-codes.md
+    - name: Microsoft Graph API’si işlemleri
+      href: microsoft-graph-operations.md
     - name: Bölge kullanılabilirliği ve veri yerleşikliği
       href: data-residency.md
-    - name: Faturalamayı etkinleştirme
+    - name: Faturalama modeli
       href: billing.md
     - name: Tehdit yönetimi
       href: threat-management.md

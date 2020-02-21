@@ -136,24 +136,47 @@
         - name: JavaScript İstemci SDK’sı
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: Kaynaklar
+  expanded: true
   items:
-    - name: Destek ve yardım seçenekleri
-      href: /azure/iot-fundamentals/iot-support-help
     - name: Müşteri verisi istekleri
       href: time-series-insights-customer-data-requests.md
-    - name: Azure yol haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
-    - name: Fiyatlandırma hesaplayıcı
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Bölge kullanılabilirliği
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-    - name: Destek seçenekleri
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: Videolar
+    - name: Geliştirici kaynakları
+      items:
+        - name: Azure Time Series Insights kod örnekleri
+          href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'
+        - name: JavaScript İstemci SDK’sı
+          href: 'https://github.com/Microsoft/tsiclient'
+        - name: Barındırılan istemci örnekleri
+          href: 'https://tsiclientsample.azurewebsites.net/'
+        - name: Azure IoT kod örnekleri
+          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+    - name: Fiyatlandırma ve kullanılabilirlik
+      items:
+        - name: Fiyatlandırma
+          href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
+        - name: Fiyatlandırma hesaplayıcı
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Bölge kullanılabilirliği
+          href: 'https://azure.microsoft.com/regions/services/'
+    - name: Destek ve yardım seçenekleri
+      items:
+        - name: Azure destek seçenekleri
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Azure IoT desteği ve yardım seçenekleri
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN forumu
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: Geri bildirim ve forumlar
+      items:
+        - name: MSDN forumu
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Ürün istekleri ve öneriler
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
+    - name: Azure videoları
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
+    - name: Channel 9 videoları
+      href: 'https://channel9.msdn.com/Search?term=time%20series%20insights'
+    - name: Azure IoT güncelleştirmeleri
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'

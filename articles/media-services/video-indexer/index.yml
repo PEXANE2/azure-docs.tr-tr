@@ -1,52 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Media Services Video Indexer Belgeleri
+### YamlMime:Landing
+title: Azure Media Services Video Indexer hakkında bilgi edinin
+summary: Azure Media Services Video Indexer ürünü Azure Media Analytics, Azure Bilişsel Arama, Bilişsel Hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma Hizmeti gibi) temel alınarak oluşturulmuş bir bulut uygulamasıdır. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar.
 metadata:
-  title: Azure Media Services Video Indexer Belgeleri | Microsoft Docs
-  description: Video Indexer hakkında daha fazla bilgi edinin.
+  title: Azure Media Services Video Indexer belgeleri
+  description: Azure Media Services Video Indexer ürünü Azure Media Analytics, Azure Bilişsel Arama, Bilişsel Hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma Hizmeti gibi) temel alınarak oluşturulmuş bir bulut uygulamasıdır. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar.
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.subservice: video-indexer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: 'Azure Media Services Video Indexer ürünü Azure Media Analytics, Azure Bilişsel Arama, Bilişsel Hizmetler (Yüz Tanıma API''si, Microsoft Translator, Görüntü İşleme API''si ve Özel Konuşma Tanıma Hizmeti gibi) temel alınarak oluşturulmuş bir bulut uygulamasıdır. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar.<br/>Video Indexer’ı ve Media Services çözümleyicisinin önceden belirlenmiş ayarlarını hangi durumlarda kullanacağınızı anlamak için <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">karşılaştırma belgesine</a> bakın.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: video-indexer-overview.md
-            html: '<p>Video Indexer, medya yapay zeka teknolojilerini bir araya getirerek videolardan içgörü ayıklamayı kolaylaştırır.</p>'
-            image:
-              src: media/index/AMSIcons-media_servicesV3.svg
-            title: Azure Media Services Video Indexer nedir?
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: 'Video Indexer web sitesinde oturum açma ve ilk videonuzu karşıya yükleme:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: İçgörü ayıklama
-            href: /azure/media-services/video-indexer/video-indexer-get-started
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: 'Video Indexer API’sini kullanarak videolarınızdan içgörü ayıklamayı öğrenin:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: İçgörü ayıklama
-            href: /azure/media-services/video-indexer/video-indexer-use-apis
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77485123"
+landingContent:
+- title: Azure Media Services Video Indexer hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Video Indexer nedir?
+      url: video-indexer-overview.md
+    - text: Media Services v3 ön ayarlarını Video Indexer ile karşılaştırma
+      url: compare-video-indexer-with-media-services-presets.md
+    - text: Sık sorulan sorular
+      url: faq.md
+    - text: User Voice
+      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+  - linkListType: whats-new
+    links:
+    - text: Video Indexer’daki yenilikler nelerdir?
+      url: release-notes.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kaydolma ve videoları karşıya yükleme
+      url: video-indexer-get-started.md
+    - text: Kullanıcıları davet etme
+      url: invite-users.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure’a bağlı bir hesap oluşturma
+      url: connect-to-azure.md
+    - text: Video Indexer API'sini kullanma
+      url: video-indexer-use-apis.md
+    - text: Videolarınızı karşıya yükleme ve dizinleme
+      url: upload-index-videos.md
+    - text: API tarafından üretilen çıktıyı inceleme
+      url: video-indexer-output-json-v2.md
+    - text: Video Indexer pencere öğelerini uygulamalara ekleme
+      url: video-indexer-embed-widgets.md
+  - linkListType: sample
+    links:
+    - text: Kod örnekleri
+      url: https://github.com/Azure-Samples/media-services-video-indexer
+- title: İçerik modellerini özelleştirme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Markalar modelini özelleştirme
+      url: customize-brands-model-with-website.md
+    - text: Dil modelini özelleştirme
+      url: customize-language-model-with-website.md
+    - text: Kişi modelini özelleştirme
+      url: customize-person-model-with-website.md

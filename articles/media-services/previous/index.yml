@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Media Services v2 (eski)
+summary: Media Services v2’ye herhangi bir yeni özellik eklenmemektedir. En son sürüm olan Media Services v3’ü inceleyin.
+metadata:
+  title: Azure Media Services v2 belgeleri
+  description: Media Services v2 ile güvenli bir biçimde yayın kalitesindeki videoların isteğe bağlı veya canlı akışını yapma hakkında bilgi edinin.
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500782"
+landingContent:
+- title: Azure Media Services v2 hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Media Services v2’ye genel bakış
+      url: media-services-overview.md
+    - text: Media Services v3’e geçirme
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: Media Services v2’deki yenilikler nelerdir?
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: Eski bileşenler
+      url: legacy-components.md
+- title: Canlı akış
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Genel Bakış
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Portalı kullanarak Media Services hesabı oluşturma
+      url: media-services-portal-create-account.md
+    - text: Program aracılığıyla bağlanma
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: Azure portalı ile canlı akış yapma
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: .NET ile canlı akış yapma
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: İsteğe bağlı video gönderme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure portalı kullanma
+      url: media-services-portal-vod-get-started.md
+    - text: .NET’i kullanma
+      url: media-services-dotnet-get-started.md
+    - text: REST kullanma
+      url: media-services-rest-get-started.md

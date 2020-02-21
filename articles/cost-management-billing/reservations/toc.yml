@@ -68,6 +68,8 @@
           href: understand-rhel-reservation-charges.md
         - name: MariaDB indirimleri için Azure Veritabanı
           href: understand-reservation-charges-mariadb.md
+        - name: Redis için Azure Cache indirimleri
+          href: understand-azure-cache-for-redis-reservation-charges.md
         - name: App Service indirimleri
           href: reservation-discount-app-service-isolated-stamp.md
         - name: Azure yazılım planları indirimleri

@@ -130,10 +130,14 @@
       items:
         - name: Parolasız dağıtım
           href: howto-authentication-passwordless-deployment.md
-        - name: Parolasız güvenlik anahtarları
-          href: howto-authentication-passwordless-security-key.md
-        - name: Parolasız Windows 10
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Parolasız FIDO2 güvenlik anahtarları
+          items:
+            - name: Kiracınız için FIDO2 güvenlik anahtarlarını etkinleştirme
+              href: howto-authentication-passwordless-security-key.md
+            - name: Windows 10 cihazlarında oturum açma
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Şirket içi kaynaklarda çoklu oturum açma
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Parolasız telefonla oturum açma
           href: howto-authentication-passwordless-phone.md
         - name: İş İçin Windows Hello

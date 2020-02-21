@@ -281,23 +281,23 @@
         - name: Azure Backup raporlarını yapılandırma
           items:
             - name: Azure Backup raporlarını yapılandırma
-              href: backup-azure-configure-reports.md
-            - name: Azure Backup raporları için veri modeli
-              href: backup-azure-reports-data-model.md
-            - name: Azure Backup için Log Analytics veri modeli
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını yapılandırma
           items:
             - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
               href: backup-azure-diagnostic-events.md
             - name: Kaynağa Özgü Tanılama Olayları için Log Analytics Veri Modeli
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: Azure Backup için Log Analytics Veri Modeli (Azure Tanılama modu)
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: Otomasyon
       items:
         - name: Azure Backup için yerleşik Azure İlkesi
           items:
             - name: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
               href: backup-azure-auto-enable-backup.md
+            - name: Kasa tanılama ayarlarını büyük ölçekte yapılandırma
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Azure portalındaki Azure VM’leri

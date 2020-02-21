@@ -11,36 +11,36 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: db6cebf4b4114a97fd86a173208cc639a5e1f7ed
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 3996c34b4ac1acfa040c38712f7b96fa546c8eb9
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73500148"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77526051"
 landingContent:
-- title: DSVM’nizi kullanmaya başlayın
+- title: Veri Bilimi Sanal Makinesi kullanmaya başlama
   linkLists:
   - linkListType: overview
     links:
-    - text: DSVM nedir?
+    - text: Veri Bilimi Sanal Makineleri nedir?
       url: overview.md
-    - text: Coğrafi Yapay Zeka DSVM’si nedir?
+    - text: Coğrafi AI Veri Bilimi Sanal Makinesi nedir?
       url: geo-ai-dsvm-overview.md
-    - text: DSVM'ye Dahil Edilen Araçlar
+    - text: Veri Bilimi Sanal Makinesine Eklenen Araçlar
       url: tools-included.md
     - text: Sürüm Notları
       url: release-notes.md
   - linkListType: get-started
     links:
-    - text: Windows DSVM’si oluşturma
+    - text: Windows Veri Bilimi Sanal Makinesi oluşturma
       url: provision-vm.md
-    - text: Ubuntu DSVM’si oluşturma
+    - text: Ubuntu Veri Bilimi Sanal Makinesi oluşturma
       url: dsvm-ubuntu-intro.md
-    - text: CentOS DSVM’si oluşturma
+    - text: CentOS Veri Bilimi Sanal Makinesi oluşturma
       url: linux-dsvm-intro.md
-    - text: Coğrafi AI DSVM’si oluşturma
+    - text: Coğrafi AI Veri Bilimi Sanal Makinesi oluşturma
       url: provision-geo-ai-dsvm.md
-- title: DSVM’nizi yönetme
+- title: Veri Bilimi Sanal Makinenizi yönetme
   linkLists:
   - linkListType: architecture
     links:
@@ -48,7 +48,7 @@ landingContent:
       url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Otomatik ölçeklendirilmiş DSVM havuzları oluşturma
+    - text: Otomatik ölçeklendirilmiş Veri Bilimi Sanal Makinesi havuzları oluşturma
       url: dsvm-pools.md
     - text: Active Directory ile tümleştirme
       url: dsvm-common-identity.md

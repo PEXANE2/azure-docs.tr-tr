@@ -6,20 +6,20 @@
   items:
     - name: Veri Bilimi Sanal Makinesi (DSVM) nedir?
       href: overview.md
-    - name: Coğrafi Yapay Zeka DSVM’si nedir?
+    - name: Coğrafi AI Veri Bilimi Sanal Makinesi nedir?
       href: geo-ai-dsvm-overview.md
-    - name: DSVM'ye Dahil Edilen Araçlar
+    - name: Veri Bilimi Sanal Makinesine Eklenen Araçlar
       href: tools-included.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Windows DSVM’si oluşturma
+    - name: Windows Veri Bilimi Sanal Makinesi oluşturma
       href: provision-vm.md
-    - name: Ubuntu DSVM’si oluşturma
+    - name: Ubuntu Veri Bilimi Sanal Makinesi oluşturma
       href: dsvm-ubuntu-intro.md
-    - name: CentOS DSVM’si oluşturma
+    - name: CentOS Veri Bilimi Sanal Makinesi oluşturma
       href: linux-dsvm-intro.md
-    - name: Coğrafi AI DSVM’si oluşturma
+    - name: Coğrafi AI Veri Bilimi Sanal Makinesi oluşturma
       href: provision-geo-ai-dsvm.md
 - name: Kavramlar
   items:
@@ -43,13 +43,13 @@
   href: dsvm-samples-and-walkthroughs.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Windows DSVM’si kullanma
+    - name: Windows Veri Bilimi Sanal Makinesi kullanma
       href: vm-do-ten-things.md
-    - name: Linux DSVM’si kullanma
+    - name: Linux Veri Bilimi Sanal Makinesi kullanma
       href: linux-dsvm-walkthrough.md
-    - name: Coğrafi AI DSVM kullanma
+    - name: Coğrafi AI Veri Bilimi Sanal Makinesi kullanma
       href: use-geo-ai-dsvm.md
-    - name: Otomatik ölçeklendirilmiş DSVM havuzu oluşturma
+    - name: Otomatik ölçeklendirilmiş Veri Bilimi Sanal Makinesi havuzu oluşturma
       href: dsvm-pools.md
     - name: Active Directory ile tümleştirme
       href: dsvm-common-identity.md
@@ -65,9 +65,9 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: Başvuru
   items:
-    - name: Ubuntu DSVM
+    - name: Ubuntu Veri Bilimi Sanal Makinesi
       href: reference-ubuntu-vm.md
-    - name: CentOS DSVM
+    - name: CentOS Veri Bilimi Sanal Makinesi
       href: reference-centos-vm.md
     - name: Sürüm notları
       href: release-notes.md

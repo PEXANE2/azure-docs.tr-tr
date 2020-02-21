@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Coğrafi çoğaltmayı ayarla
           href: cache-how-to-geo-replication.md
+        - name: Ayrılmış kapasite ile kaydetme
+          href: cache-reserved-pricing.md
         - name: Yönetilen Önbellek Hizmeti’nden Geçiş
           href: cache-migrate-to-redis.md
     - name: Otomatikleştirme

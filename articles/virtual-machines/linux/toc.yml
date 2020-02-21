@@ -79,35 +79,94 @@
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM türleri ve boyutları
       items:
-        - name: Boyut aileleri
+        - name: VM boyutları
           href: sizes.md
         - name: 2. Nesil VM’ler
           href: generation-2.md
         - name: Genel amaçlı
-          href: sizes-general.md
           items:
+            - name: Genel Bakış
+              href: ../sizes-general.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Av2 Serisi
+              href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: B-series burstable
-              href: b-series-burstable.md
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DC serisi
+              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 ve DSv2 serisi
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv3 ve Dsv3 serisi
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dav4 ve Dasv4 serisi
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: İşlem için iyileştirilmiş
-          href: sizes-compute.md
-        - name: Bellek için iyileştirilmiş
-          href: sizes-memory.md
           items:
+            - name: Genel Bakış
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Fsv2 serisi
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bellek için iyileştirilmiş
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Genel Bakış
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 ve DSv2 serisi 11-15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev3 ve Esv3 serisi
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Eav4 ve Easv4 serisi
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: M serisi
+              href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Mv2 serisi
+              href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Kısıtlanmış vCPU'lar
               href: constrained-vcpu.md
         - name: Depolama için iyileştirilmiş
-          href: sizes-storage.md
           items:
+            - name: Genel Bakış
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Lsv2 serisi
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Performansı iyileştirme
               href: storage-performance.md
         - name: Hızlandırılmış işlem
           items:
             - name: GPU için iyileştirilmiş
-              href: sizes-gpu.md
+              items:
+                - name: Genel Bakış
+                  href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NC serisi
+                  href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NCv2 serisi
+                  href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NCv3 serisi
+                  href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: ND serisi
+                  href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NDv2 serisi
+                  href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NV serisi
+                  href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NVv3 serisi
+                  href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NVv4 serisi
+                  href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: GPU sürücülerini kurma
               href: n-series-driver-setup.md
         - name: Yüksek performanslı işlem
-          href: sizes-hpc.md
+          displayName: H-series
+          items:
+            - name: Genel Bakış
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: H Serisi
+              href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HB serisi
+              href: ../hb-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HBv2 serisi
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HC serisi
+              href: ../hc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Ayrılmış örnekler
           items:
             - name: VM'ler için ön ödeme yapma
@@ -119,11 +178,11 @@
         - name: Spot VM'ler
           href: spot-vms.md
         - name: Önceki nesiller
-          href: sizes-previous-gen.md
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Yalıtılmış boyutlar
           href: isolation.md
         - name: Azure işlem birimleri (ACU)
-          href: acu.md
+          href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU kotaları
           href: quotas.md
         - name: Ayrılmış örnekler

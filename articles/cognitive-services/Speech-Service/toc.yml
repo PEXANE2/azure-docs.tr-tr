@@ -305,46 +305,50 @@
       items:
         - name: Ses yardımcısı nedir?
           href: voice-assistants.md
-    - name: Yardımcınızı oluşturma
+    - name: Özel Komutlar (önizleme)
       items:
-        - name: Özel Komutlar (önizleme)
+        - name: Özel Komutlar nedir?
           href: custom-commands.md
-        - name: Direct Line Speech
+        - name: Hızlı Başlangıçlar
+          items:
+            - name: Özel Komut oluşturma (önizleme)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: Parametreler içeren Özel Komut oluşturma (önizleme)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: Özel Ses ile Özel Komutları Kullanma (önizleme)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: Konuşma SDK'sı ile Özel Komutları kullanma (önizleme)
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: Nasıl yapılır kılavuzları
+          items:
+            - name: Konuşma SDK'sı ile Özel Komutları uygulama
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: Özel Komuta parametre doğrulaması ekleme
+              href: how-to-custom-speech-commands-validations.md
+            - name: Özel Komuta onay ekleme
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: Özel Komuta tek adımlı düzeltme ekleme
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line Speech
+      items:
+        - name: Direct Line Speech nedir?
           href: direct-line-speech.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: 'Java (Windows, macOS, Linux)'
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: Özel Komut oluşturma (önizleme)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: Parametreler içeren Özel Komut oluşturma (önizleme)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: Özel Ses ile Özel Komutları Kullanma (önizleme)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: Konuşma SDK'sı ile Özel Komutları kullanma (önizleme)
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: Nasıl yapılır kılavuzları
-      items:
-        - name: Konuşma SDK'sı ile Özel Komutları uygulama
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Özel Komuta parametre doğrulaması ekleme
-          href: how-to-custom-speech-commands-validations.md
-        - name: Özel Komuta onay ekleme
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: Özel Komuta tek adımlı düzeltme ekleme
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: Öğreticiler
-      items:
-        - name: Konuşma SDK’sı ile botunuzu ses ile etkinleştirme
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Kaynaklar
-      items:
-        - name: Ses yardımcıları hakkında SSS
-          href: faq-voice-assistants.md
+        - name: Hızlı Başlangıçlar
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: Öğreticiler
+          items:
+            - name: Konuşma SDK’sı ile botunuzu ses ile etkinleştirme
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: Kaynaklar
+          items:
+            - name: Ses yardımcıları hakkında SSS
+              href: faq-voice-assistants.md
 - name: Özelleştirme
   expanded: false
   items:

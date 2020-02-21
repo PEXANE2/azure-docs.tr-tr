@@ -431,53 +431,9 @@
           items:
             - name: Apache Hadoop korumalı alanını kullanma
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: Apache Pig kullanma
+              href: use-pig.md
         - name: Geliştirme
-          items:
-            - name: Apache Hadoop ile MapReduce kullanma
-              items:
-                - name: MapReduce’a genel bakış
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: SSH kullanma
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: cURL kullanma
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: Azure PowerShell kullanma
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: .NET için SDK’yı kullanma
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: MapReduce örneklerini çalıştırma
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: Özel Apache Hadoop MapReduce programları çalıştırma
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'C# ile MapReduce akış programları geliştirme'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: Java MapReduce programları geliştirme
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 'Apache Hive’ı ayıklama, dönüştürme ve yükleme (ETL) aracı olarak kullanma'
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 'Ölçekli bir biçimde ayıklama, dönüştürme ve yükleme'
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: Etkileşimli olmayan kimlik doğrulaması ile çalıştırılan .NET HDInsight uygulamaları oluşturma
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: Büyük verileri çözümleme
-              items:
-                - name: Power Query kullanarak çözümleme
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: Power BI’ı Interactive Query’ye Bağlama
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: Power BI’ı Apache Hadoop’a Bağlama
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: Excel'i Apache Hadoop’a Bağlama
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: Apache Hive JDBC sürücüsü kullanarak bağlanma
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: Depolanan tweetleri çözümleme
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: Apache Mahout ile öneriler oluşturma
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: HDInsight için gelişmiş analiz
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: Yönetme
           items:
             - name: Boş kenar düğümlerini kullanma
               href: ./hdinsight-apps-use-edge-node.md

@@ -75,6 +75,8 @@
           href: howto-integrate-azure-managed-service-identity.md
         - name: Azure Active Directory kullanarak erişimi etkinleştirme
           href: concept-enable-rbac.md
+        - name: Azure Yönetilen Kimliği atama
+          href: overview-managed-identity.md
     - name: Yüksek kullanılabilirlik
       items:
         - name: Dayanıklılık ve olağanüstü durum kurtarma
