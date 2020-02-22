@@ -1,17 +1,17 @@
 ---
 title: Kubernetes 'te uygulama geliştirme
 services: azure-dev-spaces
-ms.date: 07/08/2019
+ms.date: 02/20/2020
 ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir uygulama geliştirmek için Azure Dev Spaces ve komut satırının nasıl kullanılacağı gösterilir.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867246"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538439"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te uygulama geliştirme-Azure Dev Spaces
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
@@ -19,7 +19,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 - Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
 - Komut satırını kullanarak kapsayıcılarda kod geliştirin ve çalıştırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -76,7 +76,7 @@ Uygulamanızı Azure Dev Spaces çalıştırmak için bir Dockerfile ve HELI gra
 `azds prep` komutunu kullanarak Kubernetes 'te uygulamayı çalıştırmak için Docker ve helk grafik varlıkları oluşturun:
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 Docker ve Held grafik varlıklarını doğru şekilde oluşturmak için *geliştirme-Spaces/Samples/NodeJS/alma-başlatma/webön uç* dizininden `prep` komutunu çalıştırmalısınız.
@@ -119,7 +119,7 @@ Hizmetin çalışmakta olduğu ortak URL 'yi açarak, `azds up` komutunun çıkt
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve `azds up` komutunu yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve `azds up` komutunu yeniden çalıştırabilirsiniz. Örnek:
 
 1. `azds up` hala çalışıyorsa, *Ctrl + c*tuşlarına basın.
 1. [`server.js`satırı 13 ' te](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) güncelleştir:

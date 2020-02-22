@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 25c1cf00a418767209467c973b7a4755f62eb16f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: dd3c7a55d1b3d39f8a16b1730d861edf0de84690
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368367"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539578"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Hızlı başlangıç: Kafka protokolünü kullanarak Event Hubs veri akışı
 Bu hızlı başlangıçta, protokol istemcilerinizi değiştirmenize veya kendi kümelerinizi çalıştırmanıza gerek kalmadan Kafka etkin Event Hubs’a nasıl akış oluşturulacağı gösterilir. Yalnızca uygulamalarınızdaki bir yapılandırma değişikliğiyle Kafka etkin Event Hubs ile konuşmak için üreticilerinizi ve tüketicilerinizi nasıl kullanacağınızı öğrenirsiniz. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler.
@@ -30,10 +30,10 @@ Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşıla
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
 * Bir Maven ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html).
 * [Git](https://www.git-scm.com/)
-* [Kafka etkin Event Hubs ad alanı](event-hubs-create.md)
+
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka etkin Event Hubs ad alanı oluşturma
-Bir standart katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için Kafka uç noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları Standart katman Event Hubs akışı yapabilirsiniz. Temel katman Event Hubs ad alanı için etkinleştirilmemiş. 
+Bir standart katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için Kafka uç noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları Standart katman Event Hubs akışı yapabilirsiniz. Temel katman Event Hubs ad alanı için etkinleştirilmemiş. **Standart** katman Event Hubs ad alanı oluşturmak için [Azure Portal kullanarak Olay Hub 'ı oluşturma](event-hubs-create.md) bölümünde adım adım yönergeleri izleyin. 
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Event Hubs’da Kafka ile ileti gönderme ve alma
 

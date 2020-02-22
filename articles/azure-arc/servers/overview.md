@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a2551791426c246df278e09cea9cec64a6bc019f
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190315"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539306"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
 
@@ -49,7 +49,7 @@ Sunucular için Azure Arc (Önizleme) ile yalnızca belirli bölgeler destekleni
 
 Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure bağlı makine Aracısı için desteklenir: 
 
-- Windows Server 2012 R2 ve üzeri
+- Windows Server 2012 R2 ve üzeri (Windows Server Core dahil)
 - Ubuntu 16,04 ve 18,04
 
 >[!NOTE]
@@ -65,6 +65,15 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
 Makinelerinizi sunucular için Azure Arc (Önizleme) ile yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirmeniz gerekir.
+
+## <a name="tls-12-protocol"></a>TLS 1.2 Protokolü
+
+Azure 'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. 
+
+|Platform/dili | Destek | Daha Fazla Bilgi |
+| --- | --- | --- |
+|Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır. | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
+| Windows Server 2012 R2 ve üzeri | Desteklenen ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.|
 
 ### <a name="networking-configuration"></a>Ağ yapılandırması
 
@@ -130,6 +139,12 @@ Windows ve Linux için Azure bağlı makine Aracısı paketini aşağıda listel
 >[!NOTE]
 >Bu önizleme sırasında, Ubuntu 16,04 veya 18,04 için uygun olan yalnızca bir paket yayımlanmıştır.
 
+Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir. Windows için, aracı güncelleştirmesi [apt](https://help.ubuntu.com/lts/serverguide/apt.html) komut satırı aracı kullanılarak Windows Update ve Ubuntu kullanılarak otomatik olarak gerçekleştirilebilir.
+
+### <a name="agent-status"></a>Aracı durumu
+
+Bağlı makine Aracısı, her 5 dakikada bir hizmete düzenli bir sinyal iletisi gönderir. Bunlardan biri 15 dakika boyunca alınmıyorsa, makine çevrimdışı kabul edilir ve portalda durum otomatik olarak **kesilir** . Bağlı makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **bağlı**olarak değiştirilir.
+
 ## <a name="install-and-configure-agent"></a>Aracıyı yükle ve yapılandır
 
 Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tabloda, kuruluşunuz için en uygun olanı belirleyen her bir yöntem vurgulanmaktadır.
@@ -138,7 +153,6 @@ Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerini
 |--------|-------------|
 | Biriyle | [Azure Portal makinelerinden gelen bağlantı](onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
 | Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](onboard-service-principal.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
