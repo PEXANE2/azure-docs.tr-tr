@@ -1,5 +1,5 @@
 ---
-title: Azure özel bağlantı bağlantı sorunlarını giderme
+title: Azure Özel Bağlantı hizmeti bağlantı sorunlarını giderme
 description: Özel bağlantı bağlantısını tanılamaya yönelik adım adım yönergeler
 services: private-link
 documentationcenter: na
@@ -13,26 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191047"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539476"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Özel Bağlantı Hizmeti bağlantı sorunlarını giderme
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Özel Bağlantı hizmeti bağlantı sorunlarını giderme
 
-Bu kılavuzda, özel bağlantı hizmeti kuruluma yönelik bağlantıyı doğrulamak ve tanılamak için adım adım yönergeler sağlanmaktadır. 
+Bu makalede, Azure özel bağlantı kuruluma yönelik bağlantıyı doğrulamak ve tanılamak için adım adım yönergeler sağlanmaktadır.
 
-Azure özel bağlantısı, Azure PaaS hizmetlerine (örn. Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi özel bağlantı hizmetinizi sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. 
+Azure özel bağlantısı ile Azure depolama, Azure Cosmos DB ve Azure SQL veritabanı gibi Azure platform hizmeti (PaaS) hizmetlerine ve Azure 'da barındırılan müşteri veya iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişebilirsiniz. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve bu da genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. Ayrıca, kendi özel bağlantı hizmetinizi sanal ağınızda oluşturup müşterilerinize özel olarak iletebilirsiniz.
 
-Özel bağlantı erişimi için Azure Standart Load Balancer 'in arkasında çalışan hizmetinizi etkinleştirebilirsiniz. Hizmetinizin tüketicileri, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmete özel olarak erişmek için bu hizmetle eşlenir.
+Özel bağlantı erişimi için Azure Load Balancer standart katmanının arkasında çalışan hizmetinize izin verebilirsiniz. Hizmetinizin tüketicileri, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmete özel olarak erişmek için bu hizmetle eşlenir.
 
-Özel bağlantı hizmeti ile kullanılabilen bağlantı senaryoları şunlardır
-- aynı bölgedeki sanal ağ 
+Özel bağlantıyla kullanılabilen bağlantı senaryoları şunlardır:
+
+- aynı bölgedeki sanal ağ
 - Region, eşlenen sanal ağlar
 - Genel eşlenmiş sanal ağlar
-- VPN veya Express Route devreleri üzerinden şirket içi müşteri
+- VPN veya Azure ExpressRoute devreleri üzerinden şirket içi müşteri
 
 ## <a name="deployment-troubleshooting"></a>Dağıtım sorunlarını giderme
 
@@ -40,76 +41,75 @@ Azure özel bağlantısı, Azure PaaS hizmetlerine (örn. Azure depolama, Azure 
 
 Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicies** ayarının devre dışı bırakıldığından emin olun.
 
-## <a name="diagnosing-connectivity-problems"></a>Bağlantı sorunlarını tanılama
+## <a name="diagnose-connectivity-problems"></a>Bağlantı sorunlarını Tanıla
 
-Özel bağlantı kurulumunuzda bağlantı sorunlarıyla karşılaşıyorsanız, tüm olağan yapılandırmaların beklenen şekilde olduğundan emin olmak için aşağıda listelenen adımları izleyin.
+Özel bağlantı kurulumlarınızla bağlantı sorunlarıyla karşılaşırsanız, tüm olağan yapılandırmaların beklendiğinden emin olmak için bu adımları gözden geçirin.
 
-1. Kaynağa göz atarak özel bağlantı hizmeti yapılandırmasını gözden geçirin 
+1. Kaynağa göz atarak özel bağlantı yapılandırmasını gözden geçirin.
 
-    a) **özel bağlantı merkezine** git
+    a. **Özel bağlantı merkezine**gidin.
 
       ![Özel bağlantı merkezi](./media/private-link-tsg/private-link-center.png)
 
-    b) sol gezinti bölmesinden **özel bağlantı Hizmetleri** ' ni seçin
+    b. Sol bölmede **özel bağlantı Hizmetleri**' ni seçin.
 
       ![Özel bağlantı Hizmetleri](./media/private-link-tsg/private-link-service.png)
 
-    c) tanılama yapmak istediğiniz özel bağlantı hizmetini filtreleyip seçin
+    c. Tanımak istediğiniz özel bağlantı hizmetini filtreleyin ve seçin.
 
-    d) özel uç nokta bağlantılarını gözden geçirin
-     - Bağlantısını Aradığınız özel uç noktanın **onaylanan** bağlantı durumuyla listelendiğinden emin olun. 
-     - **Bekliyor**ise, seçin ve onaylayın. 
+    d. Özel uç nokta bağlantılarını gözden geçirin.
+     - Bağlantı Aradığınız özel uç noktanın **onaylanmış** bir bağlantı durumuyla listelendiğinden emin olun.
+     - Durum **Beklemede**ise, seçin ve onaylayın.
 
        ![Özel uç nokta bağlantıları](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - Ada tıklayarak, bağlandığınız özel uç noktaya gidin. Bağlantı durumunun **onaylanan**göründüğünden emin olun.
+     - Adı seçerek bağlanmakta olduğunuz özel uç noktaya gidin. Bağlantı durumunun **Onaylandı**olarak göründüğünden emin olun.
 
        ![Özel uç nokta bağlantısına genel bakış](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
      - Her iki taraf onaylandıktan sonra bağlantıyı yeniden deneyin.
 
-    e) Özellikler sekmesinden Genel Bakış sekmesi ve **kaynak kimliği** ' nden **diğer adı** gözden geçirin 
-     - **Diğer ad/kaynak kimliğinin** , bu hizmete özel bir uç nokta oluşturmak Için kullandığınız **diğer ad/kaynak kimliğiyle** eşleştiğinden emin olun. 
+    e. **Özellikler** sekmesindeki **genel bakış** sekmesinde ve **kaynak kimliğinde** **diğer adı** inceleyin.
+     - **Diğer ad** ve **kaynak kimliği** bilgilerinin, bu hizmete özel bir uç nokta oluşturmak Için kullanmakta olduğunuz **diğer ad** ve **kaynak kimliğiyle** eşleştiğinden emin olun.
 
-       ![Diğer adı doğrula](./media/private-link-tsg/pls-overview-pane-alias.png)
+       ![Diğer ad bilgilerini doğrulama](./media/private-link-tsg/pls-overview-pane-alias.png)
 
-       ![Kaynak KIMLIĞINI doğrula](./media/private-link-tsg/pls-properties-pane-resourceid.png)
+       ![Kaynak KIMLIĞI bilgilerini doğrulama](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f) görünürlüğü gözden geçirme (genel bakış bölümü) bilgileri
-     - Aboneliğinizin **görünürlük** kapsamı altında olduğundan emin olun
+    f. **Genel bakış** sekmesinde **görünürlük** bilgilerini gözden geçirin.
+     - Aboneliğinizin **görünürlük** kapsamında olduğundan emin olun.
 
-       ![Görünürlüğü doğrula](./media/private-link-tsg/pls-overview-pane-visibility.png)
+       ![Görünürlük bilgilerini doğrulama](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g) Load Balancer (genel bakış) bilgilerini gözden geçirin
-     - Yük dengeleyici bağlantısına tıklayarak yük dengeleyiciye gidebilirsiniz
+    g. **Genel bakış** sekmesinde **yük dengeleyici** bilgilerini gözden geçirin.
+     - Yük dengeleyici bağlantısını seçerek yük dengeleyiciye gidebilirsiniz.
 
-       ![Load Balancer doğrula](./media/private-link-tsg/pls-overview-pane-ilb.png)
+       ![Yük dengeleyici bilgilerini doğrulama](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
-     - Load Balancer ayarlarının beklentileriniz uyarınca yapılandırıldığından emin olun
-       - Ön uç IP yapılandırmasını gözden geçir
-       - Arka uç havuzlarını gözden geçirme
-       - Yük Dengeleme kurallarını gözden geçirme
+     - Yük dengeleyici ayarlarının beklentileriniz uyarınca yapılandırıldığından emin olun.
+       - **Ön uç IP yapılandırmasını**gözden geçirin.
+       - **Arka uç havuzlarını**inceleyin.
+       - **Yük Dengeleme kurallarını**gözden geçirin.
 
-       ![Load Balancer özelliklerini doğrulama](./media/private-link-tsg/pls-ilb-properties.png)
+       ![Yük dengeleyici özelliklerini doğrulama](./media/private-link-tsg/pls-ilb-properties.png)
 
-     - Load Balancer, yukarıdaki ayarlara göre çalıştığından emin olun
-       - Load Balancer arka uç havuzunun kullanılabildiği alt ağ dışında herhangi bir alt ağda bir VM seçin
-       - Yukarıdaki VM 'den yük dengeleyici ön ucuna erişmeyi deneyin
-       - Bağlantı, arka uç havuzunda yük dengeleme kurallarına göre yapılır, yük dengeleyici çalışır durumda olur
-       - Ayrıca, verilerin yük dengeleyiciye akışının akışını görmek için Azure Izleyici aracılığıyla Load Balancer ölçümünü gözden geçirebilirsiniz
+     - Yük dengeleyicinin önceki ayarlara göre çalıştığından emin olun.
+       - Yük dengeleyici arka uç havuzunun kullanılabildiği alt ağ dışında herhangi bir alt ağda bir VM seçin.
+       - Yük dengeleyici ön ucuna önceki sanal makineden erişmeyi deneyin.
+       - Bağlantı, Yük Dengeleme kurallarına göre onu arka uç havuzuna yapıyorsa, yük dengeleyici çalışır.
+       - Ayrıca, yük dengeleyici aracılığıyla verilerin akan olup olmadığını görmek için Azure Izleyici aracılığıyla yük dengeleyici ölçümünü gözden geçirebilirsiniz.
 
-2. Verilerin akışını gözden geçirmek için [**Azure izleyici**](https://docs.microsoft.com/azure/azure-monitor/overview) 'yi kullanma
+1. Verilerin akan olup olmadığını görmek için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) 'yi kullanın.
 
-    a) özel bağlantı hizmeti kaynağında **ölçümler** ' i seçin.
-     - **Bayt/gelen** veya **Giden bayt** seçin
-     - Özel bağlantı hizmetine bağlanmaya çalışırken İnceleme verileri akar. Yaklaşık 10 dakikalık bir gecikme süresi beklenir.
+    a. Özel bağlantı hizmeti kaynağında **ölçümler**' i seçin.
+     - **Bayt cinsinden** veya **giden**baytları seçin.
+     - Özel bağlantı hizmetine bağlanmaya çalıştığınızda verilerin akışa alındığını görün. Yaklaşık 10 dakikalık bir gecikme süresi bekler.
 
        ![Özel bağlantı hizmeti ölçümlerini doğrulama](./media/private-link-tsg/pls-metrics.png)
 
-3. Sorununuz çözülmedi ve bağlantı sorunu hala varsa [Azure destek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ekibine başvurun. 
+1. Sorununuz hala çözülmedi ve bir bağlantı sorunu hala varsa [Azure destek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ekibine başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
  * [Özel bağlantı hizmeti (CLı) oluşturma](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
-
- * [Özel uç nokta sorun giderme kılavuzu](troubleshoot-private-endpoint-connectivity.md)
+ * [Azure özel uç nokta sorun giderme kılavuzu](troubleshoot-private-endpoint-connectivity.md)

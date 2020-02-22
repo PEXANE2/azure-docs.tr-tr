@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 38711c9f1cee07b04dad0ccfeff5694e61dd5b53
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ef9efcea1c06149e084dc261f5add7b408ae7b92
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484970"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539272"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -50,7 +50,7 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 |[Dikkatli IT](https://vigilant.it/manage-cloud-service/)|[Azure sistem durumu denetimi: 5 günlük değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 günlük uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandıs yönetilen ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet tarafından desteklenen Vandıs, sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Palo Alto Networks Ile desteklenen vandis yönetilen VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Market, yeni yönetilen güvenlik hizmetleri ve yönetilen MEC hizmetleri dahil olmak üzere aşağıdaki Azure ağ MSP Iş ortaklarımızın yol haritası: [Amdocs](https://www.amdocs.com/); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);    [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [Omnicloud](https://omniclouds.com/services/);  [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
+Azure Market, yeni yönetilen güvenlik hizmetleri ve yönetilen MEC hizmetleri dahil olmak üzere aşağıdaki Azure ağ MSP Iş ortaklarımızın yol haritası: [Amdocs](https://www.amdocs.com/); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);    [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [Omnicloud](https://omniclouds.com/services/);  [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federasyon kablosuz](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute"></a>ExpressRoute iş ortakları
 

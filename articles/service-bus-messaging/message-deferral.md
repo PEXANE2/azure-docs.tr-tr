@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 249cf7414143f59540d198bb460d8b215f6a7664
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756360"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538405"
 ---
 # <a name="message-deferral"></a>İleti erteleme
 
@@ -36,7 +36,7 @@ API, .NET Standard istemcisinde .NET Framework istemcisi, [MessageReceiver.](/do
 
 Ertelenmiş iletiler, diğer tüm etkin iletilerle birlikte ana sırada kalır (bir alt sırada bulunan atılacak ileti iletilerinin aksine), ancak artık normal alma/ReceiveAsync işlevleri kullanılarak alınamazlar. Ertelenmiş iletiler, bir uygulama tarafından izlenmeleri kaybolursa [ileti göz atma](message-browsing.md) aracılığıyla bulunabilir.
 
-Ertelenmiş bir ileti almak için, [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) onu erteler. Ertelenmiş bir iletinin sıra numarasını bilen herhangi bir alıcı daha sonra `Receive(sequenceNumber)`ile iletiyi açıkça alabilir. Kuyruklar için [Queueclient](/dotnet/api/microsoft.servicebus.messaging.queueclient)' ı kullanabilirsiniz, konu abonelikleri [subscriptionclient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient)'ı kullanır.
+Ertelenmiş bir ileti almak için, [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) onu erteler. Ertelenmiş bir iletinin sıra numarasını bilen herhangi bir alıcı daha sonra `Receive(sequenceNumber)`ile iletiyi açıkça alabilir.
 
 Bu iletiyi işlemeye yönelik belirli bir kaynak geçici olarak kullanılamadığından bir ileti işlenemezse, ileti işleme summarily askıya alınmamalıdır, bu iletiyi birkaç dakika için tarafa koymak için bir yol, [Zamanlanmış bir Iletideki](message-sequencing.md) **SequenceNumber** 'i birkaç dakika içinde yeniden almak ve zamanlanan ileti geldiğinde ertelenmiş iletiyi yeniden almak olacaktır. Bir ileti işleyicisi tüm işlemler için bir veritabanına bağımlıysa ve bu veritabanı geçici olarak kullanılamıyorsa, ertelemeal kullanmamalıdır, ancak veritabanı yeniden kullanılabilir olana kadar iletileri almayı askıya almamalıdır.
 

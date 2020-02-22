@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522569"
+ms.locfileid: "77544275"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -98,10 +98,12 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
    i. **Greater_Than.** Değerlendirilen öznitelik değerden büyükse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
    
    j. **Greater_Than_OR_EQUALS.** Değerlendirilen öznitelik değerden büyük veya bu değere eşitse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
+   
+   k. **İçermektedir.** Değerlendirilen öznitelik, [burada](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)açıklanan dize değerini (büyük/küçük harfe duyarlı) içeriyorsa "true" döndürür. 
 
 
 >[!IMPORTANT] 
-> Içerme ve IsMemberOf filtreleri desteklenmez. Yakında kullanıcı arabiriminden kaldırılacaktır.
+> Imemberof filtresi şu anda desteklenmiyor.
 
 9. İsteğe bağlı olarak, daha fazla kapsam tümcesi eklemek için 7-8 arası adımları tekrarlayın.
 
@@ -118,14 +120,14 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
 
 ## <a name="common-scoping-filters"></a>Ortak kapsam filtreleri
-| Target özniteliği| İşleç | Value | Açıklama|
+| Target özniteliği| İşleç | Değer | Açıklama|
 |----|----|----|----|
 |userPrincipalName|REGEX EŞLEŞMESI|.\*@domain.com |Etki alanı @domain.com olan Kullanıcısorumlusu olan tüm kullanıcılar sağlama kapsamında yer alacak|
 |userPrincipalName|REGEX EŞLEŞMIYOR|.\*@domain.com|Etki alanı @domain.com olan Kullanıcısorumlusu olan tüm kullanıcılar, sağlama için kapsam dışı olacaktır|
 |Bölüm|EŞITTIR|satış|Satış departmanından tüm kullanıcılar sağlama kapsamındadır|
 |Workerıd|REGEX EŞLEŞMESI|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| 1000000 ve 2000000 arasında Workerıd 'Leri olan tüm çalışanlar sağlama kapsamındadır.|
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 * [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../app-provisioning/user-provisioning.md)
 * [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](../app-provisioning/customize-application-attributes.md)
 * [Öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)

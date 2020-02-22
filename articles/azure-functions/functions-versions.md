@@ -3,12 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290385"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539510"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -16,8 +16,8 @@ Azure Işlevleri çalışma zamanının ana sürümleri, çalışma zamanının 
 
 | Çalışma zamanı sürümü | Yayın düzeyi<sup>1</sup> | .NET sürüm | 
 | --------------- | ------------- | ------------ |
-| 3.x | Genel Kullanım | .NET Core 3,1 | 
-| 2.x | Genel Kullanım | .NET Core 2.2 |
+| 3.x | GA | .NET Core 3,1 | 
+| 2.x | GA | .NET Core 2.2 |
 | 'in | GA<sup>2</sup> | .NET Framework 4,6<sup>3</sup> |
 
 <sup>1</sup> GA sürüm, üretim senaryolarında desteklenir.   
@@ -38,7 +38,7 @@ Daha fazla bilgi için bkz. [Desteklenen diller](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Belirli bir sürümde Çalıştır
 
-Varsayılan olarak, Azure portal oluşturulan işlev uygulamaları ve Azure CLı tarafından sürüm 2. x olarak ayarlanır. Bu sürümü gerektiği gibi değiştirebilirsiniz. İşlev uygulamanızı oluşturduktan sonra, ancak herhangi bir işlev eklemeden önce çalışma zamanı sürümünü 1. x olarak değiştirebilirsiniz.  2\. x ve 3. x arasında çalışmaya, işlevleri olan uygulamalarla bile izin verilir, ancak önce yeni bir uygulamada test etmek önerilir.
+Varsayılan olarak, Azure portal ve Azure CLı tarafından oluşturulan işlev uygulamaları sürüm 3. x olarak ayarlanır. Bu sürümü gerektiği gibi değiştirebilirsiniz. İşlev uygulamanızı oluşturduktan sonra, ancak herhangi bir işlev eklemeden önce çalışma zamanı sürümünü 1. x olarak değiştirebilirsiniz.  2\. x ve 3. x arasında çalışmaya, işlevleri olan uygulamalarla bile izin verilir, ancak önce yeni bir uygulamada test etmek önerilir.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>1\. x 'den sonraki sürümlere geçiş
 

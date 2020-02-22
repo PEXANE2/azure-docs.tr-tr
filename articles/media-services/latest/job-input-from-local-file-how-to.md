@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: a91305f1c5bfb50e0354dc0054d1a149182d921f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c5acda0ccec409ec06d0f3f2226b9819e3f130c7
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888453"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538422"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Yerel dosyadan iş girişi oluşturma
 
@@ -27,14 +27,14 @@ Media Services v3 sürümünde işlenecek İşleri videolarınıza gönderirken 
 Aşağıdaki kod, bir giriş varlığının nasıl oluşturulduğunu ve iş için giriş olarak nasıl kullanılacağını gösterir. Createınputasset işlevi aşağıdaki eylemleri gerçekleştirir:
 
 * Varlığı oluşturur
-* Varlığın [depolamadaki kapsayıcısına](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) yazılabilir bir [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)’si alır
+* Varlığın [depolamadaki kapsayıcısına](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) yazılabilir bir [SAS URL](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)’si alır
 * SAS URL’sini kullanarak dosyayı depolamadaki kapsayıcıya yükler
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
 Aşağıdaki kod parçacığı, zaten mevcut değilse bir çıktı varlığı oluşturur:
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAssetAsync)]
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 Aşağıdaki kod parçacığı bir kodlama işi gönderir:
 

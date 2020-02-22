@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de yük devretme ve yeniden çalışma hakkında
 description: Azure Site Recovery yük devretme ve failable hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3c461d2de4f9ef8e8159c7b9c86f23a846421c5e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498286"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539527"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Şirket içi olağanüstü durum kurtarma yük devretme/yeniden çalışma hakkında
 
@@ -23,7 +23,7 @@ Site Recovery yük devretme ve yeniden çalışma dört aşamaya sahiptir:
 - **3. Aşama: Azure 'Da yük devretme**: şirket içi siteniz tekrar normal şekilde çalıştığında, Azure VM 'lerinizi şirket içi sitenize geri yüklemek için başka bir yük devretme işlemi çalıştırırsınız. Yük devretmesini veya alternatif bir konuma geri dönebilirsiniz.
 - **4. Aşama: şirket içi makineleri yeniden koruma**: geri alındıktan sonra, şirket Içi makinelerin Azure 'a çoğaltılmasını yeniden etkinleştirin.
 
-## <a name="failover"></a>Yük Devretme
+## <a name="failover"></a>Yük devretme
 
 İş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinizin bir parçası olarak bir yük devretme gerçekleştirirsiniz.
 
@@ -37,8 +37,8 @@ Yük devretme iki aşamalı bir etkinliktir:
 - **Yürüt**: yük devretmenin ardından Azure 'da VM 'yi doğrularsınız:
     - Daha sonra yük devretmeyi seçili kurtarma noktasına kaydedebilir veya kaydetme için farklı bir nokta seçebilirsiniz.
     - Yük devretme işlemi tamamlandıktan sonra, kurtarma noktası değiştirilemez.
-    
-    
+
+
 ## <a name="connect-to-azure-after-failover"></a>Yük devretmeden sonra Azure 'a Bağlan
 
 RDP/SSH kullanılarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanmak için bazı gereksinimler vardır.
@@ -59,7 +59,7 @@ Site Recovery, farklı yük devretme seçenekleri sağlar.
 **Yük devretme testi** | Veri kaybı veya kapalı kalma süresi olmadan BCDR stratejinizi doğrulayan bir detaya gitme çalıştırmak için kullanılır.| Azure 'da, devam eden çoğaltma üzerinde veya üretim ortamınızda bir etkisi olmadan VM 'nin bir kopyasını oluşturur. | 1. bir kurtarma planında tek bir VM 'de veya birden çok VM 'de yük devretme testi çalıştırın.<br/><br/> 2. test yük devretmesi için kullanılacak bir kurtarma noktası seçin.<br/><br/> 3. Azure VM 'nin yük devretme sonrasında oluşturulduğu sırada bulunduğu bir Azure ağı seçin. Ağ yalnızca yük devretme testi için kullanılır.<br/><br/> 4. detayın beklendiği gibi çalıştığını doğrulayın. Site Recovery, detaya gitme sırasında Azure 'da oluşturulan VM 'Leri otomatik olarak temizler.
 **Planlı Yük devretme-Hyper-V**  | Genellikle planlanan kapalı kalma süresi için kullanılır.<br/><br/> Kaynak VM 'Ler kapatılıyor. En son veriler, yük devretme başlatılmadan önce eşitlenir. | Planlı iş akışı için sıfır veri kaybı. | 1. kesinti süresi bakım penceresi planlayın ve kullanıcılara bildirin.<br/><br/> 2. kullanıcıya yönelik uygulamaları çevrimdışına alın.<br/><br/> 3. en son kurtarma noktasıyla planlanmış bir yük devretme başlatın. Makine kapanmazsa veya hatalarla karşılaşılırsa yük devretme çalışmaz.<br/><br/> 4. yük devretmeden sonra Azure 'da çoğaltma Azure VM 'sinin etkin olduğunu denetleyin.<br/><br/> 5. yük devretmeyi tamamlamak için yürütün. Kaydetme eylemi tüm kurtarma noktalarını siler.
 **Yük devretme-Hyper-V** | Genellikle planlanmamış bir kesinti varsa veya birincil site kullanılamıyorsa çalışır.<br/><br/> İsteğe bağlı olarak VM 'yi kapatın ve son değişiklikleri, yük devretmeyi başlatmadan önce eşitler.  | Uygulamalar için en az veri kaybı. | 1. BCDR planınızı başlatın. <br/><br/> 2. yük devretme başlatın. Site Recovery VM 'nin kapatılıp kapatılmayacağını ve yük devretmeyi tetiklemeden önce en son değişiklikleri eşitlemesini/çoğaltmasını belirtin.<br/><br/> 3. aşağıdaki tabloda özetlenen çeşitli kurtarma noktası seçeneklerine yük devretmek için yük devretme yapabilirsiniz.<br/><br/> VM 'yi kapatma seçeneğini etkinleştirmezseniz veya Site Recovery kapatamaz, en son kurtarma noktası kullanılır.<br/>Makine kapatılmasa bile yük devretme çalışır.<br/><br/> 4. yük devretmeden sonra Azure 'da çoğaltma Azure VM 'sinin etkin olduğunu kontrol edersiniz.<br/> Gerekirse, bekletme penceresinde 24 saat olan farklı bir kurtarma noktası seçebilirsiniz.<br/><br/> 5. yük devretmeyi tamamlamak için yürütün. Kaydetme eylemi, kullanılabilir tüm kurtarma noktalarını siler.
-**Yük devretme-VMware** | Genellikle planlanmamış bir kesinti varsa veya birincil site kullanılamıyorsa çalışır.<br/><br/> İsteğe bağlı olarak, Site Recovery VM 'nin kapatılmasını tetiklemeyi ve yük devretmeyi başlatmadan önce son değişiklikleri eşitleyeceğini ve çoğaltmayı denemelidir.  | Uygulamalar için en az veri kaybı. | 1. BCDR planınızı başlatın. <br/><br/> 2. Site Recovery bir yük devretme başlatın. Yük devretmeyi çalıştırmadan önce Site Recovery VM kapatılmasını ve eşitlemesini tetiklemeyi deneyip denemeyeceğini belirtin.<br/> Makineler kapatılmasa bile yük devretme çalışır.<br/><br/> 3. yük devretmeden sonra Azure 'da çoğaltma Azure VM 'sinin etkin olduğunu kontrol edin. <br/>Gerekirse, 72 saatlik bekletme penceresinde farklı bir kurtarma noktası seçebilirsiniz.<br/><br/> 5. yük devretmeyi tamamlamak için yürütün. Kaydetme eylemi tüm kurtarma noktalarını siler.<br/> Windows VM 'Leri için, Site Recovery yük devretme sırasında VMware araçlarını devre dışı bırakır. 
+**Yük devretme-VMware** | Genellikle planlanmamış bir kesinti varsa veya birincil site kullanılamıyorsa çalışır.<br/><br/> İsteğe bağlı olarak, Site Recovery VM 'nin kapatılmasını tetiklemeyi ve yük devretmeyi başlatmadan önce son değişiklikleri eşitleyeceğini ve çoğaltmayı denemelidir.  | Uygulamalar için en az veri kaybı. | 1. BCDR planınızı başlatın. <br/><br/> 2. Site Recovery bir yük devretme başlatın. Yük devretmeyi çalıştırmadan önce Site Recovery VM kapatılmasını ve eşitlemesini tetiklemeyi deneyip denemeyeceğini belirtin.<br/> Makineler kapatılmasa bile yük devretme çalışır.<br/><br/> 3. yük devretmeden sonra Azure 'da çoğaltma Azure VM 'sinin etkin olduğunu kontrol edin. <br/>Gerekirse, 72 saatlik bekletme penceresinde farklı bir kurtarma noktası seçebilirsiniz.<br/><br/> 5. yük devretmeyi tamamlamak için yürütün. Kaydetme eylemi tüm kurtarma noktalarını siler.<br/> Windows VM 'Leri için, Site Recovery yük devretme sırasında VMware araçlarını devre dışı bırakır.
 
 ## <a name="failover-processing"></a>Yük devretme işleme
 
@@ -85,6 +85,8 @@ Yük devretme sırasında, bir dizi kurtarma noktası seçeneği belirleyebilirs
 **En son çoklu VM uygulaması-tutarlı** |  Bu seçenek, çoklu VM tutarlılığı etkinleştirilmiş bir veya daha fazla VM 'ye sahip kurtarma planlarında kullanılabilir. Bir çoğaltma grubunun parçası olan VM 'Ler, en son ortak çoklu VM uygulamayla tutarlı kurtarma noktasına yük devreder. Diğer VM 'Ler, uygulamayla tutarlı en son kurtarma noktasına yük devreder.
 **Özel** | Belirli bir VM 'nin yükünü zaman içinde belirli bir kurtarma noktasına devretmek için bu seçeneği kullanın. Bu seçenek, kurtarma planları için kullanılamaz.
 
+> [!NOTE]
+> Kurtarma noktaları başka bir kurtarma hizmetleri kasasına geçirilemez.
 
 ## <a name="reprotectionfailback"></a>Yeniden koruma/yeniden çalışma
 
@@ -136,17 +138,17 @@ Hyper-V VM 'lerini Azure 'dan şirket içine yeniden korumak ve geri yüklemek i
 - Azure 'dan şirket içine planlı bir yeniden çalışma çalıştırırsınız.
 - Hyper-V VM yeniden çalışma için ayarlanması gereken belirli bir bileşen yok.
 - Planlı Yük devretme sırasında, yeniden çalışma öncesinde verileri eşitlemeye yönelik seçenekleri belirleyebilirsiniz:
-    - **Yük devretmeden önce verileri eşitleme**: Bu seçenek, makineleri kapatmadan makineyi eşitlerken sanal makineler için kapalı kalma süresini en aza indirir. 
+    - **Yük devretmeden önce verileri eşitleme**: Bu seçenek, makineleri kapatmadan makineyi eşitlerken sanal makineler için kapalı kalma süresini en aza indirir.
         - 1\. Aşama: Azure VM 'nin bir anlık görüntüsünü alır ve şirket içi Hyper-V konağına kopyalar. Makine Azure 'da çalışmaya devam ediyor.
         - 2\. Aşama: hiçbir yeni değişiklik gerçekleşmemesi için Azure VM 'yi kapatır. Son Delta değişikliği kümesi şirket içi sunucuya aktarılır ve şirket içi VM başlatılır.
-    - **Yalnızca yük devretme sırasında verileri eşitler**: Bu seçenek daha hızlıdır çünkü diskin çoğunu değiştirmiş ve bu nedenle sağlama toplamı hesaplamaları gerçekleştirmemelidir. Diskin indirilmesini gerçekleştirir. VM, Azure 'da bir süredir (bir ay veya daha fazla) çalışıyorsa veya şirket içi VM silinmişse bu seçeneği kullanmanızı öneririz.  
+    - **Yalnızca yük devretme sırasında verileri eşitler**: Bu seçenek daha hızlıdır çünkü diskin çoğunu değiştirmiş ve bu nedenle sağlama toplamı hesaplamaları gerçekleştirmemelidir. Diskin indirilmesini gerçekleştirir. VM, Azure 'da bir süredir (bir ay veya daha fazla) çalışıyorsa veya şirket içi VM silinmişse bu seçeneği kullanmanızı öneririz.
 
 Hyper-V yeniden koruma ve yeniden çalışma hakkında [daha fazla bilgi edinin](hyper-v-azure-failback.md) .
 
 Azure VM 'lerini şirket içi olarak yeniden koruduğunuzda, özgün konuma veya alternatif bir konuma yeniden yük devretmek istediğinizi belirtebilirsiniz.
 
 - **Özgün konum kurtarma**: varsa, Azure 'dan aynı kaynak şirket içi makineye geri dönme işlemi yapılır. Bu senaryoda, önceki yordamda açıklanan eşitleme seçeneklerinden birini seçersiniz.
-- **Alternatif konum kurtarma**: şirket içi makine yoksa, Azure 'dan alternatif bir konuma yeniden yük devreedebilirsiniz. Azure VM 'yi şirket içi olarak yeniden koruduğunuzda şirket içi makine oluşturulur. Bu seçenekle, yük devretmeden önce verileri eşitlemeye yönelik seçeneği seçmenizi öneririz 
+- **Alternatif konum kurtarma**: şirket içi makine yoksa, Azure 'dan alternatif bir konuma yeniden yük devreedebilirsiniz. Azure VM 'yi şirket içi olarak yeniden koruduğunuzda şirket içi makine oluşturulur. Bu seçenekle, yük devretmeden önce verileri eşitlemeye yönelik seçeneği seçmenizi öneririz
 - Konum yeniden çalışma için gereksinimleri ve sınırlamaları [gözden geçirin](hyper-v-azure-failback.md) .
 
 
@@ -156,7 +158,7 @@ Azure VM 'lerini şirket içi olarak yeniden koruduğunuzda, özgün konuma veya
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Belirli VMware VM](vmware-azure-tutorial-failover-failback.md) 'lerinin yükünü devret 
+- [Belirli VMware VM](vmware-azure-tutorial-failover-failback.md) 'lerinin yükünü devret
 - [Belirli Hyper-V VM](hyper-v-azure-failover-failback-tutorial.md)'lerinin yükünü devreder.
 - Kurtarma planı [oluşturun](site-recovery-create-recovery-plans.md) .
 - [Kurtarma planındaki VM 'lerin](site-recovery-failover.md)yükünü devreder.

@@ -1,29 +1,26 @@
 ---
 title: SharePoint dosyaları-Soru-Cevap Oluşturma
-titleSuffix: Azure Cognitive Services
 description: Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli SharePoint veri kaynakları ekleyin.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843301"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544173"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
-Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli SharePoint veri kaynakları ekleyin.
+Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli bulut tabanlı SharePoint veri kaynakları ekleyin.
 
 Bilgi tabanınızı Soru-Cevap Oluşturma Yöneticisi olarak güvenli bir SharePoint belgesi eklediğinizde Soru-Cevap Oluşturma için Active Directory izin istemeniz gerekir. Bu izin Active Directory yöneticisinden SharePoint 'e erişim için Soru-Cevap Oluşturma verildiğinde, yeniden verilmesi gerekmez. Bilgi Bankası 'na eklenen her bir sonraki belge, aynı SharePoint kaynağıdır ise yetkilendirmeye ihtiyaç duymayacak.
 
 Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlaması için Active Directory Manager ile iletişim kurması gerekir.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Bilgi Bankası 'nda desteklenen dosya türlerini ekleme
 

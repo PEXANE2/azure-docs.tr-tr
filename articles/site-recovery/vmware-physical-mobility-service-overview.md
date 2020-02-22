@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513567"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539391"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
@@ -21,6 +21,9 @@ ms.locfileid: "76513567"
 - [Anında yükleme](#push-installation): Site Recovery Azure Portal aracılığıyla koruma etkinleştirildiğinde Mobility Aracısı sunucuya yüklenir.
 - El ile yüklensin: Mobility hizmetini her makineye [Kullanıcı arabirimi](#install-mobility-agent-through-ui) veya [komut istemi](#install-mobility-agent-through-command-prompt)aracılığıyla el ile yükleyebilirsiniz.
 - [Otomatik dağıtım](vmware-azure-mobility-install-configuration-mgr.md): Configuration Manager gibi yazılım dağıtım araçlarıyla yüklemeyi otomatik hale getirebilirsiniz.
+
+> [!NOTE]
+> Mobility Aracısı, VMware VM 'Leri veya fiziksel makineler için kaynak makinelerde yaklaşık %6-%10 bellek kullanır.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Çoğaltılan makinelerde virüsten koruma
 
@@ -35,7 +38,7 @@ Anında yükleme, portalda tetiklenen "[çoğaltmayı etkinleştir](vmware-azure
 
 Anında yükleme iş akışının ayrıntıları aşağıdaki bölümlerde açıklanmıştır.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>[9,23 sürümünden sonraki sürümler](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)
+### <a name="from-923-version-onwards"></a>[9,23 sürümünden sonraki sürümler](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)
 
 Mobility aracısının anında yüklenmesi sırasında aşağıdaki adımlar gerçekleştirilir
 
@@ -73,7 +76,7 @@ Mobility aracısının anında yüklenmesi sırasında aşağıdaki adımlar ger
 
     ![Mobility hizmeti kayıt sayfası](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. **Yapılandırma sunucusu ayrıntıları**' nda, yapılandırdığınız IP adresini ve parolayı belirtin.  
+5. **Yapılandırma sunucusu ayrıntıları**' nda, yapılandırdığınız IP adresini ve parolayı belirtin.
 
     ![Mobility hizmeti kayıt sayfası](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -187,8 +190,8 @@ Microsoft-ASR\_UA\*SLES11-SP4-64\*Release. tar. gz| SUSE Linux Enterprise Server
 Microsoft-ASR\_UA\*OL6-64\*Release. tar. gz | Oracle Enterprise Linux 6,4, 6,5
 Microsoft-ASR\_UA\*UBUNTU-14.04-64\*Release. tar. gz | Ubuntu Linux 14,04
 Microsoft-ASR\_UA\*UBUNTU-16.04-64\*Release. tar. gz | Ubuntu Linux 16,04 LTS sunucusu
-Microsoft ASR_UA\*DEBIAN7 64\*release.tar.gz | Deyi 7
-Microsoft ASR_UA\*DEBIAN8 64\*release.tar.gz | Debian 8
+Microsoft-ASR_UA\*DEBIAN7-64\*Release. tar. gz | Deyi 7
+Microsoft-ASR_UA\*DEBIAN8-64\*Release. tar. gz | Debian 8
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

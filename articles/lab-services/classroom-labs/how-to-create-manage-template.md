@@ -11,23 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fcf31fcc266358911612c25e0b73a0a9de696b1d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989051"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539049"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services bir sınıf şablonu oluşturma ve yönetme
 Laboratuvardaki şablon, tüm kullanıcıların sanal makinelerinin oluşturulduğu bir temel sanal makine görüntüsüdür. Şablon sanal makinesini, tam olarak laboratuvar kullanıcılarına sağlamak istediklerinizle yapılandırılacak şekilde ayarlayın. Laboratuvar kullanıcılarının görebileceği bir ad ve açıklama belirtebilirsiniz. Daha sonra, şablon VM 'nin örneklerini laboratuvar kullanıcılarınız için kullanılabilir hale getirmek üzere şablonu yayımlayabilirsiniz. Bir şablonu yayımladığınızda Azure Lab Services, şablonu kullanarak laboratuvarda sanal makineler oluşturur. Bu işlemde oluşturulan sanal makine sayısı, laboratuvarda izin verilen maksimum kullanıcı sayısıyla aynıdır. Laboratuvarın kullanım ilkesinde bu maksimum değeri ayarlayabilirsiniz. Tüm sanal makineler, şablonla aynı yapılandırmaya sahiptir.
 
 Bu makalede, bir Azure Lab Services sınıf laboratuvarında şablon sanal makinesinin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. 
 
-## <a name="publish-a-template-while-creating-a-classroom-lab"></a>Sınıf Laboratuvarı oluştururken şablon yayımlama
-Sınıf Laboratuvarı oluştururken bir şablonu yayımlamayı öğrenmek için bkz. [sınıf Laboratuvarı oluşturma](how-to-manage-classroom-labs.md#create-a-classroom-lab)
- 
 ## <a name="set-or-update-template-title-and-description"></a>Şablon başlığını ve açıklamasını ayarlama veya güncelleştirme
 İlk kez başlık ve açıklama ayarlamak ve daha sonra güncelleştirmek için aşağıdaki adımları kullanın. 
 
@@ -50,23 +47,24 @@ Bir şablon VM 'sini güncelleştirmek için aşağıdaki adımları kullanın.
 1. Güncelleştirilmiş şablon VM 'sini **yayımlamak** için sonraki bölümdeki adımları izleyin. 
 
 ## <a name="publish-the-template-vm"></a>Şablon VM'yi yayımlama  
-Laboratuvarı oluştururken şablonu yayımlamazsanız, daha sonra yayımlayabilirsiniz. Yayımlamadan önce, şablon VM 'ye bağlanmak ve tüm yazılımlarla güncelleştirmek isteyebilirsiniz. Bir şablonu yayımladığınızda Azure Lab Services, şablonu kullanarak laboratuvarda sanal makineler oluşturur. Bu işlemde oluşturulan sanal makinelerin sayısı, ilk kez yayımlandığında belirttiğiniz VM 'lerin sayısı veya sanal makine havuzu sayfasında belirttiğiniz şeydir. Tüm sanal makineler, şablonla aynı yapılandırmaya sahiptir. 
+Bu adımda, şablon VM 'yi yayımlarsınız. Şablon sanal makinesini yayımladığınızda, Azure Lab Services şablonu kullanarak laboratuvarda VM 'Ler oluşturur. Tüm sanal makineler, şablonla aynı yapılandırmaya sahiptir.
+
 
 1. **Şablon** sayfasında, araç çubuğunda **Yayımla** ' yı seçin. 
-1. **Şablonu Yayımla** iletisi kutusunda iletiyi gözden geçirin ve **Yayımla**' yı seçin. Bu işlem, kaç sanal makine oluşturuldığına bağlı olarak biraz zaman alabilir.
 
-    ![Yayımla düğmesi](../media/how-to-create-manage-template/publish-button.png)
+    ![Şablon Yayımla düğmesi](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-    > [!IMPORTANT]
-    > Şablon yayımlama işlemi geri alınamaz. Yine de şablonu yeniden yayımlayabilirsiniz. 
-1. Yayımlama işleminin durumunu şablon sayfasında görebilirsiniz. Şablonun durumunun **yayımlanmış**olarak değiştirilmesini bekleyin. 
+    > [!WARNING]
+    > Yayımlama işlemini geri alamazsınız. 
+2. **Şablonu Yayımla** sayfasında, laboratuvarda oluşturmak istediğiniz sanal makine sayısını girin ve ardından **Yayımla**' yı seçin. 
 
-    ![Yayımlama durumu](../media/how-to-create-manage-template/publish-status.png)
-1. **Sanal makineler** sayfasına geçin ve **Atanmamış** durumundaki sanal makineleri gördüğünüzü doğrulayın. Bu VM’ler henüz bir öğrenciye atanmamıştır. VM'ler oluşturulana kadar bekleyin. Bu makinelerin durumu **Durduruldu** olmalıdır. Bu sayfadan bir öğrenci VM'sini başlatabilir, VM'ye bağlanabilir, VM'yi durdurabilir ve VM'yi silebilirsiniz. Bu sayfada başlatabilir veya öğrencilerinizin VM 'Leri başlatmasını sağlayabilirsiniz. 
+    ![Şablon yayımlama-sanal makine sayısı](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+3. Şablonu **Yayımlama durumunu** sayfada görürsünüz. Bu işlemin tamamlanması bir saat sürebilir. 
+
+    ![Şablonu yayımlama - ilerleme](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
+4. Yayımlama tamamlanana kadar bekleyin ve ardından sol menüdeki **sanal** makineler ' i seçerek veya **sanal makineler** Kutucuğu ' nı seçerek **sanal makine havuzu** sayfasına geçiş yapın. **Atanmamış** durumda olan sanal makineleri görtığınızdan emin olun. Bu VM’ler henüz bir öğrenciye atanmamıştır. Bu makinelerin durumu **Durduruldu** olmalıdır. Bu sayfadan bir öğrenci VM'sini başlatabilir, VM'ye bağlanabilir, VM'yi durdurabilir ve VM'yi silebilirsiniz. VM'leri bu sayfadan başlatabilir veya öğrencilerinizin başlatmasını sağlayabilirsiniz. 
 
     ![Durdurulmuş durumdaki sanal makineler](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 

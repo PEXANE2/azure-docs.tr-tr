@@ -1,5 +1,5 @@
 ---
-title: Azure özel uç nokta bağlantı sorunlarını giderme
+title: Azure Özel Uç Nokta bağlantı sorunlarını giderme
 description: Özel uç nokta bağlantısını tanılamaya yönelik adım adım yönergeler
 services: private-endpoint
 documentationcenter: na
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191061"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538543"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Özel Uç Nokta bağlantı sorunlarını giderme
+# <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure Özel Uç Nokta bağlantı sorunlarını giderme
 
-Bu kılavuzda, Özel uç nokta bağlantısı kurulumunuzu doğrulamak ve tanılamak için adım adım yönergeler sağlanmaktadır. 
+Bu makalede, Azure özel uç nokta bağlantısı kurulumunuzu doğrulamak ve tanılamak için adım adım yönergeler sağlanmaktadır.
 
-Azure özel uç noktası, özel bir bağlantı hizmetine özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Bu çözüm, sanal ağınızdan Azure hizmet kaynaklarınıza özel bağlantı sağlayarak iş yüklerinizi Azure 'da korumanıza yardımcı olur. Bu, bu hizmetleri sanal ağınıza etkin bir şekilde getiriyor. 
+Azure özel uç noktası, özel bir bağlantı hizmetine özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Bu çözüm, sanal ağınızdan Azure hizmet kaynaklarınıza özel bağlantı sağlayarak iş yüklerinizi Azure 'da korumanıza yardımcı olur. Bu çözüm bu hizmetleri sanal ağınıza etkin bir şekilde getirir.
 
-Özel uç noktalarla kullanılabilen bağlantı senaryoları şunlardır 
-- aynı bölgedeki sanal ağ 
+Özel uç nokta ile kullanılabilen bağlantı senaryoları şunlardır:
+
+- aynı bölgedeki sanal ağ
 - Region, eşlenen sanal ağlar
 - Genel eşlenmiş sanal ağlar
-- VPN veya Express Route devreleri üzerinden şirket içi müşteri
+- VPN veya Azure ExpressRoute devreleri üzerinden şirket içi müşteri
 
-## <a name="diagnosing-connectivity-problems"></a>Bağlantı sorunlarını tanılama 
-Tüm olağan yapılandırmaların, Özel uç nokta kurulumunuzda bağlantı sorunlarını gidermek için beklenen şekilde olduğundan emin olmak için aşağıda listelenen adımları izleyin.
+## <a name="diagnose-connectivity-problems"></a>Bağlantı sorunlarını Tanıla 
 
-1. Kaynağa göz atarak özel uç nokta yapılandırmasını gözden geçirin 
+Tüm olağan yapılandırmaların, Özel uç nokta kurulumlarınızla bağlantı sorunlarını gidermek için beklendiğinden emin olmak için bu adımları gözden geçirin.
 
-    a) **özel bağlantı merkezine** git
+1. Kaynağa göz atarak özel uç nokta yapılandırmasını gözden geçirin.
+
+    a. **Özel bağlantı merkezine**gidin.
 
       ![Özel bağlantı merkezi](./media/private-endpoint-tsg/private-link-center.png)
 
-    b) sol gezinti bölmesinden özel uç noktaları seçin
+    b. Sol bölmede **Özel uç noktalar**' ı seçin.
     
       ![Özel uç noktalar](./media/private-endpoint-tsg/private-endpoints.png)
 
-    c), tanımak istediğiniz özel uç noktayı filtreleyip seçin
+    c. Tanılama yapmak istediğiniz özel uç noktayı filtreleyin ve seçin.
 
-    d) sanal ağı ve DNS bilgilerini gözden geçirin
+    d. Sanal ağ ve DNS bilgilerini gözden geçirin.
+     - Bağlantı durumunun **onaylandığını**doğrulayın.
+     - VM 'nin özel uç noktaları barındıran sanal ağa bağlantısı olduğundan emin olun.
+     - FQDN bilgilerinin (kopya) ve özel IP adresinin atandığından emin olun.
     
-     - Bağlantı durumunun **onaylandığını** doğrula
-     - VM 'nin özel uç noktaları barındıran VNet 'e bağlantısı olduğundan emin olun
-     - FQDN bilgileri (kopya) ve özel IP adresi atandı
+       ![Sanal ağ ve DNS yapılandırması](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-       ![VNet ve DNS yapılandırması](./media/private-endpoint-tsg/vnet-dns-configuration.png)    
-    
-2. Verilerin akışını gözden geçirmek için [**Azure izleyici**](https://docs.microsoft.com/azure/azure-monitor/overview) 'yi kullanma
+1. Verilerin akan olup olmadığını görmek için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) 'yi kullanın.
 
-    a) özel uç nokta kaynağında **izleyici** ' yi seçin.
-     - Verileri veya veri aşımını seçin ve özel uç noktaya bağlanmaya çalışırken verilerin akışını inceleyin. Yaklaşık 10 dakikalık bir gecikme süresi beklenir.
+    a. Özel uç nokta kaynağında, **İzle**' yi seçin.
+     - **Veri Içindeki verileri** veya **verileri**seçin. 
+     - Özel uç noktaya bağlanmaya çalıştığınızda verilerin akışa alındığını görün. Yaklaşık 10 dakikalık bir gecikme süresi bekler.
     
        ![Özel uç nokta telemetrisini doğrulama](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-3. **Ağ** IZLEYICISINDEN VM bağlantısı sorunlarını giderme
+1.  Azure ağ Izleyicisi 'nde **VM bağlantısı sorunlarını giderme** .
 
-    a) istemci VM 'sini seçin
+    a. İstemci sanal makinesini seçin.
 
-    b) **bağlantı sorunlarını giderme** bölümünü seçin, **giden bağlantı** sekmesi
+    b. **Bağlantı sorunlarını giderin**' ı seçin ve **giden bağlantılar** sekmesini seçin.
     
       ![Ağ Izleyicisi-giden bağlantıları test etme](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
     
-    c) **ayrıntılı bağlantı izleme Için ağ Izleyicisini kullan** ' ı seçin.
+    c. **Ayrıntılı bağlantı izleme Için ağ Izleyicisi kullan**' ı seçin.
     
       ![Ağ Izleyicisi-bağlantı sorunlarını giderme](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d) **FQDN 'ye göre test** seçin
-     - FQDN 'yi özel uç nokta kaynağından Yapıştır
-     - Bir bağlantı noktası sağlayın (*genellikle Azure Storage veya COSMOS için 443, SQL için 1336...* )
+    d. **FQDN Ile test**' i seçin.
+     - FQDN 'yi özel uç nokta kaynağından yapıştırın.
+     - Bir bağlantı noktası belirtin. Genellikle, Azure depolama için 443 veya SQL için Azure Cosmos DB ve 1336 kullanın.
 
-    e) **Sına** tıklayın ve test sonuçlarını doğrulayın
+    e. **Test**' i seçin ve test sonuçlarını doğrulayın.
     
       ![Ağ Izleyicisi-test sonuçları](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
         
-4. Test sonuçlarından DNS çözümlemesi, Özel uç noktaya atanmış aynı özel IP adresine sahip olmalıdır
+1. Test sonuçlarından DNS çözümlemesi, Özel uç noktaya atanmış aynı özel IP adresine sahip olmalıdır.
 
-    a) DNS ayarları yanlışsa, aşağıdakileri yapın
-     - Özel bölge kullanma: 
-       - İstemci VM VNet 'in özel bölge ile ilişkili olduğundan emin olun
-       - Özel DNS bölge kaydını gözden geçir, mevcut değilse oluştur
-    
-     - Özel DNS kullanma:
-       - Müşteri DNS ayarlarınızı gözden geçirin ve DNS yapılandırmasının doğru olduğunu doğrulayın.
-       Kılavuza yönelik [Özel uç noktaya genel bakış-DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration) bölümüne bakın.
+    a. DNS ayarları yanlışsa, şu adımları izleyin:
+     - Özel bir bölge kullanıyorsanız: 
+       - İstemci VM sanal ağının özel Bölgeyle ilişkili olduğundan emin olun.
+       - Özel DNS bölgesi kaydının mevcut olup olmadığını denetleyin. Mevcut değilse, oluşturun.
+     - Özel DNS kullanıyorsanız:
+       - Özel DNS ayarlarınızı gözden geçirin ve DNS yapılandırmasının doğru olduğunu doğrulayın.
+       Rehberlik için bkz. [Özel uç noktaya genel bakış: DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
 
-    b) NSG/UDRs nedeniyle bağlantı başarısız olursa
-     - NSG giden kurallarını gözden geçirin ve trafiğe izin vermek için uygun giden kuralları oluşturun
+    b. Ağ güvenlik grupları (NSG 'ler) veya Kullanıcı tanımlı rotalar nedeniyle bağlantı başarısız olursa:
+     - NSG giden kurallarını gözden geçirin ve trafiğe izin vermek için uygun giden kuralları oluşturun.
     
        ![NSG giden kuralları](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
-5. Bağlantıda sonuçlar doğrulandıktan sonra bağlantı sorunu, uygulama katmanındaki gizli dizileri, belirteçleri, parolaları gibi diğer yönlerle ilgili olabilir.
-   - Bu durumda, Özel uç noktayla ilişkili özel bağlantı kaynağının yapılandırmasını gözden geçirin. [Özel bağlantı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)' na bakın. 
+1. Bağlantıda sonuçlar doğrulandıktan sonra bağlantı sorunu, uygulama katmanındaki gizli diziler, belirteçler ve parolalar gibi diğer yönlerle ilgili olabilir.
+   - Bu durumda, Özel uç noktayla ilişkili özel bağlantı kaynağının yapılandırmasını gözden geçirin. Daha fazla bilgi için bkz. [Azure özel bağlantısı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md).
 
-6. Sorununuz çözülmedi ve bağlantı sorunu hala varsa [Azure destek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ekibine başvurun. 
+1. Sorununuz hala çözülmedi ve bir bağlantı sorunu hala varsa [Azure destek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ekibine başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
  * [Güncelleştirilmiş alt ağda özel bir uç nokta oluşturma (Azure portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
-
- * [Özel bağlantı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)
+ * [Azure özel bağlantısı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)

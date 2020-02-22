@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522348"
+ms.locfileid: "77538184"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -543,7 +543,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
     }
 }
 ```
-#### <a name="delete-user"></a>Kullanıcı silme
+#### <a name="delete-user"></a>Kullanıcıyı Silme
 
 ##### <a name="request-6"></a>İsteyen
 
@@ -712,7 +712,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *HTTP/1.1 204 Içerik yok*
 
-#### <a name="delete-group"></a>Grubu Sil
+#### <a name="delete-group"></a>Grubu Silme
 
 ##### <a name="request-13"></a>İsteyen
 
@@ -1448,12 +1448,13 @@ Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, 
 ### <a name="gallery-onboarding-checklist"></a>Galeri ekleme denetim listesi
 Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağıtım deneyimine sahip olduğundan emin olmak için aşağıdaki denetim listesini izleyin. Bu bilgiler, galeriye ekleme sırasında sizin için toplanacaktır. 
 > [!div class="checklist"]
-> * [Destek SCIM 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (gerekli)
+> * [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) Kullanıcı ve grup uç noktasını destekleme (yalnızca bir tane gereklidir ancak her ikisi de önerilir)
 > * Her kiracı için saniyede en az 25 istek desteklenir (gerekli)
-> * Şema bulmayı destekle (önerilir)
 > * Aşağıda açıklandığı gibi, OAuth yetkilendirme kodu yetkisini veya uzun süreli bir belirteci destekler (gerekli)
-> * Müşteri gönderi Galerisi ekleme (gerekli) desteği için mühendislik ve destek iletişim noktası oluşturma
+> * Müşteri galerisinin ekleme işlemini desteklemesi için mühendislik ve destek iletişim noktası oluşturma (gerekli)
+> * Tek bir düzeltme ekiyle birden çok grup üyeliğini güncelleştirme desteği (önerilir) 
 > * SCıM uç noktanızı genel olarak belgeleyin (önerilir) 
+> * [Şema bulmayı destekle](https://tools.ietf.org/html/rfc7643#section-6) (önerilir)
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
@@ -1497,7 +1498,7 @@ Birleşme tümleştirmemiz için bir tanıma ve talep konusunda yardımcı olmak
 
 Belirli uygulamalar, uygulamalarına gelen trafiğe izin verir. Azure AD sağlama hizmeti 'nin beklenen şekilde çalışması için, kullanılan IP adreslerine izin verilmelidir. Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Gerektiğinde bu IP 'Leri güvenlik duvarınızdan indirebilir ve programlayabilirsiniz. Azure AD sağlama için ayrılmış IP aralıkları "AzureActiveDirectoryDomainServices" altında bulunabilir.
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
 * [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](user-provisioning.md)
 * [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)

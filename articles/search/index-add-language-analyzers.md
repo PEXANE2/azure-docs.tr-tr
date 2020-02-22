@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460807"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539408"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
@@ -44,7 +44,7 @@ Varsayılan çözümleyici, Ingilizce 'nin yanı sıra Lucene 'in Ingilizce Çö
  
 + Lucene 'ın Ingilizce Çözümleyicisi standart çözümleyici 'yi genişletiyor. Sözcüklerdeki iyelik (sondaki) ' ı kaldırır, her Porter için sözcük kökü karartma algoritması olarak sözcük kökü ayırmayı uygular ve Ingilizce durdurma sözcüklerini kaldırır.  
 
-+ Microsoft 'un Ingilizce Çözümleyicisi, sözcük kökü ayırmayı yerine katileştirme gerçekleştirir. Bu, daha fazla ilgili arama sonuçlarına göre daha iyi ve düzensiz Word formlarını işleyebileceği anlamına gelir. 
++ Microsoft 'un Ingilizce Çözümleyicisi, sözcük kökü ayırmayı yerine katileştirme gerçekleştirir. Bu, daha fazla ilgili arama sonuçlarıyla sonuçlanarak ve düzensiz Word formlarının çok daha iyi işleyebileceği anlamına gelir 
 
 ## <a name="configuring-analyzers"></a>Çözümleyicileri yapılandırma
 
@@ -98,7 +98,7 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create &#40;ındex Azu
 |Litvanca|lt. Microsoft||  
 |Malayalam dili|ml. Microsoft||  
 |Malay dili (Latin)|MS. Microsoft||  
-|Marathi dili|Mr. Microsoft||  
+|Marathi|Mr. Microsoft||  
 |Norveççe|NB. Microsoft|Hayır. Lucene|  
 |Farsça||FA. Lucene|  
 |Lehçe|pl. Microsoft|pl. Lucene|  

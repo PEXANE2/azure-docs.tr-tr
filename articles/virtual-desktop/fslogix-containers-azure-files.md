@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 49a63be8e8ac3752006d531f4541cb3c2904c3e3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472477"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539629"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -87,7 +87,7 @@ Windows sanal masaüstü, müşteriler tarafından kullanılmakta olan VM 'lerin
 Windows sanal masaüstü ortamınızın en iyi yöntemleri takip edin:
 
 - Azure dosyaları depolama hesabı, oturum ana bilgisayar VM 'Leri ile aynı bölgede olmalıdır.
-- Azure dosyaları izinleri, [gereksinimler profil kapsayıcılarında](/fslogix/overview#requirements)açıklanan izinlerle eşleşmelidir.
+- Azure dosyaları izinleri, [gereksinimler profil kapsayıcılarında](/fslogix/fslogix-storage-config-ht)açıklanan izinlerle eşleşmelidir.
 - Her konak havuzunun aynı ana görüntüye göre aynı tür ve boyut VM 'si oluşturulması gerekir.
 - Yönetim, ölçeklendirme ve güncelleştirme yardımcı olması için her bir konak havuzu sanal makinesi aynı kaynak grubunda olmalıdır.
 - En iyi performans için, depolama çözümü ve FSLogix profili kapsayıcısı aynı veri merkezi konumunda olmalıdır.

@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932587"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544241"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
 
@@ -26,18 +26,38 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 > * [AKS destek Ilkeleri](support-policies.md)
 > * [Azure desteği SSS](faq.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure CLı sürüm 2.0.77 veya üzeri ve Azure CLı AKS önizleme uzantısı sürüm 0.4.18
 
 ## <a name="currently-supported-regions"></a>Şu anda desteklenen bölgeler
+
+* Doğu Avustralya
+* Güneydoğu Avustralya
+* Güney Brezilya
+* Orta Kanada
+* Doğu Kanada
+* Cenral US
+* Doğu Asya
+* Doğu ABD
+* Doğu ABD 2
+* EUAP Doğu ABD 2
+* Orta Fransa
+* Almanya Kuzey
+* Doğu Japonya
+* Batı Japonya
+* Güney Kore - Orta
+* Güney Kore - Güney
+* Orta Kuzey ABD
+* Kuzey Avrupa
+* Kuzey Avrupa
+* Orta Güney ABD
+* Güney Birleşik Krallık
+* Batı Avrupa
 * Batı ABD
 * Batı ABD 2
 * Doğu ABD 2
-* Orta Kanada
-* Kuzey Avrupa
-* Batı Avrupa
-* Doğu Avustralya
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>En son Azure CLı AKS önizleme uzantısını yükler
 

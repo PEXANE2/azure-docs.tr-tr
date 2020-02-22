@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264840"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539459"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
 Bu makalede bir sınıf Laboratuvarı oluşturma ve silme açıklanmaktadır. Ayrıca, tüm sınıf laboratuvarlarını bir laboratuvar hesabında nasıl görüntüleyekullanacağınızı gösterir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratuvar hesabında **Laboratuvar Oluşturan** rolünün üyesi olmanız gerekir. Laboratuvar hesabını oluşturmak için kullandığınız hesap otomatik olarak bu role eklenir. Laboratuvar sahibi, şu makaledeki adımları kullanarak Laboratuvar Oluşturan rolüne kullanıcı ekleyebilir: [Laboratuvar Oluşturan rolüne kullanıcı ekleme](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Sınıf laboratuvarı oluşturma
@@ -41,6 +41,9 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
     6. **Kaydet**’i seçin.
 
         ![Yeni laboratuvar penceresi](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > Laboratuvar hesabı laboratuvar [Oluşturucu 'nın laboratuvar konumu](allow-lab-creator-pick-lab-location.md) seçeneğini seçmesine izin verecek şekilde yapılandırıldıysa laboratuvarınız için bir konum seçme seçeneği görürsünüz. 
 4. **Sanal makine kimlik bilgileri** sayfasında, laboratuvardaki tüm VM 'ler için varsayılan kimlik bilgilerini belirtin.
     1. Laboratuvardaki tüm VM'ler için **kullanıcı adını** belirtin.
     2. Kullanıcının **parolasını** belirtin. 
@@ -52,12 +55,14 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
         Öğretmen, laboratuvardaki tüm VM 'Ler için aynı parolayı kullanmayı seçebilir veya öğrencilerin VM 'Leri için parola değiştirmesine izin verebilir. Varsayılan olarak, bu ayar Ubuntu hariç tüm Windows ve Linux görüntüleri için etkinleştirilmiştir. **Ubuntu** VM ' yi seçtiğinizde, bu ayar devre dışıdır, bu nedenle ilk kez oturum açtıklarında öğrencilerin bir parola ayarlaması istenir.  
 
         ![Yeni laboratuvar penceresi](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > Kullanıcı adını ve parolayı not edin. Bunlar tekrar gösterilmeyecektir.    
     4. Ardından, **sanal makine kimlik bilgileri** sayfasında **İleri** ' yi seçin. 
-5. **Laboratuvar ilkeleri** sayfasında, her kullanıcı için ayrılan saat sayısını (**her bir kullanıcı için kota**) laboratuvar için zamanlanan süre dışında girin ve ardından **son**' u seçin. 
+5. **Laboratuvar ilkeleri** sayfasında, aşağıdaki adımları uygulayın:
+    1. Laboratuvar için zamanlanan sürenin dışında her bir kullanıcı için ayrılan saat sayısını (**her bir kullanıcı için kota**) girin. 
+    2. **Sanal makinelerin otomatik olarak kapatılmasını** seçeneği için, kullanıcının BAĞLANTıSı kesildiğinde VM 'nin otomatik olarak kapatılmasını isteyip istemediğinizi belirtin. Ayrıca, sanal makinenin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini de belirtebilirsiniz. Daha fazla bilgi için bkz. [bağlantı kesildiğinde VM 'lerin otomatik kapatılmasını etkinleştirme](how-to-enable-shutdown-disconnect.md).
+    3. Ardından **son**' u seçin. 
 
-    ![Her Kullanıcı için kota](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![Her Kullanıcı için kota](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. Şablon VM oluşturma 'nın durumunu gösteren aşağıdaki ekranı görmeniz gerekir. Laboratuvar şablonunun oluşturulması 20 dakika sürebilir. 
 
     ![Şablon VM oluşturma durumu](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -107,7 +112,7 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
 ## <a name="view-all-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleyin
 1. [Azure Lab Services Portal](https://labs.azure.com)' a gidin.
-2. **Oturum aç '** ı seçin. Laboratuvar hesabındaki **Laboratuvar Oluşturucu** rolünün bir üyesi olan BIR **Kullanıcı kimliği** seçin veya girin ve parola girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
+2. **Oturum aç**'ı seçin. Laboratuvar hesabındaki **Laboratuvar Oluşturucu** rolünün bir üyesi olan BIR **Kullanıcı kimliği** seçin veya girin ve parola girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
 3. Seçilen laboratuvar hesabındaki tüm laboratuvarları görtığınızdan emin olun. Laboratuvarın kutucuğunda, laboratuvardaki sanal makine sayısını ve her kullanıcı için kotayı (zamanlanan sürenin dışında) görürsünüz.
 
     ![Tüm laboratuvarlar](../media/how-to-manage-classroom-labs/all-labs.png)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e7a86f3a709566bcf18241ce3c329c0355be2743
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443848"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539561"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -115,7 +115,7 @@ Linux için, makinenin bir güncelleştirme deposuna erişimi olması gerekir. G
 
 Linux için Log Analytics aracısını yükleme ve en son sürümü indirme hakkında daha fazla bilgi için bkz. [Linux için Log Analytics Aracısı](https://github.com/microsoft/oms-agent-for-linux). Windows için Log Analytics aracısının nasıl yükleneceği hakkında bilgi için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../log-analytics/log-analytics-windows-agent.md).
 
-Azure Marketi 'nde bulunan isteğe bağlı Red Hat Enterprise Linux (RHEL) görüntülerinden oluşturulan VM 'Ler, Azure 'da dağıtılan [Red Hat güncelleştirme altyapısına (rhuı)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) erişmek için kaydedilir. Diğer tüm Linux dağıtımı, dağıtımın desteklenen yöntemleri kullanılarak dağıtımın çevrimiçi dosya deposundan güncelleştirilmeleri gerekir.
+Azure Marketi 'nde bulunan isteğe bağlı Red Hat Enterprise Linux (RHEL) görüntülerinden oluşturulan VM 'Ler, Azure 'da dağıtılan [Red Hat güncelleştirme altyapısına (rhuı)](../virtual-machines/workloads/redhat/redhat-rhui.md) erişmek için kaydedilir. Diğer tüm Linux dağıtımı, dağıtımın desteklenen yöntemleri kullanılarak dağıtımın çevrimiçi dosya deposundan güncelleştirilmeleri gerekir.
 
 ## <a name="permissions"></a>İzinler
 
@@ -184,7 +184,7 @@ Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 
 
 Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir. [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli uç noktaların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
 
-Red Hat Linux makineleri için, gerekli uç noktalar için [rhuı içerik teslim sunucuları Için IP 'ler](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) bölümüne bakın. Diğer Linux dağıtımları için sağlayıcı belgelerinize bakın.
+Red Hat Linux makineleri için, gerekli uç noktalar için [rhuı içerik teslim sunucuları Için IP 'ler](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) bölümüne bakın. Diğer Linux dağıtımları için sağlayıcı belgelerinize bakın.
 
 Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma çalışan rolü bağlantı noktaları](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169217"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539236"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapılacağı, VM 'nin kullanabileceği saat sayısını denetleme ve daha fazla bilgi edinebilirsiniz. 
@@ -35,7 +35,7 @@ Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapıl
     ![Kullanıcı e-posta adresleri Ekle](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. **Kaydet**’i seçin. Kullanıcıların e-posta adreslerini ve bunların durumlarını (kayıtlı veya değil) listede görürsünüz. 
 
-    ![Kullanıcı listesi](../media/how-to-configure-student-usage/users-list-new.png)
+    ![Kullanıcı listesi](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > Laboratuvar 'e kaydolduktan sonra listedeki kullanıcıların adlarını görürsünüz. Listede gösterilen ad, Azure Active Directory kullanıcının ilk ve son adları kullanılarak oluşturulur. 
@@ -101,11 +101,14 @@ Ayrıca, portaldan kayıt bağlantısını alabilir ve kendi e-posta istemci uyg
 2. **Kullanıcı kaydı** Iletişim kutusunda **bitti**' yi seçin. 
 4. Öğrencinin sınıfa kaydolabilmesi için **kayıt bağlantısını** bir öğrenciye gönderin. 
 
-## <a name="view-users-registered-with-the-lab"></a>Laboratuvara kayıtlı kullanıcıları görüntüleme
+## <a name="view-registered-users"></a>Kayıtlı kullanıcıları görüntüle
 
-Laboratuvara kayıtlı kullanıcıların listesini görmek için sol menüdeki **Kullanıcılar** ' ı seçin. 
+1. [Azure Lab Services web sitesine](https://labs.azure.com) gidin. 
+2. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler.
+3. **Laboratuvarlarım** sayfasında kullanımını izlemek istediğiniz laboratuvarı seçin. 
+4. Sol menüdeki veya **Kullanıcılar** kutucuğunda **Kullanıcılar** ' ı seçin. Laboratuvarınıza kayıtlı öğrencileri görürsünüz.  
 
-![Laboratuvara kayıtlı kullanıcıların listesi](../media/how-to-configure-student-usage/students-registered.png)
+    ![Kayıtlı kullanıcılar](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Kullanıcılar için kota ayarlama
 Aşağıdaki adımları kullanarak, Kullanıcı başına kota ayarlayabilirsiniz: 
@@ -115,7 +118,7 @@ Aşağıdaki adımları kullanarak, Kullanıcı başına kota ayarlayabilirsiniz
 3. **Kullanıcı başına kota** sayfasında, zamanlanan sınıf süresi dışında her kullanıcıya (öğrenci) vermek istediğiniz saat sayısını belirtin ve ardından **Kaydet**' i seçin.
 
     ![Kullanıcı başına kota](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Değiştirilen değerleri şimdi araç çubuğunda görürsünüz: **Kullanıcı başına kota: \<saat sayısı >** . 
+5. Araç çubuğunda değiştirilen değerleri şimdi görürsünüz: **Kullanıcı başına kota: \<saat sayısı >** ve ayrıca kullanıcılar listesinde.
 
     ![Kullanıcı başına kota (sonrasında)](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

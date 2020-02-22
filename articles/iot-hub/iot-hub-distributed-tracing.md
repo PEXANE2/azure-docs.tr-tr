@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212478"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539544"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -201,7 +201,7 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
 1. %0 ile %100 arasında bir **örnekleme oranı** seçin.
 
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 1. Birkaç saniye bekleyin ve **yenileme**' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
 
@@ -308,8 +308,8 @@ Etkinleştirildikten sonra, IoT Hub için dağıtılmış izleme desteği şu ak
 1. IoT cihazı IoT Hub ileti gönderir.
 1. İleti, IoT Hub ağ geçidine ulaşır.
 1. IoT Hub ileti uygulama özelliklerindeki `tracestate` arar ve doğru biçimde olup olmadığını denetler.
-1. Bu durumda, IoT Hub `trace-id` ve Günlükler `DiagnosticIoTHubD2C`kategori altındaki Azure Izleyici tanılama günlüklerine `span-id` oluşturur.
-1. İleti işleme tamamlandıktan sonra, IoT Hub başka bir `span-id` oluşturur ve bu dosyayı kategori `DiagnosticIoTHubIngress`altındaki mevcut `trace-id` birlikte günlüğe kaydeder.
+1. Bu durumda, IoT Hub ileti için genel olarak benzersiz bir `trace-id` üretir, "atlama" için bir `span-id` ve bunları işlem `DiagnosticIoTHubD2C`altında Azure Izleyici tanılama günlüklerine kaydeder.
+1. İleti işleme tamamlandıktan sonra, IoT Hub başka bir `span-id` oluşturur ve işlem `DiagnosticIoTHubIngress`içinde mevcut `trace-id` birlikte günlüğe kaydeder.
 1. İleti için yönlendirme etkinleştirildiyse, IoT Hub özel uç noktaya yazar ve kategori `DiagnosticIoTHubEgress`altında aynı `trace-id` başka bir `span-id` günlüğe kaydeder.
 1. Yukarıdaki adımlar, oluşturulan her ileti için yinelenir.
 

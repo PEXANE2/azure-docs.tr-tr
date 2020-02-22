@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 32138c228284f9487b816583dd1f701556bbcb95
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158154"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544224"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme
 
@@ -123,7 +123,7 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 [Az ad App Permission Add][az-ad-app-permission-add] komutunu kullanarak oAuth2 iletişim akışını kullanmak için istemci uygulaması ve sunucu uygulaması bileşenlerine ilişkin izinleri ekleyin. Daha sonra, [az ad uygulama izni verme][az-ad-app-permission-grant] komutunu kullanarak istemci uygulaması için sunucu uygulamasıyla iletişim kurmak için izin verin:
 
 ```azurecli-interactive
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 

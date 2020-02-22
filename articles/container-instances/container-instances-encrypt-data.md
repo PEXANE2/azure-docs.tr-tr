@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934312"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544326"
 ---
 # <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleme
 
@@ -89,7 +89,7 @@ Erişim ilkesinin artık anahtar kasasının erişim ilkelerinde gösterilmesi g
 > Dağıtım verilerinin, müşteri tarafından yönetilen bir anahtarla şifrelenmesi, şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin. Bu sorunla karşılaşırsanız lütfen Azure desteğine ulaşın.
 
 Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki özellikleri acı dağıtım şablonunuza ekleyin. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* `resources`altında `apiVersion` `2012-12-01`olarak ayarlayın.
+* `resources`altında `apiVersion` `2019-12-01`olarak ayarlayın.
 * Dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde aşağıdaki değerleri içeren bir `encryptionProperties`ekleyin:
   * `vaultBaseUrl`: anahtar kasanızın DNS adı, portalda Anahtar Kasası kaynağının genel bakış dikey penceresinde bulunabilir
   * `keyName`: daha önce oluşturulan anahtarın adı
