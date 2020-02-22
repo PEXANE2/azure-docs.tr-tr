@@ -1,22 +1,22 @@
 ### YamlMime:Hub
 title: Azure Bilişsel Hizmetler belgeleri
 summary: Kullanıcılarınızın ihtiyaçlarını görmek, duymak, dile getirmek, anlamak ve yorumlamak için uygulamalarınıza, web sitelerinize ve botlarınıza akıllı ve desteklenen algoritmalar oluşturmayı öğrenin.
+brand: azure
 metadata:
   title: Azure Bilişsel Hizmetler belgeleri
   description: Kullanıcılarınızın ihtiyaçlarını görmek, duymak, dile getirmek, anlamak ve yorumlamak için uygulamalarınıza, web sitelerinize ve botlarınıza akıllı ve desteklenen algoritmalar oluşturmayı öğrenin.
   ms.service: cognitive-services
   ms.topic: hub-page
-  brand: azure
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 11/04/2019
-  ms.openlocfilehash: e0fc6aaaedc5eff98017eb62187575ab9afbba59
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.date: 01/21/2020
+  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945189"
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77560771"
 highlightedContent:
   items:
   - title: Bilişsel Hizmetler nedir?
@@ -71,7 +71,7 @@ conceptualContent:
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: Tam Ekran Okuyucu
+      text: Tam Ekran Okuyucu (Önizleme)
     - url: ./luis/index.yml
       itemType: overview
       text: Language Understanding (LUIS)
@@ -87,7 +87,7 @@ conceptualContent:
   - title: Konuşma
     summary: Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.
     links:
-    - url: ./speech-service/index.md
+    - url: ./speech-service/index.yml
       itemType: overview
       text: Konuşma hizmeti
     - url: ./speaker-recognition/home.md
