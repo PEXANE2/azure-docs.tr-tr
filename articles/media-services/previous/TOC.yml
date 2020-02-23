@@ -397,8 +397,6 @@
       items:
         - name: Mevcut oynatıcılar ile medya oynatma
           href: media-services-playback-content-with-existing-players.md
-        - name: Media Player ile medya oynatma
-          href: media-services-develop-video-players.md
         - name: Diğer kayıttan yürütme seçenekleri
           items:
             - name: Kesintisiz akış Windows Mağazası uygulaması
