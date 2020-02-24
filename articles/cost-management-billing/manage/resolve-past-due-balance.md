@@ -2,43 +2,44 @@
 title: Azure’dan süresi geçmiş bakiye e-postası
 description: Azure aboneliğinizin süresi geçmiş bakiyesi varsa nasıl ödeme yapılacağını açıklar
 author: genlin
-manager: dcscontentpm
+ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7216af00413b1f8022957ac134f67a5c27b6cc78
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987908"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200614"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Azure aboneliğiniz için süresi geçmiş bakiye sorununu çözme
 
-Bu makale, Microsoft Online Services Program hesabı olan müşteriler için geçerlidir.
+Bu makale Azure’a çevrimiçi ortamda kredi kartıyla kaydolan ve Microsoft Online Services Programı ödeme hesabı olan müşterilere yöneliktir. [Ödeme hesabınızın türünü denetlemeyi](#check-the-type-of-your-account) öğrenin. Microsoft Müşteri Sözleşmesi ödeme hesabınız varsa bunun yerine [Microsoft Azure faturanızı ödeme](../understand/pay-bill.md) konusuna bakın.
 
-Ödemeniz alınmadıysa veya ödemenizi işleyemediysek bir e-posta alabilir ya da Hesap Merkezinde veya Azure portalında bir uyarı görebilirsiniz.
-[Hesap Yöneticisi](billing-subscription-transfer.md#whoisaa) iseniz, [Azure portalında](https://portal.azure.com) kalan ücretleri ödeyebilirsiniz. Fatura ödeme modundaysanız, ödemenizi faturanızın en altında bulunan konuma gönderin.
+Ödemeniz alınmadıysa veya ödemenizi işleyemediysek bir e-posta alır ve Azure portalında abonelik ödemenizin süresinin geçtiğini bildiren bir uyarı görürsünüz. Varsayılan ödeme yönteminiz kredi kartıyla [Hesap Yöneticisi](billing-subscription-transfer.md#whoisaa) kalan ücretleri Azure portalında ödeyebilir. Fatura ile ödemeyi (çek/havale) seçerseniz, ödemenizi faturanızın en altında bulunan konuma gönderin.
 
 > [!IMPORTANT]
 > * Aynı kredi kartını kullandığınız birden çok aboneliğiniz varsa ve bunların tümünün süresi geçmişse, kalan bakiyenin tamamını bir defada ödemeniz gerekir.
-> * Kalan ücretleri ödemek için kullandığınız ödeme aracı, başarısız ödeme yöntemini kullanmış olan tüm abonelikler için yeni etkin ödeme yöntemi olur.
+> * Kalan ücretleri ödemek için kullandığınız kredi kartı, başarısız ödeme yöntemini kullanmış olan tüm abonelikler için yeni varsayılan ödeme yöntemi olur.
 
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Azure portalında süresi geçmiş bakiye sorunlarını çözme
 
 1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. Genel Bakış sayfasında, aboneliklerinizin bir listesini görürsünüz. Aboneliğiniz süresi geçmiş durumundaysa **Bakiyeyi ödeyin** bağlantısına tıklayın.
-    ![Bakiyeyi ödeyin bağlantısını gösteren ekran görüntüsü](./media/resolve-past-due-balance/settle-balance-entry-point.png)
-1. Toplam kalan bakiye, başarısız ödeme yöntemini kullanan tüm Microsoft hizmetlerindeki kalan ücretleri yansıtır.
-1. Bakiyeyi ödemek için bir ödeme yöntemi seçin. Bu ödeme yöntemi, şu anda başarısız olan ödeme yöntemini kullanan tüm abonelikler için etkin ödeme yöntemi olur.
+1. **Genel Bakış** sayfasında ödeme süresi geçmiş aboneliği seçin.
+1. Kalan ücreti ödemek için **Aboneliğe genel bakış** sayfasında kırmızı süresi geçmiş başlığına tıklayın.
+    > [!NOTE]
+    > Hesap Yöneticisi değilseniz kalan ücreti ödeyemezsiniz.
+1. **Bakiyeyi öde** sayfasında **Ödeme yöntemi seç**’e tıklayın.
     ![Ödeme yöntemini seçin bağlantısını gösteren ekran görüntüsü](./media/resolve-past-due-balance/settle-balance-screen.png)
-1. Seçili ödeme yönteminin Microsoft hizmetleri için kalan ücretleri de varsa bu, toplam kalan bakiyeye yansıtılır. Bu kalan ücretleri de ödemeniz gerekir.
+
+1. Sağdaki yeni dikey pencerede açılan menüden kredi kartını seçin veya mavi renkli **Yeni ödeme yöntemi ekleyin** bağlantısına tıklayarak yeni bir kart ekleyin. Bu kredi kartı, şu anda başarısız olan ödeme yöntemini kullanan tüm abonelikler için etkin ödeme yöntemi olur.
+     > [!NOTE]
+     > * Toplam kalan bakiye, başarısız ödeme yöntemini kullanan tüm Microsoft hizmetlerindeki kalan ücretleri yansıtır.
+     > * Seçili ödeme yönteminin Microsoft hizmetleri için kalan ücretleri de varsa bu, toplam kalan bakiyeye yansıtılır. Bu kalan ücretleri de ödemeniz gerekir.
 1. **Ödeme**’ye tıklayın.
 
 ## <a name="troubleshoot-declined-credit-card"></a>Reddedilen kart sorununu giderme
@@ -58,6 +59,8 @@ Hizmet iptal edilir ve kaynaklarınız artık kullanılamaz. Hizmet sonlandırı
 
 Ödemenizin işlendiğini bildiğiniz halde aboneliğiniz halen devre dışı bırakılmışsa [Azure Desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)’ne başvurun.
 
+## <a name="check-the-type-of-your-account"></a>Hesabınızın türünü denetleme
+[!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

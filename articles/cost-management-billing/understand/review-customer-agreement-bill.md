@@ -2,21 +2,18 @@
 title: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirme - Azure
 description: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirerek kaynak kullanımınızı incelemeyi ve ücretleri doğrulamayı öğrenin.
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/22/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 961eef939684b1bfb4ebe1840ff87e7bd836f205
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 21579c7c3acd726ac8958768238631333cf63c39
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121772"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199152"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Öğretici: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirme
 

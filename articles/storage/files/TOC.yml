@@ -43,7 +43,7 @@
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Depolama şifrelemesi
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: SMB üzerinden Azure AD kimlik doğrulaması
+        - name: Kimlik tabanlı doğrulama ve yetkilendirme
           href: storage-files-active-directory-overview.md
         - name: Azure Özel Uç Noktalar'ı kullanma
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -173,7 +173,9 @@
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Güvenli aktarım gerektir
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirme
+        - name: AD kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
+          href: storage-files-active-directory-domain-services-enable.md
+        - name: Azure AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
           href: storage-files-active-directory-enable.md
         - name: Azure Depolama istemcisi için güvenli TLS'yi etkinleştirme
           href: ../common/storage-security-tls.md

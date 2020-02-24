@@ -1,26 +1,30 @@
 - name: Konuşma hizmeti belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
   expanded: true
   items:
     - name: Konuşma tanıma hizmeti nedir?
       href: overview.md
+    - name: Konuşma hizmetini ücretsiz olarak deneme
+      href: get-started.md
     - name: Dil ve bölge desteği
       href: language-support.md
       displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Konuşmayı metne dönüştürme
   expanded: false
   items:
+    - name: Konuşmayı metne dönüştürme belgeleri
+      href: index-speech-to-text.yml
     - name: Genel Bakış
       items:
         - name: Konuşmayı metne dönüştürme nedir?
           href: speech-to-text.md
-    - name: Hızlı Başlangıçlar
+    - name: Hızlı Başlangıç
       items:
-        - name: Ses dosyasından alınan konuşmayı tanıma
-          href: quickstarts/speech-to-text-from-file.md
         - name: Mikrofon girişiyle yapılan konuşmayı tanıma
           href: quickstarts/speech-to-text-from-microphone.md
+        - name: Ses dosyasından alınan konuşmayı tanıma
+          href: quickstarts/speech-to-text-from-file.md
         - name: Blob depolama alanında depolanan konuşmayı tanıma
           href: quickstarts/from-blob.md
     - name: Nasıl yapılır kılavuzları
@@ -45,8 +49,20 @@
           href: how-to-use-codec-compressed-audio-input-streams-ios.md
         - name: Sıkıştırılmış ses giriş biçimlerini kullanma (Android)
           href: how-to-use-codec-compressed-audio-input-streams-android.md
-        - name: Docker kapsayıcılarıyla konuşma tanıma özelliğini kullanma
-          href: speech-container-howto.md?tabs=stt
+    - name: Özelleştirme
+      items:
+        - name: Verileri hazırlama
+          href: how-to-custom-speech-test-data.md
+        - name: Verileri inceleme
+          href: how-to-custom-speech-inspect-data.md
+        - name: Doğruluk değerlendirme
+          href: how-to-custom-speech-evaluate-data.md
+        - name: Özel bir modeli eğitme
+          href: how-to-custom-speech-train-model.md
+        - name: Özel bir modeli dağıtma
+          href: how-to-custom-speech-deploy-model.md
+        - name: İnsan etiketli transkripsiyonlar oluşturma
+          href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Başvuru
       items:
         - name: Konuşma SDK'sı API'leri
@@ -86,33 +102,68 @@
 - name: Metin okuma
   expanded: false
   items:
+    - name: Metin okuma belgeleri
+      href: index-text-to-speech.yml
     - name: Genel Bakış
       items:
         - name: Metin okuma nedir?
           href: text-to-speech.md
-    - name: Hızlı Başlangıçlar
+    - name: Hızlı Başlangıç
       items:
-        - name: Konuşmayı ses dosyasına sentezleme
-          href: quickstarts/text-to-speech-audio-file.md
         - name: Konuşmayı hoparlöre sentezleme
           href: quickstarts/text-to-speech.md
-        - name: Uzun ses için zaman uyumsuz sentez
+        - name: Konuşmayı ses dosyasına sentezleme
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: Uzun süreli ses ile konuşmayı sentezleme
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: SSML ile çıkışı geliştirme
+        - name: SSML ile sentezi geliştirme
           href: speech-synthesis-markup.md
-        - name: Özel Seslerle çıkışı geliştirme
+        - name: Özel Ses ile sentezi geliştirme
           href: how-to-custom-voice.md
           displayName: custom voice
         - name: Uzun Ses API'siyle konuşmayı sentezleme
           href: long-audio-api.md
-        - name: Docker kapsayıcılarıyla konuşma sentezi özelliğini kullanma
-          href: speech-container-howto.md?tabs=tts
         - name: REST ile seslerin bir listesini alma (Python)
           href: quickstart-python-get-text-to-speech-voices.md
         - name: REST ile metin okumayı dönüştürme (Python)
           href: quickstart-python-text-to-speech.md
+    - name: Özelleştirme
+      items:
+        - name: Sorumlu dağıtım
+          items:
+            - name: Özel Ses geçişi
+              href: concepts-gating-overview.md
+            - name: Sentetik teknoloji dağıtımı
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: Seslendiren kişinin açıklaması
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: Tasarım yönergelerini açıklama
+              href: concepts-disclosure-guidelines.md
+            - name: Tasarım desenlerini açıklama
+              href: concepts-disclosure-patterns.md
+            - name: Kullanım kuralları
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: Özel Ses portalı
+          items:
+            - name: Özel Ses’i kullanmaya başlama
+              href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
+            - name: Verileri hazırlama
+              href: how-to-custom-voice-prepare-data.md
+            - name: Özel Ses modelleri oluşturma ve kullanma
+              href: how-to-custom-voice-create-voice.md
+            - name: Ses örnekleri kaydetme
+              href: record-custom-voice-samples.md
+            - name: Özel anahtar sözcük adlandırma yönergeleri
+              href: speech-devices-sdk-kws-guidelines.md
+            - name: Özel anahtar sözcük belirleme
+              href: speech-devices-sdk-create-kws.md
+        - name: Ses İçeriği Oluşturma
+          items:
+            - name: Ses İçeriği Oluşturma
+              href: how-to-audio-content-creation.md
     - name: Başvuru
       items:
         - name: Konuşma SDK'sı
@@ -147,55 +198,16 @@
         - name: Metin okuma hakkında SSS
           href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
-- name: Amaç tanıma
-  expanded: false
-  items:
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: 'Konuşmayı, amaçları ve varlıkları tanıma'
-          href: quickstarts/intent-recognition.md
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-    - name: Nasıl yapılır kılavuzları
-      items:
-        - name: 'LUIS ile konuşma amaçlarını tanıma, C#'
-          href: how-to-recognize-intents-from-speech-csharp.md
-    - name: Başvuru
-      items:
-        - name: Konuşma SDK'sı
-          items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: Sürüm notları
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: LUIS hizmeti
-          items:
-            - name: LUIS geliştirici kaynakları
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Konuşma çevirisi
   expanded: false
   items:
+    - name: Konuşma çevirisi belgeleri
+      href: index-speech-translation.yml
     - name: Genel Bakış
       items:
         - name: Konuşma çevirisi nedir?
           href: speech-translation.md
-    - name: Hızlı Başlangıçlar
+    - name: Hızlı Başlangıç
       items:
         - name: Konuşmayı metne çevirme
           href: quickstarts/translate-speech-to-text.md
@@ -236,20 +248,68 @@
       items:
         - name: Konuşma çevirisi hakkında SSS
           href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: Amaç tanıma
+  expanded: false
+  items:
+    - name: Amaç tanıma belgeleri
+      href: index-intent-recognition.yml
+    - name: Hızlı Başlangıç
+      items:
+        - name: 'Konuşmayı, amaçları ve varlıkları tanıma'
+          href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: 'LUIS ile konuşma amaçlarını tanıma, C#'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: Başvuru
+      items:
+        - name: Konuşma SDK'sı
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+            - name: Sürüm notları
+              href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+        - name: LUIS hizmeti
+          items:
+            - name: LUIS geliştirici kaynakları
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Konuşma senaryoları
   expanded: false
   items:
+    - name: Konuşma senaryoları belgeleri
+      href: index-conversation-scenarios.yml
     - name: Konuşma transkripsiyonu
       items:
         - name: Genel Bakış
           items:
-            - name: Konuşma transkripsiyonu nedir?
+            - name: Konuşma transkripsiyonu hakkında
               href: conversation-transcription.md
         - name: Nasıl yapılır kılavuzları
           items:
-            - name: Gerçek zamanlı Konuşma Transkripsiyonu
+            - name: Çağrı merkezi senaryolarını işleme
+              href: call-center-transcription.md
+              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+            - name: Gerçek Zamanlı Konuşma transkripsiyonu
               href: how-to-use-conversation-transcription.md
-            - name: Zaman uyumsuz Konuşma Transkripsiyonu
+            - name: Zaman Uyumsuz Konuşma transkripsiyonu
               href: how-to-async-conversation-transcription.md
         - name: Başvuru
           items:
@@ -284,9 +344,9 @@
       items:
         - name: Genel Bakış
           items:
-            - name: Çok cihazlı konuşma nedir?
+            - name: Çok cihazlı konuşma hakkında
               href: multi-device-conversation.md
-        - name: Hızlı Başlangıçlar
+        - name: Hızlı Başlangıç
           items:
             - name: Sohbet başlatma ve sohbete katılma
               href: quickstarts/multi-device-conversation.md
@@ -301,6 +361,8 @@
 - name: Ses yardımcıları
   expanded: false
   items:
+    - name: Ses yardımcısı belgeleri
+      href: index-voice-assistants.yml
     - name: Genel Bakış
       items:
         - name: Ses yardımcısı nedir?
@@ -349,115 +411,25 @@
           items:
             - name: Ses yardımcıları hakkında SSS
               href: faq-voice-assistants.md
-- name: Özelleştirme
+- name: Barındırma
   expanded: false
   items:
-    - name: Konuşmayı metne dönüştürme
-      items:
-        - name: Özel Konuşma portalı
-          items:
-            - name: Özel Konuşma kullanmaya başlama
-              href: how-to-custom-speech.md
-            - name: Verileri hazırlama
-              href: how-to-custom-speech-test-data.md
-            - name: Verileri inceleme
-              href: how-to-custom-speech-inspect-data.md
-            - name: Doğruluk değerlendirme
-              href: how-to-custom-speech-evaluate-data.md
-            - name: Özel bir modeli eğitme
-              href: how-to-custom-speech-train-model.md
-            - name: Özel bir modeli dağıtma
-              href: how-to-custom-speech-deploy-model.md
-            - name: İnsan etiketli transkripsiyonlar oluşturma
-              href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Kiracı modelleri
-          items:
-            - name: 'Modeli oluşturma, yayımlama ve kullanma'
-              href: tutorial-tenant-model.md
-    - name: Metin okuma
-      items:
-        - name: Sorumlu dağıtım
-          items:
-            - name: Özel Ses geçişi
-              href: concepts-gating-overview.md
-            - name: Sentetik teknoloji dağıtımı
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Seslendiren kişinin açıklaması
-              href: 'https://aka.ms/disclosure-voice-talent'
-            - name: Tasarım yönergelerini açıklama
-              href: concepts-disclosure-guidelines.md
-            - name: Tasarım desenlerini açıklama
-              href: concepts-disclosure-patterns.md
-            - name: Kullanım kuralları
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: Özel Ses portalı
-          items:
-            - name: Özel Ses’i kullanmaya başlama
-              href: how-to-custom-voice.md
-              displayName: 'custom voice, neural voice'
-            - name: Verileri hazırlama
-              href: how-to-custom-voice-prepare-data.md
-            - name: Özel Ses modelleri oluşturma ve kullanma
-              href: how-to-custom-voice-create-voice.md
-            - name: Ses örnekleri kaydetme
-              href: record-custom-voice-samples.md
-        - name: Ses İçeriği Oluşturma
-          items:
-            - name: Ses İçeriği Oluşturma
-              href: how-to-audio-content-creation.md
-    - name: Özel anahtar sözcük adlandırma yönergeleri
-      href: speech-devices-sdk-kws-guidelines.md
-    - name: Özel anahtar sözcük belirleme
-      href: speech-devices-sdk-create-kws.md
-- name: Konuşma hizmeti
-  expanded: false
-  items:
-    - name: Senaryolar
-      items:
-        - name: Çağrı merkezleri
-          href: call-center-transcription.md
-          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+    - name: Barındırma belgeleri
+      href: index-hosting.yml
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Konuşma hizmetini ücretsiz olarak deneme
-          href: get-started.md
-        - name: Konuşma hizmeti kaynağı oluşturma
-          href: 'get-started.md#create-a-speech-resource-in-azure'
-        - name: Kapsayıcılar
-          expanded: false
-          items:
-            - name: Kapsayıcıları yükleme ve çalıştırma
-              href: speech-container-howto.md
-              displayName: 'containers,install container,run container'
-            - name: Kapsayıcıları yapılandırma
-              href: speech-container-configuration.md
-              displayName: 'containers,configure containers,container config,configuration'
-            - name: Kubernetes ve Helm
-              href: speech-container-howto-on-premises.md
-              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-            - name: Azure Container Instances
-              href: deploy-speech-on-container-instances.md
-              displayName: 'ACI,azure container instances,container instances,containers'
-    - name: Örnekler
-      items:
-        - name: Metin okuma REST örnekleri
-          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-        - name: Toplu transkripsiyon REST örnekleri
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: Başvuru
-      items:
-        - name: REST API'leri
-          items:
-            - name: Toplu transkripsiyon ve özelleştirme REST API'si
-              href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: Konuşma transkripsiyonu REST API'si
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-            - name: Konuşmayı metne dönüştürme REST API'si
-              href: rest-speech-to-text.md
-            - name: Metin okuma REST API'si
-              href: rest-text-to-speech.md
-        - name: Swagger belgeleri
-          href: swagger-documentation.md
+        - name: Kapsayıcıları yükleme ve çalıştırma
+          href: speech-container-howto.md
+          displayName: 'containers,install container,run container'
+        - name: Kapsayıcıları yapılandırma
+          href: speech-container-configuration.md
+          displayName: 'containers,configure containers,container config,configuration'
+        - name: Kubernetes ve Helm
+          href: speech-container-howto-on-premises.md
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+        - name: Azure Container Instances
+          href: deploy-speech-on-container-instances.md
+          displayName: 'ACI,azure container instances,container instances,containers'
 - name: Konuşma SDK'sı
   expanded: false
   items:
@@ -469,7 +441,7 @@
           href: scenario-availability.md
         - name: Uygulama teslim etme
           href: ship-application.md
-    - name: Hızlı Başlangıçlar
+    - name: Hızlı Başlangıç
       items:
         - name: Proje oluşturma
           href: quickstarts/create-project.md
@@ -510,6 +482,8 @@
 - name: Cihazlar
   expanded: false
   items:
+    - name: Konuşma cihazları belgeleri
+      href: index-devices.yml
     - name: Genel Bakış
       items:
         - name: Konuşma Cihazları SDK’sı hakkında
@@ -522,14 +496,10 @@
           href: speech-devices-sdk-microphone.md
         - name: Roobo v1 seti
           href: speech-devices-sdk-roobo-v1.md
-    - name: Hızlı Başlangıçlar
+    - name: Hızlı Başlangıç
       items:
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
+        - name: Konuşma Cihazları SDK’sını kullanma
+          href: speech-devices-sdk-quickstart.md
     - name: Kaynaklar
       items:
         - name: Konuşma Cihazları SDK’sında sorun giderme
@@ -555,6 +525,8 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Bölgeler
       href: regions.md
+    - name: Swagger belgeleri
+      href: swagger-documentation.md
     - name: Bağımsız Bulutlar
       href: sovereign-clouds.md
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'

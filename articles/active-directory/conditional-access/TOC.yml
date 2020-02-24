@@ -6,12 +6,14 @@
       href: overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Belirli uygulamalar için MFA gerektirme
-      href: app-based-mfa.md
     - name: Kullanım koşullarının kabul edilmesini gerektirme
       href: require-tou.md
     - name: Oturum riski algılandığında erişimi engelleme
       href: app-sign-in-risk.md
+- name: Öğreticiler
+  items:
+    - name: Azure Multi-Factor Authentication’ı gerektirme
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: Kavramlar
   expanded: false
   items:

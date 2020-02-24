@@ -2,23 +2,23 @@
 title: Azure Ayırmaları nedir?
 description: Sanal makineleriniz, SQL veritabanlarınız, Azure Cosmos DB ve diğer kaynak maliyetlerinde tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri ve fiyatlandırma hakkında bilgi edinin.
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841889"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443644"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
 Azure Ayrılmış Sanal Makine Örnekleri sayesinde sanal makine, Azure Blob depolama veya Azure Data Lake Storage 2. Nesil, SQL Veritabanı işlem kapasitesi, Azure Disk Depolama, Azure Cosmos DB aktarım hızı ve diğer Azure kaynakları için bir yıldan üç yıla kadar taahhütte bulunarak indirimlerden faydalanabilirsiniz. Taahhütte bulunarak kullandığınız kaynakları indirimli satın alabilirsiniz. Rezervasyonlar, kaynak maliyetlerinizi kullandıkça öde fiyatlarına kıyasla %72'ye varan oranda azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
 
-Bir rezervasyonun ödemesini peşin veya aylık olarak yapabilirsiniz. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri değil, Azure rezervasyonları için kullanılabilir.
+Bir rezervasyonun ödemesini peşin veya aylık olarak yapabilirsiniz. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri için değil Azure rezervasyonları için kullanılabilir.
 
 [Azure portalından](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) da rezervasyon satın alabilirsiniz.
 
@@ -37,11 +37,19 @@ Hizmet planları:
 - **SQL veritabanı ayrılmış sanal çekirdeği** - Rezervasyona yalnızca işlem maliyetleri dahildir. Lisans ayrı olarak faturalandırılır.
 - **SQL Veri Ambarı** - Rezervasyon cDWU kullanımını kapsar. SQL Veri Ambarı’nın kullanımıyla ilişkili depolama ve ağ ücretlerini kapsamaz.
 - **App Service taban fiyatı** - Rezervasyon, damga pulu kullanımını kapsar. Çalışanlara uygulanmaz, bu nedenle damga puluyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.
-- MySQL için Azure Veritabanı
-- PostgreSQL için Azure Veritabanı
-- MariaDB için Azure Veritabanı
-- Azure Veri Gezgini
+- **Azure Databricks** - Rezervasyon yalnızca DBU kullanımını kapsar. İşlem, depolama ve ağ iletişimi gibi diğer ücretler ayrı olarak uygulanır.
+- **MySQL için Azure Veritabanı** - Rezervasyona yalnızca işlem maliyetleri dahildir. MySQL Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
+- **PostgreSQL için Azure Veritabanı** - Rezervasyona yalnızca işlem maliyetleri dahildir. PostgreSQL Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
+- **MariaDB için Azure Veritabanı** - Rezervasyona yalnızca işlem maliyetleri dahildir. MariaDB Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
+- **Azure Veri Gezgini** - Rezervasyon sair gider ücretlerini kapsar. Kümelerle ilişkili işlem, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
+- **Premium SSD Yönetilen Diskler** - Rezervasyon belirtilen disk SKU’su için yapılır. 
 
+Yazılım planları:
+
+- **SUSE Linux** - Rezervasyon yazılım planı maliyetlerini kapsar. Yalnızca SUSE ölçümlerine indirim uygulanır; sanal makine kullanımına uygulanmaz.
+- **Red Hat Planları** - Rezervasyon yazılım planı maliyetlerini kapsar. Yalnızca RedHat ölçümlerine indirim uygulanır; sanal makine kullanımına uygulanmaz.
+- **CloudSimple Azure VMware Çözümü** - Rezervasyon VMWare CloudSimple Düğümlerini kapsar. Yine de ek yazılım ücretleri uygulanabilir.
+- **Azure Red Hat OpenShift** - Rezervasyon OpenShift maliyetlerine uygulanır; Azure altyapı maliyetlerine uygulanmaz.
 
 Windows sanal makineleri ve SQL veritabanı için [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile lisanslama maliyetlerini de kapsama alabilirsiniz.
 

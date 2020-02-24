@@ -99,6 +99,8 @@
         - name: Akış Uç Noktaları
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: CDN ile akışı ölçeklendirme
+          href: scale-streaming-cdn.md
         - name: Akış Bulucuları
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: İş oluşturma - CLI
           href: cli-create-jobs.md
+        - name: Birden çok dönüşüm çıkışı olan işler
+          href: job-multiple-transform-outputs.md
     - name: İçerik kodlama
       items:
         - name: İş girişi olarak HTTPS - .NET

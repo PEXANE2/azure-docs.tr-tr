@@ -1,0 +1,211 @@
+### YamlMime:Hub
+title: Konuşma hizmeti belgeleri
+summary: Konuşmayı tanıyın, konuşma sentezi yapın, gerçek zamanlı çeviriler alın, konuşmaların transkripsiyonunu alın veya konuşmayı bot deneyimlerinizle tümleştirin.
+brand: azure
+metadata:
+  title: Konuşma hizmeti belgeleri - Öğreticiler, API Başvuruları - Azure Bilişsel Hizmetler | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: Konuşmayı tanıyın, konuşma sentezi yapın, gerçek zamanlı çeviriler alın, konuşmaların transkripsiyonunu alın veya konuşmayı bot deneyimlerinizle tümleştirin.
+  author: IEvangelist
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 26979b2d9ffdd80676ca9162b30ae17db20b1129
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563032"
+highlightedContent:
+  items:
+  - title: Konuşma tanıma hizmeti nedir?
+    itemType: overview
+    url: overview.md
+  - title: Konuşma SDK’sı sürüm notları
+    itemType: whats-new
+    url: releasenotes.md
+  - title: Konuşma hizmetlerinde dil desteği
+    itemType: reference
+    url: language-support.md
+  - title: Konuşma hizmetleri kaynağı oluşturma
+    itemType: how-to-guide
+    url: get-started.md
+conceptualContent:
+  items:
+  - title: Konuşmayı metne dönüştürme
+    links:
+    - itemType: quickstart
+      text: Mikrofon girişiyle yapılan konuşmayı tanıma
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: Ses dosyasından alınan konuşmayı tanıma
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: quickstart
+      text: Blob depolama alanında depolanan konuşmayı tanıma
+      url: quickstarts/from-blob.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-speech-to-text.yml
+  - title: Metin okuma
+    links:
+    - itemType: quickstart
+      text: Konuşmayı hoparlöre sentezleme
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: Konuşmayı ses dosyasına sentezleme
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: quickstart
+      text: Uzun süreli ses ile konuşmayı sentezleme
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-text-to-speech.yml
+  - title: Konuşma çevirisi
+    links:
+    - itemType: quickstart
+      text: Konuşmayı metne çevirme
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: Konuşmayı birden çok hedef dile çevirme
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: quickstart
+      text: Konuşmayı konuşmaya çevirme
+      url: quickstarts/translate-speech-to-speech.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-speech-translation.yml
+  - title: Amaç tanıma
+    links:
+    - itemType: quickstart
+      text: Konuşmayı, amaçları ve varlıkları tanıma
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: LUIS ve C# ile konuşma amaçlarını tanıma
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Language Understanding (LUIS) portalı
+      url: https://www.luis.ai
+    footerLink:
+      text: Daha fazla göster
+      url: index-intent-recognition.yml
+  - title: Konuşma senaryoları
+    links:
+    - itemType: overview
+      text: Konuşma Transkripsiyonu hakkında
+      url: conversation-transcription.md
+    - itemType: overview
+      text: Çok cihazlı konuşmalar hakkında
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: Çağrı merkezi transkripsiyonu
+      url: call-center-transcription.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-conversation-scenarios.yml
+  - title: Ses yardımcıları
+    links:
+    - itemType: overview
+      text: Ses Yardımcıları hakkında
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Özel Komutlar kullanarak ses yardımcısı oluşturma
+      url: custom-commands.md
+    - itemType: get-started
+      text: Bot Framework kullanarak ses yardımcısı oluşturma
+      url: direct-line-speech.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-voice-assistants.yml
+  - title: Barındırma
+    links:
+    - itemType: how-to-guide
+      text: Konuşma hizmeti kapsayıcıları
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: Kubernetes ile konuşma hizmeti kapsayıcıları
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: Azure Container Instances üzerinde konuşma hizmeti kapsayıcıları
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-hosting.yml
+  - title: Cihazlar
+    links:
+    - itemType: overview
+      text: Konuşma Cihazları SDK’sı hakkında
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: Konuşma Cihazları SDK’sını edinme
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: Konuşma Cihazları SDK’sını kullanma
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: Daha fazla göster
+      url: index-devices.yml
+  - title: Geçiş
+    links:
+    - itemType: how-to-guide
+      text: Bing Konuşma’dan geçiş
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: Özel Konuşma Tanıma hizmetinden geçiş
+      url: how-to-migrate-from-custom-speech-service.md
+    - itemType: how-to-guide
+      text: Translator Konuşma Çevirisi API’sinden geçiş
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: Yazılım geliştirme setleri (SDK’lar)
+  summary: En sevdiğiniz programlama dilinde Konuşma SDK’sını kullanmaya başlayın.
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Objective-C ve Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
+  - items:
+    - title: REST API'leri
+      links:
+      - text: Konuşmayı metne dönüştürme
+        url: rest-speech-to-text.md
+      - text: Toplu iş transkripsiyonu
+        url: batch-transcription.md
+      - text: Metin okuma
+        url: rest-text-to-speech.md
+      - text: Konuşma transkripsiyonu
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: Kaynaklar
+      links:
+      - text: Fiyatlandırma
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: Bölgeler
+        url: regions.md
+      - text: Öğrenin
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: Destek
+      links:
+      - text: Destek ve yardım
+        url: support.md
+      - text: GitHub sorunları
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: Stack Overflow
+        url: https://aka.ms/SOspeechquestions

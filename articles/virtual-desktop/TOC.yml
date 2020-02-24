@@ -42,6 +42,8 @@
           href: deploy-windows-7-virtual-machine.md
         - name: GPU tabanlı bir oturum konağı dağıtma
           href: configure-vm-gpu.md
+        - name: Mevcut konak havuzunu genişletme
+          href: expand-existing-host-pool.md
     - name: Profil kapsayıcısı oluşturma
       items:
         - name: VM tabanlı dosya paylaşımı kullanma

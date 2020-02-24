@@ -6,14 +6,14 @@ author: bandersmsft
 ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8ee683501346f0ee99b513ad966db1cc06b2737a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188515"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470996"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
@@ -121,8 +121,10 @@ Rezervasyonun iyileştirme ayarını güncelleştirmek için:
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm Hizmetler** > **Rezervasyonlar**'ı seçin.
 3. Rezervasyonu seçin.
-4. **Ayarlar** > **Yapılandırma**'yı seçin.
-5. **En iyi duruma getir** ayarını değiştirin.
+4. **Ayarlar** > **Yapılandırma**'yı seçin.  
+  ![Yapılandırma öğesini gösteren örnek](./media/manage-reserved-vm-instance/add-product03.png)
+5. **En iyi duruma getir** ayarını değiştirin.  
+  ![En iyi duruma getir ayarını gösteren örnek](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>Rezervasyon kullanımını iyileştirme
 

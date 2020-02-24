@@ -1,35 +1,31 @@
 ---
 title: Azure’da Kuruluş için yönetici rollerini anlama | Microsoft Docs
 description: Azure’da Kuruluş yöneticisi rolleri hakkında bilgi edinin.
-services: billing
-documentationcenter: ''
-author: adpick
-manager: adpick
-editor: ''
+author: bandersmsft
+ms.reviewer: adwise
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2020
+ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: ee918f0f49acf85486999fe9314758286bb57126
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023336"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462199"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure'daki Azure Kurumsal Anlaşma yönetici rollerini anlama
 
 Kuruluşunuzun kullanım ve harcamasının yönetilmesine yardımcı olmak için Kurumsal Anlaşması (EA) olan Azure müşterileri beş farklı yönetici rolü atayabilir:
 
 - Kuruluş Yöneticisi
-- Kuruluş Yöneticisi (salt okunur)
+- Kuruluş Yöneticisi (salt okunur)<sup>1</sup>
 - Bölüm Yöneticisi
 - Bölüm Yöneticisi (salt okunur)
 - Hesap Sahibi
- 
+
+<sup>1</sup> EA sözleşmesinin Fatura ilgili kişisi bu rolde olacaktır.
+
 Bu roller, Azure Kurumsal Anlaşmaları yönetmeye özgüdür ve kaynaklara erişimi denetlemeye yönelik Azure’da yer alan yerleşik rollere ek olarak sunulmuştur. Daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
 Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açıklanmaktadır.
@@ -42,9 +38,9 @@ Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açık
 |Kuruluş Yöneticisi (salt okunur)|Sınırsız|
 |Bölüm Yöneticisi|Sınırsız|
 |Bölüm Yöneticisi (salt okunur)|Sınırsız|
-|Hesap Sahibi|Hesap başına 1<sup>1</sup>|
+|Hesap Sahibi|Hesap başına 1<sup>2</sup>|
 
-<sup>1</sup> Her hesap için benzersiz bir Microsoft hesabı veya iş ya da okul hesabı gerekir.
+<sup>2</sup> Her hesap için benzersiz bir Microsoft hesabı veya iş ya da okul hesabı gerekir.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Role göre kuruluş yapısı ve izinleri
 
@@ -52,17 +48,17 @@ Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açık
 |---|---|---|---|---|---|
 |Kuruluş Yöneticilerini görüntüleme|✔|✔|✘|✘|✘|
 |Kuruluş Yöneticileri ekleme veya kaldırma|✔|✘|✘|✘|✘|
-|Bildirim İlgili Kişilerini görüntüleme<sup>2</sup> |✔|✔|✘|✘|✘|
-|Bildirim İlgili Kişileri ekleme veya kaldırma<sup>2</sup> |✔|✘|✘|✘|✘|
+|Bildirim İlgili Kişilerini görüntüleme<sup>3</sup> |✔|✔|✘|✘|✘|
+|Bildirim İlgili Kişilerini ekleme veya kaldırma<sup>3</sup> |✔|✘|✘|✘|✘|
 |Bölümler oluşturma ve yönetme |✔|✘|✘|✘|✘|
 |Bölüm Yöneticilerini görüntüleme|✔|✔|✔|✔|✘|
 |Bölüm Yöneticileri ekleme veya kaldırma|✔|✘|✔|✘|✘|
-|Kayıttaki Hesapları görüntüleme |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
-|Kayda Hesaplar ekleme ve Hesap Sahibini değiştirme|✔|✘|✔<sup>3</sup>|✘|✘|
+|Kayıttaki Hesapları görüntüleme |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
+|Kayda Hesaplar ekleme ve Hesap Sahibini değiştirme|✔|✘|✔<sup>4</sup>|✘|✘|
 |Abonelikler ve abonelik izinleri oluşturma ve yönetme|✘|✘|✘|✘|✔|
 
-- <sup>2</sup> Bildirim ilgili kişilerine Azure Kurumsal Anlaşma ile ilgili e-posta iletişimleri gönderilir.
-- <sup>3</sup> Görev, bölümünüzdeki hesaplarla sınırlıdır.
+- <sup>3</sup> Bildirim ilgili kişilerine Azure Kurumsal Anlaşma ile ilgili e-posta iletişimleri gönderilir.
+- <sup>4</sup> Görev, bölümünüzdeki hesaplarla sınırlıdır.
 
 
 ## <a name="usage-and-costs-access-by-role"></a>Role göre kullanım ve maliyet erişimi
@@ -73,11 +69,11 @@ Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açık
 |Bölüm harcaması kotalarını görüntüleme|✔|✔|✘|✘|✘|
 |Bölüm harcaması kotalarını ayarlama|✔|✘|✘|✘|✘|
 |Kuruluşun Kurumsal Anlaşma fiyat listesini görüntüleme|✔|✔|✘|✘|✘|
-|Kullanım ve maliyet ayrıntılarını görüntüleme|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
+|Kullanım ve maliyet ayrıntılarını görüntüleme|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
 |Azure portalında kaynakları yönetme|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> Kuruluş Yöneticisinin Enterprise portal’da **DA ücretleri görüntüleme** ilkesini etkinleştirmesini gerektirir. Bölüm Yöneticisi daha sonra bölüme ait maliyet ayrıntılarını görebilir.
-- <sup>5</sup> Kuruluş Yöneticisinin Enterprise portal’da **AO ücretleri görüntüleme** ilkesini etkinleştirmesini gerektirir. Hesap Sahibi daha sonra hesaba ait maliyet ayrıntılarını görebilir.
+- <sup>5</sup> Kuruluş Yöneticisinin Enterprise portalında **DA ücretleri görüntüleme** ilkesini etkinleştirmesini gerektirir. Bölüm Yöneticisi daha sonra bölüme ait maliyet ayrıntılarını görebilir.
+- <sup>6</sup> Kuruluş Yöneticisinin Enterprise portalında **AO ücretleri görüntüleme** ilkesini etkinleştirmesini gerektirir. Hesap Sahibi daha sonra hesaba ait maliyet ayrıntılarını görebilir.
 
 
 ## <a name="pricing-in-azure-portal"></a>Azure portalında fiyatlandırma

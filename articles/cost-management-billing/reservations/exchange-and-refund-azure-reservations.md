@@ -2,20 +2,16 @@
 title: Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri
 description: Azure Ayrılmış Sanal Makine Örnekleri’ni nasıl değiştirebileceğinizi veya para iadesi alabileceğinizi öğrenin.
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773890"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200444"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
@@ -72,12 +68,10 @@ Azure, iptaller, değişimler ve para iadeleri için aşağıdaki ilkelere sahip
 - Değişimler için ceza veya yıllık limit yoktur.
 
 **Para iadesi ilkeleri**
-- Bir rezervasyonu iptal ederseniz %12 erken sonlandırma ücreti tahsil edilebilir.
-- İptal için alacağınız para iadesi, kalan eşit olarak dağıtılan bakiyeden %12 erken sonlandırma ücreti kesilerek elde edilir. İptal etmek için Azure portalında rezervasyona gidin ve **Para iadesi** seçeneğini belirleyin.
+- Gelecekteki iptallerde %12 erken sonlandırma ücreti uygulanabilir. Şu anda bu cezayı almıyoruz.
 - Toplam para iadesi tutarı, 12 aylık zaman penceresinde 50.000 ABD dolarını aşamaz.
 - Para iadeleri, satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır.
-- Yalnızca rezervasyon sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Microsoft, tüm iadeler için %12 ceza uygulama hakkını saklı tutar. Ceza şu anda alınmaz, ancak gelecekte ücretlendirilecektir.
+- Yalnızca rezervasyon siparişi sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium depolama için premium olmayan depolama değişimi
 

@@ -64,6 +64,8 @@
   items:
     - name: Temel Genel Load Balancer’ı Standart Genel Load Balancer’a yükseltme
       href: upgrade-basic-standard.md
+    - name: Temel İç Load Balancer’ı Standart İç Load Balancer’a yükseltme
+      href: upgrade-basicInternal-standard.md
     - name: Giden kuralları yapılandırma
       items:
         - name: Azure CLI
