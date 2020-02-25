@@ -21,7 +21,7 @@
     - name: Chef
       items:
         - name: Windows VM oluşturma
-          href: /azure/virtual-machines/windows/chef-automation
+          href: ./chef-automation.md
 - name: Başvuru
   items:
     - name: Azure Chef Uzantısı

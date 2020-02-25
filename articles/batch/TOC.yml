@@ -41,6 +41,10 @@
       href: cli-samples.md
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Geliştirici özellikleri
       href: batch-api-basics.md
     - name: API’ler ve araçlar

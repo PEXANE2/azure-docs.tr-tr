@@ -72,12 +72,12 @@
       items:
         - name: Güvenliğe genel bakış
           href: overview-security.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Güvenlik dünyaları
           href: key-vault-ovw-security-worlds.md
         - name: Anahtar kasanızın güvenliğini sağlama
           href: key-vault-secure-your-key-vault.md
-        - name: Yerleşik güvenlik denetimleri
-          href: key-vault-security-controls.md
     - name: Geçici silme
       href: key-vault-ovw-soft-delete.md
     - name: Key Vault olaylarını izleme

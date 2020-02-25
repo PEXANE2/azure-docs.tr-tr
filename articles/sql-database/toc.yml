@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Yönetilen örnek denetimi
               href: sql-database-managed-instance-auditing.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Bağlanma ve sorgulama
       href: sql-database-connect-query.md
       items:
