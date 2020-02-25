@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805918"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560907"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Konuşma Çevirisi API'si konuşma hizmetine geçirme
 
-Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşma hizmetine](index.md)geçirmek için bu makaleyi kullanın. Bu kılavuzda, Translator Konuşma Çevirisi API'si ile konuşma hizmeti arasındaki farklar özetlenmektedir ve uygulamalarınızın geçirilmesi için stratejiler önerilir.
+Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşma hizmetine](index.yml)geçirmek için bu makaleyi kullanın. Bu kılavuzda, Translator Konuşma Çevirisi API'si ile konuşma hizmeti arasındaki farklar özetlenmektedir ve uygulamalarınızın geçirilmesi için stratejiler önerilir.
 
 > [!NOTE]
 > Translator Konuşma Çevirisi API'si abonelik anahtarınız konuşma hizmeti tarafından kabul edilmez. Yeni bir konuşma hizmeti aboneliği oluşturmanız gerekir.
 
 ## <a name="comparison-of-features"></a>Özelliklerin karşılaştırması
 
-| Özellik                                           | Translator Konuşma Tanıma API’si                                  | Konuşma hizmeti | Ayrıntılar                                                                                                                                                                                                                                                                            |
+| Özellik                                           | Translator Konuşma Çevirisi API’si                                  | Konuşma hizmeti | Ayrıntılar                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metne çeviri                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Konuşmaya çeviri                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşm
 | Bağlantı süresi sınırı                             | 90 dakika                                               | SDK ile sınırsız. WebSockets bağlantısıyla 10 dakika.                                                                                                                                                                                                                                                                                   |
 | Üst bilgide kimlik doğrulama anahtarı                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Tek bir istekte birden çok dil çevrilmiş | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Kullanılabilir SDK 'lar                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Kullanılabilir SDK 'lar için [konuşma hizmeti belgelerine](index.md) bakın.                                                                                                                                                    |
+| Kullanılabilir SDK 'lar                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Kullanılabilir SDK 'lar için [konuşma hizmeti belgelerine](index.yml) bakın.                                                                                                                                                    |
 | WebSockets bağlantıları                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Diller API 'SI                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Konuşma hizmeti, [Translator API dilleri başvuru](../translator-speech/languages-reference.md) makalesinde açıklanan dil aralığını destekler. |
 | Küfür filtresi ve Işaretleyici                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşm
 
 ## <a name="migration-strategies"></a>Geçiş stratejileri
 
-Siz veya kuruluşunuzun Translator Konuşma Çevirisi API'si kullanan geliştirme veya üretim uygulamaları varsa, bunları konuşma hizmetini kullanacak şekilde güncelleştirmelisiniz. Kullanılabilir SDK 'lar, kod örnekleri ve öğreticiler için [konuşma hizmeti](index.md) belgelerine bakın. Geçiş yaparken aşağıdakileri göz önünde bulundurun:
+Siz veya kuruluşunuzun Translator Konuşma Çevirisi API'si kullanan geliştirme veya üretim uygulamaları varsa, bunları konuşma hizmetini kullanacak şekilde güncelleştirmelisiniz. Kullanılabilir SDK 'lar, kod örnekleri ve öğreticiler için [konuşma hizmeti](index.yml) belgelerine bakın. Geçiş yaparken aşağıdakileri göz önünde bulundurun:
 
 * Konuşma hizmeti küresel bir uç nokta sunmaz. Uygulamanızın tüm trafiği için tek bir bölgesel uç nokta kullandığında uygulamanızın verimli bir şekilde işlev görür olup olmadığını belirleme. Aksi takdirde, en etkili uç noktayı öğrenmek için coğrafi konum kullanın.
 

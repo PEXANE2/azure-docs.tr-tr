@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251864"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561162"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -29,7 +29,7 @@ Azure Kaynak şablonlarında Dağıtım betiklerini nasıl kullanacağınızı �
 Dağıtım betiğinin avantajları:
 
 - Kod, kullanım ve hata ayıklama işlemlerini kolayca yapabilirsiniz. Dağıtım betikleri, en sevdiğiniz geliştirme ortamlarınızda geliştirebilirsiniz. Betikler, şablonlara veya dış betik dosyalarına gömülebilir.
-- Betik dilini ve platformunu belirtebilirsiniz. Şu anda yalnızca Linux ortamındaki dağıtım betikleri Azure PowerShell desteklenir.
+- Betik dilini ve platformunu belirtebilirsiniz. Şu anda, Linux ortamındaki Azure PowerShell ve Azure CLı dağıtım betikleri desteklenir.
 - Betikleri yürütmek için kullanılan kimlikleri belirtmeye izin verin. Şu anda yalnızca [Azure Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) desteklenir.
 - Komut satırı bağımsız değişkenlerinin betiğe geçirilmesine izin ver.
 - Betik çıkışlarını belirtebilir ve bunları dağıtıma geri geçirebilir.
@@ -48,16 +48,29 @@ Dağıtım betiğinin avantajları:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Kaynak grubu adını ve kimlik adını sağlayarak KIMLIĞI almak için aşağıdaki PowerShell betiğini kullanın.
+  Kaynak grubu adını ve kimlik adını sağlayarak KIMLIĞI almak için aşağıdaki CLı veya PowerShell betiğini kullanın.
+
+  # <a name="cli"></a>[CLI](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell Version 2.7.0, 2.8.0 veya 3.0.0**. Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
+- **Azure PowerShell Version 3.0.0, 2.8.0 veya 2.7.0** ya da **Azure CLI sürüm 2.0.80, 2.0.79, 2.0.78 veya 2.0.77**. Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 
 ## <a name="sample-template"></a>Örnek şablon
 
@@ -67,9 +80,9 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +91,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -102,13 +115,13 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 Özellik değeri ayrıntıları:
 
 - **Kimlik**: dağıtım betiği hizmeti, komut dosyalarını yürütmek için Kullanıcı tarafından atanan bir yönetilen kimlik kullanır. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
-- **tür**: betiğin türünü belirtin. Şu anda yalnızca Azure PowerShell betiği desteklenir. Değer **AzurePowerShell**.
+- **tür**: betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenmektedir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - **Forceupdatetag**: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. Parametrenin defaultValue 'ı olarak ayarlanması gereken newGuid () veya utcNow () işlevini kullanın. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
-- **Azpowershellversion**: kullanılacak Azure PowerShell modülü sürümünü belirtin. Dağıtım betiği Şu anda 2.7.0, 2.8.0 ve 3.0.0 sürümünü destekliyor.
+- **Azpowershellversion**/**azclienversion**: kullanılacak modül sürümünü belirtin. Dağıtım betiği Şu anda Azure PowerShell sürüm 2.7.0, 2.8.0, 3.0.0 ve Azure CLı sürümü 2.0.80, 2.0.79, 2.0.78, 2.0.77 desteklemektedir.
 - **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
 - **scriptcontent**: betik içeriğini belirtin. Bir dış betik çalıştırmak için bunun yerine `primaryScriptUri` kullanın. Örnekler için bkz. [satır içi betiği kullanma](#use-inline-scripts) ve [dış betiği kullanma](#use-external-scripts).
-- **Primaryscripturi**: desteklenen PowerShell dosya uzantısıyla birincil PowerShell betiğine genel olarak erişilebilen bir URL belirtin.
-- **Supportingscriptursıs**: `ScriptContent` ya da `PrimaryScriptUri`içinde çağrılacak PowerShell dosyalarını desteklemek için genel olarak erişilebilen bir URL dizisi belirtin.
+- **Primaryscripturi**: desteklenen dosya uzantılarına sahip birincil dağıtım betiğine genel olarak erişilebilen bir URL belirtin.
+- **Supportingscriptursıs**: `ScriptContent` ya da `PrimaryScriptUri`içinde çağrılan destekleme dosyaları için genel olarak erişilebilen bir URL dizisi belirtin.
 - **zaman aşımı**: [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen izin verilen en büyük betik yürütme süresini belirtin. Varsayılan değer **P1D**' dir.
 - **Cleanuppreference**. Komut dosyası yürütmesi bir terminal durumunda olduğunda dağıtım kaynaklarını Temizleme tercihini belirtin. Varsayılan ayar **her zaman**, bu, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen kaynakları silmenin anlamına gelir. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
 - **retentionInterval**: dağıtım betiği yürütmesi bir Terminal durumuna ulaştıktan sonra hizmetin dağıtım betiği kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde dağıtım betiği kaynakları silinir. Süre, [ıso 8601 düzenine](https://en.wikipedia.org/wiki/ISO_8601)göre belirlenir. Varsayılan değer **P1D**' dir. Bu, yedi gün anlamına gelir. CleanupPreference *Onexpiration*olarak ayarlandığında bu özellik kullanılır. *Onexpiration* özelliği şu anda etkin değil. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
@@ -124,7 +137,7 @@ Aşağıdaki şablonda `Microsoft.Resources/deploymentScripts` türü ile tanım
 
 Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablon](#sample-template).
 
-Betiği çalıştırmak için, Cloud Shell 'i açmak için **dene** ' yi seçin ve ardından aşağıdaki kodu kabuk bölmesine yapıştırın.
+Betiği çalıştırmak için, Azure Cloud Shell açmak üzere **deneyin** ' i seçin ve ardından aşağıdaki kodu kabuk bölmesine yapıştırın.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +157,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Şu anda yalnızca **ps1** dosya uzantısına sahip PowerShell betikleri desteklenir. Dış betik dosyalarını kullanmak için `scriptContent` `primaryScriptUri`ile değiştirin. Örneğin:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için `scriptContent` `primaryScriptUri`ile değiştirin. Örnek:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +183,11 @@ Karmaşık günlüklerlerini bir veya daha fazla destekleyici betik dosyasına a
 ],
 ```
 
-Destekleyici betik dosyaları, hem satır içi betiklerden hem de birincil betik dosyalarından çağrılabilir.
+Destekleyici betik dosyaları, hem satır içi betiklerden hem de birincil betik dosyalarından çağrılabilir. Destekleyici betik dosyalarının dosya uzantısında hiçbir kısıtlaması yoktur.
 
 Destekleyici dosyalar, çalışma zamanında azscripts/azscriptınput 'a kopyalanır. Satır içi betiklerden ve birincil betik dosyalarından destekleyici dosyalara başvurmak için göreli yol kullanın.
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>Dağıtım betiklerinden çıkışlarla çalışma
+## <a name="work-with-outputs-from-powershell-script"></a>PowerShell betiğinin çıktılarla çalışma
 
 Aşağıdaki şablonda, iki deploymentScripts kaynağı arasında değerlerin nasıl geçirileceğini gösterilmektedir:
 
@@ -185,6 +198,16 @@ Aşağıdaki şablonda, iki deploymentScripts kaynağı arasında değerlerin na
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>CLı betiğinin çıktılarla çalışma
+
+PowerShell dağıtım betiğinden farklı olarak, CLı/Bash desteği betik çıkışlarını depolamak için ortak bir değişken sunmaz, bunun yerine betik çıkışları dosyasının bulunduğu konumu depolayan **AZ_SCRIPTS_OUTPUT_PATH** adlı bir ortam değişkeni vardır. Bir dağıtım betiği Kaynak Yöneticisi şablondan çalışıyorsa, bu ortam değişkeni bash kabuğu tarafından sizin için otomatik olarak ayarlanır.
+
+Dağıtım betiği çıkışları AZ_SCRIPTS_OUTPUT_PATH konumuna kaydedilmelidir ve çıktılar geçerli bir JSON dize nesnesi olmalıdır. Dosyanın içeriğinin anahtar-değer çifti olarak kaydedilmesi gerekir. Örneğin, dizeler dizisi {"MyResult": ["foo", "Bar"]} olarak depolanır.  Yalnızca dizi sonuçlarının depolanması, örneğin ["foo", "Bar"] geçersiz.
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+[JQ](https://stedolan.github.io/jq/) , önceki örnekte kullanılır. Kapsayıcı görüntüleri ile birlikte gelir. Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 
 ## <a name="debug-deployment-scripts"></a>Hata ayıklama dağıtım betikleri
 
@@ -264,7 +287,7 @@ Dağıtım betiği yürütmesi bir ıdempotent işlemidir. DeploymentScripts kay
 
 ## <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
 
-Dağıtım betiği Şu anda Azure PowerShell 2.7.0, 2.8.0 ve 3.0.0 sürümünü destekler.  Bir Windows bilgisayarınız varsa, desteklenen Azure PowerShell sürümlerinden birini yükleyebilir ve dağıtım betikleri geliştirmeye ve test etmeye başlayabilirsiniz.  Bir Windows bilgisayarınız yoksa veya bu Azure PowerShell sürümlerinden biri yüklü değilse, önceden yapılandırılmış bir Docker kapsayıcı görüntüsü kullanabilirsiniz. Aşağıdaki yordamda, Windows 'da Docker görüntüsünün nasıl yapılandırılacağı gösterilmektedir. Linux ve Mac için Internet 'teki bilgileri bulabilirsiniz.
+Dağıtım komut dosyası geliştirme ortamınız olarak önceden yapılandırılmış bir Docker kapsayıcı görüntüsü kullanabilirsiniz. Aşağıdaki yordamda, Windows 'da Docker görüntüsünün nasıl yapılandırılacağı gösterilmektedir. Linux ve Mac için Internet 'teki bilgileri bulabilirsiniz.
 
 1. Geliştirme bilgisayarınıza [Docker Desktop](https://www.docker.com/products/docker-desktop) uygulamasını yüklemeyin.
 1. Docker Desktop 'ı açın.
@@ -281,7 +304,15 @@ Dağıtım betiği Şu anda Azure PowerShell 2.7.0, 2.8.0 ve 3.0.0 sürümünü 
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    Örnek, 2.7.0 sürümünü kullanır.
+    Örnek PowerShell 2.7.0 sürümünü kullanır.
+
+    Bir Microsoft Container Registry (MCR) CLı görüntüsünü çekmek için:
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    Bu örnekte, CLı 2.0.80 sürümü kullanılmıştır. Dağıtım betiği [burada](https://hub.docker.com/_/microsoft-azure-cli)bulunan varsayılan CLI kapsayıcıları görüntülerini kullanır.
 
 1. Docker görüntüsünü yerel olarak çalıştırın.
 
@@ -297,12 +328,18 @@ Dağıtım betiği Şu anda Azure PowerShell 2.7.0, 2.8.0 ve 3.0.0 sürümünü 
 
     **-** kapsayıcı görüntüsünün canlı tutulması anlamına gelir.
 
+    CLı örneği:
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. Bir istem aldığınızda **paylaşma** seçeneğini belirleyin.
-1. Aşağıdaki ekran görüntüsünde gösterildiği gibi bir PowerShell betiği çalıştırın (d:\docker klasöründe HelloWorld. ps1 dosyasına sahipsiniz.)
+1. Aşağıdaki ekran görüntüsünde, d:\docker klasöründe HelloWorld. ps1 dosyasına sahip olduğunuz için bir PowerShell betiğinin nasıl çalıştırılacağı gösterilmektedir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-PowerShell betiği başarıyla sınandıktan sonra, bunu bir dağıtım betiği olarak kullanabilirsiniz.
+Betik başarıyla sınandıktan sonra bunu bir dağıtım betiği olarak kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Power BI bir SQL sorgusu kullanarak Azure Veri Gezgini verileri görselleştirme
+title: Power BI SQL sorgusuyla Azure Veri Gezgini verileri görselleştirme
 description: 'Bu makalede, Power BI verileri görselleştirmeye yönelik üç seçenekten birini nasıl kullanacağınızı öğrenirsiniz: bir Azure Veri Gezgini kümesine yönelik bir SQL sorgusu.'
 author: orspod
 ms.author: orspodek
@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024077"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560482"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Power BI bir SQL sorgusu kullanarak Azure Veri Gezgini verileri görselleştirme
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür.
 
 Azure Veri Gezgini, Power BI verilere bağlanmak için üç seçenek sunar: yerleşik bağlayıcıyı kullanın, Azure Veri Gezgini bir sorgu içeri aktarın veya bir SQL sorgusu kullanın. Bu makalede, bir SQL sorgusunun verileri almak ve bir Power BI raporunda görselleştirmek için nasıl kullanılacağı gösterilmektedir.
 
@@ -51,7 +51,7 @@ Genellikle yerel sorgu dilini Azure Veri Gezgini ile kullanırsınız, ancak bur
     **Ayar** | **Değer** | **Alan açıklaması**
     |---|---|---|
     | Sunucu | *help.kusto.windows.net* | Yardım kümesinin URL 'SI ( *https://* olmadan). Diğer kümeler için, URL *\<ClusterName\>.\<Region\>. kusto.Windows.net*biçiminde olur. |
-    | Veritabanı | *Örnekler* | Bağlanmakta olduğunuz kümede barındırılan örnek veritabanı. |
+    | Database | *Örnekler* | Bağlanmakta olduğunuz kümede barındırılan örnek veritabanı. |
     | Veri bağlantısı modu | *İçeri Aktarma* | Power BI verileri içeri aktarmalarını veya doğrudan veri kaynağına bağlanıp bağlanmadığını belirler. Bu bağlayıcı ile her iki seçeneği de kullanabilirsiniz. |
     | Komut zaman aşımı | Boş bırakın | Sorgunun zaman aşımı hatası vermeden önce ne kadar süre çalıştığı. |
     | SQL ekstresi | Sorguyu bu tablonun altına Kopyala | Azure Veri Gezgini 'in yerel bir sorguya çeviren SQL deyimidir. |

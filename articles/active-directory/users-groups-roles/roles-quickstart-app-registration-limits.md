@@ -13,18 +13,18 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024404"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559054"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Hızlı başlangıç: sınırsız uygulama kaydı oluşturmak için izin verme
 
-Bu hızlı başlangıçta sınırsız sayıda uygulama kaydı oluşturma izni olan özel bir rol oluşturacak ve ardından bu rolü bir kullanıcıya atayacaksınız. Atanan Kullanıcı daha sonra uygulama kayıtları oluşturmak için Azure AD portalını, Azure AD PowerShell 'i, Azure AD Graph API veya Microsoft Graph API 'sini kullanabilir. Yerleşik uygulama geliştirici rolünün aksine, bu özel rol sınırsız sayıda uygulama kaydı oluşturma olanağı verir. Uygulama geliştirici rolü özelliği verir, ancak oluşturulan nesnelerin toplam sayısı, [Dizin genelinde nesne kotasına](directory-service-limits-restrictions.md)vurmasını engellemek için 250 ile sınırlıdır.
+Bu hızlı başlangıçta sınırsız sayıda uygulama kaydı oluşturma izni olan özel bir rol oluşturacak ve ardından bu rolü bir kullanıcıya atayacaksınız. Atanan Kullanıcı daha sonra uygulama kayıtları oluşturmak için Azure AD portalını, Azure AD PowerShell 'i veya Microsoft Graph API 'sini kullanabilir. Yerleşik uygulama geliştirici rolünün aksine, bu özel rol sınırsız sayıda uygulama kaydı oluşturma olanağı verir. Uygulama geliştirici rolü özelliği verir, ancak oluşturulan nesnelerin toplam sayısı, [Dizin genelinde nesne kotasına](directory-service-limits-restrictions.md)vurmasını engellemek için 250 ile sınırlıdır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisite"></a>Önkoşul
 

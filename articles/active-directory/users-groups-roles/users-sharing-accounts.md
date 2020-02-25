@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01ebde09517cbe7f093dd56a8a4116e76e64e38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736765"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565511"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Hesapları Azure AD ile paylaşma
 
@@ -51,7 +51,7 @@ Kullanıcılar, kurumsal hesabıyla bir kez oturum açabilirler. Bu hesap, masa�
 
 Paylaşılan hesaplar yalnızca gözetim artışı ve kullanılabilirliği iyileştirmez ve ayrıca güvenlerinizi geliştirir. Kimlik bilgilerini kullanma izni olan kullanıcılar, paylaşılan parolayı göremez, ancak parolayı genişletilmiş bir kimlik doğrulama akışının parçası olarak kullanma izinleri alın. Ayrıca, bazı parola SSO uygulamaları, Azure AD 'yi kullanarak parolalarını düzenli olarak Rollover (güncelleştirme) seçeneğini sunar. Sistem, hesap güvenliğini artıran büyük, karmaşık parolalar kullanır. Yönetici, bir uygulamaya erişimi kolayca verebilir veya iptal edebilir, hesaba kimlerin erişebileceğini bilir ve geçmişte kimin eriştiği.
 
-Azure AD, tüm parola çoklu oturum açma uygulamalarında tüm Enterprise Mobility Suite (EMS) veya Azure AD Premium lisans planına yönelik paylaşılan hesapları destekler. Uygulama galerisindeki binlerce önceden tümleştirilmiş uygulama için hesapları paylaşabilir ve [özel SSO uygulamalarıyla](../manage-apps/configure-single-sign-on-portal.md)kendi parola kimlik doğrulama uygulamanızı ekleyebilirsiniz.
+Azure AD, tüm parola çoklu oturum açma uygulamalarında tüm Enterprise Mobility Suite (EMS) veya Azure AD Premium lisans planına yönelik paylaşılan hesapları destekler. Uygulama galerisindeki binlerce önceden tümleştirilmiş uygulama için hesapları paylaşabilir ve [özel SSO uygulamalarıyla](../manage-apps/configure-single-sign-on-non-gallery-applications.md)kendi parola kimlik doğrulama uygulamanızı ekleyebilirsiniz.
 
 Hesap paylaşımını etkinleştiren Azure AD özellikleri şunlardır:
 
@@ -72,7 +72,7 @@ Bir hesabı paylaşmak üzere Azure AD 'yi kullanmak için şunları yapmanız g
 * Uygulamayı parola çoklu oturum açma (SSO) için yapılandırma
 * [Grup tabanlı atamayı](groups-saasapps.md) kullanın ve paylaşılan bir kimlik bilgisi girme seçeneğini belirleyin
 
-Ayrıca, Multi-Factor Authentication (MFA) ile paylaşılan hesabınızı daha güvenli hale getirebilirsiniz ( [Azure AD ile uygulamaların güvenliğini sağlama](../authentication/concept-mfa-whichversion.md)hakkında daha fazla bilgi edinin) ve [Azure AD self servis kullanarak uygulamaya kimlerin erişimi olduğunu yönetme yeteneği atayabilirsiniz. ](groups-self-service-management.md)Grup Yönetimi.
+Ayrıca, Multi-Factor Authentication (MFA) ile paylaşılan hesabınızı daha güvenli hale getirebilirsiniz ( [Azure AD ile uygulamaların güvenliğini sağlama](../authentication/concept-mfa-whichversion.md)hakkında daha fazla bilgi edinin) ve [Azure AD self servis](groups-self-service-management.md) Grup Yönetimi 'ni kullanarak uygulamaya kimlerin erişebileceğini yönetme yeteneği atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

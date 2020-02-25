@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturma
+title: PowerShell kullanarak bir Azure Veri Gezgini kümesi & DB oluşturma
 description: PowerShell kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturmayı öğrenin
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978330"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560601"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -26,15 +26,15 @@ ms.locfileid: "75978330"
 
 Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, PowerShell kullanarak bir küme ve veritabanı oluşturursunuz. Azure Veri Gezgini kümelerini ve veritabanlarını oluşturmak ve yapılandırmak için Windows, Linux veya [Azure Cloud Shell](../cloud-shell/overview.md) içinde [az. kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) ile PowerShell cmdlet 'leri ve betikleri çalıştırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Sürümünüzü kontrol etmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Sürümünüzü kontrol etmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Parametreleri Yapılandır
 
@@ -67,7 +67,7 @@ Azure Cloud Shell içinde komut çalıştırıyorsanız aşağıdaki adımlar ge
 
    |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | Ad | *mykustocluster* | Kümenizin istenen adı.|
+   | Adı | *mykustocluster* | Kümenizin istenen adı.|
    | Sku | *D13_v2* | Kümeniz için kullanılacak SKU. |
    | ResourceGroupName | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
 
@@ -92,7 +92,7 @@ Sonuç `Succeeded` değerine sahip `provisioningState` içeriyorsa, küme başar
    |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
    | ClusterName | *mykustocluster* | Veritabanının oluşturulacağı Kümenizin adı.|
-   | Ad | *mykustodatabase* | Veritabanınızın adı.|
+   | Adı | *mykustodatabase* | Veritabanınızın adı.|
    | ResourceGroupName | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
    | softDeletePeriod | *3650:00:00:00* | Verilerin sorgu için kullanılabilir kalacağı zaman miktarı. |
    | hotCachePeriod | *3650:00:00:00* | Verilerin önbellekte tutulacağı zaman miktarı. |

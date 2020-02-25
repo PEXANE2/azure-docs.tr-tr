@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789927"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566021"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -23,7 +23,7 @@ Bir Azure Web sitesinde güncelleştirilmiş bir aracınız olduğunu varsayalı
 Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Blob depolama Bağlayıcısı başvurusu](https://docs.microsoft.com/connectors/azureblobconnector/).
 
 > [!IMPORTANT]
-> Güvenlik duvarlarının arkasındaki depolama hesaplarına Azure Logic Apps erişimi etkinleştirmek için, bu konunun devamındaki [güvenlik duvarları sonrasındaki depolama hesaplarına erişin](#storage-firewalls) bölümüne bakın.
+> Logic Apps, her ikisi de aynı bölgede olduklarında güvenlik duvarlarının arkasındaki depolama hesaplarına doğrudan erişemez. Geçici bir çözüm olarak, mantıksal uygulamalarınızın ve depolama hesabınızın farklı bölgelerde olmasını sağlayabilirsiniz. Güvenlik duvarlarının arkasındaki depolama hesaplarına Azure Logic Apps erişimi etkinleştirme hakkında daha fazla bilgi için, bu konunun devamındaki [güvenlik duvarları arkasındaki depolama hesaplarına erişin](#storage-firewalls) bölümüne bakın.
 
 <a name="blob-storage-limits"></a>
 
@@ -121,7 +121,7 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
 1. Bağlantıyı oluşturmanız istendiğinde, şu bilgileri sağlayın:
 
-   | Özellik | Gereklidir | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Bağlantı Adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
    | **Depolama Hesabı** | Yes | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
@@ -129,7 +129,7 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
    Örnek:
 
-   ![Azure Blob depolama hesabı bağlantısı oluşturma](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![Azure Blob depolama hesabı bağlantısı oluşturma](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. Hazırsanız **Oluştur** ' u seçin.
 
@@ -159,9 +159,12 @@ Azure Blob Storage bağlayıcısını veya diğer çözümleri kullanarak Azure 
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>Diğer bölgelerdeki depolama hesaplarına erişim
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>Aynı bölgedeki depolama hesaplarına erişme sorunları
 
-Logic Apps, güvenlik duvarı kuralları olan ve aynı bölgede yer alan depolama hesaplarına doğrudan erişemez. Ancak, [bölgeniz içindeki yönetilen bağlayıcılar için gıden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)erişime izin verirseniz, mantıksal uygulamalarınız Azure Tablo depolama bağlayıcısını veya Azure kuyruk depolama bağlayıcısını kullandığınız durumlar dışında farklı bir bölgedeki depolama hesaplarına erişebilir. Tablo depolama veya kuyruk depolamaya erişmek için, yerleşik HTTP tetikleyicisini ve eylemlerini kullanmaya devam edebilirsiniz.
+Logic Apps, her ikisi de aynı bölgede olduklarında güvenlik duvarlarının arkasındaki depolama hesaplarına doğrudan erişemez. Geçici bir çözüm olarak, mantıksal uygulamalarınızı depolama hesabınızdan farklı bir bölgeye yerleştirin ve [bölgenizdeki yönetilen bağlayıcıların gıden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)erişin.
+
+> [!NOTE]
+> Bu çözüm, Azure Tablo depolama Bağlayıcısı ve Azure kuyruk depolama Bağlayıcısı için geçerlidir. Bunun yerine, tablo depolama veya kuyruk depolamaya erişmek için yerleşik HTTP tetikleyicisini ve eylemlerini kullanın.
 
 <a name="access-trusted-virtual-network"></a>
 

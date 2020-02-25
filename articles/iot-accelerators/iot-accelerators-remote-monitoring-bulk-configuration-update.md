@@ -1,19 +1,19 @@
 ---
 title: Toplu-Azure 'da uzaktan Izlemeye bağlı cihazları yönetme | Microsoft Docs
 description: Bu öğreticide, uzaktan Izleme çözümüne bağlı cihazların toplu olarak nasıl yönetileceğini öğreneceksiniz.
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980542"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565587"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Öğretici: bağlı cihazlarınızı toplu olarak yönetme
 
@@ -39,7 +39,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 -->
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi takip etmek için Azure aboneliğinizde Uzaktan İzleme çözümü hızlandırıcısının dağıtılmış örneğine sahip olmanız gerekir.
 
@@ -65,7 +65,7 @@ Ayrıca, en az bir IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıc�
 
 Uzaktan İzleme çözümü panosunu tarayıcınızda görüntülemek için önce [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasına gidin. Azure aboneliği kimlik bilgilerinizi kullanarak oturum açmanız istenebilir.
 
-Ardından [Hızlı başlangıç](quickstart-remote-monitoring-deploy.md) ile dağıttığınız Uzaktan İzleme çözümü hızlandırıcısına ait kutucukta bulunan **Başlat** öğesine tıklayın.
+Ardından **Hızlı başlangıç** ile dağıttığınız Uzaktan İzleme çözümü hızlandırıcısına ait kutucukta bulunan [Başlat](quickstart-remote-monitoring-deploy.md) öğesine tıklayın.
 
 ## <a name="create-a-device-group"></a>Cihaz grubu oluşturma
 
@@ -228,8 +228,8 @@ Bu bölümde, IoT DevKit cihazlarınıza cihaz yapılandırmasını uygulayan bi
 
     |Seçenek|Değer|
     |---|---|
-    |Ad|Üretici yazılımı güncelleştirmesini dağıtma|
-    |Paket türü|Cihaz Yapılandırması|
+    |Adı|Üretici yazılımı güncelleştirmesini dağıtma|
+    |Paket türü|Cihaz yapılandırması|
     |Yapılandırma türü|Üretici yazılımı|
     |Paket|bellenim-Update. JSON|
     |Cihaz grubu|IoT DevKit cihazları|
@@ -237,7 +237,7 @@ Bu bölümde, IoT DevKit cihazlarınıza cihaz yapılandırmasını uygulayan bi
 
     ![Dağıtım oluşturma](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
-    **Uygula**'ya tıklayın. **Dağıtımlar** sayfasında, aşağıdaki ölçümleri gösteren yeni bir dağıtım görürsünüz:
+    **Apply (Uygula)** düğmesine tıklayın. **Dağıtımlar** sayfasında, aşağıdaki ölçümleri gösteren yeni bir dağıtım görürsünüz:
 
     * **Hedeflenen** cihaz grubundaki cihazların sayısını gösterir.
     * **Uygulanan** , yapılandırma içeriğiyle güncelleştirilmiş cihazların sayısını gösterir.

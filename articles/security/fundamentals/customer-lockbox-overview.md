@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure için Müşteri Kasası
 description: Microsoft 'un müşteri verilerine erişmesi gerektiğinde bulut sağlayıcısı erişimi üzerinde denetim sağlayan Microsoft Azure için Müşteri Kasası Teknik Genel Bakış.
-author: cabailey
+author: TerryLanfear
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.author: cabailey
-manager: barbkess
+ms.author: terrylan
+manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466411"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561978"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası
 
@@ -42,37 +42,37 @@ Aşağıdaki adımlarda Müşteri Kasası isteği için tipik bir iş akışı a
     - Kaynağın kapsamı
     - İstek sahibinin yalıtılmış bir kimlik mi yoksa Multi-Factor Authentication kullanılarak mı kullanıldığı
     - İzin düzeyleri
-    
+
     JıT kuralına bağlı olarak, bu istek Iç Microsoft onaylayanlardan onay de içerebilir. Örneğin, onaylayan müşteri destek lideri veya DevOps yöneticisi olabilir.
 
 6. İstek müşteri verilerine doğrudan erişim gerektirdiğinde, bir Müşteri Kasası isteği başlatılır. Örneğin, bir müşterinin sanal makinesine uzak masaüstü erişimi.
-    
+
     İstek artık **müşteri tarafından bildirildi** durumunda olduğundan, erişim izni vermeden önce müşterinin onayını bekliyor.
 
 7. Müşteri kuruluşunda, Azure aboneliği için [sahip rolüne](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles) sahip olan Kullanıcı Microsoft 'tan bir e-posta alır ve bu, bekleyen erişim isteği hakkında bilgilendirmeye yöneliktir. Müşteri Kasası istekler için, bu kişi belirlenen onaylayıcı.
-    
+
     Örnek e-posta:
-    
+
     ![Azure Müşteri Kasası-e-posta bildirimi](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
 8. E-posta bildirimi, Azure portal **müşteri kasası** dikey penceresine bir bağlantı sağlar. Bu bağlantıyı kullanarak, belirlenen onaylayan, kuruluşlarının Müşteri Kasası sahip olduğu bekleyen istekleri görüntülemek için Azure portal oturum açar:
-    
+
     ![Azure Müşteri Kasası-giriş sayfası](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
-    
+
    İstek, dört gün boyunca müşteri kuyruğunda kalır. Bu süreden sonra, erişim isteği otomatik olarak sona erer ve Microsoft mühendislerine erişim sağlanmaz.
 
 9. Bekleyen isteğin ayrıntılarını almak için, belirlenen onaylayan, **bekleyen isteklerden**gelen kasa isteğini seçebilir:
-    
+
     ![Azure Müşteri Kasası-bekleyen isteği görüntüleme](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. Belirlenen onaylayan, özgün kullanıcı tarafından oluşturulan destek bileti isteğini görüntülemek için **HIZMET ISTEğI kimliğini** de seçebilir. Bu bilgiler, Microsoft Desteği neden bağlı olduğuna ve bildirilen sorunun geçmişine yönelik bağlam sağlar. Örneğin:
-    
+10. Belirlenen onaylayan, özgün kullanıcı tarafından oluşturulan destek bileti isteğini görüntülemek için **HIZMET ISTEğI kimliğini** de seçebilir. Bu bilgiler, Microsoft Desteği neden bağlı olduğuna ve bildirilen sorunun geçmişine yönelik bağlam sağlar. Örnek:
+
     ![Azure Müşteri Kasası-destek bileti isteğini görüntüleme](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
 11. İstek gözden geçirildikten sonra, belirlenen onaylayan **Onayla** veya **Reddet**' i seçer:
-    
+
     ![Azure Müşteri Kasası-onayla veya Reddet ' i seçin](./media/customer-lockbox-overview/customer-lockbox-approval.png)
-    
+
     Seçimin bir sonucu olarak:
     - **Onayla**: Microsoft mühendisine erişim verilir. Erişim varsayılan sekiz saatlik bir süre için verilir.
     - **Reddet**: Microsoft mühendisine göre yükseltilmiş erişim isteği reddedilir ve başka bir eylem yapılmaz.
@@ -113,20 +113,20 @@ Uzak Masaüstü erişimi içeren senaryolar için, Microsoft mühendis tarafınd
 
 Aşağıdaki hizmetler şu anda Müşteri Kasası için önizleme aşamasındadır:
 
-- Azure Depolama 
+- Azure Storage
 
-- Azure SQL DB 
+- Azure SQL DB
 
-- Azure Veri Gezgini 
+- Azure Veri Gezgini
 
-- Sanal makineler (artık bellek dökümlerinin ve yönetilen disklerin erişimini de kapsayan) 
+- Sanal makineler (artık bellek dökümlerinin ve yönetilen disklerin erişimini de kapsayan)
 
 - Azure abonelik aktarımları
 
 Kuruluşunuzun bu önizleme teklifleri için Müşteri Kasası etkinleştirmek üzere [Azure genel önizlemesi için müşteri kasası](https://aka.ms/customerlockbox/insiderprogram)kaydolun.
 
 
-## <a name="exclusions"></a>İstisnalar
+## <a name="exclusions"></a>Dış
 
 Müşteri Kasası istekleri aşağıdaki mühendislik desteği senaryolarında tetiklenmez:
 

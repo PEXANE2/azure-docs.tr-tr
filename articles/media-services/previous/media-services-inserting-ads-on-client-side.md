@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895960"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565749"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
 Bu makale, istemci tarafında çeşitli tür reklamları ekleme hakkında bilgiler içerir.
@@ -160,7 +160,7 @@ Doğrusal reklamlar `<Creative>` öğesinde da belirtilir. Aşağıdaki örnekte
     </Creative>
 ```
 
-**İlişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal**dizi > öğesi içerebilir. <**Doğrusal**olmayan > öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak < bir**StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan kaynak açıklar ve kaynak nasıl görüntüleneceğini belirten bir creativeType öznitelik tanımlar:
+<**İlişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal**dizi > öğesi içerebilir. <**Doğrusal**olmayan > öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak < bir**StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan bir kaynağı açıklar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
 
 Image/gif, Image/JPEG, Image/PNG – kaynak bir HTML <**img**> etiketinde görüntülenir.
 
@@ -245,7 +245,7 @@ Bir VMAP dosyası, her biri bir ad kesmesi tanımlayan bir veya daha fazla `<AdB
 
 Bu örnekte, büyük bir ad yanıtı içeren bir `<VASTAdData>` öğesiyle bir satır içi ad yanıtı belirtilmiştir. Diğer öğeler hakkında daha fazla bilgi için bkz. [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-**Adbreak**> öğesi bir <**Trackingevents**> öğesi de içerebilir. <**Trackingevents**> öğesi, bir ad sonunun başlangıcını veya sonunu izlemenize veya ad kesmesi sırasında bir hata oluşup oluşmadığını izlemenize olanak sağlar. **Trackingevents**> öğesi, her biri bir izleme olayı ve bir izleme URI 'si belirten bir veya daha fazla <**izleme**> öğesi içeriyor. Olası izleme olayları şunlardır:
+<**Adbreak**> öğesi bir <**Trackingevents**> öğesi de içerebilir. <**Trackingevents**> öğesi, bir ad sonunun başlangıcını veya sonunu izlemenize veya ad kesmesi sırasında bir hata oluşup oluşmadığını izlemenize olanak sağlar. <**Trackingevents**> öğesi, her biri bir izleme olayı ve bir izleme URI 'si belirten bir veya daha fazla <**izleme**> öğesi içeriyor. Olası izleme olayları şunlardır:
 
 1. breakStart: bir ad kesmenin başlangıcını izler
 2. breakEnd – bir ad kesmenin tamamlanmasını izleme
@@ -276,7 +276,7 @@ Aşağıdaki örnek, izleme olaylarını belirten bir VMAP dosyasını gösterir
     </vmap:VMAP>
 ```
 
-**Trackingevents**> öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz http://iab.net/VMAP.pdf
+<**Trackingevents**> öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Medya soyut sıralama şablonu (MAST) dosyası kullanma
 Bir MAST dosyası, bir ad görüntülendiğinde tanımlayan Tetikleyicileri belirtmenize olanak tanır. Aşağıda, bir ön alma ad, orta düzey ad ve bir son alma reklamı için Tetikleyiciler içeren bir MAST dosyası verilmiştir.
@@ -843,12 +843,8 @@ Aşağıdaki örnek, bir orta seviye kaplama ad zamanlamasının nasıl planlana
 ```
 
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>Ayrıca Bkz.
-[Video oynatıcı uygulamaları geliştirme](media-services-develop-video-players.md)
-

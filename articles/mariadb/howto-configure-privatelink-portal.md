@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425927"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561740"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
 
@@ -170,6 +170,9 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
     ![Özel bağlantı oluşturuldu](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
+
+    > [!NOTE] 
+    > Müşteri DNS ayarındaki FQDN, yapılandırılan özel IP 'ye çözümlenmez. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Uzak Masaüstü (RDP) kullanarak bir VM 'ye bağlanma
 

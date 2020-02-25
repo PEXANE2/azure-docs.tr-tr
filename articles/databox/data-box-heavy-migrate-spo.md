@@ -1,5 +1,5 @@
 ---
-title: Dosya paylaşma içeriğini SharePoint Online 'a geçirmek için Azure Data Box Heavy kullanma | Microsoft Docs
+title: Dosya paylaşımının içeriğini SharePoint Online 'a taşımak için Azure Data Box Heavy kullanın
 description: Azure Data Box Heavy kullanarak dosya paylaşma içeriğini paylaşılan noktaya nasıl geçirebileceğinizi öğrenmek için bu öğreticiyi kullanın
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325263"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560057"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Dosya paylaşma içeriğinizi SharePoint Online 'a geçirmek için Azure Data Box Heavy kullanın
 
@@ -66,8 +66,8 @@ Data Box Heavy verileri kopyalamak için aşağıdaki adımları uygulayın.
 2. Data Box Heavy aldıktan sonra, [Data Box Heavy ayarlayın](data-box-heavy-deploy-set-up.md). Cihazlarınızın her ikisini de kablosunu ve yapılandıracaksınız.
 3. [Azure Data Box Heavy verileri kopyalayın](data-box-heavy-deploy-copy-data.md). Kopyalama sırasında aşağıdakileri yaptığınızdan emin olun:
 
-    - Verileri kopyalamak için yalnızca Data Box Heavy *StorageAccountName_AzFile* klasörünü kullanın. Bunun nedeni, verilerin blok Blobları veya sayfa Blobları değil bir Azure dosya paylaşımında bitmesini istemezsiniz.
-    - Dosyaları *StorageAccountName_AzFile* klasörü içindeki bir klasöre kopyalayın. *StorageAccountName_AzFile* klasörünün içindeki bir alt klasör bir dosya paylaşma oluşturur. Doğrudan *StorageAccountName_AzFile* klasörüne kopyalanan dosyalar başarısız olur ve blok Blobları olarak karşıya yüklenir. Bu, bir sonraki adımda sanal makinenize bağlayacaksınız dosya paylaşımıdır.
+    - Verileri kopyalamak için yalnızca Data Box Heavy *StorageAccountName_AzFile* klasörü kullanın. Bunun nedeni, verilerin blok Blobları veya sayfa Blobları değil bir Azure dosya paylaşımında bitmesini istemezsiniz.
+    - Dosyaları *StorageAccountName_AzFile* klasörü içindeki bir klasöre kopyalayın. *StorageAccountName_AzFile* klasörü içindeki bir alt klasör bir dosya paylaşma oluşturur. *StorageAccountName_AzFile* klasöre doğrudan kopyalanan dosyalar başarısız olur ve blok Blobları olarak karşıya yüklenir. Bu, bir sonraki adımda sanal makinenize bağlayacaksınız dosya paylaşımıdır.
     - Verileri Data Box Heavy her iki düğümüne da kopyalayın.
 3. Cihazınızda [göndermeye hazırlama](data-box-heavy-deploy-picked-up.md#prepare-to-ship) çalıştırın. Başarılı bir hazırlanması, dosyaların Azure 'a başarılı bir şekilde yüklenmesini sağlar.
 4. [Cihazı döndürün](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).

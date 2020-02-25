@@ -4,20 +4,18 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısında insan e
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6a442ac0d515f9cca9201767087a9b59588edeed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0c16ef092c30a94cd04b55c91d3643ac29b82be0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769583"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562114"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Dayanıklı İşlevler-telefon doğrulama örneğindeki insan etkileşimi
 
 Bu örnek, insan etkileşimini içeren [dayanıklı işlevler](durable-functions-overview.md) bir düzenleme oluşturmayı gösterir. Her gerçek kişi otomatik bir işleme dahil olduğunda, işlem kişiye bildirim gönderebilmeli ve yanıtları zaman uyumsuz olarak alamaz. Ayrıca, kişinin kullanılamama olasılığa izin vermelidir. (Bu son bölüm, zaman aşımlarının önemli hale geldiği yerdir.)
 
 Bu örnek SMS tabanlı bir telefon doğrulama sistemi uygular. Bu akış türleri genellikle müşterinin telefon numarası doğrulanırken veya Multi-Factor Authentication (MFA) için kullanılır. Uygulamanın tamamı birkaç küçük işlev kullanılarak yapıldığından, bu güçlü bir örnektir. Veritabanı gibi dış veri deposu gerekli değildir.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -37,26 +35,32 @@ Dayanıklı İşlevler kullandığınızda bu senaryonun karmaşıklığı büy�
 
 Bu makalede örnek uygulamada aşağıdaki işlevler gösterilmektedir:
 
-* **E4_SmsPhoneVerification**
-* **E4_SendSmsChallenge**
+* `E4_SmsPhoneVerification`: zaman aşımlarını ve yeniden denemeleri yönetme dahil olmak üzere telefon doğrulama işlemini gerçekleştiren bir [Orchestrator işlevi](durable-functions-bindings.md#orchestration-trigger) .
+* `E4_SendSmsChallenge`: SMS mesajı aracılığıyla kod gönderen bir [Orchestrator işlevi](durable-functions-bindings.md#activity-trigger) .
 
-Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yapılandırma ve kod açıklanmaktadır. Visual Studio geliştirme kodu makalenin sonunda gösterilmektedir.
+### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification Orchestrator işlevi
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS doğrulama düzenlemesi (Visual Studio Code ve Azure portal örnek kodu)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
+
+> [!NOTE]
+> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. Süreölçer süre sonu süresini hesaplamak için `CurrentUtcDateTime` özelliğinin kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, `Task.WhenAny`yapılan her yinelenen çağrının `winner` aynı olduğundan emin olmak için önemlidir.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E4_SmsPhoneVerification** işlevi Orchestrator işlevleri için standart *function. JSON* ' i kullanır.
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
 İşlevi uygulayan kod aşağıda verilmiştir:
 
-### <a name="c-script"></a>C#SCRIPT
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
+
+> [!NOTE]
+> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. Süreölçer süre sonu süresini hesaplamak için `currentUtcDateTime` özelliğinin kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, `context.df.Task.any`yapılan her yinelenen çağrının `winner` aynı olduğundan emin olmak için önemlidir.
+
+---
 
 Bu Orchestrator işlevi başlatıldıktan sonra şunları yapar:
 
@@ -65,31 +69,33 @@ Bu Orchestrator işlevi başlatıldıktan sonra şunları yapar:
 3. Geçerli zamandan 90 saniye tetikleyen dayanıklı bir zamanlayıcı oluşturur.
 4. Zamanlayıcı ile paralel olarak, kullanıcıdan **Smschallengeresbir** olay bekler.
 
-Kullanıcı dört basamaklı kod içeren bir SMS mesajı alır. Doğrulama işlemini gerçekleştirmek için aynı 4 basamaklı kodun Orchestrator işlev örneğine geri gönderilmesi 90 saniye sürer. Yanlış kodu gönderiyorlarsa, bu iki adım daha (aynı 90-ikinci pencere içinde) daha fazla üç denemeye sahip olur.
-
-> [!NOTE]
-> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `CurrentUtcDateTime` (.NET) ve `currentUtcDateTime` (JavaScript) özelliklerinin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve bu özelliklerin Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici vardır. Bu davranış, yinelenen `winner` `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript) ' e yapılan her çağrıdan elde olduğundan emin olmak için önemlidir.
+Kullanıcı dört basamaklı kod içeren bir SMS mesajı alır. Doğrulama işlemini gerçekleştirmek için aynı dört basamaklı kodun Orchestrator işlev örneğine geri gönderilmesi 90 saniye sürer. Yanlış kodu gönderiyorlarsa, bu iki adım daha (aynı 90-ikinci pencere içinde) daha fazla üç denemeye sahip olur.
 
 > [!WARNING]
 > Sınama yanıtı kabul edildiğinde Yukarıdaki örnekte olduğu gibi, artık kullanım süreleri dolana kadar gerekmiyorsa, [zamanlayıcıları iptal etmeniz](durable-functions-timers.md) önemlidir.
 
-## <a name="send-the-sms-message"></a>SMS iletisini gönder
+## <a name="e4_sendsmschallenge-activity-function"></a>E4_SendSmsChallenge Activity işlevi
 
-**E4_SendSmsChallenge** IşLEVI, SMS iletisini son kullanıcıya 4 basamaklı kodla göndermek için Twilio bağlamasını kullanır. *Function. JSON* aşağıdaki gibi tanımlanır:
+**E4_SendSmsChallenge** IşLEVI, SMS iletisini son kullanıcıya dört basamaklı kodla göndermek için Twilio bağlamasını kullanır.
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-4 basamaklı zorluk kodu üreten ve SMS iletisini gönderen kod aşağıda verilmiştir:
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
-### <a name="c-script"></a>C#SCRIPT
+> [!NOTE]
+> Örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+*Function. JSON* aşağıdaki gibi tanımlanır:
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
+
+Dört basamaklı sınama kodu üreten ve SMS iletisini gönderen kod aşağıda verilmiştir:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-Bu **E4_SendSmsChallenge** işlev, işlem kilitlense veya yeniden yürütülmüş olsa bile yalnızca bir kez çağırılır. Son kullanıcının birden çok SMS iletisi almak istemediğinizde bu iyidir. `challengeCode` dönüş değeri otomatik olarak kalıcı hale getirilir, bu nedenle Orchestrator işlevi her zaman doğru kodun ne olduğunu bilir.
+---
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
@@ -147,15 +153,6 @@ Content-Length: 145
 
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu
-
-Visual Studio projesindeki tek C# bir dosya olarak Orchestration aşağıda verilmiştir:
-
-> [!NOTE]
-> Aşağıdaki örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988813"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561468"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanma (Önizleme)
 
@@ -39,7 +39,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Başarısız komut dosyasında hata ayıkla
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -74,7 +74,7 @@ Bu hızlı başlangıçta kullanılan şablona [Azure Key Vault oluştur ve gizl
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
+4. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -266,13 +266,13 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
     * **zaman aşımı**: [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen izin verilen en büyük betik yürütme süresini belirtin. Varsayılan değer **P1D**' dir.
     * **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
     * **scriptcontent**: betik içeriğini belirtin. Dış betiği çalıştırmak için bunun yerine **Primaryscripturi** kullanın. Daha fazla bilgi için bkz. [dış betik kullanma](./deployment-script-template.md#use-external-scripts).
-        **$DeploymentScriptOutputs** bildirme yalnızca betiği yerel bir makinede test edilirken gereklidir. Değişkeni bildirmek, betiğin bir yerel makinede ve bir deploymentScript kaynağında değişiklik yapmak zorunda kalmadan çalıştırılmasını sağlar. $DeploymentScriptOutputs atanan değer, dağıtımlarda çıkış olarak kullanılabilir. Daha fazla bilgi için bkz. [dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
+        **$DeploymentScriptOutputs** bildirme yalnızca betiği yerel bir makinede test edilirken gereklidir. Değişkeni bildirmek, betiğin bir yerel makinede ve bir deploymentScript kaynağında değişiklik yapmak zorunda kalmadan çalıştırılmasını sağlar. $DeploymentScriptOutputs atanan değer, dağıtımlarda çıkış olarak kullanılabilir. Daha fazla bilgi için bkz. [PowerShell dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-powershell-script) veya [CLI dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-cli-script).
     * **cleanuppreference**: dağıtım betiği kaynaklarının ne zaman silineceği üzerinde tercihi belirtin.  Varsayılan değer **her zaman**ve dağıtım betiği kaynaklarının, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen silindiği anlamına gelir. Bu öğreticide, komut dosyası yürütme sonuçlarını görüntülemenin bir şansı elde etmeniz için **onSuccess** kullanılır.
     * **retentionInterval**: bir Terminal durumuna ulaştıktan sonra hizmetin betik kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde kaynaklar silinir. Süre, ISO 8601 düzenine göre belirlenir. Bu öğretici, bir gün anlamına gelen P1D kullanır.  **Cleanuppreference** **onexpiration**olarak ayarlandığında bu özellik kullanılır. Bu özellik şu anda etkin değil.
 
     Dağıtım betiği üç parametre alır: Anahtar Kasası adı, sertifika adı ve konu adı.  Bir sertifika oluşturur ve ardından sertifikayı anahtar kasasına ekler.
 
-    **$DeploymentScriptOutputs** , çıkış değerini depolamak için kullanılır.  Daha fazla bilgi edinmek için bkz. [dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
+    **$DeploymentScriptOutputs** , çıkış değerini depolamak için kullanılır.  Daha fazla bilgi edinmek için bkz. [PowerShell dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-powershell-script) veya [CLI dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-cli-script).
 
     Tamamlanan şablon [burada](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)bulunabilir.
 
@@ -320,7 +320,7 @@ Dağıtım betiği yürütme sonucu, sorun giderme amacıyla dağıtım betiği 
 
 ## <a name="debug-the-failed-script"></a>Başarısız komut dosyasında hata ayıkla
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. **RG** eklenmiş proje adıdır. Kaynak grubunda iki ek kaynak görürsünüz. Bu kaynaklara *dağıtım betiği kaynakları*denir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği kaynakları](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

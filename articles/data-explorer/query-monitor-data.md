@@ -1,5 +1,5 @@
 ---
-title: Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
+title: Azure Veri Gezgini ile Azure Izleyici 'de verileri sorgulama (Önizleme)
 description: Bu konu başlığında, Application Insights ve Log Analytics ile çapraz ürün sorguları için bir Azure Veri Gezgini proxy oluşturarak Azure Izleyici 'deki verileri sorgulayın
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843606"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560431"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
 
@@ -23,7 +23,7 @@ Azure Veri Gezgini proxy akışı:
 
 ![ADX proxy akışı](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
 > ADX proxy, önizleme modunda. Kümeleriniz için ADX ara sunucu özelliğini etkinleştirmek üzere [Ara sunucuya bağlanın](#connect-to-the-proxy) . Herhangi bir soru ile [Adxproxy](mailto:adxproxy@microsoft.com) ekibine başvurun.

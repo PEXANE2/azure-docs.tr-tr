@@ -3,16 +3,16 @@ title: Azure dosyaları için sık sorulan sorular (SSS) | Microsoft Docs
 description: Azure dosyaları hakkında sık sorulan soruların yanıtlarını bulun.
 author: roygara
 ms.service: storage
-ms.date: 07/30/2019
+ms.date: 02/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665388"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565069"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure dosyaları hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -151,13 +151,17 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="afs-ntfs-acls"></a>
    **, dizin/dosya DÜZEYINDE NTFS ACL 'Lerini Azure dosyalarında depolanan verilerle birlikte korumak Azure dosya eşitleme ister misiniz?**
 
-    Şirket içi dosya sunucularından taşınan NTFS ACL 'Leri, meta veri olarak Azure Dosya Eşitleme tarafından kalıcı hale getirilir. Azure dosyaları, Azure Dosya Eşitleme hizmeti tarafından yönetilen dosya paylaşımlarına erişim için Azure AD kimlik bilgileriyle kimlik doğrulamasını desteklemez.
+    24 Şubat, 2020 itibariyle Azure dosya eşitleme tarafından katmanlı yeni ve mevcut ACL 'Ler NTFS biçiminde kalıcı hale getirilir ve doğrudan Azure dosya paylaşımında yapılan ACL değişiklikleri, eşitleme grubundaki tüm sunucularla eşitlenir. Azure dosyalarına yapılan ACL 'lerdeki tüm değişiklikler, Azure dosya eşitleme aracılığıyla eşitlenir. Azure dosyalarına veri kopyalarken, paylaşıma erişmek ve ACL 'larınızı korumak için SMB kullandığınızdan emin olun. AzCopy veya Depolama Gezgini gibi mevcut REST tabanlı araçlar, ACL 'Leri kalıcı hale getirme.
+
+    Dosya eşitleme yönetilen dosya paylaşımlarınız üzerinde Azure Backup etkinleştirdiyseniz, dosya ACL 'Leri yedekleme geri yükleme iş akışının bir parçası olarak geri yüklemeye devam edebilir. Bu, tüm paylaşımın veya tek tek dosyalar/dizinler için geçerlidir.
+
+    Dosya eşitleme tarafından yönetilen dosya paylaşımları için otomatik olarak yönetilen yedekleme çözümünün bir parçası olarak anlık görüntüler kullanıyorsanız, anlık görüntüler 24 Şubat 2020 ' den önce alınmıyorsa, ACL 'niz NTFS ACL 'Lerine düzgün şekilde geri yüklenemez. Bu durumda, Azure desteği 'ne başvurmayı göz önünde bulundurun.
     
 ## <a name="security-authentication-and-access-control"></a>Güvenlik, kimlik doğrulama ve erişim denetimi
 * <a id="ad-support"></a>
 **Azure dosyaları tarafından desteklenen kimlik tabanlı kimlik doğrulaması ve erişim denetimi mi?**  
     
-    Evet, Azure dosyaları Azure AD etki alanı hizmeti (Azure AD DS) ile kimlik tabanlı kimlik doğrulaması ve erişim denetimini destekler. Azure dosyaları için SMB üzerinden Azure AD DS kimlik doğrulaması, Azure AD DS etki alanına katılmış Windows VM 'lerinin Azure AD kimlik bilgilerini kullanarak paylaşımlara, dizinlere ve dosyalara erişmesine olanak sağlar. Daha fazla ayrıntı için bkz. [SMB erişimi Için Azure dosyalarına Azure Active Directory etki alanı hizmeti (azure AD DS) kimlik doğrulama desteği 'Ne genel bakış](storage-files-active-directory-overview.md). 
+    Evet, Azure dosyaları kimlik tabanlı kimlik doğrulaması ve erişim denetimini destekler. Kimlik tabanlı erişim denetimi kullanmanın iki yolunu seçebilirsiniz: Azure Active Directory Domain Services (Azure AD DS) (GA) veya Active Directory (AD) (Önizleme). Azure dosyaları için SMB üzerinden Azure AD DS kimlik doğrulaması, Azure AD DS etki alanına katılmış Windows VM 'lerinin Azure AD kimlik bilgilerini kullanarak paylaşımlara, dizinlere ve dosyalara erişmesine olanak sağlar. AD, SMB üzerinden Azure dosya paylaşımlarına erişmek için şirket içinde ya da Azure 'da AD etki alanına katılmış makineleri kullanarak kimlik doğrulamasını destekler. Daha fazla ayrıntı için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](storage-files-active-directory-overview.md). 
 
     Azure dosyaları, erişim denetimini yönetmek için iki ek yol sunar:
 
@@ -167,15 +171,15 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     
     Azure Storage hizmetlerinde desteklenen tüm protokollerin kapsamlı bir gösterimi için [Azure depolama 'ya erişimi yetkilendirme](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) konusuna başvurabilirsiniz. 
 
-* <a id="ad-support-devices"></a>Azure **dosyaları 
-azure AD DS kimlik doğrulaması, Azure AD kimlik bilgilerini kullanarak Azure AD kimlik bilgilerini kullanarak SMB erişimini destekliyor mu?**
+* <a id="ad-support-devices"></a>
+Azure **dosyaları Azure Active Directory Domain Services (azure AD DS) kimlik doğrulaması, Azure AD kimlik bilgilerini kullanarak Azure AD kimlik bilgilerini kullanarak SMB erişimini destekler** .
 
     Hayır, bu senaryo desteklenmiyor.
 
 * <a id="ad-support-rest-apis"></a>
  **, dizin/dosya NTFS ACL 'Lerini almayı/ayarlamayı/kopyalamayı desteklemeye YÖNELIK REST API 'ler var mı?**
 
-    Şimdilik, dizinler veya dosyalar için NTFS ACL 'Lerini almak, ayarlamak veya kopyalamak üzere REST API 'Lerini desteklemiyoruz.
+    Evet, [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz.
 
 * <a id="ad-vm-subscription"></a>
 **farklı bir abonelik kapsamındaki BIR VM 'den Azure AD kimlik bilgileriyle Azure dosyalarına erişebilir miyim?**
@@ -183,19 +187,31 @@ azure AD DS kimlik doğrulaması, Azure AD kimlik bilgilerini kullanarak Azure A
     Dosya paylaşımının dağıtıldığı abonelik, VM 'nin etki alanına katılmış olduğu Azure AD Domain Services dağıtımıyla aynı Azure AD kiracısıyla ilişkili ise, Azure dosyalarına aynı Azure AD kimlik bilgilerini kullanarak erişebilirsiniz. Kısıtlama, abonelikte değil, ilişkili Azure AD kiracısında yer alır.    
     
 * <a id="ad-support-subscription"></a>
- **, Azure dosyaları azure AD DS kimlik doğrulamasını, dosya paylaşımının ilişkilendirildiği birincil kiracıdan farklı bir Azure AD kiracısı ile etkinleştirebilir miyim?**
+, Azure **dosyalarını azure AD DS veya ad kimlik doğrulamasını, dosya paylaşımının ilişkilendirildiği birincil kiracıdan farklı bir Azure AD kiracısı ile etkinleştirebilir miyim?**
 
-    Hayır, Azure dosyaları yalnızca dosya paylaşımıyla aynı abonelikte bulunan bir Azure AD kiracısı ile Azure AD DS tümleştirmesini destekler. Bir Azure AD kiracısıyla yalnızca bir abonelik ilişkilendirilebilir.
+    Hayır, Azure dosyaları yalnızca Azure AD DS veya dosya paylaşımıyla aynı abonelikte bulunan bir Azure AD kiracısıyla AD tümleştirmesini destekler. Bir Azure AD kiracısıyla yalnızca bir abonelik ilişkilendirilebilir. Bu sınırlama hem Azure AD DS hem de AD kimlik doğrulama yöntemleri için geçerlidir. Kimlik doğrulaması için AD kullanırken, AD kimlik bilgisinin depolama hesabının ilişkilendirildiği Azure AD ile eşitlenmesi gerekir.
 
-* <a id="ad-linux-vms"></a>**Azure dosyaları 
-azure AD DS kimlik doğrulaması, Linux VM 'lerini destekliyor mu?**
+* <a id="ad-linux-vms"></a>
+Azure **dosyaları azure AD DS veya ad kimlik doğrulaması Linux VM 'lerini destekliyor mu?**
 
     Hayır, Linux VM 'lerden kimlik doğrulaması desteklenmez.
 
-* <a id="ad-aad-smb-afs"></a>
-**Azure dosya eşitleme tarafından yönetilen dosya paylaşımlarında Azure dosyaları azure AD DS kimlik doğrulamasından yararlanabilir miyim?**
+* <a id="ad-multiple-forest"></a>
+**Azure dosyaları ad kimlik doğrulaması, birden çok orman kullanarak BIR ad ortamıyla tümleştirmeyi destekliyor mu?**    
 
-    Hayır, Azure dosyaları Azure Dosya Eşitleme tarafından yönetilen dosya paylaşımlarında NTFS ACL 'Lerinin korumayı desteklemez. Şirket içi dosya sunucularından taşınan dosya ACL 'Leri Azure Dosya Eşitleme tarafından kalıcı hale getirilir. Azure dosyalarına yerel olarak yapılandırılmış tüm NTFS ACL 'Leri Azure Dosya Eşitleme hizmeti tarafından üzerine yazılır. Ayrıca, Azure dosyaları Azure Dosya Eşitleme hizmeti tarafından yönetilen dosya paylaşımlarına erişim için Azure AD kimlik bilgileriyle kimlik doğrulamasını desteklemez.
+    Azure dosyaları AD kimlik doğrulaması yalnızca depolama hesabının kaydedildiği AD etki alanı hizmetinin ormanı ile tümleşir. Farklı bir AD ormanına ait kimlik doğrulamasını desteklemek için ortamınızda orman güveninin düzgün şekilde yapılandırılmış olması gerekir. AD etki alanı hizmetine Azure dosyaları kaydı, kimlik doğrulama için AD 'de bir hesap oluşturduğu düzenli bir dosya sunucusu ile aynıdır. Tek fark, depolama hesabının kayıtlı SPN 'si, etki alanı sonekiyle eşleşmeyen "file.core.windows.net" ile sona erecek.
+
+    Birden çok orman kimlik doğrulamasını etkinleştirmek için DNS yönlendirme ilkenize yönelik herhangi bir güncelleştirmenin gerekli olup olmadığını görmek için etki alanı yöneticinize başvurun.
+
+* <a id=""></a>**Azure dosyaları ad doğrulaması (Önizleme) Için hangi bölgelerin kullanılabildiği 
+?**
+
+    Ayrıntılar için [ad bölgesel kullanılabilirliğine](storage-files-active-directory-domain-services-enable.md#regional-availability) bakın.
+
+* <a id="ad-aad-smb-afs"></a>
+**Azure dosya eşitleme tarafından yönetilen dosya paylaşımlarında Azure dosyaları azure AD DS kimlik doğrulaması veya Active Directory (ad) kimlik doğrulaması (Önizleme) Ile yararlanabilir miyim?**
+
+    Evet, Azure AD DS veya AD kimlik doğrulamasını Azure dosya eşitleme tarafından yönetilen bir dosya paylaşımında etkinleştirebilirsiniz. Yerel dosya sunucularındaki dizin/dosya NTFS ACL 'lerinde yapılan değişiklikler Azure dosyaları ile katmanlanacaktır ve tam tersi de geçerlidir.
 
 * <a id="encryption-at-rest"></a>**Azure dosya paylaşımımın bekleyen bir şekilde şifrelendiğinden nasıl emin olabilirim 
 ?**  
@@ -361,7 +377,7 @@ Azure **Container Instance üzerinde bir Azure dosya paylaşımından bağlanabi
 
 * <a id="rest-rename"></a>
 **REST API yeniden adlandırma işlemi var mı?**  
-    Şimdilik hayır.
+    Şu anda değil.
 
 * <a id="nested-shares"></a>
 **iç içe paylaşımlar ayarlayabilir miyim? Diğer bir deyişle, bir paylaşıma ait mi?**  

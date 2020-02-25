@@ -1,44 +1,44 @@
 ---
-title: "İçeri aktarılan bir sorgu Power BI ile Azure veri Gezgini'nde verileri Görselleştirme "
-description: "Bu makalede, Power bı'da verileri görselleştirmek için üç seçenekten birini kullanmayı öğrenin: Azure veri Gezgini'nde bir sorgu alma."
+title: Power BI içeri aktarılan bir sorguyla Azure Veri Gezgini verileri görselleştirme
+description: 'Bu makalede, Power BI verileri görselleştirmeye yönelik üç seçenekten birini kullanmayı öğrenirsiniz: Azure Veri Gezgini bir sorgu içeri aktarılıyor.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ff156ab3fe74115bce8f7d6bdd3ba47b514f5ff5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806414"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562488"
 ---
-# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Power BI'a aktarılan bir sorgu kullanarak verileri Görselleştir
+# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Power BI içeri aktarılan bir sorgu kullanarak verileri görselleştirin
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür.
 
-Azure Veri Gezgini, Power bı'daki verilere bağlanmak için üç seçenek sunar: yerleşik Bağlayıcısı, Azure veri Gezgini'nde bir sorguyu içeri aktarmak veya bir SQL sorgusu kullanın. Bu makalede veri almak ve bir Power BI raporuna görselleştirme böylece bir sorguyu içeri aktarmak nasıl gösterir.
+Azure Veri Gezgini, Power BI verilere bağlanmak için üç seçenek sunar: yerleşik bağlayıcıyı kullanın, Azure Veri Gezgini bir sorgu içeri aktarın veya bir SQL sorgusu kullanın. Bu makalede, verileri alabilmeniz ve bir Power BI raporunda görselleştirmek için bir sorguyu içeri aktarma işlemi gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede tamamlamak için şunlara ihtiyacınız vardır:
+Bu makaleyi tamamlayabilmeniz için aşağıdakiler gerekir:
 
-* Bağlanabilir, böylece Azure Active directory üyesi olan bir kuruluş e-posta hesabı [Azure Veri Gezgini Yardım kümesi](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* Azure Active Directory 'nin üyesi olan bir kurumsal e-posta hesabı, [azure Veri Gezgini yardım kümesine](https://dataexplorer.azure.com/clusters/help/databases/samples)bağlanabilirsiniz.
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (seçin **DOWNLOAD FREE**)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) ( **indirmeyi ücretsiz**Seç)
 
 * [Azure Veri Gezgini masaüstü uygulaması](/azure/kusto/tools/kusto-explorer)
 
-## <a name="get-data-from-azure-data-explorer"></a>Azure veri Gezgini'nde verileri alma
+## <a name="get-data-from-azure-data-explorer"></a>Azure Veri Gezgini veri al
 
-İlk olarak, Azure Veri Gezgini masaüstü uygulamasında bir sorgu oluşturun ve Power BI kullanmak için dışarı aktarın. Ardından, Azure Veri Gezgini Yardım kümeye bağlanın ve verilerin bir alt getirin *StormEvents* tablo. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+İlk olarak, Azure Veri Gezgini masaüstü uygulamasında bir sorgu oluşturur ve Power BI kullanım için dışa aktarabilirsiniz. Ardından, Azure Veri Gezgini yardım kümesine bağlanırsınız ve *Stormevents* tablosundan verilerin bir alt kümesini getirebilirsiniz. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-1. Bir tarayıcıda Git [ https://help.kusto.windows.net/ ](https://help.kusto.windows.net/) Azure Veri Gezgini Masaüstü uygulamasını başlatmak için.
+1. Bir tarayıcıda, Azure Veri Gezgini masaüstü uygulamasını başlatmak için [https://help.kusto.windows.net/](https://help.kusto.windows.net/) ' a gidin.
 
-1. İçinde bir masaüstü uygulaması, aşağıdaki sorguyu çalıştırın sağ sorgu penceresine kopyalayın.
+1. Masaüstü uygulamasında, aşağıdaki sorguyu sağ üst sorgu penceresine kopyalayın ve çalıştırın.
 
     ```Kusto
     StormEvents
@@ -46,40 +46,40 @@ Bu makalede tamamlamak için şunlara ihtiyacınız vardır:
     | take 1000
     ```
 
-    Sonuç kümesi ilk birkaç satırı aşağıdaki görüntüye benzer olmalıdır.
+    Sonuç kümesinin ilk birkaç satırı aşağıdaki görüntüye benzer görünmelidir.
 
     ![Sorgu sonuçları](media/power-bi-imported-query/query-results.png)
 
-1. Üzerinde **Araçları** sekmesinde **sorgulamak için Power BI** ardından **Tamam**.
+1. **Araçlar** sekmesinde Sorgula ' yı seçerek **Power BI** **Tamam**' ı seçin.
 
-    ![Sorgu dışarı aktarma](media/power-bi-imported-query/export-query.png)
+    ![Sorguyu dışarı aktar](media/power-bi-imported-query/export-query.png)
 
-1. Power BI Desktop'ta üzerinde **giriş** sekmesinde **Veri Al** ardından **boş sorgu**.
+1. Power BI Desktop, **giriş** sekmesinde **veri al** sonra **boş sorgu**' yı seçin.
 
     ![Verileri alma](media/power-bi-imported-query/get-data.png)
 
-1. Güç sorgu Düzenleyicisi'nde, üzerinde **giriş** sekmesinde **Gelişmiş Düzenleyici**.
+1. Power Query düzenleyicisinde, **giriş** sekmesinde **Gelişmiş Düzenleyici**' yi seçin.
 
-1. İçinde **Gelişmiş Düzenleyici** penceresi, dışarı aktardığınız sorgu seçip yapıştırma **Bitti**.
+1. **Gelişmiş Düzenleyici** penceresinde, verdiğiniz sorguyu yapıştırın ve **bitti**' yi seçin.
 
-    ![Yapıştırma sorgu](media/power-bi-imported-query/paste-query.png)
+    ![Sorguyu Yapıştır](media/power-bi-imported-query/paste-query.png)
 
-1. Ana Power Query Düzenleyicisi penceresinde, seçin **kimlik bilgilerini Düzenle**. Seçin **kuruluş hesabı**, oturum açın ve ardından seçin **Connect**.
+1. Ana Power Query Düzenleyicisi penceresinde **kimlik bilgilerini düzenle**' yi seçin. **Kuruluş hesabı**' nı seçin, oturum açın ve sonra **Bağlan**' ı seçin.
 
-    ![Kimlik bilgilerini Düzenle](media/power-bi-imported-query/edit-credentials.png)
+    ![Kimlik bilgilerini düzenle](media/power-bi-imported-query/edit-credentials.png)
 
-1. Üzerinde **giriş** sekmesinde **Kapat & Uygula**.
+1. **Giriş** sekmesinde **Kapat & Uygula**' yı seçin.
 
     ![Kapat ve uygula](media/power-bi-imported-query/close-apply.png)
 
-## <a name="visualize-data-in-a-report"></a>Bir rapordaki verileri görselleştirin
+## <a name="visualize-data-in-a-report"></a>Rapordaki verileri görselleştirme
 
 [!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makalede, oluşturulan rapor artık ihtiyacınız kalmadığında Power BI Desktop (.pbix) dosyasını silin.
+Bu makale için oluşturduğunuz rapora artık ihtiyacınız yoksa Power BI Desktop (. pbix) dosyasını silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Power BI için Azure Veri Gezgini Bağlayıcısı'nı kullanarak verileri Görselleştir](power-bi-connector.md)
+[Power BI için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirin](power-bi-connector.md)

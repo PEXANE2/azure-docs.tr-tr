@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442590"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561451"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
 
@@ -157,7 +157,7 @@ Bu, şirket içi ağ geçidi için kullanılan genel IP adresidir.
    |Kaynak grubu     |**FW-karma-test** |
    |Adı     |**AzFW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
-   |Bir sanal ağ seçin     |**Mevcut olanı kullan**:<br> **VNet-hub**|
+   |Bir sanal ağ seçin     |**Var olanı kullan**:<br> **VNet-hub**|
    |Genel IP adresi     |Yeni oluştur: <br> - **FW-PIP** **adı** . |
 
 5. **İncele ve oluştur**’u seçin.
@@ -179,9 +179,10 @@ Bu, şirket içi ağ geçidi için kullanılan genel IP adresidir.
 6. **Eylem** alanında **İzin ver**'i seçin.
 6. **Kurallar**' ın altında, **ad**için **allowweb**yazın.
 7. **Protokol** alanında **TCP**'yi seçin.
-8. **Kaynak adresleri**için **192.168.1.0/24**yazın.
-9. Hedef adres için **10.6.0.0/16** yazın
-10. **Hedef bağlantı noktaları**için **80**yazın.
+8. **Kaynak türü**için **IP adresi**' ni seçin.
+9. **Kaynak**için **192.168.1.0/24**yazın.
+10. **Hedef adres**için **10.6.0.0/16** yazın
+11. **Hedef bağlantı noktaları**için **80**yazın.
 
 Şimdi RDP trafiğine izin vermek için bir kural ekleyin.
 
@@ -189,10 +190,11 @@ Bu, şirket içi ağ geçidi için kullanılan genel IP adresidir.
 
 1. **Ad**, **allowrdp**yazın.
 2. **Protokol** alanında **TCP**'yi seçin.
-3. **Kaynak adresleri**için **192.168.1.0/24**yazın.
-4. Hedef adres için **10.6.0.0/16** yazın
-5. **Hedef bağlantı noktaları**için **3389**yazın.
-6. **Add (Ekle)** seçeneğini belirleyin.
+3. **Kaynak türü**için **IP adresi**' ni seçin.
+4. **Kaynak**için **192.168.1.0/24**yazın.
+5. **Hedef adres**için **10.6.0.0/16** yazın
+6. **Hedef bağlantı noktaları**için **3389**yazın.
+7. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>VPN ağ geçitlerini oluşturma ve bağlama
 
@@ -350,7 +352,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 5. **Sn-Iş yükü**seçin.
 6. **Tamam**’ı seçin.
 
-## <a name="create-virtual-machines"></a>Sanal makineler oluşturun
+## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
 Artık bağlı olan iş yükünü ve şirket içi sanal makineleri oluşturun ve uygun alt ağlara yerleştirin.
 

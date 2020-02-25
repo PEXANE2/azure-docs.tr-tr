@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192122"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561655"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -30,7 +30,7 @@ Blok tüm atamaları hesaba ayırır ve koşullu erişim ilkesi yapılandırmas�
 
 Blok, uygun bilgilerle silinmeli güçlü bir denetimdir. Bir yönetici, etkinleştirmeden önce test etmek için [yalnızca rapor modunu](concept-conditional-access-report-only.md) kullanmalıdır.
 
-## <a name="grant-access"></a>Erişim izni verin
+## <a name="grant-access"></a>Erişim verme
 
 Yöneticiler, erişim izni verirken bir veya daha fazla denetimi zorlamayı tercih edebilir. Bu denetimler aşağıdaki seçenekleri içerir: 
 
@@ -55,13 +55,17 @@ Bu onay kutusunun belirlenmesi, kullanıcıların Azure Multi-Factor Authenticat
 
 Microsoft Intune dağıtılan kuruluşlar, belirli uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir. Bu ilke uyumluluk bilgileri, Intune 'dan Azure AD 'ye iletilir ve Koşullu erişimin kaynaklara erişim izni vermek veya erişimi engellemek için kararlar verebilecekleri bir karardır. Uyumluluk ilkeleri hakkında daha fazla bilgi için, [Intune kullanarak kuruluşunuzdaki kaynaklara erişime izin vermek üzere cihazlarda kuralları ayarlama](https://docs.microsoft.com/intune/protect/device-compliance-get-started)makalesine bakın.
 
+Bir cihaz, Intune (herhangi bir cihaz işletim sistemi için) veya Windows 10 cihazları için üçüncü taraf MDM sistemi tarafından uyumlu olarak işaretlenebilir. Windows 10 dışındaki cihaz işletim sistemi türleri için üçüncü taraf MDM sistemleri desteklenmez.
+
+Cihazların uyumlu olarak işaretlenmeleri için önce Azure AD 'de kayıtlı olmaları gerekir. Cihaz kaydı hakkında daha fazla bilgi, makalesinde [cihaz kimliği nedir?](../devices/overview.md)makalesinde bulunabilir.
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Karma Azure AD 'ye katılmış cihaz gerektir
 
 Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini kullanmayı seçebilir. Kuruluşlar, bu onay kutusu kullanılarak cihazların karma Azure AD 'ye katılmış olmasını gerektirebilir. Cihaz kimlikleri hakkında daha fazla bilgi için, [cihaz kimliği nedir?](../devices/overview.md)makalesine bakın.
 
 ### <a name="require-approved-client-app"></a>Onaylı istemci uygulaması gerektir
 
-Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir.
+Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci AP 'ler, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
 Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 
@@ -102,9 +106,7 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 
 ### <a name="require-app-protection-policy"></a>Uygulama koruma ilkesi gerektir
 
-Koşullu erişim ilkenizde, seçili bulut uygulamalarına erişim izni vermeden önce istemci uygulamada bir uygulama koruma ilkesinin mevcut olmasını zorunlu kılabilirsiniz. 
-
-![Uygulama koruma ilkesiyle erişimi denetleme](./media/technical-reference/22.png)
+Koşullu erişim ilkenizde, seçili bulut uygulamalarına erişim izni vermeden önce istemci uygulamada bir [Intune uygulama koruma ilkesinin](/intune/app-protection-policy) mevcut olmasını zorunlu kılabilirsiniz. 
 
 Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 
@@ -118,6 +120,10 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 - Uygulama koruma ilkesi için uygulamalar, ilke korumasıyla Intune mobil uygulama yönetimi özelliğini destekler.
 - **Uygulama koruma ilkesi gereksinimlerini gerektir** :
     - Yalnızca iOS ve Android for Device platform koşulunu destekler.
+
+### <a name="terms-of-use"></a>Kullanım koşulları
+
+Kuruluşunuz kullanım koşulları oluşturmışsa, denetim ver altında ek seçenekler görünür olabilir. Bu seçenekler, yöneticilerin ilke tarafından korunan kaynaklara erişme koşulu olarak kullanım koşulları onayını gerektirmesini sağlar. Kullanım koşulları hakkında daha fazla bilgi makalesinde [Azure Active Directory kullanım koşulları](terms-of-use.md)' nda bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

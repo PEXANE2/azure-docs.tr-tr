@@ -1,42 +1,42 @@
 ---
-title: Oluşturma veya bir veritabanı veya Azure veri Gezgini'nde tablo silme hatası
-description: Bu makale, veritabanlarını ve tabloları Azure veri Gezgini'nde oluşturma ve silme için sorun giderme adımları açıklanmaktadır.
+title: Azure Veri Gezgini VERITABANı veya tablo oluşturma veya silme hatası
+description: Bu makalede, Azure Veri Gezgini veritabanları ve tablolar oluşturmak ve silmek için sorun giderme adımları açıklanmaktadır.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0d221138914230d5455dc0addbe08cdaaed36a0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67e4c33498b05884fe667a7977ddb40e647ab4c8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826263"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562403"
 ---
-# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Sorun giderme: Oluşturma veya bir veritabanı veya Azure veri Gezgini'nde tablo silme hatası
+# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Sorun giderme: Azure Veri Gezgini bir veritabanı veya tablo oluşturma veya silme hatası
 
-Azure veri Gezgini'nde düzenli olarak veritabanları ve tablolar ile çalışırsınız. Bu makalede, bulmalı sorunları için sorun giderme adımları sağlar.
+Azure Veri Gezgini 'de veritabanları ve tablolarla düzenli olarak çalışırsınız. Bu makalede, ortaya çıkan sorunlara yönelik sorun giderme adımları sunulmaktadır.
 
 ## <a name="creating-a-database"></a>Veritabanı oluşturma
 
-1. Yeterli izinlere sahip olun. Bir veritabanı oluşturmak için bir üyesi olmanız *katkıda bulunan* veya *sahibi* rolü için Azure aboneliği. Gerekirse, bunlar için uygun rolü ekleyebilmeniz için abonelik yöneticinize iş durumunda.
+1. Uygun izinlerinizin olduğundan emin olun. Bir veritabanı oluşturmak için Azure aboneliği için *katkıda bulunan* veya *sahip* rolünün bir üyesi olmanız gerekir. Gerekirse, uygun role ekleyebilmeleri için abonelik yöneticinizle birlikte çalışın.
 
-1. Veritabanı adı için adı doğrulama hataları olduğundan emin olun. Ad, alfasayısal, en fazla 260 karakter uzunluğunu ile olmalıdır.
+1. Veritabanı adı için ad doğrulama hatası olmadığından emin olun. Ad, en fazla 260 karakter uzunluğunda alfasayısal olmalıdır.
 
-1. Veritabanı saklama ve değerleri önbelleğe alma, izin verilen aralıkta olduğundan emin olun. Bekletme 1 ile 36500 gün (100 yıl) arasında olmalıdır. Önbelleğe alma, 1 ile bekletme için maksimum değer arasında olmalıdır.
+1. Veritabanı saklama ve önbelleğe alma değerlerinin izin verilen aralıklar içinde olduğundan emin olun. Bekletme 1 ile 36500 gün (100 yıl) arasında olmalıdır. Önbelleğe alma, 1 ile saklama için ayarlanan maksimum değer olmalıdır.
 
-## <a name="deleting-or-renaming-a-database"></a>Bir veritabanını yeniden adlandırma veya silme
+## <a name="deleting-or-renaming-a-database"></a>Bir veritabanını silme veya yeniden adlandırma
 
-Yeterli izinlere sahip olun. Bir veritabanını yeniden adlandırın ya da silmek için bir üyesi olmanız *katkıda bulunan* veya *sahibi* rolü için Azure aboneliği. Gerekirse, bunlar için uygun rolü ekleyebilmeniz için abonelik yöneticinize iş durumunda.
+Uygun izinlerinizin olduğundan emin olun. Bir veritabanını silmek veya yeniden adlandırmak için, Azure aboneliği için *katkıda* bulunan veya *sahip* rolünün bir üyesi olmanız gerekir. Gerekirse, uygun role ekleyebilmeleri için abonelik yöneticinizle birlikte çalışın.
 
 ## <a name="creating-a-table"></a>Tablo oluşturma
 
-1. Yeterli izinlere sahip olun. Bir tablo oluşturmak için bir üyesi olmanız *veritabanında ADMIN* veya *veritabanı kullanıcısı* veritabanı rolüne veya *katkıda bulunan* veya *sahibi* rolü için Azure aboneliği. Gerekirse, aboneliğiniz ile birlikte çalışmak veya Küme Yöneticisi, uygun role ekleyebilirsiniz.
+1. Uygun izinlerinizin olduğundan emin olun. Bir tablo oluşturmak için veritabanında *veritabanı yöneticisi* veya *veritabanı kullanıcı* rolünün bir üyesi ya da Azure aboneliğinin *katkıda* bulunan veya *sahip* rolünde olması gerekir. Gerekirse, aboneliğiniz veya küme yöneticinizle birlikte çalışarak uygun role ekleyebilmeleri gerekir.
 
-    İzinler hakkında daha fazla bilgi için bkz. [veritabanı izinlerini yönetmek](manage-database-permissions.md).
+    İzinler hakkında daha fazla bilgi için bkz. [Veritabanı izinlerini yönetme](manage-database-permissions.md).
 
-1. Aynı ada sahip bir tablo zaten yoksa emin olun. Varsa, şunları yapabilirsiniz: Farklı ada sahip bir tablo oluşturun; Varolan bir tabloyu yeniden adlandır (gerektirir *tablo yönetici* rol); veya var olan tablo bırakma (gerektirir *veritabanında ADMIN* rol). Aşağıdaki komutları kullanın.
+1. Aynı ada sahip bir tablonun zaten mevcut olmadığından emin olun. Varsa, şunları yapabilirsiniz: farklı bir ada sahip bir tablo oluşturabilirsiniz; var olan tabloyu yeniden adlandır ( *Tablo Yöneticisi* rolü gerektirir); veya var olan tabloyu ( *veritabanı yönetici* rolü gerektirir) bırakın. Aşağıdaki komutları kullanın.
 
     ```Kusto
     .drop table <TableName>
@@ -44,19 +44,19 @@ Yeterli izinlere sahip olun. Bir veritabanını yeniden adlandırın ya da silme
    .rename table <OldTableName> to <NewTableName>
     ```
 
-## <a name="deleting-or-renaming-a-table"></a>Bir tabloyu yeniden adlandırma veya silme
+## <a name="deleting-or-renaming-a-table"></a>Tablo silme veya yeniden adlandırma
 
-Yeterli izinlere sahip olun. Bir tabloyu yeniden adlandırma ya da silmek için bir üyesi olmanız *veritabanında ADMIN* veya *tablo yönetici* veritabanı rolü. Gerekirse, aboneliğiniz ile birlikte çalışmak veya Küme Yöneticisi, uygun role ekleyebilirsiniz.
+Uygun izinlerinizin olduğundan emin olun. Bir tabloyu silmek veya yeniden adlandırmak için veritabanında *veritabanı yöneticisi* veya *Tablo Yöneticisi* rolünün bir üyesi olmanız gerekir. Gerekirse, aboneliğiniz veya küme yöneticinizle birlikte çalışarak uygun role ekleyebilmeleri gerekir.
 
-İzinler hakkında daha fazla bilgi için bkz. [veritabanı izinlerini yönetmek](manage-database-permissions.md).
+İzinler hakkında daha fazla bilgi için bkz. [Veritabanı izinlerini yönetme](manage-database-permissions.md).
 
 ## <a name="general-guidance"></a>Genel kılavuz
 
-1. Denetleme [Azure hizmet durumu Panosu](https://azure.microsoft.com/status/). Azure veri Gezgini'nde bir veritabanı veya tablo ile çalışmak için burada çalıştığınız bölge durumunu arayın.
+1. [Azure hizmet durumu panosunu](https://azure.microsoft.com/status/) denetleyin. Bir veritabanı veya tabloyla çalışmayı denediğiniz bölgedeki Azure Veri Gezgini durumunu arayın.
 
-    Durum yoksa **iyi** (yeşil onay işareti) durumu iyileştirildikten sonra yeniden deneyin.
+    Durum **iyi** değilse (yeşil onay işareti), durum artdıktan sonra yeniden deneyin.
 
-1. Hala sorununuzun çözümüyle ilgili yardıma ihtiyacınız varsa, Lütfen bir destek isteği açın [Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+1. Sorununuzu çözmeye hala yardım gerekiyorsa lütfen [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)bir destek isteği açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

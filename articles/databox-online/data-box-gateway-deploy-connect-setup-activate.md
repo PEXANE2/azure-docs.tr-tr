@@ -1,6 +1,6 @@
 ---
-title: Yapılandırmak için bağlama ve Azure portalında Azure veri kutusu ağ geçidi etkinleştirme | Microsoft Docs
-description: Veri kutusu ağ geçidini dağıtmak için üçüncü öğretici bağlanmak, ayarlanmış yönlendiren ve sanal Cihazınızı etkinleştirin.
+title: Azure portal Azure Data Box Gateway bağlanma, yapılandırma ve etkinleştirme
+description: Data Box Gateway dağıtmaya yönelik üçüncü öğretici, sanal cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,139 +8,139 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 898cb63f8868ce2abaee8784214322edf9a56997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60756520"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561842"
 ---
-# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Öğretici: Bağlanma, ayarlama, Azure veri kutusu ağ geçidini etkinleştir
+# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Öğretici: Bağlan, ayarla, etkinleştir Azure Data Box Gateway
 
 ## <a name="introduction"></a>Giriş
 
-Bu öğreticide, bağlanmak için ayarlama ve veri kutusu ağ geçidi cihazınızın yerel web kullanıcı arabirimini kullanarak etkinleştirmek açıklar. 
+Bu öğretici, yerel Web Kullanıcı arabirimini kullanarak Data Box Gateway cihazınızı nasıl bağlanılacağını, ayarlanacağını ve etkinleştireceğinize açıklamaktadır. 
 
-Kurulum ve etkinleştirme işlemini tamamlamak için yaklaşık 10 dakika sürebilir. 
+Kurulum ve etkinleştirme işleminin tamamlanması yaklaşık 10 dakika sürebilir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Bir sanal cihaza bağlanma
-> * Ayarlama ve sanal cihaz etkinleştirme
+> * Sanal cihaza Bağlan
+> * Sanal cihazı ayarlama ve etkinleştirme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Yapılandırma ve veri kutusu ağ geçidini ayarlamak için önce emin olun:
+Data Box Gateway yapılandırmadan ve ayarlamadan önce, aşağıdakileri yaptığınızdan emin olun:
 
-* Sağlanan sanal cihazı ve ona bağlı bir URL içinde ayrıntılı olarak elde edilen [veri kutusu ağ geçidi Hyper-V'de sağlama](data-box-gateway-deploy-provision-hyperv.md) veya [veri kutusu ağ geçidi vmware'de sağlama](data-box-gateway-deploy-provision-vmware.md).
-* Veri kutusu ağ geçidi cihazları yönetmek için oluşturduğunuz veri kutusu ağ geçidi hizmetini etkinleştirme anahtarı var. Daha fazla bilgi için Git [Azure veri kutusu ağ geçidi dağıtmaya hazırlanma](data-box-gateway-deploy-prep.md).
+* Bir sanal cihaz sağladınız ve [Hyper-V ' d e bir Data Box Gateway sağlama](data-box-gateway-deploy-provision-hyperv.md) veya [VMware 'de bir Data Box Gateway sağlama](data-box-gateway-deploy-provision-vmware.md)bölümünde açıklandığı şekılde buna bağlı bir URL edindiniz.
+* Data Box Gateway cihazlarını yönetmek için oluşturduğunuz Data Box Gateway hizmetinden etkinleştirme anahtarınız vardır. Daha fazla bilgi için, [Azure Data Box Gateway dağıtmaya hazırlanma](data-box-gateway-deploy-prep.md)bölümüne gidin.
 
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Yerel web kullanıcı Arabirimi kurulum için bağlantı 
+## <a name="connect-to-the-local-web-ui-setup"></a>Yerel Web Kullanıcı arabirimi kurulumuna bağlanma 
 
-1. Yerel web kullanıcı Arabirimi adresinde bir tarayıcı penceresi ve erişim'i açın:
+1. Bir tarayıcı penceresi açın ve cihazın yerel Web Kullanıcı arabirimine şu adresten erişin:
    
    [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
    
-   Önceki öğreticide belirtilen bağlantı URL'sini kullanın. Bir hata veya Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir uyarı görürsünüz.
+   Önceki öğreticide belirtilen bağlantı URL 'sini kullanın. Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz.
 
-2. Seçin **bu Web sayfasına devam**. Bu adımlar, kullandığınız tarayıcıya bağlı olarak değişebilir.
+2. **Bu Web sayfasına devam et**' i seçin. Bu adımlar, kullanmakta olduğunuz tarayıcıya bağlı olarak farklılık gösterebilir.
    
     ![Web sitesi güvenlik sertifikası hata iletisi](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
-3. Web kullanıcı Arabirimine sanal cihazınızın oturum açın. Varsayılan parola *Password1*. 
+3. Sanal cihazınızın Web Kullanıcı arabiriminde oturum açın. Varsayılan parola *Parola1*' dir. 
    
-    ![Yerel web kullanıcı Arabiriminde oturum açın](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
+    ![Yerel Web Kullanıcı arabiriminde oturum açın](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-4. İstemde, cihaz parolasını değiştirin. Yeni parola 8 ile 16 karakter içermesi gerekir. Şunlardan 3 tanesini içermelidir: büyük harf, küçük harfler, sayısal ve özel karakter.
+4. İstemde, cihaz parolasını değiştirin. Yeni parola 8 ile 16 arasında karakter içermelidir. Aşağıdakilerden 3 ' ü içermesi gerekir: büyük harf, küçük harf, sayısal ve özel karakterler.
 
     ![Cihaz parolasını değiştirme](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
-Şimdi, işiniz **Pano** cihazınızın.
+Artık cihazınızın **panosundan** hazırsınız.
 
-## <a name="set-up-and-activate-the-virtual-device"></a>Ayarlama ve sanal cihaz etkinleştirme
+## <a name="set-up-and-activate-the-virtual-device"></a>Sanal cihazı ayarlama ve etkinleştirme
  
-Panonuzu yapılandırmak ve veri kutusu ağ geçidi hizmeti ile sanal cihaz kaydetmek için gereken çeşitli ayarlarını görüntüler. **Cihaz adı**, **ağ ayarları**, **Web proxy ayarları**, ve **saat ayarlarını** isteğe bağlıdır. Yalnızca gerekli ayarları **Cloud ayarları**.
+Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek için gereken çeşitli ayarları görüntüler. **Cihaz adı**, **ağ ayarları**, **Web proxy ayarları**ve **zaman ayarları** isteğe bağlıdır. Yalnızca **bulut ayarları**gereklidir.
    
-![Yerel web kullanıcı Arabirimi "Pano" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+![Yerel Web Kullanıcı arabirimi "Pano" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-1. Sol bölmede seçin **cihaz adı**, cihazınız için kolay bir ad girin. Kolay adı 1 ila 15 karakter uzunluğunda içerir ve harf, rakam ve kısa olması gerekir.
+1. Sol bölmede **Cihaz adı**' nı seçin ve ardından cihazınız için kolay bir ad girin. Kolay ad, 1 ile 15 karakter uzunluğunda olmalı ve harf, rakam ve kısa çizgi içermelidir.
 
-    ![Yerel web kullanıcı Arabirimi "Cihaz adı" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
+    ![Yerel Web Kullanıcı arabirimi "Cihaz adı" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
-2. (İsteğe bağlı) Sol bölmede seçin **ağ ayarları** ve ardından ayarlarını yapılandırın. Sanal Cihazınızda en az bir ağ arabirimi ve kaç temel alınan sanal makinede yapılandırdığınıza bağlı olarak daha fazlasını görürsünüz. **Ağ ayarları** etkinleştirilmiş bir ağ arabirimine sahip sanal bir cihaz için aşağıda gösterildiği gibi sayfa.
+2. Seçim Sol bölmede **ağ ayarları** ' nı seçin ve ardından ayarları yapılandırın. Sanal cihazınızda, en az bir ağ arabirimi ve temel alınan sanal makinede ne kadar yapılandırdığınıza bağlı olarak daha fazla bilgi edineceksiniz. Bir ağ arabirimi etkin bir sanal cihaz için **ağ ayarları** sayfası aşağıda gösterildiği gibidir.
     
-    ![Yerel web kullanıcı Arabirimi "Ağ ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
+    ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
-    Ağ ayarlarını yapılandırma, göz önünde bulundurun:
+    Ağ ayarlarını yapılandırırken şunları göz önünde bulundurun:
 
-    - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. Bir IP adresi, alt ağ, ağ geçidi ve DNS otomatik olarak atanır.
-    - DHCP etkin değilse, gerekirse statik IP atayabilirsiniz.
-    - Ağ Arabiriminizin IPv4 yapılandırabilirsiniz.
+    - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. IP adresi, alt ağ, ağ geçidi ve DNS otomatik olarak atanır.
+    - DHCP etkinleştirilmemişse, gerekirse statik IP 'Ler atayabilirsiniz.
+    - Ağ arabiriminizi IPv4 olarak yapılandırabilirsiniz.
 
      >[!NOTE] 
-     > Cihaza bağlanmak için başka bir IP adresi yoksa ağ arabiriminden statik DHCP, yerel IP adresini geçme öneririz. Birini kullanıyorsanız, ağ arabirimi ve geçiş için DHCP, DHCP adresini belirlemek mümkün olacaktır. Bir DHCP adresi için değiştirmek istiyorsanız, cihazın hizmete kaydolduktan sonra kadar bekleyin ve sonra değiştirebilirsiniz. Bulunan tüm bağdaştırıcıları IP'ler daha sonra görüntüleyebileceğiniz **cihaz özelliklerini** hizmetiniz için Azure portalında.
+     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini statik 'ten DHCP 'ye geçmenizi öneririz. Bir ağ arabirimi kullanılıyorsa ve DHCP 'ye geçerseniz, DHCP adresini belirlemenin bir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmete kaydolduktan sonra bekleyin ve sonra değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
 
-3. (İsteğe bağlı), web ara sunucusunu yapılandırın. Web proxy yapılandırması bir web proxy kullanıyorsanız, isteğe bağlı olsa, yalnızca bu sayfada yapılandırabilirsiniz.
+3. (İsteğe bağlı), web ara sunucusunu yapılandırın. Web proxy yapılandırması isteğe bağlı olsa da, bir Web Proxy kullanıyorsanız, bunu yalnızca bu sayfada yapılandırabilirsiniz.
    
-   ![Yerel web kullanıcı Arabirimi "Web proxy ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
+   ![Yerel Web Kullanıcı arabirimi "Web proxy ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
-   Üzerinde **Web proxy** sayfasında, aşağıdakileri yapın:
+   **Web proxy** sayfasında, şunları yapın:
    
-   1. İçinde **Web proxy URL'si** kutusunda, URL'yi şu biçimde girin: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS URL'leri desteklenmez.
-   2. Altında **kimlik doğrulaması**seçin **hiçbiri** veya **NTLM**.
-   3. Kimlik doğrulaması kullanıyorsanız, girin bir **kullanıcıadı** ve **parola**.
-   4. Doğrulama ve yapılandırılmış bir web proxy ayarlarını uygulamak için **Uygula**.
+   1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS URL 'Leri desteklenmez.
+   2. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin.
+   3. Kimlik doğrulaması kullanıyorsanız, bir **Kullanıcı adı** ve **parola**girin.
+   4. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Uygula**' yı seçin.
 
-4. (İsteğe bağlı) Sol bölmede seçin **saat ayarlarını**ve ardından saat dilimini ve cihazınız için birincil ve ikincil NTP sunucuları yapılandırın. 
+4. Seçim Sol bölmede **zaman ayarları**' nı seçin ve ardından cihazınız için saat dilimini ve birincil ve ikincil NTP sunucularını yapılandırın. 
 
-    Bu, bulut hizmeti sağlayıcılarıyla doğrulanabileceği şekilde Cihazınızı saati eşitlemesi gerekir çünkü NTP sunucuları gereklidir.
+    Cihazınızın bulut hizmeti sağlayıcılarınız ile kimlik doğrulaması yapabilmesi için zaman eşitlemesini gerektiğinden NTP sunucuları gereklidir.
     
-    ![Yerel web kullanıcı Arabirimi "Saat ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
+    ![Yerel Web Kullanıcı arabirimi "zaman ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
-    İçinde **saat ayarlarını** sayfasında, aşağıdakileri yapın:
+    **Zaman ayarları** sayfasında, aşağıdakileri yapın:
     
-    1. İçinde **saat dilimi** aşağı açılan listesinde, cihazın dağıtıldığı coğrafi konuma karşılık gelen saat dilimini seçin.
-        Cihazınız için varsayılan saat dilimini PST ' dir. Cihazınız zamanlanan tüm işlemler için bu saat dilimini kullanır.
+    1. **Saat dilimi** açılan listesinde, cihazın dağıtıldığı coğrafi konuma karşılık gelen saat dilimini seçin.
+        Cihazınızın varsayılan saat dilimi PST ' dir. Cihazınız zamanlanan tüm işlemler için bu saat dilimini kullanır.
 
-    2. Belirtin bir **birincil NTP sunucusu** cihazınız için veya varsayılan değerini kabul edin `time.windows.com`.   
+    2. Cihazınız için bir **BIRINCIL NTP sunucusu** belirtin veya `time.windows.com`varsayılan değerini kabul edin.   
         Ağınızın, NTP trafiğini veri merkezinizden İnternete geçirilmesine izin vermesini sağlayın.
 
-    3. İsteğe bağlı olarak **ikincil NTP sunucusu** kutusuna, cihazınız için ikincil sunucu girin.
+    3. İsteğe bağlı olarak, **IKINCIL NTP sunucusu** kutusuna cihazınız için bir ikincil sunucu girin.
 
-    4. Doğrulama ve yapılandırılmış zaman ayarları uygulamak için **Uygula**.
+    4. Yapılandırılan saat ayarlarını doğrulamak ve uygulamak için **Uygula**' yı seçin.
 
-6. Sol bölmede seçin **Cloud ayarları**ve ardından Azure portalında veri kutusu ağ geçidi hizmeti ile Cihazınızı etkinleştirin.
+6. Sol bölmede, **bulut ayarları**' nı seçin ve ardından cihazınızı Azure Portal Data Box Gateway hizmetiyle etkinleştirin.
     
-    1. İçinde **etkinleştirme anahtarı** kutusuna **etkinleştirme anahtarı** aldığınız [etkinleştirme anahtarı alma](data-box-gateway-deploy-prep.md#get-the-activation-key) veri kutusu ağ geçidi için.
+    1. **Etkinleştirme anahtarı** kutusunda, Data Box Gateway için [etkinleştirme anahtarını al](data-box-gateway-deploy-prep.md#get-the-activation-key) bölümünde aldığınız **etkinleştirme anahtarını** girin.
 
-    2. Seçin **etkinleştirme**.
+    2. **Etkinleştir**' i seçin.
        
-         ![Yerel web kullanıcı Arabirimi "Bulut ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
+         ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Cihaz etkinleştirilir ve kritik güncelleştirmeler, otomatik olarak kullanılabilir olması durumunda uygulanır. Belirten bir bildirim görürsünüz. Azure portal aracılığıyla güncelleştirme ilerleme durumunu izleyin.
+    3. Cihaz etkinleştirilir ve varsa kritik güncelleştirmeler otomatik olarak uygulanır. Bu etkiye yönelik bir bildirim görürsünüz. Azure portal aracılığıyla güncelleştirme ilerlemesini izleyin.
 
-        ![Yerel web kullanıcı Arabirimi "Bulut ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
-        **İletişim kutusu, bir kurtarma anahtarı kopyalayın ve güvenli bir konuma kaydetmeniz gerekir ayrıca sahiptir. Bu anahtar, cihaz önyükleme yapılamıyor durumunda verilerinizi kurtarmak için kullanılır.**
+        **İletişim kutusunda ayrıca güvenli bir konuma kopyalamanız ve kaydetmeniz gereken bir kurtarma anahtarı bulunur. Bu anahtar, cihazın önyüklenebildiği olaydaki verilerinizi kurtarmak için kullanılır.**
 
 
-    4. Güncelleştirme başarıyla tamamlanması için birkaç dakika beklemeniz gerekebilir. Güncelleştirme sonrasında olduğundan tamamlanması, cihaz için oturum açın. **Cloud ayarları** sayfasında cihaz başarıyla etkinleştirilir gösterecek biçimde güncelleştirilir.
+    4. Güncelleştirmenin başarıyla tamamlanabilmesi için birkaç dakika beklemeniz gerekebilir. Güncelleştirme tamamlandıktan sonra cihazda oturum açın. **Bulut ayarları** sayfası, cihazın başarıyla etkinleştirildiğini belirtecek şekilde güncelleştirilir.
 
-        ![Yerel web kullanıcı Arabirimi "Bulut ayarları" sayfası güncelleştirildi](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
+        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası güncelleştirildi](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
-Cihaz Kurulumu tamamlanır. Artık Cihazınızda paylaşımlarını ekleyebilirsiniz.
+Cihaz kurulumu tamamlanmıştır. Artık cihazınıza paylaşımlar ekleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Bir sanal cihaza bağlanma
-> * Ayarlama ve sanal cihaz etkinleştirme
+> * Sanal cihaza Bağlan
+> * Sanal cihazı ayarlama ve etkinleştirme
 
-Veri kutusu ağ geçidi ile veri aktarmayı öğrenmek için bkz:
+Data Box Gateway verileri nasıl aktaracağınızı öğrenmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Veri kutusu ağ geçidi ile veri aktarımı](./data-box-gateway-deploy-add-shares.md).
+> [Data Box Gateway verileri aktarın](./data-box-gateway-deploy-add-shares.md).

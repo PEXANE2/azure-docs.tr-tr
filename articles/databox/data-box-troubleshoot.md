@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box sorunları giderme Azure Data Box Heavy | Microsoft Docs
+title: Azure Data Box sorunları giderme Azure Data Box Heavy
 description: Bu cihazlara veri kopyalanırken Azure Data Box ve Azure Data Box Heavy görülen sorunların nasıl giderileceği açıklanmaktadır.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848505"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560074"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy ilgili sorunları giderin
 
@@ -31,7 +31,7 @@ Data Box ve Data Box Heavy hataları şu şekilde özetlenmektedir:
 | Veri veya dosya türü | Veri biçimi veya dosya türü desteklenmiyor. |Hata listelerini indirin. <br> Sayfa Blobları veya yönetilen diskler için, verilerin 512 bayt hizalı ve önceden oluşturulmuş klasörlere kopyalandığından emin olun. [Daha fazla bilgi edinin](#data-or-file-type-errors). |
 | Kritik olmayan BLOB veya dosya hataları  | Blob veya dosya adları Azure adlandırma kurallarına uymalıdır veya dosya türü desteklenmiyor. | Bu blob veya dosyalar kopyalanmayabilir veya adlar değişebilir. [Bu hataları nasıl düzelteceğinizi öğrenin](#non-critical-blob-or-file-errors). |
 
-\*İlk dört hata kategorisi kritik hatalardır ve göndermeye hazırlanmaya devam edebilmeniz için önce sabit olması gerekir.
+ilk dört hata kategorisi \* kritik hatalardır ve göndermeye hazırlanmaya devam edebilmeniz için önce sabit olması gerekir.
 
 
 ## <a name="container-or-share-name-errors"></a>Kapsayıcı veya paylaşma adı hataları
@@ -40,7 +40,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
 
 ### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
-**Hata açıklaması:** Kapsayıcı veya paylaşım adı 3 ile 63 karakter arasında olmalıdır. 
+**Hata açıklaması:** Kapsayıcı veya paylaşımın adı 3 ila 63 karakter arasında olmalıdır. 
 
 **Önerilen çözüm:** Veri kopyaladığınız Data Box veya Data Box Heavy paylaşımının (SMB/NFS) klasörü, depolama hesabınızda bir Azure kapsayıcısı haline gelir. 
 
@@ -51,15 +51,15 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Adlar yalnızca harf, sayı ve kısa çizgi içerebilir.
     - Adlar kısa çizgi ile başlayamaz veya bitemez.
     - Adların ardışık kısa çizgileri olamaz.
-    - Geçerli adların örnekleri: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
+    - Geçerli adların örnekleri: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Geçerli olmayan adların örnekleri: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
-**Hata açıklaması:** Kapsayıcı veya paylaşım adında yalnızca harf, rakam veya kısa çizgi bulunmalıdır.
+**Hata açıklaması:** Kapsayıcı veya paylaşımın adı yalnızca harf, sayı veya kısa çizgi içermelidir.
 
 **Önerilen çözüm:** Veri kopyaladığınız Data Box veya Data Box Heavy paylaşımının (SMB/NFS) klasörü, depolama hesabınızda bir Azure kapsayıcısı haline gelir. 
 
@@ -70,8 +70,8 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Adlar yalnızca harf, sayı ve kısa çizgi içerebilir.
     - Adlar kısa çizgi ile başlayamaz veya bitemez.
     - Adların ardışık kısa çizgileri olamaz.
-    - Geçerli adların örnekleri: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
+    - Geçerli adların örnekleri: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Geçerli olmayan adların örnekleri: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
@@ -88,8 +88,8 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Adlar yalnızca harf, sayı ve kısa çizgi içerebilir.
     - Adlar kısa çizgi ile başlayamaz veya bitemez.
     - Adların ardışık kısa çizgileri olamaz.
-    - Geçerli adların örnekleri: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
+    - Geçerli adların örnekleri: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Geçerli olmayan adların örnekleri: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
@@ -112,7 +112,7 @@ Bunlar, en büyük nesne boyutunu veya Azure 'da izin verilen dosyayı aşan ver
 
 ### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Hata açıklaması:** Dosya boyutu karşıya yüklenebilecek maksimum dosya boyutunu aşıyor.
+**Hata açıklaması:** Dosya boyutu karşıya yükleme için en büyük dosya boyutunu aşıyor.
 
 **Önerilen çözüm:** Blob veya dosya boyutları karşıya yükleme için izin verilen üst sınırı aşıyor.
 
@@ -125,7 +125,7 @@ Bunlar, kapsayıcıda veya paylaşımda bulunan desteklenmeyen dosya türü veya
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
-**Hata açıklaması:** Blob veya dosya hatalı hizalanmış.
+**Hata açıklaması:** Blob veya dosya yanlış hizalı.
 
 **Önerilen çözüm:** Data Box veya Data Box Heavy üzerindeki Sayfa Blobu paylaşma yalnızca 512 bayt hizalı (örneğin, VHD/VHDX) dosyaları destekler. Sayfa Blobu paylaşımında kopyalanmış olan veriler Azure 'a sayfa Blobları olarak yüklenir.
 
@@ -222,7 +222,7 @@ Daha fazla bilgi için bkz. blob adları ve dosya adları için Azure adlandırm
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
-**Hata açıklaması:** Blob veya dosya adı bölümlerinden biri çok uzun.
+**Hata açıklaması:** Blob veya dosya adındaki segmentlerin biri çok uzun.
 
 **Önerilen çözüm:** Blob veya dosya adındaki yol parçalarından biri maksimum karakter sayısını aşıyor. Yol kesimi, ardışık sınırlayıcı karakterler arasındaki dizedir, örneğin eğik çizgi/.
 

@@ -1,7 +1,7 @@
 ---
-title: Azure VMware Solutions (AVS) hızlı başlangıç-AVS özel bulutu oluşturma
-description: Azure VMware çözümleri (AVS) ile bir AVS özel bulutu oluşturma ve yapılandırma hakkında bilgi edinin
-titleSuffix: Azure VMware Solutions (AVS)
+title: 'Hızlı başlangıç: özel bir bulut oluşturma'
+titleSuffix: Azure VMware Solutions by CloudSimple
+description: CloudSimple ile Azure VMware çözümleri ile özel bir bulut oluşturma ve yapılandırma hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -9,77 +9,77 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cafcf04dac0542f1506980d8b9484b82b558e100
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018576"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564729"
 ---
-# <a name="quickstart---configure-an-avs-private-cloud-environment"></a>Hızlı başlangıç-AVS özel bulut ortamını yapılandırma
+# <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
-Bu makalede, bir AVS özel bulutu oluşturmayı ve AVS özel bulut ortamınızı ayarlamayı öğrenin.
+Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı ayarlamayı öğrenin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 [Ağ önkoşullarını](cloudsimple-network-checklist.md)gözden geçirin.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="create-an-avs-private-cloud"></a>AVS özel bulutu oluşturma
+## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
 
-AVS özel bulutu, ESXi Konakları, vCenter, vSAN ve NSX 'i destekleyen yalıtılmış bir VMware yığınına sahiptir.
+Özel bulut, ESXi Konakları, vCenter, vSAN ve NSX 'i destekleyen yalıtılmış bir VMware yığınına sahiptir.
 
-AVS özel bulutlar, AVS portalı aracılığıyla yönetilir. Kendi yönetim etki alanında kendi vCenter Server kuruluşları vardır. Yığın adanmış düğümlerde ve yalıtılmış tam donanım düğümlerinde çalışır.
+Özel bulutlar CloudSimple portalı aracılığıyla yönetilir. Kendi yönetim etki alanında kendi vCenter Server kuruluşları vardır. Yığın adanmış düğümlerde ve yalıtılmış tam donanım düğümlerinde çalışır.
 
 1. **Tüm Hizmetler**’i seçin.
-2. **AVS Hizmetleri**için arama yapın.
-3. AVS özel bulutunuzu oluşturmak istediğiniz AVS hizmetini seçin.
-4. **Genel bakış**'dan, AVS portalı için yeni bir tarayıcı sekmesi açmak üzere **AVS özel bulutu oluştur** ' a tıklayın. İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın. 
+2. **Cloudsimple Hizmetleri**için arama yapın.
+3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
+4. **Özel bulut oluştur** **' a tıklayarak**cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
 
-    ![Azure 'dan AVS özel bulutu oluşturma](media/create-private-cloud-from-azure.png)
+    ![Azure 'dan özel bulut oluşturma](media/create-private-cloud-from-azure.png)
 
-5. AVS portalında, AVS özel bulutunuz için bir ad sağlayın.
-6. AVS özel bulutunuzun **konumunu** seçin.
+5. CloudSimple portalında, özel bulutunuz için bir ad sağlayın.
+6. Özel bulutunuzun **konumunu** seçin.
 7. Azure 'da sağladığınız verilerle tutarlı bir **düğüm türü**seçin.
-8. **Düğüm sayısını**belirtin. Bir AVS özel bulutu oluşturmak için en az üç düğüm gerekir.
+8. **Düğüm sayısını**belirtin.  Özel bir bulut oluşturmak için en az üç düğüm gerekir.
 
-    ![AVS özel bulutu oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)
+    ![Özel bulut oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)
 
 9. Ileri ' ye tıklayın **: Gelişmiş Seçenekler**.
 10. VSphere/vSAN alt ağları için CıDR aralığını girin. CıDR aralığının şirket içi veya diğer Azure alt ağlarınızdan (sanal ağlar) veya ağ geçidi alt ağıyla çakışmadığından emin olun.
 
-    **CIDR aralığı seçenekleri:** /24,/23,/22 veya/21. A/24 ' e kadar olan bir CıDR aralığı, en fazla 26 düğüm destekler, a/23 CıDR aralığı 58 düğümü destekler ve/22 ve/21 CıDR aralığı 64 düğümlerini destekler (bir AVS özel bulutundaki en fazla düğüm sayısı). Daha fazla bilgi edinmek için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md).
+    **CIDR aralığı seçenekleri:** /24,/23,/22 veya/21. A/24 ' e kadar olan bir CıDR aralığı, en fazla 26 düğüm destekler, a/23 CıDR aralığı 58 düğümü destekler ve/22 ve/21 CıDR aralığı 64 düğümlerini destekler (özel buluttaki en fazla düğüm sayısı).  Daha fazla bilgi edinmek için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
-      > VSphere/vSAN CıDR aralığındaki IP adresleri, AVS özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır. Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
+      > VSphere/vSAN CıDR aralığındaki IP adresleri özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
 
 11. Ileri ' ye tıklayın. **İnceleme ve oluşturma**.
 12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
-13. **Oluştur**’a tıklayın.
+13. **Oluştur**’ tıklayın.
 
-AVS özel bulut sağlama işlemi başlar. AVS özel bulutunun sağlanması iki saate kadar sürebilir.
+Özel bulut sağlama işlemi başlar.  Özel bulutun sağlanması iki saate kadar sürebilir.
 
-## <a name="launch-avs-portal"></a>AVS portalını Başlat
+## <a name="launch-cloudsimple-portal"></a>CloudSimple portalını Başlat
 
-Azure portal ' dan AVS portalına erişebilirsiniz. AVS portalı, çoklu oturum açma (SSO) ile Azure oturum açma kimlik bilgilerinizle başlatılır. AVS portalına erişmek için **AVS hizmet Yetkilendirme** uygulamasını yetkilendirmeniz gerekir. İzinleri verme hakkında daha fazla bilgi için bkz. [AVS hizmet Yetkilendirme uygulamasına izin](access-cloudsimple-portal.md#consent-to-avs-service-authorization-application)verme.
+Azure portal 'ten CloudSimple portalına erişebilirsiniz.  CloudSimple portalı, çoklu oturum açma (SSO) ile Azure oturum açma kimlik bilgilerinizle başlatılır.  CloudSimple portalına erişmek için **Cloudsimple hizmet Yetkilendirme** uygulamasını yetkilendirmeniz gerekir.  İzinleri verme hakkında daha fazla bilgi için bkz. [CloudSimple hizmet Yetkilendirme uygulamasına izin](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)verme.
 
 1. **Tüm Hizmetler**’i seçin.
-2. **AVS Hizmetleri**için arama yapın.
-3. AVS özel bulutunuzu oluşturmak istediğiniz AVS hizmetini seçin.
-4. Genel bakışta, AVS portalına **Git** ' e tıklayarak AVS portalı için yeni bir tarayıcı sekmesi açın. İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın. 
+2. **Cloudsimple Hizmetleri**için arama yapın.
+3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
+4. Genel bakışta, cloudsimple portalına **Git** ' e tıklayarak cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
 
-    ![AVS portalını Başlat](media/launch-cloudsimple-portal.png)
+    ![CloudSimple portalını Başlat](media/launch-cloudsimple-portal.png)
 
 ## <a name="create-point-to-site-vpn"></a>Noktadan siteye VPN oluşturma
 
-Noktadan siteye VPN bağlantısı, bilgisayarınızdan AVS özel buluta bağlanmak için en kolay yoldur. AVS özel bulutuna uzaktan bağlanıyorsanız Noktadan siteye VPN bağlantısı kullanın. AVS özel bulutuna hızlı erişim için aşağıdaki adımları izleyin. Şirket içi ağınızdan gelen AVS bölgesine erişim, [siteden sıteye VPN](vpn-gateway.md) veya [Azure ExpressRoute](on-premises-connection.md)kullanılarak yapılabilir.
+Noktadan siteye VPN bağlantısı, bilgisayarınızdan özel bulutunuzu bağlamak için en kolay yoldur. Özel buluta uzaktan bağlanıyorsanız Noktadan siteye VPN bağlantısı kullanın.  Özel bulutunuz için hızlı erişim için aşağıdaki adımları izleyin.  Şirket içi ağınızdan CloudSimple bölgesine erişim, [siteden sıteye VPN](vpn-gateway.md) veya [Azure ExpressRoute](on-premises-connection.md)kullanılarak yapılabilir.
 
 ### <a name="create-gateway"></a>Ağ Geçidi oluştur
 
-1. AVS portalını başlatın ve **ağ**' ı seçin.
+1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. **Yeni VPN Gateway**' ye tıklayın.
 
@@ -89,29 +89,29 @@ Noktadan siteye VPN bağlantısı, bilgisayarınızdan AVS özel buluta bağlanm
 
     * Ağ Geçidi türü olarak **noktadan sıteye VPN ' yi** seçin.
     * Ağ geçidini tanımlamak için bir ad girin.
-    * AVS hizmetinizin dağıtıldığı Azure konumunu seçin.
-    * Noktadan siteye ağ geçidi için istemci alt ağını belirtin. Bağlandığınızda, DHCP adresleri bu alt ağdan verilecek.
+    * CloudSimple hizmetinizin dağıtıldığı Azure konumunu seçin.
+    * Noktadan siteye ağ geçidi için istemci alt ağını belirtin.  Bağlandığınızda, DHCP adresleri bu alt ağdan verilecek.
 
 5. **Bağlantı/Kullanıcı**için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
 
-    * Tüm geçerli ve gelecekteki kullanıcıların bu noktadan siteye ağ geçidi aracılığıyla AVS özel bulutuna erişmesine otomatik olarak izin vermek için **tüm kullanıcıları otomatik olarak ekle**' yi seçin. Bu seçeneği belirlediğinizde, Kullanıcı listesindeki tüm kullanıcılar otomatik olarak seçilir. Listedeki bireysel kullanıcıların seçimini kaldırarak otomatik seçeneği geçersiz kılabilirsiniz.
+    * Tüm geçerli ve gelecekteki kullanıcıların bu noktadan siteye ağ geçidi aracılığıyla özel buluta erişmesine otomatik olarak izin vermek için **tüm kullanıcıları otomatik olarak ekle**' yi seçin. Bu seçeneği belirlediğinizde, Kullanıcı listesindeki tüm kullanıcılar otomatik olarak seçilir. Listedeki bireysel kullanıcıların seçimini kaldırarak otomatik seçeneği geçersiz kılabilirsiniz.
     * Yalnızca bireysel kullanıcıları seçmek için Kullanıcı listesindeki onay kutularına tıklayın.
 
 6. VLAN/alt ağlar bölümü, ağ geçidi ve bağlantılar için yönetim ve Kullanıcı VLAN 'Ları/alt ağları belirtmenize olanak tanır.
 
     * **Otomatik olarak ekle** seçeneği bu ağ geçidinin genel ilkesini ayarlar. Ayarlar geçerli ağ geçidi için geçerlidir. Ayarlar **seçim** alanında geçersiz kılınabilir.
-    * **AVS özel bulutlarının yönetim VLAN 'ları/alt ağlarını Ekle**' yi seçin.
+    * **Özel bulutların yönetim VLAN 'ları/alt ağlarını Ekle**' yi seçin.
     * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın.
     * **Seçim** ayarları **otomatik olarak ekle**altındaki genel ayarları geçersiz kılar.
 
 7. Ayarları gözden geçirmek için **İleri** 'ye tıklayın. Herhangi bir değişiklik yapmak için düzenleme simgeleri ' ne tıklayın.
 8. VPN ağ geçidini oluşturmak için **Oluştur** ' a tıklayın.
 
-### <a name="connect-to-avs-using-point-to-site-vpn"></a>Noktadan siteye VPN kullanarak AVS 'ye bağlanma
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Noktadan siteye VPN kullanarak CloudSimple 'a bağlanma
 
-Bilgisayarınızı bilgisayarınızdan AVS 'ye bağlamak için VPN istemcisi gerekir. MacOS ve OS X için Windows veya [viscosity](https://www.sparklabs.com/viscosity/download/) Için [OpenVPN istemcisini](https://openvpn.net/community-downloads/) indirin.
+VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  MacOS ve OS X için Windows veya [viscosity](https://www.sparklabs.com/viscosity/download/) Için [OpenVPN istemcisini](https://openvpn.net/community-downloads/) indirin.
 
-1. AVS portalını başlatın ve **ağ**' ı seçin.
+1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
 4. **Kullanıcıları**seçin.
@@ -124,49 +124,50 @@ Bilgisayarınızı bilgisayarınızdan AVS 'ye bağlamak için VPN istemcisi ger
     * [Windows istemcisinde yapılandırmayı içeri aktarma](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) yönergeleri
     * [MacOS veya OS X üzerinde yapılandırmayı içeri aktarma](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection) yönergeleri
 
-7. AVS 'ye bağlanın.
+7. CloudSimple 'a bağlanın.
 
 ## <a name="create-a-vlan-for-your-workload-vms"></a>İş yükü sanal makinelerinize yönelik bir VLAN oluşturma
 
-AVS özel bulutu oluşturduktan sonra, iş yükünüzü/uygulama VM 'lerinizi dağıtacağınız bir VLAN oluşturun.
+Özel bir bulut oluşturduktan sonra, iş yükünüzü/uygulama VM 'lerinizi dağıtacağınız bir VLAN oluşturun.
 
-1. AVS portalında **ağ**' ı seçin.
+1. CloudSimple portalında **ağ**' ı seçin.
 2. **VLAN/alt ağlar**' a tıklayın.
 3. **VLAN/subnet oluştur**' a tıklayın.
 
     ![VLAN/subnet oluştur](media/create-new-vlan-subnet.png)
 
-4. Yeni VLAN/alt ağ için **AVS özel bulutunu** seçin.
-5. Listeden bir VLAN KIMLIĞI seçin. 
+4. Yeni VLAN/alt ağ için **özel bulutu** seçin.
+5. Listeden bir VLAN KIMLIĞI seçin.  
 6. Alt ağı tanımlamak için bir alt ağ adı girin.
-7. CıDR aralığını ve maskesini belirtin. Bu Aralık varolan alt ağlarla çakışmamalıdır.
+7. CıDR aralığını ve maskesini belirtin.  Bu Aralık varolan alt ağlarla çakışmamalıdır.
 8. **Gönder**'e tıklayın.
 
     ![VLAN/subnet ayrıntıları oluştur](media/create-new-vlan-subnet-details.png)
 
-VLAN/subnet oluşturulacak. Artık bu VLAN KIMLIĞINI, AVS özel bulut vCenter 'unuzda dağıtılmış bir bağlantı noktası grubu oluşturmak için kullanabilirsiniz.
+VLAN/subnet oluşturulacak.  Artık özel bulut vCenter 'unuzda dağıtılmış bir bağlantı noktası grubu oluşturmak için bu VLAN KIMLIĞINI kullanabilirsiniz.
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Ortamınızı bir Azure sanal ağına bağlama
 
-AVS, AVS özel bulutunuz için size bir ExpressRoute devresi sağlar. Azure 'daki Sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı ayarlamayla ilgili tam Ayrıntılar için [ExpressRoute kullanarak Azure sanal ağ bağlantısı](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)' nda bulunan adımları izleyin.
+CloudSimple, özel bulutunuz için bir ExpressRoute devresi sağlar. Azure 'daki Sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı ayarlamayla ilgili tam Ayrıntılar için [ExpressRoute kullanarak Azure sanal ağ bağlantısı](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)' nda bulunan adımları izleyin.
 
 ## <a name="sign-in-to-vcenter"></a>VCenter 'da oturum açın
 
 Artık sanal makineleri ve ilkeleri ayarlamak için vCenter 'da oturum açabilirsiniz.
 
-1. VCenter 'a erişmek için, AVS portalından başlatın. Giriş sayfasında, **ortak görevler**altında, **vSphere istemcisini Başlat**' a tıklayın. AVS özel bulutu ' nı seçin ve ardından AVS özel bulutu 'nda **vSphere Istemcisini Başlat** ' a tıklayın.
+1. VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasında, **ortak görevler**altında, **vSphere istemcisini Başlat**' a tıklayın.  Özel bulutu seçin ve ardından özel bulutta **vSphere Istemcisini Başlat** ' a tıklayın.
 
     ![VSphere Istemcisini Başlat](media/launch-vcenter-from-cloudsimple-portal.png)
 
-2. VCenter 'a erişmek için tercih ettiğiniz vSphere istemcinizi seçin ve Kullanıcı adınızla parolanızla oturum açın. Varsayılanlar şunlardır:
-    * Kullanıcı adı: **CloudOwner@AVS.local**
-    * Parola: **AVS123!**  
+2. VCenter 'a erişmek için tercih ettiğiniz vSphere istemcinizi seçin ve Kullanıcı adınızla parolanızla oturum açın.  Varsayılanlar şunlardır:
+    * Kullanıcı adı: **Cloudowner\@cloudsimple. Local**
+    * Parola: **CloudSimple123!**  
 
 Sonraki yordamlardaki vCenter ekranları vSphere (HTML5) istemcisinden alınır.
 
 ## <a name="change-your-vcenter-password"></a>VCenter parolanızı değiştirme
 
-AVS, vCenter 'da ilk kez oturum açtığınızda parolanızı değiştirmenizi önerir. Ayarladığınız parolanın aşağıdaki gereksinimleri karşılaması gerekir:
+CloudSimple, vCenter 'da ilk kez oturum açtığınızda parolanızı değiştirmenizi önerir.  
+Ayarladığınız parolanın aşağıdaki gereksinimleri karşılaması gerekir:
 
 * Maksimum ömür: parolanın her 365 günde bir değiştirilmesi gerekir
 * Yeniden kullanımı kısıtla: kullanıcılar önceki beş parolanın hiçbirini yeniden kullanabilir
@@ -188,12 +189,12 @@ Gereksinimleri karşılamayan bir parola ayarlarsanız:
 NSX Yöneticisi varsayılan parolayla dağıtılır. 
 
 * Kullanıcı adı: **yönetici**
-* Parola: **AVS123!**
+* Parola: **CloudSimple123!**
 
-AVS portalında tam etki alanı adını (FQDN) ve NSX Manager IP adresini bulabilirsiniz.
+CloudSimple portalında tam etki alanı adını (FQDN) ve NSX Manager IP adresini bulabilirsiniz.
 
-1. AVS portalını başlatın ve **kaynaklar**' ı seçin.
-2. Kullanmak istediğiniz AVS özel buluta tıklayın.
+1. CloudSimple portalını başlatın ve **kaynakları**seçin.
+2. Kullanmak istediğiniz özel buluta tıklayın.
 3. **VSphere yönetim ağını** seçin
 4. **NSX Manager** 'ıN FQDN 'SINI veya IP adresini kullanın ve bir Web tarayıcısı kullanarak bağlanın.
 

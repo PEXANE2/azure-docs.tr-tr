@@ -1,23 +1,23 @@
 ---
-title: Çoklu cihaz konuşması nedir (Önizleme)-konuşma hizmeti
+title: Çoklu cihaz konuşması (Önizleme) hakkında-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: ralphe
-manager: cpoulain
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/15/2020
-ms.author: ralphe
-ms.openlocfilehash: 8d73c896f784507c2336a79130ff5f35aa61d30f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268080"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560822"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>Çok cihazlı konuşma (Önizleme) nedir?
+# <a name="about-multi-device-conversation-preview"></a>Çoklu cihazlı konuşma hakkında (Önizleme)
 
 **Çoklu cihaz konuşması** , birden fazla istemci arasında konuşma veya metin konuşması oluşturmayı ve aralarında gönderilen iletileri koordine etmelerini kolaylaştırır.
 
@@ -55,14 +55,14 @@ Kullanıcılar konuşma kodu aracılığıyla birleşdiğinden ve iletişim bilg
 
 Gerçek zamanlı döküm ve çeviri, konuşmaları farklı diller konuştan ve/veya işitme güçlüğü çeken kişiler için erişilebilir hale getirmenize yardımcı olabilir. Her kişi, tercih edilen dillerini konuşarak veya anlık iletiler göndererek konuşmaya etkin bir şekilde katılabilir.
 
-### <a name="presentations"></a>Sunumlar
+### <a name="presentations"></a>Sunum
 
 Ayrıca, hem ekranda hem de hedef kitle üyelerinin kendi cihazlarındaki sunular ve seminerler için açıklamalı alt yazılar sağlayabilirsiniz. Hedef kitle konuşma koduyla birleştikten sonra, kendi cihazındaki bu dökümü kendi tercih ettiği dilde görebilirler.
 
 > [!NOTE]
-> Bir örnek görmek için, çok cihazlı konuşma hizmetini kullanan bir PowerPoint eklentisi olan [sunu çeviricisine](https://www.microsoft.com/translator/apps/presentation-translator/)göz atın. Söz konusu dosyayı [buradan](https://www.microsoft.com/download/details.aspx?id=55024) indirebilirsiniz.
+> Bir örnek görmek için, çok cihazlı konuşma hizmetini kullanan bir PowerPoint eklentisi olan [sunu çeviricisine](https://www.microsoft.com/translator/apps/presentation-translator/)göz atın. [Buradan](https://www.microsoft.com/download/details.aspx?id=55024)indirebilirsiniz.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Tüm istemciler konuşma oluşturmak veya konuşmayı birleştirmek için konuşma SDK 'sını kullanır. Konuşma SDK 'Sı, katılımcıların listesi, her istemcinin seçtiği dil (ler) ve gönderilen iletiler dahil olmak üzere bir konuşmanın ömrünü yöneten çok cihazlı konuşma hizmetiyle etkileşime girer.  
 

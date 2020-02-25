@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Konuşma çevirisi belgeleri
+summary: Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmadan metne çevirisini sağlar
+metadata:
+  title: Konuşma çevirisi belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562927"
+landingContent:
+- title: başlarken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Konuşma çevirisi nedir?
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: Konuşmayı metne çevirme
+      url: quickstarts/translate-speech-to-text.md
+    - text: Konuşmayı birden çok hedef dile çevirme
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: Konuşmayı konuşmaya çevirme
+      url: quickstarts/translate-speech-to-speech.md
+- title: Adım adım kılavuzlar
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Konuşmayı gerçek zamanlı olarak çevir
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: REST API 'lerle metin çevirme ve birleştirme
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Dil desteği
+      url: language-support.md#speech-translation
+    - text: Fiyatlandırma
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: Konuşma çevirisi hakkında SSS
+      url: https://www.microsoft.com/translator/business/faq/

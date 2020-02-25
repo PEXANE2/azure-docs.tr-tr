@@ -4,18 +4,16 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısını kullana
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f8a589bd4ab4de396c0688f8022515d6fbec96a2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769600"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562131"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Dayanıklı İşlevler-Hava durumu izleyici örneğinde izleme senaryosu
 
 İzleyici stili, bir iş akışında esnek bir *yinelenen* işleme anlamına gelir. Örneğin, belirli koşullar karşılanana kadar yoklama yapar. Bu makalede, izlemeyi uygulamak için [dayanıklı işlevler](durable-functions-overview.md) kullanan bir örnek açıklanmaktadır.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -30,11 +28,13 @@ Bu örnek, bir konumun geçerli hava durumu koşullarını izler ve skıes açı
 * İzleyiciler ölçeklenebilir. Her izleyici bir düzenleme örneği olduğundan, yeni işlevler oluşturmak veya daha fazla kod tanımlamak zorunda kalmadan birden fazla izleyici oluşturulabilir.
 * İzleyiciler daha büyük iş akışlarıyla kolayca tümleşir. İzleyici, daha karmaşık bir düzenleme işlevinin veya [alt Orchestration](durable-functions-sub-orchestrations.md)'un bir bölümü olabilir.
 
-## <a name="configuring-twilio-integration"></a>Twilio tümleştirmesini yapılandırma
+## <a name="configuration"></a>Yapılandırma
+
+### <a name="configuring-twilio-integration"></a>Twilio tümleştirmesini yapılandırma
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Hava durumu yetersiz tümleştirmesini yapılandırma
+### <a name="configuring-weather-underground-integration"></a>Hava durumu yetersiz tümleştirmesini yapılandırma
 
 Bu örnek, bir konum için geçerli hava durumu koşullarını denetlemek için hava durumu düşük olan API 'sini kullanmayı içerir.
 
@@ -50,27 +50,29 @@ Bir API anahtarınız olduğunda, işlev uygulamanıza aşağıdaki **uygulama a
 
 Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
-* `E3_Monitor`: düzenli aralıklarla `E3_GetIsClear` çağıran bir Orchestrator işlevi. `E3_GetIsClear` true döndürürse `E3_SendGoodWeatherAlert` çağırır.
-* `E3_GetIsClear`: bir konum için geçerli hava durumu koşullarını denetleyen bir etkinlik işlevi.
+* `E3_Monitor`: düzenli aralıklarla `E3_GetIsClear` çağıran bir [Orchestrator işlevi](durable-functions-bindings.md#orchestration-trigger) . `E3_GetIsClear` true döndürürse `E3_SendGoodWeatherAlert` çağırır.
+* `E3_GetIsClear`: bir konum için geçerli hava durumu koşullarını denetleyen bir [etkinlik işlevi](durable-functions-bindings.md#activity-trigger) .
 * `E3_SendGoodWeatherAlert`: Twilio aracılığıyla SMS iletisi gönderen bir etkinlik işlevi.
 
-Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yapılandırma ve kod açıklanmaktadır. Visual Studio geliştirme kodu makalenin sonunda gösterilmektedir.
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator işlevi
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Hava durumu izleme düzenlemesi (Visual Studio Code ve Azure portal örnek kodu)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
+
+Orchestrator, konum üzerinde açık hale geldiğinde bir ileti göndermek için bir konum ve bir telefon numarası gerektirir. Bu veriler, türü kesin belirlenmiş `MonitorRequest` nesne olarak Orchestrator 'a geçirilir.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E3_Monitor** işlevi Orchestrator işlevleri için standart *function. JSON* ' i kullanır.
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
 İşlevi uygulayan kod aşağıda verilmiştir:
 
-### <a name="c-script"></a>C#SCRIPT
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
+
+---
 
 Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
 
@@ -79,48 +81,52 @@ Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
 3. İstenen konumda açık skiler olup olmadığını anlamak için **E3_GetIsClear** çağırır.
 4. Hava durumu açık ise, istenen telefon numarasına SMS bildirimi göndermek için **E3_SendGoodWeatherAlert** çağırır.
 5. Bir sonraki yoklama aralığında Orchestration işlemini sürdürecek dayanıklı bir zamanlayıcı oluşturur. Örnek, breçekimi için sabit kodlanmış bir değer kullanır.
-6. `CurrentUtcDateTime` (.NET) veya `currentUtcDateTime` (JavaScript) izleyicinin sona erme süresini geçirene veya SMS uyarısı gönderildiğinde çalışmaya devam eder.
+6. Geçerli UTC saati izleyicinin sona erme zamanını geçirene veya bir SMS uyarısı gönderildiğinde çalışmaya devam eder.
 
-Birden çok Orchestrator **isteği**göndererek birden fazla Orchestrator örneği aynı anda çalışabilir. İzlenecek konum ve SMS uyarısı gönderilecek telefon numarası belirtilebilir.
+Orchestrator işlevini birden çok kez çağırarak, birden fazla Orchestrator örneği aynı anda çalışabilir. İzlenecek konum ve SMS uyarısı gönderilecek telefon numarası belirtilebilir.
 
-## <a name="strongly-typed-data-transfer-net-only"></a>Kesin tür belirtilmiş veri aktarımı (yalnızca .NET)
+### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear Activity işlevi
 
-Orchestrator birden çok veri parçası gerektirir, bu nedenle [paylaşılan POCO nesneleri](../functions-reference-csharp.md#reusing-csx-code) , ve C# C# betikteki kesin türü belirtilmiş veri aktarımı için kullanılır:  
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrigger` tetikleyici bağlamasını kullanan normal işlevlerdir. **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler.
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-JavaScript örneği, normal JSON nesnelerini parametre olarak kullanır.
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-## <a name="helper-activity-functions"></a>Yardımcı etkinlik işlevleri
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrigger` tetikleyici bağlamasını kullanan normal işlevlerdir. **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler. *Function. JSON* aşağıdaki gibi tanımlanır:
+*Function. JSON* aşağıdaki gibi tanımlanır:
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
-İşte uygulama. Veri aktarımı için kullanılan POCOs gibi, API çağrısını işleme mantığı ve yanıt JSON 'u ' deki C#paylaşılan bir sınıfta soyutlanmalıdır. Bunu, [Visual Studio örnek kodunun](#run-the-sample)bir parçası olarak bulabilirsiniz.
-
-### <a name="c-script"></a>C#SCRIPT
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+İşte uygulama.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-**E3_SendGoodWeatherAlert** işlevi, son kullanıcıya bir ilerleme için iyi bir zaman olduğunu BILDIREN bir SMS iletisi göndermek için Twilio bağlamasını kullanır. *Function. JSON* basittir:
+---
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
+### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert Activity işlevi
+
+**E3_SendGoodWeatherAlert** işlevi, son kullanıcıya bir ilerleme için iyi bir zaman olduğunu BILDIREN bir SMS iletisi göndermek için Twilio bağlamasını kullanır.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
+
+> [!NOTE]
+> Örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+*Function. JSON* basittir:
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
 SMS iletisini gönderen kod aşağıda verilmiştir:
 
-### <a name="c-script"></a>C#SCRIPT
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+---
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
@@ -168,15 +174,6 @@ Zaman aşımı süresine ulaşıldığında düzenleme [sonlandırılır](durabl
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu
-
-Visual Studio projesindeki tek C# bir dosya olarak Orchestration aşağıda verilmiştir:
-
-> [!NOTE]
-> Aşağıdaki örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

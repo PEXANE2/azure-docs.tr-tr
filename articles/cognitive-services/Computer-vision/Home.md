@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772513"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565970"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -48,7 +48,7 @@ Görsel özellikleri ve özellikleri hakkında öngörüleri tespit etmek ve sa�
 
 ## <a name="extract-text-from-images"></a>Görüntülerden metin Ayıkla
 
-Görüntülerden, yazdırılmış ve el yazısı metinleri makine tarafından okunabilen bir karakter akışına ayıklamak için Görüntü İşleme [okuma](concept-recognizing-text.md#read-api) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modellerimizi kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır. Şu anda Ingilizce desteklenen tek dildir.
+Görüntülerden, yazdırılmış ve el yazısı metinleri makine tarafından okunabilen bir karakter akışına ayıklamak için Görüntü İşleme [okuma](concept-recognizing-text.md#read-api) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modellerimizi kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır. Şu anda yalnızca Ingilizce ve Ispanyolca desteklenen diller içindir.
 
 Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
 

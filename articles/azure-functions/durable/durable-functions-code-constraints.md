@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232968"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562148"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
 
@@ -28,7 +28,7 @@ Orchestrator işlevleri, hedef dillerinde API 'leri çağırabilir. Ancak, Orche
 
 Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir çünkü belirleyici *değildir* . Bu kısıtlamalar yalnızca Orchestrator işlevleri için geçerlidir. Diğer işlev türlerinde bu tür kısıtlamalar yoktur.
 
-| API kategorisi | Neden | Geçici Çözüm |
+| API kategorisi | Neden | Geçici çözüm |
 | ------------ | ------ | ---------- |
 | Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET ' te`CurrentUtcDateTime` API 'sini veya yeniden oynatma için güvenli olan JavaScript 'de `currentUtcDateTime` API 'sini kullanın. |
 | GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | Rastgele GUID 'Leri güvenle oluşturmak için .NET veya JavaScript 'te `newGuid` `NewGuid` kullanın. |
@@ -38,7 +38,7 @@ Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir
 | API 'Leri engelleme | .NET ve benzer API 'lerde `Thread.Sleep` gibi API 'Leri engellemek, Orchestrator işlevleri için performans ve ölçeklendirme sorunlarına neden olabilir ve kaçınılmalıdır. Azure Işlevleri tüketim planında, bu, hatta gereksiz çalışma zamanı ücretlerine neden olabilir. | Kullanılabilir olduklarında API 'Leri engellemek için alternatifleri kullanın. Örneğin, düzenleme yürütmesindeki gecikmeleri tanıtmak için `CreateTimer` kullanın. [Sürekli süreölçer](durable-functions-timers.md) gecikmeleri, bir Orchestrator işlevinin yürütme zamanına doğru sayılmaz. |
 | Zaman uyumsuz API 'Ler | Orchestrator kodu, `IDurableOrchestrationContext` API 'si veya `context.df` nesnesinin API 'sini kullanarak hiçbir zaman zaman uyumsuz işlem başlatmalıdır. Örneğin, `Task.Run`, `Task.Delay`ve `HttpClient.SendAsync`, JavaScript 'te .NET veya `setTimeout` ve `setInterval` kullanamazsınız. Dayanıklı görev çerçevesi, tek bir iş parçacığında Orchestrator kodunu çalıştırır. Diğer zaman uyumsuz API 'Ler tarafından çağrılabilen diğer iş parçacıklarıyla etkileşime giremeyebilir. | Orchestrator işlevi yalnızca dayanıklı zaman uyumsuz çağrılar sağlamalıdır. Etkinlik işlevleri, başka bir zaman uyumsuz API çağrısı yapmalıdır. |
 | Zaman uyumsuz JavaScript işlevleri | Node. js çalışma zamanı zaman uyumsuz işlevlerin belirleyici olduğunu garanti etmez, JavaScript Orchestrator işlevlerini `async` olarak bildiremezsiniz. | JavaScript Orchestrator işlevlerini zaman uyumlu Oluşturucu işlevleri olarak bildirin. |
-| İş parçacığı API 'Leri | Dayanıklı görev çerçevesi, Orchestrator kodunu tek bir iş parçacığında çalıştırır ve diğer iş parçacıklarıyla etkileşime giremeyen bir işlem olamaz. Orchestration yürütmesinin yeni iş parçacıklarını tanıtma, belirleyici olmayan yürütme veya kilitlenmeyle sonuçlanabilir. | Orchestrator işlevleri, iş parçacığı API 'Lerini neredeyse asla kullanmaz. Bu tür API 'Ler gerekliyse, kullanımlarını yalnızca etkinlik işlevlerine sınırlayın. |
+| İş parçacığı API 'Leri | Dayanıklı görev çerçevesi, Orchestrator kodunu tek bir iş parçacığında çalıştırır ve diğer iş parçacıklarıyla etkileşime giremeyen bir işlem olamaz. Orchestration yürütmesinin yeni iş parçacıklarını tanıtma, belirleyici olmayan yürütme veya kilitlenmeyle sonuçlanabilir. | Orchestrator işlevleri, iş parçacığı API 'Lerini neredeyse asla kullanmaz. Örneğin, .NET 'te `ConfigureAwait(continueOnCapturedContext: false)`kullanmaktan kaçının; Bu, görev devamlılıklarının Orchestrator işlevinin özgün `SynchronizationContext`çalıştırılmasını sağlar. Bu tür API 'Ler gerekliyse, kullanımlarını yalnızca etkinlik işlevlerine sınırlayın. |
 | Statik değişkenler | Orchestrator işlevlerinde sabit olmayan statik değişkenler kullanmaktan kaçının çünkü değerleri zaman içinde değişebilir, bu durum belirleyici olmayan çalışma zamanı davranışına neden olur. | Sabitleri kullanın veya statik değişkenlerin kullanımını etkinlik işlevleriyle sınırlandırın. |
 | Ortam değişkenleri | Orchestrator işlevlerinde ortam değişkenlerini kullanmayın. Değerleri zaman içinde değişebilir ve belirleyici olmayan çalışma zamanı davranışına neden olabilir. | Ortam değişkenlerine yalnızca istemci işlevleri veya etkinlik işlevleri içinden başvurulmalıdır. |
 | Sonsuz döngüler | Orchestrator işlevlerinde sonsuz döngüleri önleyin. Sürekli görev çerçevesi Orchestration işlevi ilerledikçe yürütme geçmişini kaydettiğinden, sonsuz bir döngü bir Orchestrator örneğinin bellek tükenmesine neden olabilir. | Sonsuz döngü senaryolarında işlev yürütmeyi yeniden başlatmak ve önceki yürütme geçmişini atmak için `ContinueAsNew` gibi API 'Leri veya JavaScript 'te `continueAsNew` kullanın. |

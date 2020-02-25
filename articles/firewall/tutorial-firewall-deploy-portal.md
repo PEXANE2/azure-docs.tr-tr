@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371343"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558883"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -26,7 +26,7 @@ Azure Güvenlik Duvarı, Azure alt ağından giden ağ erişimini denetlemenin b
 
 Ağ trafiğinizi güvenlik duvarından alt ağın varsayılan ağ geçidi olarak yönlendirdiğinizde ağ trafiği yapılandırılan güvenlik duvarı kurallarına tabi tutulur.
 
-Bu öğreticide kolay dağıtım için üç alt ağa sahip tek bir basitleştirilmiş sanal ağ oluşturursunuz. Üretim dağıtımları için, güvenlik duvarının kendi VNet 'inde bulunduğu bir [hub ve bağlı bileşen modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. İş yükü sunucuları, bir veya daha fazla alt ağ ile aynı bölgedeki eşlenmiş VNET 'lerde bulunur.
+Bu öğreticide kolay dağıtım için üç alt ağa sahip tek bir basitleştirilmiş sanal ağ oluşturursunuz. Üretim dağıtımları için bir [hub ve bağlı bileşen modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. Güvenlik duvarı kendi sanal ağı 'nda. İş yükü sunucuları, bir veya daha fazla alt ağ ile aynı bölgedeki eşlenmiş VNET 'lerde bulunur.
 
 * **AzureFirewallSubnet** - güvenlik duvarı bu alt ağdadır.
 * **Workload-SN**: İş yükü sunucusu bu alt ağda yer alır. Bu alt ağın ağ trafiği güvenlik duvarından geçer.
@@ -60,7 +60,7 @@ Kaynak grubu, bu öğreticideki tüm kaynakları içerir.
 2. Azure portal menüsünde, **kaynak grupları** ' nı seçin veya herhangi bir sayfadan *kaynak gruplarını* arayıp seçin. Ardından **Ekle**'yi seçin.
 3. **Kaynak grubu adı**için *Test-FW-RG*yazın.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
-5. **Kaynak grubu konumu** bölümünde bir konum seçin. Bundan sonra oluşturacağınız tüm kaynakların aynı konumda olması gerekir.
+5. **Kaynak grubu konumu** bölümünde bir konum seçin. Oluşturduğunuz diğer tüm kaynaklar aynı konumda olmalıdır.
 6. **Oluştur**’u seçin.
 
 ### <a name="create-a-vnet"></a>Sanal ağ oluşturma
@@ -94,7 +94,7 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 
 **Jump-SN** adına ve **10.0.3.0/24** adres aralığına sahip bir alt ağ daha oluşturun.
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturun
+### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
 Şimdi atlama ve iş yükü sanal makinelerini oluşturup uygun alt ağlara yerleştirin.
 
@@ -193,10 +193,11 @@ Bu, www.google.com 'e giden erişime izin veren uygulama kuralıdır.
 6. **Öncelik** alanına **200** yazın.
 7. **Eylem** alanında **İzin ver**'i seçin.
 8. **Kurallar**altında, **ad**için **hedef FQDN 'ler**yazın, **izin ver-Google**yazın.
-9. **Kaynak Adresler** alanına **10.0.2.0/24** yazın.
-10. **Protokol:bağlantı noktası** alanına **http, https** yazın.
-11. **Hedef FQDN 'ler**için **www.Google.com** yazın
-12. **Add (Ekle)** seçeneğini belirleyin.
+9. **Kaynak türü**için **IP adresi**' ni seçin.
+10. **Kaynak**için **10.0.2.0/24**yazın.
+11. **Protokol:bağlantı noktası** alanına **http, https** yazın.
+12. **Hedef FQDN 'ler**için **www.Google.com** yazın
+13. **Add (Ekle)** seçeneğini belirleyin.
 
 Azure Güvenlik Duvarı'nda varsayılan olarak izin verilen altyapı FQDN'leri için yerleşik bir kural koleksiyonu bulunur. Bu FQDN'ler platforma özgüdür ve başka amaçlarla kullanılamaz. Daha fazla bilgi için bkz. [Altyapı FQDN'leri](infrastructure-fqdns.md).
 
@@ -209,10 +210,11 @@ Bu, bağlantı noktası 53’deki (DNS) iki IP adresine giden erişime izin vere
 3. **Ad** alanına **Net-Coll01** yazın.
 4. **Öncelik** alanına **200** yazın.
 5. **Eylem** alanında **İzin ver**'i seçin.
-6. **Kurallar**' ın altında, **ad**IÇIN **izin ver-DNS**yazın.
+6. **Kurallar**altında, **ad**için **IP adresleri**, Type **-DNS**yazın.
 7. **Protokol** alanında **UDP**'yi seçin.
-8. **Kaynak Adresler** alanına **10.0.2.0/24** yazın.
-9. Hedef adres için **209.244.0.3,209.244.0.4** yazın.
+9. **Kaynak türü**için **IP adresi**' ni seçin.
+1. **Kaynak**için **10.0.2.0/24**yazın.
+2. **Hedef adres**için **209.244.0.3, 209.244.0.4** yazın
 
    Bunlar, CenturyLink tarafından çalıştırılan genel DNS sunucularıdır.
 1. **Hedef Bağlantı Noktaları** için **53** yazın.

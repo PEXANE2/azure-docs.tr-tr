@@ -1,5 +1,5 @@
 ---
-title: Data Box Gateway cihaz erişimi, güç ve bağlantı modu Microsoft Azure | Microsoft Docs
+title: Cihaz erişimi, güç ve bağlantı modunu Azure Data Box Gateway
 description: Azure 'a veri aktarmaya yardımcı olan Azure Data Box Gateway cihaz için erişim, güç ve bağlantı modunun nasıl yönetileceğini açıklar
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 38662fc8dda935d5f000aee6609fd9b2e42de17f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253166"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561825"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway için erişimi, güç ve bağlantı modunu yönetme
 
@@ -37,7 +37,7 @@ Cihaz parolasını değiştirmek için yerel kullanıcı arabirimindeki adımlar
 1. Yerel Web Kullanıcı arabiriminde **bakım > parola değiştirme**' ye gidin.
 2. Geçerli parolayı ve ardından yeni parolayı girin. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. Yeni parolayı onaylayın.
 
-    ![Parolayı Değiştir](media/data-box-gateway-manage-access-power-connectivity-mode/change-password-1.png)
+    ![Parola değiştir](media/data-box-gateway-manage-access-power-connectivity-mode/change-password-1.png)
 
 3. **Parolayı Değiştir**' e tıklayın.
  
@@ -47,12 +47,12 @@ Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerekt
 
 1. Azure portal, **genel bakış > Yönetici parolasını sıfırla**' ya gidin.
 
-    ![Parola sıfırla](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Parola sıfırlama](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
 2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**' ya tıklayın.
 
-    ![Parola sıfırla](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Parola sıfırlama](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Kaynak erişimini yönetme
 
@@ -65,7 +65,7 @@ Data Box Edge cihaz için etkinleştirme anahtarını oluştururken veya kimlik 
 -  İlişkili bir depolama hesabıyla bir paylaşma oluşturuluyor.
 -  Cihazdaki paylaşımlara erişebilen bir Kullanıcı oluşturma.
 
-Active Directory kiracısında `User` `Read all directory objects`yapabilmeniz için bir erişiminizin olması gerekir. Bir Konuk Kullanıcı, izinleri olmadığı için `Read all directory objects`bu kullanıcı olamaz. Konuksanız etkinleştirme anahtarı oluşturma, Data Box Edge cihazınızda paylaşım oluşturma, kullanıcı oluşturma gibi işlemlerin tümü başarısız olur.
+`Read all directory objects`sağlayabilmeniz için Active Directory kiracısında `User` erişiminizin olması gerekir. `Read all directory objects`izinleri olmadığından Konuk Kullanıcı olamaz. Konuksanız etkinleştirme anahtarı oluşturma, Data Box Edge cihazınızda paylaşım oluşturma, kullanıcı oluşturma gibi işlemlerin tümü başarısız olur.
 
 Azure Active Directory Graph API kullanıcılara erişim sağlama hakkında daha fazla bilgi için bkz. [Yöneticiler, kullanıcılar ve Konuk kullanıcılar Için varsayılan erişim](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
@@ -79,7 +79,7 @@ Bu kaynaklara yönelik kaynak sağlayıcıları zaten olduğu sürece, kullanıc
 
 Herhangi bir kaynak oluşturmayı denemeden önce, kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kaynak sağlayıcısı kayıtlı değilse, yeni kaynağı oluşturan kullanıcının abonelik düzeyinde gerekli kaynak sağlayıcısını kaydetmek için yeterli haklara sahip olduğundan emin olmanız gerekir. Bunu yapmadıysanız, şu hatayı görürsünüz:
 
-*> Abonelik \<abonelik adı kaynak sağlayıcıları kaydetme iznine sahip değil: Microsoft. DataBoxEdge.*
+*Abonelik \<abonelik adı > kaynak sağlayıcıları kaydetme izni yok: Microsoft. DataBoxEdge.*
 
 
 Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak için aşağıdaki komutu çalıştırın:
@@ -88,7 +88,7 @@ Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Data Box Edge cihaz `Microsoft.DataBoxEdge` için kaydedilmelidir. Kaydolmak `Microsoft.DataBoxEdge`için, abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
+Data Box Edge cihaz için `Microsoft.DataBoxEdge` kaydedilmelidir. `Microsoft.DataBoxEdge`kaydolmak için, abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

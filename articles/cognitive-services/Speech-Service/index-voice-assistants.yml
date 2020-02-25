@@ -1,0 +1,73 @@
+### YamlMime:Landing
+title: Sesli yardımcılar belgeleri
+summary: Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar.
+metadata:
+  title: Sesli yardımcılar belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: b411ef91dd84916e9ace544f26ed88f3f316dc02
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562894"
+landingContent:
+- title: başlarken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sesli yardımcılar hakkında
+      url: voice-assistants.md
+    - text: Doğrudan konuşma hattı hakkında
+      url: direct-line-speech.md
+  - linkListType: quickstart
+    links:
+    - text: C# (UWP)
+      url: quickstart-voice-assistant-csharp-uwp.md
+    - text: Java (Windows, macOS, Linux)
+      url: quickstart-voice-assistant-java-jre.md
+    - text: Java (Android)
+      url: quickstart-voice-assistant-java-android.md
+    - text: Özel Komut oluşturma (önizleme)
+      url: quickstart-custom-speech-commands-create-new.md
+    - text: Parametreler içeren Özel Komut oluşturma (önizleme)
+      url: quickstart-custom-speech-commands-create-parameters.md
+    - text: Özel Ses ile Özel Komutları Kullanma (önizleme)
+      url: quickstart-custom-speech-commands-select-custom-voice.md
+    - text: Konuşma SDK'sı ile Özel Komutları kullanma (önizleme)
+      url: quickstart-custom-speech-commands-speech-sdk.md
+- title: Adım adım kılavuzlar
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Konuşma SDK’sı ile botunuzu ses ile etkinleştirme
+      url: tutorial-voice-enable-your-bot-speech-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: Özel Komutlar (Önizleme)
+      url: custom-commands.md
+    - text: Konuşma SDK 'Sı ile özel komutlar
+      url: how-to-custom-speech-commands-fulfill-sdk.md
+    - text: Konuşma SDK'sı ile Özel Komutları uygulama
+      url: how-to-custom-speech-commands-fulfill-sdk.md
+    - text: Özel Komuta parametre doğrulaması ekleme
+      url: how-to-custom-speech-commands-validations.md
+    - text: Özel Komuta onay ekleme
+      url: how-to-custom-speech-commands-confirmations.md
+    - text: Özel Komuta tek adımlı düzeltme ekleme
+      url: how-to-custom-speech-commands-one-step-correction.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Fiyatlandırma
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Ses yardımcıları hakkında SSS
+      url: faq-voice-assistants.md

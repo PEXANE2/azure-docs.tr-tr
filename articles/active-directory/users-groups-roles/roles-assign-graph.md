@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025336"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559156"
 ---
-# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>Azure Active Directory Graph API kullanarak özel yönetici rolleri atama 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory Microsoft Graph API 'sini kullanarak özel yönetici rolleri atama 
 
-Kullanıcı hesaplarına Microsoft Graph API 'ye rol atamayı otomatik hale getirebilirsiniz. Bu makalede Roleatamalarda GÖNDERI, GET ve DELETE işlemleri ele alınmaktadır.
+Microsoft Graph API kullanarak Kullanıcı hesaplarına roller atamayı otomatik hale getirebilirsiniz. Bu makalede Roleatamalarda GÖNDERI, GET ve DELETE işlemleri ele alınmaktadır.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
@@ -35,7 +35,8 @@ Bir kullanıcı ile rol tanımı arasında rol ataması oluşturmak için HTTP i
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+Content-type: application/json
 ```
 
 Gövde
@@ -59,7 +60,7 @@ Sorumlu veya rol tanımının bulunmadığı bir rol ataması oluşturmak için 
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Gövde
@@ -86,7 +87,7 @@ Yerleşik rol tanımında tek bir kaynak kapsamlı rol ataması oluşturmak içi
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Gövde
@@ -130,7 +131,7 @@ Belirli bir sorumlu için rol ataması almak için HTTP isteği
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=principalId eq ‘<object-id-of-principal>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
 Yanıt
@@ -156,7 +157,7 @@ Belirli bir rol tanımı için rol ataması almak için HTTP isteği.
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
 Yanıt
@@ -176,7 +177,7 @@ KIMLIĞE göre rol ataması almak için HTTP isteği.
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Yanıt
@@ -184,7 +185,7 @@ Yanıt
 ``` HTTP
 HTTP/1.1 200 OK
 { 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
     "resourceScopes":["/"]
@@ -198,7 +199,7 @@ Bir kullanıcı ile rol tanımı arasında rol atamasını silmek için HTTP ist
 DELETE
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Yanıt
@@ -211,7 +212,7 @@ Artık mevcut olmayan bir rol atamasını silmek için HTTP isteği
 DELETE
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Yanıt
@@ -225,7 +226,7 @@ Self ve yerleşik rol tanımı arasında rol atamasını silmek için HTTP iste�
 DELETE
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Yanıt

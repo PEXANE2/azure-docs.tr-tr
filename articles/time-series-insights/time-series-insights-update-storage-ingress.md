@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122526"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559853"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -171,7 +171,7 @@ Time Series Insights önizleme, soğuk mağaza verilerinizi [Parquet dosya biçi
 
 ### <a name="data-availability"></a>Veri kullanılabilirliği
 
-En iyi sorgu performansı için bölümleri ve dizinleri Azure Time Series Insights görüntüleyin. Veriler dizinlendikten sonra sorgu için kullanılabilir hale gelir. Alınan veri miktarı bu kullanılabilirliği etkileyebilir.
+En iyi sorgu performansı için bölümleri ve dizinleri Azure Time Series Insights görüntüleyin. Veriler, Dizin oluşturulduktan sonra hem normal (etkinse) hem de soğuk depodan sorgu için kullanılabilir hale gelir. Alınan veri miktarı bu kullanılabilirliği etkileyebilir.
 
 > [!IMPORTANT]
 > Önizleme sırasında, veriler kullanılabilir hale gelmeden önce 60 saniyeye kadar bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.

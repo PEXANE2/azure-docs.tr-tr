@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805952"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560942"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Konuşma konuşma hizmetine geçirme
 
@@ -47,11 +47,11 @@ Kısmi veya geçici sonuçlar | :heavy_check_mark: | :heavy_check_mark: | WebSoc
 Özel konuşma modelleri | :heavy_check_mark: | :heavy_check_mark: | Bing Konuşma, ayrı bir Özel Konuşma Tanıma aboneliği gerektirir.
 Özel ses yazı tipleri | :heavy_check_mark: | :heavy_check_mark: | Bing Konuşma ayrı bir özel ses aboneliği gerektirir.
 24-KHz sesler | : heavy_minus_sign: | :heavy_check_mark:
-Konuşma niyeti tanıma | Ayrı bir LUSıS API çağrısı gerektirir | Tümleşik (SDK ile) |  Konuşma hizmetiyle bir LUO anahtarı kullanabilirsiniz.
+Konuşma amacı tanıma | Ayrı bir LUSıS API çağrısı gerektirir | Tümleşik (SDK ile) |  Konuşma hizmetiyle bir LUO anahtarı kullanabilirsiniz.
 Basit amaç tanıma | : heavy_minus_sign: | :heavy_check_mark:
 Uzun ses dosyalarının toplu olarak dökümünü alma | : heavy_minus_sign: | :heavy_check_mark:
 Tanıma modu | Uç nokta URI 'SI aracılığıyla el ile | Automatic | Tanıma modu konuşma hizmetinde kullanılamıyor.
-Uç nokta konumu | Küresel | Bölgesel | Bölgesel uç noktalar gecikme süresini geliştirir.
+Uç nokta konumu | Genel | Bölgesel | Bölgesel uç noktalar gecikme süresini geliştirir.
 REST API'leri | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti REST API 'Leri Bing Konuşma (farklı uç nokta) ile uyumludur. REST API 'Leri, metinden konuşmaya ve sınırlı konuşmadan metne işlevselliği destekler.
 WebSockets protokolleri | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti WebSockets API 'SI Bing Konuşma (farklı uç nokta) ile uyumludur. Mümkünse, kodunuzu basitleştirmek için konuşma SDK 'sına geçiş yapın.
 Hizmetten hizmete API çağrıları | :heavy_check_mark: | : heavy_minus_sign: | C# Hizmet kitaplığı aracılığıyla Bing Konuşma olarak sunulmaktadır.
@@ -61,7 +61,7 @@ Konuşma hizmeti, zaman tabanlı bir fiyatlandırma modeli (işlem tabanlı mode
 
 ## <a name="migration-strategies"></a>Geçiş stratejileri
 
-Siz veya kuruluşunuzun bir Bing Konuşma API'si kullanan geliştirme veya üretimde uygulamalar varsa, bunları konuşma hizmetini mümkün olan en kısa sürede kullanacak şekilde güncelleştirmelisiniz. Kullanılabilir SDK 'lar, kod örnekleri ve öğreticiler için [konuşma hizmeti belgelerine](index.md) bakın.
+Siz veya kuruluşunuzun bir Bing Konuşma API'si kullanan geliştirme veya üretimde uygulamalar varsa, bunları konuşma hizmetini mümkün olan en kısa sürede kullanacak şekilde güncelleştirmelisiniz. Kullanılabilir SDK 'lar, kod örnekleri ve öğreticiler için [konuşma hizmeti belgelerine](index.yml) bakın.
 
 Konuşma hizmeti [REST API 'leri](rest-apis.md) Bing Konuşma API 'leriyle uyumludur. Şu anda Bing Konuşma REST API 'Lerini kullanıyorsanız, yalnızca REST uç noktasını değiştirmeniz ve bir konuşma hizmeti abonelik anahtarına geçmeniz gerekir.
 
@@ -77,7 +77,7 @@ Uygulamanız uzun süreli bağlantılar kullanıyorsa ve kullanılabilir bir SDK
 
 Konuşma SDK 'sını kullanmaya başlamak için:
 
-1. İndirme [konuşma SDK](speech-sdk.md).
+1. [Konuşma SDK 'sını](speech-sdk.md)indirin.
 1. Konuşma hizmeti [hızlı başlangıç kılavuzlarından](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) ve [öğreticilerle](how-to-recognize-intents-from-speech-csharp.md)çalışın. Ayrıca, yeni API 'lerle ilgili deneyim almak için [kod örneklerine](samples.md) bakın.
 1. Konuşma hizmetini kullanmak için uygulamanızı güncelleştirin.
 

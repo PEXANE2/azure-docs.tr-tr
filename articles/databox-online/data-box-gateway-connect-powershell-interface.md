@@ -1,5 +1,5 @@
 ---
-title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Data Box Gateway cihaza bağlanın ve yönetin | Microsoft Docs
+title: Azure Data Box Gateway cihaza bağlanmak ve yönetmek için Windows PowerShell 'i kullanma
 description: Windows PowerShell arabirimi aracılığıyla Data Box Gateway nasıl bağlanabileceğinizi ve daha sonra yönetileceğini açıklar.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 650777d849e172686e8b46502a84db8c519174e7
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775189"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561876"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Data Box Gateway cihazını yönetme
 
@@ -25,7 +25,7 @@ Bu makale aşağıdaki yordamları içerir:
 
 - PowerShell arabirimine bağlanma
 - Destek paketi oluşturma
-- Karşıya sertifika yükleme
+- Sertifikayı karşıya yükleme
 - DHCP dışı ortamda önyükleme
 - Cihaz bilgilerini görüntüle
 
@@ -37,7 +37,7 @@ Bu makale aşağıdaki yordamları içerir:
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>Karşıya sertifika yükleme
+## <a name="upload-certificate"></a>Sertifikayı karşıya yükleme
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 

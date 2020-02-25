@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026304"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562267"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Birden çok Azure Active Directory kiracının nasıl etkileşime gireceğini anlayın
 
@@ -46,7 +46,7 @@ Her bir Azure AD kiracısını, her birinin tek bir örneğinden eşitlenmiş ve
 Azure portal bir Azure AD kiracısı eklemek için Azure AD Genel Yöneticisi olan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın ve sol tarafta **Yeni**' yi seçin.
 
 > [!NOTE]
-> Diğer Azure kaynaklarından farklı olarak, kiracılarınız bir Azure aboneliğinin alt kaynakları değildir. Azure aboneliğiniz iptal edildiğinde veya dolarsa, kiracı verilerinize Azure PowerShell, Azure Graph API veya Microsoft 365 Yönetim merkezini kullanarak erişmeye devam edebilirsiniz. Ayrıca [, başka bir aboneliği kiracı ile ilişkilendirebilirsiniz](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Diğer Azure kaynaklarından farklı olarak, kiracılarınız bir Azure aboneliğinin alt kaynakları değildir. Azure aboneliğiniz iptal edildiğinde veya dolmuşsa, kiracı verilerinize Azure PowerShell, Microsoft Graph API 'sini veya Microsoft 365 Yönetim merkezini kullanarak erişmeye devam edebilirsiniz. Ayrıca [, başka bir aboneliği kiracı ile ilişkilendirebilirsiniz](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

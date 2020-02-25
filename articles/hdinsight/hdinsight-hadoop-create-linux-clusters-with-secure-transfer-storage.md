@@ -7,52 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/22/2020
-ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/18/2020
+ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548824"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560091"
 ---
-# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta güvenli aktarım depolama hesapları ile Apache Hadoop kümesi oluşturma
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta güvenli aktarım depolama hesapları olan kümeler Apache Hadoop
 
 [Güvenli aktarım gereklidir](../storage/common/storage-require-secure-transfer.md) özelliği, güvenli bir bağlantı üzerinden tüm istekleri hesabınıza uygulayarak Azure Depolama hesabınızın güvenliğini artırır. Bu özellik ve wasbs şeması yalnızca HDInsight kümesi 3.6 veya sonraki sürümlerde desteklenir.
 
-**Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, depolama hesabınızı kullanırken hatalara neden olabilir ve önerilmez. Özelliği etkin olan yeni bir küme oluşturmak daha iyidir.**
+> [!IMPORTANT]
+> Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, depolama hesabınızı kullanırken hatalara neden olabilir ve önerilmez. Güvenli aktarım özelliği zaten etkin olan bir depolama hesabı kullanılarak yeni bir küme oluşturulması daha iyidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="storage-accounts"></a>Depolama hesapları
 
-Bu makaleye başlamadan önce, şunları yapmanız gerekir:
+### <a name="azure-portal"></a>Azure portalı
 
-* Azure aboneliği: bir aylık ücretsiz deneme hesabı oluşturmak Için [Azure.Microsoft.com/Free](https://azure.microsoft.com/free)konumuna gidin.
-* Güvenli aktarım özellikli bir Azure depolama hesabı. Yönergeler için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) ve [Güvenli aktarım isteme](../storage/common/storage-require-secure-transfer.md). 
-* Depolama hesabındaki bir blob kapsayıcısı.
+Varsayılan olarak, Azure portal ' de bir depolama hesabı oluşturduğunuzda güvenli aktarım gerekli özelliği etkinleştirilir.
 
-## <a name="create-cluster"></a>Küme oluşturma
+Mevcut bir depolama hesabını Azure portal güncelleştirmek için bkz. [Azure Portal ile güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account).
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+### <a name="powershell"></a>PowerShell
 
-Bu bölümde, [Azure Resource Manager şablonu](../azure-resource-manager/templates/deploy-powershell.md) kullanarak HDInsight'ta Hadoop kümesi oluşturacaksınız. Şablon [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/)' da bulunur. Bu makalenin takip olması için Kaynak Yöneticisi şablonu deneyimi gerekli değildir. Diğer küme oluşturma yöntemleri ve bu makalede kullanılan özellikleri anlamak için bkz. [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
+[New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)PowerShell cmdlet 'i için `-EnableHttpsTrafficOnly` parametre `1`olarak ayarlandığından emin olun.
 
-1. Aşağıdaki resme tıklayarak Azure'da oturum açın ve Azure portalında Resource Manager şablonunu açın.
+Var olan bir depolama hesabını PowerShell ile güncelleştirmek için bkz. [PowerShell ile güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+### <a name="azure-cli"></a>Azure CLI
 
-2. Aşağıdaki özelliklerle kümeyi oluşturmak için yönergeleri izleyin:
+Azure CLı komutu [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)için `--https-only` Parameter `true`olarak ayarlandığından emin olun.
 
-    * HDInsight sürümü 3.6’yı belirtin. 3\.6 veya daha yeni bir sürüm gereklidir.
-    * Güvenli aktarım özellikli bir depolama hesabı belirtin.
-    * Depolama hesabı için kısa bir ad kullanın.
-    * Hem depolama hesabı hem de blob kapsayıcı önceden oluşturulmalıdır.
-
-      Yönergeler için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-
-Kendi yapılandırma dosyalarınızı sağlamak için betik eylemi kullanıyorsanız, aşağıdaki ayarlarda wasbs kullanmanız gerekir:
-
-* fs.defaultFS (çekirdek-site)
-* spark.eventLog.dir
-* spark.history.fs.logDirectory
+Azure CLı ile mevcut bir depolama hesabını güncelleştirmek için bkz. [Azure CLI ile güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 
 ## <a name="add-additional-storage-accounts"></a>Başka depolama hesapları ekleme
 
@@ -64,25 +52,6 @@ Güvenli aktarım özellikli başka depolama hesapları eklemek için birkaç se
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir HDInsight kümesi oluşturmayı ve depolama hesaplarına Güvenli aktarım özelliğini etkinleştirmeyi öğrendiniz.
-
-HDInsight ile veri çözümleme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-
-* Visual Studio 'dan Hive sorguları gerçekleştirme dahil olmak üzere HDInsight ile [Apache Hive](https://hive.apache.org/) kullanma hakkında daha fazla bilgi için bkz. [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md).
-* Hadoop 'ta verileri işleyen programları yazmanın bir yolu olan [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)hakkında bilgi edinmek için bkz. [HDInsight Ile Apache Hadoop MapReduce kullanma](hadoop/hdinsight-use-mapreduce.md).
-* HDInsight 'ta verileri çözümlemek üzere Visual Studio için HDInsight araçları 'nı kullanma hakkında bilgi edinmek için bkz. [HDInsight Için Visual studio Apache Hadoop araçları 'nı kullanmaya başlama](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
-
-HDInsight’ın verileri nasıl depoladığı veya HDInsight’a verilerin nasıl alındığı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-
+* Varsayılan veri deposu olarak [Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) m yerine Azure Storage (te) kullanımı
 * HDInsight’ın Azure Depolama’yı nasıl kullandığı hakkında daha fazla bilgi için bkz. [HDInsight ile Azure Depolama kullanma](hdinsight-hadoop-use-blob-storage.md).
 * HDInsight’a veril yükleme hakkında daha fazla bilgi için bkz. [Verileri HDInsight’a yükleme](hdinsight-upload-data.md).
-
-HDInsight kümesi oluşturma ve yönetme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-
-* Linux tabanlı HDInsight kümenizi yönetme hakkında bilgi edinmek için bkz. [Apache ambarı kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md).
-* HDInsight kümesi oluştururken tercih edebileceğiniz seçenekler hakkında daha fazla bilgi için bkz. [Özel seçenekleri kullanarak Linux’ta HDInsight oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
-* Linux hakkında bilgi sahibiyseniz ve Apache Hadoop, ancak HDInsight 'ta Hadoop hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Linux üzerinde HDInsight Ile çalışma](hdinsight-hadoop-linux-information.md). Bu makale aşağıdaki gibi bilgiler sağlar:
-
-  * Kümede barındırılan, [Apache ambarı](https://ambari.apache.org/) ve [webhcat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) gibi hizmetlerin URL 'leri
-  * Yerel dosya sistemindeki [Apache Hadoop](https://hadoop.apache.org/) dosya ve örneklerin konumu
-  * Varsayılan veri deposu olarak [Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) m yerine Azure Storage (te) kullanımı

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840460"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565902"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
 
@@ -64,7 +64,7 @@ Daha fazla bilgi edinin:
 
 * [Çoklu oturum açma 'ya genel bakış](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [SaaS uygulamalarıyla Azure Active Directory çoklu oturum açmayı tümleştirin](../../active-directory/manage-apps/configure-single-sign-on-portal.md)
+* [SaaS uygulamalarıyla Azure Active Directory çoklu oturum açmayı tümleştirin](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
 ## <a name="reverse-proxy"></a>Ters proxy
 
@@ -73,7 +73,7 @@ Azure AD Uygulama Ara Sunucusu, [SharePoint](https://support.office.com/article/
 Daha fazla bilgi edinin:
 
 * [Azure AD Uygulama Ara Sunucusu etkinleştiriliyor](/azure/active-directory/manage-apps/application-proxy-enable)
-* [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](/azure/active-directory/active-directory-application-proxy-publish)
+* [Azure AD Uygulama Ara Sunucusu kullanarak uygulama yayımlama](/azure/active-directory/active-directory-application-proxy-publish)
 * [Uygulama proxy 'Si ile çoklu oturum açma](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Koşullu erişimle çalışma](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
@@ -156,7 +156,7 @@ Azure AD Privileged Identity Management, şunları yapabilirsiniz:
 Daha fazla bilgi edinin:
 
 * [Azure AD Privileged Identity Management nedir?](../../active-directory/privileged-identity-management/pim-configure.md)
-* [Azure AD dizin rollerini PIM atayın](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [PıM 'de Azure AD dizin rolleri atama](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Kimlik koruması
 
@@ -174,7 +174,7 @@ Microsoft’un kimlik çözümleri şirket içi ve bulut tabanlı çözümleri b
 * Eşitleme
 * AD FS ve Federasyon tümleştirmesi
 * Doğrudan kimlik doğrulama
-* Durum İzleme
+* Sistem Durumunu İzleme
 
 Daha fazla bilgi edinin:
 

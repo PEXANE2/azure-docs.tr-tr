@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11754e8e98e13cffefaf4a8c1fa08bc60d650105
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016558"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566072"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK kullanarak isteğe bağlı içerik göndermeye başlama  
 
@@ -31,7 +31,7 @@ Bu öğretici, Azure Media Services .NET SDK'sı kullanarak Azure Media Services
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Bir Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz Deneme](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * .NET framework 4.0 veya sonraki sürümü.
 * Visual Studio.
@@ -88,7 +88,7 @@ Akış uç noktasını başlatmak için aşağıdakileri yapın:
 
 .NET ile Media Services’i kullanırken, Media Services programlama görevlerinin çoğu için **CloudMediaContext** sınıfını kullanmalısınız: Media Services hesabına bağlanma; şu nesneleri oluşturma, güncelleştirme, silme ve bunlara erişme: varlıklar, varlık dosyaları, işler, erişim ilkeleri, bulucular vb.
 
-Varsayılan program sınıfının üzerine aşağıdaki kodu yazın: Kod, bağlantı değerlerinin App.config dosyasından nasıl okunacağını ve Media Services’e bağlanmak amacıyla **CloudMediaContext** nesnesinin nasıl oluşturulacağını gösterir. Daha fazla bilgi için bkz. [Media Services API'sine bağlanma](media-services-use-aad-auth-to-access-ams-api.md).
+Şu kodla varsayılan Program sınıfının üzerine yazın: Kod, bağlantı değerlerinin App.config dosyasından nasıl okunacağını ve Media Services’a bağlanmak amacıyla **CloudMediaContext** nesnesinin nasıl oluşturulacağını gösterir. Daha fazla bilgi için bkz. [Media Services API'sine bağlanma](media-services-use-aad-auth-to-access-ams-api.md).
 
 Dosya adını ve yolunu medya dosyanıza göre güncelleştirmeyi unutmayın.
 
@@ -152,7 +152,7 @@ Dosya adını ve yolunu medya dosyanıza göre güncelleştirmeyi unutmayın.
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Yeni varlık oluşturma ve video dosyası yükleme
 
-Media Services’de, dijital dosyalar bir varlığa yüklenir (veya alınır). **Varlık** varlığı video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar yüklendiğinde, içeriğiniz sonraki işleme ve akışla aktarma faaliyetleri için güvenli bir şekilde bulutta depolanmış olur. Varlık içindeki dosyalara **Varlık Dosyaları** adı verilir.
+Media Services’de, dijital dosyalar bir varlığa yüklenir (veya alınır). Varlık **varlığı video** , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar karşıya yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır. Varlık içindeki dosyalara **Varlık Dosyaları** adı verilir.
 
 Aşağıda tanımlanan **UploadFile** yöntemi, **CreateFromFile** yöntemini (.NET SDK Uzantılarında tanımlanmıştır) çağırır. **CreateFromFile**, belirtilen kaynak dosyasının yüklendiği yeni bir varlık oluşturur.
 
@@ -190,7 +190,7 @@ Program sınıfına aşağıdaki yöntemi ekleyin.
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>Kaynak dosyayı uyarlamalı bit hızlı bir MP4 dosyaları grubuna kodlama
 Varlıklar Media Services’e alındıktan sonra medyaya, istemcilere teslim edilmeden önce kodlama, biçimini değiştirme, filigran ekleme ve benzeri işlemler uygulanabilir. Bu etkinlikler, yüksek performans ve kullanılabilirlik sağlamak için birden fazla arka plan rol örneğinde zamanlanır ve çalıştırılır. Bu etkinliklere İşler adı verilir ve her bir İş, Varlık dosyası üzerinde asıl işi yapan atomik Görevlerden oluşur.
 
-Daha önce belirtildiği gibi, Azure Media Services ile çalışırken en sık karşılaşılan senaryolardan biri, istemcilerinize bit hızı uyarlamalı akış iletmektir. Media Services bir uyarlamalı bit hızı MP4 dosyası kümesini dinamik olarak şu biçimlerden birine paketleyebilir: HTTP Canlı Akışı (HLS), Kesintisiz Akış ve MPEG DASH.
+Daha önce belirtildiği gibi, Azure Media Services ile çalışırken en sık karşılaşılan senaryolardan biri, istemcilerinize bit hızı uyarlamalı akış iletmektir. Media Services, bit hızı uyarlamalı bir MP4 dosyaları kümesini dinamik olarak şu biçimlerden birine paketleyebilir: HTTP Canlı Akışı (HLS), Kesintisiz Akış ve MPEG DASH.
 
 Dinamik paketlemeden yararlanmak için, ara (kaynak) dosyanızı bit hızı uyarlamalı bir MP4 veya Kesintisiz Akış dosyaları kümesine kodlamanız veya dosyanın kodlamasını dönüştürmeniz gerekir.  
 
@@ -238,7 +238,7 @@ Program sınıfına aşağıdaki yöntemi ekleyin.
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>Varlığı yayımlayıp akış ve aşamalı indirme URL’lerini alma
 
-Bir varlığı akışla aktarmak veya indirmek için söz konusu varlığı önce bir bulucu oluşturarak “yayımlamak” gerekir. Bulucular varlıkta bulunan dosyalara erişim imkanı sağlar. Media Services iki tür bulucuyu destekler: Medya dosyalarını indirmek için kullanılan, medya akışını (örneğin, MPEG DASH, HLS veya Kesintisiz Akış) ve erişim Imzası (SAS) Konumlandırıcı için kullanılan OnDemandOrigin Konumlandırıcı.
+Bir varlığı akışla aktarmak veya indirmek için söz konusu varlığı önce bir bulucu oluşturarak “yayımlamak” gerekir. Bulucular varlıkta bulunan dosyalara erişim imkanı sağlar. Media Services, iki tür bulucuyu destekler: Medyayı akışla aktarmak (örneğin MPEG DASH, HLS veya Kesintisiz Akış) için kullanılan OnDemandOrigin bulucuları ve medya dosyalarını indirmek için kullanılan Erişim İmzası (SAS) bulucuları.
 
 ### <a name="some-details-about-url-formats"></a>URL biçimleri hakkında bazı ayrıntılar
 
@@ -375,10 +375,9 @@ Videonuzun akışını yapmak için URL'nizi [Azure Media Services Player](https
 
 Aşamalı indirmeyi test etmek için bir tarayıcıya (örneğin Internet Explorer, Chrome veya Safari) bir URL yapıştırın.
 
-Daha fazla bilgi için aşağıdaki konulara bakın:
+Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 - [İçeriğinizi mevcut oynatıcılarda oynatma](media-services-playback-content-with-existing-players.md)
-- [Video oynatıcı uygulamaları geliştirme](media-services-develop-video-players.md)
 - [DASH.js ile MPEG-DASH Uyarlamalı Akış Videosunu bir HTML5 Uygulamasına ekleme](media-services-embed-mpeg-dash-in-html5.md)
 
 ## <a name="download-sample"></a>Örnek indirme

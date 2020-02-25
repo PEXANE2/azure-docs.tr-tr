@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987159"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561570"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Grup tabanlı Azure Active Directory lisansı nedir?
 
@@ -34,7 +34,7 @@ Grup tabanlı lisanslama kullanmak için aşağıdaki lisanslardan birine sahip 
 
 - Azure AD Premium P1 ve üzeri için ücretli veya deneme aboneliği
 
-- Office 365 Enterprise E3 veya Office 365 a3 veya Office 365 GCC G3 ve üzeri için ücretli veya deneme sürümü
+- Office 365 Enterprise E3 veya Office 365 a3 veya Office 365 GCC G3 ya da Office 365 E3 for the DOD and üzeri for GCCH veya Office 365 E3 ücretli veya deneme sürümü
 
 ### <a name="required-number-of-licenses"></a>Gerekli sayıda lisans
 Lisans atanmış tüm gruplar için, her benzersiz üye için de lisansa sahip olmanız gerekir. Grubun her üyesine bir lisans atamanız gerekmiyorsa, tüm üyeleri dahil etmek için en az lisansa sahip olmanız gerekir. Örneğin, kiracınızdaki lisanslı grupların parçası olan 1.000 benzersiz üyesi varsa, lisans sözleşmesini karşılamak için en az 1.000 lisansa sahip olmanız gerekir.
@@ -68,6 +68,6 @@ Grup tabanlı lisanslama aracılığıyla lisans yönetimine yönelik diğer sen
 * [Azure Active Directory'de gruba lisans atama](../users-groups-roles/licensing-groups-assign.md)
 * [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Kullanıcılar Azure Active Directory'de Grup tabanlı lisanslama kullanarak ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](../users-groups-roles/licensing-group-advanced.md)
-* [Azure Active Directory'de Grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)
+* [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)

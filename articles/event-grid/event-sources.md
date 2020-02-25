@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 31923e1cb69eb6681367ed6ea71c10564ae6d489
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526391"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561774"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid içindeki olay kaynakları
 
@@ -134,7 +134,7 @@ Etkin bir dinleyici olmadan iletilere yanıt vermek için Service Bus olayların
 Oluşturulan blob ve silinen olaylara yanıt vermek için BLOB depolama olaylarına abone olun.
 
 >[!NOTE]
-> Yalnızca **StorageV2 (genel amaçlı v2)** ve **blobstorage** türünde depolama hesapları olay tümleştirmesini destekler. **Depolama (genral amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
+> Yalnızca **StorageV2 (genel amaçlı v2)** ve **blobstorage** türünde depolama hesapları olay tümleştirmesini destekler. **Depolama (genel amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
 
 |Başlık  |Açıklama  |
 |---------|---------|

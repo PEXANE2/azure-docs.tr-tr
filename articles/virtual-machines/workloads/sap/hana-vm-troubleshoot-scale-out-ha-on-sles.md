@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makinelerinde SLES 12 SP3 ile SAP HANA 2,0 genişleme HSR-pacemaker kurulumunu sorun giderme | Microsoft Docs
+title: Azure VM 'Leri sorunlarını gidermek için SLES ile genişleme HSR-pacemaker SAP HANA | Microsoft Docs
 description: Azure sanal makineler 'de çalışan SLES 12 SP3 üzerinde SAP HANA sistem çoğaltması (HSR) ve Paceyapıcısı temelinde, karmaşık SAP HANA genişleme yüksek kullanılabilirlik yapılandırmasını denetleme ve sorunlarını giderme kılavuzu
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb90bfff72f41d8d7ccc34d3ad6dd0e9206bb88e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099655"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566242"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 üzerinde yüksek kullanılabilirliğe sahip ayarları SAP HANA doğrulama ve sorun giderme 
 
@@ -255,7 +255,7 @@ nodelist {
 }
 </code></pre>
 
-Son bölümde, **çekirdek**, **expected_votes** için değeri doğru şekilde ayarlamanız önemlidir. Bu, çoğunluk Oluşturucu düğümü dahil olmak üzere düğümlerin sayısı olmalıdır. Ve **two_node** değeri **0**olmalıdır. Girişi tamamen kaldırmayın. Yalnızca değeri **0**olarak ayarlayın.
+Son bölümde, **çekirdek**, **expected_votes** değerini doğru şekilde ayarlamanız önemlidir. Bu, çoğunluk Oluşturucu düğümü dahil olmak üzere düğümlerin sayısı olmalıdır. Ve **two_node** değeri **0**olmalıdır. Girişi tamamen kaldırmayın. Yalnızca değeri **0**olarak ayarlayın.
 
 <pre><code>
 quorum {
@@ -434,7 +434,7 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-/Etc/IBU **/SCC** daki başlangıç ayarını kontrol edin. Gerekli ayar, belgelerde açıklanan aşağıdaki IBir ı Farklı olursa, **VI** ile el ile doğrulayın ve bu öğeyi el ile uyarlayabilirsiniz.
+**/Etc/IBU/SCC \** ' daki başlangıç ayarını kontrol edin. Gerekli ayar, belgelerde **açıklanan aşağıdaki** IBir ı Farklı olursa, **VI** ile el ile doğrulayın ve bu öğeyi el ile uyarlayabilirsiniz.
 
 Bu komut başlangıç davranışını ayarlar:
 
@@ -442,7 +442,7 @@ Bu komut başlangıç davranışını ayarlar:
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-Bu girdiyi **/etc/ITS/SCC** da yap:
+Bu girdiyi **/etc/ITS/SCC \** ' da yap:
 
 <pre><code>
 node.startup = automatic
@@ -457,7 +457,7 @@ Sınama ve doğrulama işlemleri sırasında, bir VM 'nin yeniden başlatıldık
 5. Başlatıcı adının üzerinde, **hizmet başlangıç** değerinin **önyükleme sırasında**olarak ayarlandığından emin olun.
 6. Aksi takdirde, **el ile**yerine **önyükleme sırasında** olarak ayarlayın.
 7. Sonra, üst sekmeyi **bağlı hedeflere**geçirin.
-8. **Bağlı hedefler** ekranında, bu örnekte olduğu gıbı, SBD cihazı için bir giriş görmeniz gerekir: **10.0.0.19:3260 IQN. 2006-04. dbhso. Yerel: dbhso**.
+8. **Bağlı hedefler** ekranında, şu örnekte olduğu gibi SBD cihazı için bir giriş görmeniz gerekir: **10.0.0.19:3260 IQN. 2006-04. dbhso. Local: dbhso**.
 9. **Başlangıç** değerinin **önyükleme sırasında**olarak ayarlandığından emin olun.
 10. Aksi takdirde, **Düzenle** ' yi seçin ve değiştirin.
 11. Değişiklikleri kaydedin ve Exit YaST2.
@@ -656,7 +656,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Yük devretme veya devralma
 
-[Önemli notlarda](#important-notes)anlatıldığı gibi, küme yük devretmesini veya SAP HANA HSR 'leri test etmek için standart bir düzgün kapanma kullanmamanız gerekir. Bunun yerine, bir çekirdek PANIC tetiklemenizi, bir kaynak geçişi zorlamanıza veya bir VM 'nin işletim sistemi düzeyindeki tüm ağları kapatmanızı öneririz. Başka bir yöntem de **CRM \<düğümü\> bekleme** komutunuz. [SUSE belgesine][sles-12-ha-paper]bakın. 
+[Önemli notlarda](#important-notes)anlatıldığı gibi, küme yük devretmesini veya SAP HANA HSR 'leri test etmek için standart bir düzgün kapanma kullanmamanız gerekir. Bunun yerine, bir çekirdek PANIC tetiklemenizi, bir kaynak geçişi zorlamanıza veya bir VM 'nin işletim sistemi düzeyindeki tüm ağları kapatmanızı öneririz. Başka bir yöntem de, **crm \<node\> bekleme** komutu ' dür. [SUSE belgesine][sles-12-ha-paper]bakın. 
 
 Aşağıdaki üç örnek komut, küme yük devretmesini zorlayabilir:
 
@@ -680,9 +680,9 @@ watch SAPHanaSR-showAttr
 
 Ayrıca, bir SAP Python betiğiyle gelen SAP HANA yatay duruma bakmanıza de yardımcı olur. Küme kurulumu, bu durum değerini arıyor. Bir çalışan düğümü hatası olduğunu düşündüğünüzde bu açık olur. Bir çalışan düğümü kapalıysa SAP HANA, tüm genişleme sisteminin sistem durumu için hemen bir hata döndürmez. 
 
-Gereksiz yük devretme yapmaktan kaçınmak için bazı yeniden denemeler vardır. Küme, yalnızca durum **Tamam**' dan, değer **4**' e, **hata**' a geri dönerek çalışır. Bu nedenle, **Saphanasr-showAttr** çıktısındaki çıkış, durumu **çevrimdışı**olan bir VM 'yi gösteriyorsa doğrudur. Ancak birincil ve ikincil anahtar geçişi için henüz etkinlik yok. SAP HANA bir hata döndürmeyen sürece hiçbir küme etkinliği tetiklenmez.
+Gereksiz yük devretme yapmaktan kaçınmak için bazı yeniden denemeler vardır. Küme, yalnızca durum **Tamam**' dan, değer **4**' e, **hata**' a geri dönerek **çalışır.** Bu nedenle, **Saphanasr-showAttr** çıktısındaki çıkış, durumu **çevrimdışı**olan bir VM 'yi gösteriyorsa doğrudur. Ancak birincil ve ikincil anahtar geçişi için henüz etkinlik yok. SAP HANA bir hata döndürmeyen sürece hiçbir küme etkinliği tetiklenmez.
 
-SAP Python betiğini aşağıdaki gibi çağırarak, SAP HANA yatay sistem durumunu Kullanıcı  **\<\>Hana SID adm** olarak izleyebilirsiniz. Yolu uyarlamanız gerekebilir:
+SAP Python betiğini aşağıdaki gibi çağırarak, SAP HANA yatay sistem durumunu Kullanıcı **\<Hana sıd\>adm** olarak izleyebilirsiniz. Yolu uyarlamanız gerekebilir:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -822,7 +822,7 @@ Bakım işinin sonunda, [pacemaker](#pacemaker)' da gösterildiği gibi küme ba
 
 ## <a name="hb_report-to-collect-log-files"></a>günlük dosyalarını toplamak için hb_report
 
-Paceyapıcısı küme sorunlarını analiz etmek için, **hb_report** yardımcı programını ÇALıŞTıRMAK üzere SUSE Support tarafından da yararlıdır. Ne olduğunu analiz etmeniz için ihtiyacınız olan tüm önemli günlük dosyalarını toplar. Bu örnek çağrı, belirli bir olayın gerçekleştiği başlangıç ve bitiş zamanını kullanır. Ayrıca bkz. [önemli notlar](#important-notes):
+Pacemaker küme sorunlarını analiz etmek için, **hb_report** yardımcı programını ÇALıŞTıRMAK için SUSE desteği tarafından da yararlıdır. Ne olduğunu analiz etmeniz için ihtiyacınız olan tüm önemli günlük dosyalarını toplar. Bu örnek çağrı, belirli bir olayın gerçekleştiği başlangıç ve bitiş zamanını kullanır. Ayrıca bkz. [önemli notlar](#important-notes):
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
@@ -945,7 +945,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Havk dili
 
 Küme çözümü, menü ve grafiklerin kabuk düzeyinde tüm komutlara sahip olmasını tercih eden kullanıcılar için GUI sağlayan bir tarayıcı arabirimi sağlar.
-Tarayıcı arabirimini kullanmak için, **\<düğümü\>** aşağıdaki URL 'deki gerçek bir SAP HANA düğümü ile değiştirin. Sonra kümenin (Kullanıcı **kümesi**) kimlik bilgilerini girin:
+Tarayıcı arabirimini kullanmak için, **\<node\>** aşağıdaki URL 'deki gerçek bir SAP HANA düğümü ile değiştirin. Sonra kümenin (Kullanıcı **kümesi**) kimlik bilgilerini girin:
 
 <pre><code>
 https://&ltnode&gt:7630
@@ -963,13 +963,13 @@ Bu örnek, [planlı bakımda](#planned-maintenance)açıklandığı şekilde kü
 ![Havk listesi kısıtlamaları](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Ayrıca, aşağıdaki gibi gösterildiği gibi, **hb_report** çıkışını **geçmiş**kapsamında da yükleyebilirsiniz. Günlük dosyalarını toplamak için bkz. hb_report: 
+Ayrıca, aşağıda gösterildiği gibi, **geçmiş**' in altındaki **hb_report** çıkışını da karşıya yükleyebilirsiniz. Günlük dosyalarını toplamak için bkz. hb_report: 
 
 ![Havk karşıya yükleme hb_report çıkışı](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-**Geçmiş Gezgini**ile, **hb_report** çıktısına dahil olan tüm küme geçişlerini izleyebilirsiniz:
+**Geçmiş Gezgini**ile, **hb_report** çıkışına dahil olan tüm küme geçişlerini izleyebilirsiniz:
 
-![Hb_report çıktısında havk geçişleri](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![Hb_report çıktısındaki havk geçişleri](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
 Bu son ekran görüntüsü, tek bir geçişin **Ayrıntılar** bölümünü gösterir. Küme, birincil ana düğüm kilitlenmesi üzerinde yeniden işlem yapan düğüm **Hso-Hana-VM-S1-0**. Artık ikincil düğümü yeni ana, **Hso-Hana-VM-S2-0**olarak yükseltmektedir:
 

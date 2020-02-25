@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931202"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561689"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -60,6 +60,17 @@ Herhangi bir yönetim katmanı izni veren bir rolünüz yoksa Depolama Gezgini v
 
 Şu anda bu sorun için RBAC ile ilgili bir çözümünüz yok. Geçici bir çözüm olarak, [kaynağına eklemek](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
+### <a name="recommended-built-in-rbac-roles"></a>Önerilen yerleşik RBAC rolleri
+
+Depolama Gezgini kullanmak için gereken izinleri sağlayabilecek çeşitli yerleşik RBAC rolleri vardır. Bu rollerden bazıları şunlardır:
+- [Sahip](/azure/role-based-access-control/built-in-roles#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin. **Note**: Bu rol size anahtar erişimi verecektir.
+- [Katkıda bulunan](/azure/role-based-access-control/built-in-roles#contributor): kaynaklara erişimi hariç her şeyi yönetin. **Note**: Bu rol size anahtar erişimi verecektir.
+- [Okuyucu](/azure/role-based-access-control/built-in-roles#reader): kaynakları okuyun ve listeleyin.
+- [Depolama hesabı katılımcısı](/azure/role-based-access-control/built-in-roles#storage-account-contributor): depolama hesaplarının tam yönetimi. **Note**: Bu rol size anahtar erişimi verecektir.
+- [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
+- [Depolama Blobu verileri katılımcısı](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
+- [Depolama Blobu veri okuyucusu](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
+
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hata: sertifika zincirinde otomatik olarak imzalanan sertifika (ve benzer hatalar)
 
 Sertifika hataları genellikle aşağıdaki durumlardan birinde oluşur:
@@ -98,7 +109,7 @@ Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından des
 1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama** > **oturum aç**' a gidin. **Cihaz kod akışı oturum açma**özelliğini etkinleştir.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
 3. Oturum açmak istediğiniz ortamı seçin.
-4. **Oturum aç**'ı seçin.
+4. **Oturum aç '** ı seçin.
 5. Sonraki bölmede yer alan yönergeleri izleyin.
 
 Varsayılan tarayıcınız zaten farklı bir hesapta oturum açmış olduğu için kullanmak istediğiniz hesapta oturum açamazsınız, aşağıdakilerden birini yapın:
@@ -244,20 +255,20 @@ Bozulan bağlantıları korumak istiyorsanız, bozuk bağlantıları bulmak içi
 
 Tüm bağlantılarınız bittikten sonra, geri eklenmemiş tüm bağlantı adları için, bozulmuş verileri (varsa) temizlemeniz ve Depolama Gezgini içindeki standart adımları kullanarak geri eklemeniz gerekir:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. **Başlat** menüsünde **kimlik bilgileri Yöneticisi** ' ni arayın ve açın.
 2. **Windows kimlik bilgileri**' ne gidin.
 3. **Genel kimlik bilgileri**altında, `<connection_type_key>/<corrupted_connection_name>` anahtarına sahip girdileri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Bu girişleri silip bağlantıları yeniden ekleyin.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Spotlight (komut + ara çubuğu) öğesini açın ve **Anahtarlık erişimi**arayın.
 2. `<connection_type_key>/<corrupted_connection_name>` anahtara sahip girdileri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Bu girişleri silip bağlantıları yeniden ekleyin.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 Yerel kimlik bilgisi yönetimi, Linux dağıtımına bağlı olarak farklılık gösterir. Linux yönetiyoruz yerel kimlik bilgileri yönetimi için yerleşik bir GUI aracı sağlamıyorsa, yerel kimlik bilgilerinizi yönetmek için bir üçüncü taraf araç yükleyebilirsiniz. Örneğin, Linux yerel kimlik bilgilerini yönetmek için açık kaynaklı bir GUI aracı olan [Mevsimat](https://wiki.gnome.org/Apps/Seahorse/)'ı kullanabilirsiniz.
 
@@ -309,7 +320,7 @@ Bu paketler, Linux üzerinde Depolama Gezgini için en yaygın gereksinimlerdir:
 > [!NOTE]
 > Depolama Gezgini Version 1.7.0 ve önceki sürümleri .NET Core 2,0 gerektirir. .NET Core 'un daha yeni bir sürümü yüklüyse, [Depolama Gezgini yama](#patching-storage-explorer-for-newer-versions-of-net-core)yapmanız gerekir. Depolama Gezgini 1.8.0 veya sonraki bir sürümü çalıştırıyorsanız, .NET Core 2,2 ' e kadar kullanabilmeniz gerekir. 2,2 ' den fazla sürüm şu anda çalışacak şekilde doğrulanmadı.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19,04](#tab/1904)
 
 1. Depolama Gezgini indirin.
 2. [.NET Core çalışma zamanını](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)yükler.
@@ -318,7 +329,7 @@ Bu paketler, Linux üzerinde Depolama Gezgini için en yaygın gereksinimlerdir:
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18,04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18,04](#tab/1804)
 
 1. Depolama Gezgini indirin.
 2. [.NET Core çalışma zamanını](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)yükler.
@@ -327,7 +338,7 @@ Bu paketler, Linux üzerinde Depolama Gezgini için en yaygın gereksinimlerdir:
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
 
 1. Depolama Gezgini indirin.
 2. [.NET Core çalışma zamanını](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)yükler.
@@ -336,7 +347,7 @@ Bu paketler, Linux üzerinde Depolama Gezgini için en yaygın gereksinimlerdir:
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14,04](#tab/1404)
 
 1. Depolama Gezgini indirin.
 2. [.NET Core çalışma zamanını](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)yükler.
@@ -353,7 +364,7 @@ Depolama Gezgini 1.7.0 veya daha önceki bir sürümü için Depolama Gezgini ta
 1. [NuGet 'Den](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)StreamJsonRpc 'nin 1.5.43 sürümünü indirin. Sayfanın sağ tarafındaki "paketi Indir" bağlantısını bulun.
 2. Paketi indirdikten sonra, `.nupkg` dosya uzantısını `.zip`olarak değiştirin.
 3. Paketi sıkıştırmayı açın.
-4. Açık `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasör.
+4. `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasörünü açın.
 5. `StreamJsonRpc.dll` Depolama Gezgini klasöründeki aşağıdaki konumlara kopyalayın:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`

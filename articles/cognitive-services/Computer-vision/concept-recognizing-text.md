@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946297"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566259"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı ile yazılan metinleri tanıma
 
@@ -26,10 +26,10 @@ Görüntü İşleme görüntülerde görüntülenen yazdırılmış veya el yaz�
 
 Okuma API 'SI, en son tanınma modellerimizi kullanarak bir görüntüdeki metin içeriğini algılar ve tanımlanan metni makine tarafından okunabilen bir karakter akışına dönüştürür. Metin açısından ağır görüntüler (dijital olarak taranan belgeler gibi) ve çok sayıda görsel gürültü içeren görüntüler için iyileştirilmiştir. Her metin satırı için hangi tanıma modelinin kullanılacağını, hem yazdırılmış hem de el yazısı metinle birlikte destekleyeceğini belirleyen bir görüntü oluşturur. Okuma API 'SI, büyük belgeler bir sonuç döndürmek için birkaç dakika sürebileceğinden zaman uyumsuz olarak yürütülür.
 
-Okuma işlemi, tanınan sözcüklerin orijinal satır gruplamalarını çıktıda saklar. Her satır sınırlayıcı kutu koordinatları ile gelir ve satırdaki her sözcüğün kendi koordinatları de vardır. Bir sözcük düşük güvenilirlikle tanınıyorsa, bu bilgiler de bu bilgileri verir. Daha fazla bilgi edinmek için bkz. [API başvuru belgelerine](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) bakın.
+Okuma işlemi, tanınan sözcüklerin orijinal satır gruplamalarını çıktıda saklar. Her satır sınırlayıcı kutu koordinatları ile gelir ve satırdaki her sözcüğün kendi koordinatları de vardır. Bir sözcük düşük güvenilirlikle tanınıyorsa, bu bilgiler de bu bilgileri verir. Daha fazla bilgi edinmek için bkz. [API başvuru belgeleri oku](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) ve [okuma API 'si önizleme başvurusu belgeleri](https://go.microsoft.com/fwlink/?linkid=2118322) .
 
 > [!NOTE]
-> Bu özellik yalnızca Ingilizce metin için kullanılabilir.
+> Bu özellik yalnızca Ingilizce ve Ispanyolca (Önizleme) metin için kullanılabilir.
 
 ### <a name="image-requirements"></a>Görüntü gereksinimleri
 
@@ -94,4 +94,4 @@ Metin tanıma işlemlerinin doğruluğu görüntülerin kalitesine bağlıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Basit C# bir uygulamada metin tanımayı uygulamak için [YAZDıRıLAN metin (OCR)](./quickstarts/csharp-print-text.md) hızlı başlangıcını Ayıkla ' yı izleyin.
+Basit C# bir uygulamada metin tanımayı uygulamak Için [metin ayıklama (okuma)](./QuickStarts/CSharp-hand-text.md) hızlı başlangıcını izleyin.

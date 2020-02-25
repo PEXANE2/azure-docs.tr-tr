@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368894"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562556"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure'da isteğe bağlı Red Hat Enterprise Linux VM'ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
@@ -28,7 +28,7 @@ Azure 'da yayımlama ve bekletme ilkeleri de dahil olmak üzere RHEL görüntül
 Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
 
 > [!IMPORTANT]
-> RHUı yalnızca Kullandıkça Öde (PAYGO) görüntüleri için tasarlanmıştır. Kendi aboneliklerini getir (BYOS) olarak da bilinen özel ve altın görüntülerde, güncelleştirmelerin alınması için sistemin RHSM veya uydu 'e bağlanması gerekir. Daha fazla bilgi için bkz. [Red Hat makalesi](https://access.redhat.com/solutions/253273) .
+> RHUı yalnızca Kullandıkça Öde (PAYG) görüntüleri için tasarlanmıştır. Kendi aboneliklerini getir (BYOS) olarak da bilinen özel ve altın görüntülerde, güncelleştirmelerin alınması için sistemin RHSM veya uydu 'e bağlanması gerekir. Daha fazla bilgi için bkz. [Red Hat makalesi](https://access.redhat.com/solutions/253273) .
 
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI hakkında önemli bilgiler
@@ -105,7 +105,7 @@ Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitleme
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. Releasever değişkenini kilitle (farklı çalıştır kök):
+1. `releasever` değişkenini kilitle (farklı çalıştır kökü):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitleme
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL VM 'yi EUS olmayan bir değere değiştirme (sürüm kilidini kaldırma)
 Aşağıdakileri kök olarak çalıştırın:
-1. Releasever dosyasını Kaldır:
+1. `releasever` dosyasını kaldırın:
     ```bash
     rm /etc/yum/vars/releasever
      ```

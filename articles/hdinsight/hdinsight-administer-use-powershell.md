@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/09/2019
-ms.openlocfilehash: e37571b0078b4966aab9f505ddf88c2edb353197
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435636"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560363"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>HDInsight 'ta Azure PowerShell kullanarak Apache Hadoop kümelerini yönetme
 
@@ -23,7 +23,7 @@ Azure PowerShell, Azure 'da iş yüklerinizin dağıtımını ve yönetimini den
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +63,7 @@ Kümeyi içeren kaynak grubunu kaldırarak da bir kümeyi silebilirsiniz. Bir ka
 Remove-AzResourceGroup -Name <Resource Group Name>
 ```
 
-## <a name="scale-clusters"></a>Kümeleri ölçeklendirme
+## <a name="scale-clusters"></a>Ölçek Kümeleri
 
 Küme ölçekleme özelliği, kümeyi yeniden oluşturmaya gerek kalmadan Azure HDInsight 'ta çalışan bir küme tarafından kullanılan çalışan düğümlerinin sayısını değiştirmenize izin verir. Azure PowerShell kullanarak Hadoop kümesi boyutunu değiştirmek için bir istemci makinesinden aşağıdaki komutu çalıştırın:
 
@@ -73,47 +73,16 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
  Kümeleri ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md).
 
-## <a name="grantrevoke-access"></a>Erişim verme/iptal etme
-
-HDInsight kümeleri aşağıdaki HTTP Web hizmetlerine sahiptir (Bu hizmetlerin tümü, yeniden oluşan uç noktalara sahiptir):
-
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
-
-Varsayılan olarak, bu hizmetler erişim için verilir. Erişimi iptal edebilir/atayabilirsiniz. İptal etmek için:
-
-```powershell
-Revoke-AzHDInsightHttpServicesAccess -ClusterName <Cluster Name>
-```
-
-Vermek için:
-
-```powershell
-$clusterName = "<HDInsight Cluster Name>"
-
-# Credential option 1
-$hadoopUserName = "admin"
-$hadoopUserPassword = '<Enter the Password>'
-$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
-
-# Credential option 2
-#$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
-
-Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
-```
-
-> [!NOTE]  
-> Erişimi vererek/iptal ederek, küme kullanıcı adını ve parolasını sıfırladınız.
-
-Erişim verme ve iptal etme, Portal üzerinden de yapılabilir. Bkz. [HDInsight 'ta Apache Hadoop kümelerini Azure Portal kullanarak yönetme](hdinsight-administer-use-portal-linux.md).
-
 ## <a name="update-http-user-credentials"></a>HTTP Kullanıcı kimlik bilgilerini güncelleştirme
 
-HTTP erişimini verme/iptal etme ile aynı yordamdır. Kümeye HTTP erişimi verildiyse, önce onu iptal etmeniz gerekir.  Ardından, yeni HTTP Kullanıcı kimlik bilgileriyle erişime izin verin.
+[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) bir Azure HDInsight kümesinin ağ geçidi http kimlik bilgilerini ayarlar.
+
+```powershell
+$clusterName = "CLUSTERNAME"
+$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+
+Set-AzHDInsightGatewayCredential -ClusterName $clusterName -HttpCredential $credential
+```
 
 ## <a name="find-the-default-storage-account"></a>Varsayılan depolama hesabını bulun
 

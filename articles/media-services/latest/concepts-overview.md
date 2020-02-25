@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e2c718b3b5ee27b5781f5f6287e0ee45fa405170
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970045"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562386"
 ---
 # <a name="media-services-concepts"></a>Media Services kavramlar
 
@@ -28,114 +28,26 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 > [!NOTE]
 > Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
 
-## <a name="terminology"></a>Terminoloji
+## <a name="media-services-v3-terminology"></a>Media Services v3 terminolojisi
 
-Bu bölümde, bazı yaygın sektör koşullarının Media Services v3 API 'sine nasıl eşlendiğini gösterilmektedir.
+|Süre|Açıklama|
+|---|---|
+|Canlı etkinlik|**Canlı bir olay** , video, ses ve gerçek zamanlı meta verilerin canlı akışını geri almak, kodlamak (isteğe bağlı olarak) ve paketlenmesi için bir işlem hattı temsil eder.<br/><br/>Media Services V2 API 'Lerinden geçiş yapmak için **canlı olay** , v2 'deki **Kanal** varlığının yerini alır. Daha fazla bilgi için bkz. [v2 'den v3 'e geçiş](migrate-from-v2-to-v3.md).|
+|Akış uç noktası/paketleme/kaynak|**Akış uç noktası** , ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar.<br/><br/>Medya akışı sektöründe bu hizmet genellikle bir **Paketleyici** veya **kaynak**olarak adlandırılır.  Sektörün bu özellik için diğer yaygın terimleri, JıOP (tam zamanında Paketleyici) veya JıITE (tam zamanında şifreleme) içerir. 
 
-### <a name="live-event"></a>Canlı Etkinlik
+## <a name="media-services-v3-concepts"></a>Media Services v3 kavramları
 
-**Canlı bir olay** , video, ses ve gerçek zamanlı meta verilerin canlı akışını geri almak, kodlamak (isteğe bağlı olarak) ve paketlenmesi için bir işlem hattı temsil eder.
-
-Media Services V2 API 'Lerinden geçiş yapmak için **canlı olay** , v2 'deki **Kanal** varlığının yerini alır. Daha fazla bilgi için bkz. [v2 'den v3 'e geçiş](migrate-from-v2-to-v3.md).
-
-### <a name="streaming-endpoint-packaging-and-origin"></a>Akış uç noktası (Paketleme ve başlangıç)
-
-**Akış uç noktası** , ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar.
-
-Medya akışı sektöründe bu hizmet genellikle bir **Paketleyici** veya **kaynak**olarak adlandırılır.  Sektörün bu özellik için diğer yaygın terimleri, JıOP (tam zamanında Paketleyici) veya JıITE (tam zamanında şifreleme) içerir. 
- 
-## <a name="cloud-upload-and-storage"></a>Bulutta karşıya yükleme ve depolama
-
-Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve dijital dosyalarınızı **varlıklara**yüklemeniz gerekir.
-
-- [Bulutta karşıya yükleme ve depolama](storage-account-concept.md)
-- [Varlık kavramı](assets-concept.md)
-
-## <a name="encoding"></a>Encoding
-
-Yüksek kaliteli dijital medya dosyalarınızı varlıklara yükledikten sonra, bunları çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlayabilirsiniz. 
-
-Media Services v3 ile kodlamak için **dönüşümler** ve **işler**oluşturmanız gerekir.
-
-![Dönüştürmeler](./media/encoding/transforms-jobs.png)
-
-- [Dönüşümler ve Işler](transforms-jobs-concept.md)
-- [Media Services kodlama](encoding-concept.md)
-
-## <a name="media-analytics"></a>Medya analizi
-
-Video ve ses dosyalarınızı analiz etmek için **dönüşümler** ve **işler**de oluşturmanız gerekir.
-
-- [Video ve ses dosyalarını çözümleme](analyzing-video-audio-files-concept.md)
-
-## <a name="packaging-delivery-protection"></a>Paketleme, teslim, koruma
-
-İçeriğiniz kodlandıktan sonra, **dinamik paketleme**özelliğinden yararlanabilirsiniz. Media Services, **akış uç noktası**/Origin, istemci oynatıcılara medya içeriği göndermek için kullanılan dinamik paketleme hizmetidir. Çıktı kıymetindeki videoların, kayıttan yürütmeye yönelik olarak kullanılabilmesini sağlamak için bir **akış Bulucu** oluşturmanız ve ardından akış URL 'leri oluşturmanız gerekir. 
-
-**Akış bulucuyu**oluştururken, varlığın adının yanı sıra **akış ilkesi**belirtmeniz gerekir. Akış **ilkeleri** , akış **Konumlandırıcıları**için akış protokollerini ve şifreleme seçeneklerini (varsa) tanımlamanıza olanak sağlar.
-
-Dinamik paketleme, içeriğinizi canlı veya isteğe bağlı olarak akışınızdan bağımsız olarak kullanılır. Aşağıdaki diyagramda, dinamik paketleme iş akışı ile isteğe bağlı akış gösterilmektedir.
-
-![Dinamik paketleme](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
-
-Media Services ile, canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere.
-
-Akışınıza şifreleme seçenekleri belirtiyorsanız, **Içerik anahtarı ilkesini** oluşturun ve **akış bulucuınızla**ilişkilendirin. **Içerik anahtarı ilkesi** , içerik anahtarının son istemcilere nasıl teslim edildiğini yapılandırmanızı sağlar.
-
-Aşağıdaki resimde Media Services content protection iş akışı gösterilmektedir: 
-
-![İçerik koruma](./media/content-protection/content-protection.svg)
-
-&#42;dinamik şifreleme, AES-128 "Clear Key", CBCS ve CENC 'yi destekler. 
-
-Videonuzun yalnızca belirli bir işlemesini veya alt kliplerini akışa almak için **dinamik bildirimleri** Media Services kullanabilirsiniz. Aşağıdaki örnekte, bir Mezzanine örneğini yedi ISO MP4 'leri video yorumlamasına (180 p-1080p) kodlamak için bir kodlayıcı kullanılmıştır. Kodlanmış varlık, aşağıdaki akış protokollerinden dinamik olarak paketlenebilir: HLS, MPEG DASH ve sorunsuz.  Diyagramın en üstünde, filtre olmadan varlık için HLS bildirimi gösterilir (tüm yedi yorumlamaları içerir).  Sol alt tarafta, "Ott" adlı bir filtrenin uygulandığı HLS bildirimi gösterilmiştir. "Ott" filtresi, 1 MB/sn 'nin altındaki tüm bit hızlarının kaldırılması gerektiğini belirtir. Bu, doğru iki kalite düzeyinin yanıtta kaldırılmasına neden olur. Sağ alt köşede, "mobil" adlı bir filtrenin uygulandığı HLS bildirimi gösterilir. "Mobil" filtresi, çözümlemenin 720 ' den büyük olduğu ve iki 1080p çevirinin kaldırılmasına neden olan çevirileri kaldırmayı belirtir.
-
-![İşleme filtrelemesi](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
-
-- [Dinamik paketleme](dynamic-packaging-overview.md)
-- [Akış Uç Noktaları](streaming-endpoint-concept.md)
-- [Akış Bulucular](streaming-locators-concept.md)
-- [Akış İlkeleri](streaming-policy-concept.md)
-- [İçerik Anahtarı İlkeleri](content-key-policy-concept.md)
-- [İçerik koruma](content-protection-overview.md)
-- [Dinamik bildirimler](filters-dynamic-manifest-overview.md)
-- [Filtreleri](filters-concept.md)
-
-> [!NOTE]
-> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
-
-## <a name="live-streaming"></a>Canlı akış
-
-Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanıza olanak sağlar. **Canlı Etkinlikler** sırasında canlı video akışları alınır ve işlenir. **Canlı bir olay**oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir giriş uç noktası oluşturulur. Akışın **canlı olayına**akışını tamamladıktan sonra bir **varlık**, **canlı çıkış**ve **akış Bulucu**oluşturarak akış olayını başlatabilirsiniz. **Canlı çıktı** , akışı **varlığa** Arşivle ve **akış uç noktası**aracılığıyla görüntüleyicilerin kullanımına açık hale getirir. **Canlı bir olay** iki türden biri olabilir: **doğrudan geçiş** ve **canlı kodlama**.
-
-Aşağıdaki görüntüde, geçişli tür iş akışı gösterilmektedir:
-
-![doğrudan geçiş](./media/live-streaming/pass-through.svg)
-
-- [Canlı akışa genel bakış](live-streaming-overview.md)
-- [Canlı Etkinlikler ve Canlı Çıkışlar](live-events-outputs-concept.md)
-
-## <a name="monitoring"></a>İzleme
-
-### <a name="event-grid"></a>Event Grid
-
-İşin ilerlemesini görmek için **Event Grid**kullanmanız gerekir. Media Services Ayrıca canlı olay türlerini de yayar. Event Grid ile uygulamalarınız neredeyse tüm Azure hizmetleri ve özel kaynaklardan gelen olayları takip edip bu olaylara yanıt verebilir. 
-
-- [Event Grid olaylarını işleme](reacting-to-media-services-events.md)
-- [Şemaları](media-services-event-schemas.md)
-
-### <a name="azure-monitor"></a>Azure İzleyici
-
-Uygulamalarınızın Azure Izleyici ile nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izleyin.
-
-- [Ölçümler ve tanılama günlükleri](media-services-metrics-diagnostic-logs.md)
-- [Tanılama günlükleri şemaları](media-services-diagnostic-logs-schema.md)
-
-## <a name="player-clients"></a>Yürütücü istemcileri
-
-Çok çeşitli tarayıcılarda ve cihazlarda Media Services tarafından akan medya içeriğini oynatmak için Azure Media Player kullanabilirsiniz. Azure Media Player HTML5, medya kaynağı uzantıları (MSE) ve şifreli Medya Uzantıları (EME) gibi sektör standartlarını, zenginleştirilmiş bir uyarlamalı akış deneyimi sağlamak için kullanır. 
-
-- [Azure Media Player'a genel bakış](use-azure-media-player.md)
+|Kavramlar|Açıklama|Bağlantılar|
+|---|---|---|
+|Varlıklar ve karşıya içerik yükleme|Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve dijital dosyalarınızı **varlıklara**yüklemeniz gerekir.|[Bulutta karşıya yükleme ve depolama](storage-account-concept.md)<br/><br/>[Varlık kavramı](assets-concept.md)|
+|İçerik kodlama|Yüksek kaliteli dijital medya dosyalarınızı varlıklara yükledikten sonra, bunları çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlayabilirsiniz. <br/>Media Services v3 ile kodlamak için **dönüşümler** ve **işler**oluşturmanız gerekir.|[Dönüşümler ve Işler](transforms-jobs-concept.md)<br/><br/>[Media Services kodlama](encoding-concept.md)|
+|İçerik çözümleme (Video Indexer)|Media Services v3, Media Services v3 önayarlarını kullanarak video ve Ses dosyalarınızın öngörülerini ayıklamanıza olanak tanır. Media Services v3 ön ayarlarını kullanarak içeriğinizi çözümlemek için **dönüşümler** ve **işler**oluşturmanız gerekir.<br/><br/>Daha ayrıntılı Öngörüler istiyorsanız [video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) doğrudan kullanın.|[Video ve ses dosyalarını çözümleme](analyzing-video-audio-files-concept.md)|
+|Paketleme ve teslim|İçeriğiniz kodlandıktan sonra, **dinamik paketleme**özelliğinden yararlanabilirsiniz. Media Services, bir **akış uç noktası** , istemci oynatıcılara medya içeriği göndermek için kullanılan dinamik paketleme hizmetidir. Çıktı kıymetindeki videoların, kayıttan yürütmeye yönelik olarak kullanılabilmesini sağlamak için bir **akış Bulucu** oluşturmanız ve ardından akış URL 'leri oluşturmanız gerekir. <br/><br/>**Akış bulucuyu**oluştururken, varlığın adının yanı sıra **akış ilkesi**belirtmeniz gerekir. Akış **ilkeleri** , akış **Konumlandırıcıları**için akış protokollerini ve şifreleme seçeneklerini (varsa) tanımlamanıza olanak sağlar. Dinamik paketleme, içeriğinizi canlı veya isteğe bağlı olarak akışınızdan bağımsız olarak kullanılır. <br/><br/>Videonuzun yalnızca belirli bir işlemesini veya alt kliplerini akışa almak için **dinamik bildirimleri** Media Services kullanabilirsiniz.|[Dinamik paketleme](dynamic-packaging-overview.md)<br/><br/>[Akış Uç Noktaları](streaming-endpoint-concept.md)<br/><br/>[Akış Bulucular](streaming-locators-concept.md)<br/><br/>[Akış İlkeleri](streaming-policy-concept.md)<br/><br/>[Dinamik bildirimler](filters-dynamic-manifest-overview.md)<br/><br/>[Filtreler](filters-concept.md)|
+|İçerik koruma|Media Services ile, canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere. <br/><br/>Akışınıza şifreleme seçenekleri belirtiyorsanız, **Içerik anahtarı ilkesini** oluşturun ve **akış bulucuınızla**ilişkilendirin. **Içerik anahtarı ilkesi** , içerik anahtarının son istemcilere nasıl teslim edildiğini yapılandırmanızı sağlar.<br/><br/> Aynı seçenek gerektiği her seferinde ilkeleri yeniden kullanmayı deneyin.| [İçerik Anahtarı İlkeleri](content-key-policy-concept.md)<br/><br/>[İçerik koruma](content-protection-overview.md)|
+|Canlı akış|Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanıza olanak sağlar. **Canlı Etkinlikler** sırasında canlı video akışları alınır ve işlenir. **Canlı bir olay**oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir giriş uç noktası oluşturulur. Akışın **canlı olayına**akışını tamamladıktan sonra bir **varlık**, **canlı çıkış**ve **akış Bulucu**oluşturarak akış olayını başlatabilirsiniz. **Canlı çıktı** , akışı **varlığa** Arşivle ve **akış uç noktası**aracılığıyla görüntüleyicilerin kullanımına açık hale getirir. **Canlı bir olay** iki türden biri olabilir: **doğrudan geçiş** ve **canlı kodlama**.|[Canlı akışa genel bakış](live-streaming-overview.md)<br/><br/>[Canlı Etkinlikler ve Canlı Çıkışlar](live-events-outputs-concept.md)|
+|Event Grid ile izleme|İşin ilerlemesini görmek için **Event Grid**kullanmanız gerekir. Media Services Ayrıca canlı olay türlerini de yayar. Event Grid ile uygulamalarınız neredeyse tüm Azure hizmetleri ve özel kaynaklardan gelen olayları takip edip bu olaylara yanıt verebilir. |[Event Grid olaylarını işleme](reacting-to-media-services-events.md)<br/><br/>[Şemaları](media-services-event-schemas.md)|
+|Azure Izleyici ile izleme|Uygulamalarınızın Azure Izleyici ile nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izleyin.|[Ölçümler ve tanılama günlükleri](media-services-metrics-diagnostic-logs.md)<br/><br/>[Tanılama günlükleri şemaları](media-services-diagnostic-logs-schema.md)|
+|Yürütücü istemcileri|Çok çeşitli tarayıcılarda ve cihazlarda Media Services tarafından akan medya içeriğini oynatmak için Azure Media Player kullanabilirsiniz. Azure Media Player HTML5, medya kaynağı uzantıları (MSE) ve şifreli Medya Uzantıları (EME) gibi sektör standartlarını, zenginleştirilmiş bir uyarlamalı akış deneyimi sağlamak için kullanır. |[Azure Media Player'a genel bakış](use-azure-media-player.md)|
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 

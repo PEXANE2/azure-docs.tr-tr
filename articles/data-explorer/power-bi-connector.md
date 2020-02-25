@@ -1,5 +1,5 @@
 ---
-title: Power BI için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirin
+title: Power BI için Azure Veri Gezgini Bağlayıcısı ile verileri görselleştirme
 description: 'Bu makalede, Power BI verileri görselleştirmeye yönelik üç seçenekten birini nasıl kullanacağınızı öğrenirsiniz: Azure Veri Gezgini için Power BI Bağlayıcısı.'
 author: orspod
 ms.author: orspodek
@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024223"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560499"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI için Azure Veri Gezgini bağlayıcısını kullanarak verileri görselleştirin
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini, Power BI verilere bağlanmak için üç seçenek sunar: yerleşik bağlayıcıyı kullanın, Azure Veri Gezgini bir sorgu içeri aktarın veya bir SQL sorgusu kullanın. Bu makalede, yerleşik bağlayıcının verileri almak ve Power BI bir raporda görselleştirmek için nasıl kullanılacağı gösterilmektedir. Power BI panoları oluşturmak için Azure Veri Gezgini Native bağlayıcısının kullanılması basittir. Power BI Bağlayıcısı, [içeri ve doğrudan sorgu bağlantı modlarını](https://docs.microsoft.com/power-bi/desktop-directquery-about)destekler. Senaryo, ölçek ve performans gereksinimlerine bağlı olarak, **içeri** veya **DirectQuery** modunu kullanarak panolar oluşturabilirsiniz. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini, Power BI verilere bağlanmak için üç seçenek sunar: yerleşik bağlayıcıyı kullanın, Azure Veri Gezgini bir sorgu içeri aktarın veya bir SQL sorgusu kullanın. Bu makalede, yerleşik bağlayıcının verileri almak ve Power BI bir raporda görselleştirmek için nasıl kullanılacağı gösterilmektedir. Power BI panoları oluşturmak için Azure Veri Gezgini Native bağlayıcısının kullanılması basittir. Power BI Bağlayıcısı, [içeri ve doğrudan sorgu bağlantı modlarını](https://docs.microsoft.com/power-bi/desktop-directquery-about)destekler. Senaryo, ölçek ve performans gereksinimlerine bağlı olarak, **içeri** veya **DirectQuery** modunu kullanarak panolar oluşturabilirsiniz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -45,9 +45,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdakiler gerekir:
     **Ayar** | **Değer** | **Alan açıklaması**
     |---|---|---|
     | Küme | *https://help.kusto.windows.net* | Yardım kümesinin URL 'SI. Diğer kümeler için URL, *https://\<ClusterName\>.\<bölgesi\>. kusto.Windows.net*biçimindedir. |
-    | Veritabanı | Boş bırakın | Bağlanmakta olduğunuz kümede barındırılan bir veritabanı. Daha sonraki bir adımda bunu seçeceğiz. |
+    | Database | Boş bırakın | Bağlanmakta olduğunuz kümede barındırılan bir veritabanı. Daha sonraki bir adımda bunu seçeceğiz. |
     | Tablo adı | Boş bırakın | Veritabanındaki tablolardan biri veya <code>StormEvents \| take 1000</code>gibi bir sorgu. Daha sonraki bir adımda bunu seçeceğiz. |
-    | Gelişmiş Seçenekler | Boş bırakın | Sorgunuz için sonuç kümesi boyutu gibi seçenekler. |
+    | Gelişmiş seçenekler | Boş bırakın | Sorgunuz için sonuç kümesi boyutu gibi seçenekler. |
     | Veri bağlantısı modu | *DirectQuery* | Power BI verileri içeri aktarmalarını veya doğrudan veri kaynağına bağlanıp bağlanmadığını belirler. Bu bağlayıcı ile her iki seçeneği de kullanabilirsiniz. |
     | | | |
     

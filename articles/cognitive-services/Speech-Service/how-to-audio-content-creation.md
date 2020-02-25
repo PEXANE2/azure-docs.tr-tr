@@ -3,21 +3,21 @@ title: Ses Içeriği oluşturma-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Ses Içeriği oluşturma, Microsoft 'un Uygulamalarınız ve ürünleriniz için kendi metin okuma çıktısını özelleştirmenizi ve ayarlamanıza olanak tanıyan bir çevrimiçi araçtır.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806214"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561043"
 ---
-# <a name="audio-content-creation"></a>Ses İçeriği Oluşturma
+# <a name="improve-synthesis-with-audio-content-creation"></a>Ses Içeriği oluşturma ile sensıs 'yi geliştirme
 
 [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation) , Microsoft 'un Uygulamalarınız ve ürünleriniz için kendi metin okuma çıktısını özelleştirmenizi ve ayarlamanıza olanak tanıyan bir çevrimiçi araçtır. Bu aracı, daha doğru doğal ifadeler için genel ve özel seslere ince ayar yapmak ve çıktunuzu bulutta yönetmek için kullanabilirsiniz.
 
@@ -52,13 +52,13 @@ Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımla
 
 İçeriğinizi ses Içeriği oluşturma aracına almanın iki yolu vardır.
 
-**1. Seçenek:**
+**Seçenek 1:**
 
 1. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açtıktan sonra yeni bir ses ayarlama dosyası oluşturmak Için **Ses ayarlama** ' ya tıklayın.
 2. Düzen penceresi göründüğünde, en fazla 10.000 karakter girebilirsiniz.
 3. Kaydetmeyi unutmayın.
 
-**2. Seçenek:**
+**Seçenek 2:**
 
 1. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)sırasında oturum açtıktan sonra bir veya daha fazla metin dosyasını içeri aktarmak Için **karşıya yükle** ' ye tıklayın. Hem düz metin hem de SSML desteklenir.
 2. Metin dosyalarınızı karşıya yüklediğinizde, içeriğin bu gereksinimleri karşıladığından emin olun.

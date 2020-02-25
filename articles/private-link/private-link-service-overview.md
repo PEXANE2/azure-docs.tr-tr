@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500418"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565795"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
@@ -111,6 +111,8 @@ Bu bilgiler, özel bir tür uzunluğu-değer (TLV) vektörü kullanılarak aşa�
 |Değer  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |Özel uç noktanın LINKıD 'sini temsil eden UINT32 (4 bayt). Little endian biçiminde kodlandı.|
 
+ > [!NOTE]
+ > Hizmet sağlayıcı, standart yük dengeleyicinin arkasındaki hizmetin, proxy protokol üst bilgisini özel bağlantı hizmetinde etkin olduğunda [belirtime](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) göre, proxy protokol üstbilgisini ayrıştırmak üzere yapılandırıldığından emin olmak için sorumludur. Özel bağlantı hizmetinde proxy protokolü ayarı etkinse ve hizmet üstbilgiyi ayrıştırmak üzere yapılandırılmamışsa istek başarısız olur. Benzer şekilde, bu ayar özel bağlantı hizmetinde etkinleştirilmediğinde, hizmet bir proxy protokol üstbilgisi bekliyorsanız istek başarısız olur. Proxy protokolü ayarı etkinleştirildikten sonra, üst bilgide istemci bilgisi olmasa bile, proxy protokol üstbilgisi konaktan arka uç sanal makinelere HTTP/TCP sistem durumu araştırmalarına dahil edilir. 
 
 ## <a name="limitations"></a>Sınırlamalar
 

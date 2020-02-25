@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 90d958d2adc8920e4e6ccbccef20acf20aedca4c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521923"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561621"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Koşullu erişim: uyumlu cihazlar gerektir
 
@@ -48,6 +48,9 @@ Aşağıdaki adımlar, kaynaklara erişen cihazların kuruluşunuzun Intune uyum
    1. **Seç**' i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
+
+> [!NOTE]
+> Yukarıdaki adımları kullanarak cihazın **tüm kullanıcılar** ve **tüm bulut uygulamaları** Için **uyumlu olarak işaretlenmesini gerektir** ' i seçseniz bile yeni cihazlarınızı Intune 'a kaydedebilirsiniz. **Cihazın uyumlu denetim olarak Işaretlenmesini gerektir** Intune kaydını engellemez. 
 
 ### <a name="known-behavior"></a>Bilinen davranış
 

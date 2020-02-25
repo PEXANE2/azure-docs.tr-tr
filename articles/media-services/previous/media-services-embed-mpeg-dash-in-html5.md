@@ -1,6 +1,6 @@
 ---
-title: MPEG-DASH Uyarlamalı Akış videosunu bir HTML5 uygulamasına DASH.js ile ekleme | Microsoft Docs
-description: Bu konuda, MPEG-DASH Uyarlamalı Akış videosunu bir HTML5 uygulamasına DASH.js ile katıştırmak gösterilmiştir.
+title: DASH. js ile HTML5 uygulamasına MPEG-DASH uyarlamalı akış videosu ekleme | Microsoft Docs
+description: Bu konuda, DASH. js ile HTML5 uygulamasına MPEG-DASH Uyarlamalı Akış videosunu katıştırma gösterilmektedir.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464207"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564865"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>MPEG-DASH Uyarlamalı Akış videosunu bir HTML5 uygulamasına DASH.js ile ekleme  
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH. js ile HTML5 uygulamasına MPEG-DASH uyarlamalı akış videosu ekleme  
 
 ## <a name="overview"></a>Genel Bakış
-MPEG-DASH Uyarlamalı akış yüksek kaliteli, Uyarlamalı video çıkışının akışını teslim isteyen geliştiriciler için önemli avantajlar sunan video içeriğinin bir ISO standardıdır. Ağ Tıkanıklığı olur, MPEG-DASH ile video akışı için daha düşük bir tanımı otomatik olarak ayarlar. Bu, "duraklatılmış" video oynatıcı (arabelleğe alma olarak da bilinir) yürütmek için sonraki birkaç saniye indirirken görmeye Görüntüleyicisi olasılığını azaltır. Ağ Tıkanıklığı azaltır gibi video oynatıcı sırayla daha yüksek kaliteli akışına döndürür. Gereken bant genişliği uyarlama olanağı da video için daha hızlı bir başlangıç saati sonuçlanır. Bu, ilk birkaç saniyede bir hızlı indirme daha düşük kaliteli kesimde yürütülebilecek ve sonra adım daha yüksek kaliteli bir kez yeterli içerik kadar arabelleğe alındı anlamına gelir.
+MPEG-DASH, yüksek kaliteli, uyarlamalı video akış çıkışı sunmak isteyen geliştiriciler için önemli avantajlar sunan, video içeriğinin Uyarlamalı akışı için bir ISO standardıdır. MPEG-DASH ile, ağ yoğun hale geldiğinde video akışı, daha düşük bir tanıma göre otomatik olarak ayarlanır. Bu, Player bir sonraki birkaç saniyeyi (yani, arabelleğe alma olasılığını azaltır) indirirken, görüntüleyicinin "duraklatılmış" bir video görme olasılığını azaltır. Ağ tıkanıklığı azalrken, video oynatıcı daha yüksek kaliteli bir akışa döndürülür. Gereken bant genişliğini uyarlayabilme özelliği, videonun daha hızlı bir başlangıç zamanına neden olur. Diğer bir deyişle, ilk birkaç saniye hızlı indirileceği daha düşük kalite segmentinde oynatılabilir ve yeterli içerik arabelleğe alındıktan sonra daha yüksek bir kalitede ilerleyebilirsiniz.
 
-Dash.js JavaScript'te yazılmış bir açık kaynak MPEG-DASH video bir oyuncu bulunur. Hedefi, ücretsiz video kayıttan yürütme gerektiren uygulamalarda yeniden kullanılabilen sağlam, platformlar arası bir oynatıcı sağlamaktır. Bunu, Chrome, Microsoft Edge ve ıe11 (diğer tarayıcılar MSE desteklemek için bunların amacı belirttiyseniz) Bugün W3C medya kaynağı Uzantıları (MSE) destekleyen herhangi bir tarayıcıda MPEG-DASH oynatma sağlar. DASH.js hakkında daha fazla bilgi için js dash.js GitHub deposuna bakın.
+Dash. js, JavaScript 'te yazılmış açık kaynaklı bir MPEG-DASH video oyuncusu. Hedefi, video kayıttan yürütmeyi gerektiren uygulamalarda serbestçe yeniden kullanılabilen güçlü, platformlar arası bir oynatıcı sağlamaktır. Bu, modern, Microsoft Edge ve ıE11 (diğer tarayıcılar MSE 'yi destekleme amacını gösterdi), W3C medya kaynağı uzantıları 'nı (MSE) destekleyen herhangi bir tarayıcıda MPEG-DASH oynatma sağlar. DASH. js, JS hakkında daha fazla bilgi için bkz. GitHub Dash. js deposu.
 
-## <a name="creating-a-browser-based-streaming-video-player"></a>Bir tarayıcı tabanlı akış video oynatıcı oluşturma
-Bir video oynatıcı ile beklenen görüntüleyen basit bir web sayfası oluşturmak için bu tür bir play, duraklatma, geri sarma vb. denetler, şunları yapmanız gerekir:
+## <a name="creating-a-browser-based-streaming-video-player"></a>Tarayıcı tabanlı akış video oynatıcı oluşturma
+Oynatma, duraklatma, geri sarma vb. gibi beklenen denetimlerle video oynatıcı görüntüleyen basit bir Web sayfası oluşturmak için şunları yapmanız gerekir:
 
-1. Bir HTML sayfası oluşturma
-2. Görüntü Etiketi Ekle
-3. Dash.js player Ekle
-4. Oyuncu Başlat
-5. Bazı CSS stil ekleme
-6. Sonuçları MSE uygulayan bir tarayıcıda görüntüle
+1. HTML sayfası oluşturma
+2. Video etiketini ekleme
+3. Dash. js oynatıcıyı ekleme
+4. Oynatıcıyı başlatma
+5. CSS stili ekleme
+6. Sonuçları MSE uygulayan bir tarayıcıda görüntüleme
 
-Oyuncu başlatma, yalnızca birkaç satır JavaScript kod içinde tamamlanabilir. Dash.js kullanarak bu gerçekten tarayıcı tabanlı uygulamalarınızı MPEG-DASH video eklemek bu basit bir işlemdir.
+Player 'ın başlatılması, yalnızca bir JavaScript kodu için tek bir satırda tamamlanabilir. Dash. js ' yi kullanarak, MPEG-DASH videosunu tarayıcı tabanlı uygulamalarınıza eklemek aslında basittir.
 
-## <a name="creating-the-html-page"></a>HTML sayfası oluşturma
-Standart bir HTML sayfası içeren oluşturmak için ilk adımıdır **video** öğesi, bu dosyayı basicPlayer.html, aşağıdaki örnekteki gibi farklı kaydet gösterilmektedir:
+## <a name="creating-the-html-page"></a>HTML sayfasını oluşturma
+İlk adım, **video** öğesini içeren standart bir HTML sayfası oluşturmaktır, aşağıdaki örnekte gösterildiği gibi bu dosyayı basicplayer. html olarak kaydeder:
 
 ```html
     <!DOCTYPE html>
@@ -54,17 +54,17 @@ Standart bir HTML sayfası içeren oluşturmak için ilk adımıdır **video** �
     </html>
 ```
 
-## <a name="adding-the-dashjs-player"></a>DASH.js Player ekleme
-Dash.js başvuru uygulaması için uygulama eklemek için en son sürümünü dash.js proje dash.all.js dosyasından almak gerekir. Bu uygulamanızın JavaScript klasöründe kaydedilmelidir. Bu dosya birlikte tek bir dosya halinde tüm gerekli dash.js kodu çeker kolaylık dosyasıdır. Dash.js depo bir görünüm varsa, tek tek dosyaları, kod ve daha fazlasını test, ancak yapmak istiyorsanız, tüm olan dash.js, ihtiyacınız olanları dash.all.js dosya ise.
+## <a name="adding-the-dashjs-player"></a>DASH. js oynatıcıyı ekleme
+Dash. js başvuru uygulamasını uygulamaya eklemek için Dash. js projesinin en son sürümündeki Dash. ALL. js dosyasını almanız gerekir. Bu, uygulamanızın JavaScript klasörüne kaydedilmelidir. Bu dosya, tüm gerekli Dash. js kodunu tek bir dosyada birlikte çeken bir kullanışlı dosyadır. Dash. js deposuna göz atın, tek tek dosyalar, test kodu ve çok daha fazlasını bulursunuz, ancak yapmak istediğiniz şey Dash. js ' yi kullanıyorsa Dash. tüm. js dosyası ihtiyacınız olan şeydir.
 
-Dash.js player uygulamalarınıza eklemek için bir komut dosyası etiketini basicPlayer.html baş bölümüne ekleyin:
+Uygulamalarınıza Dash. js oynatıcıyı eklemek için, basicPlayer. html ' nin baş bölümüne bir betik etiketi ekleyin:
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 ```
 
-Ardından, oyuncunun sayfa yüklendiğinde başlatmak için bir işlev oluşturun. Dash.all.js yüklediğiniz satırın sonunda aşağıdaki betiği ekleyin:
+Sonra, sayfa yüklenirken oynatıcıyı başlatmak için bir işlev oluşturun. Dash 'i yüklediğiniz satırdan sonra aşağıdaki betiği ekleyin. ALL. js:
 
 ```html
     <script>
@@ -80,19 +80,19 @@ Ardından, oyuncunun sayfa yüklendiğinde başlatmak için bir işlev oluşturu
     </script>
 ```
 
-Bu işlev, ilk bir DashContext oluşturur. Bu uygulama için belirli bir çalışma zamanı ortamı yapılandırmak için kullanılır. Bir teknik bakış açısıyla, bağımlılık ekleme framework uygulama oluştururken kullanması gereken sınıfları tanımlar. Çoğu durumda, Dash.di.DashContext kullanın.
+Bu işlev ilk olarak bir çizgi bağlamı oluşturur. Bu, uygulamayı belirli bir çalışma zamanı ortamı için yapılandırmak üzere kullanılır. Teknik görünümde, bağımlılık ekleme çerçevesinin uygulamayı oluştururken kullanması gereken sınıfları tanımlar. Çoğu durumda Dash. dı. çizgi bağlamını kullanırsınız.
 
-Ardından, MediaPlayer dash.js framework'ün birincil sınıfı örneği. Bu sınıf, gerektiği gibi yöntemleri yürütmek ve duraklatmak, video öğeyle ilişkiyi yönetir ve yorumu yürütülecek video açıklar medya sunu açıklaması (MPD) dosyasının da yönetir çekirdek içerir.
+Sonra, Dash. js Framework 'ün birincil sınıfını oluşturun, MediaPlayer. Bu sınıf, yürütme ve duraklatma gibi temel yöntemleri içerir, video öğesiyle ilişkiyi yönetir ve ayrıca, çalınabilecek videoyu açıklayan medya sunusu açıklaması (MPD) dosyasının yorumunu yönetir.
 
-MediaPlayer sınıfı başlangıç() işlev, oyuncunun video oynatma hazır olduğundan emin olmak için çağrılır. Diğerlerinin yanı sıra, gerekli tüm sınıflar (bağlam tarafından tanımlandığı şekilde) olarak yüklenmiş olan işlev sağlar. Oyuncu hazır hale geldikten sonra video öğesini attachView() işlevi kullanarak ekleyebilirsiniz. MediaPlayer video akışı öğesine ekleme ve ayrıca gerekli olarak kayıttan yürütmeyi denetlemek başlangıç işlevi sağlar.
+MediaPlayer sınıfının Startup () işlevi, oynatıcının videoyu yürütmeye hazırlanmasını sağlamak için çağrılır. Diğer şeyler arasında işlev, gerekli tüm sınıfların (bağlam tarafından tanımlanan şekilde) yüklenmiş olmasını sağlar. Oynatıcı hazırlanıyor, attachView () işlevini kullanarak video öğesini buna ekleyebilirsiniz. Başlangıç işlevi, MediaPlayer 'nin video akışını öğeye eklemesine ve ayrıca gerekirse kayıttan yürütmeyi denetlemesine olanak sağlar.
 
-Bu videoyu oynatmak için beklenen bilebilmesi için MediaPlayer MPD dosyasının URL'sini geçirin. Yeni oluşturduğunuz setupVideo() işlevi, sayfa tam olarak yüklendikten sonra yürütülecek gerekir. Gövde öğesinin yüklendiğinde olayı kullanarak bunu. Değişiklik, `<body>` öğesi:
+MPD dosyasının URL 'sini, oynatımda beklenildiği video hakkında bilgi sahibi olmak için MediaPlayer 'e geçirin. Yeni oluşturulan setupVideo () işlevinin, sayfa tam olarak yüklendikten sonra yürütülmesi gerekir. Bunu, Body öğesinin OnLoad olayını kullanarak yapın. `<body>` öğesini şu şekilde değiştirin:
 
 ```html
     <body onload="setupVideo()">
 ```
 
-Son olarak, CSS kullanarak video öğesini boyutunu ayarlayın. Bir Uyarlamalı akış ortamda boyutu oynatılan videonun kayıttan yürütme, değişen ağ koşullarını uyum sağlayarak değişebilir olduğundan bu özellikle önemlidir. Basit bu tanıtımda, yalnızca % 80'kullanılabilir tarayıcı penceresini aşağıdaki CSS sayfasının baş bölümüne ekleyerek video öğenin zorlayın:
+Son olarak, CSS kullanarak video öğesinin boyutunu ayarlayın. Uyarlamalı bir akış ortamında, bu özellikle önemlidir çünkü oynatılan videonun boyutu, yürütme ağ koşullarına uyum sağlayacak şekilde değişiklik gösterebilir. Bu basit gösteride, sayfanın baş bölümüne aşağıdaki CSS 'yi ekleyerek video öğesinin kullanılabilir tarayıcı penceresinin %80 olmasını zorunlu hale getirmeniz yeterlidir:
 
 ```html
     <style>
@@ -103,17 +103,16 @@ Son olarak, CSS kullanarak video öğesini boyutunu ayarlayın. Bir Uyarlamalı 
     </style>
 ```
 
-## <a name="playing-a-video"></a>Video oynatma
-Bir videoyu oynatmak için tarayıcınızı basicPlayback.html dosyasına işaret ve görüntülenen video oynatıcı play'den tıklayın.
+## <a name="playing-a-video"></a>Video oynama
+Videoyu oynatmak için, tarayıcınızı basicPlayback. html dosyasına getirin ve video yürütücüsü görüntülenirken oynat ' a tıklayın.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Video oynatıcı uygulamaları geliştirme](media-services-develop-video-players.md)
 
-[GitHub dash.js deposu](https://github.com/Dash-Industry-Forum/dash.js) 
+[GitHub Dash. js deposu](https://github.com/Dash-Industry-Forum/dash.js) 
 

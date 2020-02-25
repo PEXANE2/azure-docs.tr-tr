@@ -1,5 +1,5 @@
 ---
-title: REST API 'Leri aracılığıyla Azure Data Box Heavy blob depolamaya veri kopyalama öğreticisi | Microsoft Docs
+title: "Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama"
 description: REST API 'Leri aracılığıyla Azure Data Box Heavy BLOB depolama alanına veri kopyalamayı öğrenin
 services: databox
 author: alkohli
@@ -8,32 +8,32 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606288"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560346"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama  
 
 Bu öğretici, *http* veya *https*üzerinden REST API 'leri aracılığıyla Azure Data Box blob depolamaya bağlanma yordamlarını açıklar. Bağlandıktan sonra, verileri Data Box blob depolamaya kopyalamak için gereken adımlar açıklanır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Ön koşullar
+> * Önkoşullar
 > * *Http* veya *https* aracılığıyla Data Box blob depolamaya bağlanma
 > * Data Box Heavy’ye veri kopyalama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
 1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlama](data-box-heavy-deploy-set-up.md).
 2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. [Data Box BLOB depolama için sistem gereksinimlerini](data-box-system-requirements-rest.md) incelediyseniz ve desteklenen API 'Ler, SDK 'lar ve araçların sürümleriyle ilgili bilgi sahibisiniz.
-4. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayara erişirsiniz. Ana bilgisayarınız:
+4. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayara erişirsiniz. Konak bilgisayarınızda:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
     - Yüksek hızlı bir ağa bağlı olmalıdır. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
 5. Ana bilgisayarınızda [AzCopy 7.1.0 indirin](https://aka.ms/azcopyforazurestack20170417) . Ana bilgisayarınızdan Azure Data Box BLOB depolama alanına veri kopyalamak için AzCopy kullanacaksınız.
@@ -86,7 +86,7 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 > [!IMPORTANT]
 > Data Box Heavy için, ikinci düğüme bağlanmak üzere tüm bağlantı talimatlarını tekrarlamanız gerekir.
 
-### <a name="download-certificate"></a>Sertifikayı indir
+### <a name="download-certificate"></a>Sertifikayı indirin
 
 Sertifikayı indirmek için Azure portal kullanın.
 
@@ -96,7 +96,7 @@ Sertifikayı indirmek için Azure portal kullanın.
 
     ![Azure portal sertifikayı indirin](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="import-certificate"></a>Sertifikayı içeri aktar 
+### <a name="import-certificate"></a>Sertifikayı al 
 
 HTTPS üzerinden Data Box blob depolamaya erişmek için cihaz için bir SSL sertifikası gerekir. Bu sertifikanın istemci uygulama tarafından kullanılabilir hale getirilme yöntemi, uygulamadan uygulamaya ve işletim sistemleri ve dağıtımlar arasında farklılık gösterir. Bazı uygulamalar, sistem sertifika deposuna aktarıldıktan sonra sertifikaya erişebilir, ancak diğer uygulamalar bu mekanizmayı kullanmaz.
 
@@ -124,7 +124,7 @@ Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uy
 
     ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  **Finish (Son)** düğmesine tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
+4.  **Son**'a tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
 
     ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -241,7 +241,7 @@ Sonraki adım, cihazınızı sevk etmek için hazırlamaktır.
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
-> * Ön koşullar
+> * Önkoşullar
 > * *Http* veya *https* aracılığıyla Data Box blob depolamaya bağlanma
 > * Data Box Heavy’ye veri kopyalama
 

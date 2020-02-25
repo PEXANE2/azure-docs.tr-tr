@@ -4,15 +4,15 @@ description: App Service ortamından giden trafiğin güvenliğini sağlamak iç
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513362"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565732"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
@@ -41,9 +41,11 @@ Ao 'dan gelen ve giden trafik aşağıdaki kurallara göre uymalıdır
 
 ## <a name="locking-down-inbound-management-traffic"></a>Gelen yönetim trafiğini kilitleme
 
-Ao alt ağına atanmış bir NSG zaten yoksa, bir tane oluşturun. NSG 'de, 454, 455 bağlantı noktalarında AppServiceManagement adlı hizmet etiketinden trafiğe izin vermek için ilk kuralı ayarlayın. ATıCı 'nizi yönetmek için genel IP 'Lerde gerekli olan tek şey budur. Bu hizmet etiketinin arkasındaki adresler yalnızca Azure App Service yönetmek için kullanılır. Bu bağlantılar üzerinden akan yönetim trafiği, kimlik doğrulama sertifikalarıyla şifrelenir ve güvenlidir. Bu kanaldaki tipik trafik, müşteri tarafından başlatılan komutlar ve sistem durumu araştırmaları gibi şeyleri içerir. 
+Ao alt ağına atanmış bir NSG zaten yoksa, bir tane oluşturun. NSG içinde, 454, 455 bağlantı noktalarında AppServiceManagement adlı hizmet etiketinden gelen trafiğe izin vermek için ilk kuralı ayarlayın. AppServiceManagement etiketinden erişime izin verme kuralı, genel IP 'Lerde ATıCı 'nizi yönetmek için gerekli olan tek şeydir. Bu hizmet etiketinin arkasındaki adresler yalnızca Azure App Service yönetmek için kullanılır. Bu bağlantılar üzerinden akan yönetim trafiği, kimlik doğrulama sertifikalarıyla şifrelenir ve güvenlidir. Bu kanaldaki tipik trafik, müşteri tarafından başlatılan komutlar ve sistem durumu araştırmaları gibi şeyleri içerir. 
 
 Portal üzerinden yeni bir alt ağ içeren ASE 'ler, AppServiceManagement etiketi için izin verme kuralını içeren bir NSG ile yapılır.  
+
+ATıCı 'niz Ayrıca 16001 numaralı bağlantı noktasındaki Load Balancer etiketinden gelen isteklere izin vermelidir. 16001 numaralı bağlantı noktası üzerindeki Load Balancer istekleri, Load Balancer ve Ao ön uçları arasında canlı olarak denetimleri saklar. 16001 numaralı bağlantı noktası engellenirse, Ao 'niz sağlıksız duruma geçer.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Güvenlik duvarını AŞIRLE yapılandırma 
 
@@ -110,15 +112,15 @@ Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik
 
 #### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar 
 
-| Uç nokta |
+| Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Depolama |
-| Azure Olay Hub’ı |
+| Azure Storage |
+| Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
 
-| Uç nokta | Ayrıntılar |
+| Uç Nokta | Ayrıntılar |
 |----------| ----- |
 | \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
 | \*: 12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Engellenirse, bazı sorunlar önceliklendirme daha zor olacaktır, ancak ASE 'niz çalışmaya devam edecektir |
@@ -135,7 +137,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları 
 
-| Uç nokta |
+| Uç Nokta |
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
@@ -216,7 +218,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="wildcard-httphttps-dependencies"></a>Joker karakter HTTP/HTTPS bağımlılıkları 
 
-| Uç nokta |
+| Uç Nokta |
 |----------|
 |gr-prod-\*. cloudapp.net:443 |
 | \*. management.azure.com:443 |
@@ -226,7 +228,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="linux-dependencies"></a>Linux bağımlılıkları 
 
-| Uç nokta |
+| Uç Nokta |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -268,15 +270,30 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 
 #### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar ####
 
-| Uç nokta |
+| Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Depolama |
-| Azure Olay Hub’ı |
+| Azure Storage |
+| Azure Event Hub |
+
+#### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
+
+| Uç Nokta | Ayrıntılar |
+|----------| ----- |
+| \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
+| \*: 12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Engellenirse, bazı sorunlar önceliklendirme daha zor olacaktır, ancak ASE 'niz çalışmaya devam edecektir |
+| 40.77.24.27:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 40.77.24.27:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.90.249.229:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.90.249.229:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 104.45.230.69:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 104.45.230.69:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.82.184.151:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.82.184.151:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
 
 #### <a name="dependencies"></a>Bağımlılıklar ####
 
-| Uç nokta |
+| Uç Nokta |
 |----------|
 | \*. ctldl.windowsupdate.com:80 |
 | \*. management.usgovcloudapi.net:80 |

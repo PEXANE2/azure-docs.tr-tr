@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190901"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565545"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -35,7 +35,7 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 Bu denetim listesini okurken hangi özellik ve adımların tamamlandığını izlemediğinizden emin olun.
 
 > [!NOTE]
-> Bu belgedeki önerilerin birçoğu yalnızca kimlik sağlayıcısı olarak Azure Active Directory kullanmak üzere yapılandırılan uygulamalar için geçerlidir. Uygulamaları çoklu oturum açma için yapılandırmak, kimlik bilgileri ilkelerinin, tehdit algılama, denetim, günlük kaydı ve diğer özelliklerin bu uygulamalara eklenmesi için faydaların avantajlarından yararlanmanızı sağlar. [Azure Active Directory üzerinden çoklu oturum açma](../../active-directory/manage-apps/configure-single-sign-on-portal.md) , tüm bu önerilerin temel aldığı temelidir.
+> Bu belgedeki önerilerin birçoğu yalnızca kimlik sağlayıcısı olarak Azure Active Directory kullanmak üzere yapılandırılan uygulamalar için geçerlidir. Uygulamaları çoklu oturum açma için yapılandırmak, kimlik bilgileri ilkelerinin, tehdit algılama, denetim, günlük kaydı ve diğer özelliklerin bu uygulamalara eklenmesi için faydaların avantajlarından yararlanmanızı sağlar. [Azure Active Directory üzerinden çoklu oturum açma](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md) , tüm bu önerilerin temel aldığı temelidir.
 
 Bu belgedeki öneriler, Azure AD kiracının kimlik güvenlik yapılandırmasının otomatik değerlendirmesi olan [kimlik güvenli puanı](../../active-directory/fundamentals/identity-secure-score.md)ile hizalanır. Kuruluşlar, Azure AD portalındaki kimlik güvenli puanı sayfasını kullanarak, güvenlik için geçerli Microsoft [en iyi yöntemlerini](identity-management-best-practices.md) izlediklerinden emin olmak üzere geçerli güvenlik yapılandırmasındaki boşlukları bulabilir. Her öneriyi güvenli skor sayfasında uygulamak puanınızı artırır ve ilerleme durumunu izlemenize olanak tanır ve uygulamanızı diğer benzer büyüklükte kuruluşlara veya sektöre karşı karşılaştırmanıza yardımcı olur.
 

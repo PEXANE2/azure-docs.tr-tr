@@ -1,5 +1,5 @@
 ---
-title: Azure Kubernetes Service (AKS) yük dengeleyicisiyle bir statik IP adresi kullanın
+title: Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir IP adresi ve DNS etiketi kullanın
 description: Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir IP adresi oluşturmayı ve kullanmayı öğrenin.
 services: container-service
 author: mlearned
@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5e1f88e82d994c7f912b21781271448d35b5d726
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325437"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558914"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir genel IP adresi kullanın
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanın
 
 Varsayılan olarak, bir AKS kümesi tarafından oluşturulan bir yük dengeleyici kaynağına atanan genel IP adresi yalnızca söz konusu kaynağın kullanım ömrü için geçerlidir. Kubernetes hizmetini silerseniz ilişkili yük dengeleyici ve IP adresi de silinir. Belirli bir IP adresi atamak veya yeniden dağıtılan Kubernetes Hizmetleri için bir IP adresi korumak istiyorsanız statik bir genel IP adresi oluşturabilir ve kullanabilirsiniz.
 
@@ -65,7 +65,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Statik IP adresini kullanarak bir hizmet oluşturma
 
-Bir hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet sorumlusunun diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Örneğin:
+Bir hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet sorumlusunun diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Örnek:
 
 ```azurecli-interactive
 az role assignment create \
@@ -97,6 +97,30 @@ spec:
 ```console
 kubectl apply -f load-balancer-service.yaml
 ```
+
+## <a name="apply-a-dns-label-to-the-service"></a>Hizmete bir DNS etiketi uygulama
+
+Hizmetiniz dinamik veya statik bir genel IP adresi kullanıyorsa, genel kullanıma yönelik bir DNS etiketi ayarlamak için hizmet ek açıklamasını `service.beta.kubernetes.io/azure-dns-label-name` kullanabilirsiniz. Bu, Azure 'un ortak DNS sunucularını ve en üst düzey etki alanını kullanarak hizmetiniz için tam etki alanı adı yayınlar. Ek açıklama değeri, Azure konumu içinde benzersiz olmalıdır, bu nedenle yeterince nitelikli bir etiket kullanılması önerilir.   
+
+Daha sonra Azure, tam DNS adını oluşturmak için `<location>.cloudapp.azure.com` (seçtiğiniz bölge seçtiğiniz bölge) gibi varsayılan bir alt ağ otomatik olarak eklenir. Örnek:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> Hizmeti kendi etki alanında yayımlamak için, bkz. [Azure DNS][azure-dns-zone] ve [dış-DNS][external-dns] projesi.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
@@ -136,6 +160,8 @@ Uygulamalarınıza yönelik ağ trafiği üzerinde ek denetim için, bunun yerin
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

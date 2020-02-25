@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186848"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561791"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
 
@@ -222,25 +222,13 @@ Parola, kümedeki tüm düğümlerde değiştirilir.
    | Alan | Değer |
    | --- | --- |
    | Betik türü | Açılan listeden **özel** ' i seçin.|
-   | Ad |"SSH parolasını değiştir" |
+   | Adı |"SSH parolasını değiştir" |
    | Bash betiği URI 'SI |Changepassword.sh dosyasının URI 'SI |
    | Düğüm türleri: (Head, Worker, Nimbus, gözetmen veya Zookeeper.) |✓ listelenen tüm düğüm türleri için |
    | Parametreler |SSH kullanıcı adını ve ardından yeni parolayı girin. Kullanıcı adı ve parola arasında bir boşluk olmalıdır. |
    | Bu betik eylemini kalıcı yap... |Bu alanı işaretlenmemiş olarak bırakın. |
 
 6. Betiği uygulamak için **Oluştur** ' u seçin. Betik tamamlandıktan sonra, yeni parolayla SSH kullanarak kümeye bağlanabilirsiniz.
-
-## <a name="grantrevoke-access"></a>Erişim verme/iptal etme
-
-HDInsight kümeleri aşağıdaki HTTP Web hizmetlerine sahiptir (Bu hizmetlerin tümü, yeniden oluşan uç noktalara sahiptir):
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-Varsayılan olarak, bu hizmetler erişim için verilir. [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access)kullanarak erişimi iptal edebilir/verebilirsiniz.
 
 ## <a name="find-the-subscription-id"></a>Abonelik KIMLIĞINI bulun
 

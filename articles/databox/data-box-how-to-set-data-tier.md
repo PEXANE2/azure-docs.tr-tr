@@ -1,6 +1,6 @@
 ---
-title: Kullanım Azure Data Box, Azure veri kutusu yoğun veri göndermek için sık erişimli, soğuk, arşiv blob katmanı | Veri Microsoft Docs
-description: Azure Data Box'ı veya Azure veri kutusu ağır bir uygun blok blob depolama katmanını sık erişimli, soğuk gibi veri göndermek ya da arşivlemek için nasıl kullanılacağını açıklar
+title: Azure Data Box/Azure Data Box Heavy aracılığıyla sık erişimli, soğuk, arşiv blobu katmanına veri gönderme
+description: Etkin, soğuk veya arşiv gibi uygun bir Blok Blobu depolama katmanına veri göndermek için Azure Data Box veya Azure Data Box Heavy kullanmayı açıklar
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,53 +8,53 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: ea208c395e2ef69ce8f28052351643e963cceb05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427883"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560380"
 ---
-# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Uygun Azure depolama blob katmanı veri göndermek için Azure Data Box'ı veya Azure veri kutusu ağır kullanın
+# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Uygun Azure Storage blob katmanına veri göndermek için Azure Data Box veya Azure Data Box Heavy kullanın
 
-Azure Data Box, yüksek miktarda verilerden oluşan özel depolama cihazı sevk tarafından Azure'a taşır. Veri cihazla'kurmak doldurun ve döndürün. Data Box verileri, depolama hesabıyla ilişkili bir varsayılan katman yüklenir. Ardından, verileri başka bir depolama katmanı taşıyabilirsiniz.
+Azure Data Box, size özel bir depolama cihazı göndererek büyük miktarlardaki verileri Azure 'a taşıttı. Cihazı verilerle doldurup geri döndürebilirsiniz. Data Box veriler, depolama hesabıyla ilişkili bir varsayılan katmana yüklenir. Daha sonra verileri başka bir depolama katmanına taşıyabilirsiniz.
 
-Bu makale, Data Box tarafından karşıya yüklenen verileri sık erişimli, soğuk veya arşiv blob katmanı için nasıl taşınabilir açıklar. Bu makale, Azure Data Box hem Azure veri kutusu ağır için geçerlidir.
+Bu makalede, Data Box tarafından karşıya yüklenen verilerin sık erişimli, soğuk veya arşiv blob katmanına nasıl taşınabileceği açıklanır. Bu makale hem Azure Data Box hem de Azure Data Box Heavy için geçerlidir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="choose-the-correct-storage-tier-for-your-data"></a>Verileriniz için doğru depolama katmanı seçme
+## <a name="choose-the-correct-storage-tier-for-your-data"></a>Verileriniz için doğru depolama katmanını seçin
 
-Azure depolama, en uygun maliyetli bir şekilde - sık erişimli, verileri depolamak üç farklı katmanları soğuk ya da arşiv sağlar. Sık erişimli depolama katmanı, sık erişilen verileri depolamak için optimize edilmiştir. Sık erişimli depolama, seyrek erişimli ve depolama, ancak en düşük erişim maliyetini arşiv daha yüksek depolama maliyetleri vardır.
+Azure depolama, üç farklı katmanın verileri en düşük maliyetli şekilde (sık erişimli, soğuk veya Arşiv) depolamasına olanak sağlar. Sık erişimli depolama katmanı, sık erişilen verileri depolamak için iyileştirilmiştir. Sık erişimli depolama, seyrek erişimli ve arşiv depolamadan daha yüksek depolama maliyetlerine sahip olmakla kalmaz.
 
-En az 30 gün için depolanması gereken erişilen verileri seyrek erişimli depolama katmanı için sık var. Depolama maliyet soğuk katmanı, sık erişimli depolama katmanı düşük olduğu, ancak veri erişimi ücretleri sık erişimli katmana kıyasla yüksek.
+Seyrek erişimli depolama katmanı, en az 30 gün içinde depolanması gereken seyrek erişimli verilere yöneliktir. Soğuk katmana yönelik depolama maliyeti, sık erişimli depolama katmanından daha düşüktür, ancak sık erişimli katmanla karşılaştırıldığında veri erişim ücretleri yüksektir.
 
-Azure arşiv katmanını çevrimdışı olduğundan ve en düşük depolama maliyetleri, ancak ayrıca en yüksek erişim maliyetleri sunar. Bu katman, en az 180 günlük arşiv depolama alanında kalan veriler için tasarlanmıştır. Ayrıntılar için her birinin bu katmanlar ve fiyatlandırma modeli, Git [depolama katmanlarının karşılaştırması](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Azure arşiv katmanı çevrimdışı ve en yüksek erişim maliyetlerini de en düşük depolama maliyetini sunar. Bu katman, arşiv depolamada en az 180 gün boyunca kalan veriler için tasarlanmıştır. Bu katmanların ve fiyatlandırma modelinin ayrıntıları için [depolama katmanlarının karşılaştırması](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)bölümüne gidin.
 
-Data Box verilerden veya veri kutusu ağır depolama hesabıyla ilişkili depolama katmanı yüklenmektedir. Bir depolama hesabı oluşturduğunuzda erişim katmanını sıcak veya soğuk olarak belirtebilirsiniz. İş yükü ve maliyeti erişim desenini bağlı olarak, bu verileri başka bir depolama katmanı varsayılan katmanından taşıyabilirsiniz.
+Data Box veya Data Box Heavy verileri depolama hesabıyla ilişkili bir depolama katmanına yüklenir. Bir depolama hesabı oluşturduğunuzda, erişim katmanını sık erişimli veya soğuk olarak belirtebilirsiniz. İş yükünüzün ve maliyetinin erişim düzenine bağlı olarak, bu verileri varsayılan katmandan başka bir depolama katmanına taşıyabilirsiniz.
 
-Blob Depolama veya genel amaçlı v2 nesne depolama verilerinizi yalnızca Katmanı (GPv2) hesapları. Genel Amaçlı v1 (GPv1) hesaplar katman ayarlamayı desteklemez. Verileriniz için doğru depolama katmanı seçme için ayrıntılı konuları gözden geçirin. [Azure Blob Depolama: Premium, sık erişimli, seyrek erişimli ve Arşiv depolama katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Nesne depolama verilerinizi yalnızca blob Storage veya Genel Amaçlı v2 (GPv2) hesaplarında katmanalabilirsiniz. Genel Amaçlı v1 (GPv1) hesaplar katman ayarlamayı desteklemez. Verileriniz için doğru depolama katmanını seçmek üzere Azure Blob depolama 'da ayrıntılı konuları gözden geçirin [: Premium, sık erişimli, seyrek erişimli ve arşiv depolama katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
-## <a name="set-a-default-blob-tier"></a>Varsayılan blob katmanı ayarlama
+## <a name="set-a-default-blob-tier"></a>Varsayılan bir blob katmanı ayarlama
 
-Azure portalında depolama hesabı oluştururken varsayılan blob katmanı belirtilir. GPv2 veya Blob Depolama alanı olarak depolama türü seçildikten sonra erişim katmanı özniteliği belirtilebilir. Varsayılan olarak, sık erişimli katmanı seçilir.
+Varsayılan blob katmanı, depolama hesabı Azure portal oluşturulduğunda belirtilir. Depolama türü GPv2 veya blob depolama alanı olarak seçildikten sonra, erişim katmanı özniteliği belirtilebilir. Varsayılan olarak, etkin katman seçilidir.
 
-Katmanları olamaz bir veri kutusu veya veri kutusu ağır sıralanırken yeni bir hesap oluşturmaya çalışıyorsanız belirtildi. Hesap oluşturulduktan sonra hesap portalında varsayılan erişim katmanını ayarlamaya değiştirebilirsiniz.
+Bir Data Box veya Data Box Heavy sıralanırken yeni bir hesap oluşturmaya çalışıyorsanız katmanlar belirtilemez. Hesap oluşturulduktan sonra, portalda hesabı değiştirerek varsayılan erişim katmanını ayarlayabilirsiniz.
 
-Alternatif olarak, bir depolama hesabı ilk belirtilen erişim katmanı özniteliği ile oluşturun. Data Box veya yoğun veri kutusu siparişi oluştururken, mevcut depolama hesabını seçin. Depolama hesabı oluşturma sırasında varsayılan blob katmanı ayarlama konusunda daha fazla bilgi için Git [Azure portalında depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
+Alternatif olarak, önce belirtilen erişim katmanı özniteliğiyle bir depolama hesabı oluşturursunuz. Data Box veya Data Box Heavy sırasını oluştururken, var olan depolama hesabını seçin. Depolama hesabı oluşturma sırasında varsayılan blob katmanını ayarlama hakkında daha fazla bilgi için [Azure Portal ' de depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)bölümüne gidin.
 
-## <a name="move-data-to-a-non-default-tier"></a>Varsayılan olmayan katmanına veri taşıma
+## <a name="move-data-to-a-non-default-tier"></a>Verileri varsayılan olmayan bir katmana taşıma
 
-Data Box cihaz verileri için varsayılan katman karşıya yüklendikten sonra verileri varsayılan olmayan bir katmana taşımak isteyebilirsiniz. Bu verileri varsayılandan farklı bir katmana taşımak için iki yolu vardır.
+Data Box cihaz verileri varsayılan katmana yüklendikten sonra, verileri varsayılan olmayan bir katmana taşımak isteyebilirsiniz. Bu verileri varsayılan olmayan bir katmana taşımanın iki yolu vardır.
 
-- **Azure Blob Depolama yaşam döngüsü yönetimi** -otomatik olarak veri katmanı veya yaşam döngüsü sonunda sona ilke tabanlı bir yaklaşım kullanın. Daha fazla bilgi için Git [Azure Blob Depolama yaşam döngüsü yönetimi](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
-- **Komut dosyası** -Azure PowerShell aracılığıyla simgeleştirilmiş bir yaklaşım, blob düzeyinde katman ayarlama özelliği etkinleştirmek için kullanabilirsiniz. Çağırabilirsiniz `SetBlobTier` üzerinde blob katmanı ayarlama işlemi.
+- **Azure Blob depolama yaşam döngüsü yönetimi** -verileri otomatik olarak katman veya yaşam döngüsünün sonunda sona ermek üzere ilke tabanlı bir yaklaşım kullanabilirsiniz. Daha fazla bilgi için [Azure Blob depolama yaşam döngüsünü yönetme](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)sayfasına gidin.
+- **Betik oluşturma** -blob düzeyi katmanlamayı etkinleştirmek için Azure PowerShell aracılığıyla betikleştirilmiş bir yaklaşım kullanabilirsiniz. Blob üzerinde katman ayarlamak için `SetBlobTier` işlemini çağırabilirsiniz.
 
-## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Blob katmanı ayarlama için Azure PowerShell'i kullanma
+## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Blob katmanını ayarlamak için Azure PowerShell kullanma
 
-Aşağıdaki adımlarda, arşiv için Azure PowerShell Betiği kullanarak blob katmanı nasıl ayarlanacağı açıklanmaktadır.
+Aşağıdaki adımlarda, bir Azure PowerShell betiği kullanarak blob katmanını arşive nasıl ayarlayabilmeniz anlatılmaktadır.
 
-1. Yükseltilmiş bir Windows PowerShell oturumu açın. Emin olun, çalışan bir PowerShell 5.0 veya üzeri. Şunu yazın:
+1. Yükseltilmiş bir Windows PowerShell oturumu açın. Çalışan PowerShell 5,0 veya üzeri bir sürümü olduğundan emin olun. Şunu yazın:
 
    `$PSVersionTable.PSVersion`     
 
@@ -62,7 +62,7 @@ Aşağıdaki adımlarda, arşiv için Azure PowerShell Betiği kullanarak blob k
 
    `Login-AzAccount`  
 
-3. Depolama hesabı, erişim anahtarı, kapsayıcı ve depolama bağlam değişkenleri tanımlayın.
+3. Depolama hesabı, erişim anahtarı, kapsayıcı ve depolama bağlamı için değişkenleri tanımlayın.
 
     ```powershell
     $StorageAccountName = "<enter account name>"
@@ -71,11 +71,11 @@ Aşağıdaki adımlarda, arşiv için Azure PowerShell Betiği kullanarak blob k
     $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
     ```
 
-4. Tüm blobları kapsayıcıda alın.
+4. Kapsayıcıdaki tüm Blobları alın.
 
     `$blobs = Get-AzStorageBlob -Container "<enter container name>" -Context $ctx`
  
-5. Arşiv kapsayıcıdaki tüm blobların katmanını ayarlayın.
+5. Kapsayıcıdaki tüm Blobların katmanını arşive ayarlayın.
 
     ```powershell
     Foreach ($blob in $blobs) {
@@ -83,7 +83,7 @@ Aşağıdaki adımlarda, arşiv için Azure PowerShell Betiği kullanarak blob k
     }
     ```
 
-    Örnek çıktı aşağıda gösterilmiştir:
+    Örnek bir çıktı aşağıda gösterilmiştir:
 
     ```
     Windows PowerShell
@@ -112,9 +112,9 @@ Aşağıdaki adımlarda, arşiv için Azure PowerShell Betiği kullanarak blob k
     PS C:\WINDOWS\system32>
     ```
    > [!TIP]
-   > Veri çubuğunda arşivlemek için isterseniz, içe alma, varsayılan hesap katmanını sık erişimliden ayarlayın. Varsayılan katmanını seyrek erişimli ise, ardından olup olmadığını 30 günlük erken silme cezası veriler hemen arşive taşınır.
+   > Verilerin alma sırasında arşivlenmesini istiyorsanız varsayılan hesap katmanını sık erişimli olarak ayarlayın. Varsayılan katman soğuk ise, veriler arşiv 'e hemen taşınırsa 30 günlük erken silme ceza puanı vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--  Bilgi nasıl adresine [yaşam döngüsü ilkesi kuralları ile ortak veri katmanlama senaryoları](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
+-  [Yaşam döngüsü ilke kurallarıyla ortak veri katmanlama senaryolarını](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples) nasıl ele alabileceğinizi öğrenin
 

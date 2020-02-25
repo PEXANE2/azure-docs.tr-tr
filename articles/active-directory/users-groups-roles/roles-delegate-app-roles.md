@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024866"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558987"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
@@ -74,7 +74,7 @@ Bazı durumlarda, uygulama galerisinden oluşturulan kurumsal uygulamalarda hem 
 
 Azure AD 'nin tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi vermek üzere yerleşik bir yönetim rolleri kümesi vardır. Bu roller, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek için önerilen yoldur.
 
-- Uygulama Yöneticisi: Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu rol Ayrıca, Microsoft Graph ve Azure AD grafiğini dışlayarak uygulama izinleri için izin verme izni verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
+- Uygulama Yöneticisi: Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu rol Ayrıca, temsilci izinleri onayı iznini ve Microsoft Graph hariç tutulan uygulama izinlerini de verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 - Bulut uygulaması Yöneticisi: Bu roldeki kullanıcılar uygulama proxy 'si rolüyle aynı izinlere sahiptir ve uygulama ara sunucusunu yönetme imkanını dışlar. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 
 Daha fazla bilgi edinmek ve bu rollerin açıklamasını görüntülemek için bkz. [kullanılabilir roller](directory-assign-admin-roles.md#available-roles).

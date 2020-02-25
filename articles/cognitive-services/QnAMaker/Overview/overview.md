@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843065"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561111"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Soru-Cevap Oluşturma Hizmeti nedir?
 
@@ -78,7 +78,11 @@ Bilgi Bankası, yayımlanan bitiş noktasındaki kullanıcılardan gelen sorular
 
 Soru-Cevap Oluşturma, tam geliştirme yaşam döngüsü ile tümleştirme için birlikte çalışma izinleriyle birlikte yazma, eğitim ve yayımlama olanağı sağlar.
 
-## <a name="how-do-i-start"></a>Kullanmaya nasıl başlayabilirim?
+> [!div class="mx-imgBorder"]
+> geliştirme döngüsünün kavramsal görüntüsünü ![](../media/qnamaker-overview-learnabout/development-cycle.png)
+
+
+## <a name="how-do-i-start"></a>Nasıl yaparım? başlatılsın mı?
 
 **1. adım**: [Azure Portal](https://portal.azure.com)soru-cevap oluşturma kaynak oluşturma.
 

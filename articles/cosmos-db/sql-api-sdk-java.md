@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718182"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558937"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API'si için Azure Cosmos DB Java SDK: yayın notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -42,6 +42,10 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz destek iç
 |**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="a-name247247"></a><a name="2.4.7"/>2.4.7
+* Bağlantı havuzu zaman aşımı sorununu düzeltir.
+* İç yeniden denemelerle kimlik doğrulama belirteci yenilemeyi düzeltir.
 
 ### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
 * DatabaseAccount üzerinde doğru istemci tarafı çoğaltma ilkesi etiketi güncelleştirildi ve önbellekten databaseAccount yapılandırma okumaları yaptı.
@@ -259,8 +263,19 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 
 | Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |13 Mar, 2018 |--- |
-| [2.1.2 'yi](#2.1.2) |09 Mar, 2018 |--- |
+| [2.4.7](#2.4.7) |20 Şubat 2020 |--- |
+| [2.4.6](#2.4.6) |24 Ocak 2020 |--- |
+| [2.4.5](#2.4.5) |10 Kasım 2019 |--- |
+| [2.4.4](#2.4.4) |24 Eki, 2019 |--- |
+| [2.4.2 sections](#2.4.2) |26 Eyl, 2019 |--- |
+| [2.4.1](#2.4.1) |18 Temmuz 2019 |--- |
+| [2.4.0](#2.4.0) |04 Mayıs 2019 |--- |
+| [2.3.0](#2.3.0) |24 Nis, 2019 |--- |
+| [2.2.3](#2.2.3) |16 Nis 2019 |--- |
+| [2.2.2](#2.2.2) |05 Nis, 2019 |--- |
+| [2.2.0](#2.2.0) |27 Mar, 2019 |--- |
+| [2.1.3](#2.1.3) |13 Mar, 2019 |--- |
+| [2.1.2 'yi](#2.1.2) |09 Mar, 2019 |--- |
 | [2.1.1](#2.1.1) |13. ara, 2018 |--- |
 | [2.1.0](#2.1.0) |20 Kasım 2018 |--- |
 | [2.0.0](#2.0.0) |21 Eylül 2018 |--- |

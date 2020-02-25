@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846867"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564782"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
 
@@ -58,7 +58,7 @@ Mevcut bir Azure AD B2C kaynağı için MAU faturalandırmaya geçiş yapmak iç
 
 MAU tabanlı ölçüm, siz, abonelik/kaynak sahibi, değişikliği onaylamak için etkin duruma gelir. Aylık faturanızda, değişiklik yapılıncaya kadar faturalandırılan kimlik doğrulaması birimleri ve değişiklik ile başlayan yeni MAU birimleri yansıtılacaktır.
 
-Geçiş ayı sırasında kullanıcılar çift sayılmaz. Değişiklikten önce kimlik doğrulayan benzersiz etkin kullanıcılar, bir takvim ayında kimlik doğrulama ücreti başına ücretlendirilir. Aynı kullanıcılar, aboneliğin fatura döngüsünün geri kalanı için MAU hesaplamasına dahil edilmez. Örneğin:
+Geçiş ayı sırasında kullanıcılar çift sayılmaz. Değişiklikten önce kimlik doğrulayan benzersiz etkin kullanıcılar, bir takvim ayında kimlik doğrulama ücreti başına ücretlendirilir. Aynı kullanıcılar, aboneliğin fatura döngüsünün geri kalanı için MAU hesaplamasına dahil edilmez. Örnek:
 
 * Contoso B2C kiracısında 1.000 kullanıcısı vardır. 250 Kullanıcı belirli bir ayda etkindir. Abonelik Yöneticisi, ayın 10 ' da, kimlik doğrulamasından bağımsız olarak aylık etkin kullanıcılara (MAU) göre değişir.
 * 1\.10 ' un faturalandırılması, kimlik doğrulama modeli kullanılarak faturalandırılır.
@@ -82,7 +82,7 @@ Abonelik bağlantısı, hedef Azure aboneliği içinde bir Azure AD B2C *kaynağ
 
 Azure AD B2C kiracıya bağlı bir abonelik, ek Azure AD B2C kaynakları da dahil olmak üzere Azure AD B2C kullanım veya diğer Azure kaynaklarının faturalandırılması için kullanılabilir. Diğer Azure Hizmetleri tabanlı lisans ya da Azure AD B2C kiracısı içinde Office 365 lisansı eklemek için kullanılamaz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliği](https://azure.microsoft.com/free/)
 * Aboneliğe bağlamak istediğiniz [Azure AD B2C kiracı](tutorial-create-tenant.md)
@@ -91,7 +91,7 @@ Azure AD B2C kiracıya bağlı bir abonelik, ek Azure AD B2C kaynakları da dahi
 
 ### <a name="create-the-link"></a>Bağlantıyı oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından kullanmak istediğiniz Azure aboneliğini içeren dizini seçin (Azure AD B2C kiracıyı içeren dizin*değil* ).
 1. **Kaynak oluştur**' u seçin, **Market alanını ara** alanına `Active Directory B2C` girin ve **Azure Active Directory B2C**' ı seçin.
 1. **Oluştur**’u seçin
@@ -140,4 +140,4 @@ Taşımayı başlatmadan önce, böyle bir taşımanın sınırlamalarını ve g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Seçilen bir Azure aboneliğinde kullanım ve faturalandırma ayrıntılarını gözden geçirmeye ek olarak, [kullanım Raporlama API](view-usage-reports.md)'sini kullanarak ayrıntılı günlük kullanım raporlarını gözden geçirebilirsiniz.
+En son fiyatlandırma bilgileri için bkz. [Azure Active Directory B2C fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-b2c/).

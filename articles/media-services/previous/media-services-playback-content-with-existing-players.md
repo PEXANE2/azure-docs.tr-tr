@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895865"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565834"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Mevcut oyuncularla içeriğinizi oynama
 Azure Media Services, Kesintisiz Akış, HTTP Canlı Akışı ve MPEG-Dash gibi birçok popüler akış biçimini destekler. Bu konu, akışlarınızı test etmek için kullanabileceğiniz mevcut oyunculara işaret eder.
@@ -66,13 +66,10 @@ HLS URL 'Leri test etmek için aşağıdakileri de kullanabilirsiniz:
 * İOS cihazında **Safari** veya
 * Windows üzerinde **3ivx HLS oynatıcı** .
 
-## <a name="developing-video-players"></a>Video oyuncuları geliştirme
-Kendi oyuncularınızı geliştirme hakkında daha fazla bilgi için bkz. [video yürütücüleri geliştirme](media-services-develop-video-players.md)
-
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png

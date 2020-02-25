@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400793"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565562"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>VM'ler için Azure İzleyici bağımlılık aracısını yükseltme
 
@@ -22,7 +22,7 @@ VM'ler için Azure İzleyici bağımlılık aracısının ilk dağıtımından s
 
 Windows ve Linux 'un bağımlılık Aracısı en son sürüme el ile veya makinenin üzerinde çalıştığı ortama ve dağıtım senaryosuna bağlı olarak otomatik olarak yükseltilebilir. Aşağıdaki yöntemler aracıyı yükseltmek için kullanılabilir.
 
-|Ortam |Yükleme yöntemi |Upgrade Yöntemi |
+|Ortam |Yükleme yöntemi |Yükseltme yöntemi |
 |------------|--------------------|---------------|
 |Azure VM | [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) ve [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) için bağımlılık Aracısı VM Uzantısı | *Otomatik* olarak, Azure Resource Manager şablonunuzu otomatik olarak varsayılan olarak yükseltilir. bu özelliği otomatik yükseltme özelliğini **yanlış**olarak ayarlayarak geri çevirebilirsiniz. Otomatik yükseltmenin devre dışı bırakıldığı ikincil sürüm için yükseltme, ana sürüm yükseltmesi de aynı yöntemi izler-uzantıyı kaldırın ve yeniden yükleyin. |
 | Özel Azure VM görüntüleri | Windows/Linux için bağımlılık aracısının el ile yüklenmesi | VM 'Lerin aracının en yeni sürümüne güncelleştirilmesi için Windows Installer paketi veya Linux kendiliğinden ayıklanan ve yüklenebilir kabuk betik paketi çalıştıran komut satırından gerçekleştirilmesi gerekir.|
@@ -39,16 +39,9 @@ Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyage
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
 2. Kurulum sihirbazını başlatmak için **InstallDependencyAgent-Windows. exe** ' yi yürütün.
+   
+3. Bağımlılık aracısının önceki sürümünü kaldırmak ve sonra en son sürümü yüklemek için **Dependency Agent kurulum** Sihirbazı ' nı izleyin.
 
-3. **Dependency Agent 9.9.1 Kurulum** iletişim kutusunda lisans sözleşmesini kabul etmek **için kabul ediyorum '** a tıklayın.
-
-5. **Dependency Agent 9.9.0 Kaldır** Iletişim kutusunda **İleri**' ye tıklayın. Durum sayfasında, önceki sürümün kaldırılmasına ilişkin ilerleme durumu görüntülenir.
-
-6. İletişim kutusunda belirtilen yoldan önceki sürümü kaldırmaya devam etmek için **Dependency Agent 9.9.0 Kaldır** Iletişim kutusunda **Kaldır** ' a tıklayın. 
-
-7. **Dependency Agent 9.9.0 Kaldır** iletişim kutusunda, kaldırma ilerleme durumu gösterilir ve tamamlandığında, **kaldırma Dependency Agent kaldırma** sayfası görüntülenir. **Finish (Son)** düğmesine tıklayın.
-
-8. **Dependency Agent 9.9.1 Kurulum** iletişim kutusunda yükleme ilerleme durumu gösterilir. **Dependency Agent kaldırmayı tamamlama** sayfası göründüğünde **son**' a tıklayın. 
 
 ### <a name="from-the-command-line"></a>Komut satırından
 
@@ -62,7 +55,7 @@ Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyage
 
     `/RebootMode=manual` parametresi, bazı süreçler önceki sürümden dosya kullanıyorsa ve bunlara bir kilit varsa, yükseltmenin makinenin otomatik olarak yeniden başlatılmasını önler. 
 
-3. Yükseltmenin başarılı olduğunu doğrulamak için, ayrıntılı kurulum bilgileri için `install.log` denetleyin. Günlük dizini *%Programfiles%\Microsoft bağımlılık Agent\logs*.
+3. Yükseltmenin başarılı olduğunu doğrulamak için, ayrıntılı kurulum bilgileri için `install.log` denetleyin. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
 
 ## <a name="upgrade-linux-agent"></a>Linux aracısını yükselt 
 
@@ -74,7 +67,7 @@ Windows aracısının en son sürümünü [buradan](https://aka.ms/dependencyage
 
 2. Kök`sh InstallDependencyAgent-Linux64.bin -s`olarak aşağıdaki komutu çalıştırın. 
 
-Bağımlılık Aracısı'nı başlatmak başarısız olursa, ayrıntılı hata bilgileri için günlükleri denetleyin. Linux aracıları, günlük dizindir */var/opt/microsoft/dependency-agent/log*. 
+Bağımlılık Aracısı'nı başlatmak başarısız olursa, ayrıntılı hata bilgileri için günlükleri denetleyin. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log*olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
