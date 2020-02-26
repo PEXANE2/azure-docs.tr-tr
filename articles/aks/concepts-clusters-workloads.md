@@ -2,17 +2,14 @@
 title: Kavramlar-Azure Kubernetes Hizmetleri (AKS) için Kubernetes temelleri
 description: Kubernetes 'in temel kümesini ve iş yükü bileşenlerini ve bunların Azure Kubernetes Service (AKS) özellikleriyle ilişkisini öğrenin
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967549"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596241"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -106,7 +103,7 @@ Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bi
     - sonraki 112 GB belleğin %6 ' ından (128 GB 'a kadar)
     - 128 GB üzerinde herhangi bir belleğin %2 ' i
 
-Yukarıdaki bellek ve CPU ayırması kuralları, aracı düğümlerinin sağlıklı tutulması için kullanılır, bazı barındırma sistemi sistemleri küme durumu için kritik öneme sahiptir. Bu ayırma kuralları, düğümün bir Kubernetes kümesinin parçası olmasaydı daha az ayrılanmasa belleği ve CPU 'YU rapormasına neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
+Yukarıdaki bellek ve CPU ayırması kuralları, küme durumu için kritik olan bazı barındırma sistemi bilgisayarları dahil olmak üzere, aracı düğümlerinin sağlıklı tutulması için kullanılır. Bu ayırma kuralları, düğümün bir Kubernetes kümesinin parçası olmasaydı daha az ayrılanmasa belleği ve CPU 'YU rapormasına neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
 
 Örneğin, bir düğüm 7 GB sunuyorsa, en fazla %34 bellek ayırıcıdan çıkarılan eşiğin üzerinde% ' ü rapor eder.
 
@@ -148,7 +145,7 @@ spec:
 
 Yığınların nerede zamanlandığını denetleme hakkında daha fazla bilgi için bkz. [AKS 'de gelişmiş Zamanlayıcı özellikleri Için en iyi uygulamalar][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Podlar
+## <a name="pods"></a>Pod
 
 Kubernetes, uygulamanızın bir örneğini çalıştırmak için *Pod* 'yi kullanır. Pod, uygulamanızın tek bir örneğini temsil eder. Bir pod 'un birden çok kapsayıcı içerebileceği gelişmiş senaryolar olsa da, pods 'nin genellikle kapsayıcı ile 1:1 eşlemesi vardır. Bu çok Kapsayıcılı FID 'ler aynı düğümde birlikte zamanlanır ve kapsayıcıların ilgili kaynakları paylaşmasına izin verir.
 
@@ -224,7 +221,7 @@ Bu tür uygulamaları yönetmenize olanak sağlayan iki Kubernetes kaynağı var
 
 ### <a name="statefulsets"></a>StatefulSets
 
-Modern uygulama geliştirme genellikle durum bilgisiz uygulamalar için amaçlar, ancak *statefulsets* , veritabanı bileşenlerini içeren uygulamalar gibi durum bilgisi olan uygulamalar için kullanılabilir. Statefulset, bir veya daha fazla özdeş Pod 'nin oluşturulup yönetildiği bir dağıtıma benzer. Bir StatefulSet içindeki çoğaltmalar, dağıtıma, ölçeğe, yükseltmelere ve sonlandırmalara yönelik düzgün, sıralı bir yaklaşıma uyar. Bir StatefulSet ile, çoğaltma yeniden zamanlanırsa, adlandırma kuralı, ağ adları ve depolama korunur.
+Modern uygulama geliştirme genellikle durum bilgisiz uygulamalar için amaçlar, ancak *statefulsets* , veritabanı bileşenlerini içeren uygulamalar gibi durum bilgisi olan uygulamalar için kullanılabilir. Statefulset, bir veya daha fazla özdeş Pod 'nin oluşturulup yönetildiği bir dağıtıma benzer. Bir StatefulSet içindeki çoğaltmalar, dağıtıma, ölçeğe, yükseltmelere ve sonlandırmalara yönelik düzgün, sıralı bir yaklaşıma uyar. Bir StatefulSet ile (çoğaltmalar yeniden zamanlanırsa) adlandırma kuralı, ağ adları ve depolama korunur.
 
 Uygulamayı `kind: StatefulSet`kullanarak YAML biçiminde tanımlarsınız ve StatefulSet denetleyicisi, gerekli çoğaltmaların dağıtımını ve yönetimini işler. Veriler, Azure yönetilen diskler veya Azure dosyaları tarafından belirtilen kalıcı depolama alanına yazılır. StatefulSets ile, StatefulSet silindiğinde bile temeldeki kalıcı depolama alanı kalır.
 

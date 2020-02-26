@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172025"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597091"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -37,13 +37,15 @@ Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak
 - Değişikliklerinizi kaydedin ve dosyayı kapatın.
 - SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server 'da kaç eşzamanlı yedeklemenin çalıştırıldığını denetleyebilir miyim?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server 'da kaç tane eş zamanlı yedeklemenin çalıştırıldığını denetleyebilir miyim?
 
 Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azallendirebilirsiniz. Ayarı değiştirmek için:
 
 1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe *ExtensionSettingsOverrides. JSON* dosyasını oluşturun.
 2. *ExtensionSettingsOverrides. JSON* dosyasında **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+DefaultBackupTasksThreshold varsayılan değeri **20**' dir.
 
 3. Değişikliklerinizi kaydedin ve dosyayı kapatın.
 4. SQL Server örneğinde, **Görev Yöneticisi**'ni açın. **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.<br/> <br/>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355275"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603272"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Güvenliği geliştirmek için Azure Güvenlik Merkezi önerilerini kullanın
 Bir güvenlik ilkesi yapılandırarak ve ardından Azure Güvenlik Merkezi tarafından sunulan önerileri uygulayarak önemli bir güvenlik olayı olasılığını azaltabilirsiniz. Bu makalede bir güvenlik saldırısını azaltmaya yardımcı olmak için Güvenlik Merkezi 'nde güvenlik ilkelerinin ve önerilerin nasıl kullanılacağı gösterilmektedir. 
@@ -35,7 +35,7 @@ Bu senaryo, güvenlik merkezi önerilerini izleyerek ve işlem yaparak bir güve
 
 Contoso yakın zamanda şirket içi kaynaklarından bazılarını Azure 'a geçirmiştir. Contoso, kaynaklarını korumak ve buluttaki kaynaklarından gelen güvenlik açıklarını azaltmak istiyor.
 
-## <a name="use-azure-security-center"></a>Azure Güvenlik Merkezi’ni kullanma
+## <a name="use-azure-security-center"></a>Azure Güvenlik Merkezi 'ni kullanma
 Contoso BT güvenliği 'nin sunduğu David, güvenlik açıklarını engellemek ve algılamak için Contoso 'nun Azure Güvenlik Merkezi aboneliklerine Güvenlik Merkezi 'ni eklemek üzere zaten seçilmiş. 
 
 Güvenlik Merkezi, contoso 'nun Azure kaynaklarının güvenlik durumunu otomatik olarak analiz eder ve varsayılan güvenlik ilkelerini uygular. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, güvenlik ilkesinde ayarlanan denetimlere göre **öneriler** oluşturur. 

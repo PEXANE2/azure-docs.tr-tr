@@ -2,22 +2,19 @@
 title: Azure’da Kubernetes öğreticisi - Uygulamayı güncelleştirme
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde var olan bir AKS uygulama dağıtımını uygulama kodunun yeni sürümüyle güncelleştirmeyi öğreneceksiniz.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614388"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593385"
 ---
-# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Service (AKS) uygulama güncelleştirme
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) bir uygulamayı güncelleştirme
 
-Bir uygulama Kubernetes’te dağıtıldıktan sonra, yeni bir kapsayıcı görüntüsü veya görüntü sürümü belirtilerek güncelleştirilebilir. Bir güncelleştirme, aynı anda yalnızca bir kısmını dağıtım güncelleştirilebilmesi için hazırdır. Hazırlanan bu güncelleştirme, uygulamanın güncelleştirme sırasında çalışmaya devam etmesini sağlar. Ayrıca bir dağıtım hatası oluşursa, bir geri alma mekanizması sağlar.
+Bir uygulama Kubernetes’te dağıtıldıktan sonra, yeni bir kapsayıcı görüntüsü veya görüntü sürümü belirtilerek güncelleştirilebilir. Bir güncelleştirme, dağıtımın yalnızca bir kısmının aynı anda güncelleştirilmesi için hazırlanır. Hazırlanan bu güncelleştirme, uygulamanın güncelleştirme sırasında çalışmaya devam etmesini sağlar. Ayrıca bir dağıtım hatası oluşursa, bir geri alma mekanizması sağlar.
 
 Bu yedi parçalı öğreticinin altıncı bölümünde, örnek Azure Vote uygulaması güncelleştirilir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -29,21 +26,21 @@ Bu yedi parçalı öğreticinin altıncı bölümünde, örnek Azure Vote uygula
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Önceki öğreticilerde, bir uygulama bir kapsayıcı görüntüsüne paketlendi. Bu görüntü Azure Container Registry'ye yüklendi ve bir AKS kümesi oluşturulmakta. Uygulama ardından için AKS kümesi dağıtıldı.
+Önceki öğreticilerde, bir uygulama bir kapsayıcı görüntüsüne paketlendi. Bu görüntü, Azure Container Registry yüklendi ve bir AKS kümesi oluşturdunuz. Uygulama daha sonra AKS kümesine dağıtıldı.
 
-Bu öğreticide ayrıca uygulama kaynak kodunu içeren bir uygulama deposu da kopyalandı ve önceden oluşturulmuş bir Docker Compose dosyası kullanıldı. Deponun bir kopyasını oluşturduktan ve dizinleri kopyalanmış dizine değiştirdiğinizi doğrulayın. Bu adımları tamamlamadıysanız ve takip etmek istiyorsanız başlayın [öğretici 1 – kapsayıcı görüntüleri oluşturma][aks-tutorial-prepare-app].
+Bu öğreticide ayrıca uygulama kaynak kodunu içeren bir uygulama deposu da kopyalandı ve önceden oluşturulmuş bir Docker Compose dosyası kullanıldı. Deponun bir kopyasını oluşturduğunuzdan ve dizinleri kopyalanmış dizine değiştirmiş olduğunuzdan emin olun. Bu adımları tamamlamadıysanız ve takip etmek istiyorsanız, [öğretici 1 – kapsayıcı görüntüleri oluşturma][aks-tutorial-prepare-app]ile başlayın.
 
-Bu öğretici, Azure CLI Sürüm 2.0.53 çalıştırdığınız gerektirir veya üzeri. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 ## <a name="update-an-application"></a>Uygulamayı güncelleştirme
 
-Şimdi örnek uygulamada bir değişiklik yapalım ve AKS kümenize dağıtılmış olan sürümü güncelleştirelim. Kopyalanan olduğunuzdan emin olun *azure voting uygulamasını redis* dizin. Örnek uygulama kaynak kodunu ardından içinde bulunabilir *azure-vote* dizin. *config_file.cfg* dosyasını `vi` gibi bir düzenleyiciyle açın:
+Şimdi örnek uygulamada bir değişiklik yapalım ve AKS kümenize dağıtılmış olan sürümü güncelleştirelim. Kopyalanmış *Azure-oylama-App-redsıs* dizininde olduğunuzdan emin olun. Örnek uygulama kaynak kodu daha sonra *Azure-oy* dizini içinde bulunabilir. *config_file.cfg* dosyasını `vi` gibi bir düzenleyiciyle açın:
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
 ```
 
-Değerlerini değiştirmek *VOTE1VALUE* ve *VOTE2VALUE* renkleri gibi farklı değerler. Aşağıdaki örnek, güncelleştirilmiş değerleri gösterir:
+*VOTE1VALUE* ve *VOTE2VALUE* değerlerini, renkler gibi farklı değerlerle değiştirin. Aşağıdaki örnek güncelleştirilmiş değerleri göstermektedir:
 
 ```
 # UI Configurations
@@ -53,11 +50,11 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Dosyayı kaydedin ve kapatın. İçinde `vi`, kullanın `:wq`.
+Dosyayı kaydedin ve kapatın. `vi``:wq`kullanın.
 
 ## <a name="update-the-container-image"></a>Kapsayıcı görüntüsünü güncelleştirme
 
-Ön uç görüntüsünü yeniden oluşturmak ve güncelleştirilmiş uygulamayı test etmek için kullanın [docker-compose][docker-compose]. `--build` bağımsız değişkeni, uygulama görüntüsünü yeniden oluşturmak üzere Docker Compose'a komut vermek için kullanılır:
+Ön uç görüntüsünü yeniden oluşturmak ve güncelleştirilmiş uygulamayı test etmek için [Docker-Compose][docker-compose]kullanın. `--build` bağımsız değişkeni, uygulama görüntüsünü yeniden oluşturmak üzere Docker Compose'a komut vermek için kullanılır:
 
 ```console
 docker-compose up --build -d
@@ -69,7 +66,7 @@ Güncelleştirilmiş kapsayıcı görüntüsünde yaptığınız değişiklikler
 
 ![Azure’da Kubernetes kümesinin görüntüsü](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
-Sağlanan güncelleştirilmiş değerleri *config_file.cfg* dosya çalışan uygulamanızda görüntülenir.
+*Config_file. cfg* dosyasında belirtilen güncelleştirilmiş değerler, çalışan uygulamanızda görüntülenir.
 
 ## <a name="tag-and-push-the-image"></a>Görüntüyü etiketleme ve gönderme
 
@@ -85,10 +82,10 @@ Görüntüyü etiketlemek için [docker tag][docker-tag]’i kullanın. Aşağı
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Artık [docker itme][docker-push] görüntüyü kayıt defterinize yüklemek için. `<acrLoginServer>` yerine ACR oturum açma sunucunuzun adını yazın.
+Şimdi, resmi kayıt defterinize yüklemek için [Docker Push][docker-push] kullanın. `<acrLoginServer>` yerine ACR oturum açma sunucunuzun adını yazın.
 
 > [!NOTE]
-> ACR kayıt defterinize giden sorunlarla karşılaşıyorsanız, hala oturum açtığınızdan emin olun. Çalıştırma [az acr oturum açma][az-acr-login] komutunu kullanarak, oluşturduğunuz Azure Container Registry'nize adını [bir Azure Container Registry oluşturma](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) adım. Örneğin, `az acr login --name <azure container registry name>`.
+> ACR Kayıt defterinize gönderme sorunlarıyla karşılaşırsanız, hala oturum açtığınızdan emin olun. [Azure Container Registry oluşturma](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) adımında oluşturduğunuz Azure Container Registry adını kullanarak [az ACR Login][az-acr-login] komutunu çalıştırın. Örneğin, `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -96,7 +93,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>Güncelleştirilmiş uygulamayı dağıtma
 
-En uzun çalışma süresini sağlamak için uygulama podunun birden çok örneğini çalıştırılması gerekir. Ön uç örnekleri ile çalışan sayısını doğrulayın [kubectl pod'ları alma][kubectl-get] komutu:
+Maksimum çalışma süresi sağlamak için, uygulama Pod 'un birden fazla örneği çalışıyor olmalıdır. [Kubectl Get Pod][kubectl-get] komutuyla çalışan ön uç örneklerinin sayısını doğrulayın:
 
 ```
 $ kubectl get pods
@@ -108,7 +105,7 @@ azure-vote-front-233282510-dhrtr   1/1       Running   0          10m
 azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 ```
 
-Ön uç birden çok podunuz yoksa, ölçeklendirme *azure-vote-front* aşağıdaki gibi dağıtım:
+Birden çok ön uç potıd yoksa, *Azure-oy öndağıtımını* aşağıdaki şekilde ölçeklendirin:
 
 ```console
 kubectl scale --replicas=3 deployment/azure-vote-front
@@ -146,13 +143,13 @@ Güncelleştirme uygulamasını görüntülemek için öncelikle `azure-vote-fro
 kubectl get service azure-vote-front
 ```
 
-Artık hizmetinizin IP adresi için bir yerel web tarayıcısı açın:
+Şimdi, hizmetinizin IP adresine yerel bir Web tarayıcısı açın:
 
 ![Azure’da Kubernetes kümesinin görüntüsü](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir uygulamayı güncelleştirdiniz ve bu güncelleştirmeyi, AKS kümesine sundunuz. Şunları öğrendiniz:
+Bu öğreticide, bir uygulamayı güncelleştirmiş ve bu güncelleştirmeyi AKS kümenize toplamıştır. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Ön uç uygulama kodunu güncelleştirme
@@ -163,7 +160,7 @@ Bu öğreticide, bir uygulamayı güncelleştirdiniz ve bu güncelleştirmeyi, A
 Bir AKS kümesini yeni bir Kubernetes sürümüne yükseltmeyi öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Kubernetes'i yükseltme][aks-tutorial-upgrade]
+> [Kubernetes 'i yükseltme][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/

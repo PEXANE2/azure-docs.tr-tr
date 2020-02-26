@@ -3,16 +3,15 @@ title: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 description: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme hakkında bilgi edinin
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329337"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596649"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 
@@ -33,7 +32,8 @@ Azure NetApp Files kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 * Azure NetApp Files yalnızca [Seçili Azure bölgelerinde][anf-regions]kullanılabilir.
 * Azure NetApp Files kullanabilmeniz için, Azure NetApp Files hizmetine erişim verilmesi gerekir. Erişim için uygulamak üzere [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist]kullanabilirsiniz. Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar Azure NetApp Files hizmetine erişemezsiniz.
 * Azure NetApp Files hizmetinizin AKS kümeniz ile aynı sanal ağda oluşturulması gerekir.
-* AKS 'de yalnızca Azure NetApp Files statik sağlama desteklenir.
+* Bir AKS kümesinin ilk dağıtımından sonra, yalnızca Azure NetApp Files statik sağlama desteklenir.
+* Azure NetApp Files ile dinamik sağlamayı kullanmak için [NetApp Trident](https://netapp-trident.readthedocs.io/) sürüm 19,07 veya üstünü yükleyip yapılandırın.
 
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files Yapılandır
 
@@ -143,7 +143,7 @@ $ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $AN
 }
 ```
 
-Bir PersistentVolume tanımlayan `pv-nfs.yaml` oluşturun. `path` *Creationtoken* ile değiştirin ve önceki komuttan *IPAddress* ile `server`. Örneğin:
+Bir PersistentVolume tanımlayan `pv-nfs.yaml` oluşturun. `path` *Creationtoken* ile değiştirin ve önceki komuttan *IPAddress* ile `server`. Örnek:
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>PersistentVolumeClaim oluşturma
 
-Bir PersistentVolume tanımlayan `pvc-nfs.yaml` oluşturun. Örneğin:
+Bir PersistentVolume tanımlayan `pvc-nfs.yaml` oluşturun. Örnek:
 
 ```yaml
 apiVersion: v1
@@ -205,7 +205,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Pod ile bağlama
 
-PersistentVolumeClaim kullanan bir pod tanımlayan `nginx-nfs.yaml` oluşturun. Örneğin:
+PersistentVolumeClaim kullanan bir pod tanımlayan `nginx-nfs.yaml` oluşturun. Örnek:
 
 ```yaml
 kind: Pod

@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845896"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587286"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
 Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanılabilirlik sağlamak için bulut ortamı için ayarlanmış SQL Server veritabanı motoru mimarisini temel alır. Azure SQL veritabanı 'nda kullanılan üç mimari modeli vardır:
 - Genel Amaçlı/standart 
--  Hiper ölçeklendirme
+-  Hiper Ölçek
 -  İş Açısından Kritik/Premium
 
 Azure SQL veritabanı 'nda bulunan hiper ölçekli hizmet katmanı, sanal çekirdek tabanlı satın alma modelindeki en yeni hizmet katmandır. Bu hizmet katmanı, bir Azure SQL veritabanı için depolama ve işlem kaynaklarının, Genel Amaçlı ve Iş için kullanılabilen limitlerin büyük ölçüde ötesinde ölçeğini genişletmek için Azure mimarisinden yararlanan, yüksek düzeyde ölçeklenebilir bir depolama ve bilgi işlem performans katmanından yararlanır Kritik hizmet katmanları.
@@ -72,7 +72,7 @@ Hiper ölçek hizmeti katmanı yalnızca [Vcore modelinde](sql-database-service-
 
 - **Depolama alanı**:
 
-  Hiper ölçekli bir veritabanını yapılandırırken en büyük veri boyutunu belirtmeniz gerekmez. Hiper ölçeklendirme katmanında, gerçek ayırmaya dayalı olarak veritabanınızın depolama alanı için ücret ödersiniz. Depolama alanı, 10 GB 'lik 10 GB 'lik artışlarla 40 GB ile 100 TB arasında otomatik olarak ayrılır. Gerekirse, birden çok veri dosyası aynı anda büyüyebilir. Bir hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur ve 40 GB boyutuna ulaşana kadar 10 dakikada bir artmaya başlar.
+  Hiper ölçekli bir veritabanını yapılandırırken en büyük veri boyutunu belirtmeniz gerekmez. Hiper ölçek katmanında, gerçek ayırmayı temel alarak veritabanınızın depolama alanı için ücretlendirilirsiniz. Depolama alanı, 10 GB 'lik 10 GB 'lik artışlarla 40 GB ile 100 TB arasında otomatik olarak ayrılır. Gerekirse, birden çok veri dosyası aynı anda büyüyebilir. Bir hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur ve 40 GB boyutuna ulaşana kadar 10 dakikada bir artmaya başlar.
 
 Hiperscale fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -86,7 +86,7 @@ Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm tü
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
-### <a name="compute"></a>Bilgi İşlem
+### <a name="compute"></a>İşlem
 
 İşlem düğümü, ilişkisel altyapının bulunduğu yerdir, bu nedenle tüm dil öğeleri, sorgu işleme vb. oluşur. Hiper ölçekli veritabanı olan tüm kullanıcı etkileşimleri, bu işlem düğümleri aracılığıyla gerçekleşir. İşlem düğümlerinde, veri sayfasını getirmek için gereken ağ gidiş dönüşlerin sayısını en aza indirmek için SSD tabanlı önbellekler (önceki diyagramda RBPEX-dayanıklı arabellek havuzu uzantısı olarak etiketlenir) vardır. Tüm okuma/yazma iş yüklerinin ve işlemlerinin işlendiği bir birincil işlem düğümü vardır. Yük devretme amaçlarıyla etkin bekleme düğümleri görevi gören bir veya daha fazla ikincil işlem düğümü vardır ve okuma iş yüklerini boşaltma için salt okunurdur işlem düğümleri görevi görür (Bu işlev isteniyorsa).
 
@@ -187,53 +187,19 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Orta Güney ABD
 - Güneydoğu Asya
 - Güney Birleşik Krallık
-- UK, Batı
+- Batı Birleşik Krallık
 - Batı Avrupa
 - Batı ABD
 - Batı ABD 2
 
-Desteklenen olarak listelenmeyen bir bölgede hiper ölçekli veritabanı oluşturmak istiyorsanız, Azure portal aracılığıyla bir ekleme isteği gönderebilirsiniz. Desteklenen bölgelerin listesini genişletmek için çalışıyoruz. bu nedenle lütfen en son bölge listesini inceleyin.
+Desteklenen olarak listelenmeyen bir bölgede hiper ölçekli veritabanı oluşturmak istiyorsanız, Azure portal aracılığıyla bir ekleme isteği gönderebilirsiniz. Yönergeler için bkz. [Azure SQL veritabanı Için istek kotası artışlarına](quota-increase-request.md) bakın. İsteğiniz gönderilirken aşağıdaki yönergeleri kullanın:
 
-Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini istemek için:
-
-1. [Azure yardım ve destek dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) gidin
-
-2. [ **Yeni destek isteğine** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
-
-    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/request-screen-1.png)
-
-3. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** seçeneğini belirleyin
-
-4. Veritabanlarını oluşturmak için kullanacağınız aboneliği seçin
-
-5. **Kota türü**için **SQL veritabanı** ' nı seçin.
-
-6. Ileri ' ye tıklayın **: çözümler**
-
-1. **Ayrıntıları sağla** ' ya tıklayın
-
-    ![Sorun ayrıntıları](media/sql-database-service-tier-hyperscale/request-screen-2.png)
-
-8. **SQL veritabanı kota türünü**seçin: **diğer kota isteği**
-
-9. Aşağıdaki şablonu doldur:
-
-    ![Kota ayrıntıları](media/sql-database-service-tier-hyperscale/request-screen-3.png)
-
-    Şablonda, aşağıdaki bilgileri sağlayın
-
-    > Yeni bir bölgede Azure hiper ölçek SQL veritabanı oluşturma isteği<br/> Bölge: [istediğiniz bölgeyi doldur]  <br/>
-    > Okunabilir çoğaltmalar dahil olmak üzere SKU/toplam çekirdekleri hesaplama <br/>
-    > Tahmini TB sayısı 
-    >
-
-10. **Önem Derecesi C**’yi seçin
-
-11. Uygun iletişim yöntemini seçin ve ayrıntıları girin.
-
-12. **Kaydet** ve **devam et** 'e tıklayın
+- [Diğer kota isteği](quota-increase-request.md#other) SQL veritabanı kota türünü kullanın.
+- Metin ayrıntılarına, okunabilir çoğaltmalar dahil işlem SKU 'SU/toplam çekirdekleri ekleyin.
+- Tahmini TB 'yi de belirtin.
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
+
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
 
 | Sorun | Açıklama |
@@ -247,7 +213,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu BACPAC dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur.|
 | Kalıcı bellek içi nesneleri olan veritabanlarının geçirilmesi | Hiper ölçek yalnızca kalıcı olmayan bellek nesnelerini destekler (tablo türleri, yerel SPs 'ler ve işlevler).  Kalıcı bellek Içi tablolar ve diğer nesneler, bir veritabanını hiper ölçek hizmet katmanına geçirmeden önce, bellek içi nesneler olarak bırakılmalıdır ve yeniden oluşturulmalıdır.|
 | Değişiklik İzleme | Değişiklik İzleme Şu anda genel önizleme aşamasındadır ve yeni veya mevcut hiper ölçekli veritabanlarında etkinleştirilebilir. |
-| Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
+| Coğrafi çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır), Azure SQL veritabanı Hyperscale için henüz desteklenmemiştir, ancak hizmet tarafından yönetilen anahtarlarla birlikte TDE desteklenir. |
 |Akıllı veritabanı özellikleri | "Plan zorla" seçeneğinin dışında, diğer tüm otomatik ayarlama seçenekleri hiper ölçekte henüz desteklenmemiştir: seçenekler etkin gibi görünebilir, ancak hiçbir öneri veya eylem yapılmaz. |

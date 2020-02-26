@@ -3,8 +3,8 @@ title: SAP için Microsoft Azure sertifikaları | Microsoft Docs
 description: Azure platformunda geçerli yapılandırmaların ve SAP sertifikalarının güncelleştirilmiş listesi.
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/15/2019
-ms.author: rclaus
+ms.date: 02/13/2020
+ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 38e63d8ca7d9db5247bd5fe07fbe59452a106cf6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098661"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598383"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure üzerinde çalışan SAP Sertifikaları ve yapılandırması
 
@@ -32,34 +32,34 @@ Başvur
 
 - Yerel Azure VM 'Leri ve HANA büyük örnekleri için SAP HANA destek için [sertifikalı IaaS platformları SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) .
 
-| SAP Ürünü | Desteklenen İşletim Sistemi | Azure Teklifleri |
+| SAP ürünü | Desteklenen İşletim Sistemi | Azure teklifleri |
 | --- | --- | --- |
 | SAP HANA geliştirici sürümü (SQLODBC, ODBO-Windows only, ODBC, JDBC sürücüleri, HANA Studio ve HANA veritabanından oluşan HANA istemci yazılımı dahil) | Red Hat Enterprise Linux, SUSE Linux Enterprise | D serisi VM ailesi |
 | HANA 'da birinci departman | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [Sertifikalı IaaS platformlarını SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
-| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 için denetlenen kullanılabilirlik. M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, için tam destek <br /> Azure 'da SAP HANA (büyük örnekler) [sertifikalı IaaS platformları SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | Azure 'da M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, SAP HANA (büyük örnekler) <br /> [Sertifikalı IaaS platformlarını SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| BW için HANA Enterprise, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> Azure 'da SAP HANA (büyük örnekler) [sertifikalı IaaS platformları SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> Azure’da SAP HANA (Büyük örnekler) <br /> [Sertifikalı IaaS platformlarını SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 için denetlenen kullanılabilirlik. M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2 için tam destek <br /> Azure 'da SAP HANA (büyük örnekler) [sertifikalı IaaS platformları SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| HANA, OLTP üzerinde Suite | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> M416s_v2, M416ms_v2, Azure üzerinde SAP HANA (büyük örnekler) [sertifikalı IaaS platformları SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Siyah-beyaz, OLAP için HANA Enterprise | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> M416s_v2, M416ms_v2, Azure üzerinde SAP HANA (büyük örnekler) [sertifikalı IaaS platformları SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> Azure 'da M416s_v2, M416ms_v2, SAP HANA (büyük örnekler) <br /> [Sertifikalı IaaS platformlarını SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
 SAP 'ın, ' genişleme ' için [SAP HANA sertifikalı IaaS platformlarında](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) ' Kümeleme ' terimini ' genişleme ' için eş anlamlı olarak kullandığını ve yüksek kullanılabilirlik ' Kümelemesi ' için değil
 
 ## <a name="sap-netweaver-certifications"></a>SAP NetWeaver sertifikaları
-Microsoft Azure, aşağıdaki SAP ürünleri için Microsoft ve SAP'den tam destek alacak şekilde sertifikaya sahiptir.
+Microsoft Azure, Microsoft ve SAP 'nin tam desteğiyle aşağıdaki SAP ürünleri için sertifikalandırilmiştir.
 Başvur
 
-- [1928533-Azure 'da SAP uygulamaları: SAP trex, SAP livecache ve SAP içerik sunucusu dahil tüm SAP NetWeaver tabanlı uygulamalar için desteklenen ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533) . Ve SAP HANA hariç tüm veritabanları.
+- [1928533-Azure 'DA SAP uygulamaları:](https://launchpad.support.sap.com/#/notes/1928533) SAP trex, SAP livecache ve SAP içerik sunucusu DAHIL tüm SAP NetWeaver tabanlı uygulamalar Için desteklenen ürünler ve Azure VM türleri. Ve SAP HANA hariç tüm veritabanları.
 
 
-| SAP Ürünü | Konuk işletim sistemi | RDBMS | Sanal Makine Türleri |
+| SAP ürünü | Konuk işletim sistemi | RDBMS | Sanal makine türleri |
 | --- | --- | --- | --- |
-| SAP Business Suite Yazılımı | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14, DS11_v2, DS15_v2, GS1, GS5, D2s_v3, D64s_v3, E2s_v3, E64s_v3, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2,, |
-| SAP Business All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14, DS11_v2, DS15_v2, GS1, GS5, D2s_v3, D64s_v3, E2s_v3, E64s_v3, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2,, |
-| SAP BusinessObjects BI | Windows |Yok |A5 A11, D11 to D14, DS11 to DS14, DS11_v2, DS15_v2, GS1, GS5, D2s_v3, D64s_v3, E2s_v3, E64s_v3, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2,, |
-| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14, DS11_v2, DS15_v2, GS1, GS5, D2s_v3, D64s_v3, E2s_v3, E64s_v3, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2,, |
+| SAP Business Suite yazılımı | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3 E2as_v4, E64as_v4 M208s_v2,, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, , M208ms_v2 M416s_v2, M416ms_v2 |
+| SAP Business hepsi-tek | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3 E2as_v4, E64as_v4 M208s_v2,, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, , M208ms_v2 M416s_v2, M416ms_v2 |
+| SAP BusinessObjects bı | Windows |Yok |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3 E2as_v4, E64as_v4 M208s_v2,, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, , M208ms_v2 M416s_v2, M416ms_v2 |
+| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3 E2as_v4, E64as_v4 M208s_v2,, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, , M208ms_v2 M416s_v2, M416ms_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Azure 'da desteklenen diğer SAP Iş yükü
 
-| SAP Ürünü | Konuk işletim sistemi | RDBMS | Sanal Makine Türleri |
+| SAP ürünü | Konuk işletim sistemi | RDBMS | Sanal makine türleri |
 | --- | --- | --- | --- |
 | SAP Business One SQL Server | Windows  | SQL Server | Tüm NetWeaver sertifikalı VM türleri<br /> [SAP Note #928839](https://launchpad.support.sap.com/#/notes/928839) |
 | SAP BPC 10.01 MS SP08 | Windows ve Linux | | Tüm NetWeaver sertifikalı VM türleri<br /> SAP Note #2451795 |

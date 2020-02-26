@@ -3,12 +3,12 @@ title: Azure dosya paylaşımlarını geri yükleme
 description: Bir dosya paylaşımının tamamını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930869"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586960"
 ---
 # <a name="restore-azure-file-shares"></a>Azure dosya paylaşımlarını geri yükleme
 
@@ -21,6 +21,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Geri yükleme işlemi durumunu izleyin.
 
 ## <a name="steps-to-perform-a-restore-operation"></a>Geri yükleme işlemi gerçekleştirme adımları
+
 Geri yükleme işlemi gerçekleştirmek için aşağıdaki adımları izleyin.
 
 ### <a name="select-the-file-share-to-restore"></a>Geri yüklenecek dosya payını seçin
@@ -110,7 +111,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
     ![Öğe düzeyinde kurtarma için özgün konum](./media/restore-afs/original-location-item-level.png)
 
-2. Geri yüklemek istediğiniz dosya veya klasörleri seçmek için **Dosya Seç** ' i seçin.
+1. Geri yüklemek istediğiniz dosya veya klasörleri seçmek için **Dosya Seç** ' i seçin.
 
     ![Dosya Seç ' i seçin](./media/restore-afs/select-file.png)
 

@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service’in (AKS) hizmet sorumluları
 description: Azure Kubernetes Service’te bir küme için Azure Active Directory hizmet sorumlusu oluşturma ve yönetme
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: mlearned
-ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524248"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595085"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 

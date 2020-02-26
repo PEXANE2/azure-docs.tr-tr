@@ -9,21 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: df18e721a7400a1e45b7f1fcd74fdafdbfdf026c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462267"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605375"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Hızlı başlangıç: Java hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+Bu hızlı başlangıçta, örnek bir Java uygulaması yardımıyla Java hizmeti SDK 'sını kullanarak Azure IoT Hub cihaz sağlama hizmeti 'nde sanal bir TPM cihazı için tek bir kayıt oluşturursunuz.
 
-Bu adımlar, [Java Hizmeti SDK'sını](https://azure.github.io/azure-iot-sdk-java/service/) ve örnek Java uygulamasını kullanarak bir sanal TPM cihazı için Azure IoT Hub Cihazı Sağlama Hizmeti'nde programlı bireysel kayıt oluşturmayı gösterir. Java Hizmeti SDK'sı hem Windows hem de Linux makinelerinde çalışır, ancak bu makalede, kayıt işlemlerinin gösterilmesi için Windows geliştirme makinesi kullanılır.
+## <a name="prerequisites"></a>Önkoşullar
 
-Devam etmeden önce [IoT Hub Cihaz Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) ve [bir TPM cihazını benzetme](quick-create-simulated-device.md#simulatetpm) adımlarını tamamladığınızdan emin olun.
+- [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
+- [TPM cihazından şifreleme anahtarlarının okuma](quick-create-simulated-device.md#simulatetpm)işleminin tamamlanması.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Bu hızlı başlangıçta [Java hizmeti SDK 'sı](https://azure.github.io/azure-iot-sdk-java/service/) yüklenir. Hem Windows hem de Linux üzerinde çalışmaktadır. Bu hızlı başlangıçta Windows kullanılır.
+- [Maven 3](https://maven.apache.org/download.cgi).
+- [Git](https://git-scm.com/download/).
 
 <a id="setupdevbox"></a>
 
@@ -56,7 +62,7 @@ Devam etmeden önce [IoT Hub Cihaz Sağlama Hizmetini Azure portalıyla ayarlama
 
 Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ekleyeceğiniz gösterilir. 
 
-1. Bir komut istemi açın. Java Hizmeti SDK'sını kullanarak cihaz kayıt kodu örneğinin GitHub deposunu kopyalayın:
+1. Bir komut istemi açın. [Java hizmeti SDK 'sını](https://azure.github.io/azure-iot-sdk-java/service/)kullanarak cihaz kayıt kodu örneği için GitHub deposunu kopyalayın:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -124,7 +130,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
     mvn install -DskipTests
     ```
 
-   Bu komut, [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven paketini makinenize indirir. Bu pakette örnek kodun derlenebilmesi için gerekli olan Java hizmeti SDK'sı ikili dosyaları bulunur. 
+   Bu komut, [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven paketini makinenize indirir. Bu paket, örnek kodun derlenmesi gereken [Java hizmeti SDK 'sının](https://azure.github.io/azure-iot-sdk-java/service/)ikili dosyalarını içerir. 
 
 3. Komut penceresinde aşağıdaki komutları çalıştırarak örneği çalıştırın:
 

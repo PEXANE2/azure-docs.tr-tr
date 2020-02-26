@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163203"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598468"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -48,9 +48,7 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
 1. **Veri alım** modülünü işlem hattınızı ekleyin. Bu modülü, tasarımcıda **veri girişi ve çıkış** kategorisinde bulabilirsiniz.
 
-1. Sihirbaz kullanarak veri kaynağını yapılandırmak için **veri alma Sihirbazı 'Nı Başlat** ' a tıklayın.
-
-    Sihirbaz hesap adını ve kimlik bilgilerini alır ve diğer seçenekleri yapılandırmanıza yardımcı olur. Var olan bir yapılandırmayı düzenliyorsanız, önce geçerli değerleri yükler.
+1. Sağ bölmeyi açmak için modülü seçin.
 
 1. **Veri kaynağı**' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
 
@@ -60,6 +58,11 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
     ![İçeri aktarma-veri önizleme](media/module/import-data.png)
 
+1. Onay kutusu, **çıktıyı yeniden oluştur**, çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
+
+    Bu, varsayılan olarak seçili değildir, bu da modülün aynı parametrelerle daha önce yürütülmesi durumunda sistemin, çalışma süresini azaltmak için son çalıştırışınızda çıktıyı yeniden kullanacağı anlamına gelir. 
+
+    Seçilirse, sistem çıktıyı yeniden oluşturmak için modülü yeniden yürütür. Bu nedenle, depolama alanındaki temel alınan veriler güncelleştirilirken bu seçeneği belirleyin. Bu seçenek, en son verileri almaya yardımcı olabilir.
 
 
 1. İşlem hattını çalıştırma.

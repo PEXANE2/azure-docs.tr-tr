@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202456"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604562"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sistem güncelleştirmelerini uygulama
 Azure Güvenlik Merkezi, eksik işletim sistemi güncelleştirmeleri için günlük Windows ve Linux sanal makinelerini (VM 'Ler) ve bilgisayarları izler. Güvenlik Merkezi, bir Windows bilgisayarda hangi hizmetin yapılandırıldığına bağlı olarak Windows Update veya Windows Server Update Services (WSUS) ' dan kullanılabilen güvenlik ve kritik güncelleştirmeler listesini alır. Güvenlik Merkezi, Linux sistemlerinde en son güncelleştirmeleri de denetler. VM 'niz veya bilgisayarınızda bir sistem güncelleştirmesi eksikse, Güvenlik Merkezi, sistem güncelleştirmelerini uygulamanızı önerir.
@@ -44,19 +44,19 @@ Bu örnekte, **işlem**kullanacağız.
 
    Panonun en altında, VM 'Lerde ve bilgisayarlarınızda eksik olan tüm güncelleştirmeler ve eksik güncelleştirmenin önem derecesi listelenir.  Liste aşağıdakileri içerir:
 
-    - ADA Eksik güncelleştirmenin adı.
-    - EŞLEŞEN. VM 'Ler & BILGISAYARLAR: Bu güncelleştirme eksik olan sanal makinelerin ve bilgisayarların toplam sayısı.
-    - DURUMUNDA Önerinin geçerli durumu:
+    - AD: eksik güncelleştirmenin adı.
+    - Eşleşen. VM 'Ler & BILGISAYARLAR: Bu güncelleştirmenin eksik olduğu VM 'Ler ve bilgisayarların toplam sayısı.
+    - DURUM: önerinin geçerli durumu:
 
-      - Açın Öneri henüz sağlanmadı.
-      - Devam ediyor: Öneri şu anda bu kaynaklara uygulanıyor ve sizin için herhangi bir eylem gerekmiyor.
-      - Çözülüyor Öneri zaten tamamlandı. (Sorun çözüldüğünde girdi soluklaşır).
+      - Açık: öneri henüz sağlanmadı.
+      - Devam ediyor: öneri şu anda bu kaynaklara uygulanıyor ve sizin Için herhangi bir eylem gerekmiyor.
+      - Çözümlendi: öneri zaten tamamlandı. (Sorun çözüldüğünde girdi soluklaşır).
 
-    - ININ Bu belirli bir önerinin önem derecesini açıklar:
+    - ÖNEM DERECESI: belirli bir önerinin önem derecesini açıklar:
 
-      - Geniş Anlamlı bir kaynak (uygulama, sanal makine veya ağ güvenlik grubu) ile bir güvenlik açığı bulunur ve dikkat edilmesi gerekir.
-      - Uzunlukta Bir işlemi gerçekleştirmek veya bir güvenlik açığını ortadan kaldırmak için kritik olmayan veya ek adımlar gerekir.
-      - Zayıf Bir güvenlik açığına değinilmesi gerekir, ancak hemen ilgilenilmesi gerekmez. (Varsayılan olarak, düşük öneriler sunulmaz ancak bunları görüntülemek istiyorsanız düşük öneriler filtresini kullanabilirsiniz.)
+      - Yüksek: anlamlı bir kaynakta (uygulama, sanal makine veya ağ güvenlik grubu) bir güvenlik açığı bulunur ve dikkat edilmesi gerekir.
+      - Orta: bir işlemi gerçekleştirmek veya bir güvenlik açığını ortadan kaldırmak için kritik olmayan veya ek adımlar gerekir.
+      - Düşük: bir güvenlik açığına değinilmesi gerekir, ancak hemen ilgilenilmesi gerekmez. (Varsayılan olarak, düşük öneriler sunulmaz ancak bunları görüntülemek istiyorsanız düşük öneriler filtresini kullanabilirsiniz.)
 
 3. Ayrıntıları görüntülemek için listeden eksik bir güncelleştirme seçin.
 
@@ -78,7 +78,6 @@ Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
 * [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) -Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.
 
 <!--Image references-->

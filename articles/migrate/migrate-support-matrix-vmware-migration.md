@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware geçişi desteği
 description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014003"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597992"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -35,7 +35,7 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 --- | ---
 **VMware vCenter Server** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
 **VMware vSphere ESXI Konağı** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
-**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç bu izinlere ihtiyaç duyuyor:<br/><br/> - **veri deposu. gözatma**: anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> **DataStore. LowLevelFileOperations**: anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma işlemlerine izin verir.<br/><br/> **VirtualMachine. Configuration. DiskChangeTracking**: - sanal makine disklerini değiştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine. Configuration. disklease**: VMware vSphere sanal disk geliştirme seti 'NI (VDDK) kullanarak diski okumak IÇIN bir VM 'ye yönelik disk Kiralama işlemlerine izin verin.<br/><br/> **VirtualMachine. sağlama. AllowReadOnlyDiskAccess**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin. - <br/><br/> - **VirtualMachine. sağlama. AllowVirtualMachineDownload**: bir VM ile ilişkili dosyalardaki okuma işlemlerine izin verir, günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: çoğaltma için VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin.<br/><br/> - **sanal makine. ınteroff**: Azure 'a GEÇIŞ sırasında VM 'nin kapatılmasını sağlar.
+**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç bu izinlere ihtiyaç duyuyor:<br/><br/> - **veri deposu. gözatma**: anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. LowLevelFileOperations**: anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma işlemlerine izin verir.<br/><br/> **VirtualMachine. Configuration. DiskChangeTracking**: - sanal makine disklerini değiştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine. Configuration. disklease**: VMware vSphere sanal disk geliştirme seti 'NI (VDDK) kullanarak diski okumak IÇIN bir VM 'ye yönelik disk Kiralama işlemlerine izin verin.<br/><br/> **VirtualMachine. sağlama. AllowDiskAccess**: (özellikle vsphere 6,0 ve üzeri için), VDDK kullanarak disk üzerinde rastgele okuma erişimi IÇIN bir VM 'de disk açmaya izin verir. - <br/><br/> **VirtualMachine. sağlama. AllowReadOnlyDiskAccess**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin. - <br/><br/>- **VirtualMachine. sağlama. AllowVirtualMachineDownload**: bir VM ile ilişkili dosyalardaki okuma işlemlerine izin verir, günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: çoğaltma için VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin.<br/><br/> - **sanal makine. ınteroff**: Azure 'a GEÇIŞ sırasında VM 'nin kapatılmasını sağlar.
 
 
 
@@ -71,7 +71,7 @@ Aracısız geçiş, bir VMware sanal makinesine dağıtılan Azure geçiş gerec
 
 ## <a name="agentless-ports"></a>Aracısız bağlantı noktaları
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 Elektrikli | 443 numaralı bağlantı noktası, çoğaltılan verileri Azure 'a yüklemek ve Azure geçiş Hizmetleri ile iletişim kurmak için çoğaltma ve geçiş işlemlerini düzenleyen giden bağlantılar.
 vCenter server | Bağlantı noktası 443 ' deki gelen bağlantılar, gerecin çoğaltma düzenlemesine olanak tanımak için anlık görüntü oluşturma, veri kopyalama, anlık görüntüleri yayınlama
@@ -110,7 +110,7 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM 'Leri
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
 **Çok yollu GÇ** | Desteklenmez.
-**Depolama vMotion** | Desteklenen
+**Depolama vMotion** | Destekleniyor
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
 **IPv6** | Desteklenmez.
 
@@ -127,9 +127,9 @@ Azure geçişi hub 'ında belirtilen OVA şablonunu kullanarak çoğaltma gereci
 
 ## <a name="agent-based-ports"></a>Aracı tabanlı bağlantı noktaları
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
-Sanal Makineler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
+VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
 İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.<br/> Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde çalışır.
 

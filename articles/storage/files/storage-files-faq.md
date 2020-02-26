@@ -3,16 +3,16 @@ title: Azure dosyaları için sık sorulan sorular (SSS) | Microsoft Docs
 description: Azure dosyaları hakkında sık sorulan soruların yanıtlarını bulun.
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565069"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598196"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure dosyaları hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -85,7 +85,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="afs-region-availability"></a>**Azure dosya eşitleme Için hangi bölgelerin desteklendiği 
   ?**  
-    Kullanılabilir bölgelerin listesi, Azure Dosya Eşitleme planlama kılavuzunun [bölge kullanılabilirliği](storage-sync-files-planning.md#region-availability) bölümünde bulunabilir. Genel olmayan bölgeler dahil olmak üzere ek bölgeler için sürekli olarak destek ekleyeceğiz.
+    Kullanılabilir bölgelerin listesi, Azure Dosya Eşitleme planlama kılavuzunun [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) bölümünde bulunabilir. Genel olmayan bölgeler dahil olmak üzere ek bölgeler için sürekli olarak destek ekleyeceğiz.
 
 * <a id="cross-domain-sync"></a>
   **aynı eşitleme grubunda etki alanına katılmış ve etki alanına katılmamış sunuculara sahip olabilir miyim?**  
@@ -155,13 +155,13 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
     Dosya eşitleme yönetilen dosya paylaşımlarınız üzerinde Azure Backup etkinleştirdiyseniz, dosya ACL 'Leri yedekleme geri yükleme iş akışının bir parçası olarak geri yüklemeye devam edebilir. Bu, tüm paylaşımın veya tek tek dosyalar/dizinler için geçerlidir.
 
-    Dosya eşitleme tarafından yönetilen dosya paylaşımları için otomatik olarak yönetilen yedekleme çözümünün bir parçası olarak anlık görüntüler kullanıyorsanız, anlık görüntüler 24 Şubat 2020 ' den önce alınmıyorsa, ACL 'niz NTFS ACL 'Lerine düzgün şekilde geri yüklenemez. Bu durumda, Azure desteği 'ne başvurmayı göz önünde bulundurun.
+    Dosya eşitleme tarafından yönetilen dosya paylaşımları için otomatik olarak yönetilen yedekleme çözümünün bir parçası olarak anlık görüntüler kullanıyorsanız, anlık görüntülerin 24 Şubat 2020 ' den önce alınması durumunda, ACL 'niz NTFS ACL 'Lerine düzgün şekilde geri yüklenemez. Bu durumda, Azure desteği 'ne başvurmayı göz önünde bulundurun.
     
 ## <a name="security-authentication-and-access-control"></a>Güvenlik, kimlik doğrulama ve erişim denetimi
 * <a id="ad-support"></a>
 **Azure dosyaları tarafından desteklenen kimlik tabanlı kimlik doğrulaması ve erişim denetimi mi?**  
     
-    Evet, Azure dosyaları kimlik tabanlı kimlik doğrulaması ve erişim denetimini destekler. Kimlik tabanlı erişim denetimi kullanmanın iki yolunu seçebilirsiniz: Azure Active Directory Domain Services (Azure AD DS) (GA) veya Active Directory (AD) (Önizleme). Azure dosyaları için SMB üzerinden Azure AD DS kimlik doğrulaması, Azure AD DS etki alanına katılmış Windows VM 'lerinin Azure AD kimlik bilgilerini kullanarak paylaşımlara, dizinlere ve dosyalara erişmesine olanak sağlar. AD, SMB üzerinden Azure dosya paylaşımlarına erişmek için şirket içinde ya da Azure 'da AD etki alanına katılmış makineleri kullanarak kimlik doğrulamasını destekler. Daha fazla ayrıntı için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](storage-files-active-directory-overview.md). 
+    Evet, Azure dosyaları kimlik tabanlı kimlik doğrulaması ve erişim denetimini destekler. Kimlik tabanlı erişim denetimi kullanmanın iki yolunu seçebilirsiniz: Active Directory (AD) (Önizleme) veya Azure Active Directory Domain Services (Azure AD DS) (GA). AD, SMB üzerinden Azure dosya paylaşımlarına erişmek için şirket içinde ya da Azure 'da AD etki alanına katılmış makineleri kullanarak kimlik doğrulamasını destekler. Azure dosyaları için SMB üzerinden Azure AD DS kimlik doğrulaması, Azure AD DS etki alanına katılmış Windows VM 'lerinin Azure AD kimlik bilgilerini kullanarak paylaşımlara, dizinlere ve dosyalara erişmesine olanak sağlar. Daha fazla ayrıntı için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](storage-files-active-directory-overview.md). 
 
     Azure dosyaları, erişim denetimini yönetmek için iki ek yol sunar:
 
@@ -199,14 +199,12 @@ Azure **dosyaları azure AD DS veya ad kimlik doğrulaması Linux VM 'lerini des
 * <a id="ad-multiple-forest"></a>
 **Azure dosyaları ad kimlik doğrulaması, birden çok orman kullanarak BIR ad ortamıyla tümleştirmeyi destekliyor mu?**    
 
-    Azure dosyaları AD kimlik doğrulaması yalnızca depolama hesabının kaydedildiği AD etki alanı hizmetinin ormanı ile tümleşir. Farklı bir AD ormanına ait kimlik doğrulamasını desteklemek için ortamınızda orman güveninin düzgün şekilde yapılandırılmış olması gerekir. AD etki alanı hizmetine Azure dosyaları kaydı, kimlik doğrulama için AD 'de bir hesap oluşturduğu düzenli bir dosya sunucusu ile aynıdır. Tek fark, depolama hesabının kayıtlı SPN 'si, etki alanı sonekiyle eşleşmeyen "file.core.windows.net" ile sona erecek.
-
-    Birden çok orman kimlik doğrulamasını etkinleştirmek için DNS yönlendirme ilkenize yönelik herhangi bir güncelleştirmenin gerekli olup olmadığını görmek için etki alanı yöneticinize başvurun.
+    Azure dosyaları AD kimlik doğrulaması yalnızca depolama hesabının kaydedildiği AD etki alanı hizmetinin ormanı ile tümleşir. Farklı bir AD ormanına ait kimlik doğrulamasını desteklemek için ortamınızda orman güveninin düzgün şekilde yapılandırılmış olması gerekir. Azure dosyalarının bir AD etki alanı hizmetine kaydetme şekli, genellikle kimlik doğrulaması için AD 'de bir kimlik (bilgisayar veya hizmet oturum açma hesabı) oluşturan düzenli bir dosya sunucusuyla aynıdır. Tek fark, depolama hesabının kayıtlı SPN 'si, etki alanı sonekiyle eşleşmeyen "file.core.windows.net" ile sona erecek. Farklı etki alanı son eki nedeniyle birden çok orman kimlik doğrulamasını etkinleştirmek için DNS yönlendirme ilkenize yönelik herhangi bir güncelleştirmenin gerekli olup olmadığını görmek için etki alanı yöneticinize başvurun.
 
 * <a id=""></a>**Azure dosyaları ad doğrulaması (Önizleme) Için hangi bölgelerin kullanılabildiği 
 ?**
 
-    Ayrıntılar için [ad bölgesel kullanılabilirliğine](storage-files-active-directory-domain-services-enable.md#regional-availability) bakın.
+    Ayrıntılar için [ad bölgesel kullanılabilirliğine](storage-files-identity-auth-active-directory-enable.md#regional-availability) bakın.
 
 * <a id="ad-aad-smb-afs"></a>
 **Azure dosya eşitleme tarafından yönetilen dosya paylaşımlarında Azure dosyaları azure AD DS kimlik doğrulaması veya Active Directory (ad) kimlik doğrulaması (Önizleme) Ile yararlanabilir miyim?**
@@ -347,7 +345,7 @@ Azure **dosyaları 'na bağlanmak veya şirket içi Azure dosya eşitleme kullan
 
 * <a id="need-larger-share"></a>**Azure dosya paylaşımları Için hangi boyutların kullanılabildiği 
 ?**  
-    Azure dosya paylaşma boyutları (Premium ve standart) 100 TiB 'ye kadar ölçeklenebilir. Standart katmana yönelik daha büyük dosya paylaşımlarına yönelik yönergeler için planlama kılavuzunun [daha büyük dosya paylaşımlarına (Standart katman)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) ekleme bölümüne bakın.
+    Azure dosya paylaşma boyutları (Premium ve standart) 100 TiB 'ye kadar ölçeklenebilir. Standart katmana yönelik daha büyük dosya paylaşımlarına yönelik yönergeler için planlama kılavuzunun [daha büyük dosya paylaşımlarına (Standart katman)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) ekleme bölümüne bakın.
 
 * <a id="lfs-performance-impact"></a>
 **dosya paylaşma kotamı genişleterek iş yüklerimi veya Azure dosya eşitleme mi etkiler?**

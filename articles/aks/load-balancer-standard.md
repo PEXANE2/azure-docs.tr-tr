@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici 
 description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak için standart SKU ile yük dengeleyiciyi nasıl kullanacağınızı öğrenin.
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212421"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595170"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -189,7 +188,7 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 Örnek çıktıda *AllocatedOutboundPorts* ve *IdleTimeout ınminutes*için varsayılan değer gösterilmektedir. *AllocatedOutboundPorts* için 0 değeri, arka uç havuz boyutunu temel alan giden bağlantı noktalarının sayısı için otomatik atamayı kullanan giden bağlantı noktası sayısını ayarlar. Örneğin, kümede 50 veya daha az düğüm varsa, her düğüm için 1024 bağlantı noktaları ayrılır.
 
-Yukarıdaki varsayılan yapılandırmaya göre 1 yüz SNAT tükenmesi beklemeniz durumunda *allocatedOutboundPorts* veya *IdleTimeout ınminutes* ayarını değiştirmeyi göz önünde bulundurun. Her ek IP adresi, ayırma için 64.000 ek bağlantı noktası sunar, ancak Azure Standart Load Balancer, daha fazla IP adresi eklendiğinde düğüm başına bağlantı noktalarını otomatik olarak artırmaz. *Yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini ayarlayarak bu değerleri değiştirebilirsiniz. Örneğin:
+Yukarıdaki varsayılan yapılandırmaya göre 1 yüz SNAT tükenmesi beklemeniz durumunda *allocatedOutboundPorts* veya *IdleTimeout ınminutes* ayarını değiştirmeyi göz önünde bulundurun. Her ek IP adresi, ayırma için 64.000 ek bağlantı noktası sunar, ancak Azure Standart Load Balancer, daha fazla IP adresi eklendiğinde düğüm başına bağlantı noktalarını otomatik olarak artırmaz. *Yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini ayarlayarak bu değerleri değiştirebilirsiniz. Örnek:
 
 ```azurecli-interactive
 az aks update \
@@ -202,7 +201,7 @@ az aks update \
 > [!IMPORTANT]
 > Bağlantı veya ölçeklendirme sorunlarından kaçınmak için *allocatedOutboundPorts* 'i özelleştirmeden önce [gerekli kotayı hesaplamanız][calculate-required-quota] gerekir. *AllocatedOutboundPorts* için belirttiğiniz değer ayrıca 8 ' in katı olmalıdır.
 
-Ayrıca, bir küme oluştururken *yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini de kullanabilirsiniz, ancak Ayrıca *yük dengeleyici-yönetilen-giden-IP-sayısı*, *yük dengeleyici-giden-* IP veya *yük dengeleyici-giden-IP-öneklerini* de belirtmeniz gerekir.  Örneğin:
+Ayrıca, bir küme oluştururken *yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini de kullanabilirsiniz, ancak Ayrıca *yük dengeleyici-yönetilen-giden-IP-sayısı*, *yük dengeleyici-giden-* IP veya *yük dengeleyici-giden-IP-öneklerini* de belirtmeniz gerekir.  Örnek:
 
 ```azurecli-interactive
 az aks create \

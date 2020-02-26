@@ -1,21 +1,18 @@
 ---
-title: Azure Kubernetes Service'a Giriş
+title: Azure Kubernetes Hizmeti Tanıtımı
 description: Azure’da kapsayıcı tabanlı uygulamaları dağıtmak ve yönetmek için Azure Kubernetes Hizmetinin özelliklerini ve avantajlarını öğrenin.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: overview
 ms.date: 05/06/2019
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: c98e67d174c3c8b7fc426e1dd2c5ebafd6760969
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f78b65169899107bcd4626bbed65bd4fddd8af43
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932601"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595459"
 ---
-# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
+# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
 
 Azure Kubernetes Service (AKS), Azure'a yönetilen bir Kubernetes kümesi dağıtmayı kolaylaştırır. AKS, sorumluluğun çoğunu Azure'a devrederek Kubernetes yönetiminin karmaşıklığını ve işlemsel yükünü azaltır. Barındırılan bir Kubernetes hizmeti olarak, Azure sistem durumu izleme ve bakım gibi kritik görevleri sizin için gerçekleştirir. Kubernetes ana düğümler Azure tarafından yönetilir. Siz yalnızca aracı düğümlerini yönetir ve sürdürürsünüz. AKS, yönetilen bir Kubernetes servisi olarak ücretsizdir; ana düğümler için değil, yalnızca kümelerinizdeki aracı düğümleri için ücret ödersiniz.
 
@@ -109,7 +106,7 @@ AKS, Docker görüntü biçimini destekler. Docker görüntülerinizin özel ola
 
 Azure Kubernetes Service (AKS) hizmetinin Kubernetes ile uyumlu olduğu CNCF tarafından onaylanmıştır.
 
-## <a name="regulatory-compliance"></a>Mevzuat uyumluluğu
+## <a name="regulatory-compliance"></a>Mevzuata uyumluluk
 
 Azure Kubernetes Service (AKS) SOC, ISO, PCI DSS ve HIPAA ile uyumludur. Daha fazla bilgi için bkz. [Microsoft Azure uyumluluğuna genel bakış][compliance-doc].
 

@@ -4,12 +4,12 @@ description: Jenkins 'i Azure 'da oluşturun ve dağıtın ve sürekli tümleşt
 keywords: jenkins, azure, devops, genel bakış
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479337"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605700"
 ---
 # <a name="azure-and-jenkins"></a>Azure ve Jenkins
 
@@ -22,7 +22,7 @@ Jenkins kullanıcılarına sunulan temel Azure özelliklerini anlatan bu makale,
 Derleme otomasyonunuzu tek merkezden yönetmek ve yazılım projelerinizin gereksinimleri arttıkça dağıtımınızı ölçeklendirmek için Jenkins dağıtımınızı Azure'da barındırın. Jenkins'i Azure'da dağıtmak için aşağıdaki çözümleri kullanabilirsiniz:
  
 - Azure Market'teki [Jenkins çözüm şablonu](install-jenkins-solution-template.md).
-- [Azure sanal makineleri](/azure/virtual-machines/linux/overview). VM üzerinde Jenkins örneği oluşturma [öğreticisine](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) bakın.
+- [Azure sanal makineleri](/azure/virtual-machines/linux/overview). VM üzerinde Jenkins örneği oluşturma [öğreticisine](tutorial-jenkins-github-docker-cicd.md) bakın.
 - [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) üzerinde çalışan bir Kubernetes kümesinde, ayrıntılar için [Nasıl yapılır?](/azure/container-service/kubernetes/container-service-kubernetes-jenkins) makalesine göz atın.
 
 Azure [izleyici günlüklerini](/azure/log-analytics/log-analytics-overview) ve [Azure CLI](/cli/azure)'Yı kullanarak Azure Jenkins dağıtımınızı izleyin ve yönetin.

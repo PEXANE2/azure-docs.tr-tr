@@ -6,17 +6,17 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir uygulama geliştirmek için Azure Dev Spaces ve komut satırının nasıl kullanılacağı gösterilir.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 2d3a498d72264d3084e45202b7daa99806d45ce3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538439"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602618"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te uygulama geliştirme-Azure Dev Spaces
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
-- Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
+- Azure'da yönetilen bir Kubernetes ile Azure Dev Spaces'ı ayarlayın.
 - Komut satırını kullanarak kapsayıcılarda kod geliştirin ve çalıştırın.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -30,7 +30,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme

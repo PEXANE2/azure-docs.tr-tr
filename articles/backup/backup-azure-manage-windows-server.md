@@ -3,12 +3,12 @@ title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
 description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173038"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586453"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -77,7 +77,7 @@ Yedekleme uyarıları raporu, kasadaki uyarıları listeler.
 
 Yedekleme uyarıları listesi, filtrelenmiş uyarılarla ilgili seçili bilgileri görüntüler. Yedekleme uyarıları menüsünde, kritik veya uyarı uyarıları için filtre uygulayabilirsiniz.
 
-| Uyarı düzeyi | Uyarı üreten olaylar |
+| Uyarı Düzeyi | Uyarı üreten olaylar |
 | ----------- | ----------- |
 | Kritik | Yedekleme işleri başarısız olduğunda, kurtarma işleri başarısız olduğunda ve bir sunucuda korumayı durdurduğunuzda ancak verileri koruduğunuz zaman kritik uyarılar alırsınız.|
 | Uyarı | Şu durumlarda uyarı uyarısı alırsınız: yedekleme işleri uyarılarla tamamlandı, örneğin, bozulma sorunları nedeniyle 100 'den az dosya yedeklenmemişse veya 1.000.000 ' den fazla dosya başarıyla yedekleniyorsa). |
@@ -272,4 +272,4 @@ Panodaki yedekleme depolama kutucuğu, Azure 'da tüketilen depolamayı gösteri
 
 * [Windows Server veya Windows Istemcisini Azure 'dan geri yükleme](backup-azure-restore-windows-server.md)
 * Azure Backup hakkında daha fazla bilgi edinmek için bkz. [Azure Backup genel bakış](backup-introduction-to-azure-backup.md)
-* [Azure Backup forumunu](https://go.microsoft.com/fwlink/p/?LinkId=290933) ziyaret edin
+

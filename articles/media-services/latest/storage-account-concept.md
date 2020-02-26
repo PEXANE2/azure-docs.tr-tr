@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services hesapları ile Azure depolama hesapları | Microsoft Docs
+title: Azure Media Services hesapları olan Azure depolama hesapları | Microsoft Docs
 description: Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir.
 services: media-services
 documentationcenter: ''
@@ -11,34 +11,34 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4bbadd7e10f0fd6896932dd79a5ca42d9906d2a2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619289"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602142"
 ---
-# <a name="azure-storage-accounts"></a>Azure Depolama hesapları
+# <a name="azure-storage-accounts"></a>Azure depolama hesapları
 
-Yönetmek, şifreleme, kodlama, çözümleme ve azure'da medya içeriği akışı başlatmak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. 
+Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. 
 
-Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir. Depolama hesapları Media Services hesabıyla aynı konumda ek gecikme süresi ve veri kullanım maliyetleri önlemek için önerilir
+Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir. Ek gecikme ve veri çıkışı maliyetlerinden kaçınmak için, Media Services hesabıyla aynı konumdaki depolama hesaplarının kullanılması önemle önerilir
 
 Tek bir **Birincil** depolama hesabınız olması gerekir, ancak Media Services hesabınızla ilişkili istediğiniz sayıda **İkincil** depolama hesabınız olabilir. Media Services, **General-purpose v2** (GPv2) veya **General-purpose v1** (GPv1) hesaplarını destekler. <br/>Yalnızca blob hesaplarının **Birincil** olmasına izin verilmez. 
 
-Bu nedenle en son özellikler ve performans yararlanabilirsiniz GPv2 kullanmanızı öneririz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakışın](../../storage/common/storage-account-overview.md).
+En son özellikler ve performans avantajlarından yararlanabilmek için GPv2 kullanmanızı öneririz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../../storage/common/storage-account-overview.md).
 
 > [!NOTE]
-> Etkin olarak kullanılmadığı içerik depolama maliyetlerini azaltmak için bir erişim katmanları kullanılabilir olsa da sık erişim katmanı Azure Media Services ile kullanmak için desteklenir.
+> Yalnızca sık erişimli erişim katmanı Azure Media Services ile kullanım için desteklenir, ancak diğer erişim katmanları etkin bir şekilde kullanılmayan içerikte depolama maliyetlerini azaltmak için kullanılabilir.
 
-Depolama hesabınız için seçebileceğiniz farklı SKU'ları vardır. Daha fazla bilgi için [depolama hesapları](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Depolama hesapları ile denemek istiyorsanız, kullanın `--sku Standard_LRS`. Ancak, üretim için bir SKU seçilmesi sırasında dikkate almanız gereken, `--sku Standard_RAGRS`, coğrafi çoğaltma için iş sürekliliği sağlar. 
+Depolama hesabınız için seçebileceğiniz farklı SKU 'Lar vardır. Daha fazla bilgi için bkz. [depolama hesapları](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Depolama hesaplarıyla denemek istiyorsanız `--sku Standard_LRS`kullanın. Ancak, üretim için bir SKU seçerken, iş sürekliliği için coğrafi çoğaltma sağlayan `--sku Standard_RAGRS`göz önünde bulundurmanız gerekir. 
 
-## <a name="assets-in-a-storage-account"></a>Varlıkları bir depolama hesabı
+## <a name="assets-in-a-storage-account"></a>Depolama hesabındaki varlıklar
 
-Media Services v3 sürümünde depolama API'leri varlıklarına dosyaları karşıya yüklemek için kullanılır. Daha fazla bilgi için [varlıklar kavramı](assets-concept.md).
+Media Services v3 'de, depolama API 'Leri dosyaları varlıklara yüklemek için kullanılır. Daha fazla bilgi için bkz. [varlık kavramı](assets-concept.md).
 
 > [!Note]
-> Media Services API'leri kullanmadan Media Services SDK'sı tarafından oluşturulan blob kapsayıcı içeriğini değiştirme denememeniz gerekir.
+> Media Services API 'Lerini kullanmadan Media Services SDK 'Sı tarafından oluşturulan blob kapsayıcılarının içeriğini değiştirmeyi denememelisiniz.
  
 ## <a name="storage-side-encryption"></a>Depolama tarafında şifreleme
 
@@ -46,11 +46,11 @@ Bekleyen veri varlıklarınızı korumanın varlıklar tarafından depolama tara
 
 |Şifreleme seçeneği|Açıklama|Media Services v3|
 |---|---|---|
-|Media Services'ı depolama şifrelemesi| Media Services tarafından yönetilen AES-256 şifreleme anahtarı|Desteklenmeyen<sup>(1)</sup>|
-|[Bekleyen veriler için depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Sunucu tarafı şifrelemesi, Azure Depolama tarafından sunulan anahtarı Azure tarafından veya müşteri tarafından yönetilen|Desteklenen|
-|[Depolama istemci tarafı şifreleme](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama, anahtar Kasası'nda müşteri tarafından yönetilen bir kiracı anahtarı tarafından sunulan istemci tarafı şifreleme|Desteklenmiyor|
+|Media Services'ı depolama şifrelemesi| Media Services tarafından yönetilen AES-256 şifreleme anahtarı|Desteklenmiyor<sup>(1)</sup>|
+|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Sunucu tarafı şifrelemesi, Azure Depolama tarafından sunulan anahtarı Azure tarafından veya müşteri tarafından yönetilen|Destekleniyor|
+|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama, anahtar Kasası'nda müşteri tarafından yönetilen bir kiracı anahtarı tarafından sunulan istemci tarafı şifreleme|Desteklenmiyor|
 
-<sup>1</sup> , Media Services v3 (AES-256 şifreleme) depolama şifrelemesi, yalnızca varlıklarınızı Media Services v2 ile oluşturulduğunda için geriye dönük uyumluluk desteklenir. Var olan depolama ile v3 çalışır anlamı varlıklar şifreli ancak yenilerini oluşturulmasına izin vermez.
+<sup>1</sup> Media Services v3 'de, depolama ŞIFRELEMESI (AES-256 şifrelemesi) yalnızca varlıklarınız Media Services V2 ile oluşturulduysa geriye dönük uyumluluk için desteklenir. Var olan depolama ile v3 çalışır anlamı varlıklar şifreli ancak yenilerini oluşturulmasına izin vermez.
 
 ## <a name="storage-account-errors"></a>Depolama hesabı hataları
 
@@ -63,6 +63,10 @@ Media Services hesabının bağlı depolama hesaplarına erişim sahibi olmamas�
 |Media Services hesabı veya bağlı depolama hesapları ayrı aboneliklere geçirildi. |Depolama hesaplarını veya Media Services hesabını geçirerek ikisinin aynı abonelikte olmasını sağlayın. |
 |Media Services hesabı, farklı bir abonelikteki bağlı depolama hesabını kullanıyor ve bu duruma eski Media Services hesaplarında izin veriliyordu. Tüm eski Media Services hesapları modern Azure Resource Manager (ARM) tabanlı hesaplara dönüştürüldü ve durumları "Bağlantı kesildi" şeklinde olacak. |Depolama hesabını veya Media Services hesabını geçirerek ikisinin aynı abonelikte olmasını sağlayın.|
 
+## <a name="azure-storage-firewall"></a>Azure depolama güvenlik duvarı
+
+Azure Media Services, Azure Storage güvenlik duvarı veya [Özel uç noktaları](https://docs.microsoft.com/azure/storage/common/storage-network-security) etkin olan depolama hesaplarını desteklemez.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Media Services hesabınızla bir depolama hesabı ekleme konusunda bilgi almak için bkz: [hesap oluşturma](create-account-cli-quickstart.md).
+Media Services hesabınıza bir depolama hesabı eklemeyi öğrenmek için bkz. [Hesap oluşturma](create-account-cli-quickstart.md).

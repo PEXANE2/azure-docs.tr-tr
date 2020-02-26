@@ -3,16 +3,15 @@ title: Azure Kubernetes hizmeti (AKS) tanılamaları genel bakış
 description: Azure Kubernetes hizmetinde kendi kendine tanılama kümeleri hakkında bilgi edinin.
 services: container-service
 author: yunjchoi
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291388"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596190"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes hizmeti (AKS) tanılamaları genel bakış
 
@@ -26,7 +25,7 @@ AKS tanılama 'ya erişmek için:
 - Sol gezinti bölmesinde, AKS tanılamayı açan **sorunları Tanıla ve çöz** ' e tıklayın.
 - Giriş sayfası kutucuğunda anahtar sözcükleri kullanarak kümenizin sorununu en iyi açıklayan bir kategori seçin veya arama çubuğunda sorununuzu en iyi açıklayan bir anahtar sözcük yazın, örneğin _küme düğümü sorunları_.
 
-![Giriş sayfası](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
+![Değiştirir](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Tanılama raporunu görüntüle
 
@@ -76,7 +75,7 @@ Kimlik ve güvenlik yönetimi, kümenizin iletişimini engelleyebilecek kimlik d
 
 - Düğüm yetkilendirme sorunları
 - 401 hata
-- 403 hataları
+- 403 hata
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

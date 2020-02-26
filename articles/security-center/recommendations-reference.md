@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: b93e9a50214301df3362be4b729f6e7ec8ab2267
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506167"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604702"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -154,7 +154,7 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır**|Yalnızca geçerli kullanıcılara erişim sağlamak için aboneliklerinizden kullanım dışı hesapları kaldırın.<br>(İlgili ilke: kullanımdan kaldırılan hesapların aboneliğinizden kaldırılması gerekir)|Yüksek|N|Abonelik|
 |**Aboneliğinize birden fazla sahip atanmalıdır**|Yönetici erişiminin artıklığını sağlamak için birden fazla abonelik sahibi belirleyin.<br>(İlgili ilke: aboneliğinize birden fazla sahip atanmalıdır)|Yüksek|N|Abonelik|
 |**Aboneliğiniz için en fazla 3 sahip belirtilmelidir**|Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için üçten az abonelik sahibi belirleyin.<br>(İlgili ilke: aboneliğiniz için en fazla 3 sahip belirtilmelidir)|Yüksek|N|Abonelik|
-|**Key Vault tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Key Vault içindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Iz**|Anahtar Kasası|
+|**Key Vault tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Key Vault içindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Iz**|Key Vault|
 ||||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

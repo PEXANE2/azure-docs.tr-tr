@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d2df67479d8b6ab490bf06bda1ec033f9bf7866e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429701"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588799"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak NAT ağ geçidi oluşturma
 
@@ -34,9 +34,6 @@ Bu hızlı başlangıçta Azure sanal ağ NAT hizmetini nasıl kullanacağınız
 Bu öğreticiyi Azure Cloud Shell kullanarak tamamlayabilirsiniz veya komutları yerel olarak çalıştırabilirsiniz.  Azure Cloud Shell kullanmadıysanız, [Şimdi oturum açın](https://shell.azure.com).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> Aboneliğinizde sanal ağ NAT [önizlemesi etkinleştirildikten](./nat-overview.md#enable-preview) sonra, portala erişmek için https://aka.ms/natportal kullanın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

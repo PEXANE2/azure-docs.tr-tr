@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186942"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598060"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için Başlarken Kılavuzu
 
@@ -33,7 +33,7 @@ Bu kılavuz, uygulama geliştiricileri için Azure platformuna giriş niteliğin
 
 ## <a name="where-do-i-start"></a>Nereden başlamalıyım?
 
-Azure 'un sunduğu tüm hizmetlerle, çözüm mimarinizi desteklemek için hangi hizmetleri gerektiğini öğrenmek için bir başlatma görevi olabilir. Bu bölümde geliştiricilerin yaygın olarak kullandığı Azure hizmetleri vurgulanmaktadır. Tüm Azure hizmetlerinin listesi için bkz. [Azure belgeleri](../../index.md).
+Azure 'un sunduğu tüm hizmetlerle, çözüm mimarinizi desteklemek için hangi hizmetleri gerektiğini öğrenmek için bir başlatma görevi olabilir. Bu bölümde geliştiricilerin yaygın olarak kullandığı Azure hizmetleri vurgulanmaktadır. Tüm Azure hizmetlerinin listesi için bkz. [Azure belgeleri](../../index.yml).
 
 İlk olarak, Azure 'da uygulamanızı barındırmaya karar vermelisiniz. Tüm altyapınızı bir sanal makine (VM) olarak yönetmeniz gerekir. Azure 'un sağladığı platform yönetimi olanaklarını kullanabilir misiniz? Yalnızca kod yürütmeyi barındırmak için sunucusuz bir çerçeveye ihtiyacınız olabilir mi?
 
@@ -163,7 +163,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   >
   > **Kullanmaya başlayın**: [Linux üzerinde App Service Için özel bir Docker görüntüsü kullanın](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza yetkisiz erişimi engellemek için çok önemlidir. Azure, uygulama istemcilerinizin kimliğini doğrulamak için çeşitli yollar sağlar.
 
@@ -320,7 +320,7 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 * Azure Resource Manager şablonunda
 * REST API’sini kullanma
 * Azure CLI kullanma
-* PowerShell kullanarak
+* PowerShell’i kullanma
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../resource-group-using-tags.md).
 

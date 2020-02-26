@@ -4,12 +4,12 @@ description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714786"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584498"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-Tetikleyici meta verilerini ve işlev çağırma verilerini (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) içeren adlandırılmış bir nesne döndürür. Tetikleyici meta verileri örneği için bkz. bu [Olay Hub 'ları örneği](functions-bindings-event-hubs.md#trigger).
+Tetikleyici meta verilerini ve işlev çağırma verilerini (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) içeren adlandırılmış bir nesne döndürür. Tetikleyici meta verileri örneği için bkz. bu [Olay Hub 'ları örneği](functions-bindings-event-hubs-trigger.md).
 
 ### <a name="contextdone-method"></a>Context. Done yöntemi
 
@@ -418,14 +418,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 ## <a name="node-version"></a>Düğüm sürümü
 
-Aşağıdaki tabloda, Işlevler çalışma zamanının her ana sürümü tarafından kullanılan Node. js sürümü gösterilmektedir:
+Aşağıdaki tabloda, işletim sistemine göre Işlevler çalışma zamanının her ana sürümü için desteklenen geçerli Node. js sürümleri gösterilmektedir:
 
-| İşlevler sürümü | Node. js sürümü | 
-|---|---|
-| 'in | 6.11.2 (çalışma zamanı tarafından kilitlendi) |
-| 2.x  | _ETKIN LTS_ ve _bakım LTS_ Node. js sürümleri (~ 10 önerilir). WEBSITE_NODE_DEFAULT_VERSION [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) `~10`olarak ayarlayarak Azure 'daki sürümü hedefleyin.|
+| İşlevler sürümü | Düğüm sürümü (Windows) | Düğüm sürümü (Linux) |
+|---|---| --- |
+| 'in | 6.11.2 (çalışma zamanı tarafından kilitlendi) | yok |
+| 2.x  | ~ 8<br/>~ 10 (önerilir)<br/>~ 12<sup>*</sup> | ~ 8 (önerilir)<br/>~ 10  |
+| 3.x | ~ 10<br/>~ 12 (önerilir)  | ~ 10<br/>~ 12 (önerilir) |
 
-Yukarıdaki uygulama ayarını denetleyerek veya herhangi bir işlevden `process.version` yazdırarak çalışma zamanının kullandığı geçerli sürümü görebilirsiniz.
+<sup>*</sup> Node ~ 12 ' de Işlevler çalışma zamanının 2. x sürümünde izin veriliyor. Bununla birlikte, en iyi performans için, Işlev çalışma zamanı sürüm 3. x, Node ~ 12 ' yi kullanmanızı öneririz. 
+
+Yukarıdaki uygulama ayarını denetleyerek veya herhangi bir işlevden `process.version` yazdırarak çalışma zamanının kullandığı geçerli sürümü görebilirsiniz. WEBSITE_NODE_DEFAULT_VERSION [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) `~10`gibi desteklenen bir LTS sürümüne ayarlayarak Azure 'daki sürümü hedefleyin.
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
 Aşağıdaki örnekte gösterildiği gibi, JavaScript kodunuzda topluluk kitaplıklarını kullanmak için tüm bağımlılıkların Azure 'daki İşlev Uygulaması yüklendiğinden emin olmanız gerekir.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757808"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605664"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer bileşenleri ve sınırlamaları
 Azure Load Balancer, işlem için birkaç temel bileşen içerir.  Bu bileşenler aboneliğinizde Azure portal, Azure CLı veya Azure PowerShell aracılığıyla yapılandırılabilir.  
@@ -73,7 +73,9 @@ Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırm
 
 Aşağıdaki görüntüde karma tabanlı dağıtım gösterilmiştir:
 
-  ![Karma tabanlı dağıtım](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="Karma tabanlı dağıtım">
+</p>
 
   *Şekil: Karma tabanlı dağıtım*
 
@@ -132,9 +134,11 @@ Ortak Load Balancer, gelen trafiğin genel IP adresini ve bağlantı noktasını
 
 Aşağıdaki şekilde, genel ve TCP bağlantı noktası 80 için üç VM arasında paylaşılan web trafiği için yük dengeli bir uç nokta gösterilmektedir. Bu üç VM, bir yük dengeleme kümesinde bulunur.
 
-![Genel Load Balancer örneği](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="Ortak yük dengeleyici">
+</p>
 
-*Şekil: genel Load Balancer kullanarak Web trafiğini Dengeleme*
+*Şekil: bir genel yük dengeleyici kullanarak Web trafiğini Dengeleme*
 
 Internet istemcileri, 80 numaralı TCP bağlantı noktasındaki bir Web uygulamasının genel IP adresine Web sayfası istekleri gönderir. Azure Load Balancer, istekleri yük dengeli küme içindeki üç sanal makineye dağıtır. Load Balancer algoritmaları hakkında daha fazla bilgi için bkz. [Load Balancer kavramlar](concepts-limitations.md#load-balancer-concepts).
 
@@ -151,7 +155,10 @@ Azure Load Balancer, ağ trafiğini varsayılan olarak birden çok VM örneği a
 * **Çok katmanlı uygulamalar için**: arka uç katmanlarının internet 'e açık olmadığı internet 'e yönelik çok katmanlı uygulamalar için yük dengeleme. Arka uç katmanları, internet 'e yönelik katmandan trafik yük dengelemesi gerektirir. Sonraki şekle bakın.
 * **İş kolu uygulamaları için**: Ek yük dengeleyici donanım veya yazılım olmadan Azure'da barındırılan iş kolu uygulamaları için yük dengeleme. Bu senaryo, trafiği yük dengeli olan bilgisayar kümesinde bulunan şirket içi sunucuları içerir.
 
-![İç Load Balancer örneği](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="Ortak yük dengeleyici">
+</p>
 
 *Şekil: çok katmanlı uygulamaları hem genel hem de dahili Load Balancer kullanarak Dengeleme*
 
@@ -202,7 +209,7 @@ Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microso
 - [Standart Load Balancer ve kullanılabilirlik alanları](load-balancer-standard-availability-zones.md)kullanma hakkında bilgi edinin.
 - [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında bilgi edinin.
 - [Standart Load Balancer tanılama](load-balancer-standard-diagnostics.md)hakkında bilgi edinin.
-- Kullanma hakkında bilgi edinin [giden bağlantılar için yük dengeleyici](load-balancer-outbound-connections.md).
+- [Giden bağlantılar için Load Balancer](load-balancer-outbound-connections.md)kullanma hakkında bilgi edinin.
 - [Giden kuralları](load-balancer-outbound-rules-overview.md)hakkında bilgi edinin.
 - [Boşta durumunda TCP sıfırlaması](load-balancer-tcp-reset.md)hakkında bilgi edinin.
 - [Ha bağlantı noktaları Yük Dengeleme kurallarıyla standart Load Balancer](load-balancer-ha-ports-overview.md)hakkında bilgi edinin.

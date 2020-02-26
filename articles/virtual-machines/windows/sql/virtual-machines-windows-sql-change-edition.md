@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772582"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605450"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM 'de SQL Server Edition yerinde değişiklik
 
@@ -29,13 +29,13 @@ SQL Server sürümü ürün anahtarı tarafından belirlenir ve yükleme medyas�
 
 SQL Server sürümü dahili olarak SQL Server VM değiştirildikten sonra, Faturalama amacıyla Azure portal SQL Server sürüm özelliğini güncelleştirmeniz gerekir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server sürümünde yerinde bir değişiklik yapmak için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 - [SQL VM kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kayıtlı [Windows SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
-- SQL Server **istenen sürümü** ile medyayı kurun. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürümü olan (genellikle `c:\SQLInstalls`içinde bulunur) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir. 
+- SQL Server **istenen sürümü** ile medyayı kurun. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürümü olan (genellikle `C:\SQLServerFull`içinde bulunur) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir. 
 
 
 ## <a name="upgrade-an-edition"></a>Sürüm yükseltme
@@ -77,7 +77,7 @@ SQL Server sürümü indirgendikten sonra, Azure portal SQL Server sanal makines
 
 Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve SQL Server VM [SQL VM kaynak sağlayıcısı](virtual-machines-windows-sql-register-with-resource-provider.md)ile kaydolduktan sonra, faturalama amacıyla SQL Server VM sürüm özelliğini değiştirmek için Azure Portal kullanabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. SQL Server sanal makine kaynağına gidin. 
 1. **Ayarlar**altında **Yapılandır**' ı seçin. Ardından, **Sürüm**' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
 

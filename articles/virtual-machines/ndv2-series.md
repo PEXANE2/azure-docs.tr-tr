@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 79e7f2a8dad59de4dc9d84a26d24c82889c14c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6c002838d5a4f515a594d61e5137196c4d391795
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493325"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605444"
 ---
 # <a name="updated-ndv2-series-preview"></a>NDv2-Series güncelleştirildi (Önizleme)
 
@@ -24,13 +24,16 @@ NDv2 örnekleri, CUDA GPU ile iyileştirilmiş hesaplama kernels ' lerini kullan
 
 Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve genişleme (birden fazla VM birlikte çalışan çok sayıda sanal makine) iş yükleri için oluşturulmuştur. NDv2 serisi artık, AI ve ML için dağıtılmış eğitim dahil olmak üzere paralel senaryolar için yüksek performanslı Kümelemeye izin veren 100-Gigabit InfiniBand EDR arka uç ağını destekler. Bu arka uç ağı, NVıDıA 'nin NCCL2 kitaplıkları tarafından çalıştırılan ve GPU 'Ların sorunsuz kümelemesine izin veren tüm önemli InfiniBand protokollerini destekler.
 
+
+> [!NOTE]
 > ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
-
+>
 > Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) ve Market görüntülerinin kullanılmasını gerektirir. 
-
+>
 > [NDv2 sanal makine önizlemesine erken erişim istemek için kaydolun.](https://aka.ms/AzureNDrv2Preview)
-
+>
 > Lütfen unutmayın: GPU başına 16 GB bellek içeren ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 yerini almıştır.
+
 <br>
 
 Premium Depolama: desteklenir

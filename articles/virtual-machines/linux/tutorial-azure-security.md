@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034598"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605530"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -32,7 +32,7 @@ Azure Güvenlik Merkezi, Azure kaynak güvenliği uygulamalarınıza yönelik g�
 > * Yapılandırma durumu sorunlarını görüntüleme ve düzeltme
 > * Algılanan tehditleri gözden geçirme
 
-## <a name="security-center-overview"></a>Güvenlik Merkezine genel bakış
+## <a name="security-center-overview"></a>Güvenlik Merkezi’ne genel bakış
 
 Güvenlik Merkezi, olası sanal makine (VM) yapılandırma sorunlarını ve hedeflenmiş güvenlik tehditlerini algılar. Bunlar arasında, ağ güvenlik grupları olmayan, şifrelenmemiş diskler ve deneme yanılma Uzak Masaüstü Protokolü (RDP) saldırıları içeren sanal makineler yer alır. Güvenlik Merkezi panosunda bilgiler kolay okunabilen graflarda gösterilir.
 
@@ -111,7 +111,7 @@ Fiyatlandırma katmanını değiştirmek için:
 
 1. Güvenlik Merkezi panosunda **Güvenlik ilkesi**’ne tıklayın ve sonra aboneliğinizi seçin.
 2. **Fiyatlandırma katmanı**'nı seçin.
-3. **Standart**’ı seçin ve ardından dikey pencerenin üstündeki **Kaydet**’i tıklatın.
+3. **Standart**'ı ve dikey pencerenin en üstünden **Kaydet**'i seçin.
 
 
 Fiyatlandırma katmanını değiştirmenizin ardından, güvenlik tehditleri algılandıkça güvenlik uyarıları grafı doldurulmaya başlar.
@@ -134,5 +134,5 @@ Bu öğreticide, Azure Güvenlik Merkezi’ni ayarladınız ve sonra Güvenlik M
 Jenkins, GitHub ve Docker ile bir CI/CD işlem hattı oluşturma hakkında daha fazla bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Jenkins, GitHub ve Docker ile CI/CD altyapısı oluşturma](tutorial-jenkins-github-docker-cicd.md)
+> [Jenkins, GitHub ve Docker ile CI/CD altyapısı oluşturma](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
 

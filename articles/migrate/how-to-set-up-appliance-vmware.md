@@ -3,12 +3,12 @@ title: VMware için Azure geçişi gereci ayarlama
 description: VMware VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291949"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598162"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
 
@@ -35,7 +35,7 @@ Gereci kurmak için şunları yapın:
 2. **Makineleri bul** > **Makineleriniz sanallaştırıldı mı?** bölümünde **Evet, VMware vSphere hiper yöneticisi ile** seçeneğini belirleyin.
 3. .OVA şablon dosyasını indirmek için **İndir**’e tıklayın.
 
-
+  ![OVA dosyasını indirme seçimleri](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
@@ -45,12 +45,8 @@ Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 2. OVA 'nın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. En son gereç sürümü için, oluşturulan karma bu ayarlarla eşleşmelidir.
+3. En son gereç sürümü için, oluşturulan karma bu [ayarlarla](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)eşleşmelidir.
 
-  **Algoritma** | **Karma değeri**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
@@ -58,6 +54,8 @@ Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 İndirilen dosyayı içeri aktarın ve bir VM oluşturun.
 
 1. vSphere Client konsolunda **Dosya** > **OVF Şablonu Dağıt**’a tıklayın.
+OVF şablonu dağıtmak için menü komutu ![](./media/tutorial-assess-vmware/deploy-ovf.png)
+
 2. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
 3. **Ad** ve **konum**bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
 5. **Konakta/kümede**, sanal makinenin çalıştırılacağı konağı veya kümeyi belirtin.
@@ -84,7 +82,7 @@ Gereci ilk kez ayarlayın.
 4. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-        - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDN biçiminde belirtin.
+        - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDNbiçiminde belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. Bulmanın düzgün çalışması için gerecin Internet saatine eşit olması gerekir.

@@ -1,10 +1,10 @@
 ---
-title: SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve Azure 'da paylaşılan disk ile çok düzeyli yüksek kullanılabilirlik | Microsoft Docs
+title: Azure 'da WSFC & Paylaşılan diski olan SAP ASCS/SCS çok düzeyli HA | Microsoft Docs
 description: Azure 'da Windows Server Yük Devretme Kümelemesi ve paylaşılan disk ile SAP ASCS/SCS örneği için çoklu SID yüksek kullanılabilirlik
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643262"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598519"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -226,7 +226,7 @@ Yük dengeleyici sınırları hakkında daha fazla bilgi için [ağ sınırları
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu diyagramda gösterildiği gibi, **dosya paylaşma**kullanarak BIR SAP ascs/SCS örneği için kullanılacak bir wsfc kümesini zaten yapılandırdınız.
 

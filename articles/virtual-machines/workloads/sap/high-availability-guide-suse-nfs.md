@@ -1,10 +1,10 @@
 ---
-title: SUSE Linux Enterprise Server 'de Azure VM 'lerinde NFS için yüksek kullanılabilirlik | Microsoft Docs
+title: SLES 'de Azure VM 'lerinde NFS için yüksek kullanılabilirlik | Microsoft Docs
 description: SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: radeltch
+ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824873"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598740"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
 
@@ -143,7 +143,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
             1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ön uç**)
             1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.4**)
-            1. Tamam 'a tıklayın
+            1. Tamam’a tıklayın.
          1. NW2 için IP adresi 10.0.0.5
             * NW2 için yukarıdaki adımları yineleyin
       1. Arka uç havuzlarını oluşturma
@@ -161,7 +161,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
             1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
             1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-            1. Tamam 'a tıklayın
+            1. Tamam’a tıklayın.
          1. NW2 için bağlantı noktası 61001
             * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
       1. Yük Dengeleme kuralları
@@ -171,7 +171,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
          1. **Ha bağlantı noktalarını**seçin.
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
          * NW2 için Yük Dengeleme kuralı oluşturmak için yukarıdaki adımları yineleyin
    1. Alternatif olarak, senaryonuz temel yük dengeleyici gerektiriyorsa, şu yönergeleri izleyin:
       1. Ön uç IP adreslerini oluşturma
@@ -179,7 +179,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
             1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ön uç**)
             1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.4**)
-            1. Tamam 'a tıklayın
+            1. Tamam’a tıklayın.
          1. NW2 için IP adresi 10.0.0.5
             * NW2 için yukarıdaki adımları yineleyin
       1. Arka uç havuzlarını oluşturma
@@ -189,7 +189,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Sanal makine Ekle 'ye tıklayın
             1. Daha önce oluşturduğunuz kullanılabilirlik kümesini seçin
             1. NFS kümesinin sanal makinelerini seçin
-            1. Tamam 'a tıklayın
+            1. Tamam’a tıklayın.
          1. NW2 için NFS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
             * NW2 için bir arka uç havuzu oluşturmak için yukarıdaki adımları yineleyin
       1. Sistem durumu araştırmalarını oluşturma
@@ -197,7 +197,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
             1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
             1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-            1. Tamam 'a tıklayın
+            1. Tamam’a tıklayın.
          1. NW2 için bağlantı noktası 61001
             * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
       1. Yük Dengeleme kuralları
@@ -208,7 +208,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
             1. Protokol **TCP**'yi tut, bağlantı noktası **2049** girin
             1. Boşta kalma zaman aşımını 30 dakikaya yükselt
             1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-            1. Tamam 'a tıklayın
+            1. Tamam’a tıklayın.
          1. NW1 için 2049 UDP
             * NW1 için bağlantı noktası 2049 ve UDP için yukarıdaki adımları yineleyin
          1. NW2 için 2049 TCP
@@ -228,9 +228,9 @@ Bu NFS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [Azur
 
 ### <a name="configure-nfs-server"></a>NFS sunucusunu yapılandırma
 
-Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]** - düğüm 1 yalnızca uygulanabilir veya **[2]** - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
+1. **[A]** kurulum konak adı çözümlemesi
 
    Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin

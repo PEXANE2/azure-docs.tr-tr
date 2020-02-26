@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028841"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598179"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
 Bu makalede, Azure geçişi: Sunucu değerlendirmesi aracı ile fiziksel sunucuları değerlendirmek için Azure geçişi gerecinin nasıl ayarlanacağı açıklanır.
-
-> [!NOTE]
-> Burada henüz Azure geçişi portalında görmeyeceğiniz Özellikler bahsedildiğinde, ' ı kapatın. Bu, sonraki hafta içinde görünürler.
 
 Azure geçişi gereci, aşağıdakileri yapmak için Azure geçişi sunucu değerlendirmesi tarafından kullanılan hafif bir gereç.
 
@@ -44,7 +41,7 @@ Gereç için daraltılmış dosyayı indirin.
 2. **Makineleriniz > ** makinelerde **sanallaştırılmış mı?** , **sanallaştırılmamış/diğer**' e tıklayın.
 3. Sıkıştırılmış dosyayı indirmek için **İndir** ' e tıklayın.
 
-    ![VM 'yi indir](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![VM 'yi indir](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
@@ -55,17 +52,12 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 2. VHD için karma oluşturmak üzere aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  En son gereç sürümü için, oluşturulan karma bu ayarlarla eşleşmelidir.
-
-  **Algoritma** | **Karma değeri**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  En son gereç sürümü için, oluşturulan karma bu [ayarlarla](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)eşleşmelidir.
 
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
-= Yükleyici betiği şunları yapar:
+Yükleyici betiği şunları yapar:
 
 - Fiziksel sunucu keşfi ve değerlendirmesi için aracıları ve bir Web uygulamasını kurar.
 - Windows etkinleştirme hizmeti, IIS ve PowerShell ıSE dahil Windows rollerini yükler.
@@ -80,13 +72,16 @@ Betiği aşağıdaki gibi çalıştırın:
 1. Sıkıştırılmış dosyayı, Gereç barındıracak sunucuda bir klasöre ayıklayın.
 2. Yönetim (yükseltilmiş) ayrıcalığıyla yukarıdaki sunucuda PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasör olarak değiştirin.
-4. Aşağıdaki komutu çalıştırarak betiği çalıştırın:
+4. Aşağıdaki komutu çalıştırarak **AzureMigrateInstaller. ps1** adlı betiği çalıştırın:
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır.
 
+Herhangi bir sorun olması durumunda, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki komut dosyası günlüklerine erişebilirsiniz.
 
+> [!NOTE]
+> Lütfen mevcut bir Azure geçişi gereci üzerinde Azure geçişi yükleyicisi betiğini çalıştırmayın.
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
@@ -102,7 +97,7 @@ Gereci ilk kez ayarlayın.
 2. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-        - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDN biçiminde belirtin.
+        - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDNbiçiminde belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
@@ -128,7 +123,7 @@ Gerecden fiziksel sunuculara bağlanın ve bulmayı başlatın.
 2. Kimlik bilgileri, **Kullanıcı adı** ve **parola** için **işletim sistemini**, kolay adı belirtin ve **Ekle**' ye tıklayın.
 Her biri Windows ve Linux sunucuları için bir kimlik bilgileri kümesi ekleyebilirsiniz.
 4. Sunucuya bağlanmak için sunucu **Ekle**' ye tıklayın ve sunucu ayrıntılarını BELIRTIN-FQDN/IP adresi ve kimlik bilgilerinin kolay adı (satır başına bir giriş).
-3. **Doğrula**' ya tıklayın. Doğrulamadan sonra, keşfedilebilir sunucu listesi gösterilir.
+3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, keşfedilebilir sunucu listesi gösterilir.
     - Bir sunucu için doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
     - Bir sunucuyu kaldırmak için > **Sil**' i seçin.
 4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.

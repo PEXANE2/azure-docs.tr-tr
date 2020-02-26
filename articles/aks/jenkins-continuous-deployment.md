@@ -2,17 +2,16 @@
 title: Öğretici-Jenkins ile GitHub 'dan Azure Kubernetes Service 'e (AKS) dağıtma
 description: GitHub ve sürekli dağıtım (CD) ile Azure Kubernetes Service (AKS) ile sürekli tümleştirme (CI) için Jenkins 'i ayarlama
 services: container-service
-ms.service: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: e46e2c2933ee9afda860b68b10c135ac75a5d247
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fd754b539a9b0ba3d47ddd2228365dbd09d6e6df
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263933"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595493"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Öğretici: Jenkins sürekli tümleştirme ve dağıtım ile GitHub 'dan Azure Kubernetes Service 'e (AKS) dağıtma
 
@@ -52,7 +51,7 @@ Bu makalede, bir veya daha fazla pods 'de barındırılan bir Web arabirimi içe
 > [!NOTE]
 > Örnek Azure oy uygulaması, Linux düğümünde çalışmak üzere zamanlanmış bir Linux Pod kullanır. Bu makalede özetlenen akış, Windows Server düğümünde zamanlanan bir Windows Server pod için de geçerlidir.
 
-Örnek uygulama için aşağıdaki GitHub deposunu çatalla [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Depoyu kendi GitHub hesabınızla çatallamak için sağ üst köşedeki **Çatal Oluştur** düğmesini seçin.
+Örnek uygulama için aşağıdaki GitHub deposunu çatalla [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Depo için GitHub hesabınızda çatal oluşturmak üzere sağ üst köşedeki **Fork** (Çatal Oluştur) düğmesini seçin.
 
 Çatalınızı geliştirme sisteminize kopyalayın. Bu depoyu kopyalarken çatalınızın URL 'sini kullandığınızdan emin olun:
 

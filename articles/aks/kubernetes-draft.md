@@ -3,16 +3,15 @@ title: Azure Kubernetes hizmeti (AKS) üzerinde taslak ile geliştirme
 description: AKS ve Azure Container Registry taslağı kullanın
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292971"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595230"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Hızlı başlangıç: taslak ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
 
@@ -21,7 +20,7 @@ Taslak, bir Kubernetes kümesinde paket oluşturma ve uygulama kapsayıcıların
 Bu makalede, AKS üzerinde bir uygulamayı paketlemek ve çalıştırmak için taslak kullanımı gösterilmektedir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).

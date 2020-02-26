@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521793"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603233"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Yasal uyumluluk panonuzda dinamik uyumluluk paketlerine güncelleştirme (Önizleme)
 
@@ -77,4 +77,3 @@ Diğer ilgili malzemeler için aşağıdaki makalelere bakın:
 - [Güvenlik Merkezi mevzuata uyumluluğu panosu](security-center-compliance-dashboard.md)
 - [Güvenlik ilkeleriyle çalışma](tutorial-security-policy.md)
 - [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md) -Azure kaynaklarınızın korunmasına yardımcı olmak Için Azure Güvenlik Merkezi 'nde önerilerin nasıl kullanılacağını öğrenin.
-- [Azure Güvenlik Merkezi SSS](security-center-faq.md) -Güvenlik Merkezi 'ni kullanma hakkında sık sorulan soruların yanıtlarını alın.

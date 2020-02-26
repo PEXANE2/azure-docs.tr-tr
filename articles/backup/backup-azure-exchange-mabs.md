@@ -4,12 +4,12 @@ description: Azure Backup kullanarak bir Exchange sunucusunu nasıl yedekleyece�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 051e33e9340a5ee788011254bb2cf88029ba1505
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173119"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583852"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu bir Exchange Server 'ı Azure 'a yedekleme
 
@@ -23,8 +23,8 @@ Devam etmeden önce Azure Backup Sunucusu [yüklendiğinden ve hazırlandığın
 
 MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izleyin:
 
-1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](https://technet.microsoft.com/library/Hh758204.aspx).
-2. **Yönetim > aracıları** ' na tıklayarak aracıyı Exchange sunucusuna yükleyip mabs Yönetici Konsolu >. Ayrıntılı adımlar için bkz. [MABS koruma aracısını yüklemeyin](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
+1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
+2. **Yönetim > aracıları** ' na tıklayarak aracıyı Exchange sunucusuna yükleyip mabs Yönetici Konsolu >. Ayrıntılı adımlar için bkz. [MABS koruma aracısını yüklemeyin](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange Server için bir koruma grubu oluşturun
 
@@ -34,7 +34,7 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
 4. Korumak istediğiniz Exchange Server veritabanını seçin ve **İleri**' ye tıklayın.
 
    > [!NOTE]
-   > Exchange 2013 ' i koruyorsanız [exchange 2013 önkoşullarını](https://technet.microsoft.com/library/dn751029.aspx)kontrol edin.
+   > Exchange 2013 ' i koruyorsanız [exchange 2013 önkoşullarını](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))kontrol edin.
    >
    >
 
@@ -68,10 +68,10 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
 11. Kullanılabilir disk alanını gözden geçirin ve ardından **İleri**' ye tıklayın.
 12. MAB sunucusunun ilk çoğaltmayı oluşturacak zamanı seçin ve ardından **İleri**' ye tıklayın.
 13. Tutarlılık denetimi seçeneklerini belirleyin ve ardından **İleri**' ye tıklayın.
-14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örneğin:
+14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örnek:
 
     ![Çevrimiçi koruma verilerini belirtin](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örneğin:
+15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örnek:
 
     ![Çevrimiçi Yedekleme zamanlamasını belirtin](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

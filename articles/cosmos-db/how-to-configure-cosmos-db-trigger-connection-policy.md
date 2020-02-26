@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093612"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604956"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi tarafından kullanılan bağlantı ilkesini yapılandırma
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Cosmos hesabınıza bağlanmak üzere Cosmos DB için Azure I
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>Bağlantı modunu ve protokolünü değiştirme
 
-İstemci bağlantı ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: **bağlantı modu** ve **bağlantı protokolü**. Cosmos DB için Azure Işlevleri tetikleyicisi tarafından kullanılan varsayılan bağlantı modunu ve protokolünü ve tüm [Azure Cosmos DB bağlamalarını](../azure-functions/functions-bindings-cosmosdb-v2.md#output)değiştirebilirsiniz. Varsayılan ayarları değiştirmek için Azure işlevleri projenizde veya Azure işlevleri uygulamanızda `host.json` dosyayı bulmanız ve aşağıdaki [ek ayarı](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)eklemeniz gerekir:
+İstemci bağlantı ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: **bağlantı modu** ve **bağlantı protokolü**. Cosmos DB için Azure Işlevleri tetikleyicisi tarafından kullanılan varsayılan bağlantı modunu ve protokolünü ve tüm [Azure Cosmos DB bağlamalarını](../azure-functions/functions-bindings-cosmosdb-v2-output.md)değiştirebilirsiniz. Varsayılan ayarları değiştirmek için Azure Işlevleri projenizde veya Azure Işlevleri uygulamanızda `host.json` dosyasını bulmanız ve aşağıdaki [ek ayarı](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)eklemeniz gerekir:
 
 ```js
 {
@@ -34,9 +34,9 @@ Bu makalede, Azure Cosmos hesabınıza bağlanmak üzere Cosmos DB için Azure I
 }
 ```
 
-Burada `connectionMode` istenen bağlantı moduna (doğrudan veya ağ geçidine) ve `protocol` istenen bağlantı protokolüne (TCP veya https) sahip olmanız gerekir. 
+`connectionMode`, istenen bağlantı moduna (doğrudan veya ağ geçidine) sahip olmalı ve istenen bağlantı protokolünü (TCP veya https) `protocol`. 
 
-Azure işlevleri projeniz Azure işlevleri v1 çalışma zamanı ile çalışıyorsa, yapılandırmanın küçük bir ad farkı vardır; `documentDB` `cosmosDB`bunun yerine şunu kullanmalısınız:
+Azure Işlevleri projeniz Azure Işlevleri v1 çalışma zamanı ile çalışıyorsa, yapılandırmanın hafif bir ad farkı varsa, `cosmosDB`yerine `documentDB` kullanmanız gerekir:
 
 ```js
 {

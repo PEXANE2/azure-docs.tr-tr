@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93baf275e93c28283836a92c71eb9b24151392fc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699588"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598604"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak Azure dosya paylaşımları oluşturma ve yönetme
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure CLI kullanarak [Azure dosya paylaşımları](storage-files-introduction.md) ile çalışmanın temel kuralları gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -25,43 +25,49 @@ Azure CLI’yı yerel olarak yükleyip kullanmaya karar verirseniz, bu makaledek
 
 Varsayılan olarak, Azure CLI komutları JavaScript Nesne Gösterimi (JSON) döndürür. JSON, REST API'lerinden ileti gönderip almanın standart yoludur. JSON yanıtlarıyla çalışmayı kolaylaştırmak için, bu kılavuzdaki bazı örneklerde Azure CLI komutları üzerinde *query* parametresi kullanılır. Bu parametre, JSON ayrıştırmak için [JMESPath sorgu dilini](http://jmespath.org/) kullanır. JMESPath sorgu dilini takip ederek Azure CLI komutlarının sonuçlarını kullanma hakkında daha fazla bilgi almak için bkz. [JMESPath öğreticisi](http://jmespath.org/tutorial.html).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-Azure CLI'yı yerel olarak kullanıyorsanız, bir komut istemi açın ve henüz yapmadıysanız Azure'da oturum açın.
-
-```bash 
-az login
-```
-
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Henüz bir Azure kaynak grubunuz yoksa, [az group create](/cli/azure/group) komutunu kullanarak bir tane oluşturabilirsiniz. 
 
-Aşağıdaki örnek *EastUS* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek, *Batı ABD 2* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive 
-az group create --name myResourceGroup --location eastus
+export resourceGroupName="myResourceGroup"
+region="westus2"
+
+az group create \
+    --name $resourceGroupName \
+    --location $region \
+    --output none
 ```
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 Depolama hesabı, Azure dosya paylaşımlarını veya bloblar veya sorgular gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzudur. Bir depolama hesabında sınırsız sayıda dosya paylaşımı olabilir. Bir paylaşım, depolama hesabının kapasite limitlerine kadar sınırsız sayıda dosyayı depolayabilir.
 
-Aşağıdaki örnekte, [az storage account create](/cli/azure/storage/account) komutu kullanılarak *mystorageaccount\<random number\>* adlı bir depolama hesabı oluşturulur ve bu depolama hesabının adı `$STORAGEACCT` değişkenine yerleştirilir. Depolama hesabı adları benzersiz olmalıdır; bu nedenle "mystorageacct" öğesini benzersiz bir adla değiştirdiğinizden emin olun.
+Aşağıdaki örnek, [az Storage Account Create](/cli/azure/storage/account) komutunu kullanarak bir depolama hesabı oluşturur. Depolama hesabı adları benzersiz olmalıdır; bu nedenle `$RANDOM` kullanarak adın sonuna bir sayı ekleyip adı benzersiz hale getirin.
 
 ```azurecli-interactive 
-STORAGEACCT=$(az storage account create \
-    --resource-group "myResourceGroup" \
-    --name "mystorageacct" \
-    --location eastus \
+export storageAccountName="mystorageacct$RANDOM"
+
+az storage account create \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --location $region \
+    --kind StorageV2 \
     --sku Standard_LRS \
-    --query "name" | tr -d '"')
+    --enable-large-file-share \
+    --output none
 ```
+
+> [!Note]  
+> 5 TiB 'den büyük olan paylaşımlar (paylaşım başına en fazla 100 TiB 'ye kadar) yalnızca yerel olarak yedekli (LRS) ve bölge yedekli (ZRS) depolama hesaplarında kullanılabilir. Coğrafi olarak yedekli (GRS) veya coğrafi bölge-yedekli (GZRS) depolama hesabı oluşturmak için `--enable-large-file-share` parametresini kaldırın.
 
 ### <a name="get-the-storage-account-key"></a>Depolama hesabı anahtarını alma
 Depolama hesabı anahtarları, depolama hesabındaki kaynaklara erişimi denetler. Bu anahtarlar, depolama hesabını oluşturduğunuzda otomatik olarak oluşturulur. [az storage account keys list](/cli/azure/storage/account/keys) komutunu kullanarak depolama hesabınızın depolama hesabı anahtarlarını alabilirsiniz: 
 
 ```azurecli-interactive 
-STORAGEKEY=$(az storage account keys list \
-    --resource-group "myResourceGroup" \
-    --account-name $STORAGEACCT \
+export storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
     --query "[0].value" | tr -d '"')
 ```
 
@@ -69,10 +75,14 @@ STORAGEKEY=$(az storage account keys list \
 Artık ilk Azure dosya paylaşımınızı oluşturabilirsiniz. Dosya paylaşımlarını oluşturmak için [az storage share create](/cli/azure/storage/share) komutunu kullanın. Bu örnekte *myshare* adlı bir Azure dosya paylaşımı oluşturulur: 
 
 ```azurecli-interactive
+shareName="myshare"
+
 az storage share create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" 
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $shareName \
+    --quota 1024 \
+    --output none
 ```
 
 Paylaşım adları yalnızca küçük harf, sayı ve tek kısa çizgi içerebilir (ancak kısa çizgiyle başlayamaz). Dosya paylaşımlarının ve dosyaların adlandırılması hakkında tüm ayrıntılara ulaşmak için bkz. [Paylaşım, dizin, dosya ve meta verileri adlandırma ve bunlara başvuruda bulunma](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
@@ -86,13 +96,13 @@ Bir dosya paylaşımını SMB ile bağlayabilmeniz için işletim sisteminize g�
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Dosya REST protokolü ile bir Azure dosya paylaşımını kullanma 
-Dosya REST protokolü doğrudan ile doğrudan çalışabilir (el ile REST HTTP çağrıları), ancak dosya REST protokolünü kullanmanın en yaygın yolu Azure CLı, [Azure PowerShell modülünü](storage-how-to-use-files-powershell.md)veya bir Azure depolama SDK 'sını, hepsi de seçtiğiniz komut dosyası/programlama dilinde Dosya REST Protokolü etrafında iyi bir sarmalayıcı.  
+Dosya REST protokolü doğrudan ile doğrudan çalışabilir (el ile REST HTTP çağrıları), ancak dosya REST protokolünü kullanmanın en yaygın yolu, Azure CLı 'yi, [Azure PowerShell modülünü](storage-how-to-use-files-powershell.md)veya bir Azure depolama SDK 'sını kullanarak tercih ettiğiniz komut dosyası/programlama DILINDE Dosya REST Protokolü etrafında iyi bir sarmalayıcı sağlar.  
 
 Kullanabilmeyi umdukları mevcut uygulama ve araçlarını kullanmalarına izin vereceği için Azure Dosyaları kullanıcılarının çoğunluğunun Azure dosya paylaşımları ile SMP protokolü üzerinden çalışmasını bekliyoruz, ancak SMB yerine Dosya REST API'si kullanmanın aşağıdaki gibi bazı avantajları bulunmaktadır:
 
 - Dosya paylaşımınıza (SMB üzerinden dosya paylaşımı bağlayamayan) Azure Bash Cloud Shell'den göz atıyorsanız.
-- 445 numaralı bağlantı noktasına sahip olmayan şirket içi istemciler gibi bir SMB paylaşımının takılamaz bir istemciden bir betiği veya uygulamayı yürütmeniz gerekir.
 - [Azure İşlevleri](../../azure-functions/functions-overview.md) gibi sunucusuz kaynaklardan yararlanıyorsanız. 
+- Yedekleme veya virüsten koruma taraması yapma gibi birçok Azure dosya paylaşımı ile etkileşime girebilen bir değer ekleme hizmeti oluşturuyorsunuz.
 
 Aşağıdaki örneklerde Azure CLı kullanarak Azure dosya paylaşımınızı Dosya REST protokolüyle nasıl işleyebileceğiniz gösterilmektedir. 
 
@@ -101,23 +111,25 @@ Azure dosya paylaşımınızın kökünde *myDirectory* adlı yeni bir dizin olu
 
 ```azurecli-interactive
 az storage directory create \
-   --account-name $STORAGEACCT \
-   --account-key $STORAGEKEY \
-   --share-name "myshare" \
-   --name "myDirectory" 
+   --account-name $storageAccountName \
+   --account-key $storageAccountKey \
+   --share-name $shareName \
+   --name "myDirectory" \
+   --output none
 ```
 
-### <a name="upload-a-file"></a>Karşıya dosya yükle
+### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 [`az storage file upload`](/cli/azure/storage/file) komutunu kullanarak bir dosyayı karşıya yükleme işlemini göstermek için öncelikle Cloud Shell karalama sürücüsünde karşıya yüklenecek bir dosya oluşturun. Aşağıdaki örnekte dosyayı oluşturup karşıya yüklersiniz:
 
 ```azurecli-interactive
-date > ~/clouddrive/SampleUpload.txt
+cd ~/clouddrive/
+date > SampleUpload.txt
 
 az storage file upload \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --source "~/clouddrive/SampleUpload.txt" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
+    --source "SampleUpload.txt" \
     --path "myDirectory/SampleUpload.txt"
 ```
 
@@ -127,49 +139,55 @@ Dosyayı karşıya yükledikten sonra, [`az storage file list`](/cli/azure/stora
 
 ```azurecli-interactive
 az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
     --path "myDirectory" \
     --output table
 ```
 
-### <a name="download-a-file"></a>Dosya indir
+### <a name="download-a-file"></a>Dosya indirme
 Cloud Shell karalama sürücünüze yüklediğiniz dosyanın bir kopyasını indirmek için [`az storage file download`](/cli/azure/storage/file) komutunu kullanabilirsiniz:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
-rm -rf ~/clouddrive/SampleDownload.txt
+rm -f SampleDownload.txt
 
 az storage file download \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
     --path "myDirectory/SampleUpload.txt" \
-    --dest "~/clouddrive/SampleDownload.txt"
+    --dest "SampleDownload.txt" \
+    --output none
 ```
 
 ### <a name="copy-files"></a>Dosyaları kopyalama
-Yaygın görevlerden biri dosyaları bir dosya paylaşımından diğerine veya Azure Blob depolama kapsayıcısına/kapsayıcısından kopyalamaktır. Bu işlevselliği göstermek için yeni bir paylaşım oluşturun. Bu yeni paylaşıma yüklediğiniz dosyayı [az storage file copy](/cli/azure/storage/file/copy) komutunu kullanarak kopyalayın: 
+Ortak bir görev, dosyaları bir dosya paylaşımından başka bir dosya paylaşımında kopyalamak için kullanılır. Bu işlevselliği göstermek için yeni bir paylaşım oluşturun. Bu yeni paylaşıma yüklediğiniz dosyayı [az storage file copy](/cli/azure/storage/file/copy) komutunu kullanarak kopyalayın: 
 
 ```azurecli-interactive
+otherShareName="myshare2"
+
 az storage share create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare2"
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $otherShareName \
+    --quota 1024 \
+    --output none
 
 az storage directory create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare2" \
-    --name "myDirectory2"
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $otherShareName \
+    --name "myDirectory2" \
+    --output none
 
 az storage file copy start \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --source-share "myshare" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --source-share $shareName \
     --source-path "myDirectory/SampleUpload.txt" \
-    --destination-share "myshare2" \
+    --destination-share $otherShareName \
     --destination-path "myDirectory2/SampleCopy.txt"
 ```
 
@@ -177,38 +195,41 @@ az storage file copy start \
 
 ```azurecli-interactive
 az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare2" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $otherShareName \
+    --path "myDirectory2" \
     --output table
 ```
 
-`az storage file copy start` komutu Azure dosya paylaşımları ile Azure Blob depolama kapsayıcıları arasında dosya taşıma işlemleri için kullanışlı olsa da, daha büyük taşıma işlemlerinde AzCopy kullanmanız önerilir. (Taşınan dosyaların sayısı veya boyutu bakımından daha büyük.) [Linux için AzCopy](../common/storage-use-azcopy-linux.md) ve [Windows için AzCopy](../common/storage-use-azcopy.md) hakkında daha fazla bilgi edinin. AzCopy yerel olarak yüklü olmalıdır. AzCopy, Cloud Shell’de kullanılamaz. 
+`az storage file copy start` komutu Azure dosya paylaşımları arasında dosya taşıma işlemleri için uygun olsa da, geçişler ve daha büyük veri hareketleri için Windows üzerinde macOS ve Linux ve `robocopy` `rsync` önerilir. `rsync` ve `robocopy`, Dosyasıest API 'si yerine veri taşımalarını gerçekleştirmek için SMB 'yi kullanır.
 
 ## <a name="create-and-manage-share-snapshots"></a>Paylaşım anlık görüntülerini oluşturma ve yönetme
 Azure dosya paylaşımıyla yerine getirebileceğiniz bir diğer yararlı görev ise paylaşım anlık görüntüleri oluşturmaktır. Anlık görüntü, Azure dosya paylaşımının zamanın bir noktasındaki kopyasını saklar. Paylaşım anlık görüntüleri, zaten tanıyor olabileceğiniz bazı işletim sistemi teknolojilerine benzerdir:
 
-- Linux sistemleri için [Mantıksal Birim Yöneticisi (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) anlık görüntüleri
-- macOS için [Apple Dosya Sistemi (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) anlık görüntüleri
-- NTFS ve ReFS gibi Windows dosya sistemleri için [Birim Gölge Kopyası Hizmeti (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal). [`az storage share snapshot`](/cli/azure/storage/share) komutunu kullanarak bir paylaşım anlık görüntüsü oluşturabilirsiniz:
+- Linux sistemleri için [mantıksal birim Yöneticisi (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) anlık görüntüleri.
+- macOS için [Apple Dosya Sistemi (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) anlık görüntüleri.
+- NTFS ve ReFS gibi Windows dosya sistemleri için [birim gölge kopyası hizmeti (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) .
+ 
+[`az storage share snapshot`](/cli/azure/storage/share) komutunu kullanarak bir paylaşım anlık görüntüsü oluşturabilirsiniz:
 
 ```azurecli-interactive
-SNAPSHOT=$(az storage share snapshot \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
+snapshot=$(az storage share snapshot \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $shareName \
     --query "snapshot" | tr -d '"')
 ```
 
 ### <a name="browse-share-snapshot-contents"></a>Paylaşım anlık görüntüsünün içeriğine göz atma
-`$SNAPSHOT` değişkeninde yakaladığınız paylaşım anlık görüntüsünün zaman damgasını `az storage file list` komutuna geçirerek, paylaşım anlık görüntüsünün içeriğine göz atabilirsiniz:
+`$snapshot` değişkeninde yakaladığınız paylaşım anlık görüntüsünün zaman damgasını `az storage file list` komutuna geçirerek, paylaşım anlık görüntüsünün içeriğine göz atabilirsiniz:
 
 ```azurecli-interactive
 az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --snapshot $SNAPSHOT \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
+    --snapshot $snapshot \
     --output table
 ```
 
@@ -217,10 +238,11 @@ Paylaşımınız için aldığınız anlık görüntülerin listesini görmek i�
 
 ```azurecli-interactive
 az storage share list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
     --include-snapshot \
-    --query "[? name=='myshare' && snapshot!=null]" | tr -d '"'
+    --query "[? name== '$shareName' && snapshot!=null].snapshot" \
+    --output tsv
 ```
 
 ### <a name="restore-from-a-share-snapshot"></a>Paylaşım anlık görüntüsünden geri yükleme
@@ -229,70 +251,75 @@ Daha önce kullandığınız `az storage file copy start` komutunu kullanarak do
 ```azurecli-interactive
 # Delete SampleUpload.txt
 az storage file delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --path "myDirectory/SampleUpload.txt"
- # Build the source URI for a snapshot restore
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
+    --path "myDirectory/SampleUpload.txt" \
+    --output none
+
+# Build the source URI for a snapshot restore
 URI=$(az storage account show \
-    --resource-group "myResourceGroup" \
-    --name $STORAGEACCT \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
     --query "primaryEndpoints.file" | tr -d '"')
- URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
- # Restore SampleUpload.txt from the share snapshot
+
+URI=$URI$shareName"/myDirectory/SampleUpload.txt?sharesnapshot="$snapshot
+
+# Restore SampleUpload.txt from the share snapshot
 az storage file copy start \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
     --source-uri $URI \
-    --destination-share "myshare" \
+    --destination-share $shareName \
     --destination-path "myDirectory/SampleUpload.txt"
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Paylaşım anlık görüntüsünü silme
-[`az storage share delete`](/cli/azure/storage/share) komutunu kullanarak bir paylaşım anlık görüntüsünü silebilirsiniz. `--snapshot` parametresine `$SNAPSHOT` başvurusunu içeren değişkeni kullanın:
+[`az storage share delete`](/cli/azure/storage/share) komutunu kullanarak bir paylaşım anlık görüntüsünü silebilirsiniz. `$SNAPSHOT` parametresine `--snapshot` başvurusunu içeren değişkeni kullanın:
 
 ```azurecli-interactive
 az storage share delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
-    --snapshot $SNAPSHOT
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $shareName \
+    --snapshot $snapshot \
+    --output none
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 İşiniz bittiğinde, [`az group delete`](/cli/azure/group) komutunu kullanarak kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz: 
 
 ```azurecli-interactive 
-az group delete --name "myResourceGroup"
+az group delete --name $resourceGroupName
 ```
 
 Alternatif olarak, kaynakları ayrı ayrı kaldırabilirsiniz.
 - Bu makale boyunca oluşturduğunuz Azure dosya paylaşımlarını kaldırmak için:
 
     ```azurecli-interactive
-    az storage share delete \
-        --account-name $STORAGEACCT \
-        --account-key $STORAGEKEY \
-        --name "myshare" \
-        --delete-snapshots include
-
-    az storage share delete \
-        --account-name $STORAGEACCT \
-        --account-key $STORAGEKEY \
-        --name "myshare2" \
-        --delete-snapshots include
+    az storage share list \
+            --account-name $storageAccountName \
+            --account-key $storageAccountKey \
+            --query "[].name" \
+            --output tsv | \
+        xargs -L1 bash -ec '\
+            az storage share delete \
+                --account-name "$storageAccountName" \
+                --account-key "$storageAccountKey" \
+                --name $0 \
+                --delete-snapshots include \
+                --output none'
     ```
 
 - Depolama hesabını kaldırmak için. (Bu işlem, oluşturduğunuz Azure dosya paylaşımlarını ve bir Azure Blob depolama kapsayıcısı gibi oluşturmuş olabileceğiniz diğer depolama kaynaklarını örtülü olarak kaldırır.)
 
     ```azurecli-interactive
     az storage account delete \
-        --resource-group "myResourceGroup" \
-        --name $STORAGEACCT \
+        --resource-group $resourceGroupName \
+        --name $storageAccountName \
         --yes
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
 > [!div class="nextstepaction"]
 > [Azure Dosyaları nedir?](storage-files-introduction.md)

@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) tarafından kullanılmak üzere bir NFS (a
 description: Azure Kubernetes Service (aks) içinde Pod ile kullanmak üzere bir NFS Ubuntu Linux sunucusu birimini el ile oluşturmayı öğrenin
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063824"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596632"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir NFS (ağ dosya sistemi) Linux sunucu birimini el ile oluşturma ve kullanma
 Kapsayıcılar arasında veri paylaşımı, genellikle kapsayıcı tabanlı hizmet ve uygulamaların gerekli bir bileşenidir. Genellikle, bir dış kalıcı birimle aynı bilgilere erişmesi gereken çeşitli yığınlara sahip olursunuz.    

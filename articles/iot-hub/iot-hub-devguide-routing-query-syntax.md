@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064827"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598213"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu sözdizimi
 
@@ -66,7 +66,7 @@ Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti sistemi özelliklerindeki bir sorgunun, `$` simgesiyle ön eki olması gerekir. Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve `$`simgesiyle önüne kullanılmamalıdır. Bir uygulama özelliği adı `$`ile başlıyorsa IoT Hub bunu sistem özelliklerinde arar ve bu, uygulama özelliklerine bakar. Örneğin: 
+İleti sistemi özelliklerindeki bir sorgunun, `$` simgesiyle ön eki olması gerekir. Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve `$`simgesiyle önüne kullanılmamalıdır. Bir uygulama özelliği adı `$`ile başlıyorsa IoT Hub bunu sistem özelliklerinde arar ve bu, uygulama özelliklerine bakar. Örnek: 
 
 Sistem özelliği Çekiştenkodlamaya göre sorgulamak için 
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 Desteklenen işleçlerin ve işlevlerin tam listesi [ifade ve koşullarda](iot-hub-devguide-query-language.md#expressions-and-conditions)gösterilmiştir.
 
-## <a name="message-routing-query-based-on-message-body"></a>İleti gövdesine dayalı ileti yönlendirme sorgusu 
+## <a name="message-routing-query-based-on-message-body"></a>İleti gövdesine dayalı ileti yönlendirme sorgusu
 
 İleti gövdesinde sorgulamayı etkinleştirmek için ileti, UTF-8, UTF-16 veya UTF-32 ' de bir JSON kodlamalı olmalıdır. `contentType` `application/JSON` olarak ayarlanması ve sistem özelliğindeki desteklenen UTF kodlamalarının birine `contentEncoding` gerekir. Bu özellikler belirtilmemişse, IoT Hub ileti gövdesinde sorgu ifadesini değerlendirmeyecektir. 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. İçinde C#bir örnek görmek Isterseniz, [Azure IoT C# örnekleri](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)' ni indirin. Master. zip dosyasını ayıklayın. Visual Studio Solution *SimulatedDevice*'ın program.cs dosyası, iletilerin nasıl kodlanacağını ve bir IoT Hub nasıl göndereceğini gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program.cs 'in en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi de vardır. 
+
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 

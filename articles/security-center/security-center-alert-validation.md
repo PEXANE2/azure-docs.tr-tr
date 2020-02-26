@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748469"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604574"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulaması (EICAR test dosyası)
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -79,5 +79,4 @@ Bu makalede uyarıları doğrulama işlemine giriş yaptınız. Artık bu doğru
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
 * [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) -farklı güvenlik uyarısı türleri hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi sorun giderme kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) -Güvenlik Merkezi 'nde sık karşılaşılan sorunları giderme hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi hakkında SSS](security-center-faq.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.
 * [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) -Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935335"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605721"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
@@ -34,48 +34,48 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
- Yerel ayar | Dil | Desteklenen | Özelleştirmeler
+ Yerel Ayar | Dil | Destekleniyor | Özelleştirmeler
 ------|------------|-----------|-------------
-`ar-AE` | Arapça (UAE) | Evet | Hayır
-`ar-BH` | Arapça (Bahreyn) | Evet | Dil modeli
-`ar-EG` | Arapça (Mısır) modern standart | Evet | Dil modeli
-`ar-KW` | Arapça (Kuveyt) | Evet | Hayır
-`ar-QA` | Arapça (Qtor) | Evet | Hayır
-`ar-SA` | Arapça (Suudi Arabistan) | Evet | Hayır
-`ca-ES` | Katalanca | Evet | Dil modeli
-`da-DK` | Danca (Danimarka) | Evet | Dil modeli
-`de-DE` | Almanca (Almanya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
-`en-AU` | İngilizce (Avustralya) | Evet | Akustik model<br>Dil modeli
-`en-CA` | İngilizce (Kanada) | Evet | Akustik model<br>Dil modeli
-`en-GB` | İngilizce (Birleşik Krallık) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
-`en-IN` | English (India) | Evet | Akustik model<br>Dil modeli
-`en-NZ` | İngilizce (Yeni Zelanda) | Evet | Akustik model<br>Dil modeli
-`en-US` | İngilizce (ABD) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
-`es-ES` | İspanyolca (İspanya) | Evet | Akustik model<br>Dil modeli
-`es-MX` | İspanyolca (Meksika) | Evet | Akustik model<br>Dil modeli
-`fi-FI` | Fince (Finlandiya) | Evet | Dil modeli
-`fr-CA` | Fransızca (Kanada) | Evet | Akustik model<br>Dil modeli
-`fr-FR` | Fransızca (Fransa) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
-`gu-IN` | Gucerat dili (Hindistan) | Evet | Dil modeli
-`hi-IN` | Hintçe (Hindistan) | Evet | Akustik model<br>Dil modeli
-`it-IT` | İtalyanca (İtalya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
-`ja-JP` | Japonca (Japonya) | Evet | Dil modeli
-`ko-KR` | Korece (Güney Kore) | Evet | Dil modeli
-`mr-IN` | Marathi dili (Hindistan) | Evet | Dil modeli
-`nb-NO` | Norveççe (Bokmal) (Norveç) | Evet | Dil modeli
-`nl-NL` | Hollanda dili (Hollanda) | Evet | Dil modeli
-`pl-PL` | Lehçe (Polonya) | Evet | Dil modeli
-`pt-BR` | Portekizce (Brezilya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
-`pt-PT` | Portekizce (Portekiz) | Evet | Dil modeli
-`ru-RU` | Rusça (Rusya) | Evet | Akustik model<br>Dil modeli
-`sv-SE` | İsveççe (İsveç) | Evet | Dil modeli
-`ta-IN` | Tamilce (Hindistan) | Evet | Dil modeli
-`te-IN` | Telugu dili (Hindistan) | Evet | Hayır
-`th-TH` | Tayca (Tayland) | Evet | Hayır
-`tr-TR` | Türkçe (Türkiye) | Evet | Hayır
-`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Evet | Akustik model<br>Dil modeli
-`zh-HK` | Çince (Cantoneo, geleneksel) | Evet | Dil modeli
-`zh-TW` | Çince (Tayvan Mandarin) | Evet | Dil modeli
+`ar-AE` | Arapça (UAE) | Yes | Hayır
+`ar-BH` | Arapça (Bahreyn) | Yes | Dil modeli
+`ar-EG` | Arapça (Mısır) modern standart | Yes | Dil modeli
+`ar-KW` | Arapça (Kuveyt) | Yes | Hayır
+`ar-QA` | Arapça (Qtor) | Yes | Hayır
+`ar-SA` | Arapça (Suudi Arabistan) | Yes | Hayır
+`ca-ES` | Katalanca | Yes | Dil modeli
+`da-DK` | Danca (Danimarka) | Yes | Dil modeli
+`de-DE` | Almanca (Almanya) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
+`en-AU` | İngilizce (Avustralya) | Yes | Akustik model<br>Dil modeli
+`en-CA` | İngilizce (Kanada) | Yes | Akustik model<br>Dil modeli
+`en-GB` | İngilizce (Birleşik Krallık) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
+`en-IN` | English (India) | Yes | Akustik model<br>Dil modeli
+`en-NZ` | İngilizce (Yeni Zelanda) | Yes | Akustik model<br>Dil modeli
+`en-US` | Türkçe | Yes | Akustik model<br>Dil modeli<br>Söylenişi
+`es-ES` | İspanyolca (İspanya) | Yes | Akustik model<br>Dil modeli
+`es-MX` | İspanyolca (Meksika) | Yes | Akustik model<br>Dil modeli
+`fi-FI` | Fince (Finlandiya) | Yes | Dil modeli
+`fr-CA` | Fransızca (Kanada) | Yes | Akustik model<br>Dil modeli
+`fr-FR` | Fransızca (Fransa) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
+`gu-IN` | Gucerat dili (Hindistan) | Yes | Dil modeli
+`hi-IN` | Hintçe (Hindistan) | Yes | Akustik model<br>Dil modeli
+`it-IT` | İtalyanca (İtalya) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
+`ja-JP` | Japonca (Japonya) | Yes | Dil modeli
+`ko-KR` | Korece (Güney Kore) | Yes | Dil modeli
+`mr-IN` | Marathi dili (Hindistan) | Yes | Dil modeli
+`nb-NO` | Norveççe (Bokmal) (Norveç) | Yes | Dil modeli
+`nl-NL` | Hollanda dili (Hollanda) | Yes | Dil modeli
+`pl-PL` | Lehçe (Polonya) | Yes | Dil modeli
+`pt-BR` | Portekizce (Brezilya) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
+`pt-PT` | Portekizce (Portekiz) | Yes | Dil modeli
+`ru-RU` | Rusça (Rusya) | Yes | Akustik model<br>Dil modeli
+`sv-SE` | İsveççe (İsveç) | Yes | Dil modeli
+`ta-IN` | Tamilce (Hindistan) | Yes | Dil modeli
+`te-IN` | Telugu dili (Hindistan) | Yes | Hayır
+`th-TH` | Tayca (Tayland) | Yes | Hayır
+`tr-TR` | Türkçe (Türkiye) | Yes | Hayır
+`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Yes | Akustik model<br>Dil modeli
+`zh-HK` | Çince (Cantoneo, geleneksel) | Yes | Dil modeli
+`zh-TW` | Çince (Tayvan Mandarin) | Yes | Dil modeli
 
 ## <a name="text-to-speech"></a>Metin okuma
 
@@ -92,12 +92,13 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 
 Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
+Yerel Ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
 --------|----------|--------|---------|------------
 `de-DE` | Almanca (Almanya) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (de-DE, KatjaNeural)" | "de-KatjaNeural"
-`en-US` | English (US) | Erkek | "Microsoft Server konuşma Metin Okuma sesi (en-US, GuyNeural)" | "en-US-GuyNeural"
-`en-US` | English (US) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (en-US, JessaNeural)" | "en-US-JessaNeural"
+`en-US` | {1&gt;İngilizce (ABD)&lt;1} | Kadın | "Microsoft Server konuşma Metin Okuma sesi (en-US, JessaNeural)" | "en-US-JessaNeural"
+`en-US` | {1&gt;İngilizce (ABD)&lt;1} | Erkek | "Microsoft Server konuşma Metin Okuma sesi (en-US, GuyNeural)" | "en-US-GuyNeural"
 `it-IT` | İtalyanca (İtalya) | Kadın |"Microsoft Server konuşma Metin Okuma sesi (It-IT, ElsaNeural)" | "It-IT-ElsaNeural"
+`pt-BR` | Portekizce (Brezilya) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (PT-BR, FranciscaNeural)" | "PT-BR-FranciscaNeural"
 `zh-CN` | Çince (ana kara) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
 Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğrenmek için bkz. [konuşma sen, biçimlendirme dili](speech-synthesis-markup.md#adjust-speaking-styles).
@@ -109,7 +110,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 75 ' den fazla standart ses, daha fazla 45 dilde ve yerel ayarlarda bulunabilir ve bu da metni sentezleştirilmiş konuşmaya dönüştürmenize olanak tanır. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
+Yerel Ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 -------|----------|---------|----------|----------
 <sup>1</sup>`ar-EG` | Arapça (Mısır) | Kadın | "Microsoft sunucu konuşma Sesli konuşmayı metne (ar-Örneğin, Hoda)" | "ar-EG-Hoda"
 `ar-SA` | Arapça (Suudi Arabistan) | Erkek | "Microsoft Server Konuşma metin konuşma ses (ar-SA, Naayf)" | "ar-SA-Naayf"
@@ -127,14 +128,14 @@ Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-AU, HayleyRUS)" | "en-AU-HayleyRUS"
 `en-CA` | İngilizce (Kanada) | Kadın | "Microsoft Server Konuşma metin konuşma ses (tr-CA, Gamze)" | "en-CA-Linda"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (tr-CA, HeatherRUS)" | "en-CA-Centherrus"
-`en-GB` | English (UK) | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-GB, Susan, Apollo)" | "en-GB-çiğdem-Apollo"
+`en-GB` | İngilizce (Birleşik Krallık) | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-GB, Susan, Apollo)" | "en-GB-çiğdem-Apollo"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-GB, HazelRUS)" | "en-GB-HazelRUS"
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (en-GB, George, Apollo)" | "en-GB-George-Apollo"
 `en-IE` | İngilizce (İrlanda) | Erkek | "Microsoft Server Konuşma metin konuşma ses (tr-IE, Sean)" | "en-IE-kemal"
 `en-IN` | English (India) | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-IN Heera, Apollo)" | "en-ın-heçi-Apollo"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-IN, PriyaRUS)" | "en-basit Yarus"
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (en-IN Ravi, Apollo)" | "en-ın-Ravi-Apollo"
-`en-US` | English (US) | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-US, ZiraRUS)" | "en-US-ZiraRUS"
+`en-US` | {1&gt;İngilizce (ABD)&lt;1} | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-US, ZiraRUS)" | "en-US-ZiraRUS"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-US, JessaRUS)" | "en-US-JessaRUS"
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (en-US, BenjaminRUS)" | "en-US-BenjaminRUS"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (en-US, Jessa24kRUS)" | "en-US-Jessa24kRUS"
@@ -157,14 +158,14 @@ Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (Merhaba-IN, Hemant)" | "Hi-IN-Hemant"
 `hr-HR` | Hırvatça | Erkek | "Microsoft Server Konuşma metin okuma ses (hr-HR, Matej)" | "HR-HR-Matej"
 `hu-HU` | Macarca | Erkek | "Microsoft Server Konuşma metin konuşma ses (hu-HU, Szabolcs)" | "HU-HU-Szacıvacs"
-`id-ID` | Endonezya dili| Erkek | "Microsoft Server Konuşma metin konuşma ses (-ID, Andika)" | "kimlik-KIMLIĞI-Andika"
+`id-ID` | Endonezce| Erkek | "Microsoft Server Konuşma metin konuşma ses (-ID, Andika)" | "kimlik-KIMLIĞI-Andika"
 `it-IT` | İtalyanca | Erkek | "Microsoft Server Konuşma metin konuşma ses (Cosimo, it-IT, Apollo)" | "It-IT-Cosımo-Apollo"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (it-IT, LuciaRUS)" | "It-IT-LuciaRUS"
 `ja-JP` | Japonca | Kadın | "Microsoft Server Konuşma metin okuma ses (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo"
 | | | Erkek | "Microsoft Server Konuşma metin okuma ses (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo"
 | | | Kadın | "Microsoft Server Konuşma metin okuma ses (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS"
 `ko-KR` | Korece | Kadın | "Microsoft Server Konuşma metin konuşma ses (ko-KR, HeamiRUS)" | "ko-KR-Heamırus"
-`ms-MY` | Malay dili | Erkek | "Microsoft Server Konuşma metin okuma ses (ms MY, Rizwan)" | "MS-MY-Rizwan"
+`ms-MY` | Malayca | Erkek | "Microsoft Server Konuşma metin okuma ses (ms MY, Rizwan)" | "MS-MY-Rizwan"
 `nb-NO` | Norveççe | Kadın | "Microsoft Server Konuşma metin okuma ses (nb-yok, HuldaRUS)" | "NB-hayır-HuldaRUS"
 `nl-NL` | Felemenkçe | Kadın | "Microsoft Server Konuşma metin okuma ses (nl-NL, HannaRUS)" | "nl-NL-HannaRUS"
 `pl-PL` | Lehçe | Kadın | "Microsoft Server Konuşma metin okuma ses (pl-PL, PaulinaRUS)" | "pl-PL-PaulinaRUS"
@@ -182,7 +183,7 @@ Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 `te-IN` | Telugu dili (Hindistan) | Kadın | "Microsoft Server Konuşma metin konuşma ses (metin-IN, Chitra)" | "te-Chitra"
 `th-TH` | Tay Dili | Erkek | "Microsoft Server Konuşma metin okuma ses (th-TH, Pattara)" | "TH-Pattara"
 `tr-TR` | Türkçe (Türkiye) | Kadın | "Microsoft Server Konuşma metin okuma ses (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
-`vi-VN` | Vietnam dili | Erkek | "Microsoft Server Konuşma metin okuma ses (vi-VN bir)" | "VI-VN-a"
+`vi-VN` | Vietnamca | Erkek | "Microsoft Server Konuşma metin okuma ses (vi-VN bir)" | "VI-VN-a"
 `zh-CN` | Çince (ana kara) | Kadın | "Microsoft Server Konuşma metin konuşma ses (zh-CN, HuihuiRUS)" | "zh-CN-Huihuırus"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo"
@@ -207,7 +208,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 
 ## <a name="speech-translation"></a>Konuşma çevirisi
 
-**Konuşma çevirisi** API, konuşma tanıma ve konuşma tanıma ve konuşma metin çevirisi için farklı dilleri destekler. Kaynak dilin her zaman konuşma-metin dili tablosundan olması gerekir. Hedef diller Çeviri hedef konuşma veya metin olmasına göre değişir. Gelen konuşmaya Çevir birden fazla [60 diller](https://www.microsoft.com/translator/business/languages/). [Konuşma birleştirme](language-support.md#text-languages)için bir dil alt kümesi mevcuttur.
+**Konuşma çevirisi** API 'si, konuşmaya konuşmaya ve konuşmadan metne dönüştürme için farklı dilleri destekler. Kaynak dilin her zaman konuşma-metin dili tablosundan olması gerekir. Hedef diller Çeviri hedef konuşma veya metin olmasına göre değişir. Gelen konuşmayı 60 ' den fazla [dile](https://www.microsoft.com/translator/business/languages/)çevirebilirsiniz. [Konuşma birleştirme](language-support.md#text-languages)için bir dil alt kümesi mevcuttur.
 
 ### <a name="text-languages"></a>Metin dilleri
 
@@ -239,7 +240,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Hintçe      | `hi`          |
 | Hmong Daw      | `mww`          |
 | Macarca      | `hu`          |
-| Endonezya dili      | `id`          |
+| Endonezce      | `id`          |
 | İrlanda dili      | `ga`          |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
@@ -251,7 +252,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |
 | Malgaşça      | `mg`          |
-| Malay dili      | `ms`          |
+| Malayca      | `ms`          |
 | Malayalam dili      | `ml`          |
 | Malta dili      | `mt`          |
 | Norveççe      | `nb`          |
@@ -278,7 +279,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Türkçe      | `tr`          |
 | Ukrayna dili      | `uk`          |
 | Urduca      | `ur`          |
-| Vietnam dili      | `vi`          |
+| Vietnamca      | `vi`          |
 | Gaelce      | `cy`          |
 | Yucatec Maya      | `yua`          |
 
@@ -286,4 +287,4 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma hizmeti deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [C# ' de Konuşma tanıma öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Bkz. konuşmayı tanımaC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

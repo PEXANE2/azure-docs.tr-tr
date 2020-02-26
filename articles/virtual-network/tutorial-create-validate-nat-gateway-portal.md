@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429659"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587014"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
@@ -30,16 +30,13 @@ Bu öğreticide, Azure 'da sanal makineler için giden bağlantı sağlamak üze
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-> [!IMPORTANT]
-> Aboneliğinizde sanal ağ NAT [önizlemesi etkinleştirildikten](./nat-overview.md#enable-preview) sonra, portala erişmek için https://aka.ms/natportal kullanın.
-
-[Azure Portal](https://aka.ms/natportal) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Kaynağı giden trafik için hazırlama
 
 Bir tam test ortamının yapılandırması ve bir sonraki adımlarda testlerin yürütülmesi konusunda size kılavuzluk edeceğiz. Sonraki adımlarda oluşturduğumuz NAT ağ geçidi kaynağını kullanacak kaynak ile başlayacağız.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluştur
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
 Bir VM 'yi dağıtmadan ve NAT ağ geçidinizi kullanabilmeniz için, kaynak grubunu ve sanal ağı oluşturmanız gerekir.
 

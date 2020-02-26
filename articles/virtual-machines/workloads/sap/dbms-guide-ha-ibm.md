@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 02/25/2020
 ms.author: juergent
-ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a4b3378909d40fe2b770f70f83054a97f2646bd3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783776"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602368"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -126,7 +126,7 @@ Bir IBM DB2 yapılandırması dağıtmak için aşağıdaki adımları izlemeniz
 
 Dağıtımı yürütmeden önce planlama işlemini doldurun. Planlama, Azure 'da HADR ile bir DB2 yapılandırmasına dağıtım temelini oluşturur. IDB db2 LUW planlamasının parçası olması gereken anahtar öğeleri (SAP ortamının veritabanı bölümü) aşağıdaki tabloda listelenmiştir:
 
-| Konu | Kısa açıklama |
+| Konu başlığı | Kısa açıklama |
 | --- | --- |
 | Azure kaynak gruplarını tanımlama | VM, VNet, Azure Load Balancer ve diğer kaynakları dağıttığınız kaynak grupları. Mevcut veya yeni olabilir. |
 | Sanal ağ/alt ağ tanımı | IBM DB2 ve Azure Load Balancer VM 'lerinin dağıtıldığı yer. Var olan veya yeni oluşturulmuş olabilir. |
@@ -421,6 +421,9 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer'ı yapılandırma
 Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
+
+> [!NOTE]
+> Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
 
 1. Ön uç IP havuzu oluşturun:
 

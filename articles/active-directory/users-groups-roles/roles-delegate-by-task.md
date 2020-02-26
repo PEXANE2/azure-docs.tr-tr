@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559020"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596768"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -45,14 +45,14 @@ Görev | En az ayrıcalıklı rol | Ek roller
 Azure AD B2C dizinleri oluşturma | Konuk olmayan tüm kullanıcılar ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 B2C uygulamaları oluşturma | Genel Yönetici | 
 Kurumsal uygulamalar oluşturma | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
-B2C ilkeleri oluşturun, okuyun, güncelleştirin ve silin | Genel Yönetici | 
-Kimlik sağlayıcıları oluşturun, okuyun, güncelleştirin ve silin | Genel Yönetici | 
-Parola sıfırlama Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | Genel Yönetici | 
-Profil düzenlemesi Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | Genel Yönetici | 
-Oturum açma Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | Genel Yönetici | 
-Kaydolma Kullanıcı akışı oluşturun, okuyun, güncelleştirin ve silin |Genel Yönetici | 
-Kullanıcı özniteliklerini oluşturma, okuma, güncelleştirme ve silme | Genel Yönetici | 
-Kullanıcı oluşturun, okuyun, güncelleştirin ve silin | Genel yönetici ([belgelere bakın](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
+B2C ilkeleri oluşturun, okuyun, güncelleştirin ve silin | B2C ıEF Ilke Yöneticisi | 
+Kimlik sağlayıcıları oluşturun, okuyun, güncelleştirin ve silin | Dış kimlik sağlayıcısı Yöneticisi | 
+Parola sıfırlama Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akış Yöneticisi | 
+Profil düzenlemesi Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akış Yöneticisi | 
+Oturum açma Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akış Yöneticisi | 
+Kaydolma Kullanıcı akışı oluşturun, okuyun, güncelleştirin ve silin |B2C Kullanıcı akış Yöneticisi | 
+Kullanıcı özniteliklerini oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akışı öznitelik Yöneticisi | 
+Kullanıcı oluşturun, okuyun, güncelleştirin ve silin | Kullanıcı Yöneticisi
 Tüm yapılandırmaları Oku | Genel okuyucu | 
 B2C denetim günlüklerini oku | Genel okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
@@ -127,7 +127,7 @@ Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Temsilci atanan izinlerin onayı | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
 Uygulama izinlerinin onayı Microsoft Graph dahil değildir | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
-Microsoft Graph için uygulama izinlerine onay | Genel Yönetici | 
+Microsoft Graph için uygulama izinlerine onay | Ayrıcalıklı rol yöneticisi | 
 Kendi verilerine erişen uygulamalara onay | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Kurumsal uygulama oluştur | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
 Uygulama proxy 'Sini yönetme | Uygulama Yöneticisi | 
@@ -156,7 +156,7 @@ Lisans ata | Kullanıcı Yöneticisi |
 Grup Oluştur | Kullanıcı Yöneticisi | 
 Bir grup veya uygulama için erişim gözden geçirmesi oluşturma, güncelleştirme veya silme | Kullanıcı Yöneticisi | 
 Grup süre sonunu yönetme | Kullanıcı Yöneticisi | 
-Grup ayarlarını yönetme | Genel Yönetici | 
+Grup ayarlarını yönetme | Grup Yöneticisi | Kullanıcı Yöneticisi | 
 Tüm yapılandırmayı oku (gizli üyelik hariç) | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Gizli üyeliği oku | Grup üyesi | Grup sahibi, parola Yöneticisi, Exchange Yöneticisi, SharePoint Yöneticisi, takımlar Yöneticisi, Kullanıcı Yöneticisi
 Gizli üyelikle grupların üyeliğini oku | Yardım Masası Yöneticisi | Kullanıcı Yöneticisi, takımlar Yöneticisi
@@ -234,7 +234,7 @@ Sunucu durumunu oku | Genel okuyucu |
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Kimlik sağlayıcılarını Yönet | Genel Yönetici | 
+Kimlik sağlayıcılarını Yönet | Dış kimlik sağlayıcısı Yöneticisi | 
 Ayarları yönetme | Genel Yönetici | 
 Kullanım koşullarını yönetme | Genel Yönetici | 
 Tüm yapılandırmaları Oku | Genel okuyucu | 
@@ -330,11 +330,11 @@ Kullanıcı oluştur | Kullanıcı Yöneticisi |
 Kullanıcıları Sil | Kullanıcı Yöneticisi | 
 Sınırlı yöneticilerin yenileme belirteçlerini geçersiz kılar (bkz. belgeler) | Kullanıcı Yöneticisi | 
 Yönetici olmayanlar için yenileme belirteçlerini geçersiz kıl (belgelere bakın) | Parola yöneticisi | Kullanıcı Yöneticisi
-Ayrıcalıklı yöneticilerin yenileme belirteçlerini geçersiz kıl (belgelere bakın) | Genel Yönetici | 
+Ayrıcalıklı yöneticilerin yenileme belirteçlerini geçersiz kıl (belgelere bakın) | Ayrıcalıklı kimlik doğrulama Yöneticisi | 
 Temel yapılandırmayı oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
 Sınırlı yöneticiler için parolayı sıfırlama (bkz. belgeler) | Kullanıcı Yöneticisi | 
 Yönetici olmayanlar parolasını sıfırlama (belgelere bakın) | Parola yöneticisi | Kullanıcı Yöneticisi
-Ayrıcalıklı yöneticilerin parolasını sıfırlama | Genel Yönetici | 
+Ayrıcalıklı yöneticilerin parolasını sıfırlama | Ayrıcalıklı kimlik doğrulama Yöneticisi | 
 Lisansı iptal et | Lisans Yöneticisi | Kullanıcı Yöneticisi
 Kullanıcı asıl adı dışındaki tüm özellikleri Güncelleştir | Kullanıcı Yöneticisi | 
 Sınırlı yöneticiler için Kullanıcı asıl adını güncelleştirme (bkz. belgeler) | Kullanıcı Yöneticisi | 

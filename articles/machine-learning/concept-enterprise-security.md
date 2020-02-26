@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486402"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605630"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -37,7 +37,6 @@ Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-
 [Azure Machine Learning ![kimlik doğrulaması](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](how-to-setup-authentication.md). Bu makalede, kimlik doğrulama hakkında hizmet sorumluları ve otomatik iş akışları gibi bilgiler ve örnekler sağlanmaktadır.
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Web hizmeti dağıtımı için kimlik doğrulaması
 
@@ -77,6 +76,9 @@ Aşağıdaki tabloda, bazı önemli Azure Machine Learning işlemleri ve bunlar�
 | Web hizmetini çağır | ✓ | ✓ | ✓ |
 
 Yerleşik roller ihtiyaçlarınızı karşılamıyorsa, özel roller oluşturabilirsiniz. Özel roller yalnızca çalışma alanındaki işlemler için desteklenir ve Machine Learning İşlem. Özel roller çalışma alanında ve bu çalışma alanındaki işlem kaynağında okuma, yazma veya silme izinlerine sahip olabilir. Rolü belirli bir çalışma alanı düzeyinde, belirli bir kaynak grubu düzeyinde veya belirli bir abonelik düzeyinde kullanılabilir hale getirebilirsiniz. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanında kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
+
+> [!WARNING]
+> Azure Machine Learning, Azure Active Directory işletmeden işletmeye işbirliği ile Şu anda desteklenmemektedir.
 
 ### <a name="securing-compute-targets-and-data"></a>İşlem hedeflerinin ve verilerin güvenliğini sağlama
 

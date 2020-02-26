@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını, bir AKS kümesini mevcut bir sanal ağa ve alt ağa dağıtma dahil olmak üzere nasıl yapılandıracağınızı öğrenin.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 11607ffe03d5d2519df1b1199a741dfb55aff2f4
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: f7f8fe85b0a0e149859715b86abb08753a6ea65e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111614"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595986"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 

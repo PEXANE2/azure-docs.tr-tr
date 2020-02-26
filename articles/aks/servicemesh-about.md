@@ -2,16 +2,15 @@
 title: Hizmet kafesleri hakkında
 description: Hizmet kafeslerine, mimarisine ve özelliklerine ve dağıtım için bir tane seçerken göz önünde bulundurmanız gereken ölçütlere genel bir bakış elde edin.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530712"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594320"
 ---
 # <a name="about-service-meshes"></a>Hizmet kafesleri hakkında
 
@@ -39,7 +38,7 @@ Hizmet ağı genellikle bir denetim düzlemi ve veri düzleminden oluşur.
 
 ![Tipik hizmet kafes mimarisi](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>Yetenekler
+## <a name="capabilities"></a>Özellikler
 
 Hizmet kafeslerinin her biri doğal olarak bir sığdırmaya sahiptir ve belirli senaryoları desteklemeye odaklanmaktadır, ancak genellikle en fazla bir olarak, aşağıdaki yetenekler için bir sayı uygulayacaksınız.
 
@@ -88,7 +87,7 @@ Aşağıdaki alanlarda ve bunların en çok gereksinimlerinize göre hizalandı�
 
 - **İş** -ticari destek, temel (cncf), OSS lisansı, idare
 
-- **İşletimsel** – yükleme/yükseltme, kaynak gereksinimleri, performans gereksinimleri, tümleştirmeler (ölçümler, telemetri, panolar, Araçlar, SMI), karışık iş yükleri (Linux ve Windows düğüm havuzları), Işlem (Kubernetes, sanal makineler), Çoklu küme
+- **İşletimsel** – yükleme/yükseltme, kaynak gereksinimleri, performans gereksinimleri, tümleştirmeler (ölçümler, telemetri, panolar, Araçlar, SMI), karışık iş yükleri (Linux ve Windows düğüm havuzları), Işlem (Kubernetes, sanal makineler), çoklu küme
 
 - **Güvenlik** -kimlik doğrulama, kimlik, sertifika yönetimi ve döndürme, TAKıLABILIR harici CA
 

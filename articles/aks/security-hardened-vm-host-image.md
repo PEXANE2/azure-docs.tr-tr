@@ -3,17 +3,16 @@ title: AKS sanal makine konaklarında güvenlik sağlamlaştırma
 description: AKS VM konak işletim sistemindeki güvenlik sağlamlaştırma hakkında bilgi edinin
 services: container-service
 author: saudas
-ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885639"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594389"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS sanal makine konaklarında güvenlik sağlamlaştırma 
 
@@ -75,7 +74,7 @@ AKS-Engine Şu anda herhangi bir güvenlik standardını yükselmez veya buna uy
 |5.4.1.1 |Parola kullanım süresinin 90 gün veya daha az olduğundan emin olun |
 |5.4.1.4 |Etkin olmayan parola kilidinin 30 gün veya daha az olduğundan emin olun |
 |5.4.4 |Varsayılan Kullanıcı umask 'in 027 veya daha kısıtlayıcı olduğundan emin olun |
-|5,6 |Su komutuna erişimin kısıtlanmasını sağlayın|
+|5.6 |Su komutuna erişimin kısıtlanmasını sağlayın|
 
 ## <a name="additional-notes"></a>Ek notlar
  

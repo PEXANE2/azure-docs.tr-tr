@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500480"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602601"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Öğretici: IoT Tak ve Kullan (Önizleme) cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
 
 _Cihaz yetenek modeli_ (DCM), [IoT Tak ve kullan (Önizleme)](../../iot-pnp/overview-iot-plug-and-play.md) cihazının yeteneklerini açıklar. IoT Central, cihaz ilk kez bağlandığında cihaz için bir cihaz şablonu ve görselleştirmeler oluşturmak üzere bir DCM kullanabilir.
+
+[Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) için destek önizleme aşamasındadır ve yalnızca seçili bölgelerde desteklenir.
+
+> [!NOTE]
+> IoT Tak ve Kullan cihazları desteğiyle bir önizleme uygulaması oluşturmak için erişim için teknik desteğe başvurun.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 

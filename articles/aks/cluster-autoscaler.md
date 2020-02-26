@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) içindeki küme otomatik Scaler 'ı kullanma
 description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerini karşılamak üzere kümenizi otomatik olarak ölçeklendirmek için küme otomatik olarak nasıl kullanacağınızı öğrenin.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: mlearned
-ms.openlocfilehash: 12e5ee1b5c56e642cef117963d7cd879cf9b0633
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524297"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596258"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
 
@@ -118,7 +115,7 @@ Küme genelindeki otomatik Scaler profilindeki varsayılan değerleri değiştir
 | ölçek azaltma-başarısız-sonra gecikme   | Değerlendirme özgeçmişinin ölçeklendirilmesi için ölçek azaltma hatası ne kadar süre sonra                     | 3 dakika     |
 | ölçeği azaltma-gereksiz-saat         | Düğüm ölçek azaltma için uygun hale gelmeden önce ne kadar süreyle gereksiz olması gerekir                  | 10 dakika    |
 | ölçeği daraltma-önceden hazırlanma-zaman          | Uygun olmayan bir düğümün ölçek azaltma için uygun olmadan önce ne kadar süreyle gereksiz olması gerekir         | 20 dakika    |
-| ölçeği azaltma-kullanım eşiği | Düğüm kullanım düzeyi, bir düğümün ölçek azaltma için kabul edileceği, kapasiteye göre bölünen istenen kaynakların toplamı olarak tanımlanır | 0.5 |
+| ölçeği azaltma-kullanım eşiği | Düğüm kullanım düzeyi, bir düğümün ölçek azaltma için kabul edileceği, kapasiteye göre bölünen istenen kaynakların toplamı olarak tanımlanır | 0,5 |
 | en yüksek-düzgün kapanma-sn     | Küme, bir düğümü ölçeklendirmeye çalışırken Pod sonlandırmasını bekleyen en fazla saniye sayısı. | 600 saniye   |
 
 > [!IMPORTANT]
@@ -147,7 +144,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örneğin:
+Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örnek:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -164,7 +161,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik Scaler profilini ayarlama
 
-Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örneğin:
+Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az aks create \

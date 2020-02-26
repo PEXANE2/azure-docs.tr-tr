@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372983"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581115"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -175,6 +175,8 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 
 #### <a name="enumeration"></a>Numaralandırma
 
+**Sabit listesi** öğesi, Kullanıcı arabirimindeki bir `CheckboxMultiSelect`, `DropdownSingleSelect`veya `RadioSingleSelect`değer gibi bir talep için seçilecek kullanılabilir seçenekleri tanımlar. Alternatif olarak, mevcut seçenekleri [Localizedcollections](localization.md#localizedcollections) öğesiyle tanımlayabilir ve yerelleştirebilirsiniz. Bir talep **numaralandırma** koleksiyonundan bir öğe aramak Için [Getmappedvaluefromlocalizedcollection](string-transformations.md#getmappedvaluefromlocalizedcollection) talepler dönüşümünü kullanın.
+
 **Enumeration** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
@@ -209,7 +211,7 @@ Yeni York olarak ayarlanan varsayılan değere sahip aşağı açılan şehir li
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Cevap içerisinde RegularExpression | Yes | Bu tür taleplerin geçerli olması için aynı olması gereken normal ifade. |
-| HelpText | Hayır | Bu talep için model veya normal ifade. |
+| HelpText | Hayır | Normal ifade denetimi başarısız olursa kullanıcılara yönelik bir hata iletisi. |
 
 Aşağıdaki örnek, normal ifade giriş doğrulaması ve yardım metni ile bir **e-posta** talebi yapılandırır:
 
@@ -247,7 +249,7 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 |Paragraf | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Yalnızca bir paragraf etiketinde metin gösteren bir alan. |
 |Parola | `string` |Parola metin kutusu.|
 |RadioSingleSelect |`string` | Radyo düğmelerinin koleksiyonu. Talep değeri seçili değerdir.|
-|Özelliğinin | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Salt oku metin kutusu. |
+|Özelliğinin | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Salt okunurdur metin kutusu. |
 |TextBox |`boolean`, `int`, `string` |Tek satırlı metin kutusu. |
 
 
@@ -407,5 +409,3 @@ Kullanıcı **giriş türü, kullanıcının** bir seçenek seçmesini sağlayan
   </Restriction>
 </ClaimType>
 ```
-
-Bir **Responsemsg** talebinde **numaralandırma** değerlerinden birini göstermek için `GetMappedValueFromLocalizedCollection` veya `CreateStringClaim` talep dönüşümünü kullanın. Daha fazla bilgi için bkz. [dize talep dönüştürmeleri](string-transformations.md)

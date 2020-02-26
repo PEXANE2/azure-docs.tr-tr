@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484817"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598281"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
 
@@ -150,6 +150,25 @@ Zeppelin Not defterleri küme yayın düğümlerine kaydedilir. Bu nedenle, küm
 ![Not defteri indir](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Not defterini indir")
 
 Bu, Not defterini indirme konumunuza bir JSON dosyası olarak kaydeder.
+
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Kurumsal Güvenlik Paketi (ESP) kümelerinde Zeppelin yorumlayıcıları erişimini yapılandırmak için Shiro kullanın
+Yukarıda belirtildiği gibi, HDInsight 4,0 ve sonraki sürümlerinde `%sh` yorumlayıcı desteklenmez. Ayrıca, `%sh` yorumlayıcı kabuk komutlarını kullanarak keytab erişimi gibi olası güvenlik sorunlarını tanıdığından, HDInsight 3,6 ESP kümelerinden de kaldırılmıştır. **Yeni Not oluştur** ' a tıkladığınızda veya yorumlayıcı Kullanıcı arabiriminde varsayılan olarak `%sh` yorumlayıcı kullanılamıyor demektir. 
+
+Ayrıcalıklı etki alanı kullanıcıları yorumlayıcı Kullanıcı arabirimine erişimi denetlemek için `Shiro.ini` dosyasını kullanabilir. Bu nedenle, yalnızca bu kullanıcılar yeni `%sh` yorumlayıcılar oluşturabilir ve her yeni `%sh` yorumlayıcısında izinleri ayarlayabilir. `shiro.ini` dosyasını kullanarak erişimi denetlemek için aşağıdaki adımları kullanın:
+
+1. Var olan bir etki alanı grubu adını kullanarak yeni bir rol tanımlayın. Aşağıdaki örnekte, `adminGroupName` AAD 'deki ayrıcalıklı kullanıcılar grubudur. Grup adında özel karakterler veya boşluk kullanmayın. `=` sonraki karakterler bu rol için izinleri verir. `*`, grubun tam izinleri olduğu anlamına gelir.
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Zeppelin yorumlayıcılara erişim için yeni rolü ekleyin. Aşağıdaki örnekte, `adminGroupName` tüm kullanıcılara Zeppelin yorumlayıcılara erişim verilir ve yeni yorumlayıcılar oluşturabilirsiniz. `roles[]`köşeli ayraçlar arasında virgülle ayırarak birden çok rol koyabilirsiniz. Ardından, gerekli izinlere sahip kullanıcılar Zeppelin yorumlayıcılara erişebilir.
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
 
 ## <a name="livy-session-management"></a>Livy oturum yönetimi
 

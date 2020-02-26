@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548892"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604951"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Cosmos DB için birden çok Azure Işlevleri tetikleyicisi oluşturun
 
@@ -38,7 +38,7 @@ Bu makalenin amacı, ikinci seçeneği gerçekleştirmenize yardımcı olmaktır
 
 ## <a name="configuring-a-shared-leases-container"></a>Paylaşılan kiralamalar kapsayıcısı yapılandırma
 
-Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, JavaScript kullanıyorsanız, C# veya `leaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) kullandığınızda `LeaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) eklemektir. Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
+Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, JavaScript kullanıyorsanız, C# veya `leaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) kullandığınızda `LeaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) eklemektir. Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
 
 Örneğin, üç tetikleyicisinin olması halinde, gerçekleştirilmiş bir görünüm oluşturmak için bir toplama yapan biri olan e-posta gönderen biri ve değişiklikleri başka bir depolama alanına Gönderen bir tane, daha sonraki analizler için "e-posta" `LeaseCollectionPrefix`, ikincisine "gerçekleştirilmiş" ve üçüncü birine "analiz" atayabilirsiniz.
 
@@ -108,6 +108,6 @@ JavaScript için, `function.json` dosyasına yapılandırmayı `leaseCollectionP
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Cosmos DB Için Azure işlevleri tetikleyicisinin](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) tam yapılandırmasına bakın
-* Tüm dillerin genişletilmiş [örnek listesini](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) denetleyin.
+* [Cosmos DB Için Azure işlevleri tetikleyicisinin](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) tam yapılandırmasına bakın
+* Tüm dillerin genişletilmiş [örnek listesini](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) denetleyin.
 * Daha fazla örnek için Azure Cosmos DB ve Azure Işlevleri [GitHub deposu](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) Ile sunucusuz tariflerini ziyaret edin.

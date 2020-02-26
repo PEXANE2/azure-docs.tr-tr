@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665777"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604083"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme
 
-Güvenlik uyarılarını önceliklendirme ve araştırmak, en nitelikli Güvenlik analistleri için zaman alabilir ve birçok büyük olasılıkla nereden başlayabileceğinizi bilmelidir. Farklı [güvenlik uyarıları](security-center-managing-and-responding-alerts.md) arasındaki bilgileri bağlamak için [Analiz](security-center-detection-capabilities.md) özelliğini kullanan Güvenlik Merkezi, bir saldırı kampanyasını ve tüm ilgili uyarıları tek bir yerde görmenizi sağlayabilir; saldırganın hangi işlemleri yaptığını ve hangi kaynakların etkilendiğini hızlıca görebilirsiniz.
+Güvenlik uyarılarını önceliklendirme ve araştırmak, en nitelikli Güvenlik analistleri için zaman alabilir ve birçok büyük olasılıkla nereden başlayabileceğinizi bilmelidir. Farklı [güvenlik uyarıları](security-center-detection-capabilities.md) arasındaki bilgileri bağlamak için [Analiz](security-center-managing-and-responding-alerts.md) özelliğini kullanan Güvenlik Merkezi, bir saldırı kampanyasını ve tüm ilgili uyarıları tek bir yerde görmenizi sağlayabilir; saldırganın hangi işlemleri yaptığını ve hangi kaynakların etkilendiğini hızlıca görebilirsiniz.
 
 Bu konu başlığında Güvenlik Merkezi 'ndeki olaylar ve bunların uyarılarını düzeltme kullanımı açıklanmaktadır.
 
@@ -63,5 +63,4 @@ Bu belgede, Güvenlik Merkezi'nde güvenlik olayı özelliğini nasıl kullanaca
 * [Azure Güvenlik Merkezi 'Nde güvenlik uyarıları](security-center-alerts-overview.md).
 * [Güvenlik uyarılarını yönetme](security-center-managing-and-responding-alerts.md)
 * [Azure Güvenlik Merkezi Planlama ve İşlemler Kılavuzu](security-center-planning-and-operations-guide.md)
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) - Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
 * [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) - Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulabilirsiniz

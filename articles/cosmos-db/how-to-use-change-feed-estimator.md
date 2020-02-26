@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092943"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585297"
 ---
 # <a name="use-the-change-feed-estimator"></a>Değişiklik akışı tahmin aracı 'ı kullanın
 
@@ -33,19 +33,19 @@ Bu senaryonun belirlenmesi, değişiklik akışı işlemci dağıtımınızı ö
 
 Örnek olarak, değişiklik akışı işlemciniz aşağıdaki gibi tanımlanır:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
 
-İşlemcinin şu şekilde kullanılması `GetChangeFeedEstimatorBuilder` için bir tahmin aracı başlatmanın doğru yolu:
+İşlemcinin bu şekilde `GetChangeFeedEstimatorBuilder` kullanmak için bir tahmin aracı başlatmanın doğru yolu:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
 
-Hem işlemcinin hem de tahmin aracı aynı adı `leaseContainer` ve aynı adı paylaşır.
+Hem işlemcinin hem de tahmin aracı aynı `leaseContainer` ve aynı adı paylaşır.
 
 Diğer iki parametre, işlemci tarafından **okunmayı bekleyen kaç değişiklik** olduğunu ve bu ölçümün alınmasını istediğiniz zaman aralığını temsil eden bir sayı alacak olan temsilcidir.
 
 Tahmini alan bir temsilci örneği şunlardır:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
 
 Bu tahmini, izleme çözümünüze gönderebilir ve zaman içinde ilerleme durumunun nasıl davrandığınızı anlamak için kullanabilirsiniz.
 

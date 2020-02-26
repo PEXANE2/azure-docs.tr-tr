@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385565"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598757"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Dosyaları Azure Cloud Shell Sürdür
 Cloud Shell, dosyaları oturumlarda kalıcı hale getirmek için Azure dosya depolama kullanır. İlk başlangıçta Cloud Shell, dosyaları oturumlardaki kalıcı hale getirmek için yeni veya var olan bir dosya paylaşımından ilişkilendiremenizi ister.
@@ -62,7 +62,7 @@ Cloud Shell, bir depolama hesabında, belirtilen bir abonelikte Azure dosya payl
 Kullanıcılar, depolama hesabındaki veya abonelik düzeyindeki izinleri ayarlayarak dosyalarına erişimi kilitlemelidir.
 
 ## <a name="supported-storage-regions"></a>Desteklenen depolama bölgeleri
-İlişkili Azure depolama hesapları, bunları bağlamak istediğiniz Cloud Shell makineyle aynı bölgede bulunmalıdır. Geçerli bölgenizi bulmak için bash 'de `env` çalıştırıp `ACC_LOCATION`değişkenini bulabilirsiniz. Dosya paylaşımları, `$Home` dizininizi kalıcı hale getirmek için oluşturduğunuz 5 GB bir görüntü alır.
+Geçerli bölgenizi bulmak için bash 'de `env` çalıştırıp `ACC_LOCATION`veya PowerShell Run `$env:ACC_LOCATION`değişkenini bulabilirsiniz. Dosya paylaşımları, `$Home` dizininizi kalıcı hale getirmek için oluşturduğunuz 5 GB bir görüntü alır.
 
 Cloud Shell makineler aşağıdaki bölgelerde mevcuttur:
 
@@ -71,6 +71,16 @@ Cloud Shell makineler aşağıdaki bölgelerde mevcuttur:
 |Kuzey ve Güney Amerika|Doğu ABD, Orta Güney ABD, Batı ABD|
 |Avrupa|Kuzey Avrupa, Batı Avrupa|
 |Asya Pasifik|Hindistan Orta, Güneydoğu Asya|
+
+Müşterilerin, bekleyen verilerinin belirli bir bölgede depolanmasını şart olmadığı durumlar dışında, müşteriler bir birincil bölge seçmelidir. Böyle bir gereklilik varsa, ikincil bir depolama bölgesinin kullanılması gerekir.
+
+### <a name="secondary-storage-regions"></a>İkincil depolama bölgeleri
+İkincil bir depolama bölgesi kullanılırsa, ilişkili Azure depolama hesabı, bunları bağlamak istediğiniz Cloud Shell makine olarak farklı bir bölgede bulunur. Örneğin, Gamze depolama hesabını Kanada Doğu, ikincil bir bölgede yer alan olarak ayarlayabilir, ancak bağlanan makine hala birincil bölgede yer alır. Rest 'teki veriler Kanada 'da bulunur, ancak Birleşik Devletler işlenir.
+
+> [!NOTE]
+> Bir ikincil bölge kullanılıyorsa, Cloud Shell için dosya erişimi ve başlangıç zamanı daha yavaş olabilir.
+
+Bir Kullanıcı, dosya paylaşımının konumunu görmek için PowerShell 'de `(Get-CloudDrive | Get-AzStorageAccount).Location` çalıştırabilir.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure Kaynak ilkesiyle kaynak oluşturmayı kısıtlama
 Cloud Shell içinde oluşturduğunuz depolama hesapları `ms-resource-usage:azure-cloud-shell`olarak etiketlenir. Kullanıcıların Cloud Shell depolama hesapları oluşturmalarına izin vermemek istiyorsanız, bu özel etiket tarafından tetiklenen [Etiketler için bir Azure Kaynak ilkesi](../azure-policy/json-samples.md) oluşturun.

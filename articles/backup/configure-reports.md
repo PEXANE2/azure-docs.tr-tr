@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501127"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582713"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -41,11 +41,11 @@ Varsayılan olarak, bir LA çalışma alanındaki veriler 30 gün boyunca tutulu
 
 Kurtarma Hizmetleri kasaları gibi kaynaklar Azure Resource Manager, zamanlanmış işlemler ve Kullanıcı tarafından tetiklenen işlemler hakkındaki bilgileri Tanılama verileri olarak kaydeder. 
 
-Kurtarma Hizmetleri kasaınızın İzleme bölümünde **Tanılama ayarları** ' nı seçin ve kurtarma hizmetleri kasasının tanılama verilerinin hedefini belirtin. [Tanılama olaylarını kullanma hakkında daha fazla bilgi edinin](https://aka.ms/AzureBackupDiagnosticDocs).
+Kurtarma Hizmetleri kasaınızın İzleme bölümünde **Tanılama ayarları** ' nı seçin ve kurtarma hizmetleri kasasının tanılama verilerinin hedefini belirtin. [Tanılama olaylarını kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
 
 ![Tanılama ayarları dikey penceresi](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup, belirli bir kapsamdaki tüm kasaların tanılama ayarlarının yapılandırılmasını otomatikleştiren yerleşik bir Azure Ilkesi de sağlar. Bu ilkeyi nasıl kullanacağınızı öğrenmek için aşağıdaki makaleye bakın: [kasa tanılama ayarlarını ölçeklendirerek yapılandırma](https://aka.ms/AzureBackupDiagnosticsPolicyDocs)
+Azure Backup, belirli bir kapsamdaki tüm kasaların tanılama ayarlarının yapılandırılmasını otomatikleştiren yerleşik bir Azure Ilkesi de sağlar. Bu ilkeyi nasıl kullanacağınızı öğrenmek için aşağıdaki makaleye bakın: [kasa tanılama ayarlarını ölçeklendirerek yapılandırma](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 3. **Azure portal raporları görüntüle:**
 
@@ -53,7 +53,7 @@ Kasalarınızı LA 'ya veri gönderecek şekilde yapılandırdıktan sonra, herh
 
 ![Kasa panosu](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-Bu bağlantıya tıkladığınızda yedekleme raporu çalışma kitabı açılır. 
+Bu bağlantıya tıkladığınızda yedekleme raporu çalışma kitabı açılır.
 
 > [!NOTE]
 > Şu anda, raporun ilk yükünün 1 dakikaya kadar zaman alabilir.

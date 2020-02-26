@@ -3,12 +3,12 @@ title: PowerShell kullanarak DPM iş yüklerini yedekleme
 description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Backup dağıtmayı ve yönetmeyi öğrenin
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: d3a8b2ff95957b69bab4932ce8a7e5a1ab4bfa44
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172414"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583185"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
 
@@ -138,7 +138,7 @@ Mevcut seçenekler şunlardır:
 | /pH |Proxy ana bilgisayar adresi |- |
 | /Po |Proxy ana bilgisayar bağlantı noktası numarası |- |
 | /pu |Proxy konak Kullanıcı adı |- |
-| /PW |Proxy parolası |- |
+| /PW |Proxy Parola |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>DPM 'yi bir kurtarma hizmetleri kasasına kaydetme
 
@@ -154,7 +154,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-DPM sunucusunda, makineyi kasaya kaydetmek için [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet 'ini çalıştırın.
+DPM sunucusunda, makineyi kasaya kaydetmek için [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) cmdlet 'ini çalıştırın.
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -171,13 +171,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>İlk yapılandırma ayarları
 
-DPM sunucusu, kurtarma hizmetleri kasasıyla kaydedildikten sonra varsayılan abonelik ayarlarıyla başlar. Bu abonelik ayarları ağ, şifreleme ve hazırlama alanını içerir. Abonelik ayarlarını değiştirmek için, önce [Get-Dpmcses Subscriptionsetting](https://technet.microsoft.com/library/jj612793) cmdlet 'ini kullanarak var olan (varsayılan) ayarlar üzerinde bir tanıtıcı almanız gerekir:
+DPM sunucusu, kurtarma hizmetleri kasasıyla kaydedildikten sonra varsayılan abonelik ayarlarıyla başlar. Bu abonelik ayarları ağ, şifreleme ve hazırlama alanını içerir. Abonelik ayarlarını değiştirmek için, önce [Get-Dpmcses Subscriptionsetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini kullanarak var olan (varsayılan) ayarlar üzerinde bir tanıtıcı almanız gerekir:
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Tüm değişiklikler bu yerel PowerShell nesnesi ```$setting``` yapılır ve ardından tam nesne DPM 'ye kaydedilir ve [set-Dpmcses Subscriptionsetting](https://technet.microsoft.com/library/jj612791) cmdlet 'ini kullanarak bunları kaydetmek için Azure Backup. Değişikliklerin kalıcı olduğundan emin olmak için ```–Commit``` bayrağını kullanmanız gerekir. Bu ayarlar, uygulanmamışsa Azure Backup uygulanmaz ve kullanılmaz.
+Tüm değişiklikler bu yerel PowerShell nesnesi ```$setting``` yapılır ve ardından tam nesne DPM 'ye kaydedilir ve [set-Dpmcses Subscriptionsetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bunları kaydetmek için Azure Backup. Değişikliklerin kalıcı olduğundan emin olmak için ```–Commit``` bayrağını kullanmanız gerekir. Bu ayarlar, uygulanmamışsa Azure Backup uygulanmaz ve kullanılmaz.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Ağ
 
-DPM makinesinin internet üzerindeki Azure Backup hizmetine bağlantısı bir ara sunucu üzerinden olduğunda, başarılı yedeklemeler için proxy sunucusu ayarları sağlanmalıdır. Bu işlem, ```-ProxyServer```ve ```-ProxyPort```, ```-ProxyUsername``` ve ```ProxyPassword``` parametreleri [set-Dpmcses Subscriptionsetting](https://technet.microsoft.com/library/jj612791) cmdlet 'i kullanılarak yapılır. Bu örnekte, ara sunucu ile ilgili tüm bilgileri açık bir şekilde temizliyoruz.
+DPM makinesinin internet üzerindeki Azure Backup hizmetine bağlantısı bir ara sunucu üzerinden olduğunda, başarılı yedeklemeler için proxy sunucusu ayarları sağlanmalıdır. Bu işlem, ```-ProxyServer```ve ```-ProxyPort```, ```-ProxyUsername``` ve ```ProxyPassword``` parametreleri [set-Dpmcses Subscriptionsetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'i kullanılarak yapılır. Bu örnekte, ara sunucu ile ilgili tüm bilgileri açık bir şekilde temizliyoruz.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -199,7 +199,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>Hazırlama alanını yapılandırma
 
-DPM sunucusunda çalışan Azure Backup Aracısı, buluttan geri yüklenen veriler için geçici depolamaya ihtiyaç duyuyor (yerel hazırlama alanı). [Set-Dpmcses Subscriptionsetting](https://technet.microsoft.com/library/jj612791) cmdlet 'ini ve ```-StagingAreaPath``` parametresini kullanarak hazırlama alanını yapılandırın.
+DPM sunucusunda çalışan Azure Backup Aracısı, buluttan geri yüklenen veriler için geçici depolamaya ihtiyaç duyuyor (yerel hazırlama alanı). [Set-Dpmcses Subscriptionsetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini ve ```-StagingAreaPath``` parametresini kullanarak hazırlama alanını yapılandırın.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
@@ -234,20 +234,20 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 Bu bölümde, DPM 'ye bir üretim sunucusu ekleyecek ve ardından verileri yerel DPM depolamasına ve sonra Azure Backup olacak şekilde koruyacaksınız. Örneklerde, dosya ve klasörleri nasıl yedekleyeceğiniz gösterilmektedir. Mantık, DPM tarafından desteklenen herhangi bir veri kaynağını yedeklemeye kolayca genişletilebilir. Tüm DPM yedeklemeleriniz, dört bölümden oluşan bir koruma grubu (PG) tarafından yönetilir:
 
-1. **Grup üyeleri** , aynı koruma grubunda korumak istediğiniz tüm korunabilir nesneler (DPM 'de *veri kaynakları* olarak da bilinir) listesidir. Örneğin, bir koruma grubundaki üretim sanal makinelerini ve farklı yedekleme gereksinimlerine sahip olabilecek başka bir koruma grubundaki veritabanlarını SQL Server korumak isteyebilirsiniz. Bir üretim sunucusundaki herhangi bir veri kaynağını yedekleyebilmeniz için önce DPM aracısının sunucuda yüklü olduğundan ve DPM tarafından yönetildiğinden emin olmanız gerekir. [DPM aracısını yükleme](https://technet.microsoft.com/library/bb870935.aspx) ve uygun DPM sunucusuna bağlama adımlarını izleyin.
+1. **Grup üyeleri** , aynı koruma grubunda korumak istediğiniz tüm korunabilir nesneler (DPM 'de *veri kaynakları* olarak da bilinir) listesidir. Örneğin, bir koruma grubundaki üretim sanal makinelerini ve farklı yedekleme gereksinimlerine sahip olabilecek başka bir koruma grubundaki veritabanlarını SQL Server korumak isteyebilirsiniz. Bir üretim sunucusundaki herhangi bir veri kaynağını yedekleyebilmeniz için önce DPM aracısının sunucuda yüklü olduğundan ve DPM tarafından yönetildiğinden emin olmanız gerekir. [DPM aracısını yükleme](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) ve uygun DPM sunucusuna bağlama adımlarını izleyin.
 2. **Veri koruma yöntemi** , hedef yedekleme konumlarını belirtir-bant, disk ve bulut. Bizim örneğimizde, verileri yerel diske ve buluta koruyacağız.
 3. Yedeklemelerin ne zaman alınması gerektiğini ve DPM sunucusu ile üretim sunucusu arasında verilerin ne sıklıkta eşitlenmesi gerektiğini belirten bir **yedekleme zamanlaması** .
 4. Azure 'da kurtarma noktalarının ne kadar süreyle saklanacağını belirten bir **bekletme zamanlaması** .
 
 ### <a name="creating-a-protection-group"></a>Koruma grubu oluşturma
 
-[Yeni-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) cmdlet 'ini kullanarak yeni bir koruma grubu oluşturarak başlayın.
+[Yeni-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) cmdlet 'ini kullanarak yeni bir koruma grubu oluşturarak başlayın.
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Yukarıdaki cmdlet *ProtectGroup01*adlı bir koruma grubu oluşturacaktır. Mevcut bir koruma grubu daha sonra Azure bulutuna yedek eklemek için de değiştirilebilir. Ancak, koruma grubunda herhangi bir değişiklik yapmak için-yeni veya mevcut- [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) cmdlet 'ini kullanarak *değiştirilebilir* bir nesne üzerinde bir tanıtıcı edinmemiz gerekir.
+Yukarıdaki cmdlet *ProtectGroup01*adlı bir koruma grubu oluşturacaktır. Mevcut bir koruma grubu daha sonra Azure bulutuna yedek eklemek için de değiştirilebilir. Ancak, koruma grubunda herhangi bir değişiklik yapmak için-yeni veya mevcut- [Get-DPMModifiableProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) cmdlet 'ini kullanarak *değiştirilebilir* bir nesne üzerinde bir tanıtıcı edinmemiz gerekir.
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -262,13 +262,13 @@ Her DPM Aracısı, üzerinde yüklü olduğu sunucudaki veri kaynaklarının lis
 3. Sunucudaki tüm veri kaynaklarının listesini getirir.
 4. Bir veya daha fazla veri kaynağı seçin ve koruma grubuna ekleyin
 
-DPM aracısının yüklü olduğu ve DPM sunucusu tarafından yönetilmekte olduğu sunucuların listesi [Get-Dpmbir Server](https://technet.microsoft.com/library/hh881600) cmdlet 'i ile elde edilir. Bu örnekte, yalnızca yedekleme için *ProductionServer01* adlı PS 'yi filtreleyecek ve yapılandıracağız.
+DPM aracısının yüklü olduğu ve DPM sunucusu tarafından yönetilmekte olduğu sunucuların listesi [Get-Dpmbir Server](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 'i ile elde edilir. Bu örnekte, yalnızca yedekleme için *ProductionServer01* adlı PS 'yi filtreleyecek ve yapılandıracağız.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-Şimdi [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) cmdlet 'ini kullanarak ```$server``` veri kaynakları listesini getirin. Bu örnekte, yedekleme için yapılandırmak istediğimiz *D:\\* birimi için filtreliyoruz. Bu veri kaynağı daha sonra [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) cmdlet 'ı kullanılarak koruma grubuna eklenir. Eklemeleri yapmak için *değiştirilebilir* koruma grubu nesnesini ```$MPG``` kullanmayı unutmayın.
+Şimdi [Get-DPMDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) cmdlet 'ini kullanarak ```$server``` veri kaynakları listesini getirin. Bu örnekte, yedekleme için yapılandırmak istediğimiz *D:\\* birimi için filtreliyoruz. Bu veri kaynağı daha sonra [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) cmdlet 'ı kullanılarak koruma grubuna eklenir. Eklemeleri yapmak için *değiştirilebilir* koruma grubu nesnesini ```$MPG``` kullanmayı unutmayın.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
@@ -280,7 +280,7 @@ Seçilen tüm veri kaynaklarını koruma grubuna ekleyinceye kadar bu adımı ge
 
 ### <a name="selecting-the-data-protection-method"></a>Veri koruma yöntemini seçme
 
-Veri kaynakları koruma grubuna eklendikten sonra, bir sonraki adım, [set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) cmdlet 'ini kullanarak koruma yöntemini belirtmektir. Bu örnekte, koruma grubu yerel disk ve bulut yedeklemesi için ayarlanır. Ayrıca,-online bayrağıyla [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) cmdlet 'ini kullanarak buluta korumak istediğiniz veri kaynağını belirtmeniz gerekir.
+Veri kaynakları koruma grubuna eklendikten sonra, bir sonraki adım, [set-DPMProtectionType](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) cmdlet 'ini kullanarak koruma yöntemini belirtmektir. Bu örnekte, koruma grubu yerel disk ve bulut yedeklemesi için ayarlanır. Ayrıca,-online bayrağıyla [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) cmdlet 'ini kullanarak buluta korumak istediğiniz veri kaynağını belirtmeniz gerekir.
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -289,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>Bekletme aralığını ayarlama
 
-[Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) cmdlet 'ini kullanarak yedekleme noktaları için saklama süresini ayarlayın. Yedekleme zamanlaması tanımlanmadan önce bekletme ayarlamak tek görünebilir, ancak ```Set-DPMPolicyObjective``` cmdlet 'i kullanmak, daha sonra değiştirilebilecek varsayılan bir yedekleme zamanlaması otomatik olarak ayarlar. İlk olarak yedekleme zamanlamasını ve sonrasında bekletme ilkesini ayarlamak her zaman mümkündür.
+[Set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) cmdlet 'ini kullanarak yedekleme noktaları için saklama süresini ayarlayın. Yedekleme zamanlaması tanımlanmadan önce bekletme ayarlamak tek görünebilir, ancak ```Set-DPMPolicyObjective``` cmdlet 'i kullanmak, daha sonra değiştirilebilecek varsayılan bir yedekleme zamanlaması otomatik olarak ayarlar. İlk olarak yedekleme zamanlamasını ve sonrasında bekletme ilkesini ayarlamak her zaman mümkündür.
 
 Aşağıdaki örnekte cmdlet, Disk yedeklemeleri için bekletme parametrelerini ayarlar. Bu, yedeklemeleri 10 gün boyunca korur ve üretim sunucusu ile DPM sunucusu arasında her 6 saatte bir eşitleme verilerini eşitler. ```SynchronizationFrequencyMinutes```, bir yedekleme noktasının ne sıklıkta oluşturulduğunu, ancak verilerin DPM sunucusuna ne sıklıkta kopyalandığını tanımlamaz.  Bu ayar yedeklerin çok büyük hale gelmesini engeller.
 
@@ -297,7 +297,7 @@ Aşağıdaki örnekte cmdlet, Disk yedeklemeleri için bekletme parametrelerini 
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-Azure 'a giden yedeklemeler (DPM, çevrimiçi yedeklemeler olarak bunlara başvurur) için, bekletme aralıkları, [bir tam baba-son düzen (GFS) kullanılarak uzun süreli saklama](backup-azure-backup-cloud-as-tape.md)için yapılandırılabilir. Diğer bir deyişle, günlük, haftalık, aylık ve yıllık bekletme ilkeleri içeren bir birleştirilmiş bekletme ilkesi tanımlayabilirsiniz. Bu örnekte, istediğimiz karmaşık bekletme şemasını temsil eden bir dizi oluşturacağız ve sonra [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) cmdlet 'ini kullanarak bekletme aralığını yapılandıracağız.
+Azure 'a giden yedeklemeler (DPM, çevrimiçi yedeklemeler olarak bunlara başvurur) için, bekletme aralıkları, [bir tam baba-son düzen (GFS) kullanılarak uzun süreli saklama](backup-azure-backup-cloud-as-tape.md)için yapılandırılabilir. Diğer bir deyişle, günlük, haftalık, aylık ve yıllık bekletme ilkeleri içeren bir birleştirilmiş bekletme ilkesi tanımlayabilirsiniz. Bu örnekte, istediğimiz karmaşık bekletme şemasını temsil eden bir dizi oluşturacağız ve sonra [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bekletme aralığını yapılandıracağız.
 
 ```powershell
 $RRlist = @()
@@ -310,7 +310,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>Yedekleme zamanlamasını ayarlama
 
-```Set-DPMPolicyObjective``` cmdlet 'ini kullanarak koruma hedefini belirtirseniz DPM varsayılan bir yedekleme zamanlaması otomatik olarak ayarlar. Varsayılan zamanlamaları değiştirmek için, [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) cmdlet 'ini ve ardından [set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) cmdlet 'ini kullanın.
+```Set-DPMPolicyObjective``` cmdlet 'ini kullanarak koruma hedefini belirtirseniz DPM varsayılan bir yedekleme zamanlaması otomatik olarak ayarlar. Varsayılan zamanlamaları değiştirmek için, [Get-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) cmdlet 'ini ve ardından [set-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) cmdlet 'ini kullanın.
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -332,7 +332,7 @@ Bu nedenle, haftalık zamanlamayı değiştirmeniz gerekiyorsa ```$onlineSch[1]`
 
 ### <a name="initial-backup"></a>İlk yedekleme
 
-Bir veri kaynağı ilk kez yedeklenirken DPM, DPM çoğaltma biriminde korunacak şekilde veri kaynağının tam bir kopyasını oluşturan ilk çoğaltma oluşturması gerekir. Bu etkinlik belirli bir zaman için zamanlanabilir veya ```-NOW```parametresiyle [set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) cmdlet 'i kullanılarak el ile tetiklenebilir.
+Bir veri kaynağı ilk kez yedeklenirken DPM, DPM çoğaltma biriminde korunacak şekilde veri kaynağının tam bir kopyasını oluşturan ilk çoğaltma oluşturması gerekir. Bu etkinlik belirli bir zaman için zamanlanabilir veya ```-NOW```parametresiyle [set-DPMReplicaCreationMethod](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) cmdlet 'i kullanılarak el ile tetiklenebilir.
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -340,11 +340,11 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM çoğaltma & kurtarma noktası biriminin boyutunu değiştirme
 
-Aşağıdaki örnekte olduğu gibi [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) cmdlet 'INI kullanarak DPM çoğaltma birimi ve gölge kopya biriminin boyutunu da değiştirebilirsiniz: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-protectiongroup $MPG-Manual-replicaarea (2GB)-ShadowCopyArea (2 GB)
+Aşağıdaki örnekte olduğu gibi [set-DPMDatasourceDiskAllocation](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) cmdlet 'INI kullanarak DPM çoğaltma birimi ve gölge kopya biriminin boyutunu da değiştirebilirsiniz: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-protectiongroup $MPG-Manual-replicaarea (2GB)-ShadowCopyArea (2 GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Değişiklikler koruma grubuna uygulanıyor
 
-Son olarak, yeni koruma grubu yapılandırması uyarınca DPM 'nin yedeklemeyi yapmadan önce değişikliklerin uygulanması gerekir. Bu, [set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) cmdlet 'i kullanılarak elde edilebilir.
+Son olarak, yeni koruma grubu yapılandırması uyarınca DPM 'nin yedeklemeyi yapmadan önce değişikliklerin uygulanması gerekir. Bu, [set-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) cmdlet 'i kullanılarak elde edilebilir.
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
@@ -352,7 +352,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ## <a name="view-the-backup-points"></a>Yedekleme noktalarını görüntüleme
 
-Bir veri kaynağı için tüm kurtarma noktalarının listesini almak için [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) cmdlet 'ini kullanabilirsiniz. Bu örnekte şunları göndereceğiz:
+Bir veri kaynağı için tüm kurtarma noktalarının listesini almak için [Get-DPMRecoveryPoint](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) cmdlet 'ini kullanabilirsiniz. Bu örnekte şunları göndereceğiz:
 
 * DPM sunucusundaki tüm PTE 'leri getirin ve bir dizide depolanan ```$PG```
 * ```$PG[0]``` karşılık gelen veri kaynaklarını alın
@@ -370,7 +370,7 @@ Verilerin geri yüklenmesi ```RecoverableItem``` nesnesinin ve ```RecoveryOption
 
 Aşağıdaki örnekte, kurtarma hedefi ile yedekleme noktalarını birleştirerek bir Hyper-V sanal makinesini Azure Backup 'dan nasıl geri yükleyeceğiniz gösterilmektedir. Bu örnek şunları içerir:
 
-* [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) cmdlet 'ini kullanarak bir kurtarma seçeneği oluşturuluyor.
+* [New-DPMRecoveryOption](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bir kurtarma seçeneği oluşturuluyor.
 * ```Get-DPMRecoveryPoint``` cmdlet 'ini kullanarak yedekleme noktaları dizisi getiriliyor.
 * Geri yüklenecek bir yedekleme noktası seçme.
 

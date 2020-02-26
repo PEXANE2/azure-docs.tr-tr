@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444035"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582662"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -113,11 +113,34 @@ Azure Stack sanal makinelerin ve iş yüklerinin yedeklemesini tek bir konumdan 
 
 DPM sunucusu/MABS 'nin bu URL 'Lere erişmesi gerekir:
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute desteği
+
+Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.
+
+Ortak eşleme ile: aşağıdaki etki alanlarına/adreslere erişim sağlayın:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
+* Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
+
+Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Ortak eşleme, yeni devreler için kullanım dışıdır.
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>Azure Backup DPM/MABS bağlantısı
 

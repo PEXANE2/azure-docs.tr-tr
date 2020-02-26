@@ -2,23 +2,22 @@
 title: Azure Kubernetes hizmeti (AKS) ile Apache Spark işi çalıştırma
 description: Apache Spark işini çalıştırmak için Azure Kubernetes hizmeti 'ni (AKS) kullanma
 author: lenadroid
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 72e87acf418d5085a76f18c595bf31d43b0d64ac
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274658"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593658"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS üzerinde Apache Spark işleri çalıştırma
 
 [Apache Spark][apache-spark] , büyük ölçekli veri işleme için hızlı bir altyapıdır. [Spark 2.3.0 sürümünden][spark-latest-release]itibaren Apache Spark, Kubernetes kümeleriyle yerel tümleştirmeyi destekler. Azure Kubernetes hizmeti (AKS), Azure 'da çalışan yönetilen bir Kubernetes ortamıdır. Bu belge, Azure Kubernetes Service (AKS) kümesinde Apache Spark işleri hazırlamaya ve çalıştırmaya ilişkin ayrıntıları sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
@@ -259,7 +258,7 @@ kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 
 Spark Kullanıcı arabirimine erişmek için adres `127.0.0.1:4040` bir tarayıcıda açın.
 
-![Spark Kullanıcı Arabirimi](media/aks-spark-job/spark-ui.png)
+![Spark Kullanıcı arabirimi](media/aks-spark-job/spark-ui.png)
 
 ## <a name="get-job-results-and-logs"></a>İş sonuçlarını ve günlükleri al
 

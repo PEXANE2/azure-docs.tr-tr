@@ -4,12 +4,12 @@ description: MySQL sunucusu için Azure Veritabanı oluşturmak ve yapılandırm
 keywords: ansible, azure, devops, bash, playbook, mysql, veritabanı
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156534"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603117"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Öğretici: anlanabilir kullanarak MySQL için Azure veritabanı 'nda veritabanlarını yapılandırma
 
@@ -23,7 +23,7 @@ ms.locfileid: "74156534"
 >
 > * MySql sunucusu oluşturma
 > * MySql veritabanı oluşturma
-> * Bir dış uygulamanın sunucunuza bağlanabilmesi için bir fileduvar kuralı yapılandırın
+> * Bir dış uygulamanın sunucunuza bağlanabilmesi için bir güvenlik duvarı kuralı yapılandırın
 > * Azure Cloud Shell 'den MySql sunucunuza bağlanma
 > * Kullanılabilir MySQL sunucularınızı sorgulama
 > * Bağlı sunuculardaki tüm veritabanlarını listeleme

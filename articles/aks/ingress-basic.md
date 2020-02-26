@@ -2,17 +2,14 @@
 title: Azure Kubernetes hizmeti 'nde (AKS) temel bir giriş denetleyicisi oluşturma
 description: Azure Kubernetes Service (AKS) kümesine temel bir NGıNX giriş denetleyicisi yüklemeyi ve yapılandırmayı öğrenin.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/20/2019
-ms.author: mlearned
-ms.openlocfilehash: 4299846f48524799084efa5456c169d18af4185d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: e37f7aa677be129aa9fe568880c53cc860947e30
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728880"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595646"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti 'nde (AKS) giriş denetleyicisi oluşturma
 

@@ -1,22 +1,22 @@
 ---
-title: Azure 'u kullanarak bir Linux VM 'ye bağlanma | Microsoft Docs
+title: Azure savunma kullanarak bir Linux VM 'ye bağlanma
 description: Bu makalede, Azure savunma kullanarak Linux sanal makinesine nasıl bağlanacağınızı öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7fe1c2f74ca2a7b0fa4aefad934c45edd6f85a73
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990450"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596836"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure savunma kullanarak bir Linux sanal makinesine SSH kullanarak bağlanma
 
-Bu makalede, bir Azure sanal ağındaki Linux VM 'lerinize güvenli ve sorunsuz bir şekilde SSH ekleyebilirsiniz. Azure portalından doğrudan bir sanal makineye bağlanabilirsiniz. Azure Bastion’ı kullanırken sanal makineler için bir istemci, aracı veya ek yazılım gerekmez. Azure savunma hakkında daha fazla bilgi için bkz. [genel bakış](bastion-overview.md).
+Bu makalede, bir Azure sanal ağındaki Linux VM 'lerinize güvenli ve sorunsuz bir şekilde SSH ekleyebilirsiniz. Bir VM 'ye doğrudan Azure portal bağlanabilirsiniz. Azure savunma kullanılırken, VM 'Ler bir istemci, aracı veya ek yazılım gerektirmez. Azure savunma hakkında daha fazla bilgi için bkz. [genel bakış](bastion-overview.md).
 
 SSH kullanarak bir Linux sanal makinesine bağlanmak için Azure savunma kullanabilirsiniz. Kimlik doğrulaması için hem Kullanıcı adı/parola hem de SSH anahtarlarını kullanabilirsiniz. VM 'nize şu iki kullanarak SSH anahtarlarıyla bağlanabilirsiniz:
 
@@ -45,34 +45,37 @@ Linux VM 'sine SSH aracılığıyla bağlanmak için, VM 'niz üzerinde aşağı
 
 * Gelen bağlantı noktası: SSH (22)
 
-
 ## <a name="username"></a>Bağlan: Kullanıcı adı ve parola kullanma
 
-1.   [Azure portalı](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin ve **Bağlan**' a tıklayın. SSH bağlantısı kullanılırken VM 'nin bir Linux sanal makinesi olması gerekir.
-1. Bağlan ' a tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
 
-   ![VM bağlantısı](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
 1. Sanal makinenize SSH için Kullanıcı adı ve parola girin.
 1. Anahtarı girdikten sonra **Bağlan** düğmesine tıklayın.
 
 ## <a name="privatekey"></a>Bağlan: El Ile özel bir anahtar girin
 
-1. [Azure portalı](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin ve **Bağlan**' a tıklayın. SSH bağlantısı kullanılırken VM 'nin bir Linux sanal makinesi olması gerekir.
-1. Bağlan ' a tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
 
-   ![VM bağlantısı](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
 1. Kullanıcı adını girin ve **SSH özel anahtarı**' nı seçin.
 1. Özel anahtarınızı **SSH özel anahtarı** metin alanına girin (veya doğrudan yapıştırın).
 1. Anahtarı girdikten sonra **Bağlan** düğmesine tıklayın.
 
 ## <a name="ssh"></a>Bağlan: özel anahtar dosyası kullanma
 
-1. [Azure portalı](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin ve **Bağlan**' a tıklayın. SSH bağlantısı kullanılırken VM 'nin bir Linux sanal makinesi olması gerekir.
+1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
 
-   ![VM bağlantısı](./media/bastion-connect-vm-ssh/connect.png)
-1. Bağlan ' a tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
 
-   ![VM bağlantısı](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
 1. Kullanıcı adını girin ve **yerel dosyadan SSH özel anahtarı**' nı seçin.
 1. (Yerel dosyadaki klasör simgesi **) düğmesine tıklayın** .
 1. Dosyaya gözatıp açın, sonra **Aç**' a tıklayın.

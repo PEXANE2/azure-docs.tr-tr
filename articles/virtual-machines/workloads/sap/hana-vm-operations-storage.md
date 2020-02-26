@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/27/2019
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707468"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598536"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -42,7 +42,7 @@ Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şun
 - En azından/Hana/log birimi için Azure Ultra disk. /Hana/Data Volume Premium SSD Azure Yazma Hızlandırıcısı olmadan veya daha hızlı yeniden başlatma süreleri Ultra disk elde etmek için eklenebilir
 - **NFS v 4.1** ,/Hana/log **ve** /Hana/Dataiçin Azure NetApp Files en üstünde bulunan birimleri. /Hana/Shared birimi NFS v3 veya NFS v 4.1 protokolünü kullanabilir. NFS v 4.1 protokolü/Hana/Data ve/Hana/günlük birimleri için zorunludur.
 
-Bazı depolama türleri birleştirilebilir. Örneğin,/Hana/Data ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için/Hana/log Ultra disk depolama alanına yerleştirilebilir. Ancak,/Hana/Data için ANF tabanlı bir NFS v 4.1 birimi kullanırsanız,/Hana/log için ANF tabanlı başka bir NFS v 4.1 birimi kullanmanız gerekir. Birimlerden biri (/Hana/Data gibi) ve Azure Premium depolama ya da diğer birime yönelik Ultra disk (/Hana/log gibi) için ANF üzerinde NFS kullanılması **desteklenmez**.
+Bazı depolama türleri birleştirilebilir. Örneğin,/Hana/Data ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için/Hana/log, Ultra disk depolama alanına yerleştirilebilir. Ancak,/Hana/Data için ANF tabanlı bir NFS v 4.1 birimi kullanırsanız,/Hana/log için ANF tabanlı başka bir NFS v 4.1 birimi kullanmanız gerekir. Birimlerden biri (/Hana/Data gibi) ve Azure Premium depolama ya da diğer birime yönelik Ultra disk (/Hana/log gibi) için ANF üzerinde NFS kullanılması **desteklenmez**.
 
 Şirket içi dünyada, genellikle g/ç alt sistemleri ve özellikleri hakkında dikkatli olmanız gerekiyordu. Bunun nedeni, Gereç satıcısının SAP HANA için en düşük depolama gereksinimlerinin karşılandığından emin olması gerekiyordu. Azure altyapısını kendiniz oluştururken, bu SAP tarafından verilen gereksinimlerin bazılarını bilmelisiniz. SAP 'den gerekli olan en düşük aktarım hızı özelliklerinden bazıları şunlar için gerekenler:
 
@@ -54,8 +54,11 @@ Yetersiz depolama gecikmesi DBMS sistemleri için kritik öneme sahip olduğu i�
 
 **Öneri: RAID 0 için şerit boyutları olarak kullanım önerisi:**
 
-- **/Hana/Data** IÇIN 64 kb veya 128 KB
+- **/Hana/Data** IÇIN 256 KB
 - **/Hana/log** IÇIN 32 KB
+
+> [!IMPORTANT]
+> /Hana/Data için Şerit boyutu, daha güncel Linux sürümlerindeki müşteri deneyimlerini temel alarak 64 KB veya 128 KB ile 256 KB arasında çağrı yapan önceki önerilerden değiştirilmiştir. 256 KB boyutundaki boyut biraz daha iyi performans sağlıyor
 
 > [!NOTE]
 > Azure Premium ve standart depolama, bir VHD 'nin üç görüntüsünü tutadığından, RAID birimlerini kullanarak artıklık düzeyi yapılandırmanız gerekmez. RAID birimi kullanımı, yalnızca yeterli g/ç üretilen işi sağlayan birimleri yapılandırmak içindir.
@@ -65,7 +68,7 @@ Bir RAID 'in altındaki birçok Azure VHD birikimini, ıOPS ve depolama alanı i
 Ayrıca, bir VM 'yi boyutlandırdığınızda veya karar verirken genel VM g/ç verimini göz önünde bulundurun. Genel VM depolama verimi, bu makalede bellek için [iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)bölümünde belgelenmiştir.
 
 ## <a name="linux-io-scheduler-mode"></a>Linux g/ç zamanlayıcı modu
-Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SAP aracılığıyla sık görülen öneriler, disk birimleri için g/ç Zamanlayıcı modunu, **CFQ** modundan **noop moduna yeniden yapılandırmadır** . [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)ayrıntılara başvurulur. 
+Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SAP aracılığıyla sık görülen öneriler, disk birimleri için g/ç Zamanlayıcı modunu, **CFQ** modundan Noop (multiqueue) veya for (multiqueue) modu için **hiçbiri** olarak yeniden **yapılandırmadır** . [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)ayrıntılara başvurulur. 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure n serisi sanal makineler için Premium Depolama ve Azure Yazma Hızlandırıcısı çözümleri
@@ -100,7 +103,7 @@ Aşağıdaki önbelleğe alma önerileri, şunun gibi SAP HANA için g/ç özell
 
 **Öneri: üretim senaryolarında önerilen yapılandırma şöyle görünür:**
 
-| VM SKU 'SU | RAM | En çok, VM G/Ç<br /> İşleme | /Hana/Data | /Hana/log | /Hana/Shared | /root birimi | /usr/SAP | Hana/yedekleme |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data | /Hana/log | /Hana/Shared | /root birimi | /usr/SAP | Hana/yedekleme |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
@@ -142,7 +145,7 @@ Aşağıdaki tabloda, müşterilerin Azure VM 'lerinde SAP HANA barındırmak i�
 
 Öneriler genellikle bu makalenin önceki kısımlarında belirtilen SAP minimum gereksinimlerini aşır. Listelenen öneriler, SAP 'ye göre boyut önerileri ve farklı VM türlerinin sağladığı en fazla depolama hacmi arasında bir uzlaşmaya neden vardır.
 
-| VM SKU 'SU | RAM | En çok, VM G/Ç<br /> İşleme | /Hana/Data ve/Hana/log<br /> LVM veya MDADDM ile şeritli | /Hana/Shared | /root birimi | /usr/SAP | Hana/yedekleme |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data ve/Hana/log<br /> LVM veya MDADDM ile şeritli | /Hana/Shared | /root birimi | /usr/SAP | Hana/yedekleme |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
@@ -182,7 +185,7 @@ Microsoft, [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/
 
 Ultra Disk size boyut, ıOPS ve disk aktarım hızı aralığınızı karşılayan tek bir disk tanımlama olanağı sağlar. IOP ve depolama verimlilik gereksinimlerini karşılayan birimler oluşturmak için Azure Premium Depolama 'nın en üstünde LVM veya MDADDM gibi mantıksal birim yöneticileri kullanmak yerine. Ultra disk ve Premium Depolama arasında bir yapılandırma karışımı çalıştırabilirsiniz. Sonuç olarak, Ultra disk kullanımını performans açısından kritik/Hana/Data ve/Hana/log birimlerine sınırlayabilir ve Azure Premium Depolama ile diğer birimleri kapsaymanıza olanak sağlayabilirsiniz.
 
-Ultra disk 'in diğer avantajları Premium depolamaya kıyasla daha iyi okuma gecikmesi olabilir. Daha hızlı okuma gecikmesi, HANA başlangıç zamanlarını ve verilerin sonraki yükünü belleğe daha azaltmak istediğinizde avantajlara sahip olabilir. Ayrıca, HANA Savepoints yazarken Ultra disk depolamanın avantajları da keçeli olabilir. /Hana/Data için Premium Depolama disklerinin genellikle önbelleğe Yazma Hızlandırıcısı olmadığından, Premium depolamada bulunan/Hana/Data 'ya yönelik yazma gecikmesi, Ultra diskle karşılaştırıldığında daha yüksektir. Ultra disk ile yazılan kayıt noktası Ultra disk üzerinde daha iyi bir şekilde gerçekleştiriliyor olabilir.
+Ultra disk 'in diğer avantajları Premium depolamaya kıyasla daha iyi okuma gecikmesi olabilir. Daha hızlı okuma gecikmesi, HANA başlangıç zamanlarını ve verilerin sonraki yükünü belleğe düşürmek istediğinizde avantajlara sahip olabilir. Ayrıca, HANA Savepoints yazarken Ultra disk depolamanın avantajları da keçeli olabilir. /Hana/Data için Premium Depolama disklerinin genellikle önbelleğe Yazma Hızlandırıcısı olmadığından, Premium depolamada bulunan/Hana/Data 'ya yönelik yazma gecikmesi, Ultra diskle karşılaştırıldığında daha yüksektir. Ultra disk ile yazılan kayıt noktası Ultra disk üzerinde daha iyi bir şekilde gerçekleştiriliyor olabilir.
 
 > [!IMPORTANT]
 > Ultra disk henüz tüm Azure bölgelerinde mevcut değildir ve henüz aşağıda listelenen tüm VM türlerini desteklemede. Ultra diskin kullanılabildiği ve hangi VM ailelerinin desteklendiği hakkında ayrıntılı bilgi için, [Azure 'da disk türlerinin kullanılabildiği](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)makaleye bakın.
@@ -192,20 +195,20 @@ Bu yapılandırmada,/Hana/Data ve/Hana/log birimlerini ayrı tutmanız gerekir. 
 
 Öneriler genellikle bu makalenin önceki kısımlarında belirtilen SAP minimum gereksinimlerini aşır. Listelenen öneriler, SAP 'ye göre boyut önerileri ve farklı VM türlerinin sağladığı en fazla depolama hacmi arasında bir uzlaşmaya neden vardır.
 
-| VM SKU 'SU | RAM | En çok, VM G/Ç<br /> İşleme | /Hana/Data birimi | /Hana/Data g/ç verimlilik | /Hana/Data ıOPS | /Hana/log birimi | /Hana/log g/ç aktarım hızı | /Hana/log ıOPS |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data birimi | /Hana/Data g/ç verimlilik | /Hana/Data ıOPS | /Hana/log birimi | /Hana/log g/ç aktarım hızı | /Hana/log ıOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBps | 7\.500 | 512 GB | 500 MBps  | 2\.000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2\.000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2\.000 |
-| M64ls | 512 GiB | 1\.000 MB/s | 600 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2\.500 |
-| M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2\.500 |
-| M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2\.500 |
-| M128s | 2\.000 GiB | 2\.000 MB/s |2\.400 GB | 1\.200 MBps |9\.000 | 512 GB | 800 MBps  | 3\.000 | 
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 4\.800 GB | 1200 MBps |9\.000 | 512 GB | 800 MBps  | 3\.000 | 
-| M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2\.500 | 
-| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2\.500 | 
-| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3\.000 | 
-| M416ms_v2 | 11.400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3\.000 |   
+| E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBps | 7\.500 | 512 GB | 500 MBps  | 2,000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2,000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2,000 |
+| M64ls | 512 GiB | 1\.000 MB/s | 600 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2,500 |
+| M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2,500 |
+| M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2,500 |
+| M128s | 2\.000 GiB | 2\.000 MB/s |2\.400 GB | 1\.200 MBps |9\.000 | 512 GB | 800 MBps  | 3,000 | 
+| M128ms | 3\.800 GiB | 2\.000 MB/s | 4\.800 GB | 1200 MBps |9\.000 | 512 GB | 800 MBps  | 3,000 | 
+| M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2,500 | 
+| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2,500 | 
+| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3,000 | 
+| M416ms_v2 | 11.400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3,000 |   
 
 Listelenen değerlerin başlangıç noktası olması amaçlanmıştır ve gerçek taleplere göre değerlendirilmesi gerekir. Azure Ultra disk 'in avantajı, ıOPS ve aktarım hızı değerlerinin, VM 'yi kapatma veya sisteme uygulanan iş yükünü durdurma gerekmeden uyarlanabilme gereği elde edilebilir.   
 
@@ -217,7 +220,7 @@ Bu yapılandırmada, aynı disk üzerinde/Hana/Data ve/Hana/log birimleri olursu
 
 Öneriler genellikle bu makalenin önceki kısımlarında belirtilen SAP minimum gereksinimlerini aşır. Listelenen öneriler, SAP 'ye göre boyut önerileri ve farklı VM türlerinin sağladığı en fazla depolama hacmi arasında bir uzlaşmaya neden vardır.
 
-| VM SKU 'SU | RAM | En çok, VM G/Ç<br /> İşleme | /Hana/Data ve/log için birim | /Hana/Data ve günlük g/ç performansı | /Hana/Data ve log ıOPS |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data ve/log için birim | /Hana/Data ve günlük g/ç performansı | /Hana/Data ve log ıOPS |
 | --- | --- | --- | --- | --- | --- |
 | E64s_v3 | 432 GiB | 1\.200 MB/s | 1\.200 GB | 1\.200 MBps | 9\.500 | 
 | M32ts | 192 GiB | 500 MB/s | 512 GB | 400 MBps | 9\.500 | 
@@ -240,7 +243,7 @@ Azure NetApp Files,/Hana/Shared,/Hana/Data ve/Hana/log birimleri için kullanıl
 > [!IMPORTANT]
 > Azure NetApp Files uygulanan NFS v3 protokolünün/Hana/Data ve/Hana/log için **kullanılması desteklenmez.** NFS 4,1 kullanımı,/Hana/Data ve/Hana/log birimleri için bir işlev noktasından bir görünüm açısından zorunludur. Öte yandan,/Hana/Shared birimi için NFS v3 veya NFS v 4.1 protokolü, bir görünüm noktasından kullanılabilir.
 
-### <a name="important-considerations"></a>Önemli konular
+### <a name="important-considerations"></a>Önemli noktalar
 SAP NetWeaver ve SAP HANA için Azure NetApp Files düşünürken, aşağıdaki önemli noktalara dikkat edin:
 
 - En düşük kapasite havuzu 4 TiB 'dir.  

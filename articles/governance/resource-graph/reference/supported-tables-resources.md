@@ -1,14 +1,14 @@
 ---
 title: Desteklenen Kaynak Yöneticisi kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530230"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602564"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -34,7 +34,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. resources/abonelikler
 - Microsoft. resources/abonelikler/ResourceGroups
 
-## <a name="resources"></a>resources
+## <a name="resources"></a>kaynaklar
 
 - 84codes. cloudadmqp/sunucular
 - Citrix. Services/xenappessentials
@@ -116,6 +116,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. COMPUTE/sharedvmımages
 - Microsoft. COMPUTE/sharedvmımages/sürümler
 - Microsoft. COMPUTE/Snapshots
+- Microsoft. COMPUTE/sshpublickeys
 - Microsoft. COMPUTE/virtualmachines
 - Microsoft. COMPUTE/virtualmachines/uzantıları
 - Microsoft. COMPUTE/virtualmachinescalesets
@@ -277,6 +278,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Network/firewallpolicies
 - Microsoft. Network/frontkapaklı
 - Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ipayırmalar
 - Microsoft. Network/ıpgroups
 - Microsoft. Network/loadbalancers
 - Microsoft. Network/localnetworkgateway 'ler

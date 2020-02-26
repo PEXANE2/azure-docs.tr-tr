@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530961"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603800"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -27,7 +27,7 @@ Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini y
 > Güvenlik çözümlerinin bir alt kümesi 31 Temmuz 2019 tarihinde kullanımdan kaldırılmıştır. Daha fazla bilgi ve diğer hizmetler için bkz. [Güvenlik Merkezi özelliklerini devre dışı bırakma (2019 Temmuz)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Tümleşik Azure güvenlik çözümleri
-Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirmeyi kolaylaştırır. Avantajlara şunlar dahildir:
+Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirmeyi kolaylaştırır. Faydaları şunlardır:
 
 - **Basitleştirilmiş dağıtım**: Güvenlik Merkezi, tümleşik iş ortağı çözümlerinin kolay bir şekilde sağlanmasını mümkün kılar. Güvenlik Merkezi, kötü amaçlı yazılımdan koruma ve güvenlik açığı değerlendirmesi gibi çözümler için sanal makinelerinizde aracıyı temin edebilir. Güvenlik Duvarı gereçlerinde, Güvenlik Merkezi için gereken ağ yapılandırmasının büyük bir bölümü olabilir.
 - **Tümleşik algılamalar**: İş ortağı çözümlerinden gelen güvenlik olayları otomatik olarak toplanır, birleştirilir ve Güvenlik Merkezi uyarıları ve olaylarının bir parçası olarak görüntülenir. Gelişmiş tehdit algılama özellikleri sağlanması amacıyla, bu olaylar diğer kaynaklardan alınan algılamalarla da birleştirilir.
@@ -47,7 +47,7 @@ Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak 
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Tümleşik Azure güvenlik çözümlerini ve diğer veri kaynaklarını yönetme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)’ında oturum açın.
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 
 2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**’ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
 
@@ -129,13 +129,13 @@ Başlamadan önce, tüm izleme verilerinizin hedefi [olan bir Event Hubs ad alan
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Azure etkinlik günlüğünü Event Hubs akışa almak
 
-Event Hubs için aşağıdaki makaleye [Akış etkinlik günlüğüne](../azure-monitor/platform/activity-logs-stream-event-hubs.md) bakın
+Event Hubs için aşağıdaki makaleye [Akış etkinlik günlüğü](../azure-monitor/platform/activity-logs-stream-event-hubs.md)' ne bakın.
 
 #### <a name="install-a-partner-siem-connector"></a>İş ortağı SıEM bağlayıcısını yükler 
 
 İzleme verilerinizi Azure Izleyici ile bir olay hub 'ına yönlendirme, iş ortağı SıEM ve izleme araçlarıyla kolayca tümleştirmenize olanak sağlar.
 
-[Desteklenen Sıems](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) listesi için aşağıdaki makaleye bakın
+[Desteklenen Sıems](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)listesi için aşağıdaki makaleye bakın.
 
 ### <a name="example-for-querying-data"></a>Veri sorgulama örneği 
 
@@ -150,8 +150,6 @@ Uyarı verilerini çekmek için kullanabileceğiniz bazı splunk sorguları aşa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Güvenlik Merkezi'nde iş ortağı çözümlerinin nasıl tümleştirileceğini öğrendiniz. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu makalede, Güvenlik Merkezi'nde iş ortağı çözümlerinin nasıl tümleştirileceğini öğrendiniz. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 
 * [Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md). Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi SSS](security-center-faq.md). Güvenlik Merkezi kullanımı ile ilgili sık sorulan soruların yanıtlarını alın.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/). Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulun.

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445574"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588916"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB akış işlemcisini değiştirme 
 
@@ -41,13 +41,13 @@ Bu dört öğelerin değişiklik akışı işlemcisi ile birlikte nasıl çalı�
 
 Giriş noktası her zaman izlenen kapsayıcı olur, bu `Container` örneğinden `GetChangeFeedProcessorBuilder`çağırabilirsiniz:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
 
 İlk parametre, bu işlemcinin hedefini açıklayan ayrı bir addır ve ikinci ad, değişiklikleri işleyecek temsilci uygulamasıdır. 
 
 Bir temsilci örneği şöyle olabilir:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
 
 Son olarak, `WithInstanceName` ile bu işlemci örneği için bir ad tanımlarsınız ve bu kapsayıcı, `WithLeaseContainer`kira durumunun bakımını sağlar.
 

@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
-ms.openlocfilehash: 21a3bfd09e83571e489e15e9351e12220a99e563
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301262"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598298"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus azaltma işlemleri
 
@@ -55,6 +55,11 @@ Tüm işlemler eşit olarak oluşturulmaz. İşlemlerin her biri için kredi mal
 |-----------|-----------|
 | Veri işlemleri (Send, Sendadsync, Receive, ReceiveAsync, Peek) |ileti başına 1 kredi |
 | Yönetim işlemleri (oluşturma, okuma, güncelleştirme, kuyruklarda silme, konular, abonelikler, filtreler) | 10 kredi |
+
+> [!NOTE]
+> Bir konuya gönderme yapıldığında, her ileti abonelikte kullanılabilir duruma getirilmeden önce her bir iletinin filtreye göre değerlendirildiğine lütfen unutmayın.
+> Her filtre değerlendirmesi de kredi limitine göre sayılır (yani, filtre değerlendirmesi başına 1 kredi).
+>
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>Kısıtlandığımı nasıl anlarım?
 

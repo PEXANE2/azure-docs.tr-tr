@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d25201c8195fa6c4c36e159904b5b71a20a45ea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099641"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598502"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (büyük örnekler) depolama mimarisi
 
@@ -36,6 +36,8 @@ Depolama alanı ayırma açısından aşağıdaki tabloya bakın. Tablo, farklı
 | S192 | 4\.608 GB | 1\.024 GB | 1\.536 GB | 1\.024 GB |
 | S192m | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
 | S192xm |  11.520 GB |  1\.536 GB |  1\.792 GB |  1\.536 GB |
+| S224 |  4\.224 GB |  512 GB |  1\.024 GB |  512 GB |
+| S224m |  8\.448 GB |  512 GB |  1\.024 GB |  512 GB |
 | S384 | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
 | S384m | 12.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
 | S384xm | 16.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
@@ -72,9 +74,9 @@ Senaryonuza yönelik depolama düzeni ayrıntıları için [HLI desteklenen sena
 
 HANA büyük örnek birimlerinde birden fazla etkin SAP HANA örneği barındırmak mümkündür. Depolama anlık görüntülerinin ve olağanüstü durum kurtarmanın yeteneklerini sağlamak için, bu tür bir yapılandırma, örnek başına bir birim kümesi gerektirir. Şu anda, HANA büyük örnek birimleri şu şekilde alt ayrılabilir:
 
-- **S72, S72m, S96, S144, S192**: 256 GB 'lik artışlarla, 256 GB, en küçük başlangıç birimidir. 256 GB ve 512 GB gibi farklı Artımlar birimin en fazla bellek ile birleştirilebilir.
+- **S72, S72m, S96, S144, S192**: 256 GB 'lik artışlarla, 256 GB en küçük başlangıç birimi ile. 256 GB ve 512 GB gibi farklı Artımlar birimin en fazla bellek ile birleştirilebilir.
 - **S144m ve S192m**: 256 GB 'lik artışlarla, 512 GB en küçük birimdir. 512 GB ve 768 GB gibi farklı Artımlar birimin en fazla bellek ile birleştirilebilir.
-- **Tür II sınıfı**: En küçük başlangıç birimi olan 2 TB 'lik artışlarla 512 GB. 512 GB, 1 TB ve 1,5 TB gibi farklı artışlarla birimin en fazla bellek ile birleştirilebilir.
+- 2 TB 'lık en küçük başlangıç birimi ile 512 GB 'lik artışlarla **tür II sınıfı**. 512 GB, 1 TB ve 1,5 TB gibi farklı artışlarla birimin en fazla bellek ile birleştirilebilir.
 
 Birden çok SAP HANA örneği çalıştırmanın birkaç örneği aşağıdaki gibi görünebilir.
 
@@ -88,7 +90,7 @@ Birden çok SAP HANA örneği çalıştırmanın birkaç örneği aşağıdaki g
 
 Başka Çeşitlemeler de vardır. 
 
-## <a name="encryption-of-data-at-rest"></a>Bekleyen veri şifrelemesi
+## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
 HANA büyük örnek için kullanılan depolama, 2018 yılı bitmesinden bu yana disklerde depolanan veriler için saydam şifrelemeyi kullanır. Önceki dağıtımlarda birimleri şifrelenmiş olarak almayı seçebilirsiniz. Bu seçeneğe karşı karar verirseniz, çevrimiçi olarak şifrelenen birimleri almayı isteyebilirsiniz. Şifrelenmeyen şifreli birimlerden geçiş işlemi saydamdır ve kapalı kalma süresi gerektirmez. 
 
 SKU 'ların tür ı sınıfı ile, önyükleme LUN ' de depolanan birim şifrelenir. 3\. düzeltme 3 HANA büyük örnek Damgalarında, HANA büyük örnek SKU 'Larının tür II sınıfını kullanarak önyükleme LUN 'unu OS yöntemleriyle şifrelemeniz gerekir. Düzeltme 4 HANA büyük örnek damgaları ' nda, tür II birimleri kullanılarak önyükleme LUN 'si depolanır ve varsayılan olarak geri kalanı şifrelenir. 

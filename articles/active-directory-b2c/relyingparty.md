@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 502b4cef4fc44abcc55c1733b86fb6052e3e43ab
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: b64583bc61b87e900690e397fac57d64d145db05
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372738"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585705"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -117,6 +117,7 @@ Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty**
 | Sessionexpirınseconds | 0:1 | Başarılı kimlik doğrulamasından sonra kullanıcının tarayıcısında depolanan bir tamsayı olarak belirtilen Azure AD B2C's oturum tanımlama bilgisinin ömrü. |
 | Bağlantı, Neyelik | 0:1 | Kullanılacak Azure Application Insights izleme anahtarı. |
 | ContentDefinitionParameters | 0:1 | İçerik tanımı yük URI 'sine eklenecek anahtar değer çiftlerinin listesi. |
+|ScriptExecution| 0:1| Desteklenen [JavaScript](javascript-samples.md) yürütme modları. Olası değerler: `Allow` veya `Disallow` (varsayılan).
 
 ### <a name="singlesignon"></a>SingleSignOn
 

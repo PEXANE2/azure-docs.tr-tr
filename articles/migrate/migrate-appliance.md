@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425468"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597550"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -34,7 +34,7 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 **Lisan** | İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 **Dağıtım** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU, 80 GB disk depolama ve harici bir sanal anahtar içeren bir VM ayırmak için yeterli kaynağa ihtiyacınız vardır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç tek bir vCenter Server bağlanabilir.
 **Donanım** | VCenter 'daki kaynaklar, 32 GB RAM 8 vCPU ile, 80 GB disk depolaması ve harici bir sanal anahtarla bir VM ayırır. 
-**Karma değeri** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**Karma değeri** | [Buraya](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) bakın
 **vCenter sunucusu/ana bilgisayar** | Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Keşfini** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
@@ -52,7 +52,7 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 **Lisan** | İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 **Gereç dağıtımı**   |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Azure geçişi tarafından belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır.<br/> Ana bilgisayar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak üzere yeterli alana sahip olmalıdır.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
 **Donanım** | Hyper-V konağındaki kaynaklar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırır.
-**Karma değeri** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Karma değeri** | [Buraya](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security) bakın
 **Hyper-V konağı** | Windows Server 2012 R2 veya üstünü çalıştırın.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Keşfini** | Bir gereç, 5000 adede kadar Hyper-V VM 'Leri bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
@@ -67,7 +67,7 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 **Bağlantıyı indirin** | [Bağlantıyı indirin](https://go.microsoft.com/fwlink/?linkid=2105112)
 **İndirme boyutu** | 59,7 MB
 **Donanım** | Ayrılmış fiziksel makine veya bir sanal makine kullanın. Gereci çalıştıran makinenin 16 GB RAM, 8 vCPU, 80 GB depolama alanı ve harici bir anahtar olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
-**Karma değeri** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Karma değeri** | [Buraya](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security) bakın
 **İşletim Sistemi** | Gereç makinesi Windows Server 2016 ' i çalıştırıyor olmalıdır. 
 **Gereç dağıtımı**   |  Gereç yükleyicisi betiği portaldan (daraltılmış bir klasörde) indirilir. <br/> Klasörü sıkıştırmasını açın ve PowerShell betiğini (AzureMigrateInstaller. ps1) çalıştırın.
 **Keşfini** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.

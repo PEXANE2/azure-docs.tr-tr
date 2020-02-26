@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157286"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597177"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -72,7 +72,7 @@ BlockBlobStorage hesapları Şu anda sık erişimli, seyrek erişimli veya arşi
 
 Dosya depolama hesabı, Premium dosya paylaşımlarını depolamak ve oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü dosyaları destekler ancak blok Blobları, ekleme Blobları, sayfa Blobları, tablolar veya kuyruklar değildir.
 
-FileStorage hesapları, ıOPS burdımı gibi benzersiz performans özellikleri sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma performans katmanları](../files/storage-files-planning.md#file-share-performance-tiers) bölümüne bakın.
+FileStorage hesapları, ıOPS patlaması gibi benzersiz performansa özel özellikler sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma depolama katmanları](../files/storage-files-planning.md#storage-tiers) bölümüne bakın.
 
 ## <a name="naming-storage-accounts"></a>Depolama hesaplarını adlandırma
 
