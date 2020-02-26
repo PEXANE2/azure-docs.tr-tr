@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294261"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603757"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -106,15 +106,15 @@ Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından destekl
 * Service Fabric hesabı
 * Otomasyon hesabı
 * Yük dengeleyici
-* Arama
+* Search
 * Service bus ad alanı
 * Stream Analytics
 * Olay hub’ı ad alanı
-* Mantıksal uygulamalar
+* Logic Apps
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Key vault
+* Key Vault
 
 Yukarıdaki PaaS kaynakları listesinin desteklenen özellikleri hakkında daha fazla bilgi edinmek için bkz. [PaaS hizmetleri tarafından desteklenen özellikler](security-center-services.md#paas-services).
 
@@ -127,5 +127,3 @@ Azure Stack bulunan sanal makineler için koruma de desteklenir. Güvenlik Merke
 - [Azure Güvenlik Merkezi 'ni benimsemek için tasarım konularını nasıl planlayacağınızı ve anlayacağınızı](security-center-planning-and-operations-guide.md)öğrenin.
 - [Farklı bulut ortamları için kullanılabilen özellikler](security-center-services.md)hakkında bilgi edinin.
 - [Azure Güvenlik Merkezi 'Nde VM 'ler & sunucular için tehdit algılama](security-center-alerts-iaas.md)hakkında daha fazla bilgi edinin.
-- [Azure Güvenlik Merkezi 'ni kullanma hakkında sık sorulan soruları](security-center-faq.md)bulun.
-- [Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini](https://blogs.msdn.com/b/azuresecurity/)bulun.

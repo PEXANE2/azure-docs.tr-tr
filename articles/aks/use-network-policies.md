@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (aks) ile ağ ilkeleriyle güvenli Pod
 description: Azure Kubernetes Service 'te (AKS) Kubernetes ağ ilkelerini kullanarak, düğüm içinde ve dışında akan trafiği güvenli hale getirme hakkında bilgi edinin
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928488"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592875"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içindeki ağ ilkelerini kullanarak Pod arasındaki trafiği güvenli hale getirme
 
@@ -57,7 +54,7 @@ Her iki uygulama da belirtilen ilkeleri zorlamak için Linux *Iptables* kullanı
 | Desteklenen platformlar                      | Linux                      | Linux                       |
 | Desteklenen ağ seçenekleri             | Azure CNı                  | Azure CNı ve Kubernetes kullanan       |
 | Kubernetes belirtimiyle uyumluluk | Desteklenen tüm ilke türleri |  Desteklenen tüm ilke türleri |
-| Ek özellikler                      | Hiçbiri                       | Küresel ağ Ilkesi, küresel ağ kümesi ve konak uç noktasından oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri yönetmek için `calicoctl` CLı kullanma hakkında daha fazla bilgi için bkz. [calicoctl User Reference][calicoctl]. |
+| Ek özellikler                      | None                       | Küresel ağ Ilkesi, küresel ağ kümesi ve konak uç noktasından oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri yönetmek için `calicoctl` CLı kullanma hakkında daha fazla bilgi için bkz. [calicoctl User Reference][calicoctl]. |
 | Destek                                  | Azure desteği ve mühendislik ekibi tarafından desteklenir | Calıco topluluk desteği. Ücretli ek destek hakkında daha fazla bilgi için bkz. [Proje Calıco destek seçenekleri][calico-support]. |
 | Günlüğe kaydetme                                  | Iptables 'da eklenen/silinen kurallar, */var/log/Azure-NPM.log* altındaki her konakta günlüğe kaydedilir. | Daha fazla bilgi için bkz. [Calıco bileşen günlükleri][calico-logs] |
 
@@ -83,7 +80,7 @@ Aşağıdaki örnek komut dosyası:
 * AKS kümesiyle kullanılmak üzere bir Azure Active Directory (Azure AD) hizmet sorumlusu oluşturur.
 * Sanal ağdaki AKS küme hizmeti sorumlusu için *katkıda bulunan* izinleri atar.
 * Tanımlı sanal ağda bir AKS kümesi oluşturur ve ağ ilkesini sunar.
-    * *Azure* ağ ilkesi seçeneği kullanılır. Bunun yerine Calıco 'yı ağ ilkesi seçeneği olarak kullanmak için `--network-policy calico` parametresini kullanın. Note: Calıco, `--network-plugin azure` veya `--network-plugin kubenet` ile birlikte kullanılabilir.
+    * *Azure* ağ ilkesi seçeneği kullanılır. Bunun yerine Calıco 'yı ağ ilkesi seçeneği olarak kullanmak için `--network-policy calico` parametresini kullanın. Note: Calıco, `--network-plugin azure` ya da `--network-plugin kubenet`ile birlikte kullanılabilir.
 
 Kendi güvenli *sp_password*sağlayın. *RESOURCE_GROUP_NAME* ve *CLUSTER_NAME* değişkenlerini değiştirebilirsiniz:
 
@@ -402,7 +399,7 @@ kubectl apply -f backend-policy.yaml
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Ağ ilkesinin trafiği reddettiğinde emin olmak için Kabuk isteminde `wget` kullanın:
+Kabuk isteminde, ağ ilkesinin artık trafiği reddettiğinde emin olmak için `wget` kullanın:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development

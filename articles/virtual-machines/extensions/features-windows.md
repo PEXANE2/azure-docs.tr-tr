@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544761"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587881"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
-Azure sanal makine (VM) uzantıları, dağıtım sonrası yapılandırma ve Azure VM'lerinde otomasyon görevleri sunan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir. Azure VM uzantıları Azure CLI, PowerShell, Azure Resource Manager şablonları ve Azure portal ile çalıştırılabilir. Uzantılar yeni bir VM dağıtımıyla paketlenebilir veya var olan herhangi bir sistemde çalıştırılabilir.
+Azure sanal makinesi (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin, bir sanal makine yazılım yüklemesi, virüsten koruma koruması veya bunun içinde bir komut dosyası çalıştırmak istiyorsa, bir VM Uzantısı kullanılabilir. Azure VM uzantıları, Azure CLı, PowerShell, Azure Resource Manager şablonları ve Azure portal birlikte çalıştırılabilir. Uzantılar, yeni bir VM dağıtımıyla birlikte paketlenmiştir veya var olan herhangi bir sisteme karşı çalıştırılabilir.
 
 Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önkoşulları ve VM uzantılarının algılanması, yönetilmesi ve kaldırılması ile ilgili yönergeler sunulmaktadır. Bu makalede birçok VM Uzantısı kullanılabildiği için, her biri potansiyel olarak benzersiz bir yapılandırma olan Genelleştirilmiş bilgiler sağlanmaktadır. Uzantıya özgü ayrıntılar, tek tek uzantıya özgü her belge içinde bulunabilir.
 
@@ -36,13 +36,13 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 - PowerShell Istenen durum yapılandırmasını Windows için DSC uzantısına sahip bir VM 'ye uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](dsc-overview.md).
 - Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../log-analytics/log-analytics-azure-vm-extension.md).
-- Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](../windows/chef-automation.md).
+- Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](../../chef/chef-automation.md).
 - Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için bkz. [Dataköpek blogu](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 `Set-AzVMExtension` komutu herhangi bir VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -423,7 +423,7 @@ Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 ## <a name="common-vm-extensions-reference"></a>Ortak VM uzantıları başvurusu
 | Uzantı adı | Açıklama | Daha fazla bilgi |
 | --- | --- | --- |
-| Windows için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Windows için Özel Betik Uzantısı](custom-script-windows.md) |
+| Windows için Özel Betik Uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Windows için özel Betik uzantısı](custom-script-windows.md) |
 | Windows için DSC Uzantısı |PowerShell DSC (Istenen durum yapılandırması) uzantısı |[Windows için DSC Uzantısı](dsc-overview.md) |
 | Azure Tanılama Uzantısı |Azure Tanılama Yönet |[Azure Tanılama Uzantısı](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM erişimi uzantısı |Kullanıcıları ve kimlik bilgilerini yönetme |[Linux için VM erişimi uzantısı](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

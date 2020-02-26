@@ -1,75 +1,72 @@
 ---
-title: Azure Kubernetes Service (AKS) için en iyi uygulamalar
-description: Azure Kubernetes Service (AKS) uygulama oluşturmak ve yönetmek için küme işleci ve geliştirici en iyi koleksiyonu
+title: Azure Kubernetes hizmeti (AKS) için en iyi yöntemler
+description: Azure Kubernetes Service (AKS) içinde uygulama derlemek ve yönetmek için küme operatörü ve geliştirici en iyi uygulamaları koleksiyonu
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: mlearned
-ms.openlocfilehash: 7127894b364ac8f0fe1d87e13150d5522f5473e2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615954"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596326"
 ---
-# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Küme işleci ve geliştirici en iyi uygulamalar Azure Kubernetes Service'teki (AKS) oluşturmak ve yönetmek için uygulamalar
+# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama derlemek ve yönetmek için küme operatörü ve geliştirici en iyi uygulamaları
 
-Derleme ve Azure Kubernetes Service (AKS) uygulamaları başarılı bir şekilde çalıştırılması için anlaşılması ve uygulanması bazı önemli noktalar vardır. Bu alanlar, çok kiracılı ve Zamanlayıcı özellikler, küme ve pod güvenlik veya iş sürekliliği ve olağanüstü durum kurtarma içerir. Küme operatörleri yardımcı olması için aşağıdaki en iyi gruplandırılır ve geliştiriciler için bu alanların her biri için yapılacak değerlendirmeleri anlamaktır ve uygun özellikler uygular.
+Azure Kubernetes Service 'te (AKS) uygulamaları başarılı bir şekilde derlemek ve çalıştırmak için anlaşılması ve uygulanması gereken önemli noktalar vardır. Bu alanlarda çok kiracılı ve Zamanlayıcı özellikleri, küme ve pod güvenliği, iş sürekliliği ve olağanüstü durum kurtarma dahildir. Aşağıdaki en iyi yöntemler, küme İşletmenleri ve geliştiricilerin bu alanların her birine ilişkin konuları anlamasına ve uygun özellikleri uygulamasına yardımcı olmak üzere gruplandırılır.
 
-Bu en iyi yöntemler ve kavramsal makaleler, mühendislik ekipleri ve genel siyah bantları (GBBs) dahil olmak üzere alan takımlar AKS ürün grubu, birlikte yazılmıştır.
+Bu en iyi yöntemler ve kavramsal makaleler, AKS ürün grubu, mühendislik takımları ve küresel siyah belts (GB 'ler) dahil alan ekipleriyle birlikte yazılmıştır.
 
-## <a name="cluster-operator-best-practices"></a>Küme işleci en iyi uygulamalar
+## <a name="cluster-operator-best-practices"></a>Küme işleci en iyi uygulamaları
 
-Bir küme işleci olarak, kendi gereksinimlerini anlamak için uygulama sahipleri ve geliştiriciler ile birlikte çalışır. Ardından, AKS kümelerinizi gerektiği şekilde yapılandırmak için aşağıdaki en iyi kullanabilirsiniz.
+Bir küme operatörü olarak, ihtiyaçlarını anlamak için uygulama sahipleri ve geliştiricilerle birlikte çalışın. Daha sonra, AKS kümelerinizi gerektiği şekilde yapılandırmak için aşağıdaki en iyi yöntemleri kullanabilirsiniz.
 
 **Çok kiracılı**
 
 * [Küme yalıtımı için en iyi deneyimler](operator-best-practices-cluster-isolation.md)
-    * Çok kiracılı modeli çekirdek bileşenleri ve mantıksal yalıtımı ile ad alanlarını içerir.
+    * Çok kiracılı çekirdek bileşenleri ve ad alanlarıyla mantıksal yalıtım içerir.
 * [Temel zamanlayıcı özellikleri için en iyi deneyimler](operator-best-practices-scheduler.md)
-    * Kaynak kotaları ve pod kesintisi bütçelerini kullanarak içerir.
+    * Kaynak kotalarını ve pod kesinti bütçelerini kullanmayı içerir.
 * [Gelişmiş zamanlayıcı özellikleri için en iyi deneyimler](operator-best-practices-advanced-scheduler.md)
-    * Taints ve tolerations, düğüm seçicileri ve benzeşim ve arası pod benzeşimi ve benzeşim karşıtlığını kullanarak içerir.
+    * Talara ve toleranlara, düğüm seçicilerini ve benzeşimine ve yerleşik olmayan benzeşim ve benzeşim kullanımını içerir.
 * [Kimlik doğrulaması ve yetkilendirme için en iyi yöntemler](operator-best-practices-identity.md)
-    * Azure rol tabanlı erişim denetimlerine (RBAC) ve pod kimlikler kullanarak Active Directory ile tümleştirmeyi içerir.
+    * Rol tabanlı erişim denetimleri (RBAC) ve pod kimliklerini kullanarak Azure Active Directory tümleştirme içerir.
 
 **Güvenlik**
 
 * [Küme güvenliği ve yükseltmeler için en iyi yöntemler](operator-best-practices-cluster-security.md)
-    * Kapsayıcı erişimini sınırlandırma ve yükseltmeleri ve düğümü yeniden başlatma işlemlerini yönetme API sunucusuna erişimi güvenli hale getirme içerir.
-* [Kapsayıcı görüntü yönetimi ve güvenliği için en iyi uygulamalar](operator-best-practices-container-image-management.md)
-    * Görüntü ve çalışma zamanları ve otomatik yapılara temel görüntü güncelleştirmeleri güvenli hale getirme içerir.
-* [Pod güvenlik için en iyi uygulamalar](developer-best-practices-pod-security.md)
-    * Kaynaklara erişimi güvenli hale getirme, kimlik bilgisi ifşa sınırlandırma ve pod kimlikler ve dijital anahtar kasalarını kullanarak içerir.
+    * API sunucusuna erişimin güvenliğini sağlama, kapsayıcı erişimini sınırlandırma ve yükseltmeleri ve düğüm yeniden başlatmaları yönetme işlemlerini içerir.
+* [Kapsayıcı görüntüsü yönetimi ve güvenlik için en iyi uygulamalar](operator-best-practices-container-image-management.md)
+    * Temel görüntü güncelleştirmelerinde görüntünün ve çalışma zamanlarının ve otomatikleştirilmiş derlemelerin güvenliğini sağlama içerir.
+* [Pod güvenliği için en iyi uygulamalar](developer-best-practices-pod-security.md)
+    * Kaynaklara erişimin güvenliğini sağlama, kimlik bilgisi pozlamasını sınırlandırma ve pod kimliklerini ve dijital anahtar kasalarını kullanmayı içerir.
 
 **Ağ ve depolama**
 
 * [Ağ bağlantısı için en iyi uygulamalar](operator-best-practices-network.md)
-    * Giriş ve web uygulaması güvenlik duvarları (WAF) kullanarak ve düğüm SSH erişimini güvenli hale getirme farklı ağ modellerini içerir.
+    * , Giriş ve Web uygulaması güvenlik duvarları (WAF) kullanarak farklı ağ modelleri içerir ve düğüm SSH erişiminin güvenliğini sağlama.
 * [Depolama ve yedekleme için en iyi yöntemler](operator-best-practices-storage.md)
-    * Dinamik olarak sağlama birimleri ve yedekleri uygun depolama türü ve düğüm boyutunu seçme içerir.
+    * Uygun depolama türü ve düğüm boyutu, dinamik olarak sağlama birimleri ve veri yedeklemeleri seçmeyi içerir.
 
-**Kurumsal kullanıma hazır iş yüklerini çalıştırma**
+**Kurumsal özellikli iş yüklerini çalıştırma**
 
 * [İş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar](operator-best-practices-multi-region.md)
-    * Bölge çiftlerinin, birden fazla küme Azure Traffic Manager ve coğrafi çoğaltma, kapsayıcı görüntüleri kullanarak içerir.
+    * Bölge çiftlerinin kullanımını, Azure Traffic Manager ile birden çok kümeyi ve kapsayıcı görüntülerinin coğrafi olarak çoğaltılmasını içerir.
 
-## <a name="developer-best-practices"></a>Geliştirici en iyi uygulamalar
+## <a name="developer-best-practices"></a>Geliştirici en iyi uygulamaları
 
-Bir geliştirici olarak veya uygulama sahibi, geliştirme deneyiminizi kolaylaştırmak ve tanımlama performans gereksinimlerine göre gerektirir.
+Geliştirici veya uygulama sahibi olarak, geliştirme deneyiminizi basitleştirebilir ve uygulama performansı ihtiyaçlarını gerekli kılabilirsiniz.
 
 * [Uygulama geliştiriciler için kaynak yönetimine yönelik en iyi yöntemler](developer-best-practices-resource-management.md)
-    * Pod kaynak isteklerini ve geliştirme araçlarını yapılandırma ve uygulama sorunları için iade etme sınırları, tanımlama içerir.
-* [Pod güvenlik için en iyi uygulamalar](developer-best-practices-pod-security.md)
-    * Kaynaklara erişimi güvenli hale getirme, kimlik bilgisi ifşa sınırlandırma ve pod kimlikler ve dijital anahtar kasalarını kullanarak içerir.
+    * Pod kaynak isteklerini ve sınırlarını tanımlamayı, geliştirme araçlarını yapılandırmayı ve uygulama sorunları olup olmadığını içerir.
+* [Pod güvenliği için en iyi uygulamalar](developer-best-practices-pod-security.md)
+    * Kaynaklara erişimin güvenliğini sağlama, kimlik bilgisi pozlamasını sınırlandırma ve pod kimliklerini ve dijital anahtar kasalarını kullanmayı içerir.
 
-## <a name="kubernetes--aks-concepts"></a>Kubernetes / AKS kavramları
+## <a name="kubernetes--aks-concepts"></a>Kubernetes/AKS kavramları
 
-Özelliklerinden bazıları ve bu en iyi uygulamaları bileşenlerinin anlamanıza yardımcı olmak için aşağıdaki kavramsal makaleleri kümeleri Azure Kubernetes Service (AKS) için de görebilirsiniz:
+Bu en iyi yöntemlerin bazı özellik ve bileşenlerinden bazılarının anlaşılmasına yardımcı olmak için Azure Kubernetes Service (AKS) içindeki kümeler için aşağıdaki kavramsal makaleleri de görebilirsiniz:
 
-* [Kubernetes kavramları](concepts-clusters-workloads.md)
+* [Kubernetes temel kavramları](concepts-clusters-workloads.md)
 * [Erişim ve kimlik](concepts-identity.md)
 * [Güvenlik kavramları](concepts-security.md)
 * [Ağ kavramları](concepts-network.md)
@@ -78,4 +75,4 @@ Bir geliştirici olarak veya uygulama sahibi, geliştirme deneyiminizi kolaylaş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AKS ile kullanmaya başlamak ihtiyacınız varsa, bir Azure Kubernetes Service (AKS) kullanarak küme dağıtmak için hızlı başlangıçları birini izleyin [Azure CLI](kubernetes-walkthrough.md) veya [Azure portalında](kubernetes-walkthrough-portal.md).
+AKS 'yi kullanmaya başlamak istiyorsanız, [Azure CLI](kubernetes-walkthrough.md) veya [Azure Portal](kubernetes-walkthrough-portal.md)kullanarak bir Azure Kubernetes hizmeti (aks) kümesi dağıtmak için hızlı başlangıçlardan birini izleyin.

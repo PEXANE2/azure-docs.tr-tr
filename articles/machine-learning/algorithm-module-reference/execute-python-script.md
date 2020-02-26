@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152338"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605585"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -91,7 +91,7 @@ os.system(f"pip install scikit-misc")
 
     ![Python giriş eşlemesini Yürüt](media/module/python-module.png)
 
-4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betiğe** yapılan giriş, çalışma alanınıza zaten yüklenmiş bir sıkıştırılmış dosya olmalıdır. 
+4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betik** paketine giriş, dosya türü veri kümesi olarak çalışma alanınıza yüklenmiş sıkıştırılmış bir dosya olmalıdır. 
 
     Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur, ancak **src** adlı bir dizini yola eklemek zorundasınız.
 

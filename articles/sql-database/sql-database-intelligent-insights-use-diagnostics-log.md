@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810276"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587360"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Azure SQL veritabanı performans tanılama günlüğünü Akıllı İçgörüler kullanın
 
-Bu sayfada, [akıllı içgörüler](sql-database-intelligent-insights.md), biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Azure SQL veritabanı performans tanılama günlüğünü kullanma hakkında bilgi verilmektedir. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-into-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
+Bu sayfada, [akıllı içgörüler](sql-database-intelligent-insights.md), biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Azure SQL veritabanı performans tanılama günlüğünü kullanma hakkında bilgi verilmektedir. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
 
 ## <a name="log-header"></a>Günlük üst bilgisi
 
@@ -79,7 +79,7 @@ Algılanan performans sorununa bağlı olarak, tanılama günlük dosyasında ol
 | :------------------- | ------------------- |
 | Kaynak sınırlarına ulaşma | <li>Etkilenen kaynaklar</li><li>Sorgu karmaları</li><li>Kaynak tüketim yüzdesi</li> |
 | İş yükü artışı | <li>Yürütmesi arttığı sorgu sayısı</li><li>İş yükü artışına en büyük katkısıyla sorguların sorgu karmaları</li> |
-| Bellek baskısı | <li>Bellek memuru</li> |
+| Bellek Baskısı | <li>Bellek memuru</li> |
 | Lemeye | <li>Etkilenen sorgu karmaları</li><li>Sorgu karmalarını engelleme</li> |
 | Artan MAXDOP | <li>Sorgu karmaları</li><li>CXP bekleme süreleri</li><li>Bekleme süreleri</li> |
 | Pagemandal çekişmesi | <li>Çekişmeye neden olan sorguların karmalarını sorgulama</li> |

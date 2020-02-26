@@ -4,12 +4,12 @@ description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yükle
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172825"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602457"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -159,7 +159,7 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 Sistem durumu yedeklemesi Active Directory verileri içerir. Active Directory Etki Alanı hizmetini (AD DS) geçerli durumundan önceki bir duruma geri yüklemek için aşağıdaki adımları kullanın.
 
 1. Dizin Hizmetleri geri yükleme modu 'nda (DSRM) etki alanı denetleyicisini yeniden başlatın.
-2. AD DS kurtarmak için Windows Server Yedekleme cmdlet 'lerini kullanmak için [buradaki](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) adımları izleyin.
+2. AD DS kurtarmak için Windows Server Yedekleme cmdlet 'lerini kullanmak için [buradaki](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) adımları izleyin.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Hatalı sistem durumu geri yükleme sorunlarını giderme
 

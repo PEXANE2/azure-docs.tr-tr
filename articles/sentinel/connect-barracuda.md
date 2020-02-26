@@ -3,7 +3,7 @@ title: Barçcuda verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Barbcuda verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 3b33b4aa-7286-4d79-b461-8e1812edc2e1
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 97f10058038e3bf4fbcca2cf86d074869ffefed4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 4e87bb57e6bdfea6307a166383da9dea187eea4f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610701"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588493"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Barvacuda gerecinizi bağlama 
 

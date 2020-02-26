@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429722"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588918"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak NAT ağ geçidi oluşturma
 
@@ -33,8 +33,6 @@ Bu hızlı başlangıçta Azure sanal ağ NAT hizmetini nasıl kullanacağınız
 Bu öğreticiyi Azure Cloud Shell kullanarak tamamlayabilirsiniz veya ilgili komutları yerel olarak çalıştırabilirsiniz.  Azure Cloud Shell hiç kullanmadıysanız, İlk kurulumdan geçmek için [Şimdi oturum açın](https://shell.azure.com) .
 Bu komutları yerel olarak çalıştırmayı seçerseniz, CLı yüklemeniz gerekir.  Bu öğreticide, Azure CLı sürüm 2.0.71 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
-> [!IMPORTANT]
-> Aboneliğinizde sanal ağ NAT [önizlemesi etkinleştirildikten](./nat-overview.md#enable-preview) sonra, portala erişmek için https://aka.ms/natportal kullanın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

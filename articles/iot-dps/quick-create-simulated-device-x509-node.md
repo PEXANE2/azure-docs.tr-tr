@@ -9,25 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 5a713018cb616fd1b82c253554932f6589185e0b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 746f4adbf616f95c21874d7c1c48881f88c38d34
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976477"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605411"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Node. js cihaz SDK 'sını kullanarak bir X. 509.952 sanal cihazı oluşturma ve sağlama
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Bu adımlar, [Azure IoT Hub Node.js Cihaz SDK’sını](https://github.com/Azure/azure-iot-sdk-node) kullanarak Cihaz Sağlama Hizmeti’nde bir kayıt girişi oluşturma, geliştirme makinenizde bir X.509 cihazının benzetimini yapma, sanal cihazı Cihaz Sağlama Hizmeti’ne bağlama ve IOT hub'ınızda da cihazı kaydetme işlemlerinin nasıl yapılacağını gösterir.
+Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıtı oluşturacaksınız. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örnek Node. js kodunu kullanırsınız.
 
-Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
-- [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
-- [Bireysel kayıtlar](concepts-service.md#individual-enrollment): Tek bir cihazı kaydetmek için kullanılır.
-
-Bu makalede bireysel kayıtlar gösterilmektedir.
+- [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
+- [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Node. js v 4.0 +](https://nodejs.org).
+- [Git](https://git-scm.com/download/).
+- [OpenSSL](https://www.openssl.org/).
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -39,7 +41,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 3. Makinenizde [Git](https://git-scm.com/download/)’in yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. 
 
-4. Makinenizde [OpenSSL](https://www.openssl.org/)’nin yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Bu kitaplık kaynaktan derlenip yüklenebilir veya [bunun](https://sourceforge.net/projects/openssl/) gibi bir [üçüncü taraftan](https://wiki.openssl.org/index.php/Binaries) indirilip yüklenebilir. 
+4. Makinenizde [OpenSSL](https://www.openssl.org/)’nin yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Bu kitaplık kaynaktan derlenip yüklenebilir veya [bunun](https://wiki.openssl.org/index.php/Binaries) gibi bir [üçüncü taraftan](https://sourceforge.net/projects/openssl/) indirilip yüklenebilir. 
 
     > [!NOTE]
     > _Kök_, _ara_ ve/veya _yaprak_ X.509 sertifikalarınızı zaten oluşturduysanız, bu adımı ve sertifika oluşturma ile ilgili aşağıdaki tüm adımları atlayabilirsiniz.
@@ -54,6 +56,12 @@ Bu bölümde, otomatik olarak imzalanan X.509 sertifikası kullanacaksınız. A�
 
 Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturmak için [Node.js için Azure IoT SDK'sından](https://github.com/Azure/azure-iot-sdk-node.git) örnek kodu kullanacaksınız.
 
+Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
+
+- [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
+- [Bireysel](concepts-service.md#individual-enrollment)kayıtlar: tek bir cihazı kaydetmek için kullanılır.
+
+Bu makalede, bireysel kayıtlar gösterilmektedir.
 
 1. Bir komut istemi açın. Kod örnekleri için GitHub deposunu kopyalayın:
     
@@ -79,7 +87,7 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
 5. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 6. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
+   - Kimlik onay **Mekanizması** olarak *X.509*'u seçin.
    - *Birincil sertifika. pek veya. cer dosyası*' nın altında, önceki adımlarda oluşturulan **{Certificate-Name} _cert. ped** sertifika dosyasını seçmek için *Dosya Seç* ' i seçin.  
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
      - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
@@ -114,7 +122,7 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
     ```
 
 4. **register\_x509.js** dosyasını düzenleyin. Aşağıdaki değişiklikleri yaptıktan sonra dosyayı kaydedin.
-    - `provisioning host` öğesini yukarıdaki **1. Adım**’da belirtilen **_Genel Cihaz Uç Noktası_** ile değiştirin.
+    - `provisioning host` öğesini yukarıdaki **1. Adım _’da belirtilen_** Genel Cihaz Uç Noktası ile değiştirin.
     - `id scope`, yukarıdaki **1. adımda** belirtilen **_kimlik kapsamıyla_** değiştirin. 
     - `registration id`, önceki bölümde belirtilen **_kayıt kimliğiyle_** değiştirin.
     - `cert filename` ve `key filename` öğelerini yukarıdaki **2. Adım**’da kopyaladığınız dosyalarla değiştirin. 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505649"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585739"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -127,7 +127,7 @@ Dönüşümde belirtilen giriş parametresinden bir dize talebi oluşturur.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | değer | string | Ayarlanacak dize |
+| InputParameter | değer | string | Ayarlanacak dize. Bu giriş parametresi [dize talep dönüştürme ifadelerini](string-transformations.md#string-claim-transformations-expressions)destekler. |
 | OutputClaim | createdClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType, giriş parametresinde belirtilen değerle çağırılır. |
 
 Bir dize ClaimType değeri ayarlamak için bu talep dönüşümünü kullanın.
@@ -297,7 +297,7 @@ Bir talebi, belirtilen biçim dizesine göre biçimlendirin. Bu dönüşüm C# `
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | ınputclaim | ınputclaim |string |Dize biçimi {0} parametresi olarak davranan ClaimType. |
-| InputParameter | stringFormat | string | {0} parametresi dahil dize biçimi. |
+| InputParameter | stringFormat | string | {0} parametresi dahil dize biçimi. Bu giriş parametresi [dize talep dönüştürme ifadelerini](string-transformations.md#string-claim-transformations-expressions)destekler.  |
 | OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
 Tek parametreli {0}dize biçimlendirmek için bu talep dönüşümünü kullanın. Aşağıdaki örnek bir **userPrincipalName**oluşturur. `Facebook-OAUTH` gibi tüm sosyal kimlik sağlayıcısı teknik profilleri, bir **userPrincipalName**oluşturmak Için **createuserprincipalname** ' i çağırır.
@@ -333,7 +333,7 @@ Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# `S
 | ---- | ----------------------- | --------- | ----- |
 | ınputclaim | ınputclaim |string | Dize biçimi {0} parametresi olarak davranan ClaimType. |
 | ınputclaim | ınputclaim | string | Dize biçimi {1} parametresi olarak davranan ClaimType. |
-| InputParameter | stringFormat | string | {0} ve {1} parametreleri de dahil olmak üzere dize biçimi. |
+| InputParameter | stringFormat | string | {0} ve {1} parametreleri de dahil olmak üzere dize biçimi. Bu giriş parametresi [dize talep dönüştürme ifadelerini](string-transformations.md#string-claim-transformations-expressions)destekler.   |
 | OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
 Bu talep dönüşümünü, iki parametreli bir dize biçimlendirmek için kullanın, {0} ve {1}. Aşağıdaki örnek, belirtilen biçimde bir **DisplayName** oluşturuyor:
@@ -925,3 +925,12 @@ Aşağıdaki örnek, Kullanıcı rollerinin virgül sınırlayıcısı dizesini 
   - **sınırlayıcı**: ","
 - Çıkış talepleri:
   - **Outputclaim**: ["admin", "author", "Reader"]
+  
+## <a name="string-claim-transformations-expressions"></a>Dize talep dönüştürmeleri ifadeleri
+Azure AD B2C özel ilkelerindeki talep dönüştürmeleri ifadeleri, kiracı KIMLIĞI ve teknik profil KIMLIĞIYLE ilgili bağlam bilgilerini sağlar.
+
+  | Expression | Açıklama | Örnek |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | Teknik ProfileId adı. | Facebook-OAUTH |
+ | `{RelyingPartyTenantId}` | Bağlı olan taraf ilkesinin kiracı KIMLIĞI. | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | Güven çerçevesinin kiracı KIMLIĞI. | your-tenant.onmicrosoft.com |

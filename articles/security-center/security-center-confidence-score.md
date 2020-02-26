@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355638"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604375"
 ---
 # <a name="alert-confidence-score-preview"></a>Uyarı güven puanı (Önizleme)
 
@@ -47,14 +47,6 @@ Bir uyarıda Güvenlik Merkezi 'nin güvenliğine katkıda bulunan verileri gör
   ![Şüpheli Güvenirlik puanı][2]
 
 Ortamınızdaki uyarı önceliklendirme önceliğini belirlemek için Güvenlik Merkezi 'nin güven Puanını kullanın. Güvenilirlik puanı, uyarıları otomatik olarak inceleyerek, sektördeki en iyi uygulamaları ve akıllı algoritmaları uygulayarak ve bir sanal analist olarak davranarak, hangi tehditlerin gerçek olduğunu ve dikkat etmeniz gereken yerleri tespit ederek zaman ve çaba tasarrufu sağlar.
-
-
-## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, uyarı araştırmasının önceliklerini belirlemek için güven Puanının nasıl kullanılacağı açıklanmaktadır. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
-
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) - Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
-* [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-
 
 
 <!--Image references-->

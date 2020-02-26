@@ -6,22 +6,22 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198590"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592535"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
-Bu konuda, [Azure Portal]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
+Bu konuda, [Azure Portalı]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
 
 ## <a name="configure-app-settings"></a>Uygulama ayarlarını yapılandırma
 
 App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak geçirilen değişkenlerdir. Linux uygulamaları ve özel kapsayıcılar için App Service, kapsayıcıda ortam değişkenini ayarlamak için `--env` bayrağını kullanarak uygulama ayarlarını kapsayıcıya geçirir.
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
+[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
 
 ![Uygulama Hizmetleri arama](./media/configure-common/search-for-app-services.png)
 
@@ -33,7 +33,7 @@ ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarların�
 
 Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
+- [ASP.NET Çekirdeği](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
@@ -86,7 +86,7 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
+[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
 
 ![Uygulama ayarları](./media/configure-common/open-ui.png)
 
@@ -103,7 +103,7 @@ Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-
 
 Örneğin, *connectionstring1* adlı bir MySQL bağlantı dizesi `MYSQLCONNSTR_connectionString1`ortam değişkeni olarak erişilebilir. Dil yığınına özgü adımlar için bkz.:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
+- [ASP.NET Çekirdeği](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
@@ -157,7 +157,7 @@ Bağlantı dizeleri aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-general-settings"></a>Genel ayarları yapılandırma
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Genel ayarlar**' ı seçin.
+[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Genel ayarlar**' ı seçin.
 
 ![Genel ayarlar](./media/configure-common/open-general.png)
 
@@ -168,6 +168,8 @@ Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayar
     - **Bit genişliği: 32**-bit veya 64 bit.
     - **WebSocket protokolü**: örneğin, [ASP.net signalr] veya [Socket.io](https://socket.io/)için.
     - **Always on**: hiçbir trafik olmadığında bile uygulamanın yüklü kalmasını sağlayın. Sürekli Web Işleri veya bir CRON ifadesi kullanılarak tetiklenen Web Işleri için gereklidir.
+      > [!NOTE]
+      > Always on özelliği ile uç noktasını kontrol edebilirsiniz. Her zaman uygulama köküne bir istek gönderir.
     - **Yönetilen işlem hattı sürümü**: IIS [ardışık düzen modu]. Daha eski bir IIS sürümü gerektiren eski bir uygulamanız varsa, bunu **Klasik** olarak ayarlayın.
     - **Http sürümü**: [https/2](https://wikipedia.org/wiki/HTTP/2) protokolü desteğini etkinleştirmek için **2,0** olarak ayarlayın.
     > [!NOTE]
@@ -180,7 +182,7 @@ Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayar
 
 Bu ayar yalnızca Windows uygulamaları içindir.
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Varsayılan belgeler**' i seçin.
+[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Varsayılan belgeler**' i seçin.
 
 ![Varsayılan belgeler](./media/configure-common/open-documents.png)
 
@@ -190,7 +192,7 @@ Uygulama, statik içerik sunmak yerine URL 'ye bağlı olarak yönlendiren modü
 
 ## <a name="configure-path-mappings"></a>Yol eşlemelerini yapılandırma
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma** > **yol eşlemeleri**' ni seçin.
+[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma** > **yol eşlemeleri**' ni seçin.
 
 ![Yol eşlemeleri](./media/configure-common/open-path.png)
 
@@ -225,13 +227,13 @@ Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve 
 - **Erişim anahtarı**: Gelişmiş yapılandırma için erişim anahtarı.
 - **Bağlama yolu**: özel depolamayı bağlamak için kapsayıcınızda mutlak yol.
 
-Daha fazla bilgi için bkz. [Linux üzerinde App Service Azure Storage 'tan içerik](containers/how-to-serve-content-from-azure-storage.md)sunma.
+Daha fazla bilgi için bkz. [Linux üzerinde App Service'te Azure Depolama'dan içerik sunma](containers/how-to-serve-content-from-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Dil yığını ayarlarını yapılandırma
 
 Linux uygulamaları için bkz.:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
+- [ASP.NET Çekirdeği](containers/configure-language-dotnetcore.md)
 - [Node.js](containers/configure-language-nodejs.md)
 - [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)
@@ -255,7 +257,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalı]: https://portal.azure.com/
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service’te hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

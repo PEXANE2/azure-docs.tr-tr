@@ -3,7 +3,7 @@ title: Azure Sentinel 'de müşteri tarafından yönetilen anahtarları ayarlama
 description: Azure Sentinel 'de müşteri tarafından yönetilen anahtarları (CMK) ayarlamayı öğrenin.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4858e2099baa82226766ecfce32b39471c3b96cd
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.author: yelevin
+ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845310"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587966"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
 
@@ -52,7 +52,7 @@ CMK sağlamak için şu adımları izleyin: 
 
 5.  Azure Sentinel 'de CMK 'yi etkinleştirin.
 
-6.  Azure Sentinel’i etkinleştirme.
+6.  Azure Sentinel 'i etkinleştirin.
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>1\. Adım: Azure Key Vault oluşturma ve anahtar depolama
 
@@ -91,7 +91,7 @@ Onay aldıktan sonra CMK özelliğini etkinleştirmek için aşağıdaki bilgile
 -  Key Vault URL 'SI: anahtarın "anahtar tanımlayıcısını" en son eğik çizgiye kopyalayın:  
     
 
-    ![Anahtar tanımlayıcı](./media/customer-managed-keys/key-identifier.png)
+    ![anahtar tanımlayıcı](./media/customer-managed-keys/key-identifier.png)
 
     Azure Sentinel ekibi, sizin belirttiğiniz çalışma alanınız için Azure Sentinel CMK özelliğini etkinleştirir.
 

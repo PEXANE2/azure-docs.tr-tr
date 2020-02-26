@@ -2,22 +2,22 @@
 title: Azure Cosmos DB Cassandra API’sine giriş
 description: Mevcut uygulamaları "kaldırma ve kaydırma" için Azure Cosmos DB nasıl kullanabileceğinizi ve Cassandra sürücülerini ve CQL kullanarak yeni uygulamalar oluşturmayı öğrenin
 author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
-ms.author: govindk
-ms.reviewer: sngun
-ms.openlocfilehash: 9cd3703881de1600a4b151d855fff832d041ca54
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 075b55b5a798924b55ef9d901e4d2e9ecfc9dc1e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717936"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597584"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API’sine giriş
 
-Azure Cosmos DB Cassandra API’si, [Apache Cassandra](https://cassandra.apache.org) için yazılmış uygulamalara yönelik veri deposu olarak kullanılabilir. Başka bir deyişle, mevcut Cassandra uygulamanız artık CQLv4 ile uyumlu mevcut [Apache sürücülerini](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) kullanarak Azure Cosmos DB Cassandra API’si ile iletişim kurabilir. Çoğu durumda yalnızca bir bağlantı dizesini değiştirerek Apache Cassandra’yı kullanmaktan Azure Cosmos DB’nin Cassandra API’sini kullanmaya geçiş yapabilirsiniz. 
+Azure Cosmos DB Cassandra API’si, [Apache Cassandra](https://cassandra.apache.org) için yazılmış uygulamalara yönelik veri deposu olarak kullanılabilir. Başka bir deyişle, mevcut Cassandra uygulamanız artık CQLv4 ile uyumlu mevcut [Apache sürücülerini](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) kullanarak Azure Cosmos DB Cassandra API’si ile iletişim kurabilir. Çoğu durumda, yalnızca bir bağlantı dizesini değiştirerek Azure Cosmos DB Cassandra API kullanarak Apache Cassandra kullanarak geçiş yapabilirsiniz. 
 
 Cassandra API’si; Cassandra Sorgu Dili (CQL), Cassandra tabanlı araçları (cqlsh gibi) ve zaten aşina olduğunuz Cassandra istemci sürücülerini kullanarak Azure Cosmos DB’de depolanan verilerle etkileşim kurmanızı sağlar.
 

@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905801"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605210"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT Tak ve Kullan, yeteneklerini IoT Hub 'ınız ile kaydetmiş olan cihazları kullanmanıza olanak sağlar. Örneğin, bir cihazın özelliklerine ve komutlarına doğrudan erişebilirsiniz.
 
-IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır.
+IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır. API 'nin geçerli sürümü `2019-07-01-preview`. REST PI çağrılarınız için `?api-version=2019-07-01-preview` ekleyin.
 
 Termostat 'daki `DeviceInformation` arabirimindeki bellenim sürümü (`fwVersion`) gibi bir cihaz özelliğinin değerini almak için, dijital TWINS REST API kullanırsınız.
 
-Termostat cihazınız `t-123`çağrılırsa, cihazınız tarafından uygulanan tüm özellikleri bir REST API GET çağrısıyla alırsınız:
+Termostat cihazınız `t-123`çağrılırsa, cihazınız tarafından uygulanan tüm arabirimlerin tüm özelliklerini bir REST API GET çağrısıyla alırsınız:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Daha genel olarak, tüm özelliklere bu REST API şablonuyla erişilir; burada `{device-id}` cihaz tanımlayıcısıdır:
+Daha genel olarak, tüm arabirimlerde tüm özelliklere `{device-id}` cihaz için tanımlayıcı olan bu REST API şablonuyla erişilir:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Arabirimin adını biliyorsanız ve bu arabirimin özelliklerini almak istiyorsanız, isteği ada göre belirli bir arabirime kapsam:
+`deviceInformation`gibi arabirimin adını biliyorsanız ve söz konusu arabirimin özelliklerini almak istiyorsanız, isteği ada göre belirli bir arabirime kapsam:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 Daha genel olarak, belirli bir arabirimin özelliklerine, `device-id` cihaz için tanımlayıcı olduğu ve arabirimin adı `{interface-name}` olan bu REST API şablonu aracılığıyla erişilebilir:
@@ -231,5 +231,5 @@ Genel olarak, bu REST API şablonu aracılığıyla komutlar çağrılabilir:
 Artık cihaz modelleme hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
 - [Digital Ikizi tanım dili (DTDL)](https://aka.ms/DTDL)
-- [C cihaz SDK’sı](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [C cihaz API’si](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

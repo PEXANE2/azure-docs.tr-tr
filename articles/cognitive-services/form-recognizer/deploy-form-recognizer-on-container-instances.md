@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 5d9ab7d12bd6c5fe59bf521aff2c07446ac2f038
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9a3456eb4d30aa8d163488f558b571dd97c73bf4
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717308"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605110"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Form tanıyıcı kapsayıcısını Azure Container Instances dağıtma
 
@@ -28,7 +28,7 @@ Bilişsel Hizmetler [formu tanıyıcı](form-recognizer-container-howto.md) kaps
 
 ## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
 
-Kapsayıcıya erişim istemek için önce bilişsel [Hizmetler formu tanıyıcı kapsayıcıları erişim isteği formunu](https://aka.ms/FormRecognizerRequestAccess) doldurmanız ve göndermeniz gerekir. Bunun yapılması Görüntü İşleme için de oturum açar. Görüntü İşleme isteği formuna ayrı olarak kaydolmanız gerekmez. 
+Kapsayıcıya erişim istemek için önce bilişsel [Hizmetler formu tanıyıcı kapsayıcıları erişim isteği formunu](https://aka.ms/FormRecognizerContainerRequestAccess) doldurmanız ve göndermeniz gerekir. Bunun yapılması Görüntü İşleme için de oturum açar. Görüntü İşleme isteği formuna ayrı olarak kaydolmanız gerekmez. 
 
 [!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access-only.md)]
 

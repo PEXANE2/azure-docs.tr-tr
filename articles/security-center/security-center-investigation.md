@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202053"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603987"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Azure Güvenlik Merkezi 'nde olayları ve uyarıları araştırın (kullanımdan kaldırıldı)
 Bu belge, güvenlik olaylarını ve uyarılarını araştırmak için Azure Güvenlik Merkezi 'nde araştırma özelliğini (Önizleme) kullanmanıza yardımcı olur.
@@ -64,17 +64,17 @@ Bir olay yalnızca kullanıcı belirli bir uyarı için **Araştırma başlat** 
 
 ![Varlıklar](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Search
 
 **Arama** sekmesi varlık için var olan tüm günlük türlerini sunar. Her bir günlük türünde var olan kayıt sayısını görebilirsiniz. Kayıt türlerinden birine tıkladığınızda arama ekranı açılır. Arama ekranında aramanıza filtre uygulayabilir ve uyarı ayarlama gibi çeşitli arama özelliklerinden faydalanabilirsiniz. Mevcut sürümde arama sekmesi yalnızca kullanıcı ve bilgisayar varlıkları için kullanılabilmektedir.
 
-![Ara](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
 
-### <a name="exploration"></a>Keşif
+### <a name="exploration"></a>Araştırma
 
-**Araştırma** sekmesi araştırmacının varlıkla ilgili çeşitli sorunlara ait verileri incelemesini sağlar. Örneğin bir makine araştırıldığında üzerinde yürütülen işlemlerin listesi araştırma sekmesinde görüntülenir. Bazı durumlarda araştırma sekmesinde şüpheli sorunlara işaret edebilecek veriler sunulur. Araştırmacı verilere sekme içinde göz atabilir veya arama ekranında açarak büyük veri kümelerini incelemenin yanı sıra filtreleme ve Excel'e aktarma gibi gelişmiş arama seçeneklerini kullanabilir.
+**Araştırma** sekmesi araştırmacının varlıkla ilgili çeşitli sorunlara ait verileri incelemesini sağlar. Örneğin, bir makine araştırılır, üzerinde yürütülen işlemlerin listesi araştırma sekmesinde sunulur. Bazı durumlarda, araştırma sekmesi şüpheli bir sorunu gösterebilen verileri gösterir. Araştırmacı verilere sekme içinde göz atabilir veya arama ekranında açarak büyük veri kümelerini incelemenin yanı sıra filtreleme ve Excel'e aktarma gibi gelişmiş arama seçeneklerini kullanabilir.
 
-![Keşif](./media/security-center-investigation/security-center-investigation-fig6.png)
+![Araştırma](./media/security-center-investigation/security-center-investigation-fig6.png)
 
 ### <a name="timeline"></a>Zaman çizelgesi
 
@@ -118,6 +118,3 @@ Bu belgede Güvenlik Merkezi'ndeki araştırma özelliğini nasıl kullanacağı
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve ele alma](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Güvenlik Merkezi’nde uyarıları yönetme ve güvenlik olaylarına yanıt vermeyi öğrenin.
 * [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md). Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Farklı güvenlik uyarısı türleri hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi Sorun Giderme Kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Güvenlik Merkezi’nde sık karşılaşılan sorunları gidermeyi öğrenin.
-* [Azure Güvenlik Merkezi SSS](security-center-faq.md). Hizmet kullanımı ile ilgili sık sorulan soruları bulun.
-* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/). Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulun.

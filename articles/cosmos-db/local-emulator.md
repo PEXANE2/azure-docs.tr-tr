@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/26/2019
-ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/31/2020
+ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939154"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591379"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -312,7 +312,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Söz dizimi**
+**Sözdizimi**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -322,7 +322,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Start-CosmosDbEmulator`
 
-**Söz dizimi**
+**Sözdizimi**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -332,7 +332,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Stop-CosmosDbEmulator`
 
-**Söz dizimi**
+**Sözdizimi**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -342,7 +342,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Söz dizimi**
+**Sözdizimi**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

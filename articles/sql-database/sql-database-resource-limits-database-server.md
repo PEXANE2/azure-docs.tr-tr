@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638264"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587252"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL veritabanı kaynak sınırları ve kaynak İdaresi
 
@@ -37,14 +37,14 @@ Bu makalede, tek veritabanlarını ve elastik havuzları yöneten bir SQL verita
 | Sunucu başına en fazla havuz | DTU sayısıyla veya sanal çekirdekler ile sınırlıdır. Örneğin, her havuz 1000 DTU ise, bir sunucu 54 havuzlarını destekleyebilir.|
 |||
 
-> [!NOTE]
-> Varsayılan miktardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla sunucu almak için, "Quota" sorun türüyle abonelik için Azure portal yeni bir destek isteği gönderilebilir. Sunucu başına DTU/eDTU kotası ve veritabanı sınırı, sunucu başına elastik havuz sayısını kısıtlar.
-
 > [!IMPORTANT]
 > Veritabanlarının sayısı SQL veritabanı sunucusu başına sınıra yaklaşırsa, şunlar meydana gelebilir:
 >
 > - Ana veritabanına karşı sorguları çalıştırırken gecikme süresini artırma.  Bu, sys. resource_stats gibi kaynak kullanımı istatistiklerinin görünümlerini içerir.
 > - Sunucuda veritabanlarının listesini oluşturmayı içeren Yönetim işlemlerinde ve işleme portalı görüntüleme noktalarında gecikme süresini artırma.
+
+> [!NOTE]
+> Varsayılan miktardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla sunucu almak için Azure portal yeni bir destek isteği gönderebilirsiniz. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Depolama boyutu
 

@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209546"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598672"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure dosya paylaşma oluşturma
 Premium dosya paylaşımları, katı hal disk (SSD) depolama medyasında sunulur ve barındırma veritabanları ve yüksek performanslı bilgi işlem (HPC) dahil olmak üzere GÇ yoğunluklu iş yükleri için kullanışlıdır. Premium dosya paylaşımları, FileStorage hesabı olarak adlandırılan özel bir amaç depolama hesabı türünde barındırılır. Premium dosya paylaşımları, yüksek performans ve kurumsal ölçekli uygulamalar için tasarlanmıştır; tutarlı düşük gecikme süresi, yüksek ıOPS ve yüksek verimlilik paylaşımları sağlar.
 
 Bu makalede [Azure Portal](https://portal.azure.com/), Azure PowerShell ve Azure CLI kullanarak bu yeni hesap türünü nasıl oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -27,7 +27,7 @@ Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına eriş
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com/)’da oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ### <a name="create-a-filestorage-storage-account"></a>FileStorage depolama hesabı oluşturma
 
@@ -52,7 +52,7 @@ Her depolama hesabı bir Azure kaynak grubuna ait olmalıdır. Kaynak grubu, Azu
     ![Premium dosya paylaşımında depolama hesabı oluşturma](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Depolama hesabı kaynağınız oluşturulduktan sonra şuraya gidin.
 
@@ -211,4 +211,4 @@ az group delete --name myResourceGroup
 Bu makalede bir Premium dosya paylaşma oluşturdunuz. Bu hesabın sunduğu performans hakkında daha fazla bilgi edinmek için Planlama Kılavuzu 'nun performans katmanı bölümüne ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Dosya paylaşımının performans katmanları](storage-files-planning.md#file-share-performance-tiers)
+> [Dosya paylaşma katmanları](storage-files-planning.md#storage-tiers)

@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484443"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605128"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
@@ -188,9 +188,9 @@ Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarınd
 | failedRequestLimit | 3 | Telemetri işlemcisi devre dışı bırakılmadan önce anlık görüntü istemek için başarısız istek sayısı sınırı.|
 | handleUntrackedExceptions | true | Application Insights telemetri tarafından izlenmeyen özel durumların izlenmesini mümkün veya devre dışı bırakır. |
 | isEnabled | true | Anlık görüntü toplamayı etkinleştirilir veya devre dışı bırakır | 
-| isEnabledInDeveloperMode | false | Geliştirici modunda anlık görüntü toplamayı etkinleştirme veya devre dışı bırakır. |
+| isEnabledInDeveloperMode | yanlış | Geliştirici modunda anlık görüntü toplamayı etkinleştirme veya devre dışı bırakır. |
 | Isenabledwhenprofilleme | true | Application Insights Profiler ayrıntılı bir profil oluşturma oturumu toplasa bile, anlık görüntü oluşturmayı etkinleştirilir veya devre dışı bırakır. |
-| ısexceptionsnappointsenabled | false | Özel durumların filtrelenmesini mümkün veya devre dışı bırakır. |
+| ısexceptionsnappointsenabled | yanlış | Özel durumların filtrelenmesini mümkün veya devre dışı bırakır. |
 | ılowprioritysnapshotuploader | true | Anlık görüntüyle ayarlana Tuploader işleminin normal öncelikte çalıştırılıp çalıştırılmayacağını belirler. |
 | maximumCollectionPlanSize | 50 | Bire 9999 arasında bir aralıkta izleyediğimiz en fazla sorun sayısı. |
 | Maximumanlık görüntüyle gerekli | 3 | Tek bir sorun için toplanan en fazla anlık görüntü sayısı, bire 999 arasındadır. Bir sorun, uygulamanızda tek bir throw deyimleri olarak düşünülebilir. Bir sorun için toplanan anlık görüntü sayısı bu değere ulaştığında, sorun sayaçları sıfırlanana kadar bu sorun için daha fazla anlık görüntü toplanmaz (bkz. `problemCounterResetInterval`) ve `thresholdForSnapshotting` sınırına yeniden ulaşıldı. |
@@ -208,7 +208,7 @@ Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarınd
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-Yapılandırma ayarı, [Cosmos DB Tetikleyiciler ve bağlamalarda](functions-bindings-cosmosdb-v2.md#host-json)bulunabilir.
+Yapılandırma ayarı, [Cosmos DB Tetikleyiciler ve bağlamalarda](functions-bindings-cosmosdb-v2-output.md#host-json)bulunabilir.
 
 ## <a name="durabletask"></a>durableTask
 
@@ -216,7 +216,7 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 ## <a name="eventhub"></a>eventHub
 
-Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
+Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs-output.md#host-json)' nda bulunabilir. 
 
 ## <a name="extensions"></a>uzantılar
 
@@ -325,7 +325,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|isEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|isEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
 ## <a name="manageddependency"></a>managedDependency bağımlılığı
 

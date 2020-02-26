@@ -9,36 +9,26 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a2787a0d5f372562f32c4d8adca3ed195d1befd5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461977"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604911"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Hızlı başlangıç: Java kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Bu hızlı başlangıçta Java kullanarak X.509 sanal cihaz grubunu Azure IoT Hub Cihazı Sağlama Hizmeti'ne programlı bir şekilde kaydetme adımları gösterilmektedir. Cihazlar sağlama hizmeti örneğine [Kayıt grubu](concepts-service.md#enrollment-group) veya [Bireysel kayıt](concepts-service.md#individual-enrollment) oluşturularak kaydedilir. Bu hızlı başlangıçta iki kayıt türünün de nasıl oluşturulacağı anlatılmaktadır. Kayıtlar örnek Java uygulamasının yardımıyla [Java Hizmeti SDK](https://azure.github.io/azure-iot-sdk-java/service/)'sı kullanılarak oluşturulmaktadır. 
-
-Bu hızlı başlangıçta önceden bir IoT hub'ı ve Cihaz Sağlama Hizmeti örneği oluşturduğunuz kabul edilir. Bu kaynakları oluşturmadıysanız bu makaleye devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portal ile ayarlama](./quick-setup-auto-provision.md) hızlı başlangıcını tamamlayın.
-
-Java Hizmeti SDK'sı hem Windows hem de Linux makinelerinde çalışır, ancak bu makalede, kayıt işlemlerinin gösterilmesi için Windows geliştirme makinesi kullanılır.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Bu hızlı başlangıçta, bir X. 509.952 sanal cihaz grubunu Azure IoT Hub cihaz sağlama hizmeti 'ne programlı bir şekilde kaydetmek için Java 'Yı kullanırsınız. Cihazlar bir kayıt grubu veya bireysel kayıt oluşturarak bir sağlama hizmeti örneğine kaydedilir. Bu hızlı başlangıçta, Java hizmeti SDK 'sını ve örnek bir Java uygulamasını kullanarak her iki tür kaydı nasıl oluşturacağınız gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java SE Development Kit 8](https://aka.ms/azure-jdks)'i yükleyin.
-* [Maven 3](https://maven.apache.org/download.cgi)'ü yükleyin. Geçerli Maven sürümünüzü doğrulamak için şu komutu çalıştırabilirsiniz:
-
-    ```cmd/sh
-    mvn --version
-    ```
-
-* [Git](https://git-scm.com/download/)'i yükleyin.
-
+- [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Bu hızlı başlangıçta [Java hizmeti SDK 'sı](https://azure.github.io/azure-iot-sdk-java/service/) yüklenir. Hem Windows hem de Linux üzerinde çalışmaktadır. Bu hızlı başlangıçta Windows kullanılır.
+- [Maven 3](https://maven.apache.org/download.cgi).
+- [Git](https://git-scm.com/download/).
 
 <a id="javasample"></a>
 
@@ -51,7 +41,7 @@ Bu bölümde, otomatik olarak imzalanan X.509 sertifikası kullanılır. Aşağ�
 
 Aşağıdaki adımlarda örnek koda X.509 cihazınızın sağlama ayrıntılarını nasıl ekleyeceğiniz gösterilir. 
 
-1. Bir komut istemi açın. Java Hizmeti SDK'sını kullanarak cihaz kayıt kodu örneğinin GitHub deposunu kopyalayın:
+1. Bir komut istemi açın. [Java hizmeti SDK 'sını](https://azure.github.io/azure-iot-sdk-java/service/)kullanarak cihaz kayıt kodu örneği için GitHub deposunu kopyalayın:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -140,6 +130,13 @@ Aşağıdaki adımlarda örnek koda X.509 cihazınızın sağlama ayrıntıları
 <a id="runjavasample"></a>
 
 ## <a name="build-and-run-sample-group-enrollment"></a>Örnek grup kaydını derleme ve çalıştırma
+
+Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
+
+- [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
+- [Bireysel](concepts-service.md#individual-enrollment)kayıtlar: tek bir cihazı kaydetmek için kullanılır.
+
+Bu yordam bir kayıt grubu kullanır. Sonraki bölümde tek bir kayıt kullanılır.
 
 1. Bir komut penceresi açıp **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** klasörüne gidin.
 

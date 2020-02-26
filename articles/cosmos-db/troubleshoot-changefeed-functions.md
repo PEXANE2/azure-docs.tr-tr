@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441112"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605080"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 
@@ -66,7 +66,7 @@ Bu senaryoda birden çok neden olabilir ve bunların tümü denetlenmelidir:
 
 1. Azure İşleviniz Azure Cosmos hesabınızla aynı bölgeye mi dağıtıldı? En iyi ağ gecikme süresi için hem Azure İşlevinin hem de Azure Cosmos hesabınızın aynı Azure bölgesinde birlikte bulunması gerekir.
 2. Azure Cosmos kapsayıcınızda gerçekleşen değişiklikler sürekli mi yoksa aralıklı mı?
-Aralıklıysa, değişikliklerin depolanması ile Azure İşlevinin bunları alması arasında biraz gecikme olabilir. Bunun nedeni dahili olarak tetikleyici Azure Cosmos kapsayıcınızda değişiklikleri denetleyip hiç okunmayı bekleyen değişiklik olmadığını bulduğunda, yeni değişiklikler için denetleme yapmadan önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uykuya geçer (yüksek RU tüketimini önlemek için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)`FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+Aralıklıysa, değişikliklerin depolanması ile Azure İşlevinin bunları alması arasında biraz gecikme olabilir. Bunun nedeni dahili olarak tetikleyici Azure Cosmos kapsayıcınızda değişiklikleri denetleyip hiç okunmayı bekleyen değişiklik olmadığını bulduğunda, yeni değişiklikler için denetleme yapmadan önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uykuya geçer (yüksek RU tüketimini önlemek için). Bu uyku süresini tetikleyicinizin `FeedPollDelay/feedPollDelay`yapılandırmasındaki[](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 3. Azure Cosmos Kapsayıcınız [hız sınırlı](./request-units.md)olabilir.
 4. Özel bir tercih edilen bağlantı sırası tanımlamak üzere Azure bölgelerinin virgülle ayrılmış bir listesini belirtmek için tetikleyicinizdeki `PreferredLocations` özniteliğini kullanabilirsiniz.
 
@@ -93,10 +93,10 @@ Bu durumun kolay bir yolu, yeni/farklı bir değere sahip işlevinizde `LeaseCol
 Bir kapsayıcıdaki tüm öğeleri baştan sonra yeniden işlemek için:
 1. Şu anda çalışıyorsa Azure işlevinizi durdurun. 
 1. Kira koleksiyonundaki belgeleri silin (veya boş olması için kira koleksiyonunu silip yeniden oluşturun)
-1. İşlevinizdeki [Startfromstarted](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) cosmosdbtrigger özniteliğini doğru olarak ayarlayın. 
+1. İşlevinizdeki [Startfromstarted](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) cosmosdbtrigger özniteliğini doğru olarak ayarlayın. 
 1. Azure işlevini yeniden başlatın. Şimdi, başlangıçtan itibaren tüm değişiklikleri okur ve işler. 
 
-[Startfromstart](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 'ı true olarak ayarlamak, Azure işlevine geçerli saat yerine koleksiyonun geçmişinden başlayarak okuma işlemi başlatmasını bildirir. Bu yalnızca, zaten oluşturulan kiralamalar (örn. kiralamalar koleksiyonundaki belgeler) olmadığında işe yarar. Zaten oluşturulan kiralamalar varsa, bu özelliğin true olarak ayarlanması etkisizdir; Bu senaryoda, bir işlev durdurulduğunda ve yeniden başlatıldığında, kiralamalar koleksiyonunda tanımlandığı gibi son denetim noktasından okumaya başlar. Baştan sonra yeniden işlemek için yukarıdaki 1-4 adımları izleyin.  
+[Startfromstart](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) 'ı true olarak ayarlamak, Azure işlevine geçerli saat yerine koleksiyonun geçmişinden başlayarak okuma işlemi başlatmasını bildirir. Bu yalnızca, zaten oluşturulan kiralamalar (örn. kiralamalar koleksiyonundaki belgeler) olmadığında işe yarar. Zaten oluşturulan kiralamalar varsa, bu özelliğin true olarak ayarlanması etkisizdir; Bu senaryoda, bir işlev durdurulduğunda ve yeniden başlatıldığında, kiralamalar koleksiyonunda tanımlandığı gibi son denetim noktasından okumaya başlar. Baştan sonra yeniden işlemek için yukarıdaki 1-4 adımları izleyin.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bağlama yalnızca IReadOnlyList\<Document > veya JArray ile yapılabilir
 
@@ -106,7 +106,7 @@ Bu durumun geçici çözümü için, eklenen el ile NuGet başvurusunu kaldırı
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Değişikliklerin algılanması için Azure Işlevinin yoklama aralığı değiştiriliyor
 
-Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)`FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin `FeedPollDelay/feedPollDelay`yapılandırmasındaki[](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190511"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597703"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
 Red Hat Enterprise Linux (RHEL) görüntüleri Azure 'da Kullandıkça Öde (PAYG) veya kendi aboneliğinizi getir (Red Hat Gold görüntü) modeli aracılığıyla kullanılabilir. Bu belgede, Azure 'daki Red Hat Gold görüntülerine genel bakış sunulmaktadır.
+
+>[!NOTE]
+> RHEL BYOS Gold görüntüleri Azure genel (ticari) ve Azure Kamu bulutlarında kullanılabilir. Azure Çin veya Azure Kara Orman bulutlarında mevcut değildir.
 
 ## <a name="important-points-to-consider"></a>Dikkate alınması gereken önemli nokta
 

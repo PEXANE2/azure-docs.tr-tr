@@ -8,12 +8,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
-ms.openlocfilehash: fb576b81adeec99e4080c744749097390d1add1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77111104"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586164"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Azure SQL veritabanı için istek kotası artışı
 
@@ -90,7 +90,7 @@ Abonelik başına sunucu sayısında artış istemek için aşağıdaki adımlar
 
 Daha fazla bilgi için bkz. [SQL veritabanı kaynak limitleri ve kaynak](sql-database-resource-limits-database-server.md)İdaresi.
 
-### <a name="enable-subscription-access-to-a-region"></a>Bir bölgeye abonelik erişimini etkinleştirme
+### <a id="other"></a>Bir bölgeye abonelik erişimini etkinleştirme
 
 Bazı teklif türleri her bölgede kullanılamaz. Aşağıdakiler gibi bir hata görebilirsiniz:
 

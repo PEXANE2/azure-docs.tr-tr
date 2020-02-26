@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526867"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605019"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -74,7 +74,7 @@ Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-s
 | Örnek başına en fazla veritabanı dosyası sayısı | Örnek depolama boyutu veya [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) sınırına ulaşılmadığı takdirde 280 'e kadar. | örnek depolama boyutu sınırına ulaşılmadığı takdirde veritabanı başına 32.767 dosya. |
 | En büyük veri dosyası boyutu | Şu anda kullanılabilir örnek depolama boyutu (en fazla 2 TB-8 TB) ve [Azure Premium disk depolama alanı ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)ile sınırlıdır. | Şu anda kullanılabilir örnek depolama boyutuyla sınırlıdır (en fazla 1 TB-4 TB). |
 | Günlük dosyası boyutu üst sınırı | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. |
-| Veri/günlük ıOPS (yaklaşık) | Örnek başına en fazla 30-40 K ıOPS *, 500-dosya başına 7500<br/>[daha fazla IOPS almak için dosya boyutunu \*artırın](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 ıOPS/sanal çekirdek)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
+| Veri/günlük ıOPS (yaklaşık) | Örnek başına en fazla 30-40 K ıOPS *, 500-dosya başına 7500<br/>[daha fazla IOPS almak için dosya boyutunu \*artırın](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (2500 ıOPS/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>[daha ıyı GÇ performansı almak için dosya boyutunu \*artırın](#file-io-characteristics-in-general-purpose-tier) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
@@ -107,7 +107,7 @@ Ayrıca, en fazla günlük yazma miktarı 22 MB/sn gibi örnek düzeyi sınırla
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Yönetilen örnekler yalnızca [desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)oluşturulabilir. Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için, [Azure Portal aracılığıyla bir destek isteği gönderebilirsiniz](#obtaining-a-larger-quota-for-sql-managed-instance).
+Yönetilen örnekler yalnızca [desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)oluşturulabilir. Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için, [Azure Portal aracılığıyla bir destek isteği gönderebilirsiniz](quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Desteklenen abonelik türleri
 
@@ -122,13 +122,13 @@ Yönetilen örnek şu anda yalnızca aşağıdaki abonelik türlerinde dağıtı
 
 ## <a name="regional-resource-limitations"></a>Bölgesel kaynak sınırlamaları
 
-Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. Yönetilen örnek, Azure bölgesi başına iki varsayılan sınıra sahiptir (Bu, Azure portal) bir abonelik türü türüne bağlı olarak bir özel [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance)oluşturarak isteğe bağlı olarak artırılabilir:
+Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. Yönetilen örnek, Azure bölgesi başına iki varsayılan sınıra sahiptir (bir abonelik türü türüne göre Azure portal özel bir [destek isteği](quota-increase-request.md) oluşturarak isteğe bağlı olarak artırılabilir:
 
 - **Alt ağ sınırı**: yönetilen örneklerin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
 - **Vcore birim sınırı**: tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
-> Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla yönetilen örneğe ihtiyacınız varsa Azure portal özel bir [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde yeni yönetilen örnekler oluşturabilirsiniz.
+> Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla yönetilen örneğe ihtiyacınız varsa Azure portal özel bir [destek isteği](quota-increase-request.md) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde yeni yönetilen örnekler oluşturabilirsiniz.
 
 Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel sınırlar** gösterilmektedir (varsayılan sınırlar aşağıda açıklanan destek isteği kullanılarak genişletilebilir):
 
@@ -146,39 +146,9 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 
 \*\* daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL yönetilen örneği için daha büyük bir kota alma
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>SQL yönetilen örneği için kota artışı iste
 
-Geçerli Bölgelerinizdeki daha fazla yönetilen örneğe ihtiyacınız varsa, Azure portal kullanarak kotayı uzatmak için bir destek isteği gönderin.
-Daha büyük bir kota elde etme işlemini başlatmak için:
-
-1. **Yardım ve destek**' i açın ve **Yeni destek isteği**' ne tıklayın.
-
-   ![Yardım ve Destek](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Yeni destek isteği için temel bilgiler sekmesinde:
-   - **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
-   - **Abonelik** bölümünde aboneliğinizi seçin.
-   - **Kota türü**Için, **SQL veritabanı yönetilen örneği**' ni seçin.
-   - **Destek planı**için destek planınızı seçin.
-
-     ![Sorun türü kotası](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. **İleri**’ye tıklayın.
-4. Yeni destek isteği için **sorun sekmesinde** :
-   - **Önem derecesi**için sorunun önem derecesini seçin.
-   - **Ayrıntılar**için, sorununuz hakkında hata iletileri de dahil olmak üzere ek bilgiler sağlayın.
-   - **Karşıya dosya yükleme**için, daha fazla bilgi içeren bir dosya ekleyin (4 MB 'a kadar).
-
-     ![Sorun ayrıntıları](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > Geçerli bir istek şunları içermelidir:
-     > - Abonelik sınırının artırılması gereken bölge.
-     > - Kota artırdıktan sonra mevcut alt ağlardaki hizmet katmanı başına gereken sanal çekirdek sayısı (mevcut alt ağlardan herhangi birinin genişletilmesi gerekiyorsa).
-     > - Yeni alt ağlar içinde gerekli yeni alt ağ sayısı ve hizmet katmanı başına toplam Vcore sayısı (yeni alt ağlarda yönetilen örnekler dağıtmanız gerekiyorsa).
-
-5. **İleri**’ye tıklayın.
-6. Yeni destek isteği için kişi bilgileri sekmesinde, tercih edilen iletişim yöntemini (e-posta veya telefon) ve iletişim ayrıntılarını girin.
-7. **Oluştur**'a tıklayın.
+Geçerli Bölgelerinizdeki daha fazla yönetilen örneğe ihtiyacınız varsa, Azure portal kullanarak kotayı uzatmak için bir destek isteği gönderin. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

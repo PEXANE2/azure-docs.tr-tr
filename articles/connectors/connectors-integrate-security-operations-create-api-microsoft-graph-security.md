@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313806"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598842"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Güvenlik işlemlerini Microsoft Graph güvenlik & tümleştirerek tehdit korumasını geliştirebilirsiniz Azure Logic Apps
 
@@ -32,23 +32,23 @@ Mantıksal uygulamanızın iş akışı, Microsoft Graph güvenlik bağlayıcıs
 
 Microsoft Graph güvenliği hakkında daha fazla bilgi edinmek için [Microsoft Graph güvenlik API 'sine genel bakış](https://aka.ms/graphsecuritydocs)bölümüne bakın. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin. Microsoft Flow veya PowerApps arıyorsanız bkz. [Flow nedir?](https://flow.microsoft.com/) veya [PowerApps nedir?](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Microsoft Graph Güvenlik bağlayıcısını kullanmak için Azure Active Directory (AD) kiracısının yöneticisinin *açıkça verilmiş* onayı olması gerekir. Bu, [Microsoft Graph Güvenlik Kimlik Doğrulaması gereksinimlerinin](https://aka.ms/graphsecurityauth) bir parçasıdır. Bu onay, Microsoft Graph güvenlik bağlayıcısının uygulama KIMLIĞI ve adının yanı sıra [Azure Portal](https://portal.azure.com)de bulabileceğinizi gerektirir:
+* Microsoft Graph güvenlik bağlayıcısını kullanmak için, [Microsoft Graph güvenlik kimlik doğrulama gereksinimlerinin](https://aka.ms/graphsecurityauth)bir parçası olan, *AÇıKÇA* Azure Active Directory (ad) Kiracı Yöneticisi onay vermiş olmanız gerekir. Bu onay, Microsoft Graph güvenlik bağlayıcısının uygulama KIMLIĞI ve adının yanı sıra [Azure Portal](https://portal.azure.com)de bulabileceğinizi gerektirir:
 
   | Özellik | Değer |
   |----------|-------|
-  | **Uygulama Adı** | `MicrosoftGraphSecurityConnector` |
-  | **Uygulama Kimliği** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Uygulama adı** | `MicrosoftGraphSecurityConnector` |
+  | **Uygulama KIMLIĞI** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
   Bağlayıcıya izin vermek için, Azure AD kiracı yöneticiniz aşağıdaki adımları izleyebilir:
 
-  * [Azure AD uygulamalarına kiracı yöneticisi onayı verme](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Azure AD uygulamaları için kiracı yöneticisine Izin verin](../active-directory/develop/v2-permissions-and-consent.md).
 
-  * Mantıksal uygulamanız ilk kez çalıştırıldığında [uygulama onayı deneyimi](../active-directory/develop/application-consent-experience.md) aracılığıyla uygulamanız Azure AD kiracınızın yöneticisinden onay isteyebilir.
+  * Mantıksal uygulamanızın ilk çalıştırıldığı sırada, [uygulamanız uygulama onayı deneyimi](../active-directory/develop/application-consent-experience.md)aracılığıyla Azure AD kiracı yöneticinizden izin isteyebilir.
    
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
@@ -91,10 +91,10 @@ Bu örnek, uygulamanıza yeni uyarılar gönderildiğinde bir mantıksal uygulam
 
 1.  Tetikleyicide, izlemek istediğiniz uyarılar hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre Ekle** listesini açın ve bu özelliği tetikleyiciye eklemek için bir parametre seçin.
 
-   | Özellik | Özellik (JSON) | Gereklidir | Tür | Açıklama |
+   | Özellik | Özellik (JSON) | Gerekli | Tür | Açıklama |
    |----------|-----------------|----------|------|-------------|
-   | **Aralık** | `interval` | Evet | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p><p>-Ay: 1-16 ay <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
-   | **Sıklık** | `frequency` | Evet | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta**veya **ay** |
+   | **Aralık** | `interval` | Yes | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p><p>-Ay: 1-16 ay <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
+   | **Sıklık** | `frequency` | Yes | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta**veya **ay** |
    | **Saat dilimi** | `timeZone` | Hayır | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini seçin. |
    | **Başlangıç saati** | `startTime` | Hayır | Dize | Bu biçimde bir başlangıç tarihi ve saati belirtin: <p><p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme <p>Örneğin, 18 Eylül 2017 ile 2:00 PM arasında bir süre istiyorsanız "2017-09-18T14:00:00" belirtin ve Pasifik standart saati gibi bir saat dilimi seçin. Ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Bir saat dilimi seçmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. [*Başlangıç tarihini ve saatini kullanmanın yolları nelerdir?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
@@ -117,9 +117,9 @@ Bu bağlayıcı ile kullanabileceğiniz sorgular hakkında daha fazla bilgi içi
 
 | Eylem | Açıklama |
 |--------|-------------|
-| **Uyarıları al** | Bir veya daha fazla [Uyarı özelliklerine](https://docs.microsoft.com/graph/api/resources/alert)göre filtrelenmiş uyarıları alın, örneğin: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **Uyarıları al** | Bir veya daha fazla [Uyarı özelliklerine](https://docs.microsoft.com/graph/api/resources/alert)göre filtrelenmiş uyarıları alın, örneğin `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
 | **KIMLIĞE göre uyarı al** | Uyarı KIMLIğINE bağlı olarak belirli bir uyarı alın. | 
-| **Update alert** | Uyarı KIMLIĞINE göre belirli bir uyarıyı güncelleştirin. <p>İsteğinize gerekli ve düzenlenebilir özellikleri geçirdiğinizden emin olmak için, [Uyarılar için düzenlenebilir özelliklere](https://docs.microsoft.com/graph/api/alert-update)bakın. Örneğin, araştırabilmeleri için bir güvenlik analiste uyarı atamak üzere uyarının **atanmış** özelliğini güncelleştirebilirsiniz. |
+| **Uyarıyı Güncelleştir** | Uyarı KIMLIĞINE göre belirli bir uyarıyı güncelleştirin. İsteğinize gerekli ve düzenlenebilir özellikleri geçirdiğinizden emin olmak için, [Uyarılar için düzenlenebilir özelliklere](https://docs.microsoft.com/graph/api/alert-update)bakın. Örneğin, araştırabilmeleri için bir güvenlik analiste uyarı atamak üzere uyarının **atanmış** özelliğini güncelleştirebilirsiniz. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Uyarı aboneliklerini yönetme
@@ -135,6 +135,27 @@ Microsoft Graph [*abonelikleri*](https://docs.microsoft.com/graph/api/resources/
 | **Aboneliği Güncelleştir** | Abonelik KIMLIĞINI sağlayarak [bir aboneliği güncelleştirin](https://docs.microsoft.com/graph/api/subscription-update) . Örneğin, aboneliğinizi genişletmek için, aboneliğin `expirationDateTime` özelliğini güncelleştirebilirsiniz. | 
 | **Aboneliği Sil** | Abonelik KIMLIĞINI sağlayarak [bir aboneliği silin](https://docs.microsoft.com/graph/api/subscription-delete) . | 
 ||| 
+
+### <a name="manage-threat-intelligence-indicators"></a>Tehdit zekası göstergelerini yönetme
+
+En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. Tüm temel URL 'YI veya HTTP eylemini (örneğin, `https://graph.microsoft.com/beta/security/tiIndicators`veya `GET` veya `PATCH` işlemi) *belirtmeyin* . İşte `DDoS` tehdit türüne sahip bir liste istediğinizde, **Get Tıators** eyleminin parametrelerini gösteren belirli bir örnek:
+
+`Filter threat intelligence indicator value as threatType eq 'DDoS'`
+
+Bu bağlayıcı ile kullanabileceğiniz sorgular hakkında daha fazla bilgi için, [Microsoft Graph güvenlik tehdit bilgileri gösterge başvurusu belgelerindeki "Isteğe bağlı sorgu parametreleri"](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http)başlığına bakın. Bu bağlayıcıyla ilgili gelişmiş deneyimler oluşturmak için bağlayıcının desteklediği [şema özellikleri tehdit bilgileri göstergesi](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) hakkında daha fazla bilgi edinin.
+
+| Eylem | Açıklama |
+|--------|-------------|
+| **Tehdit zekası göstergelerini al** | Bir veya daha fazla [Tiındicator özelliklerine](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)göre filtrelenmiş, örneğin, `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **KIMLIĞE göre tehdit zekası göstergesi al** | Tiındicator KIMLIĞI temelinde belirli bir Tiındicator alın. | 
+| **Tehdit zekası göstergesi oluşturma** | Tiındicators koleksiyonuna göndererek yeni bir Tiındicator oluşturun. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [Tiındicator oluşturmak için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)bakın. |
+| **Birden çok tehdit zekasının göstergelerini gönder** | Bir Tiındicators koleksiyonu naklederek birden çok yeni Tiındicators oluşturun. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [birden çok Tiındicators göndermek için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http)bakın. |
+| **Tehdit zekası göstergesini Güncelleştir** | Tiındicator KIMLIĞI temelinde belirli bir Tiındicator 'ı güncelleştirin. İsteğinize gerekli ve düzenlenebilir özellikleri geçirdiğinizden emin olmak için, [Tiındicator için düzenlenebilir özelliklere](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)bakın. Örneğin, göstergenin targetProduct güvenlik aracından eşleşmesi durumunda uygulanacak eylemi güncelleştirmek için, Tiındicator 'ın **Action** özelliğini güncelleştirebilirsiniz. |
+| **Birden çok tehdit zekası göstergelerini güncelleştirme** | Birden çok Tiındicators 'ı güncelleştirin. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [birden çok Tiındicators 'ı güncelleştirmek için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)bakın. |
+| **Tehdit zekası göstergesini KIMLIĞE göre Sil** | Tiındicator KIMLIĞI temelinde belirli bir Tiındicator öğesini silin. |
+| **Kimliklere göre birden çok tehdit zekası göstergelerini silme** | Birden çok Tiındicators kimliklerini kimliklerine göre silin. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [birden çok Tiındicators 'ı kimliklere göre silmek için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http)bakın. |
+| **Çoklu tehdit zekası göstergelerini dış kimliklere göre Sil** | Dış kimliklere göre birden çok Tiındicators silin. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [dış kimliklere göre birden çok Tiındicators silmek için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http)bakın. |
+|||
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

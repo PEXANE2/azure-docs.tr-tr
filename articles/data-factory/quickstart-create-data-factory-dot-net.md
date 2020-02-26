@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928781"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597924"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -48,7 +48,7 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
 2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
 3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)' da, **kimlik doğrulama anahtarını**alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
-4. Uygulamayı [bir role ata](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)bölümünde, uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **katkıda** bulunan rolüne atayın.
+4. Uygulamayı [bir role ata](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)bölümünde, uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **katkıda** bulunan rolüne atayın.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -61,7 +61,7 @@ Ardından, Visual Studio C# 'da bir .NET konsol uygulaması oluşturun:
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**'nu seçin.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
 2. **Paket Yöneticisi konsolu** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. Daha fazla bilgi için bkz. [Microsoft. Azure. Management. DataFactory NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell

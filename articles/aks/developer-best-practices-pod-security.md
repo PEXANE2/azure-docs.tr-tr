@@ -3,16 +3,15 @@ title: Geliştirici en iyi uygulamalar - Pod güvenlik Azure Kubernetes Hizmetle
 description: Geliştirici için en iyi pod'ları Azure Kubernetes Service (AKS) güvenli hale getirmeyi öğrenin
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 17f281aeb2ef3f1f32f3e13fe66fe8b74b1d9116
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547685"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595850"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Pod güvenlik Azure Kubernetes Service (AKS) için en iyi uygulamalar
 
@@ -29,22 +28,22 @@ Bu en iyi yöntemler makalesinde, aks 'de Pod 'nin güvenliğini sağlama konusu
 
 ## <a name="secure-pod-access-to-resources"></a>Pod kaynaklarına güvenli erişim
 
-**En iyi uygulama kılavuzunu** - farklı bir kullanıcı veya grup ve sınırı erişim temel alınan düğüm işlemleri ve hizmetleri çalıştırmak, pod güvenlik bağlamı ayarları tanımlar. En az atama ayrıcalıklarına sayısı.
+**En iyi Yöntem Kılavuzu** -farklı bir kullanıcı veya grup olarak çalıştırmak ve temel alınan düğüm işlemlerine ve hizmetlerine erişimi sınırlandırmak için pod güvenlik bağlamı ayarlarını tanımlayın. En az atama ayrıcalıklarına sayısı.
 
-Uygulamalarınızın düzgün çalışması için tanımlanan kullanıcı veya grup pod'ların çalışması gerektiğini olarak değil *kök*. `securityContext` Pod ya da kapsayıcı ayarları gibi tanımlamanızı sağlar *farklıkullanıcı* veya *fsGroup* uygun izinleri varsaymak. Yalnızca gerekli kullanıcı veya grup izinleri atayın ve güvenlik bağlamı bir şekilde ek izinler varsaymak kullanmayın. *RunAsUser*, ayrıcalık yükseltme ve diğer Linux özellikleri ayarları yalnızca Linux düğümlerinde ve pods 'de kullanılabilir.
+Uygulamalarınızın doğru çalışması için, Pod 'lerin, *kök*olarak değil, tanımlı kullanıcı veya grup olarak çalışması gerekir. Pod veya kapsayıcı için `securityContext`, uygun izinleri varsaymak üzere *RunAsUser* veya *fsgroup* gibi ayarları tanımlamanızı sağlar. Yalnızca gerekli kullanıcı veya grup izinleri atayın ve güvenlik bağlamı bir şekilde ek izinler varsaymak kullanmayın. *RunAsUser*, ayrıcalık yükseltme ve diğer Linux özellikleri ayarları yalnızca Linux düğümlerinde ve pods 'de kullanılabilir.
 
 Kök olmayan kullanıcı olarak çalıştırdığınızda, kapsayıcılar ayrıcalıklı bağlantı noktalarına altında 1024 bağlanamıyor. Bu senaryoda, Kubernetes Hizmetleri bir uygulamanın belirli bir bağlantı noktası üzerinde çalıştığı olgu gizlemek için kullanılabilir.
 
 Pod güvenlik bağlamı da ek özellikler veya işlemleri ve Hizmetleri erişmek için izinler tanımlayabilirsiniz. Aşağıdaki ortak güvenlik bağlamı tanımları ayarlanabilir:
 
-* **allowPrivilegeEscalation** pod varsayabilirsiniz tanımlar *kök* ayrıcalıkları. Bu ayar her zaman ayarlanır böylece uygulamalarınızı tasarlamak *false*.
-* **Linux özellikleri** erişim temel düğüm işleme pod olanak tanır. Bu özellikler atama ile dikkatli olun. En az Ata ayrıcalıkları gerekli sayısı. Daha fazla bilgi için bkz. [Linux özellikleri][linux-capabilities].
-* **SELinux etiketleri** Hizmetleri, işlemleri ve dosya sistemi erişimi için erişim ilkeleri tanımlamanıza olanak sağlayan bir Linux çekirdek güvenlik modüldür. En az yeniden ata ayrıcalıkları gerekli sayısı. Daha fazla bilgi için bkz. [Kubernetes 'Te SELinux seçenekleri][selinux-labels]
+* **Allowprivilegeilerletme** , Pod 'un *kök* ayrıcalıkları varsayabilir olup olmadığını tanımlar. Bu ayarın her zaman *false*olarak ayarlanması için uygulamalarınızı tasarlayın.
+* **Linux özellikleri** , Pod 'un temel alınan düğüm işlemlerine erişmesini sağlar. Bu özellikler atama ile dikkatli olun. En az Ata ayrıcalıkları gerekli sayısı. Daha fazla bilgi için bkz. [Linux özellikleri][linux-capabilities].
+* **SELinux etiketleri** , hizmetler, süreçler ve dosya sistemi erişimi için erişim ilkeleri tanımlamanıza olanak sağlayan bir Linux çekirdek güvenlik modülüdür. En az yeniden ata ayrıcalıkları gerekli sayısı. Daha fazla bilgi için bkz. [Kubernetes 'Te SELinux seçenekleri][selinux-labels]
 
 Aşağıdaki örnek pod YAML bildirim güvenlik bağlamı ayarları tanımlamak için ayarlar:
 
-* Pod çalıştıran kullanıcı kimliği *1000* ve grup kimliği bölümünü *2000*
-* Kullanılacak ayrıcalıkları ilerletebilir olamaz `root`
+* Pod, Kullanıcı KIMLIĞI *1000* ve grup kimliği *2000* ' nin bir parçası olarak çalışır
+* Kullanım ayrıcalıkları `root` için yükseltilemedi
 * Ağ arabirimleri ve ana bilgisayarın (Donanım) gerçek zamanlı saatini erişmek Linux özellikleri sağlar
 
 ```yaml
@@ -68,7 +67,7 @@ Gereksinim duyduğunuz güvenlik bağlamı ayarları belirlemek için küme işl
 
 ## <a name="limit-credential-exposure"></a>Kimlik bilgisi ifşa sınırı
 
-**En iyi uygulama kılavuzunu** -kimlik bilgileri uygulama kodunuzda tanımlama yok. Azure kaynakları için yönetilen kimlikleri pod isteği erişiminizi diğer kaynaklara izin vermek için kullanın. Azure Key Vault gibi dijital bir kasa, depolamak ve dijital anahtarlarını ve kimlik bilgilerini almak için de kullanılmalıdır. Pod tarafından yönetilen kimlikler yalnızca Linux Pod ve kapsayıcı görüntüleri ile kullanılmaya yöneliktir.
+**En iyi Yöntem Kılavuzu** -uygulama kodunuzda kimlik bilgilerini tanımlamayın. Azure kaynakları için yönetilen kimlikleri pod isteği erişiminizi diğer kaynaklara izin vermek için kullanın. Azure Key Vault gibi dijital bir kasa, depolamak ve dijital anahtarlarını ve kimlik bilgilerini almak için de kullanılmalıdır. Pod tarafından yönetilen kimlikler yalnızca Linux Pod ve kapsayıcı görüntüleri ile kullanılmaya yöneliktir.
 
 Kimlik bilgileri uygulama kodunuzda maruz kalma riskini sınırlamak için sabit ya da paylaşılan kimlik bilgilerini kullanmaktan kaçının. Kimlik bilgilerine veya anahtarlara doğrudan kodunuza eklenmemelidir. Bu kimlik bilgilerinin ifşa edildiği imzalanmasını ve güncelleştirilmiş uygulama gerekir. Kendi kimlik ve kendi kimliğini doğrulamasını veya otomatik olarak dijital bir kasadan kimlik bilgilerini almak için yol pod'ların vermek daha iyi bir yaklaşımdır.
 

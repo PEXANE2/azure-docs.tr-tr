@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592488"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604516"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama
 Azure Güvenlik Merkezi, Azure disk şifrelemesi kullanılarak şifrelenmeyen Windows veya Linux VM disklerinizde bulunan disk şifrelemeyi uygulamanızı önerir. Disk şifrelemesi, Windows ve Linux IaaS VM disklerini şifrelemenize olanak tanır.  Şifreleme hem işletim sistemi hem de VM’nizin üzerindeki veri birimleri için önerilir.
@@ -59,7 +59,6 @@ Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md) -önerilerin Azure kaynaklarınızı korumanıza nasıl yardımcı olduğunu öğrenin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
 * [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) -Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.
 
 <!--Image references-->

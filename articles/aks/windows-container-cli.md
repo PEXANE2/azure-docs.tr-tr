@@ -2,17 +2,14 @@
 title: Önizleme-Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 description: Azure CLı kullanarak Azure Kubernetes Service (AKS) içindeki bir Windows Server kapsayıcısında bir uygulama dağıtma ve bir Kubernetes kümesini hızlı bir şekilde oluşturmayı öğrenin.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.author: mlearned
-ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 3a3374ea8e88b2494bb48c6835b4c22f1256ec84
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251711"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592705"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme-Azure CLı kullanarak bir Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -296,7 +293,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 > [!Note]
 > Sayfayı yüklemeye çalışırken bir bağlantı zaman aşımı alırsanız, örnek uygulamanın şu komutla hazır olduğunu doğrulamanız gerekir [kubectl Get Pod--Watch]. Bazen Windows kapsayıcısı, dış IP adresiniz kullanılabilir olduğunda başlamacaktır.
 
-## <a name="delete-cluster"></a>Küme silme
+## <a name="delete-cluster"></a>Kümeyi silme
 
 Küme artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve tüm ilgili kaynakları kaldırın.
 

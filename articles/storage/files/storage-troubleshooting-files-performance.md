@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708266"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598094"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -22,11 +22,11 @@ Bu makalede, Azure dosya paylaşımlarıyla ilgili bazı yaygın sorunlar listel
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Neden 1: daraltma ile paylaşma
 
-Premium paylaşımdaki varsayılan kota 100 GiB 'dir ve bu da 100 temel ıOPS (bir saat için en fazla ' 300 e kadar veri bloğu) sağlar. Sağlama ve ıOPS ile ilişkisi hakkında daha fazla bilgi için, planlama kılavuzunun [sağlanan paylaşımlar](storage-files-planning.md#provisioned-shares) bölümüne bakın.
+Premium paylaşımdaki varsayılan kota 100 GiB 'dir ve bu da 100 temel ıOPS (bir saat için en fazla ' 300 e kadar veri bloğu) sağlar. Sağlama ve ıOPS ile ilişkisi hakkında daha fazla bilgi için, planlama kılavuzunun [sağlanan paylaşımlar](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) bölümüne bakın.
 
 Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölçümlerinden yararlanabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Tüm hizmetler** ' i seçin ve ardından **ölçümler**' i arayın.
 
@@ -102,7 +102,7 @@ Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur
 
 - Yükü birden çok VM arasında yayın.
 - Aynı VM 'de, **nosharesock** seçeneğiyle birden çok bağlama noktası kullanın ve yükü bu bağlama noktalarına yayın.
-- Linux 'ta, her fsync çağrısında SMB temizlemeyi zormaktan kaçınmak için **nostrictsync** seçeneğiyle bağlamayı deneyin. Azure dosyaları için bu seçenek, veri ayrıntılarını etkilemez, ancak dizin listelemesi (**ls-l** komutu) üzerinde eski dosya meta verileri oluşmasına neden olabilir. Dosya meta verilerinin (**stat** komutu) doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
+- Linux 'ta, her **fsync** çağrısında SMB temizlemeyi zormaktan kaçınmak için **nostrictsync** seçeneğiyle bağlamayı deneyin. Azure dosyaları için bu seçenek veri tutarlılığını engellemez, ancak dizin listelemesi (**ls-l** komutu) üzerinde eski dosya meta verileri oluşmasına neden olabilir. Dosya meta verilerinin (**stat** komutu) doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Kapsamlı açık/kapalı işlemleri içeren meta veriler ağır iş yükleri için yüksek gecikme süreleri.
 
@@ -160,7 +160,7 @@ DirectoryOpen/DirectoryClose çağrılarının sayısı en üst API çağrılar�
 
 ### <a name="workaround"></a>Geçici çözüm
 
-- Hiçbiri.
+- Yok.
 
 ## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Windows 8.1 veya Server 2012 R2 'den yavaş performans
 
@@ -194,7 +194,7 @@ GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme sü
   > [!NOTE]
   > Dosya paylaşımı standart bir dosya paylaşımındaysa, standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılan değeri boş olur. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir. 
 
-8. Ölçüm uyarı kuralını değerlendirmek için kullanılan **Uyarı parametrelerini** (eşik, operatör, aggreme ayrıntı düzeyi ve sıklık) tanımlayın ve **bitti**' ye tıklayın.
+8. Ölçüm uyarı kuralını değerlendirmek için kullanılan **Uyarı parametrelerini** (eşik, işleç, toplama ayrıntı düzeyi ve sıklık) tanımlayın ve **bitti**' ye tıklayın.
 
   > [!TIP]
   > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşiği belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.

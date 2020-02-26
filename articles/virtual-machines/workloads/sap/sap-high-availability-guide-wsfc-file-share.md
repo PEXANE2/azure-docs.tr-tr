@@ -1,10 +1,10 @@
 ---
-title: Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma | Microsoft Docs
+title: Azure 'da dosya paylaşma kullanarak WSFC üzerinde küme SAP yoks/SCS | Microsoft Docs
 description: Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneğini nasıl kümeleyeceğinizi öğrenin.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f42713eb579da34ad4b150eec2c89b9645315d0b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2930badf90afc7d3822ff1a3bf1a65ec68438a4d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638077"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598366"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -212,7 +212,7 @@ Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirli�
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğüm) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede açıklanan görevlere başlamadan önce şu makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]

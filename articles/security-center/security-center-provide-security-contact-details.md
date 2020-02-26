@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 15029c3e0bd3959000786af484a42691f00bb704
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920996"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603576"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik iletişim bilgilerini sağlama
-Azure Güvenlik Merkezi, henüz yapmadıysanız Azure aboneliğiniz için güvenlik iletişim bilgilerini sağlamanızı önerir. Bu bilgiler, Microsoft Güvenlik Yanıt Merkezi (MSRC) müşteri verilerinize yasadışı veya yetkisiz bir tarafın eriştiğini belirlerse Microsoft tarafından sizinle iletişim kurmak için kullanılır. MSRC Azure ağı ve altyapısında seçmeli güvenlik izlemesi gerçekleştirir ve üçüncü taraflardan tehdit bilgilerini ve uygunsuz kullanım şikayetlerini alır.
+Azure Güvenlik Merkezi, henüz yapmadıysanız Azure aboneliğiniz için güvenlik iletişim bilgilerini sağlamanızı önerir. Bu bilgiler, Microsoft Güvenlik Yanıt Merkezi (MSRC) müşteri verilerinize yasadışı veya yetkisiz bir tarafın eriştiğini belirlerse Microsoft tarafından sizinle iletişim kurmak için kullanılır. MSRC, Azure ağ ve altyapısının güvenlik izlemesini seçme ve üçüncü taraflardan tehdit bilgilerini ve uygunsuz kullanım şikayetini alma işlemini gerçekleştirir.
 
 Bir uyarının gün içinde ilk kez oluşması durumunda ve yalnızca yüksek önem düzeyindeki uyarılar için bir e-posta bildirimi gönderilir. E-posta tercihleri yalnızca abonelik ilkeleri için yapılandırılabilir. Bir aboneliğin altındaki kaynak grupları bu ayarları devralır. Uyarılar yalnızca Azure Güvenlik Merkezi 'nin standart katmanında kullanılabilir.
 
@@ -40,7 +40,7 @@ Uyarı e-posta bildirimleri şu durumlarda gönderilir:
 
 1. Portalda **fiyatlandırma & ayarları**' nı seçin.
 1. Aboneliğe tıklayın.
-1. **E-posta bildirimleri**'ne tıklayın.
+1. **E-posta bildirimleri**öğesine tıklayın.
 
 > [!NOTE]
 > Öneri uygulamadıysanız, **öneriler**altında **güvenlik iletişim bilgileri sağla**' yı seçin, Iletişim bilgilerini sağlamak için Azure aboneliğini seçin. Bu, **e-posta bildirimlerini**açar.
@@ -61,8 +61,6 @@ Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) --en son Azure Güvenlik haberlerini ve bilgilerini alın.
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

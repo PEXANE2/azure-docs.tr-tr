@@ -1,10 +1,10 @@
 ---
-title: SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama | Microsoft Docs
+title: WSFC & paylaşılan disk ile SAP yoks/SCS için Azure altyapısı | Microsoft Docs
 description: SAP Ass/SCS örneği için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını nasıl hazırlayacağınızı öğrenin.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647654"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591940"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama
 
@@ -164,7 +164,7 @@ ms.locfileid: "75647654"
 
 Bu makalede, bir SAP Ass örneği Kümelemeye yönelik bir seçenek olarak *Küme Paylaşılan diski* kullanarak bir Windows Yük devretme kümesine yüksek KULLANıLABILIRLIĞE sahip SAP sistemi yükleme ve yapılandırma için Azure altyapısını hazırlamak üzere gerçekleştirmeniz gereken adımlar açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeye başlamadan önce şu makaleyi gözden geçirin:
 
@@ -223,7 +223,7 @@ _**Şekil 1:** SAP yüksek kullanılabilirlik Azure Resource Manager parametrele
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Üretimde kullanmak üzere kurumsal ağ bağlantısı (şirketler arası) ile sanal makineler dağıtma
-Üretim SAP sistemleri için Azure VPN Gateway veya Azure ExpressRoute kullanarak Azure sanal makinelerini [Kurumsal ağ bağlantısı (Şirket içi)][planning-guide-2.2] ile dağıtın.
+Üretim SAP sistemleri için Azure VPN Gateway veya Azure ExpressRoute kullanarak Azure sanal makinelerini kurumsal ağ bağlantısı ile dağıtın.
 
 > [!NOTE]
 > Azure sanal ağ örneğinizi kullanabilirsiniz. Sanal ağ ve alt ağ zaten oluşturulup hazırlandı.
@@ -373,7 +373,7 @@ Gerekli DNS IP adreslerini ayarlamak için aşağıdaki adımları izleyin:
 
 1. Azure portal, **DNS sunucuları** bölmesinde, sanal ağ **DNS SUNUCULARıNıZ** seçeneğinin **özel DNS**olarak ayarlandığından emin olun.
 2. Sahip olduğunuz ağ türüne göre ayarlarınızı seçin. Daha fazla bilgi için aşağıdaki kaynaklara bakın:
-   * [Şirket ağı bağlantısı (Şirket içi)][planning-guide-2.2]: ŞIRKET içi DNS sunucularının IP adreslerini ekleyin.  
+   * Şirket içi DNS sunucularının IP adreslerini ekleyin.  
    Şirket içi DNS sunucularını Azure 'da çalışan sanal makinelere genişletebilirsiniz. Bu senaryoda, DNS hizmetini çalıştırdığınız Azure sanal makinelerinin IP adreslerini ekleyebilirsiniz.
    * Azure 'da yalıtılmış VM dağıtımları için: DNS sunucusu olarak hizmet veren aynı sanal ağ örneğine ek bir sanal makine dağıtın. DNS hizmetini çalıştırmak için ayarladığınız Azure sanal makinelerinin IP adreslerini ekleyin.
 
@@ -524,7 +524,7 @@ SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, ba
 1. Azure portal, **\<sıd\>-lb-ascs yük dengeleyici** > **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
-   * Ad
+   * Adı
    * Bağlantı noktası
    * Arka uç bağlantı noktası
 

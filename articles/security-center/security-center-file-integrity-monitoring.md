@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558780"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604280"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -206,7 +206,6 @@ Bu makalede, güvenlik merkezi 'nde dosya bütünlüğü Izleme (FIM) kullanmay�
 * [Güvenlik sistem durumu izleme](security-center-monitoring.md)-Azure kaynaklarınızın sistem durumunu nasıl izleyeceğinizi öğrenin.
 * [Güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)--güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [İş ortağı çözümlerini izleme](security-center-partner-solutions.md) -iş ortağı çözümlerinizin sistem durumunu izleme hakkında bilgi edinin.
-* [Güvenlik Merkezi hakkında SSS](security-center-faq.md)-hizmeti kullanma hakkında sık sorulan soruları bulun.
 * [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) - En son Azure güvenlik haberlerini ve bilgilerini edinin.
 
 <!--Image references-->

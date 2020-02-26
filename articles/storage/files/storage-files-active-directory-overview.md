@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565102"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598825"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Azure dosya paylaşımları için AD kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosya paylaşımları IÇIN SMB üzerinde Active Directory kimlik doğrulamasını etkinleştirme](storage-files-active-directory-domain-services-enable.md).
+Azure dosya paylaşımları için AD kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosya paylaşımları IÇIN SMB üzerinde Active Directory kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md).
 
-Azure dosya paylaşımları için Azure AD DS kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md).
+Azure dosya paylaşımları için Azure AD DS kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
 ## <a name="glossary"></a>Sözlük 
 Azure dosya paylaşımları için SMB üzerinden Azure AD etki alanı hizmet kimlik doğrulamasıyla ilgili bazı önemli koşulları anlamak yararlı olabilir:
@@ -98,7 +98,7 @@ Bir VM üzerinde çalışan bir uygulamayla ilişkili bir kimlik, Azure dosya pa
 
 ### <a name="enable-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulamasını etkinleştir
 
-Yeni ve mevcut depolama hesaplarınızdaki Azure dosya paylaşımları için Azure AD DS (GA) veya AD (Önizleme) ile kimlik tabanlı kimlik doğrulamasını etkinleştirebilirsiniz. Yalnızca bir etki alanı hizmeti, hesaptaki tüm dosya paylaşımları için geçerli olan depolama hesabında dosya erişimi kimlik doğrulaması için kullanılabilir. Makalemize Azure AD DS (GA) ile kimlik doğrulaması için dosya paylaşımları ayarlama hakkında ayrıntılı adım adım yönergeler, diğer makalemizdeki Azure [dosyaları IÇIN SMB üzerinde Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md) ve ad (Önizleme) Kılavuzu (Önizleme) için [Azure dosya paylaşımları için SMB üzerinden Active Directory etkinleştirme](storage-files-active-directory-domain-services-enable.md).
+Yeni ve mevcut depolama hesaplarınızdaki Azure dosya paylaşımları için Azure AD DS (GA) veya AD (Önizleme) ile kimlik tabanlı kimlik doğrulamasını etkinleştirebilirsiniz. Yalnızca bir etki alanı hizmeti, hesaptaki tüm dosya paylaşımları için geçerli olan depolama hesabında dosya erişimi kimlik doğrulaması için kullanılabilir. Azure AD DS (GA) ile kimlik doğrulaması için dosya paylaşımlarını ayarlamaya yönelik ayrıntılı adım adım yönergeler (GA) makalemize ilişkin [Azure dosyalarında kimlik doğrulamasını Azure Active Directory Domain Services etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md) ve ad (Önizleme) Kılavuzu ' nda Azure [dosya paylaşımları için SMB üzerinden Active Directory kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Azure dosyaları için paylaşma düzeyi izinleri yapılandırma
 
@@ -126,6 +126,6 @@ Depolama hesabınızda SMB üzerinden kimlik tabanlı kimlik doğrulamasını et
 SMB üzerinden Azure dosyaları ve kimlik tabanlı kimlik doğrulaması hakkında daha fazla bilgi için şu kaynaklara bakın:
 
 - [Azure Dosyaları dağıtımını planlama](storage-files-planning.md)
-- [Azure dosya paylaşımları için SMB üzerinden Active Directory kimlik doğrulamasını etkinleştirme](storage-files-active-directory-domain-services-enable.md)
-- [Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md)
+- [Azure dosya paylaşımları için SMB üzerinden Active Directory kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md)
+- [Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [SSS](storage-files-faq.md)

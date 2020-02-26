@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391893"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597261"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -58,12 +58,7 @@ BEKs da yedeklenir. Bu nedenle, BEKs kaybolursa yetkili kullanıcılar BEKs 'yi 
 
 Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
-- **Windows VM 'leri:** Windows VM 'lerinde yedekleme hizmeti, VM disklerinin uygulamayla tutarlı bir anlık görüntüsünü almak için VSS ile eşgüdümünü sağlar.
-
-  - Varsayılan olarak Azure Backup tam VSS yedeklemeleri alır. [Daha fazla bilgi edinin](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
-  - Azure Backup VSS kopya yedeklemeleri alması için ayarı değiştirmek için, aşağıdaki kayıt defteri anahtarını bir komut isteminden ayarlayın:
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent"/v USEVSSCOPYBACKUP/t REG_SZ/d TRUE/f**
+- **Windows VM 'leri:** Windows VM 'lerinde yedekleme hizmeti, VM disklerinin uygulamayla tutarlı bir anlık görüntüsünü almak için VSS ile eşgüdümünü sağlar.  Varsayılan olarak, Azure Backup tam bir VSS yedeklemesi alır (uygulama düzeyi tutarlı yedeklemeyi almak için yedekleme sırasında SQL Server gibi uygulamanın günlüklerini keser).  Azure VM yedeklemesi üzerinde bir SQL Server veritabanı kullanıyorsanız, bir VSS kopya yedeklemesi (günlükleri korumak için) almak için ayarı değiştirebilirsiniz. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues) bakın.
 
 - **Linux VM 'leri:** Linux VM 'lerinin uygulamayla tutarlı anlık görüntülerini almak için, tutarlılık sağlamak üzere kendi özel betiklerinizi yazmak üzere Linux ön betik ve betik sonrası çerçevesini kullanın.
 
@@ -75,7 +70,7 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 
-**Anlık Görüntü** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
+**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
 --- | --- | --- | ---
 **Uygulamayla tutarlı** | Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemlerini yakalar. Uygulamayla tutarlı anlık görüntüler, bir yedekleme gerçekleşmeden önce uygulama verilerinin tutarlılığını sağlamak için bir VSS yazıcısı (veya Linux için ön betikler öncesi) kullanır. | VM 'yi uygulamayla tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Uygulamalar tutarlı bir durumda başlar. | Windows: tüm VSS yazıcıları başarılı oldu<br/><br/> Linux: ön/son betik yapılandırma ve başarılı
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: varsayılan (ön/sonrası betikler yapılandırılmamışsa veya başarısız olursa)
@@ -86,7 +81,7 @@ Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanm
 **Dikkate Alınacak Nokta** | **Ayrıntılar**
 --- | ---
 **Disk** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
-**Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM 'Lerin yedeklenmesi aynı anda trafik jams oluşmasına neden olur.
+**Planlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM 'Lerin yedeklenmesi aynı anda trafik jams oluşmasına neden olur.
 **Yedeklemeler hazırlanıyor** | Yedeklemenin hazırlanması için gereken süreyi göz önünde bulundurun. Hazırlık süresi, yedekleme uzantısını yüklemeyi veya güncelleştirmeyi, yedekleme çizelgesine göre bir anlık görüntüyü tetiklemeyi içerir.
 **Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Artımlı yedeklemede, Azure Backup bloğun sağlama toplamını hesaplayarak değişiklikleri belirler. Bir blok değiştirilirse, kasaya aktarım için işaretlenir. Hizmet, aktarılacak veri miktarını daha aza indirmeye çalışacak şekilde tanımlanan blokları analiz eder. Değiştirilen tüm blokları değerlendirdikten sonra Azure Backup değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntü alma ve kasaya kopyalama arasında bir gecikme olabilir.<br/><br/> Yoğun saatlerde, yedeklemelerin işlenmesi sekiz saate kadar sürebilir. Bir VM için yedekleme zamanı, günlük yedekleme için 24 saatten daha az olacaktır.
 **İlk yedekleme** | Artımlı yedeklemeler için toplam Yedekleme süresi 24 saatten daha az olsa da, ilk yedekleme için bu durum olmayabilir. İlk yedekleme için gereken süre, verilerin boyutuna ve yedeklemenin işlendiği zamana bağlı olarak değişir.

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997233"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604338"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
 
@@ -105,7 +105,7 @@ Güvenlik Merkezi, güvenlik tehditlerini belirlemenize yardımcı olmak için s
 
 **Güvenlik olayları eşlemesini git** düğmesine tıkladığınızda, (şimdi kullanımdan kaldırılan) tehdit bilgileri panosu açılır.
 
-![Tehdit zekası panosu][11]
+![Tehdit bilgileri panosu][11]
 
 Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics ' de (artık kullanımdan kaldırılan) güvenlik uyarıları Haritası (Önizleme) ekranını açtınız.
 

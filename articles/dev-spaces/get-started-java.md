@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde bir Java uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cb79b60cdc1b9e417b402ffe8c29151f7790a390
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 2c086c952528d5521ace44d56eaf11c14ac1cabb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538610"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602835"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve Java
 
@@ -64,7 +64,7 @@ az group create --name MyResourceGroup --location <region>
 Şu komutu kullanarak bir Kubernetes kümesi oluşturun:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 Kümenin oluşturulması birkaç dakika sürer.

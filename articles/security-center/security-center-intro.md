@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939444"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604059"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -97,7 +97,7 @@ Bu şekilde, güvenlik merkezi yalnızca güvenlik ilkelerini ayarlamanıza, anc
 
 ![Güvenlik Merkezi öneri örneği](media/security-center-intro/sc-recommendation-example.png)
 
-## <a name="protect-against-threats"></a>Tehditlere karşı koruma sağlayın
+## <a name="protect-against-threats"></a>Tehditlere karşı koruma
 
 Güvenlik Merkezi 'nin tehdit koruması, hizmet olarak altyapı (IaaS) katmanı, Azure dışı sunucuların yanı sıra Azure 'da hizmet olarak platformlar (PaaS) için tehditleri algılamanıza ve engellemenizi sağlar.
 
@@ -145,7 +145,7 @@ Kapsamlı günlük koleksiyonu-Windows ve Linux 'daki Günlükler, güvenlik Ana
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güvenlik Merkezi ile çalışmaya başlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
+- Güvenlik Merkezi ile çalışmaya başlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 - Güvenlik Merkezi’nin Ücretsiz fiyatlandırma katmanı, Azure aboneliğiniz ile etkinleştirilir. Gelişmiş güvenlik yönetimi ve tehdit algılama yeteneklerinden yararlanmak için Standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman ücretsiz olarak denenolabilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
 - Şimdi Güvenlik Merkezi Standart katmanını etkinleştirmeye hazırsanız, [Hızlı Başlangıç: Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md) başlıklı konuda işlem adım adım açıklanmıştır.
 

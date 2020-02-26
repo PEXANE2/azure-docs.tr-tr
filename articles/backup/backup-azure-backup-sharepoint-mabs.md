@@ -3,12 +3,12 @@ title: MABS ile bir SharePoint grubunu Azure 'a yedekleme
 description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: a48afd84f6c4e1ec80015696dc4b14beea8ebfa4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ba9d79270da839cf99574322d68ccdba27fe2d93
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173204"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584260"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -30,9 +30,9 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 Devam etmeden önce, iş yüklerini korumak için [Azure Backup sunucusu yüklediğinizden ve hazırlandığından](backup-azure-microsoft-azure-backup.md) emin olun.
 
-### <a name="protection-agent"></a>Koruma Aracısı
+### <a name="protection-agent"></a>Koruma aracısı
 
-Azure Backup Aracısı, SharePoint çalıştıran sunucuda, SQL Server çalıştıran sunucular ve SharePoint grubunun parçası olan diğer tüm sunucular üzerinde yüklü olmalıdır. Koruma aracısının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [Kurulum koruma Aracısı](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Tek istisna, aracıyı yalnızca tek bir Web ön ucu (WFE) sunucusuna yüklemektir. Azure Backup Sunucusu, yalnızca bir WFE sunucusunda, koruma için giriş noktası olarak kullanılacak şekilde aracı gerektirir.
+Azure Backup Aracısı, SharePoint çalıştıran sunucuda, SQL Server çalıştıran sunucular ve SharePoint grubunun parçası olan diğer tüm sunucular üzerinde yüklü olmalıdır. Koruma aracısının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [Kurulum koruma Aracısı](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Tek istisna, aracıyı yalnızca tek bir Web ön ucu (WFE) sunucusuna yüklemektir. Azure Backup Sunucusu, yalnızca bir WFE sunucusunda, koruma için giriş noktası olarak kullanılacak şekilde aracı gerektirir.
 
 ### <a name="sharepoint-farm"></a>SharePoint grubu
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: fe2bb61ccfc7285dc5f4a5c21f3c62abfecca343
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c2d84e823d028f542c5ab852be2ea68a5abafe93
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290606"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605291"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'de hata ayıklama ve yineleme: Visual Studio Code ve .NET Core-Azure Dev Spaces
 
@@ -26,7 +26,7 @@ Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemeniz
 - [Node. js ve Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core ve Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - [Visual Studio Code yüklendi](https://code.visualstudio.com/download).
@@ -39,7 +39,7 @@ Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemeniz
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
@@ -113,7 +113,7 @@ Hata ayıklayıcıyı durdurmak için hata *Ayıkla* ve hata *ayıklamayı Durdu
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve *.NET Core başlatma 'yı (AZD)* yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve *.NET Core başlatma 'yı (AZD)* yeniden çalıştırabilirsiniz. Örnek:
 
 1. Uygulamanız hala çalışıyorsa, *Hata Ayıkla* ' ya tıklayın, ardından *hata ayıklamayı* durdurun.
 1. [`Controllers/HomeController.cs`satır 22 ' de](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) şu şekilde güncelleştirin:
@@ -142,7 +142,7 @@ Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştır�
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code kodu güncelleştirme
 
-Hizmet hata ayıklama modunda çalışırken, `Controllers/HomeController.cs`satır 22 ' u güncelleştirin. Örneğin:
+Hizmet hata ayıklama modunda çalışırken, `Controllers/HomeController.cs`satır 22 ' u güncelleştirin. Örnek:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";

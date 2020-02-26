@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031518"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597907"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Öğretici: Windows dosya sunucularını Azure Dosya Eşitleme ile genişletme
 
@@ -27,8 +27,6 @@ Makalesinde, Azure Dosya Eşitleme kullanarak bir Windows Server 'ın depolama k
 > * Sunucu uç noktası oluşturma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -219,7 +217,7 @@ Azure Dosya Eşitleme dağıtmak için, önce seçtiğiniz abonelik için bir ka
 
    | Değer | Açıklama |
    | ----- | ----- |
-   | **Ad** | Depolama Eşitleme Hizmeti için benzersiz bir ad (abonelik başına).<br><br>Bu öğretici için _afssyncservice02_ kullanın. |
+   | **Adı** | Depolama Eşitleme Hizmeti için benzersiz bir ad (abonelik başına).<br><br>Bu öğretici için _afssyncservice02_ kullanın. |
    | **Abonelik** | Bu öğretici için kullandığınız Azure aboneliği. |
    | **Kaynak grubu** | Depolama eşitleme hizmetini içeren kaynak grubu.<br><br>Bu öğretici için _afsresgroup101918_ kullanın. |
    | **Konum** | Doğu ABD |

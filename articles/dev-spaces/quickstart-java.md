@@ -6,18 +6,18 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir Java uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Java, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c0062d7cda79cbe91dc7485baa33b60d318a8af0
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025206"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605325"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Hızlı başlangıç: Visual Studio Code ve Java-Azure Dev Spaces ile Kubernetes 'te hata ayıklama ve yineleme
 
 Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces ayarlarsınız ve kapsayıcılarda kodu tekrarlayarak geliştirmek ve hata ayıklamak için Visual Studio Code bir Java uygulaması kullanırsınız. Azure Dev Spaces, Azure Kubernetes hizmeti (AKS) içindeki uygulamanızın tüm bileşenlerini en düşük geliştirme makinesi kurulumuna göre hata ayıklamanıza ve test etmenize olanak tanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Java Development Kit (JDK) 1.8.0 +](https://aka.ms/azure-jdks).
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
@@ -112,7 +112,7 @@ Hata ayıklamayı durdurmak için hata **Ayıkla** ve hata **ayıklamayı Durdur
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **Java programını Başlat ' ı (AZD)** yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **Java programını Başlat ' ı (AZD)** yeniden çalıştırabilirsiniz. Örnek:
 
 1. Uygulamanız hala çalışıyorsa, **Hata Ayıkla** ' yı seçin ve durdurmak Için **hata ayıklamayı durdurun** .
 1. [`src/main/java/com/ms/sample/webfrontend/Application.java`satır 19 ' da](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) şu şekilde güncelleştirin:
@@ -140,7 +140,7 @@ Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştır�
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code kodu güncelleştirme
 
-Hizmet hata ayıklama modunda çalışırken, *src/Main/Java/com/MS/Sample/webön uç/uygulama. Java*'da 19. satırı güncelleştirin. Örneğin:
+Hizmet hata ayıklama modunda çalışırken, *src/Main/Java/com/MS/Sample/webön uç/uygulama. Java*'da 19. satırı güncelleştirin. Örnek:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

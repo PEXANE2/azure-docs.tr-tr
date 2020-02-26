@@ -6,18 +6,18 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir Node. js uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cd784ed616b2938f4c57bad47045f0d44ad25a69
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: edece2d2100ce24d244cfd70936d850e1cf2f66e
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022537"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602672"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Hızlı başlangıç: Visual Studio Code ve Node. js ile Kubernetes 'te hata ayıklama ve yineleme-Azure Dev Spaces
 
 Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces ayarlarsınız ve kapsayıcılarda kodu tekrarlayarak geliştirmek ve hata ayıklamak için Visual Studio Code bir Node. js uygulaması kullanırsınız. Azure Dev Spaces, Azure Kubernetes hizmeti (AKS) içindeki uygulamanızın tüm bileşenlerini en düşük geliştirme makinesi kurulumuna göre hata ayıklamanıza ve test etmenize olanak tanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Node. js ' nin en son sürümü](https://nodejs.org/download/).
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
@@ -106,7 +106,7 @@ Hata ayıklamayı durdurmak için hata **Ayıkla** ve hata **ayıklamayı Durdur
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **başlatma sunucusunu**yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **başlatma sunucusunu**yeniden çalıştırabilirsiniz. Örnek:
 
 1. Uygulamanız hala çalışıyorsa, **Hata Ayıkla** ' yı seçin ve durdurmak Için **hata ayıklamayı durdurun** .
 1. [`server.js`satırı 13 ' te](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) güncelleştir:
@@ -144,7 +144,7 @@ Bu komut Azure Dev Spaces ' de hizmetinizi oluşturur ve çalıştırır. Ayrıc
 
 Hizmet başladıktan sonra tarayıcınızı kullanarak bu sayfaya gidin ve etkileşime geçin.
 
-Hizmet çalışırken, *Server. js*' de vs Code ve 13. satırı güncelleştirme sayfasına dönün. Örneğin:
+Hizmet çalışırken, *Server. js*' de vs Code ve 13. satırı güncelleştirme sayfasına dönün. Örnek:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
