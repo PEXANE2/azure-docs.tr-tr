@@ -1,5 +1,5 @@
 - name: Mobile Apps Belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Mobile Apps nedir?
