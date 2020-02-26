@@ -21,7 +21,7 @@
         - name: Azure Stack
           items:
             - name: Azure Stack dağıtımına genel bakış
-              href: ../../azure-stack/azure-stack-deploy-overview.md
+              href: /azure-stack/asdk/asdk-download
         - name: Azure Backup
           items:
             - name: Azure Portal’da VM yedekleme
@@ -39,7 +39,7 @@
             - name: Linux VM oluşturma ve yönetme
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Jenkins CI/CD İşlem Hattı
-              href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: VM'ler için yük dengeleme
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Azure Resource Manager şablonları yazma
