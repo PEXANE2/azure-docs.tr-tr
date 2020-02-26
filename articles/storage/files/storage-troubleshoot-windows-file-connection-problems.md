@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544982"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597975"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows 'da Azure dosyaları sorunlarını giderme
 
 Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Bir Azure dosya paylaşımından bağlama yaparken hata 5
@@ -250,7 +247,7 @@ Aşağıdaki çözümlerden birini kullanın:
 
 -   Sürücüyü uygulamayı içeren kullanıcı hesabından bağlayın. PsExec gibi bir araç kullanabilirsiniz.
 - Depolama hesabı adını ve anahtarını net use komutunun Kullanıcı adı ve parola parametrelerine geçirin.
-- Kimlik bilgilerini kimlik bilgileri Yöneticisi 'ne eklemek için cmdkey komutunu kullanın. Bunu, etkileşimli oturum açma yoluyla veya runas kullanarak hizmet hesabı bağlamı altındaki bir komut satırından gerçekleştirin.
+- Kimlik bilgilerini kimlik bilgileri Yöneticisi 'ne eklemek için cmdkey komutunu kullanın. Bunu, etkileşimli oturum açma yoluyla veya `runas`kullanarak hizmet hesabı bağlamı altındaki bir komut satırından gerçekleştirin.
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - Eşlenen bir sürücü harfi kullanmadan doğrudan paylaşma eşleyin. Bazı uygulamalar sürücü harfine düzgün şekilde yeniden bağlanmayabilir, bu nedenle tam UNC yolunun kullanılması daha güvenilir olabilir. 
@@ -300,7 +297,7 @@ Bu sorunu çözmek için **DirectoryCacheEntrySizeMax** kayıt defteri değerini
 
 ### <a name="cause"></a>Nedeni
 
-[Azure dosyaları için Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulamasını](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) , [AAD etki alanı HIZMETI 'nın (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) ilişkili aboneliğin AAD kiracısında oluşturulabileceği bir depolama hesabında etkinleştirmeye çalıştığınızda hata AadDsTenantNotFound olur.  
+Azure dosyalarında, ilişkili aboneliğin AAD kiracısında [AAD etki alanı hizmeti 'nin (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) oluşturulabileceği bir depolama hesabındaki [Azure Active Directory Domain Services (Azure AD DS) kimlik doğrulamasını etkinleştirmeye](storage-files-identity-auth-active-directory-domain-service-enable.md) çalıştığınızda hata AadDsTenantNotFound olur.  
 
 ### <a name="solution"></a>Çözüm
 
@@ -320,5 +317,5 @@ Hata ' sistem hatası 1359 oluştu. Bir iç hata ', bir sayısal karakterle baş
 - Adlar sayısal bir karakterle başlayamaz.
 - Adların uzunluğu 3 ile 63 karakter arasında olmalıdır.
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

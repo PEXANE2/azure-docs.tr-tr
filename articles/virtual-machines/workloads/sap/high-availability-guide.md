@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fb093312365ce965c6baf3c9f50d74359cec0a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7eb064762824c23f33f5df2a80320651de6d5af2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647705"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598774"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -449,7 +449,7 @@ Bu makalede, Azure Resource Manager dağıtım modelini kullanarak Azure 'da yü
 
 Dağıtım ve yapılandırmayı basitleştirmek için, bu makalede SAP üç katmanlı yüksek kullanılabilirliğe sahip Kaynak Yöneticisi şablonları kullanırız. Şablonlar, yüksek kullanılabilirliğe sahip bir SAP sistemi için ihtiyaç duyduğunuz tüm altyapının dağıtımını otomatik hale getirir. Altyapı Ayrıca SAP sisteminizin performans standardı (SAPS) boyutunu destekler.
 
-## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Önkoşullar
+## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Kaynakları
 Başlamadan önce, aşağıdaki bölümlerde açıklanan önkoşulları karşıladığınızdan emin olun. Ayrıca, [kaynaklar][sap-ha-guide-2] bölümünde listelenen tüm kaynakları denetlediğinizden emin olun.
 
 Bu makalede, [üç KATMANLı SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/)için Azure Resource Manager şablonlar kullanırız. Şablonlara faydalı bir genel bakış için bkz. [SAP Azure Resource Manager şablonları](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
@@ -721,7 +721,7 @@ _**Şekil 11:** SAP yüksek kullanılabilirlik Azure Resource Manager parametrel
 >
 
 ### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Üretimde kullanmak üzere kurumsal ağ bağlantısı (şirketler arası) ile sanal makineler dağıtma
-Üretim SAP sistemleri için, Azure siteden siteye VPN veya Azure ExpressRoute kullanarak Azure sanal makinelerini [Kurumsal ağ bağlantısı (Şirket içi)][planning-guide-2.2] ile dağıtın.
+Üretim SAP sistemlerinde Azure sanal makinelerini Azure siteden siteye VPN veya Azure ExpressRoute kullanarak kurumsal ağ bağlantısı ile dağıtın.
 
 > [!NOTE]
 > Azure sanal ağ örneğinizi kullanabilirsiniz. Sanal ağ ve alt ağ zaten oluşturulup hazırlandı.
@@ -865,7 +865,7 @@ Gerekli DNS IP adreslerini ayarlamak için aşağıdaki adımları uygulayın.
 
 1. Azure portal, **DNS sunucuları** dikey penceresinde, sanal ağ **DNS SUNUCULARıNıZ** seçeneğinin **özel DNS**olarak ayarlandığından emin olun.
 2. Sahip olduğunuz ağ türüne göre ayarlarınızı seçin. Daha fazla bilgi için aşağıdaki kaynaklara bakın:
-   * [Şirket ağı bağlantısı (Şirket içi)][planning-guide-2.2]: ŞIRKET içi DNS sunucularının IP adreslerini ekleyin.  
+   * Şirket içi DNS sunucularının IP adreslerini ekleyin.  
    Şirket içi DNS sunucularını Azure 'da çalışan sanal makinelere genişletebilirsiniz. Bu senaryoda, DNS hizmetini çalıştırdığınız Azure sanal makinelerinin IP adreslerini ekleyebilirsiniz.
    * Azure 'da yalıtılmış dağıtımlar için: DNS sunucusu olarak hizmet veren aynı sanal ağ örneğine ek bir sanal makine dağıtın. DNS hizmetini çalıştırmak için ayarladığınız Azure sanal makinelerinin IP adreslerini ekleyin.
 
@@ -1016,7 +1016,7 @@ SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, ba
 1. Azure portal, **<*SID*>-lb-ascs yük dengeleyici** > **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
-   * Ad
+   * Adı
    * Bağlantı noktası
    * Arka uç bağlantı noktası
 
@@ -1545,7 +1545,7 @@ Araştırma bağlantı noktası eklemek için:
    }
    ```
 
-   Sonra Getir **SAP <*SID*>** doğrulayın, küme rolünü **ProbePort** yeni değere ayarlanır.
+   **SAP <*SID*>** küme rolünü çevrimiçine geçirdikten sonra, **probeport** 'un yeni değere ayarlandığını doğrulayın.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>

@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f8a14c348f4f8eddcd60c6946c831c90262757b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837799"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589003"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme için belge kaynakları
 
@@ -21,7 +21,7 @@ AI zenginleştirme, Azure Bilişsel Arama Dizin oluşturma özelliğinin metin o
 
 Aşağıdaki makaleler AI zenginleştirme için tüm belgeleriydi.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 + [Azure Bilişsel Arama 'de AI 'ye giriş](cognitive-search-concept-intro.md)
 + [Hızlı başlangıç: Azure portal Bilişsel Beceri oluşturma](cognitive-search-quickstart-blob.md)
 + [Öğretici: AI ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)

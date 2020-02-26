@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697226"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591583"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -40,9 +40,9 @@ Bu makalede rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Ac
 
 Azure AD uygulamanızı ve hizmet sorumlusunu oluşturdunuz.
 
-## <a name="assign-the-application-to-a-role"></a>Uygulamayı bir role atama
+## <a name="assign-a-role-to-the-application"></a>Uygulamaya bir rol atama
 
-Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında bilgi edinmek için [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Aboneliğinizdeki kaynaklara erişmek için uygulamaya bir rol atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
 Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. Daha düşük düzeyde kapsam için izinler devralınmıştır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
@@ -57,12 +57,12 @@ Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. Daha
    Aradığınız aboneliği görmüyorsanız **genel abonelikler filtresi**' ni seçin. Portal için istediğiniz aboneliğin seçildiğinden emin olun.
 
 1. **Erişim denetimi (IAM)** öğesini seçin.
-1. Seçin **rol ataması Ekle**.
+1. **Rol ataması Ekle**' yi seçin.
 1. Uygulamaya atamak istediğiniz rolü seçin. Örneğin, uygulamanın **yeniden başlatma**gibi eylemleri yürütmesine izin vermek için örnekleri **başlatın** ve **durdurun** , **katkıda bulunan** rolünü seçin.  [Kullanılabilir roller](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi için, varsayılan olarak Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
 
    ![Uygulamaya atanacak rolü seçin](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Seçin **Kaydet** rol atama tamamlanması. Uygulamanızı bu kapsam için bir role atanan kullanıcılar listesinde görürsünüz.
+1. Rolü atamaya son vermek için **Kaydet** ' i seçin. Uygulamanızı bu kapsam için bir role sahip olan kullanıcılar listesinde görürsünüz.
 
 Hizmet sorumlusu ayarlanır. Betikleri veya uygulamalarınızı çalıştırmak için kullanmaya başlayabilirsiniz. Sonraki bölümde, programlama yoluyla oturum açarken gereken değerlerin nasıl alınacağı gösterilmektedir.
 
@@ -112,7 +112,7 @@ Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluştur
 1. Istemci gizli dizileri **-> yeni istemci parolası**' nı seçin.
 1. Gizli anahtar ve süre için bir açıklama sağlayın. İşiniz bittiğinde **Ekle**' yi seçin.
 
-   İstemci gizliliğini kaydettikten sonra, istemci parolasının değeri görüntülenir. Anahtarı daha sonra alamadığı için bu değeri kopyalayın. Uygulama kimliğiyle oturum açmak için anahtar değerini uygulama kimliğiyle birlikte sağlarsınız. Anahtarı, uygulamanızın alabileceği bir konumda depolayın.
+   İstemci gizliliğini kaydettikten sonra, istemci parolasının değeri görüntülenir. Anahtarı daha sonra alamayamayacağından bu değeri kopyalayın. Uygulama kimliğiyle oturum açmak için anahtar değerini uygulama kimliğiyle birlikte sağlarsınız. Anahtarı, uygulamanızın alabileceği bir konumda depolayın.
 
    ![Daha sonra geri alamadığı için gizli değeri kopyalayın](./media/howto-create-service-principal-portal/copy-secret.png)
 
@@ -126,7 +126,7 @@ Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandı
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Azure AD kiracınızla bir uygulamayı kaydetmek ve uygulamayı Azure aboneliğinizdeki bir role atamak için yeterli izinlere sahip olmanız gerekir.
+Azure AD kiracınızla bir uygulamayı kaydetmek ve uygulamaya Azure aboneliğinizdeki bir rolü atamak için yeterli izinlere sahip olmanız gerekir.
 
 ### <a name="check-azure-ad-permissions"></a>Azure AD izinlerini denetle
 
@@ -138,11 +138,11 @@ Azure AD kiracınızla bir uygulamayı kaydetmek ve uygulamayı Azure aboneliği
 1. Sol bölmede **Kullanıcı ayarları**' nı seçin.
 1. **Uygulama kayıtları** ayarını denetleyin. Bu değer yalnızca bir yönetici tarafından ayarlanabilir. **Evet**olarak ayarlanırsa, Azure AD kiracısındaki tüm kullanıcılar bir uygulamayı kaydedebilir.
 
-Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici rolüne sahip kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD 'de her role verilen belirli izinler hakkında bilgi edinmek için bkz. [kullanılabilir roller](../users-groups-roles/directory-assign-admin-roles.md#available-roles) ve [rol izinleri](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Hesabınız Kullanıcı rolüne atanırsa, ancak uygulama kaydı ayarı Yönetici kullanıcılarla sınırlı ise, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturup yönetebilen yönetici rollerinden birine atamasını veya kullanıcıların şunları yapmasını isteyin uygulamaları kaydedin.
+Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici rolüne sahip kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD 'de her role verilen belirli izinler hakkında bilgi edinmek için bkz. [kullanılabilir roller](../users-groups-roles/directory-assign-admin-roles.md#available-roles) ve [rol izinleri](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Hesabınız Kullanıcı rolüne atanmışsa, ancak uygulama kaydı ayarı Yönetici kullanıcılarla sınırlıysa, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturup yönetebilen yönetici rollerinden birini atamasını veya kullanıcıların kaydolmasını sağlamak için gör.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure abonelik izinlerini denetle
 
-Azure aboneliğinizde, bir role AD uygulaması atamak için hesabınızın `Microsoft.Authorization/*/Write` erişimi olmalıdır. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınız **katkıda bulunan** rolüne atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusunu bir role atamaya çalışırken bir hata alıyorsunuz.
+Azure aboneliğinizde, bir AD uygulamasına rol atamak için hesabınızın `Microsoft.Authorization/*/Write` erişimi olmalıdır. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınıza **katkıda bulunan** rolü atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusu bir rol atamaya çalışırken bir hata alırsınız.
 
 Abonelik izinlerinizi denetlemek için:
 
@@ -154,9 +154,9 @@ Abonelik izinlerinizi denetlemek için:
 
    ![Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Atanan rollerinizi görüntülemek için **rol atamaları** ' nı seçin ve bir rol IÇIN bir ad uygulaması atamak için yeterli izinlere sahip olup olmadığınızı belirleyin. Aksi takdirde, abonelik yöneticinizden sizi Kullanıcı erişimi Yöneticisi rolüne eklemesini isteyin. Aşağıdaki görüntüde, Kullanıcı sahip rolüne atanır, bu da kullanıcının yeterli izinlere sahip olduğu anlamına gelir.
+1. Atanan rollerinizi görüntülemek için **rol atamaları** ' nı seçin ve bir ad uygulamasına rol atamak için yeterli izinlere sahip olup olmadığınızı belirleyin. Aksi takdirde, abonelik yöneticinizden sizi Kullanıcı erişimi Yöneticisi rolüne eklemesini isteyin. Aşağıdaki görüntüde, Kullanıcı sahip rolüne atanır, bu da kullanıcının yeterli izinlere sahip olduğu anlamına gelir.
 
-   ![Bu örnek, kullanıcının sahip rolüne atandığını gösterir](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![Bu örnek, kullanıcıya sahip rolü atandığını gösterir](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

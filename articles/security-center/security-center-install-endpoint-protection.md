@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: e1ed403babe66b465fb1800dc8c5a90c7a8f1a08
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558621"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604119"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Endpoint Protection sorunlarını yönetme
 Azure Güvenlik Merkezi, kötü amaçlı yazılımdan koruma sorunlarını izler ve bu durum Endpoint Protection sorunları sayfasında rapor verir. Güvenlik Merkezi, algılanan tehditler ve yetersiz koruma gibi sorunları vurgular ve sanal makinelerinizi (VM) ve bilgisayarlarınızı kötü amaçlı yazılımdan koruma tehditlerine karşı savunmasız hale getirebilir. **Endpoint Protection sorunları**altındaki bilgileri kullanarak, tanımlanan sorunları ele almak için bir plan tanımlayabilirsiniz.
@@ -75,7 +75,7 @@ Bu örnekte, **işlem**kullanacağız.  Azure VM 'lerine ve Azure dışı bilgis
 
 4. **Endpoint Protection ' ın altında, Azure VM 'lerde yüklü değil** , kötü amaçlı yazılımdan koruma yüklü olmayan Azure VM 'lerinin bir listesidir.  Kötü amaçlı yazılımdan koruma 'yı listedeki tüm VM 'Lere yüklemeyi seçebilir veya belirli bir VM 'ye tıklayarak kötü amaçlı yazılımdan koruma yüklemek için tek tek VM 'Leri seçebilirsiniz.
 5. **Endpoint Protection 'ı seçin**altında kullanmak istediğiniz Endpoint Protection çözümünü seçin. Bu örnekte, **Microsoft kötü amaçlı yazılımdan koruma**' yı seçin.
-6. Uç nokta koruma çözümü hakkında ek bilgiler görüntülenir. **Oluştur**'u seçin.
+6. Uç nokta koruma çözümü hakkında ek bilgiler görüntülenir. **Oluştur**’u seçin.
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>Azure olmayan bilgisayarlara kötü amaçlı yazılım yüklemesi
 
@@ -108,8 +108,6 @@ Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki belgeler
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) -Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

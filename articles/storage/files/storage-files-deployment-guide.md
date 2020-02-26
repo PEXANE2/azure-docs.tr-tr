@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299589"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598791"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Dosyaları’nı dağıtma
 [Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyalarını kuruluşunuzda nasıl kuruluşunuzun içinde dağıtacağınız gösterilmektedir.
@@ -26,14 +26,14 @@ Bu makalede, aşağıdaki adımları zaten tamamladığınız varsayılmaktadır
 - Depolama hesabınızda istediğiniz kotayı içeren bir Azure dosya paylaşımının oluşturulması. Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım yönergeler için bkz. [dosya paylaşma oluşturma](storage-how-to-create-file-share.md) .
 
 ## <a name="transfer-data-into-azure-files"></a>Verileri Azure dosyaları 'na aktarma
-Şirket içinde depolanan mevcut dosya paylaşımlarını yeni Azure dosya paylaşımınıza geçirmek isteyebilirsiniz. Bu bölümde, [planlama kılavuzunda](storage-files-planning.md#data-transfer-method) ayrıntılı olarak açıklanan çeşitli popüler yöntemler aracılığıyla verileri bir Azure dosya paylaşımında nasıl taşıyacağınız gösterilmektedir.
+Şirket içinde depolanan mevcut dosya paylaşımlarını yeni Azure dosya paylaşımınıza geçirmek isteyebilirsiniz. Bu bölümde, [planlama kılavuzunda](storage-files-planning.md#migration) ayrıntılı olarak açıklanan çeşitli popüler yöntemler aracılığıyla verileri bir Azure dosya paylaşımında nasıl taşıyacağınız gösterilmektedir.
 
 ### <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
 
 Azure Dosya Eşitleme, eşitleme mekanizması uzun vadeli kullanım için istenmese bile, verileri bir Azure dosya paylaşımında geçirmek için kullanılabilir. Azure dosya paylaşımında veri aktarmak için Azure Dosya Eşitleme kullanma hakkında daha fazla bilgi, [Azure dosya eşitleme dağıtımı planlama](storage-sync-files-planning.md) ve [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md)konusunda daha fazla bilgi bulunabilir.
 
-### <a name="azure-importexport"></a>Azure İçeri/Dışarı Aktarma
+### <a name="azure-importexport"></a>Azure Içeri/dışarı aktarma
 Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinin bir Azure veri merkezine göndererek büyük miktarlardaki verileri Azure dosya paylaşımında güvenli bir şekilde aktarmanıza olanak tanır. Hizmete daha ayrıntılı bir genel bakış için bkz. [Azure depolama 'ya veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 > [!Note]  
@@ -65,7 +65,7 @@ Aşağıdaki adımlar, verileri şirket içi bir konumdan Azure dosya paylaşım
 
     Depolama hesabı ile birden çok paylaşım belirtilebilir. Daha fazla bilgi için bkz. [veri kümesini HAZıRLAMA CSV dosyası](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-5. Sürücü kümesi CSV dosyasını oluşturun. Sürücü kümesi CSV dosyası, şirket içi dışarı aktarma aracısının kullanabildiği diskleri listeler. Örneğin, aşağıdaki sürücü, `X:`, `Y:` ve `Z:` sürücüleri şirket içi dışarı aktarma işinde kullanılacak CSV dosyası listelerini ayarlar:
+5. Sürücü kümesi CSV dosyasını oluşturun. Sürücü kümesi CSV dosyası, şirket içi dışarı aktarma aracısının kullanabildiği diskleri listeler. Örneğin, aşağıdaki drivecsv dosyası, şirket içi dışarı aktarma işinde kullanılacak `X:`, `Y:`ve `Z:` sürücülerine ayarlanır:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -108,7 +108,7 @@ Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama
 AzCopy, en iyi performansla basit komutlar kullanarak Azure dosyalarını ve Azure Blob Storage 'a ve bu verileri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır. AzCopy kullanımı kolaydır:
 
 1. Windows veya [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy) [üzerinde AzCopy 'in en son sürümünü](https://aka.ms/downloadazcopy) indirin.
-2. Verileri Azure dosya paylaşımında taşımak için komut satırında `azcopy` kullanın. Windows üzerindeki söz dizimi aşağıdaki gibidir: 
+2. Verileri Azure dosya paylaşımında taşımak için komut satırındaki `azcopy` kullanın. Windows üzerindeki söz dizimi aşağıdaki gibidir: 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S
@@ -129,7 +129,7 @@ AzCopy, en iyi performansla basit komutlar kullanarak Azure dosyalarını ve Azu
 > Azure dosya paylaşımının bağlanması için, parola olarak depolama hesabı anahtarının kullanılması gerekir, bu nedenle yalnızca güvenilen ortamlarda bağlama yapmanız önerilir. 
 
 ### <a name="windows"></a>Windows
-PowerShell, birden çok bilgisayarda Mount komutunu çalıştırmak için kullanılabilir. Aşağıdaki örnekte, `$computers` el ile doldurulur, ancak otomatik olarak bağlanacak bilgisayarların listesini oluşturabilirsiniz. Örneğin, bu değişkeni Active Directory sonuçlarla doldurabilirsiniz.
+PowerShell, birden çok bilgisayarda Mount komutunu çalıştırmak için kullanılabilir. Aşağıdaki örnekte `$computers` el ile doldurulur, ancak otomatik olarak bağlanacak bilgisayarların listesini oluşturabilirsiniz. Örneğin, bu değişkeni Active Directory sonuçlarla doldurabilirsiniz.
 
 ```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
@@ -137,7 +137,7 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ```
 
 ### <a name="linux"></a>Linux
-SSH ile Birleşik basit bir bash betiği aşağıdaki örnekte aynı sonucu verebilir. @No__t-0 değişkeni, Kullanıcı tarafından doldurulmuş gibi benzer şekilde kalır:
+SSH ile Birleşik basit bir bash betiği aşağıdaki örnekte aynı sonucu verebilir. `$computer` değişkeni, Kullanıcı tarafından doldurulmuş gibi benzer şekilde kalır:
 
 ```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")

@@ -4,12 +4,12 @@ description: Azure Backup performans sorunlarının nedenini tanılamanıza yard
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198635"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603142"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
@@ -44,7 +44,7 @@ Ayrıca, yaygın yapılandırma sorunlarından biriyle karşılaşmadığınızd
 
 Yedeklenen bilgisayardaki performans sorunları gecikmelere neden olabilir. Örneğin, bilgisayarın disk okuma veya diske yazma veya ağ üzerinden veri göndermek için kullanılabilir bant genişliği gibi performans sorunlarına neden olabilir.
 
-Windows, bu darboğazları algılamak için [Performans İzleyicisi](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (PerfMon) adlı yerleşik bir araç sağlar.
+Windows, bu performans sorunlarını algılamak için [Performans İzleyicisi](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) adlı yerleşik bir araç sağlar.
 
 En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabilecek bazı performans sayaçları ve aralıkları aşağıda verilmiştir.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 481dbff90ee5368e1581502e612cb5d1993ac89e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200735"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603369"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Güvenlik Merkezi ve Azure Sanal Makineler
 [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Aboneliklerinizde, tümleşik güvenlik izleme ve ilke yönetimi sağlar; normal koşullarda gözden kaçabilecek tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş ekosistemiyle çalışır.
@@ -47,7 +47,7 @@ Azure Güvenlik Merkezi’ni kullanmaya başlamak için aşağıdakileri bilmeni
 
 * Bir Microsoft Azure aboneliğiniz olmalıdır. Güvenlik Merkezi’nin ücretsiz ve standart katmanları hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi Fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 * Güvenlik Merkezi için benimsediğiniz seçeneği planlayın ve planlama ile çalışma konuları hakkında daha fazla bilgi için [Azure Güvenlik Merkezi planlama ve işlemler kılavuzuna](security-center-planning-and-operations-guide.md) bakın.
-* İşletim sistemi desteklenebilirliği ile ilgili daha fazla bilgi için bkz. [Azure Güvenlik Merkezi hakkında sık sorulan sorular (SSS)](security-center-faq.md). 
+* Desteklenen işletim sistemleri hakkında bilgi için bkz. [Azure Güvenlik Merkezi sık sorulan sorular (SSS)](faq-vms.md). 
 
 ## <a name="set-security-policy"></a>Güvenlik ilkesi ayarlama
 Azure Güvenlik Merkezi’nin yapılandırdığınız güvenlik ilkesini temel alarak oluşturulan öneriler ve uyarılar sağlamak üzere gereken bilgileri toplayabilmesi için veri toplama özelliği etkinleştirilmelidir. Aşağıdaki çizimde **Veri toplama** özelliği **Açık** olarak görülmektedir.
@@ -70,8 +70,8 @@ Bir güvenlik ilkesi tanımladıktan sonra, Güvenlik Merkezi olası güvenlik a
 | İşletim sistemi güvenlik açıklarını düzeltin |İşletim sistemi yapılandırmalarınızı önerilen yapılandırma kurallarına uygun hale getirmenizi önerir; örneğin, parolaların kaydedilmesine izin verme. |
 | Sistem güncelleştirmelerini uygulayın |VM’lerinize eksik sistem güvenliği güncelleştirmelerini ve kritik güncelleştirmeleri dağıtmanızı önerir. |
 | Sistem güncelleştirmelerinden sonra yeniden başlatın |Sistem güncelleştirmelerini uygulama işlemini tamamlamak için VM’yi yeniden başlatmanızı önerir. |
-| Endpoint Protection yükle |VM’lere (yalnızca Windows VM’leri) kötü amaçlı yazılımdan koruma programları sağlamanızı önerir. |
-| VM Aracısını etkinleştirme |Hangi VM’lerin VM Aracısı gerektirdiğini görmenizi sağlar. Düzeltme eki tarama, temel tarama ve kötü amaçlı yazılımdan koruma programları sağlamak üzere VM’lere VM Aracısı yüklenmelidir. VM Aracısı, Azure Marketi’nden dağıtılan VM’ler için varsayılan olarak yüklüdür. [VM Aracısı ve Uzantılar – 2. Kısım](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) makalesinde VM Aracısının nasıl yüklendiğine ilişkin bilgiler verilmektedir. |
+| Endpoint Protection yükleyin |VM’lere (yalnızca Windows VM’leri) kötü amaçlı yazılımdan koruma programları sağlamanızı önerir. |
+| VM Aracısını etkinleştirin |Hangi VM’lerin VM Aracısı gerektirdiğini görmenizi sağlar. Düzeltme eki tarama, temel tarama ve kötü amaçlı yazılımdan koruma programları sağlamak üzere VM’lere VM Aracısı yüklenmelidir. VM Aracısı, Azure Marketi’nden dağıtılan VM’ler için varsayılan olarak yüklüdür. [VM Aracısı ve Uzantılar – 2. Kısım](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) makalesinde VM Aracısının nasıl yüklendiğine ilişkin bilgiler verilmektedir. |
 | Disk şifrelemesi uygulayın |Azure Disk Şifrelemesi kullanarak VM’nizi şifrelemenizi önerir (Windows ve Linux VM’leri). Şifreleme hem işletim sistemi hem de VM’nizin üzerindeki veri birimleri için önerilir. |
 | Güvenlik açığı değerlendirmesi yüklü değil |Sanal makinenize bir güvenlik açığı değerlendirme çözümü yüklemenizi önerir. |
 | Güvenlik açıklarını düzeltin |VM’nize yüklü güvenlik açığı değerlendirme çözümü tarafından algılanan sistem ve uygulama güvenlik açıklarını görmenizi sağlar. |
@@ -98,5 +98,4 @@ Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
 * [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md) -- Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
-
+* [SSS-Sanal makineler](faq-vms.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.

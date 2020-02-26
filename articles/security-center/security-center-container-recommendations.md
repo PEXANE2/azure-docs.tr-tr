@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202403"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604272"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Azure Güvenlik Merkezi kapsayıcısı önerilerini anlama
 
@@ -44,20 +44,18 @@ IaaS Linux makinelerinde barındırılan mevcut kapsayıcıları ve Docker yapı
 
 | Öneri | Açıklama | Düzeltme |
 | --- | --- | --- |
-|Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin |En iyi yapılandırma uygulamalarına göre kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin.| Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltmek için:<br>1. Başarısız kuralların listesini gözden geçirin.<br>2. Her kuralı belirtilen yönergelere göre düzeltir.|
+|Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin |En iyi yapılandırma uygulamalarına göre kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin.| Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltmek için:<br>1. başarısız kuralların listesini gözden geçirin.<br>2. belirtilen yönergelere göre her bir kuralı onarın.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-* [Kimlik ve erişim Azure Güvenlik Merkezi'nde izleme](security-center-identity-access.md)
+* [Azure Güvenlik Merkezi'nde kimliği ve erişimi izleme](security-center-identity-access.md)
 * [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
-* [Azure Güvenlik Merkezi'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
+* [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
 * [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 * [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md) -- Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
-

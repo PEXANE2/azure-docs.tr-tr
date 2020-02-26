@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 11f5bd7f01e142273509ae59ddc19a2557464bde
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152321"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598621"
 ---
 # <a name="export-data-module"></a>Veri modülünü dışarı aktarma
 
 Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
-İşlem hatlarınızdan sonuçları, ara verileri ve çalışma verilerini Azure Machine Learning dışında bulut depolama hedeflerine kaydetmek için bu modülü kullanın. 
+İşlem hatlarınızdan bulut depolama hedeflerine sonuçları, ara verileri ve çalışma verilerini kaydetmek için bu modülü kullanın. 
 
 Bu modül verilerinizi aşağıdaki bulut veri hizmetlerine aktarmayı destekler:
 
@@ -29,7 +29,7 @@ Bu modül verilerinizi aşağıdaki bulut veri hizmetlerine aktarmayı destekler
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Storage hizmetlerindeki verilere erişme](../how-to-access-data.md).
+Verilerinizi dışarı aktarmadan önce, önce Azure Machine Learning çalışma alanınıza bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Storage hizmetlerindeki verilere erişme](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Dışarı aktarma verilerini yapılandırma
 
@@ -41,7 +41,13 @@ Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma 
 
 1. **Veri deposu**için, açılan listeden var olan bir veri deposunu seçin. Yeni bir veri deposu da oluşturabilirsiniz. [Azure depolama hizmetleri 'Nde erişim verilerini](../how-to-access-data.md)ziyaret ederek nasıl olduğunu denetleyin.
 
-1. Verilerin yazılacağı veri deposundaki yolu tanımlayın. 
+1. Onay kutusu, **çıktıyı yeniden oluştur**, çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
+
+    Bu, varsayılan olarak seçili değildir, bu da modülün aynı parametrelerle daha önce yürütülmesi durumunda sistemin, çalışma süresini azaltmak için son çalıştırışınızda çıktıyı yeniden kullanacağı anlamına gelir. 
+
+    Seçilirse, sistem çıktıyı yeniden oluşturmak için modülü yeniden yürütür.
+
+1. Verilerin bulunduğu veri deposundaki yolu tanımlayın. Yol, göreli bir yoldur. Boş yollara veya URL yollarına izin verilmez.
 
 
 1. **Dosya biçimi**için verilerin depolanacağı biçimi seçin.

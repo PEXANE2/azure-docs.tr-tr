@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/10/2019
+ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c6a230f6abeab45c56aab2db40b8b1defcc06d90
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099671"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598706"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -141,7 +141,7 @@ Bir IBM DB2 yapılandırması dağıtmak için aşağıdaki adımları izlemeniz
 
 Dağıtımı yürütmeden önce planlama işlemini doldurun. Planlama, Azure 'da HADR ile bir DB2 yapılandırmasına dağıtım temelini oluşturur. IDB db2 LUW planlamasının parçası olması gereken anahtar öğeleri (SAP ortamının veritabanı bölümü) aşağıdaki tabloda listelenmiştir:
 
-| Konu | Kısa açıklama |
+| Konu başlığı | Kısa açıklama |
 | --- | --- |
 | Azure kaynak gruplarını tanımlama | VM, VNet, Azure Load Balancer ve diğer kaynakları dağıttığınız kaynak grupları. Mevcut veya yeni olabilir. |
 | Sanal ağ/alt ağ tanımı | IBM DB2 ve Azure Load Balancer VM 'lerinin dağıtıldığı yer. Var olan veya yeni oluşturulmuş olabilir. |
@@ -370,7 +370,7 @@ Aşağıdaki öğelerin ön eki vardır:
 - **[1]** : yalnızca düğüm 1 için geçerlidir 
 - **[2]** : yalnızca düğüm 2 ' de geçerlidir
 
-**[A]** pacemaker yapılandırması için Önkoşullar:
+**[A]** pacemaker yapılandırması için Önkoşul:
 1. Db2stop ile Kullanıcı DB2\<SID > her iki veritabanı sunucusunu da kapatın.
 1. DB2\<SID > kullanıcısının Kabuk ortamını */bin/ksh*olarak değiştirin:
 <pre><code># Install korn shell:
@@ -434,6 +434,11 @@ Daemon durumu: Corosync: etkin/devre dışı pacemaker: etkin/devre dışı pcsd
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer'ı yapılandırma
 Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
+
+> [!NOTE]
+> Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
+
+
 
 1. Ön uç IP havuzu oluşturun:
 

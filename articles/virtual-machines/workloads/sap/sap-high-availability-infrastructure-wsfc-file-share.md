@@ -1,10 +1,10 @@
 ---
-title: SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanılarak SAP yüksek kullanılabilirlik için Azure altyapı hazırlığı | Microsoft Docs
+title: SAP yoks/SCS için Azure altyapısı WSFC & dosya paylaşımıyla | Microsoft Docs
 description: SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanılarak SAP yüksek kullanılabilirlik için Azure altyapı hazırlığı
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647552"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591549"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama
 
@@ -222,15 +222,15 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 | --- | --- | --- | --- |
 | İlk küme düğümü yoks/SCS kümesi | yoks-1 | 10.0.6.4 | yoks-as |
 | İkinci küme düğümü yoks/SCS kümesi | yoks-2 | 10.0.6.5 | yoks-as |
-| Küme ağ adı |yoks-CL | 10.0.6.6 | Yok |
-| SAP PR1 yoks küme ağı adı |PR1-yoks | 10.0.6.7 | Yok |
+| Küme ağ adı |yoks-CL | 10.0.6.6 | yok |
+| SAP PR1 yoks küme ağı adı |PR1-yoks | 10.0.6.7 | yok |
 
 
 **Tablo 1**: yoks/SCS kümesi
 
 | SAP \<SID > | SAP ASCS/SCS örnek numarası |
 | --- | --- |
-| PR1 | 00 |
+| PR1 | 0 |
 
 **Tablo 2**: SAP ascs/SCS örneği ayrıntıları
 
@@ -240,8 +240,8 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 | İlk küme düğümü | SOFS-1 | 10.0.6.10 | SOFS-as |
 | İkinci küme düğümü | SOFS-2 | 10.0.6.11 | SOFS-as |
 | Üçüncü küme düğümü | SOFS-3 | 10.0.6.12 | SOFS-as |
-| Küme ağ adı | SOFS-CL | 10.0.6.13 | Yok |
-| SAP genel ana bilgisayar adı | sapglobal | Tüm küme düğümlerinin IP 'lerini kullan | Yok |
+| Küme ağ adı | SOFS-CL | 10.0.6.13 | yok |
+| SAP genel ana bilgisayar adı | sapglobal | Tüm küme düğümlerinin IP 'lerini kullan | yok |
 
 **Tablo 3**: genişleme dosya sunucusu kümesi
 
@@ -332,7 +332,7 @@ _**Şekil 1**: yönetilen diskler içeren genişleme dosya sunucusu Kaynak Yöne
 3. **SOFS adı** kutusuna SAP Küresel Ana bilgisayar ağ adı, **sapglobalhost**yazın.
 4. **Paylaşma adı** kutusuna, **sapmnt**dosya paylaşma adını girin.
 
-### <a name="use-unmanaged-disks"></a>Yönetilmeyen diskler kullanma
+### <a name="use-unmanaged-disks"></a>Yönetilmeyen diskleri kullanma
 
 Depolama Alanları Doğrudan ve Azure yönetilmeyen disklerle Genişleme Dosya Sunucusu dağıtmaya yönelik Azure Resource Manager şablonu [GitHub][arm-sofs-s2d-non-managed-disks]' da kullanılabilir.
 
