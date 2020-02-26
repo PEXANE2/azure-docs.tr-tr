@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar. V3 Azure Backup Sunucusu nasıl yükleneceğini veya yükselteceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172231"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582815"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server 'daki yenilikler
 
@@ -18,7 +18,7 @@ MABS v3 'de aşağıdaki özellikler bulunur:
 
 ## <a name="volume-to-volume-migration"></a>Birim geçişi hacmi
 
-MABS v2 'de Modern Yedekleme Alanı (MB) ile, belirli iş yüklerini depolama özelliklerine göre belirli bir depolama alanına yedeklenecek şekilde yapılandırdığınız Iş yükü algılayan depolama duyurduk. Ancak, yapılandırmadan sonra, belirli veri kaynaklarının yedeklerini iyileştirilmiş kaynak kullanımı için başka bir depolama alanına taşımanız gerektiğini görebilirsiniz. MABS v3, yedeklemelerinizi geçirme ve bunları [üç adımda](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/)farklı bir birime depolanacak şekilde yapılandırma olanakları sağlar.
+MABS v2 'de Modern Yedekleme Alanı (MB) ile, belirli iş yüklerini depolama özelliklerine göre belirli bir depolama alanına yedeklenecek şekilde yapılandırdığınız Iş yükü algılayan depolama duyurduk. Ancak, yapılandırmadan sonra, belirli veri kaynaklarının yedeklerini iyileştirilmiş kaynak kullanımı için başka bir depolama alanına taşımanız gerektiğini görebilirsiniz. MABS v3, yedeklemelerinizi geçirme ve bunları [üç adımda](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)farklı bir birime depolanacak şekilde yapılandırma olanakları sağlar.
 
 ## <a name="prevent-unexpected-data-loss"></a>Beklenmeyen veri kaybını önleme
 

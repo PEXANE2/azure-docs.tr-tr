@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483236"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585637"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](https://docs.microsoft.comgraph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, döndürülen özellikleri denetlemek, özel sorgu parametreleri sağlamak ve `$filter` ve `$orderBy` sorgu parametrelerini kullanmak için `$select` kullanın.
+[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, döndürülen özellikleri denetlemek, özel sorgu parametreleri sağlamak ve `$filter` ve `$orderBy` sorgu parametrelerini kullanmak için `$select` kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

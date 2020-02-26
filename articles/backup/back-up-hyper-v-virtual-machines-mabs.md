@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444069"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586521"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -145,7 +145,7 @@ Dinamik geçiş korumasını ayarlamak için:
 
 3. MABSMachineName $ hesabını, VMM yönetim sunucusunda salt tanımlı bir yönetici hesabı olarak atayın.
 
-4. Tüm Hyper-V ana bilgisayar sunucularını `Set-DPMGlobalProperty` PowerShell cmdlet 'i ile tüm MABS sunucularına bağlayın. Cmdlet birden çok MABS sunucu adını kabul eder. Şu biçimi kullanın: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Daha fazla bilgi için bkz. [Set-DPMGlobalProperty](https://technet.microsoft.com/library/hh881752.aspx).
+4. Tüm Hyper-V ana bilgisayar sunucularını `Set-DPMGlobalProperty` PowerShell cmdlet 'i ile tüm MABS sunucularına bağlayın. Cmdlet birden çok MABS sunucu adını kabul eder. Şu biçimi kullanın: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Daha fazla bilgi için bkz. [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
 
 5. VMM bulutlarındaki Hyper-V konakları üzerinde çalışan tüm sanal makineler VMM 'de bulunduktan sonra bir koruma grubu ayarlayın ve korumak istediğiniz sanal makineleri ekleyin. Otomatik tutarlılık denetimleri, sanal makine Mobility senaryoları altında koruma için koruma grubu düzeyinde etkinleştirilmelidir.
 

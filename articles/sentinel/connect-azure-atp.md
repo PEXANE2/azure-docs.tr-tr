@@ -3,7 +3,7 @@ title: Azure ATP verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Azure ATP verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6f099a0eb6501b6576c4560e0b397d3105bb15f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610718"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588595"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verileri Azure Gelişmiş tehdit koruması (ATP) ile bağlama
 
@@ -29,7 +29,7 @@ ms.locfileid: "75610718"
 
 [Azure Gelişmiş tehdit koruması](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) 'ndan günlükleri tek bir tıklama Ile Azure Sentinel 'e aktarabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip Kullanıcı
 - Azure ATP 'nin bir önizleme müşterisi olmanız ve Azure ATP ile Microsoft Cloud App Security arasında tümleştirmeyi etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure gelişmiş koruma tümleştirmesi](https://docs.microsoft.com/cloud-app-security/aatp-integration).

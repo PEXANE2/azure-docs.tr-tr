@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904827"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587626"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI'sı
 
@@ -18,7 +18,7 @@ Azure Service Fabric komut satırı arabirimi (CLI) Service Fabric varlıklarıy
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeden önce ortamınızda Python ve pip uygulamalarının yüklü olduğundan emin olun. Daha fazla bilgi için [pip hızlı başlangıç belgelerine](https://pip.pypa.io/en/latest/quickstart/) ve resmi [Python yükleme belgelerine](https://wiki.python.org/moin/BeginnersGuide/Download) bakın.
 
@@ -41,7 +41,7 @@ Service Fabric CLI, Service Fabric SDK'sının en son çalışma zamanı sürüm
 
 İsteğe bağlı olarak `pip install` komutuna `==<version>` ekleyerek yüklenecek hedef CLI sürümünü belirtebilirsiniz. Örneğin 1.1.0 sürümü için söz dizimi şu şekilde olacaktır:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -67,14 +67,14 @@ Windows 10, Windows Server 2016 ve Windows Server 2012 R2 için standart resmi y
 
 Şimdi yeni bir komut penceresi açıp hem Python hem de pip sürümünü öğrenebilirsiniz.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Ardından, Azure Service Fabric CLı (sfctl) yüklemek ve CLı yardım sayfasını görüntülemek için aşağıdaki komutu çalıştırın:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -103,7 +103,7 @@ Aşağıdakine benzer bir komut bulunamadı hatası alırsanız:
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 Linux için Windows alt sisteminin yüklemesi hatalı klasör izinleri nedeniyle başarısız olursa yükseltilmiş izinlerle tekrar denemeniz gerekebilir:
@@ -126,7 +126,7 @@ sudo pip3 install sfctl
 Yüklemeyi test etmek için **Ubuntu ve Linux Için Windows alt sistemi** bölümünde bahsedilen adımlara başvurabilirsiniz
 
 <a name = "cli-mac"></a>
-### <a name="macos"></a>MacOS
+### <a name="macos"></a>macOS
 
 MacOS için [HomeBrew paket yöneticisini](https://brew.sh) kullanmanızı öneririz. HomeBrew yüklü değilse aşağıdaki komutu çalıştırarak yükleyin:
 
@@ -148,11 +148,11 @@ Komutlarda her zaman `sfctl` ön eki bulunur. Kullanabileceğiniz tüm komutlarl
 
 Komutlar, komut hedefinin fiilin veya eylemin öncesinde olduğu yinelenebilir bir yapıya sahiptir.
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
-Bu örnekte, `<action>` için `<object>` hedeftir.
+Bu örnekte, `<object>` için `<action>` hedeftir.
 
 ## <a name="select-a-cluster"></a>Küme seçme
 
@@ -161,7 +161,7 @@ Herhangi bir işlem gerçekleştirmeden önce bağlantı kurulacak bir küme se�
 > [!WARNING]
 > Üretim ortamında güvenli olmayan Service Fabric kümelerini kullanmayın.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -169,7 +169,7 @@ Küme uç noktasının `http` veya `https` ön eki olmalıdır. HTTP ağ geçidi
 
 Güvenliği bir sertifika ile sağlanan kümeler için PEM kodlu bir sertifika belirtebilirsiniz. Sertifika, tek bir dosya veya sertifika ve anahtar çifti olarak belirtilebilir. CA imzalı olmayan bir otomatik olarak imzalanan sertifika ise, CA doğrulamasını atlamak için `--no-verify` seçeneğini geçebilirsiniz.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -181,7 +181,7 @@ Küme bağlantı bilgileri birden çok Service Fabric CLI'sı oturumu arasında 
 
 Örneğin, Service Fabric kümesinin sistem durumunu almak için aşağıdaki komutu kullanın:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -218,13 +218,13 @@ Aşağıda bazı öneriler ve sık karşılaşılan sorunları çözmek için ip
 
 Service Fabric CLI’sı de PEM (.pem uzantısı) dosyaları gibi istemci tarafı sertifikalarını destekler. Windows'dan PFX dosyalarını kullanıyorsanız, söz konusu sertifikaları PEM biçimine dönüştürmelisiniz. PFX dosyasını PEM dosyasına dönüştürmek için aşağıdaki komutu kullanın:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Benzer şekilde, PEM dosyasından PFX dosyasına dönüştürmek için de aşağıdaki komutu kullanabilirsiniz (burada parola sağlanmaz):
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -246,13 +246,13 @@ Hata ayıkladığınız veya sorun bildirdiğiniz sırada ayrıntılı günlükl
 
 Belirli bir komut veya komut grubuyla ilgili yardım almak için `-h` bayrağını kullanın.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Bir örnek daha:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -260,7 +260,7 @@ sfctl application create -h
 
 Service Fabric CLI’yı güncelleştirmek için aşağıdaki komutları çalıştırın (özgün yüklemenizde belirlediğiniz seçeneklere bağlı olarak `pip` öğesini `pip3` olarak değiştirin):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

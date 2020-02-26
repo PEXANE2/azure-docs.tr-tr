@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Microsoft Azure Backup Recovery Services (MARS) kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173181"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586470"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -28,7 +28,7 @@ Korumalı sunucular veya yedekleme yönetim sunucuları gibi bağımlılıkları
 
   ![Korumalı sunucu hatasını silin.](./media/backup-azure-delete-vault/error-message.jpg)
 
-- Yedekleme öğeleri geçici olarak silinmiş durumdaysa uyarı iletisi görünür ve kalıcı olarak silinene kadar beklemeniz gerekir. Daha fazla bilgi için [bu makaleye](https://aka.ms/SoftDeleteCloudWorkloads) bakın.
+- Yedekleme öğeleri geçici olarak silinmiş durumdaysa uyarı iletisi görünür ve kalıcı olarak silinene kadar beklemeniz gerekir. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud) bakın.
 
    ![Kasa hatasını silin.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
@@ -134,7 +134,7 @@ MABS yönetim konsolundan yedekleme öğelerini silmek için kullanabileceğiniz
 Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları uygulayın:
 
 1. DPM Yönetici Konsolu açın ve ardından Gezinti çubuğunda **koruma** ' yı seçin.
-2. Görüntü bölmesinde, kaldırmak istediğiniz koruma grubu üyesini seçin. **Grup üyelerinin korumasını durdur** seçeneğini belirlemek için sağ tıklayın.
+2. Görüntü bölmesinde, çıkarmak istediğiniz koruma grubu üyesini seçin. **Grup üyelerinin korumasını durdur** seçeneğini belirlemek için sağ tıklayın.
 3. **Korumayı Durdur** iletişim kutusunda **korunan verileri Sil**' i seçin ve ardından **depolamayı çevrimiçi Sil** onay kutusunu seçin. Ardından, **Korumayı Durdur**' u seçin.
 
     ![Korumayı Durdur bölmesinden korumalı verileri Sil ' i seçin.](./media/backup-azure-delete-vault/delete-storage-online.png)

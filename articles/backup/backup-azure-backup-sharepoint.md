@@ -4,12 +4,12 @@ description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sun
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173331"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586487"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -19,7 +19,7 @@ System Center Data Protection Manager (DPM) kullanarak Microsoft Azure için bir
 
 DPM için Azure Backup aşağıdaki senaryoları destekler:
 
-| İş yükü | Sürüm | SharePoint dağıtımı | DPM Dağıtım türü | DPM-System Center 2012 R2 | Koruma ve kurtarma |
+| İş yükü | Sürüm | SharePoint dağıtımı | DPM dağıtım türü | DPM-System Center 2012 R2 | Koruma ve kurtarma |
 | --- | --- | --- | --- | --- | --- |
 | SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |Fiziksel sunucu veya Hyper-V/VMware sanal makinesi olarak dağıtılan SharePoint <br> -------------- <br> SQL AlwaysOn |Fiziksel sunucu veya şirket içi Hyper-V sanal makinesi |Güncelleştirme paketi 5 ' ten Azure 'a yedeklemeyi destekler |SharePoint grubu kurtarma seçeneklerini koruyun: kurtarma grubu, veritabanı ve disk kurtarma noktalarından dosya veya liste öğesi.  Azure kurtarma noktalarından grup ve veritabanı kurtarma. |
 
@@ -33,7 +33,7 @@ Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullan
 
 ### <a name="dpm-agent"></a>DPM Aracısı
 
-DPM aracısının, SharePoint çalıştıran sunucuda, SQL Server çalıştıran sunucular ve SharePoint grubunun parçası olan diğer tüm sunucular üzerinde yüklü olması gerekir. Koruma aracısının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [Kurulum koruma Aracısı](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Tek istisna, aracıyı yalnızca tek bir Web ön ucu (WFE) sunucusuna yüklemektir. DPM 'nin bir WFE sunucusunda aracısına yalnızca koruma için giriş noktası olarak sahip olması gerekir.
+DPM aracısının, SharePoint çalıştıran sunucuda, SQL Server çalıştıran sunucular ve SharePoint grubunun parçası olan diğer tüm sunucular üzerinde yüklü olması gerekir. Koruma aracısının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [Kurulum koruma Aracısı](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Tek istisna, aracıyı yalnızca tek bir Web ön ucu (WFE) sunucusuna yüklemektir. DPM 'nin bir WFE sunucusunda aracısına yalnızca koruma için giriş noktası olarak sahip olması gerekir.
 
 ### <a name="sharepoint-farm"></a>SharePoint grubu
 
@@ -102,7 +102,7 @@ Daha önce açıklandığı gibi DPM 'yi ve SharePoint grubunu yapılandırdıkt
     ![Veri koruma yöntemini seçin](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > Disk koruma yöntemi, kısa kurtarma süresi hedeflerini karşılamasına yardımcı olur. Azure, bantlarla karşılaştırıldığında ekonomik ve uzun süreli bir koruma hedefidir. Daha fazla bilgi için bkz. [bant altyapınızı değiştirmek için Azure Backup kullanma](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)
+   > Disk koruma yöntemi, kısa kurtarma süresi hedeflerini karşılamasına yardımcı olur. Azure, bantlarla karşılaştırıldığında ekonomik ve uzun süreli bir koruma hedefidir. Daha fazla bilgi için bkz. [bant altyapınızı değiştirmek için Azure Backup kullanma](./backup-azure-backup-cloud-as-tape.md)
    >
    >
 5. **Kısa dönem hedeflerini belirtin** sayfasında, tercih ettiğiniz **bekletme aralığını** seçin ve yedeklemelerin ne zaman gerçekleşmesini istediğinizi belirleyin.
@@ -243,5 +243,5 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * SharePoint 'in DPM koruması hakkında daha fazla bilgi edinin-bkz. [video serisi-SharePoint 'ın DPM koruması](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-* [System Center 2012-Data Protection Manager Için sürüm notlarını](https://technet.microsoft.com/library/jj860415.aspx) gözden geçirin
-* [System Center 2012 SP1 'de Data Protection Manager Için sürüm notlarını](https://technet.microsoft.com/library/jj860394.aspx) gözden geçirin
+* [System Center 2012-Data Protection Manager Için sürüm notlarını](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN) gözden geçirin
+* [System Center 2012 SP1 'de Data Protection Manager Için sürüm notlarını](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860394(v=sc.12)?redirectedfrom=MSDN) gözden geçirin

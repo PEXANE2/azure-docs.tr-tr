@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978722"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588796"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla Azure Cosmos DB SQL (çekirdek) API kaynaklarını yönetme
 
-Bu makalede, Azure Cosmos DB hesaplarınızın, veritabanlarının ve kapsayıcılarınızın yönetimini otomatik hale getirmeye yardımcı olmak için Azure Resource Manager şablonlarını nasıl kullanacağınızı öğreneceksiniz.
+Bu makalede Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmeye yardımcı olmak için Azure Resource Manager şablonlarının nasıl kullanılacağını öğreneceksiniz.
 
 Bu makalede yalnızca SQL API hesapları için Azure Resource Manager şablon örnekleri gösterilmektedir. [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)ve [tablo](manage-table-with-resource-manager.md) API 'leri için şablon örnekleri de bulabilirsiniz.
 
@@ -39,7 +39,7 @@ Azure Cosmos DB kaynaklarını oluşturmak için aşağıdaki örnek şablonu ko
 > * Hesap adları, tümü küçük harfle 44 karakter ile sınırlıdır.
 > * Verimlilik değerlerini değiştirmek için, şablonu güncelleştirilmiş RU/s ile yeniden gönderin.
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > Büyük bölüm anahtarı olan bir kapsayıcı oluşturmak için, önceki şablonu `partitionKey` nesnesine `"version":2` özelliğini içerecek şekilde değiştirin.
@@ -136,7 +136,7 @@ Aşağıdaki örnek şablonu kopyalayın ve [PowerShell](#deploy-with-powershell
 * İsteğe bağlı olarak, [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) ' ni ziyaret edebilir ve şablonu Azure Portal dağıtabilirsiniz.
 * Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
 ### <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 
@@ -200,7 +200,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki ek kaynakları da inceleyebilirsiniz:
+Bazı ek kaynaklar aşağıda verilmiştir:
 
 * [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
 * [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)

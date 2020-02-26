@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f651beb181430f65d0b4c86f285e74958f8366eb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077561"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588892"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Değişiklik akışı işlemcisi kitaplığından .NET v3 SDK Azure Cosmos DB geçirin
 
@@ -21,23 +21,23 @@ Bu makalede, [değişiklik akışı işlemci kitaplığını](https://github.com
 
 .NET v3 SDK 'sının birkaç önemli değişikliği vardır ve uygulamanızı geçirmeye yönelik temel adımlar aşağıda verilmiştir:
 
-1. İzlenen ve kira kapsayıcıları `Container` için örnekleribaşvurularadönüştürün.`DocumentCollectionInfo`
-1. `WithLeaseConfiguration` `WithPollInterval` `WithStartTime` `WithMaxItems` Kullanan özelleştirmeler, Aralık için ve aralıklar için, [Başlangıç saati için](how-to-configure-change-feed-start-time.md)ve en fazla öğe sayısını tanımlamak için güncelleştirilmeleri gerekir.`WithProcessorOptions`
-1. Üzerinde yapılandırılan değerle `GetChangeFeedProcessorBuilder` `string.Empty` eşleşecek şekilde ' iayarlayınveyabaşkabirşekildekullanın.`ChangeFeedProcessorOptions.LeasePrefix` `processorName`
-1. Değişiklikler artık bir `IReadOnlyList<Document>`olarak teslim değildir, bunun yerine `IReadOnlyCollection<T>` `T` tanımlamanız gereken bir tür, artık temel öğe sınıfı yoktur.
+1. `DocumentCollectionInfo` örnekleri izlenen ve kira kapsayıcıları için `Container` başvurularına dönüştürür.
+1. `WithProcessorOptions` kullanan özelleştirmeler, `WithLeaseConfiguration` ve `WithPollInterval` aralıklar için, [Başlangıç saati](how-to-configure-change-feed-start-time.md)`WithStartTime` `WithMaxItems` ve en fazla öğe sayısını tanımlamak için güncelleştirilmeleri gerekir.
+1. `GetChangeFeedProcessorBuilder` `processorName` `ChangeFeedProcessorOptions.LeasePrefix`yapılandırılan değerle eşleşecek şekilde ayarlayın veya aksi halde `string.Empty` kullanın.
+1. Değişiklikler artık `IReadOnlyList<Document>`olarak teslim değildir, bunun yerine, `T` tanımlamanız gereken bir tür olduğu `IReadOnlyCollection<T>`, artık temel öğe sınıfı olmadığından, bu bir öğedir.
 1. Değişiklikleri işlemek için artık bir uygulamaya ihtiyacınız yoktur, bunun yerine [bir temsilci tanımlamanız](change-feed-processor.md#implementing-the-change-feed-processor)gerekir. Temsilci bir statik Işlev olabilir veya yürütmeler genelinde durum korumanız gerekiyorsa, kendi sınıfınızı oluşturabilir ve temsilci olarak bir örnek yöntemi geçirebilirsiniz.
 
 Örneğin, değişiklik akışı işlemcisini derlemek için özgün kod aşağıdaki gibi görünür:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorLibrary)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorLibrary":::
 
 Geçirilen kod şöyle görünür:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorMigrated":::
 
 Ve temsilci bir statik yöntem olabilir:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="Delegate":::
 
 ## <a name="state-and-lease-container"></a>Eyalet ve Kiralama kapsayıcısı
 

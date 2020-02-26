@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024662"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584550"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -39,8 +39,8 @@ Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırm
 
 | | Tüketim planı | Premium planı | Adanmış plan |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | Genel Kullanım | Genel Kullanım | Genel Kullanım |
-| Linux | Genel Kullanım | Genel Kullanım | Genel Kullanım |
+| Windows | GA | GA | GA |
+| Linux | GA | GA | GA |
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
@@ -158,7 +158,7 @@ Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulamas
 
 Farklı tetikleyiciler Ayrıca aşağıda belgelenen farklı ölçekleme sınırlarına de sahip olabilir:
 
-* [Olay Hub’ı](functions-bindings-event-hubs.md#trigger---scaling)
+* [Olay Hub’ı](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ölçeklenebilir uygulamalar için en iyi uygulamalar ve desenler
 
@@ -166,7 +166,7 @@ Konak yapılandırması, çalışma zamanı kaplama ve kaynak verimliliği dahil
 
 Python ve Node. js ' de ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu-ölçeklendirme ve eşzamanlılık](functions-reference-python.md#scaling-and-concurrency) ve [Azure işlevleri Node. js Geliştirici Kılavuzu-ölçekleme ve eşzamanlılık](functions-reference-node.md#scaling-and-concurrency).
 
-### <a name="billing-model"></a>Faturalandırma modeli
+### <a name="billing-model"></a>Faturalama modeli
 
 Farklı planların [faturalandırılması, Azure işlevleri fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/functions/)ayrıntılı olarak açıklanmıştır. Kullanım işlevi uygulama düzeyinde toplanır ve yalnızca işlev kodunun yürütüldüğü süreyi sayar. Faturalandırma için birimler aşağıda verilmiştir:
 

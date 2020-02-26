@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048180"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592111"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Izleyici müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -86,8 +86,8 @@ Application Insights CMK yapılandırması için 3 ve 6. adımlar için ek içer
 1. Abonelik beyaz listesi--bu erken erişim özelliği için gereklidir
 2. Azure Key Vault oluşturma ve anahtar depolama
 3. *Küme* kaynağı oluşturma
-4. Key Vault izin verin
-5. Azure Izleyici veri deposu (ADX kümesi) sağlama
+4. Azure Izleyici veri deposu (ADX kümesi) sağlama
+5. Key Vault izin verin
 6. Log Analytics çalışma alanları ilişkilendirmesi
 
 Yordam, şu anda Kullanıcı arabiriminde desteklenmez ve sağlama işlemi REST API aracılığıyla gerçekleştirilir.
@@ -135,7 +135,7 @@ Bu ayarlar CLı ve PowerShell aracılığıyla kullanılabilir:
 
 ### <a name="create-cluster-resource"></a>*Küme* kaynağı oluştur
 
-Bu kaynak, Key Vault ve çalışma alanlarınız arasında ara kimlik bağlantısı olarak kullanılır. Aboneliklerinizin beyaz listeye alınmasını doğruladıktan sonra, çalışma alanlarınızın bulunduğu bölgede bir Log Analytics *küme* kaynağı oluşturun. Application Insights ve Log Analytics ayrı küme kaynakları gerektirir. Küme kaynağının türü, "clusterType" özelliği ' LogAnalytics ' veya ' ApplicationInsights ' olarak ayarlanarak oluşturma sırasında tanımlanmıştır. Küme kaynak türü değiştirilemez.
+Bu kaynak, Key Vault ve çalışma alanlarınız arasında ara kimlik bağlantısı olarak kullanılır. Aboneliklerinizin beyaz listeye alınmasını doğruladıktan sonra, çalışma alanlarınızın bulunduğu bölgede bir Log Analytics *küme* kaynağı oluşturun. Application Insights ve Log Analytics ayrı küme kaynakları gerektirir. *Küme* kaynağının türü, "clustertype" özelliği ' loganalytics ' veya ' ApplicationInsights ' olarak ayarlanarak oluşturma sırasında tanımlanmıştır. Küme kaynak türü değiştirilemez.
 
 Application Insights CMK yapılandırması için bu adım için ek içeriğini izleyin.
 
@@ -156,61 +156,73 @@ Content-type: application/json
    }
 }
 ```
+Kimlik, oluşturma zamanında *küme* kaynağına atanır.
 "clusterType" değeri, Application Insights CMK için "ApplicationInsights".
 
 **Yanıt**
 
-Kimlik, oluşturma zamanında *küme* kaynağına atanır.
+202 kabul edildi. Bu, zaman uyumsuz işlemler için standart bir Kaynak Yöneticisi yanıttır.
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-"PrincipalId", *küme* kaynağı için yönetilen kimlik hizmeti tarafından oluşturulan bir GUID 'dir.
-
-> [!IMPORTANT]
-> Sonraki adımlarda gereksinim duyduğundan bu yana "küme kimliği" değerini kopyalayın ve saklayın.
-
-Herhangi bir nedenden dolayı *küme* kaynağını silmek için--örneğin, farklı bir ad veya clustertype ile oluşturun, bu API çağrısını kullanın:
+Herhangi bir nedenden dolayı *küme* kaynağını silmek isterseniz (örneğin, bunu farklı bir ad veya clustertype ile oluşturun), bu REST API kullanın:
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Izleyici veri deposu (ADX kümesi) sağlama
+
+Özelliğin erken erişim süresi boyunca, ADX kümesi, önceki adımlar tamamlandıktan sonra ürün ekibi tarafından el ile sağlanır. *Küme* kaynağı ayrıntılarını sağlamak için Microsoft ile sahip olduğunuz kanalı kullanın. JSON yanıtı GET REST API kullanılarak alınabilir:
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**Yanıt**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+"PrincipalId", *küme* kaynağı için yönetilen kimlik hizmeti tarafından oluşturulan bir GUID 'dir.
+
+> [!IMPORTANT]
+> Sonraki adımlarda gereksinim duyduğundan bu yana "küme kimliği" değerini kopyalayın ve saklayın.
+
+
 ### <a name="grant-key-vault-permissions"></a>Key Vault izinleri verme
 
-Key Vault güncelleştirin ve küme kaynağı için erişim ilkesi ekleyin. Key Vault izinler, daha sonra veri şifreleme için kullanılacak Azure Izleyici depolama alanının altına yayılır.
+> [!IMPORTANT]
+> Bu adım, Azure Izleyici veri deposu (ADX kümesi) sağlama işlemi yerine Microsoft kanalınızdan ürün grubundan onay aldıktan sonra taşınmalıdır. Key Vault erişim ilkesinin bu sağlamadan önce güncelleştirilmesi başarısız olabilir.
+
+Key Vault, *küme* kaynağınız için izin veren yeni bir erişim ilkesiyle güncelleştirin. Bu izinler, veri şifrelemesi için Azure Izleyici depolaması 'nın temelini oluşturulan tarafından kullanılır.
 Key Vault Azure portal açın ve bu ayarlarla yeni bir ilke oluşturmak için "erişim Ilkeleri" ve ardından "+ erişim Ilkesi Ekle" seçeneğine tıklayın:
 
 - Anahtar izinleri: ' Get ', ' Wrap Key ' ve ' Wrap Key ' izinlerini seçin.
-
-- Asıl öğe seçin: önceki adımın yanıtında bulunan "Clusterıd" değeri olan küme kimliğini girin.
+- Sorumlu seçin: önceki adımda verilen yanıtta döndürülen küme kimliği değerini girin.
 
 ![Key Vault izinleri verme](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 Key Vault, anahtarınızı korumak ve Azure Izleyici verilerinize erişmek için kurtarılabilir olarak yapılandırıldığını doğrulamak için *Get* izni gerekir.
 
-*Küme* kaynağı Azure Resource Manager yayılana kadar birkaç dakika sürer. Bu erişim Ilkesini *küme* kaynağı oluşturulduktan hemen sonra yapılandırırken geçici bir hata oluşabilir. Bu durumda, birkaç dakika sonra yeniden deneyin.
-
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Anahtar tanımlayıcı ayrıntıları ile küme kaynağını güncelleştirme
 
-Bu adım Key Vault sonraki önemli sürüm güncelleştirmelerini aşağıda uygular. Azure Izleyici depolamanın yeni anahtar sürümünü kullanmasına izin vermek için, *küme* kaynağını Key Vault *anahtar tanımlayıcı* ayrıntıları ile güncelleştirin. Anahtar tanımlayıcı ayrıntılarını almak için Azure Key Vault ' de anahtarınızın güncel sürümünü seçin.
+Bu adım Key Vault gelecekteki önemli sürüm güncelleştirmeleri için geçerlidir. Azure Izleyici depolamanın yeni anahtar sürümünü kullanmasına izin vermek için, *küme* kaynağını Key Vault *anahtar tanımlayıcı* ayrıntıları ile güncelleştirin. Anahtar tanımlayıcı ayrıntılarını almak için Azure Key Vault ' de anahtarınızın güncel sürümünü seçin.
 
 ![Key Vault izinleri verme](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 "KeyVaultProperties" Key Vault anahtar tanımlayıcısı ayrıntılarını içerir.
@@ -264,44 +276,6 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Izleyici veri deposu (ADX kümesi) sağlama
-
-Özelliğin erken erişim süresi boyunca, ADX kümesi, önceki adımlar tamamlandıktan sonra ürün ekibi tarafından el ile sağlanır. Aşağıdaki bilgileri sağlamak için Microsoft ile sahip olduğunuz kanalı kullanın:
-
-- Yukarıdaki adımların başarıyla tamamlandığını onaylayın.
-
-- Önceki adımdan gelen JSON yanıtı. Get API çağrısı kullanılarak herhangi bir zamanda alınabilir:
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **Yanıt**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>*Küme* kaynağıyla çalışma alanı ilişkilendirmesi
 
@@ -560,7 +534,7 @@ Kimlik, oluşturma zamanında *küme* kaynağına atanır.
 > [!IMPORTANT]
 > Sonraki adımlarda gereksinim duyduğundan bu yana "küme kimliği" değerini kopyalayın ve saklayın.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-updatehttpsdocsmicrosoftcomrestapiapplication-insightscomponentscreateorupdate-api"></a>Bileşenleri kullanarak bir bileşeni *küme* kaynağıyla ilişkilendirme [-API oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Bileşenleri kullanarak bir bileşeni *küme* kaynağıyla ilişkilendirme [-API oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

@@ -2,20 +2,20 @@
 title: Güvenlik ele almak için Azure Sentinel ile not defterlerini kullanma
 description: Bu makalede, Azure Sentinel arama özellikleri ile Not defterlerinin nasıl kullanılacağı açıklanır.
 services: sentinel
-author: rkarlin
-ms.author: rkarlin
+author: yelevin
+ms.author: yelevin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 44a37fb8d06040b0d872f15ab25bdd2c7ff685b8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563709"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581846"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
 
@@ -62,7 +62,7 @@ Azure Sentinel 'ten bir not defteri doğrudan çalıştırabilir veya tüm Azure
  
 1. Azure portal Azure **sentinel** > **tehdit yönetimi** > **Not defterleri**' ne giderek Azure Sentinel 'in sağladığı not defterlerini görebilirsiniz. 
 
-2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örneğin:
+2. Açıklamalarını, gerekli veri türlerini ve veri kaynaklarını okumak için ayrı ayrı not defterlerini seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![başlatma Not defteri](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -86,7 +86,7 @@ Bu yordam, sizin için Azure Sentinel not defterlerini içeren bir Azure Noteboo
 
    ![Not Defteri al](./media/notebooks/sentinel-create-project.png)
 
-4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örneğin:
+4. Yeni oluşturduğunuz projeyi açın ve not defterlerini görmek için **Not defterleri** klasörünü açın. Örnek:
 
    ![Depoyu içeri aktar](./media/notebooks/sentinel-open-notebook1.png)
 

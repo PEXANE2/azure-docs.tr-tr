@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873378"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587694"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB FROM yan tümcesi
 
@@ -19,7 +19,7 @@ Kaynak filtrelenmez veya sorgu daha sonra yansıtılmamışsa FROM (`FROM <from_
 
 FROM yan tümcesi sorgu başına aşağıdaki kuralları uygular:
 
-* Kapsayıcı gibi diğer adı, olabilir `SELECT f.id FROM Families AS f` ya da yalnızca `SELECT f.id FROM Families f`. Burada `f` `Families`diğer addır. , Tanımlayıcı [diğer adı](sql-query-aliasing.md) için isteğe bağlı bir anahtar sözcüktür.  
+* Kapsayıcı `SELECT f.id FROM Families AS f` veya yalnızca `SELECT f.id FROM Families f`gibi diğer ad olabilir. Burada `f` `Families`diğer addır. , Tanımlayıcı [diğer adı](sql-query-aliasing.md) için isteğe bağlı bir anahtar sözcüktür.  
 
 * Diğer ad eklendikten sonra özgün kaynak adı bağlanamaz. Örneğin, tanımlayıcı `Families` başka bir ad olduğu ve artık çözümlenemediği için `SELECT Families.id FROM Families f` sözdizimsel olarak geçersizdir.  
 
@@ -49,19 +49,19 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Bir veri kaynağı olan veya olmayan bir diğer ad belirtir. Diğer ad belirtilmezse, içinden gösterilen `<container_expression>` kuralları kullanarak:  
+  Bir veri kaynağı olan veya olmayan bir diğer ad belirtir. Diğer ad belirtilmemişse, aşağıdaki kurallar kullanılarak `<container_expression>` çıkarslacaktır:  
   
   -  İfade bir container_name ise container_name diğer ad olarak kullanılır.  
   
-  -  İfade ise `<container_expression>`, property_name sonra property_name diğer ad olarak kullanılır. İfade bir container_name ise container_name diğer ad olarak kullanılır.  
+  -  İfade `<container_expression>`, property_name daha sonra property_name bir diğer ad olarak kullanılır. İfade bir container_name ise container_name diğer ad olarak kullanılır.  
   
-- FARKLI `input_alias`  
+- `input_alias` olarak  
   
-  Belirten `input_alias` temel alınan kapsayıcı ifadesi tarafından döndürülen değerler kümesidir.  
+  `input_alias`, temel alınan kapsayıcı ifadesinin döndürdüğü bir değer kümesi olduğunu belirtir.  
  
-- `input_alias` GİRİŞ  
+- `input_alias`  
   
-  Belirten `input_alias` temel alınan kapsayıcı ifadesi tarafından döndürülen her dizinin tüm dizi öğeleri üzerinde yineleme tarafından alınan değerler kümesini temsil etmelidir. Bir dizi değil temel alınan kapsayıcı ifadesi tarafından döndürülen herhangi bir değer yoksayılır.  
+  `input_alias`, temel alınan kapsayıcı ifadesi tarafından döndürülen her bir dizinin tüm dizi öğelerinde yineleme yaparak elde edilen değer kümesini temsil etmelidir. Bir dizi değil temel alınan kapsayıcı ifadesi tarafından döndürülen herhangi bir değer yoksayılır.  
   
 - `<container_expression>`  
   
@@ -79,17 +79,17 @@ FROM <from_specification>
   
   Bu belgede sağlanan diğer ad tarafından tanımlanan diğer kaynaktan alınması gerektiğini belirtir.  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  Bu belge erişerek alınabilir belirtir `property_name` özelliği veya dizi_dizini dizi öğesi tarafından alınan tüm belgeler için belirtilen kapsayıcı ifade.  
+  `property_name` özelliğine erişerek belgenin alınması gerektiğini belirtir.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Bu belge erişerek alınabilir belirtir `property_name` özelliği veya dizi_dizini dizi öğesi tarafından alınan tüm belgeler için belirtilen kapsayıcı ifade.  
+  Belirtilen kapsayıcı ifadesi tarafından alınan tüm belgeler için `property_name` özelliğine veya array_index dizi öğesine erişerek belgenin alınması gerektiğini belirtir.  
   
 ## <a name="remarks"></a>Açıklamalar
   
-Tüm diğer adları içinde çıkarımı yapılan veya sağlanan `<from_source>(`s) benzersiz olmalıdır. Söz dizimi `<container_expression>.`property_name aynıdır `<container_expression>' ['"property_name"']'`. Ancak, bir özellik adı bir tanımlayıcı olmayan karakter içeriyorsa, ikinci sözdizimi kullanılabilir.  
+`<from_source>(`s) için belirtilen veya çıkarılan tüm diğer adlar benzersiz olmalıdır. `<container_expression>.`property_name sözdizimi `<container_expression>' ['"property_name"']'`ile aynıdır. Ancak, bir özellik adı bir tanımlayıcı olmayan karakter içeriyorsa, ikinci sözdizimi kullanılabilir.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Dizi öğeleri yanı sıra, tanımsız değerler eksik özellikler eksik işleme
   
@@ -99,9 +99,9 @@ Bir kapsayıcı ifadesi özellikleri veya dizi öğeleri ve değeri yok erişirs
   
 Bir kapsayıcı ifade kapsayıcı kapsamlı veya belge kapsamlı olabilir:  
   
--   Kapsayıcı-kapsayıcı ifadenin temel alınan kaynak ya da kök ise kapsamı, bir ifade veya `container_name`. Böyle bir ifade, bir kapsayıcıdan doğrudan alınan belge kümesini temsil eder ve diğer kapsayıcı ifadeler işleme bağımlı değildir.  
+-   Kapsayıcı ifadesinin temeldeki kaynağı kök veya `container_name`ise, bir ifade kapsayıcı kapsamıdır. Böyle bir ifade, bir kapsayıcıdan doğrudan alınan belge kümesini temsil eder ve diğer kapsayıcı ifadeler işleme bağımlı değildir.  
   
--   Bir ifade belge temel alınan kaynak kapsayıcı ifadenin ise kapsamlı, `input_alias` sorgu daha önce sunulan. Böyle bir ifade, diğer adlı kapsayıcı ile ilişkili bir kümeye ait her bir belgenin kapsamında kapsayıcı ifadesinin değerlendirilmesi elde belgeleri kümesini temsil eder.  Sonuç kümesi, her bir temel alınan belgeler için kapsayıcı ifadesinin değerlendirilmesi elde edilen kümeleri birleşimi olacaktır. 
+-   Bir ifade, kapsayıcı ifadesinin temel alınan kaynağı sorguda daha önce tanıtılan `input_alias`, belge kapsamıdır. Böyle bir ifade, diğer adlı kapsayıcı ile ilişkili bir kümeye ait her bir belgenin kapsamında kapsayıcı ifadesinin değerlendirilmesi elde belgeleri kümesini temsil eder.  Sonuç kümesi, her bir temel alınan belgeler için kapsayıcı ifadesinin değerlendirilmesi elde edilen kümeleri birleşimi olacaktır. 
 
 ## <a name="examples"></a>Örnekler
 
@@ -114,7 +114,7 @@ FROM yan tümcesi, kaynağı daha küçük bir alt kümeye düşürebilir. Her b
     FROM Families.children
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [
@@ -154,7 +154,7 @@ Yukarıdaki sorgu kaynak olarak bir dizi kullandı, ancak kaynak olarak bir nesn
     FROM Families.address.state
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8a5507d11c9545e4053dde832b7305f9bf35e39e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093639"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586283"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Değişiklik akışı işlemcisi başlangıç saatini yapılandırma
 
@@ -23,17 +23,17 @@ Bir değişiklik akışı işlemcisi ilk kez başladığında, kira kapsayıcıs
 
 ## <a name="reading-from-a-previous-date-and-time"></a>Önceki bir tarih ve saatten okuma
 
-Değişiklik akışı işlemcisini, **belirli bir tarih ve saatte**başlayan değişiklikleri okumak için, bir a `DateTime` `WithStartTime` örneğini Oluşturucu uzantısına geçirerek başlatmak mümkündür:
+Bir `DateTime` örneğini `WithStartTime` Oluşturucu uzantısına geçirerek **belirli bir tarih ve saatte**başlayan değişiklikleri okumak için değişiklik akışı işlemcisini başlatmak mümkündür:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="TimeInitialization":::
 
 Değişiklik akışı işlemcisi, belirli bir tarih ve saat için başlatılır ve sonrasında gerçekleşen değişiklikleri okumaya başlar.
 
 ## <a name="reading-from-the-beginning"></a>Baştan itibaren okunuyor
 
-Veri geçişleri veya bir kapsayıcının tüm geçmişinin çözümlenmesi gibi diğer senaryolarda, **Bu kapsayıcının yaşam süresinden itibaren**değişiklik akışını okuduk. Bunu yapmak için, Oluşturucu uzantısı üzerinde `WithStartTime` kullanabiliriz, `DateTime.MinValue.ToUniversalTime()`ancak bu, en düşük `DateTime` değerin UTC gösterimini oluşturan, şöyle olabilir:
+Veri geçişleri veya bir kapsayıcının tüm geçmişinin çözümlenmesi gibi diğer senaryolarda, **Bu kapsayıcının yaşam süresinden itibaren**değişiklik akışını okuduk. Bunu yapmak için, Oluşturucu uzantısı üzerinde `WithStartTime` kullanabilir, ancak `DateTime.MinValue.ToUniversalTime()`geçirerek en düşük `DateTime` değerin UTC gösterimini üretir, örneğin:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartFromBeginningInitialization":::
 
 Değişiklik akışı işlemcisi başlatılır ve kapsayıcının yaşam süresinden itibaren yapılan değişiklikleri okumaya başlar.
 

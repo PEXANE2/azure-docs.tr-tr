@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 3dc7ebe224f1edb1b0fabc40441bd399fda6c133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355584"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604240"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Güvenlik Merkezi 'nde çapraz Kiracı Yönetimi
 
@@ -46,7 +46,7 @@ Birden çok Kiracıdaki abonelikleri, tek bir kiracıda birden çok aboneliği y
 Görünümler ve eylemler temelde aynıdır. İşte bazı örnekler:
 
 - **Güvenlik Ilkelerini yönetme**: tek bir görünümden, [ilkelerle](tutorial-security-policy.md)birçok kaynağın güvenlik duruşunu yönetin, güvenlik önerileri ile eylemler gerçekleştirin ve güvenlikle ilgili verileri toplayın ve yönetin.
-- **Güvenli puanı ve uyumluluğu iyileştirme**: çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve bunların her biri için [güvenli puan](security-center-secure-score.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu en iyi şekilde nasıl iyileştirebileceğinizi görüntülemenize olanak sağlar.
+- **Güvenli puanı ve uyumluluğu iyileştirme**: çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve bunların her biri Için [güvenli puan](security-center-secure-score.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu en iyi şekilde nasıl iyileştirebileceğinizi görüntülemenize olanak sağlar.
 - **Önerileri düzeltin**: aynı anda çeşitli kiracılardan çok sayıda kaynak için bir [öneriyi](security-center-recommendations.md) izleyin ve düzeltin. Daha sonra tüm kiracılar genelinde en yüksek riski sunan güvenlik açıklarını hemen ekleyebilirsiniz.
 - **Uyarıları yönetme**: farklı kiracılar genelinde [uyarıları](security-center-alerts-overview.md) algıla. Eyleme dönüştürülebilir [Düzeltme adımlarıyla](security-center-managing-and-responding-alerts.md)uyumlu olmayan kaynaklar üzerinde işlem yapın.
 
@@ -56,5 +56,5 @@ Görünümler ve eylemler temelde aynıdır. İşte bazı örnekler:
 Bu makalede, çapraz kiracı yönetiminin güvenlik merkezi 'nde nasıl çalıştığı açıklanmaktadır. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
 * [Azure Güvenlik Merkezi ile güvenlik duruşunuzu güçlendirin](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu nasıl izleyeceğinizi öğrenin.
-* [Azure Güvenlik Merkezi hakkında SSS](security-center-faq.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.
+* [Azure Güvenlik Merkezi hakkında SSS](faq-general.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.
 * [Kurumsal senaryolarda Azure ışıklı kullanımı hakkında bilgi edinin](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) -Azure açık thouse 'ın birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini nasıl basitleştireceğinizi öğrenin.

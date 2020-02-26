@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanma
 description: Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağını açıklayan bir makale
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281109"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583954"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
 
@@ -21,14 +21,15 @@ Bir kurtarma hizmetleri Kasası için tanılama ayarlarını, kasaya gidip **Tan
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Azure Backup kullanıcılar için kullanılabilen tanılama olayları
 
 Azure Backup, her biri belirli bir yedekleme ile ilgili yapıtlar kümesi üzerinde ayrıntılı veriler sağlayan aşağıdaki tanılama olaylarını sağlar:
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Azure Backup tanılama olayları için veri modeli](https://aka.ms/diagnosticsdatamodel)
+[Azure Backup tanılama olayları için veri modeli](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 Bu olaylara yönelik veriler bir depolama hesabına, LA alanına veya bir olay hub 'ına gönderilebilir. Bu verileri bir LA çalışma alanına gönderiyorsanız, **Tanılama ayarı** ekranında **kaynağa özgü** geçişi seçmeniz gerekir (aşağıdaki bölümlerde daha fazla bilgi görüntüleyin).
 
@@ -37,6 +38,7 @@ Bu olaylara yönelik veriler bir depolama hesabına, LA alanına veya bir olay h
 Azure Log Analytics yol haritası ile hizalama, Azure Backup Artık kasa tanılama verilerini yedekleme için adanmış LA tablolarına göndermenize olanak tanır. Bunlara [kaynağa özgü tablolar](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)adı verilir.
 
 Kasa tanılama verilerinizi LA 'ya göndermek için:
+
 1.  Kasanıza gidin ve **Tanılama ayarları**' na tıklayın. **+ Tanılama ayarı Ekle**' ye tıklayın.
 2.  Tanılama ayarına bir ad verin.
 3.  **Log Analytics gönder** kutusunu işaretleyin ve bir Log Analytics çalışma alanı seçin.
@@ -84,4 +86,4 @@ Aşağıdaki görüntüde, bir kasa için üç tanılama ayarı olan bir kullan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Tanılama olayları için Log Analytics veri modelini öğrenin](https://aka.ms/diagnosticsdatamodel)
+[Tanılama olayları için Log Analytics veri modelini öğrenin](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

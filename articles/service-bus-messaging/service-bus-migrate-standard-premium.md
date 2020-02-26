@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587507"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Mevcut Azure Service Bus standart ad alanlarını Premium katmanına geçirin
 Daha önce, Azure Service Bus ad alanları yalnızca Standart katmanda sunulur. Ad alanları, düşük aktarım hızı ve geliştirici ortamları için iyileştirilmiş çok kiracılı kurulumlardır. Premium katmanı, öngörülebilir gecikme ve sabit bir fiyata daha fazla verimlilik için ad alanı başına adanmış kaynaklar sunar. Premium katman, ek kurumsal özellikler gerektiren yüksek aktarım hızı ve üretim ortamları için iyileştirilmiştir.
@@ -32,7 +32,7 @@ Aklınızda bazı noktaları:
 - Geçişin başarılı olması için **Premium** ad alanının içinde **hiç varlık olmaması** gerekir. 
 - Standart ad alanındaki tüm **varlıklar** , geçiş işlemi sırasında Premium ad alanına **kopyalanır** . 
 - Geçiş, Premium katmandaki **mesajlaşma birimi başına 1.000 varlıklarını** destekler. Kaç tane mesajlaşma birimine ihtiyacınız olduğunu belirlemek için, geçerli standart ad alanı üzerinde sahip olduğunuz varlıkların sayısıyla başlayın. 
-- **Temel katmandan** **Premier katmana**doğrudan geçiş yapamazsınız, ancak temel bir sonraki adımda standart ' dan Premium ' a geçiş yaparak bunu dolaylı olarak yapabilirsiniz.
+- **Temel katmandan** **Premium katmanına**doğrudan geçiş yapamazsınız, ancak temel bir sonraki adımda standart ' dan Premium ' a geçiş yaparak bunu dolaylı olarak yapabilirsiniz.
 
 ## <a name="migration-steps"></a>Geçiş adımları
 Bazı koşullar Geçiş işlemiyle ilişkilidir. Hata olasılığını azaltmak için aşağıdaki adımları tanıyın. Bu adımlar, geçiş sürecini özetler ve adım adım ayrıntılar aşağıdaki bölümlerde listelenmiştir.

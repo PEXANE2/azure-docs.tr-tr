@@ -3,12 +3,12 @@ title: Azure Service Fabric Docker Compose dağıtım önizlemesi
 description: Azure Service Fabric, Service Fabric kullanarak var olan kapsayıcıları düzenlemenizi kolaylaştırmak için Docker Compose biçimini kabul eder. Bu destek, şu anda Önizleme aşamasındadır.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6dd45e81a0db06cbaa75da3f94b9e7624b0acd69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458053"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589343"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric Docker Compose dağıtım desteği (Önizleme)
 
@@ -27,7 +27,7 @@ Bu önizlemeyi kullanmak için, Service Fabric çalışma Azure portal zamanın�
 Aşağıdaki komutlar, diğer Service Fabric uygulamaları gibi izleyebilmeniz ve yönetebileceğiniz bir Service Fabric uygulaması (`fabric:/TestContainerApp`olarak adlandırılır) oluşturur. Sistem durumu sorguları için belirtilen uygulama adını kullanabilirsiniz.
 Service Fabric, oluşturma dağıtımının tanımlayıcısı olarak "DeploymentName" i tanır.
 
-### <a name="use-powershell"></a>PowerShell'i kullanma
+### <a name="use-powershell"></a>PowerShell kullanma
 
 PowerShell 'de aşağıdaki komutu çalıştırarak bir Docker-Compose. yml dosyasından Service Fabric oluşturma dağıtımı oluşturun:
 
@@ -69,37 +69,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 Alternatif olarak, aşağıdaki Service Fabric CLı komutunu kullanabilirsiniz:
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 Dağıtımı oluşturduktan sonra, aşağıdaki komutu kullanarak durumunu kontrol edebilirsiniz:
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Oluşturma dağıtımını silmek için aşağıdaki komutu kullanın:
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Bir dağıtım yükseltmesi oluşturma başlatmak için aşağıdaki komutu kullanın:
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Dağıtımı oluşturma yükseltmesini geri almak için aşağıdaki komutu kullanın:
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Yükseltme işlemi kabul edildikten sonra, aşağıdaki komutu kullanarak yükseltme ilerlemesi izlenebilir:
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 

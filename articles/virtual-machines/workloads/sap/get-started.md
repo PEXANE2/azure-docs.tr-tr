@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abbacf57f6e00411c6041422cfc47e68fd46bb15
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566038"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77601941"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -120,8 +120,17 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
+- 02/25/2020: standart Azure Yük Dengeleyici ile genel uç noktaya erişimi açıklayan belgeyi işaret etmek için [SUSE Linux Enterprise Server üzerindeki Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliğinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) değişiklik yapın
+- 02/21/2020: [Azure sanal makine depolama yapılandırmasındaki SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ,/Hana/Data için Stripe boyutunda yeni öneriyi temsil edecek şekilde ve g/ç zamanlayıcı ayarı ekleyerek değiştirin
+- 02/21/2020: S224 ve S224m 'in yeni sertifikalı SKU 'Larını temsil eden HANA büyük örnek belgelerindeki değişiklikler
 - 02/21/2020: [Azure VM 'LERINDE SAP NetWeaver için yüksek kullanılabilirliğe sahıp RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) ve [Azure VM 'lerinde SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) için yüksek kullanılabilirlik, sıraya alma sunucusu çoğaltma 2 mimarisi (ENSA2) için küme kısıtlamalarını ayarlamak için Azure NetApp Files
 - 02/20/2020: SUSE Multi-SID küme Kılavuzu 'na bir bağlantı eklemek için [SLES Multi-SID kılavuzundaki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) olarak değiştirin
+- 02/13/2020: [Azure sanal makinelerinde yapılan DEĞIŞIKLIKLER SAP NetWeaver için planlama ve uygulama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) yeni belgelerin bağlantılarını uygulayacak
+- 02/13/2020: [Azure sanal makinesi desteklenen bir senaryoda yeni belge SAP iş yükü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) eklendi
+- 02/13/2020: yeni belge eklendi [Azure dağıtımı için desteklenen SAP yazılımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
+- 02/13/2020: standart Azure Yük Dengeleyici ile genel uç noktaya erişimi açıklayan belgeyi işaret etmek için [Red Hat Enterprise Linux sunucusundaki Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliğinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw) değişiklik yapın
+- 02/13/2020: yeni VM türlerini [SAP sertifikalarına ve Microsoft Azure üzerinde çalışan yapılandırmalara](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications) ekleyin
+- 02/13/2020: Azure 'da yeni SAP destek notları [SAP iş yükleri ekleme: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 02/13/2020: [Azure VM 'LERINDE SAP NetWeaver için yüksek kullanılabilirliğe sahıp RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) ve Azure VM 'leri, küme kaynaklarını Red Hat Timeout önerilerine hizalamak için [Azure NetApp Files ile RHEL üzerinde SAP NetWeaver için](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) yüksek kullanılabilirlik sağlar
 - 02/11/2020: Azure [sanal makinelerine Azure büyük örnek geçişi üzerinde SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration) sürümü
 - 02/07/2020: örnek NSG ekran görüntüsünü güncelleştirmek için [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler Için genel uç nokta bağlantısında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) değişiklik yapın
@@ -157,10 +166,5 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 - 08/16/2019: Azure ['da Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , Azure sınır aracısının yeni sürümüne güncelleştirilüyorsam, müşterilere özel roldeki eylemleri güncelleştirme  
 - 08/15/2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra diskin genel kullanılabilirliğini yansıtacak değişiklikler (eski adıyla Ultra SSD)
 - 08/01/2019: [Azure 'daki SUSE Linux Enterprise Server pacemaker 'ı ayarlamaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler, SLES 15 için değişiklikleri özellikle tümleştirin 
-- 07/23/2019: [bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği kümesindeki](sap-high-availability-guide-wsfc-file-share.md) değişiklikler, Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşımının kullanılması
-- 07/14/2019: [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](sap-proximity-placement-scenarios.md) yayını
-- 07/11/2019: Hana büyük örneklerinin 3. düzeltmesini kapsayan çeşitli belgelerdeki değişiklikler
-- 07/09/2019: [Red Hat Enterprise Server 'Da IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) için yeni kılavuz sürümü
-- 06/13/2019: SAP [NetWeaver için Red Hat Enterprise Linux yüksek kullanılabilirlik sürümü SAP uygulamaları için Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)
 
 

@@ -5,18 +5,18 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610242"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589156"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLı (sfctl) kullanarak bir Azure Service Fabric uygulamasını yönetme
 
 Azure Service Fabric kümesinde çalışan uygulamalar oluşturmayı ve silmeyi öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Service Fabric CLı 'yi yükler. Sonra Service Fabric kümenizi seçin. Daha fazla bilgi için bkz. [SERVICE fabrıc CLI kullanmaya başlama](service-fabric-cli.md).
 
@@ -47,7 +47,7 @@ Uygulama oluşturmadan önce, uygulama paketini Service Fabric görüntü deposu
 
 Örneğin, uygulama paketiniz `app_package_dir` dizinimizde, dizini karşıya yüklemek için aşağıdaki komutları kullanın:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ Büyük uygulama paketleri için, karşıya yükleme işleminin ilerlemesini gö
 
 Karşıya yükleme tamamlandığında, uygulamayı sağlayın. Uygulamayı sağlamak için aşağıdaki komutu kullanın:
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ Uygulama başarıyla kaydedildikten sonra uygulama paketini kaldırmanız öneri
 
 Görüntü deposundan uygulama paketini silmek için şu komutu kullanın:
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 Uygulamayı sağlamadıktan sonra, aşağıdaki komutu kullanarak uygulamanızı adlandırın ve oluşturun:
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ Uygulama adının `fabric:/`önekiyle başlaması gerekir.
 
 Bir uygulama oluşturduktan sonra uygulamadan hizmetler oluşturun. Aşağıdaki örnekte, uygulamamızda yeni bir durum bilgisiz hizmeti oluşturacağız. Bir uygulamadan oluşturabileceğiniz hizmetler, önceden sağlanan uygulama paketindeki bir hizmet bildiriminde tanımlanmıştır.
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 Her şeyin sağlıklı olduğunu doğrulamak için aşağıdaki sistem durumu komutlarını kullanın:
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 Hizmetin sağlıklı olduğunu doğrulamak için, hem hizmetin hem de uygulamanın sistem durumunu almak için benzer komutları kullanın:
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -122,7 +122,7 @@ Bir uygulamayı kaldırmak için aşağıdaki görevleri doldurun:
 
 Uygulamayı silmek için şu komutu kullanın:
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 Uygulamayı sildikten sonra, artık gerekmiyorsa uygulama türünün sağlamasını kaldırabilirsiniz. Uygulama türünü sağlamayı kaldırmak için aşağıdaki komutu kullanın:
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ Uygulamanızı oluşturduktan sonra, uygulamanızın ikinci bir sürümünü sa�
 
 Bir yükseltme gerçekleştirmek için önce uygulamanın sonraki sürümünü, önceki ile aynı komutları kullanarak sağlayın:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 Daha sonra, izlenen bir otomatik yükseltme gerçekleştirmek önerilir, aşağıdaki komutu çalıştırarak yükseltmeyi başlatın:
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

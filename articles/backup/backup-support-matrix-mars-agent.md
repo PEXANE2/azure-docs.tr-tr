@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425026"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582645"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -66,6 +66,29 @@ Bu IP adresleri:
 - 40.126.0.0/18
 
 Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443 ' de HTTPS protokolünü kullanır.
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute desteği
+
+Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.
+
+Ortak eşleme ile: aşağıdaki etki alanlarına/adreslere erişim sağlayın:
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
+
+Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
+
+- Azure Active Directory (12076:5060)
+- Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
+- Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
+
+Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Ortak eşleme, yeni devreler için kullanım dışıdır.
 
 ### <a name="throttling-support"></a>Daraltma desteği
 
@@ -126,13 +149,13 @@ Windows 7| 1\.700 GB
 Sıkıştırılmış | Destekleniyor.
 Seyrek | Destekleniyor.
 Sıkıştırılmış ve seyrek |Destekleniyor.
-Sabit bağlantılar| Desteklenmiyor. Atlanmış.
-Yeniden ayrıştırma noktası| Desteklenmiyor. Atlanmış.
-Şifrelenmiş ve seyrek |Desteklenmiyor. Atlanmış.
-Sıkıştırılmış akış| Desteklenmiyor. Atlanmış.
-Aralıklı akış| Desteklenmiyor. Atlanmış.
-OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
-DFS Çoğaltma etkin olan klasörler | Desteklenmiyor.
+Sabit bağlantılar| Desteklenmez. Atlanmış.
+Yeniden ayrıştırma noktası| Desteklenmez. Atlanmış.
+Şifrelenmiş ve seyrek |Desteklenmez. Atlanmış.
+Sıkıştırılmış akış| Desteklenmez. Atlanmış.
+Aralıklı akış| Desteklenmez. Atlanmış.
+OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmez.
+DFS Çoğaltma etkin olan klasörler | Desteklenmez.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
 

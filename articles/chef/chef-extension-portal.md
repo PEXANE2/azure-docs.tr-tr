@@ -2,14 +2,14 @@
 title: Azure portal Chef istemcisini yükleyip
 description: Chef istemcinizi Azure portal dağıtma ve yapılandırma hakkında bilgi edinin
 keywords: Azure, Chef, DevOps, istemci, yüklemesi, Portal
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158267"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586368"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal Chef istemcisini yükleyip
 Chef istemci uzantısını, Azure portal doğrudan bir Linux veya Windows makinesine ekleyebilirsiniz. Bu makalede, yeni bir Linux sanal makinesini kullanarak işlem adım adım açıklanmaktadır.
@@ -79,24 +79,24 @@ Bu bölümde öncelikle Azure portal bir Linux makinesi oluşturmak için kullan
 1. **Uzantı yüklensin** sekmesinde, aşağıdaki değerleri belirtin ve ardından **Tamam**' ı seçin.
 
     - **Chef sunucu URL 'si** -kuruluş adını Içeren Chef sunucu URL 'sini girin, örneğin, *https://api.chef.io/organization/mycompany* .
-    - **Chef düğüm adı** -Chef düğüm adını girin. Bu, herhangi bir değer olabilir.
-    - **Çalıştırma listesi** -makineye eklenen Chef çalıştırma listesini girin. Bu boş bırakılabilir.
-    - **Doğrulama Istemci adı** -Chef doğrulama istemci adını girin. Örneğin, *tarhma doğrulayıcısı*.
+    - **Chef düğüm adı** -Chef düğüm adını girin.
+    - **Çalıştırma listesi** -makineye eklenen Chef çalıştırma listesini girin. Bu değer boş bırakılabilir.
+    - **Doğrulama istemci adı** -Chef doğrulama istemci adını girin. Örneğin, `tarcher-validator`.
     - **Doğrulama anahtarı** -makinelerinizi önyükleme sırasında kullanılan doğrulama anahtarını içeren bir dosya seçin.
-    - **Istemci yapılandırma dosyası** -Chef-Client için bir yapılandırma dosyası seçin. Bu boş bırakılabilir.
-    - **Chef istemci sürümü** -yüklenecek Chef istemcisinin sürümünü girin. Bu boş bırakılabilir. Boş değer en son sürümü yüklenir.
+    - **İstemci yapılandırma dosyası** -Chef-Client için bir yapılandırma dosyası seçin. Bu değer boş bırakılabilir.
+    - **Chef istemci sürümü** -yüklenecek Chef istemcisinin sürümünü girin. Bu değer boş bırakılabilir, bu da en son sürümü yüklüyor.
     - **SSL doğrulama modu** - **hiçbiri** veya **eşi**seçin. Demo için *hiçbiri* seçilmedi.
-    - **Chef ortamı** -bu düğümün üyesi olması gereken Chef ortamını girin. Bu boş bırakılabilir.
-    - **Şifrelenmiş Databag gizli** -bu makinenin erişimi olması gereken şifreli Databag için gizli anahtarı içeren bir dosya seçin. Bu boş bırakılabilir.
-    - **Chef sunucu SSL sertifikası** -Chef SUNUCUNUZA atanan SSL sertifikasını seçin. Bu boş bırakılabilir.
+    - **Chef ortamı** -bu düğümün üyesi olması gereken Chef ortamını girin. Bu değer boş bırakılabilir.
+    - **Şifrelenmiş veri paketi gizli** -bu makinenin erişmesi gereken şifreli veri paketi için gizli anahtarı içeren bir dosya seçin. Bu değer boş bırakılabilir.
+    - **Chef sunucu SSL sertifikası** -Chef SUNUCUNUZA atanan SSL sertifikasını seçin. Bu değer boş bırakılabilir.
 
       ![Chef sunucusunu Linux sanal makinesine yükleme](./media/chef-extension-portal/install-extension.png)
 
-1. **Uzantılar** sekmesine Dönzaman **Tamam**' ı seçin.
+1. **Uzantılar** sekmesi görüntülendiğinde **Tamam**' ı seçin.
 
-1. **Ayarlar** sekmesine Dönzaman **Tamam**' ı seçin.
+1. **Ayarlar** sekmesi görüntülendiğinde **Tamam**' ı seçin.
 
-1. **Oluştur** sekmesine dönzaman (seçtiğiniz ve girdiğiniz seçeneklerin özetini temsil eder), bilgileri ve **kullanım koşulları**doğrulayın ve **Oluştur**' u seçin.
+1. **Oluştur** sekmesi görüntülendiğinde, seçtiğiniz ve girdiğiniz seçeneklerin özetini görürsünüz. Bilgilerin yanı sıra **kullanım koşulları**doğrulayın ve **Oluştur**' u seçin.
 
 Sanal makineyi Chef uzantısıyla oluşturma ve dağıtma işlemi tamamlandığında, bir bildirim işlemin başarısını veya başarısızlığını gösterir. Ayrıca, yeni sanal makine için kaynak sayfası, oluşturulduktan sonra otomatik olarak Azure portal açılır.
 
@@ -104,4 +104,5 @@ Sanal makineyi Chef uzantısıyla oluşturma ve dağıtma işlemi tamamlandığ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Chef kullanarak Azure 'da Windows sanal makinesi oluşturma](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Chef kullanarak Azure 'da Windows sanal makinesi oluşturma](chef-automation.md)

@@ -9,27 +9,36 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486385"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589377"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
 Bu makalede, modellerinizin yaşam döngüsünü yönetmek için Azure Machine Learning kullanma hakkında bilgi edinin. Azure Machine Learning, Machine Learning Işlemler (MLOps) yaklaşımı kullanır. MLOps, Machine Learning çözümlerinizin kalitesini ve tutarlılığını geliştirir. 
 
+## <a name="what-is-mlops"></a>MLOps nedir?
+
+Machine Learning Işlemler (MLOps), iş akışlarının verimliliğini artıran [DevOps](https://azure.microsoft.com/overview/what-is-devops/) ilkelerine ve uygulamalarına dayanır. Örneğin, sürekli tümleştirme, teslim ve dağıtım. MLOps, bu sorumluları makine öğrenimi sürecine uygular, amacı:
+
+* Modellerin daha hızlı deneme ve geliştirmesi
+* Modellerin üretime daha hızlı dağıtılması
+* Kalite güvencesi
+
 Azure Machine Learning aşağıdaki MLOps yeteneklerini sağlar:
 
-- **Tekrarlanabilir ml işlem hatları oluşturun**. İşlem hatları, veri hazırlama, eğitim ve Puanlama işlemleriniz için yinelenebilir ve yeniden kullanılabilir adımlar tanımlamanızı sağlar.
-- **Modelleri her yerden kaydedin, paketleyin ve dağıtın** ve modeli kullanmak için gereken ilişkili meta verileri izleyin.
-- Modellerden kimin yayımladığına, değişikliklerin neden yapılmakta olduğuna ve modellerin üretimde ne zaman dağıtıldığını ve ne zaman kullanıldığını de kapsayan, **uçtan uca ml yaşam döngüsünü yakalamak için gereken idare verilerini yakalayın**.
-- Deneme tamamlama, model kaydı, model dağıtımı ve veri DRI algılama gibi **ml yaşam döngüsünün olaylarını uyarın ve uyarır** .
+- **Tekrarlanabilir ml işlem hatları oluşturun**. Machine Learning işlem hatları, veri hazırlama, eğitim ve Puanlama işlemleriniz için yinelenebilir ve yeniden kullanılabilir adımlar tanımlamanızı sağlar.
+- Eğitim ve dağıtım modelleri için yeniden **kullanılabilir yazılım ortamları oluşturun** .
+- **Modelleri her yerden kaydedin, paketleyin ve dağıtın**. Ayrıca, modeli kullanmak için gereken ilişkili meta verileri izleyebilirsiniz.
+- **Uçtan uca ml yaşam döngüsü için idare verilerini yakalayın**. Günlüğe kaydedilen bilgiler, hangi modellerin yayımladığına, neden değişikliklerin yapıldığını ve modellerin üretimde ne zaman dağıtıldığını veya ne zaman kullanıldığını içerebilir.
+- **Ml yaşam döngüsünün olaylarını uyarın ve uyarır**. Örneğin, deneme tamamlama, model kaydı, model dağıtımı ve veri dralgılama.
 - **Çalışır ve ml ile ilgili sorunlar IÇIN ml uygulamalarını izleyin**. Eğitim ve çıkarım arasındaki model girişlerini karşılaştırın, modele özgü ölçümleri bulun ve ML altyapınızda izleme ve Uyarılar sağlayın.
-- Modelleri sıklıkla güncelleştirmek, yeni modelleri test etmek ve diğer uygulama ve hizmetlerinizle birlikte yeni ML modellerini sürekli olarak almak için **Azure Machine Learning ve Azure DevOps ile uçtan uca ml yaşam döngüsünü otomatikleştirin** .
+- **Azure Machine Learning ve Azure Pipelines ile uçtan uca ml yaşam döngüsünü otomatikleştirin**. İşlem hatlarını kullanmak, sıklıkla modelleri güncelleştirmenizi, yeni modelleri test etmenizi ve diğer uygulama ve hizmetlerinizle birlikte yeni ML modellerini sürekli olarak almayı sağlar.
 
 ## <a name="create-reproducible-ml-pipelines"></a>Tekrarlanabilir ML işlem hatları oluşturma
 
@@ -38,6 +47,12 @@ Model eğitim sürecinizdeki tüm adımları birlikte birleştirmek için Azure 
 Bir ML işlem hattı, veri hazırlığından, model değerlendirmesi için hiper parametre ayarlamayı ayıklama adımları içerebilir. Daha fazla bilgi için bkz. [ml işlem hatları](concept-ml-pipelines.md).
 
 ML işlem hatlarınızı oluşturmak için [tasarımcıyı](concept-designer.md) kullanırsanız, tasarımcı sayfasının sağ üst köşesindeki **"..."** düğmesine tıklayın ve ardından **Kopyala**' yı seçin. İşlem hattınızı kopyalamak, eski sürümlerinizi kaybetmeden işlem hattı tasarımınızı yinelemenize olanak tanır.  
+
+## <a name="create-reusable-software-environments"></a>Yeniden kullanılabilir yazılım ortamları oluşturma
+
+Azure Machine Learning ortamlar, geliştirdikleri şekilde projenizin yazılım bağımlılıklarını izlemenize ve yeniden üretmeye olanak tanır. Ortamlar, derlemelerin el ile yazılım yapılandırmaları olmadan tekrarlanabilir olmasını sağlar.
+
+Ortamlar, projelerinize yönelik PIP ve Conda bağımlılıklarını betimliyor ve modellerin eğitimi ve dağıtımı için kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning ortamları nelerdir](concept-environments.md).
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>Her yerden model kaydetme, paketleme ve dağıtma
 
@@ -82,7 +97,7 @@ Bir modeli Web hizmeti veya IoT Edge cihaz olarak kullanırken, aşağıdaki ö�
 
 * Hizmete/cihaza gönderilen verileri almak için kullanılan model (ler).
 * Bir giriş betiği. Bu betik istekleri kabul eder, verileri öğrenmek için modeli kullanır ve bir yanıt döndürür.
-* Model (ler) ve giriş betiği için gereken bağımlılıkları açıklayan bir Conda ortam dosyası.
+* Model ve giriş betiği için gereken PIP ve Conda bağımlılıklarını açıklayan bir Azure Machine Learning ortamı.
 * Model ve giriş betiği için gereken metin, veri vb. gibi diğer varlıklar.
 
 Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. Örneğin, sanal makine aile türü, kullanılabilir bellek ve Azure Kubernetes hizmetine dağıtım yaparken çekirdek sayısı.
@@ -124,7 +139,7 @@ Azure ML, tüm ML varlıklarınızın uçtan uca denetim izlerini izleme olanağ
 
 - Azure ML, kodunuzun hangi depoya/dala/yürütmeye geldiğini izlemek için [Git ile tümleşir](how-to-set-up-training-targets.md#gitintegration) .
 - [Azure ML veri kümeleri](how-to-create-register-datasets.md) , verileri izlemenize, profillerinize ve sürümetmenize yardımcı olur. 
-- Azure ML çalışma geçmişi, bir modeli eğitmek için kullanılan kodun, verilerin ve işlemin bir anlık görüntüsünü depolar.
+- Azure ML çalışma geçmişi, bir modeli eğitebilmeniz için kullanılan kodun, verilerin ve hesaplanan bir anlık görüntü depolar.
 - Azure ML modeli kayıt defteri, modelinizle ilişkili tüm meta verileri yakalar (Bu, dağıtımları, dağıtımı sağlıklı ise, dağıtıldığı yerde).
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML yaşam döngüsünde olayları bildirme, otomatikleştirme ve uyarma
@@ -162,6 +177,8 @@ Bir modeli gösteren bir sürekli tümleştirme işlemi oluşturmak için GitHub
 * Eğitim ardışık düzeninde oluşturulan eğitilen modeller tarafından tetiklenecek yayın işlem hatlarını sağlar.
 
 Azure Machine Learning ile Azure Pipelines kullanma hakkında daha fazla bilgi için, bkz. Azure Pipelines article ve [Azure Machine Learning MLOps](https://aka.ms/mlops) deposu [Ile ml modellerinin sürekli tümleştirilmesi ve dağıtımı](/azure/devops/pipelines/targets/azure-machine-learning) .
+
+Ayrıca, eğitim ile kullanım için verileri hazırlayan bir veri alma işlem hattı oluşturmak için Azure Data Factory de kullanabilirsiniz. Daha fazla bilgi için bkz. veri alma işlem [hattı](how-to-cicd-data-ingestion.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

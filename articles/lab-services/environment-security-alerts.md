@@ -11,28 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ca17bece33107de756eb221e14eaab851660a99
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fbac5a2fab91cdac8ebf626e324f12f209cfade5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992241"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588714"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs ortamlar için güvenlik uyarıları
-Bu makalede, Azure DevTest Labs ortamlar için güvenlik uyarılarını nasıl görüntüleyebileceğiniz gösterilmektedir. 
+Laboratuvar kullanıcısı olarak artık laboratuvar ortamlarınız için Azure Güvenlik Merkezi uyarılarını görüntüleyebilirsiniz. Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Öncelikli güvenlik uyarıları listesi, sorunu hızlıca araştırmanız gereken bilgiler ve saldırıyı düzeltme hakkındaki önerilerle birlikte Güvenlik Merkezi'nde gösterilir. [Azure Güvenlik Merkezi 'nde güvenlik uyarıları hakkında daha fazla bilgi edinin](../security-center//security-center-alerts-overview.md).  
 
-## <a name="prerequisites"></a>Ön koşullar
-Şu anda güvenlik uyarılarını yalnızca laboratuvarınıza dağıtılan ortamlar için görüntüleyebilirsiniz. Bu özelliği test etmek veya kullanmak için laboratuvarınızda bir ortam dağıtın. 
+
+## <a name="prerequisites"></a>Önkoşullar
+Şu anda, güvenlik uyarılarını yalnızca laboratuvarınıza dağıtılan bir hizmet olarak platform (PaaS) ortamları için görüntüleyebilirsiniz. Bu özelliği test etmek veya kullanmak için [laboratuvarınızda bir ortam dağıtın](devtest-lab-create-environment-from-arm.md). 
 
 ## <a name="view-security-alerts-for-an-environment"></a>Bir ortam için güvenlik uyarılarını görüntüleme
 
-1. Laboratuvarınızın giriş sayfasında, sol taraftaki menüden **güvenlik uyarıları** ' nı seçin. Güvenlik uyarılarının sayısını (yüksek, orta ve düşük) görmeniz gerekir.
+1. Laboratuvarınızın giriş sayfasında, sol taraftaki menüden **güvenlik uyarıları** ' nı seçin. Güvenlik uyarılarının sayısını (yüksek, orta ve düşük) görmeniz gerekir. [Uyarıların sınıflandırıldığı](../security-center/security-center-alerts-overview.md#how-are-alerts-classified)hakkında daha fazla bilgi edinin.
 
     ![Güvenlik uyarıları-genel bakış](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. Son sütunda üç noktaya (...) sağ tıklayın ve **güvenlik uyarılarını görüntüle**' yi seçin. 
 
     ![Güvenlik uyarılarını görüntüleme](./media/environment-security-alerts/view-security-alerts-menu.png)
-3. Uyarılar ve danışman önerileri hakkında daha fazla ayrıntı görürsünüz. 
+    
+3. Uyarılar ve danışman önerileri hakkında daha fazla ayrıntı görürsünüz. [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](../security-center/security-center-managing-and-responding-alerts.md)hakkında daha fazla bilgi edinin.
 
     ![Güvenlik uyarılarını görüntüleme](./media/environment-security-alerts/advisor-recommendations.png)
 

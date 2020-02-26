@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849471"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592212"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Azure Otomasyonu’nda runbook zamanlama
 
@@ -27,7 +27,7 @@ Azure Otomasyonu 'nda bir runbook 'u belirli bir zamanda başlayacak şekilde za
 
 Aşağıdaki tablodaki cmdlet 'ler, Azure Otomasyonu 'nda PowerShell ile zamanlamalar oluşturmak ve yönetmek için kullanılır. [Azure PowerShell modülün](/powershell/azure/overview)bir parçası olarak sevk ederler.
 
-| Cmdlet'ler | Açıklama |
+| Cmdlet’ler | Açıklama |
 |:--- |:--- |
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |Bir zamanlama alır. |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Yeni bir zamanlama oluşturur. |
@@ -120,7 +120,7 @@ Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelges
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Azure portal ile bir zamanlamayı runbook 'a bağlamak için
 
 1. Otomasyon hesabınızdan Azure portal, soldaki **Işlem Otomasyon** bölümünde bulunan **runbook 'lar** ' ı seçin.
-2. Zamanlamak için runbook'un adına tıklayın.
+2. Zamanlamak için Runbook 'un adına tıklayın.
 3. Runbook Şu anda bir zamanlamaya bağlı değilse, yeni bir zamanlama oluşturma veya var olan bir zamanlamaya bağlanma seçeneği sunulur.
 4. Runbook 'un parametreleri varsa, **çalışma ayarlarını değiştir (varsayılan: Azure)** seçeneğini belirleyin ve **Parametreler** bölmesi, bilgileri girebileceğiniz şekilde sunulur.
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 Azure Automation 'da bir zamanlamanın en sık kullanılan aralığı bir saattir. Zamanlamaların daha sık yürütülmesi için zamanlamalara ihtiyacınız varsa iki seçenek vardır:
 
-* Runbook için bir [Web kancası](../automation-webhooks.md) oluşturun ve Web kancasını çağırmak Için [Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) 'ı kullanın. Azure Zamanlayıcı, bir zamanlamayı tanımlarken daha ayrıntılı ayrıntı düzeyi sağlar.
+* Runbook için bir [Web kancası](../automation-webhooks.md) oluşturun ve Web kancasını çağırmak için [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) kullanın. Azure Logic Apps, bir zamanlama tanımlanırken daha ayrıntılı ayrıntı düzeyi sağlar.
 
 * Her saat bir kez çalışan 15 dakikadan kısa bir süre içinde başlayan dört zamanlama oluşturun. Bu senaryo, runbook 'un farklı zamanlamalarla 15 dakikada bir çalışmasına izin verir.
 

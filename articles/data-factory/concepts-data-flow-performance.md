@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773855"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587592"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -35,8 +35,8 @@ Eşleme veri akışları tasarlarken, yapılandırma panelinde veri önizleme se
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime işlem boyutunu artırma
 
 Daha fazla çekirdeğe sahip bir Integration Runtime Spark işlem ortamlarındaki düğümlerin sayısını artırır ve verilerinizi okumak, yazmak ve dönüştürmek için daha fazla işlem gücü sağlar.
-* İşlem hızlarınızın giriş oranından daha yüksek olmasını istiyorsanız, **işlem Için iyileştirilmiş** bir küme deneyin
-* Bellekte daha fazla veri önbelleğe almak istiyorsanız **bellek Için iyileştirilmiş** bir küme deneyin.
+* İşlem hızlarınızın giriş oranından daha yüksek olmasını istiyorsanız, **işlem Için iyileştirilmiş** bir küme deneyin.
+* Bellekte daha fazla veri önbelleğe almak istiyorsanız **bellek Için iyileştirilmiş** bir küme deneyin. Bellek için iyileştirilmiş, Işlem Iyileştirilenden çekirdek başına daha yüksek bir fiyat noktasına sahiptir, ancak büyük olasılıkla daha hızlı dönüştürme hızına neden olur.
 
 ![Yeni IR](media/data-flow/ir-new.png "Yeni IR")
 
@@ -73,7 +73,7 @@ Kaynak dönüşümünde **kaynak seçenekleri** altında aşağıdaki ayarlar pe
 
 Veri akışlarınızın satır içi işlenmesini önlemek için, Azure SQL VERITABANı ve Azure SQL DW havuzları için ayarlar sekmesinde **toplu iş boyutunu** ayarlayın. Toplu iş boyutu ayarlandıysa, ADF, belirtilen boyuta göre veritabanı yazmaları toplu işlemlere işler.
 
-![Havuz](media/data-flow/sink4.png "Havuz")
+![Ev](media/data-flow/sink4.png "Havuz")
 
 ### <a name="partitioning-on-sink"></a>Havuzda bölümlendirme
 
@@ -87,17 +87,24 @@ Verileriniz hedef Tablolarınızda bölümlenmemiş olsanız bile, verilerinizin
 
 İşlem hattınızı artırmak ve DTU sınırlarına ulaştığınızda Azure azaltmayı en aza indirmek için, kaynağınızı yeniden boyutlandırmayı zamanlayın ve Azure SQL DB ve DW 'yi iş hattınızda çalıştırın. İşlem hattı yürütme tamamlandıktan sonra veritabanlarınızı normal çalışma hızına geri doğru yeniden boyutlandırın.
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Yalnızca Azure SQL DW] Polybase aracılığıyla verileri toplu olarak yüklemek için hazırlama kullanma
+* Tek bir türetilmiş sütun dönüştürmesi olan SQL DB kaynak tablosu, 887k satırları ve 74 sütunları olan SQL DB tablosu, bellek için iyileştirilmiş 80-Core hata ayıklama Azure IRS kullanarak 3 dakikalık uçtan uca sürer.
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Yalnızca Azure SYNAPSE SQL DW] Polybase aracılığıyla verileri toplu olarak yüklemek için hazırlama kullanma
 
 DW 'nize satır satır ekleme yapmaktan kaçınmak için, ADF 'nin [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)kullanabilmesi için havuz ayarlarınızda **hazırlama özelliğini etkinleştirin** ' i işaretleyin. PolyBase, ADF 'nin verileri toplu olarak yüklemesine olanak tanır.
 * Veri akışı etkinliğinizi bir işlem hattından yürüttüğünüzde, toplu yükleme sırasında verilerinizi hazırlamak için bir blob veya ADLS 2. depolama konumu seçmeniz gerekir.
 
+* 74 sütunlu bir Synapse tablosuna ve tek bir türetilmiş sütun dönüşümüne sahip 421Mb dosyasının dosya kaynağı, bellek için iyileştirilmiş 80-Core hata ayıklama Azure IRS kullanarak 4 dakikalık uçtan uca kadar sürer.
+
 ## <a name="optimizing-for-files"></a>Dosyalar için iyileştirme
 
-Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını istediğiniz bölümlendirme şemasını ayarlayabilirsiniz.
+Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını istediğiniz bölümlendirme şemasını ayarlayabilirsiniz. İlk olarak dosya tabanlı havuzları test etmek, varsayılan bölümlendirme ve iyileştirmeleri korumak iyi bir uygulamadır.
+
 * Daha küçük dosyalar için, *tek bölümün* seçilmesi, bazı durumlarda daha iyi ve daha hızlı bir şekilde çalışabilir ve bu da küçük dosyalarınızın bölümlenmesi için Spark sorulmasını
 * Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, *hepsini bir kez deneme* bölümlendirme ve bölüm sayısını ayarlama ' yı seçin.
 * Verilerinizde iyi bir karma anahtar olabilecek sütunlar varsa *karma bölümlendirme*' yi seçin.
+
+* 74 sütunlu ve tek bir türetilmiş sütun dönüşümünde, 421Mb 'Lık bir dosyanın dosya havuzuna sahip dosya kaynağı, bellek için iyileştirilmiş 80-Core hata ayıklama Azure IRS kullanılarak yaklaşık 2 dakikalık uçtan uca sürer.
 
 Veri önizleme ve ardışık düzen Hata ayıklamasında hata ayıklarken, dosya tabanlı kaynak veri kümeleri için sınır ve örnekleme boyutları, okunan satır sayısı için yalnızca döndürülen satır sayısı için geçerlidir. Bu, hata ayıklama yürütmelerinin performansını etkileyebilir ve muhtemelen akışın başarısız olmasına neden olabilir.
 * Hata ayıklama kümeleri, varsayılan olarak tek düğümlü küçük kümelerdir ve hata ayıklama için örnek küçük dosyaları kullanmanızı öneririz. Hata ayıklama ayarları ' na gidin ve geçici bir dosya kullanarak verilerinizin küçük bir alt kümesini işaret edin.

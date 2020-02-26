@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493702"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587269"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -23,7 +23,7 @@ Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC<sup>TM</s
 >
 > Yerel diskin yüksek aktarım hızı ve IOPS, Lsv2 serisi VM 'Leri Apache Cassandra ve MongoDB gibi NoSQL depoları için ideal hale getirir. Bu, tek bir VM 'nin arızası durumunda Kalıcılık sağlamak için verileri birden çok VM arasında çoğaltır.
 >
-> Daha fazla bilgi için bkz. [Lsv2 serisi sanal makinelerde performansı iyileştirme](/linux/storage-performance.md).  
+> Daha fazla bilgi için bkz. [Windows](../virtual-machines/windows/storage-performance.md) veya [Linux](../virtual-machines/linux/storage-performance.md)için Lsv2 serisi sanal makinelerde performansı iyileştirme.  
 
 ACU: 150-175
 

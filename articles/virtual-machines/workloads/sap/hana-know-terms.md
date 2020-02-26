@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806754"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591226"
 ---
 # <a name="know-the-terms"></a>Terimleri öğrenme
 
@@ -38,7 +38,7 @@ ms.locfileid: "74806754"
    Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu senaryo, çoğu SAP varlıklarının dağıtılmasının tipik bir yoludur. Daha fazla bilgi için, bkz. [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ve [Azure Portal kullanarak siteden siteye bağlantı Ile sanal ağ oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Kiracı**: Hana büyük örnek damgasında dağıtılan bir müşteri bir *kiracıya yalıtılmış.* Bir kiracı, diğer kiracılardan ağ, depolama ve işlem katmanında yalıtılmıştır. Farklı kiracılara atanan depolama ve işlem birimleri, her bir diğerini göremez veya HANA büyük örnek damgası düzeyinde birbirleriyle iletişim kurabilir. Müşteri, farklı kiracılarda dağıtımları olmasını seçebilir. Daha sonra bile, HANA büyük örnek damgası düzeyinde kiracılar arasında iletişim yoktur.
 - **SKU kategorisi**: Hana büyük örneği için aşağıdaki iki SKU kategorisi sunulur:
-    - **Tür ı sınıfı**: s72, S72m, S96, S144, S144m, S192, S192m, S192xm ve S224
+    - **Tür ı sınıfı**: s72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 ve S224m
     - **Tür II Class**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm ve S960m
 - **Damga**: Hana büyük örneklerin Microsoft iç dağıtım boyutunu tanımlar. HANA büyük örnek birimlerinin dağıtılmasından önce, bilgi işlem, ağ ve depolama raflarından oluşan bir HANA büyük örnek damgasında bir veri merkezi konumuna dağıtılması gerekir. Bu tür bir dağıtıma HANA büyük örnek damgası veya düzeltme 4 ' ten (aşağıya bakın) **büyük örnek satırı** teriminin bir kısmını kullanıyoruz.
 - **Düzeltme**: Hana büyük örnek damgaları için iki farklı damga düzeltmesi vardır. Bunlar mimaride ve Azure sanal makine konaklarına yakınlığa göre farklılık gösterir

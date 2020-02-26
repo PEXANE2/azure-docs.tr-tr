@@ -2,17 +2,14 @@
 title: Azure Kubernetes hizmeti (AKS) denetleyici günlüklerini görüntüleme
 description: Azure Kubernetes Service (AKS) ' de Kubernetes ana düğümü için günlükleri etkinleştirme ve görüntüleme hakkında bilgi edinin
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812820"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592797"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Kubernetes ana düğüm günlüklerini etkinleştirme ve gözden geçirme
 
@@ -33,7 +30,7 @@ Azure Izleyici günlükleri Azure portal etkinleştirilir ve yönetilir. AKS kü
 1. *Myakscluster*gibi aks kümenizi seçin ve ardından **Tanılama ayarı eklemeyi**seçin.
 1. *Myaksclusterlogs*gibi bir ad girin ve **Log Analytics gönder**seçeneğini belirleyin.
 1. Mevcut bir çalışma alanını seçin veya yenisini oluşturun. Bir çalışma alanı oluşturursanız, bir çalışma alanı adı, bir kaynak grubu ve bir konum sağlayın.
-1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Ortak Günlükler kuin *-apiserver*, kuin *-Controller-Manager*ve *kuin-Scheduler*' ı kapsar. *Kuto-Audit* ve *cluster-otomatik Scaler*gibi ek günlükleri etkinleştirebilirsiniz. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
+1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Ortak Günlükler *kuin-apiserver*, *kuin-Controller-Manager*ve *kuin-Scheduler*' ı kapsar. *Kuto-Audit* ve *cluster-otomatik Scaler*gibi ek günlükleri etkinleştirebilirsiniz. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
 1. Hazırsanız, seçili günlüklerin toplanmasını etkinleştirmek için **Kaydet** ' i seçin.
 
 Aşağıdaki örnek Portal ekran görüntüsü *Tanılama ayarları* penceresini gösterir:
@@ -42,7 +39,7 @@ Aşağıdaki örnek Portal ekran görüntüsü *Tanılama ayarları* penceresini
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS kümesinde bir test Pod 'u zamanlama
 
-Bazı günlükler oluşturmak için AKS kümenizde yeni bir pod oluşturun. Aşağıdaki örnek YAML bildirimi, temel bir NGıNX örneği oluşturmak için kullanılabilir. Seçtiğiniz düzenleyicide adlı `nginx.yaml` bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+Bazı günlükler oluşturmak için AKS kümenizde yeni bir pod oluşturun. Aşağıdaki örnek YAML bildirimi, temel bir NGıNX örneği oluşturmak için kullanılabilir. İstediğiniz düzenleyicide `nginx.yaml` adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -99,7 +96,7 @@ Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi NGıNX Pod 'ağı
 
 ![Örnek NGıNX pod için Log Analytics sorgu sonuçları](media/view-master-logs/log-analytics-query-results.png)
 
-Ek günlükleri görüntülemek için, etkinleştirdiğiniz ek günlüklere bağlı olarak *Kategori* adı sorgusunu Kuto *-Controller-Manager* veya Kuto *-Scheduler*olarak güncelleştirebilirsiniz. Daha sonra, aradığınız olayları iyileştirmek için ek *WHERE* deyimleri kullanılabilir.
+Ek günlükleri görüntülemek için, etkinleştirdiğiniz ek günlüklere bağlı olarak *Kategori* adı sorgusunu *Kuto-Controller-Manager* veya *Kuto-Scheduler*olarak güncelleştirebilirsiniz. Daha sonra, aradığınız olayları iyileştirmek için ek *WHERE* deyimleri kullanılabilir.
 
 Günlük verilerinizi sorgulama ve filtreleme hakkında daha fazla bilgi için bkz. [Log Analytics günlük araması ile toplanan verileri görüntüleme veya çözümleme][analyze-log-analytics].
 
@@ -109,10 +106,10 @@ Günlük verilerini çözümlemeye yardımcı olması için aşağıdaki tabloda
 
 | Alan adı               | Açıklama |
 |--------------------------|-------------|
-| *resourceId*             | Günlüğü üreten Azure kaynağı |
-| *saat*                   | Günlüğün karşıya yüklendiği zaman damgası |
-| *Kategori*               | Günlüğü oluşturan kapsayıcı/bileşen adı |
-| *OperationName*          | Her zaman *Microsoft. ContainerService/Managedkümeler/diagnosticLogs/Read* |
+| *RESOURCEID*             | Günlüğü üreten Azure kaynağı |
+| *ışınızda*                   | Günlüğün karşıya yüklendiği zaman damgası |
+| *alan*               | Günlüğü oluşturan kapsayıcı/bileşen adı |
+| *operationName*          | Her zaman *Microsoft. ContainerService/Managedkümeler/diagnosticLogs/Read* |
 | *Properties. log*         | Bileşenden alınan günlüğün tam metni |
 | *Properties. Stream*      | *stderr* veya *stdout* |
 | *Properties. Pod*         | Günlüğün geldiği Pod adı |
@@ -120,7 +117,7 @@ Günlük verilerini çözümlemeye yardımcı olması için aşağıdaki tabloda
 
 ## <a name="log-roles"></a>Günlük rolleri
 
-| Role                     | Açıklama |
+| Rol                     | Açıklama |
 |--------------------------|-------------|
 | *aksService*             | Denetim düzlemi işlemi için denetim günlüğünde görünen ad (hcpService 'ten) |
 | *MasterClient*           | MasterClientCertificate için denetim günlüğünde görünen ad, az aks Get-Credentials öğesinden aldığınız sertifika |

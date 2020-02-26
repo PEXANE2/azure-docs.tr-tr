@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896271"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587575"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
 
@@ -81,7 +81,7 @@ Hala uygulama dizininde, DotNet Add Package komutunu kullanarak .NET Core için 
 
 Örnek uygulamanın Azure Cosmos hesabınızda kimlik doğrulaması yapması gerekir. Kimlik doğrulaması yapmak için Azure Cosmos hesabı kimlik bilgilerini uygulamaya geçirmeniz gerekir. Aşağıdaki adımları izleyerek Azure Cosmos hesabı kimlik bilgilerinizi alın:
 
-1.  [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
 1.  Azure Cosmos hesabınıza gidin.
 1.  **Anahtarlar** bölmesini açın ve hesabınızın **URI** ve **birincil anahtarını** kopyalayın.
 
@@ -120,13 +120,13 @@ Varsayılan `Main` yönteminin üzerine yazarak ve genel değişkenleri tanımla
 
 `Main` yönteminin içinde, CosmosClient nesnesini başlatmak için aşağıdaki kodu ekleyin:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 Toplu yürütme etkinleştirildikten sonra, CosmosClient eş zamanlı işlemleri dahili olarak tek hizmet çağrılarına gruplandırır. Bu sayede, bölümler arasında hizmet çağrıları dağıtarak ve son olarak özgün çağıranlara ayrı sonuçlar atayarak üretilen iş kullanımını iyileştirir.
 
 Daha sonra tüm öğelerimizi depolamak için bir kapsayıcı oluşturabilirsiniz.  Bölüm anahtarı olarak `/pk`, sağlanan verimlilik olarak 50000 RU/sn ve yazma verimini iyileştirmek için tüm alanları hariç tutacak bir özel dizin oluşturma ilkesi tanımlayın. CosmosClient başlatma ifadesinden sonra aşağıdaki kodu ekleyin:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>6\. Adım: eşzamanlı görevlerin bir listesini doldurma
 
@@ -141,22 +141,22 @@ Veri modelinizdeki öğelerin bir listesini oluşturmak için "sahte" verileri k
 
 Kaydetmek istediğiniz öğelerin tanımını tanımlayın. `Program.cs` dosyası içinde `Item` sınıfını tanımlamanız gerekir:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 Sonra, `Program` sınıfında bir yardımcı işlevi oluşturun. Bu yardımcı işlev, eklemek ve rastgele veri oluştururken tanımladığınız öğelerin sayısını alır:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 `System.Text.Json` sınıfını kullanarak öğeleri okuyun ve akış örneklerine serileştirin. Otomatik olarak oluşturulan verilerin doğası nedeniyle, verileri akışlar olarak serileştirdide olursunuz. Öğe örneğini doğrudan da kullanabilirsiniz, ancak bunları akışlara dönüştürerek CosmosClient içinde Stream API 'lerinin performansından yararlanabilirsiniz. Genellikle, verileri Bölüm anahtarını bildiğiniz sürece doğrudan kullanabilirsiniz. 
 
 
 Verileri akış örneklerine dönüştürmek için `Main` yöntemi içinde, kapsayıcıyı oluşturduktan hemen sonra aşağıdaki kodu ekleyin:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 Ardından, eşzamanlı görevler oluşturmak için veri akışlarını kullanın ve öğeleri kapsayıcıya eklemek için görev listesini doldurun. Bu işlemi gerçekleştirmek için `Program` sınıfına aşağıdaki kodu ekleyin:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 Tüm bu eşzamanlı nokta işlemleri, giriş bölümünde açıklanan şekilde birlikte yürütülür (toplu).
 

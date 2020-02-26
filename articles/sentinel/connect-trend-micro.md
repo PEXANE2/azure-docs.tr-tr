@@ -3,7 +3,7 @@ title: Eğilim mikro derin güvenliğini Azure Sentinel 'e bağlama | Microsoft 
 description: Trend mikro derin güvenliğini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610446"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588034"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Bağlama eğilimi mikro derin güvenliği
 
 Trend mikro derin güvenlik Bağlayıcısı, Azure Sentinel ile derin güvenlik günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirir. Bu, kuruluşunuzun ağları ve sistemleri hakkında daha fazla bilgi verir ve güvenlik işlemi yeteneklerini geliştirir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makineler Azure NetApp Files ile Windows üzerinde SAP NetWeaver için yüksek kullanılabilirlik (SMB) | Microsoft Docs
+title: Azure NetApp Files (SMB) ile Windows üzerinde SAP NW için Azure VM 'Leri HA | Microsoft Docs
 description: SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555308"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591362"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -162,7 +162,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>İkinci yoks/SCS küme düğümüne bir ASCS/SCS örneği yükler
 
-1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP SWPM yükleme aracı 'nı başlatın, daha sonra > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümüne ** > .**  
+1. İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP SWPM yükleme aracı 'nı başlatın, daha sonra > uygulama sunucusu ABAP (veya Java) > yüksek kullanılabilirlik sistemi > ascs/SCS örneği > ek küme düğümüne **> > .**  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Bir DBMS örneği ve SAP uygulama sunucuları yükler
 

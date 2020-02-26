@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 755e3c1eb649bc6c8ecc084d18e9904cc90b1282
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551854"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586096"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric uygulama tasarımı en iyi uygulamaları
 
@@ -30,7 +30,7 @@ Service Fabric uygulamalarının [genel mimarisi](https://docs.microsoft.com/azu
 Daha sonra ölçeklenebilen arka uç hizmetleriyle iletişim kuran bir API ağ geçidi hizmeti kullanın. Kullanılan en yaygın API ağ geçidi hizmetleri şunlardır:
 
 - [Service Fabric ile tümleştirilmiş](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-api-management) [Azure API Management](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview).
-- Olay Hub 'ı bölümlerinden okumak için [Servicefabricprocessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor) kullanarak [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) veya [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+- Olay Hub 'ı bölümlerinden okumak için [Servicefabricprocessor](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.ServiceFabricProcessor) kullanarak [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) veya [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 - [Azure Service Fabric sağlayıcısını](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/)kullanarak [ters proxy Træfik](https://blogs.msdn.microsoft.com/azureservicefabric/2018/04/05/intelligent-routing-on-service-fabric-with-traefik/).
 - [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/).
 

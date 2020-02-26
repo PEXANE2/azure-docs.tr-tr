@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036306"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587218"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüğü depolama bloblarını silme
 
@@ -125,9 +125,9 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. Komut dosyasına gereken şekilde aşağıdaki parametreleri girin:
-   - **Abonelik kimliği** [Zorunlu]: NSG akış günlüğü bloblarını silmek istediğiniz abonelik KIMLIĞI.
-   - **Konum** [Zorunlu]: NSG akış günlüğü bloblarını silmek istediğiniz NSGs bölgesinin _konum dizesi_ . Bu bilgileri Azure portal veya [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)üzerinde görüntüleyebilirsiniz.
-   - **Onayla** [İsteğe bağlı]: Her depolama blobunun silinmesini el ile onaylamak istiyorsanız, Onayla bayrağını geçirin.
+   - **SubscriptionID** [zorunlu]: NSG akış günlüğü bloblarını silmek ISTEDIĞINIZ abonelik kimliği.
+   - **Konum** [zorunlu]: NSG akış günlüğü bloblarını silmek Istediğiniz nsgs bölgesinin _konum dizesi_ . Bu bilgileri Azure portal veya [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)üzerinde görüntüleyebilirsiniz.
+   - **Onayla** [isteğe bağlı]: her bir depolama Blobun silinmesini el ile onaylamak istiyorsanız, Onayla bayrağını geçirin.
 
 1. Aşağıdaki örnekte gösterildiği gibi kaydedilen betiği çalıştırın, burada betik dosyası **Delete-NsgFlowLogsBlobs. ps1**olarak kaydedilir:
    ```
@@ -135,6 +135,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Sonraki adımlar
-- Müşteriler, [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) veya [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) kullanarak betiği çalıştırmayı otomatik hale getirebilir
+- Müşteriler, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) veya [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) kullanarak betiği çalıştırmayı otomatik hale getirebilir
 - NSG günlüğü hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları (NSG 'ler) Için Azure izleyici günlükleri](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

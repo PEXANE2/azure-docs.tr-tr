@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552789"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587405"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL veritabanı örnek havuzları (Önizleme) nedir?
 
@@ -126,7 +126,7 @@ Bir havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha
 
 Bir havuz içindeki tek örneklerle veya veritabanlarıyla ilgili sorunlar yaşıyorsanız, Azure SQL veritabanı yönetilen örnekleri için normal bir destek bileti oluşturmanız gerekir.
 
-Daha büyük yönetilen örnek dağıtımları oluşturmak için (örnek havuzlarla veya bunlarla birlikte), daha büyük bir bölgesel kota edinmeniz gerekebilir. [Daha büyük bir kota istemek için Standart yönetilen örnek yordamını](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)kullanın, ancak örnek havuzları kullanıyorsanız, dağıtım mantığı *Havuz düzeyindeki* toplam Vcore tüketimini, kotayı daha fazla artırmadan yeni kaynaklar oluşturmanıza izin verilip verilmeyeceğini öğrenmek için havuzunuza göre karşılaştırır.
+Daha büyük yönetilen örnek dağıtımları oluşturmak için (örnek havuzlarla veya bunlarla birlikte), daha büyük bir bölgesel kota edinmeniz gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](quota-increase-request.md). Örnek havuzları kullanıyorsanız, dağıtım mantığı, kotayı daha fazla artırmadan yeni kaynaklar oluşturmanıza izin verilip verilmeyeceğini öğrenmek için havuz düzeyindeki toplam vCore tüketimini *havuzunuza* göre karşılaştırır.
 
 ## <a name="instance-pool-billing"></a>Örnek havuzu Faturalaması
 

@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f4954b3a33cdd73c1e004ad1e643f9e24abf1e4
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485242"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586266"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -180,10 +180,24 @@ Bir makinenin sunucular için Azure Arc bağlantısını kesmek için (Önizleme
     ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
     ```
 
-1. Linux aracısını kaldırmak için aşağıdaki komutu çalıştırın:
+1. Linux aracısını kaldırmak için, kullanılacak komut Linux işletim sistemine bağlıdır.
+
+    - Ubuntu için aşağıdaki komutu çalıştırın:
 
       ```bash
       sudo apt purge azcmagent
+      ```
+
+    - RHEL, CentOS ve Amazon Linux için aşağıdaki komutu çalıştırın:
+
+      ```bash
+      sudo yum remove azcmagent
+      ```
+
+    - SLES için aşağıdaki komutu çalıştırın:
+
+      ```bash
+      sudo zypper remove azcmagent
       ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

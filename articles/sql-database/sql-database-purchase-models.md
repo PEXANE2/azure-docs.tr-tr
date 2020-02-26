@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964779"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587303"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 
@@ -77,7 +77,7 @@ Sanal çekirdek tabanlı satın alma modeli, işlem ve depolama kaynaklarını b
 
 > [!IMPORTANT]
 > İşlem kaynakları, g/ç ve veri ve günlük depolama, veritabanı veya elastik havuz başına ücretlendirilir. Yedekleme depolaması her bir veritabanı için ücretlendirilir. Yönetilen örnek ücretleri hakkında daha fazla bilgi için bkz. [yönetilen örnekler](sql-database-managed-instance.md).
-> **Bölge sınırlamaları:** Desteklenen bölgelerin geçerli listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için [Azure Portal aracılığıyla bir destek isteği gönderin](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Bölge sınırlamaları:** Desteklenen bölgelerin geçerli listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için [Azure Portal aracılığıyla bir destek isteği gönderin](quota-increase-request.md).
 
 Tek veritabanınız veya elastik havuzunuz 300 ' den fazla DTU kullanıyorsa, sanal çekirdek tabanlı satın alma modeline dönüştürmek maliyetlerinizi azaltabilir. İstediğiniz API 'nizi veya Azure portal kullanarak, kapalı kalma süresi olmadan dönüştürme yapabilirsiniz. Ancak, dönüştürme gerekli değildir ve otomatik olarak yapılmaz. DTU tabanlı satın alma modeli, performans ve iş gereksinimlerinizi karşılıyorsa, uygulamayı kullanmaya devam etmelisiniz.
 
@@ -102,7 +102,7 @@ Bu kaynaklar arasındaki oran başlangıçta gerçek dünya OLTP iş yüklerinde
 
 ![sınırlayıcı kutusu](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örneğin:
+DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örnek:
 
 - Bir veritabanının işlem boyutunu artırarak, bu veritabanı için kullanılabilir kaynak kümesini ikiye katlayarak DTU 'ları katlama.
 - 1750 DTU içeren bir Premium hizmet katmanı P11 veritabanı, 5 DTU ile temel bir hizmet katmanı veritabanından 350x daha fazla DTU işlem gücü sağlar.  

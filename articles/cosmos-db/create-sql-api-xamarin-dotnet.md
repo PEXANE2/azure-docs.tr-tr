@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466314"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586776"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
 
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak Azure Cosmos DB bir SQL API h
 
 Windows üzerinde geliştirme yapıyorsanız ve henüz Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirme** ve **.NET ile Mobil Dağıtım** iş yüklerini etkinleştirdiğinizden emin olun.
 
-Mac kullanıyorsanız, **Mac için Visual Studio**’yu [ücretsiz](https://www.visualstudio.com/vs/mac/) olarak indirebilirsiniz.
+Mac kullanıyorsanız, **ücretsiz** [Mac için Visual Studio](https://www.visualstudio.com/vs/mac/)indirebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -61,7 +61,7 @@ Mac kullanıyorsanız, **Mac için Visual Studio**’yu [ücretsiz](https://www.
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi Xamarin SQL API uygulamasını GitHub 'dan kopyalayalım, kodu gözden geçirin, API anahtarlarını edinin ve çalıştırın. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu göreceksiniz.
+Şimdi Xamarin SQL API uygulamasını GitHub 'dan kopyalayalım, kodu gözden geçirin, API anahtarlarını edinin ve çalıştırın. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz.
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -128,7 +128,7 @@ ToDoItems çözümündeki kod şunları içerir:
 
 * Belgeler için bir kapsayıcı sorgulanırken, `CosmosDBService.GetToDoItems` işlevinde görüldüğü gibi `DocumentClient.CreateDocumentQuery<T>` yöntemi kullanılır:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     `CreateDocumentQuery<T>`, önceki bölümde oluşturulan kapsayıcıyı işaret eden bir URI alır. Ayrıca, bir `Where` yan tümcesi gibi LINQ işleçleri belirtebilirsiniz. Bu durumda yalnızca tamamlanmamış todo öğeleri döndürülür.
 
@@ -141,13 +141,13 @@ ToDoItems çözümündeki kod şunları içerir:
 
 * `ComsmosDBService.InsertToDoItem` işlevi nasıl yeni bir belge ekleneceğini gösterir:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     Öğe URI 'sinin yanı sıra eklenecek öğe.
 
 * `CosmosDBService.UpdateToDoItem` işlevi, var olan bir belgenin yeni bir belgenin nasıl değiştirileceğini gösterir:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     Burada, değiştirilecek belgeyi benzersiz bir şekilde tanımlamak için yeni bir URI gerekir ve `UriFactory.CreateDocumentUri` kullanarak elde edilir ve veritabanı ve kapsayıcı adlarını ve belge KIMLIĞINI geçirerek alınır.
 
@@ -155,7 +155,7 @@ ToDoItems çözümündeki kod şunları içerir:
 
 * Bir öğeyi silmek `CosmosDBService.DeleteToDoItem` işleviyle gösterilmiştir:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     Daha sonra, oluşturulan ve `DocumentClient.DeleteDocumentAsync` işlevine geçirilen benzersiz belge URI 'sine göz önünde yer.
 

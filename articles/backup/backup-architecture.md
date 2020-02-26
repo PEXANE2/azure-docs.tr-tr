@@ -3,12 +3,12 @@ title: Mimariye genel bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963946"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584396"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -94,10 +94,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
-Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
+Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
+Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
@@ -135,7 +135,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
     - Anlık görüntü verileri hemen kasaya kopyalanmayabilir. Yoğun saatlerde yedekleme birkaç saat sürebilir. Bir VM için toplam Yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten daha az olacaktır.
 1. Veriler kasaya gönderildikten sonra bir kurtarma noktası oluşturulur. Varsayılan olarak, anlık görüntüler silinmeden önce iki gün boyunca tutulur. Bu özellik bu anlık görüntülerden geri yükleme işlemine izin verir ve bu sayede geri yükleme sürelerini kapatır. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Bkz. [Azure Backup Instant Restore özelliği](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
-Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM içindeki iş yüklerini yedekliyorsanız (örneğin, veritabanı yedeklemeleri SQL Server), arka uç verilerinde de internet erişimi gerekir.
+Azure VM 'lerinizi yedeklemek için internet bağlantısına açık bir şekilde izin vermeniz gerekmez.
 
 ![Azure VM 'lerinin yedeklenmesi](./media/backup-architecture/architecture-azure-vm.png)
 

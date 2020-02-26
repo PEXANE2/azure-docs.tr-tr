@@ -3,12 +3,12 @@ title: Azure Service Fabric kümesine güvenli bir şekilde bağlanma
 description: Service Fabric kümesine istemci erişiminin kimliğini doğrulamak ve istemcilerle küme arasındaki iletişimin güvenliğini sağlamak açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458264"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587065"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanma
 
@@ -24,15 +24,15 @@ Service Fabric CLı (sfctl) kullanarak güvenli bir kümeye bağlanmanın birka�
 
 İstemci sertifikaları, sertifika ve anahtar çifti olarak ya da tek bir PFX dosyası olarak iki farklı Fashions içinde belirtilebilir. Parola korumalı ped dosyaları için otomatik olarak parolayı girmeniz istenir. İstemci sertifikasını bir PFX dosyası olarak aldıysanız, önce aşağıdaki komutu kullanarak PFX dosyasını bir PEı dosyasına dönüştürün. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
 . Pfx dosyanız parola korumalı değilse, son parametre için-passin pass: kullanın.
 
-İstemci sertifikasını bir pek dosyası olarak belirtmek için `--pem` bağımsız değişkeninde dosya yolunu belirtin. Örneğin:
+İstemci sertifikasını bir pek dosyası olarak belirtmek için `--pem` bağımsız değişkeninde dosya yolunu belirtin. Örnek:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,22 +40,22 @@ Parola korumalı ped dosyaları, herhangi bir komut çalıştırılmadan önce p
 
 Bir sertifika belirtmek için, anahtar çifti ilgili her dosyanın dosya yollarını belirtmek üzere `--cert` ve `--key` bağımsız değişkenlerini kullanın.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için `--no-verify` seçeneğini belirtin. Örneğin:
+Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için `--no-verify` seçeneğini belirtin. Örnek:
 
 > [!WARNING]
 > Üretim Service Fabric kümelerine bağlanırken `no-verify` seçeneğini kullanmayın.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Ayrıca, güvenilir CA sertifikaları veya ayrı sertifikalar için yollar belirtebilirsiniz. Bu yolları belirtmek için `--ca` bağımsız değişkenini kullanın. Örneğin:
+Ayrıca, güvenilir CA sertifikaları veya ayrı sertifikalar için yollar belirtebilirsiniz. Bu yolları belirtmek için `--ca` bağımsız değişkenini kullanın. Örnek:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

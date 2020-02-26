@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 60832f9438a602945c63910a436d7638f15a201d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969443"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586300"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell için Özellikler & Araçları
 
@@ -71,13 +71,13 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 
 |Kategori   |Adı   |
 |---|---|
-|Linux araçları            |bash<br> ZSH<br> Dak<br> tmux<br> derinlemesine<br>               |
+|Linux araçları            |Bash<br> ZSH<br> dak<br> tmux<br> derinlemesine<br>               |
 |Azure Araçları            |[Azure CLI](https://github.com/Azure/azure-cli) ve [Azure klasik CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Işlevleri CLı](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Metin düzenleyicileri           |kod (Cloud Shell Düzenleyicisi)<br> vim<br> nano<br> emacs    |
+|Metin düzenleyicileri           |kod (Cloud Shell Düzenleyicisi)<br> v<br> Nano<br> Emacs    |
 |Kaynak denetimi         |git                    |
-|Derleme araçları            |skype<br> maven<br> npm<br> Pip         |
+|Derleme araçları            |yapabilir<br> Maven<br> npm<br> Pip         |
 |Kapsayıcılar             |[Docker Makinesi](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLı](https://github.com/dcos/dcos-cli)         |
-|Veri tabanları              |MySQL istemcisi<br> PostgreSql istemcisi<br> [sqlcmd yardımcı programı](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Veritabanları              |MySQL istemcisi<br> PostgreSql istemcisi<br> [sqlcmd yardımcı programı](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL-Scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Diğer                  |IPython Istemcisi<br> [Cloud Foundry CLı](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Pupevcil hayvan sürgüsü](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Dil desteği
@@ -85,10 +85,10 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 |Dil   |Sürüm   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Go         |1.9        |
-|Java       |1.8        |
+|Başlayın         |1.9        |
+|Java       |1,8        |
 |Node.js    |8.16.0      |
-|PowerShell |[6.2.3](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0-RC. 2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 ve 3,5 (varsayılan)|
 
 ## <a name="next-steps"></a>Sonraki adımlar

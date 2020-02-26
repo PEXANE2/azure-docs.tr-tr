@@ -3,7 +3,7 @@ title: Azure Sentinel 'de uyarılardan olay oluşturma | Microsoft Docs
 description: Azure Sentinel 'de uyarılardan olay oluşturmayı öğrenin.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029770"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587983"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft Güvenlik uyarılarından otomatik olarak olay oluştur
 
@@ -47,7 +47,7 @@ Hangi bağlı Microsoft güvenlik çözümlerinin Azure Sentinel olaylarını ot
 
 1. Kural ayrıntılarını değiştirebilir ve uyarı önem derecesine göre ya da uyarının adında bulunan metin ile olayları oluşturacak uyarıları filtrelemeye seçim yapabilirsiniz.  
       
-    Örneğin, **Microsoft güvenlik hizmeti** alanında **Azure Güvenlik Merkezi** ' ni seçip **önem derecesine göre filtrele** alanında **yüksek** ' i seçerseniz, yalnızca yüksek önem derecesine sahip Azure Güvenlik Merkezi uyarıları otomatik olarak olay oluşturur Azure Sentinel 'de.  
+    Örneğin, **Microsoft güvenlik hizmeti** alanında **Azure Güvenlik Merkezi** ' ni seçip **önem derecesine göre filtrele** alanında **yüksek** ' i seçerseniz, yalnızca yüksek önem derecesine sahip Azure Güvenlik Merkezi uyarıları Azure Sentinel 'de otomatik olarak olay oluşturur.  
 
     ![Kural oluşturma Sihirbazı](media/incidents-from-alerts/create-rule-wizard.png)
 

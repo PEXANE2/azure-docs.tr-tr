@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965829"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588986"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
 
@@ -27,7 +27,7 @@ Azure AD ile yetkilendirme, tüm genel bölgelerde ve ulusal bulutlarda tüm gen
 
 Blob Storage Ayrıca Azure AD kimlik bilgileriyle imzalanmış paylaşılan erişim imzaları (SAS) oluşturulmasını destekler. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile verilere sınırlı erişim verme](storage-sas-overview.md).
 
-Azure dosyaları, yalnızca etki alanına katılmış VM 'Ler için SMB üzerinden Azure AD ile yetkilendirmeyi destekler. Azure dosyaları için SMB üzerinden Azure AD kullanma hakkında bilgi edinmek için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory yetkilendirmeye genel bakış](../files/storage-files-active-directory-overview.md).
+Azure dosyaları, AD (Önizleme) veya Azure AD DS (GA) ile yalnızca etki alanına katılmış VM 'Ler için SMB üzerinden yetkilendirmeyi destekler. Azure dosyaları için SMB üzerinden AD (Önizleme) veya Azure AD DS (GA) kullanma hakkında bilgi edinmek için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](../files/storage-files-active-directory-overview.md).
 
 Azure AD ile yetkilendirme, Azure Tablo depolama için desteklenmez. İstekleri tablo depolamaya yetkilendirmek için paylaşılan anahtar kullanın.
 

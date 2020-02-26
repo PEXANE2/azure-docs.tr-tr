@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922493"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580660"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -46,7 +46,7 @@ Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 | Çekirdek&nbsp;arama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Özellikler |
 |-------------------|----------|
 |Serbest biçimli metin arama | [**Tam metin arama**](search-lucene-query-architecture.md) , çoğu arama tabanlı uygulama için birincil kullanım durumdur. Desteklenen bir söz dizimi kullanılarak sorgular formüle edilebilir. <br/><br/>[**Basit sorgu söz dizimi**](query-simple-syntax.md), mantıksal işleçler, tümcecik arama işleçleri, sonek işleçleri, öncelik işleçleri sağlar.<br/><br/>[**Lucene sorgu söz dizimi**](query-lucene-syntax.md), belirsiz arama, yakınlık araması, terimle yükseltme ve düzenli ifadeler için uzantılarla birlikte basit söz diziminde tüm işlemleri içerir.|
-| İlgi Düzeyi | [**Basit skor**](index-add-scoring-profiles.md) , Azure bilişsel arama 'ın önemli bir avantajıdır. Belgelerdeki değer işlevi olarak ilgi düzeyini modellemek için puanlama profilleri kullanılır. Örneğin, yeni ürünlerin veya indirimli ürünlerin arama sonuçlarında daha yukarıda görüntülenmesini isteyebilirsiniz. Ayrı olarak izleyip depoladığınız müşteri arama tercihlerine göre kişiselleştirilmiş puanlama için etiketleri kullanarak da puanlama profilleri derleyebilirsiniz. |
+| İlgi düzeyi | [**Basit skor**](index-add-scoring-profiles.md) , Azure bilişsel arama 'ın önemli bir avantajıdır. Belgelerdeki değer işlevi olarak ilgi düzeyini modellemek için puanlama profilleri kullanılır. Örneğin, yeni ürünlerin veya indirimli ürünlerin arama sonuçlarında daha yukarıda görüntülenmesini isteyebilirsiniz. Ayrı olarak izleyip depoladığınız müşteri arama tercihlerine göre kişiselleştirilmiş puanlama için etiketleri kullanarak da puanlama profilleri derleyebilirsiniz. |
 | Coğrafi arama | Azure Bilişsel Arama, coğrafi konumları işler, filtreler ve görüntüler. Kullanıcıların, bir arama sonucunun fiziksel bir konuma göre yakınlığına göre verileri bulmasını sağlar. Daha fazla bilgi edinmek için [bu videoyu izleyin](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) veya [bu örneği gözden geçirin](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Filtreler ve modeller | [**Modellenmiş gezinti**](search-faceted-navigation.md), tek bir sorgu parametresi aracılığıyla etkinleştirilir. Azure Bilişsel Arama, kendi kendine yönlendirilmiş filtreleme için (örneğin, katalog öğelerini fiyat aralığına veya markaya göre filtrelemek için) bir Kategoriler listesinin arkasında kod olarak kullanabileceğiniz, çok yönlü bir gezinti yapısı döndürür. <br/><br/> [**Filtreler**](query-odata-filter-orderby-syntax.md), uygulamanın kullanıcı arabiriminde çok yönlü gezintiye yer vermek, sorgu oluşumunu geliştirmek ve kullanıcı veya geliştirici tarafından belirtilen ölçütlere göre filtreleme yapmak için kullanılabilir. OData söz dizimini kullanarak filtreler oluşturun. |
 | Kullanıcı deneyimi özellikleri | [**Otomatik tamamlama**](search-autocomplete-tutorial.md) , bir arama çubuğundaki tür ilerlek sorguları için etkinleştirilebilir. <br/><br/>[**Arama önerileri**](https://docs.microsoft.com/rest/api/searchservice/suggesters) de arama çubuğuna girilen kısmi metinler için kullanılabilir ancak sonuçlar sorgu terimi yerine dizininizdeki gerçek belgeler olur. <br/><br/>[**Eş anlamlılar**](search-synonyms.md), kullanıcının alternatif terim belirtmesine gerek kalmadan bir sorguyu kapsamını genişleten eşdeğer terimlerle ilişkilendirir. <br/><br/>[**İsabet vurgulama**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents), arama sonuçlarında eşleşen bir anahtar sözcüğe metin biçimlendirmesi uygular. Hangi alanların vurgulanan kod parçacıklarını döndürdüğünü seçebilirsiniz.<br/><br/>Dizin şeması aracılığıyla birden fazla alan için [**Sıralama**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) sunulur ve sonra tek bir arama parametresi ile sorgu zamanında açılıp kapatılır.<br/><br/> Arama sonuçlarınızı [**sayfalama**](search-pagination-page-layout.md) ve daraltma, Azure bilişsel arama 'nin arama sonuçlarınız üzerinde sunduğu ince ayar denetimi ile kolay bir şekilde ayarlanır.  <br/><br/>|
@@ -59,7 +59,7 @@ Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 
 | Veri&nbsp;içeri/dışarı dizin oluşturma | Özellikler |
 |----------------------------------|----------|
-| Veri kaynakları | Azure Bilişsel Arama dizinleri, JSON veri yapısı olarak gönderildiği belirtilen kaynaklardan verileri kabul eder. <br/><br/> [**Dizin oluşturucular**](search-indexer-overview.md) , desteklenen Azure veri kaynakları için veri alımı otomatikleştirin ve JSON serileştirmesini işleyebilir. Birincil veri depolarında aranabilir içerik ayıklamak için [Azure SQL veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md)veya [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md) 'ya bağlanın. Azure Blob dizin oluşturucuları, Microsoft Office, PDF ve HTML belgeleri de dahil, [başlıca dosya biçimlerinden metin ayıklamak](search-howto-indexing-azure-blob-storage.md) için *belge çözme* işlemini gerçekleştirebilir. |
+| Veri kaynakları | Azure Bilişsel Arama dizinleri, JSON veri yapısı olarak gönderildiği belirtilen kaynaklardan verileri kabul eder. <br/><br/> [**Dizin oluşturucular**](search-indexer-overview.md) , desteklenen Azure veri kaynakları için veri alımı otomatikleştirin ve JSON serileştirmesini işleyebilir. Birincil veri depolarında aranabilir içerik ayıklamak için [Azure SQL veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md)veya [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md) 'ya bağlanın. Azure Blob dizin oluşturucuları, Microsoft Office, PDF ve HTML belgeleri de dahil, *başlıca dosya biçimlerinden metin ayıklamak* için [belge çözme](search-howto-indexing-azure-blob-storage.md) işlemini gerçekleştirebilir. |
 | Hiyerarşik ve iç içe veri yapıları | [**Karmaşık türler**](search-howto-complex-data-types.md) ve koleksiyonlar, neredeyse her türlü JSON yapısını Azure bilişsel arama dizini olarak modellebilmenize olanak tanır. Bire çok ve çoka çok kardinalite, koleksiyonlar, karmaşık türler ve karmaşık türlerin koleksiyonları aracılığıyla yerel olarak ifade edilebilir.|
 | Dil çözümleme | Çözümleyiciler, dizin oluşturma ve arama işlemleri sırasında metin işleme için kullanılan bileşenlerdir. İki tür vardır. <br/><br/>[**Özel sözcük temelli çözümleyiciler**](index-add-custom-analyzers.md), fonetik eşleştirme ve düzenli ifadeler kullanılarak yapılan karmaşık arama sorguları için kullanılır. <br/><br/>Lucene veya Microsoft’un [**dil çözümleyicileri**](index-add-language-analyzers.md), zaman kipleri, cinsiyet belirteçleri, düzensiz çoğul adlar (İngilizce’deki 'mouse' ve 'mice' gibi), sözcüğü bileşenlerine ayırma, sözcüklere bölme (boşluk içermeyen diller için) vb. gibi dile özgü linguistik durumları akıllıca işlemek için kullanılır. <br/><br/>|
 
@@ -132,7 +132,7 @@ Portalda birçok görev gerçekleştirileken, Azure Bilişsel Arama, arama işle
 |[REST](/rest/api/searchservice/) | Xamarin, Java ve JavaScript gibi, programlama platformu ve dili tarafından desteklenen HTTP komutları|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API’si için .NET sarmalayıcı, C# dilinde ve .NET Framework’ü hedefleyen diğer yönetilen kod dillerinde verimli kodlama sunar |
 
-## <a name="free-trial"></a>Ücretsiz deneme
+## <a name="free-trial"></a>Ücretsiz deneme sürümü
 Azure aboneleri, [Ücretsiz katmanda bir hizmet sağlayabilir](search-create-service-portal.md).
 
 Abone değilseniz, [ücretsiz olarak bir Azure hesabı açabilirsiniz](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Ücretli Azure hizmetlerini denemek için krediler alırsınız. Krediler bittikten sonra hesabı tutabilir ve [ücretsiz Azure hizmetlerini](https://azure.microsoft.com/free/) kullanabilirsiniz. Açıkça ayarlarınızı değiştirip ücretlendirme istemediğiniz sürece kredi kartınız asla ücretlendirilmez.

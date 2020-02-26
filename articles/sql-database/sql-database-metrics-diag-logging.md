@@ -10,23 +10,23 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 02/21/2020
-ms.openlocfilehash: 880967fd48d82aaa15c6e3c08d36ec02eee60ead
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.date: 02/24/2020
+ms.openlocfilehash: dead8b95446009880c36f97a095aee4aaae0579d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544310"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587371"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL veritabanı ölçümleri ve tanılama günlüğü
 
-Bu makalede, Azure SQL veritabanları için Azure portal, PowerShell, Azure CLı, Azure Izleyici REST API ve Azure Resource Manager şablonu aracılığıyla tanılama telemetrinin günlüğe kaydetmenin nasıl yapılandırılacağını öğreneceksiniz. Bu Tanılamalar, kaynak kullanımını ve sorgu yürütme istatistiklerini ölçmek için kullanılabilir.
-
-Tek veritabanları, havuza alınmış veritabanları ve yönetilen örnek veritabanları, daha kolay performans izleme için ölçümleri ve tanılama günlüklerini akışa alabilir. Kaynak kullanımını, çalışanları ve oturumları ve aşağıdaki Azure kaynaklarından birine bağlantıyı iletmek için bir Azure SQL veritabanı yapılandırabilirsiniz:
+Bu makalede, Azure SQL veritabanları için Azure portal, PowerShell, Azure CLı, REST API ve Azure Resource Manager şablonu aracılığıyla tanılama telemetrisine yönelik günlüğü nasıl etkinleştireceğinizi ve yapılandıracağınızı öğreneceksiniz. Tek veritabanları, havuza alınmış veritabanları, elastik havuzlar, yönetilen örnekler ve örnek veritabanları, ölçümleri ve tanılama günlüklerini aşağıdaki Azure kaynaklarından birine kayükleyebilir:
 
 - **Azure SQL Analytics**: performans raporları, uyarılar ve risk azaltma önerilerini içeren veritabanlarınızı akıllı olarak izlemeyi alın
 - **Azure Event Hubs**: veritabanı telemetrisini özel izleme çözümlerinizle veya etkin işlem hatlarınız ile tümleştirin
 - **Azure depolama**: fiyatın bir bölümü için büyük miktarlarda telemetri Arşivle
+
+Bu Tanılamalar, daha kolay performans izleme için kaynak kullanımı ve sorgu yürütme istatistiklerini ölçmek için kullanılabilir.
 
 ![Mimari](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -34,8 +34,6 @@ Tek veritabanları, havuza alınmış veritabanları ve yönetilen örnek verita
 
 - [Microsoft Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 - [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)
-
-Bu makalede, tüm Azure SQL veritabanlarınızda tanılama telemetrisini etkinleştirmenize yardımcı olacak rehberlik sunulmaktadır.
 
 ## <a name="enable-logging-of-diagnostics-telemetry"></a>Tanılama telemetrinin günlüğe kaydedilmesini etkinleştir
 
@@ -49,15 +47,15 @@ Aşağıdaki yöntemlerden birini kullanarak ölçümler ve tanılama telemetri 
 
 Ölçümleri ve tanılama günlüğünü etkinleştirdiğinizde, tanılama telemetrisini toplamak için Azure Kaynak hedefini belirtmeniz gerekir. Kullanılabilir seçenekler şunlardır:
 
-- Azure SQL Analytics
-- Azure Event Hubs
-- Azure Storage
+- [Azure SQL Analizi](#stream-diagnostic-telemetry-into-sql-analytics)
+- [Azure Event Hubs](#stream-diagnostic-telemetry-into-event-hubs)
+- [Azure depolama alanı](#stream-diagnostic-telemetry-into-azure-storage)
 
 Yeni bir Azure kaynağı temin edebilir veya var olan bir kaynağı seçebilirsiniz. **Tanılama ayarları** seçeneğini kullanarak bir kaynak seçtikten sonra toplanacak verileri belirtin.
 
 ## <a name="supported-diagnostic-logging-for-azure-sql-databases"></a>Azure SQL veritabanları için desteklenen tanılama günlüğü
 
-SQL veritabanlarında ölçümleri ve tanılama günlüğünü etkinleştirin. Tanılama günlük kaydı varsayılan olarak etkin değildir. Azure SQL veritabanlarını aşağıdaki tanılama telemetrisini toplayacak şekilde ayarlayabilirsiniz:
+Azure SQL veritabanlarını aşağıdaki tanılama telemetrisini toplayacak şekilde ayarlayabilirsiniz:
 
 | Veritabanları için telemetri izleme | Tek veritabanı ve havuza alınmış veritabanı desteği | Yönetilen örnek veritabanı desteği |
 | :------------------- | ----- | ----- |
@@ -80,15 +78,16 @@ SQL veritabanlarında ölçümleri ve tanılama günlüğünü etkinleştirin. T
 >
 > Tanılama ayarları, ana, msdb, model, kaynak ve tempdb veritabanları gibi **sistem veritabanları**için yapılandırılamaz.
 
-## <a name="configure-diagnostic-logging-by-using-the-azure-portal"></a>Azure portal kullanarak tanılama günlüğünü yapılandırma
+## <a name="configure-streaming-of-diagnostic-telemetry"></a>Tanılama telemetrinin akışını yapılandırma
 
-Tanılama telemetrinin akışını yapılandırmak için Azure portal içindeki her bir tek, havuza alınmış veya yönetilen örnek veritabanı için **Tanılama ayarları** menüsünü kullanabilirsiniz. Ayrıca, tanılama telemetrisi veritabanı kapsayıcıları için ayrı olarak da yapılandırılabilir: elastik havuzlar ve yönetilen örnekler. 
+Tanılama telemetrinin akışını etkinleştirmek ve yapılandırmak için Azure portal **Tanılama ayarları** menüsünü kullanabilirsiniz. Ayrıca, tanılama telemetrinin akışını yapılandırmak için PowerShell, Azure CLı, [REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)ve [Kaynak Yöneticisi şablonlarını](../azure-monitor/platform/diagnostic-settings-template.md) kullanabilirsiniz. Tanılama telemetrisini akışa almak için aşağıdaki hedefleri ayarlayabilirsiniz: Azure depolama, Azure Event Hubs ve Azure Izleyici günlükleri.
 
-Tanılama telemetrisini akışa almak için aşağıdaki hedefleri ayarlayabilirsiniz: Azure depolama, Azure Event Hubs ve Azure Izleyici günlükleri.
+> [!IMPORTANT]
+> Tanılama telemetrinin günlüğe kaydedilmesi varsayılan olarak etkin değildir.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Elastik havuzlar için tanılama telemetrinin akışını yapılandırma
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/azure-portal)
 
-   ![Elastik havuz simgesi](./media/sql-database-metrics-diag-logging/icon-elastic-pool-text.png)
+### <a name="elastic-pools"></a>Esnek havuzlar
 
 Aşağıdaki tanılama telemetrisini toplamak için bir elastik havuz kaynağı ayarlayabilirsiniz:
 
@@ -101,7 +100,7 @@ Elastik havuzlar ve havuza alınmış veritabanları için tanılama telemetrini
 - Elastik havuz için tanılama telemetrinin akışını etkinleştirme
 - Elastik havuzdaki her veritabanı için tanılama telemetrinin akışını etkinleştirme
 
-Elastik havuz kapsayıcısının her bir veritabanının telemetrisinden ayrı ayrı kendi telemetrisi vardır.
+Elastik havuz kapsayıcısının, tek tek havuza alınmış her veritabanı telemetrisinden ayrı bir telemetri vardır.
 
 Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
 
@@ -123,18 +122,22 @@ Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek i
 > [!IMPORTANT]
 > Esnek havuz için tanılama telemetrisini yapılandırmanın yanı sıra, elastik havuzdaki her bir veritabanı için tanılama telemetrisini de yapılandırmanız gerekir.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-single-databases-and-pooled-database"></a>Tek veritabanları ve havuza alınmış veritabanı için tanılama telemetrinin akışını yapılandırın
+### <a name="single-or-pooled-database"></a>Tek veya havuza alınmış veritabanı
 
-   ![SQL veritabanı simgesi](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
+Aşağıdaki tanılama telemetrisini toplamak için, tek veya havuza alınmış bir veritabanı kaynağı ayarlayabilirsiniz:
 
-Tek veya havuza alınmış veritabanları için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
+| Kaynak | Telemetri izleme |
+| :------------------- | ------------------- |
+| **Tek veya havuza alınmış veritabanı** | [Temel ölçümler](sql-database-metrics-diag-logging.md#basic-metrics) DTU YÜZDESI, DTU kullanımı, DTU SıNıRı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama alanı yüzdesi, XTP depolama yüzdesi ve kilitlenmeleri içerir. |
+
+Tek veya havuza alınmış bir veritabanı için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
 
 1. Azure **SQL veritabanı** kaynağına gidin.
 2. **Tanılama ayarları**' nı seçin.
-3. Önceki ayarlar yoksa **tanılamayı aç** ' ı seçin veya önceki bir ayarı düzenlemek Için **ayarı Düzenle** ' yi seçin. Akış tanılama telemetrisine en fazla üç paralel bağlantı oluşturabilirsiniz. 
+3. Önceki ayarlar yoksa **tanılamayı aç** ' ı seçin veya önceki bir ayarı düzenlemek Için **ayarı Düzenle** ' yi seçin. Akış tanılama telemetrisine en fazla üç paralel bağlantı oluşturabilirsiniz.
 4. Tanılama verilerinin paralel akışını birden çok kaynağa yapılandırmak için **Tanılama ayarı Ekle** ' yi seçin.
 
-   ![Tek, havuza alınmış veya örnek veritabanları için tanılamayı etkinleştirme](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+   ![Tek ve havuza alınmış veritabanları için tanılamayı etkinleştirme](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 
 5. Kendi başvurunuz için bir ayar adı girin.
 6. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
@@ -148,9 +151,7 @@ Tek veya havuza alınmış veritabanları için tanılama telemetrinin akışın
 > [!TIP]
 > İzlemek istediğiniz her bir tek ve havuza alınmış veritabanı için bu adımları yineleyin.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Yönetilen örnekler için tanılama telemetrinin akışını yapılandırın
-
-   ![Yönetilen örnek simgesi](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
+### <a name="managed-instance"></a>Yönetilen örnek
 
 Aşağıdaki tanılama telemetrisini toplamak için bir yönetilen örnek kaynağı ayarlayabilirsiniz:
 
@@ -186,11 +187,15 @@ Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleşti
 > [!IMPORTANT]
 > Yönetilen bir örnek için tanılama telemetrisini yapılandırmaya ek olarak, her örnek veritabanı için de tanılama telemetrisini yapılandırmanız gerekir.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Örnek veritabanları için tanılama telemetrinin akışını yapılandırma
+### <a name="instance-database"></a>Örnek veritabanı
 
-   ![Yönetilen örnek 'de örnek veritabanı simgesi](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+Aşağıdaki tanılama telemetrisini toplamak için bir örnek veritabanı kaynağı ayarlayabilirsiniz:
 
-Örnek veritabanları için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
+| Kaynak | Telemetri izleme |
+| :------------------- | ------------------- |
+| **Örnek veritabanı** | [Resourceusagestats](#resource-usage-stats-for-managed-instances) sanal çekirdekler sayısını, ortalama CPU YÜZDESINI, GÇ isteklerini, okunan/yazılan bayt, ayrılmış depolama alanını ve kullanılan depolama alanını içerir. |
+
+Bir örnek veritabanı için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
 
 1. Yönetilen örnek içinde **örnek veritabanı** kaynağına gidin.
 2. **Tanılama ayarları**' nı seçin.
@@ -210,7 +215,7 @@ Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleşti
 > [!TIP]
 > İzlemek istediğiniz her örnek veritabanı için bu adımları tekrarlayın.
 
-### <a name="configure-diagnostic-logging-by-using-powershell"></a>PowerShell kullanarak tanılama günlüğünü yapılandırma
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -253,7 +258,7 @@ PowerShell kullanarak ölçümleri ve tanılama günlük kaydını etkinleştire
 
 Birden çok çıkış seçeneği etkinleştirmek için şu parametreleri birleştirebilirsiniz.
 
-### <a name="to-configure-multiple-azure-resources"></a>Birden çok Azure kaynağını yapılandırmak için
+**Birden çok Azure kaynağını yapılandırmak için**
 
 Birden çok aboneliği desteklemek için PowerShell komut dosyasını kullanarak PowerShell 'i [kullanarak Azure Kaynak ölçümleri günlüğünü etkinleştirin](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
 
@@ -268,7 +273,7 @@ Birden çok kaynaktan tanılama verilerini çalışma alanına göndermek için 
 
    \<Subıd\> abonelik KIMLIĞIYLE değiştirin, kaynak grubu adıyla \<RG_NAME\> ve \<WS_NAME çalışma alanı adıyla değiştirin.\>
 
-### <a name="configure-diagnostic-logging-by-using-the-azure-cli"></a>Azure CLı kullanarak tanılama günlüğünü yapılandırma
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı kullanarak ölçümleri ve tanılama günlük kaydını etkinleştirebilirsiniz.
 
@@ -303,17 +308,11 @@ Azure CLı kullanarak ölçümleri ve tanılama günlük kaydını etkinleştire
 
 Birden çok çıkış seçeneği etkinleştirmek için şu parametreleri birleştirebilirsiniz.
 
-### <a name="configure-diagnostic-logging-by-using-the-rest-api"></a>REST API kullanarak tanılama günlüğünü yapılandırma
+---
 
-[Azure izleyici REST API kullanarak tanılama ayarlarını değiştirme](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)hakkında bilgi edinin.
+## <a name="stream-diagnostic-telemetry-into-sql-analytics"></a>SQL Analytics 'e akış tanılama telemetrisi
 
-### <a name="resource-manager-template"></a>Resource Manager şablonu
-
-[Kaynak Yöneticisi şablonu kullanarak kaynak oluşturmada tanılama ayarlarının nasıl etkinleştirileceği](../azure-monitor/platform/diagnostic-settings-template.md)hakkında bilgi edinin.
-
-## <a name="stream-metrics-and-diagnostic-logs-into-azure-sql-analytics"></a>Ölçüm ölçümleri ve tanılama günlükleri Azure SQL Analytics
-
-Azure SQL Analytics, tek veritabanlarının, elastik havuzların, yönetilen örneklerin ve örnek veritabanlarının ölçekteki performansını ve birden çok aboneliği izleyen bir bulut çözümüdür. Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize yardımcı olabilir ve performans sorunlarını gidermek için yerleşik zekaya sahiptir.
+Azure SQL Analytics, tek veritabanlarının, elastik havuzların ve havuza alınan veritabanlarının performansını ve yönetilen örnekleri ve örnek veritabanlarını ölçeklendirmekte ve birden çok aboneliğe göre izleyen bir bulut çözümüdür. Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize yardımcı olabilir ve performans sorunlarını gidermek için yerleşik zekaya sahiptir.
 
 ![Azure SQL Analytics genel bakış](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
@@ -354,7 +353,7 @@ SQL veritabanı kaynaklarınızı görüntülemek için SQL Analytics 'i hiyerar
 - Azure SQL Analytics nasıl kullanacağınızı öğrenmek için bkz. SQL [Analytics kullanarak SQL veritabanını izleme](../log-analytics/log-analytics-azure-sql.md).
 - SQL Analytics 'te için uyarıları ayarlamayı öğrenmek için bkz. [veritabanı, elastik havuzlar ve yönetilen örnekler için uyarı oluşturma](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
-## <a name="stream-into-event-hubs"></a>Event Hubs'a akış sağlama
+## <a name="stream-diagnostic-telemetry-into-event-hubs"></a>Tanılama telemetrisini Event Hubs olarak akışa ekleyin
 
 SQL veritabanı ölçümleri ve tanılama günlüklerini, Azure portal **bir olay hub 'ı** seçeneğinde yerleşik akışı kullanarak Event Hubs ' a akışını sağlayabilirsiniz. Ayrıca, PowerShell cmdlet 'leri, Azure CLı veya Azure Izleyici REST API aracılığıyla tanılama ayarlarını kullanarak Service Bus kuralı KIMLIĞINI etkinleştirebilirsiniz.
 
@@ -379,7 +378,7 @@ Event Hubs için akan ölçümleri kullanabilirsiniz:
 
    Zaten özel olarak oluşturulmuş bir telemetri platformudur veya bir tane oluşturmayı düşünülüyor musunuz? Yüksek düzeyde ölçeklenebilir yayımla-abone ol Event Hubs, tanılama günlüklerini esnek bir şekilde almanızı sağlar. [Küresel ölçekli bir telemetri platformunda Event Hubs kullanmak için bkz. Dan Rosanova Kılavuzu](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="stream-into-storage"></a>Depolama alanına akış
+## <a name="stream-diagnostic-telemetry-into-azure-storage"></a>Azure depolama 'da tanılama telemetrisini akış
 
 Azure portal **bir depolama hesabı** seçeneğinde yerleşik Arşiv ' i kullanarak ölçümleri ve tanılama günlüklerini Azure Storage 'da saklayabilirsiniz. Ayrıca, PowerShell cmdlet 'leri, Azure CLı veya Azure Izleyici REST API aracılığıyla tanılama ayarlarını kullanarak depolamayı etkinleştirebilirsiniz.
 
@@ -420,28 +419,28 @@ Azure SQL Analytics kullanıyorsanız, Azure SQL Analytics gezinti menüsünde *
 
 ## <a name="metrics-and-logs-available"></a>Ölçümler ve Günlükler kullanılabilir
 
-Tek veritabanları için kullanılabilen izleme telemetrisi, elastik havuzlar ve yönetilen örnek, makalenin bu bölümünde belgelenmiştir. SQL Analytics içinde toplanan izleme telemetrisi, [Azure izleyici günlük sorguları](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) dilini kullanarak kendi özel analiz ve uygulama geliştirme için kullanılabilir.
+Tek veritabanları, havuza alınmış veritabanları, elastik havuzlar, yönetilen örnek ve örnek veritabanları için kullanılabilen izleme telemetrisi, makalenin bu bölümünde belgelenmiştir. SQL Analytics içinde toplanan izleme telemetrisi, [Azure izleyici günlük sorguları](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) dilini kullanarak kendi özel analiz ve uygulama geliştirme için kullanılabilir.
 
-## <a name="basic-metrics"></a>Temel ölçümler
+### <a name="basic-metrics"></a>Temel ölçümler
 
 Kaynağa göre temel ölçümler hakkında daha fazla bilgi için aşağıdaki tablolara bakın.
 
 > [!NOTE]
 > Temel ölçümler seçeneği önceden tüm ölçümler olarak bilinirdi. Yapılan değişiklik yalnızca adlandırma amaçlıdır ve izlenen ölçümlerde hiçbir değişiklik yapılmadı. Bu değişiklik, gelecekte ek ölçüm kategorilerinin tanıtılmasıyla izin verecek şekilde başlatıldı.
 
-### <a name="basic-metrics-for-elastic-pools"></a>Elastik havuzlar için temel ölçümler
+#### <a name="basic-metrics-for-elastic-pools"></a>Elastik havuzlar için temel ölçümler
 
 |**Kaynak**|**Ölçümler**|
 |---|---|
 |Elastik havuz|eDTU yüzdesi, eDTU kullanımı, eDTU sınırı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, depolama sınırı, XTP depolama yüzdesi |
 
-### <a name="basic-metrics-for-single-and-pooled-databases"></a>Tek ve havuza alınmış veritabanları için temel ölçümler
+#### <a name="basic-metrics-for-single-and-pooled-databases"></a>Tek ve havuza alınmış veritabanları için temel ölçümler
 
 |**Kaynak**|**Ölçümler**|
 |---|---|
 |Tek ve havuza alınmış veritabanı|DTU yüzdesi, DTU kullanımı, DTU sınırı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, XTP depolama yüzdesi ve kilitlenmeler |
 
-## <a name="advanced-metrics"></a>Gelişmiş ölçümler
+### <a name="advanced-metrics"></a>Gelişmiş ölçümler
 
 Gelişmiş ölçümler hakkındaki ayrıntılar için aşağıdaki tabloya bakın.
 
@@ -451,11 +450,11 @@ Gelişmiş ölçümler hakkındaki ayrıntılar için aşağıdaki tabloya bakı
 |tempdb_log_size| Tempdb günlük dosyası boyutu kilobayt |Tempdb günlük dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, 2 sanal çekirdek ve üzeri ile vCore satın alma modeli, DTU tabanlı satın alma modelleri için 200 DTU ve üzeri kullanan veritabanlarında kullanılabilir. Bu ölçüm, hiper ölçekli veritabanları için şu anda kullanılamıyor.|
 |tempdb_log_used_percent| Kullanılan tempdb günlüğü yüzdesi |Kullanılan tempdb günlüğü yüzdesi. Veri ambarlarında geçerli değildir. Bu ölçüm, 2 sanal çekirdek ve üzeri ile vCore satın alma modeli, DTU tabanlı satın alma modelleri için 200 DTU ve üzeri kullanan veritabanlarında kullanılabilir. Bu ölçüm, hiper ölçekli veritabanları için şu anda kullanılamıyor.|
 
-## <a name="basic-logs"></a>Temel Günlükler
+### <a name="basic-logs"></a>Temel Günlükler
 
 Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tablolarda belgelenmiştir. Belirli bir veritabanı türü-Azure SQL tek, havuza alınmış veya örnek veritabanı için hangi günlüklerin desteklendiğini anlamak üzere [desteklenen tanılama günlüğü](#supported-diagnostic-logging-for-azure-sql-databases) ' ne bakın.
 
-### <a name="resource-usage-stats-for-managed-instances"></a>Yönetilen örnekler için kaynak kullanım istatistikleri
+#### <a name="resource-usage-stats-for-managed-instances"></a>Yönetilen örnekler için kaynak kullanım istatistikleri
 
 |Özellik|Açıklama|
 |---|---|
@@ -480,7 +479,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |io_bytes_read_s|IOPS bayt okuma |
 |io_bytes_written_s|Bayt yazılan ıOPS |
 
-### <a name="query-store-runtime-statistics"></a>Sorgu deposu çalışma zamanı istatistikleri
+#### <a name="query-store-runtime-statistics"></a>Sorgu deposu çalışma zamanı istatistikleri
 
 |Özellik|Açıklama|
 |---|---|
@@ -531,7 +530,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 
 [Sorgu deposu çalışma zamanı istatistikleri verileri](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)hakkında daha fazla bilgi edinin.
 
-### <a name="query-store-wait-statistics"></a>Sorgu deposu bekleme istatistikleri
+#### <a name="query-store-wait-statistics"></a>Sorgu deposu bekleme istatistikleri
 
 |Özellik|Açıklama|
 |---|---|
@@ -569,7 +568,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 
 [Sorgu deposu bekleme istatistikleri verileri](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)hakkında daha fazla bilgi edinin.
 
-### <a name="errors-dataset"></a>Hatalar veri kümesi
+#### <a name="errors-dataset"></a>Hatalar veri kümesi
 
 |Özellik|Açıklama|
 |---|---|
@@ -598,7 +597,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 
 [SQL Server hata iletileri](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)hakkında daha fazla bilgi edinin.
 
-### <a name="database-wait-statistics-dataset"></a>Veritabanı bekleme istatistikleri veri kümesi
+#### <a name="database-wait-statistics-dataset"></a>Veritabanı bekleme istatistikleri veri kümesi
 
 |Özellik|Açıklama|
 |---|---|
@@ -627,7 +626,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 
 [Veritabanı bekleme istatistikleri](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)hakkında daha fazla bilgi edinin.
 
-### <a name="time-outs-dataset"></a>Zaman aşımları veri kümesi
+#### <a name="time-outs-dataset"></a>Zaman aşımları veri kümesi
 
 |Özellik|Açıklama|
 |---|---|
@@ -650,7 +649,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |query_hash_s|Varsa sorgu karması |
 |query_plan_hash_s|Varsa sorgu planı karması |
 
-### <a name="blockings-dataset"></a>Blok veri kümesi
+#### <a name="blockings-dataset"></a>Blok veri kümesi
 
 |Özellik|Açıklama|
 |---|---|
@@ -674,7 +673,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |blocked_process_filtered_s|Engellenen işlem raporu XML 'i |
 |duration_d|Mikrosaniye cinsinden kilit süresi |
 
-### <a name="deadlocks-dataset"></a>Kilitlenmeler veri kümesi
+#### <a name="deadlocks-dataset"></a>Kilitlenmeler veri kümesi
 
 |Özellik|Açıklama|
 |---|---|
@@ -695,7 +694,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |ResourceId|Kaynak URI 'SI |
 |deadlock_xml_s|Kilitlenme rapor XML 'i |
 
-### <a name="automatic-tuning-dataset"></a>Otomatik ayarlama veri kümesi
+#### <a name="automatic-tuning-dataset"></a>Otomatik ayarlama veri kümesi
 
 |Özellik|Açıklama|
 |---|---|
@@ -719,13 +718,13 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |Schema_s|Veritabanı şeması |
 |Table_s|Etkilenen tablo |
 |IndexName_s|Dizin adı |
-|IndexColumns_s|sütun adı |
+|IndexColumns_s|Sütun adı |
 |IncludedColumns_s|Dahil edilen sütunlar |
 |EstimatedImpact_s|Otomatik ayarlama önerisi JSON ' inin tahmini etkisi |
 |Event_s|Otomatik ayarlama olayının türü |
 |Timestamp_t|Son güncelleme zaman damgası |
 
-### <a name="intelligent-insights-dataset"></a>Akıllı İçgörüler veri kümesi
+#### <a name="intelligent-insights-dataset"></a>Akıllı İçgörüler veri kümesi
 
 [Akıllı içgörüler günlük biçimi](sql-database-intelligent-insights-use-diagnostics-log.md)hakkında daha fazla bilgi edinin.
 

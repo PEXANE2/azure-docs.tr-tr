@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524265"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586793"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
 
@@ -54,20 +54,23 @@ Görevlerinizin oluşturduğu günlük dosyalarının bir kopyasını tutmak vey
 
 > [!TIP]
 > Günlüklerin ve diğer iş ve görev çıktısı verilerinin kalıcı hale getirilmesi için başka bir yöntem de [Azure Batch dosya kuralları](batch-task-output.md) kitaplığını kullanmaktır.
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>İş hazırlama görevi
-Bir işin görevlerinin yürütülmesinden önce Batch, görevi çalıştırmak için zamanlanan her bir işlem düğümünde iş hazırlama görevini yürütür. Varsayılan olarak, Batch hizmeti, düğüm üzerinde yürütülmek üzere zamanlanan görevleri çalıştırmadan önce iş hazırlama görevinin tamamlanmasını bekler. Ancak, hizmeti beklememe için de yapılandırabilirsiniz. Düğüm yeniden başlatılırsa, iş hazırlama görevi yeniden çalışır, ancak bu davranışı da devre dışı bırakabilirsiniz. İş hazırlama görevi ve bir iş Yöneticisi görevi yapılandırılmışsa iş hazırlama görevi, diğer tüm görevler için yaptığı gibi, İş Yöneticisi görevinden önce çalışır. İş hazırlama görevi her zaman önce çalışır.
+
+
+Bir işin görevlerini yürütmeden önce Batch, görevi çalıştırmak için zamanlanan her bir işlem düğümünde iş hazırlama görevini yürütür. Varsayılan olarak, yığın, düğüm üzerinde yürütülmek üzere zamanlanan görevleri çalıştırmadan önce iş hazırlama görevinin tamamlanmasını bekler. Ancak, hizmeti beklememe için de yapılandırabilirsiniz. Düğüm yeniden başlatılırsa, iş hazırlama görevi yeniden çalışır. Bu davranışı da devre dışı bırakabilirsiniz. İş hazırlama görevi ve bir iş Yöneticisi görevi yapılandırılmışsa iş hazırlama görevi, diğer tüm görevler için yaptığı gibi, İş Yöneticisi görevinden önce çalışır. İş hazırlama görevi her zaman önce çalışır.
 
 İş hazırlama görevi yalnızca bir görevi çalıştırmak için zamanlanan düğümlerde yürütülür. Bu, bir düğüme bir görevin atanmadığı durumlarda bir hazırlık görevinin gereksiz şekilde yürütülmesini önler. Bu durum, bir iş için görev sayısı bir havuzdaki düğüm sayısından az olduğunda meydana gelebilir. Aynı zamanda, görev sayısı toplam olası eşzamanlı görevden daha düşükse bazı düğümleri boşta bırakan, [eşzamanlı görev yürütme](batch-parallel-node-tasks.md) etkinleştirildiğinde da geçerlidir. Boştaki düğümlerde iş hazırlama görevini çalıştırmayan zaman, veri aktarımı ücretlerine göre daha az para harcamanız sağlayabilirsiniz.
 
 > [!NOTE]
 > [JobPreparationTask][net_job_prep_cloudjob] , her bir Işin başlangıcında JobPreparationTask çalıştırdığı [Cloudpool. startTask][pool_starttask] öğesinden farklıdır, ancak startTask yalnızca bir işlem düğümü bir havuza katıldığında veya yeniden başlatıldığında yürütülür.
-> 
-> 
+>
 
-## <a name="job-release-task"></a>İş serbest bırakma görevi
+
+>## <a name="job-release-task"></a>İş serbest bırakma görevi
+
 Bir iş tamamlandı olarak işaretlendikten sonra, havuzda en az bir görevi yürüten her düğüm üzerinde iş bırakma görevi yürütülür. Bir işi sonlandırma isteği vererek tamamlandı olarak işaretlersiniz. Batch hizmeti daha sonra iş durumunu *sonlandırılıyor*, işle ilgili etkin veya çalışan görevleri sonlandırır ve iş serbest bırakma görevini çalıştırır. Sonra iş *tamamlandı* durumuna gider.
 
 > [!NOTE]

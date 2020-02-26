@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525558"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580637"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 `202 Accepted` bir yanıt ve döndürülen üst bilgilerde bir `Location` URI 'SI almalısınız. Bağımlı kaynaklarınızdan biriyle ilgili bir sorun varsa (örneğin, kapsayıcı kayıt defterinizde yönetici erişimini etkinleştirmeyi unuttuysanız), bu URI 'yi dağıtım hakkında daha fazla bilgi alabilirsiniz. 
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="resource-provider-errors"></a>Kaynak sağlayıcısı hataları
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>Çalışma alanı taşınıyor
+
+> [!WARNING]
+> Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
+
+### <a name="deleting-the-azure-container-registry"></a>Azure Container Registry silme
+
+Azure Machine Learning çalışma alanı bazı işlemler için Azure Container Registry (ACR) kullanır. İlk kez ihtiyaç duyduğunda, otomatik olarak bir ACR örneği oluşturur.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

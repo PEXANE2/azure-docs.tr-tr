@@ -3,22 +3,22 @@ title: Kasa tanılama ayarlarını ölçekte yapılandırma
 description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları için Log Analytics tanılama ayarlarını yapılandırma
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bdc3dd1da9d3ddc966b664f8bec479f5a8ff10f2
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501088"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584532"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
 
-Azure Backup tarafından sunulan raporlama çözümü Log Analytics (LA) kullanır. Belirli bir kasadaki verilerin LA 'ya gönderilmesi için bu kasa için bir [Tanılama ayarı](https://aka.ms/AzureBackupDiagnosticsDocs) oluşturulması gerekir.
+Azure Backup tarafından sunulan raporlama çözümü Log Analytics (LA) kullanır. Belirli bir kasadaki verilerin LA 'ya gönderilmesi için bu kasa için bir [Tanılama ayarı](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) oluşturulması gerekir.
 
 Genellikle, kasa başına el ile bir tanılama ayarı eklemek çok bir görev olabilir. Ayrıca, bu kasanın raporlarını görüntüleyebilmek için oluşturulan tüm yeni kasaların tanılama ayarlarının etkinleştirilmiş olması gerekir. 
 
 Tanılama ayarlarının ölçeğe göre (hedef olarak LA birlikte) oluşturulmasını basitleştirmek için, Azure Backup yerleşik bir [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/)sağlar. Bu ilke, belirli bir abonelik veya kaynak grubundaki tüm kasaları bir LA tanılama ayarı ekler. Aşağıdaki bölümler, bu ilkenin nasıl kullanılacağına ilişkin yönergeler sağlar.
 
-## <a name="supported-scenarios"></a>Desteklenen Senaryolar 
+## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 
 * İlke, belirli bir abonelikteki tüm kurtarma hizmetleri kasalarına (veya aboneliğin içindeki bir kaynak grubuna) tek seferde uygulanabilir. İlkeyi atayan kullanıcının, ilkenin atandığı aboneliğe ' Owner ' erişimi olması gerekir.
 
@@ -49,6 +49,7 @@ Gerekli kapsamdaki kasaların ilkesini atamak için aşağıdaki adımları izle
 ![İlke atama temelleri](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. **Parametreler**altında aşağıdaki bilgileri girin:
+
 * **Profil adı** -ilke tarafından oluşturulan tanılama ayarlarına atanacak ad.
 * **Log Analytics çalışma alanı** -tanılama ayarının ilişkilendirilmesi gereken Log Analytics çalışma alanı. Ilke atamasının kapsamındaki tüm kasaların Tanılama verileri belirtilen LA çalışma alanına gönderilir.
 
@@ -69,7 +70,7 @@ Düzeltme görevi, ilke tanımına göre uyumlu olmayan kasaların uygulanmasın
 * Kasa için tanılama ayarı yok.
 * Kasa için Tanılama ayarları bulunur, ancak ayarlardan hedefe göre ve geçiş içinde seçilen **kaynağa** özgü **Tüm** kaynağa özgü olaylar etkin değil. 
 
-Bu nedenle, bir Kullanıcı AzureDiagnostics modunda etkin AzureBackupReport olayını içeren bir kasaya sahip olsa bile (yedekleme raporları tarafından desteklenir), kaynağa özgü mod tanılama ayarlarını oluşturmak için önerilen yöntem [olduğundan, düzeltme](https://aka.ms/AzureBackupDiagnosticsDocs#legacy-event)görevi bu kasa için de geçerlidir. 
+Bu nedenle, bir Kullanıcı AzureDiagnostics modunda etkin AzureBackupReport olayını içeren bir kasaya sahip olsa bile (yedekleme raporları tarafından desteklenir), kaynağa özgü mod tanılama ayarlarını oluşturmak için önerilen yöntem [olduğundan, düzeltme](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)görevi bu kasa için de geçerlidir.
 
 Ayrıca, bir kullanıcının altı kaynağa özgü olayların yalnızca bir alt kümesiyle olan bir Kasası varsa, yedekleme raporları yalnızca altı kaynağa özgü olay etkinleştirildiğinde beklendiği gibi çalışadıklarından bu kasa için düzeltme görevi uygulanır.
 
@@ -82,6 +83,7 @@ Ayrıca, bir kullanıcının altı kaynağa özgü olayların yalnızca bir alt 
 > Varolan tanılama ayarı hedef olarak çalışma alanı X ile yalnızca AzureBackupReport **etkin olduğunda düzeltme görevinin başarısız olmadığını** unutmayın; bu durumda, var olan ayar tarafından etkinleştirilen olaylar ve düzeltme görevi tarafından oluşturulan ayar tarafından etkinleştirilen olaylar arasında çakışma olmayacaktır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Yedekleme raporlarını nasıl kullanacağınızı öğrenin](https://aka.ms/AzureBackupReportDocs)
-- [Azure Ilkesi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/policy/)
-- [Bir verme kapsamındaki tüm VM 'Lerin yedeklemesini otomatik olarak etkinleştirmek için Azure Ilkesini kullanın](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+
+* [Yedekleme raporlarını nasıl kullanacağınızı öğrenin](https://docs.microsoft.com/azure/backup/configure-reports)
+* [Azure Ilkesi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/policy/)
+* [Bir verme kapsamındaki tüm VM 'Lerin yedeklemesini otomatik olarak etkinleştirmek için Azure Ilkesini kullanın](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)

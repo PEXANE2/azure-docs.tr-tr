@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a306a05899a644f2ee8ea738789b84ee98221531
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392364"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592449"
 ---
 Aşağıdaki tabloda, Azure IoT Hub cihaz sağlama hizmeti kaynakları için uygulanan sınırlar listelenmektedir.
 
@@ -26,10 +26,13 @@ Aşağıdaki tabloda, Azure IoT Hub cihaz sağlama hizmeti kaynakları için uyg
 > [!NOTE]
 > Sağlama hizmetinizdeki kayıt ve kayıt sayısını artırmak için [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
 
+> [!NOTE]
+> En fazla CA sayısının artırılması desteklenmez.
+
 Cihaz sağlama hizmeti, aşağıdaki kotalar aşıldığında istekleri kısıtlar.
 
 | Kısıtlama | Birim başına değer |
 | --- | --- |
-| Operations | 200/dk/hizmet |
+| İşlemler | 200/dk/hizmet |
 | Cihaz kayıtları | 200/dk/hizmet |
 | Cihaz yoklama işlemi | 5/10 sn/cihaz |

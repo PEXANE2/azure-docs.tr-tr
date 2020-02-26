@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024135"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589428"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -39,8 +39,12 @@ Bu makalede IoT Central için özetlenmektedir:
 - İşler karmaşık türleri desteklemez.
 - Dizi şeması türleri desteklenmez.
 - Yalnızca C cihaz SDK 'Sı ve Node. js cihaz ve hizmet SDK 'Ları desteklenir.
-- Yalnızca Birleşik Devletler ve Avrupa konumlarında kullanılabilir.
+- Yalnızca Birleşik Devletler, Avrupa, Asya Pasifik ve Avustralya konumlarında kullanılabilir.
 - Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
+- [Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) için destek önizleme aşamasındadır ve yalnızca seçili bölgelerde desteklenir.
+
+    > [!NOTE]
+    > IoT Tak ve Kullan cihazları desteğiyle bir önizleme uygulaması oluşturmak için erişim için teknik desteğe başvurun.
 
 ## <a name="personas"></a>Kişilikler
 
@@ -136,7 +140,7 @@ Ayrıca, [Azure IoT SDK 'ları](https://github.com/Azure/azure-iot-sdks)kullanı
 
 Daha fazla bilgi için bkz. [Azure IoT Edge cihazlar ve IoT Central](concepts-architecture.md#azure-iot-edge-devices).
 
-## <a name="stay-connected"></a>Bağlı kalın
+## <a name="stay-connected"></a>Bağlı kalma
 
 IoT Central uygulamalar Microsoft tarafından tamamen barındırılır ve uygulamalarınızın yönetilmesi için yönetim yükünü azaltır.
 
@@ -160,7 +164,7 @@ Yerleşik [panolar](./howto-set-up-template.md#generate-default-views) cihaz sis
 
 Dikkat edilmesi gereken cihazları tanımlamak için cihaz durumu ve telemetri temelinde [özel kurallar](tutorial-create-telemetry-rules.md) oluşturun. Doğru kişilere bildirimde bulunan eylemleri yapılandırın ve düzeltici ölçülerin zamanında alındığından emin olun.
 
-### <a name="jobs"></a>İş 
+### <a name="jobs"></a>İşler 
 
 [İşler](howto-run-a-job.md) , özellikleri ayarlayarak veya komutları çağırarak cihazlara tek veya toplu güncelleştirmeler uygulamanıza olanak tanır. 
 

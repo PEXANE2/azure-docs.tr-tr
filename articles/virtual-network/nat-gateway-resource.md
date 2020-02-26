@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 3ae1e3e595e9be9709e8a3d4808100d7f0e48eb8
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526374"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589479"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
 
@@ -35,9 +35,6 @@ NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçası
 
 >[!NOTE] 
 >Sanal ağ NAT Şu anda genel önizleme olarak kullanılabilir. Şu anda yalnızca sınırlı sayıda [bölgede](nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
-
-> [!IMPORTANT]
-> Aboneliğinizde sanal ağ NAT [önizlemesi etkinleştirildikten](./nat-overview.md#enable-preview) sonra, portala erişmek için https://aka.ms/natportal kullanın.
 
 ## <a name="how-to-deploy-nat"></a>NAT dağıtma
 
@@ -264,7 +261,7 @@ Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ 
 
 | Akış | Kaynak kayıt düzeni | Hedef kayıt düzeni |
 |:---:|:---:|:---:|
-| 1\. | 192.168.0.16:4283 | 65.52.0.1:80 |
+| 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
@@ -273,7 +270,7 @@ Bu akışlar, PAT olduktan sonra şöyle görünebilir:
 
 | Akış | Kaynak kayıt düzeni | Snattoed kaynak kayıt düzeni | Hedef kayıt düzeni | 
 |:---:|:---:|:---:|:---:|
-| 1\. | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
+| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
@@ -324,7 +321,7 @@ Boşta kalma zaman aşımı, tüm akışlar için 4 dakikadan (varsayılan) 120 
 
 Aşağıdaki zamanlayıcılar, SNAT bağlantı noktası sürümü için kullanılır:
 
-| Zamanlayıcı | Value |
+| Zamanlayıcı | Değer |
 |---|---|
 | TCP FIN | 60 saniye |
 | TCP RST | 10 saniye |

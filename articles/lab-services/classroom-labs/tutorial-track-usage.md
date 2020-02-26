@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134847"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591991"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Öğretici: Azure Lab Services’teki bir laboratuvarın kullanımını izleme
 Bu öğreticide bir laboratuvar oluşturanın/sahibinin bir laboratuvarın kullanımını nasıl izleyebileceği gösterilmektedir.
@@ -41,7 +41,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
     ![Kayıtlı kullanıcılar](../media/tutorial-track-usage/registered-users.png)
 
-    Laboratuvar için Kullanıcı ekleme ve yönetme hakkında daha fazla ayrıntı için bkz. [Laboratuvar kullanıcıları ekleme ve yönetme](how-to-configure-student-usage.md).
+    Laboratuvar için Kullanıcı ekleme ve yönetme hakkında daha fazla bilgi için bkz. [Laboratuvar kullanıcıları ekleme ve yönetme](how-to-configure-student-usage.md).
 
 ## <a name="view-the-usage-of-vms"></a>VM 'lerin kullanımını görüntüleme
 
@@ -53,9 +53,12 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 ## <a name="manage-student-vms"></a>Öğrenci VM'lerini yönetme 
 Bu sayfada, **durum** sütunundaki veya araç çubuğundaki denetimleri kullanarak öğrenci VM 'lerini başlatabilir, durdurabilir veya sıfırlayabilirsiniz.
 
-![VM denetimleri](../media/tutorial-track-usage/vm-controls.png)
+![VM eylemleri](../media/tutorial-track-usage/vm-controls.png)
 
 Laboratuvar için sanal makine havuzunu yönetme hakkında daha fazla bilgi için bkz. [sanal makine havuzunu ayarlama ve yönetme](how-to-set-virtual-machine-passwords.md).
+
+> [!NOTE]
+> Bir eğitimci bir öğrenci sanal makinesini açtığında öğrencinin kotası etkilenmez. Bir kullanıcı için kota, kullanıcının zamanlanan sınıf süresi dışında kullanabileceği laboratuvar saatleri sayısını belirtir. Kotalar hakkında daha fazla bilgi için bkz. [kullanıcılar için kotaları ayarlama](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sınıf laboratuvarları hakkında daha fazla bilgi edinmek için bkz. [nasıl yapılır kılavuzlarındaki](how-to-manage-lab-accounts.md)makaleler.

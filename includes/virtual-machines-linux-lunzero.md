@@ -4,31 +4,31 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188392"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590710"
 ---
-Bir Linux VM'ye veri diskleri ekleme, bir diskin LUN 0 yoksa hatalarla karşılaşabilirsiniz. El ile kullanarak bir diski ekliyorsanız `azure vm disk attach-new` komutunu bir LUN belirtin (`--lun`) uygun LUN belirlemek üzere Azure platformunun izin vermek yerine, dikkatli bir disk zaten mevcut olduğundan / 0 LUN sunulacaktır. 
+Bir Linux sanal makinesine veri diski eklerken, LUN 0 ' da bir disk yoksa hatalarla karşılaşabilirsiniz. `az vm disk attach -new` komutunu kullanarak el ile bir disk ekliyorsanız ve Azure platformunun uygun LUN 'u belirlemesine izin vermek yerine bir LUN (`--lun`) belirtirseniz, bir diskin zaten var olduğunu veya LUN 0 ' da mevcut olacağını unutmayın. 
 
-Bir kod parçacığı çıktısı gösteren aşağıdaki örneği göz önünde bulundurun `lsscsi`:
+`lsscsi`çıktının bir parçacığını gösteren aşağıdaki örneği göz önünde bulundurun:
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-İki veri diski LUN 0 ve LUN 1 mevcut (ilk sütunda `lsscsi` çıkış ayrıntıları `[host:channel:target:lun]`). Her iki diskin VM içinden erişilebilir olması gerekir. Birinci diskin LUN 1 eklenecek ve ikinci diskin LUN 2 sırasında el ile belirtilmemişti ise VM'NİZİN içinde diskleri doğru göremeyebilirsiniz.
+LUN 0 ve LUN 1 ' de iki veri diski bulunur (`lsscsi` çıkış ayrıntılarında `[host:channel:target:lun]`ilk sütun). Her iki diskin de VM içinden erişilebilir olması gerekir. LUN 1 ' e ve LUN 2 ' deki ikinci diske eklenecek ilk diski el ile belirttiyseniz, diskleri sanal makinenizin içinden doğru şekilde göremeyebilirsiniz.
 
 > [!NOTE]
-> Azure `host` değer 5'te aşağıdaki örneklerde, ancak bu, seçtiğiniz depolama türüne bağlı olarak değişiklik gösterebilir.
+> Azure `host` değeri bu örneklerde 5 ' tir, ancak seçtiğiniz depolama türüne göre değişiklik gösterebilir.
 > 
 > 
 
-Bu disk davranışı bir Azure sorunundan ancak Linux çekirdeğinin SCSI belirtimleri takip eden yolu değil. Linux çekirdeğinin SCSI veri yolu eklenen cihazları tarar, bir cihaz için ek cihazları taramaya devam etmek için LUN 0 sistem sırada bulunması gerekir. Bu nedenle:
+Bu disk davranışı bir Azure sorunu değildir, ancak Linux çekirdeğinin SCSI belirtimlerini takip eden yoludur. Linux çekirdeği bağlı cihazlar için SCSI veri yolunu taradığında, sistemin ek cihazları taramaya devam edebilmesi için LUN 0 ' da bir cihazın bulunması gerekir. Şöyle:
 
-* Çıkışı gözden `lsscsi` LUN 0 bir diski olduğunu doğrulamak için bir veri diski ekledikten sonra.
-* Diskinizin doğru VM'NİZİN içinde gösterilmez, LUN 0 bir disk zaten doğrulayın.
+* LUN 0 ' da bir diskiniz olduğunu doğrulamak üzere bir veri diski ekledikten sonra `lsscsi` çıkışını gözden geçirin.
+* Diskiniz VM 'niz içinde doğru görünmüyorsa, LUN 0 ' da bir disk olduğunu doğrulayın.
 

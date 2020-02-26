@@ -1,82 +1,58 @@
 ---
-title: Azure 'daki grup makinelerini aracısız bağımlılık görselleştirmesini kullanarak geçirme
-description: Makine bağımlılıklarını aracısız bir şekilde kullanarak grupların nasıl oluşturulacağını açıklar.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Azure geçişi 'nde aracısız bağımlılık görselleştirmesini ayarlama
+description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık görselleştirmesini kullanarak grupları ayarlayın.
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: hamusa
-ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 2/24/2020
+ms.openlocfilehash: c9425ad1fa78f14a194d3fe13c259dadf4eb5eb6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049766"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589139"
 ---
-# <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Değerlendirme için aracısız bağımlılık görselleştirmesini ayarlama
+# <a name="set-up-agentless-dependency-visualization"></a>Aracısız bağımlılık görselleştirmesini ayarlama 
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık eşlemesinin nasıl ayarlanacağı açıklanır. 
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde bağımlılık görselleştirmesinin nasıl ayarlanacağı açıklanır. [Bağımlılık görselleştirme](concepts-dependency-visualization.md#what-is-dependency-visualization) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
+
+Aracısız bağımlılık görselleştirme, makinelere hiçbir aracı yüklemeden makine bağımlılıklarını tanımlamanızı sağlar. Etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayıp işe yarar.
 
 > [!IMPORTANT]
-> Aracısız bağımlılık görselleştirmesi Şu anda Azure geçiş gereci kullanılarak bulunan Azure VMware VM 'Leri için önizleme aşamasındadır.
-> Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Bu önizleme müşteri desteği kapsamında ele alınmıştır ve üretim iş yükleri için kullanılabilir.
+> Aracısız bağımlılık görselleştirmesi şu an için Azure geçişi: Sunucu değerlendirmesi aracı ile keşfedilen yalnızca Azure VMware VM 'Leri için önizleme aşamasındadır.
+> Özellikler sınırlı veya tamamlanmamış olabilir.
+> Bu önizleme müşteri desteği kapsamında ele alınmıştır ve üretim iş yükleri için kullanılabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="about-dependency-mapping"></a>Bağımlılık eşleme hakkında
-
-Bağımlılık eşleme, değerlendirmek ve geçirmek istediğiniz makineler arasında bağımlılıkları görselleştirmenize yardımcı olur. Daha yüksek düzeyde güvenle makineler değerlendirmek istediğinizde genellikle bağımlılık eşlemesini kullanırsınız.
-
-- Azure geçişi: Sunucu değerlendirmesi ' nde, makineleri değerlendirme için gruplar halinde toplayın. Gruplar genellikle birlikte geçirmek istediğiniz makinelerden oluşur ve bağımlılık eşleme, makineleri doğru bir şekilde gruplandırabilmeniz için makine bağımlılıklarını çapraz denetlemenize yardımcı olur.
-- Eşleme kullanarak, birlikte geçirilmesi gereken bağımlı sistemleri bulabilirsiniz. Ayrıca, çalışan bir sistemin hala kullanıcılara hizmet verip vermediğini veya geçiş yerine yetki alma için bir aday olduğunu belirleyebilirsiniz.
-- Bağımlılıkların görselleştirilmesi, hiçbir şeyin geri ayrılmaması ve geçiş sırasında beklenmedik kesintilerden kaçınılması sağlar.
-
-## <a name="about-agentless-visualization"></a>Aracısız görselleştirme hakkında
-
-Aracısız bağımlılık görselleştirmesi, makinelere herhangi bir aracı yüklemenizi gerektirmez. Etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayıp işe yarar.
-
-- Bağımlılık keşfi başlatıldıktan sonra, Gereç, beş dakikalık yoklama aralığındaki makinelerden veri toplar.
-- Aşağıdaki veriler toplanır:
-    - TCP bağlantıları
-    - Etkin bağlantıları olan işlemlerin adları
-    - Yukarıdaki işlemlerin çalıştırıldığı yüklü uygulamaların adları
-    - Hayır. her yoklama aralığında algılanan bağlantıların sayısı
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Aracısız bağımlılık görselleştirmesi Şu anda yalnızca VMware VM 'Leri için kullanılabilir.
 - Artık, bağımlılık analizi görünümünde bir gruba sunucu ekleyemez veya gruptan sunucu kaldıramazsınız.
 - Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
 - Şu anda, bağımlılık verileri tablolu biçimde indirilemez.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
+- Aracısız bağımlılık görselleştirmesi ile ilişkili gereksinimleri ve maliyetleri [gözden geçirin](concepts-dependency-visualization.md#agentless-visualization) .
+- Aracısız bağımlılık görselleştirmesini ayarlamaya yönelik [destek gereksinimlerini](migrate-support-matrix-vmware.md#agentless-dependency-visualization) gözden geçirin.
 - Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
-- Aracısız bağımlılık Analizi Şu anda yalnızca VMware makineleri için kullanılabilir.
 - Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
-- Azure geçişi 'nde VMware makinelerinizi keşfetdiğinizden emin olun; Bunu, [VMware](how-to-set-up-appliance-vmware.md)Için bir Azure geçiş gereci ayarlayarak yapabilirsiniz. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. [Daha fazla bilgi edinin](migrate-appliance.md).
-- Aracısız bağımlılık görselleştirmesini ayarlama [gereksinimlerini gözden geçirin](migrate-support-matrix-vmware.md#agentless-dependency-visualization) .
-
+- Şirket içi makinelerinizi keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarladığınızdan emin olun. [VMware](how-to-set-up-appliance-vmware.md) VM 'leri için bir gereç ayarlamayı öğrenin. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir.
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Bulma için bir kullanıcı hesabı oluşturma
 
-Sunucu değerlendirmesinin, bulma için VM 'ye erişebilmesi için gerekli izinlere sahip bir kullanıcı hesabı ayarlayın. Bir kullanıcı hesabı belirtebilirsiniz.
+Sunucu değerlendirmesinin, bulma için VM 'ye erişebilmesi için bir kullanıcı hesabı ayarlayın. Bir kullanıcı hesabı belirtebilirsiniz.
 
-- **Windows VM 'Lerde gerekli izin**: Kullanıcı hesabının yerel veya etki alanı yöneticisi olması gerekir.
-- **Linux VM 'Lerde gerekli izin**: hesapta kök ayrıcalığı gereklidir. Alternatif olarak, Kullanıcı hesabı/bin/netstat ve/bin/ls dosyalarında şu iki özelliği gerektirir: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
+- **Windows VM 'leri**: Kullanıcı hesabının yerel veya etki alanı yöneticisi olması gerekir.
+- **Linux VM 'leri**: hesapta kök ayrıcalık gereklidir. Alternatif olarak, Kullanıcı hesabı/bin/netstat ve/bin/ls dosyalarında şu iki özelliği gerektirir: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
 
-Kullanıcı hesabını gereç öğesine eklemeniz gerekir.
+Kullanıcı hesabını gereç öğesine ekleyin.
 
-Hesabı aşağıdaki gibi ekleyin:
-
-1. Gereç Yönetimi uygulamasını açın. **VCenter ayrıntıları sağla** paneline gidin.
-2. **VM 'lerde uygulama ve bağımlılıkları bul** bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini**seçin.
-4. Hesap için bir kolay ad belirtin.
-5. **Kullanıcı adı** ve **parola** belirtin
-6. **Kaydet** düğmesine tıklayın.
+1. Gereç Yönetimi uygulamasını açın. 
+2. **VCenter ayrıntıları sağla** paneline gidin.
+3. **VM 'lerde uygulama ve bağımlılıkları keşfet**bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
+3. **İşletim sistemini**seçin, hesap için bir kolay ad ve **Kullanıcı adı**/**parolayı** girin
+6. **Kaydet**’e tıklayın.
 7. **Kaydet ve bulmayı Başlat**' a tıklayın.
 
     ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -94,17 +70,17 @@ Hesabı aşağıdaki gibi ekleyin:
 
     ![Bağımlılık bulmayı Başlat](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-Bağımlılık bulmayı başlattıktan sonra 6 saat bağımlılıklarını görselleştirebileceksiniz.
+Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılıkları görselleştirebilirsiniz.
 
 ## <a name="visualize-dependencies"></a>Bağımlılıkları görselleştirin
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. Bağımlılık eşlemesini görüntülemek istediğiniz makineyi arayın.
-3. **Bağımlılıklar** sütununda **bağımlılıkları görüntüle** ' ye tıklayın.
+2. Görüntülemek istediğiniz makineyi arayın.
+3. **Bağımlılıklar** sütununda, **bağımlılıkları görüntüle** ' ye tıklayın.
 4. **Zaman süresi** açılan listesini kullanarak Haritayı görüntülemek istediğiniz zaman aralığını değiştirin.
-5. Seçili makinede bağımlılığı olan makineleri listelemek için **istemci** grubunu genişletin.
+5. Seçilen makineye bağımlılığı olan makineleri listelemek için **istemci** grubunu genişletin.
 6. Seçili makineden bağımlılığı olan makineleri listelemek için **bağlantı noktası** grubunu genişletin.
-7. Bağımlı makinelerin herhangi birinin harita görünümüne gitmek için makine adına tıklayın ve ardından **sunucu haritasını yükle** ' ye tıklayın.
+7. Bağımlı makinelerin herhangi birinin harita görünümüne gitmek için, makine adına tıklayın > **sunucu haritasını yükle**
 
     ![Sunucu bağlantı noktası grubunu ve yükleme sunucusu haritasını Genişlet](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
 
@@ -131,4 +107,4 @@ Bağımlılık bulmayı başlattıktan sonra 6 saat bağımlılıklarını görs
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Makineleri gruplandırın](how-to-create-a-group.md)
+[Makineleri](how-to-create-a-group.md) değerlendirme için gruplandırın.

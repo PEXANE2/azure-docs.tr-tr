@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049878"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586623"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -70,7 +70,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
 * Azure NetApp Files atanmış alt ağ, tüm yerel ve uzak etki alanı denetleyicileri dahil olmak üzere etki alanındaki tüm Active Directory Domain Services (ekleme) etki alanı denetleyicilerine erişebilmelidir. Aksi takdirde, hizmet kesintisi meydana gelebilir.  
 
-    Azure NetApp Files Temsilcili alt ağ üzerinden erişilemeyen etki alanı denetleyicileriniz varsa, kapsamı **küresel** (varsayılan) olarak **siteye**değiştirmek için bir Azure destek isteği gönderebilirsiniz.  Azure NetApp Files, yalnızca Azure NetApp Files atanmış alt ağ adres alanının bulunduğu sitedeki etki alanı denetleyicileriyle iletişim kurması gerekir.
+    Azure NetApp Files atanmış alt ağ üzerinden erişilemeyen etki alanı denetleyicileriniz varsa, Active Directory bağlantısını oluştururken bir Active Directory sitesi belirtebilirsiniz.  Azure NetApp Files, yalnızca Azure NetApp Files atanmış alt ağ adres alanının bulunduğu sitedeki etki alanı denetleyicileriyle iletişim kurması gerekir.
 
     Bkz. AD siteleri ve hizmetleriyle ilgili [site topolojisini tasarlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) . 
     
@@ -88,8 +88,10 @@ Ek AD bilgileri hakkında Azure NetApp Files [SMB SSS](https://docs.microsoft.co
         Bu, Active Directory etki alanına ekleme ve SMB kimlik doğrulama işlemleri için gereken DNS 'dir. 
     * **IKINCIL DNS**   
         Bu, gereksiz ad hizmetleri sağlamak için ikincil DNS sunucusudur. 
-    * **Alanını**  
+    * **AD DNS etki alanı adı**  
         Bu, birleştirmek istediğiniz Active Directory Domain Services etki alanı adıdır.
+    * **AD site adı**  
+        Bu, etki alanı denetleyicisi bulmanın sınırlandırılacak site adıdır.
     * **SMB sunucusu (bilgisayar hesabı) ön eki**  
         Bu, Azure NetApp Files yeni hesapların oluşturulması için kullanacağı Active Directory makine hesabının adlandırma ön ekidir.
 

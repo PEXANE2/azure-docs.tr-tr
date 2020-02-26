@@ -3,7 +3,7 @@ title: Azure Sentinel 'e bağlantıyı doğrulama | Microsoft Docs
 description: CEF iletilerinin Azure Sentinel 'e iletildiğinden emin olmak için güvenlik çözümünüzün bağlantısını doğrulayın.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: e192f5db212faae9a8a93fbf3991f05b0adef0f8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: e224f6d5cfd82dfc6cb1ce107d111ee0e031247b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615352"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588442"
 ---
 # <a name="step-3-validate-connectivity"></a>3\. Adım: bağlantıyı doğrulama
 

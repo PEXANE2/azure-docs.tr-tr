@@ -1,6 +1,6 @@
 ---
-title: Azure IOT hub'ı bulut-cihaz seçenekleri | Microsoft Docs
-description: Geliştirici Kılavuzu - yönergeler ne zaman doğrudan yöntemler, cihaz ikizinin istenen özellikleri veya Bulut-cihaz iletilerini bulut-cihaz iletişimi için kullanılır.
+title: Azure IoT Hub buluttan cihaza seçenekleri | Microsoft Docs
+description: Geliştirici Kılavuzu-buluttan cihaza iletişimler için doğrudan yöntemlerin, cihaz ikizi istenen özelliklerinin veya buluttan cihaza mesajların ne zaman kullanılacağı konusunda rehberlik.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,39 +8,39 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 4b738f34ae75478c0120832e7ad2b6a6a83dbf69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61224787"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591277"
 ---
-# <a name="cloud-to-device-communications-guidance"></a>Bulut buluttan cihaza iletişim Kılavuzu
+# <a name="cloud-to-device-communications-guidance"></a>Buluttan cihaza iletişim Kılavuzu
 
-IOT hub'ı, arka uç uygulaması için işlevselliği göstermek cihaz uygulamaları için üç seçenek sunulur:
+IoT Hub, cihaz uygulamaları için bir arka uç uygulamasına işlevsellik sunan üç seçenek sunar:
 
-* [Doğrudan yöntemler](iot-hub-devguide-direct-methods.md) sonucun anında onay gerektiren iletişimler için. Doğrudan yöntemler genellikle cihazların fan üzerinde kapatma gibi etkileşimli denetimi için kullanılır.
+* Sonucun hemen onayını gerektiren iletişimler için [doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) . Doğrudan yöntemler genellikle bir fanı açma gibi cihazlarda etkileşimli denetim için kullanılır.
 
-* [İkiz özellikleri istenen](iot-hub-devguide-device-twins.md) cihaz belirli bir yerleştirmek için amaçlanan uzun süren komutları durumu istenen için. Örneğin, telemetri gönderme aralığı 30 dakikaya ayarlayın.
+* Ikizi, uzun süre çalışan komutların, cihazı istenen belirli bir duruma koymaya yönelik [istenen özelliklerdir](iot-hub-devguide-device-twins.md) . Örneğin, telemetri gönderme aralığını 30 dakikaya ayarlayın.
 
-* [Bulut-cihaz iletilerini](iot-hub-devguide-messages-c2d.md) cihaz uygulaması için tek yönlü bildirimleri.
+* Cihaz uygulamasına tek yönlü bildirimler için [buluttan cihaza iletiler](iot-hub-devguide-messages-c2d.md) .
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Çeşitli bulut-cihaz iletişim seçenekleri ayrıntılı bir karşılaştırması aşağıdadır.
+Çeşitli buluttan cihaza iletişim seçeneklerinin ayrıntılı bir karşılaştırması aşağıda verilmiştir.
 
-|  | Doğrudan yöntemler | İkizinin istenen özellikleri | Bulut-cihaz iletilerini |
+|  | Doğrudan yöntemler | İkizi 'ın istenen özellikleri | Bulut-cihaz iletilerini |
 | ---- | ------- | ---------- | ---- |
-| Senaryo | Fan üzerinde kapatma gibi anında onay gerektiren komutlar içerir. | Uzun süre çalışan komutlar, cihaz bir belirli istenen duruma getirmeyi yöneliktir. Örneğin, telemetri gönderme aralığı 30 dakikaya ayarlayın. | Cihaz uygulaması için tek yönlü bildirimleri. |
-| Veri akışı | İki yönlü. Cihaz uygulamasını yönteme hemen yanıt verebilir. Çözüm arka ucu sonucu bağlamsal isteği alır. | Tek yönlü. Cihaz uygulamasını özellik değişikliği içeren bir bildirim alır. | Tek yönlü. Cihaz uygulamasını iletiyi alır.
-| Dayanıklılık | Bağlantısı kesilmiş cihazlar kurulmadı. Çözüm arka ucu, cihaz bağlı değil olarak bildirilir. | Özellik değerleri, cihaz ikizinde korunur. Cihaz, sonraki yeniden bağlanma sırasında okuyun. Özellik değerleri ile alınabilir [IOT Hub sorgu dili](iot-hub-devguide-query-language.md). | İletileri IOT Hub tarafından 48 saate kadar saklanabilir. |
-| Hedefler | Tek bir cihaz kullanarak **DeviceID**, veya birden çok cihazı kullanarak [işleri](iot-hub-devguide-jobs.md). | Tek bir cihaz kullanarak **DeviceID**, veya birden çok cihazı kullanarak [işleri](iot-hub-devguide-jobs.md). | Tek bir cihaz tarafından **DeviceID**. |
-| Boyut | En fazla bir doğrudan yöntem yükünün boyutu 128 KB ' dir. | En fazla 8 KB'lık özellikleri boyutudur istenen. | En fazla 64 KB iletileri. |
-| Sıklık | Yüksek. Daha fazla bilgi için [IOT hub'ı sınırlar](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için [IOT hub'ı sınırlar](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için [IOT hub'ı sınırlar](iot-hub-devguide-quotas-throttling.md). |
-| Protocol | MQTT veya AMQP kullanarak kullanılabilir. | MQTT veya AMQP kullanarak kullanılabilir. | Tüm protokoller kullanılabilir. Cihaz, HTTPS kullanırken yoklaması gerekir. |
+| Senaryo | Bir fanı açma gibi anında onay gerektiren komutlar. | Cihazı istenen belirli bir duruma koymak için uzun süredir çalışan komutlar. Örneğin, telemetri gönderme aralığını 30 dakikaya ayarlayın. | Cihaz uygulamasına tek yönlü bildirimler. |
+| Veri akışı | İki yönlü. Cihaz uygulaması yönteme hemen yanıt verebilir. Çözüm arka ucu, isteği bağlamsal olarak sonucunu alır. | Tek yönlü. Cihaz uygulaması, özellik değişikliğine sahip bir bildirim alır. | Tek yönlü. Cihaz uygulaması iletiyi alır
+| Dayanıklılık | Bağlantısı kesilen cihazlara bağlantı kurulmadı. Çözüm arka ucu, cihazın bağlı olmadığı bildirilir. | Özellik değerleri cihaz ikizi korunur. Cihaz, bir sonraki yeniden bağlantı noktasında okur. Özellik değerleri [IoT Hub sorgu diliyle](iot-hub-devguide-query-language.md)alınabilir. | İletiler, 48 saate kadar IoT Hub korunabilir. |
+| Hedefler | **DeviceID**veya [işleri](iot-hub-devguide-jobs.md)kullanan birden çok cihaz kullanan tek bir cihaz. | **DeviceID**veya [işleri](iot-hub-devguide-jobs.md)kullanan birden çok cihaz kullanan tek bir cihaz. | **DeviceID**tarafından tek bir cihaz. |
+| Boyut | En yüksek doğrudan Yöntem yük boyutu 128 KB 'tır. | İstenen en fazla özellik boyutu 32 KB 'tır. | En çok 64 KB ileti. |
+| Frequency | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
+| Protokol | MQTT veya AMQP kullanılarak kullanılabilir. | MQTT veya AMQP kullanılarak kullanılabilir. | Tüm protokollerde kullanılabilir. HTTPS kullanılırken cihaz yoklamalıdır. |
 
-Aşağıdaki öğreticilerde doğrudan yöntemler, istenen özellikleri ve bulut-cihaz iletilerini kullanmayı öğrenin:
+Aşağıdaki öğreticilerde doğrudan yöntemleri, istenen özellikleri ve buluttan cihaza iletileri nasıl kullanacağınızı öğrenin:
 
-* [Doğrudan yöntemler kullanma](quickstart-control-device-node.md)
-* [Cihazları yapılandırmak için istenen özellikleri kullanın](tutorial-device-twins.md) 
-* [Bulut-cihaz iletilerini gönder](iot-hub-node-node-c2d.md)
+* [Doğrudan Yöntemler kullanma](quickstart-control-device-node.md)
+* [Cihazları yapılandırmak için istenen özellikleri kullanma](tutorial-device-twins.md) 
+* [Buluttan cihaza iletileri gönderme](iot-hub-node-node-c2d.md)

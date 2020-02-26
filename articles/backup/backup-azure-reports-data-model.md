@@ -3,12 +3,12 @@ title: Azure Backup tanılama olayları için veri modeli
 description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları göndermenin kaynağa özgü moda başvurdadır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: d38c9dedba7111923fa4f823d348d0783ac36681
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 267753ee1647739e36d92b64f50d8a8be87537d9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500616"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583393"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
 
@@ -220,5 +220,5 @@ Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Log Analytics Tanılama verileri gönderme hakkında bilgi edinin](https://aka.ms/AzureBackupDiagnosticsDocs)
+- [Log Analytics Tanılama verileri gönderme hakkında bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
 - [Kaynağa özgü tablolara sorgu yazmayı öğrenin](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
