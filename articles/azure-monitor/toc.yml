@@ -1235,8 +1235,6 @@
           href: platform/monitoring-classic-retirement.md
         - name: Günlük uyarısı API tercihini değiştirme
           href: platform/alerts-log-api-switch.md
-        - name: HockeyApp verileri
-          href: app/hockeyapp-bridge-app.md
         - name: Web Uygulaması Analiz çözümü
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights Bağlayıcısı

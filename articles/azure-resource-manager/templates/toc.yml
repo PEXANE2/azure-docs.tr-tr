@@ -142,6 +142,9 @@
             - name: Değişkenler
               displayName: 'iteration,copy'
               href: copy-variables.md
+            - name: Çıkışlar
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
         - name: Abonelik düzeyi kaynakları
           href: deploy-to-subscription.md
         - name: Yönetim grubu düzeyi kaynakları
