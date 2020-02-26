@@ -42,6 +42,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: Nasıl yapılır
   items:
+    - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Planlama ve tasarım
       items:
         - name: ACS’den SAS’ye geçiş

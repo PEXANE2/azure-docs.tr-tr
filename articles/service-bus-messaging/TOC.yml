@@ -114,6 +114,8 @@
           href: service-bus-messaging-security-controls.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
+      href: deprecate-service-bus-management.md
     - name: Ad alanı oluşturma
       href: service-bus-create-namespace-portal.md
     - name: Geliştirme

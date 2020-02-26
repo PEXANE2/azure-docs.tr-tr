@@ -71,7 +71,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
             - name: Komut satırını kullanarak küme oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
-            - name: PowerShell kullanarak küme oluşturma
+            - name: PowerShell kullanarak kümeler oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: REST API kullanarak küme oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Kavramlar
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Kurumsal güvenlik genel yönergeleri
           href: ./domain-joined/general-guidelines.md
         - name: ESP kümeleri için planlama

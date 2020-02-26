@@ -104,9 +104,9 @@
       href: how-to-assess.md
     - name: Değerlendirme için grup makineleri
       href: how-to-create-a-group.md
-    - name: Bağımlılık görselleştirmesi kullanan grup makineleri
+    - name: Makine bağımlılıklarını analiz etme (aracı tabanlı)
       href: how-to-create-group-machine-dependencies.md
-    - name: Aracısız bağımlılık görselleştirmesi kullanan grup makineleri
+    - name: Makine bağımlılıklarını analiz etme (aracısız)
       href: how-to-create-group-machine-dependencies-agentless.md
     - name: Değerlendirme oluşturma
       href: how-to-create-assessment.md

@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: Sızma Testleri ve Red Team Alıştırmaları
       href: security-control-penetration-tests-red-team-exercises.md
+- name: Güvenlik Temelleri
+  items:
+    - name: Azure güvenlik temellerine genel bakış
+      href: security-baselines-overview.md
+    - name: Batch güvenlik temeli
+      href: ../../batch/security-baseline.md
+    - name: Key Vault güvenlik temeli
+      href: ../../key-vault/security-baseline.md
+    - name: HDInsight güvenlik temeli
+      href: ../../hdinsight/security-baseline.md
+    - name: SQL Veritabanı güvenlik temeli
+      href: ../../sql-database/security-baseline.md
