@@ -181,6 +181,20 @@
   items:
     - name: REST API'leri
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Azure Güvenlik Merkezi hakkında SSS
+      items:
+        - name: Genel sorular
+          href: faq-general.md
+        - name: Faturalama soruları
+          href: faq-billing.md
+        - name: İzinlerle ilgili sorular
+          href: faq-permissions.md
+        - name: Veri toplama ve aracı ile ilgili sorular
+          href: faq-data-collection-agents.md
+        - name: Sanal Makineler hakkında sorular
+          href: faq-vms.md
+        - name: Mevcut Azure Log Analytics kullanıcıları
+          href: faq-azure-monitor-logs.md
     - name: Sürüm notları
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Özellik ve API’yi kullanımdan kaldırma (Temmuz 2019)
@@ -195,8 +209,6 @@
       href: security-center-privacy.md
     - name: IoT için Azure Güvenlik Merkezi belgeleri
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: SSS
-      href: security-center-faq.md
     - name: Azure güvenlik belgeleri
       href: /azure/security/
     - name: Azure güncelleştirmeleri

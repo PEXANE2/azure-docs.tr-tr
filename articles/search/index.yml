@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 02/25/2020
+  ms.openlocfilehash: b1df45b155e9c9d1bd4433d7ddc765c126686a07
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76721073"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77614967"
 landingContent:
 - title: Bilişsel Arama hakkında
   linkLists:
@@ -24,15 +24,29 @@ landingContent:
     links:
     - text: Azure Bilişsel Arama nedir?
       url: search-what-is-azure-search.md
-  - linkListType: architecture
-    links:
-    - text: Bilişsel Arama’da tam metin araması nasıl çalışır?
-      url: search-lucene-query-architecture.md
+    - text: Yapay zeka ile zenginleştirme nedir?
+      url: cognitive-search-concept-intro.md
+    - text: Dizin oluşturucu nedir?
+      url: search-indexer-overview.md
   - linkListType: video
     links:
     - text: Bilişsel Arama nedir? (1 dakika 27 saniye)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-- title: başlarken
+- title: Azure verilerinin dizinini oluşturma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Blob depolama alanından dizin oluşturma
+      url: search-blob-storage-integration.md
+    - text: Azure SQL Veritabanı'ndan dizin oluşturma
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Cosmos DB’den dizin oluşturma
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: Yarı yapılandırılmış blob verilerini dizinleme
+      url: search-semi-structured-data.md
+- title: 10 dakikalık hızlı başlangıçlar
   linkLists:
   - linkListType: quickstart
     links:
@@ -40,64 +54,34 @@ landingContent:
       url: search-create-service-portal.md
     - text: Dizin oluşturma
       url: search-get-started-portal.md
-    - text: Zenginleştirme işlem hattı oluşturma
-      url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
     - text: Uygulama oluşturma
-      url: tutorial-csharp-create-first-app.md
-  - linkListType: learn
-    links:
-    - text: Azure Bilişsel Arama’ya giriş
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
-- title: Blob depolama ile kullanma
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Blob verilerini anlamak için AI kullanma
-      url: search-blob-ai-integration.md
-    - text: Blob içeriğinizi arama
-      url: search-blob-storage-integration.md
-    - text: AI zenginleştirmelerini depolama
-      url: knowledge-store-concept-intro.md
-  - linkListType: tutorial
-    links:
-    - text: Yarı yapılandırılmış blob verilerini dizinleme
-      url: search-semi-structured-data.md
-- title: Verilerinizin dizinini oluşturma
+      url: search-create-app-portal.md
+    - text: Ham metin ve görüntüleri alıp ayıklama
+      url: cognitive-search-quickstart-blob.md
+- title: Tüm verilerin dizinini oluşturma
   linkLists:
   - linkListType: concept
     links:
     - text: Dizin tanımlama
       url: search-what-is-an-index.md
-    - text: Verileri içeri aktarma
+    - text: Veri içeri aktarma
       url: search-what-is-data-import.md
-    - text: Dizin oluşturucu kullanma
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure SQL Veritabanı'ndan dizin oluşturma
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Cosmos DB verilerinden dizin oluşturma
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: Dizin Oluşturma (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: Dizin Oluşturucu Oluşturma (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
-- title: Verilerinizi zenginleştirme
+- title: AI ile zenginleştirme
   linkLists:
   - linkListType: concept
     links:
-    - text: Yapay zeka zenginleştirme işlem hattı
-      url: cognitive-search-concept-intro.md
     - text: Beceri kümeleri
       url: cognitive-search-defining-skillset.md
     - text: Bilgi depoları
       url: knowledge-store-concept-intro.md
     - text: Yansıtmalar
-      url: knowledge-store-projection-overview.md
+      url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
     - text: Bilişsel Hizmetleri Ekleme
@@ -110,11 +94,11 @@ landingContent:
     links:
     - text: Yerleşik yetenekler
       url: cognitive-search-predefined-skills.md
-- title: Verilerinizi sorgulayın
+- title: Verileri sorgulama
   linkLists:
   - linkListType: concept
     links:
-    - text: Genel Bakış
+    - text: Sorgu türleri ve oluşturma
       url: search-query-overview.md
     - text: Basit söz dizimi (varsayılan)
       url: query-simple-syntax.md

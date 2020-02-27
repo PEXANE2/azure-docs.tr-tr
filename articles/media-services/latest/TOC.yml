@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Gecikme süresi
           href: live-event-latency.md
+        - name: Canlı Etkinlik hata kodları
+          href: live-event-error-codes.md
     - name: İzleme
       items:
         - name: Event Grid ile olaylar
@@ -175,6 +177,8 @@
           items:
             - name: Akış Uç Noktası hata kodları
               href: streaming-endpoint-error-codes.md
+            - name: Canlı Etkinlik hata kodları
+              href: live-event-error-codes.md
             - name: İş hata kodları
               href: job-error-codes.md
     - name: v2’den v3’e geçiş kılavuzu
@@ -325,6 +329,8 @@
       items:
         - name: Akış Uç Noktası hata kodları
           href: streaming-endpoint-error-codes.md
+        - name: Canlı Etkinlik hata kodları
+          href: live-event-error-codes.md
         - name: İş hata kodları
           href: job-error-codes.md
 - name: Kaynaklar

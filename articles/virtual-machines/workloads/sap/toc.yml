@@ -120,6 +120,11 @@
       href: sap-deployment-checklist.md
     - name: Azure üzerinde SAP NetWeaver'ı planlama ve gerçekleştirme
       href: planning-guide.md
+      items:
+        - name: Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
+          href: sap-planning-supported-configurations.md
+        - name: Azure dağıtımları için hangi SAP yazılımı desteklenir?
+          href: sap-supported-product-on-azure.md
     - name: SAP NetWeaver Dağıtım kılavuzu
       href: deployment-guide.md
     - name: SAP iş yükü için DBMS dağıtım kılavuzları

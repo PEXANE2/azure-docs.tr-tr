@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: Sorun giderme ve hata ayıklama
           href: how-to-troubleshoot-deployment.md
-    - name: Web hizmetlerini kullanma
-      items:
-        - name: Gerçek zamanlı kullanma
+        - name: İstemciler oluşturma
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Tasarımcı toplu iş tahminleri
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: Modelleri izleme
-      items:
-        - name: Model verilerini toplama ve değerlendirme
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: Veri değişikliklerini algılama
-          href: how-to-monitor-data-drift.md
-        - name: Application Insights ile izleme
-          href: how-to-enable-app-insights.md
+        - name: Modelleri izleme
+          items:
+            - name: Model verilerini toplama ve değerlendirme
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: Veri değişikliklerini algılama
+              href: how-to-monitor-data-drift.md
+            - name: Application Insights ile izleme
+              href: how-to-enable-app-insights.md
     - name: ML işlem hatlarını oluşturma ve kullanma
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: Paralel çalıştırma adımında hata ayıklama ve sorun giderme
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: Tasarımcı toplu iş tahminleri
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Kaynak kotalarını yönetme
       displayName: limits
       href: how-to-manage-quotas.md

@@ -4,18 +4,16 @@ summary: Azure'ı ve şirket içi hizmetlerini izleme. Ölçümleri, günlükler
 metadata:
   title: Azure İzleyici belgeleri
   description: Log Analytics ve Application Insights çözümlerini de içeren Azure İzleyici, buluttaki ve şirket içindeki kaynaklarınızla uygulamalarınızın performansını ve kullanılabilirliğini en üst düzeye çıkarmanızı sağlayan telemetri verilerini toplamak ve analiz etmek için kullanabileceğiniz gelişmiş araçlar sunar.
-  services: azure-monitor
-  ms.service: azure-monitor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: e099b61e168de05e6a81ca166cbedd56837303a3
-  ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+  ms.openlocfilehash: 15a9b1cdbe46baca85959d3e9e5124f706027ec5
+  ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/21/2020
-  ms.locfileid: "77544156"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77667134"
 landingContent:
 - title: Azure İzleyici hakkında
   linkLists:

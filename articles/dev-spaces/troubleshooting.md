@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 0c6a712f1dfb4410f3eee0fbd0192c6147618f96
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539595"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605254"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -24,7 +24,7 @@ Sorunları daha etkili bir şekilde gidermek için inceleme için daha ayrıntı
 
 Visual Studio uzantısı için `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişkenini 1 olarak ayarlayın. Visual Studio ortam değişkeni için etkili olması için yeniden emin olun. Etkinleştirildikten sonra, ayrıntılı Günlükler `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` dizininize yazılır.
 
-CLı 'de, komut yürütme sırasında `--verbose` anahtarını kullanarak daha fazla bilgi alabilirsiniz. Ayrıca `%TEMP%\Azure Dev Spaces`daha ayrıntılı günlüklere de gidebilirsiniz. Bir Mac üzerinde, bir terminal penceresinden `echo $TMPDIR` çalıştırılarak GEÇICI dizin bulunabilir. Bir Linux bilgisayarda, GEÇICI dizin genellikle `/tmp`.
+CLı 'de, komut yürütme sırasında `--verbose` anahtarını kullanarak daha fazla bilgi alabilirsiniz. Ayrıca `%TEMP%\Azure Dev Spaces`daha ayrıntılı günlüklere de gidebilirsiniz. Bir Mac üzerinde, bir terminal penceresinden `echo $TMPDIR` çalıştırılarak *geçici* dizin bulunabilir. Bir Linux bilgisayarda, *geçici* dizin genellikle `/tmp`. Ayrıca, [Azure CLI yapılandırma dosyanızda](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)günlüğe kaydetme özelliğinin etkinleştirildiğini doğrulayın.
 
 Azure Dev Spaces, tek bir örneğin veya Pod hata ayıklaması yaparken en iyi şekilde de geçerlidir. `azds.yaml` dosyası, Kubernetes 'in hizmetinize çalıştığı düğüm sayısını gösteren bir, *Replicacount*ayarı içerir. Uygulamanızı belirli bir hizmet için birden çok Pod çalıştıracak şekilde yapılandırmak üzere *replicacount* değerini değiştirirseniz, hata ayıklayıcı alfabetik olarak listelendiğinde ilk Pod 'a iliştirir. Özgün Pod geri dönüştürüldüğünde hata ayıklayıcı farklı bir pod 'a iliştirir, muhtemelen beklenmedik davranışa neden olur.
 
@@ -267,7 +267,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam* düğmesine tıklayın.
+* *OK (Tamam)* düğmesine tıklayın.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Visual Studio ve Visual Studio Code kullanma hakkında genel sorunlar
 
@@ -391,7 +391,7 @@ Denetleyicinin Kullanıcı RBAC rolünü güncelleştirmek için:
     * *Rol*Için, *katkıda bulunan* veya *sahip*seçeneklerinden birini belirleyin.
     * *Erişim atama*Için, *Azure AD Kullanıcı, Grup veya hizmet sorumlusu*' nı seçin.
     * *Seç*için izin vermek istediğiniz kullanıcıyı arayın.
-1. *Kaydet* düğmesine tıklayın.
+1. *Kaydet*’e tıklayın.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Geliştirme alanları hizmeti ile ilişkilendirilen genel bir URL için DNS adı çözümlemesi başarısız olur
 
@@ -474,7 +474,7 @@ Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kü
 | cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
-| azds-<guid>.<location>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "SubscriptionID\>\<abonelikte \<küme\> kümesi bulunamadı
 

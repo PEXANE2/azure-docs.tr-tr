@@ -100,28 +100,20 @@
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Bilgi bankasını düzenleme
+    - name: Azure kaynaklarını yönetme
       items:
-        - name: Bilgi bankası düzenleme
-          href: How-To/edit-knowledge-base.md
-        - name: İzleme bilgi istemleriyle çok devirli konuşmalar oluşturma
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Sohbet ekleme
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Güvenli bir SharePoint dosyası ekleme
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Kaynakları yönetme
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Analiz alma
+          href: How-To/get-analytics-knowledge-base.md
+        - name: İş sürekliliği planı oluşturma
+          href: How-To/business-continuity-plan.md
     - name: Bilgi bankasını yönetme
       items:
         - name: Bilgi bankası oluşturma ve yayımlama
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Meta verileri kullanarak yanıt alma
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Varsayılan yanıtı ayarlama
-          href: How-to/change-default-answer.md
         - name: Soru-Cevap Oluşturma ve LUIS ile bot oluşturma
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Dil seçimi
@@ -136,17 +128,27 @@
         - name: Bilgi bankasını geliştirmek için etkin öğrenmeyi kullanma
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: Hizmeti yönetme
+        - name: Bilgi bankası düzenleme
+          href: How-To/edit-knowledge-base.md
+        - name: İzleme bilgi istemleriyle çok devirli konuşmalar oluşturma
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Sohbet ekleme
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Güvenli bir SharePoint dosyası ekleme
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Bilgi bankasında sorgu yapma
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: İstemci uygulaması ile kullanma
       items:
-        - name: Kaynakları yönetme
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Analiz alma
-          href: How-To/get-analytics-knowledge-base.md
-        - name: Kapasite seçme
-          href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: İş sürekliliği planı oluşturma
-          href: How-To/business-continuity-plan.md
+        - name: Bot altyapısı
+          href: Tutorials/create-qna-bot.md
+        - name: LUIS ve Soru-Cevap Oluşturma
+          href: Tutorials/integrate-qnamaker-luis.md
+    - name: Analiz ve telemetri
+      href: How-To/get-analytics-knowledge-base.md
 - name: Başvuru
   items:
     - name: Diller
@@ -155,12 +157,20 @@
       href: limits.md
     - name: Sorun giderme
       href: troubleshooting.md
-    - name: Dosya biçimleri
+    - name: Hizmet yapılandırması
+      href: reference-app-service.md
+    - name: İçerik ve veri biçimleri
       items:
-        - name: Markdown başvurusu
-          href: reference-markdown-format.md
-        - name: Toplu test TSV
-          href: reference-tsv-format-batch-testing.md
+        - name: İçerik biçimi yönergeleri
+          href: reference-document-format-guidelines.md
+        - name: URL’ler
+          href: reference-document-type-url.md
+        - name: Veri yönergelerini içeri ve dışarı aktarma
+          href: reference-data-guidelines.md
+    - name: Görüntü biçimi
+      href: reference-markdown-format.md
+    - name: Toplu test biçimi
+      href: reference-tsv-format-batch-testing.md
     - name: REST API Başvurusu
       items:
         - name: Yazma API’leri
@@ -169,7 +179,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: API eğitme
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: Örnekler
       items:
         - name: Soru-Cevap Oluşturma yardım robotu
@@ -197,7 +206,7 @@
             - name: Başvuru Belgeleri
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
             - name: Örnekler
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python

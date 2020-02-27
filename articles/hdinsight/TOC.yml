@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: Şablonları kullanarak küme oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: Komut satırını kullanarak küme oluşturma
+            - name: Azure CLI’yi kullanarak küme oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: PowerShell kullanarak kümeler oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

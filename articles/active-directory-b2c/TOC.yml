@@ -350,8 +350,9 @@
         - name: Azure İzleyici
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: Hesap yönetimi
+        - name: Kullanıcıları yönetme - Microsoft Graph
           href: manage-user-accounts-graph-api.md
+          displayName: 'account, accounts'
         - name: Azure Pipelines ile dağıtma
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'

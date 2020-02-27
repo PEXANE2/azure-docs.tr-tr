@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: Nasıl yapılır
   items:
-    - name: Temel Genel Load Balancer’ı Standart Genel Load Balancer’a yükseltme
-      href: upgrade-basic-standard.md
-    - name: Temel İç Load Balancer’ı Standart İç Load Balancer’a yükseltme
-      href: upgrade-basicInternal-standard.md
+    - name: Temel Load Balancer’ı Standart Load Balancer’a yükseltme
+      items:
+        - name: Temel Genel Load Balancer’ı yükseltme
+          href: upgrade-basic-standard.md
+        - name: Temel İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekmez
+          href: upgrade-basicInternal-standard.md
+        - name: Temel İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekir
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Giden kuralları yapılandırma
       items:
         - name: Azure portal

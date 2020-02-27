@@ -143,6 +143,8 @@
           href: availability-zones.md
         - name: Birden fazla düğüm havuzu kullanma
           href: use-multiple-node-pools.md
+        - name: Spot düğüm havuzlarını kullanma (önizleme)
+          href: spot-node-pool.md
         - name: Terraform ile AKS’yi dağıtma
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

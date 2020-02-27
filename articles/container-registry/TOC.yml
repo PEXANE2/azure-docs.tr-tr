@@ -141,15 +141,17 @@
       items:
         - name: Kapsayıcı görüntüsü derlemelerini otomatikleştirme
           items:
-            - name: Kaynak bağlamdan derleme
+            - name: 1 - Kaynak bağlamdan derleme
               href: container-registry-tutorial-quick-task.md
-            - name: Commit kodu üzerinde derleme
+            - name: 2a - Commit kodu üzerinde derleme
               href: container-registry-tutorial-build-task.md
-            - name: Commit kodu üzerinde çok adımlı görev
+            - name: 2B - commit kodu üzerinde çok adımlı görev
               href: container-registry-tutorial-multistep-task.md
-            - name: Temel görüntü güncelleştirme üzerinde derleme
+            - name: 3a - Temel görüntü güncelleştirme üzerinde derleme
               href: container-registry-tutorial-base-image-update.md
-            - name: Görev zamanlama
+            - name: 3b - Özel temel görüntü güncelleştirme üzerinde derleme
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 - Zamanlamaya göre oluşturma
               href: container-registry-tasks-scheduled.md
     - name: Örnekler
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: Çok adımlı görevler
           href: container-registry-tasks-multi-step.md
+        - name: Temel görüntü güncelleştirmeleri
+          href: container-registry-tasks-base-images.md
     - name: Nasıl yapılır kılavuzları
       expanded: false
       items:

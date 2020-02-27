@@ -1,0 +1,11 @@
+- name: Site güvenilirlik mühendisliği belgeleri
+  href: ../index.yml
+- name: Kaynaklar
+  expanded: true
+  items:
+    - name: SRE kitapları
+      href: books.md
+    - name: SRE etkinlikleri
+      href: events.md
+    - name: SRE bağlantı koleksiyonları ve özetler
+      href: links.md

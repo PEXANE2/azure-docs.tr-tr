@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: Performansı ölçeklendirme
           href: search-performance-optimization.md
+        - name: Hizmeti bölgeler arasında taşıma
+          href: search-howto-move-across-regions.md
         - name: Çok kiracılı mimari
           href: search-modeling-multitenant-saas-applications.md
     - name: Güvenlik

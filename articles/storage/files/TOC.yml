@@ -37,18 +37,12 @@
       href: storage-snapshots-files.md
     - name: Ölçeklenebilirlik ve performans hedefleri
       href: storage-files-scale-targets.md
-    - name: Güvenlik
-      items:
-        - name: Yetkilendirme
-          href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Depolama şifrelemesi
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Kimlik tabanlı doğrulama ve yetkilendirme
-          href: storage-files-active-directory-overview.md
-        - name: Azure Özel Uç Noktalar'ı kullanma
-          href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Uyumluluk teklifleri
-          href: ../common/storage-compliance-offerings.md
+    - name: Kimlik tabanlı doğrulama ve yetkilendirme
+      href: storage-files-active-directory-overview.md
+    - name: Bekleme sırasında şifreleme
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Uyumluluk teklifleri
+      href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Geliştirme
       items:
         - name: Eşzamanlılığı yönetme
@@ -67,17 +61,13 @@
           href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Depolama analizi ölçümleri (klasik)
           href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Veri yedekliği
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Olağanüstü durum kurtarma ve yük devretme
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: SSS
       href: storage-files-faq.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Oluştur
       items:
-        - name: Standart dosya paylaşımı oluşturma
+        - name: Dosya paylaşımı oluşturma
           href: storage-how-to-create-file-share.md
         - name: Büyük dosya paylaşımına olanak tanıma
           href: storage-files-how-to-create-large-file-share.md
@@ -129,20 +119,8 @@
       items:
         - name: Azure Dosya Eşitleme’ye Geçiş
           href: storage-sync-offline-data-transfer.md
-        - name: Azure Depolamadan/Depolamaya veri taşıma
-          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: StorSimple’dan Azure Dosya Eşitleme’ye geçiş
           href: storage-sync-files-storsimple-migration.md
-        - name: AzCopy ile verileri taşıma
-          items:
-            - name: başlarken
-              href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Dosyalar ile kullanma
-              href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 'Yapılandırma, iyileştirme, sorun giderme'
-              href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Veri Taşıma kitaplığıyla veri aktarma
-              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Geliştirme
       items:
         - name: Bağlantı dizelerini yapılandırma
@@ -174,9 +152,9 @@
         - name: Güvenli aktarım gerektir
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: AD kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
-          href: storage-files-active-directory-domain-services-enable.md
+          href: storage-files-identity-auth-active-directory-enable.md
         - name: Azure AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
-          href: storage-files-active-directory-enable.md
+          href: storage-files-identity-auth-active-directory-domain-service-enable.md
         - name: Azure Depolama istemcisi için güvenli TLS'yi etkinleştirme
           href: ../common/storage-security-tls.md
     - name: Sorun giderme
@@ -235,42 +213,6 @@
       href: 'https://azure.github.io/azure-storage-ios/'
     - name: Android
       href: 'https://azure.github.io/azure-storage-android'
-    - name: AzCopy v10
-      items:
-        - name: azcopy
-          href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy ortamı
-          href: ../common/storage-ref-azcopy-bench.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy kopya
-          href: ../common/storage-ref-azcopy-copy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy belge
-          href: ../common/storage-ref-azcopy-doc.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy ortamı
-          href: ../common/storage-ref-azcopy-env.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy işleri
-          href: ../common/storage-ref-azcopy-jobs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy işleri temizleme
-          href: ../common/storage-ref-azcopy-jobs-clean.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy iş listesi
-          href: ../common/storage-ref-azcopy-jobs-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy işleri kaldırma
-          href: ../common/storage-ref-azcopy-jobs-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy işleri sürdürme
-          href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy işleri gösterme
-          href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy listesi
-          href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy oturum açma
-          href: ../common/storage-ref-azcopy-login.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy oturumu kapatma
-          href: ../common/storage-ref-azcopy-logout.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy oluşturma
-          href: ../common/storage-ref-azcopy-make.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy kaldırma
-          href: ../common/storage-ref-azcopy-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy eşitleme
-          href: ../common/storage-ref-azcopy-sync.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Resource Manager şablonu
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions
@@ -282,18 +224,6 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure Dosya Eşitleme yayın notları
       href: storage-files-release-notes.md
-    - name: Azure Depolama Gezgini
-      items:
-        - name: Depolama Gezgini’ni indirme
-          href: 'https://azure.microsoft.com/features/storage-explorer/'
-        - name: Depolama Gezgini ile çalışmaya başlama
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama Gezgini sürüm notları
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama Gezgini sorunu giderme
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama Gezgini erişilebilirliği
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure Depolama forumu
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
     - name: Stack Overflow üzerinde Azure Depolama

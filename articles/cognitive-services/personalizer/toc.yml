@@ -23,9 +23,11 @@
     - name: Kişiselleştirme nasıl çalışır?
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: Kişiselleştirme’yi nerelerde kullanabilirsiniz?
+    - name: Kişiselleştirme nerede kullanılır?
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Terminoloji
+      href: terminology.md
     - name: Etik & sorumlu kullanım
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -34,9 +36,11 @@
         - name: Özellikler Eylem ve Bağlam
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Etkin olan ve olmayan olaylar
+        - name: Öğrenme ilkesi
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Etkin olan ve olmayan olaylar
+          href: concept-active-inactive-events.md
         - name: Ödüller
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -56,15 +60,15 @@
       href: concepts-scalability-performance.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Kişiselleştirme’yi oluşturma ve yapılandırma
+    - name: Kişiselleştirme Kaynağı Oluşturma
+      href: how-to-create-resource.md
+    - name: Öğrenme döngüsü yapılandırma
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: Öğrenme ilkenizi yönetme
-      href: how-to-learning-policy.md
-    - name: Çözümleme
-      items:
-        - name: Çevrimdışı değerlendirme
-          href: how-to-offline-evaluation.md
+    - name: Model ve öğrenme ayarlarını yönetme
+      href: how-to-manage-model.md
+    - name: Çevrimdışı değerlendirme ile analiz etme
+      href: how-to-offline-evaluation.md
 - name: Başvuru
   items:
     - name: Örnekler

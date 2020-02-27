@@ -21,6 +21,8 @@
   items:
     - name: Bağlanma
       items:
+        - name: Cihaz bağlama
+          href: tutorial-connect-device.md
         - name: Tak Çalıştır (önizleme) cihazını bağlama
           href: tutorial-connect-pnp-device.md
         - name: Ağ geçidi cihaz şablonu oluşturma
