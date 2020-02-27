@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 3dbe5871a78634d2866ec1a3d1455492762ff2aa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538184"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619235"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -63,7 +63,7 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 |Iş posta|E-postalar [tür EQ "iş"]. değer|Mail|
 |Yöneticisi|Yöneticisi|Yöneticisi|
 |tag|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
-|status|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
+|durum|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
 
 Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken "ID," "externalId" ve "meta" özniteliklerini içerir.
 
@@ -966,6 +966,9 @@ Hizmeti Internet Information Services içinde barındırmak için bir geliştiri
 
 Azure Active Directory gelen istekleri bir OAuth 2.0 taşıyıcı belirteci içerir.   İsteği alan herhangi bir hizmet, Microsoft Graph API hizmetine erişim için, beklenen Azure Active Directory kiracısı için Azure Active Directory veren tarafından kimlik doğrulaması yapılmalıdır.  Belirteçte veren, "iss" gibi bir ISS talebi tarafından tanımlanır: "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Bu örnekte, https://sts.windows.nettalep değerinin temel adresi veren olarak Azure Active Directory tanımlar, göreli adres segmenti, cbb1a5ac-f33b-45fa-9BF5-f37db0fed422, belirtecin verildiği Azure Active Directory kiracının benzersiz tanımlayıcısıdır. Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 ' dir. Galerideki her bir uygulama için uygulama şablonu KIMLIĞI değişir. Galeri uygulamasının uygulama şablonu KIMLIĞI hakkında sorularınız için lütfen ProvisioningFeedback@microsoft.com başvurun. Tek bir kiracıya kayıtlı uygulamaların her biri, SCıM istekleriyle aynı `iss` talebini alabilir.
 
+   > [!NOTE]
+   > Bu alanı boş bırakmanız ve Azure AD tarafından oluşturulan bir belirtece güvenmamanız ***önerilmez.*** Bu seçenek öncelikle test amacıyla kullanılabilir.
+
 Bir SCıM hizmeti oluşturmak için Microsoft tarafından sunulan CLı kitaplıklarını kullanan geliştiriciler, aşağıdaki adımları izleyerek Microsoft. Owin. Security. ActiveDirectory paketini kullanarak Azure Active Directory istekleri kimlik doğrulaması yapabilir: 
 
 İlk olarak, bir sağlayıcıda, hizmet her başlatıldığında Çağrılacak bir yöntemi döndürerek Microsoft. Systemforcrossdomainıdentitymanagement. ıprovider. StartupBehavior özelliğini uygulayın: 
@@ -1450,6 +1453,8 @@ Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağı
 > [!div class="checklist"]
 > * [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) Kullanıcı ve grup uç noktasını destekleme (yalnızca bir tane gereklidir ancak her ikisi de önerilir)
 > * Her kiracı için saniyede en az 25 istek desteklenir (gerekli)
+> * Mühendisler için mühendislik ve destek kişileri oluşturun müşteri galerisini ekleme (gerekli)
+> * uygulamanız için 3 süresi dolan test kimlik bilgileri (gerekli)
 > * Aşağıda açıklandığı gibi, OAuth yetkilendirme kodu yetkisini veya uzun süreli bir belirteci destekler (gerekli)
 > * Müşteri galerisinin ekleme işlemini desteklemesi için mühendislik ve destek iletişim noktası oluşturma (gerekli)
 > * Tek bir düzeltme ekiyle birden çok grup üyeliğini güncelleştirme desteği (önerilir) 

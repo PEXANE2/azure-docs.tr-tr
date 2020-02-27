@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622919"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648844"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -38,11 +38,11 @@ Aşağıdaki sorgu performans göstergeleri, yürütülen her sorgu için kullan
 
 - [Toplam CPU](#total-cpu): tüm işlem düğümleri genelinde sorguyu işlemek için kullanılan genel işlem. Bilgi işlem, ayrıştırma ve veri getirme için kullanılan süreyi temsil eder. 
 
-- [Veri hacmi](#data-volume): sorguyu işlemek için erişilen tüm veriler. Hedef tablonun boyutuyla, kullanılan zaman aralığı, uygulanan filtrelerin ve başvurulan sütun sayısının etkilenerek etkilenir.
+- [İşlenen sorgu için kullanılan veriler](#data-used-for-processed-query): sorguyu işlemek için erişilen genel veriler. Hedef tablonun boyutuyla, kullanılan zaman aralığı, uygulanan filtrelerin ve başvurulan sütun sayısının etkilenerek etkilenir.
 
-- [Zaman aralığı](#time-range): sorguyu işlemek için en yeni ve en eski veriler arasındaki boşluk. Sorgu için belirtilen açık zaman aralığına göre etkilendi.
+- [İşlenen sorgunun zaman aralığı](#time-span-of-the-processed-query): sorguyu işlemek için erişilen en yeni ve en eski veriler arasındaki boşluk. Sorgu için belirtilen açık zaman aralığına göre etkilendi.
 
-- [Veri yaşı](#age-of-data): Şu anda ve sorguyu işlemek için erişilen en eski veriler arasındaki boşluk. Veri getirme verimliliğini oldukça etkiler.
+- [İşlenen verilerin yaşı](#age-of-processed-data): Şu anda ve sorguyu işlemek için erişilen en eski veriler arasındaki boşluk. Veri getirme verimliliğini oldukça etkiler.
 
 - [Çalışma alanı sayısı](#number-of-workspaces): örtük veya açık seçim nedeniyle sorgu işlemi sırasında kaç çalışma alanına erişildiği.
 
@@ -151,7 +151,7 @@ Heartbeat
 > Bu gösterge yalnızca en hızlı kümeden CPU gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
 
 
-## <a name="data-volume"></a>Veri hacmi
+## <a name="data-used-for-processed-query"></a>İşlenen sorgu için kullanılan veriler
 
 Sorgu işlenirken kritik bir faktör, taranan ve sorgu işleme için kullanılan veri birimidir. Azure Veri Gezgini, diğer veri platformları ile karşılaştırıldığında veri hacmini önemli ölçüde azaltan agresif iyileştirmeler kullanır. Hala, sorguda kullanılan veri birimini etkileyebilecek kritik etmenler vardır.
 Azure Izleyici günlüklerinde **TimeGenerated** sütunu, verileri dizine almanın bir yolu olarak kullanılır. **TimeGenerated** değerlerinin mümkün olduğunca dar olarak sınırlanması, işlenmesi gereken veri miktarını önemli ölçüde sınırlandırarak performansı sorgulamak için önemli bir geliştirme sağlar.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range"></a>Zaman aralığı
+## <a name="time-span-of-the-processed-query"></a>İşlenen sorgunun zaman aralığı
 
 Azure Izleyici günlüklerindeki tüm Günlükler, **TimeGenerated** sütununa göre bölümlendirilir. Erişilen bölüm sayısı doğrudan zaman dilimi ile ilgilidir. Zaman aralığını azaltmak, istem sorgusu yürütmeyi en verimli yoludur.
 
@@ -262,7 +262,7 @@ by Computer
 > [!IMPORTANT]
 > Bu gösterge, çapraz bölge sorguları için kullanılamaz.
 
-## <a name="age-of-data"></a>Veri yaşı
+## <a name="age-of-processed-data"></a>İşlenen verilerin yaşı
 Azure Veri Gezgini, çeşitli depolama katmanlarını kullanır: bellek içi, yerel SSD diskleri ve çok daha yavaş Azure Blob 'Ları. Veriler arttıkça, daha yüksek gecikme süresine sahip daha fazla performans ve sorgu süresi ve CPU 'YU azaltan bir daha iyi hale gelir. Verilerin kendisi dışında, sistem meta veriler için de önbelleğe sahiptir. Veriler daha eski olduğunda meta verileri önbellekte olacaktır.
 
 Bazı sorgular eski verilerin kullanımını gerektirirken, eski verilerin yanlışlıkla kullanıldığı durumlar vardır. Bu durum, sorguları meta verilerinde zaman aralığı sağlamaktan yürütülene ve tüm tablo başvuruları, **TimeGenerated** sütununda filtre içermez. Bu durumlarda sistem, bu tabloda depolanan tüm verileri tarar. Veri saklama süresi uzunsa, uzun zaman aralıklarını ve bu nedenle veri saklama süresi kadar eski olan verileri kapsayacaktır.

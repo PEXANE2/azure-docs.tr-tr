@@ -4,7 +4,7 @@ description: Azure sanal makinelerinde tek örnekli SAP HANA el ile yüklenmesi 
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750375"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617242"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Hızlı başlangıç: Azure sanal makinelerinde tek örnekli SAP HANA El Ile yüklenmesi
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 Bu kılavuz, SAP NetWeaver 7,5 ve SAP HANA 1,0 SP12 SAP HANA el ile yüklerken Azure sanal makinelerinde tek örnekli bir ayarlamanıza yardımcı olur. Bu kılavuzun odaklanarak Azure 'da SAP HANA dağıtma işlemi yapılır. SAP belgelerinin yerini almaz. 
 
 > [!NOTE]
@@ -118,7 +118,7 @@ Bu bölümde, bir dağıtılmış SAP NetWeaver 7,5 yüklemesi gerçekleştirmek
 8. /Etc/hosts dosyasındaki test sanal makinelerinin yerel IP adreslerini girin.
 9. /Etc/fstab dosyasına **NOFAIL** parametresini girin.
 10. Linux çekirdek parametrelerini kullandığınız Linux işletim sistemi sürümüne göre ayarlayın. Daha fazla bilgi için bu kılavuzdaki HANA ve "çekirdek parametreleri" başlıklı SAP notlarına bakın.
-11. Değiştirme alanı Ekle.
+11. Takas alanı ekle.
 12. İsteğe bağlı olarak, test VM 'lerine bir grafik masaüstü yüklemesi yapın. Aksi takdirde, uzak bir SAPinst yüklemesi kullanın.
 13. SAP hizmeti marketi 'nden SAP yazılımını indirin.
 14. SAP ASCS örneğini App Server VM 'sine yükler.
@@ -140,7 +140,7 @@ Bu bölümde, bir dağıtılmış SAP NetWeaver 7,5 yüklemesi gerçekleştirmek
 8. /Etc/hosts dosyasındaki test sanal makinelerinin yerel IP adreslerini girin.
 9. /Etc/fstab dosyasına **NOFAIL** parametresini girin.
 10. Çekirdek parametrelerini kullandığınız Linux işletim sistemi sürümüne göre ayarlayın. Daha fazla bilgi için bu kılavuzdaki HANA ve "çekirdek parametreleri" başlıklı SAP notlarına bakın.
-11. Değiştirme alanı Ekle.
+11. Takas alanı ekle.
 12. İsteğe bağlı olarak, test VM 'lerine bir grafik masaüstü yüklemesi yapın. Aksi takdirde, uzak bir SAPinst yüklemesi kullanın.
 13. SAP hizmeti marketi 'nden SAP yazılımını indirin.
 14. HANA DB sunucusu sanal makinesinde 1001 Grup KIMLIĞI ile bir sapsys grubu oluşturun.
@@ -177,16 +177,16 @@ Aşağıda **zypper** komutunu kullanarak SUSE Linux için kullanılabilir düze
 Sorun türüne bağlı olarak, düzeltme ekleri kategoriye ve önem derecesine göre sınıflandırılmaktadır. Kategori için yaygın olarak kullanılan değerler şunlardır: 
 - Güvenlik
 - Önerilen
-- İsteğe Bağlı
+- İsteğe bağlı
 - Özellik
 - Belge
-- yast
+- Yast
 
 Önem derecesi için yaygın olarak kullanılan değerler şunlardır:
 
 - Kritik
 - Önemli
-- Orta
+- Düzey
 - Düşük
 - Memesi
 
@@ -202,7 +202,7 @@ Azure üzerindeki bir Linux sanal makinesinde bulunan kök dosya sisteminin boyu
 
 [SAP HANA TDI depolama gereksinimlerine](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)bağlı olarak, aşağıdaki Azure Premium Depolama yapılandırması önerilir: 
 
-| VM SKU 'SU | RAM |  /Hana/Data ve/Hana/log <br /> LVM veya mdaddm ile şeritli | /Hana/Shared | /root birimi | /usr/SAP |
+| VM SKU | RAM |  /Hana/Data ve/Hana/log <br /> LVM veya mdaddm ile şeritli | /Hana/Shared | /root birimi | /usr/SAP |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
@@ -251,7 +251,7 @@ Aşağıdaki ekran görüntüsünde, çekirdek ayarlarının yapılandırma dosy
 
 ![Yapılandırma dosyasında ve GRUB2-mkconfig kullanılarak derlenen çekirdek ayarları değiştirildi](./media/hana-get-started/image006.jpg)
 
-Diğer bir seçenek de, YaST ve **önyükleme yükleyicisi**  > **çekirdek parametreleri** ayarlarını kullanarak ayarları değiştirir:
+Diğer bir seçenek de, YaST ve **önyükleme yükleyicisi** > **çekirdek parametreleri** ayarlarını kullanarak ayarları değiştirir:
 
 ![YaST Önyükleme yükleyicisindeki çekirdek parametreleri ayarları sekmesi](./media/hana-get-started/image007.jpg)
 
@@ -321,7 +321,7 @@ Windows arka planınız varsa, Firefox, SAPinst, SAP GUI, SAP MC veya HANA Studi
 
    `check /var/run` 
 
-   @No__t_0 bakın. Bulursanız, kaldırın ve yeniden başlatmayı deneyin.
+   `xrdp.pid`bakın. Bulursanız, kaldırın ve yeniden başlatmayı deneyin.
 
 ### <a name="start-sap-mc"></a>SAP MC 'yi Başlat
 GNOME Desktop 'ı yükledikten sonra Firefox 'tan grafik Java tabanlı SAP MC ' yi başlatın. Bir Azure SLES 12/SLES for SAP Applications 12 VM 'de çalışıyorsa, bir hata gösterebilir. Eksik Java tarayıcı eklentisi nedeniyle hata oluşur.
@@ -358,7 +358,7 @@ ASCS örneği App Server VM 'sine yüklendikten sonra, SAP yönetim konsolunda y
 
 ![Yeşil bir simge kullanarak App Server VM 'de yüklü olan ASCS örneğini gösteren SAP](./media/hana-get-started/image016.jpg)
 
-App Server VM 'sinde,/sapmnt dizini, **RW** ve **NO_ROOT_SQUASH** seçenekleri kullanılarak NFS aracılığıyla paylaşılır. Varsayılan değerler **ro** ve **root_squash**' dir. Bu, veritabanı örneğini yüklerken sorunlara yol açabilir.
+App Server VM 'sinde,/sapmnt dizini, **RW** ve **NO_ROOT_SQUASH** seçenekleri kullanılarak NFS aracılığıyla paylaşılır. Varsayılanlar, veritabanı örneğini yüklerken sorunlara yol açabilecek olan **ro** ve **root_squash**.
 
 ![RW ve no_root_squash seçeneklerini kullanarak/sapmnt dizinini NFS aracılığıyla paylaşma](./media/hana-get-started/image017b.jpg)
 
@@ -419,7 +419,7 @@ HANA HDBLCM aracı hakkında daha fazla bilgi için bkz.:
 * [SAP HANA yaşam döngüsü yönetim araçları](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
 * [Sunucu yüklemesi ve güncelleştirme kılavuzu SAP HANA](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
 
-HDBLCM aracı tarafından oluşturulan `\<HANA SID\>adm user` için varsayılan Grup KIMLIĞI ayarıyla ilgili sorunlardan kaçınmak istiyorsunuz. HDBLCM aracılığıyla SAP HANA yüklemeden önce, Grup KIMLIĞI `1001` kullanarak `sapsys` adlı yeni bir grup tanımlayın:
+HDBLCM aracı tarafından oluşturulan `\<HANA SID\>adm user`için varsayılan Grup KIMLIĞI ayarıyla ilgili sorunlardan kaçınmak istiyorsunuz. HDBLCM aracılığıyla SAP HANA yüklemeden önce, Grup KIMLIĞI `1001`kullanarak `sapsys` adlı yeni bir grup tanımlayın:
 
 ![Grup KIMLIĞI 1001 kullanılarak tanımlanan yeni "sapsys" grubu](./media/hana-get-started/image030.jpg)
 
@@ -432,13 +432,13 @@ Aşağıdaki ekran görüntüsünde, daha önce seçtiğiniz tüm anahtar seçen
 > [!IMPORTANT]
 > HANA günlük ve veri birimleri için adlandırılmış dizinler ve bu örnekte/Hana/Shared olan yükleme yolu ve/usr/SAP kök dosya sisteminin bir parçası olmamalıdır. Bu dizinler, VM 'ye eklenmiş olan Azure Veri disklerine aittir. Daha fazla bilgi için "disk kurulumu" bölümüne bakın. 
 
-Bu yaklaşım, kök dosya sisteminin yer kaplamasını önlemeye yardımcı olur. HANA sistem yöneticisinin Kullanıcı KIMLIĞI `1005` olduğunu ve yüklemeden önce tanımlanan KIMLIK `1001` olan `sapsys` grubunun bir parçası olduğunu unutmayın.
+Bu yaklaşım, kök dosya sisteminin yer kaplamasını önlemeye yardımcı olur. HANA sistem yöneticisinin Kullanıcı KIMLIĞI `1005` olduğunu ve yüklemeden önce tanımlanan KIMLIK `1001`olan `sapsys` grubunun bir parçası olduğunu unutmayın.
 
 ![Daha önce seçilen tüm anahtar SAP HANA bileşenleri listesi](./media/hana-get-started/image032.jpg)
 
-/Etc/passwd dizinindeki `\<HANA SID\>adm user` ayrıntılarını kontrol edin. Aşağıdaki ekran görüntüsünde gösterildiği gibi `azdadm` arayın:
+/Etc/passwd dizinindeki `\<HANA SID\>adm user` ayrıntılarını kontrol edin. Aşağıdaki ekran görüntüsünde gösterildiği gibi `azdadm`arayın:
 
-![HANA \<HANA SID \>adm/etc/passwd dizininde listelenen kullanıcı ayrıntıları](./media/hana-get-started/image033.jpg)
+![HANA \<HANA SID\>,/etc/passwd dizininde listelenen adm kullanıcı ayrıntıları](./media/hana-get-started/image033.jpg)
 
 SAP HANA, HDBLCM kullanarak yükledikten sonra, aşağıdaki ekran görüntüsünde gösterildiği gibi, dosya yapısını SAP HANA Studio 'da görebilirsiniz. Tüm SAP NetWeaver tablolarını içeren SAPABAP1 şeması henüz kullanılabilir değil.
 

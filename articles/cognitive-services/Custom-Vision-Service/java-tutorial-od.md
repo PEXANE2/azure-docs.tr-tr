@@ -8,41 +8,44 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: a98c8b5d7c312582cf6644f74bda664c5031468b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166164"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616318"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Hızlı Başlangıç: Java için Özel Görüntü İşleme SDK’sı ile nesne algılama projesi oluşturma
 
 Bu makalede bir nesne algılama modeli oluşturmak için Java ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketlenmiş bölgeler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Kendi Java uygulamanızı oluştururken bu örneği şablon olarak kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kendi seçtiğiniz bir Java IDE
 - [JDK 7 veya 8](https://aka.ms/azure-jdks) yüklenmiş olmalıdır.
-- Maven yüklenmiş olmalıdır
+- [Maven](https://maven.apache.org/) yüklendi
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Özel Görüntü İşleme SDK’sını ve örnek kodu alma
 
 Özel Görüntü İşleme kullanan bir Java uygulaması yazmak için Özel Görüntü İşleme maven paketlerine ihtiyacınız olacaktır. Bu paketler, indirileceği örnek projeye dahildir, ancak bunlara ayrı ayrı erişebilirsiniz.
 
-Maven merkezi deposundan Özel Görüntü İşleme SDK’sını yükleyebilirsiniz:
+Özel Görüntü İşleme SDK 'sını Maven merkezi deposunda bulabilirsiniz:
 - [Eğitim SDK’sı](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Tahmin SDK’sı](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 [Bilişsel Hizmetler Java SDK'sı Örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) projesini kopyalayın veya indirin. **Vision/CustomVision/** klasörüne gidin.
 
-Bu Java projesi, [Özel Görüntü İşleme web sitesi](https://customvision.ai/) üzerinden erişilebilen __Sample Java OD Project__ adlı yeni bir Özel Görüntü İşleme nesne algılama projesi oluşturur. Daha sonra bir sınıflandırıcıyı eğitip test etmek için görüntüleri karşıya yükler. Bu projede sınıflandırıcının, bir ağacın __Köknar__ mı yoksa __Japon Kirazı__ mı olduğunu belirlemesi hedeflenmiştir.
+Bu Java projesi, __Özel Görüntü İşleme web sitesi__ üzerinden erişilebilen [Sample Java OD Project](https://customvision.ai/) adlı yeni bir Özel Görüntü İşleme nesne algılama projesi oluşturur. Daha sonra bir sınıflandırıcıyı eğitip test etmek için görüntüleri karşıya yükler. Bu projede, sınıflandırıcının bir nesne **çatalla** mı yoksa **makas**mi olduğunu belirlemesi amaçlanmıştır.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-Program, önemli verilerinizi ortam değişkeni olarak depolayacak şekilde yapılandırılır. PowerShell'de **Vision/CustomVision** klasörüne giderek bu ortam değişkenlerini ayarlayın. Ardından komutları girin:
+Program, anahtar verilerinize ortam değişkenleri olarak başvuracak şekilde yapılandırılmıştır. **Vision/customvision** klasörüne gidin ve ortam değişkenlerini ayarlamak Için aşağıdaki PowerShell komutlarını girin. 
+
+> [!NOTE]
+> Windows dışı bir işletim sistemi kullanıyorsanız, yönergeler için bkz. [ortam değişkenlerini yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) .
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -94,9 +97,9 @@ Burada `predictor` nesnesiyle gösterilen tahmin uç noktası, bir görüntüyü
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Maven kullanarak çözümü derlemek ve çalıştırmak için, PowerShell'de proje dizininde aşağıdaki komutu çalıştırın:
+Maven kullanarak çözümü derlemek ve çalıştırmak için, bir komut isteminde proje dizinine (**Vision/customvision**) gidin ve Çalıştır komutunu yürütün:
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

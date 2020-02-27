@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185876"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620677"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu erişimde What If aracını kullanarak sorun giderme
 
@@ -98,7 +98,7 @@ Bu ayar, [oturum açma risk koşulunu](concept-conditional-access-conditions.md#
 
 Seçili bulut uygulamaları için [Klasik ilkeler](policy-migration.md#classic-policies) varsa, size bir gösterge sunulur. Göstergeye tıklayarak klasik ilkeler sayfasına yönlendirilirsiniz. Klasik ilkeler sayfasında, klasik bir ilkeyi geçirebilir veya devre dışı bırakabilirsiniz. Bu sayfayı kapatarak değerlendirme sonucuna dönebilirsiniz.
 
-Seçtiğiniz kullanıcı için uygulanan ilke listesinde, kullanıcılarınızın karşılaması gereken [Denetim](controls.md#grant-controls) ve [oturum](controls.md#session-controls) denetimleri listesini de bulabilirsiniz.
+Seçtiğiniz kullanıcı için uygulanan ilke listesinde, kullanıcılarınızın karşılaması gereken [Denetim](concept-conditional-access-grant.md) ve [oturum denetimleri](concept-conditional-access-session.md) listesini de bulabilirsiniz.
 
 Kullanıcılarınız için uygulanamadıkları ilkeler listesinde, bu ilkelerin neden uygulanamadığına ilişkin nedenleri de bulabilirsiniz. Listelenen her ilke için, nedeni karşılanmadı ilk koşulu temsil eder. Uygulanamayan bir ilke için olası bir neden, daha fazla değerlendirilmediğinden devre dışı bırakılmış bir ilkedir.   
 

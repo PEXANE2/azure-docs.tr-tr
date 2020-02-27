@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905487"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617535"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: küme oluşturma hataları
 
@@ -36,7 +36,7 @@ Bu makalede, küme oluştururken karşılaşabileceğiniz hatalara yönelik çö
 
 HDInsight hizmeti, küme oluşturma isteği kapsamında verdiğiniz betik eylemi URL 'sine erişemiyor. Hizmet, betik eylemine erişmeye çalıştığında önceki hata iletisini alır.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 - HTTP veya HTTPS URL 'SI için, bu URL 'yi bir ınbilito tarayıcı penceresinden gitmeye çalışırken doğrulayın.
 - Bir fgb URL 'SI için, betiğin istekte verdiğiniz depolama hesabında bulunduğundan emin olun. Ayrıca, bu depolama hesabı için depolama anahtarının doğru olduğundan emin olun.
@@ -58,7 +58,7 @@ HDInsight hizmeti, küme oluşturma isteği kapsamında verdiğiniz betik eylemi
 
 HDInsight hizmeti, küme oluşturma isteği kapsamında verdiğiniz betik eylemi URL 'sine erişemiyor. Hizmet, betik eylemine erişmeye çalıştığında önceki hata iletisini alır.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Karşılık gelen Azure Data Lake Storage Gen 1 hesabını kümeye ekleyin. Ayrıca, Data Lake Storage Gen 1 hesabına erişen hizmet sorumlusunu kümeye ekleyin.
 
@@ -74,7 +74,7 @@ Karşılık gelen Azure Data Lake Storage Gen 1 hesabını kümeye ekleyin. Ayr�
 
 Belirttiğiniz sanal makine boyutuna rol için izin verilmiyor. Bu hata, VM boyut değerinin beklendiği gibi çalışmadığı veya bilgisayar rolü için uygun olmadığı için oluşabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Hata iletisi, VM boyutu için geçerli değerleri listeler. Bu değerlerden birini seçin ve küme oluştur isteğini yeniden deneyin.
 
@@ -90,7 +90,7 @@ Hata iletisi, VM boyutu için geçerli değerleri listeler. Bu değerlerden biri
 
 Küme oluşturma sırasında belirttiğiniz **Virtualnetworkıd** değeri doğru biçimde değil.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 **Virtualnetworkıd** ve subnet değerlerinin doğru biçimde olduğundan emin olun. **Virtualnetworkıd** değerini almak için:
 
@@ -114,7 +114,7 @@ Bir sanal ağ KIMLIĞI örneği aşağıda verilmiştir:
 
 Küme oluşturma isteği sırasında verdiğiniz özel betik, küme başarıyla dağıtıldıktan sonra yürütülür. Bu hata kodu, \<SCRIPT_NAME\>adlı özel betiğin yürütülmesi sırasında bir hata olduğunu gösterir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Betik özel betiğinizin bulunduğu için, sorunu gidermeniz ve gerekirse betiği yeniden çalıştırmanız önerilir. Betik başarısızlığının sorunlarını gidermek için,/var/lib/Ambari-Agent/* klasöründeki günlükleri inceleyin. Ya da, **işlem sayfasını ambarı** Kullanıcı arabiriminde açın ve ardından hata ayrıntılarını görüntülemek için **run_customscriptaction** işlemini seçin.
 
@@ -124,13 +124,13 @@ Betik özel betiğinizin bulunduğu için, sorunu gidermeniz ve gerekirse betiğ
 
 ### <a name="error"></a>Hata
 
-"\<META_STORE_TYPE\> meta veri deposu şema sürümü \<METASTORE_MAJOR_VERSION\> \<database_name, küme sürümü\> \<CLUSTER_VERSION"
+"\<META_STORE_TYPE\> meta veri deposu şema sürümü \<METASTORE_MAJOR_VERSION\> \<database_name, küme sürümü\> \<CLUSTER_VERSION"\>
 
 ### <a name="cause"></a>Nedeni
 
 Özel meta veri deposu, seçili HDInsight kümesi sürümüyle uyumlu değil. Şu anda, HDInsight 4,0 kümeleri yalnızca meta veri sürümü 3,0 ve üstünü destekler, ancak HDInsight 3,6 kümeleri, meta Tasileri sürümü 3,0 ve üstünü desteklemez.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 HDInsight kümesi sürümünüzün desteklediği yalnızca meta veri deposu sürümlerini kullanın. Özel bir meta veri deposu belirtmezseniz, HDInsight dahili olarak bir meta veri deposu oluşturur ve ardından küme silme sonrasında onu siler.
 
@@ -146,7 +146,7 @@ HDInsight kümesi sürümünüzün desteklediği yalnızca meta veri deposu sür
 
 Ağ güvenlik grubunuzda (NSG) bulunan bir güvenlik duvarı kuralı, kritik Azure sistem durumu ve yönetim hizmetleriyle küme iletişimini engelliyor.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki işlemleri gerçekleştirin:
 
@@ -167,12 +167,12 @@ Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsa
 
 Kimliği yönetmek için gerekli izinleri sağlamamadınız. Kullanıcı tarafından atanan yönetilen kimliğin Azure Data Lake Storage 2. depolama hesabında BLOB depolama katılımcısı rolü yok.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Azure portalı açın.
 1. Depolama hesabınıza gidin.
 1. **Access Control (IAM)** bölümüne bakın.
-1. Depolama Blobu veri katılımcısı rolünün veya Depolama Blobu veri sahibi rolünün, abonelik için Kullanıcı tarafından atanan yönetilen kimliğe "atanmış" erişime sahip olduğundan emin olun.
+1. Kullanıcının Depolama Blobu veri katılımcısı rolüne veya bunlara atanmış Depolama Blobu veri sahibi rolüne sahip olduğundan emin olun.
 
 Daha fazla bilgi için bkz. [Data Lake Storage 2. hesabındaki yönetilen kimlik için Izinleri ayarlama](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
@@ -188,7 +188,7 @@ Daha fazla bilgi için bkz. [Data Lake Storage 2. hesabındaki yönetilen kimlik
 
 Ağ güvenlik grupları veya Kullanıcı tanımlı yollar (UDRs) HDInsight kümenize gelen trafiği denetyorsa, kümenizin kritik Azure sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olun.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki işlemleri gerçekleştirin:
 
@@ -208,7 +208,7 @@ Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsa
 
 Genellikle bu hata, geçici bir sorun veya bir Azure kesintisi olduğunda oluşturulur.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Küme dağıtımını etkileyebilecek tüm Azure kesintileri için [Azure durum](https://status.azure.com) sayfasına bakın. Kesintiler yoksa, küme dağıtımını yeniden deneyin.
 

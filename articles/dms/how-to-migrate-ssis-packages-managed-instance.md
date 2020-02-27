@@ -3,21 +3,21 @@ title: SSIS paketlerini SQL yönetilen örneğine geçirme
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni veya Data Migration Yardımcısı kullanarak Azure SQL veritabanı yönetilen örneği 'ne SQL Server Integration Services (SSIS) paketlerini ve projelerini geçirmeyi öğrenin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: a0669724888f02672d18ef9e8f725eef1c744f90
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751209"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650973"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services paketlerini Azure SQL veritabanı yönetilen örneği 'ne geçirme
 SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/SQL Server paketlerinizi Azure SQL veritabanı yönetilen örneği tarafından barındırılan hedef SSSıSDB 'ye geçirmek istiyorsanız, Azure veritabanı geçiş hizmeti ' ni kullanabilirsiniz.
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynak SSIS projelerini/paketlerini değerlendirin.
 > * SSIS projelerini/paketlerini Azure 'a geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -69,7 +69,7 @@ Kaynak SSSıSDB değerlendirmesi henüz veritabanı Geçiş Yardımcısı (DMA) 
 
 1. Azure portalda +**Kaynak oluştur**'u seçin, **Azure Veritabanı Geçiş Hizmeti** araması yapın ve açılan listeden **Azure Veritabanı Geçiş Hizmeti**'ni seçin.
 
-     ![Azure Marketi](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
+     ![Azure Market](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
 
 2. **Azure Veritabanı Geçiş Hizmeti** ekranında **Oluştur**'u seçin.
 

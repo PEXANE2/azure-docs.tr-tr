@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d97b63aa87bfd8cf8ca1a3f5b213d6b16ca066df
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022401"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616861"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Azure depolama için Gelişmiş tehdit koruması yapılandırma
 
@@ -31,7 +31,7 @@ Azure depolama için Gelişmiş tehdit koruması, tehdit algılama için blob de
 
 Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli yollarla yapılandırabilirsiniz.
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)başlatın.
 1. Azure depolama hesabınıza gidin. **Ayarlar**altında **Gelişmiş güvenlik**' i seçin.
@@ -41,7 +41,7 @@ Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli y
 
     ![Azure Storage Gelişmiş tehdit korumasını aç](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="azure-security-centertabazure-security-center"></a>[Azure Güvenlik Merkezi](#tab/azure-security-center)
+### <a name="azure-security-center"></a>[Azure Güvenlik Merkezi](#tab/azure-security-center)
 
 Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, tüm depolama hesaplarınızda Gelişmiş tehdit koruması otomatik olarak ayarlanır. Belirli bir abonelik kapsamındaki depolama hesaplarınız için Gelişmiş tehdit korumasını aşağıdaki gibi etkinleştirebilir veya devre dışı bırakabilirsiniz:
 
@@ -55,13 +55,13 @@ Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, tüm depolama 
 1. **Kaynak türüne göre fiyatlandırma katmanını Seç** bölümünde, **depolama hesapları** satırında, **etkin** veya **devre dışı**' ya tıklayın.
 
     ![Güvenlik Merkezi 'nde ATP 'yi etkinleştir](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet**’e tıklayın.
 
-### <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+### <a name="template"></a>[Şablon](#tab/template)
 
 Gelişmiş tehdit koruması etkinleştirilmiş bir Azure depolama hesabı dağıtmak için Azure Resource Manager şablonu kullanın. Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması olan depolama hesabı](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="azure-policytabazure-policy"></a>[Azure İlkesi](#tab/azure-policy)
+### <a name="azure-policy"></a>[Azure İlkesi](#tab/azure-policy)
 
 Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde gelişmiş tehdit korumasını etkinleştirmek için bir Azure Ilkesi kullanın.
 
@@ -79,14 +79,14 @@ Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde 
 
     ![İlke tanımları sayfası](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Belirli bir depolama hesabı için Gelişmiş tehdit koruması ayarı oluşturmak, güncelleştirmek veya almak için REST API komutlarını kullanın.
 
 * [Gelişmiş tehdit koruması-oluştur](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Gelişmiş tehdit koruması-Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
@@ -116,9 +116,9 @@ Azure Güvenlik Merkezi 'nin [güvenlik uyarıları kutucuğunda](../../security
 
 ![Azure depolama Gelişmiş tehdit koruması uyarı e-postası](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>Koruma uyarıları
+## <a name="security-alerts"></a>Güvenlik uyarıları
 
-Uyarılar, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur. Azure depolama için uyarıların listesi için bkz. [Azure Güvenlik Merkezi 'ndeki veri Hizmetleri Için tehdit algılama](../../security-center/security-center-alerts-data-services.md#azure-storage) içindeki **depolama** bölümü
+Uyarılar, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur. Azure depolama için uyarıların listesi için bkz. [Azure Güvenlik Merkezi 'nde veri Hizmetleri Için tehdit koruması](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage)'ndaki **depolama** bölümü.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445398"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623389"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos kapsayıcıları için küresel olarak dağıtılmış işlem ve analitik depolama
 
@@ -29,8 +29,8 @@ Azure Cosmos kapsayıcısı, iki depolama altyapısı tarafından dahili olarak 
 
 |Özellik  |İşlem depolama alanı  |Analitik depolama |
 |---------|---------|---------|
-|Azure Cosmos kapsayıcısı başına en fazla depolama alanı |   İş çalışma zamanında      |    İş çalışma zamanında     |
-|Mantıksal bölüm anahtarı başına en fazla depolama alanı   |   10 GB      |   İş çalışma zamanında      |
+|Azure Cosmos kapsayıcısı başına en fazla depolama alanı |   Sınırsız      |    Sınırsız     |
+|Mantıksal bölüm anahtarı başına en fazla depolama alanı   |   20 GB      |   Sınırsız      |
 |Depolama kodlaması  |   Satır odaklı, iç biçim kullanılarak.   |   Apache Parquet biçimi kullanılarak sütun odaklı. |
 |Depolama konumu |   Yerel/küme içi SSD 'Ler tarafından desteklenen çoğaltılmış depolama. |  Yüksek maliyetli uzak/kapalı küme SSD 'Ler tarafından desteklenen çoğaltılmış depolama.       |
 |Dayanıklılık  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

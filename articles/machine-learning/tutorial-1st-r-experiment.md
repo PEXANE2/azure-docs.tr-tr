@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191273"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648300"
 ---
 # <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile R 'de lojistik regresyon modeli oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 
-## <a name="create-a-workspace"></a>Çalışma alanı oluştur
+## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
 Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
 
@@ -51,7 +51,7 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure porta
 
 ## <a name="azure"></a>Not defteri klasörünü Kopyala
 
-Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](how-to-configure-environment.md#local) kullanın.
+Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) kullanın.
 
 Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere Machine Learning araçları 'nı içeren birleştirilmiş bir arabirim olan Azure Machine Learning Studio 'da aşağıdaki deneme sürümü kurulumunu tamamlayıp adımları gerçekleştirin.
 

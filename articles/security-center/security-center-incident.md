@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604083"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615962"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme
 
@@ -48,14 +48,20 @@ Uyarılar hakkında daha fazla bilgi için [güvenlik uyarılarını yönetme ve
 
 Aşağıdaki konular, kaynak türlerine göre farklı uyarılarda size rehberlik sağlar:
 
-* [IaaS VM 'Leri ve sunucu uyarıları](security-center-alerts-iaas.md)
-* [Yerel işlem uyarıları](security-center-alerts-compute.md)
-* [Veri Hizmetleri uyarıları](security-center-alerts-data-services.md)
+* [IaaS Windows makineleri için uyarılar](threat-protection.md#windows-machines)
+* [IaaS Linux makineleri için uyarılar](threat-protection.md#linux-machines)
+* [Azure App Service için uyarılar](threat-protection.md#app-services)
+* [Azure kapsayıcıları için uyarılar](threat-protection.md#azure-containers)
+* [SQL veritabanı ve SQL veri ambarı için uyarılar](threat-protection.md#data-sql)
+* [Azure Storage uyarıları](threat-protection.md#azure-storage)
+* [Cosmos DB için uyarılar](threat-protection.md#cosmos-db)
 
 Aşağıdaki konularda, Azure üzerinde dağıtılan kaynaklar için ek koruma katmanları uygulamak amacıyla, güvenlik merkezi 'nin Azure altyapısıyla tümleştirerek topladığı farklı Telemetriyi nasıl kullandığı açıklanmaktadır:
 
-* [Hizmet katmanı uyarıları](security-center-alerts-service-layer.md)
-* [Azure WAF ve Azure DDoS koruması için tehdit algılama](security-center-alerts-integration.md)
+* [Azure Yönetim Katmanı (Azure Resource Manager) uyarıları (Önizleme)](threat-protection.md#management-layer)
+* [Azure Key Vault için uyarılar (Önizleme)](threat-protection.md#azure-keyvault)
+* [Azure ağ katmanı uyarıları](threat-protection.md#network-layer)
+* [Diğer hizmetlerden gelen uyarılar](threat-protection.md#alerts-other)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 Bu belgede, Güvenlik Merkezi'nde güvenlik olayı özelliğini nasıl kullanacağınız hakkında bilgi edindiniz. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
@@ -63,4 +69,3 @@ Bu belgede, Güvenlik Merkezi'nde güvenlik olayı özelliğini nasıl kullanaca
 * [Azure Güvenlik Merkezi 'Nde güvenlik uyarıları](security-center-alerts-overview.md).
 * [Güvenlik uyarılarını yönetme](security-center-managing-and-responding-alerts.md)
 * [Azure Güvenlik Merkezi Planlama ve İşlemler Kılavuzu](security-center-planning-and-operations-guide.md)
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) - Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulabilirsiniz

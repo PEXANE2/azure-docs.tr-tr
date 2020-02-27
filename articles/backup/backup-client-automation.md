@@ -3,12 +3,12 @@ title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
 description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: ff723eb2ebe48a7019fecec9106c1618a636b94c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583152"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622804"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
@@ -403,34 +403,6 @@ State           : New
 PolicyState     : Valid
 ```
 
-## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>MABS aracısında Windows Server sistem durumunu yedekleme
-
-Bu bölüm, MABS aracısında sistem durumunu ayarlamak için PowerShell komutunu ele almaktadır
-
-### <a name="schedule"></a>Zamanlama
-
-```powershell
-$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
-```
-
-### <a name="retention"></a>Bekletme
-
-```powershell
-$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
-```
-
-### <a name="configuring-schedule-and-retention"></a>Zamanlamayı ve bekletmeyi yapılandırma
-
-```powershell
-New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
- ```
-
-### <a name="verifying-the-policy"></a>İlke doğrulanıyor
-
-```powershell
-Get-OBSystemStatePolicy
- ```
-
 ### <a name="applying-the-policy"></a>İlke uygulanıyor
 
 Artık ilke nesnesi tamamlanmıştır ve ilişkili bir yedekleme zamanlaması, bekletme ilkesi ve bir dosya içerme/dışlama listesi bulunur. Bu ilke artık kullanım Azure Backup için uygulanabilir. Yeni oluşturulan ilkeyi uygulamadan önce [Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) cmdlet 'ini kullanarak sunucuyla ilişkili mevcut bir yedekleme ilkesi olmadığından emin olun. İlke kaldırıldığında onay istenir. Onayı atlamak için cmdlet 'iyle birlikte `-Confirm:$false` bayrağını kullanın.
@@ -565,6 +537,34 @@ Job completed.
 The backup operation completed successfully.
 ```
 
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>MABS aracısında Windows Server sistem durumunu yedekleme
+
+Bu bölüm, MABS aracısında sistem durumunu ayarlamak için PowerShell komutunu ele almaktadır
+
+### <a name="schedule"></a>Zamanlama
+
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>Bekletme
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>Zamanlamayı ve bekletmeyi yapılandırma
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>İlke doğrulanıyor
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
+
 ## <a name="restore-data-from-azure-backup"></a>Azure Backup verileri geri yükleme
 
 Bu bölüm, Azure Backup verilerin kurtarılmasını otomatikleştirme adımlarında size yol gösterir. Bunun yapılması aşağıdaki adımları içerir:
@@ -631,7 +631,7 @@ Nesne `$Rps`, yedekleme noktalarının bir dizisidir. İlk öğe en son noktası
 
 ### <a name="specifying-an-item-to-restore"></a>Geri yüklenecek bir öğe belirtme
 
-Belirli bir dosyayı geri yüklemek için, kök birimle ilişkili dosya adını belirtin. Örneğin, C:\test\cat.exe işlemini almak için aşağıdaki komutu yürütün. 
+Belirli bir dosyayı geri yüklemek için, kök birimle ilişkili dosya adını belirtin. Örneğin, C:\test\cat.exe işlemini almak için aşağıdaki komutu yürütün.
 
 ```powershell
 $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE

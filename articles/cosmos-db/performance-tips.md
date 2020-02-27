@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721005"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623325"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -24,6 +24,35 @@ ms.locfileid: "76721005"
 Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı yapmak kadar kolaydır. Daha fazla bilgi edinmek için bkz. [kapsayıcı verimini sağlama](how-to-provision-container-throughput.md) veya [veritabanı verimini sağlama](how-to-provision-database-throughput.md). Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, [SQL .NET SDK](sql-api-sdk-dotnet-standard.md)kullanırken en yüksek performans elde etmek için, istemci tarafı iyileştirmeler vardır.
 
 Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz Aşağıdaki seçenekleri göz önünde bulundurun:
+
+## <a name="hosting-recommendations"></a>Barındırma önerileri
+
+1.  **Sorgu yoğunluğu yoğun iş yükleri için Linux veya Windows 32 konak işleme yerine Windows 64-bit kullanın**
+
+    Windows 64 bit ana bilgisayar işleme, gelişmiş performans için önerilir. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir Serviceınterop. dll dosyası içerir ve yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemine sahiptir ve bu nedenle, bunu 64 bit olarak değiştirmek için uygulamanızın türüne göre şu adımları izleyin:
+
+    - Yürütülebilir uygulamalar için bu işlem, [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) , **derleme** sekmesindeki **Proje özellikleri** penceresinde **x64** olarak ayarlanarak yapılabilir.
+
+    - VSTest **tabanlı test projeleri** Için, **Visual Studio test** menü seçeneğinden **X64 olarak varsayılan Işlemci mimarisi**->test->**Test ayarları** ' nı seçerek bu işlemi gerçekleştirebilirsiniz.
+
+    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için 64 Bu, Web **siteleri ve projeler için IIS Express->bit sürümü** **->,** **Web projeleri**->**Projeler ve çözümler** ' in altında kullanılabilir.
+
+    - Azure 'da dağıtılan ASP.NET Web uygulamaları için, Azure portal **uygulama ayarlarında** **Platform 64-bit olarak** seçilerek bu yapılabilir.
+
+    > [!NOTE] 
+    > Visual Studio, yeni projeleri herhangi bir CPU 'ya varsayılan olarak belirler. X86 'ya geçiş yapmaktan kaçınmak için projeyi x64 olarak ayarlamanız önerilir. Yalnızca x86 olan herhangi bir bağımlılık eklenirse herhangi bir CPU projesi kolayca x86 'ya geçiş yapabilir.<br/>
+    > Serviceınterop. dll ' nin, SDK dll 'inin yürütüldüğü klasörde olması gerekir. Bu, yalnızca dll 'leri el ile oluşturan veya özel derleme/dağıtım sistemlerine sahip olan kullanıcılar için yapılmalıdır.
+    
+2. **Sunucu tarafı atık toplamayı aç (GC)**
+
+    Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) değerini true olarak ayarlayın.
+
+3. **İstemcinizi genişletme-iş yükü**
+
+    Yüksek aktarım hızı düzeylerinde (> 50000 RU/sn) test ediyorsanız, istemci uygulaması makine CPU veya ağ kullanımında kullanıma hazır hale geldiği için performans sorunlarına neden olabilir. Bu noktaya ulaştığınızda, istemci uygulamalarınızı birden çok sunucu arasında ölçeklendirerek Azure Cosmos DB hesabını daha fazla göndermeye devam edebilirsiniz.
+
+    > [!NOTE] 
+    > Yüksek CPU kullanımı, artan gecikme süresine ve istek zaman aşımı özel durumlarına neden olabilir.
 
 ## <a name="networking"></a>Ağ
 <a id="direct-connection"></a>
@@ -96,6 +125,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Azure Cosmos DB bağlantı ilkesinin ![çizimi](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
+
 4. **İş parçacığı sayısını/görevleri artır**
 
     Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulamanın istekler arasında çok az zaman harcamasını sağlamak için isteklerinizin paralellik derecesini değiştirmeniz gerekebilir. Örneğin, kullanıyorsanız. NET ' in [görevi paralel kitaplığı](https://msdn.microsoft.com//library/dd460717.aspx), okuma veya Azure Cosmos DB yazma görevlerinin 100s ' da oluşturun.
@@ -121,9 +151,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     Her DocumentClient ve CosmosClient örneği iş parçacığı açısından güvenlidir ve doğrudan modda çalışırken verimli bağlantı yönetimi ve adres önbelleği gerçekleştirir. Etkin bağlantı yönetimine ve SDK istemcisi tarafından daha iyi performansa izin vermek için uygulama ömrü boyunca AppDomain başına tek bir örnek kullanılması önerilir.
 
    <a id="max-connection"></a>
+
 4. **Ağ Geçidi modu kullanırken konak başına System.Net MaxConnections 'yi artırma**
 
-    Azure Cosmos DB istekleri, ağ geçidi modu kullanılırken HTTPS/REST üzerinden yapılır ve ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabi. İstemci kitaplığının Azure Cosmos DB birden çok eş zamanlı bağlantıyı kullanabilmesi için, MaxConnections 'yi daha yüksek bir değere (100-1000) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) için varsayılan değer 50 ' dir ve değeri değiştirmek için [belgeler. Client. Connectionpolicy. maxconnectionlimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) değerini daha yüksek bir değere ayarlayabilirsiniz.   
+    Azure Cosmos DB istekleri, ağ geçidi modu kullanılırken HTTPS/REST üzerinden yapılır ve ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabi. İstemci kitaplığının Azure Cosmos DB birden çok eş zamanlı bağlantıyı kullanabilmesi için, MaxConnections 'yi daha yüksek bir değere (100-1000) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) için varsayılan değer 50 ' dir ve değeri değiştirmek için [belgeler. Client. Connectionpolicy. maxconnectionlimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) değerini daha yüksek bir değere ayarlayabilirsiniz.
+
 5. **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
      SQL .NET SDK sürüm 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır. Paralel sorgular, kullanıcıların gereksinimlerine göre özel olarak ayarlayabilen iki parametre sağlar: (a) Maxdegreeofparalellik: en fazla bölüm sayısını denetlemek için paralel olarak sorgulanabilir ve (b) MaxBufferedItemCount: sayısını denetlemek için önceden getirilen sonuçlar.
@@ -135,10 +167,8 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     (b) ***MaxBufferedItemCount\:ayarlama*** paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. MaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlayan parametredir. MaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına izin verir.
 
     Önceden getirme, paralellik derecesi ne olursa olsun aynı şekilde çalışıyor ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
-6. **Sunucu tarafı GC 'yi aç**
 
-    Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) değerini true olarak ayarlayın.
-7. **RetryAfter aralıklarında geri alma Uygula**
+6. **RetryAfter aralıklarında geri alma Uygula**
 
     Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. Kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından geri dönüş olması gerekir. Geri alma işleminin en düşük olması, yeniden denemeler arasında bekleyen minimum süreyi harcamanızı sağlar. Yeniden deneme ilkesi desteği, [Node. js](sql-api-sdk-node.md) ve [Python](sql-api-sdk-python.md)sürümlerinin yanı sıra [.NET Core](sql-api-sdk-dotnet-core.md) SDK 'larının desteklenen tüm sürümlerini içeren SQL [.net](sql-api-sdk-dotnet.md) ve [Java](sql-api-sdk-java.md), sürüm 1.9.0 ve üzeri sürüm 1.8.0 ve üzeri sürümlerde bulunur. Daha fazla bilgi için, [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
@@ -147,16 +177,13 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
     readDocument.RequestDiagnosticsString 
     ```
-    
-8. **İstemcinizi genişletme-iş yükü**
 
-    Yüksek aktarım hızı düzeylerinde (> 50000 RU/sn) test ediyorsanız, istemci uygulaması makine CPU veya ağ kullanımında kullanıma hazır hale geldiği için performans sorunlarına neden olabilir. Bu noktaya ulaştığınızda, istemci uygulamalarınızı birden çok sunucu arasında ölçeklendirerek Azure Cosmos DB hesabını daha fazla göndermeye devam edebilirsiniz.
-9. **Daha düşük okuma gecikmesi için önbellek belgesi URI 'Leri**
+7. **Daha düşük okuma gecikmesi için önbellek belgesi URI 'Leri**
 
-    En iyi okuma performansı için mümkün olduğunda önbellek belgesi URI 'Leri. Kaynağı oluştururken RESOURCEID 'yi önbelleğe almak için mantığı tanımlamanız gerekir. RESOURCEID tabanlı aramalar, ad tabanlı aramalardan daha hızlıdır, bu nedenle bu değerlerin önbelleğe alınması performansı geliştirir. 
+    En iyi okuma performansı için mümkün olduğunda önbellek belgesi URI 'Leri. Kaynağı oluştururken kaynak KIMLIĞINI önbelleğe almak için mantığı tanımlamanız gerekir. Kaynak KIMLIĞI tabanlı aramalar ad tabanlı aramalardan daha hızlıdır, bu nedenle bu değerlerin önbelleğe alınması performansı geliştirir. 
 
    <a id="tune-page-size"></a>
-10. **Daha iyi performans için, sorguların/okunan akışların sayfa boyutunu ayarlayın**
+8. **Daha iyi performans için, sorguların/okunan akışların sayfa boyutunu ayarlayın**
 
    Okuma akışı işlevselliğini (örneğin, ReadDocumentFeedAsync) kullanarak veya bir SQL sorgusu verirken belgelerin toplu olarak okunmasını gerçekleştirirken, sonuç kümesi çok büyükse sonuçlar bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
 
@@ -173,21 +200,9 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     
    Bir sorgu yürütüldüğünde, sonuçta elde edilen veriler bir TCP paketi içinde gönderilir. `maxItemCount`için çok düşük değer belirtirseniz, verileri TCP paketi içinde göndermek için gereken gidiş sayısı yüksektir ve bu da performansı etkiler. `maxItemCount` özelliği için hangi değerin ayarlanacağını bilmiyorsanız, bunu-1 olarak ayarlamak ve SDK 'nın varsayılan değeri seçmesini sağlamak en iyisidir. 
 
-11. **İş parçacığı sayısını/görevleri artır**
+9. **İş parçacığı sayısını/görevleri artır**
 
     Bkz. Ağ bölümünde [iş parçacığı sayısı/görev sayısını artırma](#increase-threads) .
-
-12. **64 bit ana bilgisayar işlemeyi kullanma**
-
-    SQL SDK, SQL .NET SDK sürümü 1.11.4 ve üstünü kullanırken 32 bitlik bir ana bilgisayar işleminde çalışmaktadır. Ancak, çapraz bölüm sorguları kullanıyorsanız, gelişmiş performans için 64 bitlik ana bilgisayar işleme önerilir. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemine sahiptir ve bu nedenle, bunu 64 bit olarak değiştirmek için uygulamanızın türüne göre şu adımları izleyin:
-
-    - Yürütülebilir uygulamalar için bu işlem, **derleme** sekmesindeki **proje özellikleri** penceresinde **32 bit tercih et** seçeneğinin işaretlenmesi yoluyla yapılabilir.
-
-    - VSTest **tabanlı test projeleri** Için, **Visual Studio test** menü seçeneğinden **X64 olarak varsayılan Işlemci mimarisi**->test->**Test ayarları** ' nı seçerek bu işlemi gerçekleştirebilirsiniz.
-
-    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için 64 Bu, Web **siteleri ve projeler için IIS Express->bit sürümü** **->,** **Web projeleri**->**Projeler ve çözümler** ' in altında kullanılabilir.
-
-    - Azure 'da dağıtılan ASP.NET Web uygulamaları için, Azure portal **uygulama ayarlarında** **Platform 64-bit olarak** seçilerek bu yapılabilir.
 
 ## <a name="indexing-policy"></a>Dizin Oluşturma İlkesi
  
@@ -247,7 +262,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     Otomatik yeniden deneme davranışı, çoğu uygulama için esneklik ve kullanılabilirliği artırmaya yardımcı olmakla birlikte, özellikle gecikmeyi ölçirken performans kıyaslamaları yapılırken gürültü 'ye gelebilir.  Deneme sunucu tarafından azaldıysanız, istemci SDK 'sının sessizce yeniden denenmesine neden olursa istemci gözlenen gecikme süresi izlenir. Performans denemeleri sırasında gecikme sürelerini önlemek için, her bir işlem tarafından döndürülen ücreti ölçün ve isteklerin ayrılan istek oranının altında çalıştığından emin olun. Daha fazla bilgi için bkz. [İstek birimleri](request-units.md).
 3. **Daha yüksek aktarım hızı için daha küçük belgeler tasarlama**
 
-    Belirli bir işlemin istek ücreti (örn. istek işleme maliyeti) doğrudan belgenin boyutuyla bağıntılı olur. Büyük belgelerle ilgili işlemler, küçük belgeler için işlemlerden daha fazla maliyetlidir.
+    Belirli bir işlemin istek ücreti (yani, istek işleme maliyeti), belgenin boyutuyla doğrudan bağıntılı olur. Büyük belgelerle ilgili işlemler, küçük belgeler için işlemlerden daha fazla maliyetlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Birkaç istemci makinede yüksek performanslı senaryolar için Azure Cosmos DB değerlendirmek üzere kullanılan örnek bir uygulama için bkz. [Azure Cosmos DB Ile performans ve ölçek testi](performance-testing.md).

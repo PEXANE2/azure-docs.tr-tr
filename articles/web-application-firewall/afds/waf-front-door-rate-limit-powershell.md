@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186618"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649373"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
-Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF) hız sınırı kuralı, tek dakikalık bir süre içinde tek bir istemci IP 'sinden izin verilen isteklerin sayısını denetler.
-Bu makalede, tek bir istemciden Azure PowerShell kullanarak URL 'de */promosyon* içeren bir Web uygulamasına izin verilen isteklerin sayısını denetleyen bir WAF hız sınırı kuralının nasıl yapılandırılacağı gösterilmektedir.
+Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF) hız sınırı kuralı, tek dakikalık bir süre içinde istemcilerden izin verilen isteklerin sayısını denetler.
+Bu makalede, istemcilerden Azure PowerShell kullanarak URL 'de */promosyon* içeren bir Web uygulamasına izin verilen isteklerin sayısını denetleyen bir WAF hız sınırı kuralının nasıl yapılandırılacağı gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -27,12 +27,12 @@ Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manage
 
 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Sayfadaki yönergeleri izleyerek Azure kimlik bilgilerinizle oturum açın ve az PowerShell Module ' ü kullanın.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açmak için etkileşimli iletişim kutusuyla Azure 'a bağlanın
 ```
 Connect-AzAccount
 
 ```
-Front Door modülünü yüklemeden önce geçerli PowerShellGet sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
+Ön kapı modülünü yüklemeden önce, PowerShellGet 'in geçerli sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell 'i yeniden açın.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
@@ -73,7 +73,7 @@ Aşağıdaki örnek, *RequestUri* değişkeninin değeri olarak */promosyon* ile
 
 `Get-AzureRmResourceGroup`kullanarak ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
 
-Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır.
+Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde sunulan yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır.
 
  [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanma.
 
@@ -89,7 +89,7 @@ Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoo
 Güvenlik İlkesi nesnesini var olan bir ön kapı ön uç konağına bağlayın ve ön kapı özelliklerini güncelleştirin. İlk olarak [Get-Azfrontkapısı](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) komutunu kullanarak ön kapı nesnesini alın.
 Ardından, ön uç *Webapplicationfirewallpolicylink* özelliğini, [set-azfrontkapısı](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) komutunu kullanarak önceki adımda oluşturulan "$ratePolicy" öğesinin *RESOURCEID* değerini olarak ayarlayın. 
 
-Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır. Ayrıca, aşağıdaki örnekte $frontDoorName, ön kapı profilinizin adıyla değiştirin. 
+Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde sunulan yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır. Ayrıca, aşağıdaki örnekte $frontDoorName, ön kapı profilinizin adıyla değiştirin. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `

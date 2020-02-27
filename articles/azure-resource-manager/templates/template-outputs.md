@@ -2,13 +2,13 @@
 title: Şablonlarda çıkış çıkışları
 description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 7244e1ac0eff973d550a2bae8a70fa5055ca2248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483927"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622849"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki çıktılar
 
@@ -43,6 +43,24 @@ Aşağıdaki örnek, kaynak kimliği için bir genel IP adresi döndürülecek g
 
 Koşullu çıkışın basit bir örneği için bkz. [koşullu çıkış şablonu](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
+## <a name="dynamic-number-of-outputs"></a>Dinamik çıkış sayısı
+
+Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin örnek sayısını bilemezsiniz. **Copy** öğesini kullanarak, değişken sayıda değer döndürebilirsiniz.
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md).
+
 ## <a name="linked-templates"></a>Bağlı şablonlar
 
 Bağlı bir şablondan çıkış değerini almak için, üst şablondaki [başvuru](template-functions-resource.md#reference) işlevini kullanın. Üst şablondaki sözdizimi şöyledir:
@@ -61,7 +79,7 @@ Aşağıdaki örnek, bir yük dengeleyicide, bağlantılı şablondan bir değer
 }
 ```
 
-Kullanamazsınız `reference` çıktılar bölümünü işlevinde bir [iç içe geçmiş şablon](linked-templates.md#nested-template). Dönüş değerleri dağıtılan kaynağın içinde iç içe geçmiş bir şablon için iç içe geçmiş şablon bağlantılı şablona dönüştürebilirsiniz.
+[İç içe geçmiş bir şablonun](linked-templates.md#nested-template)çıktılar bölümünde `reference` işlevini kullanamazsınız. Dönüş değerleri dağıtılan kaynağın içinde iç içe geçmiş bir şablon için iç içe geçmiş şablon bağlantılı şablona dönüştürebilirsiniz.
 
 ## <a name="get-output-values"></a>Çıkış değerlerini al
 
@@ -69,7 +87,7 @@ Dağıtım başarılı olduğunda, çıkış değerleri dağıtım sonuçlarınd
 
 Dağıtım geçmişinden çıkış değerleri almak için, komut dosyası kullanabilirsiniz.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -77,7 +95,7 @@ Dağıtım geçmişinden çıkış değerleri almak için, komut dosyası kullan
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \
@@ -94,7 +112,7 @@ Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösteri
 
 |Şablon  |Açıklama  |
 |---------|---------|
-|[Değişkenleri kopyalayın](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri çıkarır. Tüm kaynakları dağıtmaz. |
+|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri çıkarır. Tüm kaynakları dağıtmaz. |
 |[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak kimliği çıkarır |
 |[Yük Dengeleyici](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Yukarıdaki şablonu bağlar. Kaynak Kimliği, yük dengeleyici oluştururken çıktısında kullanır. |
 

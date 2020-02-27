@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB'de bölümleme
+title: Azure Cosmos DB bölümleniyor
 description: Azure Cosmos DB bölümleme hakkında bilgi, bölüm anahtarı seçerken en iyi yöntemler ve mantıksal bölümlerin nasıl yönetileceği hakkında bilgi edinin
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872001"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621877"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme
+# <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB bölümleniyor
 
 Azure Cosmos DB, uygulamanızın performans ihtiyaçlarını karşılamak üzere bir veritabanındaki ayrı kapsayıcıları ölçeklendirmek için bölümleme kullanır. Bölümleme bölümünde, bir kapsayıcıdaki öğeler *mantıksal bölümler*adlı farklı alt kümelere bölünür. Mantıksal bölümler, bir kapsayıcıdaki her öğeyle ilişkili bir *bölüm anahtarının* değerine göre oluşturulur. Mantıksal bir bölümdeki tüm öğeler aynı bölüm anahtarı değerine sahiptir.
 
@@ -37,7 +37,7 @@ Azure Cosmos DB bölümleri nasıl yönettiği hakkında daha fazla bilgi edinme
 
 Aşağıda, bölüm anahtarı seçmeye yönelik iyi bir kılavuz verilmiştir:
 
-* Tek bir mantıksal bölümün 10 GB depolama üst sınırı vardır.  
+* Tek bir mantıksal bölümün 20 GB depolama üst sınırı vardır.  
 
 * Azure Cosmos kapsayıcıları, saniyede en az 400 istek birimi (RU/sn) aktarım hızına sahiptir. Bir veritabanında aktarım hızı sağlandığında, kapsayıcı başına en az RU, saniyede 100 istek birimi (RU/s) olur. Aynı bölüm anahtarına yapılan istekler bir bölüme ayrılan aktarım hızını aşamaz. İstekler ayrılan aktarım hızını aşarsa, istekler hız sınırlı olacaktır. Bu nedenle, uygulamanızın içinde "etkin noktalar" ile sonuçlanmaması gereken bir bölüm anahtarı seçmek önemlidir.
 

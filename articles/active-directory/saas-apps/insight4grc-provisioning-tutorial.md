@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057490"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621525"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Insight4GRC yapılandırma
 
@@ -90,7 +90,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, Insight4GRC yönetici kimlik bilgilerinizi ve Kullanıcı adınızı girin. Azure AD 'nin Insight4GRC 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Insight4GRC hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL**'sinde SCıM uç nokta URL 'sini girin. Uç noktası URL 'si, **Insight4GRC etki alanı adının** önceki adımlarda alınan değer olduğu biçimde `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` biçiminde olmalıdır. Daha önce **gizli bir belirteçte**alınan taşıyıcı belirteç değerini girin. Azure AD 'nin Insight4GRC 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Insight4GRC hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![alınıyor](./media/insight4grc-provisioning-tutorial/provisioning.png)
 

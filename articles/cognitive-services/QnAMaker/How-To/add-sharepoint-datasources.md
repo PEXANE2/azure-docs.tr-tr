@@ -3,12 +3,12 @@ title: SharePoint dosyaları-Soru-Cevap Oluşturma
 description: Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli SharePoint veri kaynakları ekleyin.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544173"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650444"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
@@ -20,7 +20,8 @@ Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi de
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
+* Bulut tabanlı SharePoint-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
+* URL biçimi-Soru-Cevap Oluşturma yalnızca paylaşım için oluşturulan ve https biçiminde olan SharePoint URL 'lerini destekler://*. SharePoint. com
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Bilgi Bankası 'nda desteklenen dosya türlerini ekleme
 

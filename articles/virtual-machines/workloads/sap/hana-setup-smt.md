@@ -4,21 +4,21 @@ description: Azure 'da SAP HANA için SMT Server 'ı ayarlama (büyük örnekler
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d9e86e54a4c94db97b6c89b3ef8799855963020
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099758"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616984"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux için SMT Server 'ı ayarlama
 Büyük SAP HANA örneklerinin internet 'e doğrudan bağlantısı yoktur. Bu tür bir birimi işletim sistemi sağlayıcısına kaydetmek ve güncelleştirmeleri indirmek ve uygulamak için kolay bir işlem değildir. SUSE Linux çözümü, bir Azure sanal makinesinde bir SMT sunucusu ayarlamaya yöneliktir. Sanal makineyi, HANA büyük örneğine bağlı bir Azure sanal ağında barındırın. Bu tür bir SMT sunucusu sayesinde, HANA büyük örnek birimi güncelleştirmeleri kaydedebilir ve indirebilir. 
@@ -34,7 +34,7 @@ HANA büyük örneklere yönelik görevi yerine getiren bir SMT sunucusunu yükl
 
 İlk olarak, [SUSE müşteri merkezinde](https://scc.suse.com/)oturum açın.
 
-**Kuruluş** > **kuruluşu kimlik bilgileri**' ne gidin. Bu bölümde, SMT sunucusunu ayarlamak için gereken kimlik bilgilerini bulmanız gerekir.
+**Kuruluş > kuruluş** **kimlik bilgileri**' ne gidin. Bu bölümde, SMT sunucusunu ayarlamak için gereken kimlik bilgilerini bulmanız gerekir.
 
 Ardından, Azure sanal ağına bir SUSE Linux VM 'si yüklersiniz. Sanal makineyi dağıtmak için, Azure 'un SLES 12 SP2 Galeri görüntüsünü alın (KCG SUSE görüntüsünü seçin). Dağıtım sürecinde, DNS adı tanımlamaz ve statik IP adresleri kullanmayın.
 
@@ -78,7 +78,7 @@ Resolving package dependencies...
 ```
 
 
-Ayrıca, SMT paketlerini yüklemek için YAST aracını da kullanabilirsiniz. YAST 'de **Yazılım Bakımı**' na gidin ve SMT araması yapın. Otomatikolarak YaST2-smt öğesine geçiş yapar.
+Ayrıca, SMT paketlerini yüklemek için YAST aracını da kullanabilirsiniz. YAST 'de **Yazılım Bakımı**' na gidin ve SMT araması yapın. Otomatik olarak YaST2 **-smt öğesine**geçiş yapar.
 
 ![YAST içindeki SMT ekran görüntüsü](./media/hana-installation/image5_smt_in_yast.PNG)
 

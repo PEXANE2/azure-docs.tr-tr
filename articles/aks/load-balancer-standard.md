@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595170"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622181"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -39,7 +39,7 @@ Temel SKU 'nun Load Balancer var olan bir kümeniz varsa, standart SKU Load Bala
 
 Örneğin, kümeleri geçirmek için mavi/yeşil dağıtımlar yapmak, bir kümenin `load-balancer-sku` türü için yalnızca küme oluşturma zamanında tanımlandıkları yaygın bir uygulamadır. Ancak, *temel SKU* yük dengeleyiciler *Standart* SKU IP adreslerini gerektirdiğinden *Standart* SKU yük dengeleyiciler Ile uyumlu olmayan *temel SKU* IP adreslerini kullanır. Kümeleri Load Balancer SKU 'Larına geçirirken, uyumlu bir IP adresi SKU 'SU olan yeni bir IP adresi gerekir.
 
-Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önünde bulundurmanız gereken önemli konuların bir listesini görüntülemek için [geçiş konuları hakkındaki belgelerimizi](acs-aks-migration.md) ziyaret edin. Aşağıdaki sınırlamalar Ayrıca AKS 'de standart SKU yük dengeleyicileri kullanırken dikkat edilecek önemli davranış farklarıdır.
+Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önünde bulundurmanız gereken önemli konuların bir listesini görüntülemek için [geçiş konuları hakkındaki belgelerimizi](aks-migration.md) ziyaret edin. Aşağıdaki sınırlamalar Ayrıca AKS 'de standart SKU yük dengeleyicileri kullanırken dikkat edilecek önemli davranış farklarıdır.
 
 ### <a name="limitations"></a>Sınırlamalar
 

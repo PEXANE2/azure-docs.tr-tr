@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807960"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624160"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
 
@@ -119,7 +119,7 @@ Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzeri
 
 ![Senaryo 3. Doğu ABD birincil ile yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-Günün sonunda (örneğin, 11PM yerel saati) etkin veritabanlarının bir sonraki bölgeye (Kuzey Avrupa) geçiş yapılmalıdır. Bu görev, [Azure zamanlama hizmeti](../scheduler/scheduler-intro.md)kullanılarak tamamen otomatikleştirilebilir.  Görev aşağıdaki adımları içerir:
+Günün sonunda, örneğin 11 PM yerel saatinde, etkin veritabanlarının bir sonraki bölgeye (Kuzey Avrupa) geçiş yapılmalıdır. Bu görev, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanılarak tamamen otomatikleştirilebilir. Görev aşağıdaki adımları içerir:
 
 * Kolay yük devretme (1) kullanarak Kuzey Avrupa yük devretme grubundaki birincil sunucuyu değiştirin
 * Doğu ABD ve Kuzey Avrupa arasında yük devretme grubunu kaldırma
@@ -130,7 +130,7 @@ Aşağıdaki diyagramda, planlı yük devretmenin ardından yeni yapılandırma 
 
 ![Senaryo 3. Birincil Kuzey Avrupa geçişi yapılıyor.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Örneğin Kuzey Avrupa bir kesinti olursa, otomatik veritabanı yük devretmesi yük devretme grubu tarafından başlatılır ve bu, uygulamayı zamanlamanın (1) bir sonraki bölgesine taşımaya etkili bir şekilde neden olur.  Bu durumda, Kuzey Avrupa yeniden çevrimiçi olana kadar ABD Doğu kalan tek ikincil bölgedir. Kalan iki bölge, roller arasında geçiş yaparak müşterileri üç coğrafi bölgede sunar. Azure Scheduler uygun şekilde ayarlanmalıdır. Kalan bölgelerde Avrupa 'dan ek Kullanıcı trafiği alındığından, uygulamanın performansı yalnızca ek gecikme süresi ve ayrıca daha fazla sayıda Son Kullanıcı bağlantısı tarafından etkilenmez. Kesinti Kuzey Avrupa bir kez azaltıldıktan sonra, ikincil veritabanı geçerli birincil ile hemen eşitlenir. Aşağıdaki diyagramda Kuzey Avrupa bir kesinti gösterilmektedir:
+Örneğin Kuzey Avrupa bir kesinti olursa, otomatik veritabanı yük devretmesi yük devretme grubu tarafından başlatılır ve bu, uygulamayı zamanlamanın (1) bir sonraki bölgesine taşımaya etkili bir şekilde neden olur.  Bu durumda, Kuzey Avrupa yeniden çevrimiçi olana kadar ABD Doğu kalan tek ikincil bölgedir. Kalan iki bölge, roller arasında geçiş yaparak müşterileri üç coğrafi bölgede sunar. Azure Logic Apps uygun şekilde ayarlanmalıdır. Kalan bölgelerde Avrupa 'dan ek Kullanıcı trafiği alındığından, uygulamanın performansı yalnızca ek gecikme süresi ve ayrıca daha fazla sayıda Son Kullanıcı bağlantısı tarafından etkilenmez. Kesinti Kuzey Avrupa bir kez azaltıldıktan sonra, ikincil veritabanı geçerli birincil ile hemen eşitlenir. Aşağıdaki diyagramda Kuzey Avrupa bir kesinti gösterilmektedir:
 
 ![Senaryo 3. Kuzey Avrupa kesinti.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

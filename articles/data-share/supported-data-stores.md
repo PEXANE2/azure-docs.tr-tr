@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 5d4b1282b0a08657aea6f8a13aae7ed1fe49079b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 11c759dc8865da9de63e3acbfa1d4e26836d010a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964218"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622454"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure veri paylaşımında desteklenen veri depoları
 
@@ -47,7 +47,7 @@ Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandır
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓| ✓| ✓|
 
 ## <a name="share-from-a-storage-account"></a>Depolama hesabından paylaşma
-Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisinin paylaşım verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden faydalanabilirsiniz. Aynı ada sahip varolan dosyaların üzerine yazılacak.
+Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca Blok Blobu destekleniyor. Klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisinin paylaşım verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden faydalanabilirsiniz. Aynı ada sahip varolan dosyaların üzerine yazılacak.
 
 ## <a name="share-from-a-sql-based-source"></a>SQL tabanlı bir kaynaktan paylaşma
 Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tabloları veya görünümlerinin paylaşılmasını destekler. Veri tüketicisi, verileri Azure Data Lake Storage 2. veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edebilir. Tam anlık görüntü, hedef dosyanın içeriğinin üzerine yazar. Alternatif olarak, veri tüketicisi verileri bir SQL tablosuna kabul edebilir. Hedef SQL tablosu veri tüketicisi tarafında yoksa, Azure veri paylaşımında kaynak şeması ile SQL tablosu oluşturulur. Tam anlık görüntü, kaynak tablonun içeriğini hedef SQL tablosuna ekler. Artımlı anlık görüntü şu anda desteklenmiyor.

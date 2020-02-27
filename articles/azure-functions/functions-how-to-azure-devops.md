@@ -1,16 +1,16 @@
 ---
 title: Azure DevOps kullanarak işlev uygulama kodunu sürekli Güncelleştir
 description: Azure Işlevleri 'ni hedefleyen bir Azure DevOps işlem hattı ayarlamayı öğrenin.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834035"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649951"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps kullanarak sürekli teslim
 
@@ -29,7 +29,7 @@ YAML tabanlı bir işlem hattı oluşturmak için, önce uygulamanızı derleyin
 
 Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Bir dağıtım yapıtı, işlev uygulamanızı Azure 'da dağıtmak için kullanılır.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 .NET uygulaması derlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Bir JavaScript uygulaması derlemek için bir YAML dosyası oluşturmak üzere aşağıdaki örneği kullanabilirsiniz:
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Belirli bir Python sürümü için uygulama derlemek üzere bir YAML dosyası oluşturmak üzere aşağıdaki örneklerden birini kullanabilirsiniz. Python yalnızca Linux üzerinde çalışan işlev uygulamaları için desteklenir.
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Bir PowerShell uygulamasını paketlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz. PowerShell yalnızca Windows Azure Işlevleri için desteklenir.
 

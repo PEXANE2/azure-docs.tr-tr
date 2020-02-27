@@ -6,27 +6,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975813"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616838"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
 Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları çoğu depolama senaryosunda önerilir. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar. Genel amaçlı v2 hesapları, sık erişimli, seyrek erişimli veya Arşiv arasında sık erişimli veya seyrek erişimli ve BLOB düzeyinde katmanlama varsayılan hesap erişim katmanlarını destekler.
 
-Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolama hesabına yükseltme basittir. Azure portal, PowerShell veya Azure CLı kullanarak yükseltebilirsiniz.
+Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolama hesabına yükseltme işlemi basittir. Azure portal, PowerShell veya Azure CLı kullanarak yükseltebilirsiniz. Genel amaçlı v2 depolama hesabına yükseltmeyle ilişkili bir kesinti veya veri kaybı riski yoktur. Hesap yükseltme, hesap türünü değiştiren basit bir Azure Resource Manager işlem aracılığıyla gerçekleşir.
 
 > [!IMPORTANT]
 > Genel amaçlı v1 veya blob depolama hesabını genel amaçlı v2 'ye yükseltme kalıcı olur ve geri alınamaz.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Depolama hesabınıza gidin.
 3. **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
 4. **Hesap Türü** altında **Yükselt**’e tıklayın.
@@ -35,7 +35,7 @@ Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolam
 
     ![Yükseltme hesabı türü](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı v
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Genel amaçlı v1 hesabını Azure CLı kullanarak genel amaçlı v2 hesabına yükseltmek için önce Azure CLı 'nın en son sürümünü yüklemeniz gerekir. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 

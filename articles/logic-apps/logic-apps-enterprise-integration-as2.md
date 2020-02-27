@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666712"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650580"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange AS2 iletileri
+
+> [!IMPORTANT]
+> Özgün AS2 Bağlayıcısı kullanım dışı bırakılıyor, bu nedenle bunun yerine **AS2 (v2)** bağlayıcısını kullandığınızdan emin olun. Bu sürüm özgün sürümle aynı özellikleri sağlar, Logic Apps çalışma zamanına göre yereldir ve aktarım hızı ve ileti boyutu açısından önemli performans iyileştirmeleri sağlar. Ayrıca, yerel v2 Bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, Önkoşullar bölümünde açıklandığı gibi, tümleştirme hesabınızı bağlayıcıyı kullanmayı planladığınız Logic App 'e bağladığınızdan emin olun.
 
 Azure Logic Apps içinde AS2 iletilerle çalışmak için, AS2 iletişimini yönetmeye yönelik Tetikleyiciler ve eylemler sağlayan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
 
@@ -46,10 +49,7 @@ Azure Logic Apps içinde AS2 iletilerle çalışmak için, AS2 iletişimini yön
 
 Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygulamaya nasıl ekleneceği gösterilmektedir.
 
-> [!IMPORTANT]
-> Özgün AS2 Bağlayıcısı kullanımdan kalktı, bu nedenle bunun yerine **AS2 (v2)** bağlayıcısını kullandığınızdan emin olun. Bu sürüm özgün sürümle aynı özellikleri sağlar, Logic Apps çalışma zamanına göre yereldir ve aktarım hızı ve ileti boyutu açısından önemli performans iyileştirmeleri sağlar. Ayrıca, yerel v2 Bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, Önkoşullar bölümünde açıklandığı gibi, tümleştirme hesabınızı bağlayıcıyı kullanmayı planladığınız Logic App 'e bağladığınızdan emin olun.
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -63,9 +63,9 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 
 * Sertifika yönetimi için [Azure Key Vault](../key-vault/key-vault-overview.md) kullanıyorsanız, kasa anahtarlarınızın **şifreleme** ve **şifre çözme** işlemlerine izin verdiğinden emin olun. Aksi takdirde, kodlama ve kod çözme eylemleri başarısız olur.
 
-  Azure portal, anahtar kasanıza gidin, kasa anahtarınızın **Izin verilen işlemlerini**görüntüleyin ve **şifreleme** ve **şifre çözme** işlemlerinin seçili olduğunu doğrulayın.
+  Azure portal, anahtar kasasındaki anahtara gidin, anahtarın **Izin verilen işlemlerini**gözden geçirin ve **şifreleme** ve **şifre çözme** işlemlerinin seçili olduğunu onaylayın, örneğin:
 
-  ![Kasa anahtarı işlemlerini denetleme](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![Kasa anahtarı işlemlerini denetleme](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -88,9 +88,12 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
    |||
 
-   Örneğin:
+   Örnek:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+
+> [!TIP]
+> İmzalı veya şifrelenmiş iletiler gönderirken sorunlarla karşılaşırsanız, farklı SHA256 algoritma biçimlerini denemeyi deneyin. AS2 belirtimi SHA256 biçimleri hakkında herhangi bir bilgi sağlamaz, bu nedenle her sağlayıcı kendi uygulamasını veya biçimini kullanır.
 
 <a name="decode"></a>
 
@@ -116,8 +119,11 @@ Tam işletimsel bir mantıksal uygulamayı ve örnek AS2 senaryosunu dağıtmaya
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) dosyasında açıklandığı gibi Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/as2/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/as2/)bakın. 
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının özgün Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) hakkında daha fazla bilgi edinin
+* Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

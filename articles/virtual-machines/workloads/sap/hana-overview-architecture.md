@@ -3,8 +3,8 @@ title: Azure 'daki SAP HANA genel bakış (büyük örnekler) | Microsoft Docs
 description: Azure 'da SAP HANA dağıtmaya genel bakış (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101176"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616961"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
@@ -26,9 +26,9 @@ Azure 'da SAP HANA (büyük örnekler), Azure için benzersiz bir çözümdür. 
 
 Altyapı damgası içindeki müşteri yalıtımı, kiracılar içinde gerçekleştirilir ve şöyle görünür:
 
-- **Ağ iletişimi**: Altyapı yığınındaki müşterilerin, müşteri tarafından atanan kiracı başına sanal ağlar aracılığıyla yalıtımı. Tek bir müşteriye bir kiracı atanır. Müşterinin birden çok kiracının olması olabilir. Kiracıların ağ yalıtımı, kiracılar aynı müşteriye ait olsa bile, altyapı damgası düzeyindeki kiracılar arasındaki ağ iletişimini yasaklar.
-- **Depolama bileşenleri**: Depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtımı. Depolama birimleri, yalnızca bir depolama sanal makinesine atanabilir. Bir depolama sanal makinesi, SAP HANA TDı sertifikalı altyapı yığınında yalnızca tek bir kiracıya atanır. Sonuç olarak, bir depolama sanal makinesine atanan depolama birimlerine yalnızca belirli bir ve ilgili kiracıdan erişilebilir. Bunlar farklı dağıtılan kiracılar arasında görünür değildir.
-- **Sunucu veya konak**: Bir sunucu veya konak birimi, müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan bir sunucu veya konak, tek bir kiracıya atanan atomik çıplak bir işlem birimidir. Bir konak veya sunucuyu başka bir müşteriyle paylaştırmanıza neden olabilecek bir donanım bölümlendirme veya yumuşak bölümlendirme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya bağlanır. Bir kiracı, özel olarak atanmış farklı SKU 'Lara ait bir veya birden çok sunucu birimine sahip olabilir.
+- **Ağ iletişimi**: müşteri tarafından atanan kiracı başına sanal ağlar aracılığıyla altyapı yığını dahilinde müşterilerin yalıtımı. Tek bir müşteriye bir kiracı atanır. Müşterinin birden çok kiracının olması olabilir. Kiracıların ağ yalıtımı, kiracılar aynı müşteriye ait olsa bile, altyapı damgası düzeyindeki kiracılar arasındaki ağ iletişimini yasaklar.
+- **Depolama bileşenleri**: depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtım. Depolama birimleri, yalnızca bir depolama sanal makinesine atanabilir. Bir depolama sanal makinesi, SAP HANA TDı sertifikalı altyapı yığınında yalnızca tek bir kiracıya atanır. Sonuç olarak, bir depolama sanal makinesine atanan depolama birimlerine yalnızca belirli bir ve ilgili kiracıdan erişilebilir. Bunlar farklı dağıtılan kiracılar arasında görünür değildir.
+- **Sunucu veya konak**: bir sunucu veya konak birimi, müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan bir sunucu veya konak, tek bir kiracıya atanan atomik çıplak bir işlem birimidir. Bir konak veya sunucuyu başka bir müşteriyle paylaştırmanıza neden olabilecek *bir donanım bölümlendirme* veya yumuşak bölümlendirme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya bağlanır. Bir kiracı, özel olarak atanmış farklı SKU 'Lara ait bir veya birden çok sunucu birimine sahip olabilir.
 - Azure 'daki bir SAP HANA (büyük örnekler) altyapı damgasında, ağ, depolama ve işlem düzeyindeki kiracı kavramları aracılığıyla birçok farklı kiracı dağıtılır ve birbirlerine karşı yalıtılır. 
 
 
@@ -36,10 +36,10 @@ Bu çıplak sunucu birimleri yalnızca SAP HANA çalıştırmak için destekleni
 
 2019 Temmuz itibariyle, HANA büyük örnek damgalarının ve dağıtımların konumunun iki farklı düzeltmesi arasında ayrım yaptık:
 
-- "Düzeltme 3" (Rev 3): Müşterinin, 2019 Temmuz 'dan önce dağıtılması için kullanılabilir hale getirilen damgalar
-- "Düzeltme 4" (Rev 4): Azure VM konaklarına yakın bir yerde dağıtılan ve şu ana kadar Azure bölgelerinde yayınlanan yeni damga tasarımı:
+- "Düzeltme 3" (Rev 3): müşterinin, 2019 Temmuz 'dan önce dağıtılması için kullanılabilir hale getirilen damgalar
+- "Düzeltme 4" (Rev 4): Azure VM konaklarına yakın bir yerde dağıtılan ve şimdiye kadar Azure bölgelerinde yayınlanan yeni damga tasarımı:
     -  Batı ABD 2 
-    -  East US 
+    -  Doğu ABD 
     -  Batı Avrupa
     -  Kuzey Avrupa
 

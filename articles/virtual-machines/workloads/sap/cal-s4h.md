@@ -4,7 +4,7 @@ description: Azure VM 'de SAP S/4HANA veya siyah beyaz/4HANA dağıtma
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101454"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616201"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure 'da SAP S/4HANA veya siyah beyaz/4HANA dağıtma
 Bu makalede SAP Cloud gereç kitaplığı (SAP CAL) 3,0 kullanılarak Azure 'da S/4HANA 'nın nasıl dağıtılacağı açıklanır. Siyah beyaz/4HANA gibi diğer SAP HANA tabanlı çözümleri dağıtmak için aynı adımları izleyin.
@@ -75,7 +75,7 @@ Aşağıdaki ekran görüntüleri dizisi, SAP CAL kullanarak Azure 'da S/4HANA '
 
    ![Internet Explorer bulut hizmetleri onayı](./media/cal-s4h/s4h-pic5a.png)
 
-1. Tıklayın **kabul**. Yetkilendirme başarılı olursa SAP CAL hesabı tanımı yeniden görüntülenir. Kısa bir süre sonra, bir ileti yetkilendirme işleminin başarılı olduğunu onaylar.
+1. **Kabul et**' e tıklayın. Yetkilendirme başarılı olursa SAP CAL hesabı tanımı yeniden görüntülenir. Kısa bir süre sonra, bir ileti yetkilendirme işleminin başarılı olduğunu onaylar.
 
 1. Yeni oluşturulan SAP CAL hesabını kullanıcıya atamak için, sağdaki metin kutusuna **Kullanıcı Kimliğinizi** girin ve **Ekle**' ye tıklayın.
 
@@ -119,7 +119,7 @@ Dağıtımın temel yolunu burada gösteririz.
 
     d. Sekiz veya dokuz karakterlik çözüm için bir ana **parola** girin. Parola, farklı bileşenlerin yöneticileri için kullanılır.
 
-   ![SAP CAL temel modu: Örnek Oluştur](./media/cal-s4h/s4h-pic10a.png)
+   ![SAP CAL temel modu: örnek oluştur](./media/cal-s4h/s4h-pic10a.png)
 
 1. **Oluştur**' a tıklayın ve görüntülenen Ileti kutusunda **Tamam**' a tıklayın.
 

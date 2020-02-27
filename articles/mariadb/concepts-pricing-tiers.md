@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: e8f2b2661a07da43e924929df7666cfd970372b1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485463"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623895"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
@@ -79,7 +79,7 @@ Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçek
 
 ## <a name="backup"></a>Backup
 
-Hizmet, sunucunuzun yedeklerini otomatik olarak alır. Yedeklemeler için en düşük saklama süresi yedi gündür. 35 güne kadar bir bekletme dönemi belirleyebilirsiniz. Bekletme, sunucunun kullanım ömrü boyunca herhangi bir noktada ayarlanabilir. Yerel olarak yedekli ve coğrafi olarak yedekli yedeklemeler arasından seçim yapabilirsiniz. Coğrafi olarak yedekli yedeklemeler, sunucunuzun oluşturulduğu bölgenin [coğrafi eşlenmiş bölgesinde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) da depolanır. Bu artıklık, bir olağanüstü durum durumunda bir koruma düzeyi sağlar. Ayrıca, aynı zamanda sunucunuzu, coğrafi olarak yedekli yedeklemelerle kullanılabilir olan diğer Azure bölgelerine geri yükleme imkanına sahip olursunuz. Sunucu oluşturulduktan sonra iki yedekleme depolama seçeneği arasında değişiklik yapmak mümkün değildir.
+Hizmet, sunucunuzun yedeklerini otomatik olarak alır. 7 ile 35 gün arasında bir bekletme dönemi seçebilirsiniz. Genel Amaçlı ve bellek için Iyileştirilmiş sunucular, yedeklemeler için coğrafi olarak yedekli depolamaya sahip olmak için seçim yapabilir. [Kavramlar makalesinde](concepts-backup.md)yedeklemeler hakkında daha fazla bilgi edinin.
 
 ## <a name="scale-resources"></a>Kaynakları ölçeklendirme
 

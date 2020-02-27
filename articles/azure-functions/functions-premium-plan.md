@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212467"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615673"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
 
-|SKU|Çekirdek|Bellek|Depolama|
+|SKU|Çekirdekler|Bellek|Depolama|
 |--|--|--|--|
 |EP1|1|3,5 GB|GB|
 |EP2|2|7 GB|GB|
@@ -105,30 +105,31 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 
 |Bölge| Windows | Linux |
 |--| -- | -- |
-|Avustralya Orta| ✔<sup>1</sup> | |
-|Avustralya Orta 2| ✔<sup>1</sup> | |
-|Avustralya Doğu| ✔ | |
-|Avustralya Güneydoğu | ✔ | ✔<sup>1</sup> |
-|Brezilya Güney| ✔<sup>2</sup> |  |
-|Kanada Orta| ✔ |  |
+|Orta Avustralya| ✔<sup>1</sup> | |
+|Orta Avustralya 2| ✔<sup>1</sup> | |
+|Doğu Avustralya| ✔ | ✔<sup>1</sup> |
+|Güneydoğu Avustralya | ✔ | ✔<sup>1</sup> |
+|Güney Brezilya| ✔<sup>2</sup> |  |
+|Orta Kanada| ✔ | ✔<sup>1</sup> |
 |Orta ABD| ✔ |  |
 |Doğu Asya| ✔ |  |
 |Doğu ABD | ✔ | ✔<sup>1</sup> |
-|Doğu ABD 2| ✔ |  |
-|Fransa Orta| ✔ |  |
+|Doğu ABD 2| ✔ | ✔<sup>1</sup> |
+|Orta Fransa| ✔ |  |
 |Almanya Orta Batı| ✔ | |
-|Japonya Doğu| ✔ | ✔<sup>1</sup> |
-|Japonya Batı| ✔ | |
-|Kore Orta| ✔ |  |
+|Doğu Japonya| ✔ | ✔<sup>1</sup> |
+|Batı Japonya| ✔ | ✔<sup>1</sup> |
+|Güney Kore - Orta| ✔ | ✔<sup>1</sup> |
 |Orta Kuzey ABD| ✔ |  |
 |Kuzey Avrupa| ✔ | ✔<sup>1</sup> |
 |Orta Güney ABD| ✔ | ✔<sup>1</sup> |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔<sup>1</sup> |
-|UK Güney| ✔ | |
-|UK Batı| ✔ |  |
+|Güney Birleşik Krallık| ✔ | ✔<sup>1</sup> |
+|Batı Birleşik Krallık| ✔ |  |
 |Batı Avrupa| ✔ | ✔<sup>1</sup> |
 |Batı Hindistan| ✔ |  |
+|Orta Batı ABD| | ✔<sup>1</sup> |
 |Batı ABD| ✔ | ✔<sup>1</sup> |
 |Batı ABD 2| ✔ |  |
 

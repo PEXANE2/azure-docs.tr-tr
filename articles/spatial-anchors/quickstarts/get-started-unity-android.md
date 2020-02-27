@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e6fbf0e4cbfc44692292c33fc46d9ea0eccec89d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7acff7f0249cdedcebd367fc315be92cafb9ab78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370281"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615434"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla Unity Android uygulaması oluşturma
 
@@ -30,11 +30,11 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcılarını](../overview.md)k
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- Android derleme desteği ve Android SDK & NDK araçları modülleri de dahil olmak üzere <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> Içeren bir Windows veya MacOS makinesi.
+- <a href="https://unity3d.com/get-unity/download" target="_blank">2019,1 veya 2019,2</a> Içeren bir Windows veya MacOS makinesi, Android derleme desteği ve ANDROID SDK & NDK araçları modülleri de dahildir.
   - Windows üzerinde çalışıyorsa, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> de gerekir.
   - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Sonra `brew install git` ve `brew install git-lfs`çalıştırın.
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
@@ -68,7 +68,13 @@ Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönerg
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
+### <a name="rendering-issues"></a>İşleme sorunları
+
 Uygulamayı çalıştırırken, kamerayı arka plan olarak görmüyorsanız (örneğin, boş, mavi veya diğer dokular görürseniz), muhtemelen varlıkları Unity 'de yeniden içeri aktarmanız gerekir. Uygulamayı durdurun. Unity 'deki üst menüden **varlıklar-> tümünü yeniden al**' ı seçin. Sonra, uygulamayı yeniden çalıştırın.
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Büyük değişiklikler nedeniyle Unity 2019,3 Şu anda desteklenmiyor. Lütfen Unity 2019,1 veya 2019,2 kullanın.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

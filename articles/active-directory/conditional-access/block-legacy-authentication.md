@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380871"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620862"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleme   
 
@@ -24,7 +24,7 @@ Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azu
 
 Ortamınız, kiracınızın korumasını geliştirmek için eski kimlik doğrulamasını engellemeye hazırsanız, bu hedefi koşullu erişimle gerçekleştirebilirsiniz. Bu makalede, kiracınız için eski kimlik doğrulamasını engelleyen koşullu erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır: 
 
@@ -48,13 +48,30 @@ Koşullu erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonr
 
 Bu bölümde, eski kimlik doğrulamasını engellemek için bir koşullu erişim ilkesinin nasıl yapılandırılacağı açıklanmaktadır. 
 
+### <a name="legacy-authentication-protocols"></a>Eski kimlik doğrulama protokolleri
+
+Aşağıdaki seçenekler eski kimlik doğrulama protokolleri olarak kabul edilir
+
+- Kimliği doğrulanmış SMTP-e-posta iletileri göndermek için POP ve IMAP istemci tarafından kullanılır.
+- Otomatik bulma-Exchange Online 'da posta kutularını bulmak ve bağlamak için Outlook ve EAS istemcileri tarafından kullanılır.
+- Exchange Online PowerShell-uzak PowerShell ile Exchange Online 'a bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+- Exchange Web Hizmetleri (EWS)-Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimidir.
+- IMAP4-IMAP e-posta istemcileri tarafından kullanılır.
+- HTTP üzerinden MAPI (MAPI/HTTP)-Outlook 2010 ve üzeri tarafından kullanılır.
+- Çevrimdışı adres defteri (OAB)-Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.
+- Outlook her yerde (HTTP üzerinden RPC)-Outlook 2016 ve öncesi tarafından kullanılır.
+- Outlook hizmeti-Windows 10 için posta ve takvim uygulaması tarafından kullanılır.
+- POP3-POP e-posta istemcileri tarafından kullanılır.
+- Raporlama Web Hizmetleri-Exchange Online 'daki rapor verilerini almak için kullanılır.
+- Diğer istemciler-eski kimlik doğrulamasından yararlanarak tanımlanan diğer protokoller.
+
 ### <a name="identify-legacy-authentication-use"></a>Eski kimlik doğrulama kullanımını tanımla
 
 Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamalar olup olmadığını ve bunun genel dizininizi nasıl etkileyeceğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullandığınızı anlamak için kullanılabilir.
 
 1. **Azure portal** > **Azure Active Directory** **oturum açma**işlemlerini > gidin.
 1. **İstemci uygulaması > ** **sütunlara** tıklandıktan sonra istemci uygulama sütununu ekleyin.
-1. **Istemci uygulaması** > **filtre ekleyin** > **diğer Istemciler** için tüm seçenekleri belirleyip **Uygula**' ya tıklayın.
+1. **Istemci uygulaması** > **filtreler ekleyin** > eski tüm kimlik doğrulama protokollerini seçin ve **Uygula**' ya tıklayın.
 
 Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. **Temel bilgi** sekmesindeki **istemci uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
 

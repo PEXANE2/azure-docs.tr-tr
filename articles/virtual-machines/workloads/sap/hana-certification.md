@@ -3,28 +3,28 @@ title: Azure 'da SAP HANA sertifikası (büyük örnekler) | Microsoft Docs
 description: Azure 'da SAP HANA sertifikası (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099890"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617221"
 ---
 # <a name="certification"></a>Sertifika
 
 NetWeaver sertifikalarının yanı sıra SAP, Azure IaaS gibi belirli altyapılarda SAP HANA desteklemek için SAP HANA özel bir sertifika gerektirir.
 
-NetWeaver üzerinde çekirdek SAP Note ve bir derece SAP HANA sertifikası, [SAP Note #1928533 – Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533).
+NetWeaver üzerinde temel SAP Note ve bir derece SAP HANA sertifikası, [SAP note #1928533 – Azure 'DA SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533).
 
 Azure (büyük örnekler) birimlerindeki SAP HANA sertifika kayıtları, [SAP HANA sertifikalı IaaS platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) sitesinde bulunabilir. 
 

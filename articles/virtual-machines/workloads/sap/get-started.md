@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77601941"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624162"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -34,23 +34,20 @@ SAP HANA için Azure 'un benzersizliği, Azure 'ı ayrı ayarlayan bir tekliftir
 Azure 'da SAP iş yükü senaryolarını barındırmak, kimlik tümleştirmesi ve çoklu oturum açma gereksinimleri de oluşturabilir. Bu durum, farklı SAP bileşenleri ve hizmet olarak yazılım (SaaS) veya hizmet olarak platform (PaaS) tekliflerini bağlamak için Azure Active Directory (Azure AD) kullandığınızda ortaya çıkabilir. Azure AD ve SAP varlıklarıyla ilgili tümleştirme ve çoklu oturum açma senaryolarından oluşan bir liste, "AAD SAP kimlik tümleştirmesi ve çoklu oturum açma" bölümünde açıklanmaktadır ve belgelenmiştir.
 
 ## <a name="changes-to-the-sap-workload-section"></a>SAP iş yükü bölümünde yapılan değişiklikler
-Azure iş yükünde SAP bölümündeki belgelerde yapılan değişiklikler bu makalenin sonunda listelenmiştir.
+Azure iş yükünde SAP bölümündeki belgelerde yapılan değişiklikler bu makalenin sonunda listelenmiştir. Değişiklik günlüğündeki girişler 180 gün boyunca tutulur.
 
+## <a name="you-want-to-know"></a>Bilmeniz istediğiniz
+Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli belgelere veya akışlara yöneltireceğiz. Şunları bildirmek istiyorsunuz:
 
+- Hangi SAP yazılım sürümleri ve işletim sistemi sürümleri için desteklenen Azure VM 'Leri ve HANA büyük örnek birimleri. Yanıtlar için [Azure dağıtımı Için HANGI SAP yazılımlarının desteklendiğini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) ve bilgileri bulma işlemini okuyun
+- Azure VM 'Leri ve HANA büyük örneklerle desteklenen SAP dağıtım senaryoları. Desteklenen senaryolar hakkında daha fazla bilgi belgelerde bulunabilir:
+    - [Azure sanal makinesi desteklenen senaryolarda SAP iş yükü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
+    - [HANA büyük örneği için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+
+ 
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
 
-Bir dizi belge, Azure 'daki SAP HANA (büyük örnekler) veya kısa, HANA büyük örnekleri için size yol gösterir. Aşağıdaki HANA büyük örneklerinin alanlarıyla ilgili bilgi için bkz.:
-
-- [Azure 'daki SAP HANA genel bakış (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [Azure 'da SAP HANA mimarisi (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [Azure 'da SAP HANA altyapı ve bağlantı (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [Azure 'da SAP HANA 'yi (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [SAP HANA Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [Azure 'da SAP HANA sorunlarını giderme ve izleme (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
-
-Sonraki adımlar:
-
-- [Azure 'da SAP HANA genel bakış ve mimarisini okuyun (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+Bir dizi belge, Azure 'daki SAP HANA (büyük örnekler) veya kısa, HANA büyük örnekleri için size yol gösterir. HANA büyük örnekler hakkında bilgi edinmek için, [Azure 'daki SAP HANA belge genel bakış ve mimarisiyle (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) başlar ve Hana büyük örnek bölümünde ilgili belgelerde ilerleyin
 
 
 
@@ -120,7 +117,9 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
+- 02/25/2020: [SAP Için yüksek kullanılabilirlik mimarisi ve senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) , daha yeni ha makalelerine bağlantı eklemek için değiştirme
 - 02/25/2020: standart Azure Yük Dengeleyici ile genel uç noktaya erişimi açıklayan belgeyi işaret etmek için [SUSE Linux Enterprise Server üzerindeki Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliğinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) değişiklik yapın
+- 02/21/2020: SAP [iş yükü Için SAP Ao Azure sanal MAKINELERI DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase) makalesini tamamen gözden geçirme
 - 02/21/2020: [Azure sanal makine depolama yapılandırmasındaki SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ,/Hana/Data için Stripe boyutunda yeni öneriyi temsil edecek şekilde ve g/ç zamanlayıcı ayarı ekleyerek değiştirin
 - 02/21/2020: S224 ve S224m 'in yeni sertifikalı SKU 'Larını temsil eden HANA büyük örnek belgelerindeki değişiklikler
 - 02/21/2020: [Azure VM 'LERINDE SAP NetWeaver için yüksek kullanılabilirliğe sahıp RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) ve [Azure VM 'lerinde SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) için yüksek kullanılabilirlik, sıraya alma sunucusu çoğaltma 2 mimarisi (ENSA2) için küme kısıtlamalarını ayarlamak için Azure NetApp Files

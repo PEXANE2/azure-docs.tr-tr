@@ -4,12 +4,12 @@ description: Azure Backup kullanarak bir Exchange sunucusunu nasıl yedekleyece�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 051e33e9340a5ee788011254bb2cf88029ba1505
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dbd37bbb7418560a0426ed47d7869bf9d949d2e2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583852"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617563"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu bir Exchange Server 'ı Azure 'a yedekleme
 
@@ -23,8 +23,8 @@ Devam etmeden önce Azure Backup Sunucusu [yüklendiğinden ve hazırlandığın
 
 MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izleyin:
 
-1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
-2. **Yönetim > aracıları** ' na tıklayarak aracıyı Exchange sunucusuna yükleyip mabs Yönetici Konsolu >. Ayrıntılı adımlar için bkz. [MABS koruma aracısını yüklemeyin](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
+1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](h https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. **Yönetim > aracıları** ' na tıklayarak aracıyı Exchange sunucusuna yükleyip mabs Yönetici Konsolu >. Ayrıntılı adımlar için bkz. [MABS koruma aracısını yüklemeyin](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange Server için bir koruma grubu oluşturun
 

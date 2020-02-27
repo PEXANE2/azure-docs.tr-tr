@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031569"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622006"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -26,8 +26,8 @@ Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
   Bölge yedekliliği yalnızca Azure bölgelerinin kullanılabildiği durumlarda kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?](../availability-zones/az-overview.md#services-support-by-region)
 - **STATIK VIP**: Application Gateway v2 SKU 'SU statik VIP türünü özel olarak destekler. Bu, bir yeniden başlatma işleminden sonra bile, uygulama ağ geçidi ile ilişkili VIP 'nin dağıtımın yaşam döngüsü açısından değişmemesini sağlar.  V1 'de statik bir VIP yok, bu nedenle uygulama ağ geçidi aracılığıyla uygulama hizmetleri 'ne etki alanı adı yönlendirmesi için IP adresi yerine Application Gateway URL 'sini kullanmanız gerekir.
 - **Üstbilgi yeniden yazma**: Application Gateway, v2 SKU 'SU ile http isteği ve yanıt üst bilgilerini eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için bkz. [http üst bilgilerini Application Gateway yeniden yazma](rewrite-http-headers.md)
-- **Key Vault Tümleştirme (Önizleme)** : Application Gateway v2, https etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault (genel önizlemede) tümleştirmeyi destekler. Daha fazla bilgi için bkz. [Key Vault sertifikalarla SSL sonlandırması](key-vault-certs.md).
-- **Azure Kubernetes hizmeti (Önizleme)** : Application Gateway v2 giriş denetleyicisi, Azure Application Gateway aks kümesi olarak bilinen bir Azure Kubernetes hizmeti (aks) için giriş olarak kullanılmasına izin verir. Daha fazla bilgi için [Belgeler sayfasına](https://azure.github.io/application-gateway-kubernetes-ingress/)bakın.
+- **Key Vault tümleştirme**: Application Gateway v2, https etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault tümleştirme desteği sağlar. Daha fazla bilgi için bkz. [Key Vault sertifikalarla SSL sonlandırması](key-vault-certs.md).
+- **Azure Kubernetes hizmeti giriş denetleyicisi**: Application Gateway v2 giriş denetleyicisi, Azure Application Gateway aks kümesi olarak bilinen bir Azure Kubernetes hizmeti (aks) için giriş olarak kullanılmasına izin verir. Daha fazla bilgi için bkz. [Application Gateway giriş denetleyicisi nedir?](ingress-controller-overview.md).
 - **Performans iyileştirmeleri**: v2 SKU 'su standart/WAF SKU 'su ile karşılaştırıldığında daha iyi SSL yük boşaltma performansı sunar.
 - **Daha hızlı dağıtım ve güncelleştirme zamanı** V2 SKU 'SU, standart/WAF SKU 'suna kıyasla daha hızlı dağıtım ve güncelleştirme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.
 
@@ -167,15 +167,15 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 
 |Fark|Ayrıntılar|
 |--|--|
-|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca SSL 'ye genel bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Kimlik doğrulama sertifikası|Desteklenmez.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca SSL 'ye genel bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
 |Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmiyor|
 |Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenmiyor|
 |Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Azure tanılama 'da performans günlükleri|Desteklenmiyor.<br>Azure ölçümleri kullanılmalıdır.|
+|Azure tanılama 'da performans günlükleri|Desteklenmez.<br>Azure ölçümleri kullanılmalıdır.|
 |Faturalama|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
 |FIPS modu|Bunlar şu anda desteklenmiyor.|
 |Yalnızca ıLB modu|Bu şu anda desteklenmiyor. Ortak ve ıLB modu birlikte desteklenir.|
-|Netizleyici tümleştirmesi|Desteklenmiyor.|
+|Netizleyici tümleştirmesi|Desteklenmez.|
 |Azure Güvenlik Merkezi tümleştirmesi|Henüz bulunmamaktadır.
 
 ## <a name="migrate-from-v1-to-v2"></a>v1'den v2'ye geçiş

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794003"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620864"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect bulut sağlama desteklenen topolojiler ve senaryolar
 Bu makalede Azure AD Connect bulut sağlamasını kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede yalnızca desteklenen yapılandırma ve senaryolar bulunur.
@@ -33,12 +33,16 @@ Aşağıda bir çözüm seçerken aklınızda bulundurmanız gereken bilgilerin 
 - Nesneler için kaynak bağlantısı otomatik olarak seçilir.  Varsa, ms-DS-ımbu GUID kullanır, aksi halde Objectguıd kullanılır.
 - Kaynak Bağlayıcısı için kullanılan özniteliği değiştiremezsiniz.
 
+## <a name="single-forest-single-azure-ad-tenant"></a>Tek orman, tek Azure AD kiracısı
+![Tek bir orman ve tek bir kiracı için topoloji](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+En basit topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı içeren tek bir şirket içi ormandır.  Bu senaryonun bir örneği için bkz [. Öğretici: tek bir Azure AD kiracısıyla tek bir orman](tutorial-single-forest.md)
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>Çoklu orman, tek Azure AD kiracısı
 ![Çok ormanlı ve tek bir kiracı için topoloji](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-En yaygın topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı olan birden çok AD ormandır.  
+Ortak topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı olan birden çok AD ormandır.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Azure AD Connect, bulut sağlaması ile yeni bir ormana sahip olan orman
 ![Tek bir orman ve tek bir kiracı için topoloji](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,10 +54,7 @@ tek bir orman ve tek bir kira](media/plan-cloud-provisioning-topologies/migrate.
 
 Bu senaryonun bir örneği için bkz [. Öğretici: Pilot Azure AD Connect var olan eşitlenmiş BIR ad ormanında bulut sağlama](tutorial-pilot-aadc-aadccp.md)
 
-## <a name="single-forest-single-azure-ad-tenant"></a>Tek orman, tek Azure AD kiracısı
-![Tek bir orman ve tek bir kiracı için topoloji](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-En basit topoloji, bir veya birden çok etki alanı ve tek bir Azure AD kiracısı içeren tek bir şirket içi ormandır.  Bu senaryonun bir örneği için bkz [. Öğretici: tek bir Azure AD kiracısıyla tek bir orman](tutorial-single-forest.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

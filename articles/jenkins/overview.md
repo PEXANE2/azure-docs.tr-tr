@@ -4,12 +4,12 @@ description: Jenkins 'i Azure 'da oluşturun ve dağıtın ve sürekli tümleşt
 keywords: jenkins, azure, devops, genel bakış
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605700"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620175"
 ---
 # <a name="azure-and-jenkins"></a>Azure ve Jenkins
 
@@ -33,7 +33,7 @@ Derleme sayısı ile işlerinizin ve işlem hatlarınızın karmaşıklık düze
 
 [Azure hizmet sorumlusu](/azure/azure-resource-manager/resource-group-overview) ile yapılandırılan Jenkins işleri ve işlem hatları bu kimlik bilgileriyle aşağıdaki işlemleri gerçekleştirebilir:
 
-- [Azure Storage eklentisini](https://plugins.jenkins.io/windows-azure-storage)kullanarak [Azure Storage](/azure/storage/common/storage-introduction) 'da derleme yapıtlarını güvenli bir şekilde depolayın ve arşivleyin. Daha fazla bilgi için [Jenkins depolama nasıl yapılır?](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) öğreticisini inceleyin.
+- [Azure Storage eklentisini](https://plugins.jenkins.io/windows-azure-storage)kullanarak [Azure Storage](/azure/storage/common/storage-introduction) 'da derleme yapıtlarını güvenli bir şekilde depolayın ve arşivleyin. Daha fazla bilgi için [Jenkins depolama nasıl yapılır?](storage-java-jenkins-continuous-integration-solution.md) öğreticisini inceleyin.
 - [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline) ile Azure kaynaklarını yönetme ve yapılandırma.
 
 ## <a name="deploy-your-code-into-azure-services"></a>Kodunuzu Azure hizmetlerine dağıtma

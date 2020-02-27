@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907071"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617105"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Önizleme)
 Azure sanal makineler 'deki SQL sunucuları için gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Bu önizleme özelliği, olası veritabanı güvenlik açıklarını tanımlama ve azaltma ve veritabanınıza tehditler gösterebilen anormal etkinlikleri algılama işlevlerini içerir. 
@@ -61,7 +61,7 @@ Yeni bir çalışma alanı oluşturmak için [Log Analytics çalışma alanı ol
 SQL Server konağını bir çalışma alanına bağlamak için [Windows bilgisayarları Azure izleyici 'ye bağlama](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)bölümündeki yönergeleri izleyin.
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>ATP uyarıları için e-posta bildirimi ayarlama 
+## <a name="set-up-email-notification-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimi ayarlama 
 
 Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak için alıcıların listesini ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki tüm ilgili ayrıntıların bulunduğu uyarıya doğrudan bir bağlantı içerir. 
 

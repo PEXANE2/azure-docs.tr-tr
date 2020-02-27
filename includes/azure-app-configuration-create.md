@@ -4,12 +4,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.openlocfilehash: 017833403beca6fb8689bd6f90cc8f460d56c65e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961420"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619325"
 ---
 1. Yeni bir uygulama yapılandırma deposu oluşturmak için [Azure Portal](https://portal.azure.com)oturum açın. Giriş sayfasının sol üst köşesinde **kaynak oluştur**' u seçin. Market 'te **Ara** kutusuna **uygulama yapılandırması** ' nı girin ve ENTER ' u seçin.
 
@@ -27,9 +27,10 @@ ms.locfileid: "76961420"
     | **Abonelik** | Aboneliğiniz | Uygulama yapılandırmasını test etmek için kullanmak istediğiniz Azure aboneliğini seçin. Hesabınızda yalnızca bir abonelik varsa, bu otomatik olarak seçilir ve **abonelik** listesi gösterilmez. |
     | **Kaynak grubu** | *AppConfigTestResources* | Uygulama yapılandırma deposu kaynağınız için bir kaynak grubu seçin veya oluşturun. Bu grup, kaynak grubunu silerek aynı anda silmek isteyebileceğiniz birden çok kaynağı düzenlemek için yararlıdır. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](/azure/azure-resource-manager/resource-group-overview). |
     | **Konum** | *Orta ABD* | Uygulama yapılandırma deponuzın barındırıldığı coğrafi konumu belirtmek için **konum** ' i kullanın. En iyi performansı elde etmek için, kaynağı uygulamanızın diğer bileşenleriyle aynı bölgede oluşturun. |
+    | **Fiyatlandırma katmanı** | *Ücretsiz* | İstediğiniz fiyatlandırma katmanını seçin. Daha fazla ayrıntı için lütfen [uygulama yapılandırma fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/app-configuration/)bakın.
 
     ![Uygulama yapılandırma deposu kaynağı oluşturma](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
-1. **Oluştur**'u seçin. Dağıtım birkaç dakika sürebilir.
+1. **Oluştur**’u seçin. Dağıtım birkaç dakika sürebilir.
 
 1. Dağıtım bittikten sonra, **erişim anahtarlarına** > **Ayarlar** ' ı seçin. Birincil salt okunurdur anahtar bağlantı dizesini bir yere unutmayın. Uygulamanızı oluşturduğunuz uygulama yapılandırma deposuyla iletişim kuracak şekilde yapılandırmak için bu bağlantı dizesini daha sonra kullanacaksınız.

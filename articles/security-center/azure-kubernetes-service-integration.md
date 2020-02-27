@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441961"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616067"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Güvenlik Merkezi ile Azure Kubernetes Hizmetleri Tümleştirmesi (Önizleme)
 Azure Kubernetes Service (AKS), Kapsayıcılı uygulamalar geliştirmeye, dağıtmaya ve yönetmeye yönelik Microsoft tarafından yönetilen bir hizmettir. 
@@ -45,7 +45,7 @@ Bu iki araç birlikte, en iyi bulut Yerel Kubernetes güvenlik sunumunu oluştur
     * Ağ verileri ve işlem oluşturma gibi ham güvenlik olayları
     * Kubernetes denetim günlüğü
 
-    Daha fazla bilgi için bkz. [Azure kapsayıcıları için tehdit algılama](security-center-alerts-compute.md#azure-containers-)
+    Daha fazla bilgi için bkz. [Azure kapsayıcıları için tehdit koruması](threat-protection.md#azure-containers)
 
     Olası uyarıların listesi için, uyarılar başvuru tablosundaki şu bölümlere bakın: [aks küme düzeyi uyarıları](alerts-reference.md#alerts-akscluster) ve [kapsayıcı ana bilgisayar düzeyi uyarıları](alerts-reference.md#alerts-containerhost).  
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499935"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623965"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -33,7 +33,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-windows"></a>Windows makineleri için uyarılar
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#windows-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#windows-machines)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -124,7 +124,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-linux"></a>Linux makineleri için uyarılar
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#linux-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#linux-machines)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -213,7 +213,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azureappserv"></a>Azure App Service için uyarılar
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-app-service-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#app-services)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -238,7 +238,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-akscluster"></a>Kapsayıcılar için uyarılar-Azure Kubernetes hizmet kümeleri
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#azure-containers)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -253,7 +253,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-containerhost"></a>Kapsayıcılar için uyarılar-konak düzeyi
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#azure-containers)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -269,7 +269,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-sql-db-and-warehouse"></a>SQL veritabanı ve SQL veri ambarı için uyarılar
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#data-sql)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -287,7 +287,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azurestorage"></a>Azure Storage uyarıları
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#azure-storage-)
+[Daha fazla ayrıntı ve Not](threat-protection.md#azure-storage)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -308,7 +308,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azurecosmos"></a>Azure Cosmos DB için uyarılar (Önizleme)
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#azure-cosmos-db)
+[Daha fazla ayrıntı ve Not](threat-protection.md#cosmos-db)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -319,7 +319,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azurenetlayer"></a>Azure ağ katmanı uyarıları
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-network-layer)
+[Daha fazla ayrıntı ve Not](threat-protection.md#network-layer)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -344,7 +344,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azureresourceman"></a>Azure Resource Manager için uyarılar (Önizleme)
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[Daha fazla ayrıntı ve Not](threat-protection.md#management-layer)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -363,7 +363,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azurekv"></a>Azure Key Vault için uyarılar (Önizleme)
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-keyvault)
+[Daha fazla ayrıntı ve Not](threat-protection.md#azure-keyvault)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -381,7 +381,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 
 ## <a name="alerts-azureddos"></a>Azure DDoS koruması için uyarılar
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-integration.md#azure-ddos)
+[Daha fazla ayrıntı ve Not](threat-protection.md#azure-ddos)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
@@ -418,6 +418,7 @@ Güvenlik Merkezi 'nin desteklenen Kill zinciri amaçları, [Mitre ATT &AMP; CK�
 ## <a name="next-steps"></a>Sonraki adımlar
 Uyarılar hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
+* [Azure Güvenlik Merkezi 'nde tehdit koruması](threat-protection.md)
 * [Azure Güvenlik Merkezi'ndeki güvenlik uyarıları](security-center-alerts-overview.md)
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)
 * [Güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)](continuous-export.md)

@@ -1,21 +1,21 @@
 ---
-title: 'Öğretici: Azure Event Grid ile Key Vault Izleme'
-description: 'Öğretici: Key Vault olaylarına abone olmak için Azure Event Grid kullanma'
-services: media-services
+title: Azure Event Grid ile Key Vault izleme
+description: Key Vault olaylarına abone olmak için Azure Event Grid kullanma
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133355"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650750"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Öğretici: Azure Event Grid ile Key Vault Izleme (Önizleme)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid ile Key Vault izleme (Önizleme)
 
 Event Grid ile tümleştirme Key Vault Şu anda önizleme aşamasındadır. Anahtar Kasası 'nda depolanan bir gizli dizi durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Bir durum değişikliği, süresi dolacak (30 gün sonra), süresi dolan bir gizli dizi veya yeni sürümü bulunan gizli anahtar olarak tanımlanır. Üç gizli dizi türü (anahtar, sertifika ve gizli) için bildirimler desteklenir.
 
@@ -27,10 +27,10 @@ Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikler
 
 Daha fazla bilgi için bkz. [Key Vault olay şeması](../event-grid/event-schema-key-vault.md).
 
-> [!NOTE]
-> Olaylar yalnızca, abonelik ayarlandıktan sonra oluşturulan gizli sürümler (tüm üç tür) için tetiklenir.
->
-> Mevcut gizli dizileri için yeni sürümler oluşturmanız gerekir.
+> [!WARNING]
+> Bildirim olayları yalnızca yeni parolalar, anahtarlar ve sertifikalar sürümlerinde tetiklenir ve bu bildirimleri almak için öncelikle anahtar kasasındaki olaya abone olmanız gerekir.
+> 
+> Yalnızca sertifika, sertifika için belirttiğiniz ilkeye göre otomatik olarak yenilendiğinde, sertifikalarla ilgili bildirim olayları alırsınız.
 
 ## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
 
