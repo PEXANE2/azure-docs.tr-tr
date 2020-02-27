@@ -7,23 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424958"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623299"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
 Akış alımı, değişen birim verileri için 10 saniyeden daha az bir alım süresiyle düşük gecikme süresi gerektiren senaryolara yöneliktir. Bir veya daha fazla veritabanında, her bir tabloya veri akışının görece küçük (saniyede birkaç kayıt) olduğu, ancak genel veri alma birimi yüksek (saniyede binlerce kayıt) olduğu bir veya daha fazla veritabanında işlemsel işlemeyi iyileştirmek için kullanılır.
 
 Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış alımı yerine klasik (toplu) alımı kullanın. Çeşitli alma yöntemleri hakkında daha fazla bilgi edinmek için [veri alımı genel bakış](/azure/data-explorer/ingest-data-overview) makalesini okuyun.
-
-> [!NOTE]
-> Akış alımı aşağıdaki özellikleri desteklemez:
-> * [Veritabanı imleçleri](/azure/kusto/management/databasecursor).
-> * [Veri eşleme](/azure/kusto/management/mappings). Yalnızca [önceden oluşturulmuş](/azure/kusto/management/tables#create-ingestion-mapping) veri eşleme destekleniyor. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,6 +27,9 @@ Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış a
 * [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md) oluşturma
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Kümenizde akış alımını etkinleştirme
+
+> [!WARNING]
+> Lütfen akış alma işlemi etkinleştirilmeden önce [sınırlamaları](#limitations) gözden geçirin.
 
 1. Azure portal Azure Veri Gezgini kümenize gidin. **Ayarlar**' da, **Konfigürasyonlar**' ı seçin. 
 1. **Yapılandırma** bölmesinde, **akış**alımı 'nı etkinleştirmek için **Açık** ' ı seçin.
@@ -49,8 +47,9 @@ Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış a
 
 Desteklenen iki akış alma türü vardır:
 
-* Veri kaynağı olarak kullanılan [Olay Hub 'ı](/azure/data-explorer/ingest-data-event-hub)
-* Özel Alım, Azure Veri Gezgini istemci kitaplıklarından birini kullanan bir uygulama yazmanızı gerektirir. Örnek bir uygulama için bkz. [akış alma örneği](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
+
+* Veri kaynağı olarak kullanılan [**Olay Hub 'ı**](/azure/data-explorer/ingest-data-event-hub)
+* **Özel** Alım, Azure Veri Gezgini istemci kitaplıklarından birini kullanan bir uygulama yazmanızı gerektirir. Örnek bir uygulama için bkz. [akış alma örneği](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Uygun akış alma türünü seçin
 
@@ -78,6 +77,10 @@ Desteklenen iki akış alma türü vardır:
 * Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için 5 dakikaya kadar sürebilir.
 * Veri akışı aracılığıyla yapılmasa bile, küme üzerinde akış alımı etkinleştirme, verileri akışa alma için küme makinelerinin yerel SSD disk bir kısmını kullanır ve etkin önbellek için kullanılabilir depolama alanını azaltır.
 * Akış alma verilerinde [kapsam etiketleri](/azure/kusto/management/extents-overview.md#extent-tagging) ayarlanamaz.
+
+Akış alımı aşağıdaki özellikleri desteklemez:
+* [Veritabanı imleçleri](/azure/kusto/management/databasecursor).
+* [Veri eşleme](/azure/kusto/management/mappings). Yalnızca [önceden oluşturulmuş](/azure/kusto/management/tables#create-ingestion-mapping) veri eşleme destekleniyor. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

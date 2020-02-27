@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496978"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617594"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -172,4 +172,4 @@ Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'da
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Desteklenen senaryolar ve sınırlamalar hakkında daha fazla bilgi için, [Mars aracısının destek matrisine](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)bakın.
-- [İsteğe bağlı yedekleme ilkesi saklama davranışı](backup-configure-vault.md#on-demand-backup-policy-retention-behavior)hakkında daha fazla bilgi edinin.
+- [İsteğe bağlı yedekleme ilkesi saklama davranışı](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior)hakkında daha fazla bilgi edinin.

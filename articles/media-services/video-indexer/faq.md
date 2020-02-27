@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705692"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619888"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer sık sorulan sorular
 
@@ -59,7 +59,7 @@ Hayır, Video Indexer birden çok makine öğrenimi modelinin tek bir işlem hat
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Video Indexer hangi medya biçimlerini destekler?
 
-Video Indexer, yaygın kullanılan medya biçimlerinin çoğunu destekler. Daha fazla ayrıntı için [Azure Media Encoder standart biçimler](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) listesine bakın.
+Video Indexer en yaygın medya biçimlerini destekler. Daha fazla ayrıntı için [Azure Media Encoder standart biçimler](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) listesine bakın.
 
 ### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Video Indexer ' ye medya yükleme
 
@@ -76,6 +76,14 @@ Evet, Video Indexer Logic Apps, Flow ve [Azure işlevleri](https://azure.microso
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>Video Indexer hangi Azure bölgelerinde kullanılabilir?
 
 [Bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) sayfasında hangi Azure bölgelerinin video Indexer kullanılabilir olduğunu görebilirsiniz.
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Video Indexer modellerini belirli kullanım alanım için özelleştirebilir miyim? 
+
+Evet. Video Indexer, ihtiyaçlarınıza daha iyi uyum sağlamak için kullanılabilir modellerin bazılarını özelleştirebilirsiniz. 
+
+Örneğin, kişi modelimiz, ünlüme tanımanın hazır 1.000.000 yüzlerini destekler, ancak bu veritabanında olmayan diğer yüzeyleri tanımak için de eğitebilirsiniz. 
+
+Ayrıntılar için bkz. [kişi](customize-person-model-overview.md), [markaların](customize-brands-model-overview.md)ve [dil](customize-language-model-overview.md) modellerinin özelleştirilmesi hakkındaki makaleler. 
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Video Indexer SLA nedir?
 
@@ -119,6 +127,21 @@ Video Indexer, [Microsoft gizlilik bildirimi](https://privacy.microsoft.com/priv
 
 Video Indexer Şu anda SOC sertifikasıdır. Video Indexer sertifikasını gözden geçirmek için lütfen [Microsoft Güven Merkezi](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)' ne bakın.
 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Özel ve genel videolar arasındaki fark nedir? 
+
+Videolar Video Indexer karşıya yüklendiğinde, iki gizlilik ayarlarından birini seçebilirsiniz: özel ve genel. Anonim ve tanımlanmamış kullanıcılar dahil herkes için ortak videolara erişilebilir. Özel olanlar yalnızca hesap üyeleriyle kısıtlıdır. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Bir videoyu herkese açık olarak yüklemeye çalıştım ve uygunsuz veya rahatsız edici içerik için işaretlendi, ne anlama geliyor? 
+
+Bir videoyu Video Indexer karşıya yüklerken, hiçbir uygun olmayan içeriğe sahip olmadığından emin olmak için algoritmalar ve modeller tarafından otomatik içerik analizi yapılır. Açık içerik içeren bir videonun şüpheli olduğu bulunursa, bunu ortak olarak ayarlamak mümkün olmayacaktır. Ancak, hesap üyeleri buna özel bir video olarak erişebilir (görüntüleyin, öngörüleri ve ayıklanan yapıtları indirebilir ve hesap üyeleri tarafından kullanılabilen diğer işlemleri gerçekleştirebilir).   
+
+Videoyu genel erişim için ayarlamak için şunlardan birini yapabilirsiniz: 
+
+* Kendi arabirim katmanınızı (uygulama veya Web sitesi gibi) oluşturun ve Video Indexer hizmetiyle etkileşim kurmak için kullanın. Bu şekilde, bu video portalımızda özel kalır ve kullanıcılarınız arabiriminiz aracılığıyla etkileşime girebilirler. Örneğin, öngörüleri elde edebilir veya kendi arabiriminizdeki videonun görüntülenmesine izin verebilirsiniz. 
+* İçeriğin açık olmadığı varsayılarak kısıtlamanın kaldırılmasına neden olacak içerik için bir insan incelemesi isteyin. 
+
+    Bu seçenek, Video Indexer Web sitesinin doğrudan kullanıcılarınız tarafından arabirim katmanı olarak kullanılması ve genel (kimliği doğrulanmamış) görüntülenmesi durumunda araştırılabilir. 
+
 ## <a name="api-questions"></a>API soruları
 
 ### <a name="what-apis-does-video-indexer-offer"></a>Hangi API 'Ler Video Indexer sunmaktadır?
@@ -161,7 +184,7 @@ Video Indexer, Dizin oluşturduğunuz içerik girişi süresine bağlı olarak b
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Video Indexer kullanmak için ne zaman faturalandırılırım?
 
-Bir video dizin oluşturma için gönderilirken, dizin oluşturmanın video analizini mi, ses analizi mi yoksa ikisini birden mi içereceği kullanıcı tarafından belirtilir. Bu, hangi SKU’ların ücretlendirileceğini belirler. İşleme sırasında bir kritik düzey hatası oluşursa yanıt olarak bir hata kodu döndürülür. Bu durumda faturalama gerçekleştirilmez.  Kritik hatalar, koddaki bir hatadan veya hizmetin bir iç bağımlılığında oluşan kritik bir hatadan kaynaklanabilir. Yanlış tanımlama veya içgörü ayıklama gibi hatalar kritik olarak kabul edilmez ve bir yanıt döndürülür. Geçerli (hata kodu olmayan) bir yanıt döndürülen durumlarda faturalama gerçekleşir.
+Dizine eklenecek bir video gönderilirken, Kullanıcı dizin oluşturmayı video analizi, ses analizi veya her ikisi olacak şekilde tanımlar. Bu, hangi SKU 'Ların ücretlendirileceğini saptacaktır. İşlem sırasında kritik düzey hatası varsa, yanıt olarak bir hata kodu döndürülür. Böyle bir durumda faturalandırma gerçekleşmez.  Kritik bir hata, kodunuzdaki bir hata ya da hizmetin sahip olduğu bir iç bağımlılıkta kritik bir hata nedeniyle oluşabilir. Yanlış tanımlama veya öngörü ayıklama gibi hatalar kritik olarak değerlendirilmez ve bir yanıt döndürülür. Geçerli bir (hata olmayan kod) yanıtının döndürüldüğü her durumda faturalandırma oluşur.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Video Indexer ücretsiz bir deneme sunuyor mu?
 

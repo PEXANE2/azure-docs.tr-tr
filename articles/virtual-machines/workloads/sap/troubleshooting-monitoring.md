@@ -3,22 +3,22 @@ title: Azure 'da SAP HANA izleme (büyük örnekler) | Microsoft Docs
 description: Azure 'da SAP HANA izleyin (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0aea4dddef65600fe30f36499d4ad2a4f461245
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077929"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617302"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) izleme
 
@@ -39,7 +39,7 @@ Azure sanal makineler ile yukarıda adlandırılan kaynak sınıflarının yeter
 
 **Disk alanı:** Disk alanı tüketimi genellikle zaman içinde artar. En yaygın nedenler şunlardır: veri hacmi arttıkça, işlem günlüğü yedeklemelerinin yürütülmesi, izleme dosyalarını depolama ve depolama anlık görüntüleri gerçekleştiriliyor. Bu nedenle, disk alanı kullanımını izlemek ve HANA büyük örnek birimiyle ilişkili disk alanını yönetmek önemlidir.
 
-HANA büyük örneklerin **tür II SKU 'ları** için, sunucu önceden yüklenmiş sistem tanılama araçlarıyla birlikte gelir. Sistem durumu denetimini gerçekleştirmek için bu tanılama araçlarından yararlanabilirsiniz. /Var/log/health_checkkonumundaki sistem durumu denetimi günlük dosyasını oluştururken aşağıdaki komutu çalıştırın.
+HANA büyük örneklerin **tür II SKU 'ları** için, sunucu önceden yüklenmiş sistem tanılama araçlarıyla birlikte gelir. Sistem durumu denetimini gerçekleştirmek için bu tanılama araçlarından yararlanabilirsiniz. /Var/log/health_check konumunda sistem durumu denetimi günlük dosyasını oluştururken aşağıdaki komutu çalıştırın.
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```

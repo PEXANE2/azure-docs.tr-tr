@@ -4,7 +4,7 @@ description: SUSE 'de STONITH kullanarak Azure 'da SAP HANA için yüksek kullan
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212536"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615079"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>SUSE 'in STONITH kullanarak yüksek kullanılabilirlik kurulumu
 Bu belgede, SUSE Işletim sisteminde STONITH cihazını kullanarak yüksek kullanılabilirliği ayarlamak için ayrıntılı adım adım yönergeler sağlanmaktadır.
@@ -211,7 +211,7 @@ sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![SBD-List. png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4,8 **ikinci** düğüm üzerinde (Düğüm2) ileti durumunu kontrol edebilirsiniz
+**ikinci** düğüm üzerinde 4,8 (Düğüm2) ileti durumunu kontrol edebilirsiniz
 ```
 sbd  -d <SBD Device Name> list
 ```
@@ -371,7 +371,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>Senaryo 2: YaST2 grafik görünümü göstermez
 YaST2 grafik ekranı, bu belgede yüksek kullanılabilirlik kümesini ayarlamak için kullanılır. YaST2, gösterildiği gibi grafik penceresiyle birlikte açılmadığından ve QT hatası fırladıysanız, adımları aşağıdaki şekilde gerçekleştirin. Grafik penceresiyle açılırsa, adımları atlayabilirsiniz.
 
-**Hata:**
+**Hatayla**
 
 ![YaST2-QT-gui-Error. png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
@@ -393,11 +393,11 @@ Bağımlılıklar altında "önerilen paketleri yüklensin" ![yast-Dependencies.
 
 Değişiklikleri gözden geçirin ve Tamam 'a basın
 
-![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
+![Yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
 Paket yükleme devam ![yast-Performing-installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-İleri’ye tıklayın
+İleri'ye tıklayın
 
 ![yast-installation-Report. png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 

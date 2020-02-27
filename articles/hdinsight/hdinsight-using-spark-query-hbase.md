@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.custom: hdinsightactive
+ms.date: 02/24/2020
+ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937627"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623097"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache HBase verilerini okuyup yazmak için Apache Spark kullanma
 
@@ -21,11 +21,11 @@ Apache HBase genellikle alt düzey API (taramalar, alır ve koyar) ile veya Apac
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Aynı sanal ağda dağıtılan iki ayrı HDInsight kümesi. Bir HBase ve en az Spark 2,1 (HDInsight 3,6) yüklü bir Spark. Daha fazla bilgi için bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
+* Aynı [Sanal ağda](./hdinsight-plan-virtual-network-deployment.md)dağıtılan Iki ayrı HDInsight kümesi. Bir HBase ve en az Spark 2,1 (HDInsight 3,6) yüklü bir Spark. Daha fazla bilgi için bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Kümelerinizin birincil depolama alanı için [URI şeması](hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Blob depolama için wasb://, Azure Data Lake Storage 2. için abfs://veya adl://için Azure Data Lake Storage 1. olacaktır. BLOB depolama için güvenli aktarım etkinse, URI `wasbs://`olur.  Ayrıca bkz. [Güvenli aktarım](../storage/common/storage-require-secure-transfer.md).
+* Kümelerinizin birincil depolama alanı için [URI şeması](hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu düzen Azure Blob depolama için wasb://, Azure Data Lake Storage 2. için abfs://veya adl://için Azure Data Lake Storage 1. olur. BLOB depolama için güvenli aktarım etkinse, URI `wasbs://`olur.  Ayrıca bkz. [Güvenli aktarım](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Genel işlem
 
@@ -95,9 +95,17 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 Ardından, SSH bağlantınızı HBase kümenize çıkın.
 
+```bash
+exit
+```
+
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>HBase-site. xml ' i Spark kümenize yerleştirme
 
-1. SSH kullanarak Spark kümenizin baş düğümüne bağlanın.
+1. SSH kullanarak Spark kümenizin baş düğümüne bağlanın. `SPARKCLUSTER` Spark kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. Spark kümenizin varsayılan depolamadan `hbase-site.xml` kümenin yerel depolama alanındaki Spark 2 yapılandırma klasörüne kopyalamak için aşağıdaki komutu girin:
 
@@ -128,7 +136,7 @@ Bu adımda, Apache Spark şemayı Apache HBase ile eşleyen bir katalog nesnesi 
     import spark.sqlContext.implicits._
     ```  
 
-2. HBase 'de oluşturduğunuz kişiler tablosu için bir katalog tanımlamak üzere aşağıdaki komutu girin:
+1. HBase 'de oluşturduğunuz kişiler tablosu için bir katalog tanımlamak üzere aşağıdaki komutu girin:
 
     ```scala
     def catalog = s"""{
@@ -150,7 +158,7 @@ Bu adımda, Apache Spark şemayı Apache HBase ile eşleyen bir katalog nesnesi 
      b. Rowkey 'i `key`olarak ve Spark içinde kullanılan sütun adlarını HBase 'de kullanılan sütun ailesi, sütun adı ve sütun türüyle eşleyin.  
      c. Rowkey Ayrıca `rowkey`belirli bir sütun ailesi `cf` bulunan adlandırılmış bir sütun (`rowkey`) olarak ayrıntılı olarak tanımlanmalıdır.  
 
-3. HBase 'de `Contacts` tablonuz etrafında bir veri çerçevesi sağlayan bir yöntemi tanımlamak için aşağıdaki komutu girin:
+1. HBase 'de `Contacts` tablonuz etrafında bir veri çerçevesi sağlayan bir yöntemi tanımlamak için aşağıdaki komutu girin:
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,40 +170,42 @@ Bu adımda, Apache Spark şemayı Apache HBase ile eşleyen bir katalog nesnesi 
      }
     ```
 
-4. Veri çerçevesinin bir örneğini oluşturun:
+1. Veri çerçevesinin bir örneğini oluşturun:
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. Veri çerçevesini sorgulama:
+1. Veri çerçevesini sorgulama:
 
     ```scala
     df.show()
     ```
 
-6. İki satırlık veri görmeniz gerekir:
+    İki satırlık veri görmeniz gerekir:
 
-        +------+--------------------+--------------+-------------+--------------+
-        |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
-        +------+--------------------+--------------+-------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+-------------+--------------+
+    ```output
+    +------+--------------------+--------------+-------------+--------------+
+    |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
+    +------+--------------------+--------------+-------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+-------------+--------------+
+    ```
 
-7. Spark SQL kullanarak HBase tablosunu sorgulayabilmeniz için geçici bir tablo kaydedin:
+1. Spark SQL kullanarak HBase tablosunu sorgulayabilmeniz için geçici bir tablo kaydedin:
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. `contacts` tabloda SQL sorgusu verme:
+1. `contacts` tabloda SQL sorgusu verme:
 
     ```scala
     spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
-9. Şöyle bir sonuç görmeniz gerekir:
+    Şöyle bir sonuç görmeniz gerekir:
 
     ```output
     +-------------+--------------------+
@@ -220,7 +230,7 @@ Bu adımda, Apache Spark şemayı Apache HBase ile eşleyen bir katalog nesnesi 
         )
     ```
 
-2. Bir `ContactRecord` örneği oluşturun ve bir diziye koyun:
+1. Bir `ContactRecord` örneği oluşturun ve bir diziye koyun:
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -229,19 +239,19 @@ Bu adımda, Apache Spark şemayı Apache HBase ile eşleyen bir katalog nesnesi 
     newData(0) = newContact
     ```
 
-3. Yeni veri dizisini HBase 'e Kaydet:
+1. Yeni veri dizisini HBase 'e Kaydet:
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. Sonuçları inceleyin:
+1. Sonuçları inceleyin:
 
     ```scala  
     df.show()
     ```
 
-5. Şunun gibi bir çıktı görmeniz gerekir:
+    Şunun gibi bir çıktı görmeniz gerekir:
 
     ```output
     +------+--------------------+--------------+------------+--------------+
@@ -253,7 +263,7 @@ Bu adımda, Apache Spark şemayı Apache HBase ile eşleyen bir katalog nesnesi 
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. Aşağıdaki komutu girerek Spark kabuğunu kapatın:
+1. Aşağıdaki komutu girerek Spark kabuğunu kapatın:
 
     ```scala
     :q

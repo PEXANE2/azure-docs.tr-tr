@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720518"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613973"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında iç uygulamalara güvenli erişim için Azure AD Uygulama Ara Sunucusu Dağıtma
 
@@ -74,7 +74,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı olarak kullanılmak üzere bir VM
         > [!NOTE]
         > Bağlayıcıyı kaydetmek için kullanılan genel yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır.
         >
-        > Örneğin, Azure AD etki alanı *contoso.com*ise, genel yönetici bu etki alanında `admin@contoso.com` veya geçerli bir diğer ad olmalıdır.
+        > Örneğin, Azure AD etki alanı *aaddscontoso.com*ise, genel yönetici bu etki alanında `admin@aaddscontoso.com` veya geçerli bir diğer ad olmalıdır.
 
    * Bağlayıcıyı yüklediğiniz VM için Internet Explorer Artırılmış Güvenlik Yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için, hata iletisindeki yönergeleri uygulayın veya yüklemenin işlemi sırasında Internet Explorer gelişmiş güvenliği ' ni kapatın.
    * Bağlayıcı kaydı başarısız olursa bkz. [uygulama proxy 'Si sorunlarını giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).
@@ -99,16 +99,16 @@ Daha fazla bilgi için, [Azure Active Directory Domain Services Içinde Kerberos
 
 Azure AD Uygulama Ara Sunucusu bağlayıcısının yüklü olduğu bilgisayarın ayarlarını almak için [Get-ADComputer][Get-ADComputer] komutunu kullanın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın.
 
-Aşağıdaki örnek, *appproxy.contoso.com*adlı bilgisayar hesabı hakkında bilgi alır. Önceki adımlarda yapılandırılan Azure AD Uygulama Ara Sunucusu sanal makinesi için kendi bilgisayar adınızı girin.
+Aşağıdaki örnek, *appproxy.aaddscontoso.com*adlı bilgisayar hesabı hakkında bilgi alır. Önceki adımlarda yapılandırılan Azure AD Uygulama Ara Sunucusu sanal makinesi için kendi bilgisayar adınızı girin.
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Azure AD Uygulama Ara Sunucusu arka plandaki uygulamaları çalıştıran her uygulama sunucusu için, kaynak tabanlı KCD 'yi yapılandırmak üzere [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanın. Aşağıdaki örnekte, Azure AD Uygulama Ara Sunucusu bağlayıcısının *appserver.contoso.com* bilgisayarı kullanma izinleri verilmiştir:
+Azure AD Uygulama Ara Sunucusu arka plandaki uygulamaları çalıştıran her uygulama sunucusu için, kaynak tabanlı KCD 'yi yapılandırmak üzere [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanın. Aşağıdaki örnekte, Azure AD Uygulama Ara Sunucusu bağlayıcısının *appserver.aaddscontoso.com* bilgisayarı kullanma izinleri verilmiştir:
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 Birden çok Azure AD Uygulama Ara Sunucusu Bağlayıcısı dağıtırsanız, her bağlayıcı örneği için kaynak tabanlı KCD 'yi yapılandırmanız gerekir.

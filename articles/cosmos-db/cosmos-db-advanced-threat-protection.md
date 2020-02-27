@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445539"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614842"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)
 
@@ -49,7 +49,7 @@ Azure Cosmos DB için Gelişmiş tehdit koruması, veritabanları için olağand
 3. **Gelişmiş güvenlik** yapılandırması dikey penceresinde:
 
     * **Gelişmiş tehdit koruması** seçeneğine tıklayarak **Açık**olarak ayarlayın.
-    * Yeni veya güncelleştirilmiş Gelişmiş Tehdit Koruması ilkesini kaydetmek için **Kaydet**’e tıklayın.   
+    * Yeni veya güncelleştirilmiş Gelişmiş tehdit koruması ilkesini kaydetmek için **Kaydet** ' e tıklayın.   
 
 ### <a name="set-up-atp-using-rest-api"></a>REST API kullanarak ATP ayarlama
 
@@ -105,7 +105,7 @@ Uyarı ayrıntıları ve önerilen eylemlerle birlikte bir e-posta bildirimi de 
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP uyarılarını Cosmos DB
 
- Azure Cosmos DB hesaplarını izlerken oluşturulan uyarıların listesini görmek için, güvenlik merkezi belgelerindeki [Cosmos DB uyarılar](../security-center/security-center-alerts-data-services.md#cosmos-db) bölümüne bakın.
+ Azure Cosmos DB hesaplarını izlerken oluşturulan uyarıların listesini görmek için, Azure Güvenlik Merkezi belgelerindeki [Cosmos DB uyarılar](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

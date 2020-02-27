@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549512"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620945"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -26,7 +26,7 @@ Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yük
 
 Azure AD Connect sağlamayı yükleme ve yapılandırma aşağıdaki adımlarda gerçekleştirilir:
     
-- [Aracıyı yükleme](#install-the-agent)
+- [Aracıyı yükler](#install-the-agent)
 - [Aracı yüklemesini doğrulama](#verify-agent-installation)
 
 
@@ -67,7 +67,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki ad
 1. Azure Portal’da oturum açın.
 1. Sol tarafta **Azure Active Directory** > **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
 
-   ![Azure Portal](media/how-to-install/install6.png)</br>
+   ![Azure portalı](media/how-to-install/install6.png)</br>
 
 1.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' i seçin.
 
@@ -96,7 +96,7 @@ Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
     ![Hizmetler ekranı](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->Aracı yüklendi, ancak kullanıcıları eşitlemeye başlamadan önce yapılandırılması ve etkinleştirilmesi gerekir. Yeni bir aracı yapılandırmak için, [Azure AD Connect bulut sağlama yeni aracı yapılandırması](how-to-configure.md)' na bakın.
+>Aracı yüklendi, ancak kullanıcıları eşitlemeye başlamadan önce yapılandırılması ve etkinleştirilmesi gerekir. Yeni bir aracı yapılandırmak için bkz. [Azure AD Connect bulut tabanlı sağlama için yeni yapılandırma oluşturma](how-to-configure.md).
 
 
 

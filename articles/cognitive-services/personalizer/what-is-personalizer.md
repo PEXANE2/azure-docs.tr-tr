@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846218"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622732"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -63,7 +63,7 @@ Kişiselleştiriciye yönelik **Reward** [API 'si](https://westus2.dev.cognitive
 
 İçeriğiniz için kişiselleştirici kullanın:
 
-* Öğesinin arasından seçim yapmak için sınırlı sayıda öğe (en fazla ~ 50) vardır. Daha büyük bir listeniz varsa, listeyi 50 öğe olarak azaltmak için [bir öneri altyapısı kullanın](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines) .
+* Öğesinin arasından seçim yapmak için sınırlı sayıda öğe (en fazla ~ 50) vardır. Daha büyük bir listeniz varsa, listeyi 50 öğe olarak azaltmak için [bir öneri altyapısı kullanın](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) .
 * , Derecelendirilir, Özellikler ve _bağlam özellikleriyle_ _Eylemler_ hakkında bilgi içerir.
 * Kişiselleştirici için en az ~ 1k/gün içeriğe ilişkin olay ile ilgili olaylar geçerlidir. Kişiselleştirici gereken en düşük trafiği almazsa, hizmet en iyi tek içerik öğesini belirlemede daha uzun sürer.
 

@@ -1,25 +1,25 @@
 ---
-title: Portalı kullanarak Azure Güvenlik Duvarı DNAT ile gelen trafiği Filtreleme
+title: Portalı kullanarak gelen Internet trafiğini Azure Güvenlik Duvarı ile filtreleme DNAT
 description: Bu öğreticide Azure portalını kullanarak Azure Güvenlik Duvarı DNAT’yi dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/26/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1528087ced54ddcab2e3dd44b65fb3411cae3004
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195730"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621781"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak Azure Güvenlik Duvarı DNAT ile gelen trafiği filtreleme
+# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak gelen Internet trafiğini Azure Güvenlik Duvarı ile filtreleme DNAT
 
-Alt ağlarınıza gelen trafiği çevirmek ve filtrelemek için Azure Güvenlik Duvarı Hedef Ağ Adresi Çevirisi’ni (DNAT) yapılandırabilirsiniz. DNAT yapılandırdığınızda, NAT kuralı toplama eylemi **DNAT**olarak ayarlanır. Daha sonra NAT kural koleksiyonundaki her kural, güvenlik duvarı ortak IP'nizi ve bağlantı noktanızı özel bir IP'ye ve bağlantı noktasına çevirmek için kullanılabilir. DNAT kuralları, çevrilen trafiğe izin verecek ilgili ağ kuralını örtük olarak ekler. Bu davranışı, çevrilen trafikle eşleşen reddetme kuralları olan bir ağ kural koleksiyonunu açıkça ekleyerek geçersiz kılabilirsiniz. Azure Güvenlik Duvarı kural işleme mantığı hakkında daha fazla bilgi için bkz: [Azure Güvenlik Duvarı kural işleme mantığı](rule-processing.md).
+Azure Güvenlik Duvarı hedef ağ adresi çevirisini (DNAT), alt ağlarınıza gelen Internet trafiğini çevirecek ve filtreleyecek şekilde yapılandırabilirsiniz. DNAT yapılandırdığınızda, NAT kuralı toplama eylemi **DNAT**olarak ayarlanır. Daha sonra NAT kural koleksiyonundaki her kural, güvenlik duvarı ortak IP'nizi ve bağlantı noktanızı özel bir IP'ye ve bağlantı noktasına çevirmek için kullanılabilir. DNAT kuralları, çevrilen trafiğe izin verecek ilgili ağ kuralını örtük olarak ekler. Bu davranışı, çevrilen trafikle eşleşen reddetme kuralları olan bir ağ kural koleksiyonunu açıkça ekleyerek geçersiz kılabilirsiniz. Azure Güvenlik Duvarı kural işleme mantığı hakkında daha fazla bilgi için bkz: [Azure Güvenlik Duvarı kural işleme mantığı](rule-processing.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Test amaçlı ağ ortamı oluşturma
@@ -42,7 +42,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 3. **Kaynak grubu adı** alanına **RG-DNAT-Test** yazın.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Kaynak grubu konumu** bölümünde bir konum seçin. Bundan sonra oluşturacağınız tüm kaynakların aynı konumda olması gerekir.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’ tıklayın.
 
 ## <a name="set-up-the-network-environment"></a>Ağ ortamını oluşturma
 
@@ -149,9 +149,9 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 3. **Güvenlik duvarı**'na ve ardından **Oluştur**'a tıklayın. 
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
-   |Name     |FW-DNAT-test|
+   |Adı     |FW-DNAT-test|
    |Abonelik     |\<aboneliğiniz\>|
    |Kaynak grubu     |**Var olanı kullan**: RG-DNAT-Test |
    |Konum     |Önceden kullandığınız konumu seçin|
@@ -176,7 +176,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu** için **Var olanı kullan**’ı ve **RG-DNAT-Test** girişini seçin.
 7. **Konum** alanında önceden kullandığınız konumu seçin.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’ tıklayın.
 9. **Yenile**'ye ve ardından **RT-FWroute** yol tablosuna tıklayın.
 10. **Alt ağlar**’a ve ardından **İlişkilendir**’e tıklayın.
 11. **Sanal ağlar**'a tıklayın ve ardından **VN-Spoke** girişini seçin.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466935"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616669"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 'ta JDBC sürücüsü aracılığıyla Apache Hive sorgulama
 
@@ -36,6 +36,18 @@ Azure 'da bir HDInsight kümesine JDBC bağlantıları 443 numaralı bağlantı 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 `CLUSTERNAME` değerini HDInsight kümenizin adıyla değiştirin.
+
+Ya da bağlantıyı, **ambarı Kullanıcı arabirimi > Hive > configs > gelişmiş**' i aracılığıyla bulabilirsiniz.
+
+![Ambarı aracılığıyla JDBC bağlantı dizesi al](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>Bağlantı dizesinde konak adı
+
+Bağlantı dizesindeki ' CLUSTERNAME.azurehdinsight.net ' konak adı, küme URL 'niz ile aynı. Azure portal aracılığıyla edinebilirsiniz. 
+
+### <a name="port-in-connection-string"></a>Bağlantı dizesinde bağlantı noktası
+
+Kümeye yalnızca Azure sanal ağı dışındaki bazı yerlerden bağlanmak için **443 numaralı bağlantı noktasını** kullanabilirsiniz. HDInsight Yönetilen bir hizmettir ve bu, kümeye yapılan tüm bağlantıların güvenli bir ağ geçidi üzerinden yönetildiği anlamına gelir. Bu bağlantı noktaları dışarıdan gösterilmediğinden, HiveServer 2 ' ye doğrudan 10001 veya 10000 bağlantı noktalarında bağlanamazsınız. 
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. SQUIRREL programından çıkın ve sonra da `C:\Program Files\squirrel-sql-4.0.0\lib`, bu durumda SQUIRREL 'in sisteminizde yüklü olduğu dizine gidin. SQUIRREL dizininde, `lib` dizini altında, var olan Commons-codec. jar dosyasını HDInsight kümesinden indirilen ile değiştirin.
 
 1. SQUIRREL 'i yeniden başlatın. HDInsight 'ta Hive 'e bağlanılırken hata artık gerçekleşmemelidir.
+
+### <a name="connection-disconnected-by-hdinsight"></a>HDInsight tarafından bağlantısı kesilen bağlantı
+
+**Belirtiler**: JDBC/ODBC aracılığıyla çok büyük miktarlarda veri (birkaç GB) indirmeye çalışırken, indirme sırasında, bağlantı HDInsight tarafından beklenmedik şekilde kesilir. 
+
+**Neden**: Bu hata, ağ geçidi düğümlerinde sınırlama nedeniyle oluşur. JDBC/ODBC 'den veri alırken tüm verilerin ağ geçidi düğümünden geçmesi gerekir. Ancak ağ geçidi, çok büyük miktarda veriyi indirmek üzere tasarlanmamıştır, bu nedenle trafiği işleyememesi durumunda bağlantı ağ geçidi tarafından kapatılabilir.
+
+**Çözüm**: çok büyük miktarlarda veriyi ındırmek için JDBC/ODBC sürücüsü kullanmaktan kaçının. Bunun yerine doğrudan blob depolamadan verileri kopyalayın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

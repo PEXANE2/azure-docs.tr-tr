@@ -4,7 +4,7 @@ description: Azure 'da bir SAP HANA SAP HANA nasıl yüklenir (büyük örnekler
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264178"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617087"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -124,7 +124,7 @@ Azure 'da (büyük örnekler) SAP HANA için, Azure 'da gerçekleştirilen zaman
 Sonuç olarak, Azure VM 'lerde çalışan SAP uygulama sunucuları tarafından ve HANA büyük örneklerde çalışan SAP HANA veritabanı örnekleri tarafından kullanılabilecek ayrı bir zaman sunucusu ayarlamanız gerekir. Büyük örnek damgalarındaki depolama altyapısı zaman zaman NTP sunucularıyla eşitlenir.
 
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 Aşağıdaki belgelerde açıklandığı gibi, Azure sanal ağlarınızı tasarlama ve bu sanal ağları HANA büyük örneklerine bağlama bölümündeki önerileri izletireceğiz varsayılmaktadır:
 
 - [Azure 'da SAP HANA (büyük örnek) genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)

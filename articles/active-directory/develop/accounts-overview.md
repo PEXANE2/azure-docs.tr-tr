@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: a0f0f3be1647c820591923a094ef7fce86ab9672
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699453"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611874"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Hesaplar ve kiracı profilleri (Android)
 
@@ -52,7 +52,7 @@ Microsoft Identity platformunda bir hesap aşağıdakilerden oluşur:
 
 ## <a name="account-overview-diagram"></a>Hesaba genel bakış Diyagramı
 
-![Hesaba genel bakış Diyagramı](./media/accounts-overview/accounts-overview.png)
+![Hesaba genel bakış Diyagramı](./media/accounts-overview/accounts-overview.svg)
 
 Yukarıdaki diyagramda:
 
@@ -105,7 +105,7 @@ Daha önce belirtildiği gibi, bir hesabın mevcut olduğu her kiracı, hesap ha
 
 Bir hesap birden fazla kuruluşta üye veya Konuk olabileceğinden, MSAL, hesabın üyesi olduğu kiracıların bir listesini almak üzere bir hizmeti sorgulayamaz. Bunun yerine, MSAL, yapılmış olan belirteç isteklerinin bir sonucu olarak hesabın bulunduğu kiracıların bir listesini oluşturur.
 
-Hesap nesnesi üzerinde sunulan talepler her zaman bir hesap için ' ana kiracı '/{Authority} ' deki taleplerdir. Bu hesap, ana kiracının bir belirtecini istemek için kullanılmıyorsa, MSAL hesap nesnesi aracılığıyla talep sağlayamaz.  Örneğin:
+Hesap nesnesi üzerinde sunulan talepler her zaman bir hesap için ' ana kiracı '/{Authority} ' deki taleplerdir. Bu hesap, ana kiracının bir belirtecini istemek için kullanılmıyorsa, MSAL hesap nesnesi aracılığıyla talep sağlayamaz.  Örnek:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Kiracı profili taleplerine erişin
 
-Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnenizin `IMultiTenantAccount`atamalısınız. Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örneğin:
+Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnenizin `IMultiTenantAccount`atamalısınız. Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örnek:
 
 ```java
 // Psuedo Code
@@ -140,7 +140,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 Hesap için belirteçleri Yenile, B2C ilkeleri arasında paylaşılmaz. Sonuç olarak, belirteçler kullanan çoklu oturum açma mümkün değildir. Bunun anlamı çoklu oturum açma mümkün değildir. Çoklu oturum açma 'nın çoklu oturum açmayı etkinleştirmek için bir tanımlama bilgisinin kullanılabildiği etkileşimli bir deneyim kullanması gerektiği anlamına gelir.
 
-Bu Ayrıca, MSAL durumunda farklı B2C ilkeleri kullanarak belirteçler elde ediyorsanız, bunların her biri kendi tanımlayıcısına sahip ayrı hesaplar olarak değerlendirilir. `acquireTokenSilent`kullanarak bir belirteç istemek için bir hesap kullanmak istiyorsanız, belirteç isteğiyle kullanmakta olduğunuz ilkeyle eşleşen hesap listesinden hesabı seçmeniz gerekir. Örneğin:
+Bu Ayrıca, MSAL durumunda farklı B2C ilkeleri kullanarak belirteçler elde ediyorsanız, bunların her biri kendi tanımlayıcısına sahip ayrı hesaplar olarak değerlendirilir. `acquireTokenSilent`kullanarak bir belirteç istemek için bir hesap kullanmak istiyorsanız, belirteç isteğiyle kullanmakta olduğunuz ilkeyle eşleşen hesap listesinden hesabı seçmeniz gerekir. Örnek:
 
 ```java
 // Get Account For Policy

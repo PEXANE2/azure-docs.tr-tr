@@ -4,12 +4,12 @@ description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3a83c496191baaebc30f6fe0aedda790827644cb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605752"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617584"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -32,7 +32,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 
 | İşlem | Hata Ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Kasaya kaydolma | Sağlanan kasa kimlik bilgileri geçersiz. Dosya bozuk veya kurtarma hizmetiyle ilişkili en son kimlik bilgilerine sahip değil. | Önerilen eylem: <br> <ul><li> Kasadan en son kimlik bilgileri dosyasını indirin ve yeniden deneyin. <br>VEYA</li> <li> Önceki eylem işe yaramazsa, kimlik bilgilerini farklı bir yerel dizine indirmeyi veya yeni bir kasa oluşturmayı deneyin. <br>VEYA</li> <li> Tarih ve saat ayarlarını [Bu blogda](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/)anlatıldığı şekilde güncelleştirmeyi deneyin. <br>VEYA</li> <li> C:\Windows\Temp 'in 65000 'den fazla dosya olup olmadığını denetleyin. Eski dosyaları başka bir konuma taşıyın veya Temp klasöründeki öğeleri silin. <br>VEYA</li> <li> Sertifikaların durumunu denetleyin. <br> a. **Bilgisayar sertifikalarını Yönet** ' i açın (Denetim Masası 'nda). <br> b. **Kişisel** düğümünü ve onun alt düğüm **sertifikalarını**genişletin.<br> c.  Sertifikayı kaldırın **Windows Azure Araçları**. <br> d. Azure Backup istemcisinde kaydı yeniden deneyin. <br> VEYA </li> <li> Herhangi bir grup ilkesinin yerinde olup olmadığını kontrol edin. </li></ul> |
+| Kasaya kaydolma | Sağlanan kasa kimlik bilgileri geçersiz. Dosya bozuk veya kurtarma hizmetiyle ilişkili en son kimlik bilgilerine sahip değil. | Önerilen eylem: <br> <ul><li> Kasadan en son kimlik bilgileri dosyasını indirin ve yeniden deneyin. <br>VEYA</li> <li> Önceki eylem işe yaramazsa, kimlik bilgilerini farklı bir yerel dizine indirmeyi veya yeni bir kasa oluşturmayı deneyin. <br>VEYA</li> <li> Tarih ve saat ayarlarını [Bu makalede](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided)açıklandığı gibi güncelleştirmeyi deneyin. <br>VEYA</li> <li> C:\Windows\Temp 'in 65000 'den fazla dosya olup olmadığını denetleyin. Eski dosyaları başka bir konuma taşıyın veya Temp klasöründeki öğeleri silin. <br>VEYA</li> <li> Sertifikaların durumunu denetleyin. <br> a. **Bilgisayar sertifikalarını Yönet** ' i açın (Denetim Masası 'nda). <br> b. **Kişisel** düğümünü ve onun alt düğüm **sertifikalarını**genişletin.<br> c.  Sertifikayı kaldırın **Windows Azure Araçları**. <br> d. Azure Backup istemcisinde kaydı yeniden deneyin. <br> VEYA </li> <li> Herhangi bir grup ilkesinin yerinde olup olmadığını kontrol edin. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>Çoğaltma tutarsız
 
@@ -62,7 +62,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 
 | İşlem | Hata Ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Aracıları korumalı sunuculara iletme | Aracı işlemi, \<ServerName > DPM Aracı Düzenleyicisi hizmetindeki bir iletişim hatası nedeniyle başarısız oldu. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları gerçekleştirin**: <ul><li> Güvenilmeyen bir etki alanından bilgisayar iliştirirken, [Bu adımları](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757801(v=sc.12))izleyin. <br> VEYA </li><li> Güvenilen bir etki alanından bir bilgisayar iliştiriyorsanız, [Bu blogda](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)özetlenen adımları kullanarak sorun giderin. <br>VEYA</li><li> Sorun giderme adımı olarak virüsten koruma 'yı devre dışı bırakmayı deneyin. Sorunu giderirse, virüsten koruma ayarlarını [Bu makalede](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))önerildiği şekilde değiştirin.</li></ul> |
+| Aracıları korumalı sunuculara iletme | Aracı işlemi, \<ServerName > DPM Aracı Düzenleyicisi hizmetindeki bir iletişim hatası nedeniyle başarısız oldu. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları gerçekleştirin**: <ul><li> Güvenilmeyen bir etki alanından bilgisayar iliştirirken, [Bu adımları](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)izleyin. <br> VEYA </li><li> Güvenilen bir etki alanından bir bilgisayar iliştiriyorsanız, [Bu blogda](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)özetlenen adımları kullanarak sorun giderin. <br>VEYA</li><li> Sorun giderme adımı olarak virüsten koruma 'yı devre dışı bırakmayı deneyin. Sorunu giderirse, virüsten koruma ayarlarını [Bu makalede](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))önerildiği şekilde değiştirin.</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Kurulum, kayıt defteri meta verilerini güncelleştiremedi
 
@@ -75,7 +75,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 
 | İşlem | Hata Ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Aracıları korumalı sunuculara iletme | Sunucu için belirtilen kimlik bilgileri geçersiz. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın**: <br> Koruma aracısını üretim sunucusuna [Bu makalede](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12))belirtilen şekilde el ile yüklemeyi deneyin.|
+| Aracıları korumalı sunuculara iletme | Sunucu için belirtilen kimlik bilgileri geçersiz. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın**: <br> Koruma aracısını üretim sunucusuna [Bu makalede](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)belirtilen şekilde el ile yüklemeyi deneyin.|
 | Azure Backup Aracısı Azure Backup hizmetine bağlanamadı (KIMLIK: 100050) | Azure Backup Aracısı Azure Backup hizmetine bağlanamadı. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın**: <br>1. yükseltilmiş bir komut isteminde şu komutu çalıştırın: **PsExec-i-s "C:\Program Files\Explorer\iexplore.exe**. Bu, Internet Explorer penceresini açar. <br/> 2. **araçlar** > **Internet seçenekleri** > **bağlantı** > **LAN ayarları**' na gidin. <br/> 3. bir proxy sunucu kullanacak şekilde ayarları değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<br/> 4. makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu [URL 'ler](backup-configure-vault.md#verify-internet-access) ve [IP adreslerine](backup-configure-vault.md#verify-internet-access)izin verildiğinden emin olun.|
 | Aracı yüklemesi Azure Backup başarısız oldu | Microsoft Azure Kurtarma Hizmetleri yüklemesi başarısız oldu. Microsoft Azure Kurtarma Hizmetleri yüklemesi tarafından sisteme yapılan tüm değişiklikler geri alındı. (KIMLIK: 4024) | Azure aracısını el ile yükleyebilirsiniz.
 

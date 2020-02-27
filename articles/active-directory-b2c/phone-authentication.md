@@ -1,24 +1,24 @@
 ---
-title: Telefon kaydı ve özel ilkelerle oturum açma
+title: Telefon kaydı ve özel ilkelerle oturum açma (Önizleme)
 titleSuffix: Azure AD B2C
-description: Metin iletilerinde, Azure Active Directory B2C özel ilkelerle Kullanıcı telefonlarına tek seferlik parolalar gönderme hakkında bilgi edinin.
+description: Bir kerelik parolalar (OTP) metin iletilerinde, uygulama kullanıcılarınızın telefonlarınıza Azure Active Directory B2C ' de özel ilkelerle gönderin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840341"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647524"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C (Önizleme) içinde özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
 Azure Active Directory B2C (Azure AD B2C) telefon kaydı ve oturum açma, kullanıcılarınızın telefonunuza bir kısa mesajdan gönderilen bir kerelik parola (OTP) kullanarak uygulamalarınıza kaydolmalarını ve oturum açmasını sağlar. Bir kerelik parolalar, kullanıcılarınızın parolalarının tehlikeye düşmesi veya bu uygulamaların güvenliğinin aşılmasına neden olması riskini en aza indirmenize yardımcı olabilir.
 
@@ -26,7 +26,13 @@ Müşterilerinizin, telefonunuza bir kerelik parola kullanarak uygulamalarınız
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="pricing"></a>Fiyatlandırma
+
+Bir kerelik parolalar SMS metin iletileri kullanılarak kullanıcılarınıza gönderilir ve gönderilen her ileti için ücretlendirilmeyebilirsiniz. Fiyatlandırma bilgileri için [Azure Active Directory B2C fiyatlandırmasının](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **ayrı ücretler** bölümüne bakın.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+OTP 'yi ayarlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir.
 
 * [Azure AD B2C kiracı](tutorial-create-tenant.md)
 * Kiracınızda [kayıtlı Web uygulaması](tutorial-register-applications.md)
@@ -69,6 +75,22 @@ Her dosyayı karşıya yüklerken Azure `B2C_1A_`ön eki ekler.
 1. **Yanıt URL 'Si Seç**için `https://jwt.ms`seçin.
 1. **Şimdi Çalıştır** ' ı seçin ve bir e-posta adresi veya telefon numarası kullanarak kaydolun.
 1. **Şimdi Çalıştır** ' ı bir kez daha seçin ve doğru yapılandırmaya sahip olduğunu onaylamak için aynı hesapla oturum açın.
+
+## <a name="get-user-account-by-phone-number"></a>Telefon numarasına göre Kullanıcı hesabını al
+
+Telefon numarası ile kaydolan ancak bir kurtarma e-posta adresi sağlamayan bir Kullanıcı, oturum açma adı olarak telefon numarası ile Azure AD B2C dizinine kaydedilir. Kullanıcı daha sonra telefon numaralarını değiştirmeyi istiyorsa, yardım masasına veya destek ekibinizin öncelikle hesabını bulması ve sonra telefon numaralarını güncelleştirmesi gerekir.
+
+[Microsoft Graph](manage-user-accounts-graph-api.md)kullanarak, bir kullanıcıyı telefon numarası (oturum açma adı) ile bulabilirsiniz:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+Örnek:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

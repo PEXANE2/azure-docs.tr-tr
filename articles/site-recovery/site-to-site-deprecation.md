@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 29a939452d9b90bd8afda7db4e115d10956ee5e5
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606639"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623610"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery kullanarak müşteri tarafından yönetilen siteler arasında (VMM ile) olağanüstü durum kurtarmayı kullanımdan kaldırma
 
@@ -26,9 +26,9 @@ Site Recovery kullanarak System Center Virtual Machine Manager (SCVMM) tarafınd
 
 ## <a name="what-changes-should-you-expect"></a>Hangi değişiklikleri beklemeniz gerekir?
 
-- 2019 Kasım 'Dan itibaren, bu senaryolar için boardings üzerinde yeni kullanıcı için izin verilmez. Yük devretme, yük devretme testi, izleme vb. dahil olmak üzere **var olan çoğaltmalar ve yönetim işlemleri** **etkilenmeyecektir**.
+- 2020 'den itibaren, e-posta iletişimleri &, bu, Hyper-V VM 'lerinin siteden siteye çoğaltılmasına yönelik kullanım dışı bırakılmasıyla ilgili Azure portal bildirimler alacaksınız. Kullanımdan kaldırma, 2023 Mart için planlanmaktadır.
 
-- Mevcut bir yapılandırmanız varsa, yeni VMMs 'yi kaydedemeyeceksiniz.
+- Mevcut bir yapılandırmaya sahipseniz, kurulum üzerinde hiçbir etkisi olmaz.
 
 - Müşteri diğer yaklaşımları izliyorsa senaryolar kullanım dışı olduktan sonra var olan çoğaltmalar bozulabilir. Müşteriler, Azure portal Azure Site Recovery deneyimi aracılığıyla DR ile ilgili işlemleri görüntüleyemez, yönetemez veya gerçekleştiremez.
  

@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 03171e395bb23da05ee5420f60abca9a16ffb774
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 395210c582ba7f5e8170a96a46e2816336e33b2d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600299"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624027"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET ile blob özelliklerini ve meta verileri yönetme
 
@@ -25,7 +25,7 @@ Blob 'lar, içerdikleri verilere ek olarak sistem özelliklerini ve Kullanıcı 
 
 - **Kullanıcı tanımlı meta veriler**: Kullanıcı tanımlı meta veriler, bir BLOB depolama kaynağı için belirlediğiniz bir veya daha fazla ad-değer çiftinden oluşur. Kaynak ile ek değerleri depolamak için meta verileri kullanabilirsiniz. Meta veri değerleri yalnızca kendi amacınıza yöneliktir ve kaynağın nasıl davranacağını etkilemez.
 
-BLOB depolama kaynağı için meta verilerin ve özellik değerlerinin alınması, iki adımlı bir işlemdir. Bu değerleri okuyabilmeniz için önce `FetchAttributes` veya `FetchAttributesAsync` yöntemini çağırarak bunları açıkça almanız gerekir. Bu kuralın istisnası, `Exists` ve `ExistsAsync` yöntemlerinin, kapsamakta olan uygun `FetchAttributes` yöntemini çağırmakta olduğu durumdur. Bu yöntemlerden birini çağırdığınızda de `FetchAttributes` çağırmanız gerekmez.
+BLOB depolama kaynağı için meta verilerin ve özellik değerlerinin alınması, iki adımlı bir işlemdir. Bu değerleri okuyabilmeniz için önce `FetchAttributes` veya `FetchAttributesAsync` yöntemini çağırarak bunları açıkça almanız gerekir. Bu kuralın istisnası, `Exists` ve `ExistsAsync` yöntemlerinin, kapsamakta olan uygun `FetchAttributes` yöntemini çağırmakta olduğu durumdur. Bu yöntemlerden birini çağırdığınızda de `FetchAttributes`çağırmanız gerekmez.
 
 > [!IMPORTANT]
 > Bir depolama kaynağı için özellik veya meta veri değerlerinin doldurulmadığını fark ederseniz, kodunuzun `FetchAttributes` veya `FetchAttributesAsync` yöntemini çağırmadığını kontrol edin.
@@ -163,4 +163,4 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 - [Blob özelliklerini ayarlama işlemi](/rest/api/storageservices/set-blob-properties)
 - [Blob özelliklerini al işlemi](/rest/api/storageservices/get-blob-properties)
 - [Blob meta veri işlemini ayarlama](/rest/api/storageservices/set-blob-metadata)
-- [Blob meta verileri al işlemi](/rest/api/storageservices/set-blob-metadata)
+- [Blob meta verileri al işlemi](/rest/api/storageservices/get-blob-metadata)

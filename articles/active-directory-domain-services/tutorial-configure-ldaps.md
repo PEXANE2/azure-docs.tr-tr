@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549457"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612781"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanı ile 
 
 Bu öğreticide, Azure AD DS yönetilen bir etki alanı için LDAPS 'nin nasıl yapılandırılacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure AD DS ile kullanmak için dijital bir sertifika oluşturun
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -63,16 +63,16 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 
 * **Güvenilir veren** -sertifika, Güvenli LDAP kullanılarak yönetilen etki alanına bağlanan bilgisayarlar tarafından güvenilen bir yetkili tarafından verilmelidir. Bu yetkili, genel bir CA veya bu bilgisayarlar tarafından güvenilen bir kuruluş CA 'sı olabilir.
 * **Yaşam süresi** -sertifika en az sonraki 3-6 ay için geçerli olmalıdır. Sertifikanın süresi dolarsa, yönetilen etki alanınız için Güvenli LDAP erişimi bozulur.
-* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *aadds.contoso.com*olarak adlandırılmışsa, sertifikanın konu adı * *. aadds.contoso.com*olmalıdır.
+* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *aaddscontoso.com*olarak adlandırılmışsa, sertifikanın konu adı * *. aaddscontoso.com*olmalıdır.
     * Güvenli LDAP 'nin Azure AD Domain Services ile düzgün şekilde çalıştığından emin olmak için sertifikanın DNS adı veya konu diğer adı bir joker sertifika olmalıdır. Etki alanı denetleyicileri rastgele adlar kullanır ve hizmetin kullanılabilir durumda kalmasını sağlamak için kaldırılabilir veya eklenebilir.
 * **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, SSL sunucusu kimlik doğrulaması için geçerli olmalıdır.
 
-Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aadds.contoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
+Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
-$dnsName="aadds.contoso.com"
+$dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
 $lifetime=Get-Date
@@ -94,7 +94,7 @@ PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 
 Thumbprint                                Subject
 ----------                                -------
-959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aadds.contoso.com
+959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aaddscontoso.com
 ```
 
 ## <a name="understand-and-export-required-certificates"></a>Gerekli sertifikaları anlama ve dışarı aktarma
@@ -125,7 +125,7 @@ Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların
 
     ![Microsoft Yönetim Konsolu 'nda kişisel sertifikalar deposunu açın](./media/tutorial-configure-ldaps/open-personal-store.png)
 
-1. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aadds.contoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
+1. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
 
     ![Microsoft Yönetim Konsolu 'nda sertifikayı dışarı aktarma](./media/tutorial-configure-ldaps/export-cert.png)
 
@@ -150,7 +150,7 @@ Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların
 
 İstemci bilgisayarların, LDAPS kullanarak yönetilen etki alanına başarıyla bağlanabilmek için Güvenli LDAP sertifikasını verene güvenmesi gerekir. İstemci bilgisayarların, Azure AD DS tarafından şifresi çözülen verileri başarıyla şifreleyebilmesi için bir sertifikaya ihtiyacı vardır. Ortak CA kullanıyorsanız, bilgisayar bu sertifika verenler için otomatik olarak güvenmeli ve karşılık gelen bir sertifikaya sahip olmalıdır. Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki adımda özel anahtarı içeren bir sertifika oluşturmuş olursunuz. Şimdi, otomatik olarak imzalanan sertifikayı dışarı aktarıp istemci bilgisayardaki güvenilir sertifika deposuna yükleyelim:
 
-1. *Sertifikalar (yerel bilgisayar) IÇIN MMC ' > kişisel > sertifikaları* deposu ' na geri dönün. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aadds.contoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
+1. *Sertifikalar (yerel bilgisayar) IÇIN MMC ' > kişisel > sertifikaları* deposu ' na geri dönün. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
 1. **Sertifika dışarı aktarma sihirbazında** **İleri**' yi seçin.
 1. İstemciler için özel anahtara ihtiyacınız olmadığı için, **özel anahtarı dışarı aktar** sayfasında **Hayır, özel anahtarı dışarı aktarma**' yı seçin ve ardından **İleri**' yi seçin.
 1. **Dışarı aktarma dosyası biçimi** sayfasında **Base-64 Encoded X. 509.440 (. CER)** , şu sertifika için dosya biçimi olarak:
@@ -180,7 +180,7 @@ Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların
 
     ![Azure portal Azure AD DS yönetilen etki alanınızı arayın ve seçin](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
-1. *Aadds.contoso.com*gibi yönetilen etki alanınızı seçin.
+1. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS penceresinin sol tarafında **Güvenli LDAP**' i seçin.
 1. Varsayılan olarak, yönetilen etki alanınız için Güvenli LDAP erişimi devre dışı bırakılır. **Etkinleştirmek**için **Güvenli LDAP** değiştirin.
 1. Internet üzerinden yönetilen etki alanınız Güvenli LDAP erişimi varsayılan olarak devre dışıdır. Genel Güvenli LDAP erişimini etkinleştirdiğinizde, etki alanınız Internet üzerinden parola deneme yanılma saldırılarına açıktır. Bir sonraki adımda, ağ güvenlik grubu, erişimi yalnızca gerekli kaynak IP adresi aralıklarına kilitleyecek şekilde yapılandırılmıştır.
@@ -213,15 +213,15 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
 
     | Ayar                           | Değer        |
     |-----------------------------------|--------------|
-    | Kaynak                            | IP Adresleri |
+    | Kaynak                            | IP adresleri |
     | Kaynak IP adresleri/CıDR aralıkları | Ortamınız için geçerli bir IP adresi veya aralığı |
     | Kaynak bağlantı noktası aralıkları                | *            |
     | Hedef                       | Herhangi biri          |
     | Hedef bağlantı noktası aralıkları           | 636          |
     | Protokol                          | TCP          |
-    | Eylem                            | Allow        |
+    | Eylem                            | İzin Ver        |
     | Öncelik                          | 401          |
-    | Ad                              | AllowLDAPS   |
+    | Adı                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 
@@ -235,10 +235,10 @@ Internet üzerinden güvenli LDAP erişimi etkinken, istemci bilgisayarlarının
 
 Dış DNS sağlayıcınızı, bu dış IP adresine çözümlemek üzere *LDAPS*gibi bir konak kaydı oluşturacak şekilde yapılandırın. Öncelikle makinenizde yerel olarak test etmek için Windows Konakları dosyasında bir giriş oluşturabilirsiniz. Yerel makinenizde konaklar dosyasını başarıyla düzenlemek için *Not defteri 'ni* yönetici olarak açın, sonra dosyayı açın *C:\Windows\System32\drivers\etc*
 
-Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar dosyasında, *LDAPS.aadds.contoso.com* trafiğini *40.121.19.239*dış IP adresine çözümler:
+Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar dosyasında, *LDAPS.aaddscontoso.com* trafiğini *40.121.19.239*dış IP adresine çözümler:
 
 ```
-40.121.19.239    ldaps.aadds.contoso.com
+40.121.19.239    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Yönetilen etki alanına sorguları test etme
@@ -246,13 +246,13 @@ Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar 
 Azure AD DS yönetilen etki alanınızı bağlamak ve bağlanmak ve LDAP üzerinden aramak için *Ldp. exe* aracını kullanın. Bu araç Uzak Sunucu Yönetim Araçları (RSAT) paketine dahildir. Daha fazla bilgi için bkz. [ınstall uzak sunucu yönetim araçları][rsat].
 
 1. *Ldp. exe* ' yi açın ve yönetilen etki alanına bağlanın. **Bağlantı**' yı ve ardından **Bağlan...** seçeneğini belirleyin.
-1. Önceki adımda oluşturulan, *LDAPS.aadds.contoso.com*gibi yönetilen etki ALANıNıN GÜVENLI LDAP DNS etki alanı adını girin. Güvenli LDAP kullanmak için, **bağlantı noktasını** *636*olarak ayarlayın ve ardından **SSL**kutusunu işaretleyin.
+1. Önceki adımda oluşturulan, *LDAPS.aaddscontoso.com*gibi yönetilen etki ALANıNıN GÜVENLI LDAP DNS etki alanı adını girin. Güvenli LDAP kullanmak için, **bağlantı noktasını** *636*olarak ayarlayın ve ardından **SSL**kutusunu işaretleyin.
 1. Yönetilen etki alanına bağlanmak için **Tamam ' ı** seçin.
 
 Ardından, Azure AD DS yönetilen etki alanınızı bağlayın. Azure AD DS örneğiniz üzerinde NTLM parola karması eşitlemesini devre dışı bırakmış kullanıcılar (ve hizmet hesapları) LDAP basit bağlamalar gerçekleştiremez. NTLM parola karma eşitlemesini devre dışı bırakma hakkında daha fazla bilgi için bkz. [Azure AD DS yönetilen etki alanınızı güvenceye][secure-domain]alma.
 
 1. **Bağlantı** menüsü seçeneğini belirleyin ve ardından **bağla...** seçeneğini belirleyin.
-1. *Contosoadmin*gıbı *AAD DC Administrators* grubuna ait olan bir kullanıcı hesabının kimlik bilgilerini sağlayın. Kullanıcı hesabının parolasını girin ve etki alanınızı girin, örneğin *aadds.contoso.com*.
+1. *Contosoadmin*gıbı *AAD DC Administrators* grubuna ait olan bir kullanıcı hesabının kimlik bilgilerini sağlayın. Kullanıcı hesabının parolasını girin ve etki alanınızı girin, örneğin *aaddscontoso.com*.
 1. **Bağlama türü**için, *kimlik bilgileriyle bağlama*seçeneğini belirleyin.
 1. Azure AD DS yönetilen etki alanınızı bağlamak için **Tamam ' ı** seçin.
 
@@ -265,7 +265,7 @@ Azure AD DS yönetilen etki alanında depolanan nesneleri görmek için:
 
     ![LDP. exe kullanarak Azure AD DS yönetilen etki alanındaki nesneleri arama](./media/tutorial-configure-ldaps/ldp-query.png)
 
-Belirli bir kapsayıcıyı doğrudan sorgulamak için, **görünüm > ağaç** menüsünden *OU = Aaddc kullanıcıları, DC = contoso, DC = com* veya *OU = AADDC Computers, DC = contoso, DC = com*gibi bir **BaseDN** belirtebilirsiniz. Sorguları biçimlendirme ve oluşturma hakkında daha fazla bilgi için bkz. [LDAP sorgusu temelleri][ldap-query-basics].
+Belirli bir kapsayıcıyı doğrudan sorgulamak için, **görünüm > ağaç** menüsünden *OU = Aaddc kullanıcıları, DC = AADDSCONTOSO, DC = com* veya *OU = AADDC Computers, DC = AADDSCONTOSO, DC = com*gibi bir **BaseDN** belirtebilirsiniz. Sorguları biçimlendirme ve oluşturma hakkında daha fazla bilgi için bkz. [LDAP sorgusu temelleri][ldap-query-basics].
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -273,7 +273,7 @@ Bu öğreticinin bağlantısını test etmek için bilgisayarınızın yerel Hos
 
 1. Yerel makinenizde, yönetici olarak *Not defteri* 'ni açın
 1. *C:\Windows\System32\drivers\etc* dosyasına gidin ve dosyayı açın
-1. Eklediğiniz kaydın satırını silin, örneğin `40.121.19.239    ldaps.aadds.contoso.com`
+1. Eklediğiniz kaydın satırını silin, örneğin `40.121.19.239    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

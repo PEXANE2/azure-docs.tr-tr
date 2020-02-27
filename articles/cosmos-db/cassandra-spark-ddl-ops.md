@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API'SİNİN spark'tan DDL işlemleri
-description: Bu makalede Azure Cosmos DB Cassandra API'SİNİN spark'tan karşı anahtar alanı ve tablo DDL işlemleri ayrıntılı olarak açıklanmaktadır.
+title: Spark 'dan Azure Cosmos DB Cassandra API DDL işlemleri
+description: Bu makalede, Spark 'dan Azure Cosmos DB Cassandra API karşı anahtar alanı ve tablo DDL işlemleri ayrıntılı olarak açıklanır.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898891"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622570"
 ---
-# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Azure Cosmos DB Cassandra API'SİNİN spark'tan DDL işlemleri
+# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 'dan Azure Cosmos DB Cassandra API DDL işlemleri
 
-Bu makalede Azure Cosmos DB Cassandra API'SİNİN spark'tan karşı anahtar alanı ve tablo DDL işlemleri ayrıntılı olarak açıklanmaktadır.
+Bu makalede, Spark 'dan Azure Cosmos DB Cassandra API karşı anahtar alanı ve tablo DDL işlemleri ayrıntılı olarak açıklanır.
 
-## <a name="cassandra-api-related-configuration"></a>Cassandra API ile ilgili yapılandırma 
+## <a name="cassandra-api-related-configuration"></a>Cassandra API ilgili yapılandırma 
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,9 +48,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="keyspace-ddl-operations"></a>Anahtar alanı DDL işlemleri
+## <a name="keyspace-ddl-operations"></a>Anahtar uzayı DDL işlemleri
 
-### <a name="create-a-keyspace"></a>Bir anahtar alanı oluşturun
+### <a name="create-a-keyspace"></a>Anahtar alanı oluştur
 
 ```scala
 //Cassandra connector instance
@@ -60,34 +60,34 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE KEYSPACE IF NOT EXISTS books_ks WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 } "))
 ```
 
-#### <a name="validate-in-cqlsh"></a>İçinde cqlsh doğrula
+#### <a name="validate-in-cqlsh"></a>Csqlsh 'te doğrulama
 
-Cqlsh içinde aşağıdaki komutu çalıştırın ve daha önce oluşturduğunuz anahtar alanı görmeniz gerekir.
+Csqlsh içinde aşağıdaki komutu çalıştırın ve daha önce oluşturduğunuz anahtar alanı 'i görmeniz gerekir.
 
 ```bash
 DESCRIBE keyspaces;
 ```
 
-### <a name="drop-a-keyspace"></a>Bir anahtar alanı bırak
+### <a name="drop-a-keyspace"></a>Anahtar alanını bırakma
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP KEYSPACE books_ks"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>İçinde cqlsh doğrula
+#### <a name="validate-in-cqlsh"></a>Csqlsh 'te doğrulama
 
 ```bash
 DESCRIBE keyspaces;
 ```
 ## <a name="table-ddl-operations"></a>Tablo DDL işlemleri
 
-**Dikkate alınacak noktalar:**  
+**Konuları**  
 
-- Aktarım hızı, create table deyimini kullanarak tablo düzeyinde atanabilir.  
-- Bir bölüm anahtarı 10 GB veri depolayabilirsiniz.  
-- Tek bir kayıtta, en fazla 2 MB veri depolayabilirsiniz.  
-- Bir bölüm anahtar aralığı birden çok bölüm anahtarları depolayabilir.
+- Üretilen iş, tablo düzeyinde create table deyimleri kullanılarak atanabilir.  
+- Bir bölüm anahtarı 20 GB veri saklayabilir.  
+- Bir kayıt, en fazla 2 MB veri saklayabilir.  
+- Bir bölüm anahtarı aralığı, birden çok bölüm anahtarını saklayabilir.
 
 ### <a name="create-a-table"></a>Bir tablo oluşturma
 
@@ -96,40 +96,40 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>İçinde cqlsh doğrula
+#### <a name="validate-in-cqlsh"></a>Csqlsh 'te doğrulama
 
-Cqlsh içinde aşağıdaki komutu çalıştırın ve adlı tabloda görmeniz gerekir "books: 
+Csqlsh içinde aşağıdaki komutu çalıştırın ve "kitaplar:" adlı tabloyu görmeniz gerekir. 
 
 ```bash
 USE books_ks;
 DESCRIBE books;
 ```
 
-Sağlanan aktarım hızı ve varsayılan TTL değerleri önceki komutun çıktısındaki gösterilmez, bu değerleri portaldan alabilirsiniz.
+Sağlanan aktarım hızı ve varsayılan TTL değerleri önceki komutun çıkışında gösterilmez, portaldan bu değerleri alabilirsiniz.
 
-### <a name="alter-table"></a>Alter Table
+### <a name="alter-table"></a>Alter table
 
-Alter table komutu kullanarak, aşağıdaki değerleri değiştirebilirsiniz:
+Alter table komutunu kullanarak aşağıdaki değerleri değiştirebilirsiniz:
 
 * sağlanan aktarım hızı 
 * yaşam süresi değeri
-<br>Sütun değişiklikleri şu anda desteklenmemektedir.
+<br>Sütun değişiklikleri şu anda desteklenmiyor.
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("ALTER TABLE books_ks.books WITH cosmosdb_provisioned_throughput=8000, WITH default_time_to_live=0;"))
 ```
 
-### <a name="drop-table"></a>Tablo bırakma
+### <a name="drop-table"></a>Tabloyu bırak
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS books_ks.books;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>İçinde cqlsh doğrula
+#### <a name="validate-in-cqlsh"></a>Csqlsh 'te doğrulama
 
-Cqlsh içinde aşağıdaki komutu çalıştırın ve "books" tablosu artık kullanılabilir olduğunu görmeniz gerekir:
+Csqlsh içinde aşağıdaki komutu çalıştırın ve "Kitaplar" tablosunun artık kullanılabilir olmadığını görmeniz gerekir:
 
 ```bash
 USE books_ks;
@@ -138,11 +138,11 @@ DESCRIBE tables;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anahtar alanı ve tablonun oluşturduktan sonra CRUD işlemleri ve daha fazla bilgi için aşağıdaki makalelere geçin:
+Anahtar alanı ve tablo oluşturduktan sonra CRUD işlemleri ve daha fazlası için aşağıdaki makalelere ilerleyin:
  
-* [İşlem oluşturma/Ekle](cassandra-spark-create-ops.md)  
-* [okuma işlemleri](cassandra-spark-read-ops.md)  
-* [Upsert işlem](cassandra-spark-upsert-ops.md)  
+* [Oluşturma/ekleme işlemleri](cassandra-spark-create-ops.md)  
+* [Okuma işlemleri](cassandra-spark-read-ops.md)  
+* [Upsert işlemler](cassandra-spark-upsert-ops.md)  
 * [Silme işlemleri](cassandra-spark-delete-ops.md)  
 * [Toplama işlemleri](cassandra-spark-aggregation-ops.md)  
 * [Tablo kopyalama işlemleri](cassandra-spark-table-copy-ops.md)  

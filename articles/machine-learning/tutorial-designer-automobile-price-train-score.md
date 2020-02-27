@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982628"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623624"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -260,7 +260,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 ## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-İşlem hattınızda tüm kurulum olduğuna göre, bir işlem hattı çalıştırması gönderebilirsiniz.
+İşlem hattınızda tüm kurulum olduğuna göre, makine öğrenimi modelinizi eğitebilmeniz için bir işlem hattı çalıştırması gönderebilirsiniz. Tasarımcı 'da işlem hatları oluştururken herhangi bir noktada işlem hattı çalıştırması gönderebilirsiniz. Bunu, işinizi yaptığınız şekilde denetlemek ve işlem hattının beklendiği gibi işlevlerinizi doğrulamak için yapabilirsiniz.
 
 1. Tuvalin en üstünde **Çalıştır**' ı seçin.
 

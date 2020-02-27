@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827042"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612737"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanıyla hesap oturum açma sorunlarını giderme
 
@@ -32,7 +32,7 @@ Bir kullanıcı hesabının Azure AD DS yönetilen bir etki alanında oturum aç
 
 Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının Azure AD DS 'de kullanılabilir olması biraz zaman alabilir. Büyük dizinler için, Azure AD 'den bu ilk tek yönlü eşitleme birkaç saat sürebilir ve günde bir veya iki kez olabilir. Kimlik doğrulamasını yeniden denemeden önce yeterince uzun süre beklemediğinizden emin olun.
 
-Azure AD Connect kullanıcının şirket içi dizin verilerini Azure AD 'ye eşitlemesine yönelik karma ortamlarda, Azure AD Connect en son sürümünü çalıştırdığınızdan ve [Azure 'u etkinleştirdikten sonra tam eşitleme gerçekleştirmek için Azure AD Connect yapılandırdığınızdan emin olun AD DS][azure-ad-connect-phs]. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
+Azure AD Connect kullanıcının şirket içi dizin verilerini Azure AD 'ye eşitlemesine yönelik karma ortamlarda, Azure AD Connect en son sürümünü çalıştırdığınızdan ve [Azure AD DS etkinleştirildikten sonra tam eşitleme gerçekleştirmek için Azure AD Connect yapılandırdığınızdan][azure-ad-connect-phs]emin olun. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
 
 Azure AD Connect aracılığıyla eşitlememe hesaplarından sorun yaşamaya devam ederseniz Azure AD Eşitleme hizmeti 'ni yeniden başlatın. Azure AD Connect yüklü olan bilgisayarda, bir komut istemi penceresi açın ve aşağıdaki komutları çalıştırın:
 
@@ -59,7 +59,7 @@ Daha fazla bilgi için bkz. [Parola karması eşitlemesi Azure AD DS Için nası
     * Gerekli parola karmalarını oluşturmak için [hesabın parolasını değiştirin][enable-user-accounts] , sonra yeniden oturum açmayı denemeden önce 15 dakika bekleyin.
     * Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, her hesabın, parolasını değiştirmek ve gerekli parola karmalarını oluşturmak için adımları yeniden izlemesi gerekir.
 * **Evet, Parola değiştirildi.**
-    * @No__t-3 gibi *sAMAccountName* biçimi yerine `driley@contoso.com` gibi *UPN* biçimini kullanarak oturum açmayı deneyin.
+    * `AADDSCONTOSO\deeriley`gibi *sAMAccountName* biçimi yerine `driley@aaddscontoso.com`gibi *UPN* biçimini kullanarak oturum açmayı deneyin.
     * *SAMAccountName* , UPN ön eki aşırı uzun olan veya yönetilen etki alanındaki başka bir kullanıcıyla aynı olan kullanıcılar için otomatik olarak oluşturulabilir. *UPN* biçiminin BIR Azure AD kiracısı içinde benzersiz olması garanti edilir.
 
 ## <a name="the-account-is-locked-out"></a>Hesap kilitli

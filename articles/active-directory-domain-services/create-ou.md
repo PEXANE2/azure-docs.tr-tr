@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367148"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614062"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında kuruluş birimi (OU) oluşturma
 
@@ -66,11 +66,11 @@ Azure AD DS yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kull
 1. Yönetim sanal makinenizde oturum açın. Azure portal kullanarak bağlanma adımları için bkz. [Windows Server VM 'ye bağlanma][connect-windows-server-vm].
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *aadds.contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Var olan OU 'ların ve kaynakların listesi gösterilir:
+1. Sol bölmede, *aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Var olan OU 'ların ve kaynakların listesi gösterilir:
 
     ![Active Directory Yönetim Merkezi Azure AD DS yönetilen etki alanınızı seçin](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. **Görevler** bölmesi Active Directory Yönetim Merkezi sağ tarafında gösterilir. *Aadds.contoso.com*gibi etki alanı altında **Yeni > kuruluş birimi**' ni seçin.
+1. **Görevler** bölmesi Active Directory Yönetim Merkezi sağ tarafında gösterilir. *Aaddscontoso.com*gibi etki alanı altında **Yeni > kuruluş birimi**' ni seçin.
 
     ![Active Directory Yönetim Merkezi yeni bir OU oluşturma seçeneğini belirleyin](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 

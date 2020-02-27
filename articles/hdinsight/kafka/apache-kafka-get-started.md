@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/01/2019
-ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.custom: mvc
+ms.date: 02/24/2020
+ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030053"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623493"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
-Apache Kafka açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır.
+[Apache Kafka](./apache-kafka-introduction.md) , açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır.
 
-Bu hızlı başlangıçta, Azure portalını kullanarak [Apache Kafka](https://kafka.apache.org) kümesi oluşturmayı öğrenirsiniz. Ayrıca Apache Kafka kullanarak ileti göndermek ve almak için verilen yardımcı programları kullanmayı da öğrenirsiniz.
+Bu hızlı başlangıçta, Azure portal kullanarak Apache Kafka kümesi oluşturmayı öğreneceksiniz. Ayrıca Apache Kafka kullanarak ileti göndermek ve almak için verilen yardımcı programları kullanmayı da öğrenirsiniz. Kullanılabilir yapılandırmaların derinlemesine açıklamaları için bkz. [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md). Küme oluşturmak üzere portalın kullanımıyla ilgili ek bilgiler için, bkz. [portalda kümeler oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -33,23 +33,25 @@ Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağ
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka kümesi oluşturma
 
-HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kullanın:
+HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Sol taraftaki menüden **+ bir kaynak oluştur** > **analiz** > **HDInsight**' a gidin.
+1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
-    ![Azure portal kaynak HDInsight oluşturma](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+    ![Azure portal kaynak HDInsight oluşturma](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. **Temel bilgiler**altında, aşağıdaki değerleri girin veya seçin:
+1. **HDInsight kümesi oluşturma** sayfasına gitmek için **analiz** > **Azure HDInsight** ' ı seçin.
+
+1. **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
     |Özellik  |Açıklama  |
     |---------|---------|
-    |Abonelik    |  Azure aboneliğinizi seçin. |
+    |Abonelik    |  Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
     |Kaynak grubu     | Bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu seçin.  Kaynak grubu, Azure bileşenleri için bir kapsayıcıdır.  Bu durumda, kaynak grubu HDInsight kümesini ve bağımlı Azure Depolama hesabını içermektedir. |
-    |Küme adı   | Hadoop kümesi için bir ad girin. HDInsight’taki tüm kümeler aynı DNS ad alanını paylaştığından, bu adın benzersiz olması gerekir. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri, kısa çizgi olamaz. |
-    |Konum    | Kümenizi oluşturmak istediğiniz bir Azure konumunu seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
-    |Küme türü| **Küme türünü seç**' i seçin. Küme türü olarak **Kafka** öğesini seçin.|
+    |Küme adı   | Genel olarak benzersiz bir ad girin. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri, kısa çizgi olamaz. |
+    |Bölge    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için size daha yakın bir bölge seçin. |
+    |Küme türü| Liste açmak için **küme türünü seç** ' i seçin. Listeden küme türü olarak **Kafka** ' yi seçin.|
     |Sürüm|Küme türü için varsayılan sürüm belirtilecektir. Farklı bir sürüm belirtmek istiyorsanız, açılan listeden seçim yapın.|
     |Küme oturum açma Kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "\)' karakterleri dışında) içermelidir. " **" gibi genel parolalar** sağlamadığınızdanPass@word1 emin olun.|
     |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
@@ -100,15 +102,13 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-1. Apache Kafka kümesinin birincil baş düğümüne bağlanmak için aşağıdaki komutu kullanın. `sshuser` değerini, SSH kullanıcı adıyla değiştirin. `mykafka` öğesini Apache Kafkacluster adıyla değiştirin.
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Kümeye ilk kez bağlandığınızda SSH istemciniz ana bilgisayarın orijinalliğinin belirlenemediği yönünde bir uyarı görüntüleyebilir. Ana bilgisayarı SSH istemcinizin güvenilen sunucular listesine eklemek isteyip istemediğiniz sorulduğunda __evet__’i seçin ve sonra __Enter__ tuşuna basın.
-
-3. İstendiğinde, SSH kullanıcısının parolasını girin.
+1. İstendiğinde, SSH kullanıcısının parolasını girin.
 
     Bağlandığında, aşağıdaki metne benzer bilgiler görürsünüz:
 
@@ -155,6 +155,7 @@ Bu bölümde, küme üzerindeki Apache ambarı REST API ana bilgisayar bilgileri
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+
     > [!Note]  
     > Bu işlemi küme dışından yapıyorsanız, küme adını depolamak için farklı bir yordam vardır. Azure portal küme adını küçük harf olarak alın. Ardından, aşağıdaki komutta `<clustername>` için küme adını değiştirin ve çalıştırın: `export clusterName='<clustername>'`.
 
@@ -295,9 +296,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 3. __Kaynak grubunu sil__'i seçip onaylayın.
 
 > [!WARNING]  
-> HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme silindiğinde sona erer. Fatura dakikalara eşit olarak dağıtıldığından, kullanılmayan kümelerinizi mutlaka silmelisiniz.
->
-> HDInsight üzerinde Apache Kafka kümesini silmek Kafka’da depolanmış tüm verileri siler.
+> HDInsight üzerinde Apache Kafka kümesi silindiğinde, Kafka içinde depolanan tüm veriler silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

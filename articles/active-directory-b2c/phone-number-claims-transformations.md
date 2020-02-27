@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212197"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620640"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C 'de telefon numarası talep dönüşümlerini tanımlayın
 
@@ -26,9 +26,39 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çer
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
+
+`phoneNumber` veri türünü `string` veri türüne dönüştürür.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| ınputclaim | phoneNumber | phoneNumber |  Bir dizeye dönüştürülecek ClaimType. |
+| OutputClaim | phoneNumberString | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
+
+Bu örnekte, değer türü `phoneNumber` olan cellPhoneNumber talebi, `string`değer türü olan bir cellPhone talebine dönüştürülür.
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+  - **PhoneNumber**: + 11234567890 (PhoneNumber)
+- Çıkış talepleri:
+  - **Phonenumberstring**: + 11234567890 (dize)
+
+
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-Bu talep telefon numarasının biçimini doğrular. Geçerli bir biçimde ise, Azure AD B2C tarafından kullanılan standart bir biçimde değiştirin. Belirtilen telefon numarası geçerli bir biçimde değilse, bir hata iletisi döndürülür.
+Bu talep dönüştürmesi telefon numarasının biçimini doğrular. Geçerli bir biçimde ise, Azure AD B2C tarafından kullanılan standart bir biçimde değiştirin. Belirtilen telefon numarası geçerli bir biçimde değilse, bir hata iletisi döndürülür.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
@@ -68,10 +98,10 @@ Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi k
 ### <a name="example-1"></a>Örnek 1
 
 - Giriş talepleri:
-  - **Phonenumberstring**: 045 456-7890
+  - **Phonenumberstring**: 033 456-7890
   - **ülke**: dk
 - Çıkış talepleri:
-  - **Outputclaim**: + 450546148120
+  - **Outputclaim**: + 450334567890
 
 ### <a name="example-2"></a>Örnek 2
 
@@ -79,6 +109,7 @@ Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi k
   - **Phonenumberstring**: + 1 (123) 456-7890
 - Çıkış talepleri: 
   - **Outputclaim**: + 11234567890
+
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>Getülke Alnumberandcountrycodefromphonenumberstring
 

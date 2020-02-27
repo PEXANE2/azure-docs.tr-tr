@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580687"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623670"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,13 +84,12 @@ Ancak, Azure Data Lake Storage Gen 1 ve 2 veri depoları için, bu doğrulama da
 
 Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıftır ve formun `register_azure_*`vardır.
 
-`register()` yöntemi [Azure Portal](https://portal.azure.com)kullanarak doldurmanız için ihtiyacınız olan bilgileri bulabilirsiniz:
+`register()` yöntemi [Azure Portal](https://portal.azure.com)doldurmanız için ihtiyacınız olan bilgileri bulabilirsiniz.
+Sol bölmede **depolama hesapları** ' nı seçin ve kaydetmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası hesap adı, kapsayıcı ve dosya paylaşma adı gibi bilgiler sağlar. 
 
-1. Sol bölmede **depolama hesapları** ' nı seçin ve kaydetmek istediğiniz depolama hesabını seçin. 
-2. Hesap adı, kapsayıcı ve dosya paylaşma adı gibi bilgiler için **genel bakış** sayfasına gidin. 
-3. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama bilgileri için, **Ayarlar** bölmesinde **erişim tuşları** ' na gidin. 
+* Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için, **Ayarlar** bölmesinde **Hesap anahtarları** ' na gidin. 
 
-4. Kiracı KIMLIĞI ve istemci KIMLIĞI gibi hizmet sorumlusu öğeleri için **uygulama kayıtları** **genel bakış** sayfasına gidin. 
+* Kiracı KIMLIĞI ve istemci KIMLIĞI gibi hizmet sorumlusu öğeleri için **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin. Buna karşılık gelen **genel bakış** sayfası, bu öğeleri içerir.
 
 > [!IMPORTANT]
 > Depolama hesabınız bir sanal ağda ise, **SDK aracılığıyla** yalnızca blob, dosya paylaşma, ADLS Gen 1 ve ADLS Gen 2 veri depoları oluşturma desteklenir. Çalışma alanınızın depolama hesabınıza erişimine izin vermek için `grant_workspace_access` parametresi `True`olarak ayarlayın.
@@ -137,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 2. nesil
 
-Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın. Hizmet sorumlunuzu kullanabilmeniz için [uygulamanızı kaydetmeniz](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
+Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın. Hizmet sorumlunuzu kullanabilmeniz için [uygulamanızı kaydetmeniz](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ve rol atamalarını okuyucu ve veri erişimine ayarlamanız gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
 
 Aşağıdaki kod, `adlsgen2_datastore_name` veri deposunu oluşturup `ws` çalışma alanına kaydeder. Bu veri deposu, belirtilen hizmet sorumlusu kimlik bilgilerini kullanarak `account_name` depolama hesabındaki dosya sistemine `test` erişir.
 
@@ -177,7 +176,7 @@ Formu [Azure Portal](https://portal.azure.com)doldurmanız için gereken bilgile
 
 * Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için, **Ayarlar** bölmesinde **Hesap anahtarları** ' na gidin. 
 
-* Kiracı KIMLIĞI ve istemci KIMLIĞI gibi hizmet sorumlusu öğeleri için **uygulama kayıtları** **genel bakış** sayfasına gidin. 
+* Kiracı KIMLIĞI ve istemci KIMLIĞI gibi hizmet sorumlusu öğeleri için **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin. Buna karşılık gelen **genel bakış** sayfası, bu öğeleri içerir. 
 
 Aşağıdaki örnek, bir Azure blob veri deposu oluştururken formun nasıl göründüğünü göstermektedir: 
     

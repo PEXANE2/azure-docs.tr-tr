@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161656"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613445"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure AD Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -206,12 +206,12 @@ Azure AD DS yönetilen etki alanını geçişe hazırlamak için aşağıdaki ad
     $creds = Get-Credential
     ```
 
-1. Şimdi *-Prepare* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. Azure AD DS yönetilen etki alanınız için *contoso.com*gibi *-manageddomainfqdn* sağlayın:
+1. Şimdi *-Prepare* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. Azure AD DS yönetilen etki alanınız için *aaddscontoso.com*gibi *-manageddomainfqdn* sağlayın:
 
     ```powershell
     Migrate-Aadds `
         -Prepare `
-        -ManagedDomainFqdn contoso.com `
+        -ManagedDomainFqdn aaddscontoso.com `
         -Credentials $creds
     ```
 
@@ -219,7 +219,7 @@ Azure AD DS yönetilen etki alanını geçişe hazırlamak için aşağıdaki ad
 
 Azure AD DS yönetilen etki alanı hazırlandı ve yedeklendiğinde etki alanı geçirilebilir. Bu adım, Kaynak Yöneticisi dağıtım modelini kullanarak Azure AD Domain Services etki alanı denetleyicisi sanal makinelerini yeniden oluşturur. Bu adımın tamamlanması 1-3 saat sürebilir.
 
-*-COMMIT* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. *Contoso.com*gibi önceki bölümde hazırlanan Azure AD DS yönetilen etki alanınız için *-manageddomainfqdn* sağlayın:
+*-COMMIT* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. *Aaddscontoso.com*gibi önceki bölümde hazırlanan Azure AD DS yönetilen etki alanınız için *-manageddomainfqdn* sağlayın:
 
 Azure AD DS geçirmek istediğiniz sanal ağı içeren hedef kaynak grubunu ( *Myresourcegroup*gibi) belirtin. *Myvnet*gibi hedef sanal ağı ve *DomainServices*gibi alt ağı sağlayın.
 
@@ -228,7 +228,7 @@ Bu komut çalıştıktan sonra geri alamazsınız:
 ```powershell
 Migrate-Aadds `
     -Commit `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
@@ -265,7 +265,7 @@ Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöne
 
 1. Etki alanı denetleyicilerinden birinin IP adresine ping atabildiğini (örneğin, `ping 10.1.0.4`) denetleyin
     * Etki alanı denetleyicilerinin IP adresleri, Azure portal Azure AD DS yönetilen etki alanının **Özellikler** sayfasında gösterilir.
-1. Yönetilen etki alanının ad çözümlemesini doğrulayın, örneğin `nslookup contoso.com`
+1. Yönetilen etki alanının ad çözümlemesini doğrulayın, örneğin `nslookup aaddscontoso.com`
     * DNS ayarlarının doğru ve çözümlendiğini doğrulamak için, Azure AD DS yönetilen etki alanınız için DNS adını belirtin.
 
 İkinci etki alanı denetleyicisi, geçiş cmdlet 'i bittikten sonra 1-2 saat kullanılabilir olmalıdır. İkinci etki alanı denetleyicisinin kullanılabilir olup olmadığını denetlemek için, Azure portal Azure AD DS yönetilen etki alanının **Özellikler** sayfasına bakın. İki IP adresi gösteriliyorsa, ikinci etki alanı denetleyicisi hazırlayın.
@@ -309,12 +309,12 @@ Geçiş sürecinde belirli bir noktaya kadar, Azure AD DS yönetilen etki alanı
 
 Adım 2 ' de Geçişe hazırlanmak üzere PowerShell cmdlet 'ini çalıştırdığınızda bir hata oluşursa, adım 3 ' te Azure AD DS yönetilen etki alanı özgün yapılandırmaya geri dönebilir. Bu geri alma, başlangıçtaki klasik sanal ağı gerektirir. IP adreslerinin geri alma işleminin ardından hala değişebileceğini unutmayın.
 
-*-Abort* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. *Contoso.com*gibi önceki bir bölümde hazırlanan Azure AD DS yönetilen etki alanınız için *-Manageddomainfqdn* ve *Myclassicvnet*gibi klasik sanal ağ adını sağlayın:
+*-Abort* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. *Aaddscontoso.com*gibi önceki bir bölümde hazırlanan Azure AD DS yönetilen etki alanınız için *-Manageddomainfqdn* ve *Myclassicvnet*gibi klasik sanal ağ adını sağlayın:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```

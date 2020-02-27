@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Kümeyi yükseltme
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde var olan bir AKS kümesini en son Kubernetes sürümüne yükseltmeyi öğreneceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 57cad9472c599bf0ad8f3e3d2ff53cb224db689a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593137"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622020"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
 
@@ -37,12 +37,12 @@ Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak han
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.13.10*' dir ve kullanılabilir sürümler *yükseltmeler* sütununda gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.14.8*' dir ve kullanılabilir sürümler *yükseltmeler* sütununda gösterilir.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
 ## <a name="upgrade-a-cluster"></a>Kümeyi yükseltme
@@ -58,13 +58,13 @@ Uygulama çalıştırma kesintisini en aza indirmek için AKS düğümleri dikka
 AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın. Aşağıdaki örnek, kümeyi Kubernetes sürüm *1.14.6*'ye yükseltir.
 
 > [!NOTE]
-> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.12. x* ' den *1.13. x*' e yükseltebilirsiniz, ancak *1.12. x* ' ten doğrudan *1.14. x* ' e yükseltemezsiniz. *1.12. x* ' den *1.14. x*' e yükseltmek için, ilk olarak *1.12. x* ' ten *1.13. x*' e yükseltin, sonra *1.13. x* ' den *1.14.* x ' e yükseltme gerçekleştirin
+> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x*' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x*' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x*' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık Reports *1.14.6*raporları gösterilmektedir:
+Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık Reports *1.15.5*raporları gösterilmektedir:
 
 ```json
 {
@@ -82,7 +82,7 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.15.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +97,12 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.14.6*gösterilmektedir:
+Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.15.5*gösterilmektedir:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Küme silme

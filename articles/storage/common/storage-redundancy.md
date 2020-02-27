@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471355"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614290"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -66,7 +66,7 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 |    Dosya depolama    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
-<sup>2</sup> sanal makineler için hem yönetilen hem de yönetilmeyen diskler dahil olmak üzere Azure diskleri yalnızca LRS 'yi destekler. ZRS veya GZRS desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
+<sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ZRS 'yi destekleyen bölgeler hakkında daha fazla bilgi için, [Azure kullanılabilirlik alanları nedir?](../../availability-zones/az-overview.md)bölümünde **bölgeye göre hizmetlere göre destek** bölümüne bakın.
 
@@ -145,9 +145,9 @@ Aşağıdaki tabloda, depolama hesabınızda hangi artıklık türünün geçerl
 
 | Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (Önizleme)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Evet                             | Evet                              | Evet                                  | Evet                                  |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Evet                              | Evet                                  | Evet                                  |
-| Bölge genelinde kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Evet                                  | Evet                                  |
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                  |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Yes                              | Yes                                  | Yes                                  |
+| Bölge genelinde kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Yes                                  | Yes                                  |
 | Birincil bölge kullanılamaz duruma gelirse ikincil bölgedeki verilere yönelik okuma erişimi | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
 | Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
 | Desteklenen depolama hesabı türleri<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |

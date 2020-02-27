@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak üzere yapılandırmayı ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486211"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622413"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Özel NGıNX giriş denetleyicisi kullanma ve HTTPS 'yi yapılandırma
 
@@ -96,7 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-[Values. YAML][values-yaml] dosyasını açın ve *< REPLACE_ME_WITH_HOST_SUFFIX >* tüm örneklerini *NGINX ile değiştirin. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. Ayrıca *Kubernetes.io/ingress.class: NGINX-azds # dev Spaces-* *Kubernetes.io/ingress.class: NGINX # Custom*girişi ile değiştirin. Güncelleştirilmiş `values.yaml` dosyasına bir örnek aşağıda verilmiştir:
+[Values. YAML][values-yaml] dosyasını açın ve aşağıdaki güncelleştirmeleri yapın:
+* *< REPLACE_ME_WITH_HOST_SUFFIX >* tüm örneklerini *NGINX ile değiştirin. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. 
+* *Kubernetes.io/ingress.class: traefik-azds # dev Spaces-* *Kubernetes.io/ingress.class: NGINX # Custom*girişi ile değiştirin. 
+
+Güncelleştirilmiş `values.yaml` dosyasına bir örnek aşağıda verilmiştir:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -149,6 +153,9 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
 `azds list-uris` komutundan ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti IÇIN genel URL `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> *Bıkesharingweb* hizmeti yerine bir hata sayfası görürseniz, *values. yaml* dosyasındaki *Kubernetes.io/ingress.Class* ek açıklamasını ve **konağını güncelleştirdiğinizi** doğrulayın.
 
 *Geliştirici* altında bir alt alan oluşturmak ve alt geliştirme alanına erişmek Için URL 'leri listelemek üzere `azds space select` komutunu kullanın.
 

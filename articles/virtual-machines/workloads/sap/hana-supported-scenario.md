@@ -4,7 +4,7 @@ description: Desteklenen senaryolar ve Azure 'daki SAP HANA için mimari ayrınt
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb8278b053ef52f43171137b02e729bfed085e67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894711"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617176"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA büyük örnekleri için desteklenen senaryolar
 Bu makalede, HANA büyük örnekler (HLI) için desteklenen senaryolar ve mimari ayrıntıları açıklanmaktadır.
@@ -27,7 +27,7 @@ Bu makalede, HANA büyük örnekler (HLI) için desteklenen senaryolar ve mimari
 >Gerekli senaryonuz bu makalede bahsedilmez, gereksinimlerinizi değerlendirmek için Microsoft hizmet yönetimi ekibine başvurun.
 HLI birimini ayarlamadan önce SAP veya hizmet uygulama iş ortağınızdan tasarımı doğrulayın.
 
-## <a name="terms-and-definitions"></a>Terimler ve tanımlar
+## <a name="terms-and-definitions"></a>Hüküm ve tanımlar
 Bu makalede kullanılan hüküm ve tanımları anlayalim:
 
 - **SID**: Hana sistemi için bir sistem tanımlayıcısı
@@ -61,7 +61,7 @@ Sağlanan her sunucu, Ethernet arabirimleri kümeleriyle önceden yapılandırı
 - **C**: düğümden depolamaya bağlantı için kullanılır.
 - **D**: STONITH kurulumu için düğüm-iSCSI cihaz bağlantısı için kullanılır. Bu arabirim yalnızca bir HSR kurulumu istendiğinde yapılandırılır.  
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme|
@@ -133,7 +133,7 @@ Bu topoloji, bir SID ile genişleme yapılandırmasındaki bir düğümü destek
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -147,7 +147,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |/hana/shared/SID | HANA yüklemesi | 
 |/Hana/Data/SID/mnt00001 | Veri dosyaları yüklemesi | 
@@ -168,7 +168,7 @@ Bu topoloji, birden çok SID içeren bir ölçek yapılandırmasındaki bir dü�
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -182,7 +182,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |/Hana/Shared/SID1 | SID1 için HANA yüklemesi | 
 |/Hana/Data/SID1/mnt00001 | SID1 için veri dosyaları yüklemesi | 
@@ -208,7 +208,7 @@ Bu topoloji, bir veya birden fazla SID içeren bir genişleme yapılandırmasın
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -222,7 +222,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |/hana/shared/SID | SID için HANA yüklemesi | 
 |/Hana/Data/SID/mnt00001 | SID için veri dosyaları yüklemesi | 
@@ -249,7 +249,7 @@ Bu topoloji, bir veya birden fazla SID içeren bir genişleme yapılandırmasın
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -263,7 +263,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil sitede**|
 |/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
@@ -304,7 +304,7 @@ Bu topoloji, HANA sistem çoğaltma yapılandırması için iki düğümü deste
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -318,7 +318,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil düğümde**|
 |/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
@@ -350,7 +350,7 @@ Diyagramda, üretim işlemleri birincil siteden çalışırken QA örneği için
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -364,7 +364,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil sitedeki birincil düğümde**|
 |/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
@@ -409,7 +409,7 @@ Bu topoloji, bir konak otomatik yük devretme yapılandırmasındaki iki düğü
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
@@ -423,7 +423,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Ana ve bekleme düğümlerinde**|
 |/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
@@ -450,7 +450,7 @@ Bu topoloji, genişleme yapılandırmasındaki birden çok düğümü destekler.
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
@@ -464,7 +464,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Ana, çalışan ve bekleme düğümlerinde**|
 |/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
@@ -486,7 +486,7 @@ Bu topoloji, genişleme yapılandırmasındaki birden çok düğümü destekler.
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
@@ -500,7 +500,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Ana ve çalışan düğümlerinde**|
 |/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
@@ -525,7 +525,7 @@ Bu topoloji, bir DR ile bir ölçekte birden çok düğümü destekler. Hem norm
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
@@ -539,7 +539,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil düğümde**|
 |/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
@@ -570,7 +570,7 @@ Bu topoloji, bir SID ile bir genişleme yapılandırmasındaki bir düğümü de
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -584,7 +584,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları, HLI birimlerinde (birincil ve DR) önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |/hana/shared/SID | SID için HANA yüklemesi | 
 |/Hana/Data/SID/mnt00001 | SID için veri dosyaları yüklemesi | 
@@ -611,7 +611,7 @@ Aşağıdaki bağlama noktaları, HLI birimlerinde (birincil ve DR) önceden yap
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -625,7 +625,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil sitede**|
 |/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
@@ -661,7 +661,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -675,7 +675,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil sitede**|
 |/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
@@ -706,7 +706,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
@@ -720,7 +720,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil sitede**|
 |/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
@@ -757,7 +757,7 @@ Bu topoloji, bir DR ile bir ölçekte birden çok düğümü destekler. Bu topol
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım örneği|
+| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
 | --- | --- | --- | --- | --- |
 | A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
 | B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
@@ -771,7 +771,7 @@ Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 ### <a name="storage"></a>Depolama
 Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım örneği | 
+| Bağlama noktası | Kullanım durumu | 
 | --- | --- |
 |**Birincil düğümde**|
 |/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 

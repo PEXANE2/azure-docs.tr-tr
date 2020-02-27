@@ -1,60 +1,81 @@
 ---
-title: Senaryo değerlendirmesi-kişiselleştirici
-titleSuffix: Azure Cognitive Services
+title: Nasıl ve nasıl kullanılacağı-kişiselleştirici
 description: Kişiselleştirici, uygulamanızın, deneyimi daha iyi hale getirmek, daha iyi iş sonuçları elde etmek veya üretkenliği artırmak için görüntülenecek doğru öğe, eylem veya ürünü seçebileceğiniz herhangi bir durumda uygulanabilir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
-ms.author: diberry
-ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 02/18/2020
+ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155224"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622712"
 ---
-# <a name="where-can-you-use-personalizer"></a>Kişiselleştirme’yi nerelerde kullanabilirsiniz?
+# <a name="where-and-how-to-use-personalizer"></a>Kişiselleştiriciye nerede ve nasıl kullanılacağı
 
-Uygulamanızın, deneyimi daha iyi hale getirmek, daha iyi iş sonuçları elde etmek veya üretkenliği artırmak için görüntülenecek doğru öğe, eylem veya ürünü seçmesini gerektiren herhangi bir durumda kişiselleştirici kullanın. 
+Uygulamanızın, deneyimi daha iyi hale getirmek, daha iyi iş sonuçları elde etmek veya üretkenliği artırmak için, görüntülenecek doğru eylemi (içeriği) seçmek üzere görüntülemesi gereken herhangi bir durumda kişiselleştirici kullanın.
 
-Kişiselleştirici, kullanıcıyı hangi eylemin gösterebileceği belirlemek için makine öğrenimini kullanır. Seçim, hizmete gönderilen verilerin miktarına, kalitesine ve dağıtımına bağlı olarak büyük ölçüde farklılık gösterebilir.
+Kişiselleştirici, kullanıcıyı hangi eylemin (içerik) gösterecek şekilde belirlemek için makine öğrenimini kullanır. Seçim, hizmete gönderilen verilerin miktarına, kalitesine ve dağıtımına bağlı olarak büyük ölçüde farklılık gösterebilir.
 
-### <a name="checklist-for-applying-personalizer"></a>Kişiselleştirici uygulama için denetim listesi
+## <a name="example-use-cases-for-personalizer"></a>Kişiselleştirici için örnek kullanım örnekleri
+
+* **Amaç açıklaması & belirsizliği ortadan**kaldırma: kişiselleştirilmiş bir seçenek sunarak kullanıcılarınızın amacı net bir deneyimle daha iyi bir deneyim sağlanmasına yardımcı olur.
+* Menüler için **varsayılan öneriler** & Seçenekler: bot 'ın, bir ımpersonal menüsü veya alternatifler listesi sunmak yerine, ilk adımla en olası öğeyi kişiselleştirilmiş bir şekilde önermesini sağlayabilirsiniz.
+* **Bot nitelikleri & tonu**: ton, ayrıntı ve yazma stili değişebilen botlar için, bu nitelikleri değiştirmeyi göz önünde bulundurun.
+* **Bildirim & uyarı içeriği**: kullanıcılara daha fazla etkileşim kurmak için uyarı için hangi metnin kullanılacağına karar verin.
+* **Bildirim & uyarı zamanlaması**: kullanıcılara daha fazla gitmek için ne zaman bildirim gönderileceğini kişiselleştirilmiş olarak öğreniyor.
 
 
-Şu durumlarda kişiselleştirici uygulayabilirsiniz:
+## <a name="expectations-required-to-use-personalizer"></a>Kişiselleştirici kullanmak için gereken beklentiler
 
-* Uygulamanız için bir iş veya kullanılabilirlik hedefi vardır.
-* Uygulamanızda, kullanıcıların bu hedefi iyileştirebilecekleri bağlamsal kararı veren bir yerdir.
-* En iyi seçenek, toplu Kullanıcı davranışından ve toplam ödül puanından öğrenilmesi gerekir.
-* Kişiselleştirme için makine öğrenmesinin kullanımı, sizin belirlediğiniz [kullanım kılavuzları](ethics-responsible-use.md) ve seçimlerdir.
-* Bağlamsal karar, sınırlı bir seçenek kümesinden en iyi seçenek (eylem) sıralaması olarak ifade edilebilir.
-* Uygulamanız için ne kadar uygun olan dereceli seçim, Kullanıcı davranışının bazı yönlerinin ölçüleceği ve bir _[ödül puanında](concept-rewards.md)_ ifade edilebilir.
-* Ödül puanı, çok fazla sayıda bağlama veya dış etken getirmez. Deneme süresi, hala uygun olduğu sürece, yeniden elde edilen puanınızın hesaplanabileceği kadar düşüktür.
-* En az 5 [özelliğin](concepts-features.md) bağlamını, doğru seçim yapmaya yardımcı olacağını düşündüğünüz ve kişisel olarak tanımlanabilen bilgileri içermeyen bir liste olarak ifade edebilirsiniz. (PII).
-* Her içerik seçimi, eylem ve, kişiselleştirmenin doğru seçimi yapmasını sağlayacak en az 5 [özellik](concepts-features.md) listesi olarak, _eylem_hakkında bilgi sahibi olursunuz.
-* Uygulamanız, en az 100.000 etkileşimin geçmişini biriktirmek için verileri yeterince uzun bir süre koruyabilir.
+Aşağıdaki yönergeleri karşıladığınız veya uygulayabileceğiniz durumlarda kişiselleştirici uygulayabilirsiniz.
 
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Kişiselleştirici uygulamaya yönelik makine öğrenimi konuları
+|Yönerge|Açıklama|
+|--|--|
+|İş hedefi|Uygulamanız için bir iş veya kullanılabilirlik hedefi vardır.|
+|İçerik|Uygulamanızda, kullanıcıların bu hedefi iyileştirebilecekleri bağlamsal kararı veren bir yerdir.|
+|İçerik miktarı|Çağrı başına sıralama için 50 taneden az eylem var.|
+|Verileri topla|En iyi seçenek, toplu Kullanıcı davranışından ve toplam ödül puanından öğrenilmesi gerekir.|
+|Ahlak kullanım|Kişiselleştirme için makine öğrenmesinin kullanımı, sizin belirlediğiniz [kullanım kılavuzları](ethics-responsible-use.md) ve seçimlerdir.
+|En iyi tek seçenek|Bağlamsal karar, sınırlı bir seçenek kümesinden en iyi seçenek (eylem) sıralaması olarak ifade edilebilir.|
+|Puanlanmış sonuç|Uygulamanız için ne kadar uygun olan dereceli seçim, Kullanıcı davranışının bazı yönlerinin ölçüleceği ve bir _[ödül puanında](concept-rewards.md)_ ifade edilebilir.|
+|İlgili zamanlama|Ödül puanı, çok fazla sayıda bağlama veya dış etken getirmez. Deneme süresi, hala uygun olduğu sürece, yeniden elde edilen puanınızın hesaplanabileceği kadar düşüktür.|
+|Yeterli bağlam özellikleri|Doğru seçim yapmaya yardımcı olacağını düşündüğünüz ve kullanıcıya özel tanımlanabilir bilgileri içermeyen en az 5 [özellik](concepts-features.md) listesi olarak derece kapsamını ifade edebilirsiniz.|
+|Yeterli eylem özellikleri|Her içerik seçimi, eylem ve, kişiselleştirmenin doğru seçimi yapmasını sağlayacak en az 5 [özellik](concepts-features.md) listesi olarak, _eylem_hakkında bilgi sahibi olursunuz.|
+|Günlük veriler|Sorun zaman içinde Drifts, en iyi kişiselleştirmeye devam etmek için yeterli olay vardır (haber veya şekilde Tercihler gibi). Kişiselleştirici gerçek dünyada sürekli değişikliğe uyum sağlar, ancak yeni desenleri bulma ve kapatma hakkında bilgi almak için yeterli olay ve veri yoksa sonuçlar en uygun olmayacaktır. Genellikle yeterince gerçekleşen bir kullanım durumu seçmeniz gerekir. Günde en az 500 kez gerçekleşen kullanım örneklerini aramak için göz önünde bulundurun.|
+|Geçmiş verileri|Uygulamanız, en az 100.000 etkileşimin geçmişini biriktirmek için verileri yeterince uzun bir süre koruyabilir. Bu, Kişiselleştiriciye çevrimdışı değerlendirmeler ve ilke iyileştirmesi gerçekleştirmek için yeterli veri toplamasına olanak sağlar.|
 
-Kişiselleştirici, bir makine öğrenimine, size verdiğiniz geri bildirimde bulunarak bir yaklaşım olan pekiştirmeye dayalı öğrenimini temel alır. 
+Kişiselleştirilmiş davranışın tüm kullanıcılar arasında keşfedilmeden bir şey olmadığı **kişiselleştirici kullanmayın** . Örneğin, bir 20 olası menü öğesi listesinden ilk bir pizza sırası önermek için kişiselleştirici kullanılması faydalı olur, ancak çocuklarla ilgili yardım ("Grandma" gibi) için gerekli olduğunda kullanıcıların ilgili kişi listesinden çağrılabilecek iletişim, şunun genelinde kişiselleştirilebilir Kullanıcı tabanınız.
 
-Kişiselleştirici, şu durumlarda en iyi şekilde bilgi edineceksiniz:
+## <a name="how-to-use-personalizer-in-a-web-application"></a>Web uygulamasında kişiselleştirici kullanma
 
-* Sorun zaman içinde Drifts, en iyi kişiselleştirmeye devam etmek için yeterli olay vardır (haber veya şekilde Tercihler gibi). Kişiselleştirici gerçek dünyada sürekli değişikliğe uyum sağlar, ancak yeni desenleri bulma ve kapatma hakkında bilgi almak için yeterli olay ve veri yoksa sonuçlar en uygun olmayacaktır. Genellikle yeterince gerçekleşen bir kullanım durumu seçmeniz gerekir. Günde en az 500 kez gerçekleşen kullanım örneklerini aramak için göz önünde bulundurun.
-* Bağlam ve eylemlerin öğrenmesini kolaylaştırmak için yeterli [özelliği](concepts-features.md) vardır.
-* Çağrı başına derece 50 ' den az eylem vardır.
-* Veri saklama ayarlarınız, kişiselleştirmeye, çevrimdışı değerlendirmeler ve ilke iyileştirmesi gerçekleştirmek için yeterli veri toplamasına izin verir. Bu genellikle en az 50.000 veri noktası olur.
+Bir Web uygulamasına bir öğrenme döngüsü eklemek şunları içerir:
 
-## <a name="monitor-effectiveness-of-personalizer"></a>Kişiselleştirici verimliliğini izleme
+* Hangi eylemlerin ve özelliklerin hangi şekilde kişiselleştirileceğini, hangi bağlam özelliklerinin kullanılacağını ve ne olacağını belirleyin.
+* Uygulamanızda kişiselleştirme SDK 'sına bir başvuru ekleyin.
+* Kişiselleştirmek için hazırsanız derecelendirme API 'sini çağırın.
+* EventID 'yi depolayın. Daha sonra ödül API 'si ile bir ödül gönderirsiniz.
+1. Kullanıcının kişiselleştirilmiş sayfanızı gördüğünüze emin olduktan sonra olayı etkinleştir ' i çağırın.
+1. Derecelendirilen içeriğin Kullanıcı seçimini bekleyin.
+1. Derecelendirme API 'sinin çıktısının ne kadar iyi olduğunu belirtmek için Reward API çağrısı yapın.
 
-[Çevrimdışı değerlendirmeler](concepts-offline-evaluation.md)gerçekleştirerek, kişiselleştirmede düzenli aralıklarla etkili bir şekilde izleyebilirsiniz.
+## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Sohbet bot ile kişiselleştirici kullanma
 
-## <a name="use-personalizer-with-recommendation-engines"></a>Öneri altyapılarıyla kişiselleştirici kullanma
+Bu örnekte, kullanıcıyı her seferinde bir menü veya seçenek serisini göndermek yerine varsayılan bir öneride bulunmak için nasıl kişiselleştirme kullanacağınızı öğreneceksiniz.
+
+* Bu örnek için [kodu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/ChatbotExample) alın.
+* Bot çözümünüzü ayarlayın. LUSıS uygulamanızı yayımladığınızdan emin olun.
+* Bot için Rank ve Reward API çağrılarını yönetin.
+    * LUSıS amacını işlemeyi yönetmek için kod ekleyin. **Hiçbiri** , en üst amaç olarak döndürülmezse veya en üstteki amaç puanı iş mantığı eşiğinin altındaysa, amaçları derecelendirmek için amaçlar listesini kişiselleştiriciye gönderin.
+    * Kullanıcı listesini, sıralama API 'SI yanıtından en üst dereceli amaç olan ilk amacı olan seçilebilir bağlantılar olarak gösterir.
+    * Kullanıcının seçimini yakalayın ve bunu Reward API çağrısında gönderin.
+
+### <a name="recommended-bot-patterns"></a>Önerilen bot desenleri
+
+* Her bir kullanıcı için sonuçları önbelleğe alma aksine, her bir Kesinleştirme gerektiğinde, kişiselleştirici derecelendirme API 'SI çağrıları yapın. Belirsizliği ortadan kaldırmak bir kişi için zaman içinde değişebilir ve derecelendirme API 'sinin farkları keşfetmesine izin vermek genel öğrenmeyi hızlandıracaktır.
+* Çok sayıda kullanıcıyla ortak olan ve kişiselleştirmek için yeterli veri sahibi olan bir etkileşim seçin. Örneğin, giriş soruları, konuşma grafiğinde yalnızca birkaç kullanıcının ulaşabileceği daha küçük anlayışlardan daha iyi uyum sağlayabilir.
+* "İlk öneri," ister X ister X ister misiniz? "önerilerini etkinleştirmek için derecelendirme API çağrılarını kullanın ya da "X 'i mi kullanıyorsunuz?" ve Kullanıcı yalnızca şunları doğrulayabilirler; kullanıcıya bir menü arasından seçim yapmak zorunda oldukları seçenekleri verme aksine. Örneğin, Kullanıcı: "kahve" bot 'ı sıralamak istiyorum: "bir Double espresu istiyor musunuz?" Bu şekilde, daha doğrudan bir öneriyle ilgili olduğu için, ödül sinyali de güçlü olur.
+
+## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>Bir öneri çözümü ile kişiselleştirici kullanma
 
 Birçok şirket öneri altyapıları, pazarlama ve kampanya araçları, kitle segmentleme ve kümeleme, birlikte çalışan filtreleme ve diğer yollarla müşterilerin büyük bir katalogdan müşterilere yönelik ürünler önermesini sağlar.
 
@@ -67,6 +88,23 @@ Kişiselleştirici, mevcut olduğunda bir öneri altyapısıyla çalışabilir.
 * Kişiselleştirici, Kullanıcı tercihlerini her zaman keşfetmeye olarak çalışabilen üzere tasarlanmıştır. Bu, örneğin Haberler, canlı olaylar, canlı topluluk içeriği, günlük güncelleştirme içeren içerik veya mevsimsel içerik gibi içeriğin hızlı şekilde değiştiği daha iyi sonuçlar verir.
 
 Yaygın olarak kullanılan bir kullanım, bir öneri altyapısının çıkışını (örneğin, belirli bir müşteri için ilk 20 ürün) almak ve bunu, kişiselleştirici için giriş eylemleri olarak kullanmaktır.
+
+## <a name="adding-content-safeguards-to-your-application"></a>Uygulamanıza içerik korumaları ekleme
+
+Uygulamanız kullanıcılara gösterilen içerikte büyük sapmaya izin veriyorsa ve bu içeriklerin bazıları güvenli olmayabilir veya bazı kullanıcılar için uygun değilse, kullanıcılarınızın kabul edilebilir olarak görmesini engellemek için doğru korumalarının sağlandığından emin olmak için önceden planlamanız gerekir içeriði. Korumaları uygulamak için en iyi model şunlardır:
+    * Derecelendirmek için eylemlerin listesini alın.
+    * Hedef kitle için önemli olmayan olanları filtreleyin.
+    * Yalnızca bu uygulanabilir eylemleri derecelendir.
+    * Kullanıcıya en üst dereceli işlemleri görüntüleyin.
+
+Bazı mimarilerde, yukarıdaki sıra uygulamak zor olabilir. Bu durumda, derecelendirmeden sonra korumaları uygulamaya yönelik alternatif bir yaklaşım vardır ancak bir sağlama yapılması gerekir. bu nedenle, koruma modelinin eğilmesi için, korumalar dışında kalan eylemler kullanılmaz.
+
+* Öğrenme devre dışı bırakıldıktan sonra derecelendirmek için eylemlerin listesini alın.
+* İşlemleri sıralama.
+* En iyi eylemin uygun olup olmadığını denetleyin.
+    * En iyi eylem önemli ise, bu derece öğrenmeyi etkinleştirin ve sonra kullanıcıya gösterin.
+    * En iyi eylem önemli değilse, bu sıralama için öğrenmeyi etkinleştirmeyin ve kendi mantığınızla veya alternatif yaklaşımlarınızın kullanıcıya ne göstermesi gerektiğine karar verin. İkinci en iyi derecelendirilen seçeneği kullansanız bile, bu sıralama için öğrenmeyi etkinleştirmeyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

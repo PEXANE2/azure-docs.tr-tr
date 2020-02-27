@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765731"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620266"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Izleyici ile neler izlenir?
 Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler açıklanır. 
@@ -20,7 +20,7 @@ Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler a�
 ## <a name="insights-and-core-solutions"></a>Öngörüler ve temel çözümler
 Temel Öngörüler ve çözümler Azure Izleyici 'nin bir parçası olarak kabul edilir ve Azure için destek ve hizmet düzeyi sözleşmelerini izler. Azure Izleyici 'nin kullanılabildiği tüm Azure bölgelerinde desteklenir.
 
-### <a name="insights"></a>Bilgiler
+### <a name="insights"></a>Insights
 
 Öngörüler, belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlar. Hem günlükleri hem de ölçümleri toplar ve analiz eder.
 
@@ -55,118 +55,118 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 
 | Hizmet | Ölçümler | Günlükler | İçgörü | Notlar |
 |:---|:---|:---|:---|:---|
-|Active Directory | Hayır | Evet | [Evet](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
+|Active Directory | Hayır | Yes | [Evet](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Hayır | Hayır | Hayır |  |
-|Active Directory Domain Services | Hayır | Evet | Hayır |  |
-|Etkinlik günlüğü | Hayır | Evet | Hayır | |
+|Active Directory Domain Services | Hayır | Yes | Hayır |  |
+|Etkinlik günlüğü | Hayır | Yes | Hayır | |
 |Gelişmiş Tehdit Koruması | Hayır | Hayır | Hayır |  |
 |Advisor | Hayır | Hayır | Hayır |  |
-|CnE UE A.com Mktg TM [RESX] | Hayır | Hayır | Hayır |  |
-|Analysis Services | Evet | Evet | Hayır |  |
+|AI Oluşturucusu | Hayır | Hayır | Hayır |  |
+|Analysis Services | Yes | Yes | Hayır |  |
 |FHıR için API | Hayır | Hayır | Hayır |  |
-|API Management | Evet | Evet | Hayır |  |
-|App Service | Evet | Evet | Hayır |  |
+|API Management | Yes | Yes | Hayır |  |
+|App Service | Yes | Yes | Hayır |  |
 |AppConfig | Hayır | Hayır | Hayır |  |
-|Application Gateway | Evet | Evet | Hayır |  |
+|Application Gateway | Yes | Yes | Hayır |  |
 |Kanıtlama hizmeti | Hayır | Hayır | Hayır |  |
-|Automation | Evet | Evet | Hayır |  |
+|Otomasyon | Yes | Yes | Hayır |  |
 |Azure Service Manager (RDFE) | Hayır | Hayır | Hayır |  |
-|Backup | Hayır | Evet | Hayır |  |
+|Backup | Hayır | Yes | Hayır |  |
 |Bastion | Hayır | Hayır | Hayır |  |
-|Batch | Evet | Evet | Hayır |  |
+|Batch | Yes | Yes | Hayır |  |
 |Batch AI | Hayır | Hayır | Hayır |  |
-|Blok Zinciri Hizmeti | Hayır | Evet | Hayır |  |
+|Blok Zinciri Hizmeti | Hayır | Yes | Hayır |  |
 |Şemalar | Hayır | Hayır | Hayır |  |
 |Bot Hizmeti | Hayır | Hayır | Hayır |  |
-|Bulut Hizmetleri | Evet | Evet | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
+|Cloud Services | Yes | Yes | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
 |Cloud Shell | Hayır | Hayır | Hayır |  |
-|Cognitive Services | Evet | Evet | Hayır |  |
-|Container Instances | Evet | Hayır | Hayır |  |
-|Container Registry | Evet | Evet | Hayır |  |
-|Content Delivery Network (CDN) | Hayır | Evet | Hayır |  |
-|Cosmos DB | Evet | Evet | [Evet](insights/cosmosdb-insights-overview.md) |  |
-|Cost Management (Maliyet Yönetimi) | Hayır | Hayır | Hayır |  |
+|Bilişsel hizmetler | Yes | Yes | Hayır |  |
+|Container Instances | Yes | Hayır | Hayır |  |
+|Container Kayıt Defteri | Yes | Yes | Hayır |  |
+|Content Delivery Network (CDN) | Hayır | Yes | Hayır |  |
+|Cosmos DB | Yes | Yes | [Evet](insights/cosmosdb-insights-overview.md) |  |
+|Maliyet Yönetimi | Hayır | Hayır | Hayır |  |
 |Data Box | Hayır | Hayır | Hayır |  |
 |Veri Kataloğu Gen2 | Hayır | Hayır | Hayır |  |
-|Veri Gezgini | Evet | Evet | Hayır |  |
-|Data Factory | Evet | Evet | Hayır |  |
-|Data Factory v2 | Hayır | Evet | Hayır |  |
+|Veri Gezgini | Yes | Yes | Hayır |  |
+|Data Factory | Yes | Yes | Hayır |  |
+|Data Factory v2 | Hayır | Yes | Hayır |  |
 |Veri paylaşma | Hayır | Hayır | Hayır |  |
-|MariaDB için veritabanı | Evet | Evet | Hayır |  |
-|MySQL için veritabanı | Evet | Evet | Hayır |  |
-|PostgreSQL için veritabanı | Evet | Evet | Hayır |  |
-|Veritabanı Geçiş Hizmeti | Hayır | Hayır | Hayır |  |
-|Databricks | Hayır | Evet | Hayır |  |
-|DDoS Koruması | Evet | Evet | Hayır |  |
+|MariaDB için veritabanı | Yes | Yes | Hayır |  |
+|MySQL için veritabanı | Yes | Yes | Hayır |  |
+|PostgreSQL için veritabanı | Yes | Yes | Hayır |  |
+|Veritabanı geçiş hizmeti | Hayır | Hayır | Hayır |  |
+|Databricks | Hayır | Yes | Hayır |  |
+|DDOS Koruması | Yes | Yes | Hayır |  |
 |DevOps | Hayır | Hayır | Hayır |  |
-|DNS | Evet | Hayır | Hayır |  |
+|DNS | Yes | Hayır | Hayır |  |
 |Etki alanı adları | Hayır | Hayır | Hayır |  |
 |DPS | Hayır | Hayır | Hayır |  |
 |Dynamics 365 müşteri katılımı | Hayır | Hayır | Hayır |  |
 |Dynamics 365 finans ve Işlemler | Hayır | Hayır | Hayır |  |
-|Event Grid | Evet | Hayır | Hayır |  |
-|Event Hubs | Evet | Evet | Hayır |  |
-|ExpressRoute | Evet | Evet | Hayır |  |
-|Güvenlik Duvarı | Evet | Evet | Hayır |  |
-|Front Door | Evet | Evet | Hayır |  |
-|İşlevler | Evet | Evet | Hayır |  |
-|HDInsight | Hayır | Evet | Hayır |  |
+|Event Grid | Yes | Hayır | Hayır |  |
+|Event Hubs | Yes | Yes | Hayır |  |
+|ExpressRoute | Yes | Yes | Hayır |  |
+|Güvenlik duvarı | Yes | Yes | Hayır |  |
+|Front Door | Yes | Yes | Hayır |  |
+|İşlevler | Yes | Yes | Hayır |  |
+|HDInsight | Hayır | Yes | Hayır |  |
 |HPC önbelleği | Hayır | Hayır | Hayır |  |
-|Bilgi Koruma | Hayır | Evet | Hayır |  |
-|Intune | Hayır | Evet | Hayır |  |
+|Bilgi Koruma | Hayır | Yes | Hayır |  |
+|Intune | Hayır | Yes | Hayır |  |
 |IoT Central | Hayır | Hayır | Hayır |  |
-|IoT Hub | Evet | Evet | Hayır |  |
-|Key Vault | Evet | Evet | Hayır |  |
+|IoT Hub | Yes | Yes | Hayır |  |
+|Key Vault | Yes | Yes | Hayır |  |
 |Kubernetes Hizmeti (AKS) | Hayır | Hayır | [Evet](insights/container-insights-overview.md)  |  |
-|Load Balancer | Evet | Evet | Hayır |  |
-|Logic Apps | Evet | Evet | Hayır |  |
+|Yük Dengeleyici | Yes | Yes | Hayır |  |
+|Logic Apps | Yes | Yes | Hayır |  |
 |Machine Learning Hizmeti | Hayır | Hayır | Hayır |  |
 |Yönetilen Uygulamalar  | Hayır | Hayır | Hayır |  |
 |Haritalar  | Hayır | Hayır | Hayır |  |
-|Media Services | Evet | Evet | Hayır |  |
+|Media Services | Yes | Yes | Hayır |  |
 |Microsoft Flow | Hayır | Hayır | Hayır |  |
 |Microsoft tarafından yönetilen Masaüstü | Hayır | Hayır | Hayır |  |
 |Microsoft PowerApps | Hayır | Hayır | Hayır |  |
 |Microsoft sosyal katılım | Hayır | Hayır | Hayır |  |
-|Microsoft Stream | Evet | Evet | Hayır |  |
-|Geçiş yapın | Hayır | Hayır | Hayır |  |
-|Multi-Factor Authentication | Hayır | Evet | Hayır |  |
-|Ağ İzleyicisi | Evet | Evet | Hayır |  |
-|Notification Hubs | Evet | Hayır | Hayır |  |
+|Microsoft Stream | Yes | Yes | Hayır |  |
+|Geçiş | Hayır | Hayır | Hayır |  |
+|Multi-Factor Authentication | Hayır | Yes | Hayır |  |
+|Ağ İzleyicisi | Yes | Yes | Hayır |  |
+|Notification Hubs | Yes | Hayır | Hayır |  |
 |Açık Veri Kümeleri | Hayır | Hayır | Hayır |  |
 |İlke | Hayır | Hayır | Hayır |  |
-|Power BI | Evet | Evet | Hayır |  |
+|Power BI | Yes | Yes | Hayır |  |
 |Power BI Embedded | Hayır | Hayır | Hayır |  |
 |Özel Bağlantı | Hayır | Hayır | Hayır |  |
 |Proje biriktirme Iletişim platformu | Hayır | Hayır | Hayır |  |
 |Red Hat OpenShift | Hayır | Hayır | Hayır |  |
-|Redis Önbelleği | Evet | Evet | Hayır |  |
+|Redis Cache | Yes | Yes | Hayır |  |
 |Kaynak Grafiği | Hayır | Hayır | Hayır |  |
-|Kaynak Yöneticisi | Hayır | Hayır | Hayır |  |
+|Resource Manager | Hayır | Hayır | Hayır |  |
 |Perakende arama-Bing tarafından | Hayır | Hayır | Hayır |  |
-|Arama | Evet | Evet | Hayır |  |
-|Service Bus | Evet | Evet | Hayır |  |
-|Service Fabric | Hayır | Evet | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
+|Search | Yes | Yes | Hayır |  |
+|Service Bus | Yes | Yes | Hayır |  |
+|Service Fabric | Hayır | Yes | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
 |Kaydolma portalı | Hayır | Hayır | Hayır |  |
-|Site Kurtarma | Hayır | Evet | Hayır |  |
+|Site Recovery | Hayır | Yes | Hayır |  |
 |Yay bulut hizmeti | Hayır | Hayır | Hayır |  |
-|SQL Veri Ambarı | Evet | Evet | Hayır |  |
-|SQL Veritabanı | Evet | Evet | Hayır |  |
-|SQL Server Stretch Database | Evet | Evet | Hayır |  |
+|SQL Veri Ambarı | Yes | Yes | Hayır |  |
+|SQL Database | Yes | Yes | Hayır |  |
+|SQL Server Stretch Database | Yes | Yes | Hayır |  |
 |Yığın | Hayır | Hayır | Hayır |  |
-|Depolama | Evet | Hayır | [Evet](insights/storage-insights-overview.md) |  |
+|Depolama | Yes | Hayır | [Evet](insights/storage-insights-overview.md) |  |
 |Depolama önbelleği | Hayır | Hayır | Hayır |  |
 |Depolama Eşitleme Hizmetleri | Hayır | Hayır | Hayır |  |
-|Stream Analytics | Evet | Evet | Hayır |  |
-|Zaman Serisi İçgörüleri | Evet | Evet | Hayır |  |
+|Akış Analizi | Yes | Yes | Hayır |  |
+|Time Series Insights | Yes | Yes | Hayır |  |
 |TINA | Hayır | Hayır | Hayır |  |
-|Traffic Manager | Evet | Evet | Hayır |  |
+|Traffic Manager | Yes | Yes | Hayır |  |
 |Evrensel Yazdırma | Hayır | Hayır | Hayır |  |
-|Sanal Makine Ölçek Kümeleri | Hayır | Evet | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
-|Virtual Machines (Sanal Makineler) | Evet | Evet | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
-|Sanal Ağ | Evet | Evet | [Evet](insights/network-insights-overview.md) |  |
-|Sanal ağ-NSG akış günlükleri | Hayır | Evet | Hayır |  |
-|VPN Gateway | Evet | Evet | Hayır |  |
+|Sanal Makine Ölçek Kümeleri | Hayır | Yes | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
+|Virtual Machines | Yes | Yes | [Evet](insights/vminsights-overview.md) | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir. |
+|Sanal Ağ | Yes | Yes | [Evet](insights/network-insights-overview.md) |  |
+|Sanal ağ-NSG akış günlükleri | Hayır | Yes | Hayır |  |
+|VPN Gateway | Yes | Yes | Hayır |  |
 |Windows Sanal Masaüstü | Hayır | Hayır | Hayır |  |
 
 
@@ -197,14 +197,14 @@ Farklı uygulama ve hizmetleri izlemek için diğer çözümler mevcuttur, ancak
 
 | Çözüm | Açıklama |
 |:---|:---|
-| [Active Directory değerlendirmesi](insights/ad-assessment.md) | Active Directory ortamlarınızın riskini ve sistem durumunu değerlendirin. |
+| [Active Directory sistem durumu denetimi](insights/ad-assessment.md) | Active Directory ortamlarınızın riskini ve sistem durumunu değerlendirin. |
 | [Active Directory çoğaltma durumu](insights/ad-replication-status.md) | Active Directory ortamınızı tüm çoğaltma hatalarıyla düzenli olarak izler. |
 | [Etkinlik günlüğü Analizi](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Önceden tanımlanmış günlük sorgularını ve görünümlerini kullanarak etkinlik günlüğü girdilerini çözümleyin. |
 | [DNS Analizi (Önizleme)](insights/dns-analytics.md) | Windows DNS analitik ve denetim günlüklerini ve DNS sunucularınızdaki diğer ilgili verileri toplar, analiz eder ve ilişkilendirir. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Cloud Foundry sistem durumu ve performans ölçümlerinizi birden çok dağıtımda toplayın, görüntüleyin ve çözümleyin. |
 | [Kapsayıcılar](insights/containers.md) | Docker ve Windows kapsayıcı ana bilgisayarlarını görüntüleyin ve yönetin. |
 | [Isteğe bağlı değerlendirmeler](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Şirket içi, karma ve bulut Microsoft teknoloji ortamlarınızın kullanılabilirliğini, güvenliğini ve performansını değerlendirin ve iyileştirin. |
-| [SQL değerlendirmesi](insights/sql-assessment.md) | SQL Server ortamlarınızın riskini ve sistem durumunu değerlendirin.  |
+| [SQL sistem durumu denetimi](insights/sql-assessment.md) | SQL Server ortamlarınızın riskini ve sistem durumunu değerlendirin.  |
 | [Kablo Verileri](insights/wire-data.md) | Windows ile bağlı ve Linux bağlantılı bilgisayarlardan Log Analytics aracısıyla toplanan birleştirilmiş ağ ve performans verileri. |
 
 

@@ -1,51 +1,28 @@
 ---
-title: Etkin ve etkin olmayan olaylar-kişiselleştirici
-titleSuffix: Azure Cognitive Services
-description: Bu makalede, kişiselleştirici hizmeti içinde etkin ve etkin olmayan olayların, öğrenme ayarlarının ve öğrenme ilkelerinin kullanımı ele alınmaktadır.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+title: Öğrenme ilkesi-kişiselleştirici
+description: Öğrenme ayarları, model eğitiminin *hiper parametrelerini* belirlenir. Farklı öğrenme ayarları üzerinde eğitilen aynı verilerin iki modeli farklı olacaktır.
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.author: diberry
-ms.openlocfilehash: 90658e030c907a9fd99dd8fb9a6e90698d72b1f0
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.date: 02/20/2020
+ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834472"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623788"
 ---
-# <a name="active-and-inactive-events"></a>Etkin olan ve olmayan olaylar
-
-Uygulamanız, derecelendirme API 'sini çağırdığında, uygulamanın **Rewarterctionıd** alanında göstermesi gereken eylemi alırsınız.  Bu andan itibaren, kişiselleştirici aynı EventID 'ye sahip bir yeniden çağrı bekliyor. Ödül puanı, modeli gelecekteki derece çağrılar için eğitebilmek üzere kullanılacaktır. EventID için bir ödül çağrısı alınmıyorsa, varsayılan bir yeniden eşleşme uygulanır. Varsayılan yeniden ödüller Azure portal ayarlanır.
-
-Bazı senaryolarda, uygulamanın, sonucun ne şekilde kullanılacağını veya kullanıcıya görüntülendiğini bilse bile, uygulamanın sırasıyla derece çağrısı yapması gerekebilir. Bu durum, örneğin, yükseltilen içeriğin sayfa işleme bir pazarlama kampanyası tarafından üzerine yazılmasından kaynaklanıyor olabilir. Sıra çağrısının sonucu hiç kullanılmadıysa ve Kullanıcı onu hiç görmüyorsa, karşılık gelen bir ödül çağrısı göndermeyin.
-
-Genellikle, şu durumlarda bu senaryolar meydana gelir:
-
-* Kullanıcının görebileceğini veya görmeyebilirsiniz prerendering kullanıcı ARABIRIMI.
-* Uygulamanız, çok sayıda gerçek zamanlı bağlamla derecelendirme çağrılarının yapıldığı ve uygulamanın çıktıyı kullanmasının veya kullanmayabilir.
-
-Bu durumlarda, etkinliğin _devre dışı_olmasını isteyen derece çağrısı yapmak Için kişiselleştirici kullanın. Kişiselleştirici bu olay için bir ödül beklemez ve varsayılan bir ödül uygulamaz.
-İş mantığınızdaki daha sonra uygulama, sıralama çağrısından bilgileri kullanıyorsa, olayı _etkinleştirmeniz_ yeterlidir. Etkinlik etkin olduğunda, kişiselleştirici bir olay yeniden bekliyor. Reward API 'sine açık bir çağrı yapılmıyorsa, kişiselleştirici varsayılan bir ödül uygular.
-
-## <a name="inactive-events"></a>Etkin olmayan olaylar
-
-Bir olaya yönelik eğitimi devre dışı bırakmak için `learningEnabled = False`kullanarak derece çağırın. Etkin olmayan bir olay için, EventID için bir ödül gönderirseniz veya bu EventID için `activate` API 'sini çağırdığınızda öğrenme işlemi örtülü olarak etkinleştirilir.
-
-## <a name="learning-settings"></a>Öğrenme ayarları
+# <a name="learning-policy-and-settings"></a>Öğrenme ilkesi ve ayarları
 
 Öğrenme ayarları, model eğitiminin *hiper parametrelerini* belirlenir. Farklı öğrenme ayarları üzerinde eğitilen aynı verilerin iki modeli farklı olacaktır.
 
-### <a name="import-and-export-learning-policies"></a>Öğrenme ilkelerini içeri ve dışarı aktarma
+[Öğrenme ilkesi ve ayarları](how-to-settings.md#configure-rewards-for-the-feedback-loop) Azure Portal, kişiselleştirici kaynağınız üzerinde ayarlanır.
+
+## <a name="import-and-export-learning-policies"></a>Öğrenme ilkelerini içeri ve dışarı aktarma
 
 Azure portal öğrenme ilkesi dosyalarını içeri ve dışarı aktarabilirsiniz. Mevcut ilkeleri kaydetmek, test etmek, değiştirmek ve bunları kaynak kodu denetiinizde daha sonra başvurmak ve denetlemek için yapıtlar olarak arşivlemek için bu yöntemi kullanın.
 
-Bir öğrenme [ilkesini içeri ve dışarı aktarmayı öğrenin](how-to-learning-policy.md) .
+Kişiselleştirici kaynağınız için Azure portal bir öğrenme [ilkesini içeri ve dışarı aktarmayı öğrenin](how-to-manage-model.md#import-a-new-learning-policy) .
 
-### <a name="understand-learning-policy-settings"></a>Öğrenme ilkesi ayarlarını anlama
+## <a name="understand-learning-policy-settings"></a>Öğrenme ilkesi ayarlarını anlama
 
 Öğrenme ilkesindeki ayarların değiştirilmesi amaçlanmamaktadır. Ayarları yalnızca, kişiselleştirici tarafından nasıl etkilendiklerini anladıysanız değiştirin. Bu bilgi olmadan, geçersiz kılma için kişiselleştirici modeller dahil olmak üzere sorunlara neden olabilirsiniz.
 
@@ -60,14 +37,18 @@ Aşağıdaki `.json` bir öğrenme ilkesi örneğidir.
 }
 ```
 
-### <a name="compare-learning-policies"></a>Öğrenme ilkelerini karşılaştırın
+## <a name="compare-learning-policies"></a>Öğrenme ilkelerini karşılaştırın
 
 [Çevrimdışı değerlendirmeler](concepts-offline-evaluation.md)yaparak, farklı öğrenme Ilkelerinin kişiselleştirici günlüklerinde geçmiş verilere karşı nasıl gerçekleştirileceğini karşılaştırabilirsiniz.
 
-Geçerli öğrenme ilkesiyle karşılaştırmak için [kendi öğrenme Ilkelerinizi karşıya yükleyin](how-to-learning-policy.md) .
+Geçerli öğrenme ilkesiyle karşılaştırmak için [kendi öğrenme Ilkelerinizi karşıya yükleyin](how-to-manage-model.md) .
 
-### <a name="optimize-learning-policies"></a>Öğrenme ilkelerini iyileştirme
+## <a name="optimize-learning-policies"></a>Öğrenme ilkelerini iyileştirme
 
 Kişiselleştirici, [çevrimdışı bir değerlendirmede](how-to-offline-evaluation.md)iyileştirilmiş bir öğrenme ilkesi oluşturabilir. Çevrimdışı değerlendirmede daha iyi bir değerlendirme olan iyileştirilmiş bir öğrenme ilkesi, kişiselleştirmede çevrimiçi olarak kullanıldığında daha iyi sonuçlar verir.
 
 Bir öğrenme ilkesini iyileştirdikten sonra, geçerli ilkenin hemen yerini alacak şekilde doğrudan Kişiselleştiriciye uygulayabilirsiniz. Ayrıca, daha fazla değerlendirme için iyileştirilmiş ilkeyi kaydedebilir ve daha sonra atma, kaydetme veya uygulama seçeneklerinden hangisi olduğuna karar verebilirsiniz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Etkin ve etkin olmayan olayları](concept-active-inactive-events.md)öğrenin.

@@ -4,7 +4,7 @@ description: Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100077"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616698"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
 Bu makalede, SAP Cloud gereç kitaplığı (SAP CAL) 3,0 aracılığıyla Azure 'da SQL Server ve Windows işletim sistemi çalıştıran bir SAP ıDES sisteminin nasıl dağıtılacağı açıklanır. Ekran görüntüleri adım adım işlemi gösterir. Farklı bir çözüm dağıtmak için, aynı adımları izleyin.
@@ -72,7 +72,7 @@ SAP CAL 'de oturum açtıktan sonra, ilk sayfa genellikle **çözümler** sayfas
 
     ![Internet Explorer bulut hizmetleri onayı](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. Tıklayın **kabul**. Yetkilendirme başarılı olursa SAP CAL hesabı tanımı yeniden görüntülenir. Kısa bir süre sonra, bir ileti yetkilendirme işleminin başarılı olduğunu onaylar.
+1. **Kabul et**' e tıklayın. Yetkilendirme başarılı olursa SAP CAL hesabı tanımı yeniden görüntülenir. Kısa bir süre sonra, bir ileti yetkilendirme işleminin başarılı olduğunu onaylar.
 
 1. Yeni oluşturulan SAP CAL hesabını kullanıcıya atamak için, sağdaki metin kutusuna **Kullanıcı Kimliğinizi** girin ve **Ekle**' ye tıklayın. 
 
@@ -95,7 +95,7 @@ SAP CAL 'de oturum açtıktan sonra, ilk sayfa genellikle **çözümler** sayfas
 ### <a name="deploy-a-solution"></a>Çözüm dağıtma
 1. SAP CAL hesabı ayarladıktan sonra **Windows ve SQL Server çözümünde SAP ıDES çözümünü** seçin. **Örnek oluştur**' a tıklayın ve kullanım ve hüküm koşullarını onaylayın. 
 
-1. **Temel modda: Örnek** sayfası oluşturun, şunları yapmanız gerekir:
+1. **Temel mod: örnek oluştur** sayfasında şunları yapmanız gerekir:
 
     a. Örnek **adı**girin.
 
@@ -103,9 +103,9 @@ SAP CAL 'de oturum açtıktan sonra, ilk sayfa genellikle **çözümler** sayfas
 
     c.  Çözümün ana **parolasını** aşağıda gösterildiği gibi girin:
 
-    ![SAP CAL temel modu: Örnek Oluştur](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL temel modu: örnek oluştur](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. **Oluştur**'a tıklayın. Bir süre sonra çözümün boyutuna ve karmaşıklığına (SAP CAL bir tahmin sağlar) bağlı olarak, durum etkin ve kullanıma hazırlık olarak gösterilir: 
+1. **Oluştur**’ tıklayın. Bir süre sonra çözümün boyutuna ve karmaşıklığına (SAP CAL bir tahmin sağlar) bağlı olarak, durum etkin ve kullanıma hazırlık olarak gösterilir: 
 
     ![SAP CAL örnekleri](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

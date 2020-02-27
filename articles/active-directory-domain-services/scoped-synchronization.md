@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704370"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613051"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD 'den kapsamlı eşitlemeyi Azure Active Directory Domain Services olarak yapılandırma
 
@@ -42,9 +42,9 @@ Kapsamlı eşitleme ayarlarını yapılandırmak için Azure portal veya PowerSh
 
 | Eylem | | |
 |--|--|--|
-| Azure AD DS yönetilen etki alanı oluşturma ve kapsamlı eşitlemeyi yapılandırma | [Azure portalda](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi değiştirme | [Azure portalda](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi devre dışı bırak | [Azure portalda](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Azure AD DS yönetilen etki alanı oluşturma ve kapsamlı eşitlemeyi yapılandırma | [Azure portalındaki](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi değiştirme | [Azure portalındaki](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi devre dışı bırak | [Azure portalındaki](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur.
@@ -70,7 +70,7 @@ Azure portal Azure AD DS yönetilen etki alanının sağlamayı bitirmiş olduğ
 
 Kullanıcıları Azure AD DS yönetilen etki alanı ile eşitlenmesi gereken grupların listesini değiştirmek için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aadds.contoso.com*gibi örneğinizi seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi örneğinizi seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
 1. Bir grup eklemek için üstteki **grupları + seç** ' i seçin ve ardından eklenecek grupları seçin.
 1. Bir grubu eşitleme kapsamından kaldırmak için, şu anda eşitlenmiş gruplar listesinden seçin ve **grupları kaldır**' ı seçin.
@@ -82,7 +82,7 @@ Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm
 
 Azure AD DS yönetilen bir etki alanı için grup tabanlı kapsamlı eşitlemeyi devre dışı bırakmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aadds.contoso.com*gibi örneğinizi seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi örneğinizi seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
 1. Eşitleme kapsamını kapsam dışında tümü **olarak** ayarlayınve ardından **eşitleme kapsamını kaydet**' i seçin.
 
@@ -194,11 +194,11 @@ Bu adım kümesini gerçekleştirmek için PowerShell 'i kullanın. [PowerShell 
 
 1. Şimdi Azure AD DS yönetilen etki alanını oluşturun ve grup tabanlı kapsamlı eşitlemeyi etkinleştirin. *-Properties* parametresinde *"filteredsync" = "Enabled"* ekleyin.
 
-    Azure abonelik KIMLIĞINIZI ayarlayın ve ardından yönetilen etki alanı için *aadds.contoso.com*gibi bir ad sağlayın. [Get-AzSubscription][Get-AzSubscription] cmdlet 'ini kullanarak abonelik kimliğinizi alabilirsiniz. Destekleyici Azure kaynaklarını oluşturmak için kaynak grubu adı, sanal ağ adı ve bölgeyi önceki adımlarda kullanılan değerlere ayarlayın:
+    Azure abonelik KIMLIĞINIZI ayarlayın ve ardından yönetilen etki alanı için *aaddscontoso.com*gibi bir ad sağlayın. [Get-AzSubscription][Get-AzSubscription] cmdlet 'ini kullanarak abonelik kimliğinizi alabilirsiniz. Destekleyici Azure kaynaklarını oluşturmak için kaynak grubu adı, sanal ağ adı ve bölgeyi önceki adımlarda kullanılan değerlere ayarlayın:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aadds.contoso.com"
+   $ManagedDomainName = "aaddscontoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"

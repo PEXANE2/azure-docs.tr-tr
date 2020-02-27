@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566406"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616713"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>Temel SKU 'dan standart SKU 'ya Azure Iç Load Balancer yükseltme
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekmez
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 Bir yükseltmede iki aşama vardır:
@@ -28,12 +28,12 @@ Bu makalede yapılandırma geçişi ele alınmaktadır. Arka uç havuzlara sanal
 
 Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
-* Kaynak grubunda ve belirttiğiniz konumda standart bir Iç SKU Load Balancer oluşturur.
-* Temel SKU Iç Load Balancer yapılandırmalarının yeni oluşturma standart Iç Load Balancer sorunsuz bir şekilde kopyasını oluşturur.
+* Belirttiğiniz konumda standart bir Iç SKU Load Balancer oluşturur. Standart Iç Load Balancer [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) sağlamayacağını unutmayın.
+* Temel SKU 'nun yapılandırmalarının Load Balancer yeni oluştur Standart Load Balancer sorunsuzca kopyasını oluşturur.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Betik yalnızca dahili Load Balancer yükseltmesini destekler. Iç temel Load Balancer yükseltme için, giden bağlantı istenmiyorsa standart bir iç Load Balancer oluşturun ve giden bağlantı gerekliyse standart bir Iç Load Balancer ve standart Iç Load Balancer oluşturun.
+* Betik yalnızca giden bağlantı gerekli olmadığında dahili Load Balancer yükseltmesini destekler. Bazı sanal makinelerinize [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) gerekiyorsa lütfen yönergeler için bu [sayfaya](upgrade-InternalBasic-To-PublicStandard.md) bakın. 
 * Standart Load Balancer yeni ortak adreslere sahiptir. Farklı SKU 'Lara sahip olduklarından, var olan temel Load Balancer ilişkili IP adreslerini Standart Load Balancer sorunsuzca taşımak olanaksızdır.
 * Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
 * Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Lütfen boş olmadıklarından emin olun.

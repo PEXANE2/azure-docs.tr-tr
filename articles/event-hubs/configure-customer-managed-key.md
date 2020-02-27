@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903278"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622000"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -99,7 +99,7 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 ## <a name="log-schema"></a>Günlüğü şeması 
 Tüm günlükler, JavaScript nesne gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 | ---- | ----------- | 
 | TaskName | Başarısız görev açıklaması. |
 | Etkinlik Kimliği | İzleme için kullanılan iç KIMLIK. |
@@ -109,7 +109,7 @@ Tüm günlükler, JavaScript nesne gösterimi (JSON) biçiminde depolanır. Her 
 | anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | version | Kullanılan anahtarın sürümü. |
 | operation | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
-| kod | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
+| code | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
 
 Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda verilmiştir:
@@ -143,6 +143,262 @@ Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda 
    "message": "",
 }
 ```
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Şifrelemeyi etkinleştirmek için Kaynak Yöneticisi şablonu kullanma
+Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
+
+1. Yönetilen hizmet kimliğiyle bir **Event Hubs ad alanı** oluşturun.
+2. **Anahtar Kasası** oluşturun ve anahtar kasasına hizmet kimliği erişimi verin. 
+3. Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleştirin (anahtar/değer). 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Yönetilen hizmet kimliğiyle bir Event Hubs kümesi ve ad alanı oluşturma
+Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yönetilen hizmet kimliğiyle Azure Event Hubs ad alanı oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. 
+
+1. Yönetilen hizmet kimliğiyle bir Event Hubs ad alanı oluşturmak için Azure Resource Manager şablonu oluşturun. Dosyayı adlandırın: **Createeventhubclusterandnamespace. JSON**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. **Createeventhubclusterandnamespaceparams. JSON**adlı bir şablon parametre dosyası oluşturun. 
+
+    > [!NOTE]
+    > Aşağıdaki değerleri değiştirin: 
+    > - `<EventHubsClusterName>`-Event Hubs Kümenizin adı    
+    > - `<EventHubsNamespaceName>` adı Event Hubs ad alanınız
+    > - `<Location>`-Event Hubs ad alanınız konumu
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. Event Hubs bir ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Event Hubs ad alanının KIMLIĞINI alın. Komutu çalıştırmadan önce `{MyRG}` kaynak grubunun adıyla değiştirin.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Anahtar kasasına Event Hubs ad alanı kimliği erişimi verme
+
+1. **Temizleme koruması** ve **geçici silme** etkin olan bir Anahtar Kasası oluşturmak için aşağıdaki komutu çalıştırın. 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    VEYA    
+    
+    **Mevcut bir anahtar kasasını**güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Event Hubs ad alanındaki yönetilen kimliğin anahtar kasasındaki anahtar değere erişebilmesi için Anahtar Kasası erişim ilkesini ayarlayın. Önceki bölümde Event Hubs ad alanının KIMLIĞINI kullanın. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Anahtar kasasından müşteri tarafından yönetilen anahtarla Event Hubs ad alanındaki verileri şifreleme
+Şu ana kadar şu adımları tamamladınız: 
+
+1. Yönetilen kimliğe sahip bir Premium ad alanı oluşturuldu.
+2. Anahtar Kasası oluşturun ve anahtar kasasında yönetilen kimlik erişimi izni verilir. 
+
+Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsiniz. 
+
+1. Aşağıdaki içeriğe sahip **Createeventhubclusterandnamespace. JSON** ADLı bir JSON dosyası oluşturun: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Şablon parametre dosyası oluştur: **Updateeventhubclusterandnamespaceparams. JSON**. 
+
+    > [!NOTE]
+    > Aşağıdaki değerleri değiştirin: 
+    > - `<EventHubsClusterName>`-Event Hubs Kümenizin adı.        
+    > - `<EventHubsNamespaceName>` adı Event Hubs ad alanınız
+    > - `<Location>`-Event Hubs ad alanınız konumu
+    > - `<KeyVaultName>`-anahtar kasanızın adı
+    > - `<KeyName>`-anahtar kasasındaki anahtarın adı
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Komutu çalıştırmadan önce `{MyRG}` kaynak grubunuzun adıyla değiştirin. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
 
 ## <a name="troubleshoot"></a>Sorun giderme
 En iyi uygulama olarak, önceki bölümde gösterildiği gibi günlükleri her zaman etkinleştirin. BYOK şifrelemesi etkinleştirildiğinde etkinlikleri izlemeye yardımcı olur. Ayrıca sorunların kapsamını belirlemek için de yardımcı olur.

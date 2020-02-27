@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772546"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614020"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
 
@@ -24,7 +24,7 @@ Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağ
 
 Bu makalede, Azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlanmış temsilcinin nasıl yapılandırılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -56,7 +56,7 @@ Kaynak tabanlı KCD, PowerShell kullanılarak yapılandırılır. Kimliğe bür�
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Bilgisayar hesabı için kaynak tabanlı KCD 'YI yapılandırma
 
-Bu senaryoda, *contoso-WebApp.aadds.contoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aadds.contoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
+Bu senaryoda, *contoso-WebApp.aaddscontoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aaddscontoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
 
 1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu Azure AD DS yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
 1. [Etki alanı-][create-join-windows-vm]hem Web uygulamasını çalıştıran hem de Web API 'sini çalıştıran sanal makineleri Azure AD DS tarafından yönetilen etki alanına ekleyin. Önceki adımda özel OU 'da bu bilgisayar hesaplarını oluşturun.
@@ -67,8 +67,8 @@ Bu senaryoda, *contoso-WebApp.aadds.contoso.com*adlı bilgisayarda çalışan bi
 1. Son olarak, [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi bilgisayar adlarınızı sağlayın:
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
-    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
+    Set-ADComputer contoso-api.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Bir kullanıcı hesabı için kaynak tabanlı KCD 'YI yapılandırma

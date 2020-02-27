@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 02/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 02297a45c9560f867e97d7024862ea0de5d3f7b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 872ba86c9e43b1f6642331908eb829605f6c19bd
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469544"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619660"
 ---
 Aşağıdaki adımları izleyerek, Resource Manager dağıtım modelini ve Azure portalı ile bir sanal ağ oluşturabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,30 +22,28 @@ Aşağıdaki adımları izleyerek, Resource Manager dağıtım modelini ve Azure
 >
 >
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.  Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin. **Yeni** sayfası açılır.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Arama kaynakları, hizmet ve belgeler (G +/)** ' de *sanal ağ*yazın.
 
-2. **Markette ara**' te *sanal ağ* girin ve sonuçlardan **sanal ağ** ' ı seçin.
+   ![Sanal ağ kaynağını bul sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Sanal ağ kaynağını bul sayfası")
+1. **Market** sonuçlarından **sanal ağ** ' ı seçin.
 
-   ![Sanal ağ kaynağını bul sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Sanal ağ kaynağını bul sayfası")
+   ![Sanal ağ seçin](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Sanal ağ kaynağını bul sayfası")
+1. **Sanal ağ** sayfasında **Oluştur**' a tıklayın.
 
-   **Sanal ağ** sayfası açılır.
+   ![sanal ağ sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Oluştur’a tıklayın")
+1. Oluştur ' a tıkladığınızda, **sanal ağ oluştur** sayfası açılır.
 
-3. Gelen **dağıtım modeli seçin** seçin sayfanın alt kısmındaki liste **Resource Manager**ve ardından **Oluştur**. **Sanal ağ oluştur** sayfası açılır.
-
-   ![Sanal ağ oluştur sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Sanal ağ oluştur sayfası")
-
-4. **Sanal ağ oluştur** sayfasında sanal ağ ayarlarını yapılandırın. Alanları doldururken, alana girdiğiniz karakterleri doğrulandığında kırmızı ünlem işareti yeşil onay işareti olur. Bazı değerleri kendi değerlerinizle değiştirebildiğiniz autofilled şunlardır:
+   ![Sanal ağ oluştur sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/create-virtual-network-page.png "Sanal ağ oluştur sayfası")
+1. **Sanal ağ oluştur** sayfasında sanal ağ ayarlarını yapılandırın. Alanları doldururken, alana girdiğiniz karakterleri doğrulandığında kırmızı ünlem işareti yeşil onay işareti olur. Bazı değerleri kendi değerlerinizle değiştirebildiğiniz autofilled şunlardır:
 
    - **Ad**: Sanal ağınızın adını girin.
-
-   - **Adres alanı**: Adres alanını girin. Birden fazla adres alanı eklemek için varsa, ilk adres alanınızı buraya girin. Sanal ağ oluşturduktan sonra daha sonra ek adres alanları ekleyebilirsiniz.
-
+   - **Adres alanı**: Adres alanını girin. Birden fazla adres alanı eklemek için varsa, ilk adres alanınızı buraya girin. Sanal ağ oluşturduktan sonra daha sonra ek adres alanları ekleyebilirsiniz. Yapılandırmanız IPv6 adres alanı gerektiriyorsa, bu bilgileri girmek için onay kutusunu işaretleyin.
    - **Abonelik**: Listelenen aboneliğin doğru olduğunu onaylayın. Açılan listeyi kullanarak abonelikleri değiştirebilirsiniz.
-
-   - **Kaynak grubu**: mevcut bir kaynak grubunu seçin veya yeni kaynak grubunuz için bir ad girerek yeni bir tane oluşturun. Yeni bir grup oluşturuyorsanız, planlanan yapılandırma değerlerinize göre kaynak grubunu adlandırın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../articles/azure-resource-manager/management/overview.md#resource-groups).
-
+   - **Kaynak grubu**: var olan bir kaynak grubunu seçin veya yeni kaynak grubunuz için bir ad girerek yeni bir tane oluşturun. Yeni bir grup oluşturuyorsanız, planlanan yapılandırma değerlerinize göre kaynak grubunu adlandırın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../articles/azure-resource-manager/management/overview.md#resource-groups).
    - **Konum**: Sanal ağınızın konumunu seçin. Bu sanal ağa dağıttığınız kaynakların nerede yaşayacaksa konumunu belirler.
-
-   - **Alt ağ**: alt ağ Ekle **adı** ve alt ağ **adres aralığı**. Sanal ağ oluşturduktan sonra daha sonra ek alt ağlar ekleyebilirsiniz. 
-     
-5. **Oluştur**’u seçin.
+   - **Alt ağ**: alt ağ **adını** ve alt ağ **adres aralığını**ekleyin. Sanal ağ oluşturduktan sonra daha sonra ek alt ağlar ekleyebilirsiniz.
+   - **DDoS koruması**: Standart hizmeti kullanmak Istemediğiniz müddetçe **temel**' yı seçin.
+   - **Hizmet uç noktaları**: yapılandırmanız bu ayarı belirtmediği sürece bu ayarı **devre dışı**olarak bırakabilirsiniz.
+   - **Güvenlik duvarı**: yapılandırmanız bu ayarı belirtmediği sürece bu ayarı **devre dışı**olarak bırakabilirsiniz.
+1. Sanal ağ dağıtımına başlamak için **Oluştur** ' a tıklayın.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603395"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616379"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
 
@@ -39,9 +39,9 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
 |[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Standart|
-|[Sanal makine davranış analizi tehdit algılama uyarıları](security-center-alerts-iaas.md)|✔|✔|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
+|[Sanal makine davranış analizi tehdit algılama uyarıları](threat-protection.md)|✔|✔|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
 |[Dosya daha az tehdit algılama uyarıları](alerts-reference.md#alerts-windows)|✔|✔|✔|Standart|
-|[Ağ tabanlı tehdit algılama uyarıları](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standart|
+|[Ağ tabanlı tehdit algılama uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
 |[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
 |[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
@@ -67,7 +67,7 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Standart|
 |[Sanal makine davranış analizi tehdit algılama uyarıları](security-center-alerts-iaas.md)|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
 |[Dosya daha az tehdit algılama uyarıları](alerts-reference.md#alerts-windows)|-|-|-|Standart|
-|[Ağ tabanlı tehdit algılama uyarıları](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standart|
+|[Ağ tabanlı tehdit algılama uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
 |[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
 |[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|

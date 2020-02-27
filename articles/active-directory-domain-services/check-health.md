@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509147"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614259"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanının durumunu denetleme
 
@@ -29,7 +29,7 @@ Bu makalede, Azure AD DS sistem durumunu görüntüleme ve gösterilen bilgileri
 Azure AD DS yönetilen bir etki alanının sistem durumu Azure portal kullanılarak görüntülenir. Son yedekleme zamanı ve Azure AD ile eşitleme hakkında bilgi, yönetilen etki alanının sistem durumuyla ilgili bir sorunu belirten uyarılarla birlikte görülebilir. Azure AD DS yönetilen bir etki alanının sistem durumunu görüntülemek için aşağıdaki adımları izleyin:
 
 1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin.
-1. *Aadds.contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
+1. *Aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
 1. Azure AD DS kaynak penceresinin sol tarafında **sistem durumu**' nu seçin. Aşağıdaki örnek ekran görüntüsünde, sağlıklı bir Azure AD DS yönetilen etki alanı ve son yedekleme ve Azure AD eşitleme 'nin durumu gösterilmektedir:
 
     ![Azure Active Directory Domain Services durumunu gösteren Azure portal durum sayfasına genel bakış](./media/check-health/health-page.png)
@@ -43,7 +43,7 @@ Sağ üst köşedeki durum, Azure AD DS yönetilen etki alanının genel durumun
 | Çalışıyor | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Azure AD DS yönetilen etki alanı düzgün çalışıyor ve kritik veya uyarı uyarıları yok. Etki alanında bilgilendirici uyarılar olabilir. |
 | İlgilenilmesi gerekiyor (uyarı) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Azure AD DS yönetilen etki alanında kritik uyarı yoktur, ancak giderilmesi gereken bir veya daha fazla uyarı uyarısı vardır. |
 | İlgilenilmesi gerekiyor (kritik) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Azure AD DS yönetilen etki alanında giderilmesi gereken bir veya daha fazla kritik uyarı vardır. Ayrıca uyarı ve/veya bilgilendirici uyarılarınız olabilir. |
-| Dağıtılıyor | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Azure AD DS etki alanı dağıtılıyor. |
+| Dağıtma | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Azure AD DS etki alanı dağıtılıyor. |
 
 ## <a name="understand-monitors-and-alerts"></a>İzleyicileri ve Uyarıları anlama
 

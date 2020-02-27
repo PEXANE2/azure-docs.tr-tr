@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133498"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650767"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
 
@@ -66,7 +66,7 @@ Azure Notebooks kullanmak için bir hesap oluşturmanız gerekir. Azure Not deft
 
 1. Projenin public olması veya bir Benioku dosyası olması gerektiği için **Public** ve **README** işaretini kaldırın.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. **Karşıya yükle** ' yi (yukarı ok simgesi) seçin ve **bilgisayardan**öğesini seçin.
 
@@ -83,7 +83,7 @@ Azure Notebooks projenize yüklediğiniz dosyaları gözden geçirelim. Öğreti
 * **01-turbofan\_gerileme. ipynb:** Bu not defteri, makine öğrenimi denemesi oluşturmak ve çalıştırmak için Machine Learning hizmeti çalışma alanını kullanır. Genel olarak, Not defteri aşağıdaki adımları yapar:
 
   1. Cihaz bandı tarafından oluşturulan Azure Storage hesabından verileri indirir.
-  1. Eğitim ve sınıflandırıcı ad modeli için verileri araştırır ve hazırlar.
+  1. Verileri araştırır ve hazırlar, ardından sınıflandırıcı modelini eğitmek için verileri kullanır.
   1. Test veri kümesi (test\_FD003. txt) kullanarak deneyden modeli değerlendirin.
   1. En iyi sınıflandırıcı modelini Machine Learning hizmeti çalışma alanına yayınlar.
 
@@ -163,7 +163,7 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 
 1. Azure portal, **Turbofandemo** Machine Learning çalışma alanının kaynak grubunuzda mevcut olduğunu doğrulayın.
 
-### <a name="debugging"></a>Hata Ayıklama
+### <a name="debugging"></a>Hata ayıklama
 
 Hata ayıklama için Python deyimlerini not defterine iç içe ekleyebilirsiniz, genellikle `print()` komutu. Tanımlı olmayan değişkenler veya nesneler görürseniz, ilk olarak bildirildiği veya örneklendiği hücreleri çalıştırın.
 

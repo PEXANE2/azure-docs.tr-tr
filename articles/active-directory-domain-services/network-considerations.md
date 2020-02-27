@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512785"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613338"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -59,10 +59,10 @@ Aşağıdaki örnek diyagramda, Azure AD DS kendi alt ağına sahip olan geçerl
 
 Aşağıdaki yöntemlerden birini kullanarak, diğer Azure sanal ağlarında barındırılan uygulama iş yüklerini bağlayabilirsiniz:
 
-* Sanal ağ eşlemesi
+* Sanal ağ eşleme
 * Sanal özel ağ (VPN)
 
-### <a name="virtual-network-peering"></a>Sanal ağ eşlemesi
+### <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
 Sanal ağ eşlemesi, Azure omurga ağı aracılığıyla aynı bölgedeki iki sanal ağı birbirine bağlayan bir mekanizmadır. Küresel sanal ağ eşlemesi, Azure bölgeleri arasında sanal ağa bağlanabilir. Eşlendikten sonra iki sanal ağ, VM 'Ler gibi kaynakların, özel IP adresleri kullanarak birbirleriyle doğrudan iletişim kurmasına olanak tanır. Sanal ağ eşlemesi kullanmak, diğer sanal ağlarda dağıtılan uygulama iş yükleriyle Azure AD DS yönetilen bir etki alanı dağıtmanızı sağlar.
 
@@ -105,12 +105,12 @@ Bir [ağ güvenlik grubu (NSG)](https://docs.microsoft.com/azure/virtual-network
 
 Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağıdaki ağ güvenlik grubu kuralları gereklidir. Azure AD DS yönetilen etki alanının dağıtıldığı sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
 
-| Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gereklidir | Amaç |
+| Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | Allow  | Evet      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | Allow  | Evet      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | Allow  | Evet      | Etki alanınızı yönetme. |
-| 636         | TCP      | Herhangi biri                                | Herhangi biri         | Allow  | Hayır       | Yalnızca Güvenli LDAP (LDAPS) yapılandırdığınızda etkinleştirilir. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Azure AD kiracınızla eşitleme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 636         | TCP      | Herhangi biri                                | Herhangi biri         | İzin Ver  | Hayır       | Yalnızca Güvenli LDAP (LDAPS) yapılandırdığınızda etkinleştirilir. |
 
 > [!WARNING]
 > Bu ağ kaynaklarını ve konfigürasyonları el ile düzenlemeyin. Yanlış yapılandırılmış bir ağ güvenlik grubunu veya Kullanıcı tanımlı bir yol tablosunu Azure AD DS 'nin dağıtıldığı alt ağla ilişkilendirdiğinizde, Microsoft 'un etki alanını hizmet etme ve yönetme yeteneğini kesintiye uğratabilir. Azure AD kiracınız ile Azure AD DS yönetilen etki alanınız arasında eşitleme de bozulur.
@@ -146,7 +146,7 @@ Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağı
 
 ## <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 
-Kullanıcı tanımlı yollar varsayılan olarak oluşturulmaz ve Azure AD DS 'nin düzgün çalışması için gerekli değildir. Yol tabloları kullanmanız gerekiyorsa *0.0.0.0* yolunda herhangi bir değişiklik yapmaktan kaçının. Bu rotadaki değişiklikler Azure AD Domain Services kesintiye uğratabilir.
+Kullanıcı tanımlı yollar varsayılan olarak oluşturulmaz ve Azure AD DS 'nin düzgün çalışması için gerekli değildir. Yol tabloları kullanmanız gerekiyorsa *0.0.0.0* yolunda herhangi bir değişiklik yapmaktan kaçının. Bu rotadaki değişiklikler Azure AD Domain Services kesintiye uğratır ve yönetilen etki alanını desteklenmeyen bir duruma geçirir.
 
 Ayrıca, ilgili Azure hizmet etiketlerine dahil edilen IP adreslerinden gelen trafiği Azure AD Domain Services alt ağına yönlendirmelidir. Hizmet etiketleri ve ilgili IP adresleri hakkında daha fazla bilgi için bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 

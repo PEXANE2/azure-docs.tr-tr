@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704487"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613291"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services sorunları için e-posta bildirimlerini yapılandırın
 
@@ -58,7 +58,7 @@ Ayrıca, Azure AD dizini 'nin tüm *genel yöneticilerinin* ve *AAD DC yönetici
 Var olan e-posta bildirim alıcılarını gözden geçirmek veya ek alıcılar eklemek için aşağıdaki adımları izleyin:
 
 1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin.
-1. *Aadds.contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
+1. *Aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
 1. Azure AD DS kaynak penceresinin sol tarafında **bildirim ayarları**' nı seçin. E-posta bildirimleri için mevcut alıcılar gösterilir.
 1. E-posta alıcısı eklemek için, ek alıcılar tablosuna e-posta adresini girin.
 1. İşiniz bittiğinde, üstteki gezinmede **Kaydet** ' i seçin.

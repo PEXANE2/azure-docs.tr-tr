@@ -1,30 +1,26 @@
 ---
-title: "Öğretici: bir Web uç noktasına olay göndermek için Azure Uygulama yapılandırması 'Nı kullanma"
-titleSuffix: Azure App Configuration
-description: Bu öğreticide, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerini ayarlamayı öğreneceksiniz.
+title: Azure Uygulama yapılandırması 'nı kullanarak bir Web uç noktasına olay gönderme
+description: Azure uygulama yapılandırma olay aboneliklerini kullanarak bir Web uç noktasına anahtar-değer değiştirme olayları gönderme hakkında bilgi edinin
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-editor: ''
+author: lisaguthrie
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
+ms.topic: how-to
+ms.date: 02/25/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 93700af5e7fb3a4a1253424996ed04532c01f88c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899687"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619598"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
 
-Bu hızlı başlangıçta, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerini ayarlamayı öğreneceksiniz. Azure uygulama yapılandırma kullanıcıları, anahtar değerleri değiştirildiğinde yayınlanan olaylara abone olabilir. Bu olaylar Web kancaları, Azure Işlevleri, Azure depolama kuyrukları veya Azure Event Grid tarafından desteklenen diğer herhangi bir olay işleyicisini tetikleyebilir. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
+Bu makalede, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerinin nasıl ayarlanacağını öğreneceksiniz. Azure uygulama yapılandırma kullanıcıları, anahtar değerleri değiştirildiğinde verilmiş olaylara abone olabilir. Bu olaylar Web kancalarını, Azure Işlevlerini, Azure depolama kuyruklarını veya Azure Event Grid tarafından desteklenen herhangi bir olay işleyicisini tetikleyebilirler. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/). İsteğe bağlı olarak Azure Cloud Shell kullanabilirsiniz.
 
@@ -46,15 +42,16 @@ Aşağıdaki örnek, *westus* konumunda `<resource_group_name>` adlı bir kaynak
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>Uygulama yapılandırması oluşturma
+## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
-`<appconfig_name>`, uygulama yapılandırmanız için benzersiz bir adla değiştirin ve daha önce oluşturduğunuz kaynak grubuyla `<resource_group_name>`. Ad bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
+`<appconfig_name>`, yapılandırma deponuzu için benzersiz bir adla ve daha önce oluşturduğunuz kaynak grubuyla `<resource_group_name>` değiştirin. Ad bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
@@ -78,7 +75,7 @@ Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla ge
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>Uygulama yapılandırmanıza abone olma
+## <a name="subscribe-to-your-app-configuration-store"></a>Uygulama yapılandırma deponuza abone olma
 
 Event Grid’e hangi olayları izlemek istediğinizi ve bu olayların nereye gönderileceğini bildirmek için bir konuya abone olursunuz. Aşağıdaki örnek, oluşturduğunuz uygulama yapılandırmasına abone olur ve Web uygulamanızdan URL 'YI olay bildirimi için uç nokta olarak geçirir. Olay aboneliğiniz için `<event_subscription_name>` öğesini bir ad ile değiştirin. `<resource_group_name>` ve `<appconfig_name>` için daha önce oluşturduğunuz değerleri kullanın.
 
@@ -122,7 +119,6 @@ Olayı tetiklediniz ve Event Grid, iletiyi abone olurken yapılandırdığınız
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

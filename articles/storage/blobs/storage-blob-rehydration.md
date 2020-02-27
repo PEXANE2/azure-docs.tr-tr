@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780257"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614792"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
@@ -51,8 +51,8 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 ## <a name="quickstart-scenarios"></a>Hızlı Başlangıç senaryoları
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv blobunu çevrimiçi katmana yeniden doldurma
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 
@@ -70,14 +70,14 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 
 ![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Bir arşiv Blobun blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. `$containerName` değişkeni, kapsayıcı adınızla başlatılmalıdır. `$blobName` değişkeni, blob adınızla başlatılmalıdır. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

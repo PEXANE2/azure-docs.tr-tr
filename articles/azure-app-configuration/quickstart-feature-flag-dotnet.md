@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619299"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlangıç: .NET Framework uygulamasına özellik bayrakları ekleme
 
@@ -27,15 +27,22 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 .NET Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. `Beta`adlı özellik bayrağını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin.
+
+    > [!div class="mx-imgBorder"]
+    > Beta](media/add-beta-feature-flag.png) adlı özellik bayrağını etkinleştirmek ![
+
+    Şimdilik `label` tanımsız bırakın.
 
 ## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
 
@@ -43,7 +50,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**’ tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -67,13 +74,8 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 1. Özellik bayraklarının alınabilmesi için `UseFeatureFlags` seçeneğini belirterek uygulama yapılandırmasına bağlanmak üzere `Main` yöntemini güncelleştirin. Sonra `Beta` Özellik bayrağı etkinse bir ileti görüntülenir.
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {

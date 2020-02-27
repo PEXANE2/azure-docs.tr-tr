@@ -3,12 +3,12 @@ title: Öğretici-ACR görevi zamanlama
 description: Bu öğreticide, bir veya daha fazla Zamanlayıcı tetikleyicisi ayarlayarak tanımlı bir zamanlamaya göre Azure Container Registry görevinin nasıl çalıştırılacağını öğrenin
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454681"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617453"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
 
@@ -175,7 +175,7 @@ Cron ifadeleriyle kullanılan saat dilimi Eşgüdümlü Evrensel Saat (UTC). Saa
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
-|Type  |Örnek  |Tetiklendiğinde  |
+|Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>`"5 * * * *"`</nobr>|saatte 5 dakikada bir saat geçti|
 |Tüm değerler (`*`)|<nobr>`"* 5 * * *"`</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
@@ -197,6 +197,14 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 |`"30 9 * * 1-5"`|Her gün 9:30 UTC|
 |`"30 9 * Jan Mon"`|Ocak ayında her Pazartesi 9:30 UTC|
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğretici serisinde, kapsayıcı kayıt defteri veya kayıt defterleri, kapsayıcı örneği, anahtar kasası ve hizmet sorumlusu dahil oluşturduğunuz tüm kaynakları kaldırmak için aşağıdaki komutları verin:
+
+```azurecli-interactive
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

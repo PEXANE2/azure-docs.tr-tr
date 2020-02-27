@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406927"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624002"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Node. js ' de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -25,25 +25,30 @@ ms.locfileid: "74406927"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Bir Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Node. js uygulaması oluşturun. Bu makalede, uygulamanın adım adım nasıl oluşturulacağı gösterilmektedir. Alternatif olarak, [kaynak kodunu ve verileri indirebilir](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) ve uygulamayı komut satırından çalıştırabilirsiniz.
+Bir Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Node. js uygulaması oluşturun. Bu makalede, uygulamanın adım adım nasıl oluşturulacağı gösterilmektedir. Alternatif olarak, [kaynak kodu ve verileri indirebilir](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) ve uygulamayı komut satırından çalıştırabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanılır.
+Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
 
-+ [Node.js](https://nodejs.org).
-+ [NPM](https://www.npmjs.com) , Node. js tarafından yüklenmelidir.
-+ Bu makalede veya [deponun **hızlı başlangıç** dizininden](https://github.com/Azure-Samples/azure-search-javascript-samples/)örnek bir dizin yapısı ve eşleşen belgeler sağlanır.
++ [Node.js](https://nodejs.org)
+
++ [NPM](https://www.npmjs.com) , Node. js tarafından yüklenmelidir
+
++ Bu makalede veya [deponun **hızlı başlangıç** dizininden örnek bir dizin yapısı ve eşleşen belgeler verilmiştir](https://github.com/Azure-Samples/azure-search-javascript-samples/)
+
 + Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
 
 Önerilen:
 
-* [Visual Studio Code](https://code.visualstudio.com).
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * VSCode için [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) ve [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) uzantıları.
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>Anahtar ve URL 'Leri al
 
 Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
@@ -58,7 +63,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 Bir PowerShell konsolunu veya Node. js ' yi yüklediğiniz başka bir ortamı açarak başlayın.
 
@@ -108,16 +113,17 @@ Bir PowerShell konsolunu veya Node. js ' yi yüklediğiniz başka bir ortamı a�
       }
     }
     ```
-Arama hizmeti verilerinizi tutmak için bir **azure_search_config. JSON** dosyası oluşturun:
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. Arama hizmeti verilerinizi tutmak için bir **azure_search_config. JSON** dosyası oluşturun:
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 `[SERVICE_NAME]` değerini, arama hizmetinizin adıyla değiştirin. `[ADMIN_KEY]` ve `[QUERY_KEY]` daha önce kaydettiğiniz anahtar değerleriyle değiştirin. 
 
@@ -403,7 +409,7 @@ const AzureSearchClient = require('./AzureSearchClient.js');
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ Son olarak, ana zaman uyumsuz `run` işlevini belirtin ve çağırın. Bu işlev
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();

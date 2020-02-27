@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513618"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623600"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
 
@@ -49,6 +49,16 @@ Aşağıda, temsili çevrimdışı değerlendirme için önemli noktalar verilmi
 Kişiselleştirici, otomatik olarak daha iyi bir öğrenme ilkesi bulmaya yönelik çevrimdışı değerlendirme işlemini kullanabilir.
 
 Çevrimdışı değerlendirmeyi gerçekleştirdikten sonra, geçerli çevrimiçi ilkeyle karşılaştırıldığında, bu yeni ilkeyle kişiselleştirici 'nin karşılaştırılma verimliliğini görebilirsiniz. Daha sonra bu öğrenme ilkesini, indirerek ve ardından modeller ve Ilke paneline yükleyerek, kişiselleştirmede hemen etkili hale getirmek için uygulayabilirsiniz. Ayrıca, gelecekteki analizler veya kullanımı için de indirebilirsiniz.
+
+Değerlendirmede yer alan geçerli ilkeler:
+
+| Öğrenme ayarları | Amaç|
+|--|--|
+|**Çevrimiçi Ilke**| Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi |
+|**Çizgisi**|Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde)|
+|**Rastgele Ilke**|Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.|
+|**Özel İlkeler**|Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.|
+|**İyileştirilmiş Ilke**|Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Çevrimdışı değerlendirme sonuçlarının uygunluğunu anlama
 
@@ -92,7 +102,7 @@ Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
 
 * Uygulamanız veya sisteminiz, daha etkili olanlar hakkında daha fazla bilgi sağlar.
 * Düşük verimlilik nedeniyle hangi özellikler kaldırılabileceği? Düşük verimlilik özellikleri makine öğrenimine _gürültü_ ekler.
-* Yanlışlıkla dahil edilen herhangi bir özellik var mı? Bunların örnekleri: kişisel olarak tanımlanabilen bilgiler (PII), yinelenen kimlikler vb.
+* Yanlışlıkla dahil edilen herhangi bir özellik var mı? Bunlara örnek olarak şunlar verilebilir: Kullanıcı tarafından tanımlanabilen bilgiler, yinelenen kimlikler, vb.
 * Yasal veya sorumlu kullanım konuları nedeniyle kişiselleştirmek için kullanılmaması gereken istenmeyen özellikler var mı? İstenmeyen özelliklerle ara sunucu (diğer bir deyişle, yakından yansıtabilir veya bunlarla ilişkilendirilebilir) olan özellikler var mı?
 
 

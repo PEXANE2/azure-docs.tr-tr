@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589309"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616511"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -98,14 +98,20 @@ Bu birleşik çabalar yeni ve geliştirilmiş algılamalarla sonuçlanır ve siz
 
 Aşağıdaki konular, kaynak türlerine göre farklı uyarılarda size rehberlik sağlar:
 
-* [IaaS VM 'Leri ve sunucu uyarıları](security-center-alerts-iaas.md)
-* [Yerel işlem uyarıları](security-center-alerts-compute.md)
-* [Veri Hizmetleri uyarıları](security-center-alerts-data-services.md)
+* [IaaS Windows makineleri için uyarılar](threat-protection.md#windows-machines)
+* [IaaS Linux makineleri için uyarılar](threat-protection.md#linux-machines)
+* [Azure App Service için uyarılar](threat-protection.md#app-services)
+* [Azure kapsayıcıları için uyarılar](threat-protection.md#azure-containers)
+* [SQL veritabanı ve SQL veri ambarı için uyarılar](threat-protection.md#data-sql)
+* [Azure Storage uyarıları](threat-protection.md#azure-storage)
+* [Cosmos DB için uyarılar](threat-protection.md#cosmos-db)
 
 Aşağıdaki konularda, Azure üzerinde dağıtılan kaynaklar için ek koruma katmanları uygulamak amacıyla, güvenlik merkezi 'nin Azure altyapısıyla tümleştirerek topladığı farklı Telemetriyi nasıl kullandığı açıklanmaktadır:
 
-* [Hizmet katmanı uyarıları](security-center-alerts-service-layer.md)
-* [Azure WAF ve Azure DDoS koruması için tehdit algılama](security-center-alerts-integration.md)
+* [Azure Yönetim Katmanı (Azure Resource Manager) uyarıları (Önizleme)](threat-protection.md#management-layer)
+* [Azure Key Vault için uyarılar (Önizleme)](threat-protection.md#azure-keyvault)
+* [Azure ağ katmanı uyarıları](threat-protection.md#network-layer)
+* [Diğer hizmetlerden gelen uyarılar](threat-protection.md#alerts-other)
 
 ## <a name="what-are-security-incidents"></a>Güvenlik olayları nelerdir?
 

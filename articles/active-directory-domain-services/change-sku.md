@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960574"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614230"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Mevcut Azure AD Domain Services yönetilen bir etki alanı için SKU 'YU değiştirme
 
@@ -46,7 +46,7 @@ Bu limitlerin hakkında daha fazla bilgi için bkz. [Azure AD DS SKU özellikler
 
 Azure AD DS yönetilen bir etki alanının SKU 'sunu Azure portal kullanarak değiştirmek için aşağıdaki adımları izleyin:
 
-1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. Listeden yönetilen etki alanınızı seçin, örneğin, *aadds.contoso.com*.
+1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. Listeden yönetilen etki alanınızı seçin, örneğin, *aaddscontoso.com*.
 1. Azure AD DS sayfanın sol tarafındaki menüde, **SKU > ayarlar**' ı seçin.
 
     ![Azure portal Azure AD DS yönetilen etki alanınız için SKU menü seçeneğini seçin](media/change-sku/overview-change-sku.png)

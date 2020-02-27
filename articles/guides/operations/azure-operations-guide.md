@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970853"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623570"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
 
@@ -86,9 +86,9 @@ Uygulama iş yükünü barındırmak ve çalıştırmak için hizmetler:
 
 - Azure Service Fabric
 
-- Azure Kapsayıcı Hizmeti
+- Azure Container Service
 
-### <a name="data-services"></a>Veri hizmetleri
+### <a name="data-services"></a>Veri Hizmetleri
 
 Verileri depolama ve yönetme Hizmetleri:
 
@@ -100,9 +100,9 @@ Verileri depolama ve yönetme Hizmetleri:
 
 - Microsoft Azure StorSimple
 
-- Redis için Azure Cache
+- Redis için Azure Önbelleği
 
-### <a name="application-services"></a>Uygulama hizmetleri
+### <a name="application-services"></a>Uygulama Hizmetleri
 
 Oluşturma ve işletim uygulamaları için hizmetler:
 
@@ -112,7 +112,7 @@ Oluşturma ve işletim uygulamaları için hizmetler:
 
 - Büyük verileri işlemek için Azure HDInsight
 
-- Azure Zamanlayıcı
+- Tümleştirme ve düzenleme iş akışları için Azure Logic Apps
 
 - Azure Media Services
 
@@ -120,7 +120,7 @@ Oluşturma ve işletim uygulamaları için hizmetler:
 
 Hem Azure hem de Azure ile şirket içi veri merkezleri arasında ağ hizmetleri için hizmetler:
 
-- Azure Sanal Ağı
+- Azure Sanal Ağ
 
 - Azure ExpressRoute
 
@@ -140,7 +140,7 @@ Azure, dünyanın dört bir yanındaki birçok bölgede genel olarak kullanılab
 
 Azure kullanmanın avantajlarından biri, uygulamalarınızı dünyanın dört bir yanındaki çeşitli veri merkezlerine dağıtabileceğiniz bir avantajdır. Seçtiğiniz bölge, uygulamanızın performansını etkileyebilir. Ağ isteklerindeki gecikmeyi azaltmak için müşterilerinizin en yakınına daha yakın bir bölge seçmek en iyisidir. Ayrıca, belirli ülkelerde/bölgelerde uygulamanızı dağıtmaya yönelik yasal gereksinimleri karşılamak için bir bölge seçebilirsiniz.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için kullanılabilen Web tabanlı bir uygulamadır. Azure portal [Portal.Azure.com](https://portal.azure.com)adresinde bulunur. Bu, Azure kaynaklarını yönetmeye yönelik özelleştirilebilir bir Pano ve araç içerir. Ayrıca faturalandırma ve abonelik bilgileri de sağlar. Daha fazla bilgi için bkz. [Microsoft Azure Portal genel bakış](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) ve [Azure kaynaklarını Portal üzerinden yönetme](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
@@ -336,7 +336,7 @@ PowerShell kullanarak bir Azure sanal makinesini dağıtmak, depolama ve ağ dah
 
 Azure işlem kaynaklarını tek tek dağıtmanın yanı sıra, bir Azure Resource Manager şablonu dağıtmak için Azure PowerShell modülünü de kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-powershell.md).
 
-#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLI)
+#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLı)
 
 PowerShell modülünde olduğu gibi, Azure komut satırı arabirimi de Dağıtım Otomasyonu sağlar ve Windows, OS X veya Linux sistemlerinde kullanılabilir. Azure CLı **VM hızlı oluşturma** komutunu kullanırken, tüm ilgili sanal makine kaynakları (depolama ve ağ dahil) ve sanal makine dağıtılır. Daha fazla bilgi için bkz. [CLI kullanarak Azure 'Da LINUX VM oluşturma](../../virtual-machines/linux/quick-create-cli.md).
 
@@ -350,7 +350,7 @@ Ağ güvenlik grubu (NSG) kaynağını kullanarak, genel IP adresi üzerinden sa
 
 Son olarak, herhangi bir bilgisayar sisteminin yönetiminde olduğu gibi, güvenlik kimlik bilgilerini ve yazılım güvenlik duvarlarını kullanarak işletim sisteminde bir Azure sanal makinesi için güvenlik sağlamanız gerekir.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 Azure depolama, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan, Microsoft tarafından yönetilen bir hizmettir. Herhangi bir kaynak dağıtım yöntemi kullanarak bir Azure Depolama hesabını kaynak olarak herhangi bir kaynak grubuna ekleyebilirsiniz. Azure dört depolama türü içerir: BLOB depolama, dosya depolama, tablo depolama ve kuyruk depolama. Bir depolama hesabı dağıtıldığında, genel amaçlı ve BLOB depolama olmak üzere iki hesap türü vardır. Genel amaçlı bir depolama hesabı, dört depolama türüne erişmenizi sağlar. BLOB depolama hesapları, genel amaçlı hesaplara benzer, ancak sık ve soğuk erişim katmanları içeren özel blob 'lar içerir. BLOB depolama hakkında daha fazla bilgi için bkz. [Azure Blob depolama](../../storage/blobs/storage-blob-storage-tiers.md).
 
@@ -366,17 +366,17 @@ Azure depolama hesapları farklı artıklık düzeyleriyle yapılandırılabilir
 
 Her depolama türünün farklı bir kullanım durumu vardır.
 
-#### <a name="blob-storage"></a>Blob depolaması
+#### <a name="blob-storage"></a>Blob depolama
 
 Sözcük *blobu* , *ikili büyük nesnenin*kısaltması olur. Blob 'lar, bilgisayarınızda depoladığınız gibi yapılandırılmamış dosyalardır. Blob Storage belge, medya dosyası veya uygulama yükleyici gibi her tür metin veya ikili veri depolayabilir. Blob Storage aynı zamanda nesne depolama olarak adlandırılır. Azure Blob depolama, Azure sanal makineler veri disklerini de barındırır.
 
-Azure Depolama üç blob türünü destekler:
+Azure depolama üç tür blob destekler:
 
-- **Blok Blobları** , normal dosyaları 195 GB 'a kadar (4 MB × 50.000 blok) tutmak için kullanılır. Blok bloblarının birincil kullanım örneği, medya dosyaları veya web siteleri için görüntü dosyaları gibi baştan sona okunan dosyaların depolanmasıdır. Bunlar blok Blobları olarak adlandırılır çünkü 64 MB 'tan büyük dosyalar küçük bloklar olarak karşıya yüklenmelidir. Bu bloklar daha sonra son bloba birleştirilir (veya kaydedilir).
+- **Blok Blobları** , normal dosyaları 195 GB 'a kadar (4 MB × 50.000 blok) tutmak için kullanılır. Blok Blobları için birincil kullanım örneği, medya dosyaları veya Web siteleri için görüntü dosyaları gibi baştan sona okunan dosyaların depolanması olur. Bunlar blok Blobları olarak adlandırılır çünkü 64 MB 'tan büyük dosyalar küçük bloklar olarak karşıya yüklenmelidir. Bu bloklar daha sonra son bloba birleştirilir (veya kaydedilir).
 
-- **Sayfa Blobları** , boyutu 1 TB 'ye kadar olan rastgele erişim dosyalarını tutmak için kullanılır. Sayfa Blobları, Azure 'da IaaS işlem hizmeti olan Azure sanal makineleri için dayanıklı diskler sağlayan VHD 'ler için genellikle yedekleme depolama alanı olarak kullanılır. 512 baytlık sayfalara rastgele okuma/yazma erişimi sağladıklarından sayfa blobu olarak adlandırılır.
+- **Sayfa Blobları** , boyutu 1 TB 'ye kadar olan rastgele erişim dosyalarını tutmak için kullanılır. Sayfa Blobları, Azure 'da IaaS işlem hizmeti olan Azure sanal makineleri için dayanıklı diskler sağlayan VHD 'ler için genellikle yedekleme depolama alanı olarak kullanılır. Bunlar, 512 baytlık sayfalara rastgele okuma/yazma erişimi sağladığından sayfa Blobları olarak adlandırılmaktadır.
 
-- **Ekleme Blobları** blok Blobları gibi bloklardan oluşur, ancak ekleme işlemleri için en iyi duruma getirilir. Bunlar, bir veya daha fazla kaynaktan aynı bloba bilgi günlüğe kaydetmek için sık kullanılır. Örneğin, birden çok VM 'de çalışan bir uygulama için izleme günlüğü 'nün tümünü aynı ekleme blobuna yazabilirsiniz. Tek bir ekleme blobu en fazla 195 GB olabilir.
+- **Ekleme Blobları** blok Blobları gibi bloklardan oluşur, ancak ekleme işlemleri için en iyi duruma getirilir. Bunlar, bir veya daha fazla kaynaktan aynı bloba bilgi günlüğe kaydetmek için sık kullanılır. Örneğin, birden çok VM 'de çalışan bir uygulama için izleme günlüğü 'nün tümünü aynı ekleme blobuna yazabilirsiniz. Tek bir ekleme blobu 195 GB 'a kadar olabilir.
 
 Daha fazla bilgi için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
@@ -388,7 +388,7 @@ Bir dosya depolama payı standart bir SMB dosya paylaşımında olduğundan, Azu
 
 Daha fazla bilgi için bkz. [Windows 'Da Azure dosya depolama ile çalışmaya başlama](../../storage/files/storage-how-to-use-files-windows.md) veya [Linux ile Azure dosya depolama 'yı kullanma](../../storage/files/storage-how-to-use-files-linux.md).
 
-#### <a name="table-storage"></a>Tablo depolaması
+#### <a name="table-storage"></a>Table Storage
 
 Azure Table Storage, bulutta yapılandırılmış NoSQL verileri depolayan bir hizmettir. Tablo depolama, şema daha az bir tasarıma sahip bir anahtar/öznitelik deposudur. Tablo Depolaması şemadan daha az olduğundan, uygulamanızın ihtiyaçları geliştikçe verilerinizi kolayca uyarlayabilirsiniz. Her türlü uygulama için verilere erişim hızlı ve uygun maliyetlidir. Table Storage, benzer hacimdeki veriler için geleneksel SQL’e oranla çok daha düşük maliyetlidir.
 
@@ -418,7 +418,7 @@ PowerShell kullanarak bir Azure depolama hesabı dağıtmak, depolama hesabını
 
 Azure kaynaklarını tek tek dağıtmanın yanı sıra, bir Azure Resource Manager şablonu dağıtmak için Azure PowerShell modülünü kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-powershell.md).
 
-#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLI)
+#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLı)
 
 PowerShell modülünde olduğu gibi, Azure komut satırı arabirimi de Dağıtım Otomasyonu sağlar ve Windows, OS X veya Linux sistemlerinde kullanılabilir. Depolama hesabı oluşturmak için Azure CLı **depolama hesabı oluştur** komutunu kullanabilirsiniz. Daha fazla bilgi için Azure [depolama ile Azure CLI kullanma](../../storage/common/storage-azure-cli.md) konusuna bakın.
 
@@ -448,7 +448,7 @@ Her depolama hesabının, birincil ve ikincil olmak üzere iki kimlik doğrulama
 
 Kullanıcıların depolama kaynaklarınıza denetimli erişimi olması gerekiyorsa, paylaşılan erişim imzası oluşturabilirsiniz. Paylaşılan erişim imzası, bir depolama kaynağına temsilci erişimi sağlayan bir URL 'ye eklenebileceği bir belirteçtir. Belirtece sahip olan herkes, geçerli olduğu süre boyunca gösterdiği izinlerle işaret eden kaynağa erişebilir olabilir. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-## <a name="azure-virtual-network"></a>Azure Sanal Ağı
+## <a name="azure-virtual-network"></a>Azure Sanal Ağ
 
 Sanal makineler arasındaki iletişimleri desteklemek için sanal ağlar gereklidir. Alt ağları, özel IP adresini, DNS ayarlarını, güvenlik filtrelemeyi ve yük dengelemeyi tanımlayabilirsiniz. Azure farklı kullanımlar durumlarını destekler: yalnızca bulut ağları veya karma sanal ağlar.
 

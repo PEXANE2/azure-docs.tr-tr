@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460220"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623400"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -26,7 +26,7 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 | Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) bölüm anahtarı | 10,000 |
-| Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 10 GB |
+| Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 20 GB |
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız |
 | Veritabanı başına en fazla depolama alanı | Sınırsız |

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423770"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623451"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
@@ -105,8 +105,8 @@ Bir ağ geçidi cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikle
 
     | Görünen ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Yok          | Tarih   |
-    | Müşteri adı     | Yok          | Dize |
+    | Son Hizmet Tarihi | None          | Tarih   |
+    | Müşteri adı     | None          | Dize |
 
 2. **Kaydet**’i seçin.
 
@@ -207,4 +207,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Ardından şunları yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Cihaz bağlama](tutorial-connect-pnp-device.md)
+> [Cihaz bağlama](tutorial-connect-device.md)

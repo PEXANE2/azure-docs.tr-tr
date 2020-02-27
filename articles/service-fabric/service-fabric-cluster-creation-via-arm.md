@@ -3,17 +3,17 @@ title: Azure Service Fabric kümesi oluşturma
 description: Azure 'da Azure Resource Manager kullanarak güvenli bir Service Fabric kümesi ayarlamayı öğrenin.  Varsayılan bir şablon kullanarak veya kendi küme şablonunuzu kullanarak bir küme oluşturabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 935f67c25f4a2aee7d06be7591dbe7576c87806e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624122"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric kümesi oluşturma 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -26,7 +26,7 @@ Kümenin güvenliğini sağlamak için seçilen güvenlik türü (örn.: Windows
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu makalede, bir kümeyi dağıtmak için Service Fabric RM PowerShell veya Azure CLı modüllerini kullanın:
 
 * [Azure PowerShell 4,1 ve üzeri][azure-powershell]
@@ -36,7 +36,7 @@ Service Fabric modülleriyle ilgili başvuru belgelerini buradan bulabilirsiniz:
 * [Az. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLı modülü](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açın
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Bu makaledeki komutlardan birini çalıştırmadan önce önce Azure 'da oturum açın.
 
@@ -262,7 +262,7 @@ $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Azure CLı kullanarak kümeyi dağıtma:
@@ -271,11 +271,11 @@ Azure CLı kullanarak kümeyi dağıtma:
 declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
-declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+declare $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifier az $secretID  \
-    --template-file $templateFilePath --parameter-file $parametersFilePath 
+    --secret-identifier $secretID  \
+    --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

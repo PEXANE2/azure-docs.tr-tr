@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705311"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614090"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services içinde bir grup yönetilen hizmet hesabı (gMSA) oluşturun
 
@@ -65,32 +65,32 @@ Azure AD DS yönetilen etki alanları Microsoft tarafından kilitlendiğinden ve
 > [!TIP]
 > Bir gMSA oluşturmak için bu adımları gerçekleştirmek üzere [YÖNETIM sanal bilgisayarınızı kullanın][tutorial-create-management-vm]. Bu yönetim VM 'sinin gerekli AD PowerShell cmdlet 'leri ve yönetilen etki alanına bağlantısı olması gerekir.
 
-Aşağıdaki örnekte, *aadds.contoso.com*adlı Azure AD DS yönetilen etki alanında *Mynewou* adlı özel bir OU oluşturulur. Kendi OU ve yönetilen etki alanı adınızı kullanın:
+Aşağıdaki örnekte, *aaddscontoso.com*adlı Azure AD DS yönetilen etki alanında *Mynewou* adlı özel bir OU oluşturulur. Kendi OU ve yönetilen etki alanı adınızı kullanın:
 
 ```powershell
-New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
 Şimdi [New-ADServiceAccount][New-ADServiceAccount] cmdlet 'ini kullanarak bir gMSA oluşturun. Aşağıdaki örnek parametreler tanımlanmıştır:
 
 * **-Ad** *WebFarmSvc* olarak ayarlandı
 * **-Path** parametresi, önceki adımda oluşturulan gMSA için özel OU 'yu belirtir.
-* DNS girdileri ve hizmet sorumlusu adları *WebFarmSvc.aadds.contoso.com* için ayarlanır
-* *Contoso-sunucu $* ' daki sorumlular, parolayı almasına izin verilir.
+* DNS girdileri ve hizmet sorumlusu adları *WebFarmSvc.aaddscontoso.com* için ayarlanır
+* *Aaddscontoso-Server $* içindeki sorumluların, parolayı almasına izin verilir.
 
 Kendi adlarınızı ve etki alanı adlarınızı belirtin.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.aadds.contoso.com `
-    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -DNSHostName WebFarmSvc.aaddscontoso.com `
+    -Path "OU=MYNEWOU,DC=aaddscontoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
-        http/WebFarmSvc.aadds.contoso.com/contoso, `
-        http/WebFarmSvc/aadds.contoso.com, `
-        http/WebFarmSvc/contoso `
-    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+    -ServicePrincipalNames http/WebFarmSvc.aaddscontoso.com/aaddscontoso.com, `
+        http/WebFarmSvc.aaddscontoso.com/aaddscontoso, `
+        http/WebFarmSvc/aaddscontoso.com, `
+        http/WebFarmSvc/aaddscontoso `
+    -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
 Uygulamalar ve hizmetler artık gerektiğinde gMSA 'Yı kullanacak şekilde yapılandırılabilir.

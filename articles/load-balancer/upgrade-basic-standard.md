@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776670"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616744"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>Temel SKU 'dan standart SKU 'ya Azure genel Load Balancer yükseltme
+# <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 Bir yükseltmede iki aşama vardır:
@@ -28,8 +28,8 @@ Bu makalede yapılandırma geçişi ele alınmaktadır. Arka uç havuzlara sanal
 
 Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
-* Kaynak grubunda ve belirttiğiniz konumda bir standart ortak SKU Load Balancer oluşturur.
-* Temel SKU genel Load Balancer yapılandırmalarının yeni oluşturma standart ortak Load Balancer sorunsuz bir şekilde kopyasını oluşturur.
+* Kaynak grubunda ve belirttiğiniz konumda bir standart SKU Load Balancer oluşturur.
+* Temel SKU 'nun yapılandırmalarının Load Balancer yeni oluştur Standart Load Balancer sorunsuzca kopyasını oluşturur.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -70,18 +70,9 @@ Betiği çalıştırmak için:
 
 1. Az modülleri içeri aktarmak için `Import-Module Az` kullanın.
 
-1. Gerekli parametreleri incelemek için `Get-Help AzureLBUpgrade.ps1` çalıştırın:
+1. Gerekli parametreleri inceleyin:
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   Betik için Parametreler:
-   * **Oldrgname: [dize]: gereklidir** – bu, yükseltmek Istediğiniz mevcut temel Load Balancer kaynak grubudur. Bu dize değerini bulmak için Azure Portal ' a gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
+   * **Oldrgname: [dize]: gereklidir** – bu, yükseltmek Istediğiniz mevcut temel Load Balancer kaynak grubudur. Bu dize değerini bulmak için Azure portal gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
    * **Oldlbname: [dize]: gerekli** – bu, yükseltmek Istediğiniz mevcut temel dengeleyicinizin adıdır. 
    * **Newrgname: [dize]: gereklidir** – bu, standart Load Balancer oluşturulacağı kaynak grubudur. Yeni bir kaynak grubu veya var olan bir grup olabilir. Var olan bir kaynak grubunu seçerseniz, Load Balancer adının kaynak grubu içinde benzersiz olması gerektiğini unutmayın. 
    * **newLocation: [dize]: gerekli** – standart Load Balancer oluşturulacağı konumdur. Diğer mevcut kaynaklarla daha iyi ilişki sağlamak için, seçilen temel Load Balancer aynı konumun Standart Load Balancer aynı konuma devralması önerilir.
@@ -103,7 +94,7 @@ El ile test olarak Standart Load Balancer aracılığıyla az miktarda trafik g�
 Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzlarına sanal makineler eklemenin ve her biri için önerdiğimiz bazı senaryolar verilmiştir:
 
 * **Mevcut VM 'leri eski temel genel Load Balancer arka uç havuzlarından yeni oluşturulan standart ortak Load Balancer arka uç havuzlarından taşıma**.
-    1. Bu hızlı başlangıç görevleri yapmak için oturum açın [Azure portalında](https://portal.azure.com).
+    1. Bu hızlı başlangıçta görevleri yapmak için [Azure Portal](https://portal.azure.com)oturum açın.
  
     1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **Yeni oluşturulan standart Load Balancer** seçin.
    

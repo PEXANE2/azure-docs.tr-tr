@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704269"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612972"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki sistem durumlarını anlayın ve askıya alınmış etki alanlarını çözün
 
@@ -41,7 +41,7 @@ Azure AD DS yönetilen bir etki alanı aşağıdaki durumlardan birinde olabilir
 
 Doğru şekilde yapılandırılmış ve sorunsuz şekilde çalışan bir Azure AD DS yönetilen etki alanı *çalışır* durumda. Bu, yönetilen bir etki alanı için istenen durumdur.
 
-### <a name="what-to-expect"></a>Sizi neler bekliyor
+### <a name="what-to-expect"></a>Bekleneceğiniz
 
 * Azure platformu, yönetilen etki alanının durumunu düzenli olarak izleyebilir.
 * Yönetilen etki alanı için etki alanı denetleyicileri düzeltme eki uygulanmış ve düzenli olarak güncelleştirilir.
@@ -56,7 +56,7 @@ Bir uyarı örneği, kısıtlayıcı ağ güvenlik grubu olduğunda oluşur. Bu 
 
 Daha fazla bilgi için bkz. [Azure AD DS yönetilen etki alanı için uyarılarla ilgili sorun giderme][resolve-alerts].
 
-### <a name="what-to-expect"></a>Sizi neler bekliyor
+### <a name="what-to-expect"></a>Bekleneceğiniz
 
 Azure AD DS yönetilen bir etki alanı, *dikkat edilmesi* durumunda olduğunda, Azure platformu verileri düzenli olarak izleyebilmeyebilir, güncelleştiremez veya yedeklemeyebilir. Bazı durumlarda, örneğin, geçersiz bir ağ yapılandırmasıyla, yönetilen etki alanı için etki alanı denetleyicilerine ulaşılamıyor olabilir.
 
@@ -77,7 +77,7 @@ Azure AD DS yönetilen bir etki alanı, aşağıdaki nedenlerden biri için **as
 
 Yönetilen etki alanları, Azure platformu etki alanını yönetmediği, izleyemediğinde veya yedeklemediğinde askıya alınır. Yönetilen bir etki alanı, 15 gün boyunca *askıya alınmış* durumda kalır. Yönetilen etki alanına erişimi sürdürmek için, kritik uyarıları hemen çözümleyin.
 
-### <a name="what-to-expect"></a>Sizi neler bekliyor
+### <a name="what-to-expect"></a>Bekleneceğiniz
 
 Azure AD DS yönetilen bir etki alanı *askıya alınmış* durumda olduğunda aşağıdaki davranışla karşılaşmış olur:
 
@@ -96,7 +96,7 @@ Azure AD DS sistem durumu sayfasında, etki alanının askıya alındığını N
 *Askıya alınmış* durumda olan Azure AD DS yönetilen bir etki alanının durumunu geri yüklemek için aşağıdaki adımları izleyin:
 
 1. Azure portal **etki alanı Hizmetleri**' ni arayıp seçin.
-1. Listeden Azure AD DS yönetilen etki alanınızı ( *aadds.contoso.com*gibi) seçin ve ardından **sistem durumu**' nu seçin.
+1. Listeden Azure AD DS yönetilen etki alanınızı ( *aaddscontoso.com*gibi) seçin ve ardından **sistem durumu**' nu seçin.
 1. Askıya alma nedenine bağlı olarak, *AADDS503* veya *AADDS504*gibi bir uyarı seçin.
 1. Uyarıda belirtilen çözümleme bağlantısını seçin ve sorunu gidermek için adımları izleyin.
 
@@ -108,7 +108,7 @@ Yönetilen etki alanı *askıda* durumdayken uyarıları çözümledikten sonra,
 
 Azure AD DS yönetilen bir etki alanı 15 gün boyunca *askıya alınma* durumunda kalırsa, silinir. Bu işlem kurtarılamaz.
 
-### <a name="what-to-expect"></a>Sizi neler bekliyor
+### <a name="what-to-expect"></a>Bekleneceğiniz
 
 Azure AD DS yönetilen bir etki alanı *Silinmiş* duruma girdiğinde, aşağıdaki davranış görülür:
 

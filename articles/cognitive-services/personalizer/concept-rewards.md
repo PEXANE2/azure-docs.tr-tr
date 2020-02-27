@@ -1,31 +1,26 @@
 ---
 title: Ödül puanı-kişiselleştirici
-titleSuffix: Azure Cognitive Services
 description: Ödül puanı, kişiselleştirme seçiminin, rewarterctionıd 'nin Kullanıcı için ne kadar iyi olduğunu gösterir. Ödül puanı değeri, Kullanıcı davranışının gözlemlerini temel alarak iş mantığınızla belirlenir. Kişiselleştirici, remarları değerlendirerek makine öğrenimi modellerini ister.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490889"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623773"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Reward puanları, kişiselleştirmenin başarısını gösterir
 
 Ödül puanı, kişiselleştirme seçiminin, [rewarterctionıd](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)'nin Kullanıcı için ne kadar iyi olduğunu gösterir. Ödül puanı değeri, Kullanıcı davranışının gözlemlerini temel alarak iş mantığınızla belirlenir.
 
-Kişiselleştirici, remarları değerlendirerek makine öğrenimi modellerini ister. 
+Kişiselleştirici, remarları değerlendirerek makine öğrenimi modellerini ister.
+
+Kişiselleştirici kaynağınız için Azure portal varsayılan ödül [Puanını yapılandırmayı öğrenin](how-to-settings.md#configure-rewards-for-the-feedback-loop) .
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Kişiselleştiriciye yeniden Puanlama göndermek için ödül API kullanma
 
-Reward, [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)tarafından kişiselleştiriciye gönderilir. Genellikle, bir ödül 0 ve 1 ' den bir sayıdır. -1 değeri ile negatif bir ödül, bazı senaryolarda mümkündür ve yalnızca pekiştirmeye dayalı Learning (RL) ile karşılaşırsanız kullanılmalıdır. Kişiselleştirici, zaman içinde mümkün olan en yüksek miktarda yeniden elde etmek için modeli gözleyin.
+Reward, [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)tarafından kişiselleştiriciye gönderilir. Genellikle, bir ödül 0 ile 1 arasında bir sayıdır. -1 değeri ile negatif bir ödül, bazı senaryolarda mümkündür ve yalnızca pekiştirmeye dayalı Learning (RL) ile karşılaşırsanız kullanılmalıdır. Kişiselleştirici, zaman içinde mümkün olan en yüksek miktarda yeniden elde etmek için modeli gözleyin.
 
 Yeniden ödüller, Kullanıcı davranışı gerçekleştirildikten sonra gönderilir ve bu gün daha sonra günler olabilir. Kişiselleştirilmez bir olay, bir olayın yeniden ele alınmayacak şekilde değerlendirilene veya Azure portal bir varsayılan yeniden [beklenene](#reward-wait-time) kadar bekleneceği maksimum zaman.
 
@@ -47,16 +42,16 @@ Bu sinyalleri ve davranışları, ödül puanı bağlamı için göz önünde bu
 
 Bir Reward puanı, iş mantığınızdan hesaplanmalıdır. Puan şu şekilde gösterilebilir:
 
-* Tek bir sayı tek bir kez gönderilir 
+* Tek bir sayı tek bir kez gönderilir
 * Anında gönderilen puan (0,8 gibi) ve daha sonra gönderilen ek bir puan (genellikle 0,2).
 
 ## <a name="default-rewards"></a>Varsayılan ödüller
 
 Daha fazla [bekleme süresi](#reward-wait-time)içinde bir yeniden alma işlemi yoksa, bu sıralama çağrısının bu yana, kişiselleştirici, bu sıra olayına ilişkin **varsayılan** değeri örtülü olarak uygular.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Birden çok faktörle yeniden ödüller oluşturma  
+## <a name="building-up-rewards-with-multiple-factors"></a>Birden çok faktörle yeniden ödüller oluşturma
 
-Etkili kişiselleştirme için, daha fazla etkene göre ödül puanı oluşturabilirsiniz. 
+Etkili kişiselleştirme için, daha fazla etkene göre ödül puanı oluşturabilirsiniz.
 
 Örneğin, video içeriğinin bir listesini kişiselleştirmek için bu kuralları uygulayabilirsiniz:
 
@@ -93,10 +88,10 @@ Toplama skorları ekleyerek, son ödül tahmini beklenen puan aralığının dı
 * **İstemeden oluşan sonuçları göz önünde bulundurun**: [ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
 
 * **Artımlı yeniden kullanım**: daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
-    * Bir film listesi gösteriyorsa, Kullanıcı daha fazla bilgi görüntülemek için ilk bir kez üzerine gelirse, bazı kullanıcı katılımı olduğunu belirleyebilirsiniz. Davranış, 0,1 için bir ödül puanı ile sayabilir. 
-    * Kullanıcı sayfayı açtı ve sonra çıkmadıysa, ödül puanı 0,2 olabilir. 
+    * Bir film listesi gösteriyorsa, Kullanıcı daha fazla bilgi görüntülemek için ilk bir kez üzerine gelirse, bazı kullanıcı katılımı olduğunu belirleyebilirsiniz. Davranış, 0,1 için bir ödül puanı ile sayabilir.
+    * Kullanıcı sayfayı açtı ve sonra çıkmadıysa, ödül puanı 0,2 olabilir.
 
-## <a name="reward-wait-time"></a>bekleme süresi
+## <a name="reward-wait-time"></a>Bekleme süresi
 
 Kişiselleştirici, modeli eğitme çağrılarında, bir derece çağrısının bilgilerini, yeniden aramalarla gönderilen ödüller ile ilişkilendirilecektir. Bunlar, farklı zamanlarda gelebilir. Kişiselleştirici, derece çağrısının ne zaman meydana geldiği, sıralama çağrısının etkin olmayan bir olay olarak yapılmış ve daha sonra etkinleştirilse bile, sınırlı bir süre bekler.
 
@@ -106,12 +101,12 @@ Daha fazla **bekleme süresi** dolarsa ve hiçbir bilgi yoksa, eğitim için bu 
 
 Daha iyi sonuçlar için bu önerileri izleyin.
 
-* Kullanıcı geri bildirimi almak için yeterli zaman bırakarak, yeniden bekleme süresini olabildiğince kısa bir hale getirin. 
+* Kullanıcı geri bildirimi almak için yeterli zaman bırakarak, yeniden bekleme süresini olabildiğince kısa bir hale getirin.
 
 * Geri bildirim almak için gereken süreden daha kısa bir süre seçmeyin. Örneğin, bir Kullanıcı bir videonun 1 dakikalık bir süre sonra geliyorsa, deneme uzunluğu en az çift olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Pekiştirmeye dayalı öğrenme](concepts-reinforcement-learning.md) 
+* [Pekiştirmeye dayalı öğrenme](concepts-reinforcement-learning.md)
 * [Derecelendirme API 'sini deneyin](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [Reward API 'sini deneyin](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

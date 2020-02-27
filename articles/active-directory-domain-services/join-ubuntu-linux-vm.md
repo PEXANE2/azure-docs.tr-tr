@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 1cf1a97ed6350174511d61d924f893bb209736c2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 09654132b6e10f9905f79d1eb50f9bce220a7ab7
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712582"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613782"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına katma
 
@@ -42,7 +42,7 @@ Azure 'da mevcut bir Ubuntu Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir Ubuntu Linux VM oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istemeniz gerekiyorsa, aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalında](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portalındaki](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 *Konaklar* dosyasında, *localhost* adresini güncelleştirin. Aşağıdaki örnekte:
 
-* *aadds.contoso.com* , Azure AD DS yönetilen etkı alanının DNS etki alanı adıdır.
+* *aaddscontoso.com* , Azure AD DS yönetilen etkı alanının DNS etki alanı adıdır.
 * *Ubuntu* , yönetilen etki alanına katıldığınız Ubuntu VM 'nizin ana bilgisayar adıdır.
 
 Bu adları kendi değerlerinizle güncelleştirin:
 
 ```console
-127.0.0.1 ubuntu.aadds.contoso.com ubuntu
+127.0.0.1 ubuntu.aaddscontoso.com ubuntu
 ```
 
 İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *konaklar* dosyasını kaydedin ve kapatın.
@@ -78,7 +78,7 @@ Bu adları kendi değerlerinizle güncelleştirin:
 
 VM 'nin VM 'ye Azure AD DS tarafından yönetilen etki alanına katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için `apt-get` kullanarak etki alanına ekleme araçlarını güncelleştirin ve yüklemeyi yapın
 
-Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, Azure AD DS yönetilen etki alanının adı *aadds.contoso.com*Ise aeklemeleri ' i girin *.* Bölge olarak contoso.com. Yükleme, */etc/kronb5,conf* yapılandırma dosyasına `[realm]` ve `[domain_realm]` bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
+Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, Azure AD DS yönetilen etki alanının adı *aaddscontoso.com*ise, bölge olarak *AADDSCONTOSO.com* girin. Yükleme, */etc/kronb5,conf* yapılandırma dosyasına `[realm]` ve `[domain_realm]` bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
 
 ```console
 sudo apt-get update
@@ -95,10 +95,10 @@ Etki alanı iletişiminin doğru çalışması için, Ubuntu VM 'nizin tarih ve 
     sudo vi /etc/ntp.conf
     ```
 
-1. *NTP. conf* dosyasında, Azure AD DS yönetilen etkı alanının DNS adını eklemek için bir satır oluşturun. Aşağıdaki örnekte, *aadds.contoso.com* için bir giriş eklenmiştir. Kendi DNS adınızı kullanın:
+1. *NTP. conf* dosyasında, Azure AD DS yönetilen etkı alanının DNS adını eklemek için bir satır oluşturun. Aşağıdaki örnekte, *aaddscontoso.com* için bir giriş eklenmiştir. Kendi DNS adınızı kullanın:
 
     ```console
-    server aadds.contoso.com
+    server aaddscontoso.com
     ```
 
     İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *NTP. conf* dosyasını kaydedin ve kapatın.
@@ -113,7 +113,7 @@ Etki alanı iletişiminin doğru çalışması için, Ubuntu VM 'nizin tarih ve 
 
     ```console
     sudo systemctl stop ntp
-    sudo ntpdate aadds.contoso.com
+    sudo ntpdate aaddscontoso.com
     sudo systemctl start ntp
     ```
 
@@ -121,30 +121,30 @@ Etki alanı iletişiminin doğru çalışması için, Ubuntu VM 'nizin tarih ve 
 
 Gerekli paketler VM 'de yüklü olduğundan ve NTP yapılandırıldıktan sonra, VM 'yi Azure AD DS yönetilen etki alanına ekleyin.
 
-1. Azure AD DS yönetilen etki alanını saptamak için `realm discover` komutunu kullanın. Aşağıdaki örnek, Aeklemesine bölge 'yi bulur *. CONTOSO.COM*. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
+1. Azure AD DS yönetilen etki alanını saptamak için `realm discover` komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
 
     ```console
-    sudo realm discover AADDS.CONTOSO.COM
+    sudo realm discover AADDSCONTOSO.COM
     ```
 
    `realm discover` komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
 
-    * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping aadds.contoso.com` deneyin.
+    * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping aaddscontoso.com` deneyin.
     * VM 'nin aynı veya Azure AD DS yönetilen etki alanının kullanılabildiği eşlenmiş bir sanal ağa dağıtıldığını denetleyin.
     * Sanal ağ için DNS sunucu ayarlarının, Azure AD DS yönetilen etki alanının etki alanı denetleyicilerini işaret etmek üzere güncelleştirildiğinden emin olun.
 
 1. Şimdi `kinit` komutunu kullanarak Kerberos başlatın. *AAD DC Administrators* grubuna ait olan bir kullanıcı belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, `contosoadmin@aadds.contoso.com` adlı hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin:
+    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, `contosoadmin@aaddscontoso.com` adlı hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin:
 
     ```console
-    kinit contosoadmin@AADDS.CONTOSO.COM
+    kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS tarafından yönetilen etki alanına katın. Önceki `kinit` komutunda belirttiğiniz *AAD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabını kullanın, örneğin `contosoadmin@AADDS.CONTOSO.COM`:
+1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS tarafından yönetilen etki alanına katın. Önceki `kinit` komutunda belirttiğiniz *AAD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabını kullanın, örneğin `contosoadmin@AADDSCONTOSO.COM`:
 
     ```console
-    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM' --install=/
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
     ```
 
 VM 'nin Azure AD DS yönetilen etki alanına katılması birkaç dakika sürer. Aşağıdaki örnek çıktı, sanal makinenin Azure AD DS yönetilen etki alanına başarıyla katıldığını göstermektedir:
@@ -248,10 +248,10 @@ Ubuntu VM 'de *AAD DC yöneticileri* grubu yönetici ayrıcalıklarının üyele
 
 VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. `contosoadmin@aadds.contoso.com` gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından sanal makinenizin adresini girin (örneğin, *Ubuntu.aadds.contoso.com*). Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. `contosoadmin@aaddscontoso.com` gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından sanal makinenizin adresini girin (örneğin, *Ubuntu.aaddscontoso.com*). Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com ubuntu.aadds.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com ubuntu.aaddscontoso.com
     ```
 
 1. VM 'ye başarıyla bağlandığınızda, giriş dizininin doğru şekilde başlatıldığını doğrulayın:

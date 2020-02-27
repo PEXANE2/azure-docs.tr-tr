@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ab4569860d24a397816aa2e6c92f2e90f9a14ed1
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526558"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615929"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -36,7 +36,7 @@ Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilebilir o
 
 Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API sürümleri tüm Azure bölgelerinde kullanılabilir olmayabilir.
 
-Regions                                        | Sonrası?                                 | Desteklenen Sürümler
+Bölgeler                                        | Sonrası?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
@@ -106,11 +106,11 @@ Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir
 
 API | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | nesnesinde | text
+/Instance | nesnesinde | metin
 /scheduledevents | nesnesinde | yok
 /attested | nesnesinde | yok
 
-Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
+Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örnek:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -126,7 +126,7 @@ Ayrıca, gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmam
 
 ### <a name="error"></a>Hata
 
-Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
+Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örnek:
 
 HTTP Durum Kodu | Neden
 ----------------|-------
@@ -134,6 +134,7 @@ HTTP Durum Kodu | Neden
 400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
 404 bulunamadı | İstenen öğe yok
 405 yöntemine Izin verilmiyor | Yalnızca `GET` istekleri destekleniyor
+410 gitti | En fazla 70 saniye boyunca bir süre sonra yeniden deneyin
 429 çok fazla Istek | API Şu anda saniyede en çok 5 sorgu destekliyor
 500 hizmet hatası     | Bir süre sonra yeniden dene
 
@@ -457,7 +458,7 @@ identity | Azure kaynakları için Yönetilen kimlikler. Bkz. [erişim belirteci
 instance | Bkz. [örnek API 'si](#instance-api) | 2017-04-02
 scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Örnek API 'SI
+### <a name="instance-api"></a>Örnek API 'SI
 
 Aşağıdaki Işlem kategorileri örnek API aracılığıyla kullanılabilir:
 
@@ -570,7 +571,6 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 
 İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 
-
 ## <a name="example-scenarios-for-usage"></a>Kullanım için örnek senaryolar  
 
 ### <a name="tracking-vm-running-on-azure"></a>Azure üzerinde çalıştırılan VM'yi izleme
@@ -589,7 +589,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Hata/güncelleştirme etki alanı temelinde kapsayıcıların, veri bölümlerinin yerleşimi 
+### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Hata/güncelleştirme etki alanı temelinde kapsayıcıların, veri bölümlerinin yerleşimi
 
 Bazı senaryolarda, farklı veri çoğaltmalarının yerleştirilmesi önemli öneme sahiptir. Örneğin, bir [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) aracılığıyla yapılan [çoğaltma yerleştirmesi](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) veya kapsayıcı YERLEŞTIRMESI `platformFaultDomain` bilmeniz ve VM 'nin üzerinde çalıştığı `platformUpdateDomain` gerekir.
 Bu kararları vermek için örneklerin [kullanılabilirlik alanları](../../availability-zones/az-overview.md) de kullanabilirsiniz.
@@ -609,7 +609,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>Destek olayı sırasında VM hakkında daha fazla bilgi alma
 
-Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz bir destek çağrısı alabilirsiniz. Müşterinin işlem meta verilerinin paylaşılmasını sormak, destek uzmanı 'nın Azure 'daki sanal makine türü hakkında bilgi sahibi olmak için temel bilgiler sağlayabilir. 
+Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz bir destek çağrısı alabilirsiniz. Müşterinin işlem meta verilerinin paylaşılmasını sormak, destek uzmanı 'nın Azure 'daki sanal makine türü hakkında bilgi sahibi olmak için temel bilgiler sağlayabilir.
 
 **İstek**
 
@@ -723,7 +723,7 @@ AzurePublicCloud
 
 Azure ortamının bölgeleri ve değerleri aşağıda listelenmiştir.
 
- Regions | Azure ortamı
+ Bölgeler | Azure ortamı
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -839,10 +839,12 @@ Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulay
 
  Bulut | Sertifika
 ---------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+İmzalanmak üzere kullanılan sertifika etrafında bilinen bir sorun var. Sertifikalar, genel bulut için `metadata.azure.com` tam olarak eşleşmiyor olabilir. Bu nedenle, sertifika doğrulaması herhangi bir `.metadata.azure.com` alt etki alanından ortak bir ada izin verilmelidir.
 
 ```bash
 
@@ -915,7 +917,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veriler    | Açıklama
 --------|-----------------
-id      | Kaynak Kimliği
+id      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
 publisher | Görüntü yayımcısı
 sku     | Görüntü SKU 'su
@@ -1026,7 +1028,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 Dil | Örnek
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Git  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Başlayın  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

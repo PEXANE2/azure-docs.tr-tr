@@ -3,22 +3,22 @@ title: Azure 'da SAP HANA için ekleme gereksinimleri (büyük örnekler) | Micr
 description: Azure 'daki SAP HANA için ekleme gereksinimleri (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99ad334a526b269879034dcc0e1cd0b1b22f1f7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101188"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617012"
 ---
 # <a name="onboarding-requirements"></a>Ekleme gereksinimleri
 
@@ -27,12 +27,12 @@ Bu liste Azure üzerinde SAP HANA çalıştırmaya yönelik gereksinimleri (daha
 **Microsoft Azure**
 
 - Azure 'da SAP HANA bağlantılı olabilecek bir Azure aboneliği (büyük örnekler).
-- Microsoft Premier destek sözleşmesi. Azure 'da SAP çalıştırmaya ilişkin belirli bilgiler için, bkz [. sap destek notuna #2015553 – SAP Microsoft Azure: Destek önkoşulları](https://launchpad.support.sap.com/#/notes/2015553). 384 ve daha fazla CPU ile HANA büyük örnek birimleri kullanıyorsanız, Premier destek sözleşmesini Azure Rapid Response dahil etmek için de genişletmeniz gerekir.
+- Microsoft Premier destek sözleşmesi. Azure 'da SAP çalıştırmaya ilişkin belirli bilgiler için, bkz. sap [destek Note #2015553 – sap Microsoft Azure: destek önkoşulları](https://launchpad.support.sap.com/#/notes/2015553). 384 ve daha fazla CPU ile HANA büyük örnek birimleri kullanıyorsanız, Premier destek sözleşmesini Azure Rapid Response dahil etmek için de genişletmeniz gerekir.
 - SAP ile boyutlandırma alıştırması gerçekleştirdikten sonra ihtiyacınız olan HANA büyük örnek SKU 'Larının farkında.
 
 **Ağ bağlantısı**
 
-- Şirket içi ile Azure arasında ExpressRoute: Şirket içi veri merkezinizi Azure 'a bağlamak için, ISS 'nizden en az 1 Gbps bir bağlantı sipariş ettiğinizden emin olun. HANA büyük örnek birimleri ve Azure arasında bağlantı, ExpressRoute teknolojisini de kullanıyor. HANA büyük örnek birimleri ve Azure arasındaki bu ExpressRoute bağlantısı, bu belirli ExpressRoute devresi için tüm veri giriş ve çıkış ücretleri dahil olmak üzere HANA büyük örnek birimlerinin fiyatına dahildir. Bu nedenle, müşteri olarak, şirket içi ve Azure arasında ExpressRoute bağlantılarınızın ötesinde ek maliyetlerle karşılaşmazsınız.
+- Şirket içi ile Azure arasında ExpressRoute: şirket içi veri merkezinizi Azure 'a bağlamak Için, ISS 'nizden en az 1 Gbps bir bağlantı sipariş ettiğinizden emin olun. HANA büyük örnek birimleri ve Azure arasında bağlantı, ExpressRoute teknolojisini de kullanıyor. HANA büyük örnek birimleri ve Azure arasındaki bu ExpressRoute bağlantısı, bu belirli ExpressRoute devresi için tüm veri giriş ve çıkış ücretleri dahil olmak üzere HANA büyük örnek birimlerinin fiyatına dahildir. Bu nedenle, müşteri olarak, şirket içi ve Azure arasında ExpressRoute bağlantılarınızın ötesinde ek maliyetlerle karşılaşmazsınız.
 
 **İşletim sistemi**
 
@@ -49,8 +49,8 @@ Bu liste Azure üzerinde SAP HANA çalıştırmaya yönelik gereksinimleri (daha
 
 - Red Hat abonelik Yöneticisi bir VM 'de Azure 'da dağıtılır. Red Hat abonelik Yöneticisi, Azure 'daki SAP HANA (büyük örnekler), Red Hat tarafından kaydedilmesini ve sırasıyla güncelleştirilmesini sağlar. (Azure büyük örnek damgasında dağıtılan kiracının içinden doğrudan internet erişimi yoktur.)
 - SAP, Linux sağlayıcınızda de bir destek sözleşmesi olmasını gerektirir. Bu gereksinim, HANA büyük örnek çözümü veya Linux 'u Azure 'da çalıştırdığınız olguyu tarafından kaldırılmaz. Linux Azure Galeri görüntülerinin bazılarından farklı olarak hizmet ücreti, HANA büyük örnek çözüm teklifine dahil *değildir* . Linux dağıtıcısına sahip destek sözleşmeleri ile ilgili SAP gereksinimlerini karşılamak sizin sorumluluğunuzdadır. 
-   - SUSE Linux için SAP Note #1984787-SUSE Linux Enterprise Server 12 ' de [destek sözleşmeleri gereksinimlerini arayın: Yükleme notları](https://launchpad.support.sap.com/#/notes/1984787) ve [SAP Not #1056161-SAP uygulamaları için SUSE öncelik desteği](https://launchpad.support.sap.com/#/notes/1056161).
-   - Red Hat Linux için, HANA büyük örnek işletim sistemlerine yönelik destek ve hizmet güncelleştirmelerini içeren doğru abonelik düzeylerine sahip olmanız gerekir. Red hat, SAP çözümü için Red Hat Enterprise Linux aboneliğini önerir. Başvurun https://access.redhat.com/solutions/3082481. 
+   - SUSE Linux için [SAP not #1984787-SUSE Linux Enterprise Server 12: yükleme notları](https://launchpad.support.sap.com/#/notes/1984787) ve [SAP Not #1056161-SAP uygulamaları için SUSE Priority desteği](https://launchpad.support.sap.com/#/notes/1056161)olan destek sözleşmeleri gereksinimlerini arayın.
+   - Red Hat Linux için, HANA büyük örnek işletim sistemlerine yönelik destek ve hizmet güncelleştirmelerini içeren doğru abonelik düzeylerine sahip olmanız gerekir. Red hat, SAP çözümü için Red Hat Enterprise Linux aboneliğini önerir. https://access.redhat.com/solutions/3082481başvurun. 
 
 Farklı Linux sürümlerindeki farklı SAP HANA sürümlerinin destek matrisi için bkz. [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 

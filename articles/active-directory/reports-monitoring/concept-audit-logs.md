@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714483"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648434"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -41,11 +41,11 @@ Bu makale, denetim raporuna genel bir bakış sağlar.
  
 ## <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
-* **Güvenlik Yöneticisi**, **güvenlik okuyucu**, **rapor okuyucu** veya **genel yönetici** rollerinin kullanıcıları
+* **Güvenlik Yöneticisi**, **güvenlik okuyucu**, **rapor okuyucu** , **Genel okuyucu** veya **genel yönetici** rolleri içindeki kullanıcılar
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Azure AD denetim günlükleri, uyumluluk için sistem etkinliklerinin kayıtlarını sağlar. Denetim raporuna erişmek için **Azure Active Directory** **etkinlik** bölümündeki **Denetim günlükleri** ' ni seçin. Denetim günlüklerinin bir saate kadar gecikme sürebileceğini unutmayın. bu nedenle, görevi tamamladıktan sonra Denetim etkinlik verilerinin portalda gösterilmesi uzun sürebilir.
+Azure AD denetim günlükleri, uyumluluk için sistem etkinliklerinin kayıtlarını sağlar. Denetim raporuna erişmek için **Azure Active Directory** **izleme** bölümünde **Denetim günlükleri** ' ni seçin. Denetim günlüklerinin bir saate kadar gecikme sürebileceğini unutmayın. bu nedenle, görevi tamamladıktan sonra Denetim etkinlik verilerinin portalda gösterilmesi uzun sürebilir.
 
 
 
@@ -90,16 +90,20 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 **Hizmet** filtresi, aşağıdaki hizmetlerin açılan listesinden seçim yapmanıza olanak sağlar:
 
 - Tümü
+- AAD yönetim UX
 - Erişim Gözden Geçirmeleri
-- Hesap Sağlama 
-- Uygulama SSO 'SU
+- Hesap Sağlama
+- Uygulama Ara Sunucusu
 - Kimlik Doğrulaması Yöntemleri
 - B2C
 - Koşullu Erişim
 - Çekirdek Dizin
 - Yetkilendirme Yönetimi
+- Karma kimlik doğrulaması
 - Kimlik Koruması
 - Davetli Kullanıcılar
+- MIM Hizmeti
+- MyApps
 - PıM
 - Self Servis Grup Yönetimi
 - Self Servis Parola Yönetimi
@@ -118,7 +122,11 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- KeyManagement
+- Etiketle
 - Diğer
+- PermissionGrantPolicy
 - İlke
 - ResourceManagement
 - RoleManagement
@@ -134,14 +142,13 @@ Graph API kullanarak tüm denetim etkinliklerinin listesini alabilirsiniz: `http
 - Başarılı
 - Hata
 
-**Hedef** filtre, belirli bir hedefin adına veya Kullanıcı asıl ADıNA (UPN) göre arama yapmanıza olanak tanır. Hedef adı ve UPN, büyük/küçük harfe duyarlıdır. 
+**Hedef** filtre, ad veya Kullanıcı asıl adı (UPN) ile başlayarak belirli bir hedef için arama yapmanıza olanak tanır. Hedef adı ve UPN, büyük/küçük harfe duyarlıdır. 
 
-**Başlatan** filtresi, bir aktörün adını ya da evrensel asıl adı (UPN) tanımlamanıza olanak sağlar. Ad ve UPN, büyük/küçük harfe duyarlıdır.
+**Başlatan** filtresi, bir aktör adının veya bir evrensel asıl ADıNıN (UPN) ile nasıl başlayacağını tanımlamanızı sağlar. Ad ve UPN, büyük/küçük harfe duyarlıdır.
 
 **Tarih aralığı** filtresi, döndürülen veriler için bir zaman çerçevesi tanımlamanıza olanak sağlar.  
 Olası değerler şunlardır:
 
-- 1 ay
 - 7 gün
 - 24 saat
 - Özel
@@ -179,11 +186,11 @@ Kullanıcı ve grup tabanlı denetim raporları ile aşağıdakiler gibi sorular
 
 - Bir grup veya kullanıcıya hangi lisanslar atanmış?
 
-Yalnızca kullanıcılarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kullanıcılar** sekmesinin **etkinlik** bölümündeki **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasındaki **Kullanıcı yönetimi** , önceden seçilmiş kategori olarak var.
+Yalnızca kullanıcılarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kullanıcılar** sekmesinin **izleme** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasındaki **Kullanıcı yönetimi** , önceden seçilmiş kategori olarak var.
 
 ![Denetim günlükleri](./media/concept-audit-logs/users.png "Denetim günlükleri")
 
-Yalnızca gruplarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **gruplar** sekmesinin **etkinlik** bölümündeki **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktası, önceden seçilmiş kategori olarak **Groupmanagement** 'a sahiptir.
+Yalnızca gruplarla ilgili denetim verilerini gözden geçirmek istiyorsanız, **gruplar** sekmesinin **izleme** bölümünde **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktası, önceden seçilmiş kategori olarak **Groupmanagement** 'a sahiptir.
 
 ![Denetim günlükleri](./media/concept-audit-logs/groups.png "Denetim günlükleri")
 

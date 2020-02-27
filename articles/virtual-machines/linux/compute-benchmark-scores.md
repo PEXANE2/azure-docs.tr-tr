@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036703"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650853"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux sanal makineleri için kıyaslama puanlarını hesaplama
 Aşağıdaki CoreMark kıyaslama puanları, Ubuntu çalıştıran Azure 'un yüksek performanslı VM sıralaması için işlem performansını gösterir. İşlem kıyaslama puanları [Windows VM 'leri](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için de kullanılabilir.
@@ -52,6 +52,8 @@ Aşağıdaki CoreMark kıyaslama puanları, Ubuntu çalıştıran Azure 'un yük
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 8 | 1 | 62,9 | 49.838 | 633 | % 1,27 | 182 |
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 8 | 1 | 62,9 | 49.123 | 2\.483 | % 5,05 | 259 |
 
+Note: AV2 serisi VM 'Ler, çeşitli donanım türlerinde ve işlemcilerde (yukarıda görüldüğü gibi) dağıtılabilir. AV2 serisi VM 'Lerde geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansı ve bellek yapılandırması vardır. Bu boyut, dağıtıldığı donanımdan bağımsız olarak, çalışan örnek için görece tutarlı işlemci performansı sunacak şekilde kısıtlanıyor; Ancak, daha yeni işlemci iyileştirmelerinden faydalanan yazılımlar, işlemci türlerinde daha fazla önemli çeşitleme görebilirler.
+
 ## <a name="b---burstable"></a>B-Burstable
 (3/15/2019 12:27:08, PBI 3897709)
 
@@ -69,6 +71,10 @@ Aşağıdaki CoreMark kıyaslama puanları, Ubuntu çalıştıran Azure 'un yük
 | Standard_B4ms | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 54.051 | 1\.260 | % 2,33 | 672 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 111.929 | 1\.562 | % 1,40 | 35 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 8 | 1 | 31,4 | 109.537 | 1\.354 | % 1,24 | 665 |
+
+Note: B serisi VM 'Ler, sabit performans gereksinimlerine sahip iş yükleri içindir. VM örnekleri, taban çizgisinden daha az kullanırken kredileri biriktir. VM 'nin birikmiş kredisi varsa, VM kısa CPU veri bloğu gereksinimlerini karşılamak için %100 ' e kadar olan taban çizgisinin üzerine veri bloğu oluşturabilir. Patlama süresi, VM boyutu ve saati işlevi olan kullanılabilir kredilerine bağlıdır.  
+
+CoreMark, genellikle kullanılabilir patlama kredileri içinde tamamlanan, kısa bir çalışan sınamadır.  Bu nedenle yukarıdaki numaralar genellikle VM 'nin veri bloğu performansını temsil eder; bu da kısa, bursty, iş yüklerinin (genellikle B serisi üzerinde tipik olarak) performans olduğunu yansıtır.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3-genel Işlem + Premium Depolama
 (3/12/2019 6:52:03 PM PBI 3897709)

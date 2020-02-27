@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 79dd6160b65469d6a44167913adb7e319f0f583a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c6883b9b79adfc4f91af354147d45ea27d806d78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525354"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614485"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -27,7 +27,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 * Yaklaşım analizi
 * Dil algılama
 * Varlık tanıma
-* Anahtar tümcecik ayıklama
+* Anahtar ifade ayıklama
 
 ::: zone pivot="programming-language-csharp"
 
@@ -82,7 +82,7 @@ Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dil
 | Dil | Kullanılabilir sürüm | 
 |----------|------------------------|
 | Ruby     | [Sürüm 2,1](ruby-sdk.md) | 
-| Git       | [Sürüm 2,1](go-sdk.md) | 
+| Başlayın       | [Sürüm 2,1](go-sdk.md) | 
 
 ::: zone-end
 

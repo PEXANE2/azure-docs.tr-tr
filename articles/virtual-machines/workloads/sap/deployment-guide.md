@@ -4,7 +4,7 @@ description: Azure 'da Linux sanal makinelerinde SAP yazılımı dağıtmayı ö
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19dc9f25cc7355eb540b68f009a77b1ca1e5fb86
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614891"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -117,7 +117,7 @@ ms.locfileid: "75645863"
 [deployment-guide-4.1]:deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Azure PowerShell cmdlet 'leri dağıtma)
 [deployment-guide-4.2]:deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (SAP ile ilgili PowerShell cmdlet 'lerini indirme ve içeri aktarma)
 [deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (VM 'yi şirket içi etki alanına ekleme-yalnızca Windows)
-[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux)
+[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 ('Un)
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Azure VM aracısını indirme, yükleme ve etkinleştirme)
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLı)
@@ -315,7 +315,7 @@ Azure sanal makineleri, işlem ve depolama kaynakları, en kısa sürede ve uzun
 
 Bu makalede, farklı dağıtım seçenekleri ve sorun giderme dahil olmak üzere Azure 'daki sanal makinelerde (VM) SAP uygulamaları dağıtma adımları ele alınmaktadır. Bu makalede, [SAP NetWeaver için planlama ve uygulama Için Azure sanal makineler][planning-guide]'de bilgi oluşturulur. Ayrıca SAP yazılım yükleme ve dağıtmaya yönelik birincil kaynaklar olan SAP yükleme belgelerini ve SAP notlarını da tamamlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -420,18 +420,18 @@ Azure Marketi 'nden bir görüntüyle yeni bir sanal makine oluşturmanın en ko
 
 Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara ek olarak, sanal makineyi oluşturmak için gerekli parametreleri ayarlama sırasında size rehberlik eder. Bu parametrelerden bazıları şunlardır:
 
-1. **Temel**:
+1. **Temel bilgiler**:
    * **Ad**: kaynağın adı (sanal makine adı).
    * **VM disk türü**: işletim sistemi diskinin disk türünü seçin. Veri diskleriniz için Premium Depolama kullanmak istiyorsanız, işletim sistemi diski için Premium Depolama kullanmanızı da öneririz.
    * **Kullanıcı adı ve parola** ya da **SSH ortak anahtarı**: sağlama sırasında oluşturulan kullanıcının Kullanıcı adını ve parolasını girin. Linux sanal makinesi için, makinede oturum açmak için kullandığınız genel Secure Shell (SSH) anahtarını girebilirsiniz.
    * **Abonelik**: yeni sanal makineyi sağlamak için kullanmak istediğiniz aboneliği seçin.
    * **Kaynak grubu**: VM için kaynak grubunun adı. Yeni bir kaynak grubunun adını ya da zaten var olan bir kaynak grubunun adını girebilirsiniz.
    * **Konum**: yeni sanal makinenin dağıtılacağı yer. Sanal makineyi şirket içi ağınıza bağlamak istiyorsanız, Azure 'u şirket içi ağınıza bağlayan sanal ağın konumunu seçtiğinizden emin olun. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makinelerinde planlama ve uygulama][planning-guide] [Microsoft Azure ağ iletişimi][planning-guide-microsoft-azure-networking] .
-1. **Boyutu**:
+1. **Boyut**:
 
      Desteklenen VM türlerinin bir listesi için bkz. SAP Note [1928533]. Azure Premium Depolama kullanmak istiyorsanız, doğru VM türünü seçtiğinizden emin olun. Tüm VM türleri Premium depolamayı desteklemez. Daha fazla bilgi için bkz. [Depolama: Microsoft Azure depolama ve veri diskleri][planning-guide-storage-microsoft-azure-storage-and-data-disks] ve Azure sanal makineler 'de [Azure PREMIUM depolama][planning-guide-azure-premium-storage] , [SAP NetWeaver için planlama ve uygulama][planning-guide].
 
-1. **Ayarları**:
+1. **Ayarlar**:
    * **Depolama**
      * **Disk türü**: işletim sistemi diskinin disk türünü seçin. Veri diskleriniz için Premium Depolama kullanmak istiyorsanız, işletim sistemi diski için Premium Depolama kullanmanızı da öneririz.
      * **Yönetilen diskleri kullan**: yönetilen diskleri kullanmak istiyorsanız Evet ' i seçin. Yönetilen diskler hakkında daha fazla bilgi için bkz. planlama kılavuzunda bölüm [yönetimli diskler][planning-guide-managed-disks] .
@@ -471,12 +471,12 @@ Sanal makineniz seçtiğiniz kaynak grubunda dağıtılır.
 
 Azure portal, şablon için aşağıdaki parametreleri girin:
 
-1. **Temel**:
+1. **Temel bilgiler**:
    * **Abonelik**: şablonu dağıtmak için kullanılacak abonelik.
    * **Kaynak grubu**: şablonu dağıtmak için kullanılacak kaynak grubu. Yeni bir kaynak grubu oluşturabilir veya abonelikte var olan bir kaynak grubunu seçebilirsiniz.
    * **Konum**: şablonun dağıtılacağı yer. Var olan bir kaynak grubunu seçtiyseniz bu kaynak grubunun konumu kullanılır.
 
-1. **Ayarları**:
+1. **Ayarlar**:
    * **SAP SISTEM kimliği**: SAP sistem KIMLIĞI (SID).
    * **İşletim sistemi türü**: dağıtmak istediğiniz işletim sistemi (örneğin, Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) veya Oracle Linux 7,2.
 
@@ -545,7 +545,7 @@ Linux için özel bir görüntü oluşturmak üzere Windows için bir tane oluş
 >
 
 ---
-Özel bir görüntü hazırlayabilir ve oluşturabilir ve sonra birden çok yeni VM oluşturmak için kullanabilirsiniz. Bu, [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide]konusunda açıklanmaktadır. Yeni bir SAP sistemi yüklemek için SAP yazılım sağlama Yöneticisi 'Ni kullanarak veritabanı içeriğinizi ayarlayın (sanal makineye bağlı bir diskten bir veritabanı yedeklemesini geri yükler) veya DBMS 'niz varsa, bir veritabanı yedeklemesini doğrudan bir Azure depolama alanından geri yükleyerek destekler. Daha fazla bilgi için [SAP NetWeaver için Azure sanal makineleri DBMS dağıtım][dbms-guide]. Şirket içi sanal makinenize zaten bir SAP sistemi yüklediyseniz (özellikle iki katmanlı sistemler için), SAP yazılım sağlama Yöneticisi tarafından desteklenen sistem yeniden adlandırma yordamını kullanarak SAP sistem ayarlarını Azure VM dağıtımı sonrasında uyarlayabilirsiniz (SAP Note [1619720]). Aksi takdirde, Azure VM 'yi dağıttıktan sonra SAP yazılımını yükleyebilirsiniz.
+Özel bir görüntü hazırlayabilir ve oluşturabilir ve sonra birden çok yeni VM oluşturmak için kullanabilirsiniz. Bu, [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide]konusunda açıklanmaktadır. Yeni bir SAP sistemi yüklemek için SAP yazılım sağlama Yöneticisi 'Ni kullanarak veritabanı içeriğinizi ayarlayın (sanal makineye bağlı bir diskten bir veritabanı yedeklemesini geri yükler) veya DBMS 'niz varsa, bir veritabanı yedeklemesini doğrudan bir Azure depolama alanından geri yükleyerek destekler. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal MAKINELER DBMS dağıtımı][dbms-guide]. Şirket içi sanal makinenize zaten bir SAP sistemi yüklediyseniz (özellikle iki katmanlı sistemler için), SAP yazılım sağlama Yöneticisi tarafından desteklenen sistem yeniden adlandırma yordamını kullanarak SAP sistem ayarlarını Azure VM dağıtımı sonrasında uyarlayabilirsiniz (SAP Note [1619720]). Aksi takdirde, Azure VM 'yi dağıttıktan sonra SAP yazılımını yükleyebilirsiniz.
 
 Aşağıdaki akış çizelgesi, bir sanal makineyi özel bir görüntüden dağıtmaya yönelik, SAP 'ye özgü adımların sırasını göstermektedir:
 
@@ -560,18 +560,18 @@ Yönetilen bir disk görüntüsünden yeni bir sanal makine oluşturmanın en ko
 
 Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara ek olarak, sanal makineyi oluşturmak için gerekli parametreleri ayarlama sırasında size rehberlik eder. Bu parametrelerden bazıları şunlardır:
 
-1. **Temel**:
+1. **Temel bilgiler**:
    * **Ad**: kaynağın adı (sanal makine adı).
    * **VM disk türü**: işletim sistemi diskinin disk türünü seçin. Veri diskleriniz için Premium Depolama kullanmak istiyorsanız, işletim sistemi diski için Premium Depolama kullanmanızı da öneririz.
    * **Kullanıcı adı ve parola** ya da **SSH ortak anahtarı**: sağlama sırasında oluşturulan kullanıcının Kullanıcı adını ve parolasını girin. Linux sanal makinesi için, makinede oturum açmak için kullandığınız genel Secure Shell (SSH) anahtarını girebilirsiniz.
    * **Abonelik**: yeni sanal makineyi sağlamak için kullanmak istediğiniz aboneliği seçin.
    * **Kaynak grubu**: VM için kaynak grubunun adı. Yeni bir kaynak grubunun adını ya da zaten var olan bir kaynak grubunun adını girebilirsiniz.
    * **Konum**: yeni sanal makinenin dağıtılacağı yer. Sanal makineyi şirket içi ağınıza bağlamak istiyorsanız, Azure 'u şirket içi ağınıza bağlayan sanal ağın konumunu seçtiğinizden emin olun. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makinelerinde planlama ve uygulama][planning-guide] [Microsoft Azure ağ iletişimi][planning-guide-microsoft-azure-networking] .
-1. **Boyutu**:
+1. **Boyut**:
 
      Desteklenen VM türlerinin bir listesi için bkz. SAP Note [1928533]. Azure Premium Depolama kullanmak istiyorsanız, doğru VM türünü seçtiğinizden emin olun. Tüm VM türleri Premium depolamayı desteklemez. Daha fazla bilgi için bkz. [Depolama: Microsoft Azure depolama ve veri diskleri][planning-guide-storage-microsoft-azure-storage-and-data-disks] ve Azure sanal makineler 'de [Azure PREMIUM depolama][planning-guide-azure-premium-storage] , [SAP NetWeaver için planlama ve uygulama][planning-guide].
 
-1. **Ayarları**:
+1. **Ayarlar**:
    * **Depolama**
      * **Disk türü**: işletim sistemi diskinin disk türünü seçin. Veri diskleriniz için Premium Depolama kullanmak istiyorsanız, işletim sistemi diski için Premium Depolama kullanmanızı da öneririz.
      * **Yönetilen diskleri kullan**: yönetilen diskleri kullanmak istiyorsanız Evet ' i seçin. Yönetilen diskler hakkında daha fazla bilgi için bkz. planlama kılavuzunda bölüm [yönetimli diskler][planning-guide-managed-disks] .
@@ -610,11 +610,11 @@ Azure portal özel bir işletim sistemi görüntüsü kullanarak bir dağıtım 
 
 Azure portal, şablon için aşağıdaki parametreleri girin:
 
-1. **Temel**:
+1. **Temel bilgiler**:
    * **Abonelik**: şablonu dağıtmak için kullanılacak abonelik.
    * **Kaynak grubu**: şablonu dağıtmak için kullanılacak kaynak grubu. Yeni bir kaynak grubu oluşturabilir veya abonelikte var olan bir kaynak grubunu seçebilirsiniz.
    * **Konum**: şablonun dağıtılacağı yer. Var olan bir kaynak grubunu seçtiyseniz bu kaynak grubunun konumu kullanılır.
-1. **Ayarları**:
+1. **Ayarlar**:
    * **SAP SISTEM kimliği**: SAP sistem kimliği.
    * **İşletim sistemi türü**: dağıtmak istediğiniz işletim sistemi türü (Windows veya Linux).
    * **SAP sistem boyutu**: SAP sisteminin boyutu.
@@ -692,7 +692,7 @@ Aşağıdaki akış çizelgesi, genelleştirilmiş olmayan bir Azure VHD kullana
 
 Disk zaten Azure 'da yüklenip tanımlanmışsa (bkz. [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide]), sonraki birkaç bölümde açıklanan görevleri yapın.
 
-#### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+#### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 Azure portal aracılığıyla özel bir işletim sistemi diski kullanarak bir dağıtım oluşturmak için [Azure-QuickStart-Templates GitHub deposunda][azure-quickstart-templates-github]yayımlanan SAP şablonunu kullanın. Ayrıca, PowerShell kullanarak el ile bir sanal makine da oluşturabilirsiniz.
 
@@ -705,11 +705,11 @@ Azure portal aracılığıyla özel bir işletim sistemi diski kullanarak bir da
 
 Azure portal, şablon için aşağıdaki parametreleri girin:
 
-1. **Temel**:
+1. **Temel bilgiler**:
    * **Abonelik**: şablonu dağıtmak için kullanılacak abonelik.
    * **Kaynak grubu**: şablonu dağıtmak için kullanılacak kaynak grubu. Yeni bir kaynak grubu oluşturabilir veya abonelikte var olan bir kaynak grubunu seçebilirsiniz.
    * **Konum**: şablonun dağıtılacağı yer. Var olan bir kaynak grubunu seçtiyseniz bu kaynak grubunun konumu kullanılır.
-1. **Ayarları**:
+1. **Ayarlar**:
    * **SAP SISTEM kimliği**: SAP sistem kimliği.
    * **İşletim sistemi türü**: dağıtmak istediğiniz işletim sistemi türü (Windows veya Linux).
    * **SAP sistem boyutu**: SAP sisteminin boyutu.
@@ -912,7 +912,7 @@ Aşağıdaki parametreleri ayarlayın:
 
   Ayrıca, \\vb.\\regionserverclnt. cfg ' de listelenen IP adreslerine yönelik yollar eklemeniz gerekir. Aşağıdaki şekilde bir örnek gösterilmektedir:
 
-  ![Zorlamalı tünel][deployment-guide-figure-50]
+  ![Zorlamalı tünel oluşturma][deployment-guide-figure-50]
 
 
 * **RHEL for**

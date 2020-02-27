@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210132"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649832"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
 Azure haritalar isteklerin kimliğini doğrulamak için iki yolu destekler: paylaşılan anahtar kimlik doğrulaması ve Azure Active Directory kimlik doğrulaması. Bu makalede, Azure haritalar Hizmetleri uygulamanıza kılavuzluk eden bu kimlik doğrulama yöntemleri açıklanmaktadır.
+
+> [!NOTE]
+> Azure haritalar ile güvenli iletişim geliştirmek için artık Aktarım Katmanı Güvenliği (TLS) 1,2 ' i destekliyoruz ve TLS 1,0 ve 1,1 desteğini devre dışı sunuyoruz. Hizmet kesintilerini önlemek için, **sunucularınızı ve uygulamalarınızı 2 nisan 2020 tarihinden önce TLS 1,2 kullanacak şekilde güncelleştirin**.  Şu anda TLS 1. x kullanıyorsanız, TLS 1,2 hazırlığınızı değerlendirin ve [tls 1,0 sorununun çözümünde](https://docs.microsoft.com/security/solving-tls1-problem)açıklanan sınamayla bir geçiş planı geliştirin.
 
 ## <a name="shared-key-authentication"></a>Paylaşılan anahtar kimlik doğrulaması
 
