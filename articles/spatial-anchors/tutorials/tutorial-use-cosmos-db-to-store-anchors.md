@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276873"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615147"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Öğretici: Azure uzamsal bağlayıcılarını Azure Cosmos DB arka ucu ile oturumlar ve cihazlar arasında paylaşma
 
@@ -42,6 +42,12 @@ Dosyanın üst kısmında `#define INMEMORY_DEMO` bulun ve bu çizginin dışın
 `StorageConnectionString` özelliğini bulun ve değeri [veritabanı hesabı oluştur adımında](#create-a-database-account)kopyaladığınız `Connection String` değeriyle aynı olacak şekilde ayarlayın. Dosyayı kaydedin.
 
 Paylaşım hizmetini yeniden yayımlayabilir ve örnek uygulamayı çalıştırabilirsiniz.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Büyük değişiklikler nedeniyle Unity 2019,3 Şu anda desteklenmiyor. Lütfen Unity 2019,1 veya 2019,2 kullanın.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

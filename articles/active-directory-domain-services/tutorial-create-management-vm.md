@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523026"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612203"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (AD DS), Windows Server Active Directory 
 
 Bu öğreticide, Azure 'da bir Windows Server VM oluşturma ve Azure AD DS yönetilen bir etki alanını yönetmek için gerekli araçları nasıl yükleyeceğiniz gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure AD DS yönetilen bir etki alanında kullanılabilir yönetim görevlerini anlayın
@@ -106,7 +106,7 @@ Etki alanına katılmış bir VM 'ye Active Directory Yönetim Araçları 'nı y
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
 1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
-1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDS.contoso.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
+1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDSCONTOSO.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
 1. **Sunucu rolleri** sayfasında, **İleri**' ye tıklayın.
 1. **Özellikler** sayfasında, **uzak sunucu yönetim araçları** düğümünü genişletin ve ardından **rol yönetim araçları** düğümünü genişletin.
 
@@ -126,7 +126,7 @@ Yönetim Araçları yüklüyken Azure AD DS yönetilen etki alanını yönetmek 
     ![Sunucuda yüklü yönetim araçlarının listesi](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. **Active Directory Yönetim Merkezi**seçin.
-1. Azure AD DS yönetilen etki alanını araştırmak için sol bölmedeki *aadds.contoso.com*gibi etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
+1. Azure AD DS yönetilen etki alanını araştırmak için sol bölmedeki *aaddscontoso.com*gibi etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
 
     ![Azure AD DS yönetilen etki alanının kullanılabilir kapsayıcılar bölümünü listeleyin](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

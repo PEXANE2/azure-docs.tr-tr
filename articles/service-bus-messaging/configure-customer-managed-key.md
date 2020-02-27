@@ -6,14 +6,14 @@ ms.service: service-bus
 documentationcenter: ''
 author: axisc
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903312"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624080"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -78,22 +78,22 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
     1. Anahtarın ayrıntılarını girin ve **Seç**' e tıklayın. Bu, müşteri tarafından yönetilen anahtar ile ad alanındaki bekleyen verilerin şifrelenmesini sağlar. 
 
 
-> [!IMPORTANT]
-> Coğrafi olağanüstü durum kurtarma ile birlikte müşteri tarafından yönetilen anahtar kullanmak istiyorsanız lütfen aşağıdaki adımları gözden geçirin. 
->
-> Müşteri tarafından yönetilen anahtarla bekleyen şifrelemeyi etkinleştirmek için, belirtilen Azure Anahtar Kasası 'nda Service Bus ' yönetilen kimliği için bir [erişim ilkesi](../key-vault/key-vault-secure-your-key-vault.md) ayarlanır. Bu, Azure Keykasasına Azure Service Bus ad alanından denetimli erişim sağlar.
->
-> Bunun nedeni:
-> 
->   * Service Bus ad alanı için [coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md) zaten etkinse ve müşterinin yönettiği anahtarı etkinleştirmek istiyorsanız, 
->     * Eşleştirmeyi kes
->     * Anahtar kasasında hem birincil hem de ikincil ad alanları için yönetilen kimliğin [erişim Ilkesini ayarlayın](../key-vault/managed-identity.md) .
->     * Birincil ad alanında şifrelemeyi ayarlayın.
->     * Birincil ve ikincil ad alanlarını yeniden eşleştirin.
-> 
->   * Müşteri tarafından yönetilen anahtarın zaten ayarlandığı bir Service Bus ad alanında coğrafi DR 'yi etkinleştirmek istiyorsanız-
->     * İkincil ad alanı için yönetilen kimlik için [erişim ilkesini](../key-vault/managed-identity.md) anahtar kasasında ayarlayın.
->     * Birincil ve ikincil ad alanlarını eşleştirin.
+    > [!IMPORTANT]
+    > Coğrafi olağanüstü durum kurtarma ile birlikte müşteri tarafından yönetilen anahtar kullanmak istiyorsanız lütfen aşağıdaki adımları gözden geçirin. 
+    >
+    > Müşteri tarafından yönetilen anahtarla bekleyen şifrelemeyi etkinleştirmek için, belirtilen Azure Anahtar Kasası 'nda Service Bus ' yönetilen kimliği için bir [erişim ilkesi](../key-vault/key-vault-secure-your-key-vault.md) ayarlanır. Bu, Azure Keykasasına Azure Service Bus ad alanından denetimli erişim sağlar.
+    >
+    > Bunun nedeni:
+    > 
+    >   * Service Bus ad alanı için [coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md) zaten etkinse ve müşterinin yönettiği anahtarı etkinleştirmek istiyorsanız, 
+    >     * Eşleştirmeyi kes
+    >     * Anahtar kasasında hem birincil hem de ikincil ad alanları için yönetilen kimliğin [erişim Ilkesini ayarlayın](../key-vault/managed-identity.md) .
+    >     * Birincil ad alanında şifrelemeyi ayarlayın.
+    >     * Birincil ve ikincil ad alanlarını yeniden eşleştirin.
+    > 
+    >   * Müşteri tarafından yönetilen anahtarın zaten ayarlandığı bir Service Bus ad alanında coğrafi DR 'yi etkinleştirmek istiyorsanız-
+    >     * İkincil ad alanı için yönetilen kimlik için [erişim ilkesini](../key-vault/managed-identity.md) anahtar kasasında ayarlayın.
+    >     * Birincil ve ikincil ad alanlarını eşleştirin.
 
 
 ## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürün
@@ -105,6 +105,224 @@ Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını ku
 Şifreleme anahtarlarına erişimin iptal edilmemesi Service Bus verileri temizleyemezsiniz. Ancak, verilere Service Bus ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/key-vault-secure-your-key-vault.md).
 
 Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Service Bus hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silinen anahtar geri yüklenirse, şifrelenmiş Service Bus ad alanındaki verilere erişebilmek için Service Bus hizmet anahtarı seçer.
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Şifrelemeyi etkinleştirmek için Kaynak Yöneticisi şablonu kullanma
+Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
+
+1. **Yönetilen hizmet kimliğiyle** **Premium** Service Bus ad alanı oluşturun.
+2. **Anahtar Kasası** oluşturun ve anahtar kasasına hizmet kimliği erişimi verin. 
+3. Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleştirin (anahtar/değer). 
+
+
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Yönetilen hizmet kimliğiyle Premium Service Bus ad alanı oluşturma
+Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yönetilen hizmet kimliğiyle bir Azure Service Bus ad alanı oluşturma gösterilmektedir. 
+
+1. Yönetilen hizmet kimliğiyle Service Bus Premium katman ad alanı oluşturmak için bir Azure Resource Manager şablonu oluşturun. Dosyayı adlandırın: **CreateServiceBusPremiumNamespace. JSON**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+    
+             }
+          }
+       ],
+       "outputs":{
+          "ServiceBusNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.ServiceBus/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Şu adlı bir şablon parametre dosyası oluşturun: **CreateServiceBusPremiumNamespaceParams. JSON**. 
+
+    > [!NOTE]
+    > Aşağıdaki değerleri değiştirin: 
+    > - `<ServiceBusNamespaceName>` adı Service Bus ad alanınız
+    > - `<Location>`-Service Bus ad alanınız konumu
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    ```
+3. Bir Premium Service Bus ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Service Bus ad alanının KIMLIĞINI alın. Komutu çalıştırmadan önce `{MyRG}` kaynak grubunun adıyla değiştirin.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
+    
+    $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
+    ```
+ 
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Anahtar kasasına Service Bus ad alanı kimliği erişimi verme
+
+1. **Temizleme koruması** ve **geçici silme** etkin olan bir Anahtar Kasası oluşturmak için aşağıdaki komutu çalıştırın. 
+
+    ```powershell
+    New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
+    ```
+    
+    VEYA
+    
+    **Mevcut bir anahtar kasasını**güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Service Bus ad alanındaki yönetilen kimliğin anahtar kasasındaki anahtar değere erişebilmesi için Anahtar Kasası erişim ilkesini ayarlayın. Önceki bölümde Service Bus ad alanının KIMLIĞINI kullanın. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Anahtar kasasından müşteri tarafından yönetilen anahtarla Service Bus ad alanındaki verileri şifreleme
+Şu ana kadar şu adımları tamamladınız: 
+
+1. Yönetilen kimliğe sahip bir Premium ad alanı oluşturuldu.
+2. Anahtar Kasası oluşturun ve anahtar kasasında yönetilen kimlik erişimi izni verilir. 
+
+Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsiniz. 
+
+1. Aşağıdaki içerikle **Updateservicebusnamespacewithencryptıon. JSON** ADLı bir JSON dosyası oluşturun: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Şablon parametre dosyası oluştur: **Updateservicebusnamespacewithencryptionparams. JSON**.
+
+    > [!NOTE]
+    > Aşağıdaki değerleri değiştirin: 
+    > - `<ServiceBusNamespaceName>` adı Service Bus ad alanınız
+    > - `<Location>`-Service Bus ad alanınız konumu
+    > - `<KeyVaultName>`-anahtar kasanızın adı
+    > - `<KeyName>`-anahtar kasasındaki anahtarın adı  
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Komutu çalıştırmadan önce `{MyRG}` kaynak grubunuzun adıyla değiştirin. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
+    ```
+    
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

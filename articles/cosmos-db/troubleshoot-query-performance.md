@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424941"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623702"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
@@ -22,6 +22,20 @@ Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir 
 Sorgu iyileştirmelerini büyük ölçüde kategorilere ayırarak Azure Cosmos DB: Istek birimi (RU), sorgu ve gecikme süresini azaltan iyileştirmeler. Bir sorgunun RU ücreti düşürülerek gecikme süresini de neredeyse tamamen azaltabilirsiniz.
 
 Bu belge, [beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesi kullanılarak yeniden oluşturulabilen örnekleri kullanacaktır.
+
+## <a name="important"></a>Önemli
+
+- En iyi performansı elde etmek için lütfen [performans ipuçlarını](performance-tips.md)izleyin.
+    > [!NOTE] 
+    > Windows 64 bit ana bilgisayar işleme, gelişmiş performans için önerilir. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir Serviceınterop. dll dosyası içerir ve yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. 
+- Cosmos DB sorgu en az öğe sayısını desteklemiyor.
+    - Kod, 0 ile en fazla öğe sayısı arasında herhangi bir sayfa boyutunu işlemelidir
+    - Bir sayfadaki öğelerin sayısı herhangi bir bildirimde bulunmaksızın değişebilir ve değişecektir.
+- Sorgular için boş sayfalar beklenmektedir ve herhangi bir zamanda görünebilirler. 
+    - Boş sayfaların SDK 'larda sunulmasının nedeni, daha fazla fırsatın sorguyu iptal etmesine olanak tanır. Ayrıca, SDK 'nın birden çok ağ çağrısı yaptığını da temizler.
+    - Boş sayfalar, Cosmos DB bir fiziksel bölüm bölündüğü için mevcut iş yüklerinde gösterilebilir. İlk bölümde artık 0 sonuç bulunur ve bu da boş sayfaya neden olur.
+    - Sorgu, belgeyi almak için arka uçta daha fazla sabit miktarda zaman alacağından, boş sayfalar öncelik verme arka ucu tarafından neden olur. Bir sorgu Cosmos DB preempts, sorgunun devam etmesini sağlayacak bir devamlılık belirteci döndürür. 
+- Sorguyu tamamen boşalttığınızdan emin olun. SDK örneklerine bakın ve tüm sorguyu boşaltmak için `FeedIterator.HasMoreResults` bir while döngüsü kullanın.
 
 ### <a name="obtaining-query-metrics"></a>Sorgu ölçümleri alma:
 
@@ -144,7 +158,7 @@ Dizin oluşturma ilkesi:
 }
 ```
 
-**Ru ücreti:** 409,51 ru
+**Ru ücreti:** 409,51 Rus
 
 ### <a name="optimized"></a>İyileştirilmiş
 
@@ -163,7 +177,7 @@ Dizin oluşturma ilkesi güncelleştirildi:
 }
 ```
 
-**Ru ücreti:** 2,98 ru
+**Ru ücreti:** 2,98 Rus
 
 Herhangi bir zamanda, kullanılabilirlik veya performans yazmak için herhangi bir etkisi olmadan dizin oluşturma ilkesine ek özellikler ekleyebilirsiniz. Dizine yeni bir özellik eklerseniz, bu özelliği kullanan sorgular hemen yeni kullanılabilir dizini kullanır. Sorgu oluşturulurken yeni dizin kullanılır. Sonuç olarak, dizin yeniden oluşturma devam ettiğinden sorgu sonuçları tutarsız olabilir. Yeni bir özellik dizine alınmışsa, dizin yeniden oluşturma işlemi sırasında yalnızca var olan dizinleri kullanan sorgular etkilenmez. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
@@ -217,7 +231,7 @@ Dizin oluşturma ilkesi:
 }
 ```
 
-**Ru ücreti:** 44,28 ru
+**Ru ücreti:** 44,28 Rus
 
 ### <a name="optimized"></a>İyileştirilmiş
 
@@ -257,7 +271,7 @@ Dizin oluşturma ilkesi güncelleştirildi:
 
 ```
 
-**Ru ücreti:** 8,86 ru
+**Ru ücreti:** 8,86 Rus
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Alt sorgu kullanarak JOIN ifadelerini iyileştirme
 Çoklu değer alt sorguları, `WHERE` yan tümcesindeki tüm çapraz birleşimlerden sonra olmak yerine her bir SELECT-many ifadesinden sonra koşullar göndererek `JOIN` ifadelerini en iyileştirebilir.
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Ru ücreti:** 167,62 ru
+**Ru ücreti:** 167,62 Rus
 
 Bu sorgu için dizin, "Infant Formula", nutritionValue 0 ' dan büyük ve 1 ' den büyük olan bir etikete sahip herhangi bir belgeyle eşleşir. Buradaki `JOIN` ifadesi, herhangi bir filtre uygulanmadan önce, eşleşen her belge için tüm etiket, nutristalar ve servilerler dizilerinin çapraz çarpımını gerçekleştirir. `WHERE` yan tümcesi, her `<c, t, n, s>` kayıt noktasında filtre koşulunu uygular.
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Ru ücreti:** 22,17 ru
+**Ru ücreti:** 22,17 Rus
 
 Etiketler dizisindeki yalnızca bir öğe filtreyle eşleşen ve hem nutristalar hem de servi dizileri için beş öğe olduğunu varsayalım. `JOIN` ifadeler, ilk sorgudaki 1.000 öğe aksine, 1 x 1 x 5 x 5 = 25 öğe olacak şekilde genişletilir.
 

@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 22f50a6d5136eaff457c24864dae71261a20e13e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525260"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615607"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -36,7 +36,7 @@ Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilebilir o
 
 Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API sürümleri tüm Azure bölgelerinde kullanılabilir olmayabilir.
 
-Regions                                        | Sonrası?                                 | Desteklenen Sürümler
+Bölgeler                                        | Sonrası?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
@@ -106,11 +106,11 @@ Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir
 
 API | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | nesnesinde | text
+/Instance | nesnesinde | metin
 /scheduledevents | nesnesinde | yok
 /attested | nesnesinde | yok
 
-Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
+Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örnek:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -126,7 +126,7 @@ Ayrıca, gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmam
 
 ### <a name="error"></a>Hata
 
-Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
+Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örnek:
 
 HTTP Durum Kodu | Neden
 ----------------|-------
@@ -134,6 +134,7 @@ HTTP Durum Kodu | Neden
 400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
 404 bulunamadı | İstenen öğe yok
 405 yöntemine Izin verilmiyor | Yalnızca `GET` istekleri destekleniyor
+410 gitti | En fazla 70 saniye boyunca bir süre sonra yeniden deneyin
 429 çok fazla Istek | API Şu anda saniyede en çok 5 sorgu destekliyor
 500 hizmet hatası     | Bir süre sonra yeniden dene
 
@@ -457,7 +458,7 @@ identity | Azure kaynakları için Yönetilen kimlikler. Bkz. [erişim belirteci
 instance | Bkz. [örnek API 'si](#instance-api) | 2017-04-02
 scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Örnek API 'SI
+### <a name="instance-api"></a>Örnek API 'SI
 
 Aşağıdaki Işlem kategorileri örnek API aracılığıyla kullanılabilir:
 
@@ -569,7 +570,6 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 ```
 
 İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
-
 
 ## <a name="example-scenarios-for-usage"></a>Kullanım için örnek senaryolar  
 
@@ -717,9 +717,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 ```
 
 **Yanıt**
+
 ```bash
 AzurePublicCloud
 ```
+
 Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 
  Bulut   | Azure ortamı
@@ -838,10 +840,12 @@ Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulay
 
  Bulut | Sertifika
 ---------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+İmzalanmak üzere kullanılan sertifika etrafında bilinen bir sorun var. Sertifikalar, genel bulut için `metadata.azure.com` tam olarak eşleşmiyor olabilir. Bu nedenle, sertifika doğrulaması herhangi bir `.metadata.azure.com` alt etki alanından ortak bir ada izin verilmelidir.
 
 ```bash
 
@@ -871,7 +875,7 @@ Bazı senaryolarda, Yük Devretme Kümelemesi ile Instance Metadata Service sorg
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Yük devretme kümesine sahip bir Windows Server VM 'sinden alınan aşağıdaki örnek çıktı, basitlik için yalnızca IPv4 yol tablosunu içerir.
 
 ```bat
@@ -914,7 +918,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veriler    | Açıklama
 --------|-----------------
-id      | Kaynak Kimliği
+id      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
 publisher | Görüntü yayımcısı
 sku     | Görüntü SKU 'su
@@ -1025,7 +1029,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 Dil | Örnek
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Git  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Başlayın  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

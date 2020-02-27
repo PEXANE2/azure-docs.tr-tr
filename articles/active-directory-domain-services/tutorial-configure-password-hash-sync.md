@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132225"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612574"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: karma ortamlarda Azure Active Directory Domain Services parola eşitlemeyi etkinleştirme
 
@@ -68,7 +68,7 @@ Azure AD Connect yüklendi ve Azure AD ile eşitlenecek şekilde yapılandırıl
 
     Bu örnek ekran görüntüsünde aşağıdaki bağlayıcılar kullanılır:
 
-    * Azure AD Bağlayıcısı adı *contoso.onmicrosoft.com-AAD*
+    * Azure AD Bağlayıcısı adı *aaddscontoso.onmicrosoft.com-AAD*
     * Şirket içi AD DS Bağlayıcısı *OnPrem.contoso.com* olarak adlandırılmıştır
 
 1. Aşağıdaki PowerShell betiğini kopyalayıp Azure AD Connect yüklü bilgisayara yapıştırın. Betik, eski parola karmalarını içeren tam bir parola eşitlemesini tetikler. `$azureadConnector` ve `$adConnector` değişkenlerini önceki adımdaki bağlayıcı adlarıyla güncelleştirin.

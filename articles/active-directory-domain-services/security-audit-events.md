@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132245"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613061"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
@@ -53,10 +53,10 @@ Aşağıdaki denetim olayı kategorileri kullanılabilir:
 |:---|:---|
 |Hesap oturum açma güvenliği|4767, 4774, 4775, 4776, 4777|
 |Hesap yönetimi güvenliği|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
-|Ayrıntı Izleme güvenliği|Hiçbiri|
+|Ayrıntı Izleme güvenliği|None|
 |DS erişim güvenliği|5136, 5137, 5138, 5139, 5141|
 |Oturum açma-oturumu kapatma güvenliği|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Nesne erişim güvenliği|Hiçbiri|
+|Nesne erişim güvenliği|None|
 |İlke değişikliği güvenliği|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Ayrıcalık kullanım güvenliği|4985|
 |Sistem güvenliği|4612, 4621|
@@ -84,7 +84,7 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
 > Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları eski bir kaynaktan alamaz veya yeniden çalıştıramazsınız. Azure AD DS, yalnızca güvenlik denetimleri etkinleştirildikten sonra oluşan olayları gönderebilir.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aadds.contoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS penceresinde, sol taraftaki **Tanılama ayarları** ' nı seçin.
 1. Hiçbir Tanılama varsayılan olarak yapılandırılmaz. Başlamak için **Tanılama ayarı Ekle**' yi seçin.
 
@@ -96,7 +96,7 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
 
     ![Yakalanacak gereken hedef ve denetim olaylarının türünü etkinleştir](./media/security-audit-events/diagnostic-settings-page.png)
 
-    * **Azure depolama alanı**
+    * **Azure depolama**
         * **Bir depolama hesabına arşiv**' i seçin ve ardından **Yapılandır**' ı seçin.
         * Güvenlik denetim olaylarını arşivlemek için kullanmak istediğiniz **aboneliği** ve **Depolama hesabını** seçin.
         * Hazırlık sırasında **Tamam**' ı seçin.

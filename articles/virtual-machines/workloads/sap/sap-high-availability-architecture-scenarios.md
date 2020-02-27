@@ -1,10 +1,10 @@
 ---
-title: Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar | Microsoft Docs
+title: SAP NetWeaver için Azure VM HA mimarisi ve senaryoları | Microsoft Docs
 description: Azure sanal makinelerde SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/25/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291490"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623868"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
@@ -249,7 +249,7 @@ Azure 'da SAP yüksek kullanılabilirlik üç tür için ayrılabilir:
 
 * **SAP uygulaması yüksek kullanılabilirliği**: 
 
-    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
+    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
     * Yedekli SAP uygulama sunucuları.
     * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
@@ -267,7 +267,7 @@ Hesaplamanın temeli ayda 30 gün veya 43.200 dakikadır. Örneğin,% 0,05 kesin
 
 (Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100) \*...
 
-Örneğin:
+Örnek:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 veya genel olarak% 99,75 kullanılabilirliği.
 
@@ -317,7 +317,7 @@ Azure depolama, varsayılan olarak verilerin üç görüntüsünü sakladığı 
 
 Daha fazla bilgi için bkz. [Azure Storage çoğaltma][azure-storage-redundancy].
 
-### <a name="azure-managed-disks"></a>Azure Yönetilen Diskler
+### <a name="azure-managed-disks"></a>Azure Yönetilen Diskleri
 Yönetilen diskler, Azure depolama hesaplarında depolanan sanal sabit diskler (VHD) yerine kullanılması önerilen Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makine Azure kullanılabilirlik kümesiyle otomatik olarak hizalanır. Sanal makinenizin ve üzerinde çalışan hizmetlerin kullanılabilirliğini arttırır.
 
 Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış][azure-storage-managed-disks-overview].
@@ -334,7 +334,7 @@ Bu yaklaşım hakkında daha fazla bilgi için bkz. [SAP sisteminin daha yüksek
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Azure IaaS 'de SAP uygulamalarının yüksek kullanılabilirliği
 
-Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
+Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
   * Yedekli SAP uygulama sunucuları.
   * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
@@ -391,6 +391,8 @@ SAP ASCS/SCS örneğini korumak için bir WSFC çözümünü kullanabilirsiniz. 
 
 * **SAP ascs/SCS örneğini dosya paylaşma kullanarak kümeleyerek**: Bu mimari hakkında daha fazla bilgi için, bkz. [dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ascs/SCS örneği kümesi][sap-high-availability-guide-wsfc-file-share].
 
+* **ANF SMB paylaşımının KULLANıLDıĞı SAP ascs/SCS örneğini kümeleyerek**: Bu mimari hakkında daha fazla bilgi için, bkz. [ANF SMB dosya paylaşımının kullanıldığı bir Windows Yük devretme kümesindeki SAP ascs/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb).
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 'ta SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,20 @@ Red Hat kümesi çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakk�
 
 > ![Windows][Logo_Windows] Windows
 > 
-> Şu anda, çoklu SID yalnızca WSFC ile desteklenir. Çoklu SID, dosya paylaşma ve paylaşılan disk kullanılarak desteklenir.
+> Çoklu SID, dosya paylaşma ve paylaşılan disk kullanılarak WSFC ile desteklenir.
 > 
-> Çoklu SID yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz.:
+> Windows 'daki çok düzeyli yüksek kullanılabilirliğe sahip mimari hakkında daha fazla bilgi için bkz.:
 
 * [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşma için çok SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk için çok SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> Çoklu SID Kümelemesi, SAP Ass/ERS için Linux pacemaker kümelerinde desteklenir ve aynı kümede **beş** SAP SID ile sınırlıdır.
+> Linux 'ta çok düzeyli yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz.:
+
+* [SLES for SAP için Azure VM 'lerde bir HA for SAP NW çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>Yüksek kullanılabilirlik DBMS örneği
 

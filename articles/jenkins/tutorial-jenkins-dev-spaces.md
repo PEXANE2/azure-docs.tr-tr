@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisini k
 description: Azure Dev Spaces eklentisinin sürekli tümleştirme ardışık düzeninde nasıl kullanılacağını öğrenin.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209663"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619990"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisi kullanma 
 
@@ -333,7 +333,7 @@ Bu bölümdeki 3. adımı tamamlayabilmeniz için Jenkinsfile ' ın bir kısmın
     }
 ```
 
-1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`bir değişiklik yapın ve ardından bir çekme isteği oluşturun. Örneğin:
+1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`bir değişiklik yapın ve ardından bir çekme isteği oluşturun. Örnek:
 
     ```java
     public String index() {
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Jenkins için Azure Dev Spaces eklentisinin ve bir geliştirme alanına dağıtım ve dağıtım alanı için Azure Container Registry eklentisinin nasıl kullanılacağını öğrendiniz.
-
-Aşağıdaki kaynak listesi Azure Dev Spaces, ACR görevleri ve Jenkins ile CI/CD hakkında daha fazla bilgi sağlar.
-
-Azure Dev Spaces:
-* [Azure Dev Spaces çalışma ve yapılandırma süreçleri](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR görevleri:
-* [ACR Görevleri ile işletim sistemi ve çerçeve düzeltme eki uygulamayı otomatikleştirme](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Kod işlemede otomatik derleme](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-Azure 'da Jenkins ile CI/CD:
-* [Jenkins sürekli dağıtımı](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [Azure 'da Jenkins ile CI/CD](jenkins-continuous-deployment.md)

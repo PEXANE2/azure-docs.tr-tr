@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931628"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612558"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle bir Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Dire
 
 Ağ ve eşitleme için [varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir][tutorial-create-instance] veya bu ayarları el ile tanımlayabilirsiniz. Bu öğreticide, Azure portal kullanarak bir Azure AD DS örneği oluşturmak ve yapılandırmak için bu gelişmiş yapılandırma seçeneklerinin nasıl tanımlanacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Yönetilen bir etki alanı için DNS ve sanal ağ ayarlarını yapılandırma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -69,17 +69,17 @@ Azure AD DS örneği oluşturduğunuzda bir DNS adı belirlersiniz. Bu DNS adın
 * **Yönlendirilemeyen etki alanı sonekleri:** Genellikle, *contoso. Local*gibi yönlendirilebilir olmayan bir etki alanı adı sonekini önlemenize tavsiye ederiz. *. Local* son eki yönlendirilebilir DEĞILDIR ve DNS çözümlenme sorunlarına neden olabilir.
 
 > [!TIP]
-> Özel bir etki alanı adı oluşturursanız, mevcut DNS ad alanları ile ilgilenin. Etki alanı adı için benzersiz bir ön ek eklemeniz önerilir. Örneğin, DNS kök adınız *contoso.com*ise, *corp.contoso.com* veya *DS.contoso.com*özel etki alanı adına sahip bir Azure AD DS yönetilen etki alanı oluşturun. Şirket içi AD DS ortamı olan bir karma ortamda, bu ön ekler zaten kullanımda olabilir. Azure AD DS için benzersiz bir ön ek kullanın.
+> Özel bir etki alanı adı oluşturursanız, mevcut DNS ad alanları ile ilgilenin. Mevcut bir Azure veya şirket içi DNS ad alanından ayrı bir etki alanı adı kullanılması önerilir.
 >
-> Azure AD DS yönetilen etki alanınız için kök DNS adını kullanabilirsiniz, ancak ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir Web sunucusu çalıştırırsanız, ek DNS girişleri gerektiren adlandırma çakışmaları olabilir.
+> Örneğin, *contoso.com*ADLı bir DNS ad alanınız varsa, *aaddscontoso.com*özel etki alanı adıyla bir Azure AD DS yönetilen etki alanı oluşturun. Güvenli LDAP kullanmanız gerekiyorsa, gerekli sertifikaları oluşturmak için bu özel etki alanı adını kaydetmeniz ve sahip olmanız gerekir.
 >
-> Bu öğreticiler ve nasıl yapılır makalelerinde, *aadds.contoso.com* özel etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda, benzersiz bir ön ek içerebilen kendi etki alanı adınızı belirtin.
+> Ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları veya ortamınızda var olan DNS adı alanları arasında koşullu DNS ileticileri oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir Web sunucusu çalıştırırsanız, ek DNS girişleri gerektiren adlandırma çakışmaları olabilir.
 >
-> Daha fazla bilgi için bkz. [etki alanı için bir adlandırma öneki seçin] [adlandırma ön eki].
+> Bu öğreticiler ve nasıl yapılır makalelerinde, *aaddscontoso.com* özel etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda kendi etki alanı adınızı belirtin.
 
 Aşağıdaki DNS adı kısıtlamaları da geçerlidir:
 
-* **Etki alanı ön eki kısıtlamaları:** Ön eki 15 karakterden daha uzun olan yönetilen bir etki alanı oluşturamazsınız. Belirtilen etki alanı adınızın (örneğin, *contoso.com* etki alanı adında *contoso* ) ön ekinin 15 veya daha az karakter içermesi gerekir.
+* **Etki alanı ön eki kısıtlamaları:** Ön eki 15 karakterden daha uzun olan yönetilen bir etki alanı oluşturamazsınız. Belirtilen etki alanı adınızın ön eki ( *aaddscontoso.com* etki alanı adında *aaddscontoso* gibi) 15 veya daha az karakter içermelidir.
 * **Ağ adı çakışmaları:** Yönetilen etki alanınız için DNS etki alanı adı, sanal ağda zaten mevcut olmamalıdır. Özellikle, bir ad çakışmasına yol açacak aşağıdaki senaryoları kontrol edin:
     * Azure sanal ağında aynı DNS etki alanı adına sahip bir Active Directory etki alanınız zaten varsa.
     * Yönetilen etki alanını etkinleştirmeyi planladığınız sanal ağın, şirket içi ağınızla bir VPN bağlantısı varsa. Bu senaryoda, şirket içi ağınızda aynı DNS etki alanı adına sahip bir etki alanı olmadığından emin olun.
@@ -170,7 +170,7 @@ Sihirbazın **Özet** sayfasında, yönetilen etki alanının yapılandırma aya
 
     ![Dağıtımın Azure portal bildirim devam ediyor](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve Azure kaynakları listesinden Azure AD DS örneğinizi seçin (örneğin, *aadds.contoso.com*). **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta*olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
+1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve Azure kaynakları listesinden Azure AD DS örneğinizi seçin (örneğin, *aaddscontoso.com*). **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta*olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
 
     ![Sağlama durumu sırasında etki alanı Hizmetleri durumu](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 
@@ -220,7 +220,7 @@ Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, 
 
 1. **Profil** sayfasında, **Parolayı Değiştir**' i seçin.
 1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolanızı girip yeni bir parola girin ve onaylayın.
-1. Seçin **gönderme**.
+1. **Gönder**' i seçin.
 
 Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına katılmış bilgisayarlarda başarıyla oturum açması için parolanızı değiştirdikten birkaç dakika sürer.
 

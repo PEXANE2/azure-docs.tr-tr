@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 02/25/2020
 ms.author: aahi
-ms.openlocfilehash: 19df2cfc58f0653b09600b43e5859753781d7151
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560805"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614422"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Metin Analizi API'si için örnek kullanıcı senaryoları
 
@@ -44,6 +44,12 @@ Yapılandırılmamış metinsel biçimde gönderilen destek isteklerini işlemek
 Ürününüzün Twitter veya Facebook sayfasında Kullanıcı ürün geri bildirimini izleyin. Yeni ürünlere yönelik müşteri yaklaşımını çözümlemek, Özellikler ve özellik istekleri hakkında önemli tümceleri ayıklamak veya müşteri şikayetlerini olduğu gibi çözmek için verileri kullanın. Örnek [Microsoft Flow şablonu](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)' na bakın.
 
 ![Anahtar tümceciği ayıklama kullanarak ürün ve şirket geri bildiriminizi sosyal medya hakkında nasıl izleyeceğinizi açıklayan bir görüntü](media/use-cases/social-feed.svg)
+
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Hassas bilgiler içeren belgeleri sınıflandırın ve redaksiyonlar
+
+Belgelerde kişisel ve hassas bilgileri tanımlamak için adlandırılmış varlık tanımayı kullanın. Belgeleri sınıflandırmak veya Redaksiyonları kullanarak güvenli bir şekilde paylaşılabilmesi için verileri kullanın.
+
+![Kişisel bilgileri algılamak ve belgeleri sınıflandırmak ve Redaksiyonları belirlemek için NER 'in nasıl kullanılacağını açıklayan bir görüntü](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
