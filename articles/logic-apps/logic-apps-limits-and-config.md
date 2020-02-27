@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485055"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650904"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -64,7 +64,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 > Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
 > Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
 
-1. [Azure portalına](https://portal.azure.com) gidin. Portal arama kutusunda **Logic Apps**' i bulun ve seçin.
+1. [Azure Portal](https://portal.azure.com) gidin. Portal arama kutusunda **Logic Apps**' i bulun ve seçin.
 
 1. Mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı seçin ve açın.
 
@@ -149,11 +149,13 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 | Gelen istek | 120 saniye <br>(2 dakika) | 240 saniye <br>(4 dakika) | Gelen istek örnekleri, istek Tetikleyicileri ve Web kancası Tetikleyicileri tarafından alınan çağrıları içerir. <p><p>**Note**: özgün arayanın yanıtı alması için, başka bir mantıksal uygulamayı iç içe geçmiş iş akışı olarak çağırmadığınız sürece yanıttaki tüm adımların sınırı içinde tamamlaması gerekir. Daha fazla bilgi için bkz. [çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
+<a name="message-size-limits"></a>
+
 #### <a name="message-size"></a>İleti boyutu
 
 | Adı | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
-| İleti boyutu | 100 MB | 200 MB | Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. |
+| İleti boyutu | 100 MB | 200 MB | ISE-etiketli bağlayıcılar, ıSE bağlayıcı sınırlarını değil, ıSE sınırını kullanır. <p><p>Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. |
 | Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p>Tümleştirme hizmeti ortamı için Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir, örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](https://docs.microsoft.com/connectors/azureblob/). Daha fazla bilgi parçalama için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605721"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617274"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
@@ -37,8 +37,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
  Yerel Ayar | Dil | Destekleniyor | Özelleştirmeler
 ------|------------|-----------|-------------
 `ar-AE` | Arapça (UAE) | Yes | Hayır
-`ar-BH` | Arapça (Bahreyn) | Yes | Dil modeli
-`ar-EG` | Arapça (Mısır) modern standart | Yes | Dil modeli
+`ar-BH` | Arapça (Bahreyn), modern standart | Yes | Dil modeli
+`ar-EG` | Arapça (Mısır) | Yes | Dil modeli
 `ar-KW` | Arapça (Kuveyt) | Yes | Hayır
 `ar-QA` | Arapça (Qtor) | Yes | Hayır
 `ar-SA` | Arapça (Suudi Arabistan) | Yes | Hayır

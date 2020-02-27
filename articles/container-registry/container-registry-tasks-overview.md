@@ -2,13 +2,13 @@
 title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938871"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615947"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -56,9 +56,9 @@ Kod yürütüldüğü sırada bir kapsayıcı görüntüsü oluşturma veya çok
 
 ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşağıdaki Tetikleyicileri destekler:
 
-| Tetikleyici | Varsayılan olarak etkin |
+| Tetikleyici | Varsayılan olarak etkinleştirilen |
 | ------- | ------------------ |
-| İşleme | Evet |
+| İşleme | Yes |
 | Çekme isteği | Hayır |
 
 Bir kaynak kodu güncelleştirme tetikleyicisi yapılandırmak için, genel veya özel GitHub veya Azure DevOps deposunda Web kancasını ayarlamak üzere bir kişisel erişim belirteci (PAT) görevi sağlamanız gerekir.
@@ -70,26 +70,12 @@ Bir kaynak kodu güncelleştirme tetikleyicisi yapılandırmak için, genel veya
 
 ## <a name="automate-os-and-framework-patching"></a>İşletim sistemi ve çerçeve düzeltme ekini otomatikleştirme
 
-ACR görevlerinin, kapsayıcı derleme iş akışınızı gerçek anlamda geliştirme gücü, bir temel görüntüde güncelleştirme algılama özelliğinden geliyor. Güncelleştirilmiş temel görüntü kayıt defterinize gönderildiğinde veya Docker Hub 'daki gibi bir genel depoda bir temel görüntü güncelleştirilirse, ACR görevleri bu uygulamayı temel alan herhangi bir uygulama görüntüsünü otomatik olarak oluşturabilir.
+ACR görevlerinin, kapsayıcı derleme iş akışınızı gerçek anlamda geliştirme gücü, bir *temel görüntüde*güncelleştirme algılama özelliğinden geliyor. Çoğu kapsayıcı görüntüsünün bir özelliği olan temel görüntü, bir veya daha fazla uygulama görüntüsünün temel aldığı bir üst görüntüdür. Temel görüntüler genellikle işletim sistemini ve bazen uygulama çerçevelerini içerir. 
 
-Kapsayıcı görüntüleri, *temel* görüntülere ve *uygulama* görüntülerine büyük ölçüde kategorilere ayrılabilir. Temel görüntüleriniz genellikle uygulamanızın oluşturulduğu işletim sistemini ve uygulama çerçevelerini, diğer özelleştirmelerle birlikte içerir. Bu temel görüntüler genellikle genel yukarı akış görüntülerini temel alır, örneğin: [alp Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]veya [Node. js][base-node]. Uygulama görüntülerinizin birkaçı ortak bir temel görüntü paylaşabilir.
+Bir uygulama görüntüsü oluştururken temel görüntüye bağımlılığı izlemek için bir ACR görevi ayarlayabilirsiniz. Güncelleştirilmiş temel görüntü kayıt defterinize gönderildiğinde veya Docker Hub 'daki gibi bir genel depoda bir temel görüntü güncelleştirilirse, ACR görevleri bu uygulamayı temel alan herhangi bir uygulama görüntüsünü otomatik olarak oluşturabilir.
+Bu otomatik algılama ve yeniden oluşturma ile, ACR görevleri, güncelleştirilmiş temel görüntenize başvuran her bir uygulama görüntüsünü el ile izlemek ve güncelleştirmek için normalde gereken zaman ve çabayı kaydeder.
 
-Bir işletim sistemi veya uygulama çerçevesi görüntüsü, örneğin, kritik bir işletim sistemi güvenlik düzeltme ekine sahip olan yukarı akış bakımını tarafından güncelleştirildiği zaman, temel görüntülerinizi de kritik düzeltme içerecek şekilde güncelleştirmeniz gerekir. Ayrıca, bu yukarı akış düzeltmelerini temel görüntıza dahil etmek için her bir uygulama görüntüsünün yeniden oluşturulması gerekir.
-
-ACR görevleri bir kapsayıcı görüntüsü oluşturduğunda temel görüntü bağımlılıklarını dinamik olarak bulduğu için, bir uygulama görüntüsünün temel görüntüsünün ne zaman güncelleştirileceğini algılayabilir. Önceden yapılandırılmış bir [derleme göreviyle](container-registry-tutorial-base-image-update.md#create-a-task), ACR görevleri daha sonra **her uygulama görüntüsünü sizin için otomatik olarak yeniden oluşturur** . Bu otomatik algılama ve yeniden oluşturma ile, ACR görevleri, güncelleştirilmiş temel görüntenize başvuran her bir uygulama görüntüsünü el ile izlemek ve güncelleştirmek için normalde gereken zaman ve çabayı kaydeder.
-
-Dockerfile 'dan görüntü yapıları için, bir ACR görevi, temel görüntü aşağıdaki konumlardan birinde olduğunda bir temel görüntü güncelleştirmesini izler:
-
-* Görevin çalıştığı aynı Azure Container kayıt defteri
-* Aynı bölgedeki başka bir Azure Kapsayıcı kayıt defteri 
-* Docker Hub 'da ortak depo
-* Microsoft Container Registry genel depo
-
-> [!NOTE]
-> * Temel görüntü güncelleştirme tetikleyicisi bir ACR görevinde varsayılan olarak etkindir. 
-> * Şu anda ACR görevleri yalnızca uygulama (*çalışma zamanı*) görüntüleri için temel görüntü güncelleştirmelerini izler. ACR görevleri, çok aşamalı Dockerfiles 'da kullanılan ara (*buildtime*) görüntüleri için temel görüntü güncelleştirmelerini izlemez. 
-
-Üçüncü ACR görevleri öğreticisinde işletim sistemi ve çerçeve düzeltme eki uygulama hakkında daha fazla bilgi edinin. [Azure Container Registry görevlerle, temel görüntü güncelleştirme üzerinde görüntü derlemelerini otomatikleştirin](container-registry-tutorial-base-image-update.md).
+ACR görevleri için [temel görüntü güncelleştirme Tetikleyicileri](container-registry-tasks-base-images.md) hakkında daha fazla bilgi edinin. Ve bir [Azure Container Registry 'de temel görüntü güncelleştirildiği zaman](container-registry-tutorial-base-image-update.md) , bir temel görüntü öğretici içindeki kapsayıcı kayıt defterine gönderildiğinde bir görüntü derlemesini tetiklemeyi öğrenin
 
 ## <a name="schedule-a-task"></a>Görev zamanlama
 

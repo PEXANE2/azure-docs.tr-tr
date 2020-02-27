@@ -1,16 +1,16 @@
 ---
-title: Visual Studio’da uygulamanızın hatalarını ayıklama
+title: Visual Studio 'da uygulamanızda hata ayıklama
 description: Yerel bir geliştirme kümesinde Visual Studio 'da geliştirip hata ayıklaarak hizmetlerinizin güvenilirliğini ve performansını artırabilirsiniz.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458124"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624130"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak Service Fabric uygulamanızda hata ayıklama
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "75458124"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Yerel Service Fabric uygulamasında hata ayıklama
-Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde dağıtarak ve hata ayıkladıktan sonra zamandan ve paradan tasarruf edebilirsiniz. Visual Studio 2019 veya 2015, uygulamayı yerel kümeye dağıtabilir ve hata ayıklayıcıyı otomatik olarak uygulamanızın tüm örneklerine bağlayın. Hata ayıklayıcıya bağlanmak için Visual Studio 'nun yönetici olarak çalıştırılması gerekir.
+Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde dağıtarak ve hata ayıkladıktan sonra zamandan ve paradan tasarruf edebilirsiniz. Visual Studio 2019 veya 2015, uygulamayı yerel kümeye dağıtabilir ve hata ayıklayıcıyı otomatik olarak uygulamanızın tüm örneklerine bağlayın. Hata ayıklayıcıya bağlanmak için Visual Studio 'Nun yönetici olarak çalıştırılması gerekir.
 
 1. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)adımlarını izleyerek bir yerel geliştirme kümesi başlatın.
 2. **Hata ayıklamayı başlatmak** > **F5** tuşuna basın veya **Hata Ayıkla** öğesine tıklayın.

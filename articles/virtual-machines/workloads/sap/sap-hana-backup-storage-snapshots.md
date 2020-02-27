@@ -4,22 +4,22 @@ description: Azure sanal makinelerinde SAP HANA için iki önemli yedekleme olas
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078593"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617406"
 ---
-# <a name="sap-hana-backup-based-on-storage-snapshots"></a>Depolama anlık görüntülerine dayalı SAP HANA yedeklemesi
+# <a name="sap-hana-backup-based-on-storage-snapshots"></a>Depolama anlık görüntülerine göre SAP HANA yedekleme
 
 ## <a name="introduction"></a>Giriş
 
@@ -51,10 +51,10 @@ Diskte, anlık görüntü SAP HANA veri dizininde görüntülenir.
 
 Bunlardan biri, SAP HANA anlık görüntü hazırlama modundayken depolama anlık görüntüsünü çalıştırmadan önce dosya sistemi tutarlılığının de garanti edilmesini sağlamaktır. [Azure sanal makinelerinde SAP HANA ilgili makale yedekleme kılavuzunda](sap-hana-backup-guide.md) _depolama anlık görüntüleri alırken SAP HANA veri tutarlılığını_ görün.
 
-Depolama anlık görüntüsü tamamlandığında SAP HANA anlık görüntüsünü doğrulamak önemlidir. Çalıştırmak için karşılık gelen bir SQL deyimidir: Yedekleme VERILERI anlık GÖRÜNTÜSÜNÜ kapat (bkz. [yedekleme VERILERI kapalı anlık görüntü ekstresi (yedekleme ve kurtarma)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
+Depolama anlık görüntüsü tamamlandığında SAP HANA anlık görüntüsünü doğrulamak önemlidir. Çalıştırılacak karşılık gelen bir SQL deyimidir: yedekleme VERILERI kapalı anlık görüntü (bkz. [yedekleme VERILERI kapalı anlık görüntü ekstresi (yedekleme ve kurtarma)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
-> HANA anlık görüntüsünü onaylayın. Kopyalama-yazma nedeniyle,&quot; SAP HANA anlık görüntü hazırlama modunda ek disk alanı gerektirebilir ve SAP HANA anlık görüntü onaylanana kadar yeni yedeklemeler başlatmak mümkün değildir. &quot;
+> HANA anlık görüntüsünü onaylayın. &quot;kopyalama-yazma nedeniyle&quot; SAP HANA, anlık görüntü hazırlama modunda ek disk alanı gerektirebilir ve SAP HANA anlık görüntüsü onaylanana kadar yeni yedeklemeler başlatmak mümkün değildir.
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>Azure Backup hizmeti aracılığıyla HANA VM yedeklemesi
 
@@ -66,15 +66,15 @@ Azure Backup hizmeti bir VM 'yi yedekleme ve geri yükleme seçeneği sunar. Bu 
 
 Bu makaleye göre iki önemli nokta vardır:
 
-_&quot;Linux sanal makineleri için, Linux 'un VSS 'ye denk bir platformu olmadığından, yalnızca dosya ile tutarlı yedeklemeler mümkündür.&quot;_
+_Linux sanal makineleri Için &quot;, Linux 'un VSS 'ye eşdeğer bir platformu olmadığından, yalnızca dosya ile tutarlı yedeklemeler mümkündür.&quot;_
 
-_&quot;Uygulamaların geri yüklenen veriler üzerinde kendi &quot;çözüm&quot; mekanizmasını uygulaması gerekir.&quot;_
+_&quot;uygulamaların geri yüklenen veriler üzerinde kendi &quot;düzeltmesini&quot; mekanizmasını uygulaması gerekir.&quot;_
 
 Bu nedenle, yedekleme başladığında SAP HANA diskte tutarlı bir durumda olduğundan emin olmak gerekir. Daha önce belgede açıklanan _SAP HANA anlık görüntüleri_ görüntüleyin. Ancak SAP HANA bu anlık görüntü hazırlama modunda kaldığında olası bir sorun vardır. Daha fazla bilgi için bkz. [depolama anlık görüntüsü oluşturma (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) .
 
 Bu makalede şu durumlar yer alan:
 
-_&quot;Oluşturulduktan sonra, depolama anlık görüntüsünü onaylamanız veya iptal etmek önemle önerilir. Depolama anlık görüntüsü hazırlanmakta veya oluşturulurken, anlık görüntüyle ilgili veriler dondurulur. Anlık görüntü ile ilgili veriler dondurulmuş olmaya devam ederken, değişiklikler veritabanında yine de yapılabilir. Bu değişiklikler, dondurulmuş anlık görüntüyle ilgili verilerin değiştirilmesine neden olmaz. Bunun yerine, değişiklikler, depolama anlık görüntüsünden ayrı olan veri alanındaki konumlara yazılır. Ayrıca değişiklikler günlüğe yazılır. Bununla birlikte, anlık görüntüyle ilgili verilerin ne kadar uzun tutulması, veri hacmi büyümenin daha fazla genişleyebilmesi.&quot;_
+_&quot;, oluşturulduktan sonra depolama anlık görüntüsünü onaylamanız veya iptal etmek önemle önerilir. Depolama anlık görüntüsü hazırlanmakta veya oluşturulurken, anlık görüntüyle ilgili veriler dondurulur. Anlık görüntü ile ilgili veriler dondurulmuş olmaya devam ederken, değişiklikler veritabanında yine de yapılabilir. Bu değişiklikler, dondurulmuş anlık görüntüyle ilgili verilerin değiştirilmesine neden olmaz. Bunun yerine, değişiklikler, depolama anlık görüntüsünden ayrı olan veri alanındaki konumlara yazılır. Ayrıca değişiklikler günlüğe yazılır. Bununla birlikte, anlık görüntüyle ilgili verilerin ne kadar uzun tutulması, veri hacmi büyümenin daha fazla genişleyebilmesi.&quot;_
 
 Azure Backup, Azure VM uzantıları aracılığıyla dosya sistemi tutarlılığını üstlenir. Bu uzantılar tek başına kullanılamaz ve yalnızca Azure Backup hizmetiyle birlikte çalışır. Bununla birlikte, uygulama tutarlılığını güvence altına almak için bir SAP HANA anlık görüntüsü oluşturmak ve silmek üzere komut dosyaları sağlamaya yönelik bir gereksinim de vardır.
 
@@ -105,7 +105,7 @@ Azure Backup tarafından alınan uygulamayla tutarlı yedeklemenin geri yükleme
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>Azure Backup hizmeti aracılığıyla HANA lisans anahtarı ve VM geri yükleme
 
-Azure Backup hizmeti, geri yükleme sırasında yeni bir VM oluşturmak için tasarlanmıştır. Şimdi mevcut bir Azure VM 'nin yerinde &quot;&quot; geri yüklemesi yapmak için bir plan yoktur.
+Azure Backup hizmeti, geri yükleme sırasında yeni bir VM oluşturmak için tasarlanmıştır. Şimdi mevcut bir Azure VM 'nin &quot;yerinde&quot; geri yükleme işlemi için bir plan yoktur.
 
 ![Bu şekilde Azure portal Azure hizmetinin geri yükleme seçeneği gösterilmektedir](media/sap-hana-backup-storage-snapshots/image019.png)
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 02/24/2020
+ms.openlocfilehash: f27042679280581dc3a03113d75c5fb787bbf711
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289416"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616001"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL veritabanı 'nın işlem temelli tutarlı bir kopyasını kopyalama
 
@@ -31,13 +31,13 @@ Veritabanı kopyası, kopyalama isteği sırasında kaynak veritabanının anlı
 
 ## <a name="logins-in-the-database-copy"></a>Veritabanı kopyasında oturum açma işlemleri
 
-Aynı SQL veritabanı sunucusuna bir veritabanını kopyaladığınızda, her iki veritabanında da aynı oturum açma işlemleri kullanılabilir. Veritabanını kopyalamak için kullandığınız güvenlik sorumlusu yeni veritabanında veritabanı sahibi olur. Tüm veritabanı kullanıcıları, izinleri ve güvenlik tanımlayıcıları (SID 'Ler) veritabanı kopyasına kopyalanır.  
+Aynı SQL veritabanı sunucusuna bir veritabanını kopyaladığınızda, her iki veritabanında da aynı oturum açma işlemleri kullanılabilir. Veritabanını kopyalamak için kullandığınız güvenlik sorumlusu yeni veritabanında veritabanı sahibi olur. 
 
-Bir veritabanını farklı bir SQL veritabanı sunucusuna kopyaladığınızda, yeni sunucudaki güvenlik sorumlusu yeni veritabanında veritabanı sahibi olur. Veri erişimi için [Kapsanan Veritabanı kullanıcılarını](sql-database-manage-logins.md) kullanıyorsanız, hem birincil hem de ikincil veritabanlarının her zaman aynı kullanıcı kimlik bilgilerine sahip olduğundan emin olun, böylece kopyalama tamamlandıktan sonra aynı kimlik bilgileriyle hemen erişebilirsiniz.
+Bir veritabanını farklı bir SQL veritabanı sunucusuna kopyaladığınızda, hedef sunucuda kopyalama işlemini başlatan güvenlik sorumlusu yeni veritabanının sahibi olur. 
 
-[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)kullanıyorsanız, kopyada kimlik bilgilerini yönetme gereksinimini tamamen ortadan kaldırabilirsiniz. Ancak, veritabanını yeni bir sunucuya kopyaladığınızda oturum açma tabanlı erişim çalışmayabilir, çünkü oturum açmalar yeni sunucuda mevcut değildir. Farklı bir SQL veritabanı sunucusuna bir veritabanını kopyaladığınızda, oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md).
+Hedef sunucudan bağımsız olarak, tüm veritabanı kullanıcıları, izinleri ve güvenlik tanımlayıcıları (SID 'Ler) veritabanı kopyasına kopyalanır. Veri erişimi için [Kapsanan Veritabanı kullanıcılarının](sql-database-manage-logins.md) kullanılması, kopyalanmış veritabanının aynı kullanıcı kimlik bilgilerine sahip olmasını sağlar, böylece kopyalama tamamlandıktan sonra aynı kimlik bilgileriyle hemen erişebilirsiniz.
 
-Kopyalama başarılı olduktan ve diğer kullanıcılar yeniden eşlendikten sonra, yalnızca kopyalamayı Başlatan oturum açma, veritabanı sahibi yeni veritabanında oturum açabilir. Kopyalama işlemi tamamlandıktan sonra oturum açma işlemlerini çözümlemek için bkz. [oturum açma bilgilerini çözümleme](#resolve-logins).
+Veri erişimi için sunucu düzeyinde oturum açma işlemleri kullanırsanız ve veritabanını farklı bir sunucuya kopyalarsanız, oturum açma tabanlı erişim çalışmayabilir. Bu durum, oturum açma işlemleri hedef sunucuda bulunmadığı veya parolaları ve güvenlik tanımlayıcıları (SID 'Ler) farklı olduğu için meydana gelebilir. Farklı bir SQL veritabanı sunucusuna bir veritabanını kopyaladığınızda, oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md). Farklı bir sunucuya kopyalama işlemi başarılı olduktan sonra ve diğer kullanıcılar yeniden eşlenmeden önce, yalnızca veritabanı sahibiyle ilişkili oturum açma veya Sunucu Yöneticisi kopyalanmış veritabanında oturum açabilir. Kopyalama işlemi tamamlandıktan sonra oturum açma işlemlerini çözümlemek ve veri erişimi oluşturmak için bkz. [oturum açma bilgilerini çözümleme](#resolve-logins).
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>Azure portal kullanarak bir veritabanını kopyalama
 
@@ -45,11 +45,11 @@ Azure portal kullanarak bir veritabanını kopyalamak için veritabanınızın s
 
    ![Veritabanı kopyalama](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>PowerShell kullanarak bir veritabanını kopyalama
+## <a name="copy-a-database-by-using-powershell-or-azure-cli"></a>PowerShell veya Azure CLı kullanarak bir veritabanını kopyalama
 
 Bir veritabanını kopyalamak için aşağıdaki örnekleri kullanın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell için, [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet 'ini kullanın.
 
@@ -63,7 +63,9 @@ New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourcese
 
 Veritabanı kopyası zaman uyumsuz bir işlemdir ancak hedef veritabanı, istek kabul edildikten hemen sonra oluşturulur. Hala devam ederken kopyalama işlemini iptal etmeniz gerekiyorsa, [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 'ini kullanarak hedef veritabanını bırakın.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+Tüm örnek bir PowerShell betiği için bkz. [veritabanını yeni bir sunucuya kopyalama](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azure-cli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
@@ -73,8 +75,6 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 Veritabanı kopyası zaman uyumsuz bir işlemdir ancak hedef veritabanı, istek kabul edildikten hemen sonra oluşturulur. Hala devam ederken kopyalama işlemini iptal etmeniz gerekirse, [az SQL DB Delete](/cli/azure/sql/db#az-sql-db-delete) komutunu kullanarak hedef veritabanını bırakın.
 
 * * *
-
-Tüm örnek betik için bkz. [veritabanını yeni bir sunucuya kopyalama](scripts/sql-database-copy-database-to-new-server-powershell.md).
 
 ## <a name="rbac-roles-to-manage-database-copy"></a>Veritabanı kopyasını yönetmek için RBAC rolleri
 
@@ -104,13 +104,17 @@ Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden 
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Transact-SQL kullanarak bir veritabanını kopyalama
 
-Ana veritabanında sunucu düzeyi sorumlu oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma bilgileriyle oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu düzeyi sorumlu olmayan oturum açma işlemleri dbmanager rolünün üyesi olmalıdır. Oturumlar ve sunucuya bağlanma hakkında daha fazla bilgi için bkz. [oturum açma bilgilerini yönetme](sql-database-manage-logins.md).
+Sunucu Yöneticisi oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma ile ana veritabanında oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu yöneticisi olmayan oturum açma işlemleri `dbmanager` rolünün üyeleri olmalıdır. Oturumlar ve sunucuya bağlanma hakkında daha fazla bilgi için bkz. [oturum açma bilgilerini yönetme](sql-database-manage-logins.md).
 
-[Veritabanı oluştur](https://msdn.microsoft.com/library/ms176061.aspx) ifadesiyle kaynak veritabanını kopyalamaya başlayın. Bu bildirimin yürütülmesi, veritabanı kopyalama işlemini başlatır. Bir veritabanının kopyalanması zaman uyumsuz bir işlem olduğundan, CREATE DATABASE deyimleri, veritabanı kopyalama işlemi tamamlanmadan önce döndürülür.
+Kaynak veritabanını CREATE DATABASE ile kopyalamaya başla [... Deyimin KOPYASı olarak](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) . T-SQL deyimleri, veritabanı kopyalama işlemi tamamlanana kadar çalışmaya devam eder.
+
+> [!NOTE]
+> T-SQL ifadesini sonlandırmak, veritabanı kopyalama işlemini sonlandırmaz. İşlemi sonlandırmak için hedef veritabanını bırakın.
+>
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>Bir SQL veritabanını aynı sunucuya kopyalama
 
-Ana veritabanında sunucu düzeyi sorumlu oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma bilgileriyle oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu düzeyi sorumlu olmayan oturum açma işlemleri dbmanager rolünün üyesi olmalıdır.
+Sunucu Yöneticisi oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma ile ana veritabanında oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu yöneticisi olmayan oturum açma işlemleri `dbmanager` rolünün üyeleri olmalıdır.
 
 Bu komut, Veritabanı1 adlı yeni bir veritabanına aynı sunucuda Veritabanı2 kopyalar. Veritabanınızın boyutuna bağlı olarak kopyalama işleminin tamamlanması biraz zaman alabilir.
 
@@ -121,7 +125,7 @@ Bu komut, Veritabanı1 adlı yeni bir veritabanına aynı sunucuda Veritabanı2 
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>SQL veritabanını farklı bir sunucuya kopyalama
 
-Yeni veritabanının oluşturulacağı SQL veritabanı sunucusu hedef sunucunun ana veritabanında oturum açın. Kaynak SQL veritabanı sunucusundaki kaynak veritabanının veritabanı sahibiyle aynı ada ve parolaya sahip bir oturum açma kullanın. Hedef sunucudaki oturum açma, dbmanager rolünün bir üyesi olmalıdır veya sunucu düzeyinde asıl oturum açma olmalıdır.
+Yeni veritabanının oluşturulacağı hedef sunucunun ana veritabanında oturum açın. Kaynak sunucudaki kaynak veritabanının veritabanı sahibiyle aynı ada ve parolaya sahip bir oturum açma kullanın. Hedef sunucudaki oturum açma, `dbmanager` rolünün bir üyesi olmalıdır ya da Sunucu Yöneticisi oturum açması olmalıdır.
 
 Bu komut Sunucu1 üzerindeki Veritabanı1 öğesini Sunucu2 üzerinde Veritabanı2 adlı yeni bir veritabanına kopyalar. Veritabanınızın boyutuna bağlı olarak kopyalama işleminin tamamlanması biraz zaman alabilir.
 
@@ -131,33 +135,33 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Her iki sunucu da güvenlik duvarı, T-SQL COPY komutunu veren istemcinin IP 'sinden gelen bağlantıya izin verecek şekilde yapılandırılmalıdır.
+> Her iki sunucu güvenlik duvarı da T-SQL CREATE VERITABANıNı veren istemcinin IP 'sinden gelen bağlantıya izin verecek şekilde yapılandırılmalıdır... Komutun KOPYASı olarak.
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>SQL veritabanını farklı bir aboneliğe kopyalama
 
-Veritabanınızı farklı bir abonelikte SQL veritabanı sunucusuna kopyalamak için önceki bölümde açıklanan adımları kullanabilirsiniz. Kaynak veritabanının veritabanı sahibiyle aynı ada ve parolaya sahip bir oturum açma ve dbmanager rolünün bir üyesi veya sunucu düzeyinde asıl oturum açma olduğundan emin olun. 
+Veritabanınızı, T-SQL ' i kullanarak farklı bir abonelikte SQL veritabanı sunucusuna kopyalamak için [SQL veritabanını farklı bir sunucuya kopyalama](#copy-a-sql-database-to-a-different-server) bölümündeki adımları kullanabilirsiniz. Kaynak veritabanının veritabanı sahibiyle aynı ada ve parolaya sahip bir oturum açma kullandığınızdan emin olun. Ayrıca, oturum açma, hem kaynak hem de hedef sunucularda `dbmanager` rolünün veya sunucu yöneticisinin bir üyesi olmalıdır.
 
 > [!NOTE]
-> [Azure Portal](https://portal.azure.com) , Portal ARM API 'sini çağırdığından ve coğrafi çoğaltma işleminde yer alan her iki sunucuya erişmek için abonelik sertifikalarını kullandığından, farklı bir aboneliğe kopyalama desteklenmez.  
+> [Azure Portal](https://portal.azure.com), PowerShell ve Azure CLI, farklı bir aboneliğe veritabanı kopyalamayı desteklemez.
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Kopyalama işleminin ilerlemesini izleme
 
-Sys. databases ve sys. dm_database_copies görünümlerini sorgulayarak kopyalama işlemini izleyin. Kopyalama işlemi devam ederken, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **kopyalama**olarak ayarlanır.
+[Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md)ve [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) görünümlerini sorgulayarak kopyalama işlemini izleyin. Kopyalama işlemi devam ederken, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **kopyalama**olarak ayarlanır.
 
 * Kopyalama başarısız olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **şüpheli**olarak ayarlanır. DROP ifadesini yeni veritabanında yürütün ve daha sonra yeniden deneyin.
 * Kopyalama başarılı olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **çevrimiçi**olarak ayarlanır. Kopyalama tamamlanmıştır ve yeni veritabanı, kaynak veritabanından bağımsız olarak değiştirilebilen normal bir veritabanıdır.
 
 > [!NOTE]
-> Kopyalama işlemi devam ederken iptal etmeyi seçerseniz, yeni veritabanında [drop database](https://msdn.microsoft.com/library/ms178613.aspx) ifadesini yürütün. Alternatif olarak, kaynak veritabanında DROP DATABASE ifadesinin yürütülmesi kopyalama işlemini de iptal eder.
+> Kopyalama işlemi devam ederken iptal etmeyi seçerseniz, yeni veritabanında [drop database](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) ifadesini yürütün.
 
 > [!IMPORTANT]
-> Kaynağından önemli ölçüde daha küçük bir SLO kopyası oluşturmanız gerekiyorsa, hedef veritabanı dengeli işlem işlemini tamamlamaya yetecek kadar kaynağa sahip olmayabilir ve kopyalama işleminin başarısız olmasına neden olabilir. Bu senaryoda, farklı bir sunucuda ve/veya farklı bir bölgede bir kopya oluşturmak için bir coğrafi geri yükleme isteği kullanın. Daha fazla bilgi için bkz. [veritabanı yedeklerini kullanarak Azure SQL veritabanını kurtarma](sql-database-recovery-using-backups.md#geo-restore) .
+> Kaynaktan önemli ölçüde daha küçük bir hizmet hedefine sahip bir kopya oluşturmanız gerekiyorsa, hedef veritabanı dengeli işlem işlemini tamamlayacak yeterli kaynağa sahip olmayabilir ve kopyalama işlemi başarısız olmasına neden olabilir. Bu senaryoda, farklı bir sunucuda ve/veya farklı bir bölgede bir kopya oluşturmak için bir coğrafi geri yükleme isteği kullanın. Daha fazla bilgi için bkz. [veritabanı yedeklerini kullanarak bir Azure SQL veritabanını kurtarma](sql-database-recovery-using-backups.md#geo-restore) .
 
 ## <a name="resolve-logins"></a>Oturum açma işlemlerini çözümle
 
-Yeni veritabanı hedef sunucuda çevrimiçi olduktan sonra, kullanıcıları yeni veritabanından hedef sunucudaki oturum açmayla yeniden eşlemek için [alter User](https://msdn.microsoft.com/library/ms176060.aspx) deyimini kullanın. Yalnız bırakılmış kullanıcıları çözümlemek için bkz. [yalnız bırakılmış kullanıcılarda sorun giderme](https://msdn.microsoft.com/library/ms175475.aspx). Ayrıca bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md).
+Yeni veritabanı hedef sunucuda çevrimiçi olduktan sonra, kullanıcıları yeni veritabanından hedef sunucudaki oturum açmayla yeniden eşlemek için [alter User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) deyimini kullanın. Yalnız bırakılmış kullanıcıları çözümlemek için bkz. [yalnız bırakılmış kullanıcılarda sorun giderme](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server). Ayrıca bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md).
 
-Yeni veritabanındaki tüm kullanıcılar, kaynak veritabanında sahip oldukları izinleri korurlar. Veritabanı kopyasını Başlatan Kullanıcı, yeni veritabanının veritabanı sahibi olur ve yeni bir güvenlik tanımlayıcısı (SID) atanır. Kopyalama başarılı olduktan ve diğer kullanıcılar yeniden eşlendikten sonra, yalnızca kopyalamayı Başlatan oturum açma, veritabanı sahibi yeni veritabanında oturum açabilir.
+Yeni veritabanındaki tüm kullanıcılar, kaynak veritabanında sahip oldukları izinleri korurlar. Veritabanı kopyasını Başlatan Kullanıcı, yeni veritabanının veritabanı sahibi olur. Kopyalama başarılı olduktan ve diğer kullanıcılar yeniden eşlendikten sonra, yalnızca veritabanı sahibi yeni veritabanında oturum açabilir.
 
 Bir veritabanını farklı bir SQL veritabanı sunucusuna kopyaladığınızda kullanıcıları ve oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğini olağanüstü durum kurtarma sonrasında yönetme](sql-database-geo-replication-security-config.md).
 
@@ -165,7 +169,7 @@ Bir veritabanını farklı bir SQL veritabanı sunucusuna kopyaladığınızda k
 
 Azure SQL veritabanı 'nda bir veritabanı kopyalanırken aşağıdaki hatalarla karşılaşılabilir. Daha fazla bilgi için bkz. [Azure SQL Veritabanını kopyalama](sql-database-copy.md).
 
-| Hata kodu | Önem Derecesi | Açıklama |
+| Hata kodu | Severity | Açıklama |
 | ---:| ---:|:--- |
 | 40635 |16 |İstemci IP adresi '%.&#x2a;ls' geçici olarak devre dışıdır. |
 | 40637 |16 |Veritabanı kopyası oluşturma şu anda devre dışı. |

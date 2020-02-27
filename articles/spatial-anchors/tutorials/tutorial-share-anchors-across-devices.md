@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276958"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615486"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Öğretici: Azure uzamsal bağlayıcılarını oturumlar ve cihazlar arasında paylaşma
 
 Bu öğreticide, bir oturum sırasında bağlantılar oluşturmak ve ardından bunları aynı cihazda ya da farklı bir şekilde bulmak için [Azure uzamsal Tutturucuların](../overview.md) nasıl kullanılacağını öğreneceksiniz. Aynı çıpası aynı yerde ve aynı anda birden çok cihaz tarafından da bulunabilir.
 
-![Kalıcılığı](./media/persistence.gif)
+![Kalıcılık](./media/persistence.gif)
 
 Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli tutan nesneleri kullanarak karma gerçeklik deneyimleri oluşturmanıza olanak sağlayan bir platformlar arası geliştirici hizmetidir. İşiniz bittiğinde, iki veya daha fazla cihaza dağıtılabilecek bir uygulamanız olur. Bir örnek tarafından oluşturulan Azure uzamsal bağlantıları diğerleriyle paylaşılabilir.
 
@@ -44,13 +44,13 @@ Bu öğreticide Unity 'yi ve bir ASP.NET Core Web uygulamasını kullanmaya yaş
 
 ## <a name="deploy-your-sharing-anchors-service"></a>Paylaşım bağlantıları hizmetinizi dağıtma
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 Visual Studio 'yu açın ve `Sharing\SharingServiceSample` klasörde projeyi açın.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 Hizmeti VS Code dağıtmadan önce bir kaynak grubu ve bir App Service planı oluşturmanız gerekir.
 
@@ -89,6 +89,12 @@ Visual Studio Code açın ve projeyi `Sharing\SharingServiceSample` klasöründe
 ## <a name="deploy-the-sample-app"></a>Örnek uygulamayı dağıtma
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Büyük değişiklikler nedeniyle Unity 2019,3 Şu anda desteklenmiyor. Lütfen Unity 2019,1 veya 2019,2 kullanın.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

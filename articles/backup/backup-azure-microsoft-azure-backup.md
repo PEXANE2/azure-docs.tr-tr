@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586436"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617624"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -56,7 +56,7 @@ Temel sunucuyu Azure 'da çalıştırmak istemiyorsanız, sunucuyu bir Hyper-V V
 | Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 ve en son SPs |64 bit |Standard, Datacenter, Essentials  |
 
-Windows Server yinelenenleri kaldırma 'yı kullanarak DPM depolama alanını yineleyebilirsiniz. Hyper-V VM 'lerinde dağıtıldığında [DPM ve yinelenenleri kaldırma](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) özelliğinin birlikte nasıl çalıştığı hakkında daha fazla bilgi edinin.
+Windows Server yinelenenleri kaldırma 'yı kullanarak DPM depolama alanını yineleyebilirsiniz. Hyper-V VM 'lerinde dağıtıldığında [DPM ve yinelenenleri kaldırma](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) özelliğinin birlikte nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Azure Backup Sunucusu, özel, tek amaçlı bir sunucuda çalışmak üzere tasarlanmıştır. Üzerinde Azure Backup Sunucusu yükleyemezsiniz:
@@ -359,7 +359,7 @@ Ayrıca, [Ilgili sss Azure Backup](backup-azure-backup-faq.md) de başvurabilirs
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[ORTAMıNıZı DPM için hazırlama](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12))hakkında ayrıntılı bilgi edinebilirsiniz. Ayrıca, Azure Backup Sunucusu dağıtılacağı ve kullanılabileceği desteklenen konfigürasyonlar hakkında bilgiler içerir. Çeşitli işlemleri gerçekleştirmek için bir dizi [PowerShell cmdlet 'i](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) kullanabilirsiniz.
+[ORTAMıNıZı DPM için hazırlama](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)hakkında ayrıntılı bilgi edinebilirsiniz. Ayrıca, Azure Backup Sunucusu dağıtılacağı ve kullanılabileceği desteklenen konfigürasyonlar hakkında bilgiler içerir. Çeşitli işlemleri gerçekleştirmek için bir dizi [PowerShell cmdlet 'i](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) kullanabilirsiniz.
 
 Microsoft Azure Backup sunucusu kullanarak iş yükü korumasını daha ayrıntılı bir şekilde anlamak için bu makaleleri kullanabilirsiniz.
 

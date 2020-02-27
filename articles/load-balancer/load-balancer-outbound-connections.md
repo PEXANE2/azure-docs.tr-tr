@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 56c48e9a64ec1fd000f98a20d5005305f522ff41
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: a6b0ebf811d662046d1a9a89fb75a0ab137569c3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500661"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616541"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -34,7 +34,7 @@ Azure, bu işlevi gerçekleştirmek için kaynak ağ adresi çevirisini (SNAT) k
 Birden çok [giden senaryo](#scenarios)vardır. Bu senaryoları gerektiğinde birleştirebilirsiniz. Özellikleri, kısıtlamaları ve desenleri, dağıtım modeliniz ve Uygulama senaryonuz için uygun olarak anlamak üzere dikkatlice gözden geçirin. [Bu senaryoları yönetme](#snatexhaust)kılavuzunu gözden geçirin.
 
 >[!IMPORTANT] 
->Standart Load Balancer ve standart genel IP, giden bağlantıya yeni yetenekler ve farklı davranışlar getirir.  Bunlar temel SKU 'Lar ile aynı değildir.  Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir.  Bu, dahili bir Standart Load Balancer kullanırken giden bağlantı oluşturmayı içerir.  Her zaman standart bir genel Load Balancer giden kuralları kullanmanızı öneririz.  [3. senaryo](#defaultsnat) standart SKU ile kullanılamaz.  Bu, bir iç Standart Load Balancer kullanıldığında, giden bağlantı istenirse arka uç havuzundaki VM 'Ler için giden bağlantı oluşturmak üzere gerekli adımları uygulamanız gerekir.  Giden bağlantı bağlamında, tek bir tek başına VM, tüm VM 'ler bir kullanılabilirlik kümesinde, bir VMSS içindeki tüm örnekler bir grup olarak davranır. Bu, bir kullanılabilirlik kümesindeki tek bir VM standart SKU ile ilişkili ise, bu kullanılabilirlik kümesindeki tüm sanal makine örnekleri, tek bir örnek doğrudan ilişkili olmasa bile standart SKU ile ilişkilendirildikleri kurallarla aynı kurallara göre davranır.  Genel kavramları anlamak için tüm belgeyi dikkatle gözden geçirin, SKU 'Lar arasındaki farklılıklar için [Standart Load Balancer](load-balancer-standard-overview.md) gözden geçirin ve [giden kuralları](load-balancer-outbound-rules-overview.md)gözden geçirin.  Giden kuralları kullanmak, giden bağlantıların tüm yönleri üzerinde ayrıntılı denetim sağlar.
+>Standart Load Balancer ve standart genel IP, giden bağlantıya yeni yetenekler ve farklı davranışlar getirir.  Bunlar temel SKU 'Lar ile aynı değildir.  Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir.  Bu, dahili bir Standart Load Balancer kullanırken giden bağlantı oluşturmayı içerir.  Her zaman standart bir genel Load Balancer giden kuralları kullanmanızı öneririz.  [3. senaryo](#defaultsnat) standart SKU ile kullanılamaz.  Bu, bir iç Standart Load Balancer kullanıldığında, giden bağlantı istenirse arka uç havuzundaki VM 'Ler için giden bağlantı oluşturmak üzere gerekli adımları uygulamanız gerekir.  Giden bağlantı bağlamında, tek bir tek başına VM, tüm VM 'ler bir kullanılabilirlik kümesinde, bir VMSS içindeki tüm örnekler bir grup olarak davranır. Bu, bir kullanılabilirlik kümesindeki tek bir VM standart SKU ile ilişkili ise, bu kullanılabilirlik kümesindeki tüm sanal makine örnekleri, tek bir örnek doğrudan ilişkili olmasa bile standart SKU ile ilişkilendirildikleri kurallarla aynı kurallara göre davranır. Bu davranış, bir yük dengeleyiciye bağlı birden çok ağ arabirimi kartına sahip tek başına bir VM söz konusu olduğunda da gözlemlenmiştir. Tek başına bir NIC eklenirse aynı davranışa sahip olur. Genel kavramları anlamak için tüm belgeyi dikkatle gözden geçirin, SKU 'Lar arasındaki farklılıklar için [Standart Load Balancer](load-balancer-standard-overview.md) gözden geçirin ve [giden kuralları](load-balancer-outbound-rules-overview.md)gözden geçirin.  Giden kuralları kullanmak, giden bağlantıların tüm yönleri üzerinde ayrıntılı denetim sağlar.
 
 ## <a name="scenarios"></a>Senaryoya genel bakış
 

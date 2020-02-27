@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 47fa4083c26f18149b0b69b05f2cfd0b227de868
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776299"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619583"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -20,6 +20,8 @@ MySQL için Azure veritabanı otomatik olarak sunucu yedeklemeleri oluşturur ve
 ## <a name="backups"></a>Yedeklemeler
 
 MySQL için Azure veritabanı, veri dosyalarının ve işlem günlüğünün yedeklerini alır. Desteklenen en fazla depolama boyutuna bağlı olarak, tam ve fark yedeklemeleri (4 TB maksimum depolama sunucusu) veya anlık görüntü yedeklemeleri (en fazla 16 TB depolama sunucusuna kadar) sunuyoruz. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. [İsteğe bağlı olarak](howto-restore-server-portal.md#set-backup-configuration) 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
+
+Bu yedekleme dosyaları verilemez. Yedeklemeler yalnızca MySQL için Azure veritabanı 'nda geri yükleme işlemleri için kullanılabilir. Bir veritabanını kopyalamak için [mysqldump](concepts-migrate-dump-restore.md) kullanabilirsiniz.
 
 ### <a name="backup-frequency"></a>Yedekleme sıklığı
 

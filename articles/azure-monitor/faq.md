@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485344"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620446"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -56,7 +56,7 @@ Azure Izleyici, Azure platformu ve kaynakları, özel uygulamalar ve sanal makin
 Azure Izleyici çeşitli kaynaklardaki verileri [Günlükler](platform/data-platform-logs.md) veya [ölçümler](platform/data-platform-metrics.md)halinde toplar. Her bir veri türü kendi göreli avantajlarına sahiptir ve her biri Azure Izleyici 'de belirli bir özellik kümesini destekler. Her bir Azure aboneliği için tek bir ölçüm veritabanı bulunur, ancak gereksinimlerinize bağlı olarak günlükleri toplamak için birden çok Log Analytics çalışma alanı oluşturabilirsiniz. Bkz. [Azure izleyici veri platformu](platform/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Azure Izleyici 'de toplayadığım maksimum veri miktarı var mı?
-Toplayacağınız Ölçüm verisi miktarına yönelik bir sınır yoktur, ancak bu veriler en fazla 93 gün boyunca depolanır. [Ölçüm bekletme](platform/data-platform-metrics.md#retention-of-metrics)konusuna bakın. Toplanabilecek günlük verisi miktarı için bir sınır yoktur, ancak Log Analytics çalışma alanı için seçtiğiniz fiyatlandırma katmanından etkilenebilir. [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/monitor/)bakın.
+Toplayacağınız Ölçüm verisi miktarına yönelik bir sınır yoktur, ancak bu veriler en fazla 93 gün boyunca depolanır. [Ölçüm bekletme](platform/data-platform-metrics.md#retention-of-metrics)konusuna bakın. Toplayacağınız günlük verisi miktarı için bir sınır yoktur, ancak Log Analytics çalışma alanı için seçtiğiniz fiyatlandırma katmanından etkilenebilir. [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/monitor/)bakın.
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Azure Izleyici tarafından toplanan Nasıl yaparım? erişim verileri?
 Öngörüler ve çözümler, Azure Izleyici 'de depolanan verilerle çalışmaya yönelik özel bir deneyim sağlar. Kusto sorgu dilinde (KQL) yazılmış bir günlük sorgusunu kullanarak doğrudan günlük verileriyle çalışabilirsiniz. Azure portal sorguları yazabilir ve çalıştırabilir ve Log Analytics kullanarak verileri etkileşimli bir şekilde çözümleyebilirsiniz. Azure portal ölçümleri Ölçüm Gezgini ile çözümleyin. Bkz. [Azure izleyici 'de günlük verilerini çözümleme](log-query/log-query-overview.md) ve [Azure Ölçüm Gezgini kullanmaya](platform/metrics-getting-started.md)başlama.

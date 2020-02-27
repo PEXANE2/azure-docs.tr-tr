@@ -9,12 +9,12 @@ ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118059"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650956"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps bir IBM MQ sunucusuna bağlanma
 
@@ -134,7 +134,10 @@ Kuyrukta bir gözatmanız veya alma işlemi yaparken herhangi bir ileti yoksa, a
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan eylemler ve sınırlar hakkında teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/mq/)gözden geçirin.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/mq/)bakın.
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
