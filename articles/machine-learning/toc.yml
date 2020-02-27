@@ -83,8 +83,10 @@
       href: concept-workspace.md
     - name: Ortamlar
       href: concept-environments.md
-    - name: Veriler
+    - name: Veri erişimi
       href: concept-data.md
+    - name: Veri alımı
+      href: concept-data-ingestion.md
     - name: Model eğitimi
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
