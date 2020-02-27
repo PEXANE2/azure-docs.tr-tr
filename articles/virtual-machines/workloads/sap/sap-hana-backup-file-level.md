@@ -4,24 +4,24 @@ description: Azure sanal makinelerinde SAP HANA için iki önemli yedekleme olas
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: hermannd
+ms.openlocfilehash: d1044e4cbfd59cdf58af1a132a64e7143083905c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426014"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616162"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Dosya düzeyinde Azure Backup SAP HANA
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Bu, SAP HANA yedeğine ilişkin üç bölümlü ilgili makalelerin bir parçasıdır. [Azure sanal makineler 'de SAP HANA Için Yedekleme Kılavuzu](./sap-hana-backup-guide.md) , kullanmaya başlama hakkında bir genel bakış ve bilgi sağlar ve [depolama anlık görüntülerine göre SAP HANA yedekleme](./sap-hana-backup-storage-snapshots.md) , depolama anlık görüntü tabanlı yedekleme seçeneğini içerir.
 

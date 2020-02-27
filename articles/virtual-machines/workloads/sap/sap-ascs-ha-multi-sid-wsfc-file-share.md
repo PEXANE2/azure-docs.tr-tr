@@ -3,8 +3,8 @@ title: SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya p
 description: Azure 'da Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla, SAP ASCS/SCS örnekleri için çok düzeyli yüksek kullanılabilirlik
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5638d71748c485c593dde8d9876400a40821ca28
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2c12372dbc47548755c0680b0acb7a93360a0987
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643160"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617478"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -217,7 +217,7 @@ Bu makalede, **dosya paylaşımıyla**mevcut bir Windows Server yük devretme K�
 
 Yük dengeleyici sınırları hakkında daha fazla bilgi için [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyiciye göre özel ön uç IP" bölümüne bakın. Azure Yük dengeleyicinin temel SKU 'SU yerine [azure standart Load Balancer SKU 'su](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) kullanmayı da düşünün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu diyagramda gösterildiği gibi, **dosya paylaşma**kullanarak BIR SAP ascs/SCS örneği için kullanılacak bir wsfc kümesini zaten yapılandırdınız.
 

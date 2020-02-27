@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598213"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616038"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu sözdizimi
 
@@ -213,6 +213,8 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
+
+Bir veya daha fazla özellik adı içindeki bir nokta ile gövde veya cihaz ikizi yönlendirme sorgusu desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

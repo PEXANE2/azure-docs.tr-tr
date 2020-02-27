@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789163"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647573"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps ile SMTP hesabınızdan e-posta gönderin
 
@@ -49,7 +49,7 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 
 1. İstendiğinde, bu bağlantı bilgilerini sağlayın:
 
-   | Özellik | Gereklidir | Açıklama |
+   | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **Bağlantı Adı** | Yes | SMTP sunucunuza bağlantı için bir ad | 
    | **SMTP sunucu adresi** | Yes | SMTP sunucunuzun adresi | 
@@ -65,12 +65,10 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/smtpconnector/)gözden geçirin.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/smtpconnector/)bakın.
 
-## <a name="get-support"></a>Destek alın
-
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
-* Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

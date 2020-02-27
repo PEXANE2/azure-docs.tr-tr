@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904662"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651024"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps 'dan SAP sistemlerine bağlanma
 
 > [!IMPORTANT]
-> Önceki SAP uygulama sunucusu ve SAP Ileti sunucusu bağlayıcıları, 29 Şubat 2020 ' de kullanımdan kalkmak üzere zamanlandı. Geçerli SAP Bağlayıcısı, bu önceki SAP bağlayıcılarını, bağlantı türünü değiştirmek zorunda kalmazsınız, önceki bağlayıcılarla tamamen uyumlu, birçok ek özellik sağlar ve SAP .net bağlayıcı kitaplığını kullanmaya devam eder. ( SAP NCo).
+> Önceki SAP uygulama sunucusu ve SAP Ileti sunucusu bağlayıcıları, 29 Şubat 2020 ' de kullanımdan kaldırılmıştır. Geçerli SAP Bağlayıcısı, bu önceki SAP bağlayıcılarını, bağlantı türünü değiştirmek zorunda kalmazsınız, önceki bağlayıcılarla tamamen uyumlu, birçok ek özellik sağlar ve SAP .net bağlayıcı kitaplığını kullanmaya devam eder. ( SAP NCo).
 >
 > Eski bağlayıcıları kullanan Logic Apps için, kullanımdan kaldırma tarihinden önce lütfen [en son bağlayıcıya geçiş](#migrate) yapın. Aksi takdirde, bu Logic Apps yürütme hatalarıyla karşılaşacaktır ve SAP sisteminize ileti gönderemeyecektir.
 
@@ -39,7 +39,7 @@ Bu makalede, daha önce açıklanan tümleştirme senaryolarını kapsayan, SAP 
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyle birlikte takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -300,7 +300,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
 1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-from-sap)için bu konudaki önceki adımları izleyin.
 
-   Örneğin:
+   Örnek:
 
    ![Logic App 'e SAP tetikleyicisi ekleme](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -556,7 +556,10 @@ SAP bağlayıcısının Şu anda bilinen sorunları ve sınırlamaları aşağı
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/sap/)gözden geçirin.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/sap/)bakın.
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine e
 description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526221"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649798"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -16,7 +16,7 @@ Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından a
 
 Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebilirsiniz. Daha sonra, yetkili bir Kullanıcı kiracınızda oturum açtığında, bu kullanıcı, her müşteri kiracısında oturum açmaya gerek kalmadan yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetkilendiribiliyor olabilir.
 
-Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirin. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](../../billing/billing-partner-admin-link-started.md). Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerektiğini unutmayın.
+Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirin. Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerektiğini unutmayın. Basitlik için, kiracınızda MPN KIMLIĞINIZLE ilişkilendirilen bir hizmet sorumlusu hesabı oluşturmanızı ve BT okuyucuyu eklediğiniz her müşteri için erişim izni verilmesini öneririz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](../../billing/billing-partner-admin-link-started.md). 
 
 > [!NOTE]
 > Müşteriler, Azure Marketi 'Nde yayımladığınız yönetilen bir hizmet teklifi (genel veya özel) satın alındığında da eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini, Azure Marketi 'Nde yayınlanan bir teklifle birlikte da kullanabilirsiniz.
@@ -39,7 +39,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu KIMLIK değerleri zaten yoksa, bunları aşağıdaki yollarla alabilirsiniz. Dağıtımınızda bu tam değerleri kullandığınızdan emin olun ve bunları kullanın.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -244,7 +244,7 @@ az deployment create --name <deploymentName> \
 
 Bir müşteri aboneliği Azure tarafından atanan kaynak yönetimine başarıyla eklendi, hizmet sağlayıcı kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (Yukarıdaki işlem aracılığıyla bu hizmete erişim verildiyse, ayrı ayrı veya bir Azure AD grubunun üyesi olarak uygun izinlere sahip olmalıdır). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -300,7 +300,7 @@ Aşağıdaki örnekte, **yönetilen hizmetler kayıt ataması silme rolü** bir 
 
 Bu izne sahip bir Kullanıcı, aşağıdaki yollarla bir temsilciyi kaldırabilir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Müşterilerimiz sayfasına](view-manage-customers.md)gidin.
 2. **Temsilciler**' ı seçin.

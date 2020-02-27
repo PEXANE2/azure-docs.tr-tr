@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561765"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623110"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma
 
@@ -81,7 +81,7 @@ ETL modeli genellikle şunları yapmak istediğinizde kullanılır:
 
 * Dış kaynaklardan mevcut bir veritabanına veya bilgi sistemine akış verileri veya yarı yapılandırılmış veya yapılandırılmamış verilerin büyük hacimlerini yükleyin.
 * Küme üzerinde birden fazla dönüşüm geçişi kullanarak, yüklemeden önce verileri temizleyin, dönüştürün ve doğrulayın.
-* Düzenli olarak güncellenen raporlar ve görselleştirmeler oluşturun.  Örneğin, raporun gün içinde oluşturması çok uzun sürüyorsa, raporu gece boyunca çalışacak şekilde zamanlayabilirsiniz.  Hive sorgusunu otomatik olarak çalıştırmak için Azure Scheduler ve PowerShell kullanabilirsiniz.
+* Düzenli olarak güncellenen raporlar ve görselleştirmeler oluşturun. Örneğin, raporun gün içinde oluşturması çok uzun sürüyorsa, raporu gece boyunca çalışacak şekilde zamanlayabilirsiniz. Hive sorgusunu otomatik olarak çalıştırmak için [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) ve PowerShell 'i kullanabilirsiniz.
 
 Verilerin hedefi bir veritabanı değilse sorgu içinde uygun biçimde, örneğin bir CSV dosyası oluşturabilirsiniz. Bu dosya daha sonra Excel veya Power BI içeri aktarılabilir.
 

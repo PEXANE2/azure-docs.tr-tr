@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251966"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651075"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -95,7 +95,9 @@ Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanı
 > [!NOTE]
 > Önbellekte NFS depolama sistemine yeterli erişim yoksa depolama hedefi oluşturma işlemi başarısız olur.
 
-* **Ağ bağlantısı:** Azure HPC önbelleğinin önbellek alt ağı ile NFS sisteminin veri merkezi arasında yüksek bant genişliğine sahip ağ erişimi olması gerekir. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) veya benzer erişim önerilir. VPN kullanıyorsanız, büyük paketlerin engellenmediğinden emin olmak için bunu 1350 adresindeki Clamp TCP yönetim paketleri için yapılandırmanız gerekebilir.
+Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunları sorunlarını giderme](troubleshoot-nas.md).
+
+* **Ağ bağlantısı:** Azure HPC önbelleğinin önbellek alt ağı ile NFS sisteminin veri merkezi arasında yüksek bant genişliğine sahip ağ erişimi olması gerekir. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) veya benzer erişim önerilir. VPN kullanıyorsanız, büyük paketlerin engellenmediğinden emin olmak için bunu 1350 adresindeki Clamp TCP yönetim paketleri için yapılandırmanız gerekebilir. VPN ayarları sorunlarını gidermeye yönelik ek yardım için [VPN paket boyutu kısıtlamalarını](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) okuyun.
 
 * **Bağlantı noktası erişimi:** Önbelleğin depolama sisteminizdeki belirli TCP/UDP bağlantı noktalarına erişmesi gerekir. Farklı depolama türlerinin farklı bağlantı noktası gereksinimleri vardır.
 
@@ -109,6 +111,8 @@ Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanı
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  ``rpcinfo`` sorgusunun döndürdüğü tüm bağlantı noktalarının Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiği şekilde emin olun.
+
   * `rpcinfo` komutu tarafından döndürülen bağlantı noktalarına ek olarak, bu yaygın olarak kullanılan bağlantı noktalarının gelen ve giden trafiğe izin verdiği şekilde emin olun:
 
     | Protokol | Bağlantı noktası  | Hizmet  |
@@ -117,20 +121,24 @@ Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanı
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | dağtd   |
-    | TCP/UDP  | 4047  | status   |
+    | TCP/UDP  | 4047  | durum   |
 
   * Bu gerekli bağlantı noktalarının tümünde trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını kontrol edin. Azure 'da kullanılan güvenlik duvarlarını, veri merkezinizdeki şirket içi güvenlik duvarlarını da denetlediğinizden emin olun.
 
-* **Dizin erişimi:** Depolama sisteminde `showmount` komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (riskler dosyası çarpışmaları) erişemadığından emin olmak için bu komutu kullanır.
+* **Dizin erişimi:** Depolama sisteminde `showmount` komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
 
   > [!NOTE]
   > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, **`showmount`etkinleştirmeyin** . Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
+
+  NFS depolama hedef [sorun giderme makalesinde](troubleshoot-nas.md#enable-export-listing)Dizin listeleme erişimi hakkında daha fazla bilgi edinin.
 
 * **Kök erişimi:** Önbellek, Kullanıcı KIMLIĞI 0 olarak arka uç sistemine bağlanır. Depolama sisteminizde bu ayarları kontrol edin:
   
   * `no_root_squash`etkinleştirin. Bu seçenek, uzak kök kullanıcının köke ait dosyalara erişebilmesini sağlar.
 
   * Önbelleğin alt ağından kök erişim kısıtlamalarını dahil olmadıklarından emin olmak için dışarı aktarma ilkelerini denetleyin.
+
+  * Depolama ortamınızda başka bir dışarı aktarmanın alt dizinleri olan dışarı aktarımlar varsa, önbelleğin yolun en düşük kesimine kök erişimi olduğundan emin olun. Ayrıntılar için NFS depolama hedefi sorun giderme makalesindeki [Dizin yollarında kök erişimi](troubleshoot-nas.md#allow-root-access-on-directory-paths) okuyun.
 
 * NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
 

@@ -2,14 +2,14 @@
 title: Sorun giderme-kişiselleştirici
 description: Bu makale, kişiselleştirici hakkında sık sorulan sorun giderme sorularına yanıtlar içerir.
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469553"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650529"
 ---
 # <a name="personalizer-troubleshooting"></a>Kişiselleştirici sorunlarını giderme
 
@@ -32,6 +32,19 @@ Bu makale, kişiselleştirici hakkında sık sorulan sorun giderme sorularına y
 </details>
 
 ## <a name="learning-loop"></a>Öğrenme döngüsü
+
+<details>
+<summary>
+<b>Öğrenme döngüsü, kişiselleştirmeden sisteme %100 eşleşme karşılamıyor. Bu Nasıl yaparım? düzeltilsin mi?</b></summary>
+
+**Cevap**: öğrenme döngüsüyle amacınız ile ilgili bilgi verme nedenleri:
+* Rank API çağrısıyla gönderilen yeterli özellik yok
+* Gönderilen özelliklerde hatalar-derecelendirme API 'sine zaman damgaları gibi toplu olmayan özellik verileri gönderme
+* Olay için API 'leri yeniden almak için veri gönderme gibi döngü işleme içeren hatalar
+
+Bu sorunu gidermek için, döngüye gönderilen özellikleri değiştirerek işlemeyi değiştirmeniz veya bir değerlendirmenin, derece yanıtının kalitesi için doğru bir değerlendirme olduğundan emin olmanız gerekir.
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ Yeni güncelleştirme dönemi başladığında, güncelleştirilmiş model kulla
 <details>
 <summary><b>Bir öğrenme ilkesini içeri Nasıl yaparım? mı?</b></summary>
 
-**Cevap**: [öğrenme ilkesi kavramları](concept-active-learning.md#understand-learning-policy-settings) ve yeni bir öğrenme ilkesinin [nasıl uygulanacağı](how-to-learning-policy.md) hakkında daha fazla bilgi edinin. Bir öğrenme ilkesi seçmek istemiyorsanız, geçerli olaylarınız temelinde bir öğrenme ilkesi önermek için [çevrimdışı değerlendirmeyi](how-to-offline-evaluation.md) kullanabilirsiniz.
+**Cevap**: [öğrenme ilkesi kavramları](concept-active-learning.md#understand-learning-policy-settings) ve yeni bir öğrenme ilkesinin [nasıl uygulanacağı](how-to-manage-model.md) hakkında daha fazla bilgi edinin. Bir öğrenme ilkesi seçmek istemiyorsanız, geçerli olaylarınız temelinde bir öğrenme ilkesi önermek için [çevrimdışı değerlendirmeyi](how-to-offline-evaluation.md) kullanabilirsiniz.
 
 </details>
 

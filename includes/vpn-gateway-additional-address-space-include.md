@@ -5,27 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 02/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cc17df68280c342f863e69e6a253788d20caeba8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5d6a12a4dbeba4ce35bacd5c2a0fdcb43442b9b8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188214"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619737"
 ---
 ### <a name="to-add-additional-address-space"></a>Ek adres alanı ekleme
 
-1. Ek adres aralıkları, adres alanına eklemek için **ayarları** sanal ağınızın sayfasında, select bölümünü **adres alanı**. **Adres alanı** sayfası görüntülenir.
-2. Ek adres aralığını ekleyin ve ardından **Kaydet** sayfanın üstünde.
+1. Adres alanınıza ek adres aralıkları eklemek için, sanal ağ sayfanızın **Ayarlar** bölümünde **Adres alanı**' nı seçin. **Adres alanı** sayfası görüntülenir.
+2. Ek adres aralığını ekleyin ve ardından sayfanın en üstünde **Kaydet** ' i seçin.
 
-   ![Adres alanı ekleme](./media/vpn-gateway-additional-address-space-include/address_space.png)
+   ![Adres alanı ekleme](./media/vpn-gateway-additional-address-space-include/add-space.png)
 
 ### <a name="to-create-additional-subnets"></a>Ek alt ağlar oluşturmak için
 
-1. Alt ağlar oluşturmak için **ayarları** sanal ağınızın sayfasında, select bölümünü **alt ağlar**. **Alt ağlar** sayfası görüntülenir. 
-2. Seçin **alt** açmak için **alt ağ Ekle** sayfası. Girin **adı** yeni alt ağınızın ve belirtin **adres aralığı**.
+1. Ek alt ağlar oluşturmak için, sanal ağ sayfanızın **Ayarlar** bölümünde **alt ağlar**' ı seçin. **Alt ağlar** sayfası görüntülenir.
+1. **Alt ağ ekle** sayfasını açmak Için **+ alt ağ** ' ı seçin.
 
-   ![Alt ağ ayarları](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
-3. Değişikliklerinizi kaydetmek için seçmeniz **Tamam** sayfanın alt kısmındaki.
+   ![Alt ağ ekleme](./media/vpn-gateway-additional-address-space-include/subnet.png)
+1. Yeni alt ağınızın **adını** girin ve **adres aralığını**belirtin. Değişikliklerinizi kaydetmek için sayfanın alt kısmındaki **Tamam** ' ı seçin.
+
+   ![Alt ağ ayarları](./media/vpn-gateway-additional-address-space-include/add-subnet.png)

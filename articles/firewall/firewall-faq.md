@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526521"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621956"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -50,11 +50,11 @@ Azure Güvenlik Duvarı, kuralları ve kural koleksiyonlarını destekler. Kural
 
 * *Uygulama kuralları*: bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
 * *Ağ kuralları*: kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
-* *NAT kuralları*: gelen bağlantılara izin vermek için DNAT kurallarını yapılandırın.
+* *NAT kuralları*: gelen Internet bağlantılarına izin vermek için DNAT kurallarını yapılandırın.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Güvenlik Duvarı gelen trafik filtrelemeyi destekliyor mu?
 
-Azure Güvenlik Duvarı gelen ve giden filtrelemeyi destekler. Gelen koruma genellikle HTTP olmayan/S protokolleri için kullanılır. Örneğin, RDP, SSH ve FTP protokolleri. En iyi gelen HTTP/S koruması için [azure Application Gateway 'de Azure Web uygulaması güvenlik duvarı](../web-application-firewall/ag/ag-overview.md)gibi bir Web uygulaması güvenlik duvarı kullanın.
+Azure Güvenlik Duvarı gelen ve giden filtrelemeyi destekler. Gelen koruma genellikle HTTP olmayan/S protokolleri için kullanılır. Örneğin, RDP, SSH ve FTP protokolleri. En iyi gelen HTTP/S koruması için [Azure Web uygulaması güvenlik duvarı (WAF)](../web-application-firewall/overview.md)gibi bir Web uygulaması güvenlik duvarı kullanın.
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Hangi günlük ve analiz hizmetleri Azure Güvenlik Duvarı tarafından destekleniyor?
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -139,7 +139,7 @@ Yapılandırmanız şirket içi bir ağa Zorlamalı tünel gerektiriyorsa ve Int
 
 Evet. Güvenlik Duvarı, VNet ve genel IP adresi aynı kaynak grubunda olmalıdır.
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Gelen ağ trafiği için DNAT yapılandırılırken, bu trafiğe izin vermek için karşılık gelen bir ağ kuralı da yapılandırmam gerekir mi?
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Gelen Internet ağ trafiği için DNAT yapılandırılırken, bu trafiğe izin vermek için karşılık gelen bir ağ kuralı da yapılandırmam gerekir mi?
 
 Hayır. NAT kuralları, çevrilen trafiğe izin vermek için, karşılık gelen bir ağ kuralını dolaylı olarak ekler. Bu davranışı, çevrilen trafikle eşleşen reddetme kuralları olan bir ağ kural koleksiyonunu açıkça ekleyerek geçersiz kılabilirsiniz. Azure Güvenlik Duvarı kural işleme mantığı hakkında daha fazla bilgi için bkz: [Azure Güvenlik Duvarı kural işleme mantığı](rule-processing.md).
 

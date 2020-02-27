@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49a07f591731a1deb2838751852c0134548966d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521855"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648011"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication yönelik özellikler ve lisanslar
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, çeşitli Azure Multi-Factor Authentication sürümlerinde
 
 | Özellik | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Office 365 Business Premium, E3 veya E5 | Azure AD Premium P1 veya P2 |
 | --- |:---:|:---:|:---:|:---:|
-| MFA ile Azure AD yönetici hesaplarını koruma | ● | ● (Yalnızca*Azure AD Genel yönetici* hesapları) | ● | ● |
+| MFA ile Azure AD kiracı yönetici hesaplarını koruma | ● | ● (Yalnızca*Azure AD Genel yönetici* hesapları) | ● | ● |
 | İkinci bir faktör olarak mobil uygulama | ● | ● | ● | ● |
 | İkinci bir faktör olarak telefon araması | | ● | ● | ● |
 | İkinci bir faktör olarak SMS | | ● | ● | ● |

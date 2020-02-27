@@ -3,22 +3,22 @@ title: Azure 'da SAP HANA boyutlandırma (büyük örnekler) | Microsoft Docs
 description: Azure 'da SAP HANA boyutlandırma (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2540a0f9ea702ff620ccd4b68208cbb2e70aafd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101137"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616903"
 ---
 # <a name="sizing"></a>Boyutlandırma
 
@@ -26,7 +26,7 @@ HANA büyük örneğinin boyutlandırılması, genel olarak HANA için boyutdan 
 
 - [SAP Note #1793345-HANA 'da SAP Suite için boyutlandırma](https://launchpad.support.sap.com/#/notes/1793345)
 - [SAP Note #1872170 HANA ve S/4 HANA boyutlandırma raporunda Suite](https://launchpad.support.sap.com/#/notes/1872170)
-- [SAP Note #2121330-SSS: HANA boyutlandırma raporunda SAP BW](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP Note #2121330-SSS: SAP BW HANA boyutlandırma raporunda](https://launchpad.support.sap.com/#/notes/2121330)
 - [SAP Note #1736976-HANA 'da siyah beyaz için boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/1736976)
 - [SAP Note #2296290-bit GENIŞLIĞI için HANA 'da yeni boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/2296290)
 

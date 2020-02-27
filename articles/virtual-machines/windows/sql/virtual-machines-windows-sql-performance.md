@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 880f1c601cf4132fdec9e5d25b1bf1f2ff175ab7
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486252"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650546"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için performans yönergeleri
 
@@ -136,7 +136,7 @@ Premium SSD 'Leri destekleyen VM 'Ler için TempDB 'yi okuma önbelleği etkinke
      > [!WARNING]
      > Herhangi bir veritabanı bozulması olasılığını ortadan kaldırmak için Azure VM disklerinin önbellek ayarını değiştirirken SQL Server hizmetini durdurun.
 
-* **NTFS ayırma birimi boyutu**: veri diski biçimlendirilirken veri ve günlük dosyaları için BIR 64 KB ayırma birimi boyutu ve tempdb de kullanmanız önerilir.
+* **NTFS ayırma birimi boyutu**: veri diski biçimlendirilirken veri ve günlük dosyaları için BIR 64 KB ayırma birimi boyutu ve tempdb de kullanmanız önerilir. TempDB geçici diske yerleştirilmişse (D:\ sürücü) bu sürücüden yararlanarak elde edilen performans, 64K ayırma birimi boyutu gereksinimini ortadan kaldırarak ortaya çıktı. 
 
 * **Disk yönetimi en iyi uygulamaları**: bir veri diski kaldırılırken veya önbellek türünü değiştirirken, değişiklik sırasında SQL Server hizmetini durdurun. Önbelleğe alma ayarları işletim sistemi diskinde değiştirildiğinde, Azure VM 'yi sonlandırır, önbellek türünü değiştirir ve VM 'yi yeniden başlatır. Bir veri diskinin önbellek ayarları değiştirildiğinde, VM durdurulmaz, ancak veri diski değişiklik sırasında VM 'den ayrılır ve yeniden eklenir.
 

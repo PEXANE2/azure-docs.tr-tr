@@ -3,14 +3,14 @@ title: VM'leri çalışma saatleri dışında başlat/durdur çözümü
 description: Bu VM yönetimi çözümü, Azure Izleyici günlüklerinden Azure Resource Manager sanal makinelerinizi bir zamanlamaya göre ve proaktif bir izleyiciden başlatır ve sonlandırır.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2019
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030165"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616056"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında başlat/durdur çözümü
 
@@ -37,7 +37,7 @@ Geçerli çözümle ilgili sınırlamalar aşağıda verilmiştir:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu çözüme yönelik runbook 'lar bir [Azure farklı çalıştır hesabıyla](automation-create-runas-account.md)çalışır. Bu, kullanım dışı veya sıklıkla değişebilir bir parola yerine sertifika kimlik doğrulaması kullandığından, farklı çalıştır hesabı tercih edilen kimlik doğrulama yöntemidir.
 
@@ -105,7 +105,7 @@ VM'leri çalışma saatleri dışında başlat/durdur çözümünü Otomasyon he
 
 2. Seçili çözümün **VM'leri çalışma saatleri dışında Başlat/Durdur** sayfasında, Özet bilgilerini gözden geçirin ve ardından **Oluştur**' a tıklayın.
 
-   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure portalı](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. **Çözüm Ekle** sayfası görüntülenir. Çözümü Otomasyon aboneliğinize aktarmadan önce yapılandırmanız istenir.
 
@@ -200,36 +200,6 @@ Dağıtılmış bir iş yükünü destekleyen birden çok VM üzerinde iki veya 
 1. Bu senaryo **External_Start_ResourceGroupNames** ve **External_Stop_ResourceGroupnames** değişkenlerini dikkate almaz. Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](../automation/automation-schedules.md).
 1. Üretim VM 'lerine göre uygulamadan önce eylemin önizlemesini görüntüleyin ve gerekli değişiklikleri yapın. Hazırlandığınızda, izleme-ve-Tanılama/izleme-eylem-groupsrunbook ' u, parametresini **false**olarak ayarlanmış şekilde el ile yürütün veya önceden belirlenmiş zamanlamanızı izleyen Otomasyon zamanlaması **sıralı-startvm** ve **sıralı-stopvm** 'nin otomatik olarak çalıştırılmasını sağlayın.
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Senaryo 3: CPU kullanımına göre otomatik olarak Başlat/Durdur
-
-Bu çözüm, saat sonu gibi yoğun olmayan dönemler sırasında kullanılmayan Azure VM 'Leri değerlendirerek ve işlemci kullanımı% x ' ten küçük olduğunda otomatik olarak kapatmak için aboneliğinizdeki sanal makinelerin maliyetinin yönetilmesine yardımcı olabilir.
-
-Varsayılan olarak, çözüm, ortalama kullanımın yüzde 5 veya daha az olup olmadığını görmek için CPU Ölçümü yüzdesini değerlendirmek üzere önceden yapılandırılmıştır. Bu senaryo aşağıdaki değişkenlerle denetlenir ve varsayılan değerler gereksinimlerinizi karşılamıyorsa değiştirilebilir:
-
-- External_AutoStop_MetricName
-- External_AutoStop_Threshold
-- External_AutoStop_TimeAggregationOperator
-- External_AutoStop_TimeWindow
-
-Eylemi bir abonelik ve kaynak grubuna karşı hedefleyerek veya VM 'lerin belirli bir listesini hedefleyerek, her ikisini birden değil de etkinleştirebilirsiniz.
-
-#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>Durdurma eylemini bir aboneliğe ve kaynak grubuna karşı hedefleyin
-
-1. Hedef VM 'Leri belirtmek için **External_Stop_ResourceGroupNames** ve **External_ExcludeVMNames** değişkenlerini yapılandırın.
-1. **Schedule_AutoStop_CreateAlert_Parent** zamanlamayı etkinleştirin ve güncelleştirin.
-1. Değişikliklerinizi önizlemek için ACTION parametresi **Start** ve whatIf parametresini **True** olarak ayarlanmış **AutoStop_CreateAlert_Parent** runbook 'u çalıştırın.
-
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM listesine göre Başlat ve Durdur eylemini hedefleme
-
-1. EYLEM parametresi **Başlangıç**olarak ayarlanan **AutoStop_CreateAlert_Parent** runbook 'U çalıştırın, *vmlist* parametresindeki VM 'lerin virgülle ayrılmış bir listesini ekleyin ve ardından whatIf parametresini **true**olarak ayarlayın. Değişikliklerinizi önizleyin.
-1. **External_ExcludeVMNames** parametresini, virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
-1. Bu senaryo **External_Start_ResourceGroupNames** ve **External_Stop_ResourceGroupnames** değişkenlerini dikkate almaz. Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](../automation/automation-schedules.md).
-
-CPU kullanımına bağlı olarak VM 'Leri durdurma zamanlamanız olduğuna göre, bunları başlatmak için aşağıdaki zamanlamalardan birini etkinleştirmeniz gerekir.
-
-- Aboneliğe ve kaynak grubuna göre hedef başlatma eylemi. **Zamanlanan-StartVM** zamanlamalarını test etmek ve etkinleştirmek için [Senaryo 1](#scenario-1-startstop-vms-on-a-schedule) ' deki adımlara bakın.
-- Abonelik, kaynak grubu ve etikete göre hedef başlatma eylemi. **Sıralı-StartVM** zamanlamalarını test etmek ve etkinleştirmek için [Senaryo 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) ' deki adımlara bakın.
-
 ## <a name="solution-components"></a>Çözüm bileşenleri
 
 Bu çözüm, Azure Izleyici günlükleriyle önceden yapılandırılmış runbook 'ları, zamanlamaları ve tümleştirmeyi içerir, böylece sanal makinelerinizin başlatılması ve kapatılmasını iş gereksinimlerinize uyacak şekilde uyarlayabilirsiniz.
@@ -266,7 +236,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 |External_AutoStop_Threshold | Değişkende belirtilen Azure uyarı kuralının eşiği _External_AutoStop_MetricName_. Yüzde değerleri 1 ile 100 arasında değişebilir.|
 |External_AutoStop_TimeAggregationOperator | Koşulu değerlendirmek için seçilen pencere boyutuna uygulanan zaman toplama işleci. Kabul edilebilir değerler **Ortalama**, **En düşük**, **en yüksek**, **Toplam**ve **en son**değerlerdir.|
 |External_AutoStop_TimeWindow | Azure 'un bir uyarının tetiklenmesi için seçili ölçümleri çözümleyen pencere boyutu. Bu parametre, girişi TimeSpan biçiminde kabul eder. Olası değerler 5 dakikadan 6 saate kadar sürer.|
-|External_EnableClassicVMs| Klasik VM 'Lerin çözüm tarafından hedeflenip hedeflenmediğini belirtir. Varsayılan değer, True’dur. Bu, CSP abonelikleri için false olarak ayarlanmalıdır. Klasik VM 'Ler [Klasik bir farklı çalıştır hesabı](automation-create-standalone-account.md#classic-run-as-accounts)gerektirir.|
+|External_EnableClassicVMs| Klasik VM 'Lerin çözüm tarafından hedeflenip hedeflenmediğini belirtir. Varsayılan değer Doğru değeridir. Bu, CSP abonelikleri için false olarak ayarlanmalıdır. Klasik VM 'Ler [Klasik bir farklı çalıştır hesabı](automation-create-standalone-account.md#classic-run-as-accounts)gerektirir.|
 |External_ExcludeVMNames | Adları boşluk olmadan virgülle ayırarak dışlanacak VM adlarını girin. Bu, 140 VM ile sınırlıdır. Bu virgülle ayrılmış listeye 140 'den fazla VM eklerseniz, hariç tutulacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durdurulabilir.|
 |External_Start_ResourceGroupNames | Başlangıç eylemlerine yönelik olarak bir virgül kullanarak değerleri ayırarak bir veya daha fazla kaynak grubu belirtir.|
 |External_Stop_ResourceGroupNames | Bir veya daha fazla kaynak grubu belirtir ve durdurma eylemlerine yönelik bir virgül kullanarak değerleri birbirinden ayırarak.|
@@ -305,7 +275,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |JobId | Runbook işinin KIMLIĞI olan GUID.|
 |operationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur.|
 |resourceId | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
-|ResourceGroup | Runbook işine ait kaynak grubunun adını belirtir.|
+|adlı yönetilen örnek, | Runbook işine ait kaynak grubunun adını belirtir.|
 |ResourceProvider | Dağıtıp yönetebileceğiniz kaynakları sağlayan Azure hizmetini belirtir. Otomasyon için değer, Azure Otomasyonu olacaktır.|
 |ResourceType | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
 |resultType | Runbook işinin durumudur. Olası değerler şunlardır:<br>- Başlatıldı<br>- Durduruldu<br>- Askıya alındı<br>- Başarısız oldu<br>- Başarılı oldu|
@@ -313,7 +283,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |RunbookName | Runbook’un adını belirtir.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır|
 |StreamType | Olay türünü belirtir. Olası değerler şunlardır:<br>- Ayrıntılı<br>- Çıktı<br>- Hata<br>- Uyarı|
-|SubscriptionId | İşin abonelik kimliğini belirtir.
+|kaynak grubundaki | İşin abonelik kimliğini belirtir.
 |Zaman | Runbook işinin yürütüldüğü tarih ve saat.|
 
 ### <a name="job-streams"></a>İş akışları
@@ -324,7 +294,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |Kategori | Veri türü sınıflandırması. Otomasyon için değer JobStreams olacaktır.|
 |JobId | Runbook işinin KIMLIĞI olan GUID.|
 |operationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur.|
-|ResourceGroup | Runbook işine ait kaynak grubunun adını belirtir.|
+|adlı yönetilen örnek, | Runbook işine ait kaynak grubunun adını belirtir.|
 |resourceId | Azure 'da kaynak KIMLIĞINI belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
 |ResourceProvider | Dağıtıp yönetebileceğiniz kaynakları sağlayan Azure hizmetini belirtir. Otomasyon için değer, Azure Otomasyonu olacaktır.|
 |ResourceType | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|

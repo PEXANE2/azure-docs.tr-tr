@@ -3,21 +3,21 @@ title: 'PowerShell: SQL Server SQL yönetilen örneğine geçirin'
 titleSuffix: Azure Database Migration Service
 description: Azure PowerShell ve Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirmeyi öğrenin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650733"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti & PowerShell ile SQL veritabanı yönetilen örneği 'ne SQL Server geçirme
 
@@ -27,7 +27,7 @@ Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Bir kaynak grubu oluşturun.
-> * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
+> * Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturun.
 > * Azure veritabanı geçiş hizmeti örneğinde bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 
@@ -35,7 +35,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makale, hem çevrimiçi hem de çevrimdışı geçişleri gerçekleştirme hakkında ayrıntılı bilgi içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -43,7 +43,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 * [Burada](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)indirmek üzere kullanılabilen **AdventureWorks2016** veritabanının yerel bir kopyası.
 * SQL Server Express yükleme ile varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirmek için. [Sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)MAKALESINI izleyerek TCP/IP protokolünü etkinleştirin.
 * [Windows Güvenlik duvarınızı veritabanı altyapısı erişimi için](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)yapılandırmak için.
-* Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure SQL veritabanı yönetilen örneği. Azure SQL [veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)makalesindeki ayrıntıyı IZLEYEREK Azure SQL veritabanı yönetilen örneği oluşturabilirsiniz.
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 veya sonraki bir sürümünü indirip yükleyin.
 * [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak Azure veritabanı geçiş hizmeti 'ni şirket içi kaynak sunucularınız için siteden siteye bağlantı ile sağlayan Azure Resource Manager dağıtım modeli kullanılarak oluşturulan Microsoft Azure sanal ağ.

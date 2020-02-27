@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793013"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651466"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange EDIOLGU iletileri
 
@@ -36,7 +36,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
 ## <a name="create-an-edifact-agreement"></a>EDIOLGU sözleşmesi oluşturma 
 
-1. [Azure Portal](https://portal.azure.com "Azure portalı")’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com "Azure portalı") oturum açın. 
 
 2. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme" yazın ve ardından **tümleştirme hesapları**' nı seçin.
 
@@ -115,6 +115,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun gelen iletileri işlemeye haz
 | MANıZı |İlişkili tümleştirme hesabınızdan kullanmak istediğiniz daha önce karşıya yüklenmiş şemayı seçin. |
 
 ### <a name="control-numbers"></a>Denetim numaraları
+
 | Özellik | Açıklama |
 | --- | --- |
 | Değişim denetim numarası çoğaltmasına izin verme |Yinelenen değişiklikleri engellemek için bu özelliği seçin. Seçilirse, EDIOLGU kod çözme eylemi, alınan değişim için değişim denetim numarasının (UNB5) daha önce işlenmiş bir değişim denetim numarasıyla eşleşip eşleşmediğini denetler. Bir eşleşme algılanırsa, değişim işlenmez. |
@@ -123,7 +124,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun gelen iletileri işlemeye haz
 | Işlem kümesi denetim numarası yinelenmesine izin verme |Yinelenen işlem kümesi denetim numaralarıyla (UNH1) yapılan değişiklikleri engellemek için bu özelliği seçin. |
 | EDIOLGU onaylama denetim numarası |Bir bildirim içinde kullanılmak üzere işlem kümesi başvuru numaralarını belirlemek için, önek için bir değer, bir başvuru numarası aralığı ve bir sonek girin. |
 
-### <a name="validations"></a>Ların
+### <a name="validation"></a>Doğrulama
 
 Her doğrulama satırını tamamladığınızda, başka bir otomatik olarak eklenir. Herhangi bir kural belirtmezseniz, doğrulama "varsayılan" satırını kullanır.
 
@@ -173,6 +174,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun olan giden iletileri işlemey
 | UNB7 (uygulama başvuru KIMLIĞI) |En az bir karakter ve en fazla 14 karakter içeren alfasayısal bir değer girin |
 
 ### <a name="acknowledgment"></a>Olumlu
+
 | Özellik | Açıklama |
 | --- | --- |
 | Ileti alındısı (CONM) |Barındırılan iş ortağı bir teknik (CONU) bildirimi almayı bekliyorsa bu onay kutusunu işaretleyin. Bu ayar, iletiyi gönderen barındırılan iş ortağının Konuk iş ortağından alındı bildirimi istemesi gerektiğini belirtir. |
@@ -180,6 +182,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun olan giden iletileri işlemey
 | Kabul edilen işlem kümeleri için SG1/SG4 döngüsü oluştur |İşlevsel onay istemeyi seçtiyseniz, kabul edilen işlem kümelerine yönelik işlevsel uyumluluk bildirimleri içinde SG1/SG4 döngülerini oluşturmaya zorlamak için bu onay kutusunu seçin. |
 
 ### <a name="schemas"></a>Şemalar
+
 | Özellik | Açıklama |
 | --- | --- |
 | UNH 2.1 (TÜR) |Bir işlem kümesi türü seçin. |
@@ -188,6 +191,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun olan giden iletileri işlemey
 | MANıZı |Kullanılacak şemayı seçin. Şemalar tümleştirme hesabınızda bulunur. Şemalerinize erişmek için öncelikle tümleştirme hesabınızı mantıksal uygulamanıza bağlayın. |
 
 ### <a name="envelopes"></a>Larla
+
 | Özellik | Açıklama |
 | --- | --- |
 | UNB8 (Işleme öncelik kodu) |Bir karakterden daha uzun olmayan alfabetik bir değer girin. |
@@ -211,13 +215,14 @@ Karakter kümesi dışında, her ileti türü için kullanılacak farklı bir s�
 | Önekini |Kesim tanımlayıcısıyla birlikte kullanılan karakteri seçin. Bir sonek belirlerseniz, segment Sonlandırıcı veri öğesi boş olabilir. Segment Sonlandırıcı boş bırakılırsa, bir sonek atamanız gerekir. |
 
 ### <a name="control-numbers"></a>Denetim numaraları
+
 | Özellik | Açıklama |
 | --- | --- |
 | UNB5 (değişim denetim numarası) |Bir önek, değişim denetim numarası için bir değer aralığı ve bir sonek girin. Bu değerler bir giden değişim oluşturmak için kullanılır. Ön ek ve sonek isteğe bağlıdır, ancak denetim numarası gereklidir. Her yeni ileti için denetim numarası artırılır; ön ek ve sonek aynı kalır. |
 | UNG5 (Grup denetim numarası) |Bir önek, değişim denetim numarası için bir değer aralığı ve bir sonek girin. Bu değerler, Grup denetim numarasını oluşturmak için kullanılır. Ön ek ve sonek isteğe bağlıdır, ancak denetim numarası gereklidir. En yüksek değere ulaşılana kadar, her yeni ileti için denetim numarası artırılır; ön ek ve sonek aynı kalır. |
 | UNH1 (Ileti üst bilgisi başvuru numarası) |Bir önek, değişim denetim numarası için bir değer aralığı ve bir sonek girin. Bu değerler, ileti üst bilgisi başvuru numarasını oluşturmak için kullanılır. Önek ve sonek isteğe bağlıdır, ancak başvuru numarası gereklidir. Her yeni ileti için başvuru numarası artırılır; ön ek ve sonek aynı kalır. |
 
-### <a name="validations"></a>Ların
+### <a name="validation"></a>Doğrulama
 
 Her doğrulama satırını tamamladığınızda, başka bir otomatik olarak eklenir. Herhangi bir kural belirtmezseniz, doğrulama "varsayılan" satırını kullanır.
 
@@ -240,9 +245,13 @@ Her doğrulama satırını tamamladığınızda, başka bir otomatik olarak ekle
 
     !["Anlaşmalar" kutucuğunu seçin](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>Swagger dosyasını görüntüle
-EDIOLGU bağlayıcısının Swagger ayrıntılarını görüntülemek için, bkz. [ediolgu](/connectors/edifact/).
+## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-## <a name="learn-more"></a>Daha fazla bilgi
-* [Enterprise Integration Pack hakkında daha fazla bilgi edinin](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin")  
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/edifact/)bakın.
 
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192239"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620722"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -52,7 +52,9 @@ Konum bir koşul olarak yapılandırılırken, kuruluşlar konumları dahil etme
 
 **Herhangi bir konum**dahil edildiğinde, bu seçenek yalnızca adlandırılmış konumlar yapılandırılmamış Internet üzerindeki IP adreslerini içerir. **Herhangi bir konum**seçerken, Yöneticiler **tüm güvenilen** veya **Seçilen konumların**dışlanmasını seçebilirler.
 
-Örneğin, bazı kuruluşlar, kullanıcıları ağa fiziksel Merkez gibi güvenilir bir konumda bağlıyken çok faktörlü kimlik doğrulaması gerektirmeyebilir. Yöneticiler herhangi bir konum içeren bir ilke oluşturabilir, ancak bunların Merkez ağları için seçili konumları dışlar
+Örneğin, bazı kuruluşlar, kullanıcıları ağa fiziksel Merkez gibi güvenilir bir konumda bağlıyken çok faktörlü kimlik doğrulaması gerektirmeyebilir. Yöneticiler herhangi bir konum içeren bir ilke oluşturabilir, ancak bu kişilerin Merkez ağları için seçili konumları dışlar.
+
+Konumlar hakkında daha fazla bilgi için, [Azure Active Directory Koşullu erişim içindeki konum koşulunun ne olduğunu](location-condition.md)bulabilirsiniz.
 
 ## <a name="client-apps-preview"></a>İstemci uygulamaları (Önizleme)
 
@@ -64,9 +66,21 @@ Koşullu erişim ilkeleri, varsayılan olarak modern kimlik doğrulama protokoll
    - Modern kimlik doğrulama istemcileri
       - Bu seçenek, Office Masaüstü ve telefon uygulamaları gibi uygulamaları içerir.
    - Exchange ActiveSync istemcileri
+      - Varsayılan olarak, Exchange ActiveSync (EAS) protokolünün tüm kullanımını içerir. **İlkeyi yalnızca desteklenen platformlara Uygula** seçeneğinin belirlenmesi IOS, Android ve Windows gibi desteklenen platformlarla sınırlı olacaktır.
       - İlke Exchange ActiveSync kullanımını engellediğinde, etkilenen Kullanıcı tek bir karantina e-postası alır. Bu e-posta, neden engellendikleri hakkında bilgi sağlar ve mümkünse düzeltme yönergelerini içerir.
    - Diğer istemciler
-      - Bu seçenek, modern kimlik doğrulamasını desteklemeyen IMAP, MAPI, POP, SMTP ve eski Office uygulamaları dahil olmak üzere temel/eski kimlik doğrulama protokollerini kullanan istemcileri içerir.
+      - Bu seçenek, modern kimlik doğrulamasını desteklemeyen temel/eski kimlik doğrulama protokollerini kullanan istemcileri içerir.
+         - Kimliği doğrulanmış SMTP-e-posta iletileri göndermek için POP ve IMAP istemci tarafından kullanılır.
+         - Otomatik bulma-Exchange Online 'da posta kutularını bulmak ve bağlamak için Outlook ve EAS istemcileri tarafından kullanılır.
+         - Exchange Online PowerShell-uzak PowerShell ile Exchange Online 'a bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Web Hizmetleri (EWS)-Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimidir.
+         - IMAP4-IMAP e-posta istemcileri tarafından kullanılır.
+         - HTTP üzerinden MAPI (MAPI/HTTP)-Outlook 2010 ve üzeri tarafından kullanılır.
+         - Çevrimdışı adres defteri (OAB)-Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.
+         - Outlook her yerde (HTTP üzerinden RPC)-Outlook 2016 ve öncesi tarafından kullanılır.
+         - Outlook hizmeti-Windows 10 için posta ve takvim uygulaması tarafından kullanılır.
+         - POP3-POP e-posta istemcileri tarafından kullanılır.
+         - Raporlama Web Hizmetleri-Exchange Online 'daki rapor verilerini almak için kullanılır.
 
 Bu koşullar genellikle yönetilen bir cihaz gerektirdiğinde, eski kimlik doğrulamasını engelleyerek ve mobil veya masaüstü uygulamalarına izin veren bir şekilde kullanılır.
 
@@ -101,7 +115,7 @@ Bu uzantıyı Chrome tarayıcılarına otomatik olarak dağıtmak için aşağı
 |    |    |
 | --- | --- |
 | Yol | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Ad | 1 |
+| Adı | 1 |
 | Tür | REG_SZ (dize) |
 | Veriler | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
@@ -110,7 +124,7 @@ Bu uzantıyı Chrome tarayıcılarına otomatik olarak dağıtmak için aşağı
 |    |    |
 | --- | --- |
 | Yol | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Ad | 1 |
+| Adı | 1 |
 | Tür | REG_SZ (dize) |
 | Veriler | {"model": "https://device.login.microsoftonline.com", "Filter": {"ıSSUER": {"CN": "MS-Organization-Access"}}} |
 
@@ -139,7 +153,7 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 | Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile), Skype Kurumsal (modern kimlik doğrulaması ile) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Outlook mobil uygulaması | Office 365 Exchange Online | Android, iOS |
 | Power BI uygulaması | Power BI hizmeti | Windows 10, Windows 8.1, Windows 7, Android ve iOS |
-| Skype Kurumsal | Office 365 Exchange Online| Android, IOS |
+| Skype Kurumsal | Office 365 Exchange Online| Android, iOS |
 | Visual Studio Team Services uygulaması | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS ve Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync istemcileri

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: c6c07c48bf94b50d46a50a47f57857fdd15a0e8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697260"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648466"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 
@@ -44,13 +44,13 @@ Bu makaleyi tamamlayabilmeniz için hem Azure AD hem de Azure aboneliğinizde ye
 Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="assign-the-application-to-a-role"></a>Uygulamayı bir role atama
-Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında bilgi edinmek için [RBAC: yerleşik roller](/azure/role-based-access-control/built-in-roles).
+Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](/azure/role-based-access-control/built-in-roles).
 
 Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. Daha düşük düzeyde kapsam için izinler devralınmıştır. Örneğin, bir kaynak grubu için *okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir. Uygulamanın yeniden başlatma, örnekleri başlatma ve durdurma gibi eylemleri yürütmesine izin vermek için, *katkıda bulunan* rolünü seçin.
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Otomatik olarak imzalanan bir sertifikayla hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifika ile hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Yeni-Azurermroleatamasını](/powershell/module/az.resources/new-azroleassignment) kullanarak [okuyucu](/azure/role-based-access-control/built-in-roles#reader) rolünü hizmet sorumlusuna atar. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
+Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifika ile hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Yeni-Azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanarak [okuyucu](/azure/role-based-access-control/built-in-roles#reader) rolünü hizmet sorumlusuna atar. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
 
 > [!NOTE]
 > New-SelfSignedCertificate cmdlet 'i ve PKI modülü şu anda PowerShell Core 'da desteklenmiyor. 

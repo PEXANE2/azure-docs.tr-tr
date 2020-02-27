@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlar
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592502"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615653"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -51,9 +51,9 @@ Bir AKS kümesindeki ana düğümler (denetim düzlemi) hizmet tarafından barı
 
 Windows node havuzlarıyla AKS kümelerinin Azure CNı (Gelişmiş) ağ modelini kullanması gerekir. Kubenet (temel) ağı desteklenmez. Ağ modellerindeki farklılıklar hakkında daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için ağ kavramları][azure-network-models]. -Azure CNı ağ modeli, IP adresi yönetimi için ek planlama ve dikkat edilecek noktalar gerektirir. Azure CNı 'nin nasıl planlanacağı ve uygulanacağı hakkında daha fazla bilgi için bkz. [AKS 'de Azure CNI ağını yapılandırma][configure-azure-cni].
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>Düğüm başına en az sayıda Pod 'yi değiştirebilir miyim?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Maksimum değeri değiştirebilir miyim? düğüm başına düşen öğe sayısı?
 
-Kümelerinizin güvenilirliğini güvence altına almak için şu anda en az 30 Pod olarak ayarlanması gereksinimidir.
+Kümelerinizin güvenilirliğini güvence altına almak için şu anda en fazla 30 Pod olarak ayarlanması gereksinimidir.
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Windows düğümlerimi nasıl yaalabilirim?
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 9d6c823b5dc85676b15188c8f1783e50e5ed441b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cb76c7d7804a7d39e8a18c7a4cf41e9b4e0a7593
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717822"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623647"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak eğitim ve dağıtım için ortamları yeniden kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -231,7 +231,7 @@ build.wait_for_completion(show_output=True)
 
  Azure Machine Learning `Environment` sınıfının [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) , öğreticinizi çalıştırdığınız Konuk işletim sistemini en iyi şekilde özelleştirmenize ve denetlemenize olanak tanır.
 
-Docker `enable`, hizmet bir Docker görüntüsü oluşturur. Ayrıca, bu Docker kapsayıcısı içindeki belirtimlerinizi kullanan bir Python ortamı oluşturur. Bu işlevsellik, eğitim çalışmalarınız için ek yalıtım ve reproducibility sağlar.
+Docker 'ı etkinleştirdiğinizde hizmet bir Docker görüntüsü oluşturur. Ayrıca, bu Docker kapsayıcısı içindeki belirtimlerinizi kullanan bir Python ortamı oluşturur. Bu işlevsellik, eğitim çalışmalarınız için ek yalıtım ve reproducibility sağlar.
 
 ```python
 # Creates the environment inside a Docker container.

@@ -1,29 +1,29 @@
 ---
 title: Hizmet sağlayıcılarını görüntüleme ve yönetme
 description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046133"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649747"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
-Müşteriler, hizmet sağlayıcıları ve hizmet sağlayıcı teklifleri hakkındaki bilgileri görüntülemek, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla belirli kaynakları devretmek ve ek hizmet sağlayıcısı teklifleri için alışveriş yapmak üzere [Azure Portal](https://portal.azure.com) **hizmet sağlayıcıları** sayfasını kullanabilir. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
+Müşteriler, hizmet sağlayıcıları ve hizmet sağlayıcı teklifleri hakkındaki bilgileri görüntülemek, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla belirli kaynakları devretmek ve yeni hizmet sağlayıcısı teklifleri için alışveriş yapmak üzere [Azure Portal](https://portal.azure.com) **hizmet sağlayıcıları** sayfasını kullanabilir. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
 Azure portal **hizmet sağlayıcıları** sayfasına erişmek için, müşteri **tüm hizmetleri**seçip **hizmet sağlayıcıları** arayabilir ve bunu seçebilirsiniz. Ayrıca, Azure portal üst kısmındaki arama kutusuna "hizmet sağlayıcıları" girerek da bulabilir.
 
-**Hizmet sağlayıcılar** sayfasının yalnızca, Azure tarafından atanan kaynak yönetimi aracılığıyla Müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcılarıyla ilgili bilgileri gösterdiğini aklınızda bulundurun. Müşteri, müşterinin kaynaklarına erişmek için Azure tarafından atanan kaynak yönetimini kullanmayan ek hizmet sağlayıcılarıyla çalışıyorsa, bu hizmet sağlayıcıları hakkındaki bilgiler burada gösterilmez.
+**Hizmet sağlayıcılar** sayfasının yalnızca, Azure tarafından atanan kaynak yönetimi aracılığıyla Müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcılarıyla ilgili bilgileri gösterdiğini unutmayın. Müşteri, müşterinin kaynaklarına erişmek için Azure tarafından atanan kaynak yönetimini kullanmayan ek hizmet sağlayıcılarıyla çalışıyorsa, bu hizmet sağlayıcıları hakkındaki bilgiler burada gösterilmez.
 
 > [!NOTE]
 > Servis sağlayıcılar, Azure portal **müşterilerime** giderek müşterileri hakkındaki bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme](view-manage-customers.md).
 
 ## <a name="view-service-provider-details"></a>Hizmet sağlayıcı ayrıntılarını görüntüle
 
-Müşterinin üzerinde çalıştığı hizmet sağlayıcıları hakkındaki bilgileri görüntülemek için, **hizmet sağlayıcılar** sayfasının sol tarafında **sağlayıcı teklifleri** ' ni seçebilir.
+Müşteri, hizmet sağlayıcıları hakkındaki bilgileri görüntülemek için **hizmet sağlayıcıları** sayfasının sol tarafında bulunan **sağlayıcı tekliflerini** seçebilir.
 
 Müşteri, her bir servis sağlayıcısı teklifi için hizmet sağlayıcının adını ve onunla ilişkili teklifi, ekleme işlemi sırasında müşterinin girdiği adı görür.
 
@@ -59,12 +59,20 @@ Değişiklikleri gözden geçirdikten sonra müşteri yeni sürüme güncelleşt
 
 Temsilci atama, bir müşterinin Temsilcili kaynaklar için hizmet sağlayıcısına izin veren rol atamalarını temsil eder. Bu bilgileri görüntülemek için, **hizmet sağlayıcıları** sayfasının sol tarafındaki **Temsilciler** ' ı seçin.
 
-Sayfanın üst kısmındaki filtreler, temsilcilerinizi, belirli müşterilere, tekliflere veya anahtar sözcüklere göre filtrelemenize ve gruplandırmasına olanak tanır.
+Sayfanın üst kısmındaki filtreler, yetkilendirme bilgilerinizi sıralamanıza ve gruplandırmasına olanak tanır. Belirli müşterilere, tekliflere veya anahtar sözcüklere göre de filtre uygulayabilirsiniz.
 
 > [!NOTE]
 > Müşteriler, Azure portal veya API 'Ler aracılığıyla [temsilci olan kapsamın rol atama bilgilerini görüntülerken](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) bu rol atamalarını veya hizmet sağlayıcı kiracısından gelen tüm kullanıcıları görmez.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="audit-delegations-in-your-environment"></a>Ortamınızdaki denetim temsilcileri
 
+Müşteriler, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için hizmet sağlayıcılarına temsilci atanmış abonelikler ve/veya kaynak grupları hakkında görünürlük elde etmek isteyebilir. Bu, özellikle çok sayıda aboneliğe sahip olan veya yönetim görevlerini gerçekleştiren çok sayıda kullanıcıya sahip olan müşteriler için yararlıdır.
+
+Bir yönetim kiracısına kapsamları temsilciliğini denetlemek için bir [Azure ilkesi yerleşik ilke tanımı](../../governance/policy/samples/built-in-policies.md#lighthouse) sağlıyoruz. Bu ilkeyi, denetlemek istediğiniz tüm abonelikleri içeren bir yönetim grubuna atayabilirsiniz. Bu ilkeyle uyumluluğu denetlediğinizde, tüm temsilci olan abonelikler ve/veya kaynak grupları (ilkenin atandığı yönetim grubu içinde) uyumlu olmayan bir durumda gösterilir. Daha sonra sonuçları gözden geçirebilir ve beklenmeyen temsilci yok olduğunu doğrulayabilirsiniz.
+
+İlke atama ve uyumluluk durumu sonuçlarını görüntüleme hakkında daha fazla bilgi için bkz. [hızlı başlangıç: ilke ataması oluşturma](../../governance/policy/assign-policy-portal.md).
+
+## <a name="next-steps"></a>Sonraki adımlar
+ 
 - [Azure ışıklı kullanım](../overview.md)hakkında daha fazla bilgi edinin.
 - Hizmet sağlayıcılarının **müşterilerime** Azure Portal müşterileri nasıl [görüntüleyip yönetebileceğini](view-manage-customers.md) öğrenin.

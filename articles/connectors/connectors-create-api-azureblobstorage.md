@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650870"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -137,7 +137,10 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Open API (eski adıyla Swagger) dosyasında açıklandığı gibi Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/azureblobconnector/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/azureblobconnector/)bakın.
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 <a name="storage-firewalls"></a>
 

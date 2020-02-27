@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 9f3e06f66996be4a2b43b64e6100c62a2fa41381
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443673"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649968"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -19,6 +19,9 @@ Runbook 'u doğrudan rolü barındıran bilgisayarda ve bu yerel kaynakları yö
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows karma Runbook Worker yüklemesi ve yapılandırması
 
@@ -50,8 +53,9 @@ Karma Runbook Worker için daha fazla ağ gereksinimi almak üzere [ağınızı 
 
 ### <a name="server-onboarding-for-management-with-automation-dsc"></a>Automation DSC ile yönetim için sunucu ekleme
 
-DSC ile yönetim için sunucu ekleme hakkında daha fazla bilgi için bkz. [Azure Automation DSC yönetim için makineleri ekleme](automation-dsc-onboarding.md).
-[Güncelleştirme yönetimi çözümünü](../operations-management-suite/oms-solution-update-management.md)etkinleştirirseniz, Log Analytics çalışma alanınıza bağlı tüm Windows bilgisayarları, bu çözüme dahil olan runbook 'ları destekleyecek şekilde otomatik olarak bir karma runbook çalışanı olarak yapılandırılır. Ancak, Otomasyon hesabınızda önceden tanımlanmış olan karma çalışan gruplarıyla kayıtlı değildir. 
+Sunucuları DSC ile yönetime ekleme hakkında daha fazla bilgi için bkz. [Azure Automation DSC yönetim için makineleri ekleme](automation-dsc-onboarding.md).
+
+[Güncelleştirme yönetimi çözümünü](../operations-management-suite/oms-solution-update-management.md)etkinleştirirseniz, Log Analytics çalışma alanınıza bağlı tüm Windows bilgisayarları, bu çözüme dahil olan runbook 'ları destekleyecek şekilde otomatik olarak bir karma runbook çalışanı olarak yapılandırılır. Ancak, Otomasyon hesabınızda önceden tanımlanmış olan karma çalışan gruplarıyla kayıtlı değildir.
 
 ### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>Bilgisayar karma Runbook Worker grubuna ekleniyor
 
@@ -65,19 +69,17 @@ Hedef makinede, Windows hibrit çalışan rolünün yükleme ve yapılandırmas�
 
 Karma Runbook Worker rolünü çalıştıran bilgisayardan veya ortamınızda bulunan başka bir bilgisayardan doğrudan [PowerShell Galerisi](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) New-OnPremiseHybridWorker. ps1 betiğini indirin. Betiği çalışana kopyalayın. New-OnPremiseHybridWorker. ps1 betiği yürütme sırasında aşağıdaki parametreleri gerektirir:
 
-   * *Aaresourcegroupname* (zorunlu): Otomasyon hesabınızla ilişkili kaynak grubunun adı.
-   * *Omsresourcegroupname* (isteğe bağlı): Log Analytics çalışma alanı için kaynak grubunun adı. Bu kaynak grubu belirtilmemişse, *Aaresourcegroupname* kullanılır.
-   * *SubscriptionID* (zorunlu): Otomasyon hesabınızın bulunduğu Azure abonelik kimliği.
-   * *Tenantıd* (isteğe bağlı): Otomasyon hesabınızla ilişkili kiracı kuruluşun tanıtıcısı.
-   * *Çalışmaalanıadı* (isteğe bağlı): Log Analytics çalışma alanı adı. Log Analytics çalışma alanınız yoksa, betik bir tane oluşturur ve yapılandırır.
-   * *Automationaccountname* (zorunlu): Otomasyon hesabınızın adı.
-   * *Hybridgroupname* (zorunlu): Bu senaryoyu destekleyen runbook 'lar için hedef olarak belirttiğiniz bir karma Runbook Worker grubunun adı.
-   * *Kimlik bilgileri* (isteğe bağlı): Azure ortamında oturum açarken kullanılacak kimlik bilgileri.
+* *Aaresourcegroupname* (zorunlu): Otomasyon hesabınızla ilişkili kaynak grubunun adı.
+* *Omsresourcegroupname* (isteğe bağlı): Log Analytics çalışma alanı için kaynak grubunun adı. Bu kaynak grubu belirtilmemişse, *Aaresourcegroupname* kullanılır.
+* *SubscriptionID* (zorunlu): Otomasyon hesabınızın bulunduğu Azure abonelik kimliği.
+* *Tenantıd* (isteğe bağlı): Otomasyon hesabınızla ilişkili kiracı kuruluşun tanıtıcısı.
+* *Çalışmaalanıadı* (isteğe bağlı): Log Analytics çalışma alanı adı. Log Analytics çalışma alanınız yoksa, betik bir tane oluşturur ve yapılandırır.
+* *Automationaccountname* (zorunlu): Otomasyon hesabınızın adı.
+* *Hybridgroupname* (zorunlu): Bu senaryoyu destekleyen runbook 'lar için hedef olarak belirttiğiniz bir karma Runbook Worker grubunun adı.
+* *Kimlik bilgileri* (isteğe bağlı): Azure ortamında oturum açarken kullanılacak kimlik bilgileri.
   
-   > [!NOTE]
-   > Çözümleri etkinleştirirken Log Analytics çalışma alanı ile Otomasyon Hesabı arasında bağlantı kurma seçeneği yalnızca belirli bölgelerde desteklenmektedir.
-   >
-   > Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
+> [!NOTE]
+> Çözümleri etkinleştirirken, bir Log Analytics çalışma alanı ve Otomasyon hesabı bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
 
 ### <a name="2-open-windows-powershell-command-line-shell"></a>2. Windows PowerShell komut satırı kabuğu 'nu açın
 

@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789248"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647674"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps ve IBM 3270 bağlayıcısını kullanarak Azure ile IBM ana bilgisayarları 'nda 3270 ekran odaklı uygulamayı tümleştirin
 
@@ -220,7 +220,7 @@ Ayrıca, bu adımları yinelediğinizi, ancak hatayı gösteren ekranı yakalama
 
 * ILETI-10
 * CICS hoş geldiniz
-* Olmamalıdır
+* Boş
 * WBGB_1 (giriş)
 * WBGB_2 (hata)
 * Empty_1
@@ -358,7 +358,7 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
 1. Henüz bağlantı yoksa, bağlantınız için gerekli bilgileri sağlayın ve **Oluştur**' u seçin.
 
-   | Özellik | Gereklidir | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Bağlantı Adı** | Yes | <*bağlantı adı*> | Bağlantınızın adı |
    | **Tümleştirme hesabı KIMLIĞI** | Yes | <*tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı |
@@ -378,7 +378,7 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
 1. Eylem için gerekli bilgileri sağlayın:
 
-   | Özellik | Gereklidir | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Hidx adı** | Yes | <*Hidx-dosya adı*> | Kullanmak istediğiniz 3270 HIDX dosyasını seçin. |
    | **Yöntem adı** | Yes | <*yöntemi-adı*> | Kullanmak istediğiniz HIDX dosyasındaki yöntemi seçin. Bir yöntemi seçtikten sonra, bu yöntemle kullanılacak parametreleri seçebilmeniz için **yeni parametre Ekle** listesi görüntülenir. |
@@ -409,7 +409,10 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/si3270/)gözden geçirin.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/si3270/)bakın.
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

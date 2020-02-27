@@ -3,27 +3,27 @@ title: Azure 'da SAP HANA yönelik veri katmanlama ve genişletme düğümleri (
 description: Azure 'da SAP HANA yönelik veri katmanlaması ve uzantı düğümleri (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 261009edc20f946fa86f0482d8ab5045f4b4f84b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099854"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617156"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA veri katmanlama ve uzantı düğümlerini kullanma
 
 SAP, farklı SAP NetWeaver sürümleri ve SAP BW/4HANA SAP BW için bir veri katmanlama modeli destekler. Veri katmanlama modeli hakkında daha fazla bilgi için bkz. SAP Document [SAP BW/4HANA ve SAP BW SAP HANA uzantı düğümleri Ile Hana](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-HANA büyük örnekle, SSS ve SAP blog belgelerinde açıklandığı gibi SAP HANA uzantısı düğümlerinin seçenek-1 yapılandırmasını kullanabilirsiniz. Seçenek-2 yapılandırma aşağıdaki HANA büyük örnek SKU 'Ları ile ayarlanabilir: S72m, S192, S192m, S384 ve S384m. 
+HANA büyük örnekle, SSS ve SAP blog belgelerinde açıklandığı gibi SAP HANA uzantısı düğümlerinin seçenek-1 yapılandırmasını kullanabilirsiniz. 2\. seçenek, aşağıdaki HANA büyük örnek SKU 'Larında ayarlanabilir: S72m, S192, S192m, S384 ve S384m. 
 
 Belgelere baktığınızda, avantajı hemen görünür olmayabilir. Ancak SAP boyutlandırma yönergelerine baktığınızda, seçenek-1 ve seçenek-2 SAP HANA uzantı düğümlerini kullanarak bir avantaj görebilirsiniz. Örnekler şunlardır:
 

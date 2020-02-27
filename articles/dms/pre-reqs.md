@@ -2,21 +2,21 @@
 title: Azure veritabanı geçiş hizmeti önkoşulları
 description: Veritabanı geçişleri gerçekleştirmek için Azure veritabanı geçiş hizmeti 'nin kullanımına ilişkin önkoşullara genel bakış hakkında bilgi edinin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 7ba317da9524c322d47fe57a866d429ff8f7e952
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/25/2020
+ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748729"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651500"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti kullanımı için önkoşullara genel bakış
 
@@ -35,18 +35,25 @@ Tüm desteklenen geçiş senaryolarında ortak olan Azure veritabanı geçiş hi
 * [Sunucu Ağ Protokolünü Etkinleştirme veya Devre Dışı Bırakma](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) makalesindeki yönergeleri izleyerek SQL Server Express yüklemesi sırasında varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirin.
 
     > [!IMPORTANT]
-    > Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturmak, normalde aynı kaynak grubu içinde olmayan sanal networt ayarlarına erişim gerektirir. Sonuç olarak, DMS 'nin bir örneğini oluşturan kullanıcı abonelik düzeyinde izin gerektirir. Gerektiği şekilde atayabileceğiniz gerekli rolleri oluşturmak için aşağıdaki betiği çalıştırın:
+    > Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturmak, normalde aynı kaynak grubu içinde olmayan sanal ağ ayarlarına erişim gerektirir. Sonuç olarak, DMS 'nin bir örneğini oluşturan kullanıcı abonelik düzeyinde izin gerektirir. Gerektiği şekilde atayabileceğiniz gerekli rolleri oluşturmak için aşağıdaki betiği çalıştırın:
     >
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -106,7 +113,7 @@ Tüm geçiş senaryolarında ortak olan Azure veritabanı geçiş hizmeti önko�
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı geçişlerini SQL Server gerçekleştirirken, tüm geçiş senaryolarında ortak olan önkoşullara ek olarak, aşağıdaki ek önkoşulları ele aldığınızdan emin olun:
 
-* Azure SQL veritabanı örneğinin bir örneğini oluşturun ve bu,[Azure Portal bir Azure SQL veritabanı oluştur](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)makalesindeki ayrıntıyı izleyerek yapabilirsiniz.
+* [Azure portalda Azure SQL veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) makalesindeki adımları izleyerek bir Azure SQL Veritabanı örneği oluşturun.
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) 3.3 veya üzeri sürümünü indirip yükleyin.
 * Azure Veritabanı Geçiş Hizmeti'ne kaynak SQL Server erişimi sağlamak için Windows güvenlik duvarınızı açın. Varsayılan ayarlarda 1433 numaralı TCP bağlantı noktası kullanılır.
 * Dinamik bağlantı noktası kullanarak birden fazla adlandırılmış SQL Server örneği çalıştırıyorsanız, Azure Veritabanı Geçiş Hizmeti'nin kaynak sunucunuzdaki adlandırılmış örneğe bağlanabilmesi için SQL Browser Hizmeti'ni etkinleştirebilir ve güvenlik duvarınızda 1434 numaralı UDP bağlantı noktasına erişim izni verebilirsiniz.
@@ -116,7 +123,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı geçişle
 
    > [!NOTE]
    > Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL veritabanı 'na geçiş işlemi gerçekleştirmek için gereken önkoşulların tüm listesi için bkz. [Azure SQL veritabanı 'Na geçiş SQL Server](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
-   > 
+   >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirme önkoşulları
 

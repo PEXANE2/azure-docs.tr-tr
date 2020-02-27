@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 49ee00d43820d5aeb50e44cff1b6c5a448b4ce81
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904272"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623909"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Olay odaklı makine öğrenimi iş akışları oluşturma (Önizleme)
 
@@ -25,15 +25,15 @@ Daha fazla bilgi için bkz. [Event Grid ile Azure Machine Learning tümleştirme
 
 Gibi yaygın senaryoları etkinleştirmek için Event Grid kullanın:
 
-* Yeniden eğitim için işlem hatlarını tetikleme
+* Çalışma tamamlandığında e-posta gönder
+* Model kaydedildikten sonra bir Azure işlevi kullanma
 * Azure Machine Learning ile çeşitli uç noktalara olay akışı
+* Değişikliklerini algılandığında ml işlem hattı tetikleyin
 
-## <a name="prerequisites"></a>Ön koşullar
-
+## <a name="prerequisites"></a>Önkoşullar
 * İçin olaylar oluşturacağınız Azure Machine Learning çalışma alanına katkıda bulunan veya sahip erişimi.
-* Web kancası veya Olay Hub 'ı gibi bir olay işleyici uç noktası seçin. Daha fazla bilgi için bkz. [olay işleyicileri](https://docs.microsoft.com/azure/event-grid/event-handlers). 
 
-## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Azure portal kullanarak makine öğrenimi olaylarını yapılandırma
+### <a name="configure-eventgrid-using-the-azure-portal"></a>Azure portal kullanarak EventGrid 'i yapılandırma
 
 1. [Azure Portal](https://portal.azure.com) açın ve Azure Machine Learning çalışma alanınıza gidin.
 
@@ -51,7 +51,7 @@ Gibi yaygın senaryoları etkinleştirmek için Event Grid kullanın:
 
 Seçiminizi onayladıktan sonra __Oluştur__' a tıklayın. Yapılandırma sonrasında bu olaylar uç noktanıza gönderilir.
 
-## <a name="set-up-azure-event-grid-using-cli"></a>CLı kullanarak Azure Event Grid ayarlama
+### <a name="configure-eventgrid-using-the-cli"></a>CLı kullanarak EventGrid yapılandırma
 
 En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)'yı yükleyebilir veya Azure aboneliğinizin bir parçası olarak sağlanmış Azure Cloud Shell kullanabilirsiniz.
 
@@ -61,7 +61,7 @@ Event Grid uzantısını yüklemek için, CLı 'dan aşağıdaki komutu kullanı
 az add extension --name eventgrid
 ```
 
-Aşağıdaki örnek, bir Azure aboneliğinin nasıl seçeceğinizi ve ardından Azure Machine Learning için yeni bir olay aboneliği nasıl oluşturulacağını gösterir:
+Aşağıdaki örnek, bir Azure aboneliğini nasıl seçeceğinizi ve Azure Machine Learning için yeni bir olay aboneliği nasıl oluşturduğunu göstermektedir:
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -77,6 +77,12 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="sample-scenarios"></a>Örnek senaryolar
+
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Işlevleri 'ni kullanarak bir modeli etiketlere göre dağıtma
+
+Azure Machine Learning model nesnesi model adı, sürüm, etiket ve özellik gibi bir Özet dağıtımı yaptığınız parametreler içerir. Model kayıt olayı bir uç nokta tetikleyebilir ve bu parametrelerin değerine göre bir modeli dağıtmak için bir Azure Işlevi kullanabilirsiniz.
+
+Bir örnek için [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) deposuna bakın ve **Benioku** dosyasındaki adımları izleyin.
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>E-posta uyarıları göndermek için bir mantıksal uygulama kullanma
 
@@ -158,12 +164,6 @@ Artık, Veri Fabrikası işlem hattı, DRT gerçekleştiğinde tetiklenir. [Yeni
 
 ![çalışma alanını görüntüle](./media/how-to-use-event-grid/view-in-workspace.png)
 
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Işlevleri 'ni kullanarak bir modeli etiketlere göre dağıtma
-
-Azure Machine Learning model nesnesi model adı, sürüm, etiket ve özellik gibi bir Özet dağıtımı yaptığınız parametreler içerir. Model kayıt olayı bir uç nokta tetikleyebilir ve bu parametrelerin değerine göre bir modeli dağıtmak için bir Azure Işlevi kullanabilirsiniz.
-
-Bir örnek için [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) deposuna bakın ve **Benioku** dosyasındaki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

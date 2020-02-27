@@ -12,12 +12,12 @@ ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581472"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647595"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -276,7 +276,6 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 1. Uygulama için bir **ad** girin. Örneğin, *SAMLApp1*.
 1. **Desteklenen hesap türleri**altında **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin
 1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından `https://localhost`girin. Bu değeri daha sonra uygulama kaydının bildiriminde değiştirirsiniz.
-1. **OpenID ve offline_access izinleri için yönetici onayı ver '** i seçin.
 1. **Kaydol**’u seçin.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 uygulama bildirimini güncelleştirme
@@ -338,7 +337,7 @@ Son adım, SAML bağlı olan taraf uygulamanızda SAML IDP olarak Azure AD B2C e
 Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 
 * **Meta veri**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Veren**: `https://tenant-name.onmicrosoft.com/policy-name`
+* **Veren**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **Oturum açma URL 'si/SAML uç noktası/SAML URL 'si**: meta veri dosyasındaki değeri denetleyin
 * **Sertifika**: Bu, özel anahtar olmadan *B2C_1A_SamlIdpCert*. Sertifikanın ortak anahtarını almak için:
 

@@ -3,12 +3,12 @@ title: Sınırları ve sınır - soru-cevap Oluşturucu
 description: Soru-cevap Oluşturucu, bölümlerini Bilgi Bankası ve hizmet için meta-sınırlara sahiptir. Sınama ve yayımlama için bu sınırları içinde bilgi bankanızı tutmak önemlidir.
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650376"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -55,7 +55,7 @@ Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlant
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 
-Meta veriler, daha küçük bir durumda depolanır ve karşılaştırılır.
+Meta veriler, `product:windows 10`gibi bir metin tabanlı anahtar: değer çifti olarak sunulur. Daha küçük bir durumda depolanır ve karşılaştırılır.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Bilişsel Arama fiyatlandırma katmanına göre
 
@@ -71,8 +71,8 @@ Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağı
 
 |Öğe|İzin verilen karakterler|Regex model eşleşmesi|En fazla karakter|
 |--|--|--|--|
-|Ad|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_` (alt çizgi)|`^[a-zA-Z0-9_]+$`|100|
-|Değer|Hariç her şeye izin verir<br>`:` (iki nokta üst üste)<br>`|` (dikey boru)|`^[^:|]+$`|500|
+|Ad (anahtar)|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_` (alt çizgi)<br> Boşluk içermemelidir.|`^[a-zA-Z0-9_]+$`|100|
+|Değer|Hariç her şeye izin verir<br>`:` (iki nokta üst üste)<br>`|` (dikey boru)<br>Yalnızca bir değere izin verilir.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik sınırları
@@ -103,4 +103,4 @@ Bunlar her bir güncelleştirme eyleminin sınırlarını temsil eder; diğer bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hizmet fiyatlandırma katmanlarının](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)ne zaman ve nasıl değiştirileceğini öğrenin.
+[Hizmet fiyatlandırma katmanlarının](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)ne zaman ve nasıl değiştirileceğini öğrenin.

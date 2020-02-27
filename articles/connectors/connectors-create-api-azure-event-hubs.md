@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446161"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650887"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs ve Azure Logic Apps ile olayları izleyin, alın ve gönderin
 
 Bu makalede, Azure Event Hubs Bağlayıcısı ile bir mantıksal uygulamanın içinden [azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) gönderilen olayları nasıl izleyebileceğinizi ve yönetebileceğinizi gösterir. Böylece, Olay Hub’ınızdan gelen olayları almaya, bu olayları denetlemeye ve göndermeye yönelik görevleri ve iş akışlarını otomatikleştiren mantıksal uygulamalar oluşturabilirsiniz. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Event Hubs Bağlayıcısı başvurusu](https://docs.microsoft.com/connectors/eventhubs/)</a>.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
@@ -33,7 +33,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 Mantıksal uygulamanızın Olay Hub 'ınıza erişebildiğinizden emin olmak için, izinlerinizi denetleyin ve Event Hubs ad alanınız için bağlantı dizesini alın.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Belirli bir olay hub 'ına değil Event Hubs *ad alanına*gidin. 
 
@@ -74,19 +74,19 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
 
    ![Tetikleyici özellikleri](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | Özellik | Gereklidir | Açıklama |
+   | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay hub'ı adı** | Evet | İzlemek istediğiniz olay hub 'ının adı |
-   | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan: `application/octet-stream`. |
+   | **Olay Hub 'ı adı** | Yes | İzlemek istediğiniz olay hub 'ının adı |
+   | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
    | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
    | **En fazla olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
-   | **Aralık** | Evet | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
-   | **Sıklık** | Evet | Yinelenme için zaman birimi |
+   | **Aralık** | Yes | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
+   | **Sıklık** | Yes | Yinelenme için zaman birimi |
    ||||
 
    **Ek özellikler**
 
-   | Özellik | Gereklidir | Açıklama |
+   | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **İçerik şeması** | Hayır | Olay Hub 'ından okunan olaylara yönelik JSON içerik şeması. Örneğin, içerik şemasını belirtirseniz, mantıksal uygulamayı yalnızca şemayla eşleşen olaylar için tetikleyebilirsiniz. |
    | **Minimum bölüm anahtarı** | Hayır | Okunacak minimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunurdur. |
@@ -130,11 +130,11 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
    ![Olay Hub 'ı adını seçin ve olay içeriğini sağlayın](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | Özellik | Gereklidir | Açıklama |
+   | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay hub'ı adı** | Evet | Olayı göndermek istediğiniz olay hub 'ı |
+   | **Olay Hub 'ı adı** | Yes | Olayı göndermek istediğiniz olay hub 'ı |
    | **İçerik** | Hayır | Göndermek istediğiniz olay için içerik |
-   | **Özellikler** | Hayır | Gönderilen uygulama özellikleri ve değerler |
+   | **Özelliklerinin** | Hayır | Gönderilen uygulama özellikleri ve değerler |
    | **Bölüm anahtarı** | Hayır | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
    ||||
 
@@ -152,13 +152,13 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
 1. Bağlantı bilgileri istendiğinde, şu ayrıntıları sağlayın:
 
-   | Özellik | Gereklidir | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı Adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Event Hubs ad alanı** | Evet | <*olayı-hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
+   | **Bağlantı Adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Event Hubs ad alanı** | Yes | <*olayı-hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
    |||||  
 
-   Örneğin:
+   Örnek:
 
    ![Olay Hub 'ı bağlantısı oluştur](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
@@ -173,8 +173,11 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) dosyasında açıklandığı gibi Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/eventhubs/)bakın.
+Bağlayıcının Swagger dosyasında açıklandığı şekilde Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/eventhubs/)bakın.
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
+* Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

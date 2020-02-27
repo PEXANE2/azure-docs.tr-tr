@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 62728f5b66825eb6698e37bb7ad3adbad831b465
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470777"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615342"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -65,7 +65,7 @@ Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntı
 
 Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit algılama sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 
-Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar için bkz. [Azure kapsayıcıları için tehdit algılama](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
+Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar için bkz. [Azure kapsayıcıları için tehdit koruması](threat-protection.md#azure-containers).
 
 
 ## <a name="container-security-faq"></a>Kapsayıcı güvenliği SSS

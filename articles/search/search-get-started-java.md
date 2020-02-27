@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406722"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624013"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "74406722"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)ve [Azure Bilişsel Arama REST API](/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)ve [Azure bilişsel arama REST API](/rest/api/searchservice/)kullanarak bir arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu örneği derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
+Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
 
 + [IntelliJ fıkrı](https://www.jetbrains.com/idea/)
 
@@ -56,7 +56,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Hizmetinize gönderilen her istek bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
@@ -368,7 +368,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
     
     ```
 
-### <a name="build-the-project"></a>Proje derleme
+### <a name="build-the-project"></a>Projeyi derleme
 
 1. Projenizin aşağıdaki yapıya sahip olduğunu doğrulayın.
 

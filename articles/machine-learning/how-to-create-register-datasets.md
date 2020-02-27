@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116727"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649099"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -76,7 +76,7 @@ Python SDK kullanarak bir [Azure veri deposundan](how-to-access-data.md) veri k�
 
 SDK aracılığıyla veya Azure Machine Learning Studio kullanarak Tabulardataset 'ler oluşturabilirsiniz. 
 
-. Csv veya. tsv biçimindeki dosyaları okumak ve kayıtlı olmayan bir TabularDataset oluşturmak için `TabularDatasetFactory` sınıfındaki [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) yöntemini kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır.
+. Csv veya. tsv biçimindeki dosyaları okumak ve kayıtlı olmayan bir TabularDataset oluşturmak için `TabularDatasetFactory` sınıfındaki [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) yöntemini kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -96,7 +96,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Varsayılan olarak, bir TabularDataset oluşturduğunuzda, sütun veri türleri otomatik olarak algılanır. Çıkarılan türler beklentilerinizle eşleşmiyorsa, aşağıdaki kodu kullanarak sütun türlerini belirtebilirsiniz. [Desteklenen veri türleri hakkında daha fazla bilgi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)edinebilirsiniz.
+Varsayılan olarak, bir TabularDataset oluşturduğunuzda, sütun veri türleri otomatik olarak algılanır. Çıkarılan türler beklentilerinizle eşleşmiyorsa, aşağıdaki kodu kullanarak sütun türlerini belirtebilirsiniz. Depolama alanınızı bir sanal ağın veya güvenlik duvarının arkasındaysa, `from_delimited_files()` yönteminizin `validate=False` ve `infer_column_types=False` parametrelerini dahil edin. Bu, ilk doğrulama denetimini atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar. [Desteklenen veri türleri hakkında daha fazla bilgi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)edinebilirsiniz.
+
+> [!NOTE] 
+>`infer_column_type` parametresi yalnızca sınırlandırılmış dosyalardan oluşturulmuş veri kümeleri için geçerlidir. 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -109,7 +112,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |Passengerıd|Kalan|PClass|Ad|Komutu|Yaş|SibSp|Parch|Ticket|Tarifeli havayolu|Cabin|Embarked
+| |Passengerıd|Kalan|PClass|Adı|Komutu|Yaş|SibSp|Parch|Ticket|Tarifeli havayolu|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
 1|2|True|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
@@ -149,7 +152,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
 
-Dosyaları herhangi bir biçimde yüklemek ve kaydedilmemiş bir dosya veri kümesi oluşturmak için `FileDatasetFactory` sınıfında [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) yöntemi kullanın:
+Dosyaları herhangi bir biçimde yüklemek ve kaydedilmemiş bir dosya veri kümesi oluşturmak için `FileDatasetFactory` sınıfında [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) yöntemi kullanın. Depolama alanınızı bir sanal ağ veya güvenlik duvarının arkasındaysa, `from_files()` yönteminizin `validate =False` parametresini ayarlayın. Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar.
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -225,7 +228,7 @@ Kutucuğunu seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filtr
 
 ![Veri kümesi seçin](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**'u seçin.
+Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
 
 ![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-register-datasets/open-datasets-3.png)
 

@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594575"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649516"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
 
@@ -55,6 +55,18 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 * Batı ABD 2
 * Doğu ABD 2
 
+## <a name="currently-supported-availability-zones"></a>Şu anda desteklenen Kullanılabilirlik Alanları
+
+* Orta ABD
+* Doğu ABD
+* Doğu ABD 2
+* Orta Fransa
+* Doğu Japonya
+* Kuzey Avrupa
+* Güneydoğu Asya
+* Güney Birleşik Krallık
+* Batı Avrupa
+* Batı ABD 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>En son Azure CLı AKS önizleme uzantısını yükler
 
@@ -115,6 +127,7 @@ Burada *--Enable-Private-Cluster* , özel bir küme için zorunlu bir bayrak.
 > Docker Köprüsü CıDR (172.17.0.1/16) alt ağ CıDR ile çakışıyor, Docker köprü adresini uygun şekilde değiştirin.
 
 ## <a name="connect-to-the-private-cluster"></a>Özel kümeye Bağlan
+
 API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağda bir Azure sanal makinesi (VM) oluşturmanız ve API sunucusuna bağlanmanız gerekir. Bunu yapmak için aşağıdakileri yapın:
 
 1. Kümeye bağlanmak için kimlik bilgilerini alın.
@@ -148,7 +161,8 @@ API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağd
 * Özel bir DNS sunucusu kullanmak için, bu IP 168.63.129.16 iletmek üzere DNS ile bir AD sunucusu dağıtın
 
 ## <a name="limitations"></a>Sınırlamalar 
-* Kullanılabilirlik Alanları Şu anda yalnızca Doğu ABD 2 ve Batı ABD 2 bölgeleri için destekleniyor
+* IP yetkili aralıkları özel API sunucusu uç noktasına uygulanamıyor, yalnızca ortak API sunucusu için geçerlidir
+* Kullanılabilirlik Alanları Şu anda belirli bölgelerde destekleniyor, bu belgenin başlangıcına bakın 
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] , özel kümeler, Azure özel uç noktaları ve sanal ağ hizmeti uç noktaları için geçerlidir; bu, şu anda aynı sanal ağda desteklenmemektedir.
 * Özel bir kümede özel bir Azure sanal ağında özel Azure Container Instances (ACI) döndürme için sanal düğümler desteklenmez
 * Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteği yok

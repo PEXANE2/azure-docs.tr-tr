@@ -3,12 +3,12 @@ title: PowerShell kullanarak DPM iş yüklerini yedekleme
 description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Backup dağıtmayı ve yönetmeyi öğrenin
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 06c138a4015a0b730369e091fc57a34d2190051d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583185"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616726"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
 
@@ -234,7 +234,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 Bu bölümde, DPM 'ye bir üretim sunucusu ekleyecek ve ardından verileri yerel DPM depolamasına ve sonra Azure Backup olacak şekilde koruyacaksınız. Örneklerde, dosya ve klasörleri nasıl yedekleyeceğiniz gösterilmektedir. Mantık, DPM tarafından desteklenen herhangi bir veri kaynağını yedeklemeye kolayca genişletilebilir. Tüm DPM yedeklemeleriniz, dört bölümden oluşan bir koruma grubu (PG) tarafından yönetilir:
 
-1. **Grup üyeleri** , aynı koruma grubunda korumak istediğiniz tüm korunabilir nesneler (DPM 'de *veri kaynakları* olarak da bilinir) listesidir. Örneğin, bir koruma grubundaki üretim sanal makinelerini ve farklı yedekleme gereksinimlerine sahip olabilecek başka bir koruma grubundaki veritabanlarını SQL Server korumak isteyebilirsiniz. Bir üretim sunucusundaki herhangi bir veri kaynağını yedekleyebilmeniz için önce DPM aracısının sunucuda yüklü olduğundan ve DPM tarafından yönetildiğinden emin olmanız gerekir. [DPM aracısını yükleme](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) ve uygun DPM sunucusuna bağlama adımlarını izleyin.
+1. **Grup üyeleri** , aynı koruma grubunda korumak istediğiniz tüm korunabilir nesneler (DPM 'de *veri kaynakları* olarak da bilinir) listesidir. Örneğin, bir koruma grubundaki üretim sanal makinelerini ve farklı yedekleme gereksinimlerine sahip olabilecek başka bir koruma grubundaki veritabanlarını SQL Server korumak isteyebilirsiniz. Bir üretim sunucusundaki herhangi bir veri kaynağını yedekleyebilmeniz için önce DPM aracısının sunucuda yüklü olduğundan ve DPM tarafından yönetildiğinden emin olmanız gerekir. [DPM aracısını yükleme](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) ve uygun DPM sunucusuna bağlama adımlarını izleyin.
 2. **Veri koruma yöntemi** , hedef yedekleme konumlarını belirtir-bant, disk ve bulut. Bizim örneğimizde, verileri yerel diske ve buluta koruyacağız.
 3. Yedeklemelerin ne zaman alınması gerektiğini ve DPM sunucusu ile üretim sunucusu arasında verilerin ne sıklıkta eşitlenmesi gerektiğini belirten bir **yedekleme zamanlaması** .
 4. Azure 'da kurtarma noktalarının ne kadar süreyle saklanacağını belirten bir **bekletme zamanlaması** .

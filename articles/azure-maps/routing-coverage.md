@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b8b3dbf515aa3bcc9075a748b9d717cfa36b6ab0
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988949"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648930"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure haritalar yönlendirme kapsamı
 
@@ -37,7 +37,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 <br>  
 
 
-## <a name="africa"></a>Afrika
+## <a name="africa"></a>Doğu
 
 | Ülke/Bölge                 | Yönlendirme         | Trafikle yönlendirme | Kamyonun yönlendirme |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
@@ -67,7 +67,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Namibya                        |        ✓       |                       |             |
 | Nijer                          |        ✓       |                       |             |
 | Nijerya                        |        ✓       |         ✓            |             |
-| Ruanda                         |        ✓       |                       |             |
+| Rwanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
 | Seyş                     |        ✓       |                       |             |
 | Güney Afrika                   |        ✓       ||         ✓            |             |
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Antigua ve Barbuda            |        ✓       |                      |             |
 | Bahamalar                        |        ✓       |                      |             |
 | Barbados                       |        ✓       |                      |             |
-| Belize                         |        ✓       |                      |             |
+| Beliz                         |        ✓       |                      |             |
 | Brezilya                         |        ✓       |         ✓            |     ✓       | 
 | Kanada                         |        ✓       |         ✓            |     ✓      |
 | Şili                          |        ✓       |         ✓            |     ✓      |
@@ -115,8 +115,8 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | St. Lucia                      |        ✓       |                      |             |
 | St. Vincent & Grenadinler       |        ✓       |                      |             |
 | Surinam                       |        ✓       |                      |             |
-| Trinidad & Tobago              |        ✓       |                      |             |
-| Birleşik Devletler                  |        ✓       |         ✓            |     ✓      | 
+| Trinidad ve Tobago              |        ✓       |                      |             |
+| Amerika Birleşik Devletleri                  |        ✓       |         ✓            |     ✓      | 
 | \+ Amerikan Samoası                |        ✓       |                      |             |
 | \+ Kuzey Mariana Adaları      |        ✓       |                      |             |
 | \+ Porto Riko                   |        ✓       |                      |             |
@@ -135,7 +135,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Kamboçya                       |        ✓       |                      |             |
 | Fiji                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hong Kong SAR                  |        ✓       |         ✓            |             |
+| Hong Kong Çin ÖİB                  |        ✓       |         ✓            |             |
 | Hindistan                          |        ✓       |         ✓            |             |
 | Endonezya                      |        ✓       |         ✓            |             |
 | Kazakistan                |        ✓       |                     |             |
@@ -187,7 +187,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | İtalya                          |        ✓       |         ✓            |     ✓      | 
 | Jersey                         |        ✓       |                      |             |
 | Letonya                         |        ✓       |         ✓            |     ✓      | 
-| Liechtenstein                  |        ✓       |         ✓            |             |
+| Lihtenştayn                  |        ✓       |         ✓            |             |
 | Litvanya                      |        ✓       |         ✓            |     ✓      | 
 | Lüksemburg                     |        ✓       |         ✓            |     ✓      | 
 | Kuzey Makedonya                |        ✓       |                      |             |
@@ -206,7 +206,6 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Romanya                        |        ✓       |         ✓            |     ✓      | 
 | Rusya Federasyonu             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| \+ Sint Maarten                  |        ✓       |                      |             |
 | Sırbistan                         |        ✓       |                      |     ✓      | 
 | Slovakya                       |        ✓       |         ✓            |     ✓      | 
 | Slovenya                       |        ✓       |         ✓            |     ✓      |

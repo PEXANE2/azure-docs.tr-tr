@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356152"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651109"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Data Box Edge cihazınızı döndürme veya değiştirme
 
@@ -59,7 +59,7 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
 1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Data Box Edge donanım**olarak sorun türünü seçin.
 
-    ![Destek bileti aç](media/data-box-edge-return-device/open-support-ticket-1.png)  
+    ![Destek bileti açma](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
 2. Bir Microsoft Desteği mühendisi sizinle iletişim kuracaktır. Sevkıyat ayrıntılarını belirtin.
 3. İade sevk etme kutusuna ihtiyacınız varsa, isteği isteyebilirsiniz. Sorunun **geri dönmesi Için** **Evet** yanıtını yazın.
@@ -72,7 +72,7 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 3. Güç kablolarını çıkarın ve cihazdaki tüm ağ kablolarını kaldırın.
 4. Kendi kutusunu veya Azure 'dan aldığınız boş kutuyu kullanarak sevkiyat paketini hazırlayın. Cihazı ve cihazla birlikte gelen güç gücünü kutuya yerleştirin.
 5. Paket üzerinde Azure 'dan aldığınız sevkiyat etiketini AFBir şekilde düzeltir.
-6. Bölge taşıyıcınızın bir çekme zamanlaması yapın. Cihazı ABD 'de döndürülürken, taşıyıcınızın UPS olması gerekir. Bir toplama zamanlamak için:
+6. Bölgenizdeki taşıyıcıdan bir kargo toplama randevusu alın. Cihaz bıze döndürülürken, taşıyıcınızın UPS veya FedEx olması mümkündür. KESINTISIZ bir çekme planı zamanlamak için:
 
     1. Yerel UPS (ülkeye özel ücretsiz numara) çağırın.
     2. Çağrınızda, basılı etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını tırnak içine edin.

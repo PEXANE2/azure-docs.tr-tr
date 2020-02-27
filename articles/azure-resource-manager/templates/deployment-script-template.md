@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586715"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616308"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -77,7 +77,7 @@ Dağıtım betiğinin avantajları:
 
 - **Azure PowerShell Version 3.0.0, 2.8.0 veya 2.7.0** ya da **Azure CLI sürüm 2.0.80, 2.0.79, 2.0.78 veya 2.0.77**. Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 
-## <a name="sample-template"></a>Örnek şablon
+## <a name="sample-templates"></a>Örnek şablonlar
 
 Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templates/microsoft.resources/deploymentscripts)bulunabilir.
 
@@ -130,6 +130,15 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 - **Cleanuppreference**. Komut dosyası yürütmesi bir terminal durumunda olduğunda dağıtım kaynaklarını Temizleme tercihini belirtin. Varsayılan ayar **her zaman**, bu, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen kaynakları silmenin anlamına gelir. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
 - **retentionInterval**: dağıtım betiği yürütmesi bir Terminal durumuna ulaştıktan sonra hizmetin dağıtım betiği kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde dağıtım betiği kaynakları silinir. Süre, [ıso 8601 düzenine](https://en.wikipedia.org/wiki/ISO_8601)göre belirlenir. Varsayılan değer **P1D**' dir. Bu, yedi gün anlamına gelir. CleanupPreference *Onexpiration*olarak ayarlandığında bu özellik kullanılır. *Onexpiration* özelliği şu anda etkin değil. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
 
+### <a name="additional-samples"></a>Ek örnekler
+
+- [anahtar kasasına sertifika oluşturma ve atama](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
+
+- [bir kaynak grubuna kullanıcı tarafından atanan bir yönetilen kimlik oluşturun ve atayın ve bir dağıtım betiği çalıştırın](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json).
+
+> [!NOTE]
+> Kullanıcı tarafından atanan bir kimlik oluşturmanız ve izinlerin önceden verilmesi önerilir. Kimliği oluşturur ve dağıtım betikleri çalıştırdığınız şablonda izin verirseniz, oturum açma ve izinle ilgili hatalar alabilirsiniz. İzinlerin etkin hale gelmesi biraz zaman alır.
+
 ## <a name="use-inline-scripts"></a>Satır içi betikleri kullan
 
 Aşağıdaki şablonda `Microsoft.Resources/deploymentScripts` türü ile tanımlanmış bir kaynak vardır.
@@ -139,7 +148,7 @@ Aşağıdaki şablonda `Microsoft.Resources/deploymentScripts` türü ile tanım
 > [!NOTE]
 > Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin tek tırnak içine alınması gerekir. PowerShell çıkış karakteri **&#92;** . Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz. Ad parametresinin varsayılan değerine bakın.
 
-Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablon](#sample-template).
+Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablonlar](#sample-templates).
 
 Betiği çalıştırmak için, Azure Cloud Shell açmak üzere **deneyin** ' i seçin ve ardından aşağıdaki kodu kabuk bölmesine yapıştırın.
 
@@ -217,7 +226,6 @@ Dağıtım betiği çıkışları AZ_SCRIPTS_OUTPUT_PATH konumuna kaydedilmelidi
 
 Dağıtım betiğinizdeki [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 ) değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Dağıtım betiği altyapısı değeri değiştirmez/değiştirmez.  $ErrorActionPreference için ayarladığınız değere rağmen dağıtım betiği, betik bir hatayla karşılaştığında kaynak sağlama durumunu *başarısız* olarak ayarlar.
-
 
 ## <a name="debug-deployment-scripts"></a>Hata ayıklama dağıtım betikleri
 

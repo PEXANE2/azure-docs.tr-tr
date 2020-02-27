@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792778"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651415"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps ile şirket içi dosya sistemlerine bağlanma
 
-Dosya sistemi Bağlayıcısı ve Azure Logic Apps ile, bir şirket içi dosya paylaşımında dosya oluşturup yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:  
+Azure Logic Apps ve dosya sistemi Bağlayıcısı ile, bir şirket içi dosya paylaşımında dosya oluşturup yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
 - Dosyaları oluşturun, alın, ekleyin, güncelleştirin ve silin.
 - Klasörlerdeki dosyaları veya kök klasörleri listeleyin.
@@ -65,7 +65,7 @@ Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından aç�
 
    ![Bağlantı oluşturma](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Özellik | Gereklidir | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Açıklama |
    | -------- | -------- | ----- | ----------- |
    | **Bağlantı Adı** | Yes | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
    | **Kök klasör** | Yes | <*kök klasörü-adı*> | Dosya sisteminiz için kök klasör; Örneğin, şirket içi veri ağ geçidinin yüklü olduğu bilgisayarda yerel bir klasör gibi şirket içi veri ağ geçidinizi veya bilgisayarın erişebileceği bir ağ paylaşımının klasörünü yüklediyseniz. <p>Örneğin, `\\PublicShare\\DropboxFiles` <p>Kök klasör, tüm dosya ile ilgili eylemler için göreli yollar için kullanılan ana üst klasördür. |
@@ -93,7 +93,10 @@ Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından aç�
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/fileconnector/)gözden geçirin.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/fileconnector/)bakın.
+
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

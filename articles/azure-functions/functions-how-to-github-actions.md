@@ -1,16 +1,16 @@
 ---
 title: Azure Işlevlerinde kod güncelleştirmeleri yapmak için GitHub eylemlerini kullanma
 description: GitHub 'da Azure Işlevleri projelerini derlemek ve dağıtmak için bir iş akışı tanımlamak üzere GitHub eylemlerini nasıl kullanacağınızı öğrenin.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: aelnably
-ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769158"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649917"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -25,7 +25,7 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | Section | Görevler |
 | ------- | ----- |
 | **Kimlik doğrulaması** | <ol><li>Hizmet sorumlusu tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>GitHub gizli dizisi oluşturun.</li></ol>|
-| **Derleme** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
+| **Derlemeyi** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
 | **Dağıtma** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
 
 > [!NOTE]
@@ -69,7 +69,7 @@ GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
 
 Ortamı ayarlamak, dile özgü bir yayımlama kurulum eylemi kullanılarak yapılır.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-node` eylemini kullanan iş akışının parçasını gösterir:
 
@@ -84,7 +84,7 @@ Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-node` eylemini kulla
         node-version: '10.x'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-python` eylemini kullanan iş akışının parçasını gösterir:
 
@@ -99,7 +99,7 @@ Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-python` eylemini kul
         python-version: 3.6
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-dotnet` eylemini kullanan iş akışının parçasını gösterir:
 
@@ -114,7 +114,7 @@ Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-dotnet` eylemini kul
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-java` eylemini kullanan iş akışının parçasını gösterir:
 
@@ -138,7 +138,7 @@ Bu, dile ve Azure Işlevleri tarafından desteklenen dillere bağlı olarak, bu 
 
 Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akışının parçasını gösterir:
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -153,7 +153,7 @@ Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akı�
         popd
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -167,7 +167,7 @@ Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akı�
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -180,7 +180,7 @@ Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akı�
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

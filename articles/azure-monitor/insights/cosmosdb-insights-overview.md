@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166414"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622939"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Izleyicisini keşfet (Önizleme)
 
 Azure Cosmos DB için Azure Izleyici (Önizleme), Birleşik etkileşimli bir deneyime göre tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işlemsel sistem durumunun bir görünümünü sağlar. Bu makale, bu yeni izleme deneyiminin avantajlarını ve bu deneyimi kuruluşunuzun benzersiz ihtiyaçlarına uyacak şekilde nasıl değiştirebileceğiniz ve uyarlayabileceğinizi anlamanıza yardımcı olur.   
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Deneyime girmeden önce, bilgilerin nasıl sunulduklarını ve görselleştirir. 
 
@@ -35,12 +35,39 @@ Bu özellik herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gere
 >[!NOTE]
 >Bu özelliğe erişmek için ücret alınmaz ve [Azure izleyici fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/) sayfasında açıklandığı gibi, yalnızca yapılandırdığınız veya etkinleştirdiğiniz Azure izleyici temel özellikleri için ücretlendirilirsiniz.
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyici 'ye erişme
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+
+1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
+
+   ![Azure Izleyici 'de ölçümler bölmesi](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
+
+   ![Ölçümleri görüntülemek için bir Cosmos DB hesabı seçin](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. Ardından, kullanılabilir ölçümler listesinden bir ölçüm seçebilirsiniz. Talep birimleri, depolama, gecikme, kullanılabilirlik, Cassandra ve diğer kullanıcılara özgü ölçümleri seçebilirsiniz. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümler](../../cosmos-db/monitor-cosmos-db-reference.md) makalesine bakın. Bu örnekte, **istek birimlerini** ve toplama değeri olarak **Ort** ' i seçelim.
+
+   Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir. Seçili dönem için dakika başına tüketilen ortalama istek birimi sayısını görebilirsiniz.  
+
+   ![Azure portal bir ölçüm seçin](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>Ölçümlere filtre ekleme
+
+Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **OperationType**, **Region**ve **StatusCode**tarafından görüntülenmiş grafik için filtre uygulayabilirsiniz. Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **OperationType** gibi gerekli özelliği seçin ve **sorgu**gibi bir değer seçin. Grafik daha sonra seçili dönem için sorgu işlemi için kullanılan istek birimlerini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
+
+![Ölçüm ayrıntı düzeyini seçmek için filtre ekleyin](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+**Bölmeyi Uygula** seçeneğini kullanarak ölçümleri gruplandırabilirsiniz. Örneğin, her işlem türü için istek birimlerini gruplandırabilir ve aşağıdaki görüntüde gösterildiği gibi tüm işlemlerin tek seferde grafiğini görüntüleyebilirsiniz:
+
+![Uygulama bölme filtresi ekle](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için kullanım ve performans ölçümlerini görüntüleme
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **İzleme** araması yapın ve **izleyiciyi**seçin.
 
@@ -74,7 +101,7 @@ Sayfanın üst kısmındaki **hataların** yanı sıra çalışma kitabı şablo
 
 ![HTTP istek türüne göre dökümdeki hataların ekran görüntüsü](./media/cosmosdb-insights-overview/failures.png)
 
-| Kodlayın      |  Açıklama       | 
+| Kod      |  Açıklama       | 
 |-----------|:--------------------|
 | `200 OK`  | Aşağıdaki REST işlemlerinden biri başarılı oldu: </br>-Bir kaynağa ULAŞıN. </br> -Bir kaynağa koyun. </br> -Bir kaynakta GÖNDERIN. </br> -Saklı yordamı yürütmek için bir saklı yordam kaynağını GÖNDERIN.|
 | `201 Created` | Kaynak oluşturmak için bir gönderme işlemi başarılı. |
@@ -90,7 +117,7 @@ Sayfanın üst kısmındaki **kapasiteyi** seçin ve çalışma kitabı şablonu
 
 Genel Bakış çalışma kitabında olduğu gibi, **abonelik** sütunundaki bir Azure Cosmos DB kaynağının yanındaki açılan aşağı seçme, veritabanını oluşturan bağımsız kapsayıcıların bir dökümünü açığa çıkarır.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>İşlemler 
 
 Sayfanın üst kısmındaki **işlemler** ' i seçin ve çalışma kitabı şablonunun **işlemler** bölümü açılır. Bu, isteklerinizi yapılan istek türlerine göre kırarak görmenizi sağlar. 
 

@@ -1,31 +1,32 @@
 ---
-title: Azure yönetilen kimliklerle tümleştirin
-description: Azure yönetilen kimliklerini kullanarak kimlik doğrulaması yapma ve Azure Uygulama yapılandırmasına erişim kazanma hakkında bilgi edinin
+title: Azure yönetilen kimliklerini kullanarak kimlik doğrulama
+titleSuffix: Azure App Configuration
+description: Azure yönetilen kimliklerini kullanarak Azure Uygulama yapılandırmasında kimlik doğrulama
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
-ms.date: 12/29/2019
+ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 66bf27c1b1e8349c1a0e822c457412fdfca58e82
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500400"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619458"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure yönetilen kimliklerle tümleştirin
 
-Azure Active Directory [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , bulut uygulamanız için gizli dizi yönetimini basitleştirmeye yardımcı olur. Yönetilen bir kimlikle, kodunuz üzerinde çalıştığı Azure hizmeti için oluşturulan hizmet sorumlusunu kullanabilir. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız. 
+Azure Active Directory [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , bulut uygulamanız için gizli dizi yönetimini basitleştirir. Yönetilen bir kimlikle, kodunuz üzerinde çalıştığı Azure hizmeti için oluşturulan hizmet sorumlusunu kullanabilir. Azure Key Vault veya yerel bağlantı dizesinde depolanan ayrı kimlik bilgileri yerine yönetilen bir kimlik kullanırsınız. 
 
-Azure Uygulama yapılandırması ve .NET Core, .NET Framework ve Java Spring istemci kitaplıklarında yerleşik olarak bulunan yönetilen kimlik desteği vardır. Bunu kullanmanız gerekmese de, yönetilen kimlik gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir parolayı açığa çıkarmak gerekmeden doğrudan kodunuza katıştırabilirsiniz.
+Azure Uygulama yapılandırması ve .NET Core, .NET Framework ve Java Spring istemci kitaplıklarında yerleşik olarak bulunan yönetilen kimlik desteği vardır. Bunu kullanmanız gerekmese de, yönetilen kimlik gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir gizli dizi olmadan doğrudan kodunuza katıştırabilirsiniz.
 
-Bu öğreticide, uygulama yapılandırmasına erişmek için yönetilen kimliğin nasıl yararlanabilmeniz gösterilmektedir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+Bu makalede, uygulama yapılandırmasına erişmek için yönetilen kimliğin nasıl avantajlarından faydalanabilirsiniz. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce [uygulama yapılandırmasına sahip bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
 
-Bu öğretici ayrıca yönetilen kimliği uygulama yapılandırmasının Key Vault başvurularıyla birlikte nasıl kullanabileceğinizi gösterir. Tek bir yönetilen kimlik ile, uygulama yapılandırmasından Key Vault ve yapılandırma değerlerinden her iki sırda sorunsuzca erişebilirsiniz. Bu özelliği araştırmak isterseniz, önce [ASP.NET Core Key Vault başvuruları kullanın](./use-key-vault-references-dotnet-core.md) .
+Bu makalede ayrıca yönetilen kimliği, uygulama yapılandırmasının Key Vault başvurularıyla birlikte nasıl kullanabileceğiniz gösterilmektedir. Tek bir yönetilen kimlik ile, uygulama yapılandırmasından Key Vault ve yapılandırma değerlerinden her iki sırda sorunsuzca erişebilirsiniz. Bu özelliği araştırmak isterseniz, önce [ASP.NET Core Key Vault başvuruları kullanın](./use-key-vault-references-dotnet-core.md) .
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uygulama yapılandırmasına yönetilen bir kimlik erişimi verin.

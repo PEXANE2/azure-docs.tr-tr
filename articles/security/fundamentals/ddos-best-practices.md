@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS koruması-dayanıklı çözümler tasarlama | Microsoft Docs
+title: Azure DDoS koruması ile dayanıklı çözümler tasarlama
 description: Uygulamanız hakkında derin Öngörüler elde etmek için günlük verilerini nasıl kullanabileceğinizi öğrenin.
 services: security
 author: barclayn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595412"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624046"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
 
@@ -35,7 +35,7 @@ DDoS, uygulama kaynaklarını tüketmeye çalışan bir saldırı türüdür. Am
 
 Aşağıdaki bölümler Azure 'da DDoS-dayanıklı hizmetler oluşturmaya yönelik öngörülü rehberlik sağlar.
 
-### <a name="design-for-security"></a>Güvenlik için tasarlama
+### <a name="design-for-security"></a>Güvenlik için tasarım
 
 Tasarımın, bir uygulamanın tüm yaşam döngüsünün tamamında, tasarım ve uygulama ile dağıtım ve işlemlere kadar öncelikli olduğundan emin olun. Uygulamalar görece düşük bir istek hacmine izin veren hatalara sahip olabilir ve bu da hizmet kesintisi oluşmasına neden olur. 
 

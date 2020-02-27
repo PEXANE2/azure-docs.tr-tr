@@ -2,21 +2,21 @@
 title: Geçiş etkinliğini izleme-Azure veritabanı geçiş hizmeti
 description: Geçiş etkinliğini izlemek için Azure veritabanı geçiş hizmeti 'ni kullanmayı öğrenin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437929"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648521"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanarak geçiş etkinliğini izleme
 Bu makalede, bir geçişin ilerlemesini hem veritabanı düzeyinde hem de tablo düzeyinde nasıl izleyebileceğinizi öğreneceksiniz.
@@ -63,7 +63,7 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
       <td>DMS işlem hattı çalışıyor ve geçiş gerçekleştiriyor.</td>
     </tr>
     <tr>
-      <td>Eksiksiz</td>
+      <td>Complete</td>
       <td>Geçiş tamamlandı.</td>
     </tr>
     <tr>
@@ -92,7 +92,7 @@ Aşağıdaki tabloda veritabanı düzeyi dikey penceresindeki alanlar listelenme
       <td>Hata ayrıntılarını göstermek için bağlantıya tıklayın.</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>Süresi</strong></td>
+      <td rowspan="1" class="duration"><strong>Sürenin</strong></td>
       <td>Yok</td>
       <td>Geçiş etkinliğinin başlatıldığı veya geçişinin hatalı olarak başlatıldığı toplam süre.</td>
     </tr>
@@ -132,7 +132,7 @@ Aşağıdaki tabloda tablo düzeyinde geçiş ilerlemede gösterilen alanlar aç
 | Alan adı        | Açıklama       |
 | ------------- | ------------- |
 | **Durum-eşitleniyor**      | Sürekli eşitleme çalışıyor. |
-| **Ekle**      | Hedefe uygulanan CDC ekleme sayısı.      |
+| **Ekleyin**      | Hedefe uygulanan CDC ekleme sayısı.      |
 | **Güncelleştirme** | Hedefe uygulanan satırlardaki CDC güncelleştirme sayısı.      |
 | **Silme**      | Hedefe uygulanan, satırlardaki CDC silmesi sayısı. |
 | **Toplam uygulandı**      | Hedefe uygulanan satırlarda CDC güncelleştirme, ekleme ve silme toplamı. |

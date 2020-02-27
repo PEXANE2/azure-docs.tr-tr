@@ -4,15 +4,15 @@ description: Azure App Service ağ özellikleri hakkında bilgi edinin ve ağın
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971766"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649235"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -28,7 +28,7 @@ Azure App Service dağıtılmış bir sistemdir. Gelen HTTP/HTTPS isteklerini i�
 |---------------------|-------------------|
 | Uygulama tarafından atanan adres | Karma Bağlantılar |
 | Erişim kısıtlamaları | Ağ Geçidi gerekli VNet tümleştirmesi |
-| Hizmet Uç Noktaları | VNet tümleştirmesi (Önizleme) |
+| Hizmet uç noktaları | Sanal Ağ Tümleştirmesi |
 
 Aksi belirtilmedikçe tüm özellikler birlikte kullanılabilir. Çeşitli sorunlarınızı çözümlemek için özellikleri karıştırabilirsiniz.
 
@@ -38,13 +38,13 @@ Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir.  Ku
  
 | Gelen kullanım örnekleri | Özellik |
 |---------------------|-------------------|
-| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | uygulama tarafından atanan adres |
-| Paylaştırılmamış, uygulamanız için adanmış gelen adres | uygulama tarafından atanan adres |
+| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | Uygulama tarafından atanan adres |
+| Paylaştırılmamış, uygulamanız için adanmış gelen adres | Uygulama tarafından atanan adres |
 | Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın | Erişim kısıtlamaları |
-| Uygulamamı sanal ağım içindeki özel IP 'lerde kullanıma sunun | ıLB ATıCı </br> Hizmet uç noktaları ile Application Gateway |
-| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet Uç Noktaları </br> ıLB ATıCı |
+| Uygulamamı sanal ağım içindeki özel IP 'lerde kullanıma sunun | ıLB ATıCı </br> Hizmet uç noktalarıyla Application Gateway |
+| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet uç noktaları </br> ıLB ATıCı |
 | Uygulamamın sanal ağı 'nda özel bir IP 'de kullanıma sunulması | ıLB ATıCı </br> hizmet uç noktalarına sahip bir Application Gateway gelen için özel IP |
-| Bir WAF ile uygulamamı koruyun | Application Gateway + ıLB Ao </br> Hizmet uç noktaları ile Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
+| Bir WAF ile uygulamamı koruyun | Application Gateway + ıLB Ao </br> Hizmet uç noktalarıyla Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
 | Farklı bölgelerde uygulamalarıma trafik yükünü dengelemek | Erişim kısıtlamalarına sahip Azure ön kapısı | 
 | Aynı bölgedeki Yük Dengeleme trafiği | [Hizmet uç noktaları ile Application Gateway][appgwserviceendpoints] | 
 
@@ -56,7 +56,9 @@ Aşağıdaki giden kullanım örnekleri, uygulamanız için giden erişim ihtiya
 | Azure sanal içindeki kaynaklara farklı bir bölge Ağa gelen erişme | Ağ Geçidi gerekli VNet tümleştirmesi </br> ASE ve VNet eşlemesi |
 | Hizmet uç noktaları ile korunan kaynaklara erişin | Sanal Ağ Tümleştirmesi </br> ASE |
 | Azure 'a bağlı olmayan özel bir ağdaki kaynaklara erişme | Karma Bağlantılar |
-| ExpressRoute devrelerine göre kaynaklara erişin | VNet tümleştirmesi (şimdilik RFC 1918 adresleriyle kısıtlıdır) </br> ASE | 
+| ExpressRoute devrelerine göre kaynaklara erişin | Sanal Ağ Tümleştirmesi </br> ASE | 
+| Web uygulamanızdan giden trafiği güvenli hale getirme | VNet tümleştirmesi ve ağ güvenlik grupları </br> ASE | 
+| Web uygulamanızdan giden trafiği yönlendirme | VNet tümleştirmesi ve rota tabloları </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>Varsayılan ağ davranışı
@@ -146,15 +148,17 @@ Bu özellik etkinleştirildiğinde, uygulamanız hedef VNet 'in yapılandırıld
 
 ### <a name="vnet-integration"></a>Sanal Ağ Tümleştirmesi
 
-Ağ Geçidi gereken VNet tümleştirme özelliği çok faydalı ancak ExpressRoute genelindeki kaynaklara erişimi hala çözmüyor. ExpressRoute bağlantılarına ulaşmaya gerek duyan en üstte, uygulamaların hizmet uç noktası güvenliği olan hizmetlere çağrı yapabilmeleri için bir gereksinim vardır. Bu ek gereksinimlerinizin her ikisini de çözümlemek için başka bir VNet tümleştirme özelliği eklenmiştir. Yeni VNet tümleştirme özelliği, uygulamanızın arka ucunu aynı bölgedeki bir Kaynak Yöneticisi VNet içindeki bir alt ağa yerleştirmenizi sağlar. Bu özellik, zaten VNet içinde olan bir App Service Ortamı kullanılamıyor. Bu özellik şunları yapmanıza olanak sağlar:
+Ağ Geçidi gereken VNet tümleştirme özelliği çok faydalı ancak ExpressRoute genelindeki kaynaklara erişimi hala çözmüyor. ExpressRoute bağlantılarına ulaşmaya gerek duyan en üstte, uygulamaların hizmet uç noktası güvenliği olan hizmetlere çağrı yapabilmeleri için bir gereksinim vardır. Bu ek gereksinimlerinizin her ikisini de çözümlemek için başka bir VNet tümleştirme özelliği eklenmiştir. Yeni VNet tümleştirme özelliği, uygulamanızın arka ucunu aynı bölgedeki bir Kaynak Yöneticisi VNet içindeki bir alt ağa yerleştirmenizi sağlar. Bu özellik, zaten VNet içinde olan bir App Service Ortamı kullanılamıyor. Bu özellik şunları sunar:
 
 * Aynı bölgedeki Kaynak Yöneticisi sanal ağlarda bulunan kaynaklara erişme
 * Hizmet uç noktaları ile güvenliği sağlanmış kaynaklara erişme 
 * ExpressRoute veya VPN bağlantıları üzerinden erişilebilen kaynaklara erişme
+* Tüm giden trafiğin güvenliğini sağlama 
+* Tüm giden trafiğe tünel oluşturmayı zorla. 
 
 ![Sanal Ağ Tümleştirmesi](media/networking-features/vnet-integration.png)
 
-Bu özellik önizlemededir ve üretim iş yükleri için kullanılmamalıdır. Bu özellik hakkında daha fazla bilgi edinmek için [App Service VNET tümleştirmesinde][vnetintegration]belgeleri okuyun.
+Bu özellik hakkında daha fazla bilgi edinmek için [App Service VNET tümleştirmesinde][vnetintegration]belgeleri okuyun.
 
 ## <a name="app-service-environment"></a>App Service Ortamı 
 

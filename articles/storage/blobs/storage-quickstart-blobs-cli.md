@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c913cb978796abeed5766ffa030aaeb6142320ec
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892932"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650939"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -28,18 +28,60 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümünüzü belirlemek için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
+Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.46 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümünüzü belirlemek için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-[!INCLUDE [storage-quickstart-tutorial-intro-include-cli](../../../includes/storage-quickstart-tutorial-intro-include-cli.md)]
+Azure CLı 'yi yerel olarak çalıştırıyorsanız, oturum açıp kimlik doğrulaması yapmanız gerekir. Azure Cloud Shell kullanıyorsanız bu adım gerekli değildir. Azure CLı 'da oturum açmak için `az login` çalıştırın ve tarayıcı penceresinde kimlik doğrulaması yapın:
+
+```azurecli
+az login
+```
+
+## <a name="authorize-access-to-blob-storage"></a>Blob depolamaya erişim yetkisi verme
+
+Azure CLı 'dan Azure AD kimlik bilgileriyle veya depolama hesabı erişim anahtarını kullanarak blob depolamaya erişim yetkisi verebilirsiniz. Azure AD kimlik bilgilerinin kullanılması önerilir. Bu makalede, Azure AD kullanarak BLOB depolama işlemlerini yetkilendirme işlemi gösterilmektedir.
+
+Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları, belirli bir işlemin yetkilendirmesini belirtmenize olanak sağlayan `--auth-mode` parametresini destekler. Azure AD kimlik bilgileriyle yetkilendirmek için `--auth-mode` parametresini `login` olarak ayarlayın. Daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+`--auth-mode` parametresini yalnızca BLOB depolama veri işlemleri destekler. Kaynak grubu veya depolama hesabı oluşturma gibi yönetim işlemleri, yetkilendirme için otomatik olarak Azure AD kimlik bilgilerini kullanır.
+
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+
+[az group create](/cli/azure/group) komutuyla bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+
+Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+
+```azurecli
+az group create \
+    --name <resource-group> \
+    --location <location>
+```
+
+## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
+
+[az storage account create](/cli/azure/storage/account) komutuyla bir genel amaçlı depolama hesabı oluşturun. Genel amaçlı depolama hesabı; bloblar, dosyalar, tablolar ve kuyruklar olmak üzere dört hizmet için de kullanılabilir.
+
+Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+
+```azurecli
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --location <location> \
+    --sku Standard_ZRS \
+    --encryption blob
+```
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Bloblar her zaman bir kapsayıcıya yüklenir. Bu, blob gruplarını bilgisayarınızdaki dosyaları klasörler halinde düzenlediğiniz gibi düzenleyebilmenizi sağlar.
+Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılardaki blob gruplarını, dosyalarınızı bilgisayarınızdaki dosyalarınıza düzenlemenize benzer şekilde düzenleyebilirsiniz.
 
-[az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun.
+[az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-```azurecli-interactive
-az storage container create --name sample-container
+```azurecli
+az storage container create \
+    --account-name <storage-account> \
+    --name <container> \
+    --auth-mode login
 ```
 
 ## <a name="upload-a-blob"></a>Blobu karşıya yükleme
@@ -54,13 +96,15 @@ vi helloworld
 
 Dosya açıldığında, **Ekle**' ye basın. *Merhaba Dünya*yazın ve ardından **ESC**tuşuna basın. Sonra, şunu yazın *: x*yazın ve **ENTER**tuşuna basın.
 
-Bu örnekte, son adımda [az storage blob upload](/cli/azure/storage/blob) komutuyla oluşturduğunuz kapsayıcıya bir blob yükleyeceksiniz. Dosya kök dizininde oluşturulduğundan bu yana bir dosya yolu belirtmek gerekli değildir:
+Bu örnekte, son adımda [az storage blob upload](/cli/azure/storage/blob) komutuyla oluşturduğunuz kapsayıcıya bir blob yükleyeceksiniz. Dosya kök dizininde oluşturulduğundan bu yana bir dosya yolu belirtmeniz gerekmez. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-```azurecli-interactive
+```azurecli
 az storage blob upload \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file helloworld
+    --file helloworld \
+    --auth-mode login
 ```
 
 Bu işlemle, daha önce oluşturulmadıysa bir blob oluşturulur, aksi takdirde üzerine yazılacaktır. Devam etmeden önce istediğiniz sayıda dosyayı karşıya yükleyin.
@@ -69,45 +113,48 @@ Aynı anda birden fazla dosya yüklemek için [az storage blob upload-batch](/cl
 
 ## <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-[az storage blob list](/cli/azure/storage/blob) komutuyla kapsayıcıdaki blobları listeleyin.
+[az storage blob list](/cli/azure/storage/blob) komutuyla kapsayıcıdaki blobları listeleyin. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-```azurecli-interactive
+```azurecli
 az storage blob list \
-    --container-name sample-container \
-    --output table
+    --account-name <storage-account> \
+    --container-name <container> \
+    --output table \
+    --auth-mode login
 ```
 
 ## <a name="download-a-blob"></a>Blob indirme
 
-Önceden karşıya yüklediğiniz bir blobu indirmek için [az storage blob download](/cli/azure/storage/blob) komutunu kullanın.
+Önceden karşıya yüklediğiniz bir blobu indirmek için [az storage blob download](/cli/azure/storage/blob) komutunu kullanın. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-```azurecli-interactive
+```azurecli
 az storage blob download \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file ~/destination/path/for/file
+    --file ~/destination/path/for/file \
+    --auth-mode login
 ```
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy ile veri aktarımı
 
-[AzCopy](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) yardımcı programı, Azure Depolama’ya yüksek performanslı betik oluşturulabilir veri aktarımı için diğer bir seçenektir. Blob, Dosya ve Tablo depolamaları arasında veri aktarmak için AzCopy kullanabilirsiniz.
+AzCopy komut satırı yardımcı programı, Azure depolama için yüksek performanslı ve komut dosyalı veri aktarımı sağlar. BLOB depolama ve Azure dosyalarına veri aktarmak için AzCopy kullanabilirsiniz. AzCopy 'in en son sürümü olan AzCopy ile v10 arasındaki hakkında daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy-v10.md). AzCopy ile v10 arasındaki 'i blob Storage ile kullanma hakkında bilgi edinmek için bkz. [AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md).
 
-Aşağıdaki örnek, *örnek kapsayıcı* kapsayıcısına *Dosyam. txt* adlı bir dosyayı yüklemek için AzCopy kullanır. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, bir Blobun yerel bir dosyayı karşıya yüklemek için AzCopy kullanır. Örnek değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```bash
-azcopy \
-    --source /mnt/myfiles \
-    --destination https://<account-name>.blob.core.windows.net/sample-container \
-    --dest-key <account-key> \
-    --include "myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu hızlı başlangıçta oluşturduğunuz depolama hesabı da dahil olmak üzere kaynak grubunuzdaki kaynakların hiçbirine artık ihtiyacınız yoksa [az Group Delete](/cli/azure/group) komutuyla kaynak grubunu silin. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-```azurecli-interactive
-az group delete --name <resource-group-name>
+```azurecli
+az group delete \
+    --name <resource-group> \
+    --no-wait
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

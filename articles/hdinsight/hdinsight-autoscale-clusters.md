@@ -7,18 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/21/2020
+ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484851"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616082"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
 > [!Important]
-> Otomatik Ölçeklendirme özelliği yalnızca 8 Mayıs 2019 ' den sonra oluşturulan Apache Spark, ApacheHive, LLAP ve Apache HBase kümeleri için geçerlidir. LLAP ve HBase için otomatik ölçeklendirme önizlemededir.
+> Azure HDInsight otomatik ölçeklendirme özelliği, 6 Kasım 'da genel kullanıma sunulduktan sonra Spark ve Hadoop kümeleri için 2019, özelliğin önizleme sürümünde kullanılamaz. 7 Kasım 2019 ' den önce bir Spark kümesi oluşturduysanız ve kümenizdeki otomatik ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede otomatik ölçeklendirmeyi etkinleştirmek olur. 
+>
+>Etkileşimli sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, etkileşimli sorgu ve HBase kümelerinde kullanılabilir. 
+
 
 Azure HDInsight 'ın küme otomatik ölçeklendirme özelliği, bir kümedeki çalışan düğümlerinin sayısını otomatik olarak ölçeklendirir ve kapatır. Kümedeki diğer düğüm türleri şu anda ölçeklendirilemez.  Yeni bir HDInsight kümesi oluşturulurken, en düşük ve en fazla çalışan düğümü sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, analiz yükünün kaynak gereksinimlerini izler ve çalışan düğümü sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
 

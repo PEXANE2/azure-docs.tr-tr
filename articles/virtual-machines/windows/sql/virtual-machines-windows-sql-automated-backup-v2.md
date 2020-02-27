@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790585"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651449"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure sanal makineleri için otomatik yedekleme v2 (Kaynak Yöneticisi)
 
@@ -59,7 +59,7 @@ Otomatik yedekleme v2 'yi kullanmak için aşağıdaki önkoşulları gözden ge
 ## <a name="settings"></a>Ayarlar
 Aşağıdaki tabloda, otomatik yedekleme v2 için yapılandırılabilecek seçenekler açıklanmaktadır. Gerçek yapılandırma adımları Azure portal veya Azure Windows PowerShell komutlarını kullanıp kullanmayacağınızı bağlı olarak değişir.
 
-### <a name="basic-settings"></a>Temel ayarlar
+### <a name="basic-settings"></a>Temel Ayarlar
 
 | Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, otomatik yedekleme v2 için yapılandırılabilecek seçen
 | **Şifreleme** |Etkinleştir/devre dışı bırak (devre dışı) | Şifrelemeyi etkinleştirilir veya devre dışı bırakır. Şifreleme etkinleştirildiğinde, yedeği geri yüklemek için kullanılan sertifikalar belirtilen depolama hesabında bulunur. Aynı adlandırma kuralına sahip aynı **otomatik yedekleme** kapsayıcısını kullanır. Parola değişirse, bu parolayla yeni bir sertifika oluşturulur, ancak eski sertifika önceki yedeklemeleri geri yüklemek için kalır. |
 | **Parola** |Parola metni | Şifreleme anahtarları için parola. Bu parola yalnızca Şifreleme etkinse gereklidir. Şifrelenmiş bir yedeklemeyi geri yüklemek için, yedekleme sırasında kullanılan doğru parolaya ve ilgili sertifikaya sahip olmanız gerekir. |
 
-### <a name="advanced-settings"></a>Gelişmiş ayarlar
+### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
 | Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
@@ -118,11 +118,7 @@ Ardından, 6 saat boyunca Salı günü, tüm veritabanlarının tam yedeklemeler
 > [!IMPORTANT]
 > Günlük yedeklemeler zamanlarken, tüm veritabanlarının bu süre içinde yedeklendiğinden emin olmak için geniş bir zaman penceresi zamanlamanız önerilir. Bu, yedeklenecek büyük miktarda veriniz olduğunda özellikle önemlidir.
 
-## <a name="configure-in-the-portal"></a>Portalda yapılandırma
-
-Sağlama sırasında veya mevcut SQL Server 2016/2017 VM 'Ler için otomatik yedekleme v2 'yi yapılandırmak üzere Azure portal kullanabilirsiniz.
-
-## <a name="configure-for-new-vms"></a>Yeni VM 'Ler için yapılandırma
+## <a name="configure-new-vms"></a>Yeni VM 'Leri yapılandırma
 
 Kaynak Yöneticisi dağıtım modelinde yeni bir SQL Server 2016 veya 2017 sanal makine oluştururken otomatik yedekleme v2 'yi yapılandırmak için Azure portal kullanın.
 

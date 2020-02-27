@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 72d2598c1ff17f80fc264e6d547a799ab74a163f
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e769bde39bc796b5b598109328b468b15385f38a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621971"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650410"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Bilgi bankanız hakkında analizler alma
 
@@ -56,7 +56,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 //Total Traffic
 requests
 | where url endswith "generateAnswer" and name startswith "POST"
-| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer" 
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
 | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
@@ -68,8 +68,8 @@ let startDate = todatetime('2019-01-01');
 let endDate = todatetime('2020-12-31');
 requests
 | where timestamp <= endDate and timestamp >=startDate
-| where url endswith "generateAnswer" and name startswith "POST" 
-| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer" 
+| where url endswith "generateAnswer" and name startswith "POST"
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
 | summarize ChatCount=count() by KbId
 ```
 
@@ -82,7 +82,7 @@ requests
 | project timestamp, id, url, resultCode, duration
 | parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
 | join kind= inner (
-traces | extend id = operation_ParentId 
+traces | extend id = operation_ParentId
 ) on id
 | extend UserId = tostring(customDimensions['UserId'])
 | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
@@ -114,11 +114,11 @@ traces | extend id = operation_ParentId
 | extend answer = tostring(customDimensions['Answer'])
 | extend score = tostring(customDimensions['Score'])
 | where  score  == "0"
-| project timestamp, KbId, question, answer, score 
+| project timestamp, KbId, question, answer, score
 | order  by timestamp  desc
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Capactiy seçin](../tutorials/choosing-capacity-qnamaker-deployment.md)
+> [Capactiy seçin](./improve-knowledge-base.md)

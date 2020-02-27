@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426235"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619997"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -201,7 +201,7 @@ Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powersh
 
 ## <a name="view-traffic-analytics"></a>Trafik analizini görüntüleme
 
-Portalın sol tarafında **tüm hizmetler**' i seçin ve ardından **filtre** kutusuna *izleyici* yazın. Arama sonuçlarında **izleyici** göründüğünde seçin. Trafik analizini ve yeteneklerini keşfetmeye başlamak için **Ağ İzleyicisi**' ni ve ardından **Trafik Analizi**.
+Trafik Analizi görüntülemek için Portal arama çubuğunda **Ağ İzleyicisi** ' ni arayın. Ağ izleyicisinden sonra, trafik analizini ve özelliklerini incelemek için, sol menüden **Trafik Analizi** ' yi seçin. 
 
 ![Trafik Analizi panosuna erişme](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

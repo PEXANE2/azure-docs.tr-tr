@@ -3,21 +3,21 @@ title: "Bilinen sorunlar: SQL veritabanı 'na çevrimiçi geçişler"
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti kullanılarak Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437835"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650784"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -28,7 +28,7 @@ Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen 
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Zamana bağlı tabloların geçirilmesi desteklenmez
 
-**Belirti**
+**Ye**
 
 Kaynak veritabanınız bir veya daha fazla zamana bağlı tablodan oluşuyorsa, veritabanı geçişiniz "tam veri yükleme" işlemi sırasında başarısız olur ve aşağıdaki iletiyi görebilirsiniz:
 
@@ -58,7 +58,7 @@ Daha fazla bilgi için bkz. [geçici tablolar](https://docs.microsoft.com/sql/re
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Tabloların geçirilmesi HierarchyId veri türüne sahip bir veya daha fazla sütun içeriyor
 
-**Belirti**
+**Ye**
 
 "Tam veri yükleme" işlemi sırasında "ntext, HierarchyId ile uyumlu değil" öneren bir SQL özel durumu görebilirsiniz:
 
@@ -96,7 +96,7 @@ Aşağıdaki adımları kullanın.
 
 ### <a name="support-for-lob-data-types"></a>LOB veri türleri için destek
 
-**Belirti**
+**Ye**
 
 Büyük nesne (LOB) sütununun uzunluğu 32 KB 'tan büyükse, veriler hedefte kesilebilir. Aşağıdaki sorguyu kullanarak LOB sütununun uzunluğunu kontrol edebilirsiniz:
 
@@ -110,7 +110,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 ### <a name="issues-with-timestamp-columns"></a>Zaman damgası sütunları ile ilgili sorunlar
 
-**Belirti**
+**Ye**
 
 Azure veritabanı geçiş hizmeti kaynak zaman damgası değerini geçirmez; Bunun yerine, Azure veritabanı geçiş hizmeti hedef tabloda yeni bir zaman damgası değeri oluşturur.
 
@@ -120,7 +120,7 @@ Kaynak tabloda depolanan tam zaman damgası değerini geçirmek için Azure veri
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Veri geçiş hataları veritabanı ayrıntılı durum dikey penceresinde ek ayrıntılar sağlamaz
 
-**Belirti**
+**Ye**
 
 Veritabanları ayrıntıları durum görünümünde geçiş hatalarıyla karşılaşdığınızda, üstteki şeritte **veri geçiş hataları** bağlantısını seçtiğinizde geçiş hatalarına özgü ek ayrıntılar sağlayamayabilir.
 
@@ -138,7 +138,7 @@ Belirli hata ayrıntılarına ulaşmak için aşağıdaki adımları kullanın.
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Coğrafya veri türü SQLDB çevrimiçi geçişte desteklenmez
 
-**Belirti**
+**Ye**
 
 Geçiş şu metni içeren bir hata iletisiyle başarısız olur:
 
@@ -150,7 +150,7 @@ Azure veritabanı geçiş hizmeti, çevrimiçi geçişler için Azure SQL verita
 
 ### <a name="supported-editions"></a>Desteklenen sürümler
 
-**Belirti**
+**Ye**
 
 Geçiş şu metni içeren bir hata iletisiyle başarısız olur:
 

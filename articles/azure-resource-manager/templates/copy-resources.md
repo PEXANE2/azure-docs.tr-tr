@@ -3,18 +3,18 @@ title: Birden çok kaynak örneğini dağıtma
 description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemini ve dizileri kullanın.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210833"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620230"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak yinelemesi
 
 Bu makalede, Azure Resource Manager şablonunuzda bir kaynağın birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Şablonunuzun kaynaklar bölümüne **Copy** öğesini ekleyerek, dağıtılacak kaynak sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
 
-Ayrıca, [Özellikler](copy-properties.md) ve [değişkenlerle](copy-variables.md)birlikte Kopyala özelliğini de kullanabilirsiniz.
+Ayrıca, [özellikleri](copy-properties.md), [değişkenleri](copy-variables.md) ve [çıkışları](copy-outputs.md)içeren Kopyala özelliğini de kullanabilirsiniz.
 
 Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](conditional-resource-deployment.md).
 
@@ -130,6 +130,8 @@ Aşağıdaki örnek, parametresinde belirtilen her ad için bir depolama hesabı
   "outputs": {}
 }
 ```
+
+Dağıtılan kaynaklardan değer döndürmek istiyorsanız, [çıktılar bölümünde Kopyala](copy-outputs.md)' yı kullanabilirsiniz.
 
 ## <a name="serial-or-parallel"></a>Seri veya paralel
 
@@ -279,7 +281,10 @@ Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini olu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Öğreticiye gitmek için bkz. [öğretici: Kaynak Yöneticisi şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
-* Copy öğesinin diğer kullanımları için, Azure Resource Manager şablonlarındaki Azure Resource Manager şablonlarda ve [değişken yinelemede](copy-variables.md) [özellik yineleme](copy-properties.md) bölümüne bakın.
+* Copy öğesinin diğer kullanımları için bkz.:
+  * [Azure Resource Manager şablonlarda Özellik yinelemesi](copy-properties.md)
+  * [Azure Resource Manager şablonlarda değişken yineleme](copy-variables.md)
+  * [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md)
 * İç içe şablonlar ile kopyalama kullanma hakkında daha fazla bilgi için, bkz. [kopyalamayı kullanma](linked-templates.md#using-copy).
 * Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
 * Şablonunuzu dağıtmayı öğrenmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).

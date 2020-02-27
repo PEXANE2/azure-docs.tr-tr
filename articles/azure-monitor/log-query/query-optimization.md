@@ -6,25 +6,25 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.date: 02/25/2019
+ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589850"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622919"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
-Azure Izleyici günlükleri, günlüklerinizi ve sorgularınızı depolamak ve yönetmek için [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanını depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
+Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
 
-Çoğu tekniği Azure Veri Gezgini ve Azure Izleyici günlüklerinde doğrudan çalıştırılan sorgularda yaygın olarak, burada ele alınan birkaç benzersiz Azure Izleyici günlüğü konuları vardır. Daha fazla Azure Veri Gezgini iyileştirme ipucu için bkz. [sorgu en iyi uygulamaları](/azure/kusto/query/best-practices).
+Çoğu teknikte doğrudan Azure Veri Gezgini ve Azure Izleyici günlüklerinde çalıştırılan sorgularda yaygın olarak, burada ele alınan birkaç benzersiz Azure Izleyici günlüğü konuları bulunur. Daha fazla Azure Veri Gezgini iyileştirme ipucu için bkz. [sorgu en iyi uygulamaları](/azure/kusto/query/best-practices).
 
 İyileştirilmiş sorgular:
 
 - Daha hızlı çalıştırın, sorgu yürütmenin genel süresini azaltın.
 - Daha az kısıtlanacak veya reddedilme şansı vardır.
 
-Panolar ve Power BI gibi yinelenen kira ve bursty kullanımı için kullanılan sorgulara özellikle dikkat etmeniz gerekir. Bu durumlarda, verimsiz bir sorgunun etkisi önemli değildir.
+Panolar, uyarılar, Logic Apps ve Power BI gibi yinelenen kira ve bursty kullanımı için kullanılan sorgulara özellikle dikkat etmeniz gerekir. Bu durumlarda, verimsiz bir sorgunun etkisi önemli değildir.
 
 ## <a name="query-performance-pane"></a>Sorgu performansı bölmesi
 Log Analytics bir sorgu çalıştırdıktan sonra sorgu sonuçlarının üzerindeki aşağı oka tıklayarak sorgu için çeşitli performans göstergelerinin sonuçlarını gösteren sorgu performansı bölmesini görüntüleyin. Bu performans göstergeleri, her biri aşağıdaki bölümde açıklanmıştır.
@@ -38,11 +38,11 @@ Aşağıdaki sorgu performans göstergeleri, yürütülen her sorgu için kullan
 
 - [Toplam CPU](#total-cpu): tüm işlem düğümleri genelinde sorguyu işlemek için kullanılan genel işlem. Bilgi işlem, ayrıştırma ve veri getirme için kullanılan süreyi temsil eder. 
 
-- [İşlenen sorgu için kullanılan veriler](#data-used-for-query-processing): sorguyu işlemek için erişilen genel veriler. Hedef tablonun boyutuyla, kullanılan zaman aralığı, uygulanan filtrelerin ve başvurulan sütun sayısının etkilenerek etkilenir.
+- [Veri hacmi](#data-volume): sorguyu işlemek için erişilen tüm veriler. Hedef tablonun boyutuyla, kullanılan zaman aralığı, uygulanan filtrelerin ve başvurulan sütun sayısının etkilenerek etkilenir.
 
-- [İşlenen sorgunun zaman aralığı](#time-range-of-the-data-processed): sorguyu işlemek için erişilen en yeni ve en eski veriler arasındaki boşluk. Sorgu açık zaman dilimi ve filtreleri uygulandıktan sonra etkilendi. Veri bölümleme nedeniyle açık zamandan daha büyük olabilir.
+- [Zaman aralığı](#time-range): sorguyu işlemek için en yeni ve en eski veriler arasındaki boşluk. Sorgu için belirtilen açık zaman aralığına göre etkilendi.
 
-- [İşlenen verilerin yaşı](#age-of-the-oldest-data-used): Şu anda ve sorguyu işlemek için erişilen en eski veriler arasındaki boşluk. Veri getirme verimliliğini oldukça etkiler.
+- [Veri yaşı](#age-of-data): Şu anda ve sorguyu işlemek için erişilen en eski veriler arasındaki boşluk. Veri getirme verimliliğini oldukça etkiler.
 
 - [Çalışma alanı sayısı](#number-of-workspaces): örtük veya açık seçim nedeniyle sorgu işlemi sırasında kaç çalışma alanına erişildiği.
 
@@ -123,7 +123,7 @@ Perf
 by CounterPath
 ```
 
-CPU tüketimi Ayrıca koşullarda veya yoğun bilgi işlem gerektiren genişletilmiş sütunlarda da etkilenebilir. [Eşittir = =](/azure/kusto/query/datatypes-string-operators) ve [StartsWith](/azure/kusto/query/datatypes-string-operators) gibi tüm önemsiz dize karşılaştırmaları, Gelişmiş metin eşleştirmelerinde daha fazla etkiye sahip olsa da kabaca aynı CPU etkisine sahiptir. Özellikle, sahip operatörü Contains işlecinin daha etkilidir. Dize işleme teknikleri nedeniyle, kısa dizelerdeki dört karakterden daha uzun dizeler aramak daha etkilidir.
+CPU tüketimi Ayrıca koşullarda veya yoğun bilgi işlem gerektiren genişletilmiş sütunlarda da etkilenebilir. [Eşittir = =](/azure/kusto/query/datatypes-string-operators) ve [StartsWith](/azure/kusto/query/datatypes-string-operators) gibi tüm önemsiz dize karşılaştırmaları, Gelişmiş metin eşleştirmelerinde daha fazla etkiye sahip olsa da kabaca aynı CPU etkisi vardır. Özellikle, [sahip](/azure/kusto/query/datatypes-string-operators) operatörü [Contains](/azure/kusto/query/datatypes-string-operators) işlecinin daha etkilidir. Dize işleme teknikleri nedeniyle, kısa dizelerdeki dört karakterden daha uzun dizeler aramak daha etkilidir.
 
 Örneğin, aşağıdaki sorgular bilgisayar adlandırma ilkesine bağlı olarak benzer sonuçlar üretir ancak ikincisi daha etkilidir:
 
@@ -151,7 +151,7 @@ Heartbeat
 > Bu gösterge yalnızca en hızlı kümeden CPU gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
 
 
-## <a name="data-used-for-query-processing"></a>Sorgu işleme için kullanılan veriler
+## <a name="data-volume"></a>Veri hacmi
 
 Sorgu işlenirken kritik bir faktör, taranan ve sorgu işleme için kullanılan veri birimidir. Azure Veri Gezgini, diğer veri platformları ile karşılaştırıldığında veri hacmini önemli ölçüde azaltan agresif iyileştirmeler kullanır. Hala, sorguda kullanılan veri birimini etkileyebilecek kritik etmenler vardır.
 Azure Izleyici günlüklerinde **TimeGenerated** sütunu, verileri dizine almanın bir yolu olarak kullanılır. **TimeGenerated** değerlerinin mümkün olduğunca dar olarak sınırlanması, işlenmesi gereken veri miktarını önemli ölçüde sınırlandırarak performansı sorgulamak için önemli bir geliştirme sağlar.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>İşlenen verilerin zaman aralığı
+## <a name="time-range"></a>Zaman aralığı
 
 Azure Izleyici günlüklerindeki tüm Günlükler, **TimeGenerated** sütununa göre bölümlendirilir. Erişilen bölüm sayısı doğrudan zaman dilimi ile ilgilidir. Zaman aralığını azaltmak, istem sorgusu yürütmeyi en verimli yoludur.
 
@@ -259,14 +259,10 @@ by Computer
 ) on Computer
 ```
 
-Ölçüm, belirtilen gerçek süreden her zaman daha büyüktür. Örneğin, sorgudaki filtre 7 gün ise, sistem 7,5 veya 8,1 gün tarama alabilir. Bunun nedeni, sistemin verileri değişken boyuttaki parçalara bölümlendirmesi nedeniyle oluşur. Tüm ilgili kayıtların tarandığından emin olmak için, birkaç saati ve hatta bir günden daha fazlasını kapsayan tüm bölümü tarar.
+> [!IMPORTANT]
+> Bu gösterge, çapraz bölge sorguları için kullanılamaz.
 
-Sistemin zaman aralığının doğru bir ölçümünü sağlayamadığının birkaç durumu vardır. Bu durum, sorgunun bir günden veya çok çalışma alanı sorgularından daha az olduğu durumlarda oluşur.
-
-> [!NOTE]
-> Bu gösterge yalnızca anında kümede işlenen verileri gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
-
-## <a name="age-of-the-oldest-data-used"></a>Kullanılan en eski veri yaşı
+## <a name="age-of-data"></a>Veri yaşı
 Azure Veri Gezgini, çeşitli depolama katmanlarını kullanır: bellek içi, yerel SSD diskleri ve çok daha yavaş Azure Blob 'Ları. Veriler arttıkça, daha yüksek gecikme süresine sahip daha fazla performans ve sorgu süresi ve CPU 'YU azaltan bir daha iyi hale gelir. Verilerin kendisi dışında, sistem meta veriler için de önbelleğe sahiptir. Veriler daha eski olduğunda meta verileri önbellekte olacaktır.
 
 Bazı sorgular eski verilerin kullanımını gerektirirken, eski verilerin yanlışlıkla kullanıldığı durumlar vardır. Bu durum, sorguları meta verilerinde zaman aralığı sağlamaktan yürütülene ve tüm tablo başvuruları, **TimeGenerated** sütununda filtre içermez. Bu durumlarda sistem, bu tabloda depolanan tüm verileri tarar. Veri saklama süresi uzunsa, uzun zaman aralıklarını ve bu nedenle veri saklama süresi kadar eski olan verileri kapsayacaktır.
@@ -289,7 +285,7 @@ Farklı bölgelerde tek bir sorgunun yürütülebileceği birkaç durum vardır:
 Tüm bu bölgeleri taramak için gerçek bir neden yoksa, kapsamı daha az bölge içerecek şekilde ayarlamanız gerekir. Kaynak kapsamı simge durumuna küçültülmüş, ancak hala çok sayıda bölge kullanılıyorsa, yanlış yapılandırma nedeniyle bu durum oluşabilir. Örneğin, denetim günlükleri ve Tanılama ayarları farklı bölgelerdeki farklı çalışma alanlarına gönderilir veya birden çok Tanılama ayarları yapılandırması vardır. 
 
 > [!IMPORTANT]
-> Bir sorgu çeşitli bölgelerde çalıştırıldığında, CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca bölgelerden birindeki ölçüyü temsil eder.
+> Bu gösterge, çapraz bölge sorguları için kullanılamaz.
 
 ## <a name="number-of-workspaces"></a>Çalışma alanı sayısı
 Çalışma alanları, günlük verilerini ayırmak ve yönetmek için kullanılan mantıksal kapsayıcılardır. Arka uç, Seçili bölge içindeki fiziksel kümelerdeki çalışma alanı yerleştirmelerinin en iyi duruma getirir.
@@ -305,7 +301,7 @@ Sorguların bölgeler arası ve çapraz küme yürütmesi, sistemin son görünt
 > Bazı çok çalışma alanı senaryolarında CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca birkaç çalışma alanında ölçüyü temsil eder.
 
 ## <a name="parallelism"></a>Paralellik
-Azure Izleyici günlükleri sorguları yürütmek için büyük Azure Veri Gezgini kümelerini kullanıyor. Bu kümeler, büyük olasılıkla 140 işlem düğümü elde eden ölçekte farklılık gösterir. Sistem, çalışma alanı yerleştirme mantığı ve kapasitesine göre kümeleri otomatik olarak ölçeklendirir.
+Azure Izleyici günlükleri sorguları çalıştırmak için büyük Azure Veri Gezgini kümeleri kullanıyor ve bu kümeler ölçeğe göre farklılık gösterir. Sistem, çalışma alanı yerleştirme mantığı ve kapasitesine göre kümeleri otomatik olarak ölçeklendirir.
 
 Bir sorguyu verimli bir şekilde yürütmek için bölümlenmiş ve işleme için gereken verilere göre işlem düğümlerine dağıtılır. Sistemin bunu verimli bir şekilde yapamadığı bazı durumlar vardır. Bu, sorgunun uzun süreli olmasına neden olabilir. 
 

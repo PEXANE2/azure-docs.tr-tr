@@ -6,33 +6,33 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 02/25/2020
+ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180777"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650835"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
 HDInsight kümeleri oluştururken birkaç farklı Azure depolama hizmeti arasında seçim yapabilirsiniz:
 
 * Azure Storage
-* Azure Data Lake Storage 2. Nesil
-* Azure Data Lake Storage 1. Nesil
+* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage Gen1
 
 Bu makale, bu depolama türlerine ve bunların benzersiz özelliklerine genel bir bakış sağlar.
 
 Aşağıdaki tabloda farklı HDInsight sürümleriyle desteklenen Azure depolama hizmetleri özetlenmektedir:
 
-| Depolama birimi hizmeti | Hesap türü | Ad alanı türü | Desteklenen hizmetler | Desteklenen performans katmanları | Desteklenen erişim katmanları | HDInsight Sürümü | Küme türü |
+| Depolama hizmeti | Hesap türü | Ad alanı türü | Desteklenen hizmetler | Desteklenen performans katmanları | Desteklenen erişim katmanları | HDInsight sürümü | Küme türü |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage 2. Nesil| Genel amaçlı v2 | Hiyerarşik (dosya sistemi) | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
-|Azure Storage| Genel amaçlı v2 | Object | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
-|Azure Storage| Genel amaçlı v1 | Object | Blob | Standart | Yok | Tümü | Tümü |
-|Azure Storage| BLOB depolama * * | Object | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
-|Azure Data Lake Storage 1. Nesil| Yok | Hiyerarşik (dosya sistemi) | Yok | Yok | Yok | yalnızca 3,6 | HBase dışında tümü |
+|Azure Data Lake Storage Gen2| Genel amaçlı v2 | Hiyerarşik (dosya sistemi) | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Spark 2,1 dışında tümü |
+|Azure Storage| Genel amaçlı v2 | Nesne | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
+|Azure Storage| Genel amaçlı v1 | Nesne | Blob | Standart | Yok | Tümü | Tümü |
+|Azure Storage| BLOB depolama * * | Nesne | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
+|Azure Data Lake Storage Gen1| Yok | Hiyerarşik (dosya sistemi) | Yok | Yok | Yok | yalnızca 3,6 | HBase dışında tümü |
 
 \* * HDInsight kümeleri için yalnızca ikincil depolama hesapları BlobStorage türünde olabilir ve Sayfa Blobu desteklenen bir depolama seçeneği değildir.
 
@@ -42,20 +42,23 @@ Azure depolama erişim katmanları hakkında daha fazla bilgi için bkz [. Azure
 
 Birincil ve isteğe bağlı ikincil depolama için farklı hizmet birleşimleri kullanarak bir küme oluşturabilirsiniz. Aşağıdaki tabloda, HDInsight 'ta Şu anda desteklenen küme depolama yapılandırmalarının özeti verilmiştir:
 
-| HDInsight Sürümü | Birincil depolama alanı | İkincil depolama | Desteklenen |
+| HDInsight sürümü | Birincil depolama alanı | İkincil depolama | Destekleniyor |
 |---|---|---|---|
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 2. Nesil | Hayır |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | Evet |
-| 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage 2. Nesil | Evet |
-| 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
-| 3,6 & 4,0 | Data Lake Storage 2. Nesil | Data Lake Storage Gen1 | Hayır |
-| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Evet |
-| 3.6 | Data Lake Storage Gen1 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
-| 3.6 | Data Lake Storage Gen1 | Data Lake Storage 2. Nesil | Hayır |
-| 4.0 | Data Lake Storage Gen1 | Any | Hayır |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen2 | Hayır |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | Yes |
+| 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage Gen2 | Yes |
+| 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Hayır |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Yes |
+| 3.6 | Data Lake Storage Gen1 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Hayır |
+| 4.0 | Data Lake Storage Gen1 | Herhangi biri | Hayır |
 
 \* = Bu, bir veya birden çok Data Lake Storage 2. hesabı olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
+
+> [!Note] 
+> Spark 2,1 kümelerinde birincil depolama Data Lake Storage 2. desteklenmez. 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop ile Azure Data Lake Storage 2. kullanma
 
@@ -67,7 +70,7 @@ Azure Data Lake Storage 2. hakkında daha fazla bilgi için bkz. [Azure Data Lak
 
 * **Hadoop ile uyumlu olan erişim:** Azure Data Lake Storage 2., verileri bir Hadoop Dağıtılmış Dosya Sistemi (bir) ile yaptığınız gibi yönetebilir ve erişebilirsiniz. Azure blob dosya sistemi (ABFS) sürücüsü, Azure HDInsight ve Azure Databricks dahil olmak üzere tüm Apache Hadoop ortamlarında kullanılabilir. Data Lake Storage 2. depolanan verilere erişmek için ABFS kullanın.
 
-* **POSIX izinlerinin bir üst kümesi:** Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi ile birlikte ACL ve POSIX izinlerini destekler. Ayarlar, Apache Hive ve Apache Spark gibi yönetim araçları veya çerçeveler aracılığıyla yapılandırılabilir.
+* **POSIX Izinlerinin bir üst kümesi:** Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi ile birlikte ACL ve POSIX izinlerini destekler. Ayarlar, Apache Hive ve Apache Spark gibi yönetim araçları veya çerçeveler aracılığıyla yapılandırılabilir.
 
 * **Maliyet verimliliği:** Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. Azure Blob depolama yaşam döngüsü gibi özellikler, verilerin yaşam döngüsü boyunca taşınmasıyla faturalandırma tarifelerinin daha düşük maliyetlerine yardımcı olur.
 
@@ -89,7 +92,7 @@ Apache Hadoop uygulamalar yerel disk depolamadan veri okumayı ve yazmayı bekle
 
 Daha önce, Hadoop dosya sistemi sürücüsü, tüm dosya sistemi işlemlerini istemci tarafında yapılan çağrılar REST API Azure Storage 'a dönüştüryordu ve sonra REST API çağırırdı. Bununla birlikte, bu istemci tarafı dönüştürmesi, bir dosyanın yeniden adlandırılması gibi tek bir dosya sistemi işlemi için birden çok REST API çağrısı sonucu oluşur. ABFS, bazı Hadoop dosya sistemi mantığını istemci tarafından sunucu kenarına taşımıştır. Azure Data Lake Storage 2. API 'SI artık BLOB API 'SI ile paralel olarak çalışır. Artık yaygın Hadoop dosya sistemi işlemleri tek bir REST API çağrısıyla yürütülemediğinden, bu geçiş performansı geliştirir.
 
-Daha fazla bilgi için bkz [. Azure blob dosya sistemi sürücüsü (ABFS): Hadoop](../storage/blobs/data-lake-storage-abfs-driver.md)Için adanmış bir Azure depolama sürücüsü.
+Daha fazla bilgi için bkz. [Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü](../storage/blobs/data-lake-storage-abfs-driver.md).
 
 #### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 için URI düzeni 
 
@@ -99,13 +102,13 @@ Azure Data Lake Storage 2., HDInsight 'tan Azure Storage 'daki dosyalara erişme
 
 URI şeması, SSL şifreli erişim sağlar.
 
-`<FILE_SYSTEM_NAME>`Data Lake Storage 2. dosya sisteminin yolunu tanımlar.
+`<FILE_SYSTEM_NAME>` dosya sistemi Data Lake Storage 2. yolunu tanımlar.
 
-`<ACCOUNT_NAME>`Azure depolama hesabı adını tanımlar. Tam uygun etki alanı adı (FQDN) gereklidir.
+`<ACCOUNT_NAME>`, Azure depolama hesabı adını tanımlar. Tam uygun etki alanı adı (FQDN) gereklidir.
 
-`<PATH>`dosya ya da dizin \ yol adı.
+`<PATH>`, dosya veya dizin \ yol adı ' dır.
 
-`<FILE_SYSTEM_NAME>` Ve`<ACCOUNT_NAME>` değerleri belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, `hadoop-mapreduce-examples.jar` HDInsight kümeleriyle birlikte gelen dosyaya aşağıdaki yollardan biri kullanılarak başvurulabilir:
+`<FILE_SYSTEM_NAME>` ve `<ACCOUNT_NAME>` için değerler belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, HDInsight kümeleri ile birlikte gelen `hadoop-mapreduce-examples.jar` dosyası aşağıdaki yollardan biri kullanılarak başvurulabilirler:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -113,7 +116,7 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!Note]
-> Dosya adı HDInsight sürüm `hadoop-examples.jar` 2,1 ve 1,6 kümelerinde bulunur. HDInsight dışındaki dosyalarla çalışırken, çoğu yardımcı programın ABFS biçimini tanımadığı ancak bunun yerine temel bir yol biçimi `example/jars/hadoop-mapreduce-examples.jar`beklediği fark edeceksiniz.
+> Dosya adı, HDInsight sürüm 2,1 ve 1,6 kümelerinde `hadoop-examples.jar`. HDInsight dışındaki dosyalarla çalışırken, çoğu yardımcı programın ABFS biçimini tanımadığı ancak bunun yerine `example/jars/hadoop-mapreduce-examples.jar`gibi temel bir yol biçimi beklediği fark edeceksiniz.
 
 Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. URI 'Si kullanma](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
 
@@ -123,7 +126,7 @@ Azure depolama, HDInsight ile sorunsuz bir şekilde tümleşen sağlam bir genel
 
 HDInsight günlüklerini ve geçici dosyaları kendi iş verilerinizde yalıtmak için varsayılan küme depolama alanı ve iş verileriniz için ayrı depolama kapsayıcıları kullanmanız önerilir. Ayrıca, her bir depolama maliyetini azaltmak için, uygulama ve sistem günlükleri içeren varsayılan blob kapsayıcısını silmenizi öneririz. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
 
-Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek isterseniz, HDInsight 'ın depolama verilerinize erişebilmesi Için **güvenilir Microsoft hizmetlerine izin ver...** özel durumunu etkinleştirdiğinizden emin olun. hesabı.
+Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek isterseniz, HDInsight 'ın depolama hesabınıza erişebilmesi Için **güvenilir Microsoft hizmetlerine izin ver...** özel durumunu etkinleştirdiğinizden emin olun.
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight depolama mimarisi
 
@@ -141,7 +144,7 @@ HDInsight aracılığıyla Azure Storage 'daki verilere de erişebilirsiniz. Sö
 
 HDInsight kümeleri ile Azure depolama hesabı kullanırken aşağıdaki ilkeleri göz önünde bulundurun:
 
-* **Bir kümeye bağlı depolama hesaplarındaki kapsayıcılar:** Hesap adı ve anahtarı oluşturma sırasında kümeyle ilişkili olduğundan, bu kapsayıcılardaki bloblara tam erişiminiz vardır.
+* **Bir kümeye bağlı depolama hesaplarındaki kapsayıcılar:** Oluşturma sırasında hesap adı ve anahtar kümeyle ilişkilendirildiğinden, bu kapsayıcılardaki blob'lara tam erişiminiz vardır.
 
 * **Bir kümeye bağlı *olmayan* depolama hesaplarındaki genel kapsayıcılar veya genel Bloblar:** Kapsayıcılarda bloblara salt okuma izninizin olması gerekir.
   
@@ -154,27 +157,27 @@ Oluşturma işleminde tanımlanan depolama hesapları ve bunların anahtarların
 
 Apache Hive, MapReduce, Apache Hadoop streaming ve Apache Pig dahil olmak üzere birden çok WebHCat işi, depolama hesaplarının ve meta verilerin bir açıklamasını taşıyabilir. (Bu, şu anda depolama hesapları olan Pig için geçerlidir ancak meta veriler için değil.) Daha fazla bilgi için bkz. [alternatif depolama hesaplarıyla HDInsight kümesi ve meta depolar kullanma](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-Bloblar yapılandırılmış ve yapılandırılmamış veriler için kullanılabilir. Blob kapsayıcıları, verileri anahtar/değer çiftleri olarak depolar ve Dizin hiyerarşisine sahip değildir. Bununla birlikte, anahtar adı, bir dosyanın dizin yapısında depolanmış gibi görünmesini sağlamak için eğik çizgi karakteri (/) içerebilir. Örneğin, bir Blobun anahtarı olabilir `input/log1.txt`. Gerçek `input` dizin yok, ancak anahtar adındaki eğik çizgi karakteri nedeniyle anahtar bir dosya yolu gibi görünüyor.
+Bloblar yapılandırılmış ve yapılandırılmamış veriler için kullanılabilir. Blob kapsayıcıları, verileri anahtar/değer çiftleri olarak depolar ve Dizin hiyerarşisine sahip değildir. Bununla birlikte, anahtar adı, bir dosyanın dizin yapısında depolanmış gibi görünmesini sağlamak için eğik çizgi karakteri (/) içerebilir. Örneğin, bir Blobun anahtarı `input/log1.txt`olabilir. Gerçek `input` dizin yok, ancak anahtar adındaki eğik çizgi karakteri nedeniyle anahtar bir dosya yolu gibi görünüyor.
 
 ### <a id="benefits"></a>Azure Depolamanın yararları
 Birlikte bulunan işlem kümeleri ve depolama kaynakları, kapsanan performans maliyetlerine sahiptir. Bu maliyetler, işlem kümelerinin Azure bölgesindeki depolama hesabı kaynaklarına yakın şekilde oluşturulduğu şekilde azaltıldığında. Bu bölgede, işlem düğümleri Azure Storage içindeki yüksek hızlı ağ üzerinden verilere verimli bir şekilde erişebilir.
 
 Verileri, Azure Storage 'da, her ne kadar çok avantaj elde edersiniz:
 
-* **Verilerin yeniden kullanımı ve paylaşılması:** Bilgisayar \ ' daki veriler, işlem kümesi içinde bulunur. Yalnızca işlem kümesi erişimi olan uygulamalar HDFS API'lerini kullanarak verileri kullanabilir. Azure depolama 'daki verilere, buna karşılık olarak,,, bu,,,,,,,,,,,,,,,,, Bu düzenleme nedeniyle, verileri oluşturmak ve kullanmak için daha büyük bir uygulamalar kümesi (diğer HDInsight kümeleri dahil olmak üzere) ve araçları kullanılabilir.
+* **Verileri yeniden kullanma ve paylaşma:** HDFS’deki veriler işlem kümesi içinde bulunur. Yalnızca işlem kümesi erişimi olan uygulamalar HDFS API'lerini kullanarak verileri kullanabilir. Azure depolama 'daki verilere, buna karşılık olarak,,, bu,,,,,,,,,,,,,,,,, Bu düzenleme nedeniyle, verileri oluşturmak ve kullanmak için daha büyük bir uygulamalar kümesi (diğer HDInsight kümeleri dahil olmak üzere) ve araçları kullanılabilir.
 
 * **Veri arşivleme:** Veriler Azure depolama 'da depolandığında, hesaplama için kullanılan HDInsight kümeleri, Kullanıcı verilerini kaybetmeden güvenle silinebilir.
 
 * **Veri depolama maliyeti:** Verilerin DFS 'de uzun süreli depolanması, verileri Azure Storage 'da depolamaktan daha maliyetlidir çünkü bir işlem kümesinin maliyeti Azure Storage maliyetinden daha yüksektir. Ayrıca, verilerin her işlem kümesi üretimi için yeniden yüklenmesi gerektiğinden, veri yükleme maliyetlerini de kaydediyorsunuz.
 
-* **Elastik genişleme:** Her ne kadar ölçekli bir dosya sistemi sağlar, ancak ölçek kümeniz için oluşturduğunuz düğüm sayısına göre belirlenir. Ölçeği değiştirmek, Azure depolama 'da otomatik olarak aldığınız esnek ölçeklendirme özelliklerine bağlı olandan daha karmaşık olabilir.
+* **Esnek ölçeklendirme:** HDFS size ölçeklendirilmiş dosya sistemi sağlamakla birlikte, ölçek, kümeniz için oluşturduğunuz düğüm sayısı tarafından belirlenir. Ölçeği değiştirmek, Azure depolama 'da otomatik olarak aldığınız esnek ölçeklendirme özelliklerine bağlı olandan daha karmaşık olabilir.
 
 * **Coğrafi çoğaltma:** Azure depolama, coğrafi olarak çoğaltılabilir. Coğrafi çoğaltma size coğrafi kurtarma ve veri yedekliliği sağlasa da, coğrafi olarak çoğaltılan konuma yönelik bir yük devretme performansı önemli ölçüde etkiler ve ek ücret ödemeniz gerekebilir. Bu nedenle, coğrafi çoğaltma ve yalnızca verilerin değeri ek maliyeti ortaya çıkarabiliyorsanız seçin.
 
 Belirli MapReduce işleri ve paketleri, Azure depolama 'da depolamak istemediğiniz ara sonuçlar oluşturabilir. Bu durumda, verileri yerel olarak depolamayı tercih edebilirsiniz. HDInsight, Hive işlerinde ve diğer işlemlerde bu ara sonuçlardan birkaçı için DFS kullanır.
 
 > [!NOTE]  
-> En çok bu komut (örneğin `ls` `copyFromLocal`,,, ve `mkdir`) Azure depolama 'da beklendiği gibi çalışır. Yalnızca yerel bir IBU uygulamaya özgü komutlar (DFS olarak adlandırılır), `fschk` ve `dfsadmin`gibi Azure depolama 'da farklı davranışlar gösterir.
+> Çoğu bir `ls`, `copyFromLocal`ve `mkdir`) Azure depolama 'da beklendiği gibi çalışır. Yalnızca yerel bir bu uygulamaya özgü komutlar (DFS olarak adlandırılır), `fschk` ve `dfsadmin`gibi Azure depolamada farklı davranışlar gösterir.
 
 ## <a name="overview-of-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. genel bakış
 
@@ -200,7 +203,7 @@ Data Lake Storage 1., sınırsız depolama sağlar ve analiz için çeşitli ver
 
 Data Lake Storage 1., büyük miktarlarda veriyi sorgulamak ve analiz etmek için büyük ölçekli verimlilik gerektiren büyük ölçekli analitik sistemleri çalıştırmak için oluşturulmuştur. Veri Gölü, bir dosyanın parçalarını birkaç ayrı depolama sunucusu üzerinden yayar. Verileri analiz edilirken, bu kurulum dosya paralel olarak okunduğunuz zaman okuma verimini geliştirir.
 
-### <a name="readiness-for-enterprise-highly-available-and-secure"></a>Kuruluş için hazırlık: Yüksek oranda kullanılabilir ve güvenli
+### <a name="readiness-for-enterprise-highly-available-and-secure"></a>Kurumsal kullanıma hazır: yüksek kullanılabilirliğe sahip ve güvenli
 
 Data Lake Storage 1. sektör standardı kullanılabilirliği ve güvenilirliği sağlar. Veri varlıkları, beklenmedik şekilde depolanır: yinelenen kopyalar, beklenmeyen hatalara karşı koruma. Kuruluşlar, kendi çözümlerinde Data Lake Storage 1., mevcut veri platformunun önemli bir parçası olarak kullanabilir.
 
@@ -215,9 +218,9 @@ Veriler için Data Lake Storage 1. kapsayıcılar temelde klasörler ve dosyalar
 ## <a name="DataLakeStoreSecurity"></a>Data Lake Storage 1. veri güvenliği
 Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory kullanır ve verilerinize erişimi yönetmek için erişim denetim listelerini (ACL 'Ler) kullanır.
 
-| **Özelliği** | **Açıklama** |
+| **Özellik** | **Açıklama** |
 | --- | --- |
-| Authentication |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure Active Directory (Azure AD) ile tümleşir. Tümleştirme nedeniyle tüm Azure AD özelliklerinden faydaların Data Lake Storage 1. Bu özellikler çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı vb. içerir. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Azure Active Directory kullanarak Azure Data Lake Storage 1. Içindeki kimlik doğrulamaya](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md) bakın|
+| Kimlik Doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure Active Directory (Azure AD) ile tümleşir. Tümleştirme nedeniyle tüm Azure AD özelliklerinden faydaların Data Lake Storage 1. Bu özellikler çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı vb. içerir. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Azure Active Directory kullanarak Azure Data Lake Storage 1. Içindeki kimlik doğrulamaya](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md) bakın|
 | Erişim denetimi |Data Lake Storage 1., Webdapterprotocol tarafından sunulan POSIX stili izinleri destekleyerek erişim denetimi sağlar. ACL’ler kök klasörde, alt klasörlerde ve dosyalarda tek tek etkinleştirilebilir. ACL 'Lerin Data Lake Storage 1. bağlamında nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. Access Control](../data-lake-store/data-lake-store-access-control.md). |
 | Şifreleme |Data Lake Storage 1., hesapta depolanan veriler için de şifreleme sağlar. Data Lake Storage 1. bir hesap oluştururken şifreleme ayarlarını belirtirsiniz. Verilerinizin şifrelenmesini veya şifrelemeyi kabul etmesinin tercih edilebilir. Daha fazla bilgi için bkz. [Data Lake Storage 1. şifreleme](../data-lake-store/data-lake-store-encryption.md). Şifrelemeyle ilgili yapılandırma sağlama yönergeleri için bkz. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md). |
 

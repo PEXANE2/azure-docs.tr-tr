@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373082"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651559"
 ---
 ## <a name="use-custom-page-content"></a>Özel sayfa içeriğini kullan
 
@@ -61,7 +61,7 @@ Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı
 ## <a name="guidelines-for-using-custom-page-content"></a>Özel sayfa içeriğini kullanma yönergeleri
 
 - HTML dosyanıza medya, CSS ve JavaScript dosyaları gibi dış kaynakları dahil ettiğinizde mutlak bir URL kullanın.
-- CSS ve JavaScript için yükleme sırasını denetlemek üzere HTML etiketinizdeki `data-preload="true"` özniteliğini ekleyin. `data-preload=true`, sayfa kullanıcıya gösterilmeden önce oluşturulur. Bu öznitelik, Kullanıcı tarafından gösterilen stilsiz HTML olmadan CSS dosyasını önceden yükleyerek sayfanın "titreşme" olmasını önlemeye yardımcı olur. Aşağıdaki HTML kod parçacığı `data-preload` etiketinin kullanımını gösterir.
+- [Sayfa düzeni](../articles/active-directory-b2c/page-layout.md) 1.2.0 ve üstünü kullanarak, CSS ve JavaScript 'in yükleme sırasını denetlemek için `data-preload="true"` özniteliğini HTML etiketinize ekleyebilirsiniz. `data-preload=true`, sayfa kullanıcıya gösterilmeden önce oluşturulur. Bu öznitelik, Kullanıcı tarafından gösterilen stilsiz HTML olmadan CSS dosyasını önceden yükleyerek sayfanın "titreşme" olmasını önlemeye yardımcı olur. Aşağıdaki HTML kod parçacığı `data-preload` etiketinin kullanımını gösterir.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

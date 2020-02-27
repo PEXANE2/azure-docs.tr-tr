@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792324"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651483"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange x12 iletileri
 
@@ -34,7 +34,7 @@ Azure Logic Apps için x12 iletileri alışverişi yapabilmeniz için önce bir 
 
 ## <a name="create-an-x12-agreement"></a>X12 sözleşmesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com "Azure portalı")’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com "Azure portalı") oturum açın. 
 
 2. Ana Azure menüsünde **tüm hizmetler**' i seçin. 
    Arama kutusuna "tümleştirme" yazın ve ardından **tümleştirme hesapları**' nı seçin.  
@@ -146,7 +146,7 @@ Her işlem türü (ST1) ve gönderici uygulaması (GS2) için bir şema seçin. 
 | Grup denetim numarası yinelenmesine izin verme |Yinelenen grup denetim numaralarıyla karşılıklı değişiklikleri engelleyin. |
 | Işlem kümesi denetim numarası yinelenmesine izin verme |Yinelenen işlem kümesi denetim numaralarıyla karşılıklı değişiklikleri engelleyin. |
 
-### <a name="validations"></a>Ların
+### <a name="validation"></a>Doğrulama
 
 ![Alınan iletiler için doğrulama özelliklerini ayarlama](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -248,7 +248,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun olan giden iletileri işlemey
 | Değişim denetim numarası (ISA13) |Gerekli, değişim denetim numarası için bir değer aralığı girin. En az 1 ve en fazla 999999999 olan sayısal bir değer girin |
 | Grup denetim numarası (GS06) |Gerekli, Grup denetim numarası için bir sayı aralığı girin. En az 1 ve en fazla 999999999 olan sayısal bir değer girin |
 | İşlem kümesi denetim numarası (ST02) |Gerekli, Işlem kümesi denetim numarası için bir sayı aralığı girin. En az 1 ve en fazla 999999999 olan bir sayısal değer aralığı girin |
-| Alan kodu |Bildirim içinde kullanılan işlem kümesi denetim numaraları aralığı için belirlenmiş isteğe bağlı. İkinci iki alan için sayısal bir değer ve önek ve sonek alanları için alfasayısal bir değer (isteniyorsa) girin. Orta alanlar gereklidir ve denetim numarası için en düşük ve en yüksek değerleri içermelidir |
+| Prefix |Bildirim içinde kullanılan işlem kümesi denetim numaraları aralığı için belirlenmiş isteğe bağlı. İkinci iki alan için sayısal bir değer ve önek ve sonek alanları için alfasayısal bir değer (isteniyorsa) girin. Orta alanlar gereklidir ve denetim numarası için en düşük ve en yüksek değerleri içermelidir |
 | Önekini |Bir bildirim içinde kullanılan işlem kümesi denetim numaraları aralığı için belirlenmiş isteğe bağlı. İkinci iki alan için sayısal bir değer ve önek ve sonek alanları için alfasayısal bir değer (isteniyorsa) girin. Orta alanlar gereklidir ve denetim numarası için en düşük ve en yüksek değerleri içermelidir |
 
 ### <a name="character-sets-and-separators"></a>Karakter kümeleri ve ayırıcılar
@@ -296,9 +296,13 @@ Her doğrulama satırını tamamladığınızda, başka bir otomatik olarak ekle
 
     !["Anlaşmalar" kutucuğunu seçin](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Swagger 'yi görüntüleme
-[Swagger ayrıntılarına](/connectors/x12/)bakın. 
+## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-## <a name="learn-more"></a>Daha fazla bilgi
-* [Enterprise Integration Pack hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin")  
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/x12/)bakın. 
 
+> [!NOTE]
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

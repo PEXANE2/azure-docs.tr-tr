@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960613"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651347"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
 
@@ -56,14 +56,14 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Çıkış adı     | Açıklama                   |
 |---------------|-------------------------------|
-| varlıklar | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
+| Varlık | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Özel varlık tanımı biçimi
 
 Özel varlık arama beceriye özel varlıkların listesini sağlamanın 3 farklı yolu vardır. Listeyi ' de sağlayabilirsiniz. CSV dosyası, a. Yetenek tanımının bir parçası olarak JSON dosyası veya satır içi tanım.  
 
-Tanım dosyası bir. CSV veya. JSON dosyası, dosyanın yolu, *Entitiesdefitionuri* parametresinin bir parçası olarak sağlanmalıdır. Bu durumda, dosya her bir dizin oluşturucunun başlangıcında bir kez indirilir. Dizin oluşturucunun çalıştırılması amaçlanan sürece dosyanın erişilebilir olması gerekir.
+Tanım dosyası bir. CSV veya. JSON dosyası, dosyanın yolu, *Entitiesdefitionuri* parametresinin bir parçası olarak sağlanmalıdır. Bu durumda, dosya her bir dizin oluşturucunun başlangıcında bir kez indirilir. Dizin oluşturucunun çalıştırılması amaçlanan sürece dosyanın erişilebilir olması gerekir. Ayrıca, dosyanın UTF-8 ile kodlanmış olması gerekir.
 
 Tanım satır içi olarak sağlanmışsa, *ınlineentitiesdefinition* yetenek parametresinin içeriği olarak satır içi olarak sağlanmalıdır. 
 
@@ -154,7 +154,7 @@ Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabile
 | Belirsizlik Zyeditdistance | Seçim Varsayılan değer 0 ' dır. En büyük 5 değeri. Varlık adıyla bir eşleşme oluşturulmasına neden olacak kabul edilebilir sayıda sabit karakter belirtir. Verilen herhangi bir eşleşme için mümkün olan en küçük belirsizlik döndürülür.  Örneğin, düzenleme uzaklığı 3 olarak ayarlandıysa, "Windows 10" yine "Windows", "Windows10" ve "Windows 7" ile eşleşir. <br/> Büyük/küçük harf duyarlılığı yanlış olarak ayarlandığında, büyük/küçük harf farkları belirsizlik toleransına doğru sayılmaz, aksi takdirde bunu yapın. |
 | defaultCaseSensitive | Seçim Bu varlık için varsayılan büyük/küçük harf duyarlılığı değerini değiştirir. Tüm diğer ad caseSensitive değerlerinin varsayılan değerini değiştirmek için kullanılır. |
 | defaultFuzzyEditDistance | Seçim Bu varlık için varsayılan benzer düzenleme uzaklığı değerini değiştirir. Tüm diğer adların belirsizlik değerlerini varsayılan değerini değiştirmek için kullanılabilir. |
-| deyim | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
+| diğer adlar | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
 
 | Diğer ad özellikleri | Açıklama |
 |------------------|-------------|

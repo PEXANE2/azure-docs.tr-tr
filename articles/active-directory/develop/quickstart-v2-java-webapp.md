@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 3e1369901e259af6722d9e5a14fababac80f1d02
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160568"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611992"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -97,6 +97,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+    aad.msGraphEndpointHost="https://graph.microsoft.com/"
     ```
 
     > [!div renderon="docs"]
@@ -109,13 +110,13 @@ Bu örneği çalıştırmak için şunlar gerekir:
  1. Https 'yi localhost ile kullanmak için Server. SSL. Key özelliklerini doldurmanız gerekir. Kendinden imzalı bir sertifika oluşturmak için, Keytool yardımcı programını (JRE 'de bulunur) kullanın.
 
    ```
-   Example: 
+   Example:
    keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 
    server.ssl.key-store-type=PKCS12  
    server.ssl.key-store=classpath:keystore.p12  
    server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert 
+   server.ssl.key-alias=testCert
    ```
 
    Oluşturulan anahtar deposu dosyasını "resources" klasörüne yerleştirin.

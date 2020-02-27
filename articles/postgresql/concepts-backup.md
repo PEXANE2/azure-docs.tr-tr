@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769872"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619618"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-tek sunucu
 
@@ -20,6 +20,8 @@ PostgreSQL için Azure veritabanı otomatik olarak sunucu yedeklemeleri oluştur
 ## <a name="backups"></a>Yedeklemeler
 
 PostgreSQL için Azure veritabanı, veri dosyalarının ve işlem günlüğünün yedeklerini alır. Desteklenen en fazla depolama boyutuna bağlı olarak, tam ve fark yedeklemeleri (4 TB maksimum depolama sunucusu) veya anlık görüntü yedeklemeleri (en fazla 16 TB depolama sunucusu) sunuyoruz. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. İsteğe bağlı olarak 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
+
+Bu yedekleme dosyaları verilemez. Yedeklemeler yalnızca PostgreSQL için Azure veritabanı 'nda geri yükleme işlemleri için kullanılabilir. Bir veritabanını kopyalamak için [pg_dump](howto-migrate-using-dump-and-restore.md) kullanabilirsiniz.
 
 ### <a name="backup-frequency"></a>Yedekleme sıklığı
 
@@ -73,7 +75,7 @@ Coğrafi geri yükleme sırasında, değiştirilebilecek sunucu yapılandırmas�
 Kurtarma mekanizmasından geri yükleme yapıldıktan sonra, kullanıcılarınızın ve uygulamalarınızın yedeklenmesi ve çalışması için aşağıdaki görevleri gerçekleştirmeniz gerekir:
 
 - Yeni sunucu özgün sunucunun yerini alacak şekilde, istemcileri ve istemci uygulamalarını yeni sunucuya yeniden yönlendirin
-- Kullanıcıların bağlanabilmesi için uygun sunucu düzeyi güvenlik duvarı kurallarının yerinde olduğundan emin olun
+- Kullanıcıların bağlanabilmesi için uygun sunucu düzeyi güvenlik duvarı ve VNet kurallarının bulunduğundan emin olun. Bu kurallar, özgün sunucudan üzerine kopyalanmaz.
 - Uygun oturum açma ve veritabanı düzeyi izinlerinin yerinde olduğundan emin olun
 - Uyarıları uygun şekilde yapılandırma
 

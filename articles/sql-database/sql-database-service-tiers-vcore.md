@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045187"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650308"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
@@ -31,12 +31,12 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 
 ||**Genel amaçlı**|**İş açısından kritik**|**Hiper ölçekli**|
 |---|---|---|---|
-|Şunlar için en iyisidir:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
+|En iyi kullanım alanı:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
 |Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanları ve elastik havuzlar tarafından sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanları ve elastik havuzlar tarafından sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
 |IOPS ve aktarım hızı (yaklaşık)|**Tek veritabanları ve elastik havuzlar**: [tek veritabanları](../sql-database/sql-database-vcore-resource-limits-single-databases.md) ve [elastik havuzlar](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**Yönetilen örnek**: bkz. [Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|[Tek veritabanları](../sql-database/sql-database-vcore-resource-limits-single-databases.md) ve [elastik havuzlar](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
-|Erişilebilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
+|Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
-|Bellek içi|Desteklenmiyor|Desteklenen|Desteklenmiyor|
+|Bellek içi|Desteklenmiyor|Destekleniyor|Desteklenmiyor|
 |||
 
 
@@ -89,17 +89,17 @@ Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılab
 - D serisi, 5. nesil tarafından sağlanenden daha fazla bellek ve daha fazla işlem sınırı gerektiren iş yükleri için bellek için iyileştirilmiş bir donanım seçeneğidir.
 - A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. bu da, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
 
-Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açık olmalıdır. Destek talebi onaylanırsa, e serisi seçme ve sağlama deneyimi diğer donanım oluşumları için aynı düzeni izler. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
+Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açılmalıdır. Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır.  Destek talebi onaylanırsa, e serisi seçme ve sağlama deneyimi diğer donanım oluşumları için aynı düzeni izler. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
 
 
 ### <a name="compute-and-memory-specifications"></a>İşlem ve bellek belirtimleri
 
 
-|Donanım oluşturma  |Bilgi İşlem  |Hafıza  |
+|Donanım oluşturma  |İşlem  |Bellek  |
 |:---------|:---------|:---------|
-|Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
-|Gen5     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
-|Fsv2-serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
+|4\. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
+|5\. nesil     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
+|Fsv2 serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
 |M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
 
 
@@ -142,7 +142,7 @@ Ayrıntılı bilgi için bkz. [yönetilen örnek oluşturma](sql-database-manage
   
 **Mevcut bir yönetilen örneğin donanım üretimini değiştirmek için**
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Yönetilen örnek sayfasında, Ayarlar bölümünün altına yerleştirilmiş **fiyatlandırma katmanı** bağlantısı ' nı seçin.
 
@@ -150,43 +150,25 @@ Yönetilen örnek sayfasında, Ayarlar bölümünün altına yerleştirilmiş **
 
 **Fiyatlandırma katmanı** sayfasında, önceki adımlarda açıklandığı gibi donanım oluşturmayı değiştirebilirsiniz.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Aşağıdaki PowerShell komut dosyasını kullanın:
+Aşağıdaki PowerShell betiğini kullanın:
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Yönetilen örneğin abonelik KIMLIĞINIZI, adınızı ve kaynak grubunuzu girdiğinizden emin olun.
+Daha fazla ayrıntı için [set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) komutunu inceleyin.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Aşağıdaki CLı komutunu kullanın:
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+Daha fazla ayrıntı için, [az SQL mı Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) komutunu inceleyin.
 
 ---
 
@@ -194,11 +176,11 @@ Yönetilen örneğin abonelik KIMLIĞINIZI, adınızı ve kaynak grubunuzu girdi
 
 #### <a name="gen4gen5-1"></a>4. nesil/5. nesil
 
-Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez. 
+4\. nesil donanım [kullanıma alınıyor](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) ve Yeni dağıtımlar için artık kullanılamıyor. Tüm yeni veritabanlarının 5. nesil donanımında dağıtılması gerekir.
 
 5\. nesil, dünya çapındaki birçok bölgede kullanılabilir.
 
-#### <a name="fsv2-series"></a>Fsv2-serisi
+#### <a name="fsv2-series"></a>Fsv2 serisi
 
 Fsv2 serisi şu bölgelerde kullanılabilir: Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Doğu Asya, Doğu ABD, Fransa Orta, Hindistan Orta, Hindistan Batı, Kore Orta, Kore Güney, Kuzey Avrupa, Güney Afrika Kuzey, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD 2.
 

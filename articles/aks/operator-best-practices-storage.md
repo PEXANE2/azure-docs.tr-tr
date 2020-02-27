@@ -4,12 +4,12 @@ description: Depolama, veri şifreleme ve yedekleri Azure Kubernetes Service (AK
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 6521655ded45f0a1d15c3ec40a44993d757b8854
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594677"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649628"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Depolama ve yedekleme Azure Kubernetes Service (AKS) için en iyi uygulamalar
 
@@ -35,7 +35,7 @@ Aşağıdaki tabloda kullanılabilir depolama alanı türleri ve yeteneklerini �
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Paylaşılan yapılandırma       | Azure Dosyaları   | Yes | Yes | Yes | Yes |
 | Yapılandırılmış uygulama verileri        | Azure Diskleri   | Yes | Hayır  | Hayır  | Yes |
-| Yapılandırılmamış veriler, dosya sistemi işlemleri | [Blobsigortası (Önizleme)][blobfuse] | Yes | Yes | Yes | Hayır |
+| Yapılandırılmamış veriler, dosya sistemi işlemleri | [Blobsigortası][blobfuse] | Yes | Yes | Yes | Hayır |
 
 İki birincil tür aks'deki birimler için sağlanan depolama, Azure diskleri veya Azure dosyaları tarafından desteklenir. Her iki tür depolama güvenliğini artırmak için bekleyen verileri şifreler. varsayılan olarak Azure depolama hizmeti şifrelemesi (SSE) kullanın. Diskler, şu anda Azure Disk şifrelemesi kullanılarak AKS düğümü düzeyinde şifrelenemez.
 

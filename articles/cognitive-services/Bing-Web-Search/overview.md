@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893000"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650291"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Araması API'si nedir?
 
@@ -38,9 +38,9 @@ Bing Web Araması yalnızca anında yanıtlar için erişim izni vermez. Ayrıca
 | [Arama sonuçlarını ülkeye, bölgeye ve/veya pazara göre yerelleştirme](supported-countries-markets.md) | Bing Web Araması, otuz altıyı aşkın ülkeyi ve bölgeyi destekler. Arama sonuçlarını belirli bir ülke/bölge veya pazarla kısıtlamak için bu özelliği kullanın. |
 | [Bing İstatistikleri ile arama ölçümlerini analiz etme](bing-web-stats.md) | Bing İstatistikleri, çağrı hacmi, en çok kullanılan sorgu dizeleri, coğrafi dağılım ve daha fazlası ile ilgili analizler sunan ücretli bir aboneliktir. |
 
-## <a name="workflow"></a>İş Akışı
+## <a name="workflow"></a>İş akışı
 
-Bing Web Araması API'si, HTTP isteklerinin yapılabildiği ve JSON yanıtlarının ayrıştırabildiği herhangi bir programlama dili ile kolayca çağrılabilir. [REST API](quickstarts/python.md) veya [Bing Web Araması SDK'ları](web-sdk-python-quickstart.md) kullanılarak hizmete erişilebilir.
+Bing Web Araması API'si, HTTP isteklerinin yapılabildiği ve JSON yanıtlarının ayrıştırabildiği herhangi bir programlama dili ile kolayca çağrılabilir. Hizmete [REST API](quickstarts/python.md) veya [Bing Web araması istemci kitaplıkları](./quickstarts/client-libraries.md)kullanılarak erişilebilir.
 
 1. Bing Arama API'leri için [bir Azure kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oluşturabilirsiniz.  
 2. [Bing Web Araması API'sine yönelik bir istek](quickstarts/python.md) gönderin.
@@ -48,7 +48,7 @@ Bing Web Araması API'si, HTTP isteklerinin yapılabildiği ve JSON yanıtların
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bing Web Araması API'sine ilk çağrınızı yapmak için [Python hızlı başlangıç](quickstarts/python.md) makalemizden yararlanın.  
+* Bing Web Araması API'sine ilk çağrınızı yapmak için [Python hızlı başlangıç](./quickstarts/client-libraries.md?pivots=programming-language-python) makalemizden yararlanın.  
 * [Tek sayfalı bir web uygulaması oluşturun](tutorial-bing-web-search-single-page-app.md).
 * [Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) belgelerini gözden geçirin.  
 * Bing Web Araması için [kullanım ve görüntüleme gereksinimleri](UseAndDisplayRequirements.md) hakkında daha fazla bilgi edinin.  
