@@ -19,6 +19,8 @@
           href: container-registry-get-started-powershell.md
         - name: Event Grid’e olay gönderme - CLI
           href: container-registry-event-grid-quickstart.md
+        - name: Java görüntülerini derleme ve gönderme - CLI
+          href: container-registry-java-quickstart.md
     - name: Öğreticiler
       expanded: false
       items:

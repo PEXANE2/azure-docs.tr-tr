@@ -11,53 +11,17 @@
     - name: Soru-Cevap Oluşturma portalı ile
       items:
         - name: 1. Bilgi bankası oluşturma
-          href: quickstarts/create-publish-knowledge-base.md
+          href: Quickstarts/create-publish-knowledge-base.md
         - name: 2. Meta verilerle soru ekleme
-          href: quickstarts/add-question-metadata-portal.md
+          href: Quickstarts/add-question-metadata-portal.md
         - name: 3. Postman veya cURL ile yanıtlar alma
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Toplu iş dosyasıyla test etme
       href: Quickstarts/batch-testing.md
-    - name: REST API’sini kullanma
-      items:
-        - name: Yeni bilgi bankası oluşturma
-          items:
-            - name: 'C#'
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Başlayın
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: Bilgi bankası yayımlama
-          items:
-            - name: 'C#'
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Başlayın
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: Yanıt alma
-          items:
-            - name: 'C#'
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Başlayın
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: REST kullanma
+      href: Quickstarts/quickstart-rest-curl.md
     - name: SDK’yı kullanma
-      href: ./Quickstarts/quickstart-sdk.md
+      href: Quickstarts/quickstart-sdk.md
 - name: Öğreticiler
   items:
     - name: KB’den oluşturma ve yanıtlama

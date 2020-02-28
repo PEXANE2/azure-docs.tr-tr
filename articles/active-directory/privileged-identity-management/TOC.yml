@@ -47,6 +47,8 @@
       items:
         - name: Özellik güncelleştirmesi
           href: azure-ad-roles-features.md
+        - name: Azure AD rolleri için PowerShell
+          href: powershell-for-azure-ad-roles.md
         - name: Rol atama
           href: pim-how-to-add-role-to-user.md
         - name: İstekleri onaylama

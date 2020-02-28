@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905458"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484596"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics JSON ve avro verilerini ayrıştırın
 
@@ -123,7 +123,7 @@ WHERE
 
 Sonuç:
 
-|DeviceID|sensorName|alertMessage|
+|DeviceID|SensorName|AlertMessage|
 |-|-|-|
 |12345|Nem oranı|Uyarı: Yukarıdaki algılayıcı eşiğin üstünde|
 
@@ -144,7 +144,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 Sonuç:
 
-|DeviceID|sensorName|alertMessage|
+|DeviceID|SensorName|AlertMessage|
 |-|-|-|
 |12345|Sıcaklık|80|
 |12345|Nem oranı|70|
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>SQL başvuru verilerinde JSON kaydını ayrıştırma
+Azure SQL veritabanı 'nı işinizdeki başvuru verileri olarak kullanırken JSON biçiminde veri içeren bir sütun olması mümkündür. Aşağıda bir örnek gösterilmiştir.
+
+|DeviceID|Veriler|
+|-|-|
+|12345|{"Key": "değer1"}|
+|54321|{"Key": "değer2"}|
+
+Basit bir JavaScript Kullanıcı tanımlı işlevi yazarak *veri* sütununda JSON kaydını ayrıştırabilirsiniz.
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+Ardından, JSON kayıtlarınızın alanlarına erişmek için aşağıda gösterildiği gibi Stream Analytics sorgunuzda bir adım oluşturabilirsiniz.
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>Dizi veri türleri

@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: SSH düğümü erişimi
           href: ssh.md
+        - name: Linux performans araçları
+          href: troubleshoot-linux.md
 - name: Başvuru
   items:
     - name: Azure CLI

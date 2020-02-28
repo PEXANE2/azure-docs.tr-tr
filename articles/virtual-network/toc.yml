@@ -103,7 +103,7 @@
   items:
     - name: Planlama ve yapılandırma
       items:
-        - name: Sanal ağlar
+        - name: Sanal ağları planlama
           href: virtual-network-vnet-plan-design-arm.md
         - name: VM’ler ve bulut hizmetleri içi ad çözümlemesi
           href: virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -209,41 +209,64 @@
               href: virtual-network-public-ip-address.md
             - name: Genel IP ön ekini yönetme
               href: manage-public-ip-address-prefix.md
-            - name: NIC’lerden IP adreslerini ekleme veya kaldırma
+            - name: NIC’lerden IP adresi ekleme veya kaldırma
               href: virtual-network-network-interface-addresses.md
     - name: Güvenlik
       items:
-        - name: Manage DDoS koruması
-          href: manage-ddos-protection.md
-        - name: Ağ güvenlik gruplarını yönetme
-          href: manage-network-security-group.md
-        - name: DDos Koruması Standart’a iş ortağı ekleme
-          href: ddos-protection-partner-onboarding.md
-        - name: Ağ güvenlik grupları ile ağ trafiğini filtreleme
+        - name: Ağ güvenlik grupları ile erişimi kısıtlama
           items:
+            - name: Azure portal
+              href: tutorial-restrict-network-access-to-resources.md
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: Ağ güvenlik gruplarını yönetme
+              href: manage-network-security-group.md
+        - name: Ağ trafiğini filtreleme
+          items:
+            - name: Azure portal
+              href: tutorial-filter-network-traffic.md
             - name: Azure PowerShell
               href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-        - name: NVA kullanarak trafiği yönlendirme
+        - name: Ağ yalıtımı
           items:
+            - name: Özel uç noktaları kullanma
+              items:
+                - name: Azure portal
+                  href: ../private-link/create-private-endpoint-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: ../private-link/create-private-endpoint-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../private-link/create-private-endpoint-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Hizmet uç noktalarını kullanma
+              items:
+                - name: Azure portal
+                  href: tutorial-restrict-network-access-to-resources.md
+                - name: Azure PowerShell
+                  href: tutorial-restrict-network-access-to-resources-powershell.md
+                - name: Azure CLI
+                  href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: Uç nokta ilkeleri oluşturma
+              href: virtual-network-service-endpoint-policies-portal.md
+        - name: Ağ trafiğini yönlendirme
+          items:
+            - name: Azure portal
+              href: tutorial-create-route-table-portal.md
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
               href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: Yönlendirme tablolarını yönetme
-          href: manage-route-table.md
-        - name: Hizmet uç noktası kullanma
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: Hizmet uç noktası ilkeleri oluşturma - Portal
-          href: virtual-network-service-endpoint-policies-portal.md
+            - name: Yönlendirme tablolarını yönetme
+              href: manage-route-table.md
+        - name: Manage DDoS koruması
+          href: manage-ddos-protection.md
+        - name: DDos Koruması Standart’a iş ortağı ekleme
+          href: ddos-protection-partner-onboarding.md
         - name: Güvenlik senaryoları
           items:
             - name: Sanal gereçlerle ağ güvenliği sağlama
@@ -272,6 +295,12 @@
               href: virtual-networks-static-private-ip-arm-ps.md
             - name: Azure CLI
               href: virtual-networks-static-private-ip-arm-cli.md
+        - name: VM oluşturma - statik özel IP (klasik)
+          items:
+            - name: Azure portal
+              href: virtual-networks-static-private-ip-classic-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-classic-ps.md
         - name: VM oluşturma - birden çok IP
           items:
             - name: Azure portal

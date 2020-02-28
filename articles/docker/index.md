@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 429494b829d1307b4f89dbf746d24135a4322a97
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605575"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164466"
 ---
 <div class="content">
    <h1>Azure'da Docker</h1>   
@@ -31,9 +31,8 @@ Docker, Linux ve Windows üzerindeki kapsayıcılarla hızlı bir şekilde çal�
 <h2>Adım Adım Öğreticiler</h2>
 <p>Uygulamanızda ve CI/CD işlem hattınızın parçası olarak Docker kullanmayı öğrenin:</p>
 <ol>
-  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Docker ile Python ve PostgreSQL oluşturma</a></li>
-  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">Docker Swarm ve Azure DevOps Services ile CI/CD</a></li>
-  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Docker, Jenkins ve Linux VM’lerini tümleştirme</a></li>
+  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Azure App Service’ta PostgreSQL ile Python (Django) web uygulaması çalıştırma</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Azure’da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma</a></li>
 </ol>
 <h2>Kaynaklar</h2>
 <p>Azure üzerinde Docker ile çalışmaya yönelik diğer başvuru malzemeleri ve araçlar için aşağıdaki bağlantıları ziyaret edin.</p>

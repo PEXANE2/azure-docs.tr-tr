@@ -5,7 +5,7 @@ ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
 ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/25/2019
 ms.locfileid: "75450086"
@@ -41,7 +41,7 @@ Birlikte kurtarmak istediğiniz sunucu verileri, siz yedeklemeyi ayarladığın�
 
 Evet. Kurtarma Hizmetleri kasasını taşımak için bu [makaleye](backup-azure-move-recovery-services-vault.md) bakın
 
-### <a name="can-i-move-backup-data-to-another-vault"></a>Yedek verileri başka bir kasaya taşıyabilir miyim?
+### <a name="can-i-move-backup-data-to-another-vault"></a>Yedekleme verilerini başka bir kasaya taşıyabilir miyim?
 
 Hayır. Kasada depolanan yedek veriler farklı bir kasaya taşınamaz.
 
@@ -52,7 +52,7 @@ Hayır. Kurtarma Hizmetleri kasası yalnızca herhangi bir yedekleme depolanmada
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasına yedeklenen VM'ler için Öğe Düzeyinde Kurtarma (ILR) işlemi yapabilir miyim?
 
 - ILR, Azure VM yedeklemesi tarafından yedeklenen Azure VM'lerinde desteklenir. Daha fazla bilgi için şu [makaleye](backup-azure-restore-files-from-vm.md) bakın
-- Azure yedekleme sunucusu veya System Center DPN tarafından yedeklenen şirket içi VM'lerinin çevrimiçi kurtarma noktalarında desteklenmez.
+- Azure Backup Sunucusu veya System Center DPM tarafından yedeklenen şirket içi VM'lerin çevrimiçi kurtarma noktalarında desteklenmez.
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 
@@ -197,7 +197,7 @@ Yeni bir ilke uygulandığında yeni ilkenin zamanlama ve saklaması geçerli ol
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Veriler Azure'a şifreli olarak mı gönderilir?
 
-Evet. Veriler şirket içi makinesinde AES256 kullanılarak şifrelenir. Veriler güvenli bir HTTPS bağlantısı üzerinden gönderilir. Bulutta iletilen veriler depolama ve kurtarma hizmeti arasında yalnızca HTTPS bağlantısıyla korunur. iSCSI protokolü kurtarma hizmetiyle kullanıcı makinesi arasında iletilen verileri güvenlik altına alır. iSCSI kanalını korumak için güvenli tünel kullanılır.
+Evet. Veriler şirket içi makinede AES256 kullanılarak şifrelenir. Veriler güvenli bir HTTPS bağlantısı üzerinden gönderilir. Bulutta iletilen veriler depolama ve kurtarma hizmeti arasında yalnızca HTTPS bağlantısıyla korunur. iSCSI protokolü kurtarma hizmetiyle kullanıcı makinesi arasında iletilen verileri güvenlik altına alır. iSCSI kanalını korumak için güvenli tünel kullanılır.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Azure üzerindeki yedekleme verileri de şifreli midir?
 

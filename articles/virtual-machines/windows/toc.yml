@@ -370,7 +370,7 @@
       items:
         - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Genel Bakış
+        - name: Geçişe Genel Bakış
           href: migration-classic-resource-manager-overview.md
         - name: Geçişe Derinlemesine Bakış
           href: migration-classic-resource-manager-deep-dive.md

@@ -29,9 +29,9 @@
           href: quickstart-v2-javascript.md
     - name: Web uygulamaları
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP .NET Core
+        - name: ASP.NET Çekirdeği
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -42,9 +42,9 @@
           href: quickstart-v2-python-webapp.md
     - name: Web API'leri
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
-        - name: ASP .NET Core
+        - name: ASP.NET Çekirdeği
           href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
     - name: Mobil uygulamalar ve masaüstü uygulamaları
       items:
@@ -70,7 +70,7 @@
           href: tutorial-v2-javascript-spa.md
     - name: Web uygulamaları
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
     - name: Mobil uygulamalar ve masaüstü uygulamaları
       items:
@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: Geçiş
           items:
+            - name: Genel Bakış
+              href: msal-migration.md
             - name: MSAL.NET'e geçirme
               href: msal-net-migration.md
             - name: MSAL.js'ye geçirme
               href: msal-compare-msal-js-and-adal-js.md
             - name: MSAL.Android’e geçiş
               href: migrate-android-adal-msal.md
-            - name: MSAL.iOS / MacOS'a geçiş
+            - name: MSAL.iOS / macOS’e Geçiş
               href: migrate-objc-adal-msal.md
             - name: MSAL Python’a geçiş
               href: migrate-python-adal-msal.md

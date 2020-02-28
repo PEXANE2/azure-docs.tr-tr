@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: Öğreticiler
   items:
-    - name: 'İlk C# uygulamanızı oluşturma'
+    - name: 'C# uygulaması oluşturma'
       items:
         - name: 1 - Temel arama sayfası
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5 - Sonuç sıralaması ekleme
           href: tutorial-csharp-orders.md
-    - name: Azure SQL Veritabanı'nı dizinleme
-      href: search-indexer-tutorial.md
-    - name: Azure JSON bloblarını dizine ekleme
-      href: search-semi-structured-data.md
-    - name: Birden çok Azure veri kaynağını dizinleme
-      href: tutorial-multiple-data-sources.md
-    - name: AI ile zenginleştirme (bilişsel arama)
+    - name: Azure verilerinin dizinini oluşturma
+      items:
+        - name: Azure SQL Veritabanı'nı dizinleme
+          href: search-indexer-tutorial.md
+        - name: Azure JSON bloblarını dizine ekleme
+          href: search-semi-structured-data.md
+        - name: Birden çok Azure veri kaynağını dizinleme
+          href: tutorial-multiple-data-sources.md
+    - name: İçerik oluşturmak için yapay zeka kullanma
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
