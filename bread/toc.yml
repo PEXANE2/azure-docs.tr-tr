@@ -289,36 +289,40 @@
         - name: Anomali Algılayıcısı
           tocHref: /azure/cognitive-services/anomaly-detector/
           topicHref: /azure/cognitive-services/anomaly-detector/
-        - name: Bing Otomatik Öneri
-          tocHref: /azure/cognitive-services/Bing-Autosuggest/
-          topicHref: /azure/cognitive-services/Bing-Autosuggest/
-        - name: Bing Özel Arama
-          tocHref: /azure/cognitive-services/bing-custom-search/
-          topicHref: /azure/cognitive-services/bing-custom-search/
-        - name: Bing Varlık Arama
-          tocHref: /azure/cognitive-services/bing-entities-search/
-          topicHref: /azure/cognitive-services/bing-entities-search/
-        - name: Bing Resim Arama
-          tocHref: /azure/cognitive-services/bing-image-search/
-          topicHref: /azure/cognitive-services/bing-image-search/
-        - name: Bing Haber Arama
-          tocHref: /azure/cognitive-services/bing-news-search/
-          topicHref: /azure/cognitive-services/bing-news-search/
-        - name: Bing Yazım Denetimi
-          tocHref: /azure/cognitive-services/bing-spell-check/
-          topicHref: /azure/cognitive-services/bing-spell-check/
-        - name: Bing Video Arama
-          tocHref: /azure/cognitive-services/Bing-Video-Search/
-          topicHref: /azure/cognitive-services/Bing-Video-Search/
-        - name: Bing Görsel Arama
-          tocHref: /azure/cognitive-services/bing-visual-search/
-          topicHref: /azure/cognitive-services/bing-visual-search/
-        - name: Bing Web Araması
-          tocHref: /azure/cognitive-services/bing-web-search/
-          topicHref: /azure/cognitive-services/bing-web-search/
-        - name: Bing Yerel İşletme Arama
-          tocHref: /azure/cognitive-services/bing-local-business-search/
-          topicHref: /azure/cognitive-services/bing-local-business-search/
+        - name: Bing Arama API’leri
+          tocHref: /azure/cognitive-services/bing-web-search
+          topicHref: /azure/cognitive-services/bing-web-search
+          items:
+            - name: Bing Otomatik Öneri
+              tocHref: /azure/cognitive-services/Bing-Autosuggest
+              topicHref: /azure/cognitive-services/Bing-Autosuggest/get-suggested-search-terms
+            - name: Bing Özel Arama
+              tocHref: /azure/cognitive-services/bing-custom-search
+              topicHref: /azure/cognitive-services/bing-custom-search/overview
+            - name: Bing Varlık Arama
+              tocHref: /azure/cognitive-services/bing-entities-search
+              topicHref: /azure/cognitive-services/bing-entities-search/overview
+            - name: Bing Resim Arama
+              tocHref: /azure/cognitive-services/bing-image-search
+              topicHref: /azure/cognitive-services/bing-image-search/overview
+            - name: Bing Haber Arama
+              tocHref: /azure/cognitive-services/bing-news-search
+              topicHref: /azure/cognitive-services/bing-news-search/search-the-web
+            - name: Bing Yazım Denetimi
+              tocHref: /azure/cognitive-services/bing-spell-check
+              topicHref: /azure/cognitive-services/bing-spell-check/overview
+            - name: Bing Video Arama
+              tocHref: /azure/cognitive-services/Bing-Video-Search
+              topicHref: /azure/cognitive-services/Bing-Video-Search/overview
+            - name: Bing Görsel Arama
+              tocHref: /azure/cognitive-services/bing-visual-search
+              topicHref: /azure/cognitive-services/bing-visual-search/overview
+            - name: Bing Web Araması
+              tocHref: /azure/cognitive-services/bing-web-search
+              topicHref: /azure/cognitive-services/bing-web-search/overview
+            - name: Bing Yerel İşletme Arama
+              tocHref: /azure/cognitive-services/bing-local-business-search
+              topicHref: /azure/cognitive-services/bing-local-business-search/overview
         - name: Görüntü İşleme
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/
