@@ -1,23 +1,23 @@
 - name: Azure Bilişsel Arama Belgeleri
   href: index.yml
 - name: Genel Bakış
-  expanded: true
   items:
     - name: Azure Bilişsel Arama nedir?
       href: search-what-is-azure-search.md
     - name: Yenilikler
       href: whats-new.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
-    - name: Hizmet oluşturma
-      href: search-create-service-portal.md
     - name: Portal
       items:
+        - name: Hizmet oluşturma
+          href: search-create-service-portal.md
         - name: Dizin oluşturma
           href: search-get-started-portal.md
         - name: Uygulama oluşturma
           href: search-create-app-portal.md
-        - name: Bilişsel beceri kümesi oluşturma
+        - name: Beceri kümesi oluşturma
           href: cognitive-search-quickstart-blob.md
         - name: Bilgi deposu oluşturma
           href: knowledge-store-create-portal.md
@@ -99,61 +99,7 @@
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Planlama
-      items:
-        - name: Katman seçme
-          href: search-sku-tier.md
-        - name: Hizmet sınırlamaları
-          href: search-limits-quotas-capacity.md
-        - name: Kapasiteyi ayarlama
-          href: search-capacity-planning.md
-        - name: Performansı ölçeklendirme
-          href: search-performance-optimization.md
-        - name: Hizmeti bölgeler arasında taşıma
-          href: search-howto-move-across-regions.md
-        - name: Çok kiracılı mimari
-          href: search-modeling-multitenant-saas-applications.md
-    - name: Güvenlik
-      items:
-        - name: Güvenliğe genel bakış
-          href: search-security-overview.md
-        - name: Özel uç nokta oluşturma
-          href: service-create-private-endpoint.md
-        - name: Hizmet anahtar yönetimi
-          href: search-security-api-keys.md
-        - name: Rol tabanlı yönetici erişimi
-          href: search-security-rbac.md
-        - name: Güvenlik filtreleri
-          href: search-security-trimming-for-azure-search.md
-        - name: AAD kimlikleri üzerinde filtreleme
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Şifreleme anahtarlarını yönetme
-          href: search-security-manage-encryption-keys.md
-    - name: Geliştirme
-      items:
-        - name: API sürümleri
-          href: search-api-versions.md
-        - name: Önizleme özelliği listesi
-          href: search-api-preview.md
-        - name: .NET’te geliştirme
-          href: search-howto-dotnet-sdk.md
-        - name: SDK’yı yükseltme
-          items:
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Yönetim SDK'sı
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: REST API’yi yükseltme
-          href: search-api-migration.md
-    - name: Dizin oluşturma
+    - name: Dizinler ve yapılar oluşturma
       items:
         - name: Temel bir dizin oluşturma
           href: search-what-is-an-index.md
@@ -185,7 +131,7 @@
           href: search-howto-complex-data-types.md
         - name: İlişkisel verileri modelleme
           href: index-sql-relational-data.md
-    - name: Dizin oluşturma (içeri aktarma)
+    - name: Tüm verileri alma
       items:
         - name: Verileri içeri aktarmaya genel bakış
           href: search-what-is-data-import.md
@@ -197,16 +143,16 @@
           href: search-howto-large-index.md
         - name: Eş zamanlı güncelleştirmeleri tanımlama
           href: search-howto-concurrency.md
-    - name: Dizin oluşturucu kullanma
+    - name: Azure verilerini alma
       items:
         - name: Dizin oluşturucuları yapılandırma
           href: search-indexer-overview.md
-        - name: Alanları eşleme
-          href: search-indexer-field-mappings.md
         - name: Dizin oluşturucuları izleme
           href: search-howto-monitor-indexers.md
         - name: Zamanlama dizin oluşturucuları
           href: search-howto-schedule-indexers.md
+        - name: Alanları eşleme
+          href: search-indexer-field-mappings.md
         - name: Veri kaynakları
           items:
             - name: Azure Blobları
@@ -223,19 +169,19 @@
                   href: search-howto-index-csv-blobs.md
                 - name: JSON bloblarını dizine ekleme
                   href: search-howto-index-json-blobs.md
+            - name: Azure Tabloları
+              href: search-howto-indexing-azure-tables.md
             - name: Azure Cosmos DB
               href: search-howto-index-cosmosdb.md
             - name: Azure Data Lake Storage Gen2
               href: search-howto-index-azure-data-lake-storage.md
-            - name: Azure SQL Veritabanı
+            - name: SQL Veritabanı
               href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: Azure Table Storage
-              href: search-howto-indexing-azure-tables.md
             - name: SQL Yönetilen Örnekleri
               href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
             - name: SQL Server VM’leri
               href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-    - name: Yapay zeka zenginleştirme
+    - name: Yapay zeka kullanarak alma
       items:
         - name: Bilişsel Hizmetler kaynağı iliştirme
           href: cognitive-search-attach-cognitive-services.md
@@ -275,7 +221,7 @@
               href: knowledge-store-connect-power-bi.md
             - name: Yansıtma örnekleri
               href: knowledge-store-projections-examples.md
-    - name: Belgeleri sorgulama
+    - name: Sorgu
       items:
         - name: Sorgu türleri ve oluşturma
           href: search-query-overview.md
@@ -295,7 +241,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis (önizleme)
               href: search-more-like-this.md
-    - name: Filtreleri uygulama
+    - name: Filtre
       items:
         - name: Filtrelere genel bakış
           href: search-filters.md
@@ -309,24 +255,80 @@
           href: search-query-understand-collection-filters.md
         - name: Çok düzeyli model örneği
           href: search-example-adventureworks-multilevel-faceting.md
-    - name: Sonuçları işleme
+    - name: Sonuçlar
       items:
         - name: Sayfayla ilgili özellikler
           href: search-pagination-page-layout.md
         - name: İlgi düzeyini ayarlama (puanlama profilleri)
           href: index-add-scoring-profiles.md
-    - name: Hizmet yönetme
+    - name: Planlama
+      items:
+        - name: Katman seçme
+          href: search-sku-tier.md
+        - name: Hizmet sınırlamaları
+          href: search-limits-quotas-capacity.md
+        - name: Kapasiteyi ayarlama
+          href: search-capacity-planning.md
+        - name: Performansı ölçeklendirme
+          href: search-performance-optimization.md
+        - name: Çok kiracılı mimari
+          href: search-modeling-multitenant-saas-applications.md
+    - name: Geliştirme
+      items:
+        - name: API sürümleri
+          href: search-api-versions.md
+        - name: Önizleme özelliği listesi
+          href: search-api-preview.md
+        - name: .NET’te geliştirme
+          href: search-howto-dotnet-sdk.md
+        - name: SDK’yı yükseltme
+          items:
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Yönetim SDK'sı
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: REST API’yi yükseltme
+          href: search-api-migration.md
+    - name: Güvenlik
+      items:
+        - name: Güvenliğe genel bakış
+          href: search-security-overview.md
+        - name: Özel uç nokta oluşturma
+          href: service-create-private-endpoint.md
+        - name: Hizmet anahtar yönetimi
+          href: search-security-api-keys.md
+        - name: Rol tabanlı yönetici erişimi
+          href: search-security-rbac.md
+        - name: Güvenlik filtreleri
+          href: search-security-trimming-for-azure-search.md
+        - name: AAD kimlikleri üzerinde filtreleme
+          href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Şifreleme anahtarlarını yönetme
+          href: search-security-manage-encryption-keys.md
+    - name: Yönetme
       items:
         - name: Portal
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
-    - name: İzleme ve günlüğe kaydetme
+        - name: Hizmeti bölgeler arasında taşıma
+          href: search-howto-move-across-regions.md
+    - name: İzleme
       items:
         - name: Temel Konular
           href: search-monitor-usage.md
         - name: Tanılama günlüğüne kaydetme
           href: search-monitor-logs.md
+        - name: Tanılama günlüklerini görselleştirme
+          href: search-monitor-logs-powerbi.md
         - name: Sorgu etkinliğini izleme
           href: search-monitor-queries.md
         - name: Arama trafiği analizi

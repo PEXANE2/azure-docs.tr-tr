@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: Kotalar ve bölgesel sınırlar
       href: quotas-skus-regions.md
-    - name: ACS’den AKS’ye geçiş
-      href: acs-aks-migration.md
+    - name: AKS’ye geçiş
+      href: aks-migration.md
     - name: Desteklenen Kubernetes sürümü
       href: supported-kubernetes-versions.md
     - name: Konak işletim sisteminde Güvenliği Sağlamlaştırma
