@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Özel Uç Nokta oluşturma
-      items:
-        - name: Azure portal
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Özel Bağlantı hizmeti oluşturma
-      items:
-        - name: Azure portal
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: Özel Uç Nokta oluşturma - Portal
+      href: create-private-endpoint-portal.md
+    - name: Özel Uç Nokta oluşturma - PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: Özel Uç Nokta oluşturma - Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: Özel Bağlantı Hizmeti oluşturma - Portal
+      href: create-private-link-service-portal.md
+    - name: Özel Bağlantı Hizmeti oluşturma - PowerShell
+      href: create-private-link-service-powershell.md
+    - name: Özel Bağlantı Hizmeti oluşturma - Azure CLI
+      href: create-private-link-service-cli.md
 - name: Kavramlar
   items:
     - name: Özel Uç Nokta

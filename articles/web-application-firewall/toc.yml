@@ -50,6 +50,8 @@
       items:
         - name: Özel kurallar
           href: ./afds/waf-front-door-custom-rules.md
+        - name: Dışlama listesi
+          href: ./afds/waf-front-door-exclusion.md
         - name: İlke ayarları
           href: ./afds/waf-front-door-policy-settings.md
         - name: Coğrafi filtreleme

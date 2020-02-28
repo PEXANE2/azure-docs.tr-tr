@@ -366,6 +366,24 @@
           href: hybrid-use-benefit-licensing.md
         - name: Windows 10 için Çok Kiracılı Barındırma Kuralları’nı kullanma
           href: windows-desktop-multitenant-hosting-deployment.md
+    - name: Klasikten Azure Resource Manager’a geçiş
+      items:
+        - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Genel Bakış
+          href: migration-classic-resource-manager-overview.md
+        - name: Geçişe Derinlemesine Bakış
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Geçiş planlaması
+          href: migration-classic-resource-manager-plan.md
+        - name: PowerShell kullanarak geçirme
+          href: migration-classic-resource-manager-ps.md
+        - name: Sık karşılaşılan geçiş hataları
+          href: migration-classic-resource-manager-errors.md
+        - name: Geçiş için topluluk araçları
+          href: migration-classic-resource-manager-community-tools.md
+        - name: SSS
+          href: migration-classic-resource-manager-faq.md
     - name: VM’leri koruma
       items:
         - name: Öneriler
@@ -677,7 +695,7 @@
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
     - name: VM uzantılarını kullanma
       href: ../extensions/overview.md
-    - name: Sanal makineleri taşıma ve geçirme
+    - name: VM’leri taşıma
       items:
         - name: Aboneliği veya kaynak grubunu değiştirme
           href: move-vm.md
@@ -694,21 +712,6 @@
               href: aws-to-azure.md
             - name: Azure Site Recovery’yi kullanma
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Klasik’ten Azure Resource Manager’a geçiş
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: Geçişe Derinlemesine Bakış
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: Geçiş planlaması
-              href: migration-classic-resource-manager-plan.md
-            - name: PowerShell kullanarak geçirme
-              href: migration-classic-resource-manager-ps.md
-            - name: Sık karşılaşılan geçiş hataları
-              href: migration-classic-resource-manager-errors.md
-            - name: Geçiş için topluluk araçları
-              href: migration-classic-resource-manager-community-tools.md
-            - name: SSS
-              href: migration-classic-resource-manager-faq.md
 - name: Sorun giderme
   href: ../troubleshooting/index.yml
 - name: Başvuru

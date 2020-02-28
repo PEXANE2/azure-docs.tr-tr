@@ -88,6 +88,8 @@
         - name: Geliştirme yaşam döngüsü
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: Etkin öğrenme önerileriyle iyileştirme
+          href: Concepts/active-learning-suggestions.md
     - name: Bilgi bankasında sorgu yapma
       items:
         - name: Yanıt alma

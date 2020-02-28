@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: İş ve görev hatalarını denetleme
           href: batch-job-task-error-checking.md
+        - name: Batch hizmeti hatalarını algılama ve işleme
+          href: batch-retry-after-errors.md
     - name: Kaynak dosyalarını oluşturma
       href: resource-files.md
     - name: İş ve görev çıktılarını kalıcı hale getirme

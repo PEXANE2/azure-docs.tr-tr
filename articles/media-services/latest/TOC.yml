@@ -54,11 +54,13 @@
         - name: Depolama hesabı
           href: storage-account-concept.md
           displayName: Storage side encryption
-    - name: Karşıya yükleme
+    - name: Varlıklar
       items:
         - name: Varlıklar
           href: assets-concept.md
-          displayName: 'name, naming, file name'
+        - name: Varlıkları yönetme
+          href: manage-asset-concept.md
+          displayName: 'name, naming, file name, upload, output, download'
     - name: Dosyaları işleme
       items:
         - name: Dönüşümler ve İşler
@@ -300,6 +302,8 @@
       items:
         - name: Varlık yayımlama - CLI
           href: cli-publish-asset.md
+        - name: Sonuçları indirme
+          href: download-results-howto.md
         - name: Sinyal açıklayıcı ses
           href: signal-descriptive-audio-howto.md
 - name: Başvuru

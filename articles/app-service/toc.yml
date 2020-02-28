@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: Uygulama kopyalama
           href: app-service-web-app-cloning.md
-        - name: Kaynakları taşıma
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: Silinen App Service'i geri yükleme
           href: app-service-undelete.md
+    - name: Uygulama taşıma
+      items:
+        - name: Bölgeler arasında taşıma
+          href: manage-move-across-regions.md
+        - name: Abonelikleri taşıma
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: Arka plan görevleri çalıştırma
       items:
         - name: WebJob oluşturma

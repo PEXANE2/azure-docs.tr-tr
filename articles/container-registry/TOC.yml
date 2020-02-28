@@ -116,6 +116,8 @@
           items:
             - name: Tanılama ve denetim günlükleri (önizleme)
               href: container-registry-diagnostics-audit-logs.md
+            - name: Azure İlkesi kullanarak uyumluluğu denetleme (önizleme)
+              href: container-registry-azure-policy.md
         - name: Sorun giderme
           expanded: false
           items:

@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: Veri kümesindeki Sütunları seçme
       href: select-columns-in-dataset.md
+    - name: Verileri Bölme
+      href: split-data.md
 - name: Özellik seçimi
   items:
     - name: Filtre Tabanlı Özellik Seçimi
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: SVD Önerenini Eğitme
       href: train-svd-recommender.md
+- name: Anormallik algılama
+  items:
+    - name: PCA Tabanlı Anomali Algılama
+      href: pca-based-anomaly-detection.md
+    - name: Anomali Algılama Modeli Eğitme
+      href: train-anomaly-detection-model.md
 - name: Modül hataları ve sorun giderme
   href: designer-error-codes.md
