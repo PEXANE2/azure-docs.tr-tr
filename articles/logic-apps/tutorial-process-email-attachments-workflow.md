@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/20/2019
-ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/27/2020
+ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969115"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662887"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
 Azure Logic Apps, Azure hizmetleri, Microsoft hizmetleri ve diğer hizmet olarak yazılım (SaaS) uygulamalarının yanı sıra şirket içi sistemler üzerindeki verileri tümleştirmenize ve iş akışlarını otomatikleştirmenize yardımcı olur. Bu öğretici, gelen e-postaları ve ekleri işleyen bir [mantıksal uygulamayı](../logic-apps/logic-apps-overview.md) nasıl oluşturabileceğinizi gösterir. Bu mantıksal uygulama, e-posta içeriğini analiz eder, içeriği Azure depolama 'ya kaydeder ve bu içeriği gözden geçirmeye yönelik bildirimler gönderir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Kayıtlı e-postaları ve ekleri denetlemek için [Azure Depolama](../storage/common/storage-introduction.md)’yı ve Depolama Gezgini’ni ayarlama.
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Üst düzey tamamlanmış mantıksal uygulama](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * [Ücretsiz Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)’ni indirip yükleyin. Bu araç, depolama kapsayıcınızın doğru şekilde ayarlanıp ayarlanmadığını denetlemenize yardımcı olur.
 
-## <a name="sign-in-to-azure-portal"></a>Azure portalında oturum açın
+## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
 Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -61,7 +61,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
    | **Depolama hesabı adı** | <*Azure-depolama hesabı-adı*> | Depolama hesabınızın adı, 3-24 karakter içermeli ve yalnızca küçük harf ve rakam içermelidir. Bu örnek, "attachmentstorageacct" kullanır. |
    | **Konum** | *Azure-region*> < | Depolama hesabınızla ilgili bilgilerin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Performans** | Standart | Bu ayar, verileri depolamaya ilişkin medyayı ve desteklenen veri türlerini belirtir. Bkz. [Depolama hesabı türleri](../storage/common/storage-introduction.md#types-of-storage-accounts). |
-   | **Hesap türü** | Genel amaç | [Depolama hesabı türü](../storage/common/storage-introduction.md#types-of-storage-accounts) |
+   | **Hesap türü** | Genel amaçlı | [Depolama hesabı türü](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Çoğaltma** | Yerel olarak yedekli depolama (LRS) | Bu ayar, verilerinizin nasıl kopyalandığını, depolandığını, yönetildiğini ve eşitlendiğini belirtir. Bkz. [yerel olarak yedekli depolama (LRS): Azure depolama Için düşük maliyetli veri artıklığı](../storage/common/storage-redundancy-lrs.md). |
    | **Erişim katmanı (varsayılan)** | Geçerli ayarı koru. |
    ||||
@@ -70,7 +70,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
 
    | Ayar | Değer | Açıklama |
    |---------|-------|-------------|
-   | **Güvenli aktarım gereklidir** | Devre dışı | Bu ayar, bağlantılardan gelen istekler için gerekli güvenliği belirtir. Bkz. [Güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md). |
+   | **Güvenli aktarım gerekir** | Devre dışı | Bu ayar, bağlantılardan gelen istekler için gerekli güvenliği belirtir. Bkz. [Güvenli aktarım gerektir](../storage/common/storage-require-secure-transfer.md). |
    ||||
 
    Depolama hesabınızı oluşturmak için [Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) veya [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) uygulamalarını da kullanabilirsiniz.
@@ -89,7 +89,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
 
 1. E-posta ekleriniz için bir blob depolama kapsayıcısı oluşturun.
 
-   1. Depolama hesabı menüsünde **Genel bakış**'ı seçin. **Hizmetler**' ın altında **kapsayıcılar**' ı seçin.
+   1. Depolama hesabı menüsünde **Genel bakış**'ı seçin. Genel Bakış bölmesinde **kapsayıcılar**' ı seçin.
 
       ![Blob depolama kapsayıcısı ekleme](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
@@ -146,9 +146,9 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
    | **OS** | *işletim sisteminizi* <> | En sevdiğiniz işlev programlama dilinizi destekleyen işletim sistemini seçin. Bu örnek için **Windows**' u seçin. |
    | **Barındırma Planı** | Tüketim Planı | Bu ayar, işlev uygulamanızı çalıştırmak için bilgi işlem gücü gibi kaynakların nasıl ayrılacağını ve ölçekleneceğini belirler. Bkz. [barındırma planları karşılaştırması](../azure-functions/functions-scale.md). |
    | **Konum** | Batı ABD | Daha önce kullandığınız bölge |
-   | **Çalışma Zamanı Yığını** | Tercih edilen dil | En sevdiğiniz işlev programlama dilinizi destekleyen bir çalışma zamanı seçin. Ve işlevleri için C# .net F# ' i seçin. |
+   | **Çalışma zamanı yığını** | Tercih edilen dil | En sevdiğiniz işlev programlama dilinizi destekleyen bir çalışma zamanı seçin. Ve işlevleri için C# .net F# ' i seçin. |
    | **Depolama** | cleantextfunctionstorageacct | İşlev uygulamanız için bir depolama hesabı oluşturun. Yalnızca küçük harfleri ve rakamları kullanın. <p>**Note:** Bu depolama hesabı, işlev uygulamalarınızı içerir ve e-posta ekleri için önceden oluşturulmuş depolama hesabınızdan farklıdır. |
-   | **Application Insights** | Devre dışı bırakma | [Application Insights](../azure-monitor/app/app-insights-overview.md)ile uygulama izlemeyi etkinleştirir, ancak bu öğretici Için **devre dışı bırak** > **Uygula**' yı seçin. |
+   | **Application Insights** | Devre Dışı Bırak | [Application Insights](../azure-monitor/app/app-insights-overview.md)ile uygulama izlemeyi etkinleştirir, ancak bu öğretici Için **devre dışı bırak** > **Uygula**' yı seçin. |
    ||||
 
    İşlev uygulamanız dağıtımdan sonra otomatik olarak açılmazsa, [Azure Portal](https://portal.azure.com) arama kutusunda **işlev uygulaması**bulun ve seçin. **İşlev uygulaması**altında, işlev uygulamanızı seçin.
@@ -223,24 +223,24 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
-1. Azure giriş sayfasında, arama kutusunda **Logic Apps**bulun ve seçin.
+1. Azure üst düzey arama kutusuna `logic apps`girin ve **Logic Apps**' ı seçin.
 
    !["Logic Apps" bul ve Seç](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
-1. **Logic Apps** sayfasında **Ekle**' yi seçin.
+1. **Logic Apps** bölmesinde **Ekle**' yi seçin.
 
-   ![Yeni mantıksal uygulama ekle](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![Yeni mantıksal uygulama ekle](./media/tutorial-process-email-attachments-workflow/add-new-logic-app.png)
 
-1. **Mantıksal uygulama oluştur** bölümünde, mantıksal uygulamanızın ayrıntılarını burada gösterildiği gibi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
+1. **Mantıksal uygulama** bölmesinde, mantıksal uygulamanız hakkındaki ayrıntıları burada gösterildiği gibi sağlayın. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin.
 
    ![Mantıksal uygulama bilgilerini sağlama](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
    | Ayar | Değer | Açıklama |
    | ------- | ----- | ----------- |
-   | **Adı** | LA-ProcessAttachment | Mantıksal uygulamanızın adı |
    | **Abonelik** | <*your-Azure-subscription-name*> | Daha önce kullandığınız Azure aboneliği |
    | **Kaynak grubu** | LA-Tutorial-RG | Daha önce kullandığınız Azure kaynak grubu |
-   | **Konum** | Batı ABD | Daha önce kullandığınız bölge |
+   | **Mantıksal uygulama adı** | LA-ProcessAttachment | Mantıksal uygulamanızın adı |
+   | **Konumu seçin** | Batı ABD | Daha önce kullandığınız bölge |
    | **Log Analytics** | Kapalı | Bu öğretici için **kapalı** ayarını seçin. |
    ||||
 
@@ -258,7 +258,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Arama kutusuna tasarımcıda filtreniz olarak `when new email arrives` girin. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde - <*e-posta-sağlayıcınız*>**
 
-   Örneğin:
+   Örnek:
 
    ![E-posta sağlayıcısı için şu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -277,8 +277,8 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
       | Ayar | Değer | Açıklama |
       | ------- | ----- | ----------- |
       | **Klasör** | Gelen Kutusu | Denetlenecek e-posta klasörü |
-      | **Eki Var** | Evet | Yalnızca ek içeren e-postaları alın. <p>**Not:** Tetikleyici, hesabınızdaki e-postaları kaldırmaz, yalnızca yeni iletileri denetler ve yalnızca konu filtresiyle eşleşen e-postaları işler. |
-      | **Ekleri Dahil Et** | Evet | Yalnızca ekleri denetlemek yerine, iş akışınız için giriş olarak ekleri alın. |
+      | **Eki Var** | Yes | Yalnızca ek içeren e-postaları alın. <p>**Not:** Tetikleyici, hesabınızdaki e-postaları kaldırmaz, yalnızca yeni iletileri denetler ve yalnızca konu filtresiyle eşleşen e-postaları işler. |
+      | **Ekleri Dahil Et** | Yes | Yalnızca ekleri denetlemek yerine, iş akışınız için giriş olarak ekleri alın. |
       | **Aralık** | 1 | Denetimler arasında beklenecek aralık sayısı |
       | **Sıklık** | Dakika | Denetimler arası her aralık için zaman birimi |
       ||||
@@ -667,7 +667,15 @@ Tebrikler, farklı Azure hizmetleri arasında görevleri otomatikleştiren ve ba
 
 Artık bu örneğe ihtiyacınız yoksa mantıksal uygulamanızı ve ilgili kaynakları içeren kaynak grubunu silin.
 
-1. Azure menüsünde **Kaynak grupları**'nı seçin. Kaynak grupları listesinde, Bu öğreticinin kaynak grubunu seçin. **Genel bakış** bölmesinde **kaynak grubunu sil**' i seçin.
+1. Üst düzey Azure Arama kutusuna `resources groups`girin ve **kaynak grupları**' nı seçin.
+
+   !["Kaynak grupları" nı bulun ve seçin](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
+
+1. **Kaynak grupları** listesinde, Bu öğreticinin kaynak grubunu seçin. 
+
+   ![Öğretici için kaynak grubunu bulun](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
+
+1. **Genel bakış** bölmesinde **kaynak grubunu sil**' i seçin.
 
    ![Mantıksal uygulama kaynak grubunu silme](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 

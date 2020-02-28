@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de özel Günlükler toplayın | Microsoft Docs
 description: Azure Izleyici, hem Windows hem de Linux bilgisayarlardaki metin dosyalarından olayları toplayabilir.  Bu makalede, Azure Izleyici 'de oluşturdukları kayıtların yeni bir özel günlüğü ve ayrıntılarının nasıl tanımlanacağı açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670602"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Izleyici 'de özel Günlükler
 
@@ -47,7 +46,7 @@ Toplanacak günlük dosyaları aşağıdaki ölçütlere uymalıdır.
 ## <a name="defining-a-custom-log"></a>Özel bir günlük tanımlama
 Özel bir günlük dosyası tanımlamak için aşağıdaki yordamı kullanın.  Özel günlük ekleme örneğine ilişkin bir anlatım için bu makalenin sonuna gidin.
 
-### <a name="step-1-open-the-custom-log-wizard"></a>1\. Adım Özel günlük Sihirbazı 'Nı açın
+### <a name="step-1-open-the-custom-log-wizard"></a>1\. Adım. Özel günlük Sihirbazı 'Nı açın
 Özel günlük Sihirbazı Azure portal çalışır ve toplanacak yeni bir özel günlük tanımlamanızı sağlar.
 
 1. Azure portal, **Gelişmiş ayarlar**> çalışma alanınız > **Log Analytics çalışma alanları** ' nı seçin.
@@ -55,7 +54,7 @@ Toplanacak günlük dosyaları aşağıdaki ölçütlere uymalıdır.
 3. Varsayılan olarak, tüm yapılandırma değişiklikleri tüm aracılara otomatik olarak gönderilir. Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.
 4. Özel günlük Sihirbazı 'Nı açmak için **Ekle +** ' ye tıklayın.
 
-### <a name="step-2-upload-and-parse-a-sample-log"></a>2\. Adım. Örnek günlük yükleme ve ayrıştırma
+### <a name="step-2-upload-and-parse-a-sample-log"></a>2\. Adım Örnek günlük yükleme ve ayrıştırma
 Özel günlüğün bir örneğini karşıya yükleyerek başlayabilirsiniz.  Sihirbaz, doğrulamanız için bu dosyadaki girişleri ayrıştırır ve görüntüler.  Azure Izleyici, her bir kaydı tanımlamak için belirttiğiniz sınırlayıcıyı kullanır.
 
 **Yeni satır** varsayılan sınırlayıcıdır ve her satırda tek bir girişi olan günlük dosyaları için kullanılır.  Satır, kullanılabilir biçimlerden birindeki tarih ve saat ile başlıyorsa, birden fazla satıra yayılan girdileri destekleyen bir **zaman damgası** sınırlayıcısı belirtebilirsiniz.
@@ -68,7 +67,7 @@ Zaman damgası sınırlayıcısı kullanılıyorsa, Azure Izleyici 'de depolanan
 4. Yeni bir kaydı tanımlamak için kullanılan sınırlayıcıyı değiştirin ve günlük dosyanızdaki kayıtları en iyi şekilde tanımlayan sınırlayıcıyı seçin.
 5. **İleri**’ye tıklayın.
 
-### <a name="step-3-add-log-collection-paths"></a>3\. Adım. Günlük koleksiyonu yolları Ekle
+### <a name="step-3-add-log-collection-paths"></a>3\. Adım Günlük koleksiyonu yolları Ekle
 Aracıda özel günlüğü bulabilecekleri bir veya daha fazla yol tanımlamalısınız.  Günlük dosyası için belirli bir yol ve ad sağlayabilir ya da ad için joker karakter içeren bir yol belirtebilirsiniz. Bu, her gün yeni bir dosya oluşturan uygulamaları veya bir dosya belirli bir boyuta ulaştığında destekler. Tek bir günlük dosyası için birden çok yol da sağlayabilirsiniz.
 
 Örneğin, bir uygulama, log20100316. txt ' de olduğu gibi ada dahil edilen tarihle her gün bir günlük dosyası oluşturabilir. Bu tür bir günlük için bir düzen, uygulamanın adlandırma düzenini takip eden herhangi bir günlük dosyasına uygulanabilecek *günlük\*. txt* olabilir.
@@ -123,7 +122,7 @@ Günlük girişinin tüm içeriği **rawData**adlı tek bir özelliğe yazılır
 | TimeGenerated |Kaydın Azure Izleyici tarafından toplandığı tarih ve saat.  Günlük zaman tabanlı bir sınırlayıcı kullanıyorsa, bu, girdiden toplanan süredir. |
 | SourceSystem |Kaydın toplandığı aracının türü. <br> OpsManager – Windows Aracısı, doğrudan bağlantı veya System Center Operations Manager <br> Linux – tüm Linux aracıları |
 | RawData |Toplanan girişin tam metni. Büyük olasılıkla, [Bu verileri tek tek özelliklerde ayrıştırmaya](../log-query/parse-text.md)isteyeceksiniz. |
-| ManagementGroupName |System Center Işlemleri için yönetim grubunun adı aracıları yönetme.  Diğer aracılar için AOI - budur\<çalışma alanı kimliği\> |
+| ManagementGroupName |System Center Işlemleri için yönetim grubunun adı aracıları yönetme.  Diğer aracılar için bu, AOI-\<çalışma alanı KIMLIĞIDIR\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Özel günlük ekleme hakkında örnek yönergeler
@@ -170,4 +169,4 @@ Verilerinizin özel günlüklerle toplanamadığı durumlarda, aşağıdaki alte
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * İçeri aktarılan her günlük girişini birden çok özelliğe ayrıştırmaya yönelik yöntemler için bkz. [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md) .
-* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.

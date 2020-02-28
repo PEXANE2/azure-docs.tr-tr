@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights Aracısı API başvurusu
 description: Aracı API başvurusunu Application Insights. Get-Applicationınsiısmonitoringstatus. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, sanal makinelerde veya Azure üzerinde ASP.NET web uygulamaları ile çalışır.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899681"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671265"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights aracı API 'SI: Get-Applicationınsiısmonitoringstatus
 
@@ -31,7 +29,7 @@ Bu cmdlet, izleme için gerekli olan anahtar dosyaları hakkında sürüm bilgil
 
 ### <a name="example-application-status"></a>Örnek: uygulama durumu
 
-Web sitelerinin izleme durumunu göstermek için `Get-ApplicationInsightsMonitoringStatus` komutunu çalıştırın.
+Web sitelerinin izleme durumunu göstermek için komutu `Get-ApplicationInsightsMonitoringStatus` çalıştırın.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -77,7 +75,7 @@ Bu örnekte;
 
 ### <a name="example-powershell-module-information"></a>Örnek: PowerShell modülü bilgileri
 
-Geçerli modülle ilgili bilgileri göstermek için `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` komutunu çalıştırın:
+Geçerli modülle ilgili bilgileri göstermek için komutu `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` çalıştırın:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -133,7 +131,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Tüm dll 'Lerin yüklenip yüklenmediğini görmek için, izlenen bilgisayarda işlemi inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Komutu çalıştırın `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+Komutu `Get-ApplicationInsightsMonitoringStatus -InspectProcess`çalıştırın:
 
 
 ```

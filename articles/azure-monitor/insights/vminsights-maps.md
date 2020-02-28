@@ -1,26 +1,25 @@
 ---
 title: VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme (Önizleme)
 description: Map bir VM'ler için Azure İzleyici özelliğidir. Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, farklı senaryolarda harita özelliğinin nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450717"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670755"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici (Önizleme) eşleme özelliğini kullanın
 VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 
 
 VM'ler için Azure İzleyici yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici etkinleştirme](vminsights-enable-overview.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="introduction-to-the-map-experience"></a>Harita deneyimine giriş
 Harita deneyimine girmeden önce, bilgileri nasıl sunduklarını ve görselleştirir. Eşleme özelliğini doğrudan bir VM 'den veya Azure Izleyici 'den seçip harita özelliği tutarlı bir deneyim sunar. Tek fark Azure Izleyici 'den, bir haritanın çok katmanlı bir uygulamanın veya kümenin tüm üyelerini gösterdiği.
@@ -121,7 +120,7 @@ Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların ge�
 
 Azure Izleyici 'de, eşleme özelliği sanal makinelerinizin ve bağımlılıklarınızın genel bir görünümünü sağlar. Azure Izleyici 'deki harita özelliğine erişmek için:
 
-1. Azure portalında **İzleyici**. 
+1. Azure portal, **İzle**' yi seçin. 
 2. **Öngörüler** bölümünde **sanal makineler (Önizleme)** öğesini seçin.
 3. **Harita** sekmesini seçin.
 

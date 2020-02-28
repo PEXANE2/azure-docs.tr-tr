@@ -1,18 +1,17 @@
 ---
 title: Değerlendirme için VM'ler için Azure İzleyici (Önizleme) etkinleştirme | Microsoft Docs
 description: Tek bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde VM'ler için Azure İzleyici değerlendirmeyi öğrenin.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400590"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664620"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Değerlendirme için VM'ler için Azure İzleyici (Önizleme) etkinleştir
 
@@ -23,19 +22,19 @@ Başlamadan önce [önkoşulları](vminsights-enable-overview.md) gözden geçir
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>Tek bir Azure VM için izlemeyi etkinleştirme
 Azure VM 'nizi izlemeyi etkinleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Seçin **sanal makineler**.
+1. **Sanal makineleri**seçin.
 
 1. Listeden bir VM seçin.
 
-1. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
+1. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
 
-1. Üzerinde **Insights (Önizleme)** sayfasında **şimdi deneyin**.
+1. **Öngörüler (Önizleme)** sayfasında **Şimdi dene**' yi seçin.
 
     ![Bir VM için sanal makineler için Azure İzleyici etkinleştir](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. Üzerinde **Azure İzleyici İçgörüler ekleme** sayfasında mevcut bir Log Analytics varsa, aynı abonelikte çalışma alanı, aşağı açılan listeden seçin.  
+1. **Azure Izleyici öngörüleri ekleme** sayfasında, aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, açılır listeden seçin.  
 
     Liste, varsayılan çalışma alanını ve VM 'nin abonelikte dağıtıldığı konumu önceden seçer. 
 
@@ -50,7 +49,7 @@ Azure VM 'nizi izlemeyi etkinleştirmek için:
 
 Azure sanal makine ölçek kümesini izlemeyi etkinleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Sanal makine ölçek kümelerini**seçin.
 

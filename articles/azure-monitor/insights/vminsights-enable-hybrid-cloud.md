@@ -1,18 +1,17 @@
 ---
 title: Karma ortam için Azure Izleyicisini (Önizleme) etkinleştirme | Microsoft Docs
 description: Bu makalede, bir veya daha fazla sanal makine içeren karma bulut ortamı için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969676"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669633"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Karma ortam için VM'ler için Azure İzleyici (Önizleme) etkinleştirme
 
@@ -20,7 +19,7 @@ ms.locfileid: "75969676"
 
 Bu makalede, veri merkezinizde veya diğer bulut ortamınızda barındırılan sanal makineler veya fiziksel bilgisayarlar için VM'ler için Azure İzleyici (Önizleme) nasıl etkinleştirileceği açıklanır. Bu işlemin sonunda, ortamınızdaki sanal makinelerinizi izlemeye başarıyla başlacaksınız ve performans veya kullanılabilirlik sorunlarıyla karşılaşmadığını öğrenirsiniz.
 
-Başlamadan önce, [önkoşulları](vminsights-enable-overview.md) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun. Dağıtım yöntemleri ve gereksinimleri gözden [Log Analytics Linux ve Windows Aracısı](../../log-analytics/log-analytics-agent-overview.md).
+Başlamadan önce, [önkoşulları](vminsights-enable-overview.md) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun. [Linux ve Windows aracısı Log Analytics](../../log-analytics/log-analytics-agent-overview.md)için gereksinimleri ve dağıtım yöntemlerini gözden geçirin.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -31,7 +30,7 @@ Bu görevi tamamlamaya yönelik adımlar şu şekilde özetlenmiştir:
 
 1. Windows veya Linux için Log Analytics Aracısı 'nı yükler. Aracıyı yüklemeden önce, sistem önkoşullarını ve dağıtım yöntemlerini anlamak için [Log Analytics aracısına genel bakış](../platform/log-analytics-agent.md) makalesini gözden geçirin.
 
-2. Vm'leri harita bağımlılık aracısı için Azure İzleyicisi'ni yükleyip [Windows](https://aka.ms/dependencyagentwindows) veya [Linux](https://aka.ms/dependencyagentlinux).
+2. [Windows](https://aka.ms/dependencyagentwindows) veya [Linux](https://aka.ms/dependencyagentlinux)için VM'ler için Azure izleyici Map bağımlılık aracısını indirip yükleyin.
 
 3. Performans sayaçlarını toplamayı etkinleştirin.
 
@@ -42,10 +41,10 @@ Bu görevi tamamlamaya yönelik adımlar şu şekilde özetlenmiştir:
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows üzerinde bağımlılık aracısını yükleme
 
-Bağımlılık aracısını el ile Windows bilgisayarlarda çalıştırarak yükleyebilirsiniz `InstallDependencyAgent-Windows.exe`. Bu yürütülebilir dosya hiçbir seçenek olmadan çalıştırırsanız, aracıyı etkileşimli olarak yüklemek için izlemeniz gereken bir Kurulum Sihirbazı başlar.
+`InstallDependencyAgent-Windows.exe`çalıştırarak, Windows bilgisayarlarına bağımlılık aracısını el ile yükleyebilirsiniz. Bu yürütülebilir dosya hiçbir seçenek olmadan çalıştırırsanız, aracıyı etkileşimli olarak yüklemek için izlemeniz gereken bir Kurulum Sihirbazı başlar.
 
 >[!NOTE]
->*Yönetici* ayrıcalıkları yükleyin veya aracıyı kaldırmak için gereklidir.
+>Aracıyı yüklemek veya kaldırmak için *yönetici* ayrıcalıkları gerekir.
 
 Aşağıdaki tabloda kurulum tarafından desteklenen komut satırı aracı için parametreleri vurgular.
 
@@ -56,11 +55,11 @@ Aşağıdaki tabloda kurulum tarafından desteklenen komut satırı aracı için
 
 Örneğin, yükleme programını `/?` parametresiyle çalıştırmak için **InstallDependencyAgent-Windows. exe/?** girin.
 
-Windows bağımlılık aracısını için dosyalar yüklenir *C:\Program Files\Microsoft bağımlılık aracısını* varsayılan olarak. Kurulum tamamlandıktan sonra bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%Programfiles%\Microsoft bağımlılık Agent\logs*.
+Windows bağımlılık aracısının dosyaları varsayılan olarak *C:\Program Files\Microsoft Dependency Agent* 'e yüklenir. Kurulum tamamlandıktan sonra bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
 
 ## <a name="install-the-dependency-agent-on-linux"></a>Linux üzerinde bağımlılık aracısını yükleme
 
-Bağımlılık Aracısı'nı Linux sunuculardan yüklü *InstallDependencyAgent Linux64.bin*, kendi kendine ayıklanan bir ikili içeren bir kabuk betiği. Kullanarak dosyayı çalıştırabilirsiniz `sh` veya yürütme izinleri dosya için.
+Bağımlılık Aracısı, kendi kendine ayıklanan ikiliye sahip bir kabuk betiği olan *InstallDependencyAgent-linux64. bin*' dan Linux sunucularına yüklenir. Dosyayı `sh` kullanarak çalıştırabilir veya dosya üzerinde yürütme izinleri ekleyebilirsiniz.
 
 >[!NOTE]
 > Aracıyı yüklemek veya yapılandırmak için kök erişimi gerekir.
@@ -76,7 +75,7 @@ Bağımlılık Aracısı'nı Linux sunuculardan yüklü *InstallDependencyAgent 
 
 `sh InstallDependencyAgent-Linux64.bin`komutunu çalıştırarak Linux bağımlılık aracısını kök olarak yükler.
 
-Bağımlılık Aracısı'nı başlatmak başarısız olursa, ayrıntılı hata bilgileri için günlükleri denetleyin. Linux aracıları, günlük dizindir */var/opt/microsoft/dependency-agent/log*.
+Bağımlılık Aracısı'nı başlatmak başarısız olursa, ayrıntılı hata bilgileri için günlükleri denetleyin. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log*olur.
 
 Bağımlılık Aracısı'nı dosyaları aşağıdaki dizinlerde yerleştirilir:
 
@@ -146,7 +145,7 @@ configuration ServiceMap {
 ## <a name="enable-performance-counters"></a>Performans sayaçları sağlar
 
 Çözüm tarafından başvurulan Log Analytics çalışma alanı zaten çözüm için gerekli performans sayaçları toplamak için yapılandırılmamışsa, bunları etkinleştirmeniz gerekir. Bunu iki şekilde yapabilirsiniz:
-* İçinde açıklandığı şekilde el ile [Log analytics'te Windows ve Linux performans veri kaynakları](../../azure-monitor/platform/data-sources-performance-counters.md)
+* [Windows ve Linux performans verileri kaynaklarında](../../azure-monitor/platform/data-sources-performance-counters.md) açıklandığı gibi el ile Log Analytics
 * [Azure PowerShell galerisinde](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) bulunan bir PowerShell betiğini indirip çalıştırarak
 
 ## <a name="deploy-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici dağıtma
@@ -155,9 +154,9 @@ Bu yöntem, Log Analytics çalışma alanınızda çözüm bileşenlerini etkinl
 
 Bir şablon kullanarak kaynakların nasıl dağıtılacağını bilmiyorsanız, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için çalıştırma `az --version`. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Oluşturma ve bir şablonu yürütme
 
@@ -207,9 +206,9 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
     }
     ```
 
-1. Bu dosyayı farklı Kaydet *installsolutionsforvminsights.json* yerel bir klasöre.
+1. Bu dosyayı *ınstallsolutionsforvminsıghts. JSON* olarak yerel bir klasöre kaydedin.
 
-1. *Çalışmaadı*, *Resourcegroupname*ve *WorkspaceLocation*değerlerini yakalayın. *Çalışmaadı* değeri, Log Analytics çalışma alanınızın adıdır. Değeri *WorkspaceLocation* çalışma alanı içinde tanımlanan bölgedir.
+1. *Çalışmaadı*, *Resourcegroupname*ve *WorkspaceLocation*değerlerini yakalayın. *Çalışmaadı* değeri, Log Analytics çalışma alanınızın adıdır. *WorkspaceLocation* değeri, çalışma alanının tanımlandığı bölgedir.
 
 1. Aşağıdaki PowerShell komutunu kullanarak bu şablonu dağıtmaya hazırsınız:
 
@@ -232,9 +231,9 @@ Bağımlılık aracısı yüklemeniz başarılı oldu, ancak bilgisayarınızı 
 
 1. Bağımlılık Aracısı'nı başarıyla yüklü mü? Bu hizmet yüklü olup olmadığını denetliyor ve çalıştırarak doğrulayabilirsiniz.
 
-    **Windows**: "Microsoft Dependency agent" adlı hizmet için Ara
+    **Windows**: "Microsoft bağımlılık Aracısı" adlı hizmeti arayın.
 
-    **Linux**: çalışan işlemi için "microsoft-bağımlılık-agent." arayın
+    **Linux**: "Microsoft-Dependency-Agent" çalıştırma işlemini arayın.
 
 2. [Log Analytics ücretsiz fiyatlandırma katmanında](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)misiniz? Ücretsiz plan, beş adede kadar benzersiz bilgisayara izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm bilgisayarlar haritada gösterilmez.
 
@@ -244,7 +243,7 @@ Bağımlılık aracısı yüklemeniz başarılı oldu, ancak bilgisayarınızı 
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    Bir veya daha fazla sonuç döndürüyor mu? Verilerin güncel mi? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve hizmetle iletişim kuruyor. Aksi takdirde, sunucudaki aracı denetleyin: [Windows sorun giderme için Log Analytics aracısını](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics aracısını](../platform/agent-linux-troubleshoot.md).
+    Bir veya daha fazla sonuç döndürüyor mu? Verilerin güncel mi? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve hizmetle iletişim kuruyor. Aksi takdirde, sunucunuzdaki aracıyı denetleyin: [Windows sorun giderme için Log Analytics Aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics Aracısı](../platform/agent-linux-troubleshoot.md).
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Bilgisayar haritada görünüyor ancak işleme sahip değil
 
@@ -257,6 +256,6 @@ C:\Program Files\Microsoft bağımlılık Agent\logs\wrapper.log dosyası (Windo
 
 Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir.
 
-- Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md).
+- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
 
 - VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).

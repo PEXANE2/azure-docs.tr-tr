@@ -1,18 +1,17 @@
 ---
 title: VM'ler için Azure İzleyici etkinleştir (Önizleme) genel bakış | Microsoft Docs
 description: VM'ler için Azure İzleyici dağıtmayı ve yapılandırmayı öğrenin. Sistem gereksinimlerini öğrenin.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400612"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669582"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>VM'ler için Azure İzleyici etkinleştir (Önizleme) genel bakış
 
@@ -25,7 +24,7 @@ VM'ler için Azure İzleyici ayarlamak için:
 * İki etkinleştirmek veya PowerShell kullanarak belirtilen abonelik veya kaynak grubu üzerinde daha fazla Azure sanal makineleri veya sanal makine ölçek kümeleri.
 * Şirket ağınızda veya diğer bulut ortamınızda barındırılan VM 'Leri veya fiziksel bilgisayarları izlemek için VM'ler için Azure İzleyici etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki bölümlerde yer alan bilgiler anladığınızdan emin olun. 
 
@@ -60,7 +59,7 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 >
 
 Bir çalışma alanınız yoksa, aşağıdaki kaynaklardan birini kullanarak bir tane oluşturabilirsiniz:
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure CLı](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure portalı](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
@@ -99,12 +98,12 @@ Aşağıdaki tabloda VM'ler için Azure İzleyici desteklediği Windows ve Linux
 |SUSE Linux Enterprise Server (SLES) 12 | X | X |
 |Debian 9.4 sürümünden, 8 | X<sup>1</sup> | |
 
-<sup>1</sup> VM'ler için Azure İzleyici performans özelliği yalnızca Azure İzleyici'deki kullanılabilir. Doğrudan Azure VM 'nin sol bölmesinden kullanılamaz.
+<sup>1</sup> VM'ler için Azure izleyici performans özelliği yalnızca Azure izleyici 'den kullanılabilir. Doğrudan Azure VM 'nin sol bölmesinden kullanılamaz.
 
 >[!NOTE]
 >Linux işletim sisteminde:
 > - Yalnızca varsayılan ve SMP Linux çekirdek sürümleri desteklenir.
-> - Fiziksel Adres Uzantısı (PAE) ve Xen, desteklenmeyen bir Linux dağıtımı için gibi standart olmayan çekirdek serbest bırakır. Örneğin, bir sürüm dizesi sistemiyle *2.6.16.21-0.8-xen* desteklenmiyor.
+> - Fiziksel Adres Uzantısı (PAE) ve Xen, desteklenmeyen bir Linux dağıtımı için gibi standart olmayan çekirdek serbest bırakır. Örneğin, *2.6.16.21-0.8-Xen* yayın dizesiyle bir sistem desteklenmez.
 > - Standart kernels 'lerin yeniden derlemesi dahil olmak üzere özel kernels desteklenmez.
 > - CentOSPlus Kernel destekleniyor.
 > - Linux çekirdeğinin Spectre güvenlik açığı için düzeltme eki uygulanmış olması gerekir. Daha fazla ayrıntı için lütfen Linux dağıtım satıcınıza başvurun.
@@ -137,7 +136,7 @@ Aşağıdaki tabloda VM'ler için Azure İzleyici desteklediği Windows ve Linux
 |:--|:--|
 | 18,04 | 5,0 (Azure tarafından ayarlanmış çekirdek dahil)<br>4,18 *<br>4,15* |
 | 16.04.3 | 4,15. * |
-| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
+| 16.04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 kuruluş sunucusu
 
@@ -166,10 +165,10 @@ Karma bir ortamda, bağımlılık aracısını el ile indirip yükleyebilir veya
 
 Aşağıdaki tabloda, karma bir ortamda, eşleme özelliğini destekleyen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı kaynak | Desteklenen | Açıklama |
+| Bağlı kaynak | Destekleniyor | Açıklama |
 |:--|:--|:--|
-| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Hayır | |
 
 Bağımlılık aracısını şu konumlardan indirebilirsiniz:
@@ -194,7 +193,7 @@ Bu tabloda açıklanan yöntemlerden birini kullanarak VM'ler için Azure İzley
 | Tek Azure VM veya sanal makine ölçek kümesi | [VM 'den etkinleştir](vminsights-enable-single-vm.md) | Doğrudan VM veya sanal makine ölçek kümesinden **Öngörüler (Önizleme)** öğesini seçerek tek bir Azure VM 'yi etkinleştirebilirsiniz. |
 | Birden çok Azure VM veya sanal makine ölçek kümesi | [Azure Ilkesi aracılığıyla etkinleştir](vminsights-enable-at-scale-policy.md) | Azure Ilkesi ve kullanılabilir ilke tanımlarını kullanarak birden fazla Azure VM 'yi etkinleştirebilirsiniz. |
 | Birden çok Azure VM veya sanal makine ölçek kümesi | [Azure PowerShell veya Azure Resource Manager şablonları aracılığıyla etkinleştir](vminsights-enable-at-scale-powershell.md) | Azure PowerShell veya Azure Resource Manager şablonlarını kullanarak, belirtilen bir abonelik veya kaynak grubu genelinde birden fazla Azure VM veya sanal makine ölçek kümesi etkinleştirebilirsiniz. |
-| Hibrit bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtım yapabilirsiniz. |
+| Karma bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtım yapabilirsiniz. |
 
 ## <a name="performance-counters-enabled"></a>Performans sayaçları etkinleştirildi 
 
@@ -207,7 +206,7 @@ VM'ler için Azure İzleyici, kullandığı performans sayaçlarını toplamak i
 
 |Nesne adı |Sayaç adı |
 |------------|-------------|
-|MantıksalDisk |% Boş alan |
+|MantıksalDisk |Boş Alan Yüzdesi |
 |MantıksalDisk |Ortalama Disk sn/okuma |
 |MantıksalDisk |Ortalama Disk sn/Aktarım |
 |MantıksalDisk |Ortalama Disk sn/yazma |
@@ -218,10 +217,10 @@ VM'ler için Azure İzleyici, kullandığı performans sayaçlarını toplamak i
 |MantıksalDisk |Disk Yazma Bayt/sn |
 |MantıksalDisk |Disk Yazma/sn |
 |MantıksalDisk |Boş megabayt |
-|Hafıza |Kullanılabilir MBayt |
-|Ağ bağdaştırıcısı |Alınan Bayt/sn |
-|Ağ bağdaştırıcısı |Gönderilen bayt/sn |
-|İşlemci |% İşlemci zamanı |
+|Bellek |Kullanılabilir MBayt |
+|Ağ Bağdaştırıcısı |Alınan Bayt/sn |
+|Ağ Bağdaştırıcısı |Gönderilen bayt/sn |
+|İşlemci |% İşlemci Zamanı |
 
 ### <a name="linux-performance-counters"></a>Linux performans sayaçları
 
@@ -235,10 +234,10 @@ VM'ler için Azure İzleyici, kullandığı performans sayaçlarını toplamak i
 |Mantıksal Disk |Disk Yazma/sn |
 |Mantıksal Disk |Boş megabayt |
 |Mantıksal Disk |Mantıksal Disk Bayt/sn |
-|Hafıza |Kullanılabilir MBayt belleği |
+|Bellek |Kullanılabilir MBayt belleği |
 |Ağ |Alınan toplam bayt sayısı |
 |Ağ |Aktarılan toplam bayt |
-|İşlemci |% İşlemci zamanı |
+|İşlemci |% İşlemci Zamanı |
 
 ## <a name="management-packs"></a>Yönetim paketleri
 
@@ -252,7 +251,7 @@ Microsoft, Azure İzleyici hizmeti kullanımınız vasıtasıyla kullanım ve pe
 
 Doğru ve verimli sorun giderme özellikleri sağlamak için, Map özelliği yazılımınızın yapılandırmasıyla ilgili verileri içerir. Veriler, işletim sistemi ve sürümü, IP adresi, DNS adı ve iş istasyonu adı gibi bilgiler sağlar. Microsoft, ad, adres veya diğer iletişim bilgilerinizi toplamaz.
 
-Veri toplama ve kullanım hakkında daha fazla bilgi için bkz: [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132).
+Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132)' ne bakın.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -260,4 +259,4 @@ VM 'niz için izlemeyi etkinleştirmiş olduğunuza göre, izleme bilgileri VM'l
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Performans izleme özelliğini nasıl kullanacağınızı öğrenmek için bkz. [VM'ler için Azure izleyici performansını görüntüleme](vminsights-performance.md). Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md).
+Performans izleme özelliğini nasıl kullanacağınızı öğrenmek için bkz. [VM'ler için Azure izleyici performansını görüntüleme](vminsights-performance.md). Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).

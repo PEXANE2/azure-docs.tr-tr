@@ -2,18 +2,16 @@
 title: Azure Izleyici 'de günlük uyarıları
 description: Azure uyarıları için belirttiğiniz analitik sorgu Koşulları karşılandığında e-postaları, bildirimleri, çağrı Web siteleri URL 'Lerini (Web kancaları) veya Otomasyonu tetikleyin.
 author: yanivlavi
-services: monitoring
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396489"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665230"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -31,7 +29,7 @@ Belirtilen günlük sorgularını düzenli aralıklarla otomatik olarak çalış
 
 Günlük arama kuralları aşağıdaki Ayrıntılar tarafından tanımlanır:
 
-- **Günlük sorgusu**.  Uyarı kuralı her tetiklendiğinde çalıştırılan sorgu.  Bu sorgu tarafından döndürülen kayıtlar, bir uyarının tetiklenip tetiklenmeyeceğini tespit etmek için kullanılır. Analiz sorgusu, belirli bir Log Analytics çalışma alanı veya Application Insights uygulaması için, hatta [birden çok Log Analytics ve Application Insights kaynak](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) arasında, hatta kullanıcının erişimi ve tüm kaynaklara yönelik sorgu haklarını de kapsayabilir. 
+- **Günlük sorgusu**.  Uyarı kuralı her tetiklendiğinde çalışan sorgu.  Bu sorgu tarafından döndürülen kayıtlar, bir uyarının tetiklenip tetiklenmeyeceğini tespit etmek için kullanılır. Analiz sorgusu, belirli bir Log Analytics çalışma alanı veya Application Insights uygulaması için, hatta [birden çok Log Analytics ve Application Insights kaynak](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) arasında, hatta kullanıcının erişimi ve tüm kaynaklara yönelik sorgu haklarını de kapsayabilir. 
     > [!IMPORTANT]
     > yalnızca [scheduledQueryRules API kullanılarak yapılandırılan Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) için Application Insights ve günlük uyarılarında [çapraz kaynak sorgu](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) desteği.
 
@@ -122,7 +120,7 @@ Sorgu sonucu çizilmek ise, olarak görünür.
 
 ![Örnek sorgu sonuçları](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-Bu örnekte, üç bilgisayarın her biri için 5 dakikalık depo gözlerinde, 5 dakika boyunca hesaplanan ortalama işlemci kullanımı görüyoruz. 90, SNC01 tarafından yalnızca bir kez 1:25 bin olarak ihlal ediliyor. SRV02, 1:10, 1:15 ve 1:25 sepetlerindeki 90 eşiğini aşıyor; srv03, 1:10, 1:15, 1:20 ve 1:30 90 eşiğini aşmaktadır.
+Bu örnekte, üç bilgisayarın her biri için 5 dakikalık depo gözlerinde, 5 dakika boyunca hesaplanan ortalama işlemci kullanımı görüyoruz. 90, SN tarafından yalnızca bir kez 1:25 bin olarak ihlal ediliyor. SRV02, 1:10, 1:15 ve 1:25 sepetlerindeki 90 eşiğini aşıyor; srv03, 1:10, 1:15, 1:20 ve 1:30 90 eşiğini aşmaktadır.
 Uyarı toplam ihlal temelinde tetiklenecek şekilde yapılandırıldığından, SRV02 ve srv03 'in yalnızca ölçütü karşıladığını görüyoruz. Bu nedenle, birden çok zaman sepetlerine iki kez %90 eşiğini ulaştıkları için, SRV02 ve srv03 için ayrı uyarılar oluşturulacaktır.  *Tetikleyici uyarısı:* parametresi, *sürekli ihlal* için yapılandırılmışsa, bu durumda **yalnızca** srv03 için bir uyarı tetiklenir ve bu durum 1:10 ' den 1:20 ' e kadar art arda üç zaman sepetinin eşiğine ulaştı. SRV02 için **değil** , 1:10 ile 1:15 arasındaki iki ardışık zaman sepetinin eşiğine ulaştığı için.
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Günlük arama uyarısı kuralı-tetikleme ve durum
@@ -138,7 +136,7 @@ Aşağıdaki her aralıkta, Azure uyarıları sistemi *contoso-log uyarısı*iç
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı.
 | 1:10 PM | 2 kayıt | 2 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
-| 13:15 | 5 kayıt | 5 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
+| 1:15 PM | 5 kayıt | 5 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
 | 1:20 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı. Uyarı durumu ETKIN kaldı.
 
 Önceki durumu örnek olarak kullanma:

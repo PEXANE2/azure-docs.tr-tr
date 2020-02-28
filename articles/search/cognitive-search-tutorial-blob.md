@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113664"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667032"
 ---
 # <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Öğretici: REST API 'Leri kullanarak Azure 'da JSON Bloblarından metin ve yapı ayıklama (Azure Bilişsel Arama)
 
-Azure Blob depolamada yapılandırılmamış metin veya görüntü içeriğiniz varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) , tam metin arama veya bilgi araştırma senaryoları için faydalı olan bilgileri ayıklamanızı ve yeni içerik oluşturmanıza yardımcı olabilir. İşlem hattı görüntü dosyalarını (JPG, PNG, TIFF) işleyebilse de, bu öğretici Word tabanlı içeriğe odaklanmasına karşın sorgularda, modellerde ve filtrelerde kullanabileceğiniz yeni alanlar ve bilgiler oluşturmak için dil algılamayı ve metin analizlerini uygular.
+Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. Bir işlem hattı resimleri işleyebilir, ancak sorgularda, modellerle ve filtrelerde kullanabileceğiniz yeni alanlar oluşturmak için, bu öğretici metne odaklanılır, dil algılama ve doğal dil işleme uygulanıyor.
 
 > [!div class="checklist"]
-> * Azure Blob depolamada PDF, MD, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
+> * Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
 > * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı tanımlayın.
 > * Çıktıyı depolamak için bir dizin tanımlayın (ham içerik ve ardışık düzen tarafından oluşturulan ad-değer çiftleri).
 > * Dönüşümleri ve Analizi başlatmak ve dizini oluşturmak ve yüklemek için işlem hattını yürütün.
@@ -38,7 +38,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="1---create-services"></a>1-hizmet oluşturma
 
-Bu kılavuzda, verileri sağlamak üzere dizin oluşturma ve sorgular, AI zenginleştirme için bilişsel hizmetler ve Azure Blob depolama için Azure Bilişsel Arama kullanılmaktadır. Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgedeki ve kaynak grubundaki tüm üç hizmeti oluşturun. Uygulamada, Azure depolama hesabınız herhangi bir bölgede olabilir.
+Bu öğreticide dizin oluşturma ve sorgular, AI zenginleştirme için arka uçta bilişsel hizmetler ve verileri sağlamak üzere Azure Blob depolama için Azure Bilişsel Arama kullanılmaktadır. Bu öğretici, bilişsel hizmetler 'de her gün Dizin Oluşturucu başına 20 işlem için ücretsiz ayırma kapsamında kalır, bu nedenle yalnızca oluşturmanız gereken hizmetler arama ve depolama amaçlıdır.
+
+Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubunda her ikisini de oluşturun. Uygulamada, Azure depolama hesabınız herhangi bir bölgede olabilir.
 
 ### <a name="start-with-azure-storage"></a>Azure Storage 'ı kullanmaya başlama
 
@@ -84,7 +86,7 @@ Bu kılavuzda, verileri sağlamak üzere dizin oluşturma ve sorgular, AI zengin
 
 1. Bağlantı dizesini Not defteri 'ne kaydedin. Daha sonra veri kaynağı bağlantısını ayarlarken gerekecektir.
 
-### <a name="cognitive-services"></a>Bilişsel Hizmetler
+### <a name="cognitive-services"></a>Bilişsel hizmetler
 
 AI zenginleştirme, doğal dil ve görüntü işleme için Metin Analizi ve Görüntü İşleme dahil bilişsel hizmetler tarafından desteklenir. Amacınız gerçek bir prototipi veya projeyi tamamlayacaksa, bu noktada bilişsel hizmetler sağlama (Azure Bilişsel Arama ile aynı bölgede), böylece dizin oluşturma işlemlerine iliştirebilirsiniz.
 
@@ -167,9 +169,9 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
    | İmde                 | Açıklama    |
    |-----------------------|----------------|
    | [Varlık tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
-   | [Dil algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
+   | [Dil Algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
    | [Metin bölme](cognitive-search-skill-textsplit.md)  | Anahtar tümceciği ayıklama becerisi çağrılmadan önce büyük içeriği daha küçük parçalara ayırır. Anahtar tümcecik ayıklama, 50.000 veya daha az karakterden oluşan girişi kabul eder. Bu sınıra uymak için örnek dosyaların birkaç tanesinin bölünmesi gerekir. |
-   | [Anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md) | En üstteki anahtar tümceleri çeker. |
+   | [Anahtar İfade Ayıklama](cognitive-search-skill-keyphrases.md) | En üstteki anahtar tümceleri çeker. |
 
    Her beceri, belge içeriğinde yürütülür. İşlem sırasında Azure Bilişsel Arama, farklı dosya biçimlerinden içerik okumak için her belgeyi ister. Kaynak dosyadan gelen, bulunan metin, oluşturulan ```content``` alanına her belge için birer birer yerleştirilir. Bu nedenle, giriş ```"/document/content"```olur.
 
@@ -481,13 +483,13 @@ Bu sorgular, bilişsel arama tarafından oluşturulan yeni alanlara sorgu söz d
 
 ## <a name="reset-and-rerun"></a>Sıfırlama ve yeniden çalıştırma
 
-İşlem hattı geliştirmenin erken deneysel aşamalarında, tasarım yinelemeleri için en pratik yaklaşım, nesneleri Azure Bilişsel Arama silmek ve kodunuzun bunları yeniden oluşturması için izin verir. Kaynak adları benzersizdir. Bir nesneyi sildiğinizde, aynı adı kullanarak nesneyi yeniden oluşturabilirsiniz.
+Geliştirmenin erken aşamalarında, Azure Bilişsel Arama nesneleri silmek ve kodunuzun bunları yeniden oluşturması için pratik bir özellik vardır. Kaynak adları benzersizdir. Bir nesneyi sildiğinizde, aynı adı kullanarak nesneyi yeniden oluşturabilirsiniz.
 
-Yeni tanımlarla belgelerinizin yeniden dizinini oluşturmak için:
+Belgelerinizi yeni tanımlarla yeniden dizinlemek için:
 
 1. Dizin oluşturucuyu, dizini ve beceri silin.
-2. Nesneleri Değiştir.
-3. İşlem hattını çalıştırmak için hizmetinize yeniden oluşturun. 
+2. Nesne tanımlarını değiştir.
+3. Hizmetinizdeki nesneleri yeniden oluşturun. Dizin oluşturucuyu yeniden oluşturmak işlem hattını çalıştırır. 
 
 Dizinleri, Dizin oluşturucuyu ve becerileri silmek için portalı kullanabilir ya da **Sil** ' i kullanabilir ve her bir nesnenin URL 'sini sağlayabilirsiniz. Aşağıdaki komut bir dizin oluşturucuyu siler.
 

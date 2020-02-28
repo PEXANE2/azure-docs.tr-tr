@@ -1,23 +1,23 @@
 ---
 title: Uyarı ve akıllı grup durumlarını yönetme
 description: Uyarı ve akıllı Grup örneklerinin durumlarını yönetme
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: fd2a2a4b7d5033ecd35d02baa240bc7586e7a25d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a22d7b7b962b36f93ee804c64b3bc6b08ecceb0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555676"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667525"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Uyarı ve akıllı grup durumlarını yönetme
+
 Azure Izleyici 'deki uyarılar artık bir [uyarı durumuna ve bir izleyici koşuluna](https://aka.ms/azure-alerts-overview) sahiptir ve benzer şekilde akıllı gruplar [akıllı grup durumuna](https://aka.ms/smart-groups)sahiptir. Durum üzerinde yapılan değişiklikler artık ilgili uyarıyla veya akıllı grupla ilişkili geçmiş olarak yakalanır. Bu makalede, hem uyarı hem de akıllı grup için durumu değiştirme sürecinde size yol gösterilir.
 
 ## <a name="change-the-state-of-an-alert"></a>Bir uyarının durumunu değiştirme
+
 1. Bir uyarının durumunu aşağıdaki farklı yollarla değiştirebilirsiniz: 
     * Tüm Uyarılar sayfasında, durumunu değiştirmek istediğiniz uyarıların yanındaki onay kutusuna tıklayın ve durumu Değiştir ' e tıklayın.   
     ![İzleme](./media/alerts-managing-alert-states/state-all-alerts.jpg)

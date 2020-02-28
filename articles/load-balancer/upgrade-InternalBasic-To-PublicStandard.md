@@ -7,21 +7,22 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77618210"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659994"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekli
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Standart dahili Load Balancer giden bağlantı sağlamadığından, bunun yerine standart bir genel Load Balancer oluşturmak için bir çözüm sağlıyoruz.
 
-Bir yükseltmede üç aşama vardır:
+Yükseltmenin dört aşaması vardır:
 
 1. Yapılandırmayı standart genel Load Balancer geçirme
 2. Standart genel Load Balancer arka uç havuzlara VM ekleme
-3. Internet 'ten/veya Internet 'e ayarlanması gereken alt ağ/VM 'Ler için NSG kuralları ayarlama
+3. Giden bağlantı için Load Balancer giden bir kural oluşturma
+4. Internet 'ten/veya Internet 'e ayarlanması gereken alt ağ/VM 'Ler için NSG kuralları ayarlama
 
 Bu makalede yapılandırma geçişi ele alınmaktadır. Arka uç havuzlara sanal makine eklemek, belirli ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey genel öneriler [sağlanır](#add-vms-to-backend-pools-of-standard-load-balancer).
 
@@ -83,7 +84,7 @@ Betiği çalıştırmak için:
     **Örnek**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standart Load Balancer arka uç havuzlarına VM ekleme
@@ -109,6 +110,12 @@ Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzl
 
 * **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
     * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)bulunabilir.
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden bir kural oluşturma
+
+Bir giden kuralı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) izleyin, böylece
+* Giden NAT 'yi sıfırdan tanımlayın.
+* Varolan giden NAT 'nin davranışını ölçeklendirin ve ayarlayın.
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>Internet 'ten veya internetten gelen iletişimi belirten sanal makineler için NSG kuralları oluşturma
 Internet trafiğinin sanal makinelerinize ulaşmasını istiyorsanız, VM 'lerin ağ arabiriminde bir [NSG kuralı](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) oluşturabilirsiniz.

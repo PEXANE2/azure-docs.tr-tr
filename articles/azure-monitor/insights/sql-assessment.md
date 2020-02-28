@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici ile SQL Server ortamınızı iyileştirin | Microsoft Docs
 description: Azure Izleyici ile, düzenli aralıklarla ortamlarınızın riskini ve durumunu değerlendirmek için SQL sistem durumu denetimi çözümünü kullanabilirsiniz.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168887"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662493"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
 
@@ -32,7 +31,7 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 ![SQL sistem durumu denetimi panosunun görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * SQL sistem durumu denetimi çözümü, Microsoft Monitoring Agent (MMA) yüklü her bilgisayarda desteklenen bir .NET Framework 4.6.2 sürümü gerektirir.  MMA Aracısı System Center 2016-Operations Manager ve Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.  
 * Çözüm 2012, 2014 ve 2016 SQL Server sürümünü destekler.
@@ -79,14 +78,14 @@ SQL sistem durumu denetimi için Operations Manager farklı çalıştır hesabı
 
 1. Operations Manager, Işletim konsolunu açın ve ardından **Yönetim**' e tıklayın.
 2. **Farklı Çalıştır Yapılandırması**altında, **profiller**' e tıklayın ve **Farklı Çalıştır profili SQL değerlendirmesi**açın.
-3. **Farklı Çalıştır Hesapları** sayfasında **Ekle**’ye tıklayın.
+3. **Farklı Çalıştır hesapları** sayfasında **Ekle**' ye tıklayın.
 4. SQL Server için gereken kimlik bilgilerini içeren bir Windows farklı çalıştır hesabı seçin veya bir tane oluşturmak için **Yeni** ' ye tıklayın.
 
    > [!NOTE]
    > Farklı Çalıştır hesabı türü Windows olmalıdır. Farklı Çalıştır hesabı, SQL Server örnekleri barındıran tüm Windows sunucularında yerel Yöneticiler grubunun da parçası olmalıdır.
    >
    >
-5. **Save (Kaydet)** düğmesine tıklayın.
+5. **Kaydet**’e tıklayın.
 6. Farklı çalıştır hesabının sistem durumu denetimini gerçekleştirmesi için gereken en düşük izinleri vermek üzere her bir SQL Server örneğinde aşağıdaki T-SQL örneğini değiştirin ve yürütün. Ancak, bir farklı çalıştır hesabı zaten SQL Server örneklerine sysadmin sunucu rolünün bir parçasıysa bunu yapmanız gerekmez.
 
 ```
@@ -146,7 +145,7 @@ Her öneri ağırlığı, her bir odak alanı için kullanılabilen toplam puanl
 **Değişiklik ve yapılandırma yönetimi** -bu odak alanı, günlük işlemleri korumaya yardımcı olma önerilerini gösterir, değişikliklerin altyapınızı olumsuz şekilde etkilememesini, değişiklik denetimi yordamlarını oluşturduğunuzdan ve sistem yapılandırmalarını izleyip denetlemelerini sağlar.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Her odak alanında %100 puan elde etmeniz gerekir mi?
-Olmayabilir. Öneriler, binlerce müşteri ziyaretinde Microsoft mühendisleri tarafından kazanılan bilgi ve deneyimlere dayalıdır. Ancak, iki sunucu altyapısı aynı değildir ve belirli öneriler sizinle daha fazla veya daha az olabilir. Örneğin, sanal makineleriniz Internet 'e açık değilse bazı güvenlik önerileri daha az ilgili olabilir. Bazı kullanılabilirlik önerileri düşük öncelikli geçici veri toplama ve raporlama sağlayan hizmetlerle daha az ilgili olabilir. Yetişkin iş açısından önemli olan sorunlar, başlangıç için daha az önemli olabilir. Önceliklerinizin hangi odak alanlarından olduğunu belirlemek ve sonra puanlarınızın zaman içinde nasıl değişdiklerini görmek isteyebilirsiniz.
+Gerekli değildir. Öneriler, binlerce müşteri ziyaretinde Microsoft mühendisleri tarafından kazanılan bilgi ve deneyimlere dayalıdır. Ancak, iki sunucu altyapısı aynı değildir ve belirli öneriler sizinle daha fazla veya daha az olabilir. Örneğin, sanal makineleriniz Internet 'e açık değilse bazı güvenlik önerileri daha az ilgili olabilir. Bazı kullanılabilirlik önerileri düşük öncelikli geçici veri toplama ve raporlama sağlayan hizmetlerle daha az ilgili olabilir. Yetişkin iş açısından önemli olan sorunlar, başlangıç için daha az önemli olabilir. Önceliklerinizin hangi odak alanlarından olduğunu belirlemek ve sonra puanlarınızın zaman içinde nasıl değişdiklerini görmek isteyebilirsiniz.
 
 Her öneri, neden önemli olduğuna ilişkin bir kılavuz içerir. BT hizmetlerinizin doğası ve kuruluşunuzun iş ihtiyaçları göz önüne alındığında, öneriyi uygulamanız için uygun olup olmadığını değerlendirmek için bu kılavuzu kullanmanız gerekir.
 
@@ -215,7 +214,7 @@ Sonuçlar daha sonra daha fazla inceleme için Excel'e aktarılabilir.
 
 *Çekin ne sıklıkta çalışacağını yapılandırmak için bir yol var mı?*
 
-* Şimdilik hayır.
+* Şu anda değil.
 
 *SQL sistem durumu denetimi çözümünü ekledikten sonra başka bir sunucu bulunursa, kontrol edilecek mi?*
 
@@ -243,7 +242,7 @@ Sonuçlar daha sonra daha fazla inceleme için Excel'e aktarılabilir.
 
 *Verilerin toplanması sırasında yapılandırmak için bir yol var mı?*
 
-* Şimdilik hayır.
+* Şu anda değil.
 
 *Neden farklı çalıştır hesabı yapılandırmam gerekir?*
 

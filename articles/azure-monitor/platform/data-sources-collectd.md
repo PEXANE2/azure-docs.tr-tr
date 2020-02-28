@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de CollectD 'den veri toplayın | Microsoft Docs
 description: CollectD, uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak veri toplayan açık kaynaklı bir Linux Daemon.  Bu makalede, Azure Izleyici 'de CollectD 'den veri toplama hakkında bilgi sağlanır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395882"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670619"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
 [Collectd](https://collectd.org/) , uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak performans ölçümlerini toplayan açık kaynaklı bir Linux Daemon. Örnek uygulamalar Java Sanal Makinesi (JVM), MySQL Server ve NGINX ' i içerir. Bu makalede, Azure Izleyici 'de CollectD 'den performans verilerinin toplanması hakkında bilgi sağlanır.
@@ -109,14 +108,14 @@ Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçüm
 | CollectD ölçüm alanı | Azure Izleyici alanı |
 |:--|:--|
 | `host` | Bilgisayar |
-| `plugin` | Hiçbiri |
-| `plugin_instance` | Örnek Adı<br>**Plugin_instance** *null* ise InstanceName = " *_Total*" |
+| `plugin` | None |
+| `plugin_instance` | Örnek adı<br>**Plugin_instance** *null* ise InstanceName = " *_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>**Type_instance** *null* ise CounterName =**Blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | Hiçbiri |
+| `dstypes` | None |
 | `values[]` | Onay değeri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için. 
-* Kullanım [özel alanlar](custom-fields.md) syslog kayıtları verilerinden ayrı ayrı alanlara ayrıştırılamıyor.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
+* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](custom-fields.md) kullanın.

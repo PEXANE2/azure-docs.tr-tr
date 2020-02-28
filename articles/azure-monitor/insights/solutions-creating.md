@@ -1,19 +1,18 @@
 ---
 title: Azure 'da bir yönetim çözümü oluşturun | Microsoft Docs
 description: Yönetim çözümleri, Azure 'da müşterilerin Log Analytics çalışma alanına ekleyebilmeleri için paketlenmiş yönetim senaryolarını içerir.  Bu makalede, kendi ortamınızda kullanılmak üzere yönetim çözümlerini nasıl oluşturabileceğiniz veya müşterileriniz için kullanılabilir hale getirdiğiniz hakkında ayrıntılar sağlanmaktadır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969692"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663224"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure 'da bir yönetim çözümü tasarlama ve oluşturma (Önizleme)
 > [!NOTE]
@@ -28,7 +27,7 @@ Yönetim çözümleri, belirli bir yönetim senaryosuna ulaşmak için birlikte 
 Temel strateji, Azure ortamınızda bireysel bileşenleri oluşturarak yönetim çözümünüzü başlatmaya başlamadır.  İşlevselliği düzgün şekilde çalışmaya başladıktan sonra bunları bir [yönetim çözümü dosyasına]( solutions-solution-file.md)paketlemeyi başlatabilirsiniz. 
 
 
-## <a name="design-your-solution"></a>Çözümünüzü tasarlayın
+## <a name="design-your-solution"></a>Çözümünüzü tasarlama
 Bir yönetim çözümü için en yaygın model aşağıdaki diyagramda gösterilmiştir.  Bu düzendeki farklı bileşenler aşağıda açıklanmaktadır.
 
 ![Yönetim çözümüne genel bakış](media/solutions-creating/solution-overview.png)

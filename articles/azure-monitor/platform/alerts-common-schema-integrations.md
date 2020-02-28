@@ -1,18 +1,15 @@
 ---
 title: Ortak uyarı şemasını Logic Apps ile tümleştirme
 description: Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yararlanan bir mantıksal uygulama oluşturmayı öğrenin.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555658"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668239"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Ortak uyarı şemasını Logic Apps ile tümleştirme
 
@@ -112,7 +109,7 @@ Bu makalede, okuyucunun öğrenildiği varsayılmaktadır
         }
     ```
 
-1. **@No__t_1** **yeni adım** ' ı seçin ve ardından **Eylem Ekle**' yi seçin.
+1. **+** **yeni adım** ' ı seçin ve ardından **Eylem Ekle**' yi seçin.
 
     ![Eylem ekleme](media/action-groups-logic-app/add-action.png "Eylem ekleme")
 

@@ -1,152 +1,151 @@
 ---
-title: Gelişmiş özelliklerini Azure ölçüm Gezgini
-description: Azure İzleyici ölçüm Gezgini'ni gelişmiş özellikler hakkında bilgi edinin
+title: Azure Ölçüm Gezgini gelişmiş özellikleri
+description: Azure Izleyici Ölçüm Gezgini gelişmiş özellikleri hakkında bilgi edinin
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256913"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662409"
 ---
-# <a name="advanced-features-of-azure-metrics-explorer"></a>Gelişmiş özelliklerini Azure ölçüm Gezgini
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure Ölçüm Gezgini gelişmiş özellikleri
 
 > [!NOTE]
-> Bu makalede, ölçüm Gezgini temel özellikleri hakkında bilgi sahibi olduğunuz varsayılır. Yeni bir kullanıcıysanız ve ölçüm ilk grafiğinizi oluşturun, bkz öğrenmek istiyorsanız [Azure ölçüm Gezgini ile çalışmaya başlama](metrics-getting-started.md).
+> Bu makalede, Ölçüm Gezgini temel özellikleriyle ilgili bilgi sahibi olduğunuz varsayılır. Yeni bir Kullanıcı ve ilk ölçüm grafiğinizi oluşturmayı öğrenmek istiyorsanız bkz. [Azure Ölçüm Gezgini](metrics-getting-started.md)kullanmaya başlama.
 
-## <a name="metrics-in-azure"></a>Azure ölçümleri
+## <a name="metrics-in-azure"></a>Azure 'da ölçümler
 
-[Azure İzleyicisi'nde ölçümler](data-platform-metrics.md) ölçülen değerleri ve toplanan ve zaman içinde depolanmış olan sayıları dizi. Standart (veya "platformu") ölçüm ve özel ölçüm vardır. Standart ölçümler, Azure platformu tarafından kendisi sağlanır. Standart ölçümler, Azure kaynaklarınızın durumunu ve kullanım istatistikleri yansıtır. Özel ölçüm kullanarak uygulamalarınızı tarafından Azure'a gönderilir ancak [özel olaylar ve ölçümler için Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure tanılama (WAD) uzantısı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), ya da [Azure REST API izleme](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+[Azure izleyici 'de ölçümler](data-platform-metrics.md) , zaman içinde toplanan ve depolanan ölçülen değer ve sayı serisidir. Standart (veya "Platform") ölçümleri ve özel ölçümler vardır. Standart ölçümler size Azure platformunun kendisi tarafından sunulur. Standart ölçümler, Azure kaynaklarınızın sistem durumunu ve kullanım istatistiklerini yansıtır. Özel ölçümler, [özel olaylar ve ölçümler](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure tanılama (wad) uzantısı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)ya da [Azure izleyici REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)tarafından Application Insights API 'sini kullanarak, uygulamalarınız tarafından Azure 'a gönderilir.
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>Birden çok ölçüm ve grafikler ile görünümlerini oluşturma
+## <a name="create-views-with-multiple-metrics-and-charts"></a>Birden çok ölçüm ve grafik içeren görünümler oluşturma
 
-Birden çok ölçüm satırı çizim veya aynı anda birden çok ölçüm grafikleri Göster grafikler oluşturabilirsiniz. Bu işlev sağlar:
+Birden çok ölçüm satırını çizdirme veya aynı anda birden çok ölçüm grafiği gösteren grafikler oluşturabilirsiniz. Bu işlevsellik şunları yapmanıza olanak sağlar:
 
-- başka bir performanstaki ilgili ölçümleri aynı grafikte bir değeri görmek için ilgili
-- farklı ölçü yakın ölçümlerini görüntüle
-- görsel olarak toplama ve birden çok kaynaklardan ölçümleri karşılaştırın
+- bir değerin birbirleriyle nasıl ilişkili olduğunu görmek için aynı grafikteki ilgili ölçümleri ilişkilendirme
+- ölçümleri yakın bir yerde farklı ölçü birimleriyle görüntüle
+- birden çok kaynaktan ölçümleri görsel olarak toplama ve karşılaştırma
 
-Örneğin, 5 depolama hesapları kullandığınız ve bunlar arasında tüketilen toplam ne kadar alan öğrenmek istiyorsanız, tek tek ve tüm değerlerin toplamını belirli noktalarda süresini gösterir (Yığılmış) alan grafiği oluşturabilirsiniz.
+Örneğin, 5 depolama hesabınız varsa ve aralarındaki toplam alanın kaç kez tüketildiğini öğrenmek istiyorsanız, belirli bir zaman noktasında tüm değerlerin tek bir kısmını ve toplamını gösteren bir (yığılmış) alan grafiği oluşturabilirsiniz.
 
-### <a name="multiple-metrics-on-the-same-chart"></a>Birden çok ölçümleri aynı grafikte
+### <a name="multiple-metrics-on-the-same-chart"></a>Aynı grafikte birden çok ölçüm
 
-İlk olarak, [yeni bir grafik oluşturun](metrics-getting-started.md#create-your-first-metric-chart). Tıklayın **ölçüm Ekle** ve aynı grafiğe başka bir ölçüm eklemek için adımları yineleyin.
+İlk olarak [Yeni bir grafik oluşturun](metrics-getting-started.md#create-your-first-metric-chart). **Ölçüm Ekle** ' ye tıklayın ve aynı grafiğe başka bir ölçüm eklemek için adımları tekrarlayın.
 
    > [!NOTE]
-   > Genellikle, bir grafikte ölçümleri farklı ölçü (yani "milisaniye" ve "kilobayt") veya önemli ölçüde farklı ölçeklendirme ile sahip istemezsiniz. Bunun yerine, birden çok grafik kullanmayı düşünün. Ölçüm Gezgini'nde birden çok grafik oluşturmak için Hesap Ekle düğmesine tıklayın.
+   > Genellikle farklı ölçü birimleri ("milisaniyelik" ve "kilobayt") ile veya bir grafik üzerinde önemli ölçüde farklı ölçekte ölçümlere sahip olmak istemezsiniz. Bunun yerine, birden çok grafik kullanmayı göz önünde bulundurun. Ölçüm Gezgini 'nde birden çok grafik oluşturmak için grafik Ekle düğmesine tıklayın.
 
-### <a name="multiple-charts"></a>Birden fazla grafiği
+### <a name="multiple-charts"></a>Birden çok grafik
 
-Tıklayın **Ekle grafik** ve farklı bir ölçümü ile başka bir grafik oluşturun.
+**Grafik Ekle** ' ye tıklayın ve farklı bir ölçümle başka bir grafik oluşturun.
 
-### <a name="order-or-delete-multiple-charts"></a>Sipariş veya birden fazla Grafiği Sil
+### <a name="order-or-delete-multiple-charts"></a>Birden çok grafiği sıralama veya silme
 
-Sipariş ya da birden fazla grafiği silmek için üç noktayı tıklayın ( **...**  ) grafik menüsünü açın ve uygun menü öğesi, sembol **Yukarı Taşı**, **Aşağı Taşı**, veya **Sil**.
+Birden çok grafiği sıralamak veya silmek için üç nokta ( **...** ) simgesine tıklayarak grafik menüsünü açın ve **Yukarı taşı**, **aşağı taşı**veya **Sil**seçeneklerini belirleyin.
 
-## <a name="apply-filters-to-charts"></a>Grafikler için filtre uygulayın
+## <a name="apply-filters-to-charts"></a>Grafiklere filtre uygulama
 
-Boyutlarla ölçümleri gösteren grafikler için filtre uygulayabilirsiniz. "İşlem sayısı" ölçüm boyut varsa, "işlem yanıtı başarılı veya daha sonra bu boyutu üzerinde filtreleme başarısız olduğunu gösteren yanıt türü", bir grafik çizgisi için örneğin, çizim yalnızca başarılı (veya yalnızca başarısız) işlemleri. 
+Boyutlara sahip ölçümleri gösteren grafiklere filtre uygulayabilirsiniz. Örneğin, "Işlem sayısı" ölçüsünün bir boyutu "yanıt türü" ise, bu boyutun filtrelemesinin başarılı veya başarısız olduğunu belirten bir boyut "yanıt türü" yalnızca başarılı (veya yalnızca başarısız) işlemler için bir grafik satırı çizmez. 
 
 ### <a name="to-add-a-filter"></a>Filtre eklemek için
 
-1. Seçin **Filtre Ekle** grafiğin üstünde
+1. Grafiğin üstünde **Filtre Ekle** ' yi seçin
 
-2. Filtre uygulamak istediğiniz boyutu (özellik) seçin
+2. Filtrelemek istediğiniz boyutu (özelliği) seçin
 
-   ![Ölçüm görüntüsü](./media/metrics-charts/00006.png)
+   ![ölçüm resmi](./media/metrics-charts/00006.png)
 
-3. (Bu örnekte filtreleme başarılı depolama işlemleri gösterilmiştir) grafik çizim, dahil etmek istediğiniz hangi boyut değerleri seçin:
+3. Grafiği çizdirme sırasında dahil etmek istediğiniz boyut değerlerini seçin (Bu örnek, başarılı depolama işlemlerinin filtrelenmesini gösterir):
 
-   ![Ölçüm görüntüsü](./media/metrics-charts/00007.png)
+   ![ölçüm resmi](./media/metrics-charts/00007.png)
 
-4. Filtre değerleri belirledikten sonra filtre Seçici uzağa kapatmak için tıklayın. Artık grafik kaç depolama işlemi başarısız olmuş gösterir:
+4. Filtre değerlerini seçtikten sonra, kapatmak için filtre seçicideki dışarıda ' ı tıklatın. Artık grafik, kaç depolama işlemi başarısız olduğunu gösterir:
 
-   ![Ölçüm görüntüsü](./media/metrics-charts/00008.png)
+   ![ölçüm resmi](./media/metrics-charts/00008.png)
 
-5. Aynı grafikleri birden fazla filtre uygulamak için 1-4 arası adımları tekrarlayabilirsiniz.
+5. Aynı grafiklere birden çok filtre uygulamak için 1-4 adımlarını tekrarlayabilirsiniz.
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>Bir grafiği bölme Uygula
+## <a name="apply-splitting-to-a-chart"></a>Grafiğe bölme Uygula
 
-Bir ölçüm bölme ölçütü: ölçüm karşılaştırma birbirleriyle nasıl farklı parçalarını görselleştirmek için boyut ve boyutun harici segmentleriyle.
+Ölçüm 'in farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek ve bir boyutun tek parçalarını belirlemek için bir ölçümü boyuta göre bölebilirsiniz.
 
-### <a name="apply-splitting"></a>Bölme Uygula
+### <a name="apply-splitting"></a>Bölmeyi Uygula
 
-1. Tıklayarak **uygulamak bölme** grafiğin üstünde.
+1. Grafiğin üzerine **bölme Uygula** ' ya tıklayın.
  
    > [!NOTE]
-   > Bölme sahip birden çok ölçüm grafikleri ile kullanılamaz. Ayrıca, birden çok filtre ancak yalnızca bir bölme boyutu tek bir grafiğe uygulanmış olabilir.
+   > Bölme birden çok ölçüm içeren grafiklerle kullanılamaz. Ayrıca, birden fazla filtreye sahip olabilirsiniz ancak tek bir grafiğe yalnızca bir bölme boyutu uygulanabilir.
 
 2. Grafiğinizi segmentlere ayırmak istediğiniz bir boyut seçin:
 
-   ![Ölçüm görüntüsü](./media/metrics-charts/00010.png)
+   ![ölçüm resmi](./media/metrics-charts/00010.png)
 
-   Şimdi grafik, artık her bir kesim boyutu için birden fazla satır gösterir:
+   Artık grafik artık bir boyut segmenti için bir tane olmak üzere birden çok satır gösteriyor:
 
-   ![Ölçüm görüntüsü](./media/metrics-charts/00012.png)
+   ![ölçüm resmi](./media/metrics-charts/00012.png)
 
-3. Liste kutusundan tıklayın **gruplandırma Seçici** kapatmak için.
+3. Bunu kapatmak için **Gruplandırma seçicisindeki** uzakta ' ye tıklayın.
 
    > [!NOTE]
-   > Filtreleme hem de aynı boyutta bölme senaryonuz için ilgisi olmayan ve grafikleri okunmalarını kolaylaştırmak segmentleri gizlemek için kullanın.
+   > Senaryolarınız için ilgisiz olan kesimleri gizlemek ve grafiklerin okunmasını kolaylaştırmak için aynı boyuttaki filtrelemeyi ve bölmeyi kullanın.
 
-## <a name="lock-boundaries-of-chart-y-axis"></a>Grafik y ekseni sınırlarını kilidi
+## <a name="lock-boundaries-of-chart-y-axis"></a>Grafik y ekseninin sınırlarını kilitle
 
-Grafiğin büyük değerler daha küçük dalgalanmaları gösterdiğinde y ekseni aralığını kilitleme önemli hale gelir. 
+Grafik, büyük değerlerin daha küçük dalgalanmalarını gösterdiğinde y ekseni aralığının kilitlenmesi önemli hale gelir. 
 
-Örneğin, başarılı istek hacmi % %99,99 %99,5 açılır, hizmet kalitesi önemli azalmaya temsil edebilir. Ancak, bir küçük sayısal değeri dalgalanma tercihinize zor veya imkansız bile varsayılan hesap ayarlarından olacaktır. Bu durumda bu küçük bırakma daha belirgin hale getirir %99 grafiğinin en düşük sınır kilitlenemedi. 
+Örneğin, başarılı istek hacmi% 99,99 ' dan% 99,5 ' e düştüğünde, hizmet kalitesindeki önemli bir düşüş temsil edebilir. Ancak, yaşıyorsanız küçük bir sayısal değer dalgalanması, varsayılan grafik ayarlarından zor veya imkansız olabilir. Bu durumda, grafiğin en düşük sınırını %99 olarak kilitleyebilir ve bu küçük bir bırakma daha belirgin hale gelir. 
 
-Başka bir kullanılabilir bellek bir dalgalanma burada değeri teknik olarak hiçbir zaman 0 ulaşacak örnektir. Daha yüksek bir değer aralığına düzeltme düşme kullanılabilir bellek. nokta kolaylaştırmak. 
+Diğer bir örnek ise, değerin teknik açıdan hiçbir şekilde hiçbir şekilde ulaşmayacağı kullanılabilir belleğin bir dalgalanmasıdır. Aralığın daha yüksek bir değere düzeltilmesi, kullanılabilir belleğin düşün daha kolay olmasını sağlayabilir. 
 
-Y ekseni aralığını denetlemek için kullanma "..." Grafik menü ve seçin **grafiği Düzenle** grafiği ayarları Gelişmiş erişim için. Y ekseni aralığını bölümündeki değerleri değiştirin veya kullanın **otomatik** varsayılanlara geri düğmesi.
+Y ekseni aralığını denetlemek için "..." öğesini kullanın Grafik menüsü ve gelişmiş grafik ayarlarına erişmek için **grafiği Düzenle** ' yi seçin. Y ekseni Aralık bölümündeki değerleri değiştirin veya varsayılanlara dönmek için **Otomatik** düğmesini kullanın.
 
-![Ölçüm görüntüsü](./media/metrics-charts/00014-manually-set-granularity.png)
+![ölçüm resmi](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
-> Çeşitli izlemek grafiklerin y ekseni sınırlarını kilitleme sayar veya toplayan bir dönem boyunca zaman (ve dolayısıyla kullanım sayısı, toplam, minimum veya maksimum toplamalar) genellikle otomatik varsayılanlara güvenmek yerine bir sabit zaman ayrıntı düzeyi belirterek gerektirir. Bu gereklidir çünkü zaman ayrıntı düzeyi tarayıcı penceresini yeniden boyutlandırma veya başka bir ekran çözünürlüğünü giden kullanıcı tarafından otomatik olarak değiştirildiğinde grafiklerde değerlerini değiştirin. Elde edilen grafiğin y ekseni aralığını oluşan geçerli seçimi geçersiz kılmalarını görünümünü zaman ayrıntı düzeyi efektleri değiştirin.
+> Belirli bir süre içinde çeşitli sayıları veya toplamları izleyen grafikler için y ekseninin sınırlarını kilitlemek (ve bu nedenle Count, Sum, minimum veya Maximum toplamaların kullanılması) genellikle otomatik varsayılanlara güvenmek yerine sabit bir zaman ayrıntı düzeyi belirtilmesini gerektirir. Bu gereklidir çünkü, zaman ayrıntı düzeyi Kullanıcı tarayıcı penceresi yeniden boyutlandırılırken veya bir ekran çözünürlüğünden diğerine geçiş yaparken, grafiklerde değerler değişir. Zaman ayrıntı düzeyinde ortaya çıkan değişiklik, grafik görünümünü etkiler ve geçerli y ekseni aralığının geçersiz kılınmasının sonucunu vermez.
 
-## <a name="pin-charts-to-dashboards"></a>Panolar için PIN grafikleri
+## <a name="pin-charts-to-dashboards"></a>Grafikleri panolara sabitleme
 
-Grafikleri yapılandırdıktan sonra yeniden, büyük olasılıkla diğer izleme telemetri bağlamında görüntülemek veya takımınızla paylaşmak için Pano eklemek isteyebilirsiniz.
+Grafikleri yapılandırdıktan sonra, bu panoyu yeniden görüntüleyebilmeniz, belki de diğer izleme telemetrisi bağlamında veya takımınızla paylaşmak üzere panolara eklemek isteyebilirsiniz.
 
-Yapılandırılmış bir grafik bir panoya sabitlemek için:
+Yapılandırılmış bir grafiği panoya sabitlemek için:
 
-Grafiğinizi yapılandırdıktan sonra tıklayarak **grafik Eylemler** menüsü sağ üst köşe grafiğin ve tıklayın **panoya Sabitle**.
+Grafiğinizi yapılandırdıktan sonra grafiğin sağ üst köşesindeki **grafik eylemleri** menüsüne tıklayın ve **panoya sabitle**' ye tıklayın.
 
-![Ölçüm görüntüsü](./media/metrics-charts/00013.png)
+![ölçüm resmi](./media/metrics-charts/00013.png)
 
 ## <a name="create-alert-rules"></a>Uyarı kuralları oluşturma
 
-Uyarı kuralı için temel bir ölçüm tabanlı olarak ölçümlerinizi görselleştirmek için ayarlanan ölçütlerle kullanabilirsiniz. Yeni uyarı verme kuralı, hedef kaynak, ölçüm, bölme ve grafik filtresi boyutlardan içerir. Uyarı kuralı oluşturma bölmesi daha sonra bu ayarları değiştirmek mümkün olacaktır.
+Ölçümünüzü ölçüm tabanlı bir uyarı kuralının temeli olarak görselleştirmek için ayarladığınız ölçütü kullanabilirsiniz. Yeni uyarı kuralı, grafiğinizdeki hedef kaynağı, ölçümü, bölmeyi ve filtre boyutlarını içerir. Bu ayarları daha sonra uyarı kuralı oluşturma bölmesinde değiştirebileceksiniz.
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Yeni bir uyarı kuralı oluşturmak için tıklayın **yeni uyarı kuralı**
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Yeni bir uyarı kuralı oluşturmak için **Yeni uyarı kuralı** ' na tıklayın.
 
-![Kırmızı renkte vurgulanmış yeni uyarı kuralı düğmesi](./media/metrics-charts/015.png)
+![Kırmızı renkle vurgulanmış yeni uyarı kuralı düğmesi](./media/metrics-charts/015.png)
 
-Temel alınan ölçü boyutları ile uyarı kuralı oluşturma bölmesine özel uyarı kuralları oluşturma daha kolay hale getirmek için önceden doldurulmuş grafiğinizi alınır.
+Özel uyarı kuralları oluşturulmasını kolaylaştırmak için grafiğinizdeki temeldeki ölçüm boyutları ile uyarı kuralı oluşturma bölmesine yönlendirilirsiniz.
 
-![Uyarı kuralı oluşturma](./media/metrics-charts/016.png)
+![Uyarı kuralı oluştur](./media/metrics-charts/016.png)
 
-Göz atın [makale](alerts-metric.md) ölçüm uyarılarını ayarlama hakkında daha fazla bilgi edinmek için.
+Ölçüm uyarılarını ayarlama hakkında daha fazla bilgi edinmek için bu [makaleye](alerts-metric.md) göz atın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-*Mychart üzerinde herhangi bir veri görmüyorum.*
+*Grafiğimde hiç veri görmüyorum.*
 
-* Filtreler bölmesinde tüm grafikler için geçerlidir. Bir grafikte odaklandığınız olsa da başka bir tüm verileri bırakan bir filtre ayarlanmış alamadık, emin olun.
+* Filtreler bölmedeki tüm grafiklere uygulanır. Tek bir grafiğe odaklanırken, diğer tüm verileri dışlayan bir filtre ayarlamadıysanız emin olun.
 
-* Farklı filtreler farklı grafikler üzerinde ayarlamak istiyorsanız bunları farklı dikey pencerelerinde oluşturma gibi ayrı sık kaydedin. İsterseniz, bunları birbirine yanı sıra görebilirsiniz, böylece bunları panoya sabitleyebilirsiniz.
+* Farklı grafiklerde farklı filtreler ayarlamak istiyorsanız bunları farklı dikey pencerelerde oluşturun, bunları ayrı sık kullanılanlar olarak kaydedin. İsterseniz, bunları birbirlerine göre görebilmeniz için panoya sabitleyebilir.
 
-* Bir grafik ölçüme göre tanımlı olmayan bir özelliğe göre segmentlere ayırmak, ardından olacaktır hiçbir şey grafiği. (Bölme) ayrılmasını temizlemeyi deneyin veya farklı bir özellik seçin.
+* Bir grafiği ölçümde tanımlı olmayan bir özelliğe göre segmentleyebilirsiniz, grafik üzerinde hiçbir şey olmayacaktır. Segmentleme işlemini temizlemeyi deneyin (bölme) veya farklı bir özellik seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-  Okuma [özel KPI panoları oluşturma](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) Ölçümleriyle eyleme dönüştürülebilir panolar oluşturmak için en iyi uygulamalar hakkında bilgi edinmek için.
+  Ölçümlerle eyleme dönüştürülebilir panolar oluşturmaya yönelik en iyi uygulamalar hakkında bilgi edinmek için [özel KPI panoları oluşturma](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) makalesini okuyun.
 

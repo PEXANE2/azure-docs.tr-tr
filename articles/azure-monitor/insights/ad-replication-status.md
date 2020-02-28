@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici ile Active Directory çoğaltma durumunu izleme | Microsoft Docs
 description: Active Directory Çoğaltma Durumu çözüm paketi, tüm çoğaltma hatalarıyla ilgili Active Directory ortamınızı düzenli olarak izler.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406089"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667185"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Izleyici ile Active Directory çoğaltma durumunu izleme
 
@@ -27,7 +26,7 @@ AD Çoğaltma Durumu çözümü, tüm çoğaltma hatalarıyla ilgili Active Dire
 ## <a name="installing-and-configuring-the-solution"></a>Çözümünü yükleme ve yapılandırma
 Çözümü yüklemek ve yapılandırmak için aşağıdaki bilgileri kullanın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * AD Çoğaltma Durumu çözümü, Windows için Log Analytics aracısına sahip olan (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklü .NET Framework 4.6.2 veya üzeri bir sürümü gerektirir.  Aracı System Center 2016-Operations Manager, Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.
 * Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2 ve Windows Server 2016 çalıştıran etki alanı denetleyicilerini destekler.
@@ -53,7 +52,7 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 ## <a name="ad-replication-status-data-collection-details"></a>Veri toplama ayrıntılarını AD Çoğaltma Durumu
 Aşağıdaki tabloda, verilerin AD Çoğaltma Durumu için nasıl toplandığı hakkında veri toplama yöntemleri ve diğer ayrıntılar gösterilmektedir.
 
-| Platform | Doğrudan aracı | SCOM Aracısı | Azure Depolama | SCOM gerekli? | Yönetim grubu gönderilen SCOM Aracısı verileri | Toplama sıklığı |
+| Platform | Doğrudan aracı | SCOM Aracısı | Azure Storage | SCOM gerekli? | Yönetim grubu gönderilen SCOM Aracısı verileri | Toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |Beş günde bir |
 

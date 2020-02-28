@@ -1,24 +1,23 @@
 ---
 title: Azure kaynağından kaynak günlüklerini toplayın ve Azure Izleyici ile çözümleyin
 description: Bir Azure kaynağından kaynak günlüklerini, bir günlük sorgusuyla çözümlenebilecekleri bir Log Analytics çalışma alanına toplamak üzere tanılama ayarlarını yapılandırma öğreticisi.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533562"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670415"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin
 
 Kaynak günlükleri bir Azure kaynağının ayrıntılı işlemine ilişkin öngörüler sağlar ve sistem durumunu ve kullanılabilirliğini izlemek için yararlıdır. Azure kaynakları otomatik olarak kaynak günlükleri oluşturur, ancak toplanacak yerleri yapılandırmanız gerekir. Bu öğretici, Azure aboneliğinizdeki bir kaynağın kaynak günlüklerini toplamak ve bir günlük sorgusuyla çözümlemek için bir tanılama ayarı oluşturma sürecinde size kılavuzluk ediyor.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure Izleyici 'de Log Analytics çalışma alanı oluşturma
@@ -26,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Günlükleri çözümlemek için basit bir günlük sorgusu oluşturma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağınız olması gerekir. Azure aboneliğinizdeki herhangi bir kaynağı tanılama ayarlarını destekleyen bir kaynak kullanabilirsiniz. Bir kaynağın tanılama ayarlarını destekleyip desteklemediğini anlamak için Azure portal menüsüne gidin ve menünün **izleme** bölümünde bir **Tanılama ayarları** seçeneğinin olduğunu doğrulayın.
 

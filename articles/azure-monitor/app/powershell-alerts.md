@@ -1,18 +1,14 @@
 ---
 title: Application Insights uyarıları ayarlamak için PowerShell 'i kullanma | Microsoft Docs
 description: Ölçüm değişiklikleriyle ilgili e-posta almak için Application Insights yapılandırmasını otomatikleştirin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928577"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669854"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Application Insights uyarıları ayarlamak için PowerShell kullanma
 
@@ -93,7 +89,7 @@ GUID, abonelik KIMLIĞIDIR (uygulamanın izleme anahtarı değildir).
 Aynı kural, TrackEvent veya trackPageView gibi başka bir izleme çağrısının [ölçüm parametresi](../../azure-monitor/app/api-custom-events-metrics.md#properties) kullanılarak bildirilen ölçüm için de kullanılabilir.
 
 ## <a name="metric-names"></a>Ölçüm adları
-| Ölçüm adı | Ekran adı | Açıklama |
+| Metrik adı | Ekran adı | Açıklama |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Tarayıcı özel durumları |Tarayıcıda oluşturulan yakalanamayan özel durumların sayısı. |
 | `basicExceptionServer.count` |Sunucu özel durumları |Uygulama tarafından oluşturulan işlenmemiş özel durumların sayısı |

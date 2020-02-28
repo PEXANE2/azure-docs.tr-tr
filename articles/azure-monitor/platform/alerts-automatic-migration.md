@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor klasik uyarılarınız için otomatik geçiş işleminin nasıl çalıştığını anlayın
 description: Otomatik geçiş işleminin nasıl çalıştığını öğrenin.
-author: snehithm
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: e0ac349554fa580c4ac88b26e76d0bea1ecf738b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8df83439d6754440648688ac1cc36ff66556a4e4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932705"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668256"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Klasik uyarı kurallarınız için otomatik geçiş işlemini anlayın
 

@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights Aracısı API başvurusu
 description: Aracı API başvurusunu Application Insights. Başlat-Izle. Durum İzleyicisi ve Application Insights SDK 'dan ETW günlüklerini toplayın.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899660"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671231"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights aracı API 'SI: Start-Applicationınsiısmonitoringtrace
 
@@ -24,7 +22,7 @@ Kodsuz kullanacaksınız Attach çalışma zamanından [ETW olaylarını](https:
 
 Toplanan olaylar, gerçek zamanlı olarak konsola yazdırılır ve bir ETL dosyasına kaydedilir. Çıktı ETL dosyası, daha fazla araştırma için [PerfView](https://github.com/microsoft/perfview) tarafından açılabilir.
 
-Bu cmdlet, zaman aşımı süresine (varsayılan 5 dakika) ulaşıncaya kadar veya el ile (`Ctrl + C`) durduruluncaya kadar çalışır.
+Bu cmdlet, zaman aşımı süresine (varsayılan 5 dakika) ulaşıncaya kadar çalışır veya el ile durdurulur (`Ctrl + C`).
 
 > [!IMPORTANT] 
 > Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
@@ -38,17 +36,17 @@ Normalde, uygulamanızın neden görüntülenmediğini araştırmak için olay t
 Kodsuz kullanacaksınız Attach çalışma zamanı, IIS başlatıldığında ve uygulamanız başlatıldığında ETW olaylarını yayacaktır.
 
 Bu olayları toplamak için:
-1. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi ve tüm Web uygulamalarını kapatmak Için `iisreset /stop` yürütün.
+1. Yönetici ayrıcalıklarına sahip bir cmd konsolunda IIS ve tüm Web uygulamalarını kapatmak Için `iisreset /stop` yürütün.
 2. Bu cmdlet 'i Yürüt
-3. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi başlatmak Için `iisreset /start` yürütün.
+3. Yönetici ayrıcalıklarına sahip bir cmd konsolunda IIS 'yi başlatmak Için `iisreset /start` yürütün.
 4. Uygulamanıza gözatmayı deneyin.
 5. Uygulamanızın yüklenmesi tamamlandıktan sonra, el ile durdurabilirsiniz (`Ctrl + C`) veya zaman aşımını bekleyebilirsiniz.
 
 ### <a name="what-events-to-collect"></a>Toplanacak olaylar
 
 Olayları toplarken üç seçeneğiniz vardır:
-1. Application Insights SDK 'dan yayılan olayları toplamak için `-CollectSdkEvents` anahtarını kullanın.
-2. Durum İzleyicisi ve Redfield çalışma zamanı tarafından yayılan olayları toplamak için `-CollectRedfieldEvents` anahtarını kullanın. Bu Günlükler IIS ve uygulama başlangıcını tanılarken yararlı olur.
+1. Application Insights SDK 'dan yayılan olayları toplamak için anahtar `-CollectSdkEvents` kullanın.
+2. Durum İzleyicisi ve Redfield çalışma zamanı tarafından yayılan olayları toplamak için anahtar `-CollectRedfieldEvents` kullanın. Bu Günlükler IIS ve uygulama başlangıcını tanılarken yararlı olur.
 3. Her iki olay türünü de toplamak için her iki anahtarı kullanın.
 4. Varsayılan olarak, hiçbir anahtar belirtilmemişse olay türleri toplanacaktır.
 

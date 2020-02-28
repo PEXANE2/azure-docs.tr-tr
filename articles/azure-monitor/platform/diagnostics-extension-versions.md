@@ -1,18 +1,17 @@
 ---
 title: Windows Azure Tanılama uzantısı (WAD) yapılandırma şema sürümü geçmişi
 description: Azure sanal makineler, VM Ölçek Kümeleri, Service Fabric ve Cloud Services performans sayaçlarını toplamaya uygun.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 20d9cdf264e62bc901c8e821065527a1d067b2db
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472550"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672251"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Tanılama uzantısı (WAD) yapılandırma şeması sürümleri ve geçmişi
 Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Windows (WAD) şema sürümlerinin Azure tanılama uzantısının](diagnostics-extension-overview.md) sürüm geçmişi sağlanmaktadır.  

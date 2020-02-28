@@ -1,19 +1,18 @@
 ---
 title: Hızlı başlangıç ASP.NET Core-Azure Izleyici Application Insights
 description: Azure Izleyici ile izleme için ASP.NET Core bir Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399027"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670636"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
@@ -21,7 +20,7 @@ Azure Application Insights ile web uygulamanızı kullanılabilirlik, performans
 
 Bu hızlı başlangıç, var olan bir ASP.NET Core Web uygulamasına Application Insights SDK ekleme konusunda size rehberlik eder. Visual Studio 'Yu Application Insights yapılandırma hakkında bilgi edinmek için bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)göz atın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -37,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
@@ -56,7 +55,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**'a tıklayın.
+2. **Oluştur**’ tıklayın.
 
 
 
@@ -79,7 +78,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 > [!NOTE]
 > Verilerin portalda görünmesi 3-5 dakika sürer. Bu uygulama düşük trafikli bir test uygulaması ise, çoğu ölçümün yalnızca etkin istek veya işlem olduğunda yakalandığını aklınızda bulundurun.
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatma
+## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatın
 
 1. **Ana** sayfa ' yı seçerek Azure Portal Application Insights **genel bakış** sayfasını yeniden açın ve son zamanlarda, çalışmakta olan uygulamanız hakkındaki ayrıntıları görüntülemek için daha önce oluşturduğunuz kaynağı seçin.
 

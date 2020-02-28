@@ -1,34 +1,33 @@
 ---
-title: Resource Manager şablonları ile Eylem grupları oluşturma
-description: Bir Azure Resource Manager şablonu kullanarak bir eylem grubu oluşturmayı öğrenin.
+title: Kaynak Yöneticisi şablonlarıyla eylem grupları oluşturma
+description: Azure Resource Manager şablonu kullanarak bir eylem grubu oluşturmayı öğrenin.
 author: dkamstra
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709975"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669089"
 ---
-# <a name="create-an-action-group-with-a-resource-manager-template"></a>Resource Manager şablonu ile bir eylem grubu oluştur
-Bu makalede nasıl kullanılacağını gösterir bir [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Eylem grupları yapılandırmak için. Şablonları kullanarak, otomatik olarak belirli uyarı türleri yeniden kullanılabilir Eylem grupları ayarlayabilirsiniz. Bu eylem grupları doğru bütün tarafların bir uyarı tetiklendiğinde bildirim aldığından emin olun.
+# <a name="create-an-action-group-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla bir eylem grubu oluşturma
+Bu makalede, eylem gruplarını yapılandırmak için bir [Azure Resource Manager şablonunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) nasıl kullanılacağı gösterilmektedir. Şablonları kullanarak, belirli uyarı türlerinde yeniden kullanılabilen eylem gruplarını otomatik olarak ayarlayabilirsiniz. Bu eylem grupları, bir uyarı tetiklendiğinde tüm doğru taraflara bildirimde bulunduğundan emin olur.
 
 Temel adımlar şunlardır:
 
-1. Eylem grubu oluşturmayı açıklayan bir JSON dosyası olarak bir şablon oluşturun.
+1. Eylem grubunun nasıl oluşturulacağını açıklayan bir JSON dosyası olarak şablon oluşturun.
 
-2. Kullanarak şablonu dağıtma [herhangi bir dağıtım yöntemi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. [Herhangi bir dağıtım yöntemini](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)kullanarak şablonu dağıtın.
 
-İlk olarak, burada eylem tanımları şablonu sabit kodlanmış bir eylem grubu için bir Resource Manager şablonunun nasıl oluşturulacağını açıklar. İkinci olarak, şablon dağıtıldığında, Web kancası yapılandırma bilgilerini giriş parametresi olarak alan bir şablonun nasıl oluşturulacağını açıklar.
+İlk olarak, eylem tanımlarının şablonda sabit kodlandığı bir eylem grubu için bir Kaynak Yöneticisi şablonu oluşturma işlemi anlatılmaktadır. İkincisi, şablon dağıtıldığında, Web kancası yapılandırma bilgilerini giriş parametresi olarak alan bir şablonun nasıl oluşturulacağını açıklamaktadır.
 
-## <a name="resource-manager-templates-for-an-action-group"></a>Bir eylem grubu için Resource Manager şablonları
+## <a name="resource-manager-templates-for-an-action-group"></a>Eylem grubu için Kaynak Yöneticisi şablonları
 
-Resource Manager şablonu kullanarak bir eylem grubu oluşturmak için kaynak türü oluştur `Microsoft.Insights/actionGroups`. Daha sonra tüm ilgili özellikleri doldurun. Bir eylem grubu oluşturma iki örnek şablonu aşağıda verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir eylem grubu oluşturmak için `Microsoft.Insights/actionGroups`türünde bir kaynak oluşturursunuz. Ardından ilgili tüm özellikleri doldurursunuz. Bir eylem grubu oluşturan iki örnek şablon aşağıda verilmiştir.
 
 ```json
 {
@@ -164,7 +163,7 @@ Resource Manager şablonu kullanarak bir eylem grubu oluşturmak için kaynak t�
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Daha fazla bilgi edinin [Eylem grupları](../../azure-monitor/platform/action-groups.md).
-* Daha fazla bilgi edinin [uyarılar](alerts-overview.md).
-* Eklemeyi öğrenin [Resource Manager şablonu kullanarak uyarıları](../../azure-monitor/platform/alerts-activity-log.md).
+* [Eylem grupları](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+* [Uyarılar](alerts-overview.md)hakkında daha fazla bilgi edinin.
+* [Kaynak Yöneticisi şablonu kullanarak uyarı](../../azure-monitor/platform/alerts-activity-log.md)eklemeyi öğrenin.
 

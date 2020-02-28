@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de Linux uygulama performansını toplayın | Microsoft Docs
 description: Bu makalede, MySQL ve Apache HTTP sunucusu için performans sayaçlarını toplamak üzere Linux için Log Analytics aracısının yapılandırılmasına ilişkin ayrıntılar sağlanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395844"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670568"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -76,7 +75,7 @@ Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrı
 | *yanlış veya doğru* otomatik güncelleştirme | mycimprovauth otomatik güncelleştirme yanlış | Kimlik doğrulama dosyasının yeniden başlatma veya güncelleştirme sırasında otomatik olarak güncelleştirilip güncelleştirimeyeceğini ayarlar. |
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |
 | *varsayılan veya port_num* Sil | mycimprovauth 3308 | Belirtilen örneği varsayılan ya da bağlantı noktası numarasıyla siler. |
-| Yardım | mycimprov yardımı | Kullanılacak komutların listesini yazdırır. |
+| yardım | mycimprov yardımı | Kullanılacak komutların listesini yazdırır. |
 | Yazdırma | mycimprov Yazdır | Okunması kolay bir MySQL OMı kimlik doğrulama dosyası yazdırır. |
 | port_num *bağlama adresi Kullanıcı adı parolasını* Güncelleştir | mycimprov güncelleştirmesi 3307 127.0.0.1 kök PWD | Belirtilen örneği güncelleştirir veya yoksa örneği ekler. |
 
@@ -162,4 +161,4 @@ Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Linux aracılarından [performans sayaçlarını toplayın](data-sources-performance-counters.md) .
-* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için. 
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 

@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591583"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656407"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -85,7 +85,7 @@ Daemon uygulamaları, Azure AD 'de kimlik doğrulaması yapmak için iki kimlik 
 
 ### <a name="upload-a-certificate"></a>Sertifikayı karşıya yükleyin
 
-Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, sınama amacıyla otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda kendinden imzalı bir sertifika oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: 
+Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, *yalnızca sınama amacıyla*otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda kendinden imzalı bir sertifika oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Bu sertifikayı, Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertifikasını Yönet](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC ek bileşenini kullanarak bir dosyaya dışarı aktarın.
 
+1. **Başlat** menüsünden **Çalıştır** ' ı seçin ve ardından **certmgr. msc**yazın.
+
+   Geçerli Kullanıcı için Sertifika Yöneticisi aracı görünür.
+
+1. Sertifikalarınızı görüntülemek için **Sertifikalar** ' ın altında, sol bölmedeki **Kişisel** Dizin ' i genişletin.
+1. Oluşturduğunuz sertifikaya sağ tıklayın, **Tüm görevler-> dışarı aktar**' ı seçin.
+1. Sertifika Verme Sihirbazı ' nı izleyin.  Özel anahtarı dışarı aktarın, sertifika dosyası için bir parola belirtin ve bir dosyaya aktarın.
+
 Sertifikayı karşıya yüklemek için:
 
+1. **Azure Active Directory**'yi seçin.
+1. Azure AD 'de **uygulama kayıtları** uygulamanızı seçin.
 1. **Sertifikalar & parolaları**' nı seçin.
 1. **Sertifikayı karşıya yükle** ' yi seçin ve sertifikayı (mevcut bir sertifika ya da verdiğiniz otomatik olarak imzalanan sertifika) seçin.
 
@@ -146,15 +156,21 @@ Azure aboneliğinizde, bir AD uygulamasına rol atamak için hesabınızın `Mic
 
 Abonelik izinlerinizi denetlemek için:
 
-1. Sağ üst köşedeki hesabınızı seçin ve **...-> Izinlerim**' i seçin.
+1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Hesabınızı ve Kullanıcı izinlerinizi seçin](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. Aşağı açılan listeden, hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin. Ardından, **bu aboneliğin tüm erişim ayrıntılarını görüntülemek için buraya tıklayın '** ı seçin.
+1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
+
+   ![Atama için abonelik seçin](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   Aradığınız aboneliği görmüyorsanız **genel abonelikler filtresi**' ni seçin. Portal için istediğiniz aboneliğin seçildiğinden emin olun.
+
+1. **Izinlerim**' i seçin. Ardından, **bu aboneliğin tüm erişim ayrıntılarını görüntülemek için buraya tıklayın '** ı seçin.
 
    ![Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Atanan rollerinizi görüntülemek için **rol atamaları** ' nı seçin ve bir ad uygulamasına rol atamak için yeterli izinlere sahip olup olmadığınızı belirleyin. Aksi takdirde, abonelik yöneticinizden sizi Kullanıcı erişimi Yöneticisi rolüne eklemesini isteyin. Aşağıdaki görüntüde, Kullanıcı sahip rolüne atanır, bu da kullanıcının yeterli izinlere sahip olduğu anlamına gelir.
+1. Atanan rollerinizi görüntülemek için **rol atamalarında** **Görünüm** ' ü seçin ve bir ad uygulamasına rol atamak için yeterli izinlere sahip olup olmadığınızı belirleyin. Aksi takdirde, abonelik yöneticinizden sizi Kullanıcı erişimi Yöneticisi rolüne eklemesini isteyin. Aşağıdaki görüntüde, Kullanıcı sahip rolüne atanır, bu da kullanıcının yeterli izinlere sahip olduğu anlamına gelir.
 
    ![Bu örnek, kullanıcıya sahip rolü atandığını gösterir](./media/howto-create-service-principal-portal/view-user-role.png)
 

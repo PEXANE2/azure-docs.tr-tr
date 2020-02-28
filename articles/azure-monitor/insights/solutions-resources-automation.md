@@ -1,19 +1,18 @@
 ---
 title: Yönetim çözümlerinde Azure Otomasyonu kaynakları | Microsoft Docs
 description: Yönetim çözümleri genellikle, izleme verilerini toplama ve işleme gibi işlemleri otomatikleştirmek için Azure Otomasyonu 'ndaki runbook 'ları içerir.  Bu makalede runbook 'ların ve ilgili kaynaklarının bir çözüme eklenmesi açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401812"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663071"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Otomasyonu kaynaklarını bir yönetim çözümüne ekleme (Önizleme)
 > [!NOTE]
@@ -26,7 +25,7 @@ ms.locfileid: "75401812"
 > Bu makaledeki örneklerde, yönetim çözümlerinde gerekli veya ortak olan ve [Azure 'da bir yönetim çözümü tasarlama ve derleme]( solutions-creating.md) konularında açıklanan parametreleri ve değişkenleri kullanır 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, aşağıdaki bilgiler hakkında bilgi sahibi olduğunuz varsayılır.
 
 - [Yönetim çözümü oluşturma]( solutions-creating.md).
@@ -143,7 +142,7 @@ Sertifika kaynaklarının özellikleri aşağıdaki tabloda açıklanmıştır.
 
 
 
-## <a name="credentials"></a>Kimlik bilgileri
+## <a name="credentials"></a>Kimlik Bilgileri
 [Azure Otomasyonu kimlik bilgileri](../../automation/automation-credentials.md) bir tür **Microsoft. Automation/automationaccounts/Credentials** ve aşağıdaki yapıya sahiptir.  Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir. 
 
 
@@ -166,7 +165,7 @@ Kimlik bilgileri kaynaklarının özellikleri aşağıdaki tabloda açıklanmı�
 | Özellik | Açıklama |
 |:--- |:--- |
 | userName adı |Kimlik bilgisinin Kullanıcı adı. |
-| parola |Kimlik bilgileri için parola. |
+| password |Kimlik bilgileri için parola. |
 
 
 ## <a name="schedules"></a>Zamanlamalar
@@ -236,8 +235,8 @@ Bir çözümde kaynakları zamanlamayı kullanırken aşağıdaki iki stratejide
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| schedule name |Tek **name** planının adı olan varlık. |
-| runbook name  |Tek **name** runbook'un adı olan varlık.  |
+| schedule name |Zamanlamanın adına sahip tek bir **ad** varlığı. |
+| runbook name  |Runbook 'un adına sahip tek bir **ad** varlığı.  |
 
 
 
@@ -277,10 +276,10 @@ Değişken için ilk değeri ayarlarsanız, doğru veri türü olarak yapıland�
 |:--|:--|:--|:--|
 | string   | Değeri çift tırnak içine alın.  | "Merhaba Dünya\"\"" | "Merhaba Dünya" |
 | numeric  | Tek tırnak ile sayısal değer.| "64" | 64 |
-| boole  | **true** veya **false** tırnak içinde.  Bu değerin küçük harf olması gerektiğini unutmayın. | "true" | doğru |
+| boole  | tırnak içinde **true** veya **false** .  Bu değerin küçük harf olması gerektiğini unutmayın. | "true" | true |
 | datetime | Serileştirilmiş tarih değeri.<br>Bu değeri belirli bir tarih için oluşturmak üzere PowerShell 'de ConvertTo-JSON cmdlet 'ini kullanabilirsiniz.<br>Örnek: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
-## <a name="modules"></a>Modüller
+## <a name="modules"></a>Modules
 Yönetim çözümünüzün, her zaman Otomasyon hesabınızda kullanılabilir olacağı için Runbook 'larınız tarafından kullanılan [genel modülleri](../../automation/automation-integration-modules.md) tanımlamasına gerek yoktur.  Runbook 'larınız tarafından kullanılan başka bir modül için bir kaynak eklemeniz gerekir.
 
 [Tümleştirme modüllerinin](../../automation/automation-integration-modules.md) bir tür **Microsoft. Automation/automationaccounts/modülleri** vardır ve aşağıdaki yapıya sahiptir.  Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.

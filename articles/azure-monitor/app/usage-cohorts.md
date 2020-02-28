@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights kullanım katmanları | Microsoft Docs
 description: Farklı kümeleri veya kullanıcıları, oturumları, olayları veya ortak bir şeyi içeren işlemleri çözümleyin
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406314"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671095"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortaları
 
@@ -118,7 +116,7 @@ Ayrıca, olayların birlikte da kullanılabilmesini sağlayabilirsiniz. Bu böl�
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. **Sorgu Çalıştır**'ı seçin. Tabloda Kullanıcı kimlikleri görünmüyorsa, uygulamanızın kullanıcılara sahip olduğu bir ülkeye/bölgeye geçin.
+3. **Sorguyu Çalıştır**' ı seçin. Tabloda Kullanıcı kimlikleri görünmüyorsa, uygulamanızın kullanıcılara sahip olduğu bir ülkeye/bölgeye geçin.
 
 4. Kohortu öğesini kaydedin ve adlandırın.
 
@@ -131,7 +129,7 @@ Cohortalar ve filtreler farklıdır. Birleşik Krallık 'tan (önceki örnekte o
 * Kohortu sürümü, geçerli zaman aralığında Birleşik Krallık 'tan bir veya daha fazla olay gönderen kullanıcılardan gelen tüm olayları gösterir. Ülke veya bölgeye göre böldüğünüz takdirde, büyük olasılıkla birçok ülke ve bölge görürsünüz.
 * Filtreler sürümü yalnızca Birleşik Krallık 'un olaylarını gösterir. Ancak ülke veya bölgeye göre böldüğünüz takdirde yalnızca Birleşik Krallık ' u görürsünüz.
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Analytics sorgu dili](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Kullanıcılar, oturumlar, olaylar](usage-segmentation.md)

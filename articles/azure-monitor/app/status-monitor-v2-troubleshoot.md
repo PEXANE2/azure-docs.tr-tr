@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights Agent sorunlarını giderme ve bilinen sorunlar | Microsoft Docs
 description: Application Insights Aracısı ve sorun giderme örnekleri ile ilgili bilinen sorunlar. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899587"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671163"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent sorunlarını giderme (eski adıyla Durum İzleyicisi v2)
 
@@ -27,7 +25,7 @@ Burada listelenmeyen bir sorunla karşılaşırsanız [GitHub](https://github.co
 Bu dll 'Lerden herhangi biri bin dizininde mevcutsa, izleme başarısız olabilir:
 
 - Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
 - System. Diagnostics. DiagnosticSource. dll
 
 Bu dll 'Lerden bazıları, uygulamanız tarafından kullanılmasa bile Visual Studio varsayılan uygulama şablonlarına dahildir.
@@ -97,7 +95,7 @@ Bir modül bir PowerShell oturumuna yüklenmediyse, `Import-Module <path to psd1
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>Application Insights Aracısı modülü sorunlarını giderme
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Application Insights Aracısı modülünde kullanılabilen komutları listeleyin
-Kullanılabilir komutları almak için `Get-Command -Module Az.ApplicationMonitor` komutunu çalıştırın:
+Kullanılabilir komutları almak için komutu `Get-Command -Module Az.ApplicationMonitor` çalıştırın:
 
 ```
 CommandType     Name                                               Version    Source
@@ -149,7 +147,7 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 
 1. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi ve tüm Web uygulamalarını kapatmak için `iisreset /stop` komutunu çalıştırın.
 2. PerfView içinde **toplamayı Başlat**' ı seçin.
-3. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi başlatmak için `iisreset /start` komutunu çalıştırın.
+3. Yönetici ayrıcalıklarına sahip bir komut konsolunda IIS 'yi başlatmak için `iisreset /start` komutunu çalıştırın.
 4. Uygulamanıza gözatmayı deneyin.
 5. Uygulamanız yüklendikten sonra PerfView ' a dönüp **toplamayı durdur**' u seçin.
 

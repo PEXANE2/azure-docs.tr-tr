@@ -1,20 +1,16 @@
 ---
 title: Azure Application Insights telemetri örnekleme | Microsoft Docs
 description: Denetim altında telemetri hacmini tutma.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989986"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671503"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -37,11 +33,11 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 | Application Insights SDK | Uyarlamalı örnekleme destekleniyor | Sabit hızlı örnekleme destekleniyor | Alım örnekleme destekleniyor |
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| ASP.NET Çekirdeği | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
 | Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
+| Diğerlerinin tümü | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
 > Bu sayfanın büyük bir yanındaki bilgiler Application Insights SDK 'ların güncel sürümleri için geçerlidir. SDK 'ların eski sürümleri hakkında bilgi için [aşağıdaki bölüme bakın](#older-sdk-versions).
@@ -353,7 +349,7 @@ Uygulamanızı en son [Opencensus Azure izleyici dışarı layıcılarını](../
 > Ölçüm Dışarı Aktarıcı için sabit fiyat örnekleme kullanılamaz. Bu, örneklemenin yapılandırılamadığını tek tür telemetri olan özel ölçümleri gösterir. Ölçüm dışarı aktarıcı, izlediği tüm Telemetriyi gönderir.
 
 #### <a name="fixed-rate-sampling-for-tracing"></a>İzleme için sabit fiyat örnekleme ####
-`Tracer` yapılandırmanız kapsamında bir `sampler` belirtmelisiniz. Açık örnekleyici sağlanmazsa, `ProbabilitySampler` varsayılan olarak kullanılır. `ProbabilitySampler`, varsayılan olarak 1/10000 oranını kullanır, yani her 10000 istekten biri Application Insights gönderilir. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
+`sampler` yapılandırmanız kapsamında bir `Tracer` belirtmelisiniz. Açık örnekleyici sağlanmazsa, `ProbabilitySampler` varsayılan olarak kullanılır. `ProbabilitySampler`, varsayılan olarak 1/10000 oranını kullanır, yani her 10000 istekten biri Application Insights gönderilir. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
 
 Örnekleme hızını belirtmek için `Tracer`, 0,0 ve 1,0 dahil olmak üzere örnekleme oranına sahip bir örnekleyiciyi belirttiğinden emin olun. 1,0 örnekleme oranı %100 ' i temsil eder, ancak tüm istekleriniz Application Insights telemetri olarak gönderilir.
 

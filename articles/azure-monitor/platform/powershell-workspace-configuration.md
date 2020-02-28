@@ -1,18 +1,17 @@
 ---
 title: Oluşturma ve Log Analytics çalışma alanı yapılandırma için PowerShell kullanma | Microsoft Docs
 description: Azure Izleyici 'de Log Analytics çalışma alanları, şirket içi veya bulut altyapınızdaki sunuculardaki verileri depolar. Azure tanılama tarafından oluşturulmuş bir Azure depolama makine verilerini toplayabilir.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363549"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659331"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanını yönetme
 
@@ -30,14 +29,14 @@ ms.locfileid: "75363549"
 * Bir Azure sanal makinesi için log analytics aracısını ekleme
 * Azure Tanılama'yı kullanarak toplanan dizin verileri log analytics'e yapılandırın
 
-Bu makalede, Powershell'den gerçekleştirebileceğiniz işlevlerin bazılarını göstermeyi iki kod örneği sağlanmıştır.  Başvurabilirsiniz [Log Analytics PowerShell cmdlet başvurusu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) diğer işlevleri için.
+Bu makalede, Powershell'den gerçekleştirebileceğiniz işlevlerin bazılarını göstermeyi iki kod örneği sağlanmıştır.  Diğer işlevler için [Log Analytics PowerShell cmdlet başvurusuna](https://docs.microsoft.com/powershell/module/az.operationalinsights/) başvurabilirsiniz.
 
 > [!NOTE]
 > Log Analytics, daha önce yer alan cmdlet'ler kullanılan adı, bu yüzden operasyonel İçgörüler olarak adlandırılıyordu.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu örnekler, az. Operationalınsights modülünün Version 1.0.0 veya üzeri sürümleriyle çalışır.
 
 
@@ -202,26 +201,26 @@ Azure kaynaklarını aracısız izleme için kaynakları etkin ve Log Analytics 
 
 | Kaynak Türü | Günlükler | Ölçümler |
 | --- | --- | --- |
-| Application Gatewayler    | Evet | Evet |
-| Otomasyon hesapları     | Evet | |
-| Batch hesapları          | Evet | Evet |
-| Data Lake analytics     | Evet | |
-| Data Lake store         | Evet | |
-| SQL esnek havuzu        |     | Evet |
-| Olay hub'ı ad alanı     |     | Evet |
-| IoT Hub’ları                |     | Evet |
-| Key Vault               | Evet | |
-| Yük Dengeleyiciler          | Evet | |
-| Logic Apps              | Evet | Evet |
-| Ağ Güvenlik Grupları | Evet | |
-| Redis için Azure Cache             |     | Evet |
-| Hizmet ara         | Evet | Evet |
-| Service Bus ad alanı   |     | Evet |
-| SQL (v12)               |     | Evet |
-| Web Siteleri               |     | Evet |
-| Web sunucu grupları        |     | Evet |
+| Uygulama Ağ Geçitleri    | Yes | Yes |
+| Automation hesapları     | Yes | |
+| Batch hesapları          | Yes | Yes |
+| Data Lake analytics     | Yes | |
+| Data Lake store         | Yes | |
+| SQL esnek havuzu        |     | Yes |
+| Olay hub'ı ad alanı     |     | Yes |
+| IoT Hub                |     | Yes |
+| Key Vault               | Yes | |
+| Yük Dengeleyiciler          | Yes | |
+| Logic Apps              | Yes | Yes |
+| Ağ Güvenlik Grupları | Yes | |
+| Redis için Azure Önbelleği             |     | Yes |
+| Hizmet ara         | Yes | Yes |
+| Service Bus ad alanı   |     | Yes |
+| SQL (v12)               |     | Yes |
+| Web Siteleri               |     | Yes |
+| Web sunucu grupları        |     | Yes |
 
-Kullanılabilir ölçümler ayrıntılarını başvurmak [ölçümleri Azure İzleyici ile desteklenen](../../azure-monitor/platform/metrics-supported.md).
+Kullanılabilir ölçümlerin ayrıntıları için [Azure izleyici ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md)bölümüne bakın.
 
 Kullanılabilir günlüklerin ayrıntıları için, [kaynak günlükleri için desteklenen hizmetler ve şemaya](../../azure-monitor/platform/diagnostic-logs-schema.md)bakın.
 
@@ -275,5 +274,5 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Log Analytics PowerShell cmdlet'leri gözden](https://docs.microsoft.com/powershell/module/az.operationalinsights/) Log analytics'in bir yapılandırma için PowerShell kullanma hakkında ek bilgi için.
+* PowerShell 'i Log Analytics yapılandırması için kullanma hakkında daha fazla bilgi için [Log Analytics PowerShell cmdlet 'Lerini gözden geçirin](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 

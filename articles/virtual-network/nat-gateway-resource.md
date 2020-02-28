@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589479"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669565"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
 
@@ -34,7 +34,7 @@ NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçası
 
 
 >[!NOTE] 
->Sanal ağ NAT Şu anda genel önizleme olarak kullanılabilir. Şu anda yalnızca sınırlı sayıda [bölgede](nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Sanal ağ NAT Şu anda genel önizleme olarak kullanılabilir. Şu anda yalnızca sınırlı sayıda [bölgede](nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>NAT dağıtma
 
@@ -365,5 +365,5 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi g
   * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
   * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
   * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [UserVoice 'ta daha sonra neleri derleyeceğinizi bize söyleyin](https://aka/natuservoice).
+- [UserVoice 'ta daha sonra neleri derleyeceğinizi bize söyleyin](https://aka.ms/natuservoice).
 - [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).

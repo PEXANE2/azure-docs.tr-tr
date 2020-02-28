@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlük sorgularıyla toplamalar | Microsoft Docs
 description: Verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevlerini açıklar.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900421"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670313"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki toplamalar
 
@@ -23,10 +22,10 @@ ms.locfileid: "72900421"
 
 Bu makalede, verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevleri açıklanmaktadır. Bu işlevler, giriş tablosunun toplanmış sonuçlarını içeren bir tablo üreten `summarize` işleciyle çalışır.
 
-## <a name="counts"></a>Kapsam
+## <a name="counts"></a>Sayılar
 
 ### <a name="count"></a>count
-Herhangi bir filtre uygulandıktan sonra sonuç kümesindeki satır sayısını say. Aşağıdaki örnek, son 30 dakikadan itibaren _performans_ tablosundaki toplam satır sayısını döndürür. Sonuç, özel bir ad atamadıkça *count_* adlı bir sütunda döndürülür:
+Herhangi bir filtre uygulandıktan sonra sonuç kümesindeki satır sayısını say. Aşağıdaki örnek, son 30 dakikadan itibaren _performans_ tablosundaki toplam satır sayısını döndürür. Sonuç, belirli bir ad atamadıkça *count_* adlı bir sütunda döndürülür:
 
 
 ```Kusto
@@ -83,7 +82,7 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|Birleşik Devletler    | 19                  |
+|Amerika Birleşik Devletleri    | 19                  |
 |Kanada           | 3                   |
 |İrlanda          | 0                   |
 |Birleşik Krallık   | 0                   |
@@ -122,7 +121,7 @@ Perf
 
 Bu, bazı bilgisayar CPU 'ların benzer ortanca değerleri olduğunu gösterebilir, ancak bazıları ortanca etrafında kararlı olmakla kalmaz, diğer bilgisayarlar ani artışlar yaştıkları anlamına gelir.
 
-### <a name="variance"></a>Denetlemesini
+### <a name="variance"></a>Varyans
 Bir değerin varyansını doğrudan değerlendirmek için standart sapma ve varyans yöntemlerini kullanın:
 
 ```Kusto

@@ -1,23 +1,22 @@
 ---
 title: Azure Izleyici kaynak grubu öngörüleri | Microsoft Docs
 description: Azure Izleyici ile kaynak grubu düzeyinde dağıtılmış uygulamalarınızın ve hizmetlerinizin sistem durumunu ve performansını anlayın
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553978"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663547"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
 
-Modern uygulamalar genellikle karmaşık ve yüksek oranda bir hizmet sunmak için birlikte çalışan çok sayıda ayrı bölümden dağıtılır. Bu karmaşıklığı tanıma, Azure Izleyici, kaynak grupları için izleme öngörüleri sağlar. Bu, bireysel kaynaklarınızın karşılaştığı her türlü sorunu önceliklendirme ve tanılamanıza ve uygulamanızın bir bütün &mdash;as &mdash;and kaynak grubunun sistem durumu ve performansına göre bir bağlam sunabilmesini kolaylaştırır.
+Modern uygulamalar genellikle karmaşık ve yüksek oranda bir hizmet sunmak için birlikte çalışan çok sayıda ayrı bölümden dağıtılır. Bu karmaşıklığı tanıma, Azure Izleyici, kaynak grupları için izleme öngörüleri sağlar. Bu, bireysel kaynaklarınızın karşılaştığı tüm sorunları önceliklendirmenizi ve tanılamayı kolaylaştırır ve kaynak grubunun sistem durumu ve performansına&mdash;ve uygulamanızın bir bütün olarak&mdash;.
 
 ## <a name="access-insights-for-resource-groups"></a>Kaynak grupları için Öngörüler 'e erişin
 

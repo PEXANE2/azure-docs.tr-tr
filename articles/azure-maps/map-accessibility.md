@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209792"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672472"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 
@@ -32,9 +32,11 @@ Azure Haritalar Web SDK 'Sı, şu gibi birçok erişilebilirlik özelliği ile �
 Tüm Microsoft ürünlerine yönelik tam erişilebilirlik uyumluluğu ayrıntıları [burada](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)bulunabilir. Azure Haritalar Web SDK 'Sı için belgeyi özel olarak bulmak üzere "Azure Maps web" araması yapın. 
 
 ## <a name="navigating-the-map"></a>Haritada gezinme
+
 Haritanın Yakınlaştırılıp Yakınlaştırılıp döndürülmemiş, döndürülebileceği ve açık bir şekilde birçok farklı yolu vardır. Haritada gezinmek için kullanabileceğiniz farklı yollar aşağıda verilmiştir.
 
 **Haritayı Yakınlaştır**
+
 - Bir fare kullanarak, bir düzey yakınlaştırmak için Haritayı çift tıklayın.
 - Fareyi kullanarak Haritayı yakınlaştırmak için tekerleği kaydırın.
 - Dokunmatik ekran kullanarak parmakları yakınlaştırmak veya yaymak için iki parmağınızla ve Pinç ile Haritayı dokunarak bir araya geçirin.
@@ -45,23 +47,46 @@ Haritanın Yakınlaştırılıp Yakınlaştırılıp döndürülmemiş, döndür
 - `Shift` düğmesini basılı tutarak haritada sol fare düğmesine basın ve Haritayı yakınlaştırmak için bir alan çizmek üzere sürükleyin.
 
 **Haritayı kaydır**
+
 - Fare kullanarak haritada sol fare düğmesine basın ve herhangi bir yöne sürükleyin.
 - Dokunmatik ekran kullanarak Haritayı dokunarak istediğiniz yöne sürükleyin.
 - Eşleme odaklı olduğunda, Haritayı taşımak için ok tuşlarını kullanın.
 
 **Haritayı döndürme**
+
 - Fare kullanarak haritada sağ fare düğmesiyle basın ve sol veya sağ sürükleyin. 
 - Dokunmatik ekran kullanarak Haritayı iki parmağınızla dokunarak ve döndürün.
 - Eşleme odaklı olduğunda SHIFT tuşunu ve sol veya sağ ok tuşlarını kullanın.
 - Döndürme denetimini fare, dokunmatik veya klavye sekmesi/ENTER tuşlarıyla kullanma.
 
 **Haritayı sıklık**
+
 - Fareyi kullanarak haritada sağ fare düğmesiyle aşağı basın ve yukarı veya aşağı sürükleyin. 
 - Dokunmatik ekran kullanarak haritada iki parmağınızla dokunarak dokunun ve bunları birlikte yukarı veya aşağı sürükleyin.
 - Eşlemle odaklanan şekilde SHIFT tuşunu ve yukarı veya aşağı ok tuşlarını kullanın. 
 - Sıklık denetimini fare, dokunmatik veya klavye sekmesi/ENTER tuşları ile kullanma.
 
-**Harita stilini değiştirme** Tüm geliştiriciler, tüm olası harita stillerinin uygulamalarıyla kullanılabilmesini ister. Geliştirici, harita stilini programlı bir şekilde ayarlayıp değiştirebilir. Geliştirici haritanın stil Seçicisi denetimini görüntülerse Kullanıcı, sekme veya ENTER tuşu ile fare, dokunmatik veya klavyeyi kullanarak harita stilini değiştirebilir. Geliştirici, harita stili seçici denetiminde kullanılabilir hale getirmek istedikleri eşleme stillerini belirtebilir. 
+## <a name="change-the-map-style"></a>Harita stilini değiştirme
+
+Tüm geliştiriciler, tüm olası harita stillerinin uygulamalarıyla kullanılabilmesini ister. Geliştirici haritanın stil Seçicisi denetimini görüntülerse Kullanıcı, sekme veya ENTER tuşu ile fare, dokunmatik veya klavyeyi kullanarak harita stilini değiştirebilir. Geliştirici, harita stili seçici denetiminde kullanılabilir hale getirmek istedikleri eşleme stillerini belirtebilir. Ayrıca geliştirici, harita stilini programlı bir şekilde ayarlayıp değiştirebilir.
+
+**Yüksek karşıtlık kullanın**
+
+- Harita denetimi yüklendiğinde, yüksek karşıtlık özelliğinin etkinleştirilip etkinleştirilmediğini ve tarayıcının bunu destekleyip desteklemediğini denetler.
+- Harita denetimi, cihazın yüksek karşıtlık modunu izlemez. Cihaz modu değişirse, eşleme olmayacaktır. Bu nedenle, kullanıcının sayfayı yenileyerek Haritayı yeniden yüklemesi gerekir.
+- Yüksek karşıtlık algılandığında, harita stili otomatik olarak yüksek karşıtlığa geçiş yapar ve tüm yerleşik denetimler yüksek karşıtlık stilini kullanır. Örneğin, ZoomControl, Lıchcontrol, CompassControl, StyleControl ve diğer yerleşik denetimler, yüksek karşıtlık stili kullanacaktır.
+- İki tür yüksek karşıtlık, açık ve koyu. Yüksek karşıtlık türü harita denetimleri tarafından algılanıyorsa, haritanın davranışı buna uygun şekilde ayarlanacaktır. Işık ise grayscale_light harita stili yüklenir. Tür algılanamadığından veya karanlık ise high_contrast_dark stili yüklenir.
+- Özel denetimler oluşturuyorsanız, yerleşik denetimlerin yüksek karşıtlık stili kullanıp kullanmediğini bilmemiz yararlı olur. Geliştiriciler, denetlemek için harita kapsayıcısı div öğesine bir CSS sınıfı ekleyebilir. Eklenecek CSS sınıfları `high-contrast-dark` ve `high-contrast-light`. JavaScript kullanmayı denetlemek için şunu kullanın:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+veya şunu kullanın:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>Klavye kısayolları
 

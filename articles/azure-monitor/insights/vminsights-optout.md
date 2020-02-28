@@ -1,18 +1,17 @@
 ---
 title: VM'ler için Azure İzleyici izlemeyi devre dışı bırak (Önizleme) | Microsoft Docs
 description: Bu makalede, sanal makinelerinizin VM'ler için Azure İzleyici izlemenin nasıl durdurulacağı açıklanır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399301"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669514"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici (Önizleme) ' de sanal makinelerinizin izlenmesini devre dışı bırakın
 
@@ -43,7 +42,7 @@ Hala Log Analytics çalışma alanına ihtiyacınız varsa, VM'ler için Azure �
 >VM'ler için Azure İzleyici etkinleştirilmeden önce Hizmet Eşlemesi izleme çözümünü kullandıysanız ve bu uygulamayı kullanmaya devam ediyorsanız, bu çözümü aşağıdaki yordamın son adımında açıklanan şekilde kaldırmayın.  
 >
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Log Analytics**’i seçin.
 3. Log Analytics çalışma alanları listenizde, VM'ler için Azure İzleyici etkinleştirildiğinde seçtiğiniz çalışma alanını seçin.
 4. Sol tarafta **çözümler**' i seçin.  
@@ -64,7 +63,7 @@ Log Analytics çalışma alanınızın diğer kaynaklardan izlemeyi desteklemesi
 >
 > Log Analytics aracısını kaldırırsanız, bu hizmetlerin ve çözümlerin sanal makinenizin yönetimini proaktif olarak yönetmesini önlemektir. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Azure portal **sanal makineler**' i seçin. 
 3. Listeden bir VM seçin. 
 4. Sol tarafta, **Uzantılar**' ı seçin. **Uzantılar** sayfasında **DependencyAgent**' yi seçin.

@@ -1,18 +1,17 @@
 ---
 title: Mantıksal uygulamalarınızı ve Runbook 'larınızı güncelleştirerek Azure Izleyici klasik uyarılar geçişine hazırlanma
-author: yanivlavi
 description: Web kancaları, Logic Apps ve Runbook 'larınızı gönüllü geçiş için hazırlamak üzere nasıl değiştireceğinizi öğrenin.
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705573"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665601"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve Runbook 'larınızı klasik uyarı kurallarının geçirilmesi için hazırlama
 
@@ -44,14 +43,14 @@ Web kancası yük alanlarını klasik biçimden yeni biçime eşlemek için aşa
 
 |  |Klasik uyarılar  |Yeni ölçüm uyarıları |
 |---------|---------|---------|
-|Uyarı etkinleştirildi veya çözüldü mı?    | **status**       | **Data. Status** |
+|Uyarı etkinleştirildi veya çözüldü mı?    | **durumlarına**       | **Data. Status** |
 |Uyarı hakkında bağlamsal bilgiler     | **bağlam**        | **Data. Context**        |
 |Uyarının etkinleştirildiği veya çözümlendiği zaman damgası     | **Context. Timestamp**       | **Data. Context. Timestamp**        |
 | Uyarı kuralı KIMLIĞI | **context.id** | **data.context.id** |
-| Uyarı kuralının adı | **context.name** | **data.context.name** |
+| Uyarı kuralı adı | **context.name** | **data.context.name** |
 | Uyarı kuralının açıklaması | **Context. Description** | **Data. Context. Description** |
 | Uyarı kuralı koşulu | **Context. Condition** | **Data. Context. Condition** |
-| Ölçüm adı | **Context. Condition. metricName** | **Data. Context. Condition. allOf [0]. metricName** |
+| Metrik adı | **Context. Condition. metricName** | **Data. Context. Condition. allOf [0]. metricName** |
 | Zaman toplama (ölçüm değerlendirme penceresinde nasıl toplanır)| **Context. Condition. Timetoplamasını** | **Context. Condition. Timetoplamasını** |
 | Değerlendirme süresi | **Context. Condition. windowSize** | **Data. Context. Condition. windowSize** |
 | İşleç (toplanan ölçüm değeri eşiğe göre nasıl karşılaştırılır) | **Context. Condition. işleci** | **Data. Context. Condition. işleci** |
@@ -63,7 +62,7 @@ Web kancası yük alanlarını klasik biçimden yeni biçime eşlemek için aşa
 | Etkilenen kaynağın türü | **Context. resourceType** | **Data. Context. resourceType** |
 | Etkilenen kaynağın kaynak KIMLIĞI | **Context. ResourceID** | **Data. Context. ResourceID** |
 | Portal kaynağı özet sayfasına doğrudan bağlantı | **Context. portalLink** | **Data. Context. portalLink** |
-| Web kancası veya mantıksal uygulamaya geçirilecek özel yük alanları | **Özellikleri** | **Data. Properties** |
+| Web kancası veya mantıksal uygulamaya geçirilecek özel yük alanları | **özelliklerinin** | **Data. Properties** |
 
 , Görebileceğiniz gibi yükleri benzerdir. Aşağıdaki bölümde şunlar sunulmaktadır:
 

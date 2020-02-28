@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlüklerinde metin verilerini ayrıştırma | Microsoft Docs
 description: Verilerin alındığı ve bir sorguda alındığı zaman, her biri için göreli avantajları karşılaştıran Azure Izleyici kayıtlarında günlük verilerinin ayrıştırılmasına yönelik farklı seçenekler açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 82ad197a1f64040dfb91aa73d7a6dfd4210f99a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365283"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672455"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde metin verilerini ayrıştırma
 Azure Izleyici tarafından toplanan bazı günlük verileri, tek bir özellikte birden fazla bilgi parçası içerecektir. Bu verilerin birden çok özelliğe çözümlenmesi, sorgularda kullanmayı kolaylaştırır. Ortak bir örnek, tek bir özellikte birden fazla değeri olan bir günlük girişinin tamamını toplayan [özel bir günlüğlük](../../log-analytics/log-analytics-data-sources-custom-logs.md) örneğidir. Farklı değerler için ayrı özellikler oluşturarak, her biri üzerinde arama ve toplama yapabilirsiniz.
@@ -138,7 +137,7 @@ MyCustomCSVLog_CL
 Verileriniz bilinen bir yapıda biçimlendirildiyse, önceden tanımlı yapıları ayrıştırmak için [kusto sorgu dilinde](/azure/kusto/query/) işlevlerden birini kullanabilirsiniz:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
-- [XML](/azure/kusto/query/parse-xmlfunction)
+- ['SINI](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
 - [URL](/azure/kusto/query/parseurlfunction)
 - [URL sorgusu](/azure/kusto/query/parseurlqueryfunction)
@@ -189,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Hakkında bilgi edinin [oturum sorguları](log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](log-query-overview.md) hakkında bilgi edinin.

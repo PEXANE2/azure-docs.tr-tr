@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights Docker uygulamalarını izleme | Microsoft Docs
 description: Docker performans sayaçları, olaylar ve özel durumlar, Kapsayıcılı uygulamalardaki telemetri ile birlikte Application Insights ' de görüntülenebilir.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 66a2481d25c863bbdbf4d72c4683a309918776db
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677929"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669616"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights (kullanım dışı) Docker uygulamalarını izleme
 
@@ -75,17 +71,17 @@ Docker kutucuğuna tıklayın.
 Özellikle de Docker altyapınız üzerinde çalışan başka kapsayıcılarınız varsa Docker uygulamasından gelen verileri görürsünüz.
 
 ### <a name="docker-container-events"></a>Docker kapsayıcı olayları
-![Örneğinde](./media/docker/13.png)
+![Örnek](./media/docker/13.png)
 
 Ayrı olayları araştırmak için [Ara](../../azure-monitor/app/diagnostic-search.md)' ya tıklayın. İstediğiniz olayları bulmak için arama yapın ve filtre uygulayın. Daha ayrıntılı bilgi almak için herhangi bir olaya tıklayın.
 
 ### <a name="exceptions-by-container-name"></a>Kapsayıcı adına göre özel durumlar
-![Örneğinde](./media/docker/14.png)
+![Örnek](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Uygulama telemetrisine Docker bağlamı eklendi
 AI SDK ile işaretlenmiş uygulamadan gönderilen istek telemetrisi, Docker bağlam bilgileriyle uyumlu.
 
-## <a name="q--a"></a>Soru-Cevap
+## <a name="q--a"></a>Soru - Yanıt
 *Application Insights, Docker 'dan alınamayan bana ne sunar?*
 
 * Kapsayıcıya ve görüntüye göre performans sayaçlarının ayrıntılı dökümü.

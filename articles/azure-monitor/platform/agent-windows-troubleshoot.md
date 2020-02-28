@@ -1,18 +1,16 @@
 ---
 title: Windows için Log Analytics Aracısı sorunlarını giderme
 description: Azure Izleyici 'de Windows için Log Analytics Aracısı ile ilgili en yaygın sorunların belirtilerini, nedenlerini ve çözümlemesini açıklama.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397450"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668800"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics Aracısı ile ilgili sorunları giderme 
 
@@ -20,9 +18,9 @@ Bu makalede, Azure Izleyici 'de Windows için Log Analytics aracısında karşı
 
 Bu adımların hiçbiri işinize yaramazsa aşağıdaki Destek kanallarını da kullanılabilir:
 
-* Avantajları Premier Destek ile bir destek isteği açabilirsiniz [Premier](https://premier.microsoft.com/).
-* Azure destek sözleşmeleri olan müşteriler, bir destek isteği açabilirsiniz [Azure portalında](https://manage.windowsazure.com/?getsupport=true).
-* Gönderilen fikirleri ve hataları gözden geçirmek için Log Analytics geri bildirim sayfasını ziyaret edin [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) veya yeni bir dosya. 
+* Premier destek avantajlarına sahip müşteriler, [Premier](https://premier.microsoft.com/)ile bir destek isteği açabilir.
+* Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://manage.windowsazure.com/?getsupport=true)bir destek talebi açabilir.
+* Gönderilen fikirleri ve hataları [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya dosyasını gözden geçirmek Için Log Analytics geri bildirim sayfasını ziyaret edin. 
 
 ## <a name="important-troubleshooting-sources"></a>Önemli sorun giderme kaynakları
 
@@ -36,9 +34,9 @@ Güvenlik duvarının veya proxy 'nin aşağıdaki tabloda açıklanan bağlant�
 
 |Aracı Kaynağı|Bağlantı Noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |  
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |  
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 
@@ -62,9 +60,9 @@ Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğ
 
 - *Operations Manager* olay günlüğünü *sistem sağlığı hizmeti modüller*, sistem durumu *hizmeti*ve *Hizmet Bağlayıcısı* - **olay kaynaklarına** göre filtreleyin ve **Olay düzeyi** *uyarısı* ve *hata* ile filtreleyip aşağıdaki tablodan olayları yazıp yazamadığına emin olun. Bunlar, olası her olay için dahil edilen çözüm adımlarını gözden geçirin.
 
-    |Olay Kimliği |Kaynak |Açıklama |Çözünürlük |
+    |Olay Kimliği |Kaynak |Açıklama |Çözüm |
     |---------|-------|------------|-----------|
-    |2133 & 2129 |Sistem Sağlığı Hizmeti |Aracıdan hizmetle bağlantı kurulamadı |Bu hata, aracı doğrudan veya bir güvenlik duvarı/ara sunucu aracılığıyla Azure Izleyici hizmetine iletişim kuramadığınızda ortaya çıkabilir. Aracı ara sunucu ayarlarını doğrulayın veya ağ güvenlik duvarının/proxy 'sinin bilgisayardan hizmete TCP trafiğine izin verdiğini doğrulayın.|
+    |2133 & 2129 |Sağlık Hizmeti |Aracıdan hizmetle bağlantı kurulamadı |Bu hata, aracı doğrudan veya bir güvenlik duvarı/ara sunucu aracılığıyla Azure Izleyici hizmetine iletişim kuramadığınızda ortaya çıkabilir. Aracı ara sunucu ayarlarını doğrulayın veya ağ güvenlik duvarının/proxy 'sinin bilgisayardan hizmete TCP trafiğine izin verdiğini doğrulayın.|
     |2138 |Sistem Sağlığı Hizmeti modüller |Proxy kimlik doğrulaması gerektiriyor |Aracı proxy ayarlarını yapılandırın ve proxy sunucu ile kimlik doğrulamak için gereken kullanıcı adını/parolayı belirtin. |
     |2129 |Sistem Sağlığı Hizmeti modüller |Bağlantı başarısız oldu/SSL anlaşması |Ağ bağdaştırıcınızın TCP/IP ayarları ve aracı ara sunucu ayarlarını kontrol edin.|
     |2127 |Sistem Sağlığı Hizmeti modüller |Veri göndermede hata kodu alındı |Yalnızca gün boyunca düzenli olarak gerçekleşdiğinde, yok sayılacak bir yalnızca rastgele bir anomali olabilir. Ne sıklıkta gerçekleştiğini anlamak için izleyin. Gün boyunca sıklıkla gerçekleşmezse, önce ağ yapılandırmanızı ve ara sunucu ayarlarını kontrol edin. Açıklama HTTP hata kodu 404 ' ü içeriyorsa ve Aracı, hizmete veri göndermeyi ilk kez denediğinde, iç 404 hata koduna sahip bir 500 hatası olur. 404, yeni çalışma alanı için depolama alanının sağlanmakta olduğunu belirten, bulunamadı anlamına gelir. Bir sonraki yeniden denendiğinde, veriler çalışma alanına beklendiği gibi başarıyla yazar. HTTP Hatası 403, izin veya kimlik bilgileri sorununu gösterebilir. Sorunu gidermeye yardımcı olmak için 403 hatasına daha fazla bilgi dahildir.|
@@ -100,7 +98,7 @@ Sorgu sonuçları döndürürse, belirli bir veri türünün toplanmadığını 
 
 3. Birkaç dakika sonra, verileri bir çözüm veya öngörüden görüntülüyor olmanıza bağlı olarak sorgu sonuçlarında veya görselleştirmede beklenen verileri görmüyorsanız, *Operations Manager* olay günlüğünden olay **kaynakları** *HealthService* ve *sistem sağlığı hizmeti modülleri* ' ni arayın ve **Olay düzeyi** *uyarısı* ve *hata* ile filtreleme yapın.
 
-    |Olay Kimliği |Kaynak |Açıklama |Çözünürlük |
+    |Olay Kimliği |Kaynak |Açıklama |Çözüm |
     |---------|-------|------------|
     |8000 |HealthService |Bu olay, performans, olay veya toplanan diğer veri türüyle ilgili bir iş akışının, çalışma alanına alma için hizmete iletilememesine yönelik olduğunu belirtir. | Kaynak HealthService 'ten olay KIMLIĞI 2136, bu olayla birlikte yazılır ve aracının hizmetle iletişim kuramadığını belirtebilir, bunun nedeni proxy 'nin ve kimlik doğrulama ayarlarının yanlış yapılandırılmasından, ağ kesintisinden veya ağ güvenlik duvarının/proxy 'sinin bilgisayardan hizmete TCP trafiğine izin vermez.| 
     |10102 ve 10103 |Sistem Sağlığı Hizmeti modüller |İş akışı veri kaynağını çözümleyemedi. |Bu durum, belirtilen performans sayacı veya örneği bilgisayarda yoksa veya çalışma alanı veri ayarları 'nda yanlış tanımlanmışsa oluşabilir. Bu, Kullanıcı tarafından belirtilen bir [performans sayacıdır](data-sources-performance-counters.md#configuring-performance-counters), belirtilen bilgilerin doğru biçimi takip ettiğini ve hedef bilgisayarlarda mevcut olduğunu doğrulayın. |

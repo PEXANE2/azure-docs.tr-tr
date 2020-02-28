@@ -3,23 +3,22 @@ title: Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme
 description: Azure Izleyici 'de Azure etkinlik günlüğünü görüntüleyin ve PowerShell, CLı ve REST API alın.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749511"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668834"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure etkinlik günlüğü olaylarını görüntüleme ve alma
 
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Bu makalede, etkinlik günlüğü olaylarını görüntülemek ve almak için farklı yöntemlerle ilgili ayrıntılar sağlanmaktadır.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portalı
 Tüm kaynaklar için etkinlik günlüğünü Azure portal **izleme** menüsünden görüntüleyin. Söz konusu kaynak menüsündeki **etkinlik günlüğü** seçeneğinden belirli bir kaynağın etkinlik günlüğünü görüntüleyin.
 
 ![Etkinlik günlüğünü görüntüle](./media/activity-logs-overview/view-activity-log.png)
@@ -38,7 +37,7 @@ Etkinlik günlüğü olaylarını aşağıdaki alanlara göre filtreleyebilirsin
 * **Arama aç**: tüm olaylardaki tüm alanlarda bu dizeyi arayan metin arama kutusunu açın.
 
 ## <a name="categories-in-the-activity-log"></a>Etkinlik günlüğündeki Kategoriler
-Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Bu kategorilerin şemaların hakkında tam Ayrıntılar için bkz: [Azure etkinlik günlüğü olay şeması](activity-log-schema.md). 
+Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Bu kategorilerin şemaların serileştirilmesi hakkında tam Ayrıntılar için bkz. [Azure etkinlik günlüğü olay şeması](activity-log-schema.md). 
 
 | Kategori | Açıklama |
 |:---|:---|
@@ -174,7 +173,7 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Etkinlik günlükleri analitik izleme çözümü
 Azure Log Analytics izleme çözümü, Log Analytics çalışma alanınızdaki etkinlik günlüğü kayıtlarını çözümlemek için birden çok günlük sorgusu ve görünümü içerir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aboneliğinizin etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için bir tanılama ayarı oluşturmanız gerekir. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure platformu günlüklerini toplama](resource-logs-collect-workspace.md).
 
 ### <a name="install-the-solution"></a>Çözümü yükler
@@ -192,9 +191,9 @@ Azure **etkinlik günlükleri görünümünü açmak** için Azure etkinlik **g�
 
 | Görselleştirme bölümü | Açıklama |
 | --- | --- |
-| Azure etkinlik günlüğü girdileri | Seçtiğiniz tarih aralığı için en üstteki Azure etkinlik günlüğü girişi kayıt toplamlarını gösteren bir çubuk grafiği gösterir ve ilk 10 etkinlik çağıranlarının bir listesini gösterir. Günlük araması çalıştırmak için çubuk grafiğe tıklayın `AzureActivity`. Bu öğe için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir arayan öğesine tıklayın. |
+| Azure etkinlik günlüğü girdileri | Seçtiğiniz tarih aralığı için en üstteki Azure etkinlik günlüğü girişi kayıt toplamlarını gösteren bir çubuk grafiği gösterir ve ilk 10 etkinlik çağıranlarının bir listesini gösterir. `AzureActivity`için bir günlük araması çalıştırmak için çubuk grafiğine tıklayın. Bu öğe için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir arayan öğesine tıklayın. |
 | Duruma göre etkinlik günlükleri | Seçili tarih aralığı için Azure etkinlik günlüğü durumu ve ilk on durum kayıtlarının listesi için bir halka grafiği gösterir. `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`günlük sorgusu çalıştırmak için grafiğe tıklayın. Bu durum kaydı için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir durum öğesine tıklayın. |
-| Kaynağa göre etkinlik günlükleri | Etkinlik günlüklerinin bulunduğu toplam kaynak sayısını gösterir ve her bir kaynak için kayıt sayısı olan ilk on kaynağı listeler. Günlük araması çalıştırmak için toplam alanı `AzureActivity | summarize AggregatedValue = count() by Resource`, çözüme kullanılabilir tüm Azure kaynaklarını gösterir. Kaynak için tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için kaynağa tıklayın. |
+| Kaynağa göre etkinlik günlükleri | Etkinlik günlüklerinin bulunduğu toplam kaynak sayısını gösterir ve her bir kaynak için kayıt sayısı olan ilk on kaynağı listeler. Çözüm için kullanılabilen tüm Azure kaynaklarını gösteren `AzureActivity | summarize AggregatedValue = count() by Resource`için bir günlük araması çalıştırmak için Toplam alanına tıklayın. Kaynak için tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için kaynağa tıklayın. |
 | Kaynak sağlayıcısı tarafından etkinlik günlükleri | Etkinlik günlükleri üreten ve ilk on olan kaynak sağlayıcılarının toplam sayısını gösterir. Tüm Azure Kaynak sağlayıcılarını gösteren `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`bir günlük sorgusu çalıştırmak için Toplam alanına tıklayın. Sağlayıcıya yönelik tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için bir kaynak sağlayıcısına tıklayın. |
 
 

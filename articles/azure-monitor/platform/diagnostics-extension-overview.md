@@ -1,18 +1,17 @@
 ---
 title: Azure Tanılama uzantıya genel bakış
 description: Azure tanılama 'yı kullanarak hata ayıklama, performans, izleme, bulut hizmetlerinde trafik analizi, sanal makineler ve Service Fabric
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468006"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672387"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantıya genel bakış
 Azure Tanılama uzantısı, Azure [izleyici 'de](agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
@@ -86,7 +85,7 @@ LAD, verileri Azure depolama 'daki tablolara yazar. Aşağıdaki tabloda yer ald
 
 
 ## <a name="installation-and-configuration"></a>Yükleme ve yapılandırma
-Tanılama uzantısı, Azure 'da bir [sanal makine uzantısı](/virtual-machines/extensions/overview) olarak uygulanır, bu nedenle Kaynak Yöneticisi şablonları, POWERSHELL ve CLI kullanarak aynı yükleme seçeneklerini destekler. Sanal makine uzantılarını yükleme ve sürdürme hakkında genel Ayrıntılar için bkz. [Windows](/virtual-machines/extensions/features-windows) ve sanal makine uzantıları ve [Linux için](/virtual-machines/extensions/features-linux) sanal makine uzantıları ve özellikleri.
+Tanılama uzantısı, Azure 'da bir [sanal makine uzantısı](../../virtual-machines/extensions/overview.md) olarak uygulanır, bu nedenle Kaynak Yöneticisi şablonları, POWERSHELL ve CLI kullanarak aynı yükleme seçeneklerini destekler. Sanal makine uzantılarını yükleme ve sürdürme hakkında genel Ayrıntılar için bkz. [Windows](../../virtual-machines/extensions/features-windows.md) ve sanal makine uzantıları ve [Linux için](../../virtual-machines/extensions/features-linux.md) sanal makine uzantıları ve özellikleri.
 
 Ayrıca, sanal makine menüsünün **izleme** bölümündeki **tanılama ayarları** altında Azure Portal hem Windows hem de Linux Tanılama uzantısını yükleyip yapılandırabilirsiniz.
 

@@ -3,17 +3,16 @@ title: Azure Izleyici ölçüm grafiklerde sorun giderme
 description: Ölçüm grafiklerini oluşturma, özelleştirme veya yorumlama sorunlarını giderme
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974863"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659671"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafiklerini sorunlarını giderme
 
@@ -29,7 +28,7 @@ Azure Ölçüm Gezgini 'nde grafik oluşturma, özelleştirme veya yorumlama ile
 
 1. Doğru kaynak grubunu seçtiğinizden emin olun.
     > [!WARNING]
-    > En iyi performans için, Ölçüm Gezgini 'ni ilk açışınızda **kaynak grubu** açılır listesinde önceden seçilmiş kaynak grupları yoktur. Herhangi bir kaynak görmek için önce en az bir grup seçmelisiniz.
+    > En iyi performansı elde etmek için, ölçüm gezginini ilk açtığınızda **Kaynak grubu** açılan listesinde önceden seçilmiş kaynak grubu yoktur. Herhangi bir kaynak görmek için önce en az bir grup seçmelisiniz.
 
 ## <a name="chart-shows-no-data"></a>Grafik veri göstermez
 
@@ -105,7 +104,7 @@ Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tan�
 
 1. [Azure Tanılama Uzantısı](diagnostics-extension-overview.md)'nın etkinleştirildiğini ve ölçümleri toplamak için yapılandırıldığını onaylayın.
     > [!WARNING]
-    > **Konuk İşletim Sistemi**'ni depolama hesabına göndermek için [Log Analytics aracısını](agents-overview.md#log-analytics-agent) (Microsoft İzleyici Aracısı veya "MMA" olarak da adlandırılır) kullanamazsınız.
+    > [Konuk İşletim Sistemi](agents-overview.md#log-analytics-agent)'ni depolama hesabına göndermek için **Log Analytics aracısını** (Microsoft İzleyici Aracısı veya "MMA" olarak da adlandırılır) kullanamazsınız.
 
 1. [Aboneliğiniz Için](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) **Microsoft. Insights** kaynak sağlayıcısının kayıtlı olduğundan emin olun.
 

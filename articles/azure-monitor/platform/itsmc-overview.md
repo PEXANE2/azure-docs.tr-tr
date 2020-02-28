@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics BT Hizmet Yönetimi Bağlayıcısı | Microsoft Docs
 description: Bu makalede, Azure Log Analytics 'deki ITSM iş öğelerini merkezi olarak izlemek ve yönetmek ve sorunları hızlı bir şekilde çözümlemek ve yönetmek için bu çözümün nasıl kullanılacağına dair bir genel bakış sunulmaktadır BT Hizmet Yönetimi Bağlayıcısı (ıSMC)
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990683"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672234"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
 
@@ -66,7 +65,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-5. **Oluştur**’a tıklayın.
+5. **Oluştur**’ tıklayın.
 
 Çözüm kaynağı dağıtıldığında, pencerenin sağ üst kısmında bir bildirim görüntülenir.
 
@@ -91,7 +90,7 @@ ITSM araçlarınızı önceden doldurduktan sonra bağlantı oluşturmak için a
    ıTSM bağlantıları ![](media/itsmc-overview/itsm-connections.png)
 
    Bu sayfada bağlantıların listesi görüntülenir.
-3. **Bağlantı Ekle**'ye tıklayın.
+3. **Bağlantı ekle**' ye tıklayın.
 
    ![ITSM bağlantısı ekle](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -131,7 +130,7 @@ Aşağıdaki yordamı kullanın:
 
 6. Açılır menüden **Iş öğesi** türünü seçin.
    Mevcut bir şablonu kullanmayı veya ıTSM ürününüzün gerektirdiği Alanları doldurmayı seçin.
-7. **Tamam**’a tıklayın.
+7. **OK (Tamam)** düğmesine tıklayın.
 
 Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
@@ -161,7 +160,7 @@ Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluştur
 Daha fazla bilgi: [hizmet eşlemesi](../../azure-monitor/insights/service-map.md)
 
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 ### <a name="data-synced-from-itsm-product"></a>ITSM ürününden eşitlenen veriler
 Olaylar ve değişiklik istekleri, bağlantı yapılandırmasına bağlı olarak ıTSM ürününüzle Log Analytics çalışma alanınıza eşitlenir.
@@ -175,11 +174,11 @@ Aşağıdaki bilgiler, ıSMC tarafından toplanan veri örneklerini gösterir:
 **İş öğesi:** **Olaylar**  
 ServiceDeskWorkItemType_s="Incident"
 
-**Alanları**
+**Alanlar**
 
 - ServiceDeskConnectionName
 - Hizmet Masası KIMLIĞI
-- Eyalet
+- Durum
 - Aciliyet
 - Etki
 - Öncelik
@@ -188,7 +187,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Çözümleyen
 - Kapatan
 - Kaynak
-- Atanan
+- Atamayı Alan
 - Kategori
 - Başlık
 - Açıklama
@@ -203,24 +202,24 @@ ServiceDeskWorkItemType_s="Incident"
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
-**Alanları**
+**Alanlar**
 - ServiceDeskConnectionName
 - Hizmet Masası KIMLIĞI
 - Oluşturan
 - Kapatan
 - Kaynak
-- Atanan
+- Atamayı Alan
 - Başlık
 - Tür
 - Kategori
-- Eyalet
+- Durum
 - Önem Yükseltme
 - Çakışma durumu
 - Aciliyet
 - Öncelik
 - Risk
 - Etki
-- Atanan
+- Atamayı Alan
 - Oluşturulma tarihi
 - Kapatılma tarihi
 - Son değiştirme tarihi
@@ -237,7 +236,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics alanı | ServiceNow alanı |
 |:--- |:--- |
 | ServiceDeskId_s| Sayı |
-| IncidentState_s | Eyalet |
+| IncidentState_s | Durum |
 | Urgency_s |Aciliyet |
 | Impact_s |Etki|
 | Priority_s | Öncelik |
@@ -245,13 +244,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | Çözümleyen|
 | ClosedBy_s  | Kapatan |
 | Source_s| Kişi türü |
-| AssignedTo_s | Şuna atandı  |
+| AssignedTo_s | Atamayı Alan  |
 | Category_s | Kategori |
 | Title_s|  Kısa açıklama |
 | Description_s|  Notlar |
 | CreatedDate_t|  Makta |
 | ClosedDate_t| Kapalı|
-| ResolvedDate_t|Çözülüyor|
+| ResolvedDate_t|Çözümlendi|
 | Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıkış verileri
@@ -261,23 +260,23 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Sayı |
 | CreatedBy_s | İsteyen |
 | ClosedBy_s | Kapatan |
-| AssignedTo_s | Şuna atandı  |
+| AssignedTo_s | Atamayı Alan  |
 | Title_s|  Kısa açıklama |
 | Type_s|  Tür |
 | Category_s|  Kategori |
-| CRState_s|  Eyalet|
+| CRState_s|  Durum|
 | Urgency_s|  Aciliyet |
 | Priority_s| Öncelik|
 | Risk_s| Risk|
 | Impact_s| Etki|
 | RequestedDate_t  | İstek tarihine göre |
-| ClosedDate_t | Kapatma tarihi |
+| ClosedDate_t | Kapatılma tarihi |
 | PlannedStartDate_t  |     Planlanan başlangıç tarihi |
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
 | Description_s | Açıklama |
-| Bilgisayar  | Yapılandırma öğesi |
+| Bilgisayar  | Yapılandırma Öğesi |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
@@ -299,7 +298,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 3.  Service Bus geçişi ad alanı oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı Azure Portal oluştururken](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) da oluşturabilirsiniz.
 
 
-## <a name="contact-us"></a>Bize ulaşın
+## <a name="contact-us"></a>Bizimle iletişim kurun
 
 BT Hizmet Yönetimi Bağlayıcısı ilgili sorgular veya geri bildirimler için [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)adresinden bizimle iletişim kurun.
 

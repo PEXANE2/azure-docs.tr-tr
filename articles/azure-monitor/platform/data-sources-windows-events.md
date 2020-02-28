@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de Windows olay günlüklerini toplayın ve çözümleyin | Microsoft Docs
 description: Windows olay günlükleri koleksiyonunun Azure Izleyici tarafından ve oluşturdukları kayıtların ayrıntıları tarafından nasıl yapılandırılacağı açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932398"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670517"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows olay günlüğü veri kaynakları
 Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından Windows aracılarını kullanarak veri toplamaya yönelik en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
@@ -47,7 +46,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 | EventCategory |Etkinliğin kategorisi. |
 | EventData |Ham biçimdeki tüm olay verileri. |
 | Even |Olay sayısı. |
-| EventLevel |Olayın önem derecesi, sayısal biçimde. |
+| eventLevel |Olayın önem derecesi, sayısal biçimde. |
 | EventLevelName |Metin biçimindeki olayın önem derecesi. |
 | EventLog |Olayın toplandığı olay günlüğünün adı. |
 | ParameterXml |XML biçimindeki olay parametresi değerleri. |
@@ -56,7 +55,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 | Kaynak |Etkinliğin kaynağı. |
 | SourceSystem |Olayın toplandığı aracının türü. <br> OpsManager – Windows Aracısı, doğrudan bağlanma veya Operations Manager yönetilen <br> Linux – tüm Linux aracıları  <br> AzureStorage – Azure Tanılama |
 | TimeGenerated |Olayın Windows 'da oluşturulduğu tarih ve saat. |
-| Nitelen |Olayı günlüğe tutan hesabın Kullanıcı adı. |
+| UserName |Olayı günlüğe tutan hesabın Kullanıcı adı. |
 
 ## <a name="log-queries-with-windows-events"></a>Windows olaylarıyla sorguları günlüğe kaydet
 Aşağıdaki tabloda, Windows olay kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.

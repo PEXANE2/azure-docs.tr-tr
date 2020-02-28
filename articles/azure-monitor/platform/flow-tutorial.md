@@ -1,18 +1,17 @@
 ---
 title: Microsoft Flow ile Azure Izleyici günlük işlemlerini otomatikleştirme
 description: Azure Log Analytics bağlayıcısını kullanarak tekrarlanabilir işlemleri hızlı bir şekilde otomatikleştirmek için Microsoft Flow nasıl kullanabileceğinizi öğrenin.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 92f0d2916b0f28760f7d028ee3e6dc0be37c32d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166943"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672319"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow için bağlayıcı ile Azure Izleyici günlük işlemlerini otomatikleştirme
 [Microsoft Flow](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Bir eylemden çıkış, farklı hizmetler arasında tümleştirme oluşturmanıza olanak sağlayan başka bir eylem için giriş olarak kullanılabilir.  Microsoft Flow için Azure Log Analytics Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanındaki günlük sorguları tarafından alınan verileri içeren iş akışları oluşturmanıza olanak tanır.

@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights ölçümleri keşfetme | Microsoft Docs
 description: Ölçüm Gezgini 'nde grafikleri yorumlama ve Ölçüm Gezgini dikey pencerelerini özelleştirme.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820796"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670194"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights ölçümleri keşfetme
 [Application Insights][start] ölçümler, uygulamanızdan telemetri olarak gönderilen olayların ve sayımların ölçümleridir. Bunlar, performans sorunlarını tespit etmenize ve uygulamanızın nasıl kullanıldığı konusunda eğilimleri izlemenize yardımcı olur. Birçok standart ölçüm yelpazesi vardır ve ayrıca kendi özel ölçümlerinizi ve olaylarınızı da oluşturabilirsiniz.
@@ -165,7 +161,7 @@ Bir dikey pencereyi düzenlerseniz, ancak özgün kaydedilmiş kümesine geri d�
 
 Telemetrinizin çok daha hızlı bir görünümü için [canlı akış](live-stream.md)açın. Toplama işlemi nedeniyle çoğu ölçüm görünmesi birkaç dakika sürer. Bunun aksine, canlı ölçümler düşük gecikme süresi için iyileştirilmiştir. 
 
-## <a name="set-alerts"></a>Uyarılar ayarlama
+## <a name="set-alerts"></a>Uyarı ayarlama
 Herhangi bir ölçümün olağandışı değerlerinin e-postasından haberdar olmak için bir uyarı ekleyin. E-postayı hesap yöneticilerine veya belirli e-posta adreslerine göndermek üzere birini seçebilirsiniz.
 
 ![Ölçüm Gezgini, uyarı kuralları ' nı seçin, uyarı Ekle](./media/metrics-explorer/appinsights-413setMetricAlert.png)
@@ -173,7 +169,7 @@ Herhangi bir ölçümün olağandışı değerlerinin e-postasından haberdar ol
 [Uyarılar hakkında daha fazla bilgi edinin][alerts].
 
 
-## <a name="continuous-export"></a>Sürekli Dışarı Aktarma
+## <a name="continuous-export"></a>Sürekli dışarı aktarma
 Verileri dışarıdan işleyebilmeniz için sürekli olarak dışa aktarılmasını istiyorsanız [sürekli dışarı aktarma](../../azure-monitor/app/export-telemetry.md)kullanmayı düşünün.
 
 ### <a name="power-bi"></a>Power BI

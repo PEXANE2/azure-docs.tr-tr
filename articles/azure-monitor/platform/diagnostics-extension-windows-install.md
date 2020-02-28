@@ -3,22 +3,21 @@ title: Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 description: Azure tanılama verilerini bir Azure depolama hesabında nasıl toplayacağınızı öğrenmek için, mevcut araçlardan birini kullanarak görüntüleyebilirsiniz.
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472693"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672268"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 Azure tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
 
-Tanılama uzantısı, Azure 'da bir [sanal makine uzantısı](/virtual-machines/extensions/overview) olarak uygulanır, bu nedenle Kaynak Yöneticisi şablonları, POWERSHELL ve CLI kullanarak aynı yükleme seçeneklerini destekler. Sanal makine uzantılarının yüklenmesi ve bakımında ilgili ayrıntılar için bkz. [Windows Için sanal makine uzantıları ve özellikleri](/virtual-machines/extensions/features-windows) .
+Tanılama uzantısı, Azure 'da bir [sanal makine uzantısı](../../virtual-machines/extensions/overview.md) olarak uygulanır, bu nedenle Kaynak Yöneticisi şablonları, POWERSHELL ve CLI kullanarak aynı yükleme seçeneklerini destekler. Sanal makine uzantılarının yüklenmesi ve bakımında ilgili ayrıntılar için bkz. [Windows Için sanal makine uzantıları ve özellikleri](../../virtual-machines/extensions/features-windows.md) .
 
 ## <a name="install-with-azure-portal"></a>Azure portal ile yüklensin
 Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir arabirim sağlayan Azure portal tek bir sanal makineye yükleyebilir ve yapılandırabilirsiniz. Tanılama uzantısını etkinleştirdiğinizde, en yaygın performans sayaçları ve olayları ile otomatik olarak varsayılan bir yapılandırma kullanılır. Bu varsayılan yapılandırmayı, özel gereksinimlerinize göre değiştirebilirsiniz.

@@ -1,19 +1,15 @@
 ---
 title: Akıllı algılama-performans bozuklulıkları | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin akıllı analizini yapar ve olası sorunlar hakkında sizi uyarır. Bu özelliğin kurulum yapması gerekmez.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820574"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671741"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -36,7 +32,7 @@ Akıllı algılama, normal performansın temelini oluşturmak için, uygun bir b
 
 Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelmez. Yalnızca konuyu daha yakından incelemeniz için bir öneridir.
 
-## <a name="how-do-i-fix-it"></a>Nasıl yaparım? düzeltilsin mi?
+## <a name="how-do-i-fix-it"></a>Bunu nasıl düzeltirim?
 
 Bildirimler tanılama bilgilerini içerir. Bir örneği aşağıda verilmiştir:
 
@@ -91,7 +87,7 @@ Akıllı algılamalar performans bozuklukları hakkındaki e-postalar Applicatio
 ## <a name="how-can-i-improve-performance"></a>Performansı nasıl geliştirebilirim?
 Yavaş ve başarısız yanıtlar, kendi deneyiminizden haberdar olduğunuz için Web sitesi kullanıcılarının en büyük zayıflarından biridir. Bu nedenle, sorunları çözmek önemlidir.
 
-### <a name="triage"></a>Değerlendirme
+### <a name="triage"></a>Önceliklendirme
 İlk olarak, ne kadar önemlidir? Bir sayfanın yüklenmesi her zaman yavaşsa, ancak sitenize ait kullanıcılarınızın yalnızca %1 ' i göz önünde bulundurmasına rağmen, düşünmek için daha fazla önemli şey vardır. Öte yandan, Kullanıcı yalnızca %1 ' i kullanıyorsa, ancak her seferinde özel durum oluşturur ve bu da araştırma gerektirebilir.
 
 Etki ifadesini (etkilenen kullanıcılar veya trafik) genel bir kılavuz olarak kullanın, ancak tüm hikayenin olmadığını unutmayın. Onaylamak için başka bir kanıt toplayın.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208293"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664548"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure haritalar desteklenen harita stilleri
 Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita stilini destekler.
@@ -52,7 +52,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için bir karma değer.
 
-![satellite_road_labels harita stili](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels harita stili](./media/supported-map-styles/satellite-road-labels.png)
 
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
@@ -61,7 +61,7 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **gri tonlamalı koyu** , yol haritası stilinin karanlık bir sürümüdür.
 
-![gray_scale harita stili](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale harita stili](./media/supported-map-styles/grayscale-dark.png)
 
 **Geçerli API 'Ler:**
 * [Harita resmi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 ## <a name="grayscale_light"></a>grayscale_light
 **gri tonlama ışığı** , yol haritası stilinin hafif bir sürümüdür.
 
-![gri tonlamalı hafif harita stili](./media/supported-map-styles/grayscale_light.png)
+![gri tonlamalı hafif harita stili](./media/supported-map-styles/grayscale-light.png)
 
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
@@ -99,6 +99,14 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** , diğer stillerden daha yüksek karşıtlığı olan koyu bir harita stilidir.
+
+![yüksek karşıtlık koyu harita stili](./media/supported-map-styles/high-contrast-dark.png)
+
+**Geçerli API 'Ler:**
+* Web SDK eşlemesi denetimi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

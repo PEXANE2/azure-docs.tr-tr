@@ -1,18 +1,17 @@
 ---
 title: Çalışma kitapları ile VM'ler için Azure İzleyici etkileşimli raporlar oluşturma | Microsoft Docs
 description: VM'ler için Azure İzleyici için önceden tanımlı ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365929"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670687"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Çalışma kitaplarında etkileşimli raporlar VM'ler için Azure İzleyici oluşturma
 
@@ -27,7 +26,7 @@ ms.locfileid: "75365929"
 
 VM'ler için Azure İzleyici, başlamanızı sağlamak için birkaç çalışma kitabı içerir ve aşağıdaki tablo bunları özetler.
 
-| Çalışma kitabı | Açıklama | Kapsam |
+| Kitabının | Açıklama | Kapsam |
 |----------|-------------|-------|
 | Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Ölçekte |
 | Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Ölçekte |
@@ -45,13 +44,13 @@ VM'ler için Azure İzleyici, başlamanızı sağlamak için birkaç çalışma 
 
 Çalışma kitabı, bağımsız olarak düzenlenebilir grafiklerden, tablolardan, metinden ve giriş denetimlerinden oluşan bölümlerden oluşur. Çalışma kitaplarını daha iyi anlamak için, bir şablon açıp özel bir çalışma kitabı oluşturmaya ilerleyerek başlayalım. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Seçin **sanal makineler**.
+2. **Sanal makineleri**seçin.
 
 3. Listeden bir VM seçin.
 
-4. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
+4. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
 
 5. VM öngörüleri sayfasında **performans** veya **haritalar** sekmesini seçin ve sayfadaki bağlantıdan **çalışma kitaplarını görüntüle** ' yi seçin. 
 

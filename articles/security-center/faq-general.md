@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604799"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661848"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS-Azure Güvenlik Merkezi ile ilgili genel sorular
 
@@ -38,16 +38,17 @@ Azure Güvenlik Merkezi, aşağıdaki Azure kaynakları izler:
 * Sanal makineler (VM 'Ler) ( [Cloud Services](../cloud-services/cloud-services-choose-me.md)dahil)
 * Sanal makine ölçek kümeleri
 * Azure Sanal Ağları
+* Kapsayıcılar
 * Azure SQL Hizmeti
 * Azure Storage hesabınız
 * Azure Web Apps ( [App Service ortamı](../app-service/environment/intro.md))
 * Web uygulaması güvenlik duvarı vm'lerde ve App Service ortamı gibi Azure aboneliğinizle tümleşik iş ortağı çözümleri
 
-Ayrıca, Azure dışı (Şirket içi) bilgisayarlar da Azure Güvenlik Merkezi tarafından izlenebilir (hem [Windows bilgisayarları](./quick-onboard-windows-computer.md) hem de [Linux bilgisayarları](./quick-onboard-linux-computer.md) desteklenir)
+Ayrıca, Azure dışı (Şirket içi) makineler de Azure Güvenlik Merkezi tarafından izlenebilir. Hem [Windows makineleri](./quick-onboard-windows-computer.md) hem de [Linux makineleri](./quick-onboard-linux-computer.md) desteklenir.
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Azure Kaynaklarımın geçerli güvenlik durumunu nasıl görebilirim?
-**Güvenlik Merkezi 'Ne genel bakış** sayfası, ortamınızın Işlem, ağ, depolama & verileri ve uygulamalar tarafından ayrılmış genel güvenlik duruşunu gösterir. Olası güvenlik açıkları tanımladıysanız her kaynak türünün bir göstergesi gösteren vardır. Her kutucuğa tıklandığında, aboneliğinizdeki kaynaklar envanterini birlikte Güvenlik Merkezi tarafından tanımlanan güvenlik sorunların bir listesini görüntüler.
+**Güvenlik Merkezi 'Ne genel bakış** sayfası, ortamınızın Işlem, ağ, depolama & verileri ve uygulamalar tarafından ayrılmış genel güvenlik duruşunu gösterir. Her kaynak türünün, tanımlanan güvenlik açıklarını gösteren bir göstergesi vardır. Her kutucuğa tıklandığında, aboneliğinizdeki kaynaklar envanterini birlikte Güvenlik Merkezi tarafından tanımlanan güvenlik sorunların bir listesini görüntüler.
 
 
 

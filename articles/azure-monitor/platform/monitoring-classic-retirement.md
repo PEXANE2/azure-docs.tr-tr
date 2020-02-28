@@ -3,17 +3,16 @@ title: Azure Izleyici 'de izleme & Klasik uyarı güncelleştirmesi
 description: Daha önce uyarılar altında Azure portal gösterildiği gibi, klasik izleme hizmetleri ve işlevlerinin kullanımdan kaldırılması açıklaması (klasik).
 author: yanivlavi
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307089"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659484"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Izleyici 'de izleme & birleştirilmiş uyarı, klasik uyarı & izlemeyi değiştirir
 
@@ -76,14 +75,14 @@ Bu makale yeni Azure izleme & uyarı işlevselliğiyle ilgili ayrıntıların & 
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Geçirilen uyarı kuralları fiyatlandırması
 
-Azure Monitor [Klasik uyarılarınızı](../../azure-monitor/platform/alerts-classic.overview.md) yeni uyarılar deneyimine geçirmenize yardımcı olmak için bir geçiş aracı kullanıma sunuyoruz. Geçirilen uyarı kuralları ve bunlara karşılık gelen geçirilen eylem grupları (e-posta, web kancası veya LogicApp) ücretsiz olarak sunulmaya devam eder. Eşiği, toplama türünü ve toplama tanecikliğini düzenleme olanağı da dahil olmak üzere, klasik uyarılarda kullandığınız işlevsellik geçirilen uyarı kuralınızda ücretsiz olarak sunulmaya devam eder. Ancak geçirilen uyarı kuralını, yeni uyarı platformu özelliklerinden birini, bildirimleri veya eylem türlerini kullanması için düzenlerseniz karşılığında bir ücret alınır. Uyarı kuralları ve bildirimlerin fiyatlandırmasıyla ilgili daha fazla bilgi için bkz. [Azure Monitor fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
+Azure Monitor [Klasik uyarılarınızı](../../azure-monitor/platform/alerts-classic.overview.md) yeni uyarılar deneyimine geçirmenize yardımcı olmak için bir geçiş aracı kullanıma sunuyoruz. Geçirilen uyarı kuralları ve karşılık gelen geçirilmiş eylem grupları (e-posta, Web kancası veya LogicApp) ücretsiz olarak kalır. Eşiği, toplama türünü ve toplama ayrıntı düzeyini düzenleme özelliği de dahil olmak üzere klasik uyarılarla sahip olduğunuz işlevsellik, geçirilen uyarı kuralınız ile ücretsiz olarak kullanılabilir olmaya devam edecektir. Ancak, yeni uyarı platformu özelliklerinden herhangi birini, bildirimleri veya eylem türlerini kullanmak için geçirilmiş uyarı kuralını düzenlerseniz, buna karşılık gelen bir ücret uygulanır. Uyarı kuralları ve bildirimlerin fiyatlandırmasıyla ilgili daha fazla bilgi için bkz. [Azure Monitor fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
 
-Aşağıdakiler, uyarı kuralınız için ücret uygulanan durumlara örnek gösterilebilir:
+Aşağıda, uyarı kuralınız için ücret ödemeniz gereken durumların örnekleri verilmiştir:
 
-- Yeni Azure İzleyici platformunda, ücretsiz birimlerin ötesinde oluşturulan her yeni (geçirilmemiş) uyarı kuralı
-- Azure İzleyici’nin kapsadığı ücretsiz birimlerin ötesinde alınan ve tutulan her veri
-- Application Insights tarafından gerçekleştirilen her çok testli web testi
-- Azure İzleyici’nin kapsadığı ücretsiz birimlerin ötesinde tutulan her özel ölçüm
+- Yeni Azure Izleyici platformunda ücretsiz birimlerin ötesinde oluşturulan yeni (geçirilmeyen) uyarı kuralı
+- Azure Izleyici tarafından dahil edilen ve ücretsiz birimlerin ötesinde saklanan tüm veriler
+- Application Insights tarafından yürütülen tüm çoklu test Web testleri
+- Azure Izleyici 'de yer alan ücretsiz birimlerin ötesinde depolanan özel ölçümler
 - Sıklık, birden çok kaynak/boyut, [dinamik eşikler](alerts-dynamic-thresholds.md), kaynak/sinyal değiştirme vb. gibi daha yeni ölçüm uyarısı özelliklerini kullanmak için düzenlenen tüm geçirilmiş uyarı kuralları.
 - Daha yeni bildirimleri veya SMS, sesli çağrı ve/veya ıTSM tümleştirmesi gibi eylem türlerini kullanmak için düzenlenen geçirilmiş eylem grupları.
 

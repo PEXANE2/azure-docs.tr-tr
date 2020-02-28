@@ -1,18 +1,17 @@
 ---
 title: Azure 'da Office 365 yönetim çözümü | Microsoft Docs
 description: Bu makalede, Azure 'da Office 365 çözümünün yapılandırması ve kullanımıyla ilgili ayrıntılar sağlanmaktadır.  Azure Izleyici 'de oluşturulan Office 365 kayıtlarının ayrıntılı açıklamasını içerir.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111557"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663275"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -95,7 +94,7 @@ ms.locfileid: "77111557"
 > Azure Sentinel, yerleşik güvenliğe dayalı panolar, özel uyarı sorguları, arama sorguları, araştırma ve Office 365 ve Azure AD günlükleri temelinde otomatik yanıt özellikleri sağlar. Daha fazla bilgi edinmek için Azure Sentinel GitHub ve öğreticileri bulun:
 >
 > - [Kullanıma hazır tehditleri algılama](../../sentinel/tutorial-detect-threats-built-in.md)
-> - [Şüpheli tehditleri algılamak için özel analitik kurallar oluşturma](../../sentinel/tutorial-detect-threats-custom.md)
+> - [Şüpheli tehditleri algılamak için özel analiz kuralları oluşturma](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Verilerinizi izleme](../../sentinel/tutorial-monitor-your-data.md)
 > - [Azure Sentinel ile olayları araştırın](../../sentinel/tutorial-investigate-cases.md)
 > - [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](../../sentinel/tutorial-respond-threats-playbook.md)

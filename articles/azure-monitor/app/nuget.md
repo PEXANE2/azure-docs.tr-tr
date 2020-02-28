@@ -1,18 +1,14 @@
 ---
 title: Azure Izleyici Application Insights NuGet paketleri
 description: Azure Izleyici Application Insights ASP.NET, ASP.NET Core, Python için NuGet paket listeleri
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/16/2018
-ms.openlocfilehash: 0bac42242bc08fcc07bba12847a4aeb79424dc78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406580"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670007"
 ---
 # <a name="application-insights-nuget-packages"></a>NuGet paketlerini Application Insights
 
@@ -20,7 +16,7 @@ Application Insights için güncel sürüm NuGet paketlerinin geçerli listesi a
 
 ## <a name="common-packages-for-aspnet"></a>ASP.NET için ortak paketler
 
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights | 2.12.0 | Tüm Application Insights Telemetri türlerinin iletilmesi için çekirdek işlevsellik sağlar ve diğer tüm Application Insights paketleri için bağımlı bir pakettir | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft. ApplicationInsights. Agent. KESMENOKTASI | 2.4.0 | Yöntem çağrılarının ele geçirilmesini sunar | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
@@ -32,7 +28,7 @@ Application Insights için güncel sürüm NuGet paketlerinin geçerli listesi a
 
 ## <a name="common-packages-for-aspnet-core"></a>ASP.NET Core için ortak paketler
 
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. AspNetCore | 2.5.0 | ASP.NET Core Web uygulamaları için Application Insights. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Microsoft.ApplicationInsights | 2.12.0 | Bu paket, tüm Application Insights Telemetri türlerinin iletilmesi için çekirdek işlevsellik sağlar ve diğer tüm Application Insights paketleri için bağımlı bir pakettir | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -42,7 +38,7 @@ Application Insights için güncel sürüm NuGet paketlerinin geçerli listesi a
 | Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel | 2.12.0 | Windows Server SDK Application Insights, çevrimdışı senaryolarda Telemetriyi koruyacak bir telemetri kanalı sağlar. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>OpenCensus kullanarak Python için ortak paketler
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | opencensus-ext-Azure | 1.0.0 | OpenCensus aracılığıyla Azure Izleyici kapsamındaki Python uygulamaları için Application Insights. | [Paketi indir](https://pypi.org/project/opencensus-ext-azure/) |
 | opencensus-ext-docgo | 0.7.2 | Bu paket Python [docgo](https://pypi.org/project/django/) kitaplığı ile tümleştirme sağlar. | [Paketi indir](https://pypi.org/project/opencensus-ext-django/) |
@@ -59,7 +55,7 @@ Application Insights için güncel sürüm NuGet paketlerinin geçerli listesi a
 
 ## <a name="listenerscollectorsappenders"></a>Dinleyici/toplayıcı/uygulama
 
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. DiagnosticSourceListener | 2.7.2 |  Olayları DiagnosticSource 'tan Application Insights iletmek için izin verir. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
 | Microsoft. ApplicationInsights. EventSourceListener | 2.7.2 | Application Insights EventSourceListener, EventSource olaylardaki verilerin Application Insights gönderilmesine izin verir. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
@@ -71,14 +67,14 @@ Application Insights için güncel sürüm NuGet paketlerinin geçerli listesi a
 
 ## <a name="service-fabric"></a>Service Fabric
 
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. ServiceFabric | 2.2.0 | Bu paket, uygulamanın üzerinde çalıştığı Service Fabric bağlamı ile Telemetriyi otomatik olarak dekorasyonu sağlar. Bu NuGet 'i Yerel Service Fabric uygulamalar için kullanmayın. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
 | Microsoft. ApplicationInsights. ServiceFabric. Native | 2.2.0 | Service Fabric uygulamaları için Application Insights modülü. Bu NuGet 'i yalnızca yerel Service Fabric uygulamaları için kullanın. Kapsayıcılarda çalışan uygulamalar için Microsoft. ApplicationInsights. ServiceFabric paketini kullanın. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>Durum İzleyicisi
 
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. Agent_x64 | 2.2.1 |  X64 uygulamaları için çalışma zamanı veri toplamayı etkinleştirilir | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft. ApplicationInsights. Agent_x86 | 2.2.1 |  X86 uygulamaları için çalışma zamanı veri toplamayı etkinleştirilir. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
@@ -87,7 +83,7 @@ Bu paketler, [durum İzleyicisi](../../azure-monitor/app/monitor-performance-liv
 
 ## <a name="additional-packages"></a>Ek paketler
 
-| Paket Adı | Kararlı sürüm | Açıklama | İndirin |
+| Paket adı | Kararlı sürüm | Açıklama | İndirme |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. AzureWebSites | 2.6.5 | Bu uzantı, bir Azure App Service Application Insights izlemeye izin vermez. SDK sürümü 2.6.1. Yönergeler: ' APPINSIGHTS_INSTRUMENTATIONKEY ' uygulama ayarlarını Ikey ile ekleyin ve WebApp 'yi bir efekt alacak şekilde yeniden başlatın.| [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft. ApplicationInsights. Injector | 2.6.7 | Bu paket, kodsuz kullanacaksınız Application Insights ekleme için gereken dosyaları içerir | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |

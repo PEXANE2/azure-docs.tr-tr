@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights OpenCensus yerel ileticisi (Önizleme)
 description: Python ve Azure 'da bulunan dillerdeki dağıtılmış izlemeleri ve yayılmaları iletme ve Azure 'a git Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcf7ba495897eb1c9b40c78f00825e863390b5d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406599"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669973"
 ---
 # <a name="local-forwarder-preview"></a>Yerel iletici (Önizleme)
 
@@ -25,12 +21,12 @@ Yerel iletici [GitHub üzerinde açık kaynaklı bir projem](https://github.com/
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Windows Hizmeti
+#### <a name="windows-service"></a>Windows hizmeti
 
 Windows altında yerel iletici çalıştırmanın en kolay yolu Windows hizmeti olarak yüklemek. Yayın, işletim sistemiyle kolayca kaydedilemeyen bir Windows hizmeti yürütülebilir dosyası (*windowsservicehost/Microsoft. LocalForwarder. WindowsServiceHost. exe*) ile birlikte gelir.
 
 > [!NOTE]
-> Yerel iletici hizmeti en az .NET Framework 4,7 gerektirir. .NET Framework 4,7 yoksa hizmet yüklenir, ancak başlatılmaz. .NET Framework'ün en son sürümüne erişim sağlamak **[.NET Framework Yükleme sayfasını ziyaret edin](
+> Yerel iletici hizmeti en az .NET Framework 4,7 gerektirir. .NET Framework 4,7 yoksa hizmet yüklenir, ancak başlatılmaz. .NET Framework 'nin son sürümüne erişmek için **[.NET Framework indirme sayfasını ziyaret edin](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. LF 'yi indirin. GitHub 'daki [Yerel iletici yayın sayfasından](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) windowsservicehost. zip dosyası.

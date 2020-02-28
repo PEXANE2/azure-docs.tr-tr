@@ -1,18 +1,16 @@
 ---
 title: 'Hızlı başlangıç: Azure Application Insights Java Web uygulaması Analizi'
 description: 'Application Insights ile Java web uygulamaları için Uygulama Performansı İzleme. '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963691"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670092"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
 
@@ -38,7 +36,7 @@ Application Insights, Web geliştiricileri için, canlı uygulamanızın perform
 
 *Proje türünü seçin.*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 Projeniz zaten derleme için Maven kullanmak üzere ayarlandıysa, aşağıdaki kodu *POTM. xml* dosyanıza birleştirin.
 
@@ -56,7 +54,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 Projeniz zaten derleme için Gradle kullanmak üzere ayarlandıysa, aşağıdaki kodu *Build. Gradle* dosyanıza birleştirin.
 
@@ -70,7 +68,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
     }
 ```
 
-# <a name="other-typestabother"></a>[Diğer türler](#tab/other)
+# <a name="other-types"></a>[Diğer türler](#tab/other)
 
 [En son sürümü](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) indirin ve önceki sürümleri değiştirerek gerekli dosyaları projenize kopyalayın.
 

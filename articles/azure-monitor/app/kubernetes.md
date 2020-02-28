@@ -1,18 +1,16 @@
 ---
 title: Azure Kubernetes hizmeti (AKS) veya diğer Kubernetes barındırılan uygulamalarını izlemek için Application Insights kullanın-Azure Izleyici | Microsoft Docs
 description: Azure Izleyici, Kubernetes barındırılan uygulamalar için uygulama izlemeye olanak sağlamak üzere Kubernetes kümenizdeki hizmet kafes teknolojisini kullanır. Bu, kümenizde çalışan ve bu kaynaklardan gelen ve giden isteklerle ilgili Application Insights telemetri toplamanıza olanak tanır.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432515"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666795"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes barındırılan uygulamalar için sıfır izleme uygulaması izleme
 
@@ -26,14 +24,14 @@ Azure Izleyici, Kubernetes barındırılan uygulamalar için kullanıma hazır u
 > [!NOTE]
 > Bu, Kubernetes üzerinde uygulama izleme gerçekleştirmenin birçok yöntemlerinden biridir. Ayrıca, bir hizmet ağı gerekmeden [Application Insights SDK 'yı](../../azure-monitor/azure-monitor-app-hub.yml) kullanarak Kubernetes 'te barındırılan herhangi bir uygulamayı da denetleyebilirsiniz. Bir SDK ile uygulamayı işaretlemeden Kubernetes 'i izlemek için aşağıdaki yöntemi kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir [Kubernetes kümesi](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads).
 - *Kubectl*çalıştırmak için kümeye konsol erişimi.
 - Bir [Application Insight kaynağı](create-new-resource.md)
 - Hizmet ağı vardır. Kümenizin güncel bir dağıtımı yoksa, [Azure Kubernetes hizmeti 'Nde istio 'yu yüklemeyi ve kullanmayı](https://docs.microsoft.com/azure/aks/istio-install)öğrenebilirsiniz.
 
-## <a name="capabilities"></a>Yetenekler
+## <a name="capabilities"></a>Özellikler
 
 Kubernetes barındırılan uygulamalar için sıfır izleme uygulama izlemeyi kullanarak şunları kullanabilirsiniz:
 

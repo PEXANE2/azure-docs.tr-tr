@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlüklerinde sorgu arama | Microsoft Docs
 description: Bu makalede, Azure Izleyici günlük sorgularında arama ile çalışmaya başlama hakkında bir öğretici sunulmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932991"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660249"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde sorgu arama
 Azure Izleyici günlük sorguları, bir tablo adı ya da bir arama komutu ile başlayabilir. Bu öğretici, arama tabanlı sorguları ele alır. Her yöntemin avantajları vardır.
@@ -55,7 +54,7 @@ search in (Event) Source:"error"
 > `:`yerine `==` kullanırsanız sonuçlar, *kaynak* sütunun "Error" değerine sahip olduğu kayıtları ve bu tam durumu içerir. ': ' Kullanılması, *kaynağın* "hata kodu 404" veya "hata" gibi değerlere sahip olduğu kayıtları içerecektir.
 
 ## <a name="case-sensitivity"></a>Büyük/küçük harf duyarlılığı
-Varsayılan olarak, terim arama büyük/küçük harfe duyarlıdır; bu nedenle "DNS" araması "DNS", "DNS" veya "DNS" gibi sonuçlar verebilir. Arama durumunu duyarlı hale getirmek için `kind` seçeneğini kullanın:
+Varsayılan olarak, terim arama büyük/küçük harfe duyarlıdır; bu nedenle "DNS" araması "DNS", "DNS" veya "DNS" gibi sonuçlar verebilir. Arama büyük/küçük harfe duyarlı hale getirmek için `kind` seçeneğini kullanın:
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
@@ -90,10 +89,10 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-Yalnızca bir joker karakter (`search in (Event) *`) kullanarak bir tablodaki her şeyi alabilir, ancak bu, yalnızca `Event` yazmak için de aynıdır.
+Yalnızca bir joker karakter kullanarak bir tablodaki her şeyi alabilirsiniz: `search in (Event) *`, ancak bu, yalnızca `Event`yazmak için de aynıdır.
 
 > [!TIP]
-> Her tablodaki her sütunu almak için `search *` ' ı kullanabilirsiniz, ancak sorgularınızın her zaman belirli tablolara kapsamını oluşturmanız önerilir. Kapsamlı olmayan sorguların tamamlanması biraz zaman alabilir ve çok fazla sonuç döndürebilir.
+> Her tablodaki her sütunu almak için `search *` kullanabilirsiniz, ancak sorgularınızın her zaman belirli tablolara kapsamını oluşturmanız önerilir. Kapsamlı olmayan sorguların tamamlanması biraz zaman alabilir ve çok fazla sonuç döndürebilir.
 
 ## <a name="add-and--or-to-search-queries"></a>Sorgu ekleme *ve* / *veya* arama
 Birden çok terim içeren kayıtları aramak için **ve** kullanın:

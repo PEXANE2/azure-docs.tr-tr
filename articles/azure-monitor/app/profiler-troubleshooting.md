@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights Profiler sorunlarını giderme
 description: Bu makalede, Application Insights Profiler etkinleştirme veya kullanma konusunda sorun yaşayan geliştiricilere yardımcı olacak sorun giderme adımları ve bilgiler sunulmaktadır.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024033"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671571"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
 
@@ -51,7 +49,7 @@ Profiler, izleme iletilerini ve özel olayları Application Insights kaynağına
 * Uygulamanızın .NET Framework 4,6 ' de çalıştığından emin olun.
 * Web uygulamanız ASP.NET Core bir uygulama ise, en az ASP.NET Core 2,0 çalıştırıyor olmalıdır.
 * Görüntülemeye çalıştığınız veriler birkaç haftadan daha eskiyse, zaman filtrenizi sınırlamayı deneyin ve yeniden deneyin. İzlemeler yedi gün sonra silinir.
-* Proxy 'lerin veya güvenlik duvarının https://gateway.azureserviceprofiler.net erişimi engellemediğinden emin olun.
+* Proxy 'lerin veya güvenlik duvarının https://gateway.azureserviceprofiler.neterişimi engellemediğinden emin olun.
 * Profil Oluşturucu ücretsiz veya paylaşılan App Service planlarında desteklenmez. Bu planlardan birini kullanıyorsanız, temel planların birine kadar ölçeği ölçeklendirmeyi deneyin ve profil oluşturucu çalışmaya başlaması gerekir.
 
 ### <a id="double-counting"></a>Paralel iş parçacıklarında Double sayma
@@ -149,7 +147,7 @@ Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
-    veya
+    or
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```

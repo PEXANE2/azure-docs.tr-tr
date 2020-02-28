@@ -1,18 +1,14 @@
 ---
 title: Bağımlılık Azure Application Insights izleme | Microsoft Docs
 description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277674"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666250"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -57,12 +53,12 @@ Bağımlılıklar, aşağıdaki tekniklerden biri kullanılarak otomatik olarak 
 
 Aşağıda, otomatik olarak toplanmayan ve bu nedenle el ile izleme gerektiren bazı bağımlılıklar örnekleri verilmiştir.
 
-* Azure Cosmos DB yalnızca otomatik olarak izlenir [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) kullanılır. TCP modu, Application Insights tarafından yakalanan olmaz.
+* Azure Cosmos DB yalnızca [http/https](../../cosmos-db/performance-tips.md#networking) kullanılıyorsa otomatik olarak izlenir. TCP modu, Application Insights tarafından yakalanan olmaz.
 * Redis
 
 SDK tarafından otomatik olarak toplanmayan bağımlılıklar için, standart otomatik toplama modülleri tarafından kullanılan [Trackdependency API](api-custom-events-metrics.md#trackdependency) 'sini kullanarak bunları el ile izleyebilirsiniz.
 
-Örneğin, kendi yazmadığınız sahip bir derleme, kodunuzu derlemek, kolaylaştırır, yanıt süreleri için hangi katkı öğrenmek için tüm çağrıları, süresi. Application ınsights bağımlılık grafiklerinde görüntülenir. Bu veriler için kullanarak göndermek `TrackDependency`.
+Örneğin, kendi yazmadığınız sahip bir derleme, kodunuzu derlemek, kolaylaştırır, yanıt süreleri için hangi katkı öğrenmek için tüm çağrıları, süresi. Bu verilerin Application Insights içindeki bağımlılık grafiklerde görüntülenmesini sağlamak için `TrackDependency`kullanarak gönderin.
 
 ```csharp
 
@@ -98,7 +94,7 @@ ASP.NET uygulamalar için, tam SQL sorgusu, izleme altyapısı gerektiren Byte C
 
 | Platform | Tam SQL sorgusu almak için gereken adımlar |
 | --- | --- |
-| Azure Web Uygulaması |Web uygulaması denetim masasında [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .net altında SQL komutlarını etkinleştirin |
+| Azure Web App |Web uygulaması denetim masasında [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .net altında SQL komutlarını etkinleştirin |
 | IIS sunucusu (Azure VM, şirket içi vb.) | Durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını YÜKLEYIP](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) IIS 'yi yeniden başlatın. |
 | Azure Cloud Service | [StatusMonitor 'ı yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) ekleme <br> [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya [ASP.NET Core uygulamalarına](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönelik NuGet paketlerini yükleyerek uygulamanızın derleme zamanında eklendi to ApplicationInsights SDK 'sı olması gerekir |
 | IIS Express | Desteklenmiyor
@@ -107,13 +103,13 @@ Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığın
 
 ## <a name="where-to-find-dependency-data"></a>Bağımlılık verileri nerede bulunur
 
-* [Uygulama Haritası](app-map.md) komşu bileşenlerini ve uygulama arasındaki bağımlılıkları görselleştirir.
+* [Uygulama Haritası](app-map.md) , uygulamanız ve komşu bileşenler arasındaki bağımlılıkları görselleştirir.
 * [Işlem tanılama](transaction-diagnostics.md) Birleşik, bağıntılı sunucu verilerini gösterir.
 * [Tarayıcılar sekmesi](javascript.md) kullanıcılarınızın TARAYıCıLARıNDAKI Ajax çağrılarını gösterir.
 * Bağımlılık çağrılarını denetlemek için yavaş veya başarısız olan isteklerden öğesine tıklayın.
-* [Analytics](#logs-analytics) sorgu bağımlılık verileri için kullanılabilir.
+* [Analiz](#logs-analytics) , bağımlılık verilerini sorgulamak için kullanılabilir.
 
-## <a name="diagnosis"></a> Yavaş istekleri tanılayın
+## <a name="diagnosis"></a>Yavaş istekleri tanılama
 
 Her istek olayı, uygulamanız isteği işlerken bağımlılık çağrıları, özel durumlar ve izlenen diğer olaylarla ilişkilendirilir. Bu nedenle, bazı istekler hatalı çalışıyorsa, bir bağımlılıktan yavaş yanıt olup olmadığını öğrenebilirsiniz.
 
@@ -194,5 +190,5 @@ Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Özel Durumlar](../../azure-monitor/app/asp-net-exceptions.md)
-* [Kullanıcı ve sayfa verileri](../../azure-monitor/app/javascript.md)
+* [Kullanıcı & sayfası verileri](../../azure-monitor/app/javascript.md)
 * [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)

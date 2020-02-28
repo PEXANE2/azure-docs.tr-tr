@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de Azure ağ analizi çözümü | Microsoft Docs
 description: Azure ağ güvenlik grubu günlüklerini ve Azure Application Gateway günlüklerini gözden geçirmek için Azure Izleyici 'de Azure ağ analizi çözümünü kullanabilirsiniz.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893323"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667101"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 

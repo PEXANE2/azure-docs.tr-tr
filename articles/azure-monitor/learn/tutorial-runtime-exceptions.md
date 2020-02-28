@@ -1,19 +1,18 @@
 ---
 title: Azure Application Insights kullanarak çalışma zamanı özel durumlarını tanılama | Microsoft Docs
 description: Azure Application Insights kullanarak uygulamanızdaki çalışma zamanı özel durumlarını bulma ve tanılama hakkındaki öğretici.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398528"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670432"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
 
@@ -28,7 +27,7 @@ Azure Application Insights, uygulamanızdan çalışma zamanı özel durumların
 > * Hatalı kodu düzeltmek için yeni iş öğesi oluşturma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -84,7 +83,7 @@ Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anl
 
     ![Hata ayıklama anlık görüntüsü](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Ardından, bu anlık görüntüyü düzeltilmesi gereken kodun kendisini bulabileceğimiz biz burada bulabilirsiniz Visual Studio'ya indirmek için seçeneğiniz de vardır. Bunu yapmak için tıklatın **anlık görüntüyü indir**.
+4. Ardından, bu anlık görüntüyü düzeltilmesi gereken kodun kendisini bulabileceğimiz biz burada bulabilirsiniz Visual Studio'ya indirmek için seçeneğiniz de vardır. Bunu yapmak için **anlık görüntüyü indir**' e tıklayın.
 5. Anlık görüntü Visual Studio'ya yüklenir.
 6. Artık, özel duruma neden olan kod satırına hızlıca tanımlayan Visual Studio Enterprise hata ayıklama oturumu çalıştırabilirsiniz.
 
@@ -96,7 +95,7 @@ Application Insights tarafından toplanan tüm veriler, bunları çeşitli yolla
 
 1. Application Insights tarafından sağlanan telemetri verilerini görüntülemek için kodun üzerindeki CodeLens bilgilerine tıklayın.
 
-    ![Kodlayın](media/tutorial-runtime-exceptions/codelens.png)
+    ![Kod](media/tutorial-runtime-exceptions/codelens.png)
 
 1. **Etkiyi çözümleyin**’e tıklayarak Application Insights Analytics’i açın.  Analytics, başarısız isteklerle ilgili olarak etkilenen kullanıcılar, tarayıcılar ve bölgeler gibi ayrıntıları sağlayan çeşitli sorgularla doldurulur.<br><br>![Analizler](media/tutorial-runtime-exceptions/analytics.png)<br>
 

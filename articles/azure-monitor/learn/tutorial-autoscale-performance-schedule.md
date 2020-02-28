@@ -3,18 +3,17 @@ title: Azure kaynaklarını performans verilerine veya bir zamanlamaya göre oto
 description: Ölçüm verilerini ve bir zamanlamayı kullanarak bir uygulama hizmeti planı için otomatik ölçeklendirme ayarı oluşturma
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637238"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661661"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Azure kaynakları için performans verilerini veya bir zamanlamayı temel alan bir Otomatik Ölçeklendirme Ayarı oluşturma
 
@@ -37,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="create-a-web-app-and-app-service-plan"></a>Web Uygulaması ve App Service Planı oluşturma
 1. Soldaki gezinti bölmesinden **Kaynak oluştur** seçeneğine tıklayın.
 2. *Web Uygulaması* öğesini bulup seçin ve **Oluştur**’a tıklayın.
-3. *MyTestScaleWebApp* gibi bir uygulama adı seçin. Yeni bir kaynak grubu oluşturma * myResourceGroup' seçtiğiniz kaynak grubuna yerleştirin.
+3. *MyTestScaleWebApp* gibi bir uygulama adı seçin. Yeni bir kaynak grubu * myResourceGroup ' oluşturun veya bunu seçtiğiniz bir kaynak grubuna yerleştirin.
 
 Birkaç dakika içinde kaynaklarınız sağlanmalıdır. Bu öğreticinin geri kalanında Web Uygulamasını ve ilgili App Service Planını kullanın.
 
@@ -63,7 +62,7 @@ Sonraki birkaç adım, otomatik ölçeklendirme ekranını aşağıdaki resimdek
    ![Otomatik ölçeklendirme ayarlarına gidin](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrence-profile"></a>Yinelenme profili oluşturma
+## <a name="create-recurrence-profile"></a>Yinelenme profili oluştur
 
 1. Varsayılan profil altındaki **Ölçeklendirme koşulu ekle** bağlantısına tıklayın.
 

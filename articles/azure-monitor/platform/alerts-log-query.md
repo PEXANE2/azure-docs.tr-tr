@@ -1,33 +1,31 @@
 ---
-title: Uyarı sorguları Azure İzleyicisi'nde oturum açın | Microsoft Docs
-description: Azure İzleyici güncelleştirmeleri ve var olan sorguları dönüştürmek için bir işlem de günlük uyarıları için etkili sorgular yazmaya öneriler sağlar.
+title: Azure Izleyici 'de günlük uyarı sorguları | Microsoft Docs
+description: Azure Izleyici güncelleştirmelerinde günlük uyarılarına yönelik etkili sorgular yazma ve mevcut sorguları dönüştürme işlemi için öneriler sağlar.
 author: yossi-y
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yossiy
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996020"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667797"
 ---
-# <a name="log-alert-queries-in-azure-monitor"></a>Azure İzleyici'de günlük uyarı sorguları
-[Uyarı kuralları Azure İzleyici günlüklerine göre](alerts-unified-log.md) düzenli aralıklarla çalıştırın, böylece emin olmanız gerekir, ek yükü ve gecikme süresini en aza indirmek için yazılır. Bu makalede, günlük uyarıları için etkili sorgular ve var olan sorguları dönüştürmek için bir işlem yazmaya öneriler sağlar. 
+# <a name="log-alert-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarısı sorguları
+[Azure izleyici günlüklerine dayanan uyarı kuralları](alerts-unified-log.md) düzenli aralıklarla çalışır, bu nedenle ek yükü ve gecikmeyi en aza indirmek için yazıldıklarından emin olun. Bu makalede, günlük uyarılarına yönelik etkili sorgular ve mevcut sorguları dönüştürme işlemi için yazma önerileri sağlanır. 
 
-## <a name="types-of-log-queries"></a>Günlük sorgu türleri
-[Azure İzleyicisi'nde sorgular oturum](../log-query/log-query-overview.md) bir tablo ile başlayın veya [arama](/azure/kusto/query/searchoperator) veya [birleşim](/azure/kusto/query/unionoperator) işleci.
+## <a name="types-of-log-queries"></a>Günlük sorgularının türleri
+[Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md) bir tablo veya [arama](/azure/kusto/query/searchoperator) ya da [birleşim](/azure/kusto/query/unionoperator) işleciyle başlar.
 
-Örneğin aşağıdaki sorguyu kapsamı _SecurityEvent_ tablo ve belirli olay kimliğine arar Bu sorgu işlemesi gerekir, yalnızca bir tablodur.
+Örneğin, aşağıdaki sorgu _securityevent_ tablosunun kapsamına alınır ve belırlı olay kimliğini arar. Bu, sorgunun işlemesi gereken tek tablodur.
 
 ``` Kusto
 SecurityEvent | where EventID == 4624 
 ```
 
-İle başlayan sorguları `search` veya `union` bir tabloda birden fazla sütun veya bile birden çok tablo arasında arama olanak sağlar. Arama terimi birden çok yöntem aşağıdaki örnekler _bellek_:
+`search` veya `union` ile başlayan sorgular, bir tabloda veya hatta birden çok tabloda birden çok sütunda arama yapmanıza olanak tanır. Aşağıdaki örneklerde, _bellek_terimini aramak için birden çok yöntem gösterilmektedir:
 
 ```Kusto
 search "Memory"
@@ -37,12 +35,12 @@ search ObjectName == "Memory"
 union * | where ObjectName == "Memory"
 ```
 
-Ancak `search` ve `union` olan veri keşfi, tüm veri modeli üzerinde koşulları arama sırasında bunlar bir tablo arasında birden çok tablo tarama gerekir bu yana kullanmaktan daha az verimli yararlıdır. Uyarı kuralları sorgularda düzenli aralıklarla çalıştırıldığından, gecikme süresi için uyarı ekleme aşırı ek yükten sonuçlanabilir. Bu ek yükü nedeniyle, azure'da günlük uyarısı kuralları için sorgular her zaman sorgu performansı hem sonuçlarının ilgi geliştiren bir Temizle kapsamını tanımlamak için bir tablo ile başlamanız gerekir.
+`search` ve `union` veri keşfi sırasında yararlı olsa da, tüm veri modeli üzerinde terimler aranırken, birden çok tablo arasında tarama olmaları gerektiğinden, tablo kullanmaktan daha az verimlidir. Uyarı kurallarındaki sorgular düzenli aralıklarla çalıştırıldıklarından, bu, uyarıya gecikme süresinin aşırı yüküyle sonuçlanmasından kaynaklanabilir. Bu ek yük nedeniyle, Azure 'daki günlük uyarısı kuralları sorguları her zaman bir açık kapsam tanımlamak için her zaman bir tablo ile başlamalı ve bu da hem sorgu performansını hem de sonuçların uygunluğunu geliştirir.
 
-## <a name="unsupported-queries"></a>Desteklenmeyen sorgu
-Ocak ayından başlayarak oluştururken veya değiştirirken kullanın günlük uyarı kuralları 11,2019 `search`, veya `union` işleçleri kullanılamaz desteklenen içinde Azure portalı. Bu işleçler bir uyarı kuralı kullanarak bir hata iletisi döndürür. Mevcut uyarı kuralları ve oluşturulup düzenlenebilir günlük analizi API'sini kullanarak uyarı kuralları, bu değişiklikten etkilenmez. Yine de olsa, verimliliği artırmak için bu sorgu türleri kullanan herhangi bir uyarı değiştirme kuralları dikkate almanız gerekir.  
+## <a name="unsupported-queries"></a>Desteklenmeyen sorgular
+11 Ocak 2019 ' ten itibaren, `search`veya `union` işleçlerini kullanan günlük uyarı kuralları oluşturma veya değiştirme Azure portal içinde desteklenmez. Bu işleçler bir uyarı kuralında kullanıldığında bir hata mesajı döndürülür. Log Analytics API 'siyle oluşturulan ve düzenlenen mevcut uyarı kuralları ve uyarı kuralları bu değişiklikten etkilenmez. Yine de bu tür sorgular kullanan tüm uyarı kurallarını değiştirmeyi göz önünde bulundurmanız gerekir.  
 
-Günlük uyarısı kuralları kullanarak [kaynaklar arası sorgular](../log-query/cross-workspace-query.md) kaynaklar arası sorgular kullandığından bu değişiklikten etkilenmez `union`, belirli kaynaklara sorgu kapsamını sınırlar. Bu, eşdeğer değil `union *` hangi kullanılamaz.  Aşağıdaki örnek, bir günlük uyarı kuralı geçerli olacaktır:
+[Çapraz kaynak sorguları kullanan günlük](../log-query/cross-workspace-query.md) uyarı kuralları, sorgu kapsamını belirli kaynaklarla sınırlayan `union`' yi kullandığından, bu değişiklikten etkilenmez. Bu, kullanılamayan `union *` eşdeğer değildir.  Aşağıdaki örnek, bir günlük uyarı kuralında geçerli olacaktır:
 
 ```Kusto
 union 
@@ -52,13 +50,13 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->[Kaynaklar arası sorgu](../log-query/cross-workspace-query.md) günlüğünde uyarı desteklenen yeni [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Varsayılan olarak, Azure İzleyici kullanır [eski Log Analytics uyarı API](api-alerts.md) gelen geçiş yapmadığınız sürece, yeni günlük uyarı kuralları Azure portalından oluşturmak için [eski günlük uyarıları API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Anahtardan sonra yeni API, Azure portalında yeni uyarı kuralları için varsayılan olur ve kaynaklar arası sorgu günlük uyarı kuralları oluşturmanıza olanak tanır. Oluşturabileceğiniz [kaynaklar arası sorgu](../log-query/cross-workspace-query.md) günlük uyarısı kuralları kullanarak geçiş yapmaya gerek olmadan [scheduledQueryRules API için ARM şablonu](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) – ancak yine de bu uyarı kuralı yönetilebilir [ API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) ve Azure Portal'da değil.
+>Log uyarılarındaki [çapraz kaynak sorgusu](../log-query/cross-workspace-query.md) , yeni [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si Için ARM şablonunu](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan [çapraz kaynak sorgu](../log-query/cross-workspace-query.md) günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [scheduledqueryrules API 'si](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
 
 ## <a name="examples"></a>Örnekler
-Örnek olarak şunlar gösterilebilir kullanan günlük sorguları `search` ve `union` ve uyarı kuralları ile kullanmak için bu sorguları değiştirmek için kullanabileceğiniz adımlar sağlar.
+Aşağıdaki örneklerde `search` ve `union` kullanan günlük sorguları ve bu sorguları uyarı kurallarıyla kullanılmak üzere değiştirmek için kullanabileceğiniz adımlar sağlanmaktadır.
 
 ### <a name="example-1"></a>Örnek 1
-Performans bilgileri kullanarak alan aşağıdaki sorguyu kullanarak günlük uyarı kuralı oluşturmak istediğiniz `search`: 
+`search`kullanarak performans bilgilerini alan aşağıdaki sorguyu kullanarak bir günlük uyarı kuralı oluşturmak istiyorsunuz: 
 
 ``` Kusto
 search * | where Type == 'Perf' and CounterName == '% Free Space' 
@@ -67,7 +65,7 @@ search * | where Type == 'Perf' and CounterName == '% Free Space'
 ```
   
 
-Bu sorguyu değiştirmek için özellikler ait tablo tanımlamak için aşağıdaki sorguyu kullanarak başlatın:
+Bu sorguyu değiştirmek için, özelliklerin ait olduğu tabloyu tanımlamak üzere aşağıdaki sorguyu kullanarak başlayın:
 
 ``` Kusto
 search * | where CounterName == '% Free Space'
@@ -75,9 +73,9 @@ search * | where CounterName == '% Free Space'
 ```
  
 
-Bu sorgunun sonucu, gösterebilir _CounterName_ özelliği geldiği _Perf_ tablo. 
+Bu sorgunun sonucu, _CounterName_ özelliğinin _perf_ tablosundan geldiğini gösterir. 
 
-Bu sonuç için uyarı kuralı kullanacağınız aşağıdaki sorguyu oluşturmak için kullanabilirsiniz:
+Bu sonucu, uyarı kuralı için kullanacağınız aşağıdaki sorguyu oluşturmak için kullanabilirsiniz:
 
 ``` Kusto
 Perf 
@@ -88,7 +86,7 @@ Perf
 
 
 ### <a name="example-2"></a>Örnek 2
-Performans bilgileri kullanarak alan aşağıdaki sorguyu kullanarak günlük uyarı kuralı oluşturmak istediğiniz `search`: 
+`search`kullanarak performans bilgilerini alan aşağıdaki sorguyu kullanarak bir günlük uyarı kuralı oluşturmak istiyorsunuz: 
 
 ``` Kusto
 search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
@@ -98,7 +96,7 @@ search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
 ```
   
 
-Bu sorguyu değiştirmek için özellikler ait tablo tanımlamak için aşağıdaki sorguyu kullanarak başlatın:
+Bu sorguyu değiştirmek için, özelliklerin ait olduğu tabloyu tanımlamak üzere aşağıdaki sorguyu kullanarak başlayın:
 
 ``` Kusto
 search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use" 
@@ -106,9 +104,9 @@ search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use"
 ```
  
 
-Bu sorgunun sonucu, gösterebilir _ObjectName_ ve _CounterName_ özelliği geldiği _Perf_ tablo. 
+Bu sorgunun sonucu, _ObjectName_ ve _CounterName_ özelliğinin _perf_ tablosundan geldiğini gösterir. 
 
-Bu sonuç için uyarı kuralı kullanacağınız aşağıdaki sorguyu oluşturmak için kullanabilirsiniz:
+Bu sonucu, uyarı kuralı için kullanacağınız aşağıdaki sorguyu oluşturmak için kullanabilirsiniz:
 
 ``` Kusto
 Perf 
@@ -121,7 +119,7 @@ Perf
 
 ### <a name="example-3"></a>Örnek 3
 
-Her ikisi de kullanan aşağıdaki sorguyu kullanarak günlük uyarı kuralı oluşturmak istediğiniz `search` ve `union` performans bilgilerini almak için: 
+Performans bilgilerini almak için hem `search` hem de `union` kullanan aşağıdaki sorguyu kullanarak bir günlük uyarı kuralı oluşturmak istiyorsunuz: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
@@ -130,16 +128,16 @@ search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceN
 ```
  
 
-Bu sorguyu değiştirmek için sorgu ilk bölümünü özelliklerinde ait tablosu tanımlamak için aşağıdaki sorguyu kullanarak başlatın: 
+Bu sorguyu değiştirmek için, sorgunun ilk bölümündeki özelliklerin ait olduğu tabloyu tanımlamak üzere aşağıdaki sorguyu kullanarak başlayın: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
 | summarize by $table 
 ```
 
-Bu sorgu sonucunu, tüm bu özellikler geldiğini gösterebilir _Perf_ tablo. 
+Bu sorgunun sonucu, tüm bu özelliklerin _perf_ tablosundan geldiğini gösterir. 
 
-Artık `union` ile `withsource` hangi kaynak tablosu tanımlamak için komut her satır katkıda bulundu.
+Artık her satıra katkıda bulunan kaynak tablonun hangisi olduğunu belirlemek için `withsource` komutuyla `union` kullanın.
 
 ``` Kusto
 union withsource=table * | where CounterName == "% Processor Utility" 
@@ -147,9 +145,9 @@ union withsource=table * | where CounterName == "% Processor Utility"
 ```
  
 
-Bu özellikler ayrıca geldiğini bu sorgunun sonucu gösterebilir _Perf_ tablo. 
+Bu sorgunun sonucu, bu özelliklerin _performans_ tablosundan da geldiğini gösterir. 
 
-Uyarı kuralı için kullanacağınız aşağıdaki sorguyu oluşturmak için bu sonuçları kullanabilirsiniz: 
+Bu sonuçları, uyarı kuralı için kullanacağınız aşağıdaki sorguyu oluşturmak için kullanabilirsiniz: 
 
 ``` Kusto
 Perf 
@@ -163,7 +161,7 @@ Perf
 ``` 
 
 ### <a name="example-4"></a>Örnek 4
-İki sonuçları birleştirir aşağıdaki sorguyu kullanarak günlük uyarı kuralı oluşturmak istediğiniz `search` sorgular:
+İki `search` sorgusunun sonucunu birleştiren aşağıdaki sorguyu kullanarak bir günlük uyarı kuralı oluşturmak istersiniz:
 
 ```Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 
@@ -178,7 +176,7 @@ on Hour
 ```
  
 
-Sorguyu değiştirmek için birleştirmenin sol tarafındaki özellikleri içeren bir tablo tanımlamak için aşağıdaki sorguyu kullanarak başlatın: 
+Sorguyu değiştirmek için, birleştirmenin sol tarafındaki özellikleri içeren tabloyu tanımlamak üzere aşağıdaki sorguyu kullanarak başlayın: 
 
 ``` Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 
@@ -186,9 +184,9 @@ search Type == 'SecurityEvent' and EventID == '4625'
 ```
  
 
-Sonuç birleştirmenin sol tarafındaki özelliklerinde ait olduğunu gösterir. _SecurityEvent_ tablo. 
+Sonuç, birleştirmenin sol tarafındaki özelliklerin _Securityevent_ tablosuna ait olduğunu gösterir. 
 
-Artık birleştirme sağ tarafında özellikleri içeren bir tablo tanımlamak için aşağıdaki sorguyu kullanın: 
+Şimdi, birleştirmenin sağ tarafındaki özellikleri içeren tabloyu belirlemek için aşağıdaki sorguyu kullanın: 
 
  
 ``` Kusto
@@ -197,9 +195,9 @@ search in (Heartbeat) OSType == 'Windows'
 ```
 
  
-Birleşimin sağ tarafındaki özelliklerinde sinyal tabloya ait sonucu gösterir. 
+Sonuç, birleştirmenin sağ tarafındaki özelliklerin sinyal tablosuna ait olduğunu gösterir. 
 
-Uyarı kuralı için kullanacağınız aşağıdaki sorguyu oluşturmak için bu sonuçları kullanabilirsiniz: 
+Bu sonuçları, uyarı kuralı için kullanacağınız aşağıdaki sorguyu oluşturmak için kullanabilirsiniz: 
 
 
 ``` Kusto
@@ -217,6 +215,6 @@ on Hour
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hakkında bilgi edinin [günlük uyarıları](alerts-log.md) Azure İzleyici'de.
-- Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md).
+- Azure Izleyici 'de [günlük uyarıları](alerts-log.md) hakkında bilgi edinin.
+- [Günlük sorguları](../log-query/log-query-overview.md)hakkında bilgi edinin.
 

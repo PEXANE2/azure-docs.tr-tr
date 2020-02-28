@@ -1,25 +1,24 @@
 ---
 title: Azure Izleyici günlük sorguları | Microsoft Docs
 description: Azure Izleyici 'de günlük sorgularının nasıl yazılacağını öğrenmek için kaynaklara başvurular.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894344"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669396"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Izleyici günlük sorguları
 Azure Izleyici günlükleri Azure Veri Gezgini kurulmuştur ve Azure Izleyici günlük sorguları aynı kusto sorgu dilinin bir sürümünü kullanır. [Kusto sorgu dili belgeleri](/azure/kusto/query) , dilin tüm ayrıntılarına sahiptir ve Azure izleyici günlük sorgularını yazmak için birincil kaynağınız olmalıdır. Bu sayfa, dilin Azure Izleyici uygulamasıyla nasıl sorgu yazılacağını ve farklılıkları hakkında bilgi almak için diğer kaynaklara bağlantılar sağlar.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 - [Azure izleyici 'yi kullanmaya başlama Log Analytics](get-started-portal.md) , sorgu yazma ve sonuçlarla çalışma ile ilgili bir ders olan Azure Portal.
 - [Azure izleyici günlük sorgularını kullanmaya başlama](get-started-queries.md) , Azure izleyici günlük verilerini kullanarak sorgu yazma dersi.

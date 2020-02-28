@@ -1,18 +1,15 @@
 ---
 title: Microsoft Azure ve Azure Izleyici 'de klasik uyarılara genel bakış
 description: Klasik uyarılar kullanım dışı bırakılıyor. Uyarılar, Azure Kaynak ölçümlerini, olaylarını veya günlüklerini izlemenize ve belirttiğiniz bir koşula uyulduğunda bildirimde bulunulmasını sağlar.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747012"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668275"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 'da klasik uyarılar nelerdir?
 
@@ -81,8 +78,8 @@ Ancak, eski ölçüm uyarıları eylem gruplarını kullanmaz. Bunun yerine, aş
 
 Web kancaları Otomasyon ve düzeltme imkanı sunar, örneğin:
 - Azure Otomasyonu Runbook
-- Azure İşlevi
-- Azure Logic App
+- Azure Işlevi
+- Azure mantıksal uygulaması
 - üçüncü taraf bir hizmet
 
 ## <a name="next-steps"></a>Sonraki adımlar

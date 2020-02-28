@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics 'da verileri görüntüleme ve çözümleme | Microsoft Docs
 description: Azure Izleyici günlük sorgu deneyimine Log Analytics günlük araması kullanıcıları için yardım.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398154"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670143"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics günlük aramadan Azure Izleyici günlüklerine geçiş
 Log Analytics günlük araması kısa süre önce Azure Izleyici günlüklerini çözümlemek için yeni bir deneyimle değiştirilmiştir. Günlük arama sayfasına şu anda Azure portal **Log Analytics çalışma alanları** sayfasındaki **Günlükler (klasik)** menü öğesi aracılığıyla erişilebilir ancak 15 Şubat 2019 ' de kaldırılacaktır. Bu makalede, günlük aramadan geçiş yapmanıza yardımcı olmak için iki deneyim arasındaki farklar açıklanmaktadır. 
@@ -47,7 +46,7 @@ Geçerli sorguyu Azure Izleyici günlüklerine kaydetmek için **Kaydet**' i se�
 ## <a name="saved-queries"></a>Kaydedilen sorgular
 Günlük aramasında, kaydedilmiş sorgularınızı, Eylem çubuğu öğesi **kaydedilmiş aramaları**aracılığıyla kullanılabilir. Azure Izleyici günlükleri ' nde, kaydedilmiş sorgulara [sorgu Gezgini](../log-query/get-started-portal.md#save-queries)'nden erişin.
 
-![Sorgu gezgini](media/log-search-transition/query-explorer.png)
+![Sorgu Gezgini](media/log-search-transition/query-explorer.png)
 
 ## <a name="drill-down-on-summarized-rows"></a>Özetlenen satırlarda detaya gitme
 Günlük arama ' da, Özet sorgudaki bir satıra tıklayarak bu satırdaki ayrıntılı kayıtları listeleyen başka bir sorgu başlatabilirsiniz.

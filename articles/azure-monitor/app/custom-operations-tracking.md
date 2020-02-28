@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights .NET SDK ile özel işlemleri izleme
 description: Azure Application Insights .NET SDK ile özel işlemleri izleme
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951352"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671826"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -173,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Süreç
+#### <a name="process"></a>İşleme
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -217,7 +213,7 @@ Ayrıca, Application Insights işlem KIMLIĞINI depolama istek KIMLIĞIYLE iliş
 #### <a name="enqueue"></a>Alma
 Depolama kuyrukları HTTP API 'sini desteklediği için, kuyruğa sahip tüm işlemler Application Insights tarafından otomatik olarak izlenir. Çoğu durumda bu izleme yeterince olmalıdır. Ancak, müşteri tarafında bulunan izlemeleri üretici izlemelerle ilişkilendirmek için, bağıntı için HTTP protokolünde bunu yaptığımız şekilde bir bağıntı bağlamı geçirmeniz gerekir. 
 
-Bu örnek, `Enqueue` işleminin nasıl izleneceğini gösterir. Yapabilecekleriniz:
+Bu örnek, `Enqueue` işleminin nasıl izleneceğini gösterir. Şunları yapabilirsiniz:
 
  - **Yeniden denemeler bağıntılı (varsa)** : hepsi `Enqueue` işlem olan bir ortak üst öğeye sahiptir. Aksi takdirde, bunlar gelen isteğin alt öğesi olarak izlenir. Sıraya yönelik birden çok mantıksal istek varsa, hangi çağrının yeniden denenmesine neden olduğunu bulmak zor olabilir.
  - **Depolama günlüklerini ilişkilendirme (gerekiyorsa ve gerekirse)** : Bunlar Application Insights telemetri ile bağıntılı.
@@ -304,7 +300,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Süreç
+#### <a name="process"></a>İşleme
 
 Aşağıdaki örnekte gelen bir ileti, gelen HTTP isteğine benzer şekilde izlenir:
 
@@ -343,9 +339,9 @@ Benzer şekilde, diğer kuyruk işlemleri de görüntülenebilir. Bir göz atma 
 
 - Kuyruktan bir öğe aldıktan sonra yeni bir `Activity` oluşturun.
 - Tüketici ve üretici günlüklerinin ilişkilendirilmesi için `Activity.SetParentId(message.ParentId)` kullanın.
-- `Activity` uygulamasını başlatın.
+- `Activity`başlatın.
 - `Start/StopOperation` yardımcıları kullanarak sıradan çıkarma, işleme ve silme işlemlerini izleyin. Aynı zaman uyumsuz denetim akışından (yürütme bağlamı) bunu yapın. Bu şekilde, bunlar doğru şekilde bağıntılı.
-- `Activity`nu durdurun.
+- `Activity`durdurun.
 - `Start/StopOperation`kullanın veya `Track` telemetrisini el ile çağırın.
 
 ### <a name="dependency-types"></a>Bağımlılık türleri

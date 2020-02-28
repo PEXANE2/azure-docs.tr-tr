@@ -1,18 +1,15 @@
 ---
 title: Azure izleyici uyarıları için ortak uyarı şeması
 description: Ortak uyarı şemasını anlama, neden kullanılması gerekir ve nasıl etkinleştirilir?
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552460"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668188"
 ---
 # <a name="common-alert-schema"></a>Ortak uyarı şeması
 
@@ -34,7 +31,7 @@ Diğer bir deyişle, _çok_ daha basit bir görevi yönetmek ve sürdürmek içi
 
 Ortak uyarı şeması öncelikle uyarı bildirimlerinde kendisini bildirir. Göreceğiniz geliştirmeler aşağıda listelenmiştir:
 
-| Eylem | Gelişmeleri|
+| Eylem | Geliştirmeler|
 |:---|:---|
 | SMS | Tüm Uyarı türleri için tutarlı bir SMS şablonu. |
 | E-posta | Tutarlı ve ayrıntılı bir e-posta şablonu, sorunları bir bakışta kolayca tanılamanıza olanak sağlar. Katıştırılmış ayrıntılı-portalda uyarı örneğine ve etkilenen kaynağa yönelik bağlantılar, düzeltme sürecine hızlıca geçebilmenizi sağlar. |

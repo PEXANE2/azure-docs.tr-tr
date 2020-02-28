@@ -1,22 +1,21 @@
 ---
 title: Azure 'da Hizmet Eşlemesi çözüm kullanma | Microsoft Docs
 description: Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, ortamınızda hizmet eşlemesi dağıtmak ve çeşitli senaryoları de kullanım için Ayrıntılar sağlanır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168185"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663632"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure 'da Hizmet Eşlemesi çözümü kullanma
 
-Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Sunucu Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
+Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Hizmet Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
 
 Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadır. Bu çözüme yönelik önkoşulları yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakışı etkinleştirme](vminsights-enable-overview.md#prerequisites). Özetlemek gerekirse, şunlar gerekir:
 
@@ -29,7 +28,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 >[!NOTE]
 >Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../../azure-monitor/insights/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms-preview)bölümüne bakın.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -42,7 +41,7 @@ Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Kullanım örnekleri: BT süreçlerinizi bağımlılıktan haberdar edin
 
-### <a name="discovery"></a>Keşif
+### <a name="discovery"></a>Bulma
 
 Hizmet Eşlemesi, sunucularınız, süreçleriniz ve üçüncü taraf hizmetlerinizde bulunan bağımlılıkların ortak başvuru haritasını otomatik olarak oluşturur. Tüm TCP bağımlılıklarını bulur ve eşler arası bağlantıları, bağlı olduğunuz uzak üçüncü taraf sistemleri ve Active Directory gibi ağınızın geleneksel karanlık bölümlerine bağımlılıklar. Hizmet Eşlemesi, yönetilen sistemlerinizin oluşturmaya çalıştığından başarısız olan ağ bağlantılarını bulur, bu da olası sunucu yanlış yapılandırma, hizmet kesintisi ve ağ sorunlarını tanımanıza yardımcı olur.
 
@@ -158,8 +157,8 @@ Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama
 | Rol simgesi | Açıklama |
 |:--|:--|
 | ![Web sunucusu](media/service-map/role-web-server.png) | Web sunucusu |
-| ![Uygulama Sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
-| ![Veritabanı adı](media/service-map/role-database.png) | Veritabanı adı |
+| ![Uygulama sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
+| ![Veritabanı sunucusu](media/service-map/role-database.png) | Veritabanı sunucusu |
 | ![LDAP sunucusu](media/service-map/role-ldap.png) | LDAP sunucusu |
 | ![SMB sunucusu](media/service-map/role-smb.png) | SMB sunucusu |
 
@@ -374,7 +373,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabil
 
 Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp özelliğinde yer alır. Gelen bağlantılarda, Remoteıp, SourceIP ile aynıdır, ancak giden bağlantılar için de Destinationıp ile aynıdır. RemoteDnsCanonicalNames özelliği, Remoteıp için makine tarafından raporlanan DNS kurallı adlarını temsil eder. Remotednssorular ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
 
-#### <a name="geolocation"></a>Coğrafi Konum
+#### <a name="geolocation"></a>Konumu
 
 *Vmconnection* Ayrıca, kaydın aşağıdaki özelliklerindeki her bir bağlantı kaydının uzak ucuna ait coğrafi konum bilgilerini de içerir: 
 
@@ -547,7 +546,7 @@ Hizmet Eşlemesi içindeki tüm sunucu, işlem ve bağımlılık verileri, [Hizm
 
 Microsoft hizmet eşlemesi hizmeti kullanımınız vasıtasıyla kullanım ve performans verilerini otomatik olarak toplar. Microsoft, kalite, güvenlik ve hizmet eşlemesi hizmeti bütünlüğünü geliştirmek için bu verileri kullanır. Doğru ve verimli sorun giderme özellikleri sağlamak için, veriler işletim sistemi ve sürümü, IP adresi, DNS adı ve iş istasyonu adı gibi yazılımınızın yapılandırması hakkında bilgiler içerir. Microsoft ad, adres veya diğer iletişim bilgileri toplamaz.
 
-Veri toplama ve kullanım hakkında daha fazla bilgi için bkz: [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132).
+Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132)' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -572,7 +571,7 @@ Microsoft Dependency Aracısı, Microsoft Visual Studio çalışma zamanı kitap
 
 Aşağıdaki tabloda, kod sayıları ve önerilen çözümler listelenmektedir.
 
-| Kodlayın | Açıklama | Çözünürlük |
+| Kod | Açıklama | Çözüm |
 |:--|:--|:--|
 | 0x17 | Kitaplık yükleyici, yüklü olmayan bir Windows update gerektirir. | En son kitaplık yükleyicisi günlüğe bakın.<br><br>`Windows8.1-KB2999226-x64.msu` başvurunun ardından bir satır `Error 0x80240017: Failed to execute MSU package,`, KB2999226 yüklemek için önkoşullara sahip olmanız gerekmez. [Windows makalesinde evrensel C çalışma zamanı](https://support.microsoft.com/kb/2999226) 'nın Önkoşullar bölümündeki yönergeleri izleyin. Windows Update'i çalıştırın ve birden çok kez önkoşulları yüklemek için yeniden başlatma gerekebilir.<br><br>Microsoft Dependency aracı yükleyiciyi yeniden çalıştırın. |
 

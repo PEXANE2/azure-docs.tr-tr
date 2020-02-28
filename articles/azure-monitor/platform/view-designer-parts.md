@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de Görünüm Tasarımcısı bölümlerine yönelik başvuru kılavuzu | Microsoft Docs
 description: Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal görüntülenen ve Log Analytics çalışma alanındaki veriler üzerinde çeşitli görselleştirmeler içeren özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına yönelik bir başvuru kılavuzudur.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 853f0153283f31c9242b884babf5778f96cce141
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932002"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658566"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına yönelik bir başvuru kılavuzudur.
@@ -68,7 +67,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Görünümün en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
 | **Başlık** | |
 | Deki |Üstbilginin üstünde görüntülenen metin. |
@@ -97,7 +96,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Görünümün en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
 | **Başlık gezintisi** | |
 | Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
@@ -128,7 +127,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
 | **Üst Bilgi** | |
 | Başlık |Üstbilginin üstünde görüntülenen metin. |
@@ -169,7 +168,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
 | **Başlık gezintisi** | |
 | Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
@@ -204,9 +203,9 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Renk |Üst bilgi için arka plan rengi. |
 | **Üst Bilgi** | |
 | Görüntü |Üst bilgide görüntülenen resim dosyası. |
-| Etiket |Üst bilgide görüntülenen metin. |
+| Etiketle |Üst bilgide görüntülenen metin. |
 | **Üst Bilgi** |**> Bağlantısı** |
-| Etiket |Bağlantı metni. |
+| Etiketle |Bağlantı metni. |
 | Url |Bağlantının URL 'Si. |
 | **Bilgi öğeleri** | |
 | Başlık |Her öğenin başlığı için görüntülenen metin. |
@@ -222,7 +221,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
 | **Üst Bilgi** | |
 | Başlık |Üstbilginin üstünde görüntülenen metin. |
@@ -262,7 +261,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
 | **Üst Bilgi** | |
 | Başlık |Üstbilginin üstünde görüntülenen metin. |
@@ -298,7 +297,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simg |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
+| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
 | **Grafik 1<br>grafik 2<br>grafik 3** |**> Üst bilgisi** |
 | Başlık |Grafiğin üstünde görüntülenen metin. |
 | Konu |Grafiğin üst kısmında bulunan başlık altında görüntülenen metin. |
@@ -327,7 +326,7 @@ Aşağıdaki tabloda tıklama gezintisi için ayarlar açıklanmaktadır.
 |:--|:--|
 | Günlük araması (otomatik) | Bir üstbilgi öğesi seçtiğinizde çalıştırılacak günlük sorgusu.  Bu, öğenin temel aldığı günlük sorgusuna bağlıdır.
 | Günlük araması        | Listedeki bir öğeyi seçtiğinizde çalıştırılacak günlük sorgusu.  Sorguyu **Gezinti sorgu** kutusuna yazın.   Kullanıcının seçtiği öğenin söz dizimini eklemek için *{Selected Item}* kullanın.  Örneğin, sorguda *bilgisayar* adlı bir sütun varsa ve gezinti sorgusu *{Selected Item}* ise, bir bilgisayar seçtiğinizde *bilgisayar = "Bilgisayarım"* gibi bir sorgu çalıştırılır. Gezinti sorgusu *tür = olay {seçili öğe}* ise, sorgu *türü = olay bilgisayarı = "Bilgisayarım"* çalıştırılır. |
-| Görüntüle              | Bir başlık öğesi veya listedeki bir öğe seçtiğinizde açılacak şekilde görüntüleyin.  **Görünüm adı** kutusunda çalışma alanınızda bir görünümün adını seçin. |
+| Görünüm              | Bir başlık öğesi veya listedeki bir öğe seçtiğinizde açılacak şekilde görüntüleyin.  **Görünüm adı** kutusunda çalışma alanınızda bir görünümün adını seçin. |
 
 
 
@@ -354,7 +353,7 @@ Aşağıdaki tabloda eşiklerin ayarları açıklanmaktadır:
 |:--- |:--- |
 | Eşikleri etkinleştir |Her bir değerin solunda bir renk simgesi göstermek için bu bağlantıyı seçin. Simge, belirtilen eşiklere göre değerin sistem durumunu gösterir. |
 | Adı |Eşik değerinin adı. |
-| Eşiği |Eşiğin değeri. Her bir liste öğesi için sistem durumu rengi, öğenin değeri tarafından aşılan en yüksek eşik değerinin rengine ayarlanır. Eşik değeri aşılmadığı takdirde, varsayılan bir renk kullanılır. |
+| Eşik |Eşiğin değeri. Her bir liste öğesi için sistem durumu rengi, öğenin değeri tarafından aşılan en yüksek eşik değerinin rengine ayarlanır. Eşik değeri aşılmadığı takdirde, varsayılan bir renk kullanılır. |
 | Renk |Eşik değerini gösteren renk. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

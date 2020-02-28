@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlük sorgularıyla birleşimler | Microsoft Docs
 description: Bu makale, Azure Izleyici günlük sorgularıyla birleştirmeleri kullanma konusunda bir ders içerir.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397820"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670211"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki birleşimler
 
@@ -80,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Ekleme türleri
 _Tür_ bağımsız değişkeniyle birlikte JOIN türünü belirtin. Her tür, aşağıdaki tabloda açıklandığı gibi, belirtilen tabloların kayıtları arasında farklı bir eşleşme gerçekleştirir.
 
-| Birleştirme türü | Açıklama |
+| JOIN türü | Açıklama |
 |:---|:---|
 | ınnerunique | Bu, varsayılan JOIN modudur. İlk olarak, sol tablodaki eşleşen sütunun değerleri bulunur ve yinelenen değerler kaldırılır.  Sonra benzersiz değerler kümesi, doğru tabloyla eşleştirilir. |
 | iç | Sonuçlara yalnızca her iki tablodaki eşleşen kayıtlar dahil edilir. |

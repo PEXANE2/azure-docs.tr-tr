@@ -1,25 +1,19 @@
 ---
 title: Azure 'da uyarı ve bildirim izlemeye genel bakış
 description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarılar ve uyarılar arabirimi.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830335"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665673"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
 Bu makalede, uyarıların ne olduğu, avantajları ve kullanmaya nasıl başladıklarından bazıları açıklanmaktadır.  
-
-
-
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılar nelerdir?
 Uyarılar, izleme verilerinizde önemli koşullar bulunduğunda size bir bildirim gönderir. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. 
@@ -41,26 +35,29 @@ Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 **Sinyal**: hedef kaynak tarafından verilmiş. Sinyaller şu türlerde olabilir: ölçüm, etkinlik günlüğü, Application Insights ve günlük.
 
 **Ölçüt**: bir hedef kaynağa uygulanan sinyal ve mantık birleşimi. Örnekler: 
-   - Yüzde 70 CPU >
-   - Sunucu yanıt süresi > 4 MS 
-   - Günlük sorgusunun sonuç sayısı > 100
+
+- Yüzde 70 CPU >
+- Sunucu yanıt süresi > 4 MS 
+- Günlük sorgusunun sonuç sayısı > 100
 
 **Uyarı adı**: Kullanıcı tarafından yapılandırılan uyarı kuralı için özel bir ad.
 
 **Uyarı açıklaması**: Kullanıcı tarafından yapılandırılan uyarı kuralı için bir açıklama.
 
 **Önem derecesi**: uyarı kuralında belirtilen ölçütlerle sonra uyarının önem derecesi karşılanır. Önem derecesi 0 ile 4 arasında olabilir.
-   - Sev 0 = kritik
-   - Sev 1 = hata
-   - Sev 2 = uyarı
-   - Sev 3 = bilgilendirici
-   - Sev 4 = ayrıntılı 
+
+- Sev 0 = kritik
+- Sev 1 = hata
+- Sev 2 = uyarı
+- Sev 3 = bilgilendirici
+- Sev 4 = ayrıntılı 
 
 **Eylem**: uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Uyarı yapabilecekleriniz
 
-[Veri kaynaklarını izleme](../../azure-monitor/platform/data-sources.md)bölümünde açıklandığı gibi ölçümler ve Günlükler hakkında uyarı alabilirsiniz. Bunlarla sınırlı olmamak üzere şunları içerir:
+[Veri kaynaklarını izleme](../../azure-monitor/platform/data-sources.md)bölümünde açıklandığı gibi ölçümler ve Günlükler hakkında uyarı alabilirsiniz. Bunlar arasında şunlar yer alır ancak bunlarla sınırlı değildir:
+
 - Ölçüm değerleri
 - Günlük arama sorguları
 - Etkinlik günlüğü olayları
@@ -69,7 +66,7 @@ Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 
 Daha önce Azure Izleyici ölçümleri, Application Insights, Log Analytics ve hizmet durumu ayrı uyarı yeteneklerine sahipti. Zaman içinde Azure, hem Kullanıcı arabirimini hem de farklı uyarı yöntemlerini geliştirmiştir ve birleştirilemez. Bu birleştirme işlemi hala devam ediyor. Sonuç olarak, henüz yeni uyarılar sisteminde olmayan bazı uyarı özellikleri de vardır.  
 
-| **Kaynağı izle** | **Sinyal türü**  | **Açıklama** | 
+| **Kaynağı izle** | **Sinyal türü**  | **Açıklama** |
 |-------------|----------------|-------------|
 | Hizmet durumu | Etkinlik günlüğü  | Desteklenmez. Bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Web kullanılabilirlik testleri | Desteklenmez. Bkz. [Web test uyarıları](../../azure-monitor/app/monitor-web-app-availability.md). Application Insights veri gönderecek şekilde işaretlenmiş Web siteleri için kullanılabilir. Bir Web sitesinin kullanılabilirliği veya yanıt verme işlemi beklentileri altında olduğunda bir bildirim alın. |
@@ -79,7 +76,7 @@ Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ay
 
 Aşağıdaki uyarı durumları desteklenir.
 
-| Eyalet | Açıklama |
+| Durum | Açıklama |
 |:---|:---|
 | Yeni | Sorun henüz algılandı ve henüz gözden geçirilmedi. |
 | Onaylandı | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
@@ -155,8 +152,8 @@ Sayfanın en üstündeki açılan menülerde aşağıdaki değerleri seçerek g�
 | Kaynak grubu | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 | Kaynak türü | Bir veya daha fazla kaynak türü seçin. Yalnızca seçilen türdeki hedefleri olan uyarılar görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 | Kaynak | Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
-| Önem Derecesi | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
-| Koşulu izle | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+| Severity | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+| İzleme koşulu | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Uyarı durumu | Bir uyarı durumu seçin veya tüm durumların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Hizmeti izle | Bir hizmet seçin veya tüm hizmetleri dahil etmek için **Tümü** ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
 | Zaman aralığı | Yalnızca seçili zaman aralığı içinde tetiklenen uyarılar görünüme dahildir. Desteklenen değerler son saat, son 24 saat, son 7 gün ve son 30 gündür. |

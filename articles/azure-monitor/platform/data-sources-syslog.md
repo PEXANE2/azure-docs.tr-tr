@@ -1,24 +1,23 @@
 ---
 title: Azure Izleyici 'de syslog iletilerini toplayın ve çözümleyin | Microsoft Docs
 description: Syslog Linux için ortak olan olay günlüğü protokolüdür. Bu makalede, oluşturdukları kayıtların Log Analytics ve ayrıntılarında Syslog iletilerinin toplanmasını yapılandırma açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670500"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Syslog veri kaynakları
 Syslog Linux için ortak olan olay günlüğü protokolüdür. Uygulamaları, yerel makinede depolanan veya bir Syslog Toplayıcıya teslim olabilir iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.  
 
 > [!NOTE]
-> Azure Izleyici, rsyslog veya Syslog-ng tarafından gönderilen iletilerin toplanmasını destekler; burada rsyslog varsayılan Daemon olur. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümü (sysklog) 5 sürümünde varsayılan syslog daemon'u syslog olay toplaması için desteklenmiyor. Bu dağıtımları sürümünden Syslog verilerini toplamak için [rsyslog daemon](http://rsyslog.com) yüklenmeli ve sysklog değiştirmek için yapılandırılmış.
+> Azure Izleyici, rsyslog veya Syslog-ng tarafından gönderilen iletilerin toplanmasını destekler; burada rsyslog varsayılan Daemon olur. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümü (sysklog) 5 sürümünde varsayılan syslog daemon'u syslog olay toplaması için desteklenmiyor. Bu dağıtımların bu sürümünden Syslog verileri toplamak için [rsyslog arka plan programı](http://rsyslog.com) yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
 >
 >
 
@@ -27,13 +26,13 @@ Syslog Linux için ortak olan olay günlüğü protokolüdür. Uygulamaları, ye
 Syslog toplayıcısı ile aşağıdaki olanaklar desteklenir:
 
 * Aralık
-* user
+* kullanıcı
 * posta
-* İnin
+* inin
 * 'u
 * syslog
 * LPR
-* news
+* grubu
 * uucp
 * Cron
 * authprıv
@@ -63,7 +62,7 @@ Varsayılan olarak, tüm yapılandırma değişiklikleri tüm aracılara otomati
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Rsyslog için yapılandırma dosyası şu konumdadır **/etc/rsyslog.d/95-omsagent.conf**. Varsayılan içeriğini aşağıda gösterilmektedir. Bu, uyarı ya da daha yüksek bir düzeyinde tüm özellikleri için yerel aracı gönderilen syslog iletileri toplar.
+Rsyslog yapılandırma dosyası **/etc/rsyslog.exe**dizininde bulunur. Varsayılan içeriğini aşağıda gösterilmektedir. Bu, uyarı ya da daha yüksek bir düzeyinde tüm özellikleri için yerel aracı gönderilen syslog iletileri toplar.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -89,7 +88,7 @@ Kendi yapılandırma dosyası bölümünü kaldırarak bir özelliğini kaldıra
 
 
 #### <a name="syslog-ng"></a>Syslog-ng
-Syslog-ng yapılandırma dosyası konumdadır **/etc/syslog-ng/syslog-ng.conf**.  Varsayılan içeriğini aşağıda gösterilmektedir. Bu, tüm özellikleri ve tüm önem dereceleri için yerel aracı gönderilen syslog iletileri toplar.   
+Syslog-NG için yapılandırma dosyası, **/etc/syslog-ng/Syslog-ng.exe**yolunda yer aldığı bir konumdur.  Varsayılan içeriğini aşağıda gösterilmektedir. Bu, tüm özellikleri ve tüm önem dereceleri için yerel aracı gönderilen syslog iletileri toplar.   
 
     #
     # Warnings (except iptables) in one file:
@@ -151,11 +150,11 @@ Kendi yapılandırma dosyası bölümünü kaldırarak bir özelliğini kaldıra
 Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcide syslog iletilerini dinler.  Aracı yüklendiğinde varsayılan syslog yapılandırması uygulanır ve şu konumda bulundu:
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
-* Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
+* Syslog-NG: `/etc/syslog-ng/syslog-ng.conf`
 
 İki yapılandırma dosyası oluşturarak, bağlantı noktası numarasını değiştirebilirsiniz: FluentD yapılandırma dosyası ve yüklediğiniz Syslog daemon'u bağlı olarak rsyslog veya syslog ng dosyası.  
 
-* FluentD yapılandırma dosyası bulunan yeni bir dosya olmalıdır: `/etc/opt/microsoft/omsagent/conf/omsagent.d` ve değeri değiştirin **bağlantı noktası** özel bağlantı noktası numaranızı girişi.
+* Floentd yapılandırma dosyası: `/etc/opt/microsoft/omsagent/conf/omsagent.d` ' de bulunan yeni bir dosya olmalıdır ve **bağlantı noktası** girdisindeki değeri özel bağlantı noktası numaranız ile değiştirin.
 
         <source>
           type syslog
@@ -168,10 +167,10 @@ Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcid
           type filter_syslog
         </filter>
 
-* Rsyslog için bulunan yeni bir yapılandırma dosyası oluşturmanız gerekir: `/etc/rsyslog.d/` ve özel bağlantı noktası numaranızı % SYSLOG_PORT % değerini değiştirin.  
+* Rsyslog için,: `/etc/rsyslog.d/` ' de bulunan yeni bir yapılandırma dosyası oluşturmanız ve% SYSLOG_PORT% değerini özel bağlantı noktası numaranız ile değiştirmeniz gerekir.  
 
     > [!NOTE]
-    > Yapılandırma dosyanızda bu değeri değiştirirseniz `95-omsagent.conf`, varsayılan yapılandırma aracı geçerli olduğu durumlarda üzerine yazılır.
+    > `95-omsagent.conf`yapılandırma dosyasında bu değeri değiştirirseniz, aracı varsayılan bir yapılandırma uygularken üzerine yazılır.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -180,7 +179,7 @@ Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcid
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Aşağıda gösterilen örnek yapılandırma kopyalayarak syslog-ng yapılandırmanın değiştirilmesi gerektiğini ve özel değiştirilen ayarlar syslog ng.conf yapılandırma dosyasının sonuna ekleme bulunan `/etc/syslog-ng/`. Yapmak **değil** varsayılan etiket **% WORKSPACE_ID % _oms** veya **% WORKSPACE_ID_OMS**, değişikliklerinizi ayırt edilmesine yardımcı olmak için özel bir etiket tanımlayın.  
+* Aşağıda gösterilen örnek yapılandırma kopyalanarak ve özel olarak değiştirilen ayarları `/etc/syslog-ng/`bulunan Syslog-ng. conf yapılandırma dosyasının sonuna ekleyerek Syslog-ng yapılandırması değiştirilmelidir. **% WORKSPACE_ID% _oms** veya **% WORKSPACE_ID_OMS**varsayılan **etiketini kullanmayın,** değişikliklerinizi ayırt etmenize yardımcı olmak için özel bir etiket tanımlayın.  
 
     > [!NOTE]
     > Yapılandırma dosyasındaki varsayılan değerleri değiştirirseniz, varsayılan yapılandırma aracı geçerli olduğu durumlarda bunların üzerine yazılacak.
@@ -193,15 +192,15 @@ Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcid
 Değişiklikleri tamamladıktan sonra, yapılandırma değişikliklerinin etkili olması için Syslog ve Log Analytics Aracısı hizmetinin yeniden başlatılması gerekir.   
 
 ## <a name="syslog-record-properties"></a>Syslog kayıt özellikleri
-Syslog kayıtları sahip bir tür **Syslog** ve aşağıdaki tabloda gösterilen özelliklere sahiptir.
+Syslog kayıtları bir **Syslog** türüne sahiptir ve aşağıdaki tabloda bulunan özelliklere sahiptir.
 
 | Özellik | Açıklama |
 |:--- |:--- |
 | Bilgisayar |Olay toplandığı bilgisayar. |
-| Tesis |İleti üreten sisteminin bir parçası olarak tanımlar. |
+| Özellik |İleti üreten sisteminin bir parçası olarak tanımlar. |
 | HostIP |İletiyi gönderen sistem IP adresi. |
 | ana bilgisayar adı |İletiyi gönderen sistem adı. |
-| Err |Olay önem derecesi. |
+| Önem Düzeyi |Olay önem derecesi. |
 | SyslogMessage |İletinin metni. |
 | ProcessID |İleti oluşturulan işlem kimliği. |
 | eventTime |Tarih ve olayın oluşturulduğu saat. |
@@ -217,6 +216,6 @@ Aşağıdaki tabloda, Syslog kayıtları almak günlük sorguları farklı örne
 | Syslog &#124; Summarize aggregatedvalue = count() tesis tarafından |Syslog kayıtlarını Say tesis tarafından. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Hakkında bilgi edinin [oturum sorguları](../../azure-monitor/log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.
-* Kullanım [özel alanlar](../../azure-monitor/platform/custom-fields.md) syslog kayıtları verilerinden ayrı ayrı alanlara ayrıştırılamıyor.
-* [Linux aracıları yapılandırma](../../azure-monitor/learn/quick-collect-linux-computer.md) diğer veri türlerini, toplanacak.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../../azure-monitor/log-query/log-query-overview.md) hakkında bilgi edinin.
+* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](../../azure-monitor/platform/custom-fields.md) kullanın.
+* [Linux aracılarını](../../azure-monitor/learn/quick-collect-linux-computer.md) diğer veri türlerini toplayacak şekilde yapılandırın.

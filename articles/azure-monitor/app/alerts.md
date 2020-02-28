@@ -1,21 +1,19 @@
 ---
-title: Azure Application Insights uyarı ayarlama | Microsoft Docs
+title: Azure Application Insights uyarıları ayarlama
 description: Web uygulamanızda yavaş yanıt süreleri, özel durumlar ve diğer performans veya kullanım değişiklikleri hakkında bildirim alın.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678400"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666726"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights uyarıları ayarlama
+
 [Azure Application Insights][start] , Web uygulamanızdaki performans veya kullanım ölçümlerinde değişiklikler yapmak için sizi uyarır. 
 
 Application Insights, performans sorunlarını tanılamanıza ve kullanım düzenlerini anlamanıza yardımcı olmak üzere [çok çeşitli platformlarda][platforms] canlı uygulamanızı izler.
@@ -28,6 +26,7 @@ Birden çok uyarı türü vardır:
 * [**Proaktif Tanılamalar**](../../azure-monitor/app/proactive-diagnostics.md) , olağan dışı performans desenleri hakkında sizi bilgilendirmek üzere otomatik olarak yapılandırılır.
 
 ## <a name="set-a-metric-alert"></a>Ölçüm uyarısı ayarla
+
 Uyarı kuralları sekmesini açın ve ardından Ekle düğmesini kullanın.
 
 ![Uyarı kuralları sekmesinde, uyarı Ekle ' yi seçin. Uygulamanızı ölçülecek kaynak olarak ayarlayın, uyarı için bir ad sağlayın ve bir ölçüm seçin.](./media/alerts/01-set-metric.png)

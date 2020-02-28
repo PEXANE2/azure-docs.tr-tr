@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights telemetri bağıntısı | Microsoft Docs
 description: Application Insights telemetri bağıntısı
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951335"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672064"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -35,7 +33,7 @@ Mikro hizmetler ortamında, bileşenlerden izlemeler farklı depolama öğelerin
 
 ## <a name="example"></a>Örnek
 
-Bir örneğe göz atalım. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, `GET /Home/Stock`kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir. Uygulama, HTTP çağrısını `GET /api/stock/value`kullanarak hisse senedi API 'sini sorgular.
+Şimdi örneği inceleyelim. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, `GET /Home/Stock`kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir. Uygulama, HTTP çağrısını `GET /api/stock/value`kullanarak hisse senedi API 'sini sorgular.
 
 Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 
@@ -51,7 +49,7 @@ Sonuçlarda, tüm telemetri öğelerinin kök `operation_Id`paylaştığından e
 |------------|---------------------------|--------------|--------------------|--------------|
 | Sayfa görüntülemesi   | Hisse senedi sayfası                |              | Stilz               | Stilz         |
 | bağımlılık | /Home/Stock al           | qJSXU        | Stilz               | Stilz         |
-| request    | Giriş/stok al            | KqKwlrSt9PA = | qJSXU              | Stilz         |
+| istek    | Giriş/stok al            | KqKwlrSt9PA = | qJSXU              | Stilz         |
 | bağımlılık | /Api/Stock/Value al      | bBrf2L7mm2g= | KqKwlrSt9PA =       | Stilz         |
 
 Çağrı `GET /api/stock/value` bir dış hizmete yapıldığında, `dependency.target` alanını uygun şekilde ayarlayabilmeniz için bu sunucunun kimliğini bilmeniz gerekir. Dış hizmet izlemeyi desteklemiyorsa, `target` hizmetin ana bilgisayar adına ayarlanır (örneğin, `stock-prices-api.com`). Ancak hizmet, önceden tanımlı bir HTTP üst bilgisi döndürerek kendisini tanımlarsa, Application Insights, bu hizmetten telemetri sorgulayarak dağıtılmış bir izleme oluşturmasına izin veren hizmet kimliğini `target` içerir.
@@ -206,8 +204,8 @@ Bu özellik `Microsoft.ApplicationInsights.JavaScript`. Varsayılan olarak devre
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `span.kind = server` ile `Span`                  |
-| `Dependency`                          | `span.kind = client` ile `Span`                  |
+| `Request`, `PageView`                 | `span.kind = server` `Span`                  |
+| `Dependency`                          | `span.kind = client` `Span`                  |
 | `Request` ve `Dependency` `Id`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `ChildOf` türü `Reference` (üst Aralık)   |

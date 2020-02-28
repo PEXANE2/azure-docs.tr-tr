@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750859"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665758"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services olaylar için Azure Event Grid şemaları
 
@@ -328,18 +328,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | encoderPort | string | Bu akışın geldiği kodlayıcının bağlantı noktası. |
 | resultCode | string | Bağlantının reddedilme nedeni. Sonuç kodları aşağıdaki tabloda listelenmiştir. |
 
-Sonuç kodları şunlardır:
-
-| Sonuç kodu | Açıklama |
-| ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | Hatalı alma URL 'SI |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | IP izin verilenler listesinde kodlayıcı IP 'si yok |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Kodlayıcı akış hakkında meta veri göndermedi. |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | Belirtilen codec desteklenmez. |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | Bu akış için ve üst bilgi alınmadan önce bir parça alındı. |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | Belirtilen kaliteleri sayısı izin verilen üst sınırı aşıyor. |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Toplam bit hızı izin verilen üst sınırı aşıyor. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir. |
+Hata sonuç kodlarını [canlı olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -409,14 +398,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | encoderPort | string | Bu akışın geldiği kodlayıcının bağlantı noktası. |
 | resultCode | string | Kodlayıcı bağlantısının kesilmesi nedeni. Bu, düzgün bir şekilde kesilmesi veya bir hatadan olabilir. Sonuç kodları aşağıdaki tabloda listelenmiştir. |
 
-Hata sonuç kodları şunlardır:
-
-| Sonuç kodu | Açıklama |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | RTMP oturumu izin verilen süre sınırı boyunca boşta kaldıktan sonra zaman aşımına uğradı. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir. |
-| MPE_CAPACITY_LIMIT_REACHED | Kodlayıcı verileri çok hızlı gönderiyor. |
-| Bilinmeyen hata kodları | Bu hata kodları, karma eşlemesindeki girdileri yinelemek için bellek hatasından değişebilir. |
+Hata sonuç kodlarını [canlı olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
 
 Düzgün olmayan bağlantıyı kesme sonuç kodları şunlardır:
 
@@ -681,8 +663,8 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
 | data | object | Olay verilerini Media Services. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -692,3 +674,4 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 - [Media Service olaylarını içeren EventGrid .NET SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services olaylarının tanımları](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [Canlı olay hata kodları](live-event-error-codes.md)

@@ -1,22 +1,20 @@
 ---
 title: Azure Izleyici 'de etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme
 description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShell kullanarak etkinlik günlüğü uyarıları oluşturun.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969531"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668494"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
 ## <a name="overview"></a>Genel Bakış
+
 Etkinlik günlüğü uyarıları, uyarıda belirtilen koşullara uyan yeni bir etkinlik günlüğü olayı gerçekleştiğinde etkinleştirilen uyarılardır.
 
 Bu uyarılar Azure kaynaklarına yöneliktir ve bir Azure Resource Manager şablonu kullanılarak oluşturulabilir. Ayrıca, Azure portal oluşturulabilir, güncelleştirilemeyebilir veya silinebilirler. Genellikle, Azure aboneliğinizdeki kaynaklarda belirli değişiklikler gerçekleştiğinde bildirim almak için etkinlik günlüğü uyarıları oluşturursunuz. Uyarılar genellikle belirli kaynak grupları veya kaynakları kapsamlandırılır. Örneğin, **Myüretim resourcegroup** örnek kaynak grubundaki herhangi bir sanal makine silindiğinde bildirim almak isteyebilirsiniz. Ya da aboneliğinizdeki bir kullanıcıya herhangi bir yeni rol atanmışsa bildirim almak isteyebilirsiniz.
@@ -31,8 +29,7 @@ Uyarı kuralları oluştururken, aşağıdakilerden emin olun:
 - Uyarı yapılandırması JSON öğesinde "anyOf" koşulu veya iç içe geçmiş koşullar yoktur. Temel olarak, daha fazla "allOf" veya "anyOf" koşulları olmadan yalnızca bir "allOf" koşuluna izin verilir.
 - Kategori "Yönetici" olduğunda, uyarısında yukarıdaki ölçütlerden en az birini belirtmeniz gerekir. Etkinlik günlüklerinde her olay oluşturulduğunda etkinleştiren bir uyarı oluşturmeyebilirsiniz.
 
-
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portalı
 
 Etkinlik günlüğü uyarı kuralları oluşturmak ve değiştirmek için Azure portal kullanabilirsiniz. Bu deneyim, ilgilendiğiniz belirli olaylar için sorunsuz uyarı oluşturma sağlamak üzere bir Azure etkinlik günlüğü ile tümleşiktir.
 
@@ -92,7 +89,7 @@ Aşağıdaki yordamı kullanın.
 5. **Eylem grubu**altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](../../azure-monitor/platform/action-groups.md) ve yeni kurala atayın. Yeni bir grup oluşturmak için **+ Yeni Grup**' u seçin.
 
 6. Kuralları oluşturduktan sonra etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir** **seçeneğini belirleyin.**
-7. **Uyarı kuralı oluştur**’u seçin.
+7. **Uyarı kuralı oluştur**' u seçin.
 
     Etkinlik günlüğü için yeni uyarı kuralı oluşturulur ve pencerenin sağ üst köşesinde bir onay iletisi görüntülenir.
 

@@ -1,18 +1,17 @@
 ---
 title: Windows bilgisayarlarını Azure Izleyici 'ye bağlama | Microsoft Docs
 description: Bu makalede, Windows için Log Analytics aracısıyla diğer bulutlarda veya şirket içinde barındırılan Windows bilgisayarlarının Azure Izleyici 'ye nasıl bağlanacağı açıklanır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689988"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668647"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -20,7 +19,7 @@ Yerel veri merkezinizdeki veya Azure Izleyici ile diğer bulut ortamlarınızdak
 
 İzlenen bir Windows bilgisayarında, aracı Microsoft Monitoring Agent hizmeti olarak listelenir. Microsoft Monitoring Agent hizmeti, günlük dosyalarından ve Windows olay günlüğü, performans verileri ve diğer telemetriden olayları toplar. Aracı BT raporlarının Azure Izleyici ile iletişim kuramasa bile, aracı çalışmaya devam eder ve toplanan verileri izlenen bilgisayarın diskinde sıralar. Bağlantı geri yüklendiğinde Microsoft Monitoring Agent hizmeti toplanan verileri hizmete gönderir.
 
-Aracı aşağıdaki yöntemlerden biri kullanılarak yüklenebilir. Çoğu yüklemede, farklı bilgisayar gruplarını uygun şekilde yüklemek için bu yöntemlerin bir bileşimi kullanılır.  Her yöntemin kullanımıyla ilgili ayrıntılar, makalenin ilerleyen kısımlarında verilmiştir.
+Aracı aşağıdaki yöntemlerden biri kullanılarak yüklenebilir. Çoğu yükleme, uygun şekilde farklı bilgisayar kümelerini yüklemek için bu yöntemlerin bir birleşimini kullanır.  Her yöntemin kullanımıyla ilgili ayrıntılar, makalenin ilerleyen kısımlarında verilmiştir.
 
 * El ile yükleme. Kurulum, Kurulum Sihirbazı 'nı kullanarak, komut satırından veya mevcut bir yazılım dağıtım Aracı kullanılarak dağıtıldıktan sonra, bilgisayar üzerinde el ile çalıştırılır.
 * Azure Otomasyonu Istenen durum yapılandırması (DSC). Ortamınızda zaten dağıtılan Windows bilgisayarları için bir komut dosyası ile Azure Otomasyonu 'nda DSC 'yi kullanma.  
@@ -95,7 +94,7 @@ Aşağıdaki tabloda, Automation DSC kullanılarak dağıtıldığında de dahil
 
 |MMA özgü seçenekler                   |Notlar         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | İsteğe bağlı parametre. Aracıyı .NET uygulama performansı Izleme olmadan yüklenir.|   
+| NOAPM = 1                               | İsteğe bağlı parametre. Aracıyı .NET uygulama performansı Izleme olmadan yüklenir.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = aracıyı bir çalışma alanına rapor verecek şekilde yapılandırma                |
 |OPINSIGHTS_WORKSPACE_ID                | Eklenecek çalışma alanı KIMLIĞI (GUID)                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Çalışma alanı ile ilk kimlik doğrulaması için kullanılan çalışma alanı anahtarı |
