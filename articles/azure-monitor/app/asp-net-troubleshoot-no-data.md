@@ -1,18 +1,14 @@
 ---
 title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889184"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665910"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -59,7 +55,7 @@ Olası nedenler:
 * Azure hesabınızla ilgili bazı sorunlar var;
 * Yalnızca [yeni kaynağı oluşturmaya çalıştığınız abonelik veya gruba okuma erişiminizin](../../azure-monitor/app/resources-roles-access-control.md)olması gerekir.
 
-Çözümü:
+Düzeltme:
 
 * Doğru Azure hesabı için oturum açma kimlik bilgileri sağladıysanız emin olun.
 * Tarayıcınızda [Azure Portal](https://portal.azure.com)erişiminiz olup olmadığını kontrol edin. Ayarları açın ve herhangi bir kısıtlama olup olmadığını görün.
@@ -84,7 +80,7 @@ Olası nedenler:
 * Geliştirici analizi araçları Visual Studio 'da devre dışı bırakılmıştır.
 * Visual Studio, 2013 güncelleştirme 3 ' ten eski.
 
-Çözümü:
+Düzeltme:
 
 * Visual Studio sürümünüzün 2013 güncelleştirme 3 veya sonraki bir sürümü olduğundan emin olun.
 * **Araçlar**, **Uzantılar ve güncelleştirmeler** ' i seçin ve **Geliştirici analiz araçları** 'nın yüklü ve etkin olduğunu denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
@@ -112,7 +108,7 @@ Olası nedenler:
 
 ApplicationInsights. config dosyasındaki izleme anahtarı, telemetrinin gönderildiği yeri denetler. Proje dosyasındaki bir satır, Visual Studio 'da komutunu kullandığınızda hangi kaynağın açılacağını denetler.
 
-Çözümü:
+Düzeltme:
 
 * Çözüm Gezgini, projeye sağ tıklayın ve Application Insights, Application Insights Yapılandır ' ı seçin. İletişim kutusunda, mevcut bir kaynağa telemetri gönderilmesini ya da yeni bir tane oluşturmayı seçebilirsiniz. Veya
 * Kaynağı doğrudan açın. [Azure Portal](https://portal.azure.com)oturum açın, sol gezinti çubuğunda Application Insights ' e tıklayın ve ardından uygulamanızı seçin.

@@ -1,19 +1,17 @@
 ---
 title: Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme | Microsoft Docs
 description: Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f6eb6376075337edd7656e4bc83b5b7fddde479
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c23da585034e74d85be5a3c41b124f00408a0f4a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899885"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671435"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 
@@ -26,14 +24,14 @@ Bir uygulama için Snapshot Debugger etkinleştirmek üzere aşağıdaki yönerg
 * [Azure sanal makineleri ve sanal makine ölçek kümeleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Şirket içi sanal veya fiziksel makineler](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-.NET Core 'un önizleme sürümünü kullanıyorsanız, uygulama ile [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini dahil etmek için lütfen daha önce [diğer ortamlar için etkinleştirme Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) yönelik yönergeleri izleyin. ardından aşağıdaki yönergelerin geri kalanını tamamlayın. 
+.NET Core 'un önizleme sürümünü kullanıyorsanız, uygulama ile [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini dahil etmek için önce [diğer ortamların Snapshot Debugger etkinleştir](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) ' e yönelik yönergeleri izleyin ve ardından aşağıdaki yönergelerin geri kalanını tamamlayın. 
 
 Application Insights Snapshot Debugger, App Services çalışma zamanının bir parçası olarak önceden yüklenir, ancak App Service uygulamanız için anlık görüntüler almak üzere açmanız gerekir. Bir uygulamayı dağıttıktan sonra, kaynak koda Application Insights SDK eklemiş olsanız bile, anlık görüntü hata ayıklayıcıyı etkinleştirmek için aşağıdaki adımları izleyin.
 
 1. Azure portal **App Services** bölmesine gidin.
 2. **Ayarlar > Application Insights** bölmesine gidin.
 
-   ![App Services portalında App Insights 'ı etkinleştirme](./media/snapshot-debugger/applicationinsights-appservices.png)
+   ![Uygulama Hizmetleri portalında App ınsights'ı etkinleştirme](./media/snapshot-debugger/applicationinsights-appservices.png)
 
 3. Uygulamanızı izlemek üzere yeni bir kaynak oluşturmak veya var olan bir Application Insights kaynağını seçmek için bölmedeki yönergeleri izleyin. Ayrıca Snapshot Debugger için her iki **anahtar de bulunduğundan emin olun.**
 

@@ -1,19 +1,15 @@
 ---
 title: Akıllı algılama-hata bozuklukları, Application Insights içinde | Microsoft Docs
 description: Web uygulamanıza yönelik başarısız isteklerin hızında olağandışı değişiklikler konusunda sizi uyarır ve tanılama analizi sağlar. Yapılandırma gerekmiyor.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912848"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671758"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
@@ -37,7 +33,7 @@ Uyarı ayrıntılarına şu bilgileri söylersiniz:
 ## <a name="benefits-of-smart-detection"></a>Akıllı algılama 'nın avantajları
 Sıradan [ölçüm uyarıları](../../azure-monitor/app/alerts.md) bir sorun olabileceğini bildirir. Ancak akıllı algılama, sizin için tanılama işini başlatır, aksi takdirde sizin tarafınızdan yapacağınız Analize sahip olursunuz. Düzenli olarak paketlenmiş sonuçları elde edersiniz ve bu da sorunun köküne hızlı bir şekilde ulaşmanıza yardımcı olur.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 Akıllı algılama, uygulamanızdan alınan verileri ve özellikle de hata oranlarını izler. Bu kural, `Successful request` özelliğinin yanlış olduğu istek sayısını ve `Successful call` özelliğinin false olduğu bağımlılık çağrılarının sayısını sayar. İstekler için, varsayılan olarak, `Successful request == (resultCode < 400)` (kendi [Trackrequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) aramalarınızı [filtrelemek](../../azure-monitor/app/api-filtering-sampling.md#filtering) veya oluşturmak için özel kod yazmadığınız müddetçe). 
 
 Uygulamanızın performansı tipik bir davranış düzenine sahiptir. Bazı istekler veya bağımlılık çağrıları başkalarından daha fazla hataya neden olur; ve genel hata oranı yük arttıkça devam edebilir. Akıllı algılama, bu anormallikleri bulmak için makine öğrenimini kullanır.

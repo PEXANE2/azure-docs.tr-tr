@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114332"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660929"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -206,7 +206,7 @@ Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişim
   - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure Çin 21Vianet Için)
   - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure ABD kamu Için)
   - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure Almanya Için)
-- giden bağlantı noktası 3260
+- Giden bağlantı noktaları 53 (DNS), 443, 3260
 
 > [!NOTE]
 >

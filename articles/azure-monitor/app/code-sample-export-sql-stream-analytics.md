@@ -1,18 +1,14 @@
 ---
 title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2017
-ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678262"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663700"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [sürekli dışa aktarma][export] ve [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri VERILERINIZI [Azure Application Insights][start] Azure SQL veritabanına nasıl taşıyacağınız gösterilmektedir. 
@@ -25,8 +21,8 @@ Sürekli dışarı aktarma, telemetri verilerinizi JSON biçiminde Azure depolam
 
 Bu örnekte, sayfa görünümü verilerini kullanacağız, ancak aynı model özel olaylar ve özel durumlar gibi diğer veri türlerine kolayca genişletilebilir. 
 
-## <a name="add-application-insights-to-your-application"></a>Uygulamanıza Application Insights ekleyin
-Kullanmaya başlamak için:
+## <a name="add-application-insights-to-your-application"></a>Uygulamanıza Application Insights ekleme
+Başlamak için:
 
 1. [Web sayfalarınız için Application Insights ayarlayın](../../azure-monitor/app/javascript.md). 
    
@@ -76,7 +72,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 
 Olaylar JSON biçimindeki blob dosyalarına yazılır. Her dosya bir veya daha fazla olay içerebilir. Bu nedenle, olay verilerini okumak ve istediğimiz alanları filtrelemek istiyoruz. Verilerle yaptığımız her türlü şey vardır, ancak bugün planımız, verileri bir SQL veritabanına taşımak için Stream Analytics kullanmaktır. Bu, çok sayıda ilginç sorgunun çalıştırılmasını kolaylaştırır.
 
-## <a name="create-an-azure-sql-database"></a>Azure SQL veritabanı oluşturma
+## <a name="create-an-azure-sql-database"></a>Azure SQL Veritabanı oluşturma
 [Azure Portal][portal]' de aboneliğinizden başladıktan sonra, verileri yazacağınız veritabanını (ve yeni bir sunucuyu) oluşturun.
 
 ![Yeni, veri, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -243,7 +239,7 @@ Birkaç dakika sonra, SQL Server Yönetim Araçları sayfasına dönün ve için
     FROM [dbo].[PageViewsTable]
 
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 * [Stream Analytics kullanarak PowerBI 'a aktarma](../../azure-monitor/app/export-power-bi.md )
 * [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](../../azure-monitor/app/export-data-model.md)
 * [Application Insights 'da sürekli dışarı aktarma](../../azure-monitor/app/export-telemetry.md)

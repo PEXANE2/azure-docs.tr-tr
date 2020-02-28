@@ -1,19 +1,15 @@
 ---
 title: Canlı Ölçüm Akışı ile tanılama-Azure Application Insights
 description: Özel ölçümler sayesinde web uygulamanızı gerçek zamanlı olarak izleyin ve canlı arızaların, izlemelerin ve olayların bir akışı ile ilgili sorunları tanılayın.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406740"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670109"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
@@ -33,7 +29,7 @@ Canlı Ölçüm Akışı, şunları yapabilirsiniz:
 
 Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Node. js uygulamaları için desteklenmektedir.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 1. Henüz [Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) Web uygulamanıza yüklemediyseniz, bunu şimdi yapın.
 2. Standart Application Insights paketlerine ek olarak, canlı ölçüm akışını etkinleştirmek için [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) gereklidir.
@@ -70,7 +66,7 @@ Portaldan herhangi bir Application Insights telemetrisine rastgele filtreler uyg
 
 Count 'tan farklı bir değeri izleyebilirsiniz. Seçenekler, hiçbir Application Insights telemetri olabilecek akış türüne bağlıdır: istekler, bağımlılıklar, özel durumlar, izlemeler, olaylar veya ölçümler. Kendi [özel ölçümünüzün](../../azure-monitor/app/api-custom-events-metrics.md#properties)olabilir:
 
-![Değer Seçenekleri](./media/live-stream/live-stream-valueoptions.png)
+![Değer seçenekleri](./media/live-stream/live-stream-valueoptions.png)
 
 Application Insights telemetriye ek olarak, akış seçeneklerinden birini seçerek ve performans sayacının adını sağlayarak herhangi bir Windows performans sayacını da izleyebilirsiniz.
 
@@ -151,7 +147,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
-### <a name="azure-function-apps"></a>Azure İşlev Uygulamaları
+### <a name="azure-function-apps"></a>Azure Işlevi uygulamaları
 
 Azure Işlev uygulamaları (v2) için bir API anahtarı ile kanalın güvenliğinin sağlanması bir ortam değişkeniyle gerçekleştirilebilir.
 
@@ -188,7 +184,7 @@ Bununla birlikte, tüm bağlı sunucuları tanıyor ve güveniyorsanız, kimlik 
 | .NET                             | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +)  |
 | .NET Core (Target =. NET Framework)| Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +)  |
 | .NET Core (Target =. NET Core)     | Desteklenen (V 2.4.1 +) | Destekleniyor*          | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | **Desteklenmiyor**    |
-| Azure İşlevleri v2               | Desteklenen           | Desteklenen           | Desteklenen           | Desteklenen           | **Desteklenmiyor**    |
+| Azure Işlevleri v2               | Destekleniyor           | Destekleniyor           | Destekleniyor           | Destekleniyor           | **Desteklenmiyor**    |
 | Java                             | Desteklenen (V 2.0.0 +) | Desteklenen (V 2.0.0 +) | **Desteklenmiyor**   | **Desteklenmiyor**   | **Desteklenmiyor**    |
 | Node.js                          | Desteklenen (V 1.3.0 +) | Desteklenen (V 1.3.0 +) | **Desteklenmiyor**   | Desteklenen (V 1.3.0 +) | **Desteklenmiyor**    |
 

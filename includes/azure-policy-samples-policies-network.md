@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 7927866adb5efbdc8eb55b9b5209603a3658ae2c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e38ac438a398ced31b2918768efeb453649de62e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495547"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780658"
 ---
 |Adı |Açıklama |Efekt (ler) |Sürüm |Kaynak |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Özel bir IPSec/ıKE ilkesinin tüm Azure sanal ağ geçidi bağlantılarına uygulanması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Bu ilke, tüm Azure sanal ağ geçidi bağlantılarının özel bir Internet Protokolü güvenliği (IPSec)/Internet anahtar değişimi (ıKE) ilkesi kullanmasını sağlar. Desteklenen algoritmalar ve anahtar güçleri- https://aka.ms/AA62kb0 |Denetim, devre dışı |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[App Service bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Bu ilke, bir sanal ağ hizmeti uç noktası kullanmak üzere yapılandırılmamış App Service denetler. |Auditınotexists, devre dışı |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)
 |[Azure VPN ağ geçitleri ' temel ' SKU kullanmalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Bu ilke, VPN ağ geçitlerinin ' temel ' SKU 'YU kullanmamasını sağlar. |Denetim, devre dışı |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json)

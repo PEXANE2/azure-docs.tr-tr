@@ -1,19 +1,17 @@
 ---
 title: Application Insights ile canlı Azure App Service uygulamalar profili Microsoft Docs
 description: Azure App Service Application Insights Profiler ile canlı uygulamalar profilini yapın.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899949"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671551"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights ile canlı Azure App Service uygulamalar profili
 
@@ -31,15 +29,15 @@ Application Insights Profiler, App Services çalışma zamanının bir parçası
 1. Azure portal **App Services** bölmesine gidin.
 1. **Ayarlar > Application Insights** bölmesine gidin.
 
-   ![App Services portalında App Insights 'ı etkinleştirme](./media/profiler/AppInsights-AppServices.png)
+   ![Uygulama Hizmetleri portalında App ınsights'ı etkinleştirme](./media/profiler/AppInsights-AppServices.png)
 
 1. Uygulamanızı izlemek üzere yeni bir kaynak oluşturmak veya var olan bir Application Insights kaynağını seçmek için bölmedeki yönergeleri izleyin. Ayrıca, profil oluşturucunun **Açık**olduğundan da emin olun. Application Insights kaynağınız App Service farklı bir abonelikte yer alıyorsa Application Insights yapılandırmak için bu sayfayı kullanamazsınız. Gerekli uygulama ayarlarını el ile oluşturarak yine de bunu el ile yapabilirsiniz. [Sonraki bölümde, profil oluşturucuyu el ile etkinleştirmeye yönelik yönergeler yer alır.](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![App Insights site uzantısı Ekle][Enablement UI]
 
-1. Profil Oluşturucu artık bir App Services uygulama ayarı kullanılarak etkinleştirildi.
+1. Profiler, artık bir uygulama hizmetleri uygulama ayarı kullanılarak etkinleştirilir.
 
-    ![Profil Oluşturucu için uygulama ayarı][profiler-app-setting]
+    ![Profiler uygulama ayarı][profiler-app-setting]
 
 ## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>Profil oluşturucuyu el ile veya Azure Resource Manager etkinleştirme
 Application Insights Profiler, Azure App Service için uygulama ayarları oluşturularak etkinleştirilebilir. Yukarıda gösterilen seçeneklere sahip sayfa sizin için bu uygulama ayarlarını oluşturur. Ancak bu ayarların oluşturulmasını, şablon veya başka yollarla otomatik hale getirebilirsiniz. Application Insights kaynağınız Azure App Service farklı bir abonelikte ise bu ayarlar da çalışacaktır.
@@ -58,16 +56,16 @@ Bu değerleri [Azure Resource Manager şablonları](../../azure-monitor/app/azur
 
 Diğer bulutlara yönelik profil oluşturucuyu etkinleştirmek istiyorsanız, aşağıdaki uygulama ayarlarını kullanabilirsiniz.
 
-|Uygulama Ayarı    | ABD devlet değerleri| Çin Bulutu |   
+|Uygulama Ayarı    | ABD devlet değerleri| Çin bulutu |   
 |---------------|---------------------|-------------|
 |Applicationınsightsprofilerendpoint         | https://agent.serviceprofiler.azure.us    | https://profiler.applicationinsights.azure.cn |
 |Applicationınsi, Sendpoint | https://dc.applicationinsights.us | https://dc.applicationinsights.azure.cn |
 
-## <a name="disable-profiler"></a>Profil oluşturucuyu devre dışı bırak
+## <a name="disable-profiler"></a>Profiler devre dışı bırak
 
 Tek bir uygulamanın örneği için profil oluşturucuyu durdurmak veya yeniden başlatmak için, **Web işleri**altında uygulama kaynağına gidin. Profil oluşturucuyu silmek için **uzantılara**gidin.
 
-![Web işi için profil oluşturucuyu devre dışı bırakma][disable-profiler-webjob]
+![Bir web işi için Profiler devre dışı bırak][disable-profiler-webjob]
 
 Herhangi bir performans sorununu mümkün olduğunca erken bulacak şekilde sağlamak için tüm uygulamalarınızda profil oluşturucunun etkin olmasını öneririz.
 

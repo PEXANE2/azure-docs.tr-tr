@@ -1,18 +1,14 @@
 ---
 title: Web uygulaması performans izleme-Azure Application Insights
 description: Application Insights devOps döngüsüne nasıl uyar
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/21/2018
-ms.openlocfilehash: 1396bc86971941fdf8c6559df71a4c47f58a899c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928815"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669701"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights ile ayrıntılı web uygulaması ve hizmet tanılama
 ## <a name="why-do-i-need-application-insights"></a>Neden Application Insights gerekir?
@@ -145,7 +141,7 @@ Application Insights bir özel durum günlüğe kaydederken, Visual Studio 'da v
 
 Hata ayıklama sırasında, Telemetriyi geliştirme makinenizde tutma, Visual Studio 'da görüntüleme, ancak portala gönderme seçeneğiniz vardır. Bu yerel seçenek, hata ayıklamayı üretim telemetrisi ile karıştırmaya karşı önler.
 
-### <a name="work-items"></a>iş öğeleri
+### <a name="work-items"></a>İş öğeleri
 Bir uyarı ortaya çıktığında Application Insights, iş izleme sisteminizde otomatik olarak bir iş öğesi oluşturabilir.
 
 ## <a name="but-what-about"></a>Ancak...?

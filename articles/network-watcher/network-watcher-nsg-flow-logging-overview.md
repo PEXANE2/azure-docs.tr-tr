@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7f30a5a70f71ff958d9b222d2a9e21d03d85e06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841004"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670772"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -33,11 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 [Trafik analizlerini](traffic-analytics.md)kullanarak akış günlüklerini çözümleyebilir ve ağ trafiğiniz hakkında öngörüler elde edebilirsiniz.
 
-Diğer Günlükler için görülen aynı bekletme ilkeleri, akış günlükleri için geçerlidir. Günlük tutma ilkesini, 1 günden 365 güne kadar ayarlayabilirsiniz. Bekletme ilkesi ayarlanmazsa günlükler süresiz olarak saklanır.
-
-> [!NOTE] 
-> NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, yüksek hacimde depolama işlemlerine ve ilişkili maliyetlere neden olabilir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz.
-
+Diğer Günlükler için görülen aynı bekletme ilkeleri, akış günlükleri için geçerlidir. Günlük tutma ilkesini, 1 günden 365 güne kadar ayarlayabilirsiniz. Bir bekletme ilkesi ayarlanmamışsa Günlükler süresiz olarak tutulur.
 
 ## <a name="log-file"></a>Günlük dosyası
 

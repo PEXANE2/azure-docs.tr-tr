@@ -3,22 +3,18 @@ title: Azure Application Insights Telemetri veri modeli | Microsoft Docs
 description: Application Insights veri modeline genel bakış
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: b14ce5cc83dcbbeef2379d21027d4bca337fd9fd
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376033"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671891"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetri veri modeli
 
@@ -34,11 +30,11 @@ Aşağıdaki telemetri türleri uygulamanızın yürütülmesini izlemek için k
 
     **İşlem** , bir isteği işleyen yürütmenin iş parçacıklarından oluşur. Ayrıca, verileri düzenli aralıklarla işleyen bir Web işinde "uyandırma" gibi diğer işlem türlerini izlemek için de [kod yazabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) .  Her işlemin bir KIMLIĞI vardır. Bu KIMLIK, uygulamanız isteği işlerken oluşturulan tüm Telemetriyi [gruplandırmak](../../azure-monitor/app/correlation.md) için kullanılabilir. Her işlem başarılı olur ya da başarısız olur ve bir süre süresi vardır.
 * [**Özel durum**](data-model-exception-telemetry.md) -genellikle bir işlemin başarısız olmasına neden olan bir özel durumu temsil eder.
-* [**Bağımlılık**](data-model-dependency-telemetry.md) -uygulamanızdan bir REST API veya SQL gibi bir dış hizmete veya depoya olan çağrıyı temsil eder. ASP.NET ' de, SQL 'e bağımlılık çağrıları `System.Data` tarafından tanımlanır. HTTP uç noktalarına yapılan çağrılar `System.Net` tarafından tanımlanır. 
+* [**Bağımlılık**](data-model-dependency-telemetry.md) -uygulamanızdan bir REST API veya SQL gibi bir dış hizmete veya depoya olan çağrıyı temsil eder. ASP.NET ' de, SQL 'e bağımlılık çağrıları `System.Data`tarafından tanımlanır. HTTP uç noktalarına yapılan çağrılar `System.Net`tarafından tanımlanır. 
 
 Application Insights özel telemetri için üç ek veri türü sağlar:
 
-* [Trace](data-model-trace-telemetry.md) -`Log4Net` veya `System.Diagnostics` gibi tanıdık bir izleme çerçevesi kullanarak tanılama günlüğü uygulamak için doğrudan veya bir bağdaştırıcı aracılığıyla kullanılır.
+* [Trace](data-model-trace-telemetry.md) -`Log4Net` veya `System.Diagnostics`gibi tanıdık bir izleme çerçevesi kullanarak tanılama günlüğü uygulamak için doğrudan veya bir bağdaştırıcı aracılığıyla kullanılır.
 * [Olay](data-model-event-telemetry.md) -genellikle kullanım düzenlerini çözümlemek için hizmetinize yönelik kullanıcı etkileşimini yakalamak için kullanılır.
 * [Ölçüm](data-model-metric-telemetry.md) -düzenli skaler ölçümleri raporlamak için kullanılır.
 

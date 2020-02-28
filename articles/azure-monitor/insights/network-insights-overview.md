@@ -1,18 +1,17 @@
 ---
 title: Ağlar için Azure Izleyici (Önizleme)
 description: Hiçbir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlayan ağ için Azure Izleyici 'ye hızlı bir genel bakış.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73840060"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654877"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici (Önizleme)
 Ağ için Azure Izleyici, herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, yalnızca barındırılan Web sitesi adını arayarak Web sitenizi barındıran kaynakları tanımlama gibi senaryoları etkinleştirerek Kaynak bağımlılıklarını tanımlamaya yardımcı olur.
@@ -31,7 +30,7 @@ Kaynak durumu ve Uyarılar görünümü, **abonelik**, **kaynak grubu** ve **kay
 
 Arama kutusu, kaynakları ve ilişkili kaynakları aramak için kullanılabilir. Örneğin, genel IP bir Application Gateway ilişkilendirilir. Genel IP DNS adını aramak, hem genel IP hem de ilişkili Application Gateway belirler.
 
-![Arama](media/network-insights-overview/search.png)
+![Search](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Kaynak Durumu ve metrik

@@ -1,19 +1,15 @@
 ---
 title: Web sitelerinin kullanılabilirlik ve yanıt hızını izleme | Microsoft Docs
 description: Application Insights’ta web testleri ayarlayın. Web sitesi kullanılamaz duruma gelirse veya yavaş yanıt verirse uyarı alın.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819287"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670041"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -74,7 +70,7 @@ Azure portal > **Geliştirici Araçları** > **kaynak oluştur** **' u** seçin 
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile, test konumu sayısı-2**  =  **Uyarı konum eşiği** ' dir.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki, **en az beş test konumu ile, test konumu sayısı-2** = **Uyarı konum eşiği** ' dir.|
 
 ## <a name="see-your-availability-test-results"></a>Kullanılabilirlik testi sonuçlarınızı görme
 

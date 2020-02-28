@@ -1,18 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-author: rboucher
-ms.author: robb
 ms.date: 12/5/2019
 ms.topic: conceptual
-ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f1734d30136be904aedf7d880922ba052130ec7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444171"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664738"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlama
 

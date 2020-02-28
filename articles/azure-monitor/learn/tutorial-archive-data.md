@@ -3,18 +3,17 @@ title: Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verileri
 description: Azure kaynakları tarafından bir depolama hesabına oluşturulan arşiv günlüğü ve ölçüm verileri.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979810"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661734"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verilerini arşivleme
 
@@ -31,14 +30,14 @@ Bu öğreticide, verileri bir depolama hesabında arşivlemek üzere Azure ortam
 > * Abonelik günlüklerini depolama hesabına yönlendirme
 > * Kaynak verilerini depolama hesabına yönlendirme
 > * Sanal makine (konuk işletim sistemi) verilerini depolama hesabına yönlendirme
-> * İçindeki izleme verilerini görüntüleme
+> * Depolama hesabındaki izleme verilerini görüntüleme
 > * Kaynaklarınızı temizleme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -86,7 +85,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
    ![Tanılama ayarları bölümü](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. **Bir depolama hesabında arşivle** altındaki **Yapılandır** düğmesine tıklayın ve önceki bölümde oluşturduğunuz depolama hesabını seçin. **Tamam**’a tıklayın.
+4. **Bir depolama hesabında arşivle** altındaki **Yapılandır** düğmesine tıklayın ve önceki bölümde oluşturduğunuz depolama hesabını seçin. **OK (Tamam)** düğmesine tıklayın.
 
    ![Tanılama ayarları depolama hesabı](media/tutorial-archive-data/diagnostic-settings-storage.png)
 
@@ -96,7 +95,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
 6. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
 
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet**’e tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
@@ -137,7 +136,7 @@ Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
 9. Görüntülenen bölümde, önceki **Depolama hesabı oluşturma** adımında oluşturduğunuz depolama hesabını seçin.
 
-10. **Save (Kaydet)** düğmesine tıklayın.
+10. **Kaydet**’e tıklayın.
 
 Sanal makinelerinizdeki izleme verileri artık depolama hesabına akar.
 
@@ -192,7 +191,7 @@ Bu öğreticide, Azure ortamınızdan bir depolama hesabında arşivlenecek izle
 > * Abonelik günlüklerini depolama hesabına yönlendirme
 > * Kaynak verilerini depolama hesabına yönlendirme
 > * Sanal makine (konuk işletim sistemi) verilerini depolama hesabına yönlendirme
-> * İçindeki izleme verilerini görüntüleme
+> * Depolama hesabındaki izleme verilerini görüntüleme
 > * Kaynaklarınızı temizleme
 
 Verilerinizden daha iyi şekilde yararlanmak ve ek bilgiler edinmek için verilerinizi Log Analytics’e de gönderin.

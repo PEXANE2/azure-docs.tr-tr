@@ -1,21 +1,19 @@
 ---
 title: Azure Application Insights günlük tabanlı ve önceden toplanmış ölçümler | Microsoft Docs
 description: Azure Application Insights günlük tabanlı ve önceden toplanmış ölçümleri kullanma
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406586"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669769"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights’daki günlük tabanlı ve önceden toplanmış ölçümler
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler
 
 Bu makalede, günlükleri temel alan "geleneksel" Application Insights ölçümler ve şu anda genel önizleme aşamasında olan önceden toplanmış ölçümler arasındaki fark açıklanmaktadır. Her iki ölçüm türü de Application Insights kullanıcıları için kullanılabilir ve her biri, uygulama durumunu, tanılamayı ve analizlerini izlemek için benzersiz bir değer getirir. Uygulamaları seçen geliştiriciler, uygulamanın boyutuna, beklenen telemetri hacmine ve ölçüm duyarlılığı ve uyarı için iş gereksinimlerine bağlı olarak belirli bir senaryoya en uygun ölçüm türü olarak karar verebilir.
 

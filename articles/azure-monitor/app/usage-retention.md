@@ -1,25 +1,23 @@
 ---
 title: Azure Application Insights Web uygulamaları için Kullanıcı bekletme Analizi | Microsoft docs
 description: Uygulamanıza kaç Kullanıcı geri dönmeli?
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5f5f6235354adc565815ac2eab0a1c774267102d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899412"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670976"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Application Insights ile Web uygulamaları için Kullanıcı bekletme Analizi
 
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 'de bekletme özelliği, uygulamanıza kaç Kullanıcı dönmeli ve belirli görevleri ne sıklıkta gerçekleştirdikleri ve amaçları elde ettikleri hakkında analiz etmenize yardımcı olur. Örneğin, bir oyun sitesi çalıştırırsanız, kazandıktan sonra geri dönüş sayısı ile bir oyun kaybedildikten sonra siteye geri dönen Kullanıcı numaralarını karşılaştırabilirsiniz. Bu bilgi, hem Kullanıcı deneyiminizi hem de iş stratejinizi iyileştirmenize yardımcı olabilir.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 Application Insights portalında bekletme aracında verileri henüz görmüyorsanız, [kullanım araçlarını kullanmaya nasıl başlaleyeceğinizi öğrenin](usage-overview.md).
 

@@ -1,22 +1,18 @@
 ---
 title: Azure’da Application Insights’ı kurmak için PowerShell’i kullanma | Microsoft Belgeleri
 description: Verileri Application Insights için kanal oluşturma Azure Tanılama yapılandırmayı otomatikleştirin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/06/2019
-ms.openlocfilehash: 0e1fd048b855473c1d7978e2a908c45360a1ed2a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819025"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669812"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights ayarlamak üzere PowerShell kullanma
 
-[Microsoft Azure](https://azure.com), [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)'a [Azure Tanılama verileri gönderecek şekilde yapılandırılabilir.](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) Tanılama verileri Azure Cloud Services ve Azure VM’leriyle ilişkilidir. Uygulama içinde Application Insights SDK’sı kullanarak gönderdiğiniz telemetriyi tamamlar. Azure’da yeni kaynaklar oluşturma işlemini otomatikleştirmenin bir parçası olarak tanılamayı PowerShell kullanarak yapılandırabilirsiniz.
+[Microsoft Azure](https://azure.com), [Azure Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)'a [Azure Tanılama verileri gönderecek şekilde yapılandırılabilir.](../../azure-monitor/app/app-insights-overview.md) Tanılama verileri Azure Cloud Services ve Azure VM’leriyle ilişkilidir. Uygulama içinde Application Insights SDK’sı kullanarak gönderdiğiniz telemetriyi tamamlar. Azure’da yeni kaynaklar oluşturma işlemini otomatikleştirmenin bir parçası olarak tanılamayı PowerShell kullanarak yapılandırabilirsiniz.
 
 ## <a name="azure-template"></a>Azure şablonu
 web uygulaması Azure’deyse ve Azure Resource Manager şablonu kullanarak kaynaklarınızı oluşturuyorsanız, bunu kaynak düğümüne ekleyerek Application Insights’ı yapılandırabilirsiniz:

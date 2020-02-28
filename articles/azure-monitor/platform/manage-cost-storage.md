@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8c4169ccfb35b74b92ea4996cbc779bac35d6ccb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc784fa2dd5317932294af6e9c9d36dcce7d32f1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715867"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672081"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -208,123 +208,120 @@ Uyarı tanımlanır ve sınıra ulaşıldıktan sonra bir uyarı tetiklenir ve e
 
 Yüksek kullanımın nedeni aşağıdakilerden biri veya her ikisidir:
 - Log Analytics çalışma alanına beklenenden daha fazla düğüm gönderilemedi
-- Log Analytics çalışma alanına gönderilmekte olan beklenenden daha fazla veri
+- Log Analytics çalışma alanına gönderilmekte olan beklenenden daha fazla veri (Belki de yeni bir çözüm veya var olan bir çözüme yönelik bir yapılandırma değişikliği kullanmaya başlama nedeniyle)
 
 ## <a name="understanding-nodes-sending-data"></a>Veri gönderen düğümleri anlama
 
-Son ayın her gününde sinyal raporlayan bilgisayar sayısını anlamak için şunu kullanın
+Son aydaki her gün aracıdan gelen sinyal raporlayan düğüm sayısını anlamak için şunu kullanın
 
 ```kusto
-Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
+Heartbeat 
+| where TimeGenerated > startofday(ago(31d))
+| summarize nodes = dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart
 ```
-
-Düğüm olarak faturalandırılacak bilgisayarların listesini almak için, çalışma alanı, eski düğüm başına fiyatlandırma katmanındaysa, **faturalandırılan veri türlerini** gönderen düğümleri arayın (bazı veri türleri ücretsizdir). Bunu yapmak için `_IsBillable` [özelliğini](log-standard-properties.md#_isbillable) kullanın ve tam etki alanı adının en solundaki alanı kullanın. Bu, faturalandırılan verileri içeren bilgisayarların listesini döndürür:
+Görülen verileri gönderen düğümlerin sayısını Al kullanılarak belirlenebilir: 
 
 ```kusto
 union withsource = tt * 
-| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodes = dcount(computerName)
+```
+
+Herhangi bir veri gönderen düğümlerin listesini almak için (ve her biri tarafından gönderilen veri miktarı) takip eden sorgu kullanılabilir:
+
+```kusto
+union withsource = tt * 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-Görülen faturalandırılabilir düğümlerin sayısı şu şekilde tahmin edilebilir: 
-
-```kusto
-union withsource = tt * 
-| where _IsBillable == true 
-| extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| where computerName != ""
-| summarize billableNodes=dcount(computerName)
-```
-
 > [!NOTE]
 > Veri türlerindeki taramaların yürütülmesi pahalı olduğundan bu `union withsource = tt *` sorguları dikkatli bir şekilde kullanın. Bu sorgu, bilgisayar başına bilgilerin kullanım veri türüyle sorgulanması için eski yolu değiştirir.  
 
-Gerçekte faturalandırılacaklarının daha doğru bir şekilde hesaplanması, faturalanan veri türlerini Gönderen saat başına bilgisayar sayısını almak olacaktır. (Eski düğüm başına fiyatlandırma katmanındaki çalışma alanları için, Log Analytics saatlik olarak faturalandırılması gereken düğüm sayısını hesaplar.) 
-
-```kusto
-union withsource = tt * 
-| where _IsBillable == true 
-| extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
-```
-
 ## <a name="understanding-ingested-data-volume"></a>Alınan veri birimini anlama
 
-**Kullanım ve tahmini maliyetler** sayfasında, *çözüm başına veri* alma grafiği, gönderilen toplam veri hacmini ve her bir çözüm tarafından ne kadarının gönderileceğini gösterir. Bu sayede olup genel veri kullanımı (veya belirli bir çözüm tarafından kullanım) artıyor mu gibi eğilimleri belirlemek sabit kaldığını veya azaldığını. Bu oluşturmak için kullanılan sorgu
+**Kullanım ve tahmini maliyetler** sayfasında, *çözüm başına veri* alma grafiği, gönderilen toplam veri hacmini ve her bir çözüm tarafından ne kadarının gönderileceğini gösterir. Bu sayede olup genel veri kullanımı (veya belirli bir çözüm tarafından kullanım) artıyor mu gibi eğilimleri belirlemek sabit kaldığını veya azaldığını. 
+
+### <a name="data-volume-by-solution"></a>Çözüme göre veri hacmi
+
+Çözüm tarafından faturalanabilir veri hacmini görüntülemek için kullanılan sorgu
 
 ```kusto
-Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
+Usage 
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution | render barchart
 ```
 
-Unutmayın yan tümcesi "nerede IsBillable = true" veri türleri için ücretsizdir alımı belirli çözümlerinden filtreler. 
+Yan tümcesinin `where IsBillable = true`, alma ücreti olmayan belirli çözümlerden veri türlerini filtreleyeceğini unutmayın. 
 
-Bkz: veri eğilimlerini IIS günlükler nedeniyle verileri incelemek isterseniz, örneğin belirli veri türleri için daha fazla sınırlandıramazsınız gidebilir:
+### <a name="data-volume-by-type"></a>Türe göre veri hacmi
+
+Veri türüne göre veri eğilimlerini görmek için daha fazla ayrıntıya gidebilirsiniz:
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), DataType | render barchart
+```
+
+Ya da bir tabloyu çözüm ve son ayın türüne göre görmek için
+
+```kusto
+Usage 
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
 
 ### <a name="data-volume-by-computer"></a>Bilgisayara göre veri hacmi
 
-Bilgisayar başına alınan faturalandırılabilir olayların **boyutunu** görmek için, bayt cinsinden boyutu sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
+`Usage` veri türü, tamamlayıcı düzeyde bilgi içermez. Bilgisayar başına alınan verilerin **boyutunu** görmek için, boyutu bayt cinsinden sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 `_IsBillable` [özelliği](log-standard-properties.md#_isbillable) , alınan verilerin ücretlendirip tabi olmayacağını belirtir.
 
-Bilgisayar başına alınan **faturalandırılabilir** olay sayısını görmek için şunu kullanın: 
+Bilgisayar başına alınan faturalandırılabilir olay **sayısını** görmek için şunu kullanın: 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount=count() by computerName  | sort by eventCount nulls last
-```
-
-Sayıları Faturalandırılabilir veri türleri için belirli bir bilgisayar için veri gönderdiğini görmek istiyorsanız, bu seçeneği kullanın:
-
-```kusto
-union withsource = tt *
-| where Computer == "computer name"
-| where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last
+| summarize eventCount = count() by computerName  | sort by eventCount nulls last
 ```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure kaynağına, kaynak grubuna veya aboneliğe göre veri hacmi
 
-Azure 'da barındırılan düğümlerdeki veriler için, __bilgisayar başına__sağlanan faturalanabilir olayların **boyutunu** alabilir, kaynağın tam yolunu sağlayan _ResourceId [özelliğini](log-standard-properties.md#_resourceid)kullanın:
+Azure 'da barındırılan düğümlerdeki veriler için __bilgisayar başına__alınan verilerin **boyutunu** alabilir, kaynağın tam yolunu sağlayan _ResourceId [özelliğini](log-standard-properties.md#_resourceid)kullanın:
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Azure 'da barındırılan düğümlerdeki veriler için, __Azure aboneliği başına__alınan faturalandırılabilir olayların **boyutunu** alabilir, `_ResourceId` özelliğini şu şekilde ayrıştırabilirsiniz:
+Azure 'da barındırılan düğümlerdeki veriler için, __Azure aboneliği başına__alınan verilerin **boyutunu** alabilir, `_ResourceId` özelliğini şu şekilde ayrıştırabilirsiniz:
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
 `subscriptionId` `resourceGroup` olarak değiştirmek, Azure Kaynak grubu 'na göre faturalandırılabilen veri hacmini gösterir. 
-
 
 > [!NOTE]
 > Kullanım verileri türünün bazı alanları şemada hala kullanım dışı bırakılmıştır ve değerleri artık doldurulmayacaktır. Bunlar, **bilgisayar** ve alma (**totaltoplu işler**, **batcheswithınsla**, **batchesoutsidesla**, **batchescaıda** **averageprocessingtimems**) ile ilgili alanlardır.
@@ -361,6 +358,18 @@ Toplanan günlük hacmini azaltmak için bazı öneriler şunlardır:
 | Syslog                     | [Syslog yapılandırmasını](data-sources-syslog.md) şu şekilde değiştirin: <br> - Toplanan tesislerin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneği *Bilgi* ve *Hata Ayıklama* düzeyindeki olayları toplamayın |
 | AzureDiagnostics           | Aşağıdaki amaçlarla kaynak günlüğü koleksiyonunu değiştirin: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
 | Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) özelliğini kullanın. |
+
+### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Düğüm başına fiyatlandırma katmanında düğümleri faturalandırılan alma
+
+Düğüm olarak faturalandırılacak bilgisayarların listesini almak için, çalışma alanı, eski düğüm başına fiyatlandırma katmanındaysa, **faturalandırılan veri türlerini** gönderen düğümleri arayın (bazı veri türleri ücretsizdir). Bunu yapmak için `_IsBillable` [özelliğini](log-standard-properties.md#_isbillable) kullanın ve tam etki alanı adının en solundaki alanı kullanın. Bu, saat başına faturalandırılan bilgisayar sayısını (düğümlerin sayıldığı ve faturalandırılabileceği ayrıntı düzeyi) döndürür:
+
+```kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ### <a name="getting-security-and-automation-node-counts"></a>Güvenlik ve otomasyon düğüm sayılarını alma
 

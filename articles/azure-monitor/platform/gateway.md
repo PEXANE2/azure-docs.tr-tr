@@ -1,18 +1,17 @@
 ---
 title: Log Analytics ağ geçidini kullanarak bilgisayarları bağlama | Microsoft Docs
 description: İnternet erişimine sahip olmadıkları zaman Azure Otomasyonu ve Log Analytics hizmetine veri göndermek için Log Analytics ağ geçidini kullanarak cihazlarınızı ve Operations Manager izlenen bilgisayarlarınızı bağlayın.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773285"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672302"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -90,13 +89,13 @@ Log Analytics ağ geçidi şu dillerde kullanılabilir:
 
 Log Analytics ağ geçidi yalnızca Aktarım katmanı güvenliğini destekler (TLS) 1,0, 1,1 ve 1,2.  Güvenli Yuva Katmanı (SSL) desteklemez.  Log Analytics yoldaki verilerin güvenliğini sağlamak için, ağ geçidini en az TLS 1,2 kullanacak şekilde yapılandırın. TLS veya SSL 'nin eski sürümleri savunmasızdır. Bunlar şu anda geriye dönük uyumlulukla izin verse de kullanmaktan kaçının.  
 
-Ek bilgi için gözden [TLS 1.2 kullanarak güvenli bir şekilde veri gönderen](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)inceleyin. 
 
 ### <a name="supported-number-of-agent-connections"></a>Desteklenen aracı bağlantı sayısı
 
 Aşağıdaki tabloda, bir Ağ Geçidi sunucusuyla yaklaşık olarak kaç aracının iletişim kurabildiği gösterilmektedir. Destek, 6 saniyede bir 200 KB veri karşıya yükleyen aracıları temel alır. Sınanan her bir aracı için, veri hacmi günde yaklaşık 2,7 GB olur.
 
-|Ağ Geçidi |Desteklenen aracılar (yaklaşık)|  
+|Ağ geçidi |Desteklenen aracılar (yaklaşık)|  
 |--------|----------------------------------|  
 |CPU: Intel Xeon Işlemci E5-2660 v3 \@ 2,6 GHz 2 çekirdek<br> Bellek: 4 GB<br> Ağ bant genişliği: 1 Gbps| 600|  
 |CPU: Intel Xeon Işlemci E5-2660 v3 \@ 2,6 GHz 4 çekirdek<br> Bellek: 8 GB<br> Ağ bant genişliği: 1 Gbps| 1000|  
@@ -107,7 +106,7 @@ Log Analytics Gateway kurulum dosyasının en son sürümünü Microsoft Indirme
 
 Azure portal Log Analytics ağ geçidini almak için şu adımları izleyin:
 
-1. Hizmetler listesine göz atın ve ardından **Log Analytics**. 
+1. Hizmetler listesine gidip **Log Analytics**seçin. 
 1. Bir çalışma alanı seçin.
 1. Çalışma alanı Dikey penceresindeki **genel**altında **hızlı başlangıç**' yi seçin. 
 1. **Çalışma alanına bağlanacak bir veri kaynağı seçin**altında **bilgisayarlar**' ı seçin.
@@ -115,7 +114,7 @@ Azure portal Log Analytics ağ geçidini almak için şu adımları izleyin:
  
    ![Log Analytics ağ geçidini indirme adımlarının ekran görüntüsü](./media/gateway/download-gateway.png)
 
-veya 
+or 
 
 1. Çalışma alanı Dikey penceresinde **Ayarlar**altında **Gelişmiş ayarlar**' ı seçin.
 1. **Windows server** > **bağlı kaynaklar** ' a gidin ve **Log Analytics ağ geçidini indir**' i seçin.
@@ -124,13 +123,13 @@ veya
 
 Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki adımları izleyin. 
 
-1. Hedef klasördeki çift **Log Analytics gateway.msi**.
+1. Hedef klasörden, **Log Analytics Gateway. msi**' ye çift tıklayın.
 1. **Hoş Geldiniz** sayfasında, **İleri**’yi seçin.
 
    ![Ağ Geçidi Kurulum Sihirbazı 'nda hoş geldiniz sayfasının ekran görüntüsü](./media/gateway/gateway-wizard01.png)
 
 1. **Lisans Sözleşmesi** sayfasında, Microsoft yazılımı lisans koşulları 'nı kabul etmek Için **Lisans sözleşmesinin koşullarını kabul ediyorum** ' u seçin ve ardından **İleri**' yi seçin.
-1. Üzerinde **bağlantı noktası ve proxy adresi** sayfası:
+1. **Bağlantı noktası ve proxy adresi** sayfasında:
 
    a. Ağ Geçidi için kullanılacak TCP bağlantı noktası numarasını girin. Kurulum, Windows Güvenlik Duvarı 'nda bir gelen kuralı yapılandırmak için bu bağlantı noktası numarasını kullanır.  Varsayılan değer 8080'dir.
       Bağlantı noktası numarasının geçerli aralığı 1 ile 65535 arasındadır. Giriş bu aralığı içinde kalmıyorsa, bir hata iletisi görüntülenir.
@@ -190,11 +189,11 @@ Ağ Yükü Dengeleme [(NLB),](https://docs.microsoft.com/windows-server/networki
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft Ağ Yükü Dengeleme
 
-Tasarım ve bir Windows Server 2016 Ağ Yükü Dengeleme kümesi dağıtma hakkında bilgi edinmek için [Ağ Yükü Dengeleme](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Aşağıdaki adımlarda, Microsoft Ağ Yükü Dengeleme kümesinin nasıl yapılandırılacağı açıklanır.  
+Windows Server 2016 Ağ Yükü Dengeleme kümesini nasıl tasarlayacağınızı ve dağıtacağınızı öğrenmek için bkz. [Ağ Yükü Dengeleme](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Aşağıdaki adımlarda, Microsoft Ağ Yükü Dengeleme kümesinin nasıl yapılandırılacağı açıklanır.  
 
 1. Bir yönetim hesabıyla NLB kümesinin bir üyesi olan Windows sunucuya oturum açın.  
-2. Sunucu Yöneticisi'nde Ağ Yükü Dengeleme Yöneticisi'ni açın, **Araçları**ve ardından **Ağ Yükü Dengeleme Yöneticisi**.
-3. Microsoft izleme aracısının yüklü olduğu bir Log Analytics Ağ Geçidi sunucusuna bağlanmak için kümenin IP adresine sağ tıklayın ve ardından **konak kümesine Ekle**. 
+2. Ağ Yükü Dengeleme Yöneticisi 'Ni Sunucu Yöneticisi ' de açın, **Araçlar**' a ve ardından **Ağ Yükü Dengeleme Yöneticisi**' ne tıklayın.
+3. Yüklü Microsoft Monitoring Agent sahip bir Log Analytics ağ geçidi sunucusunu bağlamak için, kümenin IP adresine sağ tıklayın ve ardından **Konak kümeye ekle**' ye tıklayın. 
 
     ![Ağ Yükü Dengeleme Yöneticisi – konağı kümeye ekleyin](./media/gateway/nlb02.png)
  
@@ -257,7 +256,7 @@ Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığını
 
    b. **Komut istemi** ' ne sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.  
 
-1. Aşağıdaki komutu kullanın:
+1. Aşağıdaki komutu girin:
 
    `netsh winhttp set proxy <proxy>:<port>`
 
@@ -283,9 +282,9 @@ Büyük veya karmaşık ortamlar için, yalnızca belirli sunucuların (veya gru
 
 Belirli sunucuları veya grupları Log Analytics ağ geçidi sunucusunu kullanacak şekilde yapılandırmak için: 
 
-1. Operations Manager konsolunu açın ve seçin **yazma** çalışma.  
+1. Operations Manager konsolunu açın ve **yazma** çalışma alanını seçin.  
 1. Yazma çalışma alanında **kurallar**' ı seçin. 
-1. Operations Manager araç çubuğunda **kapsam** düğmesini seçin. Bu düğme kullanılamıyorsa, **izleme** bölmesinde bir klasör değil bir nesne seçtiğinizden emin olun. **Kapsam Yönetim Paketi nesneleri** iletişim kutusunda ortak hedeflenen sınıfları, grupları veya nesneleri listesini görüntüler. 
+1. Operations Manager araç çubuğunda **kapsam** düğmesini seçin. Bu düğme kullanılamıyorsa, **izleme** bölmesinde bir klasör değil bir nesne seçtiğinizden emin olun. **Kapsam yönetim paketi nesneleri** iletişim kutusu, yaygın olarak hedeflenen sınıfların, grupların veya nesnelerin listesini görüntüler. 
 1. **Ara** alanına **sistem sağlığı hizmeti** girin ve listeden seçin. **Tamam**’ı seçin.  
 1. **Danışman proxy ayar kuralını**arayın. 
 1. Operations Manager araç çubuğunda **geçersiz kılmalar** ' ı seçin ve ardından **sınıfın belirli bir nesnesi Için rule\override** ' ın üzerine gelin: sistem sağlığı hizmeti ve listeden bir nesne seçin.  Veya bu geçersiz kılmayı uygulamak istediğiniz sunucuların sistem sağlığı hizmeti nesnesini içeren özel bir grup oluşturun. Ardından, geçersiz kılmayı özel grubunuza uygulayın.
@@ -307,7 +306,7 @@ Her bir bölgenin URL 'sini bulmak için Otomasyon belgelerinin [ağınızı yap
 Bilgisayarınız karma runbook çalışanı olarak otomatik olarak kaydedilmişse, örneğin Güncelleştirme Yönetimi çözümü bir veya daha fazla VM için etkinleştirilmişse, aşağıdaki adımları izleyin:
 
 1. Proje çalışma zamanı veri hizmeti URL'leri, Log Analytics Gateway konak izin listesine ekleyin. Örneğin, `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Log Analytics ağ geçidi hizmeti, aşağıdaki PowerShell cmdlet'ini kullanarak yeniden başlatın: `Restart-Service OMSGatewayService`
+1. Aşağıdaki PowerShell cmdlet 'ini kullanarak Log Analytics Ağ Geçidi hizmetini yeniden başlatın: `Restart-Service OMSGatewayService`
 
 Bilgisayarınız, karma Runbook Worker kayıt cmdlet 'i kullanılarak Azure Otomasyonu 'na katılırsa, şu adımları izleyin:
 
@@ -328,7 +327,7 @@ Cmdlet 'leri kullanarak Log Analytics ağ geçidinin yapılandırma ayarlarını
 
 3\. adımdaki bir hata modülün içeri aktarılmadığı anlamına gelir. PowerShell modülü bulamadığında hata ortaya çıkabilir. Modülü OMS ağ geçidi yükleme yolunda bulabilirsiniz: *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*.
 
-| **Cmdlet'i** | **Parametreler** | **Açıklama** | **Örnek** |
+| **Cmdlet** | **Parametreler** | **Açıklama** | **Örnek** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |Anahtar |Hizmet yapılandırmasını alır |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Anahtarı (gerekli) <br> Değer |Hizmetin yapılandırma değişiklikleri |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
@@ -371,7 +370,7 @@ Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimli
 
 Aşağıdaki tablo Log Analytics ağ geçidi için kullanılabilen performans sayaçlarının gösterir. Sayaçları eklemek için performans Izleyicisini kullanın.
 
-| **Ad** | **Açıklama** |
+| **Adı** | **Açıklama** |
 | --- | --- |
 | Log Analytics Gateway/etkin istemci bağlantısı |Etkin istemci (TCP) ağ bağlantısı sayısı |
 | Log Analytics Gateway/hata sayısı |Hata sayısı |

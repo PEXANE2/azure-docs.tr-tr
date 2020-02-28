@@ -1,19 +1,15 @@
 ---
 title: 'Hızlı başlangıç: Azure Izleyici Application Insights Web sitelerini Izleme'
 description: Azure Izleyici Application Insights, kurulum istemcisi/tarayıcı tarafı Web sitesi izleme hızlı başlangıç yönergeleri sağlar
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963628"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670857"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Hızlı başlangıç: Azure Izleyici Application Insights Web sitenizi izlemeye başlayın
 
@@ -21,7 +17,7 @@ Bu hızlı başlangıçta, Web sitenize açık kaynaklı Application Insights Ja
 
 Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, performans ve kullanım bakımından kolayca izleyebilirsiniz. Ayrıca, bir kullanıcının bildirmesini beklemeden uygulamanızdaki hataları hızlıca tanımlayıp tespit edebilirsiniz. Application Insights hem sunucu tarafı izleme hem de istemci/tarayıcı tarafı izleme özellikleri sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * JavaScript SDK Application Insights ekleyebileceğiniz bir Web sitesi.
@@ -30,7 +26,7 @@ Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, perfor
 
 Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur** > **Yönetim araçları** > **Application Insights** seçeneğini belirleyin.
 
    > [!NOTE]
@@ -40,11 +36,11 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
 
     | Ayarlar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Ad**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak Grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-3. **Oluştur**’a tıklayın.
+3. **Oluştur**’ tıklayın.
 
 ## <a name="create-an-html-file"></a>HTML dosyası oluşturma
 
@@ -86,7 +82,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
 
 4. ``hello_world.html`` dosyasını yerel tarayıcı oturumunda açın. Bu eylem, tek bir PageView oluşturur. Tarayıcınızı yenileyerek birden fazla test sayfası görünümü oluşturabilirsiniz.
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatma
+## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatın
 
 1. Artık çalışmakta olan uygulamanız hakkındaki ayrıntıları görüntülemek için Azure portal Application Insights **genel bakış** sayfasını yeniden açabilirsiniz. **Genel bakış** sayfası, izleme anahtarınızı aldığınız yerdir. Genel bakış sayfasındaki dört varsayılan grafik, sunucu tarafı uygulama verilerini kapsar. JavaScript SDK 'Sı ile istemci/tarayıcı tarafı etkileşimlerini seçtiğimiz için, sunucu tarafı SDK 'Sı yüklü olmadığı müddetçe bu belirli görünüm uygulanmaz.
 
@@ -113,7 +109,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
 
    ![Sunucu ölçüm grafiği](./media/website-monitoring/browser-performance.png)
 
-4. [Kullanıcı davranışı analiz araçlarını](../../azure-monitor/app/usage-overview.md) keşfetmeye başlamak için ana Application Insights menüsündeki **Kullanım** başlığından [**Kullanıcılar**](../../azure-monitor/app/usage-segmentation.md) girişini seçin. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir web sitesi için kullanıcı dağılımı şu şekilde görünebilir:
+4. [Kullanıcı davranışı analiz araçlarını](../../azure-monitor/app/usage-overview.md) keşfetmeye başlamak için ana Application Insights menüsündeki [Kullanım**başlığından**](../../azure-monitor/app/usage-segmentation.md)Kullanıcılar girişini seçin. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir web sitesi için kullanıcı dağılımı şu şekilde görünebilir:
 
      ![Kullanıcı grafiği](./media/website-monitoring/usage-users.png)
 

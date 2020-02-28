@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766430"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655761"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -19,11 +19,11 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıkların hiçbir Azure kitaplığına **bağımlılığı yoktur.** Bunlar, Spring Boot yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-- Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
-- [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
+* [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
 
 ## <a name="create-an-app-configuration-instance"></a>Uygulama yapılandırma örneği oluşturma
 
@@ -42,14 +42,14 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 1. <https://start.spring.io/> adresine gidin.
 
-2. Aşağıdaki seçenekleri belirtin:
+1. Aşağıdaki seçenekleri belirtin:
 
-   - **Java**Ile **Maven** projesi oluşturun.
-   - 2,0 ' e eşit veya ondan büyük bir **Spring Boot** sürümü belirtin.
-   - Uygulamanız için **Grup** ve **yapıt** adlarını belirtin.  Bu makalede `com.example` ve `demo`kullanılmaktadır.
-   - **Yay Web** bağımlılığını ekleyin.
+   * **Java** ile bir **Maven** projesi oluşturun.
+   * 2,0 ' e eşit veya ondan büyük bir **Spring Boot** sürümü belirtin.
+   * Uygulamanız için **Grup** ve **Yapıt** adlarını belirtin.  Bu makalede `com.example` ve `demo`kullanılmaktadır.
+   * **Yay Web** bağımlılığını ekleyin.
 
-3. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
+1. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
 
 ## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
@@ -57,20 +57,41 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 1. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve `<dependencies>`listesine aşağıdakini ekleyin.:
 
+### <a name="spring-cloud-11x"></a>Yay bulutu 1.1. x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Yay bulutu 1.2. x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
         }
     }
     ```
+
 1. Uygulamanızın paket dizininde *MessageProperties. Java* adlı yeni bir Java dosyası oluşturun.
 
     ```java
@@ -131,7 +153,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     }
     ```
 
-1. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun. 
+1. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun.
 
     ```java
     package com.example.demo;
@@ -220,42 +242,42 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
     ```
 
-6. `static` altında CSS adlı yeni bir klasör oluşturun ve bunun içinde *Main. css*adlı yenı bir CSS dosyası oluşturun.
+1. `static` altında CSS adlı yeni bir klasör oluşturun ve bunun içinde *Main. css*adlı yenı bir CSS dosyası oluşturun.
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
-1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın.
+1. Spring Boot uygulamanızı Maven’le oluşturun ve çalıştırın.
 
     ```shell
     mvn clean package
@@ -268,7 +290,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 1. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | Eyalet |
+    | Anahtar | Durum |
     |---|---|
     | Beta | Açık |
 
@@ -284,6 +306,6 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir Spring Boot Web uygulamasındaki özellikleri yönetmek için kullandınız.
 
-- [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
-- [Özellik bayraklarını yönetin](./manage-feature-flags.md).
-- [Bir Spring Boot Core uygulamasında Özellik bayraklarını kullanın](./use-feature-flags-spring-boot.md).
+* [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
+* [Özellik bayraklarını yönetin](./manage-feature-flags.md).
+* [Bir Spring Boot Core uygulamasında Özellik bayraklarını kullanın](./use-feature-flags-spring-boot.md).

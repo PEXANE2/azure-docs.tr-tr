@@ -1,18 +1,17 @@
 ---
 title: Gönüllü geçiş aracının Azure Izleyici uyarıları için nasıl çalıştığını anlayın
 description: Uyarılar geçiş aracının nasıl çalıştığını ve sorunları nasıl giderebileceğinizi anlayın.
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680690"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665281"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
 
@@ -63,7 +62,7 @@ Depolama hesaplarında bulunan tüm klasik uyarılar, bu ölçümlerde uyarılar
 - PercentTimeoutError
 - Anonymouskısıtlar Lingerror
 - Saskısıtlar Lingerror
-- ThrottlingError
+- Kısıtlar Lingerror
 
 Yüzde ölçümlerinde klasik uyarı kurallarının [, eski ve yeni depolama ölçümleri arasındaki eşlemeye](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)göre geçirilmesi gerekir. Kullanılabilir yeni ölçüm mutlak bir değer olduğundan eşiklerin uygun şekilde değiştirilmesi gerekir.
 
@@ -115,7 +114,7 @@ Bunlar, daha önce desteklenen ancak sonunda kullanım dışı olan ölçümler 
 |-------------|----------------- |
 | Microsoft. Dbformyısql/sunucuları | compute_consumption_percent, compute_limit |
 | Microsoft. DBforPostgreSQL/sunucuları | compute_consumption_percent, compute_limit |
-| Microsoft.Network/publicIPAddresses | defaultddoçabaggerrate |
+| Microsoft. Network/Publicıpaddresses | defaultddoçabaggerrate |
 | Microsoft. SQL/Servers/veritabanları | service_level_objective, storage_limit, storage_used, azaltma, dtu_consumption_percent, storage_used |
 | Microsoft. Web/hostingEnvironments/multirolepools | averagememoryworkingset |
 | Microsoft. Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
@@ -146,7 +145,7 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 | AnonymousSuccess | "ResponseType" = "Success" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü | |
 | AuthorizationError | "ResponseType" = "AuthorizationError" boyutlarıyla işlem ölçümü | |
 | AverageE2ELatency | Başarı E2e | |
-| AverageServerLatency | SuccessServerLatency | |
+| Averageserverlatency gösteriyor | SuccessServerLatency | |
 | Kapasite | BlobCapacity | ' Last ' yerine `aggregationType` ' Average ' kullanın. Ölçüm yalnızca blob Hizmetleri için geçerlidir |
 | Clienentothererror | "ResponseType" = "Clienentothererror" boyutlarıyla işlem ölçümü  | |
 | ClientTimeoutError | "ResponseType" = "ClientTimeOutError" boyutlarıyla işlem ölçümü | |
@@ -165,8 +164,8 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 | Başarılı | Boyutlarla birlikte işlem ölçümü "ResponseType" = "Success" | |
 | TotalBillableRequests| İşlemler | |
 | TotalEgress | Çıkış | |
-| TotalIngress | Giriş | |
-| TotalRequests | İşlemler | |
+| Totalıngress | Giriş | |
+| Toplam Istek sayısı | İşlemler | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft. Insights/bileşenler
 
@@ -227,7 +226,7 @@ Klasik uyarı kurallarında, uyarı kuralına bağlı e-posta, Web kancası, man
 > [!NOTE]
 > Klasik uyarılar, klasik yönetici rollerini bilgilendirmek için kullanıldığında klasik yöneticinin yerel ayarlarına bağlı olarak yerelleştirilmiş e-postalar gönderdi. Yeni uyarı e-postaları eylem grupları aracılığıyla gönderilir ve yalnızca Ingilizce olarak gösterilir.
 
-## <a name="rollout-phases"></a>Dağıtım aşamaları
+## <a name="rollout-phases"></a>Dağıtım Aşamaları
 
 Geçiş Aracı, klasik uyarı kuralları kullanan müşterilere yönelik aşamalar halinde kullanıma alınıyor. Abonelik, Aracı kullanılarak geçirilmesi için hazırsa, abonelik sahipleri bir e-posta alır.
 

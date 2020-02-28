@@ -1,18 +1,15 @@
 ---
 title: Azure kaynak günlüğü desteklenen Hizmetleri ve şemaları
 description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şemasını anlayın.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-author: rboucher
-ms.author: robb
-ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120154"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670398"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen hizmetler, şemalar ve Kategoriler
 
@@ -25,24 +22,24 @@ Kaynak türünün bir birleşimi (`resourceId` özelliğinde kullanılabilir) ve
 
 ## <a name="top-level-resource-logs-schema"></a>Üst düzey kaynak günlükleri şeması
 
-| Ad | Gerekli/İsteğe Bağlı | Açıklama |
+| Adı | Gerekli/Isteğe bağlı | Açıklama |
 |---|---|---|
-| time | Gereklidir | Olayın zaman damgası (UTC). |
-| resourceId | Gereklidir | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
+| time | Gerekli | Olayın zaman damgası (UTC). |
+| resourceId | Gerekli | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
 | tenantId | Kiracı günlükleri için gereklidir | Bu olayın bağlı olduğu Active Directory kiracının kiracı KIMLIĞI. Bu özellik yalnızca kiracı düzeyindeki Günlükler için kullanılır, kaynak düzeyinde günlüklerde görünmez. |
-| operationName | Gereklidir | Bu olayla temsil edilen işlemin adı. Olay bir RBAC işlemini gösteriyorsa, bu RBAC işlem adıdır (örn. Microsoft. Storage/storageAccounts/blobServices/blob/Read). Genellikle Kaynak Yöneticisi bir işlem biçiminde modellenmiştir, bunlar gerçek belgelenmiş Kaynak Yöneticisi işlemleri (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) olmasalar bile |
-| operationVersion | İsteğe Bağlı | OperationName bir API (örn.) kullanılarak gerçekleştirildiyse, işlemle ilişkili api sürümü (ör. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Bu işleme karşılık gelen bir API yoksa, sürüm, gelecekte işlemle ilişkili özellikler, bu işlemin sürümünü temsil eder. |
-| category | Gereklidir | Etkinliğin günlük kategorisi. Kategori, belirli bir kaynaktaki günlükleri etkinleştirebilmeniz veya devre dışı bırakabilmeniz için gereken ayrıntı düzeyi. Bir olayın Özellikler blobu içinde görünen özellikler, belirli bir günlük kategorisi ve kaynak türü içinde aynıdır. Tipik günlük kategorileri "Audit" "Işletimsel" "yürütme" ve "Istek" dir. |
-| resultType | İsteğe Bağlı | Etkinliğin durumu. Tipik değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
-| resultSignature | İsteğe Bağlı | Etkinliğin alt durumu. Bu işlem bir REST API çağrısına karşılık geliyorsa, karşılık gelen REST çağrısının HTTP durum kodudur. |
-| resultDescription | İsteğe Bağlı | Bu işlemin statik metin açıklaması, örn. "Depolama dosyası Al". |
-| durationMs | İsteğe Bağlı | İşlem süresi (milisaniye cinsinden). |
-| callerIpAddress | İsteğe Bağlı | İşlem, genel kullanıma açık bir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
-| correlationId | İsteğe Bağlı | Bir dizi ilgili olayı gruplamak için kullanılan GUID. Genellikle, iki olay aynı operationName öğesine ancak iki farklı durum (örn. "Başlatıldı" ve "başarılı"), aynı bağıntı KIMLIĞINI paylaşır. Bu, olaylar arasındaki diğer ilişkileri de temsil edebilir. |
-| kimlik | İsteğe Bağlı | İşlemi gerçekleştiren kullanıcının veya uygulamanın kimliğini açıklayan bir JSON blobu. Genellikle bu, Active Directory 'den yetkilendirme ve talepler/JWT belirtecini içerir. |
-| Düzey | İsteğe Bağlı | Etkinliğin önem düzeyi. Bilgilendirici, uyarı, hata veya kritik bir olmalıdır. |
-| location | İsteğe Bağlı | Olayı yayan kaynağın bölgesi, örn. "Doğu ABD" veya "Fransa Güney" |
-| properties | İsteğe Bağlı | Bu belirli olay kategorisiyle ilgili genişletilmiş özellikler. Tüm özel/benzersiz özellikler şemanın "Bölüm B" içinde yerleştirilmelidir. |
+| operationName | Gerekli | Bu olayla temsil edilen işlemin adı. Olay bir RBAC işlemini gösteriyorsa, bu RBAC işlem adıdır (örn. Microsoft. Storage/storageAccounts/blobServices/blob/Read). Genellikle Kaynak Yöneticisi bir işlem biçiminde modellenmiştir, bunlar gerçek belgelenmiş Kaynak Yöneticisi işlemleri (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) olmasalar bile |
+| operationVersion | İsteğe bağlı | OperationName bir API (örn.) kullanılarak gerçekleştirildiyse, işlemle ilişkili api sürümü (ör. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Bu işleme karşılık gelen bir API yoksa, sürüm, gelecekte işlemle ilişkili özellikler, bu işlemin sürümünü temsil eder. |
+| category | Gerekli | Etkinliğin günlük kategorisi. Kategori, belirli bir kaynaktaki günlükleri etkinleştirebilmeniz veya devre dışı bırakabilmeniz için gereken ayrıntı düzeyi. Bir olayın Özellikler blobu içinde görünen özellikler, belirli bir günlük kategorisi ve kaynak türü içinde aynıdır. Tipik günlük kategorileri "Audit" "Işletimsel" "yürütme" ve "Istek" dir. |
+| resultType | İsteğe bağlı | Etkinliğin durumu. Tipik değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
+| resultSignature | İsteğe bağlı | Etkinliğin alt durumu. Bu işlem bir REST API çağrısına karşılık geliyorsa, karşılık gelen REST çağrısının HTTP durum kodudur. |
+| resultDescription | İsteğe bağlı | Bu işlemin statik metin açıklaması, örn. "Depolama dosyası Al". |
+| durationMs | İsteğe bağlı | İşlem süresi (milisaniye cinsinden). |
+| callerIpAddress | İsteğe bağlı | İşlem, genel kullanıma açık bir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
+| correlationId | İsteğe bağlı | Bir dizi ilgili olayı gruplamak için kullanılan GUID. Genellikle, iki olay aynı operationName öğesine ancak iki farklı durum (örn. "Başlatıldı" ve "başarılı"), aynı bağıntı KIMLIĞINI paylaşır. Bu, olaylar arasındaki diğer ilişkileri de temsil edebilir. |
+| identity | İsteğe bağlı | İşlemi gerçekleştiren kullanıcının veya uygulamanın kimliğini açıklayan bir JSON blobu. Genellikle bu, Active Directory 'den yetkilendirme ve talepler/JWT belirtecini içerir. |
+| Düzey | İsteğe bağlı | Etkinliğin önem düzeyi. Bilgilendirici, uyarı, hata veya kritik bir olmalıdır. |
+| location | İsteğe bağlı | Olayı yayan kaynağın bölgesi, örn. "Doğu ABD" veya "Fransa Güney" |
+| properties | İsteğe bağlı | Bu belirli olay kategorisiyle ilgili genişletilmiş özellikler. Tüm özel/benzersiz özellikler şemanın "Bölüm B" içinde yerleştirilmelidir. |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>Kaynak günlükleri için hizmete özgü şemalar
 Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre değişir. Bu liste, kullanılabilir olduğunda, kullanılabilir kaynak günlüklerini ve hizmet ve kategoriye özgü şemaya bağlantıları yapan tüm hizmetleri gösterir.
@@ -52,15 +49,15 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 | Azure Active Directory | [Genel bakış](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Denetim günlüğü şeması](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) ve [oturum açma şeması](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Kaynak günlüklerini API Management](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
-| Application Gatewayler |[Application Gateway için günlüğe kaydetme](../../application-gateway/application-gateway-diagnostics.md) |
+| Uygulama Ağ Geçitleri |[Application Gateway için günlüğe kaydetme](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Otomasyonu |[Azure Otomasyonu için Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Günlüğe kaydetme Azure Batch](../../batch/batch-diagnostics.md) |
 | MySQL için Azure Veritabanı | [MySQL için Azure veritabanı tanılama günlükleri](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | PostgreSQL için Azure Veritabanı | [PostgreSQL için Azure veritabanı günlükleri](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Veri Gezgini | [Azure Veri Gezgini günlükleri](../../data-explorer/using-diagnostic-logs.md) |
-| Cognitive Services | [Azure bilişsel hizmetler için günlüğe kaydetme](../../cognitive-services/diagnostic-logging.md) |
-| Container Registry | [Azure Container Registry için günlüğe kaydetme](../../container-registry/container-registry-diagnostics-audit-logs.md) |
-| İçerik Teslim Ağı | [CDN için Azure günlükleri](../../cdn/cdn-azure-diagnostic-logs.md) |
+| Bilişsel hizmetler | [Azure bilişsel hizmetler için günlüğe kaydetme](../../cognitive-services/diagnostic-logging.md) |
+| Container Kayıt Defteri | [Azure Container Registry için günlüğe kaydetme](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| Content Delivery Network | [CDN için Azure günlükleri](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Günlüğe kaydetme Azure Cosmos DB](../../cosmos-db/logging.md) |
 | Data Factory | [Azure Izleyici 'yi kullanarak veri fabrikalarını izleme](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics için günlüklere erişme](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
@@ -71,16 +68,16 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 | IoT Hub | [IoT Hub Işlemler](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure Anahtar Kasası Günlüğü](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Azure Kubernetes günlüğü](../../aks/view-master-logs.md#log-event-schema) |
-| Load Balancer |[Azure Load Balancer için Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
+| Yük Dengeleyici |[Azure Load Balancer için Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B özel izleme şeması](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Ağ Güvenlik Grupları |[Ağ güvenlik grupları (NSG’ler) için Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Koruması | [Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Ayrılmış | [Azure 'da Power BI Embedded için günlüğe kaydetme](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Kurtarma Hizmetleri | [Azure Backup için veri modeli](../../backup/backup-azure-reports-data-model.md)|
-| Arama |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
+| Search |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Veritabanı | [Azure SQL veritabanı günlüğü](../../sql-database/sql-database-metrics-diag-logging.md) |
-| Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| SQL Database | [Azure SQL veritabanı günlüğü](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Akış Analizi |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager log şeması](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Sanal Ağlar | Şema kullanılamıyor. |
 | Sanal Ağ Geçitleri | Şema kullanılamıyor. |
@@ -128,16 +125,16 @@ Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bu, bazı
 |Microsoft. Databricks/çalışma alanları|dBFS|Databricks Dosya Sistemi|
 |Microsoft. Databricks/çalışma alanları|leriniz|Databricks kümeleri|
 |Microsoft. Databricks/çalışma alanları|accounts|Databricks hesapları|
-|Microsoft. Databricks/çalışma alanları|Çizelge|Databricks İşleri|
+|Microsoft. Databricks/çalışma alanları|Çizelge|Databricks Işleri|
 |Microsoft. Databricks/çalışma alanları|Mini|Databricks Not Defteri|
 |Microsoft. Databricks/çalışma alanları|SSH|Databricks SSH|
-|Microsoft. Databricks/çalışma alanları|çalışma alanı|Databricks Çalışma Alanı|
+|Microsoft. Databricks/çalışma alanları|çalışma alanı|Databricks çalışma alanı|
 |Microsoft. Databricks/çalışma alanları|kaynaklanır|Databricks gizli dizileri|
 |Microsoft. Databricks/çalışma alanları|sqlPermissions|Databricks SQLPermissions|
-|Microsoft. Databricks/çalışma alanları|ınstancepools|Örnek Havuzları|
+|Microsoft. Databricks/çalışma alanları|ınstancepools|Örnek havuzları|
 |Microsoft. DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
 |Microsoft. DataFactory/Factory|Etkinlik çalıştırmaları|İşlem hattı etkinlik günlüğü çalıştırmaları|
-|Microsoft. DataFactory/Factory|PipelineRuns|İşlem hattı çalıştırmaları günlüğü|
+|Microsoft. DataFactory/Factory|Ardışık düzen eylemsizlik|İşlem hattı çalıştırmaları günlüğü|
 |Microsoft. DataFactory/Factory|Triggerçalıştırmaları|Tetikleyici çalıştırma günlüğü|
 |Microsoft.DataLakeAnalytics/accounts|Denetim|Denetim Günlükleri|
 |Microsoft.DataLakeAnalytics/accounts|İstekler|İstek günlükleri|
@@ -182,7 +179,7 @@ Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bu, bazı
 |Microsoft.Devices/ıothubs|Yapılandırmalar|Yapılandırmalar|
 |Microsoft.Devices/ıothubs|DeviceStreams|Cihaz akışları (Önizleme)|
 |Microsoft. Devices/provisioningServices|DeviceOperations Işlemleri|Cihaz Işlemleri|
-|Microsoft. Devices/provisioningServices|ServiceOperations|Hizmet İşlemleri|
+|Microsoft. Devices/provisioningServices|ServiceOperations|Hizmet Işlemleri|
 |Microsoft. DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft. DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft. DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
@@ -219,10 +216,10 @@ Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bu, bazı
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Ağ güvenlik grubu olayı|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Ağ güvenlik grubu kuralı sayacı|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Ağ güvenlik grubu kural akışı olayı|
-|Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS koruması bildirimleri|
-|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|DDoS azaltma kararlarının akış günlükleri|
-|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|DDoS azaltmaları raporları|
-|Microsoft.Network/virtualNetworks|VMProtectionAlerts|VM koruma uyarıları|
+|Microsoft. Network/Publicıpaddresses|DDoSProtectionNotifications|DDoS koruması bildirimleri|
+|Microsoft. Network/Publicıpaddresses|DDoSMitigationFlowLogs|DDoS azaltma kararlarının akış günlükleri|
+|Microsoft. Network/Publicıpaddresses|DDoSMitigationReports|DDoS azaltmaları raporları|
+|Microsoft. Network/virtualNetworks|VMProtectionAlerts|VM koruma uyarıları|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway erişim günlüğü|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway performans günlüğü|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway Güvenlik duvarı günlüğü|
@@ -271,7 +268,7 @@ Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bu, bazı
 |Microsoft.Sql/servers/databases|Hatalar|Hatalar|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Veritabanı bekleme Istatistikleri|
 |Microsoft.Sql/servers/databases|Zaman aşımları|Zaman aşımları|
-|Microsoft.Sql/servers/databases|Bloklar|Bloklar|
+|Microsoft.Sql/servers/databases|Öbekleri|Öbekleri|
 |Microsoft.Sql/servers/databases|Çık|Çık|
 |Microsoft.Sql/servers/databases|Denetim|Denetim Günlükleri|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|
@@ -319,4 +316,4 @@ Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bu, bazı
 * [Kaynak günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md)
 * [**Event Hubs** için kaynak kaynağı günlüklerini akışla](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Azure Izleyici REST API kullanarak kaynak günlüğü tanılama ayarlarını değiştirme](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Log Analytics ile Azure depolama biriminden günlüklerini çözümleme](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Azure depolama 'daki günlükleri Log Analytics ile analiz etme](../../azure-monitor/platform/collect-azure-metrics-logs.md)

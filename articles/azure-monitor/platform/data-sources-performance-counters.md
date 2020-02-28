@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de performans sayaçlarını toplayın ve çözümleyin | Microsoft Docs
 description: Performans sayaçları, Windows ve Linux aracılarındaki performansı çözümlemek için Azure Izleyici tarafından toplanır.  Bu makalede, hem Windows hem de Linux aracıları için performans sayaçları koleksiyonunun nasıl yapılandırılacağı, bunların ayrıntılarının çalışma alanında saklandıkları ve Azure portal nasıl çözümleneceği açıklanır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363838"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670551"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
@@ -55,7 +54,7 @@ Toplanacak yeni bir Linux performans sayacı eklemek için bu yordamı izleyin.
 1. Varsayılan olarak, tüm yapılandırma değişiklikleri tüm aracılara otomatik olarak gönderilir.  Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.  Bu dosyayı her bir Linux aracısında el ile değiştirmek istiyorsanız, *Linux makinelerime aşağıdaki yapılandırmayı Uygula* onay kutusunun işaretini kaldırın ve aşağıdaki yönergeleri izleyin.
 2. *Nesne (örnek) \Sayaç*biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  
 3. Sayacı nesnenin diğer sayaç listesine eklemek için **+** ' ya tıklayın veya **ENTER** tuşuna basın.
-4. Bir nesne için tüm sayaçlar aynı **örnek aralığı**kullanır.  Varsayılan olarak 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
+4. Bir nesne için tüm sayaçlar aynı **örnek aralığı**kullanır.  Varsayılan değer 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
 5. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Yapılandırma dosyasında Linux performans sayaçlarını yapılandırma
@@ -87,7 +86,7 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Nesne Adı | Sayaç adı |
 |:--|:--|
 | Mantıksal Disk | % Boş ınomdes |
-| Mantıksal Disk | % Boş alan |
+| Mantıksal Disk | Boş Alan Yüzdesi |
 | Mantıksal Disk | % Kullanılan ınomdes |
 | Mantıksal Disk | % Kullanılan alan |
 | Mantıksal Disk | Disk Okuma Bayt/sn |
@@ -97,17 +96,17 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Mantıksal Disk | Disk Yazma/sn |
 | Mantıksal Disk | Boş megabayt |
 | Mantıksal Disk | Mantıksal Disk Bayt/sn |
-| Hafıza | % Kullanılabilir bellek |
-| Hafıza | % Kullanılabilir takas alanı |
-| Hafıza | % Kullanılan bellek |
-| Hafıza | % Kullanılan takas alanı |
-| Hafıza | Kullanılabilir MBayt belleği |
-| Hafıza | Kullanılabilir MBayt takas |
-| Hafıza | Sayfa Okuma/sn |
-| Hafıza | Sayfa Yazma/sn |
-| Hafıza | Sayfa/sn |
-| Hafıza | Kullanılan MBayt değiştirme alanı |
-| Hafıza | Kullanılan bellek MBayt |
+| Bellek | % Kullanılabilir bellek |
+| Bellek | % Kullanılabilir takas alanı |
+| Bellek | % Kullanılan bellek |
+| Bellek | % Kullanılan takas alanı |
+| Bellek | Kullanılabilir MBayt belleği |
+| Bellek | Kullanılabilir MBayt takas |
+| Bellek | Sayfa Okuma/sn |
+| Bellek | Sayfa Yazma/sn |
+| Bellek | Sayfa/sn |
+| Bellek | Kullanılan MBayt değiştirme alanı |
+| Bellek | Kullanılan bellek MBayt |
 | Ağ | Aktarılan toplam bayt |
 | Ağ | Alınan toplam bayt sayısı |
 | Ağ | Toplam bayt sayısı |
@@ -120,24 +119,24 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Fiziksel Disk | Ortalama Disk sn/Aktarım |
 | Fiziksel Disk | Ortalama Disk sn/yazma |
 | Fiziksel Disk | Fiziksel disk bayt/sn |
-| Süreç | Ayrıcalıklı zaman yüzdesi |
-| Süreç | Kullanım süresi yüzdesi |
-| Süreç | Kullanılan bellek Kbayt |
-| Süreç | Sanal paylaşılan bellek |
+| İşleme | Ayrıcalıklı zaman yüzdesi |
+| İşleme | Kullanım süresi yüzdesi |
+| İşleme | Kullanılan bellek Kbayt |
+| İşleme | Sanal paylaşılan bellek |
 | İşlemci | % DPC Zamanı |
 | İşlemci | % Boş zaman |
 | İşlemci | Kesme zamanı yüzdesi |
 | İşlemci | % GÇ bekleme süresi |
 | İşlemci | % İyi zaman |
 | İşlemci | % Ayrıcalıklı zaman |
-| İşlemci | % İşlemci zamanı |
+| İşlemci | % İşlemci Zamanı |
 | İşlemci | % Kullanıcı Zamanı |
 | Sistem | Boş fiziksel bellek |
 | Sistem | Disk belleği dosyalarındaki boş alan |
 | Sistem | Boş sanal bellek |
 | Sistem | İşlemler |
 | Sistem | Disk belleği dosyalarında depolanan boyut |
-| Sistem | Çalışma Süresi |
+| Sistem | Çalışma süresi |
 | Sistem | Kullanıcılar |
 
 
@@ -219,5 +218,5 @@ Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının far
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * MySQL ve Apache HTTP sunucusu dahil [Linux uygulamalarından performans sayaçlarını toplayın](data-sources-linux-applications.md) .
-* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.  
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
 * Toplanan verileri, ek görselleştirmeler ve analizler için [Power BI](powerbi.md) dışa aktarın.

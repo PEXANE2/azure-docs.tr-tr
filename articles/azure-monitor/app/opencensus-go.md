@@ -1,24 +1,20 @@
 ---
 title: OpenCensus ile Azure Application Insights izleme | Microsoft Docs
 description: OpenCensus go izlemeyi yerel iletici ve Application Insights tümleştirme hakkında yönergeler sağlar
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddb8dfbf14f2c75e4d16693076e56a711d8861ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432555"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669990"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Go 'dan dağıtılmış izlemeler toplayın (Önizleme)
 
 Application Insights artık [Opencensus](https://opencensus.io) ve yeni [Yerel ileticimiz](./opencensus-local-forwarder.md)Ile tümleştirme aracılığıyla dağıtılmış go uygulamalarının izlenmesini desteklemektedir. Bu makalede,, Go için OpenCensus ayarlama ve izleme verilerinizi Application Insights alma sürecinde adım adım yönergeler sunulacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure Aboneliğine sahip olmanız gerekir.
 - Git 'in yüklü olması gerekir, bu makalede 1,11 sürümüne [Git indirme](https://golang.org/dl/)sürümü kullanılmaktadır.
@@ -28,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -45,11 +41,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    | Ayarlar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Ad**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıran yeni kaynak grubunun adı |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**'a tıklayın.
+2. **Oluştur**’ tıklayın.
 
 ## <a name="configure-local-forwarder"></a>Yerel ileticisi yapılandırma
 
@@ -192,7 +188,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     
     ![Yeni App Insights kaynağı formu](./media/opencensus-go/0004-batches-received.png)
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatma
+## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatın
 
 1. Artık çalışmakta olan uygulamanızla ilgili ayrıntıları görüntülemek için Azure portal Application Insights **genel bakış** sayfasını yeniden açabilirsiniz. **Canlı ölçüm akışı**' nı seçin.
 
