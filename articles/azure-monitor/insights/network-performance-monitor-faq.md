@@ -1,18 +1,17 @@
 ---
 title: SSS-Azure 'da Ağ Performansı İzleyicisi çözüm | Microsoft Docs
 description: Bu makale, Azure 'daki Ağ Performansı İzleyicisi hakkında sık sorulan soruları yakalar. Ağ Performansı İzleyicisi (NPM), ağların performansını neredeyse gerçek zamanlı olarak izlemenize ve ağ performansı performans sorunlarını saptamanıza ve bulmanıza yardımcı olur.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538197"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654442"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -225,7 +224,7 @@ A ile B arasındaki ağ yolları B ile arasında ağ yollarından farklı olabil
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Tüm ExpressRoute devreleri ve eşleme bağlantılarım neden bulunamadı?
 NPM artık kullanıcının erişimi olan tüm aboneliklerde ExpressRoute devreleri ve eşleme bağlantılarını bulur. Hızlı rota kaynaklarınızın bağlandığı tüm abonelikleri seçin ve bulunan her kaynak için izlemeyi etkinleştirin. NPM özel bir eşleme bulunurken bağlantı nesnelerine bakar, bu nedenle lütfen bir VNET 'in eşlemeden ilişkilendirildiğinden emin olun.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER Monitor özelliğinin bir tanılama iletisi vardır "trafik HERHANGI bir devrele geçirilmiyor". Bu ne demektir?
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER Monitor özelliğinin bir tanılama iletisi vardır "trafik HERHANGI bir devrele geçirilmiyor". Bu ne demek?
 
 Şirket içi ve Azure düğümleri arasında sağlıklı bir bağlantının olduğu, ancak trafiğin NPM tarafından izlenmesi için yapılandırılmış ExpressRoute bağlantı hattı üzerinden gitmediği bir senaryo olabilir. 
 
@@ -258,7 +257,7 @@ Bir veya daha fazla doğruysa bu durum oluşabilir:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>Hizmet bağlantısı Izleyicisi özelliği ' nde, hizmet yanıt süresi yok ancak ağ kaybı ve gecikme süresi geçerli
 Hedef hizmet bir Web uygulaması değilse ancak test bir Web testi olarak yapılandırıldığında bu durum oluşabilir. Test yapılandırmasını düzenleyin ve test türünü web yerine ağ olarak seçin.
 
-## <a name="miscellaneous"></a>Muhtelif Hükümler
+## <a name="miscellaneous"></a>Çeşitli
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>İzleme için kullanılan düğüm üzerinde bir performans etkisi var mı?
 NPM işlemi, ana bilgisayar CPU kaynaklarının %5 ' inden fazlasını kullanıyorsa durdurulacak şekilde yapılandırıldı. Bu, performansı etkilemeden olağan iş yükleri için düğümleri kullanmaya devam etmek zorunda kalmasından emin olmak içindir.

@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics Ağ Performansı İzleyicisi çözümü | Microsoft Docs
 description: Azure ExpressRoute üzerinden şubeleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izlemek için Ağ Performansı İzleyicisi ExpressRoute Izleyici özelliğini kullanın.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898891"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660759"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Izleyicisi
 
@@ -76,7 +75,7 @@ Ağ Performansı İzleyicisi panosu, ExpressRoute devreleri ve eşleme bağlant�
 
 ### <a name="circuits-list"></a>Devreler listesi 
 
-Tüm izlenen ExpressRoute devrelerinin listesini görmek için ExpressRoute devreleri kutucuğunu seçin. Bir devre seçebilir ve sistem durumunu, paket kaybı için eğilim grafiklerini, bant genişliği kullanımını ve gecikmeyi görüntüleyebilirsiniz. Grafikler etkileşimlidir. Grafikleri çizmek için özel bir zaman penceresi seçebilirsiniz. Farenizi yakınlaştırmak için grafikteki bir alanın üzerine sürükleyin ve hassas veri noktalarına bakın. 
+Tüm izlenen ExpressRoute devrelerinin listesini görmek için ExpressRoute devreleri kutucuğunu seçin. Bağlantı hattı seçin ve görüntüleme, sistem durumu, paket kaybı, bant genişliği kullanımı ve gecikme süresi eğilim grafikleri. Grafik etkileşimlidir. Bir özel zaman penceresi, grafik çizim için seçebilirsiniz. Farenizi yakınlaştırmak için grafikteki bir alanın üzerine sürükleyin ve hassas veri noktalarına bakın. 
 
 ![ExpressRoute devreleri listesi](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
@@ -88,7 +87,7 @@ Bant genişliği kullanımı, gecikme süresi ve kayıp grafikleri etkileşimlid
 
 ### <a name="peerings-list"></a>Eşleme listesi 
 
-Sanal ağlara yönelik tüm bağlantıların bir listesini özel eşleme üzerinden getirmek için panoda **özel eş** oluşturma kutucuğunu seçin. Burada, bir sanal ağ bağlantısı seçebilir ve sistem durumunu, paket kaybı için eğilim grafiklerini, bant genişliği kullanımını ve gecikme süresini görüntüleyebilirsiniz. 
+Sanal ağlara yönelik tüm bağlantıların bir listesini özel eşleme üzerinden getirmek için panoda **özel eş** oluşturma kutucuğunu seçin. Burada, bir sanal seçebilirsiniz, sistem durumu, paket kaybı, bant genişliği kullanımı ve gecikme süresi eğilim grafikleri görüntülemek ve ağ bağlantısı. 
 
 ![ExpressRoute eşlemeleri](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 

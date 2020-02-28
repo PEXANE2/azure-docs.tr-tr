@@ -3,17 +3,16 @@ title: Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın
 description: Azure Kaynak günlüklerinin Azure Izleyici 'de bir Log Analytics çalışma alanına akışını nasıl sağlayacağınızı öğrenin.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750372"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659008"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure platform günlüklerini toplayın
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, güçlü günlük sorgularını kullanarak ve ayrıca uyarılar gibi diğer Azure Izleyici özelliklerinden yararlanmak için, bu dosyayı Azure Izleyici günlüklerinde toplanan diğer izleme verileriyle analiz etmenizi sağlayan bir Log Analytics çalışma alanında kaynak günlüklerinin toplanması açıklanır. görüntüler. 
@@ -26,7 +25,7 @@ Log Analytics çalışma alanında platform günlüklerinin toplanması, tüm Az
 * **Uyarı** - [Azure izleyici 'de günlük uyarılarını](alerts-log.md)kullanarak kaynak günlükleriniz için tanımlanan kritik koşullar ve desenlerin öngörülü bildirimini alın.
 * **Görselleştirmeler** -bir günlük sorgusunun sonuçlarını bir Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına dahil edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Henüz bir tane yoksa [Yeni bir çalışma alanı oluşturmanız](../learn/quick-create-workspace.md) gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğundan, çalışma alanının kaynakla aynı abonelikte olması gerekmez.
 
 ## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
@@ -55,7 +54,7 @@ Aşağıdaki veri türleri için tanılama ayarlarının aynı çalışma alanı
 
 AzureDiagnostics tablosu şöyle görünür:  
 
-| ResourceProvider    | Kategori     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | Kategori     | A  | B  | C  | D  | E  | F  | Acil  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
 | Microsoft. Service1 | Günlüklerini    |    |    |    | Q1 | W1 | E1 |    |    |    |
@@ -88,7 +87,7 @@ Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
 
 - Tablo *Service2AuditLogs* aşağıdaki gibi:  
 
-    | Kaynak Sağlayıcı | Kategori | G | H | I |
+    | Kaynak Sağlayıcı | Kategori | Acil | H | I |
     | -- | -- | -- | -- | -- |
     | Service2 | AuditLogs | j1 | K1 | L1|
     | Service2 | AuditLogs | j3 | k3 | L3|

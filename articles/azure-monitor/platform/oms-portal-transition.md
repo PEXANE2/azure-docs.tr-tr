@@ -1,18 +1,17 @@
 ---
 title: OMS portalı Azure 'a taşınıyor | Microsoft Docs
 description: OMS portalı, Azure portal taşınmakta olan tüm işlevlerle birlikte sunmaktır. Bu makalede, bu geçişle ilgili ayrıntılar sağlanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932143"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659263"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS portalı Azure 'a taşınıyor
 
@@ -59,7 +58,7 @@ Her iki durumda da yöneticinizin aşağıdaki tablodan uygun rolü el ile atama
 
 | OMS portalı izni | Azure rolü |
 |:---|:---|
-| ReadOnly | Log Analytics Okuyucusu |
+| Özelliğinin | Log Analytics Okuyucusu |
 | Katılımcı | Log Analytics Katkıda Bulunan |
 | Yönetici | Sahip | 
  
@@ -84,7 +83,7 @@ Uyarı yönetimi çözümü tarafından toplanan veriler (uyarı türüne sahip 
 OMS mobil uygulaması, OMS portalı ile birlikte sunacaktır. OMS mobil uygulaması yerine, BT altyapınız, panolarınız ve kayıtlı sorgularla ilgili bilgilere erişmek için, mobil cihazınızda doğrudan tarayıcınızdan Azure portal erişebilirsiniz. Uyarıları almak için, [Azure eylem GRUPLARıNı](action-groups.md) SMS veya sesli çağrı biçiminde bildirimleri alacak şekilde yapılandırmanız gerekir
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Bağlayıcısı ve çözüm
-[Application Insights Bağlayıcısı](app-insights-connector.md) , Log Analytics çalışma alanına Application Insights verileri eklemenin bir yolunu sağlar. Altyapı ve uygulama verileri genelinde görünürlüğü etkinleştirmek için bu veri yinelemesi gerekiyordu. Mart, 2019 ' de genişletilmiş veri saklama desteğiyle Application Insights ve [birden çok Azure izleyici Application Insights kaynağını görüntüleyebilmenin](../log-query/unify-app-resource-data.md)yanı sıra [çapraz kaynak sorguları](../log-query/cross-workspace-query.md) gerçekleştirebilme olanağı sayesinde, yinelenmeye gerek yoktur Application Insights kaynaklarınızdan alınan veriler Log Analytics gönderin. Ayrıca, bağlayıcı, Log Analytics için uygulama özelliklerinin bir alt kümesini gönderir, ancak çapraz kaynak sorguları size gelişmiş esneklik kazandırır.  
+[Application Insights Bağlayıcısı](app-insights-connector.md) , Log Analytics çalışma alanına Application Insights verileri eklemenin bir yolunu sağlar. Altyapı ve uygulama verileri genelinde görünürlüğü etkinleştirmek için bu veri yinelemesi gerekiyordu. Mart, 2019 ' de genişletilmiş veri saklama desteğiyle Application Insights ve [birden çok Azure izleyici Application Insights kaynağını görüntüleyebilmenin](../log-query/unify-app-resource-data.md)yanı sıra [çapraz kaynak sorguları](../log-query/cross-workspace-query.md) gerçekleştirebilme olanağı sayesinde Application Insights kaynaklarınızdan verileri çoğaltmaya ve Log Analytics gönderilmeye gerek yoktur. Ayrıca, bağlayıcı, Log Analytics için uygulama özelliklerinin bir alt kümesini gönderir, ancak çapraz kaynak sorguları size gelişmiş esneklik kazandırır.  
 
 Bu nedenle, Application Insights Bağlayıcısı kullanım dışı bırakılmıştır ve Azure Marketi 'nden, OMS portalı 30 Mart 2019 ' de kullanımdan kaldırılmıştır. Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir. OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Bu, Ocak 2019 ' de kullanıma sunulan REST API kullanılarak desteklenecektir ve [Azure güncelleştirmelerinde](https://azure.microsoft.com/updates/)bir bildirim gönderilir. 
 

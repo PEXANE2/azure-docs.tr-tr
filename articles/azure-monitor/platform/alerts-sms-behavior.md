@@ -1,48 +1,48 @@
 ---
-title: Eylem grupları SMS uyarısı davranışı
-description: SMS ileti biçimi ve iptal etme, SMS mesajları yanıt yeniden abone olmak veya Yardım isteyin.
+title: Eylem gruplarında SMS uyarı davranışı
+description: SMS ileti biçimi ve abonelik kaldırma, yeniden gönderme veya yardım isteme için SMS iletilerine yanıt verme.
 author: dkamstra
+ms.author: dukek
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346306"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665315"
 ---
-# <a name="sms-alert-behavior-in-action-groups"></a>SMS uyarı Eylem grupları davranışı
-## <a name="overview"></a>Genel Bakış ##
-Eylem grupları eylemlerin bir listesini yapılandırmak etkinleştirin. Bu gruplar, uyarılar tanımlarken kullanılır; uyarı tetiklendiğinde, belirli bir eylem grubu haberdar olma. Desteklenen eylemlerin SMS biridir; SMS bildirimleri çift yönlü iletişimi destekler. Bir kullanıcı için bir SMS yanıt:
+# <a name="sms-alert-behavior-in-action-groups"></a>Eylem gruplarında SMS uyarı davranışı
 
-- **Uyarılardan Aboneliğimi:** Bir kullanıcının tüm Eylem grupları veya bir tek bir eylem grubu için tüm SMS Uyarılardan aboneliği.
-- **Uyarı yeniden abone olmak:** Bir kullanıcı için tüm Eylem grupları veya tek bir eylem grubu için tüm SMS uyarıları yeniden abone olmak.  
-- **Yardım iste:** Bir kullanıcı SMS hakkında daha fazla bilgi için isteyebilir. Bunlar, bu makalede yönlendirilir.
+## <a name="overview"></a>Genel Bakış 
+Eylem grupları, eylemlerin bir listesini yapılandırmanızı sağlar. Bu gruplar, uyarıları tanımlarken kullanılır; uyarı tetiklendiğinde belirli bir eylem grubuna bildirim gönderilmesini sağlama. Desteklenen eylemlerden biri SMS; SMS bildirimleri iki yönlü iletişimi destekler. Bir kullanıcı SMS 'ye yanıt verebilir:
 
-Bu makalede, SMS uyarısı davranışı yer almaktadır ve yanıt kullanıcının kullanıcı yerel ayarı üzerinde temel eylemleri gerçekleştirebilirsiniz:
+- **Uyarılardan abonelik kaldırma:** Bir Kullanıcı tüm eylem grupları veya tek bir eylem grubu için tüm SMS uyarılarından abonelikten çıkabilir.
+- **Uyarıları yeniden gönderme:** Kullanıcı, tüm eylem grupları veya tek bir eylem grubu için tüm SMS uyarılarını yeniden alabilir.  
+- **Yardım iste:** Bir kullanıcı SMS hakkında daha fazla bilgi isteyebilir. Bu makaleye yeniden yönlendirilir.
 
-## <a name="receiving-an-sms-alert"></a>SMS uyarı alma
-Bir uyarı tetiklendiğinde bir eylem grubu bir parçası olarak yapılandırılmış bir SMS alıcı SMS alır. SMS, aşağıdaki bilgileri içerir:
-* Bu uyarının gönderildiği Shortname eylem grubu
-* Uyarı başlığı
+Bu makale, SMS uyarılarının davranışını ve kullanıcının yerel ayar temelinde gerçekleştirebileceği yanıt eylemlerini içerir:
 
-| YANITLA | Açıklama |
+## <a name="receiving-an-sms-alert"></a>SMS uyarısı alma
+Bir eylem grubunun parçası olarak yapılandırılmış bir SMS alıcısı, bir uyarı tetiklendiğinde SMS alır. SMS, aşağıdaki bilgileri içerir:
+* Bu uyarının gönderildiği eylem grubunun ShortName 'ı
+* Uyarının başlığı
+
+| DÖNDÜRÜP | Açıklama |
 | ----- | ----------- |
-| DEVRE DIŞI BIRAK `<Action Group Short name>` | Eylem grubu başka SMS devre dışı bırakır |
-| ETKİNLEŞTİRME `<Action Group Short name>` | SMS eylemi grubundan yeniden etkinleştirir |
-| DURDUR | Tüm eylem gruplarından ek SMS devre dışı bırakır |
-| BAŞLANGIÇ | Tüm eylem gruplarından SMS yeniden etkinleştirir |
-| YARDIM | Yanıt, bu makalede bir bağlantı ile kullanıcıya gönderilir. |
+| `<Action Group Short name>` devre DıŞı bırak | Eylem grubundan daha fazla SMS 'yi devre dışı bırakır |
+| `<Action Group Short name>` ETKINLEŞTIR | Eylem grubundan SMS 'yi yeniden etkinleştirilir |
+| DURDURULMASı | Tüm eylem gruplarından daha fazla SMS 'yi devre dışı bırakır |
+| BAŞıNDAN | TÜM eylem gruplarından SMS 'yi yeniden etkinleştirin |
+| Yardım | Bu makaleye bir bağlantı ile kullanıcıya bir yanıt gönderilir. |
 
 >[!NOTE]
->Gelen bir kullanıcı iptal etti, SMS uyarır, ancak daha sonra yeni bir eylem grubuna eklenir; Bunlar, yeni eylem grubu SMS uyarıları almak, ancak önceki tüm eylem gruplarından aboneliği kalır.
+>Bir kullanıcı SMS uyarılarından aboneliği kaldırırsa, ancak yeni bir eylem grubuna eklenirse; Bu yeni eylem grubu için SMS uyarıları alırlar, ancak önceki tüm eylem gruplarından abone olunmayacak şekilde kalır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Alma bir [etkinlik günlüğü uyarılarına genel bakış](alerts-overview.md) ve uyarı alma hakkında bilgi edinin  
-Daha fazla bilgi edinin [SMS oran sınırlandırma](alerts-rate-limiting.md)  
-Daha fazla bilgi edinin [Eylem grupları](../../azure-monitor/platform/action-groups.md)
+[Etkinlik günlüğü uyarılarına genel bir bakış](alerts-overview.md) edinin ve nasıl uyarı alabileceğinizi öğrenin  
+[SMS hız sınırlaması](alerts-rate-limiting.md) hakkında daha fazla bilgi edinin  
+[Eylem grupları](../../azure-monitor/platform/action-groups.md) hakkında daha fazla bilgi edinin
 

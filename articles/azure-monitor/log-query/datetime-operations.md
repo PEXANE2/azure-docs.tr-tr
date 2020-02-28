@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlük sorgularındaki tarih saat değerleriyle çalışma | Microsoft Docs
 description: Azure Izleyici günlük sorgularında tarih ve saat verileriyle nasıl çalışabileceğinizi açıklar.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365351"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655387"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki tarih saat değerleriyle çalışma
 
@@ -31,11 +30,11 @@ Timespans bir Decimal ve ardından bir zaman birimi tarafından ifade edilir:
 
 |tirme   | zaman birimi    |
 |:---|:---|
-|d           | gün          |
-|h           | saat         |
+|{1&gt;d&lt;1}           | gün          |
+|olsun           | saat         |
 |m           | dakika       |
 |s           | saniye       |
-|ms          | milisaniye  |
+|ms          | milisaniy  |
 |mikrosaniye ölçeğinde | mikrosaniye ölçeğinde  |
 |sayaç        | nanosaniyelik   |
 

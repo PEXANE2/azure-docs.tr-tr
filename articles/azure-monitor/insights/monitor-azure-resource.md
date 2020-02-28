@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici ile Azure kaynaklarını izleme | Microsoft Docs
 description: Azure Izleyici kullanarak Azure 'daki kaynaklardan izleme verilerinin nasıl toplanacağını ve analiz edileceğini açıklar.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747299"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654928"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -91,7 +90,7 @@ Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek i�
  Çoğu Azure kaynağının izleme verilerine, Azure portal kaynağın menüsünden erişebilirsiniz. Bu, standart Azure Izleyici araçlarını kullanarak tek bir kaynağın verilerine erişmenizi sağlar. Bazı Azure Hizmetleri farklı seçenekler sağlayacak, bu nedenle ek bilgi için bu hizmetin belgelerine başvurmanız gerekir. İzlenen tüm kaynaklardaki verileri çözümlemek için **Azure izleyici** menüsünü kullanın. 
 
 ### <a name="overview"></a>Genel Bakış
-Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış olarak izleme verileri içerir. Bu, genellikle Azure Izleyici ölçümlerinde depolanan platform ölçümlerinin bir alt kümesini temel alır. Diğer izleme seçenekleri, genellikle hizmetlerin **izleme** bölümünde kullanılabilir. izleyin.
+Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış olarak izleme verileri içerir. Bu, genellikle Azure Izleyici ölçümlerinde depolanan platform ölçümlerinin bir alt kümesini temel alır. Diğer izleme seçenekleri, genellikle hizmetlerin **izleme** bölümünde kullanılabilir. Menü.
 
 ![Genel Bakış sayfası](media/monitor-azure-resource/overview-page.png)
 
@@ -101,7 +100,7 @@ Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç 
 
 Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüsündeki **izleme** 'den erişebilirsiniz. **Azure izleyici** menüsünden tüm Öngörüler ve çözümlere erişin.
 
-![Bilgiler](media/monitor-azure-resource/insights.png)
+![Insights](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Ölçümler
 Ölçüm [Gezgini](../platform/metrics-getting-started.md) 'ni kullanarak Azure Portal ölçümleri analiz ederek, çoğu hizmet için **ölçümler** menü öğesinden kullanılabilir. Bu araç, bağıntıları ve eğilimleri belirlemek için bireysel ölçümlerle çalışmanıza veya birden çok birleştirme yapmanıza olanak sağlar. 

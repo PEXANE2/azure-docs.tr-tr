@@ -4,20 +4,19 @@ description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları 
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872851"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658288"
 ---
-# <a name="interactive-workbooks"></a>Etkileşimli Çalışma Kitapları
+# <a name="interactive-workbooks"></a>Etkileşimli çalışma kitapları
 
 Çalışma kitapları yazarların tüketicilere yönelik etkileşimli raporlar ve deneyimler oluşturmalarına olanak tanır. Etkileşim, çeşitli yollarla desteklenir.
 

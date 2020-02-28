@@ -1,19 +1,15 @@
 ---
 title: 'Application Insights: diller, platformlar ve tümleştirmeler | Microsoft Docs'
 description: Application Insights için kullanılabilen diller, platformlar ve tümleştirmeler
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 01cebc3a86808d549f1a7dc3adfd2883bc289076
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d87b1d0aa74263f249db2030f2366b93b8c2b421
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061442"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669837"
 ---
 # <a name="supported-languages"></a>Desteklenen diller
 
@@ -27,13 +23,13 @@ ms.locfileid: "73061442"
 
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Zaten dağıtılan uygulamalar için izleme (codeless, aracı tabanlı)
 * [Azure VM ve Azure sanal makine ölçek kümeleri](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
+* [Azure Uygulama Hizmeti](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - zaten canlı olan uygulamalar için](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * Hem Web hem de çalışan rolleri dahil olmak üzere [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
 * [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
 ### <a name="instrumentation-through-code-sdks"></a>Kod üzerinden izleme (SDK)
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+* [ASP.NET Çekirdeği](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)

@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623868"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672506"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
@@ -420,6 +420,7 @@ Red Hat kümesi çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakk�
 > Linux 'ta çok düzeyli yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz.:
 
 * [SLES for SAP için Azure VM 'lerde bir HA for SAP NW çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [RHEL for SAP için Azure VM 'lerinde SAP NW için HA, çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>Yüksek kullanılabilirlik DBMS örneği
 

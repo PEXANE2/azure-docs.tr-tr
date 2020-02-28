@@ -1,18 +1,17 @@
 ---
 title: Hizmet sağlayıcıları için Azure Izleyici günlükleri | Microsoft Docs
 description: Azure Izleyici günlükleri, yönetilen hizmet sağlayıcılarının (MSPs), büyük kuruluşların, bağımsız yazılım satıcılarının (ISV 'Ler) ve barındırma hizmeti sağlayıcılarının, müşterinin Şirket içi veya bulut altyapısındaki sunucuları yönetmesine ve izlemesine yardımcı olabilir.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117066"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658889"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Hizmet sağlayıcıları için Azure Izleyici günlükleri
 

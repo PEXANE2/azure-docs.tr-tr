@@ -3,17 +3,16 @@ title: Azure Izleyici 'de özel ölçümler
 description: Azure Izleyici 'de özel ölçümler ve bunların nasıl modellendiği hakkında bilgi edinin.
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669173"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662357"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Izleyici 'de özel ölçümler
 
@@ -57,10 +56,10 @@ Bu özellik, için ölçüm yaymakta olduğunuz kaynağın hangi Azure bölgesin
 ### <a name="timestamp"></a>Zaman damgası
 Azure Izleyici 'ye gönderilen her veri noktasının bir zaman damgasıyla işaretlenmesi gerekir. Bu zaman damgası, ölçüm değerinin ölçüldüğü veya toplandığı tarih/saati yakalar. Azure Izleyici, zaman damgalarına sahip ölçüm verilerini geçmişte ve 5 dakika içinde en fazla 20 dakika olacak şekilde kabul eder. Zaman damgası ISO 8601 biçiminde olmalıdır.
 
-### <a name="namespace"></a>uzayına
+### <a name="namespace"></a>Ad alanı
 Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandırmanız için bir yoldur. Ad alanlarını kullanarak, farklı Öngörüler veya performans göstergeleri toplayabilecek ölçüm grupları arasında yalıtım elde edebilirsiniz. Örneğin, uygulamanızı profilini oluşturan bellek kullanım ölçümlerini izleyen **contosomemoryölçümler** adlı bir ad alanı olabilir. **Contosoapptransaction** adlı başka bir ad alanı, uygulamanızdaki Kullanıcı işlemleri hakkında tüm ölçümleri izleyebilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 **Ad** , bildirilen ölçümün adıdır. Genellikle, ne ölçülerin tanımlanmasına yardımcı olmak için ad açıklayıcı bir yoldur. Bir örnek, belirli bir VM 'de kullanılan bellek baytlarının sayısını ölçen bir ölçümdür. **Kullanılmakta olan bellek baytları**gibi bir ölçüm adı olabilir.
 
 ### <a name="dimension-keys"></a>Boyut anahtarları

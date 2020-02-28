@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c2c909d8ef2be982d4dd4a70b5f35d03e8e71418
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616713"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659977"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekmez
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
@@ -81,7 +81,7 @@ Betiği çalıştırmak için:
     **Örnek**
 
    ```azurepowershell
-   ./AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standart Load Balancer arka uç havuzlarına VM ekleme

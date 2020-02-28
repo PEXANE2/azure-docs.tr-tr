@@ -1,18 +1,15 @@
 ---
 title: Etkinlik günlüğü uyarıları 'nda kullanılan Web kancası şemasını anlayın
 description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancası URL 'sine gönderilen JSON şeması hakkında bilgi edinin.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748809"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669055"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -259,7 +256,7 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 
 | Öğe adı | Açıklama |
 | --- | --- |
-| status |Ölçüm uyarıları için kullanılır. Etkinlik günlüğü uyarıları için her zaman "etkinleştirildi" olarak ayarlayın. |
+| durum |Ölçüm uyarıları için kullanılır. Etkinlik günlüğü uyarıları için her zaman "etkinleştirildi" olarak ayarlayın. |
 | context |Olayın bağlamı. |
 | resourceProviderName |Etkilenen kaynağın kaynak sağlayıcısı. |
 | conditionType |Always "Event." |
@@ -278,13 +275,13 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | correlationId |Genellikle dize biçimindeki bir GUID. CorrelationId 'ye sahip olaylar aynı daha büyük eyleme aittir ve genellikle bir CorrelationId paylaşır. |
 | eventDescription |Etkinliğin statik metin açıklaması. |
 | Eventdataıd |Etkinliğin benzersiz tanımlayıcısı. |
-| eventSource |Olayı oluşturan Azure hizmetinin veya altyapısının adı. |
+| EventSource |Olayı oluşturan Azure hizmetinin veya altyapısının adı. |
 | httpRequest |İstek genellikle Clientrequestıd, clientIpAddress ve HTTP yöntemini (örneğin, PUT) içerir. |
 | level |Şu değerlerden biri: kritik, hata, uyarı ve bilgilendirici. |
 | operationId |Genellikle tek bir işleme karşılık gelen olaylar arasında paylaşılan bir GUID. |
 | operationName |İşlemin adı. |
 | properties |Etkinliğin özellikleri. |
-| status |Dize. İşlemin durumu. Ortak değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
+| durum |Dizisinde. İşlemin durumu. Ortak değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
 | Dosya |Genellikle karşılık gelen REST çağrısının HTTP durum kodunu içerir. Alt durumu tanımlayan diğer dizeleri de içerebilir. Ortak alt durum değerleri Tamam (HTTP durum kodu: 200), oluşturulan (http durum kodu: 201), kabul edildi (http durum kodu: 202), Içerik yok (http durum kodu: 204), hatalı Istek (http durum kodu: 400), bulunamadı (http durum kodu: 404), çakışma (http durum kodu: 409 ), İç sunucu hatası (HTTP durum kodu: 500), hizmet kullanılamıyor (HTTP durum kodu: 503) ve ağ geçidi zaman aşımı (HTTP durum kodu: 504). |
 
 Tüm diğer etkinlik günlüğü uyarılarıyla ilgili belirli şema ayrıntıları için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](../../azure-monitor/platform/platform-logs-overview.md).

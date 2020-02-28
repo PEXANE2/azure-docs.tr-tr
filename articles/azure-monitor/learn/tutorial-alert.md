@@ -1,19 +1,18 @@
 ---
 title: Azure Application Insights uyarı gönder | Microsoft Docs
 description: Azure Application Insights kullanarak uygulamanızdaki hatalara yanıt olarak uyarı gönderme öğreticisi.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: e45e6fb38296c5f3337f9edfb50cd9548ca5e210
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398439"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656271"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights ile uygulama durumunu izleme ve uyarma
 
@@ -25,13 +24,13 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * Uygulamanın yanıtını sürekli denetlemek için kullanılabilirlik testi oluşturma
 > * Sorun oluştuğunda yöneticilere e-posta gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
 [Application Insights kaynağı](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -51,7 +50,7 @@ Application Insights ' deki kullanılabilirlik testleri, uygulamanızı dünyan�
 
     Uyarı ölçütleri karşılandığında gönderilecek bir e-posta adresi yazın.  İsteğe bağlı olarak, uyarı ölçütleri karşılandığında çağrılacak bir Web kancası adresini yazabilirsiniz.
 
-    ![Test oluşturma](media/tutorial-alert/create-test-001.png)
+    ![Test oluştur](media/tutorial-alert/create-test-001.png)
 
 5. Test paneline dönün, üç nokta simgesini seçin ve uyarıyı Düzenle ' yi seçerek en gerçek zamanlı uyarınızın yapılandırmasını girin.
 

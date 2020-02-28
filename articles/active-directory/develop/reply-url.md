@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983104"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656747"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
 
@@ -54,7 +54,7 @@ Azure AD uygulama modeli, kişisel Microsoft hesaplarında ve iş veya okul hesa
 > [!NOTE]
 > Yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimi, geliştiricilerin kullanıcı arabirimine joker URI 'ler eklemesine izin vermez. İş veya okul hesaplarında oturum açmak için yalnızca uygulama bildirimi Düzenleyicisi aracılığıyla desteklenen uygulamalar için solcard URI ekleme desteklenir. İleri giderek yeni uygulamalar, yeniden yönlendirme URI 'sinde joker karakterler kullanamaz. Ancak, yeniden yönlendirme URI 'Lerinde joker karakterler içeren eski uygulamalar çalışmaya devam edecektir.
 
-Senaryonuz, izin verilen en yüksek sınırdan daha fazla yeniden yönlendirme URI 'si gerektiriyorsa, joker karakter yeniden yönlendirme URI 'si eklemek yerine aşağıdaki yaklaşımlardan birini göz önünde bulundurun.
+Senaryonuz, izin verilen en yüksek sınırdan daha fazla yeniden yönlendirme URI 'si gerektiriyorsa, joker karakter yeniden yönlendirme URI 'si eklemek yerine aşağıdaki yaklaşımı göz önünde bulundurun.
 
 ### <a name="use-a-state-parameter"></a>Bir durum parametresi kullanın
 
@@ -70,10 +70,6 @@ Bu yaklaşımda:
 
 > [!NOTE]
 > Bu yaklaşım, güvenliği aşılmış bir istemcinin durum parametresinde gönderilen ek parametreleri değiştirmesine olanak tanır. böylece Kullanıcı, RFC 6819 ' de açıklanan [Açık yeniden yönlendirici tehdidi](https://tools.ietf.org/html/rfc6819#section-4.2.4) olan farklı bir URL 'ye yeniden yönlendirme sağlar. Bu nedenle, istemci, durumu şifreleyerek veya yeniden yönlendirme URI 'sindeki etki alanı adını belirtece karşı doğrulamak gibi bazı yollarla bu parametreleri korumalıdır.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Hizmet sorumlularına yeniden yönlendirme URI 'Leri ekleme
-
-Diğer bir yaklaşım, herhangi bir Azure AD kiracısında uygulama kaydınızı temsil eden [hizmet sorumlularına](app-objects-and-service-principals.md#application-and-service-principal-relationship) yeniden yönlendirme URI 'leri eklemektir. Bu yaklaşımı, bir durum parametresini kullanmınızda, sizin destekledikleri her yeni kiracı için uygulama kaydınıza yeni yeniden yönlendirme URI 'Leri eklemenizi gerektirdiğinde kullanabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

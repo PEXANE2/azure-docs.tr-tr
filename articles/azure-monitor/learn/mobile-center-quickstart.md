@@ -1,7 +1,6 @@
 ---
 title: Azure Izleyici Application Insights mobil uygulamaları izleme
 description: Azure Izleyici Application Insights ve App Center izleme için bir mobil uygulamayı hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
@@ -9,23 +8,23 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398879"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660300"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobil uygulamanızı App Center ve Application Insights ile analiz etmeye başlama
 
 Bu hızlı başlangıç, uygulamanızın App Center örneğini Application Insights'a bağlama işleminde size yol gösterir. Application Insights ile, telemetrinizi App Center'ın [Analytics](https://docs.microsoft.com/mobile-center/analytics/) hizmetinde sağlanandan daha güçlü araçlarla sorgulayabilir, segmentlere ayırabilir, filtreleyebilir ve analiz edebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 - Azure aboneliği.
-- iOS, Android, Xamarin, Evrensel Windows veya React Native uygulaması.
+- iOS, Android, Xamarin, Universal Windows veya React Native uygulaması.
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -62,13 +61,13 @@ Analytics.trackEvent("Video clicked")
 
 Diğer uygulama platformlarından özel olayları göndermek için, App Center SDK'larında `trackEvent` yöntemlerini kullanın.
 
-Özel olaylarınızın alındığından emin olmak için, App Center'daki **Analiz** bölümünün altında **Olaylar** sekmesine gidin. Uygulamanızdan gönderilen olayların gösterilmesi birkaç dakika sürebilir.
+Özel olaylarınızın alındığından emin olmak için, App Center'daki **Analiz** bölümünün altında **Olaylar** sekmesine gidin. Uygulamanızdan gönderilen olayların gittikleri zamandan gösterilmesi birkaç dakika sürebilir.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
 Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alındıktan sonra, Azure Portal'da App Center türünde bir Application Insights kaynağı oluşturmalısınız:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur** > **Geliştirici araçları** > **Application Insights** seçeneğini belirleyin.
 
     > [!NOTE]
@@ -82,7 +81,7 @@ Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alı
      | **Kaynak Grubu**     | Yeni bir kaynak grubu veya menüde var olanlardan biri | İçinde yeni Application Insights kaynağının oluşturulacağı kaynak grubu |
    | **Konum** | Menüden bir konum | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’ tıklayın.
 
 Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, en iyisi her platform için ayrı bir Application Insights kaynağı oluşturmaktır.
 

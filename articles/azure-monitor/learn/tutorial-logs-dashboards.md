@@ -1,19 +1,18 @@
 ---
 title: Azure Log Analytics verilerinin panolarını oluşturma ve paylaşma | Microsoft Docs
 description: Bu öğretici, Log Analytics Panolarınızın tüm kayıtlı günlük sorgularını görselleştirerek ortamınızı görüntülemek için size tek bir lens sağladığını anlamanıza yardımcı olur.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365590"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661541"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics verilerinin panolarını oluşturma ve paylaşma
 
@@ -27,7 +26,7 @@ Log Analytics panolar, tüm kayıtlı günlük sorgularınızı görselleştirer
 
 Bu öğreticideki örneği tamamlamak için [Log Analytics çalışma alanına bağlı](quick-collect-azurevm.md) mevcut bir sanal makinenizin olması gerekir.  
  
-## <a name="sign-in-to-azure-portal"></a>Azure portalında oturum açın
+## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
 ## <a name="create-a-shared-dashboard"></a>Paylaşılan pano oluşturma
@@ -67,7 +66,7 @@ Perf
 
 Sayfanın üst kısmından **Kaydet** düğmesini seçerek sorguyu kaydedin.
 
-![Sorguyu kaydet](media/tutorial-logs-dashboards/save-query.png)
+![Sorguyu Kaydet](media/tutorial-logs-dashboards/save-query.png)
 
 **Sorguyu Kaydet** denetim panelinde *Azure VM 'ler Işlemci kullanımı* ve *panolar* gibi bir kategori gibi bir ad girin ve ardından **Kaydet**' e tıklayın.  Bu şekilde, kullanabileceğiniz ve değiştirebileceğiniz bir ortak sorgu kitaplığı oluşturabilirsiniz.  Son olarak, sayfanın sağ üst köşesinden **panoya sabitle** düğmesini seçerek ve ardından Pano adını seçerek bunu daha önce oluşturulan paylaşılan panoya sabitleyin.
 

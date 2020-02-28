@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics Ağ Performansı İzleyicisi çözümdeki performans Izleyicisi özelliği | Microsoft Docs
 description: Ağ Performansı İzleyicisi performans Izleyicisi özelliği, ağınızdaki çeşitli noktalarda ağ bağlantısını izlemenize yardımcı olur. Bulut dağıtımlarını ve şirket içi konumları, birden çok veri merkezini ve şubelerin yanı sıra görev açısından kritik çok katmanlı uygulamaları veya mikro hizmetleri izleyebilirsiniz.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898844"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654537"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Ağ Performansı İzleyicisi çözümü: performans izleme
 

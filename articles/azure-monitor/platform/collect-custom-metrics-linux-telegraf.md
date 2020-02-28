@@ -3,17 +3,16 @@ title: Etkileyen Linux VM için özel ölçümler toplayın telegraf Agent
 description: Azure 'daki bir Linux sanal makinesine etkileyen bir Linux VM 'de etkileyen ve aracıyı Azure Izleyici 'de yayımlamak üzere yapılandıran yönergeler.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901328"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655472"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -29,7 +28,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 Yeni bir Linux sanal makinesi oluşturun: 
 
@@ -106,7 +105,7 @@ Artık Aracı, belirtilen giriş eklentilerinden her bir ölçüm toplayacak ve 
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Telegraf ölçümlerini Azure portal çizme 
 
-1. [Azure portalı](https://portal.azure.com) açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 
 1. Yeni **izleyici** sekmesine gidin. Ardından **ölçümler**' i seçin.  
 

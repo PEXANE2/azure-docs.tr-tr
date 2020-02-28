@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de günlük sorgularına genel bakış | Microsoft Docs
 description: Günlük sorgularıyla ilgili yaygın soruların yanıtlarını verir ve bunları kullanmaya başlamanızı sağlar.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900265"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670126"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularına genel bakış
 Günlük sorguları, [Azure Izleyici günlüklerinde](../platform/data-platform-logs.md)toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Güçlü bir sorgu dili, birden çok tablodan veri birleştirme, büyük veri kümelerini toplama ve en az kodla karmaşık işlemler gerçekleştirmenize olanak tanır. Neredeyse her soru yanıtlanarak, destekleyici veriler toplandıkça ve analiz, doğru sorgunun nasıl oluşturulacağını anlamış olabilir.

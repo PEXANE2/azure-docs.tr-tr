@@ -1,18 +1,14 @@
 ---
 title: Microsoft Flow ile Azure Application Insights süreçlerini otomatikleştirin
 description: Application Insights bağlayıcısını kullanarak tekrarlanabilir işlemleri hızlı bir şekilde otomatikleştirmek için Microsoft Flow nasıl kullanabileceğinizi öğrenin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7566ae87f92707180b09d50eb6e5eeccedae85b9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407538"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655100"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow için bağlayıcı ile Azure Application Insights süreçlerini otomatikleştirin
 
@@ -41,7 +37,7 @@ Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırm
 
     ![Sıklık ve aralığa girerek zamanlama tekrarını ayarlama](./media/automate-with-flow/2-schedule.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 
 ### <a name="step-3-add-an-application-insights-action"></a>3\. Adım: Application Insights eylem ekleme
 
@@ -66,7 +62,7 @@ Uygulama KIMLIĞI ve API anahtarı ile birlikte bağlantınız için bir ad sağ
 
 Bağlantı kutusu doğru görünmüyorsa ve bunun yerine sorguyu girmeye devam ederseniz, kutunun sağ üst köşesindeki üç noktaya tıklayın. Ardından bağlantılarımı seçin veya mevcut bir tane kullanın.
 
-**Oluştur**'a tıklayın.
+**Oluştur**’ tıklayın.
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. Adım: analiz sorgusunu ve grafik türünü belirtme
 Bu örnek sorgu son gün içindeki başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlarla ilişkilendirir. Analiz, operation_Id tanımlayıcısına göre bunları ilişkilendirir. Sorgu daha sonra sonuçları, oto küme algoritmasını kullanarak kesimler.
@@ -117,7 +113,7 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
 
 ### <a name="step-7-save-and-test-your-flow"></a>7\. Adım: akışınızı kaydetme ve test etme
 
-**Save (Kaydet)** düğmesine tıklayın.
+**Kaydet**’e tıklayın.
 
 Tetikleyicinin bu eylemi çalıştırmasını bekleyebilir veya üst kısımdaki ![Beaker **test](./media/automate-with-flow/testicon.png) simgesine** tıklayabilirler.
 

@@ -3,17 +3,16 @@ title: Azure Izleyici ölçümleri veritabanına klasik Windows VM ölçümleri 
 description: Windows sanal makinesi için Azure Izleyici veri deposuna Konuk işletim sistemi ölçümleri gönderme (klasik)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977629"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655829"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows sanal makinesi için Azure Izleyici ölçümleri veritabanına Konuk işletim sistemi ölçümleri gönderme (klasik)
 
@@ -27,7 +26,7 @@ Bu konumda depolamak, platform ölçümleri için yaptığınız aynı eylemlere
 
 Bu makalede özetlenen işlem yalnızca Windows işletim sistemini çalıştıran klasik sanal makinelerde çalışır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](../../cost-management-billing/manage/add-change-subscription-administrator.md) olmanız gerekir. 
 

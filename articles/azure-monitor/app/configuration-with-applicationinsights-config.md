@@ -1,19 +1,15 @@
 ---
 title: ApplicationInsights. config başvurusu-Azure | Microsoft Docs
 description: Veri toplama modüllerini etkinleştirin veya devre dışı bırakın ve performans sayaçlarını ve diğer parametreleri ekleyin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: f7f32cc7f160a7ac9253b60e8c0c13926c110ac2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407098"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655490"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK 'Sı bazı NuGet paketlerinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) , Application Insights telemetri göndermek için API sağlar. [Ek paketler](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) , uygulama ve bağlamınızdan Telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlatıcılar* sağlar. Yapılandırma dosyasını ayarlayarak telemetri modüllerini ve başlatıcıları etkinleştirebilir veya devre dışı bırakabilir ve bunların bazıları için parametreler ayarlayabilirsiniz.

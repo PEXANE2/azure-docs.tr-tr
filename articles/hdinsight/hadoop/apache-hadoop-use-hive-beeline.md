@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435740"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663754"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive ile Apache Beeline istemcisini kullanma
 
 HDInsight 'ta Apache Hive sorguları çalıştırmak için [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) nasıl kullanacağınızı öğrenin.
 
-Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. Beeline yerel olarak yüklemek için aşağıdaki [Beeline Istemcisini Install](#install-beeline-client)bölümüne bakın. Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır:
+Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. Beeline yerel olarak yüklemek için aşağıdaki [Beeline Istemcisini Install](#install-beeline-client)bölümüne bakın. Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır.
 
 ## <a name="types-of-connections"></a>Bağlantı türleri
 
@@ -59,7 +59,9 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>Herkese açık veya özel uç noktalar
 
-Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `clustername.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı, bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
+Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `clustername.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir.
+
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. `admin`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN kullanın (örneğin, user@domain.com). `password` küme oturum açma hesabı parolasıyla değiştirin.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
@@ -71,19 +73,17 @@ veya özel uç nokta için:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. `admin`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN kullanın (örneğin, user@domain.com). `password` küme oturum açma hesabı parolasıyla değiştirin.
-
 Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler üzerindeki kısıtlamalar](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce, genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
 ---
 
-### <a id="sparksql"></a>Apache Spark ile Beeline kullanma
+### <a name="use-beeline-with-apache-spark"></a>Apache Spark ile Beeline kullanma
 
 Apache Spark, bazı durumlarda Spark Thrift sunucusu olarak da adlandırılan kendi HiveServer2 uygulamasını sağlar. Bu hizmet, Hive yerine sorguları çözümlemek için Spark SQL 'i kullanır ve sorgunuzun bağlı olarak daha iyi performans sağlayabilir.
 
 #### <a name="through-public-or-private-endpoints"></a>Ortak veya özel uç noktalar aracılığıyla
 
-Kullanılan bağlantı dizesi biraz farklı. `httpPath=/hive2` yerine `httpPath/sparkhive2`:
+Kullanılan bağlantı dizesi biraz farklı. `httpPath=/hive2` yerine `httpPath/sparkhive2`. `clustername` değerini HDInsight kümenizin adıyla değiştirin. `admin`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN kullanın (örneğin, user@domain.com). `password` küme oturum açma hesabı parolasıyla değiştirin.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -94,8 +94,6 @@ veya özel uç nokta için:
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
-
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. `admin`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
 
 Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler üzerindeki kısıtlamalar](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce, genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
@@ -111,7 +109,7 @@ Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal 
 
 ---
 
-## <a id="prereq"></a>Önkoşullar
+## <a name="prerequisites-for-examples"></a>Örnek önkoşulları
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -121,7 +119,7 @@ Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal 
 
 * Seçenek 2: yerel bir Beeline istemcisi.
 
-## <a id="beeline"></a>Hive sorgusu çalıştırma
+## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
 Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayalıdır.
 
@@ -188,24 +186,21 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
         GROUP BY t4;
     ```
 
     Bu deyimler aşağıdaki işlemleri yapılır:
 
-    * `DROP TABLE`-tablo varsa, silinir.
-
-    * `CREATE EXTERNAL TABLE`-Hive içinde bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumda bırakılır.
-
-    * `ROW FORMAT`-veriler nasıl biçimlendirilir. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
-
-    * `STORED AS TEXTFILE LOCATION`-verilerin depolandığı yer ve dosya biçimi.
-
-    * `SELECT`, **T4** sütununun **[Error]** değerini Içerdiği tüm satırların sayısını seçer. Bu sorgu, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
-
-    * `INPUT__FILE__NAME LIKE '%.log'`-Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardaki verileri döndürmeyeceğini söyler.
+    |Ekstre |Açıklama |
+    |---|---|
+    |TABLOYU BıRAK|Tablo varsa, silinir.|
+    |DıŞ TABLO OLUŞTUR|Hive içinde bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumda bırakılır.|
+    |SATıR BIÇIMI|Verilerin biçimlendirilmesi. Bu durumda, her günlükteki alanlar boşlukla ayrılır.|
+    |TEXTFILE KONUMU OLARAK DEPOLANDı|Verilerin depolandığı yer ve dosya biçimi.|
+    |SELECT|**T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu sorgu, bu değeri içeren üç satır olduğu için **3** değerini döndürür.|
+    |'%. Log ' gıbı INPUT__FILE__NAME|Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardaki verileri döndürmeyeceğini söyler.|
 
    > [!NOTE]  
    > Dış tablolar, temel alınan verilerin bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır. Örneğin, otomatik bir veri yükleme işlemi veya MapReduce işlemi.
@@ -236,7 +231,11 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. Beeline çıkmak için `!exit`kullanın.
+6. Beeline çıkış:
+
+    ```bash
+    !exit
+    ```
 
 ## <a name="run-a-hiveql-file"></a>HiveQL dosyası çalıştırma
 
@@ -248,7 +247,7 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
     nano query.hql
     ```
 
-2. Dosyanın içeriği olarak aşağıdaki metni kullanın. Bu sorgu **errorlogs**adlı yeni bir ' internal ' tablosu oluşturur:
+1. Dosyanın içeriği olarak aşağıdaki metni kullanın. Bu sorgu **errorlogs**adlı yeni bir ' internal ' tablosu oluşturur:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -257,16 +256,18 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
 
     Bu deyimler aşağıdaki işlemleri yapılır:
 
-   * **Create Table** yoksa-tablo henüz yoksa oluşturulur. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. İç tablolar Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.
-   * **Orc olarak depolanır** -verileri en Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC biçimi, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve verimli bir biçimdir.
-   * **ÜZERINE yazma Ekle...**  **Log4jLogs** tablosundan **[Error]** IÇEREN satırları Seç ' i seçin, sonra da verileri **errorlogs** tablosuna ekler.
+    |Ekstre |Açıklama |
+    |---|---|
+    |MEVCUT DEĞILSE CREATE TABLE|Tablo henüz yoksa, oluşturulur. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. İç tablolar Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.|
+    |ORC OLARAK DEPOLANıR|Verileri Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC biçimi, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve verimli bir biçimdir.|
+    |ÜZERINE YAZMA EKLE... SEÇIN|**Log4jLogs** tablosundan **[Error]** içeren satırları seçer, ardından verileri **errorlogs** tablosuna ekler.|
 
     > [!NOTE]  
     > Dış tablolardan farklı olarak, iç tablo bırakılırken temel alınan veriler de silinir.
 
-3. Dosyayı kaydetmek için **Ctrl**+**X**kullanın, ardından **Y**girin ve son olarak **girin**.
+1. Dosyayı kaydetmek için **Ctrl**+**X**kullanın, ardından **Y**girin ve son olarak **girin**.
 
-4. Dosyayı Beeline kullanarak çalıştırmak için aşağıdakileri kullanın:
+1. Dosyayı Beeline kullanarak çalıştırmak için aşağıdakileri kullanın:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
@@ -275,7 +276,7 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
     > [!NOTE]  
     > `-i` parametresi, Beeline başlar ve `query.hql` dosyasındaki deyimleri çalıştırır. Sorgu tamamlandıktan sonra `jdbc:hive2://headnodehost:10001/>` istemine geldiğinizde. Sorgu tamamlandıktan sonra Beeline çıkış `-f` parametresini kullanarak da bir dosya çalıştırabilirsiniz.
 
-5. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden**tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
+1. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden**tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
 
     ```hiveql
     SELECT * from errorLogs;
@@ -310,7 +311,9 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Bashrc dosyasını düzeltme (genellikle ~/,bashrc içinde bulunur). Dosyayı `nano ~/.bashrc` açın ve sonra dosyanın sonuna aşağıdaki satırı ekleyin:
+    1. Bashrc dosyasını açın (genellikle ~/,bashrc içinde bulunur): `nano ~/.bashrc`.
+
+    1. Bashrc dosyasını düzeltme. Dosyanın sonuna aşağıdaki satırı ekleyin:
 
         ```bash
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -335,11 +338,12 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
 1. Bashrc dosyasını daha fazla düzeltme. Arşivlerin açıldığı yolu belirlemeniz gerekir. [Linux Için Windows alt sistemi](https://docs.microsoft.com/windows/wsl/install-win10)kullanıyorsanız ve adımları tam olarak takip ediyorsanız, yolunuz `/mnt/c/Users/user/`olur; burada `user` kullanıcı adıdır.
 
     1. Dosyayı açın: `nano ~/.bashrc`
+
     1. Aşağıdaki komutları uygun yol ile değiştirin ve ardından bashrc dosyasının sonuna girin:
 
         ```bash
-        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
-        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
+        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 

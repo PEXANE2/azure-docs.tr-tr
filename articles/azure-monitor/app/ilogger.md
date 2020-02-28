@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights ILogger ile .NET izleme günlüklerini keşfet
 description: Azure Application Insights ILogger sağlayıcısını ASP.NET Core ve konsol uygulamalarıyla kullanma örnekleri.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2b306670c43722279327301b15630f96da50ea5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716032"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659943"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ıllogger günlükleri için Applicationınsightsloggerprovider
 
@@ -396,7 +392,7 @@ Visual Studio 'da hata ayıklarken çift günlük ile karşılaşırsanız, Appl
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>[Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1 'e güncelleştirdim ve ILogger günlüklerinden Günlükler otomatik olarak yakalanır. Bu özelliği tamamen kapatmak Nasıl yaparım?.
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>[Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1 'e güncelleştirdim ve ILogger günlüklerinden Günlükler otomatik olarak yakalanır. Bu özelliği tamamen kapatmak Nasıl yaparım?.
 
 Günlükleri genel olarak filtrelemeye bakmak için [Denetim günlüğü düzeyi](../../azure-monitor/app/ilogger.md#control-logging-level) bölümüne bakın. Applicationınsightsloggerprovider 'ı kapatmak için `LogLevel.None`kullanın:
 

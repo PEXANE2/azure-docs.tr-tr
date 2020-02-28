@@ -3,17 +3,16 @@ title: Azure platformu günlüklerini bir olay hub 'ına akış
 description: Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Azure Kaynak günlüklerinin bir olay hub 'ına akışını nasıl sağlayacağınızı öğrenin.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750348"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658923"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure platformu günlüklerini Azure Event Hubs akış
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar.  Bu makalede, üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Olay Hub 'larına yönelik akış platformu günlükleri açıklanır.
@@ -40,7 +39,7 @@ Aşağıdaki işlevleri sağlamak için Azure 'daki Olay Hub 'larına platform g
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Henüz bir tane yoksa [bir olay hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md) gerekir. Bu Event Hubs ad alanını kullanan bir tanılama ayarınız zaten varsa, bu olay hub 'ı yeniden kullanılacaktır.
 
 Ad alanı için paylaşılan erişim ilkesi, akış mekanizmanın sahip olduğu izinleri tanımlar. Event Hubs akışının yönetilmesi, gönderilmesi ve dinlemesi izinlerinin olması gerekir. Event Hubs ad alanınız için Yapılandır sekmesinin altındaki Azure portal paylaşılan erişim ilkeleri oluşturabilir veya değiştirebilirsiniz.
@@ -57,7 +56,7 @@ Tanılama ayarları, Azure işlem kaynakları için, Konuk işletim sistemleri v
 ## <a name="consuming-log-data-from-event-hubs"></a>Olay Hub 'larından günlük verilerini kullanma
 Olay Hub 'larından platform günlükleri, JSON biçiminde aşağıdaki tablodaki öğelerle kullanılır.
 
-| Öğe Adı | Açıklama |
+| Öğe adı | Açıklama |
 | --- | --- |
 | kayıtlar |Bu yükteki tüm günlük olaylarının bir dizisi. |
 | time |Olayın gerçekleştiği zaman. |

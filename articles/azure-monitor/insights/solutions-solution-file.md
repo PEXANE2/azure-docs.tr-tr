@@ -1,19 +1,18 @@
 ---
 title: Azure 'da bir yönetim çözümü dosyası oluşturma | Microsoft Docs
 description: Yönetim çözümleri, müşterilerin Azure ortamlarına ekleyebilmeleri için paketlenmiş yönetim senaryoları sağlar.  Bu makalede, kendi ortamınızda kullanılmak üzere yönetim çözümlerini nasıl oluşturabileceğiniz veya müşterileriniz için kullanılabilir hale getirdiğiniz hakkında ayrıntılar sağlanmaktadır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977688"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662546"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure 'da bir yönetim çözümü dosyası oluşturma (Önizleme)
 > [!NOTE]
@@ -79,11 +78,11 @@ Aşağıdaki tabloda tüm yönetim çözümleri için standart parametreler list
 
 | Parametre | Tür | Açıklama |
 |:--- |:--- |:--- |
-| accountName |string |Azure Otomasyonu hesap adı. |
+| Adı |string |Azure Otomasyonu hesap adı. |
 | pricingTier |string |Log Analytics çalışma alanının ve Azure Otomasyonu hesabının fiyatlandırma katmanı. |
 | regionId |string |Azure Otomasyonu hesabının bölgesi. |
 | solutionName |string |Çözümün adı.  Çözümünüzü hızlı başlangıç şablonları aracılığıyla dağıtıyorsanız, kullanıcının bir tane belirtmesini gerektirmek yerine bir dize tanımlayabilmeniz için solutionName parametresini parametre olarak tanımlamanız gerekir. |
-| WorkspaceName |string |Log Analytics çalışma alanı adı. |
+| workspaceName |string |Log Analytics çalışma alanı adı. |
 | workspaceRegionId |string |Log Analytics çalışma alanının bölgesi. |
 
 
@@ -213,7 +212,7 @@ Her çözüm, çözümün kendisini tanımlayan **Resources** öğesinde bir kay
 
 Yukarıdaki örnek, runbook 'un, zamanlamanın ve görünümün bulunduğu bir çözüm içindir.  Zamanlama ve Runbook 'un, çözüm kaldırıldığında kaldırılmaması için **Özellikler** öğesinde *Başvurulmuş* .  Görünüm, çözüm kaldırıldığında kaldırılacak şekilde *bulunur* .
 
-### <a name="plan"></a>Plan
+### <a name="plan"></a>Planlama
 Çözüm kaynağının **plan** varlığı aşağıdaki tablodaki özelliklere sahiptir.
 
 | Özellik | Açıklama |

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189660"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657112"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -90,7 +90,9 @@ Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar.
 | `['has', string]` | boole | Özelliğin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['has', string, object]` | boole | Nesnenin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['id']` | değer | Özelliği varsa özelliğin KIMLIĞINI alır. |
-| `['length', string | array]` | sayı | Bir dizenin veya dizinin uzunluğunu alır. |
+| `['length', string | array]` | number | Bir dizenin veya dizinin uzunluğunu alır. |
+| `['in', boolean | string | number, array]` | boole | Dizide bir öğe olup olmadığını belirler |
+| `['in', substring, string]` | boole | Bir dizedeki alt dizenin mevcut olup olmadığını belirler |
 
 **Örnekler**
 
@@ -141,32 +143,32 @@ Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçek
 
 | Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | sayı | Belirtilen sayıların toplamını hesaplar. |
-| `['-', number]` | sayı | Belirtilen sayı ile 0 çıkartır. |
-| `['-', number, number]` | sayı | İkinci sayıya göre ilk sayıları çıkartır. |
-| `['*', number, number, …]` | sayı | Belirtilen sayıları birlikte çarpar. |
-| `['/', number, number]` | sayı | İlk sayıyı ikinci sayıya böler. |
-| `['%', number, number]` | sayı | İlk sayıyı ikinci sayıya bölerken kalanı hesaplar. |
-| `['^', number, number]` | sayı | İkinci sayının gücünden çıkarılan ilk değerin değerini hesaplar. |
-| `['abs', number]` | sayı | Belirtilen sayının mutlak değerini hesaplar. |
-| `['acos', number]` | sayı | Belirtilen sayının arkkosinüsünü hesaplar. |
-| `['asin', number]` | sayı | Belirtilen sayının arksinüsünü hesaplar. |
-| `['atan', number]` | sayı | Belirtilen sayının ark tanjantını hesaplar. |
-| `['ceil', number]` | sayı | Sayıyı bir sonraki tam tamsayıya yuvarlar. |
-| `['cos', number]` | sayı | Belirtilen sayının cos sayısını hesaplar. |
-| `['e']` | sayı | Matematik sabiti `e`döndürür. |
-| `['floor', number]` | sayı | Sayıyı, önceki tam tamsayıya yuvarlar. |
-| `['ln', number]` | sayı | Belirtilen sayının doğal logaritmasını hesaplar. |
-| `['ln2']` | sayı | Matematik sabiti `ln(2)`döndürür. |
-| `['log10', number]` | sayı | Belirtilen sayının 10 tabanında logaritmasını hesaplar. |
-| `['log2', number]` | sayı | Belirtilen sayının temel iki logaritmasını hesaplar. |
-| `['max', number, number, …]` | sayı | Belirtilen sayı kümesindeki en büyük sayıyı hesaplar. |
-| `['min', number, number, …]` | sayı | Belirtilen sayı kümesindeki minimum sayıyı hesaplar. |
-| `['pi']` | sayı | Matematik sabiti `PI`döndürür. |
-| `['round', number]` | sayı | Sayıyı en yakın tamsayıya yuvarlar. Yarı-değerler sıfırdan uzağa yuvarlanır. Örneğin, `['round', -1.5]`-2 olarak değerlendirilir. |
-| `['sin', number]` | sayı | Belirtilen sayının sinüsünü hesaplar. |
-| `['sqrt', number]` | sayı | Belirtilen sayının kare kökünü hesaplar. |
-| `['tan', number]` | sayı | Belirtilen sayının tanjantını hesaplar. |
+| `['+', number, number, …]` | number | Belirtilen sayıların toplamını hesaplar. |
+| `['-', number]` | number | Belirtilen sayı ile 0 çıkartır. |
+| `['-', number, number]` | number | İkinci sayıya göre ilk sayıları çıkartır. |
+| `['*', number, number, …]` | number | Belirtilen sayıları birlikte çarpar. |
+| `['/', number, number]` | number | İlk sayıyı ikinci sayıya böler. |
+| `['%', number, number]` | number | İlk sayıyı ikinci sayıya bölerken kalanı hesaplar. |
+| `['^', number, number]` | number | İkinci sayının gücünden çıkarılan ilk değerin değerini hesaplar. |
+| `['abs', number]` | number | Belirtilen sayının mutlak değerini hesaplar. |
+| `['acos', number]` | number | Belirtilen sayının arkkosinüsünü hesaplar. |
+| `['asin', number]` | number | Belirtilen sayının arksinüsünü hesaplar. |
+| `['atan', number]` | number | Belirtilen sayının ark tanjantını hesaplar. |
+| `['ceil', number]` | number | Sayıyı bir sonraki tam tamsayıya yuvarlar. |
+| `['cos', number]` | number | Belirtilen sayının cos sayısını hesaplar. |
+| `['e']` | number | Matematik sabiti `e`döndürür. |
+| `['floor', number]` | number | Sayıyı, önceki tam tamsayıya yuvarlar. |
+| `['ln', number]` | number | Belirtilen sayının doğal logaritmasını hesaplar. |
+| `['ln2']` | number | Matematik sabiti `ln(2)`döndürür. |
+| `['log10', number]` | number | Belirtilen sayının 10 tabanında logaritmasını hesaplar. |
+| `['log2', number]` | number | Belirtilen sayının temel iki logaritmasını hesaplar. |
+| `['max', number, number, …]` | number | Belirtilen sayı kümesindeki en büyük sayıyı hesaplar. |
+| `['min', number, number, …]` | number | Belirtilen sayı kümesindeki minimum sayıyı hesaplar. |
+| `['pi']` | number | Matematik sabiti `PI`döndürür. |
+| `['round', number]` | number | Sayıyı en yakın tamsayıya yuvarlar. Yarı-değerler sıfırdan uzağa yuvarlanır. Örneğin, `['round', -1.5]`-2 olarak değerlendirilir. |
+| `['sin', number]` | number | Belirtilen sayının sinüsünü hesaplar. |
+| `['sqrt', number]` | number | Belirtilen sayının kare kökünü hesaplar. |
+| `['tan', number]` | number | Belirtilen sayının tanjantını hesaplar. |
 
 ## <a name="aggregate-expression"></a>Toplama ifadesi
 
@@ -188,7 +190,7 @@ Toplama ifadesi üç değer alır: bir işleç değeri ve başlangıç değeri v
 
 Bir veri kümesindeki tüm özelliklerin bir `revenue` özelliği varsa, bu sayı bir sayıdır. Daha sonra, bir kümede bulunan ve veri kümesinden oluşturulan tüm noktaların toplam geliri hesaplanabilir. Bu hesaplama aşağıdaki toplama ifadesi kullanılarak yapılır: `['+', 0, ['get', 'revenue']]`
 
-## <a name="boolean-expressions"></a>Boole ifadeleri
+## <a name="boolean-expressions"></a>Mantıksal ifadeler
 
 Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi Boole işleci sağlar.
 
@@ -403,7 +405,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 | `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
 | `['to-boolean', value]` | boole | Giriş değerini bir Boole değerine dönüştürür. Giriş boş bir dize, `0`, `false`, `null`veya `NaN`olduğunda sonuç `false`. Aksi takdirde `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Giriş değerini bir renge dönüştürür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | sayı | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya `false`, sonuç 0 ' dır. Giriş `true`, sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya `false`, sonuç 0 ' dır. Giriş `true`, sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
 | `['to-string', value]` | string | Giriş değerini bir dizeye dönüştürür. Giriş `null`, sonuç `""`olur. Giriş bir Boole ise, sonuç `"true"` veya `"false"`. Giriş bir sayı ise, ECMAScript dil belirtiminin [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number işlevi kullanılarak bir dizeye dönüştürülür. Giriş bir renkeyse, CSS RGBA Color dize `"rgba(r,g,b,a)"`dönüştürülür. Aksi takdirde, giriş, ECMAScript dil belirtiminin [JSON. stringbelirt](https://tc39.github.io/ecma262/#sec-json.stringify) işlevi kullanılarak bir dizeye dönüştürülür. |
 | `['typeof', value]` | string | Verilen değerin türünü tanımlayan bir dize döndürür. |
 

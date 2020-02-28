@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: cherylmc
-ms.openlocfilehash: b26947f2dd25f950b2d69d58321582a503aea83d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619800"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654784"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portalını kullanarak bir VNet-VNet VPN ağ geçidi bağlantısı yapılandırma
 
@@ -71,57 +71,57 @@ Bu makale, VNet-VNet bağlantı türünü kullanarak sanal ağları bağlama iş
 
 ### <a name="example-settings"></a>Örnek ayarlar
 
-**Değerler TestVNet1 için:**
+**VNet1 için değerler:**
 
 - **Sanal ağ ayarları**
-    - **Ad**: *TestVNet1*girin.
-    - **Adres alanı**: *10.11.0.0/16*girin.
+    - **Ad**: VNet1
+    - **Adres alanı**: 10.11.0.0/16
     - **Abonelik**: kullanmak istediğiniz aboneliği seçin.
-    - **Kaynak grubu**: *TestRG1*girin.
-    - **Konum**: **Doğu ABD**seçin.
+    - **Kaynak grubu**: TestRG1
+    - **Konum**: Doğu ABD
     - **Alt ağ**
-        - **Ad**: *ön uç*girin.
-        - **Adres aralığı**: *10.11.0.0/24*girin.
+        - **Ad**: ön uç
+        - **Adres aralığı**: 10.11.0.0/24
     - **Ağ geçidi alt ağı**:
-        - **Ad**: *gatewaysubnet* , oto doldurulur.
-        - **Adres aralığı**: *10.11.255.0/27*girin.
+        - **Ad**: *gatewaysubnet* , oto doldurulmuştur
+        - **Adres aralığı**: 10.11.255.0/27
 
-- **Sanal ağ geçidi ayarları** 
-    - **Ad**: *testvnet1gw öğesine*girin.
+- **Sanal ağ geçidi ayarları**
+    - **Ad**: VNet1GW
     - **Ağ geçidi türü**: **VPN**’i seçin.
     - **VPN türü**: **Rota tabanlı**' ı seçin.
     - **SKU**: kullanmak istediğiniz ağ geçidi SKU 'sunu seçin.
-    - **Genel IP adresi adı**: *TestVNet1GWIP* girin
-    - **Bağlanma** 
-       - **Ad**: *TestVNet1toTestVNet4*girin.
-       - **Paylaşılan anahtar**: *abc123*girin. Paylaşılan anahtarı kendiniz oluşturabilirsiniz. Sanal ağlar arası bağlantı oluşturduğunuzda, değerlerin eşleşmesi gerekir.
+    - **Genel IP adresi adı**: VNet1GWpip
+    - **Bağlanma**
+       - **Ad**: VNet1toVNet4
+       - **Paylaşılan anahtar**: paylaşılan anahtarı kendiniz oluşturabilirsiniz. Sanal ağlar arası bağlantı oluşturduğunuzda, değerlerin eşleşmesi gerekir. Bu alıştırma için abc123 kullanın.
 
-**Değerler TestVNet4 için:**
+**Ile vnet4 arasında için değerler:**
 
 - **Sanal ağ ayarları**
-   - **Ad**: *TestVNet4*girin.
-   - **Adres alanı**: *10.41.0.0/16*girin.
+   - **Ad**: ile vnet4 arasında
+   - **Adres alanı**: 10.41.0.0/16
    - **Abonelik**: kullanmak istediğiniz aboneliği seçin.
-   - **Kaynak grubu**: *TestRG4*girin.
-   - **Konum**: **Batı ABD**seçin.
+   - **Kaynak grubu**: TestRG4
+   - **Konum**: Batı ABD
    - **Alt ağ** 
-      - **Ad**: *ön uç*girin.
-      - **Adres aralığı**: *10.41.0.0/24*girin.
+      - **Ad**: ön uç
+      - **Adres aralığı**: 10.41.0.0/24
    - **GatewaySubnet** 
-      - **Ad**: *gatewaysubnet* , oto doldurulur.
-      - **Adres aralığı**: *10.41.255.0/27*girin.
+      - **Ad**: *gatewaysubnet* , oto doldurulmuştur
+      - **Adres aralığı**: 10.41.255.0/27
 
 - **Sanal ağ geçidi ayarları** 
-    - **Ad**: *TestVNet4GW*girin.
+    - **Ad**: VNet4GW
     - **Ağ geçidi türü**: **VPN**’i seçin.
     - **VPN türü**: **Rota tabanlı**' ı seçin.
     - **SKU**: kullanmak istediğiniz ağ geçidi SKU 'sunu seçin.
-    - **Genel IP adresi adı**: *TestVNet4GWIP*girin.
+    - **Genel IP adresi adı**: VNet4GWpip
     - **Bağlanma** 
-       - **Ad**: *TestVNet4toTestVNet1*girin.
-       - **Paylaşılan anahtar**: *abc123*girin. Paylaşılan anahtarı kendiniz oluşturabilirsiniz. Sanal ağlar arası bağlantı oluşturduğunuzda, değerlerin eşleşmesi gerekir.
+       - **Ad**: VNet4toVNet1
+       - **Paylaşılan anahtar**: paylaşılan anahtarı kendiniz oluşturabilirsiniz. Sanal ağlar arası bağlantı oluşturduğunuzda, değerlerin eşleşmesi gerekir. Bu alıştırma için abc123 kullanın.
 
-## <a name="create-and-configure-testvnet1"></a>TestVNet1’i oluşturma ve yapılandırma
+## <a name="create-and-configure-vnet1"></a>VNet1 oluşturma ve yapılandırma
 Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyumlu olduğunu doğrulayın. Diğer ağlarla çakışabilecek herhangi bir alt ağ olup olmadığına özellikle dikkat edin. Çakışan alt ağlarınız varsa bağlantınız düzgün çalışmaz.
 
 ### <a name="to-create-a-virtual-network"></a>Sanal ağ oluşturmak için
@@ -142,21 +142,21 @@ Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ 
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="create-and-configure-testvnet4"></a>TestVNet4’ü oluşturma ve yapılandırma
-Testvnet1'i yapılandırdıktan sonra testvnet4'ü önceki adımları yineleyerek ve değerleri testvnet4'ü değerlerle değiştirerek oluşturun. TestVNet1 için sanal ağ geçidi testvnet4'ü yapılandırmadan önce oluşturma işlemlerinin tamamlanmasını beklemenize gerek yoktur. Kendi değerlerinizi kullanıyorsanız, tüm bağlanmak istediğiniz sanal ağ adres alanlarının çakışmadığından emin olun.
+## <a name="create-and-configure-vnet4"></a>Ile vnet4 arasında oluşturma ve yapılandırma
+VNet1 yapılandırdıktan sonra, önceki adımları tekrarlayarak ve değerleri Ile vnet4 arasında değerlerle değiştirerek Ile vnet4 arasında oluşturun. Ile vnet4 arasında yapılandırmadan önce VNet1 için sanal ağ geçidi oluşturmayı bitirene kadar beklemeniz gerekmez. Kendi değerlerinizi kullanıyorsanız, tüm bağlanmak istediğiniz sanal ağ adres alanlarının çakışmadığından emin olun.
 
-## <a name="configure-the-testvnet1-gateway-connection"></a>TestVNet1 ağ geçidi bağlantısını yapılandırma
-TestVNet1 ve TestVNet4 için sanal ağ geçidi oluşturma işlemleri tamamlandıktan sonra sanal ağ geçidi bağlantılarınızı oluşturabilirsiniz. Bu bölümde VNet1 ile VNet4 arasında bir bağlantı oluşturursunuz. Bu adımlar yalnızca aynı abonelikteki sanal ağlar için geçerlidir. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) kullanmanız gerekir. Sanal ağlarınız aynı Abonelikteki farklı kaynak gruplarında yoksa, ancak, bunları portalını kullanarak bağlanabilirsiniz.
+## <a name="configure-the-vnet1-gateway-connection"></a>VNet1 ağ geçidi bağlantısını yapılandırma
+Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığında, sanal ağ geçidi bağlantılarınızı oluşturabilirsiniz. Bu bölümde VNet1 ile VNet4 arasında bir bağlantı oluşturursunuz. Bu adımlar yalnızca aynı abonelikteki sanal ağlar için geçerlidir. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) kullanmanız gerekir. Sanal ağlarınız aynı Abonelikteki farklı kaynak gruplarında yoksa, ancak, bunları portalını kullanarak bağlanabilirsiniz.
 
-1. Azure portal, **tüm kaynaklar**' ı seçin, arama kutusuna *sanal ağ geçidi* girin ve ardından VNET 'iniz için sanal ağ geçidine gidin. Örnek: **TestVNet1GW**. **Sanal ağ geçidi** sayfasını açmak için seçin.
+1. Azure portal, **tüm kaynaklar**' ı seçin, arama kutusuna *sanal ağ geçidi* girin ve ardından VNET 'iniz için sanal ağ geçidine gidin. Örneğin, **VNet1GW**. **Sanal ağ geçidi** sayfasını açmak için ağ geçidini seçin. **Ayarlar**altında **Bağlantılar**' ı seçin.
 
-   ![Bağlantılar sayfası](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Bağlantılar sayfası")
-2. **Ayarlar**' ın altında **Bağlantılar**' ı seçin ve ardından **Ekle** ' yi seçerek **bağlantı ekle** sayfasını açın.
+   ![Bağlantılar sayfası](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Bağlantılar sayfası")
+2. **Bağlantı ekle** sayfasını açmak Için **+ Ekle** ' yi seçin.
 
-   ![Bağlantı ekle](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "bağlantı ekleme")
+   ![Bağlantı ekle](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "bağlantı ekleme")
 3. **Bağlantı ekle** sayfasında, bağlantınızın değerlerini girin:
 
-   - **Ad**: bağlantınız için bir ad girin. Örnek: *TestVNet1toTestVNet4*.
+   - **Ad**: bağlantınız için bir ad girin. Örneğin, *VNet1toVNet4*.
 
    - **Bağlantı türü**: açılan listeden VNet **-VNET** ' i seçin.
 
@@ -172,18 +172,18 @@ TestVNet1 ve TestVNet4 için sanal ağ geçidi oluşturma işlemleri tamamlandı
     
 4. Değişikliklerinizi kaydetmek için **Tamam ' ı** seçin.
 
-## <a name="configure-the-testvnet4-gateway-connection"></a>TestVNet4 ağ geçidi bağlantısını yapılandırma
-Bu adımda TestVNet4 ile TestVNet1 arasında bir bağlantı oluşturun. Portalda TestVNet4 ile ilişkili sanal ağ geçidini bulun. TestVNet4’ten TestVNet1’e bağlantı oluşturmak için değerleri değiştirerek önceki bölümde verilen adımları izleyin. Aynı paylaşılan anahtarı kullandığınızdan emin olun.
+## <a name="configure-the-vnet4-gateway-connection"></a>Ile vnet4 arasında ağ geçidi bağlantısını yapılandırma
+Sonra, Ile vnet4 arasında ile VNet1 arasında bir bağlantı oluşturun. Portalda, Ile vnet4 arasında ile ilişkili sanal ağ geçidini bulun. Ile vnet4 arasında ile VNet1 arasında bağlantı oluşturmak için değerleri değiştirerek önceki bölümdeki adımları izleyin. Aynı paylaşılan anahtarı kullandığınızdan emin olun.
 
 ## <a name="verify-your-connections"></a>Bağlantılarınızı doğrulayın
 
-Azure portalında sanal ağ geçidini bulun. Sanal **ağ geçidi** sayfasında, sanal ağ geçidinin **Bağlantılar** sayfasını görüntülemek için **Bağlantılar** ' ı seçin. Bağlantı kurulduktan sonra **durum** değerlerinin **başarılı** ve **bağlı**olarak değiştirilmesini görürsünüz. **Essentials** sayfasını açmak için bir bağlantı seçin ve daha fazla bilgi görüntüleyin.
+1. Azure portalında sanal ağ geçidini bulun. 
+2. Sanal **ağ geçidi** sayfasında, sanal ağ geçidinin **Bağlantılar** sayfasını görüntülemek için **Bağlantılar** ' ı seçin. Bağlantı kurulduktan sonra **durum** değerlerinin **bağlı**olarak değiştirilmesini görürsünüz.
 
-![Baarı](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Başarılı oldu")
+   ![Bağlantıları doğrula](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "Bağlantıları doğrula")
+3. **Ad** sütununda, daha fazla bilgi görüntülemek için bağlantılardan birini seçin. Veriler akışa başladığında, **Içindeki verilerin** değerlerini ve **dışarı veri**akışını görürsünüz.
 
-Veriler akışa başladığında, **Içindeki verilerin** değerlerini ve **dışarı veri**akışını görürsünüz.
-
-![Essentials](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Temel Bileşenler")
+   ![Durum](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Durum")
 
 ## <a name="add-additional-connections"></a>Başka bağlantılar eklemek
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049661"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660045"
 ---
 # <a name="linux-support"></a>Linux desteği
 
@@ -21,6 +21,9 @@ Windows sanal masaüstü için Linux SDK 'Yı kullanarak tek başına bir Window
 ## <a name="what-is-the-linux-sdk"></a>Linux SDK nedir?
 
 Kaynak akışlarını almak, masaüstü veya uzak uygulama oturumlarına bağlanmak ve ilk taraf istemcilerimizin desteklediği birçok yeniden yönlendirmeleri kullanmak için SDK API 'Lerini kullanabilirsiniz.
+
+> [!NOTE]
+> SDK Şu anda geliştirme aşamasındadır. Bu belgeyi, kullanılabilir olduğunda SDK 'ya erişme yönergeleriyle birlikte güncelleştireceğiz.
 
 ### <a name="supported-linux-distributions"></a>Desteklenen Linux dağıtımları
 
@@ -54,8 +57,6 @@ Windows sanal masaüstü için bir Linux istemcisi geliştirebilmeniz için aşa
 2. Windows sanal masaüstü Kullanıcı deneyimini tanımak için kullanılabilir birinci taraf istemcileri test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-SDK Şu anda geliştirme aşamasındadır. Bu belgeyi, kullanılabilir olduğunda SDK 'ya erişme yönergeleriyle birlikte güncelleştireceğiz.
 
 Aşağıdaki istemciler için belgelerimize göz atın:
 

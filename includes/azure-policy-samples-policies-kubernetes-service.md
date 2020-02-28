@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 8aff431b5160548599055c56d1317065236e7a68
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 93963005ece192d9fe8a477473800e43c0b53552
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495263"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780752"
 ---
 |Adı |Açıklama |Efekt (ler) |Sürüm |Kaynak |
-|---|---|---|---|
+|---|---|---|---|---|
 |[\[sınırlı önizleme\]: AKS 'deki ayrıcalıklı kapsayıcılara izin verme \[AKS\]](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Bu ilke, bir Azure Kubernetes hizmet kümesinde ayrıcalıklı kapsayıcılar oluşturulmasına izin vermez. Sınırlı Önizleme ilkeleri yalnızca kayıtlı abonelikler için çalışır. Kaydolmak için lütfen https://aka.ms/akspolicyonboardinggidin. Bu ilkeyi kullanma yönergeleri için lütfen https://aka.ms/akspolicydocgidin. |EnforceRegoPolicy, devre dışı |1.0.0-Önizleme |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json)
 |[\[sınırlı önizleme\]: a\] KS 'de HTTPS giriş uygulanmasını \[AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Bu ilke, bir Azure Kubernetes hizmet kümesinde HTTPS girişi uygular. Sınırlı Önizleme ilkeleri yalnızca kayıtlı abonelikler için çalışır. Kaydolmak için lütfen https://aka.ms/akspolicyonboardinggidin. Bu ilkeyi kullanma yönergeleri için lütfen https://aka.ms/akspolicydocgidin. |EnforceRegoPolicy, devre dışı |1.0.0-Önizleme |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json)
 |[\[sınırlı önizleme\]: AKS 'te iç yük dengeleyicileri zorlamak\] \[AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa74d8f00-2fd9-4ce4-968e-0ee1eb821698) |Bu ilke, yük dengeleyiciler için bir Azure Kubernetes hizmet kümesinde genel IP 'Ler içermez. Sınırlı Önizleme ilkeleri yalnızca kayıtlı abonelikler için çalışır. Kaydolmak için lütfen https://aka.ms/akspolicyonboardinggidin. Bu ilkeyi kullanma yönergeleri için lütfen https://aka.ms/akspolicydocgidin. |EnforceRegoPolicy, devre dışı |1.0.0-Önizleme |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/LoadbalancerNoPublicIPs_EnforceRegoPolicy.json)

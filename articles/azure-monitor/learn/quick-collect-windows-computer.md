@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398956"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659858"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -29,7 +28,7 @@ Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim s
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure-portal"></a>Azure portalında oturum açın
+## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
@@ -37,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -123,7 +122,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için Windows olay günlü
 
 8. Yeni bir Log Analytics çalışma alanı için Windows performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur. Her seçenek, yanındaki onay kutusuyla birlikte listelenir:
 
-    ![Windows performans sayaçları](media/quick-collect-windows-computer/windows-perfcounters-default.png).
+    ![Windows performans sayaçları](media/quick-collect-windows-computer/windows-perfcounters-default.png)ziyaret edin.
     
     **Seçili performans sayaçlarını Ekle**' yi seçin. Sayaçlar eklenen ve on saniyelik bir koleksiyon örnek aralığıyla önceden ayarlanmış.
 
@@ -149,7 +148,7 @@ Aracıyı bilgisayarınızdan kaldırabilir ve artık ihtiyacınız yoksa Log An
 
 Aracıyı kaldırmak için şu adımları izleyin:
 
-1. Denetim Masası'nı açın.
+1. Denetim Masası 'Nı açın.
 
 2. **Programlar ve Özellikler**'i açın.
 

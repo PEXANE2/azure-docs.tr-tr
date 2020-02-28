@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279170"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662136"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 
@@ -59,13 +59,13 @@ Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı 
 1. Azure portal Azure Spring Cloud örneğinize gidin.
 1. **Günlük araması** bölmesini açmak için **Günlükler**' i seçin.
 1. **Günlük** arama kutusunda
-   * günlükleri görüntülemek için, şöyle bir basit sorgu girin:
+   * Günlükleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-   * ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
+   * Ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AzureMetrics
@@ -79,13 +79,13 @@ Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı 
 1. Tanılama ayarlarınızı eklediğinizde seçtiğiniz Log Analytics çalışma alanını seçin.
 1. **Günlük araması** bölmesini açmak için **Günlükler**' i seçin.
 1. **Günlük** araması kutusunda,
-   * günlükleri görüntülemek için, şöyle bir basit sorgu girin:
+   * Günlükleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-    * ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
+    * Ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AzureMetrics
@@ -114,7 +114,7 @@ Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek içi
 1. Uygulama günlüklerini gözden geçirmek için, **Öngörüler-logs-applicationconsole**adlı bir kapsayıcı arayın.
 1. Uygulama ölçümlerini gözden geçirmek için, **Öngörüler-ölçümler-pt1m**adlı bir kapsayıcı arayın.
 
-Bir depolama hesabına tanılama bilgileri gönderme hakkında daha fazla bilgi edinmek için bkz. [Azure depolama 'da tanılama verilerini depolama ve görüntüleme](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage).
+Bir depolama hesabına tanılama bilgileri gönderme hakkında daha fazla bilgi edinmek için bkz. [Azure depolama 'da tanılama verilerini depolama ve görüntüleme](../storage/common/storage-introduction.md).
 
 ### <a name="use-your-event-hub"></a>Olay Hub 'ınızı kullanın
 

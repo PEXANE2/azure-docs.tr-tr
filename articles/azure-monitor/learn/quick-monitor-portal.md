@@ -1,19 +1,18 @@
 ---
 title: ASP.NET Web Uygulamanızı Azure Application Insights ile izleme | Microsoft Docs
 description: Application Insights ile izlemek üzere bir ASP.NET Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 1aab9009c2c33522abdeae6ca865a35b9fc104e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900482"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661712"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web Uygulamanızı izlemeye başlama
 
@@ -57,7 +56,7 @@ Application Insights, uygulamanızın nerede çalıştığına bakmaksızın tel
 
 2. İstek ayrıntılarını görmek için listedeki ilk isteğe tıklayın (Bu örnekte, GET Home/Index). Durum kodu ve yanıt süresinin her ikisinin de istekle ilgili diğer değerli bilgilerle birlikte eklendiğine dikkat edin.<br><br>![Visual Studio'da yanıt ayrıntıları](media/quick-monitor-portal/request-details.png)
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatma
+## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatın
 
 Artık Application Insights’ı Azure portalında açarak çalışan uygulamanıza ilişkin çeşitli ayrıntıları görüntüleyebilirsiniz.
 

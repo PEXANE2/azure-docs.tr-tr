@@ -1,15 +1,14 @@
 ---
 title: REST API kullanarak Azure Kaynak durumu olaylarını alın | Microsoft Docs
 description: Azure kaynaklarınızın sistem durumu olaylarını almak için Azure REST API 'Lerini kullanın.
-ms.custom: REST
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2017
-ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451386"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654010"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>REST API kullanarak Kaynak Durumu alın 
 
@@ -32,11 +31,11 @@ Aşağıdaki üstbilgiler gereklidir:
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
 |*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
-|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](/rest/api/azure/#authorization-code-grant-interactive-clients)ayarlayın. |  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |  
 
 ### <a name="uri-parameters"></a>URI parametreleri
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 | :--- | :---------- |
 | subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | api-version | İstek için kullanılacak API sürümü.<br /><br /> Bu belgede, yukarıdaki URL 'ye dahil edilen api-Version `2015-04-01`yer almaktadır.  |

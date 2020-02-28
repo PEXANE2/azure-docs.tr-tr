@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019426"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656934"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -137,7 +137,7 @@ Günlük dizinine yazmak için yerel depolama kotasını tüketmiş olursunuz.�
 * Yerel kaynaklar için kota sınırını artırın.
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
-* [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](cloud-services-dotnet-diagnostics-storage.md)
+* [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](/azure/storage/common/storage-introduction)
 * [IIS günlükleri, bulut hizmeti 'nde yazmayı durdurur](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Nasıl yaparım? Cloud Services için WAD günlüğü etkinleştirilsin mi?
@@ -198,7 +198,7 @@ Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 de
 
 Daha fazla bilgi için bkz.
 
-- [IIS HTTP/2](https://blogs.iis.net/davidso/http2)
+- [IIS üzerinde HTTP/2](https://blogs.iis.net/davidso/http2)
 - [Video: Windows 10 ' da HTTP/2: tarayıcı, uygulamalar ve Web sunucusu](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
@@ -219,7 +219,7 @@ Cloud Services, Azure Resource Manager tabanlı bir hizmet olmadığı için rol
 
 Bkz. [Azure 'daki farklı rolleri anlayın](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Uzak Masaüstü
+## <a name="remote-desktop"></a>Uzak masaüstü
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Microsoft tarafından bulut hizmeti örneklerine izin verilmeden Microsoft iç mühendisleri uzak masaüstü olabilir mi?
 Microsoft, sahip veya kendi designee 'den, yazılı izin (e-posta veya başka yazılı iletişim) olmadan bulut hizmetinize iç mühendislere izin vermeyecek katı bir işlem izler.

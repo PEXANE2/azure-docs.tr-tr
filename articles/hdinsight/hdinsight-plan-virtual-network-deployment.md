@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044721"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659875"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
-Bu makale, Azure HDInsight ile [Azure sanal ağlarını](../virtual-network/virtual-networks-overview.md) kullanma hakkında arka plan bilgileri sağlar. Ayrıca, HDInsight kümeniz için bir sanal ağ uygulayabilmeniz için yapılması gereken tasarım ve uygulama kararlarını da açıklar. Planlama aşaması tamamlandığında, [Azure HDInsight kümeleri için sanal ağlar oluşturmaya](hdinsight-create-virtual-network.md)devam edebilirsiniz. Ağ güvenlik gruplarını ve Kullanıcı tanımlı yolları düzgün şekilde yapılandırmak için gereken HDInsight yönetim IP adresleri hakkında daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md).
+Bu makalede, Azure HDInsight ile [Azure sanal ağları](../virtual-network/virtual-networks-overview.md) (VNet) kullanmayla ilgili arka plan bilgileri sağlanmaktadır. Ayrıca, HDInsight kümeniz için bir sanal ağ uygulayabilmeniz için yapılması gereken tasarım ve uygulama kararlarını da açıklar. Planlama aşaması tamamlandığında, [Azure HDInsight kümeleri için sanal ağlar oluşturmaya](hdinsight-create-virtual-network.md)devam edebilirsiniz. Ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yolların düzgün şekilde yapılandırılması için gereken HDInsight yönetim IP adresleri hakkında daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md).
 
 Azure sanal ağı kullanmak aşağıdaki senaryolara izin vermez:
 
 * HDInsight 'a doğrudan şirket içi ağdan bağlanma.
 * HDInsight 'ı bir Azure sanal ağındaki veri depolarına bağlama.
-* Internet üzerinden genel kullanıma açık olmayan [Apache Hadoop](https://hadoop.apache.org/) hizmetlere doğrudan erişme. Örneğin, [Apache Kafka](https://kafka.apache.org/) API 'Ler veya [Apache HBASE](https://hbase.apache.org/) Java API 'si.
+* Internet üzerinden genel olarak kullanılamayan Apache Hadoop hizmetlere doğrudan erişme. Örneğin, Apache Kafka API 'Ler veya Apache HBase Java API 'SI.
 
 > [!IMPORTANT]
 > VNET 'te HDInsight kümesi oluşturmak, NIC 'ler ve yük dengeleyiciler gibi çeşitli ağ kaynakları oluşturur. Kümenizin VNET ile düzgün çalışması için gerektiğinden, bu ağ **kaynaklarını silmeyin.**
@@ -64,19 +64,19 @@ Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak içi
 2. Trafiği sanal ağın içine veya dışına kısıtlamak için ağ güvenlik grupları, Kullanıcı tanımlı yollar veya sanal ağ gereçlerini kullanıyor musunuz?
 
     Yönetilen bir hizmet olarak, HDInsight 'ın Azure veri merkezi 'nde birkaç IP adresine sınırsız erişimi olması gerekir. Bu IP adresleriyle iletişime izin vermek için, var olan tüm ağ güvenlik gruplarını veya Kullanıcı tanımlı yolları güncelleştirin.
-    
-    HDInsight, çeşitli bağlantı noktaları kullanan birden çok hizmeti barındırır. Bu bağlantı noktalarıyla gelen trafiği engellemez. Sanal Gereç güvenlik duvarları aracılığıyla izin verilecek bağlantı noktalarının listesi için Güvenlik bölümüne bakın.
-    
+
+    HDInsight, çeşitli bağlantı noktaları kullanan birden çok hizmeti barındırır. Bu bağlantı noktalarına giden trafiği engellemez. Sanal Gereç güvenlik duvarları aracılığıyla izin verilecek bağlantı noktalarının listesi için Güvenlik bölümüne bakın.
+
     Mevcut güvenlik yapılandırmanızı bulmak için aşağıdaki Azure PowerShell veya Azure CLı komutlarını kullanın:
 
     * Ağ güvenlik grupları
 
         `RESOURCEGROUP`, sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -141,7 +141,7 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 4. DNS sunucuları arasında yönlendirmeyi yapılandırın. Yapılandırma, uzak ağın türüne bağlıdır.
 
    * Uzak ağ bir şirket içi ağ ise, DNS 'yi aşağıdaki gibi yapılandırın:
-        
+
      * __Özel DNS__ (Sanal ağda):
 
          * Sanal ağın DNS son ekine yönelik istekleri Azure özyinelemeli çözümleyici 'ye (168.63.129.16) iletir. Azure, sanal ağdaki kaynak isteklerini işler
@@ -235,12 +235,12 @@ HDInsight kümelerinden giden trafiği denetleme hakkında daha fazla bilgi içi
 
 #### <a name="forced-tunneling-to-on-premises"></a>Şirket içinde Zorlamalı tünel
 
-Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, __Şirket__ içi ağlarda trafiğin zorlamalı tünelini desteklemez. 
+Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, __Şirket__ içi ağlarda trafiğin zorlamalı tünelini desteklemez.
 
 ## <a id="hdinsight-ip"></a>Gerekli IP adresleri
 
-Trafiği denetlemek için ağ güvenlik grupları veya Kullanıcı tanımlı yollar kullanırsanız, lütfen [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md)' ne bakın.
-    
+Trafiği denetlemek için ağ güvenlik grupları veya Kullanıcı tanımlı yollar kullanıyorsanız bkz. [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md).
+
 ## <a id="hdinsight-ports"></a>Gerekli bağlantı noktaları
 
 Bir **güvenlik duvarı** kullanmayı ve kümeye belirli bağlantı noktalarında dışından erişmeyi planlıyorsanız senaryonuz için gereken bağlantı noktalarında trafiğe izin vermeniz gerekebilir. Varsayılan olarak, önceki bölümde açıklanan Azure Yönetim trafiğinin 443 numaralı bağlantı noktasında kümeye erişmesine izin verildiği sürece bağlantı noktalarının özel bir beyaz listesi gerekli değildir.
@@ -251,13 +251,16 @@ Sanal gereçler güvenlik duvarı kuralları hakkında daha fazla bilgi için bk
 
 ## <a name="load-balancing"></a>Yük dengeleme
 
-Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. Bu yük dengeleyicinin türü, belirli kısıtlamalara sahip olan [temel SKU düzeyinde](../load-balancer/concepts-limitations.md#skus) bulunur. Bu kısıtlamalardan biri, farklı bölgelerde iki sanal ağınız varsa temel yük dengeleyicilere bağlanamazsınız. Daha fazla bilgi için bkz. [sanal ağlar SSS: genel VNET eşlemesi üzerindeki kısıtlamalar](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. Bu yük dengeleyicinin türü, belirli kısıtlamalara sahip olan [temel SKU düzeyinde](../load-balancer/concepts-limitations.md#skus)bulunur. Bu kısıtlamalardan biri, farklı bölgelerde iki sanal ağınız varsa temel yük dengeleyicilere bağlanamazsınız. Daha fazla bilgi için bkz. [sanal ağlar SSS: genel VNET eşlemesi üzerindeki kısıtlamalar](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 ## <a name="transport-layer-security"></a>Aktarım Katmanı Güvenliği
 
 Ortak küme uç noktası `https://<clustername>.azurehdinsight.net` aracılığıyla kümeyle bağlantı, küme ağ geçidi düğümleri aracılığıyla proxy olarak kullanılır. Bu bağlantılar, TLS adlı bir protokol kullanılarak güvenli hale getirilir. Ağ geçitlerinde TLS 'in daha yüksek sürümlerini uygulamak, bu bağlantılar için güvenliği iyileştirir. TLS 'nin daha yeni sürümlerini kullanmanız gerektiği hakkında daha fazla bilgi için bkz. [tls 1,0 sorunu çözme](https://docs.microsoft.com/security/solving-tls1-problem).
 
-Dağıtım zamanında bir Resource Manager şablonunda *Minsupportedtlsversion* özelliğini kullanarak HDInsight kümeniz için ağ geçidi düğümlerinde desteklenen en düşük TLS sürümlerini kontrol edebilirsiniz. Örnek bir şablon için bkz. [HDInsight en düşük TLS 1,2 hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Bu özellik üç değeri destekler: TLS 1.0 +, TLS 1.1 + ve TLS 1.2 + ' ya karşılık gelen "1,0", "1,1" ve "1,2". Varsayılan olarak, bu özelliği belirtmeden Azure HDInsight kümeleri genel HTTPS uç noktalarında TLS 1,2 bağlantılarını ve geriye dönük uyumluluk için eski sürümleri kabul eder. Son olarak, HDInsight tüm ağ geçidi düğümü bağlantılarında TLS 1,2 veya üstünü uygular.
+Varsayılan olarak, Azure HDInsight kümeleri genel HTTPS uç noktalarında TLS 1,2 bağlantılarını ve geriye dönük uyumluluk için eski sürümleri kabul eder. Küme oluşturma sırasında, Azure portal veya bir Resource Manager şablonu kullanarak ağ geçidi düğümlerinde desteklenen en düşük TLS sürümünü kontrol edebilirsiniz. Portal için, küme oluşturma sırasında **güvenlik + ağ** sekmesinden TLS sürümünü seçin. Dağıtım zamanında bir Resource Manager şablonu için **Minsupportedtlsversion** özelliğini kullanın. Örnek bir şablon için bkz. [HDInsight en düşük TLS 1,2 hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Bu özellik üç değeri destekler: TLS 1.0 +, TLS 1.1 + ve TLS 1.2 + ' ya karşılık gelen "1,0", "1,1" ve "1,2".
+
+> [!IMPORTANT]
+> 30 Haziran 2020 ' den itibaren Azure HDInsight, tüm HTTPS bağlantıları için TLS 1,2 veya sonraki sürümlerini zorlar. Tüm istemcilerinizin TLS 1,2 veya sonraki sürümlerini işlemeye hazırlanmasını öneririz. Daha fazla bilgi için bkz. [Azure HDıNSIGHT TLS 1,2 zorlama](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

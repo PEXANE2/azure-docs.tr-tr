@@ -3,17 +3,16 @@ title: Azure Izleyici 'de şablon ile Windows VM ölçümleri toplama
 description: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364127"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657376"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -27,7 +26,7 @@ Bu konumda depolamak, platform ölçümleri için aynı eylemlere erişmenize ol
 
 Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir.
 
@@ -240,7 +239,7 @@ Her iki dosyayı da kaydedin ve kapatın.
 
 Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
-1. PowerShell’i başlatın.
+1. PowerShell 'i başlatın.
 1. `Login-AzAccount`kullanarak Azure 'da oturum açın.
 1. `Get-AzSubscription`kullanarak abonelik listenizi alın.
 1. ' De sanal makineyi oluşturmak/güncelleştirmek için kullandığınız aboneliği ayarlayın:

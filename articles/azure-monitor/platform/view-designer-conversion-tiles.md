@@ -3,16 +3,15 @@ title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları kutucuk d�
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: b1cce6d1aafabda62b71ecd38ff5ac7df1033b26
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561995"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658635"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Izleyici Görünüm Tasarımcısı kutucuk dönüştürmeleri
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve ek işlevsellik sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, farklı kutucukları çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar sağlanmaktadır.

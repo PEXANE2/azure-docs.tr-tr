@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights IP adresi koleksiyonu | Microsoft Docs
 description: IP adreslerinin ve coğrafi konum 'un Azure Application Insights nasıl işlendiğini anlama
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432597"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656526"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -101,7 +97,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
     
     Sonuç olarak bir özellik listesi döndürülecek. Özelliklerden biri `DisableIpMasking: true`okumalı. Yeni özelliği Azure Resource Manager dağıtmadan önce PowerShell 'i çalıştırırsanız, özellik mevcut olmayacaktır.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rest API'si
 
 Aynı değişiklikleri yapmak için [REST API](https://docs.microsoft.com/rest/api/azure/) yükü aşağıdaki gibidir:
 

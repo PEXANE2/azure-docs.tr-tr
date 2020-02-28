@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585892"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656322"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -55,7 +55,7 @@ Bu onay kutusunun belirlenmesi, kullanıcıların Azure Multi-Factor Authenticat
 
 Microsoft Intune dağıtılan kuruluşlar, belirli uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir. Bu ilke uyumluluk bilgileri, Intune 'dan Azure AD 'ye iletilir ve Koşullu erişimin kaynaklara erişim izni vermek veya erişimi engellemek için kararlar verebilecekleri bir karardır. Uyumluluk ilkeleri hakkında daha fazla bilgi için, [Intune kullanarak kuruluşunuzdaki kaynaklara erişime izin vermek üzere cihazlarda kuralları ayarlama](https://docs.microsoft.com/intune/protect/device-compliance-get-started)makalesine bakın.
 
-Bir cihaz, Intune (herhangi bir cihaz işletim sistemi için) veya Windows 10 cihazları için üçüncü taraf MDM sistemi tarafından uyumlu olarak işaretlenebilir. Windows 10 dışındaki cihaz işletim sistemi türleri için üçüncü taraf MDM sistemleri desteklenmez.
+Bir cihaz, Intune (herhangi bir cihaz işletim sistemi için) veya Windows 10 cihazları için üçüncü taraf MDM sistemi tarafından uyumlu olarak işaretlenebilir. JAMF Pro yalnızca desteklenen üçüncü taraf MDM sistemidir. Tümleştirme hakkında daha fazla bilgi için bkz. Bu makalede, [Uyumluluk Için JAMF Pro 'Yu Intune Ile tümleştirin](/intune/protect/conditional-access-integrate-jamf).
 
 Cihazların uyumlu olarak işaretlenmeleri için önce Azure AD 'de kayıtlı olmaları gerekir. Cihaz kaydı hakkında daha fazla bilgi, makalesinde [cihaz kimliği nedir?](../devices/overview.md)makalesinde bulunabilir.
 

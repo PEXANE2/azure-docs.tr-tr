@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 270a5557de6edbd26a9a204ed2ce24f6c35e736e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b699a3c329fe2ac8e430f4b58d1fce2637b35469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494927"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780357"
 ---
 |Adı |Açıklama |Efekt (ler) |Sürüm |Kaynak |
-|---|---|---|---|
-|[Olay Hub 'ına Key Vault için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |, Bu tanılama ayarlarının eksik olduğu Key Vault bir bölgesel Olay Hub 'ına akışa Key Vault yönelik tanılama ayarlarını dağıtır. |deployIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
+|---|---|---|---|---|
+|[Olay Hub 'ına Key Vault için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |, Bu tanılama ayarlarının eksik olduğu Key Vault bir bölgesel Olay Hub 'ına akışa Key Vault yönelik tanılama ayarlarını dağıtır. |deployIfNotExists |2.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
 |[Key Vault tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Tanılama günlüklerini etkinleştirme denetimi. Bu, araştırma amacıyla kullanılacak etkinlik izlerini yeniden oluşturmayı sağlar; bir güvenlik olayı gerçekleştiğinde veya ağınız tehlikede olduğunda |Auditınotexists, devre dışı |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json)
 |[Key Vault nesneler kurtarılabilir olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Bu ilke, Anahtar Kasası nesnelerinin kurtarılabilir olup olmadığını denetler. Geçici silme özelliği, belirli bir bekletme dönemi (90 gün) için bir SILME işleminden sonra bile kaynakları etkin bir şekilde tutmaya yardımcı olur. ' Korumayı Temizle ' açık olduğunda, 90 günlük bekletme süresi geçene kadar bir kasa veya silinen durumundaki bir nesne temizlenemiyor. Bu kasalar ve nesneler yine de kurtarılabilir, bu da bekletme ilkesi takip edilecek. |Denetim, devre dışı |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json)
 |[İzin verilen sertifika anahtarı türlerini yönetme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Bu ilke, sertifikalar için izin verilen anahtar türlerini yönetir. |Denetim, reddetme, devre dışı |1.0.0-Önizleme |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json)

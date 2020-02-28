@@ -3,17 +3,16 @@ title: Azure Ölçüm Gezgini 'ni kullanmaya başlama
 description: Azure Ölçüm Gezgini ile ilk ölçüm grafiğinizi oluşturmayı öğrenin.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861087"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662290"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini kullanmaya başlama
 
@@ -38,7 +37,7 @@ Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azu
 
 3. Kullanılabilir ölçümler listesinden bir ölçüm seçin.
 
-    > ![Bir ölçüm seçin](./media/metrics-getting-started/metric-picker.png)
+    > ![Ölçüm seçin](./media/metrics-getting-started/metric-picker.png)
 
 4. İsteğe bağlı olarak, ölçüm toplamayı değiştirebilirsiniz. Örneğin, grafiğinizin ölçüm minimum, maksimum veya Ortalama değerlerini göstermesini isteyebilirsiniz.
 

@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892507"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664261"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme
 
@@ -49,7 +49,7 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bir dosyayı bir blok blobuna yüklemek için, bir kapsayıcı başvurusu alın ve bu kapsayıcıdaki blok blobuna bir başvuru alın. Blob başvurusunu aldıktan sonra [set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent)kullanarak verileri karşıya yükleyebilirsiniz. Bu işlemle, daha önce oluşturulmadıysa bir blob oluşturulur, blob varsa blobun üzerine yazılır.
 
-Aşağıdaki örneklerde yerel diskteki *D:\\_TestImages* klasöründen *Image001.jpg* ve *Image002.png* dosyaları az önce oluşturduğunuz kapsayıcıya yüklenmektedir.
+Aşağıdaki örneklerde yerel diskteki *D:* _TestImages*klasöründen*Image001.jpg *ve \\Image002.png* dosyaları az önce oluşturduğunuz kapsayıcıya yüklenmektedir.
 
 ```powershell
 # upload a file
@@ -97,16 +97,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy ile veri aktarımı
 
-[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) yardımcı programı, Azure Depolama’ya yüksek performanslı betik oluşturulabilir veri aktarımı için diğer bir seçenektir. Blob, Dosya ve Tablo depolamaları arasında veri aktarmak için AzCopy kullanın.
+AzCopy komut satırı yardımcı programı, Azure depolama için yüksek performanslı ve komut dosyalı veri aktarımı sağlar. BLOB depolama ve Azure dosyalarına veri aktarmak için AzCopy kullanabilirsiniz. AzCopy 'in en son sürümü olan AzCopy ile v10 arasındaki hakkında daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy-v10.md). AzCopy ile v10 arasındaki 'i blob Storage ile kullanma hakkında bilgi edinmek için bkz. [AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md).
 
-Hızlı bir örnek olarak, bir PowerShell penceresinden *myfile.txt* adlı dosyayı *mystoragecontainer* kapsayıcısına yüklemek için AzCopy komutu aşağıda gösterilmiştir.
+Aşağıdaki örnek, bir Blobun yerel bir dosyayı karşıya yüklemek için AzCopy kullanır. Örnek değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

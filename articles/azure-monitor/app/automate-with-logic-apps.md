@@ -1,18 +1,14 @@
 ---
 title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikleştirin
 description: Mantıksal uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9a7f411ca5ec47e3f25d8120d0388fb030b00c72
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407529"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655016"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
 
@@ -27,7 +23,7 @@ Ek eylemleri de ekleyebilirsiniz. Azure App Service Logic Apps özelliği yüzle
 Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırmak için Analytics oto kümesi algoritmasını kullanan bir mantıksal uygulama oluşturmayı öğreneceksiniz. Akış, sonuçları otomatik olarak e-posta ile gönderir ve Application Insights analizlerini nasıl kullanabileceğinizi ve Logic Apps birlikte nasıl kullanabileceğinizi gösteren bir örnektir. 
 
 ### <a name="step-1-create-a-logic-app"></a>1\. Adım: mantıksal uygulama oluşturma
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Kaynak oluştur ' a**tıklayın, **Web ve mobil**' yi seçin ve ardından **mantıksal uygulama**' yı seçin.
 
     ![Yeni mantıksal uygulama penceresi](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -119,7 +115,7 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
       ![Office 365 e-posta Yapılandırması ekranı](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7\. Adım: mantıksal Uygulamanızı kaydetme ve test etme
-* Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
+* Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
 
 Tetikleyicinin mantıksal uygulamayı çalıştırmasını bekleyebilir veya **Çalıştır**' ı seçerek mantıksal uygulamayı hemen çalıştırabilirsiniz.
 

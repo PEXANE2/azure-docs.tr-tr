@@ -1,19 +1,15 @@
 ---
 title: Azure Izleyici Application Insights bağımlılık veri modeli
 description: Bağımlılık telemetri için Application Insights veri modeli
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872647"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671928"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Bağımlılık telemetrisi: Application Insights veri modeli
 
@@ -35,7 +31,7 @@ Bu bağımlılık çağrısıyla başlatılan komut. Örnekler, tüm sorgu param
 
 Bağımlılık türü adı. Bağımlılıkların mantıksal gruplandırması ve commandName ve resultCode gibi diğer alanların yorumlanması için düşük kardinalite değeri. SQL, Azure tablosu ve HTTP örnekleri aşağıda verilmiştir.
 
-## <a name="target"></a>Hedefleyin
+## <a name="target"></a>Hedef
 
 Bağımlılık çağrısının hedef sitesi. Örnek olarak sunucu adı, ana bilgisayar adresidir. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
 

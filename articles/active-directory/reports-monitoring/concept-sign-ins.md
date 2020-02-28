@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429797"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656651"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu makale, oturum açma raporuna genel bir bakış sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
@@ -47,7 +47,7 @@ Bu makale, oturum açma raporuna genel bir bakış sunar.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Oturum açma etkinliğine erişebilmek için hangi Azure AD lisansınızın olması gerekir?
 
-* Tüm oturum açma etkinliği raporunu görebilmeniz için kiracınızın ilgili Azure AD Premium lisansına sahip olması gerekir. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce veri etkinliği olmayan bir Premium lisansa yükselttikten sonra, verilerin raporlarda gösterilmesi birkaç gün sürer.
+* Tüm oturum açma etkinliği raporunu görmek için kiracınızın kendisiyle ilişkili bir Azure AD Premium lisansı olması gerekir. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce veri etkinliği olmayan bir Premium lisansa yükselttikten sonra, verilerin raporlarda gösterilmesi birkaç gün sürer.
 
 ## <a name="sign-ins-report"></a>Oturum açma işlemleri raporu
 
@@ -101,65 +101,96 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 ## <a name="filter-sign-in-activities"></a>Oturum açma etkinliklerini filtreleme
 
-İlk olarak, bildirilen verileri sizin için uygun bir düzeye daraltın. İkinci olarak, tarih alanını kullanarak oturum açma verilerini varsayılan filtre olarak filtreleyin. Azure AD size ayarlayabileceğiniz çok çeşitli ek filtreler sağlar.
+İlk olarak, bildirilen verileri sizin için uygun bir düzeye daraltın. İkinci olarak, tarih alanını kullanarak oturum açma verilerini varsayılan filtre olarak filtreleyin. Azure AD size ayarlayabileceğiniz çok çeşitli ek filtreler sağlar:
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/04.png "Oturum açma etkinliği")
 
-**Kullanıcı** filtresi, önem verdiğiniz kullanıcının adını veya kullanıcı asıl adını (UPN) belirtmenize imkan tanır.
+**Istek kimliği** -ILGILENDIĞINIZ isteğin kimliği.
 
-**Uygulama** filtresi, önem verdiğiniz uygulamanın adını belirtmenize imkan tanır.
+**Kullanıcı** -ilgilendiğiniz kullanıcının adı veya Kullanıcı asıl adı (UPN).
 
-**Oturum açma durumu** filtresi aşağıdakilerden birini seçmenize imkan tanır:
+**Uygulama** -hedef uygulamanın adı.
+ 
+**Durum** -ilgilendiğiniz oturum açma durumu:
 
-- Tümü
 - Başarılı
+
 - Hata
 
-**Koşullu erişim** filtresi, oturum açma için CA ilkesi durumunu seçmenizi sağlar:
+- Mazsınız
 
-- Tümü
-- Uygulanmadı
+
+**IP adresi** -kiracınıza bağlanmak için kullanılan cihazın IP adresi.
+
+**Konum** -bağlantının başlatıldığı konum:
+
+- Şehir
+
+- Eyalet/Il
+
+- Ülke/Bölge
+
+
+**Kaynak** -oturum açma için kullanılan hizmetin adı.
+
+
+**Kaynak kimliği** -oturum açma için kullanılan hizmetin kimliği.
+
+
+**İstemci uygulaması** -kiracınıza bağlanmak için kullanılan istemci uygulamanın türü:
+
+![İstemci uygulama filtresi](./media/concept-sign-ins/client-app-filter.png)
+
+
+|Adı|Modern kimlik doğrulaması|Açıklama|
+|---|:-:|---|
+|Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
+|Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|
+|Exchange ActiveSync| |Bu filtre, EAS protokolünün denendiği tüm oturum açma girişimlerini gösterir.|
+|Tarayıcı|![İşaretli](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
+|Exchange ActiveSync| | Exchange Online 'a bağlanmak için Exchange Acticessync kullanan kullanıcılardan istemci uygulamalarına yönelik tüm oturum açma girişimlerini gösterir|
+|Exchange Online PowerShell| |Exchange Online 'a uzak PowerShell ile bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Exchange Web Hizmetleri| |Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.|
+|IMAP4| |E-posta almak için IMAP kullanan eski bir posta istemcisi.|
+|HTTP üzerinden MAPI| |Outlook 2010 ve üzeri tarafından kullanılır.|
+|Mobil uygulamalar ve masaüstü istemcileri|![İşaretli](./media/concept-sign-ins/check.png)|Mobil uygulamalar ve Masaüstü istemcileri kullanan kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
+|Çevrimdışı adres defteri| |Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.|
+|Her yerde Outlook (HTTP üzerinden RPC)| |Outlook 2016 ve öncesi tarafından kullanılır.|
+|Outlook hizmeti| |Windows 10 için posta ve takvim uygulaması tarafından kullanılır.|
+|POP3| |POP3 kullanarak e-posta almak için eski bir posta istemcisi.|
+|Raporlama Web Hizmetleri| |Exchange Online 'daki rapor verilerini almak için kullanılır.|
+|Diğer istemciler| |İstemci uygulamasının dahil edildiği veya bilinmediği kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
+
+
+
+**İşletim sistemi** -cihazda çalışan ve kiracınızda oturum açmayı kullanmış olan işletim sistemi. 
+
+
+**Cihaz tarayıcısı** -bağlantı bir tarayıcıdan başlatılmışsa, bu alan tarayıcı adına göre filtrelemenize olanak sağlar.
+
+
+**BAĞıNTı kimliği** -ETKINLIĞIN bağıntı kimliği.
+
+
+**Koşullu erişim** -uygulanan koşullu erişim kurallarının durumu
+
+- Uygulanmadı 
+
 - Başarılı
+
 - Hata
 
-**Tarih** filtresi, döndürülen veriler için bir zaman çerçevesi tanımlamanıza olanak sağlar.  
-Olası değerler şunlardır:
 
-- Bir ay
-- 7 gün
-- 24 saat
-- Özel zaman aralığı
 
-Özel bir zaman çerçevesi seçerken başlangıç ve bitiş zamanını yapılandırabilirsiniz.
 
-Oturum açma görünümüne başka alanlar eklerseniz bu alanlar filtre listesine otomatik olarak eklenir. Örneğin, listenize **İstemci Uygulama** alanını ekleyerek, aşağıdaki filtreleri ayarlamanıza olanak tanıyan başka bir filtre seçeneği de alırsınız:  
-![Oturum açma etkinliği](./media/concept-sign-ins/12.png "Oturum açma etkinliği")
 
-- **Tarayıcı**  
-    Bu filtre, tarayıcı akışları kullanılarak oturum açma girişimlerinin denendiği tüm olayları gösterir.
-- **Exchange ActiveSync (desteklenen)**  
-    Bu filtre, Exchange ActiveSync (EAS) protokolünün iOS, Android ve Windows Phone gibi desteklenen platformlarda denendiği tüm oturum açma girişimlerini gösterir.
-- **Exchange ActiveSync (desteklenmiyor)**  
-    Bu filtre, EAS protokolünün Linux distros gibi desteklenmeyen platformlardan denendiği tüm oturum açma girişimlerini gösterir.
-- **Mobile Apps ve Masaüstü istemcileri** Filtre, tarayıcı akışlarını kullanmayan tüm oturum açma girişimlerini gösterir. Örneğin, herhangi bir protokol veya Windows veya MacOS 'ta Office gibi masaüstü istemci uygulamalarından yararlanarak herhangi bir platformda bulunan mobil uygulamalar.
-  
-- **Diğer istemciler**
-    - **IMAP**  
-        E-posta almak için IMAP kullanan eski bir posta istemcisi.
-    - **MAPI**  
-        ADAL etkin olduğu ve MAPI kullanıldığı Office 2013.
-    - **Eski Ofis istemcileri**  
-        Office 2013, ADAL 'nin etkinleştirilmediği ve MAPI kullandığı ve ADAL 'nin devre dışı bırakıldığı Office 2016 ' nin varsayılan yapılandırmasında.
-    - **CAĞıMıZ**  
-        POP3 kullanarak e-posta almak için eski bir posta istemcisi.
-    - **SMTP**  
-        E-posta göndermek için SMTP kullanan eski bir posta istemcisi.
+
 
 ## <a name="download-sign-in-activities"></a>Oturum açma etkinliklerini indirme
 
 En son 250.000 kayıtlarının CSV veya JSON dosyasını oluşturmak için **İndir** seçeneğine tıklayın. Azure portal dışında çalışmak istiyorsanız [, oturum açma verilerini indirme](quickstart-download-sign-in-report.md) ile başlayın.  
 
-![İndir](./media/concept-sign-ins/71.png "İndirin")
+![İndir](./media/concept-sign-ins/71.png "İndirme")
 
 > [!IMPORTANT]
 > İndirebileceğiniz kayıt sayısı [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md)tarafından sınırlandırılır.  

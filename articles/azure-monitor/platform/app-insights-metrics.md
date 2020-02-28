@@ -3,17 +3,16 @@ title: Azure Application Insights günlük tabanlı ölçümler | Microsoft Docs
 description: Bu makalede, desteklenen toplamalar ve boyutlarla Azure Application Insights ölçümleri listelenmektedir. Günlük tabanlı ölçümler hakkındaki ayrıntılar, temeldeki kusto sorgu deyimlerini içerir.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887246"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664924"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
@@ -64,7 +63,7 @@ availabilityResults
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Çalıştırma konumu, test adı, test sonucu
+|Milisaniye|Ortalama, en düşük, en fazla|Çalıştırma konumu, test adı, test sonucu
 
 ```Kusto
 availabilityResults
@@ -99,7 +98,7 @@ Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -115,7 +114,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -131,7 +130,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -147,7 +146,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -163,7 +162,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|None|
 
 ```Kusto
 browserTimings
@@ -343,7 +342,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Sayacının|Ortalama, en düşük, en fazla|Bulut rolü örneği
+|Bayt|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters

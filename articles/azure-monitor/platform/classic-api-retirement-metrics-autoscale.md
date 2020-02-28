@@ -1,18 +1,15 @@
 ---
 title: Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
 description: Azure hizmet yönetimi (ASM) veya RDFE dağıtım modelinin Kullanımdan kaldırılmış olarak da bilinen ölçümler ve otomatik ölçeklendirme klasik API 'Ler
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/19/2018
-ms.openlocfilehash: 7a93419ee84e6a50ce07cefa941a8df9f85b7b6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552207"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663564"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
 
@@ -38,7 +35,7 @@ Aşağıdaki bileşenleri kullanıyorsanız, bu makale sizin için geçerlidir:
 
 Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emin değilseniz, aşağıdakilere bakın:
 
-- Kodunuzda veya aracınız içinde başvurulan URI 'yi gözden geçirin. Klasik API 'Ler https://management.core.windows.net URI kullanır. Kaynak Yöneticisi tabanlı API 'Ler için yeni URI 'yi kullanmanız gerekir https://management.azure.com/ ile başlar.
+- Kodunuzda veya aracınız içinde başvurulan URI 'yi gözden geçirin. Klasik API 'Ler https://management.core.windows.netURI kullanır. Kaynak Yöneticisi tabanlı API 'Ler için yeni URI 'yi kullanmanız gerekir https://management.azure.com/ile başlar.
 
 - Makinenizde derleme adını karşılaştırın. Klasik eski derleme https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
 
@@ -86,7 +83,7 @@ Aşağıdaki hesap rolleri için e-posta adreslerine bir kullanımdan kaldırma 
 - Hesap ve hizmet yöneticileri
 - Coadministrators  
 
-Sorularınız varsa MonitorClassicAPIhelp@microsoft.com adresinden bizimle iletişim kurun.  
+Sorularınız varsa MonitorClassicAPIhelp@microsoft.comadresinden bizimle iletişim kurun.  
 
 ## <a name="references"></a>Başvurular
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198250"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657053"
 ---
 # <a name="glossary"></a>Sözlük
 
@@ -47,9 +47,9 @@ Aşağıdaki listede, Azure haritalar hizmetleriyle kullanılan yaygın sözcük
 
 <a name="asynchronous-request"></a>**Zaman uyumsuz istek**: bağlantıyı açan ve zaman uyumsuz istek için bir tanımlayıcı döndüren sunucuya istek yapan bir http isteği, ardından bağlantıyı kapatır. Sunucu isteği işlemeye devam eder ve Kullanıcı tanımlayıcıyı kullanarak durumu denetleyebilir. İsteğin işlenmesi tamamlandığında, Kullanıcı yanıtı indirebilir. Bu tür bir istek, uzun süre çalışan süreçler için kullanılır.
 
-<a name="autocomplete"></a>**Otomatik tamamlama**: uygulamadaki bir özellik, kullanıcının yazaldığı bir sözcüğün geri kalanını tahmin eder. 
+<a name="autocomplete"></a>**Otomatik tamamlama**: bir uygulamanın, Kullanıcı tarafından yazılan bir sözcüğün geri kalanını tahmin eden bir özellik. 
 
-<a name="autosuggest"></a>**Otomatik öneri**: bir uygulamadaki bir özellik, kullanıcının yazdıklarınız için mantıksal olanaklar tahmin eder.
+<a name="autosuggest"></a>**Otomatik öneri**: bir uygulamada, kullanıcının yazdıklarınız için mantıksal olasılıkları tahmin eden bir özellik.
 
 <a name="azure-location-based-services-lbs"></a>**Azure konum tabanlı hizmetler (lbs)** : Önizlemedeki Azure Maps 'in eski adı.
 
@@ -71,7 +71,7 @@ Aşağıdaki listede, Azure haritalar hizmetleriyle kullanılan yaygın sözcük
 
 <a name="bounding-box"></a>**Sınırlayıcı kutusu**: haritadaki dikdörtgen bir alanı temsil etmek için kullanılan bir koordinat kümesi. 
 
-## <a name="c"></a>Mş
+## <a name="c"></a>C
 
 <a name="cadastre"></a>**Cadadstre**: kayıtlı bir Land ve özelliklerin kaydı. Ayrıca bkz. [paket](#parcel).
 
@@ -211,7 +211,7 @@ Aşağıdaki listede, Azure haritalar hizmetleriyle kullanılan yaygın sözcük
 
 <a name="isodistance"></a>**İzde**: bir konum verildiğinde, bir ısovaone, birinin bir ulaşım modu için herhangi bir yönde belirli bir mesafe dahilinde dolaşabileceğini tanımlayan alanı tanımlar. Ayrıca bkz. [erişilebilir Aralık](#reachable-range).
 
-## <a name="k"></a>ek
+## <a name="k"></a>Ek
 
 <a name="kml"></a>**KML**: anahtar deliği biçimlendirme dili olarak da bilinen, noktaları, çizgileri ve çokgenler gibi coğrafi vektör verilerini depolamak için ortak bir XML dosyası biçimidir. 
 

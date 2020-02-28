@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights verileriyle özel raporları otomatikleştirin
 description: Azure Application Insights verileriyle özel günlük/haftalık/aylık raporları otomatikleştirin
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677623"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655132"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -74,7 +70,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights zamanlanmış özet raporu
 
-1. Azure portal **kaynak oluştur**  > **işlem**  > **işlev uygulaması**' nı seçin.
+1. Azure portal **kaynak oluştur** > **işlem** > **işlev uygulaması**' nı seçin.
 
    ![Azure Kaynak İşlev Uygulaması ekran görüntüsü oluşturma](./media/automate-custom-reports/function-app-01.png)
 
@@ -91,7 +87,7 @@ availabilityResults
 5. **_Application Insights zamanlanmış Özet şablonunu_** seçin.
 
      > [!NOTE]
-     > Varsayılan olarak, işlev uygulamaları çalışma zamanı sürüm 2. x ile oluşturulur. Application Insights zamanlanmış Özet şablonunu kullanmak için [Azure işlevleri çalışma zamanı sürüm](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x ' i** hedeflemelidir.  ![runtime ekran görüntüsü ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Varsayılan olarak, işlev uygulamaları çalışma zamanı sürüm 2. x ile oluşturulur. Application Insights zamanlanmış Özet şablonunu kullanmak için [Azure işlevleri çalışma zamanı sürüm](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x ' i** hedeflemelidir.  ![çalışma zamanı ekran görüntüsü](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -101,11 +97,11 @@ availabilityResults
 
    ![İşlev ayarları ekran görüntüsü](./media/automate-custom-reports/function-app-05.png)
 
-7. **Uygulama ayarlarını** > **Platform özelliklerini**  >  **işlev uygulaması** seçin.
+7. **Uygulama ayarlarını** > **Platform özelliklerini** > **işlev uygulaması** seçin.
 
     ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/function-app-07.png)
 
-8. @No__t_0, ``AI_APP_KEY`` ve ``SendGridAPI`` uygun karşılık gelen değerlerle üç yeni uygulama ayarı oluşturun. **Kaydet**’i seçin.
+8. ``AI_APP_ID``, ``AI_APP_KEY``ve ``SendGridAPI``uygun karşılık gelen değerlerle üç yeni uygulama ayarı oluşturun. **Kaydet**’i seçin.
 
      ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/function-app-08.png)
     
@@ -146,7 +142,7 @@ Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yok
 
      ![Ayarlar API anahtarı ekran görüntüsü](./media/automate-custom-reports/function-app-14.png)
 
-3. Bu, SendGrid 'in sitesini başlatacaktır. **API anahtarları** >  **Ayarlar** ' ı seçin.
+3. Bu, SendGrid 'in sitesini başlatacaktır. **API anahtarları** > **Ayarlar** ' ı seçin.
 
      ![API anahtarı uygulaması oluşturma ve görüntüleme ekran görüntüsü](./media/automate-custom-reports/function-app-15.png)
 

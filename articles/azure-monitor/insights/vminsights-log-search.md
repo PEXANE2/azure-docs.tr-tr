@@ -1,18 +1,17 @@
 ---
 title: VM'ler için Azure İzleyici günlüklerini sorgulama (Önizleme) | Microsoft Docs
 description: VM'ler için Azure İzleyici çözümü ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399330"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670721"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici günlüklerini sorgulama (Önizleme)
 
@@ -52,7 +51,7 @@ Maliyet ve karmaşıklığı yönetmek için, bağlantı kayıtları tek tek fiz
 |:--|:--|
 |Yön |Bağlantının yönü, değer *gelen* veya *giden* |
 |Makine |Bilgisayar FQDN 'SI |
-|Süreç |İşlemin veya işlem gruplarının kimliği, bağlantıyı başlatma/kabul etme |
+|İşleme |İşlemin veya işlem gruplarının kimliği, bağlantıyı başlatma/kabul etme |
 |SourceIp |Kaynağın IP adresi |
 |Hedef IP |Hedefin IP adresi |
 |DestinationPort |Hedefin bağlantı noktası numarası |
@@ -95,7 +94,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabil
 
 Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp özelliğinde yer alır. Gelen bağlantılarda, Remoteıp, SourceIP ile aynıdır, ancak giden bağlantılar için de Destinationıp ile aynıdır. RemoteDnsCanonicalNames özelliği, Remoteıp için makine tarafından raporlanan DNS kurallı adlarını temsil eder. Remotednssorular ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
 
-#### <a name="geolocation"></a>Coğrafi Konum
+#### <a name="geolocation"></a>Konumu
 
 *Vmconnection* Ayrıca, kaydın aşağıdaki özelliklerindeki her bir bağlantı kaydının uzak ucuna ait coğrafi konum bilgilerini de içerir: 
 
@@ -116,7 +115,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 |Açıklama |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güven |Değerler *0 – 100*' dir. |
-|Önem Derecesi |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
+|Severity |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
 |FirstReportedDateTime |Sağlayıcı göstergeyi ilk kez raporladı. |
 |LastReportedDateTime |Göstergenin Interflow tarafından en son görüldüğü zaman. |
 |IsActive |Göstergelerin *true* veya *false* değeriyle devre dışı bırakıldığını gösterir. |
@@ -131,7 +130,7 @@ VMBoundPort içindeki her kayıt aşağıdaki alanlar tarafından tanımlanır:
 
 | Özellik | Açıklama |
 |:--|:--|
-|Süreç | Bağlantı noktasının ilişkilendirildiği işlemin kimliği (veya işlem grupları).|
+|İşleme | Bağlantı noktasının ilişkilendirildiği işlemin kimliği (veya işlem grupları).|
 |Ip | Bağlantı noktası IP adresi (joker IP, *0.0.0.0*olabilir) |
 |Bağlantı noktası |Bağlantı noktası numarası |
 |Protokol | Protokol.  Örnek, *TCP* veya *UDP* (yalnızca *TCP* Şu anda desteklenmektedir).|
@@ -169,7 +168,7 @@ Bir *Vmcomputer* türü olan kayıtlar, bağımlılık aracısına sahip sunucul
 |FullDisplayName | Tam ekran adı | 
 |ana bilgisayar adı | Etki alanı adı olmayan makinenin adı |
 |BootTime | Makinenin önyükleme saati (UTC) |
-|Saat Dilimi | Normalleştirilmiş Saat dilimi |
+|TimeZone | Normalleştirilmiş Saat dilimi |
 |VirtualizationState | *sanal*, *hiper yönetici*, *fiziksel* |
 |Ipv4Addresses | IPv4 adresleri dizisi | 
 |Ipv4SubnetMasks | IPv4 alt ağ maskelerinden oluşan dizi (Ipv4Addresses ile aynı sırada). |
@@ -227,7 +226,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |AgentId | Log Analytics aracısının benzersiz KIMLIĞI |
 |Makine | ServiceMap tarafından sunulan makinenin Azure Resource Manager kaynağının adı. Bu, *Guid* ,, It TID Ile aynı GUID olan *z-{GUID}* biçimindedir. | 
-|Süreç | Hizmet Eşlemesi işleminin benzersiz tanımlayıcısı. *P-{GUID}* biçimindedir. 
+|İşleme | Hizmet Eşlemesi işleminin benzersiz tanımlayıcısı. *P-{GUID}* biçimindedir. 
 |ExecutableName | İşlemin yürütülebilir dosyasının adı | 
 |DisplayName | İşlem görünen adı |
 |Rol | İşlem rolü: *WebSunucusu*, *appserver*, *DatabaseServer*, *ldapserver*, *SMBSERVER* |

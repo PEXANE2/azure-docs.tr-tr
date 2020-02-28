@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623965"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661968"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -399,8 +399,8 @@ Güvenlik Merkezi 'nin desteklenen Kill zinciri amaçları, [Mitre ATT &AMP; CK�
 
 |Amaç|Açıklama|
 |------|-------|
-|**Di**|Algılama işlemi, kötü amaçlı bir amaca bakılmaksızın belirli bir kaynağa erişme girişiminde bulunabilir ya da kullanımdan önce bilgi toplamak için bir hedef sisteme erişim elde etmeye yönelik bir girişim başarısız olur. Bu adım genellikle Ağ dışından gelen, hedef sistemi taramak ve bir giriş noktasını tanımlamak için bir girişim olarak algılanır.|
-|**Yararlanan**|Saldırgan, bir saldırganın saldırıya uğrayan bir kaynak üzerinde saldırganı almak için yönettiği aşamadır. Bu aşama, işlem konakları ve Kullanıcı hesapları, sertifikalar vb. gibi kaynaklar için geçerlidir. Tehdit aktörleri genellikle kaynağı bu aşamada kontrol edebilecektir.|
+|**Ön kimlik Ttack**</br>(yoklama yerini alır)|Ön kimlik doğrulama, kötü amaçlı bir amaca bakılmaksızın belirli bir kaynağa erişme girişiminde bulunabilir ya da kullanımdan önce bilgi toplamak için bir hedef sisteme erişim elde etmeye yönelik başarısız bir girişim olabilir. Bu adım genellikle Ağ dışından gelen, hedef sistemi taramak ve bir giriş noktasını tanımlamak için bir girişim olarak algılanır.</br>Ön kimlik doğrulama aşamasına ilişkin daha fazla ayrıntı, [Mitre 'nin sayfasında](https://attack.mitre.org/matrices/pre/)okunabilir.|
+|**Initialaişim**</br>(yararlanma yerini alır)|Initialaccess, bir saldırganın saldırıya uğrayan bir kaynak üzerinde saldırganı almak için yönettiği aşamadır. Bu aşama, işlem konakları ve Kullanıcı hesapları, sertifikalar vb. gibi kaynaklar için geçerlidir. Tehdit aktörleri genellikle kaynağı bu aşamada kontrol edebilecektir.|
 |**Kalıcılığı**|Kalıcılık, bu sistemde kalıcı bir varlık tehlikesi veren bir sisteme yönelik erişim, eylem veya yapılandırma değişiklidir. Tehdit aktörleri genellikle sistem yeniden başlatmaları, kimlik bilgileri kaybı veya bir uzaktan erişim aracının yeniden başlatılmasını gerektiren diğer arızalara erişim sağlamak ya da erişim kazanabilmesi için alternatif bir arka kapı sağlamak gibi kesintiler aracılığıyla sistemlere erişimi korumaları gerekir.|
 |**Privilegeilerletme**|Ayrıcalık yükseltme, bir sistem veya ağ üzerinde daha yüksek düzeyde izin elde etme konusunda bir sorun oluşmasına izin veren eylemlerin sonucudur. Belirli araçlar veya Eylemler, çalışmak için daha yüksek bir ayrıcalık düzeyi gerektirir ve muhtemelen bir işlemin tamamında çok sayıda noktada gereklidir. Belirli sistemlere erişim izinleri olan kullanıcı hesapları veya bu kişilerin amacını elde etmelerini sağlamak için gerekli özel işlevleri gerçekleştirme, ayrıcalık yükseltmesi de kabul edilebilir.|
 |**Savunma ve savunma**|Savunma Evasion, bir duyun algılama veya diğer savunma tehlikelere engel olmak için kullanabileceği tekniklerin oluşur. Bazı durumlarda bu eylemler, belirli bir savunma veya hafifletme avantajına ek olarak, diğer kategorilerdeki diğer kategorilerde bulunan tekniklerle aynıdır (veya çeşitlemelerdir).|

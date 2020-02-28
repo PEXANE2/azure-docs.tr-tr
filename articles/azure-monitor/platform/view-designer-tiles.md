@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de Görünüm Tasarımcısı kutucuklarına yönelik başvuru kılavuzu | Microsoft Docs
 description: Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal görüntülenen ve Log Analytics çalışma alanındaki veriler üzerinde çeşitli görselleştirmeler içeren özel görünümler oluşturabilirsiniz. Bu makale, özel Görünümleriniz için kullanılabilen kutucukların ayarlarına yönelik bir başvuru kılavuzudur.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 4141a4728ef5a7dd8896e4e3f21ee6d1d4dce958
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931967"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658515"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı kutucuklarını görüntülemek için başvuru kılavuzu
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel Görünümleriniz için kullanılabilen kutucukların ayarlarına yönelik bir başvuru kılavuzudur.

@@ -1,14 +1,14 @@
 ---
 title: ServiceNow ile Azure hizmet durumu uyarılarını gönderme
 description: ServiceNow örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f332b1e0e188797da172b4ae63f6e5ef1a97e59c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551616"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654112"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Web kancalarını kullanarak ServiceNow ile Azure hizmet durumu uyarıları gönderme
 
@@ -28,7 +28,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 
 1.  REST API bir **ad** ekleyin ve **API kimliğini** `azureservicehealth`olarak ayarlayın.
 
-1.  Seçin **gönderme**.
+1.  **Gönder**' i seçin.
 
     ![ServiceNow içindeki "REST API ayarları"](./media/webhook-alerts/servicenow-restapi-settings.png)
 

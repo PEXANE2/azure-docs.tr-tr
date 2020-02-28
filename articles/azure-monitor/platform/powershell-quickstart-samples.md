@@ -1,18 +1,15 @@
 ---
 title: Azure Izleyici PowerShell hızlı başlangıç örnekleri
 description: Otomatik ölçeklendirme, uyarılar, Web kancaları ve etkinlik günlükleri arama gibi Azure Izleyici özelliklerine erişmek için PowerShell 'i kullanın.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551843"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659310"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Izleyici PowerShell hızlı başlangıç örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek PowerShell komutları gösterilmektedir.
@@ -117,7 +114,7 @@ Belirli bir uyarı kuralının geçmişini görüntülemek için, uyarı kuralı
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-@No__t_0 cmdlet 'i çeşitli parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+`Get-AzAlertHistory` cmdlet 'i çeşitli parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Uyarı kuralları hakkında bilgi alma
 Aşağıdaki komutların tümü, "montest" adlı bir kaynak grubu üzerinde çalışır.
@@ -145,7 +142,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 ## <a name="create-metric-alerts"></a>Ölçüm uyarıları oluşturma
 Bir uyarı kuralı oluşturmak, güncelleştirmek veya devre dışı bırakmak için `Add-AlertRule` cmdlet 'ini kullanabilirsiniz.
 
-Sırasıyla `New-AzAlertRuleEmail` ve `New-AzAlertRuleWebhook` kullanarak e-posta ve Web kancası özellikleri oluşturabilirsiniz. Uyarı kuralı cmdlet 'inde, bu özellikleri uyarı kuralının **Eylemler** özelliğine eylem olarak atayın.
+Sırasıyla `New-AzAlertRuleEmail` ve `New-AzAlertRuleWebhook`kullanarak e-posta ve Web kancası özellikleri oluşturabilirsiniz. Uyarı kuralı cmdlet 'inde, bu özellikleri uyarı kuralının **Eylemler** özelliğine eylem olarak atayın.
 
 Aşağıdaki tabloda, ölçüm kullanılarak bir uyarı oluşturmak için kullanılan parametreler ve değerler açıklanmaktadır.
 
@@ -154,13 +151,13 @@ Aşağıdaki tabloda, ölçüm kullanılarak bir uyarı oluşturmak için kullan
 | Adı |simpletestdiskwrite |
 | Bu uyarı kuralının konumu |Doğu ABD |
 | adlı yönetilen örnek, |montest |
-| Targetresourceıd |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | Oluşturulan uyarının MetricName |\Fiziksel disk (_Total) \Disk yazma/sn. Tam ölçüm adlarını alma hakkında `Get-MetricDefinitions` cmdlet 'ini inceleyin |
-| işlecinde |GreaterThan |
+| operator |GreaterThan |
 | Eşik değeri (Bu ölçümün içindeki Count/SEC) |1 |
 | WindowSize (SS: DD: ss biçimi) |00:05:00 |
 | toplayıcı (Bu örnekte ortalama sayı kullanan ölçüm istatistiği) |Ortalama |
-| özel e-postalar (dize dizisi) |' foo@example.com ', ' bar@example.com ' |
+| özel e-postalar (dize dizisi) |'foo@example.com', 'bar@example.com' |
 | sahipler, katkıda bulunanlar ve okuyucular için e-posta gönderin |-SendToServiceOwners |
 
 E-posta eylemi oluşturma
@@ -202,7 +199,7 @@ Aşağıdaki örnek, için ölçüm adı ve birim içeren bir tablo oluşturur.
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-@No__t_0 için kullanılabilir seçeneklerin tam listesi [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)' de bulunabilir.
+`Get-AzMetricDefinition` için kullanılabilir seçeneklerin tam listesi [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)' de bulunabilir.
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Etkinlik günlüğü uyarıları oluşturma ve yönetme
 Bir etkinlik günlüğü uyarısı ayarlamak için `Set-AzActivityLogAlert` cmdlet 'ini kullanabilirsiniz. Bir etkinlik günlüğü uyarısı, koşullarınızı öncelikle koşulların bir sözlüğü olarak tanımlamanızı ve sonra bu koşulları kullanan bir uyarı oluşturmanızı gerektirir.
@@ -218,7 +215,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 ```
 
-Ek Web kancası özellikleri isteğe bağlıdır. @No__t_0 kullanarak bir etkinlik günlüğü uyarısının içeriğini geri alabilirsiniz.
+Ek Web kancası özellikleri isteğe bağlıdır. `Get-AzActivityLogAlert`kullanarak bir etkinlik günlüğü uyarısının içeriğini geri alabilirsiniz.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Otomatik ölçeklendirme ayarları oluşturma ve yönetme
 Bir kaynak (Web uygulaması, VM, bulut hizmeti veya sanal makine ölçek kümesi) için yapılandırılmış yalnızca bir otomatik ölçeklendirme ayarı olabilir.
@@ -309,7 +306,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>Etkinlik günlüğü için günlük profillerini yönetme
-Bir *günlük profili* oluşturabilir ve etkinlik günlüğünden verileri bir depolama hesabına aktarabilir ve veri saklama alanını yapılandırabilirsiniz. İsteğe bağlı olarak, verileri olay hub 'ınıza da akışla aktarabilirsiniz. Bu özellik şu anda önizleme aşamasındadır ve her abonelik için yalnızca bir günlük profili oluşturabilirsiniz. Günlük profillerini oluşturmak ve yönetmek için şu cmdlet 'leri geçerli aboneliğiniz ile birlikte kullanabilirsiniz. Ayrıca, belirli bir aboneliği seçebilirsiniz. PowerShell varsayılan olarak geçerli aboneliğe izin verse de, `Set-AzContext` kullanarak her zaman değiştirebilirsiniz. Bu abonelik içindeki herhangi bir depolama hesabına veya Olay Hub 'ına veri yönlendirmek için etkinlik günlüğü yapılandırabilirsiniz. Veriler blob dosyası olarak JSON biçiminde yazılır.
+Bir *günlük profili* oluşturabilir ve etkinlik günlüğünden verileri bir depolama hesabına aktarabilir ve veri saklama alanını yapılandırabilirsiniz. İsteğe bağlı olarak, verileri olay hub 'ınıza da akışla aktarabilirsiniz. Bu özellik şu anda önizleme aşamasındadır ve her abonelik için yalnızca bir günlük profili oluşturabilirsiniz. Günlük profillerini oluşturmak ve yönetmek için şu cmdlet 'leri geçerli aboneliğiniz ile birlikte kullanabilirsiniz. Ayrıca, belirli bir aboneliği seçebilirsiniz. PowerShell varsayılan olarak geçerli aboneliğe izin verse de, `Set-AzContext`kullanarak her zaman değiştirebilirsiniz. Bu abonelik içindeki herhangi bir depolama hesabına veya Olay Hub 'ına veri yönlendirmek için etkinlik günlüğü yapılandırabilirsiniz. Veriler blob dosyası olarak JSON biçiminde yazılır.
 
 ### <a name="get-a-log-profile"></a>Günlük profili al
 Mevcut günlük profillerinizi getirmek için `Get-AzLogProfile` cmdlet 'ini kullanın.
@@ -388,7 +385,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Çalışma alanı kimliği özelliğinin, çalışma alanının *kaynak kimliğini* aldığını unutmayın. Aşağıdaki komutu kullanarak Log Analytics çalışma alanınızın kaynak KIMLIĞINI elde edebilirsiniz:
+Çalışma alanı kimliği özelliğinin, çalışma alanının *kaynak kimliğini* aldığını unutmayın. Aşağıdaki komutu kullanarak Log Analytics çalışma alanınızın kaynak kimliği elde edebilirsiniz:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

@@ -1,18 +1,14 @@
 ---
 title: Azure Pipelines ve Azure Application Insights ile DevOps yayın işlem hattınızı sürekli izleme | Microsoft Docs
 description: Application Insights ile sürekli izlemeyi hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/16/2019
-ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677526"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655404"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Yayın ardışık düzenine sürekli izleme ekleme
 
@@ -24,7 +20,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
 
 1. [Azure DevOps](https://dev.azure.com)'da bir kuruluş ve proje seçin.
    
-1. Proje sayfasının sol menüsünde, işlem **hatları**  > **sürümler**' i seçin. 
+1. Proje sayfasının sol menüsünde, işlem **hatları** > **sürümler**' i seçin. 
    
 1. **Yeni** ' nin yanındaki oku aşağı kaydırın ve **Yeni sürüm işlem hattı**' nı seçin. Ya da henüz bir işlem hattınız yoksa görüntülenen sayfada yeni işlem **hattı** ' nı seçin.
    

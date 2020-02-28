@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598536"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661303"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -35,6 +35,10 @@ Bu disk türleri hakkında bilgi edinmek için [disk türünü seçme](https://d
 Azure, Azure Standard ve Premium depolamada bulunan VHD 'ler için iki dağıtım yöntemi sunar. Genel senaryo izin veriyorsa, [Azure yönetilen disk](https://azure.microsoft.com/services/managed-disks/) dağıtımlarından yararlanın. 
 
 Depolama türlerinin bir listesi ve ıOPS ve depolama aktarım hızı içindeki SLA 'Lar için, [yönetilen diskler Için Azure belgelerini](https://azure.microsoft.com/pricing/details/managed-disks/)gözden geçirin.
+
+> [!IMPORTANT]
+> Seçilen Azure depolama türünden bağımsız olarak, bu depolama üzerinde kullanılan dosya sisteminin, belirli işletim sistemi ve DBMS için SAP tarafından desteklenmesi gerekir. [Sap destek notuna #405827](https://launchpad.support.sap.com/#/notes/405827) , SAP HANA dahil farklı işletim sistemleri ve veritabanları için desteklenen dosya sistemlerini listeler. Bu, tüm birimlerde geçerlidir SAP HANA her türlü görevi okumak ve yazmak için erişim sağlayabilir. Azure 'da SAP HANA için özel olarak NFS 'yi kullanmak, bu makalede daha sonra belirtilen şekilde NFS sürümlerinin ek kısıtlamaları için geçerlidir 
+
 
 Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şunlardır: 
 

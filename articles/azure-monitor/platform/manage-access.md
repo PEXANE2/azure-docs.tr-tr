@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de Log Analytics çalışma alanlarını yönetme | Microsoft Docs
 description: Kaynak, çalışma alanı veya tablo düzeyi izinleri kullanarak Azure Izleyici 'deki bir Log Analytics çalışma alanında depolanan verilere erişimi yönetebilirsiniz. Bu makalede nasıl tamamlanacağı açıklanır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289127"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672115"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -28,7 +27,7 @@ Bu makalede, ' ye erişim verme dahil olmak üzere günlüklere erişimi yönetm
 
 Bir çalışma alanında yapılandırılan erişim denetimi modunu Azure portal veya Azure PowerShell ile görüntüleyebilirsiniz.  Bu ayarı, aşağıdaki desteklenen yöntemlerden birini kullanarak değiştirebilirsiniz:
 
-* Azure portalında
+* Azure portalı
 
 * Azure PowerShell
 
@@ -47,7 +46,7 @@ Bu ayarı, çalışma alanının **Özellikler** sayfasından değiştirebilirsi
 
 ![Çalışma alanı erişim modunu değiştir](media/manage-access/change-access-control-mode.png)
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 Abonelikteki tüm çalışma alanları için erişim denetimi modunu incelemek üzere aşağıdaki komutu kullanın:
 
@@ -293,6 +292,6 @@ Yalnızca _Securitybaseline_ tablosuna erişimi olan bir rol oluşturmak için a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz: [Log Analytics Aracısı genel bakış](../../azure-monitor/platform/log-analytics-agent.md) veri merkezinizde veya diğer bulut ortamında bulunan bilgisayarlardaki verileri toplamak için.
+* Veri merkezinizdeki veya diğer bulut Ortamınızdaki bilgisayarlardan veri toplamak için [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md) konusuna bakın.
 
 * Azure VM 'lerinden veri toplamayı yapılandırmak için bkz. [Azure sanal makineler hakkında veri toplama](../../azure-monitor/learn/quick-collect-azurevm.md) .

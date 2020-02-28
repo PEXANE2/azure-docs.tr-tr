@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 17d86f25de6eecee535d6f812f4ef0b078a4b6db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d1fb963753577e9518d93262f9c9c7a1cf984005
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752518"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656016"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasındaki Key Vault başvurularını kullanma
 
@@ -35,17 +35,17 @@ Bu öğretici kodunuzda Key Vault başvuruların nasıl uygulanacağını göste
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. Örneğin, [Visual Studio Code](https://code.visualstudio.com/) Windows, MacOS ve Linux işletim sistemleri için kullanılabilen platformlar arası bir kod düzenleyicisidir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun.
 > * Bu anahtarın değerine bir Java Spring uygulamasından erişin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce [.NET Core SDK](https://dotnet.microsoft.com/download)yükleyebilirsiniz.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](https://docs.microsoft.com/java/azure/jdk) .
+* [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
@@ -56,10 +56,10 @@ Bu öğreticiye başlamadan önce [.NET Core SDK](https://dotnet.microsoft.com/d
 1. Sonuçlar listesinden sol taraftaki **Anahtar kasaları** ' nı seçin.
 1. **Anahtar kasaları**' nda **Ekle**' yi seçin.
 1. **Anahtar Kasası oluşturma**' da sağ tarafta aşağıdaki bilgileri sağlayın:
-    - Abonelik seçmek için **abonelik** ' ı seçin.
-    - **Kaynak grubu**' nda **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
-    - **Anahtar Kasası adında**, benzersiz bir ad gereklidir. Bu öğretici için **contoso-vault2**girin.
-    - **Bölge** açılan listesinde bir konum seçin.
+    * Abonelik seçmek için **abonelik** ' ı seçin.
+    * **Kaynak grubu**' nda **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    * **Anahtar Kasası adında**, benzersiz bir ad gereklidir. Bu öğretici için **contoso-vault2**girin.
+    * **Bölge** açılan listesinde bir konum seçin.
 1. Diğer **Anahtar Kasası oluşturma** seçeneklerini varsayılan değerleriyle bırakın.
 1. **Oluştur**’u seçin.
 
@@ -74,23 +74,23 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 1. Key Vault Özellikler sayfalarında **gizli**dizileri ' ni seçin.
 1. **Oluştur/Içeri aktar**' ı seçin.
 1. Gizli dizi **Oluştur** bölmesinde aşağıdaki değerleri girin:
-    - **Karşıya yükleme seçenekleri**: **el ile**girin.
-    - **Ad**: **ileti**girin.
-    - **Değer**: **Key Vault Merhaba**yazın.
+    * **Karşıya yükleme seçenekleri**: **el ile**girin.
+    * **Ad**: **ileti**girin.
+    * **Değer**: **Key Vault Merhaba**yazın.
 1. Diğerini varsayılan değerleriyle **gizli bir özellikler oluşturmamaya** ayrılın.
 1. **Oluştur**’u seçin.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin.
 
 1. **+ Oluştur** > **Anahtar Kasası başvurusu**' nu seçin ve ardından aşağıdaki değerleri belirtin:
-    - **Anahtar**: **/Application/config.asp keyvaultmessage** seçin
-    - **Etiket**: Bu değeri boş bırakın.
-    - **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki bölümde oluşturduğunuz anahtar kasasındaki değerlere karşılık gelen değerleri girin.
-    - **Gizli**: önceki bölümde oluşturduğunuz gizli anahtar adlı **iletiyi** seçin.
+    * **Anahtar**: **/Application/config.asp keyvaultmessage** seçin
+    * **Etiket**: Bu değeri boş bırakın.
+    * **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki bölümde oluşturduğunuz anahtar kasasındaki değerlere karşılık gelen değerleri girin.
+    * **Gizli**: önceki bölümde oluşturduğunuz gizli anahtar adlı **iletiyi** seçin.
 
 ## <a name="connect-to-key-vault"></a>Key Vault Bağlan
 
@@ -119,8 +119,15 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 1. Hizmet sorumlusunun anahtar kasanıza erişmesine izin vermek için aşağıdaki komutu çalıştırın:
 
+    ```console
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+
+1. Nesne kimliğinizi almak için aşağıdaki komutu çalıştırın ve uygulama yapılandırmasına ekleyin.
+
+    ```console
+    az ad sp show --id <clientId-of-your-service-principal>
+    az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
 1. Önceki adımda görüntülenen hizmet sorumlusunun değerlerini kullanarak aşağıdaki ortam değişkenlerini oluşturun:
@@ -130,7 +137,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     * **AZURE_TENANT_ID**: *tenantıd*
 
 > [!NOTE]
-> Bu Key Vault kimlik bilgileri yalnızca uygulamanız içinde kullanılır. Uygulamanız bu kimlik bilgileriyle Key Vault doğrudan kimlik doğrulaması yapar. Bunlar hiçbir şekilde uygulama yapılandırma hizmetine geçirilmez.
+> Bu Key Vault kimlik bilgileri yalnızca uygulamanız içinde kullanılır.  Uygulamanız, uygulama yapılandırma hizmeti 'ni eklemeden bu kimlik bilgilerini kullanarak Key Vault doğrudan kimlik doğrulaması yapar.  Key Vault, anahtarları paylaşmadan veya göstermeden hem uygulamanız hem de uygulama yapılandırma hizmetiniz için kimlik doğrulaması sağlar.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Kodunuzu Key Vault bir başvuru kullanacak şekilde güncelleştirin
 
@@ -157,17 +164,73 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
+1. *AzureCredentials. Java* adlı yeni bir dosya oluşturun ve aşağıdaki kodu ekleyin.
+
+    ```java
+    package com.example;
+
+    import com.azure.core.credential.TokenCredential;
+    import com.azure.identity.EnvironmentCredentialBuilder;
+    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+
+    public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
+
+        @Override
+        public TokenCredential getKeyVaultCredential(String uri) {
+            return getCredential();
+        }
+
+        @Override
+        public TokenCredential getAppConfigCredential(String uri) {
+            return getCredential();
+        }
+
+        private TokenCredential getCredential() {
+            return new EnvironmentCredentialBuilder().build();
+        }
+
+    }
+    ```
+
+1. *Appconfiguration. Java*adlı yeni bir dosya oluşturun. Ve aşağıdaki kodu ekleyin.
+
+    ```java
+    package com.example;
+
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class AppConfiguration {
+
+        @Bean
+        public AzureCredentials azureCredentials() {
+            return new AzureCredentials();
+        }
+    }
+    ```
+
+1. Kaynaklarınızda *yay. fabrikalar* ve Ekle adlı yeni bir dosya oluşturun.
+
+    ```factories
+    org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+    com.example.AppConfiguration
+    ```
+
 1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın, örneğin:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
+
 1. Uygulamanız çalıştırıldıktan sonra, uygulamanızı test etmek için *kıvrımlı* kullanın, örneğin:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
+
     Uygulama yapılandırma deposuna girdiğiniz iletiyi görürsünüz. Ayrıca, Key Vault girdiğiniz iletiyi görürsünüz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

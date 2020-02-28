@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560465"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664142"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Değişiklik talebini karşılamak için Azure Veri Gezgini küme yatay ölçeklendirmeyi (genişleme) yönetme
 
@@ -59,13 +59,14 @@ Kümeniz kullanım dışı bir duruma yaklaşırsa, en iyi performansı sağlama
 * Küme örneklerinin sayısı, Kullanıcı tarafından tanımlanan en fazla örnek sayısının altında.
 * Önbellek kullanımı bir saatten uzun bir süre için yüksek.
 * CPU, bir saatten uzun bir süre boyunca yüksek.
+* Alım kullanımı bir saatten uzun bir süre boyunca yüksek.
 
 > [!NOTE]
 > Ölçek Genişletme mantığı şu anda alma kullanım ölçümünü göz önünde bulundurmaz. Bu ölçüm kullanım durumu için önemliyse, [özel otomatik ölçeklendirme](#custom-autoscale)kullanın.
 
 **Ölçek ın**
 
-Kümeniz kullanım kapsamında olan bir duruma yaklaşırsa, maliyetleri daha düşük bir şekilde ölçeklendirin ve performansı koruyun. Birden çok ölçüm, kümede ölçeklendirmenin güvenli olduğunu doğrulamak için kullanılır. Aşağıdaki kurallar, ölçek yapılmadan önce 7 gün boyunca günlük olarak değerlendirilir:
+Kümeniz kullanım kapsamında olan bir duruma yaklaşırsa, maliyetleri daha düşük bir şekilde ölçeklendirin ve performansı koruyun. Birden çok ölçüm, kümede ölçeklendirmenin güvenli olduğunu doğrulamak için kullanılır. Aşağıdaki kurallar, ölçek kullanılmadan önce 6 saat için saatlik olarak değerlendirilir:
 * Örnek sayısı 2 ' den fazla ve tanımlanan minimum örnek sayısına göre belirlenir.
 * Kaynak aşırı yüklü olmadığından emin olmak için, aşağıdaki ölçümler ölçek yapılmadan önce doğrulanmalıdır: 
     * Önbellek kullanımı yüksek değil

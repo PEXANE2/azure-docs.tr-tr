@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics verilerini Power BI içine aktarma | Microsoft Docs
 description: Power BI, Microsoft 'un, farklı veri kümelerinin analizine yönelik zengin görselleştirmeler ve raporlar sağlayan bulut tabanlı bir iş analizi hizmetidir.  Bu makalede, Power BI Log Analytics verileri yapılandırma ve içeri aktarma ve otomatik olarak yenileme için yapılandırma açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394698"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659294"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Izleyici günlük verilerini Power BI içine aktarın
 
@@ -51,7 +50,7 @@ Power BI Desktop, Power BI yayımlanmakta olabilecek veri kümeleri ve raporlar 
 
 
 
-## <a name="publish-to-power-bi"></a>Power BI’da yayımla
+## <a name="publish-to-power-bi"></a>Power BI yayımlama
 Power BI yayımladığınızda bir veri kümesi ve rapor oluşturulur.  Power BI Desktop bir rapor oluşturursanız, bu, verileriniz ile yayımlanacak.  Aksi takdirde, boş bir rapor oluşturulur.  Power BI raporu değiştirebilir veya veri kümesine göre yeni bir tane oluşturabilirsiniz.
 
 1. Verilerinizi temel alan bir rapor oluşturun.  Bilgi sahibi değilseniz [Power BI Desktop belgeleri](https://docs.microsoft.com/power-bi/desktop-report-view) kullanın.  
@@ -63,7 +62,7 @@ Power BI yayımladığınızda bir veri kümesi ve rapor oluşturulur.  Power BI
 1. Yayımlama tamamlandığında, yeni veri kümeniz ile Power BI açmak için **Power BI aç** ' a tıklayın.
 
 
-### <a name="configure-scheduled-refresh"></a>Zamanlanmış yenileme yapılandırma
+### <a name="configure-scheduled-refresh"></a>Zamanlanmış yenilemeyi yapılandırma
 Power BI oluşturulan veri kümesi, daha önce Power BI Desktop gördüğünüz verileri aynı olacak.  Sorguyu yeniden çalıştırmak ve Azure Izleyici 'den en güncel verilerle doldurmak için veri kümesini düzenli aralıklarla yenilemeniz gerekir.  
 
 1. Raporunuzu karşıya yüklediğiniz çalışma alanına tıklayın ve **veri kümeleri** menüsünü seçin. 

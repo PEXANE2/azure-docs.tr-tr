@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930325"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655081"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory eşleme veri akışı arama dönüşümü
 
@@ -36,9 +36,19 @@ Arama dönüşümünü kullandıktan sonra, ```isMatch()``` işlevine koşullu b
 
 ## <a name="first-or-last-value"></a>İlk veya son değer
 
-Aramaınızdan birden fazla eşleşme olduğunda, ilk veya son eşleşmeyi seçerek eşleşen birden fazla satırı azaltmak isteyebilirsiniz. Bunu, aramalarınızın ardından bir toplama dönüştürmesi kullanarak yapabilirsiniz.
+Arama dönüşümü, bir sol dış birleşim olarak uygulanır. Aramaınızdan birden fazla eşleşme olduğunda, ilk eşleşen satırı, son eşleşmeyi veya herhangi bir rastgele satırı seçerek eşleşen birden fazla satırı azaltmak isteyebilirsiniz.
 
-Bu durumda, arama eşleştirmelerinin ilk değerini seçmek için ```PickFirst``` adlı bir toplama dönüştürmesi kullanılır.
+### <a name="option-1"></a>seçenek 1
+
+![Tek satır arama](media/data-flow/singlerowlookup.png "Tek satır arama")
+
+* Birden çok satırı eşleştir: tek satır eşleşmesi döndürmek için boş bırakın
+* Eşleşme: ilk, son veya herhangi bir eşleşme seçin
+* Sıralama koşulları: ilk veya son ' u seçerseniz, ADF, verilerinizin önce ve en son bir mantığın sıralanabilmesi için verilerin sıralanmasını gerektirir
+
+### <a name="option-2"></a>Seçenek 2
+
+Bunu, aramalarınızın ardından bir toplama dönüştürmesi kullanarak da yapabilirsiniz. Bu durumda, arama eşleştirmelerinin ilk değerini seçmek için ```PickFirst``` adlı bir toplama dönüştürmesi kullanılır.
 
 ![Arama toplamı](media/data-flow/lookup333.png "Arama toplamı")
 
@@ -48,7 +58,7 @@ Bu durumda, arama eşleştirmelerinin ilk değerini seçmek için ```PickFirst``
 
 Data Factory, veri akışları ölçekli Spark ortamlarında yürütülür. Veri kümeniz çalışan düğümü bellek alanına uyabiliyorsanız, arama performansınızı iyileştirebiliriz.
 
-![Yayın katılımı](media/data-flow/broadcast.png "Yayın Birleştirme")
+![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
 
 ### <a name="broadcast-join"></a>Yayın katılımı
 

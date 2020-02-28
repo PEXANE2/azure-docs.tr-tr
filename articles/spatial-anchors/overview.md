@@ -8,19 +8,19 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 503004cba0d4109adcfee62f7acd108cbcb73eb6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277149"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657316"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure uzamsal Tutturucuların genel bakış
 
 Azure uzamsal tutturucularını hoş geldiniz. Azure uzamsal bağlantıları, geliştiricilere, istenmeyen ve dağınık karma gerçeklik uygulamaları oluşturmak için önemli yetenekler sağlar. Bu uygulamalar, ARKit destekleyen Microsoft HoloLens, iOS tabanlı cihazları ve ARCore destekleyen Android tabanlı cihazları destekleyebilir. Azure Spatial Anchors geliştiricilerin alanları algılamak, ilgi çekici noktaları tam olarak belirlemek ve desteklenen cihazlarda bu ilgi çekici noktaları anımsamak için karma gerçeklik platformlarıyla çalışmasını sağlar.
 Bu kesin ilgi noktaları, uzamsal bağlayıcı olarak adlandırılır.
 
-![Platformlar Arası](./media/cross-platform.png)
+![Platformlar arası](./media/cross-platform.png)
 
 ## <a name="examples"></a>Örnekler
 
@@ -39,7 +39,13 @@ Azure Spatial Anchors bir yönetilen hizmetten ve desteklenen cihaz platformlar�
 Uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
 
 > [!div class="nextstepaction"]
-> ['Yi](unity-overview.yml)
+> [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Unity (iOS)](quickstarts/get-started-unity-ios.md)
+
+> [!div class="nextstepaction"]
+> [Unity (Android)](quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)
@@ -49,3 +55,9 @@ Uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
 
 > [!div class="nextstepaction"]
 > [HoloLens](quickstarts/get-started-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (Android)](quickstarts/get-started-xamarin-android.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (iOS)](quickstarts/get-started-xamarin-ios.md)

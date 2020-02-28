@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'ye Operations Manager bağlanma | Microsoft Docs
 description: System Center Operations Manager'a yaptığınız mevcut yatırımı korumak ve Log Analytics'le sağlanan genişletilmiş özellikleri kullanmak için, Operations Manager'ı çalışma alanınızla tümleştirebilirsiniz.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363668"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659416"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -34,7 +33,7 @@ Aşağıdaki diyagramda, yön ve bağlantı noktaları da dahil olmak üzere bir
 
 BT güvenlik ilkeleriniz ağınızdaki bilgisayarların Internet 'e bağlanmasına izin vermediğinden, yönetim sunucuları yapılandırma bilgilerini almak ve bu çözümlere bağlı olarak toplanan verileri göndermek için Log Analytics ağ geçidine bağlanacak şekilde yapılandırılabilir etkinletir. Operations Manager yönetim grubunuzu Azure Izleyici 'ye bir Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırma hakkında daha fazla bilgi ve adımlar için, bkz. [Log Analytics ağ geçidini kullanarak bilgisayarları Azure izleyici 'ye bağlama](../../azure-monitor/platform/gateway.md).  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 
@@ -73,15 +72,15 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 |Kaynak | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
 |---------|------|-----------------------|  
 |**Aracı**|||  
-|\*.ods.opinsights.azure.com| 443 |Evet|  
-|\*.oms.opinsights.azure.com| 443|Evet|  
-|\*.blob.core.windows.net| 443|Evet|  
-|\*.azure-automation.net| 443|Evet|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Yönetim sunucusu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Evet|  
-|\*.ods.opinsights.azure.com| 443| Evet|  
-|*.azure-automation.net | 443| Evet|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konsolu Azure Izleyici 'ye Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -96,7 +95,7 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 Protokolü
 
-Azure Izleyici 'ye geçişte verilerin güvenliğini sağlamak için aracıyı ve yönetim grubunu en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) daha eski sürümleri, savunmasız bulundu ve bunlar yine de şu anda geriye dönük uyumluluk izin vermek için çalışırken, bunlar **önerilmez**. Ek bilgi için gözden [TLS 1.2 kullanarak güvenli bir şekilde veri gönderen](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Azure Izleyici 'ye geçişte verilerin güvenliğini sağlamak için aracıyı ve yönetim grubunu en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)inceleyin.
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -105,8 +104,8 @@ Operations Manager yönetim grubunuzu Log Analytics çalışma alanlarınızdan 
 Log Analytics çalışma alanı ile Operations Manager yönetim grubunuzun ilk kaydı sırasında, yönetim grubu için proxy yapılandırmasını belirtme seçeneği Işletim konsolunda kullanılamaz.  Bu seçeneğin sağlanması için önce yönetim grubunun hizmete başarıyla kaydedilmiş olması gerekir.  Bu sorunu geçici olarak çözmek için, Işletim konsolunu çalıştıran sistemde Netsh kullanarak sistem proxy yapılandırmasını güncelleştirmeniz gerekir ve yönetim grubundaki tüm yönetim sunucularını yapılandırın.  
 
 1. Yükseltilmiş bir komut istemi açın.
-   a. Git **Başlat** ve türü **cmd**.
-   b. Sağ **komut istemi** ve farklı çalıştır yönetici ** seçin.
+   a. **Başlat** ' a gidin ve **cmd**yazın.
+   b. **Komut istemi** ' ne sağ tıklayın ve yönetici olarak çalıştır * * seçeneğini belirleyin.
 1. Aşağıdaki komutu girin ve **Enter** tuşuna basın:
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -148,7 +147,7 @@ Yönetim grubu ve Azure Izleyici arasında bir iç proxy sunucusu varsa, aşağ�
 1. Operations Manager konsolunu açın ve **Yönetim** çalışma alanını seçin.
 1. Operations Management Suite'i genişletin ve **Bağlantılar**'a tıklayın.
 1. OMS Bağlantısı görünümünde, **Ara Sunucuyu Yapılandır**'a tıklayın.
-1. **Operations Management Suite Sihirbazı: Ara Sunucu** sayfasında **Operations Management Suite erişimi için bir ara sunucu kullan**'ı seçin, ardından bağlantı noktası numarasını içeren URL'yi yazın (örneğin, http://corpproxy:80 ) ve **Son**'a tıklayın.
+1. **Operations Management Suite Sihirbazı: Ara Sunucu** sayfasında **Operations Management Suite erişimi için bir ara sunucu kullan**'ı seçin, ardından bağlantı noktası numarasını içeren URL'yi yazın (örneğin, http://corpproxy:80) ve **Son**'a tıklayın.
 
 Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, yönetim grubunda Azure Izleyici 'ye raporlayan yönetilen bilgisayarlara yayılması gereken kimlik bilgilerini ve ayarları yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
@@ -174,7 +173,7 @@ Yapılandırma tamamlandıktan sonra Operations Manager yönetim grubu, Azure Iz
 * **Microsoft. SystemCenter. Advisor. MPUpdate** -temel Azure izleyici yönetim paketlerini güncelleştirir. Varsayılan olarak her 12 saatte bir çalıştırılır.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - Çalışma alanınızda etkinleştirilmiş olan çözüm yönetim paketlerini güncelleştirir. Varsayılan olarak her beş (5) dakikada bir çalıştırılır.
 
-Bu iki kuralı, otomatik indirmeyi devre dışı bırakarak veya yönetim sunucusunun Azure Izleyici ile ne sıklıkta eşitleyeceğini, yeni bir yönetim paketinin mevcut olup olmadığını ve indirilmesinin gerekip gerekmediğini belirleyerek geçersiz kılabilir. **Frequency** parametresini saniye cinsinden bir değerle değiştirip eşitleme zamanlamasında değişiklik yapmak veya **Enabled** parametresini değiştirip kuralları devre dışı bırakmak için, [Kuralı veya İzlemeyi Geçersiz Kılma](https://technet.microsoft.com/library/hh212869.aspx) altındaki adımları izleyin. Geçersiz kılmalarda, Operations Manager Yönetim Grubu sınıfındaki tüm nesneleri hedefleyin.
+Bu iki kuralı, otomatik indirmeyi devre dışı bırakarak veya yönetim sunucusunun Azure Izleyici ile ne sıklıkta eşitleyeceğini, yeni bir yönetim paketinin mevcut olup olmadığını ve indirilmesinin gerekip gerekmediğini belirleyerek geçersiz kılabilir. [Frequency](https://technet.microsoft.com/library/hh212869.aspx) parametresini saniye cinsinden bir değerle değiştirip eşitleme zamanlamasında değişiklik yapmak veya **Enabled** parametresini değiştirip kuralları devre dışı bırakmak için, **Kuralı veya İzlemeyi Geçersiz Kılma** altındaki adımları izleyin. Geçersiz kılmalarda, Operations Manager Yönetim Grubu sınıfındaki tüm nesneleri hedefleyin.
 
 Üretim yönetim grubunuzdaki yönetim paketi sürümlerini denetlemek için mevcut değişiklik denetimi işleminizi takip etmeye devam etmek için, kuralları devre dışı bırakabilir ve güncelleştirmelere izin verildiğinde belirli zamanlarda etkinleştirebilirsiniz. Ortamınızda bir geliştirme veya QA yönetim grubu varsa ve İnternet'e bağlıysa, bu senaryoyu desteklemek için söz konusu yönetim grubunu Log Analytics çalışma alanıyla yapılandırabilirsiniz. Bu, Azure Izleyici yönetim paketlerinin yinelemeli sürümlerini üretim yönetim grubunuza bırakmadan önce gözden geçirmenize ve değerlendirmenize olanak tanır.
 

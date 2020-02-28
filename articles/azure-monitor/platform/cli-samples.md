@@ -1,18 +1,15 @@
 ---
 title: Azure Izleyici CLı hızlı başlangıç örnekleri
 description: Azure Izleyici özellikleri için örnek CLı komutları. Azure Izleyici, uyarı bildirimleri göndermenizi, yapılandırılmış telemetri verileri değerlerine göre Web URL 'Lerini çağırmayı, otomatik ölçeklendirme Cloud Services, sanal makineler ve Web Apps sağlayan bir Microsoft Azure hizmetidir.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893544"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663513"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Izleyici CLı hızlı başlangıç örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek komut satırı arabirimi (CLı) komutları gösterilmektedir. Azure Izleyici, Cloud Services, sanal makineleri ve Web Apps otomatik olarak ve yapılandırılmış telemetri verileri değerlerine göre uyarı bildirimleri göndermenizi veya Web URL 'Lerini çağırmayı sağlar.

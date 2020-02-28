@@ -1,22 +1,21 @@
 ---
 title: Azure Izleyicisine genel bakış | Microsoft Docs
 description: Azure hizmetleriniz ve uygulamalarınız için eksiksiz bir izleme stratejisine katkıda bulunan Microsoft hizmetleri ve işlevlerine genel bakış.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: f5d98ecdac3acacda2b592f88e7db45dc181e8da
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934469"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669174"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyiciye Genel Bakış
 
-Azure İzleyici, bulut ve şirket içi ortamlardaki telemetriyi toplamak, analiz etmek ve bunlarda eylem gerçekleştirmek için kapsamlı bir çözüm sunarak uygulama ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlayıp uygulamaları ve bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur.
+Azure Izleyici, bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlamanıza ve uygulamalarla bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur.
 
 Azure Izleyici ile neler yapabileceğinize ilişkin birkaç örnek şunlardır:
 
@@ -68,13 +67,13 @@ Uygulama [Hizmetleri uygulamanız](app/azure-web-apps.md) veya [VM ve sanal maki
 
 Azure Izleyici, [veri TOPLAYıCı API](platform/data-collector-api.md)'sini kullanarak HERHANGI bir rest istemcisinden günlük verileri toplayabilir. Bu, özel izleme senaryoları oluşturmanıza ve izlemeyi diğer kaynaklardan açığa çıkaran kaynaklara genişletmenize olanak tanır.
 
-## <a name="insights"></a>Bilgiler
+## <a name="insights"></a>Insights
 İzleme verileri yalnızca, bilgi işlem ortamınızın işlemine ilişkin görünürlüğünüzü artırabilmesini sağlar. Azure Izleyici, uygulamalarınız ve bağımlı oldukları diğer kaynaklarla ilgili değerli Öngörüler sağlayan çeşitli özellikler ve araçlar içerir. [Kapsayıcılar için](insights/container-insights-overview.md) [Application Insights](app/app-insights-overview.md) ve Azure izleyici gibi [çözüm izleme çözümleri](insights/solutions.md) ve özellikleri, uygulamanızın ve belirli Azure hizmetlerinizin farklı yönlerine ayrıntılı öngörüler sağlar. 
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) , Web uygulamalarınızın bulutta veya şirket içinde barındırıldığından kullanılabilirlik, performans ve kullanımını izler. Azure Izleyici 'deki güçlü veri analizi platformundan yararlanarak uygulamanızın işlemlerinde derin öngörüler sağlar ve bir kullanıcının bunları raporlamasına gerek kalmadan hataları tanılamanıza olanak sağlar. Application Insights, çeşitli geliştirme araçlarına bağlantı noktaları içerir ve DevOps işlemlerinizi desteklemek için Visual Studio ile tümleşir.
 
-![App Insights](media/overview/app-insights.png)
+![Uygulama öngörüleri](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 [Kapsayıcılar Için Azure izleyici](insights/container-insights-overview.md) , Azure Kubernetes Service (aks) üzerinde barındırılan, yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinin performansını izlemek için tasarlanmış bir özelliktir. Ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğü sağlar. Kapsayıcı günlükleri de toplanır.  Kubernetes kümelerinden izlemeyi etkinleştirdikten sonra, bu ölçümler ve Günlükler, Linux için Log Analytics aracısının kapsayıcılı bir sürümü aracılığıyla sizin için otomatik olarak toplanır.
@@ -119,7 +118,7 @@ Grafikler ve tablolar gibi [görselleştirmeler](visualizations.md) , izleme ver
 ### <a name="views"></a>Görünümler
 [Görünümler](../log-analytics/log-analytics-view-designer.md) Azure izleyici 'de günlük verilerini görsel olarak sunar.  Her görünüm, kritik verileri özetleyen listelerin yanı sıra çubuk ve çizgi grafikler gibi görselleştirmelerin birleşimine kadar ayrıntıya eklenen tek bir kutucuk içerir.  İzleme çözümleri, belirli bir uygulama için verileri özetleyen görünümler içerir ve herhangi bir günlük sorgusundan veri sunmak için kendi görünümlerinizi de oluşturabilirsiniz. Azure Izleyici 'deki diğer öğelere benzer şekilde, görünümler Azure panolarına eklenebilir.
 
-![Görüntüle](media/overview/view.png)
+![Görünüm](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) , çeşitli veri kaynakları genelinde etkileşimli görselleştirmeler sağlayan ve kuruluşunuzun içindeki ve dışındaki başkalarının kullanımına yönelik etkili bir yol sunan bir iş analizi hizmetidir. Bu ek görselleştirmelerin avantajlarından yararlanmak için [Azure izleyici 'den günlük verilerini otomatik olarak içeri aktarmak](../log-analytics/log-analytics-powerbi.md) üzere Power BI yapılandırabilirsiniz.
@@ -139,7 +138,7 @@ Genellikle Azure Izleyicisini diğer sistemlerle tümleştirme ve izleme veriler
 [Logic Apps](https://azure.microsoft.com/services/logic-apps) , farklı sistemler ve hizmetlerle tümleştirilen iş akışlarını kullanarak görevleri ve iş süreçlerini otomatikleştirmenize olanak tanıyan bir hizmettir. Azure Izleyici 'de ölçümleri ve günlükleri okuma ve yazma işlemleri, diğer birçok sistemlerle tümleştirerek iş akışları oluşturmanıza olanak tanıyan etkinlikleri kullanıma sunulmuştur.
 
 
-### <a name="api"></a>eklentisi
+### <a name="api"></a>API
 Oluşturulan uyarılara erişmenin yanı sıra Azure Izleyici 'ye ve bunlara yönelik ölçümleri ve günlükleri okuyup yazmak için birden çok API kullanılabilir. Ayrıca, uyarıları yapılandırabilir ve alabilirsiniz. Bu, Azure Izleyici ile tümleştirilen özel çözümler oluşturmak için aslında sınırsız olanaklar sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar

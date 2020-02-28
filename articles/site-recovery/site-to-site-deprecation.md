@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623610"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661679"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery kullanarak müşteri tarafından yönetilen siteler arasında (VMM ile) olağanüstü durum kurtarmayı kullanımdan kaldırma
 
@@ -36,10 +36,8 @@ Site Recovery kullanarak System Center Virtual Machine Manager (SCVMM) tarafınd
 
 Bu, senaryonun kullanım dışı olduktan sonra DR stratejilerinin etkilenmemesini sağlamak için müşterinin aralarından seçim yapabileceğiniz alternatiflerdir. 
 
-- Seçenek 1 (önerilir): [Hyper-V konaklarındaki VM 'ler Için Azure 'U Dr hedefi olarak kullanmaya başlamak](hyper-v-azure-tutorial.md)için seçin.
+- Seçenek 1 (önerilir): Azure 'U [Dr hedefi olarak kullanmaya başlamak](hyper-v-vmm-azure-tutorial.md)için seçin.
 
-    > [!IMPORTANT]
-    > Şirket içi ortamınızın hala SCVMMM olduğunu, ancak ASR 'yi yalnızca Hyper-V konaklarına başvurularla yapılandırabileceğinizi unutmayın.
 
 - 2\. seçenek: temel [Hyper-V çoğaltma çözümünü](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)kullanarak siteden siteye çoğaltmaya devam etmeyi seçin, ancak Azure Portal Azure SITE Recovery kullanarak Dr yapılandırmalarının yönetimi için işlem yapmanız gerekmez. 
 
@@ -50,15 +48,11 @@ Bu, senaryonun kullanım dışı olduktan sonra DR stratejilerinin etkilenmemesi
 
 1. [VMMs ile ilişkili tüm sanal makinelerin korumasını devre dışı bırakın](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario). Şirket içi çoğaltma ayarlarının temizlendiğinden emin olmak için **çoğaltmayı devre dışı bırak ve Kaldır** seçeneğini kullanın veya belirtilen betikleri çalıştırın. 
 
-2. [Tüm VMM sunucularının kaydını sil](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. [Tüm VMM sunucularının](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) siteden siteye çoğaltma yapılandırmasından kaydını kaldırın.
 
 3. Sanal makinelerinizin çoğaltılmasını etkinleştirmek için [Azure kaynaklarını hazırlayın](tutorial-prepare-azure-for-hyperv.md) .
 4. [Şirket içi Hyper-V sunucularını hazırlama](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> VMM 'yi hazırlama bölümündeki adımları yürütmeniz gerekmez.
-
-5. [VM 'Ler için çoğaltmayı ayarlama](hyper-v-azure-tutorial.md)
+5. [VMM bulutundaki VM 'Ler için çoğaltmayı ayarlama](hyper-v-vmm-azure-tutorial.md)
 6. İsteğe bağlı ancak önerilir: [Dr detayına git](tutorial-dr-drill-azure.md)
 
 Hyper-V çoğaltmasını kullanma seçeneği 2 ' yi seçerek, aşağıdaki adımları yürütün:

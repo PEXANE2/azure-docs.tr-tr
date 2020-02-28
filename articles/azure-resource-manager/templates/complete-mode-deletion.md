@@ -2,13 +2,13 @@
 title: Tam modda silme
 description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma modu silme işlemini nasıl işleyeceğini gösterir.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207817"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664415"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -141,7 +141,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft. resources](#microsoftresources)
 > - [Microsoft. SaaS](#microsoftsaas)
-> - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft. Search](#microsoftsearch)
 > - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
@@ -297,6 +296,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | automationAccounts | Yes |
 > | automationAccounts/Configurations | Yes |
 > | automationAccounts/Jobs | Hayır |
+> | automationAccounts/Privateendpointconnectionproxy 'Leri | Hayır |
+> | automationAccounts/privateEndpointConnections | Hayır |
+> | automationAccounts/privateLinkResources | Hayır |
 > | automationAccounts/runbook 'lar | Yes |
 > | automationAccounts/softwareUpdateConfigurations | Hayır |
 > | automationAccounts/Web kancaları | Hayır |
@@ -484,7 +486,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | botServices/kanallar | Hayır |
 > | botServices/Connections | Hayır |
 > | diller | Hayır |
-> | şablonları | Hayır |
+> | templates | Hayır |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
@@ -517,7 +519,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Rezervler/takas | Hayır |
 > | oluşturamaz | Hayır |
 > | resourceProviders | Hayır |
-> | resources | Hayır |
+> | kaynaklar | Hayır |
 > | validateReservationOrder | Hayır |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -528,7 +530,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | CdnWebApplicationFirewallManagedRuleSets | Hayır |
 > | CdnWebApplicationFirewallPolicies | Yes |
 > | edgenodes | Hayır |
-> | profiles | Yes |
+> | profiller | Yes |
 > | Profiller/uç noktalar | Yes |
 > | Profiller/uç noktalar/customdomains | Hayır |
 > | Profiller/uç noktalar/kaynaklar | Hayır |
@@ -716,6 +718,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | kayıt defterleri/ımportımage | Hayır |
 > | kayıt defterleri/Privateendpointconnectionproxy 'Leri | Hayır |
 > | kayıt defterleri/Privateendpointconnectionproxy/doğrulama | Hayır |
+> | kayıt defterleri/privateEndpointConnections | Hayır |
 > | kayıt defterleri/privateLinkResources | Hayır |
 > | kayıt defterleri/queueBuild | Hayır |
 > | kayıt defterleri/regenerateCredential | Hayır |
@@ -755,7 +758,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | Uyarılar | Hayır |
-> | BillingAccounts | Hayır |
+> | billingAccounts | Hayır |
 > | Bütçeler | Hayır |
 > | Cloudbağlayıcıları | Hayır |
 > | Bağlayıcılar | Yes |
@@ -777,7 +780,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Sorgu | Hayır |
 > | kaydolunamadı | Hayır |
 > | Reportconfigs | Hayır |
-> | Raporlar | Hayır |
+> | Reports | Hayır |
 > | Ayarlar | Hayır |
 > | showbackRules | Hayır |
 > | Görünümler | Hayır |
@@ -1057,6 +1060,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | partnerNamespaces/eventChannels | Hayır |
 > | iş ortağı kayıtları | Yes |
 > | iş ortağı konuları | Yes |
+> | iş ortağı konuları/Eventabonelikleri | Hayır |
 > | Sistem konuları | Yes |
 > | Sistem konuları/Eventabonelikler | Hayır |
 > | konularıyla | Yes |
@@ -1082,7 +1086,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | özellikler | Hayır |
-> | sağlayıcıları | Hayır |
+> | sağlayıcılar | Hayır |
 
 ## <a name="microsoftgallery"></a>Microsoft. Gallery
 
@@ -1099,7 +1103,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | myareas/Areas/gallergıtems | Hayır |
 > | myarea/gallergıtems | Hayır |
 > | kaydolunamadı | Hayır |
-> | resources | Hayır |
+> | kaynaklar | Hayır |
 > | elde edilecek esourcesbyıd | Hayır |
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
@@ -1203,7 +1207,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Graph | Yes |
+> | Graf | Yes |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -1293,7 +1297,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | getEntities | Hayır |
 > | Yönetim grupları | Hayır |
-> | resources | Hayır |
+> | managementGroups/Settings | Hayır |
+> | kaynaklar | Hayır |
 > | startTenantBackfill | Hayır |
 > | tenantBackfillStatus | Hayır |
 
@@ -1554,6 +1559,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Yasallıklar | Hayır |
 > | peerAsns | Hayır |
 > | eşlemeleri | Yes |
+> | Peeringserviceülkeleriyle | Hayır |
 > | peeringServiceProviders | Hayır |
 > | peeringServices | Yes |
 
@@ -1634,10 +1640,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | sorgu | Yes |
+> | sorgular | Yes |
 > | resourceChangeDetails | Hayır |
 > | resourceChanges | Hayır |
-> | resources | Hayır |
+> | kaynaklar | Hayır |
 > | resourcesHistory | Hayır |
 > | subscriptionsStatus | Hayır |
 
@@ -1666,7 +1672,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | deploymentScripts/Günlükler | Hayır |
 > | bağlantılar | Hayır |
 > | notifyResourceJobs | Hayır |
-> | sağlayıcıları | Hayır |
+> | sağlayıcılar | Hayır |
 > | resourceGroups | Hayır |
 > | Aboneliklerin | Hayır |
 > | Kira | Hayır |
@@ -1678,13 +1684,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | uygulamalar | Yes |
 > | saasresources | Hayır |
-
-## <a name="microsoftscheduler"></a>Microsoft. Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | işlere | Yes |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2015,6 +2014,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | cihazlar | Yes |
+> | registeredSubscriptions | Hayır |
 > | larını | Hayır |
 > | satıcılar/SKU 'lar | Hayır |
 > | satıcılar/vnfs | Hayır |

@@ -1,18 +1,16 @@
 ---
 title: Application Insights ve Log Analytics tarafından kullanılan IP adresleri | Microsoft Docs
 description: Application Insights için gereken sunucu güvenlik duvarı özel durumları
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 02f1e5e3f3252ffa026d8dffe9fe83c9e5abe65b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7c1c65552e73fd79da0e8f0405e2ee55addff36b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899140"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656254"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights ve Log Analytics tarafından kullanılan IP adresleri
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) hizmeti, birkaç IP adresi kullanır. İzlemekte olduğunuz uygulama bir güvenlik duvarının arkasında barındırılıyorsa, bu adresleri bilmeniz gerekebilir.
@@ -30,7 +28,7 @@ ms.locfileid: "76899140"
 ## <a name="outgoing-ports"></a>Giden bağlantı noktaları
 Application Insights SDK ve/veya Durum İzleyicisi portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında bazı giden bağlantı noktalarını açmanız gerekir:
 
-| Amaç | URL | IP | Bağlantı Noktaları |
+| Amaç | URL'si | IP | Bağlantı Noktaları |
 | --- | --- | --- | --- |
 | Telemetri |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235 | 443 |
 | Canlı Ölçüm Akışı (Doğu ABD) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
@@ -43,7 +41,7 @@ Application Insights SDK ve/veya Durum İzleyicisi portala veri göndermesini sa
 ## <a name="status-monitor"></a>Durum İzleyicisi
 Durum İzleyicisi yapılandırma-yalnızca değişiklik yapıldığında gereklidir.
 
-| Amaç | URL | IP | Bağlantı Noktaları |
+| Amaç | URL'si | IP | Bağlantı Noktaları |
 | --- | --- | --- | --- |
 | Yapılandırma |`management.core.windows.net` | |`443` |
 | Yapılandırma |`management.azure.com` | |`443` |
@@ -178,7 +176,7 @@ East US
 ## <a name="application-insights-api"></a>Application Insights API 'SI
 | Amaç | URI | IP | Bağlantı Noktaları |
 | --- | --- | --- | --- |
-| eklentisi |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
+| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | API belgeleri |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | Azure işlem hattı ek açıklaması uzantısı |aigs1.aisvc.visualstudio.com |tir|443 |
 
@@ -186,7 +184,7 @@ East US
 
 | Amaç | URI | IP | Bağlantı Noktaları |
 | --- | --- | --- | --- |
-| eklentisi |api.loganalytics.io<br/>*. api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
+| API |api.loganalytics.io<br/>*. api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | API belgeleri |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights Analizi
@@ -226,7 +224,7 @@ Note: *. loganalytics.io etki alanının sahibi Log Analytics ekibine aittir.
 
 | Amaç | IP | Bağlantı Noktaları
 | --- | --- | --- |
-| Uyarılar | 23.96.11.4 | 443 |
+| Uyarı | 23.96.11.4 | 443 |
 
 ## <a name="profiler"></a>Profil Oluşturucu
 

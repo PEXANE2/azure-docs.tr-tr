@@ -4,18 +4,17 @@ description: Metin, grafikler, ızgaralar, ağaçlar ve grafikler dahil olmak ü
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394479"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658039"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Izleyici çalışma kitabı görselleştirmeleri
 
@@ -115,7 +114,7 @@ Aşağıdaki örnekte, simgeler, helemaps ve Spark-çubuklarını birleştiren v
 
 ![Günlük tabanlı kılavuz sorgusunun ekran görüntüsü](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Tiles
+## <a name="tiles"></a>Parça
 
 Kutucuklar, çalışma kitaplarında Özet verileri sunmak için çok faydalı bir yoldur. Aşağıdaki görüntüde, ayrıntılı bir kılavuzun en üstünde yer alan, uygulama düzeyi özetinin yaygın kullanım durumu gösterilmektedir.
 
@@ -197,7 +196,7 @@ Aşağıdaki örnekte, ağaç ızgarası olarak görselleştirilen kapsayıcı s
 | `Show the expander on` | Ağaç genişleticisindeki gösterileceği sütun. Ağaç kılavuzlarında çok okunabilir olmadıklarından kimlik ve üst kimlik alanlarını gizleyebilmek yaygındır. Bunun yerine, genişletici, varlığın adı gibi daha okunabilir bir değere sahip bir alanda görünür |
 | `Expand the top level of the tree` | İşaretliyse, ağaç Kılavuzu en üst düzeyde genişletilir. Varsayılan olarak daha fazla bilgi göstermek istiyorsanız kullanışlıdır |
 
-## <a name="graphs"></a>Grafikler
+## <a name="graphs"></a>Performansının
 
 Çalışma kitapları, izleme varlıkları arasındaki ilişkileri göstermek için günlüklerdeki verileri temel alarak rastgele grafikleri görselleştirmeyi destekler.
 

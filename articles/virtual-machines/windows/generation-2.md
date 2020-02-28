@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d88d5ecf8be3fadb36239b75d476a13abf39cbf7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161741"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659722"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -58,8 +58,9 @@ ms.locfileid: "77161741"
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8,0, 7,6, 7,5, 7,4, 7,0
-* Sent OS 8,0
+* RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
+* Sent OS 8,0, 7,7, 7,6, 7,5, 7,4
+* Oracle Linux 7,7, 7,7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
@@ -109,7 +110,7 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 1. **Kaynak oluştur**' u seçin.
 1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
 1. Gen2 destekleyen bir görüntü seçin.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’ tıklayın.
 1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
 1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
 1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.

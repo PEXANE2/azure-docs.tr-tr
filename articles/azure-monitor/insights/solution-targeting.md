@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de izleme çözümlerini hedefleme | Microsoft Docs
 description: İzleme çözümlerini hedefleme, izleme çözümlerini belirli bir aracı kümesiyle sınırlamanıza olanak tanır.  Bu makalede, bir kapsam yapılandırmasının nasıl oluşturulacağı ve bir çözüme nasıl uygulanacağı açıklanır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 04b47cb6079d9213c1a20425f62286f1b2aa778b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555318"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663241"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Izleyici 'de izleme çözümlerini hedefleme (Önizleme)
 Aboneliğinize bir izleme çözümü eklediğinizde, varsayılan olarak, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracılarına otomatik olarak dağıtılır.  Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz.  Bu makalede, çözümlerinize bir kapsam uygulamanıza olanak tanıyan bir özellik olan **çözüm hedeflemesi** 'nin nasıl kullanılacağı açıklanır.
@@ -63,7 +62,7 @@ Aşağıdaki işlemi kullanarak bir kapsam yapılandırması uygulayın.
 - Çözüm hedefleme yalnızca Microsoft tarafından sunulan çözümler için geçerlidir.  [Kendi veya iş ortakları tarafından oluşturulan](solutions-creating.md)çözümlere uygulanmaz.
 - Yalnızca Azure Izleyici 'ye doğrudan bağlanan aracıları filtreleyebilirsiniz.  Çözümler, bir kapsam yapılandırmasına dahil edilip edilmeksizin bağlı Operations Manager yönetim grubunun parçası olan aracılara otomatik olarak dağıtılır.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 Çözüm hedefleme, belirtilen ölçütlere uygun olsa da aşağıdaki çözümlerle kullanılamaz.
 
 - Aracı Durumu değerlendirmesi

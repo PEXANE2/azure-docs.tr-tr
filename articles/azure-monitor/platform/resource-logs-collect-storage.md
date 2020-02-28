@@ -3,17 +3,16 @@ title: Azure Kaynak günlüklerini depolama hesabına arşivleme | Microsoft Doc
 description: Depolama hesabında uzun süreli saklama için Azure Kaynak günlüklerinizi arşivlemeyi öğrenin.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467190"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658980"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure Kaynak günlüklerini depolama hesabına arşivleme
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar.  Bu makalede, verilerin arşivlenmek üzere korunması için Azure depolama hesabına platform günlüklerinin toplanması açıklanmaktadır.

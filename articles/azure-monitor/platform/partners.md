@@ -1,18 +1,15 @@
 ---
 title: Azure Izleyici ile tümleştirilen iş ortakları
 description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belgelere nasıl erişebileceğiniz hakkında bilgi edinin.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023880"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659467"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -89,7 +86,7 @@ DynaTrace OneAgent, Azure uzantı mekanizması aracılığıyla Azure VM 'Leri v
 
 [Belgelere gidin.][dynatrace-doc]
 
-## <a name="elastic"></a>Esnek
+## <a name="elastic"></a>Tik
 
 ![Elastik logo](./media/partners/elastic.png)
 
@@ -140,7 +137,7 @@ Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı ba
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 
-Daha fazla bilgi
+Daha fazla bilgi edinin
 - [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
@@ -247,7 +244,7 @@ Sumo Logic, tüm uygulama yaşam döngüsü ve yığını genelinde yapılandır
 
 ![Turbonomic logosu](./media/partners/Turbonomic.png)
 
-Turbonomic, performansı, maliyeti ve uyumluluğu gerçek zamanlı bir şekilde ve aynı anda en iyi hale getirerek hibrit bulutlarda iş yükü otomatikleştirmesi sağlar. Turbonomic, kuruluşların Azure 'da BT 'yi sürekli olarak iyileştirerek, uygulamaların SLA 'ları, depolama alanı ve ağ genelinde IaaS ve PaaS için daha fazla şey almasını sağlamak için ihtiyaç duydukları kaynakları sürekli aldığından emin olmaya yardımcı olur. katmanı. Kuruluşlar, geçişlerin benzetimini yapabilir, iş yüklerinin düzgün şekilde ölçeklendirilmesine ve veri merkezi kaynaklarını devre dışı bırakabilirler. Bu arada, hem performans hem de uyumluluğun yanı sıra bütçe dahilinde Azure 'a geçiş Turbonomic API tabanlıdır ve Azure ile şirket içi ortamda aracısız bir sanal makine olarak çalışır.
+Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olarak iyileştirerek karma bulutları için iş yükü otomasyonu sağlar. Turbonomic, kuruluşların Azure 'da BT 'yi sürekli olarak iyileştirerek, uygulamaların SLA 'ları, depolama alanı ve ağ genelinde IaaS ve PaaS için daha fazla şey almasını sağlamak için ihtiyaç duydukları kaynakları sürekli aldığından emin olmaya yardımcı olur. katmanı. Kuruluşlar, geçişlerin benzetimini yapabilir, iş yüklerinin düzgün şekilde ölçeklendirilmesine ve veri merkezi kaynaklarını devre dışı bırakabilirler. Bu arada, hem performans hem de uyumluluğun yanı sıra bütçe dahilinde Azure 'a geçiş Turbonomic, API odaklı ve Azure 'da ve şirket içinde aracısız bir VM olarak çalışır.
 
 [Daha fazla bilgi edinin.][turbonomic-doc]
 

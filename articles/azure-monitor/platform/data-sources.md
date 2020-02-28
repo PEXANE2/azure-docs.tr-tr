@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de veri kaynakları | Microsoft Docs
 description: Azure kaynaklarınızın ve üzerinde çalışan uygulamaların sistem durumunu ve performansını izlemek için kullanılabilecek verileri açıklar.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: d429a21f409afc9780b3cd90d16d46b4f4671912
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467360"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670534"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Izleyici için izleme verileri kaynakları
 Azure Izleyici, [günlükleri](data-platform-logs.md) ve [ölçümleri](data-platform-metrics.md)içeren [ortak bir izleme verileri platformunu](data-platform.md) temel alır. Bu platforma verilerin toplanması, birden fazla kaynaktan gelen verilerin Azure Izleyici 'de ortak bir araç kümesi kullanılarak analiz edilmesini sağlar. İzleme verileri belirli senaryoları desteklemek için başka konumlara de gönderilebilir ve bazı kaynaklar günlüklere veya ölçümlere toplanmadan önce diğer konumlara yazılabilir.

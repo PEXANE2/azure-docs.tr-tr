@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'den verileri görselleştirme | Microsoft Docs
 description: Azure Izleyici 'de depolanan ölçüm ve günlük verilerini görselleştirmek için kullanılabilen yöntemlerin bir özetini sağlar.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
-ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597828"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657818"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Izleyici 'den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
@@ -26,7 +25,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Pano](media/visualizations/dashboard.png)
 
-### <a name="advantages"></a>Üstünlü
+### <a name="advantages"></a>Yararları
 - Azure ile derin tümleştirme. Görselleştirmeler, Ölçüm Gezgini, Log Analytics ve Application Insights dahil olmak üzere birden çok Azure sayfasında bulunan panolara sabitlenebilir.
 - Hem ölçümleri hem de günlükleri destekler.
 - [Ölçüm Gezgini](platform/metrics-charts.md), [günlük sorguları](log-query/log-query-overview.md)ve Application Insights ' deki [haritalar](app/app-map.md) ve kullanılabilirliğin çıktısı dahil olmak üzere birden fazla kaynaktaki verileri birleştirin.
@@ -48,9 +47,9 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 ## <a name="azure-monitor-views"></a>Azure Izleyici görünümleri
 [Azure izleyici 'de görünümler](platform/view-designer.md) , günlük verileriyle özel görselleştirmeler oluşturmanıza olanak sağlar. Bunlar, topladıkları verileri sunmak için [çözümler izlenerek](insights/solutions.md) kullanılır.
 
-![Görüntüle](media/visualizations/view.png)
+![Görünüm](media/visualizations/view.png)
 
-### <a name="advantages"></a>Üstünlü
+### <a name="advantages"></a>Yararları
 - Günlük verileri için zengin görselleştirmeler.
 - Diğer kaynak gruplarına ve aboneliklerine aktarmak için görünümleri dışa ve içeri aktarma.
 - Çalışma alanları ve izleme çözümleri ile Azure Izleyici yönetim modeli ile tümleşir.
@@ -71,7 +70,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Kitabının](media/visualizations/workbook.png)
 
-### <a name="advantages"></a>Üstünlü
+### <a name="advantages"></a>Yararları
 - Hem ölçümleri hem de günlükleri destekler.
 - , Tablodaki bir öğenin seçilmesi ilişkili grafikleri ve görselleştirmeleri dinamik olarak güncelleştirecek etkileşimli raporları etkinleştiren parametreleri destekler.
 - Belge benzeri akış.
@@ -89,7 +88,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Power BI](media/visualizations/power-bi.png)
 
-### <a name="advantages"></a>Üstünlü
+### <a name="advantages"></a>Yararları
 - Zengin görselleştirmeler.
 - Yakınlaştırma ve çapraz filtreleme dahil olmak üzere kapsamlı etkileşim.
 - Kuruluşunuz genelinde kolayca paylaşabilirsiniz.
@@ -109,7 +108,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Grafana](media/visualizations/grafana.png)
 
-### <a name="advantages"></a>Üstünlü
+### <a name="advantages"></a>Yararları
 - Zengin görselleştirmeler.
 - Veri kaynaklarının zengin ekosistemi.
 - Yakınlaştırma dahil veri etkileşimi.
@@ -123,7 +122,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 ## <a name="build-your-own-custom-application"></a>Kendi özel uygulamanızı oluşturun
 Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi özel web sitelerinizi ve uygulamalarınızı oluşturmanıza olanak sağlayan herhangi bir REST istemcisi kullanarak API 'leri aracılığıyla erişebilirsiniz.
 
-### <a name="advantages"></a>Üstünlü
+### <a name="advantages"></a>Yararları
 - Kullanıcı arabirimi, görselleştirme, etkileşim ve özelliklerde esnekliği tamamen yapın.
 - Ölçümleri ve günlük verilerini diğer veri kaynaklarıyla birleştirin.
 

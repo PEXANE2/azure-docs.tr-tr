@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de çözümleri izleme | Microsoft Docs
 description: Azure Izleyici 'de izleme çözümleri, belirli bir sorun alanı etrafında ölçüm sağlayan bir mantık, görselleştirme ve veri alma kuralları koleksiyonudur.  Bu makale, izleme çözümlerini yükleme ve kullanma hakkında bilgi sağlar.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 7ea7051b24deeddea25b1db771b73a226f650067
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401160"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663004"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 İzleme çözümleri, belirli bir uygulama veya hizmetin işlemine ek Öngörüler sağlamak için Azure 'daki hizmetlerden yararlanır. Bu makalede, Azure 'daki çözümleri izleme hakkında kısa bir genel bakış ve bunları kullanma ve yükleme hakkındaki ayrıntılar sunulmaktadır.
@@ -22,15 +21,15 @@ ms.locfileid: "75401160"
 
 İzleme çözümleri genellikle günlük verilerini toplar ve toplanan verileri çözümlemek için sorgular ve görünümler sağlar. Ayrıca uygulama veya hizmetin ilgili eylemleri gerçekleştirmek için Azure Otomasyonu gibi diğer hizmetlerin yararlanarak.
 
-Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar. Microsoft tarafından sağlanan çözümleri yanı sıra, iş ortaklarımız ve müşterilerimiz için [yönetim çözümleri oluşturma](solutions-creating.md) kendi ortamında kullanılabilir veya topluluk aracılığıyla kullanıma sunulan için.
+Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar. Microsoft tarafından sağlanan çözümlere ek olarak, iş ortakları ve müşteriler kendi ortamlarında kullanılmak üzere [yönetim çözümleri oluşturabilir](solutions-creating.md) veya topluluk aracılığıyla müşteriler tarafından kullanılabilir hale getirilebilir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>İzleme çözümlerini kullanma
 Çalışma alanında yüklü her bir çözümün kutucuğunu görüntülemek için Azure Izleyici 'de **genel bakış** sayfasını açın. 
 
-1. [Azure portalına](https://ms.portal.azure.com) gidin. **İzleme**araması yapın ve seçin.
-1. Altında **Insights** menüsünde **daha fazla**.
+1. [Azure Portal](https://ms.portal.azure.com) gidin. **İzleme**araması yapın ve seçin.
+1. **Öngörüler** menüsünde, **daha fazla**' yı seçin.
 1. Açılır liste kutusu ekranın en üstünde çalışma alanı ya da kutucuklar için kullanılan zaman aralığını değiştirmek için kullanın.
 1. Bir çözümün kutucuğuna tıklayarak toplanan verilerin daha ayrıntılı analizini içeren görünümünü açın.
 
@@ -41,7 +40,7 @@ Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme ç
 ## <a name="list-installed-monitoring-solutions"></a>Yüklü izleme çözümlerini Listele 
 Aboneliğinizde yüklü izleme çözümlerini listelemek için aşağıdaki yordamı kullanın.
 
-1. [Azure portalına](https://ms.portal.azure.com) gidin. **Çözümler**arayın ve seçin.
+1. [Azure Portal](https://ms.portal.azure.com) gidin. **Çözümler**arayın ve seçin.
 1. Tüm çalışma alanlarında yüklü çözümleri listelenmiştir. Çözümün adının ardından yüklendiği çalışma alanının adı gelir.
 1. Açılır liste kutusu ekranın en üstünde, abonelik veya kaynak grubuna göre filtrele için kullanın.
 
@@ -55,12 +54,12 @@ Kendi Özet sayfasını açmak için bir çözümün adına tıklayın. Bu sayfa
 
 
 ## <a name="install-a-monitoring-solution"></a>İzleme çözümü yüklemesi
-Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://azuremarketplace.microsoft.com)' nden edinebilirsiniz. Kullanılabilir çözümler arayabilir ve bunları aşağıdaki yordamı kullanarak yükleyin. Bir çözüm yüklediğinizde seçmelisiniz bir [Log Analytics çalışma alanı](../platform/manage-access.md) çözüm yükleneceği ve verilerinin nerede toplanacağını.
+Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://azuremarketplace.microsoft.com)' nden edinebilirsiniz. Kullanılabilir çözümler arayabilir ve bunları aşağıdaki yordamı kullanarak yükleyin. Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../platform/manage-access.md) seçmeniz gerekir.
 
-1. Gelen [aboneliğiniz için çözümlerin listesini](#list-installed-monitoring-solutions), tıklayın **Ekle**.
+1. [Aboneliğiniz için çözümler listesinden](#list-installed-monitoring-solutions) **Ekle**' ye tıklayın.
 1. Bir çözüme gözatıp arayın. Ayrıca, [Bu arama bağlantısından](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)çözümlere da gidebilirsiniz.
 1. İstediğiniz izleme çözümünü bulun ve açıklamasını okuyun.
-1. Tıklayın **Oluştur** yükleme işlemini başlatmak için.
+1. Yükleme işlemini başlatmak için **Oluştur** ' a tıklayın.
 1. Yükleme işlemi başladığında Log Analytics çalışma alanını belirtmeniz ve çözüm için gerekli tüm yapılandırmaları sağlamanız istenir.
 
 ![Çözüm yükleme](media/solutions/install-solution.png)
@@ -68,17 +67,17 @@ Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://az
 ### <a name="install-a-solution-from-the-community"></a>Topluluktan bir çözüm yükleyin
 Topluluk üyeleri, yönetim çözümleri Azure hızlı başlangıç şablonları gönderebilirsiniz. Bu çözümler doğrudan yükleyebilir veya bunları daha sonra yükleme için şablonları indirin.
 
-1. Açıklanan işlemi izleyin [Log Analytics çalışma alanını ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) bir çalışma alanı ve hesabı bağlamak için.
-2. Git [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/). 
+1. Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
+2. [Azure hızlı başlangıç şablonlarına](https://azure.microsoft.com/documentation/templates/)gidin. 
 3. İlginizi çeken bir çözüm arayın.
 4. Çözüm sonuçları ayrıntılarını görüntülemek için seçin.
-5. Tıklayın **azure'a Dağıt** düğmesi.
+5. **Azure 'A dağıt** düğmesine tıklayın.
 6. Çözümdeki herhangi bir parametre için bir kaynak grubu ve konum değerlere ek olarak gibi bilgiler sağlamanız istenir.
-7. Tıklayın **satın alma** çözümü yüklemek için.
+7. Çözümü yüklemek için **satın al** ' a tıklayın.
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics çalışma alanı ve Otomasyon hesabı
-Tüm izleme çözümleri, çözüm tarafından toplanan verileri depolamak ve günlük aramalarını ve görünümlerini barındırmak için bir [Log Analytics çalışma alanı](../platform/manage-access.md) gerektirir. Ayrıca bazı çözümler gerektiren bir [Otomasyon hesabı](../../automation/automation-security-overview.md#automation-account-overview) runbook'ları ve ilgili kaynakları içerecek şekilde. Çalışma alanı ve hesabı aşağıdaki gereksinimleri karşılaması gerekir.
+Tüm izleme çözümleri, çözüm tarafından toplanan verileri depolamak ve günlük aramalarını ve görünümlerini barındırmak için bir [Log Analytics çalışma alanı](../platform/manage-access.md) gerektirir. Bazı çözümler ayrıca runbook 'ları ve ilgili kaynakları içeren bir [Otomasyon hesabı](../../automation/automation-security-overview.md#automation-account-overview) gerektirir. Çalışma alanı ve hesabı aşağıdaki gereksinimleri karşılaması gerekir.
 
 * Her bir çözümün yüklenmesi yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı kullanabilirsiniz. Çözüm birden çok çalışma alanı içinde ayrı olarak yükleyebilirsiniz.
 * Bir çözüm bir Otomasyon hesabı gerektiriyorsa, ardından Log Analytics çalışma alanını ve Otomasyon hesabı birbirine bağlı olmalıdır. Bir Log Analytics çalışma alanı yalnızca bir Otomasyon hesabına bağlı ve bir Otomasyon hesabı yalnızca bir Log Analytics çalışma alanına bağlı.
@@ -94,11 +93,11 @@ Log Analytics çalışma alanını ve Otomasyon hesabının nasıl belirttiğini
 Aşağıdaki yordamı kullanarak bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki bağlantı doğrulayabilirsiniz.
 
 1. Azure portalında Otomasyon hesabı seçin.
-1. Kaydırma **ilgili kaynakları** menüsünün bölümünde.
-1. Varsa **çalışma** ayarı etkinse, sonra bu hesabı bir Log Analytics çalışma alanına bağlı. Tıklayabilirsiniz **çalışma** çalışma alanının ayrıntılarını görüntülemek için.
+1. Menünün **Ilgili kaynaklar** bölümüne gidin.
+1. **Çalışma alanı** ayarı etkinse, bu hesap bir Log Analytics çalışma alanına bağlanır. Çalışma alanının ayrıntılarını görüntülemek için **çalışma alanı** ' na tıklayabilirsiniz.
 
 ## <a name="remove-a-monitoring-solution"></a>İzleme çözümünü kaldırma
-Yüklü çözümünü kaldırmak için bulmak [yüklü çözümlerinin listesini](#list-installed-monitoring-solutions). Kendi Özet sayfasını açın ve ardından çözümün adına tıklayarak **Sil**.
+Yüklü bir çözümü kaldırmak için, [yüklü çözümler listesinde](#list-installed-monitoring-solutions)bulun. Çözümün adına tıklayarak Özet sayfasını açın ve ardından **Sil**' e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

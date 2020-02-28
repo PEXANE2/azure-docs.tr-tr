@@ -3,16 +3,16 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705505"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660844"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
-Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır.
+Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları hakkında sorunlar artıyor. Bu güvenlik sorunları hem para hem de veri bakımından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır.
 
 Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün bekletmesi müşteriye hiçbir ücret vermez. Azure, verilerinizin güvenliğini sağlamak için [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) kullanarak bekleyen tüm yedeklenen verileri de şifreler.
 
@@ -133,7 +133,7 @@ Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' olarak döndürülec
 
 ## <a name="disabling-soft-delete"></a>Geçici silme devre dışı bırakılıyor
 
-Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silinmeden ve yeniden korumadan önce 14 gün önce bekleyemez (örneğin, bir test ortamında). Yalnızca bir yedekleme Yöneticisi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korumalı öğelerin tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
+Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silinmeden ve yeniden korumadan önce 14 gün önce bekleyemez (örneğin, bir test ortamında). Yalnızca kasa sahibi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korunan öğelerin gelecekteki tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliği devre dışı bırakmadan önce geçici olarak silinen durumunda bulunan yedekleme verileri, 14 günlük süre boyunca geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal kullanarak geçici silme devre dışı bırakılıyor
 
@@ -236,7 +236,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
-### <a name="using-rest-api"></a>REST API'sini kullanma
+### <a name="using-rest-api"></a>REST API kullanma
 
 Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar geçici olarak silinmiş durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
 

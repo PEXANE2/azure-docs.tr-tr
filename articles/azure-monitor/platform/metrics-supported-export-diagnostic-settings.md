@@ -2,18 +2,15 @@
 title: Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
 description: Azure Izleyici ile her kaynak türü için kullanılabilen ölçümlerin listesi.
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
-author: rboucher
-ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: e530663ef4ebfbef9371c48f4c70578b14a63605
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368243"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661371"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
 
@@ -120,28 +117,28 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft.ApiManagement/service  |  UnauthorizedRequests  |  Yetkisiz ağ geçidi Istekleri (kullanım dışı)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  AppCpuUsagePercentage  |  Uygulama CPU kullanım yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  AppMemoryCommitted  |  Atanan uygulama belleği  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  AppMemoryMax  |  En fazla uygulama belleği  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  AppMemoryMax  |  En fazla uygulama belleği  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  Appmemorykullanıldı  |  Kullanılan uygulama belleği  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  GCPauseTotalCount  |  GC duraklatma sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  GCPauseTotalTime  |  GC duraklatma toplam süre  |  Milisaniye  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  MaxOldGenMemoryPoolBytes  |  En fazla kullanılabilir eski nesil veri boyutu  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  OldGenMemoryPoolBytes  |  Eski nesil veri boyutu  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  OldGenPromotedBytes  |  Eski nesil veri boyutuna yükselt  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  OldGenPromotedBytes  |  Eski nesil veri boyutuna yükselt  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  SystemCpuUsagePercentage  |  Sistem CPU kullanım yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatErrorCount  |  Tomcat genel hatası  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  Tomcatreceived baytları  |  Tomcat alınan toplam bayt sayısı  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatRequestMaxTime  |  Tomcat Isteği maksimum zamanı  |  Milisaniye  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatRequestMaxTime  |  Tomcat Isteği maksimum zamanı  |  Milisaniye  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatRequestTotalCount  |  Tomcat Isteği toplam sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatRequestTotalTime  |  Tomcat Isteği toplam kez  |  Milisaniye  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatResponseAvgTime  |  Tomcat Isteği ortalama zamanı  |  Milisaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSentBytes  |  Tomcat gönderilen toplam bayt sayısı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionActiveCurrentCount  |  Tomcat oturum etkin sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionActiveMaxCount  |  Tomcat oturumu en fazla etkin sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionAliveMaxTime  |  Tomcat oturumu maksimum etkin süresi  |  Milisaniye  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionAliveMaxTime  |  Tomcat oturumu maksimum etkin süresi  |  Milisaniye  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionCreatedCount  |  Tomcat oturum oluşturma sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionExpiredCount  |  Tomcat oturumunun süre dolma sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  TomcatSessionRejectedCount  |  Tomcat oturumu reddedildi sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  YoungGenPromotedBytes  |  Küçük ölçekli oluşturma veri boyutuna yükselt  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. AppPlatform/yay  |  YoungGenPromotedBytes  |  Küçük ölçekli oluşturma veri boyutuna yükselt  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Automation/automationAccounts  |  TotalJob  |  Toplam Iş sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Automation/automationAccounts  |  Totalupdatedeploymentmachinerçalıştırır  |  Toplam güncelleştirme dağıtım makinesi çalıştırması  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  Toplam güncelleştirme dağıtımı çalıştırmaları  |  Sayı  |  Toplam | 
@@ -194,7 +191,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  Connectionkabul edildi  |  Kabul edilen bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  ConnectionActive  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  Connectionişlenmiş  |  İşlenmiş bağlantılar  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  CpuUsagePercentageInDouble  |  CPU kullanım yüzdesi  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  CpuUsagePercentageInDouble  |  CPU kullanım yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  Ioreadbytes  |  GÇ okuma baytları  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  IOWriteBytes  |  GÇ Yazma baytları  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Blockzincirine/blockchainMembers  |  MemoryLimit  |  Bellek sınırı  |  Bayt  |  Ortalama | 
@@ -229,40 +226,40 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses7  |  Önbellekte bulunamayanlar (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses8  |  Önbellekte bulunamayanlar (parça 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cachemisses9  |  Önbellekte bulunamayanlar (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead  |  Önbellek Okuma  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead0  |  Önbellek Okuma (parça 0)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead1  |  Önbellek Okuma (parça 1)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead2  |  Önbellek Okuma (parça 2)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead3  |  Önbellek Okuma (parça 3)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead4  |  Önbellek Okuma (parça 4)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead5  |  Önbellek Okuma (parça 5)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead6  |  Önbellek Okuma (parça 6)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead7  |  Önbellek Okuma (parça 7)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead8  |  Önbellek Okuma (parça 8)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead9  |  Önbellek Okuma (parça 9)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite  |  Önbellek yazma  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite0  |  Önbellek yazma (parça 0)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite1  |  Önbellek yazma (parça 1)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite2  |  Önbellek yazma (parça 2)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite3  |  Önbellek yazma (parça 3)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite4  |  Önbellek yazma (parça 4)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite5  |  Önbellek yazma (parça 5)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite6  |  Önbellek yazma (parça 6)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite7  |  Önbellek yazma (parça 7)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite8  |  Önbellek yazma (parça 8)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite9  |  Önbellek yazma (parça 9)  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedistemcileri  |  Bağlı Istemciler  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients0  |  Bağlı Istemciler (parça 0)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients1  |  Bağlı Istemciler (parça 1)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients2  |  Bağlı Istemciler (parça 2)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients3  |  Bağlı Istemciler (parça 3)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients4  |  Bağlı Istemciler (parça 4)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients5  |  Bağlı Istemciler (parça 5)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients6  |  Bağlı Istemciler (parça 6)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients7  |  Bağlı Istemciler (parça 7)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients8  |  Bağlı Istemciler (parça 8)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients9  |  Bağlı Istemciler (parça 9)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  hatalar  |  Hatalar  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead  |  Önbellek Okuma  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead0  |  Önbellek Okuma (parça 0)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead1  |  Önbellek Okuma (parça 1)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead2  |  Önbellek Okuma (parça 2)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead3  |  Önbellek Okuma (parça 3)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead4  |  Önbellek Okuma (parça 4)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead5  |  Önbellek Okuma (parça 5)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead6  |  Önbellek Okuma (parça 6)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead7  |  Önbellek Okuma (parça 7)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead8  |  Önbellek Okuma (parça 8)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheRead9  |  Önbellek Okuma (parça 9)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite  |  Önbellek yazma  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite0  |  Önbellek yazma (parça 0)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite1  |  Önbellek yazma (parça 1)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite2  |  Önbellek yazma (parça 2)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite3  |  Önbellek yazma (parça 3)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite4  |  Önbellek yazma (parça 4)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite5  |  Önbellek yazma (parça 5)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite6  |  Önbellek yazma (parça 6)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite7  |  Önbellek yazma (parça 7)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite8  |  Önbellek yazma (parça 8)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  cacheWrite9  |  Önbellek yazma (parça 9)  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedistemcileri  |  Bağlı Istemciler  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients0  |  Bağlı Istemciler (parça 0)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients1  |  Bağlı Istemciler (parça 1)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients2  |  Bağlı Istemciler (parça 2)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients3  |  Bağlı Istemciler (parça 3)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients4  |  Bağlı Istemciler (parça 4)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients5  |  Bağlı Istemciler (parça 5)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients6  |  Bağlı Istemciler (parça 6)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients7  |  Bağlı Istemciler (parça 7)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients8  |  Bağlı Istemciler (parça 8)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  connectedclients9  |  Bağlı Istemciler (parça 9)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  hatalar  |  Hatalar  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  çıkarılan anahtarlar  |  Çıkarılan anahtarlar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys0  |  Çıkarılan anahtarlar (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  evictedkeys1  |  Çıkarılan anahtarlar (parça 1)  |  Sayı  |  Toplam | 
@@ -296,39 +293,39 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands7  |  Alır (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands8  |  Al (Shard 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  getcommands9  |  Alır (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond  |  İşlem/saniye  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond0  |  Saniyedeki işlem (parça 0)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond1  |  Saniyedeki işlem (parça 1)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond2  |  Saniyedeki işlem (parça 2)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond3  |  Saniyedeki işlem (parça 3)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond4  |  Saniyedeki işlem (parça 4)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond5  |  Saniyedeki işlem (parça 5)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond6  |  Saniyedeki işlem (parça 6)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond7  |  Saniyedeki işlem (parça 7)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond8  |  Saniyedeki işlem (parça 8)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond9  |  Saniyedeki işlem (parça 9)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime  |  CPU  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime0  |  CPU (parça 0)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime1  |  CPU (parça 1)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime2  |  CPU (parça 2)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime3  |  CPU (parça 3)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime4  |  CPU (parça 4)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime5  |  CPU (parça 5)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime6  |  CPU (parça 6)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime7  |  CPU (parça 7)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime8  |  CPU (parça 8)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime9  |  CPU (parça 9)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  Sunucuyükü  |  Sunucu yükü  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad0  |  Sunucu yükü (parça 0)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad1  |  Sunucu yükü (parça 1)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad2  |  Sunucu yükü (parça 2)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad3  |  Sunucu yükü (parça 3)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad4  |  Sunucu yükü (parça 4)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad5  |  Sunucu yükü (parça 5)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad6  |  Sunucu yükü (parça 6)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad7  |  Sunucu yükü (parça 7)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad8  |  Sunucu yükü (parça 8)  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad9  |  Sunucu yükü (parça 9)  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond  |  İşlem/saniye  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond0  |  Saniyedeki işlem (parça 0)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond1  |  Saniyedeki işlem (parça 1)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond2  |  Saniyedeki işlem (parça 2)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond3  |  Saniyedeki işlem (parça 3)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond4  |  Saniyedeki işlem (parça 4)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond5  |  Saniyedeki işlem (parça 5)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond6  |  Saniyedeki işlem (parça 6)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond7  |  Saniyedeki işlem (parça 7)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond8  |  Saniyedeki işlem (parça 8)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  operationsPerSecond9  |  Saniyedeki işlem (parça 9)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime  |  CPU  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime0  |  CPU (parça 0)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime1  |  CPU (parça 1)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime2  |  CPU (parça 2)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime3  |  CPU (parça 3)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime4  |  CPU (parça 4)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime5  |  CPU (parça 5)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime6  |  CPU (parça 6)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime7  |  CPU (parça 7)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime8  |  CPU (parça 8)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  percentProcessorTime9  |  CPU (parça 9)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  Sunucuyükü  |  Sunucu yükü  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad0  |  Sunucu yükü (parça 0)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad1  |  Sunucu yükü (parça 1)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad2  |  Sunucu yükü (parça 2)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad3  |  Sunucu yükü (parça 3)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad4  |  Sunucu yükü (parça 4)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad5  |  Sunucu yükü (parça 5)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad6  |  Sunucu yükü (parça 6)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad7  |  Sunucu yükü (parça 7)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad8  |  Sunucu yükü (parça 8)  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  serverLoad9  |  Sunucu yükü (parça 9)  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  SetCommands  |  Yapar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands0  |  Kümeler (parça 0)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  setcommands1  |  Kümeler (parça 1)  |  Sayı  |  Toplam | 
@@ -351,53 +348,53 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsprocessed7  |  Toplam Işlem (parça 7)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsprocessed8  |  Toplam Işlem (parça 8)  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalcommandsprocessed9  |  Toplam Işlem (parça 9)  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys  |  Toplam anahtar sayısı  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys0  |  Toplam anahtar (parça 0)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys1  |  Toplam anahtar (parça 1)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys2  |  Toplam anahtar (parça 2)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys3  |  Toplam anahtar (parça 3)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys4  |  Toplam anahtar (parça 4)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys5  |  Toplam anahtar (parça 5)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys6  |  Toplam anahtar (parça 6)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys7  |  Toplam anahtar (parça 7)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys8  |  Toplam anahtar (Shard 8)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys9  |  Toplam anahtar (parça 9)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory  |  Kullanılan bellek  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory0  |  Kullanılan bellek (parça 0)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory1  |  Kullanılan bellek (parça 1)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory2  |  Kullanılan bellek (parça 2)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory3  |  Kullanılan bellek (parça 3)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory4  |  Kullanılan bellek (parça 4)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory5  |  Kullanılan bellek (parça 5)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory6  |  Kullanılan bellek (parça 6)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory7  |  Kullanılan bellek (parça 7)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory8  |  Kullanılan bellek (parça 8)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory9  |  Kullanılan bellek (parça 9)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemorypercentage  |  Kullanılan bellek yüzdesi  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss  |  Kullanılan bellek RSS  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss0  |  Kullanılan bellek RSS (parça 0)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss1  |  Kullanılan bellek RSS (parça 1)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss2  |  Kullanılan bellek RSS (parça 2)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss3  |  Kullanılan bellek RSS (parça 3)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss4  |  Kullanılan bellek RSS (parça 4)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss5  |  Kullanılan bellek RSS (parça 5)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss6  |  Kullanılan bellek RSS (parça 6)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss7  |  Kullanılan bellek RSS (parça 7)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss8  |  Kullanılan bellek RSS (parça 8)  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss9  |  Kullanılan bellek RSS (parça 9)  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys  |  Toplam anahtar sayısı  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys0  |  Toplam anahtar (parça 0)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys1  |  Toplam anahtar (parça 1)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys2  |  Toplam anahtar (parça 2)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys3  |  Toplam anahtar (parça 3)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys4  |  Toplam anahtar (parça 4)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys5  |  Toplam anahtar (parça 5)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys6  |  Toplam anahtar (parça 6)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys7  |  Toplam anahtar (parça 7)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys8  |  Toplam anahtar (Shard 8)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  totalkeys9  |  Toplam anahtar (parça 9)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory  |  Kullanılan bellek  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory0  |  Kullanılan bellek (parça 0)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory1  |  Kullanılan bellek (parça 1)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory2  |  Kullanılan bellek (parça 2)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory3  |  Kullanılan bellek (parça 3)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory4  |  Kullanılan bellek (parça 4)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory5  |  Kullanılan bellek (parça 5)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory6  |  Kullanılan bellek (parça 6)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory7  |  Kullanılan bellek (parça 7)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory8  |  Kullanılan bellek (parça 8)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemory9  |  Kullanılan bellek (parça 9)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemorypercentage  |  Kullanılan bellek yüzdesi  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss  |  Kullanılan bellek RSS  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss0  |  Kullanılan bellek RSS (parça 0)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss1  |  Kullanılan bellek RSS (parça 1)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss2  |  Kullanılan bellek RSS (parça 2)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss3  |  Kullanılan bellek RSS (parça 3)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss4  |  Kullanılan bellek RSS (parça 4)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss5  |  Kullanılan bellek RSS (parça 5)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss6  |  Kullanılan bellek RSS (parça 6)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss7  |  Kullanılan bellek RSS (parça 7)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss8  |  Kullanılan bellek RSS (parça 8)  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Cache/redsıs  |  usedmemoryRss9  |  Kullanılan bellek RSS (parça 9)  |  Bayt  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Disk okuma bayt/sn  |  Disk okuma  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Disk okuma Işlemi/sn  |  Disk okuma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Disk yazma bayt/sn  |  Disk yazma  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Disk yazma Işlemi/sn  |  Disk yazma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Ağ İçine  |  Ağ İçine  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Ağ Dışına  |  Ağ Dışına  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Ağ Girişi  |  Ağ Girişi  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  Ağ Çıkışı  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. ClassicCompute/domainNames/yuvalar/roller  |  CPU yüzdesi  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Disk okuma bayt/sn  |  Disk okuma  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Disk okuma Işlemi/sn  |  Disk okuma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Disk yazma bayt/sn  |  Disk yazma  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Disk yazma Işlemi/sn  |  Disk yazma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Ağ İçine  |  Ağ İçine  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Ağ Dışına  |  Ağ Dışına  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Ağ Girişi  |  Ağ Girişi  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  Ağ Çıkışı  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. ClassicCompute/virtualMachines  |  CPU yüzdesi  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. ClassicStorage/storageAccounts  |  Kullanılabilirlik  |  Kullanılabilirlik  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. ClassicStorage/storageAccounts  |  Çıkış  |  Çıkış  |  Bayt  |  Toplam | 
@@ -452,7 +449,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  ClientErrors  |  İstemci hataları  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  Dataın  |  Veri Girişi  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  Veri çıkışı  |  Giden Veriler  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  Gecikme  |  Gecikme  |  Mayacak  |  Ortalama | 
+| **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  Gecikme süresi  |  Gecikme süresi  |  Mayacak  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  ServerErrors  |  Sunucu hataları  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  SpeechSessionDuration  |  Konuşma oturumu süresi  |  Saniyeden  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.CognitiveServices/accounts  |  Başarılı çağrılar  |  Başarılı çağrılar  |  Sayı  |  Toplam | 
@@ -473,9 +470,9 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Disk yazma Işlemi/sn  |  Disk yazma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Gelen akışlar  |  Gelen akışlar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Gelen akışlar en yüksek oluşturma oranı  |  Gelen akışlar en yüksek oluşturma oranı (Önizleme)  |  Sayaçpersaniye  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Ağ İçine  |  Faturalanabilir (kullanım dışı) ağ  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Ağ Girişi  |  Faturalanabilir (kullanım dışı) ağ  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Toplam ağ  |  Toplam ağ  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Ağ Dışına  |  Ağdan çıkış faturalandırılabilir (kullanım dışı)  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Ağ Çıkışı  |  Ağdan çıkış faturalandırılabilir (kullanım dışı)  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  Toplam ağ çıkışı  |  Toplam ağ çıkışı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  İşletim sistemi diski sıra derinliği  |  İşletim sistemi diski sıra derinliği (Önizleme)  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachines  |  İşletim sistemi diski okuma bayt/sn  |  İşletim sistemi diski okuma bayt/sn (Önizleme)  |  Sayaçpersaniye  |  Ortalama | 
@@ -512,9 +509,9 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Disk yazma Işlemi/sn  |  Disk yazma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Gelen akışlar  |  Gelen akışlar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Gelen akışlar en yüksek oluşturma oranı  |  Gelen akışlar en yüksek oluşturma oranı (Önizleme)  |  Sayaçpersaniye  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Ağ İçine  |  Faturalanabilir (kullanım dışı) ağ  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Ağ Girişi  |  Faturalanabilir (kullanım dışı) ağ  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Toplam ağ  |  Toplam ağ  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Ağ Dışına  |  Ağdan çıkış faturalandırılabilir (kullanım dışı)  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Ağ Çıkışı  |  Ağdan çıkış faturalandırılabilir (kullanım dışı)  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  Toplam ağ çıkışı  |  Toplam ağ çıkışı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  İşletim sistemi diski sıra derinliği  |  İşletim sistemi diski sıra derinliği (Önizleme)  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets  |  İşletim sistemi diski okuma bayt/sn  |  İşletim sistemi diski okuma bayt/sn (Önizleme)  |  Sayaçpersaniye  |  Ortalama | 
@@ -551,9 +548,9 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Disk yazma Işlemi/sn  |  Disk yazma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Gelen akışlar  |  Gelen akışlar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Gelen akışlar en yüksek oluşturma oranı  |  Gelen akışlar en yüksek oluşturma oranı (Önizleme)  |  Sayaçpersaniye  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Ağ İçine  |  Faturalanabilir (kullanım dışı) ağ  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Ağ Girişi  |  Faturalanabilir (kullanım dışı) ağ  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Toplam ağ  |  Toplam ağ  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Ağ Dışına  |  Ağdan çıkış faturalandırılabilir (kullanım dışı)  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Ağ Çıkışı  |  Ağdan çıkış faturalandırılabilir (kullanım dışı)  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Toplam ağ çıkışı  |  Toplam ağ çıkışı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  İşletim sistemi diski sıra derinliği  |  İşletim sistemi diski sıra derinliği (Önizleme)  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  İşletim sistemi diski okuma bayt/sn  |  İşletim sistemi diski okuma bayt/sn (Önizleme)  |  Sayaçpersaniye  |  Ortalama | 
@@ -608,17 +605,17 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Activitycancelledçalıştırmaları  |  İptal edilen etkinlik ölçümleri çalıştırıyor  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Activityfailedçalıştırmaları  |  Başarısız etkinlik çalıştırma ölçümleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  ActivitySucceededRuns  |  Başarılı etkinlik ölçümleri çalıştırıyor  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Factorysizeingbits  |  Toplam fabrika boyutu (GB birimi)  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Factorysizeingbits  |  Toplam fabrika boyutu (GB birimi)  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Integrationruntimekullanılabilirliği Blememory  |  Tümleştirme çalışma zamanı kullanılabilir belleği  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Integrationruntimeaveragetaskpickupdelay  |  Tümleştirme çalışma zamanı sıra süresi  |  Saniyeden  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Integrationruntimecpuyüzdesi  |  Tümleştirme çalışma zamanı CPU kullanımı  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Integrationruntimequeuelength  |  Tümleştirme çalışma zamanı sıra uzunluğu  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Maxallowedfactorysizeingbits  |  İzin verilen en yüksek fabrika boyutu (GB birimi)  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  MaxAllowedResourceCount  |  İzin verilen en fazla varlık sayısı  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Maxallowedfactorysizeingbits  |  İzin verilen en yüksek fabrika boyutu (GB birimi)  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  MaxAllowedResourceCount  |  İzin verilen en fazla varlık sayısı  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Ardışık düzen ınecancelledçalıştırmaları  |  İptal edilen işlem hattı çalışma ölçümleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Pipelinefailedçalıştırmaları  |  Başarısız işlem hattı çalıştırmaları ölçümleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Ardışık düzen Inesucceededçalıştırmaları  |  Başarılı işlem hattı çalışma ölçümleri  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  ResourceCount  |  Toplam varlık sayısı  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  ResourceCount  |  Toplam varlık sayısı  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Triggercancelledçalıştırmaları  |  İptal edilen tetikleyici çalışan ölçümleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  Triggerfailedçalıştırmaları  |  Başarısız tetikleyici çalıştırma ölçümleri  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DataFactory/Factory  |  TriggerSucceededRuns  |  Başarılı tetikleyici çalışan ölçümleri  |  Sayı  |  Toplam | 
@@ -631,7 +628,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.DataLakeStore/accounts  |  DataRead  |  Okunan veriler  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.DataLakeStore/accounts  |  Veri yazıldı  |  Yazılan veriler  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.DataLakeStore/accounts  |  ReadRequests  |  Okuma Istekleri  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft.DataLakeStore/accounts  |  TotalStorage  |  Toplam depolama alanı  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft.DataLakeStore/accounts  |  TotalStorage  |  Toplam depolama alanı  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft.DataLakeStore/accounts  |  WriteRequests  |  Yazma Istekleri  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  backup_storage_used  |  Kullanılan yedekleme depolama alanı  |  Bayt  |  Ortalama | 
@@ -639,13 +636,13 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  io_consumption_percent  |  GÇ yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  memory_percent  |  Bellek yüzdesi  |  Yüzde  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  network_bytes_egress  |  Ağ Dışına  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  network_bytes_ingress  |  Ağ İçine  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  seconds_behind_master  |  Saniye cinsinden çoğaltma gecikmesi  |  Sayı  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  network_bytes_egress  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  network_bytes_ingress  |  Ağ Girişi  |  Bayt  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  seconds_behind_master  |  Saniye cinsinden çoğaltma gecikmesi  |  Sayı  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  serverlog_storage_limit  |  Sunucu günlüğü depolama sınırı  |  Bayt  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  serverlog_storage_percent  |  Sunucu günlüğü depolama yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  serverlog_storage_usage  |  Kullanılan sunucu günlüğü depolaması  |  Bayt  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_limit  |  Depolama sınırı  |  Bayt  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_limit  |  Depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformarıdb/sunucular  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
@@ -654,13 +651,13 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  io_consumption_percent  |  GÇ yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  memory_percent  |  Bellek yüzdesi  |  Yüzde  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  network_bytes_egress  |  Ağ Dışına  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  network_bytes_ingress  |  Ağ İçine  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  seconds_behind_master  |  Saniye cinsinden çoğaltma gecikmesi  |  Sayı  |  En Fazla | 
-| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  serverlog_storage_limit  |  Sunucu günlüğü depolama sınırı  |  Bayt  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  network_bytes_egress  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  network_bytes_ingress  |  Ağ Girişi  |  Bayt  |  Toplam | 
+| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  seconds_behind_master  |  Saniye cinsinden çoğaltma gecikmesi  |  Sayı  |  Maksimum | 
+| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  serverlog_storage_limit  |  Sunucu günlüğü depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  serverlog_storage_percent  |  Sunucu günlüğü depolama yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  serverlog_storage_usage  |  Kullanılan sunucu günlüğü depolaması  |  Bayt  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_limit  |  Depolama sınırı  |  Bayt  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_limit  |  Depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Dbformyısql/sunucuları  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
@@ -669,22 +666,22 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  io_consumption_percent  |  GÇ yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  memory_percent  |  Bellek yüzdesi  |  Yüzde  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  network_bytes_egress  |  Ağ Dışına  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  network_bytes_ingress  |  Ağ İçine  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  pg_replica_log_delay_in_bytes  |  Çoğaltmalar genelinde en fazla gecikme  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  pg_replica_log_delay_in_seconds  |  Çoğaltma gecikmesi  |  Saniyeden  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  serverlog_storage_limit  |  Sunucu günlüğü depolama sınırı  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  network_bytes_egress  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  network_bytes_ingress  |  Ağ Girişi  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  pg_replica_log_delay_in_bytes  |  Çoğaltmalar genelinde en fazla gecikme  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  pg_replica_log_delay_in_seconds  |  Çoğaltma gecikmesi  |  Saniyeden  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  serverlog_storage_limit  |  Sunucu günlüğü depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  serverlog_storage_percent  |  Sunucu günlüğü depolama yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  serverlog_storage_usage  |  Kullanılan sunucu günlüğü depolaması  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_limit  |  Depolama sınırı  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_limit  |  Depolama sınırı  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/sunucuları  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  active_connections  |  Etkin bağlantılar  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  'ye  |  IOPS  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  memory_percent  |  Bellek yüzdesi  |  Yüzde  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_egress  |  Ağ Dışına  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_ingress  |  Ağ İçine  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_egress  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_ingress  |  Ağ Girişi  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  storage_percent  |  Depolama alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. DBforPostgreSQL/serversv2  |  storage_used  |  Kullanılan depolama alanı  |  Bayt  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. Devices/Account  |  digitaltwins. telemetri. düğümleri  |  Dijital TWINS düğümü telemetri yer tutucusu  |  Sayı  |  Toplam | 
@@ -773,7 +770,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Mongorequestsınsert  |  Mongo ekleme Isteği oranı  |  Sayaçpersaniye  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Mongo sorgu Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Mongo güncelleştirme Isteği hızı  |  Sayaçpersaniye  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Provisionedüretilen Iş  |  Sağlanan İşleme Hızı  |  Sayı  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  Provisionedüretilen Iş  |  Sağlanan İşleme Hızı  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  ReplicationLatency  |  P99 çoğaltma gecikmesi  |  Mayacak  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Hizmet kullanılabilirliği  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. DocumentDB/databaseAccounts  |  Toplam Istek sayısı  |  Toplam İstek Sayısı  |  Sayı  |  Sayı | 
@@ -806,13 +803,13 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft. EventGrid/konuları  |  Publishbaşarıyla Latencınms  |  Yayımlama başarı gecikmesi  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventGrid/konuları  |  UnmatchedEventCount  |  Eşleşmeyen olaylar  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ActiveConnection sayısı  |  ActiveConnection sayısı  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  Kullanılabilirlik Blememory  |  Kullanılabilir Bellek  |  Yüzde  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  Kullanılabilirlik Blememory  |  Kullanılabilir Bellek  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CaptureBacklog  |  Biriktirme listesini yakala.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CapturedBytes  |  Yakalanan baytlar.  |  Bayt  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CapturedMessages  |  Yakalanan Iletiler.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ConnectionsClosed  |  Bağlantı kapatıldı.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  ConnectionsOpened  |  Bağlantılar açıldı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CPU  |  CPU  |  Yüzde  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft. EventHub/kümeler  |  CPU  |  CPU  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingbytes  |  Gelen bayt sayısı.  |  Bayt  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingmessages  |  Gelen İletiler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. EventHub/kümeler  |  Incomingrequests  |  Gelen Istekler  |  Sayı  |  Toplam | 
@@ -859,8 +856,8 @@ Tabloda aşağıdaki sütunlar bulunur.
 | Hayır  | Hayır |  Microsoft.EventHub/namespaces  |  UserErrors  |  Kullanıcı hataları.  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  Kategorizedgatewayrequests  |  Kategorilere ayrılmış ağ geçidi Istekleri  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  GatewayRequests  |  Ağ Geçidi Istekleri  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  Numactiveçalışanları  |  Etkin çalışan sayısı  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. HDInsight/kümeler  |  ScalingRequests  |  Ölçeklendirme istekleri  |  Sayı  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. HDInsight/kümeler  |  Numactiveçalışanları  |  Etkin çalışan sayısı  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. HDInsight/kümeler  |  ScalingRequests  |  Ölçeklendirme istekleri  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Insights/oto Scalesettings  |  MetricThreshold  |  Ölçüm eşiği  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Insights/oto Scalesettings  |  ObservedCapacity  |  Gözlenen kapasite  |  Sayı  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Insights/oto Scalesettings  |  ObservedMetricValue  |  Gözlemlenen ölçüm değeri  |  Sayı  |  Ortalama | 
@@ -877,7 +874,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Insights/bileşenler  |  Bağımlılıklar/süre  |  Bağımlılık süresi  |  Mayacak  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Insights/bileşenler  |  Bağımlılıklar/başarısız  |  Bağımlılık çağrısı sorunları  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. Insights/bileşenler  |  özel durumlar/tarayıcı  |  Tarayıcı özel durumları  |  Sayı  |  Sayı | 
-| **Evet**  | **Evet** |  Microsoft. Insights/bileşenler  |  özel durumlar/say  |  Özel Durumlar  |  Sayı  |  Sayı | 
+| **Evet**  | **Evet** |  Microsoft. Insights/bileşenler  |  özel durumlar/say  |  Özel durumlar  |  Sayı  |  Sayı | 
 | Hayır  | Hayır |  Microsoft. Insights/bileşenler  |  özel durumlar/sunucu  |  Sunucu özel durumları  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. Insights/bileşenler  |  pageViews/Count  |  Sayfa görünümleri  |  Sayı  |  Sayı | 
 | **Evet**  | Hayır |  Microsoft. Insights/bileşenler  |  pageViews/Duration  |  Sayfa görünümü yükleme süresi  |  Mayacak  |  Ortalama | 
@@ -899,13 +896,13 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.KeyVault/vaults  |  Hizmet Apilatesi  |  Genel hizmet API 'Si gecikmesi  |  Milisaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.KeyVault/vaults  |  ServiceApiResult  |  Toplam hizmet API 'Si sonuçları  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Cachekullanım  |  Önbellek kullanımı  |  Yüzde  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  ContinuousExportMaxLatenessMinutes  |  Sürekli dışarı aktarma en fazla dakika  |  Sayı  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  ContinuousExportMaxLatenessMinutes  |  Sürekli dışarı aktarma en fazla dakika  |  Sayı  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Continuousexportnumofrecordsexports  |  Sürekli dışa aktarma-dışarı aktarılmış kayıtların sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  ContinuousExportPendingCount  |  Sürekli dışarı aktarma bekleyen sayısı  |  Sayı  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  ContinuousExportPendingCount  |  Sürekli dışarı aktarma bekleyen sayısı  |  Sayı  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  ContinuousExportResult  |  Sürekli dışarı aktarma sonucu  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  CPU  |  CPU  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Processedforeventhubs olayları  |  İşlenen Olaylar (olay/IoT Hub 'Ları için)  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Dışarı Aktaramstilileştirme  |  Kullanım verme  |  Yüzde  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Dışarı Aktaramstilileştirme  |  Kullanım verme  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Inestionlatencınseconds  |  Alma gecikmesi (saniye)  |  Saniyeden  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Inestionresult  |  Alım sonucu  |  Sayı  |  Sayı | 
 | **Evet**  | **Evet** |  Microsoft. kusto/kümeler  |  Alım kullanımı  |  Alım kullanımı  |  Yüzde  |  Ortalama | 
@@ -1024,26 +1021,26 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  GCPauseTotalTime  |  GC duraklatma toplam süre  |  Milisaniye  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  MaxOldGenMemoryPoolBytes  |  En fazla kullanılabilir eski nesil veri boyutu  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  OldGenMemoryPoolBytes  |  Eski nesil veri boyutu  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  OldGenPromotedBytes  |  Eski nesil veri boyutuna yükselt  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  OldGenPromotedBytes  |  Eski nesil veri boyutuna yükselt  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  ServiceCpuUsagePercentage  |  Hizmet CPU kullanım yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  ServiceMemoryCommitted  |  Hizmet belleği atandı  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  ServiceMemoryMax  |  En fazla hizmet belleği  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  ServiceMemoryMax  |  En fazla hizmet belleği  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  Servicememorykullanıldı  |  Kullanılan hizmet belleği  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  SystemCpuUsagePercentage  |  Sistem CPU kullanım yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatErrorCount  |  Tomcat genel hatası  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  Tomcatreceived baytları  |  Tomcat alınan toplam bayt sayısı  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatRequestMaxTime  |  Tomcat Isteği maksimum zamanı  |  Milisaniye  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatRequestMaxTime  |  Tomcat Isteği maksimum zamanı  |  Milisaniye  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatRequestTotalCount  |  Tomcat Isteği toplam sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatRequestTotalTime  |  Tomcat Isteği toplam kez  |  Milisaniye  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatResponseAvgTime  |  Tomcat Isteği ortalama zamanı  |  Milisaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSentBytes  |  Tomcat gönderilen toplam bayt sayısı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionActiveCurrentCount  |  Tomcat oturum etkin sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionActiveMaxCount  |  Tomcat oturumu en fazla etkin sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionAliveMaxTime  |  Tomcat oturumu maksimum etkin süresi  |  Milisaniye  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionAliveMaxTime  |  Tomcat oturumu maksimum etkin süresi  |  Milisaniye  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionCreatedCount  |  Tomcat oturum oluşturma sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionExpiredCount  |  Tomcat oturumunun süre dolma sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  TomcatSessionRejectedCount  |  Tomcat oturumu reddedildi sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  YoungGenPromotedBytes  |  Küçük ölçekli oluşturma veri boyutuna yükselt  |  Bayt  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Microservices4Spring/Appkümeler  |  YoungGenPromotedBytes  |  Küçük ölçekli oluşturma veri boyutuna yükselt  |  Bayt  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. NetApp/netAppAccounts/Capacityhavuzları  |  VolumePoolAllocatedUsed  |  Ayrılan birim havuzu  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. NetApp/netAppAccounts/Capacityhavuzları  |  VolumePoolTotalLogicalSize  |  Birim havuzu toplam mantıksal boyut  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. NetApp/netAppAccounts/Capacityhavuzları/birimleri  |  AverageReadLatency  |  Ortalama okuma gecikmesi  |  Mayacak  |  Ortalama | 
@@ -1082,8 +1079,8 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Network/Connections  |  BitsInPerSecond  |  BitsInPerSecond  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/Connections  |  BitsOutPerSecond  |  BitsOutPerSecond  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/dnszones  |  QueryVolume  |  Sorgu hacmi  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft. Network/dnszones  |  Recordsetkapaıyutilileştirme  |  Kayıt kümesi kapasite kullanımı  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/dnszones  |  Kayıt kümesi sayısı  |  Kayıt kümesi sayısı  |  Sayı  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft. Network/dnszones  |  Recordsetkapaıyutilileştirme  |  Kayıt kümesi kapasite kullanımı  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/dnszones  |  Kayıt kümesi sayısı  |  Kayıt kümesi sayısı  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Network/Expressroutedevreleri  |  ArpAvailability  |  ARP kullanılabilirliği  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/Expressroutedevreleri  |  BgpAvailability  |  BGP kullanılabilirliği  |  Yüzde  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Network/Expressroutedevreleri  |  BitsInPerSecond  |  BitsInPerSecond  |  Sayaçpersaniye  |  Ortalama | 
@@ -1128,36 +1125,36 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Network/networkWatchers/Connectionmonitörleri  |  ProbesFailedPercent  |  % Yoklama başarısız oldu  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/networkWatchers/Connectionmonitörleri  |  Roundroundtimems  |  Gidiş dönüş süresi (MS) (Önizleme)  |  Mayacak  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  ByteCount  |  Bayt sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  BytesDroppedDDoS  |  Gelen bayt bırakıldı DDoS  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  BytesForwardedDDoS  |  İletilen gelen bayt sayısı  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  BytesInDDoS  |  Gelen bayt sayısı DDoS  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  Ddobir Ggersynpackets  |  DDoS azaltma tetiklenmesi için gelen SYN paketleri  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  DDO, Ggertcppackets  |  DDoS azaltma tetiklemeye yönelik gelen TCP paketleri  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  DDO, Ggerudppaketleri  |  DDoS risk azaltma tetiklenecek gelen UDP paketleri  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  IfUnderDDoSAttack  |  DDoS saldırısı altında  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  BytesDroppedDDoS  |  Gelen bayt bırakıldı DDoS  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  BytesForwardedDDoS  |  İletilen gelen bayt sayısı  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  BytesInDDoS  |  Gelen bayt sayısı DDoS  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  Ddobir Ggersynpackets  |  DDoS azaltma tetiklenmesi için gelen SYN paketleri  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  DDO, Ggertcppackets  |  DDoS azaltma tetiklemeye yönelik gelen TCP paketleri  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  DDO, Ggerudppaketleri  |  DDoS risk azaltma tetiklenecek gelen UDP paketleri  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  IfUnderDDoSAttack  |  DDoS saldırısı altında  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketCount  |  Paket sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketsDroppedDDoS  |  DDoS bırakılan gelen paketler  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketsForwardedDDoS  |  DDoS iletilen gelen paketler  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketsInDDoS  |  Gelen paketler DDoS  |  Sayaçpersaniye  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketsDroppedDDoS  |  DDoS bırakılan gelen paketler  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketsForwardedDDoS  |  DDoS iletilen gelen paketler  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  PacketsInDDoS  |  Gelen paketler DDoS  |  Sayaçpersaniye  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  SynCount  |  SYN sayısı  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPBytesDroppedDDoS  |  Gelen TCP bayt bırakılan DDoS  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPBytesForwardedDDoS  |  İletilen gelen TCP baytları  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPBytesInDDoS  |  Gelen TCP bayt DDoS  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPPacketsDroppedDDoS  |  Gelen TCP paketleri bırakıldı DDoS  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPPacketsForwardedDDoS  |  DDoS iletilen gelen TCP paketleri  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPPacketsInDDoS  |  Gelen TCP paketleri DDoS  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPBytesDroppedDDoS  |  Gelen UDP bayt bırakılan DDoS  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPBytesForwardedDDoS  |  İletilen gelen UDP baytları  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPBytesInDDoS  |  Gelen UDP bayt sayısı DDoS  |  BytesPerSecond  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPPacketsDroppedDDoS  |  Gelen UDP paketleri bırakıldı  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPPacketsForwardedDDoS  |  DDoS iletilen gelen UDP paketleri  |  Sayaçpersaniye  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPPacketsInDDoS  |  Gelen UDP paketleri DDoS  |  Sayaçpersaniye  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPBytesDroppedDDoS  |  Gelen TCP bayt bırakılan DDoS  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPBytesForwardedDDoS  |  İletilen gelen TCP baytları  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPBytesInDDoS  |  Gelen TCP bayt DDoS  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPPacketsDroppedDDoS  |  Gelen TCP paketleri bırakıldı DDoS  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPPacketsForwardedDDoS  |  DDoS iletilen gelen TCP paketleri  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  TCPPacketsInDDoS  |  Gelen TCP paketleri DDoS  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPBytesDroppedDDoS  |  Gelen UDP bayt bırakılan DDoS  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPBytesForwardedDDoS  |  İletilen gelen UDP baytları  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPBytesInDDoS  |  Gelen UDP bayt sayısı DDoS  |  BytesPerSecond  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPPacketsDroppedDDoS  |  Gelen UDP paketleri bırakıldı  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPPacketsForwardedDDoS  |  DDoS iletilen gelen UDP paketleri  |  Sayaçpersaniye  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  UDPPacketsInDDoS  |  Gelen UDP paketleri DDoS  |  Sayaçpersaniye  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Network/Publicıpaddresses  |  VipAvailability  |  Veri yolu kullanılabilirliği  |  Sayı  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Uç nokta tarafından uç nokta durumu  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft.Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Uç nokta tarafından uç nokta durumu  |  Sayı  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft.Network/trafficManagerProfiles  |  QpsByEndpoint  |  Bitiş noktasına göre sorgular döndürüldü  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  AverageBandwidth  |  Ağ Geçidi S2S bant genişliği  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  P2SBandwidth  |  Ağ Geçidi P2S bant genişliği  |  BytesPerSecond  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  P2SConnectionCount  |  P2S bağlantı sayısı  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  P2SConnectionCount  |  P2S bağlantı sayısı  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelAverageBandwidth  |  Tünel bant genişliği  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressBytes  |  Tünel çıkış baytları  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Network/Virtualnetworkgateway 'ler  |  TunnelEgressPacketDropTSMismatch  |  Tünel çıkış uyumsuzluğu paket bırakma  |  Sayı  |  Toplam | 
@@ -1325,13 +1322,13 @@ Tabloda aşağıdaki sütunlar bulunur.
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  ActiveMessages  |  Bir kuyruktaki/konudaki etkin ileti sayısı.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  ConnectionsClosed  |  Bağlantı kapatıldı.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  ConnectionsOpened  |  Bağlantılar açıldı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  CPUXNS  |  CPU (kullanım dışı)  |  Yüzde  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  CPUXNS  |  CPU (kullanım dışı)  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  DeadletteredMessages  |  Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı.  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.ServiceBus/namespaces  |  Incomingmessages  |  Gelen İletiler  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft.ServiceBus/namespaces  |  Incomingrequests  |  Gelen Istekler  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  İletiler  |  Kuyruktaki/konudaki iletilerin sayısı.  |  Sayı  |  Ortalama | 
-| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  NamespaceCpuUsage  |  CPU  |  Yüzde  |  En Fazla | 
-| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  NamespaceMemoryUsage  |  Bellek Kullanımı  |  Yüzde  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  NamespaceCpuUsage  |  CPU  |  Yüzde  |  Maksimum | 
+| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  NamespaceMemoryUsage  |  Bellek Kullanımı  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft.ServiceBus/namespaces  |  OutgoingMessages  |  Giden İletiler  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  ScheduledMessages  |  Bir kuyruktaki/konudaki zamanlanan ileti sayısı.  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  ServerErrors  |  Sunucu hataları.  |  Sayı  |  Toplam | 
@@ -1339,7 +1336,7 @@ Tabloda aşağıdaki sütunlar bulunur.
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  SuccessfulRequests  |  Başarılı Istekler  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  OperationName  |  Kısıtlanmış Istekler.  |  Sayı  |  Toplam | 
 | Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  UserErrors  |  Kullanıcı hataları.  |  Sayı  |  Toplam | 
-| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  WSXNS  |  Bellek kullanımı (kullanım dışı)  |  Yüzde  |  En Fazla | 
+| Hayır  | Hayır |  Microsoft.ServiceBus/namespaces  |  WSXNS  |  Bellek kullanımı (kullanım dışı)  |  Yüzde  |  Maksimum | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  ActualCpu  |  ActualCpu  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  ActualMemory  |  ActualMemory  |  Bayt  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  Ayrılatedcpu  |  Ayrılatedcpu  |  Sayı  |  Ortalama | 
@@ -1351,12 +1348,12 @@ Tabloda aşağıdaki sütunlar bulunur.
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  RestartCount  |  RestartCount  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  Servicereperepstatus  |  Servicereperepstatus  |  Sayı  |  Ortalama | 
 | Hayır  | Hayır |  Microsoft. Servicefabrickafes/uygulamaları  |  ServiceStatus  |  ServiceStatus  |  Sayı  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  ConnectionCount  |  Bağlantı sayısı  |  Sayı  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  ConnectionCount  |  Bağlantı sayısı  |  Sayı  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  Inboundtraffic  |  Gelen Trafik  |  Bayt  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  MessageCount  |  İleti sayısı  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  OutboundTraffic  |  Giden Trafik  |  Bayt  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  SystemErrors  |  Sistem hataları  |  Yüzde  |  En Fazla | 
-| **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  UserErrors  |  Kullanıcı hataları  |  Yüzde  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  SystemErrors  |  Sistem hataları  |  Yüzde  |  Maksimum | 
+| **Evet**  | **Evet** |  Microsoft. SignalRService/SignalR  |  UserErrors  |  Kullanıcı hataları  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft. SQL/ManagedInstances  |  avg_cpu_percent  |  Ortalama CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. SQL/ManagedInstances  |  io_bytes_read  |  Okunan GÇ baytları  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. SQL/ManagedInstances  |  io_bytes_written  |  Yazılan GÇ baytları  |  Bayt  |  Ortalama | 
@@ -1374,8 +1371,8 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  app_cpu_percent  |  Uygulama CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  app_memory_percent  |  Uygulama belleği yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  blocked_by_firewall  |  Güvenlik duvarı tarafından engellendi  |  Sayı  |  Toplam | 
-| **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  cache_hit_percent  |  İsabetli önbellek okuması yüzdesi  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  cache_used_percent  |  Önbellek kullanılan yüzde  |  Yüzde  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  cache_hit_percent  |  İsabetli önbellek okuması yüzdesi  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  cache_used_percent  |  Önbellek kullanılan yüzde  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  connection_failed  |  Başarısız Bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  connection_successful  |  Başarılı bağlantılar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  cpu_limit  |  CPU sınırı  |  Sayı  |  Ortalama | 
@@ -1385,23 +1382,23 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  dtu_consumption_percent  |  DTU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  dtu_limit  |  DTU sınırı  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  dtu_used  |  Kullanılan DTU  |  Sayı  |  Ortalama | 
-| **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  dwu_consumption_percent  |  DWU yüzdesi  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  dwu_limit  |  DWU sınırı  |  Sayı  |  En Fazla | 
-| **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  dwu_used  |  Kullanılan DWU  |  Sayı  |  En Fazla | 
+| **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  dwu_consumption_percent  |  DWU yüzdesi  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  dwu_limit  |  DWU sınırı  |  Sayı  |  Maksimum | 
+| **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  dwu_used  |  Kullanılan DWU  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  local_tempdb_usage_percent  |  Yerel tempdb yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  log_write_percent  |  Günlük GÇ yüzdesi  |  Yüzde  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  memory_usage_percent  |  Bellek yüzdesi  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  memory_usage_percent  |  Bellek yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  physical_data_read_percent  |  Veri G/Ç yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  sessions_percent  |  Oturum yüzdesi  |  Yüzde  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  Depo  |  Kullanılan veri alanı  |  Bayt  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  storage_percent  |  Kullanılan veri alanı yüzdesi  |  Yüzde  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  tempdb_data_size  |  Tempdb veri dosyası boyutu kilobayt  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  tempdb_log_size  |  Tempdb günlük dosyası boyutu kilobayt  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  tempdb_log_used_percent  |  Kullanılan tempdb günlüğü yüzdesi  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  Depo  |  Kullanılan veri alanı  |  Bayt  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  storage_percent  |  Kullanılan veri alanı yüzdesi  |  Yüzde  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  tempdb_data_size  |  Tempdb veri dosyası boyutu kilobayt  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  tempdb_log_size  |  Tempdb günlük dosyası boyutu kilobayt  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/databases  |  tempdb_log_used_percent  |  Kullanılan tempdb günlüğü yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  workers_percent  |  Çalışan yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/databases  |  xtp_storage_percent  |  Bellek içi OLTP depolama yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage  |  Ayrılan veri alanı  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage_percent  |  Ayrılan veri alanı yüzdesi  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage_percent  |  Ayrılan veri alanı yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  cpu_limit  |  CPU sınırı  |  Sayı  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/elasticPools  |  cpu_percent  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  cpu_used  |  Kullanılan CPU  |  Sayı  |  Ortalama | 
@@ -1425,9 +1422,9 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  storage_limit  |  Veri boyutu üst sınırı  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  storage_percent  |  Kullanılan veri alanı yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  storage_used  |  Kullanılan veri alanı  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  tempdb_data_size  |  Tempdb veri dosyası boyutu kilobayt  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_size  |  Tempdb günlük dosyası boyutu kilobayt  |  Sayı  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_used_percent  |  Kullanılan tempdb günlüğü yüzdesi  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  tempdb_data_size  |  Tempdb veri dosyası boyutu kilobayt  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_size  |  Tempdb günlük dosyası boyutu kilobayt  |  Sayı  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_used_percent  |  Kullanılan tempdb günlüğü yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/elasticPools  |  workers_percent  |  Çalışan yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | **Evet** |  Microsoft.Sql/servers/elasticPools  |  xtp_storage_percent  |  Bellek içi OLTP depolama yüzdesi  |  Yüzde  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft.Storage/storageAccounts  |  Kullanılabilirlik  |  Kullanılabilirlik  |  Yüzde  |  Ortalama | 
@@ -1506,10 +1503,10 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  Storagesyncyeniden hesaplama Ledtotalnetworkbytes  |  Bulut katmanlama geri çağırma boyutu  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  Storagesyncyeniden hesaplama Liototalsizebytes  |  Bulut katmanlama geri çağırma  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  StorageSyncRecallThroughputBytesPerSecond  |  Bulut katmanlama geri çekme performansı  |  BytesPerSecond  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  Storagesyncserversinyal  |  Sunucu çevrimiçi durumu  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  Storagesyncserversinyal  |  Sunucu çevrimiçi durumu  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  StorageSyncSyncSessionAppliedFilesCount  |  Eşitlenen dosyalar  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices  |  StorageSyncSyncSessionPerItemErrorsCount  |  Dosyalar eşitlenmiyor  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices/registeredServers  |  Sunucusinyal  |  Sunucu çevrimiçi durumu  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices/registeredServers  |  Sunucusinyal  |  Sunucu çevrimiçi durumu  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices/registeredServers  |  Sunucu yeniden hesaplama Liototalsizebytes  |  Bulut katmanlama geri çağırma  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices/syncGroups  |  SyncGroupBatchTransferredFileBytes  |  Eşitlenen baytlar  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. storagessync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionAppliedFilesCount  |  Eşitlenen dosyalar  |  Sayı  |  Toplam | 
@@ -1527,12 +1524,12 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Hatalar  |  Çalışma Zamanı Hataları  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Inputeventbytes  |  Giriş Olayı Bayt Sayısı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Inputevents  |  Giriş Olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Inputeventssourcesbackgünlüğe kaydediliyor  |  Biriktirme Listesindeki Giriş Olayları  |  Sayı  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Inputeventssourcesbackgünlüğe kaydediliyor  |  Biriktirme Listesindeki Giriş Olayları  |  Sayı  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Inputeventssourcespersecond  |  Alınan Giriş Kaynakları  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  LateInputEvents  |  Geç Giriş Olayları  |  Sayı  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  OutputEvents  |  Çıkış Olayları  |  Sayı  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Outputsulu Markdelayseconds  |  Eşik Gecikmesi  |  Saniyeden  |  En Fazla | 
-| **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Resourcekullanım  |  SU Kullanım Yüzdesi  |  Yüzde  |  En Fazla | 
+| **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Outputsulu Markdelayseconds  |  Eşik Gecikmesi  |  Saniyeden  |  Maksimum | 
+| **Evet**  | Hayır |  Microsoft. StreamAnalytics/streamingjobs  |  Resourcekullanım  |  SU Kullanım Yüzdesi  |  Yüzde  |  Maksimum | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Disk okuma bayt sayısı  |  Disk okuma bayt sayısı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Disk okuma Işlemi/sn  |  Disk okuma Işlemi/sn  |  Sayaçpersaniye  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Disk yazma baytları  |  Disk yazma baytları  |  Bayt  |  Toplam | 
@@ -1546,8 +1543,8 @@ Tabloda aşağıdaki sütunlar bulunur.
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  MemoryActive  |  Bellek etkin  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Memoryverildi  |  Verilen bellek  |  Bayt  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  MemoryUsed  |  Kullanılan bellek  |  Bayt  |  Ortalama | 
-| **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Ağ İçine  |  Ağ İçine  |  Bayt  |  Toplam | 
-| **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Ağ Dışına  |  Ağ Dışına  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Ağ Girişi  |  Ağ Girişi  |  Bayt  |  Toplam | 
+| **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Ağ Çıkışı  |  Ağ Çıkışı  |  Bayt  |  Toplam | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  Networkınbytespersecond  |  Bayt/sn cinsinden ağ  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  NetworkOutBytesPerSecond  |  Ağ çıkış bayt/sn  |  BytesPerSecond  |  Ortalama | 
 | **Evet**  | Hayır |  Microsoft. Vmwarechoparlör basit/virtualMachines  |  CPU yüzdesi  |  CPU yüzdesi  |  Yüzde  |  Ortalama | 

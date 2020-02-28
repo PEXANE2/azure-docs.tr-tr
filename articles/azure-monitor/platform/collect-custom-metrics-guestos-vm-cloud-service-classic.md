@@ -3,17 +3,16 @@ title: Azure Izleyici ölçümleri veritabanına klasik Cloud Services ölçüml
 description: Azure Izleyici ölçüm deposuna Azure klasik Cloud Services için konuk işletim sistemi performans ölçümlerini gönderme işlemini açıklar.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fb13bb7ec2de2633796aecb5216ae8b9e2574a57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971202"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655814"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Izleyici ölçüm deposunda klasik Cloud Services Konuk işletim sistemi ölçümleri gönderme 
 
@@ -27,7 +26,7 @@ Bu konumda depolamak, platform ölçümleri için kullanabileceğiniz eylemlere 
 
 Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçları için geçerlidir. Diğer özel ölçümler için çalışmaz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](../../cost-management-billing/manage/add-change-subscription-administrator.md) olmanız gerekir. 
 

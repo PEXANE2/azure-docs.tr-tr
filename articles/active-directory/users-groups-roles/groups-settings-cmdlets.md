@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984957"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656883"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
@@ -63,7 +63,7 @@ Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulana
    ```
    Bu cmdlet çağrısı kullanılabilir tüm şablonları döndürür:
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulana
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. Ardından, bu şablonu temel alan yeni bir ayar nesnesi oluşturun:
   
@@ -171,7 +171,7 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
    ```
 2. Dizin düzeyindeki grupların Konuk ilkesini ayarlamak için Group. Unified şablonuna ihtiyacınız vardır
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. Ardından, bu şablonu temel alan yeni bir ayar nesnesi oluşturun:
   
@@ -262,7 +262,7 @@ Bu adım dizin düzeyindeki ayarları kaldırır ve dizindeki tüm Office grupla
    ```
 2. Gruplar. Unified. Guest şablonu için şablon nesnesini alın:
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. Şablondan yeni bir ayarlar nesnesi oluşturun:
    ```powershell

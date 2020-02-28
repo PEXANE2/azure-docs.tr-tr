@@ -1,18 +1,17 @@
 ---
 title: Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme | Microsoft Docs
 description: Bu makalede, Azure Ilkesi kullanarak birden çok Azure sanal makinesi veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365827"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656237"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM'ler için Azure İzleyici (Önizleme) etkinleştirme
 
@@ -71,15 +70,15 @@ Azure İzleyici VM'ler için kiracınızda Azure İlkesi kullanarak etkinleştir
 - Girişimi bir kapsama atayın: yönetim grubu, abonelik veya kaynak grubu.
 - Uyumluluk sonuçlarını gözden geçirin ve düzeltin.
 
-Azure ilkesi atama hakkında daha fazla bilgi için bkz. [Azure ilkesine genel bakış](../../governance/policy/overview.md#policy-assignment) ve gözden geçirme [yönetim gruplarına genel bakış](../../governance/management-groups/overview.md) devam etmeden önce.
+Azure Ilkesi atama hakkında daha fazla bilgi için bkz. [Azure ilkesine genel bakış](../../governance/policy/overview.md#policy-assignment) ve devam etmeden önce [Yönetim gruplarına genel bakış](../../governance/management-groups/overview.md) konusunu inceleyin.
 
 ### <a name="policies-for-azure-vms"></a>Azure VM 'Ler için ilkeler
 
 Bir Azure VM 'nin ilke tanımları aşağıdaki tabloda listelenmiştir.
 
-|Ad |Açıklama |Tür |
+|Adı |Açıklama |Tür |
 |-----|------------|-----|
-|\[Önizleme\]: VM'ler için Azure İzleyici'yi etkinleştir |Belirtilen kapsamdaki (Yönetim grubu, abonelik veya kaynak grubu) sanal makineler için Azure Izleyicisini etkinleştirin. Log Analytics çalışma alanı, bir parametre olarak alır. |Girişim |
+|\[önizleme\]: VM'ler için Azure İzleyici etkinleştirin |Belirtilen kapsamdaki (Yönetim grubu, abonelik veya kaynak grubu) sanal makineler için Azure Izleyicisini etkinleştirin. Log Analytics çalışma alanı, bir parametre olarak alır. |Girişim |
 |\[Preview\]: denetim bağımlılık Aracısı dağıtımı – VM görüntüsü (OS) listelenmemiş |VM görüntüsü (OS) listede tanımlanmamışsa ve aracı yüklü değilse, VM 'Leri uyumsuz olarak raporlar. |İlke |
 |\[Preview\]: denetim Log Analytics aracı dağıtımı – VM görüntüsü (OS) listelenmemiş |VM görüntüsü (OS) listede tanımlanmamışsa ve aracı yüklü değilse, VM 'Leri uyumsuz olarak raporlar. |İlke |
 |\[Preview\]: Linux VM 'Ler için bağımlılık aracısını dağıtma |VM görüntüsü (OS) listede tanımlanmışsa ve aracı yüklü değilse, Linux VM 'Ler için bağımlılık aracısını dağıtın. |İlke |
@@ -91,7 +90,7 @@ Bir Azure VM 'nin ilke tanımları aşağıdaki tabloda listelenmiştir.
 
 Bir Azure sanal makine ölçek kümesinin ilke tanımları aşağıdaki tabloda listelenmiştir.
 
-|Ad |Açıklama |Tür |
+|Adı |Açıklama |Tür |
 |-----|------------|-----|
 |\[Preview\]: sanal makine ölçek kümeleri için Azure Izleyicisini etkinleştirme |Belirtilen kapsamdaki (Yönetim grubu, abonelik veya kaynak grubu) sanal makine ölçek kümeleri için Azure Izleyicisini etkinleştirin. Log Analytics çalışma alanı, bir parametre olarak alır. Note: ölçek ayarlama yükseltme ilkeniz el Ile olarak ayarlandıysa, uzantıyı üzerinde yükseltme çağırarak küme içindeki tüm VM 'lere uygulayın. CLı 'da bu `az vmss update-instances`. |Girişim |
 |\[Preview\]: sanal makine ölçek kümelerinde denetim bağımlılığı Aracısı dağıtımı-VM görüntüsü (OS) listelenmemiş |VM görüntüsü (OS) listede tanımlanmamışsa ve aracı yüklü değilse, sanal makine ölçek kümesini uyumsuz olarak bildirir. |İlke |
@@ -103,19 +102,19 @@ Bir Azure sanal makine ölçek kümesinin ilke tanımları aşağıdaki tabloda 
 
 Tek başına ilke (girişimle yer almaz) aşağıda açıklanmıştır:
 
-|Ad |Açıklama |Tür |
+|Adı |Açıklama |Tür |
 |-----|------------|-----|
 |\[Preview\]: VM için denetim Log Analytics çalışma alanı – rapor uyumsuzluğu |İlke veya girişim atamasında belirtilen Log Analytics çalışma alanına oturum açtıklarında VM 'Leri uyumsuz olarak raporla. |İlke |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Azure İzleyici girişim Ata
 
-**VM'ler için Azure izleyici Ilkesi kapsamı** sayfasından ilke atamasını oluşturmak için aşağıdaki adımları izleyin. Bu adımları tamamlamak nasıl anlamak için bkz: [Azure portalından bir ilke ataması oluşturma](../../governance/policy/assign-policy-portal.md).
+**VM'ler için Azure izleyici Ilkesi kapsamı** sayfasından ilke atamasını oluşturmak için aşağıdaki adımları izleyin. Bu adımların nasıl tamamlandığını anlamak için, bkz. [Azure Portal ilke ataması oluşturma](../../governance/policy/assign-policy-portal.md).
 
 İlkeyi veya girişimi atadığınızda, atamadaki seçili kapsam burada listelenen kapsam veya bunun bir alt kümesi olabilir. Örneğin, yönetim grubu (kapsam kapsamı) değil, abonelik (ilke kapsamı) için bir atama oluşturmuş olabilirsiniz. Bu durumda, kapsam yüzdesi, ilke veya girişim kapsamındaki VM 'Leri kapsam kapsamındaki VM 'Ler tarafından ayrılmış olarak gösterir. Başka bir durumda, bazı VM 'Leri veya kaynak gruplarını veya ilke kapsamından bir aboneliği dışınınız olabilir. Boşsa, ilke veya girişim yok ya da izniniz yok anlamına gelir. Bilgi, **atama durumu**altında sağlanır.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Azure portalında **İzleyici**. 
+2. Azure portal, **İzle**' yi seçin. 
 
 3. **Öngörüler** bölümünde **sanal makineler (Önizleme)** öğesini seçin.
  
@@ -126,16 +125,16 @@ Tek başına ilke (girişimle yer almaz) aşağıda açıklanmıştır:
 6. **Azure ilke ataması** sayfasında, girişim **Etkinleştir VM'ler için Azure izleyici**önceden doldurulur. 
     **Atama adı** kutusu, girişim adı ile otomatik olarak doldurulur, ancak bunu değiştirebilirsiniz. İsteğe bağlı bir açıklama da ekleyebilirsiniz. **Atanan** kutusu, oturum açan kim temel alınarak otomatik olarak doldurulur. Bu değer isteğe bağlıdır.
 
-7. (İsteğe bağlı) Kapsamdan bir veya daha fazla kaynakları kaldırmak için işaretleyin **dışlamaları**.
+7. Seçim Kapsamdan bir veya daha fazla kaynağı kaldırmak için **Dışlamalar**' i seçin.
 
-8. İçinde **Log Analytics çalışma alanı** bir çalışma alanı açılır listesinde desteklenen bir bölge için seçin.
+8. Desteklenen bölgenin **Log Analytics çalışma alanı** açılır listesinde bir çalışma alanı seçin.
 
    > [!NOTE]
-   > Çalışma alanı atama kapsamı dışındadır, verme *Log Analytics katkıda bulunan* izinleri ilke atama sorumlusu kimliği Bunu yapmazsanız, erişim izni vermek Için `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` gibi bir dağıtım hatası görebilirsiniz, [yönetilen kimliği el ile yapılandırmayı](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)gözden geçirin.
+   > Çalışma alanı atama kapsamının ötesinde, ilke atamasının asıl KIMLIĞINE *Log Analytics katkıda bulunan* izinleri verin. Bunu yapmazsanız, erişim izni vermek Için `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` gibi bir dağıtım hatası görebilirsiniz, [yönetilen kimliği el ile yapılandırmayı](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)gözden geçirin.
    > 
    >  Atanmakta olan girişim, *Deployifnotexists* efektli bir ilke Içerdiğinden, **yönetilen kimlik** onay kutusu seçilidir.
     
-9. İçinde **yönetme kimlik konumu** aşağı açılan listesinde, uygun bölgeyi seçin.
+9. **Kimlik konumunu Yönet** açılan listesinde uygun bölgeyi seçin.
 
 10. **Ata**'yı seçin.
 
@@ -145,10 +144,10 @@ Aşağıdaki matris, girişim için olası her uyumluluk durumunu eşler.
 
 | Uyumluluk durumu | Açıklama | 
 |------------------|-------------|
-| **Uyumlu** | Kapsamdaki tüm sanal makinelerin kendisine dağıtılan Log Analytics ve bağımlılık aracıları vardır.|
+| **Uyumluluk** | Kapsamdaki tüm sanal makinelerin kendisine dağıtılan Log Analytics ve bağımlılık aracıları vardır.|
 | **Uyumlu değil** | Kapsamdaki tüm VM 'Lerin bunlara dağıtılan Log Analytics ve bağımlılık aracıları yoktur ve düzeltme gerekebilir.|
 | **Başlatılmadı** | Yeni bir atama eklendi. |
-| **Kilitle** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
+| **İne** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
 | **Boş** | Hiçbir ilke atanmadı. | 
 
 <sup>1</sup> yönetim grubuna erişiminiz yoksa, bir sahibe erişim sağlamasını isteyin. Ya da, uyumluluğu görüntüleyin ve atamaları alt yönetim grupları ya da abonelikler aracılığıyla yönetin. 
@@ -158,9 +157,9 @@ Aşağıdaki tablo girişim için olası her atama durumunu eşler.
 | Atama durumu | Açıklama | 
 |------------------|-------------|
 | **Başarılı** | Kapsamdaki tüm sanal makinelerin kendisine dağıtılan Log Analytics ve bağımlılık aracıları vardır.|
-| **Uyarı** | Abonelik bir yönetim grubu altında değil.|
+| **Warning** | Abonelik bir yönetim grubu altında değil.|
 | **Başlatılmadı** | Yeni bir atama eklendi. |
-| **Kilitle** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
+| **İne** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
 | **Boş** | VM yok veya bir ilke atanmamış. | 
 | **Eylem** | Bir ilke atayın veya bir atamayı düzenleyin. | 
 
@@ -204,6 +203,6 @@ Bir yönetim grubuna veya aboneliğine bir girişim atadıktan sonra, aşağıda
 
 Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir. 
 
-- Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md). 
+- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md). 
 
 - VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md). 

@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici görünümlerindeki filtreler | Microsoft Docs
 description: Azure Izleyici görünümündeki bir filtre, kullanıcıların görünümün kendisini değiştirmeden belirli bir özelliğin değerine göre görünümdeki verileri filtrelemesine olanak tanır.  Bu makalede bir filtrenin nasıl kullanılacağı ve bir özel görünüme nasıl ekleneceği açıklanmaktadır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931977"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658583"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Izleyici görünümlerindeki filtreler
 [Azure izleyici görünümündeki](view-designer.md) bir **filtre** , kullanıcıların görünümün kendisini değiştirmeden belirli bir özelliğin değerine göre görünümdeki verileri filtrelemesine olanak tanır.  Örneğin, görünüminizdeki kullanıcıların görünümü yalnızca belirli bir bilgisayar veya bilgisayar kümesi tarafından filtrelemesine izin verebilirsiniz.  Kullanıcıların birden çok özelliğe göre filtrelemesine olanak tanımak için, tek bir görünümde birden çok filtre oluşturabilirsiniz.  Bu makalede bir filtrenin nasıl kullanılacağı ve bir özel görünüme nasıl ekleneceği açıklanmaktadır.
@@ -34,7 +33,7 @@ Bir filtrenin tüm değerlerini kaldırırsanız, bu filtre artık uygulanmaz.
 
 [Bir görünüm düzenlenirken](view-designer.md) **Filtreler** sekmesinden bir filtre oluşturun.  Filtre görünüm için geneldir ve görünümdeki tüm parçalar için geçerlidir.  
 
-![Filtre ayarları](media/view-designer-filters/filters-settings.png)
+![Ayarları filtrele](media/view-designer-filters/filters-settings.png)
 
 Aşağıdaki tabloda bir filtrenin ayarları açıklanmaktadır.
 
@@ -51,8 +50,8 @@ Aşağıdaki tabloda, yaygın filtrelerin birkaç örneği yer almaktadır.
 | Alan Adı | Değerler için sorgu | Etiket |
 |:--|:--|:--|
 | Bilgisayar   | Sinyal &#124; farklı bilgisayar &#124; sıralama ölçütü bilgisayar ASC | Bilgisayarlar |
-| EventLevelName | Olay &#124; farklı EventLevelName | Önem Derecesi |
-| Severıtylevel | Syslog &#124; benzersiz SeverityLevel | Önem Derecesi |
+| EventLevelName | Olay &#124; farklı EventLevelName | Severity |
+| Önem Düzeyi | Syslog &#124; benzersiz SeverityLevel | Severity |
 | SvcChangeType | ConfigurationChange &#124; farklı svcchangetype | ChangeType |
 
 

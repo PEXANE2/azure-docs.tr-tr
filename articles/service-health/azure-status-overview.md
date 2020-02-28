@@ -1,14 +1,14 @@
 ---
 title: Azure durumuna genel bakış | Microsoft Docs
 description: Azure hizmetlerinin sistem durumu hakkında genel bir görünüm
-ms.topic: article
+ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 1257476234709380de3452015313e3a3bf71e04d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654163"
 ---
 # <a name="azure-status-overview"></a>Azure durumuna genel bakış
 
@@ -28,7 +28,7 @@ Azure durum sayfasında her zaman en son sistem durumu bilgileri gösterilirken,
 
 Azure için temel bir neden, risk azaltma ve sonraki adımlar dahil olmak üzere geçmişte 90 güne kadar olay görebilmeniz gerekir.
 
-## <a name="rss-feed"></a>RSS Akışı
+## <a name="rss-feed"></a>RSS akışı
 
 Azure durumu Ayrıca, abone olabileceğiniz Azure hizmetlerinin sistem durumunda yapılan değişikliklerin [RSS akışını](https://status.azure.com/status/feed/) da sağlar.
 

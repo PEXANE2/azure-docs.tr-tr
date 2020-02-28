@@ -3,16 +3,15 @@ title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları dönüşt�
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: f04ebc1a4a53825709479ca3f1dc7ce1245fc67f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658719"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Azure Izleyici Görünüm Tasarımcısı çalışma kitapları dönüştürme seçenekleri
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve ek işlevsellik sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, görünümleri çalışma kitaplarına dönüştürmek için iki ve seçenek arasındaki temel kavramlar karşılaştırılır.

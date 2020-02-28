@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420609"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654673"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal kullanarak cihaz kimliklerini yönetme
 
@@ -29,15 +29,10 @@ Bu makalede:
 
 ## <a name="manage-device-identities"></a>Cihaz kimliklerini yönetme
 
-Azure AD portalı, cihaz kimliklerinizi yönetmek için size merkezi bir yer sağlar. Bu yere [doğrudan bir bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) kullanarak veya bu el ile adımları izleyerek ulaşabilirsiniz:
+Azure AD portalı, cihaz kimliklerinizi yönetmek için size merkezi bir yer sağlar. Bu yere [doğrudan bir bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) kullanarak ulaşabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) yönetici olarak oturum açın.
-
-2. **Azure Active Directory** bulun ve **giriş** sayfasından seçin.
-
-3. **Yönet** bölümünde, **cihazlar**' a tıklayın.
-
-   ![Cihaz ayarlarını yapılandır](./media/device-management-azure-portal/74.png)
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory** > **cihazlara**gidin.
 
 **Cihazlar** sayfası şunları yapmanızı sağlar:
 
@@ -50,13 +45,11 @@ Azure AD portalı, cihaz kimliklerinizi yönetmek için size merkezi bir yer sa�
 
 Azure AD portalını kullanarak cihaz kimliklerinizi yönetmek için, cihazlarınızın [kayıtlı veya](overview.md) Azure AD 'ye katılmış olması gerekir. Yönetici olarak, cihaz ayarlarını yapılandırarak cihazları kaydetme ve birleştirme sürecinde ince ayar yapabilirsiniz.
 
-![Cihaz ayarlarını yapılandır](./media/device-management-azure-portal/22.png)
-
-Cihaz ayarları sayfası şunları yapılandırmanıza olanak sağlar:
+Cihaz ayarları sayfası, cihaz kimlikleriyle ilgili ayarları yapılandırmanıza olanak sağlar:
 
 ![Intune cihazını yönetme](./media/device-management-azure-portal/21.png)
 
-- **Kullanıcılar cihazları Azure AD 'ye katabilir** -Bu ayar, CIHAZLARıNı Azure AD 'ye katılmış cihazlar olarak kaydedebilen kullanıcıları seçmenize olanak sağlar. Varsayılan değer **Tümü**' dir.
+- **Kullanıcılar cihazları Azure AD 'ye katabilir** -Bu ayar, CIHAZLARıNı Azure AD 'ye katılmış cihazlar olarak kaydedebilen kullanıcıları seçmenize olanak sağlar. Varsayılan değer **Tümü**’dür.
 
 > [!NOTE]
 > **Kullanıcılar cihazları Azure AD 'ye katabilir** ve yalnızca Windows 10 ' da Azure AD katılımı için geçerlidir.
@@ -81,12 +74,7 @@ Bu seçenek, Azure AD Premium veya Enterprise Mobility Suite (EMS) gibi ürünle
 Kayıtlı ve birleştirilmiş cihazları bulmak için iki seçeneğiniz vardır:
 
 - **Cihazlar** sayfasının **Yönet** bölümündeki **tüm cihazlar**  
-
-   ![Tüm cihazlar](./media/device-management-azure-portal/41.png)
-
 - Bir **Kullanıcı** sayfasının **Yönet** bölümündeki **cihazlar**
-
-   ![Tüm cihazlar](./media/device-management-azure-portal/43.png)
 
 Her iki seçenekten de şunları yapabilirsiniz:
 
@@ -193,13 +181,11 @@ Cihaz etkinlikleri, etkinlik günlükleri aracılığıyla kullanılabilir. Bu G
 
 Denetim verilerine giriş noktanız, **cihazlar** sayfasının **etkinlik** bölümündeki **Denetim günlükleri** ' dir.
 
-![Denetim günlükleri](./media/device-management-azure-portal/61.png)
-
-Denetim günlüklerinin aşağıdakileri gösteren bir varsayılan liste görünümü vardır:
+Denetim günlüğünde, şunu gösteren bir varsayılan liste görünümü vardır:
 
 - Olayın tarih ve saati
 - Hedefler
-- Etkinliğin başlatıcısı/aktör (kim)
+- etkinliğin başlatıcısı/aktör (kim)
 - Etkinlik (ne)
 
 ![Denetim günlükleri](./media/device-management-azure-portal/63.png)

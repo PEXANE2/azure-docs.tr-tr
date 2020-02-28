@@ -1,19 +1,15 @@
 ---
 title: Konsol uygulamaları için Azure Application Insights | Microsoft Docs
 description: Kullanılabilirlik, performans ve kullanım için Web uygulamalarını izleyin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889150"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655438"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
@@ -24,9 +20,9 @@ ms.locfileid: "74889150"
 > [!NOTE]
 > Herhangi bir konsol uygulaması için Application Insights etkinleştirmek üzere kullanılabilecek [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yenı bir SDK Application Insights. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)hedefler ve bu nedenle .net Core 2,0 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
-* [Azure portalında](https://portal.azure.com) [bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü için **genel**' i seçin.
+* [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü için **genel**' i seçin.
 * İzleme Anahtarının bir kopyasını oluşturun. Oluşturduğunuz yeni kaynağın **temel** bileşenler açılan penceresinde anahtarı bulun.
 * En son [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) paketini yükler.
 * Herhangi bir Telemetriyi izlemeden önce kodunuzda izleme anahtarını ayarlayın (veya APPINSIGHTS_INSTRUMENTATIONKEY ortam değişkenini ayarlayın). Bundan sonra Telemetriyi el ile izleyebilmeniz ve Azure portal üzerinde görebilmelisiniz

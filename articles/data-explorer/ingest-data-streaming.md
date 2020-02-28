@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623299"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664941"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
@@ -76,7 +76,7 @@ Desteklenen iki akış alma türü vardır:
 * Alma isteği başına veri boyutu sınırlaması 4 MB 'tır.
 * Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için 5 dakikaya kadar sürebilir.
 * Veri akışı aracılığıyla yapılmasa bile, küme üzerinde akış alımı etkinleştirme, verileri akışa alma için küme makinelerinin yerel SSD disk bir kısmını kullanır ve etkin önbellek için kullanılabilir depolama alanını azaltır.
-* Akış alma verilerinde [kapsam etiketleri](/azure/kusto/management/extents-overview.md#extent-tagging) ayarlanamaz.
+* Akış alma verilerinde [kapsam etiketleri](/azure/kusto/management/extents-overview#extent-tagging) ayarlanamaz.
 
 Akış alımı aşağıdaki özellikleri desteklemez:
 * [Veritabanı imleçleri](/azure/kusto/management/databasecursor).

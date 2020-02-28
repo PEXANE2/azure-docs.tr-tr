@@ -1,19 +1,15 @@
 ---
 title: Çok adımlı Web testleri ile izleme-Azure Application Insights
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928964"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655949"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -22,7 +18,7 @@ ms.locfileid: "74928964"
 > [!NOTE]
 > Çok adımlı Web testleri, Visual Studio WebTest dosyalarına bağımlıdır. Visual Studio 2019 ' nin, WebTest işlevselliğiyle ilgili son sürüm olacağı [duyurulmuştur](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) . Yeni özellik eklenmadığında, Visual Studio 2019 ' deki WebTest işlevinin hala desteklenmekte olduğunu ve ürünün destek yaşam döngüsü sırasında desteklenmeye devam edecek olduğunu anlamak önemlidir. Azure Izleyici ürün ekibi, [buradaki](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)çok adımlı kullanılabilirlik testlerinin geleceği hakkında sorular buldu.  
 
-## <a name="pre-requisites"></a>Önkoşullar
+## <a name="pre-requisites"></a>Ön koşullar
 
 * Visual Studio 2017 Enterprise veya üzeri.
 * Visual Studio Web performansı ve yük testi araçları.
@@ -90,7 +86,7 @@ Web testi tarih saat eklentisi Parametreleştirme süresini işlemek için bir y
 
 2. Her eklentinin özelliklerini açın. Buna bir ad verip geçerli saat olarak kullanılmak üzere ayarlayın. Bunlardan birini Dakika Ekle = 15 olarak ayarlayın.
 
-    ![Bağlam Parametreleri](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
+    ![Bağlam parametreleri](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
 
 3. Web testi parametrelerinde, eklenti adına başvurmak için {{plug-in name}} kullanın.
 
@@ -113,9 +109,9 @@ Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısın
 | Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
 | Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |
 | İstemci sertifikası  | Base64 kodlamalı biçimde özel anahtara sahip istemci sertifikası değeri. |
-| Ad Tanımlayıcısı | Belirtecin ad tanımlayıcısı |
-| Sonra Değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
-| Önce Değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |
+| Ad tanımlayıcısı | Belirtecin ad tanımlayıcısı |
+| Sonra değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
+| Önce değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |
 | Hedef bağlam parametresi adı | Oluşturulan onayı alacak bağlam parametresi. |
 
 

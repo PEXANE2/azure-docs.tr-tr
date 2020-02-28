@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 34a75559c25b23d719101bb3bcfb42c155074a2d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 29d34cc4f64a7d942e377b11299aeaad0f18c76d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494925"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780293"
 ---
 |Adı |Açıklama |Efekt (ler) |Sürüm |Kaynak |
-|---|---|---|---|
+|---|---|---|---|---|
 |[İzin verilen konumlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe56962a6-4747-49cd-b67b-bf8b01975c4c) |Bu ilke, kuruluşunuzun kaynakları dağıtırken belirleyebileceği konumları kısıtlamanıza olanak verir. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz. Kaynak gruplarını, Microsoft. AzureActiveDirectory/b2cDirectories ve ' Global ' bölgesini kullanan kaynakları dışlar. |reddedebilir |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedLocations_Deny.json)
 |[Kaynak grupları için izin verilen konumlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe765b5de-1225-4ba3-bd56-1ac6695af988) |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz. |reddedebilir |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/ResourceGroupAllowedLocations_Deny.json)
 |[İzin verilen kaynak türleri](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa08ec900-254a-4555-9bf5-e42af04b5c5c) |Bu ilke, kuruluşunuzun dağıtabileceğiniz kaynak türlerini belirtmenizi sağlar. Bu ilkeden yalnızca ' Tags ' ve ' Location ' desteği olan kaynak türleri etkilenir. Tüm kaynakları kısıtlamak için lütfen bu ilkeyi çoğaltın ve ' Mode ' öğesini ' All ' olarak değiştirin. |reddedebilir |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedResourceTypes_Deny.json)

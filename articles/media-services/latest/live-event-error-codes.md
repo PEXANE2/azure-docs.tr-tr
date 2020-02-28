@@ -11,23 +11,47 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: bfbef771d33ad4d63ec8eaef83331e497d476071
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599476"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654588"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services canlı olay hata kodları
 
-Aşağıdaki tabloda, [canlı olay](live-events-outputs-concept.md) hata kodları listelenmektedir:
+Bu bölümdeki tablolarda, [canlı olay](live-events-outputs-concept.md) hata kodları listelenir.
 
-|Hata|Açıklama|
-|---|---| 
-|MPE_INGEST_FRAMERATE_EXCEEDED|Bu hata, gelen kodlayıcı canlı olayları/kanalları kodlamak için 30 fps 'yi aşan akışlar gönderirken oluşur.|
-|MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED|Bu hata, gelen kodlayıcı şu çözümleri aşan akışlar gönderirken oluşur: canlı olayları/kanalları kodlamak için 1920x1088 ve doğrudan geçiş canlı olayları/kanalları için 4096 x 2160.|
+## <a name="liveeventconnectionrejected"></a>Liveeventconnectionreddedildi
+
+Canlı bir olay için [Event Grid](https://docs.microsoft.com/azure/event-grid/) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](media-services-event-schemas.md#liveeventconnectionrejected) olayından aşağıdaki hatalardan birini görebilirsiniz.
+
+| Sonuç kodu | Açıklama |
+| ----------- | ----------- |
+| MPE_RTMP_APPID_AUTH_FAILURE | Hatalı alma URL 'SI |
+| MPE_INGEST_ENCODER_CONNECTION_DENIED | IP izin verilenler listesinde kodlayıcı IP 'si yok |
+| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | RTMP Kodlayıcısı setDataFrame komutu göndermedi. |
+| MPE_INGEST_CODEC_NOT_SUPPORTED | Belirtilen codec desteklenmez. |
+| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED |Medya açıklaması bilgileri, gerçek medya verileri teslim edilmeden önce alınmadı.|
+| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED |Ses veya video türü için kaliteleri sayısı izin verilen üst sınırı aşıyor.|
+| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED |Canlı bir olay veya kanal hizmetindeki toplam gelen bit hızı izin verilen maksimum sınırı aştı.|
+| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir. |
+| MPE_INGEST_FRAMERATE_EXCEEDED | Framerates ile gelen kodlayıcı alınan akışlar, canlı olayları/kanalları kodlamak için izin verilen en fazla 30fps sayısını aştı.|
+| MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | Gelen kodlayıcı alınan akışlar, şu izin verilen çözünürlükleri aştı: 1920x1088 for the Live Events/Channels ve 4096 x 2160 for pass-through canlı olaylar/kanallar.|
+
+## <a name="liveeventencoderdisconnected"></a>Liveeventencoderconnected bağlantısı kesildi
+
+[Liveeventencoderconnected](media-services-event-schemas.md#liveeventencoderdisconnected) olayında aşağıdaki hatalardan birini görebilirsiniz.
+
+|Sonuç kodu|Açıklama|
+|---|---|
+|MPE_RTMP_SESSION_IDLE_TIMEOUT|RTMP oturumu izin verilen süre sınırı boyunca boşta kaldıktan sonra zaman aşımına uğradı.|
+|MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir.|
+|MPE_CAPACITY_LIMIT_REACHED|Kodlayıcı verileri çok hızlı gönderiyor.|
+|Bilinmeyen hata kodları|Bu hata kodları, karma eşlemesindeki girdileri yinelemek için bellek hatasından değişebilir.|
+
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

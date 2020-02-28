@@ -1,18 +1,17 @@
 ---
 title: Linux bilgisayarlarını Azure Izleyici 'ye bağlama | Microsoft Docs
 description: Bu makalede, diğer bulutlarda veya şirket içinde barındırılan Linux bilgisayarların Linux için Log Analytics aracısıyla Azure Izleyici 'ye nasıl bağlanacağı açıklanır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290334"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668715"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -32,7 +31,7 @@ Desteklenen yapılandırmayı anlamak için [desteklenen Linux işletim sistemle
 
 Linux için Log Analytics Aracısı birden çok paketten oluşur. Yayın dosyası, `--extract` parametresiyle kabuk paketi çalıştırılarak kullanılabilir olan aşağıdaki paketleri içerir:
 
-**Paket** | **Sürüm** | **Açıklama**
+**Leyebilir** | **Sürüm** | **Açıklama**
 ----------- | ----------- | --------------
 omsagent | 1.12.15 | Linux için Log Analytics Aracısı
 omsconfig | 1.1.1 | Log Analytics Aracısı için yapılandırma Aracısı
@@ -70,7 +69,7 @@ Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalış
 
 5. **Çalışma Alanı Kimliği** ve **Birincil Anahtar**’ın sağındaki değer. Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
 
-## <a name="install-the-agent-manually"></a>Aracıyı el ile yükleme
+## <a name="install-the-agent-manually"></a>Aracıyı el ile yükler
 
 Linux için Log Analytics Aracısı kendiliğinden ayıklanan ve yüklenebilir bir kabuk betik paketinde sunulmaktadır. Bu paket, aracı bileşenlerinden her biri için Demcı ve RPM paketleri içerir ve tek tek paketleri almak için doğrudan veya ayıklanamaz. X64 için bir paket ve x86 mimarileri için bir paket sağlanır. 
 
@@ -94,7 +93,7 @@ Linux için Log Analytics Aracısı kendiliğinden ayıklanan ve yüklenebilir b
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örneğin: 
+    Kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örnek: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

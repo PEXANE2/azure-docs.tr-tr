@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlüklerinin yapısı | Microsoft Docs
 description: Azure Izleyici 'den günlük verilerini almak için bir günlük sorgusu gerekir.  Bu makalede, yeni günlük sorgularının Azure Izleyici 'de nasıl kullanıldığı açıklanır ve bir tane oluşturmadan önce anlamanız gereken kavramlar sağlanır.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893646"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662085"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
@@ -59,7 +58,7 @@ Log Analytics çalışma alanının aksine, bir Application Insights uygulaması
 | Browserzamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler. |
 | customEvents        | Uygulamanız tarafından oluşturulan özel olaylar. |
 | customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler. |
-| bağımlılıklar        | Uygulamadan dış bileşenlere çağrılar. |
+| bağlantılıdır        | Uygulamadan dış bileşenlere çağrılar. |
 | özel durumlar          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
 | pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
 | performanceCounters | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri. |

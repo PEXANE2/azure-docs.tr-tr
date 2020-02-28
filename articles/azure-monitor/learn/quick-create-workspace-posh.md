@@ -1,18 +1,17 @@
 ---
 title: Azure PowerShell kullanarak Log Analytics çalışma alanı oluşturma | Microsoft Docs
 description: Bulut ve şirket içi ortamlarından Azure PowerShell ile yönetim çözümleri ve veri toplamayı etkinleştirmek için Log Analytics çalışma alanı oluşturmayı öğrenin.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 87550e7ee3008418fde84596a811d44d02191cee
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513533"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659909"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Azure PowerShell ile bir Log Analytics çalışma alanı oluşturma
 
@@ -25,11 +24,11 @@ Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azu
  
 Azure sanal makinelerini ve Windows veya Linux Vm'leri, ortamınızda gibi diğer kaynakları için aşağıdaki konulara bakın:
 
-* [Azure sanal makinelerden veri toplama](../learn/quick-collect-azurevm.md)
-* [Karma Linux bilgisayarından verileri toplama](../learn/quick-collect-linux-computer.md)
-* [Karma Windows bilgisayardan veri topla](quick-collect-windows-computer.md)
+* [Azure sanal makinelerinden veri toplama](../learn/quick-collect-azurevm.md)
+* [Karma Linux bilgisayarından veri topla](../learn/quick-collect-linux-computer.md)
+* [Karma Windows bilgisayarından veri topla](quick-collect-windows-computer.md)
 
-Azure aboneliğiniz yoksa, oluşturma [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) başlamadan önce.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -48,7 +47,7 @@ Aşağıdaki parametreleri varsayılan değeri ayarlayın:
 * SKU - Nisan 2018 fiyatlandırma modelinde yayımlanan yeni GB başına fiyatlandırma katmanı varsayılan olarak
 
 >[!WARNING]
->Oluşturma veya yeni Nisan 2018 fiyatlandırma modelini tercih bir Abonelikteki Log Analytics çalışma alanını yapılandırma, yalnızca geçerli Log Analytics fiyatlandırma katmanı ise **PerGB2018**. 
+>Yeni Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturuyor veya yapılandırıyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca **PerGB2018**olur. 
 >
 
 ### <a name="create-and-deploy-template"></a>Şablon oluşturma ve dağıtma
@@ -109,8 +108,8 @@ Aşağıdaki parametreleri varsayılan değeri ayarlayın:
     }
     ```
 
-2. Gereksinimlerinizi karşılayacak şekilde şablonunu düzenleyin. Gözden geçirme [Microsoft.OperationalInsights/workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvuru hangi özellikler ve değerler desteklendiğini öğrenin. 
-3. Bu dosyayı farklı Kaydet **deploylaworkspacetemplate.json** yerel bir klasöre.   
+2. Gereksinimlerinizi karşılayacak şekilde şablonunu düzenleyin. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurusunu gözden geçirin. 
+3. Bu dosyayı bir yerel klasöre **deploylaworkspace Template. JSON** olarak kaydedin.   
 4. Bu şablonu dağıtmaya hazırsınız. Şablonu içeren klasörden aşağıdaki komutları kullanın. Bir çalışma alanı adı sorulduğunda, tüm Azure abonelikleri genelinde genel olarak benzersiz bir ad sağlayın.
 
     ```powershell
@@ -125,6 +124,6 @@ Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonu�
 Bir çalışma alanı kullanılabilir olduğuna göre telemetri izleme koleksiyonunu yapılandırma, bu verileri çözümlemek için günlük aramaları çalıştıran ve ek veriler ve hakkında analitik bilgiler sağlamak için bir yönetim çözümünü ekleyin.  
 
 * Azure Tanılama veya Azure depolama ile Azure kaynaklarından veri toplamayı etkinleştirmek için bkz. Azure [izleyici 'de Kullanım Için Azure hizmet günlükleri ve ölçümleri toplama](../platform/collect-azure-metrics-logs.md).  
-* Ekleme [System Center Operations Manager veri kaynağı olarak](../platform/om-agents.md) , Operations Manager yönetim grubuna bildirimde bulunan aracılardan veri toplamak ve Log Analytics çalışma alanınızda depolamak için.  
-* Connect [Configuration Manager](../platform/collect-sccm.md) hiyerarşideki koleksiyona üye olan bilgisayarlara aktarmak için.  
+* Operations Manager yönetim grubunuzu raporlayan aracılardan veri toplamak ve Log Analytics çalışma alanınızda depolamak için [veri kaynağı olarak System Center Operations Manager](../platform/om-agents.md) ekleyin.  
+* Hiyerarşideki koleksiyonların üyesi olan bilgisayarları içeri aktarmak için [Configuration Manager](../platform/collect-sccm.md) bağlanın.  
 * Kullanılabilir [izleme çözümlerini](../insights/solutions.md) ve çalışma alanınızdan bir çözümün nasıl ekleneceğini ve kaldırılacağını gözden geçirin.

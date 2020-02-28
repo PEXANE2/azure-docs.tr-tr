@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights Java izleme günlüklerini keşfet
 description: Application Insights 'de Log4J veya Logback izlemeleri ara
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927238"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657223"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
 İzleme için Logback veya Log4J (v 1.2 veya v 2.0) kullanıyorsanız, izleme günlüklerinizin otomatik olarak gönderilmesini ve bunları araştırıp araygeçirebileceğiniz Application Insights sağlayabilirsiniz.
@@ -77,7 +73,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -90,7 +86,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -115,13 +111,13 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J v 1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -130,7 +126,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
 #### <a name="otherwise-"></a>Aksi taktirde...
 Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyin (Maven Merkezi sayfasına ulaşan bağlantı kurulduktan sonra) uygun bir uygulama için karşıdan yükleme bölümündeki ' jar ' bağlantısına tıklayın.
 
-| Medi | İndirin | Kitaplık |
+| Medi | İndirme | Kitaplık |
 | --- | --- | --- |
 | Logback |[Logback uygulama jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-günlüğe kaydetme-logback |
 | Log4J v 2.0 |[Log4J v2 Ekleyici jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-günlüğe kaydetme-log4j2 |
@@ -153,7 +149,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -169,7 +165,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
