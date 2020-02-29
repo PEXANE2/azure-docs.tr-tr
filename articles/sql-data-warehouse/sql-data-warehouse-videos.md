@@ -1,6 +1,6 @@
 ---
 title: Videolar
-description: Azure SQL veri ambarı için çeşitli video çalma listelerine bağlantılar.
+description: Azure SYNAPSE Analytics için çeşitli video çalma listelerine bağlantılar.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bc6d0aed017dea46a781ca2b1d8d238e9d761e1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692445"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192175"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL veri ambarı-videolar
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure SYNAPSE Analytics-SQL havuzu videoları
 
-Yeni özellikler ve performans iyileştirmeleri hakkında bilgi edinmek için en son Azure SQL veri ambarı videolarını izleyin. 
+Yeni özellikler ve performans iyileştirmeleri hakkında bilgi edinmek için en son Azure SYNAPSE SQL havuzu videolarını izleyin. 
 
-Başlamak için, Azure SQL veri ambarı 'na yönelik yeni güncelleştirmeler hakkında bilgi edinmek üzere aşağıdaki genel bakış videosunu seçin. Ayrıca, modern veri ambarı desenlerinin sicrı gibi gerçek dünyada senaryolar için nasıl kullanılabileceğini öğrenin.
+Başlamak için, Azure SYNAPSE SQL Pool 'a yönelik yeni güncelleştirmeler hakkında bilgi edinmek üzere aşağıdaki genel bakış videosunu seçin. Ayrıca, modern veri ambarı desenlerinin sicrı gibi gerçek dünyada senaryolar için nasıl kullanılabileceğini öğrenin.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

@@ -15,149 +15,151 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfbdc2bb650b6226c23617b55b71f1fde319b62d
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e7d487aaf7ba4aaf666962cf91ca86d46115055b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371409"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>Öğretici: ıamıp patent platformu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, ıamıp patent platformunu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Iamıp patent platformunu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de ıamıp patent platformuna erişimi olan denetim.
+* Iamıp patent platformuna kimlerin erişebileceğini denetlemek için Azure AD 'yi kullanın.
 * Kullanıcılarınızın Azure AD hesaplarıyla ıamıp patent platformunda otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Iamıp patent platformu çoklu oturum açma (SSO) etkin aboneliği.
+* Çoklu oturum açma (SSO) özellikli bir ıamıp patent platformu aboneliği.
 
-## <a name="scenario-description"></a>Senaryo açıklaması
+## <a name="tutorial-description"></a>Öğretici açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edeceksiniz.
 
-* Iamıp patent platformu **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Iamıp patent platformunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Iamıp patent platformu, SP tarafından başlatılan ve ıDP tarafından başlatılan SSO 'yu destekler.
+
+Iamıp patent platformunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 
-## <a name="adding-iamip-patent-platform-from-the-gallery"></a>Galeriden ıamıp patent platformu ekleniyor
+## <a name="add-iamip-patent-platform-from-the-gallery"></a>Galeriden ıamıp patent platformunu ekleyin
 
 Iamıp patent platformunun tümleştirmesini Azure AD ile yapılandırmak için, Galeriden ıamıp patent platformunu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. [Azure Portal](https://portal.azure.com) bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
+1. Sol bölmede **Azure Active Directory**’yi seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **ıamıp patent platformunu** yazın.
 1. Sonuçlar panelinden **ıamıp patent platformunu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
+## <a name="configure-and-test-azure-ad-sso-for-iamip-patent-platform"></a>Iamıp patent platformu için Azure AD SSO 'yu yapılandırma ve test etme
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-iamip-patent-platform"></a>Iamıp patent platformu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+B. Simon adlı bir test kullanıcısı kullanarak ıamıp patent platformuyla Azure AD SSO 'yu yapılandırıp test edersiniz. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ıamıp patent platformunda buna karşılık gelen kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-**B. Simon**adlı bir test kullanıcısı kullanarak ıamıp patent platformuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, ıamıp patent platformunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Iamıp patent platformuyla Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki üst düzey adımları uygulayın:
 
-Iamıp patent platformu ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+1. Kullanıcılarınızın özelliğini kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+    * Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    * Kullanıcının Azure AD çoklu oturum açma özelliğini kullanmasını sağlamak için **[Test kullanıcısına erişim Izni verin](#grant-access-to-the-test-user)** .
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Iamıp patent platformu SSO 'Su yapılandırma](#configure-iamip-patent-platform-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * **[Iamıp patent platformu test kullanıcısı oluşturun](#create-iamip-patent-platform-test-user)** ; ıamıp patent platformunda, kullanıcının Azure AD gösterimine bağlı olan B. Simon 'un bir karşılığı vardır.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Uygulama tarafında **[ıamıp patent platformu SSO 'Yu yapılandırın](#configure-iamip-patent-platform-sso)** .
+    * Kullanıcının Azure AD gösterimine karşılık gelen bir **[ıamıp patent platformu test kullanıcısı oluşturun](#create-iamip-patent-platform-test-user)** .
+
+1. Yapılandırmanın çalıştığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **ıamıp patent platformu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **ıamıp patent platformu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırması için kalem düğmesi](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa ve **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
+1. **Temel SAML yapılandırması** bölümünde, bir hizmet sağlayıcı meta veri dosyanız varsa ve IDP tarafından BAŞLATıLAN modda SSO 'yu yapılandırmak istiyorsanız şu adımları uygulayın:
 
-    a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
+    a. **Karşıya yükleme meta veri dosyasını**seçin:
 
     ![Meta veri dosyasını karşıya yükle](common/upload-metadata.png)
 
-    b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
+    b. Klasör düğmesini seçin, meta veri dosyasını seçin ve ardından **karşıya yükle**' yi seçin:
 
-    ![meta veri dosyası seçin](common/browse-upload-metadata.png)
+    ![Klasör ve karşıya yükleme düğmeleri](common/browse-upload-metadata.png)
 
-    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **tanımlayıcı** ve **yanıt URL** değerleri temel SAML yapılandırması bölümünde otomatik olarak doldurulur.
+    c. Meta veri dosyası karşıya yüklendikten sonra, **tanımlayıcı** ve **yanıt URL 'SI** değerleri **temel SAML yapılandırması** bölümünde otomatik olarak doldurulur:
 
-    ![görüntü](common/idp-intiated.png)
+    ![Tanımlayıcı ve yanıt URL 'SI değerleri](common/idp-intiated.png)
 
     > [!Note]
-    > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak alamazsanız, değerleri gereksinimlerinize göre el ile girin.
+    > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmamışsa, değerleri gereksinimlerinize göre el ile sağlayın.
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve aşağıdaki adımı doldurun:
 
-    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın: `https://patents.iamip.com/login-user`
+    **Oturum açma URL 'si** kutusuna **https:\//Patents.iamip.com/login-User**girin.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **yükleme** bağlantısını **(ham)** seçin:
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-1. **Iamıp patent platformunu ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Iamıp patent platformunu ayarla** bölümünde, gereksinimlerinize göre uygun URL 'Yi veya URL 'leri kopyalayın:
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/idp-intiated.png))
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmesinde **Azure Active Directory**' ı seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
+   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Kullanıcı adı** kutusuna, \<kullanıcı adı > @\<companydomain > yazın.\<uzantısı >. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’u seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="grant-access-to-the-test-user"></a>Test kullanıcısına erişim izni verme
 
-Bu bölümde, ıamıp patent platformuna erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, bu kullanıcıya ıamıp patent platformu erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **ıamıp patent platformu**' nu seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünde, **Kullanıcılar ve gruplar**' ı seçin:
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   ![Kullanıcıları ve grupları seçin](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin:
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle ' yi seçin](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **B. Simon** öğesini seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
 
 ## <a name="configure-iamip-patent-platform-sso"></a>Iamıp patent platformu SSO 'yu yapılandırma
 
-**Iamıp patent platformu** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal 'Den [ıamıp patent Platformu destek ekibine](mailto:info@iamip.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+Iamıp patent platformu tarafında çoklu oturum açmayı yapılandırmak için, indirilen ham sertifikayı ve Azure portal 'den kopyaladığınız uygun URL 'Leri [ıamıp patent Platformu destek ekibine](mailto:info@iamip.com)göndermeniz gerekir. SAML SSO bağlantısını her iki tarafta da doğru olacak şekilde yapılandırır.
 
 ### <a name="create-iamip-patent-platform-test-user"></a>Iamıp patent platformu test kullanıcısı oluştur
 
-Bu bölümde, ıamıp patent platformunda B. Simon adlı bir Kullanıcı oluşturacaksınız. Iamıp patent platformu platformundan kullanıcıları eklemek için [ıamıp patent Platformu destek ekibi](mailto:info@iamip.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Iamıp patent platformunda B. Simon adlı bir kullanıcı eklemek için [ıamıp patent Platformu destek ekibi](mailto:info@iamip.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim paneli ' ni kullanarak Azure AD SSO yapılandırmanızı test edeceksiniz.
 
-Erişim panelinde ıamıp patent platformu kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ıamıp patent platformunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim paneli 'nde ıamıp patent platformu kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız ıamıp patent platformu örneğinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneli 'Ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 

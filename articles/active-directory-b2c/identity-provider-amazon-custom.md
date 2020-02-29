@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak bir Amazon hesabı ile oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Özel ilkeler kullanarak Azure Active Directory B2C bir Amazon hesabıyla oturum açma ayarlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a0767938f8a470c63ec7fe3d7789212b1baf871
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846633"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188520"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak bir Amazon hesabı ile oturum açmayı ayarlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "76846633"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](custom-policy-overview.md) kullanarak bir Amazon hesabından kullanıcılar için oturum açmayı nasıl etkinleştireceğinizi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - Zaten bir Amazon hesabınız yoksa [https://www.amazon.com/](https://www.amazon.com/)bir tane oluşturun.
@@ -39,13 +39,13 @@ Kullanıcıların bir Amazon hesabından oturum açmasını etkinleştirmek içi
 4. Bir **ad**, **Açıklama**ve **Gizlilik bildirimi URL 'si**girin ve ardından **Kaydet**' e tıklayın. Gizlilik bildirimi, kullanıcılara gizlilik bilgileri sağlayan bir sayfasıdır.
 5. **Web ayarları** bölümünde, **istemci kimliği**değerlerini kopyalayın. İstemci parolasını almak için **gizli göster** ' i seçin ve sonra kopyalayın. Bir Amazon hesabını kiracınızda kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız vardır. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
 6. **Web ayarları** bölümünde **Düzenle**' yi seçin ve izin verilen **JavaScript kaynakları** ' na izin **verilen dönüş URL 'lerinde**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` `https://your-tenant-name.b2clogin.com` girin. `your-tenant-name`, kiracınızın adıyla değiştirin. Azure AD B2C kodunda büyük harfler ile Kiracı tanımlansa bile Kiracı adınızın girerken tamamen küçük harf kullanın.
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet**’e tıklayın.
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.

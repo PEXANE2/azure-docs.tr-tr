@@ -3,20 +3,20 @@ title: Hata kodu başvurusu
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C hizmeti tarafından döndürülebilecek hata kodlarının bir listesi.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735085"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188673"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Hata kodları: Azure Active Directory B2C
 
@@ -58,10 +58,10 @@ Aşağıdaki hatalar Azure Active Directory B2C hizmeti tarafından döndürüle
 | `AADB2C90052` | Geçersiz Kullanıcı adı veya parola. |
 | `AADB2C90053` | Belirtilen kimlik bilgilerine sahip bir Kullanıcı bulunamadı. |
 | `AADB2C90054` | Geçersiz Kullanıcı adı veya parola. |
-| `AADB2C90055` | İstekte belirtilen '{0}' kapsamının 'https://example.com/calendar.read ' gibi bir kaynak belirtmesi gerekir. |
+| `AADB2C90055` | İstekte belirtilen '{0}' kapsamının 'https://example.com/calendar.read' gibi bir kaynak belirtmesi gerekir. |
 | `AADB2C90057` | Belirtilen uygulama OAuth örtük akışına izin verecek şekilde yapılandırılmadı. |
 | `AADB2C90058` | Belirtilen uygulama, ortak istemcilere izin verecek şekilde yapılandırılmadı. |
-| `AADB2C90067` | '{0}' Post kapatma yeniden yönlendirme URI 'sinin biçimi geçersiz. 'https://example.com/return ' veya yerel istemciler için bir https tabanlı URL belirtin ' urn: ietf: WG: OAuth: 2.0: OOB ' IETF yerel istemci URI 'sini kullanın. |
+| `AADB2C90067` | '{0}' Post kapatma yeniden yönlendirme URI 'sinin biçimi geçersiz. 'https://example.com/return' veya yerel istemciler için bir https tabanlı URL belirtin ' urn: ietf: WG: OAuth: 2.0: OOB ' IETF yerel istemci URI 'sini kullanın. |
 | `AADB2C90068` | '{0}' KIMLIĞINE sahip belirtilen uygulama bu hizmette geçerli değildir. Lütfen B2C portalı aracılığıyla oluşturulan bir uygulamayı kullanın ve yeniden deneyin. |
 | `AADB2C90075` | '{1}' adımında belirtilen '{0}' talep değişimi, '{2}' kodu ve '{3}' nedeniyle HTTP hata yanıtı döndürdü. |
 | `AADB2C90077` | Kullanıcının mevcut bir oturumu yok ve istek istem parametresi '{0}' değerine sahip. |

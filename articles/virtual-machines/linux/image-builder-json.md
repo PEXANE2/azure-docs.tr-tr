@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 08a1ca0c85d69d1a5262f1dcac5d46fb82b1c22b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905752"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191801"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -301,7 +301,7 @@ Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatm
 
             {
                 "type": "WindowsRestart",
-                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCommand": "shutdown /r /f /t 0", 
                 "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                 "restartTimeout": "5m"
             }
@@ -313,7 +313,7 @@ Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatm
  
 Özellikleri Özelleştir:
 - **Yazın**: windowsrestart
-- yeniden başlatma işlemini yürütmek için **restartCommand** komutu (isteğe bağlı). Varsayılan: `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- yeniden başlatma işlemini yürütmek için **restartCommand** komutu (isteğe bağlı). Varsayılan değer: `'shutdown /r /f /t 0 /c \"packer restart\"'`.
 - **restartCheckCommand** – yeniden başlatmanın başarılı olup olmadığını denetlemek için komut (isteğe bağlı). 
 - **restartTimeout** -yeniden başlatma zaman aşımı, bir büyüklük ve birim dizesi olarak belirtildi. Örneğin, `5m` (5 dakika) veya `2h` (2 saat). Varsayılan değer: ' 5dk '
 

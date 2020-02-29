@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164571"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190288"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Nasıl yapılır: ADAL kullanarak iOS 'ta uygulamalar arası SSO 'yu etkinleştirme
 
@@ -109,7 +109,7 @@ Cihaza Microsoft Authenticator uygulaması gibi uyumlu bir aracı yüklüyse, Ku
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>Uygulamanın geçerli olduğundan emin olduğumuz
 
-Aracı yardımlı oturum açma işlemleri için sağlamamız gereken güvenlik için aracının bir uygulamanın kimliğinin bir çağrı için gerekli olduğundan emin olunması gerekir. Ne iOS ne de Android, yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcılar uygular, bu nedenle kötü amaçlı uygulamalar yasal uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için gereken belirteçleri alabilir. Çalışma zamanında doğru uygulamayla her zaman iletişim kurduğumuz için, geliştiriciden Microsoft ile uygulama kaydederken özel bir redirectURI sağlamasını isteyeceğiz. Geliştiricilerin bu yeniden yönlendirme URI 'sini oluşturması gereken ayrıntılar aşağıda ayrıntılarıyla açıklanmıştır. Bu özel redirectURI, uygulamanın paket KIMLIĞINI içerir ve Apple App Store tarafından uygulamaya benzersiz olacak şekilde tasarlanmıştır. Bir uygulama aracıya çağrı yaparken, Aracı iOS işletim sistemini aracıyı çağıran paket KIMLIĞI ile sağlamasını ister. Aracı kimlik sistemimize yapılan çağrıda Bu paket KIMLIĞINI Microsoft 'a sağlar. Uygulamanın paket KIMLIĞI, kayıt sırasında geliştirici tarafından bize girilen paket KIMLIĞIYLE eşleşmiyorsa, uygulamanın istediği kaynak için belirteçlere erişimi reddedecağız. Bu denetim, yalnızca geliştirici tarafından kaydedilen uygulamanın belirteçleri almasını sağlar.
+Aracıyı çağıran bir uygulamanın kimliğinin, aracı yardımlı oturum açma işlemleri için sağlamamız gereken güvenlik açısından önemli olmasına dikkat edin. Ne iOS ne de Android, yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcılar uygular, bu nedenle kötü amaçlı uygulamalar yasal uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için gereken belirteçleri alabilir. Çalışma zamanında doğru uygulamayla her zaman iletişim kurduğumuz için, geliştiriciden Microsoft ile uygulama kaydederken özel bir redirectURI sağlamasını isteyeceğiz. Geliştiricilerin bu yeniden yönlendirme URI 'sini oluşturması gereken ayrıntılar aşağıda ayrıntılarıyla açıklanmıştır. Bu özel redirectURI, uygulamanın paket KIMLIĞINI içerir ve Apple App Store tarafından uygulamaya benzersiz olacak şekilde tasarlanmıştır. Bir uygulama aracıya çağrı yaparken, Aracı iOS işletim sistemini aracıyı çağıran paket KIMLIĞI ile sağlamasını ister. Aracı kimlik sistemimize yapılan çağrıda Bu paket KIMLIĞINI Microsoft 'a sağlar. Uygulamanın paket KIMLIĞI, kayıt sırasında geliştirici tarafından bize girilen paket KIMLIĞIYLE eşleşmiyorsa, uygulamanın istediği kaynak için belirteçlere erişimi reddedecağız. Bu denetim, yalnızca geliştirici tarafından kaydedilen uygulamanın belirteçleri almasını sağlar.
 
 **Geliştirici, SDK 'nın aracıyı çağırırsa veya aracı olmayan yardımlı akışı kullanıp kullanmadığını tercih etti.** Ancak geliştirici, aracı yardımlı akışı kullanmayı seçerse, kullanıcının cihaza zaten eklemiş olabileceği ve uygulamanın iş özellikleriyle birlikte kullanılmasını önlediği, Microsoft 'un kendi sağladığı Koşullu erişim, Intune yönetim özellikleri ve sertifika tabanlı kimlik doğrulaması gibi müşteriler.
 

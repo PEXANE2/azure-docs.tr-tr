@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030736"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190985"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Karma runbook çalışanları sorunlarını giderme
 
@@ -54,7 +54,7 @@ Karma runbook çalışanı çalıştıran bilgisayarların, çalışan bu özell
 
 Karma Runbook Worker özelliğinin çalıştırılacağı bilgisayarın en düşük donanım gereksinimlerini karşıladığını onaylayın. Varsa, karma Runbook Worker işlemlerinin ve pencerelerinin performansı arasındaki bağıntıyı öğrenmek için CPU ve bellek kullanımını izleyin. Herhangi bir bellek veya CPU baskısı, kaynakları yükseltme gereksinimini gösterebilir. Ayrıca, iş yükü beklentilerinin gerekli olduğunu belirtmesi durumunda en düşük gereksinimleri ve ölçeği destekleyen farklı bir bilgi işlem kaynağı da seçebilirsiniz.
 
-# *[4294967295] kodlu Win32 Işlemine çıkıldı*açıklaması ile ilgili bir olay için **Microsoft-SMA** olay günlüğü 'nü denetleyin. Bu hatanın nedeni, runbook 'larınızda kimlik doğrulamasını yapılandırmadığınıza veya karma çalışan grubu için farklı çalıştır kimlik bilgilerini belirtmemiş olmanız olabilir. Runbook 'larınız için kimlik doğrulamasını doğru şekilde yapılandırdığınızdan emin olmak için [runbook izinlerini](../automation-hrw-run-runbooks.md#runbook-permissions) gözden geçirin.
+# *[4294967295] kodlu Win32 Işlemine çıkıldı*açıklaması ile ilgili bir olay için **Microsoft-SMA** olay günlüğü 'nü denetleyin. Bu hatanın nedeni, runbook 'larınızda kimlik doğrulamasını yapılandırmadığınıza veya karma Runbook Worker grubu için farklı çalıştır kimlik bilgilerini belirtmemiş olmanız olabilir. Runbook 'larınız için kimlik doğrulamasını doğru şekilde yapılandırdığınızdan emin olmak için [bir karma runbook çalışanındaki runbook 'Ların çalıştırıldığı](../automation-hrw-run-runbooks.md) runbook izinlerini gözden geçirin.
 
 ### <a name="no-cert-found"></a>Senaryo: karma Runbook Worker 'daki sertifika deposunda sertifika bulunamadı
 

@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003351"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198176"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Azure Key Vault gizli dizileri depolamak için bir Linux sanal makinesi ve .NET uygulaması kullanın
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Azure Key Vault içinde gizli dizileri depolamak için bir Linux sanal makinesi ve .NET uygulaması kullanma
 
 Azure Key Vault, API anahtarları ve uygulamalarınıza, hizmetlerinize ve BT kaynaklarınıza erişmesi gereken veritabanı bağlantı dizeleri gibi gizli dizileri korumanıza yardımcı olur.
 
@@ -61,7 +62,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-`az group create` Komutunu kullanarak bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+`az group create` komutunu kullanarak bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Batı ABD konumunda bir kaynak grubu oluşturun. Kaynak grubunuz için bir ad seçin ve aşağıdaki örnekte `YourResourceGroupName` değiştirin:
 
@@ -76,9 +77,9 @@ Bu kaynak grubunu öğretici genelinde kullanırsınız.
 
 Sonra, kaynak grubunuzda bir Anahtar Kasası oluşturun. Şu bilgileri belirtin:
 
-* Anahtar Kasası adı: yalnızca rakam, harf ve kısa çizgi (0-9, a-z, A-Z ve \- ) içerebilen 3 ile 24 karakter arasında bir dize olabilir.
+* Anahtar Kasası adı: yalnızca rakam, harf ve kısa çizgi (0-9, a-z, A-Z ve \-) içerebilen 3 ile 24 karakter arasında bir dize olabilir.
 * Kaynak grubu adı
-* Konumuna **Batı ABD**
+* Konum: **Batı ABD**
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -96,11 +97,11 @@ Bu öğreticide, anahtar kasasında bir gizli dizi oluşturmak için aşağıdak
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturun
+## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturma
 
-`az vm create` Komutuyla bir VM oluşturun.
+`az vm create` komutuyla bir VM oluşturun.
 
-Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. Otomatik olarak bir SSH anahtarı oluşturmak ve varsayılan anahtar konumuna koymak için kullanılan parametre(~/PST`--generate-ssh-keys` ). Bunun yerine belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` parametresi, otomatik olarak bir SSH anahtarı oluşturmak ve varsayılan anahtar konumuna ( **~/PST**) koymak için kullanılır. Bunun yerine belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -126,7 +127,7 @@ VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıd
 }
 ```
 
-VM 'nizden gelen çıktıyı bir `publicIpAddress` yere iade edin. Bu adresi sonraki adımlarda VM 'ye erişmek için kullanacaksınız.
+SANAL makinenizin çıktısındaki `publicIpAddress` bir kopyasını alın. Bu adresi sonraki adımlarda VM 'ye erişmek için kullanacaksınız.
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM 'ye bir kimlik atama
 
@@ -136,7 +137,7 @@ Aşağıdaki komutu çalıştırarak sanal makineye sistem tarafından atanan bi
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Komutun çıkışı şu olmalıdır:
+Komutun çıkışı şöyle olmalıdır:
 
 ```azurecli
 {
@@ -145,7 +146,7 @@ Komutun çıkışı şu olmalıdır:
 }
 ```
 
-' İ bir yere unutmayın `systemAssignedIdentity`. Bunu bir sonraki adımda kullanırsınız.
+`systemAssignedIdentity`bir kopyasını alın. Bunu bir sonraki adımda kullanırsınız.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>Key Vault için VM kimliği izni verin
 
@@ -282,7 +283,7 @@ Artık Azure Linux sanal makinesi üzerinde çalışan bir .NET uygulamasında A
 
 Artık ihtiyaç kalmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silin. Bunu yapmak için VM 'nin kaynak grubunu seçin ve **Sil**' i seçin.
 
-Şu `az keyvault delete` komutu kullanarak anahtar kasasını silin:
+`az keyvault delete` komutunu kullanarak anahtar kasasını silin:
 
 ```azurecli-interactive
 az keyvault delete --name
