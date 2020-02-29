@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C dil özelleştirmesi
 description: Kullanıcı akışlarınızda dil deneyimini özelleştirme hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab34c1c34c2d2a67b5e3fdd6a5e84f0663455e20
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847920"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185769"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -175,7 +175,7 @@ Ayrıca, Microsoft 'un şu anda çevirisi sağlamayan diller ekleyebilirsiniz. K
 >[!IMPORTANT]
 >Kaydedebilmeniz için özel dilleri etkinleştirmeniz veya için geçersiz kılmaları yüklemeniz gerekir.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>Geçersiz kılmalar olarak sayfa Kullanıcı arabirimi özelleştirme etiketleri
 
@@ -207,40 +207,40 @@ Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış diller
 | Bulgarca             | bg            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Bangla                | milyar TL            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | Katalanca               | yetkilisini            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Çekçe                 | cs            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Çekçe                 | 'ye            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Danca                | da            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Almanca                | de            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Yunanca                 | el            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Türkçe               | en            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Yunanca                 | seri            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Türkçe               | tr            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | İspanyolca               | es            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Estonca              | lale            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Bask dili                | yapılan            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Fince               | fi            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Fransızca                | fr            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Fince               | Fi            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Fransızca                | kesir            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Galiçya dili              | g            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Gucerat dili              | çubuğu            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | İbranice                | LIP            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Hintçe                 | n            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Hırvatça              | HR            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Macarca             | hu            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Endonezya dili            | id            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| İtalyanca               | it            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Japonca              | ja            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Macarca             | Hu            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Endonezce            | id            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| İtalyanca               | içerdiği            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Japonca              | Sofya            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Kazakça                | kk            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Kannada dili               | KN            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
-| Korece                | ko            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Korece                | dili            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Litvanca            | itme            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Letonca               | aramasını            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Malayalam dili             | ml            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | Marathi               | Mr            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
-| Malay dili                 | SWM            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Norveççe Bokmal      | nb            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
+| Malayca                 | ms            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Norveççe Bokmal      | NB            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | Felemenkçe                 | nl            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Norveççe             | hayır            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Pencap dili               | VARS            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | Lehçe                | pl            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Portekizce - Brezilya   | pt-br         | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Portekizce-Portekiz | pt-pt         | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Portekizce-Portekiz | PT NK         | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Rumence              | ro            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Rusça               | ru            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Slovakça                | sor            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
@@ -253,6 +253,6 @@ Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış diller
 | Tay Dili                  | 11            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Türkçe               | tr            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Ukrayna dili             | tr            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Vietnam dili            | v            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Vietnamca            | v            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Çince - Basitleştirilmiş  | zh-Hans       | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Çince - Geleneksel | zh-Hant       | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |

@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/26/2020
+ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064640"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192652"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -33,9 +33,9 @@ Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları
 |---|---|
 |[PowerShell az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<küme adı >-Targetınstancecount \<newsize >|
 |[PowerShell Azurerd](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<küme adı >-Targetınstancecount \<newsize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --kaynak grubu \<kaynak grubu >--ad \<küme adı >--Target-Instance-Count \<newsize >|
-|[Azure CLI](hdinsight-administer-use-command-line.md)|Azure HDInsight küme yeniden boyutlandırma \<clusterName > \<hedef örnek sayısı > |
-|[Azure portalında](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --kaynak grubu \<kaynak grubu >--ad \<küme adı >--workernode-Count \<newsize >|
+|[Azure klasik CLı](hdinsight-administer-use-command-line.md)|Azure HDInsight küme yeniden boyutlandırma \<clusterName > \<hedef örnek sayısı > |
+|[Azure portalındaki](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
 
 ![Azure portal ölçeği kümesi seçeneği](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -126,7 +126,7 @@ ResourceManager Kullanıcı arabirimine doğrudan `https://<HDInsightClusterName
 yarn application -kill <application_id>
 ```
 
-Örneğin:
+Örnek:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

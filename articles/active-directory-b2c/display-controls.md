@@ -3,20 +3,20 @@ title: Görüntüleme denetimi başvurusu
 titleSuffix: Azure AD B2C
 description: Azure AD B2C görüntüleme denetimlerine yönelik başvuru. Özel ilkeleriniz içinde tanımlanan Kullanıcı ilerliklerini özelleştirmek için görüntü denetimlerini kullanın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136335"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188741"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
 
@@ -32,7 +32,7 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
- [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürümü 2.0.0 veya üzeri olarak ayarlanmış olması gerekir. Örneğin:
+ [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürümü 2.0.0 veya üzeri olarak ayarlanmış olması gerekir. Örnek:
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -80,7 +80,7 @@ Her bir görüntüleme denetimi türü, gerçekleştirilecek farklı bir görün
 
 [Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, `TextBox` veya `DropdownSingleSelect`gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü Için **userınputtype** öğesini belirtmesi gerekir. Bir **eylem**için bir görüntüleme talebi değeri gerekliyse, kullanıcıyı söz konusu görüntüleme talebi için bir değer sağlamasına zorlamak üzere **gerekli** özniteliği `true` olarak ayarlayın.
 
-Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örneğin:
+Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örnek:
 
 ```XML
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -129,7 +129,7 @@ Aşağıdaki örnek, kullanıcının **Mfatype** talebinin seçimine bağlı ola
 
 Görüntüleme denetimlerine, [kendi kendini onaylanan teknik profilin](self-asserted-technical-profile.md) [görüntüleme taleplerini](self-asserted-technical-profile.md#display-claims) başvurulur.
 
-Örneğin:
+Örnek:
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">

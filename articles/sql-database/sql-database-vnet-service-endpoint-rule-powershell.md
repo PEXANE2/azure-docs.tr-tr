@@ -1,6 +1,6 @@
 ---
 title: Tek ve havuza alınmış veritabanlarının VNet uç noktaları ve kuralları için PowerShell
-description: Azure SQL veritabanınız ve SQL veri ambarınız için sanal hizmet uç noktaları oluşturmak ve yönetmek üzere PowerShell betikleri sağlar.
+description: Azure SQL veritabanınız ve Azure SYNAPSE için sanal hizmet uç noktaları oluşturup yönetmek üzere PowerShell betikleri sağlar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c4ea6c3fc5f415316e2b5cfcdf80c0681cc3f6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+tags: azure-synapse
+ms.openlocfilehash: f61403ef50af209fdc6e811191d31ccc83f8da73
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422498"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191887"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL için sanal hizmet uç noktası ve VNet kuralı oluşturma
 
-*Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir.
+*Sanal ağ kuralları* , Azure [SQL veritabanı](sql-database-technical-overview.md) 'nda tek veritabanlarınız ve elastik havuzunuz için veritabanı sunucusunun ve Azure [SYNAPSE](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'deki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir.
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
+> Bu makale, Azure SQL Server 'da ve Azure SQL Server 'da oluşturulan Azure SYNAPSE 'da hem SQL veritabanı hem de veri ambarı için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
 
 Bu makalede, aşağıdaki eylemleri alan bir PowerShell betiği sağlanmıştır ve açıklanmaktadır:
 
@@ -296,7 +297,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 Bu son betik, önceki betiklerin tanıtım için oluşturduğu kaynakları siler. Ancak, komut dosyası aşağıdakileri silmeden önce onay ister:
 
 - Azure SQL veritabanı sunucusu
-- Azure Kaynak Grubu
+- Azure kaynak grubu
 
 Betik 1 tamamlandıktan sonra istediğiniz zaman betiği 4 ' ü çalıştırabilirsiniz.
 

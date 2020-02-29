@@ -3,20 +3,20 @@ title: Microsoft hesabı ile kaydolma ve oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanarak uygulamalarınızda Microsoft hesaplarıyla oturum açma ve oturum açma sağlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f023fea4340fed6fa50defb3797c776a51bad5f4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 25784eb161a860398b0741d1d20375cabd1c4eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849558"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188027"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Microsoft hesabı Azure Active Directory B2C kullanarak kaydolma ve oturum açma ayarlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849558"
 
 Bir Microsoft hesabı Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik sağlayıcısı](openid-connect.md) olarak kullanmak IÇIN Azure AD kiracısında bir uygulama oluşturmanız gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir. Zaten bir Microsoft hesabı yoksa, [https://www.live.com/](https://www.live.com/)bir tane edinebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.

@@ -3,20 +3,20 @@ title: Application Insights ile Kullanıcı davranışını izleme
 titleSuffix: Azure AD B2C
 description: Özel ilkeler kullanarak Azure AD B2C Kullanıcı ilerinizden Application Insights olay günlüklerini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 002221bc69659a3be6fee950319909c9fc63ea9c
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: f36b04113a753607b9242681cb62270e37bf7067
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136319"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190204"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
 
@@ -45,14 +45,14 @@ Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIM
 
 Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak oluşturur ve izleme anahtarını alır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’ tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’ tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/analytics-with-application-insights/app-insights.png)

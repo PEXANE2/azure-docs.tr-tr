@@ -3,20 +3,20 @@ title: Görüntüleme denetimleriyle talepleri doğrulama
 titleSuffix: Azure AD B2C
 description: Özel ilkeleriniz tarafından sunulan Kullanıcı ilerinizdeki talepleri doğrulamak için Azure AD B2C görüntüleme denetimlerini nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4d7deb02e28734eb2b4c42bad566fdfd0d380682
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75479091"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188792"
 ---
 # <a name="verification-display-control"></a>Doğrulama görüntüleme denetimi
 

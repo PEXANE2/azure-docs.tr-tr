@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 743c6fa6545342f2a7655059016637fc54158b64
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164024"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194063"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için Python ve AI kullanma
 
 Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. Bir işlem hattı resimleri işleyebilir, ancak sorgular, modeller ve filtrelerde kullanabileceğiniz yeni alanlar oluşturmak için, bu Python öğreticisi metne odaklanır, dil algılama ve doğal dil işleme uygulanıyor.
 
-Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Python ve [rest](https://docs.microsoft.com/rest/api/searchservice/) kullanın:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için Python ve [arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice/) kullanır:
 
 > [!div class="checklist"]
 > * Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
@@ -512,19 +512,13 @@ Sorgu dizesinin karmaşıklık ve uzunluğuna bağlı olarak GET veya POST dizes
 
 ## <a name="reset-and-rerun"></a>Sıfırlama ve yeniden çalıştırma
 
-Geliştirmenin erken aşamalarında, Azure Bilişsel Arama nesneleri silmek ve kodunuzun bunları yeniden oluşturması için pratik bir özellik vardır. Kaynak adları benzersizdir. Bir nesneyi sildiğinizde, aynı adı kullanarak nesneyi yeniden oluşturabilirsiniz.
+Geliştirmede erken deneysel aşamalarda, tasarım yinelemesi için en pratik yaklaşım, nesneleri Azure Bilişsel Arama silmek ve kodunuzun bunları yeniden oluşturması için izin verir. Kaynak adları benzersizdir. Bir nesneyi sildiğinizde, aynı adı kullanarak nesneyi yeniden oluşturabilirsiniz.
 
-Belgelerinizi yeni tanımlarla yeniden dizinlemek için:
-
-1. Dizin oluşturucuyu, dizini ve beceri silin.
-2. Nesne tanımlarını değiştir.
-3. Hizmetinizdeki nesneleri yeniden oluşturun. Dizin oluşturucuyu yeniden oluşturmak işlem hattını çalıştırır. 
-
-Dizinleri, Dizin oluşturucuyu ve becerileri silmek için portalı kullanabilirsiniz. Dizin oluşturucuyu sildiğinizde, isteğe bağlı olarak, dizini, beceri ve veri kaynağını aynı anda seçmeli olarak silebilirsiniz.
+Dizinleri, Dizin oluşturucuyu, veri kaynaklarını ve becerileri silmek için portalı kullanabilirsiniz. Dizin oluşturucuyu sildiğinizde, isteğe bağlı olarak, dizini, beceri ve veri kaynağını aynı anda seçmeli olarak silebilirsiniz.
 
 ![Arama nesnelerini Sil](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Portalda arama nesnelerini silme")
 
-Ayrıca, bir komut dosyası kullanarak da silebilirsiniz. Aşağıdaki betik oluşturduğumuz beceri silecek. Dizini, Dizin oluşturucuyu ve veri kaynağını silme isteğini kolayca değiştirebilirsiniz.
+Ayrıca, bir komut dosyası kullanarak da silebilirsiniz. Aşağıdaki betik, bir beceri nasıl silineceğini gösterir. 
 
 ```python
 # delete the skillset
@@ -545,11 +539,13 @@ Son olarak, sonuçları test etme ve daha fazla yineleme için sistemi sıfırla
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Öğreticiden sonra temizlemenin en hızlı yolu, Azure Bilişsel Arama hizmetini ve Azure Blob hizmetini içeren kaynak grubunu silmelidir. Her iki hizmeti de aynı gruba yerleştirdiğinizde, kaynak grubunu silerek hizmetler ve bu öğretici için oluşturduğunuz tüm depolanmış içerikler dahil olmak üzere, içindeki her şeyi kalıcı olarak silebilirsiniz. Portalda kaynak grubu adı, her bir hizmetin Genel Bakış sayfasındadır.
+Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+
+Sol gezinti bölmesindeki tüm kaynaklar veya kaynak grupları bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel becerilerle işlem hattını özelleştirin veya genişletin. Özel bir beceri oluşturup bir beceri kümesine eklemeniz, kendi yazdığınız metin veya görüntü analizini eklemenize olanak sağlar.
+Artık bir AI zenginleştirme işlem hattındaki tüm nesneler hakkında bilgi sahibi olduğunuza göre, Beceri tanımlarına ve bireysel becerilere daha yakından göz atalım.
 
 > [!div class="nextstepaction"]
-> [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
+> [Beceri oluşturma](cognitive-search-defining-skillset.md)

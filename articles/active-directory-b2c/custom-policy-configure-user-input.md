@@ -3,20 +3,20 @@ title: Özel ilkelerde talepler ekleme ve Kullanıcı girişini özelleştirme
 titleSuffix: Azure AD B2C
 description: Kullanıcı girişini özelleştirmeyi ve Azure Active Directory B2C kaydolma veya oturum açma yolculuğuna talepler ekleme hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebbc0c8ac067635d31714468f1aee047b3683eb0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 737f373fb71494492f633d3297463cbef797f3d6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846984"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189557"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin
 
@@ -24,7 +24,7 @@ ms.locfileid: "76846984"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) kayıt Kullanıcı yolculuğuna yeni bir kullanıcı tarafından sağlanmış giriş (bir talep) eklersiniz.  Girişi bir açılan menü olarak yapılandırır ve gerekip gerekmediğini tanımlarsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Özel Ilkelerle çalışmaya](custom-policy-get-started.md)başlama makalesindeki adımları uygulayın. Devam etmeden önce yeni bir yerel hesap kaydolmak için kaydolma veya oturum açma Kullanıcı yolculuğunu test edin.
 
@@ -261,7 +261,7 @@ Talebi tanımlamak için aşağıdaki öğeler kullanılır:
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini (Önizleme)** seçin.

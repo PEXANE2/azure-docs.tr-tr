@@ -1,6 +1,6 @@
 ---
 title: Kullanıcı tanımlı geri yükleme noktaları
-description: Geri yükleme noktası Azure SQL veri ambarı oluşturma.
+description: SQL havuzu için geri yükleme noktası oluşturma.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 72e2535730dc6c814708ef3ff563136235930475
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759610"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198295"
 ---
 # <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
 
-Bu makalede, PowerShell ve Azure portal kullanarak Azure SQL veri ambarı için yeni bir Kullanıcı tanımlı geri yükleme noktası oluşturmayı öğreneceksiniz.
+Bu makalede, PowerShell ve Azure portal kullanarak Azure SYNAPSE Analytics 'te bir SQL havuzu için yeni bir Kullanıcı tanımlı geri yükleme noktası oluşturmayı öğreneceksiniz.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>PowerShell aracılığıyla Kullanıcı tanımlı geri yükleme noktaları oluşturma
 
@@ -62,9 +62,9 @@ Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da
 
 1. [Azure Portal](https://portal.azure.com/) hesabınızda oturum açın.
 
-2. İçin geri yükleme noktası oluşturmak istediğiniz SQL veri ambarına gidin.
+2. İçin geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
 
-3. Sol bölmeden **genel bakış** ' ı seçin, **+ Yeni geri yükleme noktası**' nı seçin. Yeni geri yükleme noktası düğmesi etkinleştirilmemişse, veri ambarının duraklatılmadığından emin olun.
+3. Sol bölmeden **genel bakış** ' ı seçin, **+ Yeni geri yükleme noktası**' nı seçin. Yeni geri yükleme noktası düğmesi etkinleştirilmemişse, SQL havuzunun duraklatılmadığından emin olun.
 
     ![Yeni geri yükleme noktası](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,7 @@ Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Mevcut bir veri ambarını geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
-- [Silinen bir veri ambarını geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
-- [Coğrafi yedekleme veri ambarından geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)
+- [Mevcut bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
+- [Silinen bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
+- [Coğrafi yedekleme SQL havuzundan geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)
 

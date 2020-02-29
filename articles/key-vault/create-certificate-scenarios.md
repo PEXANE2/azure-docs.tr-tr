@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9f88af7027f6c907b5b55eb9aac545d98e2fbb7a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880841"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199742"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Sertifika oluşturmayı izleme ve yönetme
 Uygulama hedefi: Azure
@@ -85,14 +86,14 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>İstek
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` al
 
 OR
 
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` al
 
 > [!NOTE]
-> Sorguda *request_id* belirtilmişse, bir filtre gibi davranır. Sorgudaki *request_id* ve bekleyen nesne farklıysa, 404 HTTP durum kodu döndürülür.
+> Sorguda *request_id* belirtilirse, bir filtre gibi davranır. Sorgudaki ve bekleyen nesnedeki *request_id* farklıysa, 404 HTTP durum kodu döndürülür.
 
 ### <a name="response"></a>Yanıt
 
@@ -120,11 +121,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` al
 
 OR
 
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` al
 
 ### <a name="response"></a>Yanıt
 
@@ -152,11 +153,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` al
 
 OR
 
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` al
 
 ### <a name="response"></a>Yanıt
 
@@ -191,11 +192,11 @@ Bekleyen bir nesne, durumu "sürüyor" olmadığında bir oluşturma/içeri akta
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>İstek
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` al
 
 OR
 
-AL`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` al
 
 ### <a name="response"></a>Yanıt
 
@@ -292,14 +293,14 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 
 |Yöntem|İstek URI'si|
 |------------|-----------------|
-|PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|DÜZELTMESI|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>İstek
-DÜZELTMESI`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Düzeltme Eki `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OR
 
-DÜZELTMESI`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Düzeltme Eki `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -335,11 +336,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>İstek
-SILMELI`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` SIL
 
 OR
 
-SILMELI`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` SIL
 
 ### <a name="response"></a>Yanıt
 
@@ -413,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|Öğe adı|Gerekli|Type|Version|Açıklama|
+|Öğe adı|Gerekli|Tür|Sürüm|Açıklama|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Evet|array|\<sürüm > tanıtma|X509 sertifika zinciri temel 64 dize dizisi olarak.|
+|x5c|Yes|array|sürüm > \<|X509 sertifika zinciri temel 64 dize dizisi olarak.|
 
 ### <a name="response"></a>Yanıt
 

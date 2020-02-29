@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422563"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190594"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme
 
@@ -85,7 +85,7 @@ Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında 
 
 1. En üstte, aradığınız denetim kaydına bağlı olarak **kategoriyi** `EntitlementManagement` ya da `UserManagement`olarak değiştirin.  
 
-1. **Uygula**'ya tıklayın.
+1. **Apply (Uygula)** düğmesine tıklayın.
 
 1. Günlükleri indirmek için **İndir**' e tıklayın.
 
@@ -109,5 +109,6 @@ Kullanıcının erişim paketi atamasının süresi dolarsa, Kullanıcı tarafı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Raporları ve günlükleri Arşivle](entitlement-management-logs-and-reporting.md)
 - [Azure AD yetkilendirme yönetimi sorunlarını giderme](entitlement-management-troubleshoot.md)
-- [Genel senaryolar](entitlement-management-scenarios.md)
+- [Yaygın senaryolar](entitlement-management-scenarios.md)

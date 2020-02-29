@@ -1,22 +1,22 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: 0ab9302909f86ff4559ece217f8d702710733691
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimart
+ms.openlocfilehash: 31d4b65c6cd6a3dfe3cb779022329f338436c69b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368019"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184376"
 ---
 Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
+#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 1. **Yönet**altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
@@ -27,9 +27,9 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 1. **Oluştur**’u seçin.
 1. **Kayıtlı uygulamaya** Genel Bakış sayfasında görüntülenen **uygulama kimliğini** kaydedin. Bu değeri sonraki bir adımda kullanırsınız.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.

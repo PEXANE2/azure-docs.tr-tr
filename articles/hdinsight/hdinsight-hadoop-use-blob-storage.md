@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/01/2019
-ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/28/2020
+ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061267"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192634"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
 
@@ -27,9 +27,9 @@ Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı h
 
 | Depolama hesabı türü | Desteklenen hizmetler | Desteklenen performans katmanları | Desteklenen erişim katmanları |
 |----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (genel amaçlı v2)  | Blob     | Standard                    | Sık erişimli, seyrek erişimli ve arşiv\*   |
-| Depolama (genel amaçlı v1)   | Blob     | Standard                    | YOK                    |
-| BlobStorage                    | Blob     | Standard                    | Sık erişimli, seyrek erişimli ve arşiv\*   |
+| StorageV2 (genel amaçlı v2)  | Blob     | Standart                    | Sık erişimli, seyrek erişimli ve arşiv\*   |
+| Depolama (genel amaçlı v1)   | Blob     | Standart                    | Yok                    |
+| BlobStorage                    | Blob     | Standart                    | Sık erişimli, seyrek erişimli ve arşiv\*   |
 
 İş verilerini depolamak için varsayılan blob kapsayıcısını kullanmanızı önermiyoruz. Depolama maliyetini azaltmak için blob kapsayıcısının her kullanımdan sonra silinmesi iyi bir uygulamadır. Varsayılan kapsayıcı, uygulama ve sistem günlükleri içerir. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
 
@@ -38,7 +38,7 @@ Birden çok küme için varsayılan dosya sistemi olarak bir blob kapsayıcısı
 > [!NOTE]  
 > Arşiv erişim katmanı, birkaç saat alma gecikmesi olan ve HDInsight ile kullanım için önerilmeyen bir çevrimdışı katmandır. Daha fazla bilgi için bkz. [Arşiv erişim katmanı](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
 
-## <a name="access-files-from-the-cluster"></a>Kümeden dosyalara erişme
+## <a name="access-files-from-within-cluster"></a>Küme içinden dosyalara erişme
 
 HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yollar vardır. URI şeması şifrelenmemiş erişim (ile *wasb:* öneki ile) ve SSL şifreli erişim (*wasbs* ile) şifrelenmemiş erişim sağlar. Azure’da aynı bölgede bulunan verilere erişirken dahi mümkün olduğunda *wasbs* kullanmanızı öneririz.
 
@@ -122,6 +122,17 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
+## <a name="access-files-from-outside-cluster"></a>Dış kümeden dosyalara erişme
+
+Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
+
+| Araç | Linux | OS X | Windows |
+| --- |:---:|:---:|:---:|
+| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+
 ## <a name="identify-storage-path-from-ambari"></a>Ambarı 'ndan depolama yolunu tanımla
 
 * Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için şuraya gidin:
@@ -132,6 +143,8 @@ LOCATION '/example/data/';
 
     ** > ** **config** 'ler ve filtre giriş kutusuna `blob.core.windows.net` girin.
 
+Ambarı REST API kullanarak yolu elde etmek için bkz. [varsayılan depolamayı alma](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
+
 ## <a name="blob-containers"></a>Blob kapsayıcıları
 
 Blob 'ları kullanmak için önce bir [Azure depolama hesabı](../storage/common/storage-create-storage-account.md)oluşturursunuz. Bunun bir parçası olarak depolama hesabının oluşturulduğu Azure bölgesini belirtirsiniz. Küme ve depolama hesabının aynı bölgede barındırılması gerekir. Hive meta veri deposu SQL Server veritabanı ve Apache Oozie metaser SQL Server veritabanı aynı bölgede de bulunmalıdır.
@@ -141,17 +154,6 @@ Nerede olursa olsun, oluşturduğunuz her blob Azure Storage hesabınızdaki bir
 Varsayılan Blob kapsayıcısı iş geçmişi ve iş günlükleri gibi kümeye özel bilgileri depolar. Varsayılan Blob kapsayıcısını birden çok HDInsight kümesiyle paylaşmayın. Bu durum iş geçmişinin bozulmasına neden olabilir. Her küme için farklı bir kapsayıcı kullanmanız ve paylaşılan verileri varsayılan depolama hesabı yerine tüm ilgili kümelerin dağıtımında belirtilen bağlı bir depolama hesabına yerleştirmeniz önerilir. Bağlı depolama hesaplarını yapılandırma hakkında daha fazla bilgi için bkz. [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md). Ancak özgün HDInsight kümesi silindikten sonra varsayılan depolama kapsayıcısını yeniden kullanabilirsiniz. HBase kümeleri için, silinmiş bir HBase kümesi tarafından kullanılan varsayılan blob kapsayıcısını kullanarak yeni bir HBase kümesi oluşturarak HBase tablo şemasını ve verilerini tutabilirsiniz.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
-
-## <a name="interacting-with-azure-storage"></a>Azure depolama ile etkileşim kurma
-
-Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
-
-| Araç | Linux | OS X | Windows |
-| --- |:---:|:---:|:---:|
-| [Azure portalında](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
 ## <a name="use-additional-storage-accounts"></a>Ek depolama hesaplarını kullanma
 

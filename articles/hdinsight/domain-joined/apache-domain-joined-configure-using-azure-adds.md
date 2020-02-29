@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 02/03/2020
-ms.openlocfilehash: a3a23e2adb60b2b0fd5f4a5e790990ce2ad85fa9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf239cbf69f3816e5ec03e07e2bd5fe370308f22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031192"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196867"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight 'ta Azure Active Directory Domain Services olan Kurumsal Güvenlik Paketi konfigürasyonları
 
@@ -127,9 +127,9 @@ ESP ile bir HDInsight kümesi oluşturduğunuzda, aşağıdaki parametreleri sa�
 
 Oluşturduğunuz yönetilen kimlik, yeni bir küme oluştururken, **Kullanıcı tarafından atanan yönetilen kimlik** listesinden seçilebilir.
 
-![Azure HDInsight ESP Active Directory Domain Services yönetilen kimliği](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png)arasında yetersiz alanla karşılaştı.
+![Azure HDInsight ESP Active Directory Domain Services yönetilen kimliği](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Hive ilkelerini yapılandırmak ve Hive sorgularını çalıştırmak için bkz. [HDInsight kümeleri için Apache Hive ILKELERINI ESP Ile yapılandırma](apache-domain-joined-run-hive.md).
-* ESP ile HDInsight kümelerine bağlanmak üzere SSH kullanmak için bkz. [Linux, Unix veya OS X 'Ten HDInsight 'Ta Linux tabanlı Apache Hadoop Ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* ESP ile HDInsight kümelerine bağlanmak üzere SSH kullanmak için bkz. [Linux, Unix veya OS X 'Ten HDInsight 'Ta Linux tabanlı Apache Hadoop Ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

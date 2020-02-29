@@ -3,20 +3,20 @@ title: LinkedIn hesabı ile kaydolma ve oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanarak uygulamalarınızda LinkedIn hesapları olan kaydolma ve oturum açma bilgilerini sağlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: edd6bc2bbad218a1ed0a25bdcb763bde656a589d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d32eb80ffe296d86164a6d27a1b7a28181357243
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847725"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188109"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir LinkedIn hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir LinkedIn hesabını [kimlik s
 1. **Uygulamalarım**' ı seçin ve ardından **uygulama oluştur**' a tıklayın.
 1. **Şirket adı**, **uygulama adı**, **uygulama açıklaması**, **uygulama logosu**, **uygulama kullanımı**, **Web sitesi URL 'si**, **iş e-postası**ve **iş telefonu**girin.
 1. **LINKEDıN API kullanım koşullarını** kabul edin ve **Gönder**' e tıklayın.
-1. Değerlerini kopyalamayı **istemci kimliği** ve **gizli**. Bunları, **kimlik doğrulama anahtarları**altında bulabilirsiniz. Bunları kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
+1. **ISTEMCI kimliği** ve **istemci parolası**değerlerini kopyalayın. Bunları, **kimlik doğrulama anahtarları**altında bulabilirsiniz. Bunları kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
 1. **Yetkili yeniden yönlendirme URL 'lerine**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` girin. `your-tenant-name`, kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir. **Ekle**' yi ve ardından **Güncelleştir**' i seçin.
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Bir LinkedIn hesabını kimlik sağlayıcısı olarak yapılandırma

@@ -1,6 +1,6 @@
 ---
 title: Tabloları bölümleme
-description: Azure SQL veri ambarı 'nda tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler.
+description: SQL Analytics 'te tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,24 +10,24 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 25485502ff1ae6858ee7d0f840c22940dc3ab9b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685425"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192158"
 ---
-# <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL veri ambarı 'nda tabloları bölümleme
-Azure SQL veri ambarı 'nda tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler.
+# <a name="partitioning-tables-in-sql-analytics"></a>SQL Analytics 'te tabloları bölümleme
+SQL Analytics 'te tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler.
 
 ## <a name="what-are-table-partitions"></a>Tablo bölümleri nelerdir?
-Tablo bölümleri, verilerinizi daha küçük veri gruplarına bölmenizi sağlar. Çoğu durumda, tablo bölümleri bir tarih sütununda oluşturulur. Bölümlendirme tüm SQL veri ambarı tablo türlerinde desteklenir; kümelenmiş columnstore, kümelenmiş dizin ve yığın dahil. Hem karma hem de hepsini bir kez deneme dağıtımı dahil olmak üzere tüm dağıtım türlerinde bölümlendirme de desteklenir.  
+Tablo bölümleri, verilerinizi daha küçük veri gruplarına bölmenizi sağlar. Çoğu durumda, tablo bölümleri bir tarih sütununda oluşturulur. Bölümlendirme tüm SQL Analytics tablo türlerinde desteklenir; kümelenmiş columnstore, kümelenmiş dizin ve yığın dahil. Hem karma hem de hepsini bir kez deneme dağıtımı dahil olmak üzere tüm dağıtım türlerinde bölümlendirme de desteklenir.  
 
 Bölümlendirme, veri bakımı ve sorgu performansı avantajına sahip olabilir. Yalnızca bir sütundan yalnızca bir sütunda yapılabileceğinizden, verilerin nasıl yüklenedüğüne ve aynı sütunun her iki amaçla de kullanılıp kullanılamayacağını belirtir.
 
 ### <a name="benefits-to-loads"></a>Yüklerin avantajları
-SQL veri ambarı 'nda bölümlemenin birincil avantajı, bölüm silme, değiştirme ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklendiği sıraya yakın bir tarih sütununda bölümlenir. Bölüm kullanmanın en büyük avantajlarından biri, verileri işlem günlüğü 'nün engelleme. Yalnızca veri ekleme, güncelleştirme veya silme en kolay yaklaşım olabilir. Bu işlem, kısa bir süre sonra, yükleme işleminiz sırasında bölümlemenin kullanılması performansı önemli ölçüde iyileştirebilir.
+SQL Analytics 'te bölümlemenin birincil avantajı, bölüm silme, değiştirme ve birleştirme kullanımıyla verileri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklendiği sıraya yakın bir tarih sütununda bölümlenir. Bölüm kullanmanın en büyük avantajlarından biri, verileri işlem günlüğü 'nün engelleme. Yalnızca veri ekleme, güncelleştirme veya silme en kolay yaklaşım olabilir. Bu işlem, kısa bir süre sonra, yükleme işleminiz sırasında bölümlemenin kullanılması performansı önemli ölçüde iyileştirebilir.
 
 Bölüm değiştirme, bir tablonun bir bölümünü hızlıca kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir Sales olgu tablosu yalnızca son 36 aya ait verileri içerebilir. Her ayın sonunda, satış verilerinin en eski ayı tablodan silinir.  Bu veriler, en eski aya ilişkin verileri silmek için bir Delete ifadesiyle silinebilir. Ancak, bir Delete ifadesiyle büyük miktarda veri satırını satır içinde silmek çok fazla zaman alabilir ve bir şeyler yanlış olursa geri alınması uzun zaman alan büyük işlemler riskini oluşturabilir. En iyi yöntem, en eski veri bölümünü düşürülemedir. Tek tek satırları silmenin saat sürebileceği durumlarda, bölümün tamamının silinmesi saniye sürebilir.
 
@@ -37,10 +37,10 @@ Sorgu performansını artırmak için bölümleme de kullanılabilir. Bölümlen
 ## <a name="sizing-partitions"></a>Bölümleri boyutlandırma
 Bölümleme performansı artırmak için, bazı senaryolarda **çok fazla** bölüm içeren bir tablo oluşturmak, bazı koşullarda performansı etkileyebilir.  Bu sorunlar özellikle kümelenmiş columnstore tabloları için geçerlidir. Bölümlemenin yararlı olması için bölümleme ve oluşturulacak bölüm sayısının ne zaman kullanılacağını anlamak önemlidir. Birçok bölüm çok fazla olan bir sabit hızlı kural yoktur, bu, verilerinize ve aynı anda kaç bölümden fazla yükleme yapadığınıza bağlıdır. Başarılı bir bölümlendirme şeması genellikle binlerce bölüm olan binlerce bölümden oluşur.
 
-**Kümelenmiş columnstore** tablolarında bölümler oluştururken, her bölüme ait kaç satır olduğunu göz önünde bulundurmanız önemlidir. Kümelenmiş columnstore tablolarının en iyi sıkıştırması ve performansı için, dağıtım ve bölüm başına en az 1.000.000 satır gerekir. Bölümler oluşturulmadan önce SQL veri ambarı, her tabloyu zaten 60 dağıtılmış veritabanına böler. Bir tabloya eklenen herhangi bir bölümleme, arka planda oluşturulan dağıtımların yanı sıra. Bu örneği kullanarak, Sales olgu tablosu 36 aylık bölümler içeriyorsa ve SQL Data Warehouse 'ın 60 dağıtımları varsa, Sales olgu tablosu ayda 60.000.000 satır veya tüm aylar doldurulduğunda 2.100.000.000 satır içermelidir. Bir tablo, bölüm başına önerilen en az sayıda satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı göz önünde bulundurun. Daha fazla bilgi için, küme columnstore dizinlerinin kalitesini değerlendirebilen sorgular içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
+**Kümelenmiş columnstore** tablolarında bölümler oluştururken, her bölüme ait kaç satır olduğunu göz önünde bulundurmanız önemlidir. Kümelenmiş columnstore tablolarının en iyi sıkıştırması ve performansı için, dağıtım ve bölüm başına en az 1.000.000 satır gerekir. Bölümler oluşturulmadan önce SQL Analytics, her tabloyu zaten 60 dağıtılmış veritabanına böler. Bir tabloya eklenen herhangi bir bölümleme, arka planda oluşturulan dağıtımların yanı sıra. Bu örneği kullanarak, Sales olgu tablosu 36 aylık bölümler içeriyorsa ve bir SQL Analytics veritabanının 60 dağıtımları varsa, Sales olgu tablosu ayda 60.000.000 satır veya tüm aylar doldurulduğunda 2.100.000.000 satır içermelidir. Bir tablo, bölüm başına önerilen en az sayıda satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı göz önünde bulundurun. Daha fazla bilgi için, küme columnstore dizinlerinin kalitesini değerlendirebilen sorgular içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
 
 ## <a name="syntax-differences-from-sql-server"></a>SQL Server söz dizimi farklılıkları
-SQL veri ambarı, SQL Server daha basit olan bölümleri tanımlamak için bir yol sunar. Bölümlendirme işlevleri ve şemaları, SQL Server olduklarından SQL veri ambarı 'nda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütunu ve sınır noktalarını belirlemektir. Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve SQL veri ambarı, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
+SQL Analytics, SQL Server daha basit olan bölümleri tanımlamak için bir yol sunar. Bölümlendirme işlevleri ve şemaları, SQL Server olduklarından SQL Analytics 'te kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütunu ve sınır noktalarını belirlemektir. Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve SQL Analytics, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
 
 Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölümlemek için [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) ifadesini kullanır:
 
@@ -69,12 +69,12 @@ WITH
 ```
 
 ## <a name="migrating-partitioning-from-sql-server"></a>SQL Server bölümleme geçiriliyor
-SQL Server bölüm tanımlarını SQL Data Warehouse 'a geçirmek için:
+SQL Server bölüm tanımlarını SQL Analytics 'e geçirmek için:
 
 - SQL Server [bölüm düzenini](/sql/t-sql/statements/create-partition-scheme-transact-sql)kaldırın.
 - [Bölüm işlev](/sql/t-sql/statements/create-partition-function-transact-sql) tanımını Create Table ekleyin.
 
-Bölümlenmiş bir tabloyu SQL Server örneğinden geçiriyorsanız, aşağıdaki SQL her bölümde bulunan satır sayısını bulmanıza yardımcı olabilir. SQL veri ambarı 'nda aynı bölümleme ayrıntı düzeyi kullanılıyorsa, bölüm başına satır sayısı 60 faktörüyle azaldığını aklınızda bulundurun.  
+Bölümlenmiş bir tabloyu SQL Server örneğinden geçiriyorsanız, aşağıdaki SQL her bölümde bulunan satır sayısını bulmanıza yardımcı olabilir. SQL Analytics 'te aynı bölümleme ayrıntı düzeyi kullanılıyorsa, bölüm başına satır sayısı 60 faktörüyle azaldığını aklınızda bulundurun.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -111,7 +111,7 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="partition-switching"></a>Bölüm değiştirme
-SQL veri ambarı bölüm bölmeyi, birleştirmeyi ve değiştirmeyi destekler. Bu işlevlerin her biri [alter table](/sql/t-sql/statements/alter-table-transact-sql) ifadesi kullanılarak yürütülür.
+SQL Analytics bölüm bölmeyi, birleştirmeyi ve değiştirmeyi destekler. Bu işlevlerin her biri [alter table](/sql/t-sql/statements/alter-table-transact-sql) ifadesi kullanılarak yürütülür.
 
 Bölümleri iki tablo arasında değiştirmek için bölümlerin ilgili sınırlarına göre hizalanmasına ve tablo tanımlarının eşleştiğinden emin olmanız gerekir. Denetim kısıtlamaları tablodaki değer aralığını zorlamak için kullanılabilir olmadığından, kaynak tablo hedef tabloyla aynı bölüm sınırlarını içermelidir. Bölüm sınırları aynı değilse, Bölüm meta verileri eşitlenmediği için bölüm anahtarı başarısız olur.
 
@@ -227,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Verileri tek bir adımda içeren bölümlere yeni verileri yükleme
-Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, verileri değiştirmek üzere kullanılan bir `ALTER TABLE`.  Yeni verilerde geçiş yapmak için başka bir `ALTER TABLE` gerekiyordu.  SQL veri ambarı 'nda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET` `ALTER TABLE` komutu, bölümdeki mevcut verilerin yeni verilerle üzerine yazar.  Aşağıda, var olan verileri içeren yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, mevcut verilerin üzerine yazmak için `CTAS` kullanan bir örnek verilmiştir.
+Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, verileri değiştirmek üzere kullanılan bir `ALTER TABLE`.  Yeni verilerde geçiş yapmak için başka bir `ALTER TABLE` gerekiyordu.  SQL Analytics 'te `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET` `ALTER TABLE` komutu, bölümdeki mevcut verilerin yeni verilerle üzerine yazar.  Aşağıda, var olan verileri içeren yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, mevcut verilerin üzerine yazmak için `CTAS` kullanan bir örnek verilmiştir.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -328,7 +328,7 @@ Kaynak denetim sisteminizde tablo tanımınızın bir engel olmasını önlemek 
     DROP TABLE #partitions;
     ```
 
-Bu yaklaşımla kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; zaman içinde ambarla gelişiyor.
+Bu yaklaşımla kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; veritabanıyla zaman içinde gelişiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Tablo geliştirme hakkında daha fazla bilgi için bkz. makaleye [genel bakış](sql-data-warehouse-tables-overview.md).

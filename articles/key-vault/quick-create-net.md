@@ -5,13 +5,14 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: dfe5a9a8b5503bb078cfd633a1f29774613b42b6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: de76862bc67b30b82b0f96eedfcd3e1e0becddc0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769214"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190339"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v4)
 
@@ -27,7 +28,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 
 [API başvuru belgeleri](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 2,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/2.1).
@@ -145,7 +146,7 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 
 .NET için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
 
-Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app kullanılabilir.
+Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appkullanılabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 

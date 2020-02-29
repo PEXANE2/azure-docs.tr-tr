@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak LinkedIn hesabı ile oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Özel ilkeler kullanarak Azure Active Directory B2C LinkedIn hesabıyla oturum açma ayarlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4ad74104d34e7e2c3f4d6aafc05b36574f8e287
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 80bd1b65d04ea49fc742033e1850d95a85021c9f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847439"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188180"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak LinkedIn hesabı ile oturum açmayı ayarlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847439"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [özel ilkeler](custom-policy-overview.md) kullanarak LinkedIn hesabından kullanıcılar için oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - LinkedIn hesabı-henüz yoksa [bir hesap oluşturun](https://www.linkedin.com/start/join).
@@ -60,7 +60,7 @@ LinkedIn 'i Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için bir L
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -77,7 +77,7 @@ Kullanıcıların bir LinkedIn hesabı kullanarak oturum açmasını istiyorsan�
 
 Bir LinkedIn hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayın.
 
-1. Düzenleyicinizde *SocialAndLocalAccounts/ **TrustFrameworkExtensions. xml*** dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
+1. Düzenleyicinizde *SocialAndLocalAccounts/* * TrustFrameworkExtensions. xml** * dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
 1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 1. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
@@ -246,7 +246,7 @@ LinkedIn [, API 'lerini son zamanlarda v 1.0 'dan v 2.0 'a güncelleştirmiştir
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-Hedef:
+Kime:
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -272,7 +272,7 @@ Hedef:
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-Hedef:
+Kime:
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

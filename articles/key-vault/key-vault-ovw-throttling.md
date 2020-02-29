@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806686"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197377"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma kılavuzu
 
@@ -38,9 +39,9 @@ Key Vault ilk olarak [Azure Key Vault hizmet sınırlarında](key-vault-service-
 1. Uygulamanız aynı gizli dizi (ler) i okuması gereken birden çok düğüm içeriyorsa, bir varlığın Key Vault gizli dizi ve tüm düğümlere giden fanları okuduğu bir fan çıkış deseninin kullanılmasını düşünün.   Alınan gizli dizileri yalnızca bellekte önbelleğe al.
 Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanız, lütfen aşağıdaki tabloyu doldurun ve hangi ek kapasitenin eklenebileceklerini öğrenmek için bizimle iletişim kurun (yalnızca tanım amaçları için aşağıda verilmiştir).
 
-| Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar Türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
+| Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Anahtar | Oturum aç | EC | P-256 | Hayır | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Anahtar | İmzalayabilirsiniz | EC | P-256 | Hayır | 200 | 1000 |
 
 olası değerlerin tam listesi Için \* bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
 
@@ -97,5 +98,5 @@ Bu noktada, HTTP 429 yanıtı kodları alamıyorsanız.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Microsoft Cloud azaltma derin yönlendirmesi için bkz. [kısıtlama düzeni](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+Microsoft Bulut azaltma daha derin bir yönü için bkz. [daraltma kriteri](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak Twitter hesabıyla oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C özel ilkeler kullanarak Twitter hesabıyla oturum açma ayarlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bae7a235ee42ca02dc72fcbc8d9a694321571ac4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 85af3457f83f06c107f8b4aa9bd88a9f915c776f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849571"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187942"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak Twitter hesabı ile oturum açmayı ayarlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849571"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](custom-policy-overview.md) kullanarak Twitter hesabı kullanıcıları için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - Zaten bir Twitter hesabınız yoksa [Twitter kaydolma sayfasında](https://twitter.com/signup)bir tane oluşturun.
@@ -46,7 +46,7 @@ Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir 
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz gizli anahtarı depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.

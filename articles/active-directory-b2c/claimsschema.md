@@ -2,20 +2,20 @@
 title: ClaimsSchema-Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C bir özel ilkenin ClaimsSchema öğesini belirtin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581115"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189933"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -64,7 +64,7 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 **DataType** öğesi aşağıdaki değerleri destekler:
 
 | Tür | Açıklama |
-| ------- | ----------- | 
+| ------- | ----------- |
 |boole|Boole (`true` veya `false`) değerini temsil eder.|
 |date| Genellikle günün bir tarihi olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|
 |Tarih/saat|Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|

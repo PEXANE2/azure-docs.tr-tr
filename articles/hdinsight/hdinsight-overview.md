@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop ve Apache Spark teknoloji yığını nedir? -Azure HDInsight
-description: HDInsight 'a giriş ve Apache Hadoop ve Apache Spark teknoloji yığını ve bileşenleri, büyük veri analizi için Kafka, Hive, fırtınası ve HBase dahil.
-keywords: azure hadoop, hadoop azure, hadoop giriş, hadoop’a giriş, hadoop teknoloji yığını, yeni başlayanlar için hadoop, temel hadoop bilgileri, hadoop kümesi nedir, hadoop kümeleri nedir, hadoop ne için kullanılır
+description: HDInsight 'a giriş ve büyük veri analizi için Kafka, Hive, fırtınası ve HBase gibi Apache Hadoop ve Apache Spark teknoloji yığını ve bileşenleri.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 06/11/2019
-ms.openlocfilehash: 1cea76bec3a1b8b698a604c0bac491ac0319a10e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: 3e8feb05b0b9b0e1051d3822b9af0b92eeee28f2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791169"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199929"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight nedir?
 
@@ -46,7 +45,7 @@ Bu bölümde Azure HDInsight özellikleri listelenmektedir.
 
 ## <a name="scenarios-for-using-hdinsight"></a>HDInsight kullanma senaryoları
 
-Azure HDInsight, büyük veri işlemeye yönelik çeşitli senaryolar için kullanılabilir. Geçmiş verileri (zaten toplanmış ve depolanmış veriler) veya gerçek zamanlı veriler (doğrudan kaynaktan akışı yapılan veriler) olabilir. Bu tür verileri işlemeye yönelik senaryolar aşağıdaki kategorilerde özetlenebilir: 
+Azure HDInsight, büyük veri işlemeye yönelik çeşitli senaryolar için kullanılabilir. Geçmiş verileri (zaten toplanmış ve depolanmış veriler) veya gerçek zamanlı veriler (doğrudan kaynaktan akışı yapılan veriler) olabilir. Bu tür verileri işlemeye yönelik senaryolar aşağıdaki kategorilerde özetlenebilir:
 
 ### <a name="batch-processing-etl"></a>Toplu işleme (ETL)
 
@@ -54,15 +53,15 @@ Ayıklama, dönüştürme ve yükleme (ETL), heterojen veri kaynaklarından yap�
 
 ### <a name="data-warehousing"></a>Veri ambarlama
 
-Herhangi bir biçimdeki yapılandırılmış veya yapılandırılmamış veriler üzerinde petabayt ölçeğinde etkileşimli sorgular gerçekleştirmek için HDInsight kullanabilirsiniz. Ayrıca bunları BI araçlarına bağlayan modeller de oluşturabilirsiniz. Daha fazla bilgi için, [bu müşteri başarı öyküsünü okuyun](https://customers.microsoft.com/story/milliman). 
+Herhangi bir biçimdeki yapılandırılmış veya yapılandırılmamış veriler üzerinde petabayt ölçeğinde etkileşimli sorgular gerçekleştirmek için HDInsight kullanabilirsiniz. Ayrıca bunları BI araçlarına bağlayan modeller de oluşturabilirsiniz. Daha fazla bilgi için, [bu müşteri başarı öyküsünü okuyun](https://customers.microsoft.com/story/milliman).
 
 ![HDInsight mimarisi: veri depolama](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight veri ambarı mimarisi")
 
 ### <a name="internet-of-things-iot"></a>Nesnelerin İnterneti (IoT)
 
-HDInsight kullanarak çeşitli cihazlardan gerçek zamanlı olarak alınan akış verilerini işleyebilirsiniz. Daha fazla bilgi edinmek için [Azure tarafından hazırlanan ve Azure Yönetilen disklerle HDInsight’ta Apache Kafka önizlemesinin genel önizlemeye sunulduğunu duyuran bu blog gönderisini okuyun](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
+Farklı türde cihazlardan gerçek zamanlı olarak alınan akış verilerini işlemek için HDInsight kullanabilirsiniz. Daha fazla bilgi edinmek için [Azure tarafından hazırlanan ve Azure Yönetilen disklerle HDInsight’ta Apache Kafka önizlemesinin genel önizlemeye sunulduğunu duyuran bu blog gönderisini okuyun](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
 
-![HDInsight mimarisi: Nesnelerin İnterneti](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT mimarisi") 
+![HDInsight mimarisi: Nesnelerin İnterneti](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT mimarisi")
 
 ### <a name="data-science"></a>Veri bilimi
 
@@ -70,7 +69,7 @@ Verilerden kritik öngörüleri ayıklayan uygulamalar oluşturmak için HDInsig
 
 ![HDInsight mimarisi: veri bilimi](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight veri bilimi mimarisi")
 
-### <a name="hybrid"></a>Hibrit
+### <a name="hybrid"></a>Karma
 
 Bulutun gelişmiş analiz özelliklerinden yararlanmak üzere mevcut şirket içi büyük veri altyapınızı Azure’a genişletmek için HDInsight kullanabilirsiniz.
 
@@ -82,13 +81,13 @@ HDInsight belirli küme türlerinin yanı sıra bileşen, yardımcı program ve 
 
 |Küme Türü | Açıklama |
 |---|---|
-|[Apache Hadoop](https://hadoop.apache.org/)|İşlem verilerini paralel olarak işlemek ve analiz etmek için, ", YARN kaynak yönetimini ve basit bir MapReduce programlama modelini kullanan bir çerçeve.|
-|[Apache Spark](https://spark.apache.org/)|Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Bkz. [HDInsight’ta Apache Spark nedir?](./spark/apache-spark-overview.md)|
-|[Apache HBase](https://hbase.apache.org/)|Büyük miktarlarda yapılandırılmamış ve yarı yapılandırılmış veriler için rastgele erişim ve güçlü tutarlılık sağlayan Hadoop üzerinde oluşturulmuş bir NoSQL veritabanı (potansiyel olarak milyarlarca satır çarpı milyonlarca sütun). Bkz. [HDInsight'ta HBase nedir?](./hbase/apache-hbase-overview.md)|
-|[ML Hizmetleri](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Paralel ve dağıtılmış R süreçlerini barındırmak ve yönetmek için bir sunucu. Veri uzmanlarının, istatistikçilerin ve R programcılarının HDInsight üzerindeki ölçeklenebilir ve dağıtılmış analitik yöntemlerine istedikleri an erişmesini sağlar. Bkz. [HDInsight'ta ML Services'a genel bakış](./r-server/r-server-overview.md).|
-|[Apache Storm](https://storm.incubator.apache.org/)|Büyük veri akışlarını hızlı bir şekilde işlemek için dağıtılmış, gerçek zamanlı bir hesaplama sistemi. Storm HDInsight’ta yönetilen küme olarak sunulur. Bkz. [Storm ve Hadoop kullanarak gerçek zamanlı algılayıcı verilerini çözümleme](/azure/hdinsight/storm/apache-storm-overview).|
-|[Apache etkileşimli sorgu](https://cwiki.apache.org/confluence/display/Hive/LLAP)|Etkileşimli ve daha hızlı Hive sorguları için bellek içi önbelleğe alma. Bkz. [HDInsight'ta Interactive Query kullanımı](./interactive-query/apache-interactive-query-get-started.md).|
-|[Apache Kafka](https://kafka.apache.org/)|Akış verisi işlem hatları ve uygulamaları oluşturmak için kullanılan açık kaynaklı bir platform. Kafka ayrıca veri akışları yayımlamanızı ve abone olmanızı sağlayan ileti-kuyruk işlevi de sunar. Bkz. [HDInsight'ta Apache Kafka'ya giriş](./kafka/apache-kafka-introduction.md).|
+|[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|İşlem verilerini paralel olarak işlemek ve analiz etmek için, ", YARN kaynak yönetimini ve basit bir MapReduce programlama modelini kullanan bir çerçeve.|
+|[Apache Spark](./spark/apache-spark-overview.md)|Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Bkz. [HDInsight’ta Apache Spark nedir?](./spark/apache-spark-overview.md)|
+|[Apache HBase](./hbase/apache-hbase-overview.md)|Büyük miktarlarda yapılandırılmamış ve yarı yapılandırılmış veriler için rastgele erişim ve güçlü tutarlılık sağlayan Hadoop üzerinde oluşturulmuş bir NoSQL veritabanı (potansiyel olarak milyarlarca satır çarpı milyonlarca sütun). Bkz. [HDInsight'ta HBase nedir?](./hbase/apache-hbase-overview.md)|
+|[ML Hizmetleri](./r-server/r-server-overview.md)|Paralel ve dağıtılmış R süreçlerini barındırmak ve yönetmek için bir sunucu. Veri uzmanlarının, istatistikçilerin ve R programcılarının HDInsight üzerindeki ölçeklenebilir ve dağıtılmış analitik yöntemlerine istedikleri an erişmesini sağlar. Bkz. [HDInsight'ta ML Services'a genel bakış](./r-server/r-server-overview.md).|
+|[Apache Storm](./storm/apache-storm-overview.md)|Büyük veri akışlarını hızlı bir şekilde işlemek için dağıtılmış, gerçek zamanlı bir hesaplama sistemi. Storm HDInsight’ta yönetilen küme olarak sunulur. Bkz. [Storm ve Hadoop kullanarak gerçek zamanlı algılayıcı verilerini çözümleme](./storm/apache-storm-overview.md).|
+|[Apache etkileşimli sorgu](./interactive-query/apache-interactive-query-get-started.md)|Etkileşimli ve daha hızlı Hive sorguları için bellek içi önbelleğe alma. Bkz. [HDInsight'ta Interactive Query kullanımı](./interactive-query/apache-interactive-query-get-started.md).|
+|[Apache Kafka](./kafka/apache-kafka-introduction.md)|Akış verisi işlem hatları ve uygulamaları oluşturmak için kullanılan açık kaynaklı bir platform. Kafka ayrıca veri akışları yayımlamanızı ve abone olmanızı sağlayan ileti-kuyruk işlevi de sunar. Bkz. [HDInsight'ta Apache Kafka'ya giriş](./kafka/apache-kafka-introduction.md).|
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight’ta açık kaynak bileşenler
 
@@ -96,7 +95,7 @@ Azure HDInsight, Hadoop, Spark, Hive, LLAP, Kafka, fırtınası, HBase ve R gibi
 
 ## <a name="programming-languages-in-hdinsight"></a>HDInsight’taki programlama dilleri
 
-Spark, HBase, Kafka ve Hadoop gibi HDInsight kümeleri birçok programlama dilini destekler. Bazı programlama dilleri varsayılan olarak yüklü değildir. Varsayılan olarak yüklü olmayan kitaplıklar, modüller veya paketler için [bileşeni betik eylemi kullanarak yükleyin](./hdinsight-hadoop-script-actions-linux.md).
+Spark, HBase, Kafka ve Hadoop gibi HDInsight kümeleri birçok programlama dilini destekler. Bazı programlama dilleri varsayılan olarak yüklü değildir. Varsayılan olarak yüklü olmayan kitaplıklar, modüller veya paketler için [bileşeni yüklemek üzere betik eylemi kullanın](./hdinsight-hadoop-script-actions-linux.md).
 
 |Programlama dili  |Bilgi  |
 |---------|---------|
@@ -108,13 +107,13 @@ Spark, HBase, Kafka ve Hadoop gibi HDInsight kümeleri birçok programlama dilin
 
 Azure sayesinde sorunsuz tümleştirmeyle HDInsight veri sorgusu ve işi yazıp göndermek için IntelliJ, Eclipse, Visual Studio Code ve Visual Studio gibi HDInsight geliştirme araçlarını kullanabilirsiniz.
 
-* [IntelliJ için Azure araç seti](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
+* [IntelliJ için Azure araç seti](./spark/apache-spark-intellij-tool-plugin.md)
 
-* [Eclipse için Azure araç seti](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin)
+* [Eclipse için Azure araç seti](./spark/apache-spark-eclipse-tool-plugin.md)
 
-* [VS Code için Azure HDInsight araçları](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode)
+* [VS Code için Azure HDInsight araçları](./hdinsight-for-vscode.md)
 
-* [Visual Studio için Azure Data Lake araçları](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
+* [Visual Studio için Azure Data Lake araçları](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight’ta İş Zekası
 
@@ -129,10 +128,6 @@ Bilinen iş zekası (BI) araçları, Power Query eklentisini veya Microsoft Hive
 * [Excel 'i Power Query Apache Hadoop bağlama](./hadoop/apache-hadoop-connect-excel-power-query.md) (Windows gerektirir)
 
 * [Excel 'i Microsoft Hive ODBC Sürücüsü Apache Hadoop bağlama](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (Windows gerektirir)
-
-* [HDInsight ile SQL Server Analysis Services kullanma](https://docs.microsoft.com/previous-versions/msp-n-p/dn749857(v=pandp.10))
-
-* [HDInsight ile SQL Server Reporting Services kullanma](https://docs.microsoft.com/previous-versions/msp-n-p/dn749856(v=pandp.10))
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

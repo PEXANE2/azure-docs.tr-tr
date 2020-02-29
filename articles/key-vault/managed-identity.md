@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837507"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199844"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama
 
@@ -25,7 +26,7 @@ Bu makalede, bir App Service uygulaması için yönetilen kimlik oluşturma ve A
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir. 
 
@@ -41,7 +42,7 @@ Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gere
 
 İlk olarak, bir uygulamaya sistem tarafından atanan bir kimlik eklemeniz gerekir. 
  
-### <a name="azure-portal"></a>Azure portal 
+### <a name="azure-portal"></a>Azure portalı 
 
 Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygulama oluşturun ve ardından özelliği etkinleştirmeniz gerekir. 
 
@@ -49,7 +50,7 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
 1. **Yönetilen kimlik**' i seçin. 
 
-1. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet** düğmesine tıklayın. 
+1. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’e tıklayın. 
 
     ![](./media/managed-identity-system-assigned.png)
 
@@ -87,7 +88,7 @@ Sonraki bölümde gerekli olacak `PrincipalId`bir yer yapın.
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Uygulamanıza Key Vault erişim izni verin 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1.  Key Vault kaynağına gidin. 
 

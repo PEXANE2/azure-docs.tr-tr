@@ -1,6 +1,6 @@
 ---
 title: SELECT OLARAK CREATE TABLE (CTAS)
-description: Çözüm geliştirmeye yönelik Azure SQL veri ambarı 'nda SELECT AS SELECT (CTAS) bildiriminin açıklaması ve CREATE TABLE örnekleri.
+description: Çözüm geliştirmeye yönelik SQL Analytics 'te SELECT AS SELECT (CTAS) bildiriminin açıklaması ve CREATE TABLE örnekleri.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685855"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195915"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda SELECT (CTAS) olarak CREATE TABLE
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>SQL Analytics 'te SELECT (CTAS) olarak CREATE TABLE
 
-Bu makalede, çözümlerin geliştirilmesi için Azure SQL veri ambarı 'nda SELECT (CTAS) T-SQL ifadesiyle CREATE TABLE açıklanmaktadır. Makale Ayrıca kod örnekleri de sağlar.
+Bu makalede, çözümlerin geliştirilmesi için SQL Analytics 'te SELECT (CTAS) T-SQL ifadesiyle CREATE TABLE açıklanmaktadır. Makale Ayrıca kod örnekleri de sağlar.
 
 ## <a name="create-table-as-select"></a>SEÇIM OLARAK CREATE TABLE
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Seç... ' De, dağıtım yöntemini veya dizin türünü işlemin bir parçası olarak değiştirmenize izin vermez. Varsayılan ROUND_ROBIN dağıtım türünü ve KÜMELENMIŞ COLUMNSTORE DIZINININ varsayılan tablo yapısını kullanarak `[dbo].[FactInternetSales_new]` oluşturursunuz.
+Seç... ' De, dağıtım yöntemini veya dizin türünü işlemin bir parçası olarak değiştirmenize izin vermez. ROUND_ROBIN varsayılan dağıtım türünü ve KÜMELENMIŞ COLUMNSTORE DIZINININ varsayılan tablo yapısını kullanarak `[dbo].[FactInternetSales_new]` oluşturun.
 
 CTAS ile, diğer yandan tablo verilerinin hem dağıtımını hem de tablo yapısı türünü belirtebilirsiniz. Önceki örneği CTAS 'ya dönüştürmek için:
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>Desteklenmeyen özellikleri geçici olarak çözmek için CTAS kullanın
 
-CTAS 'yi, aşağıda listelenen desteklenmeyen özelliklerin bir sayısını çözmek için de kullanabilirsiniz. Yalnızca kodunuzun uyumlu olması, ancak SQL Data Warehouse üzerinde daha hızlı çalışması için bu yöntem genellikle yararlı olabilir. Bu performans, tam paralelleştirilmiş tasarımın bir sonucudur. Senaryolar şunlardır:
+CTAS 'yi, aşağıda listelenen desteklenmeyen özelliklerin bir sayısını çözmek için de kullanabilirsiniz. Yalnızca kodunuzun uyumlu olması, ancak SQL Analytics üzerinde daha hızlı çalışması için bu yöntem genellikle yararlı olabilir. Bu performans, tam paralelleştirilmiş tasarımın bir sonucudur. Senaryolar şunlardır:
 
 * Güncelleştirmeler üzerinde ANSI BIRLEŞTIRMELERI
 * Silmeler üzerinde ANSI birleştirmeleri
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL veri ambarı, bir `UPDATE` deyimin `FROM` yan tümcesinde ANSI birleştirmeleri desteklemez, bu nedenle önceki örneği değiştirmeden kullanamazsınız.
+SQL Analytics, bir `UPDATE` deyimin `FROM` yan tümcesinde ANSI birleştirmeleri desteklemez, bu nedenle önceki örneği değiştirmeden kullanamazsınız.
 
 Önceki örneği değiştirmek için CTAS ve örtük bir birleşimin birleşimini kullanabilirsiniz:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Delete deyimleri için ANSI JOIN değiştirme
 
-Bazen, verileri silmenin en iyi yaklaşımı, özellikle ANSI JOIN söz dizimini kullanan `DELETE` deyimleri için CTAS kullanmaktır. Bunun nedeni, SQL veri ambarının bir `DELETE` bildiriminin `FROM` yan tümcesinde ANSI birleştirmelerini desteklemezler. Verileri silmek yerine, tutmak istediğiniz verileri seçin.
+Bazen, verileri silmenin en iyi yaklaşımı, özellikle ANSI JOIN söz dizimini kullanan `DELETE` deyimleri için CTAS kullanmaktır. Bunun nedeni, SQL analizinin bir `DELETE` bildiriminin `FROM` yan tümcesinde ANSI birleştirmelerini desteklemezler. Verileri silmek yerine, tutmak istediğiniz verileri seçin.
 
 Dönüştürülmüş `DELETE` bildirimine bir örnek aşağıda verilmiştir:
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Tür tutarlılığı ve bir CTAS üzerinde null değer alabilme özelliklerinin sürdürülmesi, mühendisliğin en iyi yöntemidir. Hesaplamalarınızda tutarlılığın sağlanmasına yardımcı olur ve ayrıca bölüm geçişinin mümkün olmasını sağlar.
 
-CTAS, SQL Data Warehouse 'daki en önemli ifadelerden biridir. Kapsamlı olarak anladığınızdan emin olun. Bkz. [CTAS belgeleri](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+CTAS, SQL Analytics 'teki en önemli ifadelerden biridir. Kapsamlı olarak anladığınızdan emin olun. Bkz. [CTAS belgeleri](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

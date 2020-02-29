@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9d3e9484fc6726241ff9bc1eafc56fce92d711cd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845297"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198108"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Öğretici: .NET 'te Windows sanal makinesiyle Azure Key Vault kullanma
 
@@ -37,7 +38,7 @@ Başlamadan önce [temel kavramları Key Vault](basic-concepts.md)okuyun.
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Windows, Mac ve Linux için:
   * [Git](https://git-scm.com/downloads)
@@ -57,7 +58,7 @@ Ardından, bir erişim belirteci almak için, kodunuz Azure kaynağında bulunan
 
 Kodlamaya başlamadan önce bazı kaynaklar oluşturmanız, anahtar kasanıza bir gizli anahtar koymanız ve izinler atamanız gerekir.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açın
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure CLı kullanarak Azure 'da oturum açmak için şunu girin:
 
@@ -102,10 +103,10 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Bu gizli anahtar, **MySecret**değerini depolar.
 
-### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 Aşağıdaki yöntemlerden birini kullanarak bir sanal makine oluşturun:
 
-* [Azure CLI](../virtual-machines/windows/quick-create-cli.md)
+* [Azure CLı](../virtual-machines/windows/quick-create-cli.md)
 * [PowerShell](../virtual-machines/windows/quick-create-powershell.md)
 * [Azure portalı](../virtual-machines/windows/quick-create-portal.md)
 

@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242407"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198159"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Azure Key Vault içinde gizli dizileri depolamak için bir Linux sanal makinesi ve Python uygulaması kullanma
 
@@ -50,7 +51,7 @@ Sanal makineler, App Service veya Işlevler gibi bir Azure hizmeti için MSI 'yi
 
 Daha sonra, kodunuz, bir erişim belirteci almak için Azure kaynağında bulunan bir yerel meta veri hizmetini çağırır. Kodunuz, Azure Key Vault bir hizmette kimlik doğrulamak için yerel MSI uç noktasından aldığı erişim belirtecini kullanır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure CLı kullanarak Azure 'da oturum açmak için şunu girin:
 

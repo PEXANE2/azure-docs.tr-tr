@@ -1,6 +1,6 @@
 ---
 title: Birincil, yabancı ve benzersiz anahtarlar
-description: Azure SQL veri ambarı 'nda tablo kısıtlamaları desteği
+description: Azure SYNAPSE Analytics 'te SQL Analytics 'te tablo kısıtlamaları desteği
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685485"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198142"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda birincil anahtar, yabancı anahtar ve benzersiz anahtar
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>SQL Analytics 'te birincil anahtar, yabancı anahtar ve benzersiz anahtar
 
-Azure SQL veri ambarı 'nda birincil anahtar, yabancı anahtar ve benzersiz anahtar dahil tablo kısıtlamaları hakkında bilgi edinin.
+SQL Analytics 'te birincil anahtar, yabancı anahtar ve benzersiz anahtar dahil olmak üzere tablo kısıtlamaları hakkında bilgi edinin.
 
 ## <a name="table-constraints"></a>Tablo düzeyinde kısıtlamalar 
-Azure SQL veri ambarı, bu tablo kısıtlamalarını destekler: 
+SQL Analytics bu tablo kısıtlamalarını destekler: 
 - BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de kullanıldığında desteklenir.    
 - UNIQUE kısıtlaması yalnızca ZORLANMAMıŞ ile desteklenir.   
 
-YABANCı anahtar kısıtlaması Azure SQL veri ambarı 'nda desteklenmiyor.  
+YABANCı anahtar kısıtlaması SQL Analytics 'te desteklenmez.  
 
 ## <a name="remarks"></a>Açıklamalar
-Birincil anahtar ve/veya benzersiz anahtar olması, veri ambarı altyapısının bir sorgu için en uygun yürütme planını oluşturmasına izin verir.  Birincil anahtar sütunundaki veya benzersiz bir kısıtlama sütunundaki tüm değerler benzersiz olmalıdır. 
+Birincil anahtar ve/veya benzersiz anahtar olması SQL Analytics altyapısının bir sorgu için en uygun yürütme planını oluşturmasına izin verir.  Birincil anahtar sütunundaki veya benzersiz bir kısıtlama sütunundaki tüm değerler benzersiz olmalıdır. 
 
-Azure veri ambarı 'nda birincil anahtar veya benzersiz kısıtlama içeren bir tablo oluşturduktan sonra, kullanıcıların bu sütunlardaki tüm değerlerin benzersiz olduğundan emin olması gerekir.  Bunun ihlali sorgunun yanlış sonuç döndürmesine neden olabilir.  Bu örnek, birincil anahtar veya benzersiz kısıtlama sütunu yinelenen değerler içeriyorsa bir sorgunun yanlış bir sonuç döndürmesine neden olabileceğini gösterir.  
+SQL Analytics 'te birincil anahtar veya benzersiz kısıtlama içeren bir tablo oluşturduktan sonra, kullanıcıların bu sütunlardaki tüm değerlerin benzersiz olduğundan emin olması gerekir.  Bunun ihlali sorgunun yanlış sonuç döndürmesine neden olabilir.  Bu örnek, birincil anahtar veya benzersiz kısıtlama sütunu yinelenen değerler içeriyorsa bir sorgunun yanlış bir sonuç döndürmesine neden olabileceğini gösterir.  
 
 ```sql
  -- Create table t1
@@ -158,12 +158,12 @@ a1          total
 ```
 
 ## <a name="examples"></a>Örnekler
-Birincil anahtarla bir veri ambarı tablosu oluşturun: 
+Birincil anahtarla bir SQL Analytics tablosu oluşturun: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Benzersiz kısıtlaması olan bir veri ambarı tablosu oluşturun:
+Benzersiz kısıtlaması olan bir SQL Analytics tablosu oluşturun:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri Ambarınızla ilgili tabloları oluşturduktan sonra, bir sonraki adım tabloya veri yüklemek olur. Yükleme öğreticisi için bkz. [SQL veri ambarı 'na veri yükleme](load-data-wideworldimportersdw.md).
+SQL Analytics veritabanınız için tablolar oluşturduktan sonra, bir sonraki adım tabloya veri yüklemek olur. Yükleme öğreticisi için bkz. [SQL Analytics veritabanlarına veri yükleme](load-data-wideworldimportersdw.md).

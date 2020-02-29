@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832848"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197632"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarla çalışmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -63,7 +64,7 @@ Bu süreç, 3,1. adım ile bir kerelik işlemidir.
 **4. adım** -aşağıdaki açıklamalar, önceki diyagramdaki yeşil numaralı adımlara karşılık gelir.  
   (1)-Yukarıdaki diyagramda uygulamanız, Anahtar Kasanızda bir anahtar oluşturarak başlayan bir sertifika oluşturur.  
   (2)-Key Vault CA 'ya bir TLS/SSL sertifika Isteği gönderir.  
-  (3)-uygulamanız, sertifika tamamlaması için Key Vault bir döngüde ve bekleme sürecinde yoklar. Anahtar Kasası x509 sertifikasıyla CA yanıtını aldığında sertifika oluşturma işlemi tamamlanır.  
+  (3)-uygulamanız, sertifika tamamlaması için Key Vault bir döngüde ve bekleme sürecinde yoklar. Key Vault, CA 'nın x509 sertifikasıyla yanıtını aldığında sertifika oluşturma işlemi tamamlanır.  
   (4)-CA, bir x509 TLS/SSL sertifikası ile Key Vault TLS/SSL sertifika Isteğine yanıt verir.  
   (5)-yeni sertifika oluşturma, CA için x509 sertifikasının birleşmesi ile tamamlanır.  
 

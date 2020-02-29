@@ -4,12 +4,12 @@ description: Bu öğreticide, bir Node.js uygulaması için Jenkins kullanarak V
 keywords: Jenkins, Azure, DevOps, sanal makine, cıcd
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606471"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192617"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Öğretici: Jenkins ve Azure DevOps Services kullanarak uygulamanızı Azure üzerinde Linux sanal makinelerine dağıtma
 
@@ -96,9 +96,9 @@ Bu uygulamanın çatalını oluşturun ve bu öğreticinin daha sonraki adımlar
 5. **TFS/Team Services’te yayınlamayı tetikle** seçeneğini belirleyin. Azure DevOps Services kuruluşunuz için **https://{your-organization-name}.visualstudio.com** gibi bir URI girin.
 6. **Proje** adını girin.
 7. Yayın işlem hattı için bir ad seçin. (Bu işlem hattını daha sonra Azure DevOps Services’ta oluşturun.)
-8. Azure DevOps Services veya Team Foundation Server ortamınıza bağlanmak için kimlik bilgilerini girin:
+8. Azure DevOps Services veya Azure DevOps Server ortamınıza bağlanmak için kimlik bilgilerini seçin:
    - Azure DevOps Services kullanıyorsanız, **Kullanıcı adı** alanını boş bırakın. 
-   - Team Foundation Server’ın şirket içi bir sürümünü kullanıyorsanız kullanıcı adı ve parola girin.    
+   - Azure DevOps Server şirket içi bir sürümünü kullanıyorsanız, bir Kullanıcı adı ve parola girin.    
    ![Jenkins derleme sonrası eylemlerini yapılandırma](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Jenkins projesini kaydedin.
 

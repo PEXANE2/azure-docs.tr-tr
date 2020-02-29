@@ -10,28 +10,36 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 924705b7ce1d324583077797714491bdf3fc5cc9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 257b33802ea95138ef8149ef9302b14ca379e7ac
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721226"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195592"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 önbelleğini izleme
-Gen2 depolama mimarisi, en sık sorgulanan columnstore segmentlerinizi, Gen2 veri ambarları için tasarlanan NVMe tabanlı SSD 'lerde bulunan bir önbellekte otomatik olarak katmanlar. Sorgularınızı önbellekte bulunan segmentleri aldığında daha fazla performans yapılır. Bu makalede, iş yükünüzün Gen2 önbelleğini en iyi şekilde kullanıp kullanmadığını belirleyerek yavaş sorgu performansının nasıl izleneceği ve giderileceği açıklanır.  
+
+Bu makalede, iş yükünüzün Gen2 önbelleğini en iyi şekilde kullanıp kullanmadığını belirleyerek yavaş sorgu performansının nasıl izleneceği ve giderileceği açıklanır.
+
+Gen2 depolama mimarisi, en sık sorgulanan columnstore segmentlerinizi, Gen2 veri ambarları için tasarlanan NVMe tabanlı SSD 'lerde bulunan bir önbellekte otomatik olarak katmanlar. Sorgularınızı önbellekte bulunan segmentleri aldığında daha fazla performans yapılır.
+ 
 ## <a name="troubleshoot-using-the-azure-portal"></a>Azure portal kullanarak sorun giderme
-Sorgu performansının sorunlarını gidermek için Azure Izleyici 'yi Gen2 önbellek ölçümlerini görüntülemek için kullanabilirsiniz. Önce Azure portal gidin ve Izleyiciyi tıklatın:
 
-![Azure İzleyici](./media/sql-data-warehouse-cache-portal/cache_0.png)
+Sorgu performansının sorunlarını gidermek için Azure Izleyici 'yi Gen2 önbellek ölçümlerini görüntülemek için kullanabilirsiniz. Önce Azure portal gidin ve **izleyici**, **ölçümler** ve **+ bir kapsam seçin**' e tıklayın:
 
-Ölçümler düğmesini seçin ve **abonelik**, **kaynak** **grubu**, **kaynak türü**ve veri ambarınızın **kaynak adını** girin.
+![Azure İzleyici](./media/sql-data-warehouse-cache-portal/cache-0.png)
 
-Gen2 önbelleğinde sorun gidermeye yönelik temel ölçümler, **önbellek isabet yüzdesi** ve **kullanılan önbellek yüzdesidir**. Bu iki ölçümü göstermek için Azure ölçüm grafiğini yapılandırın.
+Veri Ambarınızı bulmak için arama ve aşağı açılan çubukları kullanın. Ardından Uygula ' yı seçin.
 
-![Önbellek ölçümleri](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![Azure İzleyici](./media/sql-data-warehouse-cache-portal/cache-1.png)
 
+Gen2 önbelleğinde sorun gidermeye yönelik temel ölçümler, **önbellek isabet yüzdesi** ve **kullanılan önbellek yüzdesidir**. **Önbellek isabet yüzdesi** ' ni seçin ve ardından **kullanılan önbellek yüzdesini**eklemek için **ölçüm Ekle** düğmesini kullanın. 
+
+![Önbellek ölçümleri](./media/sql-data-warehouse-cache-portal/cache-2.png)
 
 ## <a name="cache-hit-and-used-percentage"></a>Önbellek isabeti ve kullanılan yüzde
+
 Aşağıdaki matris, önbellek ölçümlerinin değerlerine göre senaryolar anlatmaktadır:
 
 |                                | **Yüksek önbellek isabet yüzdesi** | **Düşük önbellek isabet yüzdesi** |

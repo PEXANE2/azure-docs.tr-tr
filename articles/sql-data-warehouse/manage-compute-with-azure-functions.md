@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Işlevleri ile işlem yönetme'
-description: Veri ambarınızın işlemini yönetmek için Azure işlevlerini kullanma.
+description: Azure işlevleri 'ni kullanarak Azure SYNAPSE Analytics 'te SQL havuzunuzun işlem yönetimini yönetin.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693010"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193246"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 
-Bu öğretici, Azure SQL veri ambarı 'nda bir veri ambarına yönelik işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanır.
+Bu öğretici, Azure SYNAPSE Analytics 'teki bir SQL havuzunun işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanır.
 
-Azure İşlevi Uygulamasını SQL Veri Ambarı'yla kullanmak için, veri ambarı örneğinizle aynı abonelik kapsamında katılımcı erişimine sahip bir [Hizmet Sorumlusu Hesabı](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) oluşturmalısınız. 
+Azure İşlev Uygulaması 'yi SQL havuzuyla kullanabilmek için, SQL havuzu örneğinizle aynı abonelik altında katkıda bulunan erişimine sahip bir [hizmet sorumlusu hesabı](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) oluşturmanız gerekir. 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla Zamanlayıcı tabanlı ölçeklendirmeyi dağıtma
 
 Şablonu dağıtmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
-- SQL DW örneğinizin içinde bulunduğu kaynak grubunun adı
-- SQL DW örneğinizin içinde bulunduğu mantıksal sunucunun adı
-- SQL DW örneğinizin adı
+- SQL havuzu örneğinizin bulunduğu kaynak grubunun adı
+- SQL havuzu örneğinizin bulunduğu mantıksal sunucunun adı
+- SQL havuzu örneğinizin adı
 - Azure Active Directory'nizin Kiracı Kimliği (Dizin Kimliği)
 - Abonelik Kimliği 
 - Hizmet Sorumlusu Uygulama Kimliği
@@ -119,17 +119,17 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 5. İşlem değişkeninizi istenen davranışa aşağıdaki şekilde ayarlayın:
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -177,7 +177,7 @@ Hafta içi günlerinde 08:00'da DW1000'e ölçeği artırma ve 16:00'da bir kez 
 
 [Zamanlayıcı tetikleyicisi](../azure-functions/functions-create-scheduled-function.md) Azure işlevleri hakkında daha fazla bilgi edinin.
 
-SQL Veri Ambarı [örnek deposunu](https://github.com/Microsoft/sql-data-warehouse-samples) gözden geçirin.
+SQL havuzu [örnekleri deposunu](https://github.com/Microsoft/sql-data-warehouse-samples)kullanıma alın.
 
 
 

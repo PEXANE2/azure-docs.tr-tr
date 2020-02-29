@@ -3,20 +3,20 @@ title: Özel ilkelerdeki talep çözücüler
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C bir özel ilkede talep çözümleyicilerine nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/02/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161610"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189846"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -117,9 +117,9 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | {SAML: ForceAuthn} | SAML isteğinin `AuthnRequest` öğesinden `ForceAuthN` özniteliği değeri. | True |
 | {SAML: ProviderName} | SAML isteğinin `AuthnRequest` öğesinden `ProviderName` özniteliği değeri.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Talep çözücüler kullanma 
+## <a name="using-claim-resolvers"></a>Talep çözücüler kullanma
 
-Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz: 
+Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz:
 
 | Öğe | Öğe | Ayarlar |
 | ----- | ----------------------- | --------|
@@ -135,7 +135,7 @@ Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz:
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile) teknik profili| `OutputClaim`| 2 |
 
-Ayarlar: 
+Ayarlar:
 1. `IncludeClaimResolvingInClaimsHandling` meta verileri `true`olarak ayarlanmalıdır.
 1. Giriş veya çıkış talepleri özniteliği `AlwaysUseDefaultValue` `true`olarak ayarlanmalıdır.
 
@@ -195,7 +195,7 @@ Sonuç olarak, Azure AD B2C yukarıdaki parametreleri HTML içerik sayfasına g�
 
 ### <a name="content-definition"></a>İçerik tanımı
 
-Bir [ContentDefinition](contentdefinitions.md) `LoadUri`, kullanılan parametrelere göre farklı yerlerden çekme içerikleri için talep çözücüler gönderebilirsiniz. 
+Bir [ContentDefinition](contentdefinitions.md) `LoadUri`, kullanılan parametrelere göre farklı yerlerden çekme içerikleri için talep çözücüler gönderebilirsiniz.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -224,7 +224,7 @@ Azure Application Insights ve talep Çözümleyenler sayesinde Kullanıcı davra
 
 ### <a name="relying-party-policy"></a>Bağlı olan taraf ilkesi
 
-[Bağlı olan taraf](relyingparty.md) ilkesi teknik profilinde, Kiracı kimliğini veya BAĞıNTı kimliğini JWT içindeki bağlı olan taraf uygulamasına göndermek isteyebilirsiniz. 
+[Bağlı olan taraf](relyingparty.md) ilkesi teknik profilinde, Kiracı kimliğini veya BAĞıNTı kimliğini JWT içindeki bağlı olan taraf uygulamasına göndermek isteyebilirsiniz.
 
 ```XML
 <RelyingParty>

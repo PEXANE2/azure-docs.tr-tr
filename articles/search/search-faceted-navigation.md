@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112089"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190662"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
 
@@ -34,11 +34,11 @@ Uygulama geliştirmede, sorgu oluşturan kod yazmak çalışmanın toplu işini 
 ## <a name="sample-code-and-demo"></a>Örnek kod ve tanıtım
 Bu makale örnek olarak bir iş arama portalı kullanır. Örnek, bir ASP.NET MVC uygulaması olarak uygulanır.
 
--   [Azure bilişsel arama Iş portalı tanıtımında](https://azjobsdemo.azurewebsites.net/)çalışan tanıtımı çevrimiçi olarak görün ve test edin.
+- [Azure bilişsel arama Iş portalı tanıtımında](http://azjobsdemo.azurewebsites.net/)çalışan tanıtımı çevrimiçi olarak görün ve test edin.
 
--   [GitHub 'Daki Azure-Samples deposundan](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)kodu indirin.
+- [GitHub 'Daki Azure-Samples deposundan](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)kodu indirin.
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>başlarken
 Arama geliştirmeye yeni başladıysanız, çok yönlü gezinme yapmanın en iyi yolu, kendi kendine yönlendirilmiş arama olasılıklarını gösterir. Bu, arama sonuçlarını nokta ve tıklama eylemleri aracılığıyla hızlıca daraltmak için kullanılan, önceden tanımlanmış filtreleri temel alan detaya gitme arama deneyiminin bir türüdür. 
 
 ### <a name="interaction-model"></a>Etkileşim modeli

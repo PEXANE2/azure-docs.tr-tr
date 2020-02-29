@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919881"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199708"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -83,6 +83,9 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 ```
 
 Bu istek gövdesinde ve bir aboneliğe atanmakta olan anahtar farkı `properties.scope` özelliktir. Bu gerekli özellik, şema atamasının uygulandığı aboneliğe ayarlanmalıdır. Abonelik, şema atamasının depolandığı yönetim grubu hiyerarşisinin doğrudan bir alt öğesi olmalıdır.
+
+> [!NOTE]
+> Yönetim grubu kapsamına atanan bir şema, hala abonelik düzeyinde bir şema ataması olarak çalışır. Tek fark, abonelik sahiplerinin atamayı ve ilişkili kilitleri kaldırmasını engellemek için şema atamasının depolandığı yerdir.
 
 ## <a name="removing-locking-states"></a>Kilitleme durumları kaldırılıyor
 

@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210166"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190762"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -104,7 +104,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 İşlev uygulamanızı içeren bir. zip dosyasını Azure 'a göndermek için ZIP Deploy kullanın. İsteğe bağlı olarak, uygulamanızı [paketten çalışmaya](run-functions-from-deployment-package.md)başlayacak şekilde ayarlayabilir veya [uzak bir derleme](#remote-build) gerçekleşmektir.
 
->__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md)veya [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Varsayılan olarak, bu araçlar ZIP dağıtımını kullanır ve [paketinden çalıştırılır](run-functions-from-deployment-package.md). Temel araçlar ve Visual Studio Code uzantısı, Linux 'a dağıtım yaparken [uzak derlemeyi](#remote-build) etkinleştirir. Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
+>__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)veya [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)kullanarak komut satırı. Varsayılan olarak, bu araçlar ZIP dağıtımını kullanır ve [paketinden çalıştırılır](run-functions-from-deployment-package.md). Temel araçlar ve Visual Studio Code uzantısı, Linux 'a dağıtım yaparken [uzak derlemeyi](#remote-build) etkinleştirir. Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
 
 >ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini `1`olarak ayarlayın. ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır. 
 

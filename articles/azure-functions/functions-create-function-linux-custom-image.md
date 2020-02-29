@@ -4,13 +4,13 @@ description: Özel bir Linux görüntüsü üzerinde çalışan Azure İşlevler
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482369"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190815"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -70,7 +70,7 @@ Windows, Mac OS veya Linux çalıştıran tüm bilgisayarlarda bu öğreticiyi i
 
 1. Bir Terminal veya komut isteminde, bu öğretici için uygun bir konumda bir klasör oluşturun ve ardından bu klasöre gidin.
 
-1. Bu öğreticide kullanmak üzere sanal ortam oluşturma [ve etkinleştirme](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) ile ilgili yönergeleri izleyin.
+1. Bu öğreticide kullanmak üzere sanal ortam oluşturma [ve etkinleştirme](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) ile ilgili yönergeleri izleyin.
 
 1. `LocalFunctionsProject`adlı bir klasörde işlev uygulaması projesi oluşturmak için seçtiğiniz dil için aşağıdaki komutu çalıştırın. `--docker` seçeneği, Azure Işlevleri ve seçilen çalışma zamanı ile kullanılmak üzere uygun bir özel kapsayıcıyı tanımlayan proje için bir `Dockerfile` oluşturur.
 

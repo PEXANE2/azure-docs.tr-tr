@@ -3,20 +3,20 @@ title: Uygulamanıza özel bir ilke aracılığıyla erişim belirteci geçirme
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 'de uygulamanıza özel bir ilke aracılığıyla OAuth 2,0 kimlik sağlayıcıları için erişim belirtecini nasıl geçirebileceğinizi öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76839100"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187804"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Uygulamanıza özel bir ilke aracılığıyla bir erişim belirteci geçirin Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) içinde [özel bir ilke](custom-policy
 
 Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid-connect.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Özel ilkeniz bir OAuth 2,0 veya OpenID Connect kimlik sağlayıcısı ile yapılandırılır.
 
@@ -84,7 +84,7 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresi ' ne tıklayarak ve kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.

@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 2bbd66257e1ccd81f1dac7d775b4dd6ccc39189a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473139"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199810"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -20,16 +20,16 @@ Java için Azure kuyruk depolama istemci kitaplığı sürüm 12 ile çalışmay
 
 Java için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 
-* Kuyruk oluşturma
+* Bir kuyruk oluşturma
 * Bir kuyruğa ileti ekleme
 * Kuyruktaki iletilere göz atın
 * Kuyruktaki bir iletiyi güncelleştirme
 * Kuyruktaki iletileri alma ve silme
 * Bir kuyruk silme
 
-[API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [paketi (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples)
+[API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [paketi (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üstü
 * [Apache Maven](https://maven.apache.org/download.cgi)
@@ -190,7 +190,7 @@ System.out.println("Azure Queues storage v12 - Java quickstart sample\n");
 String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
-### <a name="create-a-queue"></a>Kuyruk oluşturma
+### <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
 Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir GUID değeri ekler.
 

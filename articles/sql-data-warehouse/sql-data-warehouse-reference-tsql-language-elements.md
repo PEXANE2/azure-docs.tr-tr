@@ -1,6 +1,6 @@
 ---
 title: T-SQL dil öğeleri
-description: Azure SQL veri ambarı 'nda desteklenen T-SQL deyimlerine yönelik belgelere bağlantılar.
+description: SQL Analytics 'te desteklenen T-SQL deyimlerinin belgelerinin bağlantıları.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692516"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198431"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda desteklenen T-SQL dil öğeleri
-Azure SQL veri ambarı 'nda desteklenen T-SQL dil öğeleri belgelerine bağlantılar.
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL Analytics 'te desteklenen T-SQL dil öğeleri
+SQL Analytics 'te desteklenen T-SQL dil öğeleri belgelerinin bağlantıları.
 
 ## <a name="core-elements"></a>Çekirdek öğeler
 * [sözdizimi kuralları](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -109,7 +109,7 @@ Azure SQL veri ambarı 'nda desteklenen T-SQL dil öğeleri belgelerine bağlant
 * [COS](https://msdn.microsoft.com/library/ms188919.aspx)
 * [COT](https://msdn.microsoft.com/library/ms188921.aspx)
 * [BIRIKTIRME](https://msdn.microsoft.com/library/ms175997.aspx)
-* [COUNT_BıG](https://msdn.microsoft.com/library/ms190317.aspx)
+* [COUNT_BIG](https://msdn.microsoft.com/library/ms190317.aspx)
 * [CUME_DIST](https://msdn.microsoft.com/library/hh231078.aspx)
 * [CURRENT_TIMESTAMP](https://msdn.microsoft.com/library/ms188751.aspx)
 * [CURRENT_USER](https://msdn.microsoft.com/library/ms176050.aspx)
@@ -220,7 +220,7 @@ Azure SQL veri ambarı 'nda desteklenen T-SQL dil öğeleri belgelerine bağlant
 * [KODLAMALARı](https://msdn.microsoft.com/library/ms180059.aspx)
 * [ÜST](https://msdn.microsoft.com/library/ms180055.aspx)
 * [KULLANıCıSıNı](https://msdn.microsoft.com/library/ms186738.aspx)
-* [KULLANıCı_ADı](https://msdn.microsoft.com/library/ms188014.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [L](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
 * [YıL](https://msdn.microsoft.com/library/ms186313.aspx)
@@ -278,5 +278,5 @@ Azure SQL veri ambarı 'nda desteklenen T-SQL dil öğeleri belgelerine bağlant
 * [XACT_ABORT AYARLA](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla başvuru bilgisi için bkz. [Azure SQL veri ambarı 'Nda T-SQL deyimleri](sql-data-warehouse-reference-tsql-statements.md)ve [Azure SQL veri ambarı 'nda sistem görünümleri](sql-data-warehouse-reference-tsql-system-views.md).
+Daha fazla başvuru bilgisi için bkz. [SQL Analytics 'Teki T-SQL deyimleri](sql-data-warehouse-reference-tsql-statements.md)ve [SQL Analytics 'te sistem görünümleri](sql-data-warehouse-reference-tsql-system-views.md).
 

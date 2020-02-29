@@ -1,30 +1,30 @@
 ---
 title: Erişim verme
-description: Microsoft Azure SQL Veritabanı ve SQL veri ambarı 'na erişim verme hakkında bilgi edinin.
+description: Microsoft Azure SQL Veritabanı ve Azure SYNAPSE 'ye erişim verme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: sql-data-warehouse, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 05/08/2019
-ms.openlocfilehash: 05a949bbd99a36c41143190d216116f78c433951
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 5142cc941b37cfef7be79e5129b6df7094bfd00e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826604"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197853"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL veritabanı ve SQL veri ambarı erişim denetimi
+# <a name="azure-sql-database-and-azure-synapse-access-control"></a>Azure SQL veritabanı ve Azure SYNAPSE Access Control
 
-Güvenlik, Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) denetim erişimi, IP adresine göre bağlantıyı sınırlayan güvenlik duvarı kurallarıyla, kullanıcıların kimliklerini kanıtlamasını gerektiren kimlik doğrulama mekanizmalarının ve yetkilendirme mekanizmalarının güvenliğini sağlamak için kullanıcıları belirli eylemlerle ve verilerle sınırlama. 
+Güvenlik, Azure [SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) denetim erişimini, IP adresine göre bağlantıyı sınırlayan güvenlik duvarı kurallarıyla, kullanıcıların kimliklerini kanıtlamasını gerektiren kimlik doğrulama mekanizmalarını ve kullanıcıları belirli eylemler ve verilerle sınırlayan yetkilendirme mekanizmalarını sağlamak için. 
 
 > [!IMPORTANT]
-> SQL Veritabanı güvenlik özelliklerine genel bakış için bkz. [SQL güvenliğine genel bakış](sql-database-security-overview.md). Öğretici için bkz. [Azure SQL veritabanınızı güvenli hale getirme](sql-database-security-tutorial.md). SQL veri ambarı güvenlik özelliklerine genel bakış için bkz. [SQL veri ambarı güvenliğine genel bakış](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
+> SQL Veritabanı güvenlik özelliklerine genel bakış için bkz. [SQL güvenliğine genel bakış](sql-database-security-overview.md). Öğretici için bkz. [Azure SQL veritabanınızı güvenli hale getirme](sql-database-security-tutorial.md). Azure SYNAPSE 'deki SQL Analytics güvenlik özelliklerine genel bakış için bkz. [Azure SYNAPSE güvenliğine genel bakış](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
 
 ## <a name="firewall-and-firewall-rules"></a>Güvenlik duvarı ve güvenlik duvarı kuralları
 

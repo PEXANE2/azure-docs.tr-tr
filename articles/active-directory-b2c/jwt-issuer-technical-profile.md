@@ -3,20 +3,20 @@ title: Özel ilkede JWT veren için teknik profil tanımlama
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C bir özel ilkede JSON Web belirteci (JWT) veren için bir teknik profil tanımlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841991"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187483"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde JWT belirteci veren için teknik profil tanımlama
 
@@ -45,9 +45,9 @@ Aşağıdaki örnek, `JwtIssuer`için bir teknik profil gösterir:
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| issuer_refresh_token_user_identity_claim_type | Evet | OAuth2 yetkilendirme kodları ve yenileme belirteçleri içinde Kullanıcı kimlik talebi olarak kullanılması gereken talep. Varsayılan olarak, farklı bir Subjectnamingınfo talep türü belirtmediğiniz müddetçe, bunu `objectId`ayarlamanız gerekir. |
+| issuer_refresh_token_user_identity_claim_type | Yes | OAuth2 yetkilendirme kodları ve yenileme belirteçleri içinde Kullanıcı kimlik talebi olarak kullanılması gereken talep. Varsayılan olarak, farklı bir Subjectnamingınfo talep türü belirtmediğiniz müddetçe, bunu `objectId`ayarlamanız gerekir. |
 | SendTokenResponseBodyWithJsonNumbers | Hayır | Her zaman `true`olarak ayarlayın. Sayısal değerlerin JSON numaraları yerine dizeler olarak verildiği eski biçim için `false`olarak ayarlayın. Bu öznitelik, bu tür özellikleri dizeler olarak döndüren önceki bir uygulamaya bağımlılığı almış olan istemciler için gereklidir. |
 | token_lifetime_secs | Hayır | Belirteç ömürleri erişim. Korunan bir kaynağa erişim kazanmak için kullanılan OAuth 2,0 taşıyıcı belirtecinin kullanım süresi. Varsayılan değer 3.600 saniyedir (1 saat). En düşük (kapsamlı) 300 saniyedir (5 dakika). En yüksek (kapsamlı) 86.400 saniyedir (24 saat). |
 | id_token_lifetime_secs | Hayır | KIMLIK belirteci yaşam süreleri. Varsayılan değer 3.600 saniyedir (1 saat). En düşük (kapsamlı) 300 saniyedir (5 dakika). Maksimum (dahil) saniyeler 86.400 (24 saat). |
@@ -61,10 +61,10 @@ Aşağıdaki örnek, `JwtIssuer`için bir teknik profil gösterir:
 
 CryptographicKeys öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| issuer_secret | Evet | JWT belirtecini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu, [özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümünde bulunan `B2C_1A_TokenSigningKeyContainer` anahtarıdır. |
-| issuer_refresh_token_key | Evet | Yenileme belirtecini şifrelemek için kullanılacak x509 sertifikası (RSA anahtar kümesi). `B2C_1A_TokenEncryptionKeyContainer` anahtarını [özel ilkelerle çalışmaya başlama](custom-policy-get-started.md) bölümünde yapılandırdınız |
+| issuer_secret | Yes | JWT belirtecini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu, [özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümünde bulunan `B2C_1A_TokenSigningKeyContainer` anahtarıdır. |
+| issuer_refresh_token_key | Yes | Yenileme belirtecini şifrelemek için kullanılacak x509 sertifikası (RSA anahtar kümesi). `B2C_1A_TokenEncryptionKeyContainer` anahtarını [özel ilkelerle çalışmaya başlama](custom-policy-get-started.md) bölümünde yapılandırdınız |
 
 
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 11/21/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2a6c5ca9f7d2ceaef08b28e78b38b94a459548f5
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.custom: azure-synapse
+ms.openlocfilehash: bd3ad98116b18a77a77e8f6f327689d0ebb7dd21
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304760"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200524"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak iş yükü yalıtımını yapılandırma
 
@@ -25,17 +25,17 @@ Bu hızlı başlangıçta hızlı bir şekilde veri yükleme için kaynak ayırm
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Bir SQL Veri Ambarı'nın oluşturulması ek hizmet ücretlerinin alınmasına neden olabilir.  Ayrıntılı bilgi için bkz. [SQL Veri Ambarı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Azure SYNAPSE Analytics 'te bir SQL Analytics örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Önkoşullar
  
-Bu hızlı başlangıç, zaten bir SQL veri ambarınızın olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa [mySampleDataWarehouse](create-data-warehouse-portal.md) adlı bir veri ambarı oluşturmak için **Oluşturma ve Bağlanma - portal** bölümünü kullanabilirsiniz.
+Bu hızlı başlangıçta, Azure SYNAPSE 'de zaten bir SQL Analytics örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsaymaktadır. Gerekiyorsa [mySampleDataWarehouse](create-data-warehouse-portal.md) adlı bir veri ambarı oluşturmak için **Oluşturma ve Bağlanma - portal** bölümünü kullanabilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-login-for-dataloads"></a>DataLoads için oturum açma oluşturma
 
@@ -109,7 +109,7 @@ DROP USER [ELTLogin]
 
 Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
+- Verileri depolama alanında tutmak istiyorsanız, SQL havuzunu kullanmadığınız sırada işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
 - Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
 
 Kaynakları temizlemek için bu adımları izleyin.
@@ -129,4 +129,4 @@ Kaynakları temizlemek için bu adımları izleyin.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Artık bir iş yükü grubu oluşturdunuz. Nasıl çalıştığını görmek için, ELTLogin olarak birkaç sorgu çalıştırın. Sorguları ve atanan iş yükü grubunu görüntülemek için bkz. [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) .
-- Azure SQL veri ambarı iş yükü yönetimi hakkında daha fazla bilgi için bkz. [Iş yükü yönetimi](sql-data-warehouse-workload-management.md) ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).
+- SQL Analytics iş yükü yönetimi hakkında daha fazla bilgi için bkz. [Iş yükü yönetimi](sql-data-warehouse-workload-management.md) ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).

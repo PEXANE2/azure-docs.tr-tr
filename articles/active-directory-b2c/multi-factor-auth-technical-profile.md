@@ -3,20 +3,20 @@ title: Özel ilkelerde Azure MFA teknik profilleri
 titleSuffix: Azure AD B2C
 description: Azure AD B2C Azure Multi-Factor Authentication (MFA) Teknik profilleri için özel ilke başvurusu.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8aaea6b2afb4d89e6e667edba0eeba2f4ddcca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480222"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184290"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Azure MFA teknik profili tanımlama
 
@@ -53,10 +53,10 @@ Bu teknik profilin ilk modu, bir kod oluşturmak ve göndermek için kullanılı
 
 **Inputclaim** öğesi, Azure MFA 'ya gönderilen taleplerin bir listesini içerir. Ayrıca, talep ettiğiniz adı MFA teknik profilinde tanımlanan adla eşleyebilirsiniz.
 
-| Claimreferenceıd | Gereklidir | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| userPrincipalName | Evet | Telefon numarasına sahip kullanıcı için tanımlayıcı. |
-| phoneNumber | Evet | SMS kodu göndermek için kullanılacak telefon numarası. |
+| userPrincipalName | Yes | Telefon numarasına sahip kullanıcı için tanımlayıcı. |
+| phoneNumber | Yes | SMS kodu göndermek için kullanılacak telefon numarası. |
 | Tadı | Hayır |SMS 'deki şirket adı. Sağlanmazsa, uygulamanızın adı kullanılır. |
 | locale | Hayır | SMS 'nin yerel ayarı. Sağlanmazsa, kullanıcının tarayıcı yerel ayarı kullanılır. |
 
@@ -70,16 +70,16 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 ### <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Evet | **Onewaysms**olmalıdır.  |
+| İşlem | Yes | **Onewaysms**olmalıdır.  |
 | Usermessageifınvalidformat | Hayır | Girilen telefon numarası geçerli bir telefon numarası değilse özel hata iletisi |
 | Usermessageif, Dntsendsms | Hayır | Girilen telefon numarası SMS 'yi kabul etmezse özel hata iletisi |
 | UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştığından özel hata iletisi |
 
 ### <a name="return-an-error-message"></a>Bir hata iletisi döndürür
 
-[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayarı önek olarak ekleyerek bu iletileri daha da yerelleştirebilirsiniz. Örneğin:
+[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayarı önek olarak ekleyerek bu iletileri daha da yerelleştirebilirsiniz. Örnek:
 
 ```XML
 <Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
@@ -107,7 +107,7 @@ Aşağıdaki örnekte, SMS aracılığıyla kod göndermek için kullanılan bir
 </TechnicalProfile>
 ```
 
-## <a name="verify-code"></a>Kodu doğrulayın
+## <a name="verify-code"></a>Kodu doğrula
 
 Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
 
@@ -115,10 +115,10 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdak
 
 **Inputclaim** öğesi, Azure MFA 'ya gönderilen taleplerin bir listesini içerir. Ayrıca, talep ettiğiniz adı MFA teknik profilinde tanımlanan adla eşleyebilirsiniz.
 
-| Claimreferenceıd | Gereklidir | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Evet | Daha önce kod göndermek için kullanılan telefon numarası. Telefon doğrulama oturumunun yerini bulmak için de kullanılır. |
-| Doğrulama kodu  | Evet | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu |
+| phoneNumber| Yes | Daha önce kod göndermek için kullanılan telefon numarası. Telefon doğrulama oturumunun yerini bulmak için de kullanılır. |
+| Doğrulama kodu  | Yes | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure MFA hizmeti çağrılmadan önce yenilerini oluşturmak Için kullanılan **inputclaimstransınfo** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -130,9 +130,9 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Evet | **Verify** olmalıdır |
+| İşlem | Yes | **Verify** olmalıdır |
 | Usermessageifınvalidformat | Hayır | Girilen telefon numarası geçerli bir telefon numarası değilse özel hata iletisi |
 | Usermessageifyanlışlıkla Gcodegirildi | Hayır | Doğrulama için girilen kod yanlış ise özel hata iletisi |
 | Usermessageifmaxallowedcoderetr'e ulaşıldı | Hayır | Kullanıcı çok fazla kez bir doğrulama kodu denediğinde özel hata iletisi |
@@ -141,7 +141,7 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 ### <a name="return-an-error-message"></a>Bir hata iletisi döndürür
 
-[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayarı önek olarak ekleyerek bu iletileri daha da yerelleştirebilirsiniz. Örneğin:
+[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayarı önek olarak ekleyerek bu iletileri daha da yerelleştirebilirsiniz. Örnek:
 
 ```XML
 <Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>

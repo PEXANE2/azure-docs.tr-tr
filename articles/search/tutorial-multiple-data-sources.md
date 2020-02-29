@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/28/2020
+ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495066"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196578"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Öğretici: tek bir Azure Bilişsel Arama dizininde bulunan birden çok veri kaynağından verileri birleştirme
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Öğretici: içindeki birden çok veri kaynağından veri diziniC#
 
 Azure Bilişsel Arama, birden çok veri kaynağından alınan verileri tek bir Birleşik arama dizininde içeri aktarabilir, çözümleyebilir ve dizine alabilir. Bu, yapılandırılmış verilerin metin, HTML veya JSON belgeleri gibi diğer kaynaklardan daha az yapılandırılmış veya hatta düz metin verileriyle toplanmış olduğu durumları destekler.
 
 Bu öğreticide, otel verilerinin bir Azure Cosmos DB veri kaynağından nasıl indeksedileceği ve Azure Blob depolama belgelerinden alınan otel odası ayrıntılarıyla birleştirilebileceğiniz açıklanır. Sonuç, karmaşık veri türleri içeren bir birleştirilmiş otel arama dizini olacaktır.
 
-Bu öğreticide C#, Azure BILIŞSEL arama .NET SDK ve aşağıdaki görevleri yapmak için Azure Portal kullanılmaktadır:
+Bu öğretici aşağıdaki C# görevleri gerçekleştirmek IÇIN [.NET SDK](https://aka.ms/search-sdk) kullanır:
 
 > [!div class="checklist"]
 > * Örnek verileri karşıya yükleme ve veri kaynaklarını oluşturma
@@ -30,19 +30,19 @@ Bu öğreticide C#, Azure BILIŞSEL arama .NET SDK ve aşağıdaki görevleri ya
 > * Azure Cosmos DB otel verilerinin dizinini oluştur
 > * BLOB depolama alanından otel odası verilerini birleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanılır. 
+## <a name="prerequisites"></a>Önkoşullar
 
-- Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu öğretici için ücretsiz bir hizmet kullanabilirsiniz.
++ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
++ [Azure depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
-- Örnek otel verilerini depolamak için [bir Azure Cosmos DB hesabı oluşturun](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) .
+> [!Note]
+> Bu öğretici için ücretsiz hizmeti kullanabilirsiniz. Ücretsiz arama hizmeti, sizi üç Dizin, üç Dizin Oluşturucu ve üç veri kaynağı ile sınırlandırır. Bu öğreticide hepsinden birer tane oluşturulur. Başlamadan önce, hizmetinize yeni kaynakları kabul etmek için yeriniz olduğundan emin olun.
 
-- Örnek oda verilerini depolamak için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) .
-
-- IDE olarak kullanmak için [Visual Studio 2019](https://visualstudio.microsoft.com/) ' i yükler.
-
-### <a name="install-the-project-from-github"></a>Projeyi GitHub 'dan yükler
+## <a name="download-files"></a>Dosyaları indirme
 
 1. GitHub 'da örnek depoyu bulun: [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. **Kopyala veya indir** ' i seçin ve deponun özel yerel kopyasını yapın.
@@ -340,13 +340,23 @@ Azure portal ' de, arama hizmeti **genel bakış** sayfasını açın ve **dizin
 
 Listedeki otel-odalar-örnek dizinine tıklayın. Dizin için bir arama Gezgini arabirimi görürsünüz. "Merkezlerini" gibi bir terim için bir sorgu girin. Sonuçlarda en az bir belge görmeniz gerekir ve bu belge, Oda dizisindeki bir oda nesnelerinin bir listesini göstermelidir.
 
+## <a name="reset-and-rerun"></a>Sıfırlama ve yeniden çalıştırma
+
+Geliştirmede erken deneysel aşamalarda, tasarım yinelemesi için en pratik yaklaşım, nesneleri Azure Bilişsel Arama silmek ve kodunuzun bunları yeniden oluşturması için izin verir. Kaynak adları benzersizdir. Bir nesneyi sildiğinizde, aynı adı kullanarak nesneyi yeniden oluşturabilirsiniz.
+
+Bu öğreticinin örnek kodu mevcut nesneleri denetler ve kodunuzu yeniden çalıştırabilmeniz için onları siler.
+
+Ayrıca, dizinleri, Dizin oluşturucuyu ve veri kaynaklarını silmek için portalını de kullanabilirsiniz.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Öğreticiden sonra temizlemenin en hızlı yolu, Azure Bilişsel Arama hizmetini içeren kaynak grubunu silmelidir. Kaynak grubunu silerek içindeki her şeyi kalıcı olarak silebilirsiniz. Portalda, kaynak grubu adı Azure Bilişsel Arama hizmetinin genel bakış sayfasında bulunur.
+Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+
+Sol gezinti bölmesindeki tüm kaynaklar veya kaynak grupları bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-JSON bloblarını dizine almanın çeşitli yaklaşımları ve birden çok seçeneği vardır. Kaynak verileriniz JSON içeriği içeriyorsa, senaryonuza en uygun olanı görmek için bu seçenekleri inceleyebilirsiniz.
+Artık birden çok kaynaktan veri alma kavramı hakkında bilgi sahibi olduğunuza göre, Cosmos DB başlayarak Dizin Oluşturucu yapılandırmasına daha yakından bakalım.
 
 > [!div class="nextstepaction"]
-> [Azure Bilişsel Arama blob Indexer kullanarak JSON bloblarını dizin oluşturma](search-howto-index-json-blobs.md)
+> [Azure Cosmos DB Dizin Oluşturucu yapılandırma](search-howto-index-cosmosdb.md)

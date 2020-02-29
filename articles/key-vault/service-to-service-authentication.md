@@ -9,12 +9,13 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.subservice: general
+ms.openlocfilehash: 6377edf72651c9cddf570d0c6db9d5ceb40409f4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177463"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200728"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -75,7 +76,7 @@ Visual Studio kullanarak kimlik doğrulaması yapmak için:
 
 Belirteç sağlayıcı dosyasını içeren hatalar gibi Visual Studio 'Yu kullanarak sorunlarla karşılaşırsanız, önceki adımları dikkatle gözden geçirin.
 
-Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar**&nbsp;>&nbsp;**Seçenekler'i** seçin ve ardından **Azure&nbsp;hizmeti&nbsp;kimlik doğrulaması' nı seçin.** Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
+Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **araçlar**&nbsp;>&nbsp;**Seçenekler**' i seçin ve ardından **Azure&nbsp;Service&nbsp;kimlik doğrulaması**' nı seçin. Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
 
 #### <a name="authenticating-with-azure-cli"></a>Azure CLı ile kimlik doğrulama
 

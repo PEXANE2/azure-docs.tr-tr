@@ -2,20 +2,20 @@
 title: Belirteçlere genel bakış-Azure Active Directory B2C
 description: Azure Active Directory B2C ' de kullanılan belirteçler hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 543a3558333933e9d8d6262c76c1e6e9419be877
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848193"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186497"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
 
@@ -50,9 +50,9 @@ KIMLIK belirteçlerdeki talepler belirli bir sırada döndürülmez. Yeni talepl
 
 Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen erişim belirteçlerinde bekleneceğiniz talepler listelenmektedir.
 
-| Ad | İste | Örnek değer | Açıklama |
+| Adı | İste | Örnek değer | Açıklama |
 | ---- | ----- | ------------- | ----------- |
-| Hedef Kitle | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Belirtecin amaçlanan alıcısını tanımlar. Azure AD B2C için hedef kitle uygulama KIMLIĞIDIR. Uygulamanız bu değeri doğrulamalıdır ve eşleşmezse belirteci reddeder. Hedef kitle, kaynak ile eşanlamlıdır. |
+| Hedef kitle | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Belirtecin amaçlanan alıcısını tanımlar. Azure AD B2C için hedef kitle uygulama KIMLIĞIDIR. Uygulamanız bu değeri doğrulamalıdır ve eşleşmezse belirteci reddeder. Hedef kitle, kaynak ile eşanlamlıdır. |
 | Veren | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Ayrıca, kullanıcının kimliğinin doğrulandığı dizini tanımlar. Uygulamanızın, uygun uç noktadan geldiğinden emin olmak için veren talebini doğrulaması gerekir. |
 | Verilen: | `iat` | `1438535543` | Belirtecin verildiği zaman, dönem süresi cinsinden temsil edilir. |
 | Sona erme saati | `exp` | `1438539443` | Belirtecin, dönem zamanında temsil edilen geçersiz hale geldiği zaman. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. |
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen e
 | Erişim belirteci karması | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Yalnızca belirteç bir OAuth 2,0 erişim belirteciyle birlikte verildiğinde, KIMLIK belirtecine eklenen bir erişim belirteci karması. Erişim belirteci karması, bir erişim belirtecinin orijinalliğini doğrulamak için kullanılabilir. Bu doğrulamanın nasıl gerçekleştirileceği hakkında daha fazla bilgi için, [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html) bakın  |
 | nonce | `nonce` | `12345` | Nonce, belirteç yeniden yürütme saldırılarını azaltmak için kullanılan bir stratejidir. Uygulamanız, `nonce` sorgu parametresini kullanarak bir yetkilendirme isteğinde bir nonce belirtebilir. İstekte sağladığınız değer, yalnızca bir KIMLIK belirtecinin `nonce` talebinde değiştirilmemiş olarak yayınlanır. Bu talep, uygulamanızın değeri istekte belirtilen değerle doğrulamasını sağlar. Uygulamanız, KIMLIK belirteci doğrulama işlemi sırasında bu doğrulamayı gerçekleştirmelidir. |
 | Konu | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Belirtecin, bir uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi, güvenli bir şekilde, yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur. |
-| Kimlik doğrulama bağlamı sınıfı başvurusu | `acr` | Geçerli değil | Yalnızca eski ilkelerle kullanılır. |
+| Kimlik doğrulama bağlamı sınıfı başvurusu | `acr` | Uygulanamaz | Yalnızca eski ilkelerle kullanılır. |
 | Güven çerçevesi ilkesi | `tfp` | `b2c_1_signupsignin1` | KIMLIK belirtecini almak için kullanılan ilkenin adı. |
 | Kimlik doğrulama zamanı | `auth_time` | `1438535543` | Bir kullanıcının en son girilen kimlik bilgileri dönem içinde temsil edildiği zaman. Bu kimlik doğrulaması arasında yeni bir oturum açma, çoklu oturum açma (SSO) oturumu veya başka bir oturum açma türü gibi bir ayırt edici yok. `auth_time`, uygulamanın (veya kullanıcının) Azure AD B2C bir kimlik doğrulama denemesi başlattığı son zaman. Kimlik doğrulaması için kullanılan yöntem farklılaştırmıyor. |
 | Kapsam | `scp` | `Read`| Erişim belirteci için kaynağa verilen izinler. Verilen birden fazla izin boşlukla ayrılır. |
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen e
 
 Aşağıdaki özellikler Azure AD B2C tarafından yayılan [güvenlik belirteçlerinin ömrünü yönetmek](configure-tokens.md) için kullanılır:
 
-- **Erişim & kimliği belirteci yaşam süreleri (dakika)** -korumalı bir kaynağa erişim kazanmak Için kullanılan OAuth 2,0 taşıyıcı belirtecinin ömrü. Varsayılan değer 60 dakikadır. En düşük (kapsamlı) 5 dakikadır. Maksimum (dahil) 1440 dakikadır.
+- **Erişim &AMP; kimliği belirteci yaşam süreleri (dakika)** -korumalı bir kaynağa erişim kazanmak Için kullanılan OAuth 2,0 taşıyıcı belirtecinin ömrü. Varsayılan değer 60 dakikadır. En düşük (kapsamlı) 5 dakikadır. Maksimum (dahil) 1440 dakikadır.
 
 - **Yenileme belirteci yaşam süresi (gün)** -yeni ERIŞIM veya kimlik belirteci almak için yenileme belirtecinin kullanılabileceği en uzun süre. Ayrıca, uygulamanız `offline_access` kapsamına verildiyse, zaman aralığı yeni bir yenileme belirteci almak da içerir. Varsayılan değer 14 gündür. En düşük (kapsamlı) bir gündür. Maksimum (dahil) 90 gündür.
 

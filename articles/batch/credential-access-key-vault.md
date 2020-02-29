@@ -9,14 +9,14 @@ ms.workload: big-compute
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
-ms.openlocfilehash: 14cbacf43e83dc768e9a85620df131533b746671
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463108"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192311"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault güvenle erişim
+# <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
 
 Bu makalede, Azure Key Vault ' de depolanan kimlik bilgilerine güvenli bir şekilde erişmek için Batch düğümlerini ayarlamayı öğreneceksiniz. Key Vault ' de yönetici kimlik bilgilerinizi yerleştirmekten ve sonra bir betikten Key Vault erişmek için kimlik bilgilerini sabit kodlamasına yönelik bir nokta yoktur. Çözüm, toplu Iş düğümlerinizin Key Vault erişimine izin veren bir sertifika kullanmaktır. Birkaç adımda toplu Iş için güvenli anahtar depolaması uygulayabiliriz.
 
@@ -40,7 +40,7 @@ cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 Sonra, `batchcertificate.cer` ve `batchcertificate.pvk`adlı otomatik olarak imzalanan sertifika dosyaları oluşturmak için `makecert` aracını kullanın. Kullanılan ortak ad (CN) Bu uygulama için önemli değildir, ancak sertifikanın ne için kullanıldığını belirten bir şey yapmak faydalı olur.
 
 ```console
-makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
+makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
 Batch bir `.pfx` dosyası gerektiriyor. `makecert` tarafından oluşturulan `.cer` ve `.pvk` dosyalarını tek bir `.pfx` dosyasına dönüştürmek için [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) aracını kullanın.

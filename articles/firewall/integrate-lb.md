@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167064"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196745"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Güvenlik Duvarı’nı Azure Standart Load Balancer ile tümleştirme
 
@@ -28,7 +28,7 @@ Ortak yük dengeleyici ile yük dengeleyici, genel ön uç IP adresi ile dağıt
 
 ### <a name="asymmetric-routing"></a>Asimetrik yönlendirme
 
-Asimetrik yönlendirme, bir paketin hedefe bir yol aldığı ve kaynağa dönme sırasında başka bir yol aldığı yerdir. Bu sorun, bir alt ağın güvenlik duvarının özel IP adresine giderken bir varsayılan yolu olduğunda ve bir ortak yük dengeleyici kullanıyorsanız oluşur. Bu durumda, gelen yük dengeleyici trafiği genel IP adresi aracılığıyla alınır, ancak döndürülen yol güvenlik duvarının özel IP adresinden geçer. Güvenlik duvarı durum bilgisi olduğundan, güvenlik duvarı bu tür bir oturumun farkında olmadığından döndürülen paketi bırakır.
+Asimetrik yönlendirme, bir paketin hedefe bir yol aldığı ve kaynağa dönme sırasında başka bir yol aldığı yerdir. Bu sorun, bir alt ağın güvenlik duvarının özel IP adresine giderken bir varsayılan yolu olduğunda ve bir ortak yük dengeleyici kullanıyorsanız oluşur. Bu durumda, gelen yük dengeleyici trafiği genel IP adresi aracılığıyla alınır, ancak döndürülen yol güvenlik duvarının özel IP adresinden geçer. Güvenlik duvarı durum bilgisi olduğundan, güvenlik duvarı, bu tür bir oturumun farkında olmadığından döndürülen paketi bırakır.
 
 ### <a name="fix-the-routing-issue"></a>Yönlendirme sorununu çözme
 
@@ -39,9 +39,23 @@ Bu sorundan kaçınmak için, güvenlik duvarının genel IP adresi için ek bir
 
 ![Asimetrik yönlendirme](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-Örneğin, aşağıdaki rotalar genel IP adresi 13.86.122.41 ve 10.3.1.4 özel IP adresi için bir güvenlik duvarına yöneliktir.
+### <a name="route-table-example"></a>Rota tablosu örneği
 
-![Yol tablosu](media/integrate-lb/route-table.png)
+Örneğin, aşağıdaki rotalar genel IP adresi 20.185.97.136 ve 10.0.1.4 özel IP adresi için bir güvenlik duvarına yöneliktir.
+
+> [!div class="mx-imgBorder"]
+> ![Yol tablosu](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>NAT kuralı örneği
+
+Aşağıdaki örnekte, bir NAT kuralı, 20.185.97.136 adresindeki yük dengeleyiciye 20.42.98.220 adresindeki güvenlik duvarındaki RDP trafiğini çevirir:
+
+> [!div class="mx-imgBorder"]
+> ![NAT kuralı](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>Sistem durumu araştırmaları
+
+Bağlantı noktası 80 veya HTTP/HTTPS araştırmaları için TCP sistem durumu araştırmaları kullanıyorsanız yük dengeleyici havuzundaki konaklarda çalışan bir Web hizmetiniz olması gerektiğini unutmayın.
 
 ## <a name="internal-load-balancer"></a>İç yük dengeleyici
 
@@ -56,6 +70,8 @@ Dolayısıyla, bu senaryoyu ortak yük dengeleyici senaryosuna benzer ancak güv
 Yük dengeli senaryonuzun güvenliği artırmak için ağ güvenlik grupları (NSG 'ler) kullanabilirsiniz.
 
 Örneğin, yük dengeli sanal makinelerin bulunduğu arka uç alt ağında bir NSG oluşturabilirsiniz. Güvenlik Duvarı IP adresinden/bağlantı noktasından gelen trafiğe izin ver.
+
+![Ağ güvenlik grubu](media/integrate-lb/nsg-01.png)
 
 NSG 'ler hakkında daha fazla bilgi için bkz. [güvenlik grupları](../virtual-network/security-overview.md).
 

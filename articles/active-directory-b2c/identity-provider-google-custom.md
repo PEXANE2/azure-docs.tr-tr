@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak bir Google hesabı ile oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Özel ilkeler kullanarak Azure Active Directory B2C bir Google hesabıyla oturum açma ayarlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed11fcb24f06eae1b2baa6975a3cd8016042813e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8d02c86a1ff330aa4003299e1494a164089d8470
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847465"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188231"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak bir Google hesabı ile oturum açmayı ayarlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847465"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](custom-policy-overview.md) kullanarak Google hesabı olan kullanıcılar için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Active Directory B2C içindeki özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)adımlarını izleyin.
 - Zaten bir Google hesabınız yoksa, [Google hesabınızı oluşturma](https://accounts.google.com/SignUp)' da bir tane oluşturun.
@@ -48,7 +48,7 @@ Kullanıcıların bir Google hesabından oturum açmasını etkinleştirmek içi
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.

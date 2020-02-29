@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595017"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191308"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -143,7 +143,7 @@ Azure Dev Spaces etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kural
 | cloudflare.docker.com | HTTPS: 443 | Bu adres, Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için kullanılır |
 | gcr.io | HTTP: 443 | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
 | storage.googleapis.com | HTTP: 443 | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
-| azds-<guid>.<location>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir |
+| azds-\<GUID\>.\<location\>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Azure Ilkesi ile AKS kümeleri için gerekli adresler ve bağlantı noktaları (genel önizlemede) etkin
 
@@ -156,7 +156,7 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır. (Şu anda AKS 'deki önizlemededir) |
 | RAW.githubusercontent.com | HTTPS: 443 | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. (Şu anda AKS 'deki önizlemededir) |
-| *. gk.<location>. azmk8s.io | HTTPS: 443 | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure ilke eklentisi. |
+| *. gk.\<location\>. azmk8s.io | HTTPS: 443   | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure ilke eklentisi. |
 | dc.services.visualstudio.com | HTTPS: 443 | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure ilke eklentisi. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server tabanlı düğümler için gerekli (genel önizlemede) etkin

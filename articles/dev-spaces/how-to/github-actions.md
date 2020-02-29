@@ -1,17 +1,17 @@
 ---
-title: Azure Kubernetes hizmeti & GitHub eylemleri
+title: GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 services: azure-dev-spaces
 ms.date: 02/04/2020
 ms.topic: conceptual
 description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026107"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196561"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -27,7 +27,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli-installed].
@@ -50,7 +50,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 ## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment

@@ -405,6 +405,8 @@
           href: v2-admin-consent.md
         - name: Uygulama onayı deneyimleri
           href: application-consent-experience.md
+    - name: Koşullu erişim
+      href: v2-conditional-access-dev-guide.md
     - name: Ulusal Bulutlar
       items:
         - name: Genel Bakış

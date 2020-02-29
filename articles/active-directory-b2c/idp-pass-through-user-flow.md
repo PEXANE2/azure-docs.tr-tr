@@ -3,20 +3,20 @@ title: Uygulamanıza Kullanıcı akışı aracılığıyla erişim belirteci ge�
 titleSuffix: Azure AD B2C
 description: OAuth 2,0 kimlik sağlayıcıları için bir erişim belirtecini Azure Active Directory B2C bir Kullanıcı akışında talep olarak nasıl geçitireceğinizi öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838964"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187798"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C uygulamasında uygulamanıza bir Kullanıcı akışı aracılığıyla erişim belirteci geçirin
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) bir [Kullanıcı akışı](user-flow-o
 
 Azure AD B2C Şu anda yalnızca [Facebook](identity-provider-facebook.md) ve [Google](identity-provider-google.md)içeren [OAuth 2,0](authorization-code-flow.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Uygulamanızın [V2 Kullanıcı akışı](user-flow-versions.md)kullanıyor olması gerekir.
 * Kullanıcı akışınız bir OAuth 2,0 kimlik sağlayıcısı ile yapılandırılır.

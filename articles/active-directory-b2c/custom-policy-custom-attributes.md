@@ -3,20 +3,20 @@ title: Özel ilkelere kendi öznitelerinizi ekleme
 titleSuffix: Azure AD B2C
 description: Uzantı özellikleri ve özel öznitelikler kullanma ve bunları kullanıcı arayüzüne ekleme hakkında bir anlatım.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c145b0efa2f1c06710e1d41f606f918a7439820a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482777"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189506"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: özel bir profilde özel öznitelikler kullanma ilke düzenleme
 

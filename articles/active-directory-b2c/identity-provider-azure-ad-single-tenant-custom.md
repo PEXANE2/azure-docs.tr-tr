@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak bir Azure AD hesabı ile oturum açma ayarlama
 titleSuffix: Azure AD B2C
 description: Özel ilkeler kullanarak Azure Active Directory B2C Azure Active Directory hesapla oturum açma ayarlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136300"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188419"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Azure Active Directory hesabı ile oturum açmayı ayarlama
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom
 
 Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleştirmek için, uygulamayı kurumsal Azure AD kiracısında kaydetmeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kuruluşunuzun Azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından Azure AD kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -54,7 +54,7 @@ Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleşt
 
 Azure AD 'den `family_name` ve `given_name` taleplerini almak istiyorsanız, Azure portal Kullanıcı arabirimi veya uygulama bildiriminde uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure AD uygulamanıza isteğe bağlı talepler sağlama](../active-directory/develop/active-directory-optional-claims.md).
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Arama yapın ve **Azure Active Directory**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Arama yapın ve **Azure Active Directory**seçin.
 1. **Yönet** bölümünden **uygulama kayıtları**' yi seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
 1. **Yönet** bölümünde **belirteç yapılandırması (Önizleme)** öğesini seçin.
@@ -75,7 +75,7 @@ Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız g
 1. İlke anahtarı için bir **ad** girin. Örneğin, `ContosoAppSecret`.  Ön ek `B2C_1A_`, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_ContosoAppSecret*.
 1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 1. **Anahtar kullanımı**için `Signature`' yi seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 

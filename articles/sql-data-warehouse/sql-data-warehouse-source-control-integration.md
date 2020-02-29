@@ -1,6 +1,6 @@
 ---
 title: Kaynak Denetimi Tümleştirmesi
-description: Azure Repos (git ve GitHub) kullanarak yerel kaynak denetimi tümleştirmesiyle SQL veri ambarı için kurumsal sınıf veritabanı DevOps deneyimi.
+description: Azure Repos (git ve GitHub) kullanarak yerel kaynak denetimi tümleştirmesiyle SQL havuzu için kurumsal sınıf veritabanı DevOps deneyimi.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720036"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198242"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için kaynak denetimi tümleştirmesi
+# <a name="source-control-integration-for-sql-pool"></a>SQL havuzu için kaynak denetimi tümleştirmesi
 
-Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak denetimiyle tümleştirme özetlenmektedir.  Kaynak denetimi tümleştirmesi, SQL veri ambarı ile sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ilk adımıdır. 
+Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak denetimiyle tümleştirme özetlenmektedir.  Kaynak denetimi tümleştirmesi, Azure SYNAPSE Analytics 'te SQL havuzu kaynağıyla sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ilk adımıdır. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -81,4 +81,4 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL veri ambarı için geliştirme](sql-data-warehouse-overview-develop.md)
+- [SQL havuzu için geliştirme](sql-data-warehouse-overview-develop.md)

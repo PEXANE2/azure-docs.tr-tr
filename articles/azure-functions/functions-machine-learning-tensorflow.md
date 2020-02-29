@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e98655dca7d682e5c42f3b0ae7f26c892bd12377
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710710"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190781"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
 
@@ -59,7 +59,7 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için Python,
 *Başlangıç* klasörüne gidin ve `.venv`adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. Azure Işlevleri tarafından desteklenen Python 3,7 ' i kullandığınızdan emin olun.
 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 cd start
@@ -79,7 +79,7 @@ Python, venv paketini Linux dağıtımına yüklememediyse aşağıdaki komutu �
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -93,7 +93,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 cd start
@@ -133,7 +133,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     func new --name classify --template "HTTP trigger"
     ```
 
-    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren *\_\_init\_\_.* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function. JSON*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. [Azure 'DA http tarafından tetiklenen bir Python Işlevi oluşturma-dosya Içeriğini İnceleme](functions-create-first-function-python.md#optional-examine-the-file-contents).
+    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren *\_\_init\_\_.* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function. JSON*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) .
 
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
@@ -158,19 +158,19 @@ Bir görüntüyü içeriğine göre sınıflandırmak için `classify` işlevini
 
 1. *Başlangıç* klasöründe, model dosyalarını *sınıflandır* klasörüne kopyalamak için aşağıdaki komutu çalıştırın. Komutuna `\*` eklediğinizden emin olun. 
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\model\* classify
@@ -182,19 +182,19 @@ Bir görüntüyü içeriğine göre sınıflandırmak için `classify` işlevini
 
 1. *Başlangıç* klasöründe, yardımcı kod içeren bir dosyayı *sınıflandır* klasörüne kopyalamak için aşağıdaki komutu çalıştırın:
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\predict.py classify
@@ -266,19 +266,19 @@ Bir görüntüyü içeriğine göre sınıflandırmak için `classify` işlevini
 
 1. Python ile HTTP sunucusu başlatma:
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
 
     ```bash 
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
     ```
 
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
     ```cmd
     py -m http.server

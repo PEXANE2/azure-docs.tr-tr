@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C özel öznitelikleri tanımlayın | Microsoft Docs
 description: Müşterileriniz hakkında bilgi toplamak için Azure Active Directory B2C ' de uygulamanız için özel öznitelikler tanımlayın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a65eb19c5694f399e806d0f6ce99717436931c6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7b1ecfba0435f827c7c7a4d05da619998140bc6e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484358"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186058"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel öznitelikleri tanımlama
 
@@ -39,7 +39,7 @@ ms.locfileid: "77484358"
 5. Özel öznitelik için bir **ad** sağlayın (örneğin, "shoesize")
 6. Bir **veri türü**seçin. Yalnızca **String**, **Boolean**ve **Int** kullanılabilir.
 7. İsteğe bağlı olarak, bilgilendirici amaçlar için bir **Açıklama** girin.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’ tıklayın.
 
 Özel öznitelik artık **Kullanıcı öznitelikleri** listesinde ve Kullanıcı akışlarınızda kullanılmak üzere kullanılabilir. Özel bir öznitelik, **Kullanıcı öznitelikleri**listesine eklediğinizde değil, yalnızca herhangi bir Kullanıcı akışında kullanıldığı zaman oluşturulur.
 
@@ -47,8 +47,8 @@ ms.locfileid: "77484358"
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. İlkeyi (örneğin, "B2C_1_SignupSignin") seçerek açın.
-1. **Kullanıcı öznitelikleri** ' ni seçin ve ardından özel özniteliği seçin (örneğin, "shoesize"). **Kaydet** düğmesine tıklayın.
+1. **Kullanıcı öznitelikleri** ' ni seçin ve ardından özel özniteliği seçin (örneğin, "shoesize"). **Kaydet**’e tıklayın.
 1. **Uygulama talepleri** ' ı seçin ve ardından özel özniteliği seçin.
-1. **Kaydet** düğmesine tıklayın.
+1. **Kaydet**’e tıklayın.
 
 Yeni oluşturulan özel özniteliği kullanan bir Kullanıcı akışı kullanarak yeni bir kullanıcı oluşturduktan sonra, nesne [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'da sorgulanabilir. Alternatif olarak, müşteri deneyimini doğrulamak için Kullanıcı akışındaki [Kullanıcı akışını Çalıştır](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) özelliğini de kullanabilirsiniz. Şimdi kayıt yolculuğu sırasında toplanan öznitelikler listesinde **Showesize** ' i görmeniz ve uygulamanıza geri gönderilen belirteçte onu görmeniz gerekir.

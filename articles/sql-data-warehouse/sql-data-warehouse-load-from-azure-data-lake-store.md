@@ -1,34 +1,34 @@
 ---
 title: Eğitim Azure Data Lake Storage verileri yükleme
-description: Azure Data Lake Storage verileri Azure SQL veri ambarı 'na yüklemek için PolyBase dış tablolarını kullanın.
+description: SQL Analytics için Azure Data Lake Storage verileri yüklemek için PolyBase dış tablolarını kullanın.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923634"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194589"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage verileri SQL veri ambarı 'na yükleme
-Bu kılavuzda, Azure SQL veri ambarı 'na Azure Data Lake Storage veri yüklemek için PolyBase dış tablolarının nasıl kullanılacağı özetlenmektedir. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verileri SQL veri ambarı 'na aktarmayı öneririz. 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>SQL Analytics için Azure Data Lake Storage verileri yükleme
+Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için PolyBase dış tablolarının nasıl kullanılacağı özetlenmektedir. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verilerin içeri aktarılmasını öneririz. 
 
 > [!NOTE]  
-> Yükleme alternatifi Şu anda genel önizleme aşamasında olan [Copy deyimidir](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) . COPY ifadesiyle geri bildirim sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com.
+> Yükleme alternatifi Şu anda genel önizleme aşamasında olan [Copy deyimidir](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) .  COPY ifadesinde en çok esneklik sağlanır. COPY ifadesiyle geri bildirim sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com.
 >
 > [!div class="checklist"]
 
 > * Data Lake Storage yüklemek için gereken veritabanı nesneleri oluşturun.
 > * Data Lake Storage dizinine bağlanın.
-> * Azure SQL veri ambarı 'na veri yükleme.
+> * Verileri veri ambarına yükleyin.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -37,7 +37,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
-* Azure SQL veri ambarı. Bkz. [oluşturma ve sorgulama ve Azure SQL veri ambarı](create-data-warehouse-portal.md).
+* Bir SQL Havuzu. Bkz. [SQL havuzu oluşturma ve verileri sorgulama](create-data-warehouse-portal.md).
 * Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md). Bu depolama hesabında, yüklemek için aşağıdaki kimlik bilgilerinden birini yapılandırmanız veya belirtmeniz gerekir: depolama hesabı anahtarı, Azure dizin uygulama kullanıcısı veya depolama hesabına uygun RBAC rolüne sahip bir AAD kullanıcısı. 
 
 ##  <a name="create-a-credential"></a>Kimlik bilgisi oluşturma
@@ -194,7 +194,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Columnstore sıkıştırmasını iyileştirme
-Varsayılan olarak, SQL veri ambarı tabloyu kümelenmiş bir columnstore dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları columnstore ' de sıkıştırılmayabilir.  Bunun gerçekleşebileceği çeşitli nedenler vardır. Daha fazla bilgi için bkz. [columnstore dizinlerini yönetme](sql-data-warehouse-tables-index.md).
+Tablolar, varsayılan olarak kümelenmiş bir columnstore dizini olarak tanımlanır. Yükleme tamamlandıktan sonra, bazı veri satırları columnstore ' de sıkıştırılmayabilir.  Bunun gerçekleşebileceği çeşitli nedenler vardır. Daha fazla bilgi için bkz. [columnstore dizinlerini yönetme](sql-data-warehouse-tables-index.md).
 
 Bir yüklemeden sonra sorgu performansını ve columnstore sıkıştırmasını iyileştirmek için, columnstore dizinini tüm satırları sıkıştırmak üzere zorlamak için tabloyu yeniden derleyin.
 
@@ -212,19 +212,20 @@ Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirs
 Aşağıdaki örnek, istatistik oluşturmak için iyi bir başlangıç noktasıdır. Boyut tablosundaki her bir sütunda ve olgu tablolarındaki her bir birleştirme sütununda tek sütunlu istatistikler oluşturur. Daha sonra, daha sonra diğer olgu tablosu sütunlarına tek veya çok sütunlu istatistikler ekleyebilirsiniz.
 
 ## <a name="achievement-unlocked"></a>Başarı kilidi açıldı!
-Verileri Azure SQL veri ambarı 'na başarıyla yüklesahipsiniz. Harika iş!
+Verileri veri ambarınıza başarıyla yüklesahipsiniz. Harika iş!
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 Bu öğreticide, Data Lake Storage 1. depolanan verilerin yapısını tanımlamak için dış tablolar oluşturdunuz ve sonra veri ambarınıza veri yüklemek için PolyBase CREATE TABLE AS SELECT ifadesini kullandınız. 
 
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
+>
 > * Data Lake Storage yüklemek için gereken veritabanı nesneleri oluşturuldu.
 > * Bir Data Lake Storage dizinine bağlanıldı.
-> * Azure SQL veri ambarı 'na veri yüklendi.
+> * Veriler veri ambarına yüklendi.
 >
 
-Veri yükleme, SQL veri ambarı kullanılarak veri ambarı çözümü geliştirmenin ilk adımıdır. Geliştirme kaynaklarımıza göz atın.
+Verilerin yüklenmesi, Azure SYNAPSE Analytics kullanılarak veri ambarı çözümü geliştirmenin ilk adımıdır. Geliştirme kaynaklarımıza göz atın.
 
 > [!div class="nextstepaction"]
-> [SQL veri ambarı 'nda tablo geliştirmeyi öğrenin](sql-data-warehouse-tables-overview.md)
+> [Veri depolama için tablo geliştirmeyi öğrenin](sql-data-warehouse-tables-overview.md)

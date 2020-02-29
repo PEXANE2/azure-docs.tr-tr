@@ -3,21 +3,21 @@ title: Azure AD B2C, uygulamalarınıza SAML IDP olarak yapılandırma
 title-suffix: Azure AD B2C
 description: Uygulamalarınıza (hizmet sağlayıcıları) SAML protokol onayları sağlamak için Azure AD B2C yapılandırma. Azure AD B2C, SAML uygulamanıza tek kimlik sağlayıcısı (IDP) olarak davranır.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912249"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189659"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -63,7 +63,7 @@ Henüz bir SAML hizmet sağlayıcınız ve ilişkili meta veri uç noktanız yok
 
 ## <a name="1-set-up-certificates"></a>1. sertifikaları ayarlama
 
-Hizmet sağlayıcınız ve Azure AD B2C arasında bir güven ilişkisi oluşturmak için, x509 sertifikaları ve bunların özel anahtarlarını sağlamanız gerekir.
+Hizmet sağlayıcınız ve Azure AD B2C arasında bir güven ilişkisi oluşturmak için, Web uygulaması x509 sertifikalarını sağlamanız gerekir.
 
 * **Hizmet sağlayıcı sertifikaları**
   * Web uygulamanızda depolanan bir özel anahtara sahip sertifika. Bu sertifika, Azure AD B2C gönderilen SAML isteğini imzalamak için hizmet sağlayıcınız tarafından kullanılır. Azure AD B2C imzayı doğrulamak için hizmet sağlayıcı meta verilerinden ortak anahtarı okur.

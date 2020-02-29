@@ -6,16 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: af3611e4c4d1f5d8ca52b3ceb80d79dcfd7d2061
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190748"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200031"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
 Bu hızlı başlangıçta, mevcut bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için hazırlanması gösterilmektedir. Doğru yapılandırılmışsa, Azure yay bulutu, Java Spring Cloud uygulamanızı izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sunar.
+
+Diğer örneklerde pod dosyası yapılandırıldığında bir uygulamanın Azure Spring Cloud 'a nasıl dağıtılacağı açıklanmaktadır. 
+* [Azure portal kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-portal.md)
+* [Azure CLı kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-cli.md)
+
+Bu makalede, gerekli bağımlılıklar ve bunların Pod dosyasına nasıl ekleneceği açıklanmaktadır.
 
 ## <a name="java-runtime-version"></a>Java çalışma zamanı sürümü
 
@@ -25,16 +31,18 @@ Azure yay bulutu hem Java 8 hem de Java 11 ' i destekler. Barındırma ortamı, 
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Yay önyükleme ve yay bulut sürümleri
 
-Azure yay bulutu yalnızca Spring Boot uygulamalarını destekler. Hem Spring Boot sürüm 2,1 hem de 2,2 sürümünü destekler. Aşağıdaki tabloda desteklenen Spring Boot ve Spring Cloud kombinasyonlarını listelenmektedir:
+Mevcut bir Spring Boot uygulamasını Azure yay bulutu 'na dağıtmak üzere hazırlamak için, aşağıdaki bölümlerde gösterildiği gibi, Application Pod dosyasına Spring Boot ve Spring Cloud bağımlılıklarını ekleyin.
+
+Azure yay bulutu, Spring Boot sürüm 2,1 veya sürüm 2,2 ' nin yalnızca Spring Boot uygulamalarını destekler. Aşağıdaki tabloda desteklenen Spring Boot ve Spring Cloud kombinasyonlarını listelenmektedir:
 
 Spring Boot sürümü | Yay bulutu sürümü
 ---|---
 2.1 | Greenwich. RELEASE
 2.2 | Hoxton. RELEASE
 
-Pod. XML dosyanızın, Spring Boot sürümünüze bağlı olarak doğru yay önyüklemesinde ve Spring Cloud Dependencies 'e sahip olduğunu doğrulayın.
-
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
+
+Spring Boot sürüm 2,1 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -60,6 +68,8 @@ Pod. XML dosyanızın, Spring Boot sürümünüze bağlı olarak doğru yay öny
 
 ### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot sürüm 2,2 için bağımlılıklar
 
+Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
+
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
@@ -84,7 +94,7 @@ Pod. XML dosyanızın, Spring Boot sürümünüze bağlı olarak doğru yay öny
 
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure yay bulutu istemci bağımlılığı
 
-Azure yay bulutu, sizin için bahar bulut bileşenlerini barındırır ve yönetir. Bu tür bileşenler yay bulut hizmeti kayıt defteri ve Spring Cloud config Server ' ı içerir. Azure Spring Cloud Service örneğiniz ile iletişime izin vermek için bağımlılıklarınızı Azure yay bulutu istemci Kitaplığı ' nı dahil edin.
+Azure yay bulutu, bahar bulut bileşenlerini barındırır ve yönetir. Bileşenler yay bulut hizmeti kayıt defteri ve yay bulut yapılandırma sunucusu içerir. Azure Spring Cloud Service örneğiniz ile iletişime izin vermek için bağımlılıklarınızı Azure yay bulutu istemci Kitaplığı ' nı dahil edin.
 
 Aşağıdaki tabloda, uygulamanız için Spring Boot ve Spring Cloud kullanan doğru Azure yay bulut sürümleri listelenmektedir.
 
@@ -97,6 +107,8 @@ Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay 
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud sürüm 2,1 için bağımlılık
 
+Spring Boot sürüm 2,1 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -106,6 +118,8 @@ Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay 
 ```
 
 ### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud sürüm 2,2 için bağımlılık
+
+Spring Boot sürüm 2,2 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
 
 ```xml
 <dependency>
@@ -117,7 +131,33 @@ Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay 
 
 ## <a name="other-required-dependencies"></a>Diğer gerekli bağımlılıklar
 
-Azure Spring Cloud 'ın yerleşik özelliklerini etkinleştirmek için, uygulamanız aşağıdaki bağımlılıkları içermelidir. Bu içerme, uygulamanızın her bileşenle doğru bir şekilde yapılandırmasını sağlar.  
+Azure Spring Cloud 'ın yerleşik özelliklerini etkinleştirmek için, uygulamanız aşağıdaki bağımlılıkları içermelidir. Bu içerme, uygulamanızın her bileşenle doğru bir şekilde yapılandırmasını sağlar.
+
+### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient ek açıklaması
+
+Uygulama kaynak koduna aşağıdaki ek açıklamayı ekleyin.
+```java
+@EnableDiscoveryClient
+```
+Örneğin, önceki örneklerden plımetriler uygulamasına bakın:
+```java
+package com.piggymetrics.gateway;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableZuulProxy
+
+public class GatewayApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplication.class, args);
+    }
+}
+```
 
 ### <a name="service-registry-dependency"></a>Hizmet kayıt defteri bağımlılığı
 
@@ -175,6 +215,13 @@ Pod. XML dosyanızın bağımlılıklar bölümüne aşağıdaki `spring-cloud-s
 ```
 
  Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanmayı öğrenmek için [Dağıtılmış izleme öğreticisini](spring-cloud-tutorial-distributed-tracing.md) okuyun.
+
+## <a name="see-also"></a>Ayrıca bkz.
+* [Uygulama günlüklerini ve ölçümleri çözümleme](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Yapılandırma sunucunuzu ayarlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
+* [Azure Spring Cloud ile dağıtılmış izleme kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Yay hızlı başlangıç kılavuzu](https://spring.io/quickstart)
+* [Spring Boot belgeleri](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

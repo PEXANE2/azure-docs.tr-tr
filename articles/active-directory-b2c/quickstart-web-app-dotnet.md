@@ -3,20 +3,20 @@ title: 'Hızlı başlangıç: ASP.NET Web uygulaması için oturum açma ayarlam
 titleSuffix: Azure AD B2C
 description: Bu hızlı başlangıçta, hesap oturum açma sağlamak için Azure Active Directory B2C kullanan bir örnek ASP.NET Web uygulaması çalıştırın.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ee56e69befb220a742077326956efa996979105
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 197155650bf7b8d113f96dbcfd6d9e2b58924b7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850177"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187211"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Hızlı başlangıç: Azure Active Directory B2C kullanarak bir ASP.NET uygulaması için oturum açma ayarlama
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) .
 - Facebook, Google veya Microsoft 'dan bir sosyal hesap.
@@ -44,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 1. Örnek uygulama proje klasöründen, Visual Studio’da **B2C-WebAPI-DotNet.sln** çözümünü açın.
 2. Bu hızlı başlangıç için aynı anda hem **TaskWebApp** hem de **TaskService** projesini çalıştırıyorsunuz. Çözüm Gezgini'nde **B2C-WebAPI-DotNet** çözümüne sağ tıklayıp **Başlangıç Projelerini Ayarla**'yı seçin.
 3. **Çoklu başlangıç projeleri**'ni seçin ve iki projenin de **Eylem** alanını **Başlat** olarak değiştirin.
-4. **Tamam**’a tıklayın.
+4. **OK (Tamam)** düğmesine tıklayın.
 5. Her iki uygulamada da hata ayıklama gerçekleştirmek için **F5**’e basın. Her uygulama kendi tarayıcı sekmesinde açılır:
 
     - `https://localhost:44316/` - ASP.NET web uygulaması. Hızlı başlangıçta doğrudan bu uygulamayla etkileşim kurarsınız.
@@ -56,7 +56,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 
     ![Kaydolma/imzalama bağlantısı vurgulanmış şekilde tarayıcıda örnek ASP.NET Web uygulaması](./media/quickstart-web-app-dotnet/web-app-sign-in.png)
 
-    Örnek, sosyal kimlik sağlayıcısı kullanma veya bir e-posta adresiyle yerel bir hesap oluşturma da dahil olmak üzere çeşitli kaydolma seçeneklerini destekler. Bu hızlı başlangıç için Facebook, Google veya Microsoft 'dan bir sosyal kimlik sağlayıcısı hesabı kullanın.
+    Örnek, sosyal kimlik sağlayıcısı kullanma veya e-posta kullanarak yerel hesap oluşturma gibi çeşitli oturum açma seçeneklerini destekler. Bu hızlı başlangıç için Facebook, Google veya Microsoft 'dan bir sosyal kimlik sağlayıcısı hesabı kullanın.
 
 2. Azure AD B2C, örnek Web uygulaması için fabrikam adlı kurgusal bir şirket için oturum açma sayfası sunar. Sosyal kimlik sağlayıcısı kullanarak kaydolmak için, kullanmak istediğiniz kimlik sağlayıcısının düğmesine tıklayın.
 
@@ -92,7 +92,7 @@ Azure AD B2C korumalı bir web API’si için yetkili bir çağrıda bulunmak ü
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Başka Azure AD B2C hızlı başlangıçlarını ve öğreticilerini denemeyi planlıyorsanız Azure AD B2C kiracınızı kullanabilirsiniz. Artık ihtiyaç duymuyorsanız [Azure AD B2C kiracınızı silebilirsiniz](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+Diğer Azure AD B2C hızlı başlangıçlarını veya öğreticilerini denemeyi planlıyorsanız Azure AD B2C kiracınızı kullanabilirsiniz. Artık ihtiyaç duymuyorsanız [Azure AD B2C kiracınızı silebilirsiniz](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

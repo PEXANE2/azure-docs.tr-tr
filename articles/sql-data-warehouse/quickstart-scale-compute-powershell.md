@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: ölçek işlem-PowerShell '
-description: PowerShell’den Azure SQL Veri Ambarı’nda işlemi ölçeklendirin. Daha iyi performans için işlem ölçeğini genişletin veya maliyet tasarrufu için işlem ölçeğini daraltın.
+description: PowerShell 'de SQL havuzundaki işlem ölçeği. Daha iyi performans için işlem ölçeğini genişletin veya maliyet tasarrufu için işlem ölçeğini daraltın.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f4c2087052e4c3b4fac4d27bb4ecdc2ebf8a42f6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692972"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200489"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirme
+# <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure SYNAPSE Analytics SQL havuzunda işlem ölçeğini ölçeklendirme
 
-Azure PowerShell kullanarak Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlem ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu için işlem ölçeğini daraltın.
+Azure PowerShell kullanarak SQL havuzundaki işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlem ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu için işlem ölçeğini daraltın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu hızlı başlangıçta ölçeklendirebildiğiniz bir SQL veri ambarı zaten var. Gerekiyorsa [mySampleDataWarehouse](create-data-warehouse-portal.md) adlı bir veri ambarı oluşturmak için **Oluşturma ve Bağlanma - portal** bölümünü kullanabilirsiniz.
+Bu hızlı başlangıçta ölçeklendirebildiğiniz bir SQL havuzu zaten var. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse**ADLı bir SQL havuzu oluşturmak için [Create and Connect-Portal](create-data-warehouse-portal.md) ' ı kullanın.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -56,39 +56,38 @@ Duraklatmayı ve sürdürmeyi planladığınız veri ambarı için veritabanı a
 
 Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımları uygulayın.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. Azure portalının sol taraftaki sayfasında **SQL veri ambarları**’na tıklayın.
-3. **SQL veri ambarları** sayfasından **mySampleDataWarehouse** seçeneğini belirleyin. Bu, veri ambarını açar.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. Azure portal sol gezinti sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
+3. Veri ambarını açmak için **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin.
 
     ![Sunucu adı ve kaynak grubu](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Veritabanı adı olarak kullanılacak olan veri ambarı adını not alın. Veri ambarının tek bir veritabanı türü olduğunu unutmayın. Ayrıca sunucu adını ve kaynak grubunu da not alın. Duraklatma ve sürdürme komutlarında bunları kullanacaksınız.
-5. Sunucunuz foo.database.windows.net ise, PowerShell cmdlet'lerinde sunucu adı olarak yalnızca ilk bölümü kullanın. Önceki görüntüde tam sunucu adı newserver-20171113.database.windows.net şeklindedir. PowerShell cmdlet’inde **newserver-20180430** sunucu adını kullanırız.
+4. Veritabanı adı olarak kullanılacak olan veri ambarı adını not alın. Veri ambarının tek bir veritabanı türü olduğunu unutmayın. Ayrıca sunucu adını ve kaynak grubunu da not alın. Pause ve Resume komutlarında sunucu adını ve kaynak grubu adını kullanacaksınız.
+5. PowerShell cmdlet 'lerinde sunucu adının yalnızca ilk kısmını kullanın. Yukarıdaki görüntüde, tam sunucu adı sqlpoolservername.database.windows.net ' dir. PowerShell cmdlet 'inde sunucu adı olarak **sqlpoolservername** kullanıyoruz.
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 
-SQL Veri Ambarı’nda, veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
+SQL havuzunda, veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
 
-Veri ambarı birimlerini değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, sunucu **MyNewServer-20180430**üzerindeki **myresourcegroup** kaynak grubunda barındırılan **mysampledatawarehouse** veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
+Veri ambarı birimlerini değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**sunucusunda **resourcegroupname** kaynak grubunda barındırılan, **mysampledatawarehouse**veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
 
 ```Powershell
-Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
 ```
 
 ## <a name="check-data-warehouse-state"></a>Veri ambarı durumunu denetleme
 
-Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet 'ini kullanın. Bu, **myResourceGroup** Kaynak Grubundaki ve **mynewserver-20180430.database.windows.net** sunucusundaki **mySampleDataWarehouse** veritabanının durumunu alır.
+Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet 'ini kullanın. Bu cmdlet, ResourceGroup **resourcegroupname** ve Server **Sqlpoolservername.Database.Windows.net**içindeki **mysampledatawarehouse** veritabanının durumunu gösterir.
 
 ```powershell
-$database = Get-AzSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
-$database
+$database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
 ```
 
 Bu da aşağıdaki gibi bir sonuç verir:
 
 ```powershell
-ResourceGroupName             : myResourceGroup
-ServerName                    : mynewserver-20171113
+ResourceGroupName             : resourcegroupname
+ServerName                    : sqlpoolservername
 DatabaseName                  : mySampleDataWarehouse
 Location                      : North Europe
 DatabaseId                    : 34d2ffb8-b70a-40b2-b4f9-b0a39833c974
@@ -106,7 +105,7 @@ ElasticPoolName               :
 EarliestRestoreDate           :
 Tags                          :
 ResourceId                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
-                                resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/mynewserver-20171113/databases/mySampleDataWarehouse
+                                resourceGroups/resourcegroupname/providers/Microsoft.Sql/servers/sqlpoolservername/databases/mySampleDataWarehouse
 CreateMode                    :
 ReadScale                     : Disabled
 ZoneRedundant                 : False
@@ -121,7 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık veri ambarınız için işlemin nasıl ölçeklendirileceğini öğrendiniz. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
+Artık SQL havuzu için işlem ölçeklendirmeyi öğrendiniz. SQL havuzu hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
->[Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Verileri bir SQL havuzuna yükleme](load-data-from-azure-blob-storage-using-polybase.md)

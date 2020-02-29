@@ -1,6 +1,6 @@
 ---
 title: Kimlik Doğrulaması
-description: Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure SQL veri ambarı 'nda kimlik doğrulaması yapmayı öğrenin.
+description: Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE Analytics 'te kimlik doğrulaması yapmayı öğrenin.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,22 +11,23 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 706c68cb7a139a5c4f6def5aed7ad67e49090ede
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+tag: azure-synapse
+ms.openlocfilehash: 235d13cfd6f33830d832a6a79e3bc1c78bbfe53e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545152"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195983"
 ---
-# <a name="authenticate-to-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda kimlik doğrulama
-Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure SQL veri ambarı 'nda kimlik doğrulaması yapmayı öğrenin.
+# <a name="authenticate-to-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kimlik doğrulama
+Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure 'da SQL Analytics 'te kimlik doğrulaması yapmayı öğrenin.
 
-SQL veri ambarı 'na bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçirmeniz gerekir. Bir bağlantı kurulduktan sonra, sorgu oturumunuzu oluşturma işleminin parçası olarak belirli bağlantı ayarları yapılandırılır.  
+Bir SQL havuzuna bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçirmeniz gerekir. Bir bağlantı kurulduktan sonra, sorgu oturumunuzu oluşturma işleminin parçası olarak belirli bağlantı ayarları yapılandırılır.  
 
-Güvenlik ve veri Ambarınızla bağlantıları etkinleştirme hakkında daha fazla bilgi için bkz. [SQL veri ambarı 'nda veritabanını güvenli hale getirme](sql-data-warehouse-overview-manage-security.md).
+Güvenlik ve veri Ambarınızla bağlantıları etkinleştirme hakkında daha fazla bilgi için bkz. [veritabanı belgelerinin güvenliğini sağlama](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>SQL kimlik doğrulaması
-SQL veri ambarı 'na bağlanmak için aşağıdaki bilgileri sağlamanız gerekir:
+SQL havuzuna bağlanmak için aşağıdaki bilgileri sağlamanız gerekir:
 
 * Tam nitelenmiş ServerName
 * SQL kimlik doğrulaması belirtin
@@ -34,18 +35,18 @@ SQL veri ambarı 'na bağlanmak için aşağıdaki bilgileri sağlamanız gereki
 * Parola
 * Varsayılan veritabanı (isteğe bağlı)
 
-Varsayılan olarak bağlantınız, Kullanıcı veritabanınıza değil *ana* veritabanına bağlanır. Kullanıcı veritabanınıza bağlanmak için iki işlemlerden birini seçebilirsiniz:
+Varsayılan olarak, bağlantınız Kullanıcı veritabanınıza değil *ana* veritabanına bağlanır. Kullanıcı veritabanınıza bağlanmak için iki işlemlerden birini seçebilirsiniz:
 
 * Sunucunuzu SSDT, SSMS veya uygulama bağlantı dizeniz içindeki SQL Server Nesne Gezgini kaydederken varsayılan veritabanını belirtin. Örneğin, bir ODBC bağlantısı için InitialCatalog parametresini ekleyin.
 * SSDT 'de oturum oluşturmadan önce kullanıcı veritabanını vurgulayın.
 
 > [!NOTE]
-> Transact-SQL ifadesinin **MyDatabase; kullanımı** , bir bağlantının veritabanını değiştirmek için desteklenmez. SSDT ile SQL veri ambarı 'na bağlanma Kılavuzu için, [Visual Studio Ile sorgu](sql-data-warehouse-query-visual-studio.md) makalesini inceleyin.
+> Transact-SQL ifadesinin **MyDatabase; kullanımı** , bir bağlantının veritabanını değiştirmek için desteklenmez. SSDT ile bir SQL havuzuna bağlanma Kılavuzu için, [Visual Studio Ile sorgu](sql-data-warehouse-query-visual-studio.md) makalesini inceleyin.
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) kimlik doğrulaması
-[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulaması, Azure Active Directory (Azure AD) kimlikleri kullanılarak Microsoft Azure SQL veri ambarı bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetebilirsiniz. Merkezi KIMLIK yönetimi, SQL veri ambarı kullanıcılarını yönetmek ve izin yönetimini basitleştireceğinizi sağlayan tek bir yer sağlar. 
+[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulaması, Azure Active Directory (Azure AD) KIMLIKLERI kullanılarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetebilirsiniz. Merkezi KIMLIK yönetimi, Azure SYNAPSE kullanıcılarını yönetmek ve izin yönetimini basitleştireceğinizi sağlayan tek bir yer sağlar. 
 
 ### <a name="benefits"></a>Avantajlar
 Azure Active Directory avantajları şunlardır:
@@ -56,7 +57,7 @@ Azure Active Directory avantajları şunlardır:
 * Dış (AAD) gruplarını kullanarak veritabanı izinlerini yönetin.
 * Tümleşik Windows kimlik doğrulamasını ve Azure Active Directory tarafından desteklenen diğer kimlik doğrulama biçimlerini etkinleştirerek parolaların depolanmasını ortadan kaldırır.
 * , Veritabanı düzeyinde kimliklerin kimliğini doğrulamak için kapsanan veritabanı kullanıcılarını kullanır.
-* SQL veri ambarı 'na bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
+* SQL havuzuna bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
 * [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json)gibi çeşitli araçlar Için Active Directory evrensel kimlik doğrulaması aracılığıyla çok faktörlü kimlik doğrulamasını destekler.
 
 > [!NOTE]
@@ -69,16 +70,16 @@ Azure Active Directory kimlik doğrulamasını yapılandırmak için aşağıdak
 
 1. Azure Active Directory oluşturma ve doldurma
 2. İsteğe bağlı: Şu anda Azure aboneliğinizle ilişkili olan Active Directory 'yi Ilişkilendir veya Değiştir
-3. Azure SQL veri ambarı için Azure Active Directory Yöneticisi oluşturun.
+3. Azure SYNAPSE için Azure Active Directory Yöneticisi oluşturma
 4. İstemci bilgisayarlarınızı yapılandırma
 5. Veritabanınızda Azure AD kimlikleriyle eşlenen kapsanan veritabanı kullanıcıları oluşturun
-6. Azure AD kimliklerini kullanarak veri ambarınıza bağlanma
+6. Azure AD kimliklerini kullanarak SQL havuzunuza bağlanma
 
 Şu anda Azure Active Directory kullanıcılar SSDT Nesne Gezgini içinde gösterilmez. Geçici bir çözüm olarak, [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx)içindeki kullanıcıları görüntüleyin.
 
 ### <a name="find-the-details"></a>Ayrıntıları bul
-* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları Azure SQL veritabanı ve Azure SQL veri ambarı için neredeyse aynıdır. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na veya SQL Data Warehouse 'A bağlanma](../sql-database/sql-database-aad-authentication.md)konusundaki ayrıntılı adımları izleyin.
+* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları Azure SYNAPSE Azure SQL veritabanı ve SQL Analytics için neredeyse aynıdır. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na veya SQL Pool 'A bağlanma](../sql-database/sql-database-aad-authentication.md)konusundaki ayrıntılı adımları izleyin.
 * Özel veritabanı rolleri oluşturun ve rollere kullanıcı ekleyin. Ardından rollere ayrıntılı izinler verin. Daha fazla bilgi için bkz. [veritabanı altyapısı izinleri Ile çalışmaya](https://msdn.microsoft.com/library/mt667986.aspx)başlama.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Visual Studio ve diğer uygulamalarla veri ambarınızı sorgulamaya başlamak için bkz. [Visual Studio ile sorgulama](sql-data-warehouse-query-visual-studio.md).
+Visual Studio ve diğer uygulamalarla sorgulamaya başlamak için bkz. [Visual Studio Ile sorgulama](sql-data-warehouse-query-visual-studio.md).

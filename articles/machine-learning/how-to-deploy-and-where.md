@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
+ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210508"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193093"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -594,7 +594,7 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 | Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
 | Kta | Hizmet, dağıtım sürecinde. | Hayır |
-| İyi durumda değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Sağlıksız | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
 | Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
 | Sorunsuz | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
@@ -897,6 +897,8 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+Pytorch kullanıyorsanız, bu [modelleri pytorch 'den ONNX 'e aktarmak](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) , dönüştürme ve sınırlamalara ilişkin ayrıntıları içerir. 
+
 ### <a name="scikit-learn-models"></a>Scikit-modelleri öğrenme
 
 Tüm yerleşik scikit-öğrenme model türleri için hiçbir kod modeli dağıtımı desteklenmez.
@@ -956,7 +958,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için `package.pull()` kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örneğin: 
+Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için `package.pull()` kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

@@ -9,16 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.custom: azure-synapse
+ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212893"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184766"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimi 'ni kullanmaya başlama
 
-Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. Ayrıca Denetim:
+Azure [SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. Ayrıca Denetim:
 
 - Yönetmelikli uyumluluğu korumanıza, veritabanı etkinliklerini anlamanıza ve işle ilgili endişeleri veya şüpheli güvenlik ihlallerini gösterebilen tutarsızlıklar ve bozukluklar elde etmenize yardımcı olur.
 
@@ -26,7 +27,7 @@ Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı
 
 
 > [!NOTE] 
-> Bu konu başlığı, Azure SQL sunucusunun yanı sıra Azure SQL sunucusu üzerinde oluşturulmuş olan SQL Veritabanı ve SQL Veri Ambarı veritabanları için de geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu konu, Azure SQL Server ve Azure SQL Server 'da oluşturulan hem SQL veritabanı hem de Azure SYNAPSE Analytics veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır.
 
 ## <a id="subheading-1"></a>Azure SQL veritabanı denetimine genel bakış
 
@@ -80,6 +81,16 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 
     ![Gezinti bölmesi][3]
 
+5. **Yeni** -artık denetim günlüklerinin yazılacağı yeri yapılandırmak için birden çok seçeneğiniz vardır. Günlükleri bir Azure depolama hesabına, Azure Izleyici günlüklerine göre tüketim için bir Log Analytics çalışma alanına veya Olay Hub 'ı kullanarak tüketim için Olay Hub 'ına yazabilirsiniz. Bu seçeneklerin herhangi bir birleşimini yapılandırabilirsiniz ve denetim günlükleri her birine yazılır.
+  
+   > [!NOTE]
+   > Sunucu veya veritabanı düzeyinde denetim olayları için bir sabit günlük deposu yapılandırmak isteyen müşteri, [Azure depolama tarafından sunulan yönergeleri](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes) izlemelidir
+  
+   > [!WARNING]
+   > Log Analytics için denetimin etkinleştirilmesi, alma ücretlerine göre maliyet doğurur. Lütfen bu [seçeneği](https://azure.microsoft.com/pricing/details/monitor/)kullanarak ilişkili maliyetten haberdar olun veya denetim günlüklerini bir Azure depolama hesabında depolamayı düşünün.
+
+   ![depolama seçenekleri](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+   
 ### <a id="audit-storage-destination">Depolama hedefine yönelik denetim</a>
 
 Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **depolama** ve açık **depolama ayrıntıları**' nı seçin. Günlüklerin kaydedileceği Azure Depolama hesabını seçin ve ardından bekletme dönemini seçin. Daha sonra, **Tamam**'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
@@ -105,9 +116,22 @@ Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak 
 
 ### <a id="audit-event-hub-destination">Olay Hub 'ı hedefine yönelik denetim</a>
 
+< < < < < < < baş < < < < < < < baş = = = = = = =
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
+> [!IMPORTANT]
+> Duraklatılmış bir SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Etkinleştirmek için, SQL havuzunun duraklamasını kaldırın.
+
+> [!WARNING]
+> Üzerinde SQL havuzu olan bir sunucuda denetimin etkinleştirilmesi **, SQL havuzunun devam ettirmeye ve** fatura ücretlerine tabi olabilecek yeniden duraklatılmasıyla sonuçlanır.
+< < < < < < < HEAD = = = = = = = bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak Için **Olay Hub 'ı (Önizleme)** seçin ve **Olay Hub 'ı ayrıntılarını**açın. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam**' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
+
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
+=======
 Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hub 'ı (Önizleme)** seçin ve **Olay Hub 'ı ayrıntılarını**açın. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam**' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Denetim günlüklerini ve raporları çözümleme
 

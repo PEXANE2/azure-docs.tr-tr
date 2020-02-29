@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
 description: Azure Active Directory B2C ' de kullanılabilecek Kullanıcı hesabı türleri hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f34fe324f22be41d8cdff0df67777bc254bbc290
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484273"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185667"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
 
@@ -49,21 +49,21 @@ Yeni bir iş hesabı eklediğinizde aşağıdaki yapılandırma ayarlarını gö
 
 Yeni bir iş hesabı oluşturmak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portalında](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure portalındaki](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Kullanıcı profilini güncelleştirme
 
 Bir kullanıcının profilini güncelleştirmek için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portalında](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure portalındaki](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Kullanıcı parolasını sıfırlama
 
 Bir kullanıcının parolasını sıfırlamak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portalında](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure portalındaki](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Konuk Kullanıcı

@@ -1,51 +1,51 @@
 ---
 title: Sorun giderme
-description: Azure SQL veri ambarı sorunlarını giderme.
+description: Azure SYNAPSE Analytics sorunlarını giderme.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/25/2019
+ms.date: 02/04/2019
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 085b907b6a848fb534df63b5465948864048cc19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153375"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199878"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL veri ambarı sorunlarını giderme
+# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure 'da SQL Analytics sorunlarını giderme SYNAPSE
 Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 
 ## <a name="connecting"></a>Bağlanmada
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 18456) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
-| Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 916) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
-| CTAıP hatası                                                  | Bu hata, SQL Server ana veritabanında bir oturum oluşturulduğunda, ancak SQL veri ambarı veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine göz atın.  Bu makalede, ana bilgisayarda bir oturum açma ve Kullanıcı oluşturma ve ardından SQL veri ambarı veritabanında bir Kullanıcı oluşturma işlemleri açıklanmaktadır. |
-| Güvenlik duvarı tarafından engellendi                                          | Azure SQL veritabanları, yalnızca bilinen IP adreslerinin bir veritabanına erişimi olduğundan emin olmak için sunucu ve veritabanı düzeyi güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenli hale gelir. Bu, bağlanmadan önce açıkça etkinleştirmeniz ve IP adresi veya adres aralığı yapmanız gerekir.  Güvenlik duvarınızı erişim için yapılandırmak üzere, [sağlama yönergelerindeki](sql-data-warehouse-get-started-provision.md) [istemci IP 'niz için sunucu güvenlik duvarı erişimini yapılandırma](sql-data-warehouse-get-started-provision.md) bölümündeki adımları izleyin. |
-| Araçla veya sürücüyle bağlantı yapılamaz                           | SQL veri ambarı, [SMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)'Yi, [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)'yi veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve SQL veri ambarı 'na bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için sürücüler](sql-data-warehouse-connection-strings.md) ve [Azure SQL veri ambarı makalelerine bağlanma](sql-data-warehouse-connect-overview.md) . |
+| 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 18456) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı sırasında bağlanmak istediğiniz SQL havuzunu belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
+| Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 916) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı sırasında bağlanmak istediğiniz SQL havuzunu belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
+| CTAıP hatası                                                  | Bu hata, SQL Server ana veritabanında bir oturum oluşturulduğunda, ancak SQL veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine göz atın.  Bu makalede, ana bilgisayarda bir oturum açma ve Kullanıcı oluşturma ve ardından SQL veritabanında bir Kullanıcı oluşturma işlemleri açıklanmaktadır. |
+| Güvenlik duvarı tarafından engellendi                                          | SQL havuzları, yalnızca bilinen IP adreslerinin bir veritabanına erişimi olduğundan emin olmak için güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenli hale gelir. Bu, bağlanmadan önce açıkça etkinleştirmeniz ve IP adresi veya adres aralığı yapmanız gerekir.  Güvenlik duvarınızı erişim için yapılandırmak üzere, [sağlama yönergelerindeki](sql-data-warehouse-get-started-provision.md) [istemci IP 'niz için sunucu güvenlik duvarı erişimini yapılandırma](sql-data-warehouse-get-started-provision.md) bölümündeki adımları izleyin. |
+| Araçla veya sürücüyle bağlantı yapılamaz                           | SQL Analytics, [SMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)'Yi, [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)'yi veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve Azure SYNAPSE 'a bağlanma hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Için sürücüler](sql-data-warehouse-connection-strings.md) ve [Azure SYNAPSE makalelerine bağlanma](sql-data-warehouse-connect-overview.md) . |
 
 ## <a name="tools"></a>Araçlar
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio Nesne Gezgini 'nde AAD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici bir çözüm olarak, [sys. database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)içindeki kullanıcıları görüntüleyin.  SQL veri ambarı ile Azure Active Directory kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veri ambarı 'Nda kimlik doğrulama](sql-data-warehouse-authentication.md) . |
+| Visual Studio Nesne Gezgini 'nde AAD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici bir çözüm olarak, [sys. database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)içindeki kullanıcıları görüntüleyin.  SQL Analytics ile Azure Active Directory kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SYNAPSE kimlik doğrulaması](sql-data-warehouse-authentication.md) . |
 | El ile betik oluşturma, betik Sihirbazı 'nı kullanma veya SSMS aracılığıyla bağlanma yavaş, yanıt vermiyor veya hata üretmiyor | Ana veritabanında kullanıcıların oluşturulduğundan emin olun. Komut dosyası seçeneklerinde Ayrıca, Engine sürümünün "Microsoft Azure SQL Veri Ambarı Edition" olarak ayarlandığından ve altyapı türünün "Microsoft Azure SQL Veritabanı" olduğundan emin olun. |
-| SSMS 'de betik oluşturma başarısız oluyor                               | "Bağımlı nesneler için betik oluştur" seçeneği "true" olarak ayarlandıysa SQL veri ambarı için betik oluşturma işlemi başarısız olur. Geçici bir çözüm olarak, kullanıcıların **Araçlar-> Seçenekler-> SQL Server Nesne Gezgini-> bağımlı seçenekler için betik oluştur ve yanlış olarak ayarla** seçeneğine el ile gitmesi gerekir |
+| SSMS 'de betik oluşturma başarısız oluyor                               | "Bağımlı nesneler için betik oluştur" seçeneği "true" olarak ayarlandıysa SQL Analytics için betik oluşturma işlemi başarısız olur. Geçici bir çözüm olarak, kullanıcıların **Araçlar-> Seçenekler-> SQL Server Nesne Gezgini-> bağımlı seçenekler için betik oluştur ve yanlış olarak ayarla** seçeneğine el ile gitmesi gerekir |
 
 ## <a name="performance"></a>Performans
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Sorgu performansı sorunlarını giderme                            | Belirli bir sorgu sorunlarını gidermeye çalışıyorsanız, [sorgularınızı nasıl izleyebileceğiniz hakkında bilgi edinmeye](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution)başlayın. |
-| TempDB alanı sorunları | [Tempdb](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-tempdb) alan kullanımını izleyin.  TempDB alanını çalıştırmanın yaygın nedenleri şunlardır:<br>-Sorguya ayrılan yeterli kaynak yok, verilerin TempDB 'ye taşımasına neden olur.  Bkz. [Iş yükü yönetimi](resource-classes-for-workload-management.md) <br>-Çok fazla veri hareketine neden olan istatistikler eksik veya güncel değil.  İstatistik oluşturma hakkında ayrıntılı bilgi için bkz. [tablo Istatistiklerini koruma](sql-data-warehouse-tables-statistics.md)<br>-TempDB alanı hizmet düzeyi başına ayrılır.  [SQL veri Ambarınızı](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md#scaling-compute) daha yüksek bir DWU ayarına ölçeklendirirken daha fazla tempdb alanı ayırır.|
+| TempDB alanı sorunları | [Tempdb](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-tempdb) alan kullanımını izleyin.  TempDB alanını çalıştırmanın yaygın nedenleri şunlardır:<br>-Sorguya ayrılan yeterli kaynak yok, verilerin TempDB 'ye taşımasına neden olur.  Bkz. [Iş yükü yönetimi](resource-classes-for-workload-management.md) <br>-Çok fazla veri hareketine neden olan istatistikler eksik veya güncel değil.  İstatistik oluşturma hakkında ayrıntılı bilgi için bkz. [tablo Istatistiklerini koruma](sql-data-warehouse-tables-statistics.md)<br>-TempDB alanı hizmet düzeyi başına ayrılır.  [SQL havuzunuzu](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md#scaling-compute) daha yüksek bir DWU ayarına ölçeklendirirken daha fazla tempdb alanı ayırır.|
 | Kötü sorgu performansı ve planları genellikle eksik istatistiklerin bir sonucudur | Düşük performansın en yaygın nedeni, tablolarınızdaki istatistiklerin olmamasıdır.  İstatistiklerin nasıl oluşturulacağı ve performanstan ne kadar önemli olduğunu gösteren Ayrıntılar için bkz. [tablo Istatistiklerini koruma](sql-data-warehouse-tables-statistics.md) . |
 | Sıraya alınan düşük eşzamanlılık/sorgu sayısı                             | Bellek ayırmayı eşzamanlılık ile dengelemeye anlamak için [Iş yükü yönetimini](resource-classes-for-workload-management.md) anlamak önemlidir. |
-| En iyi yöntemleri uygulama                              | Sorgu performansını artırmak için en iyi başlangıç [SQL veri ambarı en iyi yöntemler](sql-data-warehouse-best-practices.md) makaleleridir. |
-| Ölçeklendirmeyle performansı artırma                      | Bazen, performansı iyileştirmeye yönelik çözüm, [SQL veri Ambarınızı ölçeklendirerek](sql-data-warehouse-manage-compute-overview.md)sorgularınıza daha fazla işlem gücü eklemektir. |
+| En iyi yöntemleri uygulama                              | Sorgu performansını artırmanın yollarını öğrenmenin en iyi yeri [SQL Analytics en iyi yöntemler](sql-data-warehouse-best-practices.md) makaleleridir. |
+| Ölçeklendirmeyle performansı artırma                      | Bazen, performansı iyileştirmeye yönelik çözüm, [SQL havuzunuzu ölçeklendirerek](sql-data-warehouse-manage-compute-overview.md)sorgularınıza daha fazla işlem gücü eklemektir. |
 | Yetersiz Dizin kalitesinin sonucu olarak sorgu performansı yetersiz     | Bazı süreler sorguları, [düşük columnstore dizin kalitesi](../sql-data-warehouse/sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)nedeniyle yavaşlayabilir.  Daha fazla bilgi ve [bölüm kalitesini artırmak için dizinleri yeniden oluşturma](../sql-data-warehouse/sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)hakkında daha fazla bilgi için bu makaleye bakın. |
 
 ## <a name="system-management"></a>Sistem Yönetimi

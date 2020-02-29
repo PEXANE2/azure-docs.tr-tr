@@ -5,16 +5,17 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 5aa3ebc602396bc2d7f83150c66535039b1389e6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171330"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192379"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault için güvenlik önerileri
 
@@ -25,7 +26,7 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 - Azure Güvenlik Merkezi önerileri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde güvenlik önerileri](../security-center/security-center-recommendations.md).
 - Azure Güvenlik Merkezi hakkında bilgi için bkz. [Azure Güvenlik Merkezi nedir?](../security-center/security-center-intro.md)
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
@@ -42,10 +43,10 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
- Key Vault tanılama günlükleri etkinleştirilmelidir | Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. | [Evet](../security-center/security-center-identity-access.md) |
+ Key Vault tanılama günlükleri etkinleştirilmelidir | Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. | [Evet](../security-center/security-center-identity-access.md) |
 | Azure Anahtar Kasası günlüklerinizi kimlerin erişebileceğini kısıtlayın | [Key Vault Günlükler](key-vault-logging.md) , kasalarınızda gerçekleştirilen ve kasa, anahtar ve gizli dizileri oluşturma veya silme gibi, araştırma sırasında kullanılabilir olan etkinlikler hakkındaki bilgileri kaydeder |  - |
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|

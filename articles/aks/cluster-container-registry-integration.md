@@ -4,13 +4,13 @@ description: Azure Kubernetes Service 'i (AKS) Azure Container Registry (ACR) il
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: b1f4449728589eca4f64035d7e70d01dbc187bc4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 02/25/2020
+ms.openlocfilehash: 5d8b45137ff82db6b23b5bf31eb3e8063de343bb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596207"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191342"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulama
 
@@ -25,9 +25,12 @@ Bu örneklerde şunlar gerekir:
 * **Azure aboneliğinde** **sahip** veya **Azure Hesap Yöneticisi** rolü
 * Azure CLı sürüm 2.0.73 veya üzeri
 
+Bir **sahip** veya **Azure Hesap Yöneticisi** rolüne gerek duymamak için bir hizmet sorumlusunu el ile yapılandırabilir veya mevcut bir hizmet sorumlusunu kullanarak aks 'ten ACR 'nin kimliğini doğrulayabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumluları Ile ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [çekme gizli anahtarı Ile Kubernetes kimlik doğrulaması](../container-registry/container-registry-auth-kubernetes.md).
+
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR tümleştirmesi ile yeni bir AKS kümesi oluşturma
 
-AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için bir Azure Active Directory **hizmet sorumlusu** kullanılır. Aşağıdaki CLı komutu aboneliğinizdeki mevcut bir ACR 'ye yetki vermenize ve hizmet sorumlusu için uygun **Acrpull** rolünü yapılandırmanıza olanak tanır. Aşağıdaki parametreleriniz için geçerli değerler sağlayın. 
+AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için bir Azure Active Directory **hizmet sorumlusu** kullanılır. Aşağıdaki CLı komutu aboneliğinizdeki mevcut bir ACR 'ye yetki vermenize ve hizmet sorumlusu için uygun **Acrpull** rolünü yapılandırmanıza olanak tanır. Aşağıdaki parametreleriniz için geçerli değerler sağlayın.
+
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
 MYACR=myContainerRegistry
@@ -37,12 +40,11 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 
 # Create an AKS cluster with ACR integration
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
-
 ```
-Alternatif olarak, ACR adını, aşağıdaki biçime sahip bir ACR kaynak KIMLIĞI kullanarak belirtebilirsiniz:
+Alternatif olarak, aşağıdaki biçime sahip bir ACR kaynak KIMLIĞI kullanarak ACR adını belirtebilirsiniz:
 
-/Subscriptions/\<abonelik kimliği\>/resourceGroups/\<kaynak-grup-adı\>/providers/Microsoft.ContainerRegistry/registries/\<Name\> 
- 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
+
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```

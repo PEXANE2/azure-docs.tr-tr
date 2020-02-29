@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: bir ambar oluşturma-Azure PowerShell'
-description: Azure PowerShell ile bir SQL veritabanı mantıksal sunucusu, sunucu düzeyi güvenlik duvarı kuralı ve veri ambarını hızlıca oluşturun.
+title: 'Hızlı başlangıç: veri ambarı oluşturma (PowerShell)'
+description: Azure PowerShell kullanarak sunucu düzeyinde bir güvenlik duvarı kuralıyla hızlı bir şekilde Azure SYNAPSE Analytics veri ambarı mantıksal sunucusu oluşturun.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,26 +10,28 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461516"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200014"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell bir Azure SQL veri ambarı oluşturma ve sorgulama
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile veri ambarı oluşturma & sorgulama
 
-Azure PowerShell kullanarak hızlı bir şekilde Azure SQL veri ambarı oluşturun.
+Azure PowerShell kullanarak bir SQL havuzu sağlayarak Azure SYNAPSE Analytics veri ambarı oluşturun.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Bir SQL Veri Ambarı'nın oluşturulması ek hizmet ücretlerinin alınmasına neden olabilir.  Ayrıntılı bilgi için bkz. [SQL Veri Ambarı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Bir ambarın oluşturulması, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
@@ -68,16 +70,17 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek `westeurope` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek `myResourceGroup` konumunda `westeurope` adlı bir kaynak grubu oluşturur.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>Mantıksal sunucu oluşturma
 
 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) komutunu kullanarak BIR [Azure SQL mantıksal sunucusu](../sql-database/sql-database-logical-servers.md) oluşturun. Mantıksal sunucu, grup olarak yönetilen bir veritabanı grubu içerir. Aşağıdaki örnek, kaynak grubunuzda `ServerAdmin` adlı Yönetici Kullanıcı ve `ChangeYourAdminPassword1`parolası ile rastgele olarak adlandırılmış bir sunucu oluşturur. Bu önceden tanımlı değerleri istediğiniz gibi değiştirin.
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL veritabanı ve SQL veri ambarı 1433 bağlantı noktası üzerinden iletişim kurar. Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde Azure SQL sunucunuza bağlanamazsınız.
+> SQL uç noktaları 1433 bağlantı noktası üzerinden iletişim kurar. Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde Azure SQL sunucunuza bağlanamazsınız.
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 Gerekli Parametreler şunlardır:
 
 * **Requestedserviceobjectivename**: istediğiniz [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) miktarı. Bu miktarı artırmak, işlem maliyetini artırır. Desteklenen değerlerin bir listesi için bkz. [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).
-* **DatabaseName**: oluşturmakta olduğunuz SQL veri ambarı 'nın adı.
+* **DatabaseName**: oluşturmakta olduğunuz veri ambarının adı.
 * **ServerName**: oluşturma için kullanmakta olduğunuz sunucunun adı.
 * **Resourcegroupname**: kullandığınız kaynak grubu. Aboneliğinizdeki kullanılabilir kaynak gruplarını bulmak için Get-AzureResource komutunu kullanın.
-* **Edition**: SQL Veri Ambarı oluşturmak için "DataWarehouse" olmalıdır.
+* **Sürüm**: bir veri ambarı oluşturmak Için "DataWarehouse" olmalıdır.
 
 İsteğe Bağlı Parametreler şunlardır:
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir veri ambarı oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz, veri ambarınıza bağlanmış ve birkaç sorgu çalıştırdınız. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
+Artık bir veri ambarı oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz, veri ambarınıza bağlanmış ve birkaç sorgu çalıştırdınız. Daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
 > [!div class="nextstepaction"]
->[Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Verileri bir veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)

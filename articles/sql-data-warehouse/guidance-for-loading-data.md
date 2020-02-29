@@ -1,26 +1,26 @@
 ---
 title: Veri yükleme en iyi yöntemleri
-description: Azure SQL Veri Ambarı’na veri yüklemeye yönelik öneriler ve performans iyileştirmeleri.
+description: SQL Analytics 'e veri yüklemeye yönelik öneriler ve performans iyileştirmeleri
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d59a66b25b55572865f297436331971434d831c3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686105"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199895"
 ---
-# <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı’na veri yüklemek için en iyi uygulamalar
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri depolamaya yönelik verileri yüklemeye yönelik en iyi uygulamalar
 
-Azure SQL Veri Ambarı’na veri yüklemeye yönelik öneriler ve performans iyileştirmeleri.
+Verileri yüklemek için öneriler ve performans iyileştirmeleri
 
 ## <a name="preparing-data-in-azure-storage"></a>Azure Depolama’da verileri hazırlama
 
@@ -36,9 +36,9 @@ Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosya
 
 ## <a name="running-loads-with-enough-compute"></a>Yükleri yeterli işlemle çalıştırma
 
-En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekliyorsanız, yükten önce veri ambarınızın ölçeğini genişletmeyi düşünün.
+En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklendirmeniz gerekir.
 
-Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her bir yükleme kullanıcısını belirli bir kaynak sınıfına atayın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
+Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir kaynak sınıfına veya iş yükü grubuna atayın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
 
 ### <a name="example-of-creating-a-loading-user"></a>Yükleme kullanıcısı oluşturmayla ilgili örnek
 
@@ -89,7 +89,7 @@ Columnstore dizinleri, verileri yüksek kaliteli satır grupları olarak sıkı�
 - Yeni satır gruplarını tamamen doldurmak için yeterli satır yükleyin. Bir toplu yükleme sırasında her 1.048.576 satır, tam bir satır grubu olarak doğrudan columnstore’da sıkıştırılır. 102.400’den daha az satır içeren yükler, satırları bir b ağacı dizininde tutulduğu deltastore’a gönderir. Çok az sayıda satır yüklerseniz, hepsi deltastore’a gönderilerek hemen columnstore biçiminde sıkıştırılmayabilir.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SQLBulkCopy API veya BCP kullanırken toplu iş boyutunu artır
-Daha önce bahsedildiği gibi, PolyBase ile yükleme SQL veri ambarı ile en yüksek aktarım hızını sağlayacaktır. Yüklemek için PolyBase 'i kullanamaz ve SQLBulkCopy API 'sini (veya BCP) kullanmanız gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı düşünmelisiniz. 
+Daha önce bahsedildiği gibi, PolyBase ile yükleme SQL veri ambarı ile en yüksek aktarım hızını sağlayacaktır. Yüklemek için PolyBase 'i kullanamaz ve SQLBulkCopy API 'sini (veya BCP) kullanmanız gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı düşünmelisiniz. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur.
 
 ## <a name="handling-loading-failures"></a>Yükleme hatalarını işleme
 
@@ -107,7 +107,7 @@ Gün boyunca binlerce ekleme yapmanız gerekiyorsa, eklemeleri toplu olarak yük
 
 Sorgu performansını geliştirmek için ilk yüklemeden veya verilerdeki önemli değişikliklerden sonra istatistiklerin tüm sütunlarda oluşturulması önemlidir.  Bu, el ile yapılabilir veya [otomatik oluşturma istatistiklerini](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)etkinleştirebilirsiniz.
 
-İstatistiklerin ayrıntılı bir açıklaması için bkz. [İstatistikler](sql-data-warehouse-tables-statistics.md). Aşağıdaki örnekte, Customer_Speed tablosunun beş sütununda nasıl el ile istatistik oluşturulacağı gösterilmektedir.
+İstatistiklerin ayrıntılı bir açıklaması için bkz. [İstatistikler](sql-data-warehouse-tables-statistics.md). Aşağıdaki örnek, Customer_Speed tablonun beş sütununda nasıl el ile istatistik oluşturulacağını gösterir.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

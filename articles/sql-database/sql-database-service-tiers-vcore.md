@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e53fb46b7c13e1feb0cc24663fb0782b4de06f2b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650308"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198040"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
@@ -98,10 +98,11 @@ Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir deste
 |Donanım oluşturma  |İşlem  |Bellek  |
 |:---------|:---------|:---------|
 |4\. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
-|5\. nesil     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
+|5\. nesil     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
 |Fsv2 serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
 |M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
 
+[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde \*, Intel SP-8160 (ufuk Gölü) Işlemcileri kullanılarak 5. nesil veritabanları için donanım oluşturma, Gen6 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (geniş ve ufuk Gölü) bağımsız olarak aynıdır.
 
 Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sanal çekirdek) Için kaynak limitleri](sql-database-vcore-resource-limits-single-databases.md)veya [elastik havuzlar (Vcore) için kaynak sınırları](sql-database-vcore-resource-limits-elastic-pools.md).
 

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: b7d876c7f865b8368451ea1b6cc96ade89a59aa8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365216"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190968"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 'larda hatalarda sorun giderme
 
@@ -471,7 +471,7 @@ Runbook 'larınız 3 saat boyunca çalıştıktan sonra **durdurulmuş** durumda
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-Bu davranış, Azure Otomasyonu 'ndaki işlemlerin "dengeli paylaştığı" izlenmesinden dolayı Azure sanal işlemlerinde tasarlanmalıdır. Üç saatten uzun bir süre yürütülüyorsa, dengeli bir şekilde bir runbook otomatik olarak durduruluyor. Ön paylaşma zaman sınırının ötesinde bir runbook 'un durumu runbook türüyle farklıdır. PowerShell ve Python runbook 'lar **durdurulmuş** bir duruma ayarlanır. PowerShell Iş akışı runbook 'ları **başarısız**olarak ayarlanır.
+Bu davranış, Azure Otomasyonu 'ndaki işlemlerin dengeli bir şekilde izlenmesi nedeniyle Azure korumalı alan tasarımı ile [tasarlanmalıdır](../automation-runbook-execution.md#fair-share) . Üç saatten uzun bir süre yürütülüyorsa, dengeli bir şekilde bir runbook otomatik olarak durduruluyor. Dengeli bir şekilde geçen bir runbook 'un durumu, runbook türüne göre farklılık gösterir. PowerShell ve Python runbook 'lar **durdurulmuş** bir duruma ayarlanır. PowerShell Iş akışı runbook 'ları **başarısız**olarak ayarlanır.
 
 ### <a name="cause"></a>Nedeni
 
@@ -481,7 +481,7 @@ Runbook, bir Azure korumalı alanında dengeli bir paylaşımın izin verdiği 3
 
 Önerilen bir çözüm, runbook 'u [karma Runbook Worker](../automation-hrw-run-runbooks.md)üzerinde çalıştıralım.
 
-Hibrit çalışanlar, Azure korumalı alan tarafından sahip olduğu [Ortapaylaşma](../automation-runbook-execution.md#fair-share) 3 saatlik runbook sınırı ile sınırlı değildir. Karma runbook çalışanları üzerinde çalışan runbook 'lar, beklenmeyen yerel altyapı sorunları varsa yeniden başlatma davranışlarını destekleyecek şekilde geliştirilmiştir.
+Hibrit çalışanlar, Azure korumalı alan olan 3 saatlik dengeli bir paylaşılan runbook sınırı ile sınırlı değildir. Karma runbook çalışanları üzerinde çalışan runbook 'lar, beklenmeyen yerel altyapı sorunları varsa yeniden başlatma davranışlarını destekleyecek şekilde geliştirilmiştir.
 
 Diğer bir seçenek de runbook 'u [alt runbook 'lar](../automation-child-runbooks.md)oluşturarak iyileştirmenize olanak sağlar. Runbook 'iniz birkaç veritabanında bir veritabanı işlemi gibi birkaç kaynak üzerinde aynı işlevle döngüye geçtiğinde, bu işlevi bir alt runbook 'a taşıyabilirsiniz. Bu alt runbook 'ların her biri ayrı işlemlerde paralel olarak yürütülür. Bu davranış, üst runbook 'un tamamlanacağı toplam süreyi düşürür.
 
