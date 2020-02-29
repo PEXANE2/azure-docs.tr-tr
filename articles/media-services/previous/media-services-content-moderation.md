@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895995"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914341"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Olası yetişkin ve kcy içeriğini algılamak için Azure Medya Content Moderator kullanma 
+
+> [!NOTE]
+> **Azure media Content moderator** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
 
 ## <a name="overview"></a>Genel Bakış
 **Azure media Content moderator** medya IŞLEMCISI (MP), videolarınız için makine destekli denetleme kullanmanıza olanak sağlar. Örneğin videolardaki yetişkinlere yönelik veya müstehcen içerikleri tespit edip belirlenen içeriklerin moderasyon ekibiniz tarafından gözden geçirilmesini isteyebilirsiniz.
@@ -50,8 +53,8 @@ JSON çıktısı aşağıdaki öğeleri içerir:
 | timescale |Videonun saniye başına "ticks" değeri. |
 | offset |Zaman damgası için saat farkıdır. Video API 'Lerinin 1,0 sürümünde bu değer her zaman 0 olur. Bu değer gelecekte değişebilir. |
 | framerate |Videodaki saniye başına kare hızı. |
-| genişlik |Çıkış video çerçevesinin piksel cinsinden genişliği.|
-| yükseklik |Çıkış video çerçevesinin piksel cinsinden yüksekliği.|
+| Genişlik |Çıkış video çerçevesinin piksel cinsinden genişliği.|
+| Yükseklik |Çıkış video çerçevesinin piksel cinsinden yüksekliği.|
 | Toplam süre |Giriş videosunun süresi "ticks" cinsinden. |
 | [Eşleştir](#fragments-json-elements) |Meta veriler parçalar adlı farklı kesimlere bölünmüştür. Her parça, başlatma, süre, Aralık numarası ve olay (ler) içeren otomatik olarak algılanan bir çekidir. |
 
@@ -217,10 +220,10 @@ The following example of a Content Moderator JSON output was truncated.
     }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

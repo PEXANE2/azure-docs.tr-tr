@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152219"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921173"
 ---
 # <a name="module-k-means-clustering"></a>Modül: K-kümeleme anlamına gelir
 
@@ -107,11 +107,11 @@ Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş
   
     -   **Tek parametreye** **oluşturma eğitmen modu** ' nu ayarlarsanız, etiketli bir veri kümesi ekleyin ve modeli [eğitme model](train-clustering-model.md) modülünü kullanarak modeli eğitme.  
   
-### <a name="results"></a>Sonuçlar
+## <a name="results"></a>Sonuçlar
 
 Modeli yapılandırmayı ve eğitimi tamamladıktan sonra, puanlar oluşturmak için kullanabileceğiniz bir modeliniz vardır. Ancak, modeli eğitmek için birden çok yol ve sonuçları görüntülemenin ve kullanmanın birden çok yolu vardır: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Çalışma alanınızda modelin anlık görüntüsünü yakalama
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Çalışma alanınızda modelin anlık görüntüsünü yakalama
 
 [Tren kümeleme modeli](train-clustering-model.md) modülünü kullandıysanız:
 
@@ -121,7 +121,7 @@ Modeli yapılandırmayı ve eğitimi tamamladıktan sonra, puanlar oluşturmak i
 
 Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. İşlem hattında kullanılan eğitim verilerini daha sonra güncelleştirirseniz, kaydedilen modeli güncelleştirmez. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Kümeleme sonucu veri kümesine bakın 
+### <a name="see-the-clustering-result-dataset"></a>Kümeleme sonucu veri kümesine bakın 
 
 [Tren kümeleme modeli](train-clustering-model.md) modülünü kullandıysanız:
 
@@ -142,3 +142,7 @@ Bu sorundan birkaç yolla kaçınabilirsiniz:
 -   Ölçüyü değiştirerek veya daha fazlasını yineleirken birden çok model oluşturun.  
   
 Genellikle, kümeleme modelleriyle, belirli bir yapılandırmanın yerel olarak iyileştirilmiş kümeler kümesine neden olacağı olasıdır. Diğer bir deyişle, model tarafından döndürülen kümeler kümesi yalnızca geçerli veri noktalarına uygun değildir ve diğer verilere genelleştirilebilir. Farklı bir başlangıç yapılandırması kullanırsanız, K-Ortalamalar yöntemi farklı, üstün bir yapılandırma bulabilir. 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

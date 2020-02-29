@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 3f028431fcd4b338d2e610ce1828a02b753c4d32
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b86b1a2d8a49554cc3df99e0a32a2c0ccaacb560
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483695"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920017"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanma
 
@@ -60,6 +60,9 @@ VM 'de betikleri çalıştırmak için komutu Çalıştır özelliğinin nasıl 
 Komut dosyanızı bir depolama hesabına yükleyin ve kendi kapsayıcısını oluşturun. Ardından, VM bağlantısı olan bir bilgisayarda Azure PowerShell aşağıdaki betiği çalıştırın.
 
 ### <a name="for-classic-deployment-model-vms"></a>Klasik dağıtım modeli VM 'Leri için
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 
 ```powershell
 #Set up the basic variables.
@@ -200,7 +203,7 @@ Ayrıca, VM 'de bir betiği uzaktan çalıştırmak için Invoke-Command cmdlet 
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ```
 
-## <a name="remote-registry"></a>Uzak kayıt defteri
+## <a name="remote-registry"></a>Uzak Kayıt Defteri
 
 >[!NOTE]
 >Bu seçeneği kullanabilmek için TCP bağlantı noktası 135 veya 445 açık olmalıdır.

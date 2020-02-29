@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059247"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920867"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Azure sanal makine aracısını çevrimdışı modda yükler 
 
@@ -35,13 +35,13 @@ Aşağıdaki senaryolarda VM aracısını çevrimdışı modda yüklersiniz:
 
 VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kullanın.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1\. adım: VM 'nin işletim sistemi diskini başka bir sanal makineye veri diski olarak ekleyin
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1\. Adım: VM 'nin işletim sistemi diskini başka bir sanal makineye veri diski olarak Iliştirme
 
 1. Etkilenen VM 'nin işletim sistemi diski için bir anlık görüntü alın, anlık görüntüden bir disk oluşturun ve ardından diski bir sorun giderme VM 'sine bağlayın. Daha fazla bilgi için, [Azure Portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek WINDOWS VM sorunlarını giderme](troubleshoot-recovery-disks-portal-windows.md)bölümüne bakın. Klasik VM için, VM 'yi silin ve işletim sistemi diskini koruyun ve ardından işletim sistemi diskini sorun giderme VM 'sine bağlayın.
 
-2.  Sorun giderici sanal makinesine bağlanın. **Bilgisayar Yönetimi** > **disk yönetimi**'ni açın. İşletim sistemi diskinin çevrimiçi olduğunu ve sürücü harflerinin disk bölümlerine atandığını onaylayın.
+2.  Sorun giderici sanal makinesine bağlanın. **Bilgisayar yönetimi** > **disk yönetimi**'ni açın. İşletim sistemi diskinin çevrimiçi olduğunu ve sürücü harflerinin disk bölümlerine atandığını onaylayın.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. adım: Azure VM Aracısı 'nı yüklemek için işletim sistemi diskini değiştirme
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. Adım: Azure VM aracısını yüklemek için işletim sistemi diskini değiştirme
 
 1.  Sorun giderici VM 'sine bir Uzak Masaüstü bağlantısı oluşturun.
 
@@ -49,11 +49,11 @@ VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kul
 
 3.  **Kayıt defteri Düzenleyicisi 'ni** (Regedit. exe) başlatın.
 
-4.  **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya** > **yükleme Hive**: ' ı seçin.
+4.  **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüsünde **dosya** > **Hive yükle**' yi seçin:
 
     ![Hive yükleme](./media/install-vm-agent-offline/load-hive.png)
 
-5.  Eklediğiniz işletim sistemi diskinde \windows\system32\config\SYSTEM klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı, **HKEY_LOCAL_MACHINE** anahtarının altında görüntülenir.
+5.  Eklediğiniz işletim sistemi diskinde \windows\system32\config\SYSTEM klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
 
 6.  Eklediğiniz işletim sistemi diskinde \windows\system32\config\SOFTWARE klasörüne gidin. Hive yazılımının adı için **Brokensoftware**' i girin.
 
@@ -63,7 +63,7 @@ VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kul
 
     2. Aşağıdaki kayıt defterlerini dışarı aktarın:
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
+        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  VM Aracısı yüklemesi için bir depo olarak sorun giderici VM 'sinde var olan dosyaları kullanın. Aşağıdaki adımları tamamlayın:
@@ -90,13 +90,13 @@ VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kul
 
         1.  Eklediğiniz işletim sistemi diskinde, kök yolunda WindowsAzure adlı bir klasör oluşturun.
 
-        2.  Sorun giderici VM 'sinde C:\WindowsAzure ' a gidin, C:\WindowsAzure\GuestAgent_X.X.XXXX.XXX. adında bir klasör arayın. C:\WindowsAzure öğesinden en son sürüm numarasına sahip GuestAgent klasörünü, ekli işletim sistemi diskinde WindowsAzure klasörüne kopyalayın. Hangi klasörün kopyalanacağından emin değilseniz, tüm GuestAgent klasörlerini kopyalayın. Aşağıdaki görüntüde, ekli işletim sistemi diskine kopyalanmış olan GuestAgent klasörünün bir örneği gösterilmektedir.
+        2.  Sorun giderici VM 'sinde C:\WindowsAzure ' a gidin, C:\WindowsAzure\ GuestAgent_X. X. XXXX. XXX adlı bir klasör arayın. C:\WindowsAzure öğesinden en son sürüm numarasına sahip GuestAgent klasörünü, ekli işletim sistemi diskinde WindowsAzure klasörüne kopyalayın. Hangi klasörün kopyalanacağından emin değilseniz, tüm GuestAgent klasörlerini kopyalayın. Aşağıdaki görüntüde, ekli işletim sistemi diskine kopyalanmış olan GuestAgent klasörünün bir örneği gösterilmektedir.
 
              ![GuestAgent klasörünü Kopyala](./media/install-vm-agent-offline/copy-files.png)
 
-9.  **Brokensistem**' i seçin. Menüden **Dosya** > **Kaldır Hive**' yi seçin.
+9.  **Brokensistem**' i seçin. Menüden **dosya** > **Hive 'yi kaldır**' ı seçin.
 
-10.  **Brokensoftware**' i seçin. Menüden **Dosya** > **Kaldır Hive**' yi seçin.
+10.  **Brokensoftware**' i seçin. Menüden **dosya** > **Hive 'yi kaldır**' ı seçin.
 
 11.  İşletim sistemi diskini ayırın ve ardından [ETKILENEN VM 'nin işletim sistemi diskini değiştirin](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). Klasik VM için, onarılan işletim sistemi diskini kullanarak yeni bir VM oluşturun.
 
@@ -105,6 +105,8 @@ VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kul
 VM 'yi Kaynak Yöneticisi dağıtım modelini kullanarak oluşturduysanız işiniz bitti demektir.
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>Klasik VM 'Ler için ProvisionGuestAgent özelliğini kullanın
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Sanal makineyi klasik model kullanarak oluşturduysanız, **ProvisionGuestAgent** özelliğini güncelleştirmek için Azure PowerShell modülünü kullanın. Özelliği, VM 'nin VM aracısının yüklü olduğunu Azure 'a bildirir.
 

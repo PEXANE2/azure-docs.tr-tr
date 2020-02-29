@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/22/2020
+ms.openlocfilehash: 7fd51f587ff51e09254741615d3059d038e1205a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963385"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915920"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısıyla gelir tahmin etmek için özellik seçimini kullanmak & bir sınıflandırıcı oluşturma
 
@@ -25,7 +25,7 @@ ms.locfileid: "76963385"
 
 Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin. Bu örnek, Yetişkin görselleştirmenizdeki geliri (> = 50K veya < = 50K) tahmin etmek için iki sınıf bir öngörme **kararı ağacı** sağlar.
 
-Soru yanıt veriyor mu? " Bu, sınıflandırma sorunu olarak adlandırılır. Bununla birlikte, herhangi bir makine öğrenimi sorunu (gerileme, sınıflandırma, kümeleme vb.) eklemek için aynı temel süreci uygulayabilirsiniz.
+Soru, "hangisi?" olarak yanıtlandığından, bu bir sınıflandırma sorunu olarak adlandırılır. Bununla birlikte, herhangi bir makine öğrenimi sorunu (gerileme, sınıflandırma, kümeleme vb.) eklemek için aynı temel süreci uygulayabilirsiniz.
 
 Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
@@ -51,7 +51,7 @@ Veri kümesi 14 özellik ve bir etiket sütunu içerir. Sayısal ve kategorik da
 
 1. Yetişkin Census geliri Ikili veri kümesi modülünü ardışık düzen tuvaline sürükleyin.
 1. Eğitim ve test kümelerini oluşturmak için bir **bölünmüş veri** modülü ekleyin. İlk çıkış veri kümesindeki satır kesirini 0,7 olarak ayarlayın. Bu ayar, verilerin %70 ' un, modülün sol bağlantı noktasına ve geri kalanı doğru bağlantı noktasına çıkış olacağını belirtir. Eğitim için sol veri kümesini ve test için doğru olanı kullanırız.
-1. PearsonCorreclation tarafından 5 özellik seçmek için **filtre tabanlı özellik seçimi** modülünü ekleyin. 
+1. Insonbağıntı tarafından 5 özellik seçmek için **filtre tabanlı özellik seçimi** modülünü ekleyin. 
 1. Önceden maliyetli bir karar ağacı sınıflandırıcısını başlatmak için **Iki sınıf bir önceden maliyetli karar ağacı** modülü ekleyin.
 1. **Eğitim modeli** modülü ekleme. Önceki adımdan gelen sınıflandırıcının, **tren modelinin**sol giriş bağlantı noktasına bağlanmasını sağlar. Filtrelenmiş veri kümesini filtre tabanlı özellik seçim modülünden eğitim veri kümesi olarak bağlayın.  **Eğitme modeli** sınıflandırıcısını eğitecektir.
 1. Veri kümesini test etmek için aynı dönüştürmeyi (filtrelenmiş tabanlı özellik seçimi) uygulamak için sütun Seç dönüşümünü ve dönüştürme modülünü Uygula öğesini ekleyin.

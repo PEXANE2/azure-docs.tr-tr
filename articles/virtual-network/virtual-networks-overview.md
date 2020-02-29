@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894604"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164908"
 ---
-# <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağ nedir?
+# <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 
 Azure sanal ağı (VNet), Azure 'daki özel ağınız için temel yapı taşdır. VNet, Azure sanal makineler (VM) gibi birçok Azure Kaynak türünün birbirleriyle güvenli bir şekilde iletişim kurmasına olanak sağlar, internet ve şirket içi ağlar. VNet, kendi veri merkezinizde işlemenizi sağlayan geleneksel bir ağa benzer, ancak Azure 'un ölçek, kullanılabilirlik ve yalıtım gibi ek avantajlarından yararlanıyor.
 
@@ -38,7 +38,7 @@ Ağınızı Azure 'da oluştururken, aşağıdaki evrensel tasarım ilkelerini g
 - Çakışmayan adres alanlarının bulunduğundan emin olun. VNet adres alanının (CıDR bloğu) kuruluşunuzun diğer ağ aralıklarıyla çakışmadığından emin olun.
 - Alt ağlarınız VNet 'in tüm adres alanını kapsamamalıdır. Daha önce planlayın ve daha sonra adres alanı ayırın.
 - Birden çok küçük VNET 'ten daha az büyük VNET kullanmanız önerilir. Bu, yönetim yükünü engeller.
-- Ağ güvenlik grupları (NSG 'ler) kullanarak VNet 'iniz için güvenli hale getirin.
+- Ağ güvenlik gruplarını (NSG 'ler) bunların altındaki alt ağlara atayarak VNet 'iniz için güvenli hale getirin.
 
 ## <a name="communicate-with-the-internet"></a>İnternet ile iletişim kurma
 

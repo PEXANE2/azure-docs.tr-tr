@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152355"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917484"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
 
@@ -36,13 +36,13 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
 2.  **DataFormat**için aşağıdaki seçeneklerden birini seçin. Bu seçenekler, sağladığınız verilerin nasıl ayrıştırılaceğini belirlemektir. Her biçimin gereksinimleri önemli ölçüde farklılık gösterir, bu nedenle ilgili konuları okuduğunuzdan emin olun.  
   
-    -   **Arff**. WEKA tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
+    -   **Arff**: WEKA tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
   
-    -   **CSV**. Virgülle ayrılmış değerler biçimi. Daha fazla bilgi için bkz. [CSV 'ye dönüştürme](./convert-to-csv.md).  
+    -   **CSV**: virgülle ayrılmış değerler biçimi. Daha fazla bilgi için bkz. [CSV 'ye dönüştürme](./convert-to-csv.md).  
   
-    -   **Svmlight**. Vowpal Wabbit ve diğer makine öğrenimi çerçeveleri tarafından kullanılan bir biçim.  
+    -   **Svmlight**: Vowpal Wabbit ve diğer makine öğrenimi çerçeveleri tarafından kullanılan bir biçimdir.  
   
-    -   **TSV**. Sekmeyle ayrılmış değerler biçimi.
+    -   **TSV**: sekmeyle ayrılmış değerler biçimi.
 
      Bir biçim seçer ve biçim belirtimlerini karşılayan veriler sağlamazsanız, bir çalışma zamanı hatası oluşur.
   

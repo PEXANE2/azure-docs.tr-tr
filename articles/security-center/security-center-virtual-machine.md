@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603369"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921513"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Güvenlik Merkezi ve Azure Sanal Makineler
 [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Aboneliklerinizde, tümleşik güvenlik izleme ve ilke yönetimi sağlar; normal koşullarda gözden kaçabilecek tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş ekosistemiyle çalışır.
@@ -33,7 +33,7 @@ Güvenlik Merkezi, sanal makinenizin güvenlik ayarlarını görüntüleme olana
 * Uç nokta koruması önerileri
 * Disk şifreleme doğrulaması
 * Güvenlik açığı değerlendirme ve düzeltme
-* Tehdit algılama
+* Tehdit koruması özelliklerinden güvenlik uyarıları
 
 Güvenlik Merkezi, Azure VM’lerinizi korumaya yardımcı olmasına ek olarak Cloud Services, Uygulama Hizmetleri, Sanal Ağlar ve daha fazlasına yönelik güvenlik izleme ve yönetimi sağlar. 
 

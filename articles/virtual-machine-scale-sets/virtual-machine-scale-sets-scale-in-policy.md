@@ -1,32 +1,32 @@
 ---
 title: Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma
 description: Örnek sayısını yönetmek için otomatik ölçeklendirme yapılandırması kullanan Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkelerini nasıl kullanacağınızı öğrenin
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271759"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919847"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Önizleme: Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma
 
 Bir sanal makine ölçek kümesi dağıtımı, platform ve Kullanıcı tanımlı özel ölçümler de dahil olmak üzere bir ölçüm dizisine göre ölçeklendirilebilir veya ölçeklendirilebilir. Ölçeği genişletme, ölçek kümesi modeline göre yeni sanal makineler oluşturduğunda, ölçek kümesi iş yükü geliştikçe farklı yapılandırmalara ve/veya işlevlere sahip olabilecek çalışan sanal makineleri etkiler. 
 
-Ölçek genişletme İlkesi özelliği kullanıcılara sanal makinelerin ölçeklendiği sırayı yapılandırmak için bir yol sağlar. Önizleme üç ölçek genişletme yapılandırması sunar: 
+Ölçek genişletme İlkesi özelliği, kullanıcılara, üç ölçekli yapılandırma yoluyla sanal makinelerin ölçeklendiği sırayı yapılandırmak için bir yol sağlar: 
 
 1. Varsayılan
 2. NewestVM
 3. OldestVM
-
-***Bu önizleme özelliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.***
 
 ### <a name="default-scale-in-policy"></a>Varsayılan ölçeklendirme ilkesi
 
@@ -38,7 +38,7 @@ Varsayılan olarak, sanal makine ölçek kümesi bu ilkeyi hangi örneklerin öl
 
 Kullanıcıların yalnızca varsayılan sıralamayı takip etmek istiyorsanız, ölçek bir ilke belirtmeleri gerekmez.
 
-Kullanılabilirlik alanları veya hata etki alanları genelinde dengelemenin örnekleri kullanılabilirlik alanları veya hata etki alanları arasında taşımadığını unutmayın. Dengelemeye, sanal makinelerin dağıtılması dengeli hale gelinceye kadar sanal makinelerin, dengesiz kullanılabilirlik bölgelerinden veya hata etki alanlarından silinmesi aracılığıyla yapılır.
+Kullanılabilirlik alanları veya hata etki alanları genelinde dengelemenin örnekleri kullanılabilirlik alanları veya hata etki alanları arasında taşımadığını unutmayın. Dengeleme, sanal makinelerin dağıtılması dengeli hale gelene kadar, dengesiz kullanılabilirlik bölgelerinden veya hata etki alanlarından sanal makinelerin silinmesinden elde edilir.
 
 ### <a name="newestvm-scale-in-policy"></a>NewestVM ölçek genişletme İlkesi
 
@@ -53,6 +53,17 @@ Bu ilke, kullanılabilirlik alanları genelinde VM 'leri dengeledikten sonra öl
 Ölçek genişletme İlkesi, sanal makine ölçek kümesi modelinde tanımlanmıştır. Yukarıdaki bölümlerde belirtildiği gibi, ' NewestVM ' ve ' OldestVM ' ilkeleri kullanılırken bir ölçek genişletme ilke tanımı gerekir. Ölçek kümesi modelinde ölçek genişletme ilke tanımı yoksa, sanal makine ölçek kümesi otomatik olarak ' varsayılan ' ölçekleme ilkesini kullanır. 
 
 Bir ölçek genişletme İlkesi, sanal makine ölçek kümesi modelinde aşağıdaki yollarla tanımlanabilir:
+
+### <a name="azure-portal"></a>Azure portalı
+ 
+Aşağıdaki adımlar, yeni bir ölçek kümesi oluştururken ölçek genişletme ilkesini tanımlar. 
+ 
+1. **Sanal makine ölçek kümelerine**gidin.
+1. Yeni bir ölçek kümesi oluşturmak için **+ Ekle** ' yi seçin.
+1. **Ölçeklendirme** sekmesine gidin. 
+1. **Ölçek genişletme İlkesi** bölümünü bulun.
+1. Açılan listeden bir ölçek genişletme İlkesi seçin.
+1. Yeni ölçek kümesini oluşturmayı tamamladığınızda, **gözden geçir + oluştur** düğmesini seçin.
 
 ### <a name="using-api"></a>API'yi kullanma
 
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Bir kaynak grubu oluşturun ve ardından, *Oldestvm*olarak ayarlanan ölçek genişletme ilkesiyle yeni bir ölçek kümesi oluşturun.
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Aşağıdaki örnek, yeni bir ölçek kümesi oluştururken bir ölçek genişletme İlkesi ekler. İlk olarak bir kaynak grubu oluşturun ve ardından *Oldestvm*olarak ölçek genişletme ilkesiyle yeni bir ölçek kümesi oluşturun. 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Şablon kullanma
@@ -94,6 +132,15 @@ Yukarıdaki ölçek-ın ilkesinde ' NewestVM ' kullanılırken aynı işlem geç
 
 Ölçek Genişletme ilkesini değiştirmek, ölçek genişletme ilkesini uygulamayla aynı işlemi izler. Örneğin, yukarıdaki örnekte, ilkeyi ' OldestVM ' iken ' NewestVM ' olarak değiştirmek istiyorsanız şunu yaparak şunları yapabilirsiniz:
 
+### <a name="azure-portal"></a>Azure portalı
+
+Mevcut bir ölçek kümesinin ölçek değiştirme ilkesini Azure portal aracılığıyla değiştirebilirsiniz. 
+ 
+1. Var olan bir sanal makine ölçek kümesinde, sol taraftaki menüden **ölçekleme** ' ı seçin.
+1. **Ölçek genişletme İlkesi** sekmesini seçin.
+1. Açılan listeden bir ölçek genişletme İlkesi seçin.
+1. İşiniz bittiğinde **Kaydet**' i seçin. 
+
 ### <a name="using-api"></a>API'yi kullanma
 
 API 2019-03-01 kullanarak sanal makine ölçek kümesinde bir PUT yürütün:
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Varolan ölçek kümesinin ölçek genişletme ilkesini güncelleştirin:
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Aşağıda, var olan bir ölçek kümesinin ölçek genişletme ilkesini güncelleştirmeye yönelik bir örnek verilmiştir: 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Şablon kullanma
@@ -143,7 +211,7 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 
 | Olay                 | /Ay içinde örnek kimlikleri  | Bölge 2 içinde örnek kimlikleri  | Bölge 3 içinde örnek kimlikleri  | Ölçek seçimi                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Başlangıç               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Başlatma               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Ölçek-ın              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Bölge 3 en eski VM 'ye sahip olsa bile Bölge 1 ve 2 arasında seçim yapın. Bu bölgedeki en eski VM olduğundan, VM2 Bölge 2 silin.   |
 | Ölçek-ın              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | En eski VM Bölge 3 olmasına rağmen Bölge 1 seçin. Bu bölgedeki en eski VM olduğundan, VM3 Bölge 1 silin.                  |
 | Ölçek-ın              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Bölgeler dengelenir. Ölçek kümesindeki en eski VM olduğundan Bölge 3 VM1 silin.                                               |
@@ -157,7 +225,7 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 
 | Olay                 | /Ay içinde örnek kimlikleri  | Bölge 2 içinde örnek kimlikleri  | Bölge 3 içinde örnek kimlikleri  | Ölçek seçimi                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Başlangıç               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Başlatma               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Ölçek-ın              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Bölge 1 ve 2 arasında seçim yapın. İki bölge genelinde en yeni VM olduğundan Bölge 2 VM11 silin.                                |
 | Ölçek-ın              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Diğer iki bölgede daha fazla VM 'ye sahip olduğundan Bölge 1 seçin. Bu bölgedeki en yeni VM olduğundan Bölge 1 VM10 silin.          |
 | Ölçek-ın              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Bölgeler dengelenir. Ölçek kümesindeki en yeni VM olduğundan Bölge 2 VM9 silin.                                                |
@@ -169,7 +237,7 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-1. ' ' Properties ' türündeki nesne üzerinde "' Scaleınpolicy ' adlı üye bulunamadı" hata iletisiyle bir ' BadRequest ' hatası alırsanız, Scaleınpolicy etkinleştirilemiyor, sonra sanal makine ölçek kümesi için kullanılan API sürümünü denetleyin. Bu önizleme için API sürüm 2019-03-01 veya üzeri gereklidir.
+1. ' ' Properties ' türündeki nesne üzerinde "' Scaleınpolicy ' adlı üye bulunamadı" hata iletisiyle bir ' BadRequest ' hatası alırsanız, Scaleınpolicy etkinleştirilemiyor, sonra sanal makine ölçek kümesi için kullanılan API sürümünü denetleyin. Bu özellik için API sürüm 2019-03-01 veya üzeri gereklidir.
 
 2. Ölçek için yanlış VM seçimi, yukarıdaki örneklere başvurur. Sanal makine ölçek kümesi bir çok dağıtım ise, ölçek genişletme İlkesi önce, önce imdengelenmiş bölgelere, sonra da bölge dengeli olduktan sonra ölçek kümesi içinde uygulanır. Ölçek sırası yukarıdaki örneklerle tutarlı değilse, sorun giderme için sanal makine ölçek kümesi ekibine bir sorgu yükseltin.
 

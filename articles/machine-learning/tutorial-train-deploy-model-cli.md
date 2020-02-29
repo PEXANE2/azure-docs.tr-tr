@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087036"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920952"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ Projedeki `examples/cli-train-deploy` Dizin, bir modeli eğitmek için kullanıl
 Depo, eğitilen modeli bir Web hizmeti olarak dağıtmak için kullanılan aşağıdaki dosyaları içerir:
 
 * `aciDeploymentConfig.yml`: bir __dağıtım yapılandırma__ dosyası. Bu dosya, model için gereken barındırma ortamını tanımlar.
-* `inferenceConfig.yml`: bir çıkarım configuration__ dosyası. Bu dosya, hizmet tarafından modelle verileri Puanlama için kullanılan yazılım ortamını tanımlar.
+* `inferenceConfig.yml`: bir __çıkarım yapılandırma__ dosyası. Bu dosya, hizmet tarafından modelle verileri Puanlama için kullanılan yazılım ortamını tanımlar.
 * `score.py`: gelen verileri kabul eden bir Python betiği, modeli kullanarak bir yanıt verir ve ardından bir yanıt döndürür.
 * `scoring-env.yml`: modeli ve `score.py` betiğini çalıştırmak için gereken Conda bağımlılıkları.
 * `testdata.json`: dağıtılan Web hizmetini test etmek için kullanılabilecek bir veri dosyası.

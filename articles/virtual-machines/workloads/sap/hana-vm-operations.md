@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1547f0e600031f558dcc0157df2a35fdf3f9db2c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224696"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920532"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -67,7 +67,7 @@ Kullanarak VM 'Leri Azure 'da dağıtın:
 Ayrıca, Azure VM Hizmetleri üzerinde, tamamlanmış bir SAP HANA platformunu [SAP bulut platformu](https://cal.sap.com/)aracılığıyla dağıtabilirsiniz. Yükleme işlemi, [Azure 'DA SAP S/4HANA veya siyah beyaz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) [](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 
 >[!IMPORTANT]
-> M208xx_v2 VM 'Leri kullanabilmeniz için, Azure VM görüntüsü galerisinden Linux görüntünüzü seçerken dikkatli olmanız gerekir. Ayrıntıları okumak için [bellek için iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)makalesini okuyun. 
+> M208xx_v2 VM 'Leri kullanabilmeniz için, Azure VM görüntüsü galerisinden Linux görüntünüzü seçerken dikkatli olmanız gerekir. Ayrıntıları okumak için [bellek için iyileştirilmiş sanal makine boyutları](../../mv2-series.md)makalesini okuyun.
 > 
 
 
@@ -112,115 +112,59 @@ SAP HANA çalıştıran VM 'Ler için, atanan statik IP adresleriyle çalışman
 
 Aşağıdaki görüntüde, hub ve bağlı ağ VNet mimarisine göre SAP HANA için kaba bir dağıtım şemasına genel bakış gösterilmektedir:
 
-![SAP HANA için kaba dağıtım şeması](media/hana-vm-operations/hana-simple-networking.PNG)
+![SAP HANA için kaba dağıtım şeması](media/hana-vm-operations/hana-simple-networking-dmz.png)
 
 Siteden siteye bağlantı olmadan Azure 'da SAP HANA dağıtmak için, SAP HANA örneğini genel İnternet 'ten korumak ve ileri bir proxy 'nin arkasında gizlemek istersiniz. Bu temel senaryoda dağıtım, ana bilgisayar adlarını çözümlemek için Azure yerleşik DNS hizmetlerini kullanır. Genel kullanıma yönelik IP adreslerinin kullanıldığı daha karmaşık bir dağıtımda, Azure yerleşik DNS hizmetleri özellikle önemlidir. Azure NSG 'leri ve [Azure NVA 'lar](https://azure.microsoft.com/solutions/network-appliances/) 'i kullanarak Azure 'Daki Azure VNET mimarinize internet 'ten yönlendirmeyi izleyin. Aşağıdaki görüntüde, hub ve bağlı ağ VNet mimarisinde siteden siteye bağlantı olmadan SAP HANA dağıtmaya yönelik kaba bir şema gösterilmektedir:
   
-![Siteden siteye bağlantı olmadan SAP HANA için kaba dağıtım şeması](media/hana-vm-operations/hana-simple-networking2.PNG)
+![Siteden siteye bağlantı olmadan SAP HANA için kaba dağıtım şeması](media/hana-vm-operations/hana-simple-networking-dmz.png)
  
 
 Hub ve bağlı ağ VNet mimarisi olmadan Internet 'ten erişimi denetlemek ve izlemek için Azure NVA 'lar 'ın nasıl kullanılacağına ilişkin başka bir açıklama, [yüksek oranda kullanılabilir ağ sanal gereçlerini dağıtma](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)makalesinde bulunabilir.
 
 
 ## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>Azure altyapısını SAP HANA genişleme için yapılandırma
-Microsoft, SAP HANA genişleme yapılandırması için sertifikalı bir adet bir d serisi VM SKU 'SU içerir. M128s VM türü, 16 ' dan fazla düğüme yönelik bir genişleme için sertifikalıdır. Azure VM 'lerinde SAP HANA genişleme sertifikalarındaki değişiklikler için, [sertifikalı IaaS platformları listesini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)denetleyin.
+OLAP genişleme veya S/4HANA genişleme için sertifikalı Azure VM türlerini bulmak için [SAP HANA donanım dizinini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)denetleyin. ' Kümeleme ' sütunundaki onay işareti, genişleme desteğini gösterir. Uygulama türü, OLAP ölçeği genişletme veya S/4HANA ölçeklendirmesinin desteklenip desteklenmediğini gösterir. VM 'lerin her biri için ölçek genişletme konusunda sertifikalı düğümlerle ilgili ayrıntılar için SAP HANA donanım dizininde listelenen belirli VM SKU 'sunda girişlerin ayrıntılarını kontrol edin.
 
-Azure VM 'lerinde genişleme yapılandırması dağıtmak için en düşük işletim sistemi yayınları şunlardır:
-
-- SUSE Linux 12 SP3
-- Red Hat Linux 7,4
-
-16 düğümlü genişleme sertifikası
-
-- Ana düğüm bir düğüm
-- Çalışan düğümleri en fazla 15 düğüm
+Azure VM 'lerinde genişleme yapılandırması dağıtmak için en düşük işletim sistemi sürümleri, SAP HANA donanım dizininde listelenen belirli VM SKU 'sunda girişlerin ayrıntılarını kontrol edin. N düğümlü bir OLAP genişleme yapılandırması olan bir düğüm, ana düğüm olarak işlev görür. Sertifika sınırına kadar olan diğer düğümler, çalışan düğümü olarak davranır. Ek bekleme düğümleri, sertifikalı düğüm sayısına göre sayılmaz
 
 >[!NOTE]
->Azure VM Ölçek Genişletme dağıtımlarında, bekleme düğümü kullanma olanağı yoktur
+> Bekleme düğümüyle SAP HANA Azure VM genişleme dağıtımları yalnızca [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) depolama alanı kullanılarak mümkündür. Diğer SAP HANA sertifikalı Azure depolama, SAP HANA bekleme düğümlerinin yapılandırılmasına izin vermez
 >
 
-Azure 'un [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)sahip yerel bir NFS hizmeti olsa da, SAP uygulama katmanı IÇIN desteklenen NFS hizmeti henüz SAP HANA için sertifikalı değildir. Sonuç olarak, NFS paylaşımlarının hala üçüncü taraf işlevselliğindeki yardım ile yapılandırılması gerekir. 
+/Hana/Shared için [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)kullanımını da öneririz. 
 
+Bir genişleme yapılandırmasındaki tek bir düğüm için tipik bir temel tasarım şöyle görünecektir:
 
-Sonuç olarak, **/Hana/Data** ve **/Hana/log** birimleri paylaşılamaz. Tek düğümlerin bu birimleri paylaşılmadığından, genişleme yapılandırmasındaki SAP HANA bekleme düğümünün kullanımını engeller.
-
-Sonuç olarak, bir genişleme yapılandırmasındaki tek bir düğümün temel tasarımı şöyle görünecektir:
-
-![Tek bir düğümün ölçek genişletme temelleri](media/hana-vm-operations/scale-out-basics.PNG)
+![Tek bir düğümün ölçek genişletme temelleri](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA ölçeği genişletme için bir VM düğümünün temel yapılandırması şöyle görünür:
 
-- **/Hana/Shared**için, yüksek oranda KULLANILABILIR bir NFS paylaşımının oluşturulması gerekir. Şimdiye kadar, yüksek oranda kullanılabilir bir paylaşıma ulaşmak için farklı olanaklar vardır. Bunlar SAP NetWeaver ile birlikte belgelenmiştir:
-    - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-    - [SAP NetWeaver için Red Hat Enterprise Linux’taki Azure VM’leri üzerinde GLusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
-    - [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-    - [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-- Diğer tüm disk birimleri farklı düğümler arasında **paylaşılmaz** ve NFS tabanlı **değildir** . Bu belgede daha fazla paylaşılmayan **/Hana/Data** ve **/Hana/log** ile genişleme Hana yüklemelerine yönelik yükleme yapılandırması ve adımları verilmiştir.
-
->[!NOTE]
->Grafiklerde gösterildiği gibi yüksek oranda kullanılabilir NFS kümesi, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)olarak belgelenmiştir. Diğer olanaklar yukarıdaki listede belgelenmiştir.
-
-Düğümler için birimleri boyutlandırma, **/Hana/Shared**hariç olmak üzere ölçek artırma ile aynıdır. M128s VM SKU 'SU için önerilen Boyutlar ve türler şöyle görünür:
-
-| VM SKU | RAM | En çok, VM G/Ç<br /> İşleme | /Hana/Data | /Hana/log | /root birimi | /usr/SAP | Hana/yedekleme |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+- **/Hana/Shared**için, Azure NetApp Files aracılığıyla SAĞLANMıŞ yerel NFS hizmetini kullanırsınız. 
+- Diğer tüm disk birimleri farklı düğümler arasında paylaşılmaz ve NFS tabanlı değildir. Bu belgede daha sonra paylaşılmayan **/Hana/Data** ve **/Hana/log** ile genişleme Hana yüklemelerine yönelik yükleme yapılandırma ve adımları daha sonra sunulmaktadır. Kullanılabilecek HANA sertifikalı depolama için [Azure sanal makine depolama yapılandırmalarının SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)makalesine bakın.
 
 
-Farklı önerilen birimler için depolama aktarım hızının, çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü **/Hana/Data** ve **/Hana/log**için daha yüksek birimler gerektiriyorsa, Azure Premium Depolama VHD 'lerinin sayısını artırmanız gerekir. Listelenmiş olandan daha fazla VHD 'ye sahip bir birimi boyutlandırma, ıOPS 'yi ve g/ç verimini Azure sanal makine türü sınırları içinde arttırır. Ayrıca, **/Hana/log** birimini oluşturan disklere Azure yazma Hızlandırıcısı uygulayın.
- 
-[TDI depolama gereksinimlerini SAP HANA](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)belgesinde, her dört çalışan düğümü için tek bir çalışan düğümünün bellek boyutu olarak ölçek genişletme için **/Hana/Shared** biriminin boyutunu tanımlayan bir formül adlandırılır.
+Birimleri veya diskleri boyutlandırıyorsanız, gereken boyut için çalışan düğüm sayısına bağlı olarak belge [SAP HANA TDI depolama gereksinimleri](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)' ni denetlemeniz gerekir. Belge, birimin gerekli kapasitesini almak için uygulamanız gereken bir formülü serbest bırakır
 
-SAP HANA genişleme sertifikalı M128s Azure VM 'yi kabaca 2 TB bellek ile aldığınız varsayılarak, SAP önerileri şu şekilde özetlenebilir:
-
-- Bir ana düğüm ve en fazla dört çalışan düğümü, **/Hana/Shared** BIRIMININ 2 TB boyutunda olması gerekir. 
-- Bir ana düğüm ve beş ila sekiz çalışan düğümü, **/Hana/Shared** boyutunun 4 TB olması gerekir. 
-- Bir ana düğüm ve 9-12 çalışan düğümü, **/Hana/Shared** IÇIN 6 TB boyutunda bir boyut gereklidir. 
-- Tek bir ana düğüm ve 12 ile 15 arasında çalışan düğüm arasında, boyutu 8 TB olan bir **/Hana/Shared** birimi sağlamanız gerekir.
-
-Bir genişleme SAP HANA VM için tek düğümlü yapılandırmanın grafiklerde görüntülenen diğer önemli tasarım VNet 'dir veya alt ağ yapılandırması daha iyidir. SAP, HANA düğümleri arasındaki iletişimlerden istemci/uygulamayla bağlantılı trafiğin ayrılmasını çok önerir. Grafiklerde gösterildiği gibi bu hedef, VM 'ye bağlı iki farklı vNIC varsa elde edilir. Her iki vNIC de farklı alt ağlardaki iki farklı IP adresine sahiptir. Daha sonra NSG 'ler veya Kullanıcı tanımlı yollar kullanarak yönlendirme kurallarıyla trafik akışını kontrol edersiniz.
+Bir genişleme SAP HANA sanal makinesi için tek düğümlü bir VM 'nin grafiklerde görüntülenen diğer tasarım ölçütleri VNet 'dir veya alt ağ yapılandırması daha iyidir. SAP, HANA düğümleri arasındaki iletişimlerden istemci/uygulamayla bağlantılı trafiğin ayrılmasını çok önerir. Grafiklerde gösterildiği gibi bu hedef, VM 'ye bağlı iki farklı vNIC varsa elde edilir. Her iki vNIC de farklı alt ağlardaki iki farklı IP adresine sahiptir. Daha sonra NSG 'ler veya Kullanıcı tanımlı yollar kullanarak yönlendirme kurallarıyla trafik akışını kontrol edersiniz.
 
 Özellikle Azure 'da, belirli sanal NIC 'lerde hizmet ve kota kalitesi sağlamak için bir yol ve yöntem yoktur. Sonuç olarak, istemci/uygulama ile karşılıklı ve düğüm içi iletişimin ayrımı, bir trafik akışının diğer üzerinden önceliklerini belirlemek için herhangi bir fırsat açmaz. Bunun yerine ayrım, genişleme yapılandırmalarının düğüm içi iletişimleriyle koruma için güvenlik ölçüsü olarak kalır.  
 
->[!IMPORTANT]
->SAP, bu belgede açıklandığı gibi, ağ trafiğini istemci/uygulama tarafına ve düğüm içi trafiğe ayırmayı önerir. Bu nedenle, son grafiklerde gösterildiği gibi bir mimarinin yerinde yerleştirilmesi kesinlikle önerilir.
+>[!NOTE]
+>SAP, bu belgede açıklandığı gibi, ağ trafiğini istemci/uygulama tarafına ve düğüm içi trafiğe ayırmayı önerir. Bu nedenle, son grafiklerde gösterildiği gibi bir mimarinin yerinde yerleştirilmesi önerilir. Ayrıca, öneriden sapmanız gereken gereklilikler için güvenlik ve uyumluluk ekibinize başvurun 
 >
 
 Bir ağ noktasından, gereken en düşük ağ mimarisi şöyle görünür:
 
-![Tek bir düğümün ölçek genişletme temelleri](media/hana-vm-operations/scale-out-networking-overview.PNG)
-
-Şimdiye kadar desteklenen sınırlar, bir ana düğüm için 15 çalışan ek.
-
-Depolama mimarisi bir depolama noktasından şöyle görünür:
+![Tek bir düğümün ölçek genişletme temelleri](media/hana-vm-operations/overview-scale-out-networking.png)
 
 
-![Tek bir düğümün ölçek genişletme temelleri](media/hana-vm-operations/scale-out-storage-overview.PNG)
-
-**/Hana/Shared** birimi, yüksek oranda kullanılabilir NFS paylaşım yapılandırmasında bulunur. Öte yandan, diğer tüm sürücüler tek tek VM 'lere bağlanır. 
-
-### <a name="highly-available-nfs-share"></a>Yüksek oranda kullanılabilir NFS paylaşma
-Yüksek oranda kullanılabilir NFS kümesi yalnızca SUSE Linux ile çalışmaktadır. [SUSE Linux Enterprise Server Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) , nasıl ayarlanacağını açıklar. NFS kümesini SAP HANA örnekleri çalıştıran Azure sanal ağı dışındaki diğer bir HANA yapılandırmasıyla paylaşmazsanız, aynı VNet 'e yükleyebilirsiniz. Kendi alt ağına yükleyebilir ve tüm rastgele trafiğin alt ağa erişemediğinden emin olun. Bunun yerine, bu alt ağ ile trafiği, **/Hana/Shared** birimine TRAFIĞI çalıştıran VM 'nin IP adresleriyle sınırlandırmak istersiniz.
-
-**/Hana/Shared** trafiğini yönlendirmeli bir hana genişleme sanal makinesinin vNIC 'si ile ilgili öneriler şunlardır:
-
-- **/Hana/Shared** 'e giden trafik orta olduğundan, en düşük yapılandırmadaki istemci ağına atanmış vNIC üzerinden yönlendirin
-- Sonuç olarak, **/Hana/Shared**trafiği Için, VNET 'te üçüncü bir alt ağ dağıtın SAP HANA genişleme yapılandırmasını dağıtır ve o alt ağda barındırılan bir üçüncü vNIC atamalısınız. NFS paylaşımının trafiği için üçüncü vNIC ve ilişkili IP adresini kullanın. Böylece, ayrı erişim ve yönlendirme kuralları uygulayabilirsiniz.
-
->[!IMPORTANT]
->Dağıtılan ve yüksek oranda kullanılabilir NFS SAP HANA sahip VM 'Ler arasındaki ağ trafiği, bir [NVA](https://azure.microsoft.com/solutions/network-appliances/) veya benzer sanal gereçlerden herhangi bir koşullarda yönlendirilmeyebilir. Azure NSG 'ler böyle bir cihaz değildir. SAP HANA çalıştıran VM 'lerden yüksek düzeyde kullanılabilir NFS paylaşımıyla eriştiğinizde NVA 'lar veya benzer sanal gereçlerinin deklik olduğundan emin olmak için yönlendirme kurallarınızı denetleyin.
-> 
-
-Yüksek oranda kullanılabilir NFS kümesini SAP HANA konfigürasyonları arasında paylaştırmak istiyorsanız, bu HANA yapılandırmalarının tümünü aynı VNet 'e taşıyın. 
- 
 
 ### <a name="installing-sap-hana-scale-out-n-azure"></a>SAP HANA genişleme 'yi yükleme n Azure
 Genişleme SAP yapılandırması yükleme, şu adımları gerçekleştirmeniz gerekir:
 
 - Mevcut bir Azure VNet altyapısını yeni veya uygun hale dağıtma
-- Azure yönetilen Premium depolama birimlerini kullanarak yeni VM 'Leri dağıtma
-- Yeni bir dağıtım dağıtımı veya var olan bir yüksek oranda kullanılabilir NFS kümesini uyarlama
-- Ağ yönlendirmeyi, örneğin VM 'Ler arasındaki düğüm içi iletişimin bir [NVA](https://azure.microsoft.com/solutions/network-appliances/)üzerinden yönlendirilmediğinden emin olmak için uyarlayın. Aynı, VM 'Ler ve yüksek oranda kullanılabilir NFS kümesi arasındaki trafik için de geçerlidir.
+- Azure yönetilen Premium Depolama, Ultra disk birimleri ve/veya NFS birimlerini ANF tabanlı kullanarak yeni VM 'Leri dağıtma
+- - Ağ yönlendirmeyi, örneğin VM 'Ler arasındaki düğüm içi iletişimin bir [NVA](https://azure.microsoft.com/solutions/network-appliances/)üzerinden yönlendirilmediğinden emin olmak için uyarlayın. 
 - SAP HANA ana düğümünü yükler.
 - SAP HANA ana düğümünün yapılandırma parametrelerini uyarlayın
 - SAP HANA çalışan düğümlerinin yüklenmesine devam edin
@@ -229,11 +173,11 @@ Genişleme SAP yapılandırması yükleme, şu adımları gerçekleştirmeniz ge
 Azure VM altyapınız dağıtıldığında ve diğer tüm hazırlıklar yapıldıktan sonra, aşağıdaki adımlarda SAP HANA genişleme yapılandırmasını yüklemeniz gerekir:
 
 - SAP HANA ana düğümünü SAP belgelerine göre yükler
-- **Yüklemeden sonra Global. ini dosyasını değiştirmeniz ve ' basepath_shared = No ' parametresini Global. ini dosyasına eklemeniz gerekir**. Bu parametre SAP HANA, düğümler arasında ' Shared ' **/Hana/Data** ve **/Hana/log** birimleri olmadan ölçek genişletme içinde çalışmasına olanak sağlar. Ayrıntılar [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991)bölümünde belgelenmiştir.
-- Global. ini parametresini değiştirdikten sonra SAP HANA örneğini yeniden başlatın
+- Azure Premium Storage veya/Hana/Data ve/Hana/log olmayan diskler ile ultra disk depolaması kullanmak durumunda Global. ini dosyasını değiştirmeniz ve ' basepath_shared = No ' parametresini Global. ini dosyasına eklemeniz gerekir. Bu parametre SAP HANA, düğümler arasında ' Shared ' **/Hana/Data** ve **/Hana/log** birimleri olmadan ölçek genişletme içinde çalışmasına olanak sağlar. Ayrıntılar [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991)bölümünde belgelenmiştir. /Hana/Data ve/Hana/log için ANF tabanlı NFS birimleri kullanıyorsanız, bu değişikliği yapmanız gerekmez
+- Global. ini parametresindeki son değişiklikten sonra SAP HANA örneğini yeniden başlatın
 - Ek çalışan düğümleri ekleyin. Ayrıca bkz. <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Yükleme sırasında veya daha sonra (örneğin, yerel hdblcm) düğümler arası iletişim SAP HANA iç ağı belirtin. Daha ayrıntılı belgeler için Ayrıca bkz. [SAP Note #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
 
-Bu Kurulum yordamının ardından, yüklediğiniz genişleme yapılandırması **/Hana/Data** ve **/Hana/log**' i çalıştırmak için paylaşılmayan diskler kullanacaktır. Öte yandan, **/Hana/Shared** birimi yüksek oranda kullanılabilir NFS paylaşımında yer alır.
+SUSE Linux 'ta bekleme moduna sahip bir SAP HANA genişleme sistemi ayarlama ayrıntıları, [SUSE Linux Enterprise Server üzerinde Azure NetApp Files kullanarak Azure VM 'lerinde bekleme moduna sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)konusunda ayrıntılı olarak açıklanmıştır. Red hat için eşdeğer belgeler, [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme moduna sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)makalesinde bulunabilir. 
 
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Azure sanal makineler için dinamik katmanlama 2,0 SAP HANA
@@ -256,7 +200,7 @@ Aşağıdaki resimde Microsoft Azure üzerindeki DT 2,0 desteğiyle ilgili bir g
 
 Daha fazla ayrıntı aşağıdaki bölümlerde açıklanacaktır.
 
-![SAP HANA DT 2,0 mimarisine genel bakış](media/hana-vm-operations/hana-dt-20.PNG)
+![SAP HANA DT 2,0 mimarisine genel bakış](media/hana-vm-operations/hana-data-tiering.png)
 
 
 
@@ -315,7 +259,7 @@ M64-32ms VM 'nin belleği çok fazlaysa, GÇ yükü özellikle okuma yoğunluklu
 
 Özellikle iş yükünün okuma açısından yoğun olması durumunda, veritabanı yazılımının veri birimleri için önerilen "salt okunurdur" Azure ana bilgisayar önbelleğini açmak üzere GÇ performansını artırabilir. İşlem günlüğü için Azure konak disk önbelleğinin "none" olması gerekir. 
 
-Günlük biriminin boyutuna ilişkin önerilen bir başlangıç noktası, veri boyutunun %15 ' i için buluşsal bir değer. Günlük biriminin oluşturulması, maliyet ve verimlilik gereksinimlerine bağlı olarak farklı Azure disk türleri kullanılarak gerçekleştirilebilir. Günlük birimi yüksek g/ç verimlilik gereklidir.  M64-32ms VM türünün kullanılması durumunda [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)etkinleştirmeniz önemle önerilir. Azure Yazma Hızlandırıcısı, işlem günlüğü için en iyi disk yazma gecikmesi sağlar (yalnızca M serisi için kullanılabilir). VM türü başına en fazla disk sayısı gibi göz önünde bulundurmanız gereken bazı öğeler vardır. Yazma Hızlandırıcısı ayrıntılarını [burada](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) bulabilirsiniz
+Günlük biriminin boyutuna ilişkin önerilen bir başlangıç noktası, veri boyutunun %15 ' i için buluşsal bir değer. Günlük biriminin oluşturulması, maliyet ve verimlilik gereksinimlerine bağlı olarak farklı Azure disk türleri kullanılarak gerçekleştirilebilir. Günlük birimi için yüksek g/ç verimlilik gereklidir.  M64-32ms VM türünün kullanılması durumunda [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)etkinleştirilmesi zorunludur. Azure Yazma Hızlandırıcısı, işlem günlüğü için en iyi disk yazma gecikmesi sağlar (yalnızca M serisi için kullanılabilir). VM türü başına en fazla disk sayısı gibi göz önünde bulundurmanız gereken bazı öğeler vardır. Yazma Hızlandırıcısı ayrıntılarını [burada](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) bulabilirsiniz
 
 
 Günlük birimini boyutlandırma hakkında birkaç örnek aşağıda verilmiştir:
@@ -363,11 +307,22 @@ Azure genel bulutu 'nın belirgin bir özelliği yalnızca işlem tutanakanız i
 
 Internet üzerinden Azure 'a bağlanıyorsanız ve SAP HANA VM için bir SAP yönlendiriciniz yoksa, bileşeni yüklemeniz gerekir. Yönetim alt ağındaki ayrı bir sanal makineye SAProuter 'yi yükler. Aşağıdaki görüntüde, bir siteden siteye bağlantı olmadan ve SAProuter ile SAP HANA dağıtmaya yönelik kaba bir şema gösterilmektedir:
 
-![Siteden siteye bağlantı olmadan SAP HANA için kaba dağıtım şeması ve SAProuter](media/hana-vm-operations/hana-simple-networking3.PNG)
+![Siteden siteye bağlantı olmadan SAP HANA için kaba dağıtım şeması ve SAProuter](media/hana-vm-operations/hana-simple-networking-saprouter.png)
 
 SAProuter 'ı, JumpBox sanal makinenizde değil ayrı bir sanal makineye yüklediğinizden emin olun. Ayrı VM 'nin statik bir IP adresi olmalıdır. SAProuter 'nizi SAP tarafından barındırılan SAProuter 'a bağlamak için bir IP adresi için SAP ile iletişim kurun. (SAP tarafından barındırılan SAProuter, sanal makinenize yüklediğiniz SAProuter örneğinin karşılığından oluşur.) SAProuter örneğinizi yapılandırmak için SAP IP adresini kullanın. Yapılandırma ayarlarında, yalnızca TCP bağlantı noktası 3299 olan bağlantı noktası gereklidir.
 
 SAProuter aracılığıyla uzaktan destek bağlantıları ayarlama ve sürdürme hakkında daha fazla bilgi için bkz. [SAP belgeleri](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Azure yerel VM 'lerinde SAP HANA yüksek kullanılabilirlik
-SAP uygulamaları için SUSE Linux Enterprise Server kullanıyorsanız, STONITH cihazlarıyla bir Paceoluşturucu kümesi kurabilirsiniz. Cihazları, HANA sistem çoğaltması ve otomatik yük devretme ile zaman uyumlu çoğaltma kullanan SAP HANA bir yapılandırma ayarlamak için kullanabilirsiniz. Kurulum yordamı hakkında daha fazla bilgi için bkz. [Azure sanal makineler için SAP HANA yüksek kullanılabilirlik Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+SUSE Linux Enterprise Server veya Red Hat çalıştırıyorsanız, STONITH cihazlarıyla bir Paceoluşturucu kümesi kurabilirsiniz. Cihazları, HANA sistem çoğaltması ve otomatik yük devretme ile zaman uyumlu çoğaltma kullanan SAP HANA bir yapılandırma ayarlamak için kullanabilirsiniz. ' Sonraki adımlar ' bölümünde listelenen daha fazla bilgi için.
+
+## <a name="next-steps"></a>Sonraki Adımlar
+Listelenen makaleleri hakkında bilgi edinin
+- [Azure sanal makine depolama yapılandırmalarının SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Red Hat Enterprise Linux üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+
+ 
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670823"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164585"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -258,8 +258,13 @@ by Computer
 ) on Computer
 ```
 
+Ölçüm, belirtilen gerçek süreden her zaman daha büyüktür. Örneğin, sorgudaki filtre 7 gün ise, sistem 7,5 veya 8,1 gün tarama alabilir. Bunun nedeni, sistemin verileri değişken boyuttaki parçalara bölümlendirmesi nedeniyle oluşur. Tüm ilgili kayıtların tarandığından emin olmak için, birkaç saati ve hatta bir günden daha fazlasını kapsayan tüm bölümü tarar.
+
+Sistemin zaman aralığının doğru bir ölçümünü sağlayamadığının birkaç durumu vardır. Bu durum, sorgunun bir günden veya çok çalışma alanı sorgularından daha az olduğu durumlarda oluşur.
+
+
 > [!IMPORTANT]
-> Bu gösterge, çapraz bölge sorguları için kullanılamaz.
+> Bu gösterge yalnızca anında kümede işlenen verileri gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
 
 ## <a name="age-of-processed-data"></a>İşlenen verilerin yaşı
 Azure Veri Gezgini, çeşitli depolama katmanlarını kullanır: bellek içi, yerel SSD diskleri ve çok daha yavaş Azure Blob 'Ları. Veriler arttıkça, daha yüksek gecikme süresine sahip daha fazla performans ve sorgu süresi ve CPU 'YU azaltan bir daha iyi hale gelir. Verilerin kendisi dışında, sistem meta veriler için de önbelleğe sahiptir. Veriler daha eski olduğunda meta verileri önbellekte olacaktır.
@@ -284,7 +289,7 @@ Farklı bölgelerde tek bir sorgunun yürütülebileceği birkaç durum vardır:
 Tüm bu bölgeleri taramak için gerçek bir neden yoksa, kapsamı daha az bölge içerecek şekilde ayarlamanız gerekir. Kaynak kapsamı simge durumuna küçültülmüş, ancak hala çok sayıda bölge kullanılıyorsa, yanlış yapılandırma nedeniyle bu durum oluşabilir. Örneğin, denetim günlükleri ve Tanılama ayarları farklı bölgelerdeki farklı çalışma alanlarına gönderilir veya birden çok Tanılama ayarları yapılandırması vardır. 
 
 > [!IMPORTANT]
-> Bu gösterge, çapraz bölge sorguları için kullanılamaz.
+> Bir sorgu çeşitli bölgelerde çalıştırıldığında, CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca bölgelerden birindeki ölçüyü temsil eder.
 
 ## <a name="number-of-workspaces"></a>Çalışma alanı sayısı
 Çalışma alanları, günlük verilerini ayırmak ve yönetmek için kullanılan mantıksal kapsayıcılardır. Arka uç, Seçili bölge içindeki fiziksel kümelerdeki çalışma alanı yerleştirmelerinin en iyi duruma getirir.
@@ -300,7 +305,7 @@ Sorguların bölgeler arası ve çapraz küme yürütmesi, sistemin son görünt
 > Bazı çok çalışma alanı senaryolarında CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca birkaç çalışma alanında ölçüyü temsil eder.
 
 ## <a name="parallelism"></a>Paralellik
-Azure Izleyici günlükleri sorguları çalıştırmak için büyük Azure Veri Gezgini kümeleri kullanıyor ve bu kümeler ölçeğe göre farklılık gösterir. Sistem, çalışma alanı yerleştirme mantığı ve kapasitesine göre kümeleri otomatik olarak ölçeklendirir.
+Azure Izleyici günlükleri sorguları çalıştırmak için büyük Azure Veri Gezgini kümeleri kullanıyor ve bu kümeler ölçekli, büyük olasılıkla düzinelerce işlem düğümlerine göre farklılık gösterir. Sistem, çalışma alanı yerleştirme mantığı ve kapasitesine göre kümeleri otomatik olarak ölçeklendirir.
 
 Bir sorguyu verimli bir şekilde yürütmek için bölümlenmiş ve işleme için gereken verilere göre işlem düğümlerine dağıtılır. Sistemin bunu verimli bir şekilde yapamadığı bazı durumlar vardır. Bu, sorgunun uzun süreli olmasına neden olabilir. 
 

@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201647"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921326"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde izinler
 
-Azure Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlayan [Rol Tabanlı Erişim Denetimi'ni (RBAC)](../role-based-access-control/role-assignments-portal.md) kullanır.
+Azure Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/role-assignments-portal.md) sağlayan [Rol Tabanlı Erişim Denetimi'ni (RBAC)](../role-based-access-control/built-in-roles.md) kullanır.
 
 Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını tanımlamak amacıyla kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi'nde, yalnızca bir kaynağa sahip, katkıda bulunan veya okuyucu rolü bir kaynağın ait olduğu kaynak grubu veya abonelik atandığında ilgili bilgiler görürsünüz.
 
 Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 
-* **Güvenlik okuyucusu**: Bu role ait olan bir Kullanıcı güvenlik merkezi 'ne yönelik hakları görüntülüyor. Kullanıcı önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz.
+* **Güvenlik okuyucusu**: Bu role ait olan bir Kullanıcı, güvenlik merkezi 'ne yönelik hakları görüntülüyor. Kullanıcı önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz.
 * **Güvenlik Yöneticisi**: Bu role ait olan bir Kullanıcı güvenlik okuyucuyla aynı haklara sahiptir ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir.
 
 > [!NOTE]
@@ -39,17 +39,17 @@ Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 
 ## <a name="roles-and-allowed-actions"></a>Roller ve izin verilen eylemler
 
-Aşağıdaki tabloda Güvenlik Merkezi 'nde roller ve izin verilen eylemler görüntülenmektedir. X, bu rol için eyleme izin verildiğini gösterir.
+Aşağıdaki tabloda Güvenlik Merkezi 'nde roller ve izin verilen eylemler görüntülenmektedir.
 
-| Role | Güvenlik ilkesini Düzenle | Bir kaynak için güvenlik önerilerini uygulama | Uyarıları ve önerileri kapat | Uyarıları ve önerileri görüntüleme |
+| Rol | Güvenlik ilkesini Düzenle | Bir kaynak için güvenlik önerilerini uygulama</br> (' hızlı Düzelle! ' ile birlikte) | Uyarıları ve önerileri kapat | Uyarıları ve önerileri görüntüleme |
 |:--- |:---:|:---:|:---:|:---:|
-| Abonelik sahibi | X | X | X | X |
-| Abonelik Katılımcısı | -- | X | X | X |
-| Kaynak grubu sahibi | -- | X | -- | X |
-| Kaynak grubu Katılımcısı | -- | X | -- | X |
-| Okuyucu | -- | -- | -- | X |
-| Güvenlik Yöneticisi | X | -- | X | X |
-| Güvenlik Okuyucusu | -- | -- | -- | X |
+| Abonelik sahibi | ✔ | ✔ | ✔ | ✔ |
+| Abonelik Katılımcısı | -- | ✔ | ✔ | ✔ |
+| Kaynak grubu sahibi | -- | ✔ | -- | ✔ |
+| Kaynak grubu Katılımcısı | -- | ✔ | -- | ✔ |
+| Okuyucu | -- | -- | -- | ✔ |
+| Güvenlik Yöneticisi | ✔ | -- | ✔ | ✔ |
+| Güvenlik okuyucusu | -- | -- | -- | ✔ |
 
 > [!NOTE]
 > Kullanıcılara, görevlerini tamamlamak için gereken rolleri en alt seviyede esneklik sunacak şekilde atamanızı öneririz. Örneğin, okuyucu rolünü yalnızca bir kaynağın güvenlik durumu ile ilgili bilgileri görüntülemesi gereken ancak öneri veya ilkeleri Düzenle gibi işlemleri olmayan kullanıcılara atayın.

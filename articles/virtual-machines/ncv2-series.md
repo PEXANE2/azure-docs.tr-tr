@@ -2,17 +2,17 @@
 title: NCv2-Series-Azure sanal makineleri
 description: NCv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 4ea199cdc75732ff3af730fa79530399e4372ebd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f4a382e422fd56e754d8014bfb4f0f0af1a3ec77
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661048"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163990"
 ---
 # <a name="ncv2-series"></a>NCv2 serisi
 
@@ -23,6 +23,10 @@ NC24rs v2 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem i
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: desteklenmiyor
+
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 > [!IMPORTANT]
 > Bu VM Serisi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. [Kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/)bu seri Için [bir vCPU kota artışı isteyin](../azure-supportability/resource-manager-core-quotas-request.md) .

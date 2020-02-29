@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020769"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916583"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -71,6 +71,14 @@ Hayır, bulut sağlaması herhangi bir nesne (Kullanıcı nesneleri dahil) için
 **S: bulut sağlamasını kullanarak kullanıcıları sağlamadım. Yapılandırmayı sildim. Azure AD 'de hala eşitlenmiş olan eski nesneleri görüyorum mi?** 
 
 Yapılandırmayı sildiğinizde, bulut sağlaması Azure AD 'de eşitlenmiş nesneleri temizlemez. Eski nesnelerinizin olmadığından emin olmak için, yapılandırmanın kapsamını boş bir grup veya kuruluş birimleriyle değiştirin. Sağlama çalıştıktan ve nesneleri temizledikten sonra yapılandırmayı devre dışı bırakın ve silin. 
+
+**S: Exchange hibrit 'in desteklenmediği ne anlama geliyor?**
+
+Exchange Karma Dağıtımı özelliği, Exchange posta kutularının hem şirket içinde hem de Office 365'te aynı anda var olmalarına olanak sağlar. Azure AD Connect, belirli bir öznitelik kümesini Azure AD 'den şirket içi dizininize geri eşitlemektir.  Bulut sağlama Aracısı Şu anda bu öznitelikleri şirket içi dizininizle eşitlemez ve bu nedenle Azure AD Connect bir değiştirme olarak desteklenmez.
+
+**S: bulut sağlama aracısını Windows Server Core 'a yükleyebilir miyim?**
+
+Hayır, aracıyı sunucu çekirdeği üzerine yükleme desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

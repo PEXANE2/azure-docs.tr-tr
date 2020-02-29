@@ -2,13 +2,13 @@
 title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: bb84f6b362adf7c190f3300e6e3f1bc572153151
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/24/2020
+ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753981"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921224"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -22,36 +22,16 @@ Bu öğreticide, Azure VM 'lerinde çalışan SAP HANA veritabanlarının Azure 
 
 Şu anda desteklediğimiz tüm senaryolar [aşağıda](sap-hana-backup-support-matrix.md#scenario-support) verilmiştir.
 
-## <a name="onboard-to-the-public-preview"></a>Genel önizlemeye ekleme
-
-Genel önizlemeye aşağıdaki şekilde katılın:
-
-* Portalda, [Bu makaleyi izleyerek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)abonelik kimliğinizi Kurtarma Hizmetleri hizmet sağlayıcısına kaydedin.
-
-* PowerShell için bu cmdlet 'i çalıştırın. "Kayıtlı" olarak tamamlanmalıdır.
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin olun:
 
-1. SAP HANA veritabanını çalıştıran VM 'de, aşağıdaki gibi, zypper kullanarak resmi SLES paketinden/medyasından ODBC sürücü paketlerini yükleyip etkinleştirin:
-
-```bash
-sudo zypper update
-sudo zypper install unixODBC
-```
-
->[!NOTE]
-> Depoları güncelleştirmediğiniz için, unixODBC sürümünün en düşük 2.3.4 olduğundan emin olun. UniXODBC sürümünü bildirmek için `odbcinst -j` kök olarak çalıştırın
->
-
-2. [Aşağıdaki yordamda](#set-up-network-connectivity)açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
-
-3. HANA 'nın kök kullanıcı olarak yüklendiği sanal makinede ön kayıt betiğini çalıştırın. [Bu betik](https://aka.ms/scriptforpermsonhana) [doğru izinleri](#setting-up-permissions)ayarlayacaktır.
+* Aşağıdaki [ağ bağlantısı kurma](#set-up-network-connectivity) yordamında açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
+* **Hdbuserstore** içinde aşağıdaki ölçütlere uyan bir anahtar bulunmalıdır:
+  * Varsayılan **hdbuserstore** içinde mevcut olmalıdır
+  * MDC için anahtar, **nameserver**SQL bağlantı noktasını göstermelidir. SDC söz konusu olduğunda, **ındexserver** SQL bağlantı noktasını işaret etmelidir
+  * Kullanıcı eklemek ve silmek için kimlik bilgilerine sahip olmalıdır
+* Kök kullanıcı olarak, HANA 'nın yüklü olduğu sanal makinede SAP HANA yedekleme yapılandırma betiğini (ön kayıt betiği) çalıştırın. [Bu betik](https://aka.ms/scriptforpermsonhana) , yedekleme IÇIN hazırlanma Hana sistemini alır. Ön kayıt betiği hakkında daha fazla bilgi edinmek için [ön kayıt betiğinin ne olduğunu](#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
 
 ## <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 
@@ -103,34 +83,20 @@ PowerShell kullanarak bir kural oluşturmak için:
 
 Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
 
-**Seçenek** | **Avantajlar** | **Dezavantajlar**
+**Seçenek** | **Üstünlü** | **Olumsuz**
 --- | --- | ---
 IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
 NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
 Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
 HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir <br/><br/> VM 'lere tek bir internet erişimi noktası <br/><br/> Azure IP adresi değişikliklerine tabi değildir | Proxy yazılımıyla VM çalıştırmak için ek maliyetler
 
-## <a name="setting-up-permissions"></a>İzinleri ayarlama
+## <a name="what-the-pre-registration-script-does"></a>Ön kayıt betiği ne yapar
 
-Ön kayıt betiği aşağıdaki eylemleri gerçekleştirir:
+Ön kayıt betiğini çalıştırmak aşağıdaki işlevleri gerçekleştirir:
 
-1. HANA sisteminde AZUREWLBACKUPHANAUSER oluşturur ve gerekli rolleri ve izinleri ekler:
-   * VERITABANı YÖNETICISI: geri yükleme sırasında yeni DBs oluşturmak için.
-   * Katalog okuma: yedekleme kataloğunu okumak için.
-   * SAP_INTERNAL_HANA_SUPPORT: birkaç özel tabloya erişmek için.
-2. Tüm işlemleri işlemek için (veritabanı sorguları, geri yükleme işlemleri, yedek yapılandırma ve çalıştırma), HANA eklentisinin Hdbuserstore öğesine bir anahtar ekler.
-
-Anahtar oluşturmayı onaylamak için, SIDADDM kimlik bilgileriyle HANA makinesinde HDBSQL komutunu çalıştırın:
-
-```hdbsql
-hdbuserstore list
-```
-
-Komut çıktısı {SID} {DBNAME} anahtarını, AZUREWLBACKUPHANAUSER olarak gösterilen kullanıcıyla görüntülemelidir.
-
->[!NOTE]
-> /Usr/sap/{SID}/home/.hdb/. altında farklı bir SSFS dosyaları kümesine sahip olduğunuzdan emin olun. Bu yolda yalnızca bir klasör olmalıdır.
->
+* Dağıtım Azure Backup aracısının gerektirdiği gerekli paketleri kurar veya güncelleştirir.
+* Azure Backup sunucularıyla giden ağ bağlantı denetimlerini ve Azure Active Directory ve Azure depolama gibi bağımlı hizmetleri gerçekleştirir.
+* [Önkoşulların](#prerequisites)bir parçası olarak listelenen Kullanıcı anahtarını kullanarak Hana sisteminizde oturum açar. Bu anahtar, HANA sisteminde bir yedek Kullanıcı (AZUREWLBACKUPHANAUSER) oluşturmak için kullanılır ve ön kayıt betiği başarıyla çalıştıktan sonra silinebilir. Bu yedekleme kullanıcısı (AZUREWLBACKUPHANAUSER), Yedekleme aracısının HANA sisteminizdeki veritabanlarını bulmasına, yedeklemesiyle ve geri yüklemelerine izin verir.
 
 ## <a name="create-a-recovery-service-vault"></a>Kurtarma hizmeti Kasası oluşturma
 
@@ -142,25 +108,25 @@ Kurtarma Hizmetleri kasası oluşturmak için:
 
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
 
-![Tüm hizmetleri seçin](./media/tutorial-backup-sap-hana-db/all-services.png)
+   ![Tüm hizmetleri seçin](./media/tutorial-backup-sap-hana-db/all-services.png)
 
 3. **Tüm hizmetler** Iletişim kutusunda **Kurtarma Hizmetleri**' ni girin. Giriş listenize göre filtrelerin kaynak listesi. Kaynak listesinde, **Kurtarma Hizmetleri kasaları**' nı seçin.
 
-![Kurtarma Hizmetleri kasalarını seçin](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
+   ![Kurtarma Hizmetleri kasalarını seçin](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
 
 4. **Kurtarma Hizmetleri** kasaları panosunda **Ekle**' yi seçin.
 
-![Kurtarma Hizmetleri Kasası Ekle](./media/tutorial-backup-sap-hana-db/add-vault.png)
+   ![Kurtarma Hizmetleri Kasası Ekle](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-**Kurtarma Hizmetleri Kasası** iletişim kutusu açılır. **Ad, abonelik, kaynak grubu** ve **konum** için değerler sağlayın
+   **Kurtarma Hizmetleri Kasası** iletişim kutusu açılır. **Ad, abonelik, kaynak grubu** ve **konum** için değerler sağlayın
 
-![Kurtarma Hizmetleri kasası oluşturma](./media/tutorial-backup-sap-hana-db/create-vault.png)
+   ![Kurtarma Hizmetleri kasası oluşturma](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-* **Ad**: ad, kurtarma hizmetleri kasasını tanımlamak için kullanılır ve Azure aboneliğinin benzersiz olması gerekir. En az iki, 50 karakterden daha fazla olmayan bir ad belirtin. Ad bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içermelidir. Bu öğreticide, **Saphanavault**adını kullandık.
-* **Abonelik**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğin üyesiyseniz, bu adı görürsünüz. Hangi aboneliğin kullanılacağı konusunda emin değilseniz, varsayılan (önerilen) aboneliği kullanın. Yalnızca iş veya okul hesabınızın birden fazla Azure aboneliğiyle ilişkilendirilmesi durumunda birden çok seçenek vardır. Burada **SAP HANA çözüm Laboratuvarı abonelik** aboneliğini kullandık.
-* **Kaynak grubu**: var olan bir kaynak grubunu kullanın veya yeni bir tane oluşturun. Burada **Saphanademo**kullandık.<br>
-Aboneliğinizdeki kullanılabilir kaynak gruplarının listesini görmek için **Varolanı kullan**' ı seçin ve ardından aşağı açılan liste kutusundan bir kaynak seçin. Yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin ve adı girin. Kaynak grupları hakkında tüm bilgiler için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-* **Konum**: kasa için coğrafi bölgeyi seçin. Kasa, SAP HANA çalıştıran sanal makine ile aynı bölgede olmalıdır. **Doğu ABD 2**kullandık.
+   * **Ad**: ad, kurtarma hizmetleri kasasını tanımlamak için kullanılır ve Azure aboneliğinin benzersiz olması gerekir. En az iki, 50 karakterden daha fazla olmayan bir ad belirtin. Ad bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içermelidir. Bu öğreticide, **Saphanavault**adını kullandık.
+   * **Abonelik**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğin üyesiyseniz, bu adı görürsünüz. Hangi aboneliğin kullanılacağı konusunda emin değilseniz, varsayılan (önerilen) aboneliği kullanın. Yalnızca iş veya okul hesabınızın birden fazla Azure aboneliğiyle ilişkilendirilmesi durumunda birden çok seçenek vardır. Burada **SAP HANA çözüm Laboratuvarı abonelik** aboneliğini kullandık.
+   * **Kaynak grubu**: var olan bir kaynak grubunu kullanın veya yeni bir tane oluşturun. Burada **Saphanademo**kullandık.<br>
+   Aboneliğinizdeki kullanılabilir kaynak gruplarının listesini görmek için **Varolanı kullan**' ı seçin ve ardından aşağı açılan liste kutusundan bir kaynak seçin. Yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin ve adı girin. Kaynak grupları hakkında tüm bilgiler için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+   * **Konum**: kasa için coğrafi bölgeyi seçin. Kasa, SAP HANA çalıştıran sanal makine ile aynı bölgede olmalıdır. **Doğu ABD 2**kullandık.
 
 5. **Gözden geçir + oluştur**' u seçin.
 
@@ -185,15 +151,15 @@ Kurtarma Hizmetleri Kasası artık oluşturulmuştur.
 
 1. **Yedeklemeyi Yapılandır**öğesine tıklayın.
 
-![Yedeklemeyi yapılandırma](./media/tutorial-backup-sap-hana-db/configure-backup.png)
+   ![Yedeklemeyi yapılandırma](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
 2. **Yedeklenecek öğeleri seçin**' de korumak istediğiniz bir veya daha fazla veritabanını seçin ve ardından **Tamam**' a tıklayın.
 
-![Yedeklenecek öğeleri seçin](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
+   ![Yedeklenecek öğeleri seçin](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
 3. **Yedekleme ilkesi > yedekleme ilkesi**' ni seçin, sonraki bölümdeki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
 
-![Yedekleme ilkesi seçme](./media/tutorial-backup-sap-hana-db/backup-policy.png)
+   ![Yedekleme ilkesi seçin](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
 4. İlkeyi oluşturduktan sonra **yedekleme menüsünde** **yedeklemeyi etkinleştir**' e tıklayın.
 
@@ -212,11 +178,11 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
 1. **İlke adı**alanına yeni ilke için bir ad girin. Bu durumda, **Saphana**girin.
 
-![Yeni ilke için ad girin](./media/tutorial-backup-sap-hana-db/new-policy.png)
+   ![Yeni ilke için ad girin](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
 2. **Tam yedekleme ilkesinde**, bir **yedekleme sıklığı**seçin. **Günlük** veya **haftalık**seçeneklerinden birini belirleyebilirsiniz. Bu öğretici için **günlük** yedeklemeyi seçtik.
 
-![Yedekleme sıklığı seçin](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
+   ![Yedekleme sıklığı seçin](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
 3. **Bekletme aralığı**' nda, tam yedekleme için bekletme ayarlarını yapılandırın.
    * Varsayılan olarak, tüm seçenekler seçilidir. Kullanmak istemediğiniz tüm Bekletme aralığı sınırlarını temizleyin ve yaptığınız değişiklikleri ayarlayın.
@@ -230,9 +196,9 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
    ![Değişiklik yedekleme ilkesi](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
->[!NOTE]
->Artımlı yedeklemeler Şu anda desteklenmiyor.
->
+   >[!NOTE]
+   >Artımlı yedeklemeler Şu anda desteklenmiyor.
+   >
 
 7. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam** ' ı tıklatın.
 8. İşlem günlüğü yedekleme ilkesi eklemek için **günlük yedeklemesi** ' ni seçin,
@@ -241,9 +207,9 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
     ![Günlük yedekleme ilkesi](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
->[!NOTE]
-> Günlük yedeklemeleri, yalnızca bir başarılı tam yedekleme tamamlandıktan sonra Flow 'a başlar.
->
+   >[!NOTE]
+   > Günlük yedeklemeleri, yalnızca bir başarılı tam yedekleme tamamlandıktan sonra Flow 'a başlar.
+   >
 
 9. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam** ' ı tıklatın.
 10. Yedekleme ilkesini tanımlamayı tamamladıktan sonra, **Tamam**' a tıklayın.

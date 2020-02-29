@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425655"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161610"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -72,9 +72,10 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {OıDC: Loginipucu} |  `login_hint` sorgu dizesi parametresi. | someone@contoso.com |
 | {OıDC: MaxAge} | `max_age`. | Yok |
 | {OıDC: nonce} |`Nonce` sorgu dizesi parametresi. | defaultNonce |
-| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum açma |
+| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum aç |
 | {OıDC: kaynak} |`resource` sorgu dizesi parametresi. | Yok |
 | {OıDC: scope} |`scope` sorgu dizesi parametresi. | OpenID |
+| {OıDC: RedirectUri} |`redirect_uri` sorgu dizesi parametresi. | https://jwt.ms |
 
 ### <a name="context"></a>Bağlam
 
@@ -85,7 +86,7 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {Context: Datetimeınutc} |UTC olarak tarih saat.  | 10/10/2018 12:00:00 PM |
 | {Context: DeploymentMode} |İlke dağıtım modu.  | Üretim |
 | {Context: IPAddress} | Kullanıcı IP adresi. | 11.111.111.11 |
-
+| {Context: KMSI} | Oturumumu [açık tut](custom-policy-keep-me-signed-in.md) onay kutusunun seçili olup olmadığını gösterir. |  true |
 
 ### <a name="non-protocol-parameters"></a>Protokol olmayan parametreler
 

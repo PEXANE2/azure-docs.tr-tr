@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068467"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912588"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>Geçiş için gereken süre nedir?
+
+Geçişin planlanması ve yürütülmesi büyük ölçüde mimarinin karmaşıklığına bağlıdır ve birkaç ay sürebilir.  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM 'lerinde (klasik) yeni bir müşterinin tanımı nedir?
+
+Febrauary 2020 (kullanım dışı bırakılmadan önce bir ay) için aboneliklerinde IaaS VM 'Leri (klasik) olmayan müşteriler yeni müşteri olarak kabul edilir. 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Bu geçiş planı Azure sanal makinelerde çalışan mevcut hizmetlerimi ya da uygulamaların herhangi birini etkiliyor mu? 
 
-Hayır. VM’ler (Klasik), genel kullanılabilirlikte tam olarak desteklenen hizmetlerdir. Microsoft Azure’da, ayak izinizi genişletmek için bu kaynakları kullanmaya devam edebilirsiniz.
+IaaS VM 'Leri (klasik) için 1 Mart 2023 ' ye kadar değil. IaaS VM 'Leri (klasik) genel kullanıma yönelik olarak tam olarak desteklenen hizmetlerdir. Microsoft Azure’da, ayak izinizi genişletmek için bu kaynakları kullanmaya devam edebilirsiniz. 1 Mart 2023 ' de, bu VM 'Ler tamamen kullanımdan kaldırılacak ve etkin veya ayrılmış VM 'Ler serbest bırakılacak & durdurulur. Cloud Services (klasik), depolama hesapları (klasik) vb. gibi klasik diğer kaynaklara hiçbir etkisi olmaz.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Yakın gelecekte geçirmeyi planlamadığım VM'lerime ne olur? 
 
-Mevcut klasik API'leri ve kaynak modelini kullanımdan kaldırmıyoruz. Resource Manager dağıtım modelinde kullanılabilen gelişmiş özellikleri dikkate alarak geçiş kolaylaştırmak istiyoruz. Resource Manager altında IaaS’ın parçası olan [geliştirmelerden bazılarını](../articles/azure-resource-manager/management/deployment-models.md) incelemenizi öneririz.
+1 Mart 2023 ' de, IaaS VM 'Leri (klasik) tamamen kullanımdan kaldırılacak ve etkin veya ayrılmış VM 'Ler serbest bırakılacak & durdurulur. İş etkisini engellemek için, şimdi geçişinizi planlamaya başlamak ve 1 Mart 2023 ' den önce bu öğeyi doldurmanız çok daha fazla yorum yaptık. Mevcut klasik API 'Leri, Cloud Services ve kaynak modelini kullanımdan kaldırmıyoruz. Resource Manager dağıtım modelinde kullanılabilen gelişmiş özellikleri dikkate alarak geçiş kolaylaştırmak istiyoruz. Bu kaynakları Azure Resource Manager geçirmeye yönelik planlamayı başlatmanız önerilir. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Bu geçiş planı, mevcut araçlarım için ne anlama geliyor? 
 
@@ -37,7 +45,7 @@ Kaynaklar hazır durumda olduğu sürece geçişinizi iptal edebilirsiniz. Kayna
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>İşleme süreci başarısız olursa geçişi geri alabilir miyim? 
 
-İşleme süreci başarısız olursa geçişi geri alamazsınız. Kaydetme işlemi de dahil olmak üzere tüm geçiş işlemleri birden fazla kez denenebilir. Bu nedenle kısa bir süre sonra işlemi yeniden denemenizi öneririz. Hala bir hata varsa, [Microsoft Q & a](https://docs.microsoft.com/answers/index.html)'da bir destek bileti oluşturun veya bir forum gönderisi oluşturun.
+İşleme süreci başarısız olursa geçişi geri alamazsınız. Kaydetme işlemi de dahil olmak üzere tüm geçiş işlemleri birden fazla kez denenebilir. Bu nedenle kısa bir süre sonra işlemi yeniden denemenizi öneririz. Hala bir hata durumunda bir destek bileti oluşturun.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Kaynak Yöneticisi altında IaaS kullanmam gerekiyorsa başka bir hızlı yol devresi satın almam gerekir mi? 
 

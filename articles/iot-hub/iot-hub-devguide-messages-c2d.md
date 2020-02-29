@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964127"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921053"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -78,7 +78,7 @@ Buluttan cihaza bir ileti gönderdiğinizde, hizmet iletinin son durumu hakkınd
 | yok     | IoT Hub 'ı bir geri bildirim iletisi oluşturmaz (varsayılan davranış). |
 | pozitif | Buluttan cihaza ileti *tamamlandı* durumuna ulaşırsa, IoT Hub bir geri bildirim iletisi oluşturur. |
 | negatif | Buluttan cihaza ileti, *kullanılmayan* duruma ulaşırsa, IoT Hub bir geri bildirim iletisi oluşturur. |
-| tam     | IoT Hub 'ı her iki durumda da bir geri bildirim iletisi oluşturur. |
+| tümünü     | IoT Hub 'ı her iki durumda da bir geri bildirim iletisi oluşturur. |
 
 **ACK** değeri *doluysa*ve geri bildirim iletisi almazsanız, geri bildirim iletisinin süresi sona ermediği anlamına gelir. Hizmet özgün iletiye ne olduğunu bilmez. Uygulamada, bir hizmet, geri bildirimin süresi dolmadan önce işleyebilmesi gerekir. En uzun süre sonu süresi iki gündür ve bir hata oluşursa hizmetin yeniden çalıştırılması zaman alır.
 
@@ -87,8 +87,8 @@ Buluttan cihaza bir ileti gönderdiğinizde, hizmet iletinin son durumu hakkınd
 | Özellik     | Açıklama |
 | ------------ | ----------- |
 | EnqueuedTime | Merkez tarafından geri bildirim iletisinin alındığını gösteren zaman damgası |
-| UserId       | `{iot hub name}` |
-| ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
+| UserID       | `{iot hub name}` |
+| contentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 Gövde, her biri aşağıdaki özelliklere sahip olan JSON seri hale getirilmiş bir kayıt dizisidir:
 
@@ -96,7 +96,7 @@ Gövde, her biri aşağıdaki özelliklere sahip olan JSON seri hale getirilmiş
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | İleti sonucunun ne zaman gerçekleştiğini belirten zaman damgası (örneğin, Merkez geri bildirim iletisini aldı veya özgün iletinin zaman aşımına uğradı) |
 | Originalmessageıd  | Bu geri bildirim bilgilerinin ilişkili olduğu buluttan cihaza mesajın *MessageID* |
-| Durum         | IoT Hub tarafından oluşturulan geri bildirim iletilerinde kullanılan gerekli bir dize: <br/> *Başarılı* <br/> *Aşıldığı* <br/> *Deliverycountexcebaşında* <br/> *Reddedilecek* <br/> *Temizlenir* |
+| Durum         | IoT Hub tarafından oluşturulan geri bildirim iletilerinde kullanılan gerekli bir dize: <br/> *Başarılı* <br/> *Aşıldığı* <br/> *DeliveryCountExceeded* <br/> *Reddedilecek* <br/> *Temizlenir* |
 | Açıklama        | *StatusCode* için dize değerleri |
 | DeviceId           | Bu geri bildirim parçasının ilişkili olduğu buluttan cihaza yönelik iletinin hedef cihazının *DeviceID* 'i |
 | Devicegenerationıd | Bu geri bildirim parçasının ilişkili olduğu buluttan cihaza ileti hedef cihazının *Devicegenerationıd 'si* |
@@ -134,12 +134,36 @@ Her IoT Hub 'ı, buluttan cihaza mesajlaşma için aşağıdaki yapılandırma s
 
 | Özellik                  | Açıklama | Aralık ve varsayılan |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Buluttan cihaza iletiler için varsayılan TTL | 2 güne kadar ISO_8601 aralığı (en az 1 dakika); varsayılanını 1 saat |
-| maxDeliveryCount          | Buluttan cihaza cihaz başına kuyruklar için en fazla teslimat sayısı | 1-100; varsayılanını 10 |
-| geri bildirim. ttlAsIso8601     | Hizmet ile bağlantılı geri bildirim iletileri için bekletme | 2 güne kadar ISO_8601 aralığı (en az 1 dakika); varsayılanını 1 saat |
-| geri bildirim. maxDeliveryCount | Geri bildirim kuyruğu için en fazla teslimat sayısı | 1-100; varsayılanını 100 |
+| defaultTtlAsIso8601       | Buluttan cihaza iletiler için varsayılan TTL | Aralığı 2 güne kadar ISO_8601 (en az 1 dakika); Varsayılan: 1 saat |
+| maxDeliveryCount          | Buluttan cihaza cihaz başına kuyruklar için en fazla teslimat sayısı | 1-100; Varsayılan: 10 |
+| geri bildirim. ttlAsIso8601     | Hizmet ile bağlantılı geri bildirim iletileri için bekletme | Aralığı 2 güne kadar ISO_8601 (en az 1 dakika); Varsayılan: 1 saat |
+| geri bildirim. maxDeliveryCount | Geri bildirim kuyruğu için en fazla teslimat sayısı | 1-100; Varsayılan: 10 |
+| geri bildirim. lockDurationAsIso8601 | Geri bildirim kuyruğu için en fazla teslimat sayısı | 5 ile 300 saniyeye ISO_8601 aralığı (en az 5 saniye); Varsayılan: 60 saniye. |
 
-Bu yapılandırma seçeneklerini ayarlama hakkında daha fazla bilgi için bkz. [IoT Hub 'Ları oluşturma](iot-hub-create-through-portal.md).
+Yapılandırma seçeneklerini aşağıdaki yollarla ayarlayabilirsiniz:
+
+* **Azure Portal**: IoT Hub 'ınızdaki **Ayarlar** altında **yerleşik uç noktalar** ' ı seçin ve **bulutu cihaz mesajlaşma 'ya**genişletin. ( **Geri bildirimi ayarlanıyor. maxDeliveryCount** ve **feedback. lockDurationAsIso8601** özellikleri şu anda Azure Portal desteklenmemektedir.)
+
+    ![Portalda, buluttan cihaza mesajlaşma için yapılandırma seçeneklerini ayarlama](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+
+* **Azure CLI**: [az IoT Hub Update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) komutunu kullanın:
+
+    ```azurecli
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.defaultTtlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.ttlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

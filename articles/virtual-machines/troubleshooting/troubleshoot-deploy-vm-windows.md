@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058045"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921420"
 ---
-# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure 'da Windows sanal makine sorunlarını dağıtma sorunlarını giderme
+# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure'da Windows sanal makinesi dağıtma sorunlarını giderme
 
 Azure 'da sanal makine (VM) dağıtımı sorunlarını gidermek için sık karşılaşılan hataların ve çözümlerin [en önemli sorunlarını](#top-issues) gözden geçirin.
 
@@ -78,7 +78,7 @@ Aylık kredinizi etkinleştirmek için bu [makaleye](https://azure.microsoft.com
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Pencere istemci görüntülerine erişim sağlamak için Kurumsal Anlaşma (EA) Kurumsal Geliştirme ve Test nasıl eklenir?
 
-Yalnızca, Kurumsal Yönetici tarafından Kurumsal Geliştirme ve Test teklifi kapsamında abonelik oluşturma izni verilen Hesap Sahipleri bu işlemi yapabilir. Hesap sahibi Azure hesap portalı aracılığıyla abonelikler oluşturur ve ardından etkin Visual Studio abonelerini ortak yönetici olarak eklememelidir. Geliştirme ve test için gereken kaynakları yönetebilmeleri ve kullanabilmesi için. Daha fazla bilgi için bkz. [Kurumsal Geliştirme ve test](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Kurumsal Geliştirme ve Test teklifini temel alan abonelikler oluşturma özelliği, bir kurumsal yönetici tarafından bunu yapma izni verilen hesap sahipleri ile kısıtlıdır. Hesap sahibi Azure hesap portalı aracılığıyla abonelikler oluşturur ve ardından etkin Visual Studio abonelerini ortak yönetici olarak eklememelidir. Geliştirme ve test için gereken kaynakları yönetebilmeleri ve kullanabilmesi için. Daha fazla bilgi için bkz. [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Windows N serisi VM 'imde sürücüm eksik
 
@@ -106,6 +106,8 @@ Bu [makalede](../windows/client-images.md) , Azure 'da Windows istemcisini çal�
 Bir VM çalışırken bir fiziksel sunucuya dağıtılır. Azure bölgelerindeki fiziksel sunucular, ortak fiziksel donanım kümelerinde gruplandırılır. VM 'nin farklı donanım kümelerine taşınmasını gerektiren bir VM 'nin yeniden boyutlandırılması, VM 'yi dağıtmak için kullanılan dağıtım modeline bağlı olarak farklılık gösteren bir değer.
 
 - Klasik dağıtım modelinde dağıtılan sanal makineler, bulut hizmeti dağıtımının kaldırılması ve yeniden dağıtılması gerekir ve bu da VM 'Leri başka bir boyuttaki ailedeki bir boyutla değiştirin.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 - Kaynak Yöneticisi dağıtım modelinde dağıtılan VM 'Ler, kullanılabilirlik kümesindeki herhangi bir sanal makinenin boyutunu değiştirmeden önce kullanılabilirlik kümesindeki tüm VM 'Leri durdurmanız gerekir.
 

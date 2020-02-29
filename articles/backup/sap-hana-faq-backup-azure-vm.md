@@ -1,14 +1,14 @@
 ---
-title: SSS-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
+title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e5684024668103ccbe13be4af3d7a9336651df77
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287846"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919694"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -43,11 +43,11 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Azure VM 'de SAP HANA veritabanlarını yedeklemek için Önkoşullar nelerdir?
 
-[Önkoşullara](tutorial-backup-sap-hana-db.md#prerequisites) ve [izin](tutorial-backup-sap-hana-db.md#setting-up-permissions) bölümlerine bakın.
+[Önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [kayıt öncesi betiğin bölümler olduğunu](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) inceleyin.
 
 ### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Azure 'un SAP HANA veritabanlarını yedekleyebilmesi için hangi izinlerin ayarlanması gerekir?
 
-Ön kayıt betiğini çalıştırmak, Azure 'un SAP HANA veritabanlarını yedeklemesini sağlamak için gerekli izinleri ayarlar. İzinler hakkında daha fazla bilgiyi [buradan](tutorial-backup-sap-hana-db.md#setting-up-permissions)edinebilirsiniz.
+Ön kayıt betiğini çalıştırmak, Azure 'un SAP HANA veritabanlarını yedeklemesini sağlamak için gerekli izinleri ayarlar. Ön kayıt betiğini [buradan](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)daha fazla bulabilirsiniz.
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>SAP HANA 1,0 ' den 2,0 ' e geçirildikten sonra yedeklemeler çalışır mi?
 

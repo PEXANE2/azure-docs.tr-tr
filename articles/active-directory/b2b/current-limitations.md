@@ -11,11 +11,11 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1717897261404a2ab8df723c280c9be6a2dacea4
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 02/28/2020
 ms.locfileid: "77196142"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğinin sınırlamaları
@@ -32,22 +32,6 @@ Azure AD B2B, Azure AD hizmeti dizin sınırlarına tabidir. Bir kullanıcının
 
 ## <a name="national-clouds"></a>Ulusal bulutlar
 [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) , Azure 'un fiziksel olarak yalıtılmış örnekleridir. B2B işbirliği Ulusal bulut sınırları genelinde desteklenmez. Örneğin, Azure kiracınız genel, genel bulutda ise, hesabı ulusal bir bulutta olan bir kullanıcıyı davet edebilirsiniz. Kullanıcıyla işbirliği yapmak için, başka bir e-posta adresi isteyin veya dizininizdeki kullanıcılar için bir üye kullanıcı hesabı oluşturun.
-
-## <a name="azure-us-government-clouds"></a>Azure ABD kamu bulutları
-Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD devlet bulutu dahilinde olan ve hem B2B işbirliğini destekleyen kiracılar arasında desteklenmektedir. Azure ABD kamu bulutunun parçası olmayan veya henüz B2B işbirliğini desteklemeyen bir kiracıya bir kullanıcıyı davet ediyorsanız, davet başarısız olur veya Kullanıcı daveti kullanamaz. Diğer sınırlamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory Premium P1 ve P2 Çeşitlemeler](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
-
-### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>B2B işbirliğinin Azure ABD kamu kiracısında kullanılabilir olup olmadığını nasıl anlayabilirim?
-Azure ABD kamu bulutu kiracınızın B2B işbirliğini destekleyip desteklemediğini öğrenmek için aşağıdakileri yapın:
-
-1. Bir tarayıcıda, *&lt;TenantName&gt;* için kiracı adınızı DEĞIŞTIREREK aşağıdaki URL 'ye gidin:
-
-   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
-
-2. JSON yanıtında `"tenant_region_scope"` bulun:
-
-   - `"tenant_region_scope":"USGOV”` görünürse, B2B desteklenir.
-   - `"tenant_region_scope":"USG"` görünürse, B2B desteklenmez.
- 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

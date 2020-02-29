@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084811"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918346"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Video özeti oluşturmak için Azure Media Video Thumbnails kullanma  
- 
+
+> [!NOTE]
+> **Azure Media video Thumbnails** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
+
 ## <a name="overview"></a>Genel Bakış
 
 **Azure Media video Thumbnails** medya IŞLEMCISI (MP), yalnızca uzun bir videonun özetini önizlemek isteyen müşteriler için yararlı olan bir videonun özetini oluşturmanızı sağlar. Örneğin, müşteriler bir küçük resmin üzerine gelindiğinde kısa bir "Özet videosu" görmek isteyebilir. Bir yapılandırma ön ayarı aracılığıyla **Azure Media video Thumbnails** parametrelerini ayırarak, açıklayıcı bir alt klip oluşturmak ALGORITHMICALLY için MP 'nin güçlü görüntü algılama ve birleştirme teknolojisini kullanabilirsiniz.  

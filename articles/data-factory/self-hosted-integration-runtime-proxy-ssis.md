@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187675"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160820"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
 
@@ -165,7 +165,7 @@ Azure-SSIS IR çalışan ikinci hazırlama görevleri ayrı olarak faturalandır
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Yalnızca açık veritabanı bağlantısı (ODBC), OLEDB veya düz dosya bağlantı yöneticileri ve ODBC, OLEDB ve düz dosya kaynakları ya da OLEDB hedefi olan veri akışı görevleri şu anda desteklenmektedir. 
+- Yalnızca açık veritabanı bağlantısı (ODBC), OLEDB veya düz dosya bağlantı yöneticileri ve ODBC, OLEDB veya düz dosya kaynakları olan veri akışı görevleri şu anda desteklenmektedir. 
 - Yalnızca *hesap anahtarı*, *paylaşılan ERIŞIM imzası (SAS) URI 'Si*veya *hizmet sorumlusu* kimlik doğrulaması ile yapılandırılmış Azure Blob depolama ile bağlantılı hizmetler şu anda desteklenmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

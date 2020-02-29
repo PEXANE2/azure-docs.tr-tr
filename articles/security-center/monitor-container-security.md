@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431572"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919541"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>Kapsayıcılarınızın güvenliğini izleme
 
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi, kapsayıcı güvenliğinin aşağıdaki üç yönlerini
 
 - **Azure Kubernetes hizmet kümelerinizi sağlamlaştırma** -Güvenlik Merkezi, Azure Kubernetes hizmet kümelerinizin yapılandırmasında güvenlik açıkları bulduğunda öneriler sağlar. Görünebilen belirli önerilerin ayrıntıları için bkz. [Kubernetes hizmet önerileri](recommendations-reference.md#recs-containers).
 
-- **Çalışma zamanı koruması** -Güvenlik Merkezi 'nin standart fiyatlandırma katmanında çalışıyorsanız, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit algılama alacaksınız. Güvenlik Merkezi, ana bilgisayar ve AKS kümesi düzeyinde şüpheli etkinlikler için uyarı oluşturur. Görünebilen ilgili güvenlik uyarılarının ayrıntıları için uyarılar başvuru tablosunun [Azure Kubernetes hizmet kümeleri](alerts-reference.md#alerts-akscluster) ve [kapsayıcılar için uyarılar-konak düzeyi](alerts-reference.md#alerts-containerhost) bölümlerine bakın.
+- **Çalışma zamanı koruması** -Güvenlik Merkezi 'nin standart fiyatlandırma katmanında çalışıyorsanız, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması alacaksınız. Güvenlik Merkezi, ana bilgisayar ve AKS kümesi düzeyinde şüpheli etkinlikler için uyarı oluşturur. Görünebilen ilgili güvenlik uyarılarının ayrıntıları için uyarılar başvuru tablosunun [Azure Kubernetes hizmet kümeleri](alerts-reference.md#alerts-akscluster) ve [kapsayıcılar için uyarılar-konak düzeyi](alerts-reference.md#alerts-containerhost) bölümlerine bakın.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Güvenlik açıkları için ARM tabanlı kapsayıcı kayıt defterlerinden tarama 
 

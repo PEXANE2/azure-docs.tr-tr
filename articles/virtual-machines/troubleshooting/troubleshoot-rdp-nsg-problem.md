@@ -12,20 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981798"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918181"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG 'de RDP bağlantı noktası etkinleştirilmediği için bir VM 'ye uzaktan bağlanılamıyor
 
 Bu makalede, ağ güvenlik grubunda (NSG) Uzak Masaüstü Protokolü (RDP) bağlantı noktası etkinleştirilmediği için bir Azure Windows sanal makinesine (VM) bağlanamadaki bir sorunu nasıl giderebileceğiniz açıklanır.
 
-
-> [!NOTE] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/management/deployment-models.md). Yeni dağıtımlar için klasik dağıtım modeli yerine Kaynak Yöneticisi dağıtım modelini kullanmanızı öneririz. 
 
 ## <a name="symptom"></a>Belirti
 
@@ -36,7 +33,7 @@ RDP bağlantı noktası ağ güvenlik grubunda açılmadığından, Azure 'daki 
 Yeni bir VM oluşturduğunuzda, Internet 'ten gelen tüm trafik varsayılan olarak engellenir. 
 
 Bir NSG 'de RDP bağlantı noktasını etkinleştirmek için şu adımları izleyin:
-1. Oturum [Azure portalında](https://portal.azure.com).
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. **Sanal makinelerde**, sorunu olan VM 'yi seçin. 
 3. **Ayarlar**' da **ağ**' ı seçin. 
 4. **Gelen bağlantı noktası kurallarında**, RDP bağlantı noktasının doğru şekilde ayarlandığından emin olun. Yapılandırmaya bir örnek aşağıda verilmiştir: 

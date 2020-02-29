@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981429"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919439"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM başlatması Windows Update 'te takıldı
 
 Bu makale, sanal makineniz (VM) başlangıç sırasında Windows Update aşamada takıldığında sorunu çözmeye yardımcı olur. 
 
-> [!NOTE] 
-> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede Kaynak Yöneticisi dağıtım modelinin kullanımı ele alınmaktadır. Klasik dağıtım modelini kullanmak yerine bu modeli Yeni dağıtımlar için kullanmanızı öneririz.
 
 ## <a name="symptom"></a>Belirti
 
@@ -44,8 +42,8 @@ Yüklenen veya toplanan güncelleştirmelerin sayısına bağlı olarak güncell
 
 ### <a name="remove-the-update-that-causes-the-problem"></a>Soruna neden olan güncelleştirmeyi kaldırın
 
-1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md). 
-2. [İşletim sistemi diskini bir kurtarma VM'si ekleme](troubleshoot-recovery-disks-portal-windows.md).
+1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md). 
+2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](troubleshoot-recovery-disks-portal-windows.md).
 3. İşletim sistemi diski kurtarma sanal makinesine eklendikten sonra, disk yönetimi 'ni açmak için **diskmgmt. msc** ' yi çalıştırın ve ekli diskin **çevrimiçi**olduğundan emin olun. \Windows klasörünü tutan bağlı işletim sistemi diskine atanan sürücü harfini unutmayın. Disk şifrelenirse, bu belgedeki sonraki adımlara geçmeden önce diskin şifresini çözün.
 
 4. Yükseltilmiş bir komut istemi örneği açın (yönetici olarak çalıştır). Bağlı işletim sistemi diskinde bulunan güncelleştirme paketlerinin listesini almak için aşağıdaki komutu çalıştırın:
@@ -77,4 +75,4 @@ Yüklenen veya toplanan güncelleştirmelerin sayısına bağlı olarak güncell
     > [!NOTE] 
     > Paketin boyutuna bağlı olarak, DıSM aracının yükleme kaldırma işlemi bir süre sürer. Normalde işlem, 16 dakika içinde tamamlanır.
 
-7. [İşletim sistemi diskini ve VM yeniden](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
+7. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.

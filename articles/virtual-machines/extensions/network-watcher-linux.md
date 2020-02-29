@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d2bfe4576a9350e905fc10f3d7617619e6284a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073043"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915495"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux için ağ Izleyicisi Aracısı sanal makine uzantısı
 
@@ -75,7 +75,7 @@ Aşağıdaki JSON ağ Izleyicisi Aracısı uzantısı için şemayı gösterir. 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek |
+| Adı | Değer / örnek |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
@@ -87,6 +87,8 @@ Aşağıdaki JSON ağ Izleyicisi Aracısı uzantısı için şemayı gösterir. 
 Azure VM uzantılarını bir Azure Resource Manager şablonuyla dağıtabilirsiniz. Ağ Izleyicisi aracı uzantısını dağıtmak için, şablonunuzda önceki JSON şemasını kullanın.
 
 ## <a name="azure-classic-cli-deployment"></a>Azure klasik CLı dağıtımı
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Aşağıdaki örnek, ağ Izleyicisi Aracısı VM uzantısını klasik dağıtım modeliyle dağıtılan var olan bir sanal makineye dağıtır:
 
@@ -108,18 +110,6 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 ### <a name="troubleshooting"></a>Sorun giderme
 
 Azure portal veya Azure CLı kullanarak uzantı dağıtımlarının durumu hakkında veri alabilirsiniz.
-
-Aşağıdaki örnek, klasik Azure CLı kullanılarak klasik dağıtım modeliyle dağıtılan bir VM için uzantıların dağıtım durumunu gösterir:
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-Uzantı yürütme çıkışı aşağıdaki dizinde bulunan dosyalara kaydedilir:
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
 
 Aşağıdaki örnek, Azure CLı kullanarak Kaynak Yöneticisi aracılığıyla dağıtılan bir VM için NetworkWatcherAgentLinux uzantısının dağıtım durumunu gösterir:
 

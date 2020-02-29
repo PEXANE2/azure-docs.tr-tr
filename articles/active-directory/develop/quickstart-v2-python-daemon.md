@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f80f586c783293f87e3b7de469eff07d2e4802d8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703312"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160906"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulama kimliğini kullanarak bir Python konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, uygulamanın kimliğini kullanarak bir erişim belirt
 > [!div renderon="docs"]
 > ![bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -52,7 +52,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+> 1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin. 
@@ -76,37 +76,42 @@ Bu örneği çalıştırmak için şunlar gerekir:
 
 #### <a name="step-2-download-your-python-project"></a>2\. Adım: Python projenizi Indirme
 
-[Python Daemon projesini indirin](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [Python Daemon projesini indirin](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>3\. Adım: Python projenizi yapılandırma
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Kod örneğini indirin]()
 
-1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
-1. **1-Call-MsGraph-WithSecret "** adlı alt klasöre gidin.
-1. **Parameters. JSON** öğesini düzenleyin ve `authority`, `client_id`ve `secret` alanlarının değerlerini aşağıdaki kod parçacığıyla değiştirin:
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Yeni bir istemci parolası oluştur]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>3\. Adım: Python projenizi yapılandırma
+> 
+> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
+> 1. **1-Call-MsGraph-WithSecret "** adlı alt klasöre gidin.
+> 1. **Parameters. JSON** öğesini düzenleyin ve `authority`, `client_id`ve `secret` alanlarının değerlerini aşağıdaki kod parçacığıyla değiştirin:
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    Konumlar:
+>    - `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
+>    - `Enter_the_Tenant_Id_Here`-bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
+>    - `Enter_the_Client_Secret_Here`-bu değeri, 1. adımda oluşturulan istemci sırrı ile değiştirin.
+>
+> > [!TIP]
+> > **Uygulama (istemci) kimliği**, **Dizin (kiracı) kimliği**değerlerini bulmak Için Azure Portal uygulamanın **genel bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
-    
-    > [!div renderon="docs"]
-    >> Nerede:
-    >> * `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
-    >> * `Enter_the_Tenant_Id_Here`-bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
-    >> * `Enter_the_Client_Secret_Here`-bu değeri, 1. adımda oluşturulan istemci sırrı ile değiştirin.
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>3\. Adım: yönetici onayı
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > **Uygulama (istemci) kimliği**, **Dizin (kiracı) kimliği**değerlerini bulmak Için Azure Portal uygulamanın **genel bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
-    
-#### <a name="step-4-admin-consent"></a>4\. Adım: yönetici onayı
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>4\. Adım: yönetici onayı
 
 Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: `Insufficient privileges to complete the operation`alırsınız. Bu hata, *yalnızca uygulama Izni* yönetici onayı gerektirdiğinden oluşur: dizininizin genel Yöneticisi uygulamanıza onay vermelidir. Rolünüze bağlı olarak aşağıdaki seçeneklerden birini belirleyin:
 
@@ -129,11 +134,15 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Nerede:
+>> Konumlar:
 >> * `Enter_the_Tenant_Id_Here`-bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >> * `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 
-#### <a name="step-5-run-the-application"></a>5\. Adım: uygulamayı çalıştırma
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>4\. Adım: uygulamayı çalıştırma
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>5\. Adım: uygulamayı çalıştırma
 
 Bu örneğin bağımlılıklarını bir kez yüklemeniz gerekir
 
@@ -180,7 +189,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Nerede: ||
+> | Konumlar: ||
 > |---------|---------|
 > | `config["secret"]` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config["client_id"]` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
@@ -201,7 +210,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Nerede:| |
+> |Konumlar:| |
 > |---------|---------|
 > | `config["scope"]` | İstenen kapsamları içerir. Gizli istemciler için, istenen kapsamların Azure portalında ayarlanan uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için `{Application ID URI}/.default` benzer biçimi kullanmalıdır (Microsoft Graph için `{Application ID URI}` noktaları `https://graph.microsoft.com`). Özel Web API 'Leri için `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **BIR API 'Yi kullanıma** sunma bölümünde tanımlanmıştır. |
 

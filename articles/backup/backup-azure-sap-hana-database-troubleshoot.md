@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664607"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916872"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -16,9 +16,16 @@ Bu makale, Azure sanal makinelerinde SAP HANA veritabanlarının yedeklenmesi i�
 
 ## <a name="prerequisites-and-permissions"></a>Önkoşullar ve Izinler
 
-Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-db.md#prerequisites) ve [izin bölümlerini ayarlamaya](tutorial-backup-sap-hana-db.md#setting-up-permissions) bakın.
+Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-db.md#prerequisites) ve [ön kayıt betiğinin bölümler yaptığını](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) inceleyin.
 
 ## <a name="common-user-errors"></a>Ortak Kullanıcı hataları
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **Hata Iletisi**      | <span style="font-weight:normal">Azure Backup 'ın yedeklemeyi yürütmek için gerekli rol ayrıcalıkları yok</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **Olası nedenler**    | Rolün üzerine yazılmış olabilir.                          |
+| **Önerilen eylem** | Sorunu çözmek için betiği **bul** bölmesinden çalıştırın veya [buradan](https://aka.ms/scriptforpermsonhana)indirin. Alternatif olarak, ' SAP_INTERNAL_HANA_SUPPORT ' rolünü Iş yükü yedekleme kullanıcısına (AZUREWLBACKUPHANAUSER) ekleyin. |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>Usererrorınopeninghanaodbcconnection
 

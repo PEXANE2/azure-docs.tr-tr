@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 95733f579740f2928cda917eec0023bf00d53076
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722791"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912163"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>IoT Hub ve cihaz sağlama hizmeti 'nde TLS 1,0 ve 1,1 ' nin kullanımdan kaldırılması
 
@@ -25,12 +25,12 @@ Müşterilerin belirli koşullara ve yapılandırmalarına bağlı olarak, TLS 1
 
 ## <a name="supported-ciphers"></a>Desteklenen şifrelemeler
 
-TLS el sıkışması sırasında yalnızca aşağıdaki şifrelemeleri kullanılabilir:
+TLS el sıkışmasında kullanılan çeşitli şifrelemelerin kullanılabilirliği için zaman çizelgesi aşağıdaki gibidir:
 
-* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (Şu anda destekleniyor)
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (2020 ikinci yarısında desteklenecektir)
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (2020 ikinci yarısında desteklenecektir)
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (2020 ikinci yarısında desteklenecektir)
 
 
 ## <a name="customer-feedback"></a>Müşteri geri bildirimi

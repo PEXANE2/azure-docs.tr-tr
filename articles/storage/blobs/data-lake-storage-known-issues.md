@@ -1,27 +1,41 @@
 ---
 title: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar | Microsoft Docs
-description: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar ve sınırlamalar hakkında bilgi edinin
+description: Azure Data Lake Storage 2. kısıtlamaları ve bilinen sorunlar hakkında bilgi edinin.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834939"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919620"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
-Bu makalede henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen özellikler ve araçlar listelenmektedir.
+Bu makalede, Azure Data Lake Storage 2. kısıtlamaları ve bilinen sorunlar açıklanmaktadır.
 
-<a id="blob-apis-disabled" />
+## <a name="supported-blob-storage-features"></a>Desteklenen BLOB depolama özellikleri
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>Blob API 'Leri kullanma ile ilgili sorunlar ve sınırlamalar
+Daha fazla sayıda BLOB depolama özelliği, hiyerarşik bir ad alanı olan hesaplarla çalışır. Tüm liste için, bkz. [Azure Data Lake Storage 2. bulunan BLOB Storage özellikleri](data-lake-storage-supported-blob-storage-features.md).
+
+## <a name="supported-azure-service-integrations"></a>Desteklenen Azure hizmeti tümleştirmeleri
+
+Data Lake Storage Gen2, verileri almak, analiz yapmak ve görsel gösterimler oluşturmak için kullanabileceğiniz çeşitli Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin listesi için bkz. [Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md).
+
+[Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md)bölümüne bakın.
+
+## <a name="supported-open-source-platforms"></a>Açık kaynak platformlar desteklenir
+
+Data Lake depolama Gen2'ye birden fazla açık kaynak platformları destekler. Tüm liste için, bkz. [Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar](data-lake-storage-supported-open-source-platforms.md).
+
+[Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar](data-lake-storage-supported-open-source-platforms.md)bölümüne bakın.
+
+## <a name="blob-storage-apis"></a>BLOB Depolama API'leri
 
 Blob API 'Leri ve Data Lake Storage 2. API 'Leri aynı verilerde çalışabilir.
 
@@ -48,38 +62,57 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="filesystem-support-in-sdks"></a>SDK 'larda dosya sistemi desteği
+## <a name="file-system-support-in-sdks"></a>SDK 'larda dosya sistemi desteği
 
-- [.Net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) ve [Python](data-lake-storage-directory-file-acl-python.md) desteği genel önizlemeye sunuldu. Diğer SDK 'lar Şu anda desteklenmiyor.
+- [.Net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) ve [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md) ve destek genel önizlemededir. Diğer SDK 'lar Şu anda desteklenmiyor.
 - Get ve set ACL işlemleri şu anda özyinelemeli değil.
 
-## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell ve Azure CLı 'de dosya sistemi desteği
+## <a name="file-system-support-in-powershell-and-azure-cli"></a>PowerShell ve Azure CLı 'de dosya sistemi desteği
 
 - [PowerShell](data-lake-storage-directory-file-acl-powershell.md) ve [Azure CLI](data-lake-storage-directory-file-acl-cli.md) desteği genel önizlemeye sunuldu.
 - Get ve set ACL işlemleri şu anda özyinelemeli değil.
 
-## <a name="support-for-other-blob-storage-features"></a>Diğer BLOB depolama özellikleri için destek
+## <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen tüm diğer özellikler ve araçlar listelenmektedir.
+* Blob anlık görüntülerini silme henüz desteklenmiyor.  
 
-| Özellik/Araç    | Daha fazla bilgi    |
-|--------|-----------|
-| **Hesap yük devretmesi** |Henüz desteklenmiyor|
-| **AzCopy** | Sürüme özgü destek <br><br>AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.|
-| **Azure Blob depolama yaşam döngüsü yönetim ilkeleri** | Yaşam döngüsü yönetimi ilkeleri desteklenir (Önizleme).  Yaşam döngüsü yönetim ilkelerinin önizlemesine ve arşiv erişim katmanını [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)Arşivle için kaydolun.   <br><br>Tüm erişim katmanları desteklenir. Arşiv erişim katmanı Şu anda önizleme aşamasındadır. Blob anlık görüntülerini silme henüz desteklenmiyor.  Şu anda yaşam döngüsü yönetim ilkelerini ve arşiv erişim katmanını etkileyen hatalar var.  |
-| **Azure Content Delivery Network (CDN)** | Henüz desteklenmiyor|
-| **Azure Arama** |Desteklenir (Önizleme)|
-| **Azure Depolama Gezgini** | Sürüme özgü destek. <br><br>Yalnızca `1.6.0` veya üzeri sürümleri kullanın. <br> Şu anda, belirli senaryolarda kimlik doğrulama hatalarıyla sonuçlanabileceğinden sürümü `1.11.0` etkileyen bir depolama hatası vardır. Depolama hatasına yönelik bir onarım kullanıma alınıyor, ancak geçici bir çözüm olarak, [ücretsiz indirme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)olarak kullanılabilen sürüm `1.10.x` kullanmanızı öneririz. `1.10.x`, depolama hatası tarafından etkilenmez.|
-| **Blob kapsayıcı ACL 'Leri** |Henüz desteklenmiyor|
-| **Blobsigortası** |Henüz desteklenmiyor|
-| **Özel etki alanları** |Henüz desteklenmiyor|
-| **Azure portal Depolama Gezgini** | Sınırlı destek. ACL 'Ler henüz desteklenmiyor. |
-| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri desteklenir (Önizleme). <br><br>Tanılama günlüklerini görüntülemek için Azure Depolama Gezgini 1,10. x kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
-| **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
-| **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları desteklenir. Arşiv katmanı önizlemededir. Diğer tüm erişim katmanları henüz desteklenmiyor. <br><br> Şu anda arşiv erişim katmanını etkileyen hatalar var.  Arşiv erişim katmanının önizlemesine [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)kaydolun.|
-| **Statik Web siteleri** |Henüz desteklenmiyor <br><br>Özellikle, dosyaları [statik Web sitelerine](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)sunma özelliği.|
-| **Üçüncü taraf uygulamalar** | Sınırlı destek <br><br>REST API 'Leri kullanan üçüncü taraf uygulamalar, Data Lake Storage 2. ile birlikte kullandığınızda çalışmaya devam edecektir. <br>Blob API 'Leri çağıran uygulamalar muhtemelen işe sunulacaktır.|
-|**Geçici Silme** |Henüz desteklenmiyor|
-| **Sürüm oluşturma özellikleri** |Henüz desteklenmiyor <br><br>Bu, [geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)ve [anlık görüntüler](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)gibi diğer sürüm oluşturma özelliklerini içerir.|
+* Şu anda yaşam döngüsü yönetim ilkelerini ve arşiv erişim katmanını etkileyen hatalar var. 
+
+## <a name="diagnostic-logs"></a>Tanılama günlükleri
+
+Tanılama günlüklerini görüntülemek için Azure Depolama Gezgini 1,10. x kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
+
+## <a name="blobfuse"></a>Blobsigortası
+
+Blobsigortası desteklenmez.
+
+
+
+<a id="known-issues-tools" />
+
+## <a name="azcopy"></a>AzCopy
+
+AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
+
+<a id="storage-explorer" />
+
+## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
+
+Yalnızca `1.6.0` veya üzeri sürümleri kullanın. Şu anda `1.11.0` etkileyen bir depolama hatası vardır. Bu, belirli senaryolarda kimlik doğrulama hatalarına neden olabilir. Depolama hatasına yönelik bir onarım kullanıma alınıyor, ancak geçici bir çözüm olarak, [ücretsiz indirme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)olarak kullanılabilen sürüm `1.10.x` kullanmanızı öneririz. `1.10.x` depolama hatası tarafından etkilenmez.
+
+<a id="explorer-in-portal" />
+
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure portalında Depolama Gezgini
+
+ACL 'Ler henüz desteklenmiyor.
+
+<a id="third-party-apps" />
+
+## <a name="thirdpartyapplications"></a>Üçüncü taraf uygulamalar
+
+REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri çağıran Data Lake Storage 2. uygulamalarla birlikte kullandığınızda çalışmaya devam edecektir.
+
+
+
 
 

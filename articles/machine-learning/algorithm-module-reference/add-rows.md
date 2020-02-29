@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152474"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918504"
 ---
 # <a name="add-rows-module"></a>Satır ekleme modülü
 
@@ -32,7 +32,7 @@ Satırları birleştirme, aşağıdaki gibi senaryolarda faydalıdır:
 
 İki veri kümesinden satırları birleştirmek için, satırların tam olarak aynı şemaya sahip olması gerekir. Bu, aynı sayıda sütun ve sütunlarda aynı tür verilerin olması anlamına gelir.
 
-1.  **Satır ekleme** modülünü işlem hattınızla sürükleyin, bunu **veri dönüştürme**altında, **işleme** kategorisinde bulabilirsiniz.
+1.  **Satır ekleme** modülünü işlem hattınızla sürükleyin, **veri dönüştürme**bölümünde bulabilirsiniz.
 
 2. Veri kümelerini iki giriş bağlantı noktasına bağlayın. Eklemek istediğiniz veri kümesi ikinci (sağdaki) bağlantı noktasına bağlanmalıdır. 
   

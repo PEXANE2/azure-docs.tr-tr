@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838556"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913489"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -46,7 +46,7 @@ API sürümü `2019-05-06`başlayarak, öğe düzeyinde Dizin Oluşturucu hatala
 
 Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. `'{47.6,-122.1}'` yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih Tariheyse ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
@@ -57,7 +57,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Hata: belgenizdeki içerik veya meta veriler ayıklanamadı
 Blob veri kaynağı olan Dizin Oluşturucu, belgeden (örneğin, bir PDF dosyası) içerik veya meta verileri ayıklayamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | blob boyut sınırının üzerinde | Belge, geçerli hizmet katmanınız için belge ayıklama için en büyük boyut `'134217728'` baytı aşan `'150441598'` bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob desteklenmeyen içerik türüne sahip | Belge desteklenmeyen içerik türüne sahip `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Blob veri kaynağı olan Dizin Oluşturucu, belgeden (örneğin, bir PDF dosyas�
 ## <a name="error-could-not-parse-document"></a>Hata: belge ayrıştırılamadı
 Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirtilen alan eşleme şemasına dönüştürülürken bir sorun oluştu. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
@@ -81,7 +81,7 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 ## <a name="error-could-not-execute-skill"></a>Hata: yetenek yürütülemedi
 Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Geçici bağlantı sorunları | Geçici bir hata oluştu. Lütfen daha sonra tekrar deneyin. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 | Olası ürün hatası | Beklenmeyen bir hata oluştu. | Bu, bilinmeyen bir hata sınıfını gösterir ve bir ürün hatası olduğu anlamına gelebilir. Yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) girin. |
@@ -140,7 +140,7 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
 | Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
@@ -152,9 +152,9 @@ Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi.
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Hata: dizine eklenecek Dizin Oluşturucu verileri geçersiz olduğundan belge dizini oluşturulamadı
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>Hata: belgenin bazı verileri geçerli olmadığından belge dizini oluşturulamadı
 
-Belge okundu ve işlendi, ancak dizin alanlarının yapılandırmasındaki bir uyumsuzluk ve Dizin Oluşturucu tarafından ayıklanan verilerin doğası nedeniyle arama dizinine eklenemedi. Bunun nedeni aşağıdakiler olabilir:
+Belge, Dizin Oluşturucu tarafından okundu ve işlendi, ancak dizin alanları yapılandırmasındaki ve Dizin Oluşturucu tarafından ayıklanan ve işlenen verilerin eşleşmemesi nedeniyle arama dizinine eklenemedi. Bunun nedeni aşağıdakiler olabilir:
 
 | Neden | Ayrıntılar/örnek
 | --- | ---
@@ -166,12 +166,11 @@ Belge okundu ve işlendi, ancak dizin alanlarının yapılandırmasındaki bir u
 
 Tüm bu durumlarda, Dizin şemasını doğru bir şekilde oluşturup uygun [Dizin Oluşturucu alan eşlemelerini](search-indexer-field-mappings.md)ayarlamış olduğunuzdan emin olmak için, Dizin oluşturucular Için [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [veri türü eşlemesi](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) ' ne bakın. Hata iletisi, uyuşmazlığın kaynağını izlemeye yardımcı olabilecek ayrıntıları içerir.
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Hata: tablo bileşik bir birincil anahtara sahip olduğundan, tümleşik değişiklik izleme ilkesi kullanılamıyor
 
 Bu SQL tabloları için geçerlidir ve genellikle anahtar bileşik anahtar olarak tanımlandığında veya tablo benzersiz bir kümelenmiş dizin tanımlamışsa (bir SQL dizininde olduğu gibi, bir Azure Search dizininde olduğu gibi) olur. Ana neden, anahtar özniteliğinin [benzersiz bir kümelenmiş dizin](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)durumunda bileşik birincil anahtar olacak şekilde değiştirilmektedir. Bu durumda, SQL Tablonuzun benzersiz bir kümelenmiş dizine sahip olmadığından veya anahtar alanını yinelenen değerler içermediği garanti edilen bir alanla eşleştirdiğinizden emin olun.
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Hata: Dizin Oluşturucu en fazla çalışma süresi içinde belge işlenemedi
 
@@ -183,7 +182,7 @@ Dizin Oluşturucu, izin verilen yürütme süresi içinde veri kaynağından tek
 
 Bu hata, Dizin Oluşturucu [verileri bir bilgi deposuna proje](knowledge-store-projection-overview.md) yapmaya çalıştığında ve bunu yapmaya çalışımızda bir hata oluştuğu zaman oluşur.  Bu hata tutarlı ve düzeltilebilir olabilir ya da yansıtma çıkış havuzunda, çözmeniz için beklemeniz ve yeniden denemeniz gerekebilecek geçici bir hata olabilir.  Bilinen hata durumları ve olası çözümler kümesi aşağıda verilmiştir.
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Kapsayıcı blobu `'blobUri'` kapsayıcıda güncelleştirilemedi `'containerName'` |Belirtilen kapsayıcı yok. | Dizin Oluşturucu, belirtilen kapsayıcının önceden oluşturulup oluşturulmadıysa denetler ve gerekirse onu oluşturur, ancak bu denetimi dizin oluşturucunun her yerine yalnızca bir kez çalıştırır. Bu hata, bu adımdan sonra kapsayıcının silindiği anlamına gelir.  Bu hatayı çözmek için şunu deneyin: depolama hesabı bilgilerinizi tek tek bırakın, dizin oluşturucunun bitmesini bekleyin ve ardından dizin oluşturucuyu yeniden çalıştırın. |
 | Kapsayıcı blobu `'blobUri'` kapsayıcıda güncelleştirilemedi `'containerName'` |Aktarım bağlantısına veri yazılamıyor: mevcut bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
@@ -220,7 +219,7 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 }
 ```
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Beceri girişi yanlış türde | "Gerekli yetenek girişi beklenen tür `String`değildi. Ad: `text`, kaynak: `/document/merged_content`. "  "Gerekli beceri girişi beklenen biçimde değil. Ad: `text`, kaynak: `/document/merged_content`. "  "Dizi olmayan `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`üzerinde yinelenemez."  "Dizi olmayan `/document/normalized_images/0/imageCelebrities/0/detail/celebrities``0` kullanılamıyor" | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
 | Yetenek girişi eksik | "Gerekli yetenek girişi eksik. Ad: `text`, kaynak: `/document/merged_content`"" eksik değer `/document/normalized_images/0/imageTags`. "  "`0`length `/document/pages` dizi içinde `0` seçemezsiniz." | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve yoldaki Özellik adı büyük/küçük harf, ek veya eksik `*` ve veri kaynağındaki belgelerin gerekli girişleri sağlayıp sağlamadığına emin olun. |

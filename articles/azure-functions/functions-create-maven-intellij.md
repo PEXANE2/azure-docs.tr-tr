@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230722"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913251"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java ve IntelliJ ile ilk Azure işlevinizi oluşturma
 
@@ -80,8 +80,6 @@ Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klas
 1. **Uzaktan**eklemek için **(+)** seçeneğini belirleyin.
 1. _Ad_ ve _Ayarlar_ alanlarını doldurun ve ardından yapılandırmayı kaydetmek için **Tamam** ' ı seçin.
 1. Kurulumdan sonra, hata ayıklamayı başlatmak için **< uzak yapılandırma adı > hata ayıkla** ' yı seçin veya klavyenizde SHIFT + F9 tuşlarına basın.
-
-   ![IntelliJ 'de hata ayıklama işlevleri](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
 1. İşiniz bittiğinde, hata ayıklayıcıyı ve çalışan işlemi durdurun. Tek seferde yalnızca bir işlev Konağı etkin ve yerel olarak çalıştırılabilir.
 

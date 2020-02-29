@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/28/2020
+ms.openlocfilehash: c64483f18b2deb061704a4eb7171e575fdd561e8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906677"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164636"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , şirket içi SQL Server veya SAP 'den Azure bilişsel hizmetler 'e kadar çeşitli [kullanıma açık bağlayıcılar](../connectors/apis-list.md)sunarak farklı Hizmetleri düzenlemenize ve tümleştirmenize yardımcı olur. Logic Apps hizmeti "sunucusuz" olduğundan ölçek veya örnekler hakkında endişelenmeniz gerekmez. Yapmanız gereken tek şey, bir tetikleyiciyle iş akışını ve iş akışının gerçekleştirdiği eylemleri tanımlar. Temel alınan platform ölçek, kullanılabilirlik ve performansı işler. Logic Apps, özellikle birden fazla sistem genelinde birden çok eylemi koordine etmeniz gereken kullanım durumları ve senaryolar için yararlıdır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , şirket içi SQL Server veya SAP 'den Azure bilişsel hizmetler 'e kadar çeşitli [kullanıma açık bağlayıcılar](../connectors/apis-list.md)sunarak farklı Hizmetleri düzenlemenize ve tümleştirmenize yardımcı olur. Logic Apps hizmeti "sunucusuz" olduğundan ölçek veya örnekler hakkında endişelenmeniz gerekmez. Yapmanız gereken tek şey, bir tetikleyiciyle iş akışını ve iş akışının gerçekleştirdiği eylemleri tanımlar. Temel alınan platform ölçek, kullanılabilirlik ve performansı işler. Logic Apps, özellikle birden çok sistem ve hizmet arasında eylemleri koordine etmeniz gereken kullanım durumları ve senaryolar için yararlıdır.
 
-Azure Logic Apps desteklediği birçok model ve özellik hakkında daha fazla bilgi edinmenize yardımcı olmak için, yaygın örnekler ve senaryolar aşağıda verilmiştir.
+Azure Logic Apps desteklediği yetenekler ve desenler hakkında bilgi edinmenize yardımcı olması için, bu makalede yaygın başlangıç noktaları, örnekler ve senaryolar açıklanmaktadır.
 
-## <a name="popular-starting-points-for-logic-app-workflows"></a>Mantıksal uygulama iş akışları için popüler başlangıç noktaları
+## <a name="common-starting-points-for-logic-app-workflows"></a>Mantıksal uygulama iş akışları için ortak başlangıç noktaları
 
 Her mantıksal uygulama bir [*tetikleyici*](../logic-apps/logic-apps-overview.md#logic-app-concepts)ile başlar ve mantıksal uygulama iş akışınızı başlatan ve bu tetikleyicinin bir parçası olarak herhangi bir verilerde geçiş yapan yalnızca bir tetikleyici. Bazı bağlayıcılar bu türlerde gelen Tetikleyiciler sağlar:
 
@@ -27,88 +27,118 @@ Her mantıksal uygulama bir [*tetikleyici*](../logic-apps/logic-apps-overview.md
 
 * *İtme Tetikleyicileri*: bir hizmet uç noktasındaki verileri dinler ve belirli bir olay gerçekleşene kadar bekler. Olay gerçekleştiğinde, tetikleyici hemen başlatılır, giriş olarak kullanılabilir verileri kullanan yeni bir iş akışı örneği oluşturur ve çalışır.
 
-İşte yalnızca birkaç popüler tetikleyici örnekleri:
+Yaygın olarak kullanılan Tetikleyicileri tanımlayan örnekler şunlardır:
 
-* Masını
+* *Yoklama* Tetikleyicileri:
 
-  * [ **Yinelenme** tetikleyicisi](../connectors/connectors-native-recurrence.md) , mantıksal uygulamanızı başlatmak için başlangıç tarihi ve saati ile yinelenme süresini ayarlamanıza olanak sağlar. Örneğin, mantıksal uygulamanızı tetiklemek için haftanın günlerini ve günün saatlerini seçebilirsiniz. Daha fazla bilgi için şu konulara bakın:
+  * [ **Yinelenme** tetikleyicisi](../connectors/connectors-native-recurrence.md) , mantıksal uygulamanızı başlatmak için başlangıç tarihi ve saati ile yinelenme süresini ayarlamanıza olanak sağlar. Örneğin, mantıksal uygulamanızı tetiklemek için haftanın günlerini ve günün saatlerini seçebilirsiniz. Daha fazla bilgi için şu konulara bakın:<p>
 
-    * [Azure Logic Apps ile yinelenen otomatikleştirilmiş görevler, süreçler ve iş akışları zamanlayın ve çalıştırın](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
-    * [Öğretici: Azure Logic Apps bir zamanlamaya göre trafiği denetleyin](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+    * [Azure Logic Apps ile yinelenen otomatik görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
+    * [Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı yinelenen iş akışları oluşturma](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * "E-posta alındığında" tetikleyicisi, mantıksal uygulamanızın Logic Apps tarafından desteklenen herhangi bir posta sağlayıcısından yeni e-postayı denetlemesini sağlar; örneğin, [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)vb. Daha fazla bilgi için şu konulara bakın: 
+  * **Bir e-posta alındığında** tetikleyici, mantıksal uygulamanızın Logic Apps tarafından desteklenen herhangi bir posta sağlayıcısından yeni e-postayı denetlemesini sağlar; örneğin, [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)vb. Daha fazla bilgi için şu konulara bakın:<p>
 
-    * [Öğretici: Azure Logic Apps ile posta listesi isteklerini yönetme](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
-    * [Öğretici: Azure Logic Apps ile e-postaları ve ekleri işlemeyi otomatikleştirme](../logic-apps/tutorial-process-email-attachments-workflow.md)
+    * [Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
+    * [Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme](../logic-apps/tutorial-process-email-attachments-workflow.md)
 
-  * [ **Http** tetikleyicisi](../connectors/connectors-native-http.md) , mantıksal uygulamanızın http üzerinden iletişim kurarak belirtilen bir hizmet uç noktasını denetlemesini sağlar.
-  
-* Hareketle
+  * [ **Http** tetikleyicisi](../connectors/connectors-native-http.md) , http veya https üzerinden bir hizmet uç noktası çağırabilir. Daha fazla bilgi için bkz. [http uç noktalarını kullanarak çağrı, tetikleyici veya iç içe iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
-  * [ **İstek** tetikleyicisi](../connectors/connectors-native-reqres.md) , mantıksal uygulamanızın http isteklerini almasını ve belirli bir şekilde olaylara gerçek zamanlı olarak yanıt vermesini sağlar.
+* *Gönderim* Tetikleyicileri:
+
+  * [ **İstek** tetikleyicisi](../connectors/connectors-native-reqres.md) gelen https isteklerini alabilir.
 
   * [ **Http Web kancası** tetikleyicisi](../connectors/connectors-native-webhook.md) , bu hizmete bir *geri çağırma URL 'si* kaydederek bir hizmet uç noktasına abone olur. Bu şekilde, hizmet yalnızca belirtilen olay gerçekleştiğinde tetikleyiciyi bilgilendirebilir, böylece tetikleyici hizmeti yoklamayı gerektirmez.
 
-Yeni veriler veya bir olay hakkında bildirim aldıktan sonra tetikleyici ateşlenir, yeni bir mantıksal uygulama iş akışı örneği oluşturur ve iş akışındaki eylemleri çalıştırır. İş akışı boyunca tetikleyiciden herhangi bir veriye erişebilirsiniz. Örneğin, "yeni bir tweet üzerinde" tetikleyicisi Tweet içeriğini mantıksal uygulama çalıştırmasına geçirir. Azure Logic Apps kullanmaya başlamak için bu hızlı başlangıç konularını deneyin:
+Belirtilen olay gerçekleştirildikten sonra tetikleyici ateşlenir, bu yeni bir mantıksal uygulama iş akışı örneği oluşturur ve iş akışındaki eylemleri çalıştırır. İş akışı boyunca tetikleyiciden herhangi bir veriye erişebilirsiniz. Örneğin, **Yeni bir tweet tetikleyicisi üzerindeki** Twitter, Tweet içeriğini mantıksal uygulama çalıştırmasına geçirir. Azure Logic Apps kullanmaya başlamak için bu hızlı başlangıç konularını deneyin:
 
-* [Hızlı başlangıç: Azure portal Azure Logic Apps ile ilk otomatik iş akışınızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Logic Apps ile otomatik görevler, süreçler ve iş akışları oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [Hızlı başlangıç: Azure Logic Apps Azure portal kullanarak ilk otomatikleştirilmiş iş akışınızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [Hızlı başlangıç: Azure Logic Apps Visual Studio kullanarak otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Hızlı başlangıç: Visual Studio Code kullanarak otomatik mantıksal uygulama iş akışları oluşturma ve yönetme](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
 
-## <a name="respond-to-triggers-and-extend-actions"></a>Tetiklere yanıt verme ve eylemleri genişletme
+## <a name="control-flow-and-error-handling-capabilities"></a>Denetim akışı ve hata işleme özellikleri
 
-Yayımlanmış bağlayıcılar bulunmayan sistemler ve hizmetler için Logic Apps 'i de genişletebilirsiniz.
-
-* [Özel Tetikleyiciler veya eylemler oluşturma](../logic-apps/logic-apps-create-api-app.md)
-* [İş akışı çalıştırmaları için uzun süre çalışan eylemler ayarlama](../logic-apps/logic-apps-create-api-app.md)
-* [Web kancaları ile dış olaylara ve eylemlere yanıt verme](../logic-apps/logic-apps-create-api-app.md)
-* [HTTP isteklerine zaman uyumlu yanıtlar ile çağrı, tetikleyici veya iç içe geçmiş iş akışları](../logic-apps/logic-apps-http-endpoint.md)
-* [Öğretici: Logic Apps ve Power BI ile birlikte bir AI destekli sosyal pano oluşturun](https://aka.ms/logicappsdemo)
-* [Video: Twilio SMS Web kancalarına yanıt verin ve bir metin yanıtı gönderin](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
-
-## <a name="control-flow-error-handling-and-logging-capabilities"></a>Denetim akışı, hata işleme ve günlüğe kaydetme özellikleri
-
-Logic Apps, koşullar, anahtarlar, döngüler ve kapsamlar gibi gelişmiş denetim akışı için zengin yetenekler içerir. Dayanıklı çözümler sağlamak için, iş akışlarınızda hata ve özel durum işleme de uygulayabilirsiniz. İş akışı çalıştırma durumu için bildirim ve tanılama günlükleri için Azure Logic Apps Ayrıca izleme ve uyarılar da sağlar.
+Logic Apps, koşullar, anahtarlar, döngüler ve kapsamlar gibi gelişmiş denetim akışı için zengin yetenekler içerir. Dayanıklı çözümler sağlamak için, iş akışlarınızda hata ve özel durum işleme de uygulayabilirsiniz.
 
 * [Koşullu deyimler](../logic-apps/logic-apps-control-flow-conditional-statement.md) ve [Switch deyimlerini](../logic-apps/logic-apps-control-flow-switch-statement.md) temel alan farklı eylemler gerçekleştirin
 * [Döngülerle adımları yineleyin veya diziler ve koleksiyonlardaki öğeleri işleyin](../logic-apps/logic-apps-control-flow-loops.md)
 * [İşlemleri kapsamlar ile birlikte gruplandırma](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
-* [Bir iş akışında yazma hatası ve özel durum işleme](../logic-apps/logic-apps-exception-handling.md)
+* [Bir iş akışına hata ve özel durum işleme ekleme](../logic-apps/logic-apps-exception-handling.md)
 * [Kullanım örneği: bir sağlık şirketi HL7 FHıR iş akışları için mantıksal uygulama özel durum işlemeyi nasıl kullanır?](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/monitor-logic-apps.md)
-* [Mantıksal uygulamalar oluştururken izleme ve tanılama günlüğünü açma](../logic-apps/monitor-logic-apps-log-analytics.md)
 
-## <a name="deploy-and-manage-logic-apps"></a>Logic Apps dağıtma ve yönetme
+## <a name="create-custom-apis-and-connectors"></a>Özel API 'Ler ve bağlayıcılar oluşturma
 
-Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilmiş derleme araçlarıyla mantıksal uygulamaları tamamen geliştirebilir ve dağıtabilirsiniz. Bir kaynak şablonundaki iş akışları ve bağımlı bağlantılar için dağıtımı desteklemek amacıyla Logic Apps, Azure kaynak dağıtım şablonlarını kullanır. Visual Studio Araçları otomatik olarak bu şablonları oluşturur. Bu şablonlar, sürüm oluşturma için kaynak denetimine iade edebilirsiniz.
+Yayımlanmış bağlayıcılar bulunmayan sistemler ve hizmetler için Logic Apps 'i de genişletebilirsiniz.
 
-* [Visual Studio ile mantıksal uygulamalar oluşturma ve dağıtma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/monitor-logic-apps.md)
-* [Mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Logic Apps çağrısı için özel API 'Ler oluşturma](../logic-apps/logic-apps-create-api-app.md)
+* [Yoklama tetikleyici modelini kullanarak yeni verileri veya olayları düzenli olarak denetleme](../logic-apps/logic-apps-create-api-app.md#polling-triggers)
+* [Web kancası tetikleyici modelini kullanarak yeni verileri veya olayları bekleme ve dinleme](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)
+* [Yoklama eylemi modelini kullanarak uzun süre çalışan görevler gerçekleştirin](../logic-apps/logic-apps-create-api-app.md#async-pattern)
+* [Web kancası eylem modelini kullanarak uzun süre çalışan görevler gerçekleştirme](../logic-apps/logic-apps-create-api-app.md#webhook-actions)
+* [Azure Logic Apps özel bağlayıcılar](../logic-apps/custom-connector-overview.md)
+
+## <a name="build-business-to-business-b2b-solutions"></a>İşletmeden işletmeye (B2B) çözümleri oluşturun
+
+Kuruluşlar arasında kurumsal tümleştirme çözümleri ve sorunsuz iletişim için, Azure Logic Apps ile Enterprise Integration Pack (EıP) kullanarak bu senaryolar için otomatik ölçeklendirilebilir iş akışları oluşturabilirsiniz. Kuruluşlar farklı protokoller ve biçimler kullanmasına karşın, iletileri elektronik olarak değiş tokuş edebilirler. EıP, farklı biçimleri, kuruluşların sistemlerinin AS2, x12, EDIOLGU ve RosettaNet gibi sektör standardı protokolleri işleyebildiğine ve desteklediğinden bir biçime dönüştürür. Bu çözümleri derlemek için, tanımladığınız ve mantıksal uygulama iş akışlarınızla kullandığınız yapıtlar için güvenli, ölçeklenebilir ve yönetilebilir bir kapsayıcı sağlayan ayrı bir Azure kaynağı olan bir tümleştirme hesabı oluşturursunuz. Örneğin, yapıtlar ticari iş ortakları, anlaşmalar, Haritalar, şemalar, sertifikalar ve toplu iş yapılandırması içerir.
+
+* [Genel Bakış: Azure Logic Apps ve Enterprise Integration Pack B2B kurumsal tümleştirme çözümleri](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* [Azure Logic Apps 'de B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturun ve yönetin](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+
+## <a name="access-azure-virtual-network-resources"></a>Azure sanal ağ kaynaklarına erişin
+
+Bazen mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın, Azure sanal ağındaki sanal makineler (VM) ve diğer sistemler veya hizmetler gibi güvenli kaynaklara erişmesi gerekir. Bu erişimi ayarlamak için, mantıksal uygulamalarınızı oluşturabileceğiniz ve çalıştırabileceğiniz bir tümleştirme hizmeti ortamı (ıSE) oluşturabilirsiniz. ISE, depolama gibi adanmış kaynakları kullanan Logic Apps hizmetin özel ve yalıtılmış bir örneğidir ve genel, "genel", çok kiracılı Logic Apps hizmetinden ayrı olarak çalışır. Yalıtılmış özel örneğinizi ve genel Global örneği ayırmak, diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltmaya yardımcı olur ve bu da "gürültülü komşular" etkisi olarak da bilinir.
+
+* [Genel Bakış: Azure Logic Apps Azure sanal ağ kaynaklarına erişim](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)
+* [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+
+## <a name="deploy-manage-and-monitor-logic-apps"></a>Mantıksal uygulamaları dağıtma, yönetme ve izleme
+
+Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilmiş derleme araçlarıyla mantıksal uygulamaları tamamen geliştirebilir ve dağıtabilirsiniz. Bir kaynak şablonundaki iş akışları ve bağımlı bağlantılar için dağıtımı desteklemek amacıyla Logic Apps, Azure kaynak dağıtım şablonlarını kullanır. Visual Studio Araçları otomatik olarak bu şablonları oluşturur. Bu şablonlar, sürüm oluşturma için kaynak denetimine iade edebilirsiniz. İş akışı çalıştırma durumu için bildirim ve tanılama günlükleri için Azure Logic Apps Ayrıca izleme ve uyarılar da sağlar.
+
+### <a name="deploy"></a>Dağıtma
+
+* [Hızlı başlangıç: Azure Logic Apps Visual Studio kullanarak otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [Genel Bakış: mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [Azure Logic Apps için Azure Resource Manager şablonları dağıtma](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 * [Örnek: Azure DevOps 'da Azure Logic Apps Azure Service Bus kuyruklara bağlanma ve Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps 'den Azure Storage hesaplarına bağlanma ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps için bir işlev uygulama eylemi ayarlama ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps 'ten bir tümleştirme hesabına bağlanın ve Azure DevOps 'da Azure Pipelines ile dağıtın](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps kullanarak Azure Pipelines düzenleme](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
-## <a name="content-types-conversions-and-transformations-within-a-run"></a>Bir çalıştırma içindeki içerik türleri, dönüştürmeler ve dönüşümler
+### <a name="manage"></a>Yönetme
+
+* [Visual Studio 'Yu kullanarak mantıksal uygulamaları yönetme](../logic-apps/manage-logic-apps-with-visual-studio.md)
+* [B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturma ve yönetme](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Azure Logic Apps tümleştirme hizmeti ortamını (ıSE) yönetme](../logic-apps/ise-manage-integration-service-environment.md)
+
+### <a name="monitor"></a>İzleme
+
+* [Çalışma durumunu izleyin, tetikleyici geçmişini gözden geçirin ve Azure Logic Apps uyarılarını ayarlayın](../logic-apps/monitor-logic-apps.md)
+* [Azure Izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../logic-apps/monitor-logic-apps-log-analytics.md)
+* [Azure Logic Apps 'de Azure Izleyici günlüklerini ayarlama ve B2B iletileri için tanılama verileri toplama](../logic-apps/monitor-b2b-messages-log-analytics.md)
+* [Azure Logic Apps için Azure Izleyici günlüklerinde izleme ve izleme sorguları görüntüleyin ve oluşturun](../logic-apps/create-monitoring-tracking-queries.md)
+
+## <a name="handle-content-types-conversions-and-transformations"></a>İçerik türlerini, dönüştürmeleri ve dönüştürmeleri işleme
 
 Azure Logic Apps [iş akışı tanımlama dilindeki](https://aka.ms/logicappsdocs)birçok işlevi kullanarak birden çok içerik türüne erişebilir, dönüşüm ve dönüştürme yapabilirsiniz. Örneğin, `@json()` ve `@xml()` iş akışı ifadeleriyle bir String, JSON ve XML arasında dönüştürme yapabilirsiniz. Logic Apps altyapısı, hizmetler arasında kayıpsız bir biçimde içerik aktarımını desteklemek için içerik türlerini korur.
 
-* [Logic Apps 'te iş akışı ifadeleri nasıl çalışır](../logic-apps/logic-apps-author-definitions.md)
-* `application/xml`, `application/octet-stream`ve `multipart/formdata` gibi [JSON olmayan içerik türlerini işleyin](../logic-apps/logic-apps-content-type.md)
-* [Azure Logic Apps için iş akışı tanımı dil şeması](https://aka.ms/logicappsdocs)
+* `application/`, `application/octet-stream`ve `multipart/formdata` gibi [Azure Logic Apps içerik türlerini işleyin](../logic-apps/logic-apps-content-type.md)
+* [Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu](../logic-apps/workflow-definition-language-functions-reference.md)
+* [Azure Logic Apps için iş akışı tanımı dil şeması](../logic-apps/logic-apps-workflow-definition-language.md)
 
 ## <a name="other-integrations-and-capabilities"></a>Diğer tümleştirmeler ve yetenekler
 
-Logic Apps Ayrıca Azure Işlevleri, Azure API Management, Azure uygulama hizmetleri ve özel HTTP uç noktaları gibi birçok hizmet ile tümleştirme sunar. Örneğin, REST ve SOAP.
+Azure Logic Apps, Azure Işlevleri, Azure API Management, Azure App Service ve özel HTTP uç noktaları (örneğin, REST ve SOAP) gibi birçok hizmet ile tümleşir.
 
-* [Azure sunucusuz ile gerçek zamanlı sosyal pano oluşturma](../logic-apps/logic-apps-scenario-social-serverless.md)
-* [Logic Apps 'ten Azure Işlevleri çağırma](../logic-apps/logic-apps-azure-functions.md)
-* [Öğretici: Azure Işlevleri ile mantıksal uygulamaları tetikleme](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
-* [Öğretici: Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini Izleme](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Azure Logic Apps Azure Işlevleri 'ni çağırma](../logic-apps/logic-apps-azure-functions.md)
+* [Öğretici: Azure Işlevleri ve Azure Service Bus kullanarak Logic Apps 'i çağırma veya tetikleme](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [Öğretici: Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Öğretici: Twitter gönderisini çözümlemek için Azure Logic Apps ve Azure bilişsel hizmetler ile tümleşen bir işlev oluşturma](../azure-functions/functions-twitter-email.md)
+* [Öğretici: Power BI ve Azure Logic Apps kullanarak AI destekli sosyal pano oluşturma](https://aka.ms/logicappsdemo)
+* [Öğretici: Azure Event Grid ve Logic Apps kullanarak sanal makine değişikliklerini Izleme](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Öğretici: IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [Blog: mantıksal uygulamalardan SOAP uç noktalarını çağırma](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [Blog: Azure Logic Apps kullanarak SOAP hizmetlerini çağırma](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>Uçtan uca senaryolar
 

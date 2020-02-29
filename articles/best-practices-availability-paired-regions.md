@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718753"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163057"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler
 
@@ -23,6 +23,9 @@ Azure dünyanın dört bir yanındaki birden fazla coğrafi ortamda çalışır.
 Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirilir ve bir bölgesel çift oluşturur. Özel durum, Coğrafya dışında bir bölgeyle eşleştirilmiş Brezilya Güney. Tek seferde yalnızca bir eşleştirilmiş bölge güncelleştirildiğinden, Azure bölge çiftleri arasında Platform güncelleştirmelerini (planlı bakım) seri hale getirir. Birden çok bölgeyi etkileyen kesinti durumunda, her bir çiftin en az bir bölgesine kurtarma için öncelik alınacaktır.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
+
+> [!NOTE]
+> Atanan Azure bölgesel çiftleri değiştirilemez.
 
 Şekil 1 – Azure bölgesel çiftleri
 
@@ -35,7 +38,7 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | Kanada |Orta Kanada |Doğu Kanada |
 | Çin |Çin Kuzey |Çin Doğu|
 | Çin |Çin Kuzey 2 |Çin Doğu 2|
-| Avrupa |Kuzey Avrupa (İrlanda) |Batı Avrupa (Hollanda) |
+| Avrupa |Kuzey Avrupa (Irlanda) |Batı Avrupa (Hollanda) |
 | Fransa |Orta Fransa|Güney Fransa|
 | Almanya |Orta Almanya |Kuzeydoğu Almanya |
 | Hindistan |Orta Hindistan |Güney Hindistan |
@@ -50,9 +53,9 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | UK |Batı Birleşik Krallık |Güney Birleşik Krallık |
 | Birleşik Arap Emirlikleri | BAE Kuzey | BAE Orta
 | ABD Savunma Bakanlığı |Doğu US DoD |Orta US DoD |
-| ABD Devleti |US Gov Arizona |US Gov Texas |
-| ABD Devleti |US Gov Iowa |US Gov Virginia |
-| ABD Devleti |US Gov Virginia |US Gov Texas |
+| ABD devleti |US Gov Arizona |US Gov Texas |
+| ABD devleti |US Gov Iowa |US Gov Virginia |
+| ABD devleti |US Gov Virginia |US Gov Texas |
 
 Tablo 1-Azure bölgesel çiftlerinin eşleme
 

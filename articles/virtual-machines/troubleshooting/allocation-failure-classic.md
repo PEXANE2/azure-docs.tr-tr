@@ -12,14 +12,16 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059190"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913387"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Klasik dağıtım modelindeki ayırma hatası senaryolarına özel sorun giderme adımları
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Aşağıda, bir ayırma isteğinin sabitlenememesine neden olan yaygın ayırma senaryoları verilmiştir. Bu makalenin ilerleyen kısımlarında her senaryoya değineceğiz.
 
@@ -40,7 +42,7 @@ Aşağıdaki diyagramda (sabitlenmiş) ayırma senaryolarına ait taksonomi gös
 ![Sabitlenmiş ayırma sınıflandırması](./media/virtual-machines-common-allocation-failure/Allocation3.png)
 
 ## <a name="resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Bir VM 'yi yeniden boyutlandırma veya var olan bir bulut hizmetine VM veya rol örnekleri ekleme
-**Hata:**
+**Hatayla**
 
 Upgrade_VMSizeNotSupported veya GeneralError
 
@@ -55,7 +57,7 @@ Hata Upgrade_VMSizeNotSupported * ise farklı bir VM boyutu deneyin. Farklı bir
 Hata GeneralError * ise, kaynağın türü (örneğin, belirli bir VM boyutu) küme tarafından desteklenir, ancak kümede boş kaynaklar yok. Yukarıdaki senaryoya benzer şekilde, yeni bir bulut hizmeti oluşturarak istenen işlem kaynağını ekleyin (yeni bulut hizmetinin farklı bir VIP kullanması gerektiğini unutmayın) ve bulut hizmetlerinizi bağlamak için bölgesel bir sanal ağ kullanın.
 
 ## <a name="restart-partially-stopped-deallocated-vms"></a>Kısmen durdurulmuş (serbest bırakılmış) VM'leri yeniden başlatma
-**Hata:**
+**Hatayla**
 
 GeneralError *
 
@@ -71,7 +73,7 @@ Farklı bir VIP kullanmayı kabul ediyorsanız, durdurulmuş (serbest bırakılm
 * Mevcut bulut hizmetiniz bölgesel bir sanal ağ kullanmıyorsa, yeni bulut hizmeti için yeni bir sanal ağ oluşturun ve ardından [var olan sanal ağınızı yeni sanal ağa bağlayın](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). [Bölgesel sanal ağlar](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)hakkında daha fazla bilgi için bkz.
 
 ## <a name="restart-fully-stopped-deallocated-vms"></a>Tamamen durdurulmuş (serbest bırakılmış) VM'leri yeniden başlatma
-**Hata:**
+**Hatayla**
 
 GeneralError *
 
@@ -84,7 +86,7 @@ Tam kaldırma, bir bulut hizmetindeki tüm sanal makineleri durdurduğunuzun (se
 Farklı bir VIP kullanmayı kabul ediyorsanız, özgün durdurulmuş (serbest bırakılmış) VM 'Leri silin (ancak ilişkili diskleri tutun) ve ilgili bulut hizmetini silin (VM 'Leri durdurduysanız (serbest bırakıldığında), ilişkili işlem kaynakları zaten serbest bırakıldı. VM 'Leri yeniden eklemek için yeni bir bulut hizmeti oluşturun.
 
 ## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Hazırlama/üretim dağıtımları (yalnızca hizmet olarak platform)
-**Hata:**
+**Hatayla**
 
 New_General * veya New_VMSizeNotSupported *
 
@@ -97,7 +99,7 @@ Bir bulut hizmetinin hazırlama dağıtımı ve üretim dağıtımı aynı küme
 İlk dağıtımı ve özgün bulut hizmetini silin ve bulut hizmetini yeniden dağıtın. Bu eylem, her iki dağıtımda veya istediğiniz VM boyutlarını destekleyen bir kümede yeterli boş kaynağa sahip olan bir kümedeki ilk dağıtımı gösterebilir.
 
 ## <a name="affinity-group-vmservice-proximity"></a>Benzeşim grubu (VM/hizmet yakınlığı)
-**Hata:**
+**Hatayla**
 
 New_General * veya New_VMSizeNotSupported *
 
@@ -110,13 +112,13 @@ Benzeşim grubuna atanan tüm işlem kaynakları tek bir kümeye bağlıdır. Bu
 Benzeşim grubu gerekli değilse, benzeşim grubu kullanmayın veya işlem kaynaklarınızı birden çok benzeşim grubuna gruplandırın.
 
 ## <a name="affinity-group-based-virtual-network"></a>Benzeşim grubu tabanlı sanal ağ
-**Hata:**
+**Hatayla**
 
 New_General * veya New_VMSizeNotSupported *
 
 **Küme sabitleme nedeni**
 
-Bölgesel sanal ağların tanıtılmasından önce, bir sanal ağı bir benzeşim grubuyla ilişkilendirmeniz gerekiyordu. Sonuç olarak, bir benzeşim grubuna yerleştirilmiş işlem kaynakları, "ayırma senaryosunda açıklanan kısıtlamalar ile ilişkilidir: Benzeşim grubu (VM/hizmet yakınlığı) "bölümü. İşlem kaynakları bir kümeye bağlıdır.
+Bölgesel sanal ağların tanıtılmasından önce, bir sanal ağı bir benzeşim grubuyla ilişkilendirmeniz gerekiyordu. Sonuç olarak, bir benzeşim grubuna yerleştirilmiş işlem kaynakları yukarıdaki "ayırma senaryosu: benzeşim grubu (VM/hizmet yakınlığı)" bölümünde açıklanan kısıtlamalar ile bağlanır. İşlem kaynakları bir kümeye bağlıdır.
 
 **Geçici çözüm**
 

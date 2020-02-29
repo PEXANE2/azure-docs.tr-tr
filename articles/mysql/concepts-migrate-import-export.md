@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770960"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163735"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
 Bu makalede MySQL çalışma ekranı kullanarak bir MySQL için Azure veritabanı sunucusuna verileri içeri ve dışarı aktarmaya yönelik iki yaygın yaklaşım açıklanmaktadır. 
@@ -19,10 +19,10 @@ Bu makalede MySQL çalışma ekranı kullanarak bir MySQL için Azure veritaban�
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - MySQL için Azure veritabanı sunucusu, aşağıdaki [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md).
-- MySQL çalışma ekranı veya içeri aktarmak ve dışarı aktarmak için başka bir MySQL aracı [indirildi](https://dev.mysql.com/downloads/workbench/).
+- İçeri/dışarı aktarma işlemini yapmak için MySQL, [MySQL çalışma ekranı](https://dev.mysql.com/downloads/workbench/) veya başka bir üçüncü taraf MySQL aracı indirin.
 
 ## <a name="use-common-tools"></a>Ortak araçları kullanma
-MySQL için Azure veritabanı 'na uzaktan bağlanıp içeri veya dışarı aktarmak için MySQL çalışma ekranı, Toad veya Navicat gibi yaygın araçları kullanın. 
+MySQL için Azure veritabanı 'na uzaktan bağlanıp içeri veya dışarı aktarmak için MySQL çalışma ekranı veya mysqldump gibi ortak yardımcı programları ve araçları kullanın. 
 
 MySQL için Azure veritabanı 'na bağlanmak üzere bir Internet bağlantısı ile istemci makinenizde bu tür araçları kullanın. [MySQL Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](concepts-ssl-connection-security.md)bölümünde açıklandığı gibi en iyi güvenlik UYGULAMALARı için SSL şifreli bir bağlantı kullanın.
 

@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314360"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920357"
 ---
 # <a name="score-svd-recommender"></a>SVD Önerenini Puanlama
 
-Bu makalede, Azure Machine Learning tasarımcısında SVD öneren modülünün Puanını kullanma açıklanmaktadır. Tek değer ayrıştırma (SVD) algoritmasını temel alan eğitilen bir öneri modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
+Bu makalede Azure Machine Learning tasarımcısında (Önizleme), SVD öneren modülünün Puanını kullanma açıklanmaktadır. Tek değer ayrıştırma (SVD) algoritmasını temel alan eğitilen bir öneri modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
 
 SVD öneren iki farklı tahmin türü oluşturabilir:
 
@@ -91,7 +91,7 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 
 5. **Bir kullanıcı için önerilen en fazla öğe sayısı**: her bir kullanıcı için döndürülecek öğe sayısını girin. Varsayılan olarak, modül beş öğe önerir.
 
-6. **Kullanıcı başına öneri havuzunun en küçük boyutu**: önceki önerilerin kaç tane gerektiğini belirten bir değer girin. Varsayılan olarak, bu parametre **2**olarak ayarlanır; Yani, en az iki kullanıcının öğeyi önerdiği anlamına gelir.
+6. **Kullanıcı başına öneri havuzunun en küçük boyutu**: önceki önerilerin kaç tane gerektiğini belirten bir değer girin. Varsayılan olarak, bu parametre 2 olarak ayarlanır; Yani, en az iki kullanıcının öğeyi önerdiği anlamına gelir.
 
    Bu seçeneği yalnızca değerlendirme modunda puansanız kullanın. **Tüm öğeler** veya **derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)** seçeneğini belirlerseniz seçeneği kullanılamaz.
 

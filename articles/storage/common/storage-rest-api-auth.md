@@ -10,18 +10,18 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965712"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916073"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Paylaşılan anahtar yetkilendirmesi ile REST API işlemlerini çağırma
 
 Bu makalede, yetkilendirme üstbilgisinin nasıl ayarlanacağı dahil olmak üzere Azure depolama REST API 'Lerinin nasıl çağrılacağını gösterilmektedir. REST hakkında hiçbir şey bilen bir geliştiricinin görünüm noktasından yazılmıştır ve bir REST çağrısının nasıl yapılacağını fikir vermez. Bir REST işleminin nasıl çağrılacağını öğrendikten sonra, diğer Azure depolama REST işlemlerini kullanmak için bu bilgilerden yararlanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Örnek uygulama, bir depolama hesabı için blob kapsayıcıları listeler. Bu makaledeki kodu denemek için aşağıdaki öğeler gereklidir:
 
@@ -37,7 +37,7 @@ Bu makalede, yetkilendirme üstbilgisinin nasıl ayarlanacağı dahil olmak üze
 
 Örnek uygulama, içinde C#yazılmış bir konsol uygulamasıdır.
 
-Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)'i kullanın.
+Uygulamanın bir kopyasını geliştirme ortamınıza indirmek içi [Git](https://git-scm.com/)’i kullanın.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```
@@ -569,7 +569,7 @@ Bu makalede, BLOB depolama REST API istek yapmayı öğrendiniz. İstek ile, kap
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blob Hizmeti REST API'si](/rest/api/storageservices/blob-service-rest-api)
-- [Dosya Hizmeti REST API'si](/rest/api/storageservices/file-service-rest-api)
-- [Kuyruk Hizmeti REST API'si](/rest/api/storageservices/queue-service-rest-api)
-- [Tablo Hizmeti REST API'si](/rest/api/storageservices/table-service-rest-api)
+- [Blob hizmeti REST API](/rest/api/storageservices/blob-service-rest-api)
+- [Dosya hizmeti REST API](/rest/api/storageservices/file-service-rest-api)
+- [Kuyruk hizmeti REST API](/rest/api/storageservices/queue-service-rest-api)
+- [Tablo hizmeti REST API](/rest/api/storageservices/table-service-rest-api)

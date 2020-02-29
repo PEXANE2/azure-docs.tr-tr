@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203830"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911732"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -80,11 +80,11 @@ Azure Data Box, hizmette şu anahtar örneklerinde kişisel bilgileri toplar ve 
 
   - Kişi adı
   - Telefon numarası
-  - Email
-  - Posta adresi
+  - E-posta
+  - Açık adres
   - Şehir
   - Posta kodu
-  - State
+  - Durum
   - Ülke/İl/Bölge
   - Taşıyıcı hesap numarası
   - Kargo takip numarası

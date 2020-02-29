@@ -16,12 +16,12 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499037"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162275"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için yönetim özellikleri
 
@@ -62,7 +62,7 @@ Müşteriler, Azure AD kuruluşunun güncelleştirilmiş sürümüne sahip oldu�
 
 ## <a name="powershell-change"></a>PowerShell değişikliği
 
-Azure AD rolleri için Privileged Identity Management PowerShell modülünü kullanan müşteriler için, PowerShell güncelleştirme ile çalışmayı durdurur. Önceki cmdlet 'lerin yerine, Azure AD önizleme PowerShell modülünün içindeki Privileged Identity Management cmdlet 'lerini kullanmanız gerekir. [PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)Azure AD PowerShell modülünü yükler. Cmdlet 'ler Graph API üzerine kurulmuştur.
+Azure AD rolleri için Privileged Identity Management PowerShell modülünü kullanan müşteriler için, PowerShell güncelleştirme ile çalışmayı durdurur. Önceki cmdlet 'lerin yerine, Azure AD önizleme PowerShell modülünün içindeki Privileged Identity Management cmdlet 'lerini kullanmanız gerekir. [PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)Azure AD PowerShell modülünü yükler. Artık [Bu PowerShell MODÜLÜNDEKI PIM işlemlerine yönelik belgeleri ve örnekleri okuyabilirsiniz](powershell-for-azure-ad-roles.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

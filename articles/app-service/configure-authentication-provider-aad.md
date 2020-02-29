@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842375"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913217"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>App Service uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -26,7 +26,10 @@ Uygulamanızı ve kimlik doğrulamayı ayarlarken bu en iyi uygulamaları izleyi
 
 ## <a name="express"> </a>Hızlı ayarlarla Yapılandırma
 
-1. [Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin.
+> [!NOTE]
+> **Express** seçeneği, kamu bulutları için kullanılamaz. 
+
+1. [Azure portalındaki], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin.
 2. Sol gezinti bölmesinde, **üzerinde** **kimlik doğrulama/yetkilendirme** > seçin.
 3. **Azure Active Directory** > **Express**' i seçin.
 
@@ -63,7 +66,7 @@ App Service uygulamanızı yapılandırırken aşağıdaki bilgiler gerekir:
 
 Aşağıdaki adımları uygulayın:
 
-1. [Azure Portal]oturum açın, **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanızın **URL 'sini**aklınızda edin. Azure Active Directory Uygulama kaydınızı yapılandırmak için kullanacaksınız.
+1. [Azure portalındaki]oturum açın, **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanızın **URL 'sini**aklınızda edin. Azure Active Directory Uygulama kaydınızı yapılandırmak için kullanacaksınız.
 1. **Yeni kayıt** > **uygulama kayıtları** **Azure Active Directory** > seçin.
 1. **Uygulama kaydetme** sayfasında, uygulama kaydınız Için bir **ad** girin.
 1. **Yeniden yönlendirme URI 'si**içinde **Web** ' i seçin ve `<app-url>/.auth/login/aad/callback`yazın. Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
@@ -84,7 +87,7 @@ Aşağıdaki adımları uygulayın:
 
 ### <a name="secrets"> </a>App Service uygulamanızda Azure Active Directory etkinleştirme
 
-1. [Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
+1. [Azure portalındaki], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
 1. Sol bölmede, **Ayarlar**' ın altında, **üzerinde** **kimlik doğrulama/yetkilendirme** > ' yi seçin.
 1. Seçim Varsayılan olarak, App Service kimlik doğrulaması uygulamanıza yönelik kimliği doğrulanmamış erişime izin verir. Kullanıcı kimlik doğrulamasını zorlamak için, **isteğin kimliği doğrulanmadığı zaman** **Azure Active Directory ile oturum**açmak için yapılacak eylemi ayarlayın.
 1. **Kimlik doğrulama sağlayıcıları**altında **Azure Active Directory**' yi seçin.
@@ -105,7 +108,7 @@ Artık App Service uygulamanızda kimlik doğrulaması için Azure Active Direct
 
 **Active Directory Authentication Library**gibi bir istemci kitaplığı kullanarak kimlik doğrulamaya izin vermek için yerel istemcileri kaydedebilirsiniz.
 
-1. [Azure portal] **Active Directory** > **Yeni kayıt** > **uygulama kayıtları** seçin.
+1. [Azure portalındaki] **Active Directory** > **Yeni kayıt** > **uygulama kayıtları** seçin.
 1. **Uygulama kaydetme** sayfasında, uygulama kaydınız Için bir **ad** girin.
 1. **Yeniden yönlendirme URI 'si**içinde **ortak istemci (mobil & Masaüstü)** öğesini seçin ve `<app-url>/.auth/login/aad/callback`URL 'yi yazın. Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
@@ -125,4 +128,4 @@ Artık App Service uygulamanıza erişebilen bir yerel istemci uygulaması yapı
 
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/

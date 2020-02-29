@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260092"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915716"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
 
@@ -21,7 +21,7 @@ Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetim
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
@@ -130,13 +130,13 @@ Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel bir türü `ILoggerP
 
 > [!WARNING]
 > - , Ortam tarafından sunulan hizmetlerle çakışan Hizmetleri kaydederken, hizmetler koleksiyonuna `AddApplicationInsightsTelemetry()` eklemeyin.
-> - Yerleşik Application Insights işlevselliğini kullanıyorsanız kendi `TelemetryConfiguration` veya `TelemetryClient` kaydetme.
+> - Yerleşik Application Insights işlevselliğini kullanıyorsanız kendi `TelemetryConfiguration` veya `TelemetryClient` kaydetme. Kendi `TelemetryClient` örneğinizi yapılandırmanız gerekirse, [Azure Işlevlerini izle](./functions-monitoring.md#version-2x-and-later-2)bölümünde gösterildiği gibi eklenen `TelemetryConfiguration` aracılığıyla bir tane oluşturun.
 
 ## <a name="function-app-provided-services"></a>İşlev uygulaması tarafından sunulan hizmetler
 
 İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Ömür|Açıklama|
+|Hizmet türü|Süre|Açıklama|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|

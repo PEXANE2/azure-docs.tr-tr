@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509028"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917365"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
@@ -41,13 +41,15 @@ Bu sayfa Azure Active Directory Domain Services hakkında sık sorulan soruları
 Hayır. Tek bir Azure AD dizini için yalnızca Azure AD Domain Services tarafından hizmet verilen tek bir yönetilen etki alanı oluşturabilirsiniz.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Azure AD Domain Services, klasik bir sanal ağda etkinleştirebilir miyim?
-Klasik sanal ağlar Yeni dağıtımlar için desteklenmez. Klasik sanal ağlarda dağıtılan mevcut yönetilen etki alanları desteklenmeye devam eder. Ayrıca, [Klasik sanal ağ modelinden Kaynak Yöneticisi (Önizleme) Azure AD Domain Services geçirebilirsiniz](migrate-from-classic-vnet.md).
+Klasik sanal ağlar Yeni dağıtımlar için desteklenmez. Klasik sanal ağlarda dağıtılan mevcut yönetilen etki alanları, 1 Mart 2023 ' de devre dışı bırakılana kadar desteklenmeye devam eder. Mevcut dağıtımlar için [Azure AD Domain Services, klasik sanal ağ modelinden Kaynak Yöneticisi](migrate-from-classic-vnet.md)taşıyabilirsiniz.
+
+Daha fazla bilgi için bkz. [resmi kullanımdan kaldırma bildirimi](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager bir sanal ağda Azure AD Domain Services etkinleştirebilir miyim?
 Evet. Azure AD Domain Services, Azure Resource Manager bir sanal ağda etkinleştirilebilir. Yönetilen bir etki alanı oluşturduğunuzda klasik Azure sanal ağları artık kullanılamaz.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Mevcut yönetilen etki alanını klasik bir sanal ağdan Kaynak Yöneticisi sanal ağa geçirebilir miyim?
-Evet, bu özellik önizleme aşamasındadır. Daha fazla bilgi için bkz. [Klasik sanal ağ modelinden Azure AD Domain Services geçirme Kaynak Yöneticisi (Önizleme)](migrate-from-classic-vnet.md).
+Evet. Daha fazla bilgi için bkz. [Klasik sanal ağ modelinden Azure AD Domain Services kaynak yöneticisi 'ye geçirme](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Azure CSP (bulut çözümü sağlayıcısı) aboneliğindeki Azure AD Domain Services etkinleştirebilir miyim?
 Evet. Daha fazla bilgi için bkz. [Azure CSP aboneliklerinde Azure AD Domain Services etkinleştirme](csp.md).

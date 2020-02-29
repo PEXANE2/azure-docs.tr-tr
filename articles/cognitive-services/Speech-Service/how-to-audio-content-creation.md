@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561043"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913659"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>Ses Içeriği oluşturma ile sensıs 'yi geliştirme
 
@@ -43,7 +43,7 @@ Bu diyagramda, özelleştirilmiş konuşmaya metin çıkışlarını ayarlama ve
 
 Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımları izleyin.
 
-1. [Azure hesabına kaydolmak](get-started.md#try-the-speech-service-using-a-new-azure-account) ve [bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
+1. [Azure hesabına kaydolmak](get-started.md#new-resource) ve [bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
 2. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açın.
 3. Mevcut bir projeyi seçin veya **Yeni oluştur**' a tıklayın.
 4. Aboneliğinizi istediğiniz zaman, üst gezinti bölmesinde bulunan **Ayarlar** seçeneğiyle değiştirebilirsiniz.

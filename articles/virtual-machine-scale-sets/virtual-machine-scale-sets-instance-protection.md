@@ -1,28 +1,26 @@
 ---
 title: Azure sanal makine ölçek kümesi örnekleri için örnek koruması
 description: Azure sanal makine ölçek kümesi örneklerinin ölçek ve ölçek ayarlama işlemlerinden nasıl korunacağını öğrenin.
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: manayar
-ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275801"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919864"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure sanal makine ölçek kümesi örnekleri için örnek koruması (Önizleme)
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için örnek koruması
+
 Azure sanal makine ölçek kümeleri, iş yükleriniz için [Otomatik ölçeklendirme](virtual-machine-scale-sets-autoscale-overview.md)aracılığıyla daha iyi esneklik sağlar, böylece altyapınız ne zaman ölçekleyerek ve ölçeklendirilirken yapılandırabilirsiniz. Ölçek Kümeleri Ayrıca, farklı [yükseltme ilkesi](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ayarları aracılığıyla çok sayıda VM 'yi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize olanak tanır. Ölçek kümesi modelinde bir güncelleştirme yapılandırabilirsiniz ve yükseltme ilkesini otomatik veya aşağı olarak ayarladıysanız yeni yapılandırma her ölçek kümesi örneğine otomatik olarak uygulanır.
 
 Uygulamanız trafiği işlerken, belirli örneklerin ölçek kümesi örneğinin geri kalanından farklı şekilde değerlendirilmesini istediğiniz durumlar olabilir. Örneğin, ölçek kümesindeki bazı örnekler uzun süre çalışan işlemler gerçekleştiriyor olabilir ve İşlemler tamamlanana kadar bu örneklerin ölçeklendirilmesini istemezsiniz. Ayrıca, ölçek kümesinin diğer üyelerinden daha fazla veya farklı görevler gerçekleştirmek için ölçek kümesinde birkaç örneğe özelleştirilmiş de sahip olabilirsiniz. Ölçek kümesindeki diğer örneklerle değiştirilmemelidir bu ' özel ' VM 'lerinin olması gerekir. Örnek koruması, uygulamanız için bu ve diğer senaryoları etkinleştirmek üzere ek denetimler sağlar.
 
 Bu makalede, ölçek kümesi örnekleriyle farklı örnek koruma özelliklerini nasıl uygulayabileceğiniz ve kullanabileceğiniz açıklanır.
-
-> [!NOTE]
->Örnek koruma Şu anda genel önizleme aşamasındadır. Aşağıda açıklanan genel önizleme işlevlerini kullanmak için katılım prosedürü gerekmez. Örnek koruma Önizleme yalnızca API sürüm 2019-03-01 ve yönetilen diskleri kullanan ölçek kümelerinde desteklenir.
 
 ## <a name="types-of-instance-protection"></a>Örnek koruma türleri
 Ölçek kümeleri iki tür örnek koruma özelliği sağlar:
@@ -44,6 +42,17 @@ Bu makalede, ölçek kümesi örnekleriyle farklı örnek koruma özelliklerini 
 Örnekler oluşturulduktan sonra ölçek kümesi örneklerine örnek koruması uygulanabilir. Koruma, [Ölçek kümesi modelinde](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)değil yalnızca [örnek modelinde](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) uygulanır ve değiştirilir.
 
 Ölçek kümesi örnekleriniz üzerinde ölçek-ın koruması uygulamanın aşağıdaki örneklerde ayrıntılı olarak açıklandığı birçok yolu vardır.
+
+### <a name="azure-portal"></a>Azure portalı
+
+Ölçek kümesindeki bir örneğe Azure portal ile ölçek genişletme koruması uygulayabilirsiniz. Aynı anda birden çok örnek ayarlayamezsiniz. Korumak istediğiniz her örnek için adımları tekrarlayın.
+ 
+1. Var olan bir sanal makine ölçek kümesine gidin.
+1. **Ayarlar**' ın altında, sol taraftaki menüden **örnekler** ' i seçin.
+1. Korumak istediğiniz örneğin adını seçin.
+1. **Koruma ilkesi** sekmesini seçin.
+1. **Koruma ilkesi** dikey penceresinde, **ölçeğe karşı koru** seçeneğini belirleyin.
+1. **Kaydet**’i seçin. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -101,6 +110,17 @@ az vmss update \
 Bir örneği ölçek kümesi eylemlerden korumak aynı zamanda örneği otomatik ölçeklendirme tarafından başlatılan ölçeğe karşı korur.
 
 Ölçek kümesi eylemleri koruması, ölçek kümesi örneklerinizin aşağıdaki örneklerde ayrıntılı olarak açıklandığı şekilde uygulanması için birden çok yol vardır.
+
+### <a name="azure-portal"></a>Azure portalı
+
+Ölçek kümesi eylemleriyle Azure portal, ölçek kümesindeki bir örneğe koruma uygulayabilirsiniz. Aynı anda birden çok örnek ayarlayamezsiniz. Korumak istediğiniz her örnek için adımları tekrarlayın.
+ 
+1. Var olan bir sanal makine ölçek kümesine gidin.
+1. **Ayarlar**' ın altında, sol taraftaki menüden **örnekler** ' i seçin.
+1. Korumak istediğiniz örneğin adını seçin.
+1. **Koruma ilkesi** sekmesini seçin.
+1. **Koruma ilkesi** dikey penceresinde **Ölçek kümesini koru eylemleri** seçeneğini belirleyin.
+1. **Kaydet**’i seçin. 
 
 ### <a name="rest-api"></a>REST API
 

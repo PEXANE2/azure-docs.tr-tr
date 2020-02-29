@@ -10,20 +10,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 80b13cb9a926837604e2a10fed75b976ba3393b6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bf4c7e9fc623ad7dc74b6da943232d5c558d43a4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934911"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920272"
 ---
-# <a name="custom-script-extension-for-windows"></a>Windows için özel Betik uzantısı
+# <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
 Özel Betik uzantısı, Azure sanal makinelerinde betikleri indirir ve yürütür. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka herhangi bir yapılandırma ya da yönetim görevi için yararlıdır. Betikler Azure depolama veya GitHub konumlarından indirilebilir ya da Azure portalına uzantı çalışma zamanında iletilebilir. Özel Betik uzantısı Azure Resource Manager şablonlarıyla tümleştirilir ve Azure CLı, PowerShell, Azure portal veya Azure sanal makine REST API kullanılarak çalıştırılabilir.
 
 Bu belgede, Windows sistemlerinde Azure PowerShell modülü, Azure Resource Manager şablonları ve Ayrıntılar sorunlarını giderme adımları kullanılarak özel betik uzantısının nasıl kullanılacağı ayrıntılı olarak açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]  
 > Kendi kendine beklemesi gerektiğinden, Update-AzVM öğesini parametresiyle aynı VM ile çalıştırmak için özel Betik uzantısı kullanmayın.  
@@ -42,7 +42,7 @@ GitHub veya Azure Storage gibi dışarıdan bir betiği indirmeniz gerekiyorsa, 
 
 Betiğinizin yerel bir sunucu üzerinde olması, ek güvenlik duvarı ve ağ güvenlik grubu bağlantı noktalarının açık olması gerekebilir.
 
-### <a name="tips-and-tricks"></a>İpuçları ve Püf Noktaları
+### <a name="tips-and-tricks"></a>İp Uçları ve Püf Noktaları
 
 * Bu uzantı için en yüksek hata oranı betikteki sözdizimi hataları nedeniyle, komut dosyasını hatasız olarak test edin ve ayrıca, başarısız olduğunda bulmayı kolaylaştırmak için betiğe ek günlüğe kaydetme işlemi gerçekleştirin.
 * Idempotent olan betikler yazın. Bu, yanlışlıkla yeniden çalıştıklarında sistem değişikliklerine neden olmaz.
@@ -110,7 +110,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü |
+| Adı | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | string |
@@ -274,9 +274,11 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 ## <a name="classic-vms"></a>Klasik VM'ler
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Özel Betik uzantısını klasik VM 'lerde dağıtmak için Azure portal veya klasik Azure PowerShell cmdlet 'lerini kullanabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 Klasik VM kaynağına gidin. **Ayarlar**altındaki **Uzantılar** ' ı seçin.
 
@@ -328,7 +330,7 @@ Burada `<n>`, uzantının yürütmeleri arasında değişebilir bir ondalık tam
 
 `commandToExecute` komutu yürütürken, uzantı bu dizini (örneğin, `...\Downloads\2`) geçerli çalışma dizini olarak ayarlar. Bu işlem, `fileURIs` özelliği aracılığıyla indirilen dosyaları bulmak için göreli yolların kullanılmasını sağlar. Örnekler için aşağıdaki tabloya bakın.
 
-Mutlak indirme yolu zaman içinde değişebileceğinden, mümkün olduğunda `commandToExecute` dizesinde göreli betik/dosya yollarını kabul etmek daha iyidir. Örneğin:
+Mutlak indirme yolu zaman içinde değişebileceğinden, mümkün olduğunda `commandToExecute` dizesinde göreli betik/dosya yollarını kabul etmek daha iyidir. Örnek:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
@@ -347,4 +349,4 @@ Mutlak indirme yolu zaman içinde değişebileceğinden, mümkün olduğunda `co
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/forums/). Ayrıca bir Azure destek olayı da oluşturabilirsiniz. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ayrıca bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133815"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920561"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 'da Red hat iş yükleri
 Red hat iş yükleri, Azure 'daki çeşitli tekliflerle desteklenir. Red Hat Enterprise Linux (RHEL) görüntüleri, Red Hat güncelleştirme altyapısı (RHUı) gibi RHEL iş yüklerinin çekirdeğleridir.
@@ -39,7 +39,7 @@ Azure ayrıca Red Hat altın görüntülerini da sunar. Bu görüntüler, var ol
 > Çift faturalandırma üzerine göz önünde, bir kullanıcının RHEL abonelikleri için iki kez ödeme yaptığı iki faturalandırma yapılır. Bu genellikle bir müşterinin bir RHEL PAYG sanal makinesine yetkilendirme eklemek için abonelik Yöneticisi kullandığında oluşur. Örneğin, bir RHEL PAYG görüntüsündeki SAP paketlerine yönelik bir yetkilendirme eklemek için abonelik Yöneticisi 'ni kullanan bir müşteri, bir kez RHEL-bir kez ve SAP aboneliğinden bir kez olmak üzere iki kez faturalandırılacağından, dolaylı olarak çift faturalandırılır. Bu, KCG görüntü kullanıcıları tarafından gerçekleşmeyecektir.
 
 ### <a name="generation-2-images"></a>2\. nesil görüntüler
-2\. nesil sanal makineler, 1. nesil VM 'lere kıyasla daha yeni özellikler sunar. Ayrıntılar [2. nesil belgelerde](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)düzenlenir. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır ve önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. Bu, diğer işlerin yanı sıra 2TB ' den büyük olan işletim sistemi disk boyutlarını sağlar. Ayrıca, [Mv2 serisi VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) yalnızca 2. nesil görüntülerde çalışır.
+2\. nesil sanal makineler, 1. nesil VM 'lere kıyasla daha yeni özellikler sunar. Ayrıntılar [2. nesil belgelerde](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)düzenlenir. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır ve önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. Bu, diğer işlerin yanı sıra 2TB ' den büyük olan işletim sistemi disk boyutlarını sağlar. Ayrıca, [Mv2 serisi VM 'ler](../../mv2-series.md) yalnızca 2. nesil görüntülerde çalışır.
 
 RHEL Generation 2 görüntüleri Market 'te mevcuttur. Azure CLı kullanarak tüm görüntüleri listelerken görüntü SKU 'sunda "Gen2" öğesini arayın ve 2. nesil bir VM dağıtmak için VM dağıtım işlemindeki "Gelişmiş" sekmesine gidin.
 

@@ -12,23 +12,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 14cd43f7bd7965b755eca14e5914c64e2ec8e044
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981302"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918215"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>VM Güvenli Modu'nda önyüklenir olmadığından bir VM'ye RDP yapılamıyor
 
 Bu makale, size bağlanamıyor Azure Windows sanal makinelerine (VM'ler) sanal makine yapılandırıldığından bir sorunun nasıl çözüleceği güvenli moduna önyükleme.
 
-> [!NOTE]
-> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makale, Klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı öneririz Resource Manager dağıtım modelini kullanarak kapsar.
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM yapılandırıldığından, RDP bağlantısı veya diğer bağlantılar (örneğin, HTTP) azure'da VM yapamazsınız güvenli moduna önyükleme. Ne zaman iade ekran [önyükleme tanılaması](../troubleshooting/boot-diagnostics.md) Azure Portal'da, VM normal önyükleme yapmaz, ancak ağ arabirimi kullanılamıyor görebilirsiniz:
+VM yapılandırıldığından, RDP bağlantısı veya diğer bağlantılar (örneğin, HTTP) azure'da VM yapamazsınız güvenli moduna önyükleme. Azure portal [önyükleme tanılamasında](../troubleshooting/boot-diagnostics.md) ekran görüntüsünü denetlediğinizde, sanal makinenin normal olarak önyüklenebileceğini görebilirsiniz, ancak ağ arabirimi kullanılabilir değildir:
 
 ![Güvenli modda ağ inferce hakkında görüntü](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
 
@@ -39,33 +37,33 @@ Güvenli modda RDP hizmeti kullanılamıyor. Gerekli sistem programlar ve hizmet
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları gerçekleştirmeden önce etkilenen makinenin işletim sistemi diskinin anlık yedekleyin. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md).
+Bu adımları gerçekleştirmeden önce etkilenen makinenin işletim sistemi diskinin anlık yedekleyin. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-Bu sorunu gidermek için sanal Makinenin normal moduna önyüklemesini yapılandırmak için seri denetimi kullanın veya [çevrimdışı VM'yi onarın](#repair-the-vm-offline) kullanarak bir kurtarma VM'si.
+Bu sorunu çözmek için, VM 'yi normal modda önyüklenecek şekilde yapılandırmak veya bir kurtarma VM kullanarak [VM 'yi çevrimdışı olarak onarmak](#repair-the-vm-offline) üzere seri denetim kullanın.
 
 ### <a name="use-serial-control"></a>Seri denetimini kullanma
 
-1. Bağlanma [seri konsol ve örnek CMD Aç](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-   ). Seri konsol sanal makinenizde etkinleştirilmemiş olmadığını [çevrimdışı VM'yi onarın](#repair-the-vm-offline).
+1. [Seri konsoluna bağlanın ve cmd örneğini açın](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+   ). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [VM 'yi çevrimdışı olarak onarma](#repair-the-vm-offline).
 2. Önyükleme yapılandırma verileri kontrol edin:
 
         bcdedit /enum
 
-    VM yapılandırıldıysa Güvenli Mod'da önyüklemek için ek bir bayrak altında görürsünüz **Windows önyükleme yükleyicisi** adlı bölüm **başlatılmayı**. Görmüyorsanız, **başlatılmayı** bayrağı, VM değil güvenli modda. Bu makaleyi senaryonuz için geçerli değildir.
+    VM güvenli modda önyüklenecek şekilde yapılandırıldıysa, **Windows önyükleme yükleyicisi** bölümünde **safeboot**adlı bir ek bayrak görürsünüz. **Safeboot** bayrağını görmüyorsanız, sanal makine güvenli modda değildir. Bu makaleyi senaryonuz için geçerli değildir.
 
-    **Başlatılmayı** bayrağı aşağıdaki değerlerle görünür:
-   - En az
+    **Safeboot** bayrağı aşağıdaki değerlerle görüntülenebilir:
+   - En Az
    - Ağ
 
      Ya da bu iki mod, RDP başlatılmaz. Bu nedenle, düzeltme aynı kalır.
 
      ![Güvenli modu bayrağını hakkında görüntü](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
-3. Silme **safemoade** bayrak VM normal moduna önyüklemesini şekilde:
+3. **Safemoade** BAYRAĞıNı silerek VM normal modda önyüklenir:
 
         bcdedit /deletevalue {current} safeboot
 
-4. Önyükleme yapılandırma verileri emin olmak için kontrol **başlatılmayı** bayrağı kaldırıldı:
+4. **Güvenli önyükleme** bayrağının kaldırıldığından emin olmak için önyükleme yapılandırma verilerini denetleyin:
 
         bcdedit /enum
 
@@ -75,9 +73,9 @@ Bu sorunu gidermek için sanal Makinenin normal moduna önyüklemesini yapıland
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM'si ekleme
 
-1. [İşletim sistemi diskini bir kurtarma VM'si ekleme](../windows/troubleshoot-recovery-disks-portal.md).
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
 2. Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın.
-3. Disk olarak işaretlenmiş olduğundan emin olun **çevrimiçi** Disk Yönetimi Konsolu'nda. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
+3. Diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
 
 #### <a name="enable-dump-log-and-serial-console-optional"></a>Döküm günlük ve seri konsol (isteğe bağlı) etkinleştirme
 
@@ -120,14 +118,14 @@ Döküm günlük ve seri konsol etkinleştirmek için aşağıdaki betiği çal�
         bcdedit /store F:\boot\bcd /enum
     **\Windows** klasörünün bulunduğu bölümün tanımlayıcı adını unutmayın. Varsayılan olarak, tanımlayıcı adı "varsayılan" ' dır.
 
-    VM yapılandırıldıysa Güvenli Mod'da önyüklemek için ek bir bayrak altında görürsünüz **Windows önyükleme yükleyicisi** adlı bölüm **başlatılmayı**. **Safeboot** bayrağını görmüyorsanız, bu makale senaryonuz için geçerlidir.
+    VM güvenli modda önyüklenecek şekilde yapılandırıldıysa, **Windows önyükleme yükleyicisi** bölümünde **safeboot**adlı bir ek bayrak görürsünüz. **Safeboot** bayrağını görmüyorsanız, bu makale senaryonuz için geçerlidir.
 
     ![Önyükleme tanımlayıcısı ile ilgili görüntü](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
 3. **Safeboot** bayrağını kaldırın, bu nedenle VM normal modda önyüklenir:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Önyükleme yapılandırma verileri emin olmak için kontrol **başlatılmayı** bayrağı kaldırıldı:
+4. **Güvenli önyükleme** bayrağının kaldırıldığından emin olmak için önyükleme yapılandırma verilerini denetleyin:
 
         bcdedit /store F:\boot\bcd /enum
-5. [İşletim sistemi diskini ve VM yeniden](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
+5. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.

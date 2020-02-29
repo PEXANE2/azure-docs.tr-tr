@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616379"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921275"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
 
@@ -38,10 +38,10 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Standart|
-|[Sanal makine davranış analizi tehdit algılama uyarıları](threat-protection.md)|✔|✔|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
-|[Dosya daha az tehdit algılama uyarıları](alerts-reference.md#alerts-windows)|✔|✔|✔|Standart|
-|[Ağ tabanlı tehdit algılama uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
+|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Standart|
+|[Sanal makine davranış analizi (ve güvenlik uyarıları)](threat-protection.md)|✔|✔|✔|Öneriler (ücretsiz) </br></br> Güvenlik uyarıları (Standart)|
+|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Standart|
+|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
 |[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
 |[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
@@ -50,7 +50,7 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
 |Uyarlamalı ağ denetimleri|✔|✔|-|Standart|
 |[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
-|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|-|-|-|Standart|
+|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Standart|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Ücretsiz|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Ücretsiz|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Ücretsiz|
@@ -65,9 +65,9 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
 |[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Standart|
-|[Sanal makine davranış analizi tehdit algılama uyarıları](security-center-alerts-iaas.md)|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
-|[Dosya daha az tehdit algılama uyarıları](alerts-reference.md#alerts-windows)|-|-|-|Standart|
-|[Ağ tabanlı tehdit algılama uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
+|[Sanal makine davranış analizi (ve güvenlik uyarıları)](security-center-alerts-iaas.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Öneriler (ücretsiz) </br></br> Güvenlik uyarıları (Standart)|
+|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Standart|
+|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
 |[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
 |[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
@@ -76,7 +76,7 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
 |Uyarlamalı ağ denetimleri|✔|✔|-|Standart|
 |[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
-|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|✔|✔|✔|Standart|
+|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Standart|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Ücretsiz|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Ücretsiz|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ücretsiz|
@@ -116,7 +116,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 
 Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
 
-|Hizmet|Öneriler (ücretsiz)|Tehdit algılama uyarıları (Standart)|Güvenlik açığı değerlendirmesi (Standart)|
+|Hizmet|Öneriler (ücretsiz)|Güvenlik uyarıları (Standart)|Güvenlik açığı değerlendirmesi (Standart)|
 |----|:----:|:----:|:----:|
 |SQL Veritabanları|✔|✔|✔|
 |Azure Container Kayıt Defteri|-|-|✔|
@@ -158,6 +158,5 @@ Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
 - [Güvenlik Merkezi 'nin verileri nasıl yönettiğini ve korumalarını](security-center-data-security.md)öğrenin.
 - [Azure Güvenlik Merkezi 'ni benimsemek için tasarım konularını nasıl planlayacağınızı ve anlayacağınızı](security-center-planning-and-operations-guide.md)öğrenin.
 - [Güvenlik Merkezi 'ni destekleyen platformları](security-center-os-coverage.md)gözden geçirin.
-- [Azure Güvenlik Merkezi 'Nde VM 'ler & sunucular için tehdit algılama](security-center-alerts-iaas.md)hakkında daha fazla bilgi edinin.
+- [Azure Güvenlik Merkezi 'Nde Windows ve Linux makineleri için tehdit koruması](threat-protection.md#windows-machines)hakkında daha fazla bilgi edinin.
 - [Azure Güvenlik Merkezi hakkında sık sorulan soruları](faq-general.md)bulun.
-- [Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini](https://blogs.msdn.com/b/azuresecurity/)bulun.

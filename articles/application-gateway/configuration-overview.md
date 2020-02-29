@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485089"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913268"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -256,14 +256,14 @@ Azure Application Gateway, kullanıcı oturumlarını sürdürmek için ağ geç
 
 Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak ve oturum durumunun bir Kullanıcı oturumu için sunucuda yerel olarak kaydedilmesi durumunda yararlıdır. Uygulama, tanımlama bilgisi tabanlı benzeşimi işleyemez, bu özelliği kullanamazsınız. Bunu kullanmak için, istemcilerin tanımlama bilgilerini desteklemesini sağlayın.
 
-**19 şubat 2020**' den Itibaren, [kmıum](https://www.chromium.org/Home) [V80 güncelleştirmesi](https://chromiumdash.appspot.com/schedule) , SameSite özniteliği olmayan http çerezlerini SameSite = LAX olarak değerlendirilecek bir mantarih getirir. CORS (çıkış noktaları arası kaynak paylaşımı) istekleri söz konusu olduğunda, tanımlama bilgisinin bir üçüncü taraf bağlamında gönderilmesi gerekiyorsa, "SameSite = None; kullanması gerekir Güvenli "öznitelikleri ve yalnızca HTTPS üzerinden gönderilmesi gerekir. Aksi halde, yalnızca HTTP senaryosunda, tarayıcı tanımlama bilgilerini üçüncü taraf bağlamında göndermez. Bu güncelleştirmenin Chrome 'dan hedefi, güvenliği artırmaktır ve siteler arası Istek sahteciliği (CSRF) saldırılarından kaçınmaktır. 
+[Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) özniteliği olmayan http tanımlama bilgilerinin SameSite = LAX olarak değerlendirilmesi gereken bir mantarih getirdi. CORS (çıkış noktaları arası kaynak paylaşımı) istekleri söz konusu olduğunda, tanımlama bilgisinin bir üçüncü taraf bağlamında gönderilmesi gerekiyorsa, *SameSite = None; kullanması gerekir. Güvenli* öznitelikler ve yalnızca https üzerinden gönderilmesi gerekir. Aksi halde, yalnızca HTTP senaryosunda tarayıcı tanımlama bilgilerini üçüncü taraf bağlamında göndermez. Bu güncelleştirmenin Chrome 'dan hedefi, güvenliği artırmaktır ve siteler arası Istek sahteciliği (CSRF) saldırılarından kaçınmaktır. 
 
-Bu değişikliği desteklemek için, Application Gateway (tüm SKU türleri), benzer olan mevcut **Applicationgatewaybenzeşim** tanımlama bilgisine ek olarak **Applicationgatewayaffinitycors** adlı başka bir özdeş tanımlama bilgisine ekleme ve bu tanımlama bilgisinin artık iki daha fazla özniteliğe **"SameSite = none;" sahip olacağı anlamına gelir. Güvenli "** , geçici kaynak istekleri için de yapışkan oturumun korunabilmesi için eklenmiştir.
+17 Şubat 2020 tarihinden itibaren bu değişikliği desteklemek için, Application Gateway (tüm SKU türleri), mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisi ekleyecektir. *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenen iki özniteliği vardır ( *"SameSite = None; Güvenli "* ) böylece, geçici kaynak istekleri için de yapışkan oturumun korunmasını sağlayabilirsiniz.
 
-Varsayılan benzeşim tanımlama bilgisi adının **Applicationgatewaybenzeşim** olduğunu ve bu kullanıcının bu kullanıcı tarafından değiştirilebileceğini lütfen unutmayın. Özel bir benzeşim tanımlama bilgisi adı kullanıyorsanız, CORS olarak CORS ile ek bir tanımlama bilgisi eklenir. Örneğin, **customcookie enamecors**.
+Varsayılan benzeşim tanımlama bilgisi adının *Applicationgatewaybenzeşim* olduğunu ve bunu değiştirebileceğinizi unutmayın. Özel bir benzeşim tanımlama bilgisi adı kullanıyorsanız, CORS ile son ek tanımlama bilgisi eklenir. Örneğin, *Customtanımlama bilgisi Enamecors*.
 
 > [!NOTE]
-> **SameSite = None** özniteliği ayarlanmamışsa, tanımlama bilgisinin da **güvenli** bayrağını içermesi ve **https**üzerinden gönderilmesi gerekir. Bu nedenle, CORS üzerinden oturum benzeşimi gerekliyse, iş yükünüzü HTTPS 'ye geçirmeniz gerekir. Burada Application Gateway için SSL yük boşaltma ve uçtan uca SSL belgelerine bakın: [genel bakış](ssl-overview.md), [SSL yük boşaltma 'Yı yapılandırma](create-ssl-portal.md)ve [uçtan uca SSL 'yi yapılandırma](end-to-end-ssl-portal.md).
+> *SameSite = None* özniteliği ayarlandıysa, tanımlama bilgisinin de *güvenli* bayrağı içermesi zorunludur ve https üzerinden gönderilmesi gerekir.  CORS üzerinden oturum benzeşimi gerekliyse, iş yükünüzü HTTPS 'ye geçirmeniz gerekir. Burada Application Gateway için SSL yük boşaltma ve uçtan uca SSL belgelerine bakın: [genel bakış](ssl-overview.md), [SSL yük boşaltma 'Yı yapılandırma](create-ssl-portal.md)ve [uçtan uca SSL 'yi yapılandırma](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Bağlantı boşaltma
 

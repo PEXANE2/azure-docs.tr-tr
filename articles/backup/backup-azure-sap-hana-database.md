@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5fd09e0e487d103e8bd78964c11b572a62e28fa
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765528"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164619"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -21,16 +21,16 @@ Bu makalede, öğreneceksiniz nasıl yapılır:
 >
 > * Kasa oluşturma ve yapılandırma
 > * Veritabanlarını bul
-> * Yedeklemeleri yapılandırma
+> * Yedekleri yapılandırma
 > * İsteğe bağlı yedekleme işi çalıştırma
 
 >[!NOTE]
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Veritabanını yedekleme için ayarlamak üzere [önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [izin bölümlerine ayarlama](tutorial-backup-sap-hana-db.md#setting-up-permissions) bölümüne bakın.
+[Önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [ön kayıt betiği](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) , yedekleme için veritabanını ayarlama bölümlerine bakın.
 
 ### <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 
@@ -89,23 +89,6 @@ NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak b
 Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
 HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir <br/><br/> VM 'lere tek bir internet erişimi noktası <br/><br/> Azure IP adresi değişikliklerine tabi değildir | Proxy yazılımıyla VM çalıştırmak için ek maliyetler
 
-## <a name="onboard-to-the-public-preview"></a>Genel önizlemeye ekleme
-
-Genel önizlemeye aşağıdaki şekilde katılın:
-
-* Portalda, [Bu makaleyi izleyerek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)abonelik kimliğinizi Kurtarma Hizmetleri hizmet sağlayıcısına kaydedin.
-* PowerShell 'de ' az ' modülü için bu cmdlet 'i çalıştırın. "Kayıtlı" olarak tamamlanmalıdır.
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* PowerShell 'de ' Azurerd ' modülünü kullanıyorsanız, bu cmdlet 'i çalıştırın. "Kayıtlı" olarak tamamlanmalıdır.
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
-
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Veritabanlarını bulma
@@ -130,7 +113,7 @@ Genel önizlemeye aşağıdaki şekilde katılın:
 
 1. 2\. adımda **yedeklemeyi Yapılandır**' a tıklayın.
 
-    ![Yedekleme'yi yapılandırın](./media/backup-azure-sap-hana-database/configure-backup.png)
+    ![Yedeklemeyi Yapılandır](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. **Yedeklenecek öğeleri seçin**' de, korumak istediğiniz tüm veritabanlarını seçin > **Tamam**' a tıklayın.
 
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-sap-hana-database/select-items.png)
@@ -142,7 +125,7 @@ Genel önizlemeye aşağıdaki şekilde katılın:
     ![Yedeklemeyi etkinleştir](./media/backup-azure-sap-hana-database/enable-backup.png)
 5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
-### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
+### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 

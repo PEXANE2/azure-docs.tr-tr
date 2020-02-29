@@ -1,5 +1,5 @@
 ---
-title: Windows Server için Azure Hibrit Teklifi
+title: Windows Server için Azure Hibrit Avantajı
 description: Azure 'a şirket içi lisanslar getirmek için Windows yazılım güvencesi avantajlarınızı nasıl en üst düzeye çıkaracağınızı öğrenin
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461165"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911805"
 ---
-# <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Teklifi
+# <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
-> [!Important]
-> 2 işlemcili her lisans veya 16 çekirdekli lisans kümelerinin her biri, 8 çekirdekli iki örnek veya 16 çekirdekli bir örnek kullanma hakkına sahiptir. Standard Sürüm için Azure Hibrit Teklifi lisansları, şirket içinde ya da Azure’da yalnızca bir kez kullanılabilir. Datacenter Sürümü avantajları, aynı anda hem şirket içinde hem de Azure’da kullanım olanağı sunar.
->
+Her 2 işlemci lisansı veya her bir 16 çekirdekli lisans kümesi, en fazla 8 çekirdeğe veya 16 adede kadar çekirdeğe kadar olan iki örneğe sahiptir. Standart sürüm lisansları için Azure Hibrit Avantajı, şirket içinde veya Azure 'da yalnızca bir kez kullanılabilir. Datacenter Edition avantajları, hem şirket içinde hem de Azure 'da eşzamanlı kullanım sağlar.
 
-> [!Important]
-> Windows Server işletim sistemi çalıştıran herhangi bir VM ile Windows Server için Azure Hibrit Avantajı kullanmak, SQL Server veya üçüncü taraf Market yazılımları gibi ek yazılıma sahip VM 'Ler de dahil olmak üzere tüm bölgelerde desteklenmektedir. 
->
+Windows Server işletim sistemi çalıştıran herhangi bir VM ile Windows Server için Azure Hibrit Avantajı kullanmak, SQL Server veya üçüncü taraf Market yazılımları gibi ek yazılıma sahip VM 'Ler de dahil olmak üzere tüm bölgelerde desteklenmektedir. 
 
-> [!NOTE]
-> Klasik VM 'Ler için, yalnızca şirket içi özel görüntülerden yeni VM dağıtımı desteklenir. Bu makalede desteklenen özelliklerden faydalanmak için, önce klasik VM 'Leri Kaynak Yöneticisi modele geçirmeniz gerekir.
->
 
+## <a name="classic-vms"></a>Klasik VM'ler
+
+Klasik VM 'Ler için, yalnızca şirket içi özel görüntülerden yeni VM dağıtımı desteklenir. Bu makalede desteklenen özelliklerden faydalanmak için, önce klasik VM 'Leri Kaynak Yöneticisi modele geçirmeniz gerekir.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı kullanmanın yolları

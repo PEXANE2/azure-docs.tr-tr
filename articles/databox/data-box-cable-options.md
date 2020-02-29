@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 661cec672aa02f62b479b7f5831adfdaff9e6b21
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316565"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920646"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box cihazınız için kablolama seçenekleri
 
@@ -39,7 +39,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
     - **IP adresi**: 192.168.100.5
     - **Alt ağ**: 255.255.255.0
 
-3. Cihazın yerel Web Kullanıcı arabirimine şu adresten erişin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
+3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>Statik IP adresleriyle DATA bağlantı noktası aracılığıyla aktarım
@@ -67,7 +67,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 
      ![İki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-2-port-setup.png)
 
-3. Cihazın yerel Web Kullanıcı arabirimine şu adresten erişin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
+3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 4. Yapılandırdığınız veri bağlantı noktalarına statik IP atayın.
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>2\. Seçenek: Başlangıç kurulumunu ayrı bir bilgisayar üzerinden gerçekleştirme
@@ -83,7 +83,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 
      ![Anahtarla iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-with-static-ip.png)
 
-3. Cihazın yerel Web Kullanıcı arabirimine şu adresten erişin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
+3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 4. DHCP sunucusu tarafından atanan IP adreslerini belirleyin.
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>Anahtar kullanarak statik IP adresleriyle DATA bağlantı noktası aracılığıyla aktarım 
@@ -107,7 +107,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 
      ![Anahtarla iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-3. Cihazın yerel Web Kullanıcı arabirimine şu adresten erişin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
+3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 4. Yapılandırdığınız veri bağlantı noktalarına statik IP atayın.
 
 

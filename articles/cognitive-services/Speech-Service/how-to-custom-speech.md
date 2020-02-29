@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425009"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918963"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -43,7 +43,7 @@ Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)o
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
-Özel bir model oluşturmak için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanabilmeniz Için bir konuşma hizmeti aboneliği gerekir. Standart bir konuşma hizmeti aboneliği oluşturmak için bu yönergeleri izleyin: [bir konuşma aboneliği oluşturun](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Özel bir model oluşturmak için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanabilmeniz Için bir konuşma hizmeti aboneliği gerekir. Standart bir konuşma hizmeti aboneliği oluşturmak için bu yönergeleri izleyin: [bir konuşma aboneliği oluşturun](get-started.md#new-resource).
 
 > [!NOTE]
 > Lütfen standart (S0) abonelikler oluşturmanız, ücretsiz deneme (F0) aboneliklerinin desteklenmediğinden emin olun.

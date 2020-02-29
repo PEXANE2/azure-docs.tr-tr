@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152202"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912798"
 ---
 # <a name="linear-regression-module"></a>Doğrusal regresyon modülü
 Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
@@ -51,17 +51,15 @@ Azure Machine Learning, doğrusal gerileme ek olarak çeşitli gerileme modeller
 
 Bu modül, farklı seçeneklerle bir gerileme modeline sığdırma için iki yöntemi destekler:
 
-+ [Çevrimiçi degradeyi kullanarak regresyon modeli oluşturma](#bkmk_GradientDescent)
++ [Normal en az kare kullanarak regresyon modelini sığdırma](#create-a-regression-model-using-ordinary-least-squares)
+
+    Küçük veri kümeleri için en iyisi, normal en az kare seçer. Bu, Excel 'e benzer sonuçlar vermelidir.
+    
++ [Çevrimiçi degradeyi kullanarak regresyon modeli oluşturma](#create-a-regression-model-using-online-gradient-descent)
 
     Gradyan tanımı, daha karmaşık olan veya çok az eğitim verilerine sahip olan modeller için daha iyi bir kayıp işlevidir.
 
-
-
-+ [Normal en az kare kullanarak regresyon modelini sığdırma](#bkmk_OrdinaryLeastSquares)
-
-    Küçük veri kümeleri için en iyisi, normal en az kare seçer. Bu, Excel 'e benzer sonuçlar vermelidir.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>Normal en az kare kullanarak regresyon modeli oluşturma
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Normal en az kare kullanarak regresyon modeli oluşturma
 
 1. Tasarımcıdaki ardışık düzene **Doğrusal regresyon modeli** modülünü ekleyin.
 
@@ -86,7 +84,7 @@ Bu modül, farklı seçeneklerle bir gerileme modeline sığdırma için iki yö
 
 8. İşlem hattını çalıştırma.
 
-## <a name="results-for-ordinary-least-squares-model"></a>Normal en az kareler modelinin sonuçları
+### <a name="results-for-ordinary-least-squares-model"></a>Normal en az kareler modelinin sonuçları
 
 Eğitim tamamlandıktan sonra:
 
@@ -94,7 +92,7 @@ Eğitim tamamlandıktan sonra:
 + Tahmine dayalı hale getirmek için eğitilen modeli, yeni değerlerin bir veri kümesiyle birlikte [puan modeli](./score-model.md) modülüne bağlayın. 
 
 
-## <a name="bkmk_GradientDescent"></a>Çevrimiçi degradeyi kullanarak regresyon modeli oluşturma
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Çevrimiçi degradeyi kullanarak regresyon modeli oluşturma
 
 1. Tasarımcıdaki ardışık düzene **Doğrusal regresyon modeli** modülünü ekleyin.
 
@@ -105,6 +103,8 @@ Eğitim tamamlandıktan sonra:
 3. **Oluşturma modu**için, modeli önceden tanımlanmış bir parametre kümesiyle eğmek istediğinizi veya bir parametre süpürme kullanarak modeli iyileştirmek isteyip istemediğinizi belirtin.
 
     + **Tek parametre**: doğrusal regresyon ağını nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    
+    + **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
 
    
 4. **Öğrenme oranı**için, stochastik gradyan için en iyi duruma getirme için ilk öğrenme oranını belirtin.
@@ -133,7 +133,7 @@ Eğitim tamamlandıktan sonra:
 
 13. İşlem hattını çalıştırma.
 
-## <a name="results-for-online-gradient-descent"></a>Çevrimiçi gradyan sonuçları
+### <a name="results-for-online-gradient-descent"></a>Çevrimiçi gradyan sonuçları
 
 Eğitim tamamlandıktan sonra:
 

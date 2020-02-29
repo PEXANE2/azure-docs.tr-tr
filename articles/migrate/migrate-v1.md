@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514995"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914390"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -76,7 +76,7 @@ Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, 
 
 Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin hazır olma durumunu gösterir.
 
-**Hazırlığı** | **State** | **Ayrıntılar**
+**Hazırlığı** | **Durumunda** | **Ayrıntılar**
 --- | --- | ---
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
@@ -130,7 +130,7 @@ VCenter Server içinde **diğeri** olarak belirtilen işletim sistemi | Azure ge
 - Boyutlandırma performansı tabanlıysa, boyut önerisi VM 'lerin (CPU ve bellek) ve disklerin (ıOPS ve aktarım hızı) performans geçmişini dikkate alır.
 - Boyutlandırma ölçütü ' Şirket içi olarak ' ise, Azure 'daki boyut önerisi, şirket içi VM 'nin boyutuna bağlıdır. Disk boyutlandırma, değerlendirme özelliklerinde belirtilen depolama türünü temel alır (varsayılan olarak Premium disklerdir). Azure geçişi, VM ve disklerin performans verilerini dikkate almaz.
 
-### <a name="review-cost-estimates"></a>Tahmini maliyetleri gözden geçirme
+### <a name="review-cost-estimates"></a>Maliyet tahminlerini gözden geçirin
 
 Maliyet tahminleri, Azure 'da VM 'Leri çalıştırmanın toplam işlem ve depolama maliyetinin yanı sıra her makinenin ayrıntılarını gösterir.
 
@@ -229,7 +229,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
-Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) .
+Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Bir Linux makinesine MMA aracısını yükler
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086194"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913827"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Maps 'tan geçirme
 
@@ -24,21 +24,24 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 | Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yükleye              | [Yolu](https://docs.microsoft.com/rest/api/maps/route)                               |
-| Uzaklık matrisi         | [Yol matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| Coğrafi kodlama               | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Konum arama           | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Otomatik tamamlamayı yerleştir      | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Statik eşleme              | [İşlenecek](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| Saat Dilimi               | [Saat dilimi](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| Yükleye              | [Yolu](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Uzaklık matrisi         | [Yol matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Coğrafi kodlama               | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Konum arama           | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Otomatik tamamlamayı yerleştir      | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Yola yasla            | Bkz. [rotaları ve yönleri hesaplama](#calculate-routes-and-directions) bölümü.            |
+| Hız sınırları            | Bkz. [bir koordinat Için ters coğrafi kod](#reverse-geocode-a-coordinate) bölümü.                  |
+| Statik eşleme              | [İşlenecek](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Saat Dilimi               | [Saat dilimi](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 Aşağıdaki hizmet API 'Leri Şu anda Azure haritalar 'da kullanılabilir değildir:
 
 - Nedeniyle
 - Konumu
-- Ayrıntıları ve yer fotoğraflarını yerleştir. Telefon numaraları ve Web sitesi URL 'SI Azure haritalar arama API 'sinde bulunabilir.
+- Ayrıntılar ve fotoğraflar-telefon numaralarını ve Web sitesi URL 'sini Azure haritalar arama API 'sinde bulabilirsiniz.
 - Harita URL 'Leri
-- Ağzı. Hız sınırı verileri Azure Maps 'taki Route ve ters coğrafi kodlama API 'Leri aracılığıyla kullanılabilir.
+- En yakın yollar-bu, [burada](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)gösterildiği gıbı Web SDK kullanılarak ulaşılabilir, ancak şu anda hizmet olarak kullanılamaz.
 - Statik cadde görünümü
 
 Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir:
@@ -176,8 +179,8 @@ Azure haritalar 'ı kullanarak rotaları ve yönergeleri hesaplayın. Azure hari
 
 Azure haritalar yönlendirme hizmeti, yolları hesaplamak için aşağıdaki API 'Leri sağlar:
 
-- [**Rotayı hesapla**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): bir rotayı hesaplayın ve isteğin hemen işlenmesini sağlayabilirsiniz. Bu API hem GET hem POST isteklerini destekler. Çok sayıda waypoints belirttiğinizde veya yol seçeneklerinin çoğunu kullandığınızda POST istekleri kullanın. Bunun nedeni, POST kullanmanın URL isteğinin çok uzun sürmemesini ve sorunlara yol açmamasını sağlar.
-- [**Batch rotası**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): en fazla 1.000 yol isteği içeren bir istek oluşturun ve bunların bir süre içinde işlenmesini isteyin. Tüm veriler, sunucuda paralel olarak işlenir. İşlem tamamlandığında, tüm sonuç kümesini indirebilirsiniz.
+- [**Rotayı hesapla**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): bir rotayı hesaplayın ve isteğin hemen işlenmesini sağlayabilirsiniz. Bu API hem GET hem POST isteklerini destekler. Çok sayıda waypoints belirtildiğinde veya URL isteğinin çok uzun olmadığından ve sorunlara yol açmamasına yetecek kadar fazla yol seçeneği kullanılırken POST istekleri önerilir. Azure haritalar 'daki POST rotası yönü, binlerce [destekleyici noktası](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) olan bir seçeneğe sahiptir ve bunları aralarında bir mantıksal yol yolu (yola yasla) yeniden oluşturmak için kullanır. 
+- [**Batch rotası**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): en fazla 1.000 yol isteği içeren bir istek oluşturun ve bunların bir süre içinde işlenmesini isteyin. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilecektir.
 - [**Mobility Hizmetleri**](https://docs.microsoft.com/rest/api/maps/mobility): genel aktarım kullanarak rotaları ve yönergeleri hesaplayın.
 
 Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar 'daki karşılaştırılabilir API parametrelerini içeren çapraz başvurular.

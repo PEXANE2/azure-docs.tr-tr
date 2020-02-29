@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084816"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918351"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Video dosyalarındaki metin içeriğini dijital metne dönüştürmek için Azure Media Analytics kullanın  
+
+> [!NOTE]
+> **Azure MEDIA OCR** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
 
 ## <a name="overview"></a>Genel Bakış
 Video dosyalarınızda metin içeriğini ayıklamanız ve düzenlenebilir, aranabilir bir dijital metin oluşturmanız gerekiyorsa Azure Media Analytics OCR (optik karakter tanıma) kullanmanız gerekir. Bu Azure Medya Işlemcisi, video dosyalarınızda metin içeriğini algılar ve kullanım için metin dosyaları oluşturur. OCR, medyanızın video sinyalinden anlamlı meta verilerin ayıklanmasını otomatik hale getirmenizi sağlar.
@@ -45,7 +48,7 @@ Görev yapılandırması (ön ayar). **Azure MEDIA OCR**ile bir görev oluşturu
 ### <a name="attribute-descriptions"></a>Öznitelik açıklamaları
 | Öznitelik adı | Açıklama |
 | --- | --- |
-|AdvancedOutput| AdvancedOutput değerini true olarak ayarlarsanız, JSON çıktısı her bir sözcüğe ait konumsal verileri (tümceciklere ve bölgelere ek olarak) içerir. Bu ayrıntıları görmek istemiyorsanız, bayrağını false olarak ayarlayın. Varsayılan değer false'tur. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/) bakın.|
+|AdvancedOutput| AdvancedOutput değerini true olarak ayarlarsanız, JSON çıktısı her bir sözcüğe ait konumsal verileri (tümceciklere ve bölgelere ek olarak) içerir. Bu ayrıntıları görmek istemiyorsanız, bayrağını false olarak ayarlayın. Varsayılan değer false'tur. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)bakın.|
 | Dil |(isteğe bağlı) aranacak metnin dilini açıklar. Aşağıdakilerden biri: otomatik algıla (varsayılan), Arapça, Chinesebasitleştirilmiş, Chinesetradi, Çekçe Danca, Felemenkçe, Ingilizce, Fince, Fransızca, Almanca, Yunanca, Macarca, Italyanca, Japonca, Korece, Norveççe, Lehçe, Portekizce, Rumence, Rusça, SerbianCyrillic, SerbianLatin, Slovakça, Ispanyolca, Isveççe, Türkçe. |
 | TextOrientation |(isteğe bağlı) aranacak metnin yönünü açıklar.  "Sol", tüm harflerin sol tarafına doğru işaret ettiği anlamına gelir.  Varsayılan metin (bir kitapta bulunılabilecek gibi), "yukarı" yönelimli olarak adlandırılır.  Aşağıdakilerden biri: otomatik algıla (varsayılan), yukarı, sağ, aşağı, sol. |
 | TimeInterval |(isteğe bağlı) örnekleme oranını açıklar.  Varsayılan değer her 1/2 saniyedir.<br/>JSON biçimi – HH: mm: ss. SSS (varsayılan 00:00:00.500)<br/>XML biçimi – W3C XSD Duration temel (varsayılan PT 0,5) |
@@ -119,7 +122,7 @@ Video OCR çıktısı, videonuzda bulunan karakterlere göre zamana göre kesiml
 | bölgesinde kullanılamıyor |algılanan kelimeleri veya tümceleri temsil eden nesne |
 | language |bölge içinde algılanan metnin dili |
 | mesinden |bölge içinde algılanan metnin yönü |
-| satırları |bölge içinde algılanan metin satır dizisi |
+| Satırları |bölge içinde algılanan metin satır dizisi |
 | metin |gerçek metin |
 
 ### <a name="json-output-example"></a>JSON çıkış örneği

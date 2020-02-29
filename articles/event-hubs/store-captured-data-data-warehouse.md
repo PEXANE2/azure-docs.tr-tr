@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 43668fe1f465a5db74e63b8b1c1ae6cb328d2092
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905698"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914135"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
@@ -35,7 +35,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Event Hub'a örnek veri akışı yapma. 
 > * Yakalanan verileri SQL Veri Ambarı'nda doğrulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -65,7 +65,7 @@ Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılması
 - Azure SQL sunucusu
 - SQL kullanıcısı (ve parolası)
 - Azure SQL veritabanı
-- Azure Depolama 
+- Azure Storage 
 - Azure İşlevleri Uygulaması
 
 Bu betiklerin tüm Azure yapıtlarını oluşturması biraz zaman alır. Betik tamamlanana kadar başka işlem yapmayın. Dağıtım bir nedenle başarısız olursa kaynak grubunu silin, bildirilen sorunu çözün ve komutu yeniden çalıştırın. 
@@ -76,9 +76,9 @@ Bu betiklerin tüm Azure yapıtlarını oluşturması biraz zaman alır. Betik t
 ```azurecli-interactive
 az group create -l westus -n rgDataMigrationSample
 
-az group deployment create \
-  --resource-group rgDataMigrationSample \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
+az group deployment create `
+  --resource-group rgDataMigrationSample `
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json `
   --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
 ```
 
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri ht
 
 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Veri Ambarında tablo oluşturma 
-[Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../sql-data-warehouse/sql-data-warehouse-query-ssms.md) veya portaldaki Sorgu Düzenleyicisi ile [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) betiğini çalıştırarak SQL veri ambarınızda bir tablo oluşturun. 
+[Visual Studio](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql), [SQL Server Management Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md) veya portaldaki Sorgu Düzenleyicisi ile [CreateDataWarehouseTable.sql](../sql-data-warehouse/sql-data-warehouse-query-ssms.md) betiğini çalıştırarak SQL veri ambarınızda bir tablo oluşturun. 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -131,7 +131,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>İşlevler uygulamasında bir Event Grid aboneliği oluşturma
  
-1. [Azure portalına](https://portal.azure.com/) gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
+1. [Azure Portal](https://portal.azure.com/) gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
 
    ![İşlev uygulamasını görüntüleme](./media/store-captured-data-data-warehouse/view-function-app.png)
 

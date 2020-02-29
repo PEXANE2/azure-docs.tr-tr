@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 1/16/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: eba793a761bd9f96b1a4ec5d4730f08187a758ef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5707a99b329915b35131fe793b0dfabd02348677
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515346"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912537"
 ---
 # <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>Öğretici: Azure 'da IaaS ve PaaS için tümleşik DevOps
 
@@ -26,9 +26,9 @@ Azure 'da uçtan uca çözümler sayesinde takımlar her uygulama yaşam döngü
 Aşağıda, bulut iş yüklerini basitleştiren Azure hizmetlerinden bazıları ve başaramayabiliriz güçlü senaryolar sağlamak için birleştirilebilecek.
 Bu teknolojiler, kişilerle ve süreçlerle birlikte, ekiplerin müşterilere sürekli olarak değer sağlamasına imkan tanır. 
 
-- Azure: https://portal.azure.com -bulut iş yükleri oluşturmaya yönelik portal. Basit Web uygulamalarından karmaşık bulut uygulamalarına kadar her şeyi yönetin ve izleyin 
-- Azure DevOps: https://dev.azure.com -daha akıllı planlayın, daha iyi işbirliği yapın ve modern bir geliştirme hizmeti kümesiyle daha hızlı gönderin 
-- Azure Machine Learning Studio: https://ml.azure.com -veri hazırlama, eğitim ve makine öğrenimi modellerini dağıtma 
+- Azure: https://portal.azure.com-bulut iş yükleri oluşturmaya yönelik portal. Basit Web uygulamalarından karmaşık bulut uygulamalarına kadar her şeyi yönetin ve izleyin 
+- Azure DevOps: https://dev.azure.com-daha akıllı planlayın, daha iyi işbirliği yapın ve modern bir geliştirme hizmeti kümesiyle daha hızlı gönderin 
+- Azure Machine Learning Studio: https://ml.azure.com-veri hazırlama, eğitim ve makine öğrenimi modellerini dağıtma 
  
 
 Azure DevOps, her türlü Azure kaynağı için sürekli tümleştirme ve sürekli dağıtım ile DevOps işleminin her bir bölümünü otomatikleştiren yerleşik bir Azure hizmetidir.

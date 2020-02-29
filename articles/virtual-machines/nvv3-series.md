@@ -2,17 +2,17 @@
 title: NVv3-Series-Azure sanal makineleri
 description: NVv3 serisi VM 'Ler için Özellikler.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: a353abe8cdedb01138c8b633750b90bd9870e5d2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42c11ed41ca4d84f1acf137bbb681a2dbe24dfe2
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666889"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161916"
 ---
 # <a name="nvv3-series"></a>NVv3 serisi
 
@@ -21,6 +21,10 @@ NVv3 serisi sanal makineler, [NVIDIA Tesla M60](https://images.nvidia.com/conten
 NVv3 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV örneğini tek bir kullanıcı için sanal iş istasyonu olarak kullanma esnekliği sağlar veya 25 eşzamanlı kullanıcı sanal uygulama senaryosu için VM 'ye bağlanabilir.
 
 Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: desteklenmiyor
+
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar |
 |---|---|---|---|---|---|---|---|---|---|---|

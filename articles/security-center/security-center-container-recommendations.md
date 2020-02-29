@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604272"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912371"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Azure Güvenlik Merkezi kapsayıcısı önerilerini anlama
 
@@ -35,7 +35,7 @@ Azure Güvenlik Merkezi, kapsayıcılarınızın güvenliğini sağlamanıza yar
 
     ![kapsayıcı sekmesi](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Gerçek zamanlı kapsayıcı tehdit algılama**<br> Güvenlik Merkezi, AuditD bileşeniyle Linux makinelerde yer alan kapsayıcılarınız için gerçek zamanlı tehdit algılama sağlar. Uyarılar, konakta ayrıcalıklı bir kapsayıcı oluşturma, bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucusu veya şifre Miners kullanımı gibi birçok şüpheli Docker etkinliğini belirler. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
+- **Gerçek zamanlı kapsayıcı tehdit koruması**<br> Güvenlik Merkezi, AuditD bileşeniyle Linux makinelerde yer alan kapsayıcılarınız için gerçek zamanlı tehdit koruması sağlar. Uyarılar, konakta ayrıcalıklı bir kapsayıcı oluşturma, bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucusu veya şifre Miners kullanımı gibi birçok şüpheli Docker etkinliğini belirler. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 
     ![kapsayıcı sekmesi](./media/security-center-container-recommendations/docker-threat-detection.png)
 

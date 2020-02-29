@@ -2,17 +2,17 @@
 title: Mv2-Series-Azure sanal makineleri
 description: Mv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 03e8baa5f0286652ee500a06382c0a45e6f0ec52
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655676"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163905"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
@@ -23,6 +23,10 @@ Mv2 serisi VM 'nin özelliği, hiper Iş parçacığı teknolojisinin Intel®
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: desteklenmiyor
+
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 Yazma Hızlandırıcısı: [destekleniyor](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 

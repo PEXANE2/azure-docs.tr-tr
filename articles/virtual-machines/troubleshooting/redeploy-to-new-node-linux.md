@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d8096a14bf2abc0b06b7ab7c3d340a313b1cd24c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c4152ec5e67761ce9be9a81bfbf39e1591787da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057292"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913523"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Linux sanal makinesini yeni Azure düğümüne yeniden dağıtın
 Azure 'da bir Linux sanal makinesine (VM) SSH veya uygulama erişiminde sorun giderme sorunları yaşıyorsanız, sanal makinenin yeniden dağıtılması yardımcı olabilir. Bir VM 'yi yeniden dağıtırken, VM 'yi Azure altyapısı içindeki yeni bir düğüme taşıdığından, sonra yeniden güçlendirir. Tüm yapılandırma seçenekleriniz ve ilişkili kaynaklarınız korunur. Bu makalede, Azure CLı veya Azure portal kullanarak bir VM 'yi yeniden dağıtma gösterilmektedir.
@@ -37,6 +37,10 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>Klasik Azure CLı 'yı kullanma
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 [En son Azure klasık CLI](../../cli-install-nodejs.md) 'Yı yükleyip Azure hesabınızda oturum açın. Kaynak Yöneticisi modunda olduğunuzdan emin olun (`azure config mode arm`).
 
 Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'yi yeniden dağıtır:

@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122459"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919779"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure klasik CLı komutları 
 
-> [!IMPORTANT]
-> Bu konu başlığı altında Azure klasik CLI'nin nasıl yüklendiği açıklanır. Klasik CLI kullanımdan kaldırılmıştır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır.
-> Diğer tüm dağıtımlar için [Azure CLI](https://docs.microsoft.com/cli/azure/)'yi kullanın.
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+Bu konu başlığı altında Azure klasik CLI'nin nasıl yüklendiği açıklanır. Klasik CLI kullanımdan kaldırılmıştır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır. Diğer tüm dağıtımlar için [Azure CLI](https://docs.microsoft.com/cli/azure/)'yi kullanın.
 
 Bu makalede, Azure kaynakları oluşturmak ve yönetmek için sık kullandığınız Azure klasik komut satırı arabirimi (CLı) komutları için sözdizimi ve seçenekler sağlanmaktadır. Bu, tüm bir başvuru değildir ve CLı sürümünüz biraz farklı komutlar veya parametreler gösterebilir. 
 

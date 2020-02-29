@@ -1,5 +1,5 @@
 ---
-title: Azure’da Linux VM’nizi iyileştirme
+title: Azure 'da Linux VM 'nizi iyileştirin
 description: Azure 'da en iyi performansı elde etmek için Linux VM 'nizi ayarladığınızdan emin olmak için bazı iyileştirme ipuçlarını öğrenin
 keywords: Linux sanal makinesi, sanal makine Linux, Ubuntu sanal makinesi
 services: virtual-machines-linux
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a80446317a289f27cdbbff3b2939cfe0db45748f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934712"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918062"
 ---
-# <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
+# <a name="optimize-your-linux-vm-on-azure"></a>Azure 'da Linux VM 'nizi iyileştirin
 Bir Linux sanal makinesi (VM) oluşturmak, komut satırından veya portaldan kolayca yapılır. Bu öğreticide, Microsoft Azure platformunda performansını en iyi duruma getirecek şekilde ayarlamış olduğunuzdan emin olmanız gösterilmektedir. Bu konu, Ubuntu sunucu sanal makinesini kullanır, ancak aynı zamanda [kendi görüntülerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makinesi de oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu konu, zaten çalışan bir Azure aboneliğiniz olduğunu varsayar ([ücretsiz deneme kaydı](https://azure.microsoft.com/pricing/free-trial/)) ve Azure aboneliğinizde zaten bir VM sağladınız. [VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)oluşturmadan önce [az oturum açma](/cli/azure/reference-index) ile Azure ABONELIĞINIZDE en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olduğundan ve oturum açmış olduğunuzdan emin olun.
 
 ## <a name="azure-os-disk"></a>Azure işletim sistemi diski
@@ -135,5 +135,4 @@ Tüm iyileştirme tartışmalarında olduğu gibi, değişikliğin etkisini öl�
 Ek kaynaklara yönelik bazı yararlı bağlantılar:
 
 * [Azure Linux Aracısı Kullanıcı Kılavuzu](../extensions/agent-linux.md)
-* [Azure Linux VM 'lerinde MySQL performansını iyileştirme](classic/optimize-mysql.md)
 * [Linux 'ta yazılım RAID yapılandırma](configure-raid.md)

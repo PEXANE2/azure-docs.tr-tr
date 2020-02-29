@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132291"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917239"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için yaygın kullanım örnekleri ve senaryolar
 
@@ -97,7 +97,7 @@ Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir
 
 Azure AD DS, Azure 'da dağıtılan uzak masaüstü sunucularına yönetilen etki alanı hizmetleri sağlamak için kullanabilirsiniz. Bu dağıtım senaryosu hakkında daha fazla bilgi için bkz. [Azure AD DOMAIN SERVICES RDS dağıtımıyla tümleştirme][windows-rds].
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>Etki alanına katılmış HDInsight kümeleri (Önizleme)
+## <a name="domain-joined-hdinsight-clusters"></a>Etki alanına katılmış HDInsight kümeleri
 
 Apache Ranger etkin olan Azure AD DS tarafından yönetilen bir etki alanına katılmış bir Azure HDInsight kümesi oluşturabilirsiniz. Apache Ranger aracılığıyla Hive ilkeleri oluşturup uygulayabilir ve veri bilimcileri gibi kullanıcıların Excel veya Tableau gibi ODBC tabanlı araçları kullanarak Hive 'a bağlanmasına izin verebilirsiniz. Etki alanına katılmış HDInsight 'a HBase, Spark ve fırtınası gibi diğer iş yüklerini eklemek için çalışmaya devam ediyoruz.
 

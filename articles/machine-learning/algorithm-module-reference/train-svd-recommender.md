@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313918"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920815"
 ---
 # <a name="train-svd-recommender"></a>SVD Önerenini Eğitme
 
-Bu makalede, Azure Machine Learning tasarımcısında eğitme SVD öneren modülünün nasıl kullanılacağı açıklanır. Tek değer ayrıştırma (SVD) algoritmasına dayalı bir öneri modeli geliştirmek için bu modülü kullanın.  
+Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme) bulunan SVD öneren modülünün nasıl kullanılacağı açıklanır. Tek değer ayrıştırma (SVD) algoritmasına dayalı bir öneri modeli geliştirmek için bu modülü kullanın.  
 
 Tren SVD öneren modülü kullanıcı-öğe derecelendirme üçlü veri kümesini okur. Eğitilen bir SVD öneren döndürür. Daha sonra eğitilen modeli kullanarak, Puanlama tahmin edebilir veya öneriler oluşturabilir ve bu da [SVD öneren](score-svd-recommender.md) modülünü kullanabilirsiniz.  
 
@@ -48,14 +48,11 @@ Modülünü kullanmadan önce, giriş verileriniz öneri modelinin beklediği bi
 + İkinci sütunda öğe tanımlayıcıları bulunur.
 + Üçüncü sütun, Kullanıcı öğesi çiftinin derecelendirmesini içerir. Derecelendirme değerleri sayısal türde olmalıdır.  
 
-Azure Machine Learning tasarımcısında **Restoran derecelendirme** veri kümesi ( **kaydedilmiş veri kümelerini** seçin ve ardından **örnekler**) beklenen biçimi gösterir:
+Azure Machine Learning tasarımcısında **film derecelendirmeleri** veri kümesi ( **veri kümelerini** seçin ve **örnekler**) beklenen biçimi gösterir:
 
-|userID|Placeıd|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![Film derecelendirmeleri](media/module/movie-ratings-dataset.png)
 
-Bu örnekten, tek bir kullanıcının iki ayrı Restoranları derecelendirdiğinden emin olabilirsiniz. 
+Bu örnekten, tek bir kullanıcının birçok film derecelendirip derecelendirilmesine bakabilirsiniz. 
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
@@ -65,7 +62,7 @@ Bu örnekten, tek bir kullanıcının iki ayrı Restoranları derecelendirdiğin
     
     Her faktörün, kullanıcının öğeyle ne kadar ilgili olduğunu ölçer. Faktörlerin sayısı Ayrıca, görünmeyen faktör alanının boyutaldır. Artan Kullanıcı ve öğe sayısı sayesinde daha fazla sayıda etmen ayarlamanız daha iyidir. Ancak sayı çok büyükse performans kaybolabilir.
     
-3.  **Öneri algoritması yinelemesi sayısı** , algoritmanın giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı arttıkça, tahmine göre daha kesin olur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30’dur.
+3.  **Öneri algoritması yinelemesi sayısı** , algoritmanın giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı arttıkça, tahmine göre daha kesin olur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30 ' dur.
 
 4.  **Öğrenme oranı**için, öğrenme için adım boyutunu tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
 
