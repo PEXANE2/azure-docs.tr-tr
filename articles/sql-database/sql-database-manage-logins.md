@@ -1,6 +1,6 @@
 ---
 title: Oturum açma bilgileri ve kullanıcılar
-description: SQL veritabanı ve SQL veri ambarı güvenlik yönetimi hakkında, özellikle de sunucu düzeyi sorumlu hesabı aracılığıyla veritabanı erişimini ve oturum açma güvenliğini yönetme hakkında bilgi edinin.
+description: Sunucu düzeyi sorumlu hesabı aracılığıyla veritabanı erişimini ve oturum açma güvenliğini yönetme hakkında bilgi edinmek için SQL veritabanı ve Azure SYNAPSE güvenlik yönetimi hakkında bilgi edinin.
 keywords: sql veritabanı güvenliği,veritabanı güvenliği yönetimi,oturum açma güvenliği,veritabanı güvenliği,veritabanı erişimi
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,21 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/26/2019
-ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 02/06/2020
+tags: azure-synapse
+ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159154"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196969"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL veritabanı ve SQL veri ambarı 'na veritabanı erişimini denetleme ve verme
+# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>SQL veritabanı ve Azure SYNAPSE Analytics 'e veritabanı erişimi denetleme ve verme
 
-Güvenlik duvarı kuralları yapılandırmasından sonra, Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'na, veritabanı sahibi olarak veya veritabanındaki bir veritabanı kullanıcısı olarak yönetici hesaplarından biri olarak bağlanabilirsiniz.  
+Güvenlik duvarı kuralları yapılandırmasından sonra, Azure [SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'e yönetici hesaplarından biri olarak, veritabanı sahibi olarak veya veritabanındaki bir veritabanı kullanıcısı olarak bağlanabilirsiniz.  
 
 > [!NOTE]  
-> Bu konu, Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. 
+> Bu konu, Azure SQL Server ve SQL veritabanı ve Azure SQL Server 'da oluşturulan Azure SYNAPSE için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır.
 > [!TIP]
 > Öğretici için bkz. [Azure SQL veritabanınızı güvenli hale getirme](sql-database-security-tutorial.md). Bu öğretici, **Azure SQL veritabanı yönetilen örneği**için geçerlidir.
 
@@ -43,7 +44,7 @@ Yönetici işlevlerine sahip iki yönetici hesabı (**Sunucu yöneticisi** ve **
 
 - **Yönetici Azure Active Directory**
 
-  Ayrıca, Azure Active Directory’deki bir adet kişi veya güvenlik grubu hesabı da yönetici olarak yapılandırılabilir. Bir Azure AD yöneticisi yapılandırmak isteğe bağlıdır, ancak SQL veritabanı 'na bağlanmak için Azure AD hesapları kullanmak istiyorsanız bir Azure **ad Yöneticisi yapılandırılmalıdır** . Azure Active Directory erişimini yapılandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory Kimlik Doğrulamasını Kullanarak SQL Veritabanı’na veya SQL Veri Ambarı’na Bağlanma](sql-database-aad-authentication.md) ve [SQL Veritabanı ve SQL Veri Ambarı ile Azure AD MFA kullanımı için SSMS desteği](sql-database-ssms-mfa-authentication.md).
+  Ayrıca, Azure Active Directory’deki bir adet kişi veya güvenlik grubu hesabı da yönetici olarak yapılandırılabilir. Bir Azure AD yöneticisi yapılandırmak isteğe bağlıdır, ancak SQL veritabanı 'na bağlanmak için Azure AD hesapları kullanmak istiyorsanız bir Azure **ad Yöneticisi yapılandırılmalıdır** . Azure Active Directory erişimini yapılandırma hakkında daha fazla bilgi için, [SQL veritabanı ve Azure SYNAPSE Ile Azure AD MFA için](sql-database-ssms-mfa-authentication.md)Azure Active Directory kimlik doğrulaması ve SSMS DESTEĞI [kullanarak SQL veritabanı 'Na veya Azure SYNAPSE 'a bağlanma](sql-database-aad-authentication.md) konusuna bakın.
 
 **Sunucu Yöneticisi** ve **Azure AD yönetici** hesapları aşağıdaki özelliklere sahiptir:
 
@@ -72,7 +73,7 @@ Yöneticiler, sunucu düzeyi güvenlik duvarındaki açık bağlantı noktaları
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>SQL Server Management Studio kullanarak bir veritabanına bağlanma
 
-Sunucu, veritabanı, sunucu düzeyinde IP güvenlik duvarı kuralları oluşturma ve bir veritabanını sorgulamak için SQL Server Management Studio kullanma hakkında bilgi için, bkz [. Azure Portal ve SQL kullanarak Azure SQL veritabanı sunucularını, veritabanlarını ve güvenlik duvarı kurallarını kullanmaya başlama Sunucu Management Studio](sql-database-single-database-get-started.md).
+Sunucu, veritabanı, sunucu düzeyinde IP güvenlik duvarı kuralları oluşturma ve bir veritabanını sorgulamak için SQL Server Management Studio kullanma hakkında bilgi için, bkz. [Azure Portal ve SQL Server Management Studio kullanarak Azure SQL veritabanı sunucularını, veritabanlarını ve güvenlik duvarı kurallarını kullanmaya başlama](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Microsoft Azure ve SQL Veritabanı güncelleştirmeleriyle aynı sürümde olmak için her zaman en güncel Management Studio sürümünü kullanmanız önerilir. [SQL Server Management Studio’yu güncelleyin](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -128,7 +129,7 @@ Diğer yönetim rolü ise oturum açma yöneticisi rolüdür. Bu rolün üyeleri
 
 ## <a name="non-administrator-users"></a>Yönetici olmayan kullanıcılar
 
-Çoğu durumda, yönetici olmayan kullanıcıların ana veritabanına erişmesi gerekmez. [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) deyimini kullanarak veritabanı düzeyinde bağımsız veritabanı kullanıcıları oluşturun. Kullanıcı Azure Active Directory bir kimlik doğrulaması, veritabanı kullanıcısı (ortamınızı Azure AD kimlik doğrulaması için yapılandırdıysanız) veya bir SQL Server kimlik doğrulaması içeren veritabanı kullanıcısı veya bir SQL Server tabanlı SQL Server kimlik doğrulaması kullanıcısı olabilir kimlik doğrulaması oturum açma (önceki adımda oluşturulur.) Daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](https://msdn.microsoft.com/library/ff929188.aspx). 
+Çoğu durumda, yönetici olmayan kullanıcıların ana veritabanına erişmesi gerekmez. [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) deyimini kullanarak veritabanı düzeyinde bağımsız veritabanı kullanıcıları oluşturun. Kullanıcı Azure Active Directory bir kimlik doğrulaması, veritabanı kullanıcısı (ortamınızı Azure AD kimlik doğrulaması için yapılandırdıysanız) veya bir SQL Server kimlik doğrulaması içeren veritabanı kullanıcısı veya bir SQL Server kimlik doğrulaması oturum açma SQL Server kimlik doğrulaması kullanıcısı (önceki adımda oluşturulan) olabilir. Daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](https://msdn.microsoft.com/library/ff929188.aspx). 
 
 Kullanıcı oluşturmak için veritabanına bağlanın ve aşağıdaki örneklere benzer deyimleri çalıştırın:
 
@@ -151,7 +152,7 @@ Azure SQL veritabanı 'nda `ALTER ROLE` ifadesini kullanın.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Azure SQL veri ambarı 'nda [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)kullanın.
+Azure 'da SYNAPSE ' de [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)kullanın.
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```

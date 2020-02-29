@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003374"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198125"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Öğretici: .NET ' te Azure Web App ile Azure Key Vault kullanma
 
@@ -85,7 +86,7 @@ Kaynak grubunuzda bir Anahtar Kasası oluşturmak için aşağıdaki bilgileri s
 
 * Anahtar Kasası adı: yalnızca rakam (0-9), harf (a-z, A-Z) ve kısa çizgi (-) içerebilen 3 ile 24 karakter arasında bir dize
 * Kaynak grubu adı
-* Konumuna **Batı ABD**
+* Konum: **Batı ABD**
 
 Azure CLı 'de şu komutu girin:
 
@@ -127,7 +128,7 @@ Ayrıca şu videoyu izleyebilirsiniz:
 
 ## <a name="open-and-edit-the-solution"></a>Çözümü açma ve düzenleme
 
-1. **Pages** > **About.cshtml.cs** dosyasına gidin.
+1. **Sayfalar** > **About.cshtml.cs** dosyasına gidin.
 
 1. Şu NuGet paketlerini yükler:
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
@@ -191,7 +192,7 @@ Ayrıca şu videoyu izleyebilirsiniz:
 
 ## <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
 
-1. Visual Studio 2019 ' in ana menüsünde hata ayıklama**başlangıcı**, hata ayıklama ile veya olmadan ' **ı seçin.**  >  
+1. Visual Studio 2019 ' in ana **menüsünde hata ayıklama > ** Başlat ' ı seçin veya hata ayıklama olmadan **başlatın**. 
 1. Tarayıcıda **hakkında** sayfasına gidin.  
     **AppSecret** değeri görüntülenir.
 
@@ -205,10 +206,10 @@ Azure CLı 'de, bu uygulamanın kimliğini oluşturmak için, Assign-Identity ko
 az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
 ```
 
-YourAppName > öğesini Azure 'da yayınlanan uygulamanın adıyla değiştirin \<.  
-    Örneğin, yayınlanmış uygulamanızın adı **MyAwesomeapp.azurewebsites.net**ise, YourAppName > \< **myawesomeapp**ile değiştirin.
+\<YourAppName > yerine Azure üzerinde yayınlanan uygulamanın adını koyun.  
+    Örneğin, yayımlanmış uygulamanızın adı **MyAwesomeapp.azurewebsites.net**ise, \<yourappname > **Myawesomeapp**ile değiştirin.
 
-Uygulamayı Azure 'da yayımladığınızda bunu `PrincipalId` bir yere unutmayın. Adım 1 ' deki komutun çıktısı aşağıdaki biçimde olmalıdır:
+Uygulamayı Azure 'da yayımladığınızda `PrincipalId` bir yere göz önünde olun. Adım 1 ' deki komutun çıktısı aşağıdaki biçimde olmalıdır:
 
 ```json
 {
@@ -223,7 +224,7 @@ Uygulamayı Azure 'da yayımladığınızda bunu `PrincipalId` bir yere unutmay�
 
 ## <a name="assign-permissions-to-your-app"></a>Uygulamanıza izin atama
 
-Yourkeyvaultname > değerini anahtar kasanızın adıyla değiştirin \<ve PrincipalId > öğesini aşağıdaki komutta **PrincipalId** değeri ile değiştirin: \<
+\<YourKeyVaultName > anahtar kasanızın adıyla değiştirin ve \<PrincipalId > öğesini aşağıdaki komutta **PrincipalId** değeri ile değiştirin:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list

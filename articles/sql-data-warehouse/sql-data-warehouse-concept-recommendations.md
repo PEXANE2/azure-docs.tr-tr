@@ -1,32 +1,30 @@
 ---
-title: SQL veri ambarı önerileri
-description: SQL veri ambarı önerileri ve bunların nasıl üretildiği hakkında bilgi edinin
+title: SQL Analytics önerileri
+description: SQL Analytics önerileri ve bunların nasıl üretildiği hakkında bilgi edinin
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/05/2018
+ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a93339b99c6591ee9ed615c032d0eac58a372fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: azure-synapse
+ms.openlocfilehash: 5471236c09737eeef2d4cb7542c245d3087e726c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827496"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195966"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>SQL veri ambarı önerileri
+# <a name="sql-analytics-recommendations"></a>SQL Analytics önerileri
 
-Bu makalede, Azure Advisor aracılığıyla SQL veri ambarı tarafından sunulan öneriler açıklanmaktadır.  
+Bu makalede, Azure Advisor aracılığıyla sunulan SQL Analytics önerileri açıklanmaktadır.  
 
-SQL veri ambarı, veri ambarınızın performans için tutarlı bir şekilde iyileştirildiğinden emin olmak için öneriler sağlar. Veri ambarı önerileri, doğrudan [Azure Portal](https://aka.ms/Azureadvisor)içinde en iyi uygulamaları sunmak Için [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) ile sıkı bir şekilde tümleşiktir. SQL veri ambarı, veri ambarınızın geçerli durumunu analiz eder, bir günlük temposunda etkin iş yükünüz için telemetri ve yüzey önerilerini toplar. Desteklenen veri ambarı öneri senaryoları, önerilen eylemlerin nasıl uygulanacağı ile birlikte aşağıda özetlenmiştir.
+SQL Analytics veri ambarı iş yükünüzün performans için tutarlı bir şekilde iyileştirildiğinden emin olmak için öneriler sağlar. Öneriler, doğrudan [Azure Portal](https://aka.ms/Azureadvisor)içinde en iyi uygulamaları sunmak Için [Azure Danışmanı](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) ile sıkı bir şekilde tümleşiktir. SQL Analytics, günlük temposunda etkin iş yükünüz için telemetri ve yüzey önerilerini toplar. Desteklenen öneri senaryoları, önerilen eylemlerin nasıl uygulanacağı ile birlikte aşağıda özetlenmiştir.
 
-SQL veri ambarı Danışmanı hakkında geri bildiriminiz varsa veya herhangi bir sorunla karşılaşırsanız [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com)ulaşın.   
-
-Önerilerinizi bugün denetlemek için [buraya](https://aka.ms/Azureadvisor) tıklayın! Şu anda bu özellik yalnızca Gen2 veri ambarlarında geçerlidir. 
+Önerilerinizi bugün [kontrol](https://aka.ms/Azureadvisor) edebilirsiniz! Şu anda bu özellik yalnızca Gen2 veri ambarlarında geçerlidir. 
 
 ## <a name="data-skew"></a>Veri eğriltme
 
@@ -34,9 +32,9 @@ Veri eğriltme, iş yükünüzü çalıştırırken ek veri hareketine veya kayn
 
 - [Eğriliği tanımla ve Kaldır](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
 
-## <a name="no-or-outdated-statistics"></a>Hiç veya güncel olmayan Istatistik
+## <a name="no-or-outdated-statistics"></a>Hiç veya güncel olmayan istatistik
 
-Daha iyi performans istatistikleri, SQL veri ambarı sorgu iyileştiricinin en iyi şekilde sorgu planları oluşturmasına neden olabileceği için sorgu performansını ciddi bir şekilde etkileyebilir. Aşağıdaki belgelerde, istatistikleri oluşturma ve güncelleştirme konusunda en iyi uygulamalar açıklanmaktadır:
+En iyi performans istatistikleri, SQL sorgu iyileştiricinin alt sorgu planları oluşturmasına neden olabileceği için sorgu performansını ciddi bir şekilde etkileyebilir. Aşağıdaki belgelerde, istatistikleri oluşturma ve güncelleştirme konusunda en iyi uygulamalar açıklanmaktadır:
 
 - [Tablo istatistikleri oluşturma ve güncelleştirme](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 

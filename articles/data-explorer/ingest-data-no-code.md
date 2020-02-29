@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: kod olmadan izleme verilerini alma-Azure Veri Gezgini'
+title: 'Öğretici: Azure Veri Gezgini Code olmadan izleme verilerini alma'
 description: Bu öğreticide, verileri tek bir kod satırı olmadan Azure Veri Gezgini izlemeyi ve verileri sorgulamayı öğreneceksiniz.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986215"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198057"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme 
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Tüm kaynakları aynı Azure konumunda veya bölgede oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md). Bu öğreticide, veritabanı adı *TestDatabase*' dir.
@@ -43,7 +43,7 @@ Azure Izleyici tanılama ölçümleri ve günlükleri ve etkinlik günlükleri t
 
 Azure tanılama ölçümleri ve günlükleri ve etkinlik günlükleri bir Azure hizmeti tarafından dağıtılır ve bu hizmetin çalışması hakkındaki verileri sağlar. 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
 #### <a name="example"></a>Örnek
 
 Tanılama ölçümleri 1 dakikalık bir zaman çizgisi ile toplanır. Sorgu süresi üzerinde bir Azure Veri Gezgini metrik olay şeması örneği aşağıda verilmiştir:
@@ -77,7 +77,7 @@ Tanılama ölçümleri 1 dakikalık bir zaman çizgisi ile toplanır. Sorgu sür
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
 #### <a name="example"></a>Örnek
 
 Aşağıda Azure Veri Gezgini [Tanılama alma günlüğüne](using-diagnostic-logs.md#diagnostic-logs-schema)bir örnek verilmiştir:
@@ -133,7 +133,7 @@ Aşağıda Azure Veri Gezgini [Tanılama alma günlüğüne](using-diagnostic-lo
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 #### <a name="example"></a>Örnek
 
 Azure etkinlik günlükleri, aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan abonelik düzeyi günlüklerdir. Aşağıda, erişimi denetlemeye yönelik bir etkinlik günlüğü olayına bir örnek verilmiştir:
@@ -210,7 +210,7 @@ Azure Izleyici günlüklerinin yapısı tablosal değildir. Verileri işleyebili
 
 Azure Veri Gezgini veritabanında hedef tabloları oluşturmak için Azure Veri Gezgini Web Kullanıcı arabirimini kullanın.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>Tanılama ölçümleri için tablo oluşturma
 
 1. *TestDatabase* veritabanında, tanılama ölçümleri kayıtlarını depolamak Için *diagnosticölçümler* adlı bir tablo oluşturun. Aşağıdaki `.create table` denetim komutunu kullanın:
@@ -235,7 +235,7 @@ Azure Veri Gezgini veritabanında hedef tabloları oluşturmak için Azure Veri 
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>Tanılama günlükleri için tablo oluşturma 
 
 1. *TestDatabase* veritabanında, tanılama günlüğü kayıtlarını depolamak Için *diagnosticlogs* adlı bir tablo oluşturun. Aşağıdaki `.create table` denetim komutunu kullanın:
@@ -258,7 +258,7 @@ Azure Veri Gezgini veritabanında hedef tabloları oluşturmak için Azure Veri 
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>Etkinlik günlükleri için tablo oluşturma 
 
 1. Etkinlik günlüğü kayıtlarını almak için *TestDatabase* veritabanında *activitylogs* adlı bir tablo oluşturun. Tabloyu oluşturmak için aşağıdaki Azure Veri Gezgini sorgusunu çalıştırın:
@@ -284,7 +284,7 @@ Azure Veri Gezgini veritabanında hedef tabloları oluşturmak için Azure Veri 
 
  Veri biçimi `json`olduğundan, veri eşleme gereklidir. `json` eşleme her JSON yolunu bir tablo sütunu adıyla eşleştirir.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Tanılama ölçümleri/tanılama günlükleri](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Tanılama ölçümleri/tanılama günlükleri](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>Tanılama ölçümlerini ve günlüklerini tabloyla eşleyin
 
 Tanılama ölçüsünü ve günlük verilerini tabloya eşlemek için aşağıdaki sorguyu kullanın:
@@ -293,7 +293,7 @@ Tanılama ölçüsünü ve günlük verilerini tabloya eşlemek için aşağıda
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>Etkinlik günlüklerini tabloyla eşleme
 
 Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kullanın:
@@ -305,7 +305,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>Ölçüm ve günlük verileri için güncelleştirme ilkesi oluşturma
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>Tanılama ölçümleri için veri güncelleştirme ilkesi oluşturma
 
 1. Koleksiyondaki her bir değerin ayrı bir satır alması için, tanılama ölçümü kayıtlarının toplanmasını genişleten bir [işlev](/azure/kusto/management/functions) oluşturun. [`mv-expand`](/azure/kusto/query/mvexpandoperator) işlecini kullanın:
@@ -333,7 +333,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>Tanılama günlükleri için veri güncelleştirme ilkesi oluştur
 
 1. Koleksiyondaki her bir değerin ayrı bir satır alması için tanılama günlüğü kayıtlarının toplanmasını genişleten bir [işlev](/azure/kusto/management/functions) oluşturun. Azure Veri Gezgini kümesinde alma günlüklerini etkinleştireceksiniz ve alma [günlükleri şemasını](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)kullanacaksınız. Başarılı ve başarısız alma için bir tablo oluşturacaksınız, bazı alanlar başarılı alma işlemi için boş olur (örneğin, hata kodu). [`mv-expand`](/azure/kusto/query/mvexpandoperator) işlecini kullanın:
@@ -366,7 +366,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>Etkinlik günlükleri için veri güncelleştirme ilkesi oluştur
 
 1. Koleksiyondaki her değerin ayrı bir satır alması için etkinlik günlüğü kayıtlarının toplanmasını genişleten bir [işlev](/azure/kusto/management/functions) oluşturun. [`mv-expand`](/azure/kusto/query/mvexpandoperator) işlecini kullanın:
@@ -425,7 +425,7 @@ Azure Tanılama ayarları, ölçüm ve günlüklerin bir depolama hesabına veya
 
 Artık tanılama ölçümlerini ve günlüklerinizi ve etkinlik günlüklerinizi Olay Hub 'ına bağlamanız gerekir.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Tanılama ölçümleri/tanılama günlükleri](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Tanılama ölçümleri/tanılama günlükleri](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>Tanılama ölçümlerini ve günlüklerini Olay Hub 'ınıza bağlama
 
 Ölçümlerin dışarı aktarılacağı kaynağı seçin. Birçok kaynak türü Event Hubs ad alanı, Azure Key Vault, Azure IoT Hub ve Azure Veri Gezgini kümeleri de dahil olmak üzere tanılama verilerini dışa aktarmayı destekler. Bu öğreticide, kaynağı olarak bir Azure Veri Gezgini kümesi kullanacağız, sorgu performans ölçümlerini ve Alım sonuçları günlüklerini inceleyeceğiz.
@@ -452,7 +452,7 @@ Artık tanılama ölçümlerini ve günlüklerinizi ve etkinlik günlüklerinizi
 
 1. **Kaydet**’i seçin.
 
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Etkinlik günlüklerini Olay Hub 'ınıza bağlama
 
 1. Azure portal sol menüsünde **etkinlik günlüğü**' nü seçin.
@@ -501,7 +501,7 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
 
     ![Olay Hub 'ı veri bağlantısı](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Tanılama ölçümleri/tanılama günlükleri](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Tanılama ölçümleri/tanılama günlükleri](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. **Veri bağlantısı** penceresinde aşağıdaki ayarları kullanın:
 
@@ -521,14 +521,14 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
 
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
-    | **Tablo** | *DiagnosticRawRecords* | *TestDatabase* veritabanında oluşturduğunuz tablo. |
+    | **Tablosundan** | *DiagnosticRawRecords* | *TestDatabase* veritabanında oluşturduğunuz tablo. |
     | **Veri biçimi** | *JSON* | Tabloda kullanılan biçim. |
     | **Sütun eşleme** | *Diagnosticrawmisinizmapping* | Gelen JSON verilerini *Diagnosticrawrecords* tablosunun sütun adlarıyla ve veri türleriyle eşleyen *TestDatabase* veritabanında oluşturduğunuz eşleme.|
     | | |
 
-1. **Oluştur**'u seçin.  
+1. **Oluştur**’u seçin.  
 
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 
 1. **Veri bağlantısı** penceresinde aşağıdaki ayarları kullanın:
 
@@ -548,19 +548,19 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
 
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
-    | **Tablo** | *ActivityLogsRawRecords* | *TestDatabase* veritabanında oluşturduğunuz tablo. |
+    | **Tablosundan** | *ActivityLogsRawRecords* | *TestDatabase* veritabanında oluşturduğunuz tablo. |
     | **Veri biçimi** | *JSON* | Tabloda kullanılan biçim. |
     | **Sütun eşleme** | *Activitylogsrawmisinizmapping* | Gelen JSON verilerini *Activitylogsrawrecords* tablosunun sütun adlarıyla ve veri türleriyle eşleyen *TestDatabase* veritabanında oluşturduğunuz eşleme.|
     | | |
 
-1. **Oluştur**'u seçin.  
+1. **Oluştur**’u seçin.  
 ---
 
 ## <a name="query-the-new-tables"></a>Yeni tabloları sorgulama
 
 Artık veri akışı olan bir işlem hattına sahipsiniz. Küme aracılığıyla alma işlemi varsayılan olarak 5 dakika sürer, bu nedenle sorguya başlamadan önce verilerin birkaç dakika boyunca akmasını sağlar.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Tanılama ölçümleri](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>Tanılama ölçümleri tablosunu sorgulama
 
 Aşağıdaki sorgu, Azure Veri Gezgini 'de tanılama ölçümü kayıtlarından sorgu süresi verilerini analiz eder:
@@ -579,7 +579,7 @@ Sorgu sonuçları:
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>Tanılama günlükleri tablosunu sorgulama
 
 Bu işlem hattı bir olay hub 'ı aracılığıyla alma işlemi üretir. Bu giriş sonuçlarının sonuçlarını gözden geçireceğiz.
@@ -599,7 +599,7 @@ Sorgu sonuçları:
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
+# <a name="activity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>Etkinlik günlükleri tablosunu sorgulama
 
 Aşağıdaki sorgu Azure Veri Gezgini etkinlik günlüğü kayıtlarından verileri analiz eder:

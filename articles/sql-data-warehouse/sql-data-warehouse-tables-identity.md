@@ -1,6 +1,6 @@
 ---
 title: Vekil anahtarlar oluşturmak için KIMLIK kullanma
-description: Azure SQL veri ambarı 'nda tablolar üzerinde vekil anahtarlar oluşturmak için KIMLIK özelliğinin kullanılmasına yönelik öneriler ve örnekler.
+description: SQL Analytics 'te tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğinin kullanılmasına yönelik öneriler ve örnekler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692476"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199436"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda vekil anahtarlar oluşturmak için KIMLIK kullanma
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>SQL Analytics 'te vekil anahtarlar oluşturmak için KIMLIK kullanma
 
-Azure SQL veri ambarı 'nda tablolar üzerinde vekil anahtarlar oluşturmak için KIMLIK özelliğinin kullanılmasına yönelik öneriler ve örnekler.
+SQL Analytics 'te tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğinin kullanılmasına yönelik öneriler ve örnekler.
 
 ## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir?
 
-Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.  
+Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. SQL Analytics modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
 
-IDENTITY özelliği, yük performansını etkilemeden veri ambarındaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. Bu nedenle, KIMLIK uygulanması, bu hedeflere ulaşılmaya yönelik olarak tasarlanmıştır.
+IDENTITY özelliği, yük performansını etkilemeden SQL Analytics veritabanındaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. Bu nedenle, KIMLIK uygulanması, bu hedeflere ulaşılmaya yönelik olarak tasarlanmıştır.
 
 Aşağıdaki ifadeye benzer bir sözdizimi kullanarak tabloyu ilk oluşturduğunuzda, KIMLIK özelliğine sahip olarak bir tablo tanımlayabilirsiniz:
 
@@ -50,7 +50,7 @@ Bu bölümün geri kalanında, bunları daha fazla anlamanıza yardımcı olmak 
 
 ### <a name="allocation-of-values"></a>Değerlerin ayrılması
 
-IDENTITY özelliği, SQL Server ve Azure SQL veritabanı 'nın davranışını yansıtan vekil değerlerinin ayrıldığı sırayı garanti etmez. Bununla birlikte, Azure SQL veri ambarı 'nda garanti olmaması daha fazla önemlidir.
+IDENTITY özelliği, SQL Server ve Azure SQL veritabanı 'nın davranışını yansıtan vekil değerlerinin ayrıldığı sırayı garanti etmez. Ancak, SQL Analytics 'te garanti yokluğu daha fazla önemlidir.
 
 Aşağıdaki örnek bir çizimde verilmiştir:
 
@@ -100,7 +100,7 @@ SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davr
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Bir KIMLIK sütununa açıkça değer ekleme
 
-SQL veri ambarı `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
+SQL Analytics `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
 
 Birçok veri modu, boyutları içindeki belirli satırlar için önceden tanımlanmış negatif değerler kullanmak gibidir. Örnek,-1 veya "bilinmeyen üye" satırıdır.
 
@@ -161,11 +161,11 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > KIMLIK sütunu olan bir tabloya veri yüklerken `CREATE TABLE AS SELECT` kullanmak mümkün değildir.
 >
 
-Veri yükleme hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
+Veri yükleme hakkında daha fazla bilgi için bkz. [SQL Analytics Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Sistem görünümleri
 
-IDENTITY özelliği olan bir sütunu tanımlamak için [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) katalog görünümünü kullanabilirsiniz.
+IDENTITY özelliği olan bir sütunu belirlemek için [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) katalog görünümünü kullanabilirsiniz.
 
 Veritabanı şemasını daha iyi anlamanıza yardımcı olmak için bu örnek, sys. identity_column ' nin diğer sistem Kataloğu görünümleriyle nasıl tümleştirileceğini gösterir:
 
@@ -195,7 +195,7 @@ IDENTITY özelliği kullanılamaz:
 - Sütun aynı zamanda dağıtım anahtarı olduğunda
 - Tablo bir dış tablo olduğunda
 
-Aşağıdaki ilgili işlevler SQL veri ambarı 'nda desteklenmez:
+Aşağıdaki ilgili işlevler SQL Analytics 'te desteklenmez:
 
 - [IDENTITY ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

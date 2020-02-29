@@ -1,6 +1,6 @@
 ---
 title: T-SQL bildirimleri
-description: Azure SQL veri ambarı 'nda desteklenen T-SQL deyimlerine yönelik belgelere bağlantılar.
+description: SQL Analytics 'te desteklenen T-SQL deyimlerinin belgelerinin bağlantıları.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685524"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198363"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda desteklenen T-SQL deyimleri
-Azure SQL veri ambarı 'nda desteklenen T-SQL deyimlerine yönelik belgelere bağlantılar.
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>SQL Analytics 'te desteklenen T-SQL deyimleri
+SQL Analytics 'te desteklenen T-SQL deyimlerinin belgelerinin bağlantıları.
 
 ## <a name="data-definition-language-ddl-statements"></a>Veri tanımlama dili (DDL) deyimleri
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -120,4 +120,4 @@ Azure SQL veri ambarı 'nda desteklenen T-SQL deyimlerine yönelik belgelere ba�
 * [ANA ANAHTARı AÇ](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla başvuru bilgisi için bkz. [Azure SQL veri ambarı 'Nda T-SQL dil öğeleri](sql-data-warehouse-reference-tsql-language-elements.md)ve [Azure SQL veri ambarı 'nda sistem görünümleri](sql-data-warehouse-reference-tsql-system-views.md).
+Daha fazla başvuru bilgisi için bkz. [SQL Analytics 'Te T-SQL dil öğeleri](sql-data-warehouse-reference-tsql-language-elements.md)ve [SQL Analytics 'te sistem görünümleri](sql-data-warehouse-reference-tsql-system-views.md).

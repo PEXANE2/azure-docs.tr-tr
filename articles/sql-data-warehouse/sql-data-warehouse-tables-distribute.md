@@ -1,6 +1,6 @@
 ---
 title: Dağıtılmış tablolar Tasarım Kılavuzu
-description: Azure SQL veri ambarı 'nda karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
+description: SQL Analytics 'te karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049124"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199453"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda dağıtılmış tablo tasarlamaya yönelik kılavuz
-Azure SQL veri ambarı 'nda karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>SQL Analytics 'te dağıtılmış tablolar tasarlamaya yönelik kılavuz
+SQL Analytics 'te karma dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
 
-Bu makalede, SQL veri ambarı 'nda veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [Azure SQL veri ambarı-yüksek düzeyde paralel işleme (MPP) mimarisi](massively-parallel-processing-mpp-architecture.md). 
+Bu makalede, SQL Analytics 'teki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. SQL Analytics, yüksek düzeyde [paralel işleme (MPP) mimarisi](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Dağıtılmış tablo nedir?
 Dağıtılmış bir tablo, tek tablo olarak görünür, ancak satırlar aslında 60 dağıtımları genelinde depolanır. Satırlar karma veya hepsini bir kez deneme algoritması ile dağıtılır.  
@@ -34,7 +34,7 @@ Tablo tasarımının bir parçası olarak, verileriniz ve verilerin nasıl sorgu
 
 - Tablo ne kadar büyük?   
 - Tablo ne sıklıkta yenilenir?   
-- Bir veri ambarında olgu ve boyut tabloları var mı?   
+- SQL Analytics veritabanında olgu ve boyut tabloları var mı?   
 
 
 ### <a name="hash-distributed"></a>Karma dağıtıldı
@@ -42,7 +42,7 @@ Karma olarak dağıtılan bir tablo, her bir satırı bir [dağıtıma](massivel
 
 ![Dağıtılmış tablo](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Dağıtılmış tablo")  
 
-Özdeş değerler her zaman aynı dağıtıma karma olduğundan, veri ambarı satır konumlarına yönelik yerleşik bilgiye sahiptir. SQL veri ambarı, sorgu performansını artıran sorgular sırasında veri hareketini en aza indirmek için bu bilgileri kullanır. 
+Özdeş değerler her zaman aynı dağıtıma karma olduğundan, SQL Analytics 'in satır konumlarına yönelik yerleşik bilgisi vardır. SQL Analytics, sorgu performansını artıran sorgular sırasında veri hareketini en aza indirmek için bu bilgileri kullanır. 
 
 Karma Dağıtılmış tablolar, bir yıldız şemasında büyük olgu tabloları için iyi çalışır. Bunlar çok fazla sayıda satıra sahip olabilir ve yine de yüksek performans elde edebilir. Kuşkusuz, dağıtılmış sistemin sağlamak üzere tasarlandığı performansı almanıza yardımcı olacak bazı tasarım konuları vardır. İyi bir dağıtım sütunu seçmek, bu makalede açıklanan bir noktadır. 
 
@@ -65,7 +65,7 @@ Aşağıdaki senaryolarda tablonuz için hepsini bir kez deneme dağılımı kul
 - Birleştirme, sorgudaki diğer birleşimlerden daha az önemse
 - Tablo geçici bir hazırlama tablosu olduğunda
 
-Öğretici [yeni York taksi verilerini Azure SQL veri ambarı 'na yükleme](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) , hepsini bir kez deneme için bir hazırlama tablosuna veri yükleme örneği sağlar.
+[Yeni York taksi verilerini yükleme](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) öğreticisi, SQL Analytics 'te hepsini bir kez deneme tablosuna veri yükleme örneği sağlar.
 
 
 ## <a name="choosing-a-distribution-column"></a>Dağıtım sütunu seçme
@@ -109,7 +109,7 @@ Paralel işlemeyi dengelemek için şu şekilde bir dağıtım sütunu seçin:
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Veri hareketini en aza indiren bir dağıtım sütunu seçin
 
-Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğümünden diğerine taşıyabilirler. Veri taşıma genellikle sorguları dağıtılmış tablolar üzerinde birleştirmeler ve toplamalar olduğunda oluşur. Veri hareketini en aza indirmeye yardımcı olacak bir dağıtım sütunu seçmek, SQL veri ambarınızın performansını iyileştirmeye yönelik en önemli stratejilerden biridir.
+Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğümünden diğerine taşıyabilirler. Veri taşıma genellikle sorguları dağıtılmış tablolar üzerinde birleştirmeler ve toplamalar olduğunda oluşur. Veri hareketini en aza indirmeye yardımcı olacak bir dağıtım sütunu seçmek, SQL Analytics veritabanınızın performansını iyileştirmek için en önemli stratejilerden biridir.
 
 Veri hareketini en aza indirmek için şu şekilde bir dağıtım sütunu seçin:
 
@@ -137,7 +137,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 Hangi tabloların %10 ' dan fazla veri eğriliğini olduğunu belirlemek için:
 
 1. [Tablolara genel bakış](sql-data-warehouse-tables-overview.md#table-size-queries) makalesinde gösterilen dbo. vtablesize görünümünü oluşturun.  
-2. Aşağıdaki sorguyu çalıştırın:
+2. Şu sorguyu çalıştırın:
 
 ```sql
 select *
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Dağıtılmış bir tablo oluşturmak için aşağıdaki deyimlerden birini kullanın:
 
-- [CREATE TABLE (Azure SQL veri ambarı)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [SELECT olarak CREATE TABLE (Azure SQL veri ambarı](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [SELECT olarak CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

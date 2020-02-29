@@ -2,20 +2,20 @@
 title: Teknik ve özelliklere genel bakış-Azure Active Directory B2C
 description: Azure Active Directory B2C sürümündeki özelliklere ve teknolojilere ayrıntılı bir giriş.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840222"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186905"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -115,7 +115,7 @@ Mobil, Web ve tek sayfalı uygulamaların çoğunluğu için en yaygın kimlik s
 
 Özel ilkeler, kimlik deneyimi çerçevesi (ıEF) düzenleme altyapısının tam gücüne erişimi kaldırır. Özel ilkeler sayesinde, Imagine 'yi kullanarak neredeyse tüm kimlik doğrulaması, Kullanıcı kaydı ve profil düzenlemesi deneyimi oluşturabilirsiniz.
 
-Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örneğin:
+Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örnek:
 
 * Diğer kimlik sağlayıcılarıyla federasyona ekleme
 * Birinci ve üçüncü taraf Multi-Factor Authentication (MFA) sorunları
@@ -148,7 +148,7 @@ Yukarıdaki diyagramda Azure AD B2C aynı kimlik doğrulama akışındaki çeşi
 1. Uygulamanın bir kullanıcısı SAML protokolünü kullanan bir dış kimlik sağlayıcısı kullanarak oturum açmayı seçtiğinde Azure AD B2C, bu kimlik sağlayıcısıyla iletişim kurmak için SAML protokolünü çağırır.
 1. Kullanıcı, dış kimlik sağlayıcısıyla oturum açma işlemini tamamladıktan sonra, Azure AD B2C OpenID Connect kullanarak, bağlı olan taraf uygulamasına belirteci döndürür.
 
-## <a name="application-integration"></a>Uygulama entegrasyonu
+## <a name="application-integration"></a>Uygulama tümleştirme
 
 Bir Kullanıcı uygulamanızda oturum açmak istediğinde bir Web, mobil, masaüstü veya tek sayfalı uygulama (SPA) olduğunda, uygulama bir Kullanıcı akışına veya özel ilkeye göre belirtilen uç noktaya yetkilendirme isteği başlatır. Kullanıcı akışı veya özel ilke, kullanıcının deneyimini tanımlar ve denetler. Bir kullanıcı akışını tamamlarsa (örneğin, *kaydolma veya oturum açma* akışı), Azure AD B2C bir belirteç oluşturur ve kullanıcıyı uygulamanıza geri yönlendirir.
 

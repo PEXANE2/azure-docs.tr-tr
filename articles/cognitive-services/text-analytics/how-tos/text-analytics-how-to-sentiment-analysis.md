@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137952"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197479"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
@@ -50,7 +50,7 @@ Metin Analizi API'si, Yaklaşım Analizi-v2 ve v3 'nin iki sürümünü sunmakta
 | Yaklaşım etiketleme                        |                       | X                     |
 | Model sürümü oluşturma                   |                       | X                     |
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Yaklaşım Puanlama
 
@@ -76,10 +76,10 @@ Yaklaşım Analizi v3, bir tümce ve belge düzeyinde puanlar ve Etiketler dönd
 
 ### <a name="example-c-code"></a>Örnek C# kod
 
-[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs)üzerinde yaklaşım analizi bu sürümünü C# çağıran örnek bir uygulama bulabilirsiniz.
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs)üzerinde yaklaşım analizi bu sürümünü C# çağıran örnek bir uygulama bulabilirsiniz.
 
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 ### <a name="sentiment-scoring"></a>Yaklaşım Puanlama
 
@@ -101,26 +101,26 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz için aşağıdaki başvuru bağlantılarında [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 [Yaklaşım Analizi v3 başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 [Yaklaşım Analizi v2 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
-Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örneğin:
+Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
 
 > [!NOTE]
 > Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
@@ -162,7 +162,7 @@ Yaklaşım Çözümleyicisi, metni ağırlıklı pozitif veya negatif olarak sı
 
 Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın.
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Yaklaşım Analizi v3 örnek yanıtı
 
@@ -238,7 +238,7 @@ Yaklaşım Analizi v3 'ten gelen yanıtlar, çözümlenen her tümce ve belge i�
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 ### <a name="sentiment-analysis-v2-example-response"></a>Yaklaşım Analizi v2 örnek yanıtı
 

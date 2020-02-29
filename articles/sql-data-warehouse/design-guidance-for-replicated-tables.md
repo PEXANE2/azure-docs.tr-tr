@@ -1,6 +1,6 @@
 ---
 title: Çoğaltılan tablolar için tasarım kılavuzu
-description: Azure SQL veri ambarı şemanızda çoğaltılan tabloları tasarlamaya yönelik öneriler. 
+description: SQL Analytics 'te çoğaltılan tabloları tasarlamaya yönelik öneriler
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,32 +10,32 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: ff141b0da0eb2fe68bbeccb7e39292a70b7305f0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693052"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194759"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
-Bu makale, SQL veri ambarı şemanızda çoğaltılan tabloları tasarlamaya yönelik öneriler sağlar. Veri hareketini ve sorgu karmaşıklığını azaltarak sorgu performansını artırmak için bu önerileri kullanın.
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>SQL Analytics 'te çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
+Bu makale, SQL Analytics şemanızda çoğaltılan tabloları tasarlamaya yönelik öneriler sağlar. Veri hareketini ve sorgu karmaşıklığını azaltarak sorgu performansını artırmak için bu önerileri kullanın.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Ön koşullar
-Bu makalede, SQL veri ambarı 'nda veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi. 
+## <a name="prerequisites"></a>Önkoşullar
+Bu makalede, SQL Analytics 'teki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi. 
 
 Tablo tasarımının bir parçası olarak, verileriniz ve verilerin nasıl sorgulandığı hakkında mümkün olduğunca fazla bilgi edinin.  Örneğin, bu soruları göz önünde bulundurun:
 
 - Tablo ne kadar büyük?   
 - Tablo ne sıklıkta yenilenir?   
-- Bir veri ambarında olgu ve boyut tabloları var mı?   
+- SQL Analytics veritabanında olgu ve boyut tabloları var mı?   
 
 ## <a name="what-is-a-replicated-table"></a>Çoğaltılan tablo nedir?
 Çoğaltılan bir tablo, her Işlem düğümü üzerinde erişilebilir olan tablonun tam kopyasına sahiptir. Bir tablonun çoğaltılması, bir JOIN veya toplanmadan önce Işlem düğümleri arasında veri aktarımı gereksinimini ortadan kaldırır. Tabloda birden fazla kopya olduğundan, çoğaltılan tablolar tablo boyutu 2 GB 'tan az sıkıştırıldığında en iyi şekilde çalışır.  2 GB sabit bir sınır değildir.  Veriler statikse ve değişmezse, daha büyük tabloları çoğaltabilirsiniz.
 
-Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğaltılan tablo gösterilmektedir. SQL veri ambarı 'nda, çoğaltılan tablo her Işlem düğümündeki bir dağıtım veritabanına tamamen kopyalanır. 
+Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğaltılan tablo gösterilmektedir. SQL Analytics 'te, çoğaltılan tablo her Işlem düğümündeki bir dağıtım veritabanına tamamen kopyalanır. 
 
 ![Çoğaltılan tablo](media/guidance-for-using-replicated-tables/replicated-table.png "Çoğaltılan tablo")  
 
@@ -44,13 +44,13 @@ Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğa
 Şu durumlarda çoğaltılan bir tablo kullanmayı göz önünde bulundurun:
 
 - Disk üzerindeki tablo boyutu, satır sayısından bağımsız olarak 2 GB 'tan az. Bir tablonun boyutunu bulmak için [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) komutunu kullanabilirsiniz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
-- Tablo, aksi takdirde veri hareketine gerek duyduğu birleşimlerde kullanılır. Karma olarak dağıtılan tablo gibi aynı sütunda dağıtılmamış tablolar, hepsini bir kez deneme tablosuna katılırken, sorguyu tamamlaması için veri taşıma gerekir.  Tablolardan biri küçükse, çoğaltılan bir tabloyu düşünün. Çoğu durumda, hepsini bir kez deneme tablosu yerine çoğaltılan tabloları kullanmanızı öneririz. Sorgu planlarında veri taşıma işlemlerini görüntülemek için [sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)kullanın.  Yayınmoveişlem, çoğaltılan bir tablo kullanılarak ortadan kaldırılabilir olan tipik veri taşıma işlemidir.  
+- Tablo, aksi takdirde veri hareketine gerek duyduğu birleşimlerde kullanılır. Karma olarak dağıtılan tablo gibi aynı sütunda dağıtılmamış tablolar, hepsini bir kez deneme tablosuna katılırken, sorguyu tamamlaması için veri taşıma gerekir.  Tablolardan biri küçükse, çoğaltılan bir tabloyu düşünün. Çoğu durumda, hepsini bir kez deneme tablosu yerine çoğaltılan tabloları kullanmanızı öneririz. Sorgu planlarında veri taşıma işlemlerini görüntülemek için [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)kullanın.  Yayınmoveişlem, çoğaltılan bir tablo kullanılarak ortadan kaldırılabilir olan tipik veri taşıma işlemidir.  
  
 Çoğaltılan tablolar şu durumlarda en iyi sorgu performansını vermeyebilir:
 
 - Tabloda, sık kullanılan ekleme, güncelleştirme ve silme işlemleri bulunur. Bu veri işleme dili (DML) işlemleri, çoğaltılan tablonun yeniden derlenmesini gerektirir. Sık sık yeniden oluşturmak daha yavaş performansa neden olabilir.
-- Veri ambarı sıklıkla ölçeklenir. Bir veri ambarının ölçeklendirilmesi, çoğaltılan tabloyu yeniden inşa eden Işlem düğümlerinin sayısını değiştirir.
-- Tabloda çok sayıda sütun bulunur, ancak veri işlemleri genellikle yalnızca az sayıda sütuna erişir. Bu senaryoda, tüm tabloyu çoğaltmak yerine tabloyu dağıtmak daha etkili olabilir ve ardından sık erişilen sütunlarda bir dizin oluşturabilirsiniz. Bir sorgu veri hareketi gerektirdiğinde, SQL veri ambarı yalnızca istenen sütunlar için verileri taşılar. 
+- SQL Analytics veritabanı sıklıkla ölçeklenir. Bir SQL Analytics veritabanının ölçeklendirilmesi, çoğaltılan tabloyu yeniden inşa eden Işlem düğümlerinin sayısını değiştirir.
+- Tabloda çok sayıda sütun bulunur, ancak veri işlemleri genellikle yalnızca az sayıda sütuna erişir. Bu senaryoda, tüm tabloyu çoğaltmak yerine tabloyu dağıtmak daha etkili olabilir ve ardından sık erişilen sütunlarda bir dizin oluşturabilirsiniz. Bir sorgu veri hareketi gerektirdiğinde, SQL Analytics yalnızca istenen sütunlar için verileri taşılar. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Basit sorgu koşullarına sahip çoğaltılan tabloları kullanma
 Bir tabloyu dağıtmayı veya çoğaltmayı seçmeden önce, tabloya karşı çalıştırmayı planladığınız sorgu türlerini düşünün. Mümkün olduğunda,
@@ -94,7 +94,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Hepsini bir kez deneme için sorgu performansı örneği yinelenmiş 
 
-Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) sistem katalog görünümünü kullanın. 
+Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) Sistem kataloğu görünümünü kullanın. 
 
 Örneğin, AdventureWorks şemasına karşı aşağıdaki sorguda `FactInternetSales` tablosu karma olarak dağıtılır. `DimDate` ve `DimSalesTerritory` tabloları daha küçük boyut tablolarıdır. Bu sorgu, 2004 mali yılı için Kuzey Amerika toplam satışları döndürür:
 
@@ -118,11 +118,11 @@ WHERE d.FiscalYear = 2004
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Çoğaltılan tabloları değiştirmeye yönelik performans konuları
-SQL veri ambarı, tablonun ana sürümünü tutarak çoğaltılan bir tablo uygular. Her Işlem düğümündeki ana sürümü bir dağıtım veritabanına kopyalar. Bir değişiklik olduğunda, SQL veri ambarı ilk olarak ana tabloyu güncelleştirir. Ardından, her Işlem düğümündeki tabloları yeniden oluşturur. Çoğaltılan bir tablonun yeniden oluşturulması, tablonun her bir Işlem düğümüne kopyalanmasını ve sonra dizinlerin oluşturulmasını içerir.  Örneğin, DW400 üzerindeki çoğaltılan bir tablo, verilerin 5 kopyasını içerir.  Her Işlem düğümündeki bir ana kopya ve tam kopya.  Tüm veriler dağıtım veritabanlarında depolanır. SQL veri ambarı daha hızlı veri değiştirme deyimlerini ve esnek ölçeklendirme işlemlerini desteklemek için bu modeli kullanır. 
+SQL Analytics, tablonun ana sürümünü tutarak çoğaltılan bir tablo uygular. Her Işlem düğümündeki ana sürümü bir dağıtım veritabanına kopyalar. Bir değişiklik olduğunda, SQL Analytics önce ana tabloyu güncelleştirir. Ardından, her Işlem düğümündeki tabloları yeniden oluşturur. Çoğaltılan bir tablonun yeniden oluşturulması, tablonun her bir Işlem düğümüne kopyalanmasını ve sonra dizinlerin oluşturulmasını içerir.  Örneğin, DW400 üzerindeki çoğaltılan bir tablo, verilerin 5 kopyasını içerir.  Her Işlem düğümündeki bir ana kopya ve tam kopya.  Tüm veriler dağıtım veritabanlarında depolanır. SQL Analytics, bu modeli daha hızlı veri değiştirme deyimlerini ve esnek ölçeklendirme işlemlerini desteklemek için kullanır. 
 
 Sonrasında yeniden, gereklidir:
 - Veriler yüklendi veya değiştirildi
-- Veri ambarı farklı bir düzeye ölçeklendirilir
+- SQL Analytics örneği farklı bir düzeye ölçeklendirilir
 - Tablo tanımı güncelleştirildi
 
 Yeniden oluşturulduktan sonra gerekli değildir:
@@ -132,7 +132,7 @@ Yeniden oluşturulduktan sonra gerekli değildir:
 Yeniden oluşturma, veriler değiştirildikten hemen sonra gerçekleşmez. Bunun yerine, bir sorgu tablodan ilk kez seçerken yeniden oluşturma tetiklenir.  Yeniden oluşturma işlemini tetikleyen sorgu, verilerin zaman uyumsuz olarak her bir Işlem düğümüne kopyalandığı sırada tablonun ana sürümünden hemen okur. Veri kopyalama işlemi tamamlanana kadar, sonraki sorgular tablonun ana sürümünü kullanmaya devam edecektir.  Başka bir yeniden derlemeyi zorlayan çoğaltılmış tabloya karşı herhangi bir etkinlik olursa, veri kopyalama geçersiz kılınır ve sonraki select deyimleri verilerin yeniden kopyalanmasını tetikler. 
 
 ### <a name="use-indexes-conservatively"></a>Dizinleri koruma kullanma
-Standart dizin oluşturma uygulamaları çoğaltılan tablolar için geçerlidir. SQL veri ambarı, her çoğaltılan tablo dizinini yeniden oluşturma 'nın bir parçası olarak yeniden oluşturur. Yalnızca performans kazancı, dizinleri yeniden oluşturma maliyetini aşarsa dizinleri kullanın.  
+Standart dizin oluşturma uygulamaları çoğaltılan tablolar için geçerlidir. SQL Analytics, her çoğaltılan tablo dizinini yeniden oluşturmanın bir parçası olarak yeniden oluşturur. Yalnızca performans kazancı, dizinleri yeniden oluşturma maliyetini aşarsa dizinleri kullanın.  
  
 ### <a name="batch-data-loads"></a>Toplu veri yükleri
 Çoğaltılan tablolara veri yüklerken, yükleri bir araya getirerek yeniden oluşturmayı en aza indirmenize çalışın. Select deyimlerini çalıştırmadan önce tüm toplu yüklemeleri gerçekleştirin.
@@ -160,7 +160,7 @@ Standart dizin oluşturma uygulamaları çoğaltılan tablolar için geçerlidir
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Bir toplu yükleme sonrasında çoğaltılan bir tabloyu yeniden oluşturma
 Tutarlı sorgu yürütme süreleri sağlamak için, bir toplu yükleme sonrasında çoğaltılan tabloların derlemesini zorunlu tutmayı düşünün. Aksi halde, ilk sorgu sorguyu tamamlayacak veri hareketini kullanmaya devam eder. 
 
-Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları listelemek için [sys. PDW _replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV öğesini kullanır.
+Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları listelemek için [sys. pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV kullanır.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -182,8 +182,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>Sonraki adımlar 
 Çoğaltılan bir tablo oluşturmak için aşağıdaki deyimlerden birini kullanın:
 
-- [CREATE TABLE (Azure SQL veri ambarı)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [SELECT olarak CREATE TABLE (Azure SQL veri ambarı)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [SELECT olarak CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Dağıtılmış tablolara genel bakış için bkz. [Dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md).
 

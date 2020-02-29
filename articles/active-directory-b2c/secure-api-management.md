@@ -2,26 +2,26 @@
 title: Azure Active Directory B2C kullanarak bir Azure API Management API 'sinin güvenliğini sağlama
 description: Azure API Management API uç noktasının güvenliğini sağlamak için Azure Active Directory B2C tarafından verilen erişim belirteçlerini nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641630"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186939"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
 
 Azure API Management (APıM) API 'nize erişimi, Azure Active Directory B2C (Azure AD B2C) ile kimliği doğrulanan istemcilere nasıl kısıtlayacağınızı öğrenin. Bu makaledeki adımları izleyerek, erişimi yalnızca geçerli bir Azure AD B2C verilen erişim belirteci içeren isteklerle sınırlayan APıM 'de bir gelen ilke oluşturun ve test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
@@ -37,17 +37,17 @@ Azure API Management 'de Azure AD B2C bir API 'yi güvenli hale getirmeye çalı
 
 Uygulama KIMLIĞINI almak için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
+#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Yönet**altında **uygulamalar**' ı seçin.
 1. Değeri *WebApp1* veya daha önce oluşturduğunuz başka bir uygulama IÇIN **uygulama kimliği** sütununa kaydedin.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **sahip olunan uygulamalar** sekmesini seçin.
@@ -61,7 +61,7 @@ Sonra, Azure AD B2C Kullanıcı akışlarınızdan biri için iyi bilinen yapıl
 
 1. [Azure portal](https://portal.azure.com)Azure AD B2C kiracınıza gidin.
 1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
-1. Var olan bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
+1. Mevcut bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
 1. Sayfanın üst kısmındaki **Kullanıcı akış** başlığının altında görüntülenen köprüye URL 'yi kaydedin. Bu URL, Kullanıcı akışına yönelik OpenID Connect iyi bilinen bulma uç noktasıdır ve Azure API Management gelen ilkesini yapılandırırken sonraki bölümde kullanılır.
 
     ![Azure portal Şimdi Çalıştır sayfasında iyi bilinen URI Köprüsü](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
@@ -73,7 +73,7 @@ Sonra, Azure AD B2C Kullanıcı akışlarınızdan biri için iyi bilinen yapıl
 
     Bu değeri, API 'nizi Azure API Management yapılandırırken bir sonraki bölümde kullanırsınız.
 
-Artık bir sonraki bölümde kullanılmak üzere kaydedilmiş iki URL 'ye sahip olmanız gerekir: OpenID Connect iyi bilinen yapılandırma uç noktası URL 'SI ve veren URI. Örneğin:
+Artık bir sonraki bölümde kullanılmak üzere kaydedilmiş iki URL 'ye sahip olmanız gerekir: OpenID Connect iyi bilinen yapılandırma uç noktası URL 'SI ve veren URI. Örnek:
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
@@ -154,7 +154,7 @@ Yayımlanmış bir API 'yi çağıran bir istemci uygulaması (Bu durumda Postma
 
 Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye güvenli erişimi doğru şekilde yapılandırıp yapılandırmadığınızı test etmeye hazırsınız demektir.
 
-1. [Postman](https://www.getpostman.com/)'da yeni bir `GET` isteği oluşturun. İstek URL 'SI için, önkoşullardan biri olarak yayımladığınız API 'nin hoparlör listesi uç noktasını belirtin. Örneğin:
+1. [Postman](https://www.getpostman.com/)'da yeni bir `GET` isteği oluşturun. İstek URL 'SI için, önkoşullardan biri olarak yayımladığınız API 'nin hoparlör listesi uç noktasını belirtin. Örnek:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 

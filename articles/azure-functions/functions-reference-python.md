@@ -3,12 +3,12 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921788"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190713"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -22,25 +22,9 @@ Azure Işlevleri, bir işlevin girişi işleyen ve çıkış üreten Python beti
 
 Tetikleyiciler ve bağlamalardan alınan veriler, Function *. JSON* dosyasında tanımlanan `name` özelliği kullanılarak Yöntem öznitelikleri aracılığıyla işleve bağlanır. Örneğin, aşağıdaki _function. JSON_ , `req`ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır:
 
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "$return",
-      "direction": "out",
-      "type": "http"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-`__init__.py` dosyası aşağıdaki işlev kodunu içerir:
+Bu tanıma göre, işlev kodunu içeren `__init__.py` dosyası aşağıdaki örnekteki gibi görünebilir:
 
 ```python
 def main(req):
@@ -292,7 +276,7 @@ Bu ölçeklendirme davranışı birçok uygulama için yeterlidir. Ancak, aşağ
 
 Bu gibi durumlarda, zaman uyumsuz desenler ve birden çok dil çalışan işlemi kullanarak performansı daha da artırabilirsiniz.
 
-### <a name="async"></a>Zaman Uyumsuz
+### <a name="async"></a>Eş
 
 Python tek iş parçacıklı bir çalışma zamanı olduğundan, Python için bir konak örneği bir seferde yalnızca bir işlev çağrısını işleyebilir. Çok sayıda g/ç olayını işleyen ve/veya g/ç bağlantılı uygulamalar için, işlevleri zaman uyumsuz olarak çalıştırarak performansı artırabilirsiniz.
 
@@ -322,7 +306,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin. 
 
-Örneğin:
+Örnek:
 
 ```python
 import azure.functions
@@ -398,7 +382,7 @@ requests==2.19.1
 pip install -r requirements.txt
 ```
 
-## <a name="publishing-to-azure"></a>Azure’da yayımlama
+## <a name="publishing-to-azure"></a>Azure 'da yayımlama
 
 Yayımlamaya hazır olduğunuzda, tüm genel kullanıma açık bağımlılıklarınızın, proje dizininizin kökünde bulunan requirements. txt dosyasında listelendiğinden emin olun. 
 

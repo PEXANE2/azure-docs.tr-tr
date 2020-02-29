@@ -140,6 +140,17 @@
         - name: Dağıtım adımları
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
+    - name: Medya
+      items:
+        - name: Genel Bakış
+          displayName: 'standards, Media MPAA'
+          href: ./samples/media/index.md
+        - name: Denetim eşlemesi
+          displayName: 'standards, Media'
+          href: ./samples/media/control-mapping.md
+        - name: Dağıtım adımları
+          displayName: 'standards, Media'
+          href: ./samples/media/deploy.md
     - name: NIST SP 800-53 Rev4
       items:
         - name: Genel Bakış

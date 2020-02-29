@@ -4,12 +4,12 @@ description: Azure Container Instances oluşturmayı otomatikleştirmek için HT
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533366"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196544"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
 
@@ -30,7 +30,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İşletim sisteminde Azure Işlevleri ile Visual Studio Code yüklemek ve kullanmak için bkz. Önkoşullar için [Azure 'da Ilk PowerShell işlevinizi oluşturma](../azure-functions/functions-create-first-function-powershell.md#prerequisites) .
+İşletim sisteminde Azure Işlevleri ile Visual Studio Code yüklemek ve kullanmak için bkz. Önkoşullar için [Azure 'da ilk Işlevinizi oluşturma](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) .
 
 Bu makaledeki bazı adımlarda Azure CLı kullanılır. Bu adımları tamamlayabilmeniz için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 

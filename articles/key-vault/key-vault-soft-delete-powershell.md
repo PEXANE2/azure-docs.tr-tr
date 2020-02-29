@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562145"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199674"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell ile Key Vault geçici silme kullanma
 
@@ -22,7 +23,7 @@ Azure Key Vault geçici silme özelliği, silinen kasaların ve kasa nesnelerini
 - Bir anahtar kasasının kurtarılabilir silme desteği
 - Anahtar Kasası nesnelerinin kurtarılabilir silme desteği; Anahtarlar, gizlilikler ve, sertifikalar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +42,7 @@ Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığı
 
 | İşlem | Açıklama | Kullanıcı izni |
 |:--|:--|:--|
-|Listeleme|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
+|Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
 |Temizle|Silinen bir anahtar kasasını ve tüm içeriğini kalıcı olarak kaldırır.|Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|
 

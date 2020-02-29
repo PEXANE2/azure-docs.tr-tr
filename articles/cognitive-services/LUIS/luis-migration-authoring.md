@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891754"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194518"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -35,7 +35,7 @@ Yazma için bir Azure kaynağı kullanmak, yazma erişimini denetlemek için kay
 
 Geçişe şunlar dahildir:
 
-* LULAR, sahipler ve katkıda bulunanlar tüm kullanıcıları.
+* Tüm LULAR, sahipler ve katkıda bulunanlar kullanıcıları.
 * **Tüm** uygulamalar.
 * **Tek yönlü** geçiş.
 
@@ -74,13 +74,13 @@ Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/).
 
 [Bu geçiş adımlarını](luis-migration-authoring-steps.md)izleyin.
 
-### <a name="after-you-migrate"></a>Geçişinizden sonra
+### <a name="after-you-migrate"></a>Geçiş yaptıktan sonra
 
 Geçiş işleminden sonra, tüm LUO uygulamalarınız tek bir LUıN yazma kaynağına atanır.
 
 _LUA portalında_daha fazla yazma kaynağı oluşturabilir ve **> Azure kaynaklarını yönet** sayfasından atayabilirsiniz.
 
-Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [katılımcı erişimi ekleme](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
+Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [katılımcı erişimi ekleme](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
 |Portal|Amaç|
 |--|--|
@@ -104,12 +104,20 @@ Uygulama sahibinin [e-postanızı Azure yazma kaynağına ortak çalışan olara
 
 Geçiş işleminden sonra, sahip olduğunuz tüm uygulamalar, LUı portalının **uygulamalarım** sayfasında bulunur.
 
-## <a name="troubleshooting"></a>Sorun giderme
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>LUSıS yazma işlemi için geçiş işleminin sorunlarını giderme
 
-* LUSıS yazma anahtarları yalnızca, geçiş işlemi tamamlandıktan sonra LUO portalında görünür. LUSıS CLı gibi yazma anahtarlarını oluşturursanız, kullanıcının geçiş işlemini tamamlaması gerekir.
+* LUSıS yazma anahtarları yalnızca, geçiş işlemi tamamlandıktan sonra LUO portalında görünür. LUSıS CLı gibi yazma anahtarlarını oluşturursanız, kullanıcının hala LUSıS portalındaki geçiş işlemini tamamlaması gerekir.
 * Geçirilmiş bir Kullanıcı Azure kaynaklarına katkıda bulunan bir kullanıcı olarak eklediyse, geçirilmeyen Kullanıcı, geçirilmedikleri sürece uygulamalara erişemez.
-* Geçirilmemiş bir Kullanıcı herhangi bir uygulama için sahip değilse ancak başkalarına ait olan diğer uygulamalar için ortak çalışan ise ve sahipler geçiş işlemini gerçekleştirdiyse, bu kullanıcının uygulamalara erişimi olacak şekilde geçirilmesi gerekir.
+* Geçirilmemiş bir Kullanıcı herhangi bir uygulama için sahip değilse ancak başkalarına ait olan diğer uygulamalar için ortak çalışan ise ve sahipler geçiş işlemini gerçekleştirdi, bu kullanıcının uygulamalara erişimi olması için geçirilmesi gerekir.
 * Geçirilmemiş bir Kullanıcı başka bir geçirilmiş kullanıcıyı uygulamasına ortak çalışan olarak eklediyse, geçirilen bir kullanıcıyı bir uygulamaya ortak çalışan olarak ekleyemeyeceksiniz, bir hata meydana gelir. Geçişi yapılan kullanıcının geçiş işlemini geçmesi ve bir Azure kaynağı oluşturması ve geçirilmiş kullanıcıyı bu kaynağa katkıda bulunan olarak eklemesi gerekir.
+
+Şu durumlarda geçiş işlemi sırasında bir hata alırsınız:
+* Aboneliğiniz bilişsel hizmetler kaynakları oluşturma konusunda sizi yetkilendiremez
+* Geçişiniz, tüm uygulama çalışma zamanını olumsuz etkiler. Geçiş yaparken, tüm ortak çalışanlar uygulamalarınızdan kaldırılır ve diğer uygulamalardan ortak çalışan olarak kaldırılır. Bu işlem, atadığınız anahtarların çok fazla kaldırıldığı anlamına gelir. Başka uygulamalarda anahtarlar atadıysanız geçiş engellenir. Geçirmeden önce güvenli olarak atadığınız anahtarı kaldırın. Atadığınız anahtarın çalışma zamanında kullanılmadığını biliyorsanız, geçiş sırasında ilerlemeniz için onu kaldırmanız gerekir.
+
+Aşağıdaki URL biçimini kullanarak uygulamanızın Azure Kaynak listesine erişin:
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,30 +1,30 @@
 ---
 title: İş yükü yönetimi için kaynak sınıfları
-description: Azure SQL veri ambarı 'ndaki sorgulara yönelik eşzamanlılık ve işlem kaynaklarını yönetmek için kaynak sınıflarını kullanma kılavuzu.
+description: Azure SYNAPSE Analytics 'te sorgulara yönelik eşzamanlılık ve işlem kaynaklarını yönetmek için kaynak sınıflarını kullanma kılavuzu.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548178"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196000"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda kaynak sınıflarıyla iş yükü yönetimi
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak sınıflarıyla iş yükü yönetimi
 
-Azure SQL veri ambarınızdaki sorgulara yönelik belleği ve eşzamanlılık yönetimini yönetmek için kaynak sınıflarını kullanma kılavuzu.  
+Azure SYNAPSE 'de SQL Analytics sorguları için bellek ve eşzamanlılık yönetimi için kaynak sınıflarını kullanma kılavuzu.  
 
 ## <a name="what-are-resource-classes"></a>Kaynak sınıfları nedir?
 
-Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfına göre belirlenir.  Kaynak sınıfları, Azure SQL veri ambarı 'nda, işlem kaynaklarını yöneten ve sorgu yürütme için eşzamanlılık olan önceden belirlenen kaynak sınırlamalarıdır. Kaynak sınıfları, aynı anda çalışan sorgu sayısına ve her sorguya atanan işlem kaynaklarına sınırlar ayarlayarak, sorgularınız için kaynakları yapılandırmanıza yardımcı olabilir.  Bellek ve eşzamanlılık arasında bir denge vardır.
+Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfına göre belirlenir.  Kaynak sınıfları, SQL Analytics 'te, işlem kaynaklarını yöneten ve sorgu yürütme için eşzamanlılık olan önceden belirlenen kaynak sınırlamalarıdır. Kaynak sınıfları, aynı anda çalışan sorgu sayısına ve her sorguya atanan işlem kaynaklarına sınırlar ayarlayarak, sorgularınız için kaynakları yapılandırmanıza yardımcı olabilir.  Bellek ve eşzamanlılık arasında bir denge vardır.
 
 - Daha küçük kaynak sınıfları sorgu başına en fazla bellek miktarını azaltır, ancak eşzamanlılık düzeyini artırır.
 - Daha büyük kaynak sınıfları sorgu başına maksimum belleği artırır, ancak eşzamanlılık düzeyini azaltır.
@@ -70,11 +70,11 @@ Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir.
 | Hizmet Düzeyi  | smallrc           | düz RC               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | %25               | %25                    | %25                    | %70                    |
-| DW200c         | % 12,5             | % 12,5                  | #c16                    | %70                    |
-| DW300c         | %8                | %10                    | #c16                    | %70                    |
-| DW400c         | % 6,25             | %10                    | #c16                    | %70                    |
-| DW500c'yi seçin         | %20               | %10                    | #c16                    | %70                    |
-| DW1000c<br> DW30000c | %3       | %10                    | #c16                    | %70                    |
+| DW200c         | % 12,5             | % 12,5                  | #                    | %70                    |
+| DW300c         | 240                | %10                    | #                    | %70                    |
+| DW400c         | % 6,25             | %10                    | #                    | %70                    |
+| DW500c         | 2\.0               | %10                    | #                    | %70                    |
+| DW1000c<br> DW30000c | %3       | %10                    | #                    | %70                    |
 
 
 
@@ -82,7 +82,7 @@ Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir.
 
 Varsayılan olarak, her Kullanıcı, **smallrc**dinamik kaynak sınıfının bir üyesidir.
 
-Hizmet yöneticisinin kaynak sınıfı smallrc 'de düzeltildi ve değiştirilemez.  Hizmet Yöneticisi, sağlama işlemi sırasında oluşturulan kullanıcı.  Yeni bir sunucu ile yeni bir SQL veri ambarı örneği oluşturulurken, bu bağlamdaki Hizmet Yöneticisi "Sunucu Yöneticisi oturum açma" için belirtilen oturum açdır.
+Hizmet yöneticisinin kaynak sınıfı smallrc 'de düzeltildi ve değiştirilemez.  Hizmet Yöneticisi, sağlama işlemi sırasında oluşturulan kullanıcı.  Bu bağlamdaki Hizmet Yöneticisi, yeni bir sunucu ile yeni bir SQL Analytics örneği oluştururken "Sunucu Yöneticisi oturum açma" için belirtilen oturum açdır.
 
 > [!NOTE]
 > Active Directory yöneticisi olarak tanımlanan kullanıcılar veya gruplar da hizmet yöneticileridir.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SQL veri ambarı 'nda veritabanını güvenli hale getirme](./sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [columnstore sıkıştırması Için bellek iyileştirmeleri](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SQL Analytics 'te veritabanını güvenli hale getirme](./sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [columnstore sıkıştırması Için bellek iyileştirmeleri](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

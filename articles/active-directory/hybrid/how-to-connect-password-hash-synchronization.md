@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585960"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190543"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makalede, şirket içi Active Directory örneğinden bulut tabanlı bir Azure Active Directory (Azure AD) örneği, kullanıcı parolalarını eşitlemek için gereken bilgileri sağlar.
@@ -136,10 +136,10 @@ Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üz
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> Bir kullanıcının bir sonraki oturum açışında parolasını değiştirmesine zorlamak için aynı anda bir parola değişikliği yapılması gerekir.  AD Connect, parolayı zorla değiştirme bayrağını kendisi seçer; Parola karması eşitleme sırasında oluşan algılanan parola değişikliğine ek olarak belirlenir.
+> Bir kullanıcının bir sonraki oturum açışında parolasını değiştirmesine zorlamak için aynı anda bir parola değişikliği yapılması gerekir.  Azure AD Connect, parolayı zorla değiştirme bayrağını kendisi seçmeyecektir; Parola karması eşitleme sırasında oluşan algılanan parola değişikliğine ek olarak belirlenir.
 
 > [!CAUTION]
-> Azure AD 'de self servis parola sıfırlama (SSPR) seçeneğini etkinleştirmezseniz, Azure AD 'de parolalarını sıfırlayıp yeni parola ile Active Directory oturum açmayı denediğinizde yeni parola geçerli olmadığından kafa karıştırıcı bir deneyimle karşılaşacaktır Active Directory . Bu özelliği yalnızca, kiracı üzerinde SSPR ve parola geri yazma etkinleştirildiğinde kullanmanız gerekir.
+> Bu özelliği yalnızca, kiracı üzerinde SSPR ve parola geri yazma etkinleştirildiğinde kullanmanız gerekir.  Bu, bir Kullanıcı parolasını SSPR ile değiştirirse, Active Directory eşitlenecek.
 
 > [!NOTE]
 > Bu özellik şu anda genel önizlemede.

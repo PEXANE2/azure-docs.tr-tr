@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717673"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191954"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics veri bulma & sınıflandırması
 
 Veri bulma & sınıflandırması, veritabanınızdaki hassas verileri **bildirmek** ** & ** **bulmak**için Azure SQL veritabanı 'nda **yerleşik olarak bulunan**gelişmiş özellikleri sağlar.
 
@@ -32,7 +33,7 @@ En hassas verilerinizi (iş, finans, sağlık, kişisel olarak tanımlanabilir v
 Veri bulma & sınıflandırması, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md) (ADS) sunumunun bir parçasıdır. Veri bulma & sınıflandırmasına, merkezi SQL ADS portalı aracılığıyla erişilebilir ve yönetilebilir.
 
 > [!NOTE]
-> Bu belge, Azure SQL veritabanı ve Azure SQL veri ambarı ile ilgilidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. SQL Server (Şirket içi) için bkz. [SQL veri bulma ve sınıflandırma](https://go.microsoft.com/fwlink/?linkid=866999).
+> Bu belge Azure SQL veritabanı ve Azure SYNAPSE ile ilgilidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır. SQL Server (Şirket içi) için bkz. [SQL veri bulma ve sınıflandırma](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Veri bulma & sınıflandırması nedir?
 
@@ -76,7 +77,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 ## <a name="classify-your-sql-database"></a>SQL veritabanınızı sınıflandırın
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
 2. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. Gelişmiş veri güvenliğini etkinleştirmek için tıklayın ve ardından **veri bulma & sınıflandırma** kartına tıklayın.
 
@@ -138,7 +139,7 @@ Aşağıdaki yerleşik roller bir Azure SQL veritabanının veri sınıflandırm
 
 ## <a id="subheading-5"></a>Sınıflandırmaları Yönet
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanının tüm sınıflandırmalarını almak için kullanabilirsiniz.
 
 > [!NOTE]
@@ -148,7 +149,7 @@ T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanını
 - Sınıflandırmayı bir veya daha fazla sütundan kaldırma: [DÜŞÜRÜLME DUYARLıLıĞı sınıflandırması](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Veritabanındaki tüm sınıflandırmaları görüntüle: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[REST API 'Leri](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[REST API 'Leri](#tab/azure-rest-api)
 Sınıflandırma ve önerileri programlı bir şekilde yönetmek için REST API 'Lerini kullanabilirsiniz. Yayımlanan REST API 'Leri aşağıdaki işlemleri destekler:
 
 - [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) -belirli bir sütunun duyarlılık etiketini oluşturur veya güncelleştirir
@@ -159,7 +160,7 @@ Sınıflandırma ve önerileri programlı bir şekilde yönetmek için REST API 
 - [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -belirli bir veritabanının geçerli duyarlılık etiketlerini alır
 - [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -belirli bir veritabanının önerilen duyarlılık etiketlerini alır
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell cmdlet 'ı](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[PowerShell cmdlet 'ı](#tab/azure-powelshell)
 Azure SQL veritabanı ve yönetilen örnek için sınıflandırmaları ve önerileri yönetmek üzere PowerShell 'i kullanabilirsiniz.
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>Azure SQL veritabanı için PowerShell cmdlet 'ı

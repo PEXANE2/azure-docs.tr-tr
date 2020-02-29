@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9f666376020d36bd57b2cc9e78a0704a8ec47b4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473125"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199793"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -20,7 +20,7 @@ JavaScript için Azure kuyruk depolama istemci kitaplığı sürüm 12 ile çal�
 
 JavaScript için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 
-* Kuyruk oluşturma
+* Bir kuyruk oluşturma
 * Bir kuyruğa ileti ekleme
 * Kuyruktaki iletilere göz atın
 * Kuyruktaki bir iletiyi güncelleştirme
@@ -28,9 +28,9 @@ JavaScript için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak
 * Kuyruktaki iletileri silme
 * Bir kuyruk silme
 
-[API başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [paketi (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-queue) | [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)
+[API başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [paketi (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-queue) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -163,7 +163,7 @@ Bu kodu `main` işlevi içine ekleyin:
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
-### <a name="create-a-queue"></a>Kuyruk oluşturma
+### <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
 Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir UUID değeri ekler.
 

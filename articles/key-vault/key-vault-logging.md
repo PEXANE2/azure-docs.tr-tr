@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000660"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195371"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -42,7 +43,7 @@ Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](key-vault-ov
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
 * Kullanmakta olduğunuz var olan bir anahtar kasası.  
-* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan yazın `$PSVersionTable.PSVersion`.  
+* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan `$PSVersionTable.PSVersion`girin.  
 * Anahtar Kasası günlükleriniz için Azure'da yeterli depolama.
 
 ## <a id="connect"></a>Anahtar Kasası aboneliğinize bağlanma
@@ -162,13 +163,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Bu Çıkışta gördüğünüz gibi bloblar bir adlandırma kuralını izler: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Bu çıktıdan görebileceğiniz gibi, Bloblar bir adlandırma kuralını takip edebilir: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Tarih ve saat değerleri UTC'yi kullanır.
 
 Birden çok kaynağa yönelik günlükleri toplamak için aynı depolama hesabını kullanabilmeniz için, blob adı içindeki tam kaynak KIMLIĞI, yalnızca ihtiyaç duyduğunuz bloblara erişmek veya onları indirmek için yararlıdır. Ancak bunu yapmadan önce tüm blobların nasıl indirileceğini ele alacağız.
 
-Blobları indirmek için bir klasör oluşturun. Örneğin:
+Blobları indirmek için bir klasör oluşturun. Örnek:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -186,9 +187,9 @@ Blob 'ları hedef klasöre indirmek için **Get-AzStorageBlobContent** aracılı
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Bu ikinci komutu çalıştırdığınızda **/** blob adlarındaki sınırlayıcısı hedef klasörün altında tam klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
+Bu ikinci komutu çalıştırdığınızda, blob adlarında **/** sınırlayıcısı hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
 
-Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
+Blobları seçmeli olarak indirmek için jokerleri kullanın. Örnek:
 
 * Birden çok anahtar kasanız varsa ve yalnızca CONTOSOKEYVAULT3 adlı bir anahtar kasası için günlük indirmek isterseniz:
 
@@ -202,7 +203,7 @@ Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* 2019 Ocak ayının tüm günlüklerini indirmek istiyorsanız şunu kullanın `-Blob '*/year=2019/m=01/*'`:
+* 2019 Ocak ayının tüm günlüklerini indirmek istiyorsanız `-Blob '*/year=2019/m=01/*'`kullanın:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -250,11 +251,11 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 | Alan adı | Açıklama |
 | --- | --- |
-| **saat** |UTC olarak tarih ve saat. |
-| **resourceId** |Azure Resource Manager kaynak kimliği. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
-| **OperationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
+| **ışınızda** |UTC olarak tarih ve saat. |
+| **RESOURCEID** |Azure Resource Manager kaynak kimliği. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
+| **operationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
 | **operationVersion** |İstemci tarafından istenen sürümü REST API. |
-| **Kategori** |Sonuç türü. Key Vault günlükleri için, **auditevent** tek ve kullanılabilir bir değerdir. |
+| **alan** |Sonuç türü. Key Vault günlükleri için, **auditevent** tek ve kullanılabilir bir değerdir. |
 | **'ı** |REST API isteğinin sonucu. |
 | **resultSignature** |HTTP durumu. |
 | **resultDescription** |Kullanılabilir olduğunda sonuç hakkında ek açıklama. |
@@ -262,19 +263,19 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **Callerıpaddress** |İsteği yapan istemcinin IP adresi. |
 | **ID** |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
 | **IDENTITY** |REST API isteğinde sunulan belirteçten kimlik. Bu, genellikle bir "Kullanıcı," bir "hizmet sorumlusu" veya "Kullanıcı + AppID" birleşimidir ve bir Azure PowerShell cmdlet 'inin sonucu olan bir istekte bulunur. |
-| **Özellikleri** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI 'sini ("kimlik" olarak), kasa URI 'sini veya gizli URI 'yi de içerir. |
+| **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI 'sini ("kimlik" olarak), kasa URI 'sini veya gizli URI 'yi de içerir. |
 
-**OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
+**OperationName** alan değerleri *objectverb* biçimindedir. Örnek:
 
-* Tüm Anahtar Kasası işlemleri `Vault<action>` , `VaultGet` ve `VaultCreate`gibi biçimdedir.
-* Tüm anahtar işlemleri `Key<action>` , `KeySign` ve `KeyList`gibi biçimdedir.
-* Tüm gizli işlemler `Secret<action>` , `SecretGet` ve `SecretListVersions`gibi biçimdedir.
+* Tüm Anahtar Kasası işlemleri `VaultGet` ve `VaultCreate`gibi `Vault<action>` biçimine sahiptir.
+* Tüm anahtar işlemleri `KeySign` ve `KeyList`gibi `Key<action>` biçimine sahiptir.
+* Tüm gizli işlemler, `SecretGet` ve `SecretListVersions`gibi `Secret<action>` biçimine sahiptir.
 
 Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API komutları listelenmektedir:
 
 | operationName | REST API komutu |
 | --- | --- |
-| **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
+| **Kimlik doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
 | **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Anahtar kasası silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |

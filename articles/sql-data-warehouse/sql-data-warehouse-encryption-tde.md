@@ -1,6 +1,6 @@
 ---
 title: Saydam Veri Şifrelemesi (portal)
-description: SQL veri ambarı 'nda Saydam Veri Şifrelemesi (TDE)
+description: Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4435c5f246d6dd20fd0b2c560634f6980d6aa2ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c121f9c16895a749922525d1ba85ee2c2e60cfb0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685771"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195865"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>SQL veri ambarı 'nda Saydam Veri Şifrelemesi (TDE) ile çalışmaya başlama
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Saydam Veri Şifrelemesi ile çalışmaya başlama (TDE)
 > [!div class="op_single_selector"]
 > * [Güvenliğe genel bakış](sql-data-warehouse-overview-manage-security.md)
 > * [Kimlik doğrulaması](sql-data-warehouse-authentication.md)
@@ -31,7 +31,7 @@ ms.locfileid: "73685771"
 Saydam Veri Şifrelemesi (TDE) etkinleştirmek için, bir yönetici veya dbmanager rolünün bir üyesi olmanız gerekir.
 
 ## <a name="enabling-encryption"></a>Şifrelemeyi etkinleştirme
-SQL veri ambarı için TDE 'yı etkinleştirmek üzere aşağıdaki adımları izleyin:
+TDE ' yi etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Veritabanını [Azure Portal](https://portal.azure.com) açın
 2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
@@ -41,7 +41,7 @@ SQL veri ambarı için TDE 'yı etkinleştirmek üzere aşağıdaki adımları i
    **Kaydet** ' i seçin ![][3]  
 
 ## <a name="disabling-encryption"></a>Şifrelemeyi devre dışı bırakma
-Bir SQL veri ambarı için TDE ' yi devre dışı bırakmak için aşağıdaki adımları izleyin:
+TDE ' yi devre dışı bırakmak için aşağıdaki adımları izleyin:
 
 1. Veritabanını [Azure Portal](https://portal.azure.com) açın
 2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
@@ -54,12 +54,12 @@ Bir SQL veri ambarı için TDE ' yi devre dışı bırakmak için aşağıdaki a
 Şifreleme Aşağıdaki DMVs ile onaylanır:
 
 * [sys. databases]
-* [sys.dm_pdw_nodes_database_encryption_keys]
+* [sys. dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 [sys. databases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys. dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

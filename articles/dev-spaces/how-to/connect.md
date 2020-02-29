@@ -1,16 +1,16 @@
 ---
-title: Geliştirme makinenizi AKS kümesine bağlama
+title: Geliştirme makinenizi AKS kümesine bağlama (önizleme)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Geliştirme makinenizi Azure Dev Spaces ile bir AKS kümesine bağlamayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770688"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196102"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Geliştirme makinenizi AKS kümesine bağlama (önizleme)
 
@@ -35,7 +35,7 @@ Bu kılavuz, geliştirme makinenizin bir AKS kümesine bağlanmasını gösterme
 
 * UDP Şu anda desteklenmiyor.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli].
@@ -96,7 +96,7 @@ Uygulamanızın TCP bağlantı noktasını seçtikten sonra, Azure Dev Spaces AK
 
 Azure Dev Spaces, AKS kümenize bir bağlantı kurduktan sonra *azds Connect-Bisiklet* adlı bir Terminal penceresi açar. Bu Terminal penceresinde, AKS kümenizde yapılandırılan tüm ortam değişkenleri ve DNS girişleri bulunur. Bu Terminal penceresinde çalıştırdığınız veya Visual Studio Code hata ayıklayıcıyı kullanan herhangi bir kod AKS kümesine bağlıdır.
 
-![Terminal](../media/how-to-connect/connect-terminal.png)
+![Den](../media/how-to-connect/connect-terminal.png)
 
 Ayrıca Azure Dev Spaces, tüm çıktılarına sahip *dev Spaces Connect* adlı bir pencere oluşturur.
 

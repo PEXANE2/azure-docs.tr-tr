@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976307"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197326"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLı ile Key Vault geçici silme kullanma
 
@@ -32,9 +33,9 @@ CLı için Key Vault özel başvuru bilgileri için bkz. [Azure clı Key Vault b
 
 Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
-| Çalışma | Açıklama | Kullanıcı izni |
+| İşlem | Açıklama | Kullanıcı izni |
 |:--|:--|:--|
-|List|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
+|Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
 |Temizle|Silinen bir anahtar kasasını ve tüm içeriğini kalıcı olarak kaldırır.|Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|
 
@@ -154,7 +155,7 @@ az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 
 #### <a name="set-a-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesi ayarlama
 
-Aşağıdaki komut, user@contoso.com *contosokasasındaki* anahtarlar üzerinde **Temizleme**dahil birkaç işlemi kullanma izni verir:
+Aşağıdaki komut, **temizlik dahil olmak**üzere *contosokasasındaki* anahtarlar üzerinde birkaç işlem kullanmak için user@contoso.com izni verir:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
@@ -163,7 +164,7 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 >[!NOTE] 
 > Yalnızca geçici silme özelliği etkinleştirilmiş olan bir anahtar kasanıza sahipseniz, **Kurtarma** ve **Temizleme** izinleriniz olmayabilir.
 
-#### <a name="secrets"></a>Gizli diziler
+#### <a name="secrets"></a>Gizli Diziler
 
 Anahtarlar gibi gizli dizileri kendi komutlarıyla yönetilir:
 
@@ -206,7 +207,7 @@ Aynı değer, Anahtar Kasası için de geçerlidir. Geçici olarak silinen bir a
 
 ### <a name="purging-a-key-vault"></a>Anahtar kasasını Temizleme
 
-Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için `az keyvault purge` komutunu kullanın. Aboneliğinizi Silinen anahtar kasalarınızın konumunu komutunu `az keyvault list-deleted`kullanarak bulabilirsiniz.
+Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için `az keyvault purge` komutunu kullanın. Aboneliğinizi Silinen anahtar kasalarınızın konumunu, komut `az keyvault list-deleted`kullanarak bulabilirsiniz.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault

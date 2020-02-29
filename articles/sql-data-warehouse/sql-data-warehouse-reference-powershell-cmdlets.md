@@ -1,6 +1,6 @@
 ---
-title: PowerShell cmdlet'leri
-description: Azure SQL veri ambarı için en iyi PowerShell cmdlet 'lerini, bir veritabanını duraklatma ve devam etme dahil olmak üzere bulun.
+title: PowerShell & REST API 'Leri
+description: Bir veritabanının nasıl duraklatılacağını ve sürdürüleceği dahil olmak üzere Azure SYNAPSE Analytics SQL havuzu için en iyi PowerShell cmdlet 'lerini bulun.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c0c8b1e9b7526bd45d037f053715613b53ec163f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721192"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198465"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>SQL veri ambarı için PowerShell cmdlet 'leri ve REST API 'Leri
-Birçok SQL veri ambarı yönetim görevi Azure PowerShell cmdlet 'leri ya da REST API 'Leri kullanılarak yönetilebilir.  Aşağıda, SQL veri ambarınızdaki ortak görevleri otomatikleştirmek için PowerShell komutlarının nasıl kullanılacağına ilişkin bazı örnekler verilmiştir.  Bazı iyi REST örnekleri için, [rest ile ölçeklenebilirliği yönetme](sql-data-warehouse-manage-compute-rest-api.md)makalesine bakın.
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzu için PowerShell & REST API 'Leri
+
+Birçok Azure SYNAPSE Analytics SQL havuzu yönetim görevi Azure PowerShell cmdlet 'leri ya da REST API 'Leri kullanılarak yönetilebilir.  Aşağıda, SQL havuzunuzdaki ortak görevleri otomatikleştirmek için PowerShell komutlarının nasıl kullanılacağına ilişkin bazı örnekler verilmiştir.  Bazı iyi REST örnekleri için, [rest ile ölçeklenebilirliği yönetme](sql-data-warehouse-manage-compute-rest-api.md)makalesine bakın.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Azure PowerShell cmdlet 'lerini kullanmaya başlayın
+
 1. Windows PowerShell'i açın.
 2. PowerShell komut isteminde bu komutları çalıştırarak Azure Resource Manager oturum açın ve aboneliğinizi seçin.
    
@@ -33,12 +35,13 @@ Birçok SQL veri ambarı yönetim görevi Azure PowerShell cmdlet 'leri ya da RE
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>SQL veri ambarı örneğini Duraklat
+## <a name="pause-data-warehouse-example"></a>Veri ambarını Duraklat örneği
 "Server01" adlı sunucuda barındırılan "Database02" adlı bir veritabanını duraklatın.  Sunucu, "ResourceGroup1" adlı bir Azure Kaynak grubunda bulunur.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
+
 Bir çeşitleme, bu örnek, alınan nesneyi [askıya al-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)' A yöneltin.  Sonuç olarak, veritabanı duraklatılır. Son komut sonuçları gösterir.
 
 ```Powershell
@@ -47,7 +50,8 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>SQL veri ambarı örneğini Başlat
+## <a name="start-data-warehouse-example"></a>Veri ambarını Başlat örneği
+
 "Server01" adlı sunucuda barındırılan "Database02" adlı bir veritabanının işlemini sürdürür. Sunucu, "ResourceGroup1" adlı bir kaynak grubunda bulunur.
 
 ```Powershell
@@ -67,7 +71,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>Desteklenen diğer PowerShell cmdlet 'leri
-Bu PowerShell cmdlet 'leri Azure SQL veri ambarı ile desteklenir.
+Bu PowerShell cmdlet 'leri Azure SYNAPSE Analytics veri ambarı ile desteklenir.
 
 * [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
 * [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
@@ -83,7 +87,7 @@ Bu PowerShell cmdlet 'leri Azure SQL veri ambarı ile desteklenir.
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla PowerShell örneği için bkz.:
 
-* [PowerShell kullanarak SQL veri ambarı oluşturma](create-data-warehouse-powershell.md)
+* [PowerShell kullanarak veri ambarı oluşturma](create-data-warehouse-powershell.md)
 * [Veritabanı geri yükleme](sql-data-warehouse-restore-database-powershell.md)
 
-PowerShell ile otomatikleştirilen diğer görevler için bkz. [Azure SQL veritabanı cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.sql). Azure SQL veri ambarı için tüm Azure SQL veritabanı cmdlet 'leri desteklenmez.  REST ile otomatikleştirilen görevlerin bir listesi için bkz. [Azure SQL veritabanı Için işlemler](https://msdn.microsoft.com/library/azure/dn505719.aspx).
+PowerShell ile otomatikleştirilen diğer görevler için bkz. [Azure SQL veritabanı cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.sql). Azure SYNAPSE Analytics veri ambarı için tüm Azure SQL veritabanı cmdlet 'leri desteklenmez.  REST ile otomatikleştirilen görevlerin bir listesi için bkz. [Azure SQL veritabanı Için işlemler](/rest/api/sql/).

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure SQL veritabanlarından C# veri dizini oluştur'
+title: 'Öğretici: içindeki Azure SQL veritabanlarından veri diziniC# '
 titleSuffix: Azure Cognitive Search
 description: Bu C# ÖĞRETICIDE Azure SQL veritabanı 'na bağlanın, aranabilir verileri ayıklayın ve Azure bilişsel arama dizinine yükleyin.
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 978587b68e719b79db31ff25adaf2b38d2235095
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2020
+ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650119"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193977"
 ---
-# <a name="tutorial-index-azure-sql-data-in-c-using-azure-cognitive-search-indexers"></a>Öğretici: Azure Bilişsel Arama Dizinleyicileri C# kullanarak Azure SQL verilerinin dizinini oluştur
+# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Öğretici: Azure C# bilişsel arama SQL veritabanlarındaki verileri Indekslemek için kullanın
 
-Kullanarak C#, Azure SQL veritabanı 'nda aranabilir verileri çıkaran ve bir arama dizinine gönderen bir [Dizin Oluşturucu](search-indexer-overview.md) yapılandırın. Bu öğretici, aşağıdaki görevleri gerçekleştirmek için [Azure bilişsel arama .NET istemci kitaplıklarını](https://aka.ms/search-sdk) ve bir .NET Core konsol uygulamasını kullanır:
+Azure Bilişsel Arama 'te arama dizinine göndererek Azure SQL veritabanı 'ndan aranabilir verileri ayıklamak için bir [Dizin Oluşturucu](search-indexer-overview.md) yapılandırın. 
+
+Bu öğretici aşağıdaki C# görevleri gerçekleştirmek IÇIN [.NET SDK](https://aka.ms/search-sdk) kullanır:
 
 > [!div class="checklist"]
 > * Azure SQL veritabanı 'na bağlanan bir veri kaynağı oluşturma
-> * Dizin Oluşturucu yapılandırma
+> * Dizin oluşturucu oluşturma
 > * Dizine veri yüklemek için Dizin Oluşturucu çalıştırma
 > * Bir dizini doğrulama adımı olarak sorgulama
 
@@ -36,39 +38,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > [!Note]
 > Bu öğretici için ücretsiz hizmeti kullanabilirsiniz. Ücretsiz arama hizmeti, sizi üç Dizin, üç Dizin Oluşturucu ve üç veri kaynağı ile sınırlandırır. Bu öğreticide hepsinden birer tane oluşturulur. Başlamadan önce, hizmetinize yeni kaynakları kabul etmek için yeriniz olduğundan emin olun.
 
-## <a name="download-source-code"></a>Kaynak kodunu indir
+## <a name="download-files"></a>Dosyaları indirme
 
 Bu öğreticinin kaynak kodu, [Azure-Samples/Search-DotNet-Başlarken](https://github.com/Azure-Samples/search-dotnet-getting-started) GitHub deposundaki [Dotnethowtoındexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) klasöründedir.
 
-## <a name="get-a-key-and-url"></a>Anahtar ve URL al
+## <a name="1---create-services"></a>1-hizmet oluşturma
 
-API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
+Bu öğretici, dizin oluşturma ve sorgular için Azure Bilişsel Arama ve dış veri kaynağı olarak Azure SQL veritabanı 'nı kullanır. Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubunda her iki hizmeti de oluşturun. Uygulamada, Azure SQL veritabanı herhangi bir bölgede olabilir.
 
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+### <a name="start-with-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanmaya başlama
 
-1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
-
-   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
-
-## <a name="set-up-connections"></a>Bağlantıları ayarlama
-
-1. Visual Studio 'Yu başlatın ve **Dotnethowtoındexers. sln**'yi açın.
-
-1. Çözüm Gezgini, **appSettings. JSON** ' u açın ve yer tutucu değerlerini arama hizmetinize bağlantı bilgileriyle değiştirin. Tam URL "https://my-demo-service.search.windows.net" ise, sağlanacak hizmet adı "My-demo-Service" dir.
-
-    ```json
-    {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-    }
-    ```
-
-Son giriş için mevcut bir veritabanı gerekir. Bunu bir sonraki adımda oluşturacaksınız.
-
-## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
-
-Bu adımda, bir dizin oluşturucunun gezinebileceği Azure SQL veritabanı 'nda bir dış veri kaynağı oluşturun. Azure SQL Veritabanı'nda veri kümesini oluşturmak için Azure Portal'ı ve örnekteki *hotels.sql* dosyasını kullanabilirsiniz. Azure Bilişsel Arama, bir görünümden veya sorgudan oluşturulan bir gibi düzleştirilmiş satır kümeleri kullanır. Örnek çözümdeki SQL dosyası tek bir tablo oluşturur ve doldurur.
+Bu adımda, bir dizin oluşturucunun gezinebileceği Azure SQL veritabanı 'nda bir dış veri kaynağı oluşturun. Azure SQL veritabanı 'nda veri kümesini oluşturmak için örnek indirBir Azure portal ve *oteller. SQL* dosyasını kullanabilirsiniz. Azure Bilişsel Arama, bir görünümden veya sorgudan oluşturulan bir gibi düzleştirilmiş satır kümeleri kullanır. Örnek çözümdeki SQL dosyası tek bir tablo oluşturur ve doldurur.
 
 Mevcut bir Azure SQL veritabanı kaynağınız varsa, bu, 4. adımdan başlayarak bu tabloya oteller tablosunu ekleyebilirsiniz.
 
@@ -104,59 +84,45 @@ Mevcut bir Azure SQL veritabanı kaynağınız varsa, bu, 4. adımdan başlayara
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     ```
 
-1. Bağlantı dizesini, Visual Studio'da **appsettings.json** dosyasındaki üçüncü girdi olarak "AzureSqlConnectionString" içine yapıştırın.
+Bu bağlantı dizesine, ortamınızı ayarlarken bir sonraki alıştırmada ihtiyacınız olacak.
+
+### <a name="azure-cognitive-search"></a>Azure Bilişsel Arama
+
+Sonraki bileşen, [portalda oluşturabileceğiniz](search-create-service-portal.md)Azure bilişsel arama. Bu izlenecek yolu tamamlamak için ücretsiz katmanı kullanabilirsiniz. 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Bilişsel Arama yönelik bir yönetici API anahtarı ve URL 'SI alın
+
+API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
+
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+
+1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+
+   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+
+## <a name="2---set-up-your-environment"></a>2-ortamınızı ayarlama
+
+1. Visual Studio 'Yu başlatın ve **Dotnethowtoındexers. sln**'yi açın.
+
+1. Çözüm Gezgini, bağlantı bilgilerini sağlamak için **appSettings. JSON** ' u açın.
+
+1. `searchServiceName`için, tam URL "https://my-demo-service.search.windows.net" ise, sağlanacak hizmet adı "My-demo-Service" olur.
+
+1. `AzureSqlConnectionString`için dize biçimi şuna benzerdir: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-1. **AppSettings. JSON** dosyasındaki bağlantı dizesine parolanızı girin. Veritabanı ve Kullanıcı adları bağlantı dizeniz üzerine kopyalanacak, ancak parolanın el ile girilmesi gerekir.
+1. Bağlantı dizesinde bağlantı dizesinin geçerli bir parola içerdiğinden emin olun. Veritabanı ve Kullanıcı adları üzerine kopyalanacak olsa da, parolanın el ile girilmesi gerekir.
 
-## <a name="build-the-solution"></a>Çözümü derleme
+## <a name="3---create-the-pipeline"></a>3-işlem hattını oluşturma
 
-Çözümü derlemek için F5 tuşuna basın. Program hata ayıklama modunda yürütülür. Konsol penceresinde her işlemin durumu bildirilir.
-
-   ![Konsol çıkışı](./media/search-indexer-tutorial/console-output.png "Konsol çıktısı")
-
-Kodunuz Visual Studio 'da yerel olarak çalışarak Azure 'da arama hizmetinize bağlanarak Azure SQL veritabanına bağlanır ve veri kümesini alır. Bu çok işlem sayesinde birkaç olası hata noktası vardır. Bir hata alırsanız, önce aşağıdaki koşulları kontrol edin:
-
-+ Sağladığınız arama hizmeti bağlantı bilgileri, bu öğreticide hizmet adıyla sınırlıdır. Tam URL girdiyseniz, dizin oluşturma aşamasında bağlantı hatasıyla işlemler durdurulur.
-
-+ **Appsettings.json** dosyasındaki veritabanı bağlantı bilgileri. Bu, portaldan alınmış ve veritabanınız için geçerli kullanıcı adı ve parolayı içerecek şekilde değiştirilmiş ADO.NET bağlantı dizesi olmalıdır. Kullanıcı hesabının verileri alma izni olmalıdır. Yerel istemci IP adresiniz izin verilen erişim iznine sahip olmalıdır.
-
-+ Kaynak sınırları. Ücretsiz katmanın 3 dizin, Dizin Oluşturucu ve veri kaynağı sınırlarına sahip olduğunu hatırlayın. Sınırına dayanmış bir hizmet yeni nesneler oluşturamaz.
-
-## <a name="check-results"></a>Sonuçları denetle
-
-Nesne oluşturmayı doğrulamak için Azure portal kullanın ve ardından dizini sorgulamak için **Arama Gezgini** 'ni kullanın.
-
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında, nesnenin oluşturulduğunu doğrulamak için her listeyi sırayla açın. **Dizinler**, **Dizin oluşturucular**ve **veri kaynakları** sırasıyla "oteller", "Azure-SQL-Indexer" ve "Azure-SQL" olacaktır.
-
-   ![Dizin oluşturucu ve veri kaynağı kutucukları](./media/search-indexer-tutorial/tiles-portal.png)
-
-1. Oteller dizinini seçin. Oteller sayfasında, **Arama Gezgini** ilk sekmedir. 
-
-1. Boş bir sorgu vermek için **Ara** ' ya tıklayın. 
-
-   Dizininizdeki üç girdi, JSON belgeleri olarak döndürülür. Yapının tamamını görebilmeniz için arama gezgini belgeleri JSON olarak döndürür.
-
-   ![Dizin sorgulama](./media/search-indexer-tutorial/portal-search.png "Dizin sorgulama")
-   
-1. Ardından, bir arama dizesi girin: `search=river&$count=true`. 
-
-   Bu sorgu, `river` terimi için tam metin aramasını çağırır ve sonuç eşleşen belgelerin sayısını içerir. Binlerce veya milyonlarca belge içeren çok büyük bir dizininiz olduğunda, test senaryolarında eşleşen belge sayısının döndürülmesi yararlı olur. Bizim örneğimizde, sorguyla eşleşen tek bir belge vardır.
-
-1. Son olarak, JSON çıkışını ilgilendiğiniz alanlarla sınırlandıran bir arama dizesi girin: `search=river&$count=true&$select=hotelId, baseRate, description`. 
-
-   Sorgu yanıtı seçili alanlara daraltılır ve sonuçta daha kısa bir çıkış elde edilir.
-
-## <a name="explore-the-code"></a>Kodu keşfet
-
-Örnek kodun ne yaptığını anladığınıza göre, kodu gözden geçirmek için çözüme geri dönelim. İlgili kod iki dosyada bulunur:
+Dizin oluşturucular bir veri kaynağı nesnesi ve bir dizin gerektirir. İlgili kod iki dosyada bulunur:
 
   + dizini tanımlayan bir şema içeren **Hotel.cs**
   + **Program.cs**, hizmetinizdeki yapıları oluşturma ve yönetme işlevlerini içerir
@@ -230,17 +196,61 @@ Dizin Oluşturucu nesnesi, yapılandırma, zamanlama ve çağrının kaynağa ba
   }
   ```
 
+## <a name="4---build-the-solution"></a>4-çözümü oluşturma
+
+Çözümü derlemek ve çalıştırmak için F5 tuşuna basın. Program hata ayıklama modunda yürütülür. Konsol penceresinde her işlemin durumu bildirilir.
+
+   ![Konsol çıkışı](./media/search-indexer-tutorial/console-output.png "Konsol çıktısı")
+
+Kodunuz Visual Studio 'da yerel olarak çalışarak Azure 'da arama hizmetinize bağlanarak Azure SQL veritabanına bağlanır ve veri kümesini alır. Bu çok işlem sayesinde birkaç olası hata noktası vardır. Bir hata alırsanız, önce aşağıdaki koşulları kontrol edin:
+
++ Sağladığınız arama hizmeti bağlantı bilgileri, bu öğreticide hizmet adıyla sınırlıdır. Tam URL girdiyseniz, dizin oluşturma aşamasında bağlantı hatasıyla işlemler durdurulur.
+
++ **Appsettings.json** dosyasındaki veritabanı bağlantı bilgileri. Bu, portaldan alınmış ve veritabanınız için geçerli kullanıcı adı ve parolayı içerecek şekilde değiştirilmiş ADO.NET bağlantı dizesi olmalıdır. Kullanıcı hesabının verileri alma izni olmalıdır. Yerel istemci IP adresiniz izin verilen erişim iznine sahip olmalıdır.
+
++ Kaynak sınırları. Ücretsiz katmanın 3 dizin, Dizin Oluşturucu ve veri kaynağı sınırlarına sahip olduğunu hatırlayın. Sınırına dayanmış bir hizmet yeni nesneler oluşturamaz.
+
+## <a name="5---search"></a>5-arama
+
+Nesne oluşturmayı doğrulamak için Azure portal kullanın ve ardından dizini sorgulamak için **Arama Gezgini** 'ni kullanın.
+
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında, nesnenin oluşturulduğunu doğrulamak için her listeyi sırayla açın. **Dizinler**, **Dizin oluşturucular**ve **veri kaynakları** sırasıyla "oteller", "Azure-SQL-Indexer" ve "Azure-SQL" olacaktır.
+
+   ![Dizin oluşturucu ve veri kaynağı kutucukları](./media/search-indexer-tutorial/tiles-portal.png)
+
+1. Oteller dizinini seçin. Oteller sayfasında, **Arama Gezgini** ilk sekmedir. 
+
+1. Boş bir sorgu vermek için **Ara** ' ya tıklayın. 
+
+   Dizininizdeki üç girdi, JSON belgeleri olarak döndürülür. Yapının tamamını görebilmeniz için arama gezgini belgeleri JSON olarak döndürür.
+
+   ![Dizin sorgulama](./media/search-indexer-tutorial/portal-search.png "Dizin sorgulama")
+   
+1. Ardından, bir arama dizesi girin: `search=river&$count=true`. 
+
+   Bu sorgu, `river` terimi için tam metin aramasını çağırır ve sonuç eşleşen belgelerin sayısını içerir. Binlerce veya milyonlarca belge içeren çok büyük bir dizininiz olduğunda, test senaryolarında eşleşen belge sayısının döndürülmesi yararlı olur. Bizim örneğimizde, sorguyla eşleşen tek bir belge vardır.
+
+1. Son olarak, JSON çıkışını ilgilendiğiniz alanlarla sınırlandıran bir arama dizesi girin: `search=river&$count=true&$select=hotelId, baseRate, description`. 
+
+   Sorgu yanıtı seçili alanlara daraltılır ve sonuçta daha kısa bir çıkış elde edilir.
+
+## <a name="reset-and-rerun"></a>Sıfırlama ve yeniden çalıştırma
+
+Geliştirmede erken deneysel aşamalarda, tasarım yinelemesi için en pratik yaklaşım, nesneleri Azure Bilişsel Arama silmek ve kodunuzun bunları yeniden oluşturması için izin verir. Kaynak adları benzersizdir. Bir nesneyi sildiğinizde, aynı adı kullanarak nesneyi yeniden oluşturabilirsiniz.
+
+Bu öğreticinin örnek kodu mevcut nesneleri denetler ve kodunuzu yeniden çalıştırabilmeniz için onları siler.
+
+Ayrıca, dizinleri, Dizin oluşturucuyu ve veri kaynaklarını silmek için portalını de kullanabilirsiniz.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 
 Sol gezinti bölmesindeki tüm kaynaklar veya kaynak grupları bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
-Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Bilişsel Arama 'de, Dizin oluşturucular birden çok Azure veri kaynağı için kullanılabilir. Sonraki adım olarak, Azure Blob depolama için Dizin oluşturucuyu keşfedebilirsiniz.
+Artık SQL veritabanı dizin oluşturma hakkında bilgi sahibi olduğunuza göre, Dizin Oluşturucu yapılandırmasına daha yakından bakalım.
 
 > [!div class="nextstepaction"]
-> [Azure Blob Depolama’da Belgelerin Dizinini Oluşturma](search-howto-indexing-azure-blob-storage.md)
+> [Azure SQL veritabanı dizin oluşturucuyu yapılandırma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

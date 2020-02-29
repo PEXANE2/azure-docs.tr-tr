@@ -2,26 +2,26 @@
 title: Belirteçleri Yapılandırma-Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C ' de belirteç ömrünü ve uyumluluk ayarlarını yapılandırmayı öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d6b18596082df6f1cfbe2a47627712b8b69cb355
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836618"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189626"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçleri yapılandırma
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [bir belirtecin yaşam süresini ve uyumluluğunu](tokens-overview.md) yapılandırmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 
@@ -29,7 +29,7 @@ Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bi
 
 Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
@@ -39,7 +39,7 @@ Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz
 
     ![Azure portal belirteç ömrü özelliği ayarları](./media/configure-tokens/token-lifetime.png)
 
-8. **Save (Kaydet)** düğmesine tıklayın.
+8. **Kaydet**’e tıklayın.
 
 ## <a name="configure-token-compatibility"></a>Belirteç uyumluluğunu yapılandırma
 
@@ -50,7 +50,7 @@ Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz
 
     ![Azure portal belirteç uyumluluk özelliği ayarları](./media/configure-tokens/token-compatibility.png)
 
-5. **Save (Kaydet)** düğmesine tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

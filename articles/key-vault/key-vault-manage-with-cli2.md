@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000633"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195286"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
 
@@ -60,7 +61,7 @@ az account set -h
 Azure platformlar arası komut satırı arabirimindeki Azure Resource Manager hakkında bilgi edinmek için aşağıdaki makaleleri de okuyabilirsiniz:
 
 * [Azure CLI'yı yükleme](/cli/azure/install-azure-cli)
-* [Azure CLı ile çalışmaya başlama](/cli/azure/get-started-with-azure-cli)
+* [Azure CLI'yi kullanmaya başlama](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Azure 'da sağlamlaştırılmış bir kapsayıcı (kasa) oluşturma
 
@@ -93,7 +94,7 @@ az account set --subscription <subscription name or ID>
 
 Azure platformlar arası komut satırı arabirimini yapılandırma hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli).
 
-### <a name="create-a-new-resource-group"></a>Yeni kaynak grubu oluştur
+### <a name="create-a-new-resource-group"></a>Yeni bir kaynak grubu oluşturma
 
 Azure Resource Manager kullanırken, tüm ilgili kaynaklar bir kaynak grubu içinde oluşturulur. Mevcut bir kaynak grubunda bir Anahtar Kasası oluşturabilirsiniz. Yeni bir kaynak grubu kullanmak istiyorsanız yeni bir tane oluşturabilirsiniz.
 
@@ -117,7 +118,7 @@ az provider register -n Microsoft.KeyVault
 
 ### <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
-Bir Anahtar Kasası oluşturmak için komutunukullanın.`az keyvault create` Bu betik üç zorunlu parametreye sahiptir: bir kaynak grubu adı, bir Anahtar Kasası adı ve coğrafi konum.
+Bir Anahtar Kasası oluşturmak için `az keyvault create` komutunu kullanın. Bu betik üç zorunlu parametreye sahiptir: bir kaynak grubu adı, bir Anahtar Kasası adı ve coğrafi konum.
 
 **Contosokeykasası**adında yeni bir kasa oluşturmak için, **Doğu Asya** konumunda bulunan **contosoresourcegroup**kaynak grubunda şunu yazın: 
 
@@ -127,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 Bu komutun çıktısı, oluşturduğunuz anahtar kasasının özelliklerini gösterir. En önemli iki özellik şunlardır:
 
-* **ad**: Örnekte, bu ad Contosokeykasadır. Bu adı diğer Key Vault komutları için kullanacaksınız.
-* **Vaulturi**: Örnekte, URI olur https://contosokeyvault.vault.azure.net. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **ad**: örnekte, Contosokeykasası adı. Bu adı diğer Key Vault komutları için kullanacaksınız.
+* **Vaulturi**: örnekte, URI https://contosokeyvault.vault.azure.net. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Azure hesabınız artık bu anahtar kasasında herhangi bir işlemi gerçekleştirmeye yetkilidir. Henüz hiç olmadığı için, başka hiç kimse yetkili değil.
 
@@ -146,7 +147,7 @@ az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Artık oluşturduğunuz veya Azure Key Vault ' a yüklediğiniz anahtara URI 'sini kullanarak başvurabilirsiniz. Her **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** zaman geçerli sürümü almak için kullanın. Bu belirli sürümü almak için https://[keykasası-Name]. kasa. Azure. net/Keys/[KeyName]/[key-Unique-ID] kullanın. Örneğin, **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
+Artık oluşturduğunuz veya Azure Key Vault ' a yüklediğiniz anahtara URI 'sini kullanarak başvurabilirsiniz. Her zaman geçerli sürümü almak için **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** kullanın. Bu belirli sürümü almak için https://[keykasası-Name]. kasa. Azure. net/Keys/[KeyName]/[key-Unique-ID] kullanın. Örneğin, **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
 
 Kasaya bir gizli dizi ekleyin, bu, SQLPassword adlı bir paroladır ve "hVFkk965BuUv" değerini Azure Anahtar Kasası 'na taşır. 
 
@@ -154,7 +155,7 @@ Kasaya bir gizli dizi ekleyin, bu, SQLPassword adlı bir paroladır ve "hVFkk965
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Bu parolaya URI 'sini kullanarak başvurun. Bu **https://ContosoVault.vault.azure.net/secrets/SQLPassword** belirli sürümü almak için her zaman geçerli sürümü almak için kullanın ve https://[keykasaadı]. kasa. Azure. net/Secret/[gizli-adı]/[gizli-Unique-ID]. Örneğin, **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
+Bu parolaya URI 'sini kullanarak başvurun. Bu belirli sürümü almak için her zaman geçerli sürümü almak için **https://ContosoVault.vault.azure.net/secrets/SQLPassword** ve https://[keykasa-adı]. kasa. Azure. net/Secret/[gizli-adı]/[gizli-Unique-ID] kullanın. Örneğin, **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
 . Pek veya. pfx kullanarak kasaya bir sertifika aktarın.
 
@@ -193,7 +194,7 @@ Bir anahtar kasası kullanan uygulamaların, Azure Active Directory'den bir beli
 
 Uygulamanın bir belirteç almak için bu değerlerin her ikisini de Azure Active Directory'ye sunması gerekir. Bir uygulama belirteç almak üzere yapılandırıldığında uygulamaya bağlı olur. [Key Vault örnek uygulaması](https://www.microsoft.com/download/details.aspx?id=45343) için uygulama sahibi bu değerleri app.config dosyasında ayarlar.
 
-Azure Active Directory ile uygulama kaydetme hakkında ayrıntılı adımlar için, [uygulamaları Azure Active Directory Ile tümleştirme](../active-directory/develop/active-directory-integrating-applications.md)başlıklı makaleleri gözden geçirmeniz gerekir, [Portal 'ı kullanarak bir Azure Active Directory uygulama ve hizmet oluşturun kaynaklara erişebilen](../active-directory/develop/howto-create-service-principal-portal.md)ve [Azure CLI Ile bir Azure hizmet sorumlusu oluşturabileceğiniz](/cli/azure/create-an-azure-service-principal-azure-cli)sorumlu.
+Bir uygulamayı Azure Active Directory ile kaydetme hakkında ayrıntılı adımlar için, [uygulamaları Azure Active Directory Ile tümleştirme](../active-directory/develop/active-directory-integrating-applications.md)başlıklı makaleleri gözden geçirmeniz, [portala erişebilecek bir Azure Active Directory uygulaması ve hizmet sorumlusu oluşturmak](../active-directory/develop/howto-create-service-principal-portal.md)ve [Azure CLI Ile bir Azure hizmet sorumlusu oluşturmak](/cli/azure/create-an-azure-service-principal-azure-cli)için Portal 'ı kullanmanız gerekir.
 
 Bir uygulamayı Azure Active Directory kaydetmek için:
 
@@ -222,19 +223,19 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Anahtar Kasası için gelişmiş ilkeleri etkinleştirmek üzere [az keykasa Update](/cli/azure/keyvault#az-keyvault-update) kullanın.
 
- Dağıtım için Key Vault etkinleştir: Sanal makinelerin kasadan gizli dizi olarak depolanan sertifikaları almasına izin verir.
+ Dağıtım için Key Vault etkinleştir: sanal makinelerin kasadan gizli dizi olarak depolanan sertifikaları almasına Izin verir.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-Key Vault disk şifrelemesi için etkinleştir: Azure disk şifrelemesi Kasası kullanılırken gereklidir.
+Disk şifrelemesi için Key Vault etkinleştirme: Azure disk şifrelemesi Kasası kullanılırken gereklidir.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-Şablon dağıtımı için Key Vault etkinleştir: Kaynak Yöneticisi kasalardan gizli dizileri almasına izin verir.
+Şablon dağıtımı için Key Vault etkinleştir: Kaynak Yöneticisi kasalardan gizli dizileri almasına Izin verir.
 
 ```azurecli 
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
@@ -274,7 +275,7 @@ Bu BYOK paketini oluşturma hakkında daha ayrıntılı yönergeler için bkz. [
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Anahtar kasasını ve ilişkili anahtarları ve gizli dizileri silme
 
-Artık anahtar kasası ve anahtarları veya gizli dizileri gerekmiyorsa, şu `az keyvault delete` komutu kullanarak anahtar kasasını silebilirsiniz:
+Artık anahtar kasası ve anahtarları veya gizli dizileri gerekmiyorsa, `az keyvault delete` komutunu kullanarak anahtar kasasını silebilirsiniz:
 
 ```azurecli
 az keyvault delete --name "ContosoKeyVault"

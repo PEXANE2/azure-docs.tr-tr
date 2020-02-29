@@ -3,12 +3,12 @@ title: İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 description: Service Fabric kümeler için istemcilerin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843829"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193398"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 
@@ -26,7 +26,7 @@ Service Fabric kümesi, Web tabanlı [Service Fabric Explorer][service-fabric-vi
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, zaten bir kiracı oluşturmuş olduğunuz varsayılmaktadır. Bunu yapmadıysanız, [Azure Active Directory kiracının nasıl alınacağını][active-directory-howto-tenant]okuyarak başlayın.
 
 Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili bazı adımları basitleştirmek için bir Windows PowerShell komut dosyası kümesi oluşturduk.
@@ -38,7 +38,7 @@ Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili bazı adımla
 
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturmak üzere betikleri kullanacağız: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, [Service Fabric tarafından desteklenen roller](service-fabric-cluster-security-roles.md)için Kullanıcı oluşturacaksınız: salt okunurdur ve yönetici.
 
-`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örneğin:
+`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örnek:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -104,7 +104,7 @@ Service Fabric Explorer ' de Azure AD 'de oturum açmaya çalıştığınızda, 
 Service Fabric Explorer temsil eden küme (Web) uygulaması Azure AD 'de kimlik doğrulaması yapmayı dener ve isteğin bir parçası olarak yeniden yönlendirme dönüş URL 'si sağlar. Ancak URL, Azure AD uygulama **yanıt URL 'si** listesinde listelenmez.
 
 #### <a name="solution"></a>Çözüm
-Azure AD sayfasında **uygulama kayıtları**' yi seçin, küme uygulamanızı seçin ve ardından **yanıt URL 'leri**' ni seçin. **Yanıt URL 'leri** BÖLMESINDE Service Fabric Explorer URL 'sini listeye ekleyin veya listedeki öğelerden birini değiştirin. Değişiklerinizi kaydedin.
+Kümenizin Azure AD uygulama kaydı sayfasında **kimlik doğrulaması**' nı seçin ve **yeniden yönlendirme urı 'leri** bölümünde Service Fabric Explorer URL 'sini listeye ekleyin. Değişiklerinizi kaydedin.
 
 ![Web uygulaması yanıt URL 'SI][web-application-reply-url]
 

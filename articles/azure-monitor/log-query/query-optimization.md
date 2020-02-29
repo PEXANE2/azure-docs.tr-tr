@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2019
-ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 02/28/2019
+ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164585"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196663"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -256,6 +256,34 @@ Perf
     | summarize arg_max(TimeGenerated, *), min(TimeGenerated)   
 by Computer
 ) on Computer
+```
+
+Bu hata için başka bir örnek, birkaç tablo üzerinde bir [birleşimden](/azure/kusto/query/unionoperator?pivots=azuremonitor) hemen sonra zaman kapsamı filtrelemesinin gerçekleştirilemedir. Birleşim gerçekleştirirken, her alt sorgu kapsamlı olmalıdır. Kapsam tutarlılığı güvence altına almak için [Let](/azure/kusto/query/letstatement) deyiminizi kullanabilirsiniz.
+
+Örneğin, aşağıdaki sorgu yalnızca son 1 güne değil, *sinyal* ve *performans* tablolarındaki tüm verileri tarayacaktır:
+
+```Kusto
+Heartbeat 
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| where TimeGenerated > ago(1d)
+| summarize min(TimeGenerated) by Computer
+```
+
+Bu sorgu şu şekilde düzeltilmelidir:
+
+```Kusto
+let MinTime = ago(1d);
+Heartbeat 
+| where TimeGenerated > MinTime
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | where TimeGenerated > MinTime
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| summarize min(TimeGenerated) by Computer
 ```
 
 Ölçüm, belirtilen gerçek süreden her zaman daha büyüktür. Örneğin, sorgudaki filtre 7 gün ise, sistem 7,5 veya 8,1 gün tarama alabilir. Bunun nedeni, sistemin verileri değişken boyuttaki parçalara bölümlendirmesi nedeniyle oluşur. Tüm ilgili kayıtların tarandığından emin olmak için, birkaç saati ve hatta bir günden daha fazlasını kapsayan tüm bölümü tarar.

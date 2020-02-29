@@ -3,20 +3,20 @@ title: Özel ilkelerdeki teknik profillere genel bakış
 titleSuffix: Azure AD B2C
 description: Teknik profillerin Azure Active Directory B2C bir özel ilkede nasıl kullanıldığını öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505664"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183661"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -40,7 +40,7 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 - [Kendi kendine onaylanan](self-asserted-technical-profile.md) -kullanıcıyla etkileşime geçin. Örneğin, oturum açmak için kullanıcının kimlik bilgisini toplayın, kaydolma sayfasını veya parola sıfırlamayı izleyin.
 - [Oturum yönetimi](custom-policy-reference-sso.md) -farklı oturum türlerini işleyin.
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Bir kerelik parola](one-time-password-technical-profile.md) -tek seferlik parolanın oluşturulmasını ve doğrulanmasını yönetmek için destek sağlar. 
+- [Bir kerelik parola](one-time-password-technical-profile.md) -tek seferlik parolanın oluşturulmasını ve doğrulanmasını yönetmek için destek sağlar.
 
 ## <a name="technical-profile-flow"></a>Teknik profil akışı
 
@@ -48,7 +48,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 
 ![Teknik profil akışını gösteren diyagram](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler. 
+1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler.
 1. Giriş talepleri **dönüştürme** -her giriş [talebi dönüşümünün](claimstransformations.md) giriş talepleri, talep çantasından alınır.  Bir giriş talep dönüşümünün çıkış talepleri, sonraki bir giriş talebi dönüşümünün giriş talepleri olabilir.
 1. **Giriş talepleri** -talepler, talep çantasından alınır ve teknik profil için kullanılır. Örneğin, [kendinden onaylanan bir teknik profil](self-asserted-technical-profile.md) , kullanıcının sağladığı çıkış taleplerini önceden doldurmak için giriş taleplerini kullanır. REST API teknik bir profil, giriş parametrelerini REST API uç noktasına göndermek için giriş taleplerini kullanır. Azure Active Directory, hesap okumak, güncelleştirmek veya silmek için benzersiz bir tanımlayıcı olarak giriş talebi kullanır.
 1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örnek:
@@ -64,7 +64,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 
 ## <a name="technical-profile-inclusion"></a>Teknik profil ekleme
 
-Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için başka bir teknik profil içerebilir.  `IncludeTechnicalProfile` öğesi, bir teknik profilin türetildiği temel teknik profile bir başvurudur. Düzey sayısı için bir sınır yoktur. 
+Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için başka bir teknik profil içerebilir.  `IncludeTechnicalProfile` öğesi, bir teknik profilin türetildiği temel teknik profile bir başvurudur. Düzey sayısı için bir sınır yoktur.
 
 Örneğin, **AAD-userreadusingalternativesecurityıd-NoError** teknik profili **AAD-userreadusingalternativesecurityıd**' yi içerir. Bu teknik profil, `RaiseErrorIfClaimsPrincipalDoesNotExist` meta veri öğesini `true`olarak ayarlar ve bir sosyal hesap, dizinde yoksa bir hata oluşturur. **AAD-Userreadusingalternativesecurityıd-NoError** bu davranışı geçersiz kılar ve bu hata iletisini devre dışı bırakır.
 

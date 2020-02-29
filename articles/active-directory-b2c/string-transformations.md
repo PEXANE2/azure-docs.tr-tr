@@ -3,20 +3,20 @@ title: Özel ilkeler için dize talep dönüştürme örnekleri
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için dize talep dönüştürme örnekleri.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585739"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183712"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -363,7 +363,7 @@ Bu talep dönüşümünü, iki parametreli bir dize biçimlendirmek için kullan
 - Çıkış talepleri:
     - **Outputclaim**: ali Fernando
 
-## <a name="getlocalizedstringstransformation"></a>Getlocalizedstringstranssize 
+## <a name="getlocalizedstringstransformation"></a>Getlocalizedstringstranssize
 
 Yerelleştirilmiş dizeleri talebe kopyalar.
 
@@ -428,9 +428,9 @@ Talep dönüştürmesi, `StringId` *Email_Subject*değeri ile *ilgili* talep tü
 
 - Çıkış talepleri:
   - **Konu**: contoso hesabı e-posta doğrulama kodu
-  - **ileti**: hesabınız doğrulanırken teşekkürler! 
-  - **Codebir giriş**: kodunuz 
-  - **imza**: saygılarımla  
+  - **ileti**: hesabınız doğrulanırken teşekkürler!
+  - **Codebir giriş**: kodunuz
+  - **imza**: saygılarımla
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -618,7 +618,7 @@ Bir dize talebi `claimToMatch` ve `matchTo` giriş parametresinin eşit olup olm
 | OutputClaim | OutputClaim | string | Normal ifade eşleşiyorsa, bu çıkış talebi `outputClaimIfMatched` giriş parametresinin değerini içerir. Ya da eşleşme yoksa null. |
 | OutputClaim | regexCompareResultClaim | boole | `true` olarak ayarlanacak veya eşleştirme sonucuna göre `false` olarak ayarlanacak olan normal ifade, sonuç çıkış talep türü ile eşleşir. |
 
-Örneğin, telefon numarası normal ifade düzenine göre, girilen telefon numarasının geçerli olup olmadığını denetler.  
+Örneğin, telefon numarası normal ifade düzenine göre, girilen telefon numarasının geçerli olup olmadığını denetler.
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -755,7 +755,7 @@ Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belir
 Bir dize talep türünün bir alt dize içerip içermesinin olup olmadığını denetlemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, `roles` dize talep türünün **yönetici**değerini içerip içermediğini denetler.
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -765,7 +765,7 @@ Bir dize talep türünün bir alt dize içerip içermesinin olup olmadığını 
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -777,7 +777,7 @@ Bir dize talep türünün bir alt dize içerip içermesinin olup olmadığını 
     - **şunu içerir**: "Yönetici"
     - **IgnoreCase**: true
 - Çıkış talepleri:
-    - **Outputclaim**: true 
+    - **Outputclaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -790,7 +790,7 @@ Bir dize talep türünün parçalarını, belirtilen konumdaki karakterden başl
 | InputParameter | {1&gt;length&lt;1} | int | Alt dizeden karakter sayısı. |
 | OutputClaim | OutputClaim | boole | Bu örnekte startIndex değerinde başlayan uzunluğunun alt dizesi ile eşdeğer veya startIndex, bu örneğin uzunluğuna eşitse ve length sıfır olduğunda boş olan bir dize. |
 
-Örneğin, telefon numarası ülke önekini alın.  
+Örneğin, telefon numarası ülke önekini alın.
 
 
 ```XML
@@ -828,7 +828,7 @@ Belirtilen değer için bir talep türü dizesi arar ve geçerli dizedeki belirt
 | InputParameter | Değer | string | Tüm `oldValue` tekrarlarının yerini alacak dize |
 | OutputClaim | OutputClaim | boole | Tüm oldValue örnekleri newValue ile değiştirilmeleri dışında, geçerli dize ile eşdeğer bir dize. OldValue geçerli örnekte bulunamazsa, yöntemi geçerli örneği değişmeden döndürür. |
 
-Örneğin, `-` karakterleri kaldırarak bir telefon numarasını normalleştirin  
+Örneğin, `-` karakterleri kaldırarak bir telefon numarasını normalleştirin
 
 
 ```XML
@@ -864,7 +864,7 @@ Her öğe veya üye arasındaki belirtilen ayırıcıyı kullanarak belirtilen d
 | ınputclaim | ınputclaim | stringCollection | Birleştirilecek dizeleri içeren bir koleksiyon. |
 | InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
 | OutputClaim | OutputClaim | string | `delimiter` giriş parametresiyle ayrılmış `inputClaim` dize koleksiyonunun üyelerinden oluşan bir dize. |
-  
+
 Aşağıdaki örnek, bir Kullanıcı rolleri dize koleksiyonunu alır ve bunu bir virgül sınırlayıcı dizesine dönüştürür. Bu yöntemi, bir dize koleksiyonunu Azure AD Kullanıcı hesabında depolamak için kullanabilirsiniz. Daha sonra, dizinden hesabı okuduğunuzda, virgül sınırlayıcı dizesini dize koleksiyonuna geri dönüştürmek için `StringSplit` kullanın.
 
 ```XML
@@ -900,7 +900,7 @@ Bu örnekte belirtilen bir dizenin öğeleriyle ayrılmış alt dizeleri içeren
 | ınputclaim | ınputclaim | string | Bölünecek alt dizeleri içeren bir dize talep türü. |
 | InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
 | OutputClaim | OutputClaim | stringCollection | Öğeleri bu dizedeki `delimiter` giriş parametresiyle ayrılmış alt dizeleri içeren bir dize koleksiyonu. |
-  
+
 Aşağıdaki örnek, Kullanıcı rollerinin virgül sınırlayıcısı dizesini alır ve bunu bir dize koleksiyonuna dönüştürür.
 
 ```XML
@@ -925,7 +925,7 @@ Aşağıdaki örnek, Kullanıcı rollerinin virgül sınırlayıcısı dizesini 
   - **sınırlayıcı**: ","
 - Çıkış talepleri:
   - **Outputclaim**: ["admin", "author", "Reader"]
-  
+
 ## <a name="string-claim-transformations-expressions"></a>Dize talep dönüştürmeleri ifadeleri
 Azure AD B2C özel ilkelerindeki talep dönüştürmeleri ifadeleri, kiracı KIMLIĞI ve teknik profil KIMLIĞIYLE ilgili bağlam bilgilerini sağlar.
 

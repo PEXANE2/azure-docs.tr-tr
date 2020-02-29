@@ -1,25 +1,26 @@
 ---
 title: Sürekli tümleştirme ve dağıtım
-description: Azure Pipelines kullanarak sürekli tümleştirme ve dağıtım için yerleşik desteğe sahip SQL veri ambarı için kurumsal sınıf veritabanı DevOps deneyimi.
+description: Azure Pipelines kullanarak sürekli tümleştirme ve dağıtım için yerleşik desteğe sahip veri depolamaya yönelik kurumsal sınıf veritabanı DevOps deneyimi.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712993"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195949"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için sürekli tümleştirme ve dağıtım
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Veri depolamaya yönelik sürekli tümleştirme ve dağıtım
 
-Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi Azure DevOps ile tümleştirme ve sürekli tümleştirme ve dağıtım ayarlamak için Azure Pipelines yararlanma özetlenmektedir. Bu öğretici, SQL veri ambarı ile sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ikinci adımıdır. 
+Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi Azure DevOps ile tümleştirme ve sürekli tümleştirme ve dağıtım ayarlamak için Azure Pipelines yararlanma özetlenmektedir. Bu öğretici, veri depolamaya yönelik sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ikinci adımıdır. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -61,7 +62,7 @@ Bu noktada, kaynak denetimi depo ana dalınızdaki tüm iadelerinizin, veritaban
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL veri ambarı mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
-- Hızlı [bir şekılde SQL veri ambarı oluşturun](create-data-warehouse-portal.md)
+- [SQL ANALYTICS MPP mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
+- Hızlıca [BIR SQL havuzu oluşturun](create-data-warehouse-portal.md)
 - [Örnek verileri yükleme](sql-data-warehouse-load-sample-databases.md)
 - [Videoları](/azure/sql-data-warehouse/sql-data-warehouse-videos) keşfet

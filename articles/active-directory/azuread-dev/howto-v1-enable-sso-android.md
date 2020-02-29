@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164584"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190305"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Nasıl yapılır: ADAL kullanarak Android 'de uygulamalar arası SSO 'yu etkinleştirme
 
@@ -60,7 +60,7 @@ Cihaza Microsoft Authenticator uygulaması gibi uyumlu bir aracı yüklüyse, ki
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft 'un uygulamanın geçerli olmasını sağlar
 
-Aracı yardımlı oturum açmada sunulan güvenlik için, aracının bir uygulamanın kimliğine çağrı yapıldığından emin olunması gerekir. iOS ve Android yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcılar zorlamaz, bu nedenle kötü amaçlı uygulamalar yasal uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için gereken belirteçleri alabilir. Microsoft 'un her zaman çalışma zamanında doğru uygulamayla iletişim kurmasını sağlamak için, geliştiricinin uygulamasını Microsoft 'a kaydederken özel bir redirectURI sağlaması istenir. **Geliştiricilerin bu yeniden yönlendirme URI 'sini oluşturması gereken ayrıntılar aşağıda ayrıntılarıyla açıklanmıştır.** Bu özel redirectURI, uygulamanın sertifika parmak izini içerir ve Google Play Store tarafından uygulama için benzersiz olacak şekilde tasarlanmıştır. Bir uygulama aracıyı çağırdığında, aracı, Android işletim sistemi tarafından Aracı adı verilen sertifika parmak izini sağlamasını ister. Aracı, kimlik sistemine yapılan çağrıda bu sertifika parmak izini Microsoft 'a sağlar. Uygulamanın sertifika parmak izi, kayıt sırasında geliştirici tarafından bize sunulan sertifika parmak iziyle eşleşmiyorsa, uygulamanın istediği kaynak için belirteç erişimi reddedilir. Bu denetim, yalnızca geliştirici tarafından kaydedilen uygulamanın belirteçleri almasını sağlar.
+Aracıyı çağıran bir uygulamanın kimliğinin, aracı yardımlı oturum açmada sunulan güvenlik için önemli olduğundan emin olunması gerekir. iOS ve Android yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcılar zorlamaz, bu nedenle kötü amaçlı uygulamalar yasal uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için gereken belirteçleri alabilir. Microsoft 'un her zaman çalışma zamanında doğru uygulamayla iletişim kurmasını sağlamak için, geliştiricinin uygulamasını Microsoft 'a kaydederken özel bir redirectURI sağlaması istenir. **Geliştiricilerin bu yeniden yönlendirme URI 'sini oluşturması gereken ayrıntılar aşağıda ayrıntılarıyla açıklanmıştır.** Bu özel redirectURI, uygulamanın sertifika parmak izini içerir ve Google Play Store tarafından uygulama için benzersiz olacak şekilde tasarlanmıştır. Bir uygulama aracıyı çağırdığında, aracı, Android işletim sistemi tarafından Aracı adı verilen sertifika parmak izini sağlamasını ister. Aracı, kimlik sistemine yapılan çağrıda bu sertifika parmak izini Microsoft 'a sağlar. Uygulamanın sertifika parmak izi, kayıt sırasında geliştirici tarafından bize sunulan sertifika parmak iziyle eşleşmiyorsa, uygulamanın istediği kaynak için belirteç erişimi reddedilir. Bu denetim, yalnızca geliştirici tarafından kaydedilen uygulamanın belirteçleri almasını sağlar.
 
 Aracılı-SSO oturum açmaları aşağıdaki avantajlara sahiptir:
 

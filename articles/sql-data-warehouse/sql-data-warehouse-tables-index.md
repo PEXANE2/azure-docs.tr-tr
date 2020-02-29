@@ -1,6 +1,6 @@
 ---
 title: Tabloları dizinleme
-description: Azure SQL veri ambarı 'nda tabloları dizine alma önerileri ve örnekleri.
+description: SQL Analytics 'te tabloları dizine alma önerileri ve örnekleri.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685460"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196614"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>SQL veri ambarı 'nda tabloları dizinleme
+# <a name="indexing-tables-in-sql-analytics"></a>SQL Analytics 'te tabloları dizin oluşturma
 
-Azure SQL veri ambarı 'nda tabloları dizine alma önerileri ve örnekleri.
+SQL Analytics 'te tabloları dizine alma önerileri ve örnekleri.
 
 ## <a name="index-types"></a>Dizin türleri
 
-SQL veri ambarı [kümelenmiş columnstore dizinleri](/sql/relational-databases/indexes/columnstore-indexes-overview), [kümelenmiş dizinler ve kümelenmemiş dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)gibi çeşitli dizin oluşturma seçenekleri ve [yığın](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)olarak da bilinen Dizin olmayan bir seçenek sunar.  
+SQL Analytics, [kümelenmiş columnstore dizinleri](/sql/relational-databases/indexes/columnstore-indexes-overview), [kümelenmiş dizinler ve kümelenmemiş dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)gibi çeşitli dizin oluşturma seçenekleri ve [yığın](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)olarak da bilinen Dizin olmayan bir seçenek sunar.  
 
-Dizin içeren bir tablo oluşturmak için [Create Table (Azure SQL veri ambarı)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) belgelerine bakın.
+Dizin içeren bir tablo oluşturmak için [Create Table (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) belgelerine bakın.
 
 ## <a name="clustered-columnstore-indexes"></a>Kümelenmiş columnstore dizinleri
 
-Varsayılan olarak, bir tabloda dizin seçeneği belirtilmediğinde SQL veri ambarı kümelenmiş bir columnstore dizini oluşturur. Kümelenmiş columnstore tabloları, hem en yüksek düzeyde veri sıkıştırması hem de en iyi genel sorgu performansını sunar.  Kümelenmiş columnstore tabloları, genellikle kümelenmiş dizin veya yığın tablolarını gerçekleştirecek ve genellikle büyük tablolar için en iyi seçenektir.  Bu nedenlerden dolayı, tablonuzun dizin oluşturma konusunda emin olduğunuzda, kümelenmiş columnstore en iyi başlangıç yerdir.  
+Varsayılan olarak, bir tabloda dizin seçeneği belirtilmediğinde SQL Analytics kümelenmiş bir columnstore dizini oluşturur. Kümelenmiş columnstore tabloları, hem en yüksek düzeyde veri sıkıştırması hem de en iyi genel sorgu performansını sunar.  Kümelenmiş columnstore tabloları, genellikle kümelenmiş dizin veya yığın tablolarını gerçekleştirecek ve genellikle büyük tablolar için en iyi seçenektir.  Bu nedenlerden dolayı, tablonuzun dizin oluşturma konusunda emin olduğunuzda, kümelenmiş columnstore en iyi başlangıç yerdir.  
 
 Kümelenmiş bir columnstore tablosu oluşturmak için WıTH yan tümcesinde KÜMELENMIŞ COLUMNSTORE DIZININI belirtmeniz veya WıTH yan tümcesini devre dışı bırakmanız yeterlidir:
 
@@ -52,7 +52,7 @@ Kümelenmiş columnstore 'nın iyi bir seçenek olabileceği birkaç senaryo var
 
 ## <a name="heap-tables"></a>Yığın tabloları
 
-SQL veri ambarı 'nda geçici olarak veri sahanken, yığın tablosu kullanmanın genel işlemi daha hızlı hale getiriyor olduğunu fark edebilirsiniz. Bunun nedeni, Heap yükleri Dizin tablolarından daha hızlıdır ve bazı durumlarda sonraki okuma önbellekten yapılabilir.  Verileri yalnızca daha fazla dönüşüm çalıştırmadan önce hazırlamak için yüklüyorsanız, tabloyu yığın tablosuna yüklemek verileri kümelenmiş bir columnstore tablosuna yüklemeden çok daha hızlıdır. Ayrıca, verileri [geçici bir tabloya](sql-data-warehouse-tables-temporary.md) yüklemek, bir tabloyu kalıcı depolamaya yüklemeden daha hızlı yüklenir.  
+SQL Analytics 'te geçici olarak veri giriş yaptığınızda, yığın tablosu kullanmanın genel işlemi daha hızlı hale getiriyor olduğunu fark edebilirsiniz. Bunun nedeni, Heap yükleri Dizin tablolarından daha hızlıdır ve bazı durumlarda sonraki okuma önbellekten yapılabilir.  Verileri yalnızca daha fazla dönüşüm çalıştırmadan önce hazırlamak için yüklüyorsanız, tabloyu yığın tablosuna yüklemek verileri kümelenmiş bir columnstore tablosuna yüklemeden çok daha hızlıdır. Ayrıca, verileri [geçici bir tabloya](sql-data-warehouse-tables-temporary.md) yüklemek, bir tabloyu kalıcı depolamaya yüklemeden daha hızlı yüklenir.  
 
 Küçük arama tablolarında 60.000.000 satırdan az, genellikle yığın tabloları anlamlı hale getirir.  Küme columnstore tabloları, 60.000.000 ' den fazla satır olduğunda en iyi sıkıştırmayı elde etmek için başlar.
 
@@ -158,7 +158,7 @@ Sorguyu çalıştırdıktan sonra verileri aramaya başlayabilir ve sonuçların
 | --- | --- |
 | [table_partition_count] |Tablo bölümlendiğinde, daha fazla açık satır grubu sayısını görmeyi bekleyebilir. Dağıtımındaki her bölüm teorik olarak onunla ilişkili bir açık satır grubuna sahiptir. Bunu Analize göre çarpanın. Bölümlenmiş küçük bir tablo, bölümleme tamamen kaldırılarak, sıkıştırmayı iyileştirecek şekilde iyileştirilebilir. |
 | [row_count_total] |Tablo için toplam satır sayısı. Örneğin, sıkıştırılmış durumdaki satır yüzdesini hesaplamak için bu değeri kullanabilirsiniz. |
-| [row_count_per_distribution_MAX] |Tüm satırlar eşit olarak dağıtılırsa, bu değer dağıtım başına hedef satır sayısı olacaktır. Bu değeri compressed_rowgroup_count ile karşılaştırın. |
+| [row_count_per_distribution_MAX] |Tüm satırlar eşit olarak dağıtılırsa, bu değer dağıtım başına hedef satır sayısı olacaktır. Bu değeri compressed_rowgroup_count karşılaştırın. |
 | [COMPRESSED_rowgroup_rows] |Tablo için columnstore biçimindeki toplam satır sayısı. |
 | [COMPRESSED_rowgroup_rows_AVG] |Ortalama satır sayısı bir satır grubu için en fazla satır sayısı kadar düşükse, verileri yeniden sıkıştırmak için CTAS veya ALTER INDEX REBUILD kullanmayı düşünün |
 | [COMPRESSED_rowgroup_count] |Columnstore biçimindeki satır gruplarının sayısı. Bu sayı tabloyla ilişkili olarak çok yüksek ise, columnstore yoğunluğu düşük olan bir göstergedir. |
@@ -190,7 +190,7 @@ Bu faktörler, bir columnstore dizininin satır grubu başına en uygun 1.000.00
 
 ### <a name="memory-pressure-when-index-was-built"></a>Dizin oluşturulduğunda bellek baskısı
 
-Sıkıştırılan satır grubu başına satır sayısı, satırın genişliği ve satır grubunu işlemek için kullanılabilir bellek miktarı ile doğrudan ilgilidir.  Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  Bu nedenle en iyi yöntem, columnstore dizin tablolarınızı yazan oturumun mümkün olduğunca çok belleğe erişmesini vermektir.  Bellek ve eşzamanlılık arasında bir denge olduğundan, doğru bellek ayırma Kılavuzu, tablonuzun her satırındaki verilere, sisteminize ayrılan veri ambarı birimlerine ve oturuma verebileceğiniz eşzamanlılık yuvaları sayısına bağlıdır. , tablonuza veri yazıyor.
+Sıkıştırılan satır grubu başına satır sayısı, satırın genişliği ve satır grubunu işlemek için kullanılabilir bellek miktarı ile doğrudan ilgilidir.  Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  Bu nedenle en iyi yöntem, columnstore dizin tablolarınızı yazan oturumun mümkün olduğunca çok belleğe erişmesini vermektir.  Bellek ve eşzamanlılık arasında bir denge olduğundan, doğru bellek ayırma Kılavuzu, tablonuzun her satırındaki verilere, sisteminize ayrılan SQL Analytics birimlerine ve oturuma verebileceğiniz eşzamanlılık yuvalarının sayısına bağlıdır. tablonuza veri yazma.
 
 ### <a name="high-volume-of-dml-operations"></a>DML işlemlerinin yüksek hacmi
 
@@ -204,13 +204,13 @@ Bölüm hizalı dağıtım başına 102.400 satırlık toplu eşiği aşan toplu
 
 ### <a name="small-or-trickle-load-operations"></a>Küçük veya Trickle yükleme işlemleri
 
-SQL Data Warehouse 'a akan küçük yükler bazen de Trickle yükleri olarak bilinir. Genellikle sistem tarafından alınan verilerin neredeyse sabit akışını temsil eder. Ancak, bu akış sürekli yakında olduğu için satır hacmi özellikle büyük değildir. Veriler genellikle columnstore biçimine doğrudan yük için gereken eşiğin altında önemli ölçüde düşüktür.
+SQL Analytics veritabanlarına akan küçük yükler bazen de Trickle yükleri olarak bilinir. Genellikle sistem tarafından alınan verilerin neredeyse sabit akışını temsil eder. Ancak, bu akış sürekli yakında olduğu için satır hacmi özellikle büyük değildir. Veriler genellikle columnstore biçimine doğrudan yük için gereken eşiğin altında önemli ölçüde düşüktür.
 
 Bu durumlarda, verileri Azure Blob Storage 'da ilk kez almak ve yüklemeden önce birikmesini sağlamak daha iyi bir seçenektir. Bu teknik genellikle *mikro işleme*olarak bilinir.
 
 ### <a name="too-many-partitions"></a>Çok fazla bölüm
 
-Göz önünde bulundurulması gereken bir şey, kümelenmiş columnstore Tablolarınızda bölümlemenin etkisinin olmasıdır.  Bölümlendirmadan önce, SQL veri ambarı verilerinizi zaten 60 veritabanlarına böler.  Bölümleme, verilerinizi daha fazla böler.  Verilerinizi bölümleyip, **her** bölümün bir kümelenmiş columnstore dizininden faydalanmak için en az 1.000.000 satıra ihtiyacı olduğunu düşünün.  Tablonuzu 100 bölüm olarak bölümleyebilirsiniz, kümelenmiş bir columnstore dizininden (60 dağıtımları *100 bölüm* 1.000.000 satırları) faydalanmak için tablonuzun en az 6.000.000.000 satıra ihtiyacı vardır. 100 bölümlü tablonuzda 6.000.000.000 satır yoksa, bölüm sayısını azaltın veya bunun yerine bir yığın tablosu kullanmayı deneyin.
+Göz önünde bulundurulması gereken bir şey, kümelenmiş columnstore Tablolarınızda bölümlemenin etkisinin olmasıdır.  Bölümlendirmadan önce, SQL Analytics verilerinizi zaten 60 veritabanlarına böler.  Bölümleme, verilerinizi daha fazla böler.  Verilerinizi bölümleyip, **her** bölümün bir kümelenmiş columnstore dizininden faydalanmak için en az 1.000.000 satıra ihtiyacı olduğunu düşünün.  Tablonuzu 100 bölüm olarak bölümleyebilirsiniz, kümelenmiş bir columnstore dizininden (60 dağıtımları *100 bölüm* 1.000.000 satırları) faydalanmak için tablonuzun en az 6.000.000.000 satıra ihtiyacı vardır. 100 bölümlü tablonuzda 6.000.000.000 satır yoksa, bölüm sayısını azaltın veya bunun yerine bir yığın tablosu kullanmayı deneyin.
 
 Tablolarınız bazı verilerle yüklendikten sonra, alt optimum kümelenmiş columnstore dizinleri ile tabloları tanımlamak ve yeniden oluşturmak için aşağıdaki adımları izleyin.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SQL veri ambarı 'nda bir dizinin yeniden oluşturulması, çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi için, [columnstore dizinleri birleştirme](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)'teki alter INDEX REBUILD bölümüne bakın.
+SQL Analytics 'te bir dizini yeniden oluşturmak, çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi için, [columnstore dizinleri birleştirme](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)'teki alter INDEX REBUILD bölümüne bakın.
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. Adım: kümelenmiş columnstore segmentinin kalitesinin iyileştirdiğini doğrulama
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-CTAS kullanarak bölümleri yeniden oluşturma hakkında daha fazla ayrıntı için bkz. [SQL veri ambarı 'nda bölümleri kullanma](sql-data-warehouse-tables-partition.md).
+CTAS kullanarak bölümleri yeniden oluşturma hakkında daha fazla ayrıntı için bkz. [SQL Analytics 'te bölümleri kullanma](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

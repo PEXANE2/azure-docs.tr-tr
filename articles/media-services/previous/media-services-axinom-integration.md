@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974623"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197173"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için Axinom kullanma 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74974623"
 ## <a name="overview"></a>Genel Bakış
 Azure Media Services (AMS), Google Widevine dinamik koruma ekledi (Ayrıntılar için bkz. [Mingfeı blogumu](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) ). Ayrıca, Azure Media Player (AMP) Widevine desteğini de ekledi (Ayrıntılar için bkz. [amp belgesi](https://amp.azure.net/libs/amp/latest/docs/) ). Bu, hem MSE hem de EME ile donatılmış modern tarayıcılarda çok örnekli-DRM (PlayReady ve Widevine) ile CENC tarafından korunan akış DASH içeriği için önemli bir amadır.
 
-Media Services .NET SDK sürümü Media Services 3.5.2 ile başlayarak Widevine lisans şablonunu yapılandırmanıza ve Widevine lisanslarını almanıza olanak sağlar. Widevine lisansları teslim etmenize yardımcı olması için şu AMS ortaklarını da kullanabilirsiniz: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Media Services .NET SDK sürümü Media Services 3.5.2 ile başlayarak Widevine lisans şablonunu yapılandırmanıza ve Widevine lisanslarını almanıza olanak sağlar. Widevine lisansları teslim etmenize yardımcı olması için şu AMS ortaklarını da kullanabilirsiniz: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 Bu makalede, Axinom tarafından yönetilen Widevine lisans sunucusunu tümleştirme ve test etme işlemleri açıklanmaktadır. Özellikle şunları ele almaktadır:  
 
@@ -199,12 +199,12 @@ Aşağıdaki parametreler, Axınom Widevine lisans sunucusu kullanan mini çöz�
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>İlgili kaynaklar
+### <a name="acknowledgments"></a>Bilgilendirme
 Bu belgeyi oluşturmak için katkıda bulunan şu kişileri bildirmek istiyoruz: Kristjan Jõgi of Axinom, Mingfei yan ve Amit Esjput.
 

@@ -1,22 +1,23 @@
 ---
 title: Azure Machine Learning ile veri çözümleme
-description: Azure SQL Data Warehouse’a depolanmış verilere göre tahmine dayalı bir machine learning modeli oluşturmak için Azure Machine Learning’i kullanın.
+description: Azure SYNAPSE 'de depolanan verileri temel alan tahmine dayalı bir makine öğrenimi modeli oluşturmak için Azure Machine Learning kullanın.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721294"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195898"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning ile veri çözümleme
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721294"
 > 
 > 
 
-Bu öğretici Azure SQL Data Warehouse’a depolanmış verilere göre tahmine dayalı bir machine learning modeli oluşturmak için Azure Machine Learning’i kullanır. Özellikle, bir müşterinin bisiklet alma olasılığı hakkında tahminde bulunarak Adventure Works adlı bisiklet satış mağazası için hedeflenen bir pazarlama kampanyası oluşturulur.
+Bu öğretici, Azure SYNAPSE 'de depolanan verileri temel alan tahmine dayalı bir makine öğrenimi modeli oluşturmak için Azure Machine Learning kullanır. Özellikle, bir müşterinin bisiklet alma olasılığı hakkında tahminde bulunarak Adventure Works adlı bisiklet satış mağazası için hedeflenen bir pazarlama kampanyası oluşturulur.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ Bu öğretici Azure SQL Data Warehouse’a depolanmış verilere göre tahmine d
 ## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide ilerleyebilmeniz için şunlar gereklidir:
 
-* AdventureWorksDW örnek verileri önceden yüklenmiş bir SQL Data Warehouse. Bunu sağlamak için [SQL Data Warehouse Oluşturma](create-data-warehouse-portal.md) bölümüne bakın ve örnek verileri yüklemeyi seçin. Bir veri ambarınız olmasına karşın örnek verileriniz yoksa [örnek verileri elle yükleyebilirsiniz](sql-data-warehouse-load-sample-databases.md).
+* AdventureWorksDW örnek verileriyle önceden yüklenmiş bir SQL Havuzu. Bunu sağlamak için [SQL havuzu oluşturma](create-data-warehouse-portal.md) konusuna bakın ve örnek verileri yüklemeyi seçin. Bir veri ambarınız olmasına karşın örnek verileriniz yoksa [örnek verileri elle yükleyebilirsiniz](sql-data-warehouse-load-sample-databases.md).
 
 ## <a name="1-get-the-data"></a>1. verileri alın
 Veriler AdventureWorksDW veritabanında bulunan dbo.vTargetMail görünümündedir. Bu verileri okumak için:
@@ -46,7 +47,7 @@ Veriler AdventureWorksDW veritabanında bulunan dbo.vTargetMail görünümünded
 2. Ekranın sol alt kısmındaki **+ Yeni** seçeneğine tıklayın ve **boş denemeler**' i seçin.
 3. Denemeniz için bir ad girin: Hedeflenen Pazarlama.
 4. Veri **girişi ve çıktı** bölümündeki **veri alma** modülünü tuvale sürükleyin.
-5. Özellikler bölmesinde SQL Data Warehouse veritabanınıza ilişkin bilgileri belirtin.
+5. Özellikler bölmesinde SQL havuzunuzun ayrıntılarını belirtin.
 6. İstediğiniz verileri okumak için veritabanı **sorgusunu** belirtin.
 
 ```sql
@@ -128,7 +129,7 @@ Test veri kümenize iki sütunun daha eklendiğini göreceksiniz.
 * Puanlanmış Olasılıklar: müşterinin bir bisiklet alıcısı olma olasılığı.
 * Puanlanmış Etiketler: model tarafından yapılan sınıflandırma; bisiklet alıcısı (1) veya değil (0). Etiketlemeye ilişkin bu olasılık eşiği %50 olarak belirlenmiş olup ayarlanabilir.
 
-BikeBuyer (gerçek) sütununu Puanlanmış Etiketler (tahmin) ile karşılaştırarak modelin ne derece iyi sonuç verdiğini görebilirsiniz. Daha sonra bu modeli kullanarak yeni müşteriler için tahminleri yapabilir ve bu modeli bir Web hizmeti olarak yayımlayabilir ya da sonuçları SQL veri ambarı 'na geri yazabilirsiniz.
+BikeBuyer (gerçek) sütununu Puanlanmış Etiketler (tahmin) ile karşılaştırarak modelin ne derece iyi sonuç verdiğini görebilirsiniz. Daha sonra bu modeli kullanarak yeni müşteriler için tahmine dayalı hale getirebilirsiniz ve bu modeli bir Web hizmeti olarak yayımlayabilir veya sonuçları Azure SYNAPSE 'e geri yazabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Tahmine dayalı makine öğrenimi modellerinin oluşturulmasına ilişkin daha fazla bilgi edinmek için bkz. [Azure'da Machine Learning'e giriş](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/).

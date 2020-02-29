@@ -1,26 +1,26 @@
 ---
 title: İş yükü önem düzeyi
-description: Azure SQL veri ambarı 'nda sorguların önemini ayarlamaya yönelik kılavuz.
+description: Azure SYNAPSE Analytics 'te SQL Analytics sorgularının önemini ayarlamaya yönelik kılavuz.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351438"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191784"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL veri ambarı iş yükü önemi
+# <a name="azure-synapse-analytics-workload-importance"></a>Azure SYNAPSE Analytics iş yükü önemi
 
-Bu makalede, iş yükü önemlerinin SQL veri ambarı istekleri için yürütme sırasını nasıl etkileyebileceği açıklanmaktadır.
+Bu makalede, iş yükü öneminin Azure SYNAPSE 'deki SQL Analytics istekleri için yürütme sırasını nasıl etkileyebileceğini açıklamaktadır.
 
 ## <a name="importance"></a>Önem derecesi
 
@@ -36,9 +36,9 @@ Beş önem düzeyi vardır: düşük, below_normal, normal, above_normal ve yük
 
 Yukarıda açıklanan temel önemli senaryonun ötesinde Sales ve hava durumu verileriyle birlikte, iş yükü önem derecesi veri işleme ve sorgulama ihtiyaçlarını karşılamak için yardımcı olan başka senaryolar da vardır.
 
-### <a name="locking"></a>Kilitleme
+### <a name="locking"></a>Lemeye
 
-Okuma ve yazma etkinliği için kilitlerin erişimi, doğal çekişmenin bir alanıdır. [Bölüm değiştirme](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) veya [nesne yeniden adlandırma](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  İş yükü önemi olmadan SQL veri ambarı üretilen iş için iyileştirir. Üretilen iş için iyileştirmek, çalışırken ve sıraya alınan isteklerin aynı kilitleme ihtiyaçlarına ve kaynakların kullanılabilir olduğu durumlarda, sıraya alınan isteklerin istek kuyruğuna daha önce ulaşan istekleri atlayabilir. Daha yüksek kilitleme ihtiyaçlarına sahip isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce çalıştırılır.
+Okuma ve yazma etkinliği için kilitlerin erişimi, doğal çekişmenin bir alanıdır. [Bölüm değiştirme](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) veya [nesne yeniden adlandırma](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  İş yükü önemi olmadan Azure SYNAPSE 'de SQL Analytics, üretilen iş için optimize eder. Üretilen iş için iyileştirmek, çalışırken ve sıraya alınan isteklerin aynı kilitleme ihtiyaçlarına ve kaynakların kullanılabilir olduğu durumlarda, sıraya alınan isteklerin istek kuyruğuna daha önce ulaşan istekleri atlayabilir. Daha yüksek kilitleme ihtiyaçlarına sahip isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce çalıştırılır.
 
 Aşağıdaki örnek göz önünde bulundurun:
 
@@ -50,7 +50,7 @@ S2 ve Q3 aynı önem derecesine sahip ve Q1 hala yürütülerek S3 yürütülmey
 
 ### <a name="non-uniform-requests"></a>Tekdüzen olmayan istekler
 
-Farklı kaynak sınıflarına sahip isteklerin gönderilmesi durumunda önem derecesine yardımcı olabilecek önemli bir senaryo.  Daha önce belirtildiği gibi, aynı önem kapsamında SQL veri ambarı üretilen iş için iyileştirir. Karma boyut istekleri (smallrc veya Orta RC gibi) sıraya alınmışsa SQL veri ambarı, kullanılabilir kaynaklara uyan en eski gelen isteği seçer. İş yükü önemi uygulanmışsa, en yüksek önemli istek daha sonra zamanlanır.
+Farklı kaynak sınıflarına sahip isteklerin gönderilmesi durumunda önem derecesine yardımcı olabilecek önemli bir senaryo.  Daha önce belirtildiği gibi, aynı önem altında, Azure 'daki SQL Analytics SYNAPSE verimlilik için optimize eder. Karma boyut istekleri (smallrc veya Orta RC gibi) sıraya alınmışsa SQL Analytics, kullanılabilir kaynaklara uyan en eski gelen isteği seçer. İş yükü önemi uygulanmışsa, en yüksek önemli istek daha sonra zamanlanır.
   
 DW500c üzerinde aşağıdaki örneği göz önünde bulundurun:
 
@@ -63,7 +63,7 @@ Q5, düz RC olduğundan iki eşzamanlılık yuvası gerektirir. Q5 'in çalışa
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Sınıflandırıcı oluşturma hakkında daha fazla bilgi için bkz. [Iş yükü SıNıFLANDıRıCıSı oluşturma (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- SQL veri ambarı iş yükü sınıflandırması hakkında daha fazla bilgi için bkz. [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).  
+- İş yükü sınıflandırması hakkında daha fazla bilgi için bkz. [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).  
 - İş yükü Sınıflandırıcısı oluşturma hakkında bilgi için hızlı başlangıç [oluşturma sınıflandırıcıya](quickstart-create-a-workload-classifier-tsql.md) bakın. 
 - [Iş yükü önemini yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve [Iş yükü yönetimini yönetmek ve izlemek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)için nasıl yapılır makalelerine bakın.
 - Sorguları ve atanan önemi görüntülemek için bkz. [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) .

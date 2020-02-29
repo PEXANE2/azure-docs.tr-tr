@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685996"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200558"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
-Kullanıcılar Azure SQL veri ambarı 'nda bir columnstore tablosunu sorgudığında, iyileştirici her kesimde depolanan en düşük ve en yüksek değerleri denetler.  Sorgu koşulunun sınırları dışında kalan segmentler diskten belleğe okunamaz.  Okunan parçaların sayısı ve toplam boyutu küçük olduğunda sorgu daha hızlı bir performans alabilir.   
+Kullanıcılar SQL Analytics 'te bir columnstore tablosunu sorgulayıp iyileştirici, her kesimde depolanan en düşük ve en yüksek değerleri denetler.  Sorgu koşulunun sınırları dışında kalan segmentler diskten belleğe okunamaz.  Okunan parçaların sayısı ve toplam boyutu küçük olduğunda sorgu daha hızlı bir performans alabilir.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Sıralı ve sıralı olmayan kümelenmiş columnstore dizini 
-Varsayılan olarak, bir dizin seçeneği olmadan oluşturulan her Azure veri ambarı tablosu için, bir iç bileşen (Dizin Oluşturucu), üzerinde sıralı olmayan bir kümelenmiş columnstore dizini (CCı) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentinde sıkıştırılır.  Her bir segmentin değer aralığında meta veriler bulunur, bu nedenle sorgu koşulunun sınırları dışında kalan segmentler sorgu yürütme sırasında diskten okunmazlar.  CCı, en yüksek düzeyde veri sıkıştırması sağlar ve sorguların daha hızlı çalışabilmesi için okunacak parçaların boyutunu azaltır. Ancak, Dizin Oluşturucu verileri segmentlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip kesimler meydana gelebilir ve sorguların diskten daha fazla kesim okumasına ve daha uzun sürmesine neden olabilir.  
+Varsayılan olarak, bir dizin seçeneği olmadan oluşturulan her SQL Analytics tablosu için bir iç bileşen (Dizin Oluşturucu), üzerinde sıralı olmayan bir kümelenmiş columnstore dizini (CCı) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentinde sıkıştırılır.  Her bir segmentin değer aralığında meta veriler bulunur, bu nedenle sorgu koşulunun sınırları dışında kalan segmentler sorgu yürütme sırasında diskten okunmazlar.  CCı, en yüksek düzeyde veri sıkıştırması sağlar ve sorguların daha hızlı çalışabilmesi için okunacak parçaların boyutunu azaltır. Ancak, Dizin Oluşturucu verileri segmentlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip kesimler meydana gelebilir ve sorguların diskten daha fazla kesim okumasına ve daha uzun sürmesine neden olabilir.  
 
-Sıralı bir CCı oluştururken, Dizin Oluşturucu onları Dizin kesimlerine sıkıştırmadan önce, Azure SQL veri ambarı altyapısı bellekteki mevcut verileri sıra anahtarları ile sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  Veri ambarı tablolarında verilerin büyük boyutu verildiğinde, bu senaryo genellikle gerçekleşmez.  
+Sıralı bir CCı oluştururken, Dizin Oluşturucu onları Dizin kesimlerine sıkıştırmadan önce, SQL Analytics altyapısı bellekteki mevcut verileri sıra anahtarına göre sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  SQL Analytics tablolarında büyük veri boyutu verildiğinde, bu senaryo genellikle gerçekleşmez.  
 
 Bir sütunun kesim aralıklarını denetlemek için şu komutu tablo adınızla ve sütun adınızla çalıştırın:
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  Azure SQL veri ambarı 'nda, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
+> Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  SQL Analytics 'te, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
 
 ## <a name="query-performance"></a>Sorgu performansı
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Verileri Azure SQL veri ambarı tablolarına yüklemeden önce sıralama anahtarına göre önceden sıralayın.
+- Verileri SQL Analytics tablolarına yüklemeden önce sıralama anahtarına göre önceden sıralayın.
 
 
 Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sıralı bir CCı tablo dağıtımına örnek verilmiştir. Sıralı CCı tablosu, MAXTAS ile bir DWU1000c veritabanında, MAXDOP 1 ve xlargerc kullanılarak 20 GB yığın tablosundan oluşturulur.  CCı, yinelenen olmayan bir BIGINT sütununda sıralanır.  
@@ -121,11 +121,11 @@ Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sı
 Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen tablolar için, sıralı CCı oluşturma işlemi tamamlanana kadar verilere kullanıcılar erişemez.   Bölümlenmiş tablolar için, altyapı sıralı CCı bölümünü bölüm tarafından oluşturduğundan, kullanıcılar sıralı CCı oluşturma işleminin işlem içinde olmadığı bölümlerdeki verilere erişmeye devam edebilir.   Büyük tablolarda sıralı CCı oluşturma sırasında kapalı kalma süresini en aza indirmek için bu seçeneği kullanabilirsiniz: 
 
 1.  Hedef büyük tabloda (Table_A olarak adlandırılır) bölümler oluşturun.
-2.  Tablo A ile aynı tablo ve bölüm şemasına sahip boş bir sıralı CCı tablosu (Table_B adlı) oluşturun.
+2.  Tablo A ile aynı tablo ve bölüm şemasına sahip boş bir sıralı CCı tablosu (Table_B olarak adlandırılır) oluşturun.
 3.  A tablosundan tablo B 'ye bir bölüm geçirin.
-4.  Anahtarlı bölümü yeniden derlemek için tablo B üzerinde < Table_B > yeniden oluşturma < bölümünde ALTER INDEX < Ordered_CCI_Index > çalıştırın.  
+4.  "ALTER INDEX < Ordered_CCI_Index > < Table_B > YENIDEN oluşturma bölümünde < Tablo B Partition_ID  
 5.  Table_A içindeki her bölüm için 3. ve 4. adımı yineleyin.
-6.  Tüm bölümler Table_A ' den Table_B ' ye geçtikten ve yeniden derlendikten sonra Table_A ' i bırakın ve Table_A Table_B olarak yeniden adlandırın. 
+6.  Tüm bölümler Table_A Table_B, yeniden oluşturulduktan sonra Table_A bırakın ve Table_A Table_B yeniden adlandırın. 
 
 ## <a name="examples"></a>Örnekler
 
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Geliştirme ile ilgili daha fazla ipucu için bkz. [SQL Data Warehouse geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

@@ -3,20 +3,20 @@ title: 'Öğretici: Kullanıcı arabirimini özelleştirme'
 titleSuffix: Azure AD B2C
 description: Azure portal kullanarak Azure Active Directory B2C içindeki uygulamalarınızın Kullanıcı arabirimini (UI) özelleştirmeyi öğrenin.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840137"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186259"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
 
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 
@@ -43,7 +43,7 @@ Bir Azure depolama hesabı ve kapsayıcısı oluşturup, temel HTML ve CSS dosya
 
 Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bunları [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)alanında depoaktarabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve aboneliğinizi içeren dizini seçin. Bu dizin, Azure B2C kiracınızı içeren olandan farklı.
 3. Azure portal sol üst köşesindeki tüm hizmetler ' i seçin, **depolama hesapları**' nı arayıp seçin.
 4. **Add (Ekle)** seçeneğini belirleyin.
@@ -63,7 +63,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
  Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir URL 'den özel içerik yüklemek için modern ve standart bir yaklaşım kullanır. Çıkış noktaları arası kaynak paylaşımı (CORS), bir Web sayfasındaki kısıtlanmış kaynakların diğer etki alanlarından istenmesinin yapılmasına izin verir.
 
 1. Menüsünde **CORS**' yi seçin.
-2. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+2. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
 3. **Izin verilen Yöntemler**için `GET`,`PUT`ve `OPTIONS`' yı seçin.
 4. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 5. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
@@ -71,7 +71,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 
     ![Azure Blob depolama 'daki CORS yapılandırma sayfası Azure portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. **Save (Kaydet)** düğmesine tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ### <a name="create-the-customization-files"></a>Özelleştirme dosyalarını oluşturma
 

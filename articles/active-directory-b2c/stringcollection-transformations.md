@@ -3,20 +3,20 @@ title: Özel ilkeler için StringCollection talep dönüştürme örnekleri
 titleSuffix: Azure AD B2C
 description: StringCollection, Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için dönüşüm örnekleri talep ediyor.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656101"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186786"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection talep dönüştürmeleri
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) öğesinde kimlik deneyim
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Yeni bir benzersiz değerler stringCollection talebine bir dize talebi ekler. 
+Yeni bir benzersiz değerler stringCollection talebine bir dize talebi ekler.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
@@ -147,7 +147,7 @@ Aşağıdaki örnek, `roles` stringCollection talep türünün **yönetici**değ
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
