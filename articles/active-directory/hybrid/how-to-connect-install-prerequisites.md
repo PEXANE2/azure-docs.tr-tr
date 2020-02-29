@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bc76f8edc8520ca50cd4c9527b037d99d24ce63c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767951"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190509"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect önkoşulları
 Bu konu, Azure AD Connect için önkoşulları ve donanım gereksinimlerini açıklamaktadır.
@@ -31,7 +31,7 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 
 ### <a name="azure-ad"></a>Azure AD
 * Azure AD kiracısı. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile bir tane alırsınız. Azure AD Connect yönetmek için aşağıdaki portallardan birini kullanabilirsiniz:
-  * [Azure portalında](https://portal.azure.com).
+  * [Azure Portal](https://portal.azure.com).
   * [Office portalı](https://portal.office.com).  
 * Azure AD 'de kullanmayı planladığınız [etki alanını ekleyin ve doğrulayın](../active-directory-domains-add-azure-portal.md) . Örneğin, kullanıcılarınız için contoso.com kullanmayı planlıyorsanız, bu etki alanının doğrulandığından ve yalnızca contoso.onmicrosoft.com varsayılan etki alanını kullandığınızdan emin olun.
 * Bir Azure AD kiracısı varsayılan 50.000 nesnelerine izin verir. Etki alanınızı doğruladıktan sonra sınır, 300k nesnelerine yükseltilir. Azure AD 'de daha fazla nesne gerekiyorsa, sınırın daha da artması için bir destek talebi açmanız gerekir. 500 ' den fazla nesne gerekiyorsa, Office 365, Azure AD Temel, Azure AD Premium veya Enterprise Mobility ve Security gibi bir lisansa sahip olmanız gerekir.
@@ -86,8 +86,8 @@ Daha fazla bilgi için bkz:
 
 ### <a name="accounts"></a>Hesaplar
 * Tümleştirmek istediğiniz Azure AD kiracısı için bir Azure AD Genel yönetici hesabı. Bu hesabın bir **okul veya kuruluş hesabı** olması ve bir **Microsoft hesabı**olamaz.
-* Hızlı ayarları kullanıyorsanız veya DirSync 'ten yükseltirseniz, şirket içi Active Directory için bir kuruluş yöneticisi hesabınız olmalıdır.
-* Şirket içi Active Directory için özel ayarlar yükleme yolunu veya bir kuruluş yöneticisi hesabını kullanırsanız [Active Directory hesaplar](reference-connect-accounts-permissions.md) .
+* [Hızlı ayarları](reference-connect-accounts-permissions.md#express-settings-installation) kullanıyorsanız veya DirSync 'ten yükseltirseniz, şirket içi Active Directory Için bir kuruluş yöneticisi hesabınız olmalıdır.
+* Özel ayarlar yükleme yolu ' nu kullanırsanız, daha fazla seçeneğe [Active Directory hesapları](reference-connect-accounts-permissions.md#custom-installation-settings) görebilirsiniz.
 
 ### <a name="connectivity"></a>Bağlantı
 * Azure AD Connect sunucusu hem intranet hem de internet için DNS çözümüne ihtiyaç duyuyor. DNS sunucusu, adları hem şirket içi Active Directory hem de Azure AD uç noktalarına çözümleyebilmelidir.

@@ -3,16 +3,17 @@ title: Azure Key Vault yönetilen depolama hesabı-PowerShell sürümü
 description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında sorunsuz bir tümleştirme sağlar.
 ms.topic: conceptual
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 833f78d89a1a9033e62c10c3b16c5adfc65e1da4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980860"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195133"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Depolama hesabı anahtarlarını Key Vault ve Azure PowerShell yönetme
 
@@ -44,11 +45,11 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 
 | Kiracılar | Bulut | Uygulama Kimliği |
 | --- | --- | --- |
-| Azure AD | Azure Devlet Kurumları | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Diğer  | Herhangi biri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
@@ -117,7 +118,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Depolama hesabınızdaki role Key Vault zaten eklendiyse *"rol ataması zaten var."* hatası döndürür. Rol atamasını, Azure portal depolama hesabı "erişim denetimi (ıAM)" sayfasını kullanarak da doğrulayabilirsiniz.  
+Depolama hesabınızdaki role Key Vault zaten eklendiyse *"rol ataması zaten var."* hatayla. Rol atamasını, Azure portal depolama hesabı "erişim denetimi (ıAM)" sayfasını kullanarak da doğrulayabilirsiniz.  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Yönetilen depolama hesaplarına kullanıcı hesabınıza izin verin
 

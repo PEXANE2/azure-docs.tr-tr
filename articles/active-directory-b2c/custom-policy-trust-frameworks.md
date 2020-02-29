@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 'de başvuru güven çerçeveleri | Microsoft Docs
 description: Azure Active Directory B2C özel ilkelerle ve kimlik deneyimi çerçevesiyle ilgili bir konu.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ffa25eec9c4b668f428d8e8b5a780a5fe4625a2c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849168"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188894"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework ile güven çerçeveleri tanımlama
 
@@ -36,9 +36,9 @@ Tüm bu soruları yanıtlamak için, kimlik deneyimi çerçevesini kullanan öze
 
 Güven çerçevesi, bir ilgilendiğiniz topluluktaki katılımcıların uyması gereken kimlik, güvenlik, gizlilik ve veri koruma ilkelerinin yazılı bir belirtimidir.
 
-Federal Kimlik, Internet ölçeğinde Son Kullanıcı kimlik güvencesi sağlamak için bir temel sağlar. Üçüncü taraflara kimlik yönetimi temsilcisi seçerek, son kullanıcının tek bir dijital kimliği birden çok bağlı olan tarafla yeniden kullanılabilir.  
+Federal Kimlik, Internet ölçeğinde Son Kullanıcı kimlik güvencesi sağlamak için bir temel sağlar. Üçüncü taraflara kimlik yönetimi temsilcisi seçerek, son kullanıcının tek bir dijital kimliği birden çok bağlı olan tarafla yeniden kullanılabilir.
 
-Kimlik güvencesi, kimlik sağlayıcılarının (IDPs) ve öznitelik sağlayıcılarının (AtPs) belirli güvenlik, gizlilik ve işlem ilkelerine ve uygulamalarına bağlı olmasını gerektirir.  Doğrudan İncelemeleri gerçekleştireistemlerse, bağlı olan taraflar (RPs), ile çalışmayı seçtikleri IDPs ve AtPs 'Ler ile güven ilişkileri geliştirmeniz gerekir.  
+Kimlik güvencesi, kimlik sağlayıcılarının (IDPs) ve öznitelik sağlayıcılarının (AtPs) belirli güvenlik, gizlilik ve işlem ilkelerine ve uygulamalarına bağlı olmasını gerektirir.  Doğrudan İncelemeleri gerçekleştireistemlerse, bağlı olan taraflar (RPs), ile çalışmayı seçtikleri IDPs ve AtPs 'Ler ile güven ilişkileri geliştirmeniz gerekir.
 
 Dijital kimlik bilgilerinin tüketicileri ve sağlayıcılarının sayısı arttıkça, bu güven ilişkilerinin ikili yönetimine veya hatta ağ bağlantısı için gereken teknik meta verilerin ikili değişimine devam etmek zordur.  Federasyon hub 'ları, bu sorunları çözmek için yalnızca sınırlı başarıları elde edin.
 
@@ -65,13 +65,13 @@ TFs, her bir ilgilendiğiniz topluluğun belirli bir TF belirtimine göre yönet
 
 Bu nedenle, bir TF belirtimi, kimlik bilgilerinin ilgilendiğiniz Topluluk katılımcıları arasında nasıl değiştirildiğini yönetir: bağlı olan taraflar, kimlik ve öznitelik sağlayıcıları ve öznitelik Doğrulayıcıları.
 
-Bir TF belirtimi, topluluk içerisindeki dijital kimlik bilgilerinin onayını ve tüketimini düzenleyen bir ilgilendiğiniz topluluk yönetimi için başvuru olarak görev yapan bir veya birden çok belgelerdir. Bu, ilgilenilen bir topluluk üyeleri arasındaki çevrimiçi işlemler için kullanılan dijital kimliklerdeki güven oluşturmak için tasarlanan, belgelenmiş bir ilke ve yordamlar kümesidir.  
+Bir TF belirtimi, topluluk içerisindeki dijital kimlik bilgilerinin onayını ve tüketimini düzenleyen bir ilgilendiğiniz topluluk yönetimi için başvuru olarak görev yapan bir veya birden çok belgelerdir. Bu, ilgilenilen bir topluluk üyeleri arasındaki çevrimiçi işlemler için kullanılan dijital kimliklerdeki güven oluşturmak için tasarlanan, belgelenmiş bir ilke ve yordamlar kümesidir.
 
 Diğer bir deyişle, bir TF belirtimi, bir topluluk için uygun bir federal kimlik ekosistemi oluşturmaya yönelik kuralları tanımlar.
 
 Şu anda böyle bir yaklaşımın avantajı hakkında yaygın olarak anlaşma vardır. Altyapı özelliklerinin güveneceği, doğrulanabilen güvenlik, güvence ve gizlilik özellikleriyle dijital kimlik ekosistemlerinin geliştirilmesini kolaylaştırmaya yardımcı olur ve bu da birçok ilgilendiğiniz topluluk genelinde yeniden kullanılabilir.
 
-Bu nedenle, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, birlikte çalışabilirliği kolaylaştırmak için bir TF 'in veri gösteriminin temeli olarak belirtimi kullanır.  
+Bu nedenle, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, birlikte çalışabilirliği kolaylaştırmak için bir TF 'in veri gösteriminin temeli olarak belirtimi kullanır.
 
 Kimlik deneyimi çerçevesi 'nden yararlanan Azure AD B2C özel ilkeler, insan ve makine tarafından okunabilen verilerin bir karışımı olarak bir TF belirtimini temsil eder. Bu modelin bazı bölümleri (genellikle idare altına daha fazla yönelimli bölümler), yayımlanan güvenlik ve Gizlilik ilkesi belgelerinin (varsa) ilgili yordamlarla birlikte başvuru olarak temsil edilir. Diğer bölümlerde, işletimsel Otomasyonu kolaylaştıran yapılandırma meta verileri ve çalışma zamanı kuralları ayrıntılı olarak açıklanır.
 
@@ -106,21 +106,21 @@ Uygulama açısından, TF belirtimi, kimlik davranışları ve deneyimleri üzer
 ### <a name="understand-claims"></a>Talepleri anlama
 
 > [!NOTE]
-> "Talepler" olarak alışverişi gerekebilecek tüm olası kimlik bilgileri türlerine topluca başvurduk: son kullanıcının kimlik doğrulama kimlik bilgileri, kimlik erişimi, iletişim cihazı, fiziksel konum, kişisel tanımlama öznitelikleri, vb.  
+> "Talepler" olarak alışverişi gerekebilecek tüm olası kimlik bilgileri türlerine topluca başvurduk: son kullanıcının kimlik doğrulama kimlik bilgileri, kimlik erişimi, iletişim cihazı, fiziksel konum, kişisel tanımlama öznitelikleri, vb.
 >
-> "Öznitelikler" yerine "talepler" terimini kullanıyoruz--çevrimiçi işlemlerde bu veri yapıtları, bağlı olan taraf tarafından doğrudan doğrulanmayacak olgular değildir. Bunlar, bağlı olan tarafın son kullanıcıya istenen işleme izin vermek için yeterli güvenle geliştirilmesi gereken olgular hakkında veya taleplerdir.  
+> "Öznitelikler" yerine "talepler" terimini kullanıyoruz--çevrimiçi işlemlerde bu veri yapıtları, bağlı olan taraf tarafından doğrudan doğrulanmayacak olgular değildir. Bunlar, bağlı olan tarafın son kullanıcıya istenen işleme izin vermek için yeterli güvenle geliştirilmesi gereken olgular hakkında veya taleplerdir.
 >
-> Ayrıca, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, temel alınan protokolün ne olursa olsun, her türlü dijital kimlik bilgisinin Exchange 'i tutarlı bir şekilde basitleştirecek şekilde tasarlandığından, "talepler" terimini kullanırız. Kullanıcı kimlik doğrulaması veya öznitelik alımı için tanımlanır.  Benzer şekilde, belirli işlevleri arasında ayrım yapmak istemediğimiz zaman, kimlik sağlayıcılarına, öznitelik sağlayıcılarına ve öznitelik Doğrulayıcıları için "talep sağlayıcıları" terimini kullanırız.   
+> Ayrıca, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, temel alınan protokolün ne olursa olsun, her türlü dijital kimlik bilgisinin Exchange 'i tutarlı bir şekilde basitleştirecek şekilde tasarlandığından, "talepler" terimini kullanırız. Kullanıcı kimlik doğrulaması veya öznitelik alımı için tanımlanır.  Benzer şekilde, belirli işlevleri arasında ayrım yapmak istemediğimiz zaman, kimlik sağlayıcılarına, öznitelik sağlayıcılarına ve öznitelik Doğrulayıcıları için "talep sağlayıcıları" terimini kullanırız.
 
 Bu nedenle, bir bağlı olan taraf, kimlik ve öznitelik sağlayıcıları ve öznitelik doğrulayıcıları arasında kimlik bilgilerinin nasıl değiştirildiğini yönetir. Bağlı olan tarafın kimlik doğrulaması için hangi kimlik ve öznitelik sağlayıcılarının gerekli olduğunu denetler. Bunlar, etki alanına özgü dil (DSL), diğer bir deyişle, devralma, *if* deyimleri, çok biçimlilik olan belirli bir uygulama etki alanı için özelleştirilmiş bir bilgisayar dili olarak düşünülmelidir.
 
-Bu ilkeler, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkelerde, TF yapısının makine tarafından okunabilen bölümünü oluşturur. İşlem düzenleme ve Otomasyonu kolaylaştırmak için, talep sağlayıcıları ' meta verileri ve teknik profilleri, talep şeması tanımları, talep dönüştürme işlevleri ve Kullanıcı başvuruları dahil olmak üzere tüm işletimsel ayrıntıları içerirler.  
+Bu ilkeler, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkelerde, TF yapısının makine tarafından okunabilen bölümünü oluşturur. İşlem düzenleme ve Otomasyonu kolaylaştırmak için, talep sağlayıcıları ' meta verileri ve teknik profilleri, talep şeması tanımları, talep dönüştürme işlevleri ve Kullanıcı başvuruları dahil olmak üzere tüm işletimsel ayrıntıları içerirler.
 
-İçeriklerinin, ilkelerde bildirildiği etkin katılımcılar ile ilgili zaman içinde değişeceğinden emin olacağından, bunlar, *yaşayan belgeler* olarak kabul edilir. Ayrıca, katılımcı olma koşullarının ve koşulların değiştirebileceği da potansiyel olarak vardır.  
+İçeriklerinin, ilkelerde bildirildiği etkin katılımcılar ile ilgili zaman içinde değişeceğinden emin olacağından, bunlar, *yaşayan belgeler* olarak kabul edilir. Ayrıca, katılımcı olma koşullarının ve koşulların değiştirebileceği da potansiyel olarak vardır.
 
 Federasyon kurulumu ve bakımı, farklı talep sağlayıcıları/doğrulayıcılar (tarafından temsil edilen topluluk) ilke kümesiyle sürekli güven ve bağlantı yeniden yapılandırmalarından koruma için büyük ölçüde basitleştirilmiştir.
 
-Birlikte çalışabilirlik başka bir önemli zorluk dır. Bağlı olan taraflar gerekli tüm protokollerin desteklenmesi olası olduğundan, ek talep sağlayıcıları/Doğrulayıcıları tümleştirmelidir. Azure AD B2C özel ilkeler, sektör standardı protokollerini destekleyerek ve bağlı olan taraflar ve öznitelik sağlayıcılarının aynı protokolü desteklemediği durumlarda istekleri tersine çevir için belirli kullanıcı ilerliklerini uygulayarak bu sorunu çözebilir.  
+Birlikte çalışabilirlik başka bir önemli zorluk dır. Bağlı olan taraflar gerekli tüm protokollerin desteklenmesi olası olduğundan, ek talep sağlayıcıları/Doğrulayıcıları tümleştirmelidir. Azure AD B2C özel ilkeler, sektör standardı protokollerini destekleyerek ve bağlı olan taraflar ve öznitelik sağlayıcılarının aynı protokolü desteklemediği durumlarda istekleri tersine çevir için belirli kullanıcı ilerliklerini uygulayarak bu sorunu çözebilir.
 
 Kullanıcı yolculukları, bağlı olan taraf ve diğer katılımcılar arasında "kabloda" birlikte çalışabilirliği açmak için kullanılan protokol profillerini ve meta verileri içerir. Ayrıca, TF belirtiminin bir parçası olarak yayımlanan ilkelerle uyumluluğu zorlamaya yönelik kimlik bilgileri Exchange istek/yanıt iletilerine uygulanan işletimsel çalışma zamanı kuralları vardır. Kullanıcı yolculukları, müşteri deneyiminin özelleştirilmesi için önemli bir uygulamadır. Ayrıca, sistemin protokol düzeyinde nasıl çalıştığı üzerinde de ışık vardır.
 

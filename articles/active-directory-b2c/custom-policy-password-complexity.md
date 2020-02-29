@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak parola karmaşıklığını yapılandırma
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 'de özel bir ilke kullanarak parola karmaşıklığı gereksinimlerini yapılandırma.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d0caa029bd33da499db23f218b2392344c4585ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de1130e28b5071913e4cf3632c3fe4407597a98
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849077"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189149"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını yapılandırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849077"
 
 Azure Active Directory B2C (Azure AD B2C) ' de, bir hesap oluştururken bir kullanıcı tarafından temin edilen parolaların karmaşıklık gereksinimlerini yapılandırabilirsiniz. Varsayılan olarak, Azure AD B2C **güçlü** parolalar kullanır. Bu makalede, [özel ilkelerde](custom-policy-overview.md)parola karmaşıklığının nasıl yapılandırılacağı gösterilir. [Kullanıcı akışlarında](user-flow-password-complexity.md)parola karmaşıklığı yapılandırmak da mümkündür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
@@ -112,7 +112,7 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587303"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192396"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 
@@ -142,6 +142,20 @@ Bu formülün giriş değerleri [sys. dm_db_resource_stats](https://docs.microso
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Elastik bir kaynak havuzundan faydalanabilir iş yükleri
 
 Havuzlar, düşük kaynak kullanımı ortalaması olan veritabanları için uygundur ve görece seyrek kullanım ani artışları vardır. Daha fazla bilgi için bkz. [SQL veritabanı elastik havuzunu ne zaman düşünmeniz gerekir?](sql-database-elastic-pool.md).
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>DTU tabanlı satın alma modelinde donanım nesilleri
+
+DTU tabanlı satın alma modelinde, müşteriler veritabanları için kullanılan donanım üretimini seçemezsiniz. Belirli bir veritabanı, genellikle uzun bir süre boyunca belirli bir donanım oluşturma üzerinde kalır (genellikle birden çok ay için), bir veritabanının başka bir donanım oluşturmaya taşınmasına neden olabilecek bazı olaylar vardır.
+
+Örneğin, bir veritabanı farklı bir hizmet hedefine ölçeği artırılırsa veya azaltıyorsa ya da bir veri merkezindeki geçerli altyapı kapasite sınırlarına yaklaşıyorsa veya şu anda kullanılmakta olan donanımlar ise farklı bir donanım oluşturmaya taşınabilir. kullanım ömrü nedeniyle kullanımdan kaldırıldı.
+
+Bir veritabanı farklı bir donanıma taşınırsa, iş yükü performansı değişebilir. DTU modeli, hizmet hedefi (DTU sayısı) aynı kaldığı sürece, [DTU kıyaslama](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) iş yükünün işleme ve yanıt süresinin, veritabanı farklı bir donanım oluşturmaya giderken önemli ölçüde aynı kalacağından emin olur. 
+
+Ancak, Azure SQL veritabanı 'nda çalışan çok sayıda müşteri iş yüklerinin tamamında, aynı hizmet hedefi için farklı donanımlar kullanmanın etkisi daha fazla olabilir. Farklı iş yükleri, farklı donanım yapılandırma ve özelliklerinden faydalanır. Bu nedenle, DTU kıyaslamalarından başka iş yükleri için, veritabanı bir donanım oluşturma işleminden diğerine taşınırsa performans farklılıklarını görmek mümkündür.
+
+Örneğin, ağ gecikme süresine duyarlı bir uygulama, 5. nesil 'de hızlandırılmış ağ kullanımı nedeniyle 5. nesil Hardware vs. 4. nesil üzerinde daha iyi performans görebilir, ancak yoğun okuma GÇ kullanan bir uygulama, 4. nesil donanımı ve 5. nesil şu nedenlerle daha iyi performans sağlayabilir: 4. nesil üzerinde çekirdek oranına göre daha yüksek bellek.
+
+Donanım değişikliklerine duyarlı olan iş yükleri veya veritabanları için donanım oluşturma seçimini denetlemek isteyen müşteriler, veritabanı oluşturma ve ölçekleme sırasında tercih edilen donanım üretimini seçmek için [Vcore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) modelini kullanabilir. Sanal çekirdek modelinde her bir her bir hizmet hedefinin kaynak limitleri her bir donanım oluşturma işlemi için, hem [tek veritabanları](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) hem de [elastik havuzlar](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)için belgelenmiştir. Sanal çekirdek modelindeki donanım oluşturmaları hakkında daha fazla bilgi için bkz. [donanım nesilleri](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 

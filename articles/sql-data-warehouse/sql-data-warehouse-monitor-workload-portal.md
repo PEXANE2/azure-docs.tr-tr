@@ -1,30 +1,30 @@
 ---
 title: İş yükünü izleme-Azure portal
-description: Azure portal kullanarak Azure SQL veri ambarı 'nı izleme
+description: Azure portal kullanarak SQL analizlerini izleme
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/22/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 7e93aee405d8a66d850a4e3f07f2e788f1004ef8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645626"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197258"
 ---
 # <a name="monitor-workload---azure-portal"></a>İş yükünü izleme-Azure portal
 
-Bu makalede, iş yükünüzü izlemek için Azure portal nasıl kullanılacağı açıklanır. Bu, Azure [SQL veri ambarı](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)için Log Analytics kullanarak sorgu yürütmeyi ve iş yükü eğilimlerini araştırmak üzere Azure izleyici günlüklerini ayarlamayı içerir.
+Bu makalede, iş yükünüzü izlemek için Azure portal nasıl kullanılacağı açıklanır. Bu, [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)için Log Analytics kullanarak sorgu yürütmeyi ve iş yükü eğilimlerini araştırmak üzere Azure izleyici günlüklerini ayarlamayı içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- Azure SQL veri ambarı: bir SQL veri ambarı için günlük toplayacağız. Sağlanmış bir SQL veri ambarınız yoksa, [SQL veri ambarı oluşturma](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)' daki yönergelere bakın.
+- SQL havuzu: bir SQL havuzu için günlükleri toplayacağız. Sağlanmış bir SQL havuzu yoksa, [SQL havuzu oluşturma](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)' daki yönergelere bakın.
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
@@ -38,9 +38,9 @@ Log Analytics çalışma alanları için gezinme dikey penceresine gidin ve bir 
 
 Çalışma alanları hakkında daha fazla bilgi için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)ziyaret edin.
 
-## <a name="turn-on-diagnostic-logs"></a>Tanılama günlüklerini aç 
+## <a name="turn-on-diagnostic-logs"></a>Tanılama günlüklerini aç
 
-SQL veri Ambarınızdan günlükleri göstermek için tanılama ayarlarını yapılandırın. Günlükler, SQL veri ambarı için en sık kullanılan performans sorunlarını giderme DMVs 'ye eşdeğer veri ambarınızın telemetri görünümlerinden oluşur. Şu anda Şu görünümler desteklenir:
+SQL havuzunuzdaki günlükleri göstermek için tanılama ayarlarını yapılandırın. Günlükler, en sık kullanılan performans sorunlarını giderme DMVs ile eşdeğer telemetri görünümlerinden oluşur. Şu anda Şu görünümler desteklenir:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)

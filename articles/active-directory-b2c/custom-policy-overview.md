@@ -2,20 +2,20 @@
 title: Özel ilkeleri Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C özel ilkeler hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1f3bbcba562d126d503920cb7b6787e2ca0025c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847049"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189251"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler
 
@@ -29,9 +29,9 @@ ms.locfileid: "76847049"
 |-|-------------------|-----------------|
 | Hedef kullanıcılar | Kimlik uzmanlığına sahip veya olmayan tüm uygulama geliştiricileri. | Kimlik uzmanları, sistem tümleştiricileri, danışmanları ve şirket içi kimlik takımları. OpenID Connect akışlarıyla rahat ve kimlik sağlayıcılarını ve talep tabanlı kimlik doğrulamasını anlayın. |
 | Yapılandırma yöntemi | Kullanıcı dostu Kullanıcı arabirimi (UI) ile Azure portal. | XML dosyalarını doğrudan düzenleyip Azure portal karşıya yükleyin. |
-| UI özelleştirmesi | HTML, CSS ve JavaScript gibi tam UI özelleştirmesi.<br><br>Özel dizelerle çok dilli destek. | Naklettiğiniz |
-| Öznitelik özelleştirmesi | Standart ve özel öznitelikler. | Naklettiğiniz |
-| Belirteç ve oturum yönetimi | Özel belirteç ve çoklu oturum seçenekleri. | Naklettiğiniz |
+| UI özelleştirme | HTML, CSS ve JavaScript gibi tam UI özelleştirmesi.<br><br>Özel dizelerle çok dilli destek. | naklettiğiniz |
+| Öznitelik özelleştirmesi | Standart ve özel öznitelikler. | naklettiğiniz |
+| Belirteç ve oturum yönetimi | Özel belirteç ve çoklu oturum seçenekleri. | naklettiğiniz |
 | Kimlik Sağlayıcıları | Önceden tanımlanmış yerel veya sosyal sağlayıcı ve Azure Active Directory kiracılar ile Federasyon gibi çoğu OıDC kimlik sağlayıcısı. | Standartlara dayalı OıDC, OAUTH ve SAML.  REST API 'lerle tümleştirme kullanılarak da kimlik doğrulaması mümkündür. |
 | Kimlik görevleri | Yerel veya çok sayıda sosyal hesapla kaydolma veya oturum açma.<br><br>Self servis parola sıfırlama.<br><br>Profil düzenleme.<br><br>Multi-Factor Authentication.<br><br>Belirteçleri ve oturumları özelleştirin.<br><br>Belirteç akışlarına erişin. | Özel kimlik sağlayıcılarını kullanarak Kullanıcı akışlarıyla aynı görevleri tamamlayıp özel kapsamlar kullanın.<br><br>Kayıt sırasında başka bir sistemde bir kullanıcı hesabı sağlayın.<br><br>Kendi e-posta hizmet sağlayıcınızı kullanarak bir hoş geldiniz e-postası gönderin.<br><br>Azure AD B2C dışında bir kullanıcı deposu kullanın.<br><br>Bir API kullanarak güvenilir bir sistemle Kullanıcı tarafından sağlanmış bilgileri doğrulayın. |
 

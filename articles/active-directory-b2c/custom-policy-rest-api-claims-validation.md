@@ -3,20 +3,20 @@ title: Talep değiş tokuşları doğrulama olarak REST API
 titleSuffix: Azure AD B2C
 description: Yeniden çalışan hizmetlerle etkileşim kuran Azure AD B2C Kullanıcı yolculuğu oluşturmaya yönelik bir yol.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 209cddcc8648f7d396f048057bb4367e2ae9f66c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846620"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189081"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>İzlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın
 
@@ -37,7 +37,7 @@ Doğrulama profili örneği için, ProfileEdit. xml ' de Başlatıcı paketi dos
 
 Profil düzenleme içindeki kullanıcı tarafından girilen adın bir çıkarma listesinin parçası olmadığından emin olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Başlarken ' de açıklandığı gibi yerel bir hesap kaydolma/oturum açma [işlemi](custom-policy-get-started.md)için yapılandırılmış bir Azure AD B2C kiracısı.
 - Etkileşimde bulunmak için bir REST API uç noktası. Bu izlenecek yol için, REST API hizmetiyle [Wingtipgames](https://wingtipgamesb2c.azurewebsites.net/) adlı bir demo sitesi ayarladık.

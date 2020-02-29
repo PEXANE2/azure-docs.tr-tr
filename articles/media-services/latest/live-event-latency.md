@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services Livestream gecikme | Microsoft Docs
-description: Bu konuda Livestream gecikme genel bir bakış sağlar ve düşük gecikme süresi ayarlama işlemi gösterilmektedir.
+title: Azure Media Services | LiveEvent düşük gecikme süresi ayarları | Microsoft Docs
+description: Bu konu, LiveEvent düşük gecikme ayarlarına genel bir bakış sağlar ve düşük gecikme süresinin nasıl ayarlanacağını gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,23 +13,23 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702782"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199657"
 ---
-# <a name="live-event-latency-in-media-services"></a>Media Services canlı olay gecikme süresi
+# <a name="live-event-low-latency-settings"></a>Canlı olay düşük gecikme süresi ayarları
 
-Bu makalede, düşük gecikme süresi ayarlamak gösterilmektedir bir [canlı olay](https://docs.microsoft.com/rest/api/media/liveevents). Ayrıca, düşük gecikme süresi ayarları çeşitli oynatıcılarda kullanırken göreceğiniz tipik sonuçları anlatılmaktadır. Sonuçları, CDN ve ağ gecikmesi göre değişir.
+Bu makalede, [canlı bir olayda](https://docs.microsoft.com/rest/api/media/liveevents)düşük gecikme süresinin nasıl ayarlanacağı gösterilmektedir. Ayrıca, çeşitli oynatıcılarda düşük gecikme süresi ayarlarını kullanırken gördüğünüz tipik sonuçları da açıklar. Sonuçlar CDN ve ağ gecikme süresine göre farklılık gösterir.
 
-Yeni **LowLatency** özelliği, ayarladığınız **StreamOptionsFlag** için **LowLatency** üzerinde **Livestream**. Oluştururken [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) HLS kayıttan yürütme için ayarlanmış [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1. Akış, çalışır duruma geldikten sonra kullanabileceğiniz [Azure Media Player](https://ampdemo.azureedge.net/) (AMP tanıtım sayfası) ve "Düşük gecikme süresi buluşsal yöntemler profili" kullanmak için kayıttan yürütme seçeneklerini ayarlayın.
+Yeni **LowLatency** özelliğini kullanmak Için, **Streammoptionsflag** öğesini **liveevent**üzerinde **LowLatency** olarak ayarlarsınız. HLS kayıttan yürütme için [liveoutput](https://docs.microsoft.com/rest/api/media/liveoutputs) oluştururken [Liveoutput. Hls. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) değerini 1 olarak ayarlayın. Akış çalışır duruma getirildikten sonra, [Azure Media Player](https://ampdemo.azureedge.net/) (amp demo sayfası) kullanabilir ve kayıttan yürütme seçeneklerini "düşük gecikmeli buluşsal yöntemler profilini" kullanacak şekilde ayarlayabilirsiniz.
 
 > [!NOTE]
-> Şu anda, Azure Media Player LowLatency HeuristicProfile akış CSF ya da CMAF biçimiyle MPEG-DASH Protokolü şeklinde kayıttan yürütme için tasarlanmıştır (örneğin, `format=mdp-time-csf` veya `format=mdp-time-cmaf`). 
+> Şu anda Azure Media Player içindeki LowLatency HeuristicProfile, MPEG-DASH protokolünde, CSF veya CMAF biçiminde (örneğin, `format=mdp-time-csf` veya `format=mdp-time-cmaf`) arka akışlar çalmak için tasarlanmıştır. 
 
-Aşağıdaki .NET örnek nasıl ayarlanacağını gösterir **LowLatency** üzerinde **Livestream**:
+Aşağıdaki .NET örneğinde, **Liveevent**üzerinde **LowLatency** ayarlama gösterilmektedir:
 
 ```csharp
 LiveEvent liveEvent = new LiveEvent(
@@ -52,31 +52,31 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-Tam örneğe bakın: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Bkz. tam örnek: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="live-events-latency"></a>Canlı olayları gecikme süresi
+## <a name="live-events-latency"></a>Canlı olay gecikmesi
 
-Aşağıdaki tablolarda, Media Services, bir Görüntüleyici oynatıcıda kayıttan yürütme gördüğünde hizmetinin katkı akış ulaştığında zamandan itibaren ölçülür (LowLatency bayrağı etkinleştirildiğinde) gecikme süresi için tipik sonuçları gösterir. Düşük gecikme süresi en iyi şekilde kullanmak için Kodlayıcı ayarlarınızı aşağı 1 saniye "Grubu, resimleri" (GOP) uzunluğunu ayarlayın. Daha yüksek bir GOP uzunluğu kullanırken, bant genişliği kullanımını en aza indirmek ve altında aynı kare hızı bit hızı azaltma. Daha az hareket videoları bu durum özellikle yararlıdır.
+Aşağıdaki tablolarda, bir Görüntüleyici Player 'da kayıttan yürütmeyi gördüğünde, katkı akışı hizmete ulaştığı zamandan itibaren ölçülen gecikme süresi (LowLatency bayrağı etkinleştirildiğinde Media Services) için tipik sonuçlar gösterilmektedir. Düşük gecikme süresini en iyi şekilde kullanmak için Kodlayıcı ayarlarınızı 1 saniyelik "resim grubu" (GOP) uzunluğu olarak ayarlamanız gerekir. Daha yüksek bir GOP uzunluğu kullanırken, bant genişliği tüketimini en aza indirmiş ve aynı kare hızında bit hızını azaltabilirsiniz. Daha az hareket eden videolarda özellikle faydalıdır.
 
 ### <a name="pass-through"></a>Geçiş 
 
-||2S GOP düşük gecikme süresi etkin|1s GOP düşük gecikme süresi etkin|
+||2s GOP düşük gecikme süresi etkin|1s GOP düşük gecikme süresi etkin|
 |---|---|---|
-|AMP tire|10'luk bloklar|8s|
-|HLS üzerinde yerel iOS player|14s|10'luk bloklar|
+|AMP 'da DASH|10s|8S|
+|Yerel iOS yürütücüsü üzerinde HLS|14s|10s|
 
 ### <a name="live-encoding"></a>Live encoding
 
-||2S GOP düşük gecikme süresi etkin|1s GOP düşük gecikme süresi etkin|
+||2s GOP düşük gecikme süresi etkin|1s GOP düşük gecikme süresi etkin|
 |---|---|---|
-|AMP tire|14s|10'luk bloklar|
-|HLS üzerinde yerel iOS player|18s|13s|
+|AMP 'da DASH|14s|10s|
+|Yerel iOS yürütücüsü üzerinde HLS|18s|13s|
 
 > [!NOTE]
-> Uçtan uca gecikme süresi, yerel ağ koşullara bağlı olarak ya da bir CDN önbelleğe alma katmanı ile tanışın farklılık gösterebilir. Tam yapılandırmalarınızı test etmeniz gerekir.
+> Uçtan uca gecikme süresi, yerel ağ koşullarına bağlı olarak veya bir CDN önbelleğe alma katmanı sunarak farklılık gösterebilir. Tam yapılandırmalarınızı test etmelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Canlı akış genel bakış](live-streaming-overview.md)
-- [Canlı akış Öğreticisi](stream-live-tutorial-with-api.md)
+- [Canlı akışa genel bakış](live-streaming-overview.md)
+- [Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
 

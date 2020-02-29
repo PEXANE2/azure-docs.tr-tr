@@ -3,20 +3,20 @@ title: Özel ilkeler kullanarak çoklu oturum açma oturumu yönetimi
 titleSuffix: Azure AD B2C
 description: Azure AD B2C özel ilkeleri kullanarak SSO oturumlarını yönetmeyi öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912554"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189115"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
@@ -39,11 +39,11 @@ SSO yönetim sınıfları, bir teknik profilin `<UseTechnicalProfileForSessionMa
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-`InputClaims` öğesi boş veya yok. 
+`InputClaims` öğesi boş veya yok.
 
 ## <a name="persisted-claims"></a>Kalıcı talepler
 
-Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafından kullanılması gereken talepler, oturum üzerinde depolanması veya dizindeki Kullanıcı profilinden bir okuma ile genişletilmiş olmalıdır. Kalıcı talepler kullanmak, kimlik doğrulamanın, eksik taleplerde başarısız olmasına neden olur. Oturumdaki talepleri eklemek için teknik profilin `<PersistedClaims>` öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir. 
+Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafından kullanılması gereken talepler, oturum üzerinde depolanması veya dizindeki Kullanıcı profilinden bir okuma ile genişletilmiş olmalıdır. Kalıcı talepler kullanmak, kimlik doğrulamanın, eksik taleplerde başarısız olmasına neden olur. Oturumdaki talepleri eklemek için teknik profilin `<PersistedClaims>` öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir.
 
 ## <a name="output-claims"></a>Çıkış talepleri
 
@@ -53,7 +53,7 @@ Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafın
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik profilde SSO davranışını gizleme için kullanılabilir. Aşağıdaki `SM-Noop` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.  
+Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik profilde SSO davranışını gizleme için kullanılabilir. Aşağıdaki `SM-Noop` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik pro
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel hesapları yönetmek için kullanılan bir teknik profilde başvurulur. Aşağıdaki `SM-AAD` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir. 
+Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel hesapları yönetmek için kullanılan bir teknik profilde başvurulur. Aşağıdaki `SM-AAD` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağ
 </TechnicalProfile>
 ```
 
-Aşağıdaki `SM-MFA` teknik profili [özel ilke başlangıç paketi](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`eklenmiştir. Bu teknik profil, Multi-Factor Authentication oturumunu yönetir. 
+Aşağıdaki `SM-MFA` teknik profili [özel ilke başlangıç paketi](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`eklenmiştir. Bu teknik profil, Multi-Factor Authentication oturumunu yönetir.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -117,7 +117,7 @@ Bu sağlayıcı, "kimlik sağlayıcısını Seç" ekranının görüntülenmesin
 ```
 
 #### <a name="metadata"></a>Meta Veriler
-        
+
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Hayır | Şu anda kullanılmıyor olabilir. |
@@ -138,7 +138,7 @@ Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlay�
 ```
 
 B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, `IncludeSessionIndex` ve `RegisterServiceProviders` `true`olarak ayarlanmalıdır. SAML oturumu kapatma `SessionIndex` ve `NameID` tamamlanmasını gerektiriyor.
- 
+
 Aşağıdaki `SM-Saml-idp` teknik profili [SAML verenin teknik profili](connect-with-saml-service-providers.md) tarafından kullanılır
 
 ```XML
@@ -148,7 +148,7 @@ Aşağıdaki `SM-Saml-idp` teknik profili [SAML verenin teknik profili](connect-
 </TechnicalProfile>
 ```
 #### <a name="metadata"></a>Meta Veriler
-        
+
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
 | Includesessionındex | Hayır | Sağlayıcıya, oturum dizininin depolanması gerektiğini belirtir. Olası değerler: `true` (varsayılan) veya `false`.|

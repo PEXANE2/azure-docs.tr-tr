@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526136"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190356"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -150,6 +150,14 @@ Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu 
 **A** ve **B**modellerini karşılaştırırken, **bir** model, daha yüksek test doğruluğu içerdiğinden daha iyi bir modeldir ve test doğruluğu %95 ' de biraz daha düşük olsa da, çok fazla sığdırma öneren önemli bir fark değildir. Tren ve test accuracies birlikte daha yakından olduğu için model **B** 'yi seçemezsiniz.
 
 Model **C** , aşırı sığdırma durumunu açık bir şekilde temsil eder; Eğitim doğruluğu çok yüksektir, ancak test doğruluğu yüksek olan her yerde değildir. Bu ayrım öznel, ancak sorununuz ve verileriniz hakkında bilgi sahibi olur ve hata magnitudes ne olduğunu kabul edilebilir. 
+
+## <a name="classification--regression"></a>& Gerileme sınıflandırması
+
+Sınıflandırma ve gerileme, makine öğrenimi görevlerinin en yaygın türleridir. Her ikisi de modellerin eğitim verilerini kullanarak öğreniminde denetimli öğrenme türleridir ve bu dersleri yeni verilere uygulanır. Azure Machine Learning, özellikle bu görevler için derin sinir ağ metni özellikleri sınıflandırıcılarıyla ilgili özellikler sunar. [Uygulanabilirlik seçenekleri](how-to-create-portal-experiments.md#featurization)hakkında daha fazla bilgi edinin. 
+
+Sınıflandırma modellerinin ana amacı, yeni verilerin eğitim verilerinden dersleri göre hangi kategorilerin üzerine dönemeyeceğini tahmin etmeye yönelik olarak tasarlanmıştır. Ortak sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir.  Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile sınıflandırma](tutorial-train-models-with-aml.md)örneği görüntüleyin.
+
+Tahmin edilen çıkış değerlerinin kategorik olduğu sınıflandırmadan farklı, regresyon modelleri bağımsız tahmine göre sayısal çıkış değerlerini tahmin eder. Gerileme ' de amaç, bir değişkenin diğerlerini nasıl etkilediğini tahmin ederek bu bağımsız tahmine dayalı değişkenler arasında ilişki kurmaya yardımcı olur. Örneğin,, gaz mesafe, güvenlik derecelendirmesi vb. gibi özelliklere göre Otomobil Fiyatları. Daha fazla bilgi edinin ve [otomatik makine öğrenimine bir gerileme](tutorial-auto-train-models.md)örneği görüntüleyin.
 
 ## <a name="time-series-forecasting"></a>Zaman serisi tahmin
 

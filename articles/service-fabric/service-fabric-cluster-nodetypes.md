@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722348"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199725"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
-[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Azure Service Fabric kümesinde tanımladığınız her düğüm türü ayrı bir ölçek ayarlar. Service Fabric çalışma zamanı, ölçek kümesindeki her bir sanal makineye *Microsoft. Azure. ServiceFabric* sanal makine uzantısı tarafından yüklenir. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
+[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Bir Azure Service Fabric kümesinde tanımladığınız her düğüm türü, tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından yedeklenmez ve tek bir düğüm türü, birden fazla ölçek kümesi tarafından yedeklenmemelidir (çoğu durumda). Bunun için bir özel durum, düğüm türünü dikey olarak [ölçeklendirmenin](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) nadir bir durumudur. çoğaltmalar, orijinalden yükseltilen ölçek kümesine geçirildiğinde aynı `nodeTypeRef` değerine sahip iki ölçek kümesi olur.
+
+Service Fabric çalışma zamanı, ölçek kümesindeki her bir sanal makineye *Microsoft. Azure. ServiceFabric* sanal makine uzantısı tarafından yüklenir. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
 
 Aşağıdaki şekilde, *ön uç* ve *arka uç*adında iki düğüm türüne sahip bir küme gösterilmektedir. Her düğüm türünün beş düğümü vardır.
 
@@ -70,14 +72,14 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 
 Özellik açıklamaları aşağıda verilmiştir:
 
-| **Ad** | **İzin verilen değerler** | **Kılavuz veya kısa açıklama** |
+| **Adı** | **İzin verilen değerler** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-| ad | string | uzantı için benzersiz ad |
+| ad | string | Uzantı için benzersiz ad |
 | type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | Önyükleme Service Fabric işletim sistemini tanımlar |
 | autoUpgradeMinorVersion | true veya false | SF çalışma zamanı alt sürümlerinin otomatik yükseltmesini etkinleştir |
 | publisher | Microsoft. Azure. ServiceFabric | Service Fabric uzantısı yayımcısının adı |
 | clusterEndpont | string | URI: yönetim uç noktası bağlantı noktası |
-| NodeTypeRef | string | nodeType adı |
+| nodeTypeRef | string | NodeType adı |
 | durabilityLevel | Bronz, gümüş, altın, Platinum | Sabit Azure altyapısını duraklatmaya izin verilen süre |
 | enableParallelJobs | true veya false | Aynı ölçek kümesindeki sanal makineyi kaldır ve sanal makineyi yeniden Başlat gibi hesaplama ParallelJobs 'ı etkinleştir |
 | nicPrefixOverride | string | "10.0.0.0/24" gibi alt ağ öneki |

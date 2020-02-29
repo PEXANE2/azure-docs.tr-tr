@@ -2,20 +2,20 @@
 title: TrustFrameworkPolicy-Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C özel bir ilkenin TrustFrameworkPolicy öğesini belirtin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/31/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982424"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186395"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,13 +38,13 @@ ms.locfileid: "76982424"
 
 **TrustFrameworkPolicy** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Evet | İlkeyi yürütmek için kullanılacak şema sürümü. Değer `0.3.0.0` olmalıdır |
+| PolicySchemaVersion | Yes | İlkeyi yürütmek için kullanılacak şema sürümü. Değer `0.3.0.0` olmalıdır |
 | Tenantobjectıd | Hayır | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
-| Değerine | Evet | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
-| `PolicyId` | Evet | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
-| PublicPolicyUri | Evet | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
+| TenantId | Yes | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
+| PolicyId | Yes | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
+| PublicPolicyUri | Yes | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
 | DeploymentMode | Hayır | Olası değerler: `Production`veya `Development`. `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 | Kullanıcıbağlantısı Neyırecorderendpoint | Hayır | **DeploymentMode** `Development`olarak ayarlandığında kullanılan uç nokta. Değerin `urn:journeyrecorder:applicationinsights`olması gerekir. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 
@@ -90,8 +90,8 @@ Bir ilkeyi başka bir ilkeden devralması için bir **Basepolicy** öğesi, Ilke
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | --------|
-| Değerine | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
-| `PolicyId` | 1:1 | Üst ilke tanımlayıcısı. |
+| TenantId | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
+| PolicyId | 1:1 | Üst ilke tanımlayıcısı. |
 
 
 Aşağıdaki örnek, temel bir ilkenin nasıl ekleneceğini gösterir. Bu **B2C_1A_TrustFrameworkExtensions** ilke **B2C_1A_TrustFrameworkBase** ilkesinden türetilir.

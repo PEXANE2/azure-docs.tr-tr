@@ -3,20 +3,20 @@ title: Azure Izleyici ile Azure AD B2C izleme
 titleSuffix: Azure AD B2C
 description: Yetkilendirilmiş kaynak yönetimi 'ni kullanarak Azure Izleyici ile Azure AD B2C olaylarını günlüğe kaydetme hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121387"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190067"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -223,10 +223,10 @@ Azure portal [Tanılama ayarları oluşturmaya](../active-directory/reports-moni
 
 Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
-1. **İzleme**altında **Tanılama ayarları**' nı seçin.
+1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
 1. Kaynakta mevcut ayarlar varsa, önceden yapılandırılmış ayarların bir listesini görürsünüz. Yeni bir ayar eklemek için **Tanılama ayarı Ekle** veya var olanı düzenlemek Için ayarı **Düzenle** seçeneklerinden birini belirleyin. Her bir ayarda hedef türlerin her biri birden çok olamaz..
 
     ![Azure portal Tanılama ayarları bölmesi](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)

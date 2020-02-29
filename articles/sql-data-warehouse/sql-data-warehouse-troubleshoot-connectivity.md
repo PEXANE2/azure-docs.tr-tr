@@ -1,6 +1,6 @@
 ---
 title: Bağlantı sorunlarını giderme
-description: Azure SQL veri ambarı 'nda bağlantı sorunlarını giderme.
+description: SQL Analytics 'te bağlantı sorunlarını giderme.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 003366a6d88e018090475b6fb22d9042a97af823
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692416"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192260"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
-Bu makalede, SQL veri ambarınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
+Bu makalede, SQL Analytics veritabanınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
 - [Hizmet kullanılabilirliğini denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Duraklatılmış veya ölçeklendirilen işlemleri denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Güvenlik duvarı ayarlarını denetleme](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ Bu makalede, SQL veri ambarınıza bağlanılmasıyla ilgili yaygın sorun gider
 
 ## <a name="check-service-availability"></a>Hizmet kullanılabilirliğini denetle
 
-Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız SQL veri ambarına gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz**' e tıklayın.
+Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız SQL Analytics veritabanına gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz**' e tıklayın.
 
 ![Kaynak durumunu seçin](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL veri ambarınızın durumu burada gösterilir. Hizmet **kullanılabilir**olarak görüntülenmiyorsa, daha fazla adım denetleyin.
+SQL analizlerinizin durumu burada gösterilir. Hizmet **kullanılabilir**olarak görüntülenmiyorsa, daha fazla adım denetleyin.
 
 ![Hizmet kullanılabilir](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Kaynak sistem durumu, veri ambarınızın duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, veri Ambarınızı sürdürmeye yönelik yönergeleri izleyin.
+Kaynak sistem sağlığı, SQL Analytics örneğinizin duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, örneğinizi sürdürmeye yönelik yönergeleri izleyin.
 
 ![hizmeti duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Kaynak Durumu hakkında ek bilgiler burada bulunabilir.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Duraklama veya ölçeklendirme işlemini denetle
 
-SQL veri ambarınız duraklatıldığında mi yoksa ölçeklendirmi olduğunu görmek için portalı denetleyin.
+SQL Analytics örneğinizin duraklatıldığı veya ölçeklendirildiği hakkında bilgi için portalı denetleyin.
 
 ![Hizmet duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SQL veri ambarınızın *genel bakış*portalındaki seçili bakım zamanlamasını görürsünüz.
+Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SQL Analytics *'e genel bakış*için portalda, seçili bakım zamanlamasını görürsünüz.
 
 ![Genel Bakış bakım zamanlaması](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. SQL veri ambarını duraklatmak için [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)özetlenen adımları izleyin.
+Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. SQL Analytics örneğini yeniden başlatmak için [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)özetlenen adımları izleyin.
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarınızı denetleyin
 
-SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
+SQL Analytics veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/hizmet uç noktası ayarlarınızı denetleyin
 
@@ -68,7 +68,7 @@ SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.�
 
 ### <a name="software"></a>Yazılım
 
-SQL veri ambarınıza bağlanmak için en son araçları kullandığınızdan emin olun:
+SQL Analytics veritabanınıza bağlanmak için en son araçları kullandığınızdan emin olun:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Aralıklı bağlantı sorunları
 
-Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için veri ambarınızın ölçeğini artırmanız gerekebilir.
+Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için SQL Analytics örneğinizi ölçeklendirmeniz gerekebilir.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 

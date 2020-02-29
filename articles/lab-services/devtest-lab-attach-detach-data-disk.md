@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/28/2020
 ms.author: spelluru
-ms.openlocfilehash: e6b470c55815255c50a42821b0bf52219d890206
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 3f18425408e6526904db85eae1c3a4db41d11a58
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170089"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198869"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayırma
 [Azure yönetilen diskler](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) , sanal makine veri diskleriyle ilişkili depolama hesaplarını yönetir. Bir Kullanıcı bir VM 'ye yeni bir veri diski iliştirir, gereken disk türünü ve boyutunu belirtir ve Azure, diski otomatik olarak oluşturur ve yönetir. Veri diski, VM 'den ayrılabilir ve daha sonra aynı VM 'ye yeniden eklenebilir ya da aynı kullanıcıya ait farklı bir VM 'ye iliştirilebilir.
@@ -35,13 +35,11 @@ Bir sanal makineye bir veri diski iliştirmadan önce şu ipuçlarını gözden 
 ### <a name="attach-a-new-disk"></a>Yeni Disk Ekle
 Azure DevTest Labs ' de bir VM 'ye yeni bir yönetilen veri diski oluşturup eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin. 
 1. **Sanal makinelerimin**listesinden çalışan bir VM seçin.
 1. Soldaki menüden **diskler**' i seçin.
-
-    ![Bir sanal makine için veri disklerini seçin](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png)
 1. Yeni bir veri diski oluşturmak ve VM 'ye eklemek için **Yeni Ekle** ' yi seçin.
 
     ![Yeni veri diskini bir sanal makineye Ekle](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
@@ -50,7 +48,7 @@ Azure DevTest Labs ' de bir VM 'ye yeni bir yönetilen veri diski oluşturup ekl
     !["Yeni disk Ekle" formunu doldurun](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
 1. **Tamam**’ı seçin.
 
-Birkaç dakika sonra, yeni veri diski oluşturulur ve VM 'ye iliştirilir ve bu VM için **VERI diskleri** listesinde görünür.
+Birkaç dakika sonra, yeni veri diski oluşturulur ve VM 'ye iliştirilir ve bu VM için **veri diskleri** listesinde görünür.
 
 ### <a name="attach-an-existing-disk"></a>Var olan bir diski ekleme
 Mevcut bir veri diskinin çalışan bir VM 'ye yeniden iliştirmeniz için aşağıdaki adımları izleyin. 
@@ -59,13 +57,13 @@ Mevcut bir veri diskinin çalışan bir VM 'ye yeniden iliştirmeniz için aşa�
 1. Soldaki menüden **diskler**' i seçin.
 1. VM 'ye kullanılabilir bir veri diski eklemek için **Varolanı Ekle** ' yi seçin.
 
-    ![Var olan veri diskini bir sanal makineye Ekle](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing2.png)
+    ![Var olan veri diskini bir sanal makineye Ekle](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
 1. **Varolan diski Ekle** bölmesinde Tamam ' ı seçin.
 
     ![Var olan veri diskini bir sanal makineye Ekle](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
 
-Birkaç dakika sonra, veri diski sanal makineye iliştirilir ve bu VM 'nin **VERI diskleri** listesinde görünür.
+Birkaç dakika sonra, veri diski sanal makineye iliştirilir ve bu VM 'nin **veri diskleri** listesinde görünür.
 
 ## <a name="detach-a-data-disk"></a>Veri diski çıkarma
 Artık bir VM 'ye bağlı bir veri diskine ihtiyacınız kalmadığında, kolayca ayırabilirsiniz. Ayırma, diski sanal makineden kaldırır, ancak daha sonra kullanmak üzere depolama alanında tutar.
@@ -75,9 +73,9 @@ Diskte var olan verileri yeniden kullanmak istiyorsanız, onu aynı sanal makine
 ### <a name="detach-from-the-vms-management-pane"></a>VM 'nin Yönetim bölmesinden ayır
 1. Sanal makineler listenizden, bağlı bir veri diskine sahip bir VM seçin.
 1. Soldaki menüden **diskler**' i seçin.
+1. **Veri diskleri**listesinden, ayırmak istediğiniz veri diskini seçin.
 
-    ![Bir sanal makine için veri disklerini seçin](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png) 
-1. **VERI diskleri**listesinden, ayırmak istediğiniz veri diskini seçin.
+    ![Bir sanal makine için veri disklerini seçin](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. Diskin ayrıntılar bölmesinin en üstünden **Ayır** ' ı seçin.
 
     ![Veri diski çıkarma](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
@@ -86,9 +84,7 @@ Diskte var olan verileri yeniden kullanmak istiyorsanız, onu aynı sanal makine
 Disk ayrılır ve başka bir VM 'ye iliştirilemiyor. 
 ### <a name="detach-from-the-labs-main-pane"></a>Laboratuvarın ana bölmesinden ayır
 1. Laboratuvarınızın ana bölmesinde **veri disklerim**' i seçin.
-
-    ![Laboratuvarın veri disklerine erişin](./media/devtest-lab-attach-detach-data-disk/devtest-lab-my-data-disks.png)
-1. Ayırmak istediğiniz veri diskine sağ tıklayın veya üç nokta (...) simgesini seçip **Ayır**' ı seçin.
+1. Ayırmak istediğiniz veri diskine sağ tıklayın veya üç nokta ( **...** ) simgesini seçip **Ayır**' ı seçin.
 
     ![Veri diski çıkarma](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
 1. Ayırmak istediğinizi onaylamak için **Evet** ' i seçin.
@@ -102,8 +98,6 @@ Disk ayrılır ve başka bir VM 'ye iliştirilemiyor.
 Yönetilmeyen veri disklerini kullanan mevcut bir VM varsa, VM 'yi yönetilen diskleri kullanacak şekilde kolayca dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
 
 Yönetilmeyen bir veri diskini yükseltmek için, bu makalede açıklanan adımları izleyerek [veri diskini](#detach-a-data-disk) YÖNETILMEYEN bir VM 'den ayırın. Ardından, veri diskini Yönetilmeyenden yönetilene otomatik olarak yükseltmek için diski yönetilen bir sanal makineye yeniden [bağlayın](#attach-an-existing-disk) .
-
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Çakışan [sanal makineler](devtest-lab-add-claimable-vm.md#unclaim-a-vm)için veri disklerini yönetmeyi öğrenin.

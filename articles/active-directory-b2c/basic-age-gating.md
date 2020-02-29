@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C yaş ' i etkinleştirme | Microsoft Docs
 description: Uygulamanızı kullanarak sömürmeyi amaçlama 'yi nasıl tanımlayacağınızı öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836245"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189982"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C yaş ve ömrü etkinleştir
 
@@ -33,24 +33,24 @@ Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değer
 
 | Ülke/Bölge | Ülke/bölge adı | Küçük onay yaşı | Küçük yaş |
 | -------------- | ------------------- | ----------------- | --------- |
-| Varsayılan | Hiçbiri | Hiçbiri | 18 |
-| AE | Birleşik Arap Emirlikleri | Hiçbiri | 21 |
+| Varsayılan | None | None | 18 |
+| AE | Birleşik Arap Emirlikleri | None | 21 |
 | AT | Avusturya | 14 | 18 |
 | BE | Belçika | 14 | 18 |
 | BG | Bulgaristan | 16 | 18 |
-| BH | Bahreyn | Hiçbiri | 21 |
-| CM | Kamerun | Hiçbiri | 21 |
+| BH | Bahreyn | None | 21 |
+| CM | Kamerun | None | 21 |
 | CY | Kıbrıs | 16 | 18 |
 | CZ | Çek Cumhuriyeti | 16 | 18 |
 | DE | Almanya | 16 | 18 |
 | DK | Danimarka | 16 | 18 |
 | EE | Estonya | 16 | 18 |
-| EG | Mısır | Hiçbiri | 21 |
+| EG | Mısır | None | 21 |
 | ES | İspanya | 13 | 18 |
 | GS | Fransa | 16 | 18 |
 | GB | Birleşik Krallık | 13 | 18 |
 | GR | Yunanistan | 16 | 18 |
-| İK | Hırvatistan | 16 | 18 |
+| HR | Hırvatistan | 16 | 18 |
 | HU | Macaristan | 16 | 18 |
 | IE | İrlanda | 13 | 18 |
 | BT | İtalya | 16 | 18 |
@@ -59,19 +59,19 @@ Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değer
 | LU | Lüksemburg | 16 | 18 |
 | LV | Letonya | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| Yok | Namibya | Hiçbiri | 21 |
+| NA | Namibya | None | 21 |
 | NL | Hollanda | 16 | 18 |
 | PL | Polonya | 13 | 18 |
 | PT | Portekiz | 16 | 18 |
 | RO | Romanya | 16 | 18 |
 | SE | İsveç | 13 | 18 |
-| SG | Singapur | Hiçbiri | 21 |
+| SG | Singapur | None | 21 |
 | SI | Slovenya | 16 | 18 |
 | SK | Slovakya | 16 | 18 |
-| TD | Çad | Hiçbiri | 21 |
-| TH | Tayland | Hiçbiri | 20 |
-| TW | Tayvan | Hiçbiri | 20 |
-| US | Birleşik Devletler | 13 | 18 |
+| TD | Çad | None | 21 |
+| TH | Tayland | None | 20 |
+| TW | Tayvan | None | 20 |
+| ABD | Amerika Birleşik Devletleri | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Yaş aşımları seçenekleri
 

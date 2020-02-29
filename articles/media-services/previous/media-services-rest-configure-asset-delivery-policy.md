@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9e46d92812b8e6db1f07e27fbfad8f4e3d05c3a9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 09f0371bc189fcf7b25ec3261e2e1f5eaf1892ae
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774997"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194522"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Varlık teslim ilkelerini yapılandırma
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -66,7 +66,7 @@ Varlık yayımlama ve akış URL'si oluşturma yönergeleri için bkz. [Akış U
 > 
 > Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
+## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
 AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -258,9 +258,9 @@ Bir AssetDeliveryPolicy oluştururken belirtebileceğiniz değerler hakkında da
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Widevine DRM kullanarak içeriğinizi korumak istiyorsanız, AssetDeliveryConfiguration değerlerini Widevınelicensetanışıtionurl (7 değerine sahiptir) kullanacak şekilde güncelleştirin ve lisans teslimi hizmetinin URL 'sini belirtin. Widevine lisansları teslim etmenize yardımcı olması için aşağıdaki AMS iş ortaklarını kullanabilirsiniz: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [ezdrm](https://ezdrm.com/), [ROI Labs](https://castlabs.com/company/partners/azure/).
+Widevine DRM kullanarak içeriğinizi korumak istiyorsanız, AssetDeliveryConfiguration değerlerini Widevınelicensetanışıtionurl (7 değerine sahiptir) kullanacak şekilde güncelleştirin ve lisans teslimi hizmetinin URL 'sini belirtin. Widevine lisansları teslim etmenize yardımcı olması için aşağıdaki AMS iş ortaklarını kullanabilirsiniz: [Axinom](https://www.axinom.com), [ezdrm](https://ezdrm.com/), [ROI Labs](https://castlabs.com/company/partners/azure/).
 
-Örneğin: 
+Örnek: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
@@ -426,9 +426,9 @@ Aşağıdaki Enum, bir varlık teslim ilkesi için özel yapılandırma almak ü
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -1,17 +1,17 @@
 ---
-title: Visual Studio Code kullanarak işlevleri Azure depolama 'ya bağlama
-description: Visual Studio Code kullanarak işlevlerinizi bir Azure depolama kuyruğuna bağlamak için çıkış bağlamayı nasıl ekleyeceğinizi öğrenin.
-ms.date: 06/25/2019
+title: Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
+description: Visual Studio Code projenize bir çıkış bağlaması ekleyerek Azure Işlevlerini bir Azure depolama kuyruğuna bağlamayı öğrenin.
+ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845677"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191095"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Visual Studio Code kullanarak işlevleri Azure depolama 'ya bağlama
+# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
@@ -19,7 +19,7 @@ Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-f
 
 Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage`adlı bir uygulama ayarında depolanıyor.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
 Bu makaleye başlamadan önce, aşağıdaki gereksinimleri karşılamanız gerekir:
 
@@ -90,98 +90,17 @@ Işlevlerde, her bağlama türü, function. json dosyasında tanımlanması içi
 
 Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
-::: zone pivot="programming-language-javascript"
-
+::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-Kuyruk iletisi oluşturmak için `context.bindings` `msg` çıktı bağlama nesnesini kullanan kodu ekleyin. `context.res` deyimden önce bu kodu ekleyin.
-
-```typescript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + name;
-```
-
-Bu noktada, işleviniz aşağıdaki gibi görünmelidir:
-
-```javascript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + name; 
-        // Send a "hello" response.
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
-
-::: zone-end
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
 ::: zone pivot="programming-language-powershell"
 
-`msg` çıktı bağlamasını kullanarak sıraya metin yazmak için `Push-OutputBinding` cmdlet 'ini kullanan kodu ekleyin. `if` deyimindeki Tamam durumunu ayarlamadan önce bu kodu ekleyin.
-
-```powershell
-# Write the $name value to the queue.
-$outputMsg = "Name passed to the function: $name"
-Push-OutputBinding -name msg -Value $outputMsg
-```
-
-Bu noktada, işleviniz aşağıdaki gibi görünmelidir:
-
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    # Write the $name value to the queue.
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]
 
 ::: zone-end
 
@@ -191,11 +110,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ::: zone-end
 
-::: zone pivot="programming-language-csharp"
-
+::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
-
-::: zone-end
+::: zone-end  
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -263,9 +180,29 @@ Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap du
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Daha sonra, Visual Studio Code kullanarak Işlevleri geliştirme hakkında daha fazla bilgi edinebilirsiniz:
+HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Artık Visual Studio Code kullanarak Işlevleri geliştirme hakkında daha fazla bilgi edinebilirsiniz:
 
-> [!div class="nextstepaction"]
-> [Visual Studio Code kullanarak Azure Işlevleri geliştirme](functions-develop-vs-code.md)
-
-[Azure Depolama Gezgini]: https://storageexplorer.com/
++ [Visual Studio Code kullanarak Azure Işlevleri geliştirme](functions-develop-vs-code.md)
+::: zone pivot="programming-language-csharp"  
++ [İçindeki C#tüm işlev projelerinin örnekleri ](/samples/browse/?products=azure-functions&languages=csharp).
++ [Azure Işlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md)  
+::: zone-end 
+::: zone pivot="programming-language-javascript"  
++ [JavaScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=javascript).
++ [Azure Işlevleri JavaScript Geliştirici Kılavuzu](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
++ [TypeScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=typescript).
++ [Azure Işlevleri TypeScript Geliştirici Kılavuzu](functions-reference-node.md#typescript)  
+::: zone-end  
+::: zone pivot="programming-language-python"  
++ [Python 'da tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=python).
++ [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md)  
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
++ [PowerShell 'de tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=azurepowershell).
++ [Azure Işlevleri PowerShell Geliştirici Kılavuzu](functions-reference-powershell.md) 
+::: zone-end
++ [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md).
++ [İşlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
++ [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md) etme makalesi.

@@ -1,6 +1,6 @@
 ---
 title: Duraklatma, devam etmeyi, REST API 'lerle ölçeklendirme
-description: REST API 'Leri aracılığıyla Azure SQL veri ambarı 'nda işlem gücünü yönetin.
+description: REST API 'Leri aracılığıyla Azure SYNAPSE Analytics veri ambarındaki işlem gücünü yönetin.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: f72b3fd1024a68a6f48d2e9e676fc7ca23bf2a4f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 4e3435fdaa505a73abf96b9463b061c623c192ad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686046"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199402"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için REST API 'Leri
-Azure SQL veri ambarı 'nda işlem yönetimi için REST API 'Leri.
+Azure SYNAPSE Analytics veri ambarı 'nda işlem yönetimi için REST API 'Leri.
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 Veri ambarı birimlerini değiştirmek için [Create veya Update Database](/rest/api/sql/databases/createorupdate) REST API kullanın. Aşağıdaki örnek, sunucu sunucum üzerinde barındırılan MySQLDW veritabanı için veri ambarı birimlerini DW1000 olarak ayarlar. Sunucu, ResourceGroup1 adlı bir Azure Kaynak grubunda bulunur.
@@ -69,7 +69,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="set-maintenance-schedule"></a>Bakım zamanlamasını ayarla
-Mevcut bir veri ambarında maintnenance zamanlamasını ayarlamak ve güncelleştirmek için.
+Mevcut bir veri ambarında bakım zamanlaması ayarlamak ve güncelleştirmek için.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

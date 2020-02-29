@@ -2,20 +2,20 @@
 title: Özel ilkeler için tarih talebi dönüştürme örnekleri
 description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için tarih talep dönüştürme örnekleri.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982917"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188856"
 ---
 # <a name="date-claims-transformations"></a>Tarih talebi dönüşümleri
 
@@ -29,8 +29,8 @@ Bir tarih ve saat talebinin (dize veri türü) ikinci bir tarih ve saat talebine
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | leftOperand | string | İkinci talepten daha sonra olması gereken ilk talebin türü. |
-| Inputclaim | rightOperand | string | İkinci talebin türü, ilk talepten daha önce olmalıdır. |
+| ınputclaim | leftOperand | string | İkinci talepten daha sonra olması gereken ilk talebin türü. |
+| ınputclaim | rightOperand | string | İkinci talebin türü, ilk talepten daha önce olmalıdır. |
 | InputParameter | Assertıequalto | boole | Sol işlenen sağ işlenene eşitse bu onay işaretinin geçmesi gerekip gerekmediğini belirtir. |
 | InputParameter | AssertIfRightOperandIsNotPresent | boole | Sağ işlenen eksik ise bu onay geçişinin geçmesi gerekip gerekmediğini belirtir. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | İki tarih ile aynı süreyi göz önünde bulundurmaya izin veren milisaniye sayısını belirtir (örneğin, saat eğme için hesaba). |
@@ -91,7 +91,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | date | Dönüştürülecek ClaimType. |
+| ınputclaim | ınputclaim | date | Dönüştürülecek ClaimType. |
 | OutputClaim | OutputClaim | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 Aşağıdaki örnek, talep `dateOfBirth` (Tarih veri türü) başka bir talep `dateOfBirthWithTime` (TarihSaat veri türü) dönüştürmeyi gösterir.
@@ -114,13 +114,13 @@ Aşağıdaki örnek, talep `dateOfBirth` (Tarih veri türü) başka bir talep `d
 - Çıkış talepleri:
     - **Outputclaim**: 1559347200 (1 haziran 2019 12:00:00)
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 Bir **DateTime** ClaimType 'ı bir **Tarih** ClaimType 'a dönüştürür. Talep dönüştürmesi saat biçimini tarihten itibaren kaldırır.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | Tarih/saat | Dönüştürülecek ClaimType. |
+| ınputclaim | ınputclaim | Tarih/saat | Dönüştürülecek ClaimType. |
 | OutputClaim | OutputClaim | date | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 Aşağıdaki örnek, talep `systemDateTime` (dateTime veri türü) başka bir talep `systemDate` (Tarih veri türü) için dönüştürmeyi gösterir.
@@ -170,8 +170,8 @@ Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit o
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | firstDateTime | Tarih/saat | İkinci tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ilk tarih saat. Null değer bir özel durum oluşturur. |
-| Inputclaim | secondDateTime | Tarih/saat | İlk tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ikinci tarih saat. Null değer geçerli datetTime olarak değerlendirilir. |
+| ınputclaim | firstDateTime | Tarih/saat | İkinci tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ilk tarih saat. Null değer bir özel durum oluşturur. |
+| ınputclaim | secondDateTime | Tarih/saat | İlk tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ikinci tarih saat. Null değer geçerli datetTime olarak değerlendirilir. |
 | InputParameter | operator | string | Şu değerlerden biri: aynı, daha sonra veya daha önceki bir sürüm. |
 | InputParameter | Timespanınseconds | int | TimeSpan öğesini ilk tarih/saate ekleyin. |
 | OutputClaim | Sonuç | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |

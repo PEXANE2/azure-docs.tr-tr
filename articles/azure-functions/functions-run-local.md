@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523280"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190798"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -233,7 +233,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
-- [Azure portalında], **depolama hesaplarını**arayıp seçin. 
+- [Azure portalındaki], **depolama hesaplarını**arayıp seçin. 
   Azure portal](./media/functions-run-local/select-storage-accounts.png) depolama hesapları ![seçin
   
   Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
@@ -463,7 +463,7 @@ Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosya
 
 Proje klasörü, yayınlanmaması gereken dile özgü dosyalar ve dizinler içerebilir. Dışlanan öğeler kök proje klasöründeki bir. funcignore dosyasında listelenir.     
 
-### <a name="project-file-deployment"></a>Dağıtım (proje dosyaları)
+### <a name="project-file-deployment"></a>Proje dosyalarını dağıt
 
 Yerel kodunuzu Azure 'da bir işlev uygulamasına yayımlamak için `publish` komutunu kullanın:
 
@@ -500,7 +500,7 @@ Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
 | **`--no-build`** | .NET sınıf kitaplığı işlevleri oluşturmayın. |
 | **`--dotnet-cli-params`** | Derlenen C# (. csproj) işlevleri yayımlandığında, temel Araçlar ' DotNet Build--output bin/Publish ' yöntemini çağırır. Buna geçirilen parametreler komut satırına eklenecektir. |
 
-### <a name="deployment-custom-container"></a>Dağıtım (özel kapsayıcı)
+### <a name="deploy-custom-container"></a>Özel kapsayıcı dağıtma
 
 Azure Işlevleri, işlev projenizi [özel bir Docker kapsayıcısına](functions-deployment-technologies.md#docker-container)dağıtmanızı sağlar. Daha fazla bilgi için bkz. [özel bir görüntü kullanarak Linux 'ta Işlev oluşturma](functions-create-function-linux-custom-image.md). Özel kapsayıcılar bir Dockerfile içermelidir. Dockerfile ile bir uygulama oluşturmak için, `func init`üzerinde--dockerfile seçeneğini kullanın.
 
@@ -548,7 +548,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portalında]: https://portal.azure.com 
+[Azure portalındaki]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
