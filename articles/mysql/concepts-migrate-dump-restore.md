@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770943"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163786"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL veritabanınızı, döküm ve geri yükleme kullanarak MySQL için Azure veritabanı 'na geçirme
 Bu makalede, MySQL için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır
@@ -22,10 +22,10 @@ Bu makalede, MySQL için Azure veritabanınızdaki veritabanlarını yedeklemeni
 Bu nasıl yapılır kılavuzunda ilerlemek için şunları yapmanız gerekir:
 - [MySQL için Azure veritabanı sunucusu oluşturma-Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - bir makineye yüklü [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) komut satırı yardımcı programı.
-- Bilgi döküm ve geri yükleme komutlarını bağlamak için MySQL II [MySQL çalışma ekranı Download](https://dev.mysql.com/downloads/workbench/), Toad, Navicat veya diğer üçüncü taraf MySQL aracı.
+- MySQL çalışma ekranı [MySQL araç yüklemesi](https://dev.mysql.com/downloads/workbench/) veya başka bir üçüncü taraf MySQL Aracı, döküm ve geri yükleme komutlarını sağlar.
 
 ## <a name="use-common-tools"></a>Ortak araçları kullanma
-MySQL için Azure veritabanı 'na uzaktan bağlanmak ve veri geri yüklemek için MySQL çalışma ekranı, mysqldump, Toad veya Navicat gibi yaygın yardımcı programları ve araçları kullanın. MySQL için Azure veritabanı 'na bağlanmak üzere bir internet bağlantısı ile istemci makinenizde bu tür araçları kullanın. En iyi güvenlik uygulamaları için SSL şifreli bir bağlantı kullanın. Ayrıca bkz. [MySQL Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](concepts-ssl-connection-security.md). MySQL için Azure veritabanı 'na geçiş yaparken döküm dosyalarını herhangi bir özel bulut konumuna taşımanız gerekmez. 
+MySQL için Azure veritabanı 'na uzaktan bağlanmak ve veri geri yüklemek için MySQL çalışma ekranı veya mysqldump gibi ortak yardımcı programları ve araçları kullanın. MySQL için Azure veritabanı 'na bağlanmak üzere bir internet bağlantısı ile istemci makinenizde bu tür araçları kullanın. En iyi güvenlik uygulamaları için SSL şifreli bir bağlantı kullanın. Ayrıca bkz. [MySQL Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](concepts-ssl-connection-security.md). MySQL için Azure veritabanı 'na geçiş yaparken döküm dosyalarını herhangi bir özel bulut konumuna taşımanız gerekmez. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Döküm ve geri yükleme için ortak kullanımlar
 Birçok yaygın senaryoda veritabanlarını bir Azure MySQL veritabanına dökmek ve yüklemek için mysqldump ve mysqlpump gibi MySQL yardımcı programlarını kullanabilirsiniz. Diğer senaryolarda, bunun yerine [içeri ve dışarı aktarma](concepts-migrate-import-export.md) yaklaşımını kullanabilirsiniz.
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>MySQL için Azure veritabanı sunucusu için hedef veritabanı oluşturma
-Verileri geçirmek istediğiniz MySQL için hedef Azure veritabanı sunucusunda boş bir veritabanı oluşturun. Veritabanını oluşturmak için MySQL çalışma ekranı, Toad veya gezinti \ gibi bir araç kullanın. Veritabanı, dökülebilir verileri içeren veritabanıyla aynı ada sahip olabilir veya farklı bir ada sahip bir veritabanı oluşturabilirsiniz.
+Verileri geçirmek istediğiniz MySQL için hedef Azure veritabanı sunucusunda boş bir veritabanı oluşturun. Veritabanını oluşturmak için MySQL çalışma ekranı gibi bir araç kullanın. Veritabanı, dökülebilir verileri içeren veritabanıyla aynı ada sahip olabilir veya farklı bir ada sahip bir veritabanı oluşturabilirsiniz.
 
 Bağlanmak için, MySQL için Azure veritabanı **'Na genel bakış** bölümündeki bağlantı bilgilerini bulun.
 

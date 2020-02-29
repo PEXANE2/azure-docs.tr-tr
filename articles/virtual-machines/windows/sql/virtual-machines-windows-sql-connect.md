@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102098"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918385"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
 
@@ -59,7 +59,7 @@ SQL Server veritabanı altyapısına Internet 'ten bağlanmak istiyorsanız, sa�
 > [!IMPORTANT]
 > SQL Server Developer ve Express sürümleri için sanal makine görüntüleri TCP/IP protokolünü otomatik olarak etkinleştirmez. Geliştirici ve Express sürümleri için, VM 'yi oluşturduktan sonra [TCP/IP protokolünü el ile etkinleştirmek](#manualtcp) üzere SQL Server Yapılandırma Yöneticisi kullanmanız gerekir.
 
-İnternet erişimi olan herhangi bir istemci, sanal makinenin genel IP adresini veya söz konusu IP adresine atanmış herhangi bir DNS etiketini belirterek SQL Server örneğine bağlanabilir. SQL Server bağlantı noktası 1433 ise bağlantı dizesinde belirtmeniz gerekmez. Aşağıdaki bağlantı dizesi, SQL kimlik doğrulaması `sqlvmlabel.eastus.cloudapp.azure.com` kullanan bir DNS etiketiyle SQL VM 'ye bağlanır (genel IP adresini de kullanabilirsiniz).
+İnternet erişimi olan herhangi bir istemci, sanal makinenin genel IP adresini veya söz konusu IP adresine atanmış herhangi bir DNS etiketini belirterek SQL Server örneğine bağlanabilir. SQL Server bağlantı noktası 1433 ise bağlantı dizesinde belirtmeniz gerekmez. Aşağıdaki bağlantı dizesi, SQL kimlik doğrulaması kullanarak `sqlvmlabel.eastus.cloudapp.azure.com` DNS etiketiyle bir SQL VM 'ye bağlanır (genel IP adresini de kullanabilirsiniz).
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
@@ -72,7 +72,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 ```
 
 > [!NOTE]
-> Bir VM 'de Internet üzerinden SQL Server sorguladığınızda, Azure veri merkezindeki tüm giden veriler [giden veri aktarımları](https://azure.microsoft.com/pricing/details/data-transfers/)için normal fiyatlandırmaya tabidir.
+> Bir VM 'de Internet üzerinden SQL Server sorguladığınızda, Azure veri merkezindeki tüm giden veriler [giden veri aktarımları için normal fiyatlandırmaya](https://azure.microsoft.com/pricing/details/data-transfers/)tabidir.
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Bir sanal ağ içinde SQL Server bağlanma
 
@@ -137,7 +137,7 @@ Aşağıdaki tabloda, bir Azure VM 'de çalışan SQL Server bağlanma gereksini
 
 | Gereksinim | Açıklama |
 |---|---|
-| [SQL Server kimlik doğrulama modunu etkinleştir](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Sanal ağ üzerinde Active Directory yapılandırmadığınız takdirde VM 'ye uzaktan bağlanmak için SQL Server kimlik doğrulaması gerekir. |
+| [SQL Server kimlik doğrulama modunu etkinleştir](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Sanal ağ üzerinde Active Directory yapılandırmadığınız takdirde VM 'ye uzaktan bağlanmak için SQL Server kimlik doğrulaması gerekir. |
 | [SQL oturum açma oluştur](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL kimlik doğrulaması kullanıyorsanız, hedef veritabanınıza yönelik izinlere de sahip olan bir Kullanıcı adı ve parolayla SQL oturum açma gerekir. |
 | [TCP/IP protokolünü etkinleştir](#manualtcp) | SQL Server TCP üzerinden bağlantılara izin vermelidir. |
 | [SQL Server bağlantı noktası için güvenlik duvarı kuralını etkinleştir](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 'deki güvenlik duvarı SQL Server bağlantı noktasında gelen trafiğe izin vermelidir (varsayılan 1433). |

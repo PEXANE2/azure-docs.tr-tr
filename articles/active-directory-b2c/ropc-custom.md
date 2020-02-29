@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840273"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917399"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -24,19 +24,9 @@ ms.locfileid: "76840273"
 
 Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilgileri (ROPC) akışı, bir OAuth standart kimlik doğrulama akışsıdır. Bu akışta, bağlı olan taraf olarak da bilinen bir uygulama, belirteçler için geçerli kimlik bilgilerini değiş tokuş eder. Kimlik bilgileri bir kullanıcı KIMLIĞI ve parola içerir. Döndürülen belirteçler bir KIMLIK belirteci, erişim belirteci ve yenileme belirteci.
 
-Aşağıdaki seçenekler ROPC akışında desteklenir:
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-- **Yerel istemci** -kimlik doğrulama sırasında Kullanıcı etkileşimi, kod bir Kullanıcı tarafı cihazda çalıştırıldığında oluşur.
-- **Ortak istemci akışı** -API çağrısında yalnızca bir uygulama tarafından toplanan kullanıcı kimlik bilgileri gönderilir. Uygulamanın kimlik bilgileri gönderilmedi.
-- **Yeni talepler ekleme** -kimlik belirteci içerikleri yeni talepler eklemek için değiştirilebilir.
-
-Aşağıdaki akışlar desteklenmez:
-
-- **Sunucudan sunucuya** -kimlik koruma sisteminin, etkileşimin bir parçası olarak çağırandan (yerel istemci) toplanan GÜVENILIR bir IP adresi olması gerekir. Sunucu tarafı API çağrısında yalnızca sunucunun IP adresi kullanılır. Çok fazla oturum açma işlemi başarısız olursa, kimlik koruma sistemi bir saldırgan olarak yinelenen bir IP adresine bakabilir.
-- **Tek sayfalı uygulama** -birincil olarak JavaScript 'te yazılmış bir ön uç uygulamadır. Genellikle, uygulama AngularJS, Ember. js veya Durandal gibi bir çerçeve kullanılarak yazılır.
-- **Gizli istemci akışı** -uygulama istemci kimliği onaylanır, ancak uygulama gizli dizisi değildir.
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
@@ -258,14 +248,14 @@ Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanı
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı.
+- `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin.
 - `B2C_1A_ROPC_Auth`, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
 | kullanıcı adı | `user-account` |
-| parola | `password1` |
-| grant_type | parola |
+| password | `password1` |
+| grant_type | password |
 | scope | OpenID `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | belirteç id_token |
@@ -303,7 +293,7 @@ Burada gösterilenler gibi bir GÖNDERI çağrısı oluşturun. İsteğin gövde
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı.
+- `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin.
 - `B2C_1A_ROPC_Auth`, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
 
 | Anahtar | Değer |

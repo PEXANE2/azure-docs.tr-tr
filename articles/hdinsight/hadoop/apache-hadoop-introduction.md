@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop teknoloji yığını nedir? -Azure HDInsight
 description: HDInsight 'a giriş ve Apache Hadoop teknoloji yığını ve bileşenleri.
-keywords: azure hadoop, hadoop azure, hadoop giriş, hadoop’a giriş, hadoop teknoloji yığını, yeni başlayanlar için hadoop, temel hadoop bilgileri, hadoop kümesi nedir, hadoop kümeleri nedir, hadoop ne için kullanılır
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: e98a11d9aee1c4f76453dc1716f92514b021444f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088195"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917841"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
@@ -24,15 +23,15 @@ Azure HDInsight, kuruluşlar için bulutta tam olarak yönetilen, tam bir açık
 
 HDInsight 'ta kullanılabilir Hadoop teknoloji yığını bileşenlerini görmek için bkz. [HDInsight ile kullanılabilen bileşenler ve sürümler](../hdinsight-component-versioning.md). HDInsight'ta Hadoop hakkında daha fazla bilgi edinmek için bkz. [HDInsight için Azure özellikleri sayfası](https://azure.microsoft.com/services/hdinsight/).
 
-## <a id="whatis"></a>MapReduce nedir?
+## <a name="what-is-mapreduce"></a>MapReduce nedir?
 
 MapReduce Apache Hadoop, çok miktarda veriyi işleyen işleri yazmaya yönelik bir yazılım çerçevesidir. Giriş verileri bağımsız parçalara bölünür. Her bir öbek, kümenizdeki düğümler arasında paralel olarak işlenir. MapReduce işi iki işlevden oluşur:
 
-* **Eşleyici**: Giriş verilerini kullanır, analiz eder (genellikle filtre ve sıralama işlemleriyle birlikte) ve tanımlama gruplarını yayar (anahtar-değer çiftleri)
+* **Eşleyici**: giriş verilerini kullanır, analiz eder (genellikle filtre ve sıralama işlemleriyle birlikte) ve tanımlama gruplarını yayar (anahtar-değer çiftleri)
 
-* **Reducer**: Eşleyici tarafından yayılan başlıkları tüketir ve Eşleyici verilerinden daha küçük ve birleştirilmiş bir sonuç oluşturan bir Özet işlem gerçekleştirir
+* **Reducer**: Eşleyici tarafından yayılan başlıkları kullanır ve Eşleyici verilerinden daha küçük ve birleştirilmiş bir sonuç oluşturan bir Özet işlem gerçekleştirir
 
-Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:   
+Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:
 
  ![HDI. WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,7 +50,7 @@ Hadoop akışı Eşleyici ve Reducer üzerinden STDıN ve STDOUT üzerinden ilet
 
     [key]/t[value]
 
-Daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 
 HDInsight ile Hadoop akışını kullanma örnekleri için aşağıdaki belgeye bakın:
 

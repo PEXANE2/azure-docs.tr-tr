@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 8eb54e232478ae24e1efb49a8ad43dc827aa2b6a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150689"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920408"
 ---
 # <a name="normalize-data-module"></a>Veri modülünü Normalleştir
 
@@ -104,7 +104,7 @@ Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygula
 
 - Farklı bir veri kümesine aynı normalleştirme yöntemini uygulayabilmeniz için dönüştürmeyi kaydetmek üzere, modülünü seçin ve sağ paneldeki **çıktılar** sekmesinde **veri kümesini kaydet** ' i seçin.
 
-    Ardından, sol gezinti bölmesinin **dönüşümler** grubundan kaydedilen dönüştürmeleri yükleyebilir ve [./Apply dönüşümünü](apply-transformation.md)kullanarak aynı şemaya sahip bir veri kümesine uygulayabilirsiniz.  
+    Ardından, sol gezinti bölmesinin **dönüşümler** grubundan kaydedilen dönüştürmeleri yükleyebilir ve [dönüştürme uygula](apply-transformation.md)' yı kullanarak aynı şemaya sahip bir veri kümesine uygulayabilirsiniz.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

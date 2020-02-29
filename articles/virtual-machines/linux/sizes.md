@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 21351654f01127acb5fe712021ceebb31b020bdc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 46fad0dd2e39f1f563ed248458da622ad83f061e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484953"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161125"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için Boyutlar
 
@@ -27,12 +27,12 @@ Bu makalede, Linux uygulamalarınızı ve iş yüklerinizi çalıştırmak için
 
 | Tür | Boyutlar | Açıklama |
 |------|-------|-------------|
-| [Genel amaçlı](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, AV2, DC  | Dengeli CPU/bellek oranı. Test ve geliştirme için idealdir, küçük ve orta ölçekli veritabanları ve düşük düzeyli trafik Web sunucuları. |
+| [Genel amaçlı](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, AV2, DC, DCv2  | Dengeli CPU/bellek oranı. Test ve geliştirme için idealdir, küçük ve orta ölçekli veritabanları ve düşük düzeyli trafik Web sunucuları. |
 | [İşlem için iyileştirilmiş](../sizes-compute.md) | Fsv2 | Yüksek CPU-bellek oranı. Orta trafikli web sunucuları, ağ araçları, toplu süreçler ve uygulama sunucuları için iyi. |
 | [Bellek için iyileştirilmiş](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, d, DSv2, Dv2 | Yüksek bellek-CPU oranı. İlişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analiz için harika.                 |
 | [Depolama için iyileştirilmiş](../sizes-storage.md) | Lsv2 | Büyük veri, SQL, NoSQL veritabanları, veri depolama ve büyük işlem veritabanları için ideal yüksek disk aktarım hızı ve GÇ.  |
 | [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Önizleme), NV, NVv3, NVv4 | Yoğun grafik işleme ve video düzenlemesi için hedeflenen özelleştirilmiş sanal makineler, Ayrıca, ayrıntılı öğrenme ile model eğitimi ve ınilsel (ND). Tek veya birden çok GPU ile kullanılabilir. |
-| [Yüksek performanslı işlem](../sizes-hpc.md) | HB, HC, H | İsteğe bağlı yüksek performanslı ağ arabirimlerine (RDMA) sahip en hızlı ve en güçlü CPU sanal makinelerimiz. |
+| [Yüksek performanslı işlem](../sizes-hpc.md) | HB, HBv2, HC, H | İsteğe bağlı yüksek performanslı ağ arabirimlerine (RDMA) sahip en hızlı ve en güçlü CPU sanal makinelerimiz. |
 
 - Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [sanal makine fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux). 
 - Azure bölgelerindeki VM boyutlarının kullanılabilirliği için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/).

@@ -1,14 +1,14 @@
 ---
 title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057354"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919881"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -33,6 +33,56 @@ Ancak, kilitleme modları, şema dışında değiştirilemez.
 Genellikle abonelikte, ' sahip ' rolü gibi uygun [rol tabanlı erişim denetimi](../../../role-based-access-control/overview.md) (RBAC) ile herhangi bir kaynağı değiştirme veya silme izni verilmesi olasıdır. Bu erişim, bir dağıtılan atama kapsamında, şemalar kilitlemeyi uygularken durum değildir. Atama salt **okuma** veya **silme** seçeneği ile ayarlandıysa, abonelik sahibi korumalı kaynak üzerinde engellenmiş eylemi gerçekleştirebilir.
 
 Bu güvenlik ölçüsü, tanımlanan şema 'in ve yanlışlıkla ya da programlı silme veya değiştirme işleminden oluşturmakta tasarlanan ortamın tutarlılığını korur.
+
+### <a name="assign-at-management-group"></a>Yönetim grubuna ata
+
+Abonelik sahiplerinin bir şema atamasını kaldırmasını önlemeye yönelik ek bir seçenek, şema 'in bir yönetim grubuna atanması olur. Bu senaryoda, BLUEPRINT atamasını kaldırmak için gerekli izinlere sahip yalnızca yönetim grubunun **sahipleri** vardır.
+
+Şemayı bir abonelik yerine bir yönetim grubuna atamak için, REST API çağrısı şuna benzer şekilde değişir:
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+`{assignmentMG}` tarafından tanımlanan yönetim grubu, yönetim grubu hiyerarşisinde olmalıdır ya da şema tanımının kaydedildiği yönetim grubu olmalıdır.
+
+Şema atamasının istek gövdesi şöyle görünür:
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+Bu istek gövdesinde ve bir aboneliğe atanmakta olan anahtar farkı `properties.scope` özelliktir. Bu gerekli özellik, şema atamasının uygulandığı aboneliğe ayarlanmalıdır. Abonelik, şema atamasının depolandığı yönetim grubu hiyerarşisinin doğrudan bir alt öğesi olmalıdır.
 
 ## <a name="removing-locking-states"></a>Kilitleme durumları kaldırılıyor
 
@@ -61,7 +111,7 @@ Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Bir sorumluyu reddetme atamasından dışlama
 
-Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu [reddetme atamasından](../../../role-based-access-control/deny-assignments.md) bir sorumluyu dışlamak gerekebilir. Bu, [atamayı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **excludedsorumlularını** dizisine en fazla beş değer eklenerek REST API yapılır. Bu, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
+Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu [reddetme atamasından](../../../role-based-access-control/deny-assignments.md) bir sorumluyu dışlamak gerekebilir. Bu adım, [atamayı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **excludedsorumlularını** dizisine en fazla beş değer eklenerek REST API yapılır. Aşağıdaki atama tanımı, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
 
 ```json
 {

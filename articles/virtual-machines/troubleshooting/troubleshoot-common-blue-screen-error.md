@@ -12,18 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: d9732f232c5a7ec1e551f42fe0e8187e382aec6e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981881"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921479"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekran hatasını gösterir
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz mavi ekran hataları açıklanır. Destek bileti için veri toplamanıza yardımcı olacak adımları sağlar. 
 
-> [!NOTE] 
-> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı önerdiğimiz Kaynak Yöneticisi dağıtım modelinin kullanımı açıklanmaktadır.
 
 ## <a name="symptom"></a>Belirti 
 
@@ -48,8 +46,8 @@ Bu sorunu çözmek için öncelikle kilitlenme için döküm dosyası toplamanı
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM'si ekleme
 
-1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md).
-2. [İşletim sistemi diskini bir kurtarma VM'si ekleme](../windows/troubleshoot-recovery-disks-portal.md). 
+1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
+2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md). 
 3. Kurtarma sanal makinesine uzak masaüstü.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bul ve bir destek bileti gönder

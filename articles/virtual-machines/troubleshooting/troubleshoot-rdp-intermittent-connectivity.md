@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981345"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918232"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 'de Uzak Masaüstü bağlantısı genellikle kesiliyor
 
 Bu makalede, Azure sanal makinesine (VM) Uzak Masaüstü Protokolü RDP aracılığıyla sık gerçekleştirilen bağlantıların nasıl giderileceği açıklanmaktadır.
 
-> [!NOTE] 
-> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede Kaynak Yöneticisi dağıtım modelinin kullanımı ele alınmaktadır. Klasik dağıtım modelini kullanmak yerine bu modeli Yeni dağıtımlar için kullanmanızı öneririz.
 
 ## <a name="symptom"></a>Belirti
 
@@ -42,7 +40,7 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 
 ### <a name="serial-control"></a>Seri denetim
 
-1. Bağlanma [seri konsol ve örnek CMD Aç](./serial-console-windows.md). Ardından, RDP yapılandırmasını sıfırlamak için aşağıdaki komutları çalıştırın. VM 'niz üzerinde seri konsol etkinleştirilmemişse, bir sonraki adıma gidin.
+1. [Seri konsoluna bağlanın ve cmd örneğini açın](./serial-console-windows.md). Ardından, RDP yapılandırmasını sıfırlamak için aşağıdaki komutları çalıştırın. VM 'niz üzerinde seri konsol etkinleştirilmemişse, bir sonraki adıma gidin.
 2. RDP güvenlik katmanını 0 olarak düşürün. Bu ayarda, sunucu ve istemci arasındaki iletişimler yerel RDP şifrelemesini kullanır.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
@@ -89,8 +87,8 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 
 ### <a name="repair-the-vm-offline"></a>VM'yi çevrimdışı onarın
 
-1. [İşletim sistemi diskini bir kurtarma VM'si ekleme](../windows/troubleshoot-recovery-disks-portal.md).
-2. İşletim sistemi diskini bir kurtarma VM'si bağlandıktan sonra disk olarak işaretlenmiş emin olun **çevrimiçi** Disk Yönetimi Konsolu'nda. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+2. İşletim sistemi diski kurtarma VM 'sine eklendikten sonra, diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
 3. Eklediğiniz işletim sistemi diskinde, **\Windows\System32\Config** klasörüne gidin. Geri almanın gerekli olması durumunda bu klasördeki tüm dosyaları yedek olarak kopyalayın.
 4. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın.
 5. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüsünde **dosya** > **Hive yükle**' yi seçin:
@@ -165,7 +163,7 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 18. VM 'yi yeniden başlatın ve RDP kullanarak bu sunucuya bağlanmayı yeniden deneyin.
 
-## <a name="need-help"></a>Yardım mı gerekiyor? 
+## <a name="need-help"></a>Yardıma mı ihtiyacınız var? 
 Desteğe başvurun. Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 

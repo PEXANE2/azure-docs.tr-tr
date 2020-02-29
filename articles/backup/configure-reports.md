@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582713"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161210"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -47,6 +47,9 @@ Kurtarma Hizmetleri kasaınızın İzleme bölümünde **Tanılama ayarları** '
 
 Azure Backup, belirli bir kapsamdaki tüm kasaların tanılama ayarlarının yapılandırılmasını otomatikleştiren yerleşik bir Azure Ilkesi de sağlar. Bu ilkeyi nasıl kullanacağınızı öğrenmek için aşağıdaki makaleye bakın: [kasa tanılama ayarlarını ölçeklendirerek yapılandırma](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
+> [!NOTE]
+> Tanılamayı yapılandırdıktan sonra, ilk verilerin tamamlanması 24 saate kadar sürebilir. Veriler LA çalışma alanına akışa başladıktan sonra raporlardaki verileri hemen göremeyebilirsiniz, çünkü geçerli kısmi güne ait veriler raporlarda gösterilmez ( [burada](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)daha fazla ayrıntıya ulaşabilirsiniz). Bu nedenle, vakaları Log Analytics verileri gönderecek şekilde yapılandırdıktan sonra raporların 2 gün sonra görüntülenmesine başlamanız önerilir.
+
 3. **Azure portal raporları görüntüle:**
 
 Kasalarınızı LA 'ya veri gönderecek şekilde yapılandırdıktan sonra, herhangi bir kasanın dikey penceresine gidip **yedekleme raporları** menü öğesine tıklayarak yedekleme raporlarınızı görüntüleyin. 
@@ -56,7 +59,8 @@ Kasalarınızı LA 'ya veri gönderecek şekilde yapılandırdıktan sonra, herh
 Bu bağlantıya tıkladığınızda yedekleme raporu çalışma kitabı açılır.
 
 > [!NOTE]
-> Şu anda, raporun ilk yükünün 1 dakikaya kadar zaman alabilir.
+> * Şu anda, raporun ilk yükünün 1 dakikaya kadar zaman alabilir.
+> * Kurtarma Hizmetleri Kasası yalnızca yedekleme raporları için bir giriş noktasıdır. Yedekleme raporları çalışma kitabı kasanın dikey penceresinden açıldıktan sonra, tüm kasalarınızda toplanan verileri (uygun LA çalışma alanları kümesini seçerek) görebilirsiniz.
 
 Aşağıda, raporun içerdiği çeşitli sekmelerin açıklaması verilmiştir:
 

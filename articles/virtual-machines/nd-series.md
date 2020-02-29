@@ -2,17 +2,17 @@
 title: ND serisi-Azure sanal makineleri
 description: ND serisi VM 'Ler için Özellikler.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 5f2e6775e0c1dbe094ed24554d2feac1da915511
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 31783b95b0816478b895086ddb47abf74503480e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661041"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162075"
 ---
 # <a name="nd-series"></a>ND serisi
 
@@ -21,6 +21,10 @@ ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme i
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: desteklenmiyor
+
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 > [!IMPORTANT]
 > Bu VM Serisi için, aboneliğinizdeki bölge başına vCPU (çekirdek) kotası başlangıçta 0 olarak ayarlanır. [Kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/)bu seri Için [bir vCPU kota artışı isteyin](../azure-supportability/resource-manager-core-quotas-request.md) .

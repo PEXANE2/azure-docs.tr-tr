@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772623"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920674"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -56,18 +56,19 @@ Azure meta veri hizmeti, sanal makineleri VM içinden erişilebilen bir REST uç
 ### <a name="endpoint-discovery"></a>Uç nokta bulma
 VNET etkin VM 'Ler için, meta veri hizmeti statik olmayan statik bir IP `169.254.169.254`kullanılabilir. Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 Sanal makine bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler için varsayılan durumlar olarak, kullanılacak IP adresini bulması için ek mantık gerekir. [Konak uç noktasını bulmayı](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)öğrenmek için bu örneğe bakın.
 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
-Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur ve geçerli sürüm `2017-11-01`.
+Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur ve geçerli sürüm `2019-01-01`.
 
-| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
+| Sürüm | Yayın Türü | Bölgeler | Sürüm Notları | 
 | - | - | - | - |
+| 2019-01-01 | Genel Erişilebilirlik | Tümü | <li> Sanal Makine Ölçek Kümeleri için destek eklendi EventType ' Terminate ' |
 | 2017-11-01 | Genel Erişilebilirlik | Tümü | <li> Nokta VM çıkarma olay türü ' preempt ' için destek eklendi<br> | 
 | 2017-08-01 | Genel Erişilebilirlik | Tümü | <li> IaaS VM 'lerinin kaynak adlarından eklenmiş alt çizgi kaldırıldı<br><li>Tüm istekler için meta veri üst bilgisi gereksinimi zorlandı | 
-| 2017-03-01 | Önizleme | Tümü |<li>İlk yayın
+| 2017-03-01 | Önizleme | Tümü |<li>İlk yayın |
 
 > [!NOTE] 
 > Zamanlanan olayların önceki önizleme sürümleri, api sürümü olarak {latest} desteklenir. Bu biçim artık desteklenmemektedir ve gelecekte kullanım dışı bırakılacak.
@@ -90,9 +91,9 @@ Metadata Service sorgulayıp, isteğin istem dışı yönlendirilmediğinden emi
 ### <a name="query-for-events"></a>Olayları sorgula
 Aşağıdaki çağrıyı yaparak Zamanlanan Olaylar için sorgulama yapabilirsiniz:
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
 ```
 
 Bir yanıt, Zamanlanmış olaylar dizisi içerir. Boş bir dizi, şu anda zamanlanan hiçbir olay olmadığı anlamına gelir.
@@ -103,7 +104,7 @@ Zamanlanan olayların bulunduğu durumda, yanıt bir olay dizisi içerir:
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -118,7 +119,7 @@ Documentınnation bir ETag ' dir ve olayların yükünün son sorgudan bu yana d
 |Özellik  |  Açıklama |
 | - | - |
 | EventID | Bu olay için genel benzersiz tanımlayıcı. <br><br> Örnek: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur. <li>`Reboot`: sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: spot sanal makine siliniyor (kısa ömürlü diskler kaybolur).|
+| Türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur. <li>`Reboot`: sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: spot sanal makine siliniyor (kısa ömürlü diskler kaybolur). <li> `Terminate`: sanal makine silinmek üzere zamanlandı. |
 | ResourceType | Bu olayın etkilediği kaynak türü. <br><br> Değerler: <ul><li>`VirtualMachine`|
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Bu, en çok bir [güncelleştirme etki alanındaki](manage-availability.md)makineler bulundur, ancak ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Olay durumu | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, `NotBefore` özelliğinde belirtilen süreden sonra başlayacak şekilde zamanlandı.<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmaz; olay tamamlandığında olay artık döndürülmeyecektir.
@@ -133,6 +134,7 @@ Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, b
 | Yeniden başlatma | 15 dakika |
 | Yeniden dağıtım | 10 dakika |
 | Preempt | 30 saniye |
+| Sonlandırmayı | [Kullanıcı yapılandırılabilir](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 ila 15 dakika |
 
 ### <a name="event-scope"></a>Olay kapsamı     
 Zamanlanan olaylar şu şekilde dağıtılır:
@@ -158,9 +160,9 @@ Yaklaşan bir olayı öğrendikten ve düzgün kapanma için mantığınızı ta
 }
 ```
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -206,7 +208,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2019-01-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

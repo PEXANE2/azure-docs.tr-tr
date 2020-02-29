@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3807f713065d16d4c6743c65f6a770d158ac7191
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058495"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920136"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'ye bağlanma sorunları için ayrıntılı SSH sorun giderme adımları
 SSH istemcisinin VM 'deki SSH hizmetine erişememesinin pek çok nedeni olabilir. Daha [Genel SSH sorun giderme adımlarına](troubleshoot-ssh-connection.md)uyuldıysanız, bağlantı sorununu gidermeye devam etmeniz gerekir. Bu makale, SSH bağlantısının başarısız olduğunu ve nasıl çözümleneceğini belirlemede ayrıntılı sorun giderme adımları boyunca size rehberlik eder.
@@ -72,11 +72,11 @@ Sertifika kimlik doğrulaması kullanıyorsanız, giriş dizininizde. SSH klasö
 
 * Chmod 700 ~/.SSH
 * Chmod 644 ~/.SSH/\*. pub
-* Chmod 600 ~/.ssh/id_rsa (veya özel anahtarlarınız içinde depolanan diğer dosyalar)
+* Chmod 600 ~/.ssh/id_rsa (veya özel anahtarlarınızın depolandığı diğer dosyalar)
 * Chmod 644 ~/.SSH/known_hosts (SSH aracılığıyla bağladığınız Konakları içerir)
 
-## <a name="source-2-organization-edge-device"></a>Kaynak 2: Kuruluş Edge cihazı
-Kuruluşunuzun kenar cihazını hatanın kaynağı olarak ortadan kaldırmak için, doğrudan Internet 'e bağlı bir bilgisayarın Azure sanal makinenize SSH bağlantısı yapıp yapabildiğini doğrulayın. VM 'ye siteden siteye VPN veya Azure ExpressRoute bağlantısı üzerinden erişiyorsanız, kaynak 4 ' e [atlayın: Ağ güvenlik grupları](#nsg).
+## <a name="source-2-organization-edge-device"></a>Kaynak 2: kuruluş Edge cihazı
+Kuruluşunuzun kenar cihazını hatanın kaynağı olarak ortadan kaldırmak için, doğrudan Internet 'e bağlı bir bilgisayarın Azure sanal makinenize SSH bağlantısı yapıp yapabildiğini doğrulayın. VM 'ye siteden siteye VPN veya Azure ExpressRoute bağlantısı üzerinden erişiyorsanız, kaynak 4 ' e atlayın [: ağ güvenlik grupları](#nsg).
 
 ![Kuruluş Edge cihazını vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -90,9 +90,12 @@ Doğrudan Internet 'e bağlı bir bilgisayarla SSH bağlantısı oluşturuyorsan
 
 Internet ile SSH trafiğine izin vermek için kuruluşunuzun uç cihazlarınızın ayarlarını düzeltmek üzere ağ yöneticinizle birlikte çalışın.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Kaynak 3: Bulut hizmeti uç noktası ve ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Kaynak 3: bulut hizmeti uç noktası ve ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
-> Bu kaynak yalnızca klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için geçerlidir. Kaynak Yöneticisi kullanılarak oluşturulan VM 'ler için, kaynak 4 ' e [atlayın: Ağ güvenlik grupları](#nsg).
+> Bu kaynak yalnızca klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için geçerlidir. Kaynak Yöneticisi kullanılarak oluşturulan VM 'Ler için, kaynak 4 ' e atlayın [: ağ güvenlik grupları](#nsg).
 
 Bulut hizmeti uç noktasını ve ACL 'yi hatanın kaynağı olarak ortadan kaldırmak için, aynı sanal ağdaki başka bir Azure sanal makinesinin SSH kullanarak bağlanabildiğini doğrulayın.
 
@@ -102,14 +105,14 @@ Aynı sanal ağda başka bir VM yoksa kolayca bir tane oluşturabilirsiniz. Daha
 
 Aynı sanal ağdaki bir VM ile bir SSH bağlantısı oluşturbiliyorsanız, aşağıdaki alanlara bakın:
 
-* **Hedef VM 'deki SSH trafiğine yönelik uç nokta yapılandırması.** Uç noktanın özel TCP bağlantı noktası, sanal makine üzerindeki SSH hizmetinin dinlediği TCP bağlantı noktasıyla eşleşmelidir. (Varsayılan bağlantı noktası 22 ' dir). **Sanal makineler** > *VM adı* > ayarlarıuç > **noktaları**' nı seçerek Azure Portal SSH TCP bağlantı noktası numarasını doğrulayın.
+* **Hedef VM 'deki SSH trafiğine yönelik uç nokta yapılandırması.** Uç noktanın özel TCP bağlantı noktası, sanal makine üzerindeki SSH hizmetinin dinlediği TCP bağlantı noktasıyla eşleşmelidir. (Varsayılan bağlantı noktası 22 ' dir). **Sanal makineler** > *VM adı* > **Ayarlar** > **uç noktaları**' nı seçerek Azure Portal SSH TCP bağlantı noktası numarasını doğrulayın.
 * **Hedef sanal makinedeki SSH trafiği uç noktası için ACL.** ACL, kaynak IP adresine bağlı olarak Internet 'ten izin verilen veya reddedilen gelen trafiği belirtmenize olanak sağlar. Yanlış yapılandırılmış ACL 'Ler, gelen SSH trafiğini uç noktaya engelleyebilir. Proxy 'nizin veya diğer uç sunucunuzun genel IP adreslerinden gelen trafiğe izin verildiğinden emin olmak için ACL 'larınızı denetleyin. Daha fazla bilgi için bkz. [ağ erişim denetim listeleri (ACL 'ler) hakkında](../../virtual-network/virtual-networks-acl.md).
 
 Uç noktayı sorunun bir kaynağı olarak ortadan kaldırmak için, geçerli uç noktayı kaldırın, başka bir uç nokta oluşturun ve SSH adını (genel ve özel bağlantı noktası numarası için TCP bağlantı noktası 22) belirtin. Daha fazla bilgi için bkz. [Azure 'da bir sanal makinede uç noktaları ayarlama](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>Kaynak 4: Ağ güvenlik grupları
+## <a name="source-4-network-security-groups"></a>Kaynak 4: ağ güvenlik grupları
 Ağ güvenlik grupları izin verilen gelen ve giden trafik üzerinde daha ayrıntılı denetim sahibi olmasını sağlar. Bir Azure sanal ağında alt ağları ve bulut hizmetlerini kapsayan kurallar oluşturabilirsiniz. Internet 'ten gelen ve giden SSH trafiğine izin verildiğinden emin olmak için ağ güvenlik grubu kurallarınızı denetleyin.
 Daha fazla bilgi için bkz. [ağ güvenlik grupları hakkında](../../virtual-network/security-overview.md).
 

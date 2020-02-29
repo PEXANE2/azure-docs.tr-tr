@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201501"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921156"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Akış Birimlerini anlama ve ayarlama
 
@@ -32,7 +32,7 @@ Düşük gecikme süreli akış işlemeyi başarabilmek için, Azure Stream Anal
     ![Azure portal Stream Analytics iş yapılandırması][img.stream.analytics.preview.portal.settings.scale]
     
 4. İşi için SUs ayarlamak üzere kaydırıcıyı kullanın. Belirli SU ayarlarına sınırlı olduğunu unutmayın. 
-5. Çalışma sırasında bile işinize atanan SUs sayısını değiştirebilirsiniz. İşiniz [bölümlenmiş olmayan bir çıkış](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) kullanıyorsa veya [DEĞERLERI ile farklı bölüm içeren çok adımlı bir sorgu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)içeriyorsa bu mümkün değildir. İş çalışırken bu ayarı değiştirmek için işin en az 6 SUs 'e sahip olması gerekir. İş çalışırken bir SU değeri kümesinden seçim yapmak zorunda olabilirsiniz. 
+5. Çalışma sırasında bile işinize atanan SUs sayısını değiştirebilirsiniz. İşiniz [bölümlenmiş olmayan bir çıkış](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) kullanıyorsa veya [DEĞERLERI ile farklı bölüm içeren çok adımlı bir sorgu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)içeriyorsa bu mümkün değildir. İş çalışırken bir SU değeri kümesinden seçim yapmak zorunda olabilirsiniz. 
 
 ## <a name="monitor-job-performance"></a>İş performansını izleme
 Azure portal kullanarak, bir işin verimini izleyebilirsiniz:

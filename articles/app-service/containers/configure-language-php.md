@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir PHP kapsayıcısın�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671844"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913880"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service için bir Linux PHP uygulaması yapılandırma
 
@@ -39,52 +39,26 @@ PHP sürümünü 7,2 olarak ayarlamak için [Cloud Shell](https://shell.azure.co
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Besteci Çalıştır
+## <a name="customize-build-automation"></a>Derleme Otomasyonu 'nu özelleştirme
 
-Varsayılan olarak kudu, [besteci](https://getcomposer.org/)çalıştırmaz. Kudu dağıtımı sırasında besteci Otomasyonu 'nu etkinleştirmek için [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)sağlamanız gerekir.
+Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
-Yerel bir terminal penceresinden dizini depo kökinizle değiştirin. *Besteci. phar*'yi indirmek için [komut satırı yükleme adımlarını](https://getcomposer.org/download/) izleyin.
+1. `PRE_BUILD_SCRIPT_PATH`tarafından belirtilmişse özel betiği çalıştırın.
+1. `php composer.phar install` öğesini çalıştırın.
+1. `POST_BUILD_SCRIPT_PATH`tarafından belirtilmişse özel betiği çalıştırın.
 
-Aşağıdaki komutları çalıştırın:
+`PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND`, varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için `PRE_BUILD_COMMAND`tanımlayın. Oluşturma sonrası komutları çalıştırmak için `POST_BUILD_COMMAND`tanımlayın.
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Depo kökünde artık *besteci. phar*: *. Deployment* ve *Deploy.sh*'a ek olarak iki yeni dosya vardır. Bu dosyalar, App Service Windows ve Linux türleri için de çalışır.
+Derleme Otomasyonu 'nu özelleştirmek için ek ortam değişkenleri için bkz. [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-*Deploy.sh* ' i açın ve `Deployment` bölümünü bulun. Tüm bölümünü aşağıdaki kodla değiştirin:
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-Tüm değişikliklerinizi işleyin ve kodunuzu yeniden dağıtın. Besteci Dağıtım Otomasyonu 'nun bir parçası olarak çalışıyor olmalıdır.
+App Service nasıl çalıştığı ve Linux 'ta PHP uygulamaları oluşturma hakkında daha fazla bilgi için bkz. [Oryx belgeleri: PHP uygulamaları nasıl algılanır ve oluşturulur](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
 
 ## <a name="customize-start-up"></a>Başlatmayı özelleştirme
 
@@ -94,7 +68,7 @@ Varsayılan olarak, yerleşik PHP kapsayıcısı Apache sunucusunu çalıştır�
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-## <a name="access-environment-variables"></a>Ortam değişkenlerine erişin
+## <a name="access-environment-variables"></a>Ortam değişkenlerine erişim
 
 App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [getenv ()](https://secure.php.net/manual/function.getenv.php) modelini kullanarak bunlara erişebilirsiniz. Örneğin, `DB_HOST`adlı bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
 

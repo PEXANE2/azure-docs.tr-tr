@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 3849106fbc488f456a4d267d0ccef76647c1939f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981306"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918249"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Bir VM'ye Uzak Masaüstü Ağ arabirimini devre dışı bırakıldığından olamaz
 
 Bu makalede, ağ arabirimini devre dışı bırakılırsa, Uzak Masaüstü Bağlantısı Azure Windows sanal makinelerine (VM'ler) yapamazsınız bir sorunun nasıl giderileceği açıklanmaktadır.
 
-> [!NOTE]
-> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makale, Klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı öneririz Resource Manager dağıtım modelini kullanarak kapsar.
 
 ## <a name="symptoms"></a>Belirtiler
 
@@ -32,14 +30,14 @@ Sanal makine içindeki ağ arabirimini devre dışı olduğundan azure'da bir VM
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları gerçekleştirmeden önce etkilenen makinenin işletim sistemi diskinin anlık yedekleyin. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md).
+Bu adımları gerçekleştirmeden önce etkilenen makinenin işletim sistemi diskinin anlık yedekleyin. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-VM için arabirimi etkinleştirmek için seri denetimi kullanın veya [sıfırlama ağ arabirimi](#reset-network-interface) VM için.
+VM 'nin arabirimini etkinleştirmek için, seri denetim veya VM için [ağ arabirimini sıfırlama](#reset-network-interface) ' yı kullanın.
 
 ### <a name="use-serial-control"></a>Seri denetimini kullanma
 
-1. Bağlanma [seri konsol ve örnek CMD Aç](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Seri konsol sanal makinenizde etkinleştirilmemiş olmadığını [sıfırlama ağ arabirimi](#reset-network-interface).
+1. [Seri konsoluna bağlanın ve cmd örneğini açın](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [ağ arabirimini sıfırlama](#reset-network-interface).
 2. Ağ arabirimi durumunu kontrol edin:
 
         netsh interface show interface
@@ -64,4 +62,4 @@ VM için arabirimi etkinleştirmek için seri denetimi kullanın veya [sıfırla
 
 ## <a name="reset-network-interface"></a>Ağ arabirimini sıfırlayın
 
-Ağ arabirimi sıfırlamak için alt ağdaki kullanılabilir başka bir IP adresi IP adresini değiştirin. Bunu yapmak için Azure portal veya Azure PowerShell kullanın. Daha fazla bilgi için [sıfırlama ağ arabirimi](reset-network-interface.md).
+Ağ arabirimi sıfırlamak için alt ağdaki kullanılabilir başka bir IP adresi IP adresini değiştirin. Bunu yapmak için Azure portal veya Azure PowerShell kullanın. Daha fazla bilgi için bkz. [ağ arabirimini sıfırlama](reset-network-interface.md).

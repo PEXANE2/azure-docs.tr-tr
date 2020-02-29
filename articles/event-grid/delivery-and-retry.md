@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170070"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921071"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
@@ -26,12 +26,33 @@ Her bir olayı abonelere ayrı olarak göndermek Event Grid varsayılan değer. 
 
 Toplu teslimin iki ayarı vardır:
 
-* **Toplu iş başına en fazla olay** sayısı Event Grid toplu işlem başına teslim edilecek en fazla olay sayısıdır. Bu sayı hiçbir zaman aşılmayacak, ancak yayımlama sırasında başka hiçbir olay yoksa daha az olay teslim edilebilir. Daha az etkinlik varsa Batch oluşturmak için olayları gecikmez Event Grid. 1 ile 5.000 arasında olmalıdır.
-* **Kilobayt olarak tercih edilen toplu iş** boyutu, kilobayt cinsinden toplu iş boyutu için hedef tavan. En yüksek olaylara benzer şekilde, yayımlama sırasında daha fazla olay yoksa, toplu iş boyutu daha küçük olabilir. Tek bir olay tercih edilen boyuttan daha büyükse bir toplu iş, tercih edilen toplu *iş boyutundan daha* büyük olabilir. Örneğin, tercih edilen boyut 4 KB ise ve 10 KB 'lik bir olay Event Grid 'e itiliyorsa, 10 KB 'lik olay bırakılması yerine kendi toplu işinde de teslim edilir.
+* **Toplu işlem başına en fazla olay** sayısı-Event Grid toplu işlem başına teslim edilir. Bu sayı hiçbir zaman aşılmayacak, ancak yayımlama sırasında başka hiçbir olay yoksa daha az olay teslim edilebilir. Daha az etkinlik varsa Batch oluşturmak için olayları gecikmez Event Grid. 1 ile 5.000 arasında olmalıdır.
+* Kilobayt cinsinden toplu iş boyutu için **tercih edilen yığın boyutu** (kilobayt cinsinden). En yüksek olaylara benzer şekilde, yayımlama sırasında daha fazla olay yoksa, toplu iş boyutu daha küçük olabilir. Tek bir olay tercih edilen boyuttan daha büyükse bir toplu iş, tercih edilen toplu *iş boyutundan daha* büyük olabilir. Örneğin, tercih edilen boyut 4 KB ise ve 10 KB 'lik bir olay Event Grid 'e itiliyorsa, 10 KB 'lik olay bırakılması yerine kendi toplu işinde de teslim edilir.
 
 Portal, CLı, PowerShell veya SDK 'lar aracılığıyla olay başına abonelik temelinde yapılandırılmış toplu teslim.
 
+### <a name="azure-portal"></a>Azure portal: 
 ![Toplu teslim ayarları](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+Bir olay aboneliği oluştururken aşağıdaki parametreleri kullanın: 
+
+- **en fazla etkinlik-toplu** işlem-toplu iş içindeki en fazla olay sayısı. 1 ile 5000 arasında bir sayı olmalıdır.
+- **tercih edilen-kilobayt** olarak tercih edilen toplu işlem boyutu kilobayt olarak tercih edilir. 1 ile 1024 arasında bir sayı olmalıdır.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Azure CLı 'yı Event Grid kullanma hakkında daha fazla bilgi için bkz. [Azure CLI ile Depolama olaylarını Web uç noktasına yönlendirme](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Zamanlamayı ve süreyi yeniden dene
 
@@ -97,11 +118,11 @@ Yukarıdaki küme içinde olmayan diğer tüm kodlar (200-204) başarısızlık 
 | 400 Hatalı Istek | 5 dakika veya daha uzun bir süre sonra yeniden dene (sahipsiz ayarla ayarı varsa hemen |
 | 401 Yetkisiz | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
 | 403 Yasak | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
-| 404 Bulunamadı | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
+| 404 bulunamadı | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
 | 408 İstek Zaman Aşımı | 2 dakika veya daha uzun bir süre sonra yeniden deneyin |
 | 413 istek varlığı çok büyük | 10 saniye veya daha kısa bir süre sonra yeniden dene (sahipsiz kurulum yoksa hemen |
 | 503 Hizmet Kullanılamıyor | 30 saniye veya daha uzun bir süre sonra yeniden deneyin |
-| Tüm diğerleri | 10 saniye veya daha fazla süre sonra yeniden deneyin |
+| Diğerlerinin tümü | 10 saniye veya daha fazla süre sonra yeniden deneyin |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

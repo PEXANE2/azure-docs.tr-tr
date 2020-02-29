@@ -12,24 +12,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981358"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921462"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz "KRITIK HIZMET başarısız oldu" hatası açıklanır. Sorunları gidermeye yardımcı olmak için sorun giderme adımları sağlar. 
 
-> [!NOTE] 
-> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı önerdiğimiz Kaynak Yöneticisi dağıtım modelinin kullanımı açıklanmaktadır.
 
 ## <a name="symptom"></a>Belirti 
 
 Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](./boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
 
-- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için https://windows.com/stopcode ziyaret edin. Bir destek kişisi çağırırsanız, bu bilgileri verin: durdurma kodu: KRITIK HIZMET başarısız oldu " 
+- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için https://windows.com/stopcodeziyaret edin. Bir destek kişisi çağırırsanız, bu bilgileri verin: durdurma kodu: KRITIK HIZMET başarısız oldu " 
 - "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatacağız. Daha fazla bilgi edinmek istiyorsanız, daha sonra bu hata için çevrimiçi arama yapabilirsiniz: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Nedeni
@@ -45,8 +43,8 @@ Bu sorunu çözmek için [desteğe başvurun ve bir döküm dosyası göndererek
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM'si ekleme
 
-1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md).
-2. [İşletim sistemi diskini bir kurtarma VM'si ekleme](./troubleshoot-recovery-disks-portal-windows.md). 
+1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
+2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md). 
 3. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı kurun.
 
 ### <a name="enable-dump-logs-and-serial-console"></a>Döküm günlüklerini ve seri konsolu etkinleştir

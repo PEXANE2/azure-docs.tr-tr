@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 102433b88ffb140cae46433be1c0edef90857e6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969945"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921530"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -38,7 +38,7 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 
  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -290,6 +290,9 @@ Azure Resource Manager şablonu hakkında daha fazla bilgi için bkz. [yazma Azu
 DSCForLinux uzantısını dağıtmadan önce, Bölüm 3 ' teki farklı senaryolara göre `public.json` ve `protected.json` yapılandırın.
 
 #### <a name="classic"></a>Klasik
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Klasik dağıtım moduna Azure hizmet yönetimi modu da denir. Şunu çalıştırarak geçiş yapabilirsiniz:
 ```
 $ azure config mode asm
@@ -306,7 +309,7 @@ Kullanılabilir en son uzantı sürümünü öğrenmek için şunu çalıştır�
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Kaynak Yöneticisi
+#### <a name="resource-manager"></a>Resource Manager
 Şunu çalıştırarak Azure Resource Manager moduna geçebilirsiniz:
 ```
 $ azure config mode arm
@@ -363,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Kaynak Yöneticisi
+#### <a name="resource-manager"></a>Resource Manager
 
 Aşağıdakileri çalıştırarak Azure hesabınızda Azure Resource Manager modunda oturum açabilirsiniz:
 

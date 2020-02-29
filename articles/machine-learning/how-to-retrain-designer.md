@@ -1,23 +1,23 @@
 ---
-title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitme
+title: Azure Machine Learning Tasarımcısı kullanarak modelleri yeniden eğitme (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatlarına sahip modelleri yeniden eğitme hakkında bilgi edinin.
+description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatlarına sahip modelleri yeniden eğitme hakkında bilgi edinin (Önizleme).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311878"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921614"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme (Önizleme)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu nasıl yapılır, bir makine öğrenimi modelini yeniden eğitme Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğrenirsiniz. Makine öğrenimi iş akışlarını yeniden eğitimlere otomatik hale getirmek için yayınlanmış işlem hatlarını nasıl kullanacağınızı öğrenin.
 
@@ -29,7 +29,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Eğitim işlem hattınızı yayımlayın.
 > * Modelinize yeniden eğitme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
@@ -69,11 +69,11 @@ Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışl
 
 1. **Model eğitme** modülünü seçin.
 
-1. Ayarlar bölmesinde, **çıktılar**' i seçin.
+1. Ayarlar bölmesinde, **çıktılar + Günlükler**' i seçin.
 
-1. Modeli indirmek için **Trained_model** seçin.
+1. **Çıktıyı görüntüle** simgesine tıklayın ve eğitilen modeli bulmak için açılır penceredeki yönergeyi izleyin.
 
-![Eğitilen modelin nasıl indirileceği gösteren ekran görüntüsü](./media/how-to-retrain-designer/download-model.png)
+![Eğitilen modelin nasıl indirileceği gösteren ekran görüntüsü](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>İşlem hattı parametresi oluşturma
 

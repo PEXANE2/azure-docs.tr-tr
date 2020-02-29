@@ -2,17 +2,17 @@
 title: AV2-Series-Azure sanal makineleri
 description: AV2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1e14c633ed11bb628a68756e72e78073603643a1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: fe27a1cc78d1f37d535f364c03803a5196090a3a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493858"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163956"
 ---
 # <a name="av2-series"></a>Av2 Serisi
 
@@ -23,6 +23,10 @@ ACU: 100
 Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: ıOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|

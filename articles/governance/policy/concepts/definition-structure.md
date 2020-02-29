@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670789"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920221"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -159,19 +159,19 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **allow
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` özelliği içinde, Azure portal içinde çok seçimli bir seçenek listesi sağlamak için **Strongtype** kullanabilirsiniz. **Strongtype** için izin verilen değerler şu anda şunları içerir:
+`metadata` özelliği içinde, Azure portal içinde çok seçimli bir seçenek listesi sağlamak için **Strongtype** kullanabilirsiniz. **strongtype** desteklenen bir _kaynak türü_ veya izin verilen bir değer olabilir. Bir _kaynak türünün_ **strongtype**için geçerli olup olmadığını anlamak Için [Get-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)' ı kullanın.
+
+**Get-AzResourceProvider** tarafından döndürülen bazı _kaynak türleri_ desteklenir. Bunlar:
+
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
+
+**Strongtype** için izin verilen _kaynak olmayan tür_ değerleri şunlardır:
 
 - `location`
 - `resourceTypes`
 - `storageSkus`
 - `vmSKUs`
 - `existingResourceGroups`
-- `omsWorkspace`
-- `Microsoft.EventHub/Namespaces/EventHubs`
-- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
-- `Microsoft.EventHub/Namespaces/AuthorizationRules`
-- `Microsoft.RecoveryServices/vaults`
-- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>Tanım konumu
 

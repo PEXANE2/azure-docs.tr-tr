@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776014"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164551"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>MariaDB veritabanınızı, döküm ve geri yükleme kullanarak MariaDB için Azure veritabanı 'na geçirme
 Bu makalede, MariaDB için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır
@@ -22,10 +22,10 @@ Bu makalede, MariaDB için Azure veritabanınızdaki veritabanlarını yedekleme
 Bu nasıl yapılır kılavuzunda ilerlemek için şunları yapmanız gerekir:
 - [MariaDB sunucusu için Azure veritabanı oluşturma-Azure portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - bir makineye yüklü [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) komut satırı yardımcı programı.
-- Bilgi döküm ve geri yükleme komutlarını bağlamak için MySQL II [MySQL çalışma ekranı Download](https://dev.mysql.com/downloads/workbench/), Toad, Navicat veya diğer üçüncü taraf MySQL aracı.
+- MySQL çalışma ekranı [MySQL araç yüklemesi](https://dev.mysql.com/downloads/workbench/) veya başka bir üçüncü taraf MySQL Aracı, döküm ve geri yükleme komutlarını sağlar.
 
 ## <a name="use-common-tools"></a>Ortak araçları kullanma
-MariaDB için Azure veritabanı 'na uzaktan bağlanıp veri geri yüklemek için MySQL çalışma ekranı, mysqldump, Toad veya Navicat gibi yaygın yardımcı programları ve araçları kullanın. MariaDB için Azure veritabanı 'na bağlanmak üzere bir internet bağlantısı ile istemci makinenizde bu tür araçları kullanın. En iyi güvenlik uygulamaları için SSL şifreli bir bağlantı kullanın, Ayrıca bkz. [MariaDB Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](concepts-ssl-connection-security.md). MariaDB için Azure veritabanı 'na geçiş yaparken döküm dosyalarını herhangi bir özel bulut konumuna taşımanız gerekmez. 
+MariaDB için Azure veritabanı 'na uzaktan bağlanıp verileri geri yüklemek için MySQL çalışma ekranı veya mysqldump gibi ortak yardımcı programları ve araçları kullanın. MariaDB için Azure veritabanı 'na bağlanmak üzere bir internet bağlantısı ile istemci makinenizde bu tür araçları kullanın. En iyi güvenlik uygulamaları için SSL şifreli bir bağlantı kullanın, Ayrıca bkz. [MariaDB Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](concepts-ssl-connection-security.md). MariaDB için Azure veritabanı 'na geçiş yaparken döküm dosyalarını herhangi bir özel bulut konumuna taşımanız gerekmez. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Döküm ve geri yükleme için ortak kullanımlar
 Veritabanlarının dökümünü yapmak ve veritabanlarını bir MariaDB sunucusu için Azure veritabanı 'na bir çok yaygın senaryoda yüklemek üzere mysqldump ve mysqlpump gibi MySQL yardımcı programlarını kullanabilirsiniz. 
@@ -81,7 +81,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>Hedef sunucuda bir veritabanı oluşturma
-Verileri geçirmek istediğiniz MariaDB sunucusu için hedef Azure veritabanı 'nda boş bir veritabanı oluşturun. Veritabanını oluşturmak için MySQL çalışma ekranı, Toad veya gezinti \ gibi bir araç kullanın. Veritabanı, dökülebilir verileri içeren veritabanıyla aynı ada sahip olabilir veya farklı bir ada sahip bir veritabanı oluşturabilirsiniz.
+Verileri geçirmek istediğiniz MariaDB sunucusu için hedef Azure veritabanı 'nda boş bir veritabanı oluşturun. Veritabanını oluşturmak için MySQL çalışma ekranı gibi bir araç kullanın. Veritabanı, dökülebilir verileri içeren veritabanıyla aynı ada sahip olabilir veya farklı bir ada sahip bir veritabanı oluşturabilirsiniz.
 
 Bağlanmak için, MariaDB için Azure veritabanı 'na **genel bakış** bölümündeki bağlantı bilgilerini bulun.
 

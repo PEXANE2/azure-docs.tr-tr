@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615673"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161576"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -109,29 +109,30 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 |Orta Avustralya 2| ✔<sup>1</sup> | |
 |Doğu Avustralya| ✔ | ✔<sup>1</sup> |
 |Güneydoğu Avustralya | ✔ | ✔<sup>1</sup> |
-|Güney Brezilya| ✔<sup>2</sup> |  |
+|Güney Brezilya| ✔<sup>2</sup> | ✔<sup>1</sup> |
 |Orta Kanada| ✔ | ✔<sup>1</sup> |
-|Orta ABD| ✔ |  |
-|Doğu Asya| ✔ |  |
+|Orta ABD| ✔ | ✔<sup>1</sup> |
+|Doğu Asya| ✔ | ✔<sup>1</sup> |
 |Doğu ABD | ✔ | ✔<sup>1</sup> |
 |Doğu ABD 2| ✔ | ✔<sup>1</sup> |
-|Orta Fransa| ✔ |  |
+|Orta Fransa| ✔ | ✔<sup>1</sup> |
 |Almanya Orta Batı| ✔ | |
 |Doğu Japonya| ✔ | ✔<sup>1</sup> |
 |Batı Japonya| ✔ | ✔<sup>1</sup> |
 |Güney Kore - Orta| ✔ | ✔<sup>1</sup> |
-|Orta Kuzey ABD| ✔ |  |
+|Orta Kuzey ABD| ✔ | ✔<sup>1</sup> |
 |Kuzey Avrupa| ✔ | ✔<sup>1</sup> |
+|Norveç Doğu| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |Orta Güney ABD| ✔ | ✔<sup>1</sup> |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔<sup>1</sup> |
 |Güney Birleşik Krallık| ✔ | ✔<sup>1</sup> |
-|Batı Birleşik Krallık| ✔ |  |
+|Batı Birleşik Krallık| ✔ | ✔<sup>1</sup> |
 |Batı Avrupa| ✔ | ✔<sup>1</sup> |
-|Batı Hindistan| ✔ |  |
-|Orta Batı ABD| | ✔<sup>1</sup> |
+|Batı Hindistan| ✔ | ✔<sup>1</sup> |
+|Orta Batı ABD| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |Batı ABD| ✔ | ✔<sup>1</sup> |
-|Batı ABD 2| ✔ |  |
+|Batı ABD 2| ✔ | ✔<sup>1</sup> |
 
 <sup>1</sup> Maksimum ölçeği 20 örneğe sınırlı.  
 <sup>2</sup> Maksimum ölçeği 60 örnek ile sınırlıdır.

@@ -6,18 +6,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 36d15858e1fb535189891303a89b00021027f1e8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227031"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163769"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
 
 Azure Işlevleri, işlevlerinizi PowerShell betikleri olarak geliştirmenize olanak sağlar.
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 PowerShell işlevlerinizde, aşağıdaki standart geliştirme araçlarını kullanarak herhangi bir PowerShell komut dosyası gibi yerel olarak hata ayıklaması yapabilirsiniz:
 
@@ -120,7 +118,7 @@ Açık bir PowerShell dosyanız olduğunda, pencerenin sağ alt tarafında yeşi
 
 **Hata Ayıkla** bölmesini seçin ve ardından **PowerShell işlevine ekleyin**.
 
-![Sý](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
+![hata ayıklayıcı](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
 Hata ayıklamayı başlatmak için F5 tuşuna da basabilirsiniz.
 

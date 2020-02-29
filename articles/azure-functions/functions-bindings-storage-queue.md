@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482267"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164602"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Azure kuyruk depolama tetikleyicisi ve bağlamaları
 
@@ -20,7 +20,7 @@ Azure Işlevleri yeni Azure kuyruğu depolama iletileri oluşturulduğu ve bir i
 | Eylem | Tür |
 |---------|---------|
 | Bir işlevi kuyruk depolama veri değişiklikleri olarak çalıştırma | [Tetikleyici](./functions-bindings-storage-queue-trigger.md) |
-| Sıra depolama iletilerini yaz |[Çıkış bağlama](./functions-bindings-storage-blob-output.md) |
+| Sıra depolama iletilerini yaz |[Çıkış bağlama](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
 
@@ -49,4 +49,4 @@ Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Di�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bir işlevi kuyruk depolama veri değişiklikleri (tetikleyici) olarak çalıştırma](./functions-bindings-storage-queue-trigger.md)
-- [Yazma kuyruğu depolama iletileri (çıkış bağlaması)](./functions-bindings-storage-blob-output.md)
+- [Yazma kuyruğu depolama iletileri (çıkış bağlaması)](./functions-bindings-storage-queue-output.md)

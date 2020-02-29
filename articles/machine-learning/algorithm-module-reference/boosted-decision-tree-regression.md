@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5298655437e04736e56193c443b8a770ea929606
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152423"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919966"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Artırılmış karar ağacı gerileme modülü
 
@@ -54,7 +54,9 @@ Gradyan artırma yöntemi, uygun bir kayıp işleviyle regresyon için azaltıla
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği belirleyin.  
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği belirleyin. 
+     
+    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.    
    
   
 3. **Ağaç başına en fazla yaprakları**: herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.  
@@ -75,7 +77,6 @@ Gradyan artırma yöntemi, uygun bir kayıp işleviyle regresyon için azaltıla
 
     Varsayılan olarak, rastgele çekirdek 0 olarak ayarlanır; Bu, ilk çekirdek değerin sistem saatinden elde ettiği anlamına gelir.
   
-8. **Bilinmeyen kategorik düzeylerine Izin ver**: eğitim ve doğrulama kümelerinde bilinmeyen değerler için bir grup oluşturmak üzere bu seçeneği belirleyin. Bu seçeneğin işaretini kaldırırsanız model yalnızca eğitim verilerinde bulunan değerleri kabul edebilir. Model, bilinen değerler için daha az kesin olabilir, ancak yeni (bilinmiyor) değerler için daha iyi tahminler sağlayabilir.
 
 9. Eğitim veri kümesi ve eğitim modüllerinden birini ekleyin:
 

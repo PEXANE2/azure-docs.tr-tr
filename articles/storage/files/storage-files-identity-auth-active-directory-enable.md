@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651092"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921564"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden Active Directory kimlik doğrulamasını etkinleştirme
 
@@ -62,7 +62,7 @@ Azure dosya paylaşımları için AD kimlik doğrulamasını etkinleştirmeden �
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Azure dosyaları AD kimlik doğrulaması, [çoğu ortak bölgede](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir, ancak içinde henüz kullanılamayan bölgelerin alt kümesi şu şekilde olur:
+Azure dosyaları AD kimlik doğrulaması (Önizleme), aşağıdakiler dışında [Genel bölgelerde](https://azure.microsoft.com/global-infrastructure/regions/) mevcuttur:
 
 - Batı ABD
 - Batı ABD 2
@@ -130,7 +130,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 #Register the target storage account with your active directory environment under the target OU
-join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationUnitName "<ou-name-here>"
+join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
 Aşağıdaki açıklama `join-AzStorageAccountForAuth` cmdlet 'i yürütüldüğünde gerçekleştirilen tüm eylemleri özetler. Komutu kullanmayı tercih ediyorsanız bu adımları el ile gerçekleştirebilirsiniz:

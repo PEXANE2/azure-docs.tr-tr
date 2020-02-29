@@ -3,12 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539510"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919762"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -58,7 +58,7 @@ Sürüm 1. x 'ten sonra bazı özellikler kaldırıldı, güncelleştirildi veya
 
 2\. x sürümünde aşağıdaki değişiklikler yapılmıştır:
 
-* HTTP uç noktalarını çağırma anahtarları, her zaman Azure Blob depolamada şifrelenir. 1\. x sürümünde anahtarlar Azure dosya depolama alanında depolanır. Bir uygulamayı 1. x sürümünden sürüm 2. x ' e yükseltirken, dosya depolamada bulunan mevcut gizlilikler sıfırlanır.
+* HTTP uç noktalarını çağırma anahtarları, her zaman Azure Blob depolamada şifrelenir. 1\. x sürümünde, anahtarlar varsayılan olarak Azure dosya depolama alanında depolanmıştı. Bir uygulamayı 1. x sürümünden sürüm 2. x ' e yükseltirken, dosya depolamada bulunan mevcut gizlilikler sıfırlanır.
 
 * Sürüm 2. x çalışma zamanı, Web kancası sağlayıcıları için yerleşik destek içermez. Bu değişiklik performansı artırmak için yapılmıştır. HTTP tetikleyicilerini Web kancaları için uç nokta olarak kullanmaya devam edebilirsiniz.
 

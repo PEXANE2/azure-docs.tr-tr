@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: e5625ad7c9997c172aef6ead41b7cfa9ede652dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438634"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918946"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -73,7 +73,7 @@ A.  Azure portalda Data Box Disk siparişinize gidin ve **Cihaz ayrıntıları**
 Yönerge adımları için [Windows istemcisinde disk kilidi açma](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)'ya veya [Linux istemcisinde disk kilidi açma](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)'ya gidin.
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>S. Data Box Disklerine bağlanmak ve veri kopyalamak için Linux ana bilgisayarı kullanabilir miyim?
-A.  Evet. Bağlanmak ve Data Box Disklerine veri kopyalamak için gerek Linux, gerekse Windows istemcisi kullanılabilir. Daha fazla bilgi için ana bilgisayarınıza ilişkin [Desteklenen işletim sistemleri](data-box-disk-system-requirements.md) listesine gidin.
+A.  Evet. Bağlanmak ve Data Box Disklerine veri kopyalamak için gerek Linux, gerekse Windows istemcisi kullanılabilir. Daha fazla bilgi için ana bilgisayarınızın [Desteklenen işletim sistemleri](data-box-disk-system-requirements.md) listesine gidin.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>S. Disklerim yola çıktı ancak şimdi siparişimi iptal etmek istiyorum. Neden iptal düğmesi kullanılamıyor?
 A.  Siparişi yalnızca disk siparişi verdikten sonra ancak diskler gönderilmeden önce iptal edebilirsiniz. Diskler yola çıktıktan sonra siparişi iptal edemezsiniz. Ancak, disklerinizi bir ücretden döndürebilirsiniz. 
@@ -169,7 +169,7 @@ A.  Verileri diskinizdeki *BlockBlob* ve *PageBlob* klasörlerinin altına kopya
 A. Kapsayıcı adlarında büyük harf kullandıysanız bunlar otomatik olarak küçük harfe dönüştürülür. Adlar diğer kurallara (özel karakterler, diğer diller gibi) uygun değilse yükleme işlemi başarısız olur. Daha fazla bilgi için [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) gidin.
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>S. Birden fazla Data Box Diskine kopyaladığım verileri nasıl doğrulayabilirim?
-A.  Veri kopyalama işlemi tamamlandıktan sonra *DataBoxDiskImport* klasöründe bulunan `DataBoxDiskValidation.cmd` uygulamasını çalıştırarak doğrulama için sağlama toplamları alabilirsiniz. Birden fazla diskiniz varsa her disk için bir komut penceresi açarak bu komutu çalıştırmanız gerekir. Bu işlemin verilerinizin boyutuna göre uzun sürebileceğini (birkaç saat) unutmayın.
+A.  Veri kopyalama işlemi tamamlandıktan sonra `DataBoxDiskValidation.cmd`DataBoxDiskImport*klasöründe bulunan* uygulamasını çalıştırarak doğrulama için sağlama toplamları alabilirsiniz. Birden fazla diskiniz varsa her disk için bir komut penceresi açarak bu komutu çalıştırmanız gerekir. Bu işlemin verilerinizin boyutuna göre uzun sürebileceğini (birkaç saat) unutmayın.
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-disks"></a>S. Diskleri iade ettiğimde verilerime ne olur?
 A.  Veriler Azure'a kopyalandıktan sonra disklerdeki veriler NIST SP 800-88 Revision 1 yönergelerine uygun ve güvenli bir şekilde silinir.  
@@ -193,4 +193,4 @@ A. Evet. Verileriniz Azure 'a yüklendi ancak belirtilen kaynak gruplarıyla yö
 
 - [Data Box disk sistem gereksinimlerini](data-box-disk-system-requirements.md)gözden geçirin.
 - [Data Box Disk sınırlarını](data-box-disk-limits.md) anlayın.
-- [Azure Data Box Diskini](data-box-disk-quickstart-portal.md) Azure portal'da hızlıca dağıtın.
+- Azure portalında [Azure Data Box Disk](data-box-disk-quickstart-portal.md)’i hızlı dağıtın.

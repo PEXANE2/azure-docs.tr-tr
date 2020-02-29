@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 02/27/2020
 ms.author: sngun
-ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5403725a57c68a45621d6cc509c57d864b2e0633
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587473"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164925"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -171,6 +171,38 @@ Ve son olarak, aşağıdaki adımlarla bir öğeyi düzenlemek için bir görün
 
 Bu adımları tamamladıktan sonra, bu görünümlere daha sonra geri döndüğünüzde Visual Studio 'daki tüm *cshtml* belgelerini kapatın.
 
+### <a name="initialize-services"></a>Hizmetleri bildirme ve başlatma
+
+İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı `CosmosDBService` adlı bir sınıfa ve `ICosmosDBService`adlı bir arabirime kapsülliyoruz. Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
+
+1. **Çözüm Gezgini**, projenize sağ tıklayın ve > **Yeni klasör** **Ekle** ' yi seçin. Klasör *hizmetlerini*adlandırın.
+
+1. **Hizmetler** klasörüne sağ tıklayın, > **sınıf** **Ekle** ' yi seçin. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+
+1. *CosmosDBService.cs* içeriğini aşağıdaki kodla değiştirin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
+
+1. **Hizmetler** klasörüne sağ tıklayın, > **sınıf** **Ekle** ' yi seçin. Yeni sınıfı *ıosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+
+1. Aşağıdaki kodu *ıcosmosdbservice* sınıfına ekleyin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
+
+1. *Startup.cs* dosyasını çözümünüzde açın ve `ConfigureServices` yöntemini ile değiştirin:
+
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+
+    Bu adımdaki kod, [ASP.NET Core ' de bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)yoluyla eklenecek tek bir örnek olarak istemciyi başlatır.
+
+1. Aynı dosya içinde, yapılandırmayı okuyan ve istemcisini başlatan **ınitializecosmosclientınstanceasync**yöntemini ekleyin.
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
+
+1. Aşağıdaki kod parçacığında gösterildiği gibi projenin *appSettings. JSON* dosyasında yapılandırmayı tanımlayın:
+
+   :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
+
 ### <a name="add-a-controller"></a>Denetleyici ekleme
 
 1. **Çözüm Gezgini**, **denetleyiciler** klasörüne sağ tıklayın, > **denetleyicisi** **Ekle** ' yi seçin.
@@ -189,62 +221,15 @@ Bu uygulamayı siteler arası istek sahteciliği saldırılarına karşı koruma
 
 Ayrıca, aşırı gönderme saldırılarına karşı korumaya yardımcı olmak için yöntem parametresindeki **bind** özniteliğini de kullanırız. Daha fazla bilgi için bkz. [öğretici: ASP.NET MVC 'de Entity Framework CRUD Işlevselliği uygulama][Basic CRUD Operations in ASP.NET MVC].
 
-## <a name="connect-to-cosmosdb"></a>5. Adım: Azure Cosmos DB bağlanma
-
-Standart MVC 'nin ele alındığı artık, Azure Cosmos DB ve CRUD işlemlerine bağlanmak için kodu eklemeye bakalım.
-
-### <a name="perform-crud-operations"></a>Veriler üzerinde CRUD işlemleri gerçekleştirme
-
-İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı `CosmosDBService` adlı bir sınıfa ve `ICosmosDBService`adlı bir arabirime kapsülliyoruz. Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
-
-1. **Çözüm Gezgini**, projenize sağ tıklayın ve > **Yeni klasör** **Ekle** ' yi seçin. Klasör *hizmetlerini*adlandırın.
-
-1. **Hizmetler** klasörüne sağ tıklayın, > **sınıf** **Ekle** ' yi seçin. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
-
-1. *CosmosDBService.cs* içeriğini aşağıdaki kodla değiştirin:
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
-
-1. Önceki iki adımı tekrarlayın, ancak bu kez *ıcosmosdbservice*adını kullanın ve aşağıdaki kodu kullanın:
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
-
-1. **ConfigureServices** işleyicisinde aşağıdaki satırı ekleyin:
-
-    ```csharp
-    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
-    ```
-
-    Önceki adımdaki kod, oluşturucunun parçası olarak bir `CosmosClient` alır. Aşağıdaki ASP.NET Core ardışık düzen, projenin *Startup.cs* dosyasına gitmemiz gerekir. Bu adımdaki kod, [ASP.NET Core ' de bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)yoluyla eklenecek tek bir örnek olarak istemciyi başlatır.
-
-1. Aynı dosya içinde, yapılandırmayı okuyan ve istemcisini başlatan **ınitializecosmosclientınstanceasync**yöntemini ekleyin.
-
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
-
-1. Projenin *appSettings. JSON* dosyasında yapılandırmayı tanımlayın. Dosyayı açın ve **Cosmosdb**adlı bir bölüm ekleyin:
-
-   ```csharp
-     "CosmosDb": {
-        "Account": "<enter the URI from the Keys blade of the Azure Portal>",
-        "Key": "<enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal>",
-        "DatabaseName": "Tasks",
-        "ContainerName": "Items"
-      }
-   ```
-
-Uygulamayı çalıştırırsanız, ASP.NET Core işlem hattı **Cosmosdbservice** ' i başlatır ve tek bir örneği tek bir örnek olarak tutar. **Itemcontroller** istemci tarafı isteklerini işlediğinde, bu tek örneği alır ve bunu CRUD işlemleri için kullanabilir.
-
-Şimdi bu projeyi derleyip çalıştırırsanız şöyle görünen bir şey görmeniz gerekir:
-
-![Bu veritabanı öğreticisi tarafından oluşturulan yapılacaklar listesi Web uygulamasının ekran görüntüsü](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
-
-## <a name="run-the-application"></a>6. Adım: Uygulamayı yerel olarak çalıştırma
+## <a name="run-the-application"></a>5. Adım: uygulamayı yerel olarak çalıştırma
 
 Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları kullanın:
 
-1. Uygulamayı hata ayıklama modunda derlemek için Visual Studio 'da F5 ' i seçin. Bu işlemin uygulamayı oluşturması ve bir tarayıcıyı daha önce gördüğümüz boş kılavuz sayfasıyla başlatması gerekir:
+1. Uygulamayı hata ayıklama modunda oluşturmak için Visual Studio'da F5 tuşuna basın. Bu işlemin uygulamayı oluşturması ve bir tarayıcıyı daha önce gördüğümüz boş kılavuz sayfasıyla başlatması gerekir:
 
    ![Bu öğretici tarafından oluşturulan yapılacaklar listesi Web uygulamasının ekran görüntüsü](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+   
+   Uygulama bunun yerine giriş sayfasında açılırsa URL 'ye `/Item` ekleyin.
 
 1. **Yeni oluştur** bağlantısını seçin ve **ad** ve **Açıklama** alanlarına değer ekleyin. **Tamamlandı** onay kutusunu seçilmemiş olarak bırakın. Bu seçeneği belirlerseniz, uygulama yeni öğeyi tamamlanmış durumuna ekler. Öğe artık ilk listede görünmüyor.
 
@@ -260,7 +245,7 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 1. Uygulamayı sınadıktan sonra, uygulamanın hata ayıklamasını durdurmak için CTRL + F5 ' i seçin. Dağıtıma hazırsınız!
 
-## <a name="deploy-the-application-to-azure"></a>7. Adım: uygulamayı dağıtma
+## <a name="deploy-the-application-to-azure"></a>6. Adım: uygulamayı dağıtma
 
 Artık uygulamanın tamamı Azure Cosmos DB ile doğru şekilde çalıştığına göre, bu web uygulamasını Azure App Service’e dağıtacağız.  
 

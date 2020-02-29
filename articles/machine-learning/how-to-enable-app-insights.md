@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 621188b3901bdea1a7ae50ac49c0e6f625a3e79a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251932"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915784"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 
 * İstek ücretleri, yanıt süreleri ve hata oranları
 * Bağımlılık oranları, yanıt süreleri ve hata oranları
-* Özel Durumlar
+* Özel durumlar
 
 [Azure Application Insights hakkında daha fazla bilgi edinin](../azure-monitor/app/app-insights-overview.md). 
 
@@ -43,39 +43,6 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 
 Web hizmeti meta verilerine ve modelin tahminlere karşılık gelen meta veriler ve hizmetin yanıtı, ileti `"model_data_collection"`altındaki Azure Application Insights izlemelerinde günlüğe kaydedilir. Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir veya daha uzun bekletme veya daha fazla işleme için depolama hesabına [sürekli bir dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ayarlayabilirsiniz. Model verileri daha sonra etiketleme, yeniden eğitim, explainability, veri analizi veya diğer kullanımı ayarlamak için Azure Machine Learning kullanılabilir. 
 
-## <a name="use-the-azure-portal-to-configure"></a>Yapılandırmak için Azure portal kullanın
-
-Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bırakabilirsiniz. 
-
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın
-
-1. **Dağıtımlar** sekmesinde, Azure Application Insights etkinleştirmek istediğiniz hizmeti seçin
-
-   [Dağıtımlar sekmesindeki hizmetlerin listesini ![](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. **Düzenle** 'yi seçin
-
-   [![Düzenle düğmesi](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu seçin.
-
-   [Tanılamayı etkinleştirmek için seçili ![onay kutusu](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin
-
-### <a name="disable"></a>Devre Dışı Bırak
-
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın
-1. **Dağıtımlar**' ı seçin, hizmeti seçin ve ardından **Düzenle** ' yi seçin.
-
-   [![Düzenle düğmesini kullanma](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin.
-
-   [Tanılamayı etkinleştirmek için ![temizlenmiş onay kutusu](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin
- 
 ## <a name="use-python-sdk-to-configure"></a>Yapılandırmak için Python SDK 'sını kullanma 
 
 ### <a name="update-a-deployed-service"></a>Dağıtılan bir hizmette güncelleştir

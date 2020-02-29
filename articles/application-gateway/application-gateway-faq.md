@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086544"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919626"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -409,6 +409,8 @@ Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız,
 
 Yalnızca özel IP erişimi için örnek NSG yapılandırması: yalnızca özel IP erişimi için ![Application Gateway v2 NSG yapılandırmasını](./media/application-gateway-faq/appgw-privip-nsg.png)
 
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
+Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü Pary bağlamında gönderilemeyeceği anlamına gelir. Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-overview.md#cookie-based-affinity) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

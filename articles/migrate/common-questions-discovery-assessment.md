@@ -3,12 +3,12 @@ title: Azure geçişi 'nde sık sorulan sorular-bulma, değerlendirme ve bağım
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6db521791e5ebb846585d4e0e823ba20d178d54a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589241"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918555"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan sorular
 
@@ -100,7 +100,7 @@ Hayır, bağımlılık görselleştirmesi verilemiyor. Bununla birlikte, Azure g
 
 ## <a name="can-i-automate--mmadependency-agent-installation"></a>MMA/bağımlılık Aracısı yüklemesini otomatik hale getirebilir miyim?
 
-[Bağımlılık aracısını yüklemek için bu betiği](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
+[Bağımlılık aracısını yüklemek için bu betiği](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
 
 Betiklerin yanı sıra, aracıları dağıtmak için Microsoft uç nokta Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını da kullanabilirsiniz.
 

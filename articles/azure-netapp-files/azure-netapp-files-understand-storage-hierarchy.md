@@ -1,5 +1,5 @@
 ---
-title: NetApp dosyaları Azure depolama hiyerarşisini nedir | Microsoft Docs
+title: Azure NetApp Files depolama hiyerarşisi nedir? | Microsoft Docs
 description: Azure NetApp Files hesapları, kapasite havuzları ve birimleri de dahil olmak üzere depolama hiyerarşisi açıklanır.
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2019
+ms.date: 02/27/2020
 ms.author: b-juche
-ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522877"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163973"
 ---
-# <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>NetApp dosyaları Azure depolama hiyerarşisini nedir
+# <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files depolama hiyerarşisi nedir?
 
 Azure NetApp Files’da birim oluşturmadan önce, sağlanan kapasite için bir havuz satın alıp ayarlamalısınız.  Kapasite havuzunu ayarlamak için NetApp hesabınız olmalıdır. Depolama hiyerarşisini anlamanız, Azure NetApp Files kaynaklarını ayarlamanıza ve yönetmenize yardımcı olur.
+
+> [!IMPORTANT] 
+> Azure NetApp Files Şu anda abonelikler arasında kaynak geçişini desteklemez.
 
 ## <a name="azure_netapp_files_account"></a>NetApp hesapları
 
@@ -35,21 +38,21 @@ Azure NetApp Files’da birim oluşturmadan önce, sağlanan kapasite için bir 
 ## <a name="capacity_pools"></a>Kapasite havuzları
 
 - Kapasite havuzu sağlanan kapasitesiyle ölçülür.  
-- Kapasite (örneğin, 4 TiB Kapasite) satın alınan sabit SKU'ları tarafından sağlanır.
+- Kapasite, satın aldığınız sabit SKU 'Lar tarafından sağlanır (örneğin, 4-TiB kapasitesi).
 - Kapasite havuzunda tek bir hizmet düzeyi bulunabilir.  
-- Her kapasitesi havuzu, yalnızca bir NetApp hesabına ait olabilir. Ancak, bir NetApp hesabında birden fazla kapasitesi havuzu olabilir.  
+- Her kapasite havuzu yalnızca bir NetApp hesabına ait olabilir. Ancak, bir NetApp hesabı içinde birden fazla kapasite havuzunuz olabilir.  
 - Kapasite havuzu NetApp hesapları arasında taşınamaz.   
-  Örneğin, aşağıdaki [Depolama hiyerarşisi kavramsal diyagramında](#conceptual_diagram_of_storage_hierarchy) Capacity Pool 1 adlı kapasite havuzu US East NetApp hesabından US West 2 NetApp hesabına taşınamaz.  
-- Kapasitesi havuzu kapasitesi havuzu içindeki tüm birimler silinene kadar silinemez.
+  Örneğin, aşağıdaki [Depolama hiyerarşisi kavramsal diyagramında](#conceptual_diagram_of_storage_hierarchy) Capacity Pool 1 adlı kapasite havuzu US East NetApp hesabından ABD Batı 2 NetApp hesabına taşınamaz.  
+- Kapasite havuzu içindeki tüm birimler silinene kadar kapasite havuzu silinemez.
 
 ## <a name="volumes"></a>Birimler
 
-- Bir birimi mantıksal kapasite tüketimini ölçülür ve ölçeklenebilir. 
+- Birim mantıksal kapasite tüketimine göre ölçülür ve ölçeklenebilir olur. 
 - Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır.
 - Her birim tek bir havuza ait olsa da, bir havuzda birden çok birim olabilir. 
-- Birim kapasitesi havuzu genelinde taşınamaz. <!--Within the same NetApp account, you can move a volume across pools.  -->   
-  Örneğin, [depolama hiyerarşisi kavramsal diyagramı](#conceptual_diagram_of_storage_hierarchy) Aşağıda, birim kapasitesi havuzu 1'den kapasitesi havuzu 2'ye taşıyamazsınız.
-- Bir birimi, tüm anlık görüntüleri silinene kadar silinemez.
+- Birim kapasite havuzları arasında taşınamaz. <!--Within the same NetApp account, you can move a volume across pools.  -->   
+  Örneğin, aşağıdaki [depolama hiyerarşisinin kavramsal diyagramında](#conceptual_diagram_of_storage_hierarchy) birimleri kapasite havuzu 1 ' den kapasite Havuzu 2 ' ye taşıyamazsınız.
+- Bir birim, tüm anlık görüntüleri silinene kadar silinemez.
 
 ## <a name="conceptual_diagram_of_storage_hierarchy"></a>Depolama hiyerarşisinin kavramsal diyagramı 
 Aşağıdaki örnekte Azure aboneliği, NetApp hesapları, kapasite havuzları ve birimlerin birbirleriyle ilişkileri gösterilir.   
@@ -59,4 +62,4 @@ Aşağıdaki örnekte Azure aboneliği, NetApp hesapları, kapasite havuzları v
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
-- [NetApp Azure dosyaları için kaydolun](azure-netapp-files-register.md)
+- [Azure NetApp Files için kaydolun](azure-netapp-files-register.md)

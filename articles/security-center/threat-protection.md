@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 7d078fb93f933320d13bfeb768b27923748b1262
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 8bd66b602201dbbb47a1fdba879c52a8ac441762
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623946"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921649"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde tehdit koruması
 
@@ -113,7 +113,7 @@ Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar:
     Kapsayıcılı ortamınızın güvenliğine daha ayrıntılı bir bakış için, aracı kapsayıcıya özgü Analizi izler. Ayrıcalıklı kapsayıcı oluşturma, API sunucularına şüpheli erişim ve bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucuları gibi olaylar için uyarı tetikleyecektir.
 
     >[!IMPORTANT]
-    > Aracılarınıza aracıları yüklememeyi seçerseniz, tehdit algılama avantajları ve uyarıların yalnızca bir alt kümesini alacaksınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
+    > Aracıları konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alırsınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
 
     Konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-containerhost)bakın.
 
@@ -240,7 +240,7 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 
 
 >[!NOTE]
-> Yukarıdaki analizler Microsoft Cloud App Security tarafından desteklenmektedir. Bu analizlerden yararlanmak için bir Cloud App Security lisansını etkinleştirmeniz gerekir. Cloud App Security lisansınız varsa, bu uyarılar varsayılan olarak etkinleştirilir. Devre dışı bırakmak için:
+> Yukarıdaki analizler Microsoft Cloud App Security tarafından desteklenmektedir. Bu analizlerden yararlanmak için bir Cloud App Security lisansını etkinleştirmeniz gerekir. Cloud App Security lisansınız varsa, bu uyarılar varsayılan olarak etkinleştirilir. Uyarıları devre dışı bırakmak için:
 >
 > 1. **Güvenlik Merkezi** dikey penceresinde **güvenlik ilkesi**' ni seçin. Değiştirmek istediğiniz abonelik için **Ayarları Düzenle**' yi seçin.
 > 2. **Tehdit algılamayı**seçin.

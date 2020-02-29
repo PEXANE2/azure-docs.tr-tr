@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 12/17/2019
-ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/22/2020
+ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162591"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920102"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için algoritma & modül başvurusu (Önizleme)
 
 Bu başvuru içeriği, Azure Machine Learning tasarımcısında bulunan her makine öğrenimi algoritması ve modülleriyle ilgili teknik arka plan sağlar (Önizleme).
 
@@ -57,6 +57,7 @@ Algoritma seçme konusunda yardım için bkz.
 | R dili | Kod yazın ve bir modüle ekleyin ve bunu işlem hattınızla birlikte tümleştirin. | [R betiğini Yürüt](execute-r-script.md) |
 | Metin Analizi | Yapılandırılmış ve yapılandırılmamış metinle çalışmak için özelleştirilmiş hesaplama araçları sağlar. | [Metinden N gram özelliklerini Ayıkla](extract-n-gram-features-from-text.md) <br/> [Özellik karma](feature-hashing.md) <br/> [Ön işleme metni](preprocess-text.md) |
 | Öneri | Öneri modelleri oluşturun. | [Öneren değerlendir](evaluate-recommender.md) <br/> [Skor SVD öneren](score-svd-recommender.md) <br/> [SVD öneren eğitme](train-SVD-recommender.md) |
+| Anormallik algılama | Anomali algılama modelleri oluşturun. | [PCA tabanlı anomali algılama](pca-based-anomaly-detection.md) <br/> [Anomali algılama modelini eğitme](train-anomaly-detection-model.md) |
 
 ## <a name="error-messages"></a>Hata iletileri
 

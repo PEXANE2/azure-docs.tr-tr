@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: a22964b0bfa4e6a46e3c9f31195ea0a6add82646
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493650"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161089"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -24,6 +24,10 @@ B serisi aşağıdaki VM boyutlarında gelir:
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenmiyor
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | VM 'nin temel CPU performansı | VM 'nin en yüksek CPU performansı | İlk krediler | Bankaya açık/saat | Maksimum bankaya ait krediler | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

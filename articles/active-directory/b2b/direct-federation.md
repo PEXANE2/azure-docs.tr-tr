@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888884"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161495"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 |     |
@@ -64,6 +64,10 @@ Kimlik sağlayıcısı ayarlarında meta veri URL 'sini belirtirseniz, Azure AD,
 
 ### <a name="limit-on-federation-relationships"></a>Federasyon ilişkilerinde sınırlama
 Şu anda en fazla 1.000 Federasyon ilişkisi desteklenir. Bu sınır hem [iç Federasyonları](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) hem de doğrudan Federasyonları içerir.
+
+### <a name="limit-on-multiple-domains"></a>Birden çok etki alanı sınırı
+Şu anda aynı kiracıdan birden çok etki alanı olan doğrudan Federasyonu desteklemiyoruz.
+
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Yönetilmeyen (e-posta doğrulanmış) kiracının bulunduğu bir etki alanı ile doğrudan federasyonı ayarlayabilir miyim? 
 Evet. Etki alanı doğrulanmadıysa ve kiracı bir [yönetici tarafından ele](../users-groups-roles/domains-admin-takeover.md)geçirmemişse, bu etki alanıyla doğrudan Federasyon oluşturabilirsiniz. Yönetilmeyen ya da e-posta doğrulandı, bir Kullanıcı bir B2B davetini önceden kullanıyorsa veya şu anda mevcut olmayan bir etki alanını kullanarak Azure AD 'ye self servis kaydolma gerçekleştirdiğinde oluşturulur. Bu etki alanlarıyla doğrudan Federasyon oluşturabilirsiniz. Doğrudan Federasyonu, Azure portal veya PowerShell aracılığıyla DNS tarafından doğrulanan bir etki alanıyla ayarlamaya çalışırsanız bir hata görürsünüz.
@@ -93,7 +97,7 @@ IDP 'den SAML 2,0 yanıtı için gerekli öznitelikler:
 |Öznitelik  |Değer  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Hedef Kitle     |`urn:federation:MicrosoftOnline`         |
+|Hedef kitle     |`urn:federation:MicrosoftOnline`         |
 |Veren     |İş ortağı IDP veren URI 'SI (örneğin `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
 
@@ -119,7 +123,7 @@ IDP 'den WS-BESM iletisinde gerekli öznitelikler:
 |Öznitelik  |Değer  |
 |---------|---------|
 |Passıverequestorendpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Hedef Kitle     |`urn:federation:MicrosoftOnline`         |
+|Hedef kitle     |`urn:federation:MicrosoftOnline`         |
 |Veren     |İş ortağı IDP veren URI 'SI (örneğin `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
 IDP tarafından verilen WS-Besme belirteci için gerekli talepler:
@@ -137,7 +141,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Azure AD portalında doğrudan Federasyonu yapılandırmak için
 
-1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcıları**' nı seçin ve ardından **yenı SAML/WS-besıop**' ı seçin.
 
@@ -185,7 +189,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Doğrudan bir Federasyon ilişkisini Nasıl yaparım? mi düzenleyin?
 
-1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcılarını** seçin
 4. **SAML/WS-beslik kimlik sağlayıcıları**altında sağlayıcıyı seçin.
@@ -196,7 +200,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 ## <a name="how-do-i-remove-direct-federation"></a>Doğrudan Federasyonu kaldırmak Nasıl yaparım? mı?
 Doğrudan Federasyon kurulumunuzu kaldırabilirsiniz. Bunu yaparsanız, doğrudan davetlerini daha önce kullanan Federasyon Konuk kullanıcıları oturum açamaz. Ancak onları dizinden silerek ve yeniden davet ederek kaynaklarınıza erişim izni verebilirsiniz. Azure AD portalındaki bir kimlik sağlayıcısıyla doğrudan Federasyonu kaldırmak için:
 
-1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
+1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Kuruluş ilişkilerini**seçin.
 3. **Kimlik sağlayıcıları**' nı seçin.
 4. Kimlik sağlayıcısını seçin ve **Sil**' i seçin. 
@@ -209,7 +213,7 @@ PowerShell kullanarak doğrudan Federasyonu bir kimlik sağlayıcısıyla kaldı
    Connect-AzureAD
    ```
 3. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın. 
-4. Aşağıdaki komutu kullanın:
+4. Aşağıdaki komutu girin:
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```

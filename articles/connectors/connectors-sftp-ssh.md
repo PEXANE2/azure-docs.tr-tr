@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647652"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161883"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -31,7 +31,28 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
 
 ## <a name="limits"></a>Sınırlar
 
-* Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir. 15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri, yalnızca 15 MB 'lık dosyaları işleyebilen Dosya Kopyala eylemi dışında [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **Dosya Içeriğini al** eylemi örtük olarak ileti parçalama kullanır.
+* SFTP- [öbek](../logic-apps/logic-apps-handle-large-messages.md) oluşturma 'Yı destekleyen SSH EYLEMLERI 1 GB 'a kadar dosya işleyebilir, ancak öbek desteklemeyen SFTP-ssh EYLEMLERI 50 MB 'a kadar olan dosyaları işleyebilir. Varsayılan öbek boyutu 15 MB olsa da, bu boyut, 5 MB 'den başlayarak dinamik olarak değişebilir ve ağ gecikmesi, sunucu yanıt süresi vb. gibi etkenlere bağlı olarak 50 MB 'lık en yüksek düzeyde arttırılır.
+
+  > [!NOTE]
+  > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+
+  Öbek boyutu bir bağlantıyla ilişkilendirilir, yani parçalama desteği olan eylemler ve sonra parçalama desteği olmayan eylemler için aynı bağlantıyı kullanabilirsiniz. Bu durumda, öbek oluşturma desteği olmayan eylemler için öbek boyutu 5 MB ile 50 MB arasındadır. Bu tabloda, hangi SFTP-SSH eylemlerinin öbek oluşturma desteği gösterilmektedir:
+
+  | Eylem | Öbek oluşturma desteği |
+  |--------|------------------|
+  | **Dosyayı Kopyala** | Hayır |
+  | **Dosya oluştur** | Yes |
+  | **Klasör oluştur** | Uygulanamaz |
+  | **Dosyayı Sil** | Uygulanamaz |
+  | **Arşivi klasöre Ayıkla** | Uygulanamaz |
+  | **Dosya içeriğini al** | Yes |
+  | **Yolu kullanarak dosya içeriğini al** | Yes |
+  | **Dosya meta verilerini al** | Uygulanamaz |
+  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz |
+  | **Klasördeki dosyaları Listele** | Uygulanamaz |
+  | **Dosyayı yeniden adlandır** | Uygulanamaz |
+  | **Güncelleştirme dosyası** | Hayır |
+  |||
 
 * SFTP-SSH Tetikleyicileri parçalama desteklemez. Dosya içeriği istenirken Tetikleyiciler yalnızca 15 MB veya daha küçük olan dosyaları seçer. 15 MB 'tan büyük dosyaları almak için, bunun yerine şu modele uyun:
 
@@ -46,10 +67,6 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
 SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip olduğu SFTP Bağlayıcısı arasındaki diğer önemli farklılıklar aşağıda verilmiştir:
 
 * , .NET 'i destekleyen bir açık kaynaklı Secure Shell (SSH) kitaplığı olan [SSH.net kitaplığını](https://github.com/sshnet/SSH.NET)kullanır.
-
-* Varsayılan olarak, SFTP-SSH eylemleri, *1 GB veya daha küçük* olan, ancak aynı anda yalnızca *15 MB* öbekteki dosyaları okuyabilir veya yazabilir.
-
-  15 MB 'tan büyük dosyaları işlemek için SFTP-SSH eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)kullanabilir. Ancak, bu eylem ileti parçalama işlemini desteklemediğinden, Dosya Kopyala eylemi yalnızca 15 MB dosyayı destekler. SFTP-SSH Tetikleyicileri parçalama desteklemez. Büyük dosyaları karşıya yüklemek için SFTP sunucunuzdaki kök klasör için hem okuma hem de yazma izinlerine sahip olmanız gerekir.
 
 * SFTP sunucusundaki belirtilen yolda bir klasör oluşturan **klasör oluştur** eylemini sağlar.
 

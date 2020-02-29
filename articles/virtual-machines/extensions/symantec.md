@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 63f6be105def083354abf8c546d1c334f4daa70e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975391"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919915"
 ---
-# <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Bir Windows VM’de Symantec Uç Nokta Koruması yükleme ve yapılandırma
-> [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
+# <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
 
 Bu makalede, Symantec Endpoint Protection istemcisinin Windows Server çalıştıran var olan bir sanal makineye (VM) nasıl yükleneceği ve yapılandırılacağı gösterilmektedir. Bu tam istemci, virüs ve casus yazılım koruması, güvenlik duvarı ve izinsiz giriş önleme gibi hizmetleri içerir. İstemci, VM Aracısı kullanılarak bir güvenlik uzantısı olarak yüklenir.
 

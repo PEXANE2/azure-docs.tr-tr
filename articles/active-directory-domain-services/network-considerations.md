@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613338"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917348"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -143,6 +143,11 @@ Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağı
 * Bu bağlantı noktasına erişim olmadan Azure AD DS yönetilen etki alanınız güncelleştirilemiyor, yapılandırılamaz, yedeklenmez veya izlenemez.
 * Kaynak Yöneticisi tabanlı bir sanal ağ kullanan Azure AD DS yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi *AzureActiveDirectoryDomainServices* Service etiketiyle kısıtlayabilirsiniz.
     * Klasik tabanlı bir sanal ağ kullanan eski Azure AD DS yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*ve *104.40.87.209*.
+
+    > [!NOTE]
+    > 2017 ' de Azure AD Domain Services Azure Resource Manager ağda barındırana bilgisayar için kullanılabilir duruma geldi. Bu tarihten sonra, Azure Resource Manager modern yeteneklerini kullanarak daha güvenli bir hizmet oluşturuyoruz. Azure Resource Manager dağıtımları klasik dağıtımları tamamen yerine getirmek için Azure AD DS klasik sanal ağ dağıtımları 1 Mart 2023 ' de kullanımdan kaldırılacaktır.
+    >
+    > Daha fazla bilgi için bkz. [resmi kullanımdan kaldırma bildirimi](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 

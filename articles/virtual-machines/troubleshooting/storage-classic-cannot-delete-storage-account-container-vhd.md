@@ -1,6 +1,6 @@
 ---
-title: Azure Klasik depolama hesaplarını, kapsayıcıları veya VHD'leri sildiğinizde sorun giderme | Microsoft Docs
-description: Ekli VHD'lerde içeren depolama kaynaklarını silerken sorunlarını gidermek nasıl.
+title: Azure klasik depolama hesaplarını, kapsayıcıları veya VHD 'lerini silerken oluşan sorunları giderme | Microsoft Docs
+description: Bağlı VHD 'leri içeren depolama kaynaklarını silerken sorun giderme.
 services: storage
 author: AngshumanNayakMSFT
 tags: top-support-issue,azure-service-management
@@ -8,120 +8,124 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926239"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915046"
 ---
-# <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Klasik depolama kaynağı silme hatalarını giderme
-Bu makalede, Azure Klasik depolama hesabı, kapsayıcı veya *.vhd sayfa blob dosyası silinmeye çalışılırken şu hatalar biri meydana geldiğinde sorun giderme kılavuzu verilmiştir. 
+# <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Klasik depolama kaynağı silme hatalarıyla ilgili sorunları giderme
+Bu makalede, Azure klasik depolama hesabı, kapsayıcı veya *. vhd Sayfa Blobu dosyası silinmeye çalışılırken aşağıdaki hatalardan biri oluştuğunda sorun giderme kılavuzu sunulmaktadır. 
 
 
-Bu makalede, yalnızca klasik depolama kaynakları ile ilgili sorunları kapsar. Azure portalını kullanarak klasik bir sanal makine bir kullanıcıyı siler, PowerShell veya CLI ardından diskleri otomatik olarak silinmez. Kullanıcı, "Disk" kaynağı silme seçeneğini alır. Durumunda seçeneği seçili değilse, "Disk" kaynak depolama hesabı, kapsayıcı ve gerçek *.vhd sayfa blob dosyası silinmesini engeller.
+Bu makale yalnızca klasik depolama kaynaklarıyla ilgili sorunları ele alır. Bir Kullanıcı Azure portal, PowerShell veya CLı kullanarak klasik bir sanal makineyi silerse, diskler otomatik olarak silinmez. Kullanıcı "disk" kaynağını silme seçeneğini alır. Seçeneğin seçili olmaması durumunda, "disk" kaynağı depolama hesabının, kapsayıcının ve gerçek *. vhd sayfası blob dosyasının silinmesini engeller.
 
-Azure diskleri hakkında daha fazla bilgi bulunabilir [burada](../../virtual-machines/windows/managed-disks-overview.md). Azure bozulmasını önlemek için bir sanal Makineye bağlı bir disk silinmesini engeller. Ayrıca, kapsayıcılar ve bir VM'ye bağlı bir sayfa blobu olan depolama hesapları silinmesini engeller. 
+Azure diskleri hakkında daha fazla bilgiyi [burada](../../virtual-machines/windows/managed-disks-overview.md)bulabilirsiniz. Azure, bir VM 'ye bağlı bir diskin bozulmasını engellemek için silinmesini engeller. Ayrıca, bir VM 'ye bağlı bir Sayfa Blobu olan kapsayıcıların ve depolama hesaplarının silinmesini engeller. 
 
 ## <a name="what-is-a-disk"></a>"Disk" nedir?
-"Disk" kaynağı, bir sanal makine *.vhd sayfa blob dosyasına bir işletim sistemi diski veya veri diski olarak bağlamak için kullanılır. Bir işletim sistemi diski veya veri diski kaynak silinene kadar kiralama *.vhd dosyada tutmak devam eder. "Disk" kaynağı için işaret ediyorsa, görüntü gösterilen yolundaki tüm depolama kaynağı silinemez.
+Bir "disk" kaynağı bir sanal makineye bir işletim sistemi diski veya veri diski olarak bir *. vhd Sayfa Blobu dosyası bağlamak için kullanılır. Bir işletim sistemi diski veya veri diski kaynağı silinene kadar, *. vhd dosyasında bir kira tutmaya devam edecektir. Bir "disk" kaynağı işaret ediyorsa, aşağıdaki resimde gösterilen yoldaki herhangi bir depolama kaynağı silinemez.
 
-![Disk (Klasik) "Özelliği" bölmesindeki portalı ekran görüntüsü açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
+![Disk (klasik) "özellik" bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 
 
-## <a name="steps-while-deleting-a-classic-virtual-machine"></a>Klasik bir sanal makine silinirken adımları 
+## <a name="steps-while-deleting-a-classic-virtual-machine"></a>Klasik bir sanal makineyi silme adımları 
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 1. Klasik sanal makineyi silin.
-2. "Diskler" onay kutusunu seçtiyseniz **disk kirası** (yukarıdaki görüntüde gösterilmiştir) ilişkili sayfa blob'u *.vhd bozuk. Gerçek sayfa blob *.vhd dosya depolama hesabında varolmaya devam eder.
-![Sanal makine (Klasik) "Sil" hata bölmesi açık portal ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+2. "Diskler" onay kutusu işaretliyse, blob *. vhd ile ilişkili **disk kirası** (yukarıdaki görüntüde gösterilir) bozulur. Gerçek Sayfa Blobu *. vhd dosyası depolama hesabında yine de mevcut olacaktır.
+Portalın ekran görüntüsünü ![sanal makine (klasik) "silme" hata bölmesi açık](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
-3. Disklerin kira bozuk hale geldikten sonra sayfa BLOB silinebilir. Tüm "Disk" kaynak bunları mevcut silindikten sonra bir depolama hesabı veya kapsayıcı silinebilir.
+3. Disk kirası bozulur, sayfa Blobun kendisi silinebilir. Bir depolama hesabı veya kapsayıcısı, içindeki tüm "disk" kaynakları silindiğinde silinebilir.
 
 >[!NOTE] 
->Kullanıcı VM ancak VHD silerse, depolama ücretleri sayfa blob *.vhd dosyada tahakkuk etmeye devam eder. Depolama hesabı, onay türü ayarlarına uygun olarak ücret olacaktır [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/) daha fazla ayrıntı için. Kullanıcı artık vhd'sinin kullanmaya çalışırsa, BT/bunları gelecekteki ücretlerden kaçınmak için silin. 
+>Kullanıcı VM 'yi silerse ancak VHD 'yi değil, depolama ücretleri Sayfa Blobu *. vhd dosyasında tahakkuk etmeye devam edecektir. Ücretler, depolama hesabı türü ile birlikte olacaktır, daha fazla ayrıntı için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/) bakın. Kullanıcı artık VHD 'leri kullanmayı amaçlamadıysanız, gelecekteki ücretlerden kaçınmak için bu dosyayı silin. 
 
-## <a name="unable-to-delete-storage-account"></a>Depolama hesabı silinemedi 
+## <a name="unable-to-delete-storage-account"></a>Depolama hesabı silinemiyor 
 
-Kullanıcı, kullanıcı artık gerekli olmadığında bir Klasik depolama hesabını silmek çalıştığında, aşağıdaki davranış görebilirsiniz.
+Kullanıcı artık gerekmeyen klasik bir depolama hesabını silmeye çalıştığında, Kullanıcı aşağıdaki davranışı görebilir.
 
-#### <a name="azure-portal"></a>Azure portal 
-Kullanıcı için Klasik depolama hesabı üzerinde gittiğinde [Azure portalında](https://portal.azure.com) tıklattığında **Sil**, kullanıcı şu iletiyi görürsünüz: 
+#### <a name="azure-portal"></a>Azure portalı 
+Kullanıcı [Azure Portal](https://portal.azure.com) klasik depolama hesabına gider ve **Sil**' e tıkladıktan sonra Kullanıcı şu iletiyi görür: 
 
-Diskleri ile "bir sanal makineye bağlı"
+Bir sanal makineye disk (ler) "eklenmiş"
 
-![Sanal makine (Klasik) "Sil" hata bölmesi açık portal ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
-
-
-Diskleri ile "bir sanal makineye eklenmemiş"
-
-![Sanal makine (Klasik) "Sil" hata olmayan bölmesi portalı ekran görüntüsü açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_unattached_portal.jpg)
+![Sanal makine (klasik) "Sil" hata bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
 
 
-#### <a name="azure-powershell"></a>Azure PowerShell
-Kullanıcı artık, Klasik PowerShell cmdlet'lerini kullanarak kullanılmakta olan bir depolama hesabını silmeye çalışır. Kullanıcı şu iletiyi görürsünüz:
+Bir sanal makineye "iliştirilmemiş" disk (ler) i
 
-> <span style="color:cyan">**Remove-AzureStorageAccount - StorageAccountName myclassicaccount**</span>
-> 
-> <span style="color:red">Remove-AzureStorageAccount: BadRequest: Ör bazı etkin görüntülere ve/veya diskleri, depolama hesabı myclassicaccount sahip  
-> myclassicaccount. Bu görüntülerin ve/veya diskleri bu depolama hesabını silmeden önce kaldırılır emin olun.</span>
-
-## <a name="unable-to-delete-storage-container"></a>Depolama kapsayıcısı silinemedi
-
-Kullanıcı, kullanıcı artık gerekli olmadığında bir Klasik depolama blob kapsayıcısını silme girişiminde bulunduğunda, aşağıdaki davranış görebilirsiniz.
-
-#### <a name="azure-portal"></a>Azure portal 
-Azure portalı, kapsayıcıdaki bir *.vhd sayfa blob dosyasına işaret eden bir "Diskler" kira varsa, bir kapsayıcı silmek kullanıcı izin vermez. Disklerin kira vhd'sinin dosyasıyla bunlardaki yanlışlıkla silinmesini önlemek için tasarım gereğidir. 
-
-![Depolama kapsayıcısı "list" bölmesindeki portalı ekran görüntüsü açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_container_portal.jpg)
+![Sanal makine (klasik) "Sil" hata olmayan bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_unattached_portal.jpg)
 
 
 #### <a name="azure-powershell"></a>Azure PowerShell
-PowerShell kullanarak silmek kullanıcı seçerse, şu hataya neden olur. 
+Kullanıcı, klasik PowerShell cmdlet 'lerini kullanarak artık kullanılmayan bir depolama hesabını silmeye çalışır. Kullanıcı şu iletiyi görür:
 
-> <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
+> <span style="color:cyan">**Remove-Azurestorampahesabı-StorageAccountName myclassicaccount**</span>
 > 
-> <span style="color:red">Remove-AzureStorageContainer : Uzak sunucu hata döndürdü: (412) burada şu anda kapsayıcı üzerindeki kira ve istekte hiçbir kiralama kimliği belirtildi... HTTP durum kodu: 412 - HTTP hata iletisi: Kapsayıcı üzerinde şu anda bir kira yoktur ve istekte hiçbir kiralama kimliği belirtildi.</span>
+> <span style="color:red">Remove-Azurestonetgeaccount: Rozrequest: depolama hesabı myclassicaccount içinde bazı etkin görüntü (ler) ve/veya disk, ör.  
+> myclassicaccount. Bu depolama hesabını silmeden önce bu yansımanın ve/veya disklerin kaldırıldığından emin olun.</span>
 
-## <a name="unable-to-delete-a-vhd"></a>Bir vhd silinemedi 
+## <a name="unable-to-delete-storage-container"></a>Depolama kapsayıcısı silinemiyor
 
-Azure sanal makinesi sildikten sonra kullanıcı (sayfa blobu) vhd dosyasını silin ve aşağıdaki ileti almak çalışır:
+Kullanıcı artık gerekmeyen bir klasik Depolama Blobu kapsayıcısını silmeye çalıştığında, Kullanıcı aşağıdaki davranışı görebilir.
 
-#### <a name="azure-portal"></a>Azure portal 
-Portalda, silinmek üzere seçilen blobların listesi bağlı olarak iki deneyimler olabilir.
+#### <a name="azure-portal"></a>Azure portalı 
+Azure portal, kapsayıcıda bir *. vhd sayfa blob dosyasını işaret eden "disk (ler)" kirası varsa, kullanıcının kapsayıcıyı silmesine izin vermez. Bu, diskler üzerinde kira ile VHD (ler) bir dosyayı yanlışlıkla silinmeye engel olmak için tasarımdır. 
 
-1. Yalnızca "Kiralanmış" BLOB'ları seçili sonra Sil düğmesini gösterilmesini.
-![Kapsayıcı blob "list" bölmesindeki portalı ekran görüntüsü açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+![Depolama kapsayıcısı "liste" bölmesi açık olan portalın ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_container_portal.jpg)
 
 
-2. "Kiralanmış" ve "Kullanılabilir" bloblar bir karışımını seçtiyseniz, "Sil" düğmesini gösterir. Ancak, bir Disk kirası olan sayfa bloblarını arkasında "Sil" işlemi bırakır. 
-![Blob kapsayıcı "list" bölmesindeki açık portal ekran görüntüsü](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![seçilen blob ile portal ekran görüntüsü "Sil" bölmesini açma](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+#### <a name="azure-powershell"></a>Azure PowerShell
+Kullanıcı PowerShell 'i kullanarak silmeyi seçerse, bu hata aşağıdaki hataya neden olur. 
+
+> <span style="color:cyan">**Remove-Azurestoraygecontainer-Context $context-ad VHD 'leri**</span>
+> 
+> <span style="color:red">Remove-Azurestoraygecontainer: uzak sunucu bir hata döndürdü: (412) kapsayıcıda bir kira var ve istekte hiçbir kira KIMLIĞI belirtilmemiş.. HTTP durum kodu: 412-HTTP hata Iletisi: Şu anda kapsayıcıda bir kira var ve istekte hiçbir kira KIMLIĞI belirtilmemiş.</span>
+
+## <a name="unable-to-delete-a-vhd"></a>Bir VHD silinemiyor 
+
+Azure sanal makinesini sildikten sonra, Kullanıcı VHD dosyasını (Sayfa Blobu) silmeye çalışır ve aşağıdaki iletiyi alır:
+
+#### <a name="azure-portal"></a>Azure portalı 
+Portalda, silinmek üzere seçilen blob 'ların listesine bağlı olarak iki deneyim olabilir.
+
+1. Yalnızca "kiralanan" blob 'lar seçilirse Sil düğmesi gösterilmez.
+kapsayıcı blobu "liste" bölmesi açık olan portalın ekran görüntüsünü ![](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+
+
+2. "Kiralık" ve "kullanılabilir" bloblarının bir karışımı seçilirse, "Sil" düğmesi görüntülenir. Ancak "Sil" işlemi, üzerinde disk kirası olan sayfa bloblarının arkasında kalacak. 
+Portalın ekran görüntüsünü ![kapsayıcı blobu "liste" bölmesi](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+açık olan seçili blob "Sil" bölmesi açık olan portalın ekran görüntüsü ![açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
-PowerShell kullanarak silmek kullanıcı seçerse, şu hataya neden olur. 
+Kullanıcı PowerShell 'i kullanarak silmeyi seçerse, bu hata aşağıdaki hataya neden olur. 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
+> <span style="color:cyan">**Remove-Azurestooygeblob-Context $context-Container VHD 'ler-blob "classicvm-OS-8698. vhd"** </span>
 > 
-> <span style="color:red">Remove-AzureStorageBlob : Uzak sunucu hata döndürdü: (412) burada şu anda blob üzerinde kiralama ve istekte hiçbir kiralama kimliği belirtildi... HTTP durum kodu: 412 - HTTP hata iletisi: Blob üzerinde şu anda bir kira yoktur ve istekte hiçbir kiralama kimliği belirtildi.</span>
+> <span style="color:red">Remove-Azurestoraygeblob: uzak sunucu bir hata döndürdü: (412) blob üzerinde şu anda bir kira var ve istekte hiçbir kira KIMLIĞI belirtilmemiş.. HTTP durum kodu: 412-HTTP hata Iletisi: Şu anda blob üzerinde bir kira var ve istekte hiçbir kira KIMLIĞI belirtilmemiş.</span>
 
 
 ## <a name="resolution-steps"></a>Çözüm adımları
 
-### <a name="to-remove-classic-disks"></a>Klasik disk kaldırmak için
-Azure portalında aşağıdaki adımları izleyin:
+### <a name="to-remove-classic-disks"></a>Klasik diskleri kaldırmak için
+Azure portal şu adımları uygulayın:
 1.  [Azure portalına](https://portal.azure.com) gidin.
-2.  İçin Disks(classic) gidin. 
-3.  Diskler sekmesine tıklayın. ![Kapsayıcı blob "list" bölmesindeki portalı ekran görüntüsü açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+2.  Disklere (klasik) gidin. 
+3.  Diskler sekmesine tıklayın. portalın ekran görüntüsünü ![kapsayıcı blobu "liste" bölmesi açık](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Veri diskinizi seçin ve Diski Sil’e tıklayın.
- ![Kapsayıcı blob "list" bölmesindeki portalı ekran görüntüsü açın](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
+ kapsayıcı blobu "liste" bölmesi açık olan portalın ekran görüntüsünü ![](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
  
-5.  Daha önce başarısız silme işlemini yeniden deneyin.
-6.  Tek bir diske sahip olduğu sürece, bir depolama hesabı veya kapsayıcı silinemez.
+5.  Daha önce başarısız olan silme işlemini yeniden deneyin.
+6.  Bir depolama hesabı veya kapsayıcısı, tek bir diski olduğu sürece silinemez.
 
-### <a name="to-remove-classic-images"></a>Klasik görüntü kaldırmak için   
-Azure portalında aşağıdaki adımları izleyin:
+### <a name="to-remove-classic-images"></a>Klasik görüntüleri kaldırmak için   
+Azure portal şu adımları uygulayın:
 1.  [Azure portalına](https://portal.azure.com) gidin.
-2.  İşletim sistemi görüntüleri (Klasik) gidin.
+2.  İşletim sistemi görüntüleri (klasik) sayfasına gidin.
 3.  Görüntüyü silin.
-4.  Daha önce başarısız silme işlemini yeniden deneyin.
-5.  Tek bir görüntü olduğu sürece, bir depolama hesabı veya kapsayıcı silinemez.
+4.  Daha önce başarısız olan silme işlemini yeniden deneyin.
+5.  Tek bir görüntüsü olduğu sürece bir depolama hesabı veya kapsayıcısı silinemez.

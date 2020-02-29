@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: f5b4bf14be264d16109ddc10cd3b667e728642c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980699"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919575"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Windows VM 'yi başka bir Azure aboneliğine veya kaynak grubuna taşıma
 Bu makalede, bir Windows sanal makinesini (VM) kaynak grupları veya abonelikler arasında taşıma işlemi adım adım gösterilmektedir. Bir kişisel abonelikte ilk olarak bir VM oluşturduysanız ve bundan sonra işinize devam etmek için bunu şirketinizin aboneliğine taşımak istiyorsanız abonelikler arasında geçiş yapmak yararlı olabilir. Sanal makineyi taşımak için başlatmanız gerekmez ve taşıma sırasında çalışmaya devam etmelidir.
@@ -35,13 +35,13 @@ Bu makalede, bir Windows sanal makinesini (VM) kaynak grupları veya abonelikler
 Bir sanal makineyi başka bir kaynak grubuna taşımak için tüm bağımlı kaynakları da taşıdığınızdan emin olmanız gerekir. Bu kaynakların her birine ait kaynak KIMLIĞI ile bir liste almak için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) cmdlet 'ini kullanın.
 
 ```azurepowershell-interactive
- Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-list -wrap -Property ResourceId
+ Get-AzResource -ResourceGroupName myResourceGroup | Format-table -wrap -Property ResourceId
 ```
 
-Bir önceki komutun çıkışını, her kaynağı hedefe taşımak için [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) Için kaynak kimliklerinin virgülle ayrılmış bir listesi olarak kullanabilirsiniz.
+Her bir kaynağı hedefe taşımak için [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) Için kaynak kimliklerinin virgülle ayrılmış bir listesini oluşturmak üzere önceki komutun çıkışını kullanabilirsiniz.
 
 ```azurepowershell-interactive
-Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "myDestinationResourceGroup" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
 

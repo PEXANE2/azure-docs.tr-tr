@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: lahugh
-ms.openlocfilehash: 7b739e8a282fdd462ee6b465371bc04a9172ab46
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6654506a1e53165ef0891ba0de32a7937c21c904
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493078"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164823"
 ---
 # <a name="h-series"></a>H Serisi
 
@@ -23,6 +23,10 @@ ACU: 290-300
 Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
+
+Dinamik Geçiş: desteklenmiyor
+
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 | Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

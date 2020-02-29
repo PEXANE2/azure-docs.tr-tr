@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208311"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913710"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Google Maps 'tan Azure Maps 'e geçiş
 
@@ -39,10 +39,13 @@ Tablo, Google Maps özelliklerine karşılık gelen Azure Maps özelliklerinin �
 | Nedeniyle                   | Planlandı                                |
 | Coğrafi kodlama (Ileri/ters) | ✓                                      |
 | Konumu                 | Yok                                    |
+| En yakın yollar               | ✓                                      |
 | Konum arama               | ✓                                      |
 | Yer ayrıntıları              | Yok – Web sitesi & telefon numarası kullanılabilir |
 | Fotoğrafları yerleştir               | Yok                                    |
 | Otomatik tamamlamayı yerleştir          | ✓                                      |
+| Yola yasla                | ✓                                      |
+| Hız sınırları                | ✓                                      |
 | Statik haritalar                 | ✓                                      |
 | Statik cadde görünümü          | Yok                                    |
 | Saat Dilimi                   | ✓                                      |
@@ -87,7 +90,9 @@ Azure haritalar için yararlı teknik kaynakların listesi aşağıda verilmişt
 - Geliştirici forumları: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
 - Videolar: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - Blog: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
+- Teknik blog: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure haritalar geri bildirimi (UserVoice): [https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- [Azure Maps Jupyter Notebook] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
 
 ## <a name="migration-support"></a>Geçiş desteği
 

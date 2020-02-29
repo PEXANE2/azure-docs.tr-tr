@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir Node. js kapsayıcı
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670281"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920034"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service için Linux Node. js uygulaması yapılandırma
 
@@ -43,6 +43,32 @@ Bu ayar, çalışma zamanında ve kudu içinde otomatik paket geri yükleme sır
 
 > [!NOTE]
 > Projenizin `package.json`Node. js sürümünü ayarlamanız gerekir. Dağıtım altyapısı, desteklenen tüm Node. js sürümlerini içeren ayrı bir kapsayıcıda çalışır.
+
+## <a name="customize-build-automation"></a>Derleme Otomasyonu 'nu özelleştirme
+
+Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
+
+1. `PRE_BUILD_SCRIPT_PATH`tarafından belirtilmişse özel betiği çalıştırın.
+1. `npm install`, NPM `preinstall` ve `postinstall` betikleri içeren ve ayrıca `devDependencies`yüklenen bayraklar olmadan çalıştırın.
+1. *Package. JSON*içinde bir derleme betiği belirtilmişse `npm run build` çalıştırın.
+1. Bir derleme: Azure betiği *Package. JSON*içinde belirtilmişse `npm run build:azure` Çalıştır.
+1. `POST_BUILD_SCRIPT_PATH`tarafından belirtilmişse özel betiği çalıştırın.
+
+> [!NOTE]
+> [NPM belgeleri](https://docs.npmjs.com/misc/scripts)bölümünde açıklandığı gibi, `prebuild` ve `postbuild` olarak adlandırılan betikler, belirtilmişse sırasıyla `build`ve sonrasında çalışır. `preinstall` ve `postinstall` sırasıyla `install`önce ve sonra çalıştırın.
+
+`PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND`, varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için `PRE_BUILD_COMMAND`tanımlayın. Oluşturma sonrası komutları çalıştırmak için `POST_BUILD_COMMAND`tanımlayın.
+
+Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Derleme Otomasyonu 'nu özelleştirmek için ek ortam değişkenleri için bkz. [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+App Service nasıl çalıştığı ve Linux 'ta Node. js uygulamaları derleme hakkında daha fazla bilgi için bkz. [Oryx belgeleri: node. js uygulamaları nasıl algılanır ve oluşturulur](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
 
 ## <a name="configure-nodejs-server"></a>Node. js sunucusunu yapılandırma
 
@@ -126,7 +152,7 @@ Azure Gezgini 'nde, hata ayıklamak istediğiniz uygulamayı bulun, sağ tıklay
 
 Hata ayıklama işlemi tamamlandıktan sonra, **bağlantıyı kes**' i seçerek hata ayıklayıcıyı durdurun. İstendiğinde, uzaktan hata ayıklamayı devre dışı bırakmak için **Evet** ' e tıklamanız gerekir. Daha sonra devre dışı bırakmak için, Azure Gezgini 'nde uygulamanızı tekrar sağ tıklayın ve **Uzaktan hata ayıklamayı devre dışı bırak**' ı seçin.
 
-## <a name="access-environment-variables"></a>Ortam değişkenlerine erişin
+## <a name="access-environment-variables"></a>Ortam değişkenlerine erişim
 
 App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart Node. js modelini kullanarak bunlara erişebilirsiniz. Örneğin, `NODE_ENV`adlı bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
 

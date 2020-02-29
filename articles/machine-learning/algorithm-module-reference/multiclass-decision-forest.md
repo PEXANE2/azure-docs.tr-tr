@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 47cea412489693cedb05bd8a94a914b1757b8058
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152168"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921377"
 ---
 # <a name="multiclass-decision-forest-module"></a>Birden çok Lass karar ormanı modülü
 
@@ -55,6 +55,7 @@ Azure Machine Learning karar ormanı Sınıflandırıcısı, karar ağaçların�
 
     + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak bir değer kümesi sağlamak için bu seçeneği belirleyin.
 
+    + **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.   
 
 5. **Karar ağacının sayısı**: en yüksek sayıda karar ağacının, en fazla bir şekilde oluşturulabilir. Daha fazla karar ağacı oluşturarak daha iyi kapsam edinebilirsiniz, ancak eğitim süresi artabilir.
 

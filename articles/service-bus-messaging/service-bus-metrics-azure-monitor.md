@@ -9,18 +9,18 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773542"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920612"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
 Service Bus ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde Service Bus kaynaklarınızın genel durumunu değerlendirebilirsiniz. Bu istatistikler Service Bus durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler, Azure desteğine başvurun gerek kalmadan kök neden sorunlarını da yardımcı olabilir.
 
-Azure İzleyici, çeşitli Azure Hizmetleri genelinde izleme için birleştirilmiş bir kullanıcı arabirimi sağlar. Daha fazla bilgi için [Microsoft Azure'da izleme](../monitoring-and-diagnostics/monitoring-overview.md) ve [almak Azure İzleyici ölçümleri .NET ile](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) GitHub üzerinde örnek.
+Azure İzleyici, çeşitli Azure Hizmetleri genelinde izleme için birleştirilmiş bir kullanıcı arabirimi sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
 
 > [!IMPORTANT]
 > 2 saatlik bir varlıkla hiçbir etkileşim kalmadığında, varlık artık boşta kalmayacağı sürece ölçümler "0" değerini bir değer olarak göstermeye başlayacaktır.
@@ -33,7 +33,7 @@ Azure İzleyici ölçümlerine erişim birden çok yol sağlar. Ölçümlere [Az
 
 ## <a name="access-metrics-in-the-portal"></a>Portalda erişim ölçümlerini
 
-Zaman içinde ölçümleri izleyebilirsiniz [Azure portalında](https://portal.azure.com). Aşağıdaki örnek, başarılı istekleri ve hesap düzeyinde gelen istekleri görüntülemek gösterilmektedir:
+[Azure Portal](https://portal.azure.com)ölçümleri zaman içinde izleyebilirsiniz. Aşağıdaki örnek, başarılı istekleri ve hesap düzeyinde gelen istekleri görüntülemek gösterilmektedir:
 
 ![][1]
 
@@ -43,7 +43,7 @@ Ad alanı aracılığıyla doğrudan ölçümleri de erişebilirsiniz. Bunu yapm
 
 Boyutları destekleyen ölçümler için, istenen boyut değeri ile filtrelemeniz gerekir.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Azure Izleyici 'de ölçümler ve uyarılar her uyarı temelinde ücretlendirilir. Bu ücretler, uyarı kurulum ve kaydedilmeden önce portalda kullanılabilir olmalıdır. 
 
@@ -80,12 +80,19 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|Gelen Iletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Giden Iletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-| Mesajlar| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
+|Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+| İletiler| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
 | ActiveMessages| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
 | Kullanılmayan iletiler| Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/>Boyut: EntityName |
-| Zamanlanan mesajlar| Bir kuyruktaki/konudaki zamanlanan ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama  <br/> Boyut: EntityName |
+| Zamanlanan iletiler| Bir kuyruktaki/konudaki zamanlanan ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama  <br/> Boyut: EntityName |
+
+> [!NOTE]
+> Aşağıdaki ölçümler için değerler, zaman içinde değerlerdir. Söz konusu noktadan hemen sonra tüketilen gelen iletiler bu ölçümlere yansıtılmayabilir. 
+> - İletiler
+> - Etkin iletiler 
+> - Kullanılmayan iletiler 
+> - Zamanlanan iletiler 
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümü
 

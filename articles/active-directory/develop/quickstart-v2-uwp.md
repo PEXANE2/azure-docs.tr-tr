@@ -11,18 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 3700dc8755e91c35be229aaab53d47af58c80e72
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063705"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160930"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
-Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının kullanıcıları kişisel hesaplar veya iş ve okul hesaplarıyla nasıl oturum açıp Microsoft Graph API 'sini çağırabileceğinizi gösteren bir kod örneği içerir.
-
-![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-uwp/uwp-intro.svg)
+Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının kullanıcıları kişisel hesaplar veya iş ve okul hesaplarıyla nasıl oturum açıp Microsoft Graph API 'sini çağırabileceğinizi gösteren bir kod örneği içerir. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
@@ -64,22 +62,32 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2\. Adım: Visual Studio projenizi indirme
 
- - [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+> [!div renderon="docs"]
+> [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>3\. Adım: Visual Studio projenizi yapılandırma
+> [!div class="sxs-lookup" renderon="portal"]
+> Visual Studio 2019 kullanarak projeyi çalıştırın.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Kod örneğini indirin]()
 
-1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
-1. Projeyi Visual Studio'da açın. UWP SDK 'Yı yüklemek isteyip istemediğiniz sorulabilir. Bu durumda kabul edin.
-1. **MainPage.xaml.cs** ' i düzenleyin ve `ClientId` alanının değerlerini değiştirin:
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
+> Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık ve çalıştırılmaya hazırlanıyor. 
 
-    ```csharp
-    private const string ClientId = "Enter_the_Application_Id_here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.    
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>3\. Adım: Visual Studio projenizi yapılandırma
+> 
+> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
+> 1. Projeyi Visual Studio'da açın. UWP SDK 'Yı yüklemek isteyip istemediğiniz sorulabilir. Bu durumda kabul edin.
+> 1. **MainPage.xaml.cs** ' i düzenleyin ve `ClientId` alanının değerlerini değiştirin:
+>
+>    ```csharp
+>    private const string ClientId = "Enter_the_Application_Id_here";
+>    ```
 > Konumlar:
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 >
@@ -90,13 +98,15 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 
 Windows makinenizde hızlı başlangıcı denemek istiyorsanız:
 
-1. Visual Studio araç çubuğunda doğru platformu seçin (büyük olasılıkla **x64** veya **x86**, ARM değil).
-   > Hedef cihazın *cihazdan* *yerel makineye* değiştiğini gözlemleyin
+1. Visual Studio araç çubuğunda doğru platformu seçin (büyük olasılıkla **x64** veya **x86**, ARM değil). Hedef cihazın *cihazdan* *yerel makineye* değiştiğini gözlemleyeceksiniz
 1. Hata ayıklamayı Seç | **Hata ayıklama olmadan Başlat**
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
 Bu bölümde hızlı başlangıç hakkında daha fazla bilgi verilmektedir.
+
+### <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
+![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-uwp/uwp-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 
@@ -138,7 +148,7 @@ Bazı durumlar, kullanıcıların kimlik bilgilerini doğrulamak veya onay verme
 - İlk kullanıcılar uygulamada oturum açtığında
 - Parolanın süresi dolduğundan kullanıcıların kimlik bilgilerini yeniden girmesi gerektiğinde
 - Uygulamanız bir kaynağa erişim isteğinde bulunduğunda, kullanıcının onay yapması gerekir
-- İki faktörlü kimlik doğrulama gerektiğinde
+- İki öğeli kimlik doğrulama gerektiğinde
 
 ```csharp
 authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)

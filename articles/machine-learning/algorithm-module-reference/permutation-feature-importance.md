@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314955"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920374"
 ---
 # <a name="permutation-feature-importance"></a>Permütasyon Özelliği Önem Derecesi
 
-Bu makalede, veri kümeniz için bir özellik önem puanlarını hesaplamak üzere Azure Machine Learning tasarımcısında permütasyon özelliği önem derecesi ' nin nasıl kullanılacağı açıklanır. Bu puanları, bir modelde kullanılacak en iyi özellikleri belirlemenize yardımcı olması için kullanabilirsiniz.
+Bu makalede, veri kümeniz için bir özellik önem puanlarının bir kümesini hesaplamak üzere Azure Machine Learning Tasarımcısı 'nda (Önizleme) permütasyon özelliği önem derecesi 'nin nasıl kullanılacağı açıklanır. Bu puanları, bir modelde kullanılacak en iyi özellikleri belirlemenize yardımcı olması için kullanabilirsiniz.
 
 Bu modülde, özellik değerleri tek seferde bir sütun olacak şekilde rastgele karıştırılır. Modelin performansı, ve sonrasında ölçülür. Performansı ölçmek için Standart ölçülerden birini seçebilirsiniz.
 
@@ -46,7 +46,7 @@ Bir özellik puanları kümesi oluşturmak, zaten eğitilen bir modelin yanı s�
 
     -   **Classification** (Sınıflandırma)
 
-        Doğruluk, duyarlık, geri çekme, ortalama günlük kaybı  
+        Doğruluk, duyarlık, geri çekme  
 
     -   **Regresyon**
 

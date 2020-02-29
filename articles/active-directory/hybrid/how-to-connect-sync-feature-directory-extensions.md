@@ -16,15 +16,16 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889911"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917922"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
-Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler [Azure AD Graph API Directory uzantıları](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) veya [Microsoft Graph](https://developer.microsoft.com/graph/)üzerinden kullanılabilir. Kullanılabilir öznitelikleri sırasıyla [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) ve [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)' ı kullanarak görebilirsiniz. Bu özelliği ayrıca, Azure AD 'de dinamik gruplar oluşturmak için de kullanabilirsiniz.
+Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](https://docs.microsoft.com/graph/extensibility-overview
+)aracılığıyla tüketilebilir. Kullanılabilir öznitelikleri [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer)kullanarak görebilirsiniz. Bu özelliği ayrıca, Azure AD 'de dinamik gruplar oluşturmak için de kullanabilirsiniz.
 
 Mevcut olduğunda, Office 365 iş yükü bu öznitelikleri kullanır.
 
@@ -61,16 +62,12 @@ Bu uygulamayı görmek için **tüm uygulamalar** ' ı seçtiğinizden emin olun
 
 Özniteliklere **{ApplicationId}\_\_uzantısı** ön eki eklenir. ApplicationId, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahiptir. Bu konudaki tüm diğer senaryolar için bu değere ihtiyacınız olacaktır.
 
-## <a name="viewing-attributes-using-graph"></a>Grafiği kullanarak öznitelikleri görüntüleme
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak öznitelikleri görüntüleme
 
-Bu öznitelikler artık Azure AD Graph API aracılığıyla kullanılabilir. [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)kullanarak bunları sorgulayabilirsiniz.
-
-![Azure AD Graph Gezgini](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-İsterseniz, [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer#)'ni kullanarak Microsoft Graph API aracılığıyla öznitelikleri sorgulayabilirsiniz.
+Bu öznitelikler artık Microsoft Graph API ile [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#)kullanılarak kullanılabilir.
 
 >[!NOTE]
-> Microsoft Graph, özniteliklerin döndürülmesini istemek için yapmanız gerekir. Şu şekilde öznitelikleri açıkça seçin: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division.
+> Microsoft Graph API 'sinde, özniteliklerin döndürülmesini istemek gerekir. Şu şekilde öznitelikleri açıkça seçin: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
 > Daha fazla bilgi için bkz. [Microsoft Graph: sorgu parametrelerini kullanma](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

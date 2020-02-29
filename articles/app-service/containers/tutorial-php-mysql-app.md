@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 89b8d9fb1d929e0598469ba582049c61216e923a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: cdac051e8f80186f7089996d931f02453128fdda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524037"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913112"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir PHP ve MySQL uygulaması derleme
 
@@ -22,12 +22,12 @@ ms.locfileid: "77524037"
 
 ![Azure App Service’te çalışan PHP uygulaması](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure’da MySQL veritabanı oluşturma
 > * PHP uygulamasını MySQL’e bağlama
-> * Uygulamayı Azure'a dağıtma
+> * Uygulamayı Azure’da dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme
@@ -42,7 +42,7 @@ Bu öğreticiyi tamamlamak için:
 * [PHP 5.6.4 veya sonraki sürümü yükleme](https://php.net/downloads.php)
 * [Oluşturucu Yükleme](https://getcomposer.org/doc/00-intro.md)
 * Laravel için gereken şu PHP uzantılarını etkinleştirin: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
-* [MySQL yükleme ve başlatma](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
+* [MySQL'i yükleyin ve başlatın](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Yerel MySQL hazırlama
 
@@ -311,7 +311,7 @@ git commit -m "database.php updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a Dağıt
 
 Bu adımda, MySQL’e bağlı PHP uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -333,7 +333,7 @@ Daha fazla bilgi için bkz. [site kökünü değiştirme](configure-language-php
 
 ### <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma
 
-App Service’te[ komutunu kullanarak ortam değişkenlerini `az webapp config appsettings set`uygulama ayarları](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) olarak ayarlayabilirsiniz.
+App Service'te,[ komutunu kullanıp ortam değişkenlerini `az webapp config appsettings set`uygulama ayarları](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) olarak belirlersiniz.
 
 Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _&lt;appname >_ ve _MySQL-server-name >&lt;_ yer tutucuları değiştirin.
 
@@ -403,15 +403,15 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-> [!NOTE]
-> Dağıtım işleminin sonunda [Composer](https://getcomposer.org/) paketleri yüklediğini fark edebilirsiniz. App Service, varsayılan dağıtım sırasında bu otomasyonları çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde üç ek dosya bulunur:
+<!-- > [!NOTE]
+> You may notice that the deployment process installs [Composer](https://getcomposer.org/) packages at the end. App Service does not run these automations during default deployment, so this sample repository has three additional files in its root directory to enable it:
 >
-> - `.deployment` - Bu dosya, App Service’ten özel dağıtım betiği olarak `bash deploy.sh` komutunu çalıştırmasını ister.
-> - `deploy.sh` - Özel dağıtım betiği. Dosyayı gözden geçirirseniz, `php composer.phar install` komutundan sonra `npm install` çalıştırdığını görürsünüz.
-> - `composer.phar` - Composer paket yöneticisi.
+> - `.deployment` - This file tells App Service to run `bash deploy.sh` as the custom deployment script.
+> - `deploy.sh` - The custom deployment script. If you review the file, you will see that it runs `php composer.phar install` after `npm install`.
+> - `composer.phar` - The Composer package manager.
 >
-> App Service’e Git tabanlı dağıtımınıza herhangi bir adım eklemek için bu yaklaşımı kullanabilirsiniz. Daha fazla bilgi için bkz. [besteci Çalıştır](configure-language-php.md#run-composer).
->
+> You can use this approach to add any step to your Git-based deployment to App Service. For more information, see [Run Composer](configure-language-php.md#run-composer). -->
+> 
 
 ### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
 
@@ -592,7 +592,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * Azure’da MySQL veritabanı oluşturma
 > * PHP uygulamasını MySQL’e bağlama
-> * Uygulamayı Azure'a dağıtma
+> * Uygulamayı Azure’da dağıtma
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme

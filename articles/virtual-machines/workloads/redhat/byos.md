@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597703"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920578"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -41,6 +41,9 @@ Red Hat Enterprise Linux (RHEL) görüntüleri Azure 'da Kullandıkça Öde (PAY
 - Görüntülerin yetkileri yoktur, bu nedenle, Red Hat 'ten güncelleştirmeleri doğrudan almak için VM 'Leri kaydetmek ve abone olmak için abonelik Yöneticisi 'ni kullanmanız gerekir
 
 - Linux görüntüleri için KCG ve PAYG faturalandırma modelleri arasında dinamik olarak geçiş yapmak mümkün değildir. Faturalandırma modelini değiştirmek için VM 'nin ilgili görüntüden yeniden dağıtılması gerekir
+
+>[!NOTE]
+> 2\. nesil RHEL BYOS görüntüleri Market teklifiyle Şu anda kullanılamıyor. Gen 2 RHEL BYOS görüntüsüne ihtiyacınız varsa, Red Hat abonelik yönetiminde coud erişim panosunu ziyaret edin. Daha fazla ayrıntı, [Red Hat belgelerinde](https://access.redhat.com/articles/4847681)bulunabilir.
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Red Hat Gold görüntülerine erişmek için gereksinimler ve koşullar
 

@@ -3,12 +3,12 @@ title: Azure geçişi 'nde bağımlılık görselleştirmesini ayarlama
 description: Azure geçişi sunucu değerlendirmesi ' nde bağımlılık görselleştirmesini ayarlamayı açıklar.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589088"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916294"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -76,7 +76,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://go.microsoft.com/fwlink/?linkid=2104196)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.
-- MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) .
+- MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
 - MMA aracısı bu [betik](https://go.microsoft.com/fwlink/?linkid=2104394) kullanılarak da yüklenebilir.
 - MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) .
 

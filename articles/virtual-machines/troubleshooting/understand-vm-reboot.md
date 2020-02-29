@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749874"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919422"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM için sistemin yeniden başlatılmasını anlama
 
@@ -30,10 +30,7 @@ Azure 'da çalışan bir uygulamayı VM yeniden başlatmaları ve kapalı kalma 
 
 Uygulamanızda bu artıklık düzeyini sağlamak için bir kullanılabilirlik kümesinde iki veya daha fazla VM 'yi gruplandırmalarını öneririz. Bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir VM 'nin kullanılabilmesini ve yüzde 99,95 [Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)karşılamasını sağlar.
 
-Kullanılabilirlik kümeleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-
-- [VM 'lerin kullanılabilirliğini yönetme](../windows/manage-availability.md)
-- [VM 'lerin kullanılabilirliğini yapılandırma](../windows/classic/configure-availability.md)
+Kullanılabilirlik kümeleri hakkında daha fazla bilgi için bkz [. VM 'lerin kullanılabilirliğini yönetme](../windows/manage-availability.md)
 
 ## <a name="resource-health-information"></a>Kaynak Durumu bilgileri
 
@@ -97,7 +94,7 @@ Ana bilgisayar sunucusu herhangi bir nedenle yeniden başlatılamediğinde, Azur
 
 Bu konaktaki tüm VM 'Ler otomatik olarak farklı, sağlıklı bir konak sunucusuna yeniden konumlandırılır. Bu işlem genellikle 15 dakika içinde tamamlanır. Otomatik kurtarma işlemi hakkında daha fazla bilgi edinmek için bkz. [sanal makinelerin otomatik olarak kurtarılması](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
-### <a name="unplanned-maintenance"></a>Plansız bakım
+### <a name="unplanned-maintenance"></a>Planlanmamış bakım
 
 Nadir durumlarda Azure işlem ekibinin, Azure platformunun genel durumunu sağlamak için bakım etkinlikleri gerçekleştirmesi gerekebilir. Bu davranış, VM kullanılabilirliğini etkileyebilir ve genellikle daha önce açıklandığı gibi otomatik kurtarma eylemine neden olur.  
 

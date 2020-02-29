@@ -2,17 +2,17 @@
 title: NDv2-Series-Azure sanal makineleri
 description: NDv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 2d38b69e468f766d21a38bda1c2da3daae50d900
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c4f2a8deed256af54ffd4331210fdfc89b0f4e49
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663717"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161950"
 ---
 # <a name="updated-ndv2-series-preview"></a>NDv2-Series güncelleştirildi (Önizleme)
 
@@ -39,6 +39,10 @@ Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: desteklenmiyor
+
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 InfiniBand: destekleniyor
 

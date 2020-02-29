@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2020
-ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655081"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164687"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory eşleme veri akışı arama dönüşümü
 
@@ -45,6 +45,9 @@ Arama dönüşümü, bir sol dış birleşim olarak uygulanır. Aramaınızdan b
 * Birden çok satırı eşleştir: tek satır eşleşmesi döndürmek için boş bırakın
 * Eşleşme: ilk, son veya herhangi bir eşleşme seçin
 * Sıralama koşulları: ilk veya son ' u seçerseniz, ADF, verilerinizin önce ve en son bir mantığın sıralanabilmesi için verilerin sıralanmasını gerektirir
+
+> [!NOTE]
+> Tek satır seçicinizdeki ilk veya son seçeneğini yalnızca, aramaınızdan geri almak istediğiniz değeri kontrol etmeniz gerekiyorsa kullanın. "Any" veya çok satırlı aramalar kullanmak daha hızlı gerçekleşir.
 
 ### <a name="option-2"></a>Seçenek 2
 

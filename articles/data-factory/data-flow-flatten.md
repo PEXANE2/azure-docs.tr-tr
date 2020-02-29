@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 435d2469be8eb572caa02e381d84ae4e9ac32f4b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77674850"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164738"
 ---
 # <a name="azure-data-factory-flatten-transformation"></a>Azure Data Factory dönüştürmeyi Düzleştir
 
@@ -29,7 +29,7 @@ Düzleştirme dönüştürmesi, hiyerarşik bir yapının içindeki dizi değerl
 
 ## <a name="unroll-root"></a>Kökü al
 
-Varsayılan olarak, ADF, yukarıda seçtiğiniz döngüleri dizisinde yapıyı düzleştirebilir. Ya da hiyerarşinin geri alınacağı farklı bir bölümünü seçebilirsiniz.
+Varsayılan olarak, ADF, yukarıda seçtiğiniz döngüleri dizisinde yapıyı düzleştirebilir. Ya da hiyerarşinin geri alınacağı farklı bir bölümünü seçebilirsiniz. "Geri alma kökü" isteğe bağlı bir ayardır.
 
 ## <a name="input-columns"></a>Giriş sütunları
 

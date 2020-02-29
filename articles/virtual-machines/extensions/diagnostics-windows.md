@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 55afeb52323ead7db8be7e8fd1dabc880328e888
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892643"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921547"
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede PowerShell kullanarak Azure Tanılama’yı etkinleştirme
+# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede Azure Tanılama etkinleştirmek için PowerShell 'i kullanma
 
 Azure Tanılama, Azure 'da dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını sağlayan bir özelliktir. Tanılama uzantısını, Windows çalıştıran bir Azure sanal makinesinden (VM) uygulama günlükleri veya performans sayaçları gibi tanılama verileri toplamak için kullanabilirsiniz. 
 
@@ -62,6 +62,9 @@ Cmdlet 'i, tanılama yapılandırmasını içeren *Publicsettings*' i döndürü
 [Remove-Azvmdiagnosticsextenma](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) CMDLET 'i VM 'den tanılama uzantısını kaldırmak için kullanılabilir.  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Klasik dağıtım modelini kullanıyorsanız tanılama uzantısını etkinleştirin
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Klasik dağıtım modeli aracılığıyla oluşturduğunuz bir VM 'de bir tanılama uzantısını etkinleştirmek için [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 'ini kullanabilirsiniz. Aşağıdaki örnek, tanılama uzantısı etkin olan klasik dağıtım modeli aracılığıyla yeni bir VM oluşturmayı gösterir.
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage

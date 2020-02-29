@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981782"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919473"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Uzak Masaüstü Hizmetleri bir Azure VM üzerinde başlamıyor
 
 Bu makalede, bir Azure sanal makinesine (VM) bağlandığınızda ve Uzak Masaüstü Hizmetleri ya da TermService, başlamadığında veya başlayamıyorsa sorunları gidermeye yönelik konular açıklanmaktadır.
 
-> [!NOTE]  
-> Azure 'da oluşturulacak ve kaynaklarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede Kaynak Yöneticisi dağıtım modelinin kullanımı açıklanmaktadır. Bu modeli, klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı öneririz.
 
 ## <a name="symptoms"></a>Belirtiler
 
@@ -112,7 +110,7 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService hizmeti, erişim engellendi sorunu nedeniyle durduruldu
 
-1. Bağlanma [seri konsol](serial-console-windows.md) ve PowerShell örneği açın.
+1. [Seri konsoluna](serial-console-windows.md) bağlanın ve bir PowerShell örneği açın.
 2. Aşağıdaki betiği çalıştırarak Işlem Izleyicisi aracını indirin:
 
    ```
@@ -123,7 +121,7 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Şimdi bir **procmon** izleme:
+3. Şimdi bir **procmon** izlemesi başlatın:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -143,7 +141,7 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
 
 5. **C:\temp\procmontrace. PML**dosyasını toplayın:
 
-    1. [VM'ye veri diski](../windows/attach-managed-disk-portal.md
+    1. [Sanal makineye bir veri diski ekleyin](../windows/attach-managed-disk-portal.md
 ).
     2. Seri konsol dosyayı yeni bir sürücüye kopyalayın kullanın. Örneğin, `copy C:\temp\ProcMonTrace.PML F:\`. Bu komutta, F bağlanan veri diskinin sürücü harfidir.
     3. Veri sürücüsünü ayırın ve Işlem Izleyicisi ubstakke yüklü olan çalışan bir sanal makineye ekleyin.
@@ -203,8 +201,8 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM'si ekleme
 
-1. [İşletim sistemi diskini bir kurtarma VM'si ekleme](../windows/troubleshoot-recovery-disks-portal.md).
-2. Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın. Bağlı disk olarak işaretlenmiş olduğundan emin olun **çevrimiçi** Disk Yönetimi Konsolu'nda. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+2. Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın. Disk Yönetimi konsolunda, eklenen diskin **çevrimiçi** olarak işaretlendiğinden emin olun. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
 3. Yükseltilmiş bir komut istemi örneği açın (**yönetici olarak çalıştır**). Ardından aşağıdaki betiği çalıştırın. Bağlı işletim sistemi diskine atanan sürücü harfinin **F**olduğunu varsayıyoruz. Bunu sanal makinenizde uygun değerle değiştirin. 
 
    ```
@@ -219,8 +217,8 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [İşletim sistemi diskini ve VM yeniden](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
+4. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Hala yardıma ihtiyacınız varsa, sorununuzu çözmeden yararlanmak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

@@ -3,18 +3,18 @@ title: Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yedekleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586572"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918521"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 
 SAP HANA veritabanları, düşük kurtarma noktası hedefi (RPO) ve hızlı kurtarma süresi hedefi (RTO) gerektiren görev açısından kritik iş yükleridir. Artık, [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)kullanarak [Azure vm 'lerinde çalışan SAP HANA veritabanlarını yedekleyebilirsiniz](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) .
 
-Azure Backup, SAP tarafından, SAP HANA 'ın yerel API 'Lerinden yararlanarak yerel yedekleme desteği sağlamak için [biriktirme tarafından sertifikalandırilmiştir](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) . Azure Backup bu teklif, **sıfır altyapı** yedeklemelerinin Azure Backup mantarafıyla hizalanır, yedekleme altyapısını dağıtma ve yönetme ihtiyacını ortadan kaldırır. Artık Azure VM 'lerinde çalışan SAP HANA veritabanlarını sorunsuz bir şekilde yedekleyebilir ve geri yükleyebilirsiniz (artık[d serisi VM 'ler](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) de desteklenir!) ve Azure Backup sağladığı kurumsal yönetim özelliklerinden yararlanabilirsiniz.
+Azure Backup, SAP tarafından, SAP HANA 'ın yerel API 'Lerinden yararlanarak yerel yedekleme desteği sağlamak için [biriktirme tarafından sertifikalandırilmiştir](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) . Azure Backup bu teklif, **sıfır altyapı** yedeklemelerinin Azure Backup mantarafıyla hizalanır, yedekleme altyapısını dağıtma ve yönetme ihtiyacını ortadan kaldırır. Artık Azure VM 'lerinde çalışan SAP HANA veritabanlarını sorunsuz bir şekilde yedekleyebilir ve geri yükleyebilirsiniz (artık[d serisi VM 'ler](../virtual-machines/m-series.md) de desteklenir!) ve Azure Backup sağladığı kurumsal yönetim özelliklerinden yararlanabilirsiniz.
 
 ## <a name="added-value"></a>Değer eklendi
 
