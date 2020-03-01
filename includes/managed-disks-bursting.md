@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705519"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202490"
 ---
-Disk patlaması Şu anda Premium SSD 'Ler için bir önizleme özelliğidir. Patlama, tüm Premium SSD disk boyutlarında desteklenir < = 512 GiB (P20 veya below). Bu disk boyutları, en iyi çaba temelinde patlaması destekler ve burdıya yönetimi için bir kredi sistemi kullanır. Krediler disk boyutu için sağlanan performans hedefinin altında olduğunda, bir patlama demetini birikir ve trafik hedeften fazla olduğunda krediler tüketir. Disk trafiği, sağlanan hedefteki ıOPS ve bant genişliğine göre izlenir.
+Disk patlaması Şu anda Premium SSD 'Ler için bir önizleme özelliğidir. Patlama, tüm Premium SSD disk boyutlarında desteklenir < = 512 GiB (P20 veya below). Bu disk boyutları, en iyi çaba temelinde patlaması destekler ve burdıya yönetimi için bir kredi sistemi kullanır. Krediler disk boyutu için sağlanan performans hedefinin altında olduğunda, bir patlama demetini birikir ve trafik hedeften fazla olduğunda krediler tüketir. Disk trafiği, sağlanan hedefteki ıOPS ve bant genişliğine göre izlenir. Disk patlaması, ıOPS veya aktarım hızı üzerinde sanal makine (VM) boyut kısıtlamalarını atlamaz.
 
 Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir:
 

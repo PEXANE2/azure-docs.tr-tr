@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 2e06a6c8dd7eb58769f504db9f96e0303c3e9f4c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5356252432b70654648a832f9ac27698f29b6327
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748944"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202566"
 ---
 Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamalarını ve diğer hizmet sınırlarını burada bulabilirsiniz.
 
@@ -21,7 +21,7 @@ Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamaların
 | --- | --- |
 | Dizinler | Tek bir kullanıcı, üye veya konuk olarak en fazla 500 Azure AD dizinine ait olabilir.<br/>Tek bir kullanıcı, en fazla 20 dizin oluşturabilir. |
 | Etki Alanları | En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Şirket içi Active Directory ile tüm etki alanlarınızı federasyon için ayarlarsanız her dizinde en fazla 450 etki alanı adı ekleyebilirsiniz. |
-|Kaynaklar |<ul><li>Varsayılan olarak Azure Active Directory ücretsiz sürümü kullanıcıları tarafından tek bir dizinde en fazla 50.000 Azure AD kaynağı oluşturulabilir. En az bir doğrulanmış etki alanınız varsa, Azure AD 'deki varsayılan dizin hizmeti kotası 300.000 Azure AD kaynağına genişletilir. </li><li>Yönetici olmayan bir Kullanıcı 250 taneden fazla Azure AD kaynağı oluşturabilir. Hem etkin kaynaklar hem de geri yüklenebilecek silinen kaynaklar bu kotaya doğru sayılır. Yalnızca 30 günden daha kısa bir süre önce silinen Azure AD kaynakları geri yüklemek için kullanılabilir. 30 gün boyunca bir çeyrekte bu kotaya doğru sayımı geri yüklemek için artık kullanılamayan Azure AD kaynakları silindi. Normal görevleri çerçevesinde bu kotayı sürekli olarak aşmaları muhtemel olan geliştiricileriniz varsa, sınırsız sayıda uygulama kaydı oluşturma izniyle [özel bir rol oluşturabilir ve atayabilirsiniz](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md) .</li></ul> |
+|Kaynaklar |<ul><li>Varsayılan olarak Azure Active Directory ücretsiz sürümü kullanıcıları tarafından tek bir dizinde en fazla 50.000 Azure AD kaynağı oluşturulabilir. En az bir doğrulanmış etki alanınız varsa, kuruluşunuz için varsayılan Azure AD hizmet kotası 300.000 Azure AD kaynaklarına genişletilir. Bu hizmet sınırı, Azure AD fiyatlandırma sayfasında 500.000 kaynağın fiyatlandırma katmanı limiti ile ilişkili değildir. Varsayılan kotanın ötesine geçmek için Microsoft Desteği başvurmanız gerekir.</li><li>Yönetici olmayan bir Kullanıcı 250 taneden fazla Azure AD kaynağı oluşturabilir. Hem etkin kaynaklar hem de geri yüklenebilecek silinen kaynaklar bu kotaya doğru sayılır. Yalnızca 30 günden daha kısa bir süre önce silinen Azure AD kaynakları geri yüklemek için kullanılabilir. 30 gün boyunca bir çeyrekte bu kotaya doğru sayımı geri yüklemek için artık kullanılamayan Azure AD kaynakları silindi. Normal görevleri çerçevesinde bu kotayı sürekli olarak aşmaları muhtemel olan geliştiricileriniz varsa, sınırsız sayıda uygulama kaydı oluşturma izniyle [özel bir rol oluşturabilir ve atayabilirsiniz](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md) .</li></ul> |
 | Şema uzantıları |<ul><li>Dize türü uzantılar en fazla 256 karakter olabilir. </li><li>İkili tür uzantılar 256 bayt ile sınırlıdır.</li><li>Tek bir Azure AD kaynağına yalnızca 100 uzantı değeri, *Tüm* türler ve *Tüm* uygulamalar arasında yazılabilir.</li><li>Dize türü veya ikili tür tek değerli özniteliklerle yalnızca User, Group, TenantDetail, Device, Application ve ServicePrincipal varlıkları uzatılabilir.</li><li>Şema uzantıları yalnızca Graph API'si 1.21 önizleme sürümünde kullanılabilir. Bir uzantıyı kaydetmek için uygulamaya yazma erişimi verilmelidir.</li></ul> |
 | Uygulamalar |Tek bir uygulamanın sahibi en fazla 100 kullanıcı olabilir. |
 |Uygulama Bildirimi |Uygulama bildiriminde en fazla 1200 giriş eklenebilir. |
