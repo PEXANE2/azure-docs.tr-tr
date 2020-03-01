@@ -1,6 +1,7 @@
 - name: Content Moderator Belgeleri
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: Content Moderator nedir?
       href: overview.md

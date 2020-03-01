@@ -1,9 +1,12 @@
 - name: Özel Görüntü İşleme Hizmeti Belgeleri
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: Özel Görüntü İşleme nedir?
       href: home.md
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Web portalını kullanma

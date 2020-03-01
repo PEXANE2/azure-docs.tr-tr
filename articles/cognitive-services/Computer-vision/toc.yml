@@ -5,6 +5,8 @@
   items:
     - name: Görüntü İşleme nedir?
       href: Home.md
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
     - name: İstemci SDK’sini kullanma

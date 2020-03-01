@@ -6,17 +6,17 @@ metadata:
   description: Azure Form Tanıma, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bir bilişsel hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. Denetimsiz öğrenme, el ile veri etiketleme veya yoğun kodlama olmadan, modelin düzeni ve alan verilerini anlamasına izin verir. Ayrıca el ile etiketlenen verilerle denetimli öğrenme de uygulayabilirsiniz. Etiketli verilerle eğitilen modeller daha iyi performans gösterebilir ve daha karmaşık belgelerle çalışabilir.
   services: cognitive-services
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 1fe0aee8967a0072a7ae01abc5791e7a3fd0834d
-  ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+  ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
+  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/13/2020
-  ms.locfileid: "75921483"
+  ms.lasthandoff: 03/01/2020
+  ms.locfileid: "78206495"
 landingContent:
 - title: Form Tanıma hakkında
   linkLists:
