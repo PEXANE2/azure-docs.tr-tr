@@ -619,6 +619,7 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: Resource Manager şablonlarını kullanarak yönetme
               href: manage-cassandra-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell kullanarak yönetme
               href: powershell-samples-cassandra.md
             - name: Azure CLI kullanarak yönetme
@@ -706,6 +707,7 @@
               displayName: custom commands
             - name: Resource Manager şablonlarını kullanarak yönetme
               href: manage-mongodb-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell kullanarak yönetme
               href: powershell-samples-mongodb.md
             - name: Azure CLI kullanarak yönetme
@@ -767,6 +769,7 @@
               href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Resource Manager şablonlarını kullanarak yönetme
               href: manage-gremlin-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell kullanarak yönetme
               href: powershell-samples-gremlin.md
             - name: Azure CLI kullanarak yönetme
@@ -823,6 +826,7 @@
               href: table-storage-design-guide.md
             - name: Resource Manager şablonlarını kullanarak yönetme
               href: manage-table-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell kullanarak yönetme
               href: powershell-samples-table.md
             - name: Azure CLI kullanarak yönetme
@@ -859,6 +863,7 @@
           href: manage-with-cli.md
         - name: Resource Manager şablonlarını kullanma
           href: manage-sql-with-resource-manager.md
+          displayName: ARM
     - name: Genel dağıtım
       items:
         - name: Çoklu ana kaynağı yapılandırma
@@ -1110,6 +1115,7 @@
       href: /rest/api/cosmos-db-resource-provider/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.documentdb/allversions
+      displayName: ARM
     - name: Öykünücü sürüm notları
       href: local-emulator-release-notes.md
 - name: Kaynaklar
