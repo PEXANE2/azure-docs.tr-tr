@@ -4,16 +4,16 @@ description: Bu makale, Azure Maliyet Yönetimi'ndeki yaygın maliyet analizi g�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199985"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562590"
 ---
 # <a name="common-cost-analysis-uses"></a>Yaygın maliyet analizi kullanımları
 
@@ -83,6 +83,9 @@ CSV biçimindeki kullanım ayrıntıları dosyanız, bir faturaya dahil edilen t
 ## <a name="view-monthly-ea-cost-breakdown"></a>Aylık EA maliyet dökümünü görüntüleme
 
 EA kaydınız, kuruluşun tamamına ait maliyetlerin tahakkuk ettiği yerdir. Maliyetlerin zaman içinde nasıl tahakkuk ettiğini ve faturalandığını anlamak, maliyetlerin doğru şekilde yönetilmesini sağlamak için uygun proje katılımcılarıyla etkileşim kurmanıza yardımcı olur.
+
+Maliyetler yalnızca etkin kaydınız için gösterilir. Bir kaydı (etkin olmayan) yeni bir kayda (etkin) aktardıysanız, önceki kayda yönelik maliyetler Maliyet Yönetimi’nde gösterilmez.
+
 
 1. Azure portalında **Maliyet Yönetimi + Faturalandırma** > **Genel Bakış**'a gidin.
 1. Geçerli aya ait **Döküm**'e tıklayın ve parasal taahhüdünüzün nasıl tükendiğine bakın.  

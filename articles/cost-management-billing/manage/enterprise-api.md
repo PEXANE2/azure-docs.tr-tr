@@ -7,15 +7,17 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200685"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560550"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Kurumsal müşteriler için Raporlama API’lerine genel bakış
 Raporlama API’leri, Kurumsal Azure müşterilerinin program aracılığıyla tüketim ve faturalama verilerini tercih ettikleri veri analizi aracına almasını sağlar. Kurumsal müşteriler, üzerinde anlaşılan parasal taahhütlerde bulunmak ve Azure kaynaklarının özel fiyatlandırmasına erişim elde etmek için Azure ile [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzalamıştır.
+
+API’ler için gereken tüm tarih ve saat parametrelerinin birleştirilmiş Eşgüdümlü Evrensel Saat (UTC) değerleri olarak belirtilmesi gerekir. API’lerin döndürdüğü değerler UTC biçiminde gösterilir.
 
 ## <a name="enabling-data-access-to-the-api"></a>API’ye veri erişimini etkinleştirme
 * **API anahtarı oluşturma veya alma**: Kurumsal portalda oturum açın ve Raporlar > Kullanımı İndir > API Erişim Anahtarı seçeneklerine giderek API anahtarı oluşturun veya alın.

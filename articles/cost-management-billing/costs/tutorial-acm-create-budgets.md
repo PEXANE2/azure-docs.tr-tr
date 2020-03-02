@@ -4,17 +4,17 @@ description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 02/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132096"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582406"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure portalında bütçe oluşturma
 > * PowerShell ile bütçe oluşturma ve düzenleme
-> * Bir bütçeyi düzenleme
+> * Bir Azure Resource Manager şablonuyla bütçe oluşturma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -160,6 +160,16 @@ $ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -N
 
 New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonuyla bütçe oluşturma
+
+Bir Azure Resource Manager şablonu kullanarak bütçe oluşturabilirsiniz. Şablon, bir kaynak grubunun altında bütçe oluşturmanıza yardımcı olur. Şablon için yalnızca kurumsal anlaşma müşterileri desteklenir.
+
+Azure portalında oturum açıp şablonu açmak için aşağıdaki görüntüyü seçin:
+
+[![Bütçe oluştur şablonunu Azure’a dağıtma](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+
+Tüm şablon parametrelerinin ve açıklamalarının listesini görüntülemek için [Bütçe oluştur](https://azure.microsoft.com/resources/templates/create-budget/) şablonuna bakın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -168,7 +178,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * Azure portalında bütçe oluşturma
 > * PowerShell ile bütçe oluşturma ve düzenleme
-> * Bir bütçeyi düzenleme
+> * Bir Azure Resource Manager şablonuyla bütçe oluşturma
 
 Maliyet yönetimi verileriniz için yinelenen dışarı aktarma işlemi oluşturmak üzere sonraki öğreticiye ilerleyin.
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199118"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598230"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Kurumsal Anlaşma faturanızı anlama
 
@@ -55,7 +55,7 @@ Faturalama döneminizde aşağıdakilerden herhangi biri gerçekleştiğinde bir
     - Visual Studio Professional (Yıllık)
 - **Market ücretleri**: Azure Market satın alma işlemleri ve kullanımı, kuruluşunuzun kredi kapsamında yer almaz. Bu nedenle, kredi bakiyeniz ne olursa olsun Pazar ücretleri için faturalandırılırsınız. Enterprise Portal’da bir Kurumsal Yönetici, Pazar satın alma işlemlerini etkinleştirebilir ve devre dışı bırakabilir.
 
-Faturanızda tüm Azure kullanımınız, sonrasında tüm Market ücretleriyle birlikte gösterilir. Kredi bakiyeniz varsa, Azure kullanımına uygulanır.
+Faturanızda önce Azure kullanım ücretleri ve bunlarla ilişkili maliyetler, ardından da market ücretleri gösterilir. Kredi bakiyeniz varsa, bu bakiye Azure kullanımınıza uygulanır ve faturanızda maliyeti olmayan Azure kullanımı ve market kullanımı en son gösterilir.
 
 Enterprise Portal’da **Raporlar** > **Kullanım Özeti** bölümünde gösterilen birleşik toplam tutarı, Azure faturanızla karşılaştırın. **Kullanım Özeti**’ndeki tutarlara vergiler dahil değildir.
 

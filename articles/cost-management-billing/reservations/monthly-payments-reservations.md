@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200410"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587099"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma
 
@@ -30,7 +30,7 @@ Aylık ödeme tutarınız, yerel para biriminiz için güncel ayın döviz kurun
 - App Service damga pulu ücreti
 - Yönetilen Disk
 - Azure Veri Gezgini
-- MariaDB, MySQL ve PostgreSQL için Azure veritabanı
+- MariaDB için Azure Veritabanı, MySQL ve PostgreSQL
 - CloudSimple tarafından sunulan Azure VMware Çözümü
 
 
@@ -48,7 +48,7 @@ Satın alma işleminden sonra ödeme planını görüntülemek için bir rezerva
 
 API’ler, kullanım verileri ve maliyet analizi kullanılarak yapılan ödemeleri görüntüleyebilirsiniz. Aylık olarak ödenen rezervasyonlar için sıklık değeri, kullanım verileri ve Rezervasyon Ücretleri API’sinde **yinelenen** olarak gösterilir. Peşin ödenen rezervasyonlar için değer, **tek seferlik** olarak gösterilir.
 
-Maliyet analizi, varsayılan görünümde aylık satın almaları gösterir. Tüm satın almaları görmek istiyorsanız, **Masraf türü** için **satın alma** filtresini ve **Sıklık** için **yinelenen** filtresini uygulayın. Yalnızca rezervasyonları görüntülemek istiyorsanız, **Rezervasyon** için bir filtre uygulayın.
+Maliyet analizi, varsayılan görünümde aylık satın almaları gösterir. Satın alınan tüm öğeleri görmek istiyorsanız **Masraf türü** için **satın alma** filtresini ve **Sıklık** için **yinelenen** filtresini uygulayın. Yalnızca rezervasyonları görüntülemek istiyorsanız, **Rezervasyon** için bir filtre uygulayın.
 
 ![Maliyet analizinde rezervasyon satın alma maliyetlerini gösteren örnek](./media/monthly-payments-reservations/cost-analysis.png)
 
@@ -62,7 +62,7 @@ Diğer rezervasyonlar gibi, aylık faturalama ile satın alınan rezervasyonlar�
 
 Aylık olarak ödenen bir rezervasyonu değiştirdiğinizde, yeni satın almanın toplam yaşam süresi maliyeti, iade edilen rezervasyon için iptal edilen kalan ödemelerden fazla olmalıdır. Değişimler için başka bir limit veya ücret yoktur. Aylık olarak faturalandırılan yeni bir rezervasyon satın almak için peşin ödenen bir rezervasyonu değiştirebilirsiniz. Ancak yeni rezervasyonun yaşam süresi değeri, iade edilen rezervasyonun eşit olarak dağıtılan değerinden büyük olmalıdır.
 
-Aylık olarak ödenen bir rezervasyon iptal ediliyorsa Microsoft, iptal edilen gelecekteki taahhüt edilen ödemelere bir iptal ücreti uygulayabilir. Kalan taahhüt edilen ödemeler 50.000 ABD Doları para iadesi limitine tahakkuk eder.
+Aylık olarak ödenen bir rezervasyonu iptal ederseniz, Microsoft iptal olan taahhüt edilmiş ödemelere %12 oranında iptal etme ücreti uygulayabilir. Ancak, şu anda Microsoft bu ücreti uygulamamaktadır. İptal edilmiş taahhüt edilen ödemeler 50.000 ABD Doları para iadesi limitine tahakkuk eder. İptal cezası uygulanırsa, iade limiti bundan etkilenmez.
 
 Değişim ve para iadeleri hakkında daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](exchange-and-refund-azure-reservations.md).
 

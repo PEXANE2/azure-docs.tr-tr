@@ -3,16 +3,16 @@ title: Azure Enterprise Portal'ı kullanmaya başlama
 description: Bu makalede Azure Kurumsal Anlaşma (Azure EA) müşterilerinin Azure Enterprise Portal'ı nasıl kullanacağı açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fa55eebe6d051addcb5249908fd52e7e6ce44f12
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200838"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598417"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -559,7 +559,7 @@ Azure EA kaydı çerçevesinde istediğiniz kadar bölüm oluşturabilirsiniz. K
 
 Departmanları ve abonelikleri oluşturduktan sonra verileri kullanım raporunda görebilirsiniz. Bu bilgiler, departman düzeyinde kullanımı izlemenize ve maliyet ile harcama yönetimi gerçekleştirmenize yardımcı olabilir.
 
-Kullanım verilerine raporlama API'si aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Raporlama API'si belgeleri](https://ea.azure.com/helpdocs/reportingAPI).
+Kullanım verilerine raporlama API'si aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Azure Kurumsal REST API’leri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Harcama kotası ayarlayabilir ve belirlediğim limite yaklaştığımda uyarı gönderilmesini sağlayabilir miyim?
 
@@ -571,7 +571,7 @@ Harcama kotanızı tanımlamak için bir departman seçin ve ardından düzenle 
 
 _Kaynak grupları_ ve _etiketler_ kullandıysanız bu bilgiler hizmet düzeyinde izlenir ve erişmek için ayrıntılı kullanım dosyasını (CSV) indirebilirsiniz. Azure Enterprise Portal'da [kullanım raporunu indirme](https://ea.azure.com/report/downloadusage) sayfasını inceleyin.
 
-Ayrıca API aracılığıyla da erişebilirsiniz. Ayrıntılı bilgiler ve kod örneği için Azure Enterprise Portal'da [Raporlama API'si](https://ea.azure.com/helpdocs/reportingAPI) belgelerini inceleyin.
+Ayrıca API aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Azure Kurumsal REST API’leri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
 
 > [!NOTE]
 > Etiketleri yalnızca Azure Resource Manager işlemlerini destekleyen kaynaklara uygulayabilirsiniz. Klasik dağıtım modeli (klasik portal gibi) ile oluşturduğunuz sanal makine, sanal ağ veya depolama alanı gibi kaynaklara etiket uygulayamazsınız. Etiketleme desteği eklemek için bu kaynakları Resource Manager üzerinden yeniden dağıtmanız gerekir. Diğer tüm kaynaklar etiketlemeyi destekler.

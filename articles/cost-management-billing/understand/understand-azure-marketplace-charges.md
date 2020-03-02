@@ -6,15 +6,15 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce385de408d4b0a8cf1531f762a126a6b9b2c126
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199084"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587820"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure dış hizmet ücretlerinizi anlama
 Dış hizmetler, Azure markette üçüncü taraf yazılım satıcıları tarafından yayımlanır. Örneğin, SendGrid, Azure’da satın alabileceğiniz, ancak Microsoft tarafından yayımlanmayan bir dış hizmettir. Bazı Microsoft ürünleri de Azure Market aracılığıyla satılır.
@@ -22,7 +22,7 @@ Dış hizmetler, Azure markette üçüncü taraf yazılım satıcıları tarafı
 ## <a name="how-external-services-are-billed"></a>Dış hizmetleri faturalandırma
 
 - Microsoft Müşteri Sözleşmeniz (MCA) veya Microsoft İş Ortağı Sözleşmeniz (MPA) varsa üçüncü taraf hizmetleriniz, Azure hizmetlerinizin geri kalanıyla faturalandırılır. MCA veya MPA’ya erişiminizin olup olmadığını görmek için [ödeme hesabınızın türünü denetleyin](#check-billing-account-type).
-- MCA veya MPA’nız yoksa dış hizmetleriniz Azure hizmetlerinizden ayrı olarak faturalandırılır.
+- MCA veya MPA’nız yoksa dış hizmetleriniz Azure hizmetlerinizden ayrı olarak faturalandırılır. Her faturalama döneminde, biri Azure hizmetleri diğeri de Market’te yaptığınız satın alma işlemleri için olmak üzere iki fatura alırsınız.
 - Her dış hizmetin farklı bir faturalama modeli vardır. Bazı hizmetler kullandıkça öde modeliyle faturalanırken bazılarınınsa sabit aylık ücretleri vardır.
 - Dış hizmetler için aylık ücretsiz kredileri kullanamazsınız. [Ücretsiz kredileri](https://azure.microsoft.com/pricing/spending-limits/) içeren bir Azure aboneliği kullanıyorsanız bunlar harici hizmetlerin ücretlerine uygulanamaz. Yeni bir dış hizmet veya kaynak sağladığınızda bir uyarı gösterilir:
 
@@ -45,23 +45,62 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/understand-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices-for-external-services"></a>Dış hizmetler için fatura görüntüleme ve indirme
-
-Microsoft Müşteri Sözleşmeniz (MCA) veya Microsoft İş Ortağı Sözleşmeniz (MPA) varsa üçüncü taraf hizmetleriniz, Azure hizmetlerinizin geri kalanıyla faturalandırılır. MCA veya MPA’ya erişiminizin olup olmadığını görmek için [ödeme hesabınızın türünü denetleyin](#check-billing-account-type). Erişiminiz varsa, üçüncü taraf ücretlerinizi görmek için bkz. [Azure portalından faturalarınızı görüntüleme ve indirme](download-azure-invoice.md).
-
-MCA veya MPA’nız yoksa üçüncü taraf ücretler için ayrı faturalarınız olur. Şu adımları izleyerek Azure portalından Azure Market faturalarınızı görüntüleyebilir ve indirebilirsiniz:
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. Soldaki menüden **Faturalar**’ı seçin.
-1. **Azure Market ve Rezervasyonlar** sekmesine tıklayın.  ![Azure market ve rezervasyonlar sekmesinin resmi](./media/understand-azure-marketplace-charges/invoice-tabs.png)
-1. Abonelik açılan listesinde, faturalarını görmek istediğiniz dış hizmetleri içeren aboneliği seçin.
-
 ## <a name="external-spending-for-ea-customers"></a>Kurumsal Anlaşma müşterileri için dış harcama
 
 Kurumsal Anlaşma (EA) müşterileri, EA portalında dış hizmet harcamasını görebilir ve raporları indirebilir. Kullanmaya başlamak için bkz. [Kurumsal Anlaşma Müşterileri için Azure Market](https://ea.azure.com/helpdocs/azureMarketplace).
 
-## <a name="manage-payment-for-external-services"></a>Dış hizmetler için ödemeyi yönetme
+## <a name="view-and-download-invoices-for-external-services"></a>Dış hizmetler için fatura görüntüleme ve indirme
+
+Microsoft Müşteri Sözleşmeniz (MCA) veya Microsoft İş Ortağı Sözleşmeniz (MPA) varsa, üçüncü taraf hizmetleriniz Azure hizmetlerinizin geri kalanıyla tek bir faturada toplanır. MCA veya MPA’ya erişiminizin olup olmadığını görmek için [ödeme hesabınızın türünü denetleyin](#check-billing-account-type). Erişiminiz varsa, üçüncü taraf ücretlerinizi görmek için bkz. [Azure portalından faturalarınızı görüntüleme ve indirme](download-azure-invoice.md).
+
+MCA veya MPA’nız yoksa üçüncü taraf ücretler için ayrı faturalarınız olur. 
+
+Azure Market ücretleri yerel para biriminiz üzerinden gösterilir.
+
+Şu adımları izleyerek Azure portalından Azure Market faturalarınızı görüntüleyebilir ve indirebilirsiniz:
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Maliyet Yönetimi + Faturalama** araması yapın.
+1. Soldaki menüden **Faturalar**’ı seçin.
+1. Abonelik açılan menüsünde Market hizmetlerinizle ilişkili aboneliği seçin.
+1. Faturalar listesinde **Tür** sütununu gözden geçirin. Market hizmetlerine yönelik bir faturanın türü **Azure Market ve Rezervasyonlar** olur. 
+
+    ![Fatura kılavuzunda Azure Market türü ekran görüntüsü](./media/understand-azure-marketplace-charges/marketplace-type-twd.png)
+
+1. Yalnızca Azure Market ve Rezervasyonlara yönelik faturaları görmek amacıyla türe göre filtrelemek için **Tür** filtresini seçin. Ardından, açılan menüde **Azure Market ve Rezervasyonlar** seçeneğini belirleyin.
+
+    ![Tür filtresinin seçili olduğunu ve açılan menüden Azure Market ve Rezervasyon seçeneğinin belirlendiğini gösteren ekran görüntüsü](./media/understand-azure-marketplace-charges/type-filter.png)
+
+1. İndirmek istediğiniz fatura için sağ tarafta bulunan indir simgesini seçin.
+
+    ![fatura için seçili olan indir simgesini gösteren ekran görüntüsü](./media/understand-azure-marketplace-charges/download-icon-marketplace.png)
+
+1. **Fatura** seçeneğinin altındaki mavi **İndir** düğmesini belirleyin.
+
+    ![bağlam bölmesinde fatura için indir düğmesini gösteren ekran görüntüsü](./media/understand-azure-marketplace-charges/invoice-download-marketplace.png)
+
+## <a name="pay-for-external-services-in-the-azure-portal"></a>Azure portalında dış hizmetler için ödeme yapma
+
+Microsoft Müşteri Sözleşmeniz (MCA) veya Microsoft İş Ortağı Sözleşmeniz (MPA) varsa üçüncü taraf hizmetleriniz, Azure hizmetlerinizin geri kalanıyla faturalandırılır. MCA veya MPA’ya erişiminizin olup olmadığını görmek için [ödeme hesabınızın türünü denetleyin](#check-billing-account-type). Erişiminiz varsa, [Microsoft Azure faturanızı ödeme](pay-bill.md) bölümündeki adımları izleyerek faturanızın tamamını Azure portalından ödeyebilirsiniz.
+
+MCA veya MPA’nız yoksa, Market faturalarınızı aşağıdaki adımları izleyerek Azure portalından ödeyebilirsiniz:
+
+1. Market faturalarınızı bulmak için önceki bölümdeki ([Dış hizmetlere yönelik faturaları görüntüleme ve indirme](#view-and-download-invoices-for-external-services)) adımları izleyin.
+1. Ödemek istediğiniz fatura için mavi **Şimdi ödeyin** bağlantısına tıklayın.
+
+    ![faturalar kılavuzunda seçili Şimdi ödeyin bağlantısını gösteren ekran görüntüsü](./media/understand-azure-marketplace-charges/pay-now-twd.png)
+
+    >[!NOTE]
+    > **Şimdi ödeyin** bağlantısı, türü **Azure Market ve Rezervasyonlar** olan ve fatura ödeme durumu vadesi gelmiş veya vadesinde ödenmemiş olan faturalar için gösterilir.
+
+1. Yeni sayfada mavi **Ödeme yöntemini seçin** bağlantısına tıklayın.
+
+    ![ödeme yöntemini seçin bağlantısının seçili olduğu ekran görüntüsü](./media/understand-azure-marketplace-charges/select-payment-method-pay-now-twd.png)
+
+1. Ödeme yöntemi seçtikten sonra sayfanın sol altında bulunan mavi **Şimdi ödeyin** düğmesine tıklayın.
+    ![şimdi ödeyin düğmesinin seçili olduğu ekran görüntüsü](./media/understand-azure-marketplace-charges/pay-now-button-twd.png)
+
+## <a name="change-default-payment-for-external-services"></a>Dış hizmetler için varsayılan ödemeyi yönetme
 
 Dış hizmet satın alırken, kaynak için bir Azure aboneliği seçersiniz. Seçilen Azure aboneliğinin ödeme yöntemi, dış hizmetin ödeme yöntemi olur. Bir dış hizmetin ödeme yöntemini değiştirmek için, o dış hizmete bağlı olan [Azure aboneliğinin ödeme yöntemini değiştirmeniz](../manage/change-credit-card.md) gerekir. Aşağıdaki adımları izleyerek dış hizmet siparişinizin hangi aboneliğe bağlı olduğunu öğrenebilirsiniz:
 
@@ -73,25 +112,8 @@ Dış hizmet satın alırken, kaynak için bir Azure aboneliği seçersiniz. Se�
     ![kaynak için abonelik adının ekran görüntüsü](./media/understand-azure-marketplace-charges/sub-selected.png)
 1. Abonelik adına tıklayın ve [etkin ödeme yöntemini güncelleştirin](../manage/change-credit-card.md).
 
-<!-- Update your payment methods for external service orders from the [Account Center](https://account.windowsazure.com/).
-
-> [!NOTE]
-> If you purchased your subscription with a Work or School account, [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to make changes to your payment method.
-
-1. Sign in to the [Account Center](https://account.windowsazure.com/) and [navigate to the **marketplace** tab](https://account.windowsazure.com/Store)
-
-    ![Select marketplace in the account center](./media/understand-azure-marketplace-charges/select-marketplace.png)
-2. Select the external service you want to manage
-
-    ![Select the external service you want to manage](./media/understand-azure-marketplace-charges/select-ext-service.png)
-3. Click **Change payment method** on the right side of the page. This link brings you to a different portal to manage your payment method.
-
-    ![Order summary](./media/understand-azure-marketplace-charges/change-payment.PNG)
-4. Click **Edit info** and follow instructions to update your payment information.
-
-    ![Select edit info](./media/understand-azure-marketplace-charges/edit-info.png) -->
-
 ## <a name="cancel-an-external-service-order"></a>Dış hizmet siparişini iptal etme
+
 Dış hizmet siparişinizi iptal etmek istiyorsanız, [Azure portalında](https://portal.azure.com) kaynağı silin.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.

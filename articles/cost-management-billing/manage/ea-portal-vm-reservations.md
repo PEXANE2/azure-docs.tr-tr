@@ -3,16 +3,16 @@ title: Azure EA VM ayrılmış örnekleri
 description: Bu makalede, sanal makine ayrılmış örnekleri için Azure rezervasyonlarının, kurumsal kaydınızla para tasarrufu yapmanıza nasıl yardımcı olabildiği özetlenmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3eceef9dc0bc29f7e105ac0b110bd2550413fa61
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200719"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560586"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM ayrılmış örnekleri
 
@@ -57,10 +57,12 @@ Ayrılmış örnek satın alma ayrıntılarınızı [Azure portalının](https:/
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Ayrılmış örnek ile ilişkilendirilmiş olan aboneliği nasıl değiştirebilirim veya ayrılmış örnek avantajlarımı aynı hesap altındaki başka bir aboneliğe nasıl aktarabilirim?
 
-Ayrılmış örnek avantajlarından aynı anda yalnızca bir hesap faydalanabilir. Ayrılmış örnek avantajlarından faydalanan aboneliği değiştirmek için:
+Ayrılmış örnek avantajlarından faydalanan aboneliği değiştirmek için:
 
 - [Azure portalında](https://aka.ms/reservations) oturum açın.
 - Uygulanan abonelik kapsamını aynı hesabın altındaki farklı bir abonelikle ilişkilendirerek güncelleştirin.
+
+Rezervasyon kapsamını değiştirme hakkında daha fazla bilgi edinmek için bkz. [Rezervasyon kapsamını değiştirme](../reservations/manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Ayrılmış örnek kullanım ayrıntılarını görüntüleme
 

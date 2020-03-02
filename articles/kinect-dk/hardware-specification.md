@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371297"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619956"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK donanım belirtimleri
 
@@ -63,7 +63,7 @@ Azure Kinect DK aşağıdaki çevre koşullarında çalışan geliştiricilere v
 
 Azure Kinect DK, [ISSCC 2018’de tanıtılan resim algılayıcısı](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018) kullanılarak Microsoft tasarımlı 1 Megapiksel Uçuş Zamanı (ToF) derinlik kamerasıyla tümleştirilir. Derinlik kamerası aşağıda belirtilen modları destekler:
 
- | Mod            | Çözünürlük | FoI       | FPS                | Çalışma aralığı* | Pozlandırma süresi |
+ | Mod            | Çözüm | FoI       | FPS                | Çalışma aralığı* | Pozlandırma süresi |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
 | NFOV gruplanmamış   | 640x576    | 75°x65°   | 0, 5, 15, 30       | 0,5 - 3,86 m       | 12,8 ms        |
 | NFOV 2x2 gruplanmış (SW) | 320x288    | 75°x65°   | 0, 5, 15, 30       | 0,5 - 5,46 m       | 12,8 ms        |
@@ -71,7 +71,7 @@ Azure Kinect DK, [ISSCC 2018’de tanıtılan resim algılayıcısı](https://do
 | WFOV gruplanmamış   | 1024x1024  | 120°x120° | 0, 5, 15           | 0,25 - 2,21 m      | 20,3 ms        |
 | Pasif IR      | 1024x1024  | Yok       | 0, 5, 15, 30       | Yok              | 1,6 ms         |
 
-\*850 nm’de %15 ile %95 arası yansıtma, 2,2 μW/cm<sup>2</sup>/nm, rastgele hata standart sapması ≤ 17 mm, tipik sistematik hata < 11 mm + çok yollu girişim olmadan uzaklığın %0,1’i. Nesnenin yansıtma düzeyine bağlı olarak belirtilen aralığın dışında derinlik sağlanır.
+\*850 nm’de %15 ile %95 arası yansıtma, 2,2 μW/cm<sup>2</sup>/nm, rastgele hata standart sapması ≤ 17 mm, tipik sistematik hata < 11 mm + çok yollu girişim olmadan uzaklığın %0,1’i. Yukarıda belirtilen çalışma aralığının dışında olan bir derinlik sağlanabilir. Bu, nesnenin yansıtma değerine bağlıdır.
 
 ## <a name="color-camera-supported-operating-modes"></a>Renkli kameranın desteklediği çalışma modları
 

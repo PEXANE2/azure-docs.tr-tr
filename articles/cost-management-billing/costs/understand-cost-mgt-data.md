@@ -4,17 +4,17 @@ description: Bu makale Azure Maliyet Yönetimi verilerini daha iyi anlamanıza v
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199900"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560618"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -135,9 +135,9 @@ Aşağıda, etiketlerle çalışma konusunda birkaç ipucu verilmiştir:
 - Geçerli etiketlere göre maliyetlere ulaşmak için Query veya UsageDetails ile birlikte Tags API'yi kullanın.
 
 
-**Ücretsiz denemeden kullandıkça öde planına yükseltme**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Ücretsiz denemeden kullandıkça öde planına yükseltme
 
-Ücretsiz Deneme teklifini (044P) PAYG teklifine (003P) dönüştüren kullanıcılar, Ücretsiz deneme dönemindeki kullanımlarını görüntüleyebilir. Ancak dönüştürme tamamlandıktan sonra Ücretsiz Deneme kullanımı görünürlüğünü kaybeder. Dönüştürme işleminden sonra Maliyet Yönetimi'nde yalnızca PAYG kullanımı ve maliyetleri gösterilir.
+Ücretsiz denemeden kullandıkça öde fiyatlandırmasına yükseltme yaptıktan sonra sunulan ücretsiz katman hizmetleri hakkında bilgi edinmek için bkz. [Azure ücretsiz hesabı hakkında SSS](https://azure.microsoft.com/free/free-account-faq/).
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Ücretlendirilen kullanım verilerini yenileme zamanlaması
 
@@ -157,6 +157,17 @@ Kullandıkça öde abonelikleri: Faturalama ayının 15 Mart tarihinde sona erme
 ### <a name="rerated-data"></a>Yeniden ücretlendirilen veriler
 
 Verileri almak için [Maliyet Yönetimi API'lerini](../index.yml), Power BI'ı veya Azure portalını kullandığınızda fatura kapatılana kadar geçerli faturalama dönemine ait ücretler yeniden ücretlendirilebilir ve bunun sonucunda değişebilir.
+
+## <a name="cost-rounding"></a>Maliyet yuvarlama
+
+Maliyet Yönetimi’nde gösterilen ücretler yuvarlanır. Sorgu API’si tarafından döndürülen ücretler yuvarlanmaz. Örneğin:
+
+- Azure portalında maliyet analizi - Ücretler, standart yuvarlama kuralları kullanılarak yuvarlanır. 0,5’ten daha yüksek değerler yukarı, diğer değerler ise aşağı yuvarlanır. Yuvarlama, yalnızca değerler gösterildiğinde gerçekleşir. Yuvarlama veri işleme ve toplama işlemi esnasında gerçekleşmez. Örneğin, maliyet analizi maliyetleri şu şekilde toplar:
+  - Ücret 1: 0,004 ABD doları
+  - Ücret 2: 0,004 ABD doları
+  - İşlenen toplam ücret: 0,004 + 0,004 = 0,008. Gösterilen ücret 0,01 ABD dolarıdır.
+- Sorgu API’si - Ücretler sekiz ondalık basamak ile gösterilir ve yuvarlama yapılmaz.
+
 
 ## <a name="usage-data-update-frequency-varies"></a>Kullanım verileri güncelleştirme sıklığı değişir
 

@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199679"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651398"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
@@ -29,6 +29,8 @@ Siz iş ortağı kimliğinizi bağlamadan önce müşteriniz aşağıdaki seçen
 - **Dizin hesabı**: Müşteriniz, kendi dizininde sizin için bir kullanıcı hesabı oluşturabilir ve RBAC rolü atayabilir.
 
 - **Hizmet sorumlusu**: Müşteriniz, kendi dizininde kuruluşunuzdan bir uygulama veya betik ekleyebilir ve RBAC rolü atayabilir. Uygulamanın veya betiğin kimliği, hizmet sorumlusu olarak bilinir.
+
+- **Azure Lighthouse**: Müşteriniz bir aboneliği (veya kaynak grubunu) temsilci olarak atayarak kullanıcılarınızın kiracınızda bunun üzerinde çalışmasını sağlayabilir. Daha fazla bilgi için bkz. [Azure’da atanan kaynak yönetimi](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
 ## <a name="link-to-a-partner-id"></a>İş ortağı kimliğine bağlantı
 
@@ -154,3 +156,7 @@ Aşağıdaki nedenlerle raporlarda müşteriyi göremezsiniz
 **İş ortağı kimliği bağlantısı, Azure Stack ile çalışır mı?**
 
 Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
+
+**Şirketim müşteri kaynaklarına erişmek için [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) kullanıyorsa iş ortağı kimliğimi nasıl ilişkilendirebilirim?**
+
+[Azure Market’te bir yönetilen hizmet teklifi yayımlayarak](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers) müşterileri Azure’da atanan kaynak yönetimine eklerseniz, MPN kimliğiniz otomatik olarak ilişkilendirilir. Müşterileri [Azure Resource Manager şablonları dağıtarak eklerseniz](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), Microsoft İş Ortağı Ağı (MPN) kimliğinizi eklenmiş aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirmeniz gerekir. Bunu hizmet sağlayıcısı kiracınızda yapmanız gerekir. Bu işlemleri kolaylaştırmak için, MPN kimliğinizle ilişkilendirilmiş kiracınızda bir hizmet sorumlusu hesabı oluşturup eklediğiniz her müşteri için buna okuma yetkisi vermenizi öneririz.
