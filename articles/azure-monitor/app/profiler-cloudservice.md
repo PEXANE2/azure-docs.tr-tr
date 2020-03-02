@@ -1,24 +1,22 @@
 ---
 title: Application Insights ile canlı Azure Cloud Services profili | Microsoft Docs
 description: Azure Cloud Services için Application Insights Profiler etkinleştirin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820503"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671673"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights ile canlı Azure Cloud Services profili
 
 Ayrıca, bu hizmetlerde Application Insights Profiler dağıtabilirsiniz:
-* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Uygulama Hizmeti](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric uygulamaları](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Sanal Makineler](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 

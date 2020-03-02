@@ -43,6 +43,8 @@
       href: active-directory-data-storage-australia-newzealand.md
     - name: Microsoft 365 Kamu’daki yenilikler
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD’yi ADDS ile karşılaştırma
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure AD İşlem başvurusu
       items:
         - name: Giriş

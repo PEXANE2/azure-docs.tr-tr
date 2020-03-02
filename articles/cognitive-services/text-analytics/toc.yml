@@ -42,6 +42,8 @@
     - name: 'Metin çevirmek, yaklaşımı analiz etmek ve konuşmayı birleştirmek için Flask kullanma'
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: Power Automate kullanarak Excel’de verileri ayıklama
+      href: tutorials/extract-excel-information.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Metin Analizi API’sini çağırma

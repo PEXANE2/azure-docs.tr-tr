@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605254"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662476"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -474,7 +474,7 @@ Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kü
 | cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|
+| azds-<guid>.<location>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "SubscriptionID\>\<abonelikte \<küme\> kümesi bulunamadı
 
@@ -484,3 +484,14 @@ Bu sorunu düzeltmek için:
 
 * Geçerli bağlamı güncelleştirmek için `az aks use-dev-spaces -g <resource group name> -n <cluster name>` kullanın. Bu komut, zaten etkinleştirilmemişse AKS kümenizdeki Azure Dev Spaces de etkinleştirilir. Alternatif olarak, geçerli bağlamı güncelleştirmek için `kubectl config use-context <cluster name>` kullanabilirsiniz.
 * Hedeflediğiniz geçerli Azure aboneliğini göstermek ve bunun doğru olduğunu doğrulamak için `az account show` kullanın. `az account set`kullanarak hedeflediğiniz aboneliği değiştirebilirsiniz.
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>AKS sertifikalarını döndürmeden sonra dev alanları kullanılırken hata oluştu
+
+[AKS kümenizdeki sertifikaları döndürmeden](../aks/certificate-rotation.md)sonra, `azds space list` ve `azds up` gibi bazı işlemler başarısız olur. Ayrıca, kümenizdeki sertifikaları döndürmeden Azure Dev Spaces denetleyicinizde sertifikaları yenilemeniz gerekir.
+
+Bu sorunu onarmak için, *kubeconfig* 'nizin `az aks get-credentials` kullanan güncelleştirilmiş sertifikalara sahip olduğundan emin olun `azds controller refresh-credentials` komutunu çalıştırın. Örnek:
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```

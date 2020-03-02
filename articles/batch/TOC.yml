@@ -29,6 +29,8 @@
       href: tutorial-r-doazureparallel.md
     - name: Batch ve İşlevler ile OCR
       href: tutorial-batch-functions.md
+    - name: Data Factory ile Python betikleri
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: Örnekler
   items:
     - name: Kod örnekleri

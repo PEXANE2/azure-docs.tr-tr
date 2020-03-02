@@ -48,6 +48,8 @@
               href: entitlement-management-external-users.md
             - name: Raporları ve günlükleri görüntüleme
               href: entitlement-management-reports.md
+            - name: Arşiv günlükleri ve raporlama
+              href: entitlement-management-logs-and-reporting.md
             - name: Sorun giderme
               href: entitlement-management-troubleshoot.md
         - name: Katalog sahipleri
