@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552942"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208551"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
-Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](security-center-services.md#supported-endpoint-protection-solutions-) sürümlerinin sistem durumu değerlendirmeleri sağlar. Bu makalede, güvenlik merkezi 'nin aşağıdaki iki öneriyi üretmesine neden olan senaryolar açıklanmaktadır:
+Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](security-center-services.md#endpoint-supported) sürümlerinin sistem durumu değerlendirmeleri sağlar. Bu makalede, güvenlik merkezi 'nin aşağıdaki iki öneriyi üretmesine neden olan senaryolar açıklanmaktadır:
 
 * **Uç nokta koruma çözümlerini sanal makinenize yükler**
 * **Makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözün**
@@ -79,7 +79,7 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
     
             **AntivirusSignatureAge**
 
-## <a name="trend-micro"></a>Trend Micro
+## <a name="trend-micro"></a>Eğilim mikro
 
 * Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
     * **HKLM: \ Software\trendmikro \ derin güvenlik Aracısı** var
@@ -175,10 +175,10 @@ Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"m
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
-### <a name="troubleshoot"></a>Sorun giderme
+### <a name="troubleshoot"></a>Sorunları Gider
 
 Microsoft kötü amaçlı yazılımdan koruma uzantısı günlükleri şurada bulunabilir: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (veya PaaSAntimalware) \1.5.5.x (sürüm #) \CommandExecution.log**
 
 ### <a name="support"></a>Destek
 
-Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

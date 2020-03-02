@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e4768c5cf6df784c8f32aff2f884adfa6b68ab
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204863"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208721"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -63,7 +63,7 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 |Iş posta|E-postalar [tür EQ "iş"]. değer|Mail|
 |Yöneticisi|Yöneticisi|Yöneticisi|
 |tag|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
-|status|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
+|durum|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
 
 Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken "ID," "externalId" ve "meta" özniteliklerini içerir.
 
@@ -560,7 +560,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 * Grup düzeltme eki isteğine güncelleştirme, yanıtta bir *HTTP 204 içeriği* getirmelidir. Tüm üyelerin listesini içeren bir gövde döndürülmesi önerilmez.
 * Grubun tüm üyelerini döndürmeyi desteklemek gerekli değildir.
 
-#### <a name="create-group"></a>Grup Oluşturma
+#### <a name="create-group"></a>{1&gt;Grup Oluştur&lt;1}
 
 ##### <a name="request-7"></a>İsteyen
 
@@ -755,72 +755,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 Şemanızı öğrendiğinize ve Azure AD SCıM uygulamasını anladığınıza göre, SCıM uç noktanızı geliştirmeye başlamanızı sağlayabilirsiniz. Sıfırdan başlamak ve uygulamayı tamamen kendi kendinize oluşturmak yerine, SCıM commuinty tarafından yayınlanan bir dizi açık kaynaklı SCıM kitaplıklarını kullanabilirsiniz.  
 Azure AD sağlama ekibi tarafından yayımlanan açık kaynaklı .NET Core [başvuru kodu](https://aka.ms/SCIMReferenceCode) , geliştirmeye başlayabilmenizi sağlayan bir kaynaktır. SCıM uç noktanızı oluşturduktan sonra test etmek isteyeceksiniz. Başvuru kodunun bir parçası olarak verilen [Postman testleri](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) koleksiyonunu kullanabilir veya [yukarıda](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)belirtilen örnek istekler/yanıtlar üzerinden çalıştırabilirsiniz.  
 
-Şekli aşağıda verilmiştir:
-
-1. Azure AD, aşağıda açıklanan kod örneklerine dahil olmak üzere Microsoft. Systemforcrossdomainıdentitymanagement adlı ortak bir dil altyapısı (CLı) kitaplığı sağlar. Sistem tümleştiricileri ve geliştiriciler, Azure AD 'yi herhangi bir uygulamanın kimlik deposuna bağlayabilen bir SCıM tabanlı Web hizmeti uç noktası oluşturup dağıtmak için bu kitaplığı kullanabilir.
-2. Eşlemeleri, web hizmeti, standart kullanıcı şeması uygulamanın gerektirdiği protokolü ve kullanıcı şeması eşlemek için uygulanır. 
-3. Uç nokta URL'si, Azure ad uygulama galerisinde özel bir uygulama bir parçası olarak kaydedilir.
-4. Kullanıcıları ve grupları, Azure AD'de bu uygulama atanır. Atama sonrasında, hedef uygulamayla eşitlenecek bir kuyruğa yerleştirirler. Sıranın işleme eşitleme işlemi 40 dakikada bir çalışır.
-
-### <a name="code-samples"></a>Kod örnekleri
-
-Bu işlemi daha kolay hale getirmek için, bir SCıM Web hizmeti uç noktası oluşturan ve otomatik sağlamayı gösteren [kod örnekleri](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) verilmiştir. Örnek, kullanıcıları ve grupları temsil eden virgülle ayrılmış değerler satırlarıyla bir dosyayı tutan bir sağlayıcıdır.
-
-**Önkoşullar**
-
-* Visual Studio 2013 veya üzeri
-* [.NET için Azure SDK](https://azure.microsoft.com/downloads/)
-* SCIM uç noktası olarak kullanılacak ASP.NET framework 4. 5'i destekleyen Windows makinesi. Bu makinenin buluttan erişilebilir olması gerekir.
-* [Deneme sürümü veya lisanslı sürümüne sahip bir Azure aboneliği Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
-
-### <a name="getting-started"></a>Başlarken
-
-Azure ad sağlama isteklerini kabul edebilen bir SCIM uç noktası uygulamak için en kolay yolu, derleme ve dağıtma sağlanan kullanıcılar bir virgülle ayrılmış değer (CSV) dosyasına çıkarır kodu örneği sağlamaktır.
-
-#### <a name="to-create-a-sample-scim-endpoint"></a>Örnek bir SCıM uç noktası oluşturmak için
-
-1. Kod örneği paketini [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) adresinden indirin
-1. Paketin sıkıştırmasını açın ve Windows makinenizde C:\AzureAD-BYOA-Provisioning-Samples\ gibi bir konuma yerleştirin.
-1. Bu klasörde, Visual Studio'da FileProvisioning\Host\FileProvisioningService.csproj projesi başlatın.
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin ve çözüm başvurularını çözümlemek için fileprovisioningservice projesi için aşağıdaki komutları yürütün:
-
-   ```powershell
-    Update-Package -Reinstall
-   ```
-
-1. FileProvisioningService projeyi derleyin.
-1. Windows 'da (yönetici olarak) komut Istemi uygulamasını başlatın ve dizini **\Azuread-byoa-provisioning-samples\fileprovisioning\host\bin\debug** klasörünüze değiştirmek için **CD** komutunu kullanın.
-1. `<ip-address>`, Windows makinenin IP adresi veya etki alanı adıyla değiştirerek aşağıdaki komutu çalıştırın:
-
-   ```
-    FileSvc.exe http://<ip-address>:9000 TargetFile.csv
-   ```
-
-1. Windows **ayarları** > **Ağ & Internet ayarları**' nın altında, **Windows Güvenlik Duvarı** > **Gelişmiş ayarları**' nı seçin ve 9000 numaralı bağlantı noktasına gelen erişime izin veren bir **gelen kuralı** oluşturun.
-1. Windows makinesi bir yönlendiricinin arkasındaysa, yönlendiricinin internet 'e açık olan 9000 bağlantı noktası ile Windows makinesinde bağlantı 9000 noktası arasında ağ erişim çevirisini çalıştıracak şekilde yapılandırılması gerekir. Bu yapılandırma, Azure AD 'nin buluttaki bu uç noktaya erişmesi için gereklidir.
-
-#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Azure AD 'de örnek SCıM uç noktasını kaydetmek için
-
-1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın. 
-1. Sol bölmeden **Kurumsal uygulamalar** ' ı seçin. Galeriden eklenen uygulamalar dahil olmak üzere, yapılandırılan tüm uygulamaların bir listesi gösterilir.
-1. **Galeri dışı** > **Tüm** >  **+ Yeni uygulama** ' yı seçin.
-1. Uygulamanız için bir ad girin ve uygulama nesnesi oluşturmak için **Ekle** ' yi seçin. Oluşturulan uygulama nesnesi, için sağlama ve uygulama için çoklu oturum açmayı ve yalnızca SCIM uç noktası hedef uygulamayı temsil etmek üzere tasarlanmıştır.
-1. Uygulama yönetimi ekranında, sol panelde **sağlama** ' yı seçin.
-1. **Sağlama modu** menüsünde **Otomatik**' i seçin.    
-1. **Kiracı URL 'si** alanına uygulamanın SCIM uç noktasının URL 'sini girin. Örnek: https://api.contoso.com/scim/
-
-1. SCıM uç noktası, Azure AD 'den başka bir verenin bir OAuth taşıyıcı belirteci gerektiriyorsa, gerekli OAuth taşıyıcı belirtecini isteğe bağlı **gizli belirteç** alanına kopyalayın. Bu alan boş bırakılırsa Azure AD, Azure AD 'den her istekle verilen bir OAuth taşıyıcı belirteci içerir. Kimlik sağlayıcısı olarak Azure AD kullanan uygulamalar, bu Azure AD veren belirtecini doğrulayabilir.
-1. SCıM uç noktasına bağlanmak Azure Active Directory denemek için **Bağlantıyı Sına** ' yı seçin. Deneme başarısız olursa, hata bilgileri görüntülenir.  
-
-    > [!NOTE]
-    > **Test bağlantısı** , mevcut olmayan bir kullanıcı için SCIM uç noktasını sorgular, bu da Azure AD yapılandırmasında eşleşen özellik olarak rastgele bir GUID kullanılıyor. Beklenen doğru yanıt, boş bir SCıM ListResponse iletisi ile HTTP 200 Tamam
-1. Uygulamaya bağlanma denemeleri başarılı olursa, yönetici kimlik bilgilerini kaydetmek için **Kaydet** ' i seçin.
-1. **Eşlemeler** bölümünde, biri Kullanıcı nesneleri ve bir grup nesnesi için olmak üzere iki seçilebilir öznitelik eşlemesi vardır. Uygulamanızı Azure Active Directory'den eşitlenen öznitelikler gözden geçirmek için her birini seçin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için uygulamanızdaki kullanıcıları ve grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
-1. **Ayarlar**' ın altında, **kapsam** alanı hangi kullanıcıların ve grupların eşitleneceğini tanımlar. Yalnızca **Kullanıcılar ve gruplar** sekmesinde atanan kullanıcıları ve grupları eşitlemek için **"yalnızca atanan kullanıcıları ve grupları Eşitle** (önerilen) seçeneğini belirleyin.
-1. Yapılandırmanız tamamlandıktan sonra **sağlama durumunu** **Açık**olarak ayarlayın.
-1. Azure AD sağlama hizmetini başlatmak için **Kaydet** ' i seçin.
-1. Yalnızca atanmış kullanıcıları ve grupları eşitlese (önerilir), **Kullanıcılar ve gruplar** sekmesini seçtiğinizden emin olun ve eşitlemek istediğiniz kullanıcıları veya grupları atayın. Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri gösteren ilerlemeyi izlemek için sol paneldeki **Denetim günlükleri** ' ni seçebilirsiniz. Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](check-status-user-account-provisioning.md).
-Örnek doğrulama son adım, Windows makinenizde \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug klasöründeki TargetFile.csv dosya açmaktır. Sağlama işlemi çalıştırıldıktan sonra bu dosya tüm ayrıntılarını atanan ve kullanıcıları ve grupları sağlanan gösterir.
+Note: başvuru kodu, SCıM uç noktanızı oluşturmaya başlamanıza yardımcı olmaya yöneliktir ve "olduğu gıbı" sunulmaktadır. Topluluk katkılarına, kodu oluşturmaya ve tutmaya yardımcı olmak için hoş geldiniz. 
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>4\. Adım: SCıM uç noktanızı Azure AD SCıM istemcisiyle tümleştirme
 

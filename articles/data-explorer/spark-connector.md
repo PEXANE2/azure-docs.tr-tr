@@ -7,59 +7,60 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
-ms.openlocfilehash: 868e9e068244af91e218d906bee115b58906152f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b358287664ac6d6a3b641e1ab63073810ceb4c40
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027940"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208633"
 ---
-# <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Apache Spark için Azure Veri Gezgini Bağlayıcısı (Önizleme)
+# <a name="azure-data-explorer-connector-for-apache-spark"></a>Apache Spark için Azure Veri Gezgini Bağlayıcısı
 
 [Apache Spark](https://spark.apache.org/) , büyük ölçekli veri işleme için Birleşik bir analiz altyapısıdır. Azure Veri Gezgini, büyük hacimde veri üzerinde gerçek zamanlı analizler için hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. 
 
-Spark için Azure Veri Gezgini Bağlayıcısı, her iki özelliği de kullanmak üzere verileri Azure Veri Gezgini ve Spark kümeleri arasında taşımak için veri kaynağını ve veri havuzunu uygular. Azure Veri Gezgini ve Apache Spark kullanarak, makine öğrenimi (ML), ayıklama-dönüştürme-yükleme (ETL) ve Log Analytics gibi veri odaklı senaryoları hedefleyen hızlı ve ölçeklenebilir uygulamalar oluşturabilirsiniz. Azure Veri Gezgini yazma işlemi, Batch ve akış modunda yapılabilir.
-Azure Veri Gezgini okuma, sütun ayıklama ve koşul push'yi destekler, bu da Azure Veri Gezgini verileri filtreleyerek aktarılan verilerin hacmini azaltır.
+Spark için Azure Veri Gezgini Bağlayıcısı, herhangi bir Spark kümesinde çalışabilen [Açık kaynaklı bir projem](https://github.com/Azure/azure-kusto-spark) . Verileri Azure Veri Gezgini ve Spark kümeleri arasında taşımak için veri kaynağını ve veri havuzunu uygular. Azure Veri Gezgini ve Apache Spark kullanarak, veri odaklı senaryoları hedefleyen hızlı ve ölçeklenebilir uygulamalar oluşturabilirsiniz. Örneğin, Machine Learning (ML), ayıklama-dönüştürme-yükleme (ETL) ve Log Analytics. Bağlayıcısı ile Azure Veri Gezgini, standart Spark kaynağı ve yazma, okuma ve writeStream gibi havuz işlemleri için geçerli bir veri deposu haline gelir.
 
-Azure Veri Gezgini Spark Bağlayıcısı, herhangi bir Spark kümesinde çalışabilen [Açık kaynaklı bir projem](https://github.com/Azure/azure-kusto-spark) . Azure Veri Gezgini Spark Bağlayıcısı, Azure Veri Gezgini, standart Spark kaynak ve yazma, okuma ve writeStream gibi havuz işlemleri için geçerli bir veri deposu sağlar. 
+Azure Veri Gezgini, Batch veya streaming modunda yazabilirsiniz. Azure Veri Gezgini okuma, sütun ayıklama ve koşul push'yi destekler, bu da Azure Veri Gezgini verileri filtreleyerek, aktarılan verilerin hacmini azaltır.
+
+Bu konu başlığı altında, Azure Veri Gezgini Spark bağlayıcısının nasıl yüklenip yapılandırılacağı ve verilerin Azure Veri Gezgini ve Apache Spark kümeleri arasında taşınması açıklanmaktadır.
 
 > [!NOTE]
 > Aşağıdaki örneklerden bazıları [Azure Databricks](https://docs.azuredatabricks.net/) Spark kümesine başvurmakla birlikte, Azure Veri Gezgini Spark Bağlayıcısı Databricks veya diğer Spark dağıtımında doğrudan bağımlılıklar almaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Veri Gezgini kümesi ve veritabanı oluşturma](/azure/data-explorer/create-cluster-database-portal) 
 * Spark kümesi oluşturma
-* Aşağıdaki [kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) kitaplıkları dahil olmak üzere [bağımlılıklarda](https://github.com/Azure/azure-kusto-spark#dependencies) listelenen Azure Veri Gezgini bağlayıcı kitaplığı ve kitaplıklarını yükler:
-    * [Kusto veri Istemcisi](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
-    * [Kusto ınest Istemcisi](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) ve [Maven deposunun](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector) önceden oluşturulmuş kitaplıkları
+* Azure Veri Gezgini bağlayıcı kitaplığı 'nı yükler:
+    * [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) için önceden oluşturulmuş kitaplıklar 
+    * [Maven deposu](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
+* [Maven 3. x](https://maven.apache.org/download.cgi) yüklendi
+
+> [!TIP]
+> 2.3. x sürümleri de desteklenir, ancak Pod. xml bağımlılıklarında bazı değişiklikler gerektirebilir.
 
 ## <a name="how-to-build-the-spark-connector"></a>Spark bağlayıcısını oluşturma
-
-Spark Bağlayıcısı, aşağıda açıklandığı gibi [kaynaklardan](https://github.com/Azure/azure-kusto-spark) oluşturulabilir.
 
 > [!NOTE]
 > Bu adım isteğe bağlıdır. Önceden oluşturulmuş kitaplıkları kullanıyorsanız [Spark kümesi kurulumuna](#spark-cluster-setup)gidin.
 
 ### <a name="build-prerequisites"></a>Derleme önkoşulları
 
-* Java 1,8 SDK yüklü
-* [Maven 3. x](https://maven.apache.org/download.cgi) yüklendi
-* Apache Spark sürüm 2.4.0 veya üzeri
+1. Aşağıdaki [kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) kitaplıklarını içeren [bağımlılıklarda](https://github.com/Azure/azure-kusto-spark#dependencies) listelenen kitaplıkları yükler:
+    * [Kusto veri Istemcisi](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
+    * [Kusto ınest Istemcisi](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
-> [!TIP]
-> 2.3. x sürümleri de desteklenir, ancak Pod. xml bağımlılıklarında bazı değişiklikler gerektirebilir.
+1. Spark bağlayıcısını oluşturmak için [Bu kaynağa](https://github.com/Azure/azure-kusto-spark) bakın.
 
-Maven proje tanımlarını kullanan Scala/Java uygulamaları için, uygulamanızı aşağıdaki yapıtla bağlayın (en son sürüm farklılık gösterebilir):
-
-```Maven
-   <dependency>
-     <groupId>com.microsoft.azure</groupId>
-     <artifactId>spark-kusto-connector</artifactId>
-     <version>1.0.0-Beta-02</version>
-   </dependency>
-```
+1. Maven proje tanımlarını kullanan Scala/Java uygulamaları için, uygulamanızı aşağıdaki yapıtla bağlayın (en son sürüm farklılık gösterebilir):
+    
+    ```Maven
+       <dependency>
+         <groupId>com.microsoft.azure</groupId>
+         <artifactId>spark-kusto-connector</artifactId>
+         <version>1.1.0</version>
+       </dependency>
+    ```
 
 ### <a name="build-commands"></a>Derleme komutları
 
@@ -80,27 +81,35 @@ Daha fazla bilgi için bkz. [bağlayıcı kullanımı](https://github.com/Azure/
 ## <a name="spark-cluster-setup"></a>Spark kümesi kurulumu
 
 > [!NOTE]
-> Aşağıdaki adımları gerçekleştirirken en son Azure Veri Gezgini Spark Bağlayıcısı sürümünün kullanılması önerilir:
+> Aşağıdaki adımları gerçekleştirirken en son Azure Veri Gezgini Spark Bağlayıcısı sürümünü kullanmanız önerilir.
 
-1. Spark 2.4.4 ve Scala 2,11 kullanarak aşağıdaki Spark kümesi ayarlarını Azure Databricks kümesine göre ayarlayın: 
+1. Spark 2.4.4 ve Scala 2,11 kullanarak Azure Databricks kümesine göre aşağıdaki Spark kümesi ayarlarını yapılandırın:
 
     ![Databricks kümesi ayarları](media/spark-connector/databricks-cluster.png)
     
 1. Maven 'ten en son Spark-kusto-Connector kitaplığını yükler:
-
-    ![Azure Veri Gezgini kitaplığı 'nı içeri aktarma](media/spark-connector/db-create-library.png)
+    
+    ![Içeri aktarma kitaplıklarını](media/spark-connector/db-libraries-view.png) ![Spark-kusto-Connector seçin](media/spark-connector/db-dependencies.png)
 
 1. Tüm gerekli kitaplıkların yüklü olduğunu doğrulayın:
 
     ![Kitaplıkların yüklü olduğunu doğrulama](media/spark-connector/db-libraries-view.png)
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+1. JAR dosyası kullanarak yükleme için ek bağımlılıkların yüklendiğini doğrulayın:
 
-Azure Veri Gezgini Spark Bağlayıcısı, Azure [ad uygulaması](#azure-ad-application-authentication), [Azure AD erişim belirteci](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), [cihaz kimlik doğrulaması](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (üretim dışı senaryolar için) veya [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault)kullanarak Azure Active Directory (Azure AD) ile kimlik doğrulaması yapmanıza olanak sağlar. Kullanıcının Azure-keykasa paketini yüklemesi ve Key Vault kaynağına erişmek için uygulama kimlik bilgilerini sağlaması gerekir.
+    ![Bağımlılık Ekle](media/spark-connector/db-not-maven.png)
+
+## <a name="authentication"></a>Kimlik Doğrulama
+
+Azure Veri Gezgini Spark Bağlayıcısı, aşağıdaki yöntemlerden birini kullanarak Azure Active Directory (Azure AD) ile kimlik doğrulaması yapmanızı sağlar:
+* Bir [Azure AD uygulaması](#azure-ad-application-authentication)
+* Bir [Azure AD erişim belirteci](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)
+* [Cihaz kimlik doğrulaması](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (üretim dışı senaryolar için)
+* Key Vault kaynağına erişmek için bir [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) , Azure-keykasa paketini yükleyip uygulama kimlik bilgilerini sağlayın.
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD uygulama kimlik doğrulaması
 
-En basit ve ortak kimlik doğrulama yöntemi. Bu yöntem, Azure Veri Gezgini Spark bağlayıcı kullanımı için önerilir.
+Azure AD uygulama kimlik doğrulaması, en basit ve en yaygın kimlik doğrulama yöntemidir ve Azure Veri Gezgini Spark Bağlayıcısı için önerilir.
 
 |Özellikler  |Açıklama  |
 |---------|---------|
@@ -110,10 +119,10 @@ En basit ve ortak kimlik doğrulama yöntemi. Bu yöntem, Azure Veri Gezgini Spa
 
 ### <a name="azure-data-explorer-privileges"></a>Azure Veri Gezgini ayrıcalıkları
 
-Azure Veri Gezgini kümesinde aşağıdaki ayrıcalıkların verilmesi gerekir:
+Azure Veri Gezgini kümesinde aşağıdaki ayrıcalıkları verin:
 
-* Okuma (veri kaynağı) için Azure AD uygulaması, hedef veritabanında *Görüntüleyici* ayrıcalıklarına veya hedef tablodaki *yönetici* ayrıcalıklarına sahip olmalıdır.
-* Yazmak için (veri havuzu), Azure AD uygulaması hedef veritabanında *alma ayrıcalıklarına sahip olmalıdır.* Ayrıca, yeni tablolar oluşturmak için hedef veritabanında *Kullanıcı* ayrıcalıklarına sahip olmalıdır. Hedef tablo zaten varsa, hedef tablodaki *yönetici* ayrıcalıkları yapılandırılabilir.
+* Okuma (veri kaynağı) için Azure AD kimliğinin hedef veritabanında *Görüntüleyici* ayrıcalıklarına veya hedef tablodaki *yönetici* ayrıcalıklarına sahip olması gerekir.
+* Yazmak için (veri havuzu), Azure AD kimliğinin hedef veritabanında alma *ayrıcalıklarına sahip olması gerekir* . Ayrıca, yeni tablolar oluşturmak için hedef veritabanında *Kullanıcı* ayrıcalıklarına sahip olmalıdır. Hedef tablo zaten varsa, hedef tabloda *yönetici* ayrıcalıklarını yapılandırmanız gerekir.
  
 Azure Veri Gezgini sorumlusu rolleri hakkında daha fazla bilgi için bkz. [rol tabanlı yetkilendirme](/azure/kusto/management/access-control/role-based-authorization). Güvenlik rollerini yönetmek için bkz. [güvenlik rolleri yönetimi](/azure/kusto/management/security-roles).
 
@@ -170,10 +179,9 @@ Azure Veri Gezgini sorumlusu rolleri hakkında daha fazla bilgi için bkz. [rol 
     import java.util.concurrent.TimeUnit
     import org.apache.spark.sql.streaming.Trigger
 
-    // Set up a checkpoint and disable codeGen. Set up a checkpoint and disable codeGen as a workaround for an known issue 
+    // Set up a checkpoint and disable codeGen. 
     spark.conf.set("spark.sql.streaming.checkpointLocation", "/FileStore/temp/checkpoint")
-    spark.conf.set("spark.sql.codegen.wholeStage","false") // Use in case a NullPointerException is thrown inside codegen iterator
-    
+        
     // Write to a Kusto table from a streaming source
     val kustoQ = df
           .writeStream
@@ -186,7 +194,7 @@ Azure Veri Gezgini sorumlusu rolleri hakkında daha fazla bilgi için bkz. [rol 
 
 ## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark kaynağı: Azure Veri Gezgini okuma
 
-1. Küçük miktarlarda veri okurken veri sorgusunu tanımlayın:
+1. [Küçük miktarlarda veri](/azure/kusto/concepts/querylimits)okurken veri sorgusunu tanımlayın:
 
     ```scala
     import com.microsoft.kusto.spark.datasource.KustoSourceOptions
@@ -215,7 +223,8 @@ Azure Veri Gezgini sorumlusu rolleri hakkında daha fazla bilgi için bkz. [rol 
     display(df2)
     ```
 
-1. Büyük miktarlarda veriyi okurken geçici blob depolaması sağlanmalıdır. Depolama kapsayıcısı SAS anahtarı veya depolama hesabı adı, hesap anahtarı ve kapsayıcı adı sağlayın. Bu adım yalnızca Spark bağlayıcısının geçerli önizleme sürümü için gereklidir.
+1. İsteğe bağlı: geçici BLOB depolama alanını (Azure Veri Gezgini değil **) sağlarsanız,** Bloblar oluşturulur ve arayanın sorumluluğundadır. Bu, depolamayı sağlamayı, erişim anahtarlarını döndürmeyi ve geçici yapıtları silmeyi içerir. 
+    KustoBlobStorageUtils modülü; hesap ve kapsayıcı koordinatlarına ve hesap kimlik bilgilerine göre Blobları silmeye yönelik yardımcı işlevleri veya yazma, okuma ve listeleme izinlerine sahip tam bir SAS URL 'SI içerir. Karşılık gelen RDD 'ye artık gerek duyulmadığında, her işlem geçici blob yapılarını ayrı bir dizinde depolar. Bu dizin, Spark sürücü düğümünde bildirilen okuma işlemi bilgi günlüklerinin bir parçası olarak yakalanır.
 
     ```scala
     // Use either container/account-key/account name, or container SaS
@@ -225,28 +234,41 @@ Azure Veri Gezgini sorumlusu rolleri hakkında daha fazla bilgi için bkz. [rol 
     // val storageSas = dbutils.secrets.get(scope = "KustoDemos", key = "blobStorageSasUrl")
     ```
 
-    Yukarıdaki örnekte, bağlayıcı arabirimini kullanarak Key Vault eriştik. Alternatif olarak, Databricks gizli dizilerini kullanmanın daha basit bir yöntemini kullanırız.
+    Yukarıdaki örnekte Key Vault bağlayıcı arabirimi kullanılarak erişilmez; Databricks gizli dizilerini kullanmanın daha basit bir yöntemi kullanılır.
 
-1. Azure Veri Gezgini okuyun:
+1. Azure Veri Gezgini okuyun.
 
-    ```scala
-     val conf3 = Map(
-          KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
-          KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
-          KustoSourceOptions.KUSTO_BLOB_STORAGE_SAS_URL -> storageSas)
-    val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
+    * Geçici BLOB depolama **alanı sağlarsanız Azure** Veri Gezgini ' den aşağıdaki gibi okuyun:
+
+        ```scala
+         val conf3 = Map(
+              KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
+              KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
+              KustoSourceOptions.KUSTO_BLOB_STORAGE_SAS_URL -> storageSas)
+        val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
+        
+        val dfFiltered = df2
+          .where(df2.col("ColA").startsWith("row-2"))
+          .filter("ColB > 12")
+          .filter("ColB <= 21")
+          .select("ColA")
+        
+        display(dfFiltered)
+        ```
+
+    * **Azure Veri Gezgini** geçici BLOB depolama alanı sağlıyorsa Azure Veri Gezgini 'dan aşağıdaki gibi okuyun:
     
-    val dfFiltered = df2
-      .where(df2.col("ColA").startsWith("row-2"))
-      .filter("ColB > 12")
-      .filter("ColB <= 21")
-      .select("ColA")
-    
-    display(dfFiltered)
-    ```
+        ```scala
+        val dfFiltered = df2
+          .where(df2.col("ColA").startsWith("row-2"))
+          .filter("ColB > 12")
+          .filter("ColB <= 21")
+          .select("ColA")
+        
+        display(dfFiltered)
+        ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Veri Gezgini Spark Bağlayıcısı](https://github.com/Azure/azure-kusto-spark/tree/master/docs) hakkında daha fazla bilgi edinin
-* [Örnek kod](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
-
+* [Java ve Python için örnek kod](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

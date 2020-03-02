@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663956"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208568"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Izleyici müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-"PrincipalId", *küme* kaynağı için yönetilen kimlik hizmeti tarafından oluşturulan bir GUID 'dir.
+"Principal-ID", *küme* kaynağı için yönetilen kimlik hizmeti tarafından oluşturulan bir GUID 'dir.
 
 > [!IMPORTANT]
-> Sonraki adımlarda gereksinim duyduğundan bu yana "küme kimliği" değerini kopyalayın ve saklayın.
+> Sonraki adımlarda gereksinim duyduğundan bu yana "Principal-ID" değerini kopyalayın ve saklayın.
 
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault izinleri verme
@@ -213,7 +213,7 @@ Key Vault, *küme* kaynağınız için izin veren yeni bir erişim ilkesiyle gü
 Key Vault Azure portal açın ve bu ayarlarla yeni bir ilke oluşturmak için "erişim Ilkeleri" ve ardından "+ erişim Ilkesi Ekle" seçeneğine tıklayın:
 
 - Anahtar izinleri: ' Get ', ' Wrap Key ' ve ' Wrap Key ' izinlerini seçin.
-- Sorumlu seçin: önceki adımda verilen yanıtta döndürülen küme kimliği değerini girin.
+- Sorumlu seçin: önceki adımda verilen yanıtta döndürülen asıl kimlik değerini girin.
 
 ![Key Vault izinleri verme](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ Kimlik, oluşturma zamanında *küme* kaynağına atanır.
   "location": "region-name"
 }
 ```
-"PrincipalId", yönetilen kimlik hizmeti tarafından oluşturulan bir GUID 'dir.
+"Asıl kimlik", yönetilen kimlik hizmeti tarafından oluşturulan bir GUID 'dir.
 
 > [!IMPORTANT]
-> Sonraki adımlarda gereksinim duyduğundan bu yana "küme kimliği" değerini kopyalayın ve saklayın.
+> Sonraki adımlarda gereksinim duyduğundan bu yana "Asıl kimlik" değerini kopyalayın ve saklayın.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Bileşenleri kullanarak bir bileşeni *küme* kaynağıyla ilişkilendirme [-API oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 

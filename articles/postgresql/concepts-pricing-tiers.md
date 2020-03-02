@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164483"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208891"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda fiyatlandırma katmanları-tek sunucu
 
@@ -67,7 +67,7 @@ G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyeb
 
 ### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
 
-10 GB 'tan daha az kullanılabilir depolama alanı bulunan sunucular, boş depolama alanı sağlanan depolama boyutundan 512 MB 'den küçükse salt okunurdur olarak işaretlenir. 100 GB 'tan daha az kullanılabilir depolama alanı olan sunucular, boş depolama sağlanan depolama boyutunun %5 ' inden küçükse salt okunurdur. Sağlanan depolama alanı 100 GB'tan fazla olan sunucular, boş depolama alanı 5 GB'ın altına düştüğünde salt okunur olarak işaretlenir.
+100 GB 'tan daha az kullanılabilir depolama alanı olan sunucular, boş depolama alanı 512 MB 'tan veya sağlanan depolama boyutunun %5 ' inden küçükse salt okunurdur. Sağlanan depolama alanı 100 GB'tan fazla olan sunucular, boş depolama alanı 5 GB'ın altına düştüğünde salt okunur olarak işaretlenir.
 
 Örneğin, 110 GB depolama alanı sağladıysanız ve gerçek kullanım 105 GB 'den fazla olursa sunucu salt okunurdur olarak işaretlenir. Alternatif olarak, 5 GB depolama alanı sağladıysanız, ücretsiz depolama 512 MB 'tan az kaldığında sunucu salt okunurdur olarak işaretlenir.
 

@@ -11,46 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921275"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208806"
 ---
-# <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
+# <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
-> [!NOTE]
->Bazı özellikler yalnızca Standart katmanda kullanılabilir. Güvenlik Merkezi 'nin standart katmanına kaydolmadıysanız ücretsiz bir deneme süresi vardır. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
+Aşağıdaki tablolarda, sanal makineler ve sunucular için kullanılabilen Azure Güvenlik Merkezi özellikleri gösterilmektedir.
 
-Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-coverage.md)Için kullanılabilen güvenlik merkezi özellikleri gösterilmektedir.
+## Sanal makineler ve sunucular için desteklenen özellikler<a name="vm-server-features"></a>
 
-* [Sanal makineler/sunucular](#vm-server-features)
-* [PaaS hizmetleri](#paas-services)
-
-
-## Sanal makine/sunucu tarafından desteklenen özellikler<a name="vm-server-features"></a>
-
-### <a name="windows"></a>[Windows](#tab/features-windows)
+### <a name="windows-machines"></a>[Windows makineleri](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Standart|
+|**Özellik**|**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
+|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Standard|
 |[Sanal makine davranış analizi (ve güvenlik uyarıları)](threat-protection.md)|✔|✔|✔|Öneriler (ücretsiz) </br></br> Güvenlik uyarıları (Standart)|
-|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Standart|
-|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
-|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
-|[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
-|[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
-|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
-|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|
-|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
-|Uyarlamalı ağ denetimleri|✔|✔|-|Standart|
-|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
-|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Standart|
+|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Uyarlamalı ağ denetimleri|✔|✔|-|Standard|
+|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Standard|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Ücretsiz|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Ücretsiz|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Ücretsiz|
@@ -59,24 +52,24 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Ücretsiz|
 
 
-### <a name="linux"></a>[Linux](#tab/features-linux)
+### <a name="linux-machines"></a>[Linux makineleri](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Standart|
+|**Özellik**|**Azure Sanal Makineler**|**Azure sanal makine ölçek kümeleri**|**Azure dışı makineler**|**Fiyatlandırma**
+|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Standard|
 |[Sanal makine davranış analizi (ve güvenlik uyarıları)](security-center-alerts-iaas.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Öneriler (ücretsiz) </br></br> Güvenlik uyarıları (Standart)|
-|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Standart|
-|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
-|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
-|[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
-|[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
-|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
-|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|
-|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
-|Uyarlamalı ağ denetimleri|✔|✔|-|Standart|
-|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
-|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Standart|
+|[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Uyarlamalı ağ denetimleri|✔|✔|-|Standard|
+|[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Standard|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Ücretsiz|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Ücretsiz|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ücretsiz|
@@ -85,6 +78,11 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Ücretsiz|
 
 --- 
+
+
+> [!TIP]
+>Yalnızca standart fiyatlandırma katmanında bulunan özelliklerle denemeler yapmak için ücretsiz katman kullanıcıları 30 günlük bir denemeye kaydolabilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+
 
 ## Desteklenen Endpoint Protection çözümleri<a name="endpoint-supported"></a>
 
@@ -95,13 +93,13 @@ Aşağıdaki tabloda bir matrisi verilmiştir:
 
 Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bilgi için bkz. [Endpoint Protection değerlendirme ve öneriler](security-center-endpoint-protection.md).
 
-| Uç Nokta Koruması| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
+| Endpoint Protection| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Yes |
-| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Yes |
-| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Yes |
-| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
+| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Evet |
+| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
+| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Evet |
+| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
+| McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
 | McAfee v10+ | Linux sunucu ailesi  | Hayır | Evet **\*** |
 | Sophos v9 +| Linux sunucu ailesi  | Hayır | Evet **\***  |
 
@@ -111,46 +109,6 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 > - Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell 3,0 (veya bir üst sürüm) sonrasında SCEP 'in yüklenmesini gerektirir.
 > - Derinlemesine güvenlik aracıları için Trend mikro koruma algılama desteklenir.  OfficeScan aracıları desteklenmez.
 
-
-## PaaS hizmetleri desteklenen özellikler <a name="paas-services"></a>
-
-Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
-
-|Hizmet|Öneriler (ücretsiz)|Güvenlik uyarıları (Standart)|Güvenlik açığı değerlendirmesi (Standart)|
-|----|:----:|:----:|:----:|
-|SQL Veritabanları|✔|✔|✔|
-|Azure Container Kayıt Defteri|-|-|✔|
-|Azure Kubernetes Service|✔|✔|-|
-|PostgreSQL için Azure veritabanı *|✔|✔|-|
-|MySQL için Azure veritabanı *|✔|✔|-|
-|Azure CosmosDB *|-|✔|-|
-|Depolama Hesapları|✔|-|-|
-|Blob Storage|✔|✔|-|
-|App Service|✔|✔|-|
-|İşlev uygulaması|✔|-|-|
-|Cloud Services|✔|-|-|
-|Sanal Ağ|✔|-|-|
-|Alt ağ|✔|-|-|
-|NIC|✔|-|-|
-|Ağ Güvenlik Grupları|✔|-|-|
-|Abonelik|✔ * *|✔|-|
-|Batch hesabı|✔|-|-|
-|Service Fabric hesabı|✔|-|-|
-|Otomasyon hesabı|✔|-|-|
-|Yük Dengeleyici|✔|-|-|
-|Bilişsel Arama|✔|-|-|
-|Service Bus ad alanı|✔|-|-|
-|Stream Analytics|✔|-|-|
-|Olay hub’ı ad alanı|✔|-|-|
-|Logic Apps|✔|-|-|
-|Redsıs için önbellek|✔|-|-|
-|Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
-|Key Vault|✔|✔ *|-|
-
-\* bu özellikler Şu anda önizlemede destekleniyor.
-
-\*\* Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

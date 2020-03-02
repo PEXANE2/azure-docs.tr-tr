@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921309"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208835"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -35,7 +35,6 @@ Azure Güvenlik Merkezi, Azure aboneliği üzerinde etkinleştirilen bir Azure o
 
 > [!NOTE]
 > Güvenlik özelliklerinin tam kümesini almak için, Azure Güvenlik Merkezi tarafından kullanılan ve [Azure Güvenlik Merkezi 'ne veri göndermek üzere doğru şekilde yapılandırılmış](security-center-enable-data-collection.md#manual-agent) [Log Analytics aracısına](../azure-monitor/platform/agents-overview.md#log-analytics-agent)sahip olmanız gerekir.
-
 
 Aşağıdaki bölümlerde, Azure Güvenlik Merkezi tarafından kullanılan [Log Analytics aracısının](../azure-monitor/platform/agents-overview.md#log-analytics-agent)üzerinde çalıştığı desteklenen sunucu işletim sistemleri listelenmektedir.
 
@@ -85,38 +84,6 @@ Sanal makineler, Azure Kubernetes (AKS), Azure Databricks ve daha fazlası gibi 
 ### Cloud Services<a name="cloud-services"></a>
 
 Bulut hizmetinde çalışan sanal makineler de desteklenir. Yalnızca üretim yuvalarında çalışan Cloud Services Web ve çalışan rolleri izlenir. Bulut hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure Cloud Services 'ye genel bakış](../cloud-services/cloud-services-choose-me.md).
-
-## PaaS hizmetleri<a name="paas-services"></a>
-
-Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından desteklenir:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Depolama hesabı
-* App Service
-* İşlev
-* Bulut Hizmeti
-* Sanal ağ
-* Alt ağ
-* NIC
-* NSG
-* Batch hesabı
-* Service Fabric hesabı
-* Otomasyon hesabı
-* Yük dengeleyici
-* Search
-* Service bus ad alanı
-* Stream Analytics
-* Olay hub’ı ad alanı
-* Logic Apps
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Key Vault
-
-Yukarıdaki PaaS kaynakları listesinin desteklenen özellikleri hakkında daha fazla bilgi edinmek için bkz. [PaaS hizmetleri tarafından desteklenen özellikler](security-center-services.md#paas-services).
 
 Azure Stack bulunan sanal makineler için koruma de desteklenir. Güvenlik Merkezi 'nin Azure Stack tümleştirmesi hakkında daha fazla bilgi için, bkz. [Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)ekleme.
 
