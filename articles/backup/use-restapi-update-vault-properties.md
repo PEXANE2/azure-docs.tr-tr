@@ -1,15 +1,15 @@
 ---
-title: REST API kullanarak kurtarma hizmetleri Kasası yapılandırma özelliklerini güncelleştirme
+title: Kurtarma Hizmetleri Kasası yapılandırmasını REST API güncelleştirme
 description: Bu makalede, REST API kullanarak kasasının yapılandırmasını güncelleştirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390549"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204506"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -43,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ' GET ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | TAMAM        |
+|200 TAMAM     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 
 ##### <a name="example-response"></a>Örnek yanıt
 
@@ -83,10 +83,10 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
 
 Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
-|Ad  |Gereklidir  |Tür  |Açıklama  |
+|Adı  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
-|location     |  doğru       |Dize         |   Kaynak konumu      |
+|location     |  true       |Dize         |   Kaynak konumu      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
 |etiketler     |         | Nesne        |     Kaynak etiketleri    |
 
@@ -107,9 +107,9 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 ' PATCH ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | TAMAM        |
+|200 TAMAM     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 
 ##### <a name="example-response"></a>Örnek yanıt
 

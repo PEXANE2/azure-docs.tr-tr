@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013867"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208187"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -98,6 +98,8 @@ Konak fiyatı, VM ailesi, türü (donanım boyutu) ve bölge temel alınarak aya
 Yazılım lisanslama, depolama ve ağ kullanımı, konaktan ve VM 'lerden ayrı olarak faturalandırılır. Bu faturalanabilir öğelerde değişiklik yapılmaz.
 
 Daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
+
+Ayrıca, [ayrılmış bir Azure ayrılmış ana bilgisayar örneği] (..) ile maliyetlerle tasarruf edebilirsiniz. /makalenles/Virtual-, ines/Prepay-ayrılmış-hosts-Reserved-Instances,MD).
  
 ## <a name="vm-families-and-hardware-generations"></a>VM aileleri ve donanım nesilleri
 

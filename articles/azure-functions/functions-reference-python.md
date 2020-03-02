@@ -3,12 +3,12 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190713"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206342"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -101,7 +101,7 @@ Yerel modüllerle bir işleve başvurmak için göreli içeri aktarma sözdizimi
 from . import example
 ```
 
-Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, *functionapp* klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz, bu örnekte `tests`. Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
+Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, ana proje ( *\_\_app\_\_* ) klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz, bu örnekte `tests`. Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
 
 ## <a name="triggers-and-inputs"></a>Tetikleyiciler ve girişler
 

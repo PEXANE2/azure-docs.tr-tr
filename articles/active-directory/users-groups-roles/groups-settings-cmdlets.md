@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 90669ebde9537fdf597fccd621caa54deaed68a6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656883"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206461"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
@@ -152,7 +152,7 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
 |  <ul><li>EnableGroupCreation<li>Tür: Boolean<li>Varsayılan: true |Yönetici olmayan kullanıcılar tarafından, dizinde Office 365 Grup oluşturmaya izin verilip verilmeyeceğini belirten bayrak. Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Türü: Dize<li>Varsayılan: "" |Enablegroupcreate = = false olduğunda bile üyelerin Office 365 grupları oluşturmalarına izin verilen güvenlik grubunun GUID 'SI. |
 |  <ul><li>Usagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" |Grup kullanım yönergelerine bir bağlantı. |
-|  <ul><li>ClassificationDescriptions<li>Türü: Dize<li>Varsayılan: "" | Sınıflandırma açıklamalarının virgülle ayrılmış listesi. ClassificationDescriptions değeri yalnızca bu biçimde geçerlidir:<br>$setting ["ClassificationDescriptions"] = "sınıflandırma: Açıklama, sınıflandırma: Açıklama"<br>Burada sınıflandırma, ClassificationList dizeler ile eşleşir.<br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
+|  <ul><li>ClassificationDescriptions<li>Türü: Dize<li>Varsayılan: "" | Sınıflandırma açıklamalarının virgülle ayrılmış listesi. ClassificationDescriptions değeri yalnızca bu biçimde geçerlidir:<br>$setting ["ClassificationDescriptions"] = "sınıflandırma: Açıklama, sınıflandırma: Açıklama"<br>Sınıflandırma, ClassificationList içindeki bir girdiyle eşleşir.<br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
 |  <ul><li>DefaultClassification<li>Türü: Dize<li>Varsayılan: "" | Hiçbiri belirtilmemişse, bir grup için varsayılan sınıflandırma olarak kullanılacak sınıflandırma.<br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Türü: Dize<li>Varsayılan: "" | Office 365 grupları için yapılandırılmış adlandırma kuralını tanımlayan en fazla 64 karakter uzunluğunda bir dize. Daha fazla bilgi için bkz. [Office 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Türü: Dize<li>Varsayılan: "" | Kullanıcıların Grup adlarında veya diğer adlarla kullanmasına izin verilmeyen, virgülle ayrılmış deyimlerin dizesi. Daha fazla bilgi için bkz. [Office 365 grupları için adlandırma Ilkesi zorlama](groups-naming-policy.md). |
@@ -161,7 +161,7 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
 |  <ul><li>AllowGuestsToAccessGroups<li>Tür: Boolean<li>Varsayılan: true | Konuk kullanıcının Office 365 grupları içeriğine erişip erişemeyeceğini gösteren Boolean.  Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
 |  <ul><li>Guestusagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" | Konuk kullanım yönergelerine bir bağlantının URL 'si. |
 |  <ul><li>AllowToAddGuests<li>Tür: Boolean<li>Varsayılan: true | Bu dizine Konuk ekleme izni verilip verilmeyeceğini gösteren bir Boole değeri. <br>Bu ayar geçersiz kılınabilir ve *Enablemıplas* *true* olarak ayarlanmışsa ve bir konuk ilkesi gruba atanan duyarlılık etiketiyle ilişkilendirildiğinde salt okunurdur. |
-|  <ul><li>ClassificationList<li>Türü: Dize<li>Varsayılan: "" |Office 365 gruplarına uygulanabilen geçerli sınıflandırma değerlerinin virgülle ayrılmış bir listesi. <br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
+|  <ul><li>ClassificationList<li>Türü: Dize<li>Varsayılan: "" | Office 365 gruplarına uygulanabilen geçerli sınıflandırma değerlerinin virgülle ayrılmış bir listesi. <br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
 |  <ul><li>Enablemıplas<li>Tür: Boolean<li>Varsayılan: "false" |Microsoft 365 Uyumluluk Merkezi 'nde yayınlanan duyarlılık etiketlerinin Office 365 gruplarına uygulanıp uygulanamayacağını belirten bayrak. Daha fazla bilgi için bkz. [Office 365 grupları Için duyarlılık etiketleri atama](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Örnek: dizin düzeyindeki gruplar için konuk ilkesini yapılandırma

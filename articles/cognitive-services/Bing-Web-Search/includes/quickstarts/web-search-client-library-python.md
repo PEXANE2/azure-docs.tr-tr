@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: aahi
-ms.openlocfilehash: 785840ad0b678337f513a700d37f0ba94671964e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: ffa493c5bed152eea58d29bbf56215af7ebce5b1
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652173"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208214"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Python uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
-Kodu hemen görmek istiyor musunuz? [JavaScript için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) örnekleri GitHub ' da kullanılabilir.
+Kodu hemen görmek istiyor musunuz? [Python için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) örnekleri GitHub ' da kullanılabilir.
 
 
 ## <a name="prerequisites"></a>Önkoşullar

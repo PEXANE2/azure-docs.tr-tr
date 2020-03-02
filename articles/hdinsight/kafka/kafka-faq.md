@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530944"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206988"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka hakkında sık sorulan sorular
 
@@ -50,7 +50,7 @@ Evet, ambarı portalı üzerinden. Portaldaki her bileşen, bileşen yapılandı
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Verilerim şifrelenmez mi? Kendi anahtarlarımı kullanabilir miyim?
 
-Yönetilen disklerdeki tüm Kafka iletileri [Azure depolama hizmeti şifrelemesi (SSE)](../../storage/common/storage-service-encryption.md)ile şifrelenir. Aktarım verileri (örneğin, istemcilerden aracılardan ve diğer şekilde) aktarılan veriler varsayılan olarak şifrelenmez. [Kendi kendınıze SSL ayarlayarak](./apache-kafka-ssl-encryption-authentication.md)bu trafiği şifrelemek mümkündür. Ayrıca HDInsight, bekleyen verileri şifrelemek için kendi anahtarlarını yönetmenizi sağlar. Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Kafka için kendi anahtarını getirme](apache-kafka-byok.md).
+Yönetilen disklerdeki tüm Kafka iletileri [Azure depolama hizmeti şifrelemesi (SSE)](../../storage/common/storage-service-encryption.md)ile şifrelenir. Aktarım verileri (örneğin, istemcilerden aracılardan ve diğer şekilde) aktarılan veriler varsayılan olarak şifrelenmez. [Kendi kendınıze SSL ayarlayarak](./apache-kafka-ssl-encryption-authentication.md)bu trafiği şifrelemek mümkündür. Ayrıca HDInsight, bekleyen verileri şifrelemek için kendi anahtarlarını yönetmenizi sağlar. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtar disk şifrelemesi](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Nasıl yaparım? istemcileri kümeme bağlanacak mı?
 

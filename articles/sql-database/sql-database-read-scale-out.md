@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420719"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206954"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Salt okunurdur ve salt okunurdur sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın
 
@@ -35,7 +35,7 @@ Yeni Premium, İş Açısından Kritik ve hiper ölçekli veritabanlarında, oku
 Uygulamanın SQL bağlantı dizesindeki `ApplicationIntent` ayarından bağımsız olarak birincil çoğaltmaya bağlanmasını sağlamak istiyorsanız, veritabanını oluştururken veya yapılandırmasını değiştirmeksizin, okuma ölçeğini açıkça devre dışı bırakmanız gerekir. Örneğin, veritabanınızı standart veya Genel Amaçlı katmanından Premium, İş Açısından Kritik veya hiper ölçekli katmana yükseltirsiniz ve tüm bağlantılarınızın birincil çoğaltmaya gitmeye devam etmesini sağlamak istiyorsanız, okuma ölçeğini devre dışı bırakın. Devre dışı bırakma hakkında daha fazla bilgi için bkz. [okuma ölçeğini etkinleştirme ve devre dışı bırakma](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> Sorgu veri deposu, genişletilmiş olaylar, SQL Profiler ve denetim özellikleri salt yazılır çoğaltmalar üzerinde desteklenmez.
+> Sorgu veri deposu, genişletilmiş olaylar ve SQL Profiler özellikleri salt okunurdur çoğaltmalar üzerinde desteklenmez.
 
 ## <a name="data-consistency"></a>Veri tutarlılığı
 
@@ -89,7 +89,7 @@ Aşağıdaki yöntemleri kullanarak, Premium veya İş Açısından Kritik hizme
 > [!NOTE]
 > Okuma ölçeğini devre dışı bırakma özelliği, geriye dönük uyumluluk için sağlanır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Veritabanı **yapılandırma** dikey penceresinde okuma ölçeği genişletme ayarını yönetebilirsiniz.
 

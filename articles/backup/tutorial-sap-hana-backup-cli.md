@@ -3,12 +3,12 @@ title: Öğretici-CLı kullanarak Azure 'da DB yedeklemesini SAP HANA
 description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472355"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206631"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -27,7 +27,7 @@ Bu belgede zaten bir Azure VM 'de yüklü bir SAP HANA veritabanınız olduğunu
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm xx. xxx. x veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm xx. xxx. x veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma hizmetleri kasası oluşturma
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>SAP HANA örneğini kaydetme ve koruma
 
-Azure hizmetleri tarafından keşfedilecek SAP HANA örneği (üzerinde SAP HANA yüklü VM) için, SAP HANA makinesinde bir [ön kayıt betiği](https://aka.ms/scriptforpermsonhana) çalıştırılmalıdır. Betiği çalıştırmadan önce tüm [önkoşulların](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) karşılandığından emin olun. Betiğin ne yaptığı hakkında daha fazla bilgi edinmek için [izinleri ayarlama](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) bölümüne bakın.
+Azure hizmetleri tarafından keşfedilecek SAP HANA örneği (üzerinde SAP HANA yüklü VM) için, SAP HANA makinesinde bir [ön kayıt betiği](https://aka.ms/scriptforpermsonhana) çalıştırılmalıdır. Betiği çalıştırmadan önce tüm [önkoşulların](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) karşılandığından emin olun. Betiğin ne yaptığı hakkında daha fazla bilgi edinmek için, [ön kayıt betiğinin ne yaptığını](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) bölümüne bakın.
 
 Betik çalıştırıldıktan sonra, SAP HANA örneği daha önce oluşturduğumuz kurtarma hizmetleri kasasıyla kaydedilebilir. Örneği kaydetmek için [az Backup Container Register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) cmdlet 'ini kullanın. *Vmresourceıd* , SAP HANA yüklemek için oluşturduğunuz sanal makınenın kaynak kimliğidir.
 

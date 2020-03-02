@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314019"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206716"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight 'a ek depolama hesapları ekleme
 
@@ -21,13 +21,13 @@ HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nas
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, bir kümeye oluşturulduktan sonra ek depolama hesapları ekleme hakkında bilgi içerir. Küme oluşturma sırasında depolama hesapları ekleme hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlası ile kümeleri ayarlama](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Depolama hesabı adı ve anahtarı. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
 * PowerShell kullanıyorsanız AZ Module gerekecektir.  Bkz. [Azure PowerShell genel bakış](https://docs.microsoft.com/powershell/azure/overview).
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 İşlem sırasında betik aşağıdaki eylemleri gerçekleştirir:
 
@@ -46,12 +46,12 @@ HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nas
 
 ## <a name="add-storage-account"></a>Depolama hesabı ekleme
 
-Değişiklikleri aşağıdaki noktalara uygulamak için [betik eylemi](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) kullanın:
+Değişiklikleri aşağıdaki noktalara uygulamak için [betik eylemi](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) kullanın:
 
 |Özellik | Değer |
 |---|---|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
-|Düğüm türleri|Baş|
+|Düğüm türleri|Head|
 |Parametreler|`ACCOUNTNAME` `ACCOUNTKEY` `-p` (isteğe bağlı)|
 
 * `ACCOUNTNAME`, HDInsight kümesine eklenecek depolama hesabının adıdır.
@@ -64,7 +64,7 @@ Azure portal HDInsight kümesi görüntülenirken, __Özellikler__ altında __de
 
 Ek depolama alanını doğrulamak için aşağıda gösterilen yöntemlerden birini kullanın:
 
-### <a name="powershell"></a>Powershell
+### <a name="powershell"></a>PowerShell
 
 Betik, belirtilen kümeyle ilişkili depolama hesabı adlarını döndürür. `CLUSTERNAME` gerçek küme adıyla değiştirin ve ardından betiği çalıştırın.
 

@@ -3,18 +3,18 @@ title: Haritada bir noktaya açılan pencere Ekle | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure Maps web SDK 'sını kullanarak bir noktaya açılan pencere eklemeyi öğreneceksiniz.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 07/29/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e44b6fe8341e40fb68fdbf153bf4f4bc5fec7acb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933346"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206580"
 ---
 # <a name="add-a-popup-to-the-map"></a>Haritaya bir açılan pencere ekleyin
 
@@ -85,7 +85,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Birden çok noktayla açılan pencereyi yeniden kullanma
 
-Çok sayıda noktanız olduğunda ve tek seferde yalnızca bir açılan pencere göstermek istiyorsanız, en iyi yaklaşım bir açılan pencere oluşturmak ve yeniden kullanmaktır. Açılan pencereyi yeniden kullanmaya göre, uygulama tarafından oluşturulan DOM öğelerinin sayısı büyük ölçüde azalır ve bu da daha iyi performans sağlayabilir. Aşağıdaki örnekte 3 puntoluk Özellikler oluşturulur. Bunlardan birine tıklarsanız, bu nokta özelliği için içerik ile bir açılan pencere görüntülenir.
+En iyi yaklaşım bir açılan pencere oluşturmak ve onu yeniden kullanmak için gereken durumlar vardır. Örneğin, çok sayıda noktanız olabilir ve tek seferde yalnızca bir açılan pencere göstermek isteyebilirsiniz. Açılan pencereyi yeniden kullanmaya göre, uygulama tarafından oluşturulan DOM öğelerinin sayısı büyük ölçüde azalır ve bu da daha iyi performans sağlayabilir. Aşağıdaki örnekte 3 puntoluk Özellikler oluşturulur. Bunlardan birine tıklarsanız, bu nokta özelliği için içerik ile bir açılan pencere görüntülenir.
 
 <br/>
 
@@ -100,6 +100,143 @@ Varsayılan olarak, açılan pencerede beyaz bir arka plan, altta bir işaretçi
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Özelleştirilmiş açılan pencere" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>Codepen</a>'Da Azure haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>özelleştirilmiş açılan pencere</a> başlığına bakın.
+</iframe>
+
+## <a name="add-popup-templates-to-the-map"></a>Haritaya açılan şablonlar ekleme
+
+Açılan şablonlar, açılan pencereler için veri odaklı düzenleri oluşturmayı kolaylaştırır. Aşağıdaki bölümlerde, özelliklerin özelliklerini kullanarak biçimlendirilen içerik oluşturmak için çeşitli açılan şablonların kullanımı gösterilmektedir.
+
+### <a name="string-template"></a>Dize şablonu
+
+Dize şablonu, yer tutucuları Özellik özelliklerinin değerleriyle değiştirir. Özelliğin özelliklerine dize türünde bir değer atanması gerekmez. Örneğin, `value1` bir tamsayı tutar. Bu değerler daha sonra `popupTemplate`içerik özelliğine geçirilir. 
+
+`numberFormat` seçeneği, görüntülenecek sayının biçimini belirtir. `numberFormat` belirtilmemişse, kod açılan şablonlar tarih biçimini kullanır. `numberFormat` seçeneği [sayı. toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) işlevini kullanarak sayıları biçimlendirir. Büyük sayıları biçimlendirmek için, `numberFormat` seçeneğini [NumberFormat. Format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)' dan işlevlerle kullanmayı düşünün. Örneğin, aşağıdaki kod parçacığı, kesir basamak sayısını iki olarak sınırlandırmak için `maximumFractionDigits` kullanır.
+
+> [!Note]
+> Dize şablonunun görüntüleri işleyebileceği tek bir yol vardır. İlk olarak, dize şablonunun içinde bir resim etiketi olması gerekir. Resim etiketine geçirilen değer bir görüntünün URL 'SI olmalıdır. Daha sonra, `HyperLinkFormatOptions``isImage` dize şablonunun true olarak ayarlanması gerekir. `isImage` seçeneği köprünün bir görüntü için olduğunu ve köprünün bir resim etiketine yükleneceğini belirtir. Köprüye tıklandığında görüntü açılır.
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+    title: 'Template 1 - String template',
+    value1: 1.2345678,
+    value2: {
+        subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    popupTemplate: {
+        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+        numberFormat: {
+            maximumFractionDigits: 2
+        }
+    }
+}),
+```
+
+### <a name="propertyinfo-template"></a>PropertyInfo şablonu
+
+PropertyInfo şablonu, özelliğin kullanılabilir özelliklerini görüntüler. `label` seçeneği, kullanıcıya görüntülenecek metni belirtir. `label` belirtilmezse köprü görüntülenir. Köprü bir görüntü ise, "alt" etiketine atanan değer görüntülenir. `dateFormat` tarihin biçimini belirtir ve tarih biçimi belirtilmemişse, Tarih bir dize olarak işlenir. `hyperlinkFormat` seçeneği, tıklatılabilir bağlantıları, benzer şekilde, `email` seçeneği de tıklatılabilir e-posta adreslerini işlemek için kullanılabilir.
+
+PropertyInfo şablonu son kullanıcıya özellikleri görüntülemeden önce, özelliklerin gerçekten bu özellik için tanımlandığını denetler. Stil ve başlık özelliklerini görüntülemeyi de yoksayar. Örneğin, `color`, `size`, `anchor`, `strokeOpacity`ve `visibility`görüntülemez. Bu nedenle, arka uçta özellik yolu denetimi tamamlandıktan sonra PropertyInfo şablonu içeriği tablo biçiminde gösterir.
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+    title: 'Template 2 - PropertyInfo',
+    createDate: new Date(),
+    dateNumber: 1569880860542,
+    url: 'https://aka.ms/AzureMapsSamples',
+    email: 'info@microsoft.com',
+    popupTemplate: {
+        content: [{
+    propertyPath: 'createDate',
+    label: 'Created Date'
+    },
+    {
+    propertyPath: 'dateNumber',
+    label: 'Formatted date from number',
+    dateFormat: {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    }
+    },
+    {
+    propertyPath: 'url',
+    label: 'Code samples',
+    hideLabel: true,
+    hyperlinkFormat: {
+        lable: 'Go to code samples!',
+        target: '_blank'
+    }
+    },
+    {
+    propertyPath: 'email',
+    label: 'Email us',
+    hideLabel: true,
+    hyperlinkFormat: {
+        target: '_blank',
+        scheme: 'mailto:'
+        }
+    }
+        ]
+    }
+}),
+
+```
+
+### <a name="multiple-content-templates"></a>Birden çok içerik şablonu
+
+Bir özellik ayrıca dize şablonu ve PropertyInfo şablonu birleşimini kullanarak içeriği görüntüleyebilir. Bu durumda, dize şablonu beyaz bir arka planda yer tutucular değerlerini işler.  Ve, PropertyInfo şablonu bir tablonun içinde tam genişlikli bir görüntü oluşturur. Bu örnekteki özellikler, önceki örneklerde açıklandığımız özelliklerle benzerdir.
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+    title: 'Template 3 - Multiple content template',
+    value1: 1.2345678,
+    value2: {
+    subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
+    popupTemplate: {
+    content: [
+      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+      [{
+        propertyPath: 'imageLink',
+        label: 'Image',
+        hideImageLabel: true,
+        hyperlinkFormat: {
+          isImage: true
+        }
+      }]
+    ],
+    numberFormat: {
+      maximumFractionDigits: 2
+    }
+    }
+    }),
+]);
+```
+
+### <a name="points-without-a-defined-template"></a>Tanımlı şablon olmayan noktaları
+
+Açılan şablon bir dize şablonu, bir PropertyInfo şablonu veya her ikisinin birleşimi olarak tanımlanmadığında varsayılan ayarları kullanır. `title` ve `description` tek atanan özellikler olduğunda, açılan şablonda sağ üst köşedeki bir kapatma düğmesi olan beyaz bir arka plan görüntülenir. Küçük ve orta ekranlarda, alt kısımdaki bir oku gösterir. Varsayılan ayarlar, `title` ve `description`dışındaki tüm özellikler için bir tablonun içinde gösterilir. Varsayılan ayarlara geri dönerek bile, açılan şablon yine de programlı bir şekilde yönetilebilir. Örneğin, kullanıcılar köprü algılamayı kapatabilir ve varsayılan ayarlar hala diğer özellikler için geçerlidir.
+
+CodePen 'da haritadaki noktalara tıklayın. Şu açılan şablonların her biri için haritada bir nokta var: dize şablonu, PropertyInfo şablonu ve birden çok içerik şablonu. Şablonların varsayılan ayarları kullanarak nasıl işleneceğini göstermek için de üç işaret vardır.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>popuptemplates</a> 'e bakın.
+</iframe>
+
+## <a name="reuse-popup-template"></a>Açılır şablonu yeniden kullan
+
+Açılan pencereyi yeniden kullanmaya benzer şekilde, açılan şablonları kullanabilirsiniz. Bu yaklaşım, birden çok noktaya ait tek seferde yalnızca bir açılan şablon göstermek istediğinizde faydalıdır. Açılan şablonu yeniden kullanmak, uygulama tarafından oluşturulan DOM öğelerinin sayısı azaltılır ve bu da uygulama performansınızı geliştirir. Aşağıdaki örnek, üç noktaya ait aynı açılan şablonu kullanır. Bunlardan birine tıklarsanız, bu nokta özelliği için içerik ile bir açılan pencere görüntülenir.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalemin <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>reusepopuptemplate</a> bölümüne bakın.
 </iframe>
 
 ## <a name="popup-events"></a>Açılan olaylar

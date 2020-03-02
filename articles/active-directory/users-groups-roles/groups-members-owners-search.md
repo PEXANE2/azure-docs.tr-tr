@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901509"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206121"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Azure Active Directory 'de grupları ve üyeleri (Önizleme) arayın
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Azure Active Directory 'de grupları ve üyeleri (Önizleme) arayın
 
 Bu makalede, bir grubun üyelerini ve sahibini aramanın yanı sıra arama filtrelerini de Azure Active Directory (Azure AD) portalındaki gruplar geliştirme önizlemesi 'nin bir parçası olarak nasıl kullanacağınız açıklanır. Gruplar, Üyeler ve sahipler dahil, hızlı ve kolay bir şekilde yönetmenize yardımcı olmak için, gruplar deneyimlerinde çok sayıda geliştirmeler vardır. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -45,7 +45,7 @@ Herhangi bir sorun yaşıyorsanız, **tüm gruplar** sayfasının en üstündeki
 
 ## <a name="group-search-and-sorting"></a>Grup Arama ve sıralama
 
-Gruplar listesi araması, bir arama dizesi girebileceğiniz şekilde geliştirilmiştir. arama, grup adları listesinde otomatik olarak bir `startswith` ve alt dize araması gerçekleştirir. Alt dize araması yalnızca tüm sözcüklere yapılır ve özel karakterler içermez.
+Gruplar listesi araması, bir arama dizesi girebileceğiniz şekilde geliştirilmiştir. arama, grup adları listesinde otomatik olarak bir `startswith` ve alt dize araması gerçekleştirir. Alt dize araması yalnızca tüm sözcüklere yapılır ve özel karakterler içermez. Alt dize arama büyük/küçük harfe duyarlıdır.
 
 ![Tüm Gruplar sayfasında yeni alt dize aramaları](./media/groups-members-owners-search/groups-search-preview.png)
 

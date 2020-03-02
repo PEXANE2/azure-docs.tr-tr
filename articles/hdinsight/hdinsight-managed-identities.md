@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919229"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206019"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 'ta Yönetilen kimlikler
 
@@ -31,7 +31,7 @@ Azure HDInsight 'ta, Yönetilen kimlikler kümenin her bir düğümünde sağlan
 
 Yönetilen kimlikler aşağıdaki yöntemlerden biriyle oluşturulabilir:
 
-* [Azure portalındaki](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+* [Azure portalında](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
@@ -44,11 +44,11 @@ Yönetilen kimlikler, Azure HDInsight 'ta birden çok senaryoda kullanılır. Ay
 
 * [Azure Data Lake Storage 2. Nesil](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Kurumsal Güvenlik Paketi](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka Kendi Anahtarını Getir (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [Müşteri tarafından yönetilen anahtar disk şifrelemesi](disk-encryption.md)
 
 ## <a name="faq"></a>SSS
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Küme oluşturulduktan sonra yönetilen kimliği silersem ne olur?
-Yönetilen kimlik gerektiğinde kümeniz sorun olarak çalışır. Şu anda küme oluşturulduktan sonra, yönetimi yönetme veya değiştirme yöntemi yoktur. Bu nedenle, yönetilen kimliğin küme çalışma zamanı sırasında silinmediğinden emin olmak için önerimiz. Alternatif olarak, kümeyi yeniden oluşturabilir ve yeni bir yönetilen kimlik atayabilirsiniz.
+Yönetilen kimlik gerektiğinde kümeniz sorun olarak çalışır. Şu anda küme oluşturulduktan sonra kimlik yönetme kimliğini güncelleştirmek veya değiştirmek mümkün değildir. Bu nedenle, yönetilen kimliğin küme çalışma zamanı sırasında silinmediğinden emin olmak için önerimiz. Alternatif olarak, kümeyi yeniden oluşturabilir ve yeni bir yönetilen kimlik atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

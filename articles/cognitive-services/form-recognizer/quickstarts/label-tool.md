@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485361"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205840"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -35,12 +35,19 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
 
 Örnek etiketleme aracını çalıştırmak için Docker altyapısını kullanacaksınız. Docker kapsayıcısını ayarlamak için bu adımları izleyin. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).
-1. İlk olarak, bir ana bilgisayara Docker 'ı yüklemeniz gerekir. Ana bilgisayar yerel bilgisayarınız ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)veya [Linux](https://docs.docker.com/install/)) olabilir. Ya da Azure 'da [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)veya bir [Azure Stack dağıtılan](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910)bir Kubernetes kümesi gibi Docker barındırma hizmeti kullanabilirsiniz. Ana bilgisayar aşağıdaki donanım gereksinimlerini karşılamalıdır:
+1. İlk olarak, bir ana bilgisayara Docker 'ı yüklemeniz gerekir. Bu kılavuzda, yerel bilgisayarın bir konak olarak nasıl kullanılacağı gösterilir. Azure 'da bir Docker barındırma hizmeti kullanmak istiyorsanız, [örnek etiketleme aracı](../deploy-label-tool.md) nasıl yapılır Kılavuzu ' na bakın. 
+
+   Ana bilgisayar aşağıdaki donanım gereksinimlerini karşılamalıdır:
 
     | Kapsayıcı | Minimum | Önerilen|
     |:--|:--|:--|
     |Örnek etiketleme aracı|2 çekirdek, 4 GB bellek|4 çekirdek, 8 GB bellek|
-    
+
+   İşletim sisteminiz için uygun talimatları izleyerek makinenize Docker 'yi yüklemeyin: 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/).
+
 1. Örnek etiketleme araç kapsayıcısını `docker pull` komutuyla alın.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Her belge için metin düzeni bilgilerini almak için sol bölmedeki **tüm dosy
 
 ### <a name="apply-labels-to-text"></a>Metne Etiketler uygulama
 
-Ardından, Etiketler oluşturacak ve bunları modelin tanımasını istediğiniz metin öğelerine uygulayacaksınız.
+Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını istediğiniz metin öğelerine uygulayacaksınız.
 
-1. İlk olarak, tanımlamak istediğiniz etiketleri (Etiketler) oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın.
+1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın.
+  1. Yeni bir etiket oluşturmak için **+** ' a tıklayın.
+  1. Etiket adını girin.
+  1. Etiketi kaydetmek için ENTER tuşuna basın.
 1. Ana düzenleyicide, vurgulanan metin öğelerinden bir veya birden çok sözcük seçmek için tıklayın ve sürükleyin.
+1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
+    > [!Tip]
+    > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun.
+    > * Seçili her metin öğesine yalnızca bir etiket uygulayabilirsiniz.
+    > * Her etiket, sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünürse, her örnek için farklı etiketler oluşturun. Örneğin: "Invoice # 1", "Invoice # 2" vb.
+    > * Etiketler sayfalara yayılamaz.
+    > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
+    > * Etiketli alanlarınıza anahtarlar eklemeyin yalnızca değerleri&mdash;.
+    > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
 
-    > [!NOTE]
-    > Şu anda birden çok sayfa arasında yayılan metin seçemezsiniz.
-1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Seçili her metin öğesine yalnızca bir etiket uygulayabilirsiniz ve her etiket sayfa başına yalnızca bir kez uygulanabilir.
-
-    > [!TIP]
-    > Sayı tuşları ilk on etiket için kısayol olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
 
 Formlarınızın beş kısmını etiketlemek için yukarıdaki adımları izleyin ve sonra bir sonraki adıma geçin.
 

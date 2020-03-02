@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 272926e6c3572f03cc316ee696893941fd91968d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196578"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206886"
 ---
 # <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Öğretici: içindeki birden çok veri kaynağından veri diziniC#
 
-Azure Bilişsel Arama, birden çok veri kaynağından alınan verileri tek bir Birleşik arama dizininde içeri aktarabilir, çözümleyebilir ve dizine alabilir. Bu, yapılandırılmış verilerin metin, HTML veya JSON belgeleri gibi diğer kaynaklardan daha az yapılandırılmış veya hatta düz metin verileriyle toplanmış olduğu durumları destekler.
+Azure Bilişsel Arama, birden çok veri kaynağından verileri içeri aktarabilir, çözümleyebilir ve tek bir birleştirme arama dizinine dizinedebilir. Bu, yapılandırılmış verilerin metin, HTML veya JSON belgeleri gibi diğer kaynaklardan daha az yapılandırılmış veya hatta düz metin verileriyle toplanmış olduğu durumları destekler.
 
 Bu öğreticide, otel verilerinin bir Azure Cosmos DB veri kaynağından nasıl indeksedileceği ve Azure Blob depolama belgelerinden alınan otel odası ayrıntılarıyla birleştirilebileceğiniz açıklanır. Sonuç, karmaşık veri türleri içeren bir birleştirilmiş otel arama dizini olacaktır.
 
-Bu öğretici aşağıdaki C# görevleri gerçekleştirmek IÇIN [.NET SDK](https://aka.ms/search-sdk) kullanır:
+Bu öğretici, C# ve [.NET SDK](https://aka.ms/search-sdk)kullanır. Bu öğreticide, aşağıdaki görevleri gerçekleştirirsiniz:
 
 > [!div class="checklist"]
 > * Örnek verileri karşıya yükleme ve veri kaynaklarını oluşturma
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Depolama](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
@@ -44,29 +44,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="download-files"></a>Dosyaları indirme
 
-1. GitHub 'da örnek depoyu bulun: [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. **Kopyala veya indir** ' i seçin ve deponun özel yerel kopyasını yapın.
-1. Visual Studio 2019 ' i açın ve henüz yüklenmemişse Bilişsel Arama NuGet paketini Microsoft Azure. **Araçlar** menüsünde **NuGet Paket Yöneticisi** ' ni ve ardından **çözüm için NuGet Paketlerini Yönet...** ' i seçin. **Araştır** sekmesinde, **Microsoft. Azure. Search** (sürüm 9.0.1 veya üzeri) ' i bulup daha sonra yükler. Yüklemeyi tamamlaması için ek iletişim kutularına tıklamacaksınız.
+Bu öğreticinin kaynak kodu, [birden çok veri kaynakları](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources) klasöründe [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub deposunda bulunur.
 
-    ![Azure kitaplıklarını eklemek için NuGet kullanma](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+## <a name="1---create-services"></a>1-hizmet oluşturma
 
-1. Visual Studio 'yu kullanarak yerel deponuza gidin ve **AzureSearchMultipleDataSources. sln**çözüm dosyasını açın.
+Bu öğretici, dizin oluşturma ve sorgular için Azure Bilişsel Arama, bir veri kümesi için Azure Cosmos DB ve ikinci veri kümesi için Azure Blob depolama kullanır. 
 
-## <a name="get-a-key-and-url"></a>Anahtar ve URL al
-
-Azure Bilişsel Arama hizmetinize etkileşimde bulunmak için hizmet URL 'SI ve erişim anahtarı gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
-
-1. [Azure Portal](https://portal.azure.com/)oturum açın ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
-
-1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
-
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
-
-Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
-
-## <a name="prepare-sample-azure-cosmos-db-data"></a>Örnek Azure Cosmos DB verileri hazırlama
+Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgedeki ve kaynak grubundaki tüm hizmetleri oluşturun. Uygulamada, hizmetleriniz herhangi bir bölgede olabilir.
 
 Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır. Bir küme, otelleri tanımlar ve bir Azure Cosmos DB veritabanına yüklenir. Diğer küme, otel odası ayrıntılarını içerir ve Azure Blob depolamaya yüklenecek yedi ayrı JSON dosyası olarak sağlanır.
+
+### <a name="start-with-cosmos-db"></a>Cosmos DB kullanmaya başlayın
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve Azure Cosmos DB hesabınıza genel bakış sayfasına gidin.
 
@@ -88,7 +76,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. Oteller koleksiyonundaki öğelerin görünümünü yenilemek için Yenile düğmesini kullanın. Yedi yeni veritabanı belgesi listelendiğini görmeniz gerekir.
 
-## <a name="prepare-sample-blob-data"></a>Örnek blob verilerini hazırlama
+### <a name="azure-blob-storage"></a>Azure Blob depolama
 
 1. [Azure Portal](https://portal.azure.com)oturum açın, Azure depolama hesabınıza gidin, **Bloblar**' a tıklayın ve ardından **+ Container**' a tıklayın.
 
@@ -102,47 +90,74 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 Karşıya yükleme tamamlandıktan sonra dosyalar veri kapsayıcısının listesinde görünmelidir.
 
-## <a name="set-up-connections"></a>Bağlantıları ayarlama
+### <a name="azure-cognitive-search"></a>Azure Bilişsel Arama
 
-Arama hizmeti ve veri kaynakları için bağlantı bilgileri, çözümdeki **appSettings. JSON** dosyasında belirtilir. 
+Üçüncü bileşen, [portalda oluşturabileceğiniz](search-create-service-portal.md)Azure bilişsel arama. Bu izlenecek yolu tamamlamak için ücretsiz katmanı kullanabilirsiniz. 
 
-1. Visual Studio 'da **AzureSearchMultipleDataSources. sln** dosyasını açın.
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Bilişsel Arama yönelik bir yönetici API anahtarı ve URL 'SI alın
 
-1. Çözüm Gezgini, **appSettings. JSON** dosyasını düzenleyin.  
+Azure Bilişsel Arama hizmetiyle etkileşim kurmak için hizmet URL 'SI ve erişim anahtarı gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
-```json
-{
-  "SearchServiceName": "Put your search service name here",
-  "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-  "BlobStorageAccountName": "Put your Azure Storage account name here",
-  "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
-  "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
-  "CosmosDBDatabaseName": "hotel-rooms-db"
-}
-```
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+
+1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+
+   Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
+
+   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+
+İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
+
+## <a name="2---set-up-your-environment"></a>2-ortamınızı ayarlama
+
+1. Visual Studio 2019 ' u başlatın ve **Araçlar** menüsünde **NuGet Paket Yöneticisi** ' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin...** . 
+
+1. **Araştır** sekmesinde, **Microsoft. Azure. Search** (sürüm 9.0.1 veya üzeri) ' i bulup daha sonra yükler. Yüklemeyi tamamlaması için ek iletişim kutularına tıklamacaksınız.
+
+    ![Azure kitaplıklarını eklemek için NuGet kullanma](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+
+1. **Microsoft. Extensions. Configuration. JSON** NuGet paketini arayın ve bu paketi de yükler.
+
+1. **AzureSearchMultipleDataSources. sln**çözüm dosyasını açın.
+
+1. Çözüm Gezgini, bağlantı bilgilerini eklemek için **appSettings. JSON** dosyasını düzenleyin.  
+
+    ```json
+    {
+      "SearchServiceName": "Put your search service name here",
+      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+      "BlobStorageAccountName": "Put your Azure Storage account name here",
+      "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
+      "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
+      "CosmosDBDatabaseName": "hotel-rooms-db"
+    }
+    ```
 
 İlk iki giriş, Azure Bilişsel Arama hizmetiniz için URL ve yönetici anahtarlarını kullanır. Örneğin, sağlanacak hizmet adı `mydemo``https://mydemo.search.windows.net`uç noktası verilir.
 
 Sonraki girişler, Azure Blob depolama ve Azure Cosmos DB veri kaynakları için hesap adlarını ve bağlantı dizesi bilgilerini belirtir.
 
-### <a name="identify-the-document-key"></a>Belge anahtarını tanımla
+## <a name="3---map-key-fields"></a>3-anahtar alanlarını eşleme
 
-Azure Bilişsel Arama 'de, anahtar alanı dizindeki her belgeyi benzersiz bir şekilde tanımlar. Her arama dizininin `Edm.String`türünde tam olarak bir anahtar alanı olmalıdır. Bu anahtar alanı, dizine eklenen bir veri kaynağındaki her belge için mevcut olmalıdır. (Aslında, tek gerekli alandır.)
+İçerik birleştirme, her iki veri akışının de arama dizininde aynı belgeleri hedeflemesini gerektirir. 
 
-Birden çok veri kaynağından veri dizinlerken, iki fiziksel ayrı kaynak belgesinden verileri Birleşik dizindeki yeni bir arama belgesiyle birleştirmek için ortak bir belge anahtarı kullanın. Genellikle dizininiz için anlamlı bir belge anahtarı belirlemek için bazı önde bir planlama gerektirir ve her iki veri kaynağında de bulunduğundan emin olun. Bu gösteride, Cosmos DB içindeki her otel için Hotelıd anahtarı, blob depolamada yer aldığı odalar JSON Bloblarında de bulunur.
+Azure Bilişsel Arama 'de, anahtar alanı her belgeyi benzersiz bir şekilde tanımlar. Her arama dizininin `Edm.String`türünde tam olarak bir anahtar alanı olmalıdır. Bu anahtar alanı, dizine eklenen bir veri kaynağındaki her belge için mevcut olmalıdır. (Aslında, tek gerekli alandır.)
 
-Azure Bilişsel Arama Dizinleyicileri, dizin oluşturma işlemi sırasında veri alanlarını yeniden adlandırmak ve hatta yeniden biçimlendirmek için alan eşlemelerini kullanarak kaynak verilerin doğru Dizin alanına yönlendirilebilmesi için kullanılabilir.
+Birden çok veri kaynağından veri dizinlerken, her gelen satır veya belgenin, iki fiziksel farklı kaynak belgesinden verileri Birleşik dizindeki yeni bir arama belgesiyle birleştirmek için ortak bir belge anahtarı içerdiğinden emin olun. 
 
-Örneğin, örnek Azure Cosmos DB verilerimizde, otel tanımlayıcısı **`HotelId`** olarak adlandırılır. Ancak, otel odalarına yönelik JSON blob dosyalarında, otel tanımlayıcısı **`Id`** olarak adlandırılır. Program bunu, **`Id`** alanını bloblardan dizindeki **`HotelId`** anahtar alanına eşleyerek işler.
+Genellikle dizininiz için anlamlı bir belge anahtarı belirlemek için bazı önde bir planlama gerektirir ve her iki veri kaynağında de bulunduğundan emin olun. Bu gösteride, Cosmos DB içindeki her bir otelin `HotelId` anahtarı, blob depolamada yer aldığı odalar JSON Bloblarında de bulunur.
+
+Azure Bilişsel Arama Dizinleyicileri, dizin oluşturma işlemi sırasında veri alanlarını yeniden adlandırmak ve hatta yeniden biçimlendirmek için alan eşlemelerini kullanarak kaynak verilerin doğru Dizin alanına yönlendirilebilmesi için kullanılabilir. Örneğin, Cosmos DB, otel tanımlayıcısı **`HotelId`** olarak adlandırılır. Ancak, otel odalarına yönelik JSON blob dosyalarında, otel tanımlayıcısı **`Id`** olarak adlandırılır. Program bunu, **`Id`** alanını bloblardan dizindeki **`HotelId`** anahtar alanına eşleyerek işler.
 
 > [!NOTE]
-> Çoğu durumda, varsayılan olarak bazı Dizin oluşturucular tarafından oluşturulan belgeler gibi otomatik olarak oluşturulmuş belge anahtarları, birleştirilmiş dizinler için iyi belge anahtarları oluşturmazlar. Genel olarak, içinde zaten bulunan veya veri kaynaklarınıza kolayca eklenebilen anlamlı, benzersiz bir anahtar değeri kullanmak isteyeceksiniz.
+> Çoğu durumda, bazı Dizin oluşturucular tarafından varsayılan olarak oluşturulanlar gibi otomatik olarak oluşturulan belge anahtarları, birleştirilmiş dizinler için iyi belge anahtarları oluşturmazlar. Genel olarak, içinde zaten bulunan veya veri kaynaklarınıza kolayca eklenebilen anlamlı, benzersiz bir anahtar değeri kullanmak isteyeceksiniz.
 
-## <a name="understand-the-code"></a>Kodu anlama
+## <a name="4---explore-the-code"></a>4-kodu keşfet
 
 Veriler ve yapılandırma ayarları olduktan sonra, **AzureSearchMultipleDataSources. sln** dosyasındaki örnek program, derleme ve çalıştırmaya hazırlanmalıdır.
 
 Bu basit C#/.NET konsol uygulaması aşağıdaki görevleri gerçekleştirir:
+
 * C# Otel sınıfının veri yapısına dayalı yeni bir dizin oluşturur (Ayrıca adres ve oda sınıflarına de başvurur).
 * Yeni bir veri kaynağı ve dizin alanları Azure Cosmos DB verileri eşleyen bir dizin oluşturucu oluşturur. Bunlar her iki nesne de Azure Bilişsel Arama.
 * Cosmos DB ' dan otel verilerini yüklemek için Dizin oluşturucuyu çalıştırır.
@@ -154,7 +169,7 @@ Bu basit C#/.NET konsol uygulaması aşağıdaki görevleri gerçekleştirir:
   + **Hotel.cs** , dizini tanımlayan şemayı içerir
   + **Program.cs** , Azure bilişsel arama dizinini, veri kaynaklarını ve Dizin oluşturucuyu oluşturan ve Birleşik sonuçları dizine yükleyen işlevleri içerir.
 
-### <a name="define-the-index"></a>Dizini tanımlama
+### <a name="create-an-index"></a>Dizin oluşturma
 
 Bu örnek program, bir Azure Bilişsel Arama dizini tanımlamak ve oluşturmak için .NET SDK 'sını kullanır. Bir C# veri modeli sınıfından dizin yapısı oluşturmak Için [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) sınıfından yararlanır.
 
@@ -330,7 +345,7 @@ Dizin Azure Cosmos DB veritabanından otel verileriyle doldurulduğundan, blob I
 > [!NOTE]
 > Her iki veri kaynağınız de aynı anahtar olmayan alanlara sahipseniz ve bu alanlardaki veriler eşleşmiyorsa, dizin, dizin oluşturucunun en son çalıştırıldığı değerleri içerir. Örneğimizde, her iki veri kaynağı da bir **Hotelname** alanı içerir. Bazı nedenlerle bu alandaki veriler farklıysa, aynı anahtar değerine sahip belgeler için, en son dizinlenen veri kaynağından gelen **barındırma adı** verileri dizinde depolanan değer olacaktır.
 
-## <a name="search-your-json-files"></a>JSON dosyalarınızı arama
+## <a name="5---search"></a>5-arama
 
 Program çalıştırıldıktan sonra, portalda [**Arama Gezgini**](search-explorer.md) 'ni kullanarak doldurulmuş arama dizinini inceleyebilirsiniz.
 

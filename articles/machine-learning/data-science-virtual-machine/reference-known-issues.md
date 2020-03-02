@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526561"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206529"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi bilinen sorunlar ve sorun giderme
 
-Bu makale, Azure Veri Bilimi Sanal Makinesi kullanırken oluşan hataları veya hataları bulmanıza ve düzeltmenize yardımcı olur.
+Bu makale, Azure Veri Bilimi Sanal Makinesi kullanırken karşılaşabileceğiniz hataları veya hataları bulmanıza ve düzeltmenize yardımcı olur.
 
 ## <a name="python-package-installation-issues"></a>Python paketi yükleme sorunları
 
@@ -30,15 +30,20 @@ Paketler yüklenirken `pip install` yerine `sudo pip install` kullanın.
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM 'de disk şifrelemesi başarısız oluyor
 
-Azure disk şifrelemesi (ADE), Ubuntu DSVM 'de Şu anda desteklenmiyor. Geçici bir çözüm olarak, [Azure depolama şifrelemesini müşteri tarafından yönetilen anahtarlarla](../../storage/common/storage-encryption-keys-portal.md)yapılandırmayı düşünün.
+Azure disk şifrelemesi (ADE) Şu anda Ubuntu DSVM üzerinde desteklenmiyor. Geçici bir çözüm olarak, [Azure yönetilen disklerinin sunucu tarafı şifrelemesini](../../virtual-machines/windows/disk-encryption.md)yapılandırmayı göz önünde bulundurun.
 
 ## <a name="tool-appears-disabled"></a>Araç devre dışı görünüyor
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Hyper-V, Windows DSVM 'de çalışmıyor
 
-Bu beklenen davranış, önyükleme performansı için bazı hizmetleri devre dışı bırakmış. Yeniden etkinleştirmek için, Windows DSVM 'nizin arama çubuğunu açın, "Hizmetler" yazın, ardından tüm Hyper-V hizmetlerini "El Ile" olarak ayarlayın ve "Hyper-V sanal makine yönetimi" ni "otomatik" olarak ayarlayın.
+Başlangıçta Windows üzerinde çalışan Hyper-V beklenen davranıştır. Önyükleme performansı için bazı hizmetleri devre dışı bırakmış oldunuz. Hyper-V ' i etkinleştirmek için:
+
+1. Windows DSVM 'niz üzerinde arama çubuğunu açın
+1. "Hizmetler" yazın
+1. Tüm Hyper-V hizmetlerini "El Ile" olarak ayarlayın
+1. "Hyper-V sanal makine yönetimi" ni "otomatik" olarak ayarla
 
 Son ekranınız şuna benzemelidir:
 
-   ![Hyper-V olanağını etkinleştir](./media/workaround/hyperv-enable-dsvm.png)
+   ![Hyper-V'yi etkinleştirme](./media/workaround/hyperv-enable-dsvm.png)
 

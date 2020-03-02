@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 785f68b98d819a58ce43837dc3c9b5a855beeb0a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672523"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206937"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -28,7 +28,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-the-azure-cli-locally"></a>Azure CLı 'yi yerel olarak kullanma
+## <a name="install-the-azure-cli-locally"></a>Azure CLı 'yı yerel olarak yükler
 
 Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.46 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümünüzü belirlemek için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -38,11 +38,13 @@ Azure CLı 'yi yerel olarak çalıştırıyorsanız, oturum açıp kimlik doğru
 az login
 ```
 
+Azure CLı ile kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli).
+
 ## <a name="authorize-access-to-blob-storage"></a>Blob depolamaya erişim yetkisi verme
 
 Azure CLı 'dan Azure AD kimlik bilgileriyle veya depolama hesabı erişim anahtarını kullanarak blob depolamaya erişim yetkisi verebilirsiniz. Azure AD kimlik bilgilerinin kullanılması önerilir. Bu makalede, Azure AD kullanarak BLOB depolama işlemlerini yetkilendirme işlemi gösterilmektedir.
 
-Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları, belirli bir işlemin yetkilendirmesini belirtmenize olanak sağlayan `--auth-mode` parametresini destekler. Azure AD kimlik bilgileriyle yetkilendirmek için `--auth-mode` parametresini `login` olarak ayarlayın. Daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları, belirli bir işlemin yetkilendirmesini belirtmenize olanak sağlayan `--auth-mode` parametresini destekler. Azure AD kimlik bilgileriyle yetkilendirmek için `--auth-mode` parametresini `login` olarak ayarlayın. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 `--auth-mode` parametresini yalnızca BLOB depolama veri işlemleri destekler. Kaynak grubu veya depolama hesabı oluşturma gibi yönetim işlemleri, yetkilendirme için otomatik olarak Azure AD kimlik bilgilerini kullanır.
 

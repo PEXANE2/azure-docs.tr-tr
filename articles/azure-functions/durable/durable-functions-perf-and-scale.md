@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486269"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204523"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler performans ve ölçek (Azure Işlevleri)
 
@@ -220,7 +220,7 @@ Orchestrator ve Entity işlevlerinde genişletilmiş oturumların belirli etkile
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator işlevi yeniden yürütme
 
-Daha önce belirtildiği gibi, Orchestrator işlevleri **Geçmiş** tablosunun içerikleri kullanılarak yeniden yürütülür. Varsayılan olarak, bir denetim kuyruğundan bir toplu ileti sıralandığında, Orchestrator işlev kodu yeniden yürütülür. Genişletilmiş Oturumlar etkinleştirildiğinde, Orchestrator işlev örnekleri bellekte daha uzun tutulur ve yeni iletiler tam geçmiş yeniden yürütme olmadan işlenebilir.
+Daha önce belirtildiği gibi, Orchestrator işlevleri **Geçmiş** tablosunun içerikleri kullanılarak yeniden yürütülür. Varsayılan olarak, bir denetim kuyruğundan bir toplu ileti sıralandığında, Orchestrator işlev kodu yeniden yürütülür. Fanı-Out, fan ve tüm görevlerin tamamlanmasını bekliyor olsa da (örneğin, .NET veya JavaScript 'te `context.df.Task.all` `Task.WhenAll` kullanarak), görev yanıtlarının toplu işleri zaman içinde işlendiği için bu durum ortaya çıkar. Genişletilmiş Oturumlar etkinleştirildiğinde, Orchestrator işlev örnekleri bellekte daha uzun tutulur ve yeni iletiler tam geçmiş yeniden yürütme olmadan işlenebilir.
 
 Genişletilmiş oturumların performans geliştirmesi en sık aşağıdaki durumlarda gözlemlenmiştir:
 

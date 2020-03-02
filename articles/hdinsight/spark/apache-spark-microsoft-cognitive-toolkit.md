@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 587de168a17c407abf3c2a7797969df013760a9f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156650"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206563"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, aşağıdaki adımları uygulayın.
 
 2. [Spark Python API 'sini (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) kullanarak bir Azure Blob depolama hesabındaki dosyalara eğitilen Microsoft Cognitive Toolkit derin bir öğrenme modelinin nasıl uygulanacağını öğrenmek için [Apache Spark](https://spark.apache.org/) kümesine [Jupyter Notebook](https://jupyter.org/) yükleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluşturma](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -56,15 +56,15 @@ Bu makalede, küme oluşturulduktan sonra, araç takımını yüklemek için por
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Betik eylemini çalıştırmak için Azure portal kullanma hakkında yönergeler için bkz. [betik eylemini kullanarak HDInsight kümelerini özelleştirme](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Microsoft Cognitive Toolkit yüklemek için aşağıdaki girişleri sağladığınızdan emin olun. Betik eyleminiz için aşağıdaki değerleri kullanın:
+Betik eylemini çalıştırmak için Azure portal kullanma hakkında yönergeler için bkz. [betik eylemini kullanarak HDInsight kümelerini özelleştirme](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation). Microsoft Cognitive Toolkit yüklemek için aşağıdaki girişleri sağladığınızdan emin olun. Betik eyleminiz için aşağıdaki değerleri kullanın:
 
 |Özellik |Değer |
 |---|---|
 |Betik türü|-Özel|
-|Ad| MCT 'yi yükler|
+|Adı| MCT 'yi yükler|
 |Bash betiği URI 'SI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Düğüm türleri:|Baş, çalışan|
-|Parametreler|Hiçbiri|
+|Parametreler|Yok|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Jupyter Not defterini Azure HDInsight Spark kümesine yükleme
 

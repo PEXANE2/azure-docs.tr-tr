@@ -7,42 +7,42 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c80c667cb281168de6f11bbb6a536c01fefb7935
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076552"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206971"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI kullanarak bir ExpressRoute bağlantı hattına bir sanal ağı bağlama
 
 Bu makalede, sanal ağlar (Vnet'ler) bağlantı CLI kullanarak Azure ExpressRoute bağlantı hatları için yardımcı olur. Azure CLI kullanarak bağlamak için sanal ağları Resource Manager dağıtım modeli kullanılarak oluşturulmuş olması gerekir. Bunlar aynı abonelik veya başka bir abonelik parçası olabilir. Bir ExpressRoute bağlantı hattı için sanal ağınıza bağlanmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçebilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portalında](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Video - Azure portalı](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klasik)](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>Yapılandırma önkoşulları
 
-* Komut satırı arabirimi (CLI) en son sürümü gerekir. Daha fazla bilgi için [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Komut satırı arabirimi (CLI) en son sürümü gerekir. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-* Gözden geçirmeniz gereken [önkoşulları](expressroute-prerequisites.md), [yönlendirme gereksinimleri](expressroute-routing.md), ve [iş akışları](expressroute-workflows.md) yapılandırmaya başlamadan önce.
+* Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md), [yönlendirme gereksinimlerini](expressroute-routing.md)ve [iş akışlarını](expressroute-workflows.md) gözden geçirmeniz gerekir.
 
 * Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. 
-  * Yönergelerini izleyin [ExpressRoute devresi oluşturma](howto-circuit-cli.md) ve bağlantı hattı, bağlantı sağlayıcı tarafından etkin. 
-  * Bağlantı hattınız için yapılandırılmış Azure özel eşleme olduğundan emin olun. Bkz: [yönlendirmeyi yapılandırma](howto-routing-cli.md) makale için yönlendirme yönergeleri. 
+  * [ExpressRoute](howto-circuit-cli.md) bağlantı hattı oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcınız tarafından devre dışı bırakıldı. 
+  * Bağlantı hattınız için yapılandırılmış Azure özel eşleme olduğundan emin olun. Yönlendirme yönergeleri için [yönlendirmeyi yapılandırma](howto-routing-cli.md) makalesine bakın. 
   * Azure özel eşdüzey hizmet sağlama yapılandırıldığından emin olun. Böylece uçtan uca bağlantıyı etkinleştirmek BGP ağınız ile Microsoft arasında eşleme ayarlama olması gerekir.
-  * Bir sanal ağ ve oluşturulan ve tam olarak sağlanan sanal ağ geçidi olduğundan emin olun. Yönergelerini izleyin [ExpressRoute için sanal ağ geçidi yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Kullandığınızdan emin olun `--gateway-type ExpressRoute`.
+  * Bir sanal ağ ve oluşturulan ve tam olarak sağlanan sanal ağ geçidi olduğundan emin olun. [ExpressRoute için sanal ağ geçidi yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)yönergelerini izleyin. `--gateway-type ExpressRoute`kullandığınızdan emin olun.
 
 * Standart bir ExpressRoute bağlantı hattı için en fazla 10 sanal ağlara bağlayabilirsiniz. Tüm sanal ağları, standart bir ExpressRoute bağlantı hattını kullanırken aynı jeopolitik bölgede olması gerekir. 
 
 * En fazla dört ExpressRoute bağlantı hatları için tek bir sanal ağa bağlanabilir. Bağlanmakta olduğunuz her bir ExpressRoute bağlantı hattı için yeni bir bağlantı nesnesi oluşturmak için aşağıdaki işlemi kullanın. ExpressRoute bağlantı hatları, aynı abonelik, farklı Aboneliklerde veya her ikisinin bir karışımı olabilir.
 
-* ExpressRoute premium eklentisi etkinleştirirseniz, bir sanal ağ ExpressRoute bağlantı hattının coğrafi bölge dışında bağlama veya çok sayıda sanal ağları ExpressRoute devreniz bağlanın. Premium eklenti hakkında daha fazla bilgi için bkz: [SSS](expressroute-faqs.md).
+* ExpressRoute premium eklentisi etkinleştirirseniz, bir sanal ağ ExpressRoute bağlantı hattının coğrafi bölge dışında bağlama veya çok sayıda sanal ağları ExpressRoute devreniz bağlanın. Premium eklentisi hakkında daha fazla bilgi için bkz. [SSS](expressroute-faqs.md).
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Bir sanal ağ ile aynı abonelikte devreye bağlama
 
@@ -73,7 +73,7 @@ Bağlantı hattı sahibinden yetkilendirme dilediğiniz zaman iptal et ve deği�
 
 ### <a name="circuit-owner-operations"></a>Bağlantı hattı sahibi işlemleri
 
-**Bir yetkilendirme oluşturmak için**
+**Yetkilendirme oluşturmak için**
 
 Bağlantı hattı sahibinden bağlantı hattı kullanıcı tarafından ExpressRoute bağlantı hattına kendi sanal ağ geçitlerine bağlanmak için kullanılan bir yetkilendirme anahtarı oluşturur bir yetkilendirme oluşturur. Bir yetkilendirme yalnızca bir bağlantı için geçerli değil.
 
@@ -103,7 +103,7 @@ Bağlantı hattı sahibinden belirli bir bağlantı hattı üzerinde aşağıdak
 az network express-route auth list --circuit-name MyCircuit -g ExpressRouteResourceGroup
 ```
 
-**Yetkilendirmeleri eklemek için**
+**Yetkilendirmeler eklemek için**
 
 Bağlantı hattı sahibinden yetkilendirme, aşağıdaki örneği kullanarak ekleyebilirsiniz:
 
@@ -127,7 +127,7 @@ Bağlantı hattı kullanıcısı eş kimliği ve bağlantı hattı sahibinden ye
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Bağlantı Yetkilendirme kullanmak için**
+**Bir bağlantı yetkilendirmesini kullanma**
 
 Bağlantı hattı kullanıcısı bağlantı yetkilendirme kullanmak için aşağıdaki örnek çalıştırabilirsiniz:
 
@@ -135,35 +135,37 @@ Bağlantı hattı kullanıcısı bağlantı yetkilendirme kullanmak için aşağ
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit --authorization-key "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**Bağlantı Yetkilendirme serbest bırakmak için**
+**Bir bağlantı yetkilendirmesini serbest bırakmak için**
 
 Sanal ağı ExpressRoute bağlantı hattına bağlayan bağlantı silerek bir yetkilendirme serbest bırakabilirsiniz.
 
 ## <a name="modify-a-virtual-network-connection"></a>Sanal ağ bağlantısı değiştirme
 Belirli bir sanal ağ bağlantısı özellikleri güncelleştirebilirsiniz. 
 
-**Bağlantı ağırlığına güncelleştirmek için**
+**Bağlantı ağırlığını güncelleştirmek için**
 
-Sanal ağınız için birden çok ExpressRoute bağlantı hattına bağlı olabilir. Aynı öneke birden fazla ExpressRoute devresinden alabilirsiniz. Bu ön eki hedefleyen trafiği göndermek için hangi bağlantı seçmek için değiştirebileceğiniz *RoutingWeight* bağlantısı. Trafik, en yüksek bağlantı gönderilecek *RoutingWeight*.
+Sanal ağınız için birden çok ExpressRoute bağlantı hattına bağlı olabilir. Aynı öneke birden fazla ExpressRoute devresinden alabilirsiniz. Bu önek için hangi trafiğin gönderileceğini seçmek üzere bir bağlantının *Routingweight* değerini değiştirebilirsiniz. Trafik en yüksek *Routingweight*bağlantısı üzerinden gönderilir.
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
 ```
 
-Aralığı *RoutingWeight* 0-32000. Varsayılan değer 0’dır.
+*Routingweight* aralığı 0 ile 32000 arasındadır. Varsayılan değer 0'dır.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath yapılandırma 
 ExpressRoute bağlantı hattınızı [ExpressRoute Direct](expressroute-erdirect-about.md) üzerinde ise ve sanal ağ seçin ağ geçidiniz Ultra Performance veya ErGw3AZ ise [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 'i etkinleştirebilirsiniz. FastPath, şirket içi ağınız ve sanal ağınız arasında saniyedeki paket sayısı ve saniye başına bağlantı gibi veri yolu preformance geliştirir. 
 
-> [!NOTE] 
-> Zaten bir sanal ağ bağlantınız varsa ancak FastPath 'i etkinleştirmediyseniz, sanal ağ bağlantısını silmeniz ve yeni bir bağlantı oluşturmanız gerekir. 
-> 
->  
+**Yeni bir bağlantıda FastPath yapılandırma**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
+**FastPath 'i etkinleştirmek için mevcut bir bağlantı güncelleştiriliyor**
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

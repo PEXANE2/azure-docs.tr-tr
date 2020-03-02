@@ -1,5 +1,5 @@
 ---
-title: 'Azure HDInsight: Azure CLI örnekleri'
+title: 'Azure HDInsight: Azure CLı örnekleri'
 description: Azure HDInsight 'ta ortak görevlere yönelik Azure CLı örnekleri.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266716"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207107"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI örnekleri
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLı örnekleri
 
 > [!div class="op_single_selector"]
 > [.NET örnekleri](hdinsight-sdk-dotnet-samples.md)
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>[Disk şifrelemesi](kafka/apache-kafka-byok.md) ile Kafka kümesi oluşturma
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>[Disk şifrelemesi](./disk-encryption.md) ile Kafka kümesi oluşturma
 
 ```azurecli
 export clusterName=CLUSTERNAME

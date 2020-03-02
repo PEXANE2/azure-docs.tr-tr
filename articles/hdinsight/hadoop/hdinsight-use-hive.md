@@ -1,20 +1,19 @@
 ---
 title: Apache Hive ve HiveQL nedir-Azure HDInsight
 description: Apache Hive, Apache Hadoop için bir veri ambarı sistemidir. Hive içinde depolanan verileri, Transact-SQL ' e benzer HiveQL kullanarak sorgulayabilirsiniz. Bu belgede, Azure HDInsight ile Hive ve HiveQL kullanmayı öğrenin.
-keywords: hiveql, Hive nedir, Hadoop hiveql, Hive kullanma, Hive 'yi öğrenme, Hive nedir?
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/28/2020
+ms.openlocfilehash: 20fdafc3077d1017c17d1055596dab150dffec72
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499203"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206648"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
 
@@ -24,13 +23,12 @@ Hive, büyük ölçüde yapılandırılmış veriler üzerinde proje yapısı ol
 
 HDInsight, belirli iş yükleri için ayarlanmış çeşitli küme türleri sağlar. Aşağıdaki küme türleri genellikle Hive sorguları için kullanılır:
 
-* __Etkileşimli sorgu__: etkileşimli sorgularda yanıt sürelerini geliştirmek Için [düşük gecikme süreli analitik işleme (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) işlevselliği sağlayan bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'Ta etkileşimli sorguya başlama](../interactive-query/apache-interactive-query-get-started.md) belgesi.
-
-* __Hadoop__: toplu işleme iş yükleri için ayarlanmış bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md) belgesi.
-
-* __Spark__: Apache Spark Hive ile çalışmaya yönelik yerleşik işlevlere sahiptir. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Spark kullanmaya başlama](../spark/apache-spark-jupyter-spark-sql.md) belgesi.
-
-* __HBase__: hiveql, Apache HBase 'de depolanan verileri sorgulamak için kullanılabilir. Daha fazla bilgi için bkz. [HDInsight 'Ta Apache HBase Ile başlama](../hbase/apache-hbase-tutorial-get-started-linux.md) belgesi.
+|Küme türü |Açıklama|
+|---|---|
+|Interactive Query|Etkileşimli sorguların yanıt sürelerini geliştirmek için [düşük gecikme süreli analitik işleme (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) işlevselliği sağlayan bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'Ta etkileşimli sorguya başlama](../interactive-query/apache-interactive-query-get-started.md) belgesi.|
+|Hadoop|Toplu işleme iş yükleri için ayarlanmış bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md) belgesi.|
+|Spark|Apache Spark Hive ile çalışmaya yönelik yerleşik işlevlere sahiptir. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Spark kullanmaya başlama](../spark/apache-spark-jupyter-spark-sql.md) belgesi.|
+|HBase|HiveQL, Apache HBase 'de depolanan verileri sorgulamak için kullanılabilir. Daha fazla bilgi için bkz. [HDInsight 'Ta Apache HBase Ile başlama](../hbase/apache-hbase-tutorial-get-started-linux.md) belgesi.|
 
 ## <a name="how-to-use-hive"></a>Hive kullanma
 
@@ -88,7 +86,7 @@ Hive ile oluşturabileceğiniz iki tür tablo vardır:
     * Veriler, Hive dışında da kullanılır. Örneğin, veri dosyaları başka bir işlem tarafından güncelleştirilir (dosyaları kilitlemez.)
     * Verilerin, tablo bırakıldıktan sonra bile temeldeki konumda kalması gerekir.
     * Varsayılan olmayan bir depolama hesabı gibi özel bir konuma ihtiyacınız vardır.
-    * Hive dışında bir program veri biçimini, konumunu, vb. yönetir.
+    * Hive dışında bir program veri biçimini, konumunu ve benzerlerini yönetir.
 
 Daha fazla bilgi için [Hive iç ve dış tablolar giriş](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) blog gönderisine bakın.
 
@@ -106,11 +104,11 @@ Hive, **Kullanıcı tanımlı işlevler (UDF)** aracılığıyla da genişletile
 
 * [Bir örnek Apache Hive tarih/saat biçimlerini Hive zaman damgasına dönüştürmek için Kullanıcı tanımlı işlev](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
-## <a id="data"></a>Örnek veriler
+## <a name="example-data"></a>Örnek veriler
 
 HDInsight üzerinde Hive, `hivesampletable`adlı bir iç tabloyla önceden yüklenmiş olarak gelir. HDInsight, Hive ile kullanılabilecek örnek veri kümeleri de sağlar. Bu veri kümeleri `/example/data` ve `/HdiSamples` dizinlerinde depolanır. Bu dizinler, kümenizin varsayılan depolamada bulunur.
 
-## <a id="job"></a>Örnek Hive sorgusu
+## <a name="example-hive-query"></a>Örnek Hive sorgusu
 
 Aşağıdaki HiveQL deyimleri `/example/data/sample.log` dosyasına proje sütunları:
 
@@ -133,17 +131,14 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Önceki örnekte, HiveQL deyimleri aşağıdaki eylemleri gerçekleştirir:
 
-* `DROP TABLE`: tablo zaten varsa, silin.
-
-* `CREATE EXTERNAL TABLE`: Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.
-
-* `ROW FORMAT`: Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
-
-* `STORED AS TEXTFILE LOCATION`: kovanın verilerin depolandığını (`example/data` dizini) ve metin olarak depolandığını belirtir. Veriler tek bir dosyada olabilir veya dizin içindeki birden çok dosyaya yayılabilir.
-
-* `SELECT`: **T4** sütununun **[Error]** değerini Içerdiği tüm satırların sayısını seçer. Bu değer içeren üç satır olduğundan, bu ifade **3** değerini döndürür.
-
-* `INPUT__FILE__NAME LIKE '%.log'`-Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardan veri döndürmemiz gerektiğini söyler.
+|Ekstre |Açıklama |
+|---|---|
+|TABLOYU BıRAK|Tablo zaten varsa, silin.|
+|DıŞ TABLO OLUŞTUR|Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.|
+|SATıR BIÇIMI|Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.|
+|TEXTFILE KONUMU OLARAK DEPOLANDı|Verilerin depolandığı Hive (`example/data` dizin) ve metin olarak depolandığını belirtir. Veriler tek bir dosyada olabilir veya dizin içindeki birden çok dosyaya yayılabilir.|
+|SELECT|**T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu değer içeren üç satır olduğundan, bu ifade **3** değerini döndürür.|
+|'%. Log ' gıbı INPUT__FILE__NAME|Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardan veri döndürmemiz gerektiğini söyler.|
 
 > [!NOTE]  
 > Dış tablolar, temel alınan verilerin bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır. Örneğin, otomatik bir veri yükleme işlemi veya MapReduce işlemi.
@@ -169,18 +164,18 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-* `CREATE TABLE IF NOT EXISTS`: tablo yoksa, oluşturun. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. Tablo Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.
-
-* `STORED AS ORC`: verileri en Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.
-
-* `INSERT OVERWRITE ... SELECT`: **[Error]** içeren **Log4jLogs** tablosundan satırları seçer ve ardından verileri **errorlogs** tablosuna ekler.
+|Ekstre |Açıklama |
+|---|---|
+|MEVCUT DEĞILSE CREATE TABLE|Tablo yoksa, oluşturun. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. Tablo Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.|
+|ORC OLARAK DEPOLANıR|Verileri Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.|
+|ÜZERINE YAZMA EKLE... SEÇIN|**Log4jLogs** tablosundan **[Error]** içeren satırları seçer ve ardından verileri **errorlogs** tablosuna ekler.|
 
 > [!NOTE]  
 > Dış tablolardan farklı olarak, iç tablo bırakılırken temel alınan veriler de silinir.
 
 ## <a name="improve-hive-query-performance"></a>Hive sorgu performansını iyileştirme
 
-### <a id="usetez"></a>Apache Tez
+### <a name="apache-tez"></a>Apache Tez
 
 [Apache tez](https://tez.apache.org) , Hive gibi veri kullanımı yoğun uygulamaların ölçeğe çok daha verimli bir şekilde çalışmasını sağlayan bir çerçevedir. Tez varsayılan olarak etkindir.  [Tez tasarım belgelerindeki Apache Hive](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) , uygulama seçimleri ve ayarlama yapılandırmalarına ilişkin ayrıntıları içerir.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e954de97e6573e330c42915b44bbc0c40abc54d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063259"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205150"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -61,7 +61,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ![ServiceNow yönetici rolü](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>Adım 3: Azure AD uygulama galerisinden ServiceNow ekleme
+## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3\. Adım Azure AD uygulama galerisinden ServiceNow ekleme
 
 ServiceNow 'ı Azure AD Uygulama Galerisi ' ne ekleyerek ServiceNow 'a sağlamayı yönetmeye başlayın. Önceden SSO için ServiceNow kurulumunu yaptıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
@@ -142,7 +142,7 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 * **Entryjoiningpropertyvalueısmissing:** Eşleşen özniteliği tanımlamak için [öznitelik eşlemelerinizi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) gözden geçirin. Sağlamaya çalıştığınız kullanıcı veya grupta bu değer bulunmalıdır. 
 * Tüm gereksinimleri veya sınırlamaları anlamak için [ServiceNow soap API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 'sini gözden geçirin (örneğin, bir kullanıcı için ülke kodunu belirtme biçimi)
 * Bazı ServiceNow dağıtımları, Azure AD sağlama hizmeti için IP aralıklarının izin sağlamasını gerektirir. Azure AD sağlama hizmeti için ayrılmış IP aralıkları [burada](https://www.microsoft.com/download/details.aspx?id=56519) "AzureActiveDirectoryDomainServices" altında bulunabilir.
-* ServiceNow kamu bulutuna Kullanıcı sağlama Şu anda desteklenmiyor.
+* Sağlama istekleri varsayılan olarak https://{-örnek-adı}. Service-Now. com/{Table-Name} olarak gönderilir. Özel bir kiracı URL 'SI gerekiyorsa, örnek adı alanında tüm URL 'YI sağlayabilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

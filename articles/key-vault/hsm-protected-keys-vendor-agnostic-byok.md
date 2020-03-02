@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566123"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207039"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma (önizleme)
 
@@ -90,6 +90,9 @@ KEK şu olmalıdır:
 - hedef anahtarı içeri aktarmayı planladığınız aynı anahtar kasasında oluşturuldu
 - `import` olarak ayarlanan izin verilen anahtar işlemleri ile oluşturuldu
 
+> [!NOTE]
+> KEK, yalnızca izin verilen anahtar işlemi olarak ' import ' içermelidir. ' Import ' diğer tüm anahtar işlemleriyle birbirini dışlıyor.
+
 `import`olarak ayarlanmış anahtar işlemleri olan bir KEK oluşturmak için [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) komutunu kullanın. Aşağıdaki komuttan döndürülen anahtar tanımlayıcısını (`kid`) kaydedin. ( [Adım 3](#step-3-generate-and-prepare-your-key-for-transfer)' te `kid` değerini kullanacaksınız.)
 
 ```azurecli
@@ -115,7 +118,7 @@ BYOK dosyasını bağlı bilgisayarınıza aktarın.
 > [!NOTE] 
 > RSA 1.024 bit anahtarlarının içe aktarılması desteklenmez. Şu anda, eliptik eğri (EC) anahtarının içe aktarılması desteklenmez.
 > 
-> **Bilinen sorun**: bir RSA 4k hedef anahtarını SafeNet Luna hsms 'den içeri aktarma işlemi başarısız oluyor. Sorun çözüldüğünde, bu makale güncelleştirilir.
+> **Bilinen sorun**: bir RSA 4k hedef anahtarını SafeNet Luna hsms 'den içeri aktarmak yalnızca üretici yazılımı 7.4.0 veya daha yeni bir sürüm ile desteklenir.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4\. Adım: anahtarınızı Azure Key Vault aktarma
 

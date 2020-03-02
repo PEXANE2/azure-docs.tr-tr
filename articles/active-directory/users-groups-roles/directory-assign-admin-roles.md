@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b813c1caa02ce3ffd3ab0579849dff47252e7d63
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559173"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207056"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) kullanarak, daha az ayrıcalıklı rollerdeki 
 
 Genel yönetici rolüne atanan kullanıcılar, Azure AD kuruluşunuzda her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye Azure AD kuruluşu için genel yönetici rolü atanır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü kuruluşunuzdaki en az olası kişilere atamanızı öneririz.
 
-En iyi uygulama olarak, bu rolü kuruluşunuzda 5 ' ten az kişiye atamanız önerilir. Kuruluşunuzda genel yönetici rolüne atanmış beş kullanıcı varsa, bunların kullanımını azaltmanın bazı yolları aşağıda verilmiştir.
+En iyi uygulama olarak, bu rolü kuruluşunuzda beşten az kişiden fazlasına atamanız önerilir. Kuruluşunuzda genel yönetici rolüne atanmış beş taneden fazla yönetici varsa, bunun kullanımını azaltmanın bazı yolları aşağıda verilmiştir.
 
 ### <a name="find-the-role-you-need"></a>İhtiyaç duyduğunuz rolü bulun
 
@@ -238,7 +238,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 >- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
 >- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >- [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
->- [Office güvenlik ve Uyumluluk Merkezi](https://sip.protection.office.com/homepage) -genel okuyucu SCC denetim günlüklerini okuyamıyor veya içerik araması yapamıyor.
+>- [Office güvenlik ve Uyumluluk Merkezi](https://sip.protection.office.com/homepage) -genel okuyucu SCC denetim günlüklerini okuyamaz, içerik araması yapın veya güvenli puanı inceleyin.
 >- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
 >- [Privileged Access Management (Pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu yalnızca [merkezi raporlama Için](https://docs.microsoft.com/azure/information-protection/reports-aip) desteklenir ve Azure AD Kuruluşunuz [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)ne zaman değildir.
@@ -1012,7 +1012,7 @@ Kimlik sağlayıcılarını doğrudan federasyonda kullanılmak üzere yapıland
 | Microsoft. AAD. B2C/IdentityProviders/allTasks | Azure Active Directory B2C kimlik sağlayıcılarını okuyun ve yapılandırın. |
 
 ### <a name="global-reader-permissions"></a>Genel okuyucu izinleri
-Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez. 
+Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 
 > [!NOTE]
 > Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki [rol açıklaması](#global-reader) konusuna bakın.
