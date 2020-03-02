@@ -121,6 +121,10 @@
           href: storage-sync-offline-data-transfer.md
         - name: StorSimple’dan Azure Dosya Eşitleme’ye geçiş
           href: storage-sync-files-storsimple-migration.md
+        - name: StorSimple 8100 ve 8600 geçiş kılavuzu
+          href: storage-files-migration-storsimple-8000.md
+        - name: StorSimple 1200 geçiş kılavuzu
+          href: storage-files-migration-storsimple-1200.md
     - name: Geliştirme
       items:
         - name: Bağlantı dizelerini yapılandırma

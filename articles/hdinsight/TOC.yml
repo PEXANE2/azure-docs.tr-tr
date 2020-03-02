@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Öğreticiler
       items:
+        - name: Apache Kafka kümesi oluşturma - Azure CLI
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: Apache Kafka Üretici ve Tüketici API’sini kullanma
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: Apache Kafka Streams API'si ile uygulama geliştirme
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: Apache Kafka günlüklerini çözümleme
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: Kendi anahtarınızı getirin
-              href: ./kafka/apache-kafka-byok.md
             - name: SSL Şifreleme ve Kimlik Doğrulaması
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: Sorun giderme

@@ -1,6 +1,7 @@
 - name: Form Tanıma Belgeleri
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: Form Tanıma nedir?
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: Eğitim verileri kümesi oluşturma
       href: build-training-data-set.md
+    - name: Örnek etiketleme aracını dağıtma
+      href: deploy-label-tool.md
     - name: Kapsayıcıları kullanma
       items:
         - name: Kapsayıcıları yükleme ve çalıştırma

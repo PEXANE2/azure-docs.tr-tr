@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: Sanal makine rezervasyonu satın alma
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Ayrılmış Konak rezervasyonu satın alma
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
         - name: Azure Disk Depolama
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Azure Depolama rezervasyonu satın alma
@@ -42,10 +44,12 @@
           href: view-reservations.md
     - name: Kavramlar
       items:
-        - name: Ayrılmış VM örneği indirimleri
-          href: ../manage/understand-vm-reservation-charges.md
         - name: Rezervasyon önerilerinin oluşturulma biçimi
           href: reserved-instance-purchase-recommendations.md
+        - name: Ayrılmış VM örneği indirimleri
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Rezervasyon yapılmış Ayrılmış Konak indirimleri
+          href: billing-understand-dedicated-hosts-reservation-charges.md
         - name: Azure Depolama ayrılmış kapasitesi indirimleri
           href: understand-storage-charges.md
         - name: Azure Disk Depolama rezervasyon indirimleri

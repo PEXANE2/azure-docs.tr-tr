@@ -181,6 +181,8 @@
           href: display-feature-information-android.md
         - name: Kutucuk katmanı ekleme
           href: how-to-add-tile-layer-android-map.md
+        - name: Trafik verilerini gösterme
+          href: how-to-show-traffic-android.md
     - name: Verilerle ilgili geri bildirim sağlama
       href: how-to-use-feedback-tool.md
 - name: Başvuru

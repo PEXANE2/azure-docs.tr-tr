@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: Desteklenen platformlar
       href: security-center-os-coverage.md
-    - name: Desteklenen özellikler
-      href: security-center-services.md
+    - name: Güvenlik Merkezi özellikleri
+      items:
+        - name: VM’ler için özellik kapsamı
+          href: security-center-services.md
+        - name: Azure PaaS kaynakları için özellik kapsamı
+          href: features-paas.md
+    - name: Güvenlik önerileri
+      href: recommendations-reference.md
+    - name: Güvenlik uyarıları ve amaç sonlandırma zinciri
+      href: alerts-reference.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
