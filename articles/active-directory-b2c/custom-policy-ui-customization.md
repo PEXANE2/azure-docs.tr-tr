@@ -3,20 +3,20 @@ title: Özel ilkeyle uygulamanızın kullanıcı arabirimini özelleştirme
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C özel bir ilke kullanarak Kullanıcı arabirimini özelleştirme hakkında bilgi edinin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8bb65e07a8360c434f73ff826ed21f380b036604
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373101"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189047"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme
 
@@ -34,8 +34,7 @@ Bu makaledeki adımları tamamlayarak, marka ve görünümünüzdeki bir kaydolm
 
 UI özelleştirmesini yapılandırmak için, **Içerik tanımını** ve alt öğelerini temel dosyadan uzantılar dosyasına kopyalayın.
 
-1. İlkenizin temel dosyasını açın. Örneğin,  <em>**`TrustFrameworkBase.xml`**`SocialAndLocalAccounts/`</em>.
- Bu temel dosya, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
+1. İlkenizin temel dosyasını açın. Örneğin,  <em> **`TrustFrameworkBase.xml`** `SocialAndLocalAccounts/`</em>. Bu temel dosya, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
 1. **ContentDefinitions** öğesinin tüm içeriğini arayın ve kopyalayın.
 1. Uzantı dosyasını açın. Örneğin, *TrustFrameworkExtensions. xml*. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. **Buildingblocks** öğesinin bir alt öğesi olarak kopyaladığınız **ContentDefinitions** öğesinin tüm içeriğini yapıştırın.
