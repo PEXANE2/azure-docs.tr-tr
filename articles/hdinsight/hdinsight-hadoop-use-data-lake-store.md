@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/05/2020
-ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 03/01/2020
+ms.openlocfilehash: fddffee001266b96bc341738293bbdb42115a978
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162421"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228194"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma
 
@@ -31,7 +31,7 @@ Bu makalede, Data Lake Storage 1. HDInsight kümeleri ile nasıl çalıştığı
 
 ## <a name="availability-for-hdinsight-clusters"></a>HDInsight kümeleri için kullanılabilirlik
 
-Apache Hadoop, varsayılan dosya sisteminin bir kavramını destekler. Varsayılan dosya sistemi varsayılan şema ve yetkilisi anlamına gelir. Bu göreceli yolları çözümlemek için de kullanılabilir. HDInsight kümesi oluşturma işlemi sırasında Azure depolama 'da bir blob kapsayıcısını varsayılan dosya sistemi olarak belirtebilir veya HDInsight 3,5 ve daha yeni sürümlerde Azure Storage veya Azure Data Lake Storage 1. ile varsayılan dosya sistemi olarak seçebilirsiniz. birkaç özel durum.
+Apache Hadoop, varsayılan dosya sisteminin bir kavramını destekler. Varsayılan dosya sistemi varsayılan şema ve yetkilisi anlamına gelir. Bu göreceli yolları çözümlemek için de kullanılabilir. HDInsight kümesi oluşturma işlemi sırasında Azure depolama 'da bir blob kapsayıcısını varsayılan dosya sistemi olarak belirtebilir veya HDInsight 3,5 ve daha yeni sürümlerde Azure Storage veya Azure Data Lake Storage 1. ile varsayılan dosya sistemi olarak seçebilirsiniz. birkaç özel durum. Kümenin ve depolama hesabının aynı bölgede barındırılması gerektiğini unutmayın.
 
 HDInsight kümeleri, Data Lake Storage 1. iki şekilde kullanabilir:
 
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Ek depolama alanı olarak Data Lake Storage 1. kullan
 
-Data Lake Storage 1., küme için ek depolama alanı olarak da kullanabilirsiniz. Bu gibi durumlarda, küme varsayılan depolaması bir Azure Depolama Blobu ya da Data Lake Storage hesabı olabilir. HDInsight işlerini ek depolama alanı olarak Data Lake Storage depolanan verilere karşı çalıştırıyorsanız, dosyaların tam yolunu kullanmanız gerekir. Örneğin:
+Data Lake Storage 1., küme için ek depolama alanı olarak da kullanabilirsiniz. Bu gibi durumlarda, küme varsayılan depolaması bir Azure Depolama Blobu ya da Data Lake Storage hesabı olabilir. HDInsight işlerini ek depolama alanı olarak Data Lake Storage depolanan verilere karşı çalıştırıyorsanız, dosyaların tam yolunu kullanmanız gerekir. Örnek:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 Artık URL'de **cluster_root_path** olmadığını unutmayın. Bunun nedeni, bu durumda Data Lake Storage bir varsayılan depolama olmadığından, tüm yapmanız gereken dosyaların yolunu sağlamaktır.
 
-Bir Data Lake Storage 1. ek depolama alanı olarak kullanabilmek için, yalnızca Dosyalarınızın depolandığı yollara hizmet sorumlusu erişimi vermeniz gerekir.  Örneğin:
+Bir Data Lake Storage 1. ek depolama alanı olarak kullanabilmek için, yalnızca Dosyalarınızın depolandığı yollara hizmet sorumlusu erişimi vermeniz gerekir.  Örnek:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -220,7 +220,7 @@ Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için, > **confi
 
 Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma hakkında ayrıntılı yönergeler için aşağıdaki bağlantıları kullanın.
 
-* [Portalı kullanma](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Portal’ı kullanma](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [PowerShell 'i kullanma (Data Lake Storage 1. varsayılan depolama alanı olarak)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [PowerShell 'i kullanma (Data Lake Storage 1. ek depolama alanı olarak)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure şablonlarını kullanma](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)

@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649985"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226521"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Otomasyonu grafik runbook’larında hata işleme
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Otomasyonu grafik runbook 'larında hata işleme
 
 Azure Otomasyonu grafik runbook 'unuzu göz önünde bulundurmanız gereken önemli bir tasarım prensibi, runbook 'un yürütme sırasında karşılaşabileceğiniz sorunların kimliğidir. Bu sorunlar arasında başarı, beklenen hata durumları ve beklenmeyen hata koşulları sayılabilir.
 
@@ -20,14 +20,14 @@ Genellikle, bir runbook etkinliğiyle oluşan Sonlandırılmamış bir hata vars
 
 Grafik runbook 'manız, yürütme sorunlarıyla başa çıkmak için hata işleme kodu içermelidir. Bir etkinliğin çıkışını doğrulamak veya bir hatayı işlemek için bir PowerShell kod etkinliği kullanabilir, etkinliğin çıkış bağlantısında koşullu mantık tanımlayabilir veya başka bir yöntem uygulayabilirsiniz.
 
-Azure Otomasyonu grafik runbook 'ları, hata işlemeyi dahil etme özelliğiyle geliştirilmiştir. Bundan böyle özel durumları sonlandırıcı olmayan hatalara dönüştürebilir ve etkinlikler arasında hata bağlantıları oluşturabilirsiniz. İyileştirilmiş işlem, runbook 'larınızın hataları yakalayıp gerçekleşen veya beklenmeyen koşulları yönetmesine olanak tanır. 
+Azure Otomasyonu grafik runbook 'ları, hata işlemeyi dahil etme özelliğiyle geliştirilmiştir. Bundan böyle özel durumları sonlandırıcı olmayan hatalara dönüştürebilir ve etkinlikler arasında hata bağlantıları oluşturabilirsiniz. İyileştirilmiş işlem, runbook 'larınızın hataları yakalayıp gerçekleşen veya beklenmeyen koşulları yönetmesine olanak tanır. 
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="powershell-error-types"></a>PowerShell hata türleri
 
-Runbook yürütmesi sırasında oluşabilecek PowerShell hatalarının türleri şunlardır: hatalar sonlandırılıyor ve Sonlandırıcı olmayan hatalar.
+Runbook yürütmesi sırasında oluşabilecek PowerShell hatalarının türleri hata ve sonlandırma olmayan hataları sonlandırmakta.
  
 ### <a name="terminating-error"></a>Hata sonlandırılıyor
 
@@ -50,11 +50,11 @@ Bir hata üreten her etkinlik için başka bir etkinliğe işaret eden bir hata 
 
 Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook, **Write-Warning** cmdlet 'ini ikinci adım Için, [Start-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi bir etkinliğe bağlayabilirler.
 
-Ayrıca, bu iki etkinliği daha önce önerilen kılavuzdan sonra ayrı bir hata işleme runbook 'una yerleştirerek, bu davranışı birçok runbook 'ta kullanmak üzere genelleştirebilirsiniz. Orijinal runbook 'unuzu bu hata işleme runbook 'unu çağırmadan önce, verilerinden özel bir ileti oluşturabilir ve ardından bunu runbook 'u hata işleme öğesine bir parametre olarak geçirebilir.
+Ayrıca, bu iki etkinliği ayrı bir hata işleme runbook 'una yerleştirerek birçok runbook 'ta kullanılmak üzere bu davranışı genelleştirebilirsiniz. Orijinal runbook 'unuzu bu hata işleme runbook 'unu çağırmadan önce, verilerinden özel bir ileti oluşturabilir ve ardından bunu runbook 'u hata işleme öğesine bir parametre olarak geçirebilir.
 
 ## <a name="how-to-use-error-handling"></a>Hata işleme nasıl kullanılır
 
-Runbook 'inizdeki her etkinliğin özel durumları Sonlandırıcı olmayan hatalara açan bir yapılandırma ayarı vardır. Bu ayar varsayılan olarak devre dışıdır. Bu ayarı, runbook 'larınızın hataları işlediği herhangi bir etkinlikte etkinleştirmenizi öneririz. Bu yapılandırmayı etkinleştirmek, runbook 'un hem sonlandırmasını hem de Sonlandırılmamış hataları bir hata bağlantısı kullanarak sonlandırmasız hatalar olarak işlemesini sağlar.  
+Runbook 'inizdeki her etkinliğin özel durumları Sonlandırıcı olmayan hatalara açan bir yapılandırma ayarı vardır. Bu ayar varsayılan olarak devre dışıdır. Bu ayarı, runbook 'larınızın hataları işlediği herhangi bir etkinlikte etkinleştirmenizi öneririz. Bu ayar, runbook 'un hem Sonlandırıcı hem de Sonlandırılmamış hataları bir hata bağlantısı kullanarak sonlandırmasız hatalar olarak işlemesini sağlar.  
 
 Yapılandırma ayarını etkinleştirdikten sonra, runbook 'un hatayı işleyen bir etkinlik oluşturmasını sağlayabilirsiniz. Etkinlik herhangi bir hata üretirse giden hata bağlantıları izlenir. Etkinlik normal çıktıyı da üretse bile normal bağlantılar izlenmez.<br><br> ![Otomasyon runbook’u hata bağlantısı örneği](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
@@ -62,10 +62,10 @@ Aşağıdaki örnekte, bir runbook bir sanal makinenin bilgisayar adını içere
 
 **Get-AutomationVariable** etkinliği ve [Start-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Automation runbook hata-işlem etkinliği ayarları](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
 
-Hata bağlantıları bu etkinliklerden tek bir **hata yönetimi** kodu etkinliğine akar. Bu etkinlik, geçerli özel durumu açıklayan iletiyi almak için `$Error.Exception.Message` birlikte işlemeyi durdurmak için *throw* anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Automation runbook hata işleme kodu örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Hata bağlantıları bu etkinliklerden tek bir **hata yönetimi** kodu etkinliğine akar. Bu etkinlik, geçerli özel durumu açıklayan iletiyi almak için `$Error.Exception.Message` birlikte işlemeyi durdurmak için **throw** anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Automation runbook hata işleme kodu örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağlantılar ve grafik runbook’larındaki bağlantı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu’nda grafik yazma](automation-graphical-authoring-intro.md#links-and-workflow).
+* Grafik runbook 'larında bağlantılar ve bağlantı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * Runbook yürütmesi, runbook işlerinin izlenmesi ve diğer teknik ayrıntılar hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).

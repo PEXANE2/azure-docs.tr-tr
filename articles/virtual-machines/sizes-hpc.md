@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660028"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226734"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Yüksek performanslı işlem VM boyutları
 
@@ -46,6 +46,10 @@ Azure H serisi sanal makineler (VM 'Ler), çeşitli gerçek dünyada HPC iş yü
   
 - **Sanal ağ** : yoğun işlem yoğunluklu örnekleri kullanmak Için bir Azure [sanal ağı](https://azure.microsoft.com/documentation/services/virtual-network/) gerekli değildir. Ancak, birçok dağıtım için, şirket içi kaynaklara erişmeniz gerekiyorsa, en az bir bulut tabanlı Azure sanal ağı veya siteden siteye bağlantı gerekir. Gerektiğinde, örnekleri dağıtmak için yeni bir sanal ağ oluşturun. Benzeşim grubundaki bir sanal ağa işlem yoğunluklu VM 'Lerin eklenmesi desteklenmez.
 - **Yeniden boyutlandırma** – kendi özel donanımları nedeniyle, yalnızca aynı büyüklükte aile içindeki işlem yoğunluğu örnekleri yeniden boyutlandırabilirsiniz (H serisi veya Işlem yoğunluklu A serisi). Örneğin, bir h serisi VM 'yi yalnızca bir H serisi boyutundan diğerine yeniden boyutlandırabilirsiniz. Ayrıca, işlem yoğunluğu olmayan bir boyuttan işlem yoğunluğu yoğun bir boyut olarak yeniden boyutlandırılması desteklenmez.  
+
+> [!NOTE]
+> A8 – A11 VM 'Leri 3/2021 tarihinde kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [HPC geçiş kılavuzu](https://azure.microsoft.com/resources/hpc-migration-guide/).
+
 ## <a name="rdma-capable-instances"></a>RDMA özellikli örnekler
 
 Yoğun işlem yoğunluğu olan örneklerin (A8, A9, H16r, H16mr, HB ve HC) bir alt kümesi, uzak doğrudan bellek erişimi (RDMA) bağlantısı için bir ağ arabirimi özelliğidir. ' R ' ile ayrılmış, NC24rs konfigürasyonları (NC24rs_v2 ve NC24rs_v3) gibi seçili N serisi boyutlar da RDMA özellikli. Bu arabirim, diğer VM boyutlarının kullanabildiği standart Azure ağ arabirimine ek niteliğindedir.
@@ -78,7 +82,7 @@ A8 ve A9 örneklerinin bazı dağıtımlarında, HpcVmDrivers uzantısı otomati
   } 
   ```
 
-  Aşağıdaki komut, *Myresourcegroup*adlı kaynak grubunda dağıtılan *myvmss* adlı mevcut bir VM Ölçek kümesindeki tüm RDMA özellikli vm 'Lere en son 1,0 ınfinibanddriverwindows uzantısını yükleme:
+  Aşağıdaki komut, *Myresourcegroup*adlı kaynak grubunda dağıtılan *myvmss* adlı mevcut bir sanal makıne ölçek kümesindeki tüm RDMA özellikli vm 'Lere en son 1,0 ınfinibanddriverwindows uzantısını yükleme:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -99,7 +103,7 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri olu
 
 - **Sanal Makine Ölçek Kümeleri** -sanal makine ölçek kümesinde dağıtımı tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir Kaynak Yöneticisi şablonunda, `singlePlacementGroup` özelliğini `true`olarak ayarlayın. 
 
-- **Sanal makineler arasında MPI** -sanal makineler (VM 'ler) arasında gerekliyse MPI iletişimi varsa, VM 'lerin aynı Kullanılabilirlik kümesinde veya sanal makinede aynı ölçek kümesinde olduğundan emin olun.
+- **Sanal makineler arasında MPI** -sanal makineler (VM 'ler) arasında MPI iletişimi gerekliyse, VM 'lerin aynı Kullanılabilirlik kümesinde veya sanal makinede aynı ölçek kümesinde olduğundan emin olun.
 
 - **Azure CycleCloud** -Windows düğümlerinde MPI işlerini çalıştırmak Için [Azure CYCLECLOUD](/azure/cyclecloud/) 'te bir HPC kümesi oluşturun.
 

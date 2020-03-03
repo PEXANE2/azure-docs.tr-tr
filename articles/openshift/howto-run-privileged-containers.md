@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, OpenShift, aquasn, twistlock, Red Hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069668"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228235"
 ---
-# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Ayrıcalıklı kapsayıcıları bir Azure Red Hat OpenShift kümesinde çalıştırma
+# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesinde ayrıcalıklı kapsayıcılar çalıştırma
 
 Azure Red Hat OpenShift kümelerinde rastgele ayrıcalıklı kapsayıcılar çalıştıramazsınız.
 İki güvenlik izleme ve uyumluluk çözümünün, ARO kümelerinde çalışmasına izin verilir.
@@ -121,12 +121,17 @@ Enforcers dağıtımı sırasında aşağıdaki alanları ayarlayın:
 
 Değişiklik yaptığımız temel yönergeler [Prma bulutu dağıtım belgelerinde](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) bulunabilir.
 
-Yeni bir OpenShift projesi oluşturarak başlayın
+`twistcli` aracını "Przma bulutu yükleme" ve "Przma bulut yazılımını Indirme" bölümlerinde açıklandığı gibi yükleyerek başlayın.
+
+Yeni bir OpenShift projesi oluştur
 ```
 oc new-project twistlock
 ```
 
-"Konsolu yüklemesi" bölümüne kadar belgeleri izleyerek dahili bir bulut kapsayıcısı kayıt defteri oluşturmak yerine bir iç tane oluşturabilirsiniz.
+"Przma bulut görüntülerini özel bir kayıt defterine gönder" isteğe bağlı bölümünü atlayın. Azure Red Hat OpenShift üzerinde çalışmaz. Bunun yerine çevrimiçi kayıt defterini kullanın.
+
+Aşağıda açıklanan düzeltmeleri uygularken resmi belgeleri takip edebilirsiniz.
+"Konsolu yüklemeyi" bölümü ile başlayın.
 
 ### <a name="install-console"></a>Konsolu yükler
 

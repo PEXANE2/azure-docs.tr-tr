@@ -3,15 +3,15 @@ title: Microsoft Azure FXT Edge Filer özellikleri | Microsoft Docs
 description: Azure FXT Edge Filer donanımı için fiziksel ve ortam belirtimleri
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254700"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227469"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer özellikleri
 
@@ -34,10 +34,10 @@ Sürücü numaraları, sürücüler arasındaki alana yazdırılır. Azure FXT E
 
 ![FXT kasadaki bir sabit sürücü bölmesinin fotoğrafı, sürücü numaralarını ve kapasite etiketlerini gösterir](media/fxt-drives-photo.png)
 
-| Sürücü numaraları    |  Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında   |  Lerinize |
+| Sürücü numaraları    |  Kullanım   |  Belirtimler |
 |------------------|--------|-----------------|
-| 0, 1             | ATAYAMADı     | 480 GB SATA SSD |
-| 2, 3, 4, 5, 6, 7, 8, 9 | Veri   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
+| 0, 1             | İşletim Sistemi     | 480 GB SATA SSD |
+| 2, 3, 4, 5, 6, 7, 8, 9 | Veriler   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
 
 ## <a name="dimensions-and-weight"></a>Boyutlar ve ağırlık
@@ -56,7 +56,7 @@ Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde ta
 | Derinlemesine önde bir ön ödeme yapmak için derinlik rafı, kasa olmadan | 22,0 mm (0,87 inç)  |
 | Derinlemesine, ön ödemeli, kasa    | 35,84 mm (1,41 inç) |
 
-| Lık | |
+| Ağırlık | |
 |-----------------|----------------------|
 | Düğüm ağırlığı (paketsiz, aksesuarlar olmadan) | 40 lbs (18,1 kg) |
 | Net ağırlığı (Donatılar dahil olmak üzere paketlemeden) | 51 lbs (23,1 kg)|
@@ -64,11 +64,11 @@ Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde ta
 
 ### <a name="shipping-dimensions"></a>Teslimat boyutları
 
-| Paket boyutu | Milimetre | Cm |
+| Paket boyutu | Milimetre | cm |
 |-------------------|-------------|--------|
 | Yükseklik            | 311,2       | 12,25 " |
 | Genişlik             | 642,8       | 25,31 " |
-| Uzunluklu            | 1\.051,1     | 41,38 " |
+| Uzunluk            | 1\.051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Güç ve ısı belirtimleri
 
@@ -94,9 +94,9 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 |---------|---|---|---|---|---|
 | Voltaj (V) | 100 | 120 | 208 | 230 | 240 | 
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Geçerli (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
+| Geçerli (A) | 5.02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Görünen güç (VA) | 502 | 499 | 499 | 506 | 518|
-| Güç faktörü | 0,99 | 0,99 |0,98 | 0,98 | 0,98 |
+| Güç faktörü | 0.99 | 0.99 |0,98 | 0,98 | 0,98 |
 | Gerçek güç (W) | 497 |494 | 489 | 496 | 508 |
 | Sıcaklık dağılımı (BTU/saat) |1696 | 1686 | 1669 | 1692 | 1733 |
 
@@ -104,9 +104,9 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 |---------|---|---|---|---|---|
 | Voltaj (V) | 100 |120 | 208 | 230 | 240| 
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Geçerli (A) | 5,98 | 5,01 | 2,81 | 2,55 | 2,48 |
+| Geçerli (A) | 5,98 | 5.01 | 2,81 | 2.55 | 2,48 |
 | Görünen güç (VA) | 598 | 601 | 584 | 587 | 595 |
-| Güç faktörü | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Güç faktörü | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
 | Gerçek güç (W) | 592 | 595 | 573 | 575 | 583 |
 | Sıcaklık dağılımı (BTU/saat) | 2020 |2031 | 1954 | 1961 | 1990 |
 
@@ -116,7 +116,7 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Sıklık (Hz) |60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 4,63 | 3,86 | 2,24 | 2,04 | 1,94 |
 | Görünen güç (VA) | 463 | 463 | 466 | 469 | 466 |
-| Güç faktörü | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 | 
+| Güç faktörü | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 | 
 | Gerçek güç (W) | 458 | 459 | 457 | 460 | 456 |
 | Sıcaklık dağılımı (BTU/saat) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -124,9 +124,9 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 |---------|---|---|---|---|---|
 | Voltaj (V) | 100 | 120 | 208 | 230 | 240 |
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Geçerli (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
+| Geçerli (A) | 5.15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Görünen güç (VA) | 515 | 514 | 516 | 524 | 511 |
-| Güç faktörü | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Güç faktörü | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
 | Gerçek güç (W) | 510 | 508 | 506 | 514 | 501 |
 | Sıcaklık dağılımı (BTU/saat) | 1740 | 1735 | 1725 | 1753 | 1709 |
 
@@ -139,7 +139,7 @@ Bu bölüm, donanımın çevresel ortamı için belirtim sağlar.
 | Çevresel özniteliği   | İşletim aralığı                   | İşletim dışı Aralık         |
 |---------------------------|-----------------------------------|-----------------------------|
 | Çevresel sıcaklık aralığı | 10 °C ila 35 °C (50-86 °F)          | -40 °C ila 65 °C (-40-149 °F) |
-| Çevresel göreli nem | % 10-% 80 yoğunlaşmayan          | % 5-% 95 yoğunlaşmayan     |
+| Çevresel göreli nem | %10-%80 yoğunlaşmayan          | %5-%95 yoğunlaşmayan     |
 | En fazla Dew noktası         | 29 °C (84 °F)                       | 33 °C (91 °F)                 |
 | Çalışma                  | en çok 3048 ölçüm (10.000 feet), aşağıda belirtilen sıcaklık derecelendirmesi ile ilgili konular | en fazla 12.000 ölçüm (39.370 metre) |
 

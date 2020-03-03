@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86f474370fe38c7b281e275614b88def5a6c1357
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605102"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226541"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Otomasyonu 'nda grafik yazma
 
@@ -21,7 +21,7 @@ Grafik yazma, temel Windows PowerShell veya PowerShell Iş akışı kodunun karm
 
 ## <a name="graphical-runbooks"></a>Grafik runbook 'ları
 
-Azure Otomasyonu 'ndaki tüm runbook 'lar Windows PowerShell iş akışlarıdır. Grafik runbook 'ları ve grafik PowerShell Iş akışı runbook 'ları, Otomasyon çalışanlarının çalıştırdığı ancak görüntüleyemeyeceğiniz veya değiştiremeyeceğiniz PowerShell kodu oluşturur. Grafik runbook 'unu grafik PowerShell Iş akışı runbook 'una dönüştürebilir ve bunun tersini yapabilirsiniz. Ancak, bu runbook 'ları bir metinsel runbook 'a dönüştüremezsiniz. Ayrıca, Otomasyon grafik Düzenleyicisi var olan bir metin runbook 'unu içeri alamaz.
+Azure Otomasyonu 'ndaki tüm runbook 'lar Windows PowerShell iş akışlarıdır. Grafik runbook 'ları ve grafik PowerShell Iş akışı runbook 'ları, Otomasyon çalışanlarının çalıştırdığı ancak görüntüleyemeyeceğiniz veya değiştiremeyeceğiniz PowerShell kodu oluşturur. Grafik runbook 'unu grafik PowerShell Iş akışı runbook 'una dönüştürebilir ve bunun tersini yapabilirsiniz. Ancak, bu runbook 'ları bir metinsel runbook 'a dönüştüremezsiniz. Ayrıca, Otomasyon grafik Düzenleyicisi bir metinsel runbook 'u içeri aktaramazsınız.
 
 ## <a name="overview-of-graphical-editor"></a>Grafik düzenleyiciye genel bakış
 
@@ -31,9 +31,9 @@ Grafik bir runbook oluşturarak veya düzenleyerek grafik düzenleyiciyi Azure p
 
 Aşağıdaki bölümlerde, grafik düzenleyicideki denetimler açıklanır.
 
-### <a name="canvas"></a>Tuvalinin
+### <a name="canvas-control"></a>Tuval denetimi
 
-Tuval denetimi, runbook 'unuzu tasarlamanızı sağlar. Kitaplık denetimindeki düğümlerden etkinlikleri runbook 'a ekleyebilir ve bunları runbook 'un mantığını tanımlamak için bağlantılarla birlikte bağlayabilirsiniz. Tuvalin en altında, yakınlaştırmanızı ve küçültme sağlayan denetimler vardır.
+Tuval denetimi, runbook 'unuzu tasarlamanızı sağlar. Kitaplık denetimindeki düğümlerden etkinlikleri runbook 'a ekleyebilir ve bunları runbook mantığını tanımlamak için bağlantılarla birlikte bağlayabilirsiniz. Tuvalin en altında, yakınlaştırmanızı ve küçültme sağlayan denetimler vardır.
 
 ### <a name="library-control"></a>Kitaplık denetimi
 
@@ -48,7 +48,7 @@ Kitaplık denetimi, runbook uygulamanıza eklenecek [etkinlikleri](#activities) 
 
 ### <a name="configuration-control"></a>Yapılandırma denetimi
 
-Yapılandırma denetimi, tuvalde seçilen bir nesne için ayrıntı sağlamanıza olanak sağlar. Bu denetimde kullanılabilen özellikler, seçilen nesne türüne bağlıdır. Yapılandırma denetiminde bir seçenek belirlediğinizde ek bilgiler sağlamak için ek dikey pencereler açılır.
+Yapılandırma denetimi, tuvalde seçilen bir nesne için ayrıntı sağlamanıza olanak sağlar. Bu denetimde kullanılabilen özellikler, seçilen nesne türüne bağlıdır. Yapılandırma denetiminde bir seçenek belirlediğinizde daha fazla bilgi sağlamak için ek dikey pencereler açılır.
 
 ### <a name="test-control"></a>Test denetimi
 
@@ -56,7 +56,7 @@ Grafik Düzenleyicisi ilk başlatıldığında test denetimi görüntülenmez. G
 
 ## <a name="activities"></a>Etkinlikler
 
-Etkinlikler bir runbook 'un yapı taşlarıdır. Bir etkinlik bir PowerShell cmdlet 'i, alt runbook veya bir iş akışı olabilir. Kitaplık denetiminde sağ tıklayıp **tuvale Ekle**' yi seçerek runbook 'a bir etkinlik ekleyebilirsiniz. Daha sonra istediğiniz tuvalde dilediğiniz yere yerleştirmek için aktiviteyi tıklatıp sürükleyebilirsiniz. Tuvaldeki etkinliğin konumu, runbook 'un çalışmasını herhangi bir şekilde etkilemez. Runbook 'unuzu, işlemini görselleştirmek için en uygun bulduğunuz şekilde yerleştirebilirsiniz.
+Etkinlikler bir runbook 'un yapı taşlarıdır. Bir etkinlik bir PowerShell cmdlet 'i, alt runbook veya bir iş akışı olabilir. Kitaplık denetiminde sağ tıklayıp **tuvale Ekle**' yi seçerek runbook 'a bir etkinlik ekleyebilirsiniz. Daha sonra istediğiniz tuvalde dilediğiniz yere yerleştirmek için aktiviteyi tıklatıp sürükleyebilirsiniz. Tuvaldeki etkinliğin konumu runbook 'un çalışmasını etkilemez. Runbook 'unuzu, işlemini görselleştirmek için en uygun bulduğunuz şekilde yerleştirebilirsiniz.
 
 ![Tuvale Ekle](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
 
@@ -64,15 +64,15 @@ Yapılandırma dikey penceresinde özelliklerini ve parametrelerini yapılandır
 
 ### <a name="parameter-sets"></a>Parametre kümeleri
 
-Bir parametre kümesi, belirli bir cmdlet için değerleri kabul eden zorunlu ve isteğe bağlı parametreleri tanımlar. Tüm cmdlet 'ler en az bir parametre kümesine sahiptir ve bazılarında birkaç küme vardır. Bir cmdlet birden çok parametre kümesine sahipse, parametreleri yapılandırmadan önce hangisini kullanacağınızı seçmeniz gerekir. Bir etkinlik tarafından kullanılan parametre kümesini **parametre kümesi** seçip başka bir küme seçerek değiştirebilirsiniz. Bu durumda, önceden yapılandırdığınız herhangi bir parametre değeri kaybedilir.
+Bir parametre kümesi, belirli bir cmdlet için değerleri kabul eden zorunlu ve isteğe bağlı parametreleri tanımlar. Tüm cmdlet 'ler en az bir parametre kümesine sahiptir ve bazılarında birkaç küme vardır. Bir cmdlet birden çok parametre kümesine sahipse, parametreleri yapılandırmadan önce kullanılacak birini seçmeniz gerekir. Bir etkinlik tarafından kullanılan parametre kümesini **parametre kümesi** seçip başka bir küme seçerek değiştirebilirsiniz. Bu durumda, önceden yapılandırdığınız herhangi bir parametre değeri kaybedilir.
 
-Aşağıdaki örnekte, [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için Listvirtualmachineınresourcegroupparamset adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için Getvirtualmachineınresourcegroupparamset parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
+Aşağıdaki örnekte, [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset**adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
 
 ![Parametre kümesi](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
 #### <a name="parameter-values"></a>Parametre değerleri
 
-Bir parametre için bir değer belirttiğinizde, değerin nasıl belirtilceğini belirlemek için bir veri kaynağı seçersiniz. Belirli bir parametre için kullanılabilen veri kaynakları, bu parametre için geçerli değerlere bağlıdır. Örneğin, null değerlere izin verilmeyen bir parametre için null kullanılabilir bir seçenek değildir.
+Bir parametre için bir değer belirttiğinizde, değerin nasıl belirtilceğini belirlemek için bir veri kaynağı seçersiniz. Belirli bir parametre için kullanılabilen veri kaynakları, bu parametre için geçerli değerlere bağlıdır. Örneğin, null değerlere izin verilmeyen bir parametre için **null** kullanılabilir bir seçenek değildir.
 
 | Veri Kaynağı | Açıklama |
 |:--- |:--- |
@@ -102,7 +102,7 @@ Yeniden deneme koşulu, etkinlik her çalıştıktan sonra değerlendirilen bir 
 
 ![Etkinlik yeniden deneme gecikmesi](media/automation-graphical-authoring-intro/retry-condition.png)
 
-Yeniden deneme koşulu, etkinlik yeniden denemeleri hakkında bilgilere erişim sağlayan $RetryData adlı bir değişken kullanabilir. Bu değişken aşağıdaki tablodaki özelliklere sahiptir:
+Yeniden deneme koşulu, etkinlik yeniden denemeleri hakkında bilgilere erişim sağlayan *Retrydata* adlı bir değişken kullanabilir. Bu değişken aşağıdaki tablodaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--- |:--- |
@@ -136,7 +136,7 @@ Bir etkinlik için yeniden deneme koşulu yapılandırdıktan sonra, etkinlik si
 
 Bir iş akışı betik denetimi, yazılan grafik runbook 'un türüne bağlı olarak PowerShell veya PowerShell Iş akışı betiğini kabul eden özel bir etkinliktir. Bu denetim, diğer yollarla kullanılamayacak işlevselliği sağlar. Parametreleri kabul edemez, ancak etkinlik çıktısı ve Runbook giriş parametreleri için değişkenleri kullanabilir. Etkinliğin tüm çıktıları DataBus 'e eklenir. Bir özel durum giden bağlantısı olmayan çıktıdır ve bu durumda çıkış runbook 'un çıktısına eklenir.
 
-Örneğin, aşağıdaki kod $NumberOfDays adlı bir runbook giriş değişkenini kullanarak tarih hesaplamaları gerçekleştirir. Daha sonra, runbook 'taki izleyen etkinlikler tarafından kullanılacak çıktı olarak hesaplanmış bir tarih saat değeri gönderir.
+Örneğin, aşağıdaki kod, *Numberofdays*adlı bir runbook giriş değişkenini kullanarak tarih hesaplamaları gerçekleştirir. Daha sonra, runbook 'taki izleyen etkinlikler tarafından kullanılacak çıktı olarak hesaplanmış bir tarih saat değeri gönderir.
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -167,7 +167,7 @@ Grafik runbook, gelen bağlantısı olmayan etkinliklerle başlar. Genellikle ru
 
 ### <a name="link-conditions"></a>Bağlantı koşulları
 
-Bir bağlantı üzerinde bir koşul belirttiğinizde, hedef etkinlik yalnızca koşul doğru olarak çözümlenirse çalışır. Kaynak etkinlikten çıktıyı almak için genellikle bir koşulda bir $ActivityOutput değişkeni kullanırsınız.
+Bir bağlantı üzerinde bir koşul belirttiğinizde, hedef etkinlik yalnızca koşul doğru olarak çözümlenirse çalışır. Kaynak etkinlikten çıktıyı almak için genellikle bir koşulda bir *Activitızput* değişkeni kullanırsınız.
 
 İşlem hattı bağlantısı için tek bir nesne için koşul belirtmeniz gerekir. Runbook, kaynak etkinliğin her bir nesne çıkışı için koşulu değerlendirir. Ardından, koşulu karşılayan her bir nesne için hedef etkinliğini çalıştırır. Örneğin, **Get-AzVM**kaynak etkinliğiyle, bir koşullu işlem hattı bağlantısı için aşağıdaki sözdizimini kullanarak, yalnızca grup1 adlı kaynak grubundaki sanal makineleri alabilirsiniz.
 
@@ -175,13 +175,13 @@ Bir bağlantı üzerinde bir koşul belirttiğinizde, hedef etkinlik yalnızca k
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 ```
 
-Bir sıra bağlantısı için Runbook, kaynak etkinlikten tüm nesneleri içeren tek bir dizi döndürüldüğünden koşulu yalnızca bir kez değerlendirir. Bu nedenle runbook, işlem hattı bağlantısı gibi filtrelemeye yönelik bir sıra bağlantısı kullanamaz. Sıra bağlantısı, bir sonraki etkinliğin çalıştırılıp çalıştırılmadığını belirleyebilir.
+Bir sıra bağlantısı için Runbook, kaynak etkinlikten tüm nesneleri içeren tek bir dizi döndürüldüğünden koşulu yalnızca bir kez değerlendirir. Bu nedenle, runbook bir işlem hattı bağlantısıyla aynı şekilde filtrelemeye yönelik bir sıra bağlantısı kullanamaz. Sıra bağlantısı, bir sonraki etkinliğin çalıştırılıp çalıştırılmadığını belirleyebilir.
 
-Örneğin, başlangıç VM runbook 'ımızda aşağıdaki etkinlik kümesini alın:
+Örneğin, **Başlangıç VM** runbook 'ımızda aşağıdaki etkinlik kümesini alın:
 
 ![Dizileri olan koşullu bağlantı](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Runbook, uygun eylemi tespit etmek üzere *VMName* ve *resourcegroupname* giriş parametrelerinin değerlerini doğrulayan üç farklı dizi bağlantısı kullanır. Olası eylemler tek bir VM başlatır, kaynak grubundaki tüm VM 'Leri başlatır veya bir abonelikteki tüm VM 'Leri başlatır. Azure 'a Bağlan ve tek VM al arasındaki sıra bağlantısı için aşağıdaki koşul mantığı verilmiştir:
+Runbook, uygun eylemi tespit etmek üzere *VMName* ve *resourcegroupname* giriş parametrelerinin değerlerini doğrulayan üç farklı dizi bağlantısı kullanır. Olası eylemler tek bir VM başlatır, kaynak grubundaki tüm VM 'Leri başlatır veya bir abonelikteki tüm VM 'Leri başlatır. **Azure 'A Bağlan** ve **tek VM al**arasındaki sıra bağlantısı için aşağıdaki koşul mantığı verilmiştir:
 
 ```powershell-interactive
 <#
@@ -232,7 +232,7 @@ Runbook 'larınızın DataBus üzerindeki verilere erişmesi için iki yolu vard
 
 ![Etkinlik çıkışı](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-İkinci veri erişim mekanizması, aşağıda gösterilen söz dizimini kullanarak bir etkinliğin çıkışını bir PowerShell ifadesi veri kaynağında veya bir iş akışı betiği etkinliğinden bir Activitızput değişkeniyle alır. Çıktı bir nesnedir, runbook 'niz tek bir özellik belirtebilir.
+İkinci veri erişim mekanizması, aşağıda gösterilen söz dizimini kullanarak bir etkinliğin çıkışını bir PowerShell ifadesi veri kaynağında veya bir iş akışı betiği etkinliğinde bir *Activitızput* değişkeni ile alır. Çıktı bir nesnedir, runbook 'niz tek bir özellik belirtebilir.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -249,13 +249,13 @@ Kontrol noktaları yalnızca grafik PowerShell Iş akışı runbook 'larında et
 
 ## <a name="runbook-input-and-output"></a>Runbook giriş ve çıkış
 
-### <a name="runbook-input"></a>Runbook girişi
+### < adı-"runbook-giriş" ></a>runbook girişi
 
 Bir runbook, geçerli diğeri alt olarak kullanılıyorsa, runbook 'u Azure portal aracılığıyla veya başka bir runbook 'tan Başlatan kullanıcıdan giriş yapılmasını gerektirir. Örneğin, bir sanal makine oluşturan bir runbook için, kullanıcının runbook başladığında sanal makine adı ve diğer özellikler gibi bilgileri sağlaması gerekebilir.
 
 Runbook bir veya daha fazla giriş parametresi tanımlayarak girişi kabul eder. Kullanıcı, runbook her başlatıldığında bu parametrelerin değerlerini sağlar. Kullanıcı Azure portal kullanarak runbook 'u başlattığında, kullanıcıdan runbook tarafından desteklenen her giriş parametresi için değer sağlaması istenir.
 
-Runbook 'unuzu yazarken, runbook araç çubuğundaki **giriş ve çıkış** düğmesine tıklayarak giriş parametrelerine erişebilirsiniz. Bu, var olan bir giriş parametresini düzenleyebileceğiniz veya **giriş Ekle**' ye tıklayarak yeni bir tane oluşturabileceğiniz **giriş ve çıkış** denetimini açar.
+Runbook 'unuzu yazarken, runbook araç çubuğundaki **giriş ve çıkış** düğmesine tıklayarak giriş parametrelerine erişebilirsiniz. Bu, var olan bir giriş parametresini düzenleyebileceğiniz veya **giriş Ekle**' ye tıklayarak yeni bir tane oluşturabileceğiniz giriş ve çıkış denetimini açar.
 
 ![Giriş Ekle](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
@@ -263,11 +263,11 @@ Her giriş parametresi aşağıdaki tablodaki Özellikler tarafından tanımlan�
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Adı |Parametrenin benzersiz adı. Bu ad yalnızca alfasayısal karakterler içerebilir ve bir boşluk içeremez. |
-| Açıklama |Giriş parametresi için isteğe bağlı bir açıklama. |
-| Tür |Parametre değeri için beklenen veri türü. Azure portal, giriş isterken her bir parametre için veri türü için uygun bir denetim sağlar. |
-| Zorunlu |Parametre için bir değer sağlanması gerektiğini belirleme ayarı. Varsayılan değeri tanımlanmış olmayan her zorunlu parametre için bir değer sağlamazsanız runbook başlatılamaz. |
-| Varsayılan Değer |Parametresi için kullanılan değer sağlanmadı. Bu değeri null veya belirli bir değere ayarlayın. |
+| Adı | Gereklidir. Parametrenin adı. Ad, runbook içinde benzersiz olmalıdır. Bir harfle başlamalı ve yalnızca harf, rakam ve alt çizgi içermelidir. Ad boşluk içeremez. |
+| Açıklama |İsteğe bağlı. Giriş parametresinin amacının açıklaması. |
+| Tür | İsteğe bağlı. Parametre değeri için beklenen veri türü. Azure portal, giriş isterken her bir parametre için veri türü için uygun bir denetim sağlar. Desteklenen parametre türleri String, Int32, Int64, Decimal, Boolean, DateTime ve Object. Bir veri türü seçilmezse, varsayılan olarak dize olur.|
+| Zorunlu | İsteğe bağlı. Parametresi için bir değer sağlanması gerektiğini belirten ayar. **Evet**' i seçerseniz, runbook başlatıldığında bir değer sağlanmalıdır. **Hayır**' ı seçerseniz, runbook başlatıldığında bir değer gerekli değildir ve varsayılan bir değer kullanılabilir. Varsayılan bir değeri tanımlanmış olmayan her zorunlu parametre için bir değer sağlamazsanız runbook başlatılamaz. |
+| Varsayılan Değer | İsteğe bağlı. Bir parametre için, runbook başlatıldığında bir parametre geçirilmemişse kullanılan değer. Varsayılan bir değer ayarlamak için **özel**' i seçin. Herhangi bir varsayılan değer sağlamak istemiyorsanız **hiçbiri** ' ni seçin. |
 
 ### <a name="runbook-output"></a>Runbook çıkışı
 
@@ -278,6 +278,7 @@ Grafik yazma, [runbook 'un çıkışına](https://docs.microsoft.com/azure/autom
 Grafik yazmanın avantajlarından biri, en az PowerShell bilgisine sahip bir runbook oluşturmanıza olanak sağlar. Şu anda, bazı [parametre değerlerini](#activities) doldurmak ve [bağlantı koşullarını](#links-and-workflow)ayarlamak için bir PowerShell 'i bilmeniz gerekir. Bu bölüm, PowerShell ifadelerine hızlı bir giriş sağlar. PowerShell 'in tüm ayrıntıları, [Windows PowerShell Ile komut dosyası oluşturma](https://technet.microsoft.com/library/bb978526.aspx)sırasında kullanılabilir.
 
 ### <a name="powershell-expression-data-source"></a>PowerShell ifadesi veri kaynağı
+
 Bir [etkinlik parametresinin](#activities) değerini PowerShell kodunun sonuçlarıyla doldurmak için bir veri kaynağı olarak bir PowerShell ifadesi kullanabilirsiniz. İfade, basit bir işlevi veya bazı karmaşık mantığı gerçekleştiren birden çok satırı gerçekleştiren tek satırlık bir kod olabilir. Bir değişkene atanmamış bir komuttan gelen tüm çıktılar parametre değerine çıkış olur.
 
 Örneğin, aşağıdaki komut geçerli tarihi verir.
@@ -286,7 +287,7 @@ Bir [etkinlik parametresinin](#activities) değerini PowerShell kodunun sonuçla
 Get-Date
 ```
 
-Sonraki komutlar geçerli tarihten bir dize oluşturur ve onu bir değişkene atar. Kod, değişkenin içeriğini çıkışa gönderir.
+Sonraki kod parçacığı, geçerli tarihten bir dize oluşturur ve onu bir değişkene atar. Kod, değişkenin içeriğini çıkışa gönderir.
 
 ```powershell-interactive
 $string = "The current date is " + (Get-Date)
@@ -303,7 +304,7 @@ else { "Weekday" }
 
 ### <a name="activity-output"></a>Etkinlik çıkışı
 
-Runbook 'inizdeki önceki bir etkinliğin çıkışını kullanmak için $ActivityOutput değişkenini aşağıdaki sözdizimiyle kullanın.
+Runbook 'inizdeki önceki bir etkinliğin çıktısını kullanmak için, aşağıdaki söz dizimi ile *Activitızput* değişkenini kullanın.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
@@ -343,7 +344,7 @@ Aşağıdaki koşul, aynı sanal makinenin durdurulmuş dışında bir durumda o
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-Runbook 'inizdeki birden çok koşulu, **ve** gibi [mantıksal bir işleç](https://technet.microsoft.com/library/hh847789.aspx)kullanarak **birleştirebilirsiniz.** Örneğin, aşağıdaki koşul, önceki örnekteki sanal makinenin "durduruldu" veya "durdurma" durumunda olup olmadığını denetler.
+Runbook 'inizdeki birden çok koşulu, **ve** gibi [mantıksal bir işleç](https://technet.microsoft.com/library/hh847789.aspx)kullanarak **birleştirebilirsiniz.** Örneğin, aşağıdaki koşul, önceki örnekteki sanal makinenin **durdurulmuş** veya **durduruluyor**durumunda olup olmadığını denetler.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -379,11 +380,11 @@ Aşağıdaki örnek, bir Hashtable 'ı doldurmak için **Twitter bağlantısın�
 
 ## <a name="authenticating-to-azure-resources"></a>Azure kaynaklarında kimlik doğrulaması
 
-Azure Otomasyonu 'ndaki runbook 'lar Azure kaynaklarını yöneten Azure 'da kimlik doğrulaması gerektirir. Hizmet sorumlusu olarak da adlandırılan [Farklı Çalıştır hesabı](automation-create-runas-account.md), bir Otomasyon Runbook 'unun aboneliğinizdeki Azure Resource Manager kaynaklarına erişmek için kullandığı varsayılan mekanizmadır. PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet 'ini ve tuvale [Connect-azaccount](/powershell/module/az.profile/connect-azaccount) cmdlet 'Ini kullanan AzureRunAsConnection bağlantı varlığını ekleyerek bu işlevselliği bir grafik runbook 'a ekleyebilirsiniz. Bu senaryo aşağıdaki örnekte gösterilmiştir.
+Azure Otomasyonu 'ndaki runbook 'lar Azure kaynaklarını yöneten Azure 'da kimlik doğrulaması gerektirir. Hizmet sorumlusu olarak da adlandırılan [Farklı Çalıştır hesabı](automation-create-runas-account.md), bir Otomasyon Runbook 'unun aboneliğinizdeki Azure Resource Manager kaynaklarına erişmek için kullandığı varsayılan mekanizmadır. Bu işlevselliği, PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet 'Ini kullanan **Azurerunasconnection** bağlantı varlığını tuvale ekleyerek bir grafik runbook 'a ekleyebilirsiniz. [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) cmdlet 'ini de ekleyebilirsiniz. Bu senaryo aşağıdaki örnekte gösterilmiştir.
 
 ![Farklı çalıştır kimlik doğrulama etkinlikleri](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-**Farklı Çalıştır bağlantısını Al etkinliği**veya **Get-AutomationConnection**, AzureRunAsConnection adlı bir sabit değer veri kaynağı ile yapılandırılır.
+**Farklı Çalıştır bağlantısını Al etkinliği**veya **Get-AutomationConnection**, **Azurerunasconnection**adlı bir sabit değer veri kaynağı ile yapılandırılır.
 
 ![Farklı Çalıştır bağlantı yapılandırması](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
@@ -396,19 +397,19 @@ Sonraki etkinlik, **Connect-AzAccount**, runbook 'ta kullanılmak üzere kimliğ
 
 Etkinlik alanları, **ApplicationId**, **CERTIFICATETHUMBPRINT**ve **tenantıd**için, alan yolu için özellik adını belirtin, çünkü etkinlik birden fazla özelliğe sahip bir nesne çıkarır. Aksi takdirde, runbook çalıştırıldığında kimlik doğrulamaya çalışırken başarısız olur. Bu, runbook 'unuzu farklı çalıştır hesabıyla doğrulamak için en azından ihtiyacınız olan şeydir.
 
-Bazı aboneler, Azure klasik dağıtımını veya Azure Resource Manager kaynaklarını yönetmek için bir [Azure AD Kullanıcı hesabı](automation-create-aduser-account.md) kullanarak bir Otomasyon hesabı oluşturur. Bu aboneler için geriye dönük uyumluluk sağlamak için, runbook 'inizde kullanılacak kimlik doğrulama mekanizması, Azure hesabına erişimi olan Active Directory kullanıcıyı temsil eden bir [kimlik bilgisi varlığı](automation-credentials.md) olan **Add-AzureAccount** cmdlet 'idir.
+Bazı aboneler, Azure klasik dağıtımını veya Azure Resource Manager kaynaklarını yönetmek için bir [Azure AD Kullanıcı hesabı](automation-create-aduser-account.md) kullanarak bir Otomasyon hesabı oluşturur. Bu aboneler için geriye dönük uyumluluk sağlamak için, runbook 'inizde kullanılacak kimlik doğrulama mekanizması, bir [kimlik bilgisi varlığı](automation-credentials.md)olan **Add-AzureAccount** cmdlet 'idir. Varlık, Azure hesabına erişimi olan bir Active Directory kullanıcısını temsil eder.
 
-Tuvale bir kimlik bilgisi varlığı ekleyerek bu işlevselliği grafik runbook 'ınıza ekleyebilirsiniz ve ardından girişinin kimlik bilgisi varlığını kullanan bir **Add-AzureAccount** etkinliği vardır. Aşağıdaki örneğe bakın.
+Tuvale bir kimlik bilgisi varlığı ekleyerek ve ardından girişinin kimlik bilgisi varlığını kullanan bir **Add-AzureAccount** etkinliği ile grafik runbook 'ınız için bu işlevselliği etkinleştirebilirsiniz. Aşağıdaki örneğe bakın.
 
 ![Kimlik doğrulama etkinlikleri](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-Runbook 'un başlangıcında ve her denetim noktasından sonra kimlik doğrulaması gerekir. Bu nedenle, herhangi bir denetim noktası-Iş akışı etkinliğinden sonra **Add-AzureAccount** etkinliğini kullanmanız gerekir. Ek bir kimlik bilgisi etkinliği kullanmanız gerekmez.
+Runbook 'un başlangıcında ve her denetim noktasından sonra kimlik doğrulaması gerekir. Bu nedenle, herhangi bir **denetim noktası-Iş akışı** etkinliğinden sonra **Add-AzureAccount** etkinliğini kullanmanız gerekir. Ek bir kimlik bilgisi etkinliği kullanmanız gerekmez.
 
 ![Etkinlik çıkışı](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
 ## <a name="exporting-and-importing-a-graphical-runbook"></a>Grafik runbook 'unu dışarı ve içeri aktarma
 
-Yalnızca bir grafik runbook 'un yayımlanan sürümünü dışarı aktarabilirsiniz. Runbook henüz yayımlanmadıysa **dışa aktarma** düğmesi devre dışıdır. **Dışarı aktar** düğmesine tıkladığınızda, runbook yerel bilgisayarınıza indirilir. Dosyanın adı, ". graphrunbook" uzantısıyla Runbook adı ile eşleşir.
+Yalnızca bir grafik runbook 'un yayımlanan sürümünü dışarı aktarabilirsiniz. Runbook henüz yayımlanmadıysa **dışa aktarma** düğmesi devre dışıdır. **Dışarı aktar** düğmesine tıkladığınızda, runbook yerel bilgisayarınıza indirilir. Dosyanın adı, bir **. graphrunbook** uzantısıyla Runbook adı ile eşleşir.
 
 Bir runbook eklerken **Içeri aktar** seçeneğini belirleyerek bir grafik veya grafik PowerShell iş akışı runbook dosyasını içeri aktarabilirsiniz. İçeri aktarılacak dosyayı seçtiğinizde, aynı adı koruyabilir veya yeni bir tane sağlayabilirsiniz. **Runbook türü** alanı, dosyanın seçili değerlendirir sonra runbook türünü görüntüler. Doğru olmayan farklı bir tür seçerek grafik Düzenleyicisi, olası çakışmaların olduğunu belirten bir ileti görüntüler ve dönüştürme sırasında sözdizimi hataları olabilir.
 
@@ -416,7 +417,7 @@ Bir runbook eklerken **Içeri aktar** seçeneğini belirleyerek bir grafik veya 
 
 ## <a name="testing-a-graphical-runbook"></a>Grafik runbook 'u test etme
 
-Azure Otomasyonu 'ndaki her grafik runbook 'un bir taslak sürümü ve yayımlanmış bir sürümü vardır. Yalnızca taslak sürümü düzenleyebilirken yalnızca yayınlanan sürümü çalıştırabilirsiniz. Yayımlanan sürüm Taslak sürümdeki herhangi bir değişiklikten etkilenmez. Taslak sürümü kullanıma hazırsa, onu yayımlarsınız ve bu, geçerli yayımlanmış sürümün taslak sürümünüzle üzerine yazar.
+Azure Otomasyonu 'ndaki her grafik runbook 'un bir taslak sürümü ve yayımlanmış bir sürümü vardır. Yalnızca yayımlanan sürümü çalıştırabilirsiniz, ancak yalnızca taslak sürümünü düzenleyebilirsiniz. Yayımlanan sürüm Taslak sürümdeki herhangi bir değişiklikten etkilenmez. Taslak sürümü kullanıma hazırsa, onu yayımlarsınız ve bu, geçerli yayımlanmış sürümün taslak sürümünüzle üzerine yazar.
 
 Yayımlanan sürümden değişmeden bırakarak Azure portal runbook 'un taslak sürümünü test edebilirsiniz. Alternatif olarak, runbook 'un herhangi bir sürümü değiştirmeden önce düzgün çalıştığını doğrulayabilmeniz için, yeni bir runbook 'u yayımlanmadan önce test edebilirsiniz. Bir runbook 'un testi, taslak sürümünü yürütür ve gerçekleştirdiği eylemlerin tamamlanmasını sağlar. İş geçmişi oluşturulmaz, ancak test çıkış bölmesi çıktıyı görüntüler.
 
@@ -437,6 +438,6 @@ Runbook 'un yayımlanmış sürümüne dönmek için seçeneğiniz vardır. Bu i
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * PowerShell İş Akışı runbook'larını kullanmaya başlamak için bkz. [İlk PowerShell İş Akışı runbook uygulamam](automation-first-runbook-textual.md).
-* Grafik runbook 'ları kullanmaya başlamak için bkz. [ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
+* Grafik runbook 'ları kullanmaya başlamak için bkz. [Ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
 * Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Azure farklı çalıştır hesabını yapılandırma](automation-sec-configure-azure-runas-account.md).

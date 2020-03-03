@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190531"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228336"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
@@ -31,13 +31,18 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU 
 
 | İşletim Sistemi | Sürücü |
 | -------- |------------- |
-| Windows 10 EVD-derleme 1903 <br/><br/>Windows 10-derleme 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19. q 4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (. exe) |
+| Windows 10 EVD-derleme 1903 <br/><br/>Windows 10-derleme 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
+
 
 ## <a name="driver-installation"></a>Sürücü yükleme
 
 1. Uzak Masaüstü ile her NVv4 serisi VM 'ye bağlanın.
 
-1. Sürücü kurulum dosyalarını indirin ve ayıklayın. Klasöre gidin ve Windows işletim sisteminiz için desteklenen sürücüyü yüklemek üzere ' Setup. exe ' yi çalıştırın.
+2. Bir NVv4 Preview müşterisiyseniz lütfen VM 'yi durdurun ve bu işlemin durdurulmuş (serbest bırakılmış) duruma gelmesini bekleyin.
+
+3. Lütfen VM 'yi başlatın ve ardından ". ..\Amdcleanunınstallusystemutility" klasöründe bulunan "amdcleanuputility-x64. exe" komutunu çalıştırarak önizleme sürücüsünü kaldırın. Tam yol, önceki sürücü yükleme dosyalarının bulunduğu yere göre farklılık gösterecektir.  
+
+4. En son sürücüyü indirip yükleyin.
 
 ## <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 

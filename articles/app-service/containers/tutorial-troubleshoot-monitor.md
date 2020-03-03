@@ -4,15 +4,19 @@ description: Azure Izleyici ve Log Analytics App Service Web uygulamanızı izle
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
-ms.date: 1/29/2019
-ms.openlocfilehash: c0df972d893e82d7b49d5b3ed2a2bbf7067548c2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 2/28/2020
+ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201818"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227979"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Öğretici: Azure Izleyici ile App Service uygulamasında sorun giderme
+
+> [!NOTE]
+> Azure Izleyici App Service ile tümleştirme [Önizleme](https://aka.ms/appsvcblog-azmon)aşamasındadır.
+>
 
 [Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) , bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır.
 
@@ -53,7 +57,7 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor"></a>Azure Izleyicisini yapılandırma
+## <a name="configure-azure-monitor-preview"></a>Azure Izleyicisini yapılandırma (Önizleme)
 
 ### <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 

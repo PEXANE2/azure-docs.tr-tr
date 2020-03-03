@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561929"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228064"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -348,6 +348,103 @@ Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üz
 </speak>
 ```
 
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Söylenişi geliştirmek için özel sözlüğü kullanma
+
+Bazen TTS, örneğin bir şirket veya yabancı ad gibi bir kelimeyi doğru bir şekilde pronounce. Geliştiriciler, `phoneme` ve `sub` etiketi kullanarak SSML 'de bu varlıkların okunmasını tanımlayabilir veya `lexicon` etiketi kullanarak özel bir sözlük dosyasına başvurarak birden çok varlığın okunmasını tanımlayabilir.
+
+**Sözdizimi**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**Özelliklerine**
+
+| Öznitelik | Açıklama | Gerekli / isteğe bağlı |
+|-----------|-------------|---------------------|
+| `uri` | Dış PLS belgesinin adresi. | Gereklidir. |
+
+**Kullanım**
+
+1\. Adım: özel sözlüğü tanımlama 
+
+Varlıkların, bir. xml veya. pls dosyası olarak depolanan özel bir sözlük öğeleri listesiyle okunmasını tanımlayabilirsiniz.
+
+**Örnek**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Her `lexeme` öğesi bir sözlük öğesidir. `grapheme`, `lexeme`dikgraf tanımlayan metni içerir. Reasyon formu, `alias`olarak sağlanıyor. Telefon dizesi `phoneme` öğesinde sağlanıyor.
+
+`lexicon` öğesi en az bir `lexeme` öğesi içeriyor. Her `lexeme` öğesi en az bir `grapheme` öğesi ve bir veya daha fazla `grapheme`, `alais`ve `phoneme` öğesi içerir. `grapheme` öğesi, <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">dikgrafın <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>açıklandığı metni içerir. `alias` öğeleri, bir kısaltın veya kısaltılmış bir terimin telaffuz olduğunu göstermek için kullanılır. `phoneme` öğesi `lexeme` nasıl bir açıklama ekleneceğini açıklayan metin sağlar.
+
+Özel sözlük dosyası hakkında daha fazla bilgi için bkz. W3C Web sitesinde [telaffuz sözlüğü belirtimi (PLS) sürüm 1,0](https://www.w3.org/TR/pronunciation-lexicon/) .
+
+2\. Adım: adım 1 ' de oluşturulan özel sözlük dosyasını karşıya yükleyin, her yerde saklayabilirsiniz ve bu dosyayı [Azure Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)gibi Microsoft Azure depolamanızı öneririz.
+
+Adım 3: SSML 'de özel sözlük dosyasına bakın
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+"BTW", "yönteme göre" okunacak. "Benignı", IPA "bɛ ˈ nı ː nji" ile okunacak.  
+
+**Sınırlama**
+- Dosya boyutu: özel sözlük dosyası boyutu üst sınırı 100KB, bu boyuttan daha fazla olursa sensıs isteği başarısız olur.
+- Sözlük önbelleği yenilemesi: özel sözlük, ilk yüklendiğinde TTS hizmetinde anahtar olarak URI ile önbelleğe alınır. Aynı URI 'ye sahip bir sözlük 15 dakika içinde yeniden yüklenmez, bu nedenle özel sözlük değişikliğinin en fazla 15 dakikalık bir geçerlilik yapması gerekir.
+
+**SAPı telefon seti**
+
+Yukarıdaki örnekte, uluslararası fonetik Ilişkisi (IPA) telefon kümesini kullanıyoruz. IPA uluslararası standart olduğundan, geliştiricilerin IPA kullanmasını öneririz. 
+
+Microsoft 'un anımsanması kolay olmadığı düşünüldüğünde, Microsoft, yedi dil (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`ve `zh-TW`) için SAPı telefon kümesini tanımlar. Daha fazla alfabe bilgisi için bkz. [Fonetik alfabe başvurusu](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx).
+
+SAPı telefon kümesini aşağıda gösterildiği gibi özel lexsimgelerinden birlikte kullanabilirsiniz. Alfabe değerini **sapı**ile ayarlayın.
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias> By the way </alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Ayrıntılı SAPı alfabesi hakkında daha fazla bilgi için bkz. [sapı alfabe başvurusu](sapi-phoneset-usage.md).
+
 ## <a name="adjust-prosody"></a>Prosody 'ı ayarla
 
 `prosody` öğesi, metinden konuşmaya çıkışı için sıklık, countur, Aralık, oran, süre ve birim değişikliklerini belirtmek için kullanılır. `prosody` öğesi metin ve şu öğeleri içerebilir: `audio`, `break`, `p`, `phoneme`, `prosody`, `say-as`, `sub`ve `s`.
@@ -364,7 +461,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| `pitch` | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600 Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80 Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>uzunlukta</li><li>geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>ziyaret edin. | İsteğe bağlı |
+| `pitch` | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600 Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80 Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>uzunlukta</li><li>geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>arasında yetersiz alanla karşılaştı. | İsteğe bağlı |
 | `contour` | Sinir sesleriniz için kontur desteklenmez. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örnek: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, aralığı yükseltmek veya azaltmak için miktarı belirtir (bkz. `pitch`). | İsteğe bağlı |
 | `range` | Metin için sıklık aralığını temsil eden bir değer. `pitch`anlatmak için kullanılan mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak `range` ifade edebilirsiniz. | İsteğe bağlı |
 | `rate` | Metnin konuşma oranını gösterir. `rate` şu şekilde ifade edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *0,5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>uzunlukta</li><li>hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe bağlı |

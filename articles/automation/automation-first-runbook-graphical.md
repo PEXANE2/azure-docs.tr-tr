@@ -6,14 +6,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6b043f878ee93bc9713673fe66359e013b1dba6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 351ed146511409fb4c6cc49705c7051b89ea0212
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191223"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226489"
 ---
-# <a name="my-first-graphical-runbook"></a>İlk grafik runbook uygulamam
+# <a name="my-first-graphical-runbook"></a>İlk grafik runbook 'um
 
 > [!div class="op_single_selector"]
 > * [Grafik](automation-first-runbook-graphical.md)
@@ -170,8 +170,8 @@ Runbook'unuzda bu noktada aşağıdakine benzer: <br>![Runbook kimlik doğrulama
 1. Şeklin altında bir daire görünene kadar **Abonelik Kimliği Belirt** üzerinde bekleyin. Daireye tıklayın ve oku **Start-AzVM**' e sürükleyin.
 1. **Start-AzVM**öğesini seçin. Etkinliğin kümelerini görüntülemek için **Parametreler** ' e ve ardından **parametre kümesi** ' ne tıklayın.
 1. **ResourceGroupNameParameterSetName** parametre kümesini seçin. **Resourcegroupname** ve **Name** alanları, bunların yanında, gerekli parametreler olduğunu göstermek için ünlem işaretleri vardır. Her iki alanın de dize değerleri beklediği unutulmamalıdır.
-1. **Ad**’ı seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** ' ni seçin. Bu runbook 'u başlatmak için kullandığınız VM için, çift tırnak işaretleriyle çevrelenen makine adını yazın. **OK (Tamam)** düğmesine tıklayın.
-1. **ResourceGroupName**’i seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** değerini kullanın ve çift tırnaklarla çevrelenen kaynak grubunun adını yazın. **OK (Tamam)** düğmesine tıklayın.
+1. **Ad**’ı seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** ' ni seçin. Bu runbook 'u başlatmak için kullandığınız VM için, çift tırnak işaretleriyle çevrelenen makine adını yazın. **Tamam** düğmesine tıklayın.
+1. **ResourceGroupName**’i seçin. **Veri kaynağı** alanı için **PowerShell ifadesi** değerini kullanın ve çift tırnaklarla çevrelenen kaynak grubunun adını yazın. **Tamam** düğmesine tıklayın.
 1. Runbook 'u test edebilmeniz için **Test bölmesi** ' ne tıklayın.
 1. Testi başlatmak için **Başlat** ' a tıklayın. Tamamlandıktan sonra, VM 'nin başlatıldığından emin olun. 
 
@@ -208,9 +208,9 @@ Artık, runbook 'u yalnızca henüz başlatılmamışsa VM 'yi başlatmaya çal�
 1. Tuvale **Get-AzVM** ekleyin.
 1. Cmdlet 'in kümelerini görüntülemek için **Get-AzVM** ' yi ve ardından **parametre kümesi** ' ni seçin. 
 1. **GetVirtualMachineInResourceGroupNameParamSet** parametre kümesini seçin. **Resourcegroupname** ve **ad** alanları, bunların yanında, gerekli parametreleri belirttikleri belirten ünlem işaretleri vardır. Her iki alanın de dize değerleri beklediği unutulmamalıdır.
-1. **Ad**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **VMName**' i seçin. **OK (Tamam)** düğmesine tıklayın.
-1. **Resourcegroupname**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **resourcegroupname**' ı seçin. **OK (Tamam)** düğmesine tıklayın.
-1. **Durum**için **veri kaynağı** altında, **sabit değer**' i seçin ve ardından **doğru**. **OK (Tamam)** düğmesine tıklayın.
+1. **Ad**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **VMName**' i seçin. **Tamam** düğmesine tıklayın.
+1. **Resourcegroupname**için **veri kaynağı** altında, **runbook girişi**' ni ve ardından **resourcegroupname**' ı seçin. **Tamam** düğmesine tıklayın.
+1. **Durum**için **veri kaynağı** altında, **sabit değer**' i seçin ve ardından **doğru**. **Tamam** düğmesine tıklayın.
 1. **Get-AzVM**' y e **abonelik kimliğini belirt** ' den bir bağlantı oluşturun.
 1. Kitaplık denetiminde, **runbook denetimi** ' ni genişletin ve tuvale **kod** ekleyin.  
 1. **Get-AzVM** öğesinden **koda**bir bağlantı oluşturun.  

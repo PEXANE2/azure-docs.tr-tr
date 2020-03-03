@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588748"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228318"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak NAT ağ geçidi oluşturma
 
@@ -32,27 +32,24 @@ Bu hızlı başlangıçta Azure sanal ağ NAT hizmetini nasıl kullanacağınız
 
 [Azure Portal](https://portal.azure.com) oturum açın.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
-Bir VM 'yi dağıtmadan ve NAT ağ geçidinizi kullanabilmeniz için, kaynak grubunu ve sanal ağı oluşturmanız gerekir.  
+Bir VM 'yi dağıtmadan ve NAT ağ geçidinizi kullanabilmeniz için, kaynak grubunu ve sanal ağı oluşturmanız gerekir.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin veya Market aramasında **sanal ağ** araması yapın.
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroupNAT |
+| **\<sanal ağ-adı >** | myVNet          |
+| **\<bölge adı >**          | Doğu ABD 2      |
+| **\<IPv4 adres alanı >**   | 192.168.0.0 \ 16          |
+| **\<alt ağ-adı >**          | mySubnet        |
+| **\<alt ağ-adres aralığı >** | 192.168.0.0 \ 24          |
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Adı | **myVNet** yazın. |
-    | Adres alanı | **192.168.0.0/16**girin. |
-    | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | Yeni Oluştur- **Myresourcegroupnat**öğesini seçin. |
-    | Konum | **Doğu ABD 2**’yi seçin.|
-    | Alt ağ adı | **Mysubnet**yazın. |
-    | Alt Ağ - Adres aralığı | **192.168.0.0/24**girin. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Varsayılan değerleri bırakın ve **Oluştur**' u seçin.
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>NAT ağ geçidini kullanmak için bir VM oluşturma
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>NAT ağ geçidini kullanmak için bir VM oluşturma
 
 Artık NAT hizmetini kullanmak için bir VM oluşturacağız. Bu VM 'nin VM 'ye erişiminizi sağlamak için örnek düzeyi genel IP olarak kullanılacak genel bir IP 'si vardır. NAT hizmeti akış yönü farkındadır ve alt ağınızdaki varsayılan Internet hedefini değiştirecek. VM 'nin genel IP adresi giden bağlantılar için kullanılmayacak.
 
@@ -71,7 +68,7 @@ Artık NAT hizmetini kullanmak için bir VM oluşturacağız. Bu VM 'nin VM 'ye 
 3. **Ağ** sekmesinde aşağıdakilerin seçili olduğundan emin olun:
    - **Sanal ağ**: **myvnet**
    - **Alt ağ**: **mysubnet**
-   - **Ortak ıp** > **Yeni oluştur**' u seçin.  **Genel IP adresi oluştur** penceresinde **ad** alanına **Mypublicipvm** yazın ve **SKU**için **Standart** ' ı seçin.  **OK (Tamam)** düğmesine tıklayın.
+   - **Ortak ıp** > **Yeni oluştur**' u seçin.  **Genel IP adresi oluştur** penceresinde **ad** alanına **Mypublicipvm** yazın ve **SKU**için **Standart** ' ı seçin.  **Tamam** düğmesine tıklayın.
    - **NIC ağ güvenlik grubu**: **temel**öğesini seçin.
    - **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin.
    - **Gelen bağlantı noktalarını seçin**: **SSH** 'yi Onayla seçili.

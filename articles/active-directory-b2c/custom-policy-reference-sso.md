@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189115"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226803"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
@@ -124,20 +124,19 @@ Bu sağlayıcı, "kimlik sağlayıcısını Seç" ekranının görüntülenmesin
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, `IncludeSessionIndex` ve `RegisterServiceProviders` `false`olarak ayarlanmalıdır. Aşağıdaki `SM-Saml-idp` teknik profili [SAML teknik profili](saml-technical-profile.md)tarafından kullanılır.
+Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, `RegisterServiceProviders` `false`olarak ayarlanmalıdır. Aşağıdaki `SM-Saml-idp` teknik profili [SAML teknik profili](saml-technical-profile.md)tarafından kullanılır.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, `IncludeSessionIndex` ve `RegisterServiceProviders` `true`olarak ayarlanmalıdır. SAML oturumu kapatma `SessionIndex` ve `NameID` tamamlanmasını gerektiriyor.
+B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, `RegisterServiceProviders` `true`olarak ayarlanmalıdır. SAML oturumu kapatma `SessionIndex` ve `NameID` tamamlanmasını gerektiriyor.
 
 Aşağıdaki `SM-Saml-idp` teknik profili [SAML verenin teknik profili](connect-with-saml-service-providers.md) tarafından kullanılır
 
@@ -151,7 +150,7 @@ Aşağıdaki `SM-Saml-idp` teknik profili [SAML verenin teknik profili](connect-
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| Includesessionındex | Hayır | Sağlayıcıya, oturum dizininin depolanması gerektiğini belirtir. Olası değerler: `true` (varsayılan) veya `false`.|
+| Includesessionındex | Hayır | Şu anda kullanılmıyor olabilir.|
 | RegisterServiceProviders | Hayır | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
 
 

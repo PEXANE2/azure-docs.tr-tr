@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700762"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226945"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-Web API 'SI, API çağıranın kimliğini doğrulamak ve erişim belirtecinde kodlanmış taleplerden arayan hakkında bilgi ayıklamak için erişim belirtecini kullanır. Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusunda ve [id_token başvurusuyla](id-tokens.md) kullanılabilir
+Web API 'SI, API çağıranın kimliğini doğrulamak ve erişim belirtecinde kodlanmış taleplerden arayan hakkında bilgi ayıklamak için erişim belirtecini kullanır. Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusu ve [id_token](id-tokens.md) başvurusu ' nda bulunabilir.
 
 Bir Web API 'SI, kullanıcıların belirli işlevleri veya verileri kabul etmek veya devre dışı bırakmak için [kapsam](v2-permissions-and-consent.md)olarak da bilinen izinleri verebilir. Çağıran bir uygulamanın bir kapsama izin almaları için, Kullanıcı bir akış sırasında kapsamı kabul etmelidir. Microsoft Identity platform uç noktası kullanıcıdan izin ister ve sonra Web API 'sinin aldığı tüm erişim belirteçlerinde izinleri kaydeder. Web API 'SI her çağrıda aldığı erişim belirteçlerini doğrular ve yetkilendirme denetimleri gerçekleştirir.
 

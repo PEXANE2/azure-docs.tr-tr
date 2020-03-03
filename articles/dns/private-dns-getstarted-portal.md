@@ -7,24 +7,24 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939379"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227399"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure özel DNS bölgesi oluşturma
 
 Bu hızlı başlangıç, Azure portal kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturma adımlarında size yol gösterir.
 
-DNS bölgesi, belirli bir etki alanının DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınızda özel bir DNS bölgesi yayımlamak için bölge içindeki kaynakları çözümleme izni olan sanal ağların listesini belirtmeniz gerekir.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
+DNS bölgesi belirli bir etki alanıyla ilgili DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınızda özel bir DNS bölgesi yayımlamak için bölge içindeki kaynakları çözümleme izni olan sanal ağların listesini belirtmeniz gerekir.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Özel bir DNS bölgesi oluşturma
-> * Sanal ağ oluşturun
+> * Sanal ağ oluştur
 > * Sanal ağı bağlama
 > * Test amaçlı sanal makineleri oluşturma
 > * Ek bir DNS kaydı oluşturma
@@ -48,23 +48,31 @@ Bir DNS bölgesi, bir etki alanı için DNS girdilerini içerir. Etki alanınız
 
 1. **Özel DNS bölgesi oluştur** sayfasında, aşağıdaki değerleri yazın veya seçin:
 
-   - **Kaynak grubu**: **Yeni oluştur**' u seçin, *MyAzureResourceGroup*girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır. 
+   - **Kaynak grubu**: **Yeni oluştur**' u seçin, *MyAzureResourceGroup*girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır.
    -  **Ad**: Bu örnek için *Private.contoso.com* yazın.
 1. **Kaynak grubu konumu**için **Orta Batı ABD**' yi seçin.
 
 1. **Gözden geçir + oluştur**' u seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Bölgenin oluşturulması birkaç dakika sürebilir.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
-1. Portal sayfası sol üst sayfasında, **kaynak oluştur**' u ve ardından **ağ**' ı seçin ve **sanal ağ**' ı seçin.
-2. **Ad**Için **Myazurevnet**yazın.
-3. **Kaynak grubu**için **MyAzureResourceGroup**' yi seçin.
-4. **Konum**için **Orta Batı ABD**' yi seçin.
-5. Diğer varsayılan değerleri kabul edin ve **Oluştur**' u seçin.
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
+
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | MyAzureResourceGroup |
+| **\<sanal ağ-adı >** | MyAzureVNet          |
+| **\<bölge adı >**          | Orta Batı ABD      |
+| **\<IPv4 adres alanı >**   | 10.2.0.0 \ 16          |
+| **\<alt ağ-adı >**          | Myazuyeniden gönderiliyor        |
+| **\<alt ağ-adres aralığı >** | 10.2.0.0 \ 24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>Sanal ağı bağlama
 
@@ -88,9 +96,8 @@ Bölgenin oluşturulması birkaç dakika sürebilir.
 1. Kaynak grubu için **MyAzureResourceGroup** öğesini seçin.
 1. Sanal makinenin adı için **myVM01** yazın.
 1. **Bölge**için **Orta Batı ABD** seçin.
-1. Yönetici Kullanıcı adı için **azureadmin** yazın.
-2. Parola için **Azure12345678** yazın ve parolayı onaylayın.
-
+1. Yönetici Kullanıcı adı için bir ad girin.
+2. Bir parola girin ve parolayı onaylayın.
 5. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **gelen bağlantı noktalarını Seç**için **RDP (3389)** seçeneğini belirleyin
 10. Sayfa için diğer varsayılanları kabul edin ve ardından Ileri ' ye tıklayın **: diskler >** .
 11. **Diskler** sayfasında Varsayılanları kabul edin ve ardından İleri ' ye tıklayın **: Ağ >** .

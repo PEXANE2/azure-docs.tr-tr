@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4070b004ee791a433b5aeb9e3e0cdd9662fb0429
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191155"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226479"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu 'nda runbook yürütmesi
 
@@ -152,11 +152,11 @@ Start-AzAutomationRunbook `
 
 Bu bölümde, runbook 'larınızda özel durumları veya aralıklı sorunları işlemenin bazı yolları açıklanmaktadır.
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-[$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Hata sonlandırma, her zaman sonlandırılır ve *$ErrorActionPreference*etkilenmez.
+[ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Hataların sonlandırılması her zaman sonlandırılıyor ve *ErrorActionPreference*tarafından etkilenmiyor.
 
-Runbook *$ErrorActionPreference*kullandığında, **Get-ChildItem** cmdlet 'inden **PathNotFound** gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durduruyor. Aşağıdaki örnek, *$ErrorActionPreference*kullanımını gösterir. Komut dosyası durdurulduğunda son **Write-output** komutu hiçbir şekilde yürütülmez.
+Runbook *ErrorActionPreference*kullandığında, **Get-ChildItem** cmdlet 'inden **PathNotFound** gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durduruyor. Aşağıdaki örnek *ErrorActionPreference*kullanımını gösterir. Komut dosyası durdurulduğunda son **Write-output** komutu hiçbir şekilde yürütülmez.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'

@@ -2,19 +2,17 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117046"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228105"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
 Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Ancak, kaynakları yönetim grubu düzeyinde de oluşturabilirsiniz. Yönetim grubu düzeyi dağıtımlarını, [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) atama ya da [ilke](../../governance/policy/overview.md)uygulama gibi bu düzeyde anlamlı olan işlemleri gerçekleştirmek için kullanabilirsiniz.
-
-Şu anda, yönetim grubu düzeyinde şablon dağıtmak için REST API kullanmanız gerekir.
 
 ## <a name="supported-resources"></a>Desteklenen kaynaklar
 
@@ -45,7 +43,16 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ## <a name="deployment-commands"></a>Dağıtım komutları
 
-Yönetim grubu dağıtımları için komutu, kaynak grubu dağıtımları komutundan farklıdır.
+Yönetim grubu dağıtımları için komutlar, kaynak grubu dağıtımları komutlarından farklıdır.
+
+Azure PowerShell için [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment)kullanın. 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 REST API için [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın.
 
@@ -150,7 +157,7 @@ Aşağıdaki örnek, var olan bir ilke tanımını yönetim grubuna atar. İlke 
 
 ## <a name="template-sample"></a>Şablon örneği
 
-* Bir kaynak grubu, ilke ve ilke ataması oluşturun.  [Buraya](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)bakın.
+* Bir [kaynak grubu, ilke ve ilke ataması oluşturun](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680894"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227891"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
 > [!NOTE]
-> Yerel önbellek, [Linux üzerinde App Service](containers/app-service-linux-intro.md)gibi işlev uygulamalarında veya kapsayıcılı App Service uygulamalarda desteklenmez.
+> Yerel önbellek, [Windows kapsayıcıları](app-service-web-get-started-windows-container.md) veya [Linux üzerinde App Service](containers/app-service-linux-intro.md)gibi işlev uygulamalarında veya Kapsayıcılı App Service uygulamalarda desteklenmez.
 
 
 Azure App Service içerik Azure Storage 'da depolanır ve bir içerik paylaşımında dayanıklı bir biçimde ortaya çıkmış olur. Bu tasarımın çeşitli uygulamalarla çalışması amaçlanmıştır ve aşağıdaki özniteliklere sahiptir:  
@@ -48,7 +48,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 ## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure portalında](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
@@ -108,7 +108,7 @@ Uygulamanız yerel önbellek kullanıyorsa, en son değişiklikleri almak için 
 ### <a name="where-are-my-logs"></a>Günlüklerim nerede?
 Yerel önbellek ile günlüklerinizi ve veri klasörlerinizi biraz farklı bir şekilde görünür. Ancak, alt klasörlerin yapısı aynı kalır, ancak alt klasörler "benzersiz VM tanımlayıcısı" ve zaman damgası biçiminde bir alt klasör altına alınır.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Yerel Önbelleğim etkin, ancak Uygulamam hala yeniden başlatıldı. Bunun nedeni nedir? Sık kullanılan uygulama yeniden başlatmalarının bulunduğu yerel önbellek hakkında yardım ediyorum.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Yerel Önbelleğim etkin, ancak Uygulamam hala yeniden başlatıldı. Neden? Sık kullanılan uygulama yeniden başlatmalarının bulunduğu yerel önbellek hakkında yardım ediyorum.
 Yerel önbellek, depolamayla ilgili uygulama yeniden başlatmalarının engellenmesine yardımcı olur. Bununla birlikte, uygulamanız hala sanal makinenin planlanan altyapı yükseltmeleri sırasında yeniden başlatmaları devam edebilir. Yerel önbellek etkinken karşılaşabileceğiniz genel uygulama yeniden başlatmaları daha az olmalıdır.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Yerel önbellek, tüm dizinlerin daha hızlı yerel sürücüye kopyalanmasını mi dışlıyor?

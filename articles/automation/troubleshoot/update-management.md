@@ -4,16 +4,16 @@ description: Azure 'da Güncelleştirme Yönetimi çözümle ilgili sorunları g
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513278"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227455"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -24,6 +24,36 @@ Temeldeki sorunu belirlemede karma çalışan Aracısı için bir aracı sorun g
 Çözümü bir sanal makineye (VM) ekleme çalışırken sorunlarla karşılaşırsanız, olay KIMLIĞI 4502 olan olaylar ve **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. Hybridavgent**içeren olay ayrıntıları için yerel makinedeki **uygulama ve hizmet günlükleri** altındaki **Operations Manager** günlüğünü kontrol edin.
 
 Aşağıdaki bölümde, belirli hata iletileri ve her biri için olası çözümler vurgulanmaktadır. Diğer ekleme sorunları için bkz. [çözüm ekleme sorunlarını giderme](onboarding.md).
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Senaryo: yenisiyle değiştirilen güncelleştirme Güncelleştirme Yönetimi eksik olarak belirtildi
+
+### <a name="issue"></a>Sorun
+
+Eski güncelleştirmeler, yenisiyle değiştirilseler bile, Azure hesabındaki Güncelleştirme Yönetimi eksik olarak görünüyor. Yenisiyle değiştirilen bir güncelleştirme, aynı güvenlik açığını düzelten sonraki bir güncelleştirme kullanılabilir olduğundan, yüklenmesi gereken bir güncelleştirmedir. Güncelleştirme Yönetimi, yenisiyle değiştirilen güncelleştirmeyi yoksayar ve yerine geçen güncelleştirmenin yerine uygulanabilir değildir. İlgili bir sorun hakkında daha fazla bilgi için bkz. [Update 'in yerini almıştır](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="cause"></a>Nedeni
+
+Yenisiyle değiştirilen güncelleştirmeler uygun olmayan kabul edilebilmesi için reddedildi olarak doğru gösterilmezler.
+
+### <a name="resolution"></a>Çözüm
+
+Yenisiyle değiştirilen bir güncelleştirme %100 ' a uygulanamıyorsa, bu güncelleştirmenin onay durumunu **reddedildi**olarak değiştirmelisiniz. Bunu tüm güncelleştirmelerinizi yapmak için:
+
+1. Otomasyon hesabında, makine durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin. Bkz. [güncelleştirme değerlendirmelerini görüntüleme](../manage-update-multi.md#view-an-update-assessment).
+
+2. %100 uygulanabilir olmadığından emin olmak için yenisiyle değiştirilen güncelleştirmeyi denetleyin. 
+
+3. Güncelleştirme hakkında sorularınız yoksa güncelleştirme reddedildi olarak işaretleyin. 
+
+4. Bilgisayarlar ' ı seçin ve uyumluluk sütununda uyumluluk için yeniden taramaya zorlayın. Bkz. [birden çok makine için güncelleştirmeleri yönetme](../manage-update-multi.md).
+
+5. Yenisiyle değiştirilen diğer güncelleştirmeler için yukarıdaki adımları tekrarlayın.
+
+6. Reddedilen güncelleştirmelerden dosyaları silmek için Temizleme Sihirbazı 'nı çalıştırın. 
+
+7. WSUS için, tüm yenisiyle değiştirilen güncelleştirmeleri altyapıyı yenilemek için el ile temizleyin.
+
+8. Görüntüleme sorununu düzeltmek ve güncelleştirme yönetimi için kullanılan disk alanı miktarını en aza indirmek için bu yordamı düzenli olarak tekrarlayın.
 
 ## <a name="nologs"></a>Senaryo: makineler altında portalda gösterilmez Güncelleştirme Yönetimi
 
@@ -45,7 +75,7 @@ Karma runbook çalışanını yeniden kaydetmeniz ve yeniden yüklemeniz gerekeb
 
 Çalışma alanınızda ulaşılan ve daha fazla veri depolamayı engelleyen bir kota tanımlamış olabilirsiniz.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 * İşletim sistemine bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun gidericiyi çalıştırın.
 
@@ -86,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Otomasyon kaynak sağlayıcısı abonelikte kayıtlı değil.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki adımları izleyin:
 
@@ -113,7 +143,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 - Otomasyon hesabıyla iletişim engelleniyor.
 - Eklendi olan VM, yüklü Microsoft Monitoring Agent (MMA) ile Sysprep uygulanmamış bir kopyalanmış makineden gelmiş olabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Güncelleştirme Yönetimi çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning) gidin.
 2. Kopyalanmış bir görüntü kullanıyorsanız:
@@ -136,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 Bu hata, bir güncelleştirme dağıtımında yer alan başka bir kiracıda Azure VM 'Leri olan bir güncelleştirme dağıtımı oluşturduğunuzda oluşur.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Zamanlanmış bu öğeleri almak için aşağıdaki geçici çözümü kullanın. Bir zamanlama oluşturmak için [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 'ini `-ForUpdate` anahtarıyla birlikte kullanabilirsiniz. Ardından [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) cmdlet 'ini kullanın ve diğer Kiracıdaki makineleri `-NonAzureComputer` parametresine geçirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
@@ -161,7 +191,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 Windows Update, herhangi biri yeniden başlatma davranışını değiştirebilecek çeşitli kayıt defteri anahtarları tarafından değiştirilebilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Makinelerinizin düzgün yapılandırıldığından emin olmak için [yeniden başlatmayı yönetmek üzere kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) altında listelenen kayıt defteri anahtarlarını gözden geçirin.
 
@@ -185,9 +215,9 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 * MMA 'nın Sourcecomputerıd 'sini değiştiren bir güncelleştirmesi vardı.
 * Bir Otomasyon hesabında 2.000 eşzamanlı iş sınırına ulaşırsanız güncelleştirme çalışması kısıtlanıyor. Her dağıtım bir iş olarak değerlendirilir ve bir güncelleştirme dağıtımındaki her makine iş olarak sayılır. Otomasyon hesabınızda çalışmakta olan diğer herhangi bir Otomasyon işi veya güncelleştirme dağıtımı, eşzamanlı iş sınırına doğru sayılır.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../automation-update-management-groups.md) kullanın. Ayrıca:
+Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../automation-update-management-groups.md) kullanın. Ek olarak:
 
 * Makinenin hala var olduğunu ve erişilebilir olduğunu doğrulayın. Mevcut değilse, dağıtımınızı düzenleyin ve makineyi kaldırın.
 * Güncelleştirme Yönetimi için gereken bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve sonra makinenizin bu gereksinimleri karşıladığını doğrulayın.
@@ -208,7 +238,7 @@ Bir Windows makinesini Güncelleştirme Yönetimi kaydettiğinizde, bir dağıt�
 
 Windows 'da, güncelleştirmeler kullanılabilir duruma geldiğinde otomatik olarak yüklenir. Bu davranış, makineye dağıtılacak bir güncelleştirme zamanalmadıysanız karışıklığına neden olabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` kayıt defteri anahtarı varsayılan olarak 4: **otomatik indir ve yükle**ayarlarına sahiptir.
 
@@ -230,7 +260,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Makine, Güncelleştirme Yönetimi için başka bir çalışma alanına zaten eklendi.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Makinenin doğru çalışma alanına rapor olduğundan emin olmak için, makineler bölümündeki adımları izleyin [güncelleştirme yönetimi altında portalda görünmez](#nologs) .
 2. [Karma runbook grubunu silerek](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)makinedeki eski yapıtları temizleyin ve sonra yeniden deneyin.
@@ -261,7 +291,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Bir proxy, ağ geçidi veya güvenlik duvarı ağ iletişimini engelliyor olabilir. 
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Ağınızı gözden geçirin ve uygun bağlantı noktalarına ve adreslere izin verildiğinden emin olun. Güncelleştirme Yönetimi ve karma runbook çalışanları için gereken bağlantı noktalarının ve adreslerin listesi için bkz. [ağ gereksinimleri](../automation-hybrid-runbook-worker.md#network-planning) .
 
@@ -279,7 +309,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Karma Runbook Worker otomatik olarak imzalanan bir sertifika oluşturamadı.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Sistem hesabının **C:\programdata\microsoft\crypto\rsa** klasörüne okuma erişimi olduğunu doğrulayın ve yeniden deneyin.
 
@@ -289,7 +319,7 @@ Sistem hesabının **C:\programdata\microsoft\crypto\rsa** klasörüne okuma eri
 
 Güncelleştirmeler için varsayılan bakım penceresi 120 dakikadır. Bakım penceresini en fazla 6 saat veya 360 dakika olarak artırabilirsiniz.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Başarısız olan zamanlanmış güncelleştirme dağıtımlarını düzenleyin ve bakım penceresini arttırın.
 
@@ -307,7 +337,7 @@ Bakım pencereleri hakkında daha fazla bilgi için bkz. [Install Updates](../au
 
 Güncelleştirme Aracısı (Windows üzerindeki Windows Update Aracısı; bir Linux dağıtımı için Paket Yöneticisi) doğru yapılandırılmamış. Güncelleştirme Yönetimi, gereken güncelleştirmeleri, düzeltme ekinin durumunu ve dağıtılan düzeltme eklerinin sonuçlarını sağlamak için makinenin güncelleştirme aracısına bağımlıdır. Bu bilgiler olmadan, Güncelleştirme Yönetimi gereken veya yüklenen düzeltme eklerine düzgün şekilde bildiremiyor.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Güncelleştirmeleri makinede yerel olarak gerçekleştirmeyi deneyin. Bu başarısız olursa, genellikle güncelleştirme aracısında bir yapılandırma hatası olduğu anlamına gelir.
 
@@ -355,7 +385,7 @@ Olası nedenler:
 * Makineye ulaşılamıyor.
 * Güncelleştirmeler çözümlenmeyen bağımlılıklara sahipti.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Bir güncelleştirme çalıştırması sırasında başarılı olduktan sonra bir başarısızlık oluşursa, çalıştırmada etkilenen makinenin [iş çıktısını kontrol](../manage-update-multi.md#view-results-of-an-update-deployment) edin. Çözebileceğinizi ve üzerinde işlem yapmanız gereken makinelerinizden belirli hata iletileri bulabilirsiniz. Güncelleştirme Yönetimi, paket yöneticisinin başarılı güncelleştirme dağıtımları için sağlıklı olmasını gerektirir.
 

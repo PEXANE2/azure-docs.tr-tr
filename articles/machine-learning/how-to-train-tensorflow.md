@@ -1,5 +1,5 @@
 ---
-title: TensorFlow ile sinir ağını eğitme
+title: Bir TensorFlow modelini eğitme ve dağıtma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning kullanarak, TensorFlow eğitim betiklerini nasıl bir ölçekte çalıştırmayı öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114378"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228304"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -305,11 +305,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deploy-a-tensorflow-model"></a>TensorFlow modeli dağıtma
 
 Yeni Kaydolmakta olduğunuz model, eğitim için kullandığınız tahmin etmeksizin, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle tamamen aynı şekilde dağıtılabilir. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
-### <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
+## <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
 
 Geleneksel dağıtım yolu yerine, TensorFlow için kod içermeyen dağıtım özelliğini (Önizleme) de kullanabilirsiniz. Modelinizi yukarıda gösterildiği gibi `model_framework`, `model_framework_version`ve `resource_configuration` parametreleriyle kaydederek, modelinizi dağıtmak için `deploy()` static işlevini kullanmanız yeterlidir.
 

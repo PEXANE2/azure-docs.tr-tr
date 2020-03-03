@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425316"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226332"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -349,7 +349,7 @@ az keyvault secret download \
 
 ### <a name="delete-certificate"></a>Sertifikayı sil 
 
-App Service sertifikasını silme işlemi son ve geri alınamaz. Bu sertifikayla App Service olan herhangi bir bağlama geçersiz hale gelir. Yanlışlıkla silinmeye engel olmak için, Azure, sertifikaya bir kilit koyar. Bir App Service sertifikasını silmek için, önce sertifikadaki silme kilidini kaldırmanız gerekir.
+App Service sertifikasını silme işlemi son ve geri alınamaz. App Service Sertifikası bir kaynağın silinmesi, sertifikanın iptal edilmesini neden olur. Bu sertifikayla App Service olan herhangi bir bağlama geçersiz hale gelir. Yanlışlıkla silinmeye engel olmak için, Azure, sertifikaya bir kilit koyar. Bir App Service sertifikasını silmek için, önce sertifikadaki silme kilidini kaldırmanız gerekir.
 
 [App Service sertifikaları](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) sayfasında sertifikayı seçin ve ardından sol gezinti bölmesinde **kilitler** ' ı seçin.
 

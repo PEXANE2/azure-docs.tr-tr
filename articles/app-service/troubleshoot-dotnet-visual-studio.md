@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688380"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227894"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -231,7 +231,7 @@ Uzaktan hata ayıklama yalnızca sürekli WebJobs ile kullanılabilir. Zamanlanm
 ## <a name="notes-about-remote-debugging"></a>Uzaktan hata ayıklama hakkında notlar
 
 * Üretimde hata ayıklama modunda çalıştırılması önerilmez. Üretim uygulamanız birden çok sunucu örneğine ölçeklenmez, hata ayıklama Web sunucusunun diğer isteklere yanıt vermesini engeller. Birden çok Web sunucusu örneğiniz varsa, hata ayıklayıcıya eklediğinizde rastgele bir örnek alır ve sonraki tarayıcı isteklerinin aynı örneğe gitmesini sağlamanın bir yolu yoktur. Ayrıca, genellikle üretim için bir hata ayıklama derlemesi dağıtmazsınız ve yayın yapıları için derleyici iyileştirmeleri, kaynak kodunuzda satıra göre oluşan satırı gösterme imkansızmasına neden olabilir. Üretim sorunlarını gidermek için en iyi kaynağınız, uygulama izleme ve Web sunucusu günlüklerinin bulunduğu bir uygulamadır.
-* Uzaktan hata ayıklama sırasında kesme noktalarında uzun durakları önleyin. Azure, yanıt vermeyen bir işlem olarak birkaç dakikadan daha uzun süre durdurulan bir işlemi değerlendirir ve kapatır.
+* Uzun kesme noktaları uzak durur önlemek hata ayıklama. Azure, yanıt vermeyen bir işlem olarak birkaç dakikadan daha uzun süre durdurulan bir işlemi değerlendirir ve kapatır.
 * Hata ayıklarken, sunucu Visual Studio 'ya veri gönderiyor ve bu da bant genişliği ücretlerini etkileyebilir. Bant genişliği ücretleri hakkında daha fazla bilgi için bkz. [Azure fiyatlandırması](https://azure.microsoft.com/pricing/calculator/).
 * *Web. config* dosyasındaki `compilation` öğesinin `debug` özniteliğinin true olarak ayarlandığından emin olun. Bir hata ayıklama yapı yapılandırması yayımladığınızda varsayılan olarak true olarak ayarlanır.
 
@@ -599,11 +599,11 @@ Başarısız istek izleme günlüklerini bir tarayıcıda doğrudan FTP aracıl�
 
     ![Tarayıcıda başarısız istek izleme](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
 
-## <a name="nextsteps"></a>Sonraki Adımlar
+## <a name="nextsteps"></a>Sonraki adımlar
 Visual Studio 'Nun bir App Service uygulaması tarafından oluşturulan günlükleri görüntülemeyi nasıl kolaylaştırdığını gördünüz. Aşağıdaki bölümler ilgili konularda daha fazla kaynağa bağlantılar sağlar:
 
 * App Service sorunlarını giderme
-* Visual Studio 'da hata ayıklama
+* Visual Studio'da Hata Ayıklama
 * Azure 'da uzaktan hata ayıklama
 * ASP.NET uygulamalarında izleme
 * Web sunucusu günlüklerini çözümleme
@@ -620,10 +620,10 @@ Azure App Service uygulamalarla ilgili sorun giderme hakkında daha fazla bilgi 
 Belirli bir sorun giderme sorusu hakkında yardım için aşağıdaki forumlardan birinde bir iş parçacığı başlatın:
 
 * [ASP.NET sitesindeki Azure Forumu](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [MSDN 'Deki Azure Forumu](https://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Microsoft Q & bir Azure Forumu](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 * [StackOverflow.com](https://www.stackoverflow.com).
 
-### <a name="debugging-in-visual-studio"></a>Visual Studio 'da hata ayıklama
+### <a name="debugging-in-visual-studio"></a>Visual Studio'da Hata Ayıklama
 Visual Studio 'da hata ayıklama modunun nasıl kullanılacağı hakkında daha fazla bilgi için bkz. Visual [Studio 'Da hata](/visualstudio/debugger/debugging-in-visual-studio) ayıklama ve [Visual Studio 2010 Ile hata ayıklama ipuçları](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Azure 'da uzaktan hata ayıklama
