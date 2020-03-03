@@ -1,18 +1,14 @@
 ---
 title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft Docs
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/25/2019
-ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819545"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663922"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights Telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
@@ -120,7 +116,7 @@ Zaman süreleri, 10 000 ticks = 1 MS olduğunda yer işaretleri içinde bulunur.
 [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Verileri işleme
-Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örneğin:
+Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örnek:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -158,7 +154,7 @@ Sürekli dışarı aktarma yeniden başlatılır.
 
 Daha büyük ölçeklendirilirken, buluttaki [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop kümelerini göz önünde bulundurun. HDInsight, büyük verilerin yönetilmesi ve çözümlenmesi için kullanabileceğiniz çeşitli teknolojiler sağlar ve bunu, Application Insights aktarılmış verileri işlemek için kullanabilirsiniz.
 
-## <a name="q--a"></a>Soru-Cevap
+## <a name="q--a"></a>Soru - Yanıt
 * *Ancak istediğim tek seferlik bir grafik indirmesi.*  
 
     Evet, bunu yapabilirsiniz. Sekmenin en üstünde, **verileri dışarı aktar**' a tıklayın.
@@ -183,7 +179,7 @@ Daha büyük ölçeklendirilirken, buluttaki [HDInsight](https://azure.microsoft
     Dışarı aktarmayı düzenleyin ve dışarı aktarma hedefi sekmesini açın. daha önce aynı depolama alanını seçili bırakın ve onaylamak için Tamam 'ı tıklatın. Dışarı aktarma yeniden başlatılır. Değişiklik son birkaç gün içinde olduysa, verileri kaybetmezsiniz.
 * *Dışarı aktarmayı duraklatabilir miyim?*
 
-    Evet. Devre dışı bırak 'a tıklayın.
+    Evet. Devre Dışı Bırak'a tıklayın.
 
 ## <a name="code-samples"></a>Kod örnekleri
 
