@@ -193,6 +193,10 @@
           items:
             - name: Metin okuma REST API'si
               href: rest-text-to-speech.md
+        - name: Telefon Kümesi Kullanımı
+          items:
+            - name: Konuşma API’si (SAPI) Telefon Kümesi Kullanımı
+              href: sapi-phoneset-usage.md
     - name: Kaynaklar
       items:
         - name: Metin okuma hakkında SSS
