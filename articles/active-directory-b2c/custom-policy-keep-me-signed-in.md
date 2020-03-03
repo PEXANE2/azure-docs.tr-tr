@@ -2,20 +2,20 @@
 title: Oturumumu Açık tut Azure Active Directory B2C
 description: Azure Active Directory B2C 'da Oturumumu Açık tut (KMSI) ayarlamayı öğrenin.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84ba68c97f69872e39121915a6edf23aa029fa75
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: HT
+ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161695"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189387"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da Oturumumu Açık tut (KMSI) özelliğini etkinleştir
 
@@ -32,11 +32,11 @@ Kullanıcılar bu seçeneği genel bilgisayarlarda etkinleştirmemelidir.
 - Yerel hesap oturum açmaya izin verecek şekilde yapılandırılmış bir Azure AD B2C kiracısı. KMSı, dış kimlik sağlayıcısı hesaplarında desteklenmez.
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
-## <a name="configure-the-page-identifier"></a>Sayfa tanımlayıcısını yapılandırma 
+## <a name="configure-the-page-identifier"></a>Sayfa tanımlayıcısını yapılandırma
 
 KMSI 'yi etkinleştirmek için, içerik tanımı `DataUri` öğesini [sayfa tanımlayıcısı](contentdefinitions.md#datauri) `unifiedssp` ve [sayfa sürümü](page-layout.md) *1.1.0* veya üzeri olarak ayarlayın.
 
-1. İlkenizin uzantısı dosyasını açın. Örneğin,  <em> **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`</em>. Bu uzantı dosyası, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](custom-policy-get-started.md)kullanmaya başlayın.
+1. İlkenizin uzantısı dosyasını açın. Örneğin,   <em> **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`</em>. Bu uzantı dosyası, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](custom-policy-get-started.md)kullanmaya başlayın.
 1. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. **ContentDefinitions** öğesini Ilkenin **buildingblocks** öğesine ekleyin.
 
@@ -51,7 +51,7 @@ KMSI 'yi etkinleştirmek için, içerik tanımı `DataUri` öğesini [sayfa tan�
       </ContentDefinitions>
     </BuildingBlocks>
     ```
-    
+
 1. Uzantı dosyasını kaydedin.
 
 
@@ -73,13 +73,13 @@ Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosy
     ```
 
     - **Sessionexpiryıtype** -oturumun `SessionExpiryInSeconds` ve `KeepAliveInDays`belirtilen zamana göre nasıl uzatıldığını gösterir. `Rolling` değeri (varsayılan), kullanıcının kimlik doğrulaması gerçekleştirdiği her seferinde oturumun genişletildiğini gösterir. `Absolute` değeri, kullanıcının belirtilen süre geçtikten sonra yeniden kimlik doğrulaması zorlaması gerektiğini belirtir.
- 
+
     - **Sessionexpirınınseconds** - *Oturumumu Açık bırak* etkin olmadığında oturum tanımlama bilgilerinin ömrü etkinleştirilmemiştir veya bir Kullanıcı Oturumumu *Açık bırak*seçeneğini seçmiyor. Oturumun süresi `SessionExpiryInSeconds` geçtikten sonra veya tarayıcı kapatıldıktan sonra dolar.
- 
+
     - **Keepaliveındays** - *Oturumumu Açık bırak* etkin olduğunda oturum tanımlama bilgilerinin yaşam süresi etkindir ve Kullanıcı Oturumumu *açık tut '* i seçer.  `KeepAliveInDays` değeri `SessionExpiryInSeconds` değerden önceliklidir ve oturum sona erme süresini belirler. Bir kullanıcı tarayıcıyı kapatır ve daha sonra yeniden açarsa, bu kullanıcılar yine de Keepaliveındays zaman diliminde olduğu sürece sessizce oturum açabilir.
-    
+
     Daha fazla bilgi için bkz. [Kullanıcı yolculuğu davranışları](relyingparty.md#userjourneybehaviors).
- 
+
 Aşağıdaki örnekte gösterildiği gibi, Sessionexpirınseconds değerini kısa bir süre (1200 saniye) olarak ayarlamanızı öneririz, ancak Keepaliveındays değeri görece uzun bir döneme (30 gün) ayarlanabilir:
 
 ```XML
