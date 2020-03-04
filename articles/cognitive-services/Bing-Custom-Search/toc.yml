@@ -27,12 +27,8 @@
               href: call-endpoint-python.md
         - name: SDK
           items:
-            - name: 'C# kullanma'
-              href: sdk-csharp-quick-start.md
-            - name: Python’u kullanma
-              href: sdk-python-quickstart.md
-            - name: Java'yı kullanma
-              href: sdk-java-quickstart.md
+            - name: Bing Özel Arama istemci kitaplıkları
+              href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
     - name: Özel Arama web sayfası derleme

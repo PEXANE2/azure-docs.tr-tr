@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: Şirket içine parola geri yazmayı etkinleştirme
       href: tutorial-enable-sspr-writeback.md
+    - name: Özel yasaklanan parola listesini yapılandırma
+      href: tutorial-configure-custom-password-protection.md
     - name: Azure Identity Protection’ı tümleştirme
       href: tutorial-risk-based-sspr-mfa.md
 - name: Kavramlar
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD parola koruması
       items:
-        - name: Engellenen parola listesini yapılandırma
-          href: howto-password-ban-bad-configure.md
         - name: Şirket içi tümleştirme
           items:
             - name: Azure AD parola korumasını dağıtma

@@ -109,7 +109,7 @@
           href: connect-virtual-network-vnet-isolated-environment.md
         - name: Birden çok tümleştirme hizmeti ortamına erişim ayarlama
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
-        - name: Tümleştirme hizmeti ortamlarına yapıtlar ekleme
+        - name: Tümleştirme hizmeti ortamlarına kaynaklar ekleme
           href: add-artifacts-integration-service-environment-ise.md
         - name: Tümleştirme hizmeti ortamları için müşteri tarafından yönetilen şifreleme anahtarları ayarlama
           href: customer-managed-keys-integration-service-environment.md
@@ -221,8 +221,6 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHub
           href: ../connectors/connectors-create-api-github.md
-        - name: Google Drive
-          href: ../connectors/connectors-create-api-googledrive.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger

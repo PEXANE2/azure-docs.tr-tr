@@ -103,12 +103,14 @@
           href: live-event-cloud-dvr.md
         - name: Canlı iş transkripsiyonu
           href: live-transcription.md
-        - name: Özellik karşılaştırması
+        - name: Canlı olay türleri karşılaştırması
           href: live-event-types-comparison.md
         - name: Durumlar ve faturalandırma
           href: live-event-states-billing.md
         - name: Gecikme süresi
           href: live-event-latency.md
+        - name: Şirket içi kodlayıcı iş ortağı olma
+          href: become-on-premises-encoder-partner.md
         - name: Canlı Etkinlik hata kodları
           href: live-event-error-codes.md
     - name: Paketleme ve teslim
