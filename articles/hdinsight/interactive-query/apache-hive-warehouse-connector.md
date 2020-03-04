@@ -1,18 +1,18 @@
 ---
 title: Apache Spark & Hive-Hive ambar Bağlayıcısı-Azure HDInsight
 description: Apache Spark ve Apache Hive Azure HDInsight 'ta Hive ambarı Bağlayıcısı ile tümleştirmeyi öğrenin.
-author: nakhanha
-ms.author: nakhanha
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/02/2020
+ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744882"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252416"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
@@ -54,17 +54,17 @@ Etkileşimli sorgu kümenizin headnode0 üzerindeki `/etc/hosts` dosyasındaki d
 
 #### <a name="from-your-interactive-query-cluster"></a>Etkileşimli sorgu kümeinizden
 
-1. `https://LLAPCLUSTERNAME.azurehdinsight.net` kullanarak kümenin Apache ambarı giriş sayfasına gidin; burada `LLAPCLUSTERNAME` etkileşimli sorgu kümenizin adıdır.
+1. `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` kullanarak kümenin Apache ambarı Hive sayfasına gidin; burada `LLAPCLUSTERNAME` etkileşimli sorgu kümenizin adıdır.
 
-1. Gelişmiş Hive ** > gelişmiş** > Hive **-site** > **hive. Zookeeper. Quorum** > , **Hive** **configs** ' a gidin ve değeri aklınızda edin. Değer şuna benzer olabilir: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Gelişmiş > **genel** > **Hive. metasileri. uris** sayfasına gidin ve değeri aklınızda yapın. Değer şuna benzer olabilir: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
-1. Gelişmiş > **genel** > **Hive. metasileri. Uri 'leri** > **Hive** > **configs** ' a gidin ve değeri aklınızda edin. Değer şuna benzer olabilir: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. **Gelişmiş > ** **Gelişmiş hive-sitesi** > **Hive. Zookeeper. Quorum** ' a gidin ve değeri aklınızda edin. Değer şuna benzer olabilir: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Apache Spark kümenizdeki
 
-1. Apache Spark Kümenizin adı `SPARKCLUSTERNAME` `https://SPARKCLUSTERNAME.azurehdinsight.net` kullanarak kümenin Apache ambarı giriş sayfasına gidin.
+1. Apache Spark Kümenizin adı `SPARKCLUSTERNAME` `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` kullanarak kümenin Apache ambarı Hive sayfasına gidin.
 
-1. Gelişmiş Hive ** > ** **configs** > **Gelişmiş** > **Gelişmiş Hive-Interactive-site** > **Hive. LLAP. Daemon. Service. konaklarına** gidin ve değeri aklınızda yapın. Değer şuna benzer olabilir: `@llap0`.
+1. **Gelişmiş > ** **Gelişmiş Hive-ınteractive-site** > **Hive. LLAP. Daemon. Service. konaklarına** gidin ve değeri aklınızda yapın. Değer şuna benzer olabilir: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Spark kümesi ayarlarını yapılandırma
 
@@ -174,7 +174,7 @@ Spark, Hive 'un yönetilen ACID tablolarına yazmayı yerel olarak desteklemez. 
     ```scala
     hive.table("sampletable_colorado").show()
     ```
-    
+
     ![Hive ambar Bağlayıcısı Hive tablosunu göster](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>Yapılandırılmış akış yazmaları
@@ -261,5 +261,5 @@ Localhost bağlantı noktası 9999 üzerindeki bir Spark akışından Hive tablo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Etkileşimli Sorguyu HDInsight ile Kullanma](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Etkileşimli Sorguyu HDInsight ile Kullanma](./apache-interactive-query-get-started.md)
 * [Zeppelin, Livy, Spark-gönder ve pyspark kullanılarak Hive ambar Bağlayıcısı ile etkileşim örnekleri](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

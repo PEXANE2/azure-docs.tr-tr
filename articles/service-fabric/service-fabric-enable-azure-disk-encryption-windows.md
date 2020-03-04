@@ -3,12 +3,12 @@ title: Windows kümeleri için disk şifrelemeyi etkinleştir
 description: Bu makalede, Azure Resource Manager Azure Key Vault kullanılarak Azure Service Fabric küme düğümleri için disk şifrelemenin nasıl etkinleştirileceği açıklanır.
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b08cdb63aa6f334c5a6f7c230b1624d232206c3b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614460"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251811"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Windows 'da Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme 
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Kılavuzda aşağıdaki konular ele alınmaktadır:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 **Kendi kendine kayıt** 
 
@@ -71,7 +71,7 @@ Sanal makine ölçek kümesi için disk şifreleme önizlemesi, kendi kendine ka
 
 Bir küme oluşturmak ve bir Azure Resource Manager şablonu ve kendinden imzalı bir sertifika kullanarak disk şifrelemeyi etkinleştirmek için aşağıdaki komutları kullanın.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açın 
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 Aşağıdaki komutlarla oturum açın:
 ```powershell
 Login-AzAccount
@@ -200,7 +200,7 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssNam
 
 ```
 
-```CLI
+```azurecli
 
 az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 

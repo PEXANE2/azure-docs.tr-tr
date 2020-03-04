@@ -3,12 +3,12 @@ title: GitRepo birimini kapsayıcı grubuna bağlama
 description: Bir Git deposunu kapsayıcı örneklerinizi kopyalamak için gitRepo birimi bağlama hakkında bilgi edinin
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533228"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252095"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances bir gitRepo birimi bağlama
 
@@ -23,7 +23,7 @@ Bir Git deposunu kapsayıcı örneklerinizi kopyalamak için bir *gitRepo* birim
 
 Bir *gitRepo* birimi bağladığınızda, birimi yapılandırmak için üç özellik belirleyebilirsiniz:
 
-| Özellik | Gereklidir | Açıklama |
+| Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
 | `repository` | Yes | Klonlanacak git deposunun `http://` veya `https://`dahil olmak üzere tam URL.|
 | `directory` | Hayır | Deponun klonlanacak dizin. Yol, "`..`" ile içermemelidir veya başlamamalıdır.  "`.`" belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
@@ -48,8 +48,11 @@ az container create \
 
 GitRepo biriminin takıldığını doğrulamak için [az Container exec][az-container-exec] ile kapsayıcıda bir Shell başlatın ve dizini listeleyin:
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -82,13 +85,13 @@ Azure Resource Manager şablonuyla kapsayıcı örneği dağıtımına bir örne
 
 Örneğin, özel bir GitHub deposu için Azure CLı `--gitrepo-url` parametresi aşağıdakine benzer görünür (burada "gituser" GitHub kullanıcı adıdır ve "abcdef1234fdsa4321abcdef" kullanıcının kişisel erişim belirtecidir):
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 Azure Repos git deposu için, herhangi bir Kullanıcı adı belirtin (aşağıdaki örnekte olduğu gibi "azurereposuser" öğesini) geçerli bir PAT ile birlikte kullanabilirsiniz:
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

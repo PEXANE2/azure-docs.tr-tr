@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/08/2019
+ms.date: 03/03/2020
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 2dd1eddc841cc484957c2124de3419799c4e59b7
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 8f982dbb10a15a1e02a62a97431cdd1b7015472c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206849"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252219"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma
 
@@ -27,51 +27,40 @@ Bu bölümde bir işi oluşturma ve çalıştırma işlemi gösterilmektedir. Bi
 
 2. Yeni bir iş oluşturmak için **+ Yeni** ' yi seçin:
 
-    > [!div class="mx-imgBorder"]
-    > Yeni iş oluşturma ![](./media/howto-run-a-job/createnewjob.png)
+    ![Yeni iş oluştur](./media/howto-run-a-job/createnewjob.png)
 
 3. Oluşturmakta olduğunuz işi tanımlamak için bir ad ve açıklama girin.
 
 4. İşinizin uygulanmasını istediğiniz hedef cihaz grubunu seçin. **Özet** bölümünde iş yapılandırmanızın kaç cihaz için geçerli olduğunu görebilirsiniz.
 
-5. Sonra, yapılandırılacak iş türü olarak **özellik** veya **komut** ' yi seçin. Bir **özellik** işi yapılandırması ayarlamak için bir özellik seçin ve yeni değerini ayarlayın. Bir **komut**kurmak veya çalıştırılacak komutu seçmek için. Bir özellik işi birden çok özellik ayarlayabilir:
+5. Sonra, yapılandırılacak iş türü olarak **bulut özelliğini**, **özelliği** veya **komutu** seçin. Bir **özellik** işi yapılandırması ayarlamak için bir özellik seçin ve yeni değerini ayarlayın. Bir **komut**ayarlamak için çalıştırılacak komutu seçin. Bir özellik işi birden çok özellik ayarlayabilir:
 
-    > [!div class="mx-imgBorder"]
-    > ![işi yapılandırma](./media/howto-run-a-job/configurejob.png)
+    ![İşi yapılandırma](./media/howto-run-a-job/configurejob.png)
 
-6. Cihazlarınızı seçtikten sonra **Çalıştır** veya **Kaydet**' i seçin. İş artık ana **işler** sayfanızda görüntülenir. Bu sayfada, çalışmakta olan işinizi ve daha önce çalıştırılan veya kaydedilmiş işlerin geçmişini görebilirsiniz. Kayıtlı işiniz herhangi bir zamanda yeniden açılabilir veya çalışmaya devam edebilir:
+6. İşinizi oluşturduktan sonra **Çalıştır** veya **Kaydet**' i seçin. İş artık ana **işler** sayfanızda görüntülenir. Bu sayfada, çalışmakta olan işinizi ve daha önce çalıştırılan veya kaydedilmiş işlerin geçmişini görebilirsiniz. Kayıtlı işiniz herhangi bir zamanda yeniden açılabilir veya çalışmaya devam edebilir:
 
-    > [!div class="mx-imgBorder"]
-    > ![işi](./media/howto-run-a-job/viewjob.png) görüntüle
+    ![İşi görüntüle](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
     > Daha önce çalıştırılan işleriniz için 30 günlük geçmişi görüntüleyebilirsiniz.
 
 7. İşiniz hakkında genel bilgi almak için listeden görüntülenecek işi seçin. Bu genel bakışta iş ayrıntıları, cihazlar ve cihaz durumu değerleri bulunur. Bu genel bakışta, iş ayrıntılarınızın CSV dosyasını indirmek için, cihazlar ve bunların durum değerleri de dahil olmak üzere **Iş ayrıntılarını indir** ' i de seçebilirsiniz. Bu bilgiler, sorun giderme için yararlı olabilir:
 
-    > [!div class="mx-imgBorder"]
-    > ![görüntüleme cihaz durumu](./media/howto-run-a-job/downloaddetails.png)
+    ![Cihaz durumunu görüntüle](./media/howto-run-a-job/downloaddetails.png)
 
-### <a name="stop-a-running-job"></a>Çalışan bir işi durdur
+### <a name="manage-a-job"></a>İşi yönetme
 
-Çalışan işlerinizin birini durdurmak için açın ve **Durdur**' u seçin. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü, hangi cihazların tamamlandığını, başarısız olduğunu veya hala beklemede olduğunu gösterir:
+Çalışan işlerinizin birini durdurmak için açın ve **Durdur**' u seçin. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü, hangi cihazların tamamlandığını, başarısız olduğunu veya hala beklendiğini gösterir.
 
-    > [!div class="mx-imgBorder"]
-    > ![Stop job](./media/howto-run-a-job/stopjob.png)
+Şu anda durdurulmuş bir işi çalıştırmak için, seçin ve sonra **Çalıştır**' ı seçin. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü en son ilerleme ile güncelleştirilmeye devam eder.
 
-### <a name="run-a-stopped-job"></a>Durdurulmuş bir işi çalıştırma
-
-Şu anda durdurulmuş bir işi çalıştırmak için, seçin ve sonra **Çalıştır**' ı seçin. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü en son ilerleme ile güncelleştirilmeye devam eder:
-
-    > [!div class="mx-imgBorder"]
-    > ![Resumed job](./media/howto-run-a-job/resumejob.png)
+![İşi Yönet](./media/howto-run-a-job/managejob.png)
 
 ## <a name="copy-a-job"></a>İşi kopyalama
 
-Mevcut işlerinizin birini kopyalamak için açın ve **Kopyala**' yı seçin. Düzenlemeniz için iş yapılandırmasının bir kopyası açılır ve **kopyalama** işlemi, iş adının sonuna eklenir. Yeni işi kaydedebilir veya çalıştırabilirsiniz:
+Mevcut işlerinizin birini kopyalamak için **işler** sayfasında bunu seçin ve **Kopyala**' yı seçin. Düzenlemeniz için iş yapılandırmasının bir kopyası açılır ve **kopyalama** işi adına eklenir. Yeni işi kaydedebilir veya çalıştırabilirsiniz:
 
-    > [!div class="mx-imgBorder"]
-    > ![Copy job](./media/howto-run-a-job/copyjob.png)
+![İşi Kopyala](./media/howto-run-a-job/copyjob.png)
 
 ## <a name="view-the-job-status"></a>İş durumunu görüntüleme
 
@@ -81,7 +70,7 @@ Bir iş oluşturulduktan sonra **durum** sütunu, işin en son durum iletisiyle 
 | -------------------- | ------------------------------------------------------- |
 | Tamamlandı            | Bu iş tüm cihazlarda yürütüldü.              |
 | Başarısız               | Bu iş başarısız oldu ve cihazlarda tam olarak yürütülmedi.  |
-| Bekliyor              | Bu iş henüz cihazlarda yürütülmeye başlamadı.         |
+| Beklemede              | Bu iş henüz cihazlarda yürütülmeye başlamadı.         |
 | Çalışıyor              | Bu iş şu anda cihazlarda yürütülüyor.             |
 | Durduruldu              | Bu iş, bir kullanıcı tarafından el ile durduruldu.           |
 
@@ -94,13 +83,13 @@ Durum iletisinin ardından, işteki cihazlara bir genel bakış gönderilir. Aş
 
 ### <a name="view-the-device-status"></a>Cihaz durumunu görüntüleme
 
-İşin durumunu ve etkilenen tüm cihazları görüntülemek için işi seçin. Cihazların listesi ve durum değerleri de dahil olmak üzere iş ayrıntılarını içeren bir CSV dosyasını indirmek için, **iş ayrıntılarını indir**' i seçin. Her bir cihaz adının yanında aşağıdaki durum iletilerinden birini görürsünüz:
+İşin durumunu ve etkilenen tüm cihazları görüntülemek için işi açın. Cihazların listesi ve durum değerleri de dahil olmak üzere iş ayrıntılarını içeren bir CSV dosyasını indirmek için, **iş ayrıntılarını indir**' i seçin. Her bir cihaz adının yanında aşağıdaki durum iletilerinden birini görürsünüz:
 
 | Durum iletisi       | Durum anlamı                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | Tamamlandı            | Bu cihazda iş yürütüldü.                                     |
 | Başarısız               | İşin bu cihazda yürütmesi başarısız oldu. Hata iletisinde daha fazla bilgi gösterilir.  |
-| Bekliyor              | İş bu cihazda henüz yürütülmedi.                                   |
+| Beklemede              | İş bu cihazda henüz yürütülmedi.                                   |
 
 > [!NOTE]
 > Bir cihaz silinmişse cihazı seçemezsiniz. Cihaz KIMLIĞIYLE silinmiş olarak görüntülenir.

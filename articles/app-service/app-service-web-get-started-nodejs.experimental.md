@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671416"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247609"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma
 
@@ -34,7 +34,7 @@ Mac, Windows veya Linux makinesi kullanarak buradaki adımları izleyebilirsiniz
 
 Cloud Shell'de bir quickstart dizini oluşturun ve o dizine geçin.
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 Ardından, örnek uygulama deposunu quickstart dizininize kopyalamak için aşağıdaki komutu çalıştırın.
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -66,7 +66,7 @@ Checking connectivity... done.
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-Cloud Shell’de, [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutuyla `myAppServicePlan` App Service planında bir web uygulaması oluşturun.
+Cloud Shell’de, `myAppServicePlan`[`az webapp create` komutuyla ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service planında bir web uygulaması oluşturun.
 
 Aşağıdaki örnekte `<app_name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir).
 
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 Yeni oluşturduğunuz web uygulamasına göz atın. `<app_name>` benzersiz bir uygulama adıyla değiştirin.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ Yeni Web uygulamanızın şöyle görünmesi gerekir: boş Web uygulaması sayfa
 
 Cloud Shell, uygulamanızın kök dizinine gidin, örnek projeniz için yeni bir ZIP dosyası oluşturun.
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ Bu komut ZIP içindeki dosyaları ve dizinleri App Service uygulama klasörünü
 
 Web tarayıcınızı kullanarak, dağıtılan uygulamanın konumuna gidin.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: Cihaz benzetimi, IOT, Uzaktan izleme - Azure | Microsoft Docs
-description: Bu nasıl yapılır kılavuzunda ile Uzaktan izleme çözüm Hızlandırıcısını cihaz simülatörü kullanma işlemini gösterir.
+title: IoT uzaktan izleme ile cihaz benzetimi-Azure | Microsoft Docs
+description: Bu nasıl yapılır Kılavuzu, uzaktan izleme çözüm hızlandırıcısında cihaz simülatörünü nasıl kullanacağınızı gösterir.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,69 +8,69 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65832589"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250244"
 ---
-# <a name="create-and-test-a-new-simulated-device"></a>Oluşturma ve yeni bir simülasyon cihazı test etme
+# <a name="create-and-test-a-new-simulated-device"></a>Yeni bir sanal cihaz oluşturma ve test etme
 
-Uzaktan izleme çözüm Hızlandırıcısını sanal cihazlarınızı tanımlamanızı sağlar. Bu makalede yeni bir sanal ampul cihaz tanımlayın ve ardından yerel olarak test gösterilmektedir. Çözüm Hızlandırıcısını chillers ve kamyon gibi sanal cihazları içerir. Ancak, IOT çözümlerinizi gerçek cihazları dağıtmadan önce test etmek için kendi sanal cihazlar tanımlayabilirsiniz.
+Uzaktan Izleme çözümü hızlandırıcısı, kendi sanal cihazlarınızı tanımlamanızı sağlar. Bu makalede yeni bir sanal açık ampul cihazının nasıl tanımlanacağı ve ardından yerel olarak nasıl test yapılacağı gösterilir. Çözüm Hızlandırıcısı, chilve structuralks gibi sanal cihazları içerir. Ancak, gerçek cihazları dağıtmadan önce IoT çözümlerinizi test etmek için kendi sanal cihazlarınızı tanımlayabilirsiniz.
 
 > [!NOTE]
-> Bu makalede, sanal cihazlar cihaz benzetimi hizmette barındırılan kullanmayı açıklar. Gerçek bir cihaz oluşturmak istiyorsanız, bkz. [Cihazınızı Uzaktan izleme çözüm hızlandırıcısına bağlamayı](iot-accelerators-connecting-devices.md).
+> Bu makalede, cihaz benzetimi hizmetinde barındırılan sanal cihazların nasıl kullanılacağı açıklanır. Gerçek bir cihaz oluşturmak istiyorsanız, bkz. [cihazınızı uzaktan izleme çözüm hızlandırıcısına bağlama](iot-accelerators-connecting-devices.md).
 
-Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmet özelleştirme işlemini göstermektedir. Bu mikro hizmet Uzaktan izleme çözüm Hızlandırıcısını bir parçasıdır. Cihaz benzetimi özellikleri göstermek için bu nasıl yapılır kılavuzunda Contoso IOT uygulamada iki senaryoda kullanır:
+Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmetini nasıl özelleştireceğiniz gösterilmektedir. Bu mikro hizmet, uzaktan Izleme çözümü hızlandırıcının bir parçasıdır. Cihaz benzetimi yeteneklerini göstermek için, bu nasıl yapılır Kılavuzu contoso IoT uygulamasında iki senaryoyu kullanır:
 
-Bu senaryoda, Contoso için yeni bir telemetri türünü, mevcut ekleme **Soğutucu** cihaz türü.
+İlk senaryoda, contoso 'nun var olan **Chiller** cihaz türüne yeni bir telemetri türü eklersiniz.
 
-İkinci senaryoda Contoso yeni bir akıllı ampul cihazı test etmek istiyor. Testleri çalıştırmak için aşağıdaki özelliklere sahip yeni bir simülasyon cihazı oluşturun:
+İkinci senaryoda, contoso yeni bir akıllı ampul cihazını test etmek istiyor. Testleri çalıştırmak için, aşağıdaki özelliklere sahip yeni bir sanal cihaz oluşturursunuz:
 
-*Özellikleri*
+*Özelliklerinin*
 
-| Ad                     | Değerler                      |
+| Adı                     | Değerler                      |
 | ------------------------ | --------------------------- |
 | Renk                    | Beyaz, kırmızı, mavi            |
-| Parlaklık               | 0 ile 100 arası                    |
-| Tahmini kalan kullanım ömrü | Geri sayım 10.000 saat |
+| Parlaklığı               | 0-100                    |
+| Tahmini kalan ömür | 10.000 saatten geri sayım |
 
 *Telemetri*
 
-Aşağıdaki tabloda, bir veri akışı olarak buluta ampul rapor verilerini gösterir:
+Aşağıdaki tabloda, açık ampul 'in veri akışı olarak buluta rapor aldığı veriler gösterilmektedir:
 
-| Ad   | Değerler      |
+| Adı   | Değerler      |
 | ------ | ----------- |
 | Durum | "açık", "kapalı" |
 | Sıcaklık | Derece F |
-| Çevrimiçi | TRUE, false |
+| çevrimiç | TRUE, false |
 
 > [!NOTE]
-> **Çevrimiçi** telemetri değeri tüm sanal türleri için zorunludur.
+> **Çevrimiçi** telemetri değeri, tüm benzetimli türler için zorunludur.
 
-*Methods*
+*Yöntem*
 
-Aşağıdaki tablo, yeni cihazın desteklediği eylemleri gösterir:
+Aşağıdaki tabloda yeni cihazın desteklediği eylemler gösterilmektedir:
 
-| Ad        |
+| Adı        |
 | ----------- |
-| Geçiş   |
-| Kapat  |
+| Geçiş yap   |
+| Geçiş kapalı  |
 
-*Başlangıç durumu*
+*İlk durum*
 
-Aşağıdaki tabloda, cihaz ilk durumunu gösterir:
+Aşağıdaki tabloda cihazın ilk durumu gösterilmektedir:
 
-| Ad                     | Değerler |
+| Adı                     | Değerler |
 | ------------------------ | -------|
 | İlk renk            | Beyaz  |
 | İlk parlaklık       | 75     |
-| İlk kalan kullanım ömrü   | 10,000 |
-| İlk telemetri durumu | "on"   |
-| İlk telemetri sıcaklık | 200   |
+| Başlangıçtaki kalan ömür   | 10,000 |
+| İlk telemetri durumu | dayanır   |
+| İlk telemetri sıcaklığı | 200   |
 
-Nasıl yapılır bu kılavuzdaki adımları tamamlamak için etkin bir Azure aboneliği gerekir.
+Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -78,70 +78,70 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu nasıl yapılır kılavuzunda takip etmek için ihtiyacınız vardır:
+Bu nasıl yapılır kılavuzunu izlemek için şunlar gerekir:
 
-* Visual Studio Code. Yapabilecekleriniz [Mac, Linux ve Windows için Visual Studio Code'u indirin](https://code.visualstudio.com/download).
-* .NET core. İndirebileceğiniz [Mac, Linux ve Windows için .NET Core](https://www.microsoft.com/net/download).
+* Visual Studio Code. [Mac, Linux ve Windows için Visual Studio Code indirebilirsiniz](https://code.visualstudio.com/download).
+* .NET Core. [Mac, Linux ve Windows için .NET Core 'u](https://www.microsoft.com/net/download)indirebilirsiniz.
 * [Visual Studio Code için C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* Postman. İndirebileceğiniz [Mac, Windows veya Linux için Postman](https://www.getpostman.com/apps).
-* Bir [IOT hub'ı Azure aboneliğinize dağıtılır](../../articles/iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlamak için IOT hub'ınızın bağlantı dizesi gerekir. Bağlantı dizesini Azure portalından alabilirsiniz.
-* SQL API'si kullanan ve için yapılandırılmış bir Cosmos DB veritabanı [güçlü tutarlılık](../../articles/cosmos-db/how-to-manage-database-account.md). Bu kılavuzdaki adımları tamamlamak için Cosmos DB veritabanı bağlantı dizesi gerekir. Bağlantı dizesini Azure portalından alabilirsiniz.
+* Postman. [Mac, Windows veya Linux Için Postman](https://www.getpostman.com/apps)indirebilirsiniz.
+* [Azure aboneliğinize dağıtılan bir IoT Hub 'ı](../../articles/iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlayabilmeniz için IoT Hub 'ın bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
+* SQL API 'sini kullanan ve [güçlü tutarlılık](../../articles/cosmos-db/how-to-manage-database-account.md)için yapılandırılmış Cosmos DB veritabanı. Bu kılavuzdaki adımları tamamlayabilmeniz için Cosmos DB veritabanının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
 
 ## <a name="prepare-your-development-environment"></a>Geliştirme ortamınızı hazırlama
 
-Geliştirme ortamınızı hazırlamak üzere aşağıdaki görevleri tamamlayın:
+Geliştirme ortamınızı hazırlamak için aşağıdaki görevleri doldurun:
 
-* Cihaz benzetimi mikro Hizmet kaynağı indirin.
-* Depolama bağdaştırıcısı mikro Hizmet kaynağı indirin.
-* Depolama bağdaştırıcısı mikro hizmet yerel olarak çalıştırın.
+* Cihaz benzetimi mikro hizmeti için kaynağı indirin.
+* Depolama bağdaştırıcısı mikro hizmeti için kaynağı indirin.
+* Depolama bağdaştırıcısı mikro hizmetini yerel olarak çalıştırın.
 
-Bu makaledeki yönergeler, Windows kullanmakta olduğunuz varsayılır. Başka bir işletim sistemi kullanıyorsanız, bazı dosya yolları ve komutları ortamınıza uyacak şekilde ayarlamanız gerekebilir.
+Bu makaledeki yönergeler Windows kullandığınızı varsayar. Başka bir işletim sistemi kullanıyorsanız, ortamınıza uyacak şekilde bazı dosya yollarını ve komutları ayarlamanız gerekebilir.
 
-### <a name="download-the-microservices"></a>Mikro hizmetler indirin
+### <a name="download-the-microservices"></a>Mikro hizmetleri indirin
 
-İndirip sıkıştırmasını [uzaktan mikro hizmetler izleme](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) yerel makinenizde uygun bir konuma github'dan. Bu klasörün adı olduğu varsayılır **Uzaktan izleme-services-dotnet-yöneticili**.
+GitHub 'dan [Uzaktan izleme mikro hizmetlerini](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) indirin ve yerel makinenizde uygun bir konuma ayıklayın. Makalede bu klasörün adı **Remote-Monitoring-Services-DotNet-Master**olduğu varsayılır.
 
-İndirip sıkıştırmasını [cihaz benzetimi mikro hizmet](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) yerel makinenizde uygun bir konuma github'dan. Bu klasörün adı olduğu varsayılır **cihaz-simülasyon-dotnet-master**.
+[Cihaz benzetimi mikro hizmetini](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) GitHub 'dan yerel makinenizde uygun bir konuma indirip sıkıştırmasını açın. Makale, bu klasörün adının **cihaz-simülasyon-DotNet-Master**olduğunu varsayar.
 
-### <a name="run-the-storage-adapter-microservice"></a>Depolama bağdaştırıcısı mikro hizmet çalıştırma
+### <a name="run-the-storage-adapter-microservice"></a>Depolama bağdaştırıcısı mikro hizmetini çalıştırma
 
-Açık **remote-monitoring-services-dotnet-master\storage-adapter** Visual Studio code'da klasörü. Tıklatın **geri** herhangi düzeltmek için düğmeler çözümlenmemiş bağımlılıklar.
+Visual Studio Code 'de **Remote-Monitoring-Services-DotNet-master\storage-Adapter** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-Açık **storage-adapter/WebService/appsettings.ini** dosya ve Cosmos DB bağlantı dizenizi atama **documentDBConnectionString** değişkeni.
+**Storage-Adapter/WebService/appSettings. ini** dosyasını açın ve Cosmos DB Bağlantı dizenizi **documentdbconnectionstring** değişkenine atayın.
 
-Mikro hizmet yerel olarak çalıştırmak için tıklayın **hata ayıklama > hata ayıklamayı Başlat**.
+Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama **> hata ayıklamayı Başlat**' a tıklayın.
 
-**Terminal** penceresi Visual Studio code'da web hizmetinin sistem durumu denetimi için bir URL dahil olmak üzere çalışan mikro hizmet çıktısını gösterir: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Bu adrese gidin, durumu olmalıdır "Tamam: Canlı ve iyi".
+Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
 
-Sonraki adımları tamamlarken Visual Studio Code'nın bu örneğinde çalışan depolama bağdaştırıcısı mikro hizmet bırakın.
+Sonraki adımları tamamlayarak bu Visual Studio Code örneğinde depolama bağdaştırıcısı mikro hizmetini çalışır durumda bırakın.
 
-## <a name="modify-the-chiller"></a>Soğutucu değiştirme
+## <a name="modify-the-chiller"></a>Chil'i değiştirme
 
-Bu bölümde, yeni bir ekleme **iç ortam sıcaklığı** varolan telemetri türü **Soğutucu** cihaz türü:
+Bu bölümde, var olan **Chiller** cihaz türüne yeni bir **iç sıcaklık** telemetri türü eklersiniz:
 
-1. Yeni bir klasör oluşturun **C:\temp\devicemodels** yerel makinenizde.
+1. Yerel makinenizde **C:\temp\devicemodellerini** yeni bir klasör oluşturun.
 
-1. Aşağıdaki dosyaları cihaz benzetimi mikro hizmet indirilen kopyadan yeni klasörünüze kopyalayın:
+1. Aşağıdaki dosyaları, cihaz simülasyon mikro hizmetinin indirilen kopyasından yeni klasörünüze kopyalayın:
 
-    | source | Hedef |
+    | Kaynak | Hedef |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
-    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
-    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
-    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
-    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\chiller-01.exe | C:\temp\devicemodels\chiller-01.asp JSON |
+    | Services\data\devicemodels\scripts\chiller-01-State.exe | C:\temp\devicemodels\scripts\chiller-01-State.exe |
+    | Services\data\devicemodels\scripts\reboot-method.exe | C:\temp\devicemodels\scripts\reboot-method.exe |
+    | Services\data\devicemodels\scripts\firmwareupdate-method.exe | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\acil Gencyvalverelease-method.exe | C:\temp\devicemodels\scripts\acil. Gencyvalverelease-method.exe |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Açık **C:\temp\devicemodels\chiller-01.json** dosya.
+1. **C:\temp\devicemodels\chiller-01.exe JSON** dosyasını açın.
 
-1. İçinde **ilk durum** bölümünde, aşağıdaki iki tanımları ekleyin:
+1. **InitialState** bölümünde aşağıdaki iki tanımı ekleyin:
 
     ```json
     "internal_temperature": 65.0,
     "internal_temperature_unit": "F",
     ```
 
-1. İçinde **Telemetri** dizisi, aşağıdaki tanımını ekleyin:
+1. **Telemetri** dizisinde aşağıdaki tanımı ekleyin:
 
     ```json
     {
@@ -158,18 +158,18 @@ Bu bölümde, yeni bir ekleme **iç ortam sıcaklığı** varolan telemetri tür
     },
     ```
 
-1. Kaydet **C:\temp\devicemodels\chiller-01.json** dosya.
+1. **C:\temp\devicemodels\chiller-01.exe JSON** dosyasını kaydedin.
 
-1. Açık **C:\temp\devicemodels\scripts\chiller-01-state.js** dosya.
+1. **C:\temp\devicemodels\scripts\chiller-01-State.exe** dosyasını açın.
 
-1. Aşağıdaki alanları ekleyin **durumu** değişkeni:
+1. **Durum** değişkenine aşağıdaki alanları ekleyin:
 
     ```js
     internal_temperature: 65.0,
     internal_temperature_unit: "F",
     ```
 
-1. Güncelleştirme **ana** gibi işlev:
+1. **Ana** işlevi aşağıdaki gibi güncelleştirin:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -201,13 +201,13 @@ Bu bölümde, yeni bir ekleme **iç ortam sıcaklığı** varolan telemetri tür
     }
     ```
 
-1. Kaydet **C:\temp\devicemodels\scripts\chiller-01-state.js** dosya.
+1. **C:\temp\devicemodels\scripts\chiller-01-State.exe** dosyasını kaydedin.
 
 ## <a name="create-the-lightbulb"></a>Ampul oluşturma
 
-Bu bölümde, yeni bir tanımlama **ampul** cihaz türü:
+Bu bölümde, yeni bir **lightampul** cihaz türü tanımlarsınız:
 
-1. Bir dosya oluşturun **C:\temp\devicemodels\lightbulb-01.json** ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\lightbulb-01.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```json
     {
@@ -271,9 +271,9 @@ Bu bölümde, yeni bir tanımlama **ampul** cihaz türü:
     }
     ```
 
-    Değişiklikleri kaydetmek **C:\temp\devicemodels\lightbulb-01.json**.
+    **C:\temp\devicemodels\lightbulb-01-JSON konumundaki**değişiklikleri kaydedin.
 
-1. Bir dosya oluşturun **C:\temp\devicemodels\scripts\lightbulb-01-state.js** ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\scripts\lightbulb-01-State.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```javascript
     "use strict";
@@ -360,9 +360,9 @@ Bu bölümde, yeni bir tanımlama **ampul** cihaz türü:
     }
     ```
 
-    Değişiklikleri kaydetmek **C:\temp\devicemodels\scripts\lightbulb-01-state.js**.
+    **C:\temp\devicemodels\scripts\lightbulb-01-State.exe**içindeki değişiklikleri kaydedin.
 
-1. Bir dosya oluşturun **C:\temp\devicemodels\scripts\SwitchOn-method.js** ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\scripts\switchon-method.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```javascript
     "use strict";
@@ -386,9 +386,9 @@ Bu bölümde, yeni bir tanımlama **ampul** cihaz türü:
     }
     ```
 
-    Değişiklikleri kaydetmek **C:\temp\devicemodels\scripts\SwitchOn-method.js**.
+    **C:\temp\devicemodels\scripts\switchon-method.exe**içindeki değişiklikleri kaydedin.
 
-1. Bir dosya oluşturun **C:\temp\devicemodels\scripts\SwitchOff-method.js** ve aşağıdaki içeriği ekleyin:
+1. **C:\temp\devicemodels\scripts\switchoff-method.exe** adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
 
     ```javascript
     "use strict";
@@ -412,19 +412,19 @@ Bu bölümde, yeni bir tanımlama **ampul** cihaz türü:
     }
     ```
 
-    Değişiklikleri kaydetmek **C:\temp\devicemodels\scripts\SwitchOff-method.js**.
+    **C:\temp\devicemodels\scripts\switchoff-method.exe**içindeki değişiklikleri kaydedin.
 
-Özelleştirilmiş bir sürümünü oluşturdunuz **Soğutucu** cihaz türü ve yeni oluşturulan **ampul** cihaz türü.
+Artık, **chilcihaz** türünün özelleştirilmiş bir sürümünü oluşturdunuz ve yeni bir **lightampul** cihaz türü oluşturdunuz.
 
-## <a name="test-the-devices"></a>Test cihazları
+## <a name="test-the-devices"></a>Cihazları test etme
 
-Bu bölümde, yerel olarak önceki bölümde oluşturduğunuz cihaz türlerini test edin.
+Bu bölümde, önceki bölümlerde oluşturduğunuz cihaz türlerini yerel olarak test edersiniz.
 
-### <a name="run-the-device-simulation-microservice"></a>Cihaz benzetimi mikro hizmet çalıştırma
+### <a name="run-the-device-simulation-microservice"></a>Cihaz benzetimi mikro hizmetini çalıştırma
 
-Açık **cihaz-simülasyon-dotnet-master** Visual Studio Code yeni bir örneğini github'dan indirdiğiniz klasörü. Tıklatın **geri** herhangi düzeltmek için düğmeler çözümlenmemiş bağımlılıklar.
+Yeni bir Visual Studio Code örneğinde GitHub 'dan indirdiğiniz **cihaz benzetimi-DotNet-ana** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-Açık **WebService/appsettings.ini** dosya ve Cosmos DB bağlantı dizenizi atama **documentdb_connstring** değişkeni ve da ayarları aşağıdaki gibi değiştirin:
+**WebService/appSettings. ini** dosyasını açın ve Cosmos DB Bağlantı dizenizi **documentdb_connstring** değişkenine atayın ve ayrıca ayarları aşağıdaki gibi değiştirin:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -432,74 +432,74 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-Mikro hizmet yerel olarak çalıştırmak için tıklayın **hata ayıklama > hata ayıklamayı Başlat**.
+Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama **> hata ayıklamayı Başlat**' a tıklayın.
 
-**Terminal** penceresi Visual Studio code'da çalışan mikro hizmet çıktısını gösterir.
+Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetten alınan çıkış gösterilmektedir.
 
-Sonraki adımları tamamlarken Visual Studio Code'nın bu örneğinde çalışan cihaz benzetimi mikro hizmet bırakın.
+Sonraki adımları tamamladıktan sonra cihaz benzetimi mikro hizmetini bu Visual Studio Code örneğinde çalışır durumda bırakın.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Bir izleyici cihaz olayları için ayarlama
+### <a name="set-up-a-monitor-for-device-events"></a>Cihaz olayları için izleyici ayarlama
 
-Bu bölümde, IOT hub'ınıza bağlı cihazlardan gönderilen telemetri verilerini görüntülemek için bir Olay İzleyicisi ayarlamak için Azure CLI'yı kullanın.
+Bu bölümde, IoT Hub 'ınıza bağlı cihazlardan gönderilen telemetrinin görüntüleneceği bir olay izleyicisi ayarlamak için Azure CLı 'yi kullanırsınız.
 
-Aşağıdaki betik, IOT hub'ınızın adı olduğunu varsayar **cihaz benzetimi test**.
+Aşağıdaki betik, IoT Hub 'ınızın adının **cihaz benzetimi-test**olduğunu varsayar.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Sanal cihazlar test ederken çalıştıran Olay İzleyici bırakın.
+Sanal cihazları test ederken olay izleyicisini çalışır durumda bırakın.
 
-### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Güncelleştirilmiş Soğutucu cihaz türü ile bir simülasyon oluşturma
+### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Güncelleştirilmiş chilcihaz türüyle simülasyon oluşturma
 
-Bu bölümde, güncelleştirilmiş Soğutucu cihaz türünü kullanarak bir simülasyon çalıştırma için cihaz benzetimi mikro hizmet istemek için Postman Aracı'nı kullanın. Postman, REST istekleri göndermek için bir web hizmeti sağlayan bir araçtır. Gereksinim duyduğunuz Postman yapılandırma dosyaları, yerel kopyasında olan **cihaz benzetimi dotnet** depo.
+Bu bölümde, cihaz benzetimi mikro hizmetinin güncelleştirilmiş chilcihaz türünü kullanarak benzetim çalıştırmasını istemek için Postman aracını kullanırsınız. Postman, bir Web hizmetine REST istekleri göndermenize olanak sağlayan bir araçtır. İhtiyacınız olan Postman yapılandırma dosyaları, **cihaz benzetimi-DotNet** deposunun yerel kopyasıdır.
 
-Postman'ı ayarlamak için:
+Postman 'yi ayarlamak için:
 
-1. Yerel makinenizde Postman'i açın.
+1. Yerel makinenizde Postman 'yi açın.
 
-1. Tıklayın **Dosya > içeri aktarma**. Ardından **dosya seçin**.
+1. **Dosya > Içeri aktar**' a tıklayın. Ardından **dosyaları seç**' e tıklayın.
 
-1. Gidin **cihaz-simülasyon-dotnet-master/docs/postman** klasör. Seçin **Azure IOT cihaz benzetimi çözüm accelerator.postman_collection** ve **Azure IOT cihaz benzetimi çözüm accelerator.postman_environment** tıklatıp **açın**.
+1. **Cihaz-simülasyon-DotNet-Master/docs/Postman** klasörüne gidin. **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı. postman_collection** ve **Azure IoT cihaz benzetimi çözüm Hızlandırıcısı. postman_environment** ' nı seçin ve **Aç**' a tıklayın.
 
-1. Genişletin **Azure IOT cihaz benzetimi Çözüm Hızlandırıcısı** istekleri gönderebilirsiniz.
+1. **Azure IoT cihaz benzetimi çözüm hızlandırıcıyı** , gönderebileceğiniz isteklere genişletin.
 
-1. Tıklayın **yok ortam** seçip **Azure IOT cihaz benzetimi Çözüm Hızlandırıcısı**.
+1. **Ortam yok** ' a tıklayın ve **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı**' nı seçin.
 
-Artık bir koleksiyon ve cihaz benzetimi mikro hizmet ile etkileşim kurmak için kullanabileceğiniz Postman çalışma alanınızda yüklenen ortam vardır.
+Artık Postman çalışma alanınızda yüklü olan ve cihaz benzetimi mikro hizmeti ile etkileşim kurmak için kullanabileceğiniz bir koleksiyon ve ortamınız vardır.
 
-Yapılandırma ve benzetim çalıştırmak için:
+Benzetimi yapılandırmak ve çalıştırmak için:
 
-1. Postman koleksiyonuna seçin **Oluştur değiştiren Soğutucu benzetimi** tıklatıp **Gönder**. Bu isteği dört sanal Soğutucu cihaz türü örneklerini oluşturur.
+1. Postman koleksiyonunda, **değiştirilen chilsimülasyonu oluştur** ' u seçin ve **Gönder**' e tıklayın. Bu istek, benzetimli chilcihaz türünün dört örneğini oluşturur.
 
-1. Azure CLI penceresinde Olay İzleyicisi çıkışını yeni dahil olmak üzere sanal cihazlar, gelen telemetriyi gösterir **internal_temperature** değerleri.
+1. Azure CLı penceresindeki olay izleyici çıktısı, yeni **internal_temperature** değerleri de dahil olmak üzere sanal cihazlardan gelen Telemetriyi gösterir.
 
-Benzetimi durdurmak için seçin **benzetimi Durdur** isteği Postman tıklayıp **Gönder**.
+Benzetimi durdurmak için Postman 'daki **Benzetim Isteğini durdur** ' u seçin ve **Gönder**' e tıklayın.
 
-### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Ampul cihaz türü ile bir simülasyon oluşturma
+### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Ampul cihaz türü ile simülasyon oluşturma
 
-Bu bölümde, ampul cihaz türünü kullanarak bir simülasyon çalıştırma için cihaz benzetimi mikro hizmet istemek için Postman Aracı'nı kullanın. Postman, REST istekleri göndermek için bir web hizmeti sağlayan bir araçtır.
+Bu bölümde, lightampul cihaz türünü kullanarak bir benzetim çalıştırmak üzere cihaz benzetimi mikro hizmetini istemek için Postman aracını kullanırsınız. Postman, bir Web hizmetine REST istekleri göndermenize olanak sağlayan bir araçtır.
 
-Yapılandırma ve benzetim çalıştırmak için:
+Benzetimi yapılandırmak ve çalıştırmak için:
 
-1. Postman koleksiyonuna seçin **ampul benzetimi oluşturmak** tıklatıp **Gönder**. Bu isteği benzetimli Ampul cihaz türünün iki örneği oluşturur.
+1. Postman koleksiyonunda, **lightampul simülasyonu oluştur** ' u seçin ve **Gönder**' e tıklayın. Bu istek, sanal açık ampul cihaz türünün iki örneğini oluşturur.
 
-1. Azure CLI penceresinde Olay İzleme çıktısı, sanal lightbulbs gelen telemetriyi gösterir.
+1. Azure CLı penceresindeki olay izleyici çıktısı, sanal açık olan sanal bilgisayarlardan Telemetriyi gösterir.
 
-Benzetimi durdurmak için seçin **benzetimi Durdur** isteği Postman tıklayıp **Gönder**.
+Benzetimi durdurmak için Postman 'daki **Benzetim Isteğini durdur** ' u seçin ve **Gönder**' e tıklayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İki yerel olarak çalışan mikro hizmetler, Visual Studio kod örneklerindeki durdurabilirsiniz (**hata ayıklama > hata ayıklamayı Durdur**).
+Visual Studio Code örneklerinde yerel olarak çalışan iki mikro hizmeti durdurabilirsiniz (**hata ayıklama > hata ayıklamayı durdurabilirsiniz**).
 
-Artık IOT Hub ve Cosmos DB örnekleri gerektiriyorsa, gereksiz ücretlerden kaçınmak için Azure aboneliğinizden silebilirsiniz.
+Artık IoT Hub ve Cosmos DB örneklerine ihtiyacınız yoksa, gereksiz ücretlerden kaçınmak için Azure aboneliğinizden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuz, türü özel bir simülasyon cihazı oluşturma ve cihaz benzetimi mikro hizmet yerel olarak çalıştırarak test nasıl oluşturulacağını gösterir.
+Bu kılavuzda, özel bir sanal cihaz türleri oluşturma ve cihaz benzetimi mikro hizmetini yerel olarak çalıştırarak test etme işlemleri gösterilmektedir.
 
-Özel sanal cihazı türlerinizi dağıtma hakkında bilgi edinmek için önerilen sonraki adım olan [Uzaktan izleme çözüm hızlandırıcısının](iot-accelerators-remote-monitoring-deploy-simulated-device.md).
+Önerilen sonraki adım, özel sanal cihaz türlerinizi [Uzaktan izleme çözüm hızlandırıcısına](iot-accelerators-remote-monitoring-deploy-simulated-device.md)dağıtmayı öğrenmaktır.

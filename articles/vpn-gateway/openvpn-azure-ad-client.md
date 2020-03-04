@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134509"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251610"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN Protokolü bağlantıları için bir VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
@@ -168,9 +168,26 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel DNS sunucuları eklensin mi?
+
+İndirilen profil XML dosyasını değiştirebilir ve **\<dnsservers >\<dnsserver > \</DNSServer >\</dnsservers** > etiketleri ekleyebilirsiniz
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve **\<route >\<ıncluderoutes >\<hedef >\<maskesini > \</Route >\</ıncluderoutes >\</Destination >\</Mask >** etiketlerini ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<ıncluderoutes >\<route >\<hedef >\<maskesini > \</Destination >\</Mask >\</Route >\</ıncluderoutes** > etiketlerini ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN istemcisinden gelen yollar engellensin mi (hariç) Nasıl yaparım??
+
+İndirilen profil XML dosyasını değiştirebilir ve **\<excluderoutes >\<route >\<destination >\<maskesini > \</Destination >\</Mask >\</Route >\</excluderoutes >** etiketlerini ekleyebilirsiniz
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

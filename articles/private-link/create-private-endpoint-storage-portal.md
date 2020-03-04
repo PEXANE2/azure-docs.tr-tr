@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028877"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252522"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure özel uç noktasını kullanarak bir depolama hesabına özel olarak bağlanma
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.
@@ -22,31 +22,29 @@ Bu hızlı başlangıçta, bir Azure sanal ağında, Azure portal kullanarak öz
 > [!NOTE]
 > Aynı alt ağdaki hizmet uç noktaları ile birlikte özel uç noktalara izin verilmez!
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 Bu bölümde, özel bağlantı kaynağına (Bu örnekteki bir depolama hesabı) erişmek için kullanılan VM 'yi barındırmak için sanal ağ ve alt ağ oluşturacaksınız.
 
-### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
 Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
-1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Ad | *MyVirtualNetwork*girin. |
-    | Adres alanı | *10.1.0.0/16*girin. |
-    | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
-    | Konum | **WestCentralUS**öğesini seçin.|
-    | Alt ağ adı | *Mysubnet*yazın. |
-    | Alt Ağ - Adres aralığı | *10.1.0.0/24*girin. |
-    |||
-1. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroup |
+| **\<sanal ağ-adı >** | myVirtualNetwork          |
+| **\<bölge adı >**          | Orta Batı ABD      |
+| **\<IPv4-adres-alanı >**   | 10.1.0.0 \ 16          |
+| **\<alt ağ-adı >**          | mySubnet        |
+| **\<alt ağ-adres aralığı >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
@@ -64,14 +62,14 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Sanal makine adı | *Myvm*' i girin. |
     | Bölge | **WestCentralUS**öğesini seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
-    | Resim | **Windows Server 2019 Datacenter**öğesini seçin. |
+    | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETICI HESABı** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Genel gelen bağlantı noktası | Varsayılanı **yok**olarak bırakın. |
+    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
@@ -88,7 +86,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     ||
 
@@ -127,7 +125,7 @@ Bu bölümde, için özel bir uç nokta kullanarak özel bir depolama hesabı ol
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     |Konum|**WestCentralUS**öğesini seçin.|
-    |Ad|*Myprivateendpoint*girin.  |
+    |Adı|*Myprivateendpoint*girin.  |
     |Depolama alt kaynağı|Varsayılan **blobu**bırakın. |
     | **IŞLEMLERI** |  |
     | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
@@ -151,7 +149,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 

@@ -11,16 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901167"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252695"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastik havuzlar birden çok Azure SQL veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 
-SQL Veritabanı elastik havuzları, kullanım talepleri değişken olan ve öngörülmeyen birden çok veritabanını yönetmeye ve ölçeklendirmeye yönelik kolay ve ekonomik bir çözümdür. Elastik havuz içindeki veritabanları tek bir Azure SQL Veritabanı sunucusunda bulunur ve sabit fiyatla belirli bir kaynak kümesini paylaşır. Azure SQL Veritabanındaki elastik havuzlar, SaaS geliştiricilerinin bir veritabanı grubuna ait fiyat performansını belirtilen bütçe dahilinde iyileştirmesini ve aynı zamanda her veritabanı için performans Elastikliği sunmasını sağlar.
+SQL Veritabanı elastik havuzları, kullanım talepleri değişken olan ve öngörülmeyen birden çok veritabanını yönetmeye ve ölçeklendirmeye yönelik kolay ve ekonomik bir çözümdür. Elastik havuzdaki veritabanları tek bir Azure SQL veritabanı sunucusunda bulunur ve ayarlanan fiyata bir dizi kaynağı paylaşır. Azure SQL Veritabanındaki elastik havuzlar, SaaS geliştiricilerinin bir veritabanı grubuna ait fiyat performansını belirtilen bütçe dahilinde iyileştirmesini ve aynı zamanda her veritabanı için performans Elastikliği sunmasını sağlar.
 
 ## <a name="what-are-sql-elastic-pools"></a>SQL elastik havuzları nelerdir
 
@@ -159,7 +159,7 @@ Azure portal esnek havuz oluşturabileceğiniz iki yol vardır.
 2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek elastik havuzlarla ilgili ek bilgileri görüntüleyebilirsiniz.
 3. **Veritabanları** kutucuğunda **kaynak türü** açılan listesinde **Esnek havuz** ' ı seçin ve ardından **Oluştur**' u seçin.
 
-   ![Esnek havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
+   ![Elastik havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
 1. Alternatif olarak, var olan bir Azure SQL sunucusuna gidip **+ yeni havuz** ' a tıklayarak bir elastik havuz oluşturarak bu sunucuya doğrudan bir havuz oluşturabilirsiniz.
@@ -222,6 +222,7 @@ Daha fazla bilgi için bkz. [Azure Portal SQL veritabanı uyarıları oluşturma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Fiyatlandırma bilgileri için bkz. [elastik havuz fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Elastik havuzları ölçeklendirmek için bkz. [elastik havuzları ölçekleme](sql-database-elastic-pool-scale.md) ve [elastik havuz ölçekleme-örnek kod](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - Bir video için bkz. [Microsoft sanal akademik My video Kurumu Azure SQL veritabanı elastik özellikleri](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Elastik havuzları kullanan SaaS uygulamalarının tasarım desenleri hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veritabanı kullanan Çok Kiracılı SaaS Uygulamaları için Tasarım Desenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).

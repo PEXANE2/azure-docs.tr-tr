@@ -4,12 +4,12 @@ description: Jenkins Azure Işlevleri eklentisini kullanarak Azure Işlevlerine 
 keywords: Jenkins, Azure, DevOps, Java, Azure işlevleri
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470675"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250916"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Jenkins Azure Işlevleri eklentisini kullanarak Azure Işlevlerine dağıtma
 
@@ -31,19 +31,19 @@ Aşağıdaki adımlarda, Azure CLı kullanarak bir Java işlevinin nasıl oluşt
 
 1. **&lt;resource_group >** yer tutucusunu kaynak grubu adınızla değiştirerek bir kaynak grubu oluşturun.
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. Yer tutucuları uygun değerlerle değiştirerek bir Azure depolama hesabı oluşturun.
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. Yer tutucuları uygun değerlerle değiştirerek test işlevi uygulamasını oluşturun.
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -148,7 +148,7 @@ Jenkins işini çalıştırmak artık zaman alabilir.
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımla oluşturduğunuz kaynakları silin:
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

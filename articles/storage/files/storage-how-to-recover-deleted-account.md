@@ -1,6 +1,6 @@
 ---
-title: Azure depolama ile Azure dosya paylaşımının kullanımı | Microsoft Docs
-description: Azure dosya paylaşımını Windows ve Windows Server ile kullanmayı öğrenin.
+title: Silinen bir depolama hesabını kurtarma
+description: Silinen bir depolama hesabını kurtarmayı öğrenin
 author: todmccoy
 manager: dcscontentpm
 ms.service: storage
@@ -10,12 +10,12 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: e1e581134b4e3821659c43bb7f55003239594bd9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 05465d4a03335ac607ba8981116c66fd6dac9416
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233798"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252624"
 ---
 # <a name="how-to-recover-a-deleted-storage-account"></a>Silinen bir depolama hesabını kurtarma
 
@@ -25,8 +25,8 @@ Aşağıdaki tabloda, çoğaltma stratejisine bağlı olarak depolama hesabı ku
 
 | |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Depolama hesabı Azure Resource Manager|Evet|Evet|Evet|Evet|
-|Depolama hesabı klasik|Evet|Evet|Evet|Evet|
+|Depolama hesabı Azure Resource Manager|Yes|Yes|Yes|Yes|
+|Depolama hesabı klasik|Yes|Yes|Yes|Yes|
 
 Aşağıdaki bilgileri toplayın ve Microsoft Desteği bir destek isteği dosyasına koyun:
 

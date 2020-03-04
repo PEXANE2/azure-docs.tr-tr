@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902549"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256038"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
 
-Bu makalede, Azure sanal makinelerinin (VM 'Ler) bir bölgeden diğerine çoğaltılması ve kurtarılması sırasında Azure Site Recovery yaygın olarak karşılaşılan hataların nasıl giderileceği açıklanmaktadır. Desteklenen yapılandırmalar hakkında daha fazla bilgi için bkz. [Azure Vm'lerini çoğaltma için destek matrisi](site-recovery-support-matrix-azure-to-azure.md).
+Bu makalede, Azure sanal makinelerinin (VM 'Ler) bir bölgeden diğerine çoğaltılması ve kurtarılması sırasında Azure Site Recovery yaygın olarak karşılaşılan hataların nasıl giderileceği açıklanmaktadır. Desteklenen konfigürasyonlar hakkında daha fazla bilgi için bkz. [Azure VM 'leri çoğaltmak için destek matrisi](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure Kaynak kotası sorunları (hata kodu 150097)
 
@@ -80,7 +80,7 @@ SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Symantec kök CA sertifikası bulunamazsa, dosyayı indirmek için aşağıdaki komutu çalıştırın. Herhangi bir hata olup olmadığını denetleyin ve ağ hataları için önerilen eylemleri izleyin.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Baltidaha fazla kök CA sertifikasının mevcut olup olmadığını denetleyin:
 
@@ -88,7 +88,7 @@ SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Baltidaha fazla kök CA sertifikası bulunamazsa, sertifikayı indirmek için şu komutu çalıştırın:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
 
 1. DigiCert_Global_Root_CA sertifikasının mevcut olup olmadığını denetleyin:
 
@@ -106,7 +106,7 @@ SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Sertifikalar için konu karmalarının çözümlemeyin olarak oluşturulup oluşturulmayacağını denetlemek için şu komutları çalıştırın:
 
-    - Komut:
+    - Komutundaki
 
         **# ls-l | GREP Baltimore**
 
@@ -116,7 +116,7 @@ SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Komut:
+    - Komutundaki
 
         **# ls-l | GREP VeriSign_Class_3_Public_Primary_Certification_Authority_G5**
 
@@ -126,7 +126,7 @@ SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Komut:
+    - Komutundaki
 
         **# ls-l | GREP DigiCert_Global_Root**
 
@@ -150,7 +150,7 @@ SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Dosyaların mevcut olup olmadığını denetleyin:
 
-    - Komut:
+    - Komutundaki
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
@@ -381,14 +381,14 @@ Bu makalenin ilerleyen kısımlarında, [VM 'nin sağlama durumundaki](#the-vms-
 VM 'de çoğaltmayı etkinleştirmek için, sağlama durumunun **başarılı**olması gerekir. Sağlama durumunu denetlemek için şu adımları izleyin:
 
 1. Azure portal, **tüm hizmetlerden** **Kaynak Gezgini** seçin.
-1. Genişletin **abonelikleri** listelemek ve aboneliğinizi seçin.
-1. Genişletin **ResourceGroups** listeleyebilir ve sanal makinenin kaynak grubunu seçin.
+1. **Abonelikler** listesini genişletin ve aboneliğinizi seçin.
+1. **ResourceGroups** listesini GENIŞLETIN ve VM 'nin kaynak grubunu seçin.
 1. **Kaynaklar** listesini GENIŞLETIN ve VM 'nizi seçin.
 1. Sağ taraftaki örnek görünümünde **Provisioningstate** alanını denetleyin.
 
 ### <a name="fix-the-problem"></a>Sorunu
 
-- Varsa **provisioningState** olduğu **başarısız**, sorun giderme ayrıntıları ile Destek ekibiyle iletişime geçin.
+- **Provisioningstate** **başarısız**olduysa, sorun giderme ayrıntılarıyla desteğe başvurun.
 - **Provisioningstate** **güncelleştiriyoruz**, başka bir uzantı dağıtılmış olabilir. VM 'de devam eden bir işlem olup olmadığını denetleyin, bunların tamamlanmasını bekleyin ve ardından Site Recovery başarısız olan "çoğaltmayı etkinleştir" işini yeniden deneyin.
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Hedef sanal makine seçilemedi (ağ seçimi sekmesi kullanılamıyor)
@@ -466,7 +466,7 @@ Aşağıdaki örnekler, gerekli UUID 'ler yerine cihaz adlarının (kalın olara
 
 Her bir cihaz adını karşılık gelen UUID ile değiştirin:
 
-1. **Blkıd** ***Cihaz adı***komutunu yürüterek cihazın UUID 'sini bulun. Örneğin:
+1. **Blkıd** ***Cihaz adı***komutunu yürüterek cihazın UUID 'sini bulun. Örnek:
 
     ```
     blkid /dev/sda1

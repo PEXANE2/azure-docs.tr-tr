@@ -17,12 +17,12 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960239"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248766"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: hesaplar ve izinler
 
@@ -55,11 +55,10 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 > [!NOTE]
 > Bir ESAE yönetim ormanına Azure AD Connect ' de kullanılan yönetim hesaplarını yönetmek için desteklenir ("kırmızı orman" olarak da bilinir).
 > Adanmış yönetim ormanları, kuruluşların yönetim hesaplarını, iş istasyonlarını ve grupları üretim ortamından daha güçlü güvenlik denetimlerine sahip bir ortamda barındırmasına olanak tanır.
-> Adanmış yönetim ormanları hakkında daha fazla bilgi edinmek için lütfen [Esae yönetim ormanı tasarım yaklaşımını](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) inceleyin
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Adanmış yönetim ormanları hakkında daha fazla bilgi edinmek için lütfen [Esae yönetim ormanı tasarım yaklaşımını](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)inceleyin.
 
 > [!NOTE]
-> Genel yönetici rolü, İlk kurulumdan sonra gerekli değildir ve tek gerekli hesap, **Dizin eşitleme hesapları** rol hesabı olur. Bu, necssarily değil, hesabı yalnızca genel yönetici rolüyle kaldırmak istediğinizi ifade eder. Rolü daha az güçlü bir rol olarak değiştirmek daha iyidir, ancak Sihirbazı yeniden çalıştırmanız gerektiğinde hesabın sorunları ortaya çıkarabilir. Rol ayrıcalığını azaltarak, Azure AD Connect Sihirbazı 'nı yeniden kullanmanız gerekiyorsa, her zaman ayrıcalıklarınızı yeniden kapatabilirsiniz. 
+> Genel yönetici rolü, İlk kurulumdan sonra gerekli değildir ve tek gerekli hesap, **Dizin eşitleme hesapları** rol hesabı olur. Yani, hesabı yalnızca genel yönetici rolüyle kaldırmak istediğiniz anlamına gelmez. Rolü daha az güçlü bir rol olarak değiştirmek daha iyidir, ancak Sihirbazı yeniden çalıştırmanız gerektiğinde hesabın sorunları ortaya çıkarabilir. Rol ayrıcalığını azaltarak, Azure AD Connect Sihirbazı 'nı yeniden kullanmanız gerekiyorsa ayrıcalıkların her zaman yeniden yükseltilmesini sağlayabilirsiniz. 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect yükleniyor
 Azure AD Connect Yükleme Sihirbazı iki farklı yol sunar:
@@ -93,7 +92,7 @@ AD DS bağlayıcı hesabı, Windows Server AD 'ye okumak ve yazmak için oluştu
 | Tüm özellikleri oku/yaz InetOrgPerson |İçeri ve Exchange karma |
 | Tüm özellikler grubunu oku/yaz |İçeri ve Exchange karma |
 | Tüm özellikleri oku/yaz Ilgili kişisi |İçeri ve Exchange karma |
-| Parola sıfırla |Parola geri yazmayı etkinleştirme hazırlığı |
+| Parola sıfırlama |Parola geri yazmayı etkinleştirme hazırlığı |
 
 ### <a name="express-installation-wizard-summary"></a>Hızlı Yükleme Sihirbazı Özeti
 
@@ -101,7 +100,7 @@ AD DS bağlayıcı hesabı, Windows Server AD 'ye okumak ve yazmak için oluştu
 
 Aşağıda, Hızlı Yükleme Sihirbazı sayfalarının bir özeti, toplanan kimlik bilgileri ve bunların için kullanıldıkları özellikler yer verilmiştir.
 
-| Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
+| Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli İzinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
 | Yok |Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |<li>Eşitleme hizmetini çalıştırmak için olarak kullanılan ADSync hizmet hesabını oluşturur. |
 | Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
@@ -118,7 +117,7 @@ Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bil
 
 ![Hızlı yükleme](./media/reference-connect-accounts-permissions/customize.png)
 
-| Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
+| Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli İzinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
 | Yok |Yükleme sihirbazını çalıştıran Kullanıcı |<li>Yerel sunucunun yöneticisi</li><li>Tam bir SQL Server kullanılıyorsa, kullanıcının SQL 'de Sistem Yöneticisi (SA) olması gerekir</li> |Varsayılan olarak, eşitleme altyapısı hizmet hesabı olarak kullanılan yerel hesabı oluşturur. Hesap yalnızca yönetici belirli bir hesap belirtmezse oluşturulur. |
 | Eşitleme hizmetlerini, hizmet hesabı seçeneğini yükler |AD veya yerel kullanıcı hesabı kimlik bilgileri |Kullanıcı, izinler Yükleme Sihirbazı tarafından verilir |Yönetici bir hesap belirtiyorsa, bu hesap eşitleme hizmeti için hizmet hesabı olarak kullanılır. |
@@ -201,10 +200,10 @@ Deki
 - sMSA- [tek başına yönetilen hizmet hesabı](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA- [Grup yönetilen hizmet hesabı](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | Yerel veritabanı</br>Hızlı | LocalDB/LocalSQL</br>Özel | Uzak SQL</br>Özel |
+| | Yerel veritabanı</br>Express | LocalDB/LocalSQL</br>Özel | Uzak SQL</br>Özel |
 | --- | --- | --- | --- |
-| **tek başına/çalışma grubu makinesi** | Desteklenmiyor | **VSA**</br>Yerel hesap (2008)</br>Yerel hesap |  Desteklenmiyor |
-| **etki alanına katılmış makine** | **VSA**</br>Yerel hesap (2008) | **VSA**</br>Yerel hesap (2008)</br>Yerel hesap</br>Etki alanı hesabı</br>sMSA, gMSA | **gMSA**</br>Etki alanı hesabı |
+| **tek başına/çalışma grubu makinesi** | Desteklenmiyor | **'NıN**</br>Yerel hesap (2008)</br>Yerel hesap |  Desteklenmiyor |
+| **etki alanına katılmış makine** | **'NıN**</br>Yerel hesap (2008) | **'NıN**</br>Yerel hesap (2008)</br>Yerel hesap</br>Etki alanı hesabı</br>sMSA, gMSA | **gMSA**</br>Etki alanı hesabı |
 | **Etki alanı denetleyicisi** | **Etki alanı hesabı** | *gMSA*</br>**Etki alanı hesabı**</br>SMSA 'yı| *gMSA*</br>**Etki alanı hesabı**|
 
 #### <a name="virtual-service-account"></a>Sanal hizmet hesabı
@@ -261,7 +260,7 @@ Azure AD Bağlayıcısı hesabının parolasını yönetme veya sıfırlama hakk
 ## <a name="related-documentation"></a>İlgili belgeler
 Şirket [içi kimliklerinizi Azure Active Directory tümleştirme](whatis-hybrid-identity.md)hakkındaki belgeleri okumadıysanız, aşağıdaki tabloda ilgili konuların bağlantıları verilmiştir.
 
-|Konu |Bağlantı|  
+|Konu başlığı |Bağlantı|  
 | --- | --- |
 |Azure AD Connect'i indirme | [Azure AD Connect’i indirme](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Hızlı ayarları kullanarak yükleme | [Azure AD Connect’i hızlı yükleme](how-to-connect-install-express.md)|

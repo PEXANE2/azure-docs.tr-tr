@@ -3,12 +3,12 @@ title: Azure Application Insights veri saklama ve depolama | Microsoft Docs
 description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669667"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254867"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -171,6 +171,12 @@ Varsayılan olarak `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` kalıcı veril
 
 `appInsights-node` klasörü ön eki, [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)içinde bulunan `Sender.TEMPDIR_PREFIX` statik değişkenin çalışma zamanı değeri değiştirilerek geçersiz kılınabilir.
 
+### <a name="javascript-browser"></a>JavaScript (tarayıcı)
+
+[HTML5 oturum depolaması](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) , verileri kalıcı hale getirmek için kullanılır. İki ayrı arabellek kullanılır: `AI_buffer` ve `AI_sent_buffer`. Toplu ve gönderilmek üzere bekleyen telemetri `AI_buffer`depolanır. Yeni gönderilen telemetri, alma sunucusu başarılı bir şekilde alındığından yanıt verinceye kadar `AI_sent_buffer` yerleştirilir. Telemetri başarıyla alındığında, tüm arabelleklerden kaldırılır. Geçici hatalarda (örneğin, bir Kullanıcı ağ bağlantısını kaybeder), telemetri başarılı bir şekilde alınana veya alma sunucusu Telemetriyi geçersiz hale gelinceye kadar (örneğin, hatalı şema veya çok eski) yanıt verdiğinde, telemetri `AI_buffer` kalır.
+
+Telemetri arabellekleri, [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) `false`ayarlanarak devre dışı bırakılabilir. Oturum depolama kapalı olduğunda, yerel bir dizi kalıcı depolama alanı olarak kullanılır. JavaScript SDK 'Sı bir istemci cihazda çalıştığı için, kullanıcının, tarayıcısının geliştirici araçları aracılığıyla bu depolama konumuna erişimi vardır.
+
 ### <a name="opencensus-python"></a>OpenCensus Python
 
 Varsayılan olarak, OpenCensus Python SDK `%username%/.opencensus/.azure/`geçerli kullanıcı klasörünü kullanır. Bu klasöre erişim izinleri geçerli kullanıcı ve yöneticilerle kısıtlıdır. (Bkz. [uygulama](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) burada.) Kalıcı verilerinizin bulunduğu klasör, Telemetriyi oluşturan Python dosyasından sonra adlandıralınacaktır.
@@ -241,14 +247,14 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel Durumlar**<br/>Oturum<br/>kullanıcılar |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcılar |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıklar<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
 | [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcılar |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfasında<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özelliklerinin** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özelliklerinin** |
-| [TrackException çağrısı][api] |**Özel Durumlar**<br/>Yığın dökümü<br/>**Özelliklerinin** |
+| [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özelliklerinin** |
 | SDK veri toplayamıyor. Örnek: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
@@ -270,7 +276,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel Durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
+| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
 | Çökme |`Process id`, `parent process id`, `crash thread id`; Uygulama Düzeltme Eki, `id`, derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |

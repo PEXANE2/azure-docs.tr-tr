@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196561"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252371"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -39,7 +39,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Container Registry oluşturma (ACR):
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ Sonraki bir adımda kullanıldığından JSON çıkışını kaydedin.
 
 AKS kümenizin *kimliğini* görüntülemek için [az aks Show][az-aks-show] kullanın:
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 ACR 'nin *kimliğini* görüntülemek için [az ACR Show][az-acr-show] kullanın:
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 AKS kümenize *katkıda bulunan* erişim sağlamak ve ACR 'Nize *acrpush* erişimi sağlamak için [az role atama oluştur][az-role-assignment-create] kullanın.
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ Değişikliklerinizi çatalınızdaki *ana* dalda birleştirirseniz, uygulamanı
 
 ## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

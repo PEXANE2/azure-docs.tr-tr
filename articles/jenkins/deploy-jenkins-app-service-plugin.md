@@ -4,12 +4,12 @@ description: Jenkins'de Azure'a bir Java web uygulaması dağıtmak için Azure 
 keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158523"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251451"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins eklentisini kullanarak Azure App Service'e dağıtım yapma 
 
@@ -17,7 +17,7 @@ Bir Java web uygulamasını Azure'a dağıtmak için [Jenkins İşlem Hattı](/a
 * Dosya yükleme.
 * Linux üzerinde Web App için Docker.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Dosya yükleme yoluyla Web Apps dağıtımı için Jenkins'i yapılandırma.
 > * Kapsayıcılar için Web App dağıtmak üzere Jenkins'i yapılandırma.
@@ -67,7 +67,7 @@ Projenizi Web Apps’e dağıtmak için, derleme yapıtlarınızı dosya yüklem
 İşi Jenkins'de ayarlayabilmek için bir Azure App Service planına ve Java uygulamasını çalıştıracak bir web uygulamasına ihtiyacınız vardır.
 
 
-1. Azure CLI komutunu`az appservice plan create` kullanarak [ÜCRETSİZ](/cli/azure/appservice/plan#az-appservice-plan-create) fiyatlandırma katmanıyla bir Azure App Service planı oluşturun. App Service planı, uygulamalarınızı barındırmak için kullanılan fiziksel kaynakları tanımlar. Bir App Service planına atanan tüm uygulamalar bu kaynakları paylaşır. Paylaşılan kaynaklar, birden fazla uygulamayı barındırdığınız durumlarda maliyetten tasarruf etmenize yardımcı olur.
+1. `az appservice plan create` [Azure CLI komutunu](/cli/azure/appservice/plan#az-appservice-plan-create)kullanarak **ücretsiz** fiyatlandırma katmanıyla bir Azure App Service planı oluşturun. App Service planı, uygulamalarınızı barındırmak için kullanılan fiziksel kaynakları tanımlar. Bir App Service planına atanan tüm uygulamalar bu kaynakları paylaşır. Paylaşılan kaynaklar, birden fazla uygulamayı barındırdığınız durumlarda maliyetten tasarruf etmenize yardımcı olur.
 2. Bir web uygulaması oluşturun. [Azure portal](/azure/app-service/configure-common)'ı veya aşağıdaki `az` Azure CLI komutunu kullanabilirsiniz:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -207,10 +207,13 @@ Azure Container Registry'yi kullanıyorsanız **Docker registry URL** (Docker ka
 ### <a name="for-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service için
 
 1. Web uygulamanızı doğrulamak için Azure CLI'da aşağıdaki komutu çalıştırın:
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     Aşağıdaki ileti görüntülenir:
+    
     ```CLI
     ["calculator"]
     ```
@@ -223,7 +226,7 @@ Azure Container Registry'yi kullanıyorsanız **Docker registry URL** (Docker ka
 
 3. http://&lt;uygulamanızın_adı>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> sayfasına gidin. &lt;x> ve &lt;y> değerlerini, x + y toplamını elde etmek istediğiniz sayılarla değiştirin.
     
-## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunlarını giderme
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunları giderme
 
 Jenkins eklentileriyle ilgili hatalarla karşılaşırsanız [Jenkins JIRA](https://issues.jenkins-ci.org/) sayfasında söz konusu bileşenle ilgili sorun bildirebilirsiniz.
 

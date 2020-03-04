@@ -3,14 +3,14 @@ title: Azure Otomasyonu Linux Karma Runbook Çalışanı
 description: Bu makalede, Azure Otomasyonu karma Runbook Worker yükleme hakkında bilgi sağlanır. böylece, runbook 'ları yerel veri merkezinizdeki veya bulut ortamınızda Linux tabanlı bilgisayarlarda çalıştırabilirsiniz.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/28/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421930"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246284"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -27,7 +27,7 @@ Karma Runbook Worker özelliği aşağıdaki dağıtımları destekler:
 * Oracle Linux 5, 6 ve 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5, 6 ve 7 (x86/x64)
 * De, GNU/Linux 6, 7 ve 8 (x86/x64)
-* Ubuntu 12,04 LTS, 14,04 LTS ve 16,04 LTS (x86/x64)
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)
 * SUSE Linux Enterprise Server 11 ve 12 (x86/x64)
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>Linux karma Runbook Worker yükleme
@@ -46,9 +46,9 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 |--------------------- | --------------------- | -------------------|
 |GLIBC |GNU C Kitaplığı| 2.5-12 |
 |Openssl| OpenSSL kitaplıkları | 1,0 (TLS 1,1 ve TLS 1,2 desteklenir|
-|Curl | Web istemcisini kıvır | 7.15.5|
+|Kıvr | Web istemcisini kıvır | 7.15.5|
 |Python-ctypes | Python 2. x gereklidir |
-|PAM | Eklenebilir Kimlik Doğrulaması Modülleri|
+|KULLANıCıSı | Takılabilir kimlik doğrulama modülleri|
 | **İsteğe bağlı paket** | **Açıklama** | **En düşük sürüm**|
 | PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell 'in yüklenmesi gerekir, bkz. yükleme hakkında bilgi edinmek için [Linux 'Ta PowerShell Core 'U yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .  | 6.0.0 |
 

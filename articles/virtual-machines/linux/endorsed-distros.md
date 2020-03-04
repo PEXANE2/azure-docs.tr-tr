@@ -1,9 +1,9 @@
 ---
-title: Azure’da desteklenen Linux dağıtımları
+title: Azure 'da desteklenen Linux dağıtımları
 description: Ubuntu, CentOS, Oracle ve SUSE için yönergeler de dahil olmak üzere, Azure tarafından onaylanan dağıtımlara yönelik Linux hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: mimckitt
-ms.openlocfilehash: 8f12224f6ea2b9b4cecce79809389419e0159217
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7318095dce77856087ad7dd949e91e0eb7936294
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748049"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251653"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 İş ortakları, Azure Marketi 'nde Linux görüntüleri sağlar. Çeşitli Linux topluluklarıyla birlikte çalışarak, onaylı dağıtım listesine daha da fazla bilgi ekleyebilirsiniz. Bu sırada, Market 'ten kullanılamayan dağıtımlar için, [Linux işletim sistemini içeren bir sanal sabit disk oluşturma ve karşıya yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)konusundaki yönergeleri Izleyerek kendi Linux 'u her zaman getirebilirsiniz.
@@ -64,7 +64,7 @@ Azure, Azure Market 'Te yayımladıkları görüntüleri iyileştirmek için, ç
  - Ubuntu Azure-ayarlanmış çekirdek- [daha fazla bilgi](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
-## <a name="partners"></a>İş ortakları
+## <a name="partners"></a>İş Ortakları
 
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
@@ -81,7 +81,7 @@ Credadtiv, ücretsiz yazılım kullanarak profesyonel çözümlerin geliştirilm
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle stratejisi, genel ve özel bulutlara yönelik kapsamlı bir çözüm portföyü sunmamaktadır. Strateji, müşterilere Oracle bulutlarında ve diğer bulutlarda Oracle yazılımı dağıtma konusunda seçim ve esneklik sağlar. Oracle ile Microsoft arasındaki iş ortaklığı sayesinde müşteriler, Oracle tarafından sağlanan sertifika ve desteğin verdiği güvenle Microsoft’un genel ve özel bulutlarında Oracle yazılımlarını dağıtabilir.  Oracle 'ın, Oracle ortak ve özel bulut çözümlerinde taahhüt ve yatırımı değiştirilmez.
+Oracle stratejisi, genel ve özel bulutlara yönelik kapsamlı bir çözüm portföyü sunmamaktadır. Strateji, müşterilere Oracle bulutlarında ve diğer bulutlarda Oracle yazılımı dağıtma konusunda seçim ve esneklik sağlar. Oracle 'ın Microsoft 'un iş ortaklığı, müşterilerin Microsoft ortak ve özel bulutlarda Oracle yazılımlarını, Oracle 'dan sertifika ve destek sağlamak için dağıtmalarını sağlar.  Oracle 'ın, Oracle ortak ve özel bulut çözümlerinde taahhüt ve yatırımı değiştirilmez.
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)

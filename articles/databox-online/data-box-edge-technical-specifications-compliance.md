@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863606"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252045"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge teknik belirtimleri
 
@@ -23,17 +23,17 @@ Microsoft Azure Data Box Edge cihazınızın donanım bileşenleri, bu makalede 
 
 Data Box Edge cihaz, işlem ve bellek için aşağıdaki belirtimlere sahiptir:
 
-| Belirtim           | Değer                  |
+| Min           | Değer                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 çekirdek CPU                     |
-| Hafıza              | 128 GB RAM                  |
+| Bellek              | 128 GB RAM                  |
 
 
 ## <a name="fpga-specifications"></a>FPGA belirtimleri
 
 Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolarına izin veren her Data Box Edge cihazına dahildir. 
 
-| Belirtim           | Değer                  |
+| Min           | Değer                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel vara 10 <br> Kullanılabilir derin sinir ağı (DNN) modelleri, [bulut FPGA örnekleri tarafından desteklenenlerle](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)aynıdır.| 
 
@@ -42,22 +42,30 @@ Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolar�
 
 Data Box Edge cihazda yüksek performanslı fanlarla iki 100-240 V güç kaynağı birimi (PSUs) vardır. İki PSUs, yedekli bir güç yapılandırması sağlar. Bir PSU başarısız olursa, başarısız modül değiştirilinceye kadar cihaz normal olarak diğer PSU üzerinde çalışmaya devam eder. Aşağıdaki tabloda, PSUs teknik özellikleri listelenmektedir.
 
-| Belirtim           | 750 W PSU                  |
+| Min           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksimum çıkış gücü    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Evet                        |
+| Etkin takılabilir           | Yes                        |
 
 <!--## Power consumption statistics
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>Ağ arabirimi belirtimleri
+
+Data Box Edge cihaz 6 ağ arabirimine sahiptir, PORT1-PORT6.
+
+| Min           | Açıklama                 |
+|-------------------------|----------------------------|
+|  Ağ arabirimleri    | 2 X 1 GbE arabirimleri – 1 yönetim için, kullanıcı tarafından yapılandırılamaz, ilk kurulumda kullanılır. Diğer arabirim Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir. <br>2 X 25 GbE arabirimleri – Bunlar 10 GbE arabirimleri olarak da çalıştırılabilir. Bu veri arabirimleri kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir. <br> 2 X 25 GbE arabirimleri - Bu veri arabirimleri kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir.                  |
+
 ## <a name="storage-specifications"></a>Depolama belirtimleri
 
 Data Box Edge cihazlarda 9 X 2,5 "NVMe SSDs, her biri 1,6 TB kapasiteye sahiptir. Bu SSD 'Ler, 1 bir işletim sistemi diski ve diğer 8 ise veri disklerdir. Cihaz için kullanılabilen toplam kapasite kabaca 12,5 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesinin ayrıntıları verilmiştir.
 
-|     Belirtim                          |     Değer             |
+|     Min                          |     Değer             |
 |--------------------------------------------|-----------------------|
 |    Katı hal sürücüleri (SSD 'Ler) sayısı     |    8                  |
 |    Tek SSD kapasitesi                     |    1,6 TB             |
@@ -74,7 +82,7 @@ Aşağıdaki tablolarda, Boyutlar ve ağırlığa yönelik çeşitli muhafaza be
 
 Aşağıdaki tabloda, milimetre ve inç 'teki kutunun boyutları listelenmiştir.
 
-|     Kutu     |     Milimetre     |     Cm     |
+|     Kutu     |     Milimetre     |     cm     |
 |-------------------|---------------------|----------------|
 |    Yükseklik         |    44,45            |    1,75 "          |
 |    Genişlik          |    434,1           |    17,09 "          |
@@ -82,7 +90,7 @@ Aşağıdaki tabloda, milimetre ve inç 'teki kutunun boyutları listelenmiştir
 
 Aşağıdaki tabloda, nakliye paketinin boyutları milimetre ve inç olarak listelenmektedir.
 
-|     Paket     |     Milimetre     |     Cm     |
+|     Paket     |     Milimetre     |     cm     |
 |-------------------|---------------------|----------------|
 |    Yükseklik         |    311,2            |    12,25 "          |
 |    Genişlik          |    642,8          |    25,31 "          |

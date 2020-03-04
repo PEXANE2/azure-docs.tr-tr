@@ -1,27 +1,29 @@
 ---
-title: Tümleştirme hizmeti ortamlarına yapıtlar ekleme
+title: Tümleştirme hizmeti ortamlarına kaynak ekleme
 description: Tümleştirme hizmeti ortamınıza (ıSE) Logic Apps, tümleştirme hesapları, özel bağlayıcılar ve yönetilen bağlayıcılar ekleme
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191766"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250935"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) yapıt ekleme
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) kaynak ekleme
 
-Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi yapıtları ekleyin. Örneğin, ıSE 'nizi oluşturduktan sonra kullanılabilir hale gelen yönetilen ıSE bağlayıcıları mantıksal uygulama tasarımcısında otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda gözükmeleri için [Bu bağlayıcıları el ile ekleyip dağıtmanız](#add-ise-connectors-environment) gerekir.
+Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi kaynakları ekleyin. Örneğin, ıSE 'nizi oluşturduktan sonra kullanılabilir hale gelen yönetilen ıSE bağlayıcıları mantıksal uygulama tasarımcısında otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda gözükmeleri için [Bu bağlayıcıları el ile ekleyip dağıtmanız](#add-ise-connectors-environment) gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * Mantıksal uygulamalarınızı çalıştırmak için oluşturduğunuz ıSE. Bir ıSE yoksa, [önce BIR Ise oluşturun](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+* Bir ıSE 'ye dağıtılan kaynakları oluşturmak, eklemek veya güncelleştirmek için, bu ıSE 'ye sahip veya katkıda bulunan rolü atanması veya Azure aboneliği veya ıSE ile ilişkili Azure Kaynak grubu aracılığıyla devralınan izinleriniz olması gerekir. Sahibi, katkıda bulunan veya devralınan izinleri olmayan kişiler için, Tümleştirme Hizmeti Ortamı katkıda bulunan rolü veya Tümleştirme Hizmeti Ortamı geliştirici rolü atanabilir. Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure kaynakları için rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md)nedir?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -39,10 +41,10 @@ Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak iç
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Evet | Oluşturulacak mantıksal uygulamanın adı |
-   | **Abonelik** | Evet | Kullanılacak Azure aboneliğinin adı |
-   | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Ad** | Yes | Oluşturulacak mantıksal uygulamanın adı |
+   | **Abonelik** | Yes | Kullanılacak Azure aboneliğinin adı |
+   | **Kaynak grubu** | Yes | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
+   | **Konum** | Yes | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.
@@ -71,18 +73,18 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Evet | Oluşturmak istediğiniz tümleştirme hesabının adı |
-   | **Abonelik** | Evet | Kullanmak istediğiniz Azure aboneliğinin adı |
-   | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Fiyatlandırma katmanı** | Evet | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
-   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Ad** | Yes | Oluşturmak istediğiniz tümleştirme hesabının adı |
+   | **Abonelik** | Yes | Kullanmak istediğiniz Azure aboneliğinin adı |
+   | **Kaynak grubu** | Yes | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
+   | **Fiyatlandırma katmanı** | Yes | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
+   | **Konum** | Yes | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.
 
 1. [Mantıksal uygulamanızı, her zamanki şekilde tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-1. Tümleştirme hesabınıza, [ticari iş ortakları](../logic-apps/logic-apps-enterprise-integration-partners.md) ve [anlaşmalar](../logic-apps/logic-apps-enterprise-integration-agreements.md)gibi yapıtlar ekleyerek devam edin.
+1. Tümleştirme hesabınıza, [ticari iş ortakları](../logic-apps/logic-apps-enterprise-integration-partners.md) ve [anlaşmalar](../logic-apps/logic-apps-enterprise-integration-agreements.md)gibi kaynaklar ekleyerek devam edin.
 
 1. Şirket içindeki tümleştirme hesaplarını yönetmek için bkz. [tümleştirme hizmeti ortamınızı yönetme](../logic-apps/ise-manage-integration-service-environment.md).
 
@@ -96,7 +98,7 @@ ISE 'nizi oluşturduktan sonra sunulan Microsoft tarafından yönetilen bağlay�
 
    ![Yönetilen bağlayıcıları görüntüleme](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. Kullanmak istediğiniz, ancak henüz ıSE dağıtımı yapılmamış olan ıSE bağlayıcısını seçin. **Oluştur**'u seçin.
+1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. Kullanmak istediğiniz, ancak henüz ıSE dağıtımı yapılmamış olan ıSE bağlayıcısını seçin. **Oluştur**’u seçin.
 
    ![ISE 'de dağıtmak istediğiniz ıSE bağlayıcısını seçin](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

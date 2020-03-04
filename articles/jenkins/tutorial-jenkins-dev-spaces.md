@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisini k
 description: Azure Dev Spaces eklentisinin sürekli tümleştirme ardışık düzeninde nasıl kullanılacağını öğrenin.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619990"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250898"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisi kullanma 
 
@@ -53,26 +53,26 @@ Bu bölümde Azure kaynakları oluşturursunuz:
 
 1. Bir kaynak grubu oluşturun.
 
-    ```bash
+    ```azurecli
     az group create --name MyResourceGroup --location westus2
     ```
 
 2. AKS kümesi oluşturma. AKS kümesini [geliştirme alanlarını destekleyen bir bölgede](../dev-spaces/about.md#supported-regions-and-configurations)oluşturun.
 
-    ```bash
+    ```azurecli
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
 3. AKS 'leri geliştirme alanlarını kullanacak şekilde yapılandırın.
 
-    ```bash
+    ```azurecli
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
     Bu adım `azds` CLı uzantısını yüklüyor.
 
 4. Bir kapsayıcı kayıt defteri oluşturun.
 
-    ```bash
+    ```azurecli
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
@@ -225,7 +225,7 @@ Bu bölümde, Jenkins sunucusunu örnek CI işlem hattını çalıştıracak şe
 
 3. ACR kimlik bilgilerinizi görüntülemek için şu komutu çalıştırın:
 
-    ```bash
+    ```azurecli
     az acr credential show -n <yourRegistryName>
     ```
 
@@ -251,7 +251,7 @@ Bu bölümde, Jenkins sunucusunu örnek CI işlem hattını çalıştıracak şe
 
 5. AKS kimlik bilgilerini ayarlayın. Jenkins 'te bir *Kubernetes yapılandırma (kubeconfig)* kimlik bilgisi türü ekleyin ("doğrudan gir" seçeneğini kullanın). AKS kümenizin erişim kimlik bilgilerini almak için aşağıdaki komutu çalıştırın:
 
-    ```cmd
+    ```azurecli
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
@@ -403,7 +403,7 @@ stage('smoketest') {
 
 Örnek uygulamayı kullanarak işiniz bittiğinde, kaynak grubunu silerek Azure kaynaklarını temizleyin:
 
-```bash
+```azurecli
 az group delete -y --no-wait -n MyResourceGroup
 ```
 

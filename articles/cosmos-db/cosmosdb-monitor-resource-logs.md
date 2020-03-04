@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 670797eb833b0a145a18e20c6bba711ca11609bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483290"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252046"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure 'da tanılama ayarlarını kullanarak Azure Cosmos DB verilerini izleme
 
@@ -20,13 +20,13 @@ Azure 'daki Tanılama ayarları, kaynak günlüklerini toplamak için kullanıl�
 
 Platform ölçümleri ve etkinlik günlükleri otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Aşağıdaki adımları kullanarak Azure Cosmos hesapları için tanılama ayarını açabilirsiniz:
 
-1. [Azure portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure Cosmos hesabınıza gidin. **Tanılama ayarları** bölmesini açın ve ardından **Tanılama ayarı Ekle** seçeneğini belirleyin.
 
 1. **Tanılama ayarları** bölmesinde, formu aşağıdaki ayrıntılarla doldurabilirsiniz: 
 
-    * **Ad**: oluşturmak için günlüklerin için bir ad girin.
+    * **Ad**: oluşturulacak Günlükler için bir ad girin.
 
     * **Bir depolama hesabına arşivlemek**, **bir olay hub 'ına akış** yapmak veya **Log Analytics göndermek** için günlükleri kaydedebilirsiniz
 
@@ -99,7 +99,7 @@ Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma ha
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Bir bölümün sağladığı maksimum üretilen iş miktarı nedir?
+1. Bir bölümün tükettiği en fazla üretilen iş miktarı nedir?
 
    ```Kusto
    AzureDiagnostics

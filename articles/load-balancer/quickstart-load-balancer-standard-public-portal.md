@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470199"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251875"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için Load Balancer oluşturma
 
@@ -83,7 +83,7 @@ Load Balancer uygulamanızın durumunu izlemesine izin vermek için, bir sistem 
     | Adı | *Myhealtharaştırması*girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | *80*girin.|
-    | Aralık | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için *15* girin. |
+    | Interval | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için *15* girin. |
     | Sağlıksız eşik | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
     | | |
 4. **Tamam**’ı seçin.
@@ -110,23 +110,22 @@ Trafiğin sanal makinelere dağıtımını tanımlamak için bir Yük Dengeleyic
 
 Bu bölümde, bir sanal ağ oluşturur, Load Balancer arka uç havuzu için üç sanal makine oluşturur ve sonra Load Balancer test etmenize yardımcı olması için sanal makinelere IIS yüklersiniz.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluştur
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
-1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Adı | *myVNet* yazın. |
-    | Adres alanı | *10.1.0.0/16*girin. |
-    | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | Mevcut kaynak- *Myresourcegroupslb*öğesini seçin. |
-    | Konum | **Batı Avrupa**'yı seçin.|
-    | Alt ağ adı | *myBackendSubnet* yazın. |
-    | Alt Ağ - Adres aralığı | *10.1.0.0/24*girin. |
-1. Varsayılan değerleri bırakın ve **Oluştur**' u seçin.
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroupSLB |
+| **\<sanal ağ-adı >** | myVNet          |
+| **\<bölge adı >**          | Batı Avrupa      |
+| **\<IPv4-adres-alanı >**   | 10.1.0.0 \ 16          |
+| **\<alt ağ-adı >**          | myBackendSubnet        |
+| **\<alt ağ-adres aralığı >** | 10.1.0.0 \ 24          |
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturun
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+
+### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 Genel IP SKU 'Ları ve Load Balancer SKU 'Ları eşleşmelidir. Standart Load Balancer için, arka uç havuzundaki standart IP adresleriyle VM 'Leri kullanın. Bu bölümde, daha sonra daha önce oluşturulmuş Load Balancer arka uç havuzuna eklenen üç farklı bölgede (*bölge 1*, *bölge 2*ve *Bölge 3*) standart bir genel IP adresi ile üç VM (*myVM1*, *myVM2* ve *myVM3*) oluşturacaksınız. Temel ' yı seçtiyseniz, temel IP adresleriyle VM 'Leri kullanın.
 
 1. Portalın sol üst kısmında **Windows Server 2019 Datacenter** > **Işlem** > **kaynak oluştur** ' u seçin. 

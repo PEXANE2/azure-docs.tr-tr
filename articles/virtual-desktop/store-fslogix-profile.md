@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 165e87b47deca2b7f175ec07b5c615ac25db0dd2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367194"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251742"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri
 
@@ -26,10 +26,11 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 
 |Özellikler|Azure Dosyaları|Azure NetApp Files|Depolama Alanları Doğrudan|
 |--------|-----------|------------------|---------------------|
+|Kullanım durumu|Genel amaçlı|Şirket içi NetApp 'ten ultra performans veya geçiş|Platformlar arası|
 |Platform hizmeti|Evet, Azure-Native çözümü|Evet, Azure-Native çözümü|Hayır, otomatik olarak yönetilen|
 |Bölgesel kullanılabilirlik|Tüm bölgeler|[Bölge seçin](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Tüm bölgeler|
 |Yedeklilik|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|Yerel olarak yedekli|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|
-|Katmanlar ve performans|Standard<br>Premium<br>Paylaşma başına 5 Gbps ile, paylaşma başına en fazla 100.000 IOPS, yaklaşık 3 ms gecikme|Standard<br>Premium<br>Çok<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
+|Katmanlar ve performans|Standart<br>Premium<br>Paylaşma başına 5 Gbps ile, paylaşma başına en fazla 100.000 IOPS, yaklaşık 3 ms gecikme|Standart<br>Premium<br>Çok<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
 |Kapasite|paylaşma başına 100 TiB|Her birim için 100 TiB, abonelik başına en fazla 12,5 PiB|Disk başına en fazla 32 TiB|
 |Gerekli altyapı|En az paylaşma boyutu 1 GiB|Minimum kapasite havuzu 4 TiB, minimum birim boyutu 100 GiB|Azure IaaS (+ Cloud tanık) üzerinde iki VM veya disk 'siz ve maliyeti olan en az üç VM|
 |Protokoller|SMB 2.1/3. ve REST|NFSv3, NFSv 4.1 (Önizleme), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -38,10 +39,10 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 
 |Özellikler|Azure Dosyaları|Azure NetApp Files|Depolama Alanları Doğrudan|
 |--------|-----------|------------------|---------------------|
-|Erişim|Bulut, şirket içi ve karma (Azure dosya eşitleme)|Bulut, şirket içi (ExpressRoute aracılığıyla)|Bulut, şirket içi|
+|Access|Bulut, şirket içi ve karma (Azure dosya eşitleme)|Bulut, şirket içi (ExpressRoute aracılığıyla)|Bulut, şirket içi|
 |Backup|Azure Backup anlık görüntü tümleştirmesi|Azure NetApp Files anlık görüntüler|Azure Backup anlık görüntü tümleştirmesi|
 |Güvenlik ve uyumluluk|[Tüm Azure desteklenen sertifikaları](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO tamamlandı|[Tüm Azure desteklenen sertifikaları](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory tümleştirmesi|Azure Active Directory ve Azure Active Directory Domain Services|[Azure Active Directory Domain Services ve yerel Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Yalnızca yerel Active Directory veya Azure Active Directory Domain Services desteği|
+|Azure Active Directory tümleştirmesi|[Yerel Active Directory ve Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services ve yerel Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Yalnızca yerel Active Directory veya Azure Active Directory Domain Services desteği|
 
 Depolama yönteminizi seçtikten sonra, fiyatlandırma planlarımız hakkında bilgi edinmek için [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/) ' na göz atın.
 

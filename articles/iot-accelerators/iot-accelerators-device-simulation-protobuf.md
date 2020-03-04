@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982137"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250219"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
 
@@ -32,7 +32,7 @@ Bu nasıl yapılır kılavuzundaki adımlarda şu adımları nasıl kullanabilec
 1. Prototip sınıfları oluşturma
 1. Yerel olarak test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları izlemek için şunlar gerekir:
 
@@ -174,7 +174,7 @@ bir **proto** dosyanız olduğunda, sonraki adım iletileri okumak ve yazmak iç
 
 1. [GitHub 'dan Protoarabellek derleyicisini indirin](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Kaynak dizinini, hedef dizini ve **proto** dosyanızın adını belirterek derleyiciyi çalıştırın. Örneğin:
+1. Kaynak dizinini, hedef dizini ve **proto** dosyanızın adını belirterek derleyiciyi çalıştırın. Örnek:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Bu bölümde, önceki bölümlerde oluşturduğunuz varlık izleyici cihazını 
 
 Varsayılan olarak, yeni cihaz modeliniz JSON ve JS dosyalarınız, yerleşik çözüme kopyalanmaz. Bunları açıkça dahil etmeniz gerekir.
 
-Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına bir giriş ekleyin. Örneğin:
+Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına bir giriş ekleyin. Örnek:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -231,7 +231,7 @@ Aşağıdaki betik, IoT Hub 'ınızın adının **cihaz benzetimi-test**olduğun
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test

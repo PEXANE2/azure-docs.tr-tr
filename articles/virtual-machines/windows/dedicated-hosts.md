@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833885"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251563"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
 
@@ -29,3 +29,5 @@ Azure adanmış ana bilgisayar, bir veya daha fazla sanal makineyi bir Azure abo
 - [Azure PowerShell](dedicated-hosts-powershell.md), [Portal](dedicated-hosts-portal.md)ve [Azure CLI](../linux/dedicated-hosts-cli.md)kullanarak adanmış bir konak dağıtabilirsiniz.
 
 - [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.
+
+- Ayrıca, [ayrılmış bir Azure ayrılmış ana bilgisayar örneğiyle](../prepay-dedicated-hosts-reserved-instances.md)maliyetlerle tasarruf edebilirsiniz.

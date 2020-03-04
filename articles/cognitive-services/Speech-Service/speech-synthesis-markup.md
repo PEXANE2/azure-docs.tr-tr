@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228064"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254784"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -195,6 +195,7 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 
 Şu anda, bu sinir sesleri için konuşma stil ayarlamaları desteklenir:
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 Değişiklikler tümce düzeyinde uygulanır ve stil sese göre farklılık gösterir. Bir stil desteklenmiyorsa, hizmet konuşmayı varsayılan nötr konuşma stilinde döndürür.
@@ -220,6 +221,7 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 | | `type="chat"` | Rastgele, gevşek bir tonda konuşabilirsiniz |
 | | `type="newscast"` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
 | | `type="customerservice"` | Müşteri Hizmetleri olarak kolay ve hasta bir şekilde konuşun |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | Olumlu ve mutlu bir ehareketini ifade eder |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
 | | `type="sentiment"` | Dokunmadan bir ileti veya hikaye ileten |
 

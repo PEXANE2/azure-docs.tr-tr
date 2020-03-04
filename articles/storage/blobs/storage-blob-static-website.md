@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906600"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252677"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure depolama 'da statik Web sitesi barındırma
 
@@ -50,9 +50,9 @@ Adım adım yönergeler için bkz. [Azure depolama 'da statik bir Web sitesi bar
 
 Kullanıcılar Web sitesinin genel URL 'sini kullanarak bir tarayıcıdan site içeriğini görüntüleyebilir. Azure portal, Azure CLı veya PowerShell kullanarak URL 'YI bulabilirsiniz. Bu tabloyu kılavuz olarak kullanın.
 
-|Araç| Kılavuz |
+|Araç| Rehber |
 |----|----|
-|**Azure Portal** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure portalında** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [Azure CLı kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Azure PowerShell modülü** | [PowerShell kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#powershell-find-url) |
 
@@ -92,6 +92,12 @@ Depolama hesabı HTTPS üzerinden [Güvenli aktarım gerektirecek](../common/sto
 > [!TIP]
 > Etki alanınızı Azure 'da barındırmayı düşünün. Daha fazla bilgi için bkz. [Azure DNS etki alanınızı barındırma](../../dns/dns-delegate-domain-azure-dns.md).
 
+## <a name="adding-http-headers"></a>HTTP üstbilgileri ekleme
+
+Üstbilgileri statik Web sitesi özelliğinin bir parçası olarak yapılandırmanın bir yolu yoktur. Ancak üst bilgileri eklemek ve başlık değerlerini eklemek (veya üzerine yazmak) için Azure CDN kullanabilirsiniz. [Azure CDN Için standart kurallar altyapısı başvurusuna](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)bakın.
+
+Önbelleğe almayı denetlemek için üst bilgileri kullanmak istiyorsanız, bkz. önbelleğe alma [kurallarıyla denetim Azure CDN önbelleğe alma davranışı](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
+
 ## <a name="pricing"></a>Fiyatlandırma
 
 Statik Web sitesi barındırmayı ücretsiz olarak etkinleştirebilirsiniz. Yalnızca sitenizin kullandığı BLOB depolama alanı ve operasyon maliyetlerine göre faturalandırılırsınız. Azure Blob depolama fiyatları hakkında daha fazla bilgi için [Azure Blob depolama fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/blobs/)göz atın.
@@ -107,6 +113,6 @@ Statik Web sitesi sayfalarınızda ölçümleri etkinleştirmek için bkz. [stat
 * [Azure depolama 'da statik bir Web sitesi barındırma](storage-blob-static-website-how-to.md)
 * [Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)
 * [Azure İşlevleri](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
+* [Azure Uygulama Hizmeti](/azure/app-service/overview)
 * [İlk sunucusuz Web uygulamanızı oluşturma](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Öğretici: etki alanınızı Azure DNS barındırın](../../dns/dns-delegate-domain-azure-dns.md)

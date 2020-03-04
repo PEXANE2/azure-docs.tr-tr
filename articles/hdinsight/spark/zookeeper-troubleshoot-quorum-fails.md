@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
-ms.openlocfilehash: a0874826529b5c9ca5d6d4107fe820cd522d81d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894041"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250231"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper sunucusu Azure HDInsight 'ta çekirdek oluşturmuyor
 
@@ -20,24 +20,31 @@ Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adı
 
 ## <a name="issue"></a>Sorun
 
-Apache ZooKeeper sunucusu sağlıksız, belirtiler şunları içerebilir: hem kaynak yöneticileri/ad düğümleri bekleme modunda, basit Ise işlemleri çalışmaz, `zkFailoverController` durdurulur ve başlatılamaz, Yarn/Spark/Livy işleri Zookeeper hataları nedeniyle başarısız olur. Şuna benzer bir hata iletisi görebilirsiniz:
+Apache ZooKeeper sunucusu sağlıksız, belirtiler şunları içerebilir: hem kaynak yöneticileri/ad düğümleri bekleme modunda, basit Ise işlemleri çalışmaz, `zkFailoverController` durdurulur ve başlatılamaz, Yarn/Spark/Livy işleri Zookeeper hataları nedeniyle başarısız olur. LLAP Daemon 'ları, güvenli Spark veya etkileşimli Hive kümelerinde da başlayamaz. Şuna benzer bir hata iletisi görebilirsiniz:
 
 ```
 19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
 19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
 ```
 
+/Var/log/Zookeeper/Zookeeper-Zookeeper-Server-\*. out konumundaki herhangi bir Zookeeper konağında bulunan Zookeeper Server günlüklerinde aşağıdaki hatayı da görebilirsiniz:
+
+```
+2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
+java.nio.channels.CancelledKeyException
+```
+
 ## <a name="cause"></a>Nedeni
 
 Anlık görüntü dosyaları hacmi büyük veya anlık görüntü dosyaları bozuksa, ZooKeeper sunucusu bir çekirdek oluşturmayacak ve bu da ZooKeeper ilgili hizmetlerin sağlıksız olmasına neden olur. ZooKeeper sunucusu eski anlık görüntü dosyalarını veri dizininden kaldırmayacak, bunun yerine, ZooKeeper 'in sistem durumunu korumak için Kullanıcı tarafından gerçekleştirilecek düzenli bir görevdir. Daha fazla bilgi için bkz. [ZooKeeper güçleri ve sınırlamaları](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations).
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
-Anlık görüntü dosyasının boyutunun büyük olup olmadığını öğrenmek için ZooKeeper veri dizinini `/hadoop/zookeeper/version-2` ve `/hadoop/hdinsight-zookeepe/version-2` denetleyin. Büyük anlık görüntüler varsa aşağıdaki adımları uygulayın:
+Anlık görüntü dosyasının boyutunun büyük olup olmadığını öğrenmek için ZooKeeper veri dizinini `/hadoop/zookeeper/version-2` ve `/hadoop/hdinsight-zookeeper/version-2` denetleyin. Büyük anlık görüntüler varsa aşağıdaki adımları uygulayın:
 
-1. `/hadoop/zookeeper/version-2` ve `/hadoop/hdinsight-zookeepe/version-2`anlık görüntülerini yedekleyin.
+1. `/hadoop/zookeeper/version-2` ve `/hadoop/hdinsight-zookeeper/version-2`anlık görüntülerini yedekleyin.
 
-1. `/hadoop/zookeeper/version-2` ve `/hadoop/hdinsight-zookeepe/version-2`anlık görüntüleri temizleyin.
+1. `/hadoop/zookeeper/version-2` ve `/hadoop/hdinsight-zookeeper/version-2`anlık görüntüleri temizleyin.
 
 1. Tüm ZooKeeper sunucularını Apache ambarı kullanıcı arabiriminden yeniden başlatın.
 

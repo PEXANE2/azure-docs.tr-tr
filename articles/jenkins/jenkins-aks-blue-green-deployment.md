@@ -4,12 +4,12 @@ description: Jenkins ve mavi/yeşil dağıtım düzenini kullanarak Azure Kubern
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, mavi yeşil dağıtım, sürekli teslim, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158545"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251471"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins ve mavi/yeşil dağıtım düzenini kullanarak Azure Kubernetes Service'e (AKS) dağıtım yapma
 
@@ -84,19 +84,19 @@ Bu bölümde, aşağıdaki adımları gerçekleştireceksiniz:
 
 1. Azure hesabınızda oturum açın. Aşağıdaki komutu girdikten sonra oturum açma işleminin nasıl tamamlanacağını açıklayan talimatları alacaksınız. 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. Önceki adımda `az login` komutunu çalıştırdığınızda tüm Azure aboneliklerinizin bir listesi (abonelik kimlikleri ile beraber) görüntülenir. Bu adımda, varsayılan Azure aboneliğini ayarlayacaksınız. &lt;kullanıcı-kimliğiniz> yer tutucusunu istediğiniz Azure abonelik kimliği ile değiştirin. 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. Bir kaynak grubu oluşturun. &lt;kaynak-grubu-adınız> yer tutucusunu yeni kaynak grubunuzun adı ile değiştirin ve &lt;konumunuz> yer tutucusunu konum ile değiştirin. `az account list-locations` komutu tüm Azure konumları görüntüler. AKS önizlemesi sırasında tüm konumlar kullanılabilir değildir. O anda geçerli olmayan bir konum girerseniz, kullanılabilir konumları listeleyen bir hata mesajı verilir.
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ Mavi/yeşil dağıtımı AKS'de el ile veya önceden kopyalanan örnekte sağlan
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>Kubernetes kümesini el ile ayarlama 
 1. Kubernetes yapılandırmasını profil klasörünüze indirin.
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ Mavi/yeşil dağıtımı AKS'de el ile veya önceden kopyalanan örnekte sağlan
     
     Karşılık gelen IP adresinin DNS adını aşağıdaki komut ile güncelleştirin:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     Çağrıyı `todoapp-test-blue` ve `todoapp-test-green` için yineleyin:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ Mavi/yeşil dağıtımı AKS'de el ile veya önceden kopyalanan örnekte sağlan
 
 1. Container Registry örneği oluşturmak için `az acr create` komutunu çalıştırın. Sonraki bölümde, Docker kayıt defteri URL'si olarak `login server` kullanabilirsiniz.
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. Container Registry kimlik bilgilerinizi göstermek için `az acr credential` komutunu çalıştırın. Sonraki bölümde gerekeceği için Docker kayıt defteri kullanıcı adını ve parolasını not alın.
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -276,7 +276,7 @@ Sıfır kesinti süreli dağıtım hakkında daha fazla bilgi için bu [hızlı 
 
 Bu öğreticide oluşturduğunuz kaynaklara artık ihtiyacınız olmadığında kaynakları silebilirsiniz.
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 

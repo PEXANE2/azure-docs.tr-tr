@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719679"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251370"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -93,7 +93,7 @@ Media Encoder Standard [biçimleri ve codec bileşenleri](media-encoder-standard
 
 ## <a name="live-streaming-workflow"></a>Canlı akış iş akışı
 
-Canlı bir olay iki türden biri olabilir: doğrudan geçiş veya canlı kodlama. 
+Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) veya *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. 
 
 Dinamik paketleme ile canlı akış için ortak bir iş akışı aşağıda verilmiştir:
 

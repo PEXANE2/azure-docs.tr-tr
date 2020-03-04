@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226541"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255990"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Otomasyonu 'nda grafik yazma
 
@@ -249,7 +249,7 @@ Kontrol noktaları yalnızca grafik PowerShell Iş akışı runbook 'larında et
 
 ## <a name="runbook-input-and-output"></a>Runbook giriş ve çıkış
 
-### < adı-"runbook-giriş" ></a>runbook girişi
+### Runbook girişi<a name="runbook-input"></a>
 
 Bir runbook, geçerli diğeri alt olarak kullanılıyorsa, runbook 'u Azure portal aracılığıyla veya başka bir runbook 'tan Başlatan kullanıcıdan giriş yapılmasını gerektirir. Örneğin, bir sanal makine oluşturan bir runbook için, kullanıcının runbook başladığında sanal makine adı ve diğer özellikler gibi bilgileri sağlaması gerekebilir.
 
@@ -438,6 +438,6 @@ Runbook 'un yayımlanmış sürümüne dönmek için seçeneğiniz vardır. Bu i
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * PowerShell İş Akışı runbook'larını kullanmaya başlamak için bkz. [İlk PowerShell İş Akışı runbook uygulamam](automation-first-runbook-textual.md).
-* Grafik runbook 'ları kullanmaya başlamak için bkz. [Ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
+* Grafik runbook 'ları kullanmaya başlamak için bkz. [ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
 * Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Azure farklı çalıştır hesabını yapılandırma](automation-sec-configure-azure-runas-account.md).

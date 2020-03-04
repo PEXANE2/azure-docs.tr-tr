@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185533"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248693"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
@@ -130,9 +130,9 @@ Sertifika imzası yöntemlerinde kısıtlama yoktur. Eliptik Eğri Şifreleme (E
 
 Joker karakter, dış URL ile eşleştiği sürece joker sertifikaları kullanabilirsiniz. [Joker uygulamalar](application-proxy-wildcard.md)için joker karakter sertifikaları kullanmanız gerekir. Sertifikayı da alt etki alanlarına erişmek üzere kullanmak istiyorsanız, alt etki alanı joker karakterlerini aynı sertifikaya konu alternatif adları olarak eklemeniz gerekir. Örneğin, konu diğer adı olarak *\*. Apps.Adventure-Works.com* eklemediğiniz sürece *\*. Adventure-Works.com* için bir sertifika *\*. Apps.Adventure-Works.com* için çalışmaz. 
 
-Sertifika zinciri istemci cihazlarınızda yüklüyse, kendi ortak anahtar altyapınız (PKI) tarafından verilen sertifikaları kullanabilirsiniz. Intune, bu sertifikaları yönetilen cihazlara dağıtabilir. Yönetilmeyen cihazlar için, bu sertifikaları el ile yüklemelisiniz.
+Sertifika zinciri istemci cihazlarınızda yüklüyse, kendi ortak anahtar altyapınız (PKI) tarafından verilen sertifikaları kullanabilirsiniz. Intune, bu sertifikaları yönetilen cihazlara dağıtabilir. Yönetilmeyen cihazlar için, bu sertifikaları el ile yüklemelisiniz. 
 
-Özel bir kök CA kullanmak iyi bir fikir değildir. Özel kök CA 'nın Ayrıca birçok zorluk sunan istemci makinelere itilmesi gerekir. 
+Özel kök CA 'nın de istemci makinelere itilmesi gerektiğinden, özel kök CA kullanılması önerilmez. Bu, birçok zorluk ortaya çıkarabilir.
 
 ### <a name="certificate-management"></a>Sertifika yönetimi
 

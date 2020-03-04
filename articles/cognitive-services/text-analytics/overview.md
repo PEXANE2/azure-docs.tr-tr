@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827313"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251320"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
-Metin Analizi API'si, ham metin üzerinde gelişmiş doğal dil işleme sağlayan bulut tabanlı bir hizmettir ve dört ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama, dil algılama ve varlık tanıma.
+Metin Analizi API'si, ham metin üzerinde gelişmiş doğal dil işleme sağlayan bulut tabanlı bir hizmettir ve dört ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama, dil algılama ve adlandırılmış varlık tanıma.
 
 API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/)'in bir parçasıdır.
 
@@ -27,7 +27,7 @@ API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmalar
 
 Metin analizi farklı şeyler anlamına gelebilir, ancak bilişsel hizmetler 'de Metin Analizi API'si, aşağıda açıklandığı gibi dört tür analiz sağlar. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
 
-## <a name="sentiment-analysis"></a>Duygu Analizi
+## <a name="sentiment-analysis"></a>Yaklaşım Analizi
 Olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni analiz ederek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir.<br /> Analiz modelleri, Microsoft tarafından sağlanan geniş kapsamlı gövde metinleri ve doğal dil teknolojileri kullanılarak önceden eğitilmiştir. API, [seçili dillerde](text-analytics-supported-languages.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir.
 
 ## <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
@@ -51,7 +51,7 @@ Verilerinize daha yakın standartlaştırılmış Docker Kapsayıcıları yükle
 
 2. JSON biçiminde verilerinizi yapılandırılmamış ham metin olarak içeren [bir istek düzenleyin](how-tos/text-analytics-how-to-call-api.md#json-schema).
 
-3. İstediğiniz kaynağı ekleyerek isteği kayıt sırasında oluşturulan uç noktaya: yaklaşım analizi, anahtar ifade ayıklama, dil algılama veya varlık tanımlama.
+3. Kayıt sırasında, istenen kaynak: yaklaşım analizi, anahtar ifade ayıklama, dil algılama veya adlandırılmış varlık tanıma gibi bir istek noktasına isteği gönderin.
 
 4. Yanıtın akışını yapın veya yerel ortamda depolayın. Gönderilen isteğe bağlı olarak sonuçlar yaklaşım puanı, ayıklanan anahtar ifadelerden oluşan bir koleksiyon veya dil kodu olacaktır.
 
@@ -91,7 +91,7 @@ Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli s
 
 Oran sınırınız fiyatlandırma katmanınızda farklılık gösterecektir.
 
-| Katman          | İstek/saniye | Dakika başına istek |
+| Katman          | Saniye başına istek sayısı | Dakika başına istek |
 |---------------|---------------------|---------------------|
 | S/Multi-Service | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |

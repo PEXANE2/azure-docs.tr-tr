@@ -3,7 +3,7 @@ title: Linux çalıştıran bir sanal makinede LVM 'yi yapılandırma
 description: Azure 'da Linux üzerinde LVM yapılandırma hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: na
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: 4fdb3af0433cc32aa7cdbee3c8ca9bdb85031135
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 2c245d56b0fa0a09da04b83db11391a9291d3856
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045350"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251726"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'de LVM 'yi yapılandırma
 Bu belgede, Azure sanal makinenizde mantıksal birim Yöneticisi 'nin (LVM) nasıl yapılandırılacağı açıklanmaktadır. LVM, Azure VM 'lerde işletim sistemi diskinde veya veri disklerinde kullanılabilir, ancak varsayılan olarak çoğu bulut görüntüsü, işletim sistemi diskinde yapılandırılmış LVM 'ye sahip olmayacaktır. Aşağıdaki adımlar, veri diskleriniz için LVM yapılandırmaya odaklanacaktır.
@@ -102,7 +102,7 @@ Bu kılavuzda, `/dev/sdc`, `/dev/sdd` ve `/dev/sde`olarak başvurabileceğiniz �
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Yeni dosya sistemini/etc/fstab 'e ekleme
 > [!IMPORTANT]
-> `/etc/fstab` dosyasının hatalı düzenlenmesi sonucunda önyüklemesi yapılamayan bir sistem ortaya çıkar. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Ayrıca, düzenlemeden önce `/etc/fstab` dosyanın bir yedeğinin oluşturulması önerilir.
+> `/etc/fstab` dosyanın hatalı düzenlenmesinin önyüklemesi önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru şekilde düzenleme hakkında bilgi edinmek için dağıtımın belgelerine bakın. Ayrıca, düzenlemeden önce `/etc/fstab` dosyanın bir yedeğinin oluşturulması önerilir.
 
 1. Yeni dosya sisteminiz için istenen bağlama noktasını oluşturun, örneğin:
 

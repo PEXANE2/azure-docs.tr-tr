@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587014"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250815"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
@@ -36,27 +36,24 @@ Bu öğreticide, Azure 'da sanal makineler için giden bağlantı sağlamak üze
 
 Bir tam test ortamının yapılandırması ve bir sonraki adımlarda testlerin yürütülmesi konusunda size kılavuzluk edeceğiz. Sonraki adımlarda oluşturduğumuz NAT ağ geçidi kaynağını kullanacak kaynak ile başlayacağız.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
 Bir VM 'yi dağıtmadan ve NAT ağ geçidinizi kullanabilmeniz için, kaynak grubunu ve sanal ağı oluşturmanız gerekir.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin veya Market aramasında **sanal ağ** araması yapın.
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroupNAT |
+| **\<sanal ağ-adı >** | myVNetsource          |
+| **\<bölge adı >**          | Doğu ABD 2      |
+| **\<IPv4-adres-alanı >**   | 192.168.0.0 \ 16          |
+| **\<alt ağ-adı >**          | mySubnetsource        |
+| **\<alt ağ-adres aralığı >** | 192.168.0.0 \ 24          |
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Adı | **Myvnetsource**girin. |
-    | Adres alanı | **192.168.0.0/16**girin. |
-    | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | Yeni Oluştur- **Myresourcegroupnat**öğesini seçin. |
-    | Konum | **Doğu ABD 2**’yi seçin.|
-    | Alt ağ adı | **Mysubnetsource**girin. |
-    | Alt Ağ - Adres aralığı | **192.168.0.0/24**girin. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Varsayılan değerleri bırakın ve **Oluştur**' u seçin.
-
-### <a name="create-source-virtual-machine"></a>Kaynak sanal makine oluştur
+## <a name="create-source-virtual-machine"></a>Kaynak sanal makine oluştur
 
 Artık NAT hizmetini kullanmak için bir VM oluşturacağız. Bu VM 'nin VM 'ye erişiminizi sağlamak için örnek düzeyi genel IP olarak kullanılacak genel bir IP 'si vardır. NAT hizmeti akış yönü farkındadır ve alt ağınızdaki varsayılan Internet hedefini değiştirecek. VM 'nin genel IP adresi giden bağlantılar için kullanılmayacak.
 
@@ -161,25 +158,25 @@ Internet hedeflerine giden tüm trafik artık NAT hizmetini kullanıyor.  UDR 'y
 
 Artık, NAT hizmeti tarafından, test yapmanıza olanak tanımak için çevrilmiş giden trafik için bir hedef oluşturacağız.
 
-### <a name="configure-virtual-network-for-destination"></a>Sanal ağı hedef için yapılandırma
+
+## <a name="virtual-network-and-parameters-for-destination"></a>Hedef için sanal ağ ve parametreler
 
 Hedef için bir VM dağıtmadan önce, hedef sanal makinenin bulunabileceği bir sanal ağ oluşturmanız gerekir. Kaynak VM 'de, hedef uç noktayı açığa çıkarmak için bazı küçük değişikliklerle aynı adımlar aşağıda verilmiştir.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroupNAT |
+| **\<sanal ağ-adı >** | myVNetdestination          |
+| **\<bölge adı >**          | Doğu ABD 2      |
+| **\<IPv4-adres-alanı >**   | 192.168.0.0 \ 16          |
+| **\<alt ağ-adı >**          | mySubnetdestination        |
+| **\<alt ağ-adres aralığı >** | 192.168.0.0 \ 24          |
 
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Adı | **Myvnetdestination**girin. |
-    | Adres alanı | **192.168.0.0/16**girin. |
-    | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | Yeni Oluştur- **Myresourcegroupnat**öğesini seçin. |
-    | Konum | **Doğu ABD 2**’yi seçin.|
-    | Alt ağ adı | **Mysubnetdestination**girin. |
-    | Alt Ağ - Adres aralığı | **192.168.0.0/24**girin. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>Hedef sanal makine oluştur
+## <a name="create-destination-virtual-machine"></a>Hedef sanal makine oluştur
 
 1. Portalın sol üst **kısmında > ** **kaynak oluştur** ' u > **Ubuntu Server 18,04 LTS**' i seçin veya market aramasında **Ubuntu Server 18,04 LTS** ' yi arayın.
 

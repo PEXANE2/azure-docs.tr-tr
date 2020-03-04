@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614035"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252757"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Öğretici: Yeoman'ı kullanarak kapsayıcıları Service Fabric uygulaması olarak paketleme ve dağıtma
 
-Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon oluşturma aracı (Yeoman) kullanılarak bir Service Fabric uygulaması tanımı oluşturulmaktadır. Daha sonra bu uygulama Service Fabric’e kapsayıcı dağıtmak için kullanılabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon oluşturma aracı (Yeoman) kullanılarak bir Service Fabric uygulaması tanımı oluşturulmaktadır. Daha sonra bu uygulama Service Fabric’e kapsayıcı dağıtmak için kullanılabilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Yeoman’ı yükleme
@@ -25,7 +25,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon ol
 > * Uygulamayı dağıtma ve çalıştırma
 > * Uygulamayı temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici serisinin [1. Bölümünde](service-fabric-tutorial-create-container-images.md) oluşturulup Azure Container Registry’ye gönderilen kapsayıcı görüntüleri kullanılır.
 * Linux geliştirme ortamı [ayarlanmıştır](service-fabric-tutorial-create-container-images.md).
@@ -114,7 +114,7 @@ Service Fabric’in kapsayıcı görüntülerini Azure Container Registry’den 
 
 ACR Örneğinizde oturum açın. İşlemi tamamlamak için **az acr login** komutunu kullanın. Kapsayıcı kayıt defterine oluşturulduğunda verilen benzersiz adı sağlayın.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ Komut tamamlandığında bir **Oturum Başarıyla Açıldı** iletisi döndürü
 
 Ardından, kapsayıcı kayıt defterinizin parolasını almak için aşağıdaki komutu çalıştırın. Bu parola, kapsayıcı görüntülerini çekerken ACR’de kimlik doğrulamak için Service Fabric tarafından kullanılır.
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ Service Fabric’in bu DNS adını arka uç hizmetine atayabilmesi için söz ko
 
 Ön uç hizmeti, Redis örneğinin DNS adını öğrenmek için bir ortam değişkenini okur. Bu ortam değişkeni, Docker görüntüsünü oluşturmak için kullanılan Dockerfile’da zaten tanımlanmıştır ve burada herhangi bir işlem yapılmasına gerek yoktur.
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

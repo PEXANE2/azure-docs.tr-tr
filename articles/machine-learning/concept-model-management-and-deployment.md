@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589377"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250872"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -71,6 +71,11 @@ Kayıtlı modeller ad ve sürümle tanımlanır. Modeli var olan bir adla her ka
 Etkin bir dağıtımda kullanılmakta olan kayıtlı bir modeli silemezsiniz.
 Daha fazla bilgi için, [modelleri dağıtma](how-to-deploy-and-where.md#registermodel)' nın model kaydetme bölümüne bakın.
 
+### <a name="profile-models"></a>Profil modelleri
+
+Azure Machine Learning, modelinizi dağıtırken oluşturulacak hizmetin CPU ve bellek gereksinimlerini anlamanıza yardımcı olabilir. Profil oluşturma, modelinizi çalıştıran hizmeti sınar ve CPU kullanımı, bellek kullanımı ve yanıt gecikme süresi gibi bilgileri döndürür. Ayrıca, kaynak kullanımına bağlı olarak bir CPU ve bellek önerisi sağlar.
+Daha fazla bilgi için bkz. [dağıtım modellerinin](how-to-deploy-and-where.md#profilemodel)profil oluşturma bölümü.
+
 ### <a name="package-and-debug-models"></a>Paket ve hata ayıklama modelleri
 
 Bir modeli üretime dağıtmadan önce, bir Docker görüntüsüne paketlenir. Çoğu durumda, dağıtım sırasında görüntü oluşturma arka planda otomatik olarak gerçekleşir. Görüntüyü el ile belirtebilirsiniz.
@@ -78,10 +83,6 @@ Bir modeli üretime dağıtmadan önce, bir Docker görüntüsüne paketlenir. �
 Dağıtım ile ilgili sorunlar yaşıyorsanız, sorun giderme ve hata ayıklama için yerel geliştirme ortamınızda dağıtım yapabilirsiniz.
 
 Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md#registermodel) ve [dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md).
-
-### <a name="validate-and-profile-models"></a>Model ve profil modellerini doğrulama
-
-Azure Machine Learning, modelinizi dağıttığınızda kullanılacak ideal CPU ve bellek ayarlarını tespit etmek için profil oluşturmayı kullanabilir. Model doğrulama, profil oluşturma işlemi için sağladığınız verileri kullanarak bu işlemin bir parçası olarak gerçekleşir.
 
 ### <a name="convert-and-optimize-models"></a>Modelleri dönüştürme ve iyileştirme
 

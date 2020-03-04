@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191095"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252540"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
@@ -29,21 +29,22 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 İlk olarak, bir sanal ağ oluşturun. Sonra, özel bağlantı hizmeti ile kullanmak için bir iç yük dengeleyici oluşturun.
 
-### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
 Bu bölümde, bir sanal ağ oluşturursunuz. Ayrıca, özel bağlantı hizmetinize erişen yük dengeleyiciyi barındırmak için alt ağ oluşturursunuz.
 
-1. Portalın sol üst kısmında **bir kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-1. **Sanal ağ oluştur** bölmesinde şu değerleri girin veya seçin:
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroupLB |
+| **\<sanal ağ-adı >** | myVNet          |
+| **\<bölge adı >**          | Doğu ABD 2      |
+| **\<IPv4-adres-alanı >**   | 10.3.0.0 \ 16          |
+| **\<alt ağ-adı >**          | myBackendSubnet        |
+| **\<alt ağ-adres aralığı >** | 10.3.0.0 \ 24          |
 
-   - **Ad**: **myvnet**girin.
-   - **ResourceGroup**: **Yeni oluştur**' u seçin, **Myresourcegrouplb**yazın ve **Tamam**' ı seçin.
-   - **Alt ağ** > **adı**: **mybackendsubnet**girin.
-
-1. **Oluştur**'u seçin.
-
-   ![Sanal ağ oluşturma](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyici oluşturma
 

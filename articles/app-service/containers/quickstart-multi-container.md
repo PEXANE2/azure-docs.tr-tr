@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4a0207299b480136e8054fbe3d4579dd98f45267
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430543"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247028"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırma kullanarak çok Kapsayıcılı (Önizleme) uygulama oluşturma
 
@@ -69,7 +69,7 @@ Komut tamamlandığında, bir JSON çıkışı size kaynak grubu özelliklerini 
 
 Cloud Shell’de, kaynak grubunda [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutuyla bir App Service planı oluşturun.
 
-Aşağıdaki örnek, **Standart** fiyatlandırma katmanı (`--sku S1`) ve bir Linux kapsayıcısı (`--is-linux`) içinde `myAppServicePlan` adlı bir App Service planı oluşturur.
+Aşağıdaki örnek, `myAppServicePlan`Standart **fiyatlandırma katmanı (** ) ve bir Linux kapsayıcısı (`--sku S1`) içinde `--is-linux` adlı bir App Service planı oluşturur.
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
@@ -97,9 +97,9 @@ App Service planı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bi
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose uygulaması oluşturma
 
-Cloud Shell terminalinde [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutunu kullanarak `myAppServicePlan` App Service planında çok kapsayıcılı bir [web uygulaması](app-service-linux-intro.md) oluşturun. _\<app_name >_ benzersiz bir uygulama adıyla değiştirmeyi unutmayın (geçerli karakterler `a-z`, `0-9`ve `-`).
+Cloud Shell terminalinde [az webapp create](app-service-linux-intro.md) komutunu kullanarak `myAppServicePlan` App Service planında çok kapsayıcılı bir [web uygulaması](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) oluşturun. _\<app_name >_ benzersiz bir uygulama adıyla değiştirmeyi unutmayın (geçerli karakterler `a-z`, `0-9`ve `-`).
 
-```bash
+```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 

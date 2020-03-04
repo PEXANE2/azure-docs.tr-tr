@@ -3,7 +3,7 @@ title: Azure 'da bir debir Linux VHD hazırlama
 description: Azure 'da dağıtım için deni VHD görüntüleri oluşturmayı öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 3cf6a4a98451a36826cadf84b9be8e3ea63efea7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 579704ad663e20fdbb59b94d1d4c5ea831d3a68a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750150"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251696"
 ---
-# <a name="prepare-a-debian-vhd-for-azure"></a>Azure için Debian VHD hazırlama
-## <a name="prerequisites"></a>Ön koşullar
+# <a name="prepare-a-debian-vhd-for-azure"></a>Azure için bir de, VHD 'YI hazırlama
+## <a name="prerequisites"></a>Önkoşullar
 Bu bölümde, [de, Web sitesinden](https://www.debian.org/distrib/) bir sanal sabit diske indirilen bir. iso dosyasından bir de, Linux işletim sistemini zaten yüklemiş olduğunuz varsayılmaktadır. . Vhd dosyaları oluşturmak için birden çok araç var; Hyper-V yalnızca bir örnektir. Hyper-V ' y i kullanma hakkında yönergeler için bkz. [Hyper-v rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
 ## <a name="installation-notes"></a>Yükleme notları

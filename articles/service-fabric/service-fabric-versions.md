@@ -2,13 +2,13 @@
 title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
-ms.date: 02/05/2020
-ms.openlocfilehash: 0950c93c09c89ad92fc4f77f9f82937deb9e489e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 03/02/2020
+ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064861"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252718"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -102,3 +102,4 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
 | 7,0 CU2 UYGULAMAZSANıZ | 7.0.464.9590 | 7.0.464.1 |
 | 7,0 CU3 | 7.0.466.9590 | 7.0.465.1 |
+| 7,0 CU4 | 7.0.470.9590 | 7.0.469.1 |

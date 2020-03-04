@@ -4,12 +4,12 @@ description: Abonelik sınırlarına ulaşıldı, Azure Resource Manager istekle
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129ca3ba32d48345bde931c6bd2084c3da79be39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659381"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251335"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager istekleri azaltma
 
@@ -25,7 +25,7 @@ Her abonelik düzeyi ve kiracı düzeyindeki işlem, azaltma sınırlarına tabi
 
 Saat başına varsayılan azaltma sınırları aşağıdaki tabloda gösterilmiştir.
 
-| Kapsam | Operations | Sınır |
+| Kapsam | İşlemler | Sınır |
 | ----- | ---------- | ------- |
 | Abonelik | okuma | 12000 |
 | Abonelik | /Delete | 15000 |
@@ -47,7 +47,7 @@ Bu bölümde, yaygın olarak kullanılan bazı kaynak sağlayıcılarının azal
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="network-throttling"></a>Ağ kapasitesi azaltma
+### <a name="network-throttling"></a>Ağ azaltma
 
 Microsoft. Network kaynak sağlayıcısı aşağıdaki kısıtlama sınırlarını uygular:
 
@@ -72,7 +72,7 @@ Bazen, kısıtlama limitleri artırılabilir. Senaryonuza yönelik azaltma limit
 
 ## <a name="error-code"></a>Hata kodu
 
-Sınıra ulaştığınızda, HTTP durum kodu alma **429 çok fazla istek**. Yanıt, bir sonraki isteği göndermeden önce uygulamanızın beklemesi gereken saniye sayısını (veya uyku) belirten bir **yeniden deneme** değeri içerir. Yeniden deneme değeri dolmadan isteği gönderirseniz, isteğiniz işlenir değil ve yeni bir yeniden deneme değeri döndürülür.
+Sınıra ulaştığınızda, **429 çok fazla Istek**http durum kodunu alırsınız. Yanıt, bir sonraki isteği göndermeden önce uygulamanızın beklemesi gereken saniye sayısını (veya uyku) belirten bir **yeniden deneme** değeri içerir. Yeniden deneme değeri dolmadan isteği gönderirseniz, isteğiniz işlenir değil ve yeni bir yeniden deneme değeri döndürülür.
 
 Belirtilen süre bekledikten sonra Azure bağlantınızı kapatıp yeniden açabilirsiniz. Bağlantıyı sıfırlayarak, farklı bir Azure Resource Manager örneğine bağlanabilirsiniz.
 
@@ -101,22 +101,22 @@ Kaynak sağlayıcı ayrıca, kalan istekler hakkında bilgi içeren yanıt üstb
 
 Bu kod veya betik üstbilgi değerlerini alma herhangi bir üst bilgi değeri almaktan farklı değildir. 
 
-Örneğin, **C#** , üstbilgi değerini almak bir **HttpWebResponse** adlı nesne **yanıt** aşağıdaki kod ile:
+Örneğin, içinde **C#** , aşağıdaki kodla **Yanıtla** adlı bir **HttpWebResponse** nesnesinden üst bilgi değerini alırsınız:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-İçinde **PowerShell**, üst bilgi değeri bir Invoke-WebRequest işlemden alın.
+**PowerShell**'de, bir Invoke-WebRequest işleminden üst bilgi değerini alırsınız.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Tam bir PowerShell örnek için bkz: [bir abonelik için Resource Manager sınırları denetle](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+Tüm PowerShell örnekleri için bkz. [bir abonelik için Kaynak Yöneticisi sınırlarını denetleme](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 
-Hata ayıklama için kalan istekler görmek istiyorsanız, sağlayabilir **-hata ayıklama** parametresi, **PowerShell** cmdlet'i.
+Hata ayıklama için geri kalan istekleri görmek isterseniz, **PowerShell** cmdlet 'inizdeki **-Debug** parametresini sağlayabilirsiniz.
 
 ```powershell
 Get-AzResourceGroup -Debug
@@ -154,7 +154,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-İçinde **Azure CLI**, daha ayrıntılı seçeneğini kullanarak üstbilgi değeri alınamıyor.
+**Azure CLI**'de, daha ayrıntılı seçeneğini kullanarak üst bilgi değerini alırsınız.
 
 ```azurecli
 az group list --verbose --debug
@@ -162,7 +162,7 @@ az group list --verbose --debug
 
 Aşağıdaki değerleri dahil olmak üzere birçok değer döndürür:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -182,7 +182,7 @@ az group create -n myresourcegroup --location westus --verbose --debug
 
 Aşağıdaki değerleri dahil olmak üzere birçok değer döndürür:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -195,6 +195,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tam bir PowerShell örnek için bkz: [bir abonelik için Resource Manager sınırları denetle](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
-* Limitler ve kotalar hakkında daha fazla bilgi için bkz: [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-* Zaman uyumsuz REST istekleri işleme hakkında bilgi edinmek için [Azure zaman uyumsuz işlemleri izleme](async-operations.md).
+* Tüm PowerShell örnekleri için bkz. [bir abonelik için Kaynak Yöneticisi sınırlarını denetleme](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Sınırlamalar ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Zaman uyumsuz REST isteklerini işleme hakkında bilgi edinmek için bkz. [zaman uyumsuz Azure Işlemlerini izleme](async-operations.md).

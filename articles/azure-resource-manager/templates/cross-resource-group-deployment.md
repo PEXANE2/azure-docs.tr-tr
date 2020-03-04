@@ -3,12 +3,12 @@ title: Kaynakları dağıtım & çapraz abonelik kaynak grubu
 description: Dağıtım sırasında birden fazla Azure aboneliğini ve kaynak grubunu nasıl hedefleyecek olduğunu gösterir.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8f5fbd51456003059f6a32fc32b32194a936434a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154219"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250616"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtın
 
@@ -119,7 +119,7 @@ Aşağıdaki örnek iki depolama hesabı dağıtır. İlk depolama hesabı, dağ
 
 Önceki şablonu test etmek ve sonuçları görmek için PowerShell veya Azure CLı kullanın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 İki depolama hesabını **aynı abonelikte**iki kaynak grubuna dağıtmak için şunu kullanın:
 
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 İki depolama hesabını **aynı abonelikte**iki kaynak grubuna dağıtmak için şunu kullanın:
 
@@ -209,7 +209,7 @@ az group deployment create \
 
 Aşağıdaki tabloda, işlevlerin üst veya katıştırılmış kaynak grubuna ve aboneliğe çözümlenip çözümlenmediğini gösterir.
 
-| Şablon türü | Kapsam | Çözünürlük |
+| Şablon türü | Kapsam | Çözüm |
 | ------------- | ----- | ---------- |
 | iç içe geçmiş        | dış (varsayılan) | Üst kaynak grubu |
 | iç içe geçmiş        | iç | Alt kaynak grubu |
@@ -317,7 +317,7 @@ Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples
 
 Önceki şablonu test etmek ve sonuçları görmek için PowerShell veya Azure CLı kullanın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -340,7 +340,7 @@ Yukarıdaki örnekteki çıktı:
  linkedRG         String                     Linked resource group is linkedgroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -355,7 +355,7 @@ az group deployment create \
 
 Yukarıdaki örnekteki çıktı:
 
-```azurecli
+```output
 "outputs": {
   "defaultScopeRG": {
     "type": "String",

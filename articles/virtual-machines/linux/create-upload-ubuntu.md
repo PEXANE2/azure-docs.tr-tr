@@ -3,21 +3,21 @@ title: Azure 'da bir Ubuntu Linux VHD oluşturma ve karşıya yükleme
 description: Ubuntu Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0079a30c81904d2ba66a014d5ac86467cca94f40
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291575"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251672"
 ---
-# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure’da Ubuntu sanal makinesi hazırlama
+# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure için bir Ubuntu sanal makinesi hazırlama
 
 
 Ubuntu artık [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)adresinden indirmek üzere resmi Azure VHD 'leri yayımlar. Azure için kendi özelleştirilmiş Ubuntu görüntünüzü oluşturmanız gerekiyorsa, bu bilinen çalışma VHD 'leri ile başlamanız ve gerektiğinde özelleştirmeniz önerilir. En son görüntü yayınları her zaman aşağıdaki konumlarda bulunabilir:
@@ -28,7 +28,7 @@ Ubuntu artık [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com
 * Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-AMD64. vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 * Ubuntu 18.10/COSMIC: [Cosmic-Server-cloudimg-AMD64. vhd. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Ubuntu yükleme notları**

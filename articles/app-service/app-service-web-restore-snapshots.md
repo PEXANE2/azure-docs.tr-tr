@@ -1,19 +1,17 @@
 ---
 title: Uygulamayı bir anlık görüntüden geri yükleme
 description: Uygulamanızı bir anlık görüntüden nasıl geri yükleyeceğinizi öğrenin. Premium katmandaki beklenmedik veri kaybını otomatik gölge kopyalarla kurtarın.
-author: ahmedelnably
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
-ms.author: aelnably
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: e5b48e05d6bd9a310b4527300126464c4b755c8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671148"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255145"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure 'da bir uygulamayı bir anlık görüntüden geri yükleme
 Bu makalede bir anlık görüntüden [Azure App Service](../app-service/overview.md) bir uygulamanın nasıl geri yükleneceği gösterilmektedir. Uygulamanızı uygulamanızın anlık görüntülerinden birine göre önceki bir duruma geri yükleyebilirsiniz. Anlık görüntü yedeklemesini etkinleştirmeniz gerekmez, platform veri kurtarma amacıyla tüm uygulamaların anlık görüntüsünü otomatik olarak kaydeder.
@@ -65,4 +63,4 @@ Anlık görüntülerden geri yükleme, **Premium** katmanda veya üzeri sürüml
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 
-5. **Tamam**’a tıklayın.
+5. **Tamam** düğmesine tıklayın.
