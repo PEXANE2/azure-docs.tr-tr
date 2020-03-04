@@ -84,7 +84,7 @@
             - name: Web kancasından runbook başlatma
               href: automation-webhooks.md
             - name: Runbook girdi parametrelerini yapılandırma
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: Alt runbook’lar
               href: automation-child-runbooks.md
             - name: Azure Otomasyonu runbook’una bir JSON nesnesi geçirme

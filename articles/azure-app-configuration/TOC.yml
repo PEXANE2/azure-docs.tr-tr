@@ -21,6 +21,8 @@
           href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
+        - name: Azure Resource Manager şablonu
+          href: quickstart-resource-manager.md
     - name: Özellik yönetimi
       items:
         - name: ASP.NET Çekirdeği

@@ -112,8 +112,6 @@
       href: sap-hana-backup-guide.md
     - name: SAP HANA dosya düzeyi yedeklemesi
       href: sap-hana-backup-file-level.md
-    - name: SAP HANA depolama anlık görüntüsü yedeklemeleri
-      href: sap-hana-backup-storage-snapshots.md
 - name: Azure Sanal Makineler üzerinde SAP NetWeaver ve Business One
   items:
     - name: SAP iş yükü planlama ve dağıtımı denetim listesi

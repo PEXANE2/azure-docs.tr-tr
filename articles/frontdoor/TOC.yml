@@ -5,6 +5,7 @@
     - name: Azure Front Door Hizmeti nedir?
       href: front-door-overview.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Front Door oluşturma
       href: quickstart-create-front-door.md

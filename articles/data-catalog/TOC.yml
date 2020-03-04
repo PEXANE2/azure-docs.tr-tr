@@ -4,7 +4,7 @@
   items:
     - name: Veri Kataloğu nedir?
       href: overview.md
-- name: Hızlı Başlangıç
+- name: Hızlı Başlangıçlar
   items:
     - name: Azure Veri Kataloğu oluşturma
       href: data-catalog-get-started.md

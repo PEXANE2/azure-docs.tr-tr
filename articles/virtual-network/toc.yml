@@ -45,6 +45,12 @@
               href: nat-overview.md
             - name: Kaynak
               href: nat-gateway-resource.md
+            - name: Ölçümler ve uyarılar
+              href: nat-metrics.md
+            - name: Sorun giderme
+              href: troubleshoot-nat.md
+        - name: Yönlendirme
+          href: virtual-networks-udr-overview.md
         - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
           items:
             - name: Önsöz ve Test Kurulumu
@@ -75,20 +81,20 @@
           href: ipv6-public-ip-address-prefix.md
     - name: Güvenlik
       items:
-        - name: DDoS koruması
-          href: ddos-protection-overview.md
-        - name: Kubernetes ağ ilkeleri
-          href: kubernetes-network-policies.md
-        - name: Yönlendirme
-          href: virtual-networks-udr-overview.md
-        - name: Güvenlik grupları
+        - name: Ağ güvenlik grupları
           href: security-overview.md
+        - name: Uygulama güvenliği grupları
+          href: application-security-groups.md
         - name: Hizmet etiketleri
           href: service-tags-overview.md
         - name: Hizmet uç noktaları
           href: virtual-network-service-endpoints-overview.md
         - name: Hizmet uç noktası ilkeleri
           href: virtual-network-service-endpoint-policies-overview.md
+        - name: Kubernetes ağ ilkeleri
+          href: kubernetes-network-policies.md
+        - name: DDoS koruması
+          href: ddos-protection-overview.md
         - name: Sanal ağ TAP
           href: virtual-network-tap-overview.md
     - name: Alt ağlar
@@ -131,6 +137,18 @@
               href: tutorial-create-validate-nat-gateway-powershell.md
             - name: NAT ağ geçidi oluşturma ve doğrulama - CLI
               href: tutorial-create-validate-nat-gateway-cli.md
+        - name: Ağ trafiğini yönlendirme
+          items:
+            - name: Azure portal
+              href: tutorial-create-route-table-portal.md
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+            - name: Yönlendirme tablolarını yönetme
+              href: manage-route-table.md
         - name: NIC’leri yönetme
           href: virtual-network-network-interface.md
         - name: Sanal ağı yönetme
@@ -251,24 +269,12 @@
                   href: tutorial-restrict-network-access-to-resources-cli.md
             - name: Hizmet uç noktası ilkelerini kullanma
               items:
-                - name: Azure Portal
+                - name: Azure portal
                   href: virtual-network-service-endpoint-policies-portal.md
                 - name: Azure PowerShell
                   href: virtual-network-service-endpoint-policies-powershell.md
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
-        - name: Ağ trafiğini yönlendirme
-          items:
-            - name: Azure portal
-              href: tutorial-create-route-table-portal.md
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-            - name: Yönlendirme tablolarını yönetme
-              href: manage-route-table.md
         - name: Manage DDoS koruması
           href: manage-ddos-protection.md
         - name: DDos Koruması Standart’a iş ortağı ekleme
