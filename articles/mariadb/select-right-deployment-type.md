@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d53a3f270c1de3c8d533b5886e0051f6aa1ef10d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 961d10f3a0bc4be25a2981e5411cc6a8a75d2105
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776747"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255094"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure 'da doğru MariaDB sunucu seçeneğini belirleyin
 
@@ -53,7 +53,7 @@ MariaDB veritabanlarınızı barındırmak için PaaS veya IaaS seçme kararlar�
 
 Sınırlı komik genellikle veritabanlarınızı barındırmak için en iyi çözümü belirleyen birincil noktadır. Bu, sıkı bütçe kısıtlamaları altında çalışan kurulu bir şirkette çok az nakit veya ekip ile bir başlangıç yaptığınız için geçerlidir. Bu bölümde, Azure VM 'lerinde MariaDB ve MariaDB için Azure veritabanı 'na uygulanan Azure 'da faturalandırma ve lisanslama temelleri açıklanmaktadır.
 
-#### <a name="billing"></a>Faturalandırma
+#### <a name="billing"></a>Faturalama
 
 MariaDB için Azure veritabanı şu anda birkaç katmanda kaynaklar için farklı fiyatlarla bir hizmet olarak sunulmaktadır. Tüm kaynaklar, saatlik olarak sabit bir fiyat üzerinden faturalandırılır. Şu anda desteklenen hizmet katmanları, işlem boyutları ve depolama miktarları hakkında en son bilgiler için bkz. [sanal çekirdek tabanlı satın alma modeli](https://docs.microsoft.com/azure/MariaDB/concepts-pricing-tiers). Hizmet katmanlarını ve işlem boyutlarını, uygulamanızın değişen aktarım hızı gereksinimleriyle eşleşecek şekilde dinamik olarak ayarlayabilirsiniz. Giden Internet trafiği için düzenli [veri aktarımı fiyatları](https://azure.microsoft.com/pricing/details/data-transfers/)üzerinden faturalandırılırsınız.
 
@@ -80,7 +80,7 @@ Aşağıdaki listede her bir seçeneğe ilişkin yönetim konuları açıklanmak
 
 * MariaDB için Azure veritabanı ile veritabanınızı yönetmeye devam edebilirsiniz. Ancak artık veritabanı altyapısını, işletim sistemini veya donanımı yönetmeniz gerekmez. Yönetmeye devam edebilmeniz için öğelerin örnekleri şunlardır:
 
-  - Veri tabanları
+  - Veritabanları
   - Oturum açma
   - Dizin ayarlama
   - Sorgu ayarlama
@@ -102,4 +102,4 @@ Aşağıdaki listede her bir seçeneğe ilişkin yönetim konuları açıklanmak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Bkz. [MariaDB fiyatlandırması Için Azure veritabanı](https://azure.microsoft.com/pricing/details/MariaDB/).
-* [İlk sunucunuzu oluşturarak](https://review.docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal) başlayın.
+* [İlk sunucunuzu oluşturarak](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal) başlayın.

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559853"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246196"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -159,10 +159,10 @@ Hub aktarım hızını ve bölümleri iyileştirme hakkında daha fazla bilgi ed
 
 Bir Time Series Insights Preview *Kullandıkça Öde* (PAYG) SKU ortamı oluşturduğunuzda iki Azure kaynağı oluşturursunuz:
 
-* Yarı depolama için yapılandırılabilecek bir Azure Time Series Insights önizleme ortamı.
+* Normal veri depolama için yapılandırılabilecek bir Azure Time Series Insights önizleme ortamı.
 * Soğuk veri depolama için Azure depolama genel amaçlı v1 blob hesabı.
 
-Isınma deponuzdaki veriler yalnızca [zaman serisi sorgusu](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)ile kullanılabilir. 
+Isınma deponuzdaki veriler yalnızca [zaman serisi sorgusu](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)ile kullanılabilir. Isınma depoluıza Time Series Insights ortamı oluşturulurken seçilen [Bekletme dönemi](./time-series-insights-update-plan.md#the-preview-environment) içinde son veriler yer alacak.
 
 Time Series Insights önizleme, soğuk mağaza verilerinizi [Parquet dosya biçiminde](#parquet-file-format-and-folder-structure)Azure Blob depolamaya kaydeder. Time Series Insights önizlemesi, bu soğuk depolama verilerini özel olarak yönetir, ancak doğrudan standart Parquet dosyaları olarak okumanız için kullanılabilir.
 
@@ -186,12 +186,7 @@ Azure Blob depolama alanının kapsamlı bir açıklaması için, [depolama Blob
 
 Azure Time Series Insights Preview PAYG ortamı oluşturduğunuzda, uzun vadeli soğuk depolduğunuz için bir Azure depolama genel amaçlı v1 blob hesabı oluşturulur.  
 
-Azure Time Series Insights önizlemesi, Azure Depolama hesabınızdaki her bir olayın en fazla iki kopyasını yayımlar. İlk kopyanın alma zamanına göre sıralanmış olayları vardır. Bu olay sırası, diğer hizmetlerin sıralama sorunları olmadan olaylarınızı erişebilmeleri için **her zaman korunur** . 
-
-> [!NOTE]
-> Ham Parquet dosyalarını işlemek için Spark, Hadoop ve diğer tanıdık araçları da kullanabilirsiniz. 
-
-Time Series Insights önizleme Ayrıca, Time Series Insights sorgu için iyileştirmek üzere Parquet dosyalarını yeniden bölümlendirir. Verilerin yeniden bölümlenmiş kopyası da kaydedilir. 
+Azure Time Series Insights önizleme, Azure Depolama hesabınızdaki her bir olayın en fazla iki kopyasını tutar. Bir kopya alma zamanına göre sıralanmış olayları depolar, her zaman bir zaman sıralı dizideki olaylara erişime izin verir. Zaman içinde Time Series Insights önizlemesi, performansı iyileştirmek için verilerin yeniden bölümlendirilmiş bir kopyasını da oluşturur Time Series Insights. 
 
 Genel Önizleme sırasında veriler Azure depolama hesabınızda süresiz olarak depolanır.
 
@@ -199,15 +194,11 @@ Genel Önizleme sırasında veriler Azure depolama hesabınızda süresiz olarak
 
 Sorgu performansının ve veri kullanılabilirliğinin emin olmak için Time Series Insights önizlemenin oluşturduğu blob 'ları düzenlemeyin veya silmeyin.
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights önizlemeye erişme ve verileri dışarı aktarma
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Time Series Insights önizleme soğuk mağaza verilerine erişme 
 
-Diğer hizmetlerle birlikte kullanmak üzere Time Series Insights önizleme Gezgininde görüntülenen verilere erişmek isteyebilirsiniz. Örneğin, Power BI bir rapor oluşturmak veya Azure Machine Learning Studio kullanarak makine öğrenimi modelini eğitebilmeniz için verilerinizi kullanabilirsiniz. Ya da verilerinizi Jupyıter Not defterlerinizde dönüştürmek, görselleştirmek ve modellemek için kullanabilirsiniz.
+[Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md) ve [zaman serisi sorgusundan](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, soğuk depoda depolanan Parquet dosyalarından verilerinize doğrudan de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
 
-Verilerinize üç genel yolla erişebilirsiniz:
-
-* Time Series Insights önizleme Gezgini ' nden. Verileri bir CSV dosyası olarak gezgin 'den dışarı aktarabilirsiniz. Daha fazla bilgi için [Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)' ni okuyun.
-* Olayları Al sorgusunu kullanarak Time Series Insights Preview API. Bu API hakkında daha fazla bilgi edinmek için [zaman serisi sorgusunu](./time-series-insights-update-tsq.md)okuyun.
-* Doğrudan bir Azure Storage hesabından. Time Series Insights Preview verilerinize erişmek için kullandığınız hesaba okuma erişiminizin olması gerekir. Daha fazla bilgi için, [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md)konusunu okuyun.
+Verilere doğrudan Azure Storage hesabınızdan erişmek için, Time Series Insights Preview verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra, [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde açıklanan `PT=Time` klasöründe yer alan Parquet dosyasının oluşturulma zamanına göre seçili verileri okuyabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Veri silme
 
@@ -215,21 +206,21 @@ Time Series Insights önizleme dosyalarınızı silmeyin. Yalnızca Time Series 
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet dosya biçimi ve klasör yapısı
 
-Parquet, verimli depolama ve performans için tasarlanan açık kaynaklı bir sütunlu dosya biçimidir. Time Series Insights önizleme, bu nedenlerle Parquet kullanır. Veri, ölçek sırasında sorgu performansı için zaman serisi KIMLIĞINE göre verileri bölümler.  
+Parquet, verimli depolama ve performans için tasarlanan açık kaynaklı bir sütunlu dosya biçimidir. Time Series Insights önizlemesi, zaman serisi KIMLIK tabanlı sorgu performansını ölçekte etkinleştirmek için Parquet kullanır.  
 
 Parquet dosya türü hakkında daha fazla bilgi için, [Parquet belgelerini](https://parquet.apache.org/documentation/latest/)okuyun.
 
 Time Series Insights önizlemesi verilerinizin kopyalarını aşağıdaki gibi depolar:
 
-* Birincisi, ilk kopya alma zamanına göre bölümlendirilir ve verileri kabaca gelişme sırasıyla depolar. Veriler `PT=Time` klasöründe bulunur:
+* Birincisi, ilk kopya alma zamanına göre bölümlendirilir ve verileri kabaca gelişme sırasıyla depolar. Bu veriler `PT=Time` klasöründe bulunur:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* İkinci, yeniden bölümlenmiş kopya, zaman serisi kimliklerinin gruplandırılmasıyla bölümlenir ve `PT=TsId` klasöründe bulunur:
+* İkinci, yeniden bölümlenmiş kopya zaman serisi kimliklerine göre gruplandırılır ve `PT=TsId` klasöründe bulunur:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-Her iki durumda da, zaman değerleri blob oluşturulma zamanına karşılık gelir. `PT=Time` klasöründeki veriler korunur. `PT=TsId` klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik olarak kalmaz.
+Her iki durumda da, Parquet dosyasının Time özelliği blob oluşturulma zamanına karşılık gelir. `PT=Time` klasördeki veriler, dosyaya yazıldıktan sonra hiçbir değişiklik yapmadan korunur. `PT=TsId` klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir.
 
 > [!NOTE]
 > * `<YYYY>` dört basamaklı bir yıl gösterimine eşlenir.
@@ -239,10 +230,10 @@ Her iki durumda da, zaman değerleri blob oluşturulma zamanına karşılık gel
 Time Series Insights Preview olayları, aşağıdaki gibi, Parquet dosya içeriklerine eşlenir:
 
 * Her olay tek bir satırla eşlenir.
-* Her satır, bir olay zaman damgasıyla **zaman damgası** sütunu içerir. Zaman damgası özelliği hiçbir zaman null değildir. Olay kaynağında zaman damgası özelliği belirtilmemişse, **olay sıraya alınan zamanı** varsayılan olarak belirler. Zaman damgası her zaman UTC 'dir.
-* Her satır, Time Series Insights ortamı oluşturulduğunda tanımlanan zaman serisi ID sütununu içerir. Özellik adı `_string` sonekini içerir.
+* Her satır, bir olay zaman damgasıyla **zaman damgası** sütunu içerir. Zaman damgası özelliği hiçbir zaman null değildir. Olay kaynağında zaman damgası özelliği belirtilmemişse, varsayılan olarak **olay sıraya alınan zaman** . Depolanan zaman damgası her zaman UTC olarak kullanılır.
+* Her satır, Time Series Insights ortamı oluşturulduğunda tanımlanan zaman serisi KIMLIĞI (TSıD) sütununu içerir. TSıD Özellik adı `_string` sonekini içerir.
 * Telemetri verileri olarak gönderilen diğer tüm özellikler, özellik türüne bağlı olarak `_string` (dize), `_bool` (Boolean), `_datetime` (DateTime) veya `_double` (Double) ile biten sütun adlarıyla eşlenir.
-* Bu eşleme düzeni, **V = 1**olarak başvurulan dosya biçiminin ilk sürümü için geçerlidir. Bu özellik geliştikçe, ad arttırılabilirler.
+* Bu eşleme şeması, **V = 1** olarak başvurulan ve aynı ada sahip temel klasörde depolanan dosya biçiminin ilk sürümü için geçerlidir. Bu özellik geliştikçe, bu eşleme şeması değişebilir ve başvuru adı artar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

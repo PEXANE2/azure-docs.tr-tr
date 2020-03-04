@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208855"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249593"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven kullanma
 
@@ -23,10 +23,10 @@ Bu makalede, Maven komut satırı aracıyla Azure Işlevleri için bir Java işl
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Java kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
+Java kullanarak işlev uygulamaları geliştirebilmeniz için şunlar yüklü olmalıdır:
 
-- [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8
-- [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri
+- [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
+- [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
 
@@ -74,7 +74,7 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 | **Sürüm** | `1.0-SNAPSHOT`varsayılan değerini seçin. |
 | **leyebilir** | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. Bu hızlı başlangıçtaki örneklerde `com.fabrikam.functions`kullanılır. |
 | **appName** | Azure 'da yeni işlev uygulamanızı tanımlayan genel olarak benzersiz ad. _ArtifactId_ , rastgele bir sayı ile eklenmiş olan varsayılanı kullanın. Bu değeri, daha sonra ihtiyacınız olacağını unutmayın. |
-| **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan: `westus`. Tüm bölgelerin bir listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan değer: `westus`. Tüm bölgelerin bir listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
 | **Kaynak** | İşlev uygulamanızın oluşturulacağı yeni [kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu hızlı başlangıçta örnekleri tarafından kullanılan `myResourceGroup`kullanın. Kaynak grubu, Azure aboneliğiniz için benzersiz olmalıdır.|
 
 Onaylamak için `Y` yazın veya ENTER tuşuna basın.
@@ -98,7 +98,7 @@ mvn azure-functions:run
 
 Projeyi yerel olarak çalıştırdığınızda Azure Functions Core Tools aşağıdakine benzer bir çıktı görürsünüz:
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -116,7 +116,7 @@ Yeni bir Terminal penceresinde kıvrımlı kullanarak işlevi komut satırından
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 Yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) gerekli değildir. İşlev kodunu durdurmak için terminalde `Ctrl+C` komutunu kullanın.
@@ -137,7 +137,7 @@ az login
 
 Projenizi yeni bir işlev uygulamasına dağıtmak için aşağıdaki Maven komutunu kullanın. 
 
-```azurecli
+```console
 mvn azure-functions:deploy
 ```
 
@@ -150,7 +150,7 @@ Bu `azure-functions:deploy` Maven hedefi, Azure 'da aşağıdaki kaynakları olu
 
 Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin olan [ZIP dağıtımını](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır.
 
-Dağıtım tamamlandıktan sonra, işlev uygulaması uç noktalarınıza erişmek için kullanabileceğiniz URL 'YI görürsünüz. Yayımladığımız HTTP tetikleyicisi `authLevel = AuthorizationLevel.FUNCTION`kullandığından, işlev uç noktasını HTTP üzerinden çağırmak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure Portal].
+Dağıtım tamamlandıktan sonra, işlev uygulaması uç noktalarınıza erişmek için kullanabileceğiniz URL 'YI görürsünüz. Yayımladığımız HTTP tetikleyicisi `authLevel = AuthorizationLevel.FUNCTION`kullandığından, işlev uç noktasını HTTP üzerinden çağırmak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure portalında].
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
@@ -161,7 +161,7 @@ Dağıtım tamamlandıktan sonra, işlev uygulaması uç noktalarınıza erişme
 
 İşlevinizi tetiklemek için gereken URL 'yi, Azure portal işlev anahtarıyla alabilirsiniz. 
 
-1. [Azure Portal]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
+1. [Azure portalında]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
  
 1. İşlev uygulamanızda Işlevler ' i genişletin **(salt okunurdur)** , işlevinizi seçin, sonra **</> Işlev URL 'sini al** ' ı seçin. 
 
@@ -175,13 +175,13 @@ Dağıtım tamamlandıktan sonra, işlev uygulaması uç noktalarınıza erişme
 
 `cURL`kullanarak Azure 'da çalışan işlev uygulamasını doğrulamak için, aşağıdaki örnekteki URL 'YI portaldan kopyaladığınız URL ile değiştirin.
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 Bu, istek gövdesinde `AzureFunctions` ile işlev uç noktasına bir POST isteği gönderir. Aşağıdaki yanıtı görürsünüz.
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 
@@ -197,4 +197,4 @@ HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz
 
 
 [Azure CLI]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Azure portalında]: https://portal.azure.com

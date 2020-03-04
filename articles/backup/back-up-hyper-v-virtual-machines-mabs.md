@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586521"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255057"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -171,7 +171,7 @@ Dinamik geçiş korumasını ayarlamak için:
 
 1. SQL Server Management Studio açın ve MABS veritabanını barındıran örneğe bağlanın.
 
-2. Şu sorguyu çalıştırın: `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'`. Bu sorgu, **ScheduleID**değerini döndürür. Sonraki adımda kullanacağınız şekilde bu KIMLIĞI aklınızda bulabilirsiniz.
+2. Şu sorguyu çalıştırın: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Bu sorgu, **ScheduleID**değerini döndürür. Sonraki adımda kullanacağınız şekilde bu KIMLIĞI aklınızda bulabilirsiniz.
 
 3. SQL Server Management Studio, **SQL Server Agent**' i genişletin ve ardından **işler**' i genişletin. Not ettiğiniz **ScheduleID** ' ye sağ tıklayın ve **adımdaki işi Başlat**' ı seçin.
 

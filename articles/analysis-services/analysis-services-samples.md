@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572297"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247832"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services örnekleri
 
@@ -26,6 +26,9 @@ GitHub 'daki [Analysis Services](https://github.com/Microsoft/Analysis-Services)
 
 GitHub üzerinde [Analysis Services Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) , en yaygın kullanılan örnek tablosal model projem ' dir. VS projesini veya tamamlanmış bir örnek tablosal model veritabanını indirebilirsiniz.
 
+## <a name="sample-database-on-azure"></a>Azure 'da örnek veritabanı
+
+Azure SYNAPSE Analytics (SQL veri ambarı), sağlanan bir kaynağa eklenebilecek bir örnek AdventureWorksDW veritabanı sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SYNAPSE ANALYTICS SQL havuzu oluşturma ve sorgulama](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>GitHub 'da örnek veritabanları
 

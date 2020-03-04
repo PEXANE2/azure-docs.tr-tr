@@ -4,15 +4,15 @@ description: Genişleme Azure Analysis Services sunucularını çoğaltın. Daha
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310195"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247983"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -30,7 +30,7 @@ Bir sorgu havuzunda sahip olduğunuz sorgu çoğaltmalarının sayısından bağ
 
 Ölçeği ölçeklendirirken, yeni sorgu çoğaltmalarının sorgu havuzuna artımlı olarak eklenmesi beş dakikaya kadar sürebilir. Tüm yeni sorgu çoğaltmaları çalışır duruma geldiğinde, yeni istemci bağlantıları sorgu havuzundaki kaynaklar arasında yük dengelemesi yapılır. Mevcut istemci bağlantıları, o anda bağlı oldukları kaynaktan değiştirilmez. ' De ölçeklendirilirken, sorgu havuzundan kaldırılmakta olan bir sorgu havuzu kaynağına yönelik mevcut istemci bağlantıları sonlandırılır. İstemciler kalan bir sorgu havuzu kaynağına yeniden bağlanabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki model veritabanları yeni bir sorgu havuzundaki yeni yinelemelerle *otomatik olarak* eşitlenir. Otomatik eşitleme yalnızca bir kez gerçekleşir. Otomatik eşitleme sırasında, birincil sunucunun veri dosyaları (blob depolamada Rest 'te şifrelenir), blob depolamada bekleyen bir ikinci konuma kopyalanır. Sorgu havuzundaki çoğaltmalar daha sonra ikinci dosya *kümesindeki verilerle birlikte* gösterilir. 
 
@@ -74,19 +74,23 @@ Hem işleme hem de sorgu işlemleri için en yüksek performans için, işlem su
 
 ## <a name="monitor-qpu-usage"></a>QPU kullanımını izleme
 
-Sunucunuz için ölçek genişletme gerekip gerekmediğini öğrenmek için, ölçümleri kullanarak sunucunuzu Azure portal izleyin. QPU 'niz düzenli olarak kullanılıyorsa, modellerinize yönelik sorguların sayısı, planınız için QPU sınırını aşmasıdır. Sorgu havuzu iş kuyruğu uzunluğu ölçümü, sorgu iş parçacığı havuzu sırasındaki sorguların sayısı kullanılabilir QPU 'ları aştığında de artar. 
+Sunucunuz için ölçek genişletme gerekip gerekmediğini öğrenmek için, ölçümleri kullanarak [sunucunuzu Azure Portal izleyin](analysis-services-monitor.md) . QPU 'niz düzenli olarak kullanılıyorsa, modellerinize yönelik sorguların sayısı, planınız için QPU sınırını aşmasıdır. Sorgu havuzu iş kuyruğu uzunluğu ölçümü, sorgu iş parçacığı havuzu sırasındaki sorguların sayısı kullanılabilir QPU 'ları aştığında de artar. 
 
 İzleme için başka bir iyi ölçüm, ServerResourceType tarafından ortalama QPU 'dir. Bu ölçüm, birincil sunucu için Ortalama QPU 'ları sorgu havuzu ile karşılaştırır. 
 
 ![Sorgu ölçeği genişletme ölçümleri](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>QPU 'yi ServerResourceType ile yapılandırmak için
+**QPU 'yi ServerResourceType ile yapılandırmak için**
+
 1. Ölçüm çizgisi grafiğinde **ölçüm Ekle**' ye tıklayın. 
 2. **Kaynak**bölümünde, sunucunuzu seçin, ardından **ölçüm ad**alanında **Standart ölçümler Analysis Services**seçin, sonra **metrik**bölümünde **qpu**' **yi seçin ve**ardından **toplama**' yı seçin. 
 3. **Bölmeyi Uygula**' ya tıklayın. 
 4. **Değerler**' de **serverresourcetype**' ı seçin.  
 
-Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md).
+### <a name="detailed-diagnostic-logging"></a>Ayrıntılı tanılama günlüğü
+
+Ölçeği genişletilmiş sunucu kaynaklarının daha ayrıntılı tanılaması için Azure Izleyici günlüklerini kullanın. Günlükler ile, sunucu ve çoğaltmaya göre QPU ve bellek ayırmak için Log Analytics sorguları kullanabilirsiniz. Daha fazla bilgi için bkz. [tanılama günlüğü Analysis Services](analysis-services-logging.md#example-queries)örnek sorgular.
+
 
 ## <a name="configure-scale-out"></a>Ölçek genişletmeyi yapılandırma
 
@@ -127,7 +131,7 @@ Eşitleme işlemlerinin el ile veya REST API kullanılarak gerçekleştirilmesi 
 Dönüş durum kodları:
 
 
-|Kodlayın  |Açıklama  |
+|Kod  |Açıklama  |
 |---------|---------|
 |-1     |  Geçersiz       |
 |0     | Yapan        |

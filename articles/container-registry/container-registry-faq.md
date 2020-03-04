@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708317"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252073"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -114,13 +114,13 @@ ACR, Docker kayıt defteri HTTP API v2 'YI destekler. API 'Lerine `https://<your
 
 Bash kullanıyorsanız:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 PowerShell için:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 Depolama kullanımının Azure portal arttığını veya CLı kullanarak kullanımı sorgulama yapabilmesini sağlayabilirsiniz.
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Azure CLı veya portalını kullanarak görüntüyü silin ve güncelleştirilmiş kullanımı birkaç dakika içinde denetleyin.
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -188,7 +188,7 @@ Herhangi bir yeni Docker istemcisini (sürüm 18.03.0 ve üzeri) kullanarak TLS 
 > [!IMPORTANT]
 > Azure Container Registry 13 Ocak 2020 tarihinden itibaren, sunuculardan ve uygulamalardan gelen tüm güvenli bağlantıların TLS 1,2 kullanması gerekir. TLS 1,0 ve 1,1 desteği kullanımdan kaldırılacak.
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Azure Container Registry, İçerik Güveni'ni destekler mi?
+### <a name="does-azure-container-registry-support-content-trust"></a>Azure Container Registry Içerik güvenini destekliyor mu?
 
 Evet, [Docker noçi](https://docs.docker.com/notary/getting_started/) tümleşik olduğundan ve etkinleştirilemediğinden Azure Container Registry içindeki güvenilir görüntüleri kullanabilirsiniz. Ayrıntılar için bkz. [Azure Container Registry Içerik güveni](container-registry-content-trust.md).
 
@@ -216,12 +216,12 @@ ACR, farklı izin düzeyleri sağlayan [özel rolleri](container-registry-roles.
   Daha sonra, `AcrPull` veya `AcrPush` rolünü bir kullanıcıya atayabilirsiniz (Aşağıdaki örnek `AcrPull`kullanır):
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   Ya da rolü, uygulama KIMLIĞI tarafından tanımlanan bir hizmet ilkesine atayın:
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ Atanan e-, daha sonra kayıt defterindeki görüntülere kimlik doğrulaması ya
   az acr repository list -n myRegistry
   ```
 
- Bir görüntü çekmek için:
-    
-  ```azurecli
+* Bir görüntü çekmek için:
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ Ortak ortam ve kayıt defteri sorunlarını gidermek için bkz. [Azure Container
  - `docker pull` sürekli olarak başarısız olursa Docker daemon ile ilgili bir sorun olabilir. Bu sorun genellikle Docker Daemon yeniden başlatılarak azaltılabilir. 
  - Docker Daemon 'ı yeniden başlattıktan sonra bu sorunu görmeye devam ederseniz, sorun makinede bazı ağ bağlantısı sorunları olabilir. Makinedeki genel ağın sağlıklı olup olmadığını denetlemek için uç nokta bağlantısını test etmek üzere aşağıdaki komutu çalıştırın. Bu bağlantı denetimi komutunu içeren en düşük `az acr` sürümü 2.2.9 ' dir. Daha eski bir sürüm kullanıyorsanız Azure CLı 'nizi yükseltin.
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - Tüm Docker istemci işlemlerinde her zaman bir yeniden deneme mekanizması olmalıdır.
 
 ### <a name="docker-pull-is-slow"></a>Docker çekme yavaş
@@ -308,7 +309,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. `--signature-verification=false` seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker`ekleyin. Örneğin:
+1. `--signature-verification=false` seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker`ekleyin. Örnek:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -422,7 +423,7 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik Duvarı
+* Güvenlik duvarı
 * Ad engelleyiciler
 * DNS hataları
 
@@ -437,7 +438,7 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -491,10 +492,10 @@ Bu ayar `az acr run` komutu için de geçerlidir.
 
 | Git hizmeti | Kaynak bağlamı | El ile derleme | Tamamlama tetikleyicisi aracılığıyla otomatik derleme |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Evet | Evet |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Evet | Evet |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Evet | Hayır |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Evet | Hayır |
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Yes | Yes |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Yes | Yes |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Yes | Hayır |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Yes | Hayır |
 
 ## <a name="run-error-message-troubleshooting"></a>Çalıştırma hata Iletisi sorun giderme
 

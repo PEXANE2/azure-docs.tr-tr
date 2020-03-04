@@ -1,24 +1,24 @@
 ---
-title: Quota errors
-description: Describes how to resolve resource quota errors when deploying resources with Azure Resource Manager.
+title: Kota hataları
+description: Kaynakları Azure Resource Manager ile dağıttığınızda kaynak kota hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: d36f7d12f432839760b68c85e1c5761e0caf8d85
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659364"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250151"
 ---
-# <a name="resolve-errors-for-resource-quotas"></a>Resolve errors for resource quotas
+# <a name="resolve-errors-for-resource-quotas"></a>Kaynak kotaları hatalarını çözme
 
-This article describes quota errors you may encounter when deploying resources.
+Bu makalede, kaynakları dağıttığınızda karşılaşabileceğiniz kota hataları açıklanır.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Belirti
 
-If you deploy a template that creates resources that exceed your Azure quotas, you get a deployment error that looks like:
+Azure kotalarınızı aşan kaynaklar oluşturan bir şablon dağıtırsanız, şöyle görünen bir dağıtım hatası alırsınız:
 
 ```
 Code=OperationNotAllowed
@@ -26,7 +26,7 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-Or, you may see:
+Ya da şunları görebilirsiniz:
 
 ```
 Code=ResourceQuotaExceeded
@@ -38,21 +38,21 @@ please delete some resources of this type before creating a new one.
 ## <a name="cause"></a>Nedeni
 
 Kotalar kaynak grubu başına, aboneliklere, hesaplara ve diğer kapsamlara uygulanır. Örneğin aboneliğiniz bir bölge için çekirdek sayısını sınırlandıracak şekilde yapılandırılmış olabilir. İzin verilen miktardan daha fazla çekirdeği olan bir sanal makine dağıtmaya çalışırsanız, kotanın aşıldığını belirten bir hata alırsınız.
-For complete quota information, see [Azure subscription and service limits, quotas, and constraints](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+Tüm kota bilgileri için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="azure-cli"></a>Azure CLI
 
-For Azure CLI, use the `az vm list-usage` command to find virtual machine quotas.
+Azure CLı için, sanal makine kotalarını bulmak için `az vm list-usage` komutunu kullanın.
 
 ```azurecli
 az vm list-usage --location "South Central US"
 ```
 
-Which returns:
+Şunu döndürür:
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,
@@ -68,13 +68,13 @@ Which returns:
 
 ### <a name="powershell"></a>PowerShell
 
-For PowerShell, use the **Get-AzVMUsage** command to find virtual machine quotas.
+PowerShell için, sanal makine kotalarını bulmak için **Get-AzVMUsage** komutunu kullanın.
 
 ```powershell
 Get-AzVMUsage -Location "South Central US"
 ```
 
-Which returns:
+Şunu döndürür:
 
 ```powershell
 Name                             Current Value Limit  Unit
@@ -86,10 +86,10 @@ Virtual Machines                             0 10000 Count
 
 ## <a name="solution"></a>Çözüm
 
-To request a quota increase, go to the portal and file a support issue. In the support issue, request an increase in your quota for the region into which you want to deploy.
+Kota artışı istemek için portala gidin ve bir destek sorunu verin. Destek sorunu içinde, dağıtmak istediğiniz bölge için kotasında bir artış isteyin.
 
 > [!NOTE]
-> Remember that for resource groups, the quota is for each individual region, not for the entire subscription. If you need to deploy 30 cores in West US, you have to ask for 30 Resource Manager cores in West US. If you need to deploy 30 cores in any of the regions to which you have access, you should ask for 30 Resource Manager cores in all regions.
+> Kaynak grupları için kota, aboneliğin tamamına değil, her bir bölgeye yöneliktir. Batı ABD 'de 30 çekirdek dağıtmanız gerekiyorsa, Batı ABD 'de 30 Kaynak Yöneticisi çekirdek sormanız gerekir. Erişiminiz olan herhangi bir bölgede 30 çekirdek dağıtmanız gerekiyorsa, tüm bölgelerde 30 Kaynak Yöneticisi çekirdek isteymelisiniz.
 >
 >
 
@@ -101,14 +101,14 @@ To request a quota increase, go to the portal and file a support issue. In the s
 
    ![Abonelik seçme](./media/error-resource-quota/select-subscription.png)
 
-3. Select **Usage + quotas**
+3. **Kullanım + kotalar** ' ı seçin
 
-   ![Select usage and quotas](./media/error-resource-quota/select-usage-quotas.png)
+   ![Kullanım ve kotaları seçin](./media/error-resource-quota/select-usage-quotas.png)
 
-4. In the upper right corner, select **Request increase**.
+4. Sağ üst köşede **istek artışı**' nı seçin.
 
-   ![Request increase](./media/error-resource-quota/request-increase.png)
+   ![İstek artışı](./media/error-resource-quota/request-increase.png)
 
 5. Artırmanız gereken kota türünün formlarını doldurun.
 
-   ![Fill in form](./media/error-resource-quota/forms.png)
+   ![Formu doldur](./media/error-resource-quota/forms.png)

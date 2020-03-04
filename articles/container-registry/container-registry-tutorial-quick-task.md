@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure’da Azure Container Registry Görevleri (AC
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456055"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252107"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın
 
@@ -32,7 +32,7 @@ Sonraki öğreticilerde, ACR Görevlerini kod işleme ve temel görüntü günce
 
 Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Azure CLI sürüm **2.0.46** veya sonraki bir sürümünün yüklü ve oturum açmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek][azure-cli].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="github-account"></a>GitHub hesabı
 
@@ -52,13 +52,13 @@ Deponun çatalını oluşturduktan sonra çatalınızı kopyalayın ve yerel kop
 
 `git` ile depoyu kopyalayın, **\<your-github-username\>** değerini GitHub kullanıcı adınızla değiştirin:
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 Kaynak kodunu içeren dizine girin:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ Kaynak kodunu makinenize çektikten sonra aşağıdaki adımları izleyerek bir 
 
 Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. **\<registry-name\>** değerini yeni kapsayıcı kayıt defterinizin benzersiz adıyla değiştirin. Kayıt defteri adı Azure içinde benzersiz olmalı, yalnızca küçük harf ve 5-50 alfasayısal karakter içermelidir. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
 
-```azurecli-interactive
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -284,7 +286,7 @@ Server running at http://localhost:80
 
 `Server running at http://localhost:80` göründüğünde, çalışan uygulamayı görmek için tarayıcınızda kapsayıcının FQDN’sine gidin. FQDN, önceki bölümde yürüttüğünüz `az container create` komutunun çıktısında görüntülenmiş olmalıdır.
 
-![Tarayıcıda işlenen örnek uygulamanın ekran görüntüsü][quick-build-02-browser]
+![Tarayıcıda oluşturulan örnek uygulamanın ekran görüntüsü][quick-build-02-browser]
 
 Konsolunuzu kapsayıcıdan ayırmak için `Control+C` öğesine dokunun.
 

@@ -3,14 +3,14 @@ title: SKU kullanılamıyor hatası
 description: Azure Resource Manager ile kaynak dağıtımında SKU kullanılamıyor hatası ile ilgili sorunların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: be341a5ed5321fe71b0e3b34ba5f6cc823958c8b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5d055540b4c0d8f2900d2ede6735662801be5974
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462301"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250637"
 ---
-# <a name="resolve-errors-for-sku-not-available"></a>SKU kullanılamıyor için hataları çözün
+# <a name="resolve-errors-for-sku-not-available"></a>Kullanılamayan SKU’larla ilgili hataları giderme
 
 Bu makalede, **Skunotavailable** hatasının nasıl çözümleneceği açıklanır. Bu bölgede/bölgede veya iş gereksinimlerinizi karşılayan alternatif bir bölgede/bölgede uygun bir SKU bulamıyorsanız Azure desteği 'ne bir [SKU isteği](https://aka.ms/skurestriction) gönderebilirsiniz.
 
@@ -70,7 +70,7 @@ az vm list-skus --location southcentralus --size Standard_F --output table
 
 Komut şunun gibi sonuçlar döndürür:
 
-```azurecli
+```output
 ResourceType     Locations       Name              Zones    Capabilities    Restrictions
 ---------------  --------------  ----------------  -------  --------------  --------------
 virtualMachines  southcentralus  Standard_F1                ...             None

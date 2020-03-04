@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 500e07296040305f1e469fde78988f2551440e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472628"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250106"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarıyla SQL BACPAC dosyalarını içeri aktarma
 
@@ -27,16 +27,16 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu dağıtın.
 > * Dağıtım doğrulama.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
 * Kaynak Yöneticisi Araçları uzantısıyla Visual Studio Code. Bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](./use-vs-code-to-create-template.md).
 * Güvenliği artırmak için, Azure SQL Server yönetici hesabı için oluşturulan bir parola kullanın. Aşağıda, bir parola oluşturmak için kullanabileceğiniz bir örnek verilmiştir:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 
@@ -242,7 +242,7 @@ Oluşturulan bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
 Azure portal, yeni dağıtılan kaynak grubundan SQL veritabanı ' nı seçin. **Sorgu düzenleyicisi (önizleme)** öğesini seçip yönetici kimlik bilgilerini girin. Veritabanına aktarılmış iki tablo görürsünüz.
 
-![Sorgu düzenleyicisi (önizleme)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+![Sorgu Düzenleyicisi (Önizleme)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

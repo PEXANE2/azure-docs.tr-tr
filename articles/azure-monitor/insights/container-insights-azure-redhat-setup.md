@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici i
 description: Bu makalede, Azure Red Hat OpenShift 'te barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190086"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250690"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma
 
@@ -113,7 +113,7 @@ Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log An
 
     Çıktı aşağıdakine benzer:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -123,7 +123,7 @@ Azure 'da dağıtılan bir Azure Red Hat OpenShift kümesinin izlenmesini etkinl
 
 ### <a name="from-the-azure-portal"></a>Azure portalından
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Azure portal menüsünde veya giriş sayfasından **Azure izleyici**' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin.
 
@@ -197,7 +197,7 @@ Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log An
 
     Çıktı aşağıdakine benzer:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 

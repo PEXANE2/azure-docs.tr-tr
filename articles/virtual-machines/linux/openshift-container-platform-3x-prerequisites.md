@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035468"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255685"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtmaya yönelik genel Önkoşullar
 
@@ -102,9 +102,9 @@ Openshıft, bir Kullanıcı adı ve parola veya hizmet sorumlusu kullanarak Azur
 
 [Az ad SP Create-for-RBAC](/cli/azure/ad/sp) ile bir hizmet sorumlusu oluşturun ve OpenShift 'in ihtiyaç duyacağı kimlik bilgilerini çıktı.
 
-Aşağıdaki örnek bir hizmet sorumlusu oluşturur ve bu gruba, openkaydırıcı Trg adlı bir kaynak grubuna katkıda bulunan izinleri atar.
+Aşağıdaki örnek bir hizmet sorumlusu oluşturur ve bu gruba, *openkaydırıcı Trg*adlı bir kaynak grubuna katkıda bulunan izinleri atar.
 
-İlk olarak, openkaydırıcı Trg adlı kaynak grubunu oluşturun:
+İlk olarak, *openkaydırıcı Trg*adlı kaynak grubunu oluşturun:
 
 ```azurecli
 az group create -l eastus -n openshiftrg

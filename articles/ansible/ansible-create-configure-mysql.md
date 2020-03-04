@@ -4,12 +4,12 @@ description: MySQL sunucusu için Azure Veritabanı oluşturmak ve yapılandırm
 keywords: ansible, azure, devops, bash, playbook, mysql, veritabanı
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603117"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247880"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Öğretici: anlanabilir kullanarak MySQL için Azure veritabanı 'nda veritabanlarını yapılandırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "77603117"
 > * MySql sunucusu oluşturma
 > * MySql veritabanı oluşturma
 > * Bir dış uygulamanın sunucunuza bağlanabilmesi için bir güvenlik duvarı kuralı yapılandırın
-> * Azure Cloud Shell 'den MySql sunucunuza bağlanma
+> * Azure Cloud Shell MySql sunucunuza bağlanın
 > * Kullanılabilir MySQL sunucularınızı sorgulama
 > * Bağlı sunuculardaki tüm veritabanlarını listeleme
 
@@ -155,11 +155,15 @@ ansible-playbook mysql_firewall.yml
 
 ## <a name="connect-to-the-server"></a>Sunucuya bağlanma
 
-Bu bölümde, daha önce oluşturduğunuz sunucuya bağlanmak için Azure Cloud Shell 'i kullanırsınız.
+Bu bölümde, daha önce oluşturduğunuz sunucuya bağlanmak için Azure Cloud Shell kullanırsınız.
 
-1. Aşağıdaki kodda, **deneyin** düğmesini seçin:
+1. Aşağıdakileri seçerek shell.azure.com açın.
 
-    ```azurecli-interactive
+   [![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+
+1. Aşağıdaki kodu girin:
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ Bu bölümde, daha önce oluşturduğunuz sunucuya bağlanmak için Azure Cloud 
     
     Her şey iyi olursa aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

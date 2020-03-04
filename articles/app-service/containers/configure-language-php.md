@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir PHP kapsayıcısın�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913880"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255845"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service için bir Linux PHP uygulaması yapılandırma
 
@@ -204,15 +204,7 @@ Değişikliklerin etkili olması için uygulamayı yeniden başlatın.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
 - Uygulamanızı hata ayıklama modunda App Service çalıştırın. Örneğin, [Laraesin](https://meanjs.org/)içinde, [`APP_DEBUG` uygulama ayarını `true`olarak ayarlayarak ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)uygulamanızı üretim sırasında hata ayıklama iletilerini verecek şekilde yapılandırabilirsiniz.
 
-### <a name="robots933456"></a>robots933456
-
-Kapsayıcı günlüklerinde şu iletiyi görebilirsiniz:
-
-```
-2019-04-08T14:07:56.641002476Z "-" - - [08/Apr/2019:14:07:56 +0000] "GET /robots933456.txt HTTP/1.1" 404 415 "-" "-"
-```
-
-Bu iletiyi güvenle yoksayabilirsiniz. `/robots933456.txt`, kapsayıcının istek sunma yeteneğine sahip olup olmadığını denetlemek için App Service tarafından kullanılan bir kukla URL yoludur. 404 yanıtı, yolun mevcut olmadığını gösterir, ancak kapsayıcının sağlıklı olduğunu ve isteklere yanıt vermeye hazırlandığını App Service sağlar.
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

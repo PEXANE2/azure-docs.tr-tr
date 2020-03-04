@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558818"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251301"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Metin Analizi bilişsel hizmet için dış & topluluk içeriği
 
@@ -33,7 +33,11 @@ ms.locfileid: "68558818"
 
 + [Dynamics 365 CRM Online ile yaklaşım Analizi (MSDN blogu)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ PowerBI blogu: Facebook iletilerinden anahtar tümceleri ayıklama: [Bölüm 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) ve [Bölüm 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI blog: Facebook iletilerinden anahtar tümceleri ayıklama: [Bölüm 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) ve [Bölüm 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
+
++ [MS Flow ile bir Yammer grubundaki yorumların yaklaşımını tanımla (Microsoft Tech Community)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
+
+
 
 ## <a name="videos"></a>Videolar
 
@@ -49,5 +53,5 @@ Ele aldığımız bir özellik veya kullanım örneği hakkında bilgi mi arıyo
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [StackOverflow Azure Metin Analizi API'si](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow Azure bilişsel hizmetler](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Azure Metin Analizi API'si](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Azure bilişsel hizmetler](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

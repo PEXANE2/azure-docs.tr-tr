@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş sürekliliği sağlamanıza ve olağanüstü durum kurtarma için hazırlık yapmayı öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8a223e9610d2b243cd78bf8b674262d6438421a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438514"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252395"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -41,7 +41,7 @@ Her küme için bu işlemi tekrarlayın.
 
 Ayrıca, komut satırında dev alanlarını etkinleştirebilirsiniz:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -57,7 +57,7 @@ Takımınızın temelini çalıştıran bir yedekleme kümesini düzgün bir şe
 
 Aşağıdaki CLı komutuyla farklı bir küme seçin:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 

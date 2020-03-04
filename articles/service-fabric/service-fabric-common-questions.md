@@ -4,12 +4,12 @@ description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olm
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293530"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254898"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
@@ -22,7 +22,7 @@ Service Fabric ne yapabilecekleri ve nasıl kullanılması gerektiği hakkında 
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric küme sertifikamı geri almak Nasıl yaparım??
 
-Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) [uygulama yükseltme parametreleri](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
+Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) [uygulama yükseltme parametreleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
  
 Kümeniz Kaynak Yöneticisi şablonunuzda klasik sertifika parmak Izi özelliğini kullanmaya devam ediyorsa, modern gizli dizi yönetim özelliklerinden yararlanmak için [kümeyi sertifika parmak iziyle ortak ad olarak değiştirmeniz](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)önerilir.
 
@@ -34,7 +34,7 @@ Evet.
 
 Bu senaryoyla ilgileniyorsanız, ek rehberlik elde etmek için [Service Fabric GitHub sorunları listesi](https://github.com/azure/service-fabric-issues) veya destek temsilcilerinizle iletişim kurmanız önerilir. Service Fabric takım, bu senaryoya yönelik ek netlik, kılavuz ve öneriler sağlamak için çalışmaktadır. 
 
-Dikkate alınması gereken bazı noktalar şunlardır: 
+Göz önünde bulundurulması gereken bazı noktalar: 
 
 1. Azure 'daki Service Fabric küme kaynağı, kümenin üzerinde oluşturulduğu sanal makine ölçek kümeleri olduğundan, bugün bölgesel olarak bölgedir. Bu durum, bölgesel bir hata durumunda Azure Resource Manager veya Azure portal aracılığıyla kümeyi yönetme özelliğini kaybedebileceğinizi gösterir. Bu durum, küme çalışır durumda kalmaya devam edebilir ve doğrudan etkileşime girebileceksiniz. Ayrıca, Azure bugün bölgeler arasında kullanılabilen tek bir sanal ağa sahip olmanın yanı sıra bu özelliği de sunar. Bu, Azure 'daki çok bölgeli bir kümenin, VM Ölçek kümelerinde veya [Azure VPN ağ geçitlerinde](../vpn-gateway/vpn-gateway-about-vpngateways.md) [her VM için genel IP adresleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) gerektirdiği anlamına gelir. Bu ağ seçimleri, maliyet, performans ve bazı derece uygulama tasarımında farklı etkileri vardır. bu nedenle, bu tür bir ortam olmadan önce dikkatli bir analiz ve planlama gereklidir.
 2. Bu makinelerin bakımı, yönetimi ve izlenmesi, özellikle farklı bulut sağlayıcıları veya şirket içi kaynaklar ile Azure arasında gibi ortam _türlerine_ yayıldığınızda karmaşık hale gelebilir. Yükseltmeler, izleme, yönetim ve tanılamayı, bu tür bir ortamda üretim iş yüklerini çalıştırmadan önce hem küme hem de uygulamalar için anlaşılabilmesini sağlamak için dikkatli olunması gerekir. Bu sorunları Azure 'da veya kendi veri merkezlerinizde çözmenizde deneyimleriniz zaten varsa, Service Fabric kümenizi oluştururken veya çalıştırırken aynı çözümlerin uygulanması olasıdır. 
@@ -101,13 +101,13 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Kümemdeki virüsten koruma programını çalıştırırken dışlandığım dizin ve süreçler nelerdir?
 
-| **Virüsten koruma hariç tutulan dizinler** |
+| **Virüsten koruma için dışlanan dizinler** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (küme yapılandırmasından) |
 | FabricLogRoot (küme yapılandırmasından) |
 
-| **Virüsten koruma dışlanan işlemler** |
+| **Virüsten koruma hariç tutulan süreçler** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |

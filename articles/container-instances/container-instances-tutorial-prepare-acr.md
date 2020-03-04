@@ -4,12 +4,12 @@ description: Azure Container Instances öğreticisi Bölüm 2/3-bir Azure Contai
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 131ea39b382735423a1edff72774313c4096ea2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552436"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252152"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Öğretici: Azure Container Registry oluşturma ve kapsayıcı görüntüsü gönderme
 
@@ -46,8 +46,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 Aşağıda, *mycontainerregistry082* adlı yeni bir Azure kapsayıcı kayıt defteri için çıktı örneği yer almaktadır (burada kısaltılmış şekilde gösterilmektedir):
 
-```console
-$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic
+```output
 ...
 {
   "creationDate": "2018-03-16T21:54:47.297875+00:00",
@@ -78,10 +77,15 @@ Görüntü göndermeden önce, Azure Container Registry örneğinizde oturum aç
 az acr login --name <acrName>
 ```
 
+Örnek:
+
+```azurecli
+az acr login --name mycontainerregistry082
+```
+
 Komut tamamlandığında `Login Succeeded` döndürülür:
 
-```console
-$ az acr login --name mycontainerregistry082
+```output
 Login Succeeded
 ```
 
@@ -97,8 +101,11 @@ az acr show --name <acrName> --query loginServer --output table
 
 Örneğin, kayıt defterinizin adı *mycontainerregistry082* ise:
 
-```console
-$ az acr show --name mycontainerregistry082 --query loginServer --output table
+```azurecli
+az acr show --name mycontainerregistry082 --query loginServer --output table
+```
+
+```output
 Result
 ------------------------
 mycontainerregistry082.azurecr.io
@@ -110,7 +117,7 @@ mycontainerregistry082.azurecr.io
 docker images
 ```
 
-Makinenizdeki diğer görüntülerle birlikte, [önceki öğreticide](container-instances-tutorial-prepare-app.md) derlediğiniz *aci-tutorial-app* görüntüsünü görmeniz gerekir:
+Makinenizdeki diğer görüntülerle birlikte, *önceki öğreticide* derlediğiniz [aci-tutorial-app](container-instances-tutorial-prepare-app.md) görüntüsünü görmeniz gerekir:
 
 ```console
 $ docker images
@@ -163,10 +170,13 @@ Az önce gönderdiğiniz görüntünün Azure Container kayıt defterinizde ger�
 az acr repository list --name <acrName> --output table
 ```
 
-Örneğin:
+Örnek:
 
-```console
-$ az acr repository list --name mycontainerregistry082 --output table
+```azurecli
+az acr repository list --name mycontainerregistry082 --output table
+```
+
+```output
 Result
 ----------------
 aci-tutorial-app
@@ -181,7 +191,7 @@ az acr repository show-tags --name <acrName> --repository aci-tutorial-app --out
 Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
 ```console
-$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
+az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1

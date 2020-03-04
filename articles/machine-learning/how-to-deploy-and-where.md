@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193093"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250962"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ Azure Machine Learning dışında eğitilen modellerle çalışma hakkında daha
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>İşlem hedefi seçin
-
-Web hizmeti dağıtımınızı barındırmak için aşağıdaki işlem hedeflerini veya işlem kaynaklarını kullanabilirsiniz:
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>Tek ve çok modelli uç noktalar
 Azure ML, tek bir uç noktanın arkasında tek veya birden çok modelin dağıtılmasını destekler.
 
@@ -172,9 +166,9 @@ Birden çok modeli barındırmak için çok modelli uç noktalar paylaşılan bi
 
 Tek kapsayıcılı bir uç noktanın arkasında birden çok modelin nasıl kullanılacağını gösteren bir E2E örneği için, [Bu örneğe](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) bakın
 
-## <a name="prepare-deployment-artifacts"></a>Dağıtım yapıtları hazırlama
+## <a name="prepare-to-deploy"></a>Dağıtmaya hazırlanma
 
-Modeli dağıtmak için şunlar gerekir:
+Modeli bir hizmet olarak dağıtmak için aşağıdaki bileşenlere ihtiyacınız vardır:
 
 * **Giriş betiği & kaynak kodu bağımlılıkları**. Bu betik istekleri kabul eder, modeli kullanarak istekleri puan eder ve sonuçları döndürür.
 
@@ -187,11 +181,9 @@ Modeli dağıtmak için şunlar gerekir:
     >
     >   Senaryonuz için işe yönelik bir alternatif, Puanlama sırasında veri depolarına erişim sağlayan [toplu tahmindir](how-to-use-parallel-run-step.md).
 
-* **Çıkarım ortamı**. Modeli çalıştırmak için gereken yüklü paket bağımlılıklarına sahip temel görüntü.
+* **Çıkarım yapılandırması**. Çıkarım yapılandırması, modeli bir hizmet olarak çalıştırmak için gereken ortam yapılandırması, giriş betiği ve diğer bileşenleri belirtir.
 
-* Dağıtılan modeli barındıran işlem hedefi için **dağıtım yapılandırması** . Bu yapılandırma, modeli çalıştırmak için gereken bellek ve CPU gereksinimleri gibi şeyleri açıklar.
-
-Bu öğeler bir *çıkarım yapılandırmasına* ve bir *dağıtım yapılandırmasına*kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur. Dağıtımı gerçekleştirmek için SDK 'Yı kullandığınızda bu konfigürasyonları programlama yoluyla tanımlarsınız. CLı kullandığınızda bunları JSON dosyalarında tanımlarsınız.
+Gerekli bileşenlere sahip olduktan sonra, kendi CPU ve bellek gereksinimlerini anlamak üzere modelinizi dağıtmanın bir sonucu olarak oluşturulacak hizmetin profilini oluşturabilirsiniz.
 
 ### <a id="script"></a>1. giriş betiğinizi ve bağımlılıklarınızı tanımlayın
 
@@ -267,33 +259,7 @@ Bu türler Şu anda destekleniyor:
 * `pyspark`
 * Standart Python nesnesi
 
-Şema oluşturmayı kullanmak için, `inference-schema` paketini Conda ortam dosyanıza ekleyin. Bu paket hakkında daha fazla bilgi için bkz. [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema).
-
-##### <a name="example-dependencies-file"></a>Örnek bağımlılıklar dosyası
-
-Aşağıdaki YAML, çıkarım için Conda Dependencies bir dosya örneğidir. Lütfen, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, > = 1.0.45 = ile azureml-varsayılan değeri bir PIP bağımlılığı olarak belirtmeniz gerektiğini unutmayın.
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> Eğer koda ve PIP (PyPi) ile bağımlılığı varsa Microsoft, Conda 'in, daha güvenilir bir şekilde yükleme yapan önceden oluşturulmuş ikili dosyalarla birlikte geldiğinden, Conda sürümünün kullanılmasını önerir.
->
-> Daha fazla bilgi için bkz. [Conda ve PIP 'Yi anlama](https://www.anaconda.com/understanding-conda-and-pip/).
->
-> Bağımlılarınızın Conda ile kullanılabilir olup olmadığını denetlemek için `conda search <package-name>` komutunu kullanın veya [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) ve [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)paket dizinlerini kullanın.
-
-Otomatik şema oluşturmayı kullanmak istiyorsanız, giriş betiğinizin `inference-schema` paketlerini içeri aktarması gerekir.
-
-Web hizmetinin istek ve yanıt biçimlerini temsil eden `input_sample` ve `output_sample` değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri, `run()` işlevindeki giriş ve çıkış işlevi dekoratlarını kullanın. Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
+Şema oluşturmayı kullanmak için, `inference-schema` paketini bağımlılıklar dosyanıza ekleyin. Bu paket hakkında daha fazla bilgi için bkz. [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema). Web hizmetinin istek ve yanıt biçimlerini temsil eden `input_sample` ve `output_sample` değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri, `run()` işlevindeki giriş ve çıkış işlevi dekoratlarını kullanın. Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
 
 ##### <a name="example-entry-script"></a>Örnek giriş betiği
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. çıkarım ortamınızı tanımlayın
+### <a name="2-define-your-inference-configuration"></a>2. çıkarım yapılandırmanızı tanımlayın
 
-Çıkarım yapılandırması, tahmine dayalı hale getirmek üzere modelin nasıl yapılandırılacağını açıklar. Bu yapılandırma giriş betiğinizin bir parçası değil. Giriş betiğine başvurur ve dağıtım için gerekli tüm kaynakları bulmak için kullanılır. Modeli dağıtırken daha sonra kullanılır.
+Çıkarım yapılandırması, modelinizi içeren Web hizmeti ayarlamayı açıklar. Giriş betiğinizin bir parçası değildir. Giriş betiğine başvurur ve dağıtım için gerekli tüm kaynakları bulmak için kullanılır. Modeli dağıtırken daha sonra kullanılır.
 
-Çıkarım yapılandırması, dağıtımınız için gereken yazılım bağımlılıklarını tanımlamak için Azure Machine Learning ortamlar kullanır. Ortamlar, eğitim ve dağıtım için gereken yazılım bağımlılıklarını oluşturmanıza, yönetmenize ve yeniden kullanmanıza olanak tanır. Aşağıdaki örnek, çalışma alanınızdan bir ortamı yüklemeyi ve ardından çıkarım yapılandırmasıyla kullanmayı gösterir:
+Çıkarım yapılandırması, dağıtımınız için gereken yazılım bağımlılıklarını tanımlamak için Azure Machine Learning ortamlar kullanır. Ortamlar, eğitim ve dağıtım için gereken yazılım bağımlılıklarını oluşturmanıza, yönetmenize ve yeniden kullanmanıza olanak tanır. Özel bağımlılık dosyalarından bir ortam oluşturabilir veya seçkin Azure Machine Learning ortamlarından birini kullanabilirsiniz. Aşağıdaki YAML, çıkarım için Conda Dependencies bir dosya örneğidir. Lütfen, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, > = 1.0.45 = ile azureml-varsayılan değeri bir PIP bağımlılığı olarak belirtmeniz gerektiğini unutmayın. Otomatik şema oluşturmayı kullanmak istiyorsanız, giriş betiğinizin de `inference-schema` paketlerini içeri aktarması gerekir.
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> Eğer koda ve PIP (PyPi) ile bağımlılığı varsa Microsoft, Conda 'in, daha güvenilir bir şekilde yükleme yapan önceden oluşturulmuş ikili dosyalarla birlikte geldiğinden, Conda sürümünün kullanılmasını önerir.
+>
+> Daha fazla bilgi için bkz. [Conda ve PIP 'Yi anlama](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Bağımlılarınızın Conda ile kullanılabilir olup olmadığını denetlemek için `conda search <package-name>` komutunu kullanın veya [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) ve [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)paket dizinlerini kullanın.
+
+Bir ortam nesnesi oluşturmak ve daha sonra kullanmak üzere çalışma alanınıza kaydetmek için bağımlılıklar dosyasını kullanabilirsiniz:
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+Aşağıdaki örnek, çalışma alanınızdan bir ortamı yüklemeyi ve ardından çıkarım yapılandırmasıyla kullanmayı gösterir:
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
-
-Ayrıca, bir ortamı kullanmadan bağımlılıkları doğrudan belirtebilirsiniz. Aşağıdaki örnek, bir Conda dosyasından yazılım bağımlılıklarını yükleyen bir çıkarım yapılandırmasının nasıl oluşturulacağını gösterir:
 
 Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
 
@@ -510,7 +504,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 
 Bir çıkarım yapılandırmasıyla özel bir Docker görüntüsü kullanma hakkında daha fazla bilgi için bkz. [özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md).
 
-### <a name="cli-example-of-inferenceconfig"></a>Inenceconfig CLı örneği
+#### <a name="cli-example-of-inferenceconfig"></a>Inenceconfig CLı örneği
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ Bu örnekte, yapılandırma aşağıdaki ayarları belirtir:
 
 Bir çıkarım yapılandırmasıyla özel bir Docker görüntüsü kullanma hakkında daha fazla bilgi için bkz. [özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md).
 
-### <a name="3-define-your-deployment-configuration"></a>3. dağıtım yapılandırmanızı tanımlayın
+### <a id="profilemodel"></a>3. kaynak kullanımını öğrenmek için modelinizin profilini yapın
+
+Modelinize kaydolduktan ve dağıtımı için gereken diğer bileşenleri hazırladıktan sonra, dağıtılan hizmete gereken CPU ve belleği belirleyebilirsiniz. Profil oluşturma, modelinizi çalıştıran hizmeti sınar ve CPU kullanımı, bellek kullanımı ve yanıt gecikme süresi gibi bilgileri döndürür. Ayrıca, CPU ve bellek için kaynak kullanımına göre bir öneri sağlar.
+
+Modelinizin profilini oluşturmanız için şunlar gerekir:
+* Kayıtlı bir model.
+* Giriş betiğinizi ve çıkarım ortam tanımınızı temel alan bir çıkarım yapılandırması.
+* Her satırın örnek istek verilerini temsil eden bir dize içerdiği tek sütunlu tablosal veri kümesi.
+
+> [!IMPORTANT]
+> Bu noktada, yalnızca istek verilerinin dize olmasını bekleyen hizmetlerin profilini oluşturmayı destekliyoruz, örneğin: dize serileştirilmiş JSON, metin, dize serileştirilmiş görüntü, vb. Veri kümesinin (dize) her satırının içeriği HTTP isteğinin gövdesine konur ve Puanlama için modeli kapsüllemek için hizmete gönderilir.
+
+Aşağıda, gelen istek verilerinin serileştirilmiş JSON içermesini bekleyen bir hizmetin profilini oluşturmak için bir giriş veri kümesi nasıl oluşturabileceğiniz hakkında bir örnek verilmiştir. Bu durumda, aynı istek verisi içeriğine ait bir veri kümesi tabanlı 100 örnekleri oluşturduk. Gerçek dünyada senaryolarda, özellikle model kaynak kullanımınız/davranışı girişe bağımlıysa, çeşitli girişler içeren daha büyük veri kümeleri kullanmanızı öneririz.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Örnek istek verilerini içeren veri kümesine sahip olduktan sonra bir çıkarım yapılandırması oluşturun. Çıkarım yapılandırması, score.py ve ortam tanımına dayalıdır. Aşağıdaki örnek, çıkarım yapılandırmasını oluşturmayı ve profil oluşturmayı çalıştırmayı gösterir:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+Aşağıdaki komut, CLı kullanarak bir modelin profilini oluşturmayı gösterir:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>Hedefe dağıt
+
+Dağıtım, modelleri dağıtmak için çıkarım yapılandırma dağıtımı yapılandırmasını kullanır. Dağıtım işlemi, işlem hedefi ne olursa olsun benzerdir. Aks kümesine bir başvuru sağlamanız gerektiğinden AKS 'e dağıtım biraz farklıdır.
+
+### <a name="choose-a-compute-target"></a>İşlem hedefi seçin
+
+Web hizmeti dağıtımınızı barındırmak için aşağıdaki işlem hedeflerini veya işlem kaynaklarını kullanabilirsiniz:
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>Dağıtım yapılandırmanızı tanımlama
 
 Modelinizi dağıtılmadan önce dağıtım yapılandırmasını tanımlamanız gerekir. *Dağıtım yapılandırması, Web hizmetini barındıracak işlem hedefine özgüdür.* Örneğin, bir modeli yerel olarak dağıttığınızda, hizmetin istekleri kabul ettiği bağlantı noktasını belirtmeniz gerekir. Dağıtım yapılandırması, giriş betiğinizin bir parçası değil. Model ve giriş betiğini barındıracak işlem hedefinin özelliklerini tanımlamak için kullanılır.
 
@@ -547,10 +627,6 @@ Yerel, Azure Container Instances ve AKS Web Hizmetleri için sınıflar `azureml
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>Hedefe dağıt
-
-Dağıtım, modelleri dağıtmak için çıkarım yapılandırma dağıtımı yapılandırmasını kullanır. Dağıtım işlemi, işlem hedefi ne olursa olsun benzerdir. Aks kümesine bir başvuru sağlamanız gerektiğinden AKS 'e dağıtım biraz farklıdır.
 
 ### <a name="securing-deployments-with-ssl"></a>SSL ile dağıtımları güvenli hale getirme
 
@@ -1076,7 +1152,7 @@ Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/p
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
-* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma](how-to-consume-web-service.md)
+* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 

@@ -2,13 +2,13 @@
 title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni kaynak grubuna veya aboneliğe taşıma için Azure Resource Manager'ı kullanın.
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891348"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250159"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -20,7 +20,7 @@ Bir kaynağı taşıdığınızda yalnızca onu yeni bir kaynak grubuna veya abo
 
 ## <a name="checklist-before-moving-resources"></a>Kaynakları taşımadan önce Yapılacaklar listesi
 
-Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır. Bu koşulları doğrulayarak hataları önleyebilirsiniz.
+Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adımlar vardır. Bu koşulları doğrulayarak hataları önleyebilirsiniz.
 
 1. Taşımak istediğiniz kaynaklar taşıma işlemini desteklemelidir. Hangi kaynakların taşınmasını desteklediğini bir liste için bkz. [kaynaklar Için taşıma işlemi desteği](move-support-resources.md).
 
@@ -33,9 +33,9 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
    * [Kurtarma Hizmetleri taşıma Kılavuzu](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Sanal makineler taşıma Kılavuzu](./move-limitations/virtual-machines-move-limitations.md)
 
-1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md). Seçin **abonelik yönetimi** sorun türü için.
+1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md). Sorun türü için **Abonelik yönetimi** ' ni seçin.
 
-1. Kaynak ve hedef abonelikler aynı içinde bulunmalıdır [Azure Active Directory kiracısı](../../active-directory/develop/quickstart-create-new-tenant.md). Her iki aboneliğin aynı Kiracı Kimliğine sahip denetlemek için Azure PowerShell veya Azure CLI'yı kullanın.
+1. Kaynak ve hedef abonelikler aynı [Azure Active Directory kiracısında](../../active-directory/develop/quickstart-create-new-tenant.md)bulunmalıdır. Her iki aboneliğin aynı Kiracı Kimliğine sahip denetlemek için Azure PowerShell veya Azure CLI'yı kullanın.
 
    Azure PowerShell için şunu kullanın:
 
@@ -56,7 +56,7 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
    * [Azure aboneliğinin sahipliğini başka bir hesaba devretme](../../billing/billing-subscription-transfer.md)
    * [Azure Active Directory'ye bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Hedef abonelik, taşınan kaynağın kaynak sağlayıcısına kayıtlı olmalıdır. Belirten bir hata alırsanız, **kaynak türü için abonelik kayıtlı değil**. Bir kaynağı yeni bir aboneliğe taşırken bu hatayla karşılaşabilirsiniz, ancak bu abonelik bu kaynak türüyle hiç kullanılmadıysa.
+1. Hedef abonelik, taşınan kaynağın kaynak sağlayıcısına kayıtlı olmalıdır. Aksi takdirde, **aboneliğin bir kaynak türü için kayıtlı**olmadığını belirten bir hata alırsınız. Bir kaynağı yeni bir aboneliğe taşırken bu hatayla karşılaşabilirsiniz, ancak bu abonelik bu kaynak türüyle hiç kullanılmadıysa.
 
    PowerShell için kayıt durumunu almak için aşağıdaki komutları kullanın:
 
@@ -86,10 +86,10 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
 
 1. Kaynakları taşıma hesabı, en az aşağıdaki izinlere sahip olmanız gerekir:
 
-   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** kaynak kaynak grubu.
-   * **Microsoft.Resources/subscriptions/resourceGroups/write** hedef kaynak grubunda.
+   * Kaynak kaynak grubundaki **Microsoft. resources/abonelikler/resourceGroups/Moveresobir/eylem** .
+   * Hedef kaynak grubunda **Microsoft. resources/abonelikler/resourceGroups/Write** .
 
-1. Kaynakları taşımadan önce kaynaklara Taşımakta olduğunuz abonelik için abonelik kotaları denetleyin. Kaynakları taşıma abonelik, sınırları aşamaz anlamına gelir, kota artışı isteği olup olmadığını gözden geçirmek gerekir. Limitler ve bir artış istemek nasıl bir listesi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+1. Kaynakları taşımadan önce kaynaklara Taşımakta olduğunuz abonelik için abonelik kotaları denetleyin. Kaynakları taşıma abonelik, sınırları aşamaz anlamına gelir, kota artışı isteği olup olmadığını gözden geçirmek gerekir. Limitlerin listesi ve artışın nasıl isteneceğini öğrenmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 1. **Abonelikler arasında geçiş için kaynak ve bağımlı kaynakları aynı kaynak grubunda yer almalıdır ve birlikte taşınmaları gerekir.** Örneğin, yönetilen disklere sahip bir VM, diğer bağımlı kaynaklarla birlikte VM ve yönetilen disklerin birlikte taşınmasını gerektirir.
 
@@ -111,12 +111,12 @@ Kaynakları bir abonelikten diğerine taşımak üç adımlı bir işlemdir:
 
 ## <a name="validate-move"></a>Taşıma doğrula
 
-[Taşıma işlemi doğrulama](/rest/api/resources/resources/validatemoveresources) kaynakları taşımadan taşıma senaryonuza sınamanızı sağlar. Taşımanın başarılı olup olmadığını denetlemek için bu işlemi kullanın. Bir taşıma isteği gönderdiğinizde doğrulama otomatik olarak çağrılır. Bu işlemi yalnızca sonuçları önceden belirlemeniz gerektiğinde kullanın. Bu işlemin çalıştırılması için ihtiyacınız vardır:
+[Taşıma işlemini Doğrula işlemi](/rest/api/resources/resources/validatemoveresources) , kaynakları gerçekten taşımadan taşıma senaryonuzu test etmenizi sağlar. Taşımanın başarılı olup olmadığını denetlemek için bu işlemi kullanın. Bir taşıma isteği gönderdiğinizde doğrulama otomatik olarak çağrılır. Bu işlemi yalnızca sonuçları önceden belirlemeniz gerektiğinde kullanın. Bu işlemin çalıştırılması için ihtiyacınız vardır:
 
 * Kaynak kaynak grubu adı
 * Hedef kaynak grubunun kaynak kimliği
 * Her bir kaynağın kaynak kimliği taşımak için
-* [erişim belirteci](/rest/api/azure/#acquire-an-access-token) hesabınız için
+* hesabınız için [erişim belirteci](/rest/api/azure/#acquire-an-access-token)
 
 Aşağıdaki isteği gönder:
 
@@ -147,7 +147,7 @@ retry-after: 15
 ...
 ```
 
-Doğrulama isteği kabul edildi, ancak henüz taşıma işlemi başarılı olur, belirlenen taşınmadığından 202 durum kodunu gösterir. `location` Değeri uzun süre çalışan işlemin durumunu denetlemek için kullandığınız bir URL içerir.  
+Doğrulama isteği kabul edildi, ancak henüz taşıma işlemi başarılı olur, belirlenen taşınmadığından 202 durum kodunu gösterir. `location` değeri, uzun süre çalışan işlemin durumunu denetlemek için kullandığınız bir URL içerir.  
 
 Durumu denetlemek için aşağıdaki isteği gönder:
 
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-İşlemi hala devam ederken, 202 durum kodu almaya devam eder. Belirtilen saniye sayısı bekleyin `retry-after` yeniden denemeden önce değeri. Taşıma işlemi başarıyla doğrular, 204 durum kodu alırsınız. Taşıma doğrulaması başarısız olursa, bir hata iletisi gibi alırsınız:
+İşlemi hala devam ederken, 202 durum kodu almaya devam eder. Yeniden denemeden önce `retry-after` değerinde belirtilen saniye sayısını bekleyin. Taşıma işlemi başarıyla doğrular, 204 durum kodu alırsınız. Taşıma doğrulaması başarısız olursa, bir hata iletisi gibi alırsınız:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -170,11 +170,11 @@ Kaynakları taşımak için bu kaynaklarla kaynak grubunu seçin ve ardından **
 
 Kaynakları yeni kaynak grubu veya yeni bir aboneliğe taşıyor seçin.
 
-Taşınacak kaynaklar ve hedef kaynak grubunu seçin. Bu kaynaklar için betiklerini güncelleştirin ve seçmek gereken bildirimi **Tamam**. Önceki adımda düzenleme abonelik simgesini seçtiğinizde hedef abonelik de seçmeniz gerekir.
+Taşınacak kaynaklar ve hedef kaynak grubunu seçin. Bu kaynaklar için betikleri güncelleştirmeniz ve **Tamam**' ı seçmeniz gerektiğini kabul edin. Önceki adımda düzenleme abonelik simgesini seçtiğinizde hedef abonelik de seçmeniz gerekir.
 
 ![hedef seçin](./media/move-resource-group-and-subscription/select-destination.png)
 
-İçinde **bildirimleri**, taşıma işleminin çalıştığını görürsünüz.
+**Bildirimler**' de taşıma işleminin çalıştığını görürsünüz.
 
 ![taşıma durumu göster](./media/move-resource-group-and-subscription/show-status.png)
 
@@ -184,7 +184,7 @@ Tamamlandığında, sonucunu bildirilir.
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
-## <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
 Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [Move-AzResource](/powershell/module/az.resources/move-azresource) komutunu kullanın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir.
 
@@ -194,13 +194,13 @@ $plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Yeni bir aboneliğe taşımak için bir değer içerir. `DestinationSubscriptionId` parametresi.
+Yeni bir aboneliğe geçmek için `DestinationSubscriptionId` parametresi için bir değer ekleyin.
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
 
-Var olan kaynakları başka bir kaynak grubuna veya aboneliğe taşıma için kullanın [az kaynak taşıma](/cli/azure/resource?view=azure-cli-latest#az-resource-move) komutu. Kaynak taşımak için kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. İçinde `--ids` parametresi, kaynak kimliklerini taşımak için boşlukla ayrılmış bir listesini sağlayın.
+Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [az Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) komutunu kullanın. Kaynak taşımak için kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. `--ids` parametresinde, taşınacak kaynak kimliklerinin boşlukla ayrılmış bir listesini sağlayın.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -208,7 +208,7 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Yeni bir aboneliğe taşımak için sağlamak `--destination-subscription-id` parametresi.
+Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini sağlayın.
 
 Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 

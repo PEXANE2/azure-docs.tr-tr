@@ -8,16 +8,16 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: efca3dad6d8bfadbc334067b0189d2bea5aef445
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750514"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250876"
 ---
 # <a name="storage-analytics"></a>Depolama Analizi
 
-Azure Depolama Analizi günlük kaydı yapar ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızdaki sorunları tanılayabilirsiniz.
+Azure Depolama Analizi günlüğe kaydetme gerçekleştirir ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızla ilgili sorunları tanılayabilirsiniz.
 
 Depolama Analizi kullanmak için, izlemek istediğiniz her hizmet için tek tek etkinleştirmeniz gerekir. [Azure Portal](https://portal.azure.com)etkinleştirebilirsiniz. Ayrıntılar için bkz. [Azure Portal bir depolama hesabını izleme](storage-monitor-storage-account.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. [BLOB hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-blob-service-properties), [kuyruk hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-queue-service-properties), [Tablo hizmeti özelliklerini](/rest/api/storageservices/set-table-service-properties)ayarlama ve [dosya hizmeti özellikleri](/rest/api/storageservices/Get-File-Service-Properties) işlemlerini her hizmet için depolama Analizi etkinleştirecek şekilde ayarlama.
 
@@ -42,7 +42,7 @@ Bir veri saklama ilkesi yapılandırdıysanız, Depolama Analizi eski günlük k
 
 ### <a name="understanding-billable-requests"></a>Faturalandırılabilir istekleri anlama
 
-Bir hesabın depolama hizmetine yapılan her istek faturalandırılabilir veya faturalandırılmamış olur. Depolama Analizi, isteğin nasıl işlendiğini belirten bir durum iletisi de dahil olmak üzere, bir hizmete yapılan her bir isteği günlüğe kaydeder. Benzer şekilde, Depolama Analizi, belirli durum iletilerinin yüzdeleri ve sayısı dahil olmak üzere hem hizmet hem de bu hizmetin API işlemleri için ölçümleri depolar. Bu özellikler birlikte, faturalandırılabilir isteklerinizi çözümlemenize, uygulamanızda geliştirmeler yapmanıza ve hizmetlerinize yönelik isteklerle ilgili sorunları tanılamanıza yardımcı olabilir. Faturalandırma hakkında daha fazla bilgi için bkz. [Azure depolama faturalandırma-bant genişliği, işlemler ve kapasiteyi anlama](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
+Bir hesabın depolama hizmetine yapılan her istek faturalandırılabilir veya faturalandırılmamış olur. Depolama Analizi, isteğin nasıl işlendiğini belirten bir durum iletisi de dahil olmak üzere, bir hizmete yapılan her bir isteği günlüğe kaydeder. Benzer şekilde, Depolama Analizi, belirli durum iletilerinin yüzdeleri ve sayısı dahil olmak üzere hem hizmet hem de bu hizmetin API işlemleri için ölçümleri depolar. Bu özellikler birlikte, faturalandırılabilir isteklerinizi çözümlemenize, uygulamanızda geliştirmeler yapmanıza ve hizmetlerinize yönelik isteklerle ilgili sorunları tanılamanıza yardımcı olabilir. Faturalandırma hakkında daha fazla bilgi için bkz. [Azure depolama faturalandırma-bant genişliği, işlemler ve kapasiteyi anlama](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 Depolama Analizi verilere baktığınızda, hangi isteklerin faturalandırılabilir olduğunu belirlemek için [depolama Analizi günlüğe kaydedilen işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) konusundaki tabloları kullanabilirsiniz. Ardından, belirli bir istek için ücretlendirildiğini görmek üzere günlüklerinizi ve ölçüm verilerinizi durum iletileriyle karşılaştırabilirsiniz. Bir depolama hizmeti veya tek bir API işlemi için kullanılabilirliği araştırmak üzere önceki konudaki tabloları da kullanabilirsiniz.
 

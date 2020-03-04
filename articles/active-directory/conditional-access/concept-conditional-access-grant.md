@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656322"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249095"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -67,35 +67,7 @@ Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini ku
 
 Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci uygulamaları, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
-Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
-
-- Microsoft Azure Information Protection
-- Microsoft kayıtları
-- Microsoft Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
-- Microsoft faturalama
-- Microsoft Kaizala
-- Microsoft Başlatıcısı
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Microsoft Skype Kurumsal
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
-- Microsoft Word
-- Microsoft Yammer
+Desteklenen uygulamalar Microsoft Intune makalesinde, [korumalı uygulamalar](/intune/apps/apps-supported-intune-apps)' ı bulabilirsiniz.
 
 **Açıklamalar**
 
@@ -108,12 +80,7 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 
 Koşullu erişim ilkenizde, seçili bulut uygulamalarına erişim izni vermeden önce istemci uygulamada bir [Intune uygulama koruma ilkesinin](/intune/app-protection-policy) mevcut olmasını zorunlu kılabilirsiniz. 
 
-Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
-
-- Microsoft Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- Microsoft Planner
+Desteklenen uygulamalar Microsoft Intune makalesinde, [korumalı uygulamalar](/intune/apps/apps-supported-intune-apps)' ı bulabilirsiniz.
 
 **Açıklamalar**
 

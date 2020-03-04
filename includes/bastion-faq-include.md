@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 03/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 17d391a7e6b8ef0558fb73afe363cd96deb60a7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989510"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262233"
 ---
 ### <a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -29,15 +29,18 @@ Azure savunma kullanarak bir VM 'ye bağlandığınızda, bağlandığınız Azu
 
 ### <a name="rdpssh"></a>RDP veya SSH istemcisine ihtiyacım var mı?
 
-Azure portalınızda Azure sanal makinenize RDP/SSH erişimi sağlamak için RDP veya SSH istemcisine ihtiyacınız yoktur. Sanal makinenize doğrudan tarayıcıda RDP/SSH erişimi almanızı sağlamak için [Azure Portal](https://portal.azure.com) kullanın.
+Azure portal Azure sanal makinenize RDP/SSH 'ye erişmek için bir RDP veya SSH istemcisine ihtiyacınız yoktur. Sanal makinenize doğrudan tarayıcıda RDP/SSH erişimi almanızı sağlamak için [Azure Portal](https://portal.azure.com) kullanın.
+
+### <a name="rdscal"></a>Azure savunma, Azure 'da barındırılan VM 'lerde yönetim amacıyla bir RDS CAL gerektiriyor mu?
+Hayır, Azure 'da Windows Server VM 'lerine erişim yalnızca yönetim amacıyla kullanıldığında bir [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) gerektirmez.
 
 ### <a name="agent"></a>Azure sanal makinesinde çalışan bir aracıya ihtiyacım var mı?
 
-Tarayıcınıza veya Azure sanal makinenize bir aracı ya da herhangi bir yazılımı yüklemeniz gerekmez. Bastion hizmeti aracısızdır ve RDP/SSH için ek bir yazılım gerektirmez.
+Tarayıcınıza veya Azure sanal makinenize bir aracı ya da herhangi bir yazılımı yüklemeniz gerekmez. Savunma hizmeti aracısız ve RDP/SSH için ek yazılım gerektirmez.
 
 ### <a name="browsers"></a>Hangi tarayıcılar destekleniyor?
 
-Windows üzerinde Microsoft Edge tarayıcısını veya Google Chrome 'u kullanın. Apple Mac için Google Chrome tarayıcıyı kullanın. Microsoft Edge Chromium sırasıyla Windows ve Mac’te de desteklenir.
+Windows üzerinde Microsoft Edge tarayıcısını veya Google Chrome 'u kullanın. Apple Mac için Google Chrome tarayıcısı ' nı kullanın. Microsoft Edge Kmıum, sırasıyla hem Windows hem de Mac 'te desteklenir.
 
 ### <a name="roles"></a>Bir sanal makineye erişmek için gereken roller nelerdir?
 

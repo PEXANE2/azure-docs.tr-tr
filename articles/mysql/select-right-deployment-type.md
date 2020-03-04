@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935458"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255542"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure 'da doğru MySQL sunucusu seçeneğini belirleyin
 
@@ -53,7 +53,7 @@ MySQL veritabanlarınızı barındırmak için PaaS veya IaaS seçme kararların
 
 Sınırlı komik genellikle veritabanlarınızı barındırmak için en iyi çözümü belirleyen birincil noktadır. Bu, sıkı bütçe kısıtlamaları altında çalışan kurulu bir şirkette çok az nakit veya ekip ile bir başlangıç yaptığınız için geçerlidir. Bu bölümde, Azure VM 'lerde MySQL ve MySQL için Azure veritabanı 'na uygulanan Azure 'da faturalandırma ve lisanslama temelleri açıklanmaktadır.
 
-#### <a name="billing"></a>Faturalandırma
+#### <a name="billing"></a>Faturalama
 
 MySQL için Azure veritabanı şu anda birkaç katmanda kaynaklar için farklı fiyatlarla bir hizmet olarak sunulmaktadır. Tüm kaynaklar, saatlik olarak sabit bir fiyat üzerinden faturalandırılır. Şu anda desteklenen hizmet katmanları, işlem boyutları ve depolama miktarları hakkında en son bilgiler için bkz. [sanal çekirdek tabanlı satın alma modeli](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). Hizmet katmanlarını ve işlem boyutlarını, uygulamanızın değişen aktarım hızı gereksinimleriyle eşleşecek şekilde dinamik olarak ayarlayabilirsiniz. Giden Internet trafiği için düzenli [veri aktarımı fiyatları](https://azure.microsoft.com/pricing/details/data-transfers/)üzerinden faturalandırılırsınız.
 
@@ -80,7 +80,7 @@ Aşağıdaki listede her bir seçeneğe ilişkin yönetim konuları açıklanmak
 
 * MySQL için Azure veritabanı ile veritabanınızı yönetmeye devam edebilirsiniz. Ancak artık veritabanı altyapısını, işletim sistemini veya donanımı yönetmeniz gerekmez. Yönetmeye devam edebilmeniz için öğelerin örnekleri şunlardır:
 
-  - Veri tabanları
+  - Veritabanları
   - Oturum açma
   - Dizin ayarlama
   - Sorgu ayarlama
@@ -102,4 +102,4 @@ Aşağıdaki listede her bir seçeneğe ilişkin yönetim konuları açıklanmak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Bkz. [MySQL Için Azure veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/MySQL/).
-* [İlk sunucunuzu oluşturarak](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal) başlayın.
+* [İlk sunucunuzu oluşturarak](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal) başlayın.

@@ -3,8 +3,8 @@ title: "Öğretici: Oracle Online 'ı PostgreSQL için Azure veritabanı 'na ge�
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni kullanarak, Oracle şirket içi veya sanal makinelerinizden PostgreSQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 14db95adccf5118321bc763cbe599e19febc7eac
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759918"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255576"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içinde veya sanal makinelerde barındırılan Oracle veritabanlarından, en az kapalı kalma süresine sahip [PostgreSQL Için Azure veritabanı](https://docs.microsoft.com/azure/postgresql/) 'na geçirebilirsiniz. Diğer bir deyişle, uygulamayı uygulamanın en az kapalı kalma süresiyle tamamlayabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak, Oracle 11g 'nin şirket içi veya sanal makine örneğinden, PostgreSQL için Azure veritabanı 'na **HR** örnek veritabanını geçireceğiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 >
 > * Ora2pg aracını kullanarak geçiş çabalarını değerlendirin.
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makalede, Oracle 'dan PostgreSQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirme işlemi açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -186,7 +186,7 @@ Oracle şemasını ve diğer Oracle nesnelerini (türler, yordamlar, işlevler, 
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Örneğin:
+Örnek:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -231,7 +231,7 @@ Azure veritabanı geçiş hizmeti 'nin sizin için şemayı oluşturması için,
 > [!IMPORTANT]
 > Azure veritabanı geçiş hizmeti, Azure veritabanı geçiş hizmeti ya da ora2pg gibi bir araç kullanılarak tüm tabloların aynı şekilde oluşturulmasını gerektirir, ancak her ikisi birden değildir.
 
-Kullanmaya başlamak için:
+Başlamak için:
 
 1. Uygulama gereksinimlerinize bağlı olarak hedef veritabanında bir şema oluşturun. Varsayılan olarak, PostgreSQL tablo şeması ve sütun adları daha düşüktür. Oracle tablo şeması ve sütunları, diğer taraftan, tüm sermaye durumunda varsayılan olarak varsayılandır.
 2. Şemaları seçin adımında hedef veritabanını ve hedef şemayı belirtin.
@@ -239,21 +239,21 @@ Kullanmaya başlamak için:
 
     Oracle kaynağında şema adı ve PostgreSQL için Azure veritabanı ile eşleşiyorsa, Azure veritabanı geçiş hizmeti, *Hedefteki ile aynı büyük/küçük harf kullanarak tablo şemasını oluşturur*.
 
-    Örneğin:
+    Örnek:
 
     | Kaynak Oracle şeması | Hedef PostgreSQL database. Schema | DMS tarafından oluşturulan Schema. Table. Column |
     | ------------- | ------------- | ------------- |
-    | İK | targetHR. public | public. ülkeler. country_id |
-    | İK | targetHR. trgthr | trgthr. ülkeler. country_id |
-    | İK | targetHR. TARGETHR | "TARGETHR". " ÜLKELER "." COUNTRY_ID " |
-    | İK | targetHR.HR | "HR". " ÜLKELER "." COUNTRY_ID " |
-    | İK | targetHR.Hr | \* Karışık durumlar eşlenemiyor |
+    | HR | targetHR. public | public. ülkeler. country_id |
+    | HR | targetHR. trgthr | trgthr. ülkeler. country_id |
+    | HR | targetHR. TARGETHR | "TARGETHR". " ÜLKELER "." COUNTRY_ID " |
+    | HR | targetHR.HR | "HR". " ÜLKELER "." COUNTRY_ID " |
+    | HR | targetHR.Hr | \* Karışık durumlar eşlenemiyor |
 
     \* Hedef PostgreSQL içinde karma durum şeması ve tablo adları oluşturmak için [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)başvurun. Hedef PostgreSQL veritabanında karma durum tablosu şeması ayarlamak için bir betik sağlayabiliriz.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
-1. Azure portal'da oturum açın, **Tüm hizmetler**'i ve ardından **Abonelikler**'i seçin.
+1. Azure portal'da oturum açın, **Tüm hizmetler** seçeneğini belirleyin ve ardından **Abonelikler**'i seçin.
 
    ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 
@@ -269,7 +269,7 @@ Kullanmaya başlamak için:
 
 1. Azure portalda +**Kaynak oluştur**'u seçin, Azure Veritabanı Geçiş Hizmeti araması yapın ve açılan listeden **Azure Veritabanı Geçiş Hizmeti**'ni seçin.
 
-    ![Azure Marketi](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
+    ![Azure Market](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
 2. **Azure Veritabanı Geçiş Hizmeti** ekranında **Oluştur**'u seçin.
 

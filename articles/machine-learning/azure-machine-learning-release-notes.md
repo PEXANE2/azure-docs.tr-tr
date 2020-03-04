@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462182"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249738"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin.
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Python v 1.1.2 RC0 için SDK Azure Machine Learning
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-oto ml-çekirdek**
+    + Toplu Işlem modu çıkarımı (birden çok satır bir kez alınıyor), oto ml ONNX modelleri için etkinleştirildi
+    + Veri kümelerinde sıklık algılaması geliştirildi, veri yok veya düzensiz veri noktaları içeriyor
+    + Baskın frequrncy ile uyumlu olmayan veri noktalarını kaldırma özelliği eklendi.
+  + **azureml-oto ml-çalışma zamanı**
+    + Eğitim kümesinde mevcut olmayan gren test kümesinde görünmediğinde oluşan hata ile ilgili sorun düzeltildi
+    + Tahmin hizmeti üzerinde Puanlama sırasında y_query gereksinimi kaldırıldı
+  + **azureml-contrib-mir**
+    + Erişim belirtecini almak için Mwebservice sınıfına işlevsellik ekler
+  + **azureml-çekirdek**
+    + Dağıtılmış AzureML WebServices, şimdi günlüğe `INFO` için varsayılan olarak kullanılır. Bu, dağıtılan hizmette `AZUREML_LOG_LEVEL` ortam değişkeni ayarlanarak denetlenebilir.
+    + Çalışma alanına kayıtlı tüm veri kümelerini döndürmek için `Dataset.get_all` yineleme 'yi düzeltir.
+    + Veri kümesi oluşturma API 'lerinin `path` bağımsız değişkenine geçersiz tür geçirildiğinde hata iletisini geliştirebilirsiniz.
+    + Python SDK ' işlem hatları ' yerine ' API ' uç noktasını kullanmak için bulma hizmetini kullanır.
+    + Tüm SDK çağrılarında yeni yollara Değiştir
+    + ModelManagementService 'e yapılan çağrıların yeni bir birleştirilmiş yapıya yönlendirilmesini değiştirir
+      + Çalışma alanı güncelleştirme yöntemi genel olarak kullanılabilir hale getirilir.
+      + Kullanıcının görüntü derlemesi için işlem güncelleştirmesine izin vermek üzere çalışma alanı güncelleştirme yönteminde image_build_compute parametresi eklendi
+    +  Eski profil oluşturma iş akışına kullanımdan kaldırma iletileri eklendi. Sabit profil oluşturma CPU ve bellek sınırları
+  + **azureml-yorumlama**
+    + azureml güncelleştirme-topluluk 0,6. *
+  + **azureml-mlflow**
+    + Azureml. mlflow için bağımsız bulutlar desteği ekleyin
+  + **azureml-işlem hattı-adımlar**
+    + `AutoMLStep` `azureml-pipeline-steps package`taşındı. `azureml-train-automl-runtime`içinde `AutoMLStep` kullanımdan kaldırıldı.
+  + **azureml-tren-oto ml-istemci**
+    + Belirli paketlerin uzak çalışmalerdeki yanlış sürümlere yüklenebildiği bir sorun düzeltildi.
+  + **azureml-tren-oto ml-çalışma zamanı**
+    + Uzak çalışmadaki sıklık algılamasıyla ilgili sorun düzeltildi
+    + `AutoMLStep` `azureml-pipeline-steps package`taşındı. `azureml-train-automl-runtime`içinde `AutoMLStep` kullanımdan kaldırıldı.
+  + **azureml-tren-çekirdek**
+    + `AutoMLStep` `azureml-pipeline-steps package`taşındı. `azureml-train-automl-runtime`içinde `AutoMLStep` kullanımdan kaldırıldı.
 
 ## <a name="2020-02-18"></a>2020-02-18
 

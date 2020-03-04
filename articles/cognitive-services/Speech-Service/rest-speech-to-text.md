@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 03/03/2020
 ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168300"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255664"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -54,6 +54,7 @@ Bu parametreleri REST isteğinin sorgu dizesinde eklenebilir.
 | `language` | Tanınan konuşulan dil tanımlar. [Desteklenen diller](language-support.md#speech-to-text)bölümüne bakın. | Gerekli |
 | `format` | Sonuç biçimi belirtir. Kabul edilen değerler `simple` ve `detailed`. Basit sonuçlar `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, birden çok sonuçla güvenle değerleri ve dört farklı temsilleri içerir. Varsayılan ayar `simple`. | İsteğe bağlı |
 | `profanity` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `masked`, küfür ile `removed`, sonuçtaki tüm küfür kaldıran ve `raw`sonuçtaki küfür içeren. Varsayılan ayar `masked`. | İsteğe bağlı |
+| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. `cid` sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın. | İsteğe bağlı |
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
@@ -72,10 +73,10 @@ Bu tablo, Konuşmayı metne istekler için gerekli ve isteğe bağlı üst bilgi
 
 Ses HTTP `POST` isteği gövdesinde gönderilir. Bu tabloda biçimlerden birinde olmalıdır:
 
-| Biçimlendir | Codec bileşeni | Bit hızı | Örnek hızı |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16-bit | 16 kHz, mono |
-| OGG | GEÇERLİ | 16-bit | 16 kHz, mono |
+| Biçimlendir | Codec bileşeni | Bit hızı | Örnek hızı  |
+|--------|-------|---------|--------------|
+| WAV    | PCM   | 16-bit  | 16 kHz, mono |
+| OGG    | GEÇERLİ  | 16-bit  | 16 kHz, mono |
 
 >[!NOTE]
 >Yukarıdaki biçimler, konuşma hizmetindeki REST API ve WebSocket aracılığıyla desteklenir. [Konuşma SDK 'sı](speech-sdk.md) Şu anda, PCM codec ve [DIĞER biçimlere](how-to-use-codec-compressed-audio-input-streams.md)sahip WAV biçimini desteklemektedir.
@@ -100,50 +101,43 @@ Her yanıt için HTTP durum kodu, başarı veya sık karşılaşılan hataları 
 
 | HTTP durum kodu | Açıklama | Olası neden |
 |------------------|-------------|-----------------|
-| 100 | Devam | İlk istek kabul edildi. Kalan verileri göndermek ile devam edin. (İle öbekli aktarım kullanılır.) |
-| 200 | Tamam | İstek başarılı oldu; yanıt gövdesi bir JSON nesnesidir. |
-| 400 | Hatalı istek | Dil kodu sağlanmadı, desteklenen bir dil değil, geçersiz ses dosyası, vb. |
-| 401 | Yetkisiz | Abonelik anahtarı veya yetkilendirme belirteci, belirtilen bölge veya geçersiz uç nokta geçersiz. |
-| 403 | Yasak | Eksik abonelik anahtarı veya yetkilendirme belirteci. |
+| `100` | Devam | İlk istek kabul edildi. Kalan verileri göndermek ile devam edin. (Öbekli aktarımlı olarak kullanılır) |
+| `200` | Tamam | İstek başarılı oldu; yanıt gövdesi bir JSON nesnesidir. |
+| `400` | Hatalı istek | Dil kodu sağlanmadı, desteklenen bir dil değil, geçersiz ses dosyası, vb. |
+| `401` | Yetkisiz | Abonelik anahtarı veya yetkilendirme belirteci, belirtilen bölge veya geçersiz uç nokta geçersiz. |
+| `403` | Yasak | Eksik abonelik anahtarı veya yetkilendirme belirteci. |
 
 ## <a name="chunked-transfer"></a>Öbekli aktarım
 
 Öbekli aktarım (`Transfer-Encoding: chunked`), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API, kısmi veya Ara sonuçlar sağlamaz.
 
-Bu kod örneği, nasıl öbekler halinde ses gönderileceğini gösterir. Yalnızca ilk öbekte ses dosyanın üst bilgisi içermelidir. `request`, uygun REST uç noktasına bağlı bir HTTPWebRequest nesnesidir. `audioFile`, diskteki bir ses dosyasının yoludur.
+Bu kod örneği, nasıl öbekler halinde ses gönderileceğini gösterir. Yalnızca ilk öbekte ses dosyanın üst bilgisi içermelidir. `request`, uygun REST uç noktasına bağlı bir `HttpWebRequest` nesnesidir. `audioFile`, diskteki bir ses dosyasının yoludur.
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }

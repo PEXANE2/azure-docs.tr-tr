@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529584"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251022"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
 
@@ -26,7 +26,7 @@ Azure CLı için Azure IoT uzantısı IoT Tak ve Kullan önizleme cihazlarını 
 - Cihaz özellikleriyle çalışın.
 - Çağrı cihazı komutları.
 
-Bu makale, şunları nasıl yapacağınızı gösterir:
+Bu makalede nasıl yapılacağı gösterilmektedir:
 
 - Azure CLı için Azure IoT uzantısını yükleyip yapılandırın.
 - Cihazlarınızı kullanarak cihazlarınızla etkileşim kurun ve test edin.
@@ -40,11 +40,11 @@ Ortamınızda Azure CLı 'yı ayarlamak için [yükleme yönergelerini](https://
 
 ### <a name="step-2---install-iot-extension"></a>2\. adım-IoT uzantısını yüklemeyi
 
-[IoT uzantısı benioku](https://github.com/Azure/azure-iot-cli-extension) dosyası, uzantıyı yüklemenin birkaç yolunu açıklar. En basit yol `az extension add --name azure-cli-iot-ext` komutunu çalıştırmaktır. Yükleme sonrasında `az extension list` kullanarak o anda yüklü uzantıları doğrulayabilir veya `az extension show --name azure-cli-iot-ext` kullanarak IoT uzantısına ilişkin ayrıntıları görebilirsiniz. Uzantıyı kaldırmak için `az extension remove --name azure-cli-iot-ext` kullanabilirsiniz.
+[IoT uzantısı benioku](https://github.com/Azure/azure-iot-cli-extension) dosyası, uzantıyı yüklemenin birkaç yolunu açıklar. En basit yol `az extension add --name azure-iot` komutunu çalıştırmaktır. Yükleme sonrasında `az extension list` kullanarak o anda yüklü uzantıları doğrulayabilir veya `az extension show --name azure-iot` kullanarak IoT uzantısına ilişkin ayrıntıları görebilirsiniz. Uzantıyı kaldırmak için `az extension remove --name azure-iot` kullanabilirsiniz.
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını kullanma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğinizde oturum açmak için aşağıdaki komutu çalıştırın:
 

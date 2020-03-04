@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511884"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249044"
 ---
 # <a name="what-is-a-device-identity"></a>Cihaz kimliği nedir?
 
@@ -37,16 +37,16 @@ Cihaz kimliği yönetimi, [cihaz tabanlı koşullu erişim](../conditional-acces
 Azure AD 'de bir cihaz almak için, birden çok seçeneğiniz vardır:
 
 - **Azure AD kayıtlı**
-   - Azure AD kaydı olan cihazlar genellikle kişisel olarak sahip olunan ve mobil cihazlardır ve kişisel Microsoft hesabı veya başka bir yerel hesapla oturum açtı.
+   - Azure AD kaydı olan cihazlar genellikle kişisel olarak sahip olunan ve mobil cihazlardır ve kişisel Microsoft hesabı veya başka bir yerel hesapla oturum açanlar.
       - Windows 10
       - iOS
       - Android
-      - MacOS
+      - macOS
 - **Azure AD 'ye katılmış**
-   - Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açtı. Bunlar yalnızca bulutta bulunur.
+   - Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açanlar. Bunlar yalnızca bulutta bulunur.
       - Windows 10 
 - **Hibrit Azure AD'ye katılmış**
-   - Karma Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açtı. Bunlar bulutta ve şirket içinde mevcuttur.
+   - Karma Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açanlar. Bunlar bulutta ve şirket içinde mevcuttur.
       - Windows 7, 8,1 veya 10
       - Windows Server 2008 veya üzeri
 
@@ -69,7 +69,7 @@ Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış cihazlar, SSO 'dan 
 
 - **Azure AD kayıtlı cihazlar** Son Kullanıcı tarafından yönetilen bir hesabı kullanır, bu hesap bir veya bir veya daha fazla ile korunan bir Microsoft hesabı ya da yerel olarak yönetilen bir kimlik bilgisi olur.
    - Parola
-   - SABİTLE
+   - IĞNES
    - Desen
    - Windows Hello
 - **Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış cihazlar** , aşağıdakilerden biri veya birkaçı ile güvenli bir şekılde Azure AD 'de kurumsal hesap kullanır.

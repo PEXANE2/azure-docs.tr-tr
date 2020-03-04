@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 6cdca78d09c9ca128119a58cb4feaf66bad111bd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165042"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256023"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine yapılan geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -40,6 +40,8 @@ MongoDB 'den Cosmos DB 'ın MongoDB için API 'sine yapılan geçişlerle ilişk
 | Depolama hesabı bağlantı dizesinde SAS bilgileri eksik ve bu nedenle kimlik doğrulaması yapılamıyor. | Depolama Gezgini içindeki blob kapsayıcısında SAS oluşturun ve kaynak ayrıntısı bağlantı dizesi olarak kapsayıcı SAS bilgileri ile URL 'YI kullanın.<br><br> |
 
 ## <a name="using-an-unsupported-version-of-the-database"></a>Desteklenmeyen bir veritabanının sürümünü kullanma
+
+* **Belirti**: geçiş başarısız olur.
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |

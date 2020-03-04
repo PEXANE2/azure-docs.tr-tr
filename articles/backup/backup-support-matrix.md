@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206665"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254902"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 --- | ---
 **Abonelikte kasa** | Tek bir abonelikte en fazla 500 kurtarma hizmeti Kasası.
 **Kasadaki makineler** | Tek bir kasada en fazla 1.000 Azure VM.<br/><br/> 50 MABS sunucusuna kadar tek bir kasada kayıt yapılabilir.
-**Kasa depolamadaki veri kaynakları** | Maksimum 54.400 GB. Azure VM yedeklemeleri için sınır yoktur.
+**Veri kaynakları** | Tek bir [veri kaynağının](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) en büyük boyutu 54.400 GB 'dir. Bu sınır, Azure VM yedeklemeleri için geçerlidir. Kasaya yedekleyebileceğiniz toplam veri miktarı için sınır uygulanmaz.
 **Kasaya yedeklemeler** | **Azure VM 'leri:** Günde bir kez.<br/><br/>**DPM/MABS tarafından korunan makineler:** Günde iki kez.<br/><br/> **Mars Aracısı kullanılarak doğrudan yedeklenen makineler:** Günde üç kez.
 **Kasaların arasındaki yedeklemeler** | Yedekleme bir bölgede yer alan.<br/><br/> Yedeklemek istediğiniz VM 'Leri içeren her Azure bölgesinde bir kasaya ihtiyacınız vardır. Farklı bir bölgeye yedekleme yapamazsınız.
 **Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) . Ancak, kasaların bölgeler arasında taşınması desteklenmez.
@@ -155,8 +155,6 @@ Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlen
 | MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
 | SQL/SAP HANA          | Hayır                                                           | Yok               |
 | 'Nın                    | Hayır                                                           | Yok               |
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

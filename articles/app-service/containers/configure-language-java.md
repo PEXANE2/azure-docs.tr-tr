@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b9db20da58f50c91da88c2f9f890623b741f10a
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 455ebcb28ea6cc8b43431f96a4bc3929a759c2d0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443882"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255889"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -136,7 +136,7 @@ Tek bir uygulama çalıştıran geliştiriciler App Service planında bir dağı
 
 Uygulama yığını ayarlarını ayarladığınızda, en iyi bellek ayırmayı bulmak için App Service planı ayrıntılarınızı gözden geçirin ve birden çok uygulama ve dağıtım yuvası ihtiyaçlarına sahip olmak üzere birden fazla uygulama ve dağıtım yuvası
 
-Bir JAR uygulaması dağıtıyorsanız, yerleşik görüntünün uygulamanızı doğru bir şekilde tanımlayabilmesi için *app. jar* olarak adlandırılmalıdır. (Maven eklentisi bu yeniden adlandırmayı otomatik olarak yapar.) JAR 'nizi *app. jar*'e yeniden adlandırmak ISTEMIYORSANıZ, jar dosyanızı çalıştırmak için komutuyla bir kabuk betiği yükleyebilirsiniz. Sonra bu betiğin tam yolunu portalın yapılandırma bölümündeki [başlangıç dosyası](app-service-linux-faq.md#built-in-images) metin kutusuna yapıştırın. Başlangıç betiği, yerleştirildiği dizinden çalışmaz. Bu nedenle, başlangıç betikinizdeki dosyalara başvurmak için her zaman mutlak yollar kullanın (örneğin: `java -jar /home/myapp/myapp.jar`).
+Bir JAR uygulaması dağıtıyorsanız, yerleşik görüntünün uygulamanızı doğru bir şekilde tanımlayabilmesi için *app. jar* olarak adlandırılmalıdır. (Maven eklentisi bu yeniden adlandırmayı otomatik olarak yapar.) JAR 'nizi *app. jar*'e yeniden adlandırmak ISTEMIYORSANıZ, jar dosyanızı çalıştırmak için komutuyla bir kabuk betiği yükleyebilirsiniz. Sonra bu betiğin tam yolunu portalın Yapılandırma bölümündeki [Başlangıç Dosyası](app-service-linux-faq.md#built-in-images) metin kutusuna yapıştırın. Başlatma dizesi içine yerleştirildiği dizinden çalıştırılmaz. Bu nedenle başlatma dizenizde her zaman başvuru dosyalarının mutlak yollarını kullanın (örneğin: `java -jar /home/myapp/myapp.jar`).
 
 ### <a name="turn-on-web-sockets"></a>Web yuvalarını aç
 
@@ -561,7 +561,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
 
 8. Uygulamanızın *Pod. xml* dosyasındaki `azure-webapp-maven-plugin` yapılandırmasını, redsıs hesap bilgilerinize başvuracak şekilde güncelleştirin. Bu dosya, daha önce ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
 
-    Gerekirse, [Azure App Service Için Maven eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)güncel sürümüne `1.7.0` değiştirin.
+    Gerekirse `1.7.0` sürümünü [Azure App Service için Maven Eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) geçerli sürümüyle değiştirin.
 
     ```xml
     <plugin>
@@ -630,7 +630,7 @@ Linux için App Service, Java Web uygulamalarının yönetilen barındırılmas�
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve bakım
 
-Azul Zulu kurumsal Derlemeleriyle OpenJDK, Azure için OpenJDK ve Microsoft ve Azul sistemleri tarafından desteklenen Azure Stack için ücretsiz, çok platformlu, üretime hazırlı bir dağıtımıdır. Java ve uygulamaları oluşturmak ve çalıştırmak için tüm bileşenleri içerir. JDK 'yi [Java JDK yüklemesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
+Azul Zulu kurumsal Derlemeleriyle OpenJDK, Azure için OpenJDK ve Microsoft ve Azul sistemleri tarafından desteklenen Azure Stack için ücretsiz, çok platformlu, üretime hazırlı bir dağıtımıdır. Java SE uygulamalarını oluşturmak ve çalıştırmak için gereken tüm bileşenleri içerir. JDK 'yi [Java JDK yüklemesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
 
 Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak üç ayda bir düzeltme eki uygulanır.
 
@@ -641,6 +641,8 @@ Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak �
 ### <a name="deprecation-and-retirement"></a>Kullanımdan kaldırma ve kullanımdan kaldırma
 
 Desteklenen bir Java çalışma zamanı devre dışı bırakırsa, etkilenen çalışma zamanını kullanan Azure geliştiricileri, çalışma zamanı kullanımdan kalkmadan önce en az altı ayda bir kullanımdan kaldırma olarak verilmeyecektir.
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

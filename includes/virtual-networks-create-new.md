@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 43ede7f3340f190f9eb37ca90fb74f2215db9062
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227385"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244965"
 ---
 ## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
@@ -27,7 +27,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     |------------------|-----------------------------------------------------------------|
     | **Proje ayrıntıları**  |                                                                 |
     | Abonelik     | Azure aboneliğinizi seçin                                  |
-    | Kaynak Grubu   | **Yeni oluştur**' u seçin, **\<kaynak grubu-adı >** girin ve Tamam ' ı seçin. |
+    | Kaynak Grubu   | **Yeni oluştur**' u seçin, **\<kaynak grubu-adı >** girin, sonra Tamam ' ı seçin veya parametrelere göre mevcut bir **\<kaynak grubu adı >** seçin. |
     | **Örnek ayrıntıları** |                                                                 |
     | Adı             | **\<sanal ağ adını girin >**                                    |
     | Bölge           | **\<bölge adını seçin >** |
@@ -38,7 +38,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
-    | IPv4 adres alanı | **\<IPv4 adres alanını girin >** |
+    | IPv4 adres alanı | **\<IPv4-adres-alanı >** girin |
 
 5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
 

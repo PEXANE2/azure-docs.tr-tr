@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Bir AKS kümesine Azure Dev Spaces yüklemeyi ve istemci tarafı araçları yüklemeyi öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770637"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251999"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>AKS 'e ve istemci tarafı araçlarına Azure Dev Spaces yüklemesi
 
@@ -25,15 +25,13 @@ CLı kullanarak dev alanlarını yüklemeden önce şunları yapmanız gerekir:
 
 AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın.
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
 Yukarıdaki komut, *Myresourcegroup* grubundaki *Myakscluster* kümesinde dev alanları sunar ve *varsayılan* bir dev alanı oluşturur.
 
-```cmd
-$ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
-
+```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'myAKSCluster' in resource group 'myResourceGroup' that targets resource 'myAKSCluster' in resource group 'myResourceGroup'...2m 24s
@@ -58,7 +56,7 @@ Azure portal kullanarak dev alanlarını yükleyebilmek için önce şunları ya
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-portal] .
 
 Azure portal kullanarak Azure Dev Spaces yüklemek için:
-1. [Azure Portal][az-portal]’ında oturum açın.
+1. [Azure Portal][az-portal] oturum açın.
 1. AKS kümenize gidin.
 1. *Geliştirme alanları*' na tıklayın.
 1. Değişiklik *geliştirme alanlarını* *Evet* olarak etkinleştirin ve *Kaydet*' e tıklayın.

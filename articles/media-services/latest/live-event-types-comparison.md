@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services LiveEvent Types | Microsoft Docs
-description: Azure Media Services, canlı bir olay iki türden biri olabilir, canlı kodlama ve doğrudan geçiş. Bu makalede, canlı olay türlerini karşılaştıran ayrıntılı bir tablo gösterilir.
+description: Azure Media Services, canlı bir olay *doğrudan geçiş* ya da *canlı kodlamaya*ayarlanabilir. Bu makalede, canlı olay türlerini karşılaştıran ayrıntılı bir tablo gösterilir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543061"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244636"
 ---
 # <a name="live-event-types-comparison"></a>Canlı olay türleri karşılaştırması
 
-Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/media/liveevents) iki türden biri olabilir: canlı kodlama ve doğrudan geçiş. 
+Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/media/liveevents) *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) ya da *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. 
+
+Bu makaleler, canlı olay türlerinin özelliklerini karşılaştırır.
 
 ## <a name="types-comparison"></a>Tür karşılaştırması 
 
@@ -34,13 +36,13 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 
 | Özellik | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
 | --- | --- | --- |
-| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Evet |
+| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
 | Katkı akışı için maksimum video çözünürlüğü |4K (4096x2160/60 kare/sn) |1080p (1920x1088 üzerinde 30 kare/sn)|
 | Katkı akışında önerilen maksimum katman sayısı|12 ' ye kadar|Bir ses|
 | Çıktıda maksimum katman sayısı| Giriş ile aynı|6 ' ya kadar (aşağıdaki sistem önayarlarına bakın)|
 | Katkı akışı en fazla toplam bant genişliği|60 Mbps|Yok|
 | Katkıdaki tek bir katman için maksimum bit hızı |20 Mbps|20 Mbps|
-| Birden çok dil sesi parçası desteği|Evet|Hayır|
+| Birden çok dil sesi parçası desteği|Yes|Hayır|
 | Desteklenen giriş video codec bileşenleri |H., ve AVC ve H. 265/HEVC|H. BIR/DAHA FAZLA/AVC|
 | Desteklenen çıkış video codec bileşenleri|Giriş ile aynı|H. BIR/DAHA FAZLA/AVC|
 | Desteklenen video bit derinliği, giriş ve çıkış|HDR 10/HLG dahil olmak üzere en fazla 10 bit|8 bit|
@@ -51,14 +53,14 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 | Giriş protokolleri|RTMP, parçalanmış-MP4 (Kesintisiz Akış)|RTMP, parçalanmış-MP4 (Kesintisiz Akış)|
 | Fiyat|[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın ve "canlı video" sekmesine tıklayın|[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın ve "canlı video" sekmesine tıklayın|
 | En fazla çalışma süresi| 24 saat x 365 gün, canlı doğrusal | 24 saat x 365 gün, canlı doğrusal (Önizleme)|
-| Gömülü CEA 608/708 açıklamalı alt yazı verilerini geçirebilme|Evet|Evet|
-| Canlı dökümü açma özelliği|Evet|Evet|
+| Gömülü CEA 608/708 açıklamalı alt yazı verilerini geçirebilme|Yes|Yes|
+| Canlı dökümü açma özelliği|Yes|Yes|
 | SLA ekleme desteği|Hayır|Hayır|
 | API aracılığıyla ad sinyali için destek| Hayır|Hayır|
-| Yerleşik olarak SCTE-35 iletileri aracılığıyla ad sinyali desteği|Evet|Evet|
-| Katkı akışındaki kısa yedeklerden kurtarma olanağı|Evet|Kısmi|
-| Tekdüzen olmayan giriş GOPs desteği|Evet|Hayır – girişte sabit GOP süresi olmalıdır|
-| Değişken çerçeve hızı girişi desteği|Evet|Hayır – giriş sabit kare oranı olmalıdır. Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak katkı akışı kare hızını (örneğin, 15 kare/saniye) bırakamıyor.|
+| Yerleşik olarak SCTE-35 iletileri aracılığıyla ad sinyali desteği|Yes|Yes|
+| Katkı akışındaki kısa yedeklerden kurtarma olanağı|Yes|Kısmi|
+| Tekdüzen olmayan giriş GOPs desteği|Yes|Hayır – girişte sabit GOP süresi olmalıdır|
+| Değişken çerçeve hızı girişi desteği|Yes|Hayır – giriş sabit kare oranı olmalıdır. Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak katkı akışı kare hızını (örneğin, 15 kare/saniye) bırakamıyor.|
 | Giriş akışı kaybolduğunda canlı etkinliğin otomatik olarak kaybolması|Hayır|12 saat sonra, çalışan bir canlı çıkış yoksa|
 
 ## <a name="system-presets"></a>Sistem önayarları

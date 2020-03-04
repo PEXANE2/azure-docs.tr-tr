@@ -3,12 +3,12 @@ title: Linux kümeleri için disk şifrelemeyi etkinleştirme
 description: Bu makalede, Azure Resource Manager ve Azure Key Vault kullanarak Linux 'ta Azure Service Fabric küme düğümleri için disk şifrelemenin nasıl etkinleştirileceği açıklanır.
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: d990cfdee9a497135c67d99431807a85f8105b3b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609903"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252824"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Linux 'ta Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Kılavuzda aşağıdaki konular ele alınmaktadır:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  **Kendi kendine kayıt**
 
@@ -75,7 +75,7 @@ Sanal makine ölçek kümesi için disk şifreleme önizlemesi, kendi kendine ka
 
 Bir küme oluşturmak ve bir Azure Resource Manager şablonu ve kendinden imzalı bir sertifika kullanarak disk şifrelemeyi etkinleştirmek için aşağıdaki komutları kullanın.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açın  
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma  
 
 Aşağıdaki komutlarla oturum açın:
 
@@ -86,7 +86,7 @@ Set-AzContext -SubscriptionId <guid>
 
 ```
 
-```CLI
+```azurecli
 
 azure login
 az account set --subscription $subscriptionId

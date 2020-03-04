@@ -3,12 +3,12 @@ title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft D
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669820"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250777"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -128,7 +128,7 @@ Yeni bir. JSON dosyası oluşturun-Bu örnekte `template1.json` çağıralım. B
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -320,16 +320,30 @@ Günlük üst sınır özelliklerini almak için [set-Azapplicationınsiısprici
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Günlük üst sınır özelliklerini ayarlamak için aynı cmdlet 'i kullanın. Örneğin, üst sınırı 300 GB/gün olarak ayarlamak için 
+Günlük üst sınır özelliklerini ayarlamak için aynı cmdlet 'i kullanın. Örneğin, üst sınırı 300 GB/gün olarak ayarlamak için
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+Ayrıca, [Armclient](https://github.com/projectkudu/ARMClient) kullanarak günlük uç parametrelerini alabilir ve ayarlayabilirsiniz.  Geçerli değerleri almak için şunu kullanın:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>Günlük üst sınır sıfırlama süresini ayarlama
+
+Günlük üst sınır sıfırlama süresini ayarlamak için [Armclient](https://github.com/projectkudu/ARMClient)kullanabilirsiniz. Aşağıda, sıfırlama süresini yeni bir saate (Bu örnekte 12:00 UTC) ayarlamak için `ARMClient`kullanan bir örnek verilmiştir:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Fiyatlandırma planını ayarlama 
 
-Geçerli fiyatlandırma planını almak için [set-Azapplicationınsiıspricingplan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet 'ini kullanın: 
+Geçerli fiyatlandırma planını almak için [set-Azapplicationınsiıspricingplan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet 'ini kullanın:
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -350,14 +364,31 @@ Ayrıca, faturalandırma kaynağından "Microsoft. Insights/Components" kaynağ�
                -appName myApp
 ```
 
+`priceCode` şöyle tanımlanır:
+
 |priceCode|plan|
 |---|---|
 |1|GB başına (eski adıyla temel plan olarak adlandırılır)|
 |2|Düğüm başına (eski adıyla kurumsal planı adlandırın)|
 
+Son olarak, [Armclient](https://github.com/projectkudu/ARMClient) kullanarak fiyatlandırma planları ve günlük uç parametreleri alabilir ve ayarlayabilirsiniz.  Geçerli değerleri almak için şunu kullanın:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+Bu parametreleri kullanarak şu parametreleri de ayarlayabilirsiniz:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+Bu, günlük üst sınırı 200 GB/gün olarak ayarlar, günlük uç sıfırlama süresini 12:00 UTC olarak yapılandırır, her ikisi de Cap 'e ulaşıldığında ve uyarı düzeyi karşılandığında e-posta gönderir ve uyarı eşiğini ucun %90 olarak ayarlar.  
+
 ## <a name="add-a-metric-alert"></a>Ölçüm uyarısı Ekle
 
-Ölçüm uyarılarının oluşturulmasını otomatikleştirmek için [ölçüm uyarıları şablonu makalesine](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) başvurun
+Ölçüm uyarılarının oluşturulmasını otomatik hale getirmek için [ölçüm uyarıları şablonu makalesine](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) başvurun
 
 
 ## <a name="add-an-availability-test"></a>Bir kullanılabilirlik testi ekleyin

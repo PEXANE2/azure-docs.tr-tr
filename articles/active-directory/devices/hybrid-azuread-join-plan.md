@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591617"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255010"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -79,6 +79,8 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 - Karma Azure AD katılımı, etki alanı denetleyicisi (DC) rolünü çalıştıran Windows Server için desteklenmez.
 
 - Karma Azure AD katılımı, kimlik bilgisi dolaşımı veya Kullanıcı profili dolaşımı veya zorunlu profili kullanılırken Windows alt düzey cihazlarda desteklenmez.
+
+- Sunucu çekirdeği işletim sistemi herhangi bir cihaz kaydı türünü desteklemez.
 
 ### <a name="os-imaging-considerations"></a>İşletim sistemi görüntüsü konuları
 - Sistem Hazırlama Aracı 'nı (Sysprep) kullanıyorsanız ve yükleme için **Windows 10 1809 öncesi** bir görüntü kullanıyorsanız, görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir cihazdan olmadığından emin olun.

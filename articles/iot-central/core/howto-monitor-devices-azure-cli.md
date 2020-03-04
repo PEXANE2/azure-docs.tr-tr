@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026789"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252345"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI'yı kullanarak cihaz bağlantısını izleme
 
@@ -23,7 +23,7 @@ Cihazlarınızın IoT Central gönderdiği iletileri görmek ve cihaz ikizi değ
 
 [Daha fazla bilgi için Azure CLı uzantıları başvurusunu ziyaret edin](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure CLı yüklü ve sürüm 2.0.7 veya üzeri. `az --version`çalıştırarak Azure CLı 'nizin sürümünü denetleyin. [Azure CLI belgelerinden](https://docs.microsoft.com/cli/azure/install-azure-cli) yüklemeyi ve güncelleştirmeyi öğrenin
 + Azure 'da bir IoT Central uygulamasına kullanıcı olarak eklenen bir iş veya okul hesabı.
@@ -33,23 +33,26 @@ Cihazlarınızın IoT Central gönderdiği iletileri görmek ve cihaz ikizi değ
 Yüklemek için komut satırınızdan aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-' İ çalıştırarak uzantının sürümünü denetleyin 
+Şu çalıştırarak uzantının sürümünü denetleyin:
+
 ```cmd/sh
 az --version
 ```
-Azure-cli-IoT-ext uzantısının 0.8.1 veya üzeri olduğunu görmeniz gerekir. Değilse, Çalıştır
+
+Azure-IoT uzantısının 0.8.1 veya üzeri olduğunu görmeniz gerekir. Değilse, şunu çalıştırın:
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>Uzantıyı kullanma
 
 Aşağıdaki bölümlerde, `az iot central`çalıştırdığınızda kullanabileceğiniz ortak komutlar ve seçenekler açıklanır. Komutların ve seçeneklerin tam kümesini görüntülemek için `--help` `az iot central` veya alt komutlarının birine geçirin.
 
-### <a name="login"></a>Oturum aç
+### <a name="login"></a>Oturum Aç
 
 Azure CLı 'de oturum açarak başlayın. 
 

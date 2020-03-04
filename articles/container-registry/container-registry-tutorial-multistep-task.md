@@ -4,12 +4,12 @@ description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken, bulutta 
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f5342e51af870b1e5f8651ea2d28894233ed8e62
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7d84770f1b945ff47cb4e9118d9c342e67118722
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456063"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249913"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırın
 
@@ -21,7 +21,7 @@ Bu öğreticide:
 
 > [!div class="checklist"]
 > * YAML dosyası kullanarak çok adımlı bir görev tanımlama
-> * Bir görev oluşturun
+> * Görev oluşturma
 > * İsteğe bağlı olarak, başka bir kayıt defterine erişim sağlamak için göreve kimlik bilgileri ekleyin
 > * Görevi test etme
 > * Görev durumunu görüntüleme
@@ -69,7 +69,9 @@ Bu çok adımlı görev şunları yapar:
 
 İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
 
-```azurecli-interactive
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -217,13 +219,13 @@ Görevi el ile çalıştırarak test ettikten sonra, bir kaynak kodu değişikli
 
 İlk olarak, [deponun][sample-repo]yerel kopyasını içeren dizinde olduğunuzdan emin olun:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 Ardından, yeni bir dosya oluşturmak, işlemek ve GitHub üzerindeki depo çatalınıza göndermek için aşağıdaki komutları yürütün:
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"

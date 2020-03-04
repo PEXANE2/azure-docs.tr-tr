@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/11/2019
-ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435824"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251061"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsü ile Azure HDInsight 'ta Apache Hadoop Excel 'e bağlanma
 
@@ -23,7 +23,7 @@ Microsoft 'un büyük veri çözümü, Microsoft Business Intelligence (BI) bile
 
 Excel için Microsoft Power Query eklentisi 'ni kullanarak bir HDInsight kümesiyle ilişkili verilerin yanı sıra diğer (HDInsight olmayan) Hadoop kümeleri de dahil olmak üzere Excel 'den başka veri kaynaklarıyla da bağlanabilirsiniz. Power Query yükleme ve kullanma hakkında bilgi için bkz. [Power Query kullanarak Excel 'ı HDInsight 'A bağlama](../hdinsight-connect-excel-power-query.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -53,7 +53,7 @@ Aşağıdaki adımlarda, Hive ODBC veri kaynağı oluşturma yöntemi gösterilm
    |  Data Source Name |Veri kaynağınız için bir ad verin |
    |  Ana bilgisayar (ler) |`HDInsightClusterName.azurehdinsight.net` yazın. Örneğin, `myHDICluster.azurehdinsight.net`. Note: istemci VM 'sinin aynı sanal ağa eşlenmiş olması için `HDInsightClusterName-int.azurehdinsight.net` desteklenir. |
    |  Bağlantı noktası |**443** yazın. (Önceden 563 olan bu bağlantı noktası 443 olarak değiştirilmiştir.) |
-   |  Veritabanı |**Varsayılanı**kullanın. |
+   |  Database |**Varsayılanı**kullanın. |
    |  Mechanism |**Windows Azure HDInsight hizmetini** seçin |
    |  User Name |HDInsight kümesi HTTP Kullanıcı Kullanıcı adı girin. Varsayılan kullanıcı adı **admin** şeklindedir. |
    |  Parola |HDInsight kümesi Kullanıcı parolasını girin. **Parolayı Kaydet (şifreli)** onay kutusunu seçin.|

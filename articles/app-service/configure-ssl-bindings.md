@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849760"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255184"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service 'de SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
@@ -24,7 +24,7 @@ Bu makalede, bir sertifika bağlaması oluşturarak [App Service uygulamanızda]
 - [SSL bağlamalarının tüm gereksinimlerini](configure-ssl-certificate.md#private-certificate-requirements)karşılayan [App Service özel bir sertifika ekleyin](configure-ssl-certificate.md) .
 -  Karşılık gelen özel etki alanına bir SSL bağlaması oluşturun. Bu ikinci adım bu makalede ele alınmıştır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Uygulamanızın fiyatlandırma katmanını yükseltme
@@ -147,6 +147,12 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 İşlem tamamlandığında, uygulamanız daha düşük TLS sürümleriyle tüm bağlantıları reddeder.
 
+## <a name="handle-ssl-termination"></a>SSL sonlandırmasını işle
+
+App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa `X-Forwarded-Proto` üst bilgisini inceleyin.
+
+[Linux Node. js yapılandırma](containers/configure-language-nodejs.md#detect-https-session) kılavuzu gibi dile özgü yapılandırma kılavuzlarında, uygulama KODUNUZDA bir https oturumunun nasıl algılanacağı gösterilir.
+
 ## <a name="automate-with-scripts"></a>Betiklerle otomatikleştirme
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -157,7 +163,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Daha fazla kaynak
+## <a name="more-resources"></a>Diğer kaynaklar
 
 * [Uygulama kodunuzda bir SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
 * [SSS: sertifikalar App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

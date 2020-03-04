@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: e645be5ddd51a4fe7e7610e7f639407d5638f746
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920922"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246244"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Azure Otomasyonu 'nda varlıkları güvenli hale getirme
 
@@ -26,46 +26,48 @@ Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağl
 
 Varsayılan olarak, Azure Otomasyonu hesabınız Microsoft tarafından yönetilen anahtarları kullanır.
 
-Her bir güvenli varlık şifrelenir ve her Otomasyon hesabı için oluşturulan benzersiz bir anahtar (veri şifreleme anahtarı) kullanılarak Azure Otomasyonu 'nda depolanır. Bu anahtarların kendisi, bir hesap şifreleme anahtarı (AEK) olarak adlandırılan her bir hesap için oluşturulan başka bir benzersiz anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Microsoft tarafından yönetilen anahtarlar kullanılarak bu hesap şifreleme anahtarları şifrelenir ve Azure Otomasyonu 'nda depolanır. 
+Her bir güvenli varlık şifrelenir ve her Otomasyon hesabı için oluşturulan benzersiz bir anahtar (veri şifreleme anahtarı) kullanılarak Azure Otomasyonu 'nda depolanır. Bu anahtarların kendisi, bir hesap şifreleme anahtarı (AEK) olarak adlandırılan her bir hesap için oluşturulan başka bir benzersiz anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Bu hesap şifreleme anahtarları Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenmiş ve Azure Otomasyonu 'nda depolanıyor. 
 
 ## <a name="customer-managed-keys-with-key-vault-preview"></a>Key Vault ile müşteri tarafından yönetilen anahtarlar (Önizleme)
 
-Azure Automation 'da güvenli varlıkların şifrelemesini, kendi anahtarlarınızla bir Otomasyon hesabı düzeyinde yönetebilirsiniz. Otomasyon hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar, Otomasyon hesabının hesap şifreleme anahtarına erişimi korumak ve denetlemek için kullanılır ve bu, tüm güvenli varlıkları şifrelemek ve şifresini çözmek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Ayrıca, güvenli varlıklarınızı korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz. 
+Otomasyon hesabınız için güvenli varlıkların şifrelemesini kendi anahtarlarınızla yönetebilirsiniz. Otomasyon hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar Otomasyon hesabı için hesap şifreleme anahtarına erişimi korumak ve denetlemek için kullanılır. Bu sırayla tüm güvenli varlıkları şifrelemek ve şifresini çözmek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Ayrıca, güvenli varlıklarınızı korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
-Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz.  Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/key-vault-overview.md)
+Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault kullanın. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz.  Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/key-vault-overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinleştirin
 
-Otomasyon hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi etkinleştirdiğinizde Azure Otomasyonu, hesap şifreleme anahtarını ilişkili anahtar kasasındaki müşteri tarafından yönetilen anahtarla sarar. Müşteri tarafından yönetilen anahtarların etkinleştirilmesi performansı etkilemez ve hesap, her zaman gecikmesi olmadan yeni anahtarla şifrelenir.
+Otomasyon hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi etkinleştirdiğinizde Azure Otomasyonu, hesap şifreleme anahtarını ilişkili anahtar kasasındaki müşteri tarafından yönetilen anahtarla sarar. Müşteri tarafından yönetilen anahtarların etkinleştirilmesi performansı etkilemez ve hesap, herhangi bir gecikme olmadan hemen yeni anahtarla şifrelenir.
 
 Yeni bir Otomasyon hesabı her zaman Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Hesap oluşturulduğu sırada müşteri tarafından yönetilen anahtarları etkinleştirmek mümkün değildir. Müşteri tarafından yönetilen anahtarlar Azure Key Vault depolanır ve Anahtar Kasası, Otomasyon hesabıyla ilişkili yönetilen kimliğe anahtar izinleri veren erişim ilkeleriyle sağlanmalıdır. Yönetilen kimlik yalnızca depolama hesabı oluşturulduktan sonra kullanılabilir.
 
-Müşteri tarafından yönetilen anahtarları etkinleştirerek veya devre dışı bırakarak, anahtar sürümünü güncelleştirerek veya farklı bir anahtar belirterek, Azure Otomasyonu güvenli varlık şifrelemesi için kullanılan anahtarı değiştirdiğinizde, hesap şifreleme anahtarı için şifreleme değişir ancak güvenli varlıklar Azure Otomasyonu hesabınızda yeniden şifrelenmiş olması gerekmez.
+Azure Otomasyonu güvenli varlık şifrelemesi için kullanılan anahtarı değiştirirken, müşteri tarafından yönetilen anahtarları etkinleştirerek veya devre dışı bırakarak, anahtar sürümünü güncelleştirerek veya farklı bir anahtar belirttiğinizde, hesap şifreleme anahtarı şifrelemesi değişir ancak içindeki güvenli varlıklar, Azure Otomasyonu hesabınızın yeniden şifrelenmesi gerekmez.
 
 Aşağıdaki üç bölümde, bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinleştirme mekanizması açıklanır. 
 
 > [!NOTE] 
-> Müşteri tarafından yönetilen anahtarları etkinleştirmek için şu anda API sürüm 2020-01-13-önizleme kullanarak Azure Otomasyonu REST API çağrıları yapmanız gerekir
+> Müşteri tarafından yönetilen anahtarları etkinleştirmek için API sürüm 2020-01-13 ile Azure Otomasyonu REST API çağrıları yapmanız gerekir-Önizleme
 
 ### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>Azure Otomasyonu 'nda müşteri tarafından yönetilen anahtarları kullanma önkoşulları
 
-Bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinleştirmeden önce, aşağıdaki önkoşulların karşılandığından emin olmanız gerekir
+Bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinleştirmeden önce, aşağıdaki önkoşulların karşılandığından emin olmanız gerekir:
 
  - Müşteri tarafından yönetilen anahtar, bir Azure Key Vault depolanır. 
- - Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirmeniz gerekir. Bu özellikler, yanlışlıkla silme durumunda anahtarların kurtarılmasına izin vermek için gereklidir.
+ - Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirin. Bu özellikler, yanlışlıkla silme durumunda anahtarların kurtarılmasına izin vermek için gereklidir.
  - Yalnızca RSA anahtarları Azure Otomasyonu şifrelemesi ile desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 - Otomasyon hesabı ve Anahtar Kasası farklı aboneliklerde olabilir, ancak aynı Azure Active Directory kiracısında olması gerekir.
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>Otomasyon hesabına bir kimlik atayın
 
-Müşteri tarafından yönetilen anahtarları bir Otomasyon hesabıyla birlikte kullanmak için Otomasyon hesabınızın, müşteri tarafından yönetilen anahtarları depolayan anahtar kasasında kimlik doğrulaması yapması gerekir. Azure Otomasyonu, Key Vault hesabın kimliğini doğrulamak için sistem tarafından atanmış Yönetilen kimlikler kullanır. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Müşteri tarafından yönetilen anahtarları bir Otomasyon hesabıyla birlikte kullanmak için Otomasyon hesabınızın, müşteri tarafından yönetilen anahtarları depolayan anahtar kasasında kimlik doğrulaması yapması gerekir. Azure Otomasyonu, Azure Key Vault hesabın kimliğini doğrulamak için sistem tarafından atanmış Yönetilen kimlikler kullanır. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Aşağıdaki REST API çağrısını kullanarak, sistem tarafından atanmış bir yönetilen kimliği Otomasyon hesabına yapılandırın
+Aşağıdaki REST API çağrısını kullanarak, bir sistem tarafından atanmış yönetilen kimliği Otomasyon hesabına yapılandırın:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
 ```
-İstek gövdesi
+
+İstek gövdesi:
+
 ```json
 { 
  "identity": 
@@ -73,9 +75,9 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
   "type": "SystemAssigned" 
   } 
 }
-```    
+```
 
-Otomasyon hesabı için sistem tarafından atanan kimlik yanıt olarak döndürüldü
+Otomasyon hesabı için sistem tarafından atanan kimlik şuna benzer bir yanıtta döndürülür:
 
 ```json
 {
@@ -93,14 +95,15 @@ Otomasyon hesabı için sistem tarafından atanan kimlik yanıt olarak döndür�
 
 ### <a name="configure-the-key-vault-access-policy"></a>Key Vault erişim ilkesini yapılandırma
 
-Otomasyon hesabına yönetilen bir kimlik atandıktan sonra, müşteri tarafından yönetilen anahtarları depolayan Key Vault erişimi yapılandırırsınız. Azure Otomasyonu, müşteri tarafından yönetilen anahtarlar üzerinde **Get**, **Recover**, **wrapKey**, **UnwrapKey** gerektirir.
+Otomasyon hesabına yönetilen bir kimlik atandıktan sonra, müşteri tarafından yönetilen anahtarları depolayan anahtar kasasının erişimini yapılandırırsınız. Azure Otomasyonu, müşteri tarafından yönetilen anahtarlar üzerinde **Get**, **Recover**, **wrapKey**, **UnwrapKey** gerektirir.
 
-Bu tür bir erişim ilkesi aşağıdaki REST API çağrısı kullanılarak ayarlanabilir.
+Bu tür bir erişim ilkesi aşağıdaki REST API çağrısı kullanılarak ayarlanabilir:
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/accessPolicies/add?api-version=2018-02-14
 ```
-İstek gövdesi
+
+İstek gövdesi:
 
 ```json
 {
@@ -125,17 +128,18 @@ PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Otomasyon hesabı için yönetilen kimliğin yanıtından sırasıyla **Identity. Tenantıd** ve **Identity. PrincipalId** değerleri ile birlikte **tenantıd** ve **ObjectID** alanları sağlanmalıdır.
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>Otomasyon hesabının yapılandırmasını, müşteri tarafından yönetilen anahtarı kullanacak şekilde değiştirin
 
-Son olarak, aşağıdaki REST API çağrısını kullanarak Otomasyon hesabınızı Microsft tarafından yönetilen anahtarlardan müşteri tarafından yönetilen anahtarlara geçirebilirsiniz.
+Son olarak, aşağıdaki REST API çağrısını kullanarak Otomasyon hesabınızı Microsft tarafından yönetilen anahtarlardan müşteri tarafından yönetilen anahtarlara geçirebilirsiniz:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
 ```
-İstek gövdesi
+
+İstek gövdesi:
 
 ```json
  {
@@ -151,6 +155,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
     }
   }
 ```
+
 Örnek yanıt
 
 ```json
@@ -177,9 +182,9 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 
 ### <a name="rotate-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları döndür
 
-Azure Key Vault, müşteri tarafından yönetilen bir anahtarı uyumluluk ilkelerinize göre döndürebilirsiniz. Anahtar döndürüldüğünde, Otomasyon hesabını yeni anahtar URI 'sini kullanacak şekilde güncelleştirmeniz gerekir. 
+Azure Key Vault, müşteri tarafından yönetilen bir anahtarı uyumluluk ilkelerinize göre döndürebilirsiniz. Anahtar döndürüldüğünde, Otomasyon hesabını yeni anahtar URI 'sini kullanacak şekilde güncelleştirmeniz gerekir.
 
-Anahtarın döndürülmesi Otomasyon hesabındaki güvenli varlıkların yeniden şifrelenmesini tetiklemez. Kullanıcıdan başka bir eylem gerekli değildir.
+Anahtarın döndürülmesi Otomasyon hesabındaki güvenli varlıkların yeniden şifrelenmesini tetiklemez. Başka bir eylem gerekli değildir.
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Müşterinin yönettiği anahtarlara erişimi iptal etme
 
@@ -187,7 +192,10 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault nedir?](../key-vault/key-vault-overview.md) 
+- [Azure Key Vault nedir?](../key-vault/key-vault-overview.md)
+
 - [Azure Otomasyonu'ndaki sertifika varlıkları](shared-resources/certificates.md)
+
 - [Azure Otomasyonu'ndaki kimlik bilgileri varlıkları](shared-resources/credentials.md)
+
 - [Azure Otomasyonu'ndaki değişken varlıkları](shared-resources/variables.md)

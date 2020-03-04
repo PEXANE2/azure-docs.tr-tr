@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612726"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249203"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sık karşılaşılan hatalar ve sorun giderme adımları
 
@@ -138,7 +138,7 @@ Azure AD kiracınızdaki bir veya daha fazla Kullanıcı Azure AD DS yönetilen 
       * [En son önerilen Azure AD Connect sürümünü](https://www.microsoft.com/download/details.aspx?id=47594)dağıttıysanız veya sürümüne güncelleştirdiniz.
       * [Tam eşitleme gerçekleştirmek][hybrid-phs]için Azure AD Connect yapılandırdınız.
       * Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının Azure AD DS 'de kullanılabilir olması biraz zaman alabilir. Yönetilen etki alanında kimlik doğrulaması yapmayı denemeden önce yeterince uzun süre beklemeniz gerekir.
-      * Önceki adımları doğruladıktan sonra sorun devam ederse, *Microsoft Azure AD eşitleme hizmetini*yeniden başlatmayı deneyin. [YÖNETIM sanal][management-vm]makinenizde bir komut istemi açın ve aşağıdaki komutları çalıştırın:
+      * Önceki adımları doğruladıktan sonra sorun devam ederse, *Microsoft Azure AD eşitleme hizmetini*yeniden başlatmayı deneyin. Azure AD Connect sunucunuzda bir komut istemi açın ve aşağıdaki komutları çalıştırın:
     
         ```console
         net stop 'Microsoft Azure AD Sync'

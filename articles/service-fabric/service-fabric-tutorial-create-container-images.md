@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465444"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252779"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesi üzerinde kapsayıcı görüntüleri oluşturma
 
-Bu öğretici, Linux Service Fabric kümesinde kapsayıcıları kullanmayı gösteren öğretici serisinin ilk parçasıdır. Bu öğreticide, bir çoklu konteyner uygulaması Service Fabric ile kullanılmak üzere hazırlanmaktadır. Sonraki öğreticilerde, bu görüntüler Service Fabric uygulamasının bir parçası olarak kullanılır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Linux Service Fabric kümesinde kapsayıcıları kullanmayı gösteren öğretici serisinin ilk parçasıdır. Bu öğreticide, bir çoklu konteyner uygulaması Service Fabric ile kullanılmak üzere hazırlanmaktadır. Sonraki öğreticilerde, bu görüntüler Service Fabric uygulamasının bir parçası olarak kullanılır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Uygulama kaynağını GitHub’dan kopyalama
@@ -31,10 +31,10 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Kapsayıcılara Sahip bir Service Fabric Uygulaması Derleme ve Çalıştırma](service-fabric-tutorial-package-containers.md)
 > * [Service Fabric’de yük devretme ve ölçeklendirme nasıl işlenir?](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Service Fabric için ayarlanan Linux geliştirme ortamı. Linux ortamınızı ayarlamak için [buradaki](service-fabric-get-started-linux.md) yönergeleri izleyin.
-* Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli).
+* Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 * Ayrıca, Azure aboneliğine sahip olmalısınız. Ücretsiz deneme sürümü hakkında daha fazla bilgi için [buraya](https://azure.microsoft.com/free/) göz atın.
 
 ## <a name="get-application-code"></a>Uygulama kodunu alma
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 İlk olarak, Azure hesabınızda oturum açmak için **az Login** komutunu çalıştırın.
 
-```bash
+```azurecli
 az login
 ```
 
 Sonra, Azure Container kayıt defterini oluşturmada kullanacağınız aboneliğinizi seçmenizi sağlayan **az account** komutunu kullanın. Azure aboneliğinizin abonelik kimliğini <subscription_id> alanına girmeniz gerekir.
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ Bir Azure Container Registry dağıtırken önce bir kaynak grubuna ihtiyaç duy
 
 **az group create** komutuyla bir kaynak grubu oluşturun. Bu örnekte, *westus* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur.
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 **az acr create** komutuyla Azure Container kayıt defteri oluşturun. \<acrName> değerini, aboneliğiniz altında oluşturmak istediğiniz kapsayıcı kayıt defteriyle değiştirin. Bu ad, alfasayısal karakterler içermeli ve benzersiz olmalıdır.
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ Bu öğreticinin geri kalan aşamalarında, seçtiğiniz kapsayıcı kayıt deft
 
 Görüntüleri göndermeden önce ACR Örneğinizde oturum açın. İşlemi tamamlamak için **az acr login** komutunu kullanın. Kapsayıcı kayıt defterine oluşturulduğunda verilen benzersiz adı sağlayın.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 loginServer adını almak için aşağıdaki komutu çalıştırın:
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 Bu çıkış, aşağıdaki sonuçları içeren bir tablo döndürür. Bu sonuç, sonraki adımda kapsayıcı kayıt defterine göndermeden önce **azure-vote-front** görüntünüzü etiketleyebilmeniz için gereklidir.
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -158,7 +158,7 @@ Etiketledikten sonra, işlemi doğrulamak için ‘docker images’ komutunu ça
 
 Çıktı:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -182,13 +182,13 @@ Docker gönderme komutlarının tamamlanması birkaç dakika sürebilir.
 
 Azure Container Registry’nize gönderilen görüntülerin listesini döndürmek için [az acr repository list](/cli/azure/acr/repository) komutunu kullanın. Komutu ACR örneği adıyla güncelleştirin.
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 Çıktı:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

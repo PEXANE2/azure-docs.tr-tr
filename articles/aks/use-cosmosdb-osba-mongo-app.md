@@ -8,20 +8,20 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Hizmet Aracısı açın, Azure için Hizmet Aracısı açın
-ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277700"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247929"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Mevcut MongoDB uygulamasını MongoDB için Azure Cosmos DB API ile tümleştirme ve Azure için Hizmet Aracısı açma (OSBA)
 
-Azure Cosmos DB küresel olarak dağıtılan, çok modelli bir veritabanı hizmetidir. Ayrıca MongoDB gibi çeşitli NoSQL API 'lerle kablo protokol uyumluluğu sağlar. MongoDB için Cosmos DB API 'SI, uygulamanızın veritabanı sürücülerini veya uygulamasını değiştirmek zorunda kalmadan mevcut MongoDB uygulamanızla Cosmos DB kullanmanıza olanak sağlar. Ayrıca, Azure için açık Hizmet Aracısı kullanarak bir Cosmos DB hizmeti sağlayabilirsiniz.
+Azure Cosmos DB global olarak dağıtılmış, çok modelli bir veritabanıdır. Ayrıca MongoDB gibi çeşitli NoSQL API 'lerle kablo protokol uyumluluğu sağlar. MongoDB için Cosmos DB API 'SI, uygulamanızın veritabanı sürücülerini veya uygulamasını değiştirmek zorunda kalmadan mevcut MongoDB uygulamanızla Cosmos DB kullanmanıza olanak sağlar. Ayrıca, Azure için açık Hizmet Aracısı kullanarak bir Cosmos DB hizmeti sağlayabilirsiniz.
 
 Bu makalede, bir MongoDB veritabanı kullanan ve Azure için açık Hizmet Aracısı kullanarak bir Cosmos DB veritabanı kullanmak üzere güncelleştiren mevcut bir Java uygulaması alırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam edebilmeniz için önce şunları yapmanız gerekir:
     
@@ -79,7 +79,7 @@ Uygulamanızı başlatın ve *MongoDB* profilini kullanmayı söyleyin:
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Gidin `http://localhost:8080` tarayıcınızda.
+Tarayıcınızda `http://localhost:8080` gidin.
 
 ![Varsayılan verilerle Spring Music uygulaması](media/music-app.png)
 
@@ -182,7 +182,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Uygulamanız hala *MongoDB* profilini ve Cosmos db veritabanına bağlanmak için *MongoDB://* ile başlayan bir URI 'yi kullandığından emin olun. [MongoDB için Azure Cosmos DB API 'si](../cosmos-db/mongodb-introduction.md) bu uyumluluğu sağlar. Uygulamanızın MongoDB veritabanı kullanıyor gibi çalışmaya devam etmesine izin verir, ancak gerçekten Cosmos DB kullanıyor.
 
-Gidin `http://localhost:8080` tarayıcınızda. Varsayılan verilerin geri yüklendiğini unutmayın. Var olan birkaç albümü silerek ve birkaç yeni tane oluşturarak etkileşime geçin. Uygulamanızı durdurup yeniden başlatarak ve tarayıcınıza geri giderek değişikliklerinizin kalıcı olduğunu doğrulayabilirsiniz. Yaptığınız değişikliklerin hala orada olduğuna dikkat edin. Değişiklikler, Azure için açık Hizmet Aracısı kullanarak oluşturduğunuz Cosmos DB kalıcı hale getirilir.
+Tarayıcınızda `http://localhost:8080` gidin. Varsayılan verilerin geri yüklendiğini unutmayın. Var olan birkaç albümü silerek ve birkaç yeni tane oluşturarak etkileşime geçin. Uygulamanızı durdurup yeniden başlatarak ve tarayıcınıza geri giderek değişikliklerinizin kalıcı olduğunu doğrulayabilirsiniz. Yaptığınız değişikliklerin hala orada olduğuna dikkat edin. Değişiklikler, Azure için açık Hizmet Aracısı kullanarak oluşturduğunuz Cosmos DB kalıcı hale getirilir.
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Uygulamanızı AKS kümenizde çalıştırma
@@ -191,7 +191,7 @@ Uygulamayı AKS kümenize dağıtmak için [Azure dev Spaces](../dev-spaces/azur
 
 AKS kümenizdeki Azure Dev Spaces etkinleştirmek için:
 
-```cmd
+```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
@@ -206,7 +206,7 @@ Bu komut, projenin kökünde helk grafiğiniz olan bir *grafik/* klasör dahil o
 
 Bu içerikle *Dockerfile* adlı projenizin kökünde bir dosya oluşturun:
 
-```Dockerfile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 WORKDIR /app

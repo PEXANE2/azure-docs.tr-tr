@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225164"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251903"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Standard Load Balancer ile bir kullanılabilirlik alanındaki sanal makinelerde yük dengeleme
 
@@ -50,31 +50,37 @@ Standard Load Balancer yalnızca standart genel IP adresini destekler. Yük deng
 1. Ekranın sol üst kısmında **Kaynak oluştur** > **Ağ** > **Yük Dengeleyici** seçeneğini belirleyin.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
-    | Ayar                 | Value                                              |
+    | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupzlb* yazın.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Adı                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Type          | **Ortak**seçeneğini belirleyin.                                        |
+    | Tür          | **Ortak**seçeneğini belirleyin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
     | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   |
     |Kullanılabilirlik alanı| **1**'i seçin.    |
 3. **Gözden geçir + oluştur** sekmesinde **Oluştur**' a tıklayın.   
 
-   ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
+## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
 
 Bu bölümde, bir sanal ağ oluşturursunuz. Ayrıca, yük dengeleyicinizin arka uç havuzuna eklenecek bölge için aynı bölgede (bölge 1) iki sanal makine oluşturursunuz. Ardından alanlar arası yedekli yük dengeleyicinin test edilmesine yardımcı olması için sanal makinelere IIS yükleyeceksiniz. Bir VM başarısız olursa aynı bölgedeki VM için sistem durumu araştırması başarısız olur. Trafik aynı bölgedeki diğer VM’ler tarafından sunulmaya devam eder.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-1. Ekranın sol üst kısmında **Kaynak oluştur** > **Ağ** > **Sanal ağ** seçeneğini belirleyin.  Sanal ağ için şu değerleri girin:
-    - Sanal ağın adı olarak **myVNet**.
-    - Mevcut kaynak grubunun adı olarak **myResourceGroupZLB**.
-    - Alt ağ adı olarak **myBackendSubnet**.
-2. Sanal ağı oluşturmak için **Oluştur**’u seçin.
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
-    ![Sanal ağ oluşturma](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
+
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<kaynak grubu-adı >**  | myResourceGroupZLB (mevcut kaynak grubunu Seç) |
+| **\<sanal ağ-adı >** | myVNet          |
+| **\<bölge adı >**          | Batı Avrupa      |
+| **\<IPv4-adres-alanı >**   | 10.0.0.0 \ 16          |
+| **\<alt ağ-adı >**          | myBackendSubnet        |
+| **\<alt ağ-adres aralığı >** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 

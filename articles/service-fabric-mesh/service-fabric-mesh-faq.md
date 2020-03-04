@@ -4,12 +4,12 @@ description: Azure Service Fabric ağı hakkında sık sorulan sorular ve yanıt
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461985"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252504"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Service Fabric kafes soruları
 
@@ -44,10 +44,13 @@ Evet. Her abonelik için kotalar şunlardır:
 
 Bu durumla karşılaşırsanız, Azure CLı 'de `az mesh app show` komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` döndürdüğünden emin olun 
 
-Örneğin: 
+Örnek: 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -104,7 +107,7 @@ Bir kapsayıcıdan Service Fabric DNS hizmetine giden DNS sorguları bazı koşu
 
 - Temel kapsayıcı görüntünüz olarak Windows Fall Creators Update (sürüm 1709) veya üstünü kullanın.
 - Hizmet adı tek başına işe yaramazsa, tam adı şu şekilde deneyin: ServiceName. ApplicationName.
-- Hizmetiniz için Docker dosyasında, bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu `EXPOSE <port>` ekleyin. Örneğin:
+- Hizmetiniz için Docker dosyasında, bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu `EXPOSE <port>` ekleyin. Örnek:
 
 ```Dockerfile
 EXPOSE 80
@@ -120,7 +123,7 @@ Azure ağı, şu anda uygulamalar genelinde DNS çözümlemesini desteklemez.
 
 Windows 10 ' da Service Fabric geliştirme kümesi çalıştırmaya yönelik diğer bilinen DNS sorunları için bkz. [Windows kapsayıcılarında hata ayıklama](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) ve [bilinen DNS sorunları](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Networking (Ağ İletişimi)
+### <a name="networking"></a>Ağ
 
 Service Fabric ağ NAT, uygulamanızı yerel makinenizde çalıştırmak kullanılırken kaybolabilir. Bunun yapılıp yapılmayacağını tanılamak için komut isteminden aşağıdaki komutu çalıştırın:
 
