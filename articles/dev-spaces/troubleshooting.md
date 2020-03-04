@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8eb7b07622a989bc78637b1601ba68b9b5f6f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198006"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251117"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -44,7 +44,7 @@ Bir denetleyiciyi silmek için Azure Dev Spaces CLı kullanın. Bir denetleyiciy
 
 Azure Dev Spaces CLı yüklü değilse, önce aşağıdaki komutu kullanarak bu dosyayı yükleyebilir, sonra denetleyicinizi silebilirsiniz:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -80,8 +80,8 @@ Bu sorunu giderecek en az bir Linux düğümünün tolerans belirtmeden zamanlam
 
 CLı Azure Dev Spaces güncelleştirme, yükleme yolunu değiştirdi. Azure CLı 'nın 2.0.63 'den önceki bir sürümünü kullanıyorsanız, bu hatayı görebilirsiniz. Azure CLı sürümünüzü göstermek için `az --version`kullanın.
 
-```bash
-$ az --version
+```azurecli
+az --version
 azure-cli                         2.0.60 *
 ...
 ```
@@ -223,7 +223,7 @@ Visual Studio'da:
 
 Bir hizmeti kaldırdıktan sonra yeniden çalıştırmayı denerken bir *Hizmet başlatılamaz* ve bu kümeyle ilişkili Azure dev Spaces denetleyiciyi yeniden oluşturursunuz. Bu durumda, ayrıntılı çıktı aşağıdaki metni içerir:
 
-```cmd
+```output
 Installing Helm chart...
 Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
@@ -329,7 +329,7 @@ Bu sorunu düzeltmek için:
 1. `azds.exe`için% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLı konumunu denetleyin. Yoktur, bu konuma PATH ortam değişkenine ekleyin.
 2. `azds.exe` yüklü değilse, aşağıdaki komutu çalıştırın:
 
-    ```cmd
+    ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
@@ -337,13 +337,13 @@ Bu sorunu düzeltmek için:
 
 Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örnek:
 
-```console
+```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
 Bu sorunu onarmak için, Azure aboneliğine *sahip* veya *katkıda* bulunan erişimi olan bir hesap kullanarak `Microsoft.DevSpaces` ad alanını el ile kaydedin:
 
-```console
+```azurecli
 az provider register --namespace Microsoft.DevSpaces
 ```
 
@@ -359,7 +359,7 @@ Bu sorun, Azure Dev Spaces etkinleştirilmemiş olan ad alanları da dahil olmak
 
 Bu sorunu onarmak için, [dev Spaces CLI 'yı en son sürüme güncelleştirin](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) ve ardından Azure dev Spaces denetleyicisinden *azds ınitializerconfiguration* ' ı silin:
 
-```bash
+```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
 kubectl delete InitializerConfiguration azds
 ```
@@ -456,9 +456,12 @@ Azure Dev Spaces etkinleştirmek istediğiniz yerde, çalışan bir AKS kümeniz
 
 AKS kümesindeki mevcut bir ad alanında Azure Dev Spaces etkinleştirmek için, `use-dev-spaces` çalıştırın ve bu ad alanındaki tüm yığınların yeniden başlatılması için `kubectl` kullanın.
 
-```console
+```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+```
+
+```console
 kubectl -n my-namespace delete pod --all
 ```
 
