@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921105"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270151"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
@@ -37,7 +37,7 @@ Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış a
  
     ![akış alımı](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. [Web Kullanıcı arabiriminde](https://dataexplorer.azure.com/), veri akışı verileri alacak tablo (ler) veya veritabanları üzerinde [akış alma ilkesi](/azure/kusto/concepts/streamingingestionpolicy) tanımlayın. 
+1. [Web Kullanıcı arabiriminde](https://dataexplorer.azure.com/), veri akışı verileri alacak tablo (ler) veya veritabanları üzerinde [akış alma ilkesi](/azure/kusto/management/streamingingestionpolicy) tanımlayın. 
 
     > [!NOTE]
     > * İlke veritabanı düzeyinde tanımlanmışsa, veritabanındaki tüm tablolar akış alımı için etkinleştirilir.
@@ -63,7 +63,7 @@ Desteklenen iki akış alma türü vardır:
 > [!WARNING]
 > Akış alımını devre dışı bırakmak birkaç saat sürebilir.
 
-1. Tüm ilgili tablo ve veritabanlarından akış alma giriş [ilkesini](/azure/kusto/concepts/streamingingestionpolicy) bırakın. Akış alma ilkesi kaldırma işlemi, ilk depolamadan, sütun deposundaki (kapsamlar veya parçalar) kalıcı depolamaya giriş verilerini taşımayı tetikler. Veri taşıma işlemi, ilk depolama alanındaki veri miktarına ve CPU ve belleğin küme tarafından nasıl kullanıldığına bağlı olarak birkaç saniyelik birkaç saat arasında en son bir süre olabilir.
+1. Tüm ilgili tablo ve veritabanlarından akış alma giriş [ilkesini](/azure/kusto/management/streamingingestionpolicy) bırakın. Akış alma ilkesi kaldırma işlemi, ilk depolamadan, sütun deposundaki (kapsamlar veya parçalar) kalıcı depolamaya giriş verilerini taşımayı tetikler. Veri taşıma işlemi, ilk depolama alanındaki veri miktarına ve CPU ve belleğin küme tarafından nasıl kullanıldığına bağlı olarak birkaç saniyelik birkaç saat arasında en son bir süre olabilir.
 1. Azure portal Azure Veri Gezgini kümenize gidin. **Ayarlar**' da, **Konfigürasyonlar**' ı seçin. 
 1. **Yapılandırma** bölmesinde, **akış alımını**devre dışı bırakmak için **kapalı** ' yı seçin.
 1. **Kaydet**’i seçin.

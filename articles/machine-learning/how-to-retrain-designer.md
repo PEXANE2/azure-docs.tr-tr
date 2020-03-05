@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921614"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268493"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -119,7 +119,7 @@ Tasarımcıdan bir işlem hattı uç noktası göndermek için aşağıdaki adı
 
 1. Çalıştırmak istediğiniz işlem hattını seçin.
 
-1. **Çalıştır**'ı seçin.
+1. **Gönder**' i seçin.
 
 1. Kurulum iletişim kutusunda yeni veri kümenizi işaret eden yeni bir giriş veri yolu değeri belirtebilirsiniz.
 
@@ -127,7 +127,9 @@ Tasarımcıdan bir işlem hattı uç noktası göndermek için aşağıdaki adı
 
 ### <a name="submit-runs-with-code"></a>Çalışmaları kodla gönder
 
-Geliştirme ortamınıza bağlı olarak REST uç nokta program aracılığıyla erişiminizin birden çok yolu vardır. İşlem hattınızı **kullanma sekmesinde Parametreler** içeren işlem hattı çalıştırmalarını nasıl gönderirsiniz gösteren kod örnekleri bulabilirsiniz.
+Yayımlanan bir işlem hattının REST uç noktasını genel bakış panelinde bulabilirsiniz. Uç noktayı çağırarak, yayımlanan işlem hattını yeniden eğitebilirsiniz.
+
+REST çağrısı yapmak için bir OAuth 2,0 taşıyıcı türü kimlik doğrulama üst bilgisi gerekir. Çalışma alanınıza yönelik kimlik doğrulamasını ayarlama ve parametreli bir REST çağrısı yapma hakkında daha fazla ayrıntı için aşağıdaki [öğretici bölümüne](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

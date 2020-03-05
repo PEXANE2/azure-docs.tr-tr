@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594172"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272997"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içinde istio ile akıllı yönlendirme ve kanarya sürümlerini kullanma
 
@@ -68,25 +68,25 @@ cd aks-voting-app/scenarios/intelligent-routing-with-istio
 
 İlk olarak, AKS kümenizde `voting` adlı örnek AKS oylama uygulaması için aşağıdaki gibi bir ad alanı oluşturun:
 
-```azurecli
+```console
 kubectl create namespace voting
 ```
 
 Ad alanını `istio-injection=enabled`etiketleyin. Bu etiket, bu ad alanındaki tüm yığınlarınızın tüm yığınlarınıza otomatik olarak istik-proxy 'leri eklemesini sağlar.
 
-```azurecli
+```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
 Şimdi AKS oylama uygulaması için bileşenleri oluşturalım. Bu bileşenleri, önceki adımda oluşturulan `voting` ad alanında oluşturun.
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
 Aşağıdaki örnek çıktıda oluşturulan kaynaklar gösterilmektedir:
 
-```console
+```output
 deployment.apps/voting-storage-1-0 created
 service/voting-storage created
 deployment.apps/voting-analytics-1-0 created
@@ -100,13 +100,13 @@ service/voting-app created
 
 Oluşturulan Pod 'leri görmek için [kubectl Get Pod][kubectl-get] komutunu aşağıdaki gibi kullanın:
 
-```azurecli
+```console
 kubectl get pods -n voting --show-labels
 ```
 
 Aşağıdaki örnek çıktıda, `voting-app` Pod 'un üç örneği ve `voting-analytics` ve `voting-storage` pods 'nin tek bir örneği gösterilmektedir. Her birinin iki kapsayıcısı vardır. Bu kapsayıcılardan biri bileşendir ve diğeri `istio-proxy`.
 
-```console
+```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
 voting-analytics-1-0-57c7fccb44-ng7dl   2/2       Running   0          39s   app=voting-analytics,pod-template-hash=57c7fccb44,version=1.0
 voting-app-1-0-956756fd-d5w7z           2/2       Running   0          39s   app=voting-app,pod-template-hash=956756fd,version=1.0
@@ -144,26 +144,26 @@ Bu [ağ geçidini][istio-reference-gateway] ve [sanal hizmeti][istio-reference-v
 
 Ağ geçidini ve sanal hizmet YAML 'yi dağıtmak için `kubectl apply` komutunu kullanın. Bu kaynakların dağıtıldığı ad alanını belirtmeyi unutmayın.
 
-```azurecli
+```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
 Aşağıdaki örnek çıktı yeni ağ geçidini ve oluşturulmakta olan sanal hizmeti gösterir:
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
 Aşağıdaki komutu kullanarak, Istio giriş ağ geçidinin IP adresini alın:
 
-```azurecli
+```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 Aşağıdaki örnek çıktıda, giriş ağ geçidinin IP adresi gösterilmektedir:
 
-```
+```output
 20.188.211.19
 ```
 
@@ -183,13 +183,13 @@ Aşağıdaki diyagramda, bu bölümün sonunda ne olacağı gösterilmektedir-`v
 
 `voting-analytics` bileşeninin sürüm `1.1` dağıtalım. `voting` ad alanında bu bileşeni oluşturun:
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
 Aşağıdaki örnek çıktıda oluşturulan kaynaklar gösterilmektedir:
 
-```console
+```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
@@ -223,7 +223,7 @@ Tarayıcınız aşağıda gösterilen iki görünüm arasında alternatifler var
 
 Aşağıdaki örnek çıktıda, sürümler arasında site anahtarları olarak döndürülen Web sitesinin ilgili bölümü gösterilmektedir:
 
-```console
+```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -244,13 +244,13 @@ Aşağıdaki örnek çıktıda, sürümler arasında site anahtarları olarak d�
 * Ilke, `voting` ad alanındaki hizmetleriniz arasında karşılıklı TLS 'nin uygulanmasını sağlamak için `STRICT` olarak ayarlanmıştır `peers.mtls.mode`.
 * Ayrıca, tüm hedef kurallarımızda `trafficPolicy.tls.mode` `ISTIO_MUTUAL` olarak ayarlandık. İstio, güçlü kimlikler içeren hizmetler sağlar ve karşılıklı olarak yönettiği karşılıklı TLS ve istemci sertifikalarını kullanarak hizmetler arasındaki iletişimin güvenliğini sağlar.
 
-```azurecli
+```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
 Aşağıdaki örnek çıktıda yeni Ilke, hedef kuralları ve güncelleştirilmekte/oluşturulan sanal hizmetler gösterilmektedir:
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app configured
 policy.authentication.istio.io/default created
 destinationrule.networking.istio.io/voting-app created
@@ -286,7 +286,7 @@ Artık yalnızca `voting-analytics` bileşeninizin sürüm `1.1` şu şekilde y�
 
 Aşağıdaki örnek çıktı, döndürülen Web sitesinin ilgili bölümünü gösterir:
 
-```console
+```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -322,7 +322,7 @@ Bu komut kümesi, bir ad alanında olan ve bir etiket kümesiyle eşleşen tüm 
 
 Aşağıdaki örnek çıktıda, yukarıdaki sorgularımızın her biri için karşılıklı TLS 'nin zorunlu olduğu gösterilmektedir. Çıktı Ayrıca, karşılıklı TLS 'yi zorlayan Ilke ve hedef kurallarını da gösterir:
 
-```console
+```output
 # mTLS configuration between istio ingress pods and the voting-app service
 HOST:PORT                                    STATUS     SERVER     CLIENT     AUTHN POLICY       DESTINATION RULE
 voting-app.voting.svc.cluster.local:8080     OK         mTLS       mTLS       default/voting     voting-app/voting
@@ -364,13 +364,13 @@ Aşağıdaki diyagramda, bu bölümün sonunda ne çalıştırdıklarınız gös
 
 İlk olarak, bu yeni bileşenler için istio hedef kurallarını ve sanal hizmetlerini karşılamak olarak güncelleştirin. Bu güncelleştirmeler, trafiği yeni bileşenlere doğru bir şekilde yönlendirmemenizi ve kullanıcıların beklenmeyen bir erişim almaz olmasını sağlar:
 
-```azurecli
+```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
 Aşağıdaki örnek çıktıda, güncelleştirilmekte olan hedef kurallar ve sanal hizmetler gösterilmektedir:
 
-```console
+```output
 destinationrule.networking.istio.io/voting-app configured
 virtualservice.networking.istio.io/voting-app configured
 destinationrule.networking.istio.io/voting-analytics configured
@@ -381,13 +381,13 @@ virtualservice.networking.istio.io/voting-storage configured
 
 Ardından, yeni sürüm `2.0` bileşenleri için Kubernetes nesnelerini ekleyelim. Ayrıca, `voting-storage` hizmetini MySQL için `3306` bağlantı noktasını içerecek şekilde güncelleştirebilirsiniz:
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
 Aşağıdaki örnek çıktıda, Kubernetes nesnelerinin başarıyla güncelleştirildiği veya oluşturulduğu gösterilmektedir:
 
-```console
+```output
 service/voting-storage configured
 secret/voting-storage-secret created
 deployment.apps/voting-storage-2-0 created
@@ -398,7 +398,7 @@ deployment.apps/voting-app-2-0 created
 
 Tüm sürüm `2.0` Pod 'leri çalıştırmaya kadar bekleyin. `voting` ad alanındaki tüm düğüm üzerindeki değişiklikleri izlemek için `-w` Watch anahtarıyla [kubectl Get Pod][kubectl-get] komutunu kullanın:
 
-```azurecli
+```console
 kubectl get pods --namespace voting -w
 ```
 
@@ -428,13 +428,13 @@ Artık AKS oylama uygulamasının yeni bir sürümünü başarıyla tamamladın�
 
 Bu senaryoda kullandığımız AKS oylama uygulamasını, aşağıdaki gibi `voting` ad alanını silerek AKS kümenizdeki bir şekilde kaldırabilirsiniz:
 
-```azurecli
+```console
 kubectl delete namespace voting
 ```
 
 Aşağıdaki örnek çıktı, AKS oylama uygulamasının tüm bileşenlerinin AKS kümenizdeki kaldırıldığını gösterir.
 
-```console
+```output
 namespace "voting" deleted
 ```
 

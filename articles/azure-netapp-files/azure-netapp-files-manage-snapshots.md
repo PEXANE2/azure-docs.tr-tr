@@ -1,6 +1,6 @@
 ---
-title: Anlık görüntüleri Azure NetApp dosyalarını kullanarak yönetme | Microsoft Docs
-description: Bir birim veya geri yükleme için anlık görüntüleri, Azure NetApp dosyalarını kullanarak yeni bir birime anlık görüntüden oluşturmayı açıklar.
+title: Azure NetApp Files kullanarak anlık görüntüleri yönetme | Microsoft Docs
+description: Azure NetApp Files kullanarak bir birim için anlık görüntülerin nasıl oluşturulduğunu veya bir anlık görüntüden yeni bir birime geri yükleneceğini açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,47 +12,47 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086895"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267894"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp dosyalarını kullanarak anlık görüntüleri yönetme
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
-Bir birim için bir isteğe bağlı anlık görüntü oluşturmak veya yeni bir birim için bir anlık görüntüden geri yükleme için Azure NetApp dosyaları kullanabilirsiniz.
+Bir birim için isteğe bağlı bir anlık görüntüyü el ile oluşturmak veya bir anlık görüntüden yeni bir birime geri yüklemek için Azure NetApp Files kullanabilirsiniz. Azure NetApp Files hizmeti otomatik olarak birim anlık görüntüleri oluşturmaz.  
 
-## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Bir birim için bir isteğe bağlı anlık görüntü oluşturma
+## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Bir birim için isteğe bağlı anlık görüntü oluşturma
 
-Yalnızca isteğe bağlı olarak, anlık görüntü oluşturabilirsiniz. Anlık görüntü ilkeleri şu anda desteklenmemektedir.
+Yalnızca isteğe bağlı anlık görüntüler oluşturabilirsiniz. Anlık görüntü ilkeleri Şu anda desteklenmiyor.
 
-1.  Birim dikey penceresinden tıklayın **anlık görüntüleri**.
+1.  Birim dikey penceresinde, **anlık görüntüler**' e tıklayın.
 
-    ![Anlık görüntü gidin](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+    ![Anlık görüntülere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  Tıklayın **+ Ekle anlık görüntü** bir birim için bir isteğe bağlı anlık görüntüsünü oluşturmak için.
+2.  Bir birim için isteğe bağlı bir anlık görüntü oluşturmak için **+ anlık görüntü ekle** ' ye tıklayın.
 
-    ![Anlık görüntü Ekle](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
+    ![Anlık görüntü ekle](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
-3.  Yeni anlık görüntü penceresinde, oluşturmakta olduğunuz yeni anlık görüntü için bir ad sağlayın.   
+3.  Yeni anlık görüntü penceresinde oluşturmakta olduğunuz yeni anlık görüntü için bir ad belirtin.   
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam**'ı tıklatın. 
+4. **Tamam** düğmesine tıklayın. 
 
-## <a name="restore-a-snapshot-to-a-new-volume"></a>Yeni bir birim için bir anlık görüntü geri yükleme
+## <a name="restore-a-snapshot-to-a-new-volume"></a>Bir anlık görüntüyü yeni bir birime geri yükleme
 
-Şu anda yalnızca yeni bir birim için bir anlık görüntü geri yükleyebilirsiniz. 
-1. Git **ekran görüntülerini Yönet** dikey penceresinde anlık görüntü listesini görüntülemek için toplu dikey penceresinden. 
-2. Geri yüklemek için bir anlık görüntü seçin.  
-3. Anlık görüntü adını sağ tıklatıp **yeni bir birime geri** menü seçeneğinden.  
+Şu anda, bir anlık görüntüyü yalnızca yeni bir birime geri yükleyebilirsiniz. 
+1. Anlık görüntü listesini göstermek için birim dikey penceresinden **anlık görüntüleri yönet** dikey penceresine gidin. 
+2. Geri yüklenecek bir anlık görüntü seçin.  
+3. Anlık görüntü adına sağ tıklayın ve menü seçeneğinde **Yeni birime geri yükle** ' yi seçin.  
 
-    ![Yeni birim için anlık görüntü geri yükleme](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
+    ![Anlık görüntüyü yeni birime geri yükle](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. Yeni birim penceresinde yeni birimi için bilgileri sağlayın:  
+4. Yeni birim penceresinde, yeni birim için bilgi sağlayın:  
     * **Ad**   
         Oluşturmakta olduğunuz birim için ad belirtin.  
         
@@ -72,18 +72,18 @@ Yalnızca isteğe bağlı olarak, anlık görüntü oluşturabilirsiniz. Anlık 
 
     *   **Sanal ağ**  
         Birime hangi Azure sanal ağından (Vnet) erişmek istediğinizi belirtin.  
-        Belirttiğiniz sanal ağ, Azure için NetApp dosyaları temsilci bir alt ağ olması gerekir. Yalnızca aynı sanal ağda veya bir sanal ağ aynı bölgedeyse Vnet eşlemesi aracılığıyla birimi olarak Azure NetApp dosyalara erişebilirsiniz. Express Route üzerinden şirket içi ağınızdan birim erişebilirsiniz. 
+        Belirttiğiniz VNET Azure NetApp Files için bir alt ağa sahip olmalıdır. Yalnızca aynı VNET 'ten veya VNET eşlemesi aracılığıyla birimle aynı bölgedeki bir VNET 'ten Azure NetApp Files erişebilirsiniz. Hızlı rota aracılığıyla şirket içi ağınızdan birime erişebilirsiniz. 
 
     * **Alt ağ**  
-        Birim için kullanmak istediğiniz alt ağ belirtin.  
-        Belirttiğiniz alt ağ Azure NetApp dosyaları hizmetine temsilci gerekir. Seçerek yeni bir alt ağ oluşturabilirsiniz **Yeni Oluştur** alt ağ alanı altında.  
+        Birim için kullanmak istediğiniz alt ağı belirtin.  
+        Belirttiğiniz alt ağ Azure NetApp Files hizmetine atanmış olmalıdır. Alt ağ alanı altında **Yeni oluştur** ' a tıklayarak yeni bir alt ağ oluşturabilirsiniz.  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. **Tamam**'ı tıklatın.   
-    Anlık görüntü geri yüklendikten yeni birim birimleri dikey penceresinde görüntülenir.
+5. **Tamam** düğmesine tıklayın.   
+    Anlık görüntünün geri yüklendiği yeni birim birimler dikey penceresinde görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[NetApp dosyaları Azure depolama hiyerarşisini anlama](azure-netapp-files-understand-storage-hierarchy.md)
+[Azure NetApp Files depolama hiyerarşisini anlayın](azure-netapp-files-understand-storage-hierarchy.md)

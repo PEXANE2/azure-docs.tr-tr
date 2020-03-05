@@ -1,32 +1,32 @@
 ---
 title: Yaklaşım Analizi-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Yaklaşım Analizi yapılandırılırsa, LUSıS JSON yanıtı yaklaşım analizini içerir.
+description: Yaklaşım analizi yapılandırılmışsa, yaklaşım analizi LUIS json yanıtı içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
-ms.openlocfilehash: a91246e4a4b3dc98bf11d2b014478fd40252f14b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508028"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270415"
 ---
 # <a name="sentiment-analysis"></a>Yaklaşım analizi
-Yaklaşım Analizi yapılandırılırsa, LUSıS JSON yanıtı yaklaşım analizini içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
+Yaklaşım analizi yapılandırılmışsa, yaklaşım analizi LUIS json yanıtı içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
 
 
 ## <a name="resolution-for-sentiment"></a>Yaklaşım için çözüm
 
-Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır.
+Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri.
 
-#### <a name="english-languagetabenglish"></a>[İngilizce dili](#tab/english)
+#### <a name="english-language"></a>[İngilizce dili](#tab/english)
 
 Kültür `en-us`olduğunda yanıt şu şekilde olur:
 
@@ -37,16 +37,16 @@ Kültür `en-us`olduğunda yanıt şu şekilde olur:
 }
 ```
 
-#### <a name="other-languagestabother-languages"></a>[Diğer diller](#tab/other-languages)
+#### <a name="other-languages"></a>[Diğer diller](#tab/other-languages)
 
-Diğer tüm kültürler için yanıt şu şekilde yapılır:
+Diğer tüm kültürler için yanıt şöyledir:
 
 ```JSON
 "sentimentAnalysis": {
   "score": 0.9163064
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

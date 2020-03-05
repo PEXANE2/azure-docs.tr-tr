@@ -3,12 +3,12 @@ title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Doc
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666267"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269209"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -158,6 +158,14 @@ Yukarıdaki adımlar, sunucu tarafı Telemetriyi toplamaya başlamanıza yardım
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+Alternatif olarak, `ScriptBody` `FullScript` kullanmak için SDK v 2.14 ' den başlayarak kullanılabilir. Bir Içerik Güvenlik Ilkesi ayarlamak için `<script>` etiketini kontrol etmeniz gerekiyorsa bunu kullanın:
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 Daha önce başvurulan `.cshtml` dosya adları varsayılan bir MVC uygulama şablonundan alınır. Sonuç olarak, uygulamanız için istemci tarafı izlemeyi doğru şekilde etkinleştirmek istiyorsanız, uygulamanızın izlemek istediğiniz her sayfanın `<head>` bölümünde JavaScript kod parçacığı görünmelidir. `_Layout.cshtml`için JavaScript kod parçacığını ekleyerek bu uygulama şablonu için bu hedefi gerçekleştirebilirsiniz. 

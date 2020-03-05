@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275452"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274000"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kullanım DıŞı Azure Container Service bir Kubernetes kümesi dağıtma
 
@@ -36,11 +36,11 @@ Sonraki öğreticilerde, Azure Vote uygulaması kümeye dağıtılır, ölçekle
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes kümesi oluşturma
 
-Azure Container Service'te [az acs create](/cli/azure/acs#az-acs-create) komutuyla Kubernetes kümesi oluşturun. 
+Azure Container Service’de [az acs create](/cli/azure/acs#az-acs-create) komutuyla Kubernetes kümesi oluşturun. 
 
-Şu örnek, `myResourceGroup` adlı Kaynak Grubunda `myK8sCluster` adlı bir küme oluşturur. Bu Kaynak Grubu, [bir önceki öğreticide](./container-service-tutorial-kubernetes-prepare-acr.md) oluşturuldu.
+Şu örnek, `myK8sCluster` adlı Kaynak Grubunda `myResourceGroup` adlı bir küme oluşturur. Bu Kaynak Grubu, [bir önceki öğreticide](./container-service-tutorial-kubernetes-prepare-acr.md) oluşturuldu.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
@@ -52,11 +52,11 @@ Birkaç dakika sonra dağıtım tamamlanır ve ACS dağıtımı hakkında JSON t
 
 İstemci bilgisayarınızdan Kubernetes kümesine bağlanmak için Kubernetes’in komut satırı istemcisini ([kubectl](https://kubernetes.io/docs/user-guide/kubectl/)) kullanın. 
 
-Azure CloudShell kullanıyorsanız kubectl zaten yüklüdür. Yerel olarak yüklemek istiyorsanız [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) komutunu kullanın.
+Azure Cloud Shell kullanıyorsanız kubectl zaten yüklüdür. Yerel olarak yüklemek istiyorsanız [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) komutunu kullanın.
 
 Linux veya macOS’ta çalıştırılıyorsa, sudo ile çalıştırmanız gerekebilir. Windows üzerinde kabuğunuzun yönetici olarak çalıştırıldığından emin olun.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes install-cli 
 ```
 
@@ -66,19 +66,19 @@ Windows’ta, varsayılan yükleme *c:\program files (x86)\kubectl.exe*’dir. B
 
 kubectl’i Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) komutunu çalıştırın.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 Kümenize yönelik bağlantıyı doğrulamak için [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) komutunu çalıştırın.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Çıktı:
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-98dc3136-0    Ready                      5m        v1.6.2
 k8s-agent-98dc3136-1    Ready                      5m        v1.6.2

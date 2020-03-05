@@ -1,20 +1,19 @@
 ---
 title: Power BI Azure HDInsight ile Apache Hive verileri görselleştirme
 description: Azure HDInsight tarafından işlenen Hive verilerini görselleştirmek için Microsoft Power BI nasıl kullanacağınızı öğrenin.
-keywords: HDInsight, Hadoop, Hive, etkileşimli sorgu, etkileşimli Hive, LLAP, ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/02/2020
+ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529541"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267809"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight 'ta ODBC kullanarak Microsoft Power BI ile Apache Hive verileri görselleştirme
 
@@ -33,9 +32,9 @@ Bilgiler ayrıca yeni [etkileşimli sorgu](../interactive-query/apache-interacti
 
 Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **HDInsight kümesi**. Küme, Hive içeren bir HDInsight kümesi veya yeni yayımlanmış bir etkileşimli sorgu kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* HDInsight kümesi. Küme, Hive içeren bir HDInsight kümesi veya yeni yayımlanmış bir etkileşimli sorgu kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
+* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/). Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC veri kaynağı oluşturma
 
@@ -47,7 +46,7 @@ Bkz. [HIVE ODBC veri kaynağı oluşturma](apache-hadoop-connect-excel-hive-odbc
 
 1. Power BI Desktop başlatın.
 
-1. Üstteki menüden **Home**  > **veri al**  > **daha fazla...** seçeneğine gidin.
+1. Üstteki menüden **Home** > **veri al** > **daha fazla...** seçeneğine gidin.
 
     ![HDInsight Excel Power BI açık verileri](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

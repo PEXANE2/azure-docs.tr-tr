@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: ffe3d359dffea3278337de00bea42e0b959e10f6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505760"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269512"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -90,7 +90,7 @@ Bir satıcısıysanız ve cihazınızı bu desteklenen cihazlar listesinde almak
 - Son kullanıcılar, bu passwordless kimlik doğrulama yöntemlerini hesap portalında kaydedebilir ve yönetebilir
 - Son kullanıcılar bu passwordless kimlik doğrulama yöntemleriyle oturum açabilirler
    - Microsoft Authenticator uygulaması: tüm tarayıcılarda, Windows 10 kutudan çıkar (OOBE) kurulumu sırasında ve herhangi bir işletim sisteminde tümleşik mobil uygulamalarla birlikte Azure AD kimlik doğrulamasının kullanıldığı senaryolarda çalışmaktadır.
-   - Güvenlik anahtarları: Microsoft Edge gibi desteklenen tarayıcılarda Windows 10 ve Web için kilit ekranında çalışın.
+   - Güvenlik anahtarları: Microsoft Edge (hem eski hem de yeni kenar) gibi desteklenen tarayıcılarda Windows 10 ve Web için kilit ekranında çalışın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

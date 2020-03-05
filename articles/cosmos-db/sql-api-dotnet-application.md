@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: sngun
-ms.openlocfilehash: 5403725a57c68a45621d6cc509c57d864b2e0633
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164925"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274068"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -197,7 +197,7 @@ Bu adımları tamamladıktan sonra, bu görünümlere daha sonra geri döndüğ�
 
 1. Aynı dosya içinde, yapılandırmayı okuyan ve istemcisini başlatan **ınitializecosmosclientınstanceasync**yöntemini ekleyin.
 
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
+   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
 
 1. Aşağıdaki kod parçacığında gösterildiği gibi projenin *appSettings. JSON* dosyasında yapılandırmayı tanımlayın:
 

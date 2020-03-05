@@ -5,16 +5,17 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 09/25/2019
-ms.openlocfilehash: 162b1a4ad089e75f4ad953a339b9b4c15e245a70
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/03/2020
+ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869690"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273196"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure cosmos DB'de tarihlerle çalışma
-Azure Cosmos DB, şema esnekliği ve zengin dizin oluşturma yerel teslim [JSON](https://www.json.org) veri modeli. Veritabanları, kapsayıcılar, belgeler ve saklı yordamlar da dahil olmak üzere tüm Azure Cosmos DB kaynaklarını modellenir ve JSON belgeleri olarak depolanır. Şu taşınabilir için bir gereklilik olarak JSON (ve Azure Cosmos DB) temel türleri yalnızca küçük bir kümesini destekler: dize, sayı, Boole, dizi, nesne ve Null. Ancak, JSON esnektir ve geliştiriciler ve çerçeveleri kullanarak bu temelleri ve nesne veya dizi oluşturmayı daha karmaşık türleri temsil etmek izin verin. 
+
+Azure Cosmos DB, yerel bir [JSON](https://www.json.org) veri modeli aracılığıyla şema esnekliği ve zengin dizin oluşturma sağlar. Veritabanları, kapsayıcılar, belgeler ve saklı yordamlar da dahil olmak üzere tüm Azure Cosmos DB kaynaklarını modellenir ve JSON belgeleri olarak depolanır. Şu taşınabilir için bir gereklilik olarak JSON (ve Azure Cosmos DB) temel türleri yalnızca küçük bir kümesini destekler: dize, sayı, Boole, dizi, nesne ve Null. Ancak, JSON esnektir ve geliştiriciler ve çerçeveleri kullanarak bu temelleri ve nesne veya dizi oluşturmayı daha karmaşık türleri temsil etmek izin verin.
 
 Temel türlerin yanı sıra, birçok uygulamanın tarih ve zaman damgalarını temsil etmesi için tarih saat türüne ihtiyacı vardır. Bu makalede nasıl geliştiriciler depolamak, alabilir ve .NET SDK kullanarak Azure Cosmos DB tarihleri sorgu açıklanır.
 
@@ -24,13 +25,14 @@ Azure Cosmos DB dize, sayı, Boolean, null, dizi, nesne gibi JSON türlerini des
 
 Çoğu uygulama, aşağıdaki nedenlerden dolayı DateTime için varsayılan dize gösterimi kullanabilirsiniz:
 
-* Dizeleri karşılaştırma ve dizelere dönüştürülür, DateTime değerlerini göreli sıralamasını korunur. 
+* Dizeleri karşılaştırma ve dizelere dönüştürülür, DateTime değerlerini göreli sıralamasını korunur.
 * Bu yaklaşım, herhangi bir özel kod veya öznitelikleri için JSON dönüştürme gerektirmez.
 * JSON içinde depolanmış olarak tarihleri insan tarafından okunabilir.
 * Bu yaklaşım, hızlı sorgu performansı için Azure Cosmos DB'nin dizini avantajlarından yararlanabilirsiniz.
 
-Örneğin, aşağıdaki kod parçacığı depolayan bir `Order` içeren iki tarih/saat özellikleri - nesne `ShipDate` ve `OrderDate` .NET SDK'sını kullanarak bir belge olarak:
+Örneğin, aşağıdaki kod parçacığı, .NET SDK kullanarak bir belge olarak `ShipDate` ve `OrderDate` iki DateTime özelliği içeren bir `Order` nesnesi depolar:
 
+```csharp
     public class Order
     {
         [JsonProperty(PropertyName="id")]
@@ -40,50 +42,53 @@ Azure Cosmos DB dize, sayı, Boolean, null, dizi, nesne gibi JSON türlerini des
         public double Total { get; set; }
     }
 
-    await client.CreateDocumentAsync("/dbs/orderdb/colls/orders", 
-        new Order 
-        { 
+    await container.CreateItemAsync(
+        new Order
+        {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
             ShipDate = DateTime.UtcNow.AddDays(-14), 
             Total = 113.39
         });
+```
 
 Bu belge, Azure Cosmos DB'de aşağıdaki şekilde depolanır:
 
+```json
     {
         "id": "09152014101",
         "OrderDate": "2014-09-15T23:14:25.7251173Z",
         "ShipDate": "2014-09-30T23:14:25.7251173Z",
         "Total": 113.39
     }
-    
+```  
 
-Alternatif olarak, tarih/saat olarak Unix zaman damgası, diğer bir deyişle, 1 Ocak 1970'ten beri geçen saniyelerin sayısını gösteren bir sayı olarak depolayabilirsiniz. Azure Cosmos DB'nin iç zaman damgası (`_ts`) özelliği, bu yaklaşım izler. Kullanabileceğiniz [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) tarih/saat sayı olarak seri hale sınıf. 
-
-## <a name="indexing-datetimes-for-range-queries"></a>Tarih saat aralık sorguları için dizin oluşturma
-Aralık sorguları içeren DateTime değerleri yaygındır. Örneğin, dünden beri oluşturulan tüm siparişleri bulmak veya son beş dakika içinde tüm siparişlere bulmak gerekiyorsa, aralık sorguları gerçekleştirmek gerekir. Bu sorguları verimli bir şekilde yürütmek için aralığı dizeleri dizinini oluşturmak için koleksiyonunuzun yapılandırmanız gerekir.
-
-    DocumentCollection collection = new DocumentCollection { Id = "orders" };
-    collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
-    await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
-
-Dizin oluşturma ilkeleri yapılandırma hakkında daha fazla bilgi [Azure Cosmos DB dizinleme ilkeleri](index-policy.md).
+Alternatif olarak, tarih/saat olarak Unix zaman damgası, diğer bir deyişle, 1 Ocak 1970'ten beri geçen saniyelerin sayısını gösteren bir sayı olarak depolayabilirsiniz. Azure Cosmos DB iç zaman damgası (`_ts`) özelliği bu yaklaşımı izler. [Unixdatetimeconverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) sınıfını, DateTimeS 'ı sayı olarak seri hale getirmek için kullanabilirsiniz.
 
 ## <a name="querying-datetimes-in-linq"></a>LINQ tarih saatleri sorgulama
-LINQ ile Azure Cosmos DB'de depolanan verileri sorgulama, SQL .NET SDK'sını otomatik olarak destekler. Örneğin, aşağıdaki kod parçacığı bir LINQ Sorgu son üç günde sevk edilen bu filtreleri siparişleri gösterir.
 
-    IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
-        .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
-          
-    // Translated to the following SQL statement and executed on Azure Cosmos DB
+LINQ ile Azure Cosmos DB'de depolanan verileri sorgulama, SQL .NET SDK'sını otomatik olarak destekler. Örneğin, aşağıdaki kod parçacığında son üç gün içinde gönderilen siparişlere filtre uygulayan bir LINQ sorgusu gösterilmektedir:
+
+```csharp
+    IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
+```
+
+Aşağıdaki SQL bildirimine çevrilmiş ve Azure Cosmos DB yürütüldü:
+
+```sql
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+```
 
-Azure Cosmos DB SQL sorgu dili ve LINQ sağlayıcısı hakkında daha fazla bilgi [Cosmos DB'yi sorgulama](how-to-sql-query.md).
+Azure Cosmos DB SQL sorgu dili ve LINQ sağlayıcısı hakkında daha fazla bilgi için bkz. [LINQ 'da Cosmos DB sorgulama](sql-query-linq-to-sql.md).
 
-Bu makalede, depolamak, dizin ve Azure Cosmos DB'de tarih saatleri sorgu inceledik.
+## <a name="indexing-datetimes-for-range-queries"></a>Tarih saat aralık sorguları için dizin oluşturma
+
+Sorgular DateTime değerleriyle ortaktır. Bu sorguları verimli bir şekilde yürütmek için sorgunun filtresindeki herhangi bir özelliklerde tanımlanmış bir dizininiz olmalıdır.
+
+[Azure Cosmos DB Dizin oluşturma ilkelerinde](index-policy.md)dizin oluşturma ilkelerini yapılandırma hakkında daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* İndirme ve çalıştırma [github'daki kod örnekleri](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* Daha fazla bilgi edinin [SQL sorguları](how-to-sql-query.md)
-* Daha fazla bilgi edinin [Azure Cosmos DB dizinleme ilkeleri](index-policy.md)
+
+* [GitHub 'Da kod örneklerini](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) indirme ve çalıştırma
+* [SQL sorguları](sql-query-getting-started.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md) hakkında daha fazla bilgi edinin

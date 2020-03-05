@@ -6,18 +6,18 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 506b34281ba8ab5b669c87b4699fb8b138c8734a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819182"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268306"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure ve Dynamics 365 danışmanlık hizmeti teklifi
 
-Bu makalede, Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Market</a> veya <a href="https://appsource.microsoft.com">appsource</a>'a bir danışmanlık hizmeti teklifinin nasıl yayımlanacağı açıklanmaktadır. Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>ve <a href="https://powerapps.microsoft.com">PowerApps</a> tabanlı çözümler appsource 'ta listelenebilir. Diğer Microsoft <a href="https://azure.microsoft.com/services">Azure hizmetlerini</a> temel alan diğer teklifler Azure Marketi 'nde listelenebilir.
+Bu makalede, Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Market</a> veya <a href="https://appsource.microsoft.com">appsource</a>'a bir danışmanlık hizmeti teklifinin nasıl yayımlanacağı açıklanmaktadır. Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>ve <a href="https://powerapps.microsoft.com">Power Apps</a> tabanlı çözümler appsource 'ta listelenebilir. Diğer Microsoft <a href="https://azure.microsoft.com/services">Azure hizmetlerini</a> temel alan diğer teklifler Azure Marketi 'nde listelenebilir.
 
 ## <a name="publishing-benefits"></a>Yayımlama avantajları
 
@@ -35,11 +35,13 @@ Bu bölümde bir danışmanlık hizmeti teklifi yayımlama öğeleri özetlenmek
 - [Danışmanlık hizmeti önkoşulları](./cpp-consulting-service-prerequisites.md) , için bir danışmanlık hizmeti teklifi yayımlama gereksinimlerini listeler:
  
     - Microsoft Azure
-    - Müşteri Etkileşimi için Dynamics 365 
-    - Finans & Işlemleri için Dynamics 365 
+    - Dynamics 365 müşteri katılımı 
+    - Dynamics 365 Finans & Işlemleri 
+    - Dynamics 365 Customer Insights
     - Dynamics 365 Iş Merkezi 
     - Power BI 
-    - PowerApps
+    - Power Apps
+    - Power Automate
 - [Yeni bir teklif oluşturun](./cpp-consulting-service-create-offer.md) bulut iş ortağı portalı kullanarak bir danışmanlık hizmeti teklif girişi oluşturmak için gereken adımları listeler:
     - [Teklif ayarlarını tanımlayın](./cpp-consulting-service-define-offer-settings.md).
     - [Storefront ayrıntılarını ve Azure Market 'te veya AppSource 'ta yayımlamayı belirtin.](./cpp-consulting-service-storefront-details.md)

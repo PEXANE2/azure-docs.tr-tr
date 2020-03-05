@@ -6,26 +6,26 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277499"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273205"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
 
-Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure [yay bulutu](https://spring.io/projects/spring-cloud-sleuth) 'nı Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)ile tümleştirir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
+Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure portal dağıtılmış izlemeyi etkinleştirin.
-> * Uygulamanıza Azure yay bulutu ön kimlik 'i ekleyin.
+> * Uygulamanıza yay bulutu uykuya geçin.
 > * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin.
 > * Farklı filtrelerle izleme verilerinde arama yapın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcını doldurun.
     
@@ -39,7 +39,7 @@ Bu öğreticiyi tamamlayabilmeniz için, zaten sağlanmış ve çalışan bir Az
 
    Bu değişiklikten sonra, Zipkabağı gönderici Web 'e gönderebilir.
 
-1. [Azure yay bulut uygulaması hazırlama kılavuzumuzu](spring-cloud-tutorial-prepare-app-deployment.md)izlediyseniz bu adımı atlayın. Aksi takdirde, yerel geliştirme ortamınıza gidin ve Pom. XML dosyanızı düzenleyerek aşağıdaki Azure yay bulutu uykuya geçme bağımlılığını ekleyin:
+1. [Azure yay bulut uygulaması hazırlama kılavuzumuzu](spring-cloud-tutorial-prepare-app-deployment.md)izlediyseniz bu adımı atlayın. Aksi takdirde, yerel geliştirme ortamınıza gidin ve Pom. XML dosyanızı düzenleyerek aşağıdaki yay bulutu uykuya geçme bağımlılığını ekleyin:
 
     ```xml
     <dependencyManagement>
@@ -86,7 +86,7 @@ Zaten bir uygulama oluşturup dağıttıysanız, örnek hızı değiştirebilirs
 
 **Dağıtılmış izleme** sayfasına dönün ve **uygulama haritasını görüntüle**' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını nasıl kullanacağınızı öğrenmek için bkz. [uygulama Haritası: dağıtılmış uygulamaları önceliklendirme](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="use-search"></a>Aramayı Kullanma
+## <a name="use-search"></a>Arama kullan
 
 Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara**' yı seçin. Arama işlevini kullanma hakkında daha fazla bilgi için bkz. [Application Insights arama kullanma](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 

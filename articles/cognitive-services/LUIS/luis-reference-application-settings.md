@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961784"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270815"
 ---
 # <a name="application-settings"></a>Uygulama ayarları
 
@@ -27,14 +27,14 @@ Bu uygulama ayarları, [dışarıya](https://westus.dev.cognitive.microsoft.com/
 |Normalizenoktalama|True|Noktalama işaretlerini kaldırır.|
 |NormalizeDiacritics|True|Aksanları kaldırır.|
 
-## <a name="diacritics-normalization"></a>Aksanların normalleştirilmesi 
+## <a name="diacritics-normalization"></a>Aksanların normalleştirilmesi
 
 `settings` parametresindeki lusıs JSON uygulama dosyanıza Aksanlar için söylenişi normalleştirmesini açın.
 
 ```JSON
 "settings": [
     {"name": "NormalizeDiacritics", "value": "true"}
-] 
+]
 ```
 
 Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği gösterilmektedir:
@@ -46,7 +46,7 @@ Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği g
 
 ### <a name="language-support-for-diacritics"></a>Aksanlar için dil desteği
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Portekizce (Brezilya) `pt-br` vurguları
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brezilya Portekizcesi `pt-br` aksanlar
 
 |Aksanların değeri false olarak ayarlandı|Aksanların değeri true olarak ayarlandı|
 |-|-|
@@ -61,7 +61,7 @@ Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği g
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
 #### <a name="dutch-nl-nl-diacritics"></a>Felemenkçe `nl-nl` aksanlar
@@ -77,7 +77,7 @@ Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği g
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
@@ -91,24 +91,24 @@ Bu hem Fransızca hem de Kanada alt kültürlerini içerir.
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
 #### <a name="german-de-de-diacritics"></a>Almanya `de-de` aksanlar
 
 |Aksanların değeri false olarak ayarlandı|Aksanların değeri true olarak ayarlandı|
 |--|--|
 |`ä`|`a`|
-|`ö`|`o`| 
-|`ü`|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
 #### <a name="italian-it-it-diacritics"></a>İtalyanca `it-it` aksanlar
 
@@ -117,11 +117,11 @@ Bu hem Fransızca hem de Kanada alt kültürlerini içerir.
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó`|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -133,8 +133,8 @@ Buna hem İspanyolca hem de Kanada Meksika dahildir.
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó`|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
@@ -147,7 +147,7 @@ Noktalama işaretleri için `settings` parametresindeki LUSıS JSON uygulama dos
 ```JSON
 "settings": [
     {"name": "NormalizePunctuation", "value": "true"}
-] 
+]
 ```
 
 Aşağıdaki noktalamalar, noktalama işaretlerinin nasıl etkilediğini göstermektedir:
@@ -163,8 +163,8 @@ Aşağıdaki noktalama işaretleri, `NormalizePunctuation` true olarak ayarland�
 
 |Noktalama işaretleri|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|

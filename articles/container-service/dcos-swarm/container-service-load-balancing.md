@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277843"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273371"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesinde Yük Dengeleme kapsayıcıları
 
@@ -43,9 +43,11 @@ Azure Container Service DC/OS kümesinde iki yük dengeleme katmanı vardır:
 
 Marathon Yük Dengeleyici dağıttığınız kapsayıcılara göre kendini dinamik olarak yeniden yapılandırır. Bu ayrıca kapsayıcı ya da aracı kaybına karşı esnektir; bu meydana gelirse, Apache Mesos başka yerde kapsayıcıyı yeniden başlatır ve marathon-lB buna uyarlanır.
 
+Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+
 Genel aracının kümesine Marathon yük dengeleyiciyi yüklemek için aşağıdaki komutu çalıştırın.
 
-```azurecli-interactive
+```console
 dcos package install marathon-lb
 ```
 
@@ -97,7 +99,7 @@ Ardından, *hello-web.json* adlı bir dosya oluşturun ve aşağıdaki içeriğe
 
 DC/OS CLI'yi kullanarak uygulamayı çalıştırın. Varsayılan olarak Marathon, uygulamayı özel kümeye dağıtır. Bu da yukarıdaki dağıtıma yalnızca yük dengeleyici üzerinden erişilebileceği anlamına gelir ve çoğunlukla istenen davranış budur.
 
-```azurecli-interactive
+```console
 dcos marathon app add hello-web.json
 ```
 

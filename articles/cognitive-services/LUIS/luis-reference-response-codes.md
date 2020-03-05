@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 43fbca732bbd281ad980ae86e4a89f446fdb69bc
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945852"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270241"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>Ortak API yanıt kodları ve anlamları
 
-[Yazma](https://go.microsoft.com/fwlink/?linkid=2092087) ve [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) API'leri döndürülen HTTP yanıt kodları. Yanıt iletilerini istek özgü bilgileri içerirken, HTTP yanıtı durum kodunun geneldir. 
+[Yazma](https://go.microsoft.com/fwlink/?linkid=2092087) ve [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) API 'leri http yanıt kodları döndürür. Yanıt iletilerini istek özgü bilgileri içerirken, HTTP yanıtı durum kodunun geneldir.
 
 ## <a name="common-status-codes"></a>Genel durum kodları
-Aşağıdaki tabloda en yaygın HTTP yanıtı durum kodları için bazılarını listeler [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) ve [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) API'leri:
+Aşağıdaki tabloda, [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) ve [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) API 'LERI için en yaygın http yanıtı durum kodlarından bazıları listelenmektedir:
 
 |Kod|API|Açıklama|
 |:--|--|--|

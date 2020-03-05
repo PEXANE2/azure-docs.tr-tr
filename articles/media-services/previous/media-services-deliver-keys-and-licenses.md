@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 61a5213ea1b801b3ceeb3d9a698a20d479509811
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974538"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268124"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM lisansları veya AES anahtarları sunmak için Media Services kullanın 
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
->
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services, içerik koruma ve içeriğinizi akışa alma, kodlama, ekleme ve içerik akışı yapmanızı sağlar. Daha fazla bilgi için bkz. [PlayReady ve/veya Widevine dinamik ortak şifrelemeyi kullanma](media-services-protect-with-playready-widevine.md). Bazı müşteriler yalnızca lisans ve/veya anahtar sunmak ve şirket içi sunucularını kullanarak kodlama, şifreleme ve akış yapmak için Media Services kullanmak ister. Bu makalede, PlayReady ve/veya Widevine lisanslarını teslim etmek için Media Services nasıl kullanabileceğinizi ve REST 'i şirket içi sunucularınızla nasıl yapabileceğinizi açıklar. 
+
+Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="overview"></a>Genel Bakış
 Media Services PlayReady ve Widevine Digital Rights Management (DRM) lisanslarını ve AES-128 anahtarlarını sunmaya yönelik bir hizmet sağlar. Media Services Ayrıca, bir Kullanıcı DRM korumalı içeriği kayıttan yürüttüğünde, DRM çalışma zamanının uygulanmasını istediğiniz hakları ve kısıtlamaları yapılandırmanıza olanak tanıyan API 'Ler de sağlar. Bir kullanıcı korumalı içeriği istediğinde, oynatıcı uygulaması Media Services lisans hizmetinden bir lisans ister. Lisans yetkilendirilirse, Media Services lisans hizmeti Player lisansını yayınlar. PlayReady ve Widevine lisansları, istemci yürütücüsü tarafından içeriğin şifresini çözmek ve akışı yapmak için kullanılabilecek şifre çözme anahtarını içerir.
@@ -348,10 +349,10 @@ namespace DeliverDRMLicenses
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.

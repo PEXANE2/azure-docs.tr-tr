@@ -8,25 +8,25 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933619"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270670"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Bir LUSıS uygulamasında kullanımdan kaldırılan önceden oluşturulmuş varlıklar
 Aşağıdaki önceden oluşturulmuş varlıklar kullanım dışıdır ve yeni LUIS uygulamalara eklenemez.
 
-* **Tarih saat**: Tarih saat kullanan var olan LUSıS uygulamaları **datetimeV2**'e geçirilmelidir, ancak DateTime varlığı onu kullanan önceden var olan uygulamalarda çalışmaya devam eder.
+* **Tarih saat**: TarihSaat kullanan var olan lusıs uygulamaları **datetimeV2**'e geçirilmelidir, **ancak DateTime varlığı** onu kullanan önceden var olan uygulamalarda çalışmaya devam eder.
 * **Coğrafya**: **Coğrafya** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
-* **Ansiklopedi**: **Ansiklopedi** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
+* **Ansiklopedi**: **ansıklopedı** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
 
 ## <a name="geography-culture"></a>Coğrafya kültürü
-**Coğrafya** yalnızca kullanılabilir `en-us` yerel ayar.
+**Coğrafya** yalnızca `en-us` yerel ayarında kullanılabilir.
 
 #### <a name="3-geography-subtypes"></a>3 Coğrafya alt türleri
 
@@ -40,10 +40,10 @@ Aşağıdaki önceden oluşturulmuş varlıklar kullanım dışıdır ve yeni LU
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Ansiklopedi kültürü
-**Ansiklopedi** yalnızca kullanılabilir `en-US` yerel ayar.
+**Ansiklopedi** yalnızca `en-US` yerel ayarında kullanılabilir.
 
 #### <a name="encyclopedia-subtypes"></a>Ansiklopedi alt türleri
-Ansiklopedi yerleşik varlığı, aşağıdaki tabloda 100 alt türlerden fazlasını içerir: Ayrıca, ansiklopedi varlıkları genellikle birden çok türe eşlenir. Örneğin, sorgu Ronald Reagan verir: 
+Aşağıdaki tabloda Ansiklopedi yerleşik varlık içeren 100'den fazla alt türleri: genellikle birden çok türlerine ek olarak, ansiklopedi varlıkları eşle. Örneğin, sorgu Ronald Reagan verir:
 
 ```json
 {
@@ -163,5 +163,5 @@ Ansiklopedi yerleşik varlığı, aşağıdaki tabloda 100 alt türlerden fazlas
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [boyut](luis-reference-prebuilt-dimension.md), [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [numarası](luis-reference-prebuilt-number.md). 
+[Boyut](luis-reference-prebuilt-dimension.md), [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
 

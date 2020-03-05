@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight yönetim IP adresleri
 description: Azure HDInsight ile sanal ağ için ağ güvenlik gruplarını ve Kullanıcı tanımlı yolları doğru bir şekilde yapılandırmak amacıyla gelen trafiğe izin vermeniz gereken IP adreslerini öğrenin.
-author: hol82
-ms.author: hol
-ms.reviewer: hrasheed
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76929876"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271833"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
@@ -30,7 +30,7 @@ Azure tarafından belirtilen DNS hizmetini kullanıyorsanız, 53 numaralı bağl
 
 ## <a name="health-and-management-services-all-regions"></a>Sistem durumu ve Yönetim Hizmetleri: tüm bölgeler
 
-Azure HDInsight sistem durumu ve Yönetim Hizmetleri için şu IP adreslerinden gelen trafiğe tüm Azure bölgelerine uygulanan trafik sağlar:
+Azure HDInsight sistem durumu ve Yönetim Hizmetleri için şu IP adreslerinden gelen trafiğe izin ver: tüm Azure bölgeleri için geçerlidir:
 
 | Kaynak IP adresi | Hedef  | Yön |
 | ---- | ----- | ----- |
@@ -70,9 +70,9 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 | &nbsp; | Batı Japonya | 40.74.125.69</br>138.91.29.150 | \*: 443 | Gelen |
 | Güney Kore | Güney Kore - Orta | 52.231.39.142</br>52.231.36.209 | \*: 443 | Gelen |
 | &nbsp; | Güney Kore - Güney | 52.231.203.16</br>52.231.205.214 | \*: 443 | Gelen
-| Birleşik Krallık | UK, Batı | 51.141.13.110</br>51.141.7.20 | \*: 443 | Gelen |
+| Birleşik Krallık | Batı Birleşik Krallık | 51.141.13.110</br>51.141.7.20 | \*: 443 | Gelen |
 | &nbsp; | Güney Birleşik Krallık | 51.140.47.39</br>51.140.52.16 | \*: 443 | Gelen |
-| Birleşik Devletler | Orta ABD | 13.89.171.122</br>13.89.171.124 | \*: 443 | Gelen |
+| Amerika Birleşik Devletleri | Orta ABD | 13.89.171.122</br>13.89.171.124 | \*: 443 | Gelen |
 | &nbsp; | Doğu ABD | 13.82.225.233</br>40.71.175.99 | \*: 443 | Gelen |
 | &nbsp; | Orta Kuzey ABD | 157.56.8.38</br>157.55.213.99 | \*: 443 | Gelen |
 | &nbsp; | Orta Batı ABD | 52.161.23.15</br>52.161.10.167 | \*: 443 | Gelen |
@@ -84,8 +84,9 @@ Azure Kamu için kullanılacak IP adresleri hakkında daha fazla bilgi için bkz
 
 Daha fazla bilgi için [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic) bölümüne bakın.
 
-Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, bir sonraki atlamanın "Internet" olarak ayarlandığı bir yol belirtmeli ve VNET 'ten yukarıdaki IP 'lere giden trafiğe izin vermeniz gerekir.
+Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, bir yol belirtmeniz ve bir sonraki atlama "Internet" olarak ayarlandığında sanal ağdan yukarıdaki IP 'lere giden trafiğe izin vermeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md)
+* [Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri](hdinsight-service-tags.md)

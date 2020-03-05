@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572365"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273691"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
@@ -27,7 +27,7 @@ ms.locfileid: "73572365"
 
 Azure Analysis Services'de kullanıcı güvenliği hakkında daha fazla bilgi edinmek için bkz: [Kimlik doğrulaması ve kullanıcı izinleri](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Aboneliğinizde bir Azure Active Directory.
 - Aboneliğinizde bir [Azure Analysis Services sunucusu](../analysis-services-create-server.md) oluşturmuş olmanız.
@@ -82,7 +82,7 @@ Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya gru
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Model veritabanı yöneticisi rolüne bir kullanıcı ekleme
 
-Bu görevde, Internet Satış Yöneticisi modelde zaten var olan bir kullanıcı veya grup hesabı rolü ekleyeceksiniz. Bu rol, adventureworks örnek model veritabanı için Tam denetim (Yönetici) izinlerine sahiptir. Bu görev, kendi oluşturduğunuz bir betikte [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) TMSL komutunu kullanmaktadır.
+Bu görevde, Internet Satış Yöneticisi modelde zaten var olan bir kullanıcı veya grup hesabı rolü ekleyeceksiniz. Bu rol, adventureworks örnek model veritabanı için Tam denetim (Yönetici) izinlerine sahiptir. Bu görev, kendi oluşturduğunuz bir betikte [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL komutunu kullanmaktadır.
 
 1. **Nesne Gezgini**'nde **Veritabanları** > **adventureworks** > **Roller**'i genişletin. 
 2. **Internet Satış Yöneticisi**'ne sağ tıklayın, sonra **Rol Betiği** > **CREATE OR REPLACE** > **Yeni Sorgu Düzenleyicisi Penceresi**'ne tıklayın.
@@ -98,7 +98,7 @@ Bu görevde, Internet Satış Yöneticisi modelde zaten var olan bir kullanıcı
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Yeni bir model veritabanı rolü ekleme ve bir kullanıcı veya grup ekleme
 
-Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL betiğinde [Oluştur](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) komutunu kullanacak, role *okuma* izinleri verecek ve Azure AD'nizden bir kullanıcı veya grup hesabı ekleyeceksiniz.
+Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL betiğinde [Oluştur](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) komutunu kullanacak, role *okuma* izinleri verecek ve Azure AD'nizden bir kullanıcı veya grup hesabı ekleyeceksiniz.
 
 1. **Nesne Gezgini**'nde **adventureworks**'e sağ tıklayın, sonra **Yeni Sorgu** > **XMLA**'ya tıklayın. 
 2. Aşağıdaki TMSL betiğini kopyalayın ve sorgu düzenleyicisine yapıştırın:

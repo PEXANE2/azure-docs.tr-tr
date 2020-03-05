@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196663"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269056"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -63,7 +63,7 @@ Sorgu komutlarının ve işlevlerinin bazıları CPU tüketimine ağır. Bu, öz
 
 Bu işlevler, işlenen satır sayısıyla orantılı olarak CPU kullanır. En verimli iyileştirme, CPU yoğun işlevi yürütülmeden önce mümkün olduğunca çok kayıt filtreleyebileceği şekilde sorgu içinde nerede koşul eklemektir.
 
-Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir ancak ikinci tane, ayrıştırma işleminden [önce koşul çok]() sayıda kaydı dışladığı için en verimli şekilde belirlenir:
+Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir ancak ikinci tane, ayrıştırma işleminden [önce koşul çok](/azure/kusto/query/whereoperator) sayıda kaydı dışladığı için en verimli şekilde belirlenir:
 
 ```Kusto
 //less efficient

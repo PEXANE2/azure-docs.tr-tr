@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493208"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273560"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
@@ -369,9 +369,6 @@ Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-binding
 |`To`|`string`|Adresine gönderin.|
 |`Label`|`string`|Uygulamaya özgü etiket.|
 |`CorrelationId`|`string`|Bağıntı Kimliği|
-
-> [!NOTE]
-> Şu anda oturum etkinleştirilmiş kuyruklar ve abonelikler ile birlikte çalışarak Service Bus tetikleyicisi önizlemededir. Bu sorun hakkında daha fazla güncelleştirme için lütfen [Bu öğeyi](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) izleyin. 
 
 Bu makalenin önceki kısımlarında bu özellikleri kullanan [kod örneklerine](#example) bakın.
 

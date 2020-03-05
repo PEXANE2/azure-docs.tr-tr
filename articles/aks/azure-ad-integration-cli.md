@@ -4,12 +4,12 @@ description: Azure CLı 'yı kullanarak Azure Kubernetes Service (AKS) kümesi o
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596615"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273760"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme
 
@@ -27,9 +27,11 @@ Aşağıdaki sınırlamalar geçerlidir:
 
 Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][install-azure-cli].
 
+Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+
 Tutarlılık için ve bu makaledeki komutları çalıştırmaya yardımcı olmak için, istediğiniz AKS kümesi adı için bir değişken oluşturun. Aşağıdaki örnek *myakscluster*adını kullanır:
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 Bir Web tarayıcısı kullanarak Azure AD kimlik bilgilerini kullanarak kimlik doğrulaması gerçekleştirmek için bir oturum açma istemi alırsınız. Kimliği başarıyla doğrulandıktan sonra, `kubectl` komutu aşağıdaki örnek çıktıda gösterildiği gibi aks kümesindeki Pod 'leri görüntüler:
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0       
 
 Aşağıdaki örnek çıktıda olduğu gibi bir Web tarayıcısını kullanarak başarıyla oturum açtıktan sonra bir yetkilendirme hata iletisi görürseniz, aşağıdaki olası sorunları kontrol edin:
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

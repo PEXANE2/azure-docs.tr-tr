@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917484"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268771"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
 
@@ -89,11 +89,9 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
         |0,00016|0,004|0,999961|0,00784|1|  
         |0|0,004|0,999955|0,008615|1|  
   
-4.  Her satırdan sonra ENTER tuşuna basarak yeni bir satır başlatın.  
-  
-     **Son satırdan sonra ENTER tuşuna bastığınızdan emin olun.** 
+4.  Her satırdan sonra ENTER tuşuna basarak yeni bir satır başlatın.      
      
-     Birden çok kez daha fazla boş satır eklemek için ENTER tuşuna basarsanız, son boş satır atılır, ancak diğer boş satırlar eksik değerler olarak değerlendirilir.  
+     Birden çok kez daha fazla boş satır eklemek için ENTER tuşuna basarsanız boş satırlar kırpılmış olarak kaldırılır.  
   
      Eksik değerleri olan satırlar oluşturursanız, bunları her zaman daha sonra filtreleyebilirsiniz.  
   

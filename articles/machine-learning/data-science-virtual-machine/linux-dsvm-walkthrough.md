@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428383"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268649"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
 
@@ -24,7 +24,7 @@ Bu kılavuzda gösterilen veri bilimi görevleri, [ekip veri bilimi işlemi nedi
 
 Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -60,10 +60,10 @@ Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
 * Word **\_freq\__Word_**  gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **word\_freq\_Make** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *yapmıştı*.
 * Char **\_freq\__char_**  gibi sütunlar, e-postadaki *karakter olan tüm*karakterlerin yüzdesini belirtir.
-* **büyük\_çalıştırma\_uzunluğu\_uzun** büyük harf dizisini uzun uzunluğu.
-* **büyük\_çalıştırma\_uzunluğu\_ortalama** büyük harf tüm dizileri ortalama uzunluğu.
-* **büyük\_çalıştırma\_uzunluğu\_toplam** büyük harf tüm dizileri toplam uzunluğu.
-* **istenmeyen posta** veya e-posta istenmeyen posta kabul olup olmadığını belirtir (1 istenmeyen-posta, 0 = değil istenmeyen posta =).
+* **büyük\_çalıştırma\_uzunluğu en uzun\_** büyük harflerin bir dizisinin en uzun uzunluğudur.
+* **büyük\_çalıştırma\_uzunluğu\_ortalama** , büyük harflerin tüm dizilerinin ortalama uzunluğudur.
+* **büyük\_çalıştırma\_uzunluğu\_toplam** , büyük harflerin tüm dizileri için toplam uzunluktadır.
+* **istenmeyen** posta, e-postanın istenmeyen posta olarak kabul edilip edilmeyeceğini belirtir (1 = istenmeyen posta, 0 = istenmeyen posta değil).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>R Open kullanarak veri kümesini keşfet
 
@@ -90,7 +90,7 @@ Verileri farklı bir görünüm için:
 
 Bu görünüm, veri kümesindeki her değişkenin ve ilk birkaç değerin türünü gösterir.
 
-**İstenmeyen posta** sütun bir tamsayı olarak okundu, ancak gerçekte kategorik olan değişken (veya faktörü). Türünü ayarlamak için:
+**İstenmeyen posta** sütunu bir tamsayı olarak okunmıştı, ancak aslında kategorik bir değişkendir (veya faktörü). Türünü ayarlamak için:
 
     data$spam <- as.factor(data$spam)
 
@@ -187,6 +187,8 @@ Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanlar çok sayıda kara
    ![Azure Machine Learning Studio (klasik) birincil yetkilendirme belirteci](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. **AzureML** paketini yükleyin ve ardından, DVM 'deki R oturumunuzda belirteç ve çalışma alanı Kimliğinizle değişkenlerin değerlerini ayarlayın:
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanlar çok sayıda kara
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. Bu çalışma alanı için bir Settings. JSON dosyası oluşturun:
+
+        vim ~/.azureml/settings.json
+
+1. Aşağıdaki içeriklerin Settings. JSON içine yerleştirdiğinizden emin olun:
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. The **Publishwebservice** Işlevini kullanarak **Predictspam** işlevini AzureML 'da yayımlayın:
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. Bu işlev **Predictspam** işlevini alır, tanımlı giriş ve çıkışları olan **spamwebservice** adlı bir Web hizmeti oluşturur ve ardından yeni uç nokta hakkında bilgi döndürür.
@@ -370,17 +386,17 @@ Yük ve veri kümesini yapılandırmak için:
 1. Dosyayı yüklemek için **veri** sekmesini seçin.
 1. **Dosya adı**' nın yanındaki seçiciyi seçin ve ardından **Spambaseheaders. Data**öğesini seçin.
 1. Dosya yüklenemiyor. **Yürüt**' ü seçin. Tanımlı veri türü de dahil olmak üzere her bir sütunun özetini görmeniz gerekir. bir giriş, hedef ya da başka bir değişken türü olsun; ve benzersiz değer sayısı.
-1. Çıngırağı doğru tanımladı **istenmeyen posta** hedefi olarak bir sütun. **İstenmeyen posta** sütununu seçin ve ardından **hedef veri türünü** **kategoric**olarak ayarlayın.
+1. Rattle, **istenmeyen posta** sütununu hedef olarak doğru şekilde tanımladı. **İstenmeyen posta** sütununu seçin ve ardından **hedef veri türünü** **kategoric**olarak ayarlayın.
 
 Verileri araştırmak için:
 
-1. Seçin **Araştır** sekmesi.
+1. **Keşfet** sekmesini seçin.
 1. Değişken türleri ve bazı Özet istatistikleri hakkındaki bilgileri görmek için, **özet** > **Yürüt**' ü seçin.
 1. Her değişkenle ilgili diğer istatistik türlerini görüntülemek için, **açıkla** veya **temel bilgiler**gibi diğer seçenekleri belirleyin.
 
 Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kullanabilirsiniz. Verilerin bir histogram çizmek için:
 
-1. Seçin **dağıtımları**.
+1. **Dağıtımları**seçin.
 1. **Word_freq_remove** ve **word_freq_you**için **histogram**' ı seçin.
 1. **Yürüt**’ü seçin. Tek bir grafik penceresinde her iki yoğunluk işaretini de görmeniz gerekir. burada, e-postalardan _Kaldır_' a kadar çok daha sık _gördüğünüz sözcük burada_ görünür.
 
@@ -388,7 +404,7 @@ Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kulla
 
 1. **Tür**için **bağıntı**' yı seçin.
 1. **Yürüt**’ü seçin.
-1. En fazla 40 değişkenler önerir Çıngırağı sizi uyarır. Seçin **Evet** çizim görüntülemek için.
+1. En fazla 40 değişkenler önerir Çıngırağı sizi uyarır. Çizimi görüntülemek için **Evet** ' i seçin.
 
 Daha fazla ilgi çekici bağıntılı ilişkiler vardır: _teknoloji_ , örneğin, _HP_ ve _Labs_'e özellikle yöneliktir. Ayrıca, veri kümesinin alan kodu 650 olduğundan, _650_ ile de kesinlikle bağıntılı olur.
 
@@ -413,10 +429,10 @@ Rattle, küme analizini de çalıştırabilir. Şimdi çıkış okunmasını kol
 
 Temel bir karar ağacı makine öğrenimi modeli oluşturmak için:
 
-1. Seçin **modeli** sekmesinde
+1. **Model** sekmesini seçin,
 1. **Tür**için **ağaç**' ı seçin.
-1. Seçin **yürütme** çıkış penceresindeki metin biçiminde ağaç görüntülenecek.
-1. Seçin **çizmek** grafik sürümünü görüntülemek için düğme. Karar ağacı, daha önce rpart kullanarak elde ettiğimiz ağaca benzer.
+1. Çıkış penceresinde ağacı metin biçiminde göstermek için **Yürüt** ' ü seçin.
+1. Grafik sürümünü görüntülemek için **Çiz** düğmesini seçin. Karar ağacı, daha önce rpart kullanarak elde ettiğimiz ağaca benzer.
 
 Rattle 'ın yararlı bir özelliği, birkaç makine öğrenimi yöntemi çalıştırma ve bunları hızlı bir şekilde değerlendirme yeteneğidir. Adımlar şunlardır:
 
@@ -425,7 +441,7 @@ Rattle 'ın yararlı bir özelliği, birkaç makine öğrenimi yöntemi çalış
 1. Rattle çalışmayı bitirdiğinde, **SVM**gibi herhangi bir **tür** değeri seçebilir ve sonuçları görüntüleyebilirsiniz.
 1. Ayrıca, **değerlendirme** sekmesini kullanarak doğrulama kümesindeki modellerin performansını karşılaştırabilirsiniz. Örneğin, **hata matrisi** seçimi, doğrulama kümesindeki her bir model için karışıklık matrisi, genel hata ve Ortalama sınıf hatası gösterir. Ayrıca, ROC eğrileri çizdirebilirsiniz, duyarlılık analizini çalıştırabilir ve diğer model değerlendirmesi türlerini gerçekleştirebilirsiniz.
 
-Model oluşturma işiniz bittiğinde, oturumunuz sırasında Rattle tarafından çalıştırılan R kodunu görüntülemek için **günlük** sekmesini seçin. Seçebileceğiniz **dışarı** kaydetmek için düğme.
+Model oluşturma işiniz bittiğinde, oturumunuz sırasında Rattle tarafından çalıştırılan R kodunu görüntülemek için **günlük** sekmesini seçin. **Dışarı aktar** düğmesini seçerek bunu kaydedebilirsiniz.
 
 > [!NOTE]
 > Geçerli Rattle sürümü bir hata içeriyor. Betiği değiştirmek veya adımları daha sonra tekrarlamak üzere kullanmak için *Bu günlüğü... ' nin önüne bu günlüğü dışarı aktar* ' a **#** bir karakter eklemeniz gerekir.
@@ -495,19 +511,19 @@ Yerel sunucusuyla bağlantıyı ayarlamak için:
 1. **Windows** > **Görünüm diğer adlarını seçin.**
 1. Yeni bir diğer ad oluşturmak için **+** düğmesini seçin. Yeni diğer ad için **Istenmeyen posta veritabanı**girin. 
 1. **Sürücü**Için **PostgreSQL**' i seçin.
-1. URL'sini ayarlamak **jdbc:postgresql://localhost/spam**.
+1. URL 'YI **JDBC: PostgreSQL://localhost/spam**olarak ayarlayın.
 1. Kullanıcı adınızı ve parolanızı girin.
 1. **Tamam**’ı seçin.
-1. Açmak için **bağlantı** penceresinde çift **istenmeyen posta veritabanı** diğer adı.
+1. **Bağlantı** penceresini açmak Için, **istenmeyen posta veritabanı** diğer adına çift tıklayın.
 1. **Bağlan**’ı seçin.
 
 Bazı sorgular çalıştırmak için:
 
-1. Seçin **SQL** sekmesi.
+1. **SQL** sekmesini seçin.
 1. **SQL** sekmesinin üst kısmındaki sorgu kutusuna `SELECT * from data;`gibi temel bir sorgu girin.
 1. Sorguyu çalıştırmak için CTRL + ENTER tuşlarına basın. Varsayılan olarak, SQUIRREL SQL Sorgunuzdaki ilk 100 satırı döndürür.
 
-Bu verileri araştırmak için çalıştırabileceğiniz birçok sorgu daha vardır. Örneğin, word sıklığını nasıl yaptığını *olun* istenmeyen posta ve ham farklıdır?
+Bu verileri araştırmak için çalıştırabileceğiniz birçok sorgu daha vardır. Örneğin *, sözcüğün sıklığı* istenmeyen ve ham nasıl farklıdır?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
@@ -521,7 +537,7 @@ Makine öğrenimini bir PostgreSQL veritabanında depolanan verileri kullanarak 
 
 ### <a name="sql-data-warehouse"></a>SQL Veri Ambarı
 
-Azure SQL veri ambarı, hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme veritabanıdır. Daha fazla bilgi için [Azure SQL veri ambarı nedir?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure SQL veri ambarı, hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme veritabanıdır. Daha fazla bilgi için bkz. [Azure SQL veri ambarı nedir?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Veri ambarı'na bağlanmak ve tablo oluşturmak için bir komut isteminden aşağıdaki komutu çalıştırın:
 

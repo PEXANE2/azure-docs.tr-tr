@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008349"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273832"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki riskli oturum açma işlemleri raporu
 
@@ -52,15 +52,15 @@ Azure Active Directory ' de bir kullanıcıya yönetim rolleri atamayı öğrenm
 
 Tüm Azure AD sürümlerinde riskli oturum açma işlemleri raporları sağlanır. Bununla birlikte, rapordaki ayrıntı düzeyi sürümler arasında değişiklik gösterir: 
 
-- **Azure Active Directory ücretsiz ve temel sürümlerde**riskli oturum açma işlemlerinin bir listesini alırsınız. 
+- **Azure Active Directory ücretsiz sürümünde**, riskli oturum açma işlemlerinin bir listesini alırsınız. 
 
 - Ayrıca, **Azure Active Directory Premium 1** sürümü, her rapor için algılanan temel risk algılamalarını incelemenizi sağlar. 
 
 - **Azure Active Directory Premium 2** sürümü, tüm temel risk algılamaları hakkında en ayrıntılı bilgileri sağlar ve ayrıca, yapılandırılmış risk düzeylerine otomatik olarak yanıt veren güvenlik ilkelerini yapılandırmanıza olanak tanır.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Azure AD ücretsiz ve temel sürüm için riskli oturum açma işlemleri raporu
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Azure AD ücretsiz sürüm için riskli oturum açma işlemleri raporu
 
-Azure AD ücretsiz ve temel sürümleri, kullanıcılarınız için algılanan riskli oturum açma işlemlerinin bir listesini sağlar. Her kayıt aşağıdaki öznitelikleri içerir:
+Azure AD ücretsiz sürümü, kullanıcılarınız için algılanan riskli oturum açma işlemlerinin bir listesini sağlar. Her kayıt aşağıdaki öznitelikleri içerir:
 
 - **Kullanıcı** -oturum açma işlemi sırasında kullanılan kullanıcının adı.
 - **IP** -Azure Active Directory bağlanmak için kullanılan cihazın IP adresi.
@@ -98,7 +98,7 @@ Azure AD Premium sürümlerindeki riskli oturum açma işlemleri raporu şunlar�
 
 Risk algılamayı seçtiğinizde, bu risk algılamasında şunları yapmanızı sağlayan ayrıntılı bir rapor görünümü alırsınız:
 
-- Bir [kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırabilirsiniz.  
+- [Kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırma seçeneği  
 
 - Risk algılama için algılama zaman çizelgesini gözden geçirin  
 

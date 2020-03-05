@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1717969aeb24a153f986c70ef60db1aac5c840fb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423788"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267783"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory avro biçimi
 
@@ -83,7 +83,11 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde des
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
-Avro [karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) desteklenmez (kayıtlar, numaralandırmalar, diziler, Haritalar, birleşimler ve sabit).
+### <a name="copy-activity"></a>Kopyalama etkinliği
+Kopyalama etkinliğinde avro [karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) desteklenmez (kayıtlar, numaralandırmalar, diziler, Haritalar, birleşimler ve sabit).
+
+### <a name="data-flows"></a>Veri akışları
+Veri akışlarında avro dosyalarla çalışırken, karmaşık veri türlerini okuyup yazabilir, ancak önce veri kümesinden fiziksel şemayı temizlediğinizden emin olun. Veri akışlarında, mantıksal projeksiyonunu ayarlayabilir ve karmaşık yapılar olan sütunları türetebilirsiniz, ardından bu alanları bir avro dosyasına otomatik olarak eşleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

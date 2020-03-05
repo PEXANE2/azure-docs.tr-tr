@@ -4,12 +4,12 @@ description: Azure App Service işletim sistemi ve çalışma zamanlarını, uyg
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846248"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273632"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
 
@@ -51,7 +51,7 @@ Desteklenen dil çalışma zamanlarının (ana, ikincil veya düzeltme ekinin) y
 
 ### <a name="new-patch-updates"></a>Yeni düzeltme eki güncelleştirmeleri
 
-.NET, PHP, Java SDK veya Tomcat/Jetty sürümüne yönelik düzeltme eki güncellemeleri, var olan yüklemenin yeni sürümle üzerine yazılarak otomatik olarak uygulanır. Node. js düzeltme eki güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, [site uzantıları](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)üzerinden el ile yüklenebilir ve yerleşik Python yüklemeleri ile yan yana yüklenebilir.
+.NET, PHP, Java SDK veya Tomcat/Jetty sürümüne yönelik düzeltme eki güncellemeleri, var olan yüklemenin yeni sürümle üzerine yazılarak otomatik olarak uygulanır. Node. js düzeltme eki güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, yerleşik Python yüklemeleri ile yan yana [site uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)üzerinden el ile yüklenebilir.
 
 ### <a name="new-major-and-minor-versions"></a>Yeni birincil ve ikincil sürümler
 
@@ -90,7 +90,7 @@ Aşağıdaki tabloda, uygulamalarınızı çalıştıran Windows ve dil çalış
 >
 >
 
-## <a name="more-resources"></a>Daha fazla kaynak
+## <a name="more-resources"></a>Diğer kaynaklar
 
 [Güven Merkezi: güvenlik](https://www.microsoft.com/en-us/trustcenter/security)  
 [Azure App Service üzerinde 64 bit ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

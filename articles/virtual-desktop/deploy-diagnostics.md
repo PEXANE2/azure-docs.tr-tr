@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368856"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273097"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -128,10 +128,9 @@ Tanılama aracını dağıtmaya devam etmeden önce, Azure Active Directory uygu
 Uygulama kaydlarınızın API izinlerine sahip olduğundan emin olmak için:
 
 1. Bir tarayıcı açın ve [Azure Portal](https://portal.azure.com/) Yönetici hesabınızla bağlanın.
-2. **Uygulama kayıtları** gidin ve Azure AD uygulaması kaydınızı bulun.
-
-      ![API izinleri sayfası.](media/api-permissions-page.png)
-
+2. **Azure Active Directory**gidin.
+3. **Uygulama kayıtları** gidin ve **tüm uygulamalar**' ı seçin.
+4. [Azure Active Directory uygulama kaydı oluşturma](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)' nın 5. adımında girdiğiniz aynı uygulama ADıYLA Azure AD uygulama kaydınızı bulun.
 
 ### <a name="review-your-log-analytics-workspace"></a>Log Analytics çalışma alanınızı gözden geçirin
 

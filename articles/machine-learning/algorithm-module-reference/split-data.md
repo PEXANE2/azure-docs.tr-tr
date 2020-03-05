@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153749"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268530"
 ---
 # <a name="split-data-module"></a>Veri modülünü Böl
 
@@ -84,6 +84,26 @@ Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğ
 
     Sağladığınız normal ifadeye bağlı olarak, veri kümesi iki satır kümesine ayrılır: ifadeyle eşleşen değerleri olan satırlar ve kalan tüm satırlar. 
 
+Aşağıdaki örneklerde, bir veri kümesinin **normal ifade** seçeneği kullanılarak nasıl bölüneceği gösterilmektedir. 
+
+### <a name="single-whole-word"></a>Tek bir tam kelime 
+
+Bu örnek, sütun `Text`metin `Gryphon` içeren tüm satırları ilk veri kümesine koyar ve diğer satırları **bölünen verilerin**ikinci çıktısına koyar:
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>dizeden
+
+Bu örnek, veri kümesinin ikinci sütununda belirtilen dizeyi, 1 ' in dizin değeri ile belirtilen bir konumda arar. Eşleşme büyük/küçük harfe duyarlıdır.
+
+```text
+(\1) ^[a-f]
+```
+
+İlk sonuç veri kümesi, Dizin sütununun şu karakterlerden biriyle başladığı tüm satırları içerir: `a`, `b`, `c`, `d`, `e`, `f`. Diğer tüm satırlar ikinci çıktıya yönlendirilir.
+
 ## <a name="relative-expression-split"></a>Göreli ifade bölme.
 
 1. Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine girdi olarak bağlayın.
@@ -92,26 +112,46 @@ Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğ
   
 3. **İlişkisel ifade** metin kutusuna, tek bir sütunda karşılaştırma işlemi gerçekleştiren bir ifade yazın:
 
-
- - Sayısal sütun:
-    - Sütun, tarih/saat veri türleri dahil olmak üzere herhangi bir sayısal veri türü sayı içerir.
-
-    - İfade, en fazla bir sütun adına başvurabilir.
-
-    - VE işlemi için ve karakteri (&) kullanın ve ya da işlem için kanal karakterini (|) kullanın.
-
-    - Şu işleçler desteklenir: `<`, `>`, `<=`, `>=`, `==`, `!=`
-
-    - `(` ve `)`kullanarak işlemler gruplandırılamıyor.
-
- - Dize sütunu: 
-    - Şu işleçler desteklenir: `==`, `!=`
-
-
+   **Sayısal sütun**için:
+   - Sütun, tarih ve saat veri türleri dahil olmak üzere herhangi bir sayısal veri türü sayı içerir.
+   - İfade, en fazla bir sütun adına başvurabilir.
+   - VE işlemi için ve karakterini kullanın `&`. VEYA işlemi için `|` kanal karakterini kullanın.
+   - Şu işleçler desteklenir: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - `(` ve `)`kullanarak işlemler gruplandırılamıyor.
+   
+   **Dize sütunu**için:
+   - Şu işleçler desteklenir: `==`, `!=`.
 
 4. İşlem hattını çalıştırma.
 
     İfade, veri kümesini iki satır kümesine böler: koşula uyan değerler içeren satırlar ve kalan tüm satırlar.
+
+Aşağıdaki örneklerde, **bölünmüş veri** modülündeki **göreli ifade** seçeneği kullanılarak bir veri kümesinin nasıl bölüneceği gösterilmektedir:  
+
+### <a name="using-calendar-year"></a>Takvim yılını kullanma
+
+Yaygın bir senaryo, bir veri kümesini yıla göre bölmektir. Aşağıdaki ifade `Year` sütunundaki değerlerin `2010`daha büyük olduğu tüm satırları seçer.
+
+```text
+\"Year" > 2010
+```
+
+Tarih ifadesi, veri sütununa dahil edilen tüm tarih bölümlerinin ve veri sütunundaki tarih biçiminin tutarlı olması gerekir. 
+
+Örneğin, `mmddyyyy`biçimini kullanan bir tarih sütununda, ifade şuna benzer olmalıdır:
+
+```text
+\"Date" > 1/1/2010
+```
+
+### <a name="using-column-indices"></a>Sütun dizinlerini kullanma
+
+Aşağıdaki ifade, bir veri kümesinin ilk sütununda 30 ' a eşit veya daha küçük değerler içeren, ancak 20 ' ye eşit olmayan tüm satırları seçmek için nasıl kullanabileceğinizi gösterir.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

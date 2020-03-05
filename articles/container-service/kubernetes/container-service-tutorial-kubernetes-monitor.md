@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 35f7c2fb968ea5285af5f2d597c67b3b22065906
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 84c2438a8c25b1b64f46e12923212812beac687d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278233"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273331"
 ---
 # <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>Kullanım DıŞı Log Analytics ile bir Kubernetes kümesini izleme
 
@@ -56,7 +56,7 @@ Aşağıdaki Kubernetes bildirim dosyası, bir Kubernetes kümesindeki kapsayıc
 
 Aşağıdaki metni `oms-daemonset.yaml` adlı bir dosyaya kaydedin.
 
-```YAML
+```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -123,19 +123,19 @@ spec:
 
 Aşağıdaki komut ile DaemonSet oluşturun:
 
-```azurecli-interactive
+```console
 kubectl create -f oms-daemonset.yaml
 ```
 
 DaemonSet’in oluşturulduğunu görmek için şunu çalıştırın:
 
-```azurecli-interactive
+```console
 kubectl get daemonset
 ```
 
 Çıktı aşağıdakine benzer:
 
-```azurecli-interactive
+```output
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR   AGE
 omsagent   3         3         3         0            3           <none>          5m
 ```

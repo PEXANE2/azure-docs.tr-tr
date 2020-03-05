@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 02bc6657126cb1cf241c2ca4668e62bd49608d4b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491257"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270494"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıralı v2 önceden oluşturulmuş varlık
 Ordinal v2 numarası, `next`, `last`ve `previous`gibi göreli başvurular sağlamak için [sıra](luis-reference-prebuilt-ordinal.md) sayısını genişletir. Bunlar, sıralı önceden oluşturulmuş varlık kullanılarak ayıklanmaz.
@@ -27,7 +27,7 @@ Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `what is the second to last choice in the list`
 
-#### <a name="v3-responsetabv3"></a>[V3 yanıtı](#tab/V3)
+#### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
 Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
 
@@ -42,7 +42,7 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
 }
 ```
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
 
 Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 
@@ -71,7 +71,7 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 yanıtı](#tab/V2)
+#### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
 Aşağıdaki örnek, **yerleşik. ordinalV2** varlığının çözünürlüğünü gösterir.
 
@@ -89,10 +89,10 @@ Aşağıdaki örnek, **yerleşik. ordinalV2** varlığının çözünürlüğün
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Yüzde](luis-reference-prebuilt-percentage.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin. 
+[Yüzde](luis-reference-prebuilt-percentage.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin.

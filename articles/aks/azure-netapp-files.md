@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596649"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273745"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 
@@ -42,7 +42,7 @@ Azure NetApp Files kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 
 *Microsoft. NetApp* kaynak sağlayıcısını kaydedin:
 
-```azure-cli
+```azurecli
 az provider register --namespace Microsoft.NetApp --wait
 ```
 
@@ -52,14 +52,16 @@ az provider register --namespace Microsoft.NetApp --wait
 AKS ile kullanılmak üzere bir Azure NetApp hesabı oluşturduğunuzda, hesabı **düğüm** kaynak grubunda oluşturmanız gerekir. İlk olarak, [az aks Show][az-aks-show] komutuyla kaynak grubu adını alın ve `--query nodeResourceGroup` sorgu parametresini ekleyin. Aşağıdaki örnek, *Myresourcegroup*kaynak grubu adında *Myakscluster* adlı aks kümesi için düğüm kaynak grubunu alır:
 
 ```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
 
+```output
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 [Az netappfiles hesap Create][az-netappfiles-account-create]kullanarak aks kümeniz ile aynı bölgede, **düğüm** kaynak grubunda bir Azure NetApp Files hesabı oluşturun. Aşağıdaki örnek, *MC_myResourceGroup_myAKSCluster_eastus* kaynak grubunda ve *eastus* bölgesinde *myaccount1* adlı bir hesap oluşturur:
 
-```azure-cli
+```azurecli
 az netappfiles account create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -68,7 +70,7 @@ az netappfiles account create \
 
 [Az netappfiles Havuz oluştur][az-netappfiles-pool-create]kullanarak yeni bir kapasite havuzu oluşturun. Aşağıdaki örnek, boyut ve *Premium* hizmet DÜZEYINDE 4 TB ile *mypool1* adlı yeni bir kapasite havuzu oluşturur:
 
-```azure-cli
+```azurecli
 az netappfiles pool create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -80,7 +82,7 @@ az netappfiles pool create \
 
 [Az Network VNET subnet Create][az-network-vnet-subnet-create]kullanarak [Azure NetApp Files temsilci seçmek][anf-delegate-subnet] için bir alt ağ oluşturun. *Bu alt ağ, AKS kümeniz ile aynı sanal ağda olmalıdır.*
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 VNET_NAME=$(az network vnet list --resource-group $RESOURCE_GROUP --query [].name -o tsv)
 VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -95,7 +97,7 @@ az network vnet subnet create \
 
 [Az netappfiles birim oluştur][az-netappfiles-volume-create]kullanarak bir birim oluşturun.
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 LOCATION=eastus
 ANF_ACCOUNT_NAME=myaccount1
@@ -125,9 +127,12 @@ az netappfiles volume create \
 ## <a name="create-the-persistentvolume"></a>PersistentVolume oluşturma
 
 [Az netappfiles birim Show][az-netappfiles-volume-show] kullanarak biriminizin ayrıntılarını listeleyin
-```azure-cli
-$ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
 
+```azurecli
+az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
+```
+
+```output
 {
   ...
   "creationToken": "myfilepath2",
@@ -245,7 +250,9 @@ kubectl describe pod nginx-nfs
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
+```
 
+```output
 root@nginx-nfs:/# df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...

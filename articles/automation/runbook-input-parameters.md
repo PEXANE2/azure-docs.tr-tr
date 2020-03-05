@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249787"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273647"
 ---
 # <a name="runbook-input-parameters"></a>Runbook giriş parametreleri
 
@@ -148,19 +148,19 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini tanımlamak üz
 * **Azure Resource Manager cmdlet 'leri:** [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 )kullanarak bir kaynak grubunda oluşturulan bir Otomasyon Runbook 'unu başlatabilirsiniz.
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Azure klasik dağıtım modeli cmdlet 'leri:** [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook)kullanarak, varsayılan bir kaynak grubunda oluşturulmuş bir Otomasyon Runbook 'unu başlatabilirsiniz.
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > PowerShell cmdlet 'lerini kullanarak bir runbook 'u başlattığınızda, **PowerShell**değeri ile bir varsayılan parametre olan *Microsoftapplicationmanagementstartedby*oluşturulur. Bu parametreyi Iş ayrıntıları bölmesinde görüntüleyebilirsiniz.  
@@ -169,7 +169,7 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini tanımlamak üz
 
 * **Azure Resource Manager yöntemi:** Bir programlama dilinin SDK 'sını kullanarak bir runbook 'u başlatabilirsiniz. Otomasyon hesabınızda runbook C# başlatmaya yönelik bir kod parçacığı aşağıda verilmiştir. [GitHub deponuzdaki](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)tüm kodu görüntüleyebilirsiniz.  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini tanımlamak üz
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Azure klasik dağıtım modeli yöntemi:** Bir programlama dilinin SDK 'sını kullanarak bir runbook 'u başlatabilirsiniz. Otomasyon hesabınızda runbook C# başlatmaya yönelik bir kod parçacığı aşağıda verilmiştir. [GitHub deponuzdaki](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)tüm kodu görüntüleyebilirsiniz.
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini tanımlamak üz
        });
       return response.Job;
     }
-  ```
+   ```
 
-  Bu yöntemi başlatmak için, *VMName* ve *resourcegroupname* runbook parametrelerini ve bunların değerlerini depolamak için bir sözlük oluşturun. Ardından runbook 'u başlatın. Yukarıda tanımlanan yöntemi C# çağırmak için kod parçacığı aşağıda verilmiştir.
+   Bu yöntemi başlatmak için, *VMName* ve *resourcegroupname* runbook parametrelerini ve bunların değerlerini depolamak için bir sözlük oluşturun. Ardından runbook 'u başlatın. Yukarıda tanımlanan yöntemi C# çağırmak için kod parçacığı aşağıda verilmiştir.
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>REST API kullanarak runbook 'u başlatma ve parametreleri atama
 
@@ -238,7 +238,7 @@ Parametreleri runbook işine geçirmek için istek gövdesini kullanın. JSON bi
 
 Daha önce *VMName* ve *resourcegroupname* Ile oluşturulan **Get-AzureVMTextual** runbook 'unu parametre olarak başlatmak ISTIYORSANıZ, istek gövdesi için aşağıdaki JSON biçimini kullanın.
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Daha önce *VMName* ve *resourcegroupname* Ile oluşturulan **Get-AzureVMTextual
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 İş başarıyla oluşturulduysa 201 HTTP durum kodu döndürülür. Yanıt üstbilgileri ve yanıt gövdesi hakkında daha fazla bilgi için, bkz. [REST API kullanarak bir runbook işi oluşturma](/rest/api/automation/job/create).
 
@@ -330,7 +330,7 @@ Artık Azure PowerShell kullanarak runbook 'u yerel makinenizden çağırabilirs
     >[!NOTE]
     >PowerShell runbook 'ları için, **Add-azaccount** ve **Add-AzureRMAccount** , **Connect-azaccount**için diğer adlardır. Bu diğer adların grafik runbook 'lar için kullanılamaz olduğunu unutmayın. Grafik runbook 'u yalnızca **Connect-AzAccount** öğesini kullanabilir.
 
-2. Kaydedilen JSON dosyasının içeriğini alın ve bir dizeye dönüştürün. `JsonPath` JSON dosyasını kaydettiğiniz yoldur.
+1. Kaydedilen JSON dosyasının içeriğini alın ve bir dizeye dönüştürün. `JsonPath` JSON dosyasını kaydettiğiniz yoldur.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Artık Azure PowerShell kullanarak runbook 'u yerel makinenizden çağırabilirs
    ```
 
    *Parametrelerin* değerini JSON dosyasındaki değerleri içeren PowerShell nesnesine ayarlamadığınızı unutmayın.
-1. Runbook’u başlatma
+1. Runbook 'u başlatın.
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

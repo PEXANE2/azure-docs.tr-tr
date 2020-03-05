@@ -3,12 +3,12 @@ title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751239"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267931"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -17,6 +17,12 @@ Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şek
 Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar.  Yönetim grupları hakkında daha fazla bilgi edinmek için bkz. [Azure Yönetim gruplarıyla kaynaklarınızı düzenleme](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager Kullanıcı belirteçleri ve yönetim grubu önbelleği, yenilemeye zorlanmadan önce 30 dakika sürer.  Bir yönetim grubu veya aboneliğini taşıma gibi herhangi bir eylem gerçekleştirdikten sonra, bu işlemin görünmesi 30 dakika kadar sürebilir.  
+>Güncelleştirmeleri daha erken görmek için, tarayıcıyı yenileyerek, oturum açıp kapatarak veya yeni bir belirteç isteyerek belirtecinizi güncelleştirmeniz gerekir.  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>Bir yönetim grubunun adını değiştirme
 

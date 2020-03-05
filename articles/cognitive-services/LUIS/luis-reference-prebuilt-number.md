@@ -1,34 +1,34 @@
 ---
 title: Önceden oluşturulmuş varlık sayısı-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale Language Understanding (LUSıS) içinde önceden oluşturulmuş varlık bilgilerini içerir.
+description: Bu makale numarası önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS) içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 6a59cf83b3912e31b8aae67319902ce516519af8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491298"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273459"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için önceden oluşturulmuş varlık sayısı
-Bilgi parçalarını anlatmak, ifade etmek ve tanımlamak için sayısal değerlerin kullanıldığı birçok yol vardır. Bu makalede, olası örneklerden yalnızca bazıları ele alınmaktadır. LUO, Kullanıcı araslarının çeşitlemelerini Yorumlar ve tutarlı sayısal değerler döndürür. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını sayı içeren örnek bir değer eklemeniz gerekmez. 
+Hangi sayısal değerleri ölçme, express ve bilgi parçalarını tanımlamak için kullanılan birçok yolu vardır. Bu makalede yalnızca bazı olası örnekler yer almaktadır. LUIS, kullanıcı konuşma farklılığı yorumlar ve tutarlı bir sayısal değerleri döndürür. Bu varlık zaten eğitildi çünkü uygulama hedefleri için numarası içeren örnek Konuşma ekleme gerekmez.
 
 ## <a name="types-of-number"></a>Sayı türleri
 Numara [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub deposundan yönetiliyor
 
 ## <a name="examples-of-number-resolution"></a>Sayı çözümleme örnekleri
 
-| İfade        | Varlık   | Çözünürlük |
+| İfade        | Varlık   | Çözüm |
 | ------------- |:----------------:| --------------:|
-| ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
+| ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      |
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
 | ```1/2 cup```         | ```"1 / 2"```    |    ```"0.5"```      |
 |  ```one half the amount```     | ```"one half"```     |    ```"0.5"```      |
@@ -40,13 +40,13 @@ Numara [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob
 
 Luo, döndürdüğü JSON yanıtının `resolution` alanındaki **`builtin.number`** varlığın tanınan değerini içerir.
 
-## <a name="resolution-for-prebuilt-number"></a>Önceden oluşturulmuş numara için çözüm
+## <a name="resolution-for-prebuilt-number"></a>Önceden oluşturulmuş numaralı çözümleme
 
 Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `order two dozen eggs`
 
-#### <a name="v3-responsetabv3"></a>[V3 yanıtı](#tab/V3)
+#### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
 Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
 
@@ -57,7 +57,7 @@ Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
 
 Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
 
@@ -83,9 +83,9 @@ Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 yanıtı](#tab/V2)
+#### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, "iki düzine" için 24 değerinin çözümlenme durumunu içeren LUSıS 'den bir JSON yanıtı gösterir.
+Aşağıdaki örnek, çözüm için "iki düzine" utterance 24, değeri içeren bir JSON yanıtı, luıs'den gösterir.
 
 ```json
 "entities": [
@@ -101,10 +101,10 @@ Aşağıdaki örnek, "iki düzine" için 24 değerinin çözümlenme durumunu i�
   }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Para birimi](luis-reference-prebuilt-currency.md), [sıra sayısı](luis-reference-prebuilt-ordinal.md)ve [yüzde](luis-reference-prebuilt-percentage.md)bilgileri hakkında bilgi edinin. 
+[Para birimi](luis-reference-prebuilt-currency.md), [sıra sayısı](luis-reference-prebuilt-ordinal.md)ve [yüzde](luis-reference-prebuilt-percentage.md)bilgileri hakkında bilgi edinin.

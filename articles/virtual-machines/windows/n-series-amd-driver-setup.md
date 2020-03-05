@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228336"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269430"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
@@ -43,6 +43,8 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU 
 3. Lütfen VM 'yi başlatın ve ardından ". ..\Amdcleanunınstallusystemutility" klasöründe bulunan "amdcleanuputility-x64. exe" komutunu çalıştırarak önizleme sürücüsünü kaldırın. Tam yol, önceki sürücü yükleme dosyalarının bulunduğu yere göre farklılık gösterecektir.  
 
 4. En son sürücüyü indirip yükleyin.
+
+5. VM'yi yeniden başlatın.
 
 ## <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 

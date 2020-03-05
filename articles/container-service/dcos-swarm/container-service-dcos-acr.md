@@ -1,5 +1,5 @@
 ---
-title: (KULLANIM DIŞI) ACR bir Azure DC/OS kümesi ile kullanma
+title: Kullanım DıŞı Azure DC/OS kümesiyle ACR kullanma
 description: Azure Container Service’te DC/OS kümesi ile Azure Container Registry kullanma
 services: container-service
 author: julienstroheker
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148924"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274156"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(KULLANIM DIŞI) ACR, uygulamanızı dağıtmak için bir DC/OS kümesi ile kullanma
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Kullanım DıŞı Uygulamanızı dağıtmak için bir DC/OS kümesiyle ACR kullanma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 Kayıt defteri oluşturulduktan sonra, Azure CLI aşağıdakine benzer veriler çıkarır. `name` ve `loginServer` değerlerini not edin; bunlar daha sonraki adımlarda kullanılacaktır.
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -93,7 +93,7 @@ FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.f
 
 DC/OS tabanlı kümenizin ana şablonuyla (veya ilk ana şablonuyla) bir SSH bağlantısı oluşturun. Küme oluşturulurken varsayılan olmayan bir değeri kullanıldıysa kullanıcı adını güncelleştirin.
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 Kapsayıcı kayıt defteri kimlik doğrulama değerlerini içeren sıkıştırılmış bir dosya oluşturun.
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 Bu dosyayı küme paylaşılan depolama alanına kopyalayın. Bu adım, dosyayı DC/OS kümesinin tüm düğümlerinde kullanılabilir hale getirir.
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ cp docker.tar.gz /mnt/share/dcosshare
 
 Ubuntu görüntüsünden bir kapsayıcı oluşturun.
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
-Şimdi kapsayıcıyı yeni bir görüntüye yakalayın. Görüntü adı, kapsayıcı kayıt defterinin `loginServer` adını `loginServer/imageName` biçiminde içermelidir.
+Şimdi kapsayıcıyı yeni bir görüntüye yakalayın. Görüntü adının, kapsayıcı kayıt defterinin `loginServer` adını bir `loginServer/imageName`biçimiyle içermesi gerekir.
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 Azure Container Registry’de oturum açın. Adı loginServer adıyla, --username değerini kapsayıcı kayıt defterinin adıyla ve --password değerini sağlanan parolalardan biriyle değiştirin.
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 Son olarak, görüntüyü ACR kayıt defterine yükleyin. Bu örnek dcos-demo adlı bir görüntüyü karşıya yükler.
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,7 +189,7 @@ ACR kayıt defterinden bir görüntüyü kullanmak için *acrDemo.json* adlı bi
 
 DC/OC CLI ile uygulamayı dağıtın.
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/30/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014432"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273810"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory Raporlama API 'sine erişim önkoşulları
 
@@ -183,25 +183,22 @@ Raporlama API 'sine yapılan çağrıları yapılandırırken bu değerlere ihti
 
     b. **Süresi sona erdiğinde** **2 yıl içinde**öğesini seçin.
 
-    c. **Save (Kaydet)** düğmesine tıklayın.
+    c. **Kaydet** düğmesine tıklayın.
 
     d. Anahtar değerini kopyalayın.
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>Raporlama API 'sindeki hataların sorunlarını giderme
 
-Bu bölümde, MS Graph API kullanarak etkinlik raporlarına ve bunların çözünürlüğüne yönelik adımlara erişirken karşılaşabileceğiniz ortak hata iletileri listelenmektedir.
+Bu bölümde, Microsoft Graph API 'sini ve bunların çözümlenme adımlarını kullanarak etkinlik raporlarına erişirken kullanabileceğiniz ortak hata iletileri listelenmektedir.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>Microsoft Graph v2 uç noktasına erişirken HTTP iç sunucu hatası 500
 
-Şu anda Microsoft Graph v2 uç noktasını desteklemiyoruz-Microsoft Graph v1 uç noktasını kullanarak etkinlik günlüklerine erişebildiğinizden emin olun.
-
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Hata: Kullanıcı rolleri AD grafiğinden alınamadı
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Hata: Kullanıcı rolleri Microsoft Graph alınamadı
 
  Graph Explorer 'ı kullanarak oturum açmaya çalışırken bir hata oluşmasını önlemek için, Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerini kullanarak hesabınızda oturum açın. 
 
 ![Graph Gezgini](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Hata: AD grafiğinden Premium lisans denetimi yapılamadı 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Hata: Microsoft Graph Premium lisans denetimi yapılamadı 
 
 Graph Explorer kullanarak oturum açma erişimiyle çalışmaya çalışırken bu hata iletisiyle karşılaşırsanız, sol gezinti bölmesinde hesabınızın altındaki **Izinleri Değiştir** ' i seçin ve **Görevler. ReadWrite** ve **Dizin. Read. All**' ı seçin. 
 
@@ -218,7 +215,7 @@ Oturum açma raporlarına erişmek için Azure Active Directory Premium 1 (P1) l
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hata: uygulamada AAD ' dizin verilerini oku ' izni eksik 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Hata: uygulamada MSGraph API ' eksik tüm denetim günlüğü verilerini oku ' izni yok
+### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Hata: uygulamada Microsoft API ' tüm denetim günlüğü verilerini oku ' izni eksik
 
 Uygulamanızın doğru izin kümesiyle çalıştığından emin olmak için [Azure Active Directory Raporlama API 'sine erişmek Için önkoşulların](howto-configure-prerequisites-for-reporting-api.md) içindeki adımları izleyin. 
 

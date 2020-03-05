@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587456"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274022"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
 
@@ -146,7 +146,7 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
 
 1. **Ana** yönteminizin **Getstarteddemoasync** görevi çalıştırmak için aşağıdaki kodu ekleyin. **Main** yöntemi özel durumları yakalar ve bunları konsola yazar.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
 
 1. Uygulamanızı çalıştırmak için F5 ' i seçin.
 
@@ -160,7 +160,7 @@ Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir k
 
 1. `CreateDatabaseAsync` yöntemini kopyalayıp `GetStartedDemoAsync` yönteminizin altına yapıştırın.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
     `CreateDatabaseAsync`, zaten mevcut değilse, `databaseId` alanından belirtilen KIMLIĞE sahip yeni bir `FamilyDatabase` veritabanı oluşturur.
 
@@ -281,7 +281,7 @@ Bir kapsayıcı, `CosmosDatabase` sınıfında [**Createcontainerifnotexistsasyn
 
 1. `CreateContainerAsync` yöntemini kopyalayıp `CreateDatabaseAsync` yönteminizin altına yapıştırın. `CreateContainerAsync`, `LastName` özelliği tarafından bölümlenmiş `containerId` alandan belirtilen KIMLIĞI kullanarak, zaten mevcut değilse, KIMLIK `FamilyContainer` ile yeni bir kapsayıcı oluşturur.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 
 1. Daha önce eklediğiniz **CreateContainer** yöntemini çağırmak için CosmosClient örneklendirmeniz gereken kodu kopyalayın ve yapıştırın.
 
@@ -313,12 +313,12 @@ Tebrikler! Azure Cosmos kapsayıcısını başarıyla oluşturdunuz.
 
 1. `Family`, `Parent`, `Child`, `Pet`ve `Address` sınıfını kopyalayıp `Family.cs`yapıştırın.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
 1. *Program.cs*'e geri döndüğünüzde `AddItemsToContainerAsync` yöntemi `CreateContainerAsync` yönteminden sonra ekleyin.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
     Kod, aynı KIMLIĞE sahip bir öğenin zaten mevcut olmadığından emin olmak için kontrol eder. Her biri *bir ve* *Wakefield ailesi*için olmak üzere iki öğe ekleyeceğiz.
@@ -348,7 +348,7 @@ Azure Cosmos DB, her kapsayıcıda depolanan JSON belgelerine karşı zengin sor
 
 1. `AddItemsToContainerAsync` yönteminizin ardından `QueryItemsAsync` yöntemini kopyalayıp yapıştırın.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
 
 1. ``GetStartedDemoAsync`` yönteminde ``QueryItemsAsync`` bir çağrı ekleyin.
 
@@ -376,7 +376,7 @@ Artık Azure Cosmos DB bir öğeyi güncelleştireceğiz. `Family` `IsRegistered
 
 1. `QueryItemsAsync` yönteminizin ardından `ReplaceFamilyItemAsync` yöntemini kopyalayıp yapıştırın.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
 
 1. `GetStartedDemoAsync` yönteminde `ReplaceFamilyItemAsync` bir çağrı ekleyin.
 
@@ -405,7 +405,7 @@ Artık Azure Cosmos DB bir öğeyi sileceğiz.
 
 1. `ReplaceFamilyItemAsync` yönteminizin ardından `DeleteFamilyItemAsync` yöntemini kopyalayıp yapıştırın.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
 
 1. `GetStartedDemoAsync` yönteminde `DeleteFamilyItemAsync` bir çağrı ekleyin.
 
@@ -435,11 +435,11 @@ Tebrikler! Azure Cosmos öğesini başarıyla sildiniz.
 
 1. `DeleteFamilyItemAsync` yönteminizin ardından `DeleteDatabaseAndCleanupAsync` yöntemini kopyalayıp yapıştırın.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
 1. ``GetStartedDemoAsync`` yönteminde ``DeleteDatabaseAndCleanupAsync`` bir çağrı ekleyin.
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
 
 1. Uygulamanızı çalıştırmak için F5 ' i seçin.
 

@@ -2,18 +2,19 @@
 title: Azure Marketi ve AppSource danışmanlık hizmetleri
 description: Bu makalede, Azure Marketi 'ndeki yeni danışmanlık hizmeti teklifleri için uygunluk ölçütü ve yayımlama gereksinimleri açıklanmaktadır.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191140"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268244"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Market ve AppSource için danışmanlık hizmetleri
 Azure Market ve AppSource 'ta Danışmanlık Hizmetleri, Microsoft iş ortakları 'na, Azure ve iş hedefleri kullanımını desteklemek ve bunları genişletmek üzere Hizmetleri ile bağlama amacını sağlar. 
@@ -33,7 +34,7 @@ Market storetları, müşterilerin ihtiyaç duydukları şeyleri bulmasına yard
 |Ürün deneyiminde      |Azure Yönetim Portalı|Dynamics 365, Office 365, Office Istemci uygulamaları| 
 |Diğer      |Azure Stack aracılığıyla şirket Içi yayımlama, Azure için danışmanlık hizmetleri, Azure için yönetilen hizmetler|Dynamics ve Power BI için danışmanlık hizmetleri|
 
-Microsoft Dynamics 365 ' i temel alan danışmanlık hizmetleri teklifleri ve Power BI Microsoft AppSource listelenmeye uygundur. Daha fazla bilgi için bkz. [danışmanlık hizmetleri listeleme yönergeleri Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Microsoft Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri Microsoft AppSource üzerinde listelenmeye uygundur. Daha fazla bilgi için bkz. [danışmanlık hizmetleri listeleme yönergeleri Microsoft AppSource](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
 Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. [Azure danışmanlık hizmeti yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)makaleleri.
 
@@ -61,24 +62,30 @@ Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Az
 
 |Birincil ürün |Uygunluk gereksinimi |
 |---------|---------|
-| Müşteri Etkileşimi için Dynamics 365    |   Gümüş veya altın [bulut müşteri Ilişkisi yönetimi](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) uzmanlığına sahip.    | 
-|Finans ve Işlemler için Dynamics 365, Enterprise Edition  |  Gümüş veya altın [Kurumsal kaynak planlama](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) uzmanlığına ve son 12 ay Içinde bulut işlemlerinde minimum $25k gelir.       |
-|Finans ve Işlemler için Dynamics 365, Iş sürümü  |  En az bir müşteri için [bulut hizmeti sağlayıcısı (CSP)](https://partner.microsoft.com/cloud-solution-provider) veya [dijital kayıt Iş ortağı (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) olarak hizmet verir      |
-|Power BI, özel görseller Power BI | [Çözüm Iş ortağı ölçütlerini](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)karşılayın.|
-|PowerApps | Yayınlanmış [Iş ortağı gösterimi](https://appsource.microsoft.com/partners) çözümüne sahip olun
+| Dynamics 365 satışları <br> Dynamics 365 pazarlama <br> Dynamics 365 müşteri hizmeti <br> Dynamics 365 alan hizmeti <br> Dynamics 365 Insan kaynakları |   Müşteri katılım seçeneği için [bulutta Business Applications uzmanlığa](https://partner.microsoft.com/membership/cloud-business-applications-competency) yönelik altın veya gümüş bir sertifika olmalıdır.    | 
+| Dynamics 365 finans <br> Dynamics 365 tedarik zinciri yönetimi <br> Dynamics 365 ticari <br> Dynamics 365 Insan kaynakları <br> Dynamics 365 proje hizmeti Otomasyonu |  Birleştirilmiş Işlemler seçeneği için [bulut Business Applications uzmanlarda](https://partner.microsoft.com/membership/cloud-business-applications-competency) altın veya gümüş bir sertifika olmalıdır.       |
+| Dynamics 365 Customer Insights | En az 5 ölçüyle ve 5 kesimle [Customer Insights Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) ' in en az 1 başarılı üretim sürümü uygulamasına sahip olması gerekir. |
+| Dynamics 365 Iş Merkezi | [Kurumsal kaynak planlama uzmanlığına](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) altın veya gümüş sertifikalı olmalıdır ve en az 3 iş merkezi müşterisi için bulut çözümü sağlayıcısı olmalıdır. <br> <br> OR <br> <br> [AppSource 'ta bir Iş Merkezi uygulaması](https://appsource.microsoft.com/) yayımlamalıdır |
+| Power BI | [Power BI iş ortağı tanıtımı](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)listede olmalıdır.|
+|Power Apps | [PowerApps ortaklığı programında](https://aka.ms/PowerAppsPartner)gelişmiş avantajlar için uygun olmalıdır. |
+
+Ek kaynaklar ve destek:
+
+1. [Microsoft Bulut Etkinleştirme masası](https://aka.ms/CEDnominate) <br> Bulut etkinleştirme masası destekli deneyim Iş ortağı aday formu, MPN avantajlarını ifade etmek ve uzmanlığa yönelik kılavuz olarak sunmak için bir bulut programı uzmanı sağlamaya yardımcı olur.  
+2. Power BI tanıtımı nasıl listelenmiştir? <br> Listeye ulaşmak için bir istek göndererek başlayın, bkz. [iş ortağı olma](https://powerbi.microsoft.com/become-a-partner/).
 
 <b>Daha fazla bilgi için [Microsoft iş ortağı ağı aracılığıyla Uzmanlıklar](https://partner.microsoft.com/membership/competencies)konusuna bakın.</b>
- 
 
-**Sı iş ortakları, aşağıdaki 18 ülkede/bölgede Danışmanlık Servisi teklifleri gönderebilir**
+**Sı iş ortakları, aşağıdaki 21 ülkede/bölgede Danışmanlık Servisi teklifleri gönderebilir**
 
-|Uygun ülkeler/bölgeler |   |   |   |
+|   |   |   |   |
 |---------|----------|----------|----------|
-|Avustralya |Fransa  |     Meksika          |İspanya       |
-|Belçika   |Almanya |     Hollanda     |İsveç       |
-|Kanada    |Hindistan   |     Yeni Zelanda     |Birleşik Krallık  |
-|Danimarka   |İtalya   |     Norveç          |Birleşik Devletler |
-|Finlandiya   |Japonya   |     Polonya          
+| Avustralya | Belçika | Kanada | Danimarka |
+| Finlandiya  | Fransa | Almanya  | Hindistan   |
+| İtalya    | Japonya  |  Meksika  |  Hollanda  |
+|  Yeni Zelanda  |  Norveç  |  Polonya  | Güney Afrika |
+|  İspanya  | İsveç  | İsviçre  |  Amerika Birleşik Devletleri  |
+| Birleşik Krallık  |
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Market ve AppSource 'ta danışmanlık hizmetleri 'Ne kaydolma

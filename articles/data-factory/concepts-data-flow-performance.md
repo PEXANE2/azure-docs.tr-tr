@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587592"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273227"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -59,6 +59,9 @@ Varsayılan olarak, hata ayıklamayı açmak her bir veri fabrikası için otoma
 
 ![Kaynak bölüm](media/data-flow/sourcepart3.png "Kaynak bölüm")
 
+> [!NOTE]
+> Kaynağınız için bölüm sayısını seçmenize yardımcı olacak iyi bir kılavuz, Azure Integration Runtime için ayarladığınız çekirdek sayısına bağlıdır ve bu sayıyı beş ile çarpın. Bu nedenle, örneğin, ADLS klasörlerinizdeki bir dizi dosyayı dönüştürüyorsanız ve 32 çekirdekli Azure IR kullanacaksanız, hedeflediğiniz bölüm sayısı 32 x 5 = 160 bölümlerdir.
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>Kaynak toplu iş boyutu, giriş ve yalıtım düzeyi
 
 Kaynak dönüşümünde **kaynak seçenekleri** altında aşağıdaki ayarlar performansı etkileyebilir:
@@ -100,7 +103,7 @@ DW 'nize satır satır ekleme yapmaktan kaçınmak için, ADF 'nin [PolyBase](ht
 
 Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını istediğiniz bölümlendirme şemasını ayarlayabilirsiniz. İlk olarak dosya tabanlı havuzları test etmek, varsayılan bölümlendirme ve iyileştirmeleri korumak iyi bir uygulamadır.
 
-* Daha küçük dosyalar için, *tek bölümün* seçilmesi, bazı durumlarda daha iyi ve daha hızlı bir şekilde çalışabilir ve bu da küçük dosyalarınızın bölümlenmesi için Spark sorulmasını
+* Daha küçük dosyalar için, daha az bölüm seçmeyi fark edebilirsiniz.
 * Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, *hepsini bir kez deneme* bölümlendirme ve bölüm sayısını ayarlama ' yı seçin.
 * Verilerinizde iyi bir karma anahtar olabilecek sütunlar varsa *karma bölümlendirme*' yi seçin.
 

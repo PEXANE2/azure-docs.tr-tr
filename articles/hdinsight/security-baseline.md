@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589980"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271862"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight için Azure Güvenlik temeli
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: kritik Web uygulamalarını koruma
 
-**Rehberlik**: kullanılamıyor; Kıyaslama, Web uygulamalarını barındıran Azure Apps hizmeti veya bilgi işlem kaynaklarına yöneliktir.
+**Rehberlik**: uygulanamaz; Kıyaslama, Web uygulamalarını barındıran Azure Apps hizmeti veya bilgi işlem kaynaklarına yöneliktir.
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -125,7 +125,7 @@ HDInsight yönetim IP adresleri: https://docs.microsoft.com/azure/hdinsight/hdin
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Web uygulamalarına trafiği yönetme
 
-**Rehberlik**: kullanılamıyor; Kıyaslama, Web uygulamalarını barındıran Azure Apps hizmeti veya bilgi işlem kaynaklarına yöneliktir.
+**Rehberlik**: uygulanamaz; Kıyaslama, Web uygulamalarını barındıran Azure Apps hizmeti veya bilgi işlem kaynaklarına yöneliktir.
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -331,7 +331,7 @@ Log Analytics günlük verilerinde uyarı alma:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Evet
 
 **Sorumluluk**: müşteri
 
@@ -491,7 +491,7 @@ Azure Güvenlik Merkezi 'nde Kullanıcı kimliğini ve erişim etkinliğini izle
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Evet
 
 **Sorumluluk**: müşteri
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: paylaşılan
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
 
@@ -779,7 +779,7 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 Rapid7 aracısını el Ile yüklemek:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 Qualys aracısını el Ile yüklemek:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
-Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak grafiğini kullanın.  Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
+Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak grafiğini kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
 Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Graph ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
+
 Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Ilkesi ile belirli bir kaynak türünü reddetme: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Azure Ilkesi ile belirli bir kaynak türünü reddetme: https://docs.microsoft.c
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" özelliğini yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak Için Azure koşullu erişimi kullanın.
 
 
-Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: kullanıcıların işlem kaynakları içinde betikleri yürütme yeteneğini sınırlayın
 
-**Rehberlik**: kullanılamıyor; Bu, kümenin kullanıcıları (yönetici olmayanlar) işleri çalıştırmak için ayrı düğümlere erişime gerek duymadığından, Azure HDInsight için geçerli değildir. Küme yöneticisinin tüm küme düğümlerine kök erişimi vardır.
+**Rehberlik**: uygulanamaz; Bu, kümenin kullanıcıları (yönetici olmayanlar) işleri çalıştırmak için ayrı düğümlere erişime gerek duymadığından, Azure HDInsight için geçerli değildir. Küme yöneticisinin tüm küme düğümlerine kök erişimi vardır.
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: yüksek riskli uygulamaları fiziksel olarak veya mantıksal olarak ayırt edin
 
-**Rehberlik**: kullanılamıyor; Kıyaslama, Web uygulamalarını barındıran Azure Apps hizmeti veya bilgi işlem kaynaklarına yöneliktir.
+**Rehberlik**: uygulanamaz; Kıyaslama, Web uygulamalarını barındıran Azure Apps hizmeti veya bilgi işlem kaynaklarına yöneliktir.
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
 
-**Rehberlik**: kullanılamıyor; özel görüntüler Azure HDInsight için geçerli değildir.
+**Rehberlik**: uygulanamaz; özel görüntüler Azure HDInsight için geçerli değildir.
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Rehberlik**: Güvenlik Merkezi, her uyarıya katılma sırasını önceliklendirmenize yardımcı olmak için uyarılara önem derecesi atar. böylece, bir kaynak tehlikeye girdiğinde, hemen bu işe başlayabilirsiniz. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır.
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Evet
 
 **Sorumluluk**: müşteri
 
@@ -1421,3 +1422,7 @@ Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına ka
 
 **Sorumluluk**: paylaşılan
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- [Azure güvenlik temelleri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
