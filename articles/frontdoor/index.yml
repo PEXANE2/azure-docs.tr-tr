@@ -1,45 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Front Door Service Belgeleri
+### YamlMime:Landing
+title: Azure Front Door Service belgeleri
+summary: Azure Front Door, genel web uygulamalarınızı hızla teslim etmenize olanak tanıyan ölçeklenebilir ve güvenli bir başlangıç noktasıdır.
 metadata:
   title: Azure Front Door Service Belgeleri
-  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
+  description: Azure Front Door Service global web uygulamalarınızın hızlı bir şekilde sunulmasına yönelik ölçeklenebilir ve güvenli bir başlangıç noktasıdır. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle Front Door kullanmayı öğrenin.
   services: frontdoor
-  author: dlepow
   ms.service: frontdoor
   ms.topic: landing-page
-  ms.date: 9/14/2018
-  ms.author: danlep
-abstract:
-  description: 'Azure Front Door Service global web uygulamalarınızın hızlı bir şekilde sunulmasına yönelik ölçeklenebilir ve güvenli bir başlangıç noktasıdır. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle Front Door kullanmayı öğrenin.'
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: Yüksek oranda kullanılabilir global web uygulaması için Front Door hizmetini kullanın.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: quickstart-create-front-door.md
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: Azure Front Door Service'i ihtiyaçlarınıza uygun şekilde yapılandırmayı öğrenin.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="front-door-custom-domain.md">Front Door hizmetine özel etki alanı ekleyin</a>
-          - html: <a href="front-door-custom-domain-https.md">Özel bir etki alanı için HTTPS'yi etkinleştirme</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Komut Satırı
-            html: '<p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/frontdoor">REST API</a></p>
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/03/2020
+  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
+  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/04/2020
+  ms.locfileid: "78273279"
+landingContent:
+- title: Azure Front Door hakkında bilgi edinin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Front Door nedir?
+      url: front-door-overview.md
+- title: Front Door oluşturma
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Front Door oluşturma
+      url: quickstart-create-front-door.md
+- title: Özel etki alanı ekleme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Front Door hizmetine özel etki alanı ekleyin
+      url: front-door-custom-domain.md
+  - linkListType: how-to-guide
+    links:
+    - text: Front Door’unuza kök veya apex etki alanı ekleme
+      url: front-door-how-to-onboard-apex-domain.md
+- title: Coğrafi filtreleme hakkında bilgi edinin
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Etki alanında coğrafi filtreleme nedir?
+      url: front-door-geo-filtering.md
+  - linkListType: tutorial
+    links:
+    - text: Coğrafi filtreleme WAF ilkesi ayarlama
+      url: front-door-tutorial-geo-filtering.md
+- title: HTTPS’yi yapılandırma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
+      url: front-door-custom-domain-https.md
+- title: Azure Front Door ile ilgili sorunları giderme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yaygın yönlendirme sorunları
+      url: front-door-troubleshoot-routing.md
+    - text: İzin verilen sertifika yetkilileri
+      url: front-door-troubleshoot-allowed-ca.md
+- title: Azure yük dengeleme hakkında bilgi edinin
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure yük dengeleme
+      url: front-door-lb-with-azure-app-delivery-suite.md

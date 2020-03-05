@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Uyarı yapılandırma
           href: pim-resource-roles-configure-alerts.md
-        - name: Etkinlik ve denetim geçmişini görüntüleme
+        - name: Denetim geçmişini görüntüleme
           href: azure-pim-resource-rbac.md
         - name: Özel rolleri kullanma
           href: pim-resource-roles-custom-role-policy.md

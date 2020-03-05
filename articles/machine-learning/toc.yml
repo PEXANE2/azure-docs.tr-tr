@@ -208,6 +208,9 @@
         - name: Etiketlerle veri kümeleri oluşturma
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Azure Data Factory ile veri alımı
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: Veri alımı için DevOps
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md

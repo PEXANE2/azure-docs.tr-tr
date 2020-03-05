@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: Hızlı Başlangıç
   items:
-    - name: Portal
+    - name: Load Balancer oluşturma - Portal
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure CLI
+    - name: Load Balancer oluşturma - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: Load Balancer oluşturma - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Azure Resource Manager şablonu
+    - name: Load Balancer oluşturma - Şablon
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: Öğreticiler
   items:
     - name: Sanal makinelerin internet trafiğinde yük dengeleme

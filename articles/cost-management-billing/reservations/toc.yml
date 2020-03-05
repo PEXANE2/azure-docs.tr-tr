@@ -26,6 +26,8 @@
           href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Azure Databricks rezervasyonu satın alma
           href: prepay-databricks-reserved-capacity.md
+        - name: Redis için Azure Cache rezervasyonu satın alma
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/billing/TOC.json
         - name: App Service rezervasyonu satın alma
           href: prepay-app-service-isolated-stamp.md
         - name: Azure yazılım planı rezervasyonu satın alma
