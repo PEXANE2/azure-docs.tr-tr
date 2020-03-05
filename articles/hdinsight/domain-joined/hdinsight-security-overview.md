@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 description: Azure HDInsight 'ta kurumsal güvenlik sağlamaya yönelik çeşitli yöntemleri öğrenin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122118"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267715"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -36,13 +36,13 @@ VNET 'te dağıtılan tüm kümelerin, küme ağ geçitlerine özel HTTP erişim
 
 HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu yetenekler sayesinde, yönetilen bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Bundan sonra, kümeden kimlik doğrulaması yapan ve üzerinde oturum açabilen çalışanların bir listesini yapılandırabilirsiniz.
 
-Bu kurulumla, kurumsal çalışanlar, kendi etki alanı kimlik bilgilerini kullanarak küme düğümlerinde oturum açabilir. Ayrıca, küme ile etkileşimde bulunmak için Apache ambarı görünümleri, ODBC, JDBC, PowerShell ve REST API 'Ler gibi diğer onaylanan uç noktalarla kimlik doğrulaması yapmak için etki alanı kimlik bilgilerini de kullanabilirler. 
+Bu kurulumla, kurumsal çalışanlar, kendi etki alanı kimlik bilgilerini kullanarak küme düğümlerinde oturum açabilir. Ayrıca, küme ile etkileşimde bulunmak için Apache ambarı görünümleri, ODBC, JDBC, PowerShell ve REST API 'Ler gibi diğer onaylanan uç noktalarla kimlik doğrulaması yapmak için etki alanı kimlik bilgilerini de kullanabilirler.
 
 ### <a name="authorization"></a>Yetkilendirme
 
 Çoğu kuruluşun takip eden en iyi uygulama, her çalışanın kurumsal kaynaklara erişiminin olmadığından emin olmanızı sağlar. Benzer şekilde, yönetici, küme kaynakları için rol tabanlı erişim denetimi ilkeleri tanımlayabilir. Bu yalnızca ESP kümelerinde kullanılabilir.
 
-Hadoop Yöneticisi, Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) ve [Kafka](apache-domain-joined-run-kafka.md) için Apache Ranger içindeki eklentileri kullanarak rol tabanlı erişim denetimi 'ni (RBAC) güvenli bir şekilde yapılandırabilir. RBAC ilkelerini yapılandırmak, izinleri kuruluştaki bir rolle ilişkilendirmenize olanak tanır. Bu soyutlama katmanı, kişilerin yalnızca iş sorumluluklarını gerçekleştirmek için gerekli izinlere sahip olmasını kolaylaştırır. Ranger Ayrıca çalışanların veri erişimini ve erişim denetimi ilkelerine yapılan değişiklikleri denetlemenize olanak tanır.
+Hadoop Yöneticisi, Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)ve [Kafka](apache-domain-joined-run-kafka.md) için Apache Ranger 'daki eklentileri kullanarak rol tabanlı erişim denetimi 'ni (RBAC) yapılandırabilir. RBAC ilkelerini yapılandırmak, izinleri kuruluştaki bir rolle ilişkilendirmenize olanak tanır. Bu soyutlama katmanı, kişilerin yalnızca iş sorumluluklarını gerçekleştirmek için gerekli izinlere sahip olmasını kolaylaştırır. Ranger Ayrıca çalışanların veri erişimini ve erişim denetimi ilkelerine yapılan değişiklikleri denetlemenize olanak tanır.
 
 Örneğin yönetici [Apache Ranger](https://ranger.apache.org/)’ı Hive için erişim denetim ilkeleri belirleyecek şekilde yapılandırabilir. Bu işlevsellik, satır düzeyinde ve sütun düzeyinde filtreleme (veri maskeleme) ve duyarlı verileri yetkisiz kullanıcılardan filtrelemesini sağlar.
 
@@ -50,7 +50,7 @@ Hadoop Yöneticisi, Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apa
 
 Küme kaynaklarına erişimi denetleme ve veriler, kaynakların yetkisiz veya istenmeden erişimini izlemek için gereklidir. HDInsight küme kaynaklarını yetkisiz kullanıcılardan korumak ve verilerin güvenliğini sağlamak önemlidir.
 
-Yönetici, HDInsight kümesi kaynaklarına ve verilerine yönelik tüm erişimi görüntüleyebilir ve rapor edebilir. Yönetici ayrıca Apache Ranger desteklenen uç noktalarında oluşturulan erişim denetim ilkelerine yapılan tüm değişiklikleri görüntüleyebilir ve rapor edebilir. 
+Yönetici, HDInsight kümesi kaynaklarına ve verilerine yönelik tüm erişimi görüntüleyebilir ve rapor edebilir. Yönetici ayrıca Apache Ranger desteklenen uç noktalarında oluşturulan erişim denetim ilkelerine yapılan tüm değişiklikleri görüntüleyebilir ve rapor edebilir.
 
 Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine erişmek için [Azure izleyicisini etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) ve denetim kayıtları sağlayan tabloları görüntüleyin.
 
@@ -62,7 +62,7 @@ HDInsight kümeleri için veri depoları, Azure Blob depolama ve Azure Data Lake
 
 ### <a name="compliance"></a>Uyumluluk
 
-Azure uyumluluk teklifleri, bağımsız üçüncü taraf denetim firmaları tarafından oluşturulan resmi sertifikalar, belirlediğimizi karşıladığımızı, doğrulamalar, yetkilendirmeler ve değerlendirmelerin yanı sıra, sözleşmeli değişiklik DTU 'ları gibi çeşitli türlerde güvenlerin temel alınarak yapılır. Microsoft tarafından üretilen kendi kendine değerlendirmeler ve müşteri Kılavuzu belgeleri. HDInsight uyumluluk bilgileri için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center) ve [Microsoft Azure uyumluluğuna genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
+Azure uyumluluk teklifleri, bağımsız üçüncü taraf denetim firmaları, belirlediğimizi karşıladığımızı, doğrulamalar, yetkilendirmeler ve bağımsız üçüncü taraf denetim kurumları tarafından üretilen değerlendirmeler, sözleşmeli değişiklik DTU 'lar dahil olmak üzere çeşitli türlerde türler temel alır. Microsoft tarafından üretilen kendi kendine değerlendirmeler ve müşteri Kılavuzu belgeleri. HDInsight uyumluluk bilgileri için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center) ve [Microsoft Azure uyumluluğuna genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
 
 ## <a name="shared-responsibility-model"></a>Paylaşılan sorumluluk modeli
 

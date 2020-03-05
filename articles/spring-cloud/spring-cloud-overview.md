@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 11/4/2019
 ms.author: brendm
-ms.openlocfilehash: 87b7ac1e9de2087de6e0b9d72fb445ca515a2e32
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4426044b3608be0ded378f4f56cbec6bc1948d75
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277145"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273250"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud nedir?
 
@@ -39,15 +39,15 @@ Azure Spring Cloud, kodu üretim ortamlarına serbest bırakma ve güncelleştir
 
 Azure Spring Cloud, Azure CLı kullanarak Azure DevOps ile tümleştirme sağlar.  Azure DevOps kullanarak, Spring uygulamanıza kod tümleştirmeyi ve dağıtımı otomatikleştirebileceğinizi unutmayın.  Daha fazla bilgi edinmek için bu [makaleyi](spring-cloud-howto-cicd.md)ziyaret edin.
 
-### <a name="scale-your-application"></a>Uygulamanızı ölçeklendirme
+### <a name="scale-your-application"></a>Uygulamanızı ölçeklendirin
 
 Azure Spring Cloud, Azure Spring Cloud panonuzda mikro hizmetleri kolayca ölçeklendirmenize olanak tanır.  Hem vCPU sayısı hem de mikro hizmetlerinizin kullanabildiği bellek miktarı, gereksinimlerinize uyacak şekilde ölçeklendirilebilir veya azaltılabilir.  Ölçeklendirme, saniyeler içinde etkili olur ve kod değişikliği veya yeniden dağıtım gerektirmez.  Daha fazla bilgi edinmek için bu [öğreticiyi](spring-cloud-tutorial-scale-manual.md)izleyin.
 
-## <a name="application-monitoring"></a>Uygulama İzleme
+## <a name="application-monitoring"></a>Uygulama Izleme
 
 ### <a name="monitor-your-application-using-distributed-tracing-and-azure-app-insights"></a>Dağıtılmış izleme ve Azure Uygulama öngörülerini kullanarak uygulamanızı izleyin
 
-Yay bulutu 'nın dağıtılmış izleme araçları, geliştiricilerin uygulamasındaki mikro hizmetler arasındaki karmaşık bağlantıları hata ayıklamasına ve izlemesine olanak sağlar.  Azure Application Insights [Spring Cloud ınuth](https://spring.io/projects/spring-cloud-sleuth) 'i tümleştirerek [](../azure-monitor/insights/insights-overview.md), Azure, doğrudan Azure Portal güçlü dağıtılmış izleme özelliği sağlar.  Daha fazla bilgi edinmek için bu [öğreticiyi](spring-cloud-tutorial-distributed-tracing.md)izleyin.
+Yay bulutu 'nın dağıtılmış izleme araçları, geliştiricilerin bir uygulamadaki mikro hizmetler arasındaki karmaşık bağlantıları hata ayıklamasına ve izlemesine olanak sağlar.  Azure Application Insights [Spring Cloud ınuth](https://spring.io/projects/spring-cloud-sleuth) 'i tümleştirerek [](../azure-monitor/insights/insights-overview.md), Azure, doğrudan Azure Portal güçlü dağıtılmış izleme özelliği sağlar.  Daha fazla bilgi edinmek için bu [öğreticiyi](spring-cloud-tutorial-distributed-tracing.md)izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

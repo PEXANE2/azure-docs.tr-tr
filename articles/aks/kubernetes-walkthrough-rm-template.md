@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 5fe82dbce2069b0ae1a88599d020f4ba6b116027
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595340"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273788"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -34,9 +34,11 @@ Kaynak Yöneticisi şablonu kullanarak AKS kümesi oluşturmak için bir SSH ort
 
 AKS düğümlerine erişmek için bir SSH anahtar çifti kullanarak bağlanırsınız. SSH ortak ve özel anahtar dosyaları oluşturmak için `ssh-keygen` komutunu kullanın. Varsayılan olarak, bu dosyalar *~/PST SSH* dizininde oluşturulur. Verilen konumda aynı ada sahip bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
 
+Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+
 Aşağıdaki komut RSA şifrelemesini ve 2048 bit uzunluğunu kullanarak bir SSH anahtar çifti oluşturur:
 
-```azurecli-interactive
+```console
 ssh-keygen -t rsa -b 2048
 ```
 
@@ -109,13 +111,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu kullanarak küme düğümleri listesini alın.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Aşağıdaki örnek çıktı, önceki adımlarda oluşturulan düğümleri gösterir. Tüm düğümlerin durumunun *hazırlanmaya*çalıştığından emin olun:
 
-```
+```output
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-agentpool-41324942-0   Ready    agent   6m44s   v1.12.6
 aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
@@ -218,13 +220,13 @@ spec:
 
 [Kubectl Apply][kubectl-apply] komutunu kullanarak uygulamayı dağıtın ve YAML bildiriminizde adı belirtin:
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 Aşağıdaki örnek çıktıda başarıyla oluşturulan dağıtımlar ve hizmetler gösterilmektedir:
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -237,20 +239,20 @@ Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna inte
 
 İlerleme durumunu izlemek için [kubectl get service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede*olarak gösterilir.
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 *Dış IP* adresi *bekliyor* durumundan gerçek bir genel IP adresi olarak değiştiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

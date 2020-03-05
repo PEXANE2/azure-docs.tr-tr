@@ -7,18 +7,18 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906480"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269496"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: node. js ' de JavaScript ile v10 arasındaki SDK ile Blobları yönetme
 
 Bu hızlı başlangıçta, Node. js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir, listeler ve siler ve kapsayıcıları yönetirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturma](../common/storage-account-create.md).
@@ -408,5 +408,5 @@ Depolama hesabına yazılan tüm veriler kod örneğinin sonunda otomatik olarak
 Bu hızlı başlangıçta Node.js kullanarak Azure Blob depolamadaki blobları ve kapsayıcıları yönetme adımları gösterilmektedir. Bu SDK ile çalışma hakkında daha fazla bilgi edinmek için, GitHub deposunu inceleyin.
 
 > [!div class="nextstepaction"]
-> Azure Storage [JAVASCRIPT API başvurusu](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> Azure Storage [JAVASCRIPT API başvurusu](/javascript/api/overview/azure/storage-overview)
 > [JavaScript deposu için Azure Storage ile v10 arasındaki SDK](https://github.com/Azure/azure-storage-js)

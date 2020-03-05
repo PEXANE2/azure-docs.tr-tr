@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/30/2020
-ms.openlocfilehash: 74f69f789ecb0d529e52054eeb1ac7ccb51bd6c2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/03/2020
+ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588834"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271316"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -39,7 +39,7 @@ Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin geni
 
 + Bir arama hizmetine özel erişim, şu anda önizleme aşamasında olan iki mekanizma aracılığıyla sunulmaktadır:
 
-  + Hizmeti oluşturmak için yönetim REST API `api-version=2019-10-01-Preview` kullanarak belirli IP adreslerine erişimi kısıtlayabilirsiniz. Preview API 'sinin [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)'de yeni **ıprule** ve **networkruleset** özellikleri vardır. Bu önizleme özelliği seçili bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [yönetim REST API nasıl kullanılır](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+  + Hizmeti oluşturmak için yönetim REST API `api-version=2019-10-01-Preview` kullanarak belirli IP adreslerine erişimi kısıtlayabilirsiniz. Preview API 'sinin [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)'de yeni **ıprule** ve **networkruleset** özellikleri vardır. Bu önizleme özelliği seçili bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [yönetim REST API nasıl kullanılır](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
   + Şu anda sınırlı erişimli bir önizleme aracılığıyla kullanılabilir, aynı sanal ağdaki istemcilerden gelen bağlantılar için Azure özel uç noktasını destekleyen bir Azure Search hizmeti sağlayabilirsiniz. Daha fazla bilgi için bkz. [güvenli bağlantı Için özel uç nokta oluşturma](service-create-private-endpoint.md).
 
