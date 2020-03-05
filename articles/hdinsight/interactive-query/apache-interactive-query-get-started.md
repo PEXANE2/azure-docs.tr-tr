@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight 'ta etkileşimli sorgu nedir?
 description: Azure HDInsight 'Ta Apache Hive LLAP olarak da bilinen etkileşimli sorguya giriş
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/17/2019
-ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198931"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271948"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight 'Ta etkileşimli sorgu nedir?
 
@@ -36,35 +36,19 @@ HDInsight kümesi oluşturma hakkında daha fazla bilgi için bkz. [HDInsight 't
 
 Hive sorgularını yürütmek için aşağıdaki seçeneklere sahipsiniz:
 
-* Microsoft Power BI kullanma
-
-    Bkz. [Azure HDInsight 'ta Power BI Ile etkileşimli sorgu Apache Hive verilerini görselleştirme](./apache-hadoop-connect-hive-power-bi-directquery.md) bkz. [azure HDInsight 'ta Power BI büyük verileri görselleştirme](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-
-* Visual Studio kullanma
-
-    Bkz. [Visual Studio için Data Lake araçlarını kullanarak Azure HDInsight 'A bağlanma ve Apache Hive sorguları çalıştırma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
-
-* Visual Studio Code kullanma
-
-    Bkz. [Apache Hive, LLAP veya pySpark için Visual Studio Code kullanma](../hdinsight-for-vscode.md).
-* Apache ambarı Hive görünümünü kullanarak Apache Hive çalıştırın.
-  
-    Bkz. [Azure HDInsight 'ta Apache Hadoop ile Apache Hive görünümünü kullanma](../hadoop/apache-hadoop-use-hive-ambari-view.md).
-
-* Apache Hive, Beeline kullanarak çalıştırın.
-  
-    Bkz. [Apache Hive kullanarak HDInsight 'Ta Beeline sahip Apache Hadoop](../hadoop/apache-hadoop-use-hive-beeline.md).
-  
-    Baş düğümden ya da boş bir kenar düğümünden Beeline ' i kullanabilirsiniz. Boş bir kenar düğümünden Beeline kullanmanızı öneririz. Boş bir Edge düğümü kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi için bkz. [HDInsight 'ta boş kenar düğümlerini kullanma](../hdinsight-apps-use-edge-node.md).
-* Hive ODBC kullanarak Apache Hive çalıştırın.
-  
-    Bkz. [Microsoft HIVE ODBC sürücüsü ile Apache Hadoop Excel 'ı bağlama](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+|Yöntem |Açıklama |
+|---|---|
+|Microsoft Power BI|Bkz. [Azure HDInsight 'ta Power BI etkileşimli sorgu Apache Hive verileri görselleştirme](./apache-hadoop-connect-hive-power-bi-directquery.md)ve [azure HDInsight 'ta Power BI büyük verileri görselleştirme](../hadoop/apache-hadoop-connect-hive-power-bi.md).|
+|Visual Studio|Bkz. [Visual Studio için Data Lake araçlarını kullanarak Azure HDInsight 'A bağlanma ve Apache Hive sorguları çalıştırma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).|
+|Visual Studio Code|Bkz. [Apache Hive, LLAP veya pySpark için Visual Studio Code kullanma](../hdinsight-for-vscode.md).|
+|Apache ambarı Hive görünümü|Bkz. [Azure HDInsight 'ta Apache Hadoop ile Apache Hive görünümünü kullanma](../hadoop/apache-hadoop-use-hive-ambari-view.md). HDInsight 4,0 için Hive görünümü kullanılamaz.|
+|Apache Beeline|Bkz. [Apache Hive kullanarak HDInsight 'Ta Beeline sahip Apache Hadoop](../hadoop/apache-hadoop-use-hive-beeline.md). Baş düğümden ya da boş bir kenar düğümünden Beeline ' i kullanabilirsiniz. Boş bir kenar düğümünden Beeline kullanmanızı öneririz. Boş bir Edge düğümü kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi için bkz. [HDInsight 'ta boş kenar düğümlerini kullanma](../hdinsight-apps-use-edge-node.md).|
+|Hive ODBC|Bkz. [Microsoft HIVE ODBC sürücüsü ile Apache Hadoop Excel 'ı bağlama](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).|
 
 Java veritabanı bağlantısı (JDBC) bağlantı dizesini bulmak için:
 
-1. Aşağıdaki URL 'YI kullanarak Apache ambarı 'nda oturum açın: `https://<cluster name>.AzureHDInsight.net`.
-2. Sol taraftaki menüden **Hive**öğesini seçin.
-3. URL 'YI kopyalamak için Pano simgesini seçin:
+1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`' a gidin; burada `CLUSTERNAME` kümenizin adıdır.
+1. URL 'YI kopyalamak için Pano simgesini seçin:
 
    ![HDInsight Hadoop etkileşimli sorgu LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 

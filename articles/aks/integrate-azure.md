@@ -5,12 +5,12 @@ author: zr-msft
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 8d727256afbe152a4f7022d0fd2454c4677b023c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595612"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273012"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Azure için Açık Hizmet Aracısı (OSBA) kullanarak Azure tarafından yönetilen hizmetlerle tümleştirme
 
@@ -29,39 +29,43 @@ ms.locfileid: "77595612"
 
 ## <a name="install-service-catalog"></a>Hizmet Kataloğu yükleme
 
-Birinci adım, bir Helm grafiği kullanarak Kubernetes kümenize Hizmet Kataloğu yüklemektir. Kümenizdeki Tiller (Helm sunucusu) yüklemesini şununla yükseltin:
+Birinci adım, bir Helm grafiği kullanarak Kubernetes kümenize Hizmet Kataloğu yüklemektir.
 
-```azurecli-interactive
+Tarayıcınızda Cloud Shell açmak için [https://shell.azure.com](https://shell.azure.com) gidin.
+
+Kümenizdeki Tiller (Helm sunucusu) yüklemesini şununla yükseltin:
+
+```console
 helm init --upgrade
 ```
 
 Şimdi, Hizmet Kataloğu grafiğini Helm deposuna ekleyin:
 
-```azurecli-interactive
+```console
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
 Son olarak, Hizmet Kataloğunu Helm grafiğiyle yükleyin. Kümenizde RBAC etkinse bu komutu çalıştırın.
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Kümenizde RBAC etkin değilse bu komutu çalıştırın.
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Helm grafik çalıştırıldıktan sonra aşağıdaki komutun çıktısında `servicecatalog` ifadesinin göründüğünü doğrulayın:
 
-```azurecli-interactive
+```console
 kubectl get apiservice
 ```
 
 Örneğin, aşağıdakine benzer bir çıktı görmeniz gerekir (burada kesilmiş olarak gösterilmiştir):
 
-```
+```output
 NAME                                 AGE
 v1.                                  10m
 v1.authentication.k8s.io             10m
@@ -76,7 +80,7 @@ Sonraki adımda, Azure tarafından yönetilen hizmetler için kataloğu içeren 
 
 Azure Held deposu için açık Hizmet Aracısı ekleyerek başlayın:
 
-```azurecli-interactive
+```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
@@ -88,7 +92,7 @@ az ad sp create-for-rbac
 
 Çıktının aşağıdakine benzer olması gerekir. Sonraki adımda kullanacağınız `appId`, `password` ve `tenant` değerlerini not edin.
 
-```JSON
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -100,7 +104,7 @@ az ad sp create-for-rbac
 
 Aşağıdaki ortam değişkenlerini yukarıdaki değerlerle ayarlayın:
 
-```azurecli-interactive
+```console
 AZURE_CLIENT_ID=<appId>
 AZURE_CLIENT_SECRET=<password>
 AZURE_TENANT_ID=<tenant>
@@ -114,7 +118,7 @@ az account show --query id --output tsv
 
 Yine, aşağıdaki ortam değişkenlerini yukarıdaki değerle ayarlayın:
 
-```azurecli-interactive
+```console
 AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
 ```
 
@@ -132,20 +136,20 @@ OSBA dağıtımı tamamlandıktan sonra, hizmet aracılarını, hizmet sınıfla
 
 Hizmet Kataloğu CLI ikili dosyasını yüklemek için aşağıdaki komutları çalıştırın:
 
-```azurecli-interactive
+```console
 curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
 chmod +x ./svcat
 ```
 
 Şimdi, yüklü olan hizmet aracılarını listeleyin:
 
-```azurecli-interactive
+```console
 ./svcat get brokers
 ```
 
 Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-```
+```output
   NAME                               URL                                STATUS
 +------+--------------------------------------------------------------+--------+
   osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
@@ -153,13 +157,13 @@ Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
 Ardından, kullanılabilir hizmet sınıflarını listeleyin. Gösterilen hizmet sınıfları, Azure tarafından yönetilen kullanılabilir hizmetlerdir ve Azure için Açık Hizmet Aracısı ile sağlanabilir.
 
-```azurecli-interactive
+```console
 ./svcat get classes
 ```
 
 Son olarak, tüm kullanılabilir hizmet planlarını listeleyin. Hizmet planları, Azure tarafından yönetilen hizmetlere yönelik hizmet katmanlarıdır. Örneğin, MySQL için Azure Veritabanı planları, 50 Veritabanı İşlem Birimi (DTU) içeren Temel katmanı için `basic50` ile 800 DTU içeren Standart katmanı için `standard800` arasındadır.
 
-```azurecli-interactive
+```console
 ./svcat get plans
 ```
 
@@ -167,20 +171,20 @@ Son olarak, tüm kullanılabilir hizmet planlarını listeleyin. Hizmet planlar�
 
 Bu adımda, Helm kullanarak WordPress için güncelleştirilmiş bir Helm grafiği yüklersiniz. Grafik, WordPress’in kullanabileceği bir dış MySQL için Azure Veritabanı sağlar. Bu işlem birkaç dakika sürebilir.
 
-```azurecli-interactive
+```console
 helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 Yüklemenin doğru kaynakları sağladığını onaylamak için, yüklü hizmet örneklerini ve bağlamaları listeleyin:
 
-```azurecli-interactive
+```console
 ./svcat get instances -n wordpress
 ./svcat get bindings -n wordpress
 ```
 
 Yüklü gizli dizileri listeleme:
 
-```azurecli-interactive
+```console
 kubectl get secrets -n wordpress -o yaml
 ```
 

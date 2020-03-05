@@ -1,20 +1,22 @@
 ---
-title: Azure 'da bir işlev yayımlamak için Java ve Maven kullanma
-description: Java ve Maven ile Azure 'da HTTP ile tetiklenen bir işlev oluşturun ve yayımlayın.
-author: rloutlaw
+title: Azure 'da bir işlev yayımlamak için Java ve Maven/Gradle kullanma
+description: Java ve Maven veya Gradle ile Azure 'da HTTP ile tetiklenen bir işlev oluşturun ve yayımlayın.
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249593"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272728"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven kullanma
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven/Gradle kullanma
 
-Bu makalede, Maven komut satırı aracıyla Azure Işlevleri için bir Java işlevi oluşturma ve yayımlama işlemi gösterilmektedir. İşiniz bittiğinde, işlev kodunuz Azure 'da [sunucusuz bir barındırma planında](functions-scale.md#consumption-plan) çalışır ve bir http isteği tarafından tetiklenir.
+Bu makalede, Maven/Gradle komut satırı aracıyla Azure Işlevleri için bir Java işlevi oluşturma ve yayımlama işlemi gösterilmektedir. İşiniz bittiğinde, işlev kodunuz Azure 'da [sunucusuz bir barındırma planında](functions-scale.md#consumption-plan) çalışır ve bir http isteği tarafından tetiklenir.
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ Bu makalede, Maven komut satırı aracıyla Azure Işlevleri için bir Java işl
 Java kullanarak işlev uygulamaları geliştirebilmeniz için şunlar yüklü olmalıdır:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
-- [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
+::: zone pivot="java-build-tools-maven" 
+- [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/), sürüm 4,10 ve üzeri
+::: zone-end 
 
 Ayrıca etkin bir Azure aboneliğine de ihtiyacınız vardır. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ Ayrıca etkin bir Azure aboneliğine de ihtiyacınız vardır. [!INCLUDE [quicks
 > [!IMPORTANT]
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
 
-## <a name="generate-a-new-functions-project"></a>Yeni İşlevler projesi oluşturma
+## <a name="prepare-a-functions-project"></a>Işlevler projesi hazırlama
 
+::: zone pivot="java-build-tools-maven" 
 İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın.
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> PowerShell kullanıyorsanız, parametre etrafında "" eklemeyi unutmayın.
+
+> [!NOTE]
 > Komutu çalıştırmaya ilişkin sorunlarla karşılaşıyorsanız, hangi `maven-archetype-plugin` sürümünün kullanıldığını göz atın. Komutunu `.pom` dosyası olmayan boş bir dizinde çalıştırdığınız için, Maven 'nizi eski bir sürümden yükselttiyseniz `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` eski sürümün bir eklentisini kullanmaya çalışıyor olabilir. Bu durumda, `maven-archetype-plugin` dizinini silmeyi ve komutu yeniden çalıştırmayı deneyin.
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister. İstendiğinde aşağıdaki değerleri sağlayın:
 
@@ -79,7 +73,35 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 
 Onaylamak için `Y` yazın veya ENTER tuşuna basın.
 
-Maven, proje dosyalarını _ArtifactId_adında yeni bir klasörde oluşturur. bu örnekte `fabrikam-functions`. 
+Maven, proje dosyalarını _ArtifactId_adında yeni bir klasörde oluşturur. bu örnekte `fabrikam-functions`. Dizini oluşturulan proje klasörü olarak değiştirmek için aşağıdaki komutu çalıştırın.
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+Örnek projeyi kopyalamak için aşağıdaki komutu kullanın:
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+`build.gradle` açın ve Azure 'a dağıtım yaparken etki alanı adı çakışmasını önlemek için aşağıdaki bölümdeki `appName` benzersiz bir ad olarak değiştirin. 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 Yeni Function. Java dosyasını bir metin düzenleyicisinde *src/Main/Java* yolundan açın ve oluşturulan kodu gözden geçirin. Bu kod, isteğin gövdesini yansıtan [http ile tetiklenen](functions-bindings-http-webhook.md) bir işlevdir. 
 
@@ -88,13 +110,21 @@ Yeni Function. Java dosyasını bir metin düzenleyicisinde *src/Main/Java* yolu
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
-Dizini yeni oluşturulan proje klasörü ile değiştiren aşağıdaki komutu çalıştırın, sonra işlev projesini oluşturup çalıştırır:
+İşlev projesini oluşturmak için aşağıdaki komutu çalıştırın:
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
 
 Projeyi yerel olarak çalıştırdığınızda Azure Functions Core Tools aşağıdakine benzer bir çıktı görürsünüz:
 
@@ -112,7 +142,7 @@ Http Functions:
 
 Yeni bir Terminal penceresinde kıvrımlı kullanarak işlevi komut satırından tetikleyin:
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > Hesabınız birden çok aboneliğe erişebildeyse, bu oturum için varsayılan aboneliği ayarlamak üzere [az Account set](/cli/azure/account#az-account-set) kullanın. 
 
-Projenizi yeni bir işlev uygulamasına dağıtmak için aşağıdaki Maven komutunu kullanın. 
+Projenizi yeni bir işlev uygulamasına dağıtmak için aşağıdaki komutu kullanın. 
 
-```console
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-Bu `azure-functions:deploy` Maven hedefi, Azure 'da aşağıdaki kaynakları oluşturur:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+Bu işlem, Azure 'da aşağıdaki kaynakları oluşturacaktır:
 
 + Kaynak grubu. Sağladığınız _resourceGroup_ ile adlandırılmış.
 + Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.

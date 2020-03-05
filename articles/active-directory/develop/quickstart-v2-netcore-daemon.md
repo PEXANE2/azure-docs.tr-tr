@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f3e1581e2e96c0915fa92a51f60311f90eb79ee5
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e42be651de6fc70f5fe075a1bc1bee8010b886d7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78160853"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274342"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
@@ -78,7 +78,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 > [!div class="sxs-lookup" renderon="portal"]
 > Visual Studio 2019 kullanarak projeyi çalıştırın.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Kod örneğini indirin]()
+> [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -189,7 +189,7 @@ dotnet add package Microsoft.Identity.Client
 using Microsoft.Identity.Client;
 ```
 
-Sonra da şu kodu kullanarak MSAL başlatın:
+Sonra şu kodu kullanarak MSAL'yi başlatın:
 
 ```csharp
 IConfidentialClientApplication app;

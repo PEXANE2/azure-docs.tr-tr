@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f3621feb688b3b257cd4f685a9be306d75700f4a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443831"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273622"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -40,15 +40,15 @@ Application Gateway, ağ geçidinde SSL/TLS sonlandırmasını destekler ve bu s
 
 ## <a name="autoscaling"></a>Otomatik ölçeklendirme
 
-Standard_v2 veya WAF_v2 SKU 'nun otomatik ölçeklendirilmesine Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Application Gateway Standard_v2 ve WAF_v2 özellikler hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md).
+Application Gateway Standard_v2 otomatik ölçeklendirmeyi destekler ve değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Application Gateway Standard_v2 özellikleri hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Bölge artıklığı
 
-Standard_v2 veya WAF_v2 SKU 'SU altındaki bir Application Gateway veya WAF dağıtımları birden fazla Kullanılabilirlik Alanları yayılabilir, daha iyi hata esnekliği sunar ve her bölgede ayrı uygulama ağ geçitleri sağlama gereksinimini ortadan kaldırabilir.
+Application Gateway Standard_v2 birden fazla Kullanılabilirlik Alanları yayarak, daha iyi hata dayanıklılığı sunarak her bölgede ayrı uygulama ağ geçitleri sağlama ihtiyacını ortadan kaldırabilir.
 
 ## <a name="static-vip"></a>Statik VIP
 
-Standard_v2 veya WAF_v2 SKU 'SU üzerinde uygulama ağ geçidi VIP yalnızca statik VIP türünü destekler. Bu, uygulama ağ geçidi ile ilişkili VIP 'nin Application Gateway ömrü boyunca bile değişmemesini sağlar.
+Uygulama ağ geçidi Standard_v2 SKU 'SU yalnızca statik VIP türünü destekler. Bu, uygulama ağ geçidi ile ilişkili VIP 'nin Application Gateway ömrü boyunca bile değişmemesini sağlar.
 
 ## <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
 
@@ -75,7 +75,7 @@ Daha fazla bilgi için bkz. [Application Gateway Ile URL tabanlı yönlendirme](
 
 ## <a name="multiple-site-hosting"></a>Birden çok site barındırma
 
-Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. Bu özellik, bir Application Gateway veya WAF için 40 (en iyi performans için) 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
+Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. Bu özellik, bir Application Gateway (en iyi performans için) en fazla 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
 
 `http://contoso.com` için istekler ContosoServerPool’a ve `http://fabrikam.com` için istekler FabrikamServerPool’a yönlendirilir.
 
@@ -135,9 +135,9 @@ Daha fazla bilgi için bkz. [HTTP üstbilgilerini yeniden yazma](rewrite-http-he
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Application Gateway Standard_v2 ve WAF_v2 SKU, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU 'Lar farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
+Application Gateway Standard_v2, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-Application Gateway standart ve WAF SKU Şu anda üç boyutta sunulmaktadır: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
+Application Gateway standart üç boyutta sunulur: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
 Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
