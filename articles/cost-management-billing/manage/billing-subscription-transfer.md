@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188401"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245398"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -45,7 +45,7 @@ Kurumsal Anlaşma (EA) müşterisiyseniz kurumsal yöneticileriniz aboneliklerin
 
     > [!IMPORTANT]
     >
-    > Aboneliği yeni hesabın Azure AD kiracısına taşımayı seçerseniz, abonelikteki kaynakları yönetmeye yönelik tüm [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) atamaları kalıcı olarak kaldırılır. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, abonelikteki kaynakları yönetmek için erişime sahip olur. Daha fazla bilgi için bkz. [Aboneliği başka Azure AD kiracısındaki bir kullanıcıya aktarma](../../cognitive-services/acoustics/known-issues.md). Alternatif olarak, aboneliği yeni hesabın kiracısına taşımadan faturalama sahipliğini aktarmak için Abonelik Azure AD kiracısının kutusunun işaretini kaldırabilirsiniz. Bunu yaparsanız, Azure kaynaklarını yönetmek için mevcut RBAC izinleri korunur.
+    > Aboneliği yeni hesabın Azure AD kiracısına taşımayı seçerseniz, abonelikteki kaynakları yönetmeye yönelik tüm [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) atamaları kalıcı olarak kaldırılır. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, abonelikteki kaynakları yönetmek için erişime sahip olur. Daha fazla bilgi için bkz. [Aboneliği başka Azure AD kiracısındaki bir kullanıcıya aktarma](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories). Alternatif olarak, aboneliği yeni hesabın kiracısına taşımadan faturalama sahipliğini aktarmak için Abonelik Azure AD kiracısının kutusunun işaretini kaldırabilirsiniz. Bunu yaparsanız, Azure kaynaklarını yönetmek için mevcut RBAC izinleri korunur.
 
     ![Aktarım gönder sayfası](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

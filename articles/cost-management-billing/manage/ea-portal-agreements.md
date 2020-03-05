@@ -3,16 +3,16 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: c38f28120b7c84077d8d5012c4be4698680e5fdb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200821"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301429"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -25,10 +25,6 @@ Azure müşterilerine yönelik tüm düzeltmelerin iş ortaklarından veya Micro
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
 Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. [https://www.explore.ms](https://www.explore.ms ) adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Özel fiyatlandırma ve Azure taahhüt indirimi düzeltmeleri
-
-Özel fiyatlandırma ve Azure Taahhüt İndirimi (ACD) düzeltmelerine ihtiyacınız varsa, bunları hesap takımınızla görüşmelisiniz. Bir düzeltme İşletme Masası tarafından işlendikten ve Azure Ops takımına istekte bulunulduktan sonra, Azure Ops takımı ACD'yi uygulayabilir. ACD indirimi yalnızca geçerli aya uygulanır. Önceki aylar, geriye dönük tarihlendirilmiş krediyle karşılanır. 
 
 ## <a name="support-offer-not-provisioned"></a>Destek teklifi sağlanmadı
 

@@ -203,9 +203,9 @@
         - name: İstemci kitaplığı
           items:
             - name: Microsoft.Azure.Event Hubs’tan Azure.Messaging.EventHubs’a geçiş
-              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md'
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md'
             - name: Azure.Messaging.EventHubs (en son)
-              href: /dotnet/api/azure.messaging.eventhubs?view=azure-dotnet-preview
+              href: /dotnet/api/azure.messaging.eventhubs
             - name: Microsoft.Azure.EventHubs (eski)
               href: /dotnet/api/microsoft.azure.eventhubs
             - name: Microsoft.ServiceBus.Messaging (eski)
@@ -231,9 +231,9 @@
         - name: İstemci kitaplığı
           items:
             - name: azure-eventhub sürüm 5
-              href: /python/api/azure-eventhub/?view=azure-python-preview
+              href: /python/api/overview/azure/eventhub/client
             - name: azure-eventhub sürüm 1
-              href: /python/api/azure-eventhub/?view=azure-python
+              href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: Yönetim kitaplığı
           href: /python/api/overview/azure/event-hub?view=azure-python
     - name: JavaScript
@@ -243,9 +243,9 @@
         - name: İstemci kitaplığı
           items:
             - name: azure/eventhubs sürüm 5
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-preview
-            - name: azure/eventhubs sürüm 2
               href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
+            - name: azure/eventhubs sürüm 2
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: Yönetim kitaplığı
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: REST

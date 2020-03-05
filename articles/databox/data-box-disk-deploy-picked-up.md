@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845475"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273166"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ Başlamadan önce [Öğretici: Verileri Azure Data Box Disk'e kopyalama ve doğr
 
 Sonraki adımlar cihazın iade edildiği bölgeye göre belirlenir. ABD/Kanada, Avrupa Birliği (AB), Avustralya veya Asya’daki ülkeler için farklı yönergeler uygulanır.
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[ABD veya Kanada](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[ABD veya Kanada](#tab/in-us-or-canada)
 
 Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
@@ -67,7 +67,7 @@ Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayı
     - İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
     - Teslim alma zamanlama yerine Data Box Disk’inizi en yakın teslim etme yerine bırakabilirsiniz.
 
-### <a name="in-europetabin-europe"></a>[Avrupa](#tab/in-europe)
+### <a name="in-europe"></a>[Avrupa](#tab/in-europe)
 
 Cihazı Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
@@ -80,7 +80,7 @@ Cihazı Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 4. Ülkenin/bölgenin DHL Ekspres web sitesine gidin ve **Kurye Çağırma Rezervasyonu > eİade Sevkiyatı**'nı seçin.    
 3. Konşimento numarasını belirtin ve toplama ayarlaması yapmak için **Toplama Zamanlama**'ya tıklayın.
 
-### <a name="in-australiatabin-australia"></a>[Avustralya](#tab/in-australia)
+### <a name="in-australia"></a>[Avustralya](#tab/in-australia)
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da teslim alma için aşağıdaki adımları uygulayın.
 
@@ -88,7 +88,7 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 3. Etiketi kutuya iliştirin. 
 4. Şu bağlantıdan çevrimiçi olarak bir teslim alma rezervasyonu yapın: https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="in-japantabin-japan"></a>[Japonya](#tab/in-japan)
+### <a name="in-japan"></a>[Japonya](#tab/in-japan)
 
 1. Sevk mektubuna, gönderici bilgisi olarak şirket adınızı ve adres bilgilerinizi yazın.
 2. Aşağıdaki e-posta şablonunu kullanarak Quantium Solutions’a e-posta gönderin.
@@ -115,7 +115,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 - E-posta: Customerservice.JP@quantiumsolutions.com 
 - Telefon：03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[Güney Kore](#tab/in-korea)
+### <a name="in-korea"></a>[Güney Kore](#tab/in-korea)
 
 1. İade sevk mektubunu eklediğinizden emin olun.
 2. Sevk mektubunuz mevcutken iade istemek için:
@@ -130,7 +130,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
     4. İstek telefon aracılığıyla yapıldıysa sözlü teyit alırsınız.
 
 
-### <a name="in-singaporetabin-singapore"></a>[Singapur’da](#tab/in-singapore)
+### <a name="in-singapore"></a>[Singapur’da](#tab/in-singapore)
 
 1. Gönderim etiketini yazdırın ve kutuya iliştirin. Etiket zarar gördüyse veya kayıpsa:
     - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi edinin.
@@ -157,7 +157,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
 3. Paketi kuryeye teslim edin.
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[Kullanıcı Yönetimli Gönderimlerde](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[Kullanıcı Yönetimli Gönderimlerde](#tab/in-selfmanaged)
 
 Japonya, Singapur, Kore ve Batı Avrupa’da Data Box Disk kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin. 
 
@@ -175,8 +175,6 @@ Japonya, Singapur, Kore ve Batı Avrupa’da Data Box Disk kullanıyorsanız ve 
 3. Azure Data Box Operasyon ekibi Azure Veri Merkezi’ne teslim etme planlaması yapmak üzere sizinle çalışacaktır.
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

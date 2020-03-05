@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 5e7d01c5383898fb14f57188cd1bee7ea64e8263
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5e1117bdefc4916fedc5c316632641d77c2f09d3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200974"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206036"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -65,7 +65,7 @@ Maliyet Yönetimi Katkıda Bulunanı, önerilen en düşük ayrıcalıklı rold�
 
 - **Bütçeler aşıldığında harekete geçme**: Maliyet Yönetimi Katkıda Bulunanlarının fazla kullanım durumlarına otomatik olarak müdahale edebilmek için eylem grubu oluşturma ve/veya yönetme izinlerine de sahip olması gerekir. Bütçe eşikleri aşıldığında kullanılacak eylem grubunu içeren kaynak grubuna [İzleme Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) iznini verebilirsiniz. Belirli eylemlerin otomatikleştirilmesi için Otomasyon ve Azure İşlevleri gibi kullanılan hizmetlere özgü ek rollere ihtiyaç duyulur.
 - **Maliyet verilerini dışarı aktarmayı zamanlama**: Maliyet Yönetimi Katkıda Bulunanlarının, verileri depolama hesabına kopyalamak üzere bir dışarı aktarma işlemi zamanlamak için depolama hesaplarını yönetme izinlerine de sahip olması gerekir. Maliyet verilerinin dışarı aktarıldığı depolama hesabını içeren kaynak grubuna [Depolama Hesabı Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) iznini verebilirsiniz.
-- **Maliyet tasarrufu önerilerini görüntüleme**: Maliyet Yönetimi Okuyucuları ve Maliyet Yönetimi Katkıda Bulunanları, varsayılan olarak maliyet önerilerini *görüntüleme* erişimine sahiptir. Ancak maliyet önerilerine göre işlem yapmak için ilgili kaynaklar üzerinde erişim sahibi olmaları gerekir. Maliyet tabanlı önerilere göre hareket etmek istiyorsanız [hizmete özgü bir rol](../../role-based-access-control/built-in-roles.md#built-in-role-descriptions) atamayı düşünebilirsiniz.
+- **Maliyet tasarrufu önerilerini görüntüleme**: Maliyet Yönetimi Okuyucuları ve Maliyet Yönetimi Katkıda Bulunanları, varsayılan olarak maliyet önerilerini *görüntüleme* erişimine sahiptir. Ancak maliyet önerilerine göre işlem yapmak için ilgili kaynaklar üzerinde erişim sahibi olmaları gerekir. Maliyet tabanlı önerilere göre hareket etmek istiyorsanız [hizmete özgü bir rol](../../role-based-access-control/built-in-roles.md#descriptions-and-ids) atamayı düşünebilirsiniz.
 
 ## <a name="enterprise-agreement-scopes"></a>Kurumsal Anlaşma kapsamları
 

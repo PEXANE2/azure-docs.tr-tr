@@ -356,6 +356,34 @@
           href: move-across-regions-publicip-portal.md
         - name: Genel IP'ler - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: Sorun giderme
+      items:
+        - name: Sanal ağ eşleme sorunlarını giderme
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet veya VPN bağlantılarını yapılandırma ve doğrulama
+          href: virtual-network-configure-vnet-connections.md
+        - name: Ağ güvenlik grupları
+          href: diagnose-network-traffic-filter-problem.md
+        - name: Yollar
+          href: diagnose-network-routing-problem.md
+        - name: Aktarım hızı testi
+          href: virtual-network-bandwidth-testing.md
+        - name: VM ağ gecikmesini sınama
+          href: virtual-network-test-latency.md
+        - name: Sanal ağlar silinemiyor
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: VM’den VM’ye bağlantı sorunları
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: PTR’yi SMTP Başlık Denetimi için yapılandırma
+          href: create-ptr-for-smtp-service.md
+        - name: Sanal gereçler için sorun giderme denetim listesi
+          href: virtual-network-troubleshoot-nva.md
+        - name: Giden SMTP bağlantı sorunlarını giderme
+          href: troubleshoot-outbound-smtp-connectivity.md
+        - name: IP adresi 168.63.129.16 hakkında
+          href: what-is-ip-address-168-63-129-16.md
+        - name: Azure VM bağlantısıyla ilgili sorunları giderme
+          href: troubleshoot-vm-connectivity.md
     - name: Klasik dağıtım
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Başvuru
