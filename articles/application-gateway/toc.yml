@@ -39,6 +39,8 @@
   items:
     - name: Temel Bilgiler
       items:
+        - name: Application Gateway özellikleri
+          href: features.md
         - name: Application Gateway’in işleyişi
           href: how-application-gateway-works.md
         - name: Application Gateway bileşenleri

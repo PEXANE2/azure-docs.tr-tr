@@ -10,11 +10,11 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110367"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397177"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub (Java) ile cihazınızdan buluta dosya yükleme
 
@@ -26,7 +26,7 @@ Bu öğretici, [Azure Blob depolamaya](../storage/index.yml)bir dosyayı karşı
 
 * Uygulama arka uçtaki dosyayı işlemeyi tetiklemek için karşıya dosya yükleme bildirimlerini IoT Hub kullanın.
 
-[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) hızlı başlangıç yapın ve [IoT Hub öğreticisiyle buluttan cihaza iletiler gönderin](iot-hub-java-java-c2d.md) IoT Hub ' ın temel cihazdan buluta ve buluttan cihaza mesajlaşma işlevlerini gösterir. [IoT Hub öğreticisi ile ileti yönlendirmeyi yapılandırma](tutorial-routing.md) , Azure Blob depolamada cihazdan buluta iletileri güvenilir bir şekilde depolamanın yolunu açıklar. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örneğin:
+[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) hızlı başlangıç yapın ve [IoT Hub öğreticisiyle buluttan cihaza iletiler gönderin](iot-hub-java-java-c2d.md) IoT Hub ' ın temel cihazdan buluta ve buluttan cihaza mesajlaşma işlevlerini gösterir. [IoT Hub öğreticisi ile ileti yönlendirmeyi yapılandırma](tutorial-routing.md) , Azure Blob depolamada cihazdan buluta iletileri güvenilir bir şekilde depolamanın yolunu açıklar. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örnek:
 
 * Görüntü içeren büyük dosyalar
 * Videolar

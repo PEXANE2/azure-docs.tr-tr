@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845283"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374271"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
 Bu makalede, 7 ' deki C# ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
@@ -156,7 +156,7 @@ Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve 
 |System. Security. Cryptography. SymmetricAlgorithm|Tümü|
 |System. Security. Cryptography. X509Certificates. PublicKey|Tümü|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Tümü|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Ad|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Adı|
 |System. Security. Cryptography. X509Certificates. X509Certificate|Tümü|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Tümü|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Tümü|

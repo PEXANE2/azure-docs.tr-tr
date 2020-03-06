@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390705"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri bilimi sanal makinesi üzerinde desteklenen diller 
 
@@ -118,7 +118,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Komut isteminden çalıştırın:
 
-  Bir komut istemi açın ve `R` yazın.
+  Bir komut istemi açın ve `R`yazın.
 
 * IDE içinde kullanın:
 
@@ -157,7 +157,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | 0,6 |
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Windows: yüklü `C:\JuliaPro-VERSION`<br /> Linux: yüklü `/opt/JuliaPro-VERSION`    |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Windows: `C:\JuliaPro-VERSION` yüklendi<br /> Linux: `/opt/JuliaPro-VERSION` yüklendi    |
 | Örneklere bağlantılar      | Julia için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Python, R      |
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    

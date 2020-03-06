@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938812"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386906"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -406,7 +406,7 @@ Yönlendirme yöntemi olan profillerin çoklu değer olarak ayarlandığı profi
 
 Evet, birden çok değer türündeki bir profilin iç içe geçmiş bir profil kümesindeki bir üst profil olması özel durumla birlikte olabilirsiniz.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl giderebilirim?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl düzeltebilirim?
 
 Bir Azure Web uygulaması uç noktası durdurulduğunda Traffic Manager sistem durumunu denetlemeyi durduruyor ve sistem durumu denetimlerini yalnızca uç noktanın yeniden başlatıldığını algıladıktan sonra yeniden başlatır. Bu gecikmeyi engellemek için, uç noktayı yeniden başlattıktan sonra bu uç noktayı Traffic Manager profilinde devre dışı bırakın ve yeniden etkinleştirin.
 
@@ -499,11 +499,11 @@ Aşağıdaki tabloda, iç içe geçmiş bir uç nokta için Traffic Manager sist
 
 | Alt profil Izleme durumu | Üst uç nokta Izleyici durumu | Notlar |
 | --- | --- | --- |
-| Devre dışı. Alt profil devre dışı bırakıldı. |Durdurulan |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
+| Devre dışı. Alt profil devre dışı bırakıldı. |Durduruldu |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
 | Düzey. En az bir alt profil uç noktası düşürülmüş bir durumda. |Çevrimiçi: alt profildeki çevrimiçi uç noktaların sayısı en az MinChildEndpoints değeridir.<BR>CheckingEndpoint: alt profildeki çevrimiçi ve CheckingEndpoint uç noktalarının sayısı en az MinChildEndpoints değeridir.<BR>Düşürülmüş: Aksi durumda. |Trafik, bir durum CheckingEndpoint uç noktasına yönlendirilir. MinChildEndpoints çok yüksek ayarlandıysa, uç nokta her zaman düşürülmüş olur. |
 | Çevrimiç. En az bir alt profil uç noktası çevrimiçi bir durumdur. Düşürülmüş durumunda uç nokta yok. |Yukarıdaki bölümüne bakın. | |
 | CheckingEndpoints. En az bir alt profil uç noktası ' CheckingEndpoint '. Uç nokta ' çevrimiçi ' veya ' düşürülmüş ' yok |Yukarıdaki gibi. | |
-| Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durdurulan | |
+| Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durduruldu | |
 
 ## <a name="next-steps"></a>Sonraki adımlar:
 

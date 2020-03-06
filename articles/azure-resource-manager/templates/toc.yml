@@ -1,8 +1,8 @@
-- name: Azure Resource Manager şablonu belgeleri
+- name: ARM şablonu belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Resource Manager şablonları nelerdir?
+    - name: ARM şablonları nelerdir?
       href: overview.md
 - name: Hızlı Başlangıçlar
   items:

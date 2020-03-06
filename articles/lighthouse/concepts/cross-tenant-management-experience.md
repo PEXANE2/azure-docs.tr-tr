@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 02/14/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb484ea936bbb64b3ca3d7fcf648de0d0ef73c66
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
-ms.translationtype: HT
+ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328689"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402092"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -37,7 +37,14 @@ Yetkili kullanıcılar, Azure tarafından atanan kaynak yönetimini kullanarak b
 
 Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim araçlarını kullanarak (Azure CLı ve Azure PowerShell) yönetim görevleri gerçekleştirebilirsiniz. Tüm mevcut API 'Ler, işlevsellik çapraz Kiracı Yönetimi için desteklendiği ve Kullanıcı uygun izinlere sahip olduğu sürece, temsilcili kaynaklarla çalışırken kullanılabilir.
 
-Ayrıca, Azure Temsilcili kaynak yönetimi görevlerini gerçekleştirmek için API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
+[Get-AzSubscription cmdlet 'i](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) , her abonelik Için **tenantıd** 'yi gösterir, bu da bir döndürülen aboneliğin hizmet sağlayıcı kiracınıza veya yönetilen bir müşteri kiracısına ait olup olmadığını tanımlamanızı sağlar. Azure PowerShell
+
+Benzer şekilde, [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları **Hometenantid** ve **managedbykiracılar** özniteliklerini gösterir.
+
+> [!TIP]
+> Azure CLı kullanırken bu değerleri görmüyorsanız, `az account clear` ve ardından `az login --identity`' i çalıştırarak Önbelleğinizi temizlemeyi deneyin.
+
+Ayrıca, Azure tarafından atanan kaynak yönetimi görevlerini gerçekleştirmeye özgü API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
 
 ## <a name="enhanced-services-and-scenarios"></a>Geliştirilmiş hizmetler ve senaryolar
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945310"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389407"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -64,7 +64,7 @@ HTTP POST isteğiyle GenerateAnswer öğesini çağırın. GenerateAnswer çağr
 POST isteği şunu kullanır:
 
 * Gerekli [URI parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Güvenlik için gerekli [üst bilgi özelliği](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)`Authorization`
+* Güvenlik için gerekli üst bilgi özelliği `Authorization`
 * Gerekli [gövde özellikleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 GenerateAnswer URL 'SI aşağıdaki biçime sahiptir:
@@ -245,7 +245,7 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 
 ## <a name="common-http-errors"></a>Ortak HTTP hataları
 
-|Kodlayın|Açıklama|
+|Kod|Açıklama|
 |:--|--|
 |2xx|Başarılı|
 |400|isteğin parametreleri yanlış gerekli parametreler eksik, hatalı biçimlendirilmiş ya da çok büyük olduğu anlamına gelir|

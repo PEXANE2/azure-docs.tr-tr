@@ -4,17 +4,17 @@ description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özellikleri
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117593"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245470"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -140,18 +140,14 @@ Maliyet ilkesi **Evet** olarak ayarlandığında müşteri kiracısıyla ilişki
 
 Maliyet görünürlüğü ilkesi etkinleştirildiğinde abonelik kullanımına sahip olan tüm hizmetler, kullandıkça öde fiyatları üzerinden maliyetleri görüntüler. Rezervasyon kullanımı, gerçek ve amorti edilen maliyetler için sıfır ücretle gösterilir. Satın alma ve yetkilendirme işlemleri belirli bir abonelikle ilişkilendirilmez. Bu nedenle satın alma işlemleri, abonelik kapsamında görüntülenmez.
 
-Müşteri kiracısına ait maliyetleri görüntülemek için **Maliyet Yönetimi + Faturalandırma**'yı açıp ilgili Microsoft İş Ortağı Sözleşmesi ödeme hesabını seçin.
 
-![Ödeme hesabı seçme](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>Müşteri maliyetlerini görüntüleme
 
-**Faturalandırma**'nın altında **Azure abonelikleri**'ni ve ardından bir müşteriyi seçin.
-
-![Azure aboneliği müşterisi seçme](./media/get-started-partners/subscriptions-select-customer.png)
-
-**Maliyet analizi**'ni seçip maliyetleri gözden geçirmeye başlayın.
-Abonelik ve kaynak grubu RBAC kapsamları için maliyet analizi, bütçeler ve uyarılar, kullandıkça öde fiyatını temel alan maliyetler üzerinden kullanılabilir.
+Müşteri kiracısının maliyetlerini görüntülemek için **Maliyet Yönetimi + Faturalama**’yı açın. **Maliyet analizi**’ni seçin ve kapsamı müşteri kiracısı aboneliği olarak değiştirerek maliyetleri gözden geçirme işlemini başlatın.
 
 ![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+Abonelik ve kaynak grubu RBAC kapsamları için maliyet analizi, bütçeler ve uyarılar, kullandıkça öde fiyatını temel alan maliyetler üzerinden kullanılabilir.
 
 RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler ve gerçek maliyetler sıfır olarak görünür. Ayrılmış örnek maliyetleri yalnızca satın alma işleminin gerçekleştirildiği faturalama kapsamlarında gösterilir.
 

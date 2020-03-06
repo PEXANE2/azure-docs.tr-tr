@@ -4,17 +4,17 @@ description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/23/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582406"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251274"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -40,7 +40,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bütçeler, farklı Azure hesabı türleri için desteklenir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md). Bütçeleri görüntülemek için Azure hesabınızda en azından okuma yetkisine sahip olmanız gerekir.
 
- Azure EA aboneliklerinde bütçeleri görüntülemek için okuma yetkisine sahip olmanız gerekir. Bütçe oluşturmak ve yönetmek için katkıda bulunan izninizin olması gerekir. EA abonelikleri ve kaynak grupları için ayrı bütçeler oluşturabilirsiniz. Ancak EA ödeme hesapları için bütçe oluşturamazsınız.
+Yeni bir aboneliğiniz varsa hemen bir bütçe oluşturamaz veya diğer Maliyet Yönetimi özelliklerini kullanamazsınız. Maliyet Yönetimi özelliklerini kullanabilmek için 48 saat kadar beklemeniz gerekebilir.
+
+Azure EA aboneliklerinde bütçeleri görüntülemek için okuma yetkisine sahip olmanız gerekir. Bütçe oluşturmak ve yönetmek için katkıda bulunan izninizin olması gerekir. EA abonelikleri ve kaynak grupları için ayrı bütçeler oluşturabilirsiniz. Ancak EA ödeme hesapları için bütçe oluşturamazsınız.
 
 Aşağıdaki Azure izinleri veya kapsamları abonelik başına kullanıcı ve grup tarafından bütçe oluşturulması için desteklenir. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
 

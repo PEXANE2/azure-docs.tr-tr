@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385338"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Izleyici 'de özel ölçümler
 
@@ -37,7 +37,7 @@ Azure Izleyici, isteğin kimliğini doğrulamak için Azure AD ortak anahtarlar�
 > [!NOTE]  
 > Özel ölçümleri yayan bir Azure AD belirteci istediğinizde, belirtecin istendiği hedef kitle veya kaynağın https://monitoring.azure.com/olduğundan emin olun. Sondaki '/' öğesini eklediğinizden emin olun.
 
-### <a name="subject"></a>Konu
+### <a name="subject"></a>Özne
 Bu özellik, için özel ölçümün hangi Azure Kaynak KIMLIĞIYLE bildirileceğini yakalar. Bu bilgiler, yapılmakta olan API çağrısının URL 'SI ile kodlanacak. Her API yalnızca tek bir Azure kaynağı için ölçüm değerleri gönderebilir.
 
 > [!NOTE]  
@@ -56,7 +56,7 @@ Bu özellik, için ölçüm yaymakta olduğunuz kaynağın hangi Azure bölgesin
 ### <a name="timestamp"></a>Zaman damgası
 Azure Izleyici 'ye gönderilen her veri noktasının bir zaman damgasıyla işaretlenmesi gerekir. Bu zaman damgası, ölçüm değerinin ölçüldüğü veya toplandığı tarih/saati yakalar. Azure Izleyici, zaman damgalarına sahip ölçüm verilerini geçmişte ve 5 dakika içinde en fazla 20 dakika olacak şekilde kabul eder. Zaman damgası ISO 8601 biçiminde olmalıdır.
 
-### <a name="namespace"></a>Ad alanı
+### <a name="namespace"></a>Ad Alanı
 Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandırmanız için bir yoldur. Ad alanlarını kullanarak, farklı Öngörüler veya performans göstergeleri toplayabilecek ölçüm grupları arasında yalıtım elde edebilirsiniz. Örneğin, uygulamanızı profilini oluşturan bellek kullanım ölçümlerini izleyen **contosomemoryölçümler** adlı bir ad alanı olabilir. **Contosoapptransaction** adlı başka bir ad alanı, uygulamanızdaki Kullanıcı işlemleri hakkında tüm ölçümleri izleyebilir.
 
 ### <a name="name"></a>Adı
@@ -156,13 +156,17 @@ Azure Izleyici 'nin yayınlanmadan önce özel bir ölçümü önceden tanımlam
 
 ## <a name="using-custom-metrics"></a>Özel ölçümleri kullanma
 Özel ölçümler Azure Izleyici 'ye gönderildikten sonra, Azure portal aracılığıyla bunlara gözatabilir ve bunları Azure Izleyici REST API 'Leri aracılığıyla sorgulayabilirsiniz. Ayrıca, belirli koşullar karşılandığında size bildirimde bulunan uyarılar oluşturabilirsiniz.
+
+> [!NOTE]
+> Özel ölçümleri görüntülemek için bir okuyucu veya katkıda bulunan rolü olmanız gerekir.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Özel ölçümlerinize Azure portal aracılığıyla gözatamazsınız
-1.  [Azure Portal](https://portal.azure.com) gidin.
-2.  **İzleyici** bölmesini seçin.
-3.  **Ölçümler**’i seçin.
-4.  Özel ölçümler oluşturmuş olduğunuz bir kaynağı seçin.
-5.  Özel ölçümünüzün ölçüm ad alanını seçin.
-6.  Özel ölçümü seçin.
+1.    [Azure portalına](https://portal.azure.com) gidin.
+2.    **İzleyici** bölmesini seçin.
+3.    **Ölçümler**’i seçin.
+4.    Özel ölçümler oluşturmuş olduğunuz bir kaynağı seçin.
+5.    Özel ölçümünüzün ölçüm ad alanını seçin.
+6.    Özel ölçümü seçin.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca Azure bölgelerinin bir alt kümesinde bulunabilir. Bu kısıtlama, ölçümlerin yalnızca desteklenen bölgelerden birindeki kaynaklar için yayımlanalabileceği anlamına gelir. Aşağıdaki tabloda, özel ölçümler için desteklenen Azure bölgelerinin kümesi listelenmektedir. Ayrıca, bu bölgelerdeki kaynaklara yönelik ölçümlerin yayımlanacağı ilgili uç noktaları listeler:

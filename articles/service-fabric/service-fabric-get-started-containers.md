@@ -4,11 +4,11 @@ description: Azure Service Fabric üzerinde ilk Windows kapsayıcı uygulamanız
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906253"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344548"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 
@@ -24,7 +24,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * Visual Studio 2015 veya Visual Studio 2019.
@@ -54,7 +54,7 @@ Kümeniz için gerekli olan kapsayıcıları içeren Windows Server sürümünü
 
 Docker Hub’ında bulunan [Python görüntüsünü](https://hub.docker.com/_/python/) temel alan bir görüntü oluşturun.
 
-Docker kapsayıcınızı bir Dockerfile içinde belirtin. Dockerfile, kapsayıcınızın içindeki ortamı ayarlama, çalıştırmak istediğiniz uygulamayı yükleme ve bağlantı noktalarını eşleme yönergelerinden oluşur. Dockerfile, görüntüyü oluşturan `docker build` komutunun girdisidir.
+Bir Dockerfile içinde Docker kapsayıcınızı belirtin. Dockerfile, kapsayıcınızın içindeki ortamı ayarlama, çalıştırmak istediğiniz uygulamayı yükleme ve bağlantı noktalarını eşleme yönergelerinden oluşur. Dockerfile, görüntüyü oluşturan `docker build` komutunun girdisidir.
 
 Boş bir dizin oluşturun ve *Dockerfile* dosyasını oluşturun (dosya uzantısı kullanmayın). Aşağıdakini *Dockerfile* dosyasına ekleyin ve değişikliklerinizi kaydedin:
 
@@ -83,13 +83,13 @@ CMD ["python", "app.py"]
 
 Daha fazla bilgi için [Dockerfile başvurusunu](https://docs.docker.com/engine/reference/builder/) okuyun.
 
-## <a name="create-a-basic-web-application"></a>Temel bir web uygulaması
+## <a name="create-a-basic-web-application"></a>Temel bir web uygulaması oluşturma
 Bağlantı noktası 80 üzerinden dinleyen ve `Hello World!` döndüren bir Flask web uygulaması oluşturun. Aynı dizinde, *requirements.txt* dosyasını oluşturun. Aşağıdakini dosyaya ekleyin ve değişikliklerinizi kaydedin:
 ```
 Flask
 ```
 
-Ayrıca, *app.py* dosyasını da oluşturun ve aşağıdaki kod parçacığını ekleyin:
+Ayrıca *app.py* dosyasını da oluşturun ve aşağıdaki kod parçacığını ekleyin:
 
 ```python
 from flask import Flask
@@ -238,7 +238,7 @@ Bu ortam değişkenleri, uygulama bildiriminde geçersiz kılınabilir:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Kapsayıcı bağlantı noktasından konak bağlantı noktasına eşlemeyi ve kapsayıcıdan kapsayıcıya keşfi yapılandırma
-Kapsayıcıyla iletişim kurmak için kullanılan konak bağlantı noktasını yapılandırın. Bağlantı noktası bağlama, hizmetin kapsayıcı içinde dinlediği bağlantı noktasını konaktaki bağlantı noktasıyla eşler. ApplicationManifest.xml dosyasının `ContainerHostPolicies` öğesine bir `PortBinding` öğesi ekleyin. Bu makalede `ContainerPort` değeri 80 (Dockerfile içinde belirtildiği gibi kapsayıcı 80 numaralı bağlantı noktasını gösterir) ve `EndpointRef` değeri "Guest1TypeEndpoint" (hizmet bildiriminde daha önce tanımlanmış olan uç nokta) olarak verilir. 8081 numaralı bağlantı noktasında hizmete gelen istekler, kapsayıcı üzerindeki 80 numaralı bağlantı noktasıyla eşlenir.
+Kapsayıcıyla iletişim kurmak için kullanılan konak bağlantı noktasını yapılandırın. Bağlantı noktası bağlama, hizmetin kapsayıcı içinde dinlediği bağlantı noktasını konaktaki bağlantı noktasıyla eşler. ApplicationManifest.xml dosyasının `PortBinding` öğesine bir `ContainerHostPolicies` öğesi ekleyin. Bu makalede `ContainerPort` değeri 80 (Dockerfile içinde belirtildiği gibi kapsayıcı 80 numaralı bağlantı noktasını gösterir) ve `EndpointRef` değeri "Guest1TypeEndpoint" (hizmet bildiriminde daha önce tanımlanmış olan uç nokta) olarak verilir. 8081 numaralı bağlantı noktasında hizmete gelen istekler, kapsayıcı üzerindeki 80 numaralı bağlantı noktasıyla eşlenir.
 
 ```xml
 <ServiceManifestImport>
@@ -283,7 +283,7 @@ Windows, kapsayıcılar için iki yalıtım modunu destekler: İşlem ve Hyper-V
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK ayarlarını yapılandırma 
 
-Service Fabric, v6.1 sürümünden itibaren [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) olaylarını otomatik olarak sistem durumu raporuyla tümleştirir. Bu, kapsayıcınızda **HEALTHCHECK** özelliği etkinse kapsayıcının sistem durumuna ilişkin Docker tarafından bildirilen her değişiklik için Service Fabric’in durumu bildireceği anlamına gelir. *health_status* özelliği *healthy* olduğunda [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)’da **OK** şeklinde bir durum raporu görüntülenirken, *health_status* özelliği *unhealthy* olduğunda **WARNING** görünür. 
+Service Fabric, v6.1 sürümünden itibaren [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) olaylarını otomatik olarak sistem durumu raporuyla tümleştirir. Bu, kapsayıcınızda **HEALTHCHECK** özelliği etkinse kapsayıcının sistem durumuna ilişkin Docker tarafından bildirilen her değişiklik için Service Fabric’in durumu bildireceği anlamına gelir. **health_status** özelliği [healthy](service-fabric-visualizing-your-cluster.md) olduğunda *Service Fabric Explorer*’da *OK* şeklinde bir durum raporu görüntülenirken, **health_status** özelliği *unhealthy* olduğunda *WARNING* görünür. 
 
 En son v 6.4 yenileme sürümü ile başlayarak, Docker HEALTHCHECK değerlendirmelerinin hata olarak bildirilmesi gerektiğini belirtme seçeneğiniz vardır. Bu seçenek etkinleştirilirse, *health_status* *sağlıklı* olduğunda bir **Tamam** sistem durumu raporu görüntülenir ve *health_status* *sağlıksız*olduğunda **hata** görüntülenir.
 
@@ -343,7 +343,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu
 
-Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örneğin:
+Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örnek:
  
 - Windows Server sürüm 1709 kullanılarak oluşturulan Windows Server kapsayıcıları, Windows Server sürüm 2016 çalıştıran bir konakta çalışmıyor. 
 - Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, Hyper-V yalıtım modunda yalnızca Windows Server sürüm 1709 çalıştıran bir konakta çalışır. 
@@ -351,7 +351,7 @@ Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri 
  
 Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örneğin:
+Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örnek:
 
 - Küme düğümlerinizin işletim sistemi ile uyumlu bir işletim sistemi ile kapsayıcıları dağıttığınızdan emin olun.
 - Kapsayıcı uygulamanız için belirtilen yalıtım modunun, dağıtıldığı düğümde kapsayıcı işletim sistemi desteğiyle tutarlı olduğundan emin olun.

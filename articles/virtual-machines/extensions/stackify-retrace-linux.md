@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073633"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383359"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Yeniden Izleme Linux Aracısı uzantısını stackbelirt
 
@@ -196,6 +196,6 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 90 | Etkinleştirme hatası | Hizmet başlatılamadı |
 | 100 | Hatayı devre dışı bırak | Hizmet durdurulamadı |
 | 110 | Hatayı devre dışı bırak | Hizmet kaldırılamadı |
-| 120 | Kaldırma hatası | Hizmet durdurulamadı |
+| 120 | Kaldırma Hatası | Hizmet durdurulamadı |
 
 Daha fazla yardıma ihtiyacınız varsa https://support.stackify.com' de Stackbelirt desteğiyle iletişim sağlayabilirsiniz.

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Resource Manager şablonu belgeleri
-summary: Resource Manager şablonu, projenizin altyapısını ve yapılandırmasını tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır.
+title: ARM şablonu belgeleri
+summary: Azure Resource Manager şablonları, projenizin altyapısını ve yapılandırmasını tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyalarıdır.
 metadata:
-  title: Azure Resource Manager belgeleri
+  title: ARM şablonu belgeleri
   description: Azure Resource Manager şablonu geliştirip bunları Azure kaynaklarını dağıtmak için kullanmayı öğrenin
   services: azure-resource-manager
   ms.service: azure-resource-manager
@@ -11,15 +11,15 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 0ea805d87db78d0a7fadad0a07e01e9387d568a5
+  ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75469939"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78299253"
 landingContent:
-- title: Azure Resource Manager şablonları hakkında
+- title: ARM şablonları hakkında
   linkLists:
   - linkListType: overview
     links:

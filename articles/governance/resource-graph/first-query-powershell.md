@@ -4,11 +4,11 @@ description: Bu hızlı başlangıçta, Azure PowerShell için kaynak Graph mod�
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304143"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360256"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
@@ -68,7 +68,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
    > [!NOTE]
    > Bu sorgu örneği, `order by` gibi bir sıralama değiştirici sağlamadığı için, bu sorgunun birden çok kez çalıştırılması muhtemelen istek başına farklı bir kaynak kümesi sunacaktır.
 
-1. Sorguyu `order by` **Ad** özelliğine güncelleştirin:
+1. Sorguyu `order by`**Ad** özelliğine güncelleştirin:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -78,7 +78,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
    > [!NOTE]
    > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu, sorgu sonuçlarını önce sınırlar, sonra düzenler.
 
-1. Sorguyu ilk önce `order by` **Ad** özelliğine ve ardından `limit`’e en iyi beş sonuca güncelleştirin:
+1. Sorguyu ilk önce `order by`**Ad** özelliğine ve ardından `limit`’e en iyi beş sonuca güncelleştirin:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`

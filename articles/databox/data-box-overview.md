@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380303"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box nedir?
 
@@ -59,7 +59,7 @@ Data Box cihazı bu sürümde aşağıdaki özelliklere sahiptir.
 | Belirtimler                                          | Açıklama              |
 |---------------------------------------------------------|--------------------------|
 | Ağırlık                                                  | < 50 lb                |
-| Boyutlar                                              | Cihaz genişliği: 309,0 mm Yükseklik: 430,4 mm Derinlik: 502,0 mm |            
+| Boyutlar                                              | Cihaz - Genişlik: 309,0 mm Yükseklik: 430,4 mm Derinlik: 502,0 mm |            
 | Raf alanı                                              | Yanlamasına rafa yerleştirildiğinde 7 U (rafa takılamaz)|
 | Gerekli kablolar                                         | 1 X güç kablosu (dahildir) <br> 2 RJ45 kablosu <br> 2 X SFP+ Twinax bakır kablo|
 | Depolama kapasitesi                                        | 100 TB boyutundaki cihaz, RAID 5 korumasından sonra 80 TB kullanılabilir kapasiteye sahip|

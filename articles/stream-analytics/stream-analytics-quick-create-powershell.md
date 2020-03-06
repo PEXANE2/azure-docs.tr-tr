@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431523"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382073"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
 
@@ -31,7 +31,7 @@ Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak 
 * Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.24 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) `az extension add --name azure-cli-iot-ext` IoT uzantısını yüklemek için kullanın.
 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve açılır tarayıcıda Azure kimlik bilgilerinizi girin:
 
@@ -305,7 +305,7 @@ New-AzStreamAnalyticsTransformation `
 
 3. **Çalıştır**’a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
-    ![Raspberry Pi Azure IoT Çevrimiçi Simülatörü](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
+    ![Raspberry PI Azure IoT Çevrimiçi simülatör](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics işini başlatıp çıktıyı denetleyin
 

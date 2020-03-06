@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cbeb1ccaed6ec2c62aaa731e88fcefbe84d1df02
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370888"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402733"
 ---
 # <a name="supported-data-format-details"></a>Desteklenen veri biçimi ayrıntıları
 
@@ -391,39 +391,39 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 
 Üstbilgi satırı taranırken, sütun adındaki herhangi bir tür bilgisi ayıklanır ve bu sütundaki hücreleri dönüştürmek için kullanılır. İşte bir tür değeri olan bir sütun adı örneği: "ColumnName (typeName)". Aşağıdaki büyük/küçük harf duyarsız tür adları desteklenir:
 
-**Sayılarının**
+#### <a name="numbers"></a>Numaralar
 
-    - EDM. Int64
-    - int
-    - long
-    - EDM. Double
-    - float
-    - double
-    - number
+- EDM. Int64
+- int
+- long
+- EDM. Double
+- float
+- double
+- number
 
-**Boolean**
+#### <a name="booleans"></a>Boole değerleri
 
-    - EDM. Boolean
-    - bool
-    - boole
+- EDM. Boolean
+- bool
+- boole
 
-**Tarihle**
+#### <a name="dates"></a>Tarihler
 
-    - EDM. DateTime
-    - date
-    - datetime
+- EDM. DateTime
+- date
+- datetime
 
-**Coğrafya**
+#### <a name="geography"></a>Coğrafya
 
-    - EDM. Coğrafya
-    - Coğrafya
+- EDM. Coğrafya
+- Coğrafya
 
-**Strings**
+#### <a name="strings"></a>Dizeler
 
-    - EDM. String
-    - varchar
-    - metin
-    - Case ' dizesi
+- EDM. String
+- varchar
+- metin
+- Case ' dizesi
 
 Üst bilgiden tür bilgisi ayıklanamaz ve bu, okurken dinamik yazma seçeneği etkinleştirildiyse, her bir hücre, ne kadar uygun olan veri türünü belirlemek için tek tek analiz edilir.
 

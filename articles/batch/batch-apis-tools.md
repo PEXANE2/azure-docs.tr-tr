@@ -10,11 +10,11 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 00d2a74946957f690979eec1d3a03a9b766299d8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025886"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394910"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API'lerine ve araçlarına genel bakış
 
@@ -37,11 +37,11 @@ Batch çözümleri geliştirdiğinizde, Azure aboneliğinizdeki aşağıdaki hes
 
 Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir veya Azure Batch iş yüklerinizi çalıştırmak ya da yönetmek için aşağıdaki istemci kitaplıklardan birini veya daha fazlasını kullanabilir.
 
-| eklentisi | API başvurusu | İndirin | Öğretici | Kod örnekleri | Daha Fazla Bilgi |
+| API | API başvurusu | İndirme | Öğretici | Kod örnekleri | Daha Fazla Bilgi |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |Yok |- |- | [Desteklenen Sürümler](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Sürüm notları](https://aka.ms/batch-net-dataplane-changelog) |
-| **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Öğretici](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
+| **Batch Python** |[docs.microsoft.com][api_python] |[Pypı][api_python_pypi] |[Öğretici](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Öğretici](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Benioku][api_sample_java] | [Benioku](https://github.com/Azure/azure-batch-sdk-for-java)|
 
@@ -49,11 +49,11 @@ Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir
 
 Batch için Azure Resource Manager API'leri, Batch hesaplarına programlı erişim sağlar. Bu API’leri kullanarak Batch hesaplarını, kotaları, uygulama paketlerini ve diğer kaynakları Microsoft.Batch sağlayıcısı üzerinden programlı bir şekilde yönetebilirsiniz.  
 
-| eklentisi | API başvurusu | İndirin | Öğretici | Kod örnekleri |
+| API | API başvurusu | İndirme | Öğretici | Kod örnekleri |
 | --- | --- | --- | --- | --- |
 | **Batch Yönetimi REST** |[docs.microsoft.com][api_rest_mgmt] |Yok |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Yönetimi .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Öğretici](batch-management-dotnet.md) |[GitHub][api_sample_net] |
-| **Batch Yönetimi Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
+| **Batch Yönetimi Python** |[docs.microsoft.com][api_python_mgmt] |[Pypı][api_python_mgmt_pypi] |- |- |
 | **Batch Yönetimi Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[NPM][api_nodejs_mgmt_npm] |- |- | 
 | **Batch Yönetimi Java** |- |[Maven][api_java_mgmt_jar] |- |- |
 ## <a name="batch-command-line-tools"></a>Batch komut satırı araçları

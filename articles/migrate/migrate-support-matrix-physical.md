@@ -4,11 +4,11 @@ description: Azure geçişi ile fiziksel sunucu değerlendirmesi desteği hakkı
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990343"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393326"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -25,7 +25,7 @@ Bu makaleyle Azure 'a geçiş için şirket içi makineleri değerlendirmek üze
 --- | ---
 **Değerlendirme limitleri**| Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 fiziksel sunucuyu bulur ve değerlendirin.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Bir proje, VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucuları, değerlendirme sınırlarına kadar içerebilir.
-**Bulma** | Azure geçişi gereci en fazla 250 fiziksel sunucu bulabilir.
+**Keşfini** | Azure geçişi gereci en fazla 250 fiziksel sunucu bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -53,7 +53,7 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS), 5671 ve 5672 (AMQP) bağlantı noktalarında giden bağlantılar.
 **Fiziksel sunucular** | **Windows:** WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar, Windows sunucularından yapılandırma ve performans meta verilerini çekme. <br/> **Linux:**  22 (UDP) bağlantı noktasındaki, Linux sunucularından yapılandırma ve performans meta verileri çekmek için gelen bağlantılar. |

@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356097"
 ---
 > [!NOTE]
 > Microsoft Flow artık güç otomatikleştirin. Daha fazla bilgi için bu [bloga](https://aka.ms/flow-now-pa) bakın.
@@ -82,7 +82,7 @@ Azure İşlevleri, WebJobs SDK’da derlendiğinden diğer Azure hizmetlerine y�
 
 |  | İşlevler | WebJobs SDK ile WebJobs |
 | --- | --- | --- |
-|[Otomatik ölçeklendirme](functions-scale.md#how-the-consumption-and-premium-plans-work) ile [sunucusuz uygulama modeli](https://azure.microsoft.com/solutions/serverless/)|✔||
+|[Otomatik ölçeklendirme](https://azure.microsoft.com/solutions/serverless/) ile [sunucusuz uygulama modeli](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Tarayıcıda geliştirme ve test etme](functions-create-first-azure-function.md) |✔||
 |[Kullanım başına ödeme fiyatlandırması](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps ile tümleştirme](functions-twitter-email.md)|✔||
@@ -100,7 +100,7 @@ Azure Işlevleri Azure App Service WebJobs 'dan daha fazla geliştirici verimlil
 
 WebJobs’ın en iyi seçenek olduğu iki senaryo aşağıda verilmiştir:
 
-* Olayları dinleyen kod (`JobHost` nesnesi) üzerinde daha fazla denetime ihtiyacınız vardır. İşlevler, [host.json](functions-host-json.md) dosyasında `JobHost` davranışını özelleştirmek için sınırlı sayıda yöntem sunar. Bazen bir JSON dosyasındaki dize tarafından belirtilemeyen şeyler yapmanız gerekir. Örneğin, yalnızca WebJobs SDK, Azure Depolama için özel bir yeniden deneme ilkesi yapılandırmanıza olanak sağlar.
+* Olayları dinleyen kod (`JobHost` nesnesi) üzerinde daha fazla denetime ihtiyacınız vardır. İşlevler, `JobHost`host.json[ dosyasında ](functions-host-json.md) davranışını özelleştirmek için sınırlı sayıda yöntem sunar. Bazen bir JSON dosyasındaki dize tarafından belirtilemeyen şeyler yapmanız gerekir. Örneğin, yalnızca WebJobs SDK, Azure Depolama için özel bir yeniden deneme ilkesi yapılandırmanıza olanak sağlar.
 * Kod parçacıklarını çalıştırmak istediğiniz App Service uygulamanız var ve bunları aynı Azure DevOps ortamında birlikte yönetmek istiyorsunuz.
 
 Azure veya üçüncü taraf hizmetleri tümleştirmek için kod parçacıklarını çalıştırmak istediğiniz diğer durumlarda, WebJobs SDK ile WebJobs üzerinden Azure İşlevleri’ni seçin.

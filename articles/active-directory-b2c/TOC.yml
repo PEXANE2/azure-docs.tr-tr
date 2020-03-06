@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: Kavramlar
   items:
+    - name: Azure AD B2C en iyi yöntemleri
+      href: best-practices.md
     - name: Uygulama türleri
       href: application-types.md
     - name: Kimlik doğrulama protokolleri

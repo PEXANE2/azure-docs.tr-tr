@@ -703,6 +703,10 @@
           href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Kullanılabilirlik alanına taşıma
           href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Bakım Denetimi yapılandırmalarını başka bölgeye taşıma
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Bakım Denetimi yapılandırma kaynaklarını başka bölgeye taşıma
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: AWS’Den ve şirket içi VM’lerden geçiş
           href: on-prem-to-azure.md
           items:

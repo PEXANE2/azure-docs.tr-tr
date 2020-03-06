@@ -8,19 +8,19 @@
       href: what-is-ml-studio.md
     - name: ML ürünlerimizi karşılaştırın
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: Öğreticiler
+- name: Hızlı Başlangıçlar
   items:
     - name: İlk denemenizi oluşturma
       displayName: quickstart
       href: create-experiment.md
-    - name: Tahmine dayalı çözüm oluşturma
-      items:
-        - name: 1 - Deneme oluşturma
-          href: tutorial-part1-credit-risk.md
-        - name: 2 - Eğitim ve değerlendirme
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 - Web hizmeti dağıtma
-          href: tutorial-part3-credit-risk-deploy.md
+- name: Öğreticiler
+  items:
+    - name: '1: Tahmine dayalı deneme oluşturma'
+      href: tutorial-part1-credit-risk.md
+    - name: '2: Çözümü eğitme ve değerlendirme'
+      href: tutorial-part2-credit-risk-train.md
+    - name: '3: Web hizmetini dağıtma'
+      href: tutorial-part3-credit-risk-deploy.md
 - name: Örnekler
   items:
     - name: Kullanılabilir veri kümeleri

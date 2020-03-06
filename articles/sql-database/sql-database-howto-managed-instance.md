@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
 ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811191"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356528"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda yönetilen örnek kullanma
 
@@ -32,7 +32,7 @@ Bu makalede, yönetilen örneğinizi yönetmenize ve yapılandırmanıza yardım
 
 - [Yönetilen örnek alt ağının boyutunu belirleme](sql-database-managed-instance-determine-size-vnet-subnet.md) – yönetilen örnek, içindeki kaynakları ekledikten sonra yeniden boyutlandırılanamaz alt ağa göre yerleştirilir. Bu nedenle, alt ağda dağıtmak istediğiniz örnek sayısına ve türlerine bağlı olarak alt ağ için hangi IP adresi aralığının gerekli olacağını hesaplamanız gerekir.
 - [Yönetilen bir örnek için yeni VNET ve alt ağ oluşturma](sql-database-managed-instance-create-vnet-subnet.md) – yönetilen örneklerinizi dağıtmak Istediğiniz Azure sanal ağı ve alt ağı [burada açıklanan ağ gereksinimlerine](sql-database-managed-instance-connectivity-architecture.md#network-requirements)göre yapılandırılmalıdır. Bu kılavuzda, yeni VNet ve alt ağını, yönetilen örnekler için doğru şekilde oluşturmanın en kolay yolunu bulabilirsiniz.
-- [Mevcut VNET ve alt ağı yönetilen bir örnek Için yapılandırma](sql-database-managed-instance-configure-vnet-subnet.md) – mevcut VNET ve alt ağınızı içinde yönetilen örnekleri dağıtmak üzere yapılandırmak istiyorsanız, [ağ gereksinimlerini](sql-database-managed-instance-connectivity-architecture.md#network-requirements) denetleyen betiği bulabilir ve şunları yapılandırabilirsiniz: gereksinimlere göre alt ağ.
+- [Mevcut VNET ve alt ağı yönetilen bir örnek Için yapılandırma](sql-database-managed-instance-configure-vnet-subnet.md) – mevcut VNET ve alt ağınızı içinde yönetilen örnekleri dağıtmak üzere yapılandırmak istiyorsanız, [ağ gereksinimlerini](sql-database-managed-instance-connectivity-architecture.md#network-requirements) denetleyen betiği bulabilir ve alt ağınızı gereksinimlere göre yapılandırır.
 - [Özel DNS yapılandırma](sql-database-managed-instance-custom-dns.md) – özel etki alanlarındaki dış kaynaklara, DB posta profillerinin bağlı sunucusu aracılığıyla yönetilen örneğinizden erişmek ISTIYORSANıZ özel DNS 'yi yapılandırmanız gerekir.
 - [Eşitleme ağ yapılandırması](sql-database-managed-instance-sync-network-configuration.md) - [uygulamanızı bir Azure sanal ağı ile tümleştirseniz](../app-service/web-sites-integrate-with-vnet.md)de,&#39;yönetilen bir örneğe bağlantı kurabilirsiniz. Deneyebileceğiniz bir şey, hizmet planınız için ağ yapılandırmasını yenilememiz olabilir.
 - [Yönetim uç noktası IP adresini bul](sql-database-managed-instance-find-management-endpoint-ip-address.md) – yönetilen örnek, yönetim amaçlarıyla genel uç noktasını kullanır. Yönetim uç noktasının IP adresini burada açıklanan betiği kullanarak belirleyebilirsiniz.

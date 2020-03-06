@@ -121,6 +121,7 @@
         - name: Dinamik bildirimler
           href: filters-dynamic-manifest-overview.md
         - name: Filtreler
+          displayName: "manifest, dynamic manifest, filter, hls, dash, m3u8, mpd,\tcontent delivery"
           href: filters-concept.md
         - name: Akış Uç Noktaları
           displayName: 'origin, packager, cdn'
@@ -307,6 +308,8 @@
       items:
         - name: Varlık yayımlama - CLI
           href: cli-publish-asset.md
+        - name: Akış bulucusu ve derleme URL’leri oluşturma
+          href: create-streaming-locator-build-url.md
         - name: Sonuçları indirme
           href: download-results-howto.md
         - name: Sinyal açıklayıcı ses

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1c5dd5ebd5023b75aad5dabf6a721a1193a6224d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500564"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272197"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -42,6 +42,7 @@ Hizmet planları:
 - **PostgreSQL için Azure Veritabanı** - Rezervasyona yalnızca işlem maliyetleri dahildir. PostgreSQL Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
 - **MariaDB için Azure Veritabanı** - Rezervasyona yalnızca işlem maliyetleri dahildir. MariaDB Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
 - **Azure Veri Gezgini** - Rezervasyon sair gider ücretlerini kapsar. Kümelerle ilişkili işlem, ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
+- **Azure Cache for Redis** - Rezervasyona yalnızca işlem maliyetleri dahildir. Redis önbellek örnekleriyle ilişkili ağ veya depolama ücretleri rezervasyonun kapsamında değildir.
 - **Premium SSD Yönetilen Diskler** - Rezervasyon belirtilen disk SKU’su için yapılır. 
 
 Yazılım planları:

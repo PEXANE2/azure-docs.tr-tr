@@ -6,11 +6,11 @@ ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: e31d4a5f513355e61cb53a6548b3091637bfe9a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379160"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma
 
@@ -20,9 +20,9 @@ Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bi
 
 Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları](overview.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="get-tools"></a>Araçları edinin
+## <a name="get-tools"></a>Araçları al
 
 Şablonlar oluşturmanız ve dağıtmanız için ihtiyacınız olan araçlara sahip olduğunuzdan emin olalım.
 
@@ -75,17 +75,17 @@ Tamam, şablonlar hakkında öğrenmeye başlamaya hazırsınız.
 
 Tebrikler, ilk şablonunuzu oluşturdunuz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure PowerShell/Azure CLı ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az login
@@ -96,7 +96,7 @@ az login
 
 Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, kaynak grubunu Azure CLı veya Azure PowerShell ile oluşturun. Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -104,7 +104,7 @@ New-AzResourceGroup `
   -Location "Central US"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -118,7 +118,7 @@ az group create \
 
 Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlaması için, şablon dosyasının yolunu depolayan bir değişken de oluşturun. Bu değişken, dağıtım komutlarını çalıştırmanızı kolaylaştırır, çünkü her dağıttığınız zaman yolu yeniden yazmanız gerekmez.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -142,11 +142,11 @@ az group deployment create \
 
 Dağıtım komutu sonuçları döndürür. Dağıtımın başarılı olup olmadığını görmek için `ProvisioningState` bakın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![PowerShell dağıtımı sağlama durumu](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ![Azure CLı dağıtımı sağlama durumu](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
@@ -156,7 +156,7 @@ Dağıtım komutu sonuçları döndürür. Dağıtımın başarılı olup olmad�
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

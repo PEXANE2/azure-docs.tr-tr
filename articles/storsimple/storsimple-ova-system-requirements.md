@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273780"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365746"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Sanal Dizini sistem gereksinimleri
 
@@ -91,12 +91,12 @@ Aşağıdaki tabloda Iscsı, SMB, bulut veya Yönetim trafiğine izin vermek iç
 
 | **Bağlantı noktası No.<sup>1</sup>** | **Dışarı veya dışarı** | **Bağlantı noktası kapsamı** | **Gerekli** | **Notlar** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Çıkış |WAN |Hayır |Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
-| TCP 443 (HTTPS) |Çıkış |WAN |Evet |Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
-| UDP 53 (DNS) |Çıkış |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. <br></br> Bir dosya sunucusu dağıtıyorsanız, yerel DNS sunucusu kullanmanızı öneririz. |
-| UDP 123 (NTP) |Çıkış |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir.<br></br> Bir dosya sunucusu dağıtıyorsanız, Active Directory etki alanı denetleyicileriniz ile zaman eşitlemesini öneririz. |
-| TCP 80 (HTTP) |İçinde |LAN |Evet |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. <br></br> HTTP üzerinden yerel kullanıcı arabirimine erişmenin otomatik olarak HTTPS 'ye yönlendirilmesini unutmayın. |
-| TCP 443 (HTTPS) |İçinde |LAN |Evet |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. |
+| TCP 80 (HTTP) |Dışı |SW |Hayır |Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
+| TCP 443 (HTTPS) |Dışı |SW |Yes |Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
+| UDP 53 (DNS) |Dışı |SW |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. <br></br> Bir dosya sunucusu dağıtıyorsanız, yerel DNS sunucusu kullanmanızı öneririz. |
+| UDP 123 (NTP) |Dışı |SW |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir.<br></br> Bir dosya sunucusu dağıtıyorsanız, Active Directory etki alanı denetleyicileriniz ile zaman eşitlemesini öneririz. |
+| TCP 80 (HTTP) |İçinde |LAN |Yes |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. <br></br> HTTP üzerinden yerel kullanıcı arabirimine erişmenin otomatik olarak HTTPS 'ye yönlendirilmesini unutmayın. |
+| TCP 443 (HTTPS) |İçinde |LAN |Yes |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. |
 | TCP 3260 (Iscsı) |İçinde |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
 
 <sup>1</sup> genel Internet üzerinde hiçbir gelen bağlantı noktasının açık olması gerekmez.

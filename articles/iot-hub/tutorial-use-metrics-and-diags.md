@@ -9,11 +9,11 @@ ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 7ce56237631b858347a99c310751d4f2c1506e10
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108224"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396573"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 

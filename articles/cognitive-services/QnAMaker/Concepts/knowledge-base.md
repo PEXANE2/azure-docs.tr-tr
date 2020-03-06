@@ -4,11 +4,11 @@ description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili b
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843382"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389162"
 ---
 # <a name="importing-from-data-sources"></a>Veri kaynaklarından içeri aktarma
 
@@ -61,7 +61,7 @@ Birden çok yönlü `.tsv`için olan sütun, çoklu-açma **Istemlerine**özgüd
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası geliştirme yaşam döngüsü](./development-lifecycle-knowledge-base.md)
+> [Bilgi bankasındaki geliştirme yaşam döngüsü](./development-lifecycle-knowledge-base.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

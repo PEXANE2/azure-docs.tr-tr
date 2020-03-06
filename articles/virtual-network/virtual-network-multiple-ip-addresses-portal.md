@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
 ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646407"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357726"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure portal kullanarak sanal makinelere birden çok IP adresi atama
 

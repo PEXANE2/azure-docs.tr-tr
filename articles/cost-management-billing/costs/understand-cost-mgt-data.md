@@ -4,23 +4,25 @@ description: Bu makale Azure Maliyet Yönetimi verilerini daha iyi anlamanıza v
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560618"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245366"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
 Bu makale, Azure Maliyet Yönetimi'ndeki Azure maliyet ve kullanım verilerini daha iyi anlamanıza yardımcı olur. Verilerin hangi sıklıkta işlendiği, toplandığı, gösterildiği ve kapatıldığını açıklar. Azure kullanımı için aylık olarak faturalandırılırsınız. Faturalama dönemleri aylık dönemler olsa da döngü başlangıç ve bitiş tarihleri abonelik türüne göre farklılık gösterir. Maliyet Yönetimi'nin kullanım verilerini alma sıklığı birçok faktöre bağlıdır. Bu faktörlerden bazıları, verileri işleme süresi ve Azure hizmetlerinin kullanım bilgilerini faturalama sistemine gönderme sıklığıdır.
 
 Maliyet Yönetimi, rezervasyonlar ve Kurumsal Anlaşma (EA) hesapları için üçüncü taraf teklifler dahil olmak üzere tüm kullanımları ve satın alma işlemlerini kapsar. Microsoft Müşteri Sözleşmesi hesapları ve kullandıkça öde ücretlerini kullanan bağımsız abonelikler yalnızca Azure ve Market hizmetlerinin kullanımını kapsar. Destek ve diğer maliyetler dahil değildir. Maliyetler, fatura oluşturulana kadar tahmini değerlerdir ve krediler dikkate alınmaz.
+
+Yeni bir aboneliğiniz varsa Maliyet Yönetimi özelliklerini hemen kullanamazsınız. Maliyet Yönetimi özelliklerini kullanabilmek için 48 saat kadar beklemeniz gerekebilir.
 
 ## <a name="supported-microsoft-azure-offers"></a>Desteklenen Microsoft Azure teklifleri
 
