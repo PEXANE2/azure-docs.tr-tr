@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.openlocfilehash: c51387e92a100cabc5b35ccc7abde0483e77b5b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917365"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378503"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
@@ -91,7 +91,7 @@ Hayır. Azure AD Domain Services yönetilen bir etki alanı oluşturduktan sonra
 Hayır. Uzak Masaüstü 'Nü kullanarak yönetilen etki alanı için etki alanı denetleyicilerine bağlanma izniniz yok. *AAD DC yöneticileri* grubunun üyeleri, Active Directory Yönetim MERKEZI (ADAC) veya ad POWERSHELL gibi ad yönetim araçlarını kullanarak yönetilen etki alanını yönetebilir. Bu araçlar, yönetilen etki alanına katılmış bir Windows Server üzerinde *uzak sunucu yönetim araçları* özelliği kullanılarak yüklenir. Daha fazla bilgi için bkz. [Azure AD Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için YÖNETIM VM oluşturma](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Azure AD Domain Services etkinleştirdim. Makinelere bu etki alanına katılması için hangi kullanıcı hesabını kullanabilirim?
-*AAD DC yöneticileri* yönetim grubunun üyeleri, etki alanına katılabilir makinelere sahip olabilir. Ayrıca, bu grubun üyelerine, etki alanına katılmış makinelere uzak masaüstü erişimi verilir.
+Azure AD DS yönetilen etki alanının parçası olan herhangi bir kullanıcı hesabı bir VM 'ye katılabilir. *AAD DC Administrators* grubunun üyelerine, yönetilen etki alanına katılmış makinelere uzak masaüstü erişimi verilir.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services tarafından belirtilen yönetilen etki alanı için etki alanı yöneticisi ayrıcalıklarına sahip mıyım?
 Hayır. Yönetilen etki alanında yönetim ayrıcalıkları verilmemiş. Etki alanı *Yöneticisi* ve *Kurumsal Yönetici* ayrıcalıkları, etki alanı içinde kullanabilmeniz için kullanılamaz. Şirket içi Active Directory etki alanı yöneticisinin veya kurumsal yönetici gruplarının üyelerine, yönetilen etki alanında etki alanı/kuruluş yöneticisi ayrıcalıkları de verilmez.

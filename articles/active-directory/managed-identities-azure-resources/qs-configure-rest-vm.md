@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429996"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375584"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API çağrılarını kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -33,9 +33,9 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
 - Azure VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
 - Azure VM 'ye Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md). **Gözden geçirmeyi unutmayın [sistem tarafından atanan ve kullanıcı tarafından atanan bir yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Windows kullanıyorsanız, [Linux Için Windows alt sistemini](https://msdn.microsoft.com/commandline/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
 - [Linux Için Windows alt sistemi](https://msdn.microsoft.com/commandline/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
@@ -51,7 +51,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
 Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](/cli/azure/group/#az-group-create) komutunu kullanarak bir [kaynak grubu](../../azure-resource-manager/management/overview.md#terminology) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
+1. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](../../azure-resource-manager/management/overview.md#terminology) komutunu kullanarak bir [kaynak grubu](/cli/azure/group/#az-group-create) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -83,7 +83,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak i
    
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
    
    **İstek gövdesi**
@@ -172,7 +172,7 @@ Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliğ
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
    
    **İstek gövdesi**
@@ -204,7 +204,7 @@ Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliğ
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -239,7 +239,7 @@ Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliğ
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -282,7 +282,7 @@ Bir VM 'de sistem tarafından atanan yönetilen kimliği devre dışı bırakmak
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -341,7 +341,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -422,7 +422,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -534,7 +534,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
  
    **İstek gövdesi**
@@ -566,7 +566,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -602,7 +602,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -641,7 +641,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -682,7 +682,7 @@ Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınız�
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.
  
    VM 'ye atanmış Yönetilen kimlikler varsa, bu değerler `identity` değerindeki yanıtta listelenir.
@@ -705,7 +705,7 @@ Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınız�
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -737,7 +737,7 @@ Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınız�
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        | 
 
    **İstek gövdesi**
@@ -767,7 +767,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
 |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**
@@ -794,7 +794,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
 |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.| 
 
 **İstek gövdesi**

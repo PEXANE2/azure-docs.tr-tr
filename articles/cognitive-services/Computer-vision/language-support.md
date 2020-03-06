@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365490"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
 
@@ -30,11 +30,11 @@ OCR, giriş malzemesinin dilini otomatik olarak algılar, bu nedenle API çağr�
 |Dil| Dil kodu | OCR APı 'SI |
 |:-----|:----:|:-----:|
 |Arapça | `ar`|✔ |
-|Çince (Basitleştirilmiş) | `zh-Hans`|✔ |
-|Çince (Geleneksel) | `zh-Hant`|✔ |
+|ve | `zh-Hans`|✔ |
+|seçenekleri yerine | `zh-Hant`|✔ |
 |Çekçe | `cs` |✔ |
 |Danca | `da` |✔ |
-|Hollanda dili | `nl` |✔ |
+|Felemenkçe | `nl` |✔ |
 |Türkçe | `en` |✔ |
 |Fince | `fi` |✔ |
 |Fransızca | `fr` |✔ |
@@ -60,7 +60,7 @@ OCR, giriş malzemesinin dilini otomatik olarak algılar, bu nedenle API çağr�
 
 [Analyze-Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sindeki bazı eylemler, `language` sorgu parametresiyle belirtilen diğer dillerde sonuç döndürebilir. Diğer Eylemler, belirtilen dilin ne olduğuna bakmaksızın sonuçları Ingilizce olarak döndürür ve bazıları desteklenmeyen diller için bir özel durum oluşturur. Eylemler `visualFeatures` ve `details` sorgu parametreleriyle belirtilir; görüntü analizi ile yapabileceğiniz tüm eylemlerin listesini görmek için bkz. [genel bakış](home.md) .
 
-|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Renk | Yüzler | Resim Türü | Nesneler | Ünlüler | Sakal |
+|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkinlere | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlüler | Sakal |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Çince | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Türkçe | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

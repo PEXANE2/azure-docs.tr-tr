@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442024"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397331"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
 
@@ -56,6 +56,6 @@ Aşağıdaki tabloda, MongoDB için Azure Cosmos DB API 'SI kullanılırken yere
 
 Açık kaynaklı API 'lerle Azure Cosmos DB API 'Ler arasındaki tutarlılık düzeyleri ve uyumluluk hakkında daha fazla bilgi edinin. Aşağıdaki makalelere bakın:
 
-* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans seçenekleri](consistency-levels-tradeoffs.md)
+* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
 * [MongoDB için Azure Cosmos DB API 'sinin desteklediği MongoDB özellikleri](mongodb-feature-support.md)
 * [Azure Cosmos DB tarafından desteklenen Apache Cassandra özellikleri Cassandra API](cassandra-support.md)

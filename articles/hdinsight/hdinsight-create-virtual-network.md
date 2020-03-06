@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073628"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359989"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri için sanal ağlar oluşturma
 
@@ -48,7 +48,7 @@ Aşağıdaki kaynak yönetimi şablonu, gelen trafiği kısıtlayan bir sanal a�
 Gelen trafiği kısıtlayan ve Kuzey Avrupa bölgenin IP adreslerinden gelen trafiğe izin veren bir sanal ağ oluşturmak için aşağıdaki PowerShell betiğini kullanın.
 
 > [!IMPORTANT]  
-> Bu örnekte ve `hdirule1` `hdirule2` için IP adreslerini, kullanmakta olduğunuz Azure bölgesiyle eşleşecek şekilde değiştirin. Bu bilgi [HDInsight YÖNETIM IP adreslerini](hdinsight-management-ip-addresses.md)bulabilirsiniz.
+> `hdirule1` için IP adreslerini ve bu örnekteki `hdirule2`, kullanmakta olduğunuz Azure bölgesiyle eşleşecek şekilde değiştirin. Bu bilgi [HDInsight YÖNETIM IP adreslerini](hdinsight-management-ip-addresses.md)bulabilirsiniz.
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
@@ -162,7 +162,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 Gelen trafiği kısıtlayan bir sanal ağ oluşturmak için aşağıdaki adımları kullanın, ancak HDInsight için gereken IP adreslerinden gelen trafiğe izin verir.
 
-1. Adlı `hdisecure`yeni bir ağ güvenlik grubu oluşturmak için aşağıdaki komutu kullanın. Azure `RESOURCEGROUP` sanal ağını içeren kaynak grubuyla değiştirin. Grubun `LOCATION` oluşturulduğu konum (bölge) ile değiştirin.
+1. `hdisecure`adlı yeni bir ağ güvenlik grubu oluşturmak için aşağıdaki komutu kullanın. `RESOURCEGROUP`, Azure sanal ağını içeren kaynak grubuyla değiştirin. `LOCATION`, grubun oluşturulduğu konum (bölge) ile değiştirin.
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -170,10 +170,10 @@ Gelen trafiği kısıtlayan bir sanal ağ oluşturmak için aşağıdaki adımla
 
     Grup oluşturulduktan sonra, yeni grup hakkında bilgi alırsınız.
 
-2. Azure HDInsight sistem durumu ve yönetim hizmetinden bağlantı noktası 443 üzerinde gelen iletişime izin veren yeni ağ güvenlik grubuna kurallar eklemek için aşağıdakileri kullanın. Azure `RESOURCEGROUP` sanal ağını içeren kaynak grubunun adıyla değiştirin.
+2. Azure HDInsight sistem durumu ve yönetim hizmetinden bağlantı noktası 443 üzerinde gelen iletişime izin veren yeni ağ güvenlik grubuna kurallar eklemek için aşağıdakileri kullanın. `RESOURCEGROUP`, Azure sanal ağını içeren kaynak grubunun adıyla değiştirin.
 
     > [!IMPORTANT]  
-    > Bu örnekte ve `hdirule1` `hdirule2` için IP adreslerini, kullanmakta olduğunuz Azure bölgesiyle eşleşecek şekilde değiştirin. Bu bilgileri [HDInsight YÖNETIM IP adreslerinde](hdinsight-management-ip-addresses.md)bulabilirsiniz.
+    > `hdirule1` için IP adreslerini ve bu örnekteki `hdirule2`, kullanmakta olduğunuz Azure bölgesiyle eşleşecek şekilde değiştirin. Bu bilgileri [HDInsight YÖNETIM IP adreslerinde](hdinsight-management-ip-addresses.md)bulabilirsiniz.
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -194,7 +194,7 @@ Gelen trafiği kısıtlayan bir sanal ağ oluşturmak için aşağıdaki adımla
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
 
-4. Ağ güvenlik grubunu bir alt ağa uygulamak için aşağıdaki komutu kullanın. `GUID` Ve`RESOURCEGROUP` değerlerini, önceki adımdan geri dönenler ile değiştirin. Ve `VNETNAME` ' `SUBNETNAME` i oluşturmak istediğiniz sanal ağ adı ve alt ağ adıyla değiştirin.
+4. Ağ güvenlik grubunu bir alt ağa uygulamak için aşağıdaki komutu kullanın. `GUID` ve `RESOURCEGROUP` değerlerini, önceki adımdan geri dönenler ile değiştirin. `VNETNAME` ve `SUBNETNAME`, oluşturmak istediğiniz sanal ağ adı ve alt ağ adıyla değiştirin.
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -211,7 +211,7 @@ Aşağıdaki kod, Internet 'ten SSH erişiminin nasıl etkinleştirileceğini g�
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 ```
 
-## <a id="example-dns"></a>Örneğinde DNS yapılandırması
+## <a id="example-dns"></a>Örnek: DNS yapılandırması
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Bir sanal ağ ile bağlı şirket içi ağ arasında ad çözümlemesi
 
@@ -227,7 +227,7 @@ Sanal ağdaki özel DNS sunucusunda:
 
 1. Sanal ağın DNS sonekini bulmak için Azure PowerShell ya da Azure CLı kullanın:
 
-    Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+    `RESOURCEGROUP`, sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -248,7 +248,7 @@ Sanal ağdaki özel DNS sunucusunda:
     };
     ```
 
-    Değeri, `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` sanal ağınızın DNS son eki ile değiştirin.
+    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` değerini sanal ağınızın DNS son eki ile değiştirin.
 
     Bu yapılandırma, sanal ağın DNS son ekine yönelik tüm DNS isteklerini Azure özyinelemeli çözümleyici 'ye yönlendirir.
 
@@ -282,13 +282,13 @@ Sanal ağdaki özel DNS sunucusunda:
     };
     ```
     
-    * Değeri, `10.0.0.0/16` sanal Ağınızın IP adresi aralığıyla değiştirin. Bu giriş, bu aralıktaki ad çözümleme isteği adreslerine izin verir.
+    * `10.0.0.0/16` değerini sanal Ağınızın IP adresi aralığıyla değiştirin. Bu giriş, bu aralıktaki ad çözümleme isteği adreslerine izin verir.
 
-    * Şirket içi ağın `acl goodclients { ... }` IP adresi aralığını bölümüne ekleyin.  Giriş, şirket içi ağdaki kaynaklardan ad çözümleme isteklerine izin verir.
+    * Şirket içi ağın IP adresi aralığını `acl goodclients { ... }` bölümüne ekleyin.  Giriş, şirket içi ağdaki kaynaklardan ad çözümleme isteklerine izin verir.
     
-    * Değeri `192.168.0.1` , şirket içi DNS sunucunuzun IP adresi ile değiştirin. Bu giriş, diğer tüm DNS isteklerini şirket içi DNS sunucusuna yönlendirir.
+    * `192.168.0.1` değerini, şirket içi DNS sunucunuzun IP adresi ile değiştirin. Bu giriş, diğer tüm DNS isteklerini şirket içi DNS sunucusuna yönlendirir.
 
-3. Yapılandırmayı kullanmak için, bağla ' yı yeniden başlatın. Örneğin: `sudo service bind9 restart`.
+3. Yapılandırmayı kullanmak için, bağla ' yı yeniden başlatın. Örneğin, `sudo service bind9 restart`.
 
 4. Şirket içi DNS sunucusuna koşullu iletici ekleyin. Koşullu ileticiyi, 1. adımdan özel DNS sunucusuna DNS son eki için istek gönderecek şekilde yapılandırın.
 
@@ -309,7 +309,7 @@ Bu örnekte aşağıdaki varsayımlar yapılır:
 
 1. Her iki sanal ağın da DNS sonekini bulmak için Azure PowerShell veya Azure CLı kullanın:
 
-    Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+    `RESOURCEGROUP`, sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -320,7 +320,7 @@ Bu örnekte aşağıdaki varsayımlar yapılır:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Özel DNS sunucusunda `/etc/bind/named.config.local` dosyanın içeriği olarak aşağıdaki metni kullanın. Bu değişikliği, her iki sanal ağdaki özel DNS sunucusunda yapın.
+2. Özel DNS sunucusundaki `/etc/bind/named.config.local` dosyanın içeriği olarak aşağıdaki metni kullanın. Bu değişikliği, her iki sanal ağdaki özel DNS sunucusunda yapın.
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -330,7 +330,7 @@ Bu örnekte aşağıdaki varsayımlar yapılır:
     };
     ```
 
-    Değeri, `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` __diğer__ sanal ağın DNS son eki ile değiştirin. Bu giriş, uzak ağın DNS son ekine yönelik istekleri o ağdaki özel DNS 'e yönlendirir.
+    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` değerini __diğer__ sanal ağın DNS son eki ile değiştirin. Bu giriş, uzak ağın DNS son ekine yönelik istekleri o ağdaki özel DNS 'e yönlendirir.
 
 3. Her iki sanal ağdaki özel DNS sunucularında, `/etc/bind/named.conf.options` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
@@ -361,11 +361,11 @@ Bu örnekte aşağıdaki varsayımlar yapılır:
     };
     ```
     
-   `10.0.0.0/16` Ve`10.1.0.0/16` değerlerini sanal ağlarınızın IP adresi aralıklarıyla değiştirin. Bu giriş, her ağdaki kaynakların DNS sunucularına istek yapmasına izin verir.
+   `10.0.0.0/16` ve `10.1.0.0/16` değerlerini sanal ağlarınızın IP adresi aralıklarıyla değiştirin. Bu giriş, her ağdaki kaynakların DNS sunucularına istek yapmasına izin verir.
 
     Sanal ağların DNS sonekleri (örneğin, microsoft.com) için olmayan istekler Azure özyinelemeli çözümleyici tarafından işlenir.
 
-4. Yapılandırmayı kullanmak için, bağla ' yı yeniden başlatın. Örneğin, `sudo service bind9 restart` her iki DNS sunucusunda.
+4. Yapılandırmayı kullanmak için, bağla ' yı yeniden başlatın. Örneğin, her iki DNS sunucusu üzerinde `sudo service bind9 restart`.
 
 Bu adımları tamamladıktan sonra, tam etki alanı adlarını (FQDN) kullanarak sanal ağdaki kaynaklara bağlanabilirsiniz. Artık HDInsight 'ı sanal ağa yükleyebilirsiniz.
 

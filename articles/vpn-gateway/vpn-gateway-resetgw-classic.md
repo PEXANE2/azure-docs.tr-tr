@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379231"
 ---
-# <a name="reset-a-vpn-gateway"></a>VPN Gateway’i sıfırlama
+# <a name="reset-a-vpn-gateway"></a>VPN Gateway sıfırlama
 
 Bir veya daha fazla Siteden Siteye VPN tünelinde şirketler arası VPN bağlantısını kaybederseniz bir Azure VPN ağ geçidinin sıfırlanması yararlıdır. Bu durumda şirket içi VPN cihazlarınızın tümü düzgün çalışır, ancak Azure VPN ağ geçitleriyle IPsec tünelleri kuramaz. Bu makale, VPN ağ geçidinizi sıfırlamanıza yardımcı olur.
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Sonuç:
+Kaynaklanan
 
 Bir dönüş sonucu aldığınızda, ağ geçidi sıfırlamasının başarılı olduğunu varsayabilirsiniz. Ancak, dönüş sonucunda, sıfırlama işleminin başarılı olduğunu açıkça belirten hiçbir şey yoktur. Tam olarak ağ geçidi sıfırlamasının gerçekleştiği sırada bakmak isterseniz, bu bilgileri [Azure Portal](https://portal.azure.com)görüntüleyebilirsiniz. Portalda **' GatewayName '-> kaynak durumu '** a gidin.
 
@@ -77,7 +77,7 @@ Aşağıdaki örnek, "Group TestRG1 TestVNet1" adlı bir sanal ağ için ağ ge�
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-Sonuç:
+Kaynaklanan
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ Ağ geçidini sıfırlamak için [az Network VNET-Gateway Reset](https://docs.mi
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Sonuç:
+Kaynaklanan
 
 Bir dönüş sonucu aldığınızda, ağ geçidi sıfırlamasının başarılı olduğunu varsayabilirsiniz. Ancak, dönüş sonucunda, sıfırlama işleminin başarılı olduğunu açıkça belirten hiçbir şey yoktur. Tam olarak ağ geçidi sıfırlamasının gerçekleştiği sırada bakmak isterseniz, bu bilgileri [Azure Portal](https://portal.azure.com)görüntüleyebilirsiniz. Portalda **' GatewayName '-> kaynak durumu '** a gidin.

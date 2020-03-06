@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357514"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services sertifikalara genel bakış
 Sertifikalar, Azure 'da bulut Hizmetleri ([hizmet sertifikaları](#what-are-service-certificates)) ve yönetim API 'siyle ([yönetim sertifikaları](#what-are-management-certificates)) kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türü için genel bir bakış sağlar ve bunları Azure 'a [oluşturma](#create) ve dağıtma.
@@ -26,17 +26,17 @@ Azure tarafından kullanılan sertifikalar özel veya ortak bir anahtar içerebi
 >Azure Cloud Services, AES256-SHA256 şifreli sertifikasını kabul etmez.
 
 ## <a name="what-are-service-certificates"></a>Hizmet sertifikaları nelerdir?
-Hizmet sertifikaları, bulut hizmetlerine iliştirilir ve hizmete ve hizmetten güvenli iletişimi etkinleştirir. Örneğin, bir Web rolü dağıttıysanız, sunulan bir HTTPS uç noktasının kimliğini doğrulayabilecek bir sertifika sağlamak istersiniz. Hizmet tanımınızda tanımlanan hizmet sertifikaları, rolünüzün bir örneğini çalıştıran sanal makineye otomatik olarak dağıtılır. 
+Hizmet sertifikaları, bulut hizmetlerine iliştirilir ve hizmetten ve hizmet üzerinden güvenli iletişimi etkinleştirir. Örneğin, bir Web rolü dağıttıysanız, sunulan bir HTTPS uç noktasının kimliğini doğrulayabilecek bir sertifika sağlamak istersiniz. Hizmet tanımınızda tanımlanan hizmet sertifikaları, rolünüzün bir örneğini çalıştıran sanal makineye otomatik olarak dağıtılır. 
 
-Hizmet sertifikalarını Azure portalı veya klasik dağıtım modelini kullanarak Azure'a yükleyebilirsiniz. Hizmet sertifikaları belirli bir bulut hizmeti ile ilişkilendirilir. Bunlar, hizmet tanımı dosyasındaki bir dağıtıma atanır.
+Hizmet sertifikalarını, Azure portal veya klasik dağıtım modelini kullanarak Azure 'a yükleyebilirsiniz. Hizmet sertifikaları belirli bir bulut hizmeti ile ilişkilendirilir. Bunlar, hizmet tanımı dosyasındaki bir dağıtıma atanır.
 
-Hizmet sertifikaları hizmetinizden ayrı olarak yönetilebilir ve farklı bireyler tarafından yönetilebilir. Örneğin, bir geliştirici, bir BT yöneticisinin daha önce Azure 'a yüklediği bir sertifikaya başvuran bir hizmet paketini karşıya yükleyebilir. BT yöneticisi, yeni bir hizmet paketini karşıya yüklemeye gerek kalmadan bu sertifikayı yönetebilir ve yenileyebilir (hizmetin yapılandırmasını değiştirerek). Yeni bir hizmet paketi olmadan güncelleştirme, sertifikanın mantıksal adı, mağaza adı ve konumu hizmet tanım dosyasında olduğundan ve sertifika parmak izi hizmet yapılandırma dosyasında belirtildiği için mümkün değildir. Sertifikayı güncelleştirmek için yalnızca yeni bir sertifika yüklemeniz ve hizmet yapılandırma dosyasındaki parmak izi değerini değiştirmeniz gerekir.
+Hizmet sertifikaları hizmetinizden ayrı olarak yönetilebilir ve farklı bireyler tarafından yönetilebilir. Örneğin, bir geliştirici, bir BT yöneticisinin daha önce Azure 'a yüklediği bir sertifikaya başvuran bir hizmet paketini karşıya yükleyebilir. Bir BT Yöneticisi, yeni bir hizmet paketini karşıya yüklemeye gerek kalmadan bu sertifikayı yönetebilir ve yenileyebilir (hizmetin yapılandırmasını değiştirerek). Yeni bir hizmet paketi olmadan güncelleştirme, sertifikanın mantıksal adı, mağaza adı ve konumu hizmet tanım dosyasında olduğundan ve sertifika parmak izi hizmet yapılandırma dosyasında belirtildiği için mümkün değildir. Sertifikayı güncelleştirmek için, yalnızca yeni bir sertifika yüklemeniz ve hizmet yapılandırma dosyasındaki parmak izi değerini değiştirmeniz gerekir.
 
 >[!Note]
 >[Cloud SERVICES SSS-yapılandırma ve yönetim](cloud-services-configuration-and-management-faq.md) makalesinde sertifikalar hakkında bazı yararlı bilgiler bulunur.
 
 ## <a name="what-are-management-certificates"></a>Yönetim sertifikaları nelerdir?
-Yönetim sertifikaları, klasik dağıtım modeliyle kimlik doğrulaması yapmanıza izin verir. Birçok program ve araç (Visual Studio veya Azure SDK gibi), çeşitli Azure hizmetlerinin yapılandırılmasını ve dağıtımını otomatik hale getirmek için bu sertifikaları kullanır. Bunlar gerçekten bulut hizmetleriyle ilgili değildir. 
+Yönetim sertifikaları, klasik dağıtım modeliyle kimlik doğrulaması yapmanıza izin verir. Birçok program ve araç (Visual Studio veya Azure SDK gibi), çeşitli Azure hizmetlerinin yapılandırmasını ve dağıtımını otomatik hale getirmek için bu sertifikaları kullanır. Bunlar gerçekten bulut hizmetleriyle ilgili değildir. 
 
 > [!WARNING]
 > Dikkat et! Bu tür sertifikalar, bunlarla ilişkili oldukları aboneliği yönetmek için kimliğini doğrulayan herkese izin verir. 

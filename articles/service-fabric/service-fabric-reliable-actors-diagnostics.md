@@ -1,16 +1,16 @@
 ---
-title: Aktörlerde tanılama ve izleme
+title: Aktör tanılama ve izleme
 description: Bu makalede, tarafından oluşturulan olaylar ve performans sayaçları da dahil olmak üzere Service Fabric Reliable Actors çalışma zamanındaki tanılama ve performans izleme özellikleri açıklanmaktadır.
 author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376741"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389591"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors için tanılama ve performans izlemesi
 Reliable Actors Runtime, [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını ve [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.

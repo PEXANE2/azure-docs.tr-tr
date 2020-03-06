@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544948"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362407"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -268,7 +268,7 @@ Linux istemcisi uzun süre boşta kaldığında istemcide "112" bağlama hatası
 
 Bağlantı aşağıdaki nedenlerle boşta kalabilir:
 
--   Varsayılan "geçici" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
+-   Varsayılan "yazılım yoluyla" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
 -   Eski çekirdeklerde bulunmayan son yeniden bağlantı düzeltmeleri
 
 ### <a name="solution"></a>Çözüm
@@ -288,6 +288,6 @@ Bu soruna geçici bir çözüm olarak donanım yoluyla bağlamayı belirtebilirs
 
 En son çekirdek sürümlerine yükseltemiyorsanız Azure dosya paylaşımında bir dosya tutup her 30 saniyede bir (veya daha sık) bu dosyaya yazarak bu soruna geçici bir çözüm getirebilirsiniz. Bunun, dosyaya oluşturma veya değiştirme tarihini yeniden yazma gibi bir yazma işlemi olması gerekir. Aksi takdirde önbelleğe alınan sonuçlar elde edebilirsiniz ve işleminiz yeniden bağlantıyı tetiklemeyebilir.
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

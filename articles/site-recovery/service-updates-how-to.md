@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363263"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery hizmet güncelleştirmeleri
 
@@ -48,7 +48,7 @@ Site Recovery süresi geçen bileşenleri (veya e-posta bildirimlerine abone old
 
 E-posta bildirimleri aşağıdaki şekilde gönderilir.
 
-**saat** | **Sıklık**
+**Işınızda** | **Sıklık**
 --- | ---
 bileşen süre sonu 60 gün önce | İki haftada bir
 Sonraki 53 gün | Haftada bir kez

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
 ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669123"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360881"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Izleyici ile neler izlenir?
 Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler açıklanır. 
@@ -114,8 +114,8 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Bilgi Koruma | Hayır | Yes | Hayır |  |
 |Intune | Hayır | Yes | Hayır |  |
 |IoT Central | Hayır | Hayır | Hayır |  |
-|IoT Hub | Yes | Yes | Hayır |  |
-|Key Vault | Yes | Yes | Hayır |  |
+|IoT Hub’ı | Yes | Yes | Hayır |  |
+|Anahtar Kasası | Yes | Yes | Hayır |  |
 |Kubernetes Hizmeti (AKS) | Hayır | Hayır | [Evet](insights/container-insights-overview.md)  |  |
 |Yük Dengeleyici | Yes | Yes | Hayır |  |
 |Logic Apps | Yes | Yes | Hayır |  |
@@ -139,11 +139,11 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Özel Bağlantı | Hayır | Hayır | Hayır |  |
 |Proje biriktirme Iletişim platformu | Hayır | Hayır | Hayır |  |
 |Red Hat OpenShift | Hayır | Hayır | Hayır |  |
-|Redis Cache | Yes | Yes | Hayır |  |
+|Redis Önbelleği | Yes | Yes | Hayır |  |
 |Kaynak Grafiği | Hayır | Hayır | Hayır |  |
 |Resource Manager | Hayır | Hayır | Hayır |  |
 |Perakende arama-Bing tarafından | Hayır | Hayır | Hayır |  |
-|Search | Yes | Yes | Hayır |  |
+|Arama | Yes | Yes | Hayır |  |
 |Service Bus | Yes | Yes | Hayır |  |
 |Service Fabric | Hayır | Yes | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
 |Kaydolma portalı | Hayır | Hayır | Hayır |  |
@@ -157,7 +157,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Depolama önbelleği | Hayır | Hayır | Hayır |  |
 |Depolama Eşitleme Hizmetleri | Hayır | Hayır | Hayır |  |
 |Akış Analizi | Yes | Yes | Hayır |  |
-|Time Series Insights | Yes | Yes | Hayır |  |
+|Zaman Serisi Öngörüleri | Yes | Yes | Hayır |  |
 |TINA | Hayır | Hayır | Hayır |  |
 |Traffic Manager | Yes | Yes | Hayır |  |
 |Evrensel Yazdırma | Hayır | Hayır | Hayır |  |

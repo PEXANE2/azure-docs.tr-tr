@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273364"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377783"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Hızlı Başlangıç: PowerShell ile konuk kullanıcı ekleme
 
@@ -73,7 +73,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 İstendiğinde kimlik bilgilerinizi girin.
 
-## <a name="send-an-invitation"></a>Davet gönder
+## <a name="send-an-invitation"></a>Davet gönderme
 
 1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın ( **"Sanda"** ve **sanda\@fabrikam.com** öğesini, test e-posta hesabınızın adı ve e-posta adresi ile değiştirin): 
 

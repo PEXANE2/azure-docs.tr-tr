@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.openlocfilehash: b971176909a9956cd674116963e8ca02fa60e8b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208957"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356879"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak bir Azure Işlevleri projesi oluşturma
 
@@ -32,7 +32,7 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 + [Node. js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). Sürümünüzü denetlemek için `npm --version` komutunu kullanın.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ Azure Işlevleri tarafından desteklenen [python 3,7](https://www.python.org/downloads/release/python-375/) veya [Python 3,6](https://www.python.org/downloads/release/python-368/). Python 3,8 henüz desteklenmiyor. 
++ Python [3,8](https://www.python.org/downloads/release/python-381/), Python [3,7](https://www.python.org/downloads/release/python-375/), Python [3,6](https://www.python.org/downloads/release/python-368/) Azure işlevleri tarafından desteklenir.
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)

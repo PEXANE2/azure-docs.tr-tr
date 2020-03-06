@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754919"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371610"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB bölümlendirme ve yatay ölçekleme
 
-Bu makalede Azure Cosmos DB içindeki fiziksel ve mantıksal bölümler açıklanmaktadır. Ayrıca, ölçekleme ve bölümleme için en iyi yöntemleri açıklar. 
+Bu makalede, Azure Cosmos DB’deki fiziksel ve mantıksal bölümler açıklanmaktadır. Makale, ölçeklendirme ve bölümlemeye yönelik en iyi yöntemleri de ele alır. 
 
 ## <a name="logical-partitions"></a>Mantıksal bölümler
 
-Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden oluşur. Örneğin, tüm öğelerin `City` özellik içerdiği bir kapsayıcıda, kapsayıcının bölüm anahtarı olarak `City` kullanabilirsiniz. @No__t_1, `Paris` ve `NYC` gibi `City` için belirli değerlere sahip öğe grupları, farklı mantıksal bölümler oluşturur. Temel alınan veriler silindiğinde bir bölümü silme konusunda endişelenmeniz gerekmez.
+Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden oluşur. Örneğin, tüm öğelerin `City` özellik içerdiği bir kapsayıcıda, kapsayıcının bölüm anahtarı olarak `City` kullanabilirsiniz. `London`, `Paris`ve `NYC`gibi `City`için belirli değerlere sahip öğe grupları, farklı mantıksal bölümler oluşturur. Temel alınan veriler silindiğinde bir bölümü silme konusunda endişelenmeniz gerekmez.
 
 Azure Cosmos DB, kapsayıcı temel ölçeklenebilirlik birimidir. Kapsayıcıya eklenen veriler ve kapsayıcıda sağladığınız aktarım hızı, mantıksal bölümlerin bir kümesi genelinde otomatik olarak (yatay olarak) bölümlenir. Veri ve aktarım hızı, Azure Cosmos kapsayıcısı için belirttiğiniz bölüm anahtarına göre bölümlendirilir. Daha fazla bilgi için bkz. [Azure Cosmos kapsayıcısı oluşturma](how-to-create-container.md).
 

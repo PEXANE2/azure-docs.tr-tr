@@ -4,11 +4,11 @@ description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı 
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356898"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
 
@@ -25,9 +25,9 @@ IP adresleri, bağımsız işlevlerle değil işlev uygulamalarıyla ilişkilend
 
 Her işlev uygulamasının tek bir gelen IP adresi vardır. Bu IP adresini bulmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. İşlev uygulamasına gidin.
-3. **Platform özellikleri**'ni seçin.
+3. **Platform özellikleri**' ni seçin.
 4. **Özellikler**' i seçin ve **sanal IP adresı**altında gelen IP adresi görüntülenir.
 
 ## <a name="find-outbound-ip-addresses"></a>İşlev uygulaması giden IP adresleri
@@ -115,9 +115,9 @@ Statik, ayrılmış IP adreslerine ihtiyacınız varsa [App Service ortamlar](..
 
 İşlev uygulamanızın bir App Service Ortamı çalışıp çalışmamasından daha fazla bilgi edinmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. İşlev uygulamasına gidin.
-3. **Genel Bakış** sekmesini seçin.
+3. **Genel bakış** sekmesini seçin.
 4. App Service planı katmanı **App Service plan/fiyatlandırma katmanı**altında görünür. App Service Ortamı fiyatlandırma katmanı **yalıtılmıştır**.
  
 Alternatif olarak, [Cloud Shell](../cloud-shell/quickstart.md)kullanabilirsiniz:

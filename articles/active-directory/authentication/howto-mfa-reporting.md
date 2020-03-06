@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378083"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication raporları
 
@@ -32,7 +32,7 @@ Azure Multi-Factor Authentication, sizin ve kuruluşunuzun Azure portal aracıl�
 
 ## <a name="view-mfa-reports"></a>MFA raporlarını görüntüleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol tarafta **Azure Active Directory** > **güvenlik** > **MFA**' yı seçin.
 3. Görüntülemek istediğiniz raporu seçin.
 

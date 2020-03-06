@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895788"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363118"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
 
@@ -100,7 +100,7 @@ Uyumluluk ne anlama geliyor? Azure VM 'yi başlatmak için, Azure 'un önyüklem
 
 **Makine Azure ile uyumlu mı?** | **Azure VM sınırları (yönetilen disk yük devretmesi)**
 --- | --- 
-Evet | 2000
+Yes | 2000
 Hayır | 1000
 
 - Sınırlar, aboneliğin hedef bölgesinde en az diğer işlerin devam ettiğini varsayar.
@@ -127,7 +127,7 @@ Kapasite gereksinimlerini karşılamak için yeterli yapılandırma sunucuların
  
 Yapılandırma sunucusu kapasitesi, veri dalgalanması hızına göre değil, çoğaltılan makine sayısından etkilenir. Ek yapılandırma sunucuları gerekip gerekmediğini anlamak için, bu tanımlı VM sınırlarını kullanın.
 
-**CPU** | **Bellek** | **Önbellek diski** | **Çoğaltılan makine sınırı**
+**'SUNA** | **Bellek** | **Önbellek diski** | **Çoğaltılan makine sınırı**
  --- | --- | --- | ---
 8 vCPU<br> 2 yuva * 4 çekirdek @ 2,5 GHz | 16 GB | 600 GB | 550 adede kadar makine<br> Her makinede her bir makinenin üç 100 GB diski olduğunu varsayar.
 
@@ -153,7 +153,7 @@ Bir yapılandırma sunucusu ayarlarken şunları unutmayın:
 - En yüksek özelliği olan bir sunucu eklemenizi öneririz. 
 
 
-**CPU** | **Bellek** | **Önbellek diski** | **Karmaşıklık oranı**
+**'SUNA** | **Bellek** | **Önbellek diski** | **Karmaşıklık oranı**
  --- | --- | --- | --- 
 12 vCPU<br> 2 yuva * 6 çekirdek @ 2,5 GHz | 24 GB | 1 GB | 2 TB 'a kadar gün
 

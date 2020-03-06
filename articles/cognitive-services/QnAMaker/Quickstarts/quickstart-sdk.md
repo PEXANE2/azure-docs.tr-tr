@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, istemci SDK 'sını kullanarak bilgi ban
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524427"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389234"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası oluşturma ve yönetme
 
@@ -30,7 +30,7 @@ Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Öğretici: bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
+>[Öğretici: bilgi bankaınızı bir toplu iş dosyasıyla test etme](./batch-testing.md)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
 * [Bilgi Bankası düzenleme](../how-to/edit-knowledge-base.md)

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
 ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804047"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358960"
 ---
 # <a name="azure-encryption-overview"></a>Azure şifrelemeye genel bakış
 
@@ -105,7 +105,7 @@ CLE, simetrik veya asimetrik anahtarları, bir sertifikanın ortak anahtarını 
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB veritabanı şifrelemesi
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) , Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanıdır. Geçici olmayan depolamada Cosmos DB depolanan kullanıcı verileri (katı hal sürücüleri) varsayılan olarak şifrelenir. Açmak veya kapatmak için denetim yoktur. Bekleyen şifreleme, güvenli anahtar depolama sistemleri, şifrelenmiş ağlar ve şifreleme API 'Leri dahil olmak üzere çeşitli güvenlik teknolojileri kullanılarak uygulanır. Şifreleme anahtarları Microsoft tarafından yönetilir ve Microsoft iç yönergeleri uyarınca döndürülür.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) , Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanıdır. Geçici olmayan depolamada Cosmos DB depolanan kullanıcı verileri (katı hal sürücüleri) varsayılan olarak şifrelenir. Açmak veya kapatmak için denetim yoktur. Bekleme sırasında şifreleme birkaç güvenli anahtar depolama sistemleri, şifreli ağları ve şifreleme API'leri dahil güvenlik teknolojileri kullanılarak uygulanır. Şifreleme anahtarları Microsoft tarafından yönetilir ve Microsoft iç yönergeleri uyarınca döndürülür.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 'de Rest şifreleme
 

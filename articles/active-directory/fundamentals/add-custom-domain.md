@@ -14,11 +14,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073510"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376849"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory portalı kullanarak özel etki alanı adınızı ekleme
 
@@ -26,13 +26,13 @@ Her yeni Azure AD kiracısı, *\<domainname >. onmicrosoft. com*adlı bir ilk et
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Özel bir etki alanı adı ekleyebilmeniz için, etki alanı adını bir etki alanı kaydedicisi ile oluşturun. Akredite bir etki alanı kayıt şirketi için bkz. [ICANN-Accredited kaydedicilerin](https://www.icann.org/registrar-reports/accredited-list.html).
+Özel bir etki alanı adı ekleyebilmeniz için, etki alanı adını bir etki alanı kaydedicisi ile oluşturun. [Acann-Acalacaklandırılabilir kayıt şirketlerinde](https://www.icann.org/registrar-reports/accredited-list.html)öğesine bakın.
 
 ## <a name="create-your-directory-in-azure-ad"></a>Azure AD dizininizi oluşturma
 
 Etki alanı adınızı aldıktan sonra ilk Azure AD dizininizi oluşturabilirsiniz. Aboneliğiniz için **sahip** rolüne sahip bir hesap kullanarak dizininiz için Azure Portal oturum açın.
 
-İçindeki adımları izleyerek yeni dizininizi oluşturma [kuruluşunuz için yeni bir kiracı](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+[Kuruluşunuz için yeni bir kiracı oluşturma](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)' daki adımları izleyerek yeni dizininizi oluşturun.
 
 >[!IMPORTANT]
 >Kiracı oluşturan kişi, otomatik olarak bu Kiracı için genel yönetici olur. Genel yönetici, Kiracı için başka Yöneticiler ekleyebilirsiniz.
@@ -98,15 +98,15 @@ Etki alanı kaydedicinizi geri dönüp, kopyalanmış DNS bilgilerinizi temel al
 
 Azure AD'ye özel etki alanı adını doğrulayamıyorsanız, aşağıdaki önerileri deneyin:
 
-- **En az bir saat bekleyin ve yeniden deneyin**. Azure AD’nin etki alanını doğrulayabilmesi için DNS kayıtlarının yayılması gerekir. Bu işlem bir saat veya daha fazla sürebilir.
+- **En az bir saat bekleyip yeniden deneyin**. Azure AD’nin etki alanını doğrulayabilmesi için DNS kayıtlarının yayılması gerekir. Bu işlem bir saat veya daha fazla sürebilir.
 
-- **DNS kaydı doğru olduğundan emin olun.** Etki alanı adı kaydedici sitesine geri dönün. Girişin orada olduğundan ve Azure AD tarafından belirtilen DNS girişi bilgileriyle eşleştiğinden emin olun.
+- **DNS kaydının doğru olduğundan emin olun.** Etki alanı adı kaydedici sitesine geri dönün. Girişin orada olduğundan ve Azure AD tarafından belirtilen DNS girişi bilgileriyle eşleştiğinden emin olun.
 
   Kayıt, kaydedici sitesinde güncelleyemiyorum, girişi ekleme ve doğru doğrulama izinleri olan biriyle girişi paylaşabilirsiniz.
 
-- **Etki alanı adı zaten başka bir dizindeki kullanımda olmadığından emin olun.** Bir etki alanı adı yalnızca tek bir dizinde doğrulanabilir. Etki alanı adınız Şu anda başka bir dizinde doğrulanırsa, yeni dizinde da doğrulanamaz. Bu çoğaltma sorunu gidermek için etki alanı adı eski dizinden silmeniz gerekir. Etki alanı adlarını silme hakkında daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../users-groups-roles/domains-manage.md).
+- **Etki alanı adının zaten başka bir dizinde kullanımda olmadığından emin olun.** Bir etki alanı adı yalnızca tek bir dizinde doğrulanabilir. Etki alanı adınız Şu anda başka bir dizinde doğrulanırsa, yeni dizinde da doğrulanamaz. Bu çoğaltma sorunu gidermek için etki alanı adı eski dizinden silmeniz gerekir. Etki alanı adlarını silme hakkında daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../users-groups-roles/domains-manage.md).
 
-- **Yönetilmeyen hiçbir Power BI Kiracı yoksa emin olun.** Kullanıcılarınızın Power BI Self etkinleştirmiş ve kuruluşunuz için yönetilmeyen bir kiracı oluşturuldu, iç veya dış Yöneticisi olarak Management PowerShell kullanarak atmanız durumunda. Daha fazla bilgi için bkz. [Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma](../users-groups-roles/domains-admin-takeover.md).
+- **Yönetilmeyen Power BI kiracılarınız olmadığından emin olun.** Kullanıcılarınızın Power BI Self etkinleştirmiş ve kuruluşunuz için yönetilmeyen bir kiracı oluşturuldu, iç veya dış Yöneticisi olarak Management PowerShell kullanarak atmanız durumunda. Daha fazla bilgi için bkz. [Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma](../users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -116,4 +116,4 @@ Azure AD'ye özel etki alanı adını doğrulayamıyorsanız, aşağıdaki öner
 
 - Azure AD etki alanı adı bilgilerinizi yönetin. Daha fazla bilgi için bkz. [özel etki alanı adlarını yönetme](../users-groups-roles/domains-manage.md).
 
-- Şirket içi Azure Active Directory ile birlikte kullanmak üzere istediğiniz Windows Server sürümleri varsa [şirket içi dizinlerinizi Azure Active Directory ile tümleştirme](../connect/active-directory-aadconnect.md).
+- Azure Active Directory birlikte kullanmak istediğiniz Windows Server 'ın şirket içi sürümleri varsa, bkz. Şirket [içi dizinlerinizi Azure Active Directory Ile tümleştirme](../connect/active-directory-aadconnect.md).

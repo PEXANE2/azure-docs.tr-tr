@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150108"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386932"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight küme yapılandırmasını iyileştirmek için Apache ambarı 'nı kullanma
 
@@ -175,7 +175,7 @@ Hadoop işleri genellikle g/ç bottlenecked. Verilerin sıkıştırılması, g/�
 
 Kullanılabilir sıkıştırma türleri şunlardır:
 
-| Biçimlendir | Araç | Algoritmalar | Dosya Uzantısı | Bölünebilir? |
+| Biçimlendir | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | Söndür | . gz | Hayır |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
@@ -240,7 +240,7 @@ Hive, bir tabloya kayıt eklerken, her bölümün ve her bölümün önceden tan
 
 1. Oluşturulacak dinamik bölüm sayısını sınırlandırmak için `hive.exec.max.dynamic.partitions` parametresini değiştirin. Varsayılan değer 5000 ' dir.
 
-1. Düğüm başına toplam dinamik bölüm sayısını sınırlandırmak için `hive.exec.max.dynamic.partitions.pernode`değiştirin. Varsayılan değer 2000 ' dir.
+1. Düğüm başına toplam dinamik bölüm sayısını sınırlandırmak için `hive.exec.max.dynamic.partitions.pernode`değiştirin. Varsayılan değer 2000'dir.
 
 ### <a name="enable-local-mode"></a>Yerel modu etkinleştir
 
@@ -266,7 +266,7 @@ Aşağıdaki bölümlerde, ayarlayabileceğiniz, Hive ile ilgili ek iyileştirme
 
 Hive içindeki varsayılan JOIN türü bir *karışık birleşimdir*. Hive 'de özel mapvın girişi okur ve bir ara dosyaya bir JOIN anahtar/değer çifti yayar. Hadoop, bu çiftleri bir karışık aşamada sıralar ve birleştirir. Bu karışık aşama pahalıdır. Verilerinize göre doğru katılmayı seçmek performansı önemli ölçüde iyileştirebilir.
 
-| JOIN türü | Oluşturulurken | Oluşturulacağı | Hive ayarları | Yorumlar |
+| JOIN türü | Oluşturulurken | Nasıl | Hive ayarları | Yorumlar |
 | -- | -- | -- | -- | -- |
 | Karışık ekleme | <ul><li>Varsayılan seçenek</li><li>Her zaman çalışma</li></ul> | <ul><li>Tablolardan birinin bir bölümünden okur</li><li>Demetler ve JOIN anahtarına göre sıralar</li><li>Her küçültme için bir demet gönderir</li><li>Düşürme, azaltma tarafında yapılır</li></ul> | Önemli Hive ayarı gerekmiyor | Her seferinde çalışma |
 | Eşleme birleşimi | <ul><li>Bir tablo, belleğe sığmayacak</li></ul> | <ul><li>Küçük tabloyu bellek karması tablosuna okur</li><li>Büyük dosyanın bir parçası aracılığıyla akışlar</li><li>Karma tablodaki her kaydı birleştirir</li><li>Birleşimler eşleştiriciyle tek başına</li></ul> | `hive.auto.confvert.join=true` | Çok hızlı, ancak sınırlı |
@@ -278,7 +278,7 @@ Hive yürütme altyapısını iyileştirmeye yönelik ek öneriler:
 
 | Ayar | Önerilen | HDInsight varsayılan |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | True = daha güvenli, daha yavaş; yanlış = daha hızlı | yanlış |
+| `hive.mapjoin.hybridgrace.hashtable` | True = daha güvenli, daha yavaş; yanlış = daha hızlı | false |
 | `tez.am.resource.memory.mb` | en çok 4 GB üst sınır | Otomatik olarak ayarlanmış |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
@@ -319,7 +319,7 @@ Hive ile benzer şekilde, yerel mod, işleri görece daha az miktarda veri ile h
 
 Pig, UDF 'ler için gereken JAR dosyalarını görev düğümleri için kullanılabilir hale getirmek üzere dağıtılmış bir önbelleğe kopyalar. Bu jliler sıklıkla değişmez. Etkinleştirilirse, `pig.user.cache.enabled` ayarı jar dosyaları dışındaki 'ın aynı kullanıcı tarafından çalıştırılan işler için yeniden kullanmak üzere bir önbelleğe yerleştirilmesine olanak tanır. Bu, İş performansının küçük bir artmasına neden olur.
 
-1. Etkinleştirmek için `pig.user.cache.enabled` true olarak ayarlayın. Varsayılan değer false 'dur.
+1. Etkinleştirmek için `pig.user.cache.enabled` true olarak ayarlayın. Varsayılan değer false.
 
 1. Önbelleğe alınan jars 'ın temel yolunu ayarlamak için `pig.user.cache.location` temel yola ayarlayın. Varsayılan değer: `/tmp`.
 
@@ -428,7 +428,7 @@ Memstore boyutu `hbase.regionserver.global.memstore.UpperLimit` ve `hbase.region
 
 ### <a name="set-memstore-local-allocation-buffer"></a>Memstore yerel ayırma arabelleğini ayarla
 
-Memstore yerel ayırma arabelleği kullanımı, `hbase.hregion.memstore.mslab.enabled`özellik tarafından belirlenir. Etkinleştirildiğinde (true), bu, ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true olur.
+Memstore yerel ayırma arabelleği kullanımı, `hbase.hregion.memstore.mslab.enabled`özellik tarafından belirlenir. Etkinleştirildiğinde (true), bu, ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true şeklindedir.
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

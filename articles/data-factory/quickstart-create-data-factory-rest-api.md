@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977448"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357964"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Hızlı başlangıç: REST API kullanarak bir Azure Data Factory ve işlem hattı oluşturma
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıç, REST API kullanarak bir Azure veri fabrikası oluşturm
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -188,7 +188,7 @@ $response | ConvertTo-Json
     "etag":"07011a57-0000-0100-0000-5d6e14a20000"
 }
 ```
-## <a name="create-datasets"></a>Veri kümeleri oluşturun
+## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
 Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, iki veri kümesi oluşturursunuz: ınputdataset ve OutputDataset. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, blob kapsayıcısını (adföğreticisi), klasörü (giriş) ve kaynak verileri içeren dosyayı (. txt) belirtirsiniz. Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıktı veri kümesi tanımında, blob kapsayıcısını (adföğreticisi), klasörü (çıktı) ve verilerin kopyalandığı dosyayı belirtirsiniz.
 

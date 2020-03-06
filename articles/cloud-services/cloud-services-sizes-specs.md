@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660435"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386388"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services için Boyutlar
 Bu konuda, bulut hizmeti rol örnekleri (Web rolleri ve çalışan rolleri) için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Her boyutun, [hizmet tanımı dosyanıza](cloud-services-model-and-package.md#csdef)YERLEŞTIRDIĞINIZ bir kimliği vardır. Her boyutun fiyatları [Cloud Services fiyatlandırma](https://azure.microsoft.com/pricing/details/cloud-services/) sayfasında kullanılabilir.
@@ -37,7 +37,7 @@ Sanal makinenin boyutu, fiyatlandırmayı etkiler. Boyut, sanal makinenin işlem
 Aşağıdaki önemli noktalar boyut konusunda karar vermenize yardımcı olabilir:
 
 * A8-A11 ve H Serisi boyutlar *yoğun işlem gücü kullanımlı örnekler* olarak da bilinir. Bu boyutları çalıştıran donanım; yüksek performanslı bilgi işlem (HPC) kümesi uygulamaları, modellemeler ve simülasyonlar gibi yoğun işlem ve ağ kullanımlı uygulamalar için tasarlanmış ve iyileştirilmiştir. A8-A11 Serisinde, Intel Xeon E5-2670 @ 2,6 GHZ, H Serisinde ise Intel Xeon E5-2667 v3 @ 3,2 GHz işlemciler kullanılmaktadır. Bu boyutları kullanma hakkında ayrıntılı bilgi ve konular için bkz. [yüksek performanslı Işlem VM boyutları](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Dv3-Series, Dv2-serisi, D serisi, G serisi, daha hızlı CPU, daha iyi yerel disk performansı talep eden veya daha yüksek bellek taleplerine sahip uygulamalar için idealdir. Birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
+* Dv3-Series, Dv2-serisi, D serisi, G serisi, daha hızlı CPU, daha iyi yerel disk performansı talep eden veya daha yüksek bellek taleplerine sahip uygulamalar için idealdir. Bu seçenekler birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
 * Azure veri merkezlerindeki fiziksel ana bilgisayarlardan bazıları A5 – A11 gibi daha büyük sanal makine boyutlarını desteklemeyebilir. Sonuç olarak, mevcut bir sanal makineyi yeni bir boyuta yeniden boyutlandırırken { **Machine Name} sanal makinesini yapılandıramadı** veya **{Machine Name} sanal makinesini oluşturamadı** ; hata iletisini görebilirsiniz. 16 Nisan 2013 tarihinden önce oluşturulan bir sanal ağda yeni bir sanal makine oluşturma; veya var olan bir bulut hizmetine yeni bir sanal makine ekleniyor. Her dağıtım senaryosunda geçici çözümler için destek forumundaki ["sanal makine yapılandırılamadı" hata](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) başlığına bakın.
 * Ayrıca aboneliğiniz, belirli boyut ailelerinde dağıtabileceğiniz çekirdek sayısını da sınırlıyor olabilir. Artırmak istediğini kotalar için Azure Desteği'ne başvurun.
 
@@ -58,11 +58,11 @@ Azure Işlem birimi (ACU) kavramını, Azure SKU 'Larında işlem (CPU) performa
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [Bir v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [TID](#d-series) |160 |
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
-| [G](#g-series) |180-240* |
+| [Acil](#g-series) |180-240* |
 | [H](#h-series) |290-300* |
 
 \* işaretli ACU'lar, CPU frekansını artırmak ve performans artışı sağlamak için Intel® Turbo Boost teknolojisinden faydalanır. Performans artışının oranı VM boyutuna, iş yüküne ve aynı ana bilgisayarda çalışan iş yüklerine göre değişiklik gösterebilir.
@@ -112,7 +112,7 @@ Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken nok
 | Standard_A8m_v2 | 8         | 64           | 80                   | 8/yüksek                     |
 
 
-## <a name="d-series"></a>D serisi
+## <a name="d-series"></a>D Serisi
 | Boyut            | CPU çekirdekleri | Bellek: GiB  | Geçici depolama (SSD): GiB       | Maksimum NIC/Ağ bant genişliği |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3,5          | 50                   | 1/orta |
@@ -124,7 +124,7 @@ Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken nok
 | Standard_D13    | 8         | 56           | 400                  | 8/yüksek |
 | Standard_D14    | 16        | 112          | 800                  | 8/çok yüksek |
 
-## <a name="dv2-series"></a>Dv2 serisi
+## <a name="dv2-series"></a>Dv2 Serisi
 | Boyut            | CPU çekirdekleri | Bellek: GiB  | Geçici depolama (SSD): GiB       | Maksimum NIC/Ağ bant genişliği |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3,5          | 50                   | 1/orta |
@@ -161,7 +161,7 @@ Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken nok
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/aşırı yüksek |
 
 
-## <a name="g-series"></a>G serisi
+## <a name="g-series"></a>G Serisi
 | Boyut            | CPU çekirdekleri | Bellek: GiB  | Geçici depolama (SSD): GiB       | Maksimum NIC/Ağ bant genişliği |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/yüksek |
@@ -170,7 +170,7 @@ Bu boyutları kullanma hakkında daha fazla bilgi ve dikkat edilmesi gereken nok
 | Standard_G4     | 16        | 224          | 3072                |8/aşırı yüksek |
 | Standard_G5     | 32        | 448          | 6144                |8/aşırı yüksek |
 
-## <a name="h-series"></a>H serisi
+## <a name="h-series"></a>H Serisi
 Azure H Serisi sanal makineler, moleküler modelleme ve hesaplamalı akışkanlar dinamiği gibi üst düzey işlem hesaplama gereksinimlerine hitap eden yeni nesil yüksek performanslı bilgi işlem VM'leridir. Bu 8 ve 16 çekirdek VM 'Ler, DDR4 bellek ve yerel SSD tabanlı depolama özelliklerine sahip Intel Haswell E5-2667 v3 işlemci teknolojisi üzerine kurulmuştur.
 
 H Serisi önemli miktarda CPU gücünün yanı sıra, FDR InfiniBand ile düşük gecikmeli RDMA ağ iletişimi için farklı seçeneklere ek olarak yoğun bellek kullanımlı işlem gereksinimlerini için çok sayıda bellek yapılandırması sunar.
