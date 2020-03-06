@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442131"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298828"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -31,7 +31,7 @@ Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
 3. Pilot kapsamdaki nesnelerin, bulut sağlama ile nesnelerle eşleştiğinden emin olmak için ms-DS-ımıbu GUID doldurulmuş olduğundan emin olun. 
 
    > [!NOTE]
-   > Azure AD Connect eşitleme, Grup nesneleri için varsayılan olarak *MS-DS-ımuz GUID 'yi* doldurmaz. [Bu blog postasında](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) belgelenen adımları izleyerek, Grup nesneleri için *MS-DS-ımuz GUID* 'yi doldurun.
+   > Azure AD Connect eşitleme, Grup nesneleri için varsayılan olarak *MS-DS-ımuz GUID 'yi* doldurmaz.
 
 4. Bu gelişmiş bir senaryodur. Bu öğreticide açıklanan adımları tam olarak izlediğinizden emin olun.
 
@@ -119,7 +119,7 @@ Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect sağlama aracısını yükler
 1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.  [Temel ad ve Azure ortamı](tutorial-basic-ad-azure.md) öğreticisini KULLANıYORSANıZ, CP1 olacaktır.
-2. Azure AD Connect bulut sağlama aracısını [buradan](https://go.microsoft.com/fwlink/?linkid=2109037)indirin.
+2. [Burada](how-to-install.md#install-the-agent)özetlenen adımları kullanarak Azure AD Connect bulutu sağlama aracısını indirin.
 3. Azure AD Connect bulut sağlamasını çalıştırın (AADConnectProvisioningAgent. Installer)
 3. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install1.png)</br>

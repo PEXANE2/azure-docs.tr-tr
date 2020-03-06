@@ -2,33 +2,37 @@
 title: Azure VM 'den Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
 description: Azure Otomasyonu 'nun bir parçası olan Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümleriyle Azure sanal makinesini nasıl ekleyeceğinizi öğrenin.
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421832"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299544"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure sanal makinesinden Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
 
 Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmenize, değişiklikleri izlemenize ve bilgisayarlarınıza nelerin yüklü olduğunu izlemenize yardımcı olan çözümler sunar. Makineleri eklemek için birden çok yol vardır. Çözümü bir sanal makineden, [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md), [birden çok makineye göz atarak](automation-onboard-solutions-from-browse.md)veya bir [runbook](automation-onboard-solutions.md)kullanarak ekleyebilirsiniz. Bu makalede, Azure sanal makinesinden bu çözümlerin eklenmesi ele alınmaktadır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="enable-the-solutions"></a>Çözümleri etkinleştirme
 
-Var olan bir sanal makineye gidin. **İşlemler**altında **güncelleştirme yönetimi**, **Envanter**veya **değişiklik izleme**' yi seçin. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, sanal makine herhangi bir bölgede bulunabilir. Bir VM 'den bir çözüm eklerken, sanal makinenin bir çalışma alanına eklendi olup olmadığını anlamak için `Microsoft.OperationalInsights/workspaces/read` izninizin olması gerekir. Genel olarak gereken ek izinler hakkında daha fazla bilgi edinmek için bkz. [makineler eklemek için gereken izinler](automation-role-based-access-control.md#onboarding).
+İlk olarak, VM 'inizdeki çözümlerin birini veya birkaçını etkinleştirin:
 
-Yalnızca VM için çözümü etkinleştirmek üzere **Bu VM Için etkinleştir** ' in seçili olduğundan emin olun. Çözüme birden çok makine eklemek için **Bu abonelikteki VM 'ler Için etkinleştir**' i seçin ve ardından **etkinleştirilecek makineleri seçmek Için tıklayın ' ı**seçin. Aynı anda birden çok makine ekleme hakkında bilgi edinmek için bkz. [güncelleştirme yönetimi, değişiklik izleme ve envanter çözümlerini](automation-onboard-solutions-from-automation-account.md)ekleme.
+1. [Azure Portal](https://portal.azure.com), sol taraftaki bölmeden **sanal makineler** ' i seçin veya **giriş** sayfasından **sanal makineler** ' i arayıp seçin.
+2. Çözümünü etkinleştirmek istediğiniz VM 'yi seçin.
+3. VM sayfasında, **işlemler**altında **güncelleştirme yönetimi**, **Envanter**veya **değişiklik izleme**' yi seçin. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, sanal makine herhangi bir bölgede bulunabilir. Bir VM 'den bir çözüm eklerken, sanal makinenin bir çalışma alanına eklendi olup olmadığını anlamak için `Microsoft.OperationalInsights/workspaces/read` izninizin olması gerekir. Gerekli ek izinler hakkında daha fazla bilgi edinmek için bkz. [makineler eklemek için gereken izinler](automation-role-based-access-control.md#onboarding).
+
+Aynı anda birden çok makine ekleme hakkında bilgi edinmek için bkz. [güncelleştirme yönetimi, değişiklik izleme ve envanter çözümlerini](automation-onboard-solutions-from-automation-account.md)ekleme.
 
 Azure Log Analytics çalışma alanını ve otomasyon hesabını seçin ve ardından çözümü etkinleştirmek için **Etkinleştir** ' i seçin. Çözümün etkinleştirilmesi 15 dakika sürer.
 
-![Güncelleştirme Yönetimi çözümü ekleme](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Güncelleştirme Yönetimi çözümü ekleme](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 Diğer çözümlere gidin ve **Etkinleştir**' i seçin. Log Analytics çalışma alanı ve Otomasyon hesabı açılır listeleri devre dışıdır çünkü bu çözümler, önceden etkinleştirilmiş çözümle aynı çalışma alanını ve otomasyon hesabını kullanır.
 
@@ -37,7 +41,7 @@ Diğer çözümlere gidin ve **Etkinleştir**' i seçin. Log Analytics çalışm
 
 ## <a name="scope-configuration"></a>Kapsam yapılandırması
 
-Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda, **ılgılı kaynaklar**altında, **çalışma alanı**' nı seçin. Çalışma alanında, **çalışma alanı VERI kaynakları**altında **kapsam yapılandırması**' nı seçin.
+Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda, **ilgili kaynaklar**altında, **çalışma alanı**' nı seçin. Çalışma alanında, **çalışma alanı veri kaynakları**altında **kapsam yapılandırması**' nı seçin.
 
 Seçilen çalışma alanında Güncelleştirme Yönetimi veya Değişiklik İzleme Çözümleri yoksa, aşağıdaki kapsam konfigürasyonları oluşturulur:
 
@@ -55,10 +59,10 @@ Güncelleştirme Yönetimi, Değişiklik İzleme veya envanter çözümlerine bi
 
 Çalışma alanınıza gidin. **Genel**altında **kaydedilmiş aramalar**' ı seçin. Bu çözümler tarafından kullanılan iki kayıtlı arama aşağıdaki tabloda gösterilmiştir:
 
-|Ad     |Kategori  |Diğer ad  |
+|Adı     |Kategori  |Diğer ad  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Güncellemeler        | Updates__MicrosoftDefaultComputerGroup         |
+|MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
 
 Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı aramalardan birini seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
 
@@ -83,7 +87,7 @@ Bu çözümleri kaldırdıktan sonra, Otomasyon Hesabınızın bağlantısını 
 
 2. Çalışma alanının bağlantısını Kaldır sayfasında, **çalışma alanının bağlantısını kaldır**' a tıklayın.
 
-   ![Çalışma alanının bağlantısını Kaldır sayfası](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
+   ![Çalışma alanının bağlantısını Kaldır sayfası](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png)arasında yetersiz alanla karşılaştı.
 
    Devam etmek istediğinizi doğrulayan bir ileti alacaksınız.
 
@@ -91,7 +95,7 @@ Bu çözümleri kaldırdıktan sonra, Otomasyon Hesabınızın bağlantısını 
 
 Güncelleştirme Yönetimi çözümünü kullandıysanız, isteğe bağlı olarak, çözümü kaldırdıktan sonra artık gerekli olmayan aşağıdaki öğeleri kaldırmak isteyebilirsiniz.
 
-* Zamanlamayı Güncelleştir-her birinin, oluşturduğunuz güncelleştirme dağıtımlarıyla eşleşen adları olur)
+* Zamanlamayı Güncelleştir-her biri, oluşturduğunuz güncelleştirme dağıtımlarıyla eşleşen adlara sahip olur.
 
 * Çözüm için oluşturulan karma çalışan grupları-her biri, machine1. contoso. com_9ceb8108-26c9-4051-B6B3-227600d715c8 ' e benzer şekilde adlandırılır.
 
@@ -115,5 +119,7 @@ Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
 Bunları nasıl kullanacağınızı öğrenmek için çözümler için öğreticilere geçin:
 
 * [Öğretici-VM 'niz için güncelleştirmeleri yönetme](automation-tutorial-update-management.md)
+
 * [Öğretici-bir VM 'de yazılım tanımla](automation-tutorial-installed-software.md)
+
 * [Öğretici-VM 'deki değişikliklerle Ilgili sorunları giderme](automation-tutorial-troubleshoot-changes.md)

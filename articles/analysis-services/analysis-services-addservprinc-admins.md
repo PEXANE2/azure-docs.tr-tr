@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212510"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298097"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
  Katılımsız PowerShell görevlerini otomatikleştirmek için bir hizmet sorumlusu, yönetilmekte olan Analysis Services sunucuda **Sunucu Yöneticisi** ayrıcalıklarına sahip olmalıdır. Bu makalede, bir Azure AS Server 'daki sunucu yöneticileri rolüne bir hizmet sorumlusu nasıl ekleyeceğiniz açıklanır. Bunu SQL Server Management Studio veya bir Kaynak Yöneticisi şablonu kullanarak yapabilirsiniz.
- 
-> [!NOTE]
-> Azure PowerShell cmdlet 'lerini kullanan sunucu işlemleri için, hizmet sorumlusu Ayrıca [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **sahip** rolüne ait olmalıdır. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu görevi tamamlamadan önce, Azure Active Directory kayıtlı bir hizmet sorumlusu olması gerekir.
@@ -42,7 +39,7 @@ Sunucu yöneticilerini, SQL Server Management Studio (SSMS) kullanarak yapıland
     
     ![Hizmet sorumlusu hesabı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanma
+## <a name="using-a-resource-manager-template"></a>Resource Manager şablonu kullanma
 
 Ayrıca, bir Azure Resource Manager şablonu kullanarak Analysis Services sunucusunu dağıtarak sunucu yöneticilerini yapılandırabilirsiniz. Dağıtımı çalıştıran kimlik, [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **katkıda** bulunan rolüne ait olmalıdır.
 
@@ -96,6 +93,24 @@ Aşağıdaki Kaynak Yöneticisi şablonu, Analysis Services Yönetici rolüne ek
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>Yönetilen kimlikleri kullanma
+
+Yönetilen bir kimlik Analysis Services yöneticileri listesine de eklenebilir. Örneğin, [sistem tarafından atanan yönetilen kimliğe sahip bir mantıksal uygulamanız](../logic-apps/create-managed-service-identity.md)olabilir ve bu uygulamaya Analysis Services sunucunuzu yönetme özelliği vermek isteyebilirsiniz.
+
+Azure portal ve API 'lerin çoğu bölümünde, Yönetilen kimlikler hizmet sorumlusu nesne KIMLIĞI kullanılarak tanımlanır. Ancak, Analysis Services istemci KIMLIKLERI kullanılarak tanımlanmaları gerekir. Bir hizmet sorumlusu için istemci KIMLIĞINI almak için Azure CLı 'yi kullanabilirsiniz:
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+Alternatif olarak PowerShell 'i de kullanabilirsiniz:
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+Daha sonra bu istemci KIMLIĞINI, yukarıda açıklandığı gibi Analysis Services yöneticileri listesine eklemek için kiracı KIMLIĞIYLE birlikte kullanabilirsiniz.
 
 ## <a name="related-information"></a>İlgili bilgiler
 

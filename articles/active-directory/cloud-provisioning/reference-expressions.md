@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect bulut sağlama ifadeleri ve işlev başvurusu
-description: başvurunun
+description: Başvuru
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d250377e15b957c10322dbba9ca587dd58944ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793545"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298624"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
 Bulut sağlamayı yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemelerinin türlerinden biri bir ifade eşlemedir. 
@@ -26,22 +26,22 @@ Bulut sağlamayı yapılandırdığınızda, belirtebileceğiniz öznitelik eşl
 Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer ifadeleri kapsayacaktır.  Bu yalnızca işlemin bir parçasıdır.  Daha sonra bu ifadeyi kullanmanız ve kiracınıza bir Web isteğine yerleştirmeniz gerekir.  Bu konuda daha fazla bilgi için bkz. [dönüşümler](how-to-transformation.md)
 
 ## <a name="syntax-overview"></a>Sözdizimine genel bakış
-Öznitelik eşlemeleri için Ifadeler söz dizimi Visual Basic for Applications (VBA) işlevlerinin bir rekidir.
+Öznitelik eşlemeleri için ifadeler sözdizimi Applications (VBA) işlevleri için Visual Basic reminiscent aşağıdaki gibidir.
 
-* İfadenin tamamı, parantez içindeki bağımsız değişkenlerin ardında yer aldığı bir addan oluşan işlevler bakımından tanımlanmalıdır: <br>
+* Tüm ifade İşlevler, bağımsız değişkenleri parantez içinde bir adından oluşur bakımından tanımlanmış olması gerekir: <br>
   *Fonksiyonadı (`<<argument 1>>`,`<<argument N>>`)*
-* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örnek: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
-* İşlevlere üç farklı türde bağımsız değişken geçirebilirsiniz:
+* İçindeki diğer işlevleri iç içe. Örnek: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
+* İşlevlere üç farklı türde bağımsız değişkenler geçirebilirsiniz:
   
-  1. Köşeli ayraçlar içine alınması gereken öznitelikler. Örneğin: [attributeName]
-  2. Çift tırnak içine alınması gereken dize sabitleri. Örneğin: "Birleşik Devletler"
-  3. Diğer Işlevler. Örneğin: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* Dize sabitleri için, dizede bir ters eğik çizgi (\) veya tırnak işareti (") gerekiyorsa, ters eğik çizgi (\) simgesiyle atlanmalıdır. Örneğin: "Şirket adı: \\" contoso\\""
+  1. Öznitelik, köşeli ayraçlar içine alınmalıdır. Örneğin: [attributeName]
+  2. Dize sabitleri çift tırnak içine alınmalıdır. Örneğin: "ABD"
+  3. Diğer işlevler. Örneğin: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
+* Dize sabitleri için bir ters eğik çizgi (\) veya tırnak işareti (") dizedeki gerekiyorsa, eğik çizgi (\) simgesiyle kaçınılmalıdır. Örneğin: "Şirket adı: \\" contoso\\""
 
 ## <a name="list-of-functions"></a>İşlevlerin listesi
 | İşlevlerin listesi | Açıklama |
 |-----|----|
-|[Ýna](#append)|Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.|
+|[Ýna](#append)|Kaynak dize değerini alır ve soneki, sonuna ekler.|
 |[BitAnd](#bitand)|BitAnd işlevi, belirtilen bitleri bir değer üzerinde ayarlar.|
 |[CBool](#cbool)|CBool işlevi, değerlendirilen ifadeye bağlı olarak bir Boole değeri döndürür|
 |[ConvertFromBase64](#convertfrombase64)|ConvertFromBase64 işlevi, belirtilen Base64 kodlamalı değeri normal bir dizeye dönüştürür.|
@@ -52,7 +52,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Tarih Fromnum](#datefromnum)|DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat türüne dönüştürür.|
 |[DNComponent](#dncomponent)|DNComponent işlevi, soldan bir belirtilen DN bileşeninin değerini döndürür.|
 |[Hatayla](#error)|Hata işlevi özel bir hata döndürmek için kullanılır.|
-|[FormatDateTime](#formatdatetime) |Bir biçimden tarih dizesi alır ve onu farklı bir biçime dönüştürür.| 
+|[FormatDateTime](#formatdatetime) |Bir tarih dizesini bir biçimden alır ve farklı bir biçime dönüştürür.| 
 |['INI](#guid)|İşlev GUID 'Si yeni bir rastgele GUID oluşturur.|           
 |[Mayan](#iif)|IıF işlevi, belirli bir koşula göre olası bir değer kümesinden birini döndürür.|
 |[InStr](#instr)|InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur.|
@@ -63,16 +63,16 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Öğe](#item)|Item işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.|
 |[Birleştir](#join) |JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.| 
 |[Tarafta](#left)|Left işlevi bir dizenin sol tarafında belirtilen sayıda karakteri döndürür.|
-|[Orta](#mid) |Kaynak değerin alt dizesini döndürür. Alt dize, kaynak dizeden yalnızca bazı karakterleri içeren bir dizedir.|
-|[Normalizediacritika](#normalizediacritics)|Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm aksanlı karakterlerle eşdeğer, aksanlı olmayan karakterler konur.|
+|[Orta](#mid) |Kaynak değerin bir alt dizeyi döndürür. Bir alt dizenin yalnızca bazı kaynak dizeden karakterleri içeren bir dizedir.|
+|[Normalizediacritika](#normalizediacritics)|Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm Aksan karakteriyle değiştirildiğini aksanlı eşdeğer karakterlerle.|
 |[Başlatılmadı](#not) |**Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.| 
 |[RemoveDuplicates](#removeduplicates)|Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin benzersiz olduğundan emin olur.| 
-|[Değiştirin](#replace) |Dize içindeki değerleri değiştirir. | 
-|[SelectUniqueValue](#selectuniquevalue)|İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlevi her kuralı değerlendirir ve hedef uygulamada/dizinde benzersizlik için oluşturulan değeri denetler.| 
+|[Değiştirin](#replace) |Bir dize içindeki değerleri değiştirir. | 
+|[SelectUniqueValue](#selectuniquevalue)|En az benzersiz değer oluşturma kuralları ifadeleri kullanılarak tanımlanmış olan iki bağımsız değişken gerektirir. İşlev, her kural değerlendirir ve ardından hedef uygulama/dizinindeki benzersizlik için oluşturulan değeri denetler.| 
 |[Singleapprotaatama](#singleapproleassignment)|Belirli bir uygulama için kullanıcıya atanan tüm Approtaatamalar listesinden tek bir Approtaatama döndürür.| 
 |[Ayırmayı](#split)|Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.|
 |[StringFromSID](#stringfromsid)|StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini dizeye dönüştürür.| 
-|[StripSpaces](#stripspaces) |Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.| 
+|[StripSpaces](#stripspaces) |Tüm alan kaldırır ("") karakter kaynak dizesi.| 
 |[Değiştirebilirsiniz](#switch)|**Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. | 
 |[ToLower](#tolower)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür.| 
 |[ToUpper](#toupper)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür.|
@@ -81,16 +81,16 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 
 ---
 ### <a name="append"></a>Ekle
-**Çalışmayacaktır**<br> Append (kaynak, sonek)
+**Çalışmayacaktır**<br> Append(Source, Suffix)
 
-**Açıklaması**<br> Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.
+**Açıklaması**<br> Kaynak dize değerini alır ve soneki, sonuna ekler.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-   | **önekini** |Gereklidir |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
+   | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+   | **önekini** |Gerekli |Dize |Kaynak değerin sonuna istediğiniz dize. |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -244,17 +244,17 @@ AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
 
 ---
 ### <a name="formatdatetime"></a>formatDateTime
-**Çalışmayacaktır**<br> FormatDateTime (kaynak, InPutFormat, outputFormat)
+**Çalışmayacaktır**<br> FormatDateTime (kaynak, inputFormat, outputFormat)
 
-**Açıklaması**<br> Bir biçimden tarih dizesi alır ve onu farklı bir biçime dönüştürür.
+**Açıklaması**<br> Bir tarih dizesini bir biçimden alır ve farklı bir biçime dönüştürür.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-   | **InPutFormat** |Gereklidir |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-   | **outputFormat** |Gereklidir |Dize |Çıkış tarihinin biçimi. |
+   | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+   | **InPutFormat** |Gerekli |Dize |Kaynak değeri beklenen biçimi. Desteklenen biçimler için bkz. [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+   | **outputFormat** |Gerekli |Dize |Çıkış tarih biçimi. |
 
 ---
 ### <a name="guid"></a>Guid
@@ -384,7 +384,7 @@ CStr () ifadesinin ayrıştırmak için başarılı olup olmadığını belirlem
 
 ---
 ### <a name="join"></a>Birleştir
-**Çalışmayacaktır**<br> JOIN (separator, source1, SOURCE2,...)
+**Çalışmayacaktır**<br> Birleştirme (ayırıcı, kaynak1, kaynak2,...)
 
 **Açıklaması**<br> JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.
 
@@ -392,10 +392,10 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **ayırıcı** |Gereklidir |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
-   | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
+   | **ayırıcı** |Gerekli |Dize |Kaynak değerler bir dizeye birleştirilmiş, ayırmak için kullanılan dize. Olabilir "" ayırıcı gerekiyorsa. |
+   | **source1 ... Kaynakcen** |Değişken-sayısı gerekli |Dize |Değerleri birlikte birleştirilecek dize. |
 
 ---
 ### <a name="left"></a>Tarafta
@@ -419,45 +419,45 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Örnek:**  
 `Left("John Doe", 3)`  
-`Joh`döndürür.
+`Joh` döndürür.
 
 ---
 ### <a name="mid"></a>Orta
 **Çalışmayacaktır**<br> Mid (kaynak, başlangıç, uzunluk)
 
-**Açıklaması**<br> Kaynak değerin alt dizesini döndürür. Alt dize, kaynak dizeden yalnızca bazı karakterleri içeren bir dizedir.
+**Açıklaması**<br> Kaynak değerin bir alt dizeyi döndürür. Bir alt dizenin yalnızca bazı kaynak dizeden karakterleri içeren bir dizedir.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Genellikle özniteliğin adı. |
-   | **start** |Gereklidir |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
-   | **uzunluklu** |Gereklidir |integer |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
+   | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
+   | **start** |Gerekli |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter dizini 1 gerekir, ikinci karakter 2 dizine sahip ve benzeri. |
+   | **uzunluklu** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
 
 ---
-### <a name="normalizediacritics"></a>Normalizediacritika
-**Çalışmayacaktır**<br> Normalizediacritika (kaynak)
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**Çalışmayacaktır**<br> NormalizeDiacritics(source)
 
-**Açıklaması**<br> Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm aksanlı karakterlerle eşdeğer, aksanlı olmayan karakterler konur. Genellikle, aksanlı karakter (vurgu işaretleri) içeren ilk adları ve soyadlarını, Kullanıcı asıl adları, SAM hesap adları ve e-posta adresleri gibi çeşitli Kullanıcı tanımlayıcılarında kullanılabilecek geçerli değerlere dönüştürmek için kullanılır.
+**Açıklaması**<br> Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm Aksan karakteriyle değiştirildiğini aksanlı eşdeğer karakterlerle. Genellikle kullanıcı asıl adı, SAM hesap adlarını ve e-posta adresleri gibi çeşitli kullanıcı tanımlayıcılarını kullanılabilir yasal değerlerine adlarını ve soyadlarını aksanlı karakterleri (vurgu işaretleri) içeren dönüştürmek için kullanılır.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize | Genellikle ad veya soyadı özniteliği. |
+   | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
 ---
 ### <a name="not"></a>Not
-**Çalışmayacaktır**<br> Not (kaynak)
+**Çalışmayacaktır**<br> Not(Source)
 
 **Açıklaması**<br> **Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
+   | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
@@ -473,10 +473,10 @@ Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özn
 
 ---
 ### <a name="replace"></a>Değiştir
-**Çalışmayacaktır**<br> Replace (kaynak, oldValue, regexGroupName, regexGroupName, replacementValue, replacementAttributeName, şablon)
+**Çalışmayacaktır**<br> Değiştir (kaynak, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, şablon)
 
 **Açıklaması**<br>
-Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı şekilde çalışır:
+Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olarak farklı şekilde çalışır:
 
 * **OldValue** ve **replacementvalue** sağlandığında:
   
@@ -497,47 +497,47 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
-   | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
-   | **Regexmodel** |İsteğe Bağlı |Dize |**Kaynakta**değiştirilmekte olan değer için Regex stili. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
-   | **regexGroupName** |İsteğe Bağlı |Dize |**Regexmodel**içindeki grubun adı. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
-   | **replacementValue** |İsteğe Bağlı |Dize |Yenisiyle eskisinin yerini alacak yeni değer. |
-   | **replacementAttributeName** |İsteğe Bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
-   | **şablonlarını** |İsteğe Bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
+   | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
+   | **oldValue** |İsteğe bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
+   | **Regexmodel** |İsteğe bağlı |Dize |**Kaynakta**değiştirilmekte olan değer için Regex stili. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
+   | **regexGroupName** |İsteğe bağlı |Dize |**Regexmodel**içindeki grubun adı. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
+   | **replacementValue** |İsteğe bağlı |Dize |Eski değiştirmek için yeni değeri. |
+   | **replacementAttributeName** |İsteğe bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
+   | **şablonlarını** |İsteğe bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **Çalışmayacaktır**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
 
-**Açıklaması**<br> İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlevi her kuralı değerlendirir ve hedef uygulamada/dizinde benzersizlik için oluşturulan değeri denetler. Bulunan ilk benzersiz değer döndürülecek bir değer olacaktır. Tüm değerler hedefte zaten mevcutsa, giriş biriktirme listesini alır ve bu nedenle denetim günlüklerine kaydedilir. Sağlanbağlanabilen bağımsız değişken sayısına üst sınır yoktur.
+**Açıklaması**<br> En az benzersiz değer oluşturma kuralları ifadeleri kullanılarak tanımlanmış olan iki bağımsız değişken gerektirir. İşlev, her kural değerlendirir ve ardından hedef uygulama/dizinindeki benzersizlik için oluşturulan değeri denetler. Bir döndürülen ilk benzersiz değeri bulundu. Tüm değerleri hedefte zaten varsa, giriş kalacakları ve nedeni denetim günlüklerinde günlüğe. Sağlanan bağımsız değişken sayısı için üst sınır yoktur.
 
 > [!NOTE]
-> - Bu, üst düzey bir işlevdir, iç içe geçirilemez.
+> - Bu üst düzey bir işlev, iç içe olamaz.
 > - Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.  
-> - Bu işlev yalnızca giriş oluşturmaları için kullanılmak üzere tasarlanmıştır. Bir özniteliğiyle birlikte kullanıldığında, **uygulamayı Uygula** özelliğini **yalnızca nesne oluşturma sırasında**olarak ayarlayın.
+> - Bu işlev yalnızca girişi oluşturma için kullanılmak üzere tasarlanmıştır. Bir özniteliğiyle birlikte kullanıldığında, **uygulamayı Uygula** özelliğini **yalnızca nesne oluşturma sırasında**olarak ayarlayın.
 > - Bu işlev şu anda yalnızca "Workday for User sağlamasını Active Directory" için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz. 
 
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
+   | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekli, en üst sınır. |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
 
 ---
-### <a name="singleapproleassignment"></a>Singleapprotaatama
-**Çalışmayacaktır**<br> Singleapprotaatama ([Approtaatamalar])
+### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
+**Çalışmayacaktır**<br> SingleAppRoleAssignment([appRoleAssignments])
 
 **Açıklaması**<br> Belirli bir uygulama için kullanıcıya atanan tüm Approtaatamalar listesinden tek bir Approtaatama döndürür. Approtaatamalar nesnesini tek bir rol adı dizesine dönüştürmek için bu işlev gereklidir. En iyi yöntem, tek seferde bir kullanıcıya yalnızca bir Approelatama atandığından emin olmak ve birden çok rol atanmamışsa döndürülen rol dizesinin tahmin edilebilir olamayacağını unutmayın. 
 
 **Parametrelere**<br> 
 
-  | Adı | Gerekli/yinelenen | Tür | Notlar |
+  | Adı | Gerekli / yinelenen | Tür | Notlar |
   |--- | --- | --- | --- |
-  | **AppRoleAssignments** |Gereklidir |Dize |**[Approtaatamalar]** nesnesi. |
+  | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
 ---
 ### <a name="split"></a>Bölme
@@ -547,10 +547,10 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Güncelleştirilecek **kaynak** değeri. |
-   | **ayırıcı** |Gereklidir |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
+   | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
+   | **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
@@ -562,57 +562,57 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
-**Çalışmayacaktır**<br> StripSpaces (kaynak)
+**Çalışmayacaktır**<br> StripSpaces(source)
 
-**Açıklaması**<br> Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.
+**Açıklaması**<br> Tüm alan kaldırır ("") karakter kaynak dizesi.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Güncelleştirilecek **kaynak** değeri. |
+   | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
 ---
 ### <a name="switch"></a>Anahtar
-**Çalışmayacaktır**<br> Anahtar (kaynak, defaultValue, KEY1, değer1, key2, değer2,...)
+**Çalışmayacaktır**<br> Anahtar (kaynak, defaultValue, key1, value1, key2, value2,...)
 
-**Açıklaması**<br> **Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue**döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman çift sayıda parametre bekler.
+**Açıklaması**<br> **Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue**döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman bir çift sayı parametre bekliyor.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Güncelleştirilecek **kaynak** değeri. |
-   | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
-   | **anahtar** |Gereklidir |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
-   | **value** |Gereklidir |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
+   | **kaynaktaki** |Gerekli |Dize |Denetlenecek **kaynak** değeri. |
+   | **Değerinin** |İsteğe bağlı |Dize |Tüm anahtarları kaynak eşleşmediğinde kullanılacak varsayılan değeri. Boş bir dize olabilir (""). |
+   | **anahtar** |Gerekli |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
+   | **value** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
 
 ---
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 **Çalışmayacaktır**<br> ToLower (kaynak, kültür)
 
 **Açıklaması**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli / yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
-   | **kaynaktaki** |Gereklidir |Dize |Genellikle kaynak nesneden özniteliğin adı |
-   | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
+   | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
+   | **ayarı** |İsteğe bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 **Çalışmayacaktır**<br> ToUpper (kaynak, kültür)
 
 **Açıklaması**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
 
 **Parametrelere**<br> 
 
-  | Adı | Gerekli/yinelenen | Tür | Notlar |
+  | Adı | Gerekli / yinelenen | Tür | Notlar |
   | --- | --- | --- | --- |
-  | **kaynaktaki** |Gereklidir |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-  | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
+  | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+  | **ayarı** |İsteğe bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 
@@ -658,9 +658,9 @@ Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlay
 "Sahip" döndürmelidir
 
 ## <a name="examples"></a>Örnekler
-### <a name="strip-known-domain-name"></a>Bilinen etki alanı adını şeridi
-Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki alanı adını çıkarmanız gerekir. <br>
-Örneğin, etki alanı "contoso.com" ise aşağıdaki ifadeyi kullanabilirsiniz:
+### <a name="strip-known-domain-name"></a>Şerit bilinen etki alanı adı
+Bir kullanıcı adı almak için bir kullanıcının e-posta bilinen etki alanı adından çıkarmanız gerekir. <br>
+Örneğin, "contoso.com" etki alanı varsa, aşağıdaki ifade kullanabilirsiniz:
 
 **İfadesini** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
@@ -670,8 +670,8 @@ Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki a
 * **Giriş** (posta): "john.doe@contoso.com"
 * **Çıkış**: "John. tikan"
 
-### <a name="append-constant-suffix-to-user-name"></a>Sabit son eki Kullanıcı adına Ekle
-Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıcı adlarınıza ek bir sonek eklemeniz gerekebilir.
+### <a name="append-constant-suffix-to-user-name"></a>Kullanıcı adı için sabit bir sonek ekleme
+Salesforce korumalı alan kullanıyorsanız, ek bir sonek eşitlemeden önce tüm kullanıcı adları eklemek gerekebilir.
 
 **İfadesini** <br>
 `Append([userPrincipalName], ".test")`
@@ -681,8 +681,8 @@ Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıc
 * **Giriş**: (UserPrincipalName): "John.Doe@contoso.com"
 * **Çıkış**: "John.Doe@contoso.com.test"
 
-### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birinci ve soyadı parçalarını birleştirerek kullanıcı diğer adı oluştur
-Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini ayırarak bir kullanıcı diğer adı oluşturmanız gerekir.
+### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birleştirme bölümleri adının ilk ve son tarafından kullanıcı diğer adı oluştur
+Bir kullanıcı diğer kullanıcının adını, ilk 3 harf ve kullanıcının soyadını ilk 5 harfini yararlanarak oluşturmanız gerekiyor.
 
 **İfadesini** <br>
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
@@ -693,11 +693,11 @@ Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini
 * **Giriş** (soyad): "tikan"
 * **Çıkış**: "cantikan"
 
-### <a name="remove-diacritics-from-a-string"></a>Bir dizeden aksanları kaldırma
-Vurgu işaretleri içeren karakterleri, vurgu işaretleri içermeyen denk karakterlerle değiştirmeniz gerekir.
+### <a name="remove-diacritics-from-a-string"></a>Bir dizeden Aksanları Kaldır
+Vurgu işaretlerinin içermeyen eşdeğer karakterlerle vurgu işaretleri içeren karakter değiştirmeniz gerekir.
 
 **İfadesini** <br>
-Normalizediacritika ([1})
+NormalizeDiacritics([givenName])
 
 **Örnek giriş/çıkış:** <br>
 
@@ -716,8 +716,8 @@ Böl ([extensionAttribute5], ",")
 * **Çıkış**: ["Permissionsetone", "Permissionsettingwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Belirli bir biçimde bir dize olarak çıkış tarihi
-Belirli bir biçimde bir SaaS uygulamasına tarihler göndermek istiyorsunuz. <br>
-Örneğin, ServiceNow için tarihleri biçimlendirmek istiyorsunuz.
+Belirli bir biçimdeki bir SaaS uygulamasına tarihleri göndermek istediğiniz. <br>
+Örneğin, tarihleri biçimlendirmek için ServiceNow istiyorsunuz.
 
 **İfadesini** <br>
 
@@ -728,10 +728,10 @@ Belirli bir biçimde bir SaaS uygulamasına tarihler göndermek istiyorsunuz. <b
 * **Giriş** (extensionAttribute1): "20150123105347.1 z"
 * **Çıkış**: "2015-01-23"
 
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenek kümesine göre bir değeri değiştirin
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenekleri kümesi temel alınarak bir değeri değiştirin
 
-Kullanıcının saat dilimini Azure AD 'de depolanan durum koduna göre tanımlamanız gerekir. <br>
-Durum kodu önceden tanımlanmış seçeneklerle eşleşmezse, "Avustralya/Sidney" varsayılan değerini kullanın.
+Azure AD'de depolanan eyalet koduna göre kullanıcının saat dilimi tanımlamak gerekir. <br>
+Önceden tanımlanmış seçeneklerden herhangi biri durum kodu eşleşmiyorsa, "Avustralya/Sidney" varsayılan değeri kullanın.
 
 **İfadesini** <br>
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
@@ -764,8 +764,8 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 * **Giriş** (preferredlastname): "Smith"
 * **Çıkış**: "john.smith@contoso.com"
 
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz değer oluştur
-Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için bir değer oluşturmanız ve değeri UPN özniteliğine atamadan önce hedef AD dizininde benzersizliği denetlemeniz gerekir.
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz bir değer oluşturur
+Bağlı kullanıcının ilk adını, ikinci adı ve Soyadı, UPN özniteliği için değer atamadan önce hedef AD dizininde UPN özniteliği için bir değer ve kendi benzersizlik denetimi oluşturmanız gerekiyor.
 
 **İfadesini** <br>
 

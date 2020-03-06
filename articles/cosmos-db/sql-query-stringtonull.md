@@ -4,15 +4,15 @@ description: Azure Cosmos DB 'de SQL sistem işlevi StringToNull hakkında bilgi
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c7ea3ca82cadb1351d8581f3d652ce060d67969b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349254"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296448"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
  Null değere çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
@@ -34,7 +34,7 @@ StringToNull(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToNull` ' ın farklı türler genelinde nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, `StringToNull` farklı türlerde nasıl davrandığını gösterir. 
 
 Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
@@ -47,7 +47,7 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"n1": null, "n2": null, "n3": true}]
@@ -63,7 +63,7 @@ SELECT
     StringToNull("Null")
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{}]
@@ -79,11 +79,15 @@ SELECT
     StringToNull(NaN) 
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,15 +4,15 @@ description: Azure Cosmos DB 'de SQL sistem işlevi çoğaltma hakkında bilgi e
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5e0b7f29c503daa8a95dcc46238e60728c0cec50
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349561"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302194"
 ---
 # <a name="replicate-azure-cosmos-db"></a>Çoğalt (Azure Cosmos DB)
  Bir dize değeri, belirtilen sayıda yineler.
@@ -29,7 +29,7 @@ REPLICATE(<str_expr>, <num_expr>)
    Bir dize ifadesidir.
   
 *num_expr*  
-   Sayısal bir ifadedir. *Num_expr* negatifse veya sonlu değilse, sonuç tanımsızdır.
+   Sayısal bir ifadedir. *Num_expr* negatif veya sonlu olmayan bir değer ise, sonuç tanımsızdır.
   
 ## <a name="return-types"></a>Dönüş türleri
   
@@ -40,17 +40,21 @@ REPLICATE(<str_expr>, <num_expr>)
 
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir sorguda `REPLICATE` ' ın nasıl kullanılacağını gösterir.
+  Aşağıdaki örnek, `REPLICATE` bir sorguda nasıl kullanılacağını gösterir.
   
 ```sql
 SELECT REPLICATE("a", 3) AS replicate
 ```  
   
- Sonuç kümesini burada verilmiştir.
+ Sonuç kümesini burada bulabilirsiniz.
   
 ```json
 [{"replicate": "aaa"}]
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

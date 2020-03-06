@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f23624dd0be1e700731e3f5a63c8cd7a00ec4e16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9bde0f81dc364aaa09dc9763f2014d83f992371
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458071"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298306"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric olağanüstü durum kurtarma
 Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm farklı türdeki hataların varlığını sürdürmesini sağlamaktır. Bu özellikle, denetim için planlanmamış ve dışındaki hatalarda önemlidir. Bu makalede, doğru Modellenmemiş ve yönetilmiyorsa olağanüstü durumlar olabilecek bazı yaygın hata modları açıklanmaktadır. Ayrıca, bir olağanüstü durum gerçekleştiyse gerçekleştirilecek azaltmaları ve eylemleri tartışır. Amaç, bir veya daha fazla durum oluştuğunda, kapalı kalma süresi veya veri kaybı riskini sınırlandırmaktır veya ortadan kaldırır.
@@ -80,28 +80,40 @@ Yukarıdaki tek bir başarısızlık hakkında konuşduk. Görebileceğiniz gibi
 
 
 ### <a name="random-failures-leading-to-service-failures"></a>Rastgele hatalarda hizmet hatalarıyla başa dön
-Hizmetin `InstanceCount` 5 olduğunu ve bu örnekleri çalıştıran birkaç düğümün aynı anda başarısız olduğunu varsayalım. Service Fabric, diğer düğümlerde otomatik olarak değiştirme örnekleri oluşturarak yanıt verir. Hizmet istenen örnek sayısına geri alınana kadar değişiklik oluşturmaya devam edecektir. Başka bir örnek olarak,-1 `InstanceCount`durum bilgisi olmayan bir hizmet olduğunu varsayalım. Bu, kümedeki tüm geçerli düğümlerde çalıştığı anlamına gelir. Bu örneklerden bazılarının başarısız olduğunu varsayalım. Bu durumda, Service Fabric hizmetin istenen durumunda olmadığından ve içerdikleri düğümlerde örnekleri oluşturmaya çalıştığını fark eder. 
 
-Durum bilgisi olan hizmetler için durum hizmetin kalıcı duruma sahip olup olmamasına bağlıdır. Ayrıca, hizmetin kaç çoğaltmasını ve kaç tane başarısız olduğunu da bağlı olarak değişir. Durum bilgisi olan bir hizmet için olağanüstü durum oluşup oluşmadığını belirleme ve bu hizmetin yönetilmesi üç aşamadan oluşur:
+#### <a name="stateless-services"></a>Durum bilgisi olmayan hizmetler
+Hizmet için `InstanceCount`, çalışması gereken birkaç örnek sayısını gösterir. Örneklerin herhangi biri (veya tümü) başarısız olduğunda, Service Fabric diğer düğümlerde otomatik olarak değiştirme örnekleri oluşturarak yanıt verir. Service Fabric, hizmet istenen örnek sayısına geri alınana kadar değişiklik oluşturmaya devam edecektir.
+Diğer bir örnek olarak, durum bilgisi olmayan hizmetin `InstanceCount`-1 ' i varsa, kümedeki düğümlerin her birinde bir örnek çalışıyor olmalıdır. Bu örneklerden bazıları başarısız olduysa, Service Fabric hizmetin istenen durumunda olmadığını algılar ve örnekleri eksik oldukları düğümlerde oluşturmaya çalışır.
+
+#### <a name="stateful-services"></a>Durum bilgisi olan hizmetler
+İki tür durum bilgisi olan hizmetler vardır:
+1. Kalıcı durumla durum bilgisi
+2. Kalıcı olmayan durum bilgisi (durum bellekte depolanır)
+
+Durum bilgisi olan hizmet hatası kurtarma, durum bilgisi olan hizmetin türüne ve hizmetin kaç tane çoğaltmasını ve başarısız olduğunu gösterir.
+
+Çekirdek nedir?
+Durum bilgisi olan bir hizmette, gelen veriler çoğaltmalar arasında çoğaltılır (birincil ve Activeikincil). Kopyaların büyük bir bölümü verileri alıyorsa, veriler çekirdek taahhütlü olarak değerlendirilir (5 çoğaltma için 3 _çekirdek_olur). Bu, belirli bir noktada, en son verileri içeren çoğaltmaların en az çekirdekte olacağı garanti edilir. Çoğaltma (ler) başarısız olursa (5 yinelemeden 2 ' den fazla yineleme başarısız olursa), kurtaramadığımızda (5 ' in 3 ' den fazla çoğaltma işlemi devam ettiğinden) hesaplanacak olan çekirdek değeri kullanabiliriz.
+
+Çekirdek kaybı nedir?
+Çoğaltmaların çekirdeği başarısız olduğunda, bölüm, çekirdek kayıp durumunda olacak şekilde bildirilmiştir. Bir bölümde 5 çoğaltmaya sahip olduğunu varsayalım, bu da en az 3 ' ün tüm verileri içeren garanti edilir. Çoğaltma (3 çıkış 5) çoğaltması başarısız olursa, Service Fabric kalan çoğaltmaların (2 çıkış 5) bölümü geri yüklemek için yeterli veriye sahip olup olmadığını belirleyemez.
+
+Durum bilgisi olan bir hizmet için olağanüstü durum oluşup oluşmadığını belirleme ve bu hizmetin yönetilmesi üç aşamadan oluşur:
 
 1. Çekirdek kaybı olup olmadığını belirleme
-   - Çekirdek kaybı, durum bilgisi olan bir hizmetin çoğaltmalarının çoğunluğunun, birincil dahil olmak üzere aynı anda kapatılabilen bir süredir.
+    - Durum bilgisi olan bir hizmetin çoğaltmalarının çoğunluğu aynı anda kapalıysa çekirdek kaybı bildirilmiştir.
 2. Çekirdek kaybının kalıcı olup olmadığını belirleme
    - Çoğu zaman, başarısızlıklar geçicidir. İşlem yeniden başlatıldı, düğümler yeniden başlatıldı, VM 'Ler yeniden başlatılıyor, ağ bölümlerinin sistem bölümlerini geri al. Yine de, sorunlar kalıcı olabilir. 
-     - Kalıcı duruma sahip olmayan hizmetler için, çekirdek veya daha fazla çoğaltmalardan oluşan bir hata _hemen_ kalıcı çekirdek kaybına neden olur. Service Fabric, durum bilgisi olmayan kalıcı olmayan bir hizmette çekirdek kaybını algıladığında, anında (potansiyel) veri kaybı bildirerek 3. adıma geçer. Veri kaybına devam etmek, Service Fabric çoğaltmalarının geri dönmesi beklenmediği, ancak kurtarılsa bile boş olacağından emin olun.
-     - Durum bilgisi olmayan kalıcı hizmetler için bir çekirdekte veya daha fazla çoğaltmalardan oluşan bir hata, çoğaltmaların geri dönüp çekirdeği geri yükleme için Service Fabric başlatılmasına neden olur. Bu durum, hizmetin etkilenen bölüme (veya "çoğaltma kümesi") herhangi bir _yazma işlemleri_ için bir hizmet kesintisine neden olur. Ancak, daha düşük tutarlılık garantisi ile okuma yapılabilmeye devam edebilir. Service Fabric, çekirdeğin geri yüklenmesini bekleyeceği varsayılan süre sonsuzdur, çünkü devam eden bir (potansiyel) veri kaybı olayı ve diğer riskleri taşır. Varsayılan `QuorumLossWaitDuration` değerinin geçersiz kılınması mümkün olsa da önerilmez. Bunun yerine, aşağı çoğaltmaları geri yüklemek için tüm çabalar yapılmalıdır. Bu, yedeklenecek düğümlerin yapılmasını ve yerel kalıcı durumu depolarsa sürücüleri yeniden takabilecekleri şekilde emin olmanızı gerektirir. Çekirdek kaybını işlem arızasından kaynaklandıysanız, Service Fabric otomatik olarak işlemleri yeniden oluşturmayı dener ve çoğaltmaları bunların içinde yeniden başlatır. Bu başarısız olursa, Service Fabric sistem durumu hatalarını raporlar. Bunlar çözülebiliyorsa çoğaltmalar genellikle geri gelir. Bazen çoğaltmalar geri alınamaz. Örneğin, sürücülerin hepsi başarısız olabilir veya makineler fiziksel olarak bir şekilde yok edilir. Bu gibi durumlarda artık kalıcı bir çekirdek kaybı olayımız vardır. Service Fabric, aşağı çoğaltmaların geri dönmesi beklenmesini durdurmak için, bir Küme Yöneticisi hangi hizmetlerin etkilendiğini saptamalıdır ve `Repair-ServiceFabricPartition -PartitionId` veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'sini çağırır.  Bu API, Quorumkaybetme dışına ve olası datalom 'ye taşımak için bölüm KIMLIĞININ belirtilmesine izin verir.
-
-   > [!NOTE]
-   > Belirli bölümlerde hedeflenen bir şekilde bu API 'nin kullanılması _hiçbir_ daha güvenli değildir. 
-   >
-
+     - Kalıcı duruma sahip olmayan hizmetler için, çekirdek veya daha fazla çoğaltmalardan oluşan bir hata _hemen_ kalıcı çekirdek kaybına neden olur. Service Fabric, durum bilgisi olmayan kalıcı olmayan bir hizmette çekirdek kaybını algıladığında, anında (potansiyel) veri kaybı bildirerek 3. adıma geçecek. Veri kaybına devam etmek Service Fabric, çünkü kurtarılsa bile, hizmetin kalıcı olmayan doğası nedeniyle verilerin kaybedilmesi nedeniyle çoğaltmanın geri gelmesini beklemdiğinde emin olduğunu bilir.
+     - Durum bilgisi olmayan kalıcı hizmetler için bir çekirdekte veya daha fazla çoğaltmalardan oluşan bir hata, çoğaltmaların geri dönüp çekirdeği geri yüklemesi için Service Fabric neden olur. Bu durum, hizmetin etkilenen bölüme (veya "çoğaltma kümesi") herhangi bir _yazma işlemleri_ için bir hizmet kesintisine neden olur. Ancak, daha düşük tutarlılık garantisi ile okuma yapılabilmeye devam edebilir. Service Fabric, çekirdeğin geri yüklenmesini bekleyeceği varsayılan süre sonsuzdur, çünkü devam eden bir (potansiyel) veri kaybı olayı ve diğer riskleri taşır.
 3. Gerçek veri kaybı olup olmadığını belirleme ve yedeklerden geri yükleme
-   - Service Fabric `OnDataLossAsync` yöntemini çağırdığında, bu her zaman _şüpheli_ veri kaybı nedeniyle oluşur. Service Fabric, bu çağrının kalan _en iyi_ çoğaltmaya teslim edilmesini sağlar. Bu, en son ilerlemeyi yapan bir yinelemedir. Her zaman _şüpheli_ veri kaybını söyliyoruz, kalan çoğaltmanın, birincil yaptığı sırada gerçekten aynı duruma sahip olduğundan emin olma olasılığı vardır. Bununla birlikte, bu durum ile karşılaştırılabilmesi için, Service Fabric veya operatörlerin emin olup olmadığını bilmek için iyi bir yol yoktur. Bu noktada, Service Fabric diğer çoğaltmaların geri gelmediği de biliyor. Bu, çekirdek kaybının kendisini çözümlemek için beklemeyi durdurduğumızda yapılan karardır. Hizmet için en iyi eylem, genellikle donabilir ve belirli yönetim müdahalesini bekler. Bu nedenle `OnDataLossAsync` yönteminin tipik bir uygulanması ne yapar?
-   - İlk olarak, `OnDataLossAsync` tetiklendiğini ve gerekli tüm yönetim uyarılarını tetiklediğini unutmayın.
-   - Genellikle bu noktada, daha fazla kararlar ve el ile gerçekleştirilen eylemler için duraklama ve bekleme. Bunun nedeni, yedeklemelerin kullanılabilir olduğu durumlarda bile hazırlanmaları gerekebilir. Örneğin, iki farklı hizmetin bilgileri koordine etmesidir, geri yükleme işleminin iki hizmetin ilgilendiğinden emin olmak için bu yedeklerin değiştirilmesi gerekebilir. 
-   - Genellikle başka bir telemetri veya hizmetten de daha fazla yer vardır. Bu meta veriler diğer hizmetlerde veya günlüklerde bulunabilir. Bu bilgiler, yedekte bulunmayan ve bu belirli çoğaltmaya çoğaltılan birincil konumda alınan ve işlenen herhangi bir çağrı olup olmadığını belirlemede kullanılabilir. Geri yükleme uygulanabilir olmadan önce bunların yeniden yürütülmesi veya yedeklemeye eklenmesi gerekebilir.  
-   - Kalan çoğaltmanın durumunun, kullanılabilir olan tüm yedeklemelerde yer alan karşılaştırmaları. Service Fabric güvenilir koleksiyonlar kullanılıyorsa, [Bu makalede](service-fabric-reliable-services-backup-restore.md)açıklanan araçlar ve süreçler vardır. Amaç, çoğaltmanın içindeki durumun yeterli olup olmadığını ya da yedeklemenin eksik olabileceğini görmektir.
-   - Karşılaştırma yapıldıktan sonra ve geri yükleme tamamlandıktan sonra, herhangi bir durum değişikliği yapılırsa hizmet kodu true döndürmelidir. Çoğaltma, durumun en iyi kullanılabilir kopyası olduğunu tespit ederseniz ve hiçbir değişiklik yapmamışsa, false döndürün. Doğru, kalan _diğer_ çoğaltmaların artık bununla tutarsız olabileceğini gösterir. Bunlar bu çoğaltmadan bırakılır ve yeniden oluşturulur. False, hiçbir durum değişikliği yapılmadığını gösterir, bu nedenle diğer çoğaltmalar onların sahip oldukları öğeleri tutabilir. 
+   
+   Service Fabric `OnDataLossAsync` yöntemini çağırdığında, bu her zaman _şüpheli_ veri kaybı nedeniyle oluşur. Service Fabric, bu çağrının kalan _en iyi_ çoğaltmaya teslim edilmesini sağlar. Bu, en son ilerlemeyi yapan bir yinelemedir. Her zaman _şüpheli_ veri kaybını söyliyoruz, kalan çoğaltmanın, birincil yaptığı sırada gerçekten aynı duruma sahip olduğundan emin olma olasılığı vardır. Bununla birlikte, bu durum ile karşılaştırılabilmesi için, Service Fabric veya operatörlerin emin olup olmadığını bilmek için iyi bir yol yoktur. Bu noktada, Service Fabric diğer çoğaltmaların geri gelmediği de biliyor. Bu, çekirdek kaybının kendisini çözümlemek için beklemeyi durdurduğumızda yapılan karardır. Hizmet için en iyi eylem, genellikle donabilir ve belirli yönetim müdahalesini bekler. Bu nedenle `OnDataLossAsync` yönteminin tipik bir uygulanması ne yapar?
+   1. İlk olarak, `OnDataLossAsync` tetiklendiğini ve gerekli tüm yönetim uyarılarını tetiklediğini unutmayın.
+   1. Genellikle bu noktada, daha fazla kararlar ve el ile gerçekleştirilen eylemler için duraklama ve bekleme. Bunun nedeni, yedeklemelerin kullanılabilir olduğu durumlarda bile hazırlanmaları gerekebilir. Örneğin, iki farklı hizmetin bilgileri koordine etmesidir, geri yükleme işleminin iki hizmetin ilgilendiğinden emin olmak için bu yedeklerin değiştirilmesi gerekebilir. 
+   1. Genellikle başka bir telemetri veya hizmetten de daha fazla yer vardır. Bu meta veriler diğer hizmetlerde veya günlüklerde bulunabilir. Bu bilgiler, yedekte bulunmayan ve bu belirli çoğaltmaya çoğaltılan birincil konumda alınan ve işlenen herhangi bir çağrı olup olmadığını belirlemede kullanılabilir. Geri yükleme uygulanabilir olmadan önce bunların yeniden yürütülmesi veya yedeklemeye eklenmesi gerekebilir.  
+   1. Kalan çoğaltmanın durumunun, kullanılabilir olan tüm yedeklemelerde yer alan karşılaştırmaları. Service Fabric güvenilir koleksiyonlar kullanılıyorsa, [Bu makalede](service-fabric-reliable-services-backup-restore.md)açıklanan araçlar ve süreçler vardır. Amaç, çoğaltmanın içindeki durumun yeterli olup olmadığını ya da yedeklemenin eksik olabileceğini görmektir.
+   1. Karşılaştırma yapıldıktan sonra ve geri yükleme tamamlandıktan sonra, herhangi bir durum değişikliği yapılırsa hizmet kodu true döndürmelidir. Çoğaltma, durumun en iyi kullanılabilir kopyası olduğunu tespit ederseniz ve hiçbir değişiklik yapmamışsa, false döndürün. Doğru, kalan _diğer_ çoğaltmaların artık bununla tutarsız olabileceğini gösterir. Bunlar bu çoğaltmadan bırakılır ve yeniden oluşturulur. False, hiçbir durum değişikliği yapılmadığını gösterir, bu nedenle diğer çoğaltmalar onların sahip oldukları öğeleri tutabilir. 
 
 Hizmet yazarlarının, hizmetler üretime dağıtılmadan önce olası veri kaybını ve hata senaryolarını uygulaması önemli ölçüde önemlidir. Veri kaybı olasılığa karşı korunmak için, durum bilgisi olan hizmetlerinizin herhangi birinin [durumunu](service-fabric-reliable-services-backup-restore.md) coğrafi olarak yedekli bir mağazaya düzenli aralıklarla yedeklemeniz önemlidir. Ayrıca, geri yükleme olanağına sahip olduğunuzdan emin olmanız gerekir. Birçok farklı hizmetin yedekleri farklı zamanlarda alındığından, hizmetlerinizin bir sonraki geri yükleme işleminden sonra tutarlı bir görünüm olduğundan emin olmanız gerekir. Örneğin, bir hizmetin bir sayı oluşturduğu ve depolandığı bir durum düşünün, sonra da onu depolayan başka bir hizmete gönderir. Geri yükleme sonrasında ikinci hizmetin numaranın olduğunu, ancak Birincisi, bu işlemi içermediği için birinci öğenin ne olduğunu fark edebilirsiniz.
 
@@ -110,6 +122,25 @@ Kalan çoğaltmaların bir veri kaybı senaryosunda devam etmek için yetersiz o
 > [!NOTE]
 > Sistem Hizmetleri, söz konusu hizmete özel etkiyle aynı zamanda çekirdek kaybını da etkileyebilir. Örneğin, adlandırma hizmetindeki çekirdek kaybı ad çözümlemesini etkiler, ancak yük devretme Yöneticisi hizmetindeki çekirdek kaybı yeni hizmet oluşturma ve yük devretmeyi engeller. Service Fabric sistem hizmetleri, durum yönetimi için hizmetlerinizde aynı modele sahip olsa da, bunları çekirdek kaybını ve olası veri kaybına taşımayı denemeniz önerilmez. Öneri, belirli durumunuza hedeflenmiş bir çözümü belirlemede [destek](service-fabric-support.md) almak için kullanılır.  Genellikle, aşağı çoğaltmalar döndürülene kadar beklemeniz tercih edilir.
 >
+
+#### <a name="troubleshooting-quorum-loss"></a>Çekirdek kaybı sorunlarını giderme
+
+Çoğaltmalar geçici bir hata nedeniyle aralıklı olarak kapatılabilir. Service Fabric bir süre bekleyin. Çoğaltmalar beklenenden uzun süredir kapalıysa lütfen aşağıdaki sorun giderme adımlarını izleyin.
+- Çoğaltmalar çökme. Çoğaltma düzeyi sistem durumu raporlarını ve uygulama günlüklerinizi denetleyin. Kilitlenme dökümünü toplayın ve kurtarmak için gerekli işlemleri yapın.
+- Çoğaltma işlemi yanıt veremez duruma geldi. Bunu doğrulamak için uygulama günlüklerinizi inceleyin. İşlem dökümünü toplayın ve ardından yanıt vermeyen işlemi sonlandırın. Service Fabric, değiştirme işlemini oluşturacak ve çoğaltmayı geri getirmeye çalışacaktır.
+- Çoğaltmaları barındıran düğümler kapatılamadı. Düğümleri taşımak için temel alınan VM 'yi yeniden başlatın.
+
+Örneğin, çoğaltmaları kurtarmak mümkün olmadığı durumlar olabilir, ancak sürücüler başarısız olmuş olabilir veya makineler fiziksel olarak yanıt vermiyor olabilir. Bu durumlarda, Service Fabric çoğaltma kurtarması beklenemedi.
+Bu yöntemleri, hizmetin çevrimiçi duruma getirilmesi için olası VERI kaybı kabul edilebilir değilse, fiziksel makineleri kurtarmak üzere tüm çabaların yapılması gerekir.
+
+Aşağıdaki adımlar, DataLoss ile sonuçlanabilir. lütfen bunları takip etmeden önce lütfen emin olun:
+   
+> [!NOTE]
+> Bu yöntemlerin belirli bölümlerde hedeflenen bir şekilde kullanılması _hiç_ güvenli değildir. 
+>
+
+- `Repair-ServiceFabricPartition -PartitionId` veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'sini kullanın. Bu API, olası veri kaybı ile Quorumkaybetme 'dan kurtarılacak bölüm KIMLIĞININ belirtilmesine izin verir.
+- Kümeniz, hizmetlerin çekirdek kayıp durumuna geçmesine ve olası _veri kaybını kabul edilebilir_hale gelmesine neden olan bir hatayla karşılaştığında, uygun bir [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik kurtarılmasına yardımcı olabilir. Service Fabric, kurtarma gerçekleştirilmeden önce, belirtilen QuorumLossWaitDuration (varsayılan değer sonsuzdur) bekleyecektir. Bu yöntem, beklenmeyen veri kayıplarının oluşmasına neden olabileceğinden _önerilmez_ .
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric kümesinin kullanılabilirliği
 Genellikle Service Fabric kümenin kendisi, tek hata noktaları olmayan, yüksek oranda dağıtılmış bir ortamdır. Birincil olarak, Service Fabric sistem hizmetleri daha önce sunulan yönergeleri izlediğinden, herhangi bir düğüm, küme için kullanılabilirlik veya güvenilirlik sorunlarına neden olmaz: her zaman varsayılan olarak üç veya daha fazla çoğaltma ile çalışır ve bu sistem tüm düğümlerde durum bilgisiz çalıştırılan hizmetler. Temel Service Fabric ağ oluşturma ve hata algılama katmanları tamamen dağıtılır. Çoğu sistem hizmeti kümedeki meta verilerden yeniden oluşturulabilir veya durumlarını diğer yerlerden yeniden eşitleme yapabilir. Sistem Hizmetleri yukarıda açıklananlar gibi çekirdek kaybı durumlarına geldiğinde kümenin kullanılabilirliği tehlikeye girebilir. Bu gibi durumlarda, küme üzerinde yükseltme başlatma veya yeni hizmetleri dağıtma gibi bazı işlemleri gerçekleştiremeyebilirsiniz, ancak kümenin kendisi hala çalışır durumda. Çalışmakta olan hizmetler, çalışmaya devam etmek için sistem hizmetlerine yazma gerektirmedikleri takdirde bu koşullarda çalışmaya devam edecektir. Örneğin, Yük Devretme Yöneticisi çekirdek kaybolduysa, tüm hizmetler çalışmaya devam eder, ancak bu, Yük Devretme Yöneticisi katılımına ihtiyaç duyduğundan, başarısız olan tüm hizmetler otomatik olarak yeniden başlatılamaz. 

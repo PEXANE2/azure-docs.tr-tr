@@ -3,12 +3,12 @@ title: Diğer uygulamalarla tümleştirin-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, sohbet botları gibi istemci uygulamalarıyla ve Language Understanding (LUSıS) gibi diğer doğal dil işleme hizmetlerine tümleştirilir.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300528"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>İstemci uygulamaları için Bilgi Bankası tasarlama
 
@@ -20,7 +20,7 @@ Soru-Cevap Oluşturma, [Microsoft bot Framework](https://dev.botframework.com/)g
 
 ## <a name="create-a-bot-without-writing-any-code"></a>Herhangi bir kod yazmadan bir bot oluştur
 
-Bilgi tabanınızı yayımladıktan sonra, **bir bot Oluştur düğmesini seçerek** **Yayımla** sayfasından bir bot oluşturun. Düğmeyi seçtikten sonra ne olacağını öğrenmek için [bot öğreticisini](../tutorials/create-qna-bot.md) kullanın.
+Bilgi tabanınızı yayımladıktan sonra, **bir bot Oluştur düğmesini seçerek** **Yayımla** sayfasından bir bot oluşturun. Düğmeyi seçtikten sonra ne olacağını öğrenmek için [bot öğreticisini](../Quickstarts/create-publish-knowledge-base.md) kullanın.
 
 ## <a name="providing-multi-turn-conversations"></a>Çoklu açma konuşmaları sağlama
 

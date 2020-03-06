@@ -4,15 +4,15 @@ description: Azure Cosmos DB SQL sistem işlevi StringToNumber 'ı hakkında bil
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8b9596738d9b02fa26f9c363287323b905654a1f
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296431"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
  Sayıya çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
@@ -34,7 +34,7 @@ StringToNumber(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToNumber` ' ın farklı türler genelinde nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, `StringToNumber` farklı türlerde nasıl davrandığını gösterir. 
 
 Boşluğa yalnızca sayıdan önce veya sonra izin verilir.
 
@@ -46,7 +46,7 @@ SELECT
     StringToNumber("-1.79769e+308") AS num4
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
@@ -59,7 +59,7 @@ SELECT
     StringToNumber("0xF")
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 {{}}
@@ -77,11 +77,15 @@ SELECT
     StringToNumber(NaN)
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 {{}}
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

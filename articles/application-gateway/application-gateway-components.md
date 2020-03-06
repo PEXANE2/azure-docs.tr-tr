@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971154"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301361"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
 
@@ -53,7 +53,7 @@ Application Gateway dört protokolü destekler: HTTP, HTTPS, HTTP/2 ve WebSocket
 >HTTP/2 protokol desteği yalnızca uygulama ağ geçidi dinleyicilerine bağlanan istemciler tarafından kullanılabilir. Arka uç sunucu havuzlarıyla iletişim, her zaman HTTP/1.1 üzerinden yapılır. HTTP/2 desteği varsayılan olarak devre dışıdır. Etkinleştirmeyi seçebilirsiniz.
 
 - Dinleyici yapılandırmasındaki HTTP ve HTTPS protokolleri arasında belirtin.
-- [WebSockets ve http/2 protokolleri](overview.md#websocket-and-http2-traffic) için destek yerel olarak sağlanır ve [WebSocket desteği](application-gateway-websocket.md) varsayılan olarak etkindir. WebSocket desteğini isteğe bağlı olarak etkinleştirmek veya devre dışı bırakmak için kullanıcı tarafından yapılandırılabilen bir ayar yoktur. HTTP ve HTTPS dinleyicilerine sahip WebSockets kullanın.
+- [WebSockets ve http/2 protokolleri](features.md#websocket-and-http2-traffic) için destek yerel olarak sağlanır ve [WebSocket desteği](application-gateway-websocket.md) varsayılan olarak etkindir. WebSocket desteğini isteğe bağlı olarak etkinleştirmek veya devre dışı bırakmak için kullanıcı tarafından yapılandırılabilen bir ayar yoktur. HTTP ve HTTPS dinleyicilerine sahip WebSockets kullanın.
 
 SSL sonlandırma için HTTPS dinleyicisi kullanın. Bir HTTPS dinleyicisi şifreleme ve şifre çözme işini uygulama ağ geçidinize yükler, bu nedenle web sunucularınız, ek yük tarafından aşırı alınamaz.
 
@@ -115,9 +115,9 @@ HTTP ayarlarında kullanılan bağlantı noktası ve protokol, uygulama ağ geç
 
 Bu bileşen için de kullanılır:
 
-- Bir kullanıcı oturumunun, [tanımlama bilgisi tabanlı oturum benzeşimi](overview.md#session-affinity)kullanılarak aynı sunucuda tutulup tutulmayacağını belirleme.
+- Bir kullanıcı oturumunun, [tanımlama bilgisi tabanlı oturum benzeşimi](features.md#session-affinity)kullanılarak aynı sunucuda tutulup tutulmayacağını belirleme.
 
-- [Bağlantı boşaltma](overview.md#connection-draining)kullanarak arka uç havuzu üyelerini dikkatlice kaldırın.
+- [Bağlantı boşaltma](features.md#connection-draining)kullanarak arka uç havuzu üyelerini dikkatlice kaldırın.
 
 - Arka uç durumunu izlemek için özel bir araştırma ilişkilendirin, istek zaman aşımı aralığını ayarlayın, istekteki ana bilgisayar adını ve yolu geçersiz kılın ve App Service arka ucunun ayarlarını belirtmek için tek tıklamayla kolaylık sağlayın.
 

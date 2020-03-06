@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 67507dc571b3fab93e61e70c1e8282ee5c0a4630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301395"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Microsoft® Kesintisiz Akış Istemci taşıma setini lisanslama 
 ## <a name="overview"></a>Genel Bakış
-Microsoft Kesintisiz Akış Client taşıma kiti (Short için**Sspk** kesintisiz akış), katıştırılmış cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine ve bağımsız yazılım satıcıları (ISV 'Ler) ve Kesintisiz Akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcıları. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
+Microsoft Kesintisiz Akış Client taşıma kiti (Short için**Sspk** ), yerleşik cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine, bağımsız yazılım satıcılarına (ISV) ve kesintisiz akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcılarına yardımcı olmak üzere iyileştirilmiş bir kesintisiz akış istemci uygulamasıdır. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
 
 Aşağıda yer alan üst düzey bir mimari ve IIS Kesintisiz Akış taşıma paketi kutusu, Microsoft tarafından sağlanan Kesintisiz Akış Istemci uygulamasıdır ve Kesintisiz Akış içeriğinin kayıttan yürütülmesi için tüm çekirdek mantığını içerir. Daha sonra bu içerik, uygun arabirimleri uygulayarak belirli bir cihaz veya platformun iş ortakları tarafından yer verilir. 
 
@@ -48,7 +48,7 @@ SSPK, mükemmel iş değeri sunan koşullara göre lisanslanır. SSPK lisansı s
   * Linux için örnek PAL uygulamasının
   * GStreamer için örnek HAL uygulama
 
-## <a name="licensing-options"></a>Lisanslama Seçenekleri
+## <a name="licensing-options"></a>Lisanslama seçenekleri
 Microsoft Kesintisiz Akış Istemci taşıma kiti, lisansların iki ayrı lisans sözleşmesi altında görüebilmesini sağlar: Kesintisiz Akış Istemci geçici ürünlerini geliştirme ve son kullanıcılara Kesintisiz Akış Istemci son ürünlerini dağıtmaya yönelik diğeri.
 
 * Yonga ürünleri geliştirmek için bir kaynak kodu taşıma paketi gerektiren yonga kümesi üreticileri, sistem tümleştiricileri veya bağımsız yazılım satıcıları (ISV 'Ler) için bir Microsoft Kesintisiz Akış Istemci taşıma Seti **geçici ürün lisansı** yürütülmelidir.
@@ -105,7 +105,6 @@ Ara ve nihai SSPK lisanslamamaları, [smoothpk@microsoft.com](mailto:smoothpk@mi
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * En popüler zafer yatırımları, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -149,10 +148,9 @@ Ara ve nihai SSPK lisanslamamaları, [smoothpk@microsoft.com](mailto:smoothpk@mi
 * Sichuan Changhong Elektrik Co., Ltd.
 * Skardın Endüstriyel Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV G.A.
+* SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* TCL fazla aşırı pazarlama (Makao Commercial Offkısale) sınırlı
 * Teknisyen teslim teknolojileri, SAS
 * Tongfang genel Ltd.
 * En popüler zafer yatırımları, Ltd.
@@ -162,9 +160,9 @@ Ara ve nihai SSPK lisanslamamaları, [smoothpk@microsoft.com](mailto:smoothpk@mi
 * Wistron Corporation
 * ZTE Corporation
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199963"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296346"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme
 
@@ -58,7 +58,7 @@ Geri yükleme noktası bekletme dönemlerinde ayrıntıları aşağıda listelen
 2. Bir SQL havuzu duraklatıldığında anlık görüntüler alınmaz.
 3. Geri yükleme noktasının yaşı, SQL havuzunun duraklatıldığı zaman dahil olmak üzere geri yükleme noktasının alındığı zamandan itibaren mutlak takvim günlerine göre ölçülür.
 4. Herhangi bir zamanda, bir SQL havuzunun, bu geri yükleme noktalarında 7 günlük saklama süresine ulaşmadığında, en fazla 42 Kullanıcı tanımlı geri yükleme noktası ve 42 otomatik geri yükleme noktası depolayabileceği garanti edilir.
-5. Bir anlık görüntü alınmışsa, SQL havuzu 7 günden daha uzun bir süre boyunca duraklatılır ve devam eder, toplam 42 geri yükleme noktası (Kullanıcı tanımlı ve otomatik dahil) olana kadar geri yükleme noktasının kalıcı olması mümkündür
+5. Bir anlık görüntü alınmışsa, SQL havuzu 7 günden daha uzun bir süre boyunca duraklatılır ve sonra devam eder, geri yükleme noktası toplam 42 geri yükleme noktası (hem Kullanıcı tanımlı hem de otomatik dahil) olana kadar devam eder
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>SQL havuzu bırakıldığında anlık görüntü bekletme
 

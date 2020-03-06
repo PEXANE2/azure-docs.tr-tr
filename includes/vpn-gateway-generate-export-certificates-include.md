@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304946"
 ---
 ## <a name="rootcert"></a>Otomatik olarak imzalanan kök sertifika oluşturma
 
@@ -28,6 +28,7 @@ Otomatik olarak imzalanan bir kök sertifika oluşturmak için New-SelfSignedCer
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. Bu kök sertifikayı oluşturduktan hemen sonra bir istemci sertifikası oluşturmak istiyorsanız PowerShell konsolunu açık bırakın.
 
 ## <a name="clientcert"></a>İstemci sertifikası oluştur
 
@@ -37,7 +38,7 @@ Aşağıdaki adımlarda, otomatik olarak imzalanan kök sertifikadan bir istemci
 
 Örnekler, bir yılda süresi dolan bir istemci sertifikası oluşturmak için New-SelfSignedCertificate cmdlet 'ini kullanır. İstemci sertifikası için farklı bir süre sonu değeri ayarlama gibi ek parametre bilgileri için, bkz. [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-### <a name="example-1"></a>Örnek 1
+### <a name="example-1---powershell-console-session-still-open"></a>Örnek 1-PowerShell konsol oturumu hala açık
 
 Otomatik olarak imzalanan kök sertifikayı oluşturduktan sonra PowerShell konsolunuzu kapatmamışsa bu örneği kullanın. Bu örnek önceki bölümden devam eder ve belirtilen ' $cert ' değişkenini kullanır. Otomatik olarak imzalanan kök sertifikayı oluşturduktan sonra PowerShell konsolunu kapattıysanız veya yeni bir PowerShell konsolu oturumunda ek istemci sertifikaları oluşturuyorsanız, [örnek 2](#ex2)' deki adımları kullanın.
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>Örnek 2
+### <a name="ex2"></a>Örnek 2-yeni PowerShell konsol oturumu
 
 Ek istemci sertifikaları oluşturuyorsanız veya otomatik olarak imzalanan kök sertifikanızı oluşturmak için kullandığınız PowerShell oturumunu kullanmıyorsanız, aşağıdaki adımları kullanın:
 

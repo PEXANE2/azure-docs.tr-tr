@@ -4,12 +4,12 @@ description: Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların 
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273394"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296108"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -224,7 +224,7 @@ Birden çok dil içerik varsa, her dil için ayrı bir hizmet oluşturmak emin o
 <details>
 <summary><b>Soru-Cevap Oluşturma yeni bir bot nasıl oluşturabilirim?</b></summary>
 
-**Cevap**: Azure bot hizmeti ile bot 'nizi oluşturmak için [Bu](./Tutorials/create-qna-bot.md) belgelerde verilen yönergeleri izleyin.
+**Cevap**: Azure bot hizmeti ile bot 'nizi oluşturmak için [Bu](./Quickstarts/create-publish-knowledge-base.md) belgelerde verilen yönergeleri izleyin.
 
 </details>
 
@@ -255,7 +255,7 @@ Bilgi Bankası 'nın uç nokta anahtarı, ABS hizmetindeki `QnAAuthkey` etiketli
 
 **Cevap**: soru-cevap oluşturma hizmetini Web sitenize web sohbeti denetimi olarak eklemek için aşağıdaki adımları izleyin:
 
-1. [Buradaki](./Tutorials/create-qna-bot.md)YÖNERGELERI izleyerek SSS bot uygulamanızı oluşturun.
+1. [Buradaki](./Quickstarts/create-publish-knowledge-base.md)YÖNERGELERI izleyerek SSS bot uygulamanızı oluşturun.
 2. [Buradaki](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) adımları izleyerek Web sohbetini etkinleştirin
 
 </details>

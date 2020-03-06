@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909049"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298658"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -26,7 +26,7 @@ Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulu
 ## <a name="cloud-provisioning-agent-requirements"></a>Bulut sağlama Aracısı gereksinimleri
 Bulut sağlamasını Azure AD Connect kullanmak için aşağıdakiler gerekir:
     
-- Azure AD kiracınız için genel yönetici hesabı.
+- Azure AD kiracınız için konuk kullanıcı olmayan bir genel yönetici hesabı.
 - Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.
 - Şirket içi güvenlik duvarı konfigürasyonları.
 
@@ -39,6 +39,10 @@ Belgenin geri kalanı, bu Önkoşullar için adım adım yönergeler sağlar.
 
 1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olursa veya kullanılamaz hale gelirse kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
 1. Azure AD kiracınıza bir veya daha fazla [özel etki alanı adı](../active-directory-domains-add-azure-portal.md) ekleyin. Kullanıcılarınız bu etki alanı adlarından biriyle oturum açabilir.
+
+### <a name="in-your-directory-in-active-directory"></a>Active Directory dizininizde
+
+Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) çalıştırın.
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 

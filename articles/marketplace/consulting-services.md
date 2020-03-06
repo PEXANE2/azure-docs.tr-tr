@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268244"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296160"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Market ve AppSource için danışmanlık hizmetleri
 Azure Market ve AppSource 'ta Danışmanlık Hizmetleri, Microsoft iş ortakları 'na, Azure ve iş hedefleri kullanımını desteklemek ve bunları genişletmek üzere Hizmetleri ile bağlama amacını sağlar. 
@@ -39,7 +39,7 @@ Microsoft Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetl
 Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. [Azure danışmanlık hizmeti yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)makaleleri.
 
 > [!Note]
-> Azure Marketi 'ndeki Danışmanlık Hizmetleri, *Azure teknik çözümleri ve Hizmetleri* ile ilgili olarak sunulan bir * * teknik kitleye yönelik tekliflerinden faydalanır. \* * AppSource 'ta Danışmanlık Hizmetleri, Dynamics 365, Power BI veya PowerApps için kalite çözümleri sunma konusunda uzmanlığa yönelik tekliflerinden yararlanarak uygulama danışmanlık hizmetleri tekliflerini AppSource 'ta listeleyebilir
+> Azure Marketi 'ndeki Danışmanlık Hizmetleri, *Azure teknik çözümleri ve Hizmetleri* ile ilgili olarak sunulan bir * * teknik kitleye yönelik tekliflerinden faydalanır. \* * AppSource 'ta Danışmanlık Hizmetleri, Dynamics 365, Power BI veya Power Apps için kalite çözümleri sunma konusunda uzmanlığa yönelik tekliflerinden yararlanarak uygulama danışmanlık hizmetleri tekliflerini AppSource 'ta listeleyebilir
 > 
 > 
 > [!TIP]
@@ -67,7 +67,7 @@ Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Az
 | Dynamics 365 Customer Insights | En az 5 ölçüyle ve 5 kesimle [Customer Insights Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) ' in en az 1 başarılı üretim sürümü uygulamasına sahip olması gerekir. |
 | Dynamics 365 Iş Merkezi | [Kurumsal kaynak planlama uzmanlığına](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) altın veya gümüş sertifikalı olmalıdır ve en az 3 iş merkezi müşterisi için bulut çözümü sağlayıcısı olmalıdır. <br> <br> OR <br> <br> [AppSource 'ta bir Iş Merkezi uygulaması](https://appsource.microsoft.com/) yayımlamalıdır |
 | Power BI | [Power BI iş ortağı tanıtımı](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)listede olmalıdır.|
-|Power Apps | [PowerApps ortaklığı programında](https://aka.ms/PowerAppsPartner)gelişmiş avantajlar için uygun olmalıdır. |
+|Power Apps | , [Power Apps ortaklığı programında](https://aka.ms/PowerAppsPartner)gelişmiş avantajlar için uygun olmalıdır. |
 
 Ek kaynaklar ve destek:
 

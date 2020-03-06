@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş sürekliliği sağlamanıza ve olağanüstü durum kurtarma için hazırlık yapmayı öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295836"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -27,11 +27,9 @@ Farklı bölgelerdeki AKS kümelerinde dev alanlarını etkinleştirmek, Azure b
 
 AKS 'nin çok bölgeli dağıtımları hakkında genel bilgi için bkz. [çok bölgeli dağıtım Için plan](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-Azure Dev Spaces ile uyumlu bir AKS kümesini dağıtma hakkında daha fazla bilgi için bkz. [Azure Cloud Shell kullanarak Kubernetes kümesi oluşturma](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>Azure portal aracılığıyla dev alanlarını etkinleştirme
 
-Azure portal her kümenin özellikleri altında **dev Spaces** gezinti öğesine tıklayın. Ardından dev alanlarını etkinleştirme seçeneğini belirleyin.
+Azure portal her kümenin ayarlarının altında bulunan **dev Spaces** menü öğesini seçin. Ardından, dev alanlarını etkinleştirme ve kaydetme seçeneğini belirleyin.
 
 ![Azure portal aracılığıyla dev alanlarını etkinleştirme](../media/common/enable-dev-spaces.jpg)
 
@@ -53,7 +51,7 @@ Ana hat hizmet kümesinin en son sürümlerini birden çok bölgedeki kümelere 
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Geliştirme alanları için kullanılacak doğru AKS kümesini seçin
 
-Takımınızın temelini çalıştıran bir yedekleme kümesini düzgün bir şekilde yapılandırdıktan sonra dilediğiniz zaman yedekleme kümesine hızlıca geçiş yapabilirsiniz. Daha sonra, üzerinde çalıştığınız hizmetleri geliştirme alanlarında yeniden çalıştırabilirsiniz.
+Takımınızın temelini çalıştıran bir yedekleme kümesini düzgün bir şekilde yapılandırdıktan sonra dilediğiniz zaman yedekleme kümesine hızlıca geçiş yapabilirsiniz. Daha sonra, üzerinde çalıştığınız bireysel Hizmetleri alt geliştirme alanlarında yeniden çalıştırabilirsiniz.
 
 Aşağıdaki CLı komutuyla farklı bir küme seçin:
 

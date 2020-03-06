@@ -4,12 +4,12 @@ description: Azure Backup performans sorunlarının nedenini tanılamanıza yard
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603142"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295972"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
@@ -44,19 +44,19 @@ Ayrıca, yaygın yapılandırma sorunlarından biriyle karşılaşmadığınızd
 
 Yedeklenen bilgisayardaki performans sorunları gecikmelere neden olabilir. Örneğin, bilgisayarın disk okuma veya diske yazma veya ağ üzerinden veri göndermek için kullanılabilir bant genişliği gibi performans sorunlarına neden olabilir.
 
-Windows, bu performans sorunlarını algılamak için [Performans İzleyicisi](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) adlı yerleşik bir araç sağlar.
+Windows, bu performans sorunlarını algılamak için [Performans İzleyicisi](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) adlı yerleşik bir araç sağlar.
 
 En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabilecek bazı performans sayaçları ve aralıkları aşağıda verilmiştir.
 
 | Sayaç | Durum |
 | --- | --- |
-| Mantıksal disk (fiziksel disk)--% boşta |• %100 boşta = %50 boşta = sağlıklı</br>• %49 boşta = %20 boşta = uyarı ya da Izleyici</br>• %19 boşta, %0 boşta = kritik veya spec dışı |
-| Mantıksal disk (fiziksel disk)--% ort. Disk sn okuma veya yazma |• 0,001 MS-0,015 MS = sağlıklı</br>• 0,015 MS-0,025 MS = uyarı veya Izleyici</br>• 0,026 MS veya daha uzun = kritik veya spec dışı |
+| Mantıksal disk (fiziksel disk)--% boşta |* %100 boşta = %50 boşta = sağlıklı</br>* %49 boşta = %20 boşta = uyarı ya da Izleyici</br>* %19 boşta %0 boşta = kritik veya spec dışı |
+| Mantıksal disk (fiziksel disk)--% ort. Disk sn okuma veya yazma |* 0,001 MS ile 0,015 MS = sağlıklı</br>* 0,015 MS ile 0,025 MS = uyarı veya Izleyici</br>* 0,026 MS veya daha uzun = kritik veya spec dışı |
 | Mantıksal disk (fiziksel disk)--geçerli disk sırası uzunluğu (tüm örnekler için) |6 dakikadan uzun süre 80 istek |
-| Bellek--Sayfalamayan baytlar |• Kullanılan havuzun %60 ' inden az olması = sağlıklı<br>• %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>• %80 daha fazla kullanılan havuz = kritik veya spec dışı |
-| Bellek--havuzda disk belleğine alınan baytlar |• Kullanılan havuzun %60 ' inden az olması = sağlıklı</br>• %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>• %80 daha fazla kullanılan havuz = kritik veya spec dışı |
-| Bellek--kullanılabilir megabayt |• %50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>• boş belleğin %25 ' i kullanılabilir = Izleyici</br>• kullanılabilir boş belleğin %10 ' ü = uyarı</br>• 100 MB 'tan az veya kullanılabilir boş belleğin %5 ' inden az olması = kritik veya spec dışı |
-| İşlemci--\%Işlemci zamanı (tüm örnekler) |• %60 daha az tüketilen = sağlıklı</br>• %61-90% tüketilen = Izleyici veya uyarı</br>• %91-100% tüketilen = kritik |
+| Bellek--Sayfalamayan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı<br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
+| Bellek--havuzda disk belleğine alınan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı</br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
+| Bellek--kullanılabilir megabayt |* %50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>* boş belleğin %25 ' i kullanılabilir = Izleyici</br>* boş belleğin %10 ' ü kullanılabilir = uyarı</br>* 100 MB 'tan az veya kullanılabilir boş belleğin %5 ' inden az olması = kritik veya spec dışı |
+| İşlemci--\%Işlemci zamanı (tüm örnekler) |* %60 daha az tüketilen = sağlıklı</br>* %61-90% tüketilen = Izleyici veya uyarı</br>* %91-100% tüketilen = kritik |
 
 > [!NOTE]
 > Altyapının külün olduğunu belirlerseniz, daha iyi performans için diskleri düzenli olarak birleştirmeniz önerilir.

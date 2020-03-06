@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator App ile hesapları yedekleme ve kurtarma-Azure AD
+title: Microsoft Authenticator App-Azure AD ile hesapları yedekleme ve kurtarma
 description: Microsoft Authenticator uygulamasını kullanarak yedeklenmiş hesap kimlik bilgilerinizi nasıl yedekleyeceğinizi ve kurtaracağınızı öğrenin.
 services: active-directory
 author: curtand
@@ -8,17 +8,17 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2ac761355fc528fe3e4b4b5f05ee0a6e317ff99a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063943"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298025"
 ---
-# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesap kimlik bilgilerini yedekleme ve kurtarma
+# <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesap kimlik bilgilerini yedekleme ve kurtarma
 
 **Şunlara uygulanır:**
 
@@ -81,23 +81,41 @@ Kişisel Microsoft hesapları için parolanızı, alternatif bir e-posta veya te
 
 ### <a name="to-provide-additional-verification-for-personal-accounts"></a>Kişisel hesaplara ek doğrulama sağlamak için
 
-1. Microsoft Authenticator uygulamasının **hesaplar** ekranında, kurtarmak istediğiniz hesabın yanındaki açılan oku seçin.
+1. Microsoft Authenticator uygulamasının **hesaplar** ekranında, kurtarmak istediğiniz hesabı seçin. Bir Android cihazında, kurtarmak istediğiniz hesabın yanındaki oku seçin.
 
     ![İlgili açılan okları olan kullanılabilir hesapları gösteren Microsoft Authenticator uygulaması](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. **Kurtarmak Için oturum aç**' ı seçin, parolanızı yazın ve ardından e-posta adresinizi veya telefon numaranızı ek doğrulama olarak onaylayın.
+    Bir iOS cihazında, hesabın tam ekran görünümünü açmak için kurtarmak istediğiniz hesaba dokunun.
 
-    ![Microsoft Authenticator uygulama, oturum açma bilgilerinizi girmenize olanak sağlar](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+    ![İlgili açılan okları olan kullanılabilir hesapları gösteren Microsoft Authenticator uygulaması](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+
+2. Hesabı kurtarmak için oturum açın. Bir Android cihazında, **kurtarmak Için oturum aç**' ı seçin.
+
+    ![Android 'de oturum açma bilgilerinizi girmek için Microsoft Authenticator uygulama](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+
+    Bir iOS cihazında, kurtarmak istediğiniz hesap kutucuğuna dokunun ve ardından oturum açma ve kurtarma seçeneğine dokunun. Sonra parolanızı yazın ve ardından e-posta adresinizi veya telefon numaranızı ek doğrulama. yeniden bağlama olarak onaylayın.
+
+    ![İOS üzerinde oturum açma bilgilerinizi girmek için Microsoft Authenticator uygulama](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
 
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>İş veya okul hesapları için ek doğrulama sağlamak üzere
 
-1. Microsoft Authenticator uygulamasının **hesaplar** ekranında, kurtarmak istediğiniz hesabın yanındaki açılan oku seçin.
+1. Hesabı kurtarmak için oturum açın. Bir Android cihazında, **kurtarmak Için oturum aç**' ı seçin.
 
-    ![İlgili açılan okları olan kullanılabilir hesapları gösteren Microsoft Authenticator uygulaması](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
+    ![Microsoft Authenticator App bir iş veya okul hesabını Android 'de kurtarın](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. **Kurtarmak IÇIN QR kodunu Tara**' yı seçin ve ardından QR kodunu tarayın.
+    Bir iOS cihazında, kurtarmak istediğiniz hesaba dokunarak hesabın tam ekran görünümünü açın.
 
-    ![Microsoft Authenticator, QR kodunuzu taramanızı sağlar](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+    ![Microsoft Authenticator uygulaması iOS 'ta iş veya okul hesabını kurtarın](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
+
+2. Bir hesabı kurtarmak için QR kodu kullanabilirsiniz. **Kurtarmak IÇIN QR kodunu Tara**' yı seçin ve ardından QR kodunu tarayın.
+
+    Android 'de:
+
+    ![Android 'de uygulama Microsoft Authenticator, QR kodunuzu taramanızı sağlar](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+
+    İOS 'ta:
+
+    ![İOS üzerinde uygulama Microsoft Authenticator, QR kodunuzu taramanızı sağlar](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
 
     >[!NOTE]
     >QR kodları ve nasıl alınacağı hakkında daha fazla bilgi için, yöneticinizin güvenlik bilgilerine sahip olup olmadığına bağlı olarak, [Microsoft Authenticator uygulamayı kullanmaya başlama](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) veya [güvenlik bilgilerini bir kimlik doğrulayıcı uygulaması kullanacak şekilde ayarlama](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)bölümüne bakın.
@@ -106,19 +124,19 @@ Kişisel Microsoft hesapları için parolanızı, alternatif bir e-posta veya te
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>Yedekleme ve kurtarma sorunlarını giderme
 
-Yedeğinizin kullanılabilir olmasının birkaç nedeni vardır:
+Yedeklemeniz neden kullanılamayabilir?
 
-- **İşletim sistemlerini değiştirme.** Yedeklemeniz iOS için iCloud ve Microsoft 'un Android için bulut depolama sağlayıcısı 'nda depolanır. Bu, Android ve iOS cihazları arasında geçiş yaparsanız yedeklemenin kullanılamadığı anlamına gelir. Anahtarı yaparsanız, hesaplarınızı Microsoft Authenticator uygulamasında el ile yeniden oluşturmanız gerekir.
+- **İşletim sistemlerini değiştirme**: yedeklemeniz IOS için ICloud ve Microsoft 'un Android için bulut depolama sağlayıcısı 'nda depolanır. Bu, Android ve iOS cihazları arasında geçiş yaparsanız yedeklemenin kullanılamadığı anlamına gelir. Anahtarı yaparsanız, hesaplarınızı Microsoft Authenticator uygulamasında el ile yeniden oluşturmanız gerekir.
 
-- **Ağ sorunları.** Ağla ilgili sorunlar yaşıyorsanız, ağa bağlı olduğunuzdan ve hesabınızda düzgün şekilde oturum açtığınızdan emin olun.
+- **Ağ sorunları**: ağla ilgili sorunlar yaşıyorsanız, ağa bağlı olduğunuzdan ve hesabınızda düzgün şekilde oturum açtığınızdan emin olun.
 
-- **Hesap sorunları.** Hesapla ilgili sorunlar yaşıyorsanız hesabınızda doğru şekilde oturum açtığınızdan emin olun. İOS için bu, iPhone 'nizle aynı AppleID hesabını kullanarak iCloud 'da oturum açmanız gerektiği anlamına gelir.
+- **Hesap sorunları**: hesap ile ilgili sorunlar yaşıyorsanız, hesabınızda doğru şekilde oturum açtığınızdan emin olun. İOS için bu, iPhone 'nizle aynı AppleID hesabını kullanarak iCloud 'da oturum açmanız gerektiği anlamına gelir.
 
-- **Yanlışlıkla silme.** Yedekleme hesabınızı önceki cihazdan silmiş veya bulut depolama hesabınızı yönetirken mümkündür. Bu durumda, hesabınızı uygulama içinde el ile yeniden oluşturmanız gerekir.
+- **Yanlışlıkla silme**: yedekleme hesabınızı önceki cihazdan silmiş veya bulut depolama hesabınızı yönetirken mümkündür. Bu durumda, hesabınızı uygulama içinde el ile yeniden oluşturmanız gerekir.
 
-- **Mevcut Microsoft Authenticator hesapları.** Microsoft Authenticator uygulamasında hesapları zaten ayarladıysanız, uygulama yedeklenmiş hesaplarınızı kurtaramaz. Kurtarmanın önlenmesi, güncel olmayan bilgilerle hesap ayrıntılarınızın üzerine yazılmadığından emin olmanıza yardımcı olur. Bu durumda, yedeklemenizi kurtarabilmeniz için, kimlik doğrulayıcı uygulamanızda ayarlanmış mevcut hesaplardan mevcut hesap bilgilerini kaldırmanız gerekir.
+- **Mevcut Microsoft Authenticator hesapları**: Microsoft Authenticator uygulamada hesapları zaten ayarladıysanız, uygulama yedeklenmiş hesaplarınızı kurtaramaz. Kurtarmanın önlenmesi, güncel olmayan bilgilerle hesap ayrıntılarınızın üzerine yazılmadığından emin olmanıza yardımcı olur. Bu durumda, yedeklemenizi kurtarabilmeniz için, kimlik doğrulayıcı uygulamanızda ayarlanmış mevcut hesaplardan mevcut hesap bilgilerini kaldırmanız gerekir.
 
-- **Yedekleme güncel değil.** Yedekleme bilgileriniz güncel değilse, Microsoft kurtarma hesabınızda yeniden oturum açarak bilgileri yenilemeniz istenebilir. Kurtarma hesabınız, ilk olarak yedeklemenizi depolamak için kullandığınız kişisel Microsoft hesabı. Bir oturum açma gerekliyse, menüde veya eylem çubuğunda kırmızı bir nokta görürsünüz. Kırmızı noktayı seçtikten sonra bilgilerinizi güncelleştirmek için yeniden oturum açmanız istenir.
+- **Yedekleme güncel**değil: yedekleme bilgileriniz güncel değilse, Microsoft kurtarma hesabınızda yeniden oturum açarak bilgileri yenilemeniz istenebilir... Kurtarma hesabınız, ilk olarak yedeklemenizi depolamak için kullandığınız kişisel Microsoft hesabı. Bir oturum açma gerekliyse, menü veya eylem çubuğunuz üzerinde kırmızı bir nokta görürsünüz veya yedekten geri yüklemeyi tamamlaması için oturum açmanızı isteyip istemediğinizi soran bir ünlem işareti görürsünüz. Simgeyi seçtikten sonra bilgilerinizi güncelleştirmek için yeniden oturum açmanız istenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

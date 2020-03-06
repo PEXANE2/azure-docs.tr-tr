@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697345"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300018"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapılır: bir uygulama için hizmet koşullarını ve gizlilik bildirimini yapılandırma
 
@@ -43,7 +43,7 @@ Uygulamanızın hizmet koşulları ve gizlilik bildirimi belgeleri için bağlan
 |---------------|---------------------------------------|
 | Biçimlendir        | Geçerli URL                             |
 | Geçerli şemalar | HTTP ve HTTPS<br/>HTTPS önerilir |
-| Uzunluk üst sınırı    | 2048 karakter                       |
+| En fazla uzunluk    | 2048 karakter                       |
 
 Örnekler: `https://myapp.com/terms-of-service` ve `https://myapp.com/privacy-statement`
 
@@ -53,12 +53,12 @@ Hizmet koşulları ve gizlilik bildirimi hazırlandığı zaman, aşağıdaki y�
 
 * [Azure portal aracılığıyla](#azure-portal)
 * [JSON uygulama nesnesini kullanma](#app-object-json)
-* [MSGraph Beta REST API kullanma](#msgraph-beta-rest-api)
+* [Microsoft Graph API 'sini kullanma](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>Azure portal kullanma
 Azure portal aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Uygulama kayıtları** bölümüne gidin ve uygulamanızı seçin.
 3. **Marka** bölmesini açın.
 4. **Hizmet koşulları URL 'sini** ve **Gizlilik bildirimi URL 'si** alanlarını doldurun.
@@ -77,12 +77,12 @@ JSON uygulama nesnesini doğrudan değiştirmeyi tercih ediyorsanız, uygulaman�
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>MSGraph Beta REST API kullanma
+### <a name="msgraph-rest-api"></a>Microsoft Graph API 'sini kullanma
 
-Tüm uygulamalarınızı program aracılığıyla güncelleştirmek için, tüm uygulamalarınızı hizmet koşulları ve gizlilik bildirimi belgelerinin bağlantılarını içerecek şekilde güncelleştirmek üzere MSGraph Beta REST API kullanabilirsiniz.
+Tüm uygulamalarınızı program aracılığıyla güncelleştirmek için, tüm uygulamalarınızı hizmet koşulları ve gizlilik bildirimi belgelerinin bağlantılarını içerecek şekilde güncelleştirmek üzere Microsoft Graph API 'sini kullanabilirsiniz.
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * Bu alanlardan birine atadığınız önceden var olan değerlerin üzerine yazılmamaya dikkat edin: `supportUrl`, `marketingUrl`ve `logoUrl`
-> * MSGraph Beta REST API yalnızca bir Azure AD hesabıyla oturum açtığınızda çalışır. Kişisel Microsoft hesapları desteklenmez.
+> * Microsoft Graph API yalnızca bir Azure AD hesabıyla oturum açtığınızda işe yarar. Kişisel Microsoft hesapları desteklenmez.

@@ -9,20 +9,35 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
-ms.translationtype: MT
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732187"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301667"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
-[Git](https://git-scm.com/) , projelerinizi paylaşmanızı ve işbirliği yapmanızı sağlayan popüler bir sürüm denetim sistemidir. Azure Machine Learning bir eğitim işi gönderirken, eğitim dosyaları yerel bir git deposunda depolanıyorsa, bu durumda Eğitim sürecinin bir parçası olarak depo hakkında bilgi izlenir.
+[Git](https://git-scm.com/) , projelerinize paylaşmanıza ve işbirliği yapmanıza olanak sağlayan popüler bir sürüm denetim sistemidir. 
+
+İşleri izlemek için Git depolarını tamamen destekler. depoları doğrudan paylaşılan çalışma alanı dosya sisteminize kopyalayabilir, yerel iş istasyonunuzda git kullanabilir veya bir CI/CD işlem hattından git kullanabilirsiniz. Azure Machine Learning
+
+Azure Machine Learning bir iş gönderilirken, kaynak dosyalar yerel bir git deposunda depolanıyorsa, eğitim sürecinin bir parçası olarak depo hakkında bilgi izlenir.
 
 Azure Machine Learning, yerel bir git deposundan bilgileri izlediğinden, belirli bir merkezi depoya bağlı değildir. Deponuz GitHub, GitLab, Bitbucket, Azure DevOps veya başka bir git uyumlu hizmetten kopyalanabilir.
 
-## <a name="how-does-git-integration-work"></a>Git tümleştirmesi nasıl çalışır?
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git depolarını çalışma alanı dosya sisteminize kopyalama
+Azure Machine Learning, çalışma alanındaki tüm kullanıcılar için paylaşılan bir dosya sistemi sağlar.
+Bir Git deposunu bu dosya paylaşımında kopyalamak için bir terminal açmak & bir Işlem örneği oluşturmanız önerilir.
+Terminal açıldıktan sonra tam bir git istemcisine erişiminiz olur ve git CLı deneyimi aracılığıyla Git 'i kopyalayabilir ve bunlarla çalışabilirsiniz.
+
+Başkalarının doğrudan çalışma dalınızda çakışmalar yapamaması için depoyu kullanıcılar dizininize kopyalamanız önerilir.
+
+Kimlik doğrulayabilecek herhangi bir Git deposunu (GitHub, Azure Repos, BitBucket vb.) kopyalayabilirsiniz.
+
+Git CLı 'nın nasıl kullanılacağına ilişkin bir kılavuz için [burada buradan okuyun.](https://guides.github.com/introduction/git-handbook/)
+
+## <a name="track-code-that-comes-from-git-repositories"></a>Git depolarından gelen kodu izleme
 
 Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git` komutu geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
@@ -53,7 +68,7 @@ Eğitim dosyalarınız geliştirme ortamınızda bir git deposunda bulunmuyorsa 
 
 Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure portal, Python SDK ve CLı kullanarak bu bilgileri görüntüleyebilirsiniz. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin.
 1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
@@ -81,7 +96,7 @@ Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 }
 ```
 
-### <a name="python-sdk"></a>Python SDK
+### <a name="python-sdk"></a>Python SDK'sı
 
 Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) nesnesi döndürülür. Bu nesnenin `properties` özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
 

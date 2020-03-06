@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612812"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299117"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanı ile etki alanı ekleme sorunlarını giderme
 
@@ -55,7 +55,7 @@ Kimlik bilgileriyle ilgili sorunları gidermek için aşağıdaki sorun giderme 
 
 1. `dee@aaddscontoso.onmicrosoft.com`gibi kimlik bilgilerini belirtmek için UPN biçimini kullanmayı deneyin. Azure AD 'de bu UPN 'nin doğru yapılandırıldığından emin olun.
     * Kiracınızda aynı UPN ön ekine sahip birden fazla kullanıcı varsa veya UPN önekiniz aşırı uzunsa, hesabınız için *sAMAccountName* otomatik olarak oluşturulabilir. Bu nedenle, hesabınız için *sAMAccountName* biçimi, şirket içi etki alanında beklediğiniz veya kullandığınız verilerden farklı olabilir.
-1. VM 'Leri Azure AD DS tarafından yönetilen etki alanına katmak için *AAD DC yöneticileri* grubuna ait bir kullanıcı hesabının kimlik bilgilerini kullanmayı deneyin.
+1. VM 'Leri yönetilen etki alanına katmak için Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabının kimlik bilgilerini kullanmayı deneyin.
 1. [Parola eşitlemesini][enable-password-sync] etkinleştirdiğinizden ve ilk parola eşitlemenin tamamlanabilmesi için yeterince uzun süre beklediğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar

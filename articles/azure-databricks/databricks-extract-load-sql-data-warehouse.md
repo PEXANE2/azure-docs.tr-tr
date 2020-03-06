@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249846"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301701"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -59,7 +59,7 @@ Bu öğreticiye başlamadan önce bu görevleri doldurun:
 
    Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-   * Makalenin [role uygulama atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde yer aldığı adımları gerçekleştirirken, Data Lake Storage 2. hesabının kapsamındaki **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun. Rolü üst kaynak grubuna veya aboneliğine atarsanız, bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
+   * Makalenin [role uygulama atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde yer aldığı adımları gerçekleştirirken, Data Lake Storage 2. hesabının kapsamındaki **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun. Rolü üst kaynak grubuna veya aboneliğine atarsanız, bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
       Hizmet sorumlusunu belirli bir dosya veya dizin ile ilişkilendirmek için bir erişim denetim listesi (ACL) kullanmayı tercih ediyorsanız, [Azure Data Lake Storage 2. erişim denetimi](../storage/blobs/data-lake-storage-access-control.md)'ne başvurun.
 

@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581938"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304920"
 ---
 ## <a name="configure-the-data-source"></a>Veri kaynağını yapılandırma
 
@@ -25,11 +25,11 @@ Pano aracınız için bir veri kaynağı olarak Azure Veri Gezgini yapılandırm
 
 Hizmet sorumlusunu [Azure Portal](#azure-portal) veya [Azure CLI](#azure-cli) komut satırı deneyimini kullanarak oluşturabilirsiniz. Kullandığınız yöntemden bağımsız olarak, oluşturulduktan sonra sonraki adımlarda kullanacağınız dört bağlantı özelliği için değerler alırsınız.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 1. Hizmet sorumlusu oluşturmak için [Azure Portal belgelerindeki](/azure/active-directory/develop/howto-create-service-principal-portal)yönergeleri izleyin.
 
-    1. [Uygulamayı bir role ata](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde, Azure Veri Gezgini kümenize bir **okuyucu** rol türü atayın.
+    1. [Uygulamayı bir role ata](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde, Azure Veri Gezgini kümenize bir **okuyucu** rol türü atayın.
 
     1. [Oturum açmak için değerleri Al](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde, adımlarda kapsanan üç özellik değerini kopyalayın: **Dizin KIMLIĞI** (kiracı KIMLIĞI), **uygulama kimliği**ve **parola**.
 

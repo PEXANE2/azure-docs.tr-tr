@@ -4,15 +4,15 @@ description: Azure Cosmos DB SQL sistem işlevi StringToObject hakkında bilgi e
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f09c27458a630386664f3f6579cfeee0721d8be9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349205"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296390"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
  Nesneye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
@@ -46,7 +46,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
-Sonuç kümesini burada verilmiştir.
+Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{"obj1": {}, 
@@ -65,7 +65,7 @@ SELECT
     StringToObject("{'a':[1,2,3]}")
 ```
 
-Sonuç kümesini burada verilmiştir.
+Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{}]
@@ -78,7 +78,7 @@ SELECT
     StringToObject("{a:[1,2,3]}")
 ```
 
-Sonuç kümesini burada verilmiştir.
+Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{}]
@@ -98,11 +98,15 @@ SELECT
     StringToObject(undefined)
 ``` 
  
- Sonuç kümesini burada verilmiştir.
+ Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300121"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory ile tümleştirme
 
@@ -38,13 +38,13 @@ Uygulamanızın Azure AD ile tümleştirilmesine yönelik çeşitli yollar vard�
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Kullanıcılara gidin, Kullanıcı sağlamasını yönetin ve uygulamanıza erişimi denetleyin
 
-**Dizindeki kullanıcılara gözatın.**  Kullanıcıların e-posta adresleri yazmalarını istemek yerine, kullanıcılar tarafından, kuruluştaki diğer kişileri aramasına ve bunlara gözatmasına yardımcı olmak için Graph API kullanın. Kullanıcılar, kuruluş hiyerarşisinin ayrıntılarını görüntüleme dahil olmak üzere tanıdık bir adres defteri stili arabirimi kullanarak gözatabilirler. [Graph API](active-directory-graph-api.md)hakkında daha fazla bilgi edinin.
+**Dizindeki kullanıcılara gözatın.**  Kullanıcıların e-posta adresleri yazmalarını istemek yerine, kullanıcılar tarafından, kuruluştaki diğer kişileri aramasına ve bunlara gözatmasına yardımcı olmak için Microsoft Graph API 'sini kullanın. Kullanıcılar, kuruluş hiyerarşisinin ayrıntılarını görüntüleme dahil olmak üzere tanıdık bir adres defteri stili arabirimi kullanarak gözatabilirler. [Microsoft Graph API 'si](https://docs.microsoft.com/graph/overview)hakkında daha fazla bilgi edinin.
 
-**Müşterinizin zaten yönettiği Active Directory grupları ve dağıtım listelerini yeniden kullanın.**  Azure AD, müşterinizin e-posta dağıtımı ve erişim yönetimi için zaten kullandığı grupları içerir. Graph API kullanarak, müşterinizin uygulamanızda ayrı bir grup kümesi oluşturmasını ve yönetmesini istemek yerine bu grupları yeniden kullanın. Grup bilgileri de uygulamanıza oturum açma belirteçlerinde gönderilebilir. [Graph API](active-directory-graph-api.md)hakkında daha fazla bilgi edinin.
+**Müşterinizin zaten yönettiği Active Directory grupları ve dağıtım listelerini yeniden kullanın.**  Azure AD, müşterinizin e-posta dağıtımı ve erişim yönetimi için zaten kullandığı grupları içerir. Microsoft Graph API 'sini kullanarak, müşterinizin uygulamanızda ayrı gruplar kümesi oluşturmasını ve yönetmesini istemek yerine bu grupları yeniden kullanın. Grup bilgileri de uygulamanıza oturum açma belirteçlerinde gönderilebilir. [Microsoft Graph API 'si](https://docs.microsoft.com/graph/overview)hakkında daha fazla bilgi edinin.
 
-**Uygulamanıza kimlerin erişebileceğini denetlemek için Azure AD 'yi kullanın.**  Azure AD 'deki Yöneticiler ve uygulama sahipleri, belirli kullanıcılara ve gruplara uygulamalara erişim atayabilir. Graph API kullanarak, bu listeyi okuyabilir ve kaynak üzerinde kaynakları ve erişimi sağlamayı ve uygulama içinde erişimi denetlemek için kullanabilirsiniz.
+**Uygulamanıza kimlerin erişebileceğini denetlemek için Azure AD 'yi kullanın.**  Azure AD 'deki Yöneticiler ve uygulama sahipleri, belirli kullanıcılara ve gruplara uygulamalara erişim atayabilir. Microsoft Graph API 'sini kullanarak, bu listeyi okuyabilir ve uygulama içinde kaynakların sağlanması ve sağlanması ve erişiminin kaldırılması denetlemek için kullanabilirsiniz.
 
-**Rol tabanlı Access Control için Azure AD kullanın.**  Yöneticiler ve uygulama sahipleri, uygulamanızı Azure AD 'ye kaydettiğinizde tanımladığınız rollere kullanıcılar ve gruplar atayabilir. Rol bilgileri, uygulamanıza oturum açma belirteçlerinde gönderilir ve Graph API kullanarak da okunabilir. [Yetkilendirme Için Azure ad kullanma](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)hakkında daha fazla bilgi edinin.
+**Rol tabanlı Access Control için Azure AD kullanın.**  Yöneticiler ve uygulama sahipleri, uygulamanızı Azure AD 'ye kaydettiğinizde tanımladığınız rollere kullanıcılar ve gruplar atayabilir. Rol bilgileri, uygulamanıza oturum açma belirteçlerinde gönderilir ve ayrıca Microsoft Graph API kullanılarak okunabilir. [Yetkilendirme Için Azure ad kullanma](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)hakkında daha fazla bilgi edinin.
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve fazlasına erişim sağlayın
 

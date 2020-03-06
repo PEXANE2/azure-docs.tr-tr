@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484545"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299338"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Azure AD şemasını anlama
 Tüm Dizin gibi Azure Active Directory (Azure AD) bir nesne, kullanıcılar, gruplar ve kişiler gibi şeyleri temsil eden bir programlama üst düzey veri yapısıdır. Azure AD 'de yeni bir kullanıcı veya ilgili kişi oluşturduğunuzda, bu nesnenin yeni bir örneğini oluşturuyorsunuz. Bu örnekler özelliklerine göre farklılaştırılabilir.
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşit
 1.  [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'a gidin.
 1.  Genel Yönetici hesabınızla oturum açın.
 1.  Sol tarafta **izinleri değiştir** ' i seçin ve **Directory. ReadWrite. All** *' ın onaylı olduğundan emin*olun.
-1.  Sorguyu çalıştırın https://graph.microsoft.com/beta/serviceprincipals/?$filter = StartsWith (DisplayName, ' Active '). Bu sorgu, hizmet sorumlularının filtrelenmiş bir listesini döndürür.
+1.  Sorgu `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`çalıştırın. Bu sorgu, hizmet sorumlularının filtrelenmiş bir listesini döndürür.
 1.  `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` bulun ve `"id"`değerini aklınızda edin.
     ```
     "value": [

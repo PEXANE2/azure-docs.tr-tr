@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4ffcd82931b4df92aa2885eb043deae90a70526f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299892"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -27,7 +27,7 @@ Hem .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) hem de .NET i
 - Microsoft Identity platform uç noktasını kullandığından, daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
 - Kullanıcılarınız en iyi çoklu oturum açma deneyimini alacak.
 - Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir
-- yeniliğin avantajlarından yararlanabilirsiniz.
+- Yeniliğin avantajlarından yararlanabilirsiniz.
 
 **Msal.net artık Microsoft Identity platformu ile kullanmak için önerilen kimlik doğrulama kitaplığıdır**. ADAL.NET üzerinde yeni özellik uygulanmayacak. Çabalar MSAL geliştirmeye odaklanılmıştır.
 
@@ -69,7 +69,7 @@ MSAL.NET 2. x artık hesap kavramını (IAccount arabirimi aracılığıyla) tan
 
 IUser ve IAccount arasındaki farklar hakkında daha fazla bilgi için bkz. [msal.NET 2. x](https://aka.ms/msal-net-2-released).
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 #### <a name="interaction-required-exceptions"></a>Etkileşim gerekli özel durumları
 
@@ -118,10 +118,10 @@ Tüm izin verilmez, MSAL.NET ve v 2.0 uç noktasında henüz desteklenmez. Aşa�
 
 Masaüstü ve mobil uygulamalar için ADAL.NET ve MSAL.NET içinde desteklenen izin verir
 
-İzin Ver | ADAL.NET | MSAL.NET
+İzin verme | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Etkileşimli | [Etkileşimli kimlik doğrulaması](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [MSAL.NET içinde belirteçleri etkileşimli olarak alma](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
-Tümleşik Windows Kimlik Doğrulaması | [Windows üzerinde tümleşik kimlik doğrulaması (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Tümleşik Windows Kimlik Doğrulaması](msal-authentication-flows.md#integrated-windows-authentication)
+Tümleşik Windows Kimlik Doğrulaması | [Windows üzerinde tümleşik kimlik doğrulaması (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Tümleşik Windows kimlik doğrulaması](msal-authentication-flows.md#integrated-windows-authentication)
 Kullanıcı adı/parola | [Kullanıcı adı ve parola ile belirteçler alınıyor](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [Kullanıcı adı parola kimlik doğrulaması](msal-authentication-flows.md#usernamepassword)
 Cihaz kod akışı | [Web tarayıcıları olmayan cihazlar için cihaz profili](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [Cihaz kod akışı](msal-authentication-flows.md#device-code)
 
@@ -129,11 +129,11 @@ Cihaz kod akışı | [Web tarayıcıları olmayan cihazlar için cihaz profili](
 
 Web uygulamaları, Web API 'Leri ve Daemon uygulamaları için ADAL.NET ve MSAL.NET içinde desteklenen izin verir:
 
-Uygulama türü | İzin Ver | ADAL.NET | MSAL.NET
+Uygulama türü | İzin verme | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web uygulaması, Web API 'SI, Daemon | İstemci kimlik bilgileri | [ADAL.NET 'deki istemci kimlik bilgileri akışları](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Msal.net 'Deki istemci kimlik bilgileri akışları](msal-authentication-flows.md#client-credentials))
-Web API’si | Adına | [ADAL.NET ile Kullanıcı adına çağrı hizmeti](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET içindeki adına](msal-authentication-flows.md#on-behalf-of)
-Web Uygulaması | Kimlik doğrulama kodu | [ADAL.NET ile Web Apps 'teki yetkilendirme kodlarıyla belirteç alma](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [MSAL.NET ile Web Apps 'teki yetkilendirme kodlarıyla belirteç alma](msal-authentication-flows.md#authorization-code)
+Web API | Adına | [ADAL.NET ile Kullanıcı adına çağrı hizmeti](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET içindeki adına](msal-authentication-flows.md#on-behalf-of)
+Web App | Kimlik doğrulama kodu | [ADAL.NET ile Web Apps 'teki yetkilendirme kodlarıyla belirteç alma](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [MSAL.NET ile Web Apps 'teki yetkilendirme kodlarıyla belirteç alma](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Önbellek kalıcılığı
 
@@ -145,7 +145,7 @@ MSAL.NET, belirteç önbelleğini, genişletme özelliğini kaldırarak kapalı 
 
 V 1.0 'da, https://login.microsoftonline.com/common yetkilisini kullanıyorsanız, kullanıcıların herhangi bir AAD hesabıyla oturum açmalarına izin verirsiniz (herhangi bir kuruluş için). Bkz. [adal.net 'de yetkili doğrulaması](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-V 2.0 'da https://login.microsoftonline.com/common yetkilisini kullanıyorsanız, kullanıcıların herhangi bir AAD organizasyonu veya bir Microsoft Kişisel hesabı (MSA) ile oturum açmalarına izin verirsiniz. MSAL.NET ' de, oturum açmayı herhangi bir AAD hesabıyla kısıtlamak isterseniz (ADAL.NET ile aynı davranış), https://login.microsoftonline.com/organizations kullanmanız gerekir. Ayrıntılar için bkz. [genel istemci uygulamasındaki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)`authority` parametresi.
+V 2.0 'da https://login.microsoftonline.com/common yetkilisini kullanıyorsanız, kullanıcıların herhangi bir AAD organizasyonu veya bir Microsoft Kişisel hesabı (MSA) ile oturum açmalarına izin verirsiniz. MSAL.NET ' de, oturum açmayı herhangi bir AAD hesabıyla kısıtlamak isterseniz (ADAL.NET ile aynı davranış), https://login.microsoftonline.com/organizationskullanmanız gerekir. Ayrıntılar için bkz. [genel istemci uygulamasındaki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)`authority` parametresi.
 
 ## <a name="v10-and-v20-tokens"></a>v 1.0 ve v 2.0 belirteçleri
 
@@ -165,7 +165,7 @@ OAuth2 izinleri, bir v 1.0 Web API (kaynak) uygulamasının istemci uygulamalar�
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının belirli OAuth2 izinlerine erişim istemek için kapsamlar
 
-Bir v 1.0 uygulamasının belirli kapsamları için belirteçler almak istiyorsanız (örneğin, AAD https://graph.windows.net) grafiğinde, bu kaynak için istenen bir OAuth2 iznine sahip istenen bir kaynak tanımlayıcısını birleştirerek `scopes` oluşturmanız gerekir.
+V 1.0 belirteçlerini kabul eden bir uygulama için belirteçler almak istiyorsanız (örneğin, https://graph.microsoft.com)Microsoft Graph API 'SI için, istenen kaynak tanımlayıcısını ilgili kaynak için istenen bir OAuth2 izniyle birleştirerek `scopes` oluşturmanız gerekir.
 
 Örneğin, Kullanıcı adına, uygulama KIMLIĞI URI 'sinin `ResourceId`bir v 1.0 Web API 'sine erişmek için şunu kullanmak isteyeceksiniz:
 
@@ -173,16 +173,16 @@ Bir v 1.0 uygulamasının belirli kapsamları için belirteçler almak istiyorsa
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-AAD Graph API 'sini kullanarak MSAL.NET Azure Active Directory okumak ve yazmak istiyorsanız (https://graph.windows.net/) , aşağıdaki kod parçacığında olduğu gibi kapsamların bir listesini oluşturursunuz:
+Microsoft Graph API 'sini kullanarak MSAL.NET Azure Active Directory okumak ve yazmak istiyorsanız (https://graph.microsoft.com/), aşağıdaki kod parçacığında olduğu gibi kapsamların bir listesini oluşturursunuz:
 
 ```csharp
-ResourceId = "https://graph.windows.net/";
+ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Uyarı: bir v 1.0 Web API 'sine karşılık gelen kapsamda bir veya iki eğik çizgi olmalıdır
 
-Azure Resource Manager API 'sine karşılık gelen kapsamı yazmak istiyorsanız (https://management.core.windows.net/) , aşağıdaki kapsamı istemeniz gerekir (iki eğik çizgi) 
+Azure Resource Manager API 'sine karşılık gelen kapsamı yazmak istiyorsanız (https://management.core.windows.net/), aşağıdaki kapsamı istemeniz gerekir (iki eğik çizgi) 
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -196,7 +196,7 @@ Bunun nedeni, Kaynak Yöneticisi API 'sinin hedef kitle talebinde (`aud`) bir e�
 Azure AD tarafından kullanılan mantık şunlardır:
 - Bir v 1.0 erişim belirtecine sahip ADAL (v 1.0) uç noktası (tek olası), AUD = kaynak
 - MSAL (v 2.0 uç noktası) için, v 2.0 belirteçleri, AUD = kaynağı kabul eden bir kaynak için erişim belirteci soran bir. AppID
-- MSAL (v 2.0 uç noktası) için, bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen (Yukarıdaki durum), Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır. Bu nedenle, https:\//database.windows.net "https://database.windows.net/ " kitlesini beklediğinde, https:\/ /database.windows.net//.default kapsamını istemeniz gerekir. Ayrıca bkz. sorun #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden oldu #747
+- MSAL (v 2.0 uç noktası) için, bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen (Yukarıdaki durum), Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır. Bu nedenle, https:\//database.windows.net "https://database.windows.net/" kitlesini beklediğinde, https:\//database.windows.net//.default kapsamını istemeniz gerekir. Ayrıca bkz. sorun #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden oldu #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının tüm izinlerine erişim istemek için kapsamlar

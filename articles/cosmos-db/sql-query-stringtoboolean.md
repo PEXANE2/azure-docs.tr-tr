@@ -4,15 +4,15 @@ description: Azure Cosmos DB 'de SQL sistem işlevi StringToBoolean hakkında bi
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8719857dca16585a045f8174dbac8df455f38f38
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296550"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
  Boole değerine çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
@@ -34,7 +34,7 @@ StringToBoolean(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToBoolean` ' ın farklı türler genelinde nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, `StringToBoolean` farklı türlerde nasıl davrandığını gösterir. 
  
  Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
@@ -47,7 +47,7 @@ SELECT
     StringToBoolean("false    ") AS b3
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"b1": true, "b2": false, "b3": false}]
@@ -63,7 +63,7 @@ SELECT
     StringToBoolean("False")
 ```  
 
-Sonuç kümesini burada verilmiştir.  
+Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{}]
@@ -80,11 +80,15 @@ SELECT
     StringToBoolean(true)
 ```  
 
-Sonuç kümesini burada verilmiştir.  
+Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/25/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 872ba86c9e43b1f6642331908eb829605f6c19bd
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619660"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301971"
 ---
 Aşağıdaki adımları izleyerek, Resource Manager dağıtım modelini ve Azure portalı ile bir sanal ağ oluşturabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../articles/virtual-network/virtual-networks-overview.md).
 
 >[!NOTE]
->Bir şirket içi konuma bağlanması sanal ağ için bu sanal ağ için özellikle kullanabileceğiniz bir IP adresi aralığı ayırma işlemini koordine şirket içi ağ yöneticinizle koordine edin. VPN bağlantısının her iki tarafında bir yinelenen adres aralığı varsa trafik beklenmedik bir şekilde yönlendirir. Ayrıca, bu sanal ağı başka bir sanal ağa bağlamak isterseniz adres alanı diğer sanal ağ ile örtüşemez. Ağ yapılandırmanızı uygun şekilde planlayın.
+>Bir şirket içi mimarinin parçası olarak bir sanal ağ kullanırken, bu sanal ağ için özel olarak kullanabileceğiniz bir IP adresi aralığı almak için şirket içi ağ yöneticinizle birlikte koordine ettiğinizden emin olun. VPN bağlantısının her iki tarafında bir yinelenen adres aralığı varsa trafik beklenmedik bir şekilde yönlendirir. Ayrıca, bu sanal ağı başka bir sanal ağa bağlamak istiyorsanız, adres alanı diğer sanal ağla çakışamaz. Ağ yapılandırmanızı uygun şekilde planlayın.
 >
 >
 
@@ -29,21 +29,31 @@ Aşağıdaki adımları izleyerek, Resource Manager dağıtım modelini ve Azure
 1. **Market** sonuçlarından **sanal ağ** ' ı seçin.
 
    ![Sanal ağ seçin](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Sanal ağ kaynağını bul sayfası")
-1. **Sanal ağ** sayfasında **Oluştur**' a tıklayın.
+1. **Sanal ağ** sayfasında **Oluştur**' u seçin.
 
-   ![sanal ağ sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Oluştur’a tıklayın")
-1. Oluştur ' a tıkladığınızda, **sanal ağ oluştur** sayfası açılır.
+   ![sanal ağ sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Oluştur’u seçin")
+1. **Oluştur**' u seçtiğinizde, **sanal ağ oluştur** sayfası açılır.
+1. **Temel bilgiler** sekmesinde, **proje ayrıntıları** ve **örnek ayrıntıları** VNET ayarları ' nı yapılandırın.
 
-   ![Sanal ağ oluştur sayfası](./media/vpn-gateway-basic-vnet-rm-portal-include/create-virtual-network-page.png "Sanal ağ oluştur sayfası")
-1. **Sanal ağ oluştur** sayfasında sanal ağ ayarlarını yapılandırın. Alanları doldururken, alana girdiğiniz karakterleri doğrulandığında kırmızı ünlem işareti yeşil onay işareti olur. Bazı değerleri kendi değerlerinizle değiştirebildiğiniz autofilled şunlardır:
+   ![Temel bilgiler sekmesi](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Temel bilgiler sekmesi") Alanları doldururken, alana girdiğiniz karakterler doğrulandığında yeşil bir onay işareti görürsünüz. Bazı değerleri kendi değerlerinizle değiştirebildiğiniz autofilled şunlardır:
 
-   - **Ad**: Sanal ağınızın adını girin.
-   - **Adres alanı**: Adres alanını girin. Birden fazla adres alanı eklemek için varsa, ilk adres alanınızı buraya girin. Sanal ağ oluşturduktan sonra daha sonra ek adres alanları ekleyebilirsiniz. Yapılandırmanız IPv6 adres alanı gerektiriyorsa, bu bilgileri girmek için onay kutusunu işaretleyin.
    - **Abonelik**: Listelenen aboneliğin doğru olduğunu onaylayın. Açılan listeyi kullanarak abonelikleri değiştirebilirsiniz.
-   - **Kaynak grubu**: var olan bir kaynak grubunu seçin veya yeni kaynak grubunuz için bir ad girerek yeni bir tane oluşturun. Yeni bir grup oluşturuyorsanız, planlanan yapılandırma değerlerinize göre kaynak grubunu adlandırın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../articles/azure-resource-manager/management/overview.md#resource-groups).
-   - **Konum**: Sanal ağınızın konumunu seçin. Bu sanal ağa dağıttığınız kaynakların nerede yaşayacaksa konumunu belirler.
-   - **Alt ağ**: alt ağ **adını** ve alt ağ **adres aralığını**ekleyin. Sanal ağ oluşturduktan sonra daha sonra ek alt ağlar ekleyebilirsiniz.
-   - **DDoS koruması**: Standart hizmeti kullanmak Istemediğiniz müddetçe **temel**' yı seçin.
-   - **Hizmet uç noktaları**: yapılandırmanız bu ayarı belirtmediği sürece bu ayarı **devre dışı**olarak bırakabilirsiniz.
-   - **Güvenlik duvarı**: yapılandırmanız bu ayarı belirtmediği sürece bu ayarı **devre dışı**olarak bırakabilirsiniz.
-1. Sanal ağ dağıtımına başlamak için **Oluştur** ' a tıklayın.
+   - **Kaynak grubu**: var olan bir kaynak grubunu seçin veya yeni bir tane oluşturmak Için **Yeni oluştur** ' a tıklayın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../articles/azure-resource-manager/management/overview.md#resource-groups).
+   - **Ad**: Sanal ağınızın adını girin.
+   - **Bölge**: VNET 'iniz için konumu seçin. Bu sanal ağa dağıttığınız kaynakların nerede yaşayacaksa konumunu belirler.
+
+1. **IP adresleri** sekmesinde değerlerini yapılandırın. Aşağıdaki örneklerde gösterilen değerler tanıtım amaçlıdır. Bu değerleri, ihtiyacınız olan ayarlara göre ayarlayın.
+
+   ![IP adresleri sekmesi](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "IP adresleri sekmesi")  
+   - **IPv4 adres alanı**: varsayılan olarak, bir adres alanı otomatik olarak oluşturulur. Adres alanına tıklayarak kendi değerlerinizi yansıtacak şekilde ayarlayabilirsiniz. Ayrıca, ek adres alanları da ekleyebilirsiniz.
+   - **IPv6**: yapılandırmanız IPv6 adres alanı gerektiriyorsa, bu bilgileri girmek için **IPv6 adres alanı Ekle** kutusunu seçin.
+   - **Alt ağ**: varsayılan adres alanını kullanırsanız otomatik olarak varsayılan bir alt ağ oluşturulur. Adres alanını değiştirirseniz, bir alt ağ eklemeniz gerekir. **Alt ağ ekle** penceresini açmak için **+ alt ağ ekle** ' yi seçin. Aşağıdaki ayarları yapılandırın ve ardından **Ekle** ' yi seçerek değerleri ekleyin:
+      - **Alt ağ adı**: Bu örnekte "ön uç" alt ağını adlandırdık.
+      - **Alt ağ adres aralığı**: Bu alt ağın adres aralığı.
+
+1. **Güvenlik** sekmesinde, şu anda varsayılan değerleri bırakın:
+
+   - **DDoS koruması**: temel
+   - **Güvenlik duvarı**: devre dışı
+1. Sanal ağ ayarlarını doğrulamak için **gözden geçir + oluştur** ' u seçin.
+1. Ayarlar doğrulandıktan sonra **Oluştur**' u seçin.
