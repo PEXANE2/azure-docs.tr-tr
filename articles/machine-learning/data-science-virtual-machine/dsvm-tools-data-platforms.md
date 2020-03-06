@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615521"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390626"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Veri bilimi sanal makinesi üzerinde desteklenen veri platformları
 
@@ -23,7 +23,7 @@ Veri Bilimi Sanal Makinesi (DSVM) ile analizlerinizi çok çeşitli veri platfor
 
 DSVM 'de aşağıdaki veri platformu araçları desteklenir.
 
-## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
+## <a name="sql-server-developer-edition"></a>SQL Server Developer sürümü
 
 | | |
 | ------------- | ------------- |
@@ -55,7 +55,7 @@ Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok 
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM 'de nasıl yapılandırılır ve yüklenir? 
 
- SQL Server, standart şekilde yüklenir. Şurada bulunabilir `C:\Program Files\Microsoft SQL Server`. Veritabanı Içi Machine Learning Server örneği `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`konumunda bulunur. DSVM Ayrıca, `C:\Program Files\Microsoft\R Server\R_SERVER`yüklenen ayrı bir tek başına Machine Learning Server örneğine sahiptir. Bu iki Machine Learning Server örneği kitaplıkları paylaşmaz.
+ SQL Server, standart şekilde yüklenir. `C:\Program Files\Microsoft SQL Server`' de bulunabilir. Veritabanı Içi Machine Learning Server örneği `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`konumunda bulunur. DSVM Ayrıca, `C:\Program Files\Microsoft\R Server\R_SERVER`yüklenen ayrı bir tek başına Machine Learning Server örneğine sahiptir. Bu iki Machine Learning Server örneği kitaplıkları paylaşmaz.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (tek başına)
@@ -65,7 +65,7 @@ Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok 
 | Nedir?   | Popüler Apache Spark platformunun tek başına (işlem içi tek düğümlü) örneği; hızlı, büyük ölçekli veri işleme ve makine öğrenimi için bir sistem     |
 | Desteklenen DSVM sürümleri      | Linux     |
 | Tipik kullanımları      | * Azure HDInsight gibi büyük Spark kümelerinde daha küçük bir veri kümesiyle ve daha sonra dağıtımıyla Spark/PySpark uygulamalarının hızla geliştirilmesi<br/> * Test Microsoft Machine Learning Server Spark bağlamı <br />* ML uygulamaları derlemek için parlak ml veya Microsoft 'un açık kaynaklı bir [Mmlspark](https://github.com/Azure/mmlspark) kitaplığı kullanın |
-| Örneklere bağlantılar      |    Jupyter örneği: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark bağlamı):/Dsvm/Samples/Mrs/mrsmini Contextsample.exe |
+| Örneklere bağlantılar      |    Jupyter örneği: <br />&nbsp;&nbsp;* ~/Notebooks/parlak ml/pyspark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark bağlamı):/Dsvm/Samples/Mrs/mrsmini Contextsample.exe |
 | DSVM 'deki ilgili araçlar       | PySpark, Scala<br/>Jupyter (Spark/PySpark çekirdekleri)<br/>Microsoft Machine Learning Server, parlak r, parlak LYR <br />Apache ayrıntıya      |
 
 ### <a name="how-to-use-it"></a>Kullanımı

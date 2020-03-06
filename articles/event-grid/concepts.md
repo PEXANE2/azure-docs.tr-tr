@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid kavramları
-description: Azure Event Grid ve kavramlarını açıklar. Event Grid anahtar çeşitli bileşenlerinin tanımlar.
+title: Azure Event Grid kavramlar
+description: Azure Event Grid ve kavramlarını açıklar. Event Grid birçok anahtar bileşenini tanımlar.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305264"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359425"
 ---
-# <a name="concepts-in-azure-event-grid"></a>Azure Event Grid kavramları
+# <a name="concepts-in-azure-event-grid"></a>Azure Event Grid kavramlar
 
-Bu makalede, Azure Event Grid içindeki ana kavramlar açıklanır.
+Bu makalede Azure Event Grid temel kavramları açıklanmaktadır.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Olaylar
 
-Sistemde gerçekleşen bir şey tam olarak açıklayan bilgileri en az miktarda bir olaydır. Her bir olay gibi genel bilgiler yok: olayının kaynağı, olay yerinde ve benzersiz tanımlayıcı geçen süre. Her olay, yalnızca belirli olay türü için uygun olan belirli bilgileri de vardır. Örneğin, bir Azure depolamada oluşturulan yeni bir dosya ile ilgili ayrıntıları dosya hakkında gibi olayda `lastTimeModified` değeri. Veya, Event Hubs olay yakalama dosyanın URL'si. 
+Bir olay, sistemde gerçekleşen bir şeyi tam olarak açıklayan en düşük bilgi miktarıdır. Her olayda, olayın kaynağı, olayın gerçekleştiği süre ve benzersiz tanımlayıcı gibi yaygın bilgiler bulunur. Her olay, yalnızca belirli olay türüyle ilgili belirli bilgilere de sahiptir. Örneğin, Azure depolamada oluşturulan yeni bir dosya hakkındaki bir olay, dosyayla ilgili `lastTimeModified` değeri gibi ayrıntıları içerir. Ya da bir Event Hubs olayının yakalama dosyasının URL 'SI vardır. 
 
-Bir olay boyutu en fazla 64 KB, genel kullanılabilirlik (GA) hizmet düzeyi sözleşmesi (SLA) tarafından alınmıştır. Bir olay boyutu en fazla desteği 1 MB şu anda Önizleme aşamasındadır. Olaylar üzerinde 64 KB, 64 KB'lık artışlarla ücretlendirilir. 
+64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
 
 
-Bir olayı gönderilir özelliklerini görmek [Azure Event Grid olay şeması](event-schema.md).
+Bir olayda gönderilen özellikler için bkz. [Azure Event Grid olay şeması](event-schema.md).
 
 ## <a name="publishers"></a>Yayımcılar
 
-Bir kullanıcı veya olayları Event Grid'e göndermek için karar kuruluş yayımcısıdır. Microsoft, çeşitli Azure Hizmetleri için olayları yayımlar. Kendi uygulamanızı olayları yayımlayabilir. Azure dışındaki hizmetleri barındıran kuruluşlar için Event Grid aracılığıyla olayları yayımlayabilir.
+Yayımcı, Event Grid olayları gönderilmeye karar veren kullanıcı veya kuruluştur. Microsoft çeşitli Azure hizmetleri için olaylar yayımlar. Kendi uygulamanızdan olayları yayımlayabilirsiniz. Azure dışında hizmetleri barındıran kuruluşlar, Event Grid aracılığıyla olayları yayımlayabilir.
 
 ## <a name="event-sources"></a>Olay kaynakları
 
-Burada olay gerçekleştiğinde bir olay kaynağıdır. Her bir olay kaynağı, bir veya daha fazla olay türlerini ilgilidir. Örneğin, Azure depolama blob oluşturulan olayları için olay kaynağı ' dir. IOT Hub cihaz tarafından oluşturulan olayları için olay kaynağı ' dir. Uygulamanızı tanımlayan özel olayları için olay kaynağı ' dir. Olay kaynakları olayları Event Grid'e göndermek için sorumlu olursunuz.
+Olay kaynağı, olayın gerçekleştiği yerdir. Her olay kaynağı bir veya daha fazla olay türü ile ilgilidir. Örneğin, Azure depolama, blob tarafından oluşturulan olaylar için olay kaynağıdır. IoT Hub, cihaz tarafından oluşturulan olaylar için olay kaynağıdır. Uygulamanız, tanımladığınız özel olaylara yönelik olay kaynağıdır. Olay kaynakları, Event Grid olayları göndermekten sorumludur.
 
-Desteklenen Event Grid kaynaklarından herhangi biri uygulama hakkında daha fazla bilgi için bkz: [Azure Event Grid olay kaynaklarında](event-sources.md).
+Desteklenen Event Grid kaynaklarından herhangi birini uygulama hakkında daha fazla bilgi için, bkz. [Azure Event Grid olay kaynakları](event-sources.md).
 
 ## <a name="topics"></a>Konu başlıkları
 
-Olay Kılavuzu konusunu burada kaynak olayları gönderen bir uç nokta sağlar. Yayımcı olay Kılavuzu konusu oluşturur ve bir olay kaynağı bir konu veya konu birden fazla gerekip gerekmediğini belirler. Bir konu koleksiyonunu ilgili olaylar için kullanılır. Belirli olay türleri için yanıt vermek için abone olma konuları aboneleri karar verin.
+Olay Kılavuzu konusu, kaynağın olayları gönderdiği bir uç nokta sağlar. Yayımcı, olay Kılavuzu konusunu oluşturur ve bir olay kaynağının bir konu veya birden fazla konu ihtiyacı olup olmadığına karar verir. İlgili olayların toplanması için bir konu kullanılır. Belirli olay türlerine yanıt vermek için, aboneler hangi konuların abone olacağına karar verir.
 
-Sistem konular, Azure Hizmetleri tarafından sağlanan yerleşik konulardır. Azure aboneliğinizde yayımcı konulara sahip, ancak bunlara abone olabilir çünkü sistem konuları görmüyorum. Abone olmak için kaynak, olaylarından almak istediğiniz bilgileri sağlayın. Kaynağa erişimi olduğu sürece, kendi olaylarına abone olabilirsiniz.
+Sistem konuları, Azure hizmetleri tarafından sunulan yerleşik konulardır. Yayımcı konuların sahibi olduğu için, Azure aboneliğinizde sistem konuları görmezsiniz, ancak bunlara abone olabilirsiniz. Abone olmak için, olayları almak istediğiniz kaynak hakkında bilgi sağlarsınız. Kaynağa erişiminiz olduğu sürece, olaylarına abone olabilirsiniz.
 
-Özel konular şunlardır: uygulama ve üçüncü taraf konuları. Oluşturduğunuzda veya bir özel konu için okuma erişimi atanan aboneliğinizde özel konuya bakın.
+Özel konular uygulama ve üçüncü taraf konulardır. Özel bir konuya erişim atadığınızda veya atadıktan sonra, aboneliğinizdeki özel konuyu görürsünüz.
 
-Uygulamanızı tasarlarken oluşturmak için ne kadar konunun verirken esnekliğine sahipsiniz. Büyük çözümler için ilgili olay her kategori için özel bir konu oluşturun. Örneğin, sipariş işleme ve kullanıcı hesaplarını değiştirme ile ilgili olayları gönderen bir uygulama düşünün. Her iki olayların kategorilerini herhangi bir olay işleyici istediği düşüktür. İki özel konu oluşturma ve onları ilgilendiren bir abone olay işleyicileri sağlar. Küçük çözümler için tüm olayları tek bir konu başlığına göndermeyi tercih edebilirsiniz. Etkinlik abonelerinden istedikleri olay türleri için filtre uygulayabilirsiniz.
+Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için ilgili olayların her kategorisi için özel bir konu oluşturun. Örneğin, Kullanıcı hesaplarını ve işleme emirlerini değiştirmekle ilgili olayları gönderen bir uygulamayı düşünün. Herhangi bir olay işleyicisi, olayların kategorilerinin her ikisini de istemektedir. İki özel konu oluşturun ve olay işleyicilerinin bu kişilerin ilgilendiğiniz birine abone olmasına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
 
 ## <a name="event-subscriptions"></a>Olay abonelikleri
 
-Abonelik alma içinde ilginizi çeken bir konuya hangi olayların Event Grid söyler. Abonelik oluştururken, olayı işlemek için bir uç nokta sağlar. Uç noktasına gönderilen olaylar için filtre uygulayabilirsiniz. Olay türü veya konu deseni filtreleyebilirsiniz. Daha fazla bilgi için [Event Grid aboneliği şema](subscription-creation-schema.md).
+Abonelik, almak istediğiniz bir konu üzerinde hangi olayların Event Grid söyler. Aboneliği oluştururken, olayı işlemek için bir uç nokta sağlarsınız. Uç noktaya gönderilen olaylara filtre uygulayabilirsiniz. Olay türüne veya konu düzenine göre filtreleyebilirsiniz. Daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
 
-Abonelik oluşturma örnekler için bkz:
+Abonelik oluşturma örnekleri için bkz.:
 
-* [Event Grid için Azure CLI örnekleri](cli-samples.md)
+* [Event Grid için Azure CLı örnekleri](cli-samples.md)
 * [Event Grid için Azure PowerShell örnekleri](powershell-samples.md)
-* [Event Grid için Azure Resource Manager şablonları](template-samples.md)
+* [Event Grid için Azure Resource Manager Şablonlar](template-samples.md)
 
-Geçerli olay Kılavuzu abonelikleri alma hakkında daha fazla bilgi için bkz: [Event Grid aboneliklerini sorgulama](query-event-subscriptions.md).
+Geçerli olay Kılavuzu aboneliklerinizi alma hakkında daha fazla bilgi için bkz. [sorgu Event Grid abonelikleri](query-event-subscriptions.md).
 
 ## <a name="event-subscription-expiration"></a>Olay aboneliği süre sonu
-Olay aboneliğinin süresi bu tarihte otomatik olarak sona erer. Sınırlı bir süre için yalnızca gerekli olay aboneliklerine yönelik bir sona erme süresini ayarlayabilir ve bu Aboneliklerdeki temizleme hakkında endişelenmeye gerek istemiyorum. Örneğin, bir senaryoyu test etmek için bir olay aboneliği oluşturulurken bir sona erme süresini ayarlayabilir isteyebilirsiniz. 
+Olay aboneliğinin süresi bu tarihte otomatik olarak sona erer. Yalnızca sınırlı bir süre için gerekli olan olay abonelikleri için bir süre sonu ayarlayın ve bu abonelikleri temizleme hakkında endişelenmeniz gerekmez. Örneğin, bir senaryoyu test etmek üzere bir olay aboneliği oluştururken bir süre sonu ayarlamak isteyebilirsiniz. 
 
-Bir süre sonu ayarlama örneği için bkz: [Gelişmiş Filtreler ile abone ol](how-to-filter-events.md#subscribe-with-advanced-filters).
+Süre sonu ayarlamanın bir örneği için bkz. [Gelişmiş filtrelerle abone olma](how-to-filter-events.md#subscribe-with-advanced-filters).
 
 ## <a name="event-handlers"></a>Olay işleyicileri
 
-Event Grid açısından bakıldığında, bir olay işleyicisi, burada olay gönderilir yerdir. Olayı işlemek için bazı başka bir eylem işleyici alır. Event Grid, çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmeti veya kendi Web kancası işleyicisi olarak kullanabilirsiniz. İşleyici türüne bağlı olarak, Event Grid olay teslimini garanti etmek için farklı mekanizmalar izler. HTTP Web kancası olay işleyicileri için olay işleyicisi durum kodu dönene kadar yeniden denenir `200 – OK`. Kuyruk hizmeti başarıyla kuyruğa ileti gönderme işlemleri kadar için Azure depolama kuyruğu, olayları yeniden denenir.
+Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. HTTP Web kancası olay işleyicileri için, işleyici `200 – OK`durum kodu döndürene kadar olay yeniden denenir. Azure depolama kuyruğu için, Kuyruk hizmeti ileti gönderimi sıraya başarıyla işleyerek olaylar yeniden denenir.
 
-Tüm desteklenen Event Grid işleyicilerin uygulanması hakkında daha fazla bilgi için bkz: [Azure Event Grid olay işleyicileri](event-handlers.md).
+Desteklenen Event Grid işleyicilerinden herhangi birini uygulama hakkında daha fazla bilgi için, bkz. [Azure Event Grid olay işleyiciler](event-handlers.md).
 
 ## <a name="security"></a>Güvenlik
 
-Olay Kılavuzu konularına abone olma ve konuları yayımlama için güvenlik sağlar. Abone olurken, kaynak veya olay Kılavuzu konu üzerinde yeterli izinleri olmalıdır. Yayımlama sırasında bir SAS belirteci veya anahtar kimlik doğrulaması için konu olmalıdır. Daha fazla bilgi için [Event Grid güvenliğini ve kimlik doğrulaması](security-authentication.md).
+Event Grid konularda abone olma ve konuları yayımlama konusunda güvenlik sağlar. Abone olurken, kaynak veya olay Kılavuzu konusunda yeterli izinlere sahip olmanız gerekir. Yayımlarken, konusu için bir SAS belirtecine veya anahtar kimlik doğrulamasına sahip olmanız gerekir. Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](security-authentication.md).
 
 ## <a name="event-delivery"></a>Olay teslimi
 
-Event Grid olay abonenin uç noktası tarafından alındı doğrulayamazsa olay redelivers. Daha fazla bilgi için [Event Grid iletiyi teslim ve yeniden deneme](delivery-and-retry.md).
+Event Grid, abonenin uç noktası tarafından bir olayın alındığını doğrulayamıyorsa olayı yeniden dağıtır. Daha fazla bilgi için bkz. [ileti teslimi Event Grid ve yeniden deneme](delivery-and-retry.md).
 
 ## <a name="batching"></a>Toplu İşleme
 
-Özel bir konu kullanırken, olayları bir dizide her zaman yayımlanması gerekir. Düşük aktarım hızı senaryoları, Bununla birlikte, yüksek hacimli için kullanım örnekleri için bu bir toplu olabilir, birçok batch önerilir başına birlikte olayları yayımlamak daha yüksek verimlilik elde edin. Toplu iş 1 MB'a kadar olabilir. Her olay hala 64 KB'lık (Genel kullanım) veya 1 MB (Önizleme) büyük olmamalıdır.
+Özel bir konu kullanıldığında, olaylar her zaman bir dizide yayımlanmalıdır. Bu, düşük performanslı senaryolar için bir toplu iş olabilir, ancak yüksek hacimli kullanım durumları için, daha yüksek bir verimlilik elde etmek üzere yayımlama başına birkaç olayı toplu olarak toplu yapmanız önerilir. Toplu işlemler 1 MB 'a kadar olabilir. Her olay hala 64 KB (genel kullanılabilirlik) veya 1 MB (Önizleme) değerinden büyük olmamalıdır.
 
 > [!NOTE]
-> Bir olay boyutu en fazla 64 KB, genel kullanılabilirlik (GA) hizmet düzeyi sözleşmesi (SLA) tarafından alınmıştır. Bir olay boyutu en fazla desteği 1 MB şu anda Önizleme aşamasındadır. Olaylar üzerinde 64 KB, 64 KB'lık artışlarla ücretlendirilir. 
+> 64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

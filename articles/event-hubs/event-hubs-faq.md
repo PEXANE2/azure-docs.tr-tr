@@ -1,6 +1,6 @@
 ---
-title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
-description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
+title: Sık sorulan sorular - Azure Event Hubs | Microsoft Docs
+description: Bu makalede, Azure Event Hubs ve bunların cevapları için sık sorulan sorular (SSS) bir listesini sağlar.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
 ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393654"
 ---
-# <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
+# <a name="event-hubs-frequently-asked-questions"></a>Olay hub'ları hakkında sık sorulan sorular
 
 ## <a name="general"></a>Genel
 
-### <a name="what-is-an-event-hubs-namespace"></a>Event Hubs ad alanı nedir?
-Ad alanı, Olay Hub 'ı/Kafka konuları için kapsam bir kapsayıcıdır. Size benzersiz bir [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)sağlar. Bir ad alanı, birden çok olay hub 'ı/Kafka konu başlığı veren bir uygulama kapsayıcısı işlevi görür. 
+### <a name="what-is-an-event-hubs-namespace"></a>Bir Event Hubs ad alanı nedir?
+Bir ad alanı için olay hub'ı / Kafka konularını kapsayan bir kapsayıcıdır. Size benzersiz bir [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)sağlar. Bir ad alanı, birden çok olay hub'ı / Kafka konularını barındırmak bir uygulama kapsayıcısı görev yapar. 
 
 ### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Ne zaman yeni bir ad alanı oluşturabilirim? var olan bir ad alanını kullan?
 Kapasite ayırmaları ([işleme birimleri (DTU 'lar)](#throughput-units)) ad alanı düzeyinde faturalandırılır. Bir ad alanı aynı zamanda bir bölgeyle ilişkilendirilir.
@@ -33,12 +33,12 @@ Aşağıdaki senaryolardan birinde var olan birini kullanmak yerine yeni bir ad 
 - Farklı bir abonelikle ilişkili bir olay hub 'ı gerekir.
 - Ayrı kapasite ayırması olan bir olay hub 'ınız olması gerekir (yani, eklenen Olay Hub 'ına sahip ad alanı için kapasite gereksinimi 40 TU eşiğini aşacağından ve adanmış kümeye gitmek istemezsiniz)  
 
-### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs temel ve standart Katmanlar arasındaki fark nedir?
+### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs temel ve standart katmanları arasındaki fark nedir?
 
-Azure Event Hubs standart katmanı, temel katmanda kullanılabilir olan özelliklerden daha fazla özellik sağlar. Aşağıdaki özellikler standart ile birlikte verilmiştir:
+Azure Event Hubs standart katmanı temel katmana sistemlerdekinden özellikleri sağlar. Standart aşağıdaki özellikler eklenmiştir:
 
-* Daha uzun olay saklama
-* Dahil edilen sayıdan daha fazla ücret ödemelerine sahip ek aracılı bağlantılar
+* Olay saklama uzun
+* Dahil edilen sayıdan daha fazla bilgi için bir fazla kullanım ücreti olan ek aracılı bağlantılar
 * Tek bir [Tüketici grubundan](event-hubs-features.md#consumer-groups) daha fazla
 * [Lamanız](event-hubs-capture-overview.md)
 * [Kafka tümleştirmesi](event-hubs-for-kafka-ecosystem-overview.md)
@@ -47,20 +47,20 @@ Event Hubs Ayrılmış dahil olmak üzere fiyatlandırma katmanları hakkında d
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs nerede kullanılabilir?
 
-Azure Event Hubs, desteklenen tüm Azure bölgelerinde kullanılabilir. Bir liste için, [Azure bölgeleri](https://azure.microsoft.com/regions/) sayfasını ziyaret edin.  
+Azure Event hubs'ı desteklenen tüm Azure bölgelerinde kullanılabilir. Bir liste için, [Azure bölgeleri](https://azure.microsoft.com/regions/) sayfasını ziyaret edin.  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Birden çok olay hub 'ını göndermek ve almak için tek bir AMQP bağlantısı kullanabilir miyim?
+### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Birden fazla event hubs'dan alıp göndermek için tek bir AMQP bağlantısı kullanabilir miyim?
 
-Evet, tüm olay hub 'ları aynı ad alanında olduğu sürece.
+Tüm event hubs aynı ad alanında olduğu sürece Evet.
 
-### <a name="what-is-the-maximum-retention-period-for-events"></a>Olaylar için en fazla saklama süresi nedir?
+### <a name="what-is-the-maximum-retention-period-for-events"></a>Olaylar için maksimum bekletme süresi nedir?
 
-Event Hubs Standart katman Şu anda en fazla yedi gün bekletme süresini desteklemektedir. Olay Hub 'ları kalıcı veri deposu olarak tasarlanmamıştır. 24 saatten büyük saklama süreleri, bir olay akışını aynı sistemlere yeniden yürütmeye uygun olan senaryolar için tasarlanmıştır; Örneğin, var olan veriler üzerinde yeni bir makine öğrenimi modeli eğitme veya doğrulama. Yedi günden daha fazla süre boyunca ileti bekletmesi gerekiyorsa, Olay Hub 'ınızdaki [Event Hubs yakalamayı](event-hubs-capture-overview.md) etkinleştirmek, Olay Hub 'ınızdaki verileri seçtiğiniz depolama hesabına veya Azure Data Lake hizmet hesabına çeker. Yakalamanın etkinleştirilmesi, satın alınan üretilen iş birimleriniz temelinde bir ücret doğurur.
+Event Hubs standart katmanı şu anda yedi günde bir en yüksek bekletme süresi destekler. Olay Hub 'ları kalıcı veri deposu olarak tasarlanmamıştır. 24 saatten büyük saklama süreleri, bir olay akışını aynı sistemlere yeniden yürütmeye uygun olan senaryolar için tasarlanmıştır; Örneğin, var olan veriler üzerinde yeni bir makine öğrenimi modeli eğitme veya doğrulama. Yedi günden daha fazla süre boyunca ileti bekletmesi gerekiyorsa, Olay Hub 'ınızdaki [Event Hubs yakalamayı](event-hubs-capture-overview.md) etkinleştirmek, Olay Hub 'ınızdaki verileri seçtiğiniz depolama hesabına veya Azure Data Lake hizmet hesabına çeker. Etkinleştirme yakalama, satın alınan işleme birimlerine göre bir ücret doğurur.
 
 Depolama hesabınızdaki yakalanan veriler için saklama süresini yapılandırabilirsiniz. Azure depolama 'nın **yaşam döngüsü yönetimi** özelliği, genel amaçlı v2 ve BLOB depolama hesapları için zengin, kural tabanlı bir ilke sunar. Verilerinizi uygun erişim katmanlarına geçirmeye veya veri yaşam döngüsünün sonunda sona ermesini sağlamak için ilkeyi kullanın. Daha fazla bilgi için bkz. [Azure Blob depolama yaşam döngüsünü yönetme](../storage/blobs/storage-lifecycle-management-concepts.md). 
 
-### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs izleme Nasıl yaparım??
-Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overview.md)'ye sağlayan ayrıntılı ölçümleri yayar. Ayrıca, yalnızca ad alanı düzeyinde değil, varlık düzeyinde de Event Hubs hizmetin genel durumunu değerlendirmenize imkan tanır. [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)için hangi izlemenin sunulmakta olduğunu öğrenin.
+### <a name="how-do-i-monitor-my-event-hubs"></a>My Event Hubs'ı nasıl izleyebilirim?
+Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overview.md)'ye sağlayan ayrıntılı ölçümleri yayar. Ayrıca, yalnızca ad alanı düzeyinde aynı zamanda varlık düzeyinde Event Hubs hizmeti genel durumunu değerlendirmek sağlarlar. [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)için hangi izlemenin sunulmakta olduğunu öğrenin.
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:
@@ -105,131 +105,131 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka tümleştirme
 
-### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Mevcut Kafka uygulamamı Event Hubs ile tümleştirmi Nasıl yaparım??
-Event Hubs, mevcut Apache Kafka tabanlı uygulamalarınız tarafından kullanılabilecek bir Kafka uç noktası sağlar. PaaS Kafka deneyimine sahip olmak için gereken bir yapılandırma değişikliği vardır. Kendi Kafka kümenizi çalıştırmaya bir alternatif sağlar. Event Hubs, Apache Kafka 1,0 ve daha yeni istemci sürümlerini destekler ve var olan Kafka uygulamalarınız, araçlarınızla ve çerçevelerinizdeki ile birlikte kullanılabilir. Daha fazla bilgi için bkz. [Kafka for Event Hubs deposu](https://github.com/Azure/azure-event-hubs-for-kafka).
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Event Hubs ile mevcut Kafka uygulamamı nasıl tümleştirebilirim?
+Event Hubs, mevcut Apache Kafka tabanlı uygulamalarınız tarafından kullanılabilecek bir Kafka uç noktası sağlar. Bir yapılandırma değişikliği PaaS Kafka deneyimi sağlamak için gerekli olan. Bu, kendi Kafka kümesi çalıştırmak için bir alternatif sağlar. Event Hubs, Apache Kafka 1.0 ve daha yeni istemci sürümlerini destekler ve mevcut Kafka uygulamalarınızın, araçları ve çerçeveleri ile çalışır. Daha fazla bilgi için bkz. [Kafka for Event Hubs deposu](https://github.com/Azure/azure-event-hubs-for-kafka).
 
-### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Mevcut uygulamamın Event Hubs ile iletişim kurmasını sağlamak için hangi yapılandırma değişikliklerinin yapılması gerekir?
-Kafka etkin bir olay hub 'ına bağlanmak için, Kafka istemci yapılandırması ' nı güncelleştirmeniz gerekir. Event Hubs bir ad alanı oluşturarak ve [bağlantı dizesi](event-hubs-get-connection-string.md)elde ederek yapılır. Önyükleme. sunucuları Event Hubs FQDN ve bağlantı noktası 9093 ' ye işaret etmek üzere değiştirin. Kafka istemcisini aşağıda gösterildiği gibi doğru kimlik doğrulamasıyla Kafka özellikli Event Hubs uç noktanıza (aldığınız bağlantı dizesi) yönlendirmek için SASL. jaas. config ' i güncelleştirin:
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Yapılandırma değişiklikleri mevcut Uygulamam Event hubs'ı kurmak için yapılması gerekenler?
+Bir Kafka özellikli olay Hub'ına bağlanmak için Kafka istemcisi yapılandırmalarını güncelleştirmeniz gerekir. Event Hubs bir ad alanı oluşturarak ve [bağlantı dizesi](event-hubs-get-connection-string.md)elde ederek yapılır. Bootstrap.servers 9093 için olay hub'ları FQDN ve bağlantı noktasını işaret edecek şekilde değiştirin. Kafka istemcisini aşağıda gösterildiği gibi doğru kimlik doğrulamasıyla Kafka özellikli Event Hubs uç noktanıza (aldığınız bağlantı dizesi) yönlendirmek için SASL. jaas. config ' i güncelleştirin:
 
-Bootstrap. Servers = {sızın. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzenek = düz SASL. jaas. config = org. Apache. Kafka. Common. Security. düz. PlainLoginModule gerekli username = "$ConnectionString" Password = "{sıze. EVENTHUBS. Bağlanma. DIZE} ";
+Bootstrap.Servers={Your. EVENTHUBS. FQDN}: 9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule gereken kullanıcı adı = "$ConnectionString" parola = "{YOUR. EVENTHUBS. BAĞLANTI. DİZE} ";
 
 Örnek:
 
-Bootstrap. Servers = dummynamespace. ServiceBus. Windows. net: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzenek = düz SASL. jaas. config = org. Apache. Kafka. Common. Security. düz. PlainLoginModule gerekli kullanıcıadı = "$ConnectionString" Password = "Endpoint = SB://dummynamespace.ServiceBus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule gereken kullanıcı adı = "$ ConnectionString"password="Endpoint=sb://dummynamespace.servicebus.windows.net/; SharedAccessKeyName DummyAccessKeyName; = SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Note: SASL. jaas. config, ortamınızda desteklenen bir yapılandırma değilse, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunun yerine bunları kullanın. Kullanıcı adını $ConnectionString ve parolayı Event Hubs bağlantı dizeniz olarak ayarlayın.
+Note: SASL. jaas. config, ortamınızda desteklenen bir yapılandırma değilse, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunun yerine bunları kullanın. Kullanıcı adı $ConnectionString ve Event hubs'ı bağlantı dizenizi parolasını ayarlayın.
 
-### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Kafka etkin Event Hubs için ileti/olay boyutu nedir?
+### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Event hubs, Kafka etkin ileti/olay boyutu nedir?
 Kafka özellikli Event Hubs için izin verilen en büyük ileti boyutu 1 MB 'tır.
 
-## <a name="throughput-units"></a>Aktarım hızı birimleri
+## <a name="throughput-units"></a>İşleme birimleri
 
-### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs üretilen iş birimi nedir?
-Event Hubs aktarım hızı, Event Hubs gelen ve çıkış yapan 1 KB 'lik olayların sayısını mega bayt cinsinden veya sayı olarak tanımlar (binlerce). Bu aktarım hızı, üretilen iş birimleri (DTU 'lar) cinsinden ölçülür. Event Hubs hizmetini kullanmaya başlayabilmeniz için önce satın alma. Portal veya Event Hubs Kaynak Yöneticisi şablonları kullanarak Event Hubs tüs 'yi açık olarak seçebilirsiniz. 
+### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs işleme birimleri nedir?
+Aktarım hızı olay hub'larındaki veri miktarı mega bayt veya 1 KB'lık olaylar (bin başına) sayısı, giriş ve çıkış Event Hubs ile tanımlar. Bu aktarım hızı, aktarım hızı birimlerini (işleme birimi) ölçülür. Event Hubs hizmeti kullanmaya başlayabilmeniz için önce işleme birimi satın alın. Açıkça ya da portalı veya olay hub'ları Resource Manager şablonlarını kullanarak Event Hubs işleme birimi seçebilirsiniz. 
 
 
-### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Üretilen iş birimleri, bir ad alanındaki tüm olay hub 'larına uygulanabilir mi?
-Evet, üretilen iş birimleri (DTU 'lar) bir Event Hubs ad alanındaki tüm olay hub 'larına uygulanır. Bu, ad alanı düzeyinde bir tüs satın almanızı ve bu ad alanı altındaki Olay Hub 'ları arasında paylaşılmanızı anlamına gelir. Her bir TU, ad alanını aşağıdaki yetenekler sahibine:
+### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Üretilen iş birimleri, bir ad alanındaki tüm event hubs için uygulanır mı?
+Evet, Event Hubs ad alanındaki tüm event hubs işleme birimleri (işleme birimi) uygulanır. Ad alanı düzeyinde işleme birimi satın alabilir ve bu ad alanı altında olay hub'ları arasında paylaşılan anlamına gelir. Her işleme birimi ad alanına aşağıdaki özellikleri sağlar:
 
-- Saniyede 1 MB 'a kadar giriş olayı (bir olay hub 'ına gönderilen olaylar), ancak saniyede 1000 giriş olayı, yönetim işlemi veya denetim API çağrısı yok.
-- Saniyede 2 MB 'a kadar çıkış olayı (bir olay hub 'ından tüketilen olaylar), ancak 4096 'den fazla çıkış olayı yoktur.
-- 84 GB 'a kadar olay depolama (varsayılan 24 saatlik saklama süresi için yeterlidir).
+- Yukarı giriş olayı (bir olay hub'ına gönderilen olaylar), ancak hiçbir fazla 1000 giriş olayı, yönetim işlemleri veya denetim saniyede 1 MB'a kadar saniye başına API çağrısı.
+- En fazla saniye başına 2 MB çıkış olayı (bir olay hub'ınden tüketilen olaylar), ancak en fazla 4096 çıkış olayı.
+- 84 GB'ye kadar olay depolama (varsayılan 24 saatlik saklama süresi için yeterli).
 
 ### <a name="how-are-throughput-units-billed"></a>Üretilen iş birimleri nasıl faturalandırılır?
-Üretilen iş birimleri (DTU 'lar) saatlik olarak faturalandırılır. Faturalandırma, belirtilen saat boyunca seçilen maksimum birim sayısına göre belirlenir. 
+Üretilen iş birimleri (işleme birimi), saatlik olarak faturalandırılır. Belirli bir saatte seçilen maksimum birim sayısını göre faturalandırılır. 
 
-### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Verimlilik birimlerimde kullanımı nasıl iyileştirebilirim?
-Bir üretilen iş birimi (TU) kadar düşük olarak başlayabilir ve [Otomatik Şişir](event-hubs-auto-inflate.md)özelliğini açabilirsiniz. Otomatik Şişir özelliği, trafik/Yük arttıkça iş yüklerinizi büyütmenize olanak tanır. Ayrıca, DTU sayısında bir üst sınır belirleyebilirsiniz.
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>My üretilen iş birimlerine göre nasıl kullanım iyileştirebilirim?
+Bir üretilen iş birimi (TU) kadar düşük olarak başlayabilir ve [Otomatik Şişir](event-hubs-auto-inflate.md)özelliğini açabilirsiniz. Otomatik şişme özellik trafiği/yük arttıkça, işleme birimi büyümesine olanak sağlar. İşleme birimi sayısına göre üst sınırını da ayarlayabilirsiniz.
 
-### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Event Hubs otomatik olarak Şişir özelliği nasıl çalışır?
-Otomatik Şişir özelliği, üretilen iş birimlerinizi (DTU 'lar) ölçeklendirmenize olanak tanır. Bu, düşük artış satın alarak başlayabileceğiniz anlamına gelir ve Alım arttıkça, otomatik şişillerinizi ölçeklendirin. Bu, size uygun maliyetli bir seçenek ve yönetilecek DTU sayısı denetimini tam olarak kontrol etmenizi sağlar. Bu özellik **yalnızca ölçeği artırma** özelliğine sahiptir ve güncelleyerek, bu sayının ölçeğini tamamen kontrol edebilirsiniz. 
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Event Hubs'ın otomatik şişme özelliği nasıl çalışır?
+Otomatik şişme, işleme birimleri (işleme birimi) ölçeği özelliği sağlar. Düşük işleme birimi satın alarak başlayın ve Otomatik ölçek, işleme birimi girişinizi arttıkça şişme anlamına gelir. Bu size uygun maliyetli bir seçenek ve tam denetim işleme birimi sayısı yönetmenizi sağlar. Bu özellik **yalnızca ölçeği artırma** özelliğine sahiptir ve güncelleyerek, bu sayının ölçeğini tamamen kontrol edebilirsiniz. 
 
-Düşük işleme birimleri (DTU 'lar) ile başlamak isteyebilirsiniz, örneğin, 2. Trafiğinizin 15 ' e büyüyebileceğini tahmin ediyorsanız, ad uzayındaki otomatik Şişir özelliğini açın ve en yüksek sınırı 15 ' e ayarlayın. Artık, trafiğiniz büyüdükçe, ne kadar olan değerleri otomatik olarak büyütün.
+Düşük aktarım hızı birimlerini (işleme birimi), örneğin, 2 işleme birimi başlamak isteyebilirsiniz. Trafiğiniz 15 işleme birimi için büyüme tahmin, etkinleştirme özelliği ad alanınızı otomatik şişme ve 15 işleme birimi için üst sınırı ayarlayın. Trafiğiniz büyüdükçe artık, işleme birimi otomatik olarak büyüyebilir.
 
-### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Otomatik Şişir özelliğini açıp, ilişkili bir maliyet var mı?
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>I açtığınızda ilişkilendirilmiş bir maliyet yoktur otomatik şişme özellik?
 Bu özellikle ilişkili bir **maliyet yoktur** . 
 
-### <a name="how-are-throughput-limits-enforced"></a>Verimlilik limitleri nasıl zorlanır?
-Bir ad alanındaki tüm olay hub 'ları genelinde toplam giriş aktarım hızı veya toplam giriş olayı oranı toplam aktarım hızı birimi kullanım sayısını aşarsa, Gönderenler kısıtlanır ve giriş kotasının aşıldığını belirten hatalar alır.
+### <a name="how-are-throughput-limits-enforced"></a>Aktarım hızı sınırlarını nasıl zorlanır?
+Toplam giriş üretilen işi veya bir ad alanındaki tüm event hubs'da toplam giriş olayı oranı toplam üretilen iş birimi kullanım sınırlarını aşıyorsa, Gönderenler azaltılır ve giriş kotasının aşıldığını belirten hatalar alır.
 
-Bir ad alanındaki tüm olay hub 'larının toplam çıkış üretilen işi veya toplam olay çıkış oranı toplam aktarım hızı birimi kullanım sayısını aşarsa, alıcılar kısıtlanır ve çıkış kotasının aşıldığını belirten hatalar alır. Giriş ve çıkış kotaları ayrı ayrı uygulanır; böylece hiçbir Gönderen olay tüketiminin yavaşlamasına veya bir alıcı olayların bir olay hub 'ına gönderilmesini engelleyebilir.
+Toplam çıkış üretilen işi veya toplam çıkış olayı oranı, bir ad alanındaki tüm event hubs'da toplam üretilen iş birimi kullanım sınırlarını aşıyorsa, alıcılar azaltılır ve çıkış kotasının aşıldığını belirten hatalar alır. Böylece hiçbir gönderen olay tüketiminin yavaşlamasına neden olmaz ya da bir alıcı bir olay hub'ına gönderilen olaylar engellemez, giriş ve çıkış kotaları ayrı ayrı uygulanır.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Ayrılan/seçili olabilecek üretilen iş birimi sayısı (DTU 'lar) için bir sınır var mıdır?
-Çok kiracılı bir teklifte, üretilen iş birimleri 40 'e kadar büyüyebilir (portalda en fazla 20 lik seçebilirsiniz ve aynı ad alanında, bu alanı 40 ' ye kadar yükseltmek için bir destek bileti oluşturabilirsiniz). Event Hubs 40 ' nin ötesinde, **Event Hubs ayrılmış kümeleri**olarak adlandırılan kaynak/kapasite tabanlı modeli sunar. Adanmış kümeler kapasite birimlerinde (cu düzeyinde kapsanır) satılır.
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Ayrılmış ve seçilen işleme birimleri (işleme birimi) sayısına bir sınır var mıdır?
+Sunan çok kiracılı üzerinde üretilen iş birimleri (portalda en fazla 20 işleme birimi seçin ve aynı ad alanında 40 işleme birimi için yükseltmek için bir destek bileti Yükselt) en fazla 40 işleme birimi büyüyebilir. Event Hubs 40 ' nin ötesinde, **Event Hubs ayrılmış kümeleri**olarak adlandırılan kaynak/kapasite tabanlı modeli sunar. Adanmış kümeleri kapasite birimleri (cu) olarak satılır.
 
-## <a name="dedicated-clusters"></a>Adanmış kümeler
+## <a name="dedicated-clusters"></a>Adanmış kümeleri
 
-### <a name="what-are-event-hubs-dedicated-clusters"></a>Event Hubs Ayrılmış kümeleri nelerdir?
-Event Hubs Ayrılmış kümeler, en zorlu gereksinimleri olan müşteriler için tek kiracılı dağıtımlar sunar. Bu teklif, işleme birimleri tarafından bağlı olmayan kapasite tabanlı bir küme oluşturur. Bu, kümenin CPU ve bellek kullanımı tarafından dikte edildiği şekilde verilerinizi almak ve aktarmak için kümeyi kullanabileceğiniz anlamına gelir. Daha fazla bilgi için bkz. [Event Hubs ayrılmış kümeleri](event-hubs-dedicated-overview.md).
+### <a name="what-are-event-hubs-dedicated-clusters"></a>Event Hubs Dedicated kümeleri nelerdir?
+Tek kiracılı dağıtımları En zorlu gereksinimler olan müşteriler için Event Hubs Dedicated kümeleri sunar. Bu teklif, işleme birimleri tarafından bağlanmadı kapasite tabanlı bir küme oluşturur. Bu, kümenin CPU ve bellek kullanımı tarafından dikte edildiği şekilde verilerinizi almak ve aktarmak için kümeyi kullanabileceğiniz anlamına gelir. Daha fazla bilgi için bkz. [Event Hubs ayrılmış kümeleri](event-hubs-dedicated-overview.md).
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Tek bir kapasite birimi ne kadar sürer?
+### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Ne kadar tek kapasite birimi elde bana?
 Adanmış bir küme için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
 
-Aşağıdaki tabloda, sınamamız sırasında elde ettiğimiz kıyaslama sonuçları gösterilmektedir:
+Aşağıdaki tabloda, bizim test sırasında alanımız Kıyaslama sonuçlar gösterilir:
 
-| Yük şekli | Alıcıların | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam DTU | CU başına DTU |
+| Yükü şekli | Alıcılar | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam işleme birimi | CU başına işleme birimi |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB toplu işleri | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 tüs | 100 tüs | 
-| 10x10KB toplu işlem | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1,33 GB/sn | 133k İleti/sn | 666 tüs | 166 tüs |
-| 6x32KB toplu işleri | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 tüs | 250 tüs |
+| 100x1KB toplu | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 işleme birimi | 100 işleme birimi | 
+| 10x10KB toplu | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1.33 GB/sn | 133k İleti/sn | 666 işleme birimi | 166 işleme birimi |
+| 6x32KB toplu | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 işleme birimi | 250 işleme birimi |
 
-Sınamada, aşağıdaki ölçütler kullanılmıştır:
+Testinizde aşağıdaki ölçütleri izin kullanıldı:
 
-- Dört Kapasite birimi (cu düzeyinde kapsanır) içeren adanmış bir Event Hubs kümesi kullanıldı. 
-- Alma işlemi için kullanılan olay hub 'ının 200 bölümü vardı. 
-- Alınan veriler, tüm bölümlerden alınan iki alıcı uygulaması tarafından alındı.
+- Dört kapasite birimleri (cu) ile ayrılmış bir olay hub'ları kümesi kullanıldı. 
+- Alma işlemi için kullanılan olay hub'ı 200 bölümler vardı. 
+- Tüm bölümleri alma iki alıcı uygulamalar tarafından alınan veri alındı.
 
-Sonuçlar, adanmış bir Event Hubs kümesiyle neler elde edilebileceklerini size fikir verir. Ayrıca, bir ayırma kümesi, mikro Batch ve uzun süreli saklama senaryolarınız için Event Hubs yakalama etkinleştirilmiş olarak gelir.
+Sonuçları ile ayrılmış bir olay hub'ları kümesi elde edilebilecek olanların hakkında fikir verir. Ayrıca, dedicate küme mikro toplu ve uzun süreli saklama senaryolarınız için etkin Event Hubs yakalama ile birlikte gelir.
 
-### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Nasıl yaparım? bir Event Hubs Ayrılmış kümesi mi oluşturulsun?
-Bir [Kota artışı destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurarak Event Hubs adanmış bir küme oluşturursunuz. Genellikle, kümenin dağıtımını yapmak için iki hafta sürer ve sizin tarafınızdan kullanılmak üzere kullanıma alınır. Bu işlem, kümenin dağıtılması için iki saat daha fazla geçen Azure portal veya Azure Resource Manager şablonları aracılığıyla tam bir self servis görünene kadar geçicidir.
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Event Hubs ayrılmış bir küme nasıl oluşturulur?
+Bir [Kota artışı destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurarak Event Hubs adanmış bir küme oluşturursunuz. Kümeye dağıtılır ve sizin tarafınızdan kullanılacak. Bu sayede almak için genellikle yaklaşık iki hafta sürer. Bu işlem, kümenin dağıtılması için iki saat daha fazla geçen Azure portal veya Azure Resource Manager şablonları aracılığıyla tam bir self servis görünene kadar geçicidir.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-### <a name="how-many-partitions-do-i-need"></a>Kaç bölüme ihtiyacım var?
+### <a name="how-many-partitions-do-i-need"></a>Kaç tane bölümler ihtiyacım var?
 Bölüm sayısı, oluşturma sırasında belirtilir ve 2 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez olmadığından, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).
 
 Oluşturma sırasında 32 olan mümkün olan en yüksek değer olarak ayarlamak isteyebilirsiniz. Göndericilerin, geri kalan 31 bölümden oluşan 32 ' dan yalnızca tek bir bölüme gönderilmesi için yapılandırmadığınız müddetçe, birden fazla bölüme sahip olmanın sırayı korumadan birden çok bölüme gönderilmesine neden olacağını unutmayın. Önceki durumda, tüm 32 bölümlerdeki olayları okumanız gerekir. İkinci durumda, olay Işlemcisi ana bilgisayarında yapmanız gerekek yapılandırmadan farklı ek maliyet yoktur.
 
-Event Hubs, Tüketici grubu başına tek bir bölüm okuyucusuna izin verecek şekilde tasarlanmıştır. Çoğu kullanım durumunda, varsayılan dört bölüm ayarı yeterlidir. Olay işlemenin ölçeğini ölçeklendirmek istiyorsanız ek bölümler eklemeyi göz önünde bulundurmanız gerekebilir. Bir bölümde belirli bir işleme sınırı yoktur, ancak ad uzayındaki toplam aktarım hızı, üretilen iş birimi sayısıyla sınırlıdır. Ad uzayındaki üretilen iş birimi sayısını artırdıkça, ek bölümlerin, eşzamanlı okuyucuların en yüksek aktarım hızını elde etmelerini sağlamak isteyebilirsiniz.
+Event Hubs, bir tüketici grubu başına tek bölüm okuyucusu izin vermek için tasarlanmıştır. Çoğu durumda, varsayılan ayarı olan dört bölüm yeterli kullanın. Olay işlemenin ölçeğini ölçeklendirmek istiyorsanız ek bölümler eklemeyi göz önünde bulundurmanız gerekebilir. Bir bölümde belirli bir işleme sınırı yoktur, ancak ad uzayındaki toplam aktarım hızı, üretilen iş birimi sayısıyla sınırlıdır. Ad alanınız içinde üretilen iş birimlerinin sayısı arttıkça, ek bölümler kendi en fazla aktarım hızı elde etmek eşzamanlı okuyucu izin vermek isteyebilirsiniz.
 
-Ancak, uygulamanızın belirli bir bölüme benzeşim içeren bir modeliniz varsa, bölüm sayısının artırılması sizin için herhangi bir avantaj olmayabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md).
+Uygulamanızı benzeşim belirli bir bölüme sahip bir model varsa, ancak bölüm sayısının artırılması, hiçbir Avantajı'ndan olmayabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md).
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-### <a name="where-can-i-find-more-pricing-information"></a>Daha fazla fiyatlandırma bilgilerini nerede bulabilirim?
+### <a name="where-can-i-find-more-pricing-information"></a>Diğer fiyatlandırma bilgileri nerede bulabilirim?
 
 Event Hubs fiyatlandırmasıyla ilgili tüm bilgiler için [Event Hubs fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/event-hubs/)bakın.
 
-### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs olaylarını 24 saatten fazla saklamak için ücret alınır mi?
+### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs olaylarını 24 saatten uzun süre tutma ücreti var mıdır?
 
-Event Hubs standart katmanı, en fazla yedi gün boyunca, 24 saatten daha uzun mesaj bekletme dönemlerine izin verir. Depolanan olayların toplam sayısının boyutu, seçilen üretilen iş birimi sayısı (üretilen iş birimi başına 84 GB) için depolama limitini aşarsa, indirimi aşan boyut yayımlanan Azure Blob depolama fiyatı üzerinden ücretlendirilir. Her bir üretilen iş birimi için depolama alanı kullanım süresi, aktarım hızı birimi en fazla giriş kesintisinden kullanılsa bile, 24 saatin (varsayılan) bekletme dönemlerine yönelik tüm depolama maliyetlerini içerir.
+Event Hubs standart katmanı ileti bekletme yedi günde en fazla 24 saatten uzun süreler izin vermiyor. Boyutu depolanan olaylarının toplam sayısı, seçili üretilen iş birimi (aktarım hızı birimi başına 84 GB) için depolama sınırını aşarsa, izin verilen kullanımı aşan boyut yayımlanan Azure Blob Depolama fiyatı üzerinden ücretlendirilir. Her bir üretilen iş birimindeki depolama alanı kullanım sınırı, 24 saatlik saklama süreleri için tüm depolama maliyetlerini kapsar (varsayılan) aktarım hızı birimi en büyük giriş kullanım sınırında kullanıldığında bile.
 
-### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs depolama boyutu nasıl hesaplanıp ücretlendirilir?
+### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Nasıl Event hubs'ı depolama boyutu hesaplanır ücretlendirilir ve nedir?
 
-Tüm kayıtlı olayların, olay üst bilgileri veya tüm olay hub 'larında disk depolama yapıları dahil olmak üzere, tüm saklanan olayların toplam boyutu gün boyunca ölçülür. Günün sonunda en büyük depolama boyutu hesaplanır. Günlük depolama alanı kullanım sınırı, gün boyunca seçilen en az aktarım hızı birimi sayısına göre hesaplanır (her bir aktarım hızı birimi 84 GB'lık kullanım sınırı sağlar). Toplam boyut, hesaplanan günlük depolama indirimini aşarsa, fazla depolama, Azure Blob Depolama ücretleri ( **yerel olarak yedekli depolama** fiyatı) kullanılarak faturalandırılır.
+Tüm event hubs dahili ek yükler için olay üst bilgileri veya disk depolama yapıları dahil olmak üzere, depolanmış tüm olayların toplam boyutu gün boyunca ölçülür. Günün sonunda en büyük depolama boyutu hesaplanır. Günlük depolama alanı kullanım sınırı, gün boyunca seçilen en az aktarım hızı birimi sayısına göre hesaplanır (her bir aktarım hızı birimi 84 GB'lık kullanım sınırı sağlar). Toplam boyut, hesaplanan günlük depolama indirimini aşarsa, fazla depolama, Azure Blob Depolama ücretleri ( **yerel olarak yedekli depolama** fiyatı) kullanılarak faturalandırılır.
 
-### <a name="how-are-event-hubs-ingress-events-calculated"></a>Event Hubs giriş olayları nasıl hesaplanır?
+### <a name="how-are-event-hubs-ingress-events-calculated"></a>Event hubs'ı giriş olayları nasıl hesaplanır?
 
-Bir olay hub 'ına gönderilen her olay faturalandırılabilir ileti olarak sayılır. Giriş *olayı* , 64 KB 'tan küçük veya buna eşit bir veri birimi olarak tanımlanır. Boyutu 64 KB 'tan küçük veya buna eşit olan herhangi bir olay, faturalandırılabilir bir olay olarak kabul edilir. Olay 64 KB 'tan büyükse, faturalanabilir olay sayısı, 128 KB 64 'ın katları halinde olay boyutuna göre hesaplanır. Örneğin, Olay Hub 'ına gönderilen 8 KB 'lik bir olay bir olay olarak faturalandırılır, ancak olay hub 'ına gönderilen 96 KB 'lik bir ileti iki olay olarak faturalandırılır.
+Olay hub'ına gönderilen her olay Faturalanabilir mesaj olarak sayılır. Giriş *olayı* , 64 KB 'tan küçük veya buna eşit bir veri birimi olarak tanımlanır. Boyutu 64 KB eşit veya daha az olan herhangi bir olay, Faturalanabilir bir olay olarak kabul edilir. Olay 64 KB'den büyükse, Faturalanabilir olayların sayısı olay boyutu 64 KB'ın katlarına göre hesaplanır. Örneğin, olay hub'ına gönderilen 8 KB'lık olay bir olay olarak faturalandırılır ancak olay hub'ına gönderilen 96 KB'lık mesaj iki olay faturalandırılır.
 
-Bir olay hub 'ından tüketilen olayların yanı sıra yönetim işlemleri ve kontrol noktaları gibi denetim çağrıları faturalandırılabilir giriş olayları olarak sayılmaz, ancak üretilen iş birimi tahsisatlarına tahakkuk etmez.
+Yönetim işlemleri ve denetim çağrıları kontrol noktaları gibi düzgün Faturalandırılabilir giriş olayları olarak kabul edilmez, ancak en fazla aktarım hızı birimi kullanım sınırından düşülür gibi bir olay hub'ından tüketilen olayların.
 
-### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Aracılı bağlantı ücretleri Event Hubs için geçerlidir mi?
+### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Aracılı bağlantı ücretleri Event Hubs için geçerli midir?
 
-Bağlantı ücretleri yalnızca AMQP protokolü kullanıldığında geçerlidir. Gönderen sistem veya cihazların sayısı ne olursa olsun, HTTP kullanarak olay göndermeye ilişkin herhangi bir bağlantı ücreti yoktur. AMQP kullanmayı planlıyorsanız (örneğin, daha verimli olay akışı elde etmek veya IoT komutunda ve denetim senaryolarında iki yönlü iletişimi etkinleştirmek için), her bir hizmet katmanına kaç bağlantı dahil edildiğini öğrenmek için [Event Hubs fiyatlandırma bilgileri](https://azure.microsoft.com/pricing/details/event-hubs/) sayfasına bakın.
+Bağlantı ücretleri, yalnızca AMQP protokolünü kullanıldığında uygulanır. Gönderen sistem veya cihazların sayısı ne olursa olsun, HTTP kullanarak olay göndermeye ilişkin herhangi bir bağlantı ücreti yoktur. AMQP kullanmayı planlıyorsanız (örneğin, daha verimli olay akışı elde etmek veya IoT komutunda ve denetim senaryolarında iki yönlü iletişimi etkinleştirmek için), her bir hizmet katmanına kaç bağlantı dahil edildiğini öğrenmek için [Event Hubs fiyatlandırma bilgileri](https://azure.microsoft.com/pricing/details/event-hubs/) sayfasına bakın.
 
 ### <a name="how-is-event-hubs-capture-billed"></a>Event Hubs Yakalama nasıl faturalandırılır?
 
-Ad alanındaki herhangi bir olay hub 'ında yakalama seçeneği etkinken yakalama etkinleştirilir. Event Hubs yakalama, satın alınan üretilen iş birimi başına saatlik olarak faturalandırılır. Üretilen iş birimi sayısı arttırılır veya azaldıkça, Event Hubs yakalama faturalandırması bu değişiklikleri tam saat artışlarla yansıtır. Event Hubs yakalama faturalaması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırma bilgileri](https://azure.microsoft.com/pricing/details/event-hubs/).
+Ad alanındaki tüm olay hub'ı yakalama seçeneği etkin olduğunda yakalama özelliği etkinleştirilir. Event Hubs yakalama, satın alınan işleme birimi başına saatlik faturalandırılır. Aktarım hızı birimi sayısı arttıkça veya azaldıkça olarak Event Hubs yakalama faturalandırması bu değişiklikleri tam saatlik adımlar olarak yansıtır. Event Hubs yakalama faturalaması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırma bilgileri](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Event Hubs yakalama için seçdiğim depolama hesabı için faturalandırılırım mı?
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Event Hubs yakalama için seçtiğim depolama hesabına ücret yansır?
 
-Yakalama, bir olay hub 'ında etkinleştirildiğinde sağladığınız bir depolama hesabını kullanır. Depolama hesabınız olduğu için, bu yapılandırmayla ilgili tüm değişiklikler Azure aboneliğinize faturalandırılır.
+Yakalama, sağladığınız bir olay hub'ında etkinleştirildiğinde bir depolama hesabını kullanır. Bu yapılandırma için herhangi bir değişiklik, depolama hesabınız olduğu gibi Azure aboneliğinize faturalandırılır.
 
 ## <a name="quotas"></a>Kotalar
 
-### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Event Hubs ilişkili kotalar var mı?
+### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Event Hubs ile ilişkili herhangi bir kota var mı?
 
 Tüm Event Hubs kotaları listesi için bkz. [Kotalar](event-hubs-quotas.md).
 
@@ -238,7 +238,7 @@ Tüm Event Hubs kotaları listesi için bkz. [Kotalar](event-hubs-quotas.md).
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Neden bir ad alanını başka bir abonelikten sildikten sonra oluşturamadım? 
 Bir aboneliğden bir ad alanını sildiğinizde, başka bir abonelikte aynı adla yeniden oluşturmadan önce 4 saat bekleyin. Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz: `Namespace already exists`. 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Event Hubs tarafından oluşturulan özel durumların bazıları ve önerilen eylemleri nelerdir?
+### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Event Hubs ve önerilen eylemlerinin tarafından oluşturulan özel durumları bazıları nelerdir?
 
 Olası Event Hubs özel durumların listesi için bkz. [özel durumlara genel bakış](event-hubs-messaging-exceptions.md).
 

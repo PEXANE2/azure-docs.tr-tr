@@ -8,11 +8,11 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394335"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `/etc/fstab`bir giriş oluşturarak `mount` komutuyla isteğe bağlı ve önyükleme.
@@ -26,7 +26,7 @@ Linux 'ta bir Azure dosya paylaşımının bağlanması için önerilen yol, SMB
 | CentOS | 7 + |  7.5+ |
 | Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
 
 Yukarıdaki tabloda listelenmeyen bir Linux dağıtımını kullanıyorsanız Linux dağıtımının Linux çekirdek sürümünü denetleyerek şifreleme ile SMB 3,0 ' i destekleyip desteklemediğini kontrol edebilirsiniz. Şifreleme ile SMB 3,0, Linux çekirdek sürümü 4,11 ' e eklenmiştir. `uname` komutu kullanımdaki Linux çekirdeğinin sürümünü döndürür:
 
@@ -34,7 +34,7 @@ Yukarıdaki tabloda listelenmeyen bir Linux dağıtımını kullanıyorsanız Li
 uname -r
 ```
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**CIFS-utils paketinin yüklü olduğundan emin olun.**  
@@ -202,18 +202,18 @@ Linux Kernel 4,18 ' den başlayarak, eski nedenlerle `cifs` adlı SMB çekirdek 
 | Dağıtım | SMB 1 devre dışı bırakabilir |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Hayır |
-| Ubuntu 18.04 | Evet |
-| Ubuntu 19.04 + | Evet |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
 | De, 8-9 | Hayır |
-| De, 10 + | Evet |
-| Fedora 29 + | Evet |
+| De, 10 + | Yes |
+| Fedora 29 + | Yes |
 | CentOS 7 | Hayır | 
-| CentOS 8 + | Evet |
+| CentOS 8 + | Yes |
 | Red Hat Enterprise Linux 6. x-7. x | Hayır |
-| Red Hat Enterprise Linux 8 + | Evet |
+| Red Hat Enterprise Linux 8 + | Yes |
 | openSUSE artık 15,0 | Hayır |
-| openSUSE artık 15.1 + | Evet |
-| openSUSE Tpoed | Evet |
+| openSUSE artık 15.1 + | Yes |
+| openSUSE Tpoed | Yes |
 | SUSE Linux Enterprise 11. x-12. x | Hayır |
 | SUSE Linux Enterprise 15 | Hayır |
 | SUSE Linux Enterprise 15,1 | Hayır |

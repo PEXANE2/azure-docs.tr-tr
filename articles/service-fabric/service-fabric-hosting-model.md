@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464583"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391416"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric barındırma modeli
 Bu makalede, Azure Service Fabric tarafından sağlanan uygulama barındırma modellerine genel bir bakış sağlanır ve **paylaşılan işlem** Ile **özel işlem** modelleri arasındaki farklar açıklanmaktadır. Dağıtılan bir uygulamanın bir Service Fabric düğümüne nasıl göründüğünü ve hizmetin çoğaltmaları (veya örnekleri) ile hizmet ana bilgisayar işleminin arasındaki ilişkiyi açıklar.
@@ -38,7 +38,7 @@ Service Fabric, her iki bölümden de çoğaltmaları barındıran ' MyCodePacka
 ![Dağıtılan uygulamanın düğüm görünümü diyagramı][node-view-two]
 
 
-Service Fabric, mevcut ' MyServicePackage ' etkinleştirmesinde Service **Fabric:/app1/ServiceB** adlı **P3** bölümünün yeni çoğaltmasını yerleştirdi. Hemen. ' MyAppType ' türünde başka bir Application Fabric oluşturalım **:/app2** . **Fabric:/app2**içinde bir Service Fabric oluşturun **:/app2/servicea**. Bu hizmette iki bölüm (**P4** ve **P5**) ve bölüm başına üç çoğaltma vardır. Aşağıdaki diyagramda yeni düğüm görünümü gösterilmektedir:
+Service Fabric, mevcut ' MyServicePackage ' etkinleştirmesinde Service **Fabric:/app1/ServiceB** adlı **P3** bölümünün yeni çoğaltmasını yerleştirdi. Sunuldu. ' MyAppType ' türünde başka bir Application Fabric oluşturalım **:/app2** . **Fabric:/app2**içinde bir Service Fabric oluşturun **:/app2/servicea**. Bu hizmette iki bölüm (**P4** ve **P5**) ve bölüm başına üç çoğaltma vardır. Aşağıdaki diyagramda yeni düğüm görünümü gösterilmektedir:
 
 
 ![Dağıtılan uygulamanın düğüm görünümü diyagramı][node-view-three]

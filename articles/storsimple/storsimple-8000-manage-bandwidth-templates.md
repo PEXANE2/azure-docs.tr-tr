@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi için bant genişliği şablonlarını yönetme | Microsoft Docs
-description: Bant genişliği kullanımını denetlemenize izin StorSimple bant genişliği şablonlarını yönetme işlemi açıklanır.
+description: Bant genişliği tüketimini denetlemenizi sağlayan StorSimple bant genişliği şablonlarının nasıl yönetileceğini açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,161 +15,161 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 13a3e57bb27c075fc045e87790dbe13369ed9f8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699486"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366775"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple bant genişliği şablonlarını yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple bant genişliği şablonlarını yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-Bant genişliği şablonları birden çok günün saati zamanlama StorSimple cihazından verileri buluta katmanı arasında ağ bant genişliği kullanımını yapılandırmanıza olanak sağlar.
+Bant genişliği şablonları, StorSimple cihazındaki verileri buluta katman olarak eklemek için birden çok günlük zaman çizelgesi boyunca ağ bant genişliği kullanımını yapılandırmanıza olanak tanır.
 
-Bant genişliği azaltma zamanlamaları ile şunları yapabilirsiniz:
+Bant genişliği azaltma zamanlamalarıyla şunları yapabilirsiniz:
 
-* Özelleştirilmiş bant genişliği zamanlamaları iş yükü ağ kullanımları bağlı olarak belirtin.
-* Yönetimini merkezden gerçekleştirin ve zamanlamaları birden çok cihazda kolay ve sorunsuz bir şekilde yeniden.
+* İş yükü ağ kullanımlarına bağlı olarak özelleştirilmiş bant genişliği zamanlamaları belirtin.
+* Yönetimini merkezileştirmek ve birden çok cihaz genelinde zamanlamaları kolay ve sorunsuz bir şekilde yeniden kullanın.
 
 > [!NOTE]
-> Bu özellik yalnızca StorSimple fiziksel cihazlar (model 8100 ve 8600) ve StorSimple bulut Gereçleri (model 8010 ve 8020) için kullanılabilir.
+> Bu özellik, StorSimple bulut gereçlerine (modeller 8010 ve 8020) değil, yalnızca StorSimple fiziksel cihazları (modeller 8100 ve 8600) için kullanılabilir.
 
 
 ## <a name="the-bandwidth-templates-blade"></a>Bant genişliği şablonları dikey penceresi
 
-**Bant genişliği şablonları** dikey penceresinde tüm bant genişliği şablonları hizmetiniz için bir tablo biçiminde olan ve aşağıdaki bilgileri içerir:
+**Bant genişliği şablonları** dikey penceresinde, hizmetinizdeki tüm bant genişliği şablonları tablosal biçiminde bulunur ve aşağıdaki bilgiler bulunur:
 
-* **Adı** – bant genişliği şablonu oluşturulduğunda atanan benzersiz bir ad.
-* **Zamanlama** – belirli bir bant genişliği şablonu içinde yer alan zamanlamaların sayısı.
-* **Tarafından kullanılan** – bant genişliği şablonları kullanarak birim sayısı.
+* **Name** : bant genişliği şablonuna atanan benzersiz bir ad.
+* **Schedule** : belirli bir bant genişliği şablonunda bulunan zamanlamaların sayısı.
+* **Kullanılan** : bant genişliği şablonlarını kullanan birim sayısı.
 
-Bant genişliği şablonlarını yapılandırmanıza yardımcı olacak ek bilgiler de bulabilirsiniz:
+Ayrıca, ' de bant genişliği şablonlarını yapılandırmaya yardımcı olacak ek bilgiler bulabilirsiniz:
 
-* [Bant genişliği şablonları hakkında sorular ve cevaplar](#questions-and-answers-about-bandwidth-templates)
+* [Bant genişliği şablonları hakkında sorular ve yanıtlar](#questions-and-answers-about-bandwidth-templates)
 * [Bant genişliği şablonları için en iyi yöntemler](#best-practices-for-bandwidth-templates)
 
-## <a name="add-a-bandwidth-template"></a>Bir bant genişliği şablonu ekleme
+## <a name="add-a-bandwidth-template"></a>Bant genişliği şablonu ekleme
 
 Yeni bir bant genişliği şablonu oluşturmak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-add-a-bandwidth-template"></a>Bant genişliği şablonu eklemek için
+#### <a name="to-add-a-bandwidth-template"></a>Bir bant genişliği şablonu eklemek için
 
-1. StorSimple cihaz Yöneticisi hizmetinize gidin, tıklayın **bant genişliği şablonları** ve ardından **+ Ekle bant genişliği şablonu**.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin, **bant genişliği şablonları** ' na tıklayın ve **+ bant genişliği şablonu Ekle**' ye tıklayın.
 
-    ![Bant genişliği şablonu Ekle + tıklayın](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
+    ![\+ Bant genişliği şablonu Ekle ' ye tıklayın](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
-2. İçinde **Ekle bant genişliği şablonu** dikey penceresinde aşağıdaki adımları uygulayın:
+2. **Bant genişliği şablonu Ekle** dikey penceresinde aşağıdaki adımları uygulayın:
    
-    1. Bant genişliği şablonu için benzersiz bir ad belirtin.
-    2. Bir bant genişliği zamanlamayı tanımlar. Bir zamanlama oluşturmak için:
+    1. Bant genişliği şablonunuz için benzersiz bir ad belirtin.
+    2. Bant genişliği zamanlaması tanımlayın. Bir zamanlama oluşturmak için:
    
-        1. Aşağı açılan listeden seçin **gün** haftalık zamanlama için yapılandırılmış. Birden çok gün seçebilirsiniz.        
+        1. Aşağı açılan listeden, zamanlamanın yapılandırıldığı haftanın **günlerini** seçin. Birden çok gün seçebilirsiniz.        
         
-        2. Girin bir **başlattığınızda** içinde _ss: dd_ biçimi. Zamanlamanın başlayacağı andır.
+        2. _SS: DD_ biçiminde bir **Başlangıç saati** girin. Bu, zamanlamanın başlayacağı zaman olur.
 
-        3. Girin bir **bitiş zamanı** içinde _ss: dd_ biçimi. Zamanlama durdurur andır.
+        3. _SS: DD_ biçiminde bir **bitiş saati** girin. Bu, zamanlamanın durması durumunda olur.
       
            > [!NOTE]
-           > Çakışan zamanlamaları izin verilmez. Başlangıç ve bitiş zamanlarını çakışan bir zamanlamayı gösterecekse belirten bir hata iletisi görürsünüz.
+           > Çakışan zamanlamalara izin verilmez. Başlangıç ve bitiş zamanları çakışan bir zamanlamaya neden olursa, bu etkiye yönelik bir hata iletisi görürsünüz.
 
-        4. Belirtin **bant genişliği Hızı**. StorSimple Cihazınızı (karşıya yükleme ve indirmeleri) bulut ilgili işlemler tarafından kullanılan saniye (Mbps) başına megabit cinsinden bant genişliği budur. Bu alana 1 ile 1000 arasında bir sayı girin.
+        4. **Bant genişliği hızını**belirtin. Bu, StorSimple cihazınız tarafından bulut (yüklemeler ve İndirmeler) ile ilgili işlemlerde kullanılan bit genişliği (MB/sn) cinsinden bant genişliğidir. Bu alana 1 ile 1000 arasında bir sayı girin.
 
-            ![Bant genişliği zamanlamayı tanımlayın](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
+            ![Bant genişliği zamanlamasını tanımlama](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          
-            Bunlar tamamlanana kadar şablonunuz için birden çok zamanlama tanımlamak için yukarıdaki adımları yineleyin.
+            Siz tamamlanana kadar şablonunuz için birden çok zamanlama tanımlamak üzere yukarıdaki adımları tekrarlayın.
 
-        5. Tıklayın **Ekle** bant genişliği şablonu oluşturmaya başlamak için. Oluşturulan şablonun, bant genişliği şablonları listesine eklenir.
+        5. Bir bant genişliği şablonu oluşturmaya başlamak için **Ekle** ' ye tıklayın. Oluşturulan şablon, bant genişliği şablonları listesine eklenir.
       
 
-## <a name="edit-a-bandwidth-template"></a>Bant genişliği Şablonu Düzenle
+## <a name="edit-a-bandwidth-template"></a>Bant genişliği şablonunu düzenleme
 
 Bir bant genişliği şablonunu düzenlemek için aşağıdaki adımları gerçekleştirin.
 
 ### <a name="to-edit-a-bandwidth-template"></a>Bir bant genişliği şablonunu düzenlemek için
 
-1. ' A tıklayın ve StorSimple cihaz Yöneticisi hizmetinize gidin **bant genişliği şablonları**.
-2. Bant genişliği şablonları listesinde, silmek istediğiniz şablonu seçin. Sağ tıklayın ve bağlam menüsünden **Sil**.
-3. Onayınız istendiğinde tıklayın **Tamam**. Bu, bant genişliği şablonu silmeniz gerekir. 
-4. Bant genişliği şablonları güncelleştirmeleri silinmesini yansıtacak şekilde listesi.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **bant genişliği şablonları**' na tıklayın.
+2. Bant genişliği şablonları listesinde, silmek istediğiniz şablonu seçin. Sağ tıklayıp bağlam menüsünden **Sil**' i seçin.
+3. Onay istendiğinde **Tamam**' a tıklayın. Bu, bant genişliği şablonunu silmelidir. 
+4. Bant genişliği şablonlarının listesi, silme işlemini yansıtacak şekilde güncelleştirilir.
 
 > [!NOTE]
-> Düzenlenen zamanlama değiştirmekte olduğunuz bant genişliği şablonu mevcut bir zamanlamayı ile çakışırsa, değişikliklerinizi kaydedemezsiniz.
+> Düzenlenen zamanlama, değiştirdiğiniz bant genişliği şablonunda varolan bir zamanlamaya göre çakışırsa değişikliklerinizi kaydedemezsiniz.
 
-## <a name="delete-a-bandwidth-template"></a>Bir bant genişliği şablonunu silme
+## <a name="delete-a-bandwidth-template"></a>Bant genişliği şablonunu silme
 
-Bir bant genişliği şablonunu silme için aşağıdaki adımları gerçekleştirin.
+Bir bant genişliği şablonunu silmek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-delete-a-bandwidth-template"></a>Bir bant genişliği şablonu silinemiyor
+#### <a name="to-delete-a-bandwidth-template"></a>Bir bant genişliği şablonunu silmek için
 
-1. ' A tıklayın ve StorSimple cihaz Yöneticisi hizmetinize gidin **bant genişliği şablonları**.
-2. Bant genişliği şablonları listesinde, silmek istediğiniz şablonu seçin. Sağ tıklayın ve bağlam menüsünden Sil'i seçin.
-3. Onayınız istendiğinde tıklayın **Tamam**. Bu, bant genişliği şablonu silmeniz gerekir.
-4. Bant genişliği şablonları güncelleştirmeleri silinmesini yansıtacak şekilde listesi.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **bant genişliği şablonları**' na tıklayın.
+2. Bant genişliği şablonları listesinde, silmek istediğiniz şablonu seçin. Sağ tıklayıp bağlam menüsünden Sil ' i seçin.
+3. Onay istendiğinde **Tamam**' a tıklayın. Bu, bant genişliği şablonunu silmelidir.
+4. Bant genişliği şablonlarının listesi, silme işlemini yansıtacak şekilde güncelleştirilir.
 
-Şablon tüm birimleri tarafından kullanılıyor, silmek verilmez. Şablonu kullanımda olduğunu belirten bir hata iletisi görürsünüz. Şablon yapılan tüm başvurular kaldırılması gerektiğini bildiren bir hata iletisi iletişim kutusu görünür.
+Şablon herhangi bir birim (ler) tarafından kullanılıyorsa, bu şablonu silme izniniz olmayacaktır. Şablonun kullanımda olduğunu belirten bir hata iletisi görürsünüz. Şablona yönelik tüm başvuruların kaldırılması gerektiğini bildiren bir hata mesajı iletişim kutusu görüntülenir.
 
-Şablon yapılan tüm başvurular erişerek silebilirsiniz **birim kapsayıcıları** sayfası ve böylece başka bir şablon kullanın veya özel veya sınırsız bant genişliği ayarı, bu şablonu kullanın. birim kapsayıcılarını değiştirme. Tüm başvuruları kaldırıldıktan sonra şablonu silebilirsiniz.
+**Birim kapsayıcıları** sayfasına erişerek şablona yapılan tüm başvuruları silebilir ve bu şablonu kullanan birim kapsayıcılarını değiştirerek, başka bir şablon kullanır veya özel veya sınırsız bir bant genişliği ayarı kullanın. Tüm başvurular kaldırıldığında, şablonu silebilirsiniz.
 
-## <a name="use-a-default-bandwidth-template"></a>Varsayılan bant genişliği şablonu kullanın
+## <a name="use-a-default-bandwidth-template"></a>Varsayılan bir bant genişliği şablonu kullan
 
-Varsayılan bant genişliği şablonu sağlanır ve birim kapsayıcıları tarafından bulut erişirken bant genişliği denetimlerini zorlamak için varsayılan olarak kullanılır. Varsayılan şablonu, ayrıca kendi şablonlarını oluşturan kullanıcılar için hazır bir başvuru olarak görev yapar. Bu varsayılan şablon ayrıntılarını şunlardır:
+Varsayılan olarak, bir bant genişliği şablonu sağlanır ve buluta erişirken bant genişliği denetimlerini zorlamak için varsayılan olarak birim kapsayıcıları tarafından kullanılır. Varsayılan şablon Ayrıca kendi şablonlarını oluşturan kullanıcılar için hazır bir başvuru işlevi görür. Bu varsayılan şablonun ayrıntıları şunlardır:
 
-* **Adı** – sınırsız gece ve hafta sonları
-* **Zamanlama** – 8: 00 ve 17: 00 cihaz saat arasında 1 MB/sn bant genişliği ücreti uygulanır cumaya Pazartesi'den tek bir zamanlamanın. Bant genişliği sınırsız için haftanın geri kalanı için ayarlanır.
+* **Ad** – sınırsız gece ve hafta sonları
+* **Schedule** : Pazartesi 'den Cuma 'ya kadar, 8 Ila 5 pm cihaz süresi arasında 1 Mbps 'lik bir bant genişliği oranı uygulayan tek bir zamanlama. Bant genişliği, haftanın geri kalanı için sınırsız olarak ayarlanır.
 
-Varsayılan şablonu düzenleyebilirsiniz. Bu şablonu (düzenlenen sürümleri dahil) kullanımı izlenir.
+Varsayılan şablon düzenlenebilir. Bu şablonun kullanımı (düzenlenmiş sürümler dahil) izlenir.
 
-## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Belirli bir zamanda başlatan bir günlük bant genişliği şablonu oluşturma
+## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Belirli bir zamanda başlayan bir günlük bant genişliği şablonu oluşturun
 
-Belirli bir zamanda başlatır ve tüm gün çalışan bir zamanlama oluşturmak için bu yordamı izleyin. Örnekte, zamanlama sabah, 09: 00'dan başlar ve sonraki sabah 09: 00 kadar çalışır. Belirli bir zamanlama için başlangıç ve bitiş zamanları her ikisi de aynı 24 saatlik zaman çizelgesinde bulunmalıdır ve birden çok gün yayılamaz unutulmaması önemlidir. Birden çok günü kapsayan bant genişliği şablonları ayarlamak gerekiyorsa, birden çok zamanlama (örnekte gösterildiği gibi) kullanmak gerekir.
+Belirli bir zamanda başlayan ve tüm gün çalışan bir zamanlama oluşturmak için bu yordamı izleyin. Örnekte, zamanlama sabah 9 ' da başlar ve sonraki sabah 9 ' a kadar çalışır. Belirli bir zamanlamanın başlangıç ve bitiş sürelerinin her ikisi de aynı 24 saat zamanlamasında bulunmalıdır ve birden çok güne yayılamaz. Birden çok güne yayılan bant genişliği şablonları ayarlamanız gerekiyorsa birden çok zamanlama kullanmanız gerekir (örnekte gösterildiği gibi).
 
-#### <a name="to-create-an-all-day-bandwidth-template"></a>Bir günlük bant genişliği şablonu oluşturmak için
+#### <a name="to-create-an-all-day-bandwidth-template"></a>Tüm gün bant genişliği şablonu oluşturmak için
 
-1. Sabah, 09: 00'dan başlar ve gece yarısına kadar çalışan bir zamanlama oluşturun.
-2. Başka bir zamanlama ekleyin. Gece yarısı sabah, 09: 00 kadar çalıştırmak için ikinci zamanlamayı yapılandırın.
-3. Bant genişliği şablonu kaydedin.
+1. Sabah 00 ' da başlayan ve gece yarısına kadar çalışan bir zamanlama oluşturun.
+2. Başka bir zamanlama ekleyin. İkinci zamanlamayı sabah 9 ' a kadar gece yarısından itibaren çalışacak şekilde yapılandırın.
+3. Bant genişliği şablonunu kaydedin.
 
-Bileşik zamanlama, ardından bir zamanda başlatmak ve günlük çalıştırın.
+Bileşik zamanlama daha sonra, seçtiğiniz ve her gün çalıştırılan bir zamanda başlar.
 
-## <a name="questions-and-answers-about-bandwidth-templates"></a>Bant genişliği şablonları hakkında sorular ve cevaplar
+## <a name="questions-and-answers-about-bandwidth-templates"></a>Bant genişliği şablonları hakkında sorular ve yanıtlar
 
-**Q**. Bant genişliği denetimleri, arasındaki çizelgeleri olduğunda ne olur? (Bir zamanlama sona erdiyse ve başka bir henüz başlatılmadı.)
+**Soru-cevap** Zamanlamalar arasında çalışırken bant genişliği denetimlerine ne olur? (Bir zamanlama sona erdi ve başka bir tane henüz başlatılmamış.)
 
-**BİR**. Böyle durumlarda, hiçbir bant genişliği denetimleri işe. Bu, cihaz verileri buluta katmanlama, sınırsız bant genişliği olarak kullanabileceğiniz anlamına gelir.
+**A**. Böyle durumlarda, bant genişliği denetimleri işe alınmaz. Bu, cihazın verileri bulutta kullanırken sınırsız bant genişliği kullanabileceği anlamına gelir.
 
-**Q**. Bant genişliği şablonları çevrimdışı bir cihaz üzerinde değişiklik yapabilir?
+**Soru-cevap** Çevrimdışı bir cihazdaki bant genişliği şablonlarını değiştirebilir misiniz?
 
-**BİR**. Karşılık gelen cihaz çevrimdışıysa birim kapsayıcılarına bant genişliği şablonları değiştirmek mümkün olmayacaktır.
+**A**. Karşılık gelen cihaz çevrimdışı ise, birimler kapsayıcılarındaki bant genişliği şablonlarını değiştiremeyeceksiniz.
 
-**Q**. İlişkili birimleri çevrimdışı olduğunda, bir birim kapsayıcısı ile ilişkili bir bant genişliği şablonu düzenleyebilir miyim?
+**Soru-cevap** İlişkili birimler çevrimdışıyken bir birim kapsayıcısı ile ilişkili bir bant genişliği şablonunu düzenleyebilir miyim?
 
-**BİR**. Bir bant genişliği şablonu, birimlerin çevrimdışı olduğundan birim kapsayıcısı ile ilişkili değiştirebilirsiniz. Birimleri çevrimdışı olduğunda, veri CİHAZDAN buluta katmanlanmış olmaz olduğunu unutmayın.
+**A**. Birimleri çevrimdışı olan bir birim kapsayıcısı ile ilişkili bir bant genişliği şablonunu değiştirebilirsiniz. Birimler çevrimdışıyken, cihazdan buluta hiçbir veri katmanlanmadığını unutmayın.
 
-**Q**. Varsayılan bir şablon silebilir miyim?
+**Soru-cevap** Varsayılan bir şablonu silebilir misiniz?
 
-**BİR**. Varsayılan bir şablon silebilmeniz için olsa da, bunu yapmak için iyi bir fikir değil. Düzenlenen sürümleri dahil olmak üzere varsayılan şablon kullanımı izlenir. İzleme verilerini analiz edilir ve süre boyunca, varsayılan şablonu geliştirmek için kullanılır.
+**A**. Varsayılan bir şablonu silebilseniz de bunu yapmak iyi bir fikir değildir. Düzenlenmiş sürümler dahil olmak üzere varsayılan şablonun kullanımı izlenir. İzleme verileri analiz edilir ve zaman içinde, varsayılan şablonu geliştirmek için kullanılır.
 
-**Q**. Nasıl, bant genişliği şablonları değiştirilmesi gerektiğini belirlemek?
+**Soru-cevap** Bant genişliği şablonlarınızın değiştirilmesi gerektiğini nasıl belirlersiniz?
 
-**BİR**. Ağ yavaşlamasına veya bir gün içinde birden çok kez boğma görmeye başlattığınızda bant genişliği şablonları değiştirme gerektiğini işaretleri biridir. Bu durumda, depolama ve kullanım ağ g/ç performansını ve ağ aktarım hızı grafiklerine baktığımızda tarafından izleyin.
+**A**. Bant genişliği şablonlarını değiştirmek için gereken işaretlerin biri, bir gün içinde birden çok kez ağ yavaşmı veya sıkıştırma Bu durumda, g/ç performansı ve ağ Işleme grafiklerine bakarak depolama ve kullanım ağını izleyin.
 
-Ağ aktarım hızı verilerden günün saati ve ağ sorununu oluştuğu birim kapsayıcıları belirleyin. Buluta katmanlanmış verileri kullandığınızda ortaya çıkar, (Bu bilgiyi tüm birim kapsayıcıları CİHAZDAN buluta GÇ performansı alın), sonra da, birim kapsayıcıları ile ilişkili bant genişliği şablonları değiştirmeniz gerekecektir.
+Ağ işleme verilerinden, günün saatini ve ağ tıkanıklarının gerçekleştiği birim kapsayıcıları ' nı tespit edin. Bu durum, veriler buluta katmanlanmakta olduğunda (cihazdan buluta kadar tüm birim kapsayıcıları için g/ç performansından bu bilgileri al), birim kapsayıcılarınızla ilişkili bant genişliği şablonlarını değiştirmeniz gerekecektir.
 
-Değiştirilen şablonlar kullanılıyor sonra yeniden önemli bir gecikme için Ağ İzleyicisi'ni gerekir. Bunlar yine de varsa, bant genişliği şablonları yeniden ziyaret etmeniz gerekir.
+Değiştirilen Şablonlar kullanımda olduktan sonra, önemli gecikme süreleri için ağı yeniden izlemeniz gerekir. Bunlar hala varsa, bant genişliği şablonlarınızı geri yüklemeniz gerekecektir.
 
-**Q**. Bu çakışma zamanlar birden çok birim kapsayıcılarının cihazım varsa ne olur, ancak her farklı sınırlar geçerlidir?
+**Soru-cevap** Cihazımın birden çok birim kapsayıcısı, çakışan ve farklı limitlerin her biri için geçerlidir durumunda ne olur?
 
-**BİR**. 3 birim kapsayıcıları ile bir cihaz olduğunu varsayalım. Bu kapsayıcılar ile tamamen ilişkili zamanlamaları çakışıyor. Her biri bu kapsayıcıları için kullanılan bant genişliği 15 MB/sn 5 ve 10 sırasıyla limitlerdir. G/ç oluşan, tüm bu kapsayıcıların aynı anda en az 3 bant genişliği sınırlarını uygulanabilir: Bu durumda, bu g/ç istekleri giden olarak 5 MB/sn aynı kuyruğa paylaşın.
+**A**. 3 birim kapsayıcısı olan bir cihazınız olduğunu varsayalım. Bu kapsayıcılarla ilişkili zamanlamalar tamamen çakışıyor. Bu kapsayıcıların her biri için, kullanılan bant genişliği sınırları sırasıyla 5, 10 ve 15 Mbps 'Dir. G/ç, bu kapsayıcıların tümünde aynı anda gerçekleşirken, en az 3 bant genişliği sınırı uygulanabilir: Bu durumda, bu giden g/ç isteklerinin aynı kuyruğu paylaştığı 5 Mbps olur.
 
 ## <a name="best-practices-for-bandwidth-templates"></a>Bant genişliği şablonları için en iyi yöntemler
 
-Bu StorSimple cihazınız için en iyi uygulamaları izleyin:
+StorSimple cihazınız için en iyi uygulamaları izleyin:
 
-* Değişken ağ verimliliği ve cihaz tarafından günün farklı zamanlarında azaltmayı etkinleştirmek için cihaz bant genişliği şablonlarını yapılandırın. Yedekleme zamanlamaları ile kullanıldığında bu bant genişliği şablonları, yoğun olmayan saatlerde ek ağ bant genişliği bulut işlemleri için etkili bir şekilde yararlanabilirsiniz.
-* Dağıtımı ve gereken kurtarma süresi hedefi (RTO) boyutuna bağlı olarak belirli bir dağıtım için gereken gerçek bant genişliği hesaplayın.
+* Cihazdaki bant genişliği şablonlarını, günün farklı saatlerinde cihaz tarafından ağ aktarım hızı için değişken azaltmayı etkinleştirmek üzere yapılandırın. Bu bant genişliği şablonları yedekleme zamanlamalarıyla birlikte kullanıldığında, bulut işlemleri için yoğun olmayan saatlerde ek ağ bant genişliğinden etkili bir şekilde yararlanabilir.
+* Dağıtım ve gerekli kurtarma süresi hedefi (RTO) temelinde belirli bir dağıtım için gerekli olan gerçek bant genişliğini hesaplayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanarak](storsimple-8000-manager-service-administration.md).
+StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

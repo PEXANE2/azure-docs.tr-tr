@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f365a8325fc027d8770287208f91d164166fcbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 611937a709152823ddc1b88b1a0befe4161217cd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024339"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376048"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Karma Kimlik için Gereken Bağlantı Noktaları ve Protokoller
 Aşağıdaki belge, karma kimlik çözümü uygulamaya yönelik gereken bağlantı noktaları ve protokollerle ilgili teknik bir başvurudur. Aşağıdaki çizimi kullanın ve ilgili tabloya başvurun.
@@ -51,7 +51,7 @@ Bu tabloda Azure AD Connect sunucusu ile Azure AD arasında iletişim için gere
 | HTTP |80 (TCP) |SSL sertifikalarını doğrulamak için CRL 'Leri (sertifika Iptal listeleri) indirmek için kullanılır. |
 | HTTPS |443 (TCP) |Azure AD ile eşitlenmek için kullanılır. |
 
-Güvenlik duvarınızda açmanız gereken URL 'Lerin ve IP adreslerinin bir listesi için bkz. [Office 365 URL 'leri ve IP adresi aralıkları](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Güvenlik duvarınızda açmanız gereken URL 'Lerin ve IP adreslerinin bir listesi için bkz. [Office 365 URL 'leri ve IP adresi aralıkları](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) ve [sorun giderme Azure AD Connect bağlantı](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard).
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tablo 3-Azure AD Connect ve AD FS Federasyon sunucuları/WAP
 Bu tabloda, Azure AD Connect sunucusu ile AD FS Federasyon/WAP sunucuları arasındaki iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.  

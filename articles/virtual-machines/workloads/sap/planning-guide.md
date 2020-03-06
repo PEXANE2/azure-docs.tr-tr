@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2020
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e06ed31de35ad29a0fda271feaaf50b5efaf8a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
-ms.translationtype: MT
+ms.openlocfilehash: 693faf3a4e9d42321fee1258b8dd5d24582e4686
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616825"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363662"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -1052,7 +1052,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-[Bu makalede][storage-azure-cli-copy-blobs]gösterildiği gibi, BIR VHD 'yi kopyalamak IÇIN Azure CLI kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi *az disk Create* kullanın.
+Bir VHD 'YI kopyalamak için Azure CLı kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi *az disk Create* kullanın.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1152,8 +1152,6 @@ az storage blob show --name <target blob name> --container <target container nam
 ```
 
 * Yukarıda açıklandığı gibi yeni VHD 'yi bir sanal makineye ekleyin.
-
-Örnekler için [Bu makaleye][storage-azure-cli-copy-blobs]bakın.
 
 ### <a name="disk-handling"></a>Disk Işleme
 

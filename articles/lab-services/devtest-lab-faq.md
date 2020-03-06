@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760530"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380904"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -285,7 +285,7 @@ Daha ayrıntılı bir açıklama için bkz. DevTest Labs 'de [özel resimleri ve
 
 Laboratuvarınız ile ilişkili hedef depolama hesabını bulmak için:
 
-1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1.  [Azure Portal](https://portal.azure.com) oturum açın.
 2.  Sol taraftaki menüden **kaynak grupları**' nı seçin.
 3.  Laboratuvarınız ile ilişkili kaynak grubunu bulun ve seçin.
 4.  **Genel bakış**' ın altında, depolama hesaplarından birini seçin.
@@ -304,7 +304,7 @@ Belirli endişeleriniz veya kuruluş gereksinimleriniz yoksa, Azure Marketi vars
 - Tüm makineler için yerinde olması gereken uyumluluk veya yasal koşullar (örneğin, güvenlik ilkeleri).
 - Özel görüntülerin kullanılması, hafif olarak düşünülmemelidir. Bu temel görüntüler için VHD dosyalarını yönetmeniz gerektiği için, daha fazla karmaşıklık sağlar. Ayrıca, bu temel görüntülerin yazılım güncelleştirmeleriyle düzenli olarak yayama yapmanız gerekir. Bu güncelleştirmeler yeni işletim sistemi (OS) güncelleştirmelerini ve yazılım paketinin kendisi için gereken güncelleştirme veya yapılandırma değişikliklerini içerir.
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>Yapıtlar
 
 ### <a name="what-are-artifacts"></a>Yapıtlar nelerdir?
 Yapıtlar, en son bitleri dağıtmak veya geliştirme araçlarınızı bir VM 'ye dağıtmak için kullanabileceğiniz özelleştirilebilir öğelerdir. VM 'yi oluştururken sanal makinenize yapıt ekleyin. VM sağlandıktan sonra yapıtlar VM 'nizi dağıtıp yapılandırır. [Genel GitHub depolarımızda](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), önceden var olan çeşitli yapıtlar mevcuttur. [Kendi yapıtlarınızı](devtest-lab-artifact-author.md)da yazabilirsiniz.
@@ -345,7 +345,7 @@ Aşağıdaki blog gönderileri Azure DevOps Services uzantısını kullanma hakk
 
 Diğer sürekli tümleştirme (CI)/sürekli teslim (CD) araç zincirleri için, [Azure PowerShell cmdlet 'lerini](../azure-resource-manager/templates/deploy-powershell.md) ve [.net sdk](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)'larını kullanarak [Azure Resource Manager şablonlarını](https://azure.microsoft.com/resources/templates/) dağıtarak aynı senaryolara ulaşabilirsiniz. Ayrıca, toolzinciriniz ile tümleştirilecek [DevTest Labs Için REST API 'lerini](https://aka.ms/dtlrestapis) de kullanabilirsiniz.
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>DevTest Labs ortamım için yeni bir sanal ağ oluşturmalı ve var olan bir sanal ağı kullanıyor mıyım?
 Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurun. ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz.
@@ -399,7 +399,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 
 Aşağıdaki adımlardan birini gerçekleştirerek, bu hatayı çözebilirsiniz:
 
-#### <a name="option-1"></a>Seçenek 1
+#### <a name="option-1"></a>seçenek 1
 [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/) sayfasında, Azure bölgelerindeki kaynak türünün kullanılabilirliğini kontrol edin. Kaynak türü belirli bir bölgede kullanılabilir değilse, DevTest Labs bu bölgede bir laboratuvar oluşturmayı desteklemez. Laboratuvarınızı oluştururken başka bir bölge seçin.
 
 #### <a name="option-2"></a>Seçenek 2

@@ -4,11 +4,11 @@ description: Aracı tabanlı VMWare geçişi için Azure geçişi çoğaltma ger
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901563"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388967"
 ---
 # <a name="replication-appliance"></a>Çoğaltma gereci
 
@@ -26,7 +26,7 @@ VMware VM 'Leri veya fiziksel sunucuları için aracı tabanlı geçiş ayarlad�
 
 ## <a name="appliance-deployment"></a>Gereç dağıtımı
 
-**İçin kullanılan** | **Ayrıntılar**
+**Kullanıldığı yer** | **Ayrıntılar**
 --- |  ---
 VMware VM Aracısı tabanlı geçiş | OVA şablonunu Azure geçiş hub 'ından indirir ve gereç sanal makinesini oluşturmak için vCenter Server içeri aktarabilirsiniz.
 Fiziksel makine Aracısı tabanlı geçiş | Bir VMware altyapınız yoksa veya bir OVA şablonu kullanarak bir VMware VM 'si oluşturmazsanız, Azure geçiş hub 'ından bir yazılım yükleyicisi indirir ve gereci makinesini kurmak için çalıştırırsınız.
@@ -50,7 +50,7 @@ Boş disk alanı (bekletme diski) | 600 GB
 İşletim sistemi | Windows Server 2016 veya Windows Server 2012 R2
 Lisans | Gereç, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla gelir.<br/><br/> Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 İşletim sistemi yerel ayarı | İngilizce (en-us)
-IOCTL | TLS 1,2 etkinleştirilmelidir.
+TLS | TLS 1,2 etkinleştirilmelidir.
 .NET Framework | .NET Framework 4,6 veya üzeri bir sürüm makinede yüklü olmalıdır (güçlü şifreleme etkin.
 MySQL | MySQL 'in gereç üzerinde yüklü olması gerekir.<br/> MySQL yüklenmelidir. El ile yükleyebilirsiniz veya Site Recovery gereç dağıtımı sırasında yükleyebilir.
 Diğer uygulamalar | Çoğaltma gereci üzerinde başka uygulamalar çalıştırmayın.
@@ -91,9 +91,9 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
-Sanal Makineler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
+VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
 İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.<br/> Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde çalışır.
 

@@ -4,11 +4,11 @@ description: Azure geçişi 'nde fiziksel sunucu geçişi desteği hakkında bil
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030243"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388933"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Fiziksel sunucu geçişi için destek matrisi
 
@@ -48,19 +48,19 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz fiziksel sunucu
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  Makine başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** |  Şifrelenmiş diskleri/birimleri olan makineler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmez.
+**Paylaşılan disk kümesi** | Desteklenmiyor.
 **Bağımsız diskler** | Destekleniyor.
 **Geçiş diskleri** | Destekleniyor.
 **ALACAĞıNı** | Makinelere birim olarak takılan NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan makineler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmez.
-**Depolama vMotion** | Desteklenen
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
-**IPv6** | Desteklenmez.
+**Çok yollu GÇ** | Desteklenmiyor.
+**Depolama vMotion** | Destekleniyor
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
+**IPv6** | Desteklenmiyor.
 
 
 
-## <a name="replication-appliance-requirements"></a>Çoğaltma gereç gereksinimleri
+## <a name="replication-appliance-requirements"></a>Çoğaltma aleti gereksinimleri
 
 Çoğaltma gerecini fiziksel bir sunucuda el ile ayarlarsanız, tabloda özetlenen gereksinimlerle uyumlu olduğundan emin olun. Azure geçişi hub 'ında belirtilen OVA şablonunu kullanarak Azure geçişi çoğaltma gerecini bir VMware VM olarak ayarlarken, Gereç Windows Server 2016 ile ayarlanır ve destek gereksinimleriyle uyumludur. 
 
@@ -81,9 +81,9 @@ Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısı
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | 4\.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
-FC diski | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
-BitLocker | Desteklenmez. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
+Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1 ile 63 karakter arasında.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
 Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **etki alanı ve özel** ağlar Için **izin verilen uygulamalar ve Özellikler** -> **Windows Güvenlik Duvarı** 'nda RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
 Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin. Ayrıca, VM için bir genel IP adresi ekleyin. |  

@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015445"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392930"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder ile birden çok giriş dosyası ve bileşen özellikleri kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -31,7 +31,7 @@ ms.locfileid: "69015445"
 * Video kodlanırken giriş videosunda bir logo görüntüsünü yerleştirme.
 * Birden çok ses dili kodlaması.
 
-**Media Encoder Premium Workflow** , görevi oluştururken veya birden çok giriş dosyası gönderdiğinizde iş akışındaki bazı özellikleri değiştirdiklerinizi bilmesini sağlamak Için, **setRuntimeProperties** ve/veya **içeren bir yapılandırma dizesi kullanmanız gerekir transcodeSource**. Bu konuda, bunların nasıl kullanılacağı açıklanmaktadır.
+**Media Encoder Premium Workflow** , görevi oluştururken veya birden çok giriş dosyası gönderdiğinizde iş akışındaki bazı özellikleri değiştirdiklerinizi bilmesini sağlamak için **setRuntimeProperties** ve/veya **transcodesource**içeren bir yapılandırma dizesi kullanmanız gerekir. Bu konuda, bunların nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="configuration-string-syntax"></a>Yapılandırma dizesi sözdizimi
 Kodlama görevinde ayarlanacak yapılandırma dizesi şuna benzer bir XML belgesi kullanır:
@@ -97,7 +97,7 @@ Videolarınızdaki metni kaplayan bir iş akışı tasarlamış olduğunuzu ve m
 ```
 
 ### <a name="property-with-an-xml-value"></a>XML değeri olan özellik
-XML değeri bekleyen bir özelliği ayarlamak için, kullanarak `<![CDATA[ and ]]>`kapsülleyebilirsiniz.
+XML değeri bekleyen bir özelliği ayarlamak için `<![CDATA[ and ]]>`kullanarak kapsülleyebilirsiniz.
 
 Örnek:
 
@@ -131,7 +131,7 @@ XML değeri bekleyen bir özelliği ayarlamak için, kullanarak `<![CDATA[ and ]
 ```
 
 > [!NOTE]
-> Hemen sonra `<![CDATA[`bir satır başı yerleştirdiğinizden emin olun.
+> `<![CDATA[`hemen sonra bir satır başı yerleştirdiğinizden emin olun.
 
 ### <a name="propertypath-value"></a>propertyPath değeri
 Önceki örneklerde, propertyPath "/Media File Input/filename" veya "/ınactivetimeout" veya "clipListXml" idi.
@@ -199,7 +199,7 @@ Birden çok medya dosyasını **Media Encoder Premium Workflow** kodlayıcıya g
   </transcodeRequest>
 ```
 
-' Ifadeler ' kullanarak çıkış dosyalarını adlandırmak üzere bu özelliği kullanmak için/primarySourceFile belirtmek istiyorsanız, klip listesinin geçersiz kılınmasından kaçınmak için, küçük resim listesi XML 'sini/primarySourceFile özelliğinden *sonra* bir özellik olarak geçirmeyi öneririz. /primarySourceFile ayarı.
+' Ifadeler ' kullanarak çıkış dosyalarını adlandırmak üzere bu özelliği kullanmak için/primarySourceFile belirtmek istiyorsanız, küçük resim listesinin/primarySourceFile özelliğinden *sonra* bir özellik olarak bir özellik olarak geçirilmesini öneririz.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,13 +269,13 @@ Ek çerçeveye doğru kırpma ile:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Örnek 1: Videonun üstünde bir görüntünün kaplamasını
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Örnek 1: videonun üzerinde bir görüntünün üzerine bindirme
 
 ### <a name="presentation"></a>Sunum
-Video kodlanırken, giriş videosunda bir logo resminin kaplamasını istediğiniz bir örnek düşünün. Bu örnekte, giriş videosu "Microsoft_HoloLens_Possibilities_816p24. mp4" olarak adlandırılmıştır ve logo "logo. png" olarak adlandırılmıştır. Aşağıdaki adımları gerçekleştirmeniz gerekir:
+Video kodlanırken, giriş videosunda bir logo resminin kaplamasını istediğiniz bir örnek düşünün. Bu örnekte, giriş videosu "Microsoft_HoloLens_Possibilities_816p24. mp4" olarak adlandırılır ve logo "logo. png" olarak adlandırılmıştır. Aşağıdaki adımları gerçekleştirmeniz gerekir:
 
 * İş akışı dosyası ile bir Iş akışı varlığı oluşturun (aşağıdaki örneğe bakın).
-* İki dosya içeren bir medya varlığı oluşturun: Birincil dosya olarak Myınputvideo. mp4 ve MyLogo. png.
+* İki dosya içeren bir medya varlığı oluşturun: birincil dosya olarak Myınputvideo. mp4 ve MyLogo. png.
 * Yukarıdaki giriş varlıklarıyla Media Encoder Premium Workflow medya işlemcisine bir görev gönderin ve aşağıdaki yapılandırma dizesini belirtin.
 
 Yapılandırma:
@@ -299,7 +299,7 @@ Yukarıdaki örnekte, video dosyasının adı medya dosyası giriş bileşenine 
 ### <a name="step-by-step-workflow-creation"></a>Adım adım iş akışı oluşturma
 Aşağıda, giriş: video ve görüntü gibi iki dosya alan bir iş akışı oluşturma adımları verilmiştir. Videonun üzerinde görüntünün üst kısmında yer alır.
 
-**İş akışı Tasarımcısı** açın ve **Dosya** > **Yeni çalışma alanı** > **dönüştürme kodu şeması**' nı seçin.
+**İş akışı Tasarımcısı** açın ve **Dosya** > **Yeni çalışma alanı** > **transcode Blueprint**' i seçin.
 
 Yeni iş akışı üç öğe gösterir:
 
@@ -352,7 +352,7 @@ Logo 'nin video üzerinde konumunu değiştirmek istiyorsanız (örneğin, video
 *Yer paylaşımı konumu*
 
 Video akışını H. bir ile kodlamak için, AVC video Kodlayıcısı ve AAC Kodlayıcısı bileşenlerini tasarımcı yüzeyine ekleyin. PIN 'leri bağlayın.
-AAC Kodlayıcısı 'nı ayarlayın ve ses biçimi dönüşümü/önceden ayarla ' yı seçin: 2,0 (L, R).
+AAC Kodlayıcısı 'nı ayarlayın ve ses biçimi dönüşümü/ön ayarı seçin: 2,0 (L, R).
 
 ![Ses ve video kodlayıcıları](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -429,7 +429,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 Örnek iş akışını [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)'dan indirebilirsiniz.
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Örnek 2: Birden çok ses dili kodlaması
+## <a name="example-2--multiple-audio-language-encoding"></a>Örnek 2: birden çok ses dili kodlaması
 
 [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)'da birden çok ses dili Encoding iş akışı örneği mevcuttur.
 
@@ -474,7 +474,7 @@ Kodlamak için lütfen şu adımları izleyin:
 * [Örnek iş akışı dosyaları](https://github.com/Azure/azure-media-services-samples)
 * [Azure Media Services Gezgini aracı](https://aka.ms/amse)
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma

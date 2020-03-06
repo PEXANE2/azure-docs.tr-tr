@@ -4,11 +4,11 @@ description: Kaynakları Azure Resource Manager ile dağıttığınızda kaynak 
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250151"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390311"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Kaynak kotaları hatalarını çözme
 

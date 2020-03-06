@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058169"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389536"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
@@ -76,18 +76,18 @@ Bu senaryoda, bir ağ izleme ile birlikte özel bir performans sayacı yakalama 
 | IOPS         | Veri Isteği/sn             |
 |              | Okuma Isteği/sn             |
 |              | Yazma Isteği/sn            |
-| Gecikme süresi      | Ort. sn/veri Isteği         |
+| Gecikme      | Ort. sn/veri Isteği         |
 |              | Ort. sn/okuma                 |
 |              | Ort. sn/yazma                |
-| GÇ boyutu      | Ort. Bayt/veri Isteği       |
-|              | Ort. Bayt/okuma               |
-|              | Ort. Bayt/yazma              |
+| GÇ boyutu      | Ort. bayt/veri Isteği       |
+|              | Ort. bayt/okuma               |
+|              | Ort. bayt/yazma              |
 | Aktarım hızı   | Veri bayt/sn                |
 |              | Okuma Bayt/sn                |
 |              | Yazma Bayt/sn               |
-| Kuyruk Uzunluğu | Ort. Okuma sırası uzunluğu        |
-|              | Ort. Yazma kuyruğu uzunluğu       |
-|              | Ort. Veri kuyruğu uzunluğu        |
+| Kuyruk Uzunluğu | Ort. okuma kuyruğu uzunluğu        |
+|              | Ort. yazma kuyruğu uzunluğu       |
+|              | Ort. veri kuyruğu uzunluğu        |
 
 ### <a name="advanced-performance-analysis"></a>Gelişmiş performans analizi
 
@@ -131,10 +131,10 @@ Windows VM, diskler veya depolama havuzları yapılandırması, performans saya�
 
 Verilerin toplanması ve sürekli performans sorunlarını tanılamak için arka planda kural tabanlı bir altyapı çalıştırır. Şu kurallar Şu anda destekleniyor:
 
-- HighCpuUsage kuralı: Yüksek CPU kullanım sürelerini algılar ve bu dönemler sırasında en fazla CPU kullanımı tüketicilerini gösterir.
-- HighDiskUsage kuralı: Fiziksel disklerde yüksek disk kullanımı sürelerini algılar ve bu dönemler sırasında en iyi disk kullanımı tüketicilerini gösterir.
-- HighResolutionDiskMetric kuralı: Her fiziksel disk için ıOPS, verimlilik ve 50 milisaniye başına g/ç gecikme süresi ölçümlerini gösterir. Disk azaltma sürelerini hızlı bir şekilde belirlemesine yardımcı olur.
-- HighMemoryUsage kuralı: Yüksek bellek kullanım dönemlerini algılar ve bu dönemler sırasında en fazla bellek kullanım tüketicilerini gösterir.
+- HighCpuUsage kuralı: yüksek CPU kullanım dönemlerini algılar ve bu dönemler sırasında en fazla CPU kullanımı tüketicilerini gösterir.
+- HighDiskUsage kuralı: fiziksel disklerde yüksek disk kullanımı sürelerini algılar ve bu dönemler sırasında en üstteki disk kullanımı tüketicilerini gösterir.
+- HighResolutionDiskMetric kuralı: her bir fiziksel disk için 50 milisaniye başına ıOPS, verimlilik ve g/ç gecikme süresi ölçümlerini gösterir. Disk azaltma sürelerini hızlı bir şekilde belirlemesine yardımcı olur.
+- HighMemoryUsage kuralı: yüksek bellek kullanım dönemlerini algılar ve bu dönemler sırasında en fazla bellek kullanım tüketicilerini gösterir.
 
 > [!NOTE] 
 > Şu anda, .NET Framework 4,5 veya sonraki sürümleri içeren Windows sürümleri desteklenir.
@@ -244,16 +244,16 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
     >
     >Süre anahtarı **/d** belirtilmezse, Perfinsıghts, vmslow, azurefiles ve gelişmiş senaryoları çalıştırırken sorunu yeniden oluşturmanız istenir. 
 
-İzlemeler veya işlemler tamamlandığında, yeni bir dosya, Perfinsıghts ile aynı klasörde görüntülenir. Dosya adı **\_performancediagnostics yyyy-aa-gg\_hh-mm-ss-fff. zip şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu ZIP dosyası içinde açabilirsiniz.
+İzlemeler veya işlemler tamamlandığında, yeni bir dosya, Perfinsıghts ile aynı klasörde görüntülenir. Dosya adı **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. zip şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu ZIP dosyası içinde açabilirsiniz.
 
 ## <a name="review-the-diagnostics-report"></a>Tanılama raporunu gözden geçirin
 
-**\_Performancediagnostics yyyy-aa-gg\_hh-mm-ss-fff. zip** dosyasında, perfinsıghts 'in bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için **performancediagnostics\_yyyy-aa-\_gg hh-mm-ss-fff. zip** dosyasını genişletin ve ardından **perfinsıghts Report. html** dosyasını açın.
+**Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. zip** dosyası Içinde, Perfinsıghts 'in bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. zip** dosyasını genişletin ve ardından **Perfinsıghts Report. html** dosyasını açın.
 
 **Bulguları** sekmesini seçin.
 
-![](media/how-to-use-perfInsights/pi-finding-tab.png)
-Perfinsıghtsraporunun![ekran görüntüsü ekran görüntüsü](media/how-to-use-perfInsights/pi-findings.png)
+perfinsıghts Report](media/how-to-use-perfInsights/pi-finding-tab.png)
+![ekran görüntüsünü ![ekran görüntüsü](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Yüksek olarak sınıflandırılan bulgular, performans sorunlarına neden olabilecek bilinen sorunlardır. Orta olarak sınıflandırılan bulgular, performans sorunlarına neden olmayan en iyi olmayan yapılandırmayı temsil eder. Düşük olarak sınıflandırılan bulgular yalnızca bilgilendirici deyimler.
@@ -313,5 +313,5 @@ Aşağıdaki ekran görüntüsünde, neler alabileceğinize benzer bir ileti gö
 
 Dosya aktarımı çalışma alanına erişmek için iletideki yönergeleri izleyin. Ek güvenlik için, ilk kullanımda parolanızı değiştirmeniz gerekir.
 
-Oturum açtıktan sonra, perfinsıghts tarafından toplanan **\_performancediagnostics yyyy-mm-dd\_hh-mm-ss-fff. zip** dosyasını karşıya yüklemek için bir iletişim kutusu görürsünüz.
+Oturum açtıktan sonra, Perfinsıghts tarafından toplanan **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. zip** dosyasını karşıya yüklemek için bir iletişim kutusu görürsünüz.
 

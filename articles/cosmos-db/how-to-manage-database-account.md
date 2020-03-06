@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355940"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
 
-Bu makalede, Azure Cosmos hesabında Azure portal, Azure PowerShell, Azure CLı ve Azure Resource Manager şablonları kullanılarak çeşitli görevlerin nasıl yönetileceği açıklanır.
+Bu makalede Azure portalını, Azure PowerShell’i, Azure CLI’yı ve Azure Resource Manager şablonlarını kullanarak Azure Cosmos hesabında çeşitli görevlerin nasıl yönetileceği açıklanır.
 
-## <a name="create-an-account"></a>Hesap oluşturun
+## <a name="create-an-account"></a>Hesap oluşturma
 
 ### <a id="create-database-account-via-portal"></a>Azure portal
 
@@ -51,9 +51,9 @@ Bu Azure Resource Manager şablonu, tutarlılık düzeyi, otomatik yük devretme
 
    ![Bölge Ekle veya Kaldır menüsü](./media/how-to-manage-database-account/add-region.png)
 
-Tek bölgeli yazma modunda, yazma bölgesini kaldıramazsınız. Geçerli yazma bölgesini silebilmeniz için önce farklı bir bölgeye yük devretmek zorundasınız.
+Tek bölgeli yazma modunda yazma bölgesini kaldıramazsınız. Geçerli yazma bölgesini silebilmeniz için önce farklı bir bölgeye yük devretme gerçekleştirmeniz gerekir.
 
-Çok bölgeli yazma modunda, en az bir bölgeniz varsa herhangi bir bölge ekleyebilir veya kaldırabilirsiniz.
+Çok bölgeli yazma modunda, en az bir bölgeniz varsa istediğiniz bölgeyi ekleyebilir veya kaldırabilirsiniz.
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 

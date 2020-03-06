@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393696"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta utbotları inceleyerek LUO uygulamasını geliştirme
 
@@ -46,7 +46,7 @@ Doğru uç nokta sorgusunu oluşturmak için LUO portalını kullanın.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Söylemeleri hizalamak için amaç tahminleri doğru
 
-Her utterance görüntülenen önerilen bir amacı güdülür; **hedefi hizalı** sütun.
+Her söylük, **hizalanmış amaç** sütununda gösterilen önerilen bir amaca sahiptir.
 
 > [!div class="mx-imgBorder"]
 > [![gözden geçirme uç noktası, LUO 'nun emin olduğu](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
@@ -68,4 +68,4 @@ Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günl�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önerilen konuşma etiket sonra performansı nasıl iyileştirir test etmek için test konsolunda seçerek erişebilirsiniz **Test** üst panelinde. Test Konsolu kullanarak uygulamanızı test etme hakkında yönergeler için bkz: [eğitme ve uygulamanızı test](luis-interactive-test.md).
+Önerilen söyleylerini etiketledikten sonra performansın nasıl artdığı test etmek için, üst panelde **Test** ' i seçerek test konsoluna erişebilirsiniz. Test konsolunu kullanarak uygulamanızı test etme hakkında yönergeler için bkz. [uygulamanızı eğitme ve test](luis-interactive-test.md)etme.

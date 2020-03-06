@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176607"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374373"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management sayfa denetimleri
 Azure API Management, geliştirici portalı şablonlarında kullanılmak üzere aşağıdaki denetimleri sağlar.  
@@ -81,7 +81,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Hiçbiri.  
+ Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
  `basic-signin` denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
@@ -100,7 +100,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Hiçbiri.  
+ Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
  `paging-control` denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
@@ -123,7 +123,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Hiçbiri.  
+ Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
  `providers` denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
@@ -142,7 +142,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Hiçbiri.  
+ Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
  `search-control` denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
@@ -163,7 +163,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Hiçbiri.  
+ Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
  `sign-up` denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
@@ -182,7 +182,7 @@ Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak ge�
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Hiçbiri.  
+ Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
  `subscribe-button` denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  

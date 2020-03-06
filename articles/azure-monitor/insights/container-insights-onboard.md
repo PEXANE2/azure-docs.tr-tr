@@ -4,11 +4,11 @@ description: Bu makalede, kapsayıcının nasıl çalıştığını ve performan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198080"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395327"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -59,7 +59,7 @@ Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
 
 Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için Azure Izleyici ile iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir. Aracıdan gelen tüm ağ trafiği Azure Izleyici 'ye giden.
 
-|Aracı Kaynağı|Bağlantı noktaları |
+|Aracı Kaynağı|Bağlantı Noktaları |
 |--------------|------|
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 | 
@@ -71,7 +71,7 @@ Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için A
 
 Aşağıdaki tablodaki bilgiler, Azure Çin için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
 
-|Aracı Kaynağı|Bağlantı noktaları |Açıklama | 
+|Aracı Kaynağı|Bağlantı Noktaları |Açıklama | 
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | Veri alımı |
 | *. oms.opinsights.azure.cn | 443 | OMS ekleme |
@@ -81,7 +81,7 @@ Aşağıdaki tablodaki bilgiler, Azure Çin için proxy ve güvenlik duvarı yap
 
 Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
 
-|Aracı Kaynağı|Bağlantı noktaları |Açıklama | 
+|Aracı Kaynağı|Bağlantı Noktaları |Açıklama | 
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | Veri alımı |
 | *.oms.opinsights.azure.us | 443 | OMS ekleme |

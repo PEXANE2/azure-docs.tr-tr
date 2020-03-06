@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666316"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379703"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine Puanlama profilleri ekleme
 
-  Puanlama, arama sonuçlarında döndürülen her öğe için bir *arama puanı* hesaplamasına başvurur. Puan, bir öğenin geçerli arama işlemi bağlamındaki ilgisi olan bir göstergedir. Puan arttıkça, öğe ne kadar alakalı olur. Arama sonuçlarında, her öğe için hesaplanan arama puanlarına bağlı olarak, öğeler yüksek ve düşük arasında sıralanır.  
+  Puanlama, arama sonuçlarında döndürülen her öğe için bir *arama puanı* hesaplamasına başvurur. Puan bir öğenin geçerli arama işlemi bağlamıyla ne kadar ilgili olduğunun göstergesidir. Puan ne kadar yüksekse öğe o kadar ilgilidir. Arama sonuçlarında, her öğe için hesaplanan arama puanlarına bağlı olarak, öğeler yüksek ve düşük arasında sıralanır.  
 
  Azure Bilişsel Arama, bir başlangıç Puanını hesaplamak için varsayılan Puanlama kullanır, ancak hesaplamayı bir *Puanlama profili*aracılığıyla özelleştirebilirsiniz. Puanlama profilleri, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Örneğin, gelir potansiyelini temel alarak öğeleri artırmak, daha yeni öğeleri yükseltmek ya da envanterdeki çok uzun olan öğeleri artırmak isteyebilirsiniz.  
 
@@ -157,7 +157,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 }  
 ```  
 
-## <a name="workflow"></a>İş Akışı  
+## <a name="workflow"></a>İş akışı  
  Özel Puanlama davranışı uygulamak için, dizini tanımlayan şemaya bir Puanlama profili ekleyin. Bir dizin içinde en fazla 100 Puanlama profiline sahip olabilirsiniz (bkz. [hizmet limitleri](search-limits-quotas-capacity.md)), ancak belirli bir sorguda zaman içinde yalnızca bir profil belirtebilirsiniz.  
 
  Bu konuda belirtilen [şablonla](#bkmk_template) başlayın.  

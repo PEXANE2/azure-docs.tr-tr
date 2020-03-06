@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551276"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381394"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesi oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları öğreneceksiniz:
 
 Bu yordam, IP adreslerini ve ağ kaynaklarını belirlemek için yapmanız gereken araştırma miktarına bağlı olarak 15 ila 45 dakika arasında sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce bu önkoşulları doldurun:
 

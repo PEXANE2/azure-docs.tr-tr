@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388252"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -148,9 +148,9 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 | Kullanım modeli | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 | ---- | ---- | ---- | ---- |
-| Yoğun, seyrek okunan yazma işlemleri | Okuma | Hiçbir zaman | Hiçbiri |
-| %15 yazma boyutundan büyük | Okuma/yazma | Hiçbir zaman | 1 saat |
-| İstemcileri önbelleği atlar | Okuma | 30 saniye | Hiçbiri |
+| Yoğun, seyrek okunan yazma işlemleri | Okuma | hiçbir zaman | Yok |
+| %15 yazma boyutundan büyük | Okuma/yazma | hiçbir zaman | 1 saat |
+| İstemcileri önbelleği atlar | Okuma | 30 saniye | Yok |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
