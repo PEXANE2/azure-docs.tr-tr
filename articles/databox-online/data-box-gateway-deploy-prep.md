@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438654"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303214"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Öğretici: dağıtıma hazırlanma Azure Data Box Gateway
 
@@ -22,14 +22,14 @@ Bu, Azure Data Box Gateway'inizi tamamen dağıtmak için gereken dağıtım ö�
 
 Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları gerekir. Portal hazırlığı 10 dakikadan kısa sürer.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Yeni kaynak oluşturma
 > * Sanal cihaz görüntüsünü indirme
 > * Etkinleştirme anahtarı alma
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 Data Box Gateway'inizi dağıtmak için, aşağıdaki öğreticileri belirtilen sırada izleyin.
 
@@ -42,11 +42,11 @@ Data Box Gateway'inizi dağıtmak için, aşağıdaki öğreticileri belirtilen 
 
 Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Burada Data Box Gateway kaynağınız, Data Box Gateway cihazınız ve veri merkezi ağı için yapılandırma önkoşullarını bulabilirsiniz.
 
-### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway kaynağı için
+### <a name="for-the-data-box-gateway-resource"></a>Box Gateway kaynağı için
 
 Başlamadan önce aşağıdakilerden emin olun:
 
@@ -94,7 +94,7 @@ Bir Data Box Gateway kaynağı oluşturmak için Azure portal aşağıdaki adım
     - Ya da Azure Kamu portalı şu URL 'de: [https://portal.azure.us](https://portal.azure.us). Daha fazla ayrıntı için [portalı kullanarak Azure Kamu 'Ya bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)konusuna gidin.
 
 2. Sol bölmede **+ kaynak oluştur**' u seçin. **Data Box Edge/Data Box Gateway**arayın. Data Box Edge/Data Box Gateway seçin. **Oluştur**’u seçin.
-3. Data Box Gateway cihaz için kullanmak istediğiniz aboneliği seçin. Data Box Gateway kaynağını dağıtmak istediğiniz bölgeyi seçin. Bu sürüm için Doğu ABD, Güney Doğu Asya ve Batı Avrupa kullanılabilir. Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. **Data Box Gateway** seçeneğinde **Oluştur**' u seçin.
+3. Data Box Gateway cihaz için kullanmak istediğiniz aboneliği seçin. Data Box Gateway kaynağını dağıtmak istediğiniz bölgeyi seçin. Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. **Data Box Gateway** seçeneğinde **Oluştur**' u seçin.
 
     ![Data Box Gateway hizmetini arama](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -109,8 +109,8 @@ Bir Data Box Gateway kaynağı oluşturmak için Azure portal aşağıdaki adım
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |   
-    |Bölge     |Bu sürüm için Doğu ABD, Güney Doğu Asya ve Batı Avrupa kaynağınızın dağıtımı için kullanılabilir. Azure Kamu 'da, [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/) listelenen tüm kamu bölgeleri kullanılabilir. <br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Adı   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |   
+    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu 'da, [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/) listelenen tüm kamu bölgeleri kullanılabilir. <br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
     
     ![Data Box Gateway kaynağını oluşturma](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
@@ -177,7 +177,7 @@ Data Box Gateway'inize sanal makine sağlamayı öğrenmek için sonraki öğret
 > [!div class="nextstepaction"]
 > [Data Box Gateway'i Hyper-V'de sağlama](./data-box-gateway-deploy-provision-hyperv.md)
 
-VEYA
+OR
 
 > [!div class="nextstepaction"]
 > [Data Box Gateway'i VMware'de sağlama](./data-box-gateway-deploy-provision-vmware.md)

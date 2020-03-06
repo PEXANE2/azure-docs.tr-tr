@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716882"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399165"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Metin Analizi dil algılama kapsayıcısını Azure Kubernetes hizmetine dağıtma
 
@@ -80,8 +80,11 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
 
     **Loginserver** özelliğini almak için sonuçları kaydedin. Bu, daha sonra `language.yml` dosyasında kullanılan barındırılan kapsayıcının adresinin bir parçası olacaktır.
 
-    ```console
-    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```azurecli-interactive
+    az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```
+
+    ```output
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -136,8 +139,7 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
 
     İşlem tamamlandığında, sonuçların şuna benzer olması gerekir:
 
-    ```console
-    > docker push pattyregistry.azurecr.io/language-frontend:v1
+    ```output
     The push refers to repository [pattyregistry.azurecr.io/language-frontend]
     82ff52ee6c73: Pushed
     07599c047227: Pushed
@@ -180,8 +182,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
 
     3\. adımdaki atanan parametrenin `appId` değerini kaydedin, `<appId>`. Sonraki bölümün istemci gizli parametresi `<client-secret>``password` kaydedin.
 
-    ```console
-    > az ad sp create-for-rbac --skip-assignment
+    ```output
     {
       "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "displayName": "azure-cli-2018-12-31-18-39-32",
@@ -199,8 +200,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
 
     Sonraki adımda `<acrId>`kapsam parametre değeri için çıktıyı kaydedin. Şöyle görünür:
 
-    ```console
-    > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
+    ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
@@ -222,8 +222,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
 
     Bu adım birkaç dakika sürebilir. Sonuç:
 
-    ```console
-    > az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
+    ```output
     {
       "aadProfile": null,
       "addonProfiles": null,
@@ -300,8 +299,7 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
 
     Yanıt şöyle görünür:
 
-    ```console
-    > kubectl get nodes
+    ```output
     NAME                       STATUS    ROLES     AGE       VERSION
     aks-nodepool1-13756812-0   Ready     agent     6m        v1.9.11
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
@@ -337,8 +335,7 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
 
     Yanıt:
 
-    ```console
-    > kubectl apply -f language.yml
+    ```output
     service "language-frontend" created
     deployment.apps "language-frontend" created
     service "language" created
@@ -353,8 +350,7 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
 kubectl get all
 ```
 
-```console
-> kubectl get all
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE
 pod/language-586849d8dc-7zvz5            1/1       Running   0          13h
 pod/language-frontend-68b9969969-bz9bg   1/1       Running   1          13h

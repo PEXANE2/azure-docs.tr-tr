@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 51fa6d4859eb4b7f059b499ba73d84d9fc65e6f6
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970236"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398983"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 - Visual Studio için iOS veya Android öykünücüsü
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (isteğe bağlı)
 
-## <a name="get-the-source-code"></a>Kaynak kodunu alma
+## <a name="get-the-source-code"></a>Kaynak kodunu al
 
 Belirtilen Web uygulamasını kullanmak istiyorsanız, GitHub 'daki [AI görsel sağlama](https://github.com/Microsoft/AIVisualProvision) deposundan uygulamanın kaynak kodunu kopyalayın veya indirin. Visual Studio 'da *kaynak/VisualProvision. sln* dosyasını açın. Daha sonra, uygulamayı çalıştırmak için bazı proje dosyalarını düzenleyeceksiniz.
 
@@ -107,7 +107,7 @@ Uygulamanın Azure aboneliğinize hizmet dağıtması için bir Azure hizmet sor
 
 Burada gösterildiği gibi Azure Cloud Shell veya Azure CLı kullanarak bir hizmet sorumlusu oluşturabilirsiniz. Başlamak için oturum açın ve kullanmak istediğiniz aboneliği seçin.
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
@@ -115,7 +115,7 @@ az account set --subscription "<subscription name or subscription id>"
 
 Ardından hizmet sorumlunuzu oluşturun. (Bu işlemin tamamlanması biraz zaman alabilir.)
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 

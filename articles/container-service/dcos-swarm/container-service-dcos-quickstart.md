@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278496"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399218"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>Kullanım DıŞı DC/OS kümesi dağıtma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıçta, DC/OS kümesi dağıtmak ve temel iş yükü çalıştırmak için gerekli temel adımlar ayrıntılı olarak açıklanır.
+DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıçta, DC/OS kümesi dağıtmak ve temel iş yükünü çalıştırmak için gereken temel adımlar ayrıntılı olarak vardır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -128,19 +128,19 @@ Bir ACS DC/OS kümesi için varsayılan zamanlama mekanizması Marathon’dur. D
 
 Uygulamayı DC/OS kümesinde çalışacak şekilde zamanlamak için aşağıdaki komutu çalıştırın.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Uygulamanın dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 **WAITING** sütunundaki *True* değeri *False* olarak değiştiğinde uygulama dağıtımı tamamlanmış olur.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir DC/OS kümesi dağıttınız ve kümede basit bir Docker kapsayıcısı çalıştırdınız. Azure Container Service hakkında daha fazla bilgi edinmek için ACS öğreticilerine geçin.
+Bu hızlı başlangıçta, bir DC/OS kümesi dağıttık ve kümede basit bir Docker kapsayıcısı çalıştırdık. Azure Container Service hakkında daha fazla bilgi edinmek için ACS öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
 > [Bir ACS DC/OS Kümesini Yönetme](container-service-dcos-manage-tutorial.md)

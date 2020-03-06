@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392971"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>İsteğe bağlı Azure Medya Kodlayıcılara genel bakış 
 
@@ -48,10 +48,10 @@ Varsayılan olarak her Media Services hesabının tek seferde bir etkin kodlama 
 ### <a name="how-to-use"></a>Nasıl kullanılır
 [Media Encoder Standard ile kodlama](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Biçimler
+### <a name="formats"></a>Biçimini
 [Biçimler ve codec bileşenleri](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Önayarlar
+### <a name="presets"></a>'Nı
 Media Encoder Standard, [burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcı ön ayarlarından biri kullanılarak yapılandırılır.
 
 ### <a name="input-and-output-metadata"></a>Giriş ve çıkış meta verileri
@@ -59,7 +59,7 @@ Kodlayıcılar giriş meta verileri [burada](media-services-input-metadata-schem
 
 Kodlayıcılar çıkış meta verileri [burada](media-services-output-metadata-schema.md)açıklanmıştır.
 
-### <a name="generate-thumbnails"></a>Küçük resim oluşturma
+### <a name="generate-thumbnails"></a>Küçük resim oluştur
 Bilgi için bkz. [Media Encoder Standard kullanarak küçük resimleri oluşturma](media-services-advanced-encoding-with-mes.md#thumbnails).
 
 ### <a name="trim-videos-clipping"></a>Videoları kırpma (kırpma)
@@ -83,13 +83,13 @@ Media Encoder Premium Workflow karmaşık iş akışları kullanılarak yapılan
 ### <a name="known-issues"></a>Bilinen sorunlar
 Giriş videonuz kapalı açıklamalı alt yazı içermiyorsa, çıkış varlığı hala boş bir TTML dosyası içerecektir.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 * [Media Encoder Standard ön ayarlarını özelleştirerek gelişmiş kodlama görevleri gerçekleştirin](media-services-custom-mes-presets-with-dotnet.md)
 * [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md)
 

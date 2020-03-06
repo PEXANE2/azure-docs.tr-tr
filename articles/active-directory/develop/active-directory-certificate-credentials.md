@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962127"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399013"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
@@ -55,7 +55,7 @@ Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON 
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>Kodu çözülen JWT onaylama örneği
 
-```
+```JSON
 {
   "alg": "RS256",
   "typ": "JWT",
@@ -67,12 +67,11 @@ Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON 
   "exp": 1484593341,
   "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
   "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
+  "nbf": 1484592741,
   "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
 }
 .
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
 ```
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>Kodlanmış JWT onaylama örneği
@@ -94,10 +93,10 @@ Aşağıdaki yöntemlerden herhangi birini kullanarak sertifika kimlik bilgisini
 ### <a name="uploading-the-certificate-file"></a>Sertifika dosyası karşıya yükleniyor
 
 İstemci uygulaması için Azure uygulama kaydı:
-1. **Sertifikalar & parolaları**' nı seçin. 
+1. **Sertifikalar & parolaları**' nı seçin.
 2. **Sertifikayı karşıya yükle** ' ye tıklayın ve karşıya yüklenecek sertifika dosyasını seçin.
 3. **Ekle**'ye tıklayın.
-  Sertifika karşıya yüklendikten sonra, parmak izi, başlangıç tarihi ve süre sonu değerleri görüntülenir. 
+  Sertifika karşıya yüklendikten sonra, parmak izi, başlangıç tarihi ve süre sonu değerleri görüntülenir.
 
 ### <a name="updating-the-application-manifest"></a>Uygulama bildirimini güncelleştirme
 
@@ -112,7 +111,7 @@ Ayrıca uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız 
 1. Uygulama bildirimini açmak için **bildirim** ' ı seçin.
 2. Aşağıdaki şemayı kullanarak *Keycredentials* özelliğini yeni sertifika bilgilerinizle değiştirin.
 
-   ```
+   ```JSON
    "keyCredentials": [
        {
            "customKeyIdentifier": "$base64Thumbprint",
@@ -123,13 +122,13 @@ Ayrıca uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız 
        }
    ]
    ```
-3. Düzenlemeleri uygulama bildiriminde kaydedin ve sonra bildirimi Microsoft Identity platform 'a yükleyin. 
+3. Düzenlemeleri uygulama bildiriminde kaydedin ve sonra bildirimi Microsoft Identity platform 'a yükleyin.
 
    `keyCredentials` özelliği çok değerli olduğundan, daha zengin anahtar yönetimi için birden fazla sertifika yükleyebilirsiniz.
-   
+
 ## <a name="code-sample"></a>Kod örneği
 
 > [!NOTE]
-> Sertifikanın karmasını kullanarak X5T üstbilgisini bir temel 64 dizesine dönüştürerek hesaplamanız gerekir. Bunu C# gerçekleştirmek için kod: `System.Convert.ToBase64String(cert.GetCertHash());`
+> Sertifikanın karmasını kullanarak X5T üstbilgisini bir temel 64 dizesine dönüştürerek hesaplamanız gerekir. Bunu C# gerçekleştirmek için kod `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-[Sertifikalarla birlikte Daemon uygulamalarında Microsoft Identity platformunda kimlik](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) doğrulamaya yönelik kod örneği, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca, `New-SelfSignedCertificate` PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) de gösterilmektedir. Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) da kullanabilirsiniz.
+[Microsoft Identity platform kullanan kod örneği .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) , bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca, `New-SelfSignedCertificate` PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) de gösterilmektedir. Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) da kullanabilirsiniz.

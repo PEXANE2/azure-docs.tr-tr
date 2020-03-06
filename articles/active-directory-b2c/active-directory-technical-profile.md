@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06c9e79a68540cb10557b0951b743bf841963057
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190271"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397828"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -28,8 +28,8 @@ Azure Active Directory B2C (Azure AD B2C) Azure Active Directory Kullanıcı yö
 
 **Protokol** öğesinin **Name** özniteliğinin `Proprietary`olarak ayarlanması gerekir. **Handler** özniteliği `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`protokol işleyicisi derlemesinin tam adını içermelidir.
 
-Tüm Azure AD teknik profilleri **AAD ortak** teknik profilini içerir. Aşağıdaki teknik profiller protokol belirtmediğinden protokol **AAD ortak** teknik profilinde yapılandırılmıştır:
-
+Aşağıdaki [özel ilke Başlatıcı paketi](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD teknik profilleri **AAD ortak** teknik profilini içerir. Protokol **AAD ortak** teknik profilinde yapılandırıldığı IÇIN Azure AD teknik profilleri Protokolü belirtmez:
+ 
 - **AAD-userreadusingalternativesecurityıd** ve **AAD-Userreadusingalternativesecurityıd-NOERROR** -dizinde sosyal hesap arama.
 - **AAD-Userwriteusingalternativesecurityıd** -yeni bir sosyal hesap oluşturun.
 - **AAD-Userreadusıngemapostaadresi** -dizinde yerel bir hesap arar.

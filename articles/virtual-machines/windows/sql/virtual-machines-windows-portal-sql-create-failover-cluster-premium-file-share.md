@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651370"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303231"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
 
@@ -53,7 +53,7 @@ Ortamınızın ıOPS etkinliğini denetleyin ve bir dağıtıma veya geçişe ba
 
 Çok sayıda iş yükü ıO GÇ kullanır, bu nedenle ağır kullanım dönemleri sırasında kontrol etmek ve maksimum ıOPS ve ortalama ıOPS 'yi uyarmak iyi bir fikirdir. Premium dosya paylaşımları, paylaşımın boyutuna bağlı olarak ıOPS sağlar. Premium dosya paylaşımları ayrıca, GÇ 'nizi bir saate kadar üç temel miktarı üç katına almanıza olanak sağlayan, yük patlaması sağlar.
 
-Premium dosya paylaşma performansı hakkında daha fazla bilgi için bkz. [dosya paylaşımının performans katmanları](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers).
+Premium dosya paylaşma performansı hakkında daha fazla bilgi için bkz. [dosya paylaşımının performans katmanları](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers).
 
 ### <a name="licensing-and-pricing"></a>Lisanslama ve fiyatlandırma
 

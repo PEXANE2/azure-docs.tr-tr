@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/07/2019
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251320"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395740"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -64,6 +64,7 @@ Veriler hesabınızda depolanmaz. Metin Analizi API'si tarafından gerçekleşti
 Programlamada çok fazla deneyim olmasa bile, işlemlerinizde Metin Analizi API'si kullanmaya başlayabilirsiniz. API 'yi, deneyim düzeyinize uygun yollarla farklı şekillerde çözümlemek için nasıl kullanabileceğinizi öğrenmek için bu öğreticileri kullanın. 
 
 * Gereken minimum programlama:
+    * [Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla](tutorials/extract-excel-information.md)
     * [Bir Yammer grubundaki yorumların yaklaşımını belirlemek için Metin Analizi API'si ve MS akışını kullanın](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
     * [Müşteri geri bildirimini çözümlemek için Power BI Metin Analizi API'si tümleştirin](tutorials/tutorial-power-bi-key-phrases.md)
 * Programlama deneyimi önerilir:

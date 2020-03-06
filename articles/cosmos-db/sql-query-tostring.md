@@ -4,15 +4,15 @@ description: Azure Cosmos DB 'de SQL sistem işlevi ToString hakkında bilgi edi
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 53630a0ecd76459f23a978e98040a86152d7c0d8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304268"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
  Skaler ifade bir dize gösterimini döndürür. 
@@ -34,7 +34,7 @@ ToString(<expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `ToString` ' ın farklı türler genelinde nasıl davranacağını gösterir.   
+  Aşağıdaki örnek, `ToString` farklı türlerde nasıl davrandığını gösterir.   
   
 ```sql
 SELECT 
@@ -48,7 +48,7 @@ SELECT
     ToString(undefined) AS str8
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- Aşağıdaki örnek, `CONCAT` gibi diğer dize işlevleriyle `ToString` ' ın nasıl kullanılabileceğini gösterir.   
+ Aşağıdaki örnek, `ToString` `CONCAT`gibi diğer dize işlevleriyle nasıl kullanılabileceğini gösterir.   
  
 ```sql
 SELECT 
@@ -65,7 +65,7 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
-Sonuç kümesini burada verilmiştir.  
+Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"$1":"4lb" },
@@ -78,7 +78,7 @@ Sonuç kümesini burada verilmiştir.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-Aşağıdaki örnek, `REPLACE` gibi diğer dize işlevleriyle `ToString` ' ın nasıl kullanılabileceğini gösterir.   
+Aşağıdaki örnek, `ToString` `REPLACE`gibi diğer dize işlevleriyle nasıl kullanılabileceğini gösterir.   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -86,7 +86,7 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
-Sonuç kümesini burada verilmiştir.  
+Sonuç kümesini burada bulabilirsiniz.  
  ```json
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
@@ -94,6 +94,10 @@ Sonuç kümesini burada verilmiştir.
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
 ``` 
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

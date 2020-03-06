@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: dapine
-ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212516"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331102"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -31,7 +31,7 @@ Yetenekler ve desteklenen platformlar hakkında genel bir bakış belge [giriş 
 
 ## <a name="get-the-sdk"></a>SDK'yı edinme
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > Konuşma SDK 'Sı Windows 10 veya sonraki sürümlerini destekler. Önceki Windows sürümleri **desteklenmez**.
@@ -42,12 +42,12 @@ Windows için aşağıdaki dilleri destekliyoruz:
 
 * Java: Başvurabilir ve yalnızca Windows x64 destekleyen bizim konuşma SDK Maven paketini en son sürümünü kullanın. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ekleyin ve bağımlılık olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` başvurun.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
-> Şu anda, aşağıdaki hedef mimarilerde yalnızca Ubuntu 16,04, Ubuntu 18,04 ve detik 9 ' u destekliyoruz:
-> - geliştirme için C++ x86, x64 ve ARM64
-> - Java için x64 ve ARM64
+> Şu anda, aşağıdaki hedef mimarilerde Ubuntu 16,04, Ubuntu 18,04, detik 9, Red Hat Enterprise Linux (RHEL) 8 ve CentOS 8 ' i destekliyoruz:
+> - geliştirme için C++ x86 (DeARM32/Ubuntu), x64, (de/Ubuntu) ve ARM64 (de/Ubuntu)
+> - Java için x64, ARM32 (de/Ubuntu) ve ARM64 (de/Ubuntu)
 > - .NET Core ve Python için x64
 
 Aşağıdaki kabuk komutlarını çalıştırarak gerekli kitaplıkların yüklü olduğundan emin olun:
@@ -65,6 +65,16 @@ On yıl 9 ' da:
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+RHEL/CentOS 8 ' de:
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
 
 * C# ' ta: Başvuru ve bizim konuşma SDK'sı NuGet paketi en son sürümünü kullanın. SDK'ya başvurmak için şu paket başvuruyu projenize ekleyin:
 
@@ -86,7 +96,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   Bir uygulama oluşturmak için kopyalayabilir veya gerekli ikili dosyaların (ve kitaplıkları) geliştirme ortamınıza taşıyabilirsiniz. Yapı işleminiz için gereken şekilde bunları ekleyebilirsiniz.
 
-# <a name="androidtabandroid"></a>[Android](#tab/android)
+# <a name="android"></a>[Android](#tab/android)
 
 Android için Java SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir. Paket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`olarak `https://csspeechstorage.blob.core.windows.net/maven/` bir Maven deposunda barındırılır.
 

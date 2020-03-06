@@ -1,6 +1,6 @@
 ---
-title: PıM-Azure AD 'de Azure AD rolleri için denetim raporunu görüntüleme | Microsoft Docs
-description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rollerinin denetim geçmişini görüntülemeyi öğrenin.
+title: Azure AD PıM 'de Azure AD rolleri için denetim günlüğü raporunu görüntüleme | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rolleri için denetim günlüğü geçmişini görüntülemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329535"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>PıM 'de Azure AD rollerinin denetim geçmişini görüntüleme
+# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için denetim geçmişini görüntüleme
 
 Tüm ayrıcalıklı roller için son 30 gün içinde tüm rol atamalarını ve etkinleştirmeleri görmek üzere Privileged Identity Management (PıM) denetim geçmişini kullanabilirsiniz. Yönetici, son kullanıcı ve eşitleme etkinliği dahil olmak üzere Azure Active Directory (Azure AD) kuruluşunuzda etkinliğin tam denetim geçmişini görmek isterseniz, [Azure Active Directory güvenlik ve etkinlik raporlarını](../reports-monitoring/overview-reports.md)kullanabilirsiniz.
 
@@ -32,7 +32,7 @@ Tüm ayrıcalıklı roller için son 30 gün içinde tüm rol atamalarını ve e
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Sürümünüz için sekmeyi seçin")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Yeni sürüm](#tab/new)
 
@@ -50,7 +50,7 @@ Kaynak denetimi size Azure AD rolleriniz ile ilişkili tüm etkinliklerin bir g�
 
 1. Geçmişi önceden tanımlanmış bir tarih veya özel Aralık kullanarak filtreleyin.
 
-    ![Filtrelerle kaynak denetim listesi](media/pim-how-to-use-audit-log/resource-audit.png)
+    ![Filtrelerle kaynak denetim listesi](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 ## <a name="view-my-audit"></a>Denetmi görüntüle
 
@@ -66,7 +66,7 @@ My Audit, kişisel rol etkinliğinizi görüntülemenize olanak sağlar.
 
 1. Geçmişi önceden tanımlanmış bir tarih veya özel Aralık kullanarak filtreleyin.
 
-    ![Geçerli Kullanıcı için denetim listesi](media/pim-how-to-use-audit-log/audit-time-span.png)
+    ![Geçerli Kullanıcı için denetim listesi](media/azure-pim-resource-rbac/my-audit-time.png)
 
 # <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
@@ -84,7 +84,7 @@ Azure AD rollerinin denetim geçmişini görüntülemek için bu adımları izle
 
     Denetim geçmişinize bağlı olarak, toplam etkinleştirmeler, günde maksimum etkinleştirme ve günlük ortalama etkinleştirme ile birlikte bir sütun grafiği görüntülenir.
 
-    ![Dizin rolleri denetim geçmişi](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Dizin rollerinin denetim geçmişini görüntüle")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
     Sayfanın en altında, kullanılabilir denetim geçmişinde her eylem hakkında bilgi içeren bir tablo görüntülenir. Sütunlar aşağıdaki anlamlara sahiptir:
 
@@ -113,6 +113,28 @@ Azure AD rollerinin denetim geçmişini görüntülemek için bu adımları izle
     ![Grafik parametreleri bölmesini Güncelleştir](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
 1. Filtrelenmiş denetim geçmişini görüntülemek için **bitti** ' yi seçin.
+
+## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>Onay olayları için neden, onaylayan ve bilet numarası alın
+
+1. Ayrıcalıklı rol yönetici rolü izinleriyle [Azure Portal](https://aad.portal.azure.com) oturum açın ve Azure AD ' yi açın.
+1. **Denetim günlükleri**' ni seçin.
+1. Yalnızca ayrıcalıklı kimlik yönetimi hizmeti için denetim olaylarını göstermek üzere **hizmet** filtresini kullanın. **Denetim günlükleri** sayfasında şunları yapabilirsiniz:
+
+    - **Durum nedeni** sütununda bir denetim olayının nedenine bakın.
+    - "Rol isteği için üye Ekle" olayı için **başlatan (aktör)** sütunundaki onaylayana bakın.
+
+    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/filter-audit-logs.png "PıM hizmeti için denetim günlüğünü filtrele")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+
+1. **Ayrıntılar** bölmesinin **etkinlik** sekmesinde bilet numarasını görmek için bir denetim günlüğü olayı seçin.
+  
+    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Denetim olayının bilet numarasını denetleyin")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+
+1. Bir denetim olayının **Ayrıntılar** bölmesinin **hedefler** sekmesinde istek sahibine (rolü etkinleştiren kişi) görüntüleyebilirsiniz. Azure AD rolleri için iki hedef türü vardır:
+
+    - Rol (**Type** = Role)
+    - İstek sahibi (**tür** = Kullanıcı)
+
+Genellikle, onay olayının hemen üzerindeki denetim günlüğü olayı, **başlatılan (aktör)** istek sahibi olduğu "role üye ekleme tamamlandı" için bir olaydır. Çoğu durumda, istek sahibine bir denetim perspektifinden onay isteğinde bulmak zorunda kalmazsınız.
 
 ---
 

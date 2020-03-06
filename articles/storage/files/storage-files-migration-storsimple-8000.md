@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250941"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330319"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
-StorSimple 8000 serisi iki ayrı SKU 'yu temsil eder ve verilerin bu SKU 'lardan birinden Azure Dosya Eşitleme ortamına geçirilmesi mümkündür. Bu makalede her iki gereç de Azure Dosya Eşitleme 'e geçirilmesi ve geçişinizin başarılı Azure Dosya Eşitleme için gereken arka plan bilgisi ve geçişleri adımları sağlanmaktadır.
+StorSimple 8000 serisi, 8100 ya da 8600 fiziksel, şirket içi Gereç ve bulut hizmeti bileşenleriyle temsil edilir. Bu gereçlerden birindeki verileri bir Azure Dosya Eşitleme ortamına geçirmek mümkündür. Bu makalede, Azure Dosya Eşitleme başarılı bir geçiş için gereken arka plan bilgisi ve geçiş adımları sağlanmaktadır.
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple, kullanımdan kaldırılmıştır bir Microsoft ürünüdür. Bu ürün için genişletilmiş destek ve bulut hizmeti 31 2022 Aralık tarihinde sona erecek. StorSimple 'tan doğrudan geçiş için planlamaya başlamak önemlidir.
+
+Azure Dosya Eşitleme, StorSimple gereçlerinin geçirilebilmesi için varsayılan ve stratejik, uzun süreli Azure hizmetidir.
+
+> [!IMPORTANT]
+> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFilesMigration@microsoft. com ve geçiş sırasında yardım.
 
 ## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 

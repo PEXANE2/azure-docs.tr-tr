@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde IS_NULL
-description: Azure Cosmos DB 'de SQL sistem işlevi IS_NULL hakkında bilgi edinin.
+description: Azure Cosmos DB IS_NULL SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 20486b8f8c0436d264135bb09952345548222216
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4dbf21c3052ddd5ebdd62925e65a854c47f59017
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303843"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL (Azure Cosmos DB)
  Belirtilen ifadenin türü null olup olmadığını gösteren bir Boole değeri döndürür.  
@@ -47,11 +47,15 @@ SELECT
     IS_NULL({prop: "value"}.prop2) AS isNull7  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

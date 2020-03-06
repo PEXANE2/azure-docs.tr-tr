@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344028"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning ile eğitme modelleri
 
@@ -28,6 +28,8 @@ Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasa
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize**olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
     | [Tahmini](#estimators) | Estimator sınıfları, **popüler makine öğrenimi çerçeveleri temelinde modellerin eğmesini kolaylaştırır**. **Scikit-öğren**, **pytorch**, **TensorFlow**ve **Chainer**için tahmin aracı sınıfları vardır. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
     | [Machine Learning işlem hattı](#machine-learning-pipeline) | İşlem hatları, farklı bir eğitim yöntemi değildir, ancak iş akışının bir parçası olarak eğitim içerebilen **modüler, yeniden kullanılabilir adımları kullanarak bir iş akışı tanımlamanın bir yoludur**. Makine öğrenimi ardışık düzenleri, otomatik makine öğrenimi, estimators kullanımı ve modelleri eğitmek için yapılandırma çalıştırma desteği sağlar. İşlem hatları eğitimlere özel olarak odaklanmadığından, işlem hattı kullanmanın nedenleri diğer eğitim yöntemlerinden daha farklılaştırılmıştır. Genellikle, şu durumlarda bir işlem hattı kullanabilirsiniz:<br>* Uzun süre çalışan eğitim işleri veya veri hazırlama gibi **Katılımsız işlemleri zamanlamak** istiyorsunuz.<br>* Heterojen işlem kaynakları ve depolama konumları genelinde koordine edilen **birden çok adım** kullanın.<br>* Yeniden eğitim veya toplu Puanlama gibi belirli senaryolar için işlem hattını yeniden **kullanılabilir bir şablon** olarak kullanın.<br>iş akışınız için **veri kaynaklarını, girişleri ve çıkışları * izleme ve sürüm** .<br>* İş akışınız, **belirli adımlarda bağımsız olarak çalışan farklı takımlar tarafından uygulanır**. Adımlar daha sonra iş akışını uygulamak için bir ardışık düzende birleştirilebilir. |
+
++ [Python IÇIN sdk Azure Machine Learning](#r-sdk): sdk, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
 + **Tasarımcı**: Azure Machine Learning tasarımcı (Önizleme), kavram kanıtı oluşturmak için veya çok az kodlama deneyimi olan kullanıcılar için Machine Learning 'e kolay bir giriş noktası sağlar. Bir sürükle ve bırak Web tabanlı kullanıcı arabirimi kullanarak modelleri eğmenize olanak tanır. Python kodunu tasarımın bir parçası olarak kullanabilir veya herhangi bir kod yazmadan modelleri eğitebilirsiniz.
 
@@ -61,7 +63,7 @@ Yinelemeleri, hiper parametre ayarlarını, fealeştirme ve diğer ayarları tan
 > [!TIP]
 > Python SDK 'ya ek olarak, [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla otomatikleştirilmiş ml 'yi de kullanabilirsiniz.
 
-* [Otomatik makine öğrenimi nedir?](concept-automated-ml.md)
+* [Otomatik makine öğrenmesi nedir?](concept-automated-ml.md)
 * [Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma](tutorial-first-experiment-automated-ml.md)
 * [Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma](tutorial-auto-train-models.md)
 * [Örnekler: otomatik makine öğrenimine yönelik Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
@@ -88,6 +90,15 @@ Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini (�
 * [Örnekler: makine öğrenimi ardışık düzenleri Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Örnekler: otomatik makine öğrenimiyle işlem hattı](https://aka.ms/pl-automl)
 * [Örnekler: tahmini ile işlem hattı](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+R SDK, Azure Machine Learning R dilini kullanmanıza olanak sağlar. SDK, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
+
+Daha fazla bilgi için aşağıdaki makalelere bakın:
+
+* [Öğretici: lojistik regresyon modeli oluşturma](tutorial-1st-r-experiment.md)
+* [R başvurusu için SDK Azure Machine Learning](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı
 

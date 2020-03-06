@@ -14,21 +14,20 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: e6ac3c74a0a8346ad8a6820c676224bfcba0e8b4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264450"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330455"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: node. js ve Azure-SB paketiyle Service Bus konuları ve abonelikleri kullanma
-> [!div class="op_multi_selector" title1="Programlama dili" title2="Node. js 'a paketi ekleyin"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
-
 Bu öğreticide, [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Service Bus konusuna ileti göndermek ve Service Bus aboneliğinden ileti almak için Node. js uygulamaları oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve dahili olarak `azure-sb` paketini kullanan Node. js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır.
 
-[Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketini kullanarak daha hızlı bir deneyim edinebilirsiniz. Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Node. js ve @azure/service-bus paketiyle Service Bus konuları ve abonelikleri kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
+> [!IMPORTANT]
+> [Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketini kullanarak daha hızlı bir deneyim edinebilirsiniz. 
+> 
+> Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Node. js ve @azure/service-bus paketiyle Service Bus konuları ve abonelikleri kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
 
 Burada ele alınan senaryolar şunlardır:
 
@@ -40,7 +39,7 @@ Burada ele alınan senaryolar şunlardır:
 
 Konular ve abonelikler hakkında daha fazla bilgi için, [sonraki adımlar](#next-steps) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 - Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) .
 
@@ -144,7 +143,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
 
-## <a name="create-subscriptions"></a>Abonelik oluşturun
+## <a name="create-subscriptions"></a>Abonelik oluşturma
 Konu abonelikleri **Servicebusservice** nesnesiyle de oluşturulur. Abonelikler adlandırılır ve aboneliğin sanal kuyruğuna teslim edilen ileti kümesini kısıtlayan isteğe bağlı bir filtreye sahip olabilir.
 
 > [!NOTE]

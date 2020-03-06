@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: aa430152415b1662a73a388a03ba6d4721c730f0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e020555b0c706b5577bd20ac9bd537604d43ba3f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349762"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303724"
 ---
 # <a name="length-azure-cosmos-db"></a>Uzunluk (Azure Cosmos DB)
  Belirtilen dize ifadesinin karakter sayısını döndürür.  
@@ -40,11 +40,15 @@ LENGTH(<str_expr>)
 SELECT LENGTH("abc") AS len 
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"len": 3}]  
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

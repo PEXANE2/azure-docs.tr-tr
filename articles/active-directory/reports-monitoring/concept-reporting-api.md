@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008370"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399318"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API 'SI ile çalışmaya başlama
 
@@ -50,13 +50,10 @@ Ayrıntılı yönergeler için [Azure Active Directory Raporlama API 'sine eriş
 Denetim günlükleri için Microsoft Graph API uç noktası `https://graph.microsoft.com/beta/auditLogs/directoryAudits` ve oturum açma işlemleri için Microsoft Graph API uç noktası `https://graph.microsoft.com/beta/auditLogs/signIns`. Daha fazla bilgi için bkz. [API başvurusunu denetleme](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) ve [oturum açma API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Ayrıca, Microsoft Graph kullanarak güvenlik algılamalarından programlı erişim kazanmak için [kimlik koruması risk ALGıLAMA API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 'sini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması ve Microsoft Graph ile çalışmaya başlama](../identity-protection/graph-get-started.md). 
-
-> [!NOTE]
->  **Https:\/\/graph.windows.net\/\<kiracı-adı\>\/raporlar\/** uç noktası kullanım dışıdır. Etkinlik ve güvenlik raporlarına programlı bir şekilde erişmek için yukarıda açıklanan yeni API uç noktalarını kullanın.
   
-## <a name="apis-with-graph-explorer"></a>Graph Explorer ile API 'Ler
+## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph Explorer ile API 'Ler
 
-Oturum açma ve denetim API 'SI verilerini doğrulamak için [MSGraph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz. Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerinden her ikisini kullanarak hesabınızda oturum açıp **AuditLog. Read. All** ve **Directory. Read.** , kiracınız için gösterildiği gibi tüm izinleri ayarlayın.   
+Oturum açma ve denetim API 'SI verilerini doğrulamak için [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz. Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerinden her ikisini kullanarak hesabınızda oturum açıp **AuditLog. Read. All** ve **Directory. Read.** , kiracınız için gösterildiği gibi tüm izinleri ayarlayın.   
 
 ![Graph Gezgini](./media/concept-reporting-api/graph-explorer.png)
 

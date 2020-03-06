@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 234c8be8c696ca7381b8860680d072e84820d424
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431971"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331511"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure portal kullanarak Media Services hesabı oluşturma
 
@@ -37,22 +37,18 @@ Bu makalede Azure portal kullanılarak Media Services hesabının nasıl oluştu
 > [!NOTE]
 > Azure Media Services özelliklerinin farklı bölgelerde kullanılabilirliği hakkında bilgi için bkz. [Veri merkezleri arasında AMS özelliklerinin kullanılabilirliği](scenarios-and-availability.md#availability).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılar için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/). 
+Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="create-an-ams-account"></a>AMS hesabı oluşturma
 
 Bu bölümdeki adımlar bir AMS hesabının nasıl oluşturulacağını gösterir.
 
 1. [Azure portalda](https://portal.azure.com/) oturum açın.
-2. **+Yeni** > **Web + Mobil** > **Media Services**’e tıklayın.
-   
-    ![Media Services Oluşturma](./media/media-services-create-account/media-services-new1.png)
+2. **+ Kaynak oluştur** > **medya** > **Media Services**' na tıklayın.
 3. **MEDYA HİZMETLERİ HESABI OLUŞTUR**’a gerekli değerleri girin.
-   
-    ![Media Services Oluşturma](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. **Hesap Adı**’nda, yeni AMS hesabının adını girin. Media Services hesabı adı, boşluk olmadan, tümü sayı ve küçük harften oluşmalı ve 3-24 karakter uzunluğunda olmalıdır.
    2. Abonelik’te, erişiminiz bulunan farklı Azure abonelikleri arasından seçim yapın.
    3. **Kaynak Grubu**’nda yeni veya mevcut bir kaynağı seçin.  Kaynak grubu; yaşam döngüsünü, izinleri ve ilkeleri paylaşan kaynakların bir koleksiyonudur. [Burada](../../azure-resource-manager/management/overview.md#resource-groups) daha fazla bilgi edinin.
@@ -72,16 +68,15 @@ Bu bölümdeki adımlar bir AMS hesabının nasıl oluşturulacağını gösteri
 
 AMS hesabınızı yönetmek için (örneğin, AMS API’ye programlama aracılığıyla bağlanarak karşıya video yükleme, varlıkları kodlama, içerik korumayı yapılandırma, iş ilerleme durumunu izleme) portalın sol tarafında bulunan **Ayarlar**’ı seçin. **Ayarlar**’da, kullanılabilir dikey pencerelerden birine (örneğin **API Erişimi**, **Varlıklar**, **İşler**, **İçerik koruma**) gidin.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bundan böyle dosyaları AMS hesabınıza yükleyebilirsiniz. Daha fazla bilgi için bkz. [Dosya yükleme](media-services-portal-upload-files.md).
 
 AMS API’ye programlama aracılığıyla erişmeyi planlıyorsanız bkz. [Azure AD kimlik doğrulamasıyla Azure Media Services API’ye erişim](media-services-use-aad-auth-to-access-ams-api.md).
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

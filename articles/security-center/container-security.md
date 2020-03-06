@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 45ce8a808efc5b882c90f99875fdde661e292774
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303265"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -34,9 +34,11 @@ Bu makalede Güvenlik Merkezi 'nin kapsayıcılarınızın ve uygulamalarının 
 Bu özellikleri kullanma hakkında yönergeler için bkz. [kapsayıcılarınızın güvenliğini izleme](monitor-container-security.md).
 
 ## <a name="vulnerability-management---scanning-container-images"></a>Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama
-ARM tabanlı Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
+ARM tabanlı Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)). Ardından, isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
 
 Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin kapsayıcılar için önerilerin ayrıntıları için bkz. [önerilerin başvuru listesi](recommendations-reference.md#recs-containers).
+
+Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
 ## <a name="environment-hardening"></a>Ortam sağlamlaştırma
 
@@ -61,11 +63,11 @@ AKS, kümelerinizin güvenlik duruşuna güvenlik denetimleri ve görünürlük 
 
 Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntıları için, öneriler başvuru tablosunun [kapsayıcı bölümüne](recommendations-reference.md#recs-containers) bakın.
 
-## <a name="run-time-protection---real-time-threat-protection"></a>Çalışma zamanı koruması-gerçek zamanlı tehdit koruması
+## <a name="run-time-protection---real-time-threat-detection"></a>Çalışma zamanı koruması-gerçek zamanlı tehdit algılama
 
-Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
+Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit algılama sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 
-Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar için bkz. [Azure kapsayıcıları için tehdit koruması](threat-protection.md#azure-containers).
+Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar için bkz. [Azure kapsayıcıları için tehdit algılama](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 
 ## <a name="container-security-faq"></a>Kapsayıcı güvenliği SSS
@@ -73,10 +75,12 @@ Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar i�
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Güvenlik Merkezi tarayabilmesi gereken görüntü türleri nelerdir?
 Güvenlik Merkezi, kabuk erişimi sağlayan Linux işletim sistemi tabanlı görüntüleri tarar. 
 
-Qualys tarayıcısı, [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca uygulamanızı ve çalışma zamanı bağımlılıklarını (Paket Yöneticisi, kabuk veya işletim sistemi olmadan) Içeren "distroor" görüntülerini desteklemez.
+Qualys tarayıcısı, [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca uygulamanızı ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk ya da işletim sistemi olmadan Içeren "distrouz" görüntüleri desteklemez.
 
-### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Azure Güvenlik Merkezi 'nin bir görüntüyü taramasını nasıl tarayıyoruz?
-Görüntü, kayıt defterinden ayıklanır. Daha sonra, bilinen güvenlik açıklarının listesini ayıklayan Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırılır.
+### <a name="how-does-azure-security-center-scan-an-image"></a>Azure Güvenlik Merkezi bir görüntüyü nasıl tarar?
+Görüntü kayıt defterinden çekilir. Daha sonra, bilinen güvenlik açıklarının listesini ayıklayan Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırılır.
+
+Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
 ### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure Güvenlik Merkezi görüntülerimi ne sıklıkla taraysın?
 Yansıma taramaları her gönderim üzerinde tetiklenir.

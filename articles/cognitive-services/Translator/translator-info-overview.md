@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331051"
 ---
 # <a name="what-is-the-translator-text-api"></a>Translator Metin Çevirisi API’si nedir?
 
 Translator Metin Çevirisi API'sini uygulamalarınız, web siteleriniz, araçlarınız ve çözümlerinizle tümleştirmek kolaydır. [60'tan fazla dilde](languages.md) çok dilli kullanıcı deneyimi eklemenizi sağlayan bu API, tüm donanım platformlarında ve tüm işletim sistemlerinde metin çevirisi için kullanılabilir.
 
-Translator Metin Çevirisi API’si, buluttaki Azure [Bilişsel Hizmetler API’si](https://docs.microsoft.com/azure/#pivot=products&panel=ai) makine öğrenimi ve yapak zeka algoritmaları koleksiyonunun parçasıdır ve geliştirme projelerinizde kullanılmaya hazırdır.
+Translator Metin Çevirisi API’si, buluttaki Azure [Bilişsel Hizmetler API’si](https://docs.microsoft.com/azure/?pivot=products&panel=ai) makine öğrenimi ve yapak zeka algoritmaları koleksiyonunun parçasıdır ve geliştirme projelerinizde kullanılmaya hazırdır.
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator Hakkında
 

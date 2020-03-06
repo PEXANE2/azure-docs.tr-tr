@@ -4,15 +4,15 @@ description: Azure Cosmos DB içindeki CONCAT SQL sistem işlevinin iki veya dah
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: adb8564d4addaaa3f4a383b32941549aed3d53bd
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c8a0941376ed74d7f8cb819d78df43eb9f0b7bd1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871559"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302619"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT (Azure Cosmos DB)
  İki veya daha fazla dize değerlerini birleştirirken sonucu olan bir dize döndürür.  
@@ -40,12 +40,15 @@ CONCAT(<str_expr1>, <str_expr2> [, <str_exprN>])
 SELECT CONCAT("abc", "def") AS concat  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"concat": "abcdef"}]  
 ```  
   
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

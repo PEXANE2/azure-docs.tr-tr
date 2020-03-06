@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669548"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359249"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Sanal ağ NAT nedir (Genel Önizleme)?
 
@@ -192,13 +192,13 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi g
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
-- IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.
-- NSG akış günlüğü, NAT kullanılırken desteklenmez.
-- NAT birden çok sanal ağa yayılamaz.
+* NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
+* IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.  NAT, IPv6 ön ekine sahip bir alt ağa dağıtılamaz.
+* NSG akış günlüğü, NAT kullanılırken desteklenmez.
+* NAT birden çok sanal ağa yayılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [NAT ağ geçidi kaynağı](./nat-gateway-resource.md)hakkında bilgi edinin.
-- [UserVoice 'ta daha sonra neleri derleyeceğinizi bize söyleyin](https://aka.ms/natuservoice).
-- [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
+* [NAT ağ geçidi kaynağı](./nat-gateway-resource.md)hakkında bilgi edinin.
+* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
+* [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).

@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel (Önizleme) ile yapılandırma için IoT Kılavuzu için Azure Güvenlik Merkezi | Microsoft Docs
-description: Bu kılavuzda, Azure Sentinel 'in IoT çözümü için Azure Güvenlik Merkezi 'nden veri alması için nasıl yapılandırılacağı açıklanmaktadır.
+description: IoT çözümü için Azure Güvenlik Merkezi 'nden veri almak üzere Azure Sentinel 'in nasıl yapılandırılacağını açıklar.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: f6e7eddd6ddbcec61c3d8d173891cbc9abaaf08f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463186"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303554"
 ---
 > [!IMPORTANT]
 > Azure Sentinel 'de IoT veri Bağlayıcısı için Azure Güvenlik Merkezi şu anda genel önizlemededir.
@@ -48,10 +48,10 @@ IoT için Azure Güvenlik Merkezi 'ndeki uyarıları bağlayın ve doğrudan Azu
 ## <a name="connect-to-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi 'ne bağlanma
 
 1. Azure Sentinel 'de **veri bağlayıcıları** ' nı ve ardından **IoT Için Azure Güvenlik Merkezi** ' ni seçin.
-1. Sağ alt bölmeden **bağlayıcı sayfasını aç**' a tıklayın. 
+1. Sağ bölmenin alt kısmından **bağlayıcı sayfasını aç**' a tıklayın. 
 1. Uyarıları ve cihaz uyarılarını Azure Sentinel 'e aktarmak istediğiniz her bir IoT Hub aboneliğinin yanındaki **Bağlan**' a tıklayın. 
-    - IoT için Azure Güvenlik Merkezi bu hub 'da etkinleştirilmemişse, bir etkinleştirme uyarı iletisi görürsünüz. Hizmeti başlatmak için **Etkinleştir** bağlantısına tıklayın. 
-1. IoT için Azure Güvenlik Merkezi 'ndeki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinize karar verebilirsiniz. **Olayları oluştur**' un altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturmak üzere varsayılan analitik kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Bu kural, **analiz** > **etkin** kurallar altında değiştirilebilir veya düzenlenebilir.
+    - IoT için Azure Güvenlik Merkezi bu hub 'da etkinleştirilmemişse, bir etkinleştirme uyarı iletisi görürsünüz. Hizmeti başlatmak ve etkinleştirmek için **Etkinleştir** bağlantısına tıklayın. 
+1. IoT için Azure Güvenlik Merkezi 'ndeki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinize karar verebilirsiniz. **Olay oluştur**' un altında, kuralın oluşturulan uyarılardan otomatik olarak olay oluşturmasını sağlamak için **Etkinleştir** ' i seçin.  Bu kural, **analiz** > **etkin** kurallar altında değiştirilebilir veya düzenlenebilir.
 
 > [!NOTE]
 >Bağlantı değişiklikleri yaptıktan sonra hub listesini yenilemek 10 saniye veya daha fazla sürebilir. 

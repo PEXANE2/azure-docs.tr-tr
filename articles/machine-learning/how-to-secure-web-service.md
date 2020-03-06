@@ -1,7 +1,7 @@
 ---
-title: SSL kullanarak güvenli Web Hizmetleri
+title: TLS kullanarak güvenli Web Hizmetleri
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlamak için HTTPS 'yi nasıl etkinleştireceğinizi öğrenin.
+description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlamak için HTTPS 'yi nasıl etkinleştireceğinizi öğrenin. Azure Machine Learning, Web Hizmetleri olarak dağıtılan modellerin güvenliğini sağlamak için TLS 1,2 sürümünü kullanır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905214"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355526"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek için SSL kullanma
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlama gösterilmektedir.
@@ -52,7 +52,7 @@ Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
 
 [Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde güvenli hale getirilçalışırken küçük farklılıklar vardır.
 
-## <a name="get-a-domain-name"></a>Bir etki alanı adı
+## <a name="get-a-domain-name"></a>Etki alanı adı alma
 
 Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com) Web hizmetinizi barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
@@ -60,8 +60,8 @@ Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir t
 
 SSL sertifikası almanın pek çok yolu vardır (dijital sertifika). En yaygın olarak, bir *sertifika yetkilisinden* (CA) bir sertifika satın alımdır. Sertifikayı nereden alacağınız bağımsız olarak, aşağıdaki dosyalar gereklidir:
 
-* A **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
-* A **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
+* Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
+* Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
 Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
@@ -258,6 +258,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 + [Bir Web hizmeti olarak dağıtılan makine öğrenimi modelini kullanma](how-to-consume-web-service.md)
 + [Bir Azure sanal ağı içinde denemeleri ve çıkarımı güvenle çalıştırın](how-to-enable-virtual-network.md)

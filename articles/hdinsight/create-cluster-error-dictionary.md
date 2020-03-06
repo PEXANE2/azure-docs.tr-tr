@@ -1,6 +1,6 @@
 ---
-title: Küme hata sözlüğü oluşturma
-description: Küme hata sözlüğü oluşturmayı öğrenin.
+title: Azure HDInsight küme oluşturma-hata sözlüğü
+description: Azure HDInsight kümeleri oluştururken oluşan hataların nasıl giderileceği hakkında bilgi edinin
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302738"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: küme oluşturma hataları
 

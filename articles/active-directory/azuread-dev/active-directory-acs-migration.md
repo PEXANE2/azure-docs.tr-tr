@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165351"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377912"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -68,13 +68,13 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 ### <a name="download-and-install-acs-powershell"></a>ACS PowerShell 'i indirme ve yükleme
 
 1. PowerShell Galerisi gidin ve [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2)' i indirin.
-1. Modülünü çalıştırarak
+2. Modülünü çalıştırarak
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. Şunu çalıştırarak tüm olası komutların bir listesini alın
+3. Şunu çalıştırarak tüm olası komutların bir listesini alın
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
   
     Komutları yürütmek için `Set-ExecutionPolicy -ExecutionPolicy Bypass` çalıştırmanız ve komutları yürütmek için bu aboneliklerin yöneticisi olmanız gerekebilir.
 
-1. **Get-AcsSubscription** cmdlet 'ini kullanarak kullanılabilir Azure aboneliklerinizi listeleyin.
-1. **Get-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanlarınızı listeleyin.
+2. **Get-AcsSubscription** cmdlet 'ini kullanarak kullanılabilir Azure aboneliklerinizi listeleyin.
+3. **Get-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanlarınızı listeleyin.
 
 ### <a name="check-which-applications-will-be-impacted"></a>Hangi uygulamaların etkilendiğini denetleyin
 
@@ -103,8 +103,8 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 
     Örneğin, ad alanlarından biri contoso-test ise, `https://contoso-test.accesscontrol.windows.net` gidin.
 
-1. **Güven ilişkileri**altında, ACS kullanımdan kaldırma tarafından etkilenecek uygulamaların listesini görmek Için **bağlı olan taraf uygulamaları** ' nı seçin.
-1. Sahip olduğunuz diğer tüm ACS ad alanı (ler) için 1-2 adımlarını yineleyin.
+2. **Güven ilişkileri**altında, ACS kullanımdan kaldırma tarafından etkilenecek uygulamaların listesini görmek Için **bağlı olan taraf uygulamaları** ' nı seçin.
+3. Sahip olduğunuz diğer tüm ACS ad alanı (ler) için 1-2 adımlarını yineleyin.
 
 ## <a name="retirement-schedule"></a>Emeklilik zamanlaması
 
@@ -205,12 +205,12 @@ Aşağıdaki tabloda, Azure AD 'de bulunan özelliklerle Web uygulamalarıyla il
 | SAML 1,1 | Destekleniyor | Önizleme |
 | SAML 2.0 | Destekleniyor | Destekleniyor |
 | SWT | Destekleniyor | Desteklenmiyor |
-| **Melere** | | |
+| **Özelleştirmeler** | | |
 | Özelleştirilebilir giriş bölgesi bulma/hesap-seçme Kullanıcı arabirimi | Uygulamalara dahil edilebilir indirilebilir kod | Desteklenmiyor |
 | Özel belirteç imzalama sertifikalarını karşıya yükle | Destekleniyor | Destekleniyor |
 | Belirteçlerde talepleri özelleştirme |-Kimlik sağlayıcılarından gelen giriş taleplerini geçirme<br />-Kimlik sağlayıcısından bir talep olarak erişim belirteci alın<br />-Giriş taleplerinin değerlerine göre çıkış taleplerini verme<br />-Sabit değerlerle çıkış talepleri verme |-Federal Kimlik sağlayıcılarından talepler geçirilemez<br />-Kimlik sağlayıcısından bir talep olarak erişim belirteci alınamıyor<br />-Giriş taleplerinin değerlerine göre çıkış talepleri veremez<br />-Sabit değerlerle çıkış talepleri verebilir<br />-Azure AD ile eşitlenen kullanıcıların özelliklerine göre çıkış talepleri verebilir |
-| **Automation** | | |
-| Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir | Microsoft Graph ve Azure AD Graph API aracılığıyla desteklenir |
+| **Otomasyon** | | |
+| Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir | Microsoft Graph API 'SI kullanılarak desteklenir |
 
 Azure AD 'nin Uygulamalarınız ve hizmetleriniz için en iyi geçiş yolu olduğuna karar verirseniz, uygulamanızı Azure AD ile tümleştirmenin iki yolunu bilmelisiniz.
 
@@ -256,12 +256,12 @@ Aşağıdaki tabloda, Web uygulamalarıyla ilgili Access Control özellikleri, A
 | SAML 1,1 | Destekleniyor | Desteklenmiyor |
 | SAML 2.0 | Destekleniyor | Desteklenmiyor |
 | SWT | Destekleniyor | Desteklenmiyor |
-| **Melere** | | |
+| **Özelleştirmeler** | | |
 | Özelleştirilebilir giriş bölgesi bulma/hesap-seçme Kullanıcı arabirimi | Uygulamalara dahil edilebilir indirilebilir kod | Özel CSS aracılığıyla tamamen özelleştirilebilir kullanıcı arabirimi |
 | Özel belirteç imzalama sertifikalarını karşıya yükle | Destekleniyor | Özel ilkeler aracılığıyla desteklenen, sertifikalar değil özel İmzalama anahtarları |
 | Belirteçlerde talepleri özelleştirme |-Kimlik sağlayıcılarından gelen giriş taleplerini geçirme<br />-Kimlik sağlayıcısından bir talep olarak erişim belirteci alın<br />-Giriş taleplerinin değerlerine göre çıkış taleplerini verme<br />-Sabit değerlerle çıkış talepleri verme |-Kimlik sağlayıcılarından talepler geçirebilir; Bazı talepler için gerekli özel ilkeler<br />-Kimlik sağlayıcısından bir talep olarak erişim belirteci alınamıyor<br />-Özel ilkeler aracılığıyla giriş taleplerinin değerlerine göre çıkış talepleri verebilir<br />-Özel ilkeler aracılığıyla sabit değerlerle çıkış talepleri verebilir |
-| **Automation** | | |
-| Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir |-Azure AD Graph API aracılığıyla izin verilen Kullanıcı oluşturma<br />-Program aracılığıyla B2C kiracılar, uygulamalar veya ilkeler oluşturulamıyor |
+| **Otomasyon** | | |
+| Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir |-Microsoft Graph API 'SI ile izin verilen Kullanıcı oluşturma<br />-Program aracılığıyla B2C kiracılar, uygulamalar veya ilkeler oluşturulamıyor |
 
 Azure AD B2C, uygulamalarınız ve hizmetleriniz için en iyi geçiş yolu olduğuna karar verirseniz, aşağıdaki kaynaklarla başlayın:
 
@@ -325,7 +325,7 @@ Ayrıca, Azure AD 'yi, OAuth istemci kimlik bilgileri verme 'nin Azure AD uygula
 | İstemci kimlik doğrulama yöntemleri |-Basit parola<br />-İmzalı SWT<br />-Federasyon kimliği sağlayıcısından SAML belirteci |-Basit parola<br />-İmzalı JWT |
 | Belirteç biçimleri |-JWT<br />-SAML 1,1<br />-SAML 2,0<br />-SWT<br /> | Yalnızca JWT |
 | Belirteç dönüştürmesi |-Özel talepler ekleme<br />-Basit if-then talep verme mantığı | Özel talepler Ekle | 
-| Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir | Microsoft Graph ve Azure AD Graph API aracılığıyla desteklenir |
+| Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir | Microsoft Graph API 'SI kullanılarak desteklenir |
 
 Sunucudan sunucuya senaryolar uygulama hakkında rehberlik için aşağıdaki kaynaklara bakın:
 

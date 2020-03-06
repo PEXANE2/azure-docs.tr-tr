@@ -3,12 +3,12 @@ title: Held grafiklerini depola
 description: Azure Container Registry içindeki depoları kullanarak Kubernetes uygulamalarınız için hele grafiklerini depolamayı öğrenin
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524641"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398970"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure Container Registry 'de Held grafikleri gönderme ve çekme
 
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 Başarılı bir gönderim sonrasında, çıkış şuna benzerdir:
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 Çıkış şuna benzer olacaktır:
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -158,7 +158,7 @@ az acr repository show \
 }
 ```
 
-Depoda depolanan grafiğin ayrıntılarını görmek için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın. Örneğin:
+Depoda depolanan grafiğin ayrıntılarını görmek için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın. Örnek:
 
 ```azurecli
 az acr repository show-manifests \
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 Bu örnekte kısaltılmış çıkış, `application/vnd.cncf.helm.config.v1+json``configMediaType` gösterir:
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 Sürüm numarası sağlanmamışsa, *en son* sürüm kullanılır. HELI, aşağıdaki sıkıştırılmış Çıktıda gösterildiği gibi, grafiğiniz hakkında ayrıntılı bilgiler döndürür:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -248,7 +248,7 @@ version: 8.1.0
 
 ### <a name="install-helm-chart"></a>Held grafiğini yükler
 
-Yerel önbelleğe çekilecek ve dışarıya verdiğiniz hele grafiğini yüklemek için `helm install` çalıştırın. Bir yayın adı belirtin veya `--generate-name` parametresini geçirin. Örneğin:
+Yerel önbelleğe çekilecek ve dışarıya verdiğiniz hele grafiğini yüklemek için `helm install` çalıştırın. Bir yayın adı belirtin veya `--generate-name` parametresini geçirin. Örnek:
 
 ```console
 helm install wordpress --generate-name
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 Yükleme devam ederken, URL 'Leri ve kimlik bilgilerini görmek için komut çıkışında bulunan yönergeleri izleyin. Helk grafiği aracılığıyla dağıtılan Kubernetes kaynaklarını görmek için `kubectl get pods` komutunu da çalıştırabilirsiniz:
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 İndirilen grafiği listelemek için `ls` yazın ve dosya adına dahil olan WordPress sürümünü aklınızda yapın. `helm fetch stable/wordpress` komutu belirli bir sürüm belirtmedi, bu nedenle *en son* sürüm getirildi. Aşağıdaki örnek çıktıda, WordPress grafiğinin sürümü *8.1.0*olur:
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 Birkaç dakika sonra Azure CLı, aşağıdaki örnek çıktıda gösterildiği gibi, grafiğinizin kaydedildiğini bildirir:
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 Önceki adımda gönderilen WordPress grafiği, aşağıdaki örnek çıktıda gösterildiği gibi listelenir:
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 Sürüm numarası sağlanmamışsa, *en son* sürüm kullanılır. HELI, aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, grafiğiniz hakkında ayrıntılı bilgiler döndürür:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ Aşağıdaki adımlar, yüklemesi işlemi sırasında tamamlanır:
 
 Yükleme devam ederken, URL 'Leri ve kimlik bilgilerini görmek için komut çıkışında bulunan yönergeleri izleyin. Helk grafiği aracılığıyla dağıtılan Kubernetes kaynaklarını görmek için `kubectl get pods` komutunu da çalıştırabilirsiniz:
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

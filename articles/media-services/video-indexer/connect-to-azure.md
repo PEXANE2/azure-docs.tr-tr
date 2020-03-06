@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838392"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328838"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -23,7 +23,7 @@ Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli 
 
 Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağlı Video Indexer hesabının nasıl oluşturulacağı gösterilmektedir. Bu konuda otomatik (varsayılan) Flow kullanılarak Azure 'a bağlanmak için gereken adımlar sağlanmaktadır. Ayrıca, Azure 'a el ile nasıl bağlanagösterdiğini gösterir (Gelişmiş).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği.
 
@@ -45,7 +45,7 @@ Azure AD etki alanındaki bir Kullanıcı ve üye. Video Indexer hesabınızı A
 
 Bu Kullanıcı, bir **sahip** rolü ya da **katkıda** bulunan ve **Kullanıcı erişimi yönetici** rolleri ile Azure aboneliğinizde bir üye olmalıdır. Bir Kullanıcı 2 rol ile iki kez eklenebilir. Katkıda bulunan ve Kullanıcı erişimi yöneticisiyle bir kez.
 
-![Erişim denetimi](./media/create-account/access-control-iam.png)
+![erişim denetimi](./media/create-account/access-control-iam.png)
 
 ### <a name="additional-prerequisites-for-manual-flow"></a>El ile akışa yönelik ek önkoşullar
 
@@ -124,8 +124,8 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 4. Media Services API 'SI ile kimlik doğrulaması yapmak Video Indexer için, bir AD uygulamasının oluşturulması gerekir. Aşağıdaki adımlar, [Azure Portal kullanarak Azure AD kimlik doğrulaması ile çalışmaya başlama](../previous/media-services-portal-get-started-with-aad.md)bölümünde AÇıKLANAN Azure AD kimlik doğrulaması sürecinde size kılavuzluk ediyor:
 
     1. Yeni Media Services hesabında **API erişimi**' ni seçin.
-    2. [Hizmet sorumlusu kimlik doğrulama yöntemini](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)seçin.
-    3. İstemci kimliğini ve [istemci gizli anahtarını al bölümünde açıklandığı](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) gıbı istemci kimliğini ve gizli anahtarı alın.
+    2. [Hizmet sorumlusu kimlik doğrulama yöntemini](../previous/media-services-portal-get-started-with-aad.md)seçin.
+    3. İstemci KIMLIĞINI ve gizli anahtarı al
 
         **Ayarlar**->**anahtarlar**' ı seçtikten sonra **Açıklama**ekleyin, **Kaydet**' e basın, anahtar değeri doldurulur.
 

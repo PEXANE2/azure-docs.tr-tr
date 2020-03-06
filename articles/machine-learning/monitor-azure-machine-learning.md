@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845733"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399098"
 ---
 # <a name="monitoring-azure-machine-learning"></a>İzleme Azure Machine Learning
 
@@ -30,7 +30,7 @@ Bu makalede, Azure Machine Learning tarafından oluşturulan izleme verileri aç
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
-Azure 'da tam yığın izleme hizmeti olan Azure Izleyici 'yi kullanarak verileri izleme Azure Machine Learning günlüğe kaydeder. Azure Izleyici, Azure kaynaklarınızı izlemeye yönelik kapsamlı bir özellik kümesi sağlar. Ayrıca, diğer bulutlardaki ve Şirket içindeki kaynakları da izleyebilir.
+Azure Machine Learning, izleme verilerini günlüğe kaydetmek için Azure'daki tam yığın izleme hizmeti olan Azure İzleyici'yi kullanır. Azure Izleyici, Azure kaynaklarınızı izlemeye yönelik kapsamlı bir özellik kümesi sağlar. Ayrıca, diğer bulutlardaki ve Şirket içindeki kaynakları da izleyebilir.
 
 İzleme özelliklerine genel bir bakış sağlayan [Azure izleyici genel bakış](/azure/azure-monitor/overview)makalesini başlatın. Aşağıdaki bölümlerde, Azure Machine Learning ile Azure Izleyici kullanma hakkında daha fazla bilgi sunarak bu bilgiler yer alır.
 
@@ -38,7 +38,7 @@ Azure Izleyici ile ilişkili maliyetleri anlamak için bkz. [kullanım ve tahmin
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Azure Machine Learning verileri izleme
 
-Azure Machine Learning, [Azure kaynaklarından gelen verileri izleme](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure Machine Learning tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Machine Learning izleme verileri başvurusu](monitor-resource-reference.md) .
+Azure Machine Learning, diğer Azure kaynaklarıyla aynı türdeki izleme verilerini toplar. Bu türler için bkz. [Azure kaynaklarından gelen verileri izleme](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Azure Machine Learning tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Machine Learning izleme verileri başvurusu](monitor-resource-reference.md) .
 
 ## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
 

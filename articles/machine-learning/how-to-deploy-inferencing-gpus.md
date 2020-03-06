@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122534"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398331"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için A
 > [!NOTE]
 > Bu makaledeki bilgiler, [Azure Kubernetes hizmetine dağıtma](how-to-deploy-azure-kubernetes-service.md) makalesindeki bilgileri oluşturur. Bu makalede genellikle AKS 'e dağıtımı ele alınmaktadır ve bu makalede GPU 'ya özgü dağıtım ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -47,7 +47,7 @@ Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için A
 
 * [Modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)gösteren genel bir anlama.
 
-## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanma
+## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanın
 
 Mevcut bir çalışma alanına bağlanmak için aşağıdaki kodu kullanın:
 
@@ -101,7 +101,7 @@ Azure Machine Learning ile AKS kullanma hakkında daha fazla bilgi için bkz. [A
 Giriş betiği Web hizmetine gönderilen verileri alır, modele geçirir ve Puanlama sonuçlarını döndürür. Aşağıdaki betik, başlangıçta TensorFlow modelini yükler ve ardından modeli kullanarak verileri puan alır.
 
 > [!TIP]
-> Giriş betiği, modelinize göre değişir. Örneğin, komut dosyası modelinizle, veri biçimlerinizin vb. ile kullanılacak çerçeveyi bilmelidir.
+> Giriş betiği modelinize özeldir. Örneğin, komut dosyası modelinizle, veri biçimlerinizin vb. ile kullanılacak çerçeveyi bilmelidir.
 
 ```python
 import json
@@ -275,7 +275,7 @@ print("prediction:", resp.text)
 
 İstemci uygulaması oluşturma hakkında daha fazla bilgi için bkz. [dağıtılan Web hizmetini kullanmak için Istemci oluşturma](how-to-consume-web-service.md).
 
-## <a name="clean-up-the-resources"></a>Kaynakları temizleme
+## <a name="clean-up-the-resources"></a>Kaynakları Temizleme
 
 Bu örnek için AKS kümesini özel olarak oluşturduysanız, işiniz bittiğinde kaynakları silin.
 

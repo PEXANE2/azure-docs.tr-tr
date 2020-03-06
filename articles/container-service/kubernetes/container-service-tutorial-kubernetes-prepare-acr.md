@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274122"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399791"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>Kullanım DıŞı Azure Container Registry dağıtma ve kullanma
 
@@ -34,13 +34,13 @@ Sonraki öğreticilerde, bu ACR örneği Azure Container Service’teki Kubernet
 
 [Önceki öğreticide](./container-service-tutorial-kubernetes-prepare-app.md), basit bir Azure Voting uygulaması için kapsayıcı görüntüsü oluşturulacaktır. Azure Voting uygulaması görüntüsünü oluşturmadıysanız [Öğretici 1 - Kapsayıcı görüntüleri oluştur](./container-service-tutorial-kubernetes-prepare-app.md)’a dönün.
 
-Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
+Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry’yi dağıtma
 
 Bir Azure Container Registry dağıtırken önce bir kaynak grubuna ihtiyaç duyarsınız. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Bu örnekte, `westeurope`bölgesinde `myResourceGroup` adlı bir kaynak grubu oluşturulur.
+[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Bu örnekte, `myResourceGroup`bölgesinde `westeurope` adlı bir kaynak grubu oluşturulur.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
@@ -74,7 +74,7 @@ docker images
 
 Çıktı:
 
-```bash
+```output
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
@@ -103,7 +103,7 @@ docker images
 
 Çıktı:
 
-```bash
+```output
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
 mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
@@ -133,7 +133,7 @@ az acr repository list --name <acrName> --output table
 
 Çıktı:
 
-```azurecli
+```output
 Result
 ----------------
 azure-vote-front
@@ -147,7 +147,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 Çıktı:
 
-```azurecli
+```output
 Result
 --------
 v1

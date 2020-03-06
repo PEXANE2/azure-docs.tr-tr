@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 510a2c3f04cc4c307acad18ee3012d9407155f9f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766456"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303537"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Hızlı başlangıç: özel uyarılar oluşturma
 
@@ -41,7 +41,7 @@ Bu gruplar belirli donanımlar olan cihazları, belirli bir konumda dağıtılan
 
 Güvenlik grupları, **SecurityGroup**adlı bir Device ikizi Tag özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub her bir IoT çözümünün **varsayılan**adlı bir güvenlik grubu vardır. Bir cihazın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
  
-Örneğin:
+Örnek:
 
 ```
 {
@@ -80,7 +80,6 @@ Cihazlarınızı mantıksal kategoriler halinde gruplandırmak için güvenlik g
 ## <a name="alerts-available-for-customization"></a>Özelleştirmeler için kullanılabilir uyarılar
 
 IoT için Azure Güvenlik Merkezi, özel gereksinimlerinize göre özelleştirilebilen çok sayıda uyarı sunmaktadır. Uyarı önem derecesi, veri kaynağı, açıklama ve her uyarının alındığı zaman ve önerdiğimiz düzeltme adımlarımızın [özelleştirilebilir uyarı tablosunu](concept-customizable-security-alerts.md) gözden geçirin. 
-|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208568"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364403"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Izleyici müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -283,6 +283,11 @@ Content-type: application/json
 
 Application Insights CMK yapılandırması için bu adım için ek içeriğini izleyin.
 
+Bu işlemi gerçekleştirmek için hem çalışma alanınızda hem de *küme* kaynağında ' yazma ' izinlerine sahip olmanız gerekir:
+
+- Çalışma alanında: Microsoft. Operationalınsights/çalışma alanları/yazma
+- *Küme* kaynağında: Microsoft. Operationalınsights/kümeler/yaz
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -290,18 +295,17 @@ Content-type: application/json
 
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
 }
 ```
-*Clusterdefinitionıd* , önceki adımdan alınan yanıtta belirtilen *clusterıd* değeridir.
 
 **Yanıt**
 
 ```json
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
   "name": "workspace-name/cluster",
@@ -478,7 +482,6 @@ Log Analytics ve Application Insights aynı veri deposu platformunu ve sorgu alt
 Application Insights CMK 'nin yapılandırması, bu makalede açıklanan, kısıtlamalar ve sorun giderme adımları dahil olmak üzere bu makalede gösterilen işlemle aynıdır:
 
 - *Küme* kaynağı oluşturma
-
 - Bir bileşeni bir *küme* kaynağıyla ilişkilendir
 
 Application Insights için CMK yapılandırılırken, yukarıda listelenenler yerine bu adımları kullanın.
@@ -534,6 +537,11 @@ Kimlik, oluşturma zamanında *küme* kaynağına atanır.
 > Sonraki adımlarda gereksinim duyduğundan bu yana "Asıl kimlik" değerini kopyalayın ve saklayın.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Bileşenleri kullanarak bir bileşeni *küme* kaynağıyla ilişkilendirme [-API oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
+
+Bu işlemi gerçekleştirmek için hem bileşeninizdeki hem de *küme* kaynağında ' yazma ' izinlerine sahip olmanız gerekir:
+
+- Bileşen: Microsoft. Insights/Component/Write
+- *Küme* kaynağında: Microsoft. Operationalınsights/kümeler/yaz
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

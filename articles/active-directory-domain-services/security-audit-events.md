@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613061"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328655"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
@@ -53,10 +53,10 @@ Aşağıdaki denetim olayı kategorileri kullanılabilir:
 |:---|:---|
 |Hesap oturum açma güvenliği|4767, 4774, 4775, 4776, 4777|
 |Hesap yönetimi güvenliği|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
-|Ayrıntı Izleme güvenliği|None|
+|Ayrıntı Izleme güvenliği|Yok|
 |DS erişim güvenliği|5136, 5137, 5138, 5139, 5141|
 |Oturum açma-oturumu kapatma güvenliği|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Nesne erişim güvenliği|None|
+|Nesne erişim güvenliği|Yok|
 |İlke değişikliği güvenliği|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Ayrıcalık kullanım güvenliği|4985|
 |Sistem güvenliği|4612, 4621|
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Örnek sorgu 2
 
-Hesap kilitleme olaylarını (*4740*) 3 Şubat 2020 ile 9 saat arasında görüntüleyin 10 Şubat 2019 gece yarısı, tarih ve saate göre artan düzende sıralanır:
+Hesap kilitleme olaylarını (*4740*) 3 Şubat 2020 ile 9 saat arasında görüntüleyin 10 Şubat 2020 gece yarısı, tarih ve saate göre artan düzende sıralanır:
 
 ```Kusto
 AADDomainServicesAccountManagement

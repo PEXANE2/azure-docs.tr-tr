@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: 8906299cc9e2c000dab2ac9d2a345d9aaf238260
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045851"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302788"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning ortamlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirtir. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker). Bunlar, farklı işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi iş akışlarını etkinleştiren Machine Learning çalışma alanınızda yönetilen ve sürümlü varlıklardır.
+Azure Machine Learning ortamlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirtir. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker). Ortamlar, Machine Learning çalışma alanınızda, çeşitli bilgi işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi iş akışlarını etkinleştiren yönetilen ve sürümlü varlıklardır.
 
 Yerel işlem sırasında `Environment` nesnesini kullanarak şunları yapabilirsiniz:
 * Eğitim betiğinizi geliştirin.
@@ -57,6 +57,45 @@ Belirli kod örnekleri için, [eğitim ve dağıtım için ortamları yeniden ku
 * Ortamlarınızdaki Docker görüntülerini otomatik olarak oluşturabilirsiniz.
 
 Kod örnekleri için, [eğitim ve dağıtım için ortamları yeniden kullanma](how-to-use-environments.md#manage-environments)' nın "ortamları yönetme" bölümüne bakın.
+
+## <a name="environment-building-caching-and-reuse"></a>Ortam oluşturma, önbelleğe alma ve yeniden kullanma
+
+Azure Machine Learning hizmeti, Docker görüntüleri ve Conda ortamları için ortam tanımları oluşturur. Ayrıca ortamları, sonraki eğitim çalıştırmaları ve hizmet uç noktası dağıtımlarında yeniden kullanılabilmesi için önbelleğe alır.
+
+### <a name="building-environments-as-docker-images"></a>Docker görüntüleri olarak ortam oluşturma
+
+Genellikle, bir ortamı kullanarak bir çalıştırma gönderdiğinizde, Azure Machine Learning hizmeti, çalışma alanıyla ilişkili Azure Container Registry (ACR) üzerinde bir [ACR derleme görevi](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) çağırır. Oluşturulan Docker görüntüsü daha sonra çalışma alanı ACR üzerinde önbelleğe alınır. Çalıştırma yürütmesinin başlangıcında görüntü, işlem hedefi tarafından alınır.
+
+Görüntü derlemesi iki adımdan oluşur:
+
+ 1. Temel görüntü indirme ve herhangi bir Docker adımını yürütme
+ 2. Ortam tanımında belirtilen Conda bağımlılıklarına göre Conda ortamı oluşturma.
+
+[Kullanıcı tarafından yönetilen bağımlılıklar](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py)belirtirseniz ikinci adım atlanır. Bu durumda, tüm Python paketlerini temel görüntlerinize dahil ederek veya ilk adımda özel Docker adımları belirterek siz sorumlusunuz. Ayrıca, Python yürütülebilir dosyası için doğru konumu belirtmekten de sorumlusunuz.
+
+### <a name="image-caching-and-reuse"></a>Görüntü önbelleğe alma ve yeniden kullanma
+
+Başka bir çalıştırma için aynı ortam tanımını kullanıyorsanız, Azure Machine Learning hizmeti, önbelleğe alınmış görüntüyü çalışma alanından ACR 'den yeniden kullanır. 
+
+Önbelleğe alınmış bir görüntünün ayrıntılarını görüntülemek için [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) yöntemi kullanın.
+
+Önbelleğe alınmış bir görüntünün yeniden kullanılıp kullanılmayacağını veya yeni bir tane derlemenizi öğrenmek için, hizmet ortam tanımından [bir karma değer](https://en.wikipedia.org/wiki/Hash_table) hesaplar ve bunu mevcut ortamların karmalarıyla karşılaştırır. Karma şunları temel alır:
+ 
+ * Taban görüntü özelliği değeri
+ * Özel Docker adımları Özellik değeri
+ * Conda Definition içindeki Python paketlerinin listesi
+ * Spark tanımındaki paketlerin listesi 
+
+Karma ortam adına veya sürümüne bağlı değildir. Bir Python paketi ekleme veya kaldırma ya da paket sürümünü değiştirme gibi ortam tanımı değişiklikleri, karma değerin görüntü yeniden oluşturmayı değiştirmesine ve tetiklemesini sağlar. Ancak, ortamınızı yeniden adlandırmanız veya var olan bir paketin tam özelliklerine ve paketlerine sahip yeni bir ortam oluşturursanız, karma değeri aynı kalır ve önbelleğe alınan görüntü kullanılır.
+
+Üç ortam tanımını gösteren aşağıdaki diyagrama bakın. İkisinin iki farklı adı ve sürümü, ancak aynı temel görüntü ve Python paketleri vardır. Aynı karma değerine sahiptir ve bu nedenle aynı önbelleğe alınmış görüntüye karşılık gelir. Üçüncü ortamda farklı Python paketleri ve sürümleri bulunur ve bu nedenle, farklı bir önbelleğe alınmış görüntüye karşılık gelir.
+
+![Docker görüntüleri olarak ortam önbelleğe alma diyagramı](./media/concept-environments/environment-caching.png)
+
+Ayrılmış paket bağımlılığı olan bir ortam oluşturursanız, örneğin ```numpy```, bu ortam, ortam oluşturma sırasında yüklenen paket sürümünü kullanmaya devam edecektir. Ayrıca, eşleşen tanımı olan gelecekteki tüm ortamlar eski sürümü kullanmaya devam eder. Paketi güncelleştirmek için, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin, örneğin ```numpy==1.18.1```. Daha önce çalışan bir senaryoyu bozabilecek iç içe geçmiş olanlar dahil yeni bağımlılıkların yükleneceğini unutmayın
+
+> [!WARNING]
+>  [Environment. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

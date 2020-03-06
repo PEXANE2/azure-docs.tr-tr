@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303316"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama
 
@@ -34,7 +34,7 @@ Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada ol
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* Hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan bir depolama hesabı oluşturun. Bu öğretici `contosoorders` adlı bir depolama hesabı kullanır. Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) atanmış olduğundan emin olun.
+* Hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan bir depolama hesabı oluşturun. Bu öğretici `contosoorders`adlı bir depolama hesabı kullanır. Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) atanmış olduğundan emin olun.
 
   Bkz. [Azure Data Lake Storage 2. hesap oluşturma](data-lake-storage-quickstart-create-account.md).
 
@@ -42,7 +42,7 @@ Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada ol
 
   Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  : heavy_check_mark: makalenin [bir role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümündeki adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+  : heavy_check_mark: makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
   > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
@@ -86,7 +86,7 @@ Bu bölümde, şu görevleri gerçekleştirirsiniz:
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
+1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks** seçeneklerini belirleyin.
 
     ![Azure portal databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -127,7 +127,7 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 
     ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-events/new-databricks-notebook.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur**'u seçin.
+    **Oluştur**’u seçin.
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks Delta tablosu oluşturma ve doldurma
 
@@ -152,7 +152,7 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
     Bu kod, **source_file**adlı bir pencere öğesi oluşturur. Daha sonra, bu kodu çağıran ve bu pencere öğesine bir dosya yolu geçiren bir Azure Işlevi oluşturacaksınız.  Bu kod ayrıca depolama hesabıyla hizmet sorumlunuzu doğrular ve diğer hücrelerde kullanacağınız bazı değişkenler oluşturur.
 
     > [!NOTE]
-    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine şu kod satırını kullanın: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
+    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine şu kod satırını kullanın: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")``spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
 
 2. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
@@ -354,7 +354,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
 ## <a name="test-the-event-grid-subscription"></a>Event Grid aboneliğini test etme
 
-1. @No__t_0 adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
+1. `customer-order.csv`adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
@@ -385,14 +385,14 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
    ![Tabloda en son kayıt görünür](./media/data-lake-storage-events/final_query.png "Tabloda en son kayıt görünür")
 
-6. Bu kaydı güncelleştirmek için `customer-order-update.csv` adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
+6. Bu kaydı güncelleştirmek için `customer-order-update.csv`adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-   Bu CSV dosyası, siparişin miktarı `228` `22` olarak değiştirilmedikçe öncekiyle neredeyse aynıdır.
+   Bu CSV dosyası, siparişin miktarı `228` `22`olarak değiştirilmedikçe öncekiyle neredeyse aynıdır.
 
 7. Depolama Gezgini, bu dosyayı depolama hesabınızın **giriş** klasörüne yükleyin.
 

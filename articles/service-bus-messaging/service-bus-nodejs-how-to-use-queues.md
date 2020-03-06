@@ -15,24 +15,22 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7ee3939c1a1b450f2458267ab0b70e3924a4869b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330609"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: node. js ve Azure-SB paketi ile Azure 'da Service Bus kuyruklarını kullanma
-
-> [!div class="op_multi_selector" title1="Programlama dili" title2="Node. js 'a paketi ekleyin"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 Bu öğreticide, [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Node. js uygulamaları oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve Azure-SB paketini dahili olarak kullanan Node. js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır.
 
-[Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) kullanarak daha hızlı bir deneyim edinebilirsiniz. Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Node. js ve @azure/service-bus paketiyle Service Bus kuyruklarını kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), aksi halde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
+> [!IMPORTANT]
+> [Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) kullanarak daha hızlı bir deneyim edinebilirsiniz. 
+> 
+> Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Node. js ve @azure/service-bus paketiyle Service Bus kuyruklarını kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), aksi halde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 - Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
     1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
@@ -80,7 +78,7 @@ Azure modülü Service Bus bağlanmak için gereken bilgileri almak üzere `AZUR
 
 Bir Azure Web sitesi için [Azure Portal][Azure portal] ortam değişkenlerini ayarlamaya ilişkin bir örnek için, bkz. [Storage ile Node. js web uygulaması][Node.js Web Application with Storage].
 
-## <a name="create-a-queue"></a>Kuyruk oluşturma
+## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 **Servicebusservice** nesnesi Service Bus kuyruklarıyla çalışmanıza olanak sağlar. Aşağıdaki kod bir **Servicebusservice** nesnesi oluşturur. Azure modülünü içeri aktarma ifadesinden sonra, **Server. js** dosyasının en üstüne yakın bir şekilde ekleyin:
 
 ```javascript

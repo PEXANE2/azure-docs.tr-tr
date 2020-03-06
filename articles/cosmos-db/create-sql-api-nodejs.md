@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 2e1f0313b6e611eac6968c17cececd382a6d45fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 117d4a5c1c4ac00e6d6a561f7dc4254a15a24f9c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664093"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330694"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabına bağlanmak ve veri sorgulamak için Node. js kullanma
 
@@ -33,9 +33,17 @@ Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı olu�
 - [Node. js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
-## <a name="create-a-database"></a>Veritabanı oluşturma
+## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos hesabı oluşturma
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Bu hızlı başlangıç amacıyla Azure Cosmos hesabı oluşturmak için [Azure Cosmos DB dene seçeneğini ücretsiz](https://azure.microsoft.com/try/cosmosdb/) olarak kullanabilirsiniz.
+
+1. [Ücretsiz deneme Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) sayfasına gidin.
+
+1. **SQL** API hesabı ' nı seçin ve **Oluştur**' u seçin. Outlook gibi Microsoft hesabı kullanarak oturum açın.
+
+1. Oturum açma başarılı olduktan sonra Azure Cosmos hesabınız hazırlanmalıdır. Yeni oluşturulan hesabı açmak için **Azure Portal aç '** ı seçin.
+
+"Ücretsiz Azure Cosmos DB dene" seçeneği bir Azure aboneliği gerektirmez ve 30 günlük sınırlı bir süre boyunca size bir Azure Cosmos hesabı sağlar. Azure Cosmos hesabını daha uzun bir süre için kullanmak istiyorsanız, hesabı Azure aboneliğinizde [oluşturmanız](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) gerekir.
 
 ## <a name="add-a-container"></a>Kapsayıcı ekleme
 
@@ -80,7 +88,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmeye ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz.
+Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmeye ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz.
 
 SQL JavaScript SDK 'sının önceki sürümüne alışkın değilseniz _, hüküm ve_ _belge_koşullarını görmek için kullanabilirsiniz. Azure Cosmos DB [birden çok API modelini](introduction.md)desteklediğinden, [JavaScript SDK 'sının 2.0 + sürümü](https://www.npmjs.com/package/@azure/cosmos) bir koleksiyon, grafik veya tablo olabilecek genel terimler _kapsayıcısını_ve kapsayıcının içeriğini açıklayan _öğeyi_ kullanır.
 
@@ -145,7 +153,7 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
   ```
 
 > [!NOTE]
-> Hem "güncelleştirme" hem de "silme" yöntemlerinde, `conatiner.item()`çağırarak, öğe veritabanından seçilmelidir. Geçirilen iki parametre öğenin kimliği ve öğenin bölüm anahtarıdır. Bu durumda, Parma anahtarı "Category" alanının değeridir.
+> Hem "güncelleştirme" hem de "silme" yöntemlerinde, `container.item()`çağırarak, öğe veritabanından seçilmelidir. Geçirilen iki parametre öğenin kimliği ve öğenin bölüm anahtarıdır. Bu durumda, Parma anahtarı "Category" alanının değeridir.
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 
@@ -176,10 +184,6 @@ Artık Veri Gezgini, değiştirebilir ve bu yeni verilerle çalışabilirsiniz.
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

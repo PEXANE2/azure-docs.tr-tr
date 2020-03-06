@@ -9,14 +9,13 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 11/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 21c6972b73f15a3f128b4a26222e478a5e2a245a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/05/2020
+ms.openlocfilehash: 5a8d31157023cf75076bfef7df09e65a066ceaa5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533926"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328634"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
@@ -48,7 +47,7 @@ Geçerli sürümde geliştirilmiş yeni CLı ve SDK istemcileri olsa da masaüst
 
 ## <a name="support-timeline"></a>Destek zaman çizelgesi
 
-9 Ocak 'ta, Machine Learning çalışma ekranı, Azure Machine Learning Denemesi ve Model Yönetimi hesapları için 2019 desteği ve bunlarla ilişkili SDK ve CLı sona erdi.
+9 Ocak 'ta, Machine Learning çalışma zamanı, Azure Machine Learning Denemesi ve Model Yönetimi hesapları için 2019 desteği ve bunlarla ilişkili SDK ve CLı bitti.
 
 En son tüm yetenekler, bu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md)ve [Portal](how-to-manage-workspace.md)kullanılarak kullanılabilir.
 
@@ -68,7 +67,7 @@ Modellerinizde eğitim ve yeni CLI ve SDK'sını kullanarak çalıştırma geçm
 
 Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
 
-Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python komutunda veya `az ml project attach` CLI komutunu kullanarak dizinin adını belirtin.  Örneğin:
+Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python komutunda veya `az ml project attach` CLI komutunu kullanarak dizinin adını belirtin.  Örnek:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

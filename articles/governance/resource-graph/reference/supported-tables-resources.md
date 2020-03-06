@@ -1,14 +1,14 @@
 ---
 title: Desteklenen Kaynak Yöneticisi kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.topic: reference
-ms.openlocfilehash: 3d6ba89cbf5c35c2a06a214029971341c4184b41
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 597e1c2f7e04a7861099763d809ac09978e09805
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227336"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399596"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -348,6 +348,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Search/searchservices
 - Microsoft. Security/Automations
 - Microsoft. Security/ıotsecuritysolutions
+- Microsoft. securitydetonation/Chambers
 - Microsoft. ServiceBus/ad alanları
 - Microsoft. servicefabric/kümeler
 - Microsoft. servicefabric/containergroupsets

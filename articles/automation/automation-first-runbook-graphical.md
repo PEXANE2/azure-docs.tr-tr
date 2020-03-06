@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246455"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331477"
 ---
 # <a name="my-first-graphical-runbook"></a>İlk grafik runbook uygulamam
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246455"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-Bu öğretici, Azure Automation’da bir [grafik runbook uygulaması](automation-runbook-types.md#graphical-runbooks) oluşturulmasını adım adım göstermektedir. Test ve yayımlayan basit bir runbook ile başlayın, bu sırada runbook işinin durumunun nasıl izleneceğini öğrenirken. Ardından runbook 'u gerçekten Azure kaynaklarını yönetmek üzere değiştirin, bu durumda bir Azure sanal makinesi başlatılıyor. Runbook parametreleri ve koşullu bağlantılar ekleyerek runbook 'u daha sağlam hale getirmek için öğreticiyi doldurun.
+Bu öğretici, Azure Automation’da bir [grafik runbook uygulaması](automation-runbook-types.md#graphical-runbooks) oluşturulmasını adım adım göstermektedir. Test ve yayımlayacağınız basit bir runbook ile başlayın. Bu işlem, runbook işinin durumunu nasıl izleyeceğinizi öğrenirken. Ardından runbook 'u gerçekten Azure kaynaklarını yönetmek üzere değiştirin, bu durumda bir Azure sanal makinesi başlatılıyor. Runbook parametreleri ve koşullu bağlantılar ekleyerek runbook 'u daha sağlam hale getirmek için öğreticiyi doldurun.
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
@@ -37,7 +37,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="step-1---create-runbook"></a>1\. Adım - Runbook oluşturma
 
-"Merhaba Dünya" metnini veren basit bir runbook oluşturarak başlayın.
+Çıktı olarak **Merhaba Dünya** metnini veren basit bir runbook oluşturun.
 
 1. Azure portalında, Otomasyon hesabınızı açın. 
 
@@ -78,7 +78,7 @@ Runbook 'u üretimde kullanılabilir hale getirmek için yayımlamadan önce, d�
 
    İşin durumu **kuyruğa alındı**olarak başlar ve işin buluttaki bir runbook worker 'ın kullanılabilir hale gelmesini beklediğini belirtir. Bir çalışan işi talep ettiği zaman, durum **başlayacak** şekilde değişir. Son olarak, runbook aslında çalışmaya başladığında durum **çalışıyor** olur.
 
-1. Runbook işi tamamlandığında, sınama sayfası çıktısını görüntüler. Bu durumda, **Merhaba Dünya** ifadesini görürsünüz.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Runbook işi tamamlandığında, test bölmesi çıktısını görüntüler. Bu durumda, **Merhaba Dünya** ifadesini görürsünüz.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. Tuvale geri dönmek için Test bölmesini kapatın.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>4\. Adım - Runbook’u yayımlama ve başlatma

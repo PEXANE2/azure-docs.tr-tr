@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448910"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402678"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verilerinde anomali algılama
 
@@ -40,14 +40,12 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Fazla çalışma sırasında anomali algılama çalıştırma
 
 > [!Note]
-> Bu öğretici, anomali algılayıcı API 'SI için önerilen [çözüm mimarisini](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) uygulamaya yönelik bir yaklaşım sunar.
+> * Bu öğretici, anomali algılayıcı API 'SI için önerilen [çözüm mimarisini](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) uygulamaya yönelik bir yaklaşım sunar.
+> * Bu öğretici anomali algılayıcısı API 'SI için ücretsiz bir deneme ile tamamlanamaz veya Azure Databricks. 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Hesabınız yoksa bir [Azure aboneliği](https://azure.microsoft.com/free/) oluşturun.
 
-> [!Note]
-> Bu öğretici anomali algılayıcı API 'SI için ücretsiz bir deneme anahtarıyla tamamlanamaz. Azure Databricks kümesini oluşturmak için ücretsiz hesap oluşturmak istiyorsanız kümeyi oluşturmadan önce profilinize gidin ve aboneliğini **kullandıkça öde** modeline geçirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Event Hubs ad alanı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) ve Olay Hub 'ı.
 
@@ -63,7 +61,7 @@ Ad alanı ve Olay Hub 'ı oluşturma hakkında bilgi için bkz. Azure Event Hubs
 
 Bu bölümde, [Azure Portal](https://portal.azure.com/)kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
+1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks** seçeneklerini belirleyin.
 
     ![Azure portal databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -153,7 +151,7 @@ Kitaplık sayfasında, kitaplığı kullanmak istediğiniz kümeyi seçin ve ard
 
 Bu öğreticide, Azure bilişsel [Hizmetler anomali algılayıcı API 'lerini](../overview.md) kullanarak, neredeyse gerçek zamanlı olarak KAG 'lerin bir akışında anomali algılama işlemini gerçekleştirebilirsiniz. API 'Leri kullanmadan önce Azure 'da bir anomali algılayıcı kaynağı oluşturmanız ve anomali algılayıcı API 'Lerini kullanmak için bir erişim anahtarı almanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. **+ Kaynak oluştur**’u seçin.
 
@@ -165,7 +163,7 @@ Bu öğreticide, Azure bilişsel [Hizmetler anomali algılayıcı API 'lerini](.
 
     |Değer |Açıklama  |
     |---------|---------|
-    |Ad     | Anomali algılayıcı kaynağı için bir ad.        |
+    |Adı     | Anomali algılayıcı kaynağı için bir ad.        |
     |Abonelik     | Kaynağın ilişkilendirileceği Azure aboneliği.        |
     |Konum     | Bir Azure konumu.        |
     |Fiyatlandırma katmanı     | Hizmet için bir fiyatlandırma katmanı. Anomali algılayıcı fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
@@ -203,7 +201,7 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 
 ## <a name="send-tweets-to-event-hubs"></a>Event Hubs’a tweet’ler gönderme
 
-İçinde **SendTweetsToEventHub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuyu, daha önce oluşturduğunuz Twitter uygulamasının ve Event Hubs ad alanı için değerlerle değiştirin. Bu not defteri, "Azure" anahtar kelimesiyle ve bu nesnelerin gerçek zamanlı olarak Event Hubs bir şekilde akışını, oluşturma süresini ve "Beğen" sayısını ayıklar.
+**Sendtweetstoeventhub** not defterine aşağıdaki kodu yapıştırın ve yer tutucusunu, daha önce oluşturduğunuz Event Hubs ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, "Azure" anahtar kelimesiyle ve bu nesnelerin gerçek zamanlı olarak Event Hubs bir şekilde akışını, oluşturma süresini ve "Beğen" sayısını ayıklar.
 
 ```scala
 //

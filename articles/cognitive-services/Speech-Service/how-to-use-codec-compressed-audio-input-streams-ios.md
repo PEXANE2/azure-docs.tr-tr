@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5d65ac83fc8a41008971108c5b370c1d0416113b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805867"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331528"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Nasıl yapılır: iOS 'ta konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
 Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, bir çekme veya gönderme akışı kullanarak konuşma hizmetine sıkıştırılmış ses akışını sağlamanın bir yolunu sağlar.
 
 > [!IMPORTANT]
-> İOS üzerinde sıkıştırılmış ses akışı için konuşma SDK 'Sı sürüm 1.7.0 veya üzeri gereklidir. [ C++Linux (Ubuntu 16,04 C#, Ubuntu 18,04, debir 9)](how-to-use-codec-compressed-audio-input-streams.md) ve [Android 'de](how-to-use-codec-compressed-audio-input-streams-android.md) Java için de desteklenir.
+> İOS üzerinde sıkıştırılmış ses akışı için konuşma SDK 'Sı sürüm 1.7.0 veya üzeri gereklidir. [ C++Linux (Ubuntu 16,04 C#, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md) ve [Android 'de](how-to-use-codec-compressed-audio-input-streams-android.md) Java için de desteklenir.
 
 WAV/PCM için ana hat konuşma belgelerine bakın. WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:
 
@@ -50,7 +50,7 @@ Bunu gerçekleştirmek için aşağıdaki ayarları Xcode projenize uygulayın:
 1. _Proje ayarlarındaki_çerçeveler için yolları ayarlayın.
    1. **Katıştırılmış Ikili dosyalar** başlığı altındaki **genel** sekmesinde, bir Framework olarak SDK Kitaplığı ekleyin: **katıştırılmış ikililer Ekle** > **diğer...** > seçtiğiniz dizine gidin ve her iki çerçeveyi seçin.
    1. **Derleme Ayarları** sekmesine gidin ve **Tümü** ayarını etkinleştirin.
-1. `$(SRCROOT)/..` dizinini **Arama Yolları** başlığı altında _Çerçeve Arama Yolları_’na ekleyin.
+1. `$(SRCROOT)/..` dizinini _Arama Yolları_ başlığı altında **Çerçeve Arama Yolları**’na ekleyin.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 

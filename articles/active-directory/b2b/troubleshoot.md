@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c7c0a4567da11b10b9a0571656103ef2f17c7da4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195530"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399046"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -102,7 +102,6 @@ Kimlik kiracısı tam zamanında (JıT) veya viral kiracınız (yani ayrı, yön
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Bir Azure ABD kamu kiracısında bir B2B işbirliği Konuk kullanıcısını davet edemiyorum
 
 Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD devlet bulutu dahilinde olan ve hem B2B işbirliğini destekleyen kiracılar arasında desteklenmektedir. Azure ABD kamu bulutunun parçası olmayan veya henüz B2B işbirliğini desteklemeyen bir kiracıya bir kullanıcı davet ederseniz bir hata alırsınız. Ayrıntılar ve sınırlamalar için bkz. [Azure Active Directory Premium P1 ve P2 Çeşitlemeler](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

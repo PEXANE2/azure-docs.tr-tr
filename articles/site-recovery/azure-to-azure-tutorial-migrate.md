@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954097"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303945"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
 
@@ -73,7 +73,7 @@ Bu öğreticide şunları yapacaksınız:
     - [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer)
     -  [Genel IP](../virtual-network/virtual-network-public-ip-address.md)
-    - Diğer ağ bileşenleri için [ağ belgelerine](https://docs.microsoft.com/azure/#pivot=products&panel=network)bakın.
+    - Diğer ağ bileşenleri için [ağ belgelerine](https://docs.microsoft.com/azure/?pivot=products&panel=network)bakın.
 
 
 
@@ -111,11 +111,11 @@ Aşağıdaki adımlarda, hedef bölgeye taşımanın nasıl gerçekleştirilece�
 
 1. Kasaya gidin. **Yinelenen öğeleri** > **Ayarlar** ' da, VM ' yi seçin ve ardından **Yük devretme**' yı seçin.
 2. **Yük devretme** bölümünde **En geç** seçeneğini belirleyin.
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
 4. İş bittikten sonra, sanal makinenin hedef Azure bölgesinde beklenen şekilde göründüğünden emin olun.
 
 
-## <a name="discard"></a>Mı 
+## <a name="discard"></a>At 
 
 Taşınan VM 'yi denetlediyseniz ve yük devretme noktası olarak değiştirilmesi veya önceki bir noktaya geri dönmek istiyorsanız, **çoğaltılan öğelerde**VM 'yi sağ seçin > **kurtarma noktasını değiştirin**. Bu adım size, farklı bir kurtarma noktası ve bunun için yük devretme belirtme seçeneği sağlar. 
 

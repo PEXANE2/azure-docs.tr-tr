@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: d17859d84846fd4223b8d80ff8156c7b11e57de5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 013ebc2a1343c8eab3d477023e36660c93fa6da5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894946"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373705"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifika kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: Azure portal
 
@@ -35,13 +35,13 @@ Noktadan Siteye yerel Azure sertifika kimlik doğrulaması bağlantıları, bu a
 Aşağıdaki değerleri kullanarak bir test ortamı oluşturabilir veya bu makaledeki örnekleri daha iyi anlamak için bu değerlere bakabilirsiniz:
 
 * **VNet Adı:** VNet1
-* **Adres alanı:** 192.168.0.0/16<br>Bu örnekte yalnızca bir adres alanı kullanılmaktadır. Sanal ağınıza ait birden fazla adres alanı olabilir.
+* **Adres alanı:** 10.1.0.0/16<br>Bu örnekte yalnızca bir adres alanı kullanılmaktadır. Sanal ağınıza ait birden fazla adres alanı olabilir.
 * **Alt ağ adı:** FrontEnd
-* **Alt ağ adres aralığı:** 192.168.1.0/24
+* **Alt ağ adres aralığı:** 10.1.0.0/24
 * **Abonelik:** Birden fazla aboneliğiniz varsa doğru aboneliği kullandığınızdan emin olun.
-* **Kaynak Grubu:** TestRG
+* **Kaynak Grubu:** TestRG1
 * **Konum:** Doğu ABD
-* **GatewaySubnet:** 192.168.200.0/24<br>
+* **Gatewaysubnet:** 10.1.255.0/27<br>
 * **Sanal ağ geçidi adı:** VNet1GW
 * **Ağ geçidi türü:** VPN
 * **VPN türü:** Rota tabanlı
@@ -52,19 +52,19 @@ Aşağıdaki değerleri kullanarak bir test ortamı oluşturabilir veya bu makal
 ## <a name="createvnet"></a>1. sanal ağ oluşturma
 
 Başlamadan önce, bir Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
-[!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
+[!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="creategw"></a>2. sanal ağ geçidi oluşturma
 
 Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
-[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
-
-[!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
-
 >[!NOTE]
 >Temel ağ geçidi SKU 'SU Ikev2 veya RADIUS kimlik doğrulamasını desteklemez. Mac istemcilerinin sanal ağınıza bağlanmasını planlıyorsanız, temel SKU 'YU kullanmayın.
 >
+
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
+
+[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ## <a name="generatecert"></a>3. sertifika oluşturma
 
@@ -82,31 +82,30 @@ Sertifikalar, Noktadan Noktaya VPN bağlantısı üzerinden VNet’e bağlanan i
 
 İstemci adres havuzu, belirttiğiniz özel IP adresleri aralığıdır. Noktadan Siteye VPN üzerinden bağlanan istemciler dinamik olarak bu aralıktaki bir IP adresini alır. Bağlantı kurduğunuz şirket içi konum veya bağlanmak istediğiniz sanal ağ ile çakışmayan özel bir IP adresi aralığı kullanın. Birden çok protokol yapılandırırsanız ve SSTP protokollerden biri ise, yapılandırılmış adres havuzu yapılandırılan protokoller arasında eşit olarak bölünür.
 
-1. Sanal ağ geçidi oluşturulduktan sonra sanal ağ geçidi sayfasının **Ayarlar** bölümüne gidin. **Ayarlar** bölümünde, **Noktadan siteye yapılandırması**’na tıklayın.
+1. Sanal ağ geçidi oluşturulduktan sonra sanal ağ geçidi sayfasının **Ayarlar** bölümüne gidin. **Ayarlar** bölümünde, **Noktadan siteye yapılandırma**' yı seçin. Yapılandırma sayfasını açmak için **Şimdi Yapılandır** ' ı seçin.
 
-   ![Noktadan Siteye sayfası](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
-2. Yapılandırma sayfasını açmak için **Şimdi yapılandır**’a tıklayın.
+   ![Noktadan siteye sayfası](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-configure.png "Noktadan siteye şimdi yapılandırma")
+2. **Noktadan siteye yapılandırma** sayfasında, çeşitli ayarları yapılandırabilirsiniz. Bu sayfada tünel türü veya kimlik doğrulama türü görmüyorsanız, ağ geçidiniz temel SKU 'YU kullanıyor demektir. Temel SKU, IKEv2 veya RADIUS kimlik doğrulamasını desteklemez. Bu ayarları kullanmak istiyorsanız, farklı bir ağ geçidi SKU 'SU kullanarak ağ geçidini silip yeniden oluşturmanız gerekir.
 
-   ![Şimdi yapılandır](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. **Noktadan siteye** yapılandırma sayfasında, **Adres havuzu** kutusunda kullanmak istediğiniz özel IP adresi aralığını ekleyin. VPN istemcileri, belirttiğiniz aralıktan dinamik olarak bir IP adresi alır. Etkin/etkin yapılandırma için en düşük alt ağ maskesi, etkin/Pasif ve 28 bit için 29 bittir. Ayarı doğrulayıp kaydetmek için **Kaydet**’e tıklayın.
-
-   ![İstemci adres havuzu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
-
-   >[!NOTE]
-   >Bu sayfadaki portalda Tünel türü veya Kimlik Doğrulama türü görmüyorsanız, ağ geçidiniz Temel SKU kullanıyor demektir. Temel SKU, IKEv2 veya RADIUS kimlik doğrulamasını desteklemez.
-   >
+   [![Noktadan siteye yapılandırma sayfası](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-address.png "adres havuzunu belirtin")](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-expanded.png#lightbox)
+3. **Adres havuzu** kutusuna, kullanmak ISTEDIĞINIZ özel IP adresi aralığını ekleyin. VPN istemcileri, belirttiğiniz aralıktan dinamik olarak bir IP adresi alır. Etkin/etkin yapılandırma için en düşük alt ağ maskesi, etkin/Pasif ve 28 bit için 29 bittir.
+4. Tünel türünü yapılandırmak için sonraki bölüme geçin.
 
 ## <a name="tunneltype"></a>5. tünel türünü yapılandırın
 
-Tünel türünü seçebilirsiniz. Tünel seçenekleri OpenVPN, SSTP ve IKEv2 ' dir. Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır. Windows istemcileri önce IKEv2’yi dener ve bağlanamazsa SSTP’ye döner. OpenVPN istemcisini, OpenVPN tünel türüne bağlanmak için kullanabilirsiniz.
+Tünel türünü seçebilirsiniz. Tünel seçenekleri OpenVPN, SSTP ve IKEv2 ' dir.
 
-![Tünel türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
+* Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır.
+* Windows istemcileri önce Ikev2 'yi dener ve bağlanmazsa SSTP 'ye geri döner.
+* OpenVPN istemcisini, OpenVPN tünel türüne bağlanmak için kullanabilirsiniz.
+
+![Tünel türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunnel.png "Tünel türünü belirtin")
 
 ## <a name="authenticationtype"></a>6. kimlik doğrulama türünü yapılandırın
 
-**Azure sertifikası**’nı seçin.
+**Kimlik doğrulama türü**için **Azure sertifikası**' nı seçin.
 
-  ![Tünel türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
+  ![Kimlik doğrulama türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "kimlik doğrulama türünü belirtin")
 
 ## <a name="uploadfile"></a>7. kök sertifika genel sertifika verilerini karşıya yükleyin
 
@@ -116,13 +115,13 @@ Toplam 20 adede kadar güvenilir kök sertifikayı karşıya yükleyebilirsiniz.
 2. Kök sertifikayı Base-64 ile kodlanmış X.509 (.cer) dosyası olarak dışarı aktardığınızdan emin olun. Sertifikayı metin düzenleyiciyle açabilmek için bu biçimde dışa aktarmanız gerekir.
 3. Sertifikayı Not Defteri gibi bir metin düzenleyiciyle açın. Sertifika verilerini kopyalarken, metni satır başları ya da satır besleme karakterleri içermeyen tek ve kesintisiz bir satır şeklinde kopyaladığınızdan emin olun. Satır başlarını ve satır besleme karakterlerini görmek için metin düzenleyicisindeki görünümünüzü 'Sembolü Göster/Tüm karakterleri göster' olarak değiştirmeniz gerekebilir. Yalnızca aşağıdaki bölümü kesintisiz bir satır olarak kopyalayın:
 
-   ![Sertifika verileri](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
-4. Sertifika verilerini **Ortak Sertifika Verileri** alanına yapıştırın. Sertifikayı **Adlandırın** ve **Kaydet**’e tıklayın. En fazla 20 güvenilen kök sertifika ekleyebilirsiniz.
+   ![Sertifika verileri](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png "kök sertifika verilerini kopyalama")
+4. Sertifika verilerini **Ortak Sertifika Verileri** alanına yapıştırın. Sertifikayı **adlandırın** ve ardından **Kaydet**' i seçin. En fazla 20 güvenilen kök sertifika ekleyebilirsiniz.
 
-   ![Sertifika yükleme](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
-5. Yapılandırma ayarlarının tümünü kaydetmek için sayfanın en üstünde yer alan **Kaydet**’e tıklayın.
+   ![Sertifika verilerini yapıştırma](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png "Sertifika verilerini yapıştırma")
+5. Tüm yapılandırma ayarlarını kaydetmek için sayfanın en üstünde **Kaydet** ' i seçin.
 
-   ![Kaydet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![Yapılandırmayı Kaydet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png "yapılandırmayı Kaydet")
 
 ## <a name="installclientcert"></a>8. bir içe aktarılmış istemci sertifikası yükler
 
@@ -145,14 +144,14 @@ VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal 
 >
 >
 
-1. İstemci bilgisayarda VNet'inize bağlanmak için VPN bağlantılarında gezinin ve oluşturduğunuz VPN bağlantısını bulun. Bu VPN bağlantısı sanal ağınızla aynı ada sahiptir. **Bağlan**'a tıklayın. Sertifika kullanımına ilişkin bir açılır ileti görüntülenebilir. Yükseltilmiş ayrıcalıklar kullanmak için **Devam**’a tıklayın.
+1. İstemci bilgisayarda sanal ağınıza bağlanmak için VPN bağlantılarında gezinin ve oluşturduğunuz VPN bağlantısını bulun. Bu VPN bağlantısı sanal ağınızla aynı ada sahiptir. **Bağlan**’ı seçin. Sertifika kullanımına ilişkin bir açılır ileti görüntülenebilir. Yükseltilmiş ayrıcalıkları kullanmak için **devam** ' ı seçin.
 
-2. **Bağlantı** durum sayfasında **Bağlan**'a tıklayarak bağlantıyı başlatın. Bir **Sertifika Seç** ekranı çıkarsa, gösterilen istemci sertifikasının bağlanmak için kullanmak istediğiniz sertifika olduğunu doğrulayın. Başka bir sertifika gösteriliyorsa, açılan liste okunu kullanarak doğru sertifikayı seçin ve **Tamam**’a tıklayın.
+2. **Bağlantı durumu sayfasında** , bağlantıyı başlatmak için **Bağlan** ' ı seçin. Bir **Sertifika Seç** ekranı çıkarsa, gösterilen istemci sertifikasının bağlanmak için kullanmak istediğiniz sertifika olduğunu doğrulayın. Değilse, doğru sertifikayı seçmek için aşağı açılan oku kullanın ve ardından **Tamam**' ı seçin.
 
-   ![VPN istemcisinin Azure’a bağlanması](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
+   ![VPN istemcisi Azure 'a bağlanır](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png "bağlanmaya")
 3. Bağlantınız kurulur.
 
-   ![Bağlantı kuruldu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+   ![Bağlantı oluşturuldu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png "bağlantı oluşturuldu")
 
 #### <a name="troubleshoot-windows-p2s-connections"></a>Windows P2S bağlantılarının sorunlarını giderme
 
@@ -160,11 +159,11 @@ VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal 
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Mac VPN istemcisinden bağlanmak için
 
-Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulun, [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) dosyasından ayarları belirleyin ve **Bağlan**’a tıklayın.
+Ağ iletişim kutusunda, kullanmak istediğiniz istemci profilini bulun, [vpnsettings. xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)' den ayarları belirtin ve sonra **Bağlan**' ı seçin.
 
 Ayrıntılı yönergeler için [Install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) ' i işaretleyin. Bağlanmayla ilgili sorun yaşıyorsanız, sanal ağ geçidinin temel bir SKU kullanmadığından emin olun. Temel SKU, Mac istemcileri için desteklenmez.
 
-  ![Mac bağlantısı](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
+  ![Mac bağlantısı](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png "Bağlan")
 
 ## <a name="verify"></a>Bağlantınızı doğrulamak için
 
@@ -204,7 +203,7 @@ Azure'a en fazla 20 güvenilen kök sertifika .cer dosyası ekleyebilirsiniz. Y�
 
 1. Güvenilen kök sertifikayı kaldırmak için, sanal ağ geçidinizin **Noktadan siteye yapılandırma** sayfasına gidin.
 2. Sayfanın **Kök sertifika** bölümünde, kaldırmak istediğiniz sertifikayı bulun.
-3. Sertifikanın yanındaki üç noktaya tıklayın ve ardından ‘Kaldır’a tıklayın.
+3. Sertifikanın yanındaki üç noktayı seçin ve ardından ' Kaldır ' seçeneğini belirleyin.
 
 ## <a name="revokeclient"></a>İstemci sertifikasını iptal etmek için
 

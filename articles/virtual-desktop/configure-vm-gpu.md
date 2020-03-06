@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384816"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -82,7 +82,7 @@ Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağı
 Uzak Masaüstü 'Nün GPU hızlandırmalı kodlama kullandığını doğrulamak için:
 
 1. Windows sanal masaüstü istemcisi 'ni kullanarak VM 'nin masaüstüne bağlanın.
-2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulama ve hizmet günlükleri** > **Microsoft** > **Windows** > **remotedesktopservices-rdpcorets** > **işletimsel**
+2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulama ve hizmet günlükleri** **Microsoft** > **Windows** > **RemoteDesktopServices-rdpcorecdv** > **işletimsel** > 
 3. GPU hızlandırmalı kodlamanın kullanıldığını anlamak için, olay KIMLIĞI 170 ' i arayın. "AVC donanım Kodlayıcısı etkin: 1" görürseniz, GPU kodlaması kullanılır.
 4. AVC 444 modunun kullanıldığını anlamak için, olay KIMLIĞI 162 ' yi arayın. "AVC kullanılabilir: 1 başlangıç profili: 2048" görürseniz, AVC 444 kullanılır.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8faf223a4871f6f109f9d133716989b1bcfdee08
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303197"
 ---
 # <a name="floor-azure-cosmos-db"></a>KAT (Azure Cosmos DB)
  Belirtilen sayısal ifade küçük veya eşit en büyük tamsayı döndürür.  
@@ -40,11 +40,15 @@ FLOOR (<numeric_expr>)
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{fl1: 123, fl2: -124, fl3: 0}]  
-```  
+```
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 607020f1d540e83a4d049b96b9ab9a4ebcd385f0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157262"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302721"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>REST kullanarak HDInsight üzerinde Apache Hadoop MapReduce işleri çalıştırma
 
@@ -22,11 +22,11 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 > [!NOTE]  
 > Linux tabanlı Hadoop sunucuları kullanmayı zaten biliyorsanız, ancak HDInsight 'a yeni bir adım daha sahipseniz [HDInsight 'Ta Linux tabanlı Apache Hadoop hakkında bilmeniz](../hdinsight-hadoop-linux-information.md) gerekenler bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Şunlardan biri:
+Kullanabilir
   * Windows PowerShell veya,
   * [JQ](https://stedolan.github.io/jq/) ile [kıvrımlı](https://curl.haxx.se/)
 
@@ -37,7 +37,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 >
 > REST API, [temel erişim kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication)kullanılarak güvenli hale getirilir. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderilmesini sağlamak için her zaman HTTPS kullanarak istek yapmalısınız.
 
-### <a name="curl"></a>Curl
+### <a name="curl"></a>Kıvr
 
 1. Kullanım kolaylığı için aşağıdaki değişkenleri ayarlayın. Bu örnek, bir Windows ortamını temel alır ve ortamınız için gerektiği şekilde gözden geçirin.
 
@@ -171,7 +171,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
 1. İşin durumu `SUCCEEDED`olarak değiştiğinde, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. Sorguyla geçirilen `statusdir` parametresi, çıkış dosyasının konumunu içerir. Bu örnekte, konum `/example/curl`. Bu adres, `/example/curl`konumundaki kümelerin varsayılan depolama alanında işin çıkışını depolar.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)kullanarak bu dosyaları listeleyebilir ve indirebilirsiniz. Azure CLı 'dan blob 'larla çalışma hakkında daha fazla bilgi için bkz. Azure [CLI 'Yı Azure depolama belgesiyle kullanma](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) .
+[Azure CLI](/cli/azure/install-azure-cli)kullanarak bu dosyaları listeleyebilir ve indirebilirsiniz. Azure Blob depolama ile çalışmak üzere Azure CLı kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure CLI ile Blobları oluşturma, indirme ve listeleme](../../storage/blobs/storage-quickstart-blobs-cli.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

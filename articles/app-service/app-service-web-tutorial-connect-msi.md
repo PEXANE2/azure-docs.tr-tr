@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524402"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330881"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -240,6 +240,9 @@ GO
 *\<Identity-name >* , Azure AD 'de yönetilen kimliğin adıdır. Sistem atanmış olduğundan, App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
 
 Cloud Shell istemine geri dönmek için `EXIT` yazın.
+
+> [!NOTE]
+> Yönetilen kimliklerin arka uç Hizmetleri, bir hedef kaynağın belirtecini yalnızca süresi dolarsa güncelleştiren [bir belirteç önbelleği de sağlar](overview-managed-identity.md#obtain-tokens-for-azure-resources) . SQL veritabanı izinlerinizi yapılandırırken bir hata yaparsanız ve uygulamanızla belirteç almaya *çalıştıktan sonra* izinleri değiştirmeye çalışırsanız, önbelleğe alınan belirtecin süresi dolana kadar güncelleştirilmiş izinlerle yeni bir belirteç alınmaz.
 
 ### <a name="modify-connection-string"></a>Bağlantı dizesini değiştirme
 

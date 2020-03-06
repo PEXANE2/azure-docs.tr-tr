@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331153"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux için OpenSSL’yi yapılandırma
 
@@ -40,15 +40,15 @@ OPENSSLDIR altında `certs` alt dizin olup olmadığını denetleyin. Yukarıdak
 ## <a name="examples"></a>Örnekler
 
 - OPENSSLDIR `/opt/ssl`. Birçok `.crt` veya `.pem` dosyası içeren `certs` alt dizini vardır.
-Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce `/opt/ssl/certs` göstermek için ortam değişkeni `SSL_CERT_DIR` ayarlayın. Örneğin:
+Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce `/opt/ssl/certs` göstermek için ortam değişkeni `SSL_CERT_DIR` ayarlayın. Örnek:
 ```bash
-SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR `/etc/pki/tls`. Bir sertifika paketi dosyası (örneğin `ca-bundle.pem` veya `ca-bundle.crt`) vardır.
-Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce `/etc/pki/tls/ca-bundle.pem` göstermek için ortam değişkeni `SSL_CERT_FILE` ayarlayın. Örneğin:
+- OPENSSLDIR `/etc/pki/tls` (RHEL/CentOS tabanlı sistemlerde olduğu gibi). Bir sertifika paketi dosyası olan `certs` alt dizini vardır, örneğin `ca-bundle.crt`.
+Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce bu dosyayı işaret etmek için ortam değişkeni `SSL_CERT_FILE` ayarlayın. Örnek:
 ```bash
-SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

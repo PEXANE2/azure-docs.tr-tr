@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819881"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302874"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure iş ortağı müşteri kullanımı ilişkilendirmesi
 
@@ -87,7 +87,7 @@ Kaynak, iç içe veya bağlı şablonlarda değil yalnızca **Maintemplate. JSON
 
 ## <a name="use-the-resource-manager-apis"></a>Kaynak Yöneticisi API 'Lerini kullanma
 
-Bazı durumlarda, Azure hizmetlerini dağıtmak için Kaynak Yöneticisi REST API 'Lerine doğrudan çağrı yapmayı tercih edebilirsiniz. Azure, bu çağrıları etkinleştirmek için [birden çok SDK 'yi destekler](https://docs.microsoft.com/azure/#pivot=sdkstools) . SDK 'Lardan birini kullanabilir veya doğrudan kaynak dağıtmak için REST API 'Lerini çağırabilirsiniz.
+Bazı durumlarda, Azure hizmetlerini dağıtmak için Kaynak Yöneticisi REST API 'Lerine doğrudan çağrı yapmayı tercih edebilirsiniz. Azure, bu çağrıları etkinleştirmek için [birden çok SDK 'yi destekler](https://docs.microsoft.com/azure/?pivot=sdkstools) . SDK 'Lardan birini kullanabilir veya doğrudan kaynak dağıtmak için REST API 'Lerini çağırabilirsiniz.
 
 Kaynak Yöneticisi şablonu kullanıyorsanız, daha önce açıklanan yönergeleri izleyerek çözümünüzü etiketlemelisiniz. Kaynak Yöneticisi şablonu kullanmıyorsanız ve doğrudan API çağrıları yaparsanız, Azure kaynaklarının kullanımını ilişkilendirmek için dağıtımınızı etiketleyerek yine de kullanabilirsiniz.
 
@@ -296,7 +296,7 @@ Ayrıca, teknik satış, dağıtım ve uygulama geliştirme senaryolarına yöne
     * İletişim bilgilerini doldurun/gözden geçirin.
     * Danışmanın ayrıntıları önceden doldurulmuş veya açılan kutudan seçim olabilir.
     * Sorun için bir başlık ve açıklama girin (mümkün olduğunca fazla ayrıntı sağlayın).
-1. Gönder 'e tıklayın
+1. Gönder’e tıklayın
 
 [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)ekran görüntüleriyle birlikte adım adım yönergeleri görüntüleyin.
 

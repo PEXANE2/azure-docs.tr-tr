@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359881"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329129"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure hizmet yönetimi sertifikasını karşıya yükleme
 Yönetim sertifikaları, Azure tarafından sunulan klasik dağıtım modeliyle kimlik doğrulaması yapmanıza olanak sağlar. Birçok program ve araç (Visual Studio veya Azure SDK gibi), çeşitli Azure hizmetlerinin yapılandırmasını ve dağıtımını otomatik hale getirmek için bu sertifikaları kullanır. 
@@ -29,7 +29,7 @@ Azure sertifikaları (otomatik olarak imzalanan sertifika oluşturma dahil) hakk
 
 Otomasyon amacıyla istemci kodunun kimliğini doğrulamak için [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) de kullanabilirsiniz.
 
-**Not:** Yönetim sertifikaları altında herhangi bir işlem gerçekleştirmek için abonelikte ortak yönetici olmanız gerekir. Yeni Azure portalından ortak yönetici ekleme veya kaldırma hakkında [daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=849300) 
+**Note:** Yönetim sertifikaları altında herhangi bir işlem gerçekleştirmek için abonelikte ortak yönetici olmanız gerekir. Yeni Azure portalından ortak yönetici ekleme veya kaldırma hakkında [daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=849300) 
 
 ## <a name="upload-a-management-certificate"></a>Yönetim sertifikasını karşıya yükleme
 Bir yönetim sertifikanız oluşturulduktan sonra (yalnızca ortak anahtarla. cer dosyası) portala karşıya yükleyebilirsiniz. Sertifika portalda kullanılabilir olduğunda, eşleşen sertifikaya sahip olan herkes (özel anahtar) Yönetim API 'sinden bağlanabilir ve ilişkili aboneliğin kaynaklarına erişebilir.
@@ -52,4 +52,4 @@ Bir yönetim sertifikanız oluşturulduktan sonra (yalnızca ortak anahtarla. ce
     ![Ayarlar](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık bir abonelikle ilişkili bir yönetim sertifikanız olduğuna göre, (eşleşen sertifikayı yerel olarak yükledikten sonra), otomatik olarak [klasik dağıtım modeline bağlanıp REST API](/azure/#pivot=sdkstools) ve çeşitli Azure kaynaklarını otomatikleştirin aynı zamanda bu abonelikle de ilişkilendirilir.
+Artık bir abonelikle ilişkili bir yönetim sertifikanız olduğuna göre, (eşleşen sertifikayı yerel olarak yükledikten sonra), otomatik olarak [klasik dağıtım modeline bağlanıp REST API](/azure/?pivot=sdkstools) ve ayrıca bu abonelikle Ilişkili çeşitli Azure kaynaklarını otomatikleştirin.

@@ -160,6 +160,8 @@
       items:
         - name: Azure portalından
           items:
+            - name: Genel Bakış
+              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Geri Yükleme

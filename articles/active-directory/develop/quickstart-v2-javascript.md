@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 9077d5c471911c9967c327c457d683b06856b920
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 40f5935c7d653ce90aa56bc5ee2bb15711bb9dd8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249060"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399262"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -82,9 +82,11 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 > [Kod örneğini indirin]()
 
 > [!div renderon="docs"]
+
 > #### <a name="step-3-configure-your-javascript-app"></a>3\. Adım: JavaScript uygulamanızı yapılandırma
 >
-> *Javascriptspa* klasöründe, *AuthConfig. js*' yi düzenleyin ve `msalConfig`altındaki `clientID` ve `authority` değerlerini ayarlayın.
+> *Javascriptspa* klasöründe, *AuthConfig. js*' yi düzenleyin ve `msalConfig`altındaki `clientID`, `authority` ve `redirectUri` değerlerini ayarlayın.
+>
 > ```javascript
 >
 >  // Config object to be passed to Msal on creation
@@ -97,10 +99,10 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 >    cache: {
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
->      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
 >    }
 >  };  
-> ```
+>
+>```
 
 > [!div renderon="portal"]
 > > [!NOTE]
@@ -124,6 +126,27 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 > Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık. 
 
 > [!div renderon="docs"]
+> 
+> Ardından, yine aynı klasörde, `graphMeEndpoint` ve `apiConfig` nesnesi için `graphMeEndpoint` ayarlamak için *Graphconfig. js* dosyasını düzenleyin.
+> ```javascript
+>   // Add here the endpoints for MS Graph API services you would like to use.
+>   const graphConfig = {
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>   };
+>
+>   // Add here scopes for access token to be used at MS Graph API endpoints.
+>   const tokenRequest = {
+>       scopes: ["Mail.Read"]
+>   };
+> ```
+>
+
+> [!div renderon="docs"]
+>
+> Konumlar:
+> - *\<Enter_the_Graph_Endpoint_Here >* , API çağrılarının üzerinden verilecek uç noktadır. Ana veya küresel Microsoft Graph API hizmeti için `https://graph.microsoft.com`girmeniz yeterlidir. Daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](https://docs.microsoft.com/graph/deployments)
+>
 > #### <a name="step-4-run-the-project"></a>4\. Adım: projeyi çalıştırma
 
 [Node. js](https://nodejs.org/en/download/)kullanarak projeyi bir Web sunucusuyla çalıştırın:
@@ -155,7 +178,6 @@ MSAL kitaplığı, kullanıcıları imzalar ve Microsoft Identity platform taraf
 > [!TIP]
 > Önceki sürümü [msal. js yayınları](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)altındaki en son yayınlanan sürümle değiştirebilirsiniz.
 
-
 Alternatif olarak, Node. js yüklüyse, Node. js Paket Yöneticisi (NPM) üzerinden en son sürümü indirebilirsiniz:
 
 ```batch
@@ -177,7 +199,6 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
   };  
 
@@ -228,7 +249,7 @@ MSAL belirteçleri elde etmek için üç yöntem kullanır: `acquireTokenRedirec
 `acquireTokenSilent` yöntemi, Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. `loginRedirect` veya `loginPopup` yöntemi ilk kez yürütüldükten sonra, `acquireTokenSilent`, sonraki çağrılar için korunan kaynaklara erişmek için kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. Belirteçleri istek veya yenileme çağrıları sessizce yapılır.
 
 ```javascript
-// Add scopes for the access token to be used at Microsoft Graph API endpoints.
+
 const tokenRequest = {
     scopes: ["Mail.Read"]
 };

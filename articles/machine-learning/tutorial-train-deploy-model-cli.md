@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393342"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> "LocalWebservice varlığı denetlenemedi" hakkında bir uyarı alabilirsiniz. Yerel bir Web hizmeti dağıtmadıkça bunu güvenle yoksayabilirsiniz.
+> "LocalWebservice varlığı denetlenemedi" veya "Docker Client oluşturulamadı" hatasıyla ilgili bir uyarı alabilirsiniz. Yerel bir Web hizmeti dağıtmadıkça bunu güvenle yoksayabilirsiniz.
 
 Bu komut, daha önce kaydettiğiniz modelin 1. sürümünü kullanarak `myservice`adlı yeni bir hizmet dağıtır.
 

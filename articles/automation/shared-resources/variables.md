@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273592"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303061"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Otomasyonu 'nda değişken varlıklar
 
@@ -33,9 +33,6 @@ Otomasyon değişkenleri kalıcı olduğundan, runbook veya DSC yapılandırmas�
 Bir değişken oluştururken Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Diğer güvenli varlıklar, kimlik bilgileri, sertifikalar ve bağlantılar içerir. Azure Otomasyonu, bu varlıkları şifreler ve her bir Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanarak depolar. Anahtar, sistem tarafından yönetilen bir Key Vault depolanır. Güvenli bir varlık depolamadan önce Azure Otomasyonu, Key Vault anahtarı yükler ve ardından varlığı şifrelemek için onu kullanır. 
 
 Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Değeri, Azure PowerShell modülünün bir parçası olarak sevk edilen [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) cmdlet 'i kullanılarak alınamaz. Şifrelenmiş bir değeri almanın tek yolu, runbook veya DSC yapılandırmasındaki **Get-AutomationVariable** etkinliğini kullanmaktır.
-
->[!NOTE]
->Bir değişkenin şifrelemesini kaldırmak istiyorsanız, değişkeni silmeniz ve şifrelenmemiş olarak yeniden oluşturmanız gerekir.
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
@@ -96,6 +93,9 @@ Aşağıdaki tablodaki işlevler, bir Python2 runbook 'taki değişkenlere eriş
 1. Otomasyon hesabınızdan **varlıklar** kutucuğuna tıklayın ve ardından **varlıklar** dikey penceresinde **değişkenler**' i seçin.
 2. **Değişkenler** kutucuğunda **değişken Ekle**' yi seçin.
 3. **Yeni değişken dikey penceresindeki** seçenekleri doldurun ve sonra yeni değişkeni kaydetmek için **Oluştur** ' a tıklayın.
+
+>[!NOTE]
+>Bir değişkenin şifrelemesini kaldırmak istiyorsanız, değişkeni silmeniz ve şifrelenmemiş olarak yeniden oluşturmanız gerekir.
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>Windows PowerShell ile yeni bir değişken oluşturma
 

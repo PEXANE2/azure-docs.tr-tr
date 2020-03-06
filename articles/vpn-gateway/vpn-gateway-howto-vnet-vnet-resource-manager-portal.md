@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654784"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399202"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portalını kullanarak bir VNet-VNet VPN ağ geçidi bağlantısı yapılandırma
 
@@ -23,7 +23,7 @@ Bu makalede, sanal ağlar (Vnet'ler) bağlanma VNet-VNet bağlantı türünü ku
 Bu makaledeki adımlarda, Azure Resource Manager dağıtım modeli için geçerlidir ve Azure portalını kullanın. Aşağıdaki makalelerde açıklanan seçeneklerini kullanarak, farklı bir dağıtım aracı veya modeli ile bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portalında](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -75,16 +75,16 @@ Bu makale, VNet-VNet bağlantı türünü kullanarak sanal ağları bağlama iş
 
 - **Sanal ağ ayarları**
     - **Ad**: VNet1
-    - **Adres alanı**: 10.11.0.0/16
+    - **Adres alanı**: 10.1.0.0/16
     - **Abonelik**: kullanmak istediğiniz aboneliği seçin.
     - **Kaynak grubu**: TestRG1
     - **Konum**: Doğu ABD
     - **Alt ağ**
         - **Ad**: ön uç
-        - **Adres aralığı**: 10.11.0.0/24
+        - **Adres aralığı**: 10.1.0.0/24
     - **Ağ geçidi alt ağı**:
         - **Ad**: *gatewaysubnet* , oto doldurulmuştur
-        - **Adres aralığı**: 10.11.255.0/27
+        - **Adres aralığı**: 10.1.255.0/27
 
 - **Sanal ağ geçidi ayarları**
     - **Ad**: VNet1GW
@@ -126,11 +126,6 @@ Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyu
 
 ### <a name="to-create-a-virtual-network"></a>Sanal ağ oluşturmak için
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
-
-## <a name="add-additional-address-space-and-create-subnets"></a>Ek adres alanı ekleme ve alt ağ oluşturma
-Sanal ağınız oluşturulduktan sonra ek adres alanı ekleyebilir ve alt ağ oluşturabilirsiniz.
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="create-a-virtual-network-gateway"></a>Sanal ağ geçidi oluşturma
 Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir. Bu yapılandırmayı bir alıştırma olarak oluşturuyorsanız, bkz. [örnek ayarlar](#example-settings).

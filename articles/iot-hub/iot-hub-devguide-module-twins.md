@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807434"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303605"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub modül TWINS 'i anlayın ve kullanın
 
@@ -236,11 +236,15 @@ Modül uygulaması, aşağıdaki atomik işlemleri kullanarak ikizi modülü üz
 
 Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve aşağıdaki kısıtlamalara sahiptir:
 
-* JSON nesnelerindeki tüm anahtarlar büyük/küçük harfe duyarlı 64 bayt UTF-8 UNICODE dizeleridir. İzin verilen karakterler UNICODE denetim karakterlerini (C0 ve C1 kesimleri) ve `.`, SP ve `$`hariç tutar.
+* **Anahtarlar**: JSON nesnelerindeki tüm anahtarlar büyük/küçük harfe duyarlı 64 bayt UTF-8 UNICODE dizeleridir. İzin verilen karakterler UNICODE denetim karakterlerini (C0 ve C1 kesimleri) ve `.`, SP ve `$`hariç tutar.
 
-* JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor. Tamsayılar için maksimum değer 4503599627370495, tamsayıların en küçük değeri ise-4503599627370496 ' dir.
+* **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor.
 
-* Etiketler, istenen ve raporlanan özelliklerin tüm JSON nesneleri en fazla 5 derinliğine sahip olabilir. Örneğin, aşağıdaki nesne geçerlidir:
+    * Tamsayılar en az-4503599627370496 ve en yüksek değer olan 4503599627370495 değerine sahip olabilir.
+
+    * Dize değerleri UTF-8 kodlardır ve en fazla 512 bayt uzunluğunda olabilir.
+
+* **Derinlik**: etiketlerdeki, istenen ve RAPORLANAN tüm JSON nesnelerinin derinliği en fazla 5 olabilir. Örneğin, aşağıdaki nesne geçerlidir:
 
     ```json
     {
@@ -262,13 +266,21 @@ Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve a
     }
     ```
 
-* Tüm dize değerleri en fazla 512 bayt uzunluğunda olabilir.
-
 ## <a name="module-twin-size"></a>Modül ikizi boyutu
 
-IoT Hub, `tags`değerinde 8 KB boyutunda bir boyut sınırı ve `properties/desired` ve `properties/reported`değeri üzerinde her biri 32 KB boyutunda bir boyut sınırlaması uygular. Bu toplamlar salt okunurdur öğeleri dışlıyor.
+IoT Hub, `tags`değerinde 8 KB boyutunda bir boyut sınırı ve `properties/desired` ve `properties/reported`değeri üzerinde her biri 32 KB boyutunda bir boyut sınırlaması uygular. Bu toplamlar `$etag`, `$version`ve `$metadata/$lastUpdated`gibi salt yazılır öğelerin dışlanmalıdır.
 
-Boyut, UNICODE denetim karakterleri (segment C0 ve C1) ve dize sabitleri dışında kalan boşluklar hariç olmak üzere tüm karakterlerin sayılarak hesaplanır.
+İkizi boyutu şu şekilde hesaplanır:
+
+* JSON belgesindeki her bir özellik için, IoT Hub üst üste hesaplar ve özelliğin anahtar ve değerinin uzunluğunu ekler.
+
+* Özellik anahtarları UTF8 kodlu dizeler olarak değerlendirilir.
+
+* Basit özellik değerleri, UTF8 kodlu dizeler, sayısal değerler (8 bayt) veya Boole değerleri (4 bayt) olarak değerlendirilir.
+
+* UTF8 kodlu dizelerin boyutu, UNICODE denetim karakterleri (segment C0 ve C1) hariç tüm karakterlerin sayılarak hesaplanır.
+
+* Karmaşık özellik değerleri (iç içe geçmiş nesneler), içerdikleri özellik anahtarlarının ve özellik değerlerinin toplam boyutu temel alınarak hesaplanır.
 
 IoT Hub, sınırın üzerinde bu belgelerin boyutunu arttırabilecek tüm işlemleri bir hata ile reddeder.
 

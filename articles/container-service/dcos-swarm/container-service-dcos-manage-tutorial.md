@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278345"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402804"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>Kullanım DıŞı Azure Container Service öğreticisi-DC/OS 'yi yönetme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıçta, DC/OS kümesi dağıtmak ve temel iş yükü çalıştırmak için gerekli temel adımlar ayrıntılı olarak açıklanır.
+DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıçta, DC/OS kümesi dağıtmak ve temel iş yükünü çalıştırmak için gereken temel adımlar ayrıntılı olarak vardır.
 
 > [!div class="checklist"]
 > * ACS DC/OS kümesi oluşturma
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 SSH tüneli oluşturmak için aşağıdaki komutu çalıştırın ve ekrandaki yönergeleri izleyin. 80 bağlantı noktası zaten kullanımdaysa komut başarısız olur. Tünel oluşturulacak bağlantı noktasını kullanımda olmayan bir bağlantı noktası olarak (`85:localhost:80` gibi) güncelleştirin. 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 CLI’nın kümeyle kullanılabilmesi için önce SSH tünelini kullanacak şekilde yapılandırılması gerekir. Bunu yapmak için, gerekirse bağlantı noktasını değiştirerek aşağıdaki komutu çalıştırın.
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ Bir ACS DC/OS kümesi için varsayılan zamanlama mekanizması Marathon’dur. D
 
 Uygulamayı DC/OS kümesinde çalışacak şekilde zamanlamak için aşağıdaki komutu çalıştırın.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Uygulamanın dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 **TASKS** sütunundaki *0/1* değeri *1/1* olarak değiştiğinde uygulama dağıtımı tamamlanmış olur.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 `dcos marathon app update` komutunu kullanarak uygulamayı güncelleştirin.
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 Uygulamanın dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 **TASKS** sütunundaki *1/3* değeri *3/1* olarak değiştiğinde uygulama dağıtımı tamamlanmış olur.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ Bir uygulamayı internet üzerinden erişilebilir hale getirmek için, genel dü
 
 Uygulamayı DC/OS kümesinde çalışacak şekilde zamanlamak için aşağıdaki komutu çalıştırın.
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 DC/OS genel kümesi aracılarının genel IP adresini alın.
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 Artık gerekli değilse, [az group delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, DC/OS kümesini ve tüm ilgili kaynakları kaldırabilirsiniz.
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

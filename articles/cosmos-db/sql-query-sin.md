@@ -4,15 +4,15 @@ description: Azure Cosmos DB SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b4450ea9dd50f8093fa9569d7f82fe124022c3a1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349473"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303112"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
  Radyan cinsinden belirtilen ifade trigonometrik belirtilen bir açının sinüsünü döndürür.  
@@ -34,17 +34,21 @@ SIN(<numeric_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, belirtilen açının `SIN` ' i hesaplar.  
+  Aşağıdaki örnek, belirtilen açının `SIN` hesaplar.  
   
 ```sql
 SELECT SIN(45.175643) AS sin  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"sin": 0.929607286611012}]  
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446076"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383836"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](~/articles/cognitive-services/Speech-Service/get-started.md).
-* [Python 3,5 veya üzeri](https://www.python.org/downloads/).
+* [Python 3,5 ile 3,8](https://www.python.org/downloads/)arasında.
 * Python konuşma SDK 'Sı paketi, bu işletim sistemleri için kullanılabilir:
     * Windows: x64 ve x86.
     * Mac: macOS X sürüm 10,12 veya üzeri.
-    * Linux: Ubuntu 16,04, Ubuntu 18,04, x64 üzerinde debir 9.
+    * Linux: Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8, x64 üzerinde.
 * Linux 'ta, gerekli paketleri yüklemek için şu komutları çalıştırın:
 
   * Ubuntu 'da:
@@ -40,6 +40,16 @@ ms.locfileid: "77446076"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * RHEL/CentOS 8 ' de:
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
 
 * Windows 'ta, platformunuz için [Visual Studio C++ 2019 için Microsoft Visual yeniden dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gereklidir.
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Konuşma SDK 'sını Visual Studio Code ile yükleyip kullanma
 
-1. Bilgisayarınıza [Python](https://www.python.org/downloads/), 3,5 veya üzeri bir 64 bit sürümü indirin ve yükleyin.
+1. Bilgisayarınızda [Python](https://www.python.org/downloads/), 3,8 3,5 ' nin 64 bitlik bir sürümünü indirip bilgisayarınıza yükleyin.
 1. [Visual Studio Code](https://code.visualstudio.com/Download)indirin ve yükleyin.
 1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **dosya** > **tercihleri** > **uzantıları** ' nı seçin. **Python**için arama yapın.
 

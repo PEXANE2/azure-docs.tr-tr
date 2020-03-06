@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/21/2020
-ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616082"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399722"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
 > [!Important]
-> Azure HDInsight otomatik ölçeklendirme özelliği, 6 Kasım 'da genel kullanıma sunulduktan sonra Spark ve Hadoop kümeleri için 2019, özelliğin önizleme sürümünde kullanılamaz. 7 Kasım 2019 ' den önce bir Spark kümesi oluşturduysanız ve kümenizdeki otomatik ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede otomatik ölçeklendirmeyi etkinleştirmek olur. 
+> Azure HDInsight otomatik ölçeklendirme özelliği, 6 Kasım 'da genel kullanıma sunulduktan sonra Spark ve Hadoop kümeleri için 2019, özelliğin önizleme sürümünde kullanılamaz. 7 Kasım 2019 ' den önce bir Spark kümesi oluşturduysanız ve kümenizdeki otomatik ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede otomatik ölçeklendirmeyi etkinleştirmek olur.
 >
->Etkileşimli sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, etkileşimli sorgu ve HBase kümelerinde kullanılabilir. 
-
+> Etkileşimli sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, etkileşimli sorgu ve HBase kümelerinde kullanılabilir.
 
 Azure HDInsight 'ın küme otomatik ölçeklendirme özelliği, bir kümedeki çalışan düğümlerinin sayısını otomatik olarak ölçeklendirir ve kapatır. Kümedeki diğer düğüm türleri şu anda ölçeklendirilemez.  Yeni bir HDInsight kümesi oluşturulurken, en düşük ve en fazla çalışan düğümü sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, analiz yükünün kaynak gereksinimlerini izler ve çalışan düğümü sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
 
@@ -59,23 +58,18 @@ Otomatik ölçeklendirme, kümeyi sürekli izler ve aşağıdaki ölçümleri to
 
 Yukarıdaki ölçümler her 60 saniyede bir denetlenir. Otomatik ölçeklendirme, ölçek artırma ve ölçeği azaltma kararlarını bu ölçümlere göre yapar.
 
-### <a name="load-based-cluster-scale-up"></a>Yük tabanlı küme ölçeği artırma
+### <a name="load-based-scale-conditions"></a>Yük tabanlı ölçek koşulları
 
-Aşağıdaki koşullar algılandığında otomatik ölçeklendirme, bir ölçek artırma isteği yayınacaktır:
+Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek isteği ister:
 
-* Toplam bekleyen CPU, 3 dakikadan uzun bir süre boyunca toplam boş CPU 'dan fazla.
-* Toplam bekleyen bellek, 3 dakikadan uzun bir süre boyunca toplam boş bellekten fazla.
+|Ölçeği büyütme|Ölçeği azalt|
+|---|---|
+|Toplam bekleyen CPU, 3 dakikadan uzun bir süre boyunca toplam boş CPU 'dan fazla.|Toplam bekleyen CPU, 10 dakikadan uzun bir süre için toplam boş CPU 'dan daha az.|
+|Toplam bekleyen bellek, 3 dakikadan uzun bir süre boyunca toplam boş bellekten fazla.|Toplam bekleyen bellek, 10 dakikadan uzun bir süre boyunca toplam boş bellekten daha düşüktür.|
 
-HDInsight hizmeti, geçerli CPU ve bellek gereksinimlerini karşılamak için kaç yeni çalışan düğümünün gerekli olduğunu hesaplar ve ardından gerekli sayıda düğüm eklemek için bir ölçek isteği yayınlar.
+Ölçek artırma için HDInsight hizmeti, geçerli CPU ve bellek gereksinimlerini karşılamak için kaç yeni çalışan düğümünün gerekli olduğunu hesaplar ve ardından gerekli sayıda düğüm eklemek için bir ölçek isteği yayınlar.
 
-### <a name="load-based-cluster-scale-down"></a>Yük tabanlı küme ölçeği azaltma
-
-Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek azaltma isteği ister:
-
-* Toplam bekleyen CPU, 10 dakikadan uzun bir süre için toplam boş CPU 'dan daha az.
-* Toplam bekleyen bellek, 10 dakikadan uzun bir süre boyunca toplam boş bellekten daha düşüktür.
-
-Düğüm başına har kapsayıcı sayısına ve geçerli CPU ve bellek gereksinimlerine bağlı olarak, otomatik ölçeklendirme belirli sayıda düğümü kaldırma isteği verir. Hizmet ayrıca hangi düğümlerin geçerli iş yürütmeye göre kaldırılması gerektiğini de algılar. Ölçeği azaltma işlemi, önce düğümleri yeniden komisyonlar ve sonra kümeden kaldırır.
+Ölçek azaltma için düğüm başına har kapsayıcısı sayısına ve geçerli CPU ve bellek gereksinimlerine bağlı olarak, otomatik ölçeklendirme belirli sayıda düğümü kaldırma isteği verir. Hizmet ayrıca hangi düğümlerin geçerli iş yürütmeye göre kaldırılması gerektiğini de algılar. Ölçeği azaltma işlemi, önce düğümleri yeniden komisyonlar ve sonra kümeden kaldırır.
 
 ## <a name="get-started"></a>başlarken
 

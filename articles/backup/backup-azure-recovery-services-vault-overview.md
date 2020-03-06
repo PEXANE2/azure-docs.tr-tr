@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasalarına genel bakış
 description: Kurtarma Hizmetleri kasaları ve Azure Backup kasaları arasında genel bakış ve karşılaştırma.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 886c63856d3be78c241289caf5abbe73ebeda63f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172841"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397038"
 ---
 # <a name="recovery-services-vaults-overview"></a>Kurtarma Hizmetleri kasaları genel bakış
 
@@ -30,7 +30,7 @@ Kurtarma Hizmetleri kasaları Azure 'un Azure Resource Manager modelini temel al
 
 - **Azure sanal makinelerinin tüm yapılandırmasını koruyun**: kurtarma hizmetleri kasaları, Premium diskler, yönetilen diskler ve şifrelenmiş VM 'ler dahil kaynak yöneticisi tabanlı VM 'leri korur. Bir yedekleme kasasını kurtarma hizmetleri kasasına yükseltmek, Service Manager tabanlı sanal makinelerinizi Kaynak Yöneticisi tabanlı sanal makinelere yükseltme olanağı sunar. Kasayı yükseltirken, Service Manager tabanlı VM kurtarma noktalarınızı koruyabilir ve yükseltilen (Kaynak Yöneticisi özellikli) VM 'Ler için korumayı yapılandırabilirsiniz. [Daha fazla bilgi](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **IaaS VM 'leri Için anında geri yükleme**: kurtarma hizmetleri kasalarını kullanarak, tüm VM 'yi geri yüklemeden dosya ve klasörleri bir IaaS VM 'sinden geri yükleyebilirsiniz ve bu sayede daha hızlı geri yükleme sürelerini mümkün olur. IaaS sanal makineleri için anında geri yükleme, hem Windows hem de Linux VM 'Leri için kullanılabilir. [Daha fazla bilgi](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **IaaS VM 'leri Için anında geri yükleme**: kurtarma hizmetleri kasalarını kullanarak, tüm VM 'yi geri yüklemeden dosya ve klasörleri bir IaaS VM 'sinden geri yükleyebilirsiniz ve bu sayede daha hızlı geri yükleme sürelerini mümkün olur. IaaS sanal makineleri için anında geri yükleme, hem Windows hem de Linux VM 'Leri için kullanılabilir. [Daha fazla bilgi](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Portalda kurtarma hizmetleri kasalarınızı yönetme
 

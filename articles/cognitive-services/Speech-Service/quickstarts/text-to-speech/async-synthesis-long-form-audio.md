@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919354"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331085"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Hızlı başlangıç: Python 'da uzun biçimli ses için zaman uyumsuz birleştirme (Önizleme)
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 * Python 2.7. x veya 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)veya sık kullandığınız metin düzenleyiciniz.
-* Bir Azure aboneliği ve bir konuşma hizmeti abonelik anahtarı. Anahtarı almak için bir [Azure hesabı oluşturun](../../get-started.md#new-resource) ve [bir konuşma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) . Konuşma kaynağını oluştururken, fiyatlandırma katmanınızın **S0**olarak ayarlandığından ve konumun [desteklenen bir bölgeye](../../regions.md#standard-and-neural-voices)ayarlandığından emin olun.
+* Bir Azure aboneliği ve bir konuşma hizmeti abonelik anahtarı. Anahtarı almak için bir [Azure hesabı oluşturun](../../get-started.md#new-resource) ve [bir konuşma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) . Konuşma kaynağını oluştururken, fiyatlandırma katmanınızın **S0**olarak ayarlandığından ve konumun [desteklenen bir bölgeye](../../regions.md#standard-and-neural-voices)ayarlandığından emin olun.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383853"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Geçiş için gereken süre nedir?
 
@@ -22,6 +22,14 @@ Geçişin planlanması ve yürütülmesi büyük ölçüde mimarinin karmaşıkl
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM 'lerinde (klasik) yeni bir müşterinin tanımı nedir?
 
 Febrauary 2020 (kullanım dışı bırakılmadan önce bir ay) için aboneliklerinde IaaS VM 'Leri (klasik) olmayan müşteriler yeni müşteri olarak kabul edilir. 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS sanal makinelerinde (klasik) mevcut bir müşterinin tanımı nedir?
+
+Etkin veya durdurulmuş olan, ancak aboneliklerinde, IaaS VM 'Leri (klasik), Şubat 2020 ' nin ayından Itibaren, mevcut bir müşteri olarak kabul edilen müşteri. Yalnızca bu müşteriler, 1 Mart 2023 ' e kadar, sanal makinelerini Azure Service Manager Azure Resource Manager 'e geçirmeye kadar alır. 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Neden "NewClassicVMCreationNotAllowedForSubscription" belirten bir hata alıyorum?
+
+Kullanımdan kaldırma işleminin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılamaz. Size yeni müşteri olarak tanımladınız ve bu nedenle işlem yetkilendirilmedi. [ARM kullanarak Azure sanal makinelerini](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)kullanmanızı kesinlikle öneririz. ARM kullanarak Azure VM 'Leri kullanmıyorsanız, abonelik beyaz listesi için desteğe başvurun.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Bu geçiş planı Azure sanal makinelerde çalışan mevcut hizmetlerimi ya da uygulamaların herhangi birini etkiliyor mu? 
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915716"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329025"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
 
@@ -131,6 +131,52 @@ Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel bir türü `ILoggerP
 > [!WARNING]
 > - , Ortam tarafından sunulan hizmetlerle çakışan Hizmetleri kaydederken, hizmetler koleksiyonuna `AddApplicationInsightsTelemetry()` eklemeyin.
 > - Yerleşik Application Insights işlevselliğini kullanıyorsanız kendi `TelemetryConfiguration` veya `TelemetryClient` kaydetme. Kendi `TelemetryClient` örneğinizi yapılandırmanız gerekirse, [Azure Işlevlerini izle](./functions-monitoring.md#version-2x-and-later-2)bölümünde gösterildiği gibi eklenen `TelemetryConfiguration` aracılığıyla bir tane oluşturun.
+
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> ve ıloggerfactory
+
+Ana bilgisayar `ILogger<T>` ve `ILoggerFactory` Hizmetleri oluşturuculara ekleyecektir.  Bununla birlikte, varsayılan olarak bu yeni günlük filtreleri işlev günlüklerinden filtrelenecektir.  Ek filtreleri ve kategorileri kabul etmek için `host.json` dosyasını değiştirmeniz gerekir.  Aşağıdaki örnek, ana bilgisayar tarafından sunulacak günlüklere sahip bir `ILogger<HttpTrigger>` eklemeyi gösterir.
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+Ve günlük filtresini ekleyen bir `host.json` dosyası.
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
 
 ## <a name="function-app-provided-services"></a>İşlev uygulaması tarafından sunulan hizmetler
 

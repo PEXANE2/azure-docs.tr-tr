@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064419"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329478"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics kullanmaya başlayın: gerçek zamanlı sahtekarlık algılama
 
@@ -94,7 +94,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
     >[!NOTE]
     >Olay Hub 'ı ad alanı değil, Olay Hub 'ı ile çalıştığınızdan emin olun.
 
-3.  `sa-policy-manage-demo` adlı bir ilke ekleyin ve **talep**için **Yönet**' i seçin.
+3.  `asa-policy-manage-demo` adlı bir ilke ekleyin ve **talep**için **Yönet**' i seçin.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  

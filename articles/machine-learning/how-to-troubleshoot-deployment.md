@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945809"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399675"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -34,9 +34,9 @@ Model dağıtımı için önerilen ve en güncel yaklaşım, bir [ortam](https:/
 
 3. Modeli Azure Container Instance (ACI) hizmetine veya Azure Kubernetes Service 'e (AKS) dağıtın.
 
-Bu işlem hakkında daha fazla bilgi [Model Yönetimi](concept-model-management-and-deployment.md) giriş.
+[Model yönetimi](concept-model-management-and-deployment.md) giriş bölümünde bu işlem hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
@@ -183,7 +183,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="service-launch-fails"></a>Hizmet başlatma başarısız
 
-Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma artırma işleminin bir parçası olarak `init()` işlevi Puanlama komut dosyanızdaki sistem tarafından çağrılır. İçinde yakalanmamış istisnalar varsa `init()` görebileceğiniz işlev **CrashLoopBackOff** hata hata iletisi.
+Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma işleminin bir parçası olarak, Puanlama betiğinizdeki `init()` işlevi sistem tarafından çağrılır. `init()` işlevinde yakalanamayan özel durumlar varsa, hata iletisinde **Crashloopgeri** alma hatası ' nı görebilirsiniz.
 
 Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) bölümündeki bilgileri kullanın.
 
@@ -204,7 +204,7 @@ Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin 
 
 ## <a name="function-fails-runinput_data"></a>İşlevi başarısız: run(input_data)
 
-Hizmet başarıyla dağıtıldı, ancak Puanlama uç noktası veri göndermek çöküyor deyiminde yakalama hata ekleyebilirsiniz, `run(input_data)` ayrıntılı hata iletisi yerine döndürür, böylece işlev. Örneğin:
+Hizmet başarıyla dağıtılırsa, ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` işlevinize hata yakalama açıklaması ekleyebilirsiniz, böylece bunun yerine ayrıntılı hata iletisi döndürülür. Örnek:
 
 ```python
 def run(input_data):
@@ -219,7 +219,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Not**: hata iletilerini döndüren `run(input_data)` sadece hata ayıklama için çağrısı yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
+**Note**: `run(input_data)` çağrısından alınan hata iletilerinin döndürülmesi yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
+
+## <a name="http-status-code-502"></a>HTTP durum kodu 502
+
+502 durum kodu, hizmetin score.py dosyasının `run()` yönteminde bir özel durum yaptığını veya kilitlendiğini gösterir. Dosyada hata ayıklamak için bu makaledeki bilgileri kullanın.
 
 ## <a name="http-status-code-503"></a>HTTP durum kodu 503
 
@@ -261,6 +265,12 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
     > Yeni en düşük çoğaltmalardan daha büyük istek ani artışları alırsanız, yeniden 503s alabilirsiniz. Örneğin, hizmetinizin trafiği arttıkça, en düşük çoğaltmaları artırmanız gerekebilir.
 
 `autoscale_target_utilization`, `autoscale_max_replicas`ve `autoscale_min_replicas` ayarlama hakkında daha fazla bilgi için, bkz. [Akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu.
+
+## <a name="http-status-code-504"></a>HTTP durum kodu 504
+
+504 durum kodu, isteğin zaman aşımına uğradığını gösterir. Varsayılan zaman aşımı 1 dakikadır.
+
+Gereksiz çağrıları kaldırmak için score.py değiştirerek, zaman aşımını artırabilir veya hizmeti hızlandırmayı deneyebilirsiniz. Bu eylemler sorunu düzeltmez, score.py dosyasında hata ayıklamak için bu makaledeki bilgileri kullanın. Kod askıda bir durumda veya sonsuz bir döngüde olabilir.
 
 ## <a name="advanced-debugging"></a>Gelişmiş hata ayıklama
 
@@ -426,7 +436,7 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
 
 1. Kapsayıcıda bulunan dosyalarda yaptığınız değişiklikleri, VS Code yerel dosyalarla eşitlenmiş şekilde kaydettiğinizden emin olun. Aksi takdirde, hata ayıklayıcı deneyimi beklendiği gibi çalışmaz.
 
-### <a name="stop-the-container"></a>Kapsayıcıyı durdurma
+### <a name="stop-the-container"></a>Kapsayıcıyı durdur
 
 Kapsayıcıyı durdurmak için aşağıdaki komutu kullanın:
 
@@ -438,5 +448,5 @@ docker stop debug
 
 Dağıtım hakkında daha fazla bilgi edinin:
 
-* [Nasıl dağıtılacağı ve nerede](how-to-deploy-and-where.md)
-* [Öğretici: Eğitme ve modelleri dağıtma](tutorial-train-models-with-aml.md)
+* [Dağıtım ve nerede](how-to-deploy-and-where.md)
+* [Öğretici: eğitim & dağıtım modelleri](tutorial-train-models-with-aml.md)

@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 1539ca9aa18892f617f278e67c8b6141f5f6d880
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805850"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331136"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Nasıl yapılır: Android 'de konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
 Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, sıkıştırılmış ses ' i, pullstream veya PushStream kullanarak konuşma hizmetine akışa almanın bir yolunu sağlar.
 
 > [!IMPORTANT]
-> [ C++Linux 'ta, C#ve Java için (Ubuntu 16,04, Ubuntu 18,04, de, 9)](how-to-use-codec-compressed-audio-input-streams.md)akış sıkıştırılmış giriş sesi şu anda desteklenmektedir. Ayrıca iOS platformunda Android ve [Amaç-C ' d a](how-to-use-codec-compressed-audio-input-streams-ios.md) Java için de desteklenir.
+> [ C++Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8) üzerinde, C#, ve Java](how-to-use-codec-compressed-audio-input-streams.md)için akış sıkıştırılmış giriş sesi şu anda desteklenmektedir. Ayrıca iOS platformunda Android ve [Amaç-C ' d a](how-to-use-codec-compressed-audio-input-streams-ios.md) Java için de desteklenir.
 > Konuşma SDK sürümü 1.7.0 veya üzeri gereklidir.
 
 WAV/PCM için ana hat konuşma belgelerine bakın. WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:

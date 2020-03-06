@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989374"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304217"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -17,7 +17,7 @@ Bu makalede, Azure geçişi sunucu geçiş aracı ile aracısız geçiş kullana
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı ve iş yüklerinizi ve AWS/GCP sanal makine örneklerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
-Bu öğretici, Azure geçiş sunucusu değerlendirmesini ve geçişini kullanarak VMware VM 'lerini Azure 'a nasıl değerlendirileceğini ve geçireceğinizi gösteren bir serinin üçüncü bir dizisidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Azure geçiş sunucusu değerlendirmesini ve geçişini kullanarak VMware VM 'lerini Azure 'a nasıl değerlendirileceğini ve geçireceğinizi gösteren bir serinin üçüncü bir dizisidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * VM 'Leri geçiş için hazırlayın.
@@ -41,7 +41,7 @@ Aracısız veya aracı tabanlı geçiş kullanmak isteyip istemediğinize karar 
 - Aracısız geçişin [nasıl çalıştığını öğrenin](server-migrate-overview.md) ve [geçiş yöntemlerini karşılaştırın](server-migrate-overview.md#compare-migration-methods).
 - Aracı tabanlı yöntemi kullanmak istiyorsanız [Bu makaleyi okuyun](tutorial-migrate-vmware-agent.md) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -66,7 +66,7 @@ VMware VM 'lerini değerlendirmek için ikinci öğreticiyi izmediyseniz, bir Az
 
 3. **Geçiş araçları**' nda, geçişe **hazır olduğunuzda bir geçiş aracı eklemek Için buraya tıklayın ' ı**seçin.
 
-    ![Araç seçin](./media/tutorial-migrate-vmware/select-migration-tool.png)
+    ![Bir araç seçin](./media/tutorial-migrate-vmware/select-migration-tool.png)
 
 4. Araçlar listesinde **Azure geçişi: sunucu geçişi** > **araç ekle** ' yi seçin.
 
@@ -246,9 +246,9 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 4. VM için bir geçiş işlemi başlar. Azure bildirimlerinde işlemi izleyin.
 5. İşlem bittikten sonra **Sanal Makineler** sayfasında VM’yi görüntüleyebilir ve yönetebilirsiniz.
 
-## <a name="complete-the-migration"></a>Geçişi tamamlama
+## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
-1. Geçiş yapıldıktan sonra, **geçişi durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
+1. Geçiş yapıldıktan sonra, **çoğaltmayı durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
 2. Geçirilen makinelere Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) Aracısı 'nı yükler.
 3. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
 4. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.

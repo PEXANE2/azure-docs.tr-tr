@@ -10,19 +10,19 @@ ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024118"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379105"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalda ilk Batch işinizi çalıştırma
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında ilk Batch işinizi çalıştırma
 
 Bu hızlı başlangıçta, Azure portalını kullanarak bir Batch hesabı, bir işlem düğümleri (sanal makine) *havuzu* ve havuz üzerinde temel *görevler* çalıştıran bir *iş* oluşturma işlemi gösterilmektedir. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın 
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -52,7 +52,7 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
 
 1. Batch hesabında **Havuzlar** > **Ekle**'yi seçin.
 
-2. *mypool* adlı bir **Havuz Kimliği** girin. 
+2. **mypool** adlı bir *Havuz Kimliği* girin. 
 
 3. **İşletim Sistemi** menüsünde aşağıdaki ayarları seçin (diğer seçenekleri araştırabilirsiniz).
   
@@ -88,7 +88,7 @@ Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. B
 
 1. Batch hesabı görünümünde **İşler** > **Ekle**'yi seçin. 
 
-2. *myjob* adlı bir **İş Kimliği** girin. **Havuz** menüsünde *mypool*’u seçin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
+2. **myjob** adlı bir *İş Kimliği* girin. **Havuz** menüsünde *mypool*’u seçin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
    ![Bir iş oluşturma][job_create]
 
@@ -104,7 +104,7 @@ Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirt
 
 1. **Add (Ekle)** seçeneğini belirleyin.
 
-2. *mytask* adlı bir **Görev Kimliği** girin. 
+2. **mytask** adlı bir *Görev Kimliği* girin. 
 
 3. **Komut satırı**’na `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` girin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
@@ -114,11 +114,11 @@ Bir görev oluşturduktan sonra Batch, görevi havuzda çalışmak üzere kuyru�
 
 İkinci bir görev oluşturmak için 1. adıma geri dönün. Farklı bir **Görev Kimliği** ile birlikte aynı komut satırını girin. İlk görev hala çalışıyorsa, Batch havuzdaki diğer düğüm üzerinde ikinci görevi başlatır.
 
-## <a name="view-task-output"></a>Görev çıkışını görüntüleme
+## <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
 Yukarıdaki görev örnekleri birkaç dakika içinde tamamlanır. Tamamlanmış bir görevin çıktısını görüntülemek için **Düğüm üzerindeki dosyalar**'ı ve sonra `stdout.txt` dosyasını seçin. Bu dosya, görevin standart çıkışını gösterir. İçeriği aşağıdakine benzerdir:
 
-![Görev çıkışını görüntüleme][task_output]
+![Görev çıktısını görüntüleme][task_output]
 
 İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi ve görevlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz.
 

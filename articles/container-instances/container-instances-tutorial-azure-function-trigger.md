@@ -4,12 +4,12 @@ description: Azure Container Instances oluşturmayı otomatikleştirmek için HT
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196544"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331034"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
 
@@ -42,7 +42,7 @@ Bu makalede, projeyi, işlev uygulaması adına (Ayrıca *myfunctionapp*) göre 
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>İşlev uygulamasında Azure tarafından yönetilen bir kimliği etkinleştirme
 
-Artık işlev uygulamanızda sistem tarafından atanan bir [yönetilen kimliği](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity) etkinleştirin. Uygulamayı çalıştıran PowerShell ana bilgisayarı, bu kimlik kullanılarak otomatik olarak kimlik doğrulaması yapabilir, böylece işlevleri, kimliğin erişim izni verilen Azure hizmetleri üzerinde işlem yapmasını sağlar. Bu öğreticide, işlev uygulamasının kaynak grubunda kaynak oluşturmak için yönetilen kimlik izinlerini verirsiniz. 
+Artık işlev uygulamanızda sistem tarafından atanan bir [yönetilen kimliği](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) etkinleştirin. Uygulamayı çalıştıran PowerShell ana bilgisayarı, bu kimlik kullanılarak otomatik olarak kimlik doğrulaması yapabilir, böylece işlevleri, kimliğin erişim izni verilen Azure hizmetleri üzerinde işlem yapmasını sağlar. Bu öğreticide, işlev uygulamasının kaynak grubunda kaynak oluşturmak için yönetilen kimlik izinlerini verirsiniz. 
 
 Önce, işlev uygulamasının kaynak grubunun KIMLIĞINI almak ve bir ortam değişkeninde depolamak için [az Group Show][az-group-show] komutunu kullanın. Bu örnek, bir bash kabuğu 'nda komutunu çalıştırdığınız varsayılır.
 

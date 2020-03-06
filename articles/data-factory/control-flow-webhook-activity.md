@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109992"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78400009"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory Web kancası etkinliği
 Özel kodunuzla işlem hattı yürütülmesini denetlemek için bir Web kancası etkinliği kullanabilirsiniz. Müşteriler, Web kancası etkinliğini kullanarak bir uç nokta çağırabilir ve geri çağırma URL 'SI geçirebilir. İşlem hattı çalıştırması, bir sonraki etkinliğe devam etmeden önce geri aramanın çağrılmasını bekler.
@@ -57,7 +57,7 @@ ms.locfileid: "77109992"
 -------- | ----------- | -------------- | --------
 ad | Web kancası etkinliğinin adı | Dize | Yes |
 type | **Web kancası**olarak ayarlanmalıdır. | Dize | Yes |
-method | Hedef uç nokta için REST API yöntemi. | dizisinde. Desteklenen türler: ' POST ' | Yes |
+method | Hedef uç nokta için REST API yöntemi. | Dizisinde. Desteklenen türler: ' POST ' | Yes |
 url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). | Yes |
 üstbilgiler | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"}. | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. "üstbilgiler": {"Content-Type": "Application/JSON"} |
 body | Uç noktaya gönderilen yükü temsil eder. | Geçerli JSON (veya JSON resultType 'ı olan ifade). İstek [yükü şeması](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) 'nda istek yükü şeması bölümüne bakın. | Yes |
@@ -69,7 +69,7 @@ Geri aramada durum bildir | Kullanıcının etkinliği başarısız olarak işar
 
 Aşağıda, Web kancası etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>Hiçbiri
+### <a name="none"></a>Yok
 
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 
@@ -85,7 +85,7 @@ Temel kimlik doğrulamasıyla kullanılacak kullanıcı adını ve parolayı bel
 }
 ```
 
-### <a name="client-certificate"></a>istemci sertifikası
+### <a name="client-certificate"></a>İstemci sertifikası
 
 PFX dosyası ve parolanın Base64 ile kodlanmış içeriğini belirtin.
 
@@ -116,6 +116,10 @@ Veri Fabrikası için yönetilen kimlik kullanılarak erişim belirtecinin isten
 Azure Data Factory, gövdedeki "callBackUri" adlı ek bir özelliği URL uç noktasına geçirecek ve bu URI 'nin zaman aşımı değeri belirtilenden önce çağrılmasını beklecektir. URI çağrılamaz, etkinlik ' Timeerme ' durumuyla başarısız olur.
 
 Özel uç noktaya yapılan çağrı başarısız olursa Web kancası etkinliğinin kendisi başarısız olur. Herhangi bir hata iletisi geri çağırma gövdesine eklenebilir ve sonraki bir etkinlikte kullanılabilir.
+
+Her REST API için ek olarak, uç nokta 1 dk içinde yanıt vermezse istemci zaman aşımına uğrayacaktır. Bu, standart http en iyi uygulamadır. Bu sorunu onarmak için, bu durumda uç noktanın 202 (kabul edilir) ve istemcinin yoklama yapması için 202 deseninin uygulanması gerekir.
+
+İstekteki 1 dakikalık zaman aşımı, etkinlik zaman aşımı ile hiçbir şey yapmaz. Bu, callbackUri için beklemek üzere kullanılacaktır.
 
 Geri çağırma URI 'sine geri geçirilen gövde geçerli bir JSON olmalıdır. Content-Type üst bilgisini `application/json`olarak ayarlamanız gerekir.
 

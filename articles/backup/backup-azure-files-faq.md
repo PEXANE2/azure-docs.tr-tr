@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302551"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -83,7 +83,7 @@ Azure Dosya paylaşımları için yedekleme şu anda Önizleme aşamasındadır 
 - NWW (Norveç Batı)
 - SZN (İsviçre Kuzey)
 
-Yukarıda belirtilmeyen bir bölgede kullanmanız gerekiyorsa [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) adresine yazın.
+Yukarıda belirtilmeyen bir bölgede kullanmanız gerekiyorsa [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) adresine yazın.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kasada kaç tane Azure dosya paylaşımını koruyabilirim?
 

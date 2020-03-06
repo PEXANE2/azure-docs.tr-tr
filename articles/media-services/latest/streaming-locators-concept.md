@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611007"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302891"
 ---
 # <a name="streaming-locators"></a>Akış Bulucuları
 
@@ -90,7 +90,7 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 
 İlişkili varlık adına göre akış Konumlandırıcı almak için aşağıdaki işlemleri kullanın:
 
-|Dil|eklentisi|
+|Dil|API|
 |---|---|
 |REST|[liststreamingkonumlandırıcı](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az AMS varlık listesi-akış-Konumlandırıcı](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
@@ -98,12 +98,13 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[Liststreamingkonumlandırıcı](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>Ayrıca bkz.
+## <a name="see-also"></a>Ayrıca bkz.
 
 * [Varlıklar](assets-concept.md)
 * [Akış İlkeleri](streaming-policy-concept.md)
 * [İçerik Anahtarı İlkeleri](content-key-policy-concept.md)
+* [Öğretici: .NET kullanarak videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Öğretici: .NET kullanarak videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)
+[Akış bulucu ve derleme URL 'Leri oluşturma](create-streaming-locator-build-url.md)

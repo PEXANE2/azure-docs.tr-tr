@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539612"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330404"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -93,9 +93,7 @@ Ardından, Visual Studio Code ile bir Hello World web sayfası oluşturabilir ve
 
 Visual Studio Code şimdi web uç noktanıza dosyalarınızı karşıya yükleyin ve başarı durum çubuğunu göster. Azure'da görüntülemek için Web sitesini başlatın.
 
-![Azure'da statik Web sitesi dağıtımı görüntüle](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
-Başarıyla öğreticisini tamamladığınıza ve statik bir Web sitesi Azure'a dağıtılan.
+Eğitmeni başarıyla tamamladınız ve Azure 'a bir statik Web sitesi dağıttınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

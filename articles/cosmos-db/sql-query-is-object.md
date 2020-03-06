@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde IS_OBJECT
-description: Azure Cosmos DB 'de SQL sistem işlevi IS_OBJECT hakkında bilgi edinin.
+description: Azure Cosmos DB IS_OBJECT SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8e55cda57202ce5a08257f1448adc828764ac817
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 43d8237d859249317d7b581e25ed9a2b34d39d00
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349822"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303809"
 ---
 # <a name="is_object-azure-cosmos-db"></a>IS_OBJECT (Azure Cosmos DB)
  Belirtilen ifade türünü bir JSON nesnesi olup olmadığını gösteren bir Boole değeri döndürür.  
@@ -47,11 +47,15 @@ SELECT
     IS_OBJECT({prop: "value"}.prop2) AS isObj7  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"isObj1":false,"isObj2":false,"isObj3":false,"isObj4":false,"isObj5":true,"isObj6":false,"isObj7":false}]
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
-ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227979"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399521"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Öğretici: Azure Izleyici ile App Service uygulamasında sorun giderme
 
@@ -127,7 +127,7 @@ Bu eylem başarısız olur ve geliştirme sırasında sınanmamıştır `HTTP 50
 
 Log Analytics çalışma alanında hangi günlüklerin kullanılabildiğini görelim. 
 
-Azure portal çalışma alanınıza erişmek için bu [Log Analytics çalışma alanı bağlantısına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) tıklayın.
+Azure portal çalışma alanınıza erişmek için bu [Log Analytics çalışma alanı bağlantısına](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) tıklayın.
 
 Azure portal, Log Analytics çalışma alanınızı seçin.
 

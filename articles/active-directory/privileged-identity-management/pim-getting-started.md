@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756304"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399344"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
 
@@ -62,7 +62,7 @@ Dizininizde Privileged Identity Management kullanmaya başlamak için önce Priv
 
     ![Kimliğinizi doğrulamak için bir hesap penceresi seçin](./media/pim-getting-started/pick-account.png)
 
-1. Doğrulama için daha fazla bilgi gerekiyorsa, işlem boyunca size kılavuzluk edilir. Daha fazla bilgi için bkz. [iki adımlı doğrulamayla ilgili yardım alın](https://go.microsoft.com/fwlink/p/?LinkId=708614).
+1. Doğrulama için daha fazla bilgi gerekiyorsa, işlem boyunca size kılavuzluk edilir. Daha fazla bilgi için bkz. [iki adımlı doğrulamayla ilgili yardım alın](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
 
     ![Kuruluşunuzun daha fazla bilgi ihtiyacı varsa, daha fazla bilgi gerekli penceresi](./media/pim-getting-started/more-information-required.png)
 
@@ -115,7 +115,7 @@ Privileged Identity Management ayarladıktan sonra kimlik yönetimi görevlerini
 
 Privileged Identity Management açmayı kolaylaştırmak için Azure portal panonuza bir Privileged Identity Management kutucuğu eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. **Tüm hizmetler** ' e tıklayın ve **Azure AD Privileged Identity Management** hizmeti bulun.
 

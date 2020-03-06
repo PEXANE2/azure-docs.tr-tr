@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303095"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Veri aktarımı için bir Azure çözümü seçin
 
@@ -42,7 +42,7 @@ Aşağıdaki görselde aktarım için kullanılabilir ağ bant genişliğine, ak
 
 ![Azure veri aktarımı araçları](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**Çevrimdışı aktarım cihazlarının üst sınırları-Data Box Disk, Data Box ve Data Box Heavy, bir cihaz türünün birden çok siparişi yerleştirilerek genişletilebilir.*
+*çevrimdışı aktarım cihazlarının üst limitlerini *-Data Box disk, Data Box ve Data Box Heavy bir cihaz türünün birden çok siparişi yerleştirilerek genişletilebilir.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Veri aktarımı çözümü seçme
 
@@ -50,20 +50,19 @@ Bir veri aktarımı çözümü seçmenize yardımcı olması için aşağıdaki 
 
 - Kullanılabilir ağ bant genişliğiniz sınırlı veya mevcut değil ve büyük veri kümelerini aktarmak istiyor musunuz?
   
-    Yanıt Evet ise, bkz.: [Senaryo 1: Büyük veri kümelerini veya düşük ağ bant genişliğine](storage-solution-large-dataset-low-network.md)sahip bir şekilde aktarın.
+    Yanıt Evet ise, bkz. [Senaryo 1: büyük veri kümelerini veya düşük ağ bant genişliğiyle aktarma](storage-solution-large-dataset-low-network.md).
 - Büyük veri kümelerini ağ üzerinden aktarmak istiyor musunuz ve orta düzeyde yüksek ağ bant genişliğine sahip olabilirsiniz misiniz?
 
-    Yanıt Evet ise, bkz.: [Senaryo 2: Büyük veri kümelerini orta ve yüksek ağ bant genişliğine](storage-solution-large-dataset-moderate-high-network.md)aktarın.
+    Yanıt Evet ise, bkz. [Senaryo 2: orta ile büyük veri kümelerini yüksek ağ bant genişliğine aktarma](storage-solution-large-dataset-moderate-high-network.md).
 - Tek zaman ağ üzerinden yalnızca birkaç dosya aktarmak istiyor musunuz?
 
-    Yanıt Evet ise, [bkz. Senaryo 3: Orta düzeyde ağ bant genişliğine](storage-solution-small-dataset-low-moderate-network.md)sahip küçük veri kümelerini aktarın.
+    Yanıt Evet ise, bkz. [Senaryo 3: ağ bant genişliğine sınırlı olan küçük veri kümelerini aktarma](storage-solution-small-dataset-low-moderate-network.md).
 - Düzenli aralıklarla belirli bir noktaya veri aktarımı mı arıyorsunuz?
 
-    Yanıt Evet ise, Senaryo 4 ' te [özetlenen komut dosyalı/programlı seçenekleri kullanın: Düzenli veri aktarımları](storage-solution-periodic-data-transfer.md).
+    Yanıt Evet ise, [Senaryo 4: düzenli veri aktarımları](storage-solution-periodic-data-transfer.md)bölümünde özetlenen komut dosyalı/programlı seçenekleri kullanın.
 - Devam eden, sürekli veri aktarımı mi arıyorsunuz?
 
-    Yanıt Evet ise, Senaryo 4 ' [teki seçenekleri kullanın: Düzenli veri aktarımları](storage-solution-periodic-data-transfer.md).
- 
+    Yanıt Evet ise, [Senaryo 4: düzenli veri aktarımları](storage-solution-periodic-data-transfer.md)içindeki seçenekleri kullanın.
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure portal veri aktarımı özelliği
 
@@ -74,7 +73,7 @@ Ayrıca, Azure portal 'de Azure depolama hesabınıza gidebilir ve **veri aktar�
 - [Azure Depolama Gezgini bir giriş alın](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [AzCopy 'e genel bakış konusunu okuyun](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Azure depolama ile Azure PowerShell kullanma](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Azure depolama ile Azure CLı kullanma](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
+- [Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme](../blobs/storage-quickstart-blobs-cli.md)
 - Hakkında bilgi edinin:
 
     - [Çevrimdışı aktarımlar için Azure Data Box, Azure Data Box disk ve Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).

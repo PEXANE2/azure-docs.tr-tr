@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329008"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch için Azure Güvenlik temeli
 
@@ -628,7 +628,7 @@ Azure Batch verilerinizi içeren depolama hesabına erişmek için HTTPS 'nin ge
 
 Aktarım sırasında Azure depolama hesabı şifrelemesini anlayın:
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351030"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303911"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  ISO 8601 dizesi olarak geçerli UTC (Eşgüdümlü Evrensel Saat) Tarih ve saati döndürür.
@@ -25,7 +25,7 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Dönüş türleri
   
-  Şu biçimdeki geçerli UTC Tarih ve saat ISO 8601 dize değerini döndürür `YYYY-MM-DDThh:mm:ss.sssZ`:
+  Şu biçimdeki `YYYY-MM-DDThh:mm:ss.fffffffZ` şu andaki UTC Tarih ve saat ISO 8601 dize değerini döndürür:
   
   |||
   |-|-|
@@ -33,11 +33,11 @@ GetCurrentDateTime ()
   |MM|iki basamaklı ay (01 = Ocak, vb.)|
   |GG|iki basamaklı ayın günü (01 ile 31 arasında)|
   |T|zaman öğelerinin başlangıcı için signifier|
-  |ss|iki basamaklı saat (00 ile 23 arasında)|
-  |d|iki basamaklı dakika (00 ila 59)|
-  |ss|iki basamaklı saniye (00 ila 59)|
-  |. SSS|saniyenin üç basamaklı ondalık kesirleri|
-  |KADAR|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
+  |hh|iki basamaklı saat (00 ile 23 arasında)|
+  |mm|iki basamaklı dakika (00 ila 59)|
+  |ss|iki basamaklı saniyeler (00 ila 59)|
+  |. fffffff|yedi basamaklı kesirli saniye|
+  |Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
   
   ISO 8601 biçimi hakkında daha fazla bilgi için bkz. [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
@@ -46,6 +46,8 @@ GetCurrentDateTime ()
   GetCurrentDateTime () belirleyici olmayan bir işlevdir. 
   
   Döndürülen sonuç UTC 'dir.
+
+  Duyarlık, 100 nanosaniye değeriyle doğru 7 haneye sahiptir.
 
 ## <a name="examples"></a>Örnekler
   
@@ -59,7 +61,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 

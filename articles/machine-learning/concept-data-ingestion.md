@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268557"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303129"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning veri alımı
 
@@ -71,4 +71,5 @@ Aşağıdaki diyagramda Azure Machine Learning işlem hattı iki adımdan oluşu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Azure Data Factory](how-to-data-ingest-adf.md) Machine Learning için bir veri alma işlem hattı oluşturmayı öğrenin
 * [Azure Pipelines](how-to-cicd-data-ingestion.md)ile veri alma işlem hatlarınızın geliştirme yaşam döngüsünü otomatik hale getirmeyi ve yönetmeyi öğrenin.

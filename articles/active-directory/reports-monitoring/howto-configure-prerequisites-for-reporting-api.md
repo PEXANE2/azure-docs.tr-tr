@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273810"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399308"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory Raporlama API 'sine erişim önkoşulları
 
-[Azure Active Directory (Azure AD) raporlama API'leri](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview), bir dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Bu API 'Leri, programlama dilleri ve araçlarından çağırabilirsiniz.
+[Azure Active Directory (Azure AD) raporlama API'leri](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api), bir dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Bu API 'Leri, programlama dilleri ve araçlarından çağırabilirsiniz.
 
 Raporlama API 'SI, Web API 'Lerine erişim yetkisi vermek için [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) kullanır.
 
@@ -191,7 +191,6 @@ Raporlama API 'sine yapılan çağrıları yapılandırırken bu değerlere ihti
 
 Bu bölümde, Microsoft Graph API 'sini ve bunların çözümlenme adımlarını kullanarak etkinlik raporlarına erişirken kullanabileceğiniz ortak hata iletileri listelenmektedir.
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Hata: Kullanıcı rolleri Microsoft Graph alınamadı
 
  Graph Explorer 'ı kullanarak oturum açmaya çalışırken bir hata oluşmasını önlemek için, Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerini kullanarak hesabınızda oturum açın. 
@@ -204,7 +203,6 @@ Graph Explorer kullanarak oturum açma erişimiyle çalışmaya çalışırken b
 
 ![İzin Kullanıcı arabirimini değiştirme](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Hata: kiracı B2C değil veya kiracı Premium lisansa sahip değil
 
 Oturum açma raporlarına erişmek için Azure Active Directory Premium 1 (P1) lisansı gerekir. Oturum açma işlemleri sırasında bu hata iletisini görürseniz, kiracınızın bir Azure AD P1 lisansıyla lisanslanmasını sağlayın.
@@ -215,7 +213,7 @@ Oturum açma raporlarına erişmek için Azure Active Directory Premium 1 (P1) l
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hata: uygulamada AAD ' dizin verilerini oku ' izni eksik 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Hata: uygulamada Microsoft API ' tüm denetim günlüğü verilerini oku ' izni eksik
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Hata: uygulamada Microsoft Graph API ' tüm denetim günlüğü verilerini oku ' izni eksik
 
 Uygulamanızın doğru izin kümesiyle çalıştığından emin olmak için [Azure Active Directory Raporlama API 'sine erişmek Için önkoşulların](howto-configure-prerequisites-for-reporting-api.md) içindeki adımları izleyin. 
 

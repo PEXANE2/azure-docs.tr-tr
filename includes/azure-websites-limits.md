@@ -2,14 +2,14 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 08/09/2019
+ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 83bf357fff8fd3cfb8c0e69af92b36710287898f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586742"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305004"
 ---
 | Kaynak | Ücretsiz | Paylaşımlı | Temel | Standart | Premium (v2) | Ayrılır </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -36,7 +36,7 @@ ms.locfileid: "77586742"
 | [Otomatik Ölçeklendirme](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [Web işleri](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
 | [Uç Nokta izleme](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Hazırlama Yuvaları](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
+| Uygulama başına [hazırlama yuvaları](../articles/app-service/deploy-staging-slots.md)| | | |5 |20 |20 |
 | SLA | |  |%99,95|%99,95|%99,95|%99,95|  
 
 <sup>1</sup> Uygulamalar ve depolama kotaları, aksi belirtilmediği takdirde App Service plan başına yapılır.  

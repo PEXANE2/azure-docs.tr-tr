@@ -8,81 +8,97 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 02/18/2020
-ms.openlocfilehash: 392c86d8ea24e59d388926d4df581305ea2b531d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/05/2020
+ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379576"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Bilişsel Arama hizmetinizi başka bir Azure bölgesine taşıyın
 
-Azure bilişsel hizmet hesabınızı bir bölgeden diğerine taşımak için, aboneliklerinizi taşımak üzere bir dışarı aktarma şablonu oluşturacaksınız. Aboneliğinizi taşıdıktan sonra verilerinizi taşımanız ve hizmetinizi yeniden oluşturmanız gerekir.
+Şu anda, bir arama hizmetini başka bir bölgeye taşımak desteklenmez. Bu durumda, görev uçtan uca yardım için bir Otomasyon veya araç yoktur.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Portalda, **şablonu dışarı aktar** komutu, bir hizmetin temel tanımını (ad, konum, katman, çoğaltma ve bölüm sayısı) oluşturur, ancak hizmetinizin içeriğini tanımaz veya anahtarlar, roller veya Günlükler üzerinde yer almaz.
+
+Aramayı bir bölgeden diğerine taşırken aşağıdaki yaklaşımı öneririz:
+
+1. Hizmet üzerindeki nesnelerin tam listesi için mevcut hizmetinizi envanterini çıkarın. Günlüğe kaydetmeyi etkinleştirdiyseniz, gelecekteki karşılaştırmalar için ihtiyaç duyduğunuz raporları oluşturun ve arşivleyin.
+
+1. Yeni bölgede bir hizmet oluşturun ve mevcut dizinler, Dizin oluşturucular, veri kaynakları, becerileri ve eş anlamlı haritalardan kaynak kodundan yeniden yayımlayın. Mevcut adı yeniden kullanabilmeniz için hizmet adları benzersiz olmalıdır.
+
+1. Günlüğe kaydetmeyi etkinleştirin ve bunları kullanıyorsanız, güvenlik rollerini yeniden oluşturun.
+
+1. İstemci uygulamalarını ve test paketlerini yeni hizmet adı ve API anahtarlarını kullanacak şekilde güncelleştirin ve tüm uygulamaları test edin.
+
+1. Yeni hizmet tam olarak çalışır duruma getirildikten sonra eski hizmeti silin.
+
+<!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
+
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> * Bir şablonu dışarı aktarın.
-> * Şablonu değiştirme: hedef bölge, arama ve depolama hesabı adlarını ekleme.
-> * Yeni arama ve depolama hesapları oluşturmak için şablonu dağıtın.
-> * Yeni bölgede hizmet durumunuzu doğrulama
-> * Kaynak bölgedeki kaynakları temizleyin.
+> * Export a template.
+> * Modify the template: adding the target region, search and storage account names.
+> * Deploy the template to create the new search and storage accounts.
+> * Verify your service status in the new region
+> * Clean up resources in the source region.
 
-## <a name="prerequisites"></a>Önkoşullar
+## Prerequisites
 
-- Hesabınızın kullandığı hizmet ve özelliklerin hedef bölgede desteklendiğinden emin olun.
+- Ensure that the services and features that your account uses are supported in the target region.
 
-- Önizleme özellikleri için, aboneliğinizin hedef bölge için beyaz listeye kaydedildiğinden emin olun. Önizleme özellikleri hakkında daha fazla bilgi için bkz. [bilgi depoları](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [artımlı zenginleştirme](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)ve [Özel uç nokta](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
 
-## <a name="assessment-and-planning"></a>Değerlendirme ve planlama
+## Assessment and planning
 
-Arama hizmetinizi yeni bölgeye taşıdığınızda, [verilerinizi yeni depolama hizmetine taşımanız](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) ve ardından dizinlerinizi, becerileri ve bilgi depolarını yeniden oluşturmanız gerekecektir. Hizmeti yeniden oluşturma işlemini daha kolay ve hızlı hale getirmek için geçerli ayarları kaydetmeniz ve JSON dosyalarını kopyalamanız gerekir.
+When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
-## <a name="moving-your-search-services-resources"></a>Arama hizmetinizin kaynaklarını taşıma
+## Moving your search service's resources
 
-Başlamak için Kaynak Yöneticisi şablonu dışarı ve sonra değiştirebilirsiniz.
+To start you will export and then modify a Resource Manager template.
 
-### <a name="export-a-template"></a>Bir şablonu dışarı aktarma
+### Export a template
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. Kaynak grubu sayfanıza gidin.
+2. Go to your Resource Group page.
 
 > [!div class="mx-imgBorder"]
-> ![kaynak grubu sayfası örneği](./media/search-move-resource/export-template-sample.png)
+> ![Resource Group page example](./media/search-move-resource/export-template-sample.png)
 
-3. **Tüm kaynaklar**’ı seçin.
+3. Select **All resources**.
 
-3. Sol taraftaki gezinti menüsünde **şablonu dışarı aktar**' ı seçin.
+3. In the left hand navigation menu select **Export template**.
 
-4. **Şablonu dışarı aktar** sayfasında **İndir** ' i seçin.
+4. Choose **Download** in the **Export template** page.
 
-5. Portaldan indirdiğiniz. zip dosyasını bulun ve bu dosyayı seçtiğiniz bir klasöre ayıklayın.
+5. Locate the .zip file that you downloaded from the portal, and unzip that file to a folder of your choice.
 
-ZIP dosyası, şablonu dağıtmak için şablon ve betikleri oluşturan. JSON dosyalarını içerir.
+The zip file contains the .json files that comprise the template and scripts to deploy the template.
 
-### <a name="modify-the-template"></a>Şablonu değiştirme
+### Modify the template
 
-Arama ve depolama hesabı adlarını ve bölgelerini değiştirerek şablonu değiştirirsiniz. Adlar her hizmet ve bölge adlandırma kuralları için kurallara uymalıdır. 
+You will modify the template by changing the search and storage account names and regions. The names must follow the rules for each service and region naming conventions. 
 
-Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bölge için kod, boşluk içermeyen bölge adıdır, **Orta ABD** = **merkezileştirme**.
+To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
-1. Azure portalda **Kaynak oluştur**’u seçin.
+1. In the Azure portal, select **Create a resource**.
 
-2. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
+2. In **Search the Marketplace**, type **template deployment**, and then press **ENTER**.
 
-3. **Şablon dağıtımı**'nı seçin.
+3. Select **Template deployment**.
 
-4. **Oluştur**’u seçin.
+4. Select **Create**.
 
-5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
+5. Select **Build your own template in the editor**.
 
-6. **Dosya Yükle**' yi seçin ve ardından önceki bölümde indirdiğiniz ve sıkıştırmışın **Template. JSON** dosyasını yüklemek için yönergeleri izleyin.
+6. Select **Load file**, and then follow the instructions to load the **template.json** file that you downloaded and unzipped in the previous section.
 
-7. **Template. JSON** dosyasında, arama ve depolama hesabı adlarının varsayılan değerini ayarlayarak hedef arama ve depolama hesaplarını adlandırın. 
+7. In the **template.json** file, name the target search and storage accounts by setting the default value of the search and storage account names. 
 
-8. Hem arama hem de depolama hizmetlerinizin hedef bölgesine **Template. JSON** dosyasındaki **Location** özelliğini düzenleyin. Bu örnekte, hedef bölge `centralus`olarak ayarlanır.
+8. Edit the **location** property in the **template.json** file to the target region for both your search and storage services. This example sets the target region to `centralus`.
 
 ```json
 },
@@ -113,35 +129,34 @@ Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.micro
             },
 ```
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+### Deploy the template
 
-1. **Template. JSON** dosyasını kaydedin.
+1. Save the **template.json** file.
 
-2. Özellik değerlerini girin veya seçin:
+2. Enter or select the property values:
 
-- **Abonelik**: Bir Azure aboneliği seçin.
+- **Subscription**: Select an Azure subscription.
 
-- **Kaynak grubu**: **Yeni Oluştur**'u seçin ve kaynak grubuna bir ad verin.
+- **Resource group**: Select **Create new** and give the resource group a name.
 
-- **Konum**: bir Azure konumu seçin.
+- **Location**: Select an Azure location.
 
-3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusuna tıklayın ve ardından **satın al düğmesini seçin** .
+3. Click the **I agree to the terms and conditions stated above** checkbox, and then click the **Select Purchase** button.
 
-## <a name="verifying-your-services-status-in-new-region"></a>Yeni bölgedeki hizmetlerinizin durumu doğrulanıyor
+## Verifying your services' status in new region
 
-Taşımayı doğrulamak için yeni kaynak grubunu açın ve hizmetleriniz yeni bölge ile listelenir.
+To verify the move, open the new resource group and your services will be listed with the new region.
 
-Verilerinizi kaynak bölgeinizden hedef bölgeye taşımak için lütfen bu makaleye, [verilerinizi yeni depolama hesabına taşımaya](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account)yönelik yönergelere bakın.
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
 
-## <a name="clean-up-resources-in-your-original-region"></a>Özgün bölgenizdeki Kaynakları Temizleme
+## Clean up resources in your original region
 
-Değişiklikleri uygulamak ve hizmet hesabınızın taşınmasını tamamlamak için kaynak hizmet hesabını silin.
+To commit the changes and complete the move of your service account, delete the source service account.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## Next steps
 
-[Dizin oluşturma](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
 
-[Beceri oluşturma](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
 
-[Bilgi deposu oluşturma](https://docs.microsoft.com/azure/search/knowledge-store-create-portal)
-
+[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->

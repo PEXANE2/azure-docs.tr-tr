@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184018"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399068"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde OpenID Connect Teknik profili tanımlama
 
@@ -77,9 +77,11 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
-| Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse Azure AD B2C, belirtecin kimlik sağlayıcısı tarafından döndürülen bir talep içinde olup olmadığını denetler ve belirtilen değere eşittir. |
-| VERIYI | Yes | OpenID Connect bulgu belirtimine göre biçimlendirilmiş bir JSON yapılandırma belgesine işaret eden, iyi bilinen bir OpenID yapılandırma uç noktası olarak da bilinen bir URL. |
-| Adı | Hayır | Kimlik sağlayıcısının adı. |
+| Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse Azure AD B2C, kimlik sağlayıcısı tarafından döndürülen bir belirteçte `aud` talebinin ıdtokenaudience meta verilerinde belirtilen değere eşit olup olmadığını denetler.  |
+| VERIYI | Yes | OpenID ile bilinen yapılandırma uç noktası olarak da bilinen bir OpenID Connect kimlik sağlayıcısı yapılandırma belgesine işaret eden bir URL. URL, kiracı adıyla değiştirilmiş `{tenant}` ifadesini içerebilir.  |
+| authorization_endpoint | Hayır | Bir OpenID Connect kimlik sağlayıcısı yapılandırma yetkilendirmesi uç noktasına işaret eden bir URL. Authorization_endpoint meta veri değeri, OpenID iyi bilinen yapılandırma uç noktasında belirtilen `authorization_endpoint` önceliklidir. URL, kiracı adıyla değiştirilmiş `{tenant}` ifadesini içerebilir. |
+| enden | Hayır | Bir OpenID Connect kimlik sağlayıcısının benzersiz tanımlayıcısı. Verenin meta verisinin değeri, OpenID iyi bilinen yapılandırma uç noktasında belirtilen `issuer` önceliklidir.  Belirtilmişse Azure AD B2C, kimlik sağlayıcısı tarafından döndürülen bir belirteçte `iss` talebinin, verenin meta verilerinde belirtilen değere eşit olup olmadığını denetler. |
+| Adı | Hayır | Kimlik sağlayıcısının adı.  |
 | response_types | Hayır | OpenID Connect Core 1,0 belirtimine göre yanıt türü. Olası değerler: `id_token`, `code`veya `token`. |
 | response_mode | Hayır | Kimlik sağlayıcısının sonucu Azure AD B2C geri göndermek için kullandığı yöntem. Olası değerler: `query`, `form_post` (varsayılan) veya `fragment`. |
 | scope | Hayır | OpenID Connect Core 1,0 belirtimine göre tanımlanan isteğin kapsamı. `openid`, `profile`ve `email`gibi. |

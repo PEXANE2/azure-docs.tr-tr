@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119687"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330847"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile bir ses Yardımcısı oluşturma, Java (Önizleme)
 
 Hızlı başlangıç, [konuşmadan metne](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre), [metinden konuşmaya](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)ve [konuşma çevirisi](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre)için de kullanılabilir.
 
-Bu makalede, Azure bilişsel [Hizmetler konuşma SDK 'sını](speech-sdk.md)kullanarak bir Java konsol uygulaması oluşturursunuz. Uygulama, doğrudan hat konuşma kanalını kullanmak için yapılandırılmış daha önce yazılmış bir bot 'a bağlanır, bir sesli istek gönderir ve bir sesli yanıt etkinliği (yapılandırıldıysa) döndürür. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve Windows, Ubuntu Linux veya macOS 'ta Java IDE tutulma. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
+Bu makalede, Azure bilişsel [Hizmetler konuşma SDK 'sını](speech-sdk.md)kullanarak bir Java konsol uygulaması oluşturursunuz. Uygulama, doğrudan hat konuşma kanalını kullanmak için yapılandırılmış daha önce yazılmış bir bot 'a bağlanır, bir sesli istek gönderir ve bir sesli yanıt etkinliği (yapılandırıldıysa) döndürür. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve Windows, Linux veya macOS 'ta Java IDE tutulma. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
-- İşletim sistemi: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit) veya macOS 10,13 veya üzeri.
+- İşletim sistemi: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit), RHEL/CentOS 8 (x64) veya macOS 10,13 veya üzeri.
 - [Tutulma Java IDE](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 - Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
@@ -42,6 +42,17 @@ Ubuntu 16.04/18.04 çalıştırıyorsanız, çakışan küreler başlamadan önc
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+RHEL/CentOS 8 ' de:
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
 
 Windows (64-bit) çalıştırıyorsanız, platformunuz için Microsoft Visual C++ yeniden dağıtılabilir ' i yüklediğinizden emin olun:
 
@@ -65,7 +76,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için _Pod. xml_ dosyasını aşa
  </dependency>
 ```
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 
@@ -465,7 +476,7 @@ F11 ' i seçin veya **hata ayıklama** > **Çalıştır** ' ı seçin.
 Konsol "bir şeyi söyleyin" iletisini görüntüler.
 Bu noktada, bot 'ın anlayabilmesi için Ingilizce bir tümcecik veya cümle konuşun. Konuşmanızı, bot 'unuza göre tanınıp işlendiği doğrudan hat konuşma kanalı aracılığıyla sizin bot 'a iletilir. Yanıt bir etkinlik olarak döndürülür. Bot 'niz bir yanıt olarak konuşma döndürürse, ses `AudioPlayer` sınıfı kullanılarak geri yürütülür.
 
-![Başarılı tanıma sonrası konsol çıktısının ekran görüntüsü](media/sdk/qs-java-jre-08-console-output.png)
+![Başarılı tanıma sonrasında konsol çıktısının ekran görüntüsü](media/sdk/qs-java-jre-08-console-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

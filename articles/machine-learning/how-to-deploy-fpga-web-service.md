@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd77c77abc8fe60eb18febde6fcc5bdffe6d7871
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538104"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402703"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Alan-programlanabilir kapı dizileri (FPGA) ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makale, alan-programlanabilir kapı dizileri (FPGA) ile bir giriş sağlar ve Azure FPGA 'ye Azure Machine Learning kullanarak modellerinizi nasıl dağıtacağınızı gösterir. 
 
-FPGA’lar programlanabilen bir mantık blokları dizisi ve yeniden yapılandırılabilen bir bağlantı hiyerarşisi içerir. Birbirine bağlı, bu blokların üretim sonrasında çeşitli şekillerde yapılandırılmasına izin verir. Diğer yongalarla karşılaştırıldığında, FPGAs, bir programlama programlamasına ve performansına ilişkin bir bileşim sunar.
+FPGAs, programlanabilir mantık blokları dizisi ve yeniden yapılandırılabilir birbirine bağlı bir hiyerarşi içerir. Birbirine bağlı, bu blokların üretim sonrasında çeşitli şekillerde yapılandırılmasına izin verir. Diğer yongalarla karşılaştırıldığında, FPGAs, bir programlama programlamasına ve performansına ilişkin bir bileşim sunar.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGAs vs. CPU, GPU ve ASIC
 
@@ -77,9 +77,9 @@ FPGAs, bu Azure bölgelerinde kullanılabilir:
 Azure FPGAs Azure Machine Learning tümleşiktir. Microsoft, DNN değerlendirmesi, Bing Arama derecelendirmesi ve yazılım tanımlı ağ (SDN) hızlandırma için FPGAs ' i kullanarak diğer görevler için CPU 'Ları serbest bırakarak gecikme süresini azaltır.
 
 Aşağıdaki senaryolar FPGAs kullanır:
-+ [Optik denetleme sistemi otomatik](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
++ [Otomatik Optik İnceleme sistemi](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [Land kapak eşleme](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [Land kapağı eşleme](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
 
 
@@ -88,7 +88,7 @@ Aşağıdaki senaryolar FPGAs kullanır:
 Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. Çıkarım veya model Puanlama, dağıtılan modelin tahmin için en yaygın olarak üretim verilerinde kullanıldığı aşamadır.
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği.  Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -289,7 +289,7 @@ print("\nSuccessfully converted: ", converted_model.name, converted_model.url, c
       converted_model.id, converted_model.created_time, '\n')
 ```
 
-### <a name="create-docker-image"></a>Docker görüntüsünü oluşturma
+### <a name="create-docker-image"></a>Docker görüntüsü oluşturma
 
 Dönüştürülen model ve tüm bağımlılıklar bir Docker görüntüsüne eklenir.  Bu Docker görüntüsü daha sonra dağıtılabilir ve örneklenebilir.  Desteklenen dağıtım hedefleri, bulutta veya [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)gibi bir uç cihazda aks 'leri içerir.  Ayrıca, kayıtlı Docker görüntünüz için Etiketler ve açıklamalar ekleyebilirsiniz.
 
@@ -325,7 +325,7 @@ Modelinizi ölçekli üretim web hizmeti olarak dağıtmak için Azure Kubernete
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
 prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
                                                     agent_count = 1,
                                                     location = "eastus")
@@ -438,4 +438,4 @@ Bu not defterlerine, videolara ve bloglara göz atın:
 
 + [Microsoft FPGA tabanlı yapılandırılabilir bulut (video) içinde](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-+ [Project Brainwave için gerçek zamanlı AI: Proje giriş sayfası](https://www.microsoft.com/research/project/project-brainwave/)
++ [Gerçek zamanlı AI için Project Brainwave: proje giriş sayfası](https://www.microsoft.com/research/project/project-brainwave/)

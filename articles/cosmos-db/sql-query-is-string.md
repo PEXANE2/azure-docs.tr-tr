@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde IS_STRING
-description: Azure Cosmos DB 'de SQL sistem işlevi IS_STRING hakkında bilgi edinin.
+description: Azure Cosmos DB IS_STRING SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e105394765ccd8a495a0b44b0c29e0c4c0b9f59a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349792"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303775"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
  Belirtilen ifadenin türü dize olup olmadığını gösteren bir Boole değeri döndürür.  
@@ -47,11 +47,15 @@ SELECT
        IS_STRING({prop: "value"}.prop2) AS isStr7  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

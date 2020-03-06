@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/02/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 185556e3045cb1a879bc256f4f2932549de71cd8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d56cd3b3d286d69a51d8cc14eb8020343cf7295a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274945"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302993"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
 
@@ -44,7 +44,7 @@ Tek bir [NAT ağ geçidi kaynağı](nat-gateway-resource.md) 64.000 ' den 1.000.
 #### <a name="steps"></a>Adımlar:
 
 1. Uygulamanızın giden bağlantı oluşturma şeklini araştırın (örneğin, kod incelemesi veya paket yakalama). 
-2. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın hatalı çalışıp çalışmadığını belirleme.  Bulgularınızı eklemek için Azure Izleyici 'de ölçümleri kullanın.
+2. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın hatalı çalışıp çalışmadığını belirleme.  Bulgularınızı eklemek için Azure Izleyici 'de [ölçümleri](nat-metrics.md) kullanın.
 3. Uygun desenlerin izlendikten sonra değerlendirin.
 4. SNAT bağlantı noktası tükenmesi 'nin NAT ağ geçidi kaynağına atanan ek IP adresleriyle azaltılıp azaltılmasının gerekip gerekmediğini değerlendirin.
 
@@ -83,3 +83,4 @@ Aşağıdaki tabloda, testleri başlatmak için kullanılacak araçlar için bir
 
 - [Sanal ağ NAT](nat-overview.md) hakkında bilgi edinin
 - [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
+- [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.

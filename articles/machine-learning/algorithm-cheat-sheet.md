@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/05/2020
+ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328632"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning tasarlayıcı için Machine Learning algoritması sayfası
 
@@ -48,7 +48,7 @@ Machine Learning 'in üç ana kategorisi vardır: *denetimli öğrenme*, denetim
 
 Denetimli öğrenmede her bir veri noktası, bir kategori veya bir ilgi değeri ile etiketlidir veya ilişkilendirilir. Kategorik bir etikete bir örnek, bir görüntüyü ' Cat ' veya ' köpek ' olarak atanıyor. Değer etiketine bir örnek, kullanılan bir otomobil ile ilişkili satış fiyatıdır. Denetimli öğrenmelerin amacı bunlar gibi etiketlenmiş birçok örneği denetmaktır ve gelecekteki veri noktaları hakkında tahminler yapabilmelidir. Örneğin, yeni fotoğrafları doğru bir hayvan ile tanımlama veya diğer kullanılan otomobillere doğru satış fiyatları atama. Bu, yaygın ve yararlı bir makine öğrenimi türüdür.
 
-### <a name="unsupervised-learning"></a>Denetimsiz öğrenme
+### <a name="unsupervised-learning"></a>Denetimli öğrenme
 
 Denetimli öğreniminde, veri noktalarında bunlarla ilişkili etiket yok. Bunun yerine, denetimli bir öğrenme algoritmasının hedefi, verileri bir şekilde veya yapısını betimleyen şekilde düzenmaktır. Denetimsiz öğrenme, verileri kümeler halinde gruplar. böylece, K-anlamına gelir veya daha basit görünmesi için karmaşık verilere bakmanın farklı yollarını bulur.
 

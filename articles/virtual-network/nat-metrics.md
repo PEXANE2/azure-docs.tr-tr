@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6bffa114b325e8b98f439e7ff2ce21480407a643
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274917"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359075"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure sanal ağ NAT ölçümleri
 
@@ -57,6 +57,10 @@ Kaynak Durumu desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sanal ağ NAT](nat-overview.md) hakkında bilgi edinin
-- [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
-- [Azure izleyici](../azure-monitor/overview.md) hakkında bilgi edinin
+* [Sanal ağ NAT](nat-overview.md) hakkında bilgi edinin
+* [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
+* [Azure izleyici](../azure-monitor/overview.md) hakkında bilgi edinin
+* [NAT ağ geçidi kaynakları sorunlarını giderme](troubleshoot-nat.md)hakkında bilgi edinin.
+* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
+
+

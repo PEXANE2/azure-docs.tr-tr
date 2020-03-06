@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270151"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330983"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
-Akış alımı, değişen birim verileri için 10 saniyeden daha az bir alım süresiyle düşük gecikme süresi gerektiren senaryolara yöneliktir. Bir veya daha fazla veritabanında, her bir tabloya veri akışının görece küçük (saniyede birkaç kayıt) olduğu, ancak genel veri alma birimi yüksek (saniyede binlerce kayıt) olduğu bir veya daha fazla veritabanında işlemsel işlemeyi iyileştirmek için kullanılır.
+Değişen birim verileri için 10 saniyeden daha az bir alım süresiyle düşük gecikme süresi gerektirdiğinde akış alımı kullanın. Bir veya daha fazla veritabanında, her bir tabloya veri akışının görece küçük (saniyede birkaç kayıt) olduğu, ancak genel veri alma birimi yüksek (saniyede binlerce kayıt) olduğu bir veya daha fazla veritabanında işlemsel işlemeyi iyileştirmek için kullanılır. 
 
-Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış alımı yerine klasik (toplu) alımı kullanın. Çeşitli alma yöntemleri hakkında daha fazla bilgi edinmek için [veri alımı genel bakış](/azure/data-explorer/ingest-data-overview) makalesini okuyun.
+Veri miktarı her tablo için saniyede 1 MB 'a kadar büyürken akış alımı yerine toplu alma kullanın. Çeşitli alma yöntemleri hakkında daha fazla bilgi edinmek için [veri alımı genel bakış](/azure/data-explorer/ingest-data-overview) makalesini okuyun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -48,7 +48,7 @@ Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış a
 Desteklenen iki akış alma türü vardır:
 
 
-* Veri kaynağı olarak kullanılan [**Olay Hub 'ı**](/azure/data-explorer/ingest-data-event-hub)
+* Veri kaynağı olarak kullanılan [**Olay Hub**](/azure/data-explorer/ingest-data-event-hub)'ı
 * **Özel** Alım, Azure Veri Gezgini istemci kitaplıklarından birini kullanan bir uygulama yazmanızı gerektirir. Örnek bir uygulama için bkz. [akış alma örneği](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Uygun akış alma türünü seçin
@@ -63,7 +63,7 @@ Desteklenen iki akış alma türü vardır:
 > [!WARNING]
 > Akış alımını devre dışı bırakmak birkaç saat sürebilir.
 
-1. Tüm ilgili tablo ve veritabanlarından akış alma giriş [ilkesini](/azure/kusto/management/streamingingestionpolicy) bırakın. Akış alma ilkesi kaldırma işlemi, ilk depolamadan, sütun deposundaki (kapsamlar veya parçalar) kalıcı depolamaya giriş verilerini taşımayı tetikler. Veri taşıma işlemi, ilk depolama alanındaki veri miktarına ve CPU ve belleğin küme tarafından nasıl kullanıldığına bağlı olarak birkaç saniyelik birkaç saat arasında en son bir süre olabilir.
+1. Tüm ilgili tablo ve veritabanlarından akış alma giriş [ilkesini](/azure/kusto/management/streamingingestionpolicy) bırakın. Akış alma ilkesi kaldırma işlemi, ilk depolamadan, sütun deposundaki (kapsamlar veya parçalar) kalıcı depolamaya giriş verilerini taşımayı tetikler. Veri taşıma işlemi, ilk depolama alanındaki veri miktarına ve CPU ve belleğin küme tarafından nasıl kullanıldığına bağlı olarak birkaç saniyelik birkaç saate kadar sürebilir.
 1. Azure portal Azure Veri Gezgini kümenize gidin. **Ayarlar**' da, **Konfigürasyonlar**' ı seçin. 
 1. **Yapılandırma** bölmesinde, **akış alımını**devre dışı bırakmak için **kapalı** ' yı seçin.
 1. **Kaydet**’i seçin.
@@ -72,15 +72,12 @@ Desteklenen iki akış alma türü vardır:
 
 ## <a name="limitations"></a>Sınırlamalar
 
+* Akış alımı, [veritabanı imleçleri](/azure/kusto/management/databasecursor) veya [veri eşlemeyi](/azure/kusto/management/mappings)desteklemez. Yalnızca [önceden oluşturulmuş](/azure/kusto/management/tables#create-ingestion-mapping) veri eşleme destekleniyor. 
 * Artan VM ve küme boyutları ile akış alma performansı ve kapasitesi ölçeklenir. Eş zamanlı içeri lamalar, çekirdek başına altı alma ile sınırlıdır. Örneğin, D14 ve L16 gibi 16 çekirdekli SKU 'Lar için, desteklenen en fazla 96 yükü eşzamanlı Alım olur. D11 gibi iki çekirdek SKU 'su için, en fazla desteklenen yük 12 eşzamanlı Alım olur.
 * Alma isteği başına veri boyutu sınırlaması 4 MB 'tır.
-* Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için 5 dakikaya kadar sürebilir.
+* Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için beş dakikaya kadar sürebilir.
 * Veri akışı aracılığıyla yapılmasa bile, küme üzerinde akış alımı etkinleştirme, verileri akışa alma için küme makinelerinin yerel SSD disk bir kısmını kullanır ve etkin önbellek için kullanılabilir depolama alanını azaltır.
 * Akış alma verilerinde [kapsam etiketleri](/azure/kusto/management/extents-overview#extent-tagging) ayarlanamaz.
-
-Akış alımı aşağıdaki özellikleri desteklemez:
-* [Veritabanı imleçleri](/azure/kusto/management/databasecursor).
-* [Veri eşleme](/azure/kusto/management/mappings). Yalnızca [önceden oluşturulmuş](/azure/kusto/management/create-ingestion-mapping-command) veri eşleme destekleniyor. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Depolama, veri şifreleme ve yedekleri Azure Kubernetes Service (AK
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649628"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399469"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Depolama ve yedekleme Azure Kubernetes Service (AKS) için en iyi uygulamalar
 
@@ -31,7 +31,7 @@ Uygulamalar genellikle farklı türler ve depolama saniyeye kadar düşürmeyi b
 
 Aşağıdaki tabloda kullanılabilir depolama alanı türleri ve yeteneklerini özetler:
 
-| Kullanım durumu | Birim eklentisi | Okuma/yazma kez | Salt okunur çok | Okuma/yazma birçok | Windows Server kapsayıcısı desteği |
+| Kullanım örneği | Birim eklentisi | Okuma/yazma kez | Salt okunur çok | Okuma/yazma birçok | Windows Server kapsayıcısı desteği |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Paylaşılan yapılandırma       | Azure Dosyaları   | Yes | Yes | Yes | Yes |
 | Yapılandırılmış uygulama verileri        | Azure Diskleri   | Yes | Hayır  | Hayır  | Yes |
@@ -75,7 +75,7 @@ Pod'ları için depolama ekleme gerektiğinde, kalıcı birimler kullanın. Bu k
 
 ![Azure Kubernetes Hizmetleri (AKS) kümesini Taleplerde kalıcı hacim](media/concepts-storage/persistent-volume-claims.png)
 
-Kalıcı hacim talep (PVC), dinamik olarak gerektiğinde depolama oluşturmanızı sağlar. Pod'ların istekleri gibi temel Azure diskleri oluşturulur. Pod tanımında oluşturulması ve tasarlanmış bağlama yoluna bağlı bir ses isteği
+Kalıcı hacim talep (PVC), dinamik olarak gerektiğinde depolama oluşturmanızı sağlar. Pod'ların istekleri gibi temel Azure diskleri oluşturulur. Pod tanımında, oluşturulacak ve belirlenmiş bir bağlama yoluna iliştirilebilecek bir birim isteyin.
 
 Birimlerin dinamik olarak oluşturulması ve kullanılması hakkındaki kavramlar için bkz. [kalıcı birimler talepleri][aks-concepts-storage-pvcs].
 

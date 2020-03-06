@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359101"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
 
@@ -335,7 +335,7 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresi ve hedef bağ
 ## <a name="limitations"></a>Sınırlamalar
 
 - NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
-- IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.
+- IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.  NAT, IPv6 ön ekine sahip bir alt ağa dağıtılamaz.
 - NSG akış günlüğü, NAT kullanılırken desteklenmez.
 - NAT birden çok sanal ağa yayılamaz.
 
@@ -349,21 +349,25 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sanal ağ NAT](nat-overview.md)hakkında daha fazla bilgi edinin.
-- NAT ağ geçidini doğrulama öğreticisi
-  * [Azure CLI](tutorial-create-validate-nat-gateway-cli.md),
-  * [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
-  * [Portal](tutorial-create-validate-nat-gateway-cli.md)
-- NAT ağ geçidi kaynağı dağıtmaya yönelik hızlı başlangıç
-  * [Azure CLI](./quickstart-create-nat-gateway-cli.md),
-  * [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  * [Portal](./quickstart-create-nat-gateway-portal.md).
-- [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında daha fazla bilgi edinin.
-- [Standart yük dengeleyici](../load-balancer/load-balancer-standard-overview.md)hakkında daha fazla bilgi edinin.
-- [Kullanılabilirlik alanları ve standart yük dengeleyici](../load-balancer/load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
-- NAT ağ geçidi kaynak API 'SI hakkında daha fazla bilgi
-  * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [UserVoice 'ta daha sonra neleri derleyeceğinizi bize söyleyin](https://aka.ms/natuservoice).
-- [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
+* [Sanal ağ NAT](nat-overview.md)hakkında bilgi edinin.
+* [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.
+* [NAT ağ geçidi kaynakları sorunlarını giderme](troubleshoot-nat.md)hakkında bilgi edinin.
+* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
+* [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
+* NAT ağ geçidini doğrulama öğreticisi
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md),
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Portal](tutorial-create-validate-nat-gateway-cli.md)
+* NAT ağ geçidi kaynağı dağıtmaya yönelik hızlı başlangıç
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md),
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md),
+  - [Portal](./quickstart-create-nat-gateway-portal.md).
+* NAT ağ geçidi kaynak API 'SI hakkında bilgi edinin
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+* [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
+* [Standart yük dengeleyici](../load-balancer/load-balancer-standard-overview.md)hakkında bilgi edinin.
+* [Kullanılabilirlik alanları ve standart yük dengeleyici](../load-balancer/load-balancer-standard-availability-zones.md)hakkında bilgi edinin.
+
+

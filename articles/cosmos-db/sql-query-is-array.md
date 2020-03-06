@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde IS_ARRAY
-description: Azure Cosmos DB 'de SQL sistem işlevi IS_ARRAY hakkında bilgi edinin.
+description: Azure Cosmos DB IS_ARRAY SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11ff29dcae7bf5c2e532eee658ee39d39b964e35
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350969"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303894"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
  Belirtilen ifade türü bir dizi olup olmadığını gösteren bir Boole değeri döndürür.  
@@ -47,11 +47,15 @@ SELECT
  IS_ARRAY({prop: "value"}.prop2) AS isArray7  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

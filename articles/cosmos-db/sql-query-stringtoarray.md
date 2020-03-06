@@ -4,15 +4,15 @@ description: Azure Cosmos DB 'de SQL sistem işlevi StringToArray hakkında bilg
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2d1f90da50950ac6ff4f87ffe96ebad9f3d811cc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349285"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302925"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Bir diziye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
@@ -37,7 +37,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToArray` ' ın farklı türler genelinde nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, `StringToArray` farklı türlerde nasıl davrandığını gösterir. 
   
  Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
@@ -50,7 +50,7 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
-Sonuç kümesini burada verilmiştir.
+Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
@@ -59,14 +59,14 @@ Sonuç kümesini burada verilmiştir.
 Aşağıda, geçersiz giriş örneği verilmiştir. 
    
  Dizideki tek tırnak işaretleri geçerli bir JSON değil.
-Bir sorgu içinde geçerli olsalar bile, geçerli dizilere ayrıştırmazlar. Dizi dizesindeki dizeler "[\\" \\ "]" ya da çevreleyen teklifin tek bir ' [""] ' olması gerekir.
+Bir sorgu içinde geçerli olsalar bile, geçerli dizilere ayrıştırmazlar. Dizi dizesi içindeki dizeler "[\\"\\"]" ya da çevreleyen teklifin tek bir ' [""] ' olması gerekir.
 
 ```sql
 SELECT
     StringToArray("['5','6','7']")
 ```
 
-Sonuç kümesini burada verilmiştir.
+Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{}]
@@ -85,11 +85,15 @@ SELECT
     StringToArray(undefined)
 ```
 
-Sonuç kümesini burada verilmiştir.
+Sonuç kümesini burada bulabilirsiniz.
 
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>Açıklamalar
+
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,24 +1,24 @@
 ---
-title: İstemci tarafı araçları & AKS üzerinde Azure Dev Spaces yüklemesi
+title: AKS üzerinde Azure Dev Spaces etkinleştirme & istemci tarafı araçları 'nı yükler
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Bir AKS kümesine Azure Dev Spaces yüklemeyi ve istemci tarafı araçları yüklemeyi öğrenin.
+description: AKS kümesinde Azure Dev Spaces etkinleştirmeyi ve istemci tarafı araçları yüklemeyi öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251999"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302908"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>AKS 'e ve istemci tarafı araçlarına Azure Dev Spaces yüklemesi
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS kümesinde Azure Dev Spaces etkinleştirme ve istemci tarafı araçları 'nı yüklemeye
 
-Bu makalede, bir AKS kümesine Azure Dev Spaces yüklemek ve istemci tarafı araçları yüklemek için kullanabileceğiniz çeşitli yollar gösterilmektedir.
+Bu makalede, bir AKS kümesinde Azure Dev Spaces etkinleştirmenin yanı sıra istemci tarafı araçları yüklemek için kullanabileceğiniz çeşitli yollar gösterilmektedir.
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>CLı kullanarak Azure Dev Spaces yükleyip
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>CLı kullanarak Azure Dev Spaces etkinleştirme
 
-CLı kullanarak dev alanlarını yüklemeden önce şunları yapmanız gerekir:
+CLı kullanarak dev alanlarını etkinleştirebilmeniz için şunlar gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap][az-portal-create-account] oluşturabilirsiniz.
 * [Azure CLI yüklendi][install-cli].
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-cli] .
@@ -49,25 +49,25 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces` komutu aynı zamanda Azure Dev Spaces CLı 'yi de yüklüyor.
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Azure portal kullanarak Azure Dev Spaces yüklemesi
+## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Azure portal kullanarak Azure Dev Spaces etkinleştirin
 
-Azure portal kullanarak dev alanlarını yükleyebilmek için önce şunları yapmanız gerekir:
+Azure portal kullanarak dev alanlarını etkinleştirebilmeniz için önce şunları yapmanız gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap][az-portal-create-account] oluşturabilirsiniz.
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-portal] .
 
-Azure portal kullanarak Azure Dev Spaces yüklemek için:
+Azure Dev Spaces Azure portal kullanarak etkinleştirmek için:
 1. [Azure Portal][az-portal] oturum açın.
 1. AKS kümenize gidin.
-1. *Geliştirme alanları*' na tıklayın.
+1. *Geliştirme alanları* menü öğesini seçin.
 1. Değişiklik *geliştirme alanlarını* *Evet* olarak etkinleştirin ve *Kaydet*' e tıklayın.
 
 ![Azure portal dev alanlarını etkinleştirme](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Azure portal kullanarak Azure Dev Spaces yüklemek Azure Dev Spaces için herhangi bir istemci tarafı **Aracı yüklemez.**
+Azure portal kullanarak Azure Dev Spaces etkinleştirilmesi Azure Dev Spaces için herhangi bir istemci tarafı **Aracı yüklemez.**
 
-## <a name="install-the-client-side-tooling"></a>İstemci tarafı araçları 'nı yükler
+## <a name="install-the-client-side-tools"></a>İstemci tarafı araçları 'nı yükler
 
-Yerel makinenizden bir AKS kümesinde dev Spaces ile etkileşim kurmak için Azure Dev Spaces istemci tarafı araçları 'nı kullanabilirsiniz. İstemci tarafı araçları 'nı yüklemenin çeşitli yolları vardır:
+Yerel makinenizden bir AKS kümesindeki dev Spaces ile etkileşim kurmak için Azure Dev Spaces istemci tarafı araçlarını kullanabilirsiniz. İstemci tarafı araçları yüklemek için çeşitli yollar vardır:
 
 * [Visual Studio Code][vscode], [Azure dev Spaces uzantısını][vscode-extension]yükler.
 * [Visual Studio 2019][visual-studio]' de Azure geliştirme iş yükünü yükledikten sonra.

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119727"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384075"
 ---
 1. Android Studio başlatın ve **hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat** ' ı seçin.
 
@@ -27,7 +27,7 @@ Android Studio’nun yeni Android projenizi hazırlaması biraz zaman alır. Dah
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Bilişsel hizmetler konuşma SDK 'sının geçerli sürümü 1.9.0.
+Bilişsel hizmetler konuşma SDK 'sının geçerli sürümü 1.10.0.
 
 Android için konuşma SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir.
 Https:\//csspeechstorage.blob.core.windows.net/maven/adresinden bir Maven deposunda barındırılır.
@@ -42,7 +42,7 @@ Konuşma SDK’sını kullanmak için projenizi ayarlayın. Android Studio menü
 
    ![Kitaplık bağımlılığının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Görüntülenen pencerede, Android için konuşma SDK 'sının adını ve sürümünü girin, *com. Microsoft. biliveservices. Speech: Client-SDK: 1.9.0*. Sonra **Tamam**’ı seçin.
+1. Görüntülenen pencerede, Android için konuşma SDK 'sının adını ve sürümünü girin, *com. Microsoft. biliveservices. Speech: Client-SDK: 1.10.0*. Sonra **Tamam**’ı seçin.
    Konuşma SDK 'Sı şu şekilde gösterildiği gibi bağımlılıklar listesine eklenmelidir:
 
    ![Bağımlılıklar listesinde konuşma SDK 'sının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

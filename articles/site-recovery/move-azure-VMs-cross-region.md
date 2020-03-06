@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303928"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine taşıma
 
@@ -70,7 +70,7 @@ Güvenilirliği, kullanılabilirliği, yönetimi veya idare arttırmak için bir
    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer)
    - [Genel IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   Diğer tüm ağ bileşenleri için bkz. [Azure ağ belgeleri](https://docs.microsoft.com/azure/#pivot=products&panel=network). 
+   Diğer tüm ağ bileşenleri için bkz. [Azure ağ belgeleri](https://docs.microsoft.com/azure/?pivot=products&panel=network). 
 
 4. Taşıma işlemini gerçekleştirmeden önce yapılandırmayı test etmek için, hedef bölgede el ile [Üretim dışı bir ağ oluşturun](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) . Kurulumu test etmek, üretim ortamıyla en az girişim oluşturur ve bunu yapmanızı öneririz.
     
@@ -127,7 +127,7 @@ Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır
 
 1. **Ayarlar** > **çoğaltılan öğeler**' de kasaya gidin, sanal makineyi seçin ve ardından **Yük devretme**' yı seçin.
 1. **Yük devretme**Için **en son**' u seçin. 
-2. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery yük devretmeyi tetiklemeden önce kaynak VM 'yi kapatmaya çalışır. Ancak, yük devretme, kapatılma başarısız olsa bile devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
+2. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery yük devretmeyi tetiklemeden önce kaynak VM 'yi kapatmaya çalışır. Ancak, yük devretme, kapatılma başarısız olsa bile devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
 3. İş bittiğinde, sanal makinenin hedef Azure bölgesinde beklenen şekilde göründüğünden emin olun.
 4. **Çoğaltılan öğeler**' de sanal makineye sağ tıklayın ve **Yürüt**' ü seçin. Bu, taşımayı sonlandırır. Tamamlama işi bitene kadar bekleyin.
 
