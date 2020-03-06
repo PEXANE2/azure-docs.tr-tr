@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7a5ef2c2fbed6daabef6cd3c5049fcd25f478d53
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919626"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373602"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -130,7 +130,7 @@ Hayır. Örnekler, yükseltme etki alanları ve hata etki alanları arasında da
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Bağlantı boşaltma Application Gateway destekler mi?
 
-Evet. Bir arka uç havuzu içindeki üyeleri kesintiye uğramadan değiştirmek için bağlantı boşaltma ayarı yapabilirsiniz. Daha fazla bilgi için [Application Gateway bağlantı boşaltma bölümüne](overview.md#connection-draining)bakın.
+Evet. Bir arka uç havuzu içindeki üyeleri kesintiye uğramadan değiştirmek için bağlantı boşaltma ayarı yapabilirsiniz. Daha fazla bilgi için [Application Gateway bağlantı boşaltma bölümüne](features.md#connection-draining)bakın.
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Örnek boyutunu, kesintiye uğramadan büyük olarak değiştirebilir miyim?
 
@@ -410,7 +410,7 @@ Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız,
 Yalnızca özel IP erişimi için örnek NSG yapılandırması: yalnızca özel IP erişimi için ![Application Gateway v2 NSG yapılandırmasını](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
-Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü Pary bağlamında gönderilemeyeceği anlamına gelir. Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-overview.md#cookie-based-affinity) bakın.
+Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-overview.md#cookie-based-affinity) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

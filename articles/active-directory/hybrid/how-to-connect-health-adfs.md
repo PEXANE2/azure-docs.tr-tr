@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897280"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375930"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS'yi Azure AD Connect Health'i kullanarak izleme
 Aşağıdaki belgeler, AD FS altyapınızın Azure AD Connect Health ile izlenmesine ilişkin belgelerdir. Azure AD Connect Health ile Azure AD Connect (eşitleme) izleme hakkında daha fazla bilgi için bkz [Azure AD Connect Health eşitleme Için kullanma](how-to-connect-health-sync.md). Ayrıca, Azure AD Connect Health Active Directory Domain Services izleme hakkında bilgi için, bkz. [Azure AD Connect Health AD DS Ile kullanma](how-to-connect-health-adds.md).

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887110"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390511"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan kanallar ile çalışma
 
@@ -176,15 +176,15 @@ Programı durdurup sildikten sonra bile, kullanıcılar, varlığı silinceye ka
 ## <a id="states"></a>Kanal durumları ve faturalandırma
 Bir kanalın geçerli durumu için olası değerler şunlardır:
 
-* **Durduruldu**: Bu, kanalın oluşturulduktan sonraki ilk durumudur. Bu durumda, kanal özellikleri güncelleştirilebilir ama akışa izin verilmez.
-* **Başlatılıyor**: Kanal başlatılıyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez. Bir hata oluşursa, kanal **durdurulmuş** duruma geri döner.
+* **Durduruldu**: Bu, kanalın oluşturulduktan sonraki ilk durumudur. Bu durumda, kanal özellikleri güncelleştirilemeyebilir ancak akışa izin verilmez.
+* **Başlatılıyor**: Kanal başlatılıyor. Bu durum sırasında güncelleştirme veya akışa izin verilmez. Bir hata oluşursa, kanal **durdurulmuş** duruma geri döner.
 * **Çalışıyor**: Kanal Canlı akışları işleyebilir.
-* **Durduruluyor**: Kanal durduruluyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
-* **Siliniyor**: Kanal siliniyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
+* **Durduruluyor**: Kanal durduruluyor. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
+* **Siliniyor**: Kanal siliniyor. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
 
-Aşağıdaki tabloda, kanal durumlarının faturalandırma modu ile nasıl eşleştiği gösterilir.
+Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenme gösterilmektedir.
 
-| Kanal durumu | Portal kullanıcı arabirimi göstergeleri | Faturalandırılmış mı? |
+| Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | **Şunlar** |**Şunlar** |Hayır (geçici durum) |
 | **Çalıştıran** |**Ready** (çalışan program yok)<p><p>or<p>**Akış** (en az bir çalışan program) |Yes |
@@ -222,7 +222,7 @@ Kanallarla ve ilgili bileşenlerle çalışma ile ilgili başka konular aşağı
 * Varsayılan olarak, Media Services hesabınıza yalnızca beş kanal ekleyebilirsiniz. Daha fazla bilgi için bkz. [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md).
 * Yalnızca kanalınızın **çalışır** durumda olması durumunda faturalandırılırsınız. Daha fazla bilgi için bkz. [Kanal durumları ve faturalama](media-services-live-streaming-with-onprem-encoders.md#states) bölümü.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="feedback"></a>Geri Bildirim
