@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Web uç noktasına özel olayları gönderme-Event Grid Azure portal'
-description: 'Hızlı başlangıç: özel bir konu yayımlamak ve bu konu için olaylara abone olmak için Azure Event Grid ve Azure portal kullanın. Olaylar bir Web uygulaması tarafından işlenir.'
+description: 'Hızlı başlangıç: özel bir konu yayımlamak ve bu konu için olaylara abone olmak için Azure Event Grid ve Azure portal kullanın. Olaylar, bir web uygulaması tarafından işlenir.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720780"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387057"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Hızlı başlangıç: Azure portal ve Event Grid özel olayları Web uç noktasına yönlendirme
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Hızlı Başlangıç: Azure portalı ve Event Grid ile web uç noktasına özel olaylarını yönlendirme.
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede, Azure portalını kullanarak özel bir konu oluşturur, bu özel konuya abone olur ve sonucu görüntülemek için olayı tetiklersiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
@@ -42,14 +42,14 @@ Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir u�
 
     ![Event Grid Konu Ekle düğmesi](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
 4. **Konu oluştur** sayfasında, aşağıdaki adımları izleyin:
-    1. Özel konu için benzersiz bir **ad** sağlayın. Konu adı bir DNS girdisi ile temsil edildiğinden konu adı benzersiz olmalıdır. Görüntüde gösterilen adı kullanmayın. Bunun yerine, kendi adınızı oluşturun; 3-50 karakter arasında olmalıdır ve yalnızca a-z, A-Z, 0-9 ve "-" değerlerini içermelidir.
+    1. Özel konu için benzersiz bir **ad** sağlayın. Konu adı bir DNS girdisi ile temsil edildiğinden konu adı benzersiz olmalıdır. Görüntüde gösterilen adı kullanmayın. Bunun yerine, kendi adınızı oluşturun - 3-50 karakter arasında olması gerekir ve içeren yalnızca a-z, A-Z, 0-9, değerleri ve "-".
     2. Azure **aboneliğinizi** seçin.
     3. Var olan bir kaynak grubunu seçin veya **Yeni oluştur**' u seçin ve **kaynak grubu**için bir **ad** girin.
     4. Olay Kılavuzu konusu için bir **konum** seçin.
     5. **Olay şeması** alanı için varsayılan değer **Event Grid şemayı** tut. 
 
        ![Konu sayfası oluştur](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. **Oluştur**'u seçin. 
+    6. **Oluştur**’u seçin. 
 5. Özel konu oluşturulduktan sonra başarılı bildirim görürsünüz. **Kaynak grubuna git**' i seçin. 
 
    ![Başarılı durum bildirimini görüntüleme](./media/custom-event-quickstart-portal/success-notification.png)

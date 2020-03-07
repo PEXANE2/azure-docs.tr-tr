@@ -10,11 +10,11 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 921ea148c12a23ece47688a26743e1195caf52f4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003794"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391747"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için istemci tarafı şifreleme ve Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -61,13 +61,13 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 > 
 > 
 
-Şifrelenmiş bir blob 'u indirmek,**bloenine akış** kolaylığı yöntemlerine **downloadto**/kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
+Şifrelenmiş bir Blobun indirilmesi, **Blokaya akış** kolaylığı yöntemlerine/**için downloadusing** kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
 Şifrelenmiş Blobun rastgele bir aralığın (**downloadrange** yöntemleri) indirilmesi, istenen aralığın şifresini başarıyla çözmek için kullanılabilecek az miktarda ek veri alabilmek için kullanıcılar tarafından sunulan aralığı ayarlamayı içerir.
 
 Tüm blob türleri (blok Blobları, sayfa Blobları ve ekleme Blobları) Bu şema kullanılarak şifrelenebilir/şifresi çözülür.
 
-### <a name="queues"></a>Sıralar
+### <a name="queues"></a>Kuyruklar
 Sıra iletileri herhangi bir biçimde olduğundan, istemci kitaplığı, ileti metninde başlatma vektörü (IV) ve şifreli içerik şifreleme anahtarını (CEK) içeren özel bir biçimi tanımlar.
 
 Şifreleme sırasında, istemci kitaplığı rastgele bir IV/32 bayt üretir ve bu bilgileri kullanarak kuyruk ileti metninin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri daha sonra şifreli kuyruk iletisine eklenir. Bu değiştirilmiş ileti (aşağıda gösterilmiştir) hizmette depolanır.
@@ -93,7 +93,7 @@ Tablo veri şifrelemesi aşağıdaki gibi kullanılabilir:
 
 Yalnızca dize özelliklerinin şifrelendiğini unutmayın. Diğer özellik türleri şifrelenirse, bunların dizelere dönüştürülmesi gerekir. Şifrelenmiş dizeleri hizmette ikili özellikleri olarak depolanır ve şifre çözme sonra geri dizelere dönüştürülür.
 
-Şifreleme İlkesi yanı sıra, tablolar için kullanıcıların şifrelenmiş özelliklerini belirtmeniz gerekir. Bu, ya da (TableEntity türetilen POCO varlık için) bir [EncryptProperty] özniteliği ya da bir şifreleme çözümleyici istek seçenekleri belirterek yapılabilir. Bir şifreleme çözümleyici bölüm anahtarını, satır anahtarını ve özellik adını alır ve bu özellik şifrelenmesi gerekip gerekmediğini belirten bir Boole değeri döndüren bir temsilcidir. Şifreleme sırasında istemci kitaplığı, bir özellik için kablo yazılırken şifrelenmesi gerekip gerekmediğine karar vermek için bu bilgileri kullanır. Temsilci özellikleri nasıl şifrelenir etrafında mantıksal olasılığı için de sağlar. (X, örneğin, daha sonra özellik A şifrelemek; Aksi takdirde özellik A ve b şifreleme) Varlıkları okurken veya sorgularken bu bilgilerin sağlanması gerekmediğini unutmayın.
+Şifreleme İlkesi yanı sıra, tablolar için kullanıcıların şifrelenmiş özelliklerini belirtmeniz gerekir. Bu, ya da (TableEntity türetilen POCO varlık için) bir [EncryptProperty] özniteliği ya da bir şifreleme çözümleyici istek seçenekleri belirterek yapılabilir. Bir şifreleme çözümleyici bölüm anahtarını, satır anahtarını ve özellik adını alır ve bu özellik şifrelenmesi gerekip gerekmediğini belirten bir Boole değeri döndüren bir temsilcidir. Şifreleme sırasında istemci kitaplığı, bir özellik için kablo yazılırken şifrelenmesi gerekip gerekmediğine karar vermek için bu bilgileri kullanır. Temsilci özellikleri nasıl şifrelenir etrafında mantıksal olasılığı için de sağlar. (Örneğin, X ise, özelliğini şifreleyin; Aksi halde A ve B özelliklerini şifreleyin.) Varlıkları okurken veya sorgularken bu bilgilerin sağlanması gerekmediğini unutmayın.
 
 ### <a name="batch-operations"></a>Toplu Işlemler
 Batch işlemlerinde, bu toplu işlemdeki tüm satırlarda aynı KEK kullanılacaktır çünkü istemci kitaplığı, toplu işlem başına yalnızca bir seçenek nesnesine (ve bu nedenle bir ilke/KEK) izin verir. Ancak, istemci Kitaplığı toplu işte her satır için yeni bir rastgele IV ve rastgele CEK oluşturacaktır. Kullanıcılar ayrıca bu davranışı şifreleme Çözümleyicisi 'nde tanımlayarak toplu işteki her işlem için farklı özellikleri şifrelemeyi seçebilir.
@@ -242,7 +242,7 @@ Yukarıda belirtildiği gibi, varlık TableEntity uygularsa, Özellikler **Encry
 Depolama verilerinizi şifrelerken ek performans yükü ile sonuçlandığına göz önünde unutmayın. İçerik anahtarı ve IV oluşturulmalıdır, içeriğin kendisi şifrelenmelidir ve ek meta veriler biçimlendirilmelidir ve karşıya yüklenmelidir. Bu ek yük, Şifrelenmekte olan veri miktarına bağlı olarak farklılık gösterecektir. Müşterilerin geliştirme sırasında uygulamalarının performansını her zaman test etmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Öğretici: Azure Key Vault kullanarak Microsoft Azure Depolama Blobları şifreleme ve şifre çözme](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [Öğretici: Azure Key Vault kullanarak Microsoft Azure Depolama bloblarını şifreleme ve şifre çözme](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * [.Net NuGet paketi Için Azure Storage Istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage) 'nı indirin
 * NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)ve [Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) paketlerini Azure Key Vault indirin  
 * [Azure Key Vault belgelerini](../../key-vault/key-vault-overview.md) ziyaret edin

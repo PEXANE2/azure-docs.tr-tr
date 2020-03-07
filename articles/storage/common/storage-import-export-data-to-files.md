@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363917"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure dosyaları 'na veri aktarmak için Azure Içeri/dışarı aktarma hizmeti 'ni kullanma
 
@@ -21,12 +21,12 @@ Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'nin büyük miktarlarda ver
 
 Içeri/dışarı aktarma hizmeti, Azure depolama 'ya yalnızca Azure dosyalarını içeri aktarmayı destekler. Azure dosyalarını dışarı aktarma desteklenmiyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure dosyalarına veri aktarmaya yönelik bir içeri aktarma işi oluşturmadan önce, aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun. Şunları yapmanız gerekir:
 
 - Içeri/dışarı aktarma hizmeti ile kullanmak için etkin bir Azure aboneliğine sahip olmanız gerekir.
-- En az bir Azure depolama hesabınız olmalıdır. [İçeri/dışarı aktarma hizmeti Için desteklenen depolama hesapları ve depolama türleri](storage-import-export-requirements.md)listesine bakın. Yeni bir depolama hesabı oluşturma hakkında daha fazla bilgi için bkz. [bir depolama hesabının nasıl oluşturulacağını](storage-account-create.md).
+- En az bir Azure depolama hesabınız olmalıdır. [İçeri/dışarı aktarma hizmeti Için desteklenen depolama hesapları ve depolama türleri](storage-import-export-requirements.md)listesine bakın. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 - [Desteklenen türlerde](storage-import-export-requirements.md#supported-disks)yeterli sayıda disk vardır.
 - [Desteklenen BIR işletim sistemi sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sistemine sahiptir.
 - Windows sisteminde [Waımportexport sürüm 2](https://aka.ms/waiev2) ' nı indirin. `waimportexport`varsayılan klasöre ayıklayın. Örneğin, `C:\WaImportExport`.
@@ -115,7 +115,7 @@ Ek örnekler için, [günlük dosyaları Için örneklere](#samples-for-journal-
 ## <a name="step-2-create-an-import-job"></a>2\. Adım: içeri aktarma işi oluşturma
 
 Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
-1. https://portal.azure.com/ oturum açın.
+1. https://portal.azure.com/oturum açın.
 2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine**gidin.
 
     ![Içeri/dışarı aktarmaya git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)

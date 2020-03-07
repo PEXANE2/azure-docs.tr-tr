@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386500"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmetinin sürümünü seçin:"]
@@ -80,7 +80,7 @@ Aşağıdaki yöntemlerden birini kullanarak işlem hattınızı el ile çalış
 - .NET SDK
 - Azure PowerShell modülü
 - REST API
-- Python SDK
+- Python SDK'sı
 
 ### <a name="rest-api"></a>REST API
 Aşağıdaki örnek komutta REST API kullanarak işlem hattınızı nasıl el ile çalıştırabileceğiniz gösterilmiştir:
@@ -278,11 +278,11 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 | JSON özelliği | Tür | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Evet | None | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Evet | None | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | string | Yes | Yok | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | object | Yes | Yok | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | Hayır | 1 | 1-1000 arası | `"interval":10` |
-| **endTime** | string | Evet | None | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Hayır | None | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | string | Yes | Yok | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | object | Hayır | Yok | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:

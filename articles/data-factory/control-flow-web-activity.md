@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394478"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
 Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz.
@@ -67,7 +67,7 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 -------- | ----------- | -------------- | --------
 ad | Web etkinliğinin adı | Dize | Yes
 type | **Webactivity**olarak ayarlanmalıdır. | Dize | Yes
-method | Hedef uç nokta için REST API yöntemi. | dizisinde. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Yes
+method | Hedef uç nokta için REST API yöntemi. | Dizisinde. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Yes
 url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Yes
 üstbilgiler | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
 body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
@@ -92,7 +92,7 @@ Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
 Aşağıda, Web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>Hiçbiri
+### <a name="none"></a>Yok
 
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 
@@ -108,7 +108,7 @@ Temel kimlik doğrulamasıyla kullanılacak kullanıcı adını ve parolayı bel
 }
 ```
 
-### <a name="client-certificate"></a>istemci sertifikası
+### <a name="client-certificate"></a>İstemci sertifikası
 
 PFX dosyası ve parolanın Base64 ile kodlanmış içeriğini belirtin.
 

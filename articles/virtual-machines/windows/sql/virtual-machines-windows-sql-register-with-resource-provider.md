@@ -15,11 +15,11 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201637"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388770"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -35,14 +35,14 @@ Azure portal üzerinden SQL Server VM Azure Marketi görüntüsünün dağıtım
 
 - **Basitleştirilmiş lisans yönetimi**: SQL VM kaynak sağlayıcısı 'na kaydolmak, SQL Server lisans yönetimini basitleştirir ve [Azure Portal](virtual-machines-windows-sql-manage-portal.md), az clı veya PowerShell kullanarak Azure hibrit avantajı etkinleştirilen SQL Server VM 'leri hızlıca tanımlamanızı sağlar: 
 
-   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
@@ -106,14 +106,14 @@ SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için öncelikle aboneli
 
 SQL VM kaynak sağlayıcınızı az CLı veya PowerShell kullanarak Azure aboneliğinize kaydedin. 
 
-# <a name="az-clitabbash"></a>[AZ CLı](#tab/bash)
+# <a name="az-cli"></a>[AZ CLı](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the SQL VM resource provider to your subscription
@@ -132,7 +132,7 @@ Kullanım başına ödeme yapmak için Kullandıkça Öde (`PAYG`), kendi lisans
 
 Yük devretme kümesi örnekleri ve çok örnekli dağıtımlar yalnızca SQL VM kaynak sağlayıcısı ile hafif modda kaydedilebilir. 
 
-# <a name="az-clitabbash"></a>[AZ CLı](#tab/bash)
+# <a name="az-cli"></a>[AZ CLı](#tab/bash)
 
 SQL Server VM az CLı ile hafif modda kaydolun: 
 
@@ -142,7 +142,7 @@ SQL Server VM az CLı ile hafif modda kaydolun:
   ```
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell ile SQL Server VM hafif modda kaydolun:  
 
@@ -183,7 +183,7 @@ Windows Server 2008 (_R2 değil_) üzerinde yüklü olan SQL Server 2008 ve 2008
 SQL Server 2008 veya 2008 R2 örneğinizi Windows Server 2008 örneğine kaydetmek için, aşağıdaki az CLı veya PowerShell kod parçacığını kullanın: 
 
 
-# <a name="az-clitabbash"></a>[AZ CLı](#tab/bash)
+# <a name="az-cli"></a>[AZ CLı](#tab/bash)
 
 Az CLı ile SQL Server 2008 sanal makinesini NoAgent modunda kaydedin: 
 
@@ -202,7 +202,7 @@ Az CLı ile SQL Server 2008 R2 sanal makinesini NoAgent modunda kaydedin:
    --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell ile NoAgent modunda SQL Server 2008 VM 'yi kaydetme: 
 
@@ -245,7 +245,7 @@ Aracı modunu tam olarak yükseltmek için:
 
 ### <a name="azure-portal"></a>Azure portalı
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
 1. SQL Server sanal makinenizi seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
@@ -258,7 +258,7 @@ Aracı modunu tam olarak yükseltmek için:
 
 ### <a name="command-line"></a>Komut satırı
 
-# <a name="az-clitabbash"></a>[AZ CLı](#tab/bash)
+# <a name="az-cli"></a>[AZ CLı](#tab/bash)
 
 Şu az CLı kod parçacığını çalıştırın:
 
@@ -267,7 +267,7 @@ Aracı modunu tam olarak yükseltmek için:
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Aşağıdaki PowerShell kod parçacığını çalıştırın:
 
@@ -286,7 +286,7 @@ SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak 
 
 ### <a name="azure-portal"></a>Azure portalı 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. [SQL Server sanal makinelerinize](virtual-machines-windows-sql-manage-portal.md)gidin.
 1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, büyük olasılıkla SQL VM kaynak sağlayıcısına kayıtlı değildir. 
 1. **Durum**altındaki değeri görüntüleyin. **Durum** **başarılı**olursa, SQL Server VM SQL VM kaynak sağlayıcısına başarıyla kaydedildi. 
@@ -297,14 +297,14 @@ SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak 
 
 Az CLı veya PowerShell kullanarak geçerli SQL Server VM kayıt durumunu doğrulayın. `ProvisioningState`, kayıt başarılı olursa `Succeeded` gösterir. 
 
-# <a name="az-clitabbash"></a>[AZ CLı](#tab/bash)
+# <a name="az-cli"></a>[AZ CLı](#tab/bash)
 
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -325,7 +325,7 @@ Yönetim modunun tam olarak indirgenmesini sağlamak için SQL VM kaynak sağlay
 
 Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek için şu adımları izleyin:
 
-1. [Azure portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. SQL Server VM kaynağına gidin. 
   
    ![SQL sanal makineler kaynağı](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
@@ -345,7 +345,7 @@ Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek i�
 
 ### <a name="command-line"></a>Komut satırı
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Azure CLı ile kaynak sağlayıcıdan SQL Server sanal makinenizin kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) komutunu kullanın. Bu, SQL Server sanal makine *kaynağını* kaldırır ancak sanal makineyi silmez. 
 
 
@@ -356,7 +356,7 @@ az sql vm delete
   --yes 
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Azure CLı ile kaynak sağlayıcıdan SQL Server sanal makinenizin kaydını silmek için, [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)komutunu kullanın. Bu, SQL Server sanal makine *kaynağını* kaldırır ancak sanal makineyi silmez. 
 
 ```powershell-interactive

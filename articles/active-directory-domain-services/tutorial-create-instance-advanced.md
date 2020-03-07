@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612558"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383660"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle bir Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -139,7 +139,7 @@ Sanal ağın nasıl planlanacağı ve yapılandırılacağı hakkında daha fazl
 
 Azure AD DS etki alanının yönetimi için *AAD DC yöneticileri* adlı özel bir yönetim grubu kullanılır. Bu grubun üyelerine, yönetilen etki alanına katılmış VM 'lerde yönetim izinleri verilir. Bu grup, etki alanına katılmış VM 'lerde yerel Yöneticiler grubuna eklenir. Bu grubun üyeleri, etki alanına katılmış VM 'lere uzaktan bağlanmak için Uzak Masaüstü 'Nü de kullanabilir.
 
-Azure AD DS kullanarak, yönetilen bir etki alanında *etki alanı yöneticisi* veya *Kuruluş Yöneticisi* izinlerine sahip değilsiniz. Bu izinler hizmet tarafından ayrılmıştır ve kiracının içindeki kullanıcılar için kullanılabilir hale getirilmez. Bunun yerine, *AAD DC Administrators* grubu bazı ayrıcalıklı işlemler gerçekleştirmenize olanak sağlar. Bu işlemler, etki alanına katılmış VM 'lerde yönetim grubuna ait olan ve grup ilkesi yapılandıran bilgisayarların etki alanına katılmasını içerir.
+Azure AD DS kullanarak, yönetilen bir etki alanında *etki alanı yöneticisi* veya *Kuruluş Yöneticisi* izinlerine sahip değilsiniz. Bu izinler hizmet tarafından ayrılmıştır ve kiracının içindeki kullanıcılar için kullanılabilir hale getirilmez. Bunun yerine, *AAD DC Administrators* grubu bazı ayrıcalıklı işlemler gerçekleştirmenize olanak sağlar. Bu işlemler, etki alanına katılmış VM 'lerde yönetim grubuna ait olan ve grup ilkesi yapılandıran bir işlem içerir.
 
 Sihirbaz, Azure AD dizininizde *AAD DC yöneticileri* grubunu otomatik olarak oluşturur. Azure AD dizininizde bu adı taşıyan mevcut bir grubunuz varsa, sihirbaz bu grubu seçer. İsteğe bağlı olarak, dağıtım işlemi sırasında bu *AAD DC Yöneticiler* grubuna ek Kullanıcı eklemeyi seçebilirsiniz. Bu adımlar daha sonra tamamlanabilir.
 

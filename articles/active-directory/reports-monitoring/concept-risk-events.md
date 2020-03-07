@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014473"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376378"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Risk algılamalarını Azure Active Directory
 
@@ -69,7 +69,7 @@ Microsoft 'un algılama işlemine yönelik sürekli yatırımlar şu şekilde ya
 
 Sidolandırıcılar meşru kullanıcıların geçerli parolalarını tehlikeye ayorsa, genellikle bu kimlik bilgilerini paylaşır. Bu, genellikle koyu Web üzerinde herkese açık bir şekilde gönderilir veya siteleri yapıştırabilir ya da siyah Pazar üzerine kimlik bilgileri satıyor veya satarak yapılır. Microsoft sızdırılan kimlik bilgileri hizmeti, genel ve koyu Web sitelerini izleyerek ve ile çalışarak Kullanıcı adı/parola çiftleri alır:
 
-- Araştırmacılar
+- Araştırmacıları
 - Yasalar zorlaması
 - Microsoft 'ta güvenlik ekipleri
 - Diğer güvenilir kaynaklar 

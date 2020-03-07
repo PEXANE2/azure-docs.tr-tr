@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120246"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376751"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -137,7 +137,7 @@ Bir kataloğun adını ve açıklamasını düzenleyebilirsiniz. Kullanıcılar 
 
     ![Katalog ayarlarını Düzenle](./media/entitlement-management-shared/catalog-edit.png)
 
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ## <a name="delete-a-catalog"></a>Katalog silme
 

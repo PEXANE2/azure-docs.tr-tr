@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: MT
+ms.openlocfilehash: c4e41ff76bf646fe49ff9051e0f193f21f8cd34f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377810"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -30,7 +30,7 @@ Uygulamanız, istemcilerin erişim isteyebileceklerini belirten bir kaynaktır (
 Bir kaynağın bir erişim belirtecinin içindeki talepleri nasıl doğrulayacağını ve kullandığını öğrenmek için aşağıdaki bölümlere bakın.
 
 > [!IMPORTANT]
-> Erişim belirteçleri, belirtecin *kitlelerine* göre oluşturulur ve bu, belirteçteki kapsamların sahibi olan uygulama anlamına gelir.  Bu, [uygulama `2` bildiriminde](reference-app-manifest.md#manifest-reference) `accessTokenAcceptedVersion` bir kaynak ayarının, v 1.0 uç noktasını çağıran bir istemcinin v 2.0 erişim belirteci almasına izin verir.  Benzer şekilde, bu, istemciniz için erişim belirteci [isteğe bağlı taleplerini](active-directory-optional-claims.md) değiştirmenin neden, MS Graph kaynağına ait olan `user.read`için bir belirteç istendiğinde alınan erişim belirtecini değiştirmez.  
+> Erişim belirteçleri, belirtecin *kitlelerine* göre oluşturulur ve bu, belirteçteki kapsamların sahibi olan uygulama anlamına gelir.  Bu, [uygulama `2` bildiriminde](reference-app-manifest.md#manifest-reference) `accessTokenAcceptedVersion` bir kaynak ayarının, v 1.0 uç noktasını çağıran bir istemcinin v 2.0 erişim belirteci almasına izin verir.  Benzer şekilde, bu, istemciniz için erişim belirteci [isteğe bağlı taleplerini](active-directory-optional-claims.md) değiştirmenin neden, kaynağa ait olan `user.read`için bir belirteç istendiğinde alınan erişim belirtecini değiştirmez.  
 > Aynı nedenden dolayı, istemci uygulamanızı bir kişisel hesapla (örneğin hotmail.com veya outlook.com) sınarken, istemciniz tarafından alınan erişim belirtecinin donuk bir dize olduğunu fark edebilirsiniz. Bunun nedeni, erişildiği kaynağın şifreli ve istemci tarafından anlaşılamadığından eski MSA (Microsoft hesabı) biletler istedi.
 
 ## <a name="sample-tokens"></a>Örnek belirteçler
@@ -82,7 +82,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 
 | İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
-| `aud` | Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. Kimlik belirteçlerinde hedef kitle, uygulamanızın Azure portal uygulamanıza atanan uygulama KIMLIĞIDIR. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
+| `aud` | Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. KIMLIK belirteçlerinde hedef kitle, uygulamanızın Azure portal uygulamanıza atanan uygulama KIMLIĞIDIR. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 | `iss` | Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Verilen belirteç bir v 2.0 belirteci ise (`ver` talebine bakın), URI `/v2.0`sona ermeyecektir. Kullanıcının bir Microsoft hesabı bir tüketici kullanıcısı olduğunu belirten GUID `9188040d-6c67-4c5b-b112-36a304b66dad`. Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
 |`idp`| Dize, genellikle STS URI 'SI | Belirtecin öznesinin kimliğini doğrulayan kimlik sağlayıcısını kaydeder. Bu değer, Kullanıcı hesabı veren konukiyle aynı kiracıda olmadığı sürece veren talebinin değeriyle aynıdır, örneğin. Talep yoksa, bunun yerine `iss` değerinin kullanılabileceği anlamına gelir.  Bir kuruluş bağlamında kullanılan kişisel hesaplar için (örneğin, bir Azure AD kiracısına davet edilen kişisel hesap), `idp` talebi ' live.com ' veya Microsoft hesabı kiracı `9188040d-6c67-4c5b-b112-36a304b66dad`içeren bir STS URI 'SI olabilir. |  
 | `iat` | int, UNIX zaman damgası | "Çıkarılan", bu belirteç için kimlik doğrulamanın ne zaman oluştuğunu gösterir. |
@@ -101,8 +101,8 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 | `roles` | Dizelerin dizisi, bir izin listesi | Uygulamanız tarafından kullanıma sunulan uygulamanın veya kullanıcının çağrı için izin verilen izinler kümesi. [Uygulama belirteçleri](#user-and-application-tokens)için, bu, Kullanıcı kapsamları yerine istemci kimlik bilgisi akışı ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) sırasında kullanılır.  [Kullanıcı belirteçleri](#user-and-application-tokens) için bu, kullanıcının hedef uygulamada atandığı rollerle doldurulur. |
 | `wids` | [Roletemplateıd](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID dizisi | Bu kullanıcıya atanan kiracı genelindeki rolleri, [yönetici rolleri sayfasında](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)bulunan roller bölümünden gösterir.  Bu talep uygulama [bildiriminin](reference-app-manifest.md)`groupMembershipClaims` özelliği aracılığıyla uygulama başına temelinde yapılandırılır.  "All" veya "DirectoryRole" olarak ayarlanması gerekir.  Belirteç uzunluğu sorunları nedeniyle örtük akış aracılığıyla alınan belirteçlerde bulunmayabilir. |
 | `groups` | GUID 'lerin JSON dizisi | Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar, [uygulama bildiriminin](reference-app-manifest.md)`groupMembershipClaims` özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Office 365 dağıtım listelerini içerir. <br><br>Örtülü izin ile `groups` talebini kullanma hakkında daha fazla bilgi için aşağıdaki `hasgroups` talebine bakın. <br>Diğer akışlar için, kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) alıyorsa, Kullanıcı için Grup listesini içeren AAD Graf uç noktasını gösteren talep kaynaklarına fazla kullanım talebi eklenecektir. |
-| `hasgroups` | Boole | Varsa, her zaman `true`, kullanıcının en az bir grupta olduğunu belirten. Tam gruplar talebi, URI parçasını URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs için `groups` talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`) belirleyebilmek için grafiği kullanması gerektiğini belirtir. |
-| `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri için (bkz. `hasgroups` yukarıya) ancak belirteç için hala çok büyük, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. `groups` talebi yerine yeni bir talep olarak SAML için, bir dağıtılmış talep olarak JWTs için. <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `hasgroups` | Boole | Varsa, her zaman `true`, kullanıcının en az bir grupta olduğunu belirten. Tam gruplar talebi, URI parçasını URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs için `groups` talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`) belirleyebilmek için Microsoft Graph API 'sini kullanması gerektiğini belirtir. |
+| `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri için (bkz. `hasgroups` yukarıya) ancak belirteç için hala çok büyük, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. `groups` talebi yerine yeni bir talep olarak SAML için, bir dağıtılmış talep olarak JWTs için. <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Belirteç bir kaynağa erişmek için kullanıldığında ve veritabanı tablolarında anahtar olarak kullanılabilecek gibi, güvenli bir şekilde yetkilendirme denetimleri gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD 'nin sorun verdiği belirteçlerde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. Bununla birlikte, bir ikili tanımlayıcı, belirli bir uygulama KIMLIĞI için benzersizdir. Bu nedenle, tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya istenmeyebilir. Ayrıca bkz. `oid` talebi (bir Kiracıdaki uygulamalarda aynı olmaya devam eder). |
 | `oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity platformunda bir nesne için sabit tanımlayıcı. Ayrıca, kimlik doğrulama denetimlerini güvenli bir şekilde ve veritabanı tablolarında anahtar olarak gerçekleştirmek için de kullanılabilir. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama oturum açma, `oid` talebinde aynı değeri alacaktır. Bu nedenle, Microsoft Graph gibi Microsoft çevrimiçi hizmetler sorguları yaparken `oid` kullanılabilir. Microsoft Graph, bu KIMLIĞI belirli bir [Kullanıcı hesabı](/graph/api/resources/user)için `id` özelliği olarak döndürür. `oid` birden çok uygulamanın kullanıcıları ilişkilendirme yapmasına izin verdiğinden, bu talebi alabilmesi için `profile` kapsamı gereklidir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. |
 | `tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eder. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad`. Bu talebi alabilmesi için `profile` kapsamı gereklidir. |
@@ -115,7 +115,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 > [!NOTE]
 > **Gruplar fazla kullanım talebi**
 >
-> Belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin olmak için, Azure AD, gruplar talebinde içerdiği nesne kimliklerinin sayısını sınırlar. Bir Kullanıcı fazla kullanım sınırından daha fazla grup üyesiyse (SAML belirteçleri için 150, JWT belirteçleri için 200), Azure AD, grup talebini belirteçte göstermez. Bunun yerine, belirteçte kullanıcının grup üyeliğini almak üzere Graph API sorgulamak üzere uygulamayı gösteren bir fazla kullanım talebi içerir.
+> Belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin olmak için, Azure AD, gruplar talebinde içerdiği nesne kimliklerinin sayısını sınırlar. Bir Kullanıcı fazla kullanım sınırından daha fazla grup üyesiyse (SAML belirteçleri için 150, JWT belirteçleri için 200), Azure AD, grup talebini belirteçte göstermez. Bunun yerine, belirtece, kullanıcının grup üyeliğini almak için Microsoft Graph API 'sini sorgulamak üzere uygulamayı gösteren bir fazla kullanım talebi içerir.
   ```csharp
   {
     ...
@@ -125,7 +125,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
       {
     "_claim_sources": {
       "src1": {
-          "endpoint":"[Graph Url to get this user's group membership from]"
+          "endpoint":"[Url to get this user's group membership from]"
           }
          }
        }

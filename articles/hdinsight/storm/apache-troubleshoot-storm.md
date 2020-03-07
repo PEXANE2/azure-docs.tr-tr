@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896016"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395149"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight'ı kullanarak Apache Storm sorunlarını giderme
 
-Sık karşılaşılan sorunlar ve çözümleri ile çalışmak için öğrenin [Apache Storm](https://storm.apache.org/) yüklerde [Apache Ambari](https://ambari.apache.org/).
+[Apache ambarı](https://ambari.apache.org/)'nda [Apache Storm](https://storm.apache.org/) yükleri ile çalışmaya yönelik en popüler sorunlar ve çözümleri hakkında bilgi edinin.
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Bir küme üzerindeki Storm kullanıcı arabirimini nasıl erişim sağlanır?
 
@@ -27,8 +27,8 @@ Storm kullanıcı arabirimini bir tarayıcıdan erişirken için iki seçeneğin
 ### <a name="apache-ambari-ui"></a>Apache ambarı Kullanıcı arabirimi
 
 1. Ambari panosuna gidin.
-2. Hizmetler listesinde seçin **Storm**.
-3. İçinde **hızlı bağlantılar** menüsünde **Storm kullanıcı arabirimini**.
+2. Hizmetler listesinde, **fırtınası**' yi seçin.
+3. **Hızlı bağlantılar** menüsünde, **fırtınası Kullanıcı arabirimi**' ni seçin.
 
 ### <a name="direct-link"></a>Doğrudan bağlantı
 
@@ -40,7 +40,7 @@ Storm kullanıcı arabirimini şu URL'den erişebilirsiniz:
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Nasıl ı Storm olay hub'ı spout denetim noktası bilgilerini bir topolojiden diğerine aktarma?
 
-Azure Event Hubs'dan okumayı topolojiler geliştirirken, .jar dosyasını spout HDInsight Storm olay hub'ı kullanarak, yeni kümede aynı ada sahip bir topoloji dağıtmanız gerekir. Ancak, hassastır denetim noktası verileri korumanız gerekir [Apache ZooKeeper](https://zookeeper.apache.org/) eski kümede.
+Azure Event Hubs'dan okumayı topolojiler geliştirirken, .jar dosyasını spout HDInsight Storm olay hub'ı kullanarak, yeni kümede aynı ada sahip bir topoloji dağıtmanız gerekir. Ancak, eski kümede [Apache ZooKeeper](https://zookeeper.apache.org/) için kaydedilmiş denetim noktası verilerini saklamanız gerekir.
 
 ### <a name="where-checkpoint-data-is-stored"></a>Denetim noktası verilerin depolandığı
 
@@ -52,11 +52,11 @@ Denetim noktası verileri ofsetleri için iki kök yolları, ZooKeeper, olay hub
 
 ### <a name="how-to-restore"></a>Geri yükleme
 
-ZooKeeper dışında verilerini dışarı aktarın ve ardından yeni bir adla ZooKeeper dön verileri almak için kullandığınız kitaplıklar ve komut dosyalarını almak için bkz. [HDInsight Storm örnekleri](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
+ZooKeeper 'dan verileri dışarı aktarmak için kullandığınız betikleri ve kitaplıkları almak ve sonra verileri yeni bir adla ZooKeeper 'e geri aktarmak için bkz. [HDInsight fırtınası örnekleri](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
 
 LIB klasör, içeri/dışarı aktarma işlemi uygulamasını içeren .jar dosyalarını içerir. Bash klasör verilerini eski kümede ZooKeeper sunucusundan dışarı aktarmak ve yeni kümede ZooKeeper sunucuya geri alma yapmayı gösteren bir örnek betiği içerir.
 
-Çalıştırma [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) betiğinden sonra verileri içeri ve dışarı aktarmak, ZooKeeper düğümleri. Betik doğru Hortonworks Data Platform (HDP) sürümüne güncelleştirin. (Bu betikler HDInsight, genel yapmaya çalışıyoruz. Genel komut dosyası herhangi bir düğüm kümesi değişiklik olmadan kullanıcı tarafından çalışır.)
+Dışarı aktarmak ve ardından verileri içeri aktarmak için ZooKeeper düğümlerinden [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) betiğini çalıştırın. Betik doğru Hortonworks Data Platform (HDP) sürümüne güncelleştirin. (Bu betikler HDInsight, genel yapmaya çalışıyoruz. Genel komut dosyası herhangi bir düğüm kümesi değişiklik olmadan kullanıcı tarafından çalışır.)
 
 Dışarı aktar komutu, ayarladığınız bir konuma (Azure Blob Storage veya Azure Data Lake Storage) meta verileri bir Apache Hadoop Dağıtılmış Dosya Sistemi (bir) yoluna yazar.
 
@@ -137,11 +137,11 @@ Storm olay hub'ı spout .jar dosyalarını topolojinizi ile kullanma hakkında d
 
 ### <a name="java-based-topology"></a>Java tabanlı topoloji
 
-[(Java) HDInsight üzerinde Apache Storm ile Azure Event hubs'dan olayları işleme](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+[HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-topoloji (HDInsight 3.4 + Linux Storm kümeleri üzerinde Mono) tabanlı
 
-[HDInsight üzerinde Apache Storm ile Azure Event hubs'tan olay işleme (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[HDInsight 'ta Apache Storm ile Azure Event Hubs olayları işleme (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Apache Storm olay hub'ın en son spout ikili dosyaları HDInsight 3.5 + Linux Storm kümeleri
 
@@ -149,11 +149,11 @@ HDInsight 3.5 + Linux fırtınası kümeleriyle birlikte çalışarak en son fı
 
 ### <a name="source-code-examples"></a>Kaynak kod örnekleri
 
-Bkz: [örnekler](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) okuma ve yazma (Java dilinde yazılmış) bir Apache Storm topolojisi kullanarak bir Azure HDInsight kümesinde Azure olay Hub'ından nasıl.
+Azure HDInsight kümesinde Apache Storm topolojisi (Java 'da yazılmış) kullanarak Azure Event hub 'dan okuma ve yazma [örneklerine](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) bakın.
 
 ## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Storm Log4J 2 yapılandırma dosyalarını kümeleri nasıl bulabilirim?
 
-Tanımlamak için [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) Storm hizmetler için yapılandırma dosyaları.
+Fırtınası Hizmetleri için [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) yapılandırma dosyalarını belirlemek için.
 
 ### <a name="on-head-nodes"></a>Baş düğümler üzerinde
 

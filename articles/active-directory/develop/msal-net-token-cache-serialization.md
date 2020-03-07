@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377490"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
 [Belirteç](msal-acquire-cache-tokens.md)alındıktan sonra, Microsoft kimlik doğrulama KITAPLıĞı (msal) tarafından önbelleğe alınır.  Uygulama kodu, başka bir yöntem tarafından belirteç almadan önce önbellekten bir belirteç almayı denemelidir.  Bu makalede, MSAL.NET içinde belirteç önbelleğinin varsayılan ve özel serileştirmesi açıklanmaktadır.

@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650767"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397133"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
 
@@ -163,7 +163,7 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 
 1. Azure portal, **Turbofandemo** Machine Learning çalışma alanının kaynak grubunuzda mevcut olduğunu doğrulayın.
 
-### <a name="debugging"></a>Hata ayıklama
+### <a name="debugging"></a>Hata Ayıklama
 
 Hata ayıklama için Python deyimlerini not defterine iç içe ekleyebilirsiniz, genellikle `print()` komutu. Tanımlı olmayan değişkenler veya nesneler görürseniz, ilk olarak bildirildiği veya örneklendiği hücreleri çalıştırın.
 

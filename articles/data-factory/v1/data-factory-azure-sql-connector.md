@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928083"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361494"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -41,12 +41,12 @@ Aşağıdaki veri depolarından verileri **Azure SQL veritabanı 'na**kopyalayab
 ## <a name="supported-authentication-type"></a>Desteklenen kimlik doğrulama türü
 Azure SQL Veritabanı Bağlayıcısı, temel kimlik doğrulamasını destekler.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak verileri Azure SQL veritabanına taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -62,7 +62,7 @@ Aşağıdaki bölümler, Azure SQL veritabanı 'na özgü Data Factory varlıkla
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Azure SQL bağlı hizmeti, bir Azure SQL veritabanını veri fabrikanıza bağlar. Aşağıdaki tabloda, Azure SQL bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **Azuressqldatabase** olarak ayarlanmalıdır |Yes |
 | connectionString |ConnectionString özelliği için Azure SQL veritabanı örneğine bağlanmak için gereken bilgileri belirtin. Yalnızca temel kimlik doğrulaması desteklenir. |Yes |
@@ -77,7 +77,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 TypeProperties bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Azurestabtable** türündeki veri kümesinin **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tableName |Bağlı hizmetin başvurduğu Azure SQL veritabanı örneğindeki tablonun veya görünümün adı. |Yes |
 
@@ -94,7 +94,7 @@ Verileri bir Azure SQL veritabanından taşıyorsanız, kopyalama etkinliğindek
 ### <a name="sqlsource"></a>SqlSource
 Kopyalama etkinliğinde, kaynak **SQLSource**türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örnek: `select * from MyTable`. |Hayır |
 | sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL deyim bir SELECT deyimi saklı yordam içinde olmalıdır. |Hayır |
@@ -144,7 +144,7 @@ GO
 ### <a name="sqlsink"></a>SqlSink
 **Sqlsink** aşağıdaki özellikleri destekler:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |TimeSpan<br/><br/> Örnek: "00: 30:00" (30 dakika). |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
@@ -640,25 +640,25 @@ Verileri Azure SQL veritabanına taşırken, SQL türünden .NET türüne ve tam
 | binary |Byte[] |
 | bit |Boole |
 | char |String, Char[] |
-| date |Tarih Saat |
-| Datetime |Tarih Saat |
-| datetime2 |Tarih Saat |
+| date |DateTime |
+| Tarih saat |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Ondalık |Ondalık |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Kayan |Double |
+| Float |çift |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |Ondalık |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Ondalık |
 | nvarchar |String, Char[] |
 | real |Tek |
 | rowversion |Byte[] |
-| smalldatetime |Tarih Saat |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Ondalık |
 | sql_variant |Object * |
 | metin |String, Char[] |
 | time |TimeSpan |

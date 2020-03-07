@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388604"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Azure Cosmos DB tetikleyicisi
 

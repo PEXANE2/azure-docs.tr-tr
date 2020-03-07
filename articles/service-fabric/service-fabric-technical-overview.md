@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024898"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389195"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terimlere genel bakış
 
@@ -164,15 +164,15 @@ Farklı ortamların çerçeveler ve dağıtım modelleri için farklı düzeyler
 
 | Uygulama türü | Açıklanan | Azure Service Fabric ağı | Azure Service Fabric kümeleri (herhangi bir işletim sistemi)| Yerel küme | Tek başına küme |
 |---|---|---|---|---|---|
-| Service Fabric kafes uygulamaları | Kaynak modeli (YAML & JSON) | Desteklenen |Desteklenmiyor | Windows-desteklenen, Linux ve Mac-desteklenmez | Windows-desteklenmiyor |
-|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | Desteklenmiyor| Desteklenen|Desteklenen|Windows-destekleniyor|
+| Service Fabric kafes uygulamaları | Kaynak modeli (YAML & JSON) | Destekleniyor |Desteklenmiyor | Windows-desteklenen, Linux ve Mac-desteklenmez | Windows-desteklenmiyor |
+|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | Desteklenmiyor| Destekleniyor|Destekleniyor|Windows-destekleniyor|
 
 Aşağıdaki tabloda, Service Fabric karşı farklı uygulama modelleri ve araçları açıklanmaktadır.
 
-| Uygulama türü | Açıklanan | Visual Studio | Eclipse | SFCTL | AZ CLı | Powershell|
+| Uygulama türü | Açıklanan | Visual Studio | Eclipse | SFCTL | AZ CLı | PowerShell|
 |---|---|---|---|---|---|---|
 | Service Fabric kafes uygulamaları | Kaynak modeli (YAML & JSON) | VS 2017 |Desteklenmiyor |Desteklenmiyor | Yalnızca desteklenen ağ ortamı | Desteklenmiyor|
-|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | VS 2017 ve VS 2015| Desteklenen|Desteklenen|Desteklenen|Desteklenen|
+|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | VS 2017 ve VS 2015| Destekleniyor|Destekleniyor|Destekleniyor|Destekleniyor|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

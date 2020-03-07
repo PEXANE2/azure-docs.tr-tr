@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280728"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386679"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory’de işlem hatları ve etkinlikler
 
@@ -48,7 +48,7 @@ Azure Data Factory, işlem hatlarına tek tek veya başka bir etkinlikle zincirl
 
 Veri dönüştürme etkinliği | İşlem ortamı
 ---------------------------- | -------------------
-[Veri akışı](control-flow-execute-data-flow-activity.md) | Azure Databricks Azure Data Factory tarafından yönetiliyor
+[Veri Akışı](control-flow-execute-data-flow-activity.md) | Azure Databricks Azure Data Factory tarafından yönetiliyor
 [Azure Işlevi](control-flow-azure-function-activity.md) | Azure İşlevleri
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
@@ -105,14 +105,14 @@ JSON biçiminde işlem hattı şöyle tanımlanır:
 }
 ```
 
-Etiket | Açıklama | Tür | Gereklidir
+Etiket | Açıklama | Tür | Gerekli
 --- | ----------- | ---- | --------
-ad | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Bir harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | Dize | Evet
-description | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. | Dize | Hayır
-activities | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinliklerin JSON öğesi hakkında ayrıntılı bilgi için [Etkinlik JSON](#activity-json) bölümüne bakın. | Dizi | Evet
-parameters | **Parametreler** bölümü, işlem hattınızı yeniden kullanım için esnek hale getiren, işlem hattında tanımlanmış bir veya daha fazla parametreyi içerebilir. | Listeleme | Hayır
+ad | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Bir harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | Dize | Yes
+açıklama | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. | Dize | Hayır
+etkinlikler | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinliklerin JSON öğesi hakkında ayrıntılı bilgi için [Etkinlik JSON](#activity-json) bölümüne bakın. | Dizi | Yes
+parametreler | **Parametreler** bölümü, işlem hattınızı yeniden kullanım için esnek hale getiren, işlem hattında tanımlanmış bir veya daha fazla parametreyi içerebilir. | Liste | Hayır
 concurrency | İşlem hattının sahip olduğu en fazla eşzamanlı çalıştırma sayısı. Varsayılan olarak, en fazla bir değer yoktur. Eşzamanlılık sınırına ulaşılırsa, daha önce tamamlanana kadar ek işlem hattı çalıştırmaları sıraya alınır | Sayı | Hayır 
-Açıklamaları | İşlem hattı ile ilişkili etiketlerin listesi | Dizi | Hayır
+ek açıklamalar | İşlem hattı ile ilişkili etiketlerin listesi | Dizi | Hayır
 
 ## <a name="activity-json"></a>Etkinlik JSON
 **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. İki temel etkinlik türü vardır: Yürütme ve Denetim Etkinlikleri.
@@ -140,14 +140,14 @@ Yürütme etkinlikleri [veri taşıma](#data-movement-activities) ve [veri dön�
 
 Aşağıdaki tabloda, etkinlik JSON tanımındaki özellikler açıklamaktadır:
 
-Etiket | Açıklama | Gereklidir
+Etiket | Açıklama | Gerekli
 --- | ----------- | ---------
-ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li></ul>
-description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-type | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-flow-activities) bölümlerine bakın. | Evet
+ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Yes</li></ul>
+açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Yes
+type | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-flow-activities) bölümlerine bakın. | Yes
 linkedServiceName | Etkinlik tarafından kullanılan bağlı hizmetin adı.<br/><br/>Bir etkinlik için gerekli işlem ortamına bağlanan bağlı hizmeti belirtmeniz gerekebilir. | HDInsight Etkinliği, Azure Machine Learning Toplu İşlem Puanlandırma Etkinliği, Saklı Yordam Etkinliği için evet. <br/><br/>Diğer tümü için hayır
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
-policy | Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Bu özellik zaman aşımı ve yeniden deneme davranışını içerir. Belirtilmemişse, varsayılan değerler kullanılır. Daha fazla bilgi için [Etkinlik İlkesi](#activity-policy) bölümüne bakın. | Hayır
+ilke | Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Bu özellik zaman aşımı ve yeniden deneme davranışını içerir. Belirtilmemişse, varsayılan değerler kullanılır. Daha fazla bilgi için [Etkinlik İlkesi](#activity-policy) bölümüne bakın. | Hayır
 dependsOn | Bu özellik etkinlik bağımlılıklarını ve sonraki etkinliklerin önceki etkinliklere ne kadar bağımlı olduğunu tanımlamak için kullanılır. Daha fazla bilgi için bkz. [Etkinlik bağımlılığı](#activity-dependency) | Hayır
 
 ### <a name="activity-policy"></a>Etkinlik ilkesi
@@ -181,12 +181,12 @@ dependsOn | Bu özellik etkinlik bağımlılıklarını ve sonraki etkinliklerin
 }
 ```
 
-JSON adı | Açıklama | İzin Verilen Değerler | Gereklidir
+JSON adı | Açıklama | İzin Verilen Değerler | Gerekli
 --------- | ----------- | -------------- | --------
-timeout | Çalıştırılacak etkinliğinin zaman aşımını belirtir. | Zaman aralığı | Hayır. Varsayılan zaman aşımı süresi 7 gündür.
+timeout | Çalıştırılacak etkinliğinin zaman aşımını belirtir. | Timespan | Hayır. Varsayılan zaman aşımı süresi 7 gündür.
 retry | En fazla yeniden deneme sayısı | Tamsayı | Hayır. Varsayılan değer 0'dır
 retryIntervalInSeconds | Yeniden deneme girişimleri arasında saniye cinsinden gecikme | Tamsayı | Hayır. Varsayılan değer 30 saniyedir
-secureOutput | true olarak ayarlandığında etkinlik çıkışı güvenli olarak kabul edilir ve izleme amacıyla günlüğe alınmaz. | Boole değeri | Hayır. Varsayılan değer false’tur.
+secureOutput | true olarak ayarlandığında etkinlik çıkışı güvenli olarak kabul edilir ve izleme amacıyla günlüğe alınmaz. | Boole | Hayır. Varsayılan değer false’tur.
 
 ### <a name="control-activity"></a>Denetim etkinliği
 Denetim etkinlikleri aşağıdaki üst düzey yapıya sahiptir:
@@ -205,11 +205,11 @@ Denetim etkinlikleri aşağıdaki üst düzey yapıya sahiptir:
 }
 ```
 
-Etiket | Açıklama | Gereklidir
+Etiket | Açıklama | Gerekli
 --- | ----------- | --------
-ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li><ul>
-description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-flow-activities) bölümlerine bakın. | Evet
+ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Yes</li><ul>
+açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Yes
+type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-flow-activities) bölümlerine bakın. | Yes
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 dependsOn | Bu özellik Etkinlik Bağımlılığını ve sonraki etkinliklerin önceki etkinliklere ne kadar bağımlı olduğunu tanımlamak için kullanılır. Daha fazla bilgi için bkz. [etkinlik bağımlılığı](#activity-dependency). | Hayır
 

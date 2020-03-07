@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
 ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359830"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -82,7 +82,7 @@ Tek bir konum/işlem içindeki tüm veri yönetimi işlevlerinin merkezi olan ge
 
 Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm türleri gösterilmektedir:
 
-![architecture](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![mimari](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
@@ -98,7 +98,7 @@ Sayfa sunucuları, ölçeği genişletilmiş bir depolama altyapısını temsil 
 
 Günlük hizmeti, birincil işlem çoğaltmasındaki günlük kayıtlarını kabul eder, bunları dayanıklı bir önbellekte devam ettirir ve günlük kayıtlarını, verilerin güncelleştirilebilmesi için ilgili sayfa sunucuları ve ilgili sayfa sunucuları gibi işlem çoğaltmalarının geri kalanına iletir. vardır. Bu şekilde, birincil işlem çoğaltmasındaki tüm veriler, tüm ikincil işlem çoğaltmaları ve sayfa sunucularına günlük hizmeti aracılığıyla dağıtılır. Son olarak, günlük kayıtları, Azure Storage 'daki uzun süreli depolamaya gönderilir ve bu, neredeyse sonsuz bir depolama deposudur. Bu mekanizma, sık kullanılan günlük kesilmesi gereksinimini ortadan kaldırır. Günlük hizmeti 'nin günlük kayıtlarına erişimi hızlandırmak için yerel önbelleği de vardır.
 
-### <a name="azure-storage"></a>Azure depolama alanı
+### <a name="azure-storage"></a>Azure Storage
 
 Azure depolama, bir veritabanındaki tüm veri dosyalarını içerir. Sayfa sunucuları veri dosyalarını Azure depolama 'da güncel tutar. Bu depolama, yedekleme amaçları için ve Azure bölgeleri arasında çoğaltma için kullanılır. Yedeklemeler, veri dosyalarının depolama anlık görüntüleri kullanılarak uygulanır. Anlık görüntüleri kullanarak geri yükleme işlemleri, veri boyutundan bağımsız olarak hızlıdır. Veriler, veritabanının yedekleme saklama süresi içinde herhangi bir noktaya geri yüklenebilir.
 
@@ -166,8 +166,8 @@ Bir Azure SQL veritabanı hiper ölçek veritabanını, bir olağanüstü durum 
 
 Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde kullanılabilir:
 
-- Doğu Avustralya
-- Güneydoğu Avustralya
+- Avustralya Doğu
+- Avustralya Güneydoğu
 - Güney Brezilya
 - Orta Kanada
 - Orta ABD
@@ -176,18 +176,18 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Doğu Asya
 - Doğu ABD
 - Doğu ABD 2
-- Orta Fransa
-- Doğu Japonya
-- Batı Japonya
-- Güney Kore - Orta
-- Güney Kore - Güney
+- Fransa Orta
+- Japonya Doğu
+- Japonya Batı
+- Kore Orta
+- Kore Güney
 - Orta Kuzey ABD
 - Kuzey Avrupa
 - Güney Afrika Kuzey
 - Orta Güney ABD
 - Güneydoğu Asya
-- Güney Birleşik Krallık
-- Batı Birleşik Krallık
+- Birleşik Krallık Güney
+- Birleşik Krallık Batı
 - Batı Avrupa
 - Batı ABD
 - Batı ABD 2

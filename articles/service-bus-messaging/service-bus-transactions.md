@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774513"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390993"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus işlem işlemeye genel bakış
 
@@ -51,7 +51,7 @@ Bu işlem özelliğinin gücü, aktarım sırasının kendisi gönderenin giriş
 
 ### <a name="see-it-in-code"></a>Kodda gör
 
-Bu tür aktarımları ayarlamak için, Aktarım kuyruğu aracılığıyla hedef kuyruğu hedefleyen bir ileti gönderici oluşturursunuz. Aynı sıradan iletiler çeken bir alıcıya da sahipsiniz. Örneğin:
+Bu tür aktarımları ayarlamak için, Aktarım kuyruğu aracılığıyla hedef kuyruğu hedefleyen bir ileti gönderici oluşturursunuz. Aynı sıradan iletiler çeken bir alıcıya da sahipsiniz. Örnek:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);

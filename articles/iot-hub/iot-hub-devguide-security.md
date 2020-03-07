@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546954"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356629"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -41,7 +41,7 @@ Aşağıdaki yollarla [izin](#iot-hub-permissions) verebilirsiniz:
   | -------------------- | ----------- |
   | iothubowner | Tüm izinler |
   | hizmet | **Serviceconnect** izinleri |
-  | device | **Deviceconnect** izinleri |
+  | aygıtların | **Deviceconnect** izinleri |
   | registryRead | **Registryread** izinleri |
   | registryReadWrite | **Registryread** ve **registrywrite** izinleri |
 
@@ -59,7 +59,7 @@ Aşağıdaki yollarla [izin](#iot-hub-permissions) verebilirsiniz:
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Azure IoT Hub, bir belirteci paylaşılan erişim ilkeleri ve kimlik kayıt defteri güvenlik kimlik bilgileri ile doğrulayarak uç noktalara erişim izni verir.
+Azure IoT Hub, paylaşılan erişim ilkelerine ve kimlik kayıt defteri güvenlik kimlik bilgilerine karşı bir belirteci doğrulayarak uç noktalara erişim izni verir.
 
 Simetrik anahtarlar gibi güvenlik kimlik bilgileri hiçbir şekilde kablo üzerinden gönderilmez.
 
@@ -247,7 +247,7 @@ Cihazlardan erişilebilen tüm işlevlerin, `/devices/{deviceId}`ön uç noktala
 
 Cihaza yönelik uç noktalar (Protokolden bağımsız olarak) vardır:
 
-| Uç nokta | İşlev |
+| Uç Nokta | İşlev |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |Cihazdan buluta iletiler gönderme. |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |Buluttan cihaza iletileri alın. |
@@ -319,7 +319,7 @@ Hizmet bileşenleri yalnızca daha önce açıklandığı gibi, gerekli izinleri
 
 Uç noktalarda sunulan hizmet işlevleri aşağıda verilmiştir:
 
-| Uç nokta | İşlev |
+| Uç Nokta | İşlev |
 | --- | --- |
 | `{iot hub host name}/devices` |Cihaz kimliklerini oluşturun, güncelleştirin, alın ve silin. |
 | `{iot hub host name}/messages/events` |Cihazdan buluta iletileri alma. |

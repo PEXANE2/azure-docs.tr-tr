@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware geçişi desteği
 description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597992"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388879"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -35,7 +35,7 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 --- | ---
 **VMware vCenter Server** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
 **VMware vSphere ESXI Konağı** | Sürüm 5,5, 6,0, 6,5 veya 6,7.
-**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç bu izinlere ihtiyaç duyuyor:<br/><br/> - **veri deposu. gözatma**: anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. LowLevelFileOperations**: anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma işlemlerine izin verir.<br/><br/> **VirtualMachine. Configuration. DiskChangeTracking**: - sanal makine disklerini değiştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine. Configuration. disklease**: VMware vSphere sanal disk geliştirme seti 'NI (VDDK) kullanarak diski okumak IÇIN bir VM 'ye yönelik disk Kiralama işlemlerine izin verin.<br/><br/> **VirtualMachine. sağlama. AllowDiskAccess**: (özellikle vsphere 6,0 ve üzeri için), VDDK kullanarak disk üzerinde rastgele okuma erişimi IÇIN bir VM 'de disk açmaya izin verir. - <br/><br/> **VirtualMachine. sağlama. AllowReadOnlyDiskAccess**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin. - <br/><br/>- **VirtualMachine. sağlama. AllowVirtualMachineDownload**: bir VM ile ilişkili dosyalardaki okuma işlemlerine izin verir, günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: çoğaltma için VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin.<br/><br/> - **sanal makine. ınteroff**: Azure 'a GEÇIŞ sırasında VM 'nin kapatılmasını sağlar.
+**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç bu izinlere ihtiyaç duyuyor:<br/><br/> - **veri deposu. gözatma**: anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. LowLevelFileOperations**: anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma işlemlerine izin verir.<br/><br/> **VirtualMachine. Configuration. DiskChangeTracking**: - sanal makine disklerini değiştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine. Configuration. disklease**: VMware vSphere sanal disk geliştirme seti 'NI (VDDK) kullanarak diski okumak IÇIN bir VM 'ye yönelik disk Kiralama işlemlerine izin verin.<br/><br/> **VirtualMachine. sağlama. AllowDiskAccess**: (özellikle vsphere 6,0 ve üzeri için), VDDK kullanarak disk üzerinde rastgele okuma erişimi IÇIN bir VM 'de disk açmaya izin verir. - <br/><br/> **VirtualMachine. sağlama. AllowReadOnlyDiskAccess**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin. - <br/><br/> - **VirtualMachine. sağlama. AllowDiskRandomAccess**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. AllowVirtualMachineDownload**: bir VM ile ilişkili dosyalardaki okuma işlemlerine izin verir, günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: çoğaltma için VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin.<br/><br/> - **sanal makine. ınteroff**: Azure 'a GEÇIŞ sırasında VM 'nin kapatılmasını sağlar.
 
 
 
@@ -50,15 +50,15 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 4 TB.
 **Disk sınırları** |  VM başına en fazla 60 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmez.
-**Bağımsız diskler** | Desteklenmez.
+**Paylaşılan disk kümesi** | Desteklenmiyor.
+**Bağımsız diskler** | Desteklenmiyor.
 **RDM/geçiş diskleri** | VM 'Lerin RDM veya PASSTHROUGH diskleri varsa, bu diskler Azure 'a çoğaltılmaz.
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmez.
-**Depolama vMotion** | Desteklenmez. VM, Depolama vMotion kullanıyorsa çoğaltma çalışmayacaktır.
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
-**IPv6** | Desteklenmez.
+**Çok yollu GÇ** | Desteklenmiyor.
+**Depolama vMotion** | Desteklenmiyor. VM, Depolama vMotion kullanıyorsa çoğaltma çalışmayacaktır.
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
+**IPv6** | Desteklenmiyor.
 **Hedef disk** | VM 'Ler yalnızca Azure 'da yönetilen disklere (Standart HDD, Premium SSD) geçirilebilirler.
 **Eşzamanlı çoğaltma** | vCenter Server başına 100 VM. Daha fazlasına sahipseniz, bunları 100 toplu işlem halinde geçirin.
 
@@ -104,15 +104,15 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM 'Leri
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  VM başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmez.
+**Paylaşılan disk kümesi** | Desteklenmiyor.
 **Bağımsız diskler** | Destekleniyor.
 **Geçiş diskleri** | Destekleniyor.
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmez.
+**Çok yollu GÇ** | Desteklenmiyor.
 **Depolama vMotion** | Destekleniyor
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
-**IPv6** | Desteklenmez.
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
+**IPv6** | Desteklenmiyor.
 
 
 
@@ -146,9 +146,9 @@ Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısı
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | 4\.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
-FC diski | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
-BitLocker | Desteklenmez. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
+Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1 ile 63 karakter arasında.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
 Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **etki alanı ve özel** ağlar Için **izin verilen uygulamalar ve Özellikler** -> **Windows Güvenlik Duvarı** 'nda RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
 Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin. Ayrıca, VM için bir genel IP adresi ekleyin. |  

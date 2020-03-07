@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931622"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365933"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -93,7 +93,7 @@ Yerel ve Azure StorSimple birimleri hakkındaki bilgileri görüntülemek için 
    
    | Sonuç sütunu | Açıklama |
    |:--- |:--- |
-   |  Ad |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
+   |  Adı |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
    |  Cihaz |**Cihaz** sütunu, ana bilgisayara bağlı olan cihazın IP adresini içerir. |
    |  Cihaz birimi adı |**Cihaz birimi adı** sütunu, Seçilen birimin ait olduğu cihaz biriminin adını içerir. Bu, söz konusu birimin Azure portal tanımlanan birim adıdır. |
    |  Erişim yolları |**Erişim yolları** sütunu, birimin erişim yolunu görüntüler. Bu, birimin ana bilgisayar üzerinde erişilebilir olduğu sürücü harfi veya bağlama noktasıdır. |
@@ -130,7 +130,7 @@ StorSimple Snapshot Manager bağlı birimleri yeniden taramak için aşağıdaki
 ## <a name="configure-and-back-up-a-basic-volume"></a>Temel bir birimi yapılandırma ve yedekleme
 Temel bir birimin yedeğini yapılandırmak için aşağıdaki yordamı kullanın ve ardından hemen bir yedekleme başlatın ya da zamanlanmış yedeklemeler için bir ilke oluşturun.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce:
 
 * StorSimple cihazının ve ana bilgisayarın doğru yapılandırıldığından emin olun. Daha fazla bilgi için, Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-deployment-walkthrough-u2.md)konusuna gidin.
@@ -149,7 +149,7 @@ Başlamadan önce:
 8. Birim grubu adına sağ tıklayın.
    
    * Etkileşimli (isteğe bağlı) yedekleme işini başlatmak için, **yedeklemeyi al**' ı tıklatın. 
-   * Otomatik yedekleme zamanlamak için **yedekleme Ilkesi oluştur**' a tıklayın. **Genel** sayfasında, listeden bir birim grubu seçin. **Zamanlama** sayfasında, zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**'a tıklayın. 
+   * Otomatik yedekleme zamanlamak için **yedekleme Ilkesi oluştur**' a tıklayın. **Genel** sayfasında, listeden bir birim grubu seçin. **Zamanlama** sayfasında, zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**' a tıklayın. 
 9. Yedekleme işinin başlatıldığını onaylamak için, **kapsam** bölmesinde **işler** düğümünü genişletin ve ardından **çalışan** düğümüne tıklayın. Çalışmakta olan işlerin listesi **sonuçlar** bölmesinde görüntülenir. 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Dinamik yansıtılmış birimi yapılandırma ve yedekleme
@@ -158,7 +158,7 @@ Dinamik bir yansıtılmış birimin yedeklemesini yapılandırmak için aşağı
 * 1\. Adım: dinamik bir yansıtılmış birim oluşturmak için disk yönetimi 'Ni kullanın. 
 * 2\. Adım: yedek yapılandırmak için StorSimple Snapshot Manager kullanın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce:
 
 * StorSimple cihazının ve ana bilgisayarın doğru yapılandırıldığından emin olun. Daha fazla bilgi için, Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md)konusuna gidin.
@@ -183,7 +183,7 @@ Disk Yönetimi, sabit diskleri ve içerdikleri birimleri veya bölümleri yönet
 6. **Sürücü harfi veya yolu ata** sayfasında, Varsayılanları kabul edin ve ardından **İleri**' ye tıklayın. 
 7. **Birim Biçimlendir** sayfasında, **ayırma birimi boyutu** kutusunda, **64K**' yı seçin. **Hızlı biçimlendirme gerçekleştir** onay kutusunu seçin ve ardından **İleri**' ye tıklayın. 
 8. **Yeni yansıtılmış birimi tamamlama** sayfasında, ayarlarınızı gözden geçirin ve ardından **son**' a tıklayın. 
-9. Temel diskin dinamik diske dönüştürüleceğini belirten bir ileti görüntülenir. **Evet**’e tıklayın.
+9. Temel diskin dinamik diske dönüştürüleceğini belirten bir ileti görüntülenir. **Evet**'e tıklayın.
    
     ![Dinamik disk dönüştürme iletisi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. Disk Yönetimi 'nde disk 1 ve disk 2 ' nin dinamik yansıtılmış birimler olarak gösterildiğini doğrulayın. (**Dinamik** durum sütununda görünmelidir ve kapasite çubuğu rengi, yansıtılmış bir birimi belirten kırmızı olarak değiştirilmelidir.) 
@@ -202,7 +202,7 @@ Dinamik bir yansıtılmış birimi yapılandırmak için aşağıdaki yordamı k
 6. Birim grubu adına sağ tıklayın. 
    
    * Etkileşimli (isteğe bağlı) yedekleme işini başlatmak için, **yedeklemeyi al**' ı tıklatın. 
-   * Otomatik yedekleme zamanlamak için **yedekleme Ilkesi oluştur**' a tıklayın. **Genel** sayfasında, listeden birim grubunu seçin. **Zamanlama** sayfasında, zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**'a tıklayın. 
+   * Otomatik yedekleme zamanlamak için **yedekleme Ilkesi oluştur**' a tıklayın. **Genel** sayfasında, listeden birim grubunu seçin. **Zamanlama** sayfasında, zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**' a tıklayın. 
 7. Yedekleme işini çalışırken izleyebilirsiniz. **Kapsam** bölmesinde, **işler** düğümünü genişletin ve ardından **çalışıyor**' a tıklayın, **sonuçlar** bölmesinde iş ayrıntıları görüntülenir. Yedekleme işi tamamlandığında, Ayrıntılar **son 24** saatlik iş listesine aktarılır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.openlocfilehash: af53dea76670be500e7be20063487e3e4a2177b6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548739"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395683"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemlerine yükler
 
@@ -23,7 +23,7 @@ Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' 
 Bu makalede, Azure IoT Edge çalışma zamanını x64, ARM32 veya ARM64 Linux cihazına yüklemek için gereken adımlar listelenmektedir. Ubuntu Server 16,04, Ubuntu Server 18,04 ve Raspbian Esnetme için yükleme paketleri sağlıyoruz. Desteklenen Linux işletim sistemleri ve mimarilerin bir listesi için [desteklenen Azure IoT Edge sistemleri](support.md#operating-systems) bölümüne bakın.
 
 > [!NOTE]
-> Linux yazılım depoları paketlerinde her pakette yer alan lisans koşullarına tabidir (/ usr/paylaşım/doc/*paket adı*). Paket kullanarak önce lisans koşullarını okuyun. Bu koşulları kabul etmeniz, yükleme ve kullanım paket oluşturur. Lisans koşullarını kabul etmiyorsanız, paket kullanmayın.
+> Linux yazılım depolarındaki paketler, her pakette bulunan lisans koşullarına tabidir (/usr/share/doc/*Package-Name*). Paket kullanarak önce lisans koşullarını okuyun. Bu koşulları kabul etmeniz, yükleme ve kullanım paket oluşturur. Lisans koşullarını kabul etmiyorsanız, paket kullanmayın.
 
 ## <a name="install-the-latest-runtime-version"></a>En son çalışma zamanı sürümünü yükler
 
@@ -105,7 +105,7 @@ Cihazınızdaki paket listelerini güncelleştirin.
    sudo apt-get update
    ```
 
-Güvenlik daemon'ı yükleyin. Paket yüklü `/etc/iotedge/`.
+Güvenlik daemon'ı yükleyin. Paket `/etc/iotedge/`yüklendi.
 
    ```bash
    sudo apt-get install iotedge
@@ -163,13 +163,13 @@ IoT Edge başarıyla yüklendikten sonra, çıkış sizden yapılandırma dosyas
 
 Azure IOT hub'ı var olan bir cihaz kimliği ile fiziksel Cihazınızı bağlamak için IOT Edge çalışma zamanı yapılandırın.
 
-Arka plan programı, yapılandırma dosyası kullanılarak yapılandırılabilir `/etc/iotedge/config.yaml`. Dosya yazma korumalı varsayılan olarak, düzenlemek için yükseltilmiş izinlere ihtiyaç duyabilirsiniz.
+Daemon, `/etc/iotedge/config.yaml`yapılandırma dosyası kullanılarak yapılandırılabilir. Dosya yazma korumalı varsayılan olarak, düzenlemek için yükseltilmiş izinlere ihtiyaç duyabilirsiniz.
 
 Tek bir IOT Edge cihazı IOT Hub tarafından sağlanan cihaz bağlantı dizesini kullanarak el ile sağlanabilir. Veya, cihaz sağlama hizmeti sağlamak için birçok cihaz olduğunda kullanışlı olan cihazları otomatik olarak sağlamak için kullanabilirsiniz. Sağlama seçiminize bağlı olarak, uygun yükleme komut dosyasını seçin.
 
 ### <a name="option-1-manual-provisioning"></a>1\. seçenek: El ile sağlama
 
-El ile cihaz sağlama için ile sağlamak gereken bir [cihaz bağlantı dizesini](how-to-register-device.md#register-in-the-azure-portal) IOT hub'ına yeni bir cihazı kaydederek oluşturabilirsiniz.
+Bir cihazı el ile sağlamak için, IoT Hub 'ınıza yeni bir cihaz kaydederek oluşturabileceğiniz bir [Cihaz bağlantı dizesi](how-to-register-device.md#register-in-the-azure-portal) sağlamanız gerekir.
 
 Yapılandırma dosyasını açın.
 
@@ -177,7 +177,7 @@ Yapılandırma dosyasını açın.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Dosyanın sağlama yapılandırmalarını bulun ve **el ile sağlama yapılandırma** bölümünün açıklamasını kaldırın. Değerini güncelleştirin **device_connection_string** IOT Edge cihazınızdan bağlantı dizesiyle. Diğer sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
+Dosyanın sağlama yapılandırmalarını bulun ve **el ile sağlama yapılandırma** bölümünün açıklamasını kaldırın. **Device_connection_string** değerini IoT Edge cihazınızdan bağlantı dizesiyle güncelleştirin. Diğer sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
 
    ```yaml
    # Manual provisioning configuration
@@ -209,7 +209,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>2\. seçenek: Otomatik sağlama
 
-Otomatik olarak bir cihazı sağlamak için [cihaz sağlama hizmetini ayarlama ve cihaz kayıt Kimliğinizi almak](how-to-auto-provision-simulated-device-linux.md). Otomatik sağlama kullanılırken IoT Edge tarafından desteklenen çeşitli kanıtlama mekanizmaları vardır ancak donanım gereksinimleriniz de seçimlerinizi etkiler. Örneğin, Raspberry PI cihazları varsayılan olarak Güvenilir Platform Modülü (TPM) yongasıyla birlikte gelmiyor.
+Otomatik olarak bir cihaz sağlamak için [cihaz sağlama hizmeti 'ni ayarlayın ve cihaz kayıt Kimliğinizi alın](how-to-auto-provision-simulated-device-linux.md). Otomatik sağlama kullanılırken IoT Edge tarafından desteklenen çeşitli kanıtlama mekanizmaları vardır ancak donanım gereksinimleriniz de seçimlerinizi etkiler. Örneğin, Raspberry PI cihazları varsayılan olarak Güvenilir Platform Modülü (TPM) yongasıyla birlikte gelmiyor.
 
 Yapılandırma dosyasını açın.
 
@@ -249,7 +249,7 @@ sudo systemctl restart iotedge
 
 ## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
 
-Kullandıysanız **el ile yapılandırma** adımlar önceki bölümde, IOT Edge çalışma zamanı başarıyla sağlanmış ve cihazınız üzerinde olmalıdır. Kullandıysanız **otomatik yapılandırma** adımları çalışma zamanı ile sizin adınıza IOT hub'ınıza Cihazınızı kaydetmek için bazı ek adımları tamamlaması gerekir. Sonraki adımlar için bkz. [Linux sanal makinesi üzerinde sanal BIR TPM IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
+Önceki bölümde **el ile yapılandırma** adımlarını kullandıysanız, IoT Edge çalışma zamanının cihazınızda başarıyla sağlanması ve çalıştırılması gerekir. **Otomatik yapılandırma** adımlarını kullandıysanız, çalışma zamanının cihazınızı sizin adınıza IoT Hub 'ınıza kaydedebilmesi için bazı ek adımlar gerçekleştirmeniz gerekir. Sonraki adımlar için bkz. [Linux sanal makinesi üzerinde sanal BIR TPM IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
 IoT Edge Daemon 'ın durumunu denetleyebilirsiniz:
 
@@ -281,11 +281,11 @@ Cihazınıza IoT Edge yükledikten sonra, çalıştırmayı görmeniz gereken te
 
 ## <a name="tips-and-troubleshooting"></a>İpuçları ve sorun giderme
 
-`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Çalışma zamanını yükledikten sonra makinenizin dışında oturum ve izinlerinizi otomatik olarak güncelleştirmek için yeniden oturum açın. O zamana kadar kullanın **sudo** herhangi önünde `iotedge` komutları.
+`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Çalışma zamanını yükledikten sonra makinenizin dışında oturum ve izinlerinizi otomatik olarak güncelleştirmek için yeniden oturum açın. Bundan sonra, komutların `iotedge` önüne **sudo** kullanın.
 
-Kısıtlanmış bir kaynak cihazlarda ayarlamanız önerilir *OptimizeForPerformance* ortam değişkenine *false* yönergeleri uyarınca [sorun giderme kılavuzu ](troubleshoot.md).
+Kaynak kısıtlı cihazlarda, [sorun giderme kılavuzunda](troubleshoot.md)her yönerge Için *Optimizeforperformance* ortam değişkenini *false* olarak ayarlamanız kesinlikle önerilir.
 
-Bir proxy sunucusu varsa, ağ adımları izlerseniz [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge Cihazınızı yapılandırma](how-to-configure-proxy-support.md).
+Bir proxy sunucusu olan ağınız, [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazınızı yapılandırma](how-to-configure-proxy-support.md)bölümündeki adımları uygulayın.
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Moby uyumluluğu için Linux çekirdeğini doğrulama
 
@@ -330,7 +330,7 @@ sudo apt-get remove --purge moby-engine
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüklü olan çalışma zamanı ile sağlanan bir IOT Edge cihazına sahip olduğunuza göre şunları yapabilirsiniz [IOT Edge modüllerini dağıtmak](how-to-deploy-modules-portal.md).
+Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
 
 IoT Edge çalışma zamanının düzgün şekilde yüklenmesiyle ilgili sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 

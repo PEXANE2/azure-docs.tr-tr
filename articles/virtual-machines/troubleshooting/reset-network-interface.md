@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921581"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391072"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM için ağ arabirimini sıfırlama 
 
@@ -32,7 +32,7 @@ Bu makalede, sonrasında Microsoft Azure Windows sanal makinesine (VM) bağlanam
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Kaynak grubu modelinde dağıtılan VM 'Ler için
 
-1.  [Azure Portal](https://ms.portal.azure.com) gidin.
+1.  [Azure portalına](https://ms.portal.azure.com) gidin.
 2.  Etkilenen sanal makineyi seçin.
 3.  **Ağ** ' ı seçin ve ardından VM 'Nin ağ arabirimini seçin.
 
@@ -78,7 +78,7 @@ Ağ arabirimini sıfırlamak için şu adımları izleyin:
 
 #### <a name="use-azure-portal"></a>Azure portalı kullanma
 
-1.  [Azure Portal]( https://ms.portal.azure.com) gidin.
+1.  [Azure portalına]( https://ms.portal.azure.com) gidin.
 2.  **Sanal makineler (klasik)** öğesini seçin.
 3.  Etkilenen sanal makineyi seçin.
 4.  **IP adreslerini**seçin.

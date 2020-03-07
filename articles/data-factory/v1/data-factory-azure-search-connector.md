@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929991"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387672"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Azure Bilişsel Arama dizinine veri gönderme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -34,12 +34,12 @@ Data Factory hizmetinin şirket içi veri deposuna bağlanmasına izin vermek i�
 
 Veri Yönetimi ağ geçidi, şirket içi veri kaynaklarını bulut hizmetlerine güvenli ve yönetilen bir şekilde bağlar. Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. Şirket [içi ve bulut hakkındaki verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak bir kaynak veri deposundan verileri bir arama dizinine gönderen kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -55,7 +55,7 @@ Aşağıdaki bölümler, bir arama dizinine özgü Data Factory varlıkları tan
 
 Aşağıdaki tabloda, Azure Bilişsel Arama bağlı hizmetine özgü JSON öğelerine yönelik açıklamalar sağlanmaktadır.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
 | type | Type özelliği: **Azuresearch**olarak ayarlanmalıdır. | Yes |
 | url | Arama Hizmeti URL 'SI. | Yes |
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, Azure Bilişsel Arama bağlı hizmetine özgü JSON öğel
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir. **Typeproperties** bölümü her bir veri kümesi türü için farklıdır. **AzureSearchIndex** türündeki bir veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
 | type | Type özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Yes |
 | indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Yes |
@@ -76,9 +76,9 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 Kopyalama etkinliği için, havuz **AzureSearchIndexSink**türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).| Birleştir (varsayılan)<br/>Karşıya Yükleme| Hayır |
+| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).| Birleştir (varsayılan)<br/>Karşıya Yükle| Hayır |
 | WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) . | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
 
 ### <a name="writebehavior-property"></a>WriteBehavior özelliği
@@ -102,7 +102,7 @@ Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip deste
 | Dize | E |
 | Int32 | E |
 | Int64 | E |
-| Double | E |
+| çift | E |
 | Boole | E |
 | Veri Timesapmayı | E |
 | String Array | N |

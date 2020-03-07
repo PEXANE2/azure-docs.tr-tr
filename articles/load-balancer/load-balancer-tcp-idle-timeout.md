@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: 39cd5b5d6e9d6007994ccc29732186ec6a8bdc2e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023897"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381023"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer için TCP boşta kalma zaman aşımı ayarlarını yapılandırma
 
@@ -26,7 +26,7 @@ ms.locfileid: "77023897"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, aynı zamanda çalıştırmak ihtiyacınız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için.
+PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bağlantı oluşturmak için `Connect-AzAccount` çalıştırmanız da gerekir.
 
 ## <a name="tcp-idle-timeout"></a>TCP boşta kalma zaman aşımı
 Varsayılan yapılandırmasında Azure Load Balancer, 4 dakikalık bir boşta kalma zaman aşımı ayarına sahiptir. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz.
@@ -55,7 +55,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Yük dengeli bir kuralda TCP zaman aşımını 15 dakikaya ayarlayın
 
-Yük Dengeleyici için boşta kalma zaman aşımını ayarlamak için, yük dengeli kuralda ' ıdletimeoutınminutes ' ayarlanır. Örneğin:
+Yük Dengeleyici için boşta kalma zaman aşımını ayarlamak için, yük dengeli kuralda ' ıdletimeoutınminutes ' ayarlanır. Örnek:
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"

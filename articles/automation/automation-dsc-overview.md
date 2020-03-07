@@ -11,11 +11,11 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850899"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372351"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
@@ -45,7 +45,7 @@ Azure Otomasyonu durum yapılandırması ile yönetilen düğümler, yerleşik �
 
 Lütfen Azure Otomasyonu durum yapılandırması 'nı (DSC) kullanırken aşağıdaki gereksinimleri göz önünde bulundurun.
 
-### <a name="operating-system-requirements"></a>İşletim Sistemi Gereksinimleri
+### <a name="operating-system-requirements"></a>İşletim sistemi gereksinimleri
 
 Windows çalıştıran düğümler için aşağıdaki sürümler desteklenir:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-AVS özel bulutu için DNS 'yi yapılandırma
-description: Şirket içi iş istasyonlarından bir AVS özel bulutu üzerindeki vCenter Server 'a erişim için DNS ad çözümlemesi ayarlamayı açıklar
+title: CloudSimple tarafından Azure VMware çözümü-CloudSimple özel bulutu için DNS 'yi yapılandırma
+description: Şirket içi iş istasyonlarından CloudSimple özel bulutu üzerinde vCenter Server erişimi için DNS ad çözümlemesi ayarlamayı açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,26 +8,26 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364420"
 ---
-# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>AVS 'nin şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS 'yi yapılandırma
+# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS yapılandırma
 
-Şirket içi iş istasyonlarından bir AVS özel bulutundaki vCenter Server 'a erişmek için, vCenter Server 'ın ana bilgisayar adının yanı sıra IP adresi ile adreslenmesi için DNS adresi çözümlemesini yapılandırmanız gerekir.
+Şirket içi iş istasyonlarından CloudSimple özel bulutu üzerindeki vCenter Server 'a erişmek için, vCenter Server 'ın ana bilgisayar adının yanı sıra IP adresi ile adreslenmesi için DNS adresi çözümlemesini yapılandırmanız gerekir.
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>AVS özel bulutunuz için DNS sunucusunun IP adresini edinin
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>Özel bulutunuz için DNS sunucusunun IP adresini edinin
 
-1. [AVS portalında](access-cloudsimple-portal.md)oturum açın.
+1. [Cloudsimple portalında](access-cloudsimple-portal.md)oturum açın.
 
-2. Bir **AVS özel bulutları** > **kaynaklar** ' a gıdın ve bağlanmak Istediğiniz AVS özel bulutunu seçin.
+2. **Özel bulutlar** > **kaynaklar** ' a gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
-3. **Temel bilgiler**altında AVS özel bulutunun **Özet** sayfasında, AVS özel bulut DNS sunucusu IP adresini kopyalayın.
+3. **Temel bilgi**altında özel bulutun **Özet** SAYFASıNDA, özel bulut DNS sunucusu IP adresini kopyalayın.
 
-    ![AVS özel bulut DNS sunucuları](media/private-cloud-dns-server.png)
+    ![Özel bulut DNS sunucuları](media/private-cloud-dns-server.png)
 
 
 DNS yapılandırması için bu seçeneklerden birini kullanın.
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. Bölge adını girin ve **İleri**' ye tıklayın.
 
     ![Yeni bölge](media/DNS05.png)
-6. AVS portalından edindiğiniz AVS özel bulutunuz için DNS sunucularının IP adreslerini girin.
+6. CloudSimple portalından edindiğiniz özel bulutunuz için DNS sunucularının IP adreslerini girin.
 
     ![Yeni bölge](media/DNS06.png)
 7. Sihirbaz kurulumunu gerçekleştirmek için gerektiğinde **İleri** ' ye tıklayın.
 
 ## <a name="create-a-conditional-forwarder"></a>Koşullu iletici oluşturma
 
-Koşullu iletici, tüm DNS ad çözümleme isteklerini belirtilen sunucuya iletir. Bu kurulumla, tüm *. cloudsimple.io istekleri, AVS özel bulutu 'nda bulunan DNS sunucularına iletilir. Aşağıdaki örneklerde, farklı türlerde DNS sunucularında ileticilerin nasıl ayarlanacağı gösterilmektedir.
+Koşullu iletici, tüm DNS ad çözümleme isteklerini belirtilen sunucuya iletir. Bu kurulumla, tüm *. cloudsimple.io istekleri özel bulutta bulunan DNS sunucularına iletilir. Aşağıdaki örneklerde, farklı türlerde DNS sunucularında ileticilerin nasıl ayarlanacağı gösterilmektedir.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS sunucusunda koşullu iletici oluşturma
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. **Koşullu ileticiler** ' e sağ tıklayın ve yeni bir koşullu iletici ekleme seçeneğini belirleyin.
 
     ![Koşullu Iletici 1 Windows DNS](media/DNS08.png)
-3. DNS etki alanını ve AVS özel bulutundaki DNS sunucularının IP adresini girip **Tamam**' a tıklayın.
+3. DNS etki alanını ve özel buluttaki DNS sunucularının IP adresini girip **Tamam**' a tıklayın.
