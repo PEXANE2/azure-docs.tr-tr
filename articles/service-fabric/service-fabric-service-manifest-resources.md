@@ -4,13 +4,13 @@ description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bild
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464175"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382802"
 ---
-# <a name="specify-resources-in-a-service-manifest"></a>Bir hizmet bildiriminde kaynakları belirtme
+# <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
 Hizmet bildirimi, derlenmiş kod değiştirilmeden, hizmet tarafından kullanılan kaynakların bildirilmesini/değiştirilmesini sağlar. Azure Service Fabric, hizmet için uç nokta kaynaklarının yapılandırılmasını destekler. Hizmet bildiriminde belirtilen kaynaklara erişimi, uygulama bildirimindeki SecurityGroup aracılığıyla denetlenebilir. Kaynak bildirimi, bu kaynakların dağıtım zamanında değiştirilmesini sağlar, yani hizmetin yeni bir yapılandırma mekanizması tanıtılmasına gerek kalmaz. ServiceManifest. xml dosyası için şema tanımı, Service Fabric SDK ve araçlar ile birlikte *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*ile yüklenir.
 

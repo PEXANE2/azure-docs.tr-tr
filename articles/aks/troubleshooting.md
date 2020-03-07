@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
 ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390319"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -172,14 +172,14 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach, Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -225,7 +225,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes, bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için `chown` kullanacaktır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* GID ve uid ayarlamak için ınitcontainers içinde `chown` kullanın. Örnek:
+* GID ve uid ayarlamak için ınitcontainers içinde `chown` kullanın. Örneğin:
 
 ```yaml
 initContainers:
@@ -239,7 +239,7 @@ initContainers:
 
 ### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Pod tarafından kullanılan Azure disk PersistentVolumeClaim silinirken hata oluştu
 
-Pod tarafından kullanılmakta olan bir Azure disk PersistentVolumeClaim 'yi silmeye çalışırsanız bir hata görebilirsiniz. Örnek:
+Pod tarafından kullanılmakta olan bir Azure disk PersistentVolumeClaim 'yi silmeye çalışırsanız bir hata görebilirsiniz. Örneğin:
 
 ```console
 $ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
@@ -295,7 +295,7 @@ Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız,
 
 ### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Azure diski sonsuza kadar ayrılmayı bekliyor
 
-Bazı durumlarda, ilk denemede bir Azure disk ayırma işlemi başarısız olursa, ayırma işlemini yeniden denemez ve özgün düğüm sanal makinesine bağlı olarak kalır. Bu hata, bir diski bir düğümden diğerine taşırken ortaya çıkabilir. Örnek:
+Bazı durumlarda, ilk denemede bir Azure disk ayırma işlemi başarısız olursa, ayırma işlemini yeniden denemez ve özgün düğüm sanal makinesine bağlı olarak kalır. Bu hata, bir diski bir düğümden diğerine taşırken ortaya çıkabilir. Örneğin:
 
 ```console
 [Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
@@ -468,13 +468,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 *Azurestokgeaccountkey* alanını Azure dosya gizli dizisi ' nde Base64 kodlamalı depolama hesabı anahtarınızla el ile güncelleştirerek sorunu azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için `base64`kullanabilirsiniz. Örnek:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için `base64`kullanabilirsiniz. Örneğin:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için `kubectl edit secret`kullanın. Örnek:
+Azure gizli dosyanızı güncelleştirmek için `kubectl edit secret`kullanın. Örneğin:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

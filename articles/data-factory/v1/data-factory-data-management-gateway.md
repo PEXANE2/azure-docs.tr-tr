@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932015"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357333"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -97,7 +97,7 @@ Veri yönetimi ağ geçidi aşağıdaki yollarla yüklenebilir:
 4. **Hoş geldiniz** sayfasında bir **dil** seçin, **İleri**' ye tıklayın.
 5. Son Kullanıcı Lisans sözleşmesini **kabul edin** ve **İleri**' ye tıklayın.
 6. Ağ geçidini yüklemek için **klasör** ' i seçin ve **İleri**' ye tıklayın.
-7. Üzerinde **yüklenmeye hazır** sayfasında **yükleme**.
+7. **Yüklemeye hazırlanma** sayfasında, **yükler**' e tıklayın.
 8. Yüklemeyi tamamlamaya **son** ' a tıklayın.
 9. Azure portal anahtarı alın. Adım adım yönergeler için sonraki bölüme bakın.
 10. Makinenizde çalışan **veri yönetimi ağ geçidi Configuration Manager** **ağ geçidini kaydet** sayfasında, aşağıdaki adımları uygulayın:
@@ -380,18 +380,18 @@ Aşağıdaki tabloda **ağ geçidi düğümünün**olası durumları verilmişti
 
 Durum  | Açıklamalar/senaryolar
 :------- | :------------------
-Çevrimiçi | Data Factory hizmetine bağlı düğüm.
+Online | Data Factory hizmetine bağlı düğüm.
 Offline | Düğüm çevrimdışı.
 Yükseltme | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir.
-Etkin Değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
+Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır.
 
 Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
-Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
+Online | Ağ Geçidi düğümleri çevrimiçi
 Offline | Çevrimiçi durumda düğüm yok.
 Sınırlı | Bu ağ geçidinde düğümlerin hepsi sağlıklı durumda değil. Bu durum, bir düğümün kapatılmış olabileceğini belirten bir uyarıdır! <br/><br/>Dağıtıcı/çalışan düğümündeki kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir.
 

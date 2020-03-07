@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484811"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388148"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi durum tümleştirmesi dağıtımını tanıtma (Genel Önizleme)
 
@@ -138,7 +138,7 @@ Bu noktada Azure Dağıtım Yöneticisi, hizmetinizin sistem durumunu ve hangi a
 
     1. Bir dağıtım işlemi tamamlandıktan sonra, VM 'Ler yeniden başlatılabilir, yeni verilere göre yeniden yapılandırılabilir, hatta ilk kez başlatılmış olabilir. Ayrıca, hizmetlerin sistem durumu izleme sağlayıcısı tarafından, yararlı bir şeye toplanacak durum sinyallerini yayarak başlatılması zaman alır. Bu döner işlem sırasında, güncelleştirme henüz sabit bir duruma ulaşmadığından hizmet durumunu denetlemek mantıklı olmayabilir. Gerçekte, hizmet, kaynaklar tarafından beklendiği gibi sağlıklı ve sağlıksız durumlar arasında salını olabilir. 
     1. Bekleme aşamasında, hizmet durumu izlenmiyor. Bu, dağıtılan kaynaklara sistem durumu denetimi işlemine başlamadan önce bakma süresi vermek için kullanılır. 
-1. Esnek
+1. Tik
 
     1. Kaynakların kararlı hale gelmeden önce bakmasına ne kadar süreceğine ilişkin tüm durumlarda, esnek aşama, kaynakların potansiyel olarak kararsız olması ve sağlıklı bir şekilde kararlı olması gerektiğinde esnek bir zaman aralığı sağlar durumunda.
     1. Elastik aşama başladığında Azure Dağıtım Yöneticisi, hizmet durumu için belirtilen REST uç noktasını düzenli aralıklarla yoklamaya başlar. Yoklama aralığı yapılandırılabilir. 

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023421"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375194"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için özel etki alanı adı satın alma
 
@@ -18,7 +18,7 @@ App Service etki alanları doğrudan Azure 'da yönetilen en üst düzey etki al
 
 Azure VM veya Azure depolama için bkz. [Azure VM veya Azure Storage 'a App Service etki alanı atama](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -31,7 +31,7 @@ Bu öğreticiyi tamamlamak için:
 
 Azure App Service özel etki alanlarını kullanmak için uygulamanızın [App Service planı](https://azure.microsoft.com/pricing/details/app-service/) ücretli bir katman (**paylaşılan**, **temel**, **Standart**veya **Premium**) olmalıdır. Bu adımda, uygulamanın desteklenen fiyatlandırma katmanında olduğundan emin olursunuz.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açın
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure Portal](https://portal.azure.com)'ı açın ve Azure hesabınızla oturum açın.
 
@@ -59,7 +59,7 @@ App Service planı **F1** katmanında değilse, **Ölçek artırma** sayfasını
 
 Ücretsiz olmayan katmanlardan birini seçin (**D1**, **B1**, **B2**, **B3** veya **Üretim** kategorisindeki herhangi bir katmanı). Ek seçenekler için **Ek seçeneklere bakın**’a tıklayın.
 
-**Uygula**'ya tıklayın.
+**Apply (Uygula)** düğmesine tıklayın.
 
 ![Fiyatlandırma katmanını denetleyin](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -69,10 +69,10 @@ Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmışt
 
 ## <a name="buy-the-domain"></a>Etki alanını satın al
 
-### <a name="pricing-information"></a>Fiyatlandırma bilgileri
+### <a name="pricing-information"></a>Fiyatlandırma Bilgileri
 Azure App Service etki alanları hakkında fiyatlandırma bilgileri için [App Service fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/app-service/windows/) ziyaret edin ve aşağı kaydırın App Service etki alanı.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açın
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 [Azure Portal](https://portal.azure.com/)'ı açın ve Azure hesabınızla oturum açın.
 
 ### <a name="launch-buy-domains"></a>Satın alma etki alanlarını Başlat

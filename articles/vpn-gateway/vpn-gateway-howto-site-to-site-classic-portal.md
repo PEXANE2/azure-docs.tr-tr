@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201569"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379212"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "77201569"
 Bu makalede, Azure portalını kullanarak şirket içi ağınızdan VNet’e Siteden Siteye VPN ağ geçidi bağlantısı oluşturma işlemi gösterilir. Bu makaledeki adımlar, klasik dağıtım modeli için geçerlidir ve geçerli dağıtım modeli için geçerli değildir Kaynak Yöneticisi. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portalında](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -63,7 +63,7 @@ Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kul
 
 S2S bağlantısı için kullanılacak bir sanal ağ oluşturduğunuzda, belirttiğiniz adres alanlarının, bağlanmak istediğiniz yerel siteler için istemci adres alanlarından herhangi biriyle çakışmadığından emin olun. Çakışan alt ağlarınız varsa bağlantınız düzgün şekilde gerçekleşmeyebilir.
 
-* Zaten bir VNet'iniz varsa ayarların VPN ağ geçidi tasarımınızla uyumlu olduğunu doğrulayın. Diğer ağlarla çakışabilecek herhangi bir alt ağ olup olmadığına özellikle dikkat edin. 
+* Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyumlu olduğunu doğrulayın. Diğer ağlarla çakışabilecek herhangi bir alt ağ olup olmadığına özellikle dikkat edin. 
 
 * Sanal ağınız yoksa bir sanal ağ oluşturun. Ekran görüntüleri örnek olarak verilmiştir. Değerlerin kendinizinkilerle değiştirildiğinden emin olun.
 
@@ -77,7 +77,7 @@ S2S bağlantısı için kullanılacak bir sanal ağ oluşturduğunuzda, belirtti
    ![Sanal ağ oluştur sayfası](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Sanal ağ oluştur sayfası")
 5. **Abonelik** alanında doğru bir giriş olduğunu doğrulayın. Açılan listeyi kullanarak abonelikleri değiştirebilirsiniz.
 6. **Kaynak grubu**’na tıklayın, mevcut bir kaynak grubunu seçin ya da bir ad yazarak yeni bir tane oluşturun. Kaynak grupları hakkında daha fazla bilgi için [Azure Resource Manager’a Genel Bakış](../azure-resource-manager/management/overview.md#resource-groups)’ı ziyaret edin.
-7. Ardından, sanal ağınız için **Konum** ayarlarını seçin. Konum bu sanal ağa dağıttığınız kaynakların nerede olacağını belirler.
+7. Ardından, VNet’iniz için **Konum** ayarlarını seçin. Konum bu sanal ağa dağıttığınız kaynakların nerede olacağını belirler.
 8. VNet’inizi oluşturmak için **Oluştur**'a tıklayın.
 9. “Oluştur”a tıkladıktan sonra, panoda sanal ağınızın ilerleme durumunu yansıtan bir kutucuk görünür. Sanal ağ oluşturulurken kutucuk değişir.
 
@@ -157,7 +157,7 @@ Bu adımda, paylaşılan anahtarı ayarlayabilir ve bağlantıyı oluşturabilir
 > Şu anda, bu yapılandırma Azure portalında mevcut değildir. Azure PowerShell cmdlet’lerinin Hizmet Yönetimi (SM) sürümünü kullanmanız gerekir. Bu cmdlet 'leri yükleme hakkında bilgi için [başlamadan önce](#before) bölümüne bakın.
 >
 
-### <a name="step-1-connect-to-your-azure-account"></a>1\. Adım Azure hesabınıza bağlanma
+### <a name="step-1-connect-to-your-azure-account"></a>1\. Adım. Azure hesabınıza bağlanma
 
 PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. 
 
@@ -182,7 +182,7 @@ PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak ç
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
 
-### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2\. Adım. Paylaşılan anahtarı ayarlama ve bağlantıyı oluşturma
+### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2\. Adım Paylaşılan anahtarı ayarlama ve bağlantıyı oluşturma
 
 Portalda klasik bir sanal ağ oluşturduğunuzda (PowerShell kullanarak), Azure Kaynak grubu adını kısa ada ekler. Örneğin, Azure 'a göre, bu alıştırma için oluşturduğunuz VNet 'in adı "TestVNet1" değil "Group TestRG1 TestVNet1" dır. PowerShell, portalda görünen kısa adı değil, sanal ağın tam adını gerektirir. Uzun ad portalda görünmez. Aşağıdaki adımlar, sanal ağ adının tam değerlerini almak için ağ yapılandırma dosyasını dışarı aktarmaya yardımcı olur. 
 

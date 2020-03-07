@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478805"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360046"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal kullanarak Azure kaynaklarını yönetme
 
@@ -33,7 +33,7 @@ Azure kaynakları, Azure hizmetleri ve kaynak grupları tarafından düzenlenir.
 
 Bir kaynağı hizmet türüne göre açmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol bölmede Azure hizmeti ' ni seçin. Bu durumda, **depolama hesapları**.  Listelenen hizmeti görmüyorsanız, **tüm hizmetler**' i seçin ve ardından hizmet türünü seçin.
 
     ![Portalda Azure kaynağını açın](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Bir kaynağı hizmet türüne göre açmak için:
 
 Kaynak grubuna göre bir kaynağı açmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Grubun içindeki kaynağı listelemek için sol bölmede **kaynak grupları** ' nı seçin.
 3. Açmak istediğiniz kaynağı seçin. 
 

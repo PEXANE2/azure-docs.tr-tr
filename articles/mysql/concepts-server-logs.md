@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844964"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359594"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -79,7 +79,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `insert_id_s` | KIMLIĞI Ekle |
 | `sql_text_s` | Tam sorgu |
 | `server_id_s` | Sunucunun KIMLIĞI |
-| `thread_id_s` | İş parçacığı KIMLIĞI |
+| `thread_id_s` | İş Parçacığı Kimliği |
 | `\_ResourceId` | Kaynak URI 'SI |
 
 > [!Note]

@@ -12,11 +12,11 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273511"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361213"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUIS, birden fazla sınır alanlara sahip değildir. Birincisi, LUSıS 'deki amaçları, varlıkları ve özellikleri denetleyen [model sınırıdır](#model-boundaries). İkinci alan, anahtar türüne göre [Kota sınırlamalarıdır](#key-limits) . Bir üçüncü sınır alanı, LUSıS Web sitesini denetlemeye yönelik [klavye birleşimidir](#keyboard-controls) . Bir dördüncü alan, LUıS Authoring Web sitesi ve LUıS [uç nokta](luis-glossary.md#endpoint) API 'leri arasındaki [Dünya bölgesi eşlemesidir](luis-reference-regions.md) .
@@ -62,7 +62,7 @@ Aşağıdaki, bir LUSıS uygulaması içinde benzersiz olmalıdır:
 * Sürüm adı
 * varsayılandır
 * varlık
-* roles
+* roller
 
 Aşağıdaki, uygulanan kapsam içinde benzersiz olmalıdır:
 

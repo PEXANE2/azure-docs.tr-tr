@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: f0c95e495e222cc72f0a6fc432404fcbaa47df65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434678"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396709"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Hızlı başlangıç: Azure IoT C SDK'sını kullanarak simülasyon X.509 cihazı sağlama
 
@@ -32,7 +32,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
@@ -46,7 +46,7 @@ Bu bölümde, X. 509.440 önyükleme sırasının örnek kodunu Içeren [Azure I
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    **yüklemesine başlamadan**önce`CMake` makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 2. SDK 'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
@@ -119,7 +119,7 @@ Benzetim cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturma
 
 3. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin ve **Kaydet** düğmesine basın.
 
-    * **Mekanizma:** Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
+    * **Mekanizma:** Kimlik onay **Mekanizması** olarak *X.509*'u seçin.
     * **Birincil sertifika. pek veya. cer dosyası:** Daha önce oluşturduğunuz X509testcert. pek adlı sertifika dosyasını seçmek için **Dosya Seç** ' i seçin.
     * **IoT Hub Cihaz kimliği:** Cihaza bir kimlik vermek için **test-docs-cert-device** girin.
 
@@ -143,7 +143,7 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
     static const char* id_scope = "0ne00002193";
     ```
 
-4. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_TPM` yerine `SECURE_DEVICE_TYPE_X509` değerine ayarlandığından emin olun.
+4. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_X509` yerine `SECURE_DEVICE_TYPE_TPM` değerine ayarlandığından emin olun.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372218"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde standart özellikler
 Azure Izleyici günlüklerindeki veriler, her biri benzersiz bir özellik kümesine sahip olan belirli bir veri türüne sahip bir [Log Analytics çalışma alanında veya Application Insights uygulamasında bir kayıt kümesi olarak depolanır](../log-query/logs-structure.md). Birçok veri türü, birden çok tür genelinde ortak olan standart özelliklere sahip olacaktır. Bu makalede bu özellikler açıklanmakta ve bunları sorgularda nasıl kullanabileceğiniz hakkında örnekler verilmektedir.

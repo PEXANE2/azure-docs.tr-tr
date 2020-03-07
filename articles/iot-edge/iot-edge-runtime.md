@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547056"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358673"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IOT Edge çalışma zamanı ve mimarisini anlama
 
@@ -90,9 +90,9 @@ Dağıtım bildirimindeki her öğe, bir modülle ilgili belirli bilgileri içer
 
   * İndiriliyor
   * Çalışıyor
-  * İyi durumda değil
+  * Sağlıksız
   * Başarısız
-  * Durdurulan
+  * Durduruldu
 
 * **restartPolicy** : IoT Edge Aracısı bir modülü yeniden başlatır. Olası değerler şunlardır:
   
@@ -125,4 +125,4 @@ Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure IOT Edge modüllerini anlama](iot-edge-modules.md)
+[Azure IoT Edge modüllerini anlama](iot-edge-modules.md)

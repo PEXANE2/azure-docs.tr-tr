@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024611"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376870"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory'de yeni bir kiracı oluşturma
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
@@ -45,13 +45,13 @@ Azure portalda oturum açtıktan sonra kuruluşunuz için yeni bir kiracı oluş
 
 1.  **Dizin oluştur** sayfasına aşağıdaki bilgileri girin:
     
-    - **Kuruluş adı** kutusuna _Contoso_ yazın.
+    - _Kuruluş adı_ kutusuna **Contoso** yazın.
 
-    - **İlk etki alanı adı** kutusuna _Contoso_ yazın.
+    - _İlk etki alanı adı_ kutusuna **Contoso** yazın.
 
-    - **Ülke veya bölge** kutusunda _Amerika Birleşik Devletleri_ seçeneğini değiştirmeden bırakın.
+    - _Ülke veya bölge_ kutusunda **Amerika Birleşik Devletleri** seçeneğini değiştirmeden bırakın.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 contoso.onmicrosoft.com etki alanıyla yeni kiracınız oluşturulur.
 

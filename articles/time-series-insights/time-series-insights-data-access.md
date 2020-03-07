@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359999"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Time Series Insights önizleme erişim ilkelerinin iki türü
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights oturum açın
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Time Series Insights ortamınızı bulun. **Arama** kutusuna `Time Series` girin. Arama sonuçlarında **zaman serisi ortamını** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 

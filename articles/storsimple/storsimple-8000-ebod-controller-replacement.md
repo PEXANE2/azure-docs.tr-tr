@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8600 EBOD denetleyicisini değiştirme | Microsoft Docs
-description: Kaldırın ve StorSimple 8600 cihazında birini veya ikisini EBOD denetleyicisi değiştirin açıklanmaktadır.
+description: StorSimple 8600 cihazındaki EBOD denetleyicilerinin bir veya her ikisinin de nasıl kaldırılacağını ve değiştirileceğini açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,89 +15,89 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578700"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366000"
 ---
-# <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>StorSimple Cihazınızda bir EBOD denetleyicisini değiştirme
+# <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>StorSimple cihazınızda bir EBOD denetleyicisini değiştirme
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğretici bir hatalı EBOD Denetleyici Modülü Microsoft Azure StorSimple Cihazınızda nasıl değiştirileceğini açıklar. Bir EBOD Denetleyici Modülü değiştirilecek şekilde gerekir:
+Bu öğreticide, Microsoft Azure StorSimple cihazınızda bir hatalı EBOD denetleyici modülünün nasıl değiştirileceği açıklanmaktadır. Bir EBOD denetleyici modülünü değiştirmek için şunları yapmanız gerekir:
 
-* Hatalı EBOD denetleyicisini kaldırma
-* Yeni bir EBOD denetleyicisi yükleme
+* Hatalı EBOD denetleyicisini kaldır
+* Yeni bir EBOD denetleyicisi yükler
 
 Başlamadan önce aşağıdaki bilgileri göz önünde bulundurun:
 
-* Boş EBOD modüller tüm kullanılmayan yuvalarını eklenmelidir. Bir yuva açık olarak bırakılırsa muhafaza düzgün seyrek.
-* EBOD denetleyicisi takılıp çıkarılabilen ve kaldırıldı veya değiştirilmesi. Değiştirme elde edene kadar başarısız bir modül kaldırmayın. Değiştirme işlemini başlattığınızda, 10 dakika içinde tamamlanmalıdır.
+* Boş EBOD modülleri kullanılmayan tüm yuvalara eklenmelidir. Yuva açık bırakılırsa, kutu düzgün şekilde seyrek olmaz.
+* EBOD denetleyicisi etkin bir şekilde değiştirilebilir ve kaldırılabilir veya değiştirilebilir. Bir değişikliği yapana kadar başarısız olan modülü kaldırmayın. Değiştirme işlemini başlattığınızda, 10 dakika içinde bitmelidir.
 
 > [!IMPORTANT]
-> Herhangi bir StorSimple bileşeni değiştirmek veya kaldırmak denemeden önce gözden geçirmenizi emin olun [güvenliği simgesi kuralları](storsimple-safety.md#safety-icon-conventions) ve diğer [güvenlik önlemlerini](storsimple-safety.md).
+> Herhangi bir StorSimple bileşenini kaldırmaya veya değiştirmeye çalışmadan önce, [Güvenlik simgesi kurallarını](storsimple-safety.md#safety-icon-conventions) ve diğer [güvenlik önlemlerini](storsimple-safety.md)gözden geçirdiğinizden emin olun.
 
 ## <a name="remove-an-ebod-controller"></a>EBOD denetleyicisini kaldırma
-StorSimple Cihazınızı başarısız EBOD denetleyicisi modülünde değiştirmeden önce bir EBOD denetleyici modülü etkin ve çalışıyor olduğundan emin olun. Aşağıdaki yordamı ve tabloyu EBOD denetleyicisi modülün nasıl kaldırılacağı açıklanmaktadır.
+StorSimple cihazınızda başarısız olan EBOD denetleyici modülünü değiştirmeden önce, diğer EBOD denetleyici modülünün etkin ve çalışır durumda olduğundan emin olun. Aşağıdaki yordam ve tablo, EBOD denetleyici modülünün nasıl kaldırılacağını açıklamaktadır.
 
 #### <a name="to-remove-an-ebod-module"></a>EBOD modülünü kaldırmak için
 1. Azure portalı açın.
-2. Cihazınıza gidin ve gidin **ayarları** > **donanım sistem durumu**, ışığı etkin EBOD denetleyicisi modülü için durum yeşil olduğunu doğrulayın ve başarısız olan EBOD denetleyici için bir ışığı kırmızı modülüdür.
-3. Cihazın arkasına başarısız EBOD Denetleyici Modülü bulun.
-4. EBOD denetleyicisi modülü sistem dışı EBOD modülü almadan önce denetleyiciyi bağlama kablolar kaldırın.
-5. Denetleyiciye bağlı EBOD Denetleyici Modülü tam SAS bağlantı noktasını not edin. EBOD modülü değiştirdikten sonra sistem için bu yapılandırmayı geri yüklemek için gerekli olacaktır.
+2. Cihazınıza gidip, **donanım sağlığı** > **Ayarlar** ' a gıdın ve etkin EBOD denetleyicisi modülü için LED durumunun yeşil olduğunu ve başarısız ebod denetleyici modülünün ışığını kırmızı olduğunu doğrulayın.
+3. Cihazın arkasında başarısız olan EBOD denetleyici modülünü bulun.
+4. Ebod denetleyicisi modülünü sistem dışına çıkarmadan önce, denetleyiciye bağlayan kabloları kaldırın.
+5. Denetleyiciye bağlı olan EBOD denetleyici modülünün tam SAS bağlantı noktasını not edin. EBOD modülünü değiştirdikten sonra sistemi bu yapılandırmaya geri yüklemeniz gerekecektir.
    
    > [!NOTE]
-   > Genellikle, bu olarak etiketli bir, bağlantı noktası olacak **içindeki konak** Aşağıdaki diyagramda.
+   > Genellikle, bu bağlantı noktası olur ve aşağıdaki diyagramda **ana bilgisayar** olarak etiketlenir.
    
-    ![Devre kartına, EBOD denetleyicisi](./media/storsimple-ebod-controller-replacement/IC741049.png)
+    ![EBOD denetleyicisi 'nin geri düzlemi](./media/storsimple-ebod-controller-replacement/IC741049.png)
    
-     **Şekil 1** arka of EBOD Modülü
+     **Şekil 1** EBOD modülünün geri dönmesi
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
-   | 1 |Hata Işığı |
+   | 1 |Hata ışığı |
    | 2 |Güç ışığı |
-   | 3 |SAS Bağlayıcısı |
-   | 4 |SAS LED'leri |
-   | 5 |Seri bağlantı noktaları yalnızca factory kullanımı |
-   | 6 |(Konak), bağlantı noktası |
-   | 7 |Bağlantı noktası B (ana bilgisayarı devre dışı) |
-   | 8 |Bağlantı noktası C (yalnızca Fabrika kullanın) |
+   | 3 |SAS bağlayıcıları |
+   | 4 |SAS LED 'Leri |
+   | 5 |Yalnızca fabrika kullanımı için seri bağlantı noktaları |
+   | 6 |Bağlantı noktası A (ana bilgisayar) |
+   | 7 |Bağlantı noktası B (ana bilgisayar) |
+   | 8 |Bağlantı noktası C (yalnızca fabrika kullanımı) |
 
-## <a name="install-a-new-ebod-controller"></a>Yeni bir EBOD denetleyicisi yükleme
-Aşağıdaki yordamı ve tabloyu kullanarak StorSimple Cihazınızı bir EBOD denetleyicisi modülünü yükleme işlemleri açıklanmaktadır.
+## <a name="install-a-new-ebod-controller"></a>Yeni bir EBOD denetleyicisi yükler
+Aşağıdaki yordam ve tabloda, StorSimple cihazınıza bir EBOD denetleyici modülünün nasıl yükleneceği açıklanmaktadır.
 
 #### <a name="to-install-an-ebod-controller"></a>EBOD denetleyicisi yüklemek için
-1. EBOD cihaz arabirimi bağlayıcıya özellikle hasar olup olmadığını denetleyin. Tüm PIN'ler Eğilmiş yeni EBOD denetleyicisi yüklemeyin.
-2. Mandal ilgisini kadar açık konuma tutma ile kutu modülü kaydırın.
+1. Özellikle arabirim bağlayıcısına, EBOD cihazını hasar için denetleyin. PIN 'ler Bükülü ise, yeni EBOD denetleyicisini yüklemeyin.
+2. Açık konumdaki çim sayesinde, bu modül, bu, modülün katılımını yapana kadar, modülün yanına kaydırın.
    
     ![EBOD denetleyicisi yükleniyor](./media/storsimple-ebod-controller-replacement/IC741050.png)
    
-    **Şekil 2** EBOD denetleyicisi modülünü yükleme
-3. Mandal kapatın. Mandal ilgilenir gibi bir tıklama sesi.
+    **Şekil 2**  EBOD denetleyici modülünü yükleme
+3. Mandalı kapatın. Mandal olarak bir tıklama duymalısınız.
    
     ![EBOD mandalı bırakılıyor](./media/storsimple-ebod-controller-replacement/IC741047.png)
    
-    **Şekil 3** EBOD modülü mandalı kapatılıyor
-4. Kabloları bağlanın. Bu değişiklik önce mevcut tam yapılandırma kullanın. Aşağıdaki diyagramda ve tablo kabloları bağlanma hakkında ayrıntılı bilgi için bkz.
+    **Şekil 3**  EBOD modül mandalı kapatılıyor
+4. Kabloları yeniden bağlayın. Değiştirme işleminden önce mevcut olan doğru yapılandırmayı kullanın. Kabloların nasıl bağlanacağı hakkındaki ayrıntılar için aşağıdaki diyagrama ve tabloya bakın.
    
     ![Kabloyla 4U cihazınızın güç bağlantısını yapın](./media/storsimple-ebod-controller-replacement/IC770723.png)
    
-    **Şekil 4**. Yeniden bağlanan kabloları
+    **Şekil 4**. Kablolar yeniden bağlanıyor
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
-   | 1 |Birincil |
+   | 1 |Birincil kutu |
    | 2 |PCM 0 |
    | 3 |PCM 1 |
    | 4 |Denetleyici 0 |
    | 5 |Denetleyici 1 |
-   | 6 |EBOD Denetleyicisi 0 |
+   | 6 |EBOD denetleyicisi 0 |
    | 7 |EBOD denetleyicisi 1 |
-   | 8 |EBOD muhafazası |
-   | 9 |Güç Dağıtım birimleri |
+   | 8 |EBOD Kasası |
+   | 9 |Güç dağıtımı birimleri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi edinin [StorSimple donanım bileşeni değişimi](storsimple-8000-hardware-component-replacement.md).
+[StorSimple donanım bileşeni değiştirme](storsimple-8000-hardware-component-replacement.md)hakkında daha fazla bilgi edinin.
 

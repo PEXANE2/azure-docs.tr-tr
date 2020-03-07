@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359850"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 
@@ -39,7 +39,7 @@ Hyperscale hizmet katmanı yalnızca Azure SQL veritabanı 'ndaki sanal çekirde
 
 Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığı gibi veritabanı kullanılabilirliğine ve depolama türüne, performansa ve en büyük boyuta göre farklılaştırılır.
 
-| | Kaynak türü | Genel Amaçlı |  Hiper ölçeklendirme | İş Açısından Kritik |
+| | Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
 | **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
@@ -95,7 +95,7 @@ Hiper ölçek, iş yükü talebe göre hızlı ölçeklenebilirlik sağlar.
 
 ### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-logical-server"></a>Tek bir mantıksal sunucuda hiper ölçek ve tek veritabanlarını karıştırabilirim
 
-Evet, uygulayabilirsiniz.
+Evet, bunu yapabilirsiniz.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>Hiper ölçek, uygulama programlama modelinizin değiştirilmesini gerektiriyor
 
@@ -274,11 +274,11 @@ Hayır. Yedeklemeler, depolama alt sistemi tarafından yönetilir ve depolama an
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Hiper ölçek veritabanı ile coğrafi geri yükleme yapabilir miyim
 
-Evet.  Coğrafi geri yükleme tam olarak desteklenmektedir. Bir noktadan noktaya geri yükleme işleminin aksine, coğrafi geri yükleme uzun süre çalışan bir veri boyutu işlemi gerektirebilir.
+Evet. Coğrafi geri yükleme tam olarak desteklenmektedir. Bir noktadan noktaya geri yükleme işleminin aksine, coğrafi geri yükleme bir veri boyutu işlemi gerektirir. Veri dosyaları paralel olarak kopyalanır, bu nedenle bu işlemin süresi, birincil olarak veritabanındaki en büyük dosyanın boyutuna (Toplam veritabanı boyutu yerine) bağlıdır. Veritabanı, kaynak veritabanının bölgesiyle [eşleştirilmiş](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) olan Azure bölgesine geri yüklenirse, coğrafi geri yükleme süresi önemli ölçüde daha kısa olur.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Hiper ölçekli veritabanı ile Coğrafi çoğaltmayı ayarlayabilir miyim
 
-Şimdilik hayır.
+Şu anda değil.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Hiper ölçekli bir veritabanı yedeklemesini alabilir ve şirket içi sunucuma veya bir VM 'deki SQL Server geri yüklemenize olanak verebilir
 
@@ -296,7 +296,7 @@ Hayır. PolyBase, Azure SQL veritabanı 'nda desteklenmiyor.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Hiper ölçekte R ve Python desteği vardır
 
-Şimdilik hayır.
+Şu anda değil.
 
 ### <a name="are-compute-nodes-containerized"></a>İşlem düğümleri Kapsayıcılı
 

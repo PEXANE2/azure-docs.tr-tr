@@ -14,11 +14,11 @@ ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
 ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372493"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -122,7 +122,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için Windows olay günlü
 
 8. Yeni bir Log Analytics çalışma alanı için Windows performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur. Her seçenek, yanındaki onay kutusuyla birlikte listelenir:
 
-    ![Windows performans sayaçları](media/quick-collect-windows-computer/windows-perfcounters-default.png)ziyaret edin.
+    ![Windows performans sayaçları](media/quick-collect-windows-computer/windows-perfcounters-default.png)arasında yetersiz alanla karşılaştı.
     
     **Seçili performans sayaçlarını Ekle**' yi seçin. Sayaçlar eklenen ve on saniyelik bir koleksiyon örnek aralığıyla önceden ayarlanmış.
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
 ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990530"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355816"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı
 Integration Runtime (IR), Azure Data Factory tarafından farklı ağ ortamlarında aşağıdaki veri tümleştirme özelliklerini sunmak için kullanılan işlem altyapısıdır:
@@ -33,15 +33,15 @@ Data Factory'de etkinlik, gerçekleştirilecek eylemi tanımlar. Bağlı hizmet,
 Data Factory, üç farklı Integration Runtime türü sunar ve ihtiyacınız olan veri tümleştirme ve ağ ortamı özelliklerine uygun türü seçmeniz gerekir.  Bu üç tür şunlardır:
 
 - Azure
-- Şirket içinde barındırılan
+- Kendinden konak
 - Azure-SSIS
 
 Aşağıdaki tabloda tümleştirme çalışma zamanı türlerinin her birinin sunduğu özellikler ve ağ desteği açıklanmaktadır:
 
 IR türü | Ortak ağ | Özel ağ
 ------- | -------------- | ---------------
-Azure | Veri Akışı<br/>Veri taşıma<br/>Etkinlik dağıtma | &nbsp;
-Şirket içinde barındırılan | Veri taşıma<br/>Etkinlik dağıtma | Veri taşıma<br/>Etkinlik dağıtma
+Azure | Veri akışı<br/>Veri taşıma<br/>Etkinlik dağıtma | &nbsp;
+Kendinden konak | Veri taşıma<br/>Etkinlik dağıtma | Veri taşıma<br/>Etkinlik dağıtma
 Azure-SSIS | SSIS paketi yürütme | SSIS paketi yürütme
 
 Aşağıdaki şemada gelişmiş veri tümleştirme özellikleri ve ağ desteği sunmak için birlikte kullanılabilecek farklı tümleştirme çalışma zamanları gösterilmiştir:
@@ -70,7 +70,7 @@ Azure IR oluşturma ve yapılandırma hakkında bilgi almak için nasıl yapıl�
 > [!NOTE] 
 > Azure Integration Runtime 'da veri akışını çalıştırmak için kullanılacak temel işlem altyapısını tanımlayan veri akışı çalışma zamanı ile ilgili özellikler vardır. 
 
-## <a name="self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı
+## <a name="self-hosted-integration-runtime"></a>Kendinden konak tümleştirme çalışma zamanı
 Kendinden konak IR şu özelliklere sahiptir:
 
 - Bulut veri depoları ve özel ağdaki veri deposu arasında kopyalama etkinliği çalıştırma.

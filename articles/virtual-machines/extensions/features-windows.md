@@ -16,11 +16,11 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587881"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363279"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 `Set-AzVMExtension` komutu herhangi bir VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
