@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772488"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393783"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
@@ -23,7 +23,7 @@ Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin
 
 Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
 * [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
@@ -39,7 +39,7 @@ Tahmin uç noktası kaynağını Azure portal oluşturursunuz. Bu kaynak yalnız
 
    |Ayar|Değer|Amaç|
    |--|--|--|
-   |Ad|`my-luis-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
+   |Adı|`my-luis-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
    |Abonelik|Aboneliğiniz|Hesabınızla ilişkili aboneliklerden birini seçin.|
    |Kaynak grubu|`my-resource-group`|Tüm bilişsel hizmet kaynaklarınız için yeni bir kaynak grubu oluşturun. Kaynaklarla işiniz bittiğinde, aboneliğinizi temizlemek için kaynak grubunu silebilirsiniz. |
    |Yazma konumu|**Batı ABD**|Yazma için Azure bölgesi.|
@@ -67,7 +67,7 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
     ![LUSıS tahmin kaynağını eklemek için tahmin kaynağı Ekle ' yi seçin.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
+1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. **Kaynak ata**' yı seçin.
 
    ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 

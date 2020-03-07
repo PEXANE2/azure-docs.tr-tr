@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Desteklenen topolojiler | Microsoft Docs'
+title: 'Azure AD Connect: desteklenen topolojiler | Microsoft Docs'
 description: Bu konu, Azure AD Connect için desteklenen ve desteklenmeyen topolojilerle ilgili ayrıntılı bilgi
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275225"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376135"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
 Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede hem desteklenen hem de desteklenmeyen yapılandırmalar bulunur.
@@ -42,7 +42,7 @@ Makalede resimler için gösterge aşağıda verilmiştir:
 
 
 > [!IMPORTANT]
-> Microsoft, resmi olarak belgelenen yapılandırmaların veya eylemlerin dışında değiştirme veya çalışma Azure AD Connect eşitlemeyi desteklemez. Bu yapılandırmaların veya eylemlerin herhangi biri, tutarsız veya desteklenmeyen Azure AD Connect eşitleme durumuyla sonuçlanabilir. Sonuç olarak Microsoft, bu tür dağıtımlar için teknik destek sağlayamaz.
+> Microsoft, resmi olarak belgelenen yapılandırmaların veya eylemlerin dışında değiştirme veya çalışma Azure AD Connect eşitlemeyi desteklemez. Bu yapılandırmaların veya eylemlerin herhangi biri, tutarsız veya desteklenmeyen Azure AD Connect eşitleme durumuyla sonuçlanabilir. Sonuç olarak, Microsoft bu tür dağıtımlar için teknik destek sağlayamaz.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Tek orman, tek Azure AD kiracısı

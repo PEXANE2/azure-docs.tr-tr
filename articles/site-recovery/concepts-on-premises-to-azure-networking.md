@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084258"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363262"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinden yük devretmeden sonra Azure VM 'lerine bağlanma 
 
@@ -96,7 +96,7 @@ IP adreslerini koruma aşağıdaki adımları gerektirir:
 
 ### <a name="failover-example"></a>Yük devretme örneği
 
-Bir örneğe göz atalım.
+Şimdi örneği inceleyelim.
 
 - Kurgusal şirket Woodgrove Bank, mobil uygulamalarını Azure 'da barındırdıkları kurumsal uygulamaları barındırır.
 - Şirket içinden siteden siteye VPN üzerinden Azure 'a bağlanır. 

@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi güncelleştirme 4 sürüm notları | Microsoft Docs
-description: StorSimple 8000 serisi güncelleştirme 4 için yeni özellikler, sorunlar ve geçici çözümleri açıklar.
+description: StorSimple 8000 serisi güncelleştirme 4 için yeni özellikleri, sorunları ve geçici çözümleri açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698633"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394559"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 serisi güncelleştirme 4 sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları, yeni özellikleri açıklar ve kritik açık sorunlar için StorSimple 8000 serisi güncelleştirme 4 belirleyin. Ayrıca bu sürüme dahil edilen StorSimple yazılım güncelleştirmeleri listesini içerirler. 
+Aşağıdaki sürüm notları, yeni özellikleri anlatmaktadır ve StorSimple 8000 serisi güncelleştirme 4 için kritik açık sorunları belirler. Ayrıca, bu sürüme dahil olan StorSimple yazılım güncelleştirmelerinin bir listesini içerir. 
 
-Güncelleştirme 4 ile güncelleştirme 3.1 sürüm (GA) ya da güncelleştirme 0.1 çalıştıran tüm StorSimple cihazı için uygulanabilir. Güncelleştirme 4 ile ilişkili cihaz 6.3.9600.17820 sürümüdür.
+Güncelleştirme 4, güncelleştirme 3,1 aracılığıyla Release (GA) veya güncelleştirme 0,1 ' i çalıştıran herhangi bir StorSimple cihaza uygulanabilir. Güncelleştirme 4 ile ilişkili cihaz sürümü 6.3.9600.17820 ' dir.
 
-Lütfen StorSimple çözümünüzde güncelleştirme dağıtmadan önce bu sürüm notlarında yer alan bilgileri gözden geçirin.
+Güncelleştirmeyi StorSimple çözümünüzde dağıtmadan önce lütfen sürüm notlarında yer alan bilgileri gözden geçirin.
 
 > [!IMPORTANT]
-> * Güncelleştirme 4 cihaz yazılımı, USM üretici yazılımı, LSI sürücü ve bellenim, disk üretici yazılımı, Storport ve Spaceport, güvenlik ve diğer işletim sistemi güncelleştirmeleri var. Bu güncelleştirmeyi yüklemek için yaklaşık 4 saat sürer. Disk üretici yazılımı güncelleştirmesi, kesintiye uğratan bir güncelleştirmedir ve cihazınız için bir kapalı kalma süresi ile sonuçlanır. Cihazınızı güncel tutmak, güncelleştirme 4 uygulamanızı öneririz. 
-> * Yeni yayınlar için güncelleştirmeleri göremeyebilirsiniz hemen güncelleştirmeleri aşamalı olarak sunulmasını çünkü. Birkaç gün bekleyin ve ardından güncelleştirmeleri bu olarak yeniden tarama yakında kullanıma sunulacaktır.
+> * Güncelleştirme 4 ' te cihaz yazılımı, USı üretici yazılımı, LSI sürücü ve üretici yazılımı, disk üretici yazılımı, Storport ve Spaceport, güvenlik ve diğer işletim sistemi güncelleştirmeleri bulunur. Bu güncelleştirmenin yüklenmesi yaklaşık 4 saat sürer. Disk üretici yazılımı güncelleştirmesi, kesintiye uğratan bir güncelleştirmedir ve cihazınız için kapalı kalma süresine neden olur. Cihazınızı güncel tutmak için güncelleştirme 4 ' ü uygulamanızı öneririz. 
+> * Güncelleştirmelerin aşamalı olarak piyasaya sürültiğimiz için yeni sürümler için güncelleştirmeleri hemen göremeyebilirsiniz. Birkaç gün bekleyin ve bu süre yakında kullanılabilir hale gelecağından güncelleştirmeleri yeniden tarayın.
 
-## <a name="whats-new-in-update-4"></a>Güncelleştirme 4'teki yenilikler
+## <a name="whats-new-in-update-4"></a>Güncelleştirme 4 ' teki yenilikler
 
-Güncelleştirme 4'te aşağıdaki anahtar geliştirmeleri ve hata düzeltmeleri yapıldı.
+Güncelleştirme 4 ' te aşağıdaki önemli geliştirmeler ve hata düzeltmeleri yapılmıştır.
 
-* **Daha Akıllı otomatik alan geri kazanma algoritmaları** – güncelleştirme 4, algoritmaları beklenen geri kazanılan kullanılabilir alan bulutta göre alan geri kazanma döngüleri ayarlamak için geliştirilmiş otomatik alan geri kazanma. 
+* Daha **Akıllı otomatik Space geri kazanma algoritmaları** – güncelleştirme 4 ' te otomatik alan geri kazanma algoritmaları, bulutta bulunan beklenen geri kazanılan alana göre Space geri kazanma döngülerini ayarlamak için geliştirilmiştir. 
 
-* **Yerel olarak sabitlenmiş birimler için performans geliştirmeleri** – güncelleştirme 4, yerel olarak sabitlenmiş birimlerin yüksek veri alma (birim boyutu için karşılaştırılabilir veri) sahip senaryolarda performansı geliştirildi.
+* **Yerel olarak sabitlenmiş birimler Için performans iyileştirmeleri** – güncelleştirme 4, yüksek veri alımı olan senaryolarda yerel olarak sabitlenmiş birimlerin performansını iyileştirmiştir (birim boyutuyla karşılaştırılabilir veriler).
 
-* **Isı Haritası tabanlı geri yükleme** -önceki sürümlerde, olağanüstü durum kurtarma (DR), aşağıdaki veriler bir yavaş performans erişim desenlerini göre buluttan geri yüklendi. 
+* **Heatmap tabanlı geri yükleme** -önceki sürümlerde, olağanüstü durum kurtarma (Dr) sonrasında veriler, yavaş bir performansa neden olan erişim düzenlerine göre buluttan geri yüklendi. 
 
-    Yeni bir özellik güncelleştirme 4'te parçaları cihaz DR önce kullanımda olduğunda bir ısı haritası oluşturmak için veri sık erişilen uygulanır (en çok kullanılan veri öbekleri, öbekleri daha az kullanılan ise yüksek ısı sahip düşük ısı vardır). DR sonra StorSimple, otomatik olarak geri yüklemek ve buluttaki verileri yeniden doldurma ısı Haritası kullanır. 
+    Güncelleştirme 4 ' te, cihaz Dr 'den önce kullanılırken bir ısı haritasını oluşturmak için sık erişilen verileri izleyen yeni bir özellik uygulanır (en çok kullanılan veri öbeklerinin yüksek bir ısı olduğu, daha az kullanılan parçalar düşük bir ısı olur). Dr 'den sonra StorSimple, verileri buluttan otomatik olarak geri yüklemek ve yeniden oluşturmak için ısı haritasını 'i kullanır. 
 
-    Tüm geri yükleme tabanlı ısı Haritası geri yüklemeler sunulmuştur. Sorgu ve ısı Haritası tabanlı geri yükleme ve yeniden doldurma işleri iptal etme hakkında daha fazla bilgi için Git [StorSimple cmdlet başvurusu için Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
+    Tüm geri yüklemeler artık ısı haritasını tabanlı geri yüklemeler. Isı haritasını tabanlı geri yükleme ve yeniden doldurma işlerini sorgulama ve iptal etme hakkında daha fazla bilgi için [StorSimple için Windows PowerShell cmdlet başvurusuna](https://technet.microsoft.com/library/dn688168.aspx)gidin.
 
-* **StorSimple Tanılama Aracı** – kolayca tanımak için izin vermek için güncelleştirme 4, StorSimple Tanılama Aracı yayımlanmaktadır ve sistem, ağ, performans ve donanım bileşeni sistem durumu için ilgili sorunları giderme. Bu araç, StorSimple için Windows PowerShell çalıştırılır. Daha fazla bilgi için Git [StorSimple Tanılama aracını kullanmayla ilgili sorun giderme](storsimple-8000-diagnostics.md).
+* **StorSimple Tanılama Aracı** – güncelleştirme 4 ' te, sistem, ağ, performans ve donanım bileşeni sistem durumu ile ilgili sorunların kolay bir şekilde tanılanması ve sorun gidermede izin vermek Için bir StorSimple Tanılama Aracı yayımlandı. Bu araç StorSimple için Windows PowerShell aracılığıyla çalıştırılır. Daha fazla bilgi için, [StorSimple Tanılama aracını kullanarak sorun giderme](storsimple-8000-diagnostics.md)bölümüne gidin.
 
-* **StorSimple Geçiş Aracı kullanıcı Arabirimi tabanlı** -Bu sürümden önce 5000-7000 serisinden veri geçişini kullanıcılar Azure PowerShell arabirimini kullanarak geçiş iş akışının bir parçası olarak çalıştırmak gerekli. Bu sürümde, kullanımı kolay bir UI tabanlı StorSimple Geçiş Aracı aynı geçiş iş akışı kolaylaştırmak, destek için kullanılabilir hale getirilir. Bu araç ayrıca kurtarma demet birleştirilmesi için izin verir. 
+* **UI tabanlı StorSimple geçiş aracı** -Bu sürümden önce, 5000-7000 serisinden verilerin geçirilmesi, kullanıcıların Azure PowerShell arabirimini kullanarak geçiş iş akışının bir parçasını yürütmelerine gerek duyduğu bir işlemdir. Bu sürümde, kullanımı kolay bir kullanıcı arabirimi tabanlı StorSimple geçiş aracı, aynı geçiş iş akışını kolaylaştırmak için kullanılabilir hale getirilir. Bu araç ayrıca kurtarma demetlerinin birleştirilmesi için de izin verir. 
 
-* **FIPS ile ilgili değişiklikleri** - bu sürüm ve sonraki sürümlerde, FIPS etkin varsayılan olarak tüm StorSimple 8000 serisi cihazlar için hesapları Microsoft Azure kamu ve Azure genel bulut.
+* **FIPS ile ilgili değişiklikler** -bu sürüm, hem Microsoft Azure Kamu hem de Azure genel bulut hesapları Için tüm storsimple 8000 serisi cihazlarda varsayılan olarak FIPS etkindir.
 
-* **Güncelleştirme değişiklikleri** -bu sürümde, hatalarını güncelleştir ilgili hatalar düzeltildi.
+* **Değişiklikleri Güncelleştir** -bu sürümde, güncelleştirme hatalarıyla ilgili hatalar düzeltildi.
 
-* **Disk hataları için uyarı** -bu sürümde kullanıcı yaklaşan bir disk hatalarının uyaran yeni bir uyarı eklenir. Bu uyarıyla karşılaşırsanız, Microsoft bir disk eklenmemiştir göndermeye Support başvurun. Daha fazla bilgi için Git [donanım uyarılar StorSimple Cihazınızda](storsimple-8000-manage-alerts.md#hardware-alerts).
+* **Disk hatalarıyla Ilgili uyarı** -bu sürümde, yaklaşan disk hatalarının kullanıcısını uyaran yeni bir uyarı eklenmiştir. Bu uyarıyla karşılaşırsanız, yeni bir disk göndermek için Microsoft Desteği başvurun. Daha fazla bilgi için, [StorSimple cihazınızda donanım uyarıları](storsimple-8000-manage-alerts.md#hardware-alerts)' na gidin.
 
-* **Denetleyici değiştirme değişiklikleri** -denetleyici değiştirme işleminin durumunu sorgulamak kullanıcıya izin veren bir cmdlet bu sürümde eklenir. Daha fazla bilgi için Git [sorgu denetleyicisi değiştirme durumu cmdlet'e](https://technet.microsoft.com/library/dn688168.aspx).
+* **Denetleyici değiştirme değişiklikleri** -kullanıcının denetleyici değiştirme işleminin durumunu sorgulamasını sağlayan bir cmdlet bu yayına eklenir. Daha fazla bilgi için, [Denetleyici değiştirme durumunu sorgulamak üzere cmdlet 'ine](https://technet.microsoft.com/library/dn688168.aspx)gidin.
 
 
-## <a name="issues-fixed-in-update-4"></a>Güncelleştirme 4'te giderilen sorunlar
+## <a name="issues-fixed-in-update-4"></a>Güncelleştirme 4 ' te düzeltilen sorunlar
 
-Aşağıdaki tabloda, güncelleştirme 4'te düzeltilen sorunlara ilişkin bir Özet sağlar.    
+Aşağıdaki tabloda güncelleştirme 4 ' te düzeltilen sorunların özeti verilmiştir.    
 
-| Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaza uygulanır |
+| Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
 | --- | --- | --- | --- | --- |
-| 1 |Yük devretme |Önceki sürümde, yük devretme sonrasında müşteri sitesinde gözlemlenen temizleme ilgili bir sorun oluştu. Bu sürümde bu sorun düzeltilmiştir. |Evet |Evet |
-| 2 |Yerel olarak sabitlenmiş birimler |Önceki sürümde, birim oluşturma hatalarına neden olan yerel olarak sabitlenmiş birimler için ilgili birim oluşturma için bir sorun oluştu. Bu sorun, kök neden ve bu sürümde giderilen. |Evet |Hayır |
-| 3 |Destek Paketi |Önceki bir sürümde System.OutOfMemory özel durumu veya bir destek paketi oluşturma hatasıyla sonuçlanan diğer hataları neden olacağından destek paketi ile ilgili sorunlar oluştu. Bu hatalar, bu sürümde giderilen. |Evet |Evet |
-| 4 |İzleme |Önceki bir sürümde var grafikler için yerel olarak izleme ile ilgili bir sorun tüketim EB burada gösterilen sabitlenmiş birimler. Bu hata, bu sürümde çözülür. |Evet |Evet |
-| 5 |Geçiş |Önceki bir sürümde 8000 serisi cihazlar için 5000-7000 serisinden geçiş güvenilirliğini ilgili çeşitli sorunlar oluştu. Bu sürümde bu sorun çözüldü. |Evet |Evet |
-| 6 |Güncelleştirme |Önceki sürümlerde, bir güncelleştirme hatası olduysa, denetleyiciler kurtarma moduna gitmesi gerekiyordu ve bu nedenle kullanıcı güncelleştirme ile devam edilemedi Microsoft Support iletişime geçmeniz. <br> Bu sürümde bu davranış değiştirilmiştir. Her iki denetleyici aynı sürümünü (güncelleştirme 4) çalıştırıldıktan sonra kullanıcının bir güncelleştirme hatası varsa, denetleyiciler kurtarma moduna girmemektedir. Kullanıcı bu hatayla karşılaşılırsa, bunlar için biraz bekleyin ve ardından güncelleştirmeyi yeniden öneririz. Yeniden deneme başarılı olabilir. Daha sonra yeniden deneme başarısız olursa, Microsoft Support başvurmalısınız. |Evet |Evet |
+| 1 |Yük devretme |Önceki sürümde, yük devretmeden sonra müşteri sitesinde gözlemlenen Temizleme ile ilgili bir sorun oluştu. Bu sorun bu sürümde düzeltilmiştir. |Yes |Yes |
+| 2 |Yerel olarak sabitlenmiş birimler |Önceki sürümde, birim oluşturma hatalarıyla sonuçlanacağından yerel olarak sabitlenmiş birimler için ilgili birim oluşturma konusunda bir sorun oluştu. Bu sorun köklenmiştir ve bu sürümde düzeltildi. |Yes |Hayır |
+| 3 |Destek paketi |Önceki sürümde, destek paketi ile ilgili, destek paketi oluşturma hatasına yol açacak bir sistem. OutOfMemory özel durumu veya diğer hatalara neden olacak sorunlar oluştu. Bu hatalar bu sürümde düzeltilmiştir. |Yes |Yes |
+| 4 |İzleme |Önceki sürümde, yerel olarak sabitlenmiş birimlerde tüketimin, EB 'de gösterilmekte olan grafiklerle ilgili bir sorun var. Bu hata bu sürümde çözüldü. |Yes |Yes |
+| 5 |Geçiş |Önceki sürümde, 5000-7000 serisinden 8000 serisi cihazlara geçişin güvenilirliğiyle ilgili birkaç sorun oluştu. Bu sorunlar bu sürümde ele alındı. |Yes |Yes |
+| 6 |Güncelleştir |Önceki sürümlerde, bir güncelleştirme hatası oluşursa, denetleyiciler kurtarma moduna geçer ve bu nedenle Kullanıcı güncelleştirmeye devam edemeyebilir ve Microsoft Desteği iletişim kurabilmesi gerekir. <br> Bu davranış bu sürümde değiştirilmiştir. Her iki denetleyici de aynı sürümü (güncelleştirme 4) çalıştırdıktan sonra kullanıcının bir güncelleştirme hatası varsa, denetleyiciler kurtarma moduna geçmez. Kullanıcı bu hatayla karşılaşırsa, bir bit beklemeniz ve sonra güncelleştirmeyi yeniden denemeniz önerilir. Yeniden deneme başarılı olabilir. Yeniden deneme başarısız olursa, Microsoft Desteği ile bağlantı kurmanız gerekir. |Yes |Yes |
 
 
-## <a name="known-issues-in-update-4-from-previous-releases"></a>Önceki sürümlerine yönelik güncelleştirme 4'te bilinen sorunlar
+## <a name="known-issues-in-update-4-from-previous-releases"></a>Önceki sürümlerden güncelleştirme 4 ' te bilinen sorunlar
 
-Güncelleştirme 4'te yeni bilinen bir sorun vardır. Önceki sürümlerden Update 4'e taşınır sorunların listesi için Git [güncelleştirme 3 Sürüm Notları](storsimple-update3-release-notes.md#known-issues-in-update-3).
+Güncelleştirme 4 ' te bilinen yeni bir sorun yoktur. Önceki sürümlerden güncelleştirme 4 ' e aktarılan sorunların listesi için, [güncelleştirme 3 sürüm notları](storsimple-update3-release-notes.md#known-issues-in-update-3)' na gidin.
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Seri Bağlı SCSI (SAS) denetleyicisi ve üretici yazılımı güncelleştirmelerini güncelleştirme 4
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Güncelleştirme 4 ' te Seri Bağlantılı SCSI (SAS) denetleyicisi ve bellenim güncelleştirmeleri
 
-Bu sürüm, SAS Denetleyici ve LSI sürücü ve bellenim güncelleştirmeleri sahiptir. Bu güncelleştirmeleri yükleme hakkında daha fazla bilgi için bkz. [güncelleştirme 4'ü yükleyin](storsimple-install-update-4.md) StorSimple Cihazınızda.
+Bu sürümde SAS denetleyicisi ve LSI sürücü ve bellenim güncelleştirmeleri vardır. Bu güncelleştirmeleri nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. StorSimple cihazınıza [güncelleştirme 4](storsimple-install-update-4.md) ' ü yüklemek.
 
-## <a name="virtual-device-updates-in-update-4"></a>Güncelleştirme 4'te sanal cihaz güncelleştirmeleri
+## <a name="virtual-device-updates-in-update-4"></a>Güncelleştirme 4 ' teki sanal cihaz güncelleştirmeleri
 
-Bu güncelleştirme, StorSimple Cloud Appliance (sanal cihaz olarak da bilinir) uygulanamaz. Yeni sanal cihazları oluşturulması gerekir. 
+Bu güncelleştirme StorSimple Cloud Appliance uygulanamıyor (sanal cihaz olarak da bilinir). Yeni sanal cihazların oluşturulması gerekir. 
 
 ## <a name="next-step"></a>Sonraki adım
 
-Bilgi edinmek için nasıl [güncelleştirme 4'ü yükleyin](storsimple-install-update-4.md) StorSimple Cihazınızda.
+StorSimple cihazınıza [güncelleştirme 4 ' ü yüklemeyi](storsimple-install-update-4.md) öğrenin.
 

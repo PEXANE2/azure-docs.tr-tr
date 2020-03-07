@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986997"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364590"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB için Azure Stream Analytics çıkışı  
 Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi uygulamaları kapsar.
@@ -64,7 +64,7 @@ Yinelenen KIMLIĞE sahip olanlar da dahil olmak üzere *Tüm* belgeleri kaydetme
 Azure Cosmos DB, iş yükünüze göre bölümleri otomatik olarak ölçeklendirir. Bu nedenle, verilerinizi bölümlemeye yönelik yaklaşım olarak [sınırsız](../cosmos-db/partition-data.md) kapsayıcı önerilir. Stream Analytics sınırsız kapsayıcılara yazdığında, önceki sorgu adımı veya giriş bölümleme düzeni olarak çok sayıda paralel yazıcı kullanır.
 
 > [!NOTE]
-> Azure Stream Analytics en üst düzeyde yalnızca bölüm anahtarları olan sınırsız kapsayıcıları destekler. Örneğin, `/region` desteklenir. İç içe bölüm anahtarları (örneğin, `/region/name`) desteklenmez. 
+> Azure Stream Analytics en üst düzeyde yalnızca bölüm anahtarları olan sınırsız kapsayıcıları destekler. Örneğin `/region` desteklenir. İç içe bölüm anahtarları (örneğin, `/region/name`) desteklenmez. 
 
 Bölüm anahtarınız seçiminize bağlı olarak şu _uyarıyı_alabilirsiniz:
 
@@ -107,11 +107,11 @@ Stream Analytics bir çıkış olarak Azure Cosmos DB kullanmak için aşağıda
 
 |Alan           | Açıklama|
 |-------------   | -------------|
-|Çıkış diğer adı    | Stream Analytics sorgunuzda Bu çıktıya başvurmak için bir diğer ad.|
+|Çıktı diğer adı    | Stream Analytics sorgunuzda Bu çıktıya başvurmak için bir diğer ad.|
 |Abonelik    | Azure aboneliği.|
 |Hesap Kimliği      | Azure Cosmos DB hesabının adı veya uç nokta URI 'SI.|
 |Hesap anahtarı     | Azure Cosmos DB hesabının paylaşılan erişim anahtarı.|
-|Veritabanı        | Azure Cosmos DB veritabanı adı.|
+|Database        | Azure Cosmos DB veritabanı adı.|
 |Kapsayıcı adı | Kapsayıcı adı, örneğin `MyContainer`. `MyContainer` adlı bir kapsayıcı var olmalıdır.  |
 |Belge Kimliği     | İsteğe bağlı. Hangi ekleme veya güncelleştirme işlemleri dayanması benzersiz bir anahtar kullanılan çıkış olaylarındaki sütun adı. Boş bırakırsanız, tüm olaylar hiçbir güncelleştirme seçeneği olmadan eklenir.|
 

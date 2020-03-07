@@ -14,11 +14,11 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 244ad7d079fd7baf25f8079557576c42d25ca785
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387812"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure 'da SQL Server VM 'Leri Azure portal kullanarak yönetin
 
@@ -36,7 +36,7 @@ ms.locfileid: "70102058"
 ## <a name="access-the-sql-virtual-machines-resource"></a>SQL sanal makineler kaynağına erişin
 **SQL sanal makineler** kaynağına erişmek için aşağıdakileri yapın:
 
-1. [Azure portalı](https://portal.azure.com) açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 1. **Tüm hizmetler**' i seçin. 
 1. Arama kutusuna **SQL sanal makinelerini** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **SQL sanal makineler** ' in yanındaki yıldızı seçin. 
@@ -61,11 +61,11 @@ ms.locfileid: "70102058"
 
 Kullanım dışı **SQL Server yapılandırma** sekmesine erişmek için **sanal makineler** kaynağına gidin. Aşağıdaki adımları kullanın:
 
-1. [Azure portalı](https://portal.azure.com) açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 1. **Tüm hizmetler**' i seçin. 
 1. Arama kutusuna **sanal makineler** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **sanal makineler** ' in yanındaki yıldızı seçin. 
-1. Seçin **sanal makineler**. 
+1. **Sanal makineleri**seçin. 
 
    ![Sanal makineleri ara](media/virtual-machines-windows-sql-manage-portal/vm-search.png)
 

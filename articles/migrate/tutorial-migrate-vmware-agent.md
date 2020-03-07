@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
 ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389002"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -205,7 +205,7 @@ VMware VM 'lerini değerlendirmek için öğreticiyi takip etmediyseniz, bir Azu
     --- | ---
     Asya | Güneydoğu Asya
     Avrupa | Kuzey Avrupa veya Batı Avrupa
-    Birleşik Devletler | Doğu ABD veya Orta Batı ABD
+    Amerika Birleşik Devletleri | Doğu ABD veya Orta Batı ABD
 
     Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
 4. **Değerlendirme Seç aracında**, şimdi > **için değerlendirme aracı eklemeyi atla** ' yı seçin.

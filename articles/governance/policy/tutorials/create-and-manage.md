@@ -4,11 +4,11 @@ description: Bu öğreticide, standartları zorlamak, maliyetleri denetlemek, g�
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436145"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384546"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme
 
@@ -22,7 +22,7 @@ Kurumsal standartlarınıza ve hizmet düzeyi sözleşmelerinize uyumluluğu kor
 
 Mevcut kaynaklarınızın geçerli uyumluluk durumunu tanımlamak için bir ilke atamak isterseniz, hızlı başlangıç makalelerinde bunun nasıl yapıldığı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -59,7 +59,7 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 
 1. **İlke zorlamayı** _etkin_olarak bırakın. _Devre dışı_bırakıldığında, bu ayar, etkiyi tetiklemeden ilkenin sonucunun test edilmesine olanak tanır. Daha fazla bilgi için bkz. [zorlama modu](../concepts/assignment-structure.md#enforcement-mode).
 
-1. **Tarafından atanan** açan temel alınarak otomatik olarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
+1. **Tarafından atanan** , oturum açan kim temel alınarak otomatik olarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
 
 1. Sihirbazın üst kısmındaki **Parametreler** sekmesini seçin.
 
@@ -83,7 +83,7 @@ Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha
 
    ![Yazma grubu altındaki tanım sayfası](../media/create-and-manage/definition-under-authoring.png)
 
-1. Sayfanın üst kısmındaki **+ İlke tanımı** seçeneğini belirleyin. Bu düğme açılır **ilke tanımı** sayfası.
+1. Sayfanın üst kısmındaki **+ İlke tanımı** seçeneğini belirleyin. Bu düğme, **ilke tanımı** sayfası için açılır.
 
 1. Aşağıdaki bilgileri girin:
 
@@ -358,10 +358,10 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 1. **Kullanılabilir Tanımlar** (**Girişim tanımı** sayfasının sağ yarısı) listesine göz atın ve bu girişime eklemek istediğiniz ilke tanımlarını seçin. **Güvenli al** girişimi için, ilke tanımı bilgisinin yanındaki **+** seçerek veya bir ilke tanımı satırı seçip Ayrıntılar sayfasında **+ Ekle** seçeneğini belirleyerek aşağıdaki yerleşik ilke tanımlarını ekleyin:
 
    - İzin verilen konumlar
-   - Eksik Endpoint Protection'ı Azure Güvenlik Merkezi'nde izle
+   - Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
    - Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
    - Sanal makineler için Azure Backup etkinleştirilmelidir
-   - Sanal makinelere disk şifrelemesi uygulanmalıdır
+   - Disk şifrelemesi sanal makinelere uygulanmalıdır
 
    Listeden ilke tanımı seçildikten sonra, her biri **kategorinin**altına eklenir.
 
@@ -453,7 +453,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Azure İlkesi sayfasının sol tarafından **Uyumluluklar**'ı seçin.
 
-1. **Güvenli al** girişimi ' ni bulun. Yine de olasıdır _uyumluluk durumu_ , **başlatılmadı**.
+1. **Güvenli al** girişimi ' ni bulun. Hala **başlatılmamış**olan _uyumluluk durumunda_ olabilir.
    Atamanın ilerlemesiyle ilgili tüm ayrıntıları almak için girişimi seçin.
 
    ![Girişim uyumluluk sayfası-değerlendirmeler başlatılmadı](../media/create-and-manage/compliance-status-not-started.png)
@@ -468,7 +468,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 Belirli bir konum gerektirecek bir ilke girişimi atadıktan sonra, farklı bir konumda oluşturulan tüm kaynaklar reddedilir. Bu bölümde, tek bir kaynak grubunda dışlama oluşturarak, bir kaynak oluşturmak için reddedilen isteği çözmeye adım adım ilerleyerek. Dışlama, bu kaynak grubundaki ilkenin (veya girişim) zorlanmasını önler. Aşağıdaki örnekte, hariç tutulan kaynak grubunda herhangi bir konuma izin verilir. Dışlama bir aboneliğe, bir kaynak grubuna veya tek tek kaynaklara uygulanabilir.
 
-Atanan bir ilke veya girişim tarafından engellenen dağıtımlar, dağıtım tarafından hedeflenen kaynak grubunda görüntülenebilir: sayfanın sol tarafındaki **dağıtımlar** ' ı seçin, sonra başarısız dağıtımın **dağıtım adını** seçin. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi ve atamayı belirlemek için başarısız ' ı seçin **. Dağıtım Genel Bakış sayfasında Ayrıntılar-> için buraya tıklayın** . Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. Altında **hata ayrıntılarını** ilgili ilke nesnelerin guıd'lerdir.
+Atanan bir ilke veya girişim tarafından engellenen dağıtımlar, dağıtım tarafından hedeflenen kaynak grubunda görüntülenebilir: sayfanın sol tarafındaki **dağıtımlar** ' ı seçin, sonra başarısız dağıtımın **dağıtım adını** seçin. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi ve atamayı belirlemek için başarısız ' ı seçin **. Dağıtım Genel Bakış sayfasında Ayrıntılar-> için buraya tıklayın** . Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. **Hata ayrıntıları** ' nın altında, ilgili Ilke nesnelerinin GUID 'leri vardır.
 
 ![Dağıtım ilke ataması tarafından reddedildi](../media/create-and-manage/rg-deployment-denied.png)
 
@@ -499,13 +499,13 @@ Bu bölümde, reddedilen istek tek bir kaynak grubu üzerinde bir dışlama olu�
 
 Bu öğreticideki kaynaklarla çalışmayı bitirdiğinizde, yukarıda oluşturulan ilke atamalarından veya tanımlardan birini silmek için aşağıdaki adımları kullanın:
 
-1. Seçin **tanımları** (veya **atamaları** atamayı silmeye çalışıyorsanız) altında **yazma** Azure İlkesi sayfasının sol tarafında.
+1. Azure Ilkesi sayfasının sol tarafında **yazma** ' nın altında **tanımlar** (veya atamayı silmeye çalışıyorsanız **atamalar** ) ' ı seçin.
 
 1. Kaldırmak istediğiniz yeni girişim veya tanımını (ya da atamayı) arayın.
 
 1. Satıra sağ tıklayın ya da tanımın (veya atamanın) sonundaki üç noktayı seçip **Tanımı sil** (veya **Atamayı sil**) öğesini seçin.
 
-## <a name="review"></a>Gözden Geçir
+## <a name="review"></a>Gözden geçirme
 
 Bu öğreticide, aşağıdaki görevleri başarıyla gerçekleştirdiniz:
 

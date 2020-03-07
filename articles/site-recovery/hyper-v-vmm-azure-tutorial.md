@@ -8,11 +8,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039682"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389619"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM bulutlarındaki şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarma ayarlama
 
@@ -20,7 +20,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmeti kullanıla
 
 Bu, şirket içi VMware VM 'Leri için Azure 'da olağanüstü durum kurtarmanın nasıl ayarlanacağını gösteren bir serideki üçüncü öğreticidir. Önceki öğreticide, Azure 'a olağanüstü durum kurtarma için [Şirket Içi Hyper-V ortamını hazırladık](hyper-v-prepare-on-premises-tutorial.md) .
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Çoğaltma kaynağınızı ve hedefinizi seçme.
@@ -91,7 +91,7 @@ Aracıyı, çoğaltmak istediğiniz VM 'Leri içeren her Hyper-V konağına yük
 2. **Yükleme ayarları**' nda, yükleme konumunu ve önbellek konumunu kabul edin. Önbellek sürücüsü en az 5 GB depolama alanı gerektirir. 600 GB veya daha fazla boş alan içeren bir sürücü önerilir. Ardından **Yükle**’yi seçin.
 3. **Yükleme**tamamlandığında, yükleme tamamlandığında, Sihirbazı **kapatmak için Kapat** ' ı seçin.
 
-    ![Aracıyı yükler](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+    ![Aracı yükle](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
 
 ## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
 

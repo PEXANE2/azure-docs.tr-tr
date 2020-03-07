@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614630"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386255"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Küme Kaynak Yöneticisi Service Fabric küme yönetimi ile tümleştirme
 Service Fabric Küme Kaynak Yöneticisi Service Fabric yükseltmeleri değil, ancak buna dahil değildir. Küme Kaynak Yöneticisi, yönetim ile ilgili olarak, kümenin istenen durumunu ve içindeki hizmetleri izlemeye yardımcı olur. Küme Kaynak Yöneticisi, kümeyi istenen yapılandırmaya koyane zaman sistem durumu raporları gönderir. Örneğin, yeterli kapasite yoksa, Küme Kaynak Yöneticisi durum uyarıları ve sorunu belirten hatalar gönderilir. Diğer bir tümleştirme parçasının, yükseltmelerin nasıl çalıştığı ile ilgili olması vardır. Küme Kaynak Yöneticisi, yükseltmeler sırasında davranışını biraz daha değiştirir.  

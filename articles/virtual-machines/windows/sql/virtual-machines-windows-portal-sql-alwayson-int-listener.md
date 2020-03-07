@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039658"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394502"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Azure SQL Server VM 'lerde bir kullanılabilirlik grubu için yük dengeleyici yapılandırma
 Bu makalede, Azure Resource Manager çalıştıran Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu için yük dengeleyici oluşturma açıklanır. Bir kullanılabilirlik grubu, SQL Server örnekleri Azure sanal makinelerinde olduğunda yük dengeleyici gerektirir. Yük dengeleyici, kullanılabilirlik grubu dinleyicisinin IP adresini depolar. Bir kullanılabilirlik grubu birden çok bölgeye yayılırsa, her bölgenin bir yük dengeleyici olması gerekir.
@@ -65,7 +65,7 @@ Görevin bu bölümünde şunları yapın:
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
+   | **Ad** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç**: çoğu uygulama, aynı sanal ağ içindeki uygulamaların kullanılabilirlik grubuna bağlanmasına izin veren bir iç yük dengeleyici kullanır.  </br> **Harici**: uygulamaların genel bir Internet bağlantısı aracılığıyla kullanılabilirlik grubuna bağlanmasına izin verir. |
    | **Sanal ağ** |SQL Server örneklerinin bulunduğu sanal ağı seçin. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. |
@@ -75,7 +75,7 @@ Görevin bu bölümünde şunları yapın:
    | **Kaynak grubu** |SQL Server örneklerinin bulunduğu kaynak grubunu seçin. |
    | **Konum** |SQL Server örneklerinin bulunduğu Azure konumunu seçin. |
 
-6. **Oluştur**’ tıklayın. 
+6. **Oluştur**'a tıklayın. 
 
 Azure, yük dengeleyici oluşturur. Yük dengeleyici belirli bir ağa, alt ağa, kaynak grubuna ve konuma aittir. Azure, görevi tamamladıktan sonra yük dengeleyici ayarlarını Azure 'da doğrulayın. 
 
@@ -111,13 +111,13 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
-   | **Protokolü** |**TCP** |
+   | **Ad** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
+   | **Protokol** |**TCP** |
    | **Bağlantı Noktası** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
    | **Aralık** |*5* |
    | **Sağlıksız eşik** |*2* |
 
-4.  **OK (Tamam)** düğmesine tıklayın. 
+4.  **Tamam** düğmesine tıklayın. 
 
 > [!NOTE]
 > Belirttiğiniz bağlantı noktasının her iki SQL Server örneğinin güvenlik duvarında açık olduğundan emin olun. Her iki örnek de kullandığınız TCP bağlantı noktası için bir gelen kuralı gerektirir. Daha fazla bilgi için bkz. [güvenlik duvarı kuralı ekleme veya düzenleme](https://technet.microsoft.com/library/cc753558.aspx). 
@@ -137,12 +137,12 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
-   | **Protokolü** |**TCP** |
+   | **Ad** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
+   | **Protokol** |**TCP** |
    | **Bağlantı Noktası** |*1433* |
    | **Arka uç bağlantı noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
    | **Yokla** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
-   | **Oturum kalıcılığı** |**Yok.** |
+   | **Oturum kalıcılığı** |**Seçim** |
    | **Boşta kalma zaman aşımı (dakika)** |*4* |
    | **Kayan IP (doğrudan sunucu dönüşü)** |**Etkin** |
 
@@ -150,7 +150,7 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
    > Tüm ayarları görüntülemek için dikey pencerenin aşağı kaydırmanız gerekebilir.
    > 
 
-4. **OK (Tamam)** düğmesine tıklayın. 
+4. **Tamam** düğmesine tıklayın. 
 5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
 Bu noktada, kaynak grubu SQL Server makinelere bağlanan bir yük dengeleyiciye sahiptir. Yük dengeleyici Ayrıca, makine kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.
@@ -223,8 +223,8 @@ Azure portal bir yük dengeleyicisine bir IP adresi eklemek için aşağıdakile
 
    |Ayar |Değer
    |:-----|:----
-   |**Adı** |Araştırmayı tanımlayacak bir ad.
-   |**Protokolü** |TCP
+   |**Ad** |Araştırmayı tanımlayacak bir ad.
+   |**Protokol** |TCP
    |**Bağlantı Noktası** |Tüm sanal makinelerde kullanılabilir olması gereken kullanılmamış bir TCP bağlantı noktası. Başka herhangi bir amaçla kullanılamaz. İki dinleyici aynı araştırma bağlantı noktasını kullanamaz. 
    |**Aralık** |Araştırma denemeleri arasındaki süre miktarı. Varsayılanı kullanın (5).
    |**Sağlıksız eşik** |Bir sanal makinenin sağlıksız olduğu kabul edilmeden önce başarısız olması gereken birbirini izleyen eşiklerin sayısı.
@@ -237,14 +237,14 @@ Azure portal bir yük dengeleyicisine bir IP adresi eklemek için aşağıdakile
 
     |Ayar |Değer
     |:-----|:----
-    |**Adı** |Yük Dengeleme kuralını tanımlamak için bir ad. 
+    |**Ad** |Yük Dengeleme kuralını tanımlamak için bir ad. 
     |**Ön uç IP adresi** |Oluşturduğunuz IP adresini seçin. 
-    |**Protokolü** |TCP
+    |**Protokol** |TCP
     |**Bağlantı Noktası** |SQL Server örneklerinin kullandığı bağlantı noktasını kullanın. Varsayılan bir örnek, değiştirmediğiniz müddetçe 1433 numaralı bağlantı noktasını kullanır. 
     |**Arka uç bağlantı noktası** |**Bağlantı noktası**ile aynı değeri kullanın.
     |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
     |**Durum araştırması** |Oluşturduğunuz araştırmayı seçin.
-    |**Oturum kalıcılığı** |None
+    |**Oturum kalıcılığı** |Yok
     |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
     |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
 
@@ -286,14 +286,14 @@ Bir kullanılabilirlik grubu Dağıtılmış kullanılabilirlik grubuna katılı
 
    |Ayar |Değer
    |:-----|:----
-   |**Adı** |Dağıtılmış kullanılabilirlik grubu için Yük Dengeleme kuralını tanımlamak için bir ad. 
+   |**Ad** |Dağıtılmış kullanılabilirlik grubu için Yük Dengeleme kuralını tanımlamak için bir ad. 
    |**Ön uç IP adresi** |Kullanılabilirlik grubuyla aynı ön uç IP adresini kullanın.
-   |**Protokolü** |TCP
+   |**Protokol** |TCP
    |**Bağlantı Noktası** |5022- [Dağıtılmış kullanılabilirlik grubu uç nokta dinleyicisi](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)için bağlantı noktası.</br> Kullanılabilir herhangi bir bağlantı noktası olabilir.  
    |**Arka uç bağlantı noktası** | 5022- **bağlantı noktası**ile aynı değeri kullanın.
    |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
    |**Durum araştırması** |Oluşturduğunuz araştırmayı seçin.
-   |**Oturum kalıcılığı** |None
+   |**Oturum kalıcılığı** |Yok
    |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
    |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
 

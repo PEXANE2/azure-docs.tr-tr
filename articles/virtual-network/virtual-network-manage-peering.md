@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
 ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978348"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374919"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
 
@@ -33,7 +33,7 @@ Sanal ağ eşlemesi oluşturmayı, değiştirmeyi veya silmeyi öğrenin. Sanal 
 Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıdaki görevleri doldurun:
 
 - Henüz bir Azure hesabınız yoksa [ücretsiz deneme hesabı](https://azure.microsoft.com/free)için kaydolun.
-- Portalı kullanıyorsanız, https://portal.azure.com açın ve eşleme ile çalışmak için [gerekli izinlere](#permissions) sahip bir hesapla oturum açın.
+- Portalı kullanıyorsanız, https://portal.azure.comaçın ve eşleme ile çalışmak için [gerekli izinlere](#permissions) sahip bir hesapla oturum açın.
 - Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için, eşleme ile çalışmak için [gerekli izinlere](#permissions) sahip bir hesapla `Connect-AzAccount` çalıştırmanız gerekir.
 - Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için, eşleme ile çalışmak için [gerekli izinlere](#permissions) sahip bir hesapla `az login` çalıştırmanız gerekir.
 
@@ -142,7 +142,7 @@ Sanal ağ eşlemesi ile çalışmak için kullandığınız hesapların aşağı
 
 Hesabınız önceki rollerden birine atanmamışsa, aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem                                                          | Ad |
+| Eylem                                                          | Adı |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | A ile sanal ağ B 'ye bir eşleme oluşturmak için gereklidir. sanal ağ A 'nın sanal ağ olması gerekir (Kaynak Yöneticisi)          |
 | Microsoft. Network/virtualNetworks/eş/eylem                   | B (Kaynak Yöneticisi) sanal ağından A sanal ağına eşleme oluşturmak için gereklidir                                                       |

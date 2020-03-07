@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938840"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392603"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
 
@@ -129,7 +129,7 @@ Azure DNS REST API düzeyinde ETags, HTTP üstbilgileri kullanılarak belirtilir
 
 | Üst bilgi | Davranış |
 | --- | --- |
-| Hiçbiri |PUT her zaman başarılı olur (ETag denetimi yok) |
+| Yok |PUT her zaman başarılı olur (ETag denetimi yok) |
 | IF-Match \<ETag > |PUT yalnızca kaynak varsa ve ETag eşleştirmelerinde başarılı olur |
 | IF-Match * |PUT yalnızca kaynak mevcutsa başarılı olur |
 | If-None-Match * |PUT yalnızca kaynak yoksa başarılı olur |

@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084606"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377387"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
 
@@ -45,15 +45,15 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 
 ### <a name="at-a-glance"></a>Bir bakışta
 
-| Çerçeve        | Eklenen | Sistem | Varsayılan |
+| Çerçeve        | eklenen | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
-| .NET klasik     | Yes | Evet ^ | Eklenen |
+| .NET klasik     | Yes | Evet ^ | eklenen |
 | .NET Core     | Hayır | Evet ^ | Sistem |
 | .NET Standard | Hayır | Evet ^ | Sistem |
-| UWP | Yes | Hayır | Eklenen |
+| UWP | Yes | Hayır | eklenen |
 | Xamarin.Android | Yes | Yes  | Sistem |
 | Xamarin.iOS | Yes | Yes  | Sistem |
-| Xamarin.Mac| Yes | Hayır | Eklenen |
+| Xamarin.Mac| Yes | Hayır | eklenen |
 
 ^ "http://localhost" yeniden yönlendirme URI 'SI gerektirir
 

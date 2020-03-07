@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363207"
 ---
-# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Azure 'a olağanüstü durum kurtarma sonrasında VMware VM 'Leri yeniden çalışma
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Azure’a olağanüstü durum kurtarma yapıldıktan sonra VMware VM’lerin yeniden çalıştırılması
 
 Olağanüstü durum kurtarma işleminizin bir parçası olarak Azure 'a yük devretmeye başladıktan sonra şirket içi sitenize geri dönebilirsiniz. Azure Site Recovery için olası iki farklı yeniden çalışma türü vardır: 
 

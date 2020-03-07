@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191413"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386556"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
@@ -321,9 +321,9 @@ Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 
 | Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| `state` | Evet | Dize | `Enabled`, mantıksal uygulamanızın canlı olduğu ve `Disabled` mantıksal uygulamanızın etkin olmadığı anlamına gelen dağıtımda, mantıksal uygulamanızın durumu. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
+| `state` | Yes | Dize | `Enabled`, mantıksal uygulamanızın canlı olduğu ve `Disabled` mantıksal uygulamanızın etkin olmadığı anlamına gelen dağıtımda, mantıksal uygulamanızın durumu. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
 | `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne tümleştirme hesabının KIMLIĞINI belirten `id` özniteliğini içerir. |
-| `definition` | Evet | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında `parameters` nesnesi, mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
+| `definition` | Yes | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında `parameters` nesnesi, mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
 | `parameters` | Hayır | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir `$connections` nesnesi içerir. |
 | `accessControl` | Hayır | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||

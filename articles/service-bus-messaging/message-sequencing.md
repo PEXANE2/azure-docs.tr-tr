@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756326"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396286"
 ---
 # <a name="message-sequencing-and-timestamps"></a>İleti sıralama ve zaman damgaları
 
@@ -34,7 +34,7 @@ Mutlak varış siparişi, örneğin, en son tedarik edilirken sınırlı sayıda
 
 Zaman damgalama özelliği, bir iletinin, **Enqueuedtimeutc** ÖZELLIĞINDE yansıtılan UTC saatini doğru bir şekilde yakalayan, nötr ve güvenilir bir yetkili olarak davranır. Bir iş senaryosu, gece yarısından önce belirli bir tarihte gönderilip gönderilmediğine karşın işlem sıranın biriktirme listesinin en altında olduğundan, bu değer yararlı olur.
 
-## <a name="scheduled-messages"></a>Zamanlanan mesajlar
+## <a name="scheduled-messages"></a>Zamanlanan iletiler
 
 Gecikmeli işleme için bir kuyruğa veya konuya ileti gönderebilirsiniz; Örneğin, bir işi belirli bir zamanda bir sistem tarafından işlenmek üzere kullanılabilir hale gelecek şekilde zamanlamak için. Bu yetenek, güvenilir bir dağıtılmış zaman tabanlı Scheduler 'ı daha gerçekçi hale getirir.
 

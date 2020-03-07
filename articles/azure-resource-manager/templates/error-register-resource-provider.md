@@ -4,11 +4,11 @@ description: Azure Resource Manager ile kaynak dağıtılırken Azure Kaynak sa�
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390064"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Kaynak Sağlayıcısı kaydı için hataları çözümleyin
 
@@ -79,13 +79,13 @@ Belirli bir kaynak türü için desteklenen API sürümlerini almak için kullan
 
 ## <a name="solution-2---azure-cli"></a>Çözüm 2 - Azure CLI
 
-Sağlayıcı kayıtlı olup olmadığını görmek için `az provider list` komutu.
+Sağlayıcının kayıtlı olup olmadığını görmek için `az provider list` komutunu kullanın.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Bir kaynak sağlayıcısını kaydetmek için kullanın `az provider register` komutunu ve belirtin *ad alanı* kaydedilecek.
+Bir kaynak sağlayıcısını kaydetmek için `az provider register` komutunu kullanın ve kaydolmak için *ad alanını* belirtin.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
@@ -101,7 +101,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 Kayıt durumunu görmek ve bir kaynak sağlayıcısı ad alanı Portalı aracılığıyla kaydolun.
 
-1. Portaldan seçin **tüm hizmetleri**.
+1. Portaldan **tüm hizmetler**' i seçin.
 
    ![Tüm hizmetleri seçin](./media/error-register-resource-provider/select-all-services.png)
 
@@ -113,10 +113,10 @@ Kayıt durumunu görmek ve bir kaynak sağlayıcısı ad alanı Portalı aracıl
 
    ![Kaynak sağlayıcısını kaydetmek için bir abonelik seçin](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. Aboneliğiniz için seçin **kaynak sağlayıcıları**.
+1. Aboneliğiniz için **kaynak sağlayıcıları**' nı seçin.
 
    ![Kaynak sağlayıcılarını seçin](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. Kaynak sağlayıcıları listesini arayın ve gerekirse seçin **kaydetme** dağıtmaya çalıştığınız türü kaynak sağlayıcısını kaydetmek için bağlantı.
+1. Kaynak sağlayıcıları listesine bakın ve gerekirse, dağıtmaya çalıştığınız türün kaynak sağlayıcısını kaydetmek için **Kaydet** bağlantısını seçin.
 
    ![Kaynak sağlayıcıları listesi](./media/error-register-resource-provider/list-resource-providers.png)

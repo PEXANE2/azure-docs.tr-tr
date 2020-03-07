@@ -10,11 +10,11 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 02/24/2020
 ms.topic: overview
 ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586249"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372258"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
 

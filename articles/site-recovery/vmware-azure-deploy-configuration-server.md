@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363142"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
 
@@ -26,7 +26,7 @@ VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması
 
 Yapılandırma sunucusu, belirli minimum donanım ve boyutlandırma gereksinimlerine sahip yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarlanmalıdır. Kullanışlı ve kolay dağıtım için Site Recovery, burada listelenen tüm uygulanan gereksinimleriyle uyumlu yapılandırma sunucusunu ayarlamak için indirilebilir bir açık sanallaştırma uygulaması (OVA) şablonu sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıdaki bölümlerde özetlenmektedir.
 

@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi güncelleştirme 1.1 yükleyin | Microsoft Docs
-description: StorSimple Virtual Array için Azure portalı ve yerel web kullanıcı arabirimini kullanarak güncelleştirmeleri uygulamak açıklar
+title: StorSimple Sanal dizisine güncelleştirme 1,1 ' ü yükler | Microsoft Docs
+description: StorSimple Sanal dizisi için Azure portal ve yerel Web Kullanıcı arabirimini kullanarak güncelleştirmelerin nasıl uygulanacağını açıklar
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,116 +15,116 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61408769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384838"
 ---
-# <a name="install-update-11-on-your-storsimple-virtual-array"></a>StorSimple sanal dizisi üzerinde güncelleştirme 1.1 yükleyin
+# <a name="install-update-11-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,1 güncelleştirmesini yükler
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, StorSimple sanal dizisi yerel web UI aracılığıyla ve Azure Portalı aracılığıyla güncelleştirme 1.1 yüklemek için gereken adımlar açıklanır.
+Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal aracılığıyla StorSimple Sanal dizinize güncelleştirme 1,1 ' ü yüklemek için gereken adımlar açıklanmaktadır.
 
-Yazılım güncelleştirmelerini veya düzeltmeleri StorSimple Virtual Array'iniz güncel tutmak için geçerlidir. Bir güncelleştirmeyi uygulamadan önce çevrimdışı paylaşımları ve birimleri konakta ilk almanızı öneririz ve ardından cihaz. Bu, veri bozulması olasılığını en aza indirir. Birimler veya paylaşımlar çevrimdışı olduktan sonra ayrıca el ile yedekleme aygıtı almalıdır.
+StorSimple Sanal dizinizi güncel tutmak için yazılım güncelleştirmelerini veya düzeltmeleri uygularsınız. Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulunan birimleri veya paylaşımları çevrimdışına almanız önerilir. Bu, veri bozulması olasılığını en aza indirir. Birimler veya paylaşımlar çevrimdışı olduktan sonra, cihazın el ile yedeklemesini de yapmanız gerekir.
 
 > [!IMPORTANT]
-> - Güncelleştirme 1.1 karşılık gelen **10.0.10307.0** Cihazınızda yazılım sürümü. Bu güncelleştirmede yenilikler hakkında daha fazla bilgi için Git [1.1 güncelleştirmek için sürüm notları](storsimple-virtual-array-update-11-release-notes.md).
+> - Güncelleştirme 1,1, cihazınızdaki **10.0.10307.0** yazılım sürümüne karşılık gelir. Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için [güncelleştirme 1,1 sürüm notları](storsimple-virtual-array-update-11-release-notes.md)' na gidin.
 >
-> - Bir güncelleştirme veya düzeltme yükleme Cihazınızı yeniden göz önünde bulundurun. StorSimple sanal dizi tek düğümlü bir cihaz olduğunu devam eden herhangi bir g/ç kesintiye ve kapalı kalma süresi Cihazınızı deneyimleri.
+> - Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 >
-> - Yalnızca sanal diziyi güncelleştirme 1 çalışıyorsa güncelleştirme 1.1 Azure portalında kullanılabilir. Güncelleştirme 0.6 sürümlerini çalıştıran sanal diziler için Güncelleştirme 1.0 yüklemeniz ve ardından güncelleştirme 1.1 uygulayın.
+> - Güncelleştirme 1,1, yalnızca sanal dizi güncelleştirme 1 çalıştırıyorsa Azure portal kullanılabilir. Güncelleştirme 0,6 sürümlerini çalıştıran sanal diziler için, önce güncelleştirme 1,0 ' i yüklemeli ve ardından güncelleştirme 1,1 ' i uygulamanız gerekir.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
-Güncelleştirme 0.2 ve üzeri çalıştırılıyorsa, Azure Portalı aracılığıyla güncelleştirmeleri yüklemeniz önerilir. Tarama, indirin ve ardından güncelleştirmeleri yüklemek Kullanıcı Portalı yordamı gerektirir. Sanal diziniz çalışan yazılım sürümüne bağlı olarak, Azure portalından bir güncelleştirmeyi uygulamadan farklıdır.
+Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Sanal diziniz çalıştığı yazılım sürümüne bağlı olarak, Azure portal aracılığıyla güncelleştirme uygulamak farklıdır.
 
- - Sanal diziniz güncelleştirme 1 çalışıyorsa, bu Azure portalında doğrudan Cihazınızda güncelleştirme 1.1 (10.0.10307.0) yükler. Bu yordamı tamamlamak için yaklaşık 10 dakika sürer.
- - Sanal diziniz güncelleştirme 0.6 çalışıyorsa, bu güncelleştirme iki aşamada gerçekleştirilir. Azure portalı, cihazınızın ilk güncelleştirme 1.0 (10.0.10296.0) yükler. Sanal diziyi yeniden başlatır ve portal Cihazınızda güncelleştirme 1.1 (10.0.10307.0) yükler. Bu yordamı tamamlamak için yaklaşık 15 dakika sürer.
+ - Sanal diziniz güncelleştirme 1 çalıştırıyorsa, Azure portal doğrudan cihazınıza güncelleştirme 1,1 ' i (10.0.10307.0) kurar. Bu yordamın tamamlanmasıyla yaklaşık 10 dakika sürer.
+ - Sanal diziniz güncelleştirme 0,6 çalıştırıyorsa, güncelleştirme iki aşamada yapılır. Azure portal önce cihazınıza güncelleştirme 1,0 (10.0.10296.0) yüklenir. Sanal dizi yeniden başlatılır ve Portal daha sonra güncelleştirme 1,1 ' i (10.0.10307.0) bilgisayarınıza yüklüyor. Bu yordamın tamamlandığı 15 dakika sürer.
 
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-11.md)]
 
-Yükleme tamamlandıktan sonra StorSimple cihaz Yöneticisi hizmetinize gidin. Seçin **cihazları** ve sonra seçin ve güncelleştirdiğiniz cihaza tıklayın. Git **ayarlar > Yönet > cihaz güncelleştirmeleri**. Görüntülenen yazılım sürümü olmalıdır **10.0.10307.0**.
+Yükleme tamamlandıktan sonra StorSimple Aygıt Yöneticisi hizmetinize gidin. **Cihazlar** ' ı seçin ve ardından yeni güncelleştirdiğiniz cihazı seçin ve tıklayın. **> cihaz güncelleştirmelerini yönetmek > ayarlar**' a gidin. Görüntülenmiş yazılım sürümü **10.0.10307.0**olmalıdır.
 
-![Yazılım sürümü güncelleştirme](./media/storsimple-virtual-array-install-update-11/azupdate17m2.png)
+![Güncelleştirmeden sonra yazılım sürümü](./media/storsimple-virtual-array-install-update-11/azupdate17m2.png)
 
-## <a name="use-the-local-web-ui"></a>Yerel web kullanıcı arabirimini kullanın
+## <a name="use-the-local-web-ui"></a>Yerel Web Kullanıcı arabirimini kullanma
 
-Yerel web kullanıcı Arabirimi kullanılırken iki adımı vardır:
+Yerel Web Kullanıcı arabirimi kullanılırken iki adım vardır:
 
-* Güncelleştirme veya düzeltme indirin
-* Güncelleştirmeyi veya düzeltmeyi yükleyin
+* Güncelleştirmeyi veya düzeltmeyi indirin
+* Güncelleştirmeyi veya düzeltmeyi yükler
 
 > [!IMPORTANT] 
-> **Güncelleştirme 1 (10.0.10296.0) çalıştırıyorsanız bu güncelleştirme ile devam edin. Güncelleştirme 0.6, çalıştırıyorsanız [güncelleştirme 1'i yükleme](storsimple-virtual-array-install-update-1.md) Cihazınızda ilk ve güncelleştirme 1.1 uygulayın.**
+> **Bu güncelleştirmeye yalnızca güncelleştirme 1 (10.0.10296.0) çalıştırıyorsanız devam edin. Güncelleştirme 0,6 çalıştırıyorsanız, önce cihazınıza [güncelleştirme 1](storsimple-virtual-array-install-update-1.md) ' i yükleyip Güncelleştirme 1,1 ' yi uygulayın.**
 
-### <a name="download-the-update-or-the-hotfix"></a>Güncelleştirme veya düzeltme indirin
+### <a name="download-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi indirin
 
-Microsoft Update Kataloğu'ndan güncelleştirme 1.1 indirmek için aşağıdaki adımları gerçekleştirin.
+Microsoft Update kataloğundan güncelleştirme 1,1 ' ü indirmek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi indirmek için
 
-1. Internet Explorer'ı başlatın ve gidin [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Internet Explorer 'ı başlatın ve [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)gidin.
 
-2. Microsoft Update Kataloğu'nu bu bilgisayarda ilk kez kullanıyorsanız, **yükleme** Microsoft Update Kataloğu eklentisini yüklemek isteyip istemediğiniz sorulduğunda.
+2. Bu bilgisayarda ilk kez Microsoft Update kataloğunu kullanıyorsanız, Microsoft Update Katalog eklentisini yüklemek isteyip istemediğiniz sorulduğunda **yüklensin** ' e tıklayın.
 
-3. Microsoft Update Kataloğu arama kutusuna, indirmek istediğiniz düzeltmenin Bilgi Bankası (KB) numarasını girin. Girin **4337628** için 1.1 güncelleştirin ve ardından **arama**.
+3. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz düzeltmenin Bilgi Bankası (KB) numarasını girin. Güncelleştirme 1,1 için **4337628** girin ve ardından **Ara**' ya tıklayın.
    
-    Düzeltme listesi görüntülenir, örneğin, **StorSimple sanal dizisi güncelleştirme 1.1**.
+    Düzeltme listesi (örneğin, **StorSimple Sanal dizisi güncelleştirme 1,1**) görüntülenir.
    
     ![Katalogda arama](./media/storsimple-virtual-array-install-update-11/download1.png)
 
-4. **İndir**'e tıklayın.
+4. **İndir**’e tıklayın.
 
-5. İki dosyayı bir klasöre indirin. Klasör, CİHAZDAN erişilebilen bir ağ paylaşımına da kopyalayabilirsiniz.
+5. İki dosyayı bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
 
-6. Dosyalarının bulunduğu klasörü açın.
+6. Dosyaların bulunduğu klasörü açın.
 
-    ![Paket dosyaları](./media/storsimple-virtual-array-install-update-11/update01folder.png)
+    ![Paketteki dosyalar](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     İki dosya görürsünüz:
-    -  Microsoft Update tek başına paketin dosya `WindowsTH-KB3011067-x64`. Bu dosya, cihaz yazılımı güncelleştirmek için kullanılır.
-    - Haziran için toplu güncelleştirmeleri içeren bir dosyayı `Windows8.1-KB4284815-x64`. Bu paketi içinde yer aldığı daha fazla bilgi için Git [Haziran aylık güvenlik dökümü](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
+    -  Microsoft Update tek başına paket dosyası `WindowsTH-KB3011067-x64`. Bu dosya, cihaz yazılımını güncelleştirmek için kullanılır.
+    - Haziran `Windows8.1-KB4284815-x64`için toplu güncelleştirmeleri içeren bir dosya. Bu toplamada nelerin dahil olduğu hakkında daha fazla bilgi için, [Haziran aylık güvenlik toplamasına](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815)gidin.
 
-### <a name="install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yükleyin
+### <a name="install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yükler
 
-Güncelleştirme veya düzeltme yüklemeden önce emin olun:
+Güncelleştirme veya düzeltme yüklemesinden önce şunları yaptığınızdan emin olun:
 
- - Güncelleştirme veya düzeltme konağınızdaki yerel olarak veya bir ağ paylaşımı üzerinden erişilebilir indirilen var.
- - Sanal diziniz güncelleştirme 1 (10.0.10296.0) çalışıyor. Güncelleştirme 0.6, çalıştırıyorsanız [güncelleştirme 1'i yükleme](storsimple-virtual-array-install-update-1.md) ilk ve ardından güncelleştirme 1.1 yükleyin.
+ - Güncelleştirme veya düzeltme, ana bilgisayarınızda yerel olarak indirilir veya bir ağ paylaşımından erişilebilir.
+ - Sanal diziniz güncelleştirme 1 ' i (10.0.10296.0) çalıştırıyor. Güncelleştirme 0,6 ' yi çalıştırıyorsanız, önce [güncelleştirme 1](storsimple-virtual-array-install-update-1.md) ' i yükleyip Güncelleştirme 1,1 ' yi yükler.
 
-Bu yordamı tamamlamak için yaklaşık 4 dakika sürer. Güncelleştirme veya düzeltme yüklemek için aşağıdaki adımları gerçekleştirin.
+Bu yordamın tamamlandığı 4 dakika sürer. Güncelleştirmeyi veya düzeltmeyi yüklemek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-install-the-update-or-the-hotfix"></a>Güncelleştirme veya düzeltme yüklemek için
+#### <a name="to-install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yüklemek için
 
-1. Yerel web kullanıcı Arabirimi, Git **Bakım** > **yazılım güncelleştirmesi**. Çalıştırmakta olduğunuz yazılım sürümü not edin. **Güncelleştirme 1 (10.0.10296.0) çalıştırıyorsanız bu güncelleştirme ile devam edin. Güncelleştirme 0.6, çalıştırıyorsanız [güncelleştirme 1'i yükleme](storsimple-virtual-array-install-update-1.md) Cihazınızda ilk ve güncelleştirme 1.1 uygulayın.**
+1. Yerel Web Kullanıcı arabiriminde **bakım** > **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **Bu güncelleştirmeye yalnızca güncelleştirme 1 (10.0.10296.0) çalıştırıyorsanız devam edin. Güncelleştirme 0,6 çalıştırıyorsanız, önce cihazınıza [güncelleştirme 1](storsimple-virtual-array-install-update-1.md) ' i yükleyip Güncelleştirme 1,1 ' yi uygulayın.**
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. İçinde **güncelleştirme dosya yolu**, güncelleştirme veya düzeltme dosyasının adını girin. Ayrıca, bir ağ paylaşımında yerleştirdiyseniz güncelleştirme veya düzeltme yükleme dosyasına göz atabilirsiniz. **Uygula**'ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Apply (Uygula)** düğmesine tıklayın.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
-3. Bir uyarı görüntülenir. Verilen sanal dizi tek düğümlü bir cihaz güncelleştirme uygulanır, cihaz yeniden başlatıldıktan sonra kapalı kalma süresi olduğunu. Onay simgesine tıklayın.
+3. Bir uyarı görüntülenir. Sanal dizi tek düğümlü bir cihaz olduğundan, güncelleştirme uygulandıktan sonra cihaz yeniden başlatılır ve kapalı kalma süresi vardır. Onay simgesine tıklayın.
    
    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update3m.png)
 
-4. Güncelleştirme başlatır. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel kullanıcı Arabirimi, bu süre içinde erişilebilir değil.
+4. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Yeniden başlatma tamamlandıktan sonra yönlendirilirsiniz **oturum** sayfası. Cihaz yazılımı, yerel web kullanıcı Arabiriminde, güncelleştirilmiş olduğunu doğrulamak için Git **Bakım** > **yazılım güncelleştirmesi**. Görüntülenen yazılım sürümü olmalıdır **10.0.0.0.0.10307** güncelleştirme 1.1.
+5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım** > **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 1,1 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10307** olmalıdır.
    
    > [!NOTE]
-   > Yazılım sürümlerini yerel web kullanıcı Arabirimi biraz farklı bir şekilde hem de Azure portalında bildirin. Örneğin, yerel web kullanıcı Arabirimi raporları **10.0.0.0.0.10307** ve Azure portal raporların **10.0.10307.0** aynı sürümü için.
+   > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10307** ve aynı sürüm için **10.0.10307.0** raporlar Azure Portal.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Windows güvenlik düzeltme ekini dosyasını kullanarak yüklemek için 2-4 arası adımları yineleyin `Windows8.1-KB4284815-x64`. Yüklemeyi tamamladıktan sonra sanal diziyi yeniden başlatır ve yerel web kullanıcı Arabirimi açmanız gerekir.
+6. Dosya `Windows8.1-KB4284815-x64`kullanarak Windows Güvenlik düzeltmesini yüklemek için 2-4 adımlarını yineleyin. Sanal dizi, yüklemeden sonra yeniden başlatılır ve yerel Web Kullanıcı arabiriminde oturum açmanız gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [StorSimple Virtual Array'iniz yönetme](storsimple-ova-web-ui-admin.md).
+[StorSimple Sanal dizinizi yönetme](storsimple-ova-web-ui-admin.md)hakkında daha fazla bilgi edinin.

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388344"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 
@@ -99,13 +99,13 @@ Bu örnekte, HelloWorld. exe, Resourcelınkedservice 'te kullanılan Azure Stora
 
 Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamaları açıklanmaktadır.
 
-| Özellik              | Açıklama                              | Gereklidir |
+| Özellik              | Açıklama                              | Gerekli |
 | :-------------------- | :--------------------------------------- | :------- |
-| ad                  | İşlem hattındaki etkinliğin adı     | Evet      |
+| ad                  | İşlem hattındaki etkinliğin adı     | Yes      |
 | açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| type                  | Özel etkinlik için etkinlik türü **Custom**olur. | Evet      |
-| linkedServiceName     | Azure Batch bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  | Evet      |
-| command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Batch havuzu düğümünde zaten kullanılabiliyorsa, Resourcelınkedservice ve folderPath atlanabilir. Örneğin, Windows Batch havuzu düğümü tarafından yerel olarak desteklenen `cmd /c dir`için komutu belirtebilirsiniz. | Evet      |
+| type                  | Özel etkinlik için etkinlik türü **Custom**olur. | Yes      |
+| linkedServiceName     | Azure Batch bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  | Yes      |
+| command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Batch havuzu düğümünde zaten kullanılabiliyorsa, Resourcelınkedservice ve folderPath atlanabilir. Örneğin, Windows Batch havuzu düğümü tarafından yerel olarak desteklenen `cmd /c dir`için komutu belirtebilirsiniz. | Yes      |
 | Resourcelınkedservice | Özel uygulamanın depolandığı depolama hesabına Azure Storage bağlı hizmeti | Eşleşen&#42;       |
 | folderPath            | Özel uygulamanın klasörünün yolu ve tüm bağımlılıkları<br/><br/>Alt klasörlerde depolanan bağımlılıklarınız varsa-diğer bir deyişle, *FolderPath* altındaki hiyerarşik bir klasör yapısında, dosyalar Azure Batch kopyalanırken klasör yapısı şu anda düzleştirilir. Diğer bir deyişle, tüm dosyalar alt klasörleri olmayan tek bir klasöre kopyalanır. Bu davranışa geçici bir çözüm bulmak için, dosyaları sıkıştırmayı, sıkıştırılmış dosyayı kopyalamayı ve sonra istenen konumdaki özel kodla bir daha fazla ping işlemi yapmayı göz önünde bulundurun. | Eşleşen&#42;       |
 | referenceObjects      | Mevcut bağlı hizmetlerin ve veri kümelerinin dizisi. Başvurulan bağlı hizmetler ve veri kümeleri, JSON biçiminde özel uygulamaya geçirilir, böylece özel kodunuzun Data Factory kaynaklarına başvurabilir. | Hayır       |
@@ -309,7 +309,7 @@ StdOut. txt içeriğini aşağı akış etkinliklerinde kullanmak istiyorsanız,
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString çıkışlarını al
 
-Bu makaledeki bazı örneklerde gösterildiği gibi *SecureString*türü olarak atanan hassas özellik değerleri, Data Factory Kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Ancak gerçek işlem hattı yürütmesinde, bir *SecureString* özelliği `activity.json` dosyasında düz metın olarak JSON olarak serileştirilir. Örneğin:
+Bu makaledeki bazı örneklerde gösterildiği gibi *SecureString*türü olarak atanan hassas özellik değerleri, Data Factory Kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Ancak gerçek işlem hattı yürütmesinde, bir *SecureString* özelliği `activity.json` dosyasında düz metın olarak JSON olarak serileştirilir. Örnek:
 
 ```json
 "extendedProperties": {
@@ -341,7 +341,7 @@ Aşağıdaki tabloda Data Factory v2 özel etkinliği ve Data Factory sürüm 1 
 |Özel mantık nasıl tanımlanır      |Yürütülebilir bir dosya sağlayarak      |.NET DLL uygulayarak      |
 |Özel mantığın yürütme ortamı      |Windows veya Linux      |Windows (.NET Framework 4.5.2)      |
 |Betikler yürütülüyor      |, Betikleri doğrudan yürütmeyi destekler (örneğin, Windows VM 'de "cmd/c echo Hello World")      |.NET DLL 'de uygulama gerektirir      |
-|Veri kümesi gerekli      |İsteğe Bağlı      |Etkinlikleri zincirlemek ve bilgi geçirmek için gereklidir      |
+|Veri kümesi gerekli      |İsteğe bağlı      |Etkinlikleri zincirlemek ve bilgi geçirmek için gereklidir      |
 |Etkinlikten özel mantığa bilgi geçirin      |ReferenceObjects (LinkedServices ve DataSet) ve ExtendedProperties aracılığıyla (özel özellikler)      |ExtendedProperties (özel özellikler), girdi ve çıktı veri kümeleri aracılığıyla      |
 |Özel mantığdaki bilgileri alma      |Yürütülebilir dosyanın aynı klasöründe depolanan Activity. JSON, linkedServices. JSON ve DataSet. JSON öğesini ayrıştırır      |.NET SDK aracılığıyla (.NET Frame 4.5.2)      |
 |Günlüğe kaydetme      |Doğrudan STDOUT 'a yazar      |.NET DLL 'de günlükçü uygulama      |

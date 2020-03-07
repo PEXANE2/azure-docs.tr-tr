@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483602"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388113"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma
 
@@ -39,7 +39,7 @@ Parametreler, değişkenler, işlevler, adlar ve ifadeler, aşağıdaki ekran g�
 
 Şablon ana hat görünümü büyük şablonlar arasında gezinmeyi kolaylaştırır.
 
-### <a name="intellisense"></a>Intellisense
+### <a name="intellisense"></a>IntelliSense
 
 Kaynak Yöneticisi şablon uzantısı, işlev adları, parametreler, değişkenler ve başvurular için olası tamamların olduğunu bilir. IntelliSense önerileri yazarken açılır. Karakter yazmaya devam ederseniz, üye listesi (değişkenler, yöntemler vb.) yalnızca yazılan karakterleri içeren üyeleri içerecek şekilde filtrelenir. **Sekme** veya **ENTER** tuşlarına basmak seçili üyeyi ekler.
 

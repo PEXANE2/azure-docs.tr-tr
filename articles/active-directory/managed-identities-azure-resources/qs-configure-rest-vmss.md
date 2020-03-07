@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375579"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API çağrılarını kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -33,9 +33,9 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
 - Azure sanal makine ölçek kümesi üzerinde sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
 - Azure sanal makine ölçek kümesine Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md). **Gözden geçirmeyi unutmayın [sistem tarafından atanan ve kullanıcı tarafından atanan bir yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rol tabanlı erişim denetimi atamalarına ihtiyaç duyuyor:
 
@@ -92,7 +92,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -187,7 +187,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -220,7 +220,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
  
    **İstek gövdesi**
@@ -254,7 +254,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -298,7 +298,7 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -355,7 +355,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -442,7 +442,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
  
    **İstek gövdesi**
@@ -558,7 +558,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -590,7 +590,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -626,7 +626,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -665,7 +665,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -726,7 +726,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -758,7 +758,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+   |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
    |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
@@ -788,7 +788,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
 |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**
@@ -815,7 +815,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
+|*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
 |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**

@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932628"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362380"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure Dosya Eşitleme sunucusu uç noktası Ekle/Kaldır
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -35,10 +35,10 @@ Sunucu uç noktası eklemek için, istenen eşitleme grubuna gidin ve "sunucu u�
 
 **Sunucu uç noktası Ekle**altında aşağıdaki bilgiler gereklidir:
 
-- **Kayıtlı sunucu**: Sunucu uç noktasının oluşturulacağı sunucu veya kümenin adı.
-- **Yol**: Eşitleme grubunun bir parçası olarak eşitlenecek Windows Server 'daki yol.
-- **Bulut katmanlama**: Bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Etkinleştirildiğinde, bulut katmanlama dosyaları Azure dosya paylaşımınıza göre *katmanlaşacaktır* . Bu, sunucunuzdaki alan verimliliğini yönetmenize yardımcı olmak için şirket içi dosya paylaşımlarını veri kümesinin tam bir kopyası yerine bir önbelleğe dönüştürür.
-- **Birim boş alanı**: sunucu uç noktasının bulunduğu birimde ayrılacak boş alan miktarı. Örneğin, birim boş alanı tek bir sunucu uç noktası olan bir birimde% 50 olarak ayarlandıysa, yaklaşık olarak veri miktarı Azure dosyalarına göre katmanlanacaktır. Bulut katmanlama özelliğinin etkinleştirilip etkinleştirilmediği bağımsız olarak, Azure dosya paylaşımınızda her zaman eşitleme grubundaki verilerin tamamen bir kopyası bulunur.
+- **Kayıtlı sunucu**: sunucu uç noktasının oluşturulacağı sunucu veya kümenin adı.
+- **Yol**: eşitleme grubunun bir parçası olarak eşitlenecek Windows Server 'daki yol.
+- **Bulut katmanlama**: bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Etkinleştirildiğinde, bulut katmanlama dosyaları Azure dosya paylaşımınıza göre *katmanlaşacaktır* . Bu, sunucunuzdaki alan verimliliğini yönetmenize yardımcı olmak için şirket içi dosya paylaşımlarını veri kümesinin tam bir kopyası yerine bir önbelleğe dönüştürür.
+- **Birim boş alanı**: sunucu uç noktasının bulunduğu birimde ayrılacak boş alan miktarı. Örneğin, birim boş alanı tek bir sunucu uç noktası olan bir birimde %50 olarak ayarlandıysa, yaklaşık olarak veri miktarı Azure dosyalarına göre katmanlanacaktır. Bulut katmanlama özelliğinin etkinleştirilip etkinleştirilmediği bağımsız olarak, Azure dosya paylaşımınızda her zaman eşitleme grubundaki verilerin tamamen bir kopyası bulunur.
 
 Sunucu uç noktasını eklemek için **Oluştur** ' u seçin. Bir eşitleme grubunun ad alanı içindeki dosyalar artık eşitlenmiş durumda tutulacak. 
 
@@ -54,14 +54,14 @@ Sunucu uç noktasını kaldırmadan önce tüm katmanlı dosyaların geri çekil
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-Belirtildiğinde `-Order CloudTieringPolicy` , en son değiştirilen dosyalar önce geri alınacaktır.
+`-Order CloudTieringPolicy` belirtmek, önce en son değiştirilen dosyaları geri çağırır.
 Dikkate alınması gereken diğer isteğe bağlı ancak yararlı parametreler şunlardır:
-* `-ThreadCount`kaç dosyanın paralel olarak geri çağrılabileceğini belirler.
-* `-PerFileRetryCount`Şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
-* `-PerFileRetryDelaySeconds`yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
+* `-ThreadCount`, paralel olarak kaç dosyanın geri çağrılabileceğini belirler.
+* `-PerFileRetryCount`, şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
+* `-PerFileRetryDelaySeconds`, yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
 
 > [!Note]  
-> Sunucuyu barındıran yerel birimde, tüm katmanlı verileri yeniden çağırmak için yeterli boş alan yoksa, `Invoke-StorageSyncFileRecall` cmdlet başarısız olur.  
+> Sunucuyu barındıran yerel birimde, tüm katmanlı verileri yeniden çağırmak için yeterli boş alan yoksa `Invoke-StorageSyncFileRecall` cmdlet 'i başarısız olur.  
 
 Sunucu uç noktasını kaldırmak için:
 
@@ -73,5 +73,5 @@ Sunucu uç noktasını kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Dosya Eşitleme ile sunucu kaydetme/kaydını silme](storage-sync-files-server-registration.md)
-- [Bir Azure dosya eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)

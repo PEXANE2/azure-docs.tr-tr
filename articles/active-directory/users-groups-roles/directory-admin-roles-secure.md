@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389934"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama
 
@@ -230,7 +230,7 @@ Azure etkinlik günlüğü, Azure 'da abonelik düzeyindeki olayların geçmişi
 
 Daha fazla şirket kullanıcısı bulut hizmetleri aracılığıyla ayrıcalıklı erişim elde edebilir ve bu da artan bir yönetilmeyen platforma yol açabilir. Bu, Office 365, Azure abonelik yöneticileri ve sanal makinelere ya da SaaS uygulamaları aracılığıyla yönetici erişimi olan kullanıcılar için küresel yöneticilere sahip olan kullanıcıları içerir. Bunun yerine, kuruluşların tüm çalışanları, özellikle Yöneticiler, günlük iş işlemlerini ayrıcalıksız kullanıcılar olarak işlemesini ve yalnızca gerektiğinde yönetici haklarına sahip olması gerekir. Yönetici rollerindeki kullanıcı sayısı ilk benimsemeye başladıktan sonra, yönetici ayrıcalıklarını etkinleştirmeye uygun olan her kullanıcıyı tanımlamak ve doğrulamak için tüm erişim incelemelerini gözden geçirdiklerinden emin olun. 
 
-Aşağıdakileri yapın:
+Şunları yapın:
 
 * Hangi kullanıcıların Azure AD yöneticileri olduğunu belirleme, isteğe bağlı, tam zamanında yönetici erişimi ve rol tabanlı güvenlik denetimlerini etkinleştirme.
 * Yönetici ayrıcalıklı erişimi için açık bir gerekçe olmayan kullanıcıları farklı bir role dönüştürün (uygun rol yoksa, bunları kaldırın).
@@ -348,9 +348,9 @@ Mevcut yerleşik Azure AD Yönetici rollerinin hala güncel olup olmadığını 
 
 Daha fazla bilgi için bkz. [karma Azure Active Directory katılmış cihazları yapılandırma](../device-management-hybrid-azuread-joined-devices-setup.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>[Yerleşik Office 365 Yönetici rollerinin](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) üyelerini gözden geçirme
+#### <a name="review-members-of-built-in-office-365-admin-roles"></a>[Yerleşik Office 365 Yönetici rollerinin](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) üyelerini gözden geçirme
 Office 365 kullanıyorsanız.
-‎
+⏎
 #### <a name="validate-incident-response-plan"></a>Olay yanıtı planını doğrula
 
 Planınızı geliştirmek için, Microsoft planınızın beklendiği gibi çalıştığını düzenli olarak doğrulamanızı önerir:
@@ -363,7 +363,7 @@ Planınızı geliştirmek için, Microsoft planınızın beklendiği gibi çalı
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure 'a erişimi yöneten kuruluşlar için ek adımlar 
 
 [Bir Azure aboneliğinin sahipliğini başka bir hesaba aktarmanız](../../cost-management-billing/manage/billing-subscription-transfer.md)gerekip gerekmediğini belirleme.
-‎
+⏎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Cam kesmesi": acil durum
 

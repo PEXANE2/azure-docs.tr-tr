@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: ölçek işlem-PowerShell '
-description: PowerShell 'de SQL havuzundaki işlem ölçeği. Daha iyi performans için işlem ölçeğini genişletin veya maliyet tasarrufu için işlem ölçeğini daraltın.
+description: PowerShell 'de SQL havuzundaki işlem ölçeği. Daha iyi performans için işlemin ölçeğini genişletin veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200489"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390492"
 ---
 # <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure SYNAPSE Analytics SQL havuzunda işlem ölçeğini ölçeklendirme
 
-Azure PowerShell kullanarak SQL havuzundaki işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlem ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu için işlem ölçeğini daraltın.
+Azure PowerShell kullanarak SQL havuzundaki işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
