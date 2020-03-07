@@ -15,13 +15,13 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363288"
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure 'a yüklemek için bir Windows VHD veya VHDX hazırlama
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
 Şirket içinden Azure 'a bir Windows sanal makinesi (VM) yüklemeden önce sanal sabit diski (VHD veya VHDX) hazırlamanız gerekir. Azure, VHD dosya biçimindeki ve sabit boyutlu diski olan 1. nesil ve 2. nesil VM 'Leri destekler. VHD için izin verilen en büyük boyut 1.023 GB 'dir. 
 
@@ -364,7 +364,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 
    - Yedekleme Işleçleri
 
-   - Anlamasına
+   - Herkes
 
    - Kullanıcılar
 
@@ -377,7 +377,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 ### <a name="install-windows-updates"></a>Windows güncelleştirmelerini yükler
 İdeal olarak, makineyi *Düzeltme Eki düzeyinde*güncel tutmanız gerekir. Bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklendiğinden emin olun. En son güncelleştirmeleri almak için Windows Update geçmiş sayfalarına bakın: [Windows 10 ve Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 ve Windows Server 2012 R2](https://support.microsoft.com/help/4009470) ve [Windows 7 SP1 ve Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
-| Bileşen               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Bileşen               | İkili         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Depolama                 | disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |

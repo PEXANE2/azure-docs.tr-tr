@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356471"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -25,9 +25,9 @@ Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönet
 > [!TIP]  
 > Birçok yapılandırma seçeneği de [Azure CLI]kullanılarak yönetilebilir. 
 
-## <a name="get-started-in-the-azure-portal"></a>Azure portalını kullanmaya başlama
+## <a name="get-started-in-the-azure-portal"></a>Azure portal kullanmaya başlayın
 
-Başlamak için [Azure Portal] gidin ve Azure hesabınızda oturum açın. Portalın en üstündeki arama çubuğunda, işlev uygulamanızın adını yazın ve uygulamayı listeden seçin. İşlev uygulamanızı seçtikten sonra aşağıdaki sayfayı görürsünüz:
+Başlamak için [Azure portalında] gidin ve Azure hesabınızda oturum açın. Portalın en üstündeki arama çubuğunda, işlev uygulamanızın adını yazın ve uygulamayı listeden seçin. İşlev uygulamanızı seçtikten sonra aşağıdaki sayfayı görürsünüz:
 
 ![Azure portal işlev uygulamasına genel bakış](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -79,11 +79,11 @@ Yerel olarak bir işlev uygulaması geliştirirken, bu değerlerin yerel kopyala
 Bu makalenin geri kalanı, Işlevler için yararlı olan Azure portal aşağıdaki App Service özelliklerine odaklanmaktadır:
 
 + [App Service Düzenleyicisi](#editor)
-+ [Console](#console)
++ [Konsol](#console)
 + [Gelişmiş araçlar (kudu)](#kudu)
 + [Dağıtım seçenekleri](#deployment)
 + [CORS](#cors)
-+ [Kimlik Doğrulaması](#auth)
++ [Kimlik doğrulaması](#auth)
 
 App Service ayarları ile çalışma hakkında daha fazla bilgi için bkz. [Configure Azure App Service Settings](../app-service/configure-common.md).
 
@@ -149,4 +149,4 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 + [Azure İşlevleri için sürekli dağıtım](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portal]: https://portal.azure.com
+[Azure portalında]: https://portal.azure.com

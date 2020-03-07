@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/18/2018
 ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433523"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356432"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Framework uygulamasına katabilirsiniz. Özel olarak [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini .NET konsol uygulamasında C# kodla birlikte kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -121,7 +121,7 @@ Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu ya
 
 ## <a name="executing-cache-commands"></a>Önbellek komutlarını yürütme
 
-Konsol uygulamanıza yönelik `Program` sınıfının `Main` yordamı için aşağıdaki kodu ekleyin:
+Konsol uygulamanıza yönelik `Main` sınıfının `Program` yordamı için aşağıdaki kodu ekleyin:
 
 ```csharp
         static void Main(string[] args)
@@ -177,7 +177,7 @@ Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu ku
 
 Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önbelleğe alabilir, ancak bir .NET nesnesi önbelleğe alınmadan önce serileştirilmelidir. Bu .NET nesne serileştirmesi uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye seri hale getirici tercihinde esneklik sağlar.
 
-Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
+Nesneleri seri hale getirmenin basit bir yolu, `JsonConvert`Newtonsoft.Json[’da ](https://www.nuget.org/packages/Newtonsoft.Json/) seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
 Visual Studio’da, **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**’na tıklayın ve Paket Yöneticisi Konsolu penceresinden aşağıdaki komutu çalıştırın.
 
@@ -209,7 +209,7 @@ Aşağıdaki `Employee` sınıf tanımını *Program.cs* dosyasına ekleyin:
         }
 ```
 
-*Program.cs* dosyasındaki `Main()` yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
+`Main()`Program.cs*dosyasındaki* yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
 
 ```csharp
             // Store .NET object to cache

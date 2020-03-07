@@ -8,13 +8,13 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391210"
 ---
-# <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
+# <a name="get-started-with-azcopy"></a>AzCopy ile çalışmaya başlama
 
 AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, AzCopy indirmenize, depolama hesabınıza bağlanmanıza ve sonra dosyaları aktarmaya yardımcı olur.
 
@@ -247,7 +247,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 SAS belirteçleri ve nasıl elde edileceği hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview).
 
-## <a name="transfer-files"></a>Dosyaları aktarma
+## <a name="transfer-files"></a>Dosyaları aktar
 
 Kimliğinizi doğruladıktan veya bir SAS belirteci edindikten sonra, dosyaları aktarmaya başlayabilirsiniz.
 

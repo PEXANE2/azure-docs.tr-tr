@@ -16,11 +16,11 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033057"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388653"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Azure 'da Amazon Web Services (AWS) ve diğer platformlardan yönetilen disklere geçirme
 

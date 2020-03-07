@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950404"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392527"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
 
@@ -40,21 +40,21 @@ Bazı ürün tümleştirmeleri ve Event Hubs SDK 'Ları, IoT Hub farkındadır v
 
 IoT Hub farkında olmayan Event Hubs SDK 'Ları veya ürün tümleştirmelerini kullandığınızda, Event hub ile uyumlu bir uç nokta ve Event hub ile uyumlu bir ada sahip olmanız gerekir. Bu değerleri portaldan aşağıdaki gibi alabilirsiniz:
 
-1. Oturum [Azure portalında](https://portal.azure.com) ve IOT hub'ınıza gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
 
 2. **Yerleşik uç noktalar**' a tıklayın.
 
-3. **Olaylar** bölümü aşağıdaki değerleri içerir: **Bölümler**, **Olay Hub 'ı ile uyumlu ad**, **Olay Hub 'ı ile uyumlu uç nokta**, **saklama süresi**ve **tüketici grupları**.
+3. **Olaylar** bölümü şu değerleri Içerir: **bölümler**, **Olay Hub 'ı Ile uyumlu ad**, **Olay Hub 'ı ile uyumlu uç nokta**, **saklama süresi**ve **tüketici grupları**.
 
     ![Cihazdan buluta ayarları](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir tam Event Hubs bağlantı dizesi içerir: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Kullanmakta olduğunuz SDK başka değerler gerektiriyorsa, bunlar şöyle olur:
+Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir tam Event Hubs bağlantı dizesi içerir: **Endpoint = SB://abcd1234namespace.ServiceBus.Windows.net/; SharedAccessKeyName = ıothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = ıothub-eHub-abcd-1234-123456**. Kullanmakta olduğunuz SDK başka değerler gerektiriyorsa, bunlar şöyle olur:
 
-| Ad | Value |
+| Adı | Değer |
 | ---- | ----- |
 | Uç Nokta | sb://abcd1234namespace.servicebus.windows.net/ |
-| Konak adı | abcd1234namespace.servicebus.windows.net |
-| Ad Alanı | abcd1234namespace |
+| Ana Bilgisayar Adı | abcd1234namespace.servicebus.windows.net |
+| Ad alanı | abcd1234namespace |
 
 Daha sonra, belirtilen olay hub 'ına bağlanmak için **Serviceconnect** izinlerine sahip herhangi bir paylaşılan erişim ilkesi kullanabilirsiniz.
 

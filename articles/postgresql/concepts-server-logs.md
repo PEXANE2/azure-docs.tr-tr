@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844947"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359651"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 PostgreSQL için Azure veritabanı, Postgres 'nin standart günlüklerine yapılandırma ve erişme olanağı sağlar. Günlükler, yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performans performansını düzeltmek için kullanılabilir. Yapılandırabileceğiniz ve erişebileceğiniz günlüğe kaydetme bilgileri hatalar, sorgu bilgileri, oto vakum kayıtları, bağlantılar ve kontrol noktaları içerir. (İşlem günlüklerine erişim kullanılamaz).
@@ -40,7 +40,7 @@ PostgreSQL için Azure veritabanı 'nda varsayılan günlük biçimi. log ' dır
 
 PostgreSQL için Azure veritabanı,. log dosyaları için kısa vadeli depolama konumu sağlar. Yeni bir dosya 1 saat veya 100 MB başlar, hangisi önce gelir. Günlükler, Postgres 'lerden yayıldıkları için geçerli dosyaya eklenir.  
 
-Bu kısa vadeli günlük depolama için bekletme süresini `log_retention_period` parametresini kullanarak ayarlayabilirsiniz. Varsayılan değer 3 gündür; en büyük değer 7 gündür. Kısa vadeli depolama konumu 1 GB 'a kadar günlük dosyası tutabilir. 1 GB 'den sonra, saklama süresinden bağımsız olarak en eski dosyalar yeni günlüklere yer açmak için silinir. 
+Bu kısa vadeli günlük depolama için bekletme süresini `log_retention_period` parametresini kullanarak ayarlayabilirsiniz. Varsayılan değer 3 gün, en büyük değer ise 7 gündür. Kısa vadeli depolama konumu 1 GB 'a kadar günlük dosyası tutabilir. 1 GB 'den sonra, saklama süresinden bağımsız olarak en eski dosyalar yeni günlüklere yer açmak için silinir. 
 
 Günlüklerin ve günlük analizinin daha uzun süreli tutulması için,. log dosyalarını indirebilir ve bunları bir üçüncü taraf hizmetine taşıyabilirsiniz. [Azure clı](howto-configure-server-logs-using-cli.md) [Azure Portal](howto-configure-server-logs-in-portal.md)kullanarak dosyaları indirebilirsiniz. Alternatif olarak, Azure Izleyici tanılama ayarlarını, günlüklerinizi (JSON biçiminde) uzun dönem konumlarına otomatik olarak yayan bir şekilde yapılandırabilirsiniz. Aşağıdaki bölümde bu seçenek hakkında daha fazla bilgi edinin. 
 
@@ -96,28 +96,28 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 
 |**Alan** | **Açıklama** |
 |---|---|
-| Değerine | Kiracı KIMLIĞINIZ |
+| TenantId | Kiracı KIMLIĞINIZ |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | Tür | Günlüğün türü. Her zaman `AzureDiagnostics` |
-| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
-| ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
+| Abonelik Kimliği | Sunucunun ait olduğu abonelik için GUID |
+| adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Kaynak URI 'SI |
 | Kaynak | Sunucunun adı |
 | Kategori | `PostgreSQLLogs` |
-| ThrottledRequests | `LogEvent` |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | `LogEvent` |
 | Düzeyi | Günlüğe kaydetme düzeyi, örnek: günlük, hata, BILDIRIM |
 | İleti | Birincil günlük iletisi | 
-| Domain | Sunucu sürümü, örnek: Postgres-10 |
+| Etki Alanı | Sunucu sürümü, örnek: Postgres-10 |
 | Ayrıntı | İkincil günlük iletisi (varsa) |
 | Tation | Sütunun adı (varsa) |
 | SchemaName | Şemanın adı (varsa) |
 | DatatypeName | Veri türünün adı (varsa) |
 | LogicalServerName | Sunucunun adı | 
 | _ResourceId | Kaynak URI 'SI |
-| Alan kodu | Günlük satırının öneki |
+| Prefix | Günlük satırının öneki |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

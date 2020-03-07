@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965723"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366810"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure’da StorSimple Cloud Appliance dağıtma ve yönetme (StorSimple Güncelleştirme 3 ve üstü)
 
@@ -46,13 +46,13 @@ StorSimple Cloud Appliance, standart 8010 (önceden 1100 olarak biliniyordu) ve 
 | --- | --- | --- |
 | **Maksimum kapasite** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 çekirdek, 7 GB bellek)| Standard_DS3 (4 çekirdek, 14 GB bellek)|
-| **Bölge kullanılabilirliği** |Tüm Azure bölgeleri |Premium Depolama ve DS3 Azure VM’lerini destekleyen Azure bölgeleri<br></br>Bölgenizde hem **Sanal Makineler > DS serisi** hem de **Depolama > Disk depolamanın** mevcut olup olmadığını görmek için [bu listeyi](https://azure.microsoft.com/regions/services/) kullanın. |
+| **Bölge kullanılabilirliği** |Tüm Azure bölgeleri |Premium Depolama ve DS3 Azure VM’lerini destekleyen Azure bölgeleri<br></br>Bölgenizde hem [Sanal Makineler > DS serisi](https://azure.microsoft.com/regions/services/) hem de **Depolama > Disk depolamanın** mevcut olup olmadığını görmek için **bu listeyi** kullanın. |
 | **Depolama türü** |Yerel diskler için Azure Standard Storage kullanır.<br></br> [Standart Depolama hesabı oluşturmayı](../storage/common/storage-create-storage-account.md) öğrenin. |Yerel diskler için Azure Premium Depolama kullanır<sup>2</sup> <br></br> |
 | **İş yükü kılavuzu** |Yedeklerden dosya alma öğe düzeyi |Bulut geliştirme ve test senaryoları <br></br>Düşük gecikme süreli ve daha yüksek performanslı iş yükleri<br></br>Olağanüstü durum kurtarma için ikincil cihaz |
 
-<sup>1</sup> *Önceden 1100 olarak biliniyordu*.
+<sup>1</sup> *eskiden 1100 olarak bilinirdi*.
 
-<sup>2</sup> *Hem 8010 hem de 8020 bulut katmanı için Azure Standart Depolama kullanır. Tek fark cihazdaki yerel katmandadır*.
+<sup>2</sup> *hem 8010 hem de 8020 bulut katmanı Için Azure Standart depolama kullanır. Fark yalnızca cihaz içindeki yerel katmanda bulunur*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Bulut gerecinin fiziksel cihazdan farkı
 
@@ -64,8 +64,8 @@ Aşağıdaki tabloda StorSimple Cloud Appliance ile StorSimple fiziksel cihazı 
 
 |  | Fiziksel cihaz | Bulut gereci |
 | --- | --- | --- |
-| **Location** |Veri merkezinde yer alır. |Azure üzerinde çalışır. |
-| **Ağ arabirimleri** |Altı ağ arabirimine sahiptir: Veri 5 üzerinden veri 0. |Yalnızca bir ağ arabirimine sahiptir: VERI 0. |
+| **Konum** |Veri merkezinde yer alır. |Azure üzerinde çalışır. |
+| **Ağ arabirimleri** |Altı ağ arabirimi bulunur: VERİ 0’dan VERİ 5’e. |Yalnızca bir ağ arabirimi bulunur: VERİ 0 |
 | **Kayıt** |İlk yapılandırma adımı sırasında kaydedilir. |Kayıt ayrı bir görevdir. |
 | **Hizmeti verileri şifreleme anahtarı** |Fiziksel cihazda yeniden üretin ve ardından yeni anahtarla bulut gerecini güncelleştirin. |Bulut gerecinden yeniden üretemezsiniz. |
 | **Desteklenen birim türleri** |Hem yerel olarak sabitlenmiş hem de katmanlı birimleri destekler. |Yalnızca katmanlı birimleri destekler. |
@@ -110,7 +110,7 @@ Bu yordamları gerçekleştirmeden önce, [Bulut gereci önkoşullarını](#prer
 
 StorSimple Cloud Appliance oluşturmak için aşağıdaki adımları gerçekleştirin.
 
-### <a name="step-1-create-a-cloud-appliance"></a>1\. adım: Bulut gereci oluşturma
+### <a name="step-1-create-a-cloud-appliance"></a>1\. Adım: Bulut gereci oluşturma
 
 StorSimple Cloud Appliance’ı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
@@ -118,7 +118,7 @@ StorSimple Cloud Appliance’ı oluşturmak için aşağıdaki adımları gerçe
 
 Bu adımda bulut gereci oluşturulamazsa İnternet bağlantınız olmayabilir. Daha fazla bilgi edinmek için bulut gereci oluştururken [İnternet bağlantısı sorunlarını giderme](#troubleshoot-internet-connectivity-errors) bölümüne gidin.
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>2\. adım: Bulut gerecini yapılandırma ve kaydetme
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>2\. Adım: Bulut gerecini yapılandırma ve kaydetme
 
 Bu yordama başlamadan önce, hizmet veri şifreleme anahtarının bir kopyasına sahip olduğunuzdan emin olun. Hizmet veri şifreleme anahtarı, StorSimple Cihaz Yöneticisi hizmetine ilk StorSimple fiziksel cihazınızı kaydettiğinizde oluşturulur. Bu anahtarı güvenli bir konumda saklamanız söylenmişti. Bir hizmeti verilerini şifreleme anahtarının bir kopyası sizde yoksa, yardım için Microsoft Destek’e başvurmanız gerekir.
 
@@ -126,7 +126,7 @@ StorSimple Cloud Appliance’ınızı yapılandırmak ve kaydetmek için aşağ�
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>3\. adım: Seçim Cihaz yapılandırma ayarlarını değiştir
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>3\. Adım: (İsteğe bağlı) Cihaz yapılandırma ayarlarını değiştirme
 
 Aşağıdaki bölümde, CHAP, StorSimple Snapshot Manager kullanmak ya da cihaz yöneticisi parolasını değiştirmek istiyorsanız, StorSimple Cloud Appliance için gereken cihaz yapılandırma ayarları açıklanmaktadır.
 
@@ -162,13 +162,13 @@ Windows PowerShell arabirimi üzerinden bulut gerecinize uzaktan erişim varsay�
 
 Aşağıdaki iki adımlı yordamda bulut gerecinize uzaktan nasıl bağlanabileceğiniz açıklanmıştır.
 
-### <a name="step-1-configure-remote-management"></a>1\. adım: Uzaktan yönetimi yapılandırma
+### <a name="step-1-configure-remote-management"></a>1\. Adım: Uzaktan yönetimi yapılandırma
 
 StorSimple Cloud Appliance’ınız için uzaktan yönetimi yapılandırmak üzere aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>2\. adım: Bulut gerecine uzaktan erişin
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>2\. Adım: Bulut gerecine uzaktan erişim
 
 Bulut gerecinde uzaktan yönetimi etkinleştirdikten sonra, aynı sanal ağ içindeki farklı bir sanal makineden gerece bağlanmak için Windows PowerShell uzaktan iletişimini kullanın. Örneğin, iSCSI’yı bağlamak için yapılandırdığınız ve kullandığınız ana bilgisayar sanal makinesinden bağlanabilirsiniz. Çoğu dağıtımda, bulut gerecine erişmek için kullanabileceğiniz ana bilgisayar sanal makinenize erişim için ortak bir uç nokta açarsınız.
 
