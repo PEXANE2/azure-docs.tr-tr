@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.openlocfilehash: 488664b028568b3014b9b839122705d35104861e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392578"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
 
 Bu öğreticide Azure Stream Analytics'i kullanarak telefon araması verilerini analiz etme adımları gösterilmektedir. Bir istemci uygulaması tarafından oluşturulan telefon araması verileri, Stream Analytics işi tarafından filtrelenecektir bazı sahte çağrılar içerir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Örnek telefon araması verileri oluşturma ve Azure Event Hubs'a gönderme
@@ -28,12 +28,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İşi test etme ve başlatma
 > * Sonuçları Power BI’da görselleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki işlemleri yapın:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 * [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefon araması olay oluşturucu uygulamasını Microsoft İndirme Merkezi’nden indirin veya [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)’dan kaynak kodu edinin.
 * Power BI hesabınız olmalıdır.
 
@@ -43,7 +43,7 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur** > **Nesnelerin İnterneti** > **Olay Hub'ları** seçeneğini belirleyin.
 
    ![Portalda bir Azure olay hub'ı oluşturma](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -51,7 +51,7 @@ Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek içi
 
    |**Ayar**  |**Önerilen değer** |**Açıklama**  |
    |---------|---------|---------|
-   |Ad     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
+   |Adı     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
    |Abonelik     |   \<Aboneliğiniz\>      |   Olay hub'ını oluşturmak istediğiniz Azure aboneliğini seçin.      |
    |Kaynak grubu     |   MyASADemoRG      |  **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin.       |
    |Konum     |   Batı ABD 2      |    Olay hub'ı ad alanının dağıtılabildiği konum.     |
@@ -157,7 +157,7 @@ Bir sonraki adım, önceki bölümde oluşturduğunuz olay hub'ını kullanarak 
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
-   |Giriş diğer adı     |  CallStream       |  Girişinizi tanımlayan bir kolay ad girin. Giriş diğer adı alfasayısal karakter, kısa çizgi ve alt çizgi içerebilir, ayrıca 3 ila 63 karakter uzunluğunda olmalıdır.       |
+   |Girdi diğer adı     |  CallStream       |  Girişinizi tanımlayan bir kolay ad girin. Giriş diğer adı alfasayısal karakter, kısa çizgi ve alt çizgi içerebilir, ayrıca 3 ila 63 karakter uzunluğunda olmalıdır.       |
    |Abonelik    |   \<Aboneliğiniz\>      |   Olay hub’ını oluşturduğunuz Azure aboneliğini seçin. Olay hub’ı Stream Analytics işiyle aynı abonelikte veya bundan farklı bir abonelikte olabilir.       |
    |Olay hub’ı ad alanı    |  myEventHubsNS       |  Önceki bölümde oluşturduğunuz olay hub’ı ad alanını seçin. Geçerli aboneliğinizde kullanılabilen tüm olay hub’ı ad alanları açılır menüde listelenir.       |
    |Olay Hub'ı adı    |   MyEventHub      |  Önceki bölümde oluşturduğunuz olay hub’ını seçin. Geçerli aboneliğinizde kullanılabilen tüm olay hub’ları açılır menüde listelenir.       |
@@ -179,7 +179,7 @@ Son adım, işin dönüştürülmüş verileri yazabileceği bir çıkış havuz
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
-   |Çıkış diğer adı  |  MyPBIoutput  |
+   |Çıktı diğer adı  |  MyPBIoutput  |
    |Veri kümesi adı  |   ASAdataset  |
    |Tablo adı |  ASATable  |
 

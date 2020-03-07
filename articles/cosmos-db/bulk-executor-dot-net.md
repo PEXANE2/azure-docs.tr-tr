@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442190"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365508"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Toplu yürütücü .NET kitaplığı 'nı kullanarak Azure Cosmos DB toplu işlemleri gerçekleştirin
 
@@ -22,7 +22,7 @@ Bu öğretici, bir Azure Cosmos kapsayıcısına belge aktarmak ve güncelleşti
 
 Şu anda toplu yürütücü kitaplığı yalnızca SQL API ve Gremlin API hesapları Azure Cosmos DB desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü .NET kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API hesaplarıyla toplu yürütücü .NET kitaplığını kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio 2019 ' ü henüz yüklemediyseniz [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio Kurulumu sırasında "Azure geliştirme" özelliğini etkinleştirdiğinizden emin olun.
 
@@ -100,17 +100,17 @@ Kopyalanmış depo "Bulkımportsample" ve "BulkUpdateSample" olmak üzere iki ö
    ```
    **Bulkımportasync yöntemi aşağıdaki parametreleri kabul eder:**
    
-   |**Parametre**  |**Açıklama** |
+   |**Parametresinin**  |**Açıklama** |
    |---------|---------|
    |enableUpsert    |   Belgelerde büyük işlemleri etkinleştiren bir bayrak. Verilen KIMLIĞE sahip bir belge zaten varsa, güncelleştirilir. Varsayılan olarak, false olarak ayarlanır.      |
    |disableAutomaticIdGeneration    |    Kimliği otomatik olarak oluşturulmasını devre dışı bırakmak için bayrak Varsayılan olarak ayarlanmış true.     |
    |maxConcurrencyPerPartitionKeyRange    | Bölüm anahtar aralığı başına en fazla eşzamanlılık derecesi, null olarak ayarlanması, kitaplığın varsayılan değer olan 20 kullanmasına neden olur. |
    |Maxınmemorysortingbatchsize     |  Her aşamada API çağrısına geçirilen belge numaralandırıcılarından çekilen maksimum belge sayısı. Toplu içeri aktarma işleminden önce gerçekleşen bellek içi sıralama aşamasında, bu parametrenin null olarak ayarlanması, kitaplığın varsayılan en düşük değeri (Documents. Count, 1000000) kullanmasına neden olur.       |
-   |CancellationToken    |    Toplu içeri aktarma işleminden düzgün şekilde çıkmak için iptal belirteci.     |
+   |cancellationToken    |    Toplu içeri aktarma işleminden düzgün şekilde çıkmak için iptal belirteci.     |
 
    **Toplu içeri aktarma yanıtı nesne tanımı** Toplu içeri aktarma API çağrısının sonucu aşağıdaki öznitelikleri içerir:
 
-   |**Parametre**  |**Açıklama**  |
+   |**Parametresinin**  |**Açıklama**  |
    |---------|---------|
    |NumberOfDocumentsImported (uzun)   |  Toplu içeri aktarma API çağrısına sağlanan Toplam belgeden başarıyla içeri aktarılan toplam belge sayısı.       |
    |Totalrequestunitstüketilen (Double)   |   Toplu tarafından tüketilen toplam istek birimi (RU) API çağrısı içeri aktarın.      |
@@ -151,15 +151,15 @@ Varolan belgeleri BulkUpdateAsync API'sini kullanarak güncelleştirebilirsiniz.
    ```  
    **BulkUpdateAsync yöntemi aşağıdaki parametreleri kabul eder:**
 
-   |**Parametre**  |**Açıklama** |
+   |**Parametresinin**  |**Açıklama** |
    |---------|---------|
    |maxConcurrencyPerPartitionKeyRange    |   Bölüm anahtar aralığı başına en fazla eşzamanlılık derecesi, bu parametreyi null olarak ayarlamak, kitaplığın varsayılan değeri (20) kullanmasını sağlar.   |
    |Maxınmemorysortingbatchsize    |    Her aşamada API çağrısına geçirilen güncelleştirme öğesi numaralandırıcıdan alınan en fazla güncelleştirme öğesi sayısı. Toplu güncelleştirmeden önce gerçekleşen bellek içi sıralama aşamasında, bu parametrenin null olarak ayarlanması kitaplığın varsayılan en düşük değeri (UpdateItems. Count, 1000000) kullanmasına neden olur.     |
-   | CancellationToken|Toplu güncelleştirme işleminden düzgün şekilde çıkmak için iptal belirteci. |
+   | cancellationToken|Toplu güncelleştirme işleminden düzgün şekilde çıkmak için iptal belirteci. |
 
    **Toplu güncelleştirme yanıtı nesne tanımı** Toplu güncelleştirme API 'SI çağrısının sonucu aşağıdaki öznitelikleri içerir:
 
-   |**Parametre**  |**Açıklama** |
+   |**Parametresinin**  |**Açıklama** |
    |---------|---------|
    |NumberOfDocumentsUpdated (uzun)    |   Toplu güncelleştirme API çağrısı için sağlanan toplam belgelerden başarıyla güncelleştirilmiş belge sayısı.      |
    |Totalrequestunitstüketilen (Double)   |    Toplu güncelleştirme API çağrısı tarafından tüketilen toplam istek birimi (ru).    |

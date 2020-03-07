@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954341"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363175"
 ---
 # <a name="manage-process-servers"></a>İşlem sunucularını yönetme
 
@@ -43,7 +43,7 @@ VM 'Leri aşağıdaki gibi iki işlem sunucusu arasında taşıyarak yükü deng
 
     ![Yük Dengeleme](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. **Yük Dengeleme**' ye tıklayın, makineleri taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam 'a** tıklayın
+4. **Yük Dengeleme**' ye tıklayın, makineleri taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam**'a tıklayın.
 
     ![LoadPS 'Ler](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
@@ -59,7 +59,7 @@ Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir et
 1. Kasada, **yönet** **Site Recovery altyapı**' ı tıklatın. **VMware & fiziksel makineleri için**altında **yapılandırma sunucuları**' na tıklayın.
 2. İşlem sunucularının kaydedildiği yapılandırma sunucusuna tıklayın.
 3. İş yükünü değiştirmek istediğiniz işlem sunucusuna tıklayın.
-4. **Anahtar**' a tıklayın, iş yükünü taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam 'a** tıklayın
+4. **Anahtar**' a tıklayın, iş yükünü taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam**'a tıklayın.
 
     ![Anahtar](media/vmware-azure-manage-process-server/Switch.PNG)
 

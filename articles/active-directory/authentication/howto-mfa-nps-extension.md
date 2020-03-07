@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908862"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378135"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication tümleştirin
 
@@ -35,7 +35,7 @@ Aşağıdaki diyagramda bu üst düzey kimlik doğrulama isteği akışı göste
 
 ![Kimlik doğrulama akış diyagramı](./media/howto-mfa-nps-extension/auth-flow.png)
 
-## <a name="plan-your-deployment"></a>Dağıtımınızı planlayın
+## <a name="plan-your-deployment"></a>Dağıtımınızı planlama
 
 NPS uzantısı, artıklığı otomatik olarak işler, bu nedenle özel bir yapılandırmaya gerek kalmaz.
 
@@ -43,11 +43,11 @@ NPS uzantısı, artıklığı otomatik olarak işler, bu nedenle özel bir yapı
 
 VPN sunucuları, kimlik doğrulama isteklerini yönlendirdiklerinden, yeni Azure MFA özellikli NPS sunucularının farkında olmaları gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 NPS uzantısı, Mevcut altyapınızla birlikte çalışmak üzere tasarlanmıştır. Başlamadan önce aşağıdaki önkoşullara sahip olduğunuzdan emin olun.
 
-### <a name="licenses"></a>Lisanslarının
+### <a name="licenses"></a>Lisanslar
 
 Azure MFA için NPS uzantısı, [azure Multi-Factor Authentication lisanslarına](multi-factor-authentication.md) (Azure AD PREMIUM, EMS veya MFA tek başına lisansa dahildir) sahip müşteriler tarafından kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. 
 
@@ -68,7 +68,7 @@ Windows PowerShell için Microsoft Azure Active Directory Modülü, zaten mevcut
 
 NPS uzantısını kullanan herkesin Azure AD Connect kullanılarak Azure Active Directory eşitlenmesi ve MFA için kayıtlı olması gerekir.
 
-Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönetici kimlik bilgilerine sahip olmanız gerekir. Dizin Kimliğinizi bulabilirsiniz [Azure portalında](https://portal.azure.com). Yönetici olarak oturum açın. **Azure Active Directory**bulun ve seçin, sonra **Özellikler**' i seçin. **DIZIN kimliği** kutusuna GUID 'yi kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID 'yi kiracı KIMLIĞI olarak kullanırsınız.
+Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönetici kimlik bilgilerine sahip olmanız gerekir. Dizin KIMLIĞINIZI [Azure Portal](https://portal.azure.com)bulabilirsiniz. Yönetici olarak oturum açın. **Azure Active Directory**bulun ve seçin, sonra **Özellikler**' i seçin. **DIZIN kimliği** kutusuna GUID 'yi kopyalayın ve kaydedin. NPS uzantısını yüklerken bu GUID 'yi kiracı KIMLIĞI olarak kullanırsınız.
 
 ![Azure Active Directory özellikleri altında Dizin KIMLIĞINIZI bulun](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
@@ -165,7 +165,7 @@ Mevcut bir NPS uzantısı yüklemesini yükseltirken, temeldeki sunucunun yenide
 
 Yükleyici şu konumda bir PowerShell betiği oluşturuyor: `C:\Program Files\Microsoft\AzureMfa\Config` (burada C:\ yükleme sürücünüz). Bu PowerShell betiği her çalıştırılışında aşağıdaki eylemleri gerçekleştirir:
 
-- Kendinden imzalı bir sertifika oluşturun.
+- Otomatik olarak imzalanan bir sertifika oluşturun.
 - Sertifikanın ortak anahtarını Azure AD 'de hizmet sorumlusu ile ilişkilendirin.
 - Sertifikayı yerel makine sertifika deposunda depolayın.
 - Sertifikanın özel anahtarına ağ kullanıcısı için erişim izni verin.

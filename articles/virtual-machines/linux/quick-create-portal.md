@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035211"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372597"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında Linux sanal makinesi oluşturma
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıcı tamamlamak için bir SSH anahtar çifti gerekir. Bir SS
 SSH anahtar çifti oluşturmak için bir Bash kabuğu açın ve [ssh-keygen](https://www.ssh.com/ssh/keygen/) komutunu kullanın. Yerel bilgisayarınızda Bash kabuğunuz yoksa [Azure Cloud Shell](https://shell.azure.com/bash)'i kullanabilirsiniz.
 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sayfanın üst kısmındaki menüde, Cloud Shell açmak için `>_` simgesini seçin.
 1. CloudShell 'in, sol üst köşedeki **Bash** 'i söylediğinizden emin olun. PowerShell 'i görürseniz, **Bash** ' i seçmek ve bash kabuğu ' nu değiştirmek için **Onayla** ' yı seçin.
 1. SSH anahtarını oluşturmak için `ssh-keygen -t rsa -b 2048` yazın. 
@@ -103,7 +103,7 @@ sudo apt-get -y install nginx
 İşlemi tamamladığınızda `exit` yazarak SSH oturumunu kapatın.
 
 
-## <a name="view-the-web-server-in-action"></a>Web sunucusunu iş başında görün
+## <a name="view-the-web-server-in-action"></a>Web sunucusunun çalıştığını görme
 
 İstediğiniz web tarayıcısını kullanarak varsayılan NGINX karşılama sayfasını görüntüleyin. Web adresi olarak VM 'nin genel IP adresini yazın. Genel IP adresini VM genel bakış sayfasında veya önceden kullandığınız SSH bağlantı dizesinde bulabilirsiniz.
 
@@ -111,7 +111,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. Bunu yapmak için sanal makinenin kaynak grubunu ve **Sil**’i seçip silinecek kaynak grubunun adını onaylayın.
+Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. Bunu yapmak için, sanal makinenin kaynak grubunu ve **Sil**’i seçin, ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

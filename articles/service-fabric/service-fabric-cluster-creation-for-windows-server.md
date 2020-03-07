@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903386"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389829"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
 Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeler oluşturmak için kullanabilirsiniz. Bu, birbirine bağlı bir Windows Server bilgisayarları kümesi içeren herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Bu durumda, şirket içinde veya herhangi bir bulut sağlayıcısıyla olabilirsiniz. Service Fabric, tek başına Windows Server paketi olarak adlandırılan Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure 'daki geleneksel Service Fabric kümeleri yönetilen bir hizmet olarak kullanılabilir, tek başına Service Fabric kümeler self servis. Farklar hakkında daha fazla bilgi için bkz. [Azure ve tek başına Service Fabric kümelerini karşılaştırma](./service-fabric-deploy-anywhere.md).
@@ -18,7 +18,7 @@ Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde v
 Bu makale, Service Fabric tek başına kümesi oluşturma adımlarında size yol gösterir.
 
 > [!NOTE]
-> Bu tek başına Windows Server paketi, ticari olarak ücretsiz olarak kullanılabilir ve üretim dağıtımlarında kullanılabilir. Bu paket, "Önizleme" içinde yeni Service Fabric özellikler içerebilir. Aşağı kaydırarak "[Bu pakette bulunan Önizleme özellikleri](#previewfeatures_anchor)" ne gidin. Önizleme özelliklerinin listesi. Yapabilecekleriniz [EULA'yı bir kopyasını indirin](https://go.microsoft.com/fwlink/?LinkID=733084) şimdi.
+> Bu tek başına Windows Server paketi, ticari olarak ücretsiz olarak kullanılabilir ve üretim dağıtımlarında kullanılabilir. Bu paket, "Önizleme" içinde yeni Service Fabric özellikler içerebilir. Aşağı kaydırarak "[Bu pakette bulunan Önizleme özellikleri](#previewfeatures_anchor)" ne gidin. Önizleme özelliklerinin listesi. [EULA 'nın bir kopyasını şimdi indirebilirsiniz](https://go.microsoft.com/fwlink/?LinkID=733084) .
 > 
 > 
 
@@ -126,7 +126,7 @@ Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu �
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Örneğin:
+Örnek:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -154,7 +154,7 @@ Küme panosu, kümenize uygulama ve düğüm durumunun özetini de içeren bir g
 İş gereksinimleriniz değiştikçe tek başına Service Fabric kümenize düğüm ekleyebilir veya kaldırabilirsiniz. Ayrıntılı adımlar için bkz. [Service Fabric tek başına kümesine düğüm ekleme veya kaldırma](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
 <a id="removecluster" name="removecluster_anchor"></a>
-## <a name="remove-a-cluster"></a>Küme kaldırma
+## <a name="remove-a-cluster"></a>Bir kümeyi kaldırma
 Bir kümeyi kaldırmak için paket klasöründen *RemoveServiceFabricCluster.ps1* PowerShell betiğini çalıştırın ve yolu JSON yapılandırma dosyasına geçirin. İsteğe bağlı olarak silme işleminin günlüğü için bir konum belirtebilirsiniz.
 
 Bu betik, küme yapılandırma dosyasında düğümleri olarak listelenen tüm makineler için yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makine kümesinin parçası olacak gerekmez.
@@ -203,7 +203,7 @@ Telemetriyi devre dışı bırakmak için, küme yapılandırması ' na aşağı
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>Bu pakette bulunan Önizleme özellikleri
-Hiçbiri.
+Yok.
 
 
 > [!NOTE]

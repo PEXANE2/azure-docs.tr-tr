@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260846"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356210"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Service Bus kuyruğu oluşturmak için Azure portal kullanma
 Bu hızlı başlangıçta, bir ileti ad alanı ve bu ad alanı içinde bir sıra oluşturmak ve bu ad alanında yetkilendirme kimlik bilgilerini almak için [Azure Portal][Azure portal] kullanılarak Service Bus kuyruğuna ve bu bilgisayardan ileti gönderme ve alma işlemlerinin nasıl yapılacağı açıklanmaktadır. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
@@ -46,7 +46,7 @@ Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-Ad alanı ve kuyruğun sağlanmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu örnek GitHub klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) kodu inceleyebilirsiniz.
+Ad alanı ve kuyruğun sağlanmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu GitHub örnek klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) kodu inceleyebilirsiniz.
 
 Kodu çalıştırmak için aşağıdakileri yapın:
 
@@ -55,7 +55,7 @@ Kodu çalıştırmak için aşağıdakileri yapın:
    ```
    git clone https://github.com/Azure/azure-service-bus.git
    ```
-3. Örnek klasörü `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` gidin.
+3. `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` örnek klasörüne gidin.
 4. Yönetim kimlik bilgilerini alma bölümünde edindiğiniz bağlantı dizesini ve sıra adını kopyalayın.
 5.  Komut isteminde aşağıdaki komutu yazın:
 
@@ -70,7 +70,7 @@ Kodu çalıştırmak için aşağıdakileri yapın:
     ``` 
 8. Kuyruğa 10 ileti gönderildiğini ve ardından bunların kuyruktan alındığını gözlemleyin:
 
-   ![program çıktısı](./media/service-bus-quickstart-portal/dotnet.png)
+   ![program çıkışı](./media/service-bus-quickstart-portal/dotnet.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -78,7 +78,7 @@ Kaynak grubu, ad alanı ve kuyruğu kaldırmak için portalı kullanabilirsiniz.
 
 ## <a name="understand-the-sample-code"></a>Örnek kodu anlama
 
-Bu bölümde örnek kodun işlevleri hakkında daha fazla ayrıntı bulunmaktadır. 
+Bu bölümde, örnek kodun yaptıkları hakkında daha fazla ayrıntı bulunmaktadır. 
 
 ### <a name="get-connection-string-and-queue"></a>Bağlantı dizesini ve kuyruğu alma
 

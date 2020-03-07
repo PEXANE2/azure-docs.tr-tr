@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438678"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384722"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Öğretici: dağıtıma hazırlanma Azure Data Box Edge  
 
@@ -22,7 +22,7 @@ Bu, Azure Data Box Edge tamamen dağıtmak için gereken dağıtım öğreticile
 
 Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları gerekir. Portal hazırlığı 10 dakikadan kısa sürer.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Yeni kaynak oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-### <a name="get-started"></a>Kullanmaya Başlayın
+### <a name="get-started"></a>başlarken
 
 Data Box Edge dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
@@ -44,7 +44,7 @@ Data Box Edge dağıtmak için, önceden tanımlanmış sırada aşağıdaki ö�
 
 Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıda, Data Box Edge kaynağınız, Data Box Edge cihazınız ve veri merkezi ağı için yapılandırma önkoşulları verilmiştir.
 
@@ -95,9 +95,9 @@ Bir Data Box Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar
     - Ya da Azure Kamu portalı şu URL 'de: [https://portal.azure.us](https://portal.azure.us). Daha fazla ayrıntı için [portalı kullanarak Azure Kamu 'Ya bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)konusuna gidin.
 
 2. Sol bölmede **+ kaynak oluştur**' u seçin. **Data Box Edge/Data Box Gateway**arayın. **Data Box Edge/Data Box Gateway**seçin. **Oluştur**’u seçin.
-3. Data Box Edge cihaz için kullanmak istediğiniz aboneliği seçin. Data Box Edge kaynağını dağıtmak istediğiniz bölgeyi seçin. Bu sürüm için Doğu ABD, Güney Doğu Asya ve Batı Avrupa kullanılabilir. 
+3. Data Box Edge cihaz için kullanmak istediğiniz aboneliği seçin. Data Box Edge kaynağını dağıtmak istediğiniz bölgeyi seçin. Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-    Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. Bölge yalnızca cihaz yönetimi için meta verileri depolar. Gerçek veriler herhangi bir depolama hesabında depolanabilir. 
+    Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. Bölge yalnızca cihaz yönetimi için meta verileri depolar. Gerçek veriler herhangi bir depolama hesabında depolanabilir.
     
     **Data Box Edge** seçeneğinde **Oluştur**' u seçin.
 
@@ -114,8 +114,8 @@ Bir Data Box Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
-    |Bölge     |Bu sürüm için Doğu ABD, Güney Doğu Asya ve Batı Avrupa kaynağınızın dağıtımı için kullanılabilir. Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Adı   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
+    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Proje ve örnek ayrıntıları](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 

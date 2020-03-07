@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376065"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Eşitleme Azure AD Connect: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitleme tarafından eşitlenen öznitelikleri listeler.  
@@ -39,10 +39,10 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 >
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
-| Öznitelik adı | Kullanıcı | Açıklama |
+| Öznitelik adı | Kullanıcı | Yorum |
 | --- |:---:| --- |
 | accountEnabled |X |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
-| , |X | |
+| CN = |X | |
 | displayName |X | |
 | objectSID |X |mekanik özellik. Azure AD ve AD arasında eşitlemeyi sürdürmek için kullanılan AD Kullanıcı tanımlayıcısı. |
 | pwdLastSet |X |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. Hem Parola karması eşitlemesi, hem de doğrudan kimlik doğrulama ve Federasyon tarafından kullanılır. |
@@ -52,18 +52,18 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | userPrincipalName |X |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | yardımc |X |X | | |
 | altRecipient |X | | |Azure AD Connect Build 1.1.552.0 veya After gerektirir. |
 | Authorıg |X |X |X | |
-| , |X |X | | |
-| , |X | |X | |
-| \ |X |X | | |
-| şirketlerin |X |X | | |
+| c |X |X | | |
+| CN = |X | |X | |
+| Ortak |X |X | | |
+| Şirket |X |X | | |
 | countryCode |X |X | | |
-| bölüme |X |X | | |
+| Bölüm |X |X | | |
 | açıklama | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -85,16 +85,16 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | extensionAttribute9 |X |X |X | |
 | facsimileTelephoneNumber 'dir |X |X | | |
 | givenName |X |X | | |
-| homePhone 'dur |X |X | | |
-| bilgisine |X |X |X |Bu öznitelik şu anda gruplar için tüketilmez. |
-| Harf |X |X | | |
-| girişindeki |X |X | | |
+| homePhone |X |X | | |
+| bilgi |X |X |X |Bu öznitelik şu anda gruplar için tüketilmez. |
+| Baş harfler |X |X | | |
+| m |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| üyesidir | | |X | |
-| Mo |X |X | | |
+| Yöneticisi |X |X | | |
+| üye | | |X | |
+| Mobil |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
 | msDS-PhoneticDisplayName |X |X |X | |
 | msExchArchiveGUID |X | | | |
@@ -105,27 +105,27 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | msExchAuditDelegateAdmin |X | | | |
 | msExchAuditOwner |X | | | |
 | msExchBlockedSendersHash |X |X | | |
-| Msexchbypassaudıt |X | | | |
+| msExchBypassAudit |X | | | |
 | msExchBypassModerationLink | | |X |Azure AD Connect sürümünde kullanılabilir 1.1.524.0 |
 | msExchCoManagedByLink | | |X | |
 | msExchDelegateListLink |X | | | |
 | msExchELCExpirySuspensionEnd |X | | | |
 | msExchELCExpirySuspensionStart |X | | | |
 | msExchELCMailboxFlags |X | | | |
-| Msexchenabledenetlemesi |X | |X | |
+| msExchEnableModeration |X | |X | |
 | msExchExtensionCustomAttribute1 |X |X |X |Bu öznitelik şu anda Exchange Online tarafından tüketilmedi. |
 | msExchExtensionCustomAttribute2 |X |X |X |Bu öznitelik şu anda Exchange Online tarafından tüketilmedi. |
 | msExchExtensionCustomAttribute3 |X |X |X |Bu öznitelik şu anda Exchange Online tarafından tüketilmedi. |
 | msExchExtensionCustomAttribute4 |X |X |X |Bu öznitelik şu anda Exchange Online tarafından tüketilmedi. |
 | msExchExtensionCustomAttribute5 |X |X |X |Bu öznitelik şu anda Exchange Online tarafından tüketilmedi. |
 | msExchHideFromAddressLists |X |X |X | |
-| Msexchimmutableıd |X | | | |
+| msExchImmutableID |X | | | |
 | msExchLitigationHoldDate |X |X |X | |
 | msExchLitigationHoldOwner |X |X |X | |
 | msExchMailboxAuditEnable |X | | | |
 | msExchMailboxAuditLogAgeLimit |X | | | |
 | msExchMailboxGuid |X | | | |
-| Msexchmoderledbylink |X |X |X | |
+| msExchModeratedByLink |X |X |X | |
 | msExchModerationFlags |X |X |X | |
 | msExchRecipientDisplayType |X |X |X | |
 | msExchRecipientTypeDetails |X |X |X | |
@@ -150,9 +150,9 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | otherFacsimileTelephone |X |X | | |
 | Diğer ev telefonu |X |X | | |
 | Diğer telefon |X |X | | |
-| çağrı cihazı |X |X | | |
+| Çağrı |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| postalCode |X |X | | |
+| posta kodu |X |X | | |
 | proxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
 | pwdLastSet |X | | |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. Hem parola eşitleme hem de Federasyon tarafından kullanılır. |
@@ -160,13 +160,13 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | reportToOwner | | |X | |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mekanik özellik. EKLER ve Azure AD arasındaki ilişkiyi sürdürmek için sabit tanımlayıcı. |
-| Oluşan |X |X | | |
+| St |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | Telephoneassiste |X |X | | |
 | telephoneNumber 'dır |X |X | | |
 | thumbnailphoto |X |X | | |
-| Başlığın |X |X | | |
+| title |X |X | | |
 | Unauthorıg |X |X |X | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
 | userCertificate |X |X | | |
@@ -175,16 +175,16 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | Authorıg |X |X |X | |
-| , |X |X | | |
-| , |X | |X | |
-| \ |X |X | | |
-| şirketlerin |X |X | | |
+| c |X |X | | |
+| CN = |X | |X | |
+| Ortak |X |X | | |
+| Şirket |X |X | | |
 | countryCode |X |X | | |
-| bölüme |X |X | | |
+| Bölüm |X |X | | |
 | açıklama |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -208,17 +208,17 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | homePhone 'dur |X |X | | |
-| bilgisine |X |X |X | |
-| harf |X |X | | |
+| bilgi |X |X |X | |
+| Baş harfleri |X |X | | |
 | IPPhone 'dur |X |X | | |
-| girişindeki |X |X | | |
-| - |X |X |X | |
+| m |X |X | | |
+| posta |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| üyesidir | | |X | |
-| middleName |X |X | | |
-| Mo |X |X | | |
+| Yöneticisi |X |X | | |
+| üye | | |X | |
+| MiddleName |X |X | | |
+| Mobil |X |X | | |
 | msExchTeamMailboxExpiration |X | | | |
 | msExchTeamMailboxOwners |X | | | |
 | msExchTeamMailboxSharePointLinkedBy |X | | | |
@@ -231,9 +231,9 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | Diğer mobil |X |X | | |
 | Diğersayfalayıcı |X |X | | |
 | Diğer telefon |X |X | | |
-| çağrı cihazı |X |X | | |
+| Çağrı |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| postalCode |X |X | | |
+| posta kodu |X |X | | |
 | postOfficeBox |X |X | |Bu öznitelik şu anda SharePoint Online tarafından tüketilmiyor. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
@@ -242,13 +242,13 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | reportToOwner | | |X | |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mekanik özellik. EKLER ve Azure AD arasındaki ilişkiyi sürdürmek için sabit tanımlayıcı. |
-| Oluşan |X |X | | |
+| St |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | Telephoneassiste |X |X | | |
 | telephoneNumber 'dır |X |X | | |
 | thumbnailphoto |X |X | | |
-| Başlığın |X |X | | |
+| title |X |X | | |
 | Unauthorıg |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi
@@ -257,27 +257,27 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Takımlar ve Skype Kurumsal Çevrimiçi
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
-| , |X |X | | |
-| , |X | |X | |
-| \ |X |X | | |
-| şirketlerin |X |X | | |
-| bölüme |X |X | | |
+| c |X |X | | |
+| CN = |X | |X | |
+| Ortak |X |X | | |
+| Şirket |X |X | | |
+| Bölüm |X |X | | |
 | açıklama |X |X |X | |
 | displayName |X |X |X | |
 | facsimileTelephoneNumber 'dir |X |X |X | |
 | givenName |X |X | | |
 | homePhone 'dur |X |X | | |
 | IPPhone 'dur |X |X | | |
-| girişindeki |X |X | | |
-| - |X |X |X | |
+| m |X |X | | |
+| posta |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| üyesidir | | |X | |
-| Mo |X |X | | |
+| Yöneticisi |X |X | | |
+| üye | | |X | |
+| Mobil |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
 | msRTCSIP-ApplicationOptions |X | | | |
 | msRTCSIP-DeploymentLocator |X |X | | |
@@ -289,29 +289,29 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | objectSID |X | |X |mekanik özellik. Azure AD ve AD arasında eşitlemeyi sürdürmek için kullanılan AD Kullanıcı tanımlayıcısı. |
 | Diğer telefon |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| postalCode |X |X | | |
+| posta kodu |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. Hem Parola karması eşitlemesi, hem de doğrudan kimlik doğrulama ve Federasyon tarafından kullanılır. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mekanik özellik. EKLER ve Azure AD arasındaki ilişkiyi sürdürmek için sabit tanımlayıcı. |
-| Oluşan |X |X | | |
+| St |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber 'dır |X |X | | |
 | thumbnailphoto |X |X | | |
-| Başlığın |X |X | | |
+| title |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
-| , |X | |X |Ortak ad veya diğer ad. Genellikle [mail] değerinin ön eki. |
+| CN = |X | |X |Ortak ad veya diğer ad. Genellikle [mail] değerinin ön eki. |
 | displayName |X |X |X |Genellikle kolay ad (ad soyadı adı) olarak gösterilen adı temsil eden bir dize. |
-| - |X |X |X |tam e-posta adresi. |
-| üyesidir | | |X | |
+| posta |X |X |X |tam e-posta adresi. |
+| üye | | |X | |
 | objectSID |X | |X |mekanik özellik. Azure AD ve AD arasında eşitlemeyi sürdürmek için kullanılan AD Kullanıcı tanımlayıcısı. |
 | proxyAddresses |X |X |X |mekanik özellik. Azure AD tarafından kullanılır. Kullanıcının tüm ikincil e-posta adreslerini içerir. |
 | pwdLastSet |X | | |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. |
@@ -320,16 +320,16 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | userPrincipalName |X | | |Bu UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="intune"></a>Intune
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
-| , |X |X | | |
-| , |X | |X | |
+| c |X |X | | |
+| CN = |X | |X | |
 | açıklama |X |X |X | |
 | displayName |X |X |X | |
-| - |X |X |X | |
+| posta |X |X |X | |
 | mailNickname |X |X |X | |
-| üyesidir | | |X | |
+| üye | | |X | |
 | objectSID |X | |X |mekanik özellik. Azure AD ve AD arasında eşitlemeyi sürdürmek için kullanılan AD Kullanıcı tanımlayıcısı. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. Hem Parola karması eşitlemesi, hem de doğrudan kimlik doğrulama ve Federasyon tarafından kullanılır. |
@@ -338,34 +338,34 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
-| , |X |X | | |
-| , |X | |X | |
-| \ |X |X | | |
-| şirketlerin |X |X | | |
+| c |X |X | | |
+| CN = |X | |X | |
+| Ortak |X |X | | |
+| Şirket |X |X | | |
 | countryCode |X |X | | |
 | açıklama |X |X |X | |
 | displayName |X |X |X | |
 | facsimileTelephoneNumber 'dir |X |X | | |
 | givenName |X |X | | |
-| girişindeki |X |X | | |
+| m |X |X | | |
 | managedBy | | |X | |
-| Manager |X |X | | |
-| üyesidir | | |X | |
-| Mo |X |X | | |
+| Yöneticisi |X |X | | |
+| üye | | |X | |
+| Mobil |X |X | | |
 | objectSID |X | |X |mekanik özellik. Azure AD ve AD arasında eşitlemeyi sürdürmek için kullanılan AD Kullanıcı tanımlayıcısı. |
 | physicalDeliveryOfficeName |X |X | | |
-| postalCode |X |X | | |
+| posta kodu |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. Hem Parola karması eşitlemesi, hem de doğrudan kimlik doğrulama ve Federasyon tarafından kullanılır. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mekanik özellik. EKLER ve Azure AD arasındaki ilişkiyi sürdürmek için sabit tanımlayıcı. |
-| Oluşan |X |X | | |
+| St |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber 'dır |X |X | | |
-| Başlığın |X |X | | |
+| title |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
@@ -377,17 +377,17 @@ Bu grup, genel bir iş yükü veya uygulama için gereken en az öznitelik olara
 
 Bu grup, Azure AD dizini Office 365, Dynamics veya Intune 'u desteklemek için kullanılmazsa kullanılabilecek bir öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesine sahiptir.
 
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
-| , |X | |X | |
+| CN = |X | |X | |
 | displayName |X |X |X | |
 | Çalışan |X |  |  | |
 | givenName |X |X | | |
-| - |X | |X | |
+| posta |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
-| üyesidir | | |X | |
+| üye | | |X | |
 | objectSID |X | | |mekanik özellik. Azure AD ve AD arasında eşitlemeyi sürdürmek için kullanılan AD Kullanıcı tanımlayıcısı. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mekanik özellik. Zaten verilen belirteçleri geçersiz kılabileceğinizi bildirmek için kullanılır. Hem Parola karması eşitlemesi, hem de doğrudan kimlik doğrulama ve Federasyon tarafından kullanılır. |
@@ -399,7 +399,7 @@ Bu grup, Azure AD dizini Office 365, Dynamics veya Intune 'u desteklemek için k
 ## <a name="windows-10"></a>Windows 10
 Windows 10 etki alanına katılmış bir bilgisayar (cihaz) bazı öznitelikleri Azure AD 'ye eşitler. Senaryolar hakkında daha fazla bilgi için bkz. [Windows 10 deneyimleri için etki alanına katılmış cihazları Azure AD 'ye bağlama](../active-directory-azureadjoin-devices-group-policy.md). Bu öznitelikler her zaman eşitlenir ve Windows 10, bir uygulama olarak görünmez. Windows 10 etki alanına katılmış bir bilgisayar, userCertificate özniteliği doldurulmuş olarak tanımlanır.
 
-| Öznitelik adı | Cihaz | Açıklama |
+| Öznitelik adı | Cihaz | Yorum |
 | --- |:---:| --- |
 | accountEnabled |X | |
 | deviceTrustType |X |Etki alanına katılmış bilgisayarlar için sabit kodlanmış değer. |
@@ -413,7 +413,7 @@ Windows 10 etki alanına katılmış bir bilgisayar (cihaz) bazı öznitelikleri
 
 Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** için de kullanılır.  
 
-| Öznitelik adı | Kullanıcı | Açıklama |
+| Öznitelik adı | Kullanıcı | Yorum |
 | --- |:---:| --- |
 | domainFQDN |X |Ayrıca dnadı da denir. Örneğin, contoso.com. |
 | domainNetBios |X |NetBiosName de denir. Örneğin, CONTOSO. |
@@ -422,7 +422,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 ## <a name="exchange-hybrid-writeback"></a>Exchange karma geri yazma
 **Exchange karma**'i etkinleştirmeyi seçtiğinizde, bu ÖZNITELIKLER Azure AD 'den şirket içi Active Directory geri yazılır. Exchange sürümünüze bağlı olarak, daha az öznitelik eşitlenebilir.
 
-| Öznitelik adı (Şirket içi AD) | Öznitelik adı (Connect UI) | Kullanıcı | İletişim | Grup | Açıklama |
+| Öznitelik adı (Şirket içi AD) | Öznitelik adı (Connect UI) | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-Externaldirectoryobjectıd| ms-DS-dış-dizin-nesne kimliği |X | | |Azure AD 'de Cloudbağlayıcısını türetiliyor. Bu öznitelik, Exchange 2016 ve Windows Server 2016 AD 'de yenidir. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Çevrimiçi Arşiv: müşterilerin posta arşivlemesini sağlar. |
@@ -437,10 +437,10 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 ## <a name="exchange-mail-public-folder"></a>Exchange posta genel klasörü
 **Exchange mail ortak klasörünü**etkinleştirmeyi seçtiğinizde bu öznitelikler şirket Içi ACTIVE DIRECTORY Azure AD 'ye eşitlenir.
 
-| Öznitelik adı | PublicFolder | Açıklama |
+| Öznitelik adı | PublicFolder | Yorum |
 | --- | :---:| --- |
 | displayName | X |  |
-| - | X |  |
+| posta | X |  |
 | msExchRecipientTypeDetails | X |  |
 | Objectguıd 'dir | X |  |
 | proxyAddresses | X |  |
@@ -449,7 +449,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 ## <a name="device-writeback"></a>Cihaz geri yazma
 Cihaz nesneleri Active Directory oluşturulur. Bu nesneler, Azure AD 'ye veya etki alanına katılmış Windows 10 bilgisayarlara katılmış cihazlar olabilir.
 
-| Öznitelik adı | Cihaz | Açıklama |
+| Öznitelik adı | Cihaz | Yorum |
 | --- |:---:| --- |
 | Altsecuritydentities |X | |
 | displayName |X | |

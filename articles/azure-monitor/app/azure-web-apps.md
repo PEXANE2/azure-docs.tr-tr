@@ -4,11 +4,11 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655827"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367718"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -134,7 +134,7 @@ Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
 * **Uygulama ayarları** > **ayarları** seçin
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
-     Ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Değer:`false`
 

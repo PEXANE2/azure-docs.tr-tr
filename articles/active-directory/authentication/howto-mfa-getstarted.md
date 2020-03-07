@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155155"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378098"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "76155155"
 
 [Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) , verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimi kullanarak ek bir güvenlik katmanı sağlar. Kuruluşlar, çözümün belirli ihtiyaçlarını karşılayacak şekilde [koşullu erişimi](../conditional-access/overview.md) kullanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Multi-Factor Authentication dağıtımına başlamadan önce göz önünde bulundurmanız gereken önkoşul öğeleri vardır.
 
@@ -240,7 +240,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
     * **Seç**'e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 
@@ -288,7 +288,7 @@ Bu ayarın amacı, bir Kullanıcı MFA 'ya kaydolmadıysa ne yapılacağını be
 | Anahtar yok | Kaydedilmedi | MFA sınaması başarısız |
 | Değer true olarak ayarlandı/ayarlanmadı | Kaydedilmedi | MFA sınaması başarısız |
 | Anahtar false olarak ayarlandı | Kaydedilmedi | MFA olmadan kimlik doğrulama |
-| Anahtar yanlış veya doğru olarak ayarlandı | Kaydedildi | MFA ile kimlik doğrulaması yapılmalıdır |
+| Anahtar yanlış veya doğru olarak ayarlandı | Kaydedilebilir | MFA ile kimlik doğrulaması yapılmalıdır |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Active Directory Federasyon Hizmetleri (AD FS) ile tümleştirin
 

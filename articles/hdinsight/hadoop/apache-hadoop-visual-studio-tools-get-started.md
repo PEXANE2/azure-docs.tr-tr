@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 4ad58bc2d61f063dce2c23f60a65dcbec48a2303
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825072"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382115"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Visual Studio için Data Lake araçları 'nı kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma
 
@@ -26,7 +26,7 @@ Apache Storm kümesine bağlanma hakkında daha fazla bilgi için bkz. [Visual S
 
 Visual Studio için Data Lake Araçlarını hem Azure Data Lake Analytics’e hem de HDInsight’a erişmek için kullanabilirsiniz. Data Lake Araçları hakkında bilgi için bkz. [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayıp Visual Studio için Data Lake araçları 'nı kullanmak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Visual Studio sürümünüze yönelik Data Lake araçları yüklemek için uygun
 
 Daha sonra, Data Lake araçlarını en son sürüme güncelleştirdiğinizden emin olun.
 
-1. Visual Studio’yu açın.
+1. Visual Studio'yu açın.
 
 2. **Başlangıç** penceresinde, **kod olmadan devam et**' i seçin.
 
@@ -84,7 +84,7 @@ Visual Studio için Data Lake araçları 'nı kullanarak HDInsight kümelerinize
 
 Azure aboneliğinize bağlanmak için:
 
-1. Visual Studio’yu açın.
+1. Visual Studio'yu açın.
 
 2. **Başlangıç** penceresinde, **kod olmadan devam et**' i seçin.
 

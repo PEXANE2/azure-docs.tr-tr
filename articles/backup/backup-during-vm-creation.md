@@ -4,11 +4,11 @@ description: Azure Backup ile bir Azure VM oluşturduğunuzda yedeklemenin nası
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449905"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363759"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure portal bir sanal makine (VM) oluşturduğunuzda yedeklemenin 
 
 - Bir VM oluştururken yedeklemeyi etkinleştirirseniz, hangi işletim sistemlerinin desteklendiğini [denetleyin](backup-support-matrix-iaas.md#supported-backup-actions) .
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Hesabınızda zaten oturum açmadıysanız [Azure Portal](https://portal.azure.com)oturum açın.
 

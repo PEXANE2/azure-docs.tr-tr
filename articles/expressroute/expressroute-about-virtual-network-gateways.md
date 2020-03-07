@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894368"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358595"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute sanal ağ geçitleri hakkında
 
@@ -22,9 +22,9 @@ Azure Sanal ağınızı ve şirket içi ağınızı ExpressRoute aracılığıyl
 
 Bir sanal ağ geçidi oluştururken birkaç ayar yapılandırırsınız gerekir. Gerekli ayarlardan biri '-GatewayType', ağ geçidini ExpressRoute için kullanılıp kullanılmayacağını belirtir ya da VPN trafiği. İki ağ geçidi türleri şunlardır:
 
-* **VPN** - genel Internet şifrelenmiş trafik göndermek için 'Vpn' ağ geçidi türünü kullanın. Bu VPN ağ geçidi olarak da adlandırılır. Siteden Siteye, Noktadan Siteye ve Sanal Ağdan Sanal Ağa bağlantıların tümü VPN ağ geçidi kullanır.
+* **VPN** -genel Internet üzerinden şifrelenmiş trafik göndermek Için ' VPN ' ağ geçidi türünü kullanırsınız. Bu VPN ağ geçidi olarak da adlandırılır. Siteden Siteye, Noktadan Siteye ve Sanal Ağdan Sanal Ağa bağlantıların tümü VPN ağ geçidi kullanır.
 
-* **ExpressRoute** - özel bir bağlantı üzerinde ağ trafiği göndermek için 'ExpressRoute' ağ geçidi türünü kullanın. Bu, bir ExpressRoute ağ geçidi olarak da adlandırılır ve ExpressRoute yapılandırma sırasında kullanılan ağ geçidi türüdür.
+* **ExpressRoute** -özel bir bağlantıda ağ trafiği göndermek Için ' ExpressRoute ' ağ geçidi türünü kullanırsınız. Bu, bir ExpressRoute ağ geçidi olarak da adlandırılır ve ExpressRoute yapılandırma sırasında kullanılan ağ geçidi türüdür.
 
 Bir sanal ağın her ağ geçidi türü için yalnızca bir sanal ağ geçidi olabilir. Örneğin, GatewayType Vpn kullanan bir sanal ağ geçidiniz ve GatewayType ExpressRoute kullanan bir sanal ağ geçidiniz olabilir.
 
@@ -33,8 +33,8 @@ Bir sanal ağın her ağ geçidi türü için yalnızca bir sanal ağ geçidi ol
 
 Ağ geçidinizin daha güçlü bir ağ geçidi SKU 'suna yükseltmek istiyorsanız, çoğu durumda ' Resize-AzVirtualNetworkGateway ' PowerShell cmdlet 'ini kullanabilirsiniz. Bu, standart ve yüksek performanslı SKU'lar yükseltmeleri için çalışır. Ancak, UltraPerformance SKU'su için yükseltmek için ağ geçidini yeniden oluşturmanız gerekecektir. Bir ağ geçidi yeniden kapalı kalma süresi artmasına neden olur.
 
-### <a name="aggthroughput"></a>Ağ geçidi SKU'suna göre tahmini performans
-Aşağıdaki tabloda, ağ geçidi türleri ve tahmini performanslarını gösterir. Bu tablo hem Resource Manager, hem de klasik dağıtım modellerine uygulanır.
+### <a name="aggthroughput"></a>Ağ Geçidi SKU 'SU tarafından tahmini performanons
+Aşağıdaki tabloda, ağ geçidi türleri ve tahmini performanslarını gösterir. Bu tablo hem Resource Manager hem de klasik dağıtım modellerine uygulanır.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
@@ -63,7 +63,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="zrgw"></a>Bölgesel olarak yedekli ağ geçidi SKU'ları
+### <a name="zrgw"></a>Bölge yedekli ağ geçidi SKU 'Ları
 
 Azure kullanılabilirlik alanları, ExpressRoute ağ geçitleri de dağıtabilirsiniz. Bu fiziksel ve mantıksal olarak bunları farklı kullanılabilirlik alanları, şirket içi ağ bağlantınızı bölge düzeyinde hatalardan Azure'a koruma halinde ayırır.
 
@@ -83,7 +83,7 @@ ExpressRoute sanal ağ geçidi, ağ yollarını Exchange ve ağ trafiğini yönl
 
 Sınırlamalar ve gereksinimler de dahil olmak üzere FastPath hakkında daha fazla bilgi için bkz. [FastPath hakkında](about-fastpath.md).
 
-## <a name="resources"></a>REST API ve PowerShell cmdlet'leri
+## <a name="resources"></a>REST API 'leri ve PowerShell cmdlet 'leri
 Ek teknik kaynaklar ve sanal ağ geçidi yapılandırması için REST API'ler ve PowerShell cmdlet'lerini kullanırken, belirli bir söz dizimi gereksinimler için şu sayfalara bakın:
 
 | **Klasik** | **Resource Manager** |

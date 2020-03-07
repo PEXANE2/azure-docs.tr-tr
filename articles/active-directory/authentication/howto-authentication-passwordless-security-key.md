@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77504950"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378224"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)
 
@@ -61,7 +61,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 güvenlik anahtarlarının Kullanıcı kaydı ve yönetimi
 
-1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gidin.
+1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com) adresine göz atın.
 1. Henüz yoksa oturum açın.
 1. **Güvenlik bilgileri**' ne tıklayın.
    1. Kullanıcının kayıtlı en az bir Azure Multi-Factor Authentication yöntemi zaten varsa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.

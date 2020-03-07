@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902494"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375098"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management’te bildirimleri ve e-posta şablonlarını yapılandırma
 
 API Management belirli olaylara yönelik bildirimleri yapılandırma ve bir API Management örneğinin yöneticileri ve geliştiricileri ile iletişim kurmak için kullanılan e-posta şablonlarını yapılandırma olanağı sağlar. Bu makalede, kullanılabilir olaylar için bildirimlerin nasıl yapılandırılacağı gösterilir ve bu olaylar için kullanılan e-posta şablonlarını yapılandırmaya genel bir bakış sağlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir API Management hizmet örneğiniz yoksa, aşağıdaki hızlı başlangıcı izleyin: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 

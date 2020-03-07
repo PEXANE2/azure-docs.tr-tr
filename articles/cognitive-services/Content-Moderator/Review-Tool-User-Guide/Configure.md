@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169582"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379049"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
@@ -95,7 +95,7 @@ Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator b
 [İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
 
 - Duygu Tanıma
-- Yüz Tanıma
+- Yüz
 - PhotoDNA bulut hizmeti
 - Metin Analizi
 
@@ -111,7 +111,7 @@ Bir bağlayıcı eklemek için (ve içerik [iş akışlarında](../review-api.md
 
 ![Content Moderator Iş akışı ayarları](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Kimlik bilgileri
+## <a name="credentials"></a>Kimlik Bilgileri
 
 **Kimlik bilgileri** sekmesi, bir rest çağrısından veya istemci SDK 'sına ait denetleme hizmetlerinden birine erişmeniz gereken Content moderator abonelik anahtarınız için hızlı erişim sağlar.
 

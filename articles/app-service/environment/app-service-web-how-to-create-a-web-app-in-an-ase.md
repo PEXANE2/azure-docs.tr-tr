@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422061"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358129"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide, bir [App Service ortamı v1](app-service-app-service-environmen
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktadır. Henüz yapmadıysanız, bkz. [App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma

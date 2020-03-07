@@ -18,11 +18,11 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085540"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377132"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
 
@@ -69,7 +69,7 @@ Uygulamalarınızda SSO 'yu etkinleştirmek için aşağıda daha ayrıntılı o
 
 Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olmak için Microsoft Identity platformu için, bu uygulamaların aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI paylaşması gerekir. Bu, portalda ilk uygulamanızı kaydettiğinizde size sağlanmış olan benzersiz tanıtıcıdır.
 
-Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
+Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örnek:
 
 APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`  
 App2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth`  
@@ -149,7 +149,7 @@ MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. 
 
 Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
 
-1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örneğin:
+1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örnek:
 
     ```xml
     <key>CFBundleURLSchemes</key>

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607672"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376242"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
 Azure Active Directory (Azure AD) Connect, kullanıcılarınızın aynı parolaları kullanarak hem bulutta hem de şirket içi kaynaklarda oturum açmalarına olanak tanır. Bu makalede, Azure AD 'de oturum açmak için kullanmak istediğiniz kimliği seçmenize yardımcı olmak üzere her bir kimlik modeli için temel kavramlar açıklanır.
@@ -60,7 +60,7 @@ Ayrıca, şirket ağındaki etki alanına katılmış makinelerde bulunan kullan
 
 Daha fazla bilgi için bkz. [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md) makalesi.
 
-### <a name="pass-through-authentication"></a>Geçişli kimlik doğrulama
+### <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 Geçişli kimlik doğrulaması ile kullanıcının parolası, şirket içi Active Directory denetleyicisine göre onaylanır. Parolanın herhangi bir biçimde Azure AD 'de mevcut olması gerekmez. Bu, oturum açma saati kısıtlamaları gibi şirket içi ilkelerin, bulut hizmetlerinde kimlik doğrulaması sırasında değerlendirilmesini sağlar.
 
 Geçişli kimlik doğrulaması, şirket içi ortamda Windows Server 2012 R2 etki alanına katılmış bir makinede basit bir aracı kullanır. Bu aracı parola doğrulama isteklerini dinler. Herhangi bir gelen bağlantı noktasının Internet 'e açık olmasını gerektirmez.
@@ -77,7 +77,7 @@ Federasyon oturum açma ile kullanıcılarınız, şirket içi parolalarla Azure
 
 <center>
 
-![Windows Server 2012 R2 'de AD FS Federasyonu](./media/plan-connect-user-signin/federatedsignin.png)</center>
+Windows Server 2012 R2 'de AD FS ![Federasyonu](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 'de AD FS Federasyon dağıtma
 
@@ -112,7 +112,7 @@ Daha fazla bilgi için bkz. [Azure AD üçüncü taraf Federasyon uyumluluğu li
 ### <a name="understanding-user-principal-name"></a>Kullanıcı asıl adını anlama
 Active Directory, varsayılan kullanıcı asıl adı (UPN) soneki, Kullanıcı hesabının oluşturulduğu etki alanının DNS adıdır. Çoğu durumda bu, Internet 'teki kuruluş etki alanı olarak kayıtlı etki alanı adıdır. Ancak, Active Directory etki alanları ve güvenleri kullanarak daha fazla UPN soneki ekleyebilirsiniz.
 
-Kullanıcının UPN 'si biçimindedir username@domain. Örneğin, "contoso.com" adlı bir etki alanı Active Directory için John adlı bir Kullanıcı "john@contoso.com" UPN 'sine sahip olabilir. Kullanıcının UPN 'si, RFC 822 ' i temel alır. UPN ve e-posta aynı biçimi paylaşsa da, bir kullanıcı için UPN değeri kullanıcının e-posta adresiyle aynı olabilir veya olmayabilir.
+Kullanıcının UPN 'si username@domainbiçimindedir. Örneğin, "contoso.com" adlı bir etki alanı Active Directory için John adlı bir Kullanıcı "john@contoso.com" UPN 'sine sahip olabilir. Kullanıcının UPN 'si, RFC 822 ' i temel alır. UPN ve e-posta aynı biçimi paylaşsa da, bir kullanıcı için UPN değeri kullanıcının e-posta adresiyle aynı olabilir veya olmayabilir.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD 'de Kullanıcı asıl adı
 Azure AD Connect Sihirbazı userPrincipalName özniteliğini kullanır veya Azure AD 'de Kullanıcı asıl adı olarak şirket içi olarak kullanılacak özniteliği (özel yüklemede) belirtmenize izin verir. Bu, Azure AD 'de oturum açmak için kullanılan değerdir. UserPrincipalName özniteliğinin değeri Azure AD 'de doğrulanmış bir etki alanına karşılık gelmiyorsa, Azure AD bunu varsayılan bir. onmicrosoft.com değeri ile değiştirir.
@@ -126,9 +126,9 @@ Azure AD oturum açma deneyimi, Azure AD 'nin Azure AD dizininde doğrulanan öz
 Azure AD Connect, etki alanları için tanımlanan UPN soneklerini listeler ve bunları Azure AD 'de özel bir etki alanıyla eşleştirmeye çalışır. Daha sonra, alınması gereken uygun eylemde size yardımcı olur.
 Azure AD oturum açma sayfası, şirket içi Active Directory için tanımlanan UPN soneklerini listeler ve her bir sonekine karşılık gelen durumu görüntüler. Durum değerleri aşağıdakilerden biri olabilir:
 
-| Durum | Açıklama | Eylem gerekli |
+| Durum | Açıklama | Eylem gerekiyor |
 |:--- |:--- |:--- |
-| Doğrulandı |Azure AD Connect, Azure AD 'de eşleşen doğrulanmış bir etki alanı buldu. Bu etki alanı için tüm kullanıcılar şirket içi kimlik bilgilerini kullanarak oturum açabilir. |Herhangi bir eylemde bulunmanız gerekmez. |
+| Doğrulanamayan |Azure AD Connect, Azure AD 'de eşleşen doğrulanmış bir etki alanı buldu. Bu etki alanı için tüm kullanıcılar şirket içi kimlik bilgilerini kullanarak oturum açabilir. |Eylem gerekmiyor. |
 | Doğrulanmadı |Azure AD Connect Azure AD 'de eşleşen bir özel etki alanı buldu, ancak bu, doğrulanmadı. Etki alanı doğrulanmadıysa, bu etki alanının kullanıcılarının UPN soneki, eşitlemeden sonra varsayılan. onmicrosoft.com sonekine değiştirilir. | [Azure AD 'de özel etki alanını doğrulayın.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Eklenmemiş |Azure AD Connect, UPN sonekine karşılık gelen özel bir etki alanı bulamadı. Etki alanı Azure 'da eklenmemişse ve doğrulanmadıysa, bu etki alanının kullanıcılarının UPN soneki default. onmicrosoft.com sonekine değiştirilir. | [UPN sonekine karşılık gelen özel bir etki alanı ekleyin ve doğrulayın.](../fundamentals/add-custom-domain.md) |
 
@@ -151,15 +151,15 @@ Varsayılan öznitelik userPrincipalName ' i tutmanız önemle tavsiye ederiz. B
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Farklı özel etki alanı durumları ve bunların Azure oturum açma deneyimine etkileri
 Azure AD dizininizde özel etki alanı durumları ve şirket içinde tanımlı UPN sonekleri arasındaki ilişkiyi anlamak çok önemlidir. Azure AD Connect kullanarak eşitleme ayarlarken farklı olası Azure oturum açma deneyimlerinden ilerlim.
 
-Aşağıdaki bilgiler için, UPN 'nin bir parçası olarak şirket içi dizinde kullanılan UPN soneki contoso.com ile ilgilendiğimiz varsayıyız. Örneğin, örneğin user@contoso.com.
+Aşağıdaki bilgiler için, UPN 'nin bir parçası olarak şirket içi dizinde kullanılan UPN soneki contoso.com ile ilgilendiğimiz varsayıyız. Örneğin user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Hızlı ayarlar/parola karması eşitleme
 
 | Durum | Kullanıcı Azure oturum açma deneyimi üzerindeki etki |
 |:---:|:--- |
-| Eklenmemiş |Bu durumda, Azure AD dizinine contoso.com için özel etki alanı eklenmedi. Soneki @contoso.com olan şirket içi UPN 'si olan kullanıcılar, Azure 'da oturum açmak için şirket içi UPN 'sini kullanamaz. Bunun yerine, varsayılan Azure AD dizini için son ek eklenerek Azure AD tarafından sunulan yeni bir UPN kullanması gerekir. Örneğin, kullanıcıları Azure ad dizini azurecontoso.onmicrosoft.com ile eşityorsanız şirket içi kullanıcıya user@contoso.com bir UPN 'si user@azurecontoso.onmicrosoft.comverilir. |
+| Eklenmemiş |Bu durumda, Azure AD dizinine contoso.com için özel etki alanı eklenmedi. @contoso.com soneki olan şirket içi UPN 'si olan kullanıcılar Azure 'da oturum açmak için şirket içi UPN 'sini kullanamaz. Bunun yerine, varsayılan Azure AD dizini için son ek eklenerek Azure AD tarafından sunulan yeni bir UPN kullanması gerekir. Örneğin, kullanıcıları Azure AD dizini azurecontoso.onmicrosoft.com ile eşitliyorsunuz, şirket içi Kullanıcı user@contoso.com user@azurecontoso.onmicrosoft.comUPN 'sine verilir. |
 | Doğrulanmadı |Bu durumda, Azure AD dizinine eklenen özel bir etki alanı contoso.com vardır. Ancak henüz doğrulanmamıştır. Etki alanını doğrulamadan kullanıcıları eşitlemeye devam ederseniz, kullanıcılara tıpkı "eklenmemiş" senaryosunda olduğu gibi Azure AD tarafından yeni bir UPN atanır. |
-| Doğrulandı |Bu durumda, UPN soneki için Azure AD 'de zaten eklenmiş ve doğrulanan özel bir etki alanı contoso.com vardır. Kullanıcılar şirket içi Kullanıcı asıl adını (örneğin user@contoso.com, Azure AD ile eşitlendikten sonra Azure 'da oturum açmak) kullanabilecek. |
+| Doğrulanamayan |Bu durumda, UPN soneki için Azure AD 'de zaten eklenmiş ve doğrulanan özel bir etki alanı contoso.com vardır. Kullanıcılar, Azure AD ile eşitlendikten sonra Azure 'da oturum açmak için şirket içi Kullanıcı asıl adını (örneğin user@contoso.com) kullanabilir. |
 
 ###### <a name="ad-fs-federation"></a>AD FS Federasyonu
 Azure AD 'de default. onmicrosoft.com etki alanı veya Azure AD 'de doğrulanmamış bir özel etki alanı ile bir Federasyon oluşturamazsınız. Azure AD Connect sihirbazını çalıştırırken, ile bir federasyon oluşturmak için doğrulanmamış bir etki alanını seçerseniz, Azure AD Connect DNS 'nizin etki alanı için barındırıldığı gerekli kayıtları ister. Daha fazla bilgi için bkz. [Federasyon için seçili Azure AD etki alanını doğrulama](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -168,22 +168,22 @@ Azure AD 'de default. onmicrosoft.com etki alanı veya Azure AD 'de doğrulanmam
 
 | Durum | Kullanıcı Azure oturum açma deneyiminde etki |
 |:---:|:--- |
-| Eklenmemiş |Bu durumda Azure AD Connect Azure AD dizininde UPN soneki contoso.com için eşleşen bir özel etki alanı bulmadı. Kullanıcıların şirket içi UPN (gibi user@contoso.com) ile AD FS kullanarak oturum açmasını gerekiyorsa, özel bir etki alanı contoso.com eklemeniz gerekir. |
+| Eklenmemiş |Bu durumda Azure AD Connect Azure AD dizininde UPN soneki contoso.com için eşleşen bir özel etki alanı bulmadı. Kullanıcıların şirket içi UPN (user@contoso.comgibi) ile AD FS kullanarak oturum açmasını istiyorsanız özel bir etki alanı eklemeniz gerekir. |
 | Doğrulanmadı |Bu durumda Azure AD Connect, etki alanınızı daha sonraki bir aşamada nasıl doğrulayabildiğinizi öğrenmek için sizden uygun ayrıntıları ister. |
-| Doğrulandı |Bu durumda, başka bir eylem yapmadan yapılandırma ile devam edebilirsiniz. |
+| Doğrulanamayan |Bu durumda, başka bir eylem yapmadan yapılandırma ile devam edebilirsiniz. |
 
 ## <a name="changing-the-user-sign-in-method"></a>Kullanıcı oturum açma yöntemini değiştirme
 Sihirbazla Azure AD Connect ilk yapılandırmasından sonra Azure AD Connect ' de bulunan görevleri kullanarak, Kullanıcı oturum açma yöntemini Federasyon, Parola karması eşitleme veya doğrudan kimlik doğrulamasından dönüştürebilirsiniz. Azure AD Connect Sihirbazı 'nı yeniden çalıştırın ve gerçekleştirebileceğiniz görevlerin bir listesini görürsünüz. Görev listesinden **Kullanıcı oturum açmayı Değiştir '** i seçin.
 
-![Kullanıcı oturumunu değiştir](./media/plan-connect-user-signin/changeusersignin.png)
+![Kullanıcı oturum açma değiştirme](./media/plan-connect-user-signin/changeusersignin.png)
 
 Sonraki sayfada Azure AD kimlik bilgilerini sağlamanız istenir.
 
-![Azure AD'ye bağlan](./media/plan-connect-user-signin/changeusersignin2.png)
+![Azure AD'ye bağlanın](./media/plan-connect-user-signin/changeusersignin2.png)
 
 **Kullanıcı oturum açma** sayfasında, istenen kullanıcı oturumunu seçin.
 
-![Azure AD'ye bağlan](./media/plan-connect-user-signin/changeusersignin2a.png)
+![Azure AD'ye bağlanın](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
 > Parola karması eşitlemeye yalnızca geçici bir anahtar oluşturuyorsanız, **Kullanıcı hesaplarını dönüştürmeyin** onay kutusunu seçin. Seçeneğinin işaretlenmesi, her bir kullanıcıyı federe 'a dönüştürecek ve bu işlem birkaç saat sürebilir.

@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365098"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric güvenliği 
 
 [Azure Güvenlik En Iyi uygulamaları](https://docs.microsoft.com/azure/security/)hakkında daha fazla bilgi için [Azure Service Fabric en iyi güvenlik uygulamalarını](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) inceleyin
 
-## <a name="key-vault"></a>Key Vault
+## <a name="key-vault"></a>Anahtar Kasası
 
 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) , Azure Service Fabric uygulamalar ve kümeler için önerilen gizli dizi yönetim hizmetidir.
 > [!NOTE]
@@ -212,11 +212,11 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 - \* download.microsoft.com
 - \* servicefabric.azure.com
-- *.core.windows.net
+- *. core.windows.net
 
 Bu güvenlik duvarı kuralları, sanal ağınızdan izin verilen hedefler olarak ServiceFabric ve Storage dahil olmak üzere izin verilen giden ağ güvenlik gruplarınızı tamamlar.
 
-## <a name="tls-12"></a>TLS 1.2
+## <a name="tls-12"></a>TLS 1,2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 

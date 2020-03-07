@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756428"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395495"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB verilere güvenli erişim
 
@@ -155,7 +155,7 @@ Kullanıcı hesabınıza Azure Cosmos DB hesap okuyucusu erişimi eklemek için 
 4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
 5. Dizininizde erişim vermek istediğiniz kullanıcı, Grup veya uygulamayı seçin.  Dizinde görünen ad, e-posta adresi veya nesne tanımlayıcıları ile arama yapabilirsiniz.
     Seçilen Kullanıcı, Grup veya uygulama seçilen Üyeler listesinde görünür.
-6. **Save (Kaydet)** düğmesine tıklayın.
+6. **Kaydet** düğmesine tıklayın.
 
 Varlık artık Azure Cosmos DB kaynaklarını okuyabilir.
 

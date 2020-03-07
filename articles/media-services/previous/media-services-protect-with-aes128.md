@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895827"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366902"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanın
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Makalenin sonunda, tamamlanmış bir [.net örneği](media-services-protect-with
 
 Aşağıdaki görüntüde, daha önce açıklanan iş akışı gösterilmektedir. Burada kimlik doğrulaması için belirteç kullanılmaktadır.
 
-![AES-128 ile koruma](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![AES ile koruma-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 Bu makalenin geri kalanında, açıklamalar, kod örnekleri ve daha önce açıklanan görevlerin nasıl elde edilebilmesi gerektiğini gösteren konuların bağlantıları yer almaktadır.
 
@@ -257,8 +257,8 @@ Değişkenleri, giriş dosyalarınızın bulunduğu klasörlere işaret edecek �
 
 [!code-csharp[Main](../../../samples-mediaservices-encryptionaes/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs)]
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -1,17 +1,17 @@
 ---
-title: Azure Geçişi hakkında
+title: Azure Geçişi Hakkında
 description: Azure geçişi hizmeti hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
 ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772202"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362141"
 ---
-# <a name="about-azure-migrate"></a>Azure Geçişi hakkında
+# <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
 Bu makalede, Azure geçişi hizmetine hızlı bir genel bakış sunulmaktadır.
 
@@ -54,7 +54,7 @@ Azure geçişi, çeşitli ISV teklifleri ile tümleşir.
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDı 'yi değerlendir
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Sunucuları geçirme
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Sunucuları değerlendir
-[Unifrivcloud](https://www.cloudatlasinc.com/cloudrecon/) | Sunucuları ve veritabanlarını değerlendir
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Sunucuları ve veritabanlarını değerlendir
 
 
 ## <a name="azure-migrate-server-assessment-tool"></a>Azure geçişi: Sunucu değerlendirmesi aracı
@@ -79,7 +79,7 @@ Sunucu değerlendirmesi, şirket içinde dağıttığınız bir basit gereç kul
 Azure geçişi: sunucu geçiş aracı, şirket içi VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, diğer sanallaştırılmış makineler ve genel bulut VM 'lerini Azure 'a geçirmenize yardımcı olur. Makineleri değerlendirdikten sonra geçirebilir veya bir değerlendirme olmadan geçirebilirsiniz.
 
 
-## <a name="select-a-tool"></a>Araç seçin
+## <a name="select-a-tool"></a>Bir araç seçin
 
 Azure geçişi hub 'ında değerlendirme için kullanmak istediğiniz aracı seçin ve bunu bir Azure geçişi projesine ekleyin. Bir ISV aracı veya Movere eklerseniz:
 

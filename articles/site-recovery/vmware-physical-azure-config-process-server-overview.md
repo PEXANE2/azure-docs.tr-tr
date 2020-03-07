@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961317"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395047"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery bileşenleri (yapılandırma, işlem, ana hedef) hakkında
 
@@ -22,7 +22,7 @@ Bu makalede, [Site Recovery](site-recovery-overview.md) hizmetiyle VMware VM 'le
 
 Şirket içi VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma için şirket içinde dağıtılan bir Site Recovery yapılandırma sunucusuna ihtiyacınız vardır.
 
-**Ayar** | **Ayrıntılar** | **Köprü**
+**Ayar** | **Ayrıntılar** | **Bağlantılar**
 --- | --- | ---
 **Bileşenleri**  | Yapılandırma sunucusu makinesi, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere tüm şirket içi Site Recovery bileşenlerini çalıştırır.<br/><br/> Yapılandırma sunucusunu ayarlarken, tüm bileşenler otomatik olarak yüklenir. | Yapılandırma sunucusu SSS [makalesini okuyun](vmware-azure-common-questions.md#configuration-server) .
 **Rol** | Yapılandırma sunucusu yerinde bileşenler ile Azure arasındaki iletişimi düzenler ve veri çoğaltma işlemlerini yönetir. | Azure 'da [VMware](vmware-azure-architecture.md) ve [fiziksel sunucu](physical-azure-architecture.md) olağanüstü durum kurtarma mimarisi hakkında daha fazla bilgi edinin.
@@ -34,7 +34,7 @@ Bu makalede, [Site Recovery](site-recovery-overview.md) hizmetiyle VMware VM 'le
 
 ## <a name="process-server"></a>İşlem sunucusu
 
-**Ayar** | **Ayrıntılar** | **Köprü**
+**Ayar** | **Ayrıntılar** | **Bağlantılar**
 --- | --- | ---
 **Dağıtım**  | Olağanüstü durum kurtarma ve şirket içi VMware VM 'Leri ve fiziksel sunucuları çoğaltma için şirket içi bir işlem sunucusuna ihtiyacınız vardır. Varsayılan olarak, işlem sunucusu, dağıtırken yapılandırma sunucusuna yüklenir. | [Daha fazla bilgi edinin](vmware-azure-architecture.md?#architectural-components).
 **Rol (Şirket içi** | -Çoğaltma için etkinleştirilen makinelerden çoğaltma verileri alır.<br/> -Önbelleğe alma, sıkıştırma ve şifreleme ile çoğaltma verilerini iyileştirir ve Azure depolama 'ya gönderir.<br/> -Şirket içi VMware VM 'lerinde ve çoğaltmak istediğiniz fiziksel sunucularda Site Recovery Mobility hizmetinin göndererek yüklemesini gerçekleştirir.<br/> -Şirket içi makinelerin otomatik olarak bulunmasını gerçekleştirir. | [Daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md#process-server). 

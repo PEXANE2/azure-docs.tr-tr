@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Hub kimlik kayıt defteri anlama | Microsoft Docs
-description: Geliştirici Kılavuzu - IOT Hub kimlik kayıt defteri ve cihazlarınızı yönetmek için kullanma açıklaması. Toplu olarak içeri veya dışarı cihaz kimlikleri hakkında bilgi içerir.
+title: Azure IoT Hub Identity kayıt defterini anlayın | Microsoft Docs
+description: Geliştirici Kılavuzu-IoT Hub Identity kayıt defterinin açıklaması ve cihazlarınızı yönetmek için nasıl kullanılacağı. Cihaz kimliklerinin toplu olarak içeri ve dışarı aktarılması hakkında bilgi içerir.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,115 +9,115 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363190"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359639"
 ---
-# <a name="understand-the-identity-registry-in-your-iot-hub"></a>IOT hub'ınızdaki kimlik kayıt defterinde anlama
+# <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
 
-Her IOT hub, IOT hub'ına bağlanmasına izin verilen modüller ve cihazlar hakkında bilgi depolayan bir kimlik kayıt defteri sahiptir. IOT hub'a bir cihaz veya modül bağlanabilmeleri için cihaz veya IOT hub'ının kimlik kayıt defteri modülü için bir giriş olmalıdır. Bir cihaz veya modül ile de IOT hub'ının kimlik kayıt defterinde depolanan kimlik bilgileri temel kimlik doğrulaması gerekir.
+Her IoT Hub 'ına, IoT Hub 'ına bağlanmasına izin verilen cihazlar ve modüller hakkında bilgi depolayan bir kimlik kayıt defteri bulunur. Bir cihaz ya da modülün bir IoT Hub 'ına bağlanabilmesi için, IoT Hub 'ının kimlik kayıt defterindeki bu cihaz veya modül için bir giriş olmalıdır. Bir cihaz ya da modülün kimlik kayıt defterinde depolanan kimlik bilgilerini temel alarak IoT Hub ile kimlik doğrulaması yapması gerekir.
 
-Kimlik kayıt defterinde depolanan cihaz veya modül kimliği büyük/küçük harf duyarlıdır.
+Kimlik kayıt defterinde depolanan cihaz veya modül KIMLIĞI büyük/küçük harfe duyarlıdır.
 
-Yüksek bir düzeyde kimlik kayıt defteri REST özellikli, cihaz veya modül kimliği kaynakları koleksiyonudur. Kimlik kayıt defterinde girişi eklediğinizde, IOT Hub cihaz başına kaynakları uçuşan bulut-cihaz iletilerini içeren sırası gibi bir dizi oluşturur.
+Yüksek düzeyde, kimlik kayıt defteri, cihaz veya modül kimlik kaynaklarının REST özellikli bir koleksiyonudur. Kimlik kayıt defterine bir girdi eklediğinizde IoT Hub, uçuş, buluttan cihaza iletileri içeren sıra gibi cihaz başına kaynakların bir kümesini oluşturur.
 
-Gerektiğinde, kimlik kayıt defterini kullanın:
+Aşağıdakileri yapmanız gerektiğinde kimlik kayıt defteri 'ni kullanın:
 
-* Cihaz sağlama veya IOT hub'ınıza bağlanan modüller.
-* Her cihaz/başına-modül, hub'ın cihaz veya modül'e yönelik uç erişimi denetler.
+* IoT Hub 'ınıza bağlanan cihazları veya modülleri sağlayın.
+* Hub 'ın cihazına veya modüle yönelik uç noktalara cihaz başına/modül başına erişimi denetleme.
 
 > [!NOTE]
-> * Kimlik kayıt defteri, uygulamaya özgü meta verileri içermiyor.
-> * Modül kimliği ve modül ikizi genel Önizleme aşamasındadır. Genel olduğunda, modül kimliği özelliği desteklenecektir kullanılabilir.
+> * Kimlik kayıt defteri uygulamaya özgü hiçbir meta veri içermiyor.
+> * Modül kimliği ve modül ikizi genel önizlemede. Genel kullanıma hazır olduğunda modül kimliğinde aşağıdaki özellik desteklenecektir.
 >
 
 ## <a name="identity-registry-operations"></a>Kimlik kayıt defteri işlemleri
 
-IOT Hub kimlik kayıt defteri aşağıdaki işlemleri gösterir:
+IoT Hub Identity kayıt defteri aşağıdaki işlemleri açığa çıkarır:
 
 * Cihaz veya modül kimliği oluşturma
-* Cihaz veya modül kimliği güncelleştir
-* Cihaz veya modül kimliği Kimliğe göre Al
-* Cihaz veya modül Kimliği Sil
-* 1000'e kadar kimlikleri listesi
-* Azure blob depolama alanına cihaz kimliklerini dışarı aktarma
-* Cihaz kimliklerini Azure blob depolama alanından içeri aktarma
+* Cihazı veya modül kimliğini güncelleştirme
+* KIMLIĞE göre cihaz veya modül kimliğini alma
+* Cihazı veya modül kimliğini silme
+* En fazla 1000 kimliği listeleyin
+* Cihaz kimliklerini Azure Blob depolamaya aktarma
+* Azure Blob depolamadan cihaz kimliklerini içeri aktarma
 
-Tüm bu işlemler belirtilen iyimser eşzamanlılık kullanabilirsiniz [RFC7232](https://tools.ietf.org/html/rfc7232).
-
-> [!IMPORTANT]
-> Bir IOT hub'ının kimlik kayıt defterinde tüm kimlikleri almak için tek yolu kullanmaktır [dışarı](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) işlevselliği.
-
-Bir IOT Hub kimlik kayıt defteri:
-
-* Uygulama meta verileri içermiyor.
-* Bir sözlük gibi kullanarak erişilebilir **DeviceID** veya **Moduleıd** anahtar.
-* İfadesel sorguları desteklemez.
-
-Bir IOT çözümünü genellikle uygulamaya özgü meta veriler içeren ayrı bir çözüme özel depo vardır. Örneğin, bir akıllı yapı çözümü çözüme özel depoda bir sıcaklık Sensörüyle dağıtıldığı yer kaydeder.
+Tüm bu işlemler [RFC7232](https://tools.ietf.org/html/rfc7232)' de belirtildiği gibi iyimser eşzamanlılık kullanabilir.
 
 > [!IMPORTANT]
-> Yalnızca kimlik kayıt defteri, cihaz yönetimi ve sağlama işlemleri için kullanın. Yüksek aktarım hızı işlemleri çalışma zamanında kimlik kayıt defterinde işlemleri üzerinde bağlı olmaması gerekir. Örneğin, bir komut göndermeden önce bir cihazın bağlantı durumunu denetleme desteklenen düzeni değil. Mutlaka denetleyin [azaltma hızları](iot-hub-devguide-quotas-throttling.md) kimlik kayıt defteri ve [cihaz sinyal](iot-hub-devguide-identity-registry.md#device-heartbeat) deseni.
+> Bir IoT Hub 'ının kimlik kayıt defterindeki tüm kimlikleri almanın tek yolu [dışa aktarma](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) işlevini kullanmaktır.
+
+IoT Hub Identity kayıt defteri:
+
+* Herhangi bir uygulama meta verisi içermez.
+* , Anahtar olarak **DeviceID** veya **ModuleID** kullanılarak bir sözlük gibi erişilebilir.
+* , İfade eden sorguları desteklemez.
+
+IoT çözümünün genellikle uygulamaya özgü meta verileri içeren ayrı bir çözüme özgü deposu vardır. Örneğin, bir akıllı bina çözümünde çözüme özgü mağaza, bir sıcaklık algılayıcısı dağıtılan odayı kaydeder.
+
+> [!IMPORTANT]
+> Yalnızca cihaz yönetimi ve sağlama işlemleri için kimlik kayıt defterini kullanın. Çalışma zamanında yüksek aktarım hızı işlemleri, kimlik kayıt defterinde işlem gerçekleştirmeye bağlı olmamalıdır. Örneğin, bir komut göndermeden önce bir cihazın bağlantı durumunu denetlemek desteklenen bir model değildir. Kimlik kayıt defteri ve [Cihaz sinyal](iot-hub-devguide-identity-registry.md#device-heartbeat) deseninin [azaltma hızlarını](iot-hub-devguide-quotas-throttling.md) denetlediğinizden emin olun.
 
 ## <a name="disable-devices"></a>Cihazları devre dışı bırakma
 
-Güncelleştirerek cihazları devre dışı bırakabilirsiniz **durumu** kimlik kayıt defterinde bir kimlik özelliği. Genellikle, bu özelliğin iki senaryoda kullanır:
+Kimlik kayıt defterindeki bir kimliğin **Status** özelliğini güncelleştirerek cihazları devre dışı bırakabilirsiniz. Genellikle, bu özelliği iki senaryoda kullanırsınız:
 
-* Sağlama bir düzenleme işlemi sırasında. Daha fazla bilgi için [cihaz sağlama](iot-hub-devguide-identity-registry.md#device-provisioning).
+* Bir sağlama düzenleme işlemi sırasında. Daha fazla bilgi için bkz. [cihaz sağlama](iot-hub-devguide-identity-registry.md#device-provisioning).
 
-* Herhangi bir nedenle düşünüyorsanız, bir cihaz tehlikeye veya yetkisiz haline gelmiştir.
+* Herhangi bir nedenle, bir cihazın tehlikede olduğunu veya yetkisiz olduğunu düşünün.
 
-Bu özellik, modüller için kullanılamıyor.
+Bu özellik modüller için kullanılamaz.
 
 ## <a name="import-and-export-device-identities"></a>Cihaz kimliklerini içeri ve dışarı aktarma
 
-Zaman uyumsuz işlemler kullanın [IOT hub'ı kaynak sağlayıcısı uç noktası](iot-hub-devguide-endpoints.md) cihaz kimliklerinin toplu bir IOT hub'ının kimlik kayıt defterinden dışarı aktarmak için. Dışarı aktarmalar kimlik kayıt defterinden okuma cihaz kimlik verilerini kaydetmek için bir müşteri tarafından sağlanan blob kapsayıcısını kullanan uzun süren işlerdir.
+Cihaz kimliklerini bir IoT Hub 'ının kimlik kayıt defterinden toplu olarak dışarı aktarmak için [IoT Hub kaynak sağlayıcısı uç noktasındaki](iot-hub-devguide-endpoints.md) zaman uyumsuz işlemleri kullanın. Dışarı aktarmalar, kimlik kayıt defterinden okunan cihaz kimliği verilerini kaydetmek için müşterinin sağladığı bir blob kapsayıcısını kullanan uzun süredir çalışan işlerdir.
 
-Zaman uyumsuz işlemler kullanın [IOT hub'ı kaynak sağlayıcısı uç noktası](iot-hub-devguide-endpoints.md) bir IOT hub'ının kimlik kayıt defterine toplu cihaz kimliklerini almak için. İçeri aktarmalar kimlik verilerini cihaz kimlik kayıt defterine yazmak için bir müşteri tarafından sağlanan blob kapsayıcısında veri kullanan uzun süren işlerdir.
+Cihaz kimliklerini bir IoT Hub 'ının kimlik kayıt defterine toplu olarak içeri aktarmak için [IoT Hub kaynak sağlayıcısı uç noktasındaki](iot-hub-devguide-endpoints.md) zaman uyumsuz işlemleri kullanın. İçeri aktarmalar, kimlik kayıt defterine cihaz kimlik verileri yazmak için müşterinin sağladığı bir blob kapsayıcısında veri kullanan uzun süredir çalışan işlerdir.
 
-İçeri ve dışarı aktarma API'leri hakkında daha fazla bilgi için bkz: [IOT hub'ı kaynak sağlayıcısı REST API'leri](/rest/api/iothub/iothubresource). İşleri dışarı aktar ve içeri aktarma çalıştırma hakkında daha fazla bilgi edinmek için bkz: [IOT Hub cihaz kimliklerinin toplu Yönetimi](iot-hub-bulk-identity-mgmt.md).
+İçeri ve dışarı aktarma API 'Leri hakkında daha fazla bilgi için bkz. [IoT Hub kaynak sağlayıcısı REST API 'leri](/rest/api/iothub/iothubresource). İşleri içeri ve dışarı aktarma hakkında daha fazla bilgi edinmek için bkz. [IoT Hub cihaz kimliklerinin toplu yönetimi](iot-hub-bulk-identity-mgmt.md).
 
 ## <a name="device-provisioning"></a>Cihaz sağlama
 
-Belirli bir IOT çözüm depolar cihaz verilerini bu çözüm belirli gereksinimlerine bağlıdır. Ancak, minimum olarak, cihaz kimliklerini ve kimlik doğrulaması anahtarlarını bir çözümün depolamanız gerekir. Azure IOT Hub, her bir cihaz kimlikleri ve kimlik doğrulama anahtarlarını durum kodları gibi değerlerini depolayan bir kimlik kayıt defteri içerir. Bir çözüm, tablo depolama, blob depolama veya Cosmos DB gibi diğer Azure Hizmetleri, herhangi bir ek cihaz verilerini depolamak için kullanabilirsiniz.
+Belirli bir IoT çözümünün depoladığı cihaz verileri, bu çözümün belirli gereksinimlerine bağlıdır. Ancak, minimum olarak bir çözümün cihaz kimliklerini ve kimlik doğrulama anahtarlarını depolaması gerekir. Azure IoT Hub, kimlikler, kimlik doğrulama anahtarları ve durum kodları gibi her bir cihaz için değerleri depolayabilen bir kimlik kayıt defteri içerir. Bir çözüm, ek cihaz verilerini depolamak için tablo depolama, BLOB depolama veya Cosmos DB gibi diğer Azure hizmetlerini kullanabilir.
 
-*Cihaz sağlama* çözümünüzü depolarında ilk cihaz verilerini ekleme işlemidir. Hub'ınıza bağlanmak yeni bir cihaz etkinleştirmek için IOT Hub kimlik kayıt defterinde bir cihaz kimliği ve anahtarlar eklemelisiniz. Hazırlama işleminin bir parçası, cihaza özgü diğer çözüm depoları verilerde başlatmak gerekebilir. Azure IOT Hub cihazı sağlama hizmeti, sıfır dokunma, yalnızca bir veya daha fazla IOT hub'lara kullanıcı müdahalesine gerek kalmadan sağlama zamanında etkinleştirmek için de kullanabilirsiniz. Daha fazla bilgi için bkz. [sağlama hizmeti belgeleri](https://azure.microsoft.com/documentation/services/iot-dps).
+*Cihaz sağlama* , ilk cihaz verilerini çözümünüzdeki depolara ekleme işlemidir. Yeni bir cihazın hub 'ınıza bağlanmasını sağlamak için IoT Hub kimlik kayıt defterine bir cihaz KIMLIĞI ve anahtarı eklemeniz gerekir. Sağlama sürecinin bir parçası olarak, diğer çözüm depolarında cihaza özgü verileri de başlatmak gerekebilir. Ayrıca, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir veya daha fazla IoT Hub 'ı için insan müdahalesi gerektirmeden tam zamanında sağlama olanağı sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [sağlama hizmeti belgeleri](https://azure.microsoft.com/documentation/services/iot-dps).
 
-## <a name="device-heartbeat"></a>Cihaz sistem durumu
+## <a name="device-heartbeat"></a>Cihaz sinyali
 
-IOT Hub kimlik kayıt defteri adlı bir alanı içeren **connectionState**. Yalnızca **connectionState** geliştirme ve hata ayıklama sırasında alan. IOT çözümleri çalışma zamanında sorgu alanı değil. Örneğin, değil sorgu **connectionState** bulut-cihaz iletisi veya SMS göndermeden önce bir aygıt bağlı olup olmadığını denetlemek için alan. Abone öneririz [ **cihaz bağlantısı kesildi** olay](iot-hub-event-grid.md#event-types) uyarılar alın ve cihaz bağlantı durumunu izlemek için Event Grid hakkında. Bunu kullanın [öğretici](iot-hub-how-to-order-connection-state-events.md) IOT hub'dan cihaz bağlı ve cihazın bağlantısı olayları IOT çözümünüzü tümleştirme hakkında bilgi edinmek için.
+IoT Hub Identity kayıt defteri **ConnectionState**adlı bir alan içerir. Yalnızca geliştirme ve hata ayıklama sırasında **ConnectionState** alanını kullanın. IoT çözümleri, çalışma zamanında alanı sorgulayamaz. Örneğin, bir cihazın bir cihazdan cihaza ileti veya SMS göndermeden önce bağlı olup olmadığını denetlemek için **ConnectionState** alanını sorgulamayın. Uyarıları almak ve cihaz bağlantı durumunu izlemek için Event Grid üzerindeki [ **cihaz bağlantısı kesilen** olaya](iot-hub-event-grid.md#event-types) abone olmayı öneririz. Bu [öğreticiyi](iot-hub-how-to-order-connection-state-events.md) kullanarak cihaz bağlantılı ve cihaz bağlantısı kesilen olayları ıot çözümünüzdeki IoT Hub tümleştirme hakkında bilgi edinebilirsiniz.
 
-IOT çözümünüzün bir cihaz bağlıysa, uygulayabilirsiniz bilmeniz gerekiyorsa *sinyal deseni*.
-Sinyal desende cihaz her zaman (örneğin, saatte en az bir kez) en az bir kez sabit miktarda CİHAZDAN buluta iletiler gönderir. Bu nedenle, bir cihazda göndermek için herhangi bir veri yok olsa bile, yine de (genellikle bir sinyal tanımlayan bir özelliği) ile boş bir CİHAZDAN buluta ileti gönderir. Hizmet tarafında, çözüm ile her cihaz için alınan son sinyal bir harita tutar. Çözüm CİHAZDAN beklenen süre içinde bir sinyal ileti almazsa, cihaz ile ilgili bir sorun olduğunu varsayar.
+IoT çözümünüzün bir cihazın bağlı olup olmadığını bilmeleri gerekiyorsa, *sinyal modelini*uygulayabilirsiniz.
+Sinyal modelinde cihaz, her sabit sürede (örneğin, her saat en az bir kez) cihazdan buluta iletiler gönderir. Bu nedenle, bir cihazda gönderilecek veri olmasa bile, hala boş bir cihazdan buluta ileti gönderir (genellikle sinyal olarak tanımlayan bir özellik ile). Hizmet tarafında, çözüm her bir cihaz için alınan son sinyalle bir harita tutar. Çözüm, cihazdan beklenen sürede bir sinyal iletisi almazsa, cihazda bir sorun olduğunu varsayar.
 
-Daha karmaşık bir uygulama bilgileri içerebilir [Azure İzleyici](../azure-monitor/index.yml) ve [Azure kaynak durumu](../service-health/resource-health-overview.md) bağlanmakveyailetişimkurmakçalışıyorancakbaşarısızolancihazlartanımlamakiçindenetleme[Tanılama ile izleme](iot-hub-monitor-resource-health.md) Kılavuzu. Sinyal desenini uyguladığınızda, denetlediğinizden emin olun [IOT Hub kotaları ve kısıtlamaları](iot-hub-devguide-quotas-throttling.md).
+Daha karmaşık bir uygulama, [Azure izleyici](../azure-monitor/index.yml) 'deki bilgileri ve bağlanma veya iletişim kurmaya çalışan, ancak başarısız olmasına veya iletişime geçmek için [Azure Kaynak durumu](../service-health/resource-health-overview.md) , tanılama Kılavuzu [ile izleme](iot-hub-monitor-resource-health.md) 'yi kontrol eder. Sinyal modelini uyguladığınızda, IoT Hub kotaları kontrol ettiğinizden emin olun [ve kısıtlar](iot-hub-devguide-quotas-throttling.md).
 
 > [!NOTE]
-> Yalnızca bulut-cihaz iletilerini göndermek belirlemek için bağlantı durumu bir IOT çözümünü kullanır ve iletileri olmayan cihazların büyük kümelerine yayın basit kullanmayı *kısa süre sonu* deseni. Bu düzen daha verimli olmanın yanı sıra sinyal deseni kullanarak cihaz bağlantı durumu kayıt defteri koruma aynı sonucu elde eder. İleti onayları istek, IOT Hub hakkında hangi cihazların ileti alabilen hangilerinin bildirimde bulunabilir.
+> Bir IoT çözümü yalnızca buluttan cihaza iletiler gönderileceğini ve iletilerin büyük cihaz kümelerine yayınlanıp göndermeyeceğini tespit etmek için bağlantı durumunu kullanıyorsa, daha basit *kısa süre sonu zaman* modelini kullanmayı göz önünde bulundurun. Bu model, sinyal modelini kullanarak bir cihaz bağlantı durumu kayıt defteri ile aynı sonuca ulaşır, daha verimli hale getirir. İleti bildirimleri talep ederseniz IoT Hub, hangi cihazların ileti alabileceğini ve hangilerinin olmadığını size bildirebilir.
 
 ## <a name="device-and-module-lifecycle-notifications"></a>Cihaz ve modül yaşam döngüsü bildirimleri
 
-Kimlikteki oluşturulduğunda veya yaşam döngüsü bildirimleri göndererek silindi, IOT Hub, IOT çözümünüzün bildirebilir. Bunu yapmak için IOT çözümünüzün yönlendirme oluşturma ve veri kaynağı eşit ayarlamak için gereken *DeviceLifecycleEvents* veya *ModuleLifecycleEvents*. Varsayılan olarak, hiçbir yaşam döngüsü bildirimleri gönderilir, diğer bir deyişle, bu tür bir yol önceden mevcut. Bildirim iletisi, özellikleri ve gövde içerir.
+IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğunda veya silindiğinde IoT çözümünüze bildirimde bulunabilir. Bunu yapmak için, IoT çözümünüzün bir rota oluşturması ve veri kaynağını *DeviceLifecycleEvents* veya *ModuleLifecycleEvents*' e eşit olarak ayarlaması gerekir. Varsayılan olarak, yaşam döngüsü bildirimleri gönderilmez, diğer bir deyişle, böyle bir yol önceden mevcut değildir. Bildirim iletisi özellikleri ve gövdesi içerir.
 
-Özellikler: İleti sistemi özellikleri önekiyle `$` simgesi.
+Özellikler: Ileti sistemi özelliklerine `$` simgesiyle ön ek uygulanır.
 
 Cihaz için bildirim iletisi:
 
-| Ad | Değer |
+| Adı | Değer |
 | --- | --- |
-|$content-type | uygulama/json |
-|$iothub-enqueuedtime |  Bildirim zaman gönderildiği zaman |
-|$iothub-message-kaynak | deviceLifecycleEvents |
-|$content-encoding | UTF-8 |
-|opType | **createDeviceIdentity** veya **deleteDeviceIdentity** |
-|hubName | IOT hub'ı adı |
-|deviceId | Cihaz kimliği |
-|operationTimestamp | İşlemin ISO8601 zaman damgası |
-|ıothub ileti şeması | deviceLifecycleNotification |
+|$content türü | uygulama/json |
+|$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
+|$iothub-ileti-kaynak | deviceLifecycleEvents |
+|$content kodlaması | UTF-8 |
+|opType | **createdeviceıdentity** veya **deletedeviceıdentity** |
+|hubName | IoT Hub adı |
+|deviceId | Cihazın KIMLIĞI |
+|operationTimestamp | ISO8601 işlem zaman damgası |
+|ıothub-Message-Schema | deviceLifecycleNotification |
 
-Gövdesi: Bu bölümde, JSON biçimindedir ve ikizi oluşturulmuş cihaz kimliğini temsil eder. Örneğin,
+Gövde: Bu bölüm JSON biçimindedir ve oluşturulan cihaz kimliğinin ikizi temsil eder. Örneğin,
 
 ```json
 {
@@ -139,21 +139,21 @@ Gövdesi: Bu bölümde, JSON biçimindedir ve ikizi oluşturulmuş cihaz kimliğ
     }
 }
 ```
-Bildirim iletisi modülü için:
+Modül için bildirim iletisi:
 
-| Ad | Değer |
+| Adı | Değer |
 | --- | --- |
-$content-type | uygulama/json |
-$iothub-enqueuedtime |  Bildirim zaman gönderildiği zaman |
-$iothub-message-kaynak | moduleLifecycleEvents |
-$content-encoding | UTF-8 |
-opType | **createModuleIdentity** veya **deleteModuleIdentity** |
-hubName | IOT hub'ı adı |
-Modül kimliği | Modül kimliği |
-operationTimestamp | İşlemin ISO8601 zaman damgası |
-ıothub ileti şeması | moduleLifecycleNotification |
+$content türü | uygulama/json |
+$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
+$iothub-ileti-kaynak | moduleLifecycleEvents |
+$content kodlaması | UTF-8 |
+opType | **createmoduleıdentity** veya **deletemoduleıdentity** |
+hubName | IoT Hub adı |
+moduleId | Modülün KIMLIĞI |
+operationTimestamp | ISO8601 işlem zaman damgası |
+ıothub-Message-Schema | moduleLifecycleNotification |
 
-Gövdesi: Bu bölümde, JSON biçimindedir ve ikizi oluşturulan modülü kimliğini temsil eder. Örneğin,
+Gövde: Bu bölüm JSON biçimindedir ve oluşturulan modül kimliğinin ikizi temsil eder. Örneğin,
 
 ```json
 {
@@ -177,82 +177,82 @@ Gövdesi: Bu bölümde, JSON biçimindedir ve ikizi oluşturulan modülü kimli�
 }
 ```
 
-## <a name="device-identity-properties"></a>Cihaz kimlik özellikleri
+## <a name="device-identity-properties"></a>Cihaz kimliği özellikleri
 
-Cihaz kimliklerini aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
-
-| Özellik | Seçenekler | Açıklama |
-| --- | --- | --- |
-| deviceId |gerekli, salt okunur güncelleştirmeleri |ASCII 7 bit alfasayısal karakterlerin yanı sıra belirli özel karakterler büyük küçük harfe duyarlı bir dize (en çok 128 karakterden uzun): `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| Generationıd |gerekli, salt okunur |Bir IOT hub tarafından oluşturulan, büyük küçük harfe duyarlı dize en fazla 128 karakter. Bu değer aynı cihazlar ayrım yapmak için kullanılan **DeviceID**silinmesi ve yeniden oluşturulacak. |
-| etag |gerekli, salt okunur |Bir cihaz kimliği için zayıf bir ETag başına olarak temsil eden bir dize [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| kimlik doğrulama |İsteğe bağlı |Kimlik bilgileri ve güvenlik malzemeleri içeren bir bileşik nesne. |
-| auth.symkey |İsteğe bağlı |Base64 biçiminde depolanan birincil ve ikincil bir anahtar içeren bir bileşik nesne. |
-| status |Gerekli |Bir erişim göstergesi. Olabilir **etkin** veya **devre dışı bırakılmış**. Varsa **etkin**, cihaz bağlanmasına izin verilir. Varsa **devre dışı bırakılmış**, bu cihaz herhangi bir cihaz'e yönelik uç noktaya erişilemiyor. |
-| statusReason |İsteğe bağlı |Cihaz kimlik durumun nedenini depolar 128 karakter uzunluğundaki dize. Tüm UTF-8 karakterlere izin verilir. |
-| statusUpdateTime |salt okunur |Son durum güncelleştirme saati ve tarihi gösteren bir zamana bağlı göstergesi. |
-| connectionState |salt okunur |Bağlantı durumu gösteren bir alan: ya da **bağlı** veya **bağlantısı kesilmiş**. Bu alan, cihaz bağlantı durumunun IOT Hub görünümünü temsil eder. **Önemli**: Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde ping (ping MQTT veya AMQP ping) dayalıdır ve yalnızca 5 dakikada en fazla gecikme olabilir. Bu nedenlerden dolayı olabilir hatalı pozitif sonuçları gibi cihazları bağlı olarak bildirilen ancak, kesilir. |
-| connectionStateUpdatedTime |salt okunur |Bağlantı durumu son bir saat ve tarihi gösteren bir zamana bağlı göstergesi güncelleştirildi. |
-| lastActivityTime |salt okunur |Zamana bağlı bir göstergesi son bir saat ve tarihi cihazı gösteren bağlı, alınan veya gönderilen ileti. |
-
-> [!NOTE]
-> Bağlantı durumu yalnızca bağlantının durumunu IOT Hub görünümünü temsil edebilir. Ağ koşulları ve yapılandırmaları bağlı olarak bu durum güncelleştirmeleri gecikebilir.
-
-> [!NOTE]
-> Şu anda cihaz SDK'ları kullanarak desteklemeyen `+` ve `#` öğesindeki karakterler **DeviceID**.
-
-## <a name="module-identity-properties"></a>Modülü kimlik özellikleri
-
-Modül kimlikleri, aşağıdaki özelliklere sahip JSON belgeleri olarak temsil edilir:
+Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
 | Özellik | Seçenekler | Açıklama |
 | --- | --- | --- |
-| deviceId |gerekli, salt okunur güncelleştirmeleri |ASCII 7 bit alfasayısal karakterlerin yanı sıra belirli özel karakterler büyük küçük harfe duyarlı bir dize (en çok 128 karakterden uzun): `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| Modül kimliği |gerekli, salt okunur güncelleştirmeleri |ASCII 7 bit alfasayısal karakterlerin yanı sıra belirli özel karakterler büyük küçük harfe duyarlı bir dize (en çok 128 karakterden uzun): `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| Generationıd |gerekli, salt okunur |Bir IOT hub tarafından oluşturulan, büyük küçük harfe duyarlı dize en fazla 128 karakter. Bu değer aynı cihazlar ayrım yapmak için kullanılan **DeviceID**silinmesi ve yeniden oluşturulacak. |
-| etag |gerekli, salt okunur |Bir cihaz kimliği için zayıf bir ETag başına olarak temsil eden bir dize [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| kimlik doğrulama |İsteğe bağlı |Kimlik bilgileri ve güvenlik malzemeleri içeren bir bileşik nesne. |
-| auth.symkey |İsteğe bağlı |Base64 biçiminde depolanan birincil ve ikincil bir anahtar içeren bir bileşik nesne. |
-| status |Gerekli |Bir erişim göstergesi. Olabilir **etkin** veya **devre dışı bırakılmış**. Varsa **etkin**, cihaz bağlanmasına izin verilir. Varsa **devre dışı bırakılmış**, bu cihaz herhangi bir cihaz'e yönelik uç noktaya erişilemiyor. |
-| statusReason |İsteğe bağlı |Cihaz kimlik durumun nedenini depolar 128 karakter uzunluğundaki dize. Tüm UTF-8 karakterlere izin verilir. |
-| statusUpdateTime |salt okunur |Son durum güncelleştirme saati ve tarihi gösteren bir zamana bağlı göstergesi. |
-| connectionState |salt okunur |Bağlantı durumu gösteren bir alan: ya da **bağlı** veya **bağlantısı kesilmiş**. Bu alan, cihaz bağlantı durumunun IOT Hub görünümünü temsil eder. **Önemli**: Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde ping (ping MQTT veya AMQP ping) dayalıdır ve yalnızca 5 dakikada en fazla gecikme olabilir. Bu nedenlerden dolayı olabilir hatalı pozitif sonuçları gibi cihazları bağlı olarak bildirilen ancak, kesilir. |
-| connectionStateUpdatedTime |salt okunur |Bağlantı durumu son bir saat ve tarihi gösteren bir zamana bağlı göstergesi güncelleştirildi. |
-| lastActivityTime |salt okunur |Zamana bağlı bir göstergesi son bir saat ve tarihi cihazı gösteren bağlı, alınan veya gönderilen ileti. |
+| deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| GenerationID |gerekli, salt okunurdur |128 karakter uzunluğunda bir IoT Hub 'ı tarafından üretilen, büyük/küçük harfe duyarlı dize. Bu değer, silinen ve yeniden oluşturulduğu zaman, cihazları aynı **DeviceID**ile ayırt etmek için kullanılır. |
+| etag |gerekli, salt okunurdur |[RFC7232](https://tools.ietf.org/html/rfc7232)başına cihaz kimliği Için zayıf ETag 'i temsil eden bir dize. |
+| 'u |seçim |Kimlik doğrulama bilgilerini ve güvenlik malzemelerini içeren bileşik bir nesne. |
+| Auth. symkey |seçim |Base64 biçiminde depolanan, birincil ve ikincil anahtar içeren bileşik bir nesne. |
+| status |gerekli |Erişim göstergesi. **Etkinleştirilebilir** veya **devre dışı**bırakılabilir. **Etkinleştirilirse**, cihazın bağlanmasına izin verilir. **Devre dışı**bırakılırsa, bu cihaz cihaza yönelik herhangi bir uç noktaya erişemez. |
+| statusReason |seçim |Cihaz kimliği durumunun nedenini depolayan 128 karakter uzunluğunda bir dize. Tüm UTF-8 karakterlerine izin verilir. |
+| statusUpdateTime |salt okunurdur |Son durum güncelleştirmesinin tarih ve saatini gösteren zamana bağlı bir gösterge. |
+| connectionState |salt okunurdur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi**. Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli**: Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
+| connectionStateUpdatedTime |salt okunurdur |Bağlantı durumunun güncelleştirildiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
+| lastActivityTime |salt okunurdur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
 
 > [!NOTE]
-> Şu anda cihaz SDK'ları kullanarak desteklemeyen `+` ve `#` öğesindeki karakterler **DeviceID** ve **Moduleıd**.
+> Bağlantı durumu yalnızca bağlantı durumunun IoT Hub görünümünü temsil edebilir. Bu durum için güncelleştirmeler ağ koşullarına ve yapılandırmalara bağlı olarak gecikebilir.
 
-## <a name="additional-reference-material"></a>Ek başvuru malzemesi
+> [!NOTE]
+> Şu anda cihaz SDK 'Ları, **DeviceID**'de `+` ve `#` karakterlerinin kullanımını desteklemez.
 
-IOT Hub Geliştirici Kılavuzu'nda olan diğer başvuru konularını içerir:
+## <a name="module-identity-properties"></a>Modül kimliği özellikleri
 
-* [IOT Hub uç noktaları](iot-hub-devguide-endpoints.md) her IOT hub'ı ortaya koyan çalışma zamanı ve yönetim işlemleri için çeşitli uç noktaları açıklar.
+Modül kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-* [Azaltma ve kotalar](iot-hub-devguide-quotas-throttling.md) kotaları açıklar ve IOT Hub hizmetine geçerli davranışlara azaltma.
+| Özellik | Seçenekler | Açıklama |
+| --- | --- | --- |
+| deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| moduleId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| GenerationID |gerekli, salt okunurdur |128 karakter uzunluğunda bir IoT Hub 'ı tarafından üretilen, büyük/küçük harfe duyarlı dize. Bu değer, silinen ve yeniden oluşturulduğu zaman, cihazları aynı **DeviceID**ile ayırt etmek için kullanılır. |
+| etag |gerekli, salt okunurdur |[RFC7232](https://tools.ietf.org/html/rfc7232)başına cihaz kimliği Için zayıf ETag 'i temsil eden bir dize. |
+| 'u |seçim |Kimlik doğrulama bilgilerini ve güvenlik malzemelerini içeren bileşik bir nesne. |
+| Auth. symkey |seçim |Base64 biçiminde depolanan, birincil ve ikincil anahtar içeren bileşik bir nesne. |
+| status |gerekli |Erişim göstergesi. **Etkinleştirilebilir** veya **devre dışı**bırakılabilir. **Etkinleştirilirse**, cihazın bağlanmasına izin verilir. **Devre dışı**bırakılırsa, bu cihaz cihaza yönelik herhangi bir uç noktaya erişemez. |
+| statusReason |seçim |Cihaz kimliği durumunun nedenini depolayan 128 karakter uzunluğunda bir dize. Tüm UTF-8 karakterlerine izin verilir. |
+| statusUpdateTime |salt okunurdur |Son durum güncelleştirmesinin tarih ve saatini gösteren zamana bağlı bir gösterge. |
+| connectionState |salt okunurdur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi**. Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli**: Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
+| connectionStateUpdatedTime |salt okunurdur |Bağlantı durumunun güncelleştirildiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
+| lastActivityTime |salt okunurdur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
 
-* [Azure IOT cihaz ve hizmet SDK'ları](iot-hub-devguide-sdks.md) çeşitli dil IOT hub'ı ile etkileşim kuran hem cihaz hem de hizmet uygulamaları geliştirirken kullanabileceğiniz SDK'ları listeler.
+> [!NOTE]
+> Şu anda cihaz SDK 'Ları, **DeviceID** ve **moduleıd**içindeki `+` ve `#` karakterlerinin kullanımını desteklemez.
 
-* [IOT Hub sorgu dili](iot-hub-devguide-query-language.md) IOT Hub'ından, cihaz ikizleri ve işler hakkında bilgi almak için kullanabileceğiniz bir sorgu dili açıklar.
+## <a name="additional-reference-material"></a>Ek başvuru malzemeleri
 
-* [IOT hub'ı MQTT desteği](iot-hub-mqtt-support.md) ve MQTT protokolünü için IOT hub'ı desteği hakkında daha fazla bilgi sağlar.
+IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
+
+* [IoT Hub uç noktaları](iot-hub-devguide-endpoints.md) , her bir IoT Hub 'ının çalışma zamanı ve yönetim işlemleri için sunduğu çeşitli uç noktaları açıklar.
+
+* [Daraltma ve Kotalar](iot-hub-devguide-quotas-throttling.md) , IoT Hub hizmetine uygulanan kotaları ve azaltma davranışlarını açıklar.
+
+* [Azure IoT cihaz ve hizmet SDK 'ları](iot-hub-devguide-sdks.md) , IoT Hub etkileşimde bulunan cihaz ve hizmet uygulamaları geliştirirken kullanabileceğiniz çeşitli dil SDK 'larını listeler.
+
+* [IoT Hub sorgu dili](iot-hub-devguide-query-language.md) , cihaz WINS ve işleriniz hakkında IoT Hub bilgi almak için kullanabileceğiniz sorgu dilini açıklar.
+
+* [MQTT desteği IoT Hub](iot-hub-mqtt-support.md) MQTT protokolü için IoT Hub desteği hakkında daha fazla bilgi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IOT Hub kimlik kayıt defteri kullanmayı öğrendiğinize göre aşağıdaki IOT Hub Geliştirici Kılavuzu konuları ilginizi çekebilir:
+IoT Hub Identity kayıt defterini nasıl kullanacağınızı öğrendiğinize göre, aşağıdaki IoT Hub Geliştirici Kılavuzu konularıyla ilgileniyor olabilirsiniz:
 
 * [IoT Hub’a erişimi denetleme](iot-hub-devguide-security.md)
 
-* [Durum ve yapılandırmaları eşitlemek için cihaz ikizlerini kullanma](iot-hub-devguide-device-twins.md)
+* [Durum ve yapılandırmaların eşitlenmesi için cihaz ikizlerini kullanma](iot-hub-devguide-device-twins.md)
 
 * [Bir cihazda doğrudan yöntem çağırma](iot-hub-devguide-direct-methods.md)
 
 * [Birden fazla cihazda işleri zamanlama](iot-hub-devguide-jobs.md)
 
-Bu makalede açıklanan kavramları bazıları denemek için aşağıdaki IOT hub'ı öğreticiye bakın:
+Bu makalede açıklanan kavramların bazılarını denemek için aşağıdaki IoT Hub öğreticisine bakın:
 
 * [Azure IoT Hub’ı kullanmaya başlayın](quickstart-send-telemetry-dotnet.md)
 
-IOT Hub cihazı sağlama hizmeti kullanarak müdahalesi gerektirmeyen, tam zamanında sağlama etkinleştireceğinizi öğrenmek için keşfetmek için: 
+Tam zamanında sağlama işlemini etkinleştirmek üzere IoT Hub cihaz sağlama hizmetini kullanarak araştırmak için, bkz.: 
 
 * [Azure IoT Hub Cihazı Sağlama Hizmeti](https://azure.microsoft.com/documentation/services/iot-dps)

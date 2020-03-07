@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482873"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362472"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -31,7 +31,7 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
 
 1. Bir kaynak oluşturun.
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
     
     Çoklu hizmet kaynağı, portalda bilişsel **Hizmetler** olarak adlandırılır. Bilişsel [Hizmetler kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
@@ -39,15 +39,15 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Görüntü İşleme  | Content Moderator                                    | Yüz Tanıma               | Language Understanding (LUIS) | Metin Analizi   |
+    | Görüntü İşleme  | Content Moderator                                    | Yüz               | Dil Anlama (LUIS) | Metin Analizi   |
     | Translator Metin Çevirisi  | Bing Arama v7 <br>(Web, görüntü, Haberler, video, görsel) | Bing Özel Arama | Bing Varlık Arama            | Bing Otomatik Öneri |
     | Bing Yazım Denetimi |                                                      |                    |                               |                  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[Tek hizmet kaynağı](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Tek hizmet kaynağı](#tab/singleservice)
 
     Kullanılabilir bilişsel hizmetler için bir kaynak oluşturmak üzere aşağıdaki bağlantıları kullanın:
 
-    | Görsel                      | Konuşma                  | Dil                          | Karar verme             | Ara                 |
+    | Görsel                      | Konuşma                  | Dil                          | Karar             | Arama                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Görüntü işleme](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Konuşma Hizmetleri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Modern okuyucu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomali algılayıcısı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Arama API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Özel Vision hizmeti](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Konuşmacı Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Özel Arama](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -58,11 +58,11 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
 
 3. **Oluştur** sayfasında, aşağıdaki bilgileri sağlayın:
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **Adı** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *Mybiliveservicesresource*. |
+    | **Ad** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *Mybiliveservicesresource*. |
     | **Abonelik** | Kullanılabilir Azure aboneliklerinizden birini seçin. |
     | **Konum** | Bilişsel hizmet örneğinizin konumu. Farklı konumlar gecikme gösterebilir, ancak kaynağınızın çalışma zamanı kullanılabilirliğini etkilemez. |
     | **Fiyatlandırma katmanı** | Bilişsel hizmetler hesabınızın maliyeti, seçtiğiniz seçeneklere ve kullanımınıza bağlıdır. Daha fazla bilgi için bkz. API [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/).
@@ -72,11 +72,11 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
 
     **Oluştur**'a tıklayın.
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[Tek hizmet kaynağı](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Tek hizmet kaynağı](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **Adı** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *TextAnalyticsResource*. |
+    | **Ad** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *TextAnalyticsResource*. |
     | **Abonelik** | Kullanılabilir Azure aboneliklerinizden birini seçin. |
     | **Konum** | Bilişsel hizmet örneğinizin konumu. Farklı konumlar gecikme gösterebilir, ancak kaynağınızın çalışma zamanı kullanılabilirliğini etkilemez. |
     | **Fiyatlandırma katmanı** | Bilişsel hizmetler hesabınızın maliyeti, seçtiğiniz seçeneklere ve kullanımınıza bağlıdır. Daha fazla bilgi için bkz. API [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/).

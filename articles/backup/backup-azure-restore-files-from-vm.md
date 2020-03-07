@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660929"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363890"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -125,7 +125,7 @@ Bir birim grubundaki tüm mantıksal birimleri, adları ve bunların yollarını
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 Mantıksal birimleri tercih ettiğiniz yola bağlamak için:
@@ -202,10 +202,10 @@ Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişim
 
 - `download.microsoft.com`
 - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure genel geos Için)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure Çin 21Vianet Için)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure ABD kamu Için)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure Almanya Için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure genel geos Için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure Çin 21Vianet Için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure ABD kamu Için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Almanya Için)
 - Giden bağlantı noktaları 53 (DNS), 443, 3260
 
 > [!NOTE]
@@ -295,7 +295,7 @@ Betik, dosyalara ve klasörlere gözatabiliyor olması için makinedeki Iscsı B
 
 Her bileşenin kimliğini doğrulayabilmesi için karşılıklı CHAP kimlik doğrulama mekanizması kullanıyoruz. Bu, sahte bir başlatıcısının Iscsı hedefine bağlanması ve sahte bir hedefin betiğin çalıştırıldığı makineye bağlanması son derece zor olduğu anlamına gelir.
 
-Kurtarma hizmeti ile makine arasındaki veri akışı, TCP üzerinden güvenli bir SSL tüneli oluşturarak korunur (TLS 1,2, betiğin çalıştırıldığı makinede[desteklenmelidir](#system-requirements) ).
+Kurtarma hizmeti ile makine arasındaki veri akışı, TCP üzerinden güvenli bir TLS tüneli oluşturarak korunur (TLS 1,2, betiğin çalıştırıldığı makinede[desteklenmelidir](#system-requirements) ).
 
 Üst/yedeklenen sanal makinede bulunan herhangi bir dosya Access Control listesi (ACL), bağlı dosya sisteminde de korunur.
 

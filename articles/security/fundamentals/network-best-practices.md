@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771997"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392030"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure uygulamaları
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.
@@ -133,7 +133,7 @@ Karma BT senaryosunda, genellikle bazı şirket içi bağlantı türleri vardır
 * [Siteden sıteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Bu, güvenilir, güvenilir ve kurulu bir teknolojidir, ancak bağlantı Internet üzerinden gerçekleşir. Bant genişliği en fazla yaklaşık 1,25 Gbps ile sınırlıdır. Siteden siteye VPN, bazı senaryolarda istenen seçenektir.
 * **Azure ExpressRoute**. Şirket içi bağlantınız için [ExpressRoute](../../expressroute/expressroute-introduction.md) kullanmanızı öneririz. ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. ExpressRoute, şirket içi konumunuz veya Microsoft Exchange barındırma sağlayıcısı arasında adanmış bir WAN bağlantıdır. Bu bir telekomünikasyon bağlantısı olduğundan, verileriniz Internet üzerinden hareket etmez, bu nedenle internet iletişimlerinin olası risklerine maruz değildir.
 
-ExpressRoute bağlantınızın konumu güvenlik duvarı kapasitesini, ölçeklenebilirliği, güvenilirliği ve ağ trafiği görünürlüğünü etkileyebilir. Mevcut (Şirket içi) ağlarda ExpressRoute 'un nerede sonlandırılacağına yönelik bir kimlik belirlemeniz gerekir. Yapabilecekleriniz:
+ExpressRoute bağlantınızın konumu güvenlik duvarı kapasitesini, ölçeklenebilirliği, güvenilirliği ve ağ trafiği görünürlüğünü etkileyebilir. Mevcut (Şirket içi) ağlarda ExpressRoute 'un nerede sonlandırılacağına yönelik bir kimlik belirlemeniz gerekir. Şunları yapabilirsiniz:
 
 - Trafiğin görünürlüğünü istiyorsanız güvenlik duvarının dışında (çevre ağı paradigma) sonlandırın, veri merkezlerini yalıtmak için mevcut bir uygulamaya devam etmeniz veya yalnızca extranet kaynaklarını yalnızca Azure 'a yerleştirmekten devam etmeniz gerekir.
 - Güvenlik duvarının içinde sonlandırın (ağ uzantısı paradigması). Bu, varsayılan önerinin. Diğer tüm durumlarda, Azure 'u n. veri merkezi olarak değerlendirmesini öneririz.

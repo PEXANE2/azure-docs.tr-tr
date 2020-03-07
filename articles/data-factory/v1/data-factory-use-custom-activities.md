@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438819"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385341"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -42,7 +42,7 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)’yı indirip yükleyin
 

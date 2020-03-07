@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395980"
 ---
 # <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
@@ -21,7 +21,7 @@ Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan v
 
 Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tam bir görsel deneyim sağlar. Veri akışlarınız, ölçeği genişletilmiş veri işleme için kendi yürütme kümenizde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Bir veri akışı oluşturmak için, **fabrika kaynakları**altındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 
@@ -33,13 +33,13 @@ Bu sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvali
 
 Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
 
-![Tuval](media/data-flow/canvas1.png "Tuval")
+![Tuvalinin](media/data-flow/canvas1.png "Tuvalinin")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>Graf
 
 Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
 
-![Tuval](media/data-flow/canvas2.png "Tuval")
+![Tuvalinin](media/data-flow/canvas2.png "Tuvalinin")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure tümleştirme çalışma zamanı veri akışı özellikleri
 
@@ -87,11 +87,11 @@ Her bir dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüştürme
 
 ![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
 
-#### <a name="optimize"></a>En iyi duruma getirme
+#### <a name="optimize"></a>İyileştirme
 
 **Optimizasyon** sekmesi, bölümleme düzenlerini yapılandırma ayarlarını içerir.
 
-![İyileştir](media/data-flow/optimize1.png "En iyi duruma getirme")
+![İyileştir](media/data-flow/optimize1.png "İyileştirme")
 
 Varsayılan ayar **geçerli bölümleme kullanır**, bu, Azure Data Factory Spark üzerinde çalışan veri akışları için yerel bölümlendirme şemasını kullanmasını söyler. Çoğu senaryoda, bu ayar önerilir.
 
@@ -125,15 +125,15 @@ Bölümlenmiş veri sütunlarınızın içindeki değerler için sabit bir Aral�
 
 Verilerinizin önem düzeyini iyi anlamak istiyorsanız anahtar bölümleme iyi bir strateji olabilir. Anahtar bölümleme, sütuninizdeki her benzersiz değer için bölümler oluşturacaktır. Bu sayı, verilerdeki benzersiz değerleri temel alacak olduğundan bölüm sayısını ayarlayamazsınız.
 
-#### <a name="inspect"></a>İncele
+#### <a name="inspect"></a>Bilgiyi
 
 **İnceleme** sekmesi, dönüştürmakta olduğunuz veri akışının meta verilerine bir görünüm sağlar. Sütun sayılarını, sütun değiştirildiğini, eklenen sütunları, veri türlerini, sütun sıralamasını ve sütun başvurularını görebilirsiniz. **İnceleme** , meta verilerinizin salt okunurdur görünümüdür. **İnceleme** bölmesinde meta verileri görmek için hata ayıklama modunun etkin olması gerekmez.
 
-![Bilgiyi](media/data-flow/inspect1.png "İncele")
+![Bilgiyi](media/data-flow/inspect1.png "Bilgiyi")
 
 Dönüşümlerinizi kullanarak verilerinizin şeklini değiştirirken, **İnceleme** bölmesinde meta veri değişiklikleri akışını görürsünüz. Kaynak dönüşümünüze tanımlı bir şema yoksa, veriler **İnceleme** bölmesinde görünmez. Şema DRFT senaryolarında meta verilerin bulunmaması yaygındır.
 
-#### <a name="data-preview"></a>Veri önizlemesi
+#### <a name="data-preview"></a>Veri önizleme
 
 Hata ayıklama modu açık ise, **veri önizleme** sekmesi her dönüşümde verilerin etkileşimli bir anlık görüntüsünü sunar. Daha fazla bilgi için bkz. [hata ayıklama modunda veri önizlemesi](concepts-data-flow-debug-mode.md#data-preview).
 
