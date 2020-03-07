@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980253"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364588"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
@@ -52,7 +52,7 @@ Zamana bağlı sorgu öğeleri büyük saat değerleri için çıkış gecikmesi
 
 Bu nedenle, Stream Analytics sorgunuz tasarlarken dikkatli olun. Büyük bir zaman penceresinde'nı kullanıyorsanız (birden fazla birkaç saat ayarlama için yedi gün) iş başlatıldığında veya yeniden başlatıldığında işin sorgu söz dizimi, zamana bağlı öğeleri için bunu bir gecikme için ilk çıktı yol açabilir.  
 
-İlk çıkış gecikme bu tür için bir risk azaltma, sorgunun paralelleştirme teknikleri (veriyi bölümlendirme) kullanın veya daha fazla akış işi arayı kapatıncaya kadar işleme oranını artırmak için birim ekleyin sağlamaktır.  Daha fazla bilgi için [Stream Analytics işleri oluştururken dikkat edilecek noktalar](stream-analytics-concepts-checkpoint-replay.md)
+İlk çıkış gecikme bu tür için bir risk azaltma, sorgunun paralelleştirme teknikleri (veriyi bölümlendirme) kullanın veya daha fazla akış işi arayı kapatıncaya kadar işleme oranını artırmak için birim ekleyin sağlamaktır.  Daha fazla bilgi için bkz. [Stream Analytics işleri oluşturma konuları](stream-analytics-concepts-checkpoint-replay.md)
 
 Bu etkenler oluşturulan ilk çıkışın dakikliğini etkiler:
 
@@ -74,15 +74,15 @@ Bu etkenler oluşturulan ilk çıkışın dakikliğini etkiler:
 - Yukarı Akış kaynağı olup olmadığını kısıtlandı
 - Sorgu işleme mantığı yoğun işlem gücü kullanımlı olup olmadığı
 
-Azure portalında ayrıntılarını görmek için iş akışında seçip **iş diyagramı**. Her bir giriş var olan bir bölüm biriktirme listesi olay ölçüm. Biriktirme listesi olay ölçümü artmaya devam ederse, sistem kaynaklarının sınırlı olduğu bir göstergesidir. Potansiyel olarak verilecek çıkış havuzu kısıtlama veya yüksek CPU olmasıdır. İş diyagramı kullanma hakkında daha fazla bilgi için bkz. [veri odaklı iş diyagramı kullanarak hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
+Bu ayrıntıları görmek için, Azure portal akış işini seçin ve **iş diyagramını**seçin. Her bir giriş var olan bir bölüm biriktirme listesi olay ölçüm. Biriktirme listesi olay ölçümü artmaya devam ederse, sistem kaynaklarının sınırlı olduğu bir göstergesidir. Potansiyel olarak verilecek çıkış havuzu kısıtlama veya yüksek CPU olmasıdır. İş diyagramını kullanma hakkında daha fazla bilgi için, bkz. [iş diyagramını kullanarak veri odaklı hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışıyla anahtar ihlali uyarısı
 
-Azure SQL veritabanı için bir Stream Analytics işi çıktı olarak yapılandırdığınızda, yığın kayıtları hedef tabloya ekler. Genel olarak, Azure stream analytics garanti eder [en az bir kere teslim](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) bir çıkış havuzuna yine de [tam olarak elde-kez teslim]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL tablosu, tanımlı bir kısıtlama olduğunda SQL çıktı.
+Azure SQL veritabanı için bir Stream Analytics işi çıktı olarak yapılandırdığınızda, yığın kayıtları hedef tabloya ekler. Genel olarak, Azure Stream Analytics, çıkış havuzuna [en az bir kez teslim](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) garantisi sağlarken, bir tane, SQL tablosu tanımlı benzersiz bir KıSıTLAMA olduğunda SQL çıktısına [tam bir kez gönderim elde]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) edebilir.
 
 Azure Stream Analytics, benzersiz anahtar kısıtlamaları SQL tablosunda ayarlanır ve SQL tablosuna eklenen yinelenen kayıt sonra yinelenen kayıt kaldırır. Toplu işleri ve yinelemeli olarak tek bir yinelenen kayıt bulunana kadar toplu ekleme verileri ayırır. Akış işi önemli sayıda yinelenen satır, bu bölme olduğundan ve işlem eklemek daha az verimli ve zaman alıcı olan tek, yinelenenleri yok saymak vardır. Etkinlik günlüğü'nde son bir saat içinde birden çok anahtar ihlali uyarı iletisi görürseniz, SQL çıkışınızı tüm işin yavaşlattığını olasıdır.
 
-Bu sorunu gidermek için şunları yapmalısınız [dizini yapılandırma]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , neden anahtar ihlali IGNORE_DUP_KEY seçeneğini etkinleştirerek. Bu seçeneğin etkinleştirilmesi, SQL toplu ekleme sırasında yoksayılacak yinelenen değerler sağlar ve SQL Azure, yalnızca bir uyarı iletisi yerine bir hata üretir. Azure Stream Analytics artık birincil anahtar ihlali hatalarını üretmez.
+Bu sorunu çözmek için, IGNORE_DUP_KEY seçeneğini etkinleştirerek anahtar ihlaline neden olan [dizini yapılandırmanız]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) gerekir. Bu seçeneğin etkinleştirilmesi, SQL toplu ekleme sırasında yoksayılacak yinelenen değerler sağlar ve SQL Azure, yalnızca bir uyarı iletisi yerine bir hata üretir. Azure Stream Analytics artık birincil anahtar ihlali hatalarını üretmez.
 
 IGNORE_DUP_KEY dizin çeşitli türleri için yapılandırırken aşağıdaki gözlemlere unutmayın:
 
@@ -96,11 +96,11 @@ IGNORE_DUP_KEY dizin çeşitli türleri için yapılandırırken aşağıdaki g�
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -12,17 +12,17 @@ ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
 ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617274"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378997"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
 Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aşağıdaki tablolar, [konuşmadan metne](#speech-to-text), [metinden konuşmaya](#text-to-speech)ve [konuşma çevirisi](#speech-translation) hizmet teklifleri için dil desteğini özetler.
 
-## <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
+## <a name="speech-to-text"></a>Konuşmayı Metne Dönüştürme
 
 Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur. Telaffuz özelleştirmesi Şu anda yalnızca `en-US` ve `de-DE`için kullanılabilir. [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
 
@@ -34,48 +34,48 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
- Yerel Ayar | Dil | Destekleniyor | Özelleştirmeler
+ Yerel Ayar | Dil | Desteklenen | Özelleştirmeleri
 ------|------------|-----------|-------------
-`ar-AE` | Arapça (UAE) | Yes | Hayır
-`ar-BH` | Arapça (Bahreyn), modern standart | Yes | Dil modeli
-`ar-EG` | Arapça (Mısır) | Yes | Dil modeli
-`ar-KW` | Arapça (Kuveyt) | Yes | Hayır
-`ar-QA` | Arapça (Qtor) | Yes | Hayır
-`ar-SA` | Arapça (Suudi Arabistan) | Yes | Hayır
-`ca-ES` | Katalanca | Yes | Dil modeli
-`da-DK` | Danca (Danimarka) | Yes | Dil modeli
-`de-DE` | Almanca (Almanya) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
-`en-AU` | İngilizce (Avustralya) | Yes | Akustik model<br>Dil modeli
-`en-CA` | İngilizce (Kanada) | Yes | Akustik model<br>Dil modeli
-`en-GB` | İngilizce (Birleşik Krallık) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
-`en-IN` | English (India) | Yes | Akustik model<br>Dil modeli
-`en-NZ` | İngilizce (Yeni Zelanda) | Yes | Akustik model<br>Dil modeli
-`en-US` | Türkçe | Yes | Akustik model<br>Dil modeli<br>Söylenişi
-`es-ES` | İspanyolca (İspanya) | Yes | Akustik model<br>Dil modeli
-`es-MX` | İspanyolca (Meksika) | Yes | Akustik model<br>Dil modeli
-`fi-FI` | Fince (Finlandiya) | Yes | Dil modeli
-`fr-CA` | Fransızca (Kanada) | Yes | Akustik model<br>Dil modeli
-`fr-FR` | Fransızca (Fransa) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
-`gu-IN` | Gucerat dili (Hindistan) | Yes | Dil modeli
-`hi-IN` | Hintçe (Hindistan) | Yes | Akustik model<br>Dil modeli
-`it-IT` | İtalyanca (İtalya) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
-`ja-JP` | Japonca (Japonya) | Yes | Dil modeli
-`ko-KR` | Korece (Güney Kore) | Yes | Dil modeli
-`mr-IN` | Marathi dili (Hindistan) | Yes | Dil modeli
-`nb-NO` | Norveççe (Bokmal) (Norveç) | Yes | Dil modeli
-`nl-NL` | Hollanda dili (Hollanda) | Yes | Dil modeli
-`pl-PL` | Lehçe (Polonya) | Yes | Dil modeli
-`pt-BR` | Portekizce (Brezilya) | Yes | Akustik model<br>Dil modeli<br>Söylenişi
-`pt-PT` | Portekizce (Portekiz) | Yes | Dil modeli
-`ru-RU` | Rusça (Rusya) | Yes | Akustik model<br>Dil modeli
-`sv-SE` | İsveççe (İsveç) | Yes | Dil modeli
-`ta-IN` | Tamilce (Hindistan) | Yes | Dil modeli
-`te-IN` | Telugu dili (Hindistan) | Yes | Hayır
-`th-TH` | Tayca (Tayland) | Yes | Hayır
-`tr-TR` | Türkçe (Türkiye) | Yes | Hayır
-`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Yes | Akustik model<br>Dil modeli
-`zh-HK` | Çince (Cantoneo, geleneksel) | Yes | Dil modeli
-`zh-TW` | Çince (Tayvan Mandarin) | Yes | Dil modeli
+`ar-AE` | Arapça (UAE) | Evet | Hayır
+`ar-BH` | Arapça (Bahreyn), modern standart | Evet | Dil modeli
+`ar-EG` | Arapça (Mısır) | Evet | Dil modeli
+`ar-KW` | Arapça (Kuveyt) | Evet | Hayır
+`ar-QA` | Arapça (Qtor) | Evet | Hayır
+`ar-SA` | Arapça (Suudi Arabistan) | Evet | Hayır
+`ca-ES` | Katalanca | Evet | Dil modeli
+`da-DK` | Danca (Danimarka) | Evet | Dil modeli
+`de-DE` | Almanca (Almanya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`en-AU` | İngilizce (Avustralya) | Evet | Akustik model<br>Dil modeli
+`en-CA` | İngilizce (Kanada) | Evet | Akustik model<br>Dil modeli
+`en-GB` | İngilizce (Birleşik Krallık) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`en-IN` | English (India) | Evet | Akustik model<br>Dil modeli
+`en-NZ` | İngilizce (Yeni Zelanda) | Evet | Akustik model<br>Dil modeli
+`en-US` | Türkçe | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`es-ES` | İspanyolca (İspanya) | Evet | Akustik model<br>Dil modeli
+`es-MX` | İspanyolca (Meksika) | Evet | Akustik model<br>Dil modeli
+`fi-FI` | Fince (Finlandiya) | Evet | Dil modeli
+`fr-CA` | Fransızca (Kanada) | Evet | Akustik model<br>Dil modeli
+`fr-FR` | Fransızca (Fransa) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`gu-IN` | Gucerat dili (Hindistan) | Evet | Dil modeli
+`hi-IN` | Hintçe (Hindistan) | Evet | Akustik model<br>Dil modeli
+`it-IT` | İtalyanca (İtalya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`ja-JP` | Japonca (Japonya) | Evet | Dil modeli
+`ko-KR` | Korece (Güney Kore) | Evet | Dil modeli
+`mr-IN` | Marathi dili (Hindistan) | Evet | Dil modeli
+`nb-NO` | Norveççe (Bokmal) (Norveç) | Evet | Dil modeli
+`nl-NL` | Hollanda dili (Hollanda) | Evet | Dil modeli
+`pl-PL` | Lehçe (Polonya) | Evet | Dil modeli
+`pt-BR` | Portekizce (Brezilya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`pt-PT` | Portekizce (Portekiz) | Evet | Dil modeli
+`ru-RU` | Rusça (Rusya) | Evet | Akustik model<br>Dil modeli
+`sv-SE` | İsveççe (İsveç) | Evet | Dil modeli
+`ta-IN` | Tamilce (Hindistan) | Evet | Dil modeli
+`te-IN` | Telugu dili (Hindistan) | Evet | Hayır
+`th-TH` | Tayca (Tayland) | Evet | Hayır
+`tr-TR` | Türkçe (Türkiye) | Evet | Hayır
+`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Evet | Akustik model<br>Dil modeli
+`zh-HK` | Çince (Cantoneo, geleneksel) | Evet | Dil modeli
+`zh-TW` | Çince (Tayvan Mandarin) | Evet | Dil modeli
 
 ## <a name="text-to-speech"></a>Metin okuma
 
@@ -227,7 +227,7 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Çekçe      | `cs`          |
 | Danca      | `da`          |
 | Felemenkçe      | `nl`          |
-| Türkçe      | `en`          |
+| İngilizce      | `en`          |
 | Estonca      | `et`          |
 | Fiji Adaları dili      | `fj`          |
 | Filipin dili      | `fil`          |

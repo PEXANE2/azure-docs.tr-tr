@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744417"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379041"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -29,7 +29,7 @@ Content Moderator, gerçek dünyada senaryolar için en iyi denetleme sürecini 
 
 İncelemeleri oluşturmaya başlamak için [İnceleme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-review.md) bakın.
 
-## <a name="workflows"></a>İş akışları
+## <a name="workflows"></a>İş Akışları
 
 Bir iş akışı, içerik için bulut tabanlı özelleştirilmiş bir filtredir. İş akışları, farklı yollarla içerik filtrelemek için çeşitli hizmetlere bağlanabilir ve ardından uygun eylemi gerçekleştirebilir. Content Moderator Bağlayıcısı ile, bir iş akışı otomatik olarak denetleme etiketleri uygulayabilir ve gönderilen içerikle ilgili incelemeler oluşturabilir.
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199623"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381187"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın
 
@@ -331,7 +331,7 @@ Bu isteğe bağlı bölüm, ölçüm koleksiyonunu denetler. Ham örnekler her b
 
 * Ortalama
 * en az
-* maksimum
+* en fazla
 * Son toplanan değer
 * toplamı hesaplamak için kullanılan ham örnek sayısı
 
@@ -414,7 +414,7 @@ Bu isteğe bağlı bölüm, rastgele [OMI](https://github.com/Microsoft/omi) sor
 ------- | -----
 ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemişse, varsayılan değer, [System Center platformlar arası sağlayıcılar](https://github.com/Microsoft/SCXcore)tarafından uygulanan "root/SCX" dır.
 sorgu | Yürütülecek OMı sorgusu.
-tablo | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
+table | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
 frequency | seçim Sorgunun yürütülmesi arasındaki saniye sayısı. Varsayılan değer 300 ' dir (5 dakika); minimum değer 15 saniyedir.
 iç havuzlar | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
 
@@ -437,7 +437,7 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 Öğe | Değer
 ------- | -----
 file | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
-tablo | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
+table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 iç havuzlar | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 
 "Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.

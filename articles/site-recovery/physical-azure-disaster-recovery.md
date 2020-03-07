@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363199"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Şirket içi fiziksel sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
 [Azure Site Recovery](site-recovery-overview.md) hizmeti, şirket içi makinelerin ve Azure sanal makinelerinin çoğaltma, yük devretme ve geri döndürme işlemlerini yönetip düzenleyerek, olağanüstü durum kurtarma stratejinize katkıda bulunur.
 
-Bu öğreticide, şirket içi fiziksel Windows ve Linux sunucularının Azure 'a olağanüstü durum kurtarma işlemlerinin nasıl ayarlanacağı gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide, şirket içi fiziksel Windows ve Linux sunucularının Azure 'a olağanüstü durum kurtarma işlemlerinin nasıl ayarlanacağı gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure ve şirket içi önkoşulları ayarlama
@@ -27,7 +27,7 @@ Bu öğreticide, şirket içi fiziksel Windows ve Linux sunucularının Azure 'a
 > * Çoğaltma ilkesi oluşturma
 > * Sunucu için çoğaltmayı etkinleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -71,7 +71,7 @@ Bir [Azure ağı](../virtual-network/quick-create-portal.md)kurun.
 - Ağın, kurtarma hizmetleri kasasıyla aynı bölgede olması gerekir
 
 
-## <a name="set-up-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
+## <a name="set-up-an-azure-storage-account"></a>Azure depolama hesabı ayarlama
 
 Bir [Azure depolama hesabı](../storage/common/storage-account-create.md)ayarlayın.
 
@@ -146,7 +146,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 2. Hedef dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 
-   ![Hedefleyin](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Hedef](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
@@ -179,8 +179,8 @@ Her sunucu için çoğaltmayı etkinleştirin.
 8. Koruma için seçtiğiniz tüm makinelere ağ ayarını uygulamak için **Seçili makineler için şimdi yapılandır**’ı seçin. Makineler için Azure ağını ayrı ayrı seçmek için **Daha sonra yapılandır**'ı seçin. 
 9. **Fiziksel makinelerde**ve **+ fiziksel makine**' ye tıklayın. Adı ve IP adresini belirtin. Çoğaltmak istediğiniz makinenin işletim sistemini seçin. Sunucuların bulunması ve listelenmesi birkaç dakika sürer. 
 10. **Özellikler** > **Özellikleri yapılandır** bölümünde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
-11. **Çoğaltma ayarları** > **Çoğaltma ayarlarını yapılandırma** bölümünde doğru çoğaltma ilkesinin seçilip seçilmediğini doğrulayın. 
-12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
+11. **Çoğaltma ayarları** > **Çoğaltma ayarlarını yapılanır** bölümünde doğru çoğaltma ilkesinin seçildiğinden emin olun. 
+12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar**İşler > Site Recovery İşleri >  bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 
 
 Eklediğiniz sunucuları izlemek için, **yapılandırma sunucularındaki** son keşfedilen zamanı, en **son iletişim** > kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.

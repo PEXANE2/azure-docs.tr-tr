@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845522"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388885"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
@@ -19,7 +19,7 @@ Bu makalede, şirket içi Hyper-V VM 'lerini Azure geçişi: Sunucu değerlendir
 
 
 
-Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
@@ -34,7 +34,7 @@ Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve ge�
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu serideki ilk öğreticiyi [doldurun](tutorial-prepare-hyper-v.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
@@ -64,7 +64,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     Asya  | Güneydoğu Asya
     Avrupa | Kuzey Avrupa veya Batı Avrupa
     Birleşik Krallık |  UK Güney veya UK Batı
-    Birleşik Devletler | Doğu ABD, Batı ABD 2 veya Orta Batı ABD
+    Amerika Birleşik Devletleri | Doğu ABD, Batı ABD 2 veya Orta Batı ABD
 
     - Proje bölgesi yalnızca şirket içi VM 'lerden toplanan meta verileri depolamak için kullanılır.
     - VM 'Leri geçirirken farklı bir Azure hedef bölgesi seçebilirsiniz. Tüm Azure bölgeleri geçiş hedefi için desteklenir.
@@ -159,7 +159,7 @@ Gereci ilk kez ayarlayın.
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-      - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDN biçiminde belirtin.
+      - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDNbiçiminde belirtin.
       - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
       - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
@@ -186,7 +186,7 @@ SMB 'lerde VHD 'ler çalıştırıyorsanız, Gereç üzerinden Hyper-V konaklar�
 
 Gereçte aşağıdaki şekilde etkinleştirin:
 
-#### <a name="option-1"></a>Seçenek 1
+#### <a name="option-1"></a>seçenek 1
 
 Gereç sanal makinesinde bu komutu çalıştırın. HyperVHost1/HyperVHost2, örnek ana bilgisayar adlarıdır.
 
@@ -211,7 +211,7 @@ Gerecden Hyper-V konaklarına veya kümelerine bağlanın ve VM bulmayı başlat
 
 1. **Kullanıcı adı** ve **parola**' da, gerecin VM 'leri bulması için kullanacağı hesap kimlik bilgilerini belirtin. Kimlik bilgileri için kolay bir ad belirtin ve **ayrıntıları kaydet**' e tıklayın.
 2. **Konak Ekle**' ye tıklayın ve Hyper-V konağı/küme ayrıntılarını belirtin.
-3. **Doğrula**' ya tıklayın. Doğrulamadan sonra, her bir konakta/kümede keşfedilebilir VM sayısı gösterilir.
+3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, her bir konakta/kümede keşfedilebilir VM sayısı gösterilir.
     - Bir konakta doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
     - Konakları veya kümeleri kaldırmak için > **Sil**' i seçin.
     - Belirli bir konağı kümeden kaldıramazsınız. Tüm kümeyi yalnızca çıkarabilirsiniz.
@@ -245,7 +245,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
 2. **Azure geçişi: Sunucu değerlendirmesi** > **sunucularında** , **değerlendir**' e tıklayın.
 
-    ![Değerlendirin](./media/tutorial-assess-hyper-v/assess.png)
+    ![Değerlendirme](./media/tutorial-assess-hyper-v/assess.png)
 
 3. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
 4. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.

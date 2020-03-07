@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
 ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289450"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388940"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesini kullanarak VMware VM 'lerini değerlendirin
 
@@ -20,7 +20,7 @@ Bu makalede, şirket içi VMware sanal makinelerini (VM 'Ler) Azure geçişi 'nd
 
 [Azure geçişi](migrate-services-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Microsoft iş ortaklarından Azure geçiş araçları ve bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
 > * VM 'Leri değerlendirmek için şirket içinde çalışan bir Azure geçiş gereci ayarlayın.
@@ -33,7 +33,7 @@ Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geç
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu serideki [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 
@@ -144,7 +144,7 @@ Aşağıdaki adımları kullanarak gereç ayarlayın:
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
    - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
    - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-     - **Proxy ayarları**' nı seçin ve proxy adresini ve dinleme bağlantı noktasını http://ProxyIPAddress veya http://ProxyFQDN olarak belirtin.
+     - **Proxy ayarları**' nı seçin ve proxy adresini ve dinleme bağlantı noktasını http://ProxyIPAddress veya http://ProxyFQDNolarak belirtin.
      - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
      - Yalnızca HTTP proxy 'nin desteklendiğini unutmayın.
    - **Zaman eşitleme**: bulmanın düzgün çalışması için gereç üzerindeki zaman internet ile eşitlenmiş olmalıdır.

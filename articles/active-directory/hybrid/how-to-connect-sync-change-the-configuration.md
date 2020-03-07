@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919078"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376317"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
 Bu makalenin amacı, Azure Active Directory (Azure AD) Connect Sync 'de varsayılan yapılandırmada değişiklik yapma konusunda size yol gösterir. Bazı yaygın senaryolar için adımlar sağlar. Bu bilgi ile kendi iş kurallarınızı temel alarak kendi yapılandırmanızda basit değişiklikler yapabiliyor olmanız gerekir.
@@ -267,7 +267,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Adı | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
     | Açıklama | *Bir açıklama girin* |  |
     | Bağlı sistem | *Şirket içi AD bağlayıcısını seçin* |  |
-    | Bağlı sistem nesne türü | **User** |  |
+    | Bağlı sistem nesne türü | **Kullanıcısını** |  |
     | Meta veri deposu nesne türü | **Kişiler** |  |
     | Bağlantı türü | **Birleştir** |  |
     | Öncellik | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
@@ -284,7 +284,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Doğrudan | UserType | extensionAttribute1 | Olmayan | Güncelleştir |
+    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştir |
 
     Başka bir örnekte, UserType özniteliğinin değerini diğer özelliklerden türetmek istiyorsunuz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümü <em>@partners.fabrikam123.org</em>ile bitiyorsa tüm kullanıcıları Konuk olarak eşitlemeniz gerekir. Şunun gibi bir ifade uygulayabilirsiniz:
 
@@ -309,7 +309,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
     | Adı | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
     | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *AAD bağlayıcısını seçin* ||
-    | Bağlı sistem nesne türü | **User** ||
+    | Bağlı sistem nesne türü | **Kullanıcısını** ||
     | Meta veri deposu nesne türü | **Kişiler** ||
     | Bağlantı türü | **Birleştir** ||
     | Öncellik | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
@@ -319,7 +319,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
-    | Cloudana kopyalı | Not QUAL | Doğru |
+    | Cloudana kopyalı | Not QUAL | True |
 
     Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerine uygulanacağını belirler. Bu örnekte, *Çıkış IÇIN ad – Kullanıcı kimliği* olmayan eşitleme kuralına göre aynı kapsam filtresini kullanırız. Eşitleme kuralının şirket içi Active Directory eşitlenmemiş Kullanıcı nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 
@@ -327,7 +327,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Doğrudan | UserType | UserType | Olmayan | Güncelleştir |
+    | Direct | UserType | UserType | Olmayan | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye tıklayın.
 

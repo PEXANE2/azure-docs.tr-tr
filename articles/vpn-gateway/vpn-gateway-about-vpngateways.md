@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972395"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356348"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN Ağ Geçidi nedir?
 
@@ -25,7 +25,7 @@ Sanal ağ geçidi, *ağ geçidi alt ağı*olarak adlandırılan, oluşturduğunu
 
 Bir sanal ağ geçidi için yapılandırdığınız bir ayar ağ geçidi türüdür. Ağ Geçidi türü, sanal ağ geçidinin nasıl kullanılacağını ve ağ geçidinin gerçekleştireceği eylemleri belirtir. ' VPN ' ağ geçidi türü, oluşturulan sanal ağ geçidi türünün bir ExpressRoute ağ geçidi yerine bir ' VPN Gateway ' olduğunu belirtir. Bir sanal ağda iki sanal ağ geçidi olabilir; tek bir VPN ağ geçidi ve bir ExpressRoute ağ geçidi, birlikte [var olan](#coexisting) bağlantı yapılandırmalarına sahip olan durumdur. Daha fazla bilgi için bkz. [Ağ geçidi türleri](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
-VPN ağ geçitleri Azure Kullanılabilirlik Alanları ' de dağıtılabilir. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur. [Azure kullanılabilirlik alanları bölgede yedekli sanal ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md) bilgi
+VPN ağ geçitleri Azure Kullanılabilirlik Alanları ' de dağıtılabilir. Bu, sanal ağ geçitleri için esneklik, ölçeklenebilirlik ve daha yüksek kullanılabilirlik sağlar. Ağ geçitlerini Azure Kullanılabilirlik Alanları fiziksel olarak dağıtmak ve bölge düzeyindeki hatalardan Azure ile şirket içi ağ bağlanabilirliğini korurken bir bölgedeki ağ geçitlerini mantıksal olarak ayırır. [Azure kullanılabilirlik alanları bölgede yedekli sanal ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md) bilgi
 
 Bir sanal ağ geçidinin oluşturulması 45 dakika sürebilir. Bir sanal ağ geçidi oluşturduğunuzda ağ geçidi VM’leri ağ geçidi alt ağına dağıtılır ve belirttiğiniz ayarlarla yapılandırılır. Bir VPN ağ geçidi oluşturduktan sonra bu VPN ağ geçidi ile başka bir VPN ağ geçidi arasında bir IPsec/IKE VPN tüneli bağlantısı (Sanal Ağlar arası) oluşturabilir veya VPN ağ geçidi ile bir şirket içi VPN cihazı (Siteden Siteye) arasında IPsec/IKE VPN tünel bağlantısı oluşturabilirsiniz. Ayrıca, sanal ağınıza bir konferans veya evden gibi uzak bir konumdan bağlanmanızı sağlayan bir noktadan siteye VPN bağlantısı (OpenVPN, Ikev2 veya SSTP üzerinden VPN) oluşturabilirsiniz.
 
@@ -118,7 +118,7 @@ Bağladığınız VNet'ler,
 
 Azure'ın şu anda iki dağıtım modeli vardır: Klasik ve Resource Manager. Azure'ı bir süredir kullanıyorsanız klasik VNet'te çalışan Azure VM'leriniz ve örnek rollerinizin olması olasıdır. Daha yeni VM'leriniz ve rol örnekleriniz Resource Manager'da oluşturulan bir VNet'te çalışıyor olabilir. Bir VNet'teki kaynakların bir diğerindeki kaynaklarla doğrudan iletişim kurabilmesini sağlamak üzere VNet'ler arasında bir bağlantı oluşturabilirsiniz.
 
-### <a name="vnet-peering"></a>Sanal ağ eşleme
+### <a name="vnet-peering"></a>VNet eşlemesi
 
 Sanal ağınız belirli gereksinimleri karşılıyorsa bağlantınızı oluşturmak için VNet eşlemesini kullanabilirsiniz. VNet eşlemesi sanal ağ geçidini kullanmaz. Daha fazla bilgi için bkz. [VNet eşlemesi](../virtual-network/virtual-network-peering-overview.md).
 
@@ -128,7 +128,7 @@ Sanal ağınız belirli gereksinimleri karşılıyorsa bağlantınızı oluştur
 
 ## <a name="ExpressRoute"></a>ExpressRoute (özel bağlantı)
 
-ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure, Office 365 ve CRM Online gibi Microsoft bulut hizmetlerine bağlantı kurabilirsiniz. Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VPN), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.
+ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure, Office 365 ve CRM Online gibi Microsoft bulut hizmetlerine bağlantı kurabilirsiniz. Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VP), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.
 
 ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, ExpressRoute bağlantılarına İnternet üzerindeki sıradan bağlantılara göre daha fazla güvenilirlik, yüksek hız, düşük gecikme ve normal bağlantılardan daha yüksek güvenlik sağlar.
 

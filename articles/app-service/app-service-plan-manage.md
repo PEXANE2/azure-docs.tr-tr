@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681200"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358139"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure 'da App Service planını yönetme
 
@@ -24,7 +24,7 @@ Bir [Azure App Service planı](overview-hosting-plans.md) , bir App Service uygu
 
 Boş bir App Service planı oluşturabilir veya uygulama oluşturmanın bir parçası olarak bir plan oluşturabilirsiniz.
 
-1. [Azure portalda](https://portal.azure.com)**Kaynak oluştur**’u seçin.
+1. [Azure Portal](https://portal.azure.com) **kaynak oluştur**' u seçin.
 
    ![Azure portal bir kaynak oluşturun.][createResource] 
 
@@ -96,7 +96,7 @@ Beklenmeyen ücretlerden kaçınmak için, bir App Service planındaki son uygul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure’da uygulamanın ölçeğini artırma](manage-scale-up.md)
+> [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

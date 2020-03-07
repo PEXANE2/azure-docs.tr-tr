@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395161"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark, Azure HDInsight'ı kullanarak sorun giderme
 
@@ -31,25 +31,25 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama `OutofMemoryError` ö
 
 1. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve genişletin.
 
-1. Gibi ayarlamak için gereken değer ayarı Ara **spark.executor.memory**. Bu durumda, **9728dk** değeri çok yüksektir.
+1. **Spark. yürütücü. Memory**gibi ayarlamanız gereken değer ayarını bulun. Bu durumda, **9728dk** değeri çok yüksektir.
 
     ![Özel spark Varsayılanları seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-1. Önerilen ayar için değer ayarlayın. Değer **2048m** için bu ayar önerilir.
+1. Önerilen ayar için değer ayarlayın. Bu ayar için **2048m** değeri önerilir.
 
 1. Değer kaydedin ve ardından yapılandırmayı kaydedin. **Kaydet**’i seçin.
 
     ![Değeri değiştirmek için 2048 m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Yapılandırma değişiklikleri hakkında bir not yazın ve ardından **Kaydet**.
+    Yapılandırma değişiklikleriyle ilgili bir konum yazın ve ardından **Kaydet**' i seçin.
 
     ![Yaptığınız değişiklikleri hakkında bir not girin](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    Tüm yapılandırmaları dikkat etmeniz gerekiyorsa size bildirilir. Öğeleri not edin ve ardından **yine de devam**.
+    Tüm yapılandırmaları dikkat etmeniz gerekiyorsa size bildirilir. Öğeleri aklınızda ve **yine de devam et**' i seçin.
 
     ![Select yine de devam](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. Bir yapılandırma kaydedildiği zaman hizmeti yeniden başlatmanız istenir. Seçin **yeniden**.
+1. Bir yapılandırma kaydedildiği zaman hizmeti yeniden başlatmanız istenir. **Yeniden Başlat**' ı seçin.
 
     ![Yeniden başlatma seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,13 +61,13 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama `OutofMemoryError` ö
 
     ![Çalışan işlemleri gözden geçirin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Yapılandırmaları ekleyebilirsiniz. Listeden yapılandırmaları seçin **özel spark2 varsayılanları**ve ardından **Özellik Ekle**.
+1. Yapılandırmaları ekleyebilirsiniz. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve ardından **Özellik Ekle**' yi seçin.
 
     ![Özellik Ekle'yi seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Yeni bir özellik tanımlayın. Veri türü gibi belirli ayarlar için bir iletişim kutusunu kullanarak, tek bir özellik tanımlayabilirsiniz. Veya, her satırda bir tanım'ı kullanarak birden çok özellik tanımlayabilirsiniz.
 
-    Bu örnekte, **spark.driver.memory** özellik değeriyle tanımlanan **4g**.
+    Bu örnekte, **spark. Driver. Memory** özelliği **4g**değeri ile tanımlanmıştır.
 
     ![Yeni bir özellik tanımlayın](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
@@ -77,7 +77,7 @@ Bu değişiklikler, küme çapında ancak Spark işi gönderdiğinizde geçersiz
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Bir Apache Spark uygulaması kümeleri Jupyter Not Defteri kullanarak nasıl yapılandırabilirim?
 
-Jupyter Not Defteri, ilk hücrenin sonra **%% yapılandırma** yönergesi, Spark yapılandırmaları geçerli JSON biçiminde belirtin. Gerçek değerleri gerektiği gibi değiştirin:
+Jupyter Not defterinin ilk hücresinde, **%% Configure** direktifinden sonra Spark YAPıLANDıRMALARıNıN geçerli JSON biçiminde belirtilmesi gerekir. Gerçek değerleri gerektiği gibi değiştirin:
 
 ![Yapılandırma Ekle](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
@@ -99,7 +99,7 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 ### <a name="additional-reading"></a>Ek okuma
 
-[HDInsight kümeleri üzerinde Apache Spark iş gönderme](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight kümelerinde iş gönderimi Apache Spark](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

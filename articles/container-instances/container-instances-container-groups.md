@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365049"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
@@ -34,7 +34,7 @@ Bu örnek kapsayıcı grubu:
 > [!NOTE]
 > Çoklu kapsayıcı grupları Şu anda yalnızca Linux kapsayıcılarını destekliyor. Windows kapsayıcıları için Azure Container Instances yalnızca tek bir kapsayıcı örneğinin dağıtımını destekler. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklılıklarını hizmete [genel bakış](container-instances-overview.md#linux-and-windows-containers)bölümünde bulabilirsiniz.
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
 Çok kapsayıcılı bir grubu dağıtmanın iki yaygın yolu aşağıda verilmiştir: bir [Kaynak Yöneticisi şablonu][resource-manager template] veya [YAML dosyası][yaml-file]kullanın. Kapsayıcı örneklerini dağıtırken ek Azure hizmet kaynakları (örneğin, bir [Azure dosyaları paylaşma][azure-files]) dağıtmanız gerektiğinde, bir kaynak yöneticisi şablonu önerilir. YAML biçiminin daha kısa olmasından dolayı, dağıtımınız yalnızca kapsayıcı örnekleri içerdiğinde YAML dosyası önerilir. Ayarlayabileceğiniz özelliklerle ilgili ayrıntılar için [Kaynak Yöneticisi Şablon başvurusu](/azure/templates/microsoft.containerinstance/containergroups) veya [YAML başvuru](container-instances-reference-yaml.md) belgelerine bakın.
 
@@ -64,7 +64,7 @@ Bu senaryoda, kapsayıcı örneği için 2 CPU kaynak sınırı ayarlayabilirsin
 
 * Bir kapsayıcı grubundaki **en fazla** kaynak için, dağıtım bölgesindeki Azure Container Instances [kaynak kullanılabilirliğine][region-availability] bakın.
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 
 Kapsayıcı grupları, bir dış IP adresini, bu IP adresinde bir veya daha fazla bağlantı noktasını ve tam etki alanı adı (FQDN) olan bir DNS etiketini paylaşabilir. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Kapsayıcı grubu silindiğinde kapsayıcı grubunun IP adresi ve FQDN serbest bırakılır. 
 
@@ -82,7 +82,7 @@ Bir kapsayıcı grubuna bağlamak için dış birimler belirtebilirsiniz. Destek
 
 Bu birimleri bir gruptaki tek kapsayıcılar içindeki belirli yollarla eşleyebilirsiniz. 
 
-## <a name="common-scenarios"></a>Genel senaryolar
+## <a name="common-scenarios"></a>Yaygın senaryolar
 
 Çok Kapsayıcılı gruplar, tek bir işlevsel görevi az sayıda kapsayıcı görüntülerine bölmek istediğiniz durumlarda faydalıdır. Bu görüntüler daha sonra farklı takımlar tarafından teslim edilebilir ve ayrı kaynak gereksinimlerine sahip olabilir.
 

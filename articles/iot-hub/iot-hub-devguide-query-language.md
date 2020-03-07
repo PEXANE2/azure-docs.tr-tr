@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344102"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül TWINS, işler ve ileti yönlendirme için sorgu dili IoT Hub
 
@@ -328,7 +328,7 @@ SELECT <select_list>
 
 **FROM < from_specification >** yan tümcesi yalnızca üç değeri kabul edebilir: **cihazlardan** cihaz ikizlerini sorgular **. modüller, modülleri** sorgulamak için veya **Devices.Jobs 'den** sorgu işi-cihaz başına ayrıntılar.
 
-## <a name="where-clause"></a>WHERE yan tümcesi
+## <a name="where-clause"></a>WHERE tümcesi
 
 **Where < filter_condition >** yan tümcesi isteğe bağlıdır. Bu, FROM koleksiyonundaki JSON belgelerinin sonucun bir parçası olarak dahil edilmesini sağlamak için karşılaması gereken bir veya daha fazla koşulu belirtir. Herhangi bir JSON belgesi, sonuca eklenmek için belirtilen koşulları "true" olarak değerlendirmelidir.
 

@@ -4,11 +4,11 @@ description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yüks
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 01f8eb861a1fc53ad95a95d7695df8e4b5b8a2ab
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393260"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -211,9 +211,9 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | --- | --- | --- | --- |
 |AllowNodeStateRemovedForSeedNode|bool, varsayılan değer FALSE |Dinamik|Çekirdek düğüm için düğüm durumunun kaldırılmasına izin verilip verilmeyeceğini belirten bayrak |
 |BuildReplicaTimeLimit|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (3600)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Durum bilgisi olan bir çoğaltma oluşturmak için zaman sınırı; bir uyarı sistem durumu raporu başlatılacak |
-|ClusterPauseThreshold|int, varsayılan değer 1 ' dir|Dinamik|Sistemdeki düğümlerin sayısı bu değerin altına giderseniz, yerleştirme; Yük Dengeleme; ve yük devretme durdurulur. |
+|ClusterPauseThreshold|Int, varsayılan değer 1 ' dir|Dinamik|Sistemdeki düğümlerin sayısı bu değerin altına giderseniz, yerleştirme; Yük Dengeleme; ve yük devretme durdurulur. |
 |CreateInstanceTimeLimit|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (300)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Durum bilgisi olmayan örnek oluşturmak için zaman sınırı; bir uyarı sistem durumu raporu başlatılacak |
-|ExpectedClusterSize|int, varsayılan değer 1 ' dir|Dinamik|Küme başlangıçta başlatıldığında; FM, diğer hizmetleri yerleştirmeye başlamadan önce bu sayıda düğümün kendilerini rapor vermesini bekler; adlandırma gibi sistem hizmetleri de dahil. Bu değerin artırılması, kümenin başlaması için gereken süreyi artırır; Ancak, erken düğümlerin aşırı yüklenmesine ve ayrıca daha fazla düğüm çevrimiçi hale geldiği için gerekli olan ek taşınmasına engel olur. Bu değer genellikle ilk küme boyutunun küçük bir kesri olarak ayarlanmalıdır. |
+|ExpectedClusterSize|Int, varsayılan değer 1 ' dir|Dinamik|Küme başlangıçta başlatıldığında; FM, diğer hizmetleri yerleştirmeye başlamadan önce bu sayıda düğümün kendilerini rapor vermesini bekler; adlandırma gibi sistem hizmetleri de dahil. Bu değerin artırılması, kümenin başlaması için gereken süreyi artırır; Ancak, erken düğümlerin aşırı yüklenmesine ve ayrıca daha fazla düğüm çevrimiçi hale geldiği için gerekli olan ek taşınmasına engel olur. Bu değer genellikle ilk küme boyutunun küçük bir kesri olarak ayarlanmalıdır. |
 |ExpectedNodeDeactivationDuration|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Bu, bir düğümün ' de devre dışı bırakma işlemini tamamlaması için beklenen süredir. |
 |ExpectedNodeFabricUpgradeDuration|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Bu, Windows Fabric yükseltmesi sırasında bir düğümün yükseltilmesi için beklenen süredir. |
 |ExpectedReplicaUpgradeDuration|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Bu, uygulama yükseltmesi sırasında bir düğümde yükseltilecek tüm çoğaltmaların beklenen süredir. |
@@ -318,7 +318,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | **Parametresinin** | **İzin verilen değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
 |Maxpercentdeltaunhealthyınodes|Int, varsayılan değer 10 ' dur|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: kümenin sağlıklı olması için izin verilen Delta düğümlerinin en yüksek yüzdesi |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, varsayılan değer 15 ' tir|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: bir yükseltme etki alanında, kümenin sağlıklı olması için izin verilen en fazla sağlıksız düğüm Delta yüzdesi |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, varsayılan değer 15 ' tir|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: bir yükseltme etki alanında, kümenin sağlıklı olması için izin verilen en fazla sağlıksız düğüm Delta yüzdesi |
 
 ## <a name="hosting"></a>Barındırma
 
@@ -591,10 +591,10 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | --- | --- | --- | --- |
 |Batchval Gementınterval|TimeSpan, varsayılan:: TimeSpan:: FromMilliseconds (15)|Statik|Zaman aralığı değerini saniye cinsinden belirtin. Bir onayı geri göndermeden önce çoğaltıcı tarafından bir işlem alındıktan sonra beklediği süreyi belirler. Bu süre boyunca alınan diğer işlemler, bildirimlerin tek bir ileti içinde geri gönderilmesini >, ağ trafiğini azaltmakta ve çoğaltıcı verimini potansiyel olarak azaltmaktadır.|
 |MaxCopyQueueSize|uint, varsayılan değer 1024|Statik|Bu en büyük değer, çoğaltma işlemlerini tutan sıranın ilk boyutunu tanımlar. 2 ' nin üssü olması gerektiğini unutmayın. Çalışma zamanı sırasında sıranın bu boyut ile büyümesi, birincil ve ikincil çoğaltıcılar arasında kısıtlanacak.|
-|MaxPrimaryReplicationQueueMemorySize|uint, varsayılan 0 ' dır|Statik|Bu, birincil çoğaltma sırasının bayt cinsinden en yüksek değeridir.|
+|MaxPrimaryReplicationQueueMemorySize|Uint, varsayılan 0 ' dır|Statik|Bu, birincil çoğaltma sırasının bayt cinsinden en yüksek değeridir.|
 |MaxPrimaryReplicationQueueSize|uint, varsayılan değer 1024|Statik|Bu, birincil çoğaltma kuyruğunda mevcut olabilecek en fazla işlem sayısıdır. 2 ' nin üssü olması gerektiğini unutmayın.|
 |MaxReplicationMessageSize|uint, varsayılan değer 52428800|Statik|Çoğaltma işlemlerinin en büyük ileti boyutu. Varsayılan değer 50 MB 'tır.|
-|MaxSecondaryReplicationQueueMemorySize|uint, varsayılan 0 ' dır|Statik|Bu, ikincil çoğaltma sırasının bayt cinsinden en yüksek değeridir.|
+|MaxSecondaryReplicationQueueMemorySize|Uint, varsayılan 0 ' dır|Statik|Bu, ikincil çoğaltma sırasının bayt cinsinden en yüksek değeridir.|
 |MaxSecondaryReplicationQueueSize|uint, varsayılan değer 2048|Statik|Bu, ikincil çoğaltma kuyruğunda olabilecek en fazla işlem sayısıdır. 2 ' nin üssü olması gerektiğini unutmayın.|
 |Queuehealthmonitoringınterval|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (30)|Statik|Zaman aralığı değerini saniye cinsinden belirtin. Bu değer, çoğaltma işlemi kuyruklarındaki herhangi bir uyarı/hata sistem durumu olayını izlemek için çoğaltıcı tarafından kullanılan zaman dilimini belirler. ' 0 ' değeri sistem durumu izlemeyi devre dışı bırakır |
 |Queuehealthwarningatusage yüzdesi|uint, varsayılan değer 80|Statik|Bu değer, daha sonra yüksek kuyruk kullanımı hakkında uyarı bildirdiğimiz Çoğaltma sırası kullanımını (yüzde cinsinden) belirler. Bu, bir Queuehealthmonitoringınterval izin aralığından sonra yaptık. Kuyruk kullanımı, yetkisiz kullanım aralığındaki bu yüzdenin altına düşerse|

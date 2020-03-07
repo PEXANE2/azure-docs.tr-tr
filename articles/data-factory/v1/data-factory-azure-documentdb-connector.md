@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387631"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Cosmos DB veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -36,12 +36,12 @@ Desteklenen herhangi bir kaynak veri deposundan verileri, desteklenen herhangi b
 
 Verileri, JSON dosyalarını veya başka bir Cosmos DB koleksiyonu olarak kopyalamak için bkz. [JSON belgelerini içeri/dışarı aktarma](#importexport-json-documents).
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak Azure Cosmos DB veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -483,16 +483,16 @@ Azure Cosmos DB, iç içe yapılara izin verilen JSON belgeleri için bir NoSQL 
 ## <a name="appendix"></a>Ek
 1. **Soru:** Kopyalama etkinliği mevcut kayıtların güncelleştirilmesini destekliyor mu?
 
-    **Cevap:** Hayır.
+    **Cevap:** Eşleşen.
 2. **Soru:** Azure Cosmos DB kopyası, zaten kopyalanmış kayıtlarla nasıl yeniden denenirken?
 
     **Cevap:** Kayıtlarda bir "ID" alanı varsa ve kopyalama işlemi aynı KIMLIĞE sahip bir kayıt eklemeye çalışırsa, kopyalama işlemi bir hata oluşturur.
 3. **Soru:** [Aralık veya karma tabanlı veri bölümlendirme](../../cosmos-db/sql-api-partition-data.md)Data Factory destekler mi?
 
-    **Cevap:** Hayır.
+    **Cevap:** Eşleşen.
 4. **Soru:** Tablo için birden fazla Azure Cosmos DB koleksiyonu belirtebilir miyim?
 
-    **Cevap:** Hayır. Şu anda yalnızca bir koleksiyon belirtilebilir.
+    **Cevap:** Eşleşen. Şu anda yalnızca bir koleksiyon belirtilebilir.
 
 ## <a name="performance-and-tuning"></a>Performans ve ayarlama
 Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .

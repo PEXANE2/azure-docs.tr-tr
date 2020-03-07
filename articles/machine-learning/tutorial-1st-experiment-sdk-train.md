@@ -11,11 +11,11 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116542"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355222"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -133,7 +133,7 @@ Eğitim tamamlandıktan sonra, portalda deneye bir bağlantı getirmek için `ex
 experiment
 ```
 
-<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Adı</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
 
