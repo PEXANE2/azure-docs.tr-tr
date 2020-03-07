@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457013"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382070"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama
 
 Bu öğreticide, *X. 509.952 sertifika kimlik doğrulamasını*kullanarak Azure IoT Hub 'ınızı güvence altına almak için gereken adımlar gösterilmektedir. Çizim amacına yönelik olarak, Windows makinenizde yerel olarak sertifika oluşturmak için OpenSSL açık kaynaklı aracını kullanırız. Bu öğreticiyi yalnızca test amacıyla kullanmanızı öneririz. Üretim ortamında, sertifikaları bir *kök sertifika yetkilisinden (CA)* satın almalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki kaynakların size hazırlanmaya yönelik olması gerekir:
 
@@ -97,7 +97,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 C# cihazının benzetimin
 
     Bu adım, Azure IoT cihaz SDK 'Sı NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

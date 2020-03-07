@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612924"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378526"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, Azure AD 'deki Kullanıcı nesneleri için belirli öznite
 | mailNickname |SAMAccountName (bazen otomatik olarak oluşturulabilir) |
 | Mobil |Mobil |
 | uzantının |msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |Sıdhistory |
+| onPremiseSecurityIdentifier |Sıdhistory |
 | passwordPolicies |userAccountControl (DONT_EXPIRE_PASSWORD bitini ayarlar veya temizler) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | posta kodu |posta kodu |
@@ -92,7 +92,7 @@ Aşağıdaki tabloda, Azure AD 'deki grup nesnelerinin belirli özniteliklerinin
 | posta |posta |
 | mailNickname |msDS-Azureadmailtakma ad |
 | uzantının |msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |Sıdhistory |
+| onPremiseSecurityIdentifier |Sıdhistory |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Şirket içi AD DS Azure AD 'ye ve Azure AD DS eşitleme

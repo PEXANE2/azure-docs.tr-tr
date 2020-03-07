@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861923"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379222"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Sanal ağ geçidi SKU 'Ları (eski SKU 'Lar) ile çalışma
 
@@ -36,7 +36,7 @@ Eski ağ geçidi fiyatlandırmasını, [ExpressRoute fiyatlandırma sayfasında]
 
 Ağ geçidinizi aynı SKU ailesi içindeki bir ağ geçidi SKU 'SU ile yeniden boyutlandırabilirsiniz. Örneğin, standart bir SKU 'SU varsa, HighPerformance SKU 'suna yeniden boyutlandırabilirsiniz. Ancak, eski SKU 'Lar ve yeni SKU aileleri arasında VPN ağ geçidinizi yeniden boyutlandıramazsınız. Örneğin, standart bir SKU 'dan bir VpnGw2 SKU 'suna veya temel SKU 'yu VpnGw1 'e gidemezsiniz.
 
-### <a name="resource-manager"></a>Kaynak Yöneticisi
+### <a name="resource-manager"></a>Resource Manager
 
 PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir ağ geçidini yeniden boyutlandırmak üzere aşağıdaki komutu kullanın:
 

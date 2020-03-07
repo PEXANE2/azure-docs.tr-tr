@@ -16,11 +16,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350903"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389079"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure portal bir Windows SQL Server sanal makinesi sağlama
 
@@ -106,7 +106,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 ![SQL VM disk ayarları](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Networking (Ağ İletişimi)
+### <a name="networking"></a>Ağ
 
 **Ağ** sekmesinde, ağ seçeneklerinizi yapılandırın. 
 
@@ -242,7 +242,7 @@ Yedeklemeyi şifrelemek için **Etkinleştir**’e tıklayın. Ardından **Parol
 Daha fazla bilgi için bkz. [Azure Virtual Machines’de SQL Server için Otomatik Yedekleme](virtual-machines-windows-sql-automated-backup.md).
 
 
-### <a name="machine-learning-services"></a>Machine Learning Hizmetleri
+### <a name="machine-learning-services"></a>Machine Learning Services
 
 [Machine Learning Services](/sql/advanced-analytics/)etkinleştirme seçeneğiniz vardır. Bu seçenek, SQL Server 2017 ' de Python ve R ile Machine Learning kullanmanıza olanak sağlar. **SQL Server ayarları** penceresinde **Etkinleştir** ' i seçin.
 

@@ -8,11 +8,11 @@ ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
 ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661575"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367716"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
 
@@ -80,7 +80,7 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır.  Bu sorguları olduğu gibi çalıştırabilir veya gereksinimlerinize göre özelleştirebilirsiniz.  İlk sorgu, zaman içinde bu işlemin süresini gösterir.
 
-    ![günlük sorgusu](media/tutorial-performance/7-request-time-logs.png)
+    ![Günlük sorgusu](media/tutorial-performance/7-request-time-logs.png)
 
 
 ## <a name="identify-slow-client-operations"></a>Yavaş istemci işlemlerini belirleme

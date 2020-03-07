@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457114"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382195"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
@@ -39,7 +39,7 @@ Aşağıdaki listede uç noktalar açıklanmaktadır:
 
 * **İş yönetimi**. Her IoT Hub 'ı, [işleri](iot-hub-devguide-jobs.md)sorgulamak ve yönetmek için hizmete YÖNELIK BIR https REST uç noktası kümesi sunar.
 
-* **Cihaz uç noktaları**. IoT Hub, kimlik kayıt defterindeki her bir cihaz için belirli uç noktaları kullanıma sunar:
+* **Cihaz uç noktaları**. Kimlik kayıt defterindeki her bir cihaz için IoT Hub bir uç nokta kümesi kullanıma sunar:
 
   * *Cihazdan buluta Iletiler gönderme*. Cihaz, [cihazdan buluta iletileri göndermek](iot-hub-devguide-messages-d2c.md)için bu uç noktayı kullanır.
 
@@ -77,8 +77,8 @@ IoT Hub Şu anda ek uç noktalar olarak aşağıdaki Azure hizmetlerini destekle
 
 * Azure depolama kapsayıcıları
 * Event Hubs
-* Hizmet Veri Yolu Sıraları
-* Hizmet Veri Yolu Konuları
+* Service Bus Kuyrukları
+* Service Bus Konuları
 
 Ekleyebileceğiniz uç nokta sayısıyla ilgili sınırlar için bkz. [Kotalar ve azaltma](iot-hub-devguide-quotas-throttling.md).
 

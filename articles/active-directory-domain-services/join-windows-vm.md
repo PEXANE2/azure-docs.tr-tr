@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 05705d14db336b15a6ddf2317f9e69464c8e575b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613871"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378533"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Öğretici: Windows Server sanal makinesini yönetilen bir etki alanına ekleme
 
@@ -39,7 +39,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız va
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
     * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
-* Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
+* Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabı.
     * Hesabın Azure AD DS yönetilen etki alanında oturum açabilmeleri için Azure AD Connect Parola karması eşitlemesi veya self servis parola sıfırlamasının gerçekleştirildiğinden emin olun.
 * Azure AD DS sanal ağınıza dağıtılan bir Azure savunma ana bilgisayarı.
     * Gerekirse, [bir Azure savunma ana bilgisayarı oluşturun][azure-bastion].
@@ -153,7 +153,7 @@ Oluşturulan VM ve Azure savunma kullanılarak oluşturulan Web tabanlı bir RDP
 
     ![Katılacak Azure AD DS yönetilen etki alanını belirtin](./media/join-windows-vm/join-domain.png)
 
-1. Etki alanına katılacak etki alanı kimlik bilgilerini girin. *Azure AD DC Administrators* grubuna ait olan bir kullanıcının kimlik bilgilerini kullanın. Yalnızca bu grubun üyeleri, makineleri Azure AD DS tarafından yönetilen etki alanına katma ayrıcalıklarına sahiptir. Hesap, Azure AD DS yönetilen etki alanının veya Azure AD kiracısının bir parçası olmalıdır-Azure AD kiracınızla ilişkili dış dizinlerden gelen hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz. Hesap kimlik bilgileri, aşağıdaki yollarla belirtilebilir:
+1. Etki alanına katılacak etki alanı kimlik bilgilerini girin. Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcının kimlik bilgilerini kullanın. Hesap, Azure AD DS yönetilen etki alanının veya Azure AD kiracısının bir parçası olmalıdır-Azure AD kiracınızla ilişkili dış dizinlerden gelen hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz. Hesap kimlik bilgileri, aşağıdaki yollarla belirtilebilir:
 
     * **UPN biçimi** (önerilir)-Kullanıcı hesabı IÇIN Azure AD 'de yapılandırıldığı şekilde Kullanıcı asıl adı (UPN) sonekini girin. Örneğin, *contosoadmin* kullanıcısının UPN son eki `contosoadmin@aaddscontoso.onmicrosoft.com`olacaktır. UPN biçiminin *sAMAccountName* biçimi yerine etki alanında oturum açmak için güvenilir bir şekilde kullanılabilecek, yaygın olarak kullanılan birkaç kullanım durumu vardır:
         * Bir kullanıcının UPN öneki uzunsa ( *deehasareallylongname*gibi), *sAMAccountName* otomatik olarak oluşturulabilir.
@@ -169,7 +169,7 @@ Oluşturulan VM ve Azure savunma kullanılarak oluşturulan Web tabanlı bir RDP
 1. Azure AD DS yönetilen etki alanına katma işlemini gerçekleştirmek için VM 'yi yeniden başlatın.
 
 > [!TIP]
-> PowerShell kullanarak bir VM 'yi [Add-Computer][add-computer] cmdlet 'i ile etki alanına katabilirsiniz. Aşağıdaki örnek *Aaddscontoso* etki alanını birleştirir ve ardından VM 'yi yeniden başlatır. İstendiğinde, *Azure AD DC Administrators* grubuna ait bir kullanıcının kimlik bilgilerini girin:
+> PowerShell kullanarak bir VM 'yi [Add-Computer][add-computer] cmdlet 'i ile etki alanına katabilirsiniz. Aşağıdaki örnek *Aaddscontoso* etki alanını birleştirir ve ardından VM 'yi yeniden başlatır. İstendiğinde, Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcının kimlik bilgilerini girin:
 >
 > `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
@@ -218,7 +218,7 @@ Etki alanına katılması için kimlik bilgileri isteyen bir istem alırsanız, 
 
 Bu sorun giderme adımlarını her bir kez denemeden sonra, Windows Server VM 'yi yönetilen etki alanına yeniden birleştirmeyi deneyin.
 
-* Belirttiğiniz kullanıcı hesabının *AAD DC Administrators* grubuna ait olduğundan emin olun.
+* Belirttiğiniz kullanıcı hesabının Azure AD DS yönetilen etki alanına ait olduğundan emin olun.
 * Hesabın Azure AD DS yönetilen etki alanının veya Azure AD kiracısı 'nin bir parçası olduğundan emin olun. Azure AD kiracınızla ilişkilendirilen dış dizinlerden hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz.
 * `contosoadmin@aaddscontoso.onmicrosoft.com`gibi kimlik bilgilerini belirtmek için UPN biçimini kullanmayı deneyin. Kiracınızda aynı UPN ön ekine sahip çok sayıda kullanıcı varsa veya UPN ön eki aşırı uzunsa, hesabınız için *sAMAccountName* otomatik olarak oluşturulabilir. Bu durumlarda, hesabınız için *sAMAccountName* biçimi, şirket içi etki alanında beklediğiniz veya kullandığınız verilerden farklı olabilir.
 * Yönetilen etki alanınız için [parola eşitlemesini etkinleştirmiş][password-sync] olup olmadığınızı denetleyin. Bu yapılandırma adımı olmadan, oturum açma girişiminizi doğru bir şekilde doğrulamak için gerekli parola karmaları Azure AD DS yönetilen etki alanında yok.

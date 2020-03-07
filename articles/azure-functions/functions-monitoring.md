@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292935"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357912"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -72,7 +72,7 @@ Işlevlerin erken sürümleri, artık önerilmeyen yerleşik izleme kullanır. B
 
 Her iki sayfanın da verileri alan Application Insights Analytics sorgusuna **Application Insights bir Çalıştır** bağlantısı olduğunu görebilirsiniz.
 
-![Application Insights’ta çalıştırma](media/functions-monitoring/run-in-ai.png)
+![Application Insights içinde Çalıştır](media/functions-monitoring/run-in-ai.png)
 
 Aşağıdaki sorgu görüntülenir. Sorgu sonuçlarının son 30 güne (`where timestamp > ago(30d)`) sınırlı olduğunu görebilirsiniz. Ayrıca, sonuçlar 20 ' den fazla satır göstermez (`take 20`). Buna karşılık, işlevinizin çağırma ayrıntıları listesi, son 30 gün için sınır olmadan olur.
 
@@ -155,7 +155,7 @@ Işlevler çalışma zamanı, "Host" ile başlayan bir kategoriye sahip Günlük
 
 Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de içerir. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) bir sabit listesi ve tamsayı kodu göreli önemi gösterir:
 
-|GünlükDüzeyi    |Kodlayın|
+|LogLevel    |Kod|
 |------------|---|
 |İzleme       | 0 |
 |Hata ayıklama       | 1 |
@@ -163,7 +163,7 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Günlük düzeyi `None`, sonraki bölümde açıklanmaktadır. 
 
@@ -271,7 +271,7 @@ Günlükler, Application Insights 'daki **Customölçümler** tablosunda bulunab
 
 Bu günlüklerin tümü `Information` düzeyinde yazılır. `Warning` veya üzeri olarak filtrelemeniz durumunda bu verilerden herhangi birini görmezsiniz.
 
-### <a name="other-categories"></a>Diğer kategoriler
+### <a name="other-categories"></a>Diğer Kategoriler
 
 Önceden listelenmiş olanlar dışındaki kategoriler için tüm Günlükler, Application Insights **İziz** tablosunda mevcuttur.
 

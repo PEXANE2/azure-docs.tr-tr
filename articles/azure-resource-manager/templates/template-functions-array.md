@@ -4,11 +4,11 @@ description: Diziler ve nesnelerle çalışmak için bir Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591192"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380662"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dizi ve nesne işlevleri
 
@@ -258,7 +258,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| Döndürülmesini | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| döndürülmesini | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -840,7 +840,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
-## <a name="length"></a>{1&gt;length&lt;1}
+## <a name="length"></a>length
 
 `length(arg1)`
 
@@ -1274,7 +1274,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dizi | ["bir", "iki"] |
-| stringOutput | Dize | üzerinde |
+| stringOutput | Dize | açık |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 

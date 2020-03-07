@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963215"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376289"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -31,7 +31,7 @@ Konu başlığı |  Ayrıntılar
 --------- | --------- |
 Azure AD Connect yükseltme adımları | [Önceki bir sürümden en son](how-to-upgrade-previous-version.md) Azure AD Connect sürüme yükseltmek için farklı yöntemler.
 Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md#upgrade).
-İndirin| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
+İndirme| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Azure AD Connect yeni bir sürümünü serbest bırakmak, hizmetin işlem işlevlerini sağlamak için çeşitli kalite denetimi adımı gerektiren bir işlemdir ve bu işlemden sonra yeni bir yayının sürüm numarası ve yayın durumu güncelleştirilir en son durumu yansıtacak şekilde.
@@ -496,18 +496,18 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Ad                          | Erişim               | Uygulama hedefi
+Tür     | Adı                          | Access               | Uygulama Hedefi
 ---------|-------------------------------|----------------------|--------------|
-Allow    | SISTEMIN                        | Tam denetim         | Bu nesne  |
-Allow    | Kuruluş yöneticileri             | Tam denetim         | Bu nesne  |
-Allow    | Etki alanı yöneticileri                 | Tam denetim         | Bu nesne  |
-Allow    | Yöneticiler                | Tam denetim         | Bu nesne  |
-Allow    | Kurumsal etki alanı denetleyicileri | Liste Içerikleri        | Bu nesne  |
-Allow    | Kurumsal etki alanı denetleyicileri | Tüm özellikleri oku  | Bu nesne  |
-Allow    | Kurumsal etki alanı denetleyicileri | Okuma Izinleri     | Bu nesne  |
-Allow    | Kimliği doğrulanmış kullanıcılar           | Liste Içerikleri        | Bu nesne  |
-Allow    | Kimliği doğrulanmış kullanıcılar           | Tüm özellikleri oku  | Bu nesne  |
-Allow    | Kimliği doğrulanmış kullanıcılar           | Okuma Izinleri     | Bu nesne  |
+İzin Ver    | SISTEMIN                        | Tam denetim         | Bu nesne  |
+İzin Ver    | Kuruluş yöneticileri             | Tam denetim         | Bu nesne  |
+İzin Ver    | Etki alanı yöneticileri                 | Tam denetim         | Bu nesne  |
+İzin Ver    | Yöneticiler                | Tam denetim         | Bu nesne  |
+İzin Ver    | Kurumsal etki alanı denetleyicileri | Liste Içerikleri        | Bu nesne  |
+İzin Ver    | Kurumsal etki alanı denetleyicileri | Tüm özellikleri oku  | Bu nesne  |
+İzin Ver    | Kurumsal etki alanı denetleyicileri | Okuma Izinleri     | Bu nesne  |
+İzin Ver    | Kimliği Doğrulanmış Kullanıcılar           | Liste Içerikleri        | Bu nesne  |
+İzin Ver    | Kimliği Doğrulanmış Kullanıcılar           | Tüm özellikleri oku  | Bu nesne  |
+İzin Ver    | Kimliği Doğrulanmış Kullanıcılar           | Okuma Izinleri     | Bu nesne  |
 
 AD DS hesabının ayarlarını sağlamkılabilmeniz için [Bu PowerShell betiğini](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)çalıştırabilirsiniz. PowerShell betiği yukarıda belirtilen izinleri AD DS hesabına atayacaktır.
 
@@ -839,9 +839,9 @@ CBool(
     |CertFriendlyName|Certparmak Izi|Certbu Sionıds|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Seçin|
+    |CertVersion|CertSignatureAlgorithmOid|Şunu seçin:|
     |CertKeyAlgorithmParams|CertHashString|Konum|
-    |||Avantaj ile|
+    |||With|
 
 * Müşterilerin, Grup nesneleri için sAMAccountName, Domainnetbıos ve domainFQDN 'leri ve Kullanıcı nesneleri için distinguishedName 'dir akışını sağlamak üzere özel eşitleme kuralları oluşturmalarına olanak tanımak için aşağıdaki şema değişiklikleri sunulmuştur:
 
@@ -1054,7 +1054,7 @@ Yayımlanma tarihi: Aralık 2016
 * Bu derlemede AD FS ıssuerıd talep kuralı yok. Azure AD ile birden çok etki alanını federasyona eklemek istiyorsanız ıssuerıd talep kuralı gereklidir. Şirket içi AD FS dağıtımınızı yönetmek için Azure AD Connect kullanıyorsanız, bu yapıya yükseltme, mevcut ıssuerıd talep kuralını AD FS yapılandırmadan kaldırır. Yükleme/yükseltme sonrasında ıssuerıd talep kuralını ekleyerek soruna geçici bir çözüm bulabilirsiniz. Issuerıd talep kuralı ekleme hakkında ayrıntılı bilgi için [Azure AD ile federasyona yönelik birden çok etki alanı desteği](how-to-connect-install-multiple-domains.md)makalesine başvurun.
 * Yüklemenin tamamlanabilmesi için bağlantı noktası 9090 ' ın açık olması gerekir.
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Geçişli kimlik doğrulaması (Önizleme).
 
@@ -1074,7 +1074,7 @@ Yayımlanma tarihi: Kasım 2016
 * Bağlayıcı alanındaki bir nesne, bir JOIN kuralı için aynı anda kapsam dışı hale geldiğinde ve diğeri için kapsam içinde olduğunda, JOIN kurallarının yeniden değerlendirilmediği bir sorun düzeltildi. Bu, JOIN koşulları birbirini dışlamalı iki veya daha fazla JOIN kuralına sahipseniz meydana gelebilir.
 * Gelen eşitleme kurallarının (Azure AD 'den), JOIN kuralları içermeyen öncelik değerlerine sahip olmaları durumunda işlenmediği bir sorun düzeltildi.
 
-**İyileştirmeler:**
+**Geliştirmeleri**
 
 * Windows Server 2016 Standard veya üzeri üzerinde Azure AD Connect yükleme desteği eklendi.
 * Azure AD Connect için uzak veritabanı olarak SQL Server 2016 kullanma desteği eklendi.
@@ -1093,7 +1093,7 @@ Yayımlanma tarihi: Ağustos 2016
 * Azure AD Connect sihirbaz, sunucu hazırlama modundayken gerçek parola eşitleme ve parola geri yazma yapılandırmasını göstermez. Her zaman devre dışı olarak gösterir.
 * Sunucu hazırlama modundayken parola eşitleme ve parola geri yazma için yapılandırma değişiklikleri Azure AD Connect Sihirbazı tarafından kalıcı olmaz.
 
-**İyileştirmeler:**
+**Geliştirmeleri**
 
 * Yeni bir eşitleme döngüsünü başarıyla başlatıp başlatamadığını göstermek için Start-ADSyncSyncCycle cmdlet 'i güncelleştirildi.
 * Şu anda devam eden eşitleme döngüsünü ve işlemi sonlandırmak için Stop-ADSyncSyncCycle cmdlet 'i eklendi.
@@ -1112,7 +1112,7 @@ Yayımlanma tarihi: Haziran 2016
 ## <a name="111800"></a>1.1.180.0
 Yayımlanma tarihi: Mayıs 2016
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Azure AD Connect çalıştırmadan önce bunu yapmadıysanız, etki alanlarını doğrulamanızı sağlar ve yardımcı olur.
 * [Almanya Microsoft bulut](reference-connect-instances.md#microsoft-cloud-germany)için destek eklendi.
@@ -1128,7 +1128,7 @@ Yayımlanma tarihi: Mayıs 2016
 ## <a name="111300"></a>1.1.130.0
 Yayımlanma tarihi: Nisan 2016
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * [Dizin uzantılarına](how-to-connect-sync-feature-directory-extensions.md)çok değerli öznitelikler için destek eklendi.
 * [Otomatik yükseltmenin](how-to-connect-install-automatic-upgrade.md) yükseltme için uygun kabul edilmesi için daha fazla yapılandırma çeşitlemeleri desteği eklendi.
@@ -1156,7 +1156,7 @@ Yayımlanma tarihi: Şubat 2016
 ## <a name="111050"></a>1.1.105.0
 Yayımlanma tarihi: Şubat 2016
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Hızlı ayarlar müşterileri için [otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) özelliği.
 * Azure Multi-Factor Authentication kullanarak genel yönetici desteği ve Yükleme sihirbazında Privileged Identity Management.
@@ -1194,7 +1194,7 @@ Yayımlanma tarihi: Aralık 2015
 ## <a name="1091250"></a>1.0.9125.0
 Yayımlanma tarihi: Kasım 2015
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * AD FS Azure AD güvenine yeniden yapılandırabilir.
 * Active Directory şemayı yenileyebilir ve eşitleme kurallarını yeniden oluşturabilir.
@@ -1226,7 +1226,7 @@ Yayımlanma tarihi: Kasım 2015
 ## <a name="1086670"></a>1.0.8667.0
 Yayımlanma tarihi: Ağustos 2015
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Azure AD Connect Yükleme Sihirbazı artık tüm Windows Server dillerine yerelleştirilir.
 * Azure AD parola yönetimi kullanılırken hesap kilit açma desteği eklendi.
@@ -1255,7 +1255,7 @@ Yayımlanma tarihi: Haziran 2015
 
 Azure AD Eşitleme adı Azure AD Connect olarak değiştirildi.
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * [Hızlı ayarlar](how-to-connect-install-express.md) yüklemesi
 * [AD FS yapılandırabilir](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
@@ -1294,14 +1294,14 @@ Yayımlanma tarihi: Nisan 2015
 * Parola eşitlemesini zorlamak, tercih edilen DC listesini de kaldırır.
 * CSExportAnalyzer bazı nesne durumlarıyla ilgili sorunlar içeriyor.
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Bir JOIN artık MV 'daki "ANY" nesne türüne bağlanabilir.
 
 ## <a name="104850222"></a>1.0.485.0222
 Yayımlanma tarihi: Şubat 2015
 
-**İyileştirmeler:**
+**Geliştirmeleri**
 
 * Geliştirilmiş içeri aktarma performansı.
 
@@ -1315,7 +1315,7 @@ Yayımlanma tarihi: Şubat 2015
 ## <a name="104751202"></a>1.0.475.1202
 Yayımlanma tarihi: Aralık 2014
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Öznitelik tabanlı filtrelemeye sahip parola eşitleme artık desteklenmektedir. Daha fazla bilgi için bkz. [filtreleme Ile parola eşitleme](how-to-connect-sync-configure-filtering.md).
 * Ms-DS-Externaldirectoryobjectıd özniteliği Active Directory 'e geri yazılır. Bu özellik Office 365 uygulamaları için destek ekler. Karma bir Exchange dağıtımında çevrimiçi ve şirket içi posta kutularına erişmek için OAuth2 kullanır.
@@ -1336,7 +1336,7 @@ Yayımlanma tarihi: Aralık 2014
 ## <a name="104701023"></a>1.0.470.1023
 Yayımlanma tarihi: Ekim 2014
 
-**Yeni özellikler:**
+**Yeni Özellikler:**
 
 * Birden çok şirket içi Active Directory Azure AD 'ye parola eşitleme.
 * Tüm Windows Server dillerine yerelleştirilmiş yükleme kullanıcı arabirimi.

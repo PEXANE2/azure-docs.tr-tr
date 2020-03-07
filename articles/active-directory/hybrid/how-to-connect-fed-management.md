@@ -19,16 +19,16 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085220"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376329"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federasyon Hizmetleri (AD FS) Azure AD Connect kullanarak yönetin ve özelleştirin
 Bu makalede Azure Active Directory (Azure AD) Connect kullanılarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yönetimi ve özelleştirmeyi açıklanmaktadır. Ayrıca, bir AD FS grubunun tüm yapılandırması için yapmanız gerekebilecek diğer ortak AD FS görevlerini de içerir.
 
-| Konu | Ne içerir? |
+| Konu başlığı | Ne içerir? |
 |:--- |:--- |
 | **AD FS Yönet** | |
 | [Güveni onarma](#repairthetrust) |Office 365 ile Federasyon güvenini onarma. |
@@ -49,7 +49,7 @@ Azure AD Connect Sihirbazı 'nı kullanarak en az kullanıcı müdahalesi ile Az
 Azure AD Connect kullanarak, AD FS ve Azure AD güveninin geçerli durumunu denetleyebilir ve güveni onarmak için gerekli işlemleri gerçekleştirebilirsiniz. Azure AD 'nizi ve AD FS güvenini onarmak için aşağıdaki adımları izleyin.
 
 1. Ek görevler listesinden **AAD ve ADFS güvenini Onar ' ı** seçin.
-   ![AAD ve ADFS güvenini Onar](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+   AAD ve ADFS güvenini Onar ![](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
    ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
@@ -77,8 +77,8 @@ Azure AD Connect kullanarak, AD FS ve Azure AD güveninin geçerli durumunu dene
 ![Alternatif KIMLIK öznitelik seçimi](./media/how-to-connect-fed-management/attributeselection.png)
 
 AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan oluşur:
-1. **Doğru verme talepleri kümesini yapılandırın**: Azure AD bağlı olan taraf güveninde verme talep kuralları, seçilen UserPrincipalName özniteliğini kullanıcının alternatif KIMLIĞI olarak kullanacak şekilde değiştirilir.
-2. **AD FS yapılandırmasında alternatif oturum açma kimliğini etkinleştirin**: AD FS yapılandırması, AD FS alternatif KIMLIĞI kullanarak uygun ormanlardaki kullanıcıları arayabilmesi için güncelleştirilir. Bu yapılandırma Windows Server 2012 R2 'deki AD FS (KB2919355 ile) veya sonraki sürümlerde desteklenir. AD FS sunucuları 2012 R2 ise, gerekli KB 'nin varlığını denetler Azure AD Connect. KB algılanmazsa, yapılandırma tamamlandıktan sonra aşağıda gösterildiği gibi bir uyarı görüntülenir:
+1. **Doğru verme talepleri kümesini yapılandırın**: Azure AD bağlı olan taraf güveninde verme talep kuralları, seçilen userPrincipalName özniteliğini kullanıcının alternatif kimliği olarak kullanacak şekilde değiştirilir.
+2. **AD FS yapılandırmasında alternatif oturum açma kimliğini etkinleştir**: AD FS yapılandırma güncelleştirilerek AD FS, alternatif kimliği kullanarak ilgili ormanlardaki kullanıcıları arayabilir. Bu yapılandırma Windows Server 2012 R2 'deki AD FS (KB2919355 ile) veya sonraki sürümlerde desteklenir. AD FS sunucuları 2012 R2 ise, gerekli KB 'nin varlığını denetler Azure AD Connect. KB algılanmazsa, yapılandırma tamamlandıktan sonra aşağıda gösterildiği gibi bir uyarı görüntülenir:
 
     ![2012R2 ' de eksik KB uyarısı](./media/how-to-connect-fed-management/kbwarning.png)
 
@@ -98,7 +98,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 2. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
 
-   ![Azure AD'ye bağlan](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Etki alanı yöneticisi kimlik bilgilerini sağlayın.
 
@@ -108,7 +108,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
    ![Sertifika parolası](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![SSL sertifikasını belirtin](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![SSL sertifikası belirt](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. **AD FS sunucuları** sayfasında, AD FS grubuna eklenecek sunucu adını veya IP adresini girin.
 
@@ -131,12 +131,12 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 2. Azure genel yönetici kimlik bilgilerini sağlayın.
 
-   ![Azure AD'ye bağlan](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. **SSL sertifikası belirtin** sayfasında, Azure AD Connect AD FS grubunu YAPıLANDıRDıĞıNıZDA sağladığınız PFX dosyasının parolasını girin.
-   ![Sertifika parolası](./media/how-to-connect-fed-management/WapServer3.PNG)
+   Sertifika parolasını ![](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![SSL sertifikasını belirtin](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![SSL sertifikası belirt](./media/how-to-connect-fed-management/WapServer4.PNG)
 
 4. WAP sunucusu olarak eklenecek sunucuyu ekleyin. WAP sunucusu etki alanına katılamadığından, sihirbaz eklenmekte olan sunucuya yönetici kimlik bilgilerini ister.
 
@@ -144,7 +144,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 5. **Proxy güveni kimlik bilgileri** sayfasında, proxy güvenini yapılandırmak ve AD FS grubundaki birincil sunucuya erişmek için yönetici kimlik bilgilerini sağlayın.
 
-   ![Ara sunucu güveni kimlik bilgileri](./media/how-to-connect-fed-management/WapServer6.PNG)
+   ![Proxy güveni kimlik bilgileri](./media/how-to-connect-fed-management/WapServer6.PNG)
 
 6. **Yapılandırmaya hazırlanma** sayfasında, sihirbaz gerçekleştirilecek eylemlerin listesini gösterir.
 
@@ -164,7 +164,7 @@ Azure AD Connect kullanarak Azure AD ile Federasyon oluşturulacak bir etki alan
 
 2. Sihirbazın sonraki sayfasında, Azure AD için genel yönetici kimlik bilgilerini sağlayın.
 
-   ![Azure AD'ye bağlan](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
+   ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
 
 3. **Uzaktan erişim kimlik bilgileri** sayfasında, etki alanı yöneticisi kimlik bilgilerini sağlayın.
 
@@ -176,7 +176,7 @@ Azure AD Connect kullanarak Azure AD ile Federasyon oluşturulacak bir etki alan
 
     Etki alanını seçtikten sonra sihirbaz, sihirbazın gerçekleştirebileceği diğer eylemler ve yapılandırmanın etkisi hakkında uygun bilgileri sağlar. Bazı durumlarda, Azure AD 'de henüz doğrulanmamış bir etki alanını seçerseniz, sihirbaz, etki alanını doğrulamanıza yardımcı olacak bilgiler sağlar. Daha fazla bilgi için bkz. [Azure Active Directory için özel etki alanı adınızı ekleme](../active-directory-domains-add-azure-portal.md) .
 
-5. **İleri**'ye tıklayın. **Yapılandırmaya hazırlanma** sayfası Azure AD Connect gerçekleştireceği eylemlerin listesini gösterir. Yapılandırmayı sona erdirmesi için, **Kur** ' a tıklayın.
+5. **İleri**’ye tıklayın. **Yapılandırmaya hazırlanma** sayfası Azure AD Connect gerçekleştireceği eylemlerin listesini gösterir. Yapılandırmayı sona erdirmesi için, **Kur** ' a tıklayın.
 
    ![Yapılandırma için hazır](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
@@ -190,12 +190,12 @@ Aşağıdaki bölümler, AD FS oturum açma sayfanızı özelleştirirken gerçe
 **Oturum açma** sayfasında görüntülenen şirketin logosunu değiştirmek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
 
 > [!NOTE]
-> Logo için önerilen boyutlar 260 x 35 \@ 96 dpi şeklindedir ve dosya boyutu 10 KB 'tan fazla değildir.
+> Logo için önerilen boyutlar 260 x 35 \@ 96 dpi 'dir ve dosya boyutu 10 KB 'tan fazla değildir.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> *TargetName* parametresi gereklidir. AD FS ile yayınlanan varsayılan tema varsayılan olarak adlandırılır.
+> *TargetName* parametresi zorunludur. AD FS ile yayınlanan varsayılan tema varsayılan olarak adlandırılır.
 
 ## <a name="addsignindescription"></a>Oturum açma açıklaması ekle 
 **Oturum açma sayfasına**bir oturum açma sayfası açıklaması eklemek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
@@ -212,30 +212,30 @@ Azure AD Connect, nesneler Azure AD ile eşitlendiğinde kaynak bağlantısı ol
 
 Örneğin, kaynak bağlayıcının özniteliği olarak **MS-DS-** IBU GUID ' i seçebilir ve özniteliğin bir değere sahip olması durumunda **ImmutableID** as **MS-DS-** ımıse GUID olarak ayarlayabilirsiniz. Özniteliğe karşı bir değer yoksa, sabit KIMLIK olarak **Objectguıd** ' ı yayınlayın. Aşağıdaki bölümde açıklandığı gibi özel talep kuralları kümesi oluşturabilirsiniz.
 
-**Kural 1: Sorgu öznitelikleri**
+**Kural 1: sorgu öznitelikleri**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 
 Bu kuralda, kullanıcının Active Directory için **MS-DS-ımlıguıd** ve **Objectguıd** değerlerini sorgulıyoruz. Mağaza adını AD FS dağıtımınızda uygun bir mağaza adıyla değiştirin. Ayrıca, **Objectguıd** ve **MS-DS-ımıbu GUID**için tanımlanan şekilde, talep türünü Federasyonun uygun bir talep türüyle değiştirin.
 
-Ayrıca, **Ekle** ve Hayır ' ıkullanarak varlık için giden bir sorun eklemekten kaçının ve değerleri ara değer olarak kullanabilir. Sabit KIMLIK olarak kullanılacak değeri belirledikten sonra talebi sonraki bir kuralda verirsiniz.
+Ayrıca, **Ekle** ve **Hayır ' ı**kullanarak varlık için giden bir sorun eklemekten kaçının ve değerleri ara değer olarak kullanabilir. Sabit KIMLIK olarak kullanılacak değeri belirledikten sonra talebi sonraki bir kuralda verirsiniz.
 
-**Kural 2: Kullanıcı için ms-DS-ımfdsguıd olup olmadığını denetleyin**
+**Kural 2: Kullanıcı için ms-DS-ımfbu GUID olup olmadığını denetleyin**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Bu kural, Kullanıcı için doldurulmuş bir **MS-DS-ımıbu GUID** yoksa **useguıd** olarak ayarlanan **ıdflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık AD FS, boş talepler için izin vermediği bir olgu olur. Bu nedenle, talepler http://contoso.com/ws/2016/02/identity/claims/objectguid eklediğinizde ve http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid kural 1 ' de, yalnızca değerin Kullanıcı için doldurulması durumunda bir **msdsıse, GUID** talebi ile sona erdir. Doldurulmamışsa, AD FS boş bir değere sahip olacağını görür ve hemen bırakır. Tüm nesneler **Objectguıd**değerini alacak, bu nedenle kural 1 yürütüldükten sonra talep her zaman olur.
+Bu kural, Kullanıcı için doldurulmuş bir **MS-DS-ımıbu GUID** yoksa **useguıd** olarak ayarlanan **ıdflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık AD FS, boş talepler için izin vermediği bir olgu olur. Bu nedenle, kural 1 ' de talepler http://contoso.com/ws/2016/02/identity/claims/objectguid ve http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid eklediğinizde, yalnızca değerin Kullanıcı için doldurulması durumunda bir **msdsıse, GUID** talebi ile biter. Doldurulmamışsa, AD FS boş bir değere sahip olacağını görür ve hemen bırakır. Tüm nesneler **Objectguıd**değerini alacak, bu nedenle kural 1 yürütüldükten sonra talep her zaman olur.
 
-**Kural 3: Varsa sabit KIMLIK olarak ms-DS-ımıdnguıd olarak verme**
+**Kural 3: varsa, ms-DS-ımıdnbu GUID 'yi sabit KIMLIK olarak verme**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Bu örtük bir denetim . Talep için değer varsa, bu değeri sabit KIMLIK olarak verin. Önceki örnek, **NameIdentifier** talebini kullanır. Bunu, ortamınızdaki sabit KIMLIK için uygun talep türü olarak değiştirmeniz gerekir.
+Bu **örtük bir** denetim. Talep için değer varsa, bu değeri sabit KIMLIK olarak verin. Önceki örnek, **NameIdentifier** talebini kullanır. Bunu, ortamınızdaki sabit KIMLIK için uygun talep türü olarak değiştirmeniz gerekir.
 
-**Kural 4: Ms-DS-ımıdnguıd yoksa sabit KIMLIK olarak Objectguıd olarak sorun**
+**Kural 4: ms-DS-ımıdnguıd yoksa sabit KIMLIK olarak Objectguıd verme**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]

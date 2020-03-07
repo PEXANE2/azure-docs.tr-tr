@@ -16,17 +16,17 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064792"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372970"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
 Azure [değişiklik izleme](../../automation/change-tracking.md) ve [güncelleştirme yönetimi](../../automation/automation-update-management.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Windows güncelleştirmelerini yönetme.
@@ -117,7 +117,7 @@ VM için yeni bir güncelleştirme dağıtımı zamanlamak üzere güncelleştir
 
 | Seçenek | Açıklama |
 | --- | --- |
-| **Adı** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
+| **Ad** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
 |**İşletim sistemi**| **Linux** veya **Windows**' u seçin.|
 | **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management-groups.md).|
 | **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup**veya **makineler**seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |

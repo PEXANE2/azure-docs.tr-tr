@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514400"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363951"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API tarafından üretilen Video Indexer çıkışını inceleyin
 
@@ -28,7 +28,7 @@ ms.locfileid: "76514400"
 
 Videonun özetlenen içgörülerini, [video Indexer](https://www.videoindexer.ai/) Web sitesindeki videonun **oynat** düğmesine basarak da görsel olarak inceleyebilirsiniz. Daha fazla bilgi için bkz. [video öngörülerini görüntüleme ve düzenleme](video-indexer-view-edit.md).
 
-![Bilgiler](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Bu makalede, **video dizini Al** API 'si tarafından döndürülen JSON içeriği incelenir. 
 
@@ -38,9 +38,9 @@ Bu makalede, **video dizini Al** API 'si tarafından döndürülen JSON içeriğ
 
 ## <a name="root-elements"></a>Kök öğeleri
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
-|accountId|Çalma listesinin VI hesap KIMLIĞI.|
+|Accoun|Çalma listesinin VI hesap KIMLIĞI.|
 |id|Çalma listesinin KIMLIĞI.|
 |ad|Çalma listesinin adı.|
 |açıklama|Şarkı listesinin açıklaması.|
@@ -90,17 +90,17 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 |anahtar sözcükler|Sıfır veya daha fazla anahtar sözcük içerebilir. Daha ayrıntılı bilgi için bkz. [anahtar sözcükler](#keywords).|
 |yaklaşımları|Sıfır veya daha fazla duygu içerebilir. Daha ayrıntılı bilgi için bkz. [yaklaşımları](#sentiments).|
 |audioEffects| Sıfır veya daha fazla Audioefekt içerebilir. Daha ayrıntılı bilgi için bkz. [Audioeffects](#audioEffects).|
-|etiketleri| Sıfır veya daha fazla etiket içerebilir. Daha ayrıntılı bilgi için bkz. [Etiketler](#labels).|
-|markalar| Sıfır veya daha fazla markaya sahip olabilir. Daha ayrıntılı bilgi için bkz. [markalar](#brands).|
+|etiketler| Sıfır veya daha fazla etiket içerebilir. Daha ayrıntılı bilgi için bkz. [Etiketler](#labels).|
+|markaları| Sıfır veya daha fazla markaya sahip olabilir. Daha ayrıntılı bilgi için bkz. [markalar](#brands).|
 |girecek | Daha ayrıntılı bilgi için bkz. [İstatistikler](#statistics).|
 |duyguları| Sıfır veya daha fazla durum içerebilir. Daha ayrıntılı bilgi için bkz. [duyguları](#emotions).|
-|konuları|Sıfır veya daha fazla konu içeriyor olabilir. [Konular](#topics) öngörüleri.|
+|konularıyla|Sıfır veya daha fazla konu içeriyor olabilir. [Konular](#topics) öngörüleri.|
 
 ## <a name="videos"></a>videolar
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
-|accountId|Videonun VI hesap KIMLIĞI.|
+|Accoun|Videonun VI hesap KIMLIĞI.|
 |id|Videonun KIMLIĞI.|
 |ad|Videonun adı.
 |durum|Videonun durumu (karşıya yüklenen, işlenen, işlenen, başarısız, karantinaya alındı).|
@@ -163,15 +163,15 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 |anahtar sözcükler|[Anahtar kelimeler](#keywords) öngörüleri.|
 |engellemeler|Bir veya daha fazla [blok](#blocks) içerebilir|
 |leri|[Yüzler](#faces) öngörüleri.|
-|etiketleri|[Etiketler](#labels) öngörüleri.|
+|etiketler|[Etiketler](#labels) öngörüleri.|
 |görüntüleri|[Anlık görüntüleri](#shots) öngörüleri.|
-|markalar|[Markalar](#brands) öngörüleri.|
+|markaları|[Markalar](#brands) öngörüleri.|
 |audioEffects|[Audioeffects](#audioEffects) öngörüleri.|
 |yaklaşımları|Yaklaşım [öngörüleri](#sentiments) .|
 |Visualcontentdenetlemesi|[Visualcontentdenetlemesi](#visualcontentmoderation) öngörüleri.|
 |Textualcontentdenetlemesi|[Textualcontentdenetlemesi](#textualcontentmoderation) öngörüleri.|
 |duyguları| Bu [bilgiler.](#emotions)|
-|konuları|[Konular](#topics) öngörüleri.|
+|konularıyla|[Konular](#topics) öngörüleri.|
 
 Örnek:
 
@@ -203,7 +203,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="transcript"></a>döküm
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Satır KIMLIĞI.|
 |metin|Dökümü.|
@@ -241,17 +241,17 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="ocr"></a>OCR
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|OCR satır KIMLIĞI.|
 |metin|OCR metni.|
-|güvenilirlik|Tanıma güvenilirliği.|
+|likli|Tanıma güvenilirliği.|
 |language|OCR dili.|
 |örnekler|Bu OCR 'nin göründüğü zaman aralıklarının listesi (aynı OCR birden çok kez görünebilir).|
-|yükseklik|OCR dikdörtgeninin yüksekliği|
-|üst|Px en üstteki konum|
-|sol| Piksel cinsinden sol konum|
-|genişlik|OCR dikdörtgeninin genişliği|
+|Yükseklik|OCR dikdörtgeninin yüksekliği|
+|Sayfanın Üstü|Px en üstteki konum|
+|left| Piksel cinsinden sol konum|
+|Genişlik|OCR dikdörtgeninin genişliği|
 
 ```json
 "ocr": [
@@ -276,11 +276,11 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="keywords"></a>anahtar sözcükler
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Anahtar sözcük KIMLIĞI.|
 |metin|Anahtar sözcük metni.|
-|güvenilirlik|Anahtar sözcüğünün tanıma güvenilirliği.|
+|likli|Anahtar sözcüğünün tanıma güvenilirliği.|
 |language|Anahtar sözcük dili (çevrildiğinde).|
 |örnekler|Bu anahtar sözcüğünün göründüğü zaman aralıklarının listesi (bir anahtar sözcük birden çok kez görünebilir).|
 
@@ -307,11 +307,11 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="faces"></a>leri
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Yüz KIMLIĞI.|
 |ad|Yüzün adı. ' Bilinmeyen #0, tanımlı bir ünlüde veya müşterinin eğitilen kişi olabilir.|
-|güvenilirlik|Yüz tanıma kimlik güveni.|
+|likli|Yüz tanıma kimlik güveni.|
 |açıklama|Ünlüğün açıklaması. |
 |thumbnailId|Bu yüzün küçük resminin KIMLIĞI.|
 |Knownpersonıd|Bilinen bir kişiyse, iç KIMLIĞI.|
@@ -350,9 +350,9 @@ id|Bloğun KIMLIĞI.|
 }]
 ```
 
-#### <a name="labels"></a>etiketleri
+#### <a name="labels"></a>etiketler
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Etiket KIMLIĞI.|
 |ad|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
@@ -411,7 +411,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="scenes"></a>görünümler
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Sahne KIMLIĞI.|
 |örnekler|Bu sahnenin zaman aralıklarının listesi (bir sahnenin yalnızca 1 örneği olabilir).|
@@ -444,7 +444,7 @@ id|Bloğun KIMLIĞI.|
 
 #### <a name="shots"></a>görüntüleri
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Görüntü KIMLIĞI.|
 |Gezen|Görüntüsündeki ana karelerin bir listesi (her birinin bir KIMLIĞI ve bir örnek zaman aralığı listesi vardır). Her ana kare örneğinin, ana karenin küçük resim KIMLIĞINI tutan bir thumbnailId alanı vardır.|
@@ -490,11 +490,11 @@ id|Bloğun KIMLIĞI.|
 ]
 ```
 
-#### <a name="brands"></a>markalar
+#### <a name="brands"></a>markaları
 
 Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka adları. Bu, markaların veya amblem algılamanın görsel olarak tanınmasını kapsamaz.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Marka KIMLIĞI.|
 |ad|Markalar adı.|
@@ -502,7 +502,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 |referenceUrl | Varsa, markasının Vikipi URL 'si. Örneğin, [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |açıklama|Markalar açıklaması.|
 |etiketler|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
-|güvenilirlik|Video Indexer marka algılayıcısının güvenirlik değeri (0-1).|
+|likli|Video Indexer marka algılayıcısının güvenirlik değeri (0-1).|
 |örnekler|Bu marka için zaman aralıklarının listesi. Her örnek bir brandType içerir ve bu marka, bu markın döküm dosyasında mi yoksa OCR 'de mi görünmediğini belirtir.|
 
 ```json
@@ -553,7 +553,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="statistics"></a>girecek
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |Yazışma sayısı|Videodaki yazışma sayısı.|
 |Hoparlörlü Kerwordsayısı|Konuşmacı başına sözcük sayısı.|
@@ -563,7 +563,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Ses efekti KIMLIĞI.|
 |type|Ses efekti türü (örneğin, hareketli, konuşma, sessizlik).|
@@ -592,7 +592,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). Örneğin, 0-0.1, 0,1-0.2.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Yaklaşım KIMLIĞI.|
 |averageScore |Bu yaklaşım türünün tüm örneklerinin ortalaması-pozitif/nötr/negatif|
@@ -631,7 +631,7 @@ Visualcontentmoderblock blok, büyük olasılıkla yetişkinlere yönelik içeri
 
 Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için kullanılabilir olabilir. Kullanıcılar, içeriğin insan incelemesi için bir istek gönderme seçeneğine sahiptir ve bu durumda Isyetişkin özniteliği insan incelemesi sonucunu içerecektir.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Görsel içerik denetleme KIMLIĞI.|
 |adultScore|Yetişkin puanı (İçerik Yöneticisi 'nden).|
@@ -667,7 +667,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 #### <a name="textualcontentmoderation"></a>Textualcontentdenetlemesi 
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Metinsel içerik denetleme KIMLIĞI.|
 |bannedWordsCount |Yasaklanmış sözcüklerin sayısı.|
@@ -677,7 +677,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlanan duygu: Joy, sadyeti, Anger veya Fear olabilir.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Duygu KIMLIĞI.|
 |type|Konuşma ve ses ipuçları temelinde tanımlanan duygu. Duygu: Joy, sadyeti, Anger veya Fear olabilir.|
@@ -763,16 +763,16 @@ Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlan
 ],
 ```
 
-#### <a name="topics"></a>konuları
+#### <a name="topics"></a>konularıyla
 
 Video Indexer, döküm dosyalarından Ana konuların çıkarımını yapar. Mümkün olduğunda 2. düzey [IPTC](https://iptc.org/standards/media-topics/) taksonomi dahil edilir. 
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |id|Konu KIMLIĞI.|
 |ad|Konu adı, örneğin: "Ilaç".|
 |Referenceıd|İçerik haritaları, konu hiyerarşisini yansıtır. Örneğin: "Sağlık ve welltısalları/Ilaç ve sağlık/Ilaç ve Alticals".|
-|güvenilirlik|[0, 1] aralığındaki Güvenirlik puanı. Daha yüksek olan daha emin.|
+|likli|[0, 1] aralığındaki Güvenirlik puanı. Daha yüksek olan daha emin.|
 |language|Konusunda kullanılan dil.|
 |iptcName|Algılanırsa, ıPTC medya kodu adı.|
 |örnekler |Şu anda Video Indexer, zaman aralıklarıyla bir konunun dizinini oluşturmadığından, tüm videonun Aralık olarak kullanılması.|

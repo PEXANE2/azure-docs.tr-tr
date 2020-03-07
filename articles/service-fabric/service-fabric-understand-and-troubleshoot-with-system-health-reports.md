@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364980"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Sorun gidermek için sistem durum raporlarını kullanma
 Azure Service Fabric bileşenleri, kümedeki tüm varlıklarda sistem durumu raporlarını doğrudan kutudan çıkar. Sistem [durumu deposu](service-fabric-health-introduction.md#health-store) , sistem raporlarına göre varlıkları oluşturur ve siler. Ayrıca, bunları varlık etkileşimleri yakalayan bir hiyerarşide düzenler.
@@ -27,7 +27,7 @@ Sistem durumu raporları, küme ve uygulama işlevlerine ilişkin görünürlük
 > 
 > 
 
-Sistem bileşen raporları, kaynak tarafından tanımlanır ve "sistem" ile başlar **.** ekleyin. Geçersiz parametrelere sahip raporlar reddedildiği için Watchdogs, kaynakları için aynı öneki kullanamaz.
+Sistem bileşen raporları, kaynak tarafından tanımlanır ve "sistem" ile başlar **.** koy. Geçersiz parametrelere sahip raporlar reddedildiği için Watchdogs, kaynakları için aynı öneki kullanamaz.
 
 Ne tetikleyeceğini anlamak ve bunların gösterdiği olası sorunları nasıl düzeltebileceğinizi öğrenmek için bazı sistem raporlarına göz atalım.
 
@@ -44,11 +44,11 @@ Küme durumu varlığı, sistem durumu deposunda otomatik olarak oluşturulur. H
 
 Rapor, genel kira zaman aşımını yaşam süresi (TTL) olarak belirtir. Rapor, koşulun etkin kaldığı sürece TTL süresinin her yarısında yeniden gönderilir. Etkinlik süresi dolduktan sonra otomatik olarak kaldırılır. Kaldırma-süre sonu davranışı, raporlama düğümü çalışmıyor olsa bile raporun sistem durumu deposundan doğru şekilde temizlenmesini sağlar.
 
-* **SourceId**: System.Federation
+* **SourceId**: System. FEDERATION
 * **Özellik**: **komşuları** ile başlar ve düğüm bilgilerini içerir.
 * **Sonraki adımlar**: komşularınızın neden kaybolduğunu araştırın. Örneğin, küme düğümleri arasındaki iletişimi denetleyin.
 
-### <a name="rebuild"></a>Yeniden derleme
+### <a name="rebuild"></a>Derlemesine
 
 Yük Devretme Yöneticisi (FM) hizmeti, küme düğümleri hakkındaki bilgileri yönetir. FM, verilerini kaybeder ve veri kaybına geçtiğinde, küme düğümleri hakkında en güncel bilgilere sahip olduğunu garanti etmez. Bu durumda, sistem yeniden derleme yoluyla geçer ve System.FM durumunu yeniden derlemek için kümedeki tüm düğümlerden verileri toplar. Bazen ağ veya düğüm sorunlarından dolayı yeniden oluşturma, takılmış veya durdurulmuş olabilir. Aynı durum Yük Devretme Yöneticisi Master (FMM) hizmeti ile de oluşabilir. FMM, tüm FMs 'nin kümede nerede olduğunu izlemeye devam eden, durum bilgisi olmayan bir sistem hizmetidir. FMM 'nin birincili, KIMLIĞI 0 ' a yakın olan düğümdür. Bu düğüm atıldığında yeniden derleme tetiklenir.
 Önceki koşullardan biri gerçekleştiğinde, **System.FM** veya **System. FMM** bunu bir hata raporuyla işaretler. Yeniden oluşturma iki aşamadan birinde takılmış olabilir:
@@ -118,7 +118,7 @@ HealthEvents          :
 ### <a name="certificate-expiration"></a>Sertifika süre sonu
 **System. fabricnode** , düğüm tarafından kullanılan sertifikaların süresi dolmak üzere bir uyarı bildirir. Düğüm başına üç sertifika vardır: **Certificate_cluster**, **Certificate_server**ve **Certificate_default_client**. Süre sonu en az iki hafta sonra, raporun sistem durumu Tamam olur. Süre sonu iki hafta içinde olduğunda, rapor türü bir uyarıdır. Bu olayların TTL 'si sonsuzdur ve düğüm kümeden ayrıldığında kaldırılır.
 
-* **SourceId**: System.FabricNode
+* **SourceId**: System. fabricnode
 * **Özellik**: **sertifikayla** başlar ve sertifika türü hakkında daha fazla bilgi içerir.
 * **Sonraki adımlar**: süresi dolmak üzere olan sertifikaları güncelleştirin.
 
@@ -139,7 +139,7 @@ System. Hosting, küme bildiriminde tanımlanan düğüm kapasiteleri, kaynak id
 ## <a name="application-system-health-reports"></a>Uygulama sistem durumu raporları
 Küme Yöneticisi hizmetini temsil eden System.CM, bir uygulamayla ilgili bilgileri yöneten yetkildir.
 
-### <a name="state"></a>Eyalet
+### <a name="state"></a>Durum
 Uygulama oluşturulduğunda veya güncelleştirilirken raporları Tamam olarak System.CM. Mağaza 'dan kaldırılabilmesi için uygulama silindiğinde sistem durumu deposuna bildirir.
 
 * **SourceId**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Hizmet sistem durumu raporları
 Yük Devretme Yöneticisi hizmetini temsil eden System.FM, hizmetlerle ilgili bilgileri yöneten yetkilisdir.
 
-### <a name="state"></a>Eyalet
+### <a name="state"></a>Durum
 Hizmet oluşturulduğunda raporları Tamam olarak System.FM. Hizmet silindiğinde varlığı sistem durumu deposundan siler.
 
 * **SourceId**: System.FM
@@ -214,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Sistem durumu raporlarını bölümle
 Yük Devretme Yöneticisi hizmetini temsil eden System.FM, hizmet bölümleri hakkındaki bilgileri yöneten yetkilisdir.
 
-### <a name="state"></a>Eyalet
+### <a name="state"></a>Durum
 System.FM, bölüm oluşturulduğunda ve sağlıklı olduğunda raporları Tamam olarak bildirir. Bölüm silindiğinde varlığı sistem durumu deposundan siler.
 
 Bölüm en düşük çoğaltma sayısının altındaysa bir hata bildirir. Bölüm en düşük çoğaltma sayısının altında değilse, ancak hedef çoğaltma sayısının altındaysa, bir uyarı bildirir. Bölüm çekirdek kaybolduysa, System.FM bir hata bildirir.
@@ -391,7 +391,7 @@ Her çoğaltma için sistem durumu raporu şunları içerir:
 ## <a name="replica-system-health-reports"></a>Çoğaltma sistem durumu raporları
 Yeniden yapılandırma aracı bileşenini temsil eden **System. ra**, çoğaltma durumu için yetkilidir.
 
-### <a name="state"></a>Eyalet
+### <a name="state"></a>Durum
 Çoğaltma oluşturulduğunda System. RA raporları tamam.
 
 * **SourceId**: System. ra
@@ -647,7 +647,7 @@ HealthEvents          :
 
 - **Istatefulservicereplica. ChangeRole (P)** : en yaygın durum, hizmetin `RunAsync`bir görev döndürmediğinde olur.
 
-Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğin:
+Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örnek:
 
 - **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. `Get-ServiceFabricDeployedReplicaDetail` PowerShell cmdlet 'i, Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincili `CommittedSequenceNumber` değerinin arkasında olan yinelemelerle yer alıyor.
 
@@ -773,7 +773,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndirin
+### <a name="download"></a>İndirme
 Uygulama paketi indirmesi başarısız olursa System. Hosting bir hata bildirir.
 
 * **SourceId**: System. Hosting
@@ -851,7 +851,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndirin
+### <a name="download"></a>İndirme
 System. Hosting, hizmet paketi indirmesi başarısız olursa bir hata bildiriyor.
 
 * **SourceId**: System. Hosting

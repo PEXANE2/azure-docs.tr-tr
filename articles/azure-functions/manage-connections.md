@@ -4,11 +4,11 @@ description: Statik bağlantı istemcileri kullanarak Azure Işlevlerinde perfor
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226491"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370471"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Işlevlerinde bağlantıları yönetme
 

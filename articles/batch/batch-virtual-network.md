@@ -10,11 +10,11 @@ ms.date: 04/10/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: bbe38a9dc7be749b8e138ff3ca9ec4f06255b389
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022775"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355213"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -24,7 +24,7 @@ Bir Azure Batch havuzu oluşturduğunuzda, havuzu belirttiğiniz bir [Azure sana
 
 Azure Batch havuzun, işlem düğümlerinin birbirleriyle iletişim kurmasına izin vermek için ayarları vardır. Örneğin, çok örnekli görevleri çalıştırmak için. Bu ayarlar ayrı bir sanal ağ gerektirmez. Ancak, varsayılan olarak, düğümler, bir lisans sunucusu ya da bir dosya sunucusu gibi Batch havuzunun parçası olmayan sanal makinelerle iletişim kuramaz. Havuz işlem düğümlerinin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu bir Azure VNet 'in alt ağında sağlayabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Kimlik Doğrulaması**. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir. 
 

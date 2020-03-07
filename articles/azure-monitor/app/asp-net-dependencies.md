@@ -4,11 +4,11 @@ description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağım
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666250"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362196"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -189,6 +189,6 @@ Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Durumlar](../../azure-monitor/app/asp-net-exceptions.md)
+* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)
 * [Kullanıcı & sayfası verileri](../../azure-monitor/app/javascript.md)
 * [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)

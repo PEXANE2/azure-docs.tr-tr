@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658906"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373321"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
 | Çalışma alanı   | çalışma alanları    | 2017-03-15-Önizleme |
-| Search      | Savedaramalarındaki aramalar | 2015-03-20 |
+| Arama      | Savedaramalarındaki aramalar | 2015-03-20 |
 | Veri kaynağı | kaynağı   | 2015-11-01-Önizleme |
 | Çözüm    | çözümler     | 2015-11-01-Önizleme |
 

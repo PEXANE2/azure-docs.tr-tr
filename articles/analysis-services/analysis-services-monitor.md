@@ -4,15 +4,15 @@ description: Sunucularınızın performansını ve sistem durumunu izlemenize ya
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375143"
 ---
 # <a name="monitor-server-metrics"></a>Sunucu ölçümlerini izleme
 
@@ -54,8 +54,8 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 |MemoryLimitLow|Bellek: bellek sınırı düşük|Bayt|Ortalama|Yapılandırma dosyasından düşük bellek sınırı.|
 |MemoryLimitVertiPaq|Bellek: bellek sınırı VertiPaq|Bayt|Ortalama|Yapılandırma dosyasından bellek içi sınır.|
 |MemoryUsage|Bellek: bellek kullanımı|Bayt|Ortalama|Sunucu işleminin temizleyici bellek fiyatını hesaplamada kullanılan bellek kullanımı. Altyapı bellek sınırının fazla olması halinde bellek içi analiz altyapısı (VertiPaq) tarafından eşlenen veya ayrılan belleği yok sayan, bellek eşlemeli verilerin boyutuna eşit.|
-|private_bytes_metric|Özel baytlar |Bayt|Ortalama|Analysis Services altyapısı işleminin ve karma kapsayıcı işlemlerinin ayırdığı, diğer işlemlerle paylaşılan bellek dahil değil toplam bellek miktarı.|
-|virtual_bytes_metric|Sanal baytlar |Bayt|Ortalama|Analysis Services altyapısı işleminin ve mashup kapsayıcı işlemlerinin kullandığı sanal adres alanının geçerli boyutu.|
+|private_bytes_metric|Özel Baytlar |Bayt|Ortalama|Analysis Services altyapısı işleminin ve karma kapsayıcı işlemlerinin ayırdığı, diğer işlemlerle paylaşılan bellek dahil değil toplam bellek miktarı.|
+|virtual_bytes_metric|Sanal Bayt Sayısı |Bayt|Ortalama|Analysis Services altyapısı işleminin ve mashup kapsayıcı işlemlerinin kullandığı sanal adres alanının geçerli boyutu.|
 |mashup_engine_private_bytes_metric|D motoru özel baytlar |Bayt|Ortalama|Diğer işlemlerle paylaşılan bellek dahil değil, ayrılan bellek karma kapsayıcı işlemlerinin toplam miktarı.|
 |mashup_engine_virtual_bytes_metric|D motoru sanal bayt sayısı |Bayt|Ortalama|Sanal adres alanı karma kapsayıcı işlemlerinin geçerli boyutu kullanıyor.|
 |Kota|Bellek: kota|Bayt|Ortalama|Bayt cinsinden geçerli bellek kotası. Bellek kotası, bellek verme veya bellek ayırma olarak da bilinir.|

@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118549"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385621"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -72,7 +72,7 @@ Formlarınızın verilerini ayıklamaya başlamak için hızlı başlangıcı iz
 
 Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için aşağıdaki API 'Leri kullanacaksınız.
 
-|Ad |Açıklama |
+|Adı |Açıklama |
 |---|---|
 | **Özel modeli eğitme**| Formlarınızı aynı türden beş form kullanarak analiz etmek için yeni bir model eğitme. El ile etiketlenmiş verileri eğitmek için _Uselabelfile_ parametresini `true` olarak ayarlayın. |
 | **Formu çözümle** |Metin, anahtar/değer çiftleri ve tablolardaki tabloları özel modelinize çıkarmak için akış olarak geçirilmiş tek bir belgeyi analiz edin.  |

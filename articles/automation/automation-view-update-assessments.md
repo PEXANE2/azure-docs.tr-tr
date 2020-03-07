@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310093"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373095"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
 
@@ -43,7 +43,7 @@ Aşağıdaki tablolarda, Güncelleştirme Yönetimi içinde desteklenen güncell
 |Hizmet paketleri     | Bir uygulamaya uygulanan toplu bir düzeltme kümesi.        |
 |Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına yönelik bir güncelleştirme.        |
 |Araçlar     | Bir veya daha fazla görevi tamamlamaya yardımcı olan bir yardımcı program veya özellik.        |
-|Güncellemeler     | Şu anda yüklü olan bir uygulama veya dosyaya yönelik bir güncelleştirme.        |
+|Güncelleştirmeler     | Şu anda yüklü olan bir uygulama veya dosyaya yönelik bir güncelleştirme.        |
 
 ### <a name="linux-2"></a>'Un
 
