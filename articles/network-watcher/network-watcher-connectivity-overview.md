@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842878"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396965"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde bağlantıya sorun giderme konusuna giriş
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, bağlantı sorun gidermesi çalışırken döndürülen ö
 |Atlamaları []. Çıkışları | Bu atlamada Denetim sırasında karşılaşılan sorunların toplanması. Sorun yoksa değer boştur.|
 |Atlamaları []. Sorunlar []. Tıdır | Geçerli atlamada, sorun oluştuğu yerdir. Olası değerler şunlardır:<br/> **Gelen** -sorun önceki atlamanın geçerli atlamaya olan bağlantıdır<br/>**Giden** sorun, geçerli atlamanın bir sonraki atlamada olan bağlantıdır<br/>**Yerel** -sorun geçerli atlamada.|
 |Atlamaları []. Sorunlar []. İnin | Sorunun önem derecesi algılandı. Olası değerler **hata** ve **uyarıdır**. |
-|Atlamaları []. Sorunlar []. Türüyle |Sorun türü bulundu. Olası değerler şunlardır: <br/>**CPU**<br/>**Bellek**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Atlamaları []. Sorunlar []. Türüyle |Sorun türü bulundu. Olası değerler şunlardır: <br/>**'SUNA**<br/>**Bellek**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Atlamaları []. Sorunlar []. Bağlam |Bulunan sorunla ilgili ayrıntılar.|
 |Atlamaları []. Sorunlar []. Context []. Key |Anahtar değer çiftinin anahtarı döndürüldü.|
 |Atlamaları []. Sorunlar []. Context []. Value |Döndürülen anahtar değer çiftinin değeri.|
@@ -75,7 +75,7 @@ Bağlantı sorunlarını giderme bağlantıyla ilgili hata türlerini döndürü
 |Tür  |Açıklama  |
 |---------|---------|
 |CPU     | Yüksek CPU kullanımı.       |
-|Hafıza     | Yüksek bellek kullanımı.       |
+|Bellek     | Yüksek bellek kullanımı.       |
 |GuestFirewall     | Bir sanal makine güvenlik duvarı yapılandırması nedeniyle trafik engellendi.        |
 |DNSResolution     | Hedef adres için DNS çözümlemesi başarısız oldu.        |
 |NetworkSecurityRule    | Trafik bir NSG kuralı tarafından engelleniyor (kural döndürülür)        |

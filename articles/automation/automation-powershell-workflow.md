@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372437"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Otomasyon Runbook 'ları için öğrenme anahtarı Windows PowerShell Iş akışı kavramları
 
@@ -39,11 +39,11 @@ Workflow Test-Workflow
 
 PowerShell iş akışı kodu, birkaç önemli değişiklik haricinde PowerShell betiği kodu ile neredeyse aynı şekilde görünür.  Aşağıdaki bölümlerde, bir iş akışında çalışması için bir PowerShell betiğine yapmanız gereken değişiklikler açıklanır.
 
-### <a name="activities"></a>Olaylar
+### <a name="activities"></a>Etkinlikler
 
-Etkinlik bir iş akışındaki belirli bir görevdir. Betiğin bir veya daha çok komuttan oluşmasına benzer şekilde, iş akışı da belirli bir sırayla yürütülen bir veya daha çok etkinlikten oluşur. Windows PowerShell Workflow birçok Windows PowerShell cmdlet'ini bir iş akışı içinde çalıştıklarında otomatik olarak etkinliklere dönüştürür. Runbook 'inizdeki bu cmdlet 'lerden birini belirttiğinizde, ilgili etkinlik Windows Workflow Foundation tarafından çalıştırılır. Karşılık gelen bir etkinliği olmayan cmdlet'ler için, Windows PowerShell İş Akışı cmdlet'i bir [InlineScript](#inlinescript) etkinliğinde otomatik olarak çalıştırır. Siz özel olarak bir InlineScript bloğunda eklemedikçe hariç tutulan ve bir iş akışında kullanılamayan cmdlet'ler kümesi vardır. Bu kavramlarla ilgili daha fazla bilgi için bkz. [Betik İş Akışlarında Etkinlikleri Kullanma](https://technet.microsoft.com/library/jj574194.aspx).
+Etkinlik bir iş akışındaki belirli bir görevdir. Betiğin bir veya daha çok komuttan oluşmasına benzer şekilde, iş akışı da belirli bir sırayla yürütülen bir veya daha çok etkinlikten oluşur. Windows PowerShell Workflow birçok Windows PowerShell cmdlet'ini bir iş akışı içinde çalıştıklarında otomatik olarak etkinliklere dönüştürür. Runbook 'inizdeki bu cmdlet 'lerden birini belirttiğinizde, ilgili etkinlik Windows Workflow Foundation tarafından çalıştırılır. Karşılık gelen bir etkinliği olmayan bu cmdlet 'ler için, Windows PowerShell Iş akışı cmdlet 'i bir [InlineScript](#inlinescript) etkinliğinde otomatik olarak çalıştırır. Siz özel olarak bir InlineScript bloğunda eklemedikçe hariç tutulan ve bir iş akışında kullanılamayan cmdlet'ler kümesi vardır. Bu kavramlar hakkında daha fazla bilgi için bkz. [betik Iş akışlarında etkinlikleri kullanma](https://technet.microsoft.com/library/jj574194.aspx).
 
-İş akışı etkinlikleri çalışmalarını yapılandıran ortak parametreler kümesini paylaşır. Ortak iş akışı parametreleriyle ilgili daha ayrıntılı bilgi için bkz. [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+İş akışı etkinlikleri çalışmalarını yapılandıran ortak parametreler kümesini paylaşır. İş akışı ortak parametreleri hakkında daha fazla bilgi için bkz. [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Konumsal parametreler
 
@@ -189,7 +189,7 @@ Workflow Copy-Files
 }
 ```
 
-Kullanabileceğiniz **ForEach-Parallel** eşzamanlı olarak bir koleksiyondaki her öğe için komutları işlemek üzere yapısı. Betik bloğundaki komutlar sırayla yürütülürken koleksiyondaki öğeler paralel olarak işlenir. Bu, aşağıda gösterildiği gibi aşağıdaki sözdizimini kullanır. Bu durumda, Activity1 koleksiyondaki tüm öğeler için aynı anda başlar. Her öğe için Activity2, Activity1 tamamlandıktan sonra başlar. Activity3, yalnızca Activity1 ve Activity2 tüm öğeler için tamamlandıktan sonra başlar. Paralelliği sınırlamak için `ThrottleLimit` parametresini kullanıyoruz. Çok yüksek bir `ThrottleLimit` soruna neden olabilir. `ThrottleLimit` parametresinin ideal değeri, ortamınızdaki birçok faktöre bağlıdır. Daha düşük bir değerle başlayın ve belirli bir durumda çalışacak bir tane bulana kadar artan değerleri farklı şekilde deneyin.
+Bir koleksiyondaki her öğe için komutları eşzamanlı olarak işlemek için **ForEach-Parallel** yapısını kullanabilirsiniz. Betik bloğundaki komutlar sırayla yürütülürken koleksiyondaki öğeler paralel olarak işlenir. Bu, aşağıda gösterildiği gibi aşağıdaki sözdizimini kullanır. Bu durumda, Activity1 koleksiyondaki tüm öğeler için aynı anda başlar. Her öğe için Activity2, Activity1 tamamlandıktan sonra başlar. Activity3, yalnızca Activity1 ve Activity2 tüm öğeler için tamamlandıktan sonra başlar. Paralelliği sınırlamak için `ThrottleLimit` parametresini kullanıyoruz. Çok yüksek bir `ThrottleLimit` soruna neden olabilir. `ThrottleLimit` parametresinin ideal değeri, ortamınızdaki birçok faktöre bağlıdır. Daha düşük bir değerle başlayın ve belirli bir durumda çalışacak bir tane bulana kadar artan değerleri farklı şekilde deneyin.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +222,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Kontrol noktaları
 
-*Denetim noktası* , iş akışının geçerli durumunun, değişkenler için geçerli değer ve bu noktaya oluşturulan tüm çıktılar içeren bir anlık görüntüsüdür. Bir iş akışı hatayla sona ererse veya askıya alınırsa, bir sonraki çalıştırılışında iş akışının başlangıcı yerine son denetim noktasından başlar.  **Checkpoint-Workflow** etkinliğini kullanarak bir iş akışında denetim noktası ayarlayabilirsiniz. Azure Otomasyonu, diğer runbook 'ların çalışmasına izin vermek için 3 saat boyunca çalışan runbook 'ların çalıştırıldığı, [dengeli bir Share](automation-runbook-execution.md#fair-share)adlı bir özelliğe sahiptir. Sonuç olarak, yüklenmeyen runbook yeniden yüklenir ve olduğunda runbook 'taki son denetim noktasından yürütme devam eder. Runbook 'un sonunda tamamlanabileceğini garantilemek için 3 saatten az bir süre çalışan aralıklarla kontrol noktaları eklemeniz gerekir. Her çalıştırma sırasında yeni bir kontrol noktası eklenirse ve bir hata nedeniyle runbook 3 saat sonra çıkarıldığında, runbook süresiz olarak sürdürülür.
+*Denetim noktası* , iş akışının geçerli durumunun, değişkenler için geçerli değer ve bu noktaya oluşturulan tüm çıktılar içeren bir anlık görüntüsüdür. Bir iş akışı hatayla sona ererse veya askıya alınırsa, bir sonraki çalıştırılışında iş akışının başlangıcı yerine son denetim noktasından başlar.  **Denetim noktası-Iş akışı** etkinliğiyle bir iş akışında denetim noktası ayarlayabilirsiniz. Azure Otomasyonu, diğer runbook 'ların çalışmasına izin vermek için 3 saat boyunca çalışan runbook 'ların çalıştırıldığı, [dengeli bir Share](automation-runbook-execution.md#fair-share)adlı bir özelliğe sahiptir. Sonuç olarak, yüklenmeyen runbook yeniden yüklenir ve olduğunda runbook 'taki son denetim noktasından yürütme devam eder. Runbook 'un sonunda tamamlanabileceğini garantilemek için 3 saatten az bir süre çalışan aralıklarla kontrol noktaları eklemeniz gerekir. Her çalıştırma sırasında yeni bir kontrol noktası eklenirse ve bir hata nedeniyle runbook 3 saat sonra çıkarıldığında, runbook süresiz olarak sürdürülür.
 
 Aşağıdaki örnek kodda, Activity2 sonrasında iş akışının bitmesini neden olan bir özel durum oluşur. İş akışı yeniden çalıştırıldığında, Activity2 çalıştırılarak başlatılır çünkü bu, son denetim noktası kümesinden hemen sonra.
 
@@ -287,7 +287,7 @@ workflow CreateTestVms
 
 Hizmet sorumlusu ile yapılandırılmış bir farklı çalıştır hesabı kullanarak kimlik doğrulaması yapıyorsanız bu gerekli değildir.
 
-Denetim noktalarıyla ilgili daha fazla bilgi için bkz. [Betik İş Akışına Denetim Noktaları Ekleme](https://technet.microsoft.com/library/jj574114.aspx).
+Kontrol noktaları hakkında daha fazla bilgi için bkz. [bir betik Iş akışına denetim noktaları ekleme](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

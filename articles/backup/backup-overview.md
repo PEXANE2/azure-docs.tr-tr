@@ -1,15 +1,15 @@
 ---
-title: Azure Yedekleme nedir?
+title: Azure Backup nedir?
 description: Azure Backup hizmetine genel bir bakış sağlar ve iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur.
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294312"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397063"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -25,7 +25,7 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 - Azure VM 'lerinde **SQL Server** -  [Azure vm 'lerde çalışan SQL Server veritabanları yedekleme](backup-azure-sql-database.md)
 - Azure VM 'lerinde **SAP HANA veritabanları** - [Azure VM 'lerde çalışan yedekleme SAP HANA veritabanları](backup-azure-sap-hana-database.md)
 
-![Azure Yedekleme'ye Genel Bakış](./media/backup-overview/azure-backup-overview.png)
+![Azure Backup genel bakış](./media/backup-overview/azure-backup-overview.png)
 
 ## <a name="why-use-azure-backup"></a>Azure Backup'ı neden kullanmalısınız?
 

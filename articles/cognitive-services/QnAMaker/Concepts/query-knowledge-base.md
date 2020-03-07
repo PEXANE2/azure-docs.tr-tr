@@ -4,11 +4,11 @@ description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayım
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389434"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Bilgi Bankası yanıtlarını yanıtlar için sorgulama
 
@@ -99,4 +99,4 @@ HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Güvenilirlik puanı](./confidence-score.md)
+> [Güvenirlik puanı](./confidence-score.md)

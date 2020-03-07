@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176877"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374486"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management API şablonları
 
-Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. [Dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
 
 Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeriğini özelleştirmenizi sağlar.  
   
@@ -353,7 +353,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 |`operation`|[İşlem](api-management-template-data-model-reference.md#Operation)|Görüntülenmekte olan işlem.|  
 |`sampleUrl`|string|Geçerli işlemin URL 'SI.|  
 |`operationMenu`|[İşlem menüsü](api-management-template-data-model-reference.md#Menu)|Bu API için bir işlem menüsü.|  
-|`consoleUrl`|KULLANıLMAMıŞSA|**TRY It** düğmesinin URI 'si.|  
+|`consoleUrl`|URI|**TRY It** düğmesinin URI 'si.|  
 |`samples`|[Kod örneği](api-management-template-data-model-reference.md#Sample) varlıklarının koleksiyonu.|Geçerli işlem için kod örnekleri..|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  

@@ -1,6 +1,6 @@
 ---
 title: Nesne modellerini ve uzamsal zeka grafiğini anlama-Azure dijital TWINS | Microsoft Docs
-description: İnsanlar, yerler ve cihazlar arasındaki ilişkileri modellemek için Azure Digital Twins’i kullanın
+description: Kişiler, Yerlerim ve cihazlar arasındaki ilişkileri modellemek için Azure dijital TWINS kullanma
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562604"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382295"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama
 
@@ -78,7 +78,7 @@ Aboneliğinizde bir dijital TWINS hizmeti dağıtırsanız, kök düğümün gen
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Ad | Şununla değiştir |
+| Adı | Şununla değiştir |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Dijital İkizlerini örneğinizin adı |
 | YOUR_LOCATION | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |

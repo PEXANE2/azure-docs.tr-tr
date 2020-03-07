@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887249"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389797"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -96,15 +96,15 @@ Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, ab
 
 Kullanılabilir çekirdekleri denetlemek için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. HDInsight kümesinin **genel bakış** sayfasına gidin. 
 3. Sol menüde **Kota limitleri**' ne tıklayın.
 
-   Sayfa, kullanımdaki çekirdek sayısını, kullanılabilir çekirdek sayısını ve toplam çekirdekleri görüntüler.
+   Sayfada kullanılan çekirdek sayısı, mevcut çekirdek sayısı ve toplam çekirdek sayısı görüntülenir.
 
 Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
 1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasında, **temel bilgiler** sekmesinde aşağıdaki seçenekleri belirleyin:

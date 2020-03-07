@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500339"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389568"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -88,13 +88,13 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 
 ### <a name="error"></a>Hata
 >[!div class="mx-tdCol2BreakAll"]
->| Adı | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat genel hatası | Tomcat. Global. Error | Sayı | İşlenen isteklerden oluşan hata sayısı |
+>| Tomcat genel hatası | Tomcat. Global. Error | Sayısı | İşlenen isteklerden oluşan hata sayısı |
 
 ### <a name="performance"></a>Performans
 >[!div class="mx-tdCol2BreakAll"]
->| Adı | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >|Sistem CPU kullanım yüzdesi | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
 >| Uygulama CPU kullanım yüzdesi | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
@@ -105,28 +105,28 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| Eski nesil veri boyutu | JVM. GC. Live. Data. size | Bayt | Tam GC sonrasında eski nesil bellek havuzunun boyutu. |
 >| Eski nesil veri boyutuna yükselt | JVM. GC. Memory. yükseltilen | Bayt | GC 'den sonra GC öncesinde, eski nesil bellek havuzunun boyutundaki pozitif artış sayısı. |
 >| Küçük ölçekli oluşturma veri boyutuna yükselt | JVM. GC. Memory. ayrılmış | Bayt | Bir GC 'nin bir sonraki öncesinde bir GC sonrasında küçük kuşak bellek havuzunun boyutunun artması için artırılır. |
->| GC duraklatma sayısı | JVM. GC. Pause (Toplam-sayı) | Sayı | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
+>| GC duraklatma sayısı | JVM. GC. Pause (Toplam-sayı) | Sayısı | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
 >| GC duraklatma toplam süre | JVM. GC. Pause (Toplam süre) | Milisaniye | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere tüketilen toplam GC süresi. |
 
 ### <a name="request"></a>İstek
 >[!div class="mx-tdCol2BreakAll"]
->| Adı | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat gönderilen toplam bayt sayısı | Tomcat. Global. gönderildi | Bayt | Gönderilen veri miktarı Tomcat Web sunucusu |
 >| Tomcat alınan toplam bayt sayısı | Tomcat. Global. alındı | Bayt | Alınan veri miktarı Tomcat Web sunucusu |
 >| Tomcat Isteği toplam süre | Tomcat. Global. Request (Toplam süre) | Milisaniye | İstekleri işlemek için Tomcat Web sunucusunun toplam süresi |
->| Tomcat Isteği toplam sayısı | Tomcat. Global. Request (Toplam sayı) | Sayı | Toplam Tomcat Web sunucusu işlenen istek sayısı |
+>| Tomcat Isteği toplam sayısı | Tomcat. Global. Request (Toplam sayı) | Sayısı | Toplam Tomcat Web sunucusu işlenen istek sayısı |
 >| Tomcat Isteği maksimum zamanı | Tomcat. Global. Request. Max | Milisaniye | Bir isteği işlemek için en fazla Tomcat Web sunucusu süresi |
 
 ### <a name="session"></a>Oturum
 >[!div class="mx-tdCol2BreakAll"]
->| Adı | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat oturumu en fazla etkin sayısı | Tomcat. Sessions. Active. Max | Sayı | Aynı anda etkin olan en fazla oturum sayısı |
+>| Tomcat oturumu en fazla etkin sayısı | Tomcat. Sessions. Active. Max | Sayısı | Aynı anda etkin olan en fazla oturum sayısı |
 >| Tomcat oturumu maksimum etkin süresi | Tomcat. Sessions. canlı. Max | Milisaniye | Süresi biten bir oturumun etkin olduğu en uzun süre (saniye cinsinden) |
->| Tomcat oturum oluşturma sayısı | Tomcat. Sessions. oluşturuldu | Sayı | Oluşturulan oturum sayısı |
->| Tomcat oturumunun süre dolma sayısı | Tomcat. Sessions. süre geçildi | Sayı | Zaman aşımına uğramış oturum sayısı |
->| Tomcat oturumu reddedildi sayısı | Tomcat. Sessions. reddedildi | Sayı | En fazla etkin oturum sayısına ulaşıldığından, oluşturulmayan oturum sayısı. |
+>| Tomcat oturum oluşturma sayısı | Tomcat. Sessions. oluşturuldu | Sayısı | Oluşturulan oturum sayısı |
+>| Tomcat oturumunun süre dolma sayısı | Tomcat. Sessions. süre geçildi | Sayısı | Zaman aşımına uğramış oturum sayısı |
+>| Tomcat oturumu reddedildi sayısı | Tomcat. Sessions. reddedildi | Sayısı | En fazla etkin oturum sayısına ulaşıldığından, oluşturulmayan oturum sayısı. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure Ölçüm Gezgini'ni kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)

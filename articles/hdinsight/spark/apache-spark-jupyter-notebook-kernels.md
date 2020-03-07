@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389694"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Not defteri için kernels
 
@@ -53,7 +53,7 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 
 İşte, Spark HDInsight kümelerinde Jupyter Not defteri ile yeni çekirdekler 'ları kullanmanın bazı avantajları aşağıda verilmiştir.
 
-- **Önceden ayarlanmış bağlamlar**. **Pyspark**, **PySpark3**veya **Spark** kernels Ile, uygulamalarınızla çalışmaya başlamadan önce Spark veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Bunlar varsayılan olarak kullanılabilir. Bu bağlamlar şunlardır:
+- **Önceden ayarlanmış bağlamlar**. **Pyspark**, **PySpark3**veya **Spark** kernels Ile, uygulamalarınızla çalışmaya başlamadan önce Spark veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Bunlar varsayılan olarak kullanılabilir. Şu bağlamlarda şunlardır:
 
   - **sc** -Spark bağlamı için
   - **SqlContext** -Hive bağlamı için
@@ -72,9 +72,9 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
    | Magic | Örnek | Açıklama |
    | --- | --- | --- |
    | Yardım |`%%help` |Örnek ve açıklama ile tüm kullanılabilir mıknatıc 'nin bir tablosunu oluşturur |
-   | Bilgisine |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
-   | Yapılandırma |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Oturum oluşturmak için parametreleri yapılandırır. Oturumun bırakılmış ve yeniden oluşturulmasını sağlayan bir oturum zaten oluşturulduysa zorla bayrağı (-f) zorunludur. Geçerli parametrelerin listesi için [Livy 'ın/Sessions Istek gövdesine](https://github.com/cloudera/livy#request-body) bakın. Parametrelerin, örnek sütununda gösterildiği gibi, bir JSON dizesi olarak geçirilmesi ve bir sonraki satırda olması gerekir. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |SqlContext 'e karşı bir Hive sorgusu yürütür. `-o` parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirilir. |
+   | info |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
+   | yapılandır |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Oturum oluşturmak için parametreleri yapılandırır. Oturumun bırakılmış ve yeniden oluşturulmasını sağlayan bir oturum zaten oluşturulduysa zorla bayrağı (-f) zorunludur. Geçerli parametrelerin listesi için [Livy 'ın/Sessions Istek gövdesine](https://github.com/cloudera/livy#request-body) bakın. Parametrelerin, örnek sütununda gösterildiği gibi, bir JSON dizesi olarak geçirilmesi ve bir sonraki satırda olması gerekir. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Bir Hive sorgusu sqlContext karşı yürütür. `-o` parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirilir. |
    | Yerel |`%%local`<br>`a=1` |Sonraki satırlardaki tüm kodlar yerel olarak yürütülür. Kod, kullanmakta olduğunuz çekirdekten bağımsız olarak geçerli Python2 Code olmalıdır. Bu nedenle, Not defterini oluştururken **PySpark3** veya **Spark** çekirdekler ' ı seçmiş olsanız bile, bir hücrede `%%local` Magic kullanırsanız, bu hücrede yalnızca geçerli Python2 kodu olmalıdır. |
    | günlükler |`%%logs` |Geçerli Livy oturumunun günlüklerini çıkış. |
    | delete |`%%delete -f -s <session number>` |Geçerli Livy uç noktasının belirli bir oturumunu siler. Çekirdek için başlatılan oturumu silemezsiniz. |

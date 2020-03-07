@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326313"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395250"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 
@@ -17,7 +17,7 @@ ms.locfileid: "74326313"
 
 Varsayılan işlem düğümü ayrıntılarını görüntülemek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümlerini**seçin.
 
     ![Varsayılan işlem düğümünü seçin](./media/configure-transaction-nodes/nodes.png)
@@ -37,10 +37,10 @@ Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem
 
     | Ayar | Açıklama |
     |---------|-------------|
-    | Name | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
-    | istemcisiyle yönetilen bir cihaz için) | Güçlü bir parola ayarlayın. Temel kimlik doğrulamasıyla işlem düğümü uç noktasına erişmek için parolayı kullanın.
+    | Adı | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
+    | Parola | Güçlü bir parola ayarlayın. Temel kimlik doğrulamasıyla işlem düğümü uç noktasına erişmek için parolayı kullanın.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     Yeni bir işlem düğümü sağlanması yaklaşık 10 dakika sürer. Ek işlem düğümleri ücret doğurur. Maliyetler hakkında daha fazla bilgi için bkz. [Azure fiyatlandırması](https://aka.ms/ABSPricing).
 
@@ -56,7 +56,7 @@ Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem
 
 İşlem düğümü uç noktaları güvenlidir ve kimlik doğrulaması gerekir. Azure AD kimlik doğrulaması, HTTPS temel kimlik doğrulaması kullanarak bir işlem uç noktasına bağlanabilir ve HTTPS veya SSL üzerinden WebSocket üzerinden bir erişim anahtarı kullanabilirsiniz.
 
-### <a name="azure-active-directory-access-control"></a>Azure Active Directory erişim denetimi
+### <a name="azure-active-directory-access-control"></a>Azure Active Directory Access Control
 
 Azure blok zinciri hizmeti işlem düğümü uç noktaları, Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Uç noktanız için Azure AD kullanıcısına, gruba ve hizmet sorumlusu erişimine izin verebilirsiniz.
 
@@ -71,7 +71,7 @@ Uç noktanıza Azure AD erişim denetimi sağlamak için:
     |---------|-------------|
     | Rol | **Sahip**, **katkıda bulunan**veya **Reader**' ı seçin.
     | Erişim ata | **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
-    | Seçim | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
+    | Şunu seçin: | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
 
 1. Rol atamasını eklemek için **Kaydet** ' i seçin.
 
@@ -79,19 +79,19 @@ Azure AD erişim denetimi hakkında daha fazla bilgi için bkz [. RBAC kullanara
 
 Azure AD kimlik doğrulamasını kullanarak bağlanma hakkında daha fazla bilgi için bkz. [AAD kimlik doğrulaması kullanarak düğümünüz bağlama](configure-aad.md).
 
-### <a name="basic-authentication"></a>Temel kimlik doğrulaması
+### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
 HTTPS temel kimlik doğrulaması için, Kullanıcı adı ve parola kimlik bilgileri isteğin HTTPS üst bilgisinde uç noktaya geçirilir.
 
 İşlem düğümünün temel kimlik doğrulama uç noktası ayrıntılarını Azure portal görüntüleyebilirsiniz. Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve Ayarlar ' da **temel kimlik doğrulaması** ' nı seçin.
 
-![Temel kimlik doğrulaması](./media/configure-transaction-nodes/basic.png)
+![Temel kimlik doğrulama](./media/configure-transaction-nodes/basic.png)
 
 Kullanıcı adı, düğümünüz adıdır ve değiştirilemez.
 
 URL 'YI kullanmak için, \<Password\>, düğüm sağlandığında ayarlanan parola ile değiştirin. Parolayı **Sıfırla**' yı seçerek parolayı güncelleştirebilirsiniz.
 
-### <a name="access-keys"></a>Erişim anahtarları
+### <a name="access-keys"></a>Erişim tuşları
 
 Erişim anahtarı kimlik doğrulaması için, erişim anahtarı uç nokta URL 'sine dahildir. İşlem düğümü sağlandığında, iki erişim anahtarı oluşturulur. Kimlik doğrulaması için erişim anahtarı kullanılabilir. İki anahtar, anahtarları değiştirmenize ve döndürmenize olanak tanır.
 

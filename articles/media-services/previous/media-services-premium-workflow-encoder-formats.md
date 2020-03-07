@@ -15,11 +15,11 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792581"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392980"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow biçimleri ve codec bileşenleri
 
@@ -53,7 +53,7 @@ Aşağıdaki bölümde, bu medya işlemcisinin giriş olarak desteklediği codec
 
 * AVC 8 bit/10 bit, AVCIntra dahil olmak üzere 4:2:2 'e kadar
 * AVID DNxHD (MXF içinde)
-* DVCPro/DVCProHD (MXF içinde)
+* DVCPro/DVCProHD (in MXF)
 * HEVC/H. 265, Main ve ana 10 profili
 * JPEG2000
 * MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil)
@@ -91,7 +91,7 @@ Aşağıdaki bölümde, bu medya işlemcisinin çıktısı olarak desteklenen co
 
 * AVC (H., 8 bit; en fazla yüksek profile, düzey 5,2; 4K Ultra HD; AVC Içi)
 * AVID DNxHD (MXF içinde)
-* DVCPro/DVCProHD (MXF içinde)
+* DVCPro/DVCProHD (in MXF)
 * MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil)
 * MPEG-1
 * Windows Media videosu/VC-1
@@ -137,14 +137,14 @@ Alma sırasında **Media Encoder Premium Workflow** şunları destekler:
 
 Giriş videonuz kapalı açıklamalı alt yazı içermiyorsa, çıkış varlığı hala boş bir TTML dosyası içerecektir. 
 
-## <a name="need-help"></a>Yardım mı gerekiyor?
+## <a name="need-help"></a>Yardıma mı ihtiyacınız var?
 
 [Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

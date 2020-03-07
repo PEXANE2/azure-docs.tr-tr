@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395159"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
@@ -56,7 +56,7 @@ java.lang.OutOfMemoryError
 
 Bu özel durumun en olası nedeni, Java sanal makineleri (JVMs) yeterli yığın bellek tahsis edildiği ' dir. Bu JVM 'Ler, Apache Spark uygulamasının bir parçası olarak yürüticileri veya sürücüler olarak başlatılır.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Spark uygulamasının işleyeceği verilerin boyut üst sınırını belirleyin. Giriş verilerini dönüştürerek oluşturulan ara veriler ve ara verileri daha fazla dönüştürme ile üretilen çıkış verileri temelinde, en fazla giriş verisi boyutuna göre boyut tahmini yapın. Başlangıçtaki tahmin yeterli değilse, boyutu biraz artırabilir ve bellek hataları alt tarafına kadar yineleme yapın.
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Spark yapılandırmasındaki `SPARK_DAEMON_MEMORY` özelliğini düzenleyerek Spark geçmiş sunucu belleğini artırabilir ve tüm hizmetleri yeniden başlatabilirsiniz.
 
@@ -200,7 +200,7 @@ Livy sunucusu beklenmedik şekilde sonlandırıldığında, Spark kümelerine ya
 
 Livy aracılığıyla çok sayıda iş gönderildiğinde, Livy sunucusu için yüksek kullanılabilirlik parçası olan bu oturum durumlarını ZK 'de (HDInsight kümelerinde) depolar ve Livy hizmeti yeniden başlatıldığında bu oturumları kurtarır. Beklenmedik sonlandırma sonrasında, Livy oturum başına bir iş parçacığı oluşturur ve bu, çok fazla iş parçacığı oluşturulmasını neden olan belirli bir sayıda kurtarılabilir oturumu biriktirir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Aşağıda açıklanan adımları kullanarak tüm girdileri silin.
 

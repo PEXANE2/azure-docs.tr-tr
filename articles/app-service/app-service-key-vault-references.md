@@ -7,11 +7,11 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373840"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
 
@@ -187,7 +187,7 @@ Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 ### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
 
 1. Portalda uygulamanıza gidin.
-2. **Sorunları tanılama ve çözme**’yi seçin.
+2. **Tanıla ve sorunları çöz '** ü seçin.
 3. **Kullanılabilirlik ve performans** ' ı seçin ve **Web uygulaması** ' nı seçin.
 4. **Uygulama ayarları tanılamayı Key Vault** bulun ve **daha fazla bilgi**'ye tıklayın.
 
@@ -196,6 +196,6 @@ Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 
 1. Portalda uygulamanıza gidin.
 2. **Platform özellikleri** ' ne gidin.
-3. **Sorunları tanılama ve çözme**’yi seçin.
+3. **Tanıla ve sorunları çöz '** ü seçin.
 4. **Kullanılabilirlik ve performans** ' ı seçin ve **işlev uygulaması çalışmıyor veya raporlama hataları** ' nı seçin.
 5. **Uygulama ayarları tanılamayı Key Vault** ' ye tıklayın.

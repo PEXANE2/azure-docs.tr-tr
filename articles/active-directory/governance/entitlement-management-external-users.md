@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185571"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376513"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -143,7 +143,7 @@ Bir dış Kullanıcı, bir erişim paketi isteği ile dizininizden ne olacağın
 
 1. Bu dizindeki Konuk Kullanıcı hesabını kaldırmak istiyorsanız, kaldırılmadan önce geçecek gün sayısını ayarlayabilirsiniz. Konuk Kullanıcı hesabını, herhangi bir erişim paketine en son atamasını yitirdikleri anda kaldırmak istiyorsanız, **bu dizinden dış Kullanıcı kaldırılmadan önce geçecek gün sayısını** **0**olarak ayarlayın.
 
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

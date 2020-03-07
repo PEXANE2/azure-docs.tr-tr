@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929044"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387323"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -42,11 +42,11 @@ Teradata bir Azure IaaS VM 'sinde barındırılıyorsa bile ağ geçidi gereklid
 ## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
 Teradata veritabanına bağlanmak için Veri Yönetimi ağ geçidi için, Teradata sürüm 14 veya üzeri [için .net Veri Sağlayıcısı](https://go.microsoft.com/fwlink/?LinkId=278886) veri yönetimi ağ geçidiyle aynı sisteme yüklemeniz gerekir. Teradata sürüm 12 ve üzeri desteklenir.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -61,7 +61,7 @@ Aşağıdaki bölümler, bir Teradata veri deposuna özgü Data Factory varlıkl
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, Teradata bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Yes |
 | sunucu |Teradata sunucusunun adı. |Yes |
@@ -82,7 +82,7 @@ Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her e
 
 Kaynak, **Relationalsource** türünde olduğunda (Teradata içeren), **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Yes |
 
@@ -284,7 +284,7 @@ Verileri Teradata 'a taşırken, Teradata türünden .NET türüne aşağıdaki 
 
 | Teradata veritabanı türü | .NET Framework türü |
 | --- | --- |
-| char |Dize |
+| Char |Dize |
 | CLOB |Dize |
 | Graphic |Dize |
 | VarChar |Dize |
@@ -294,15 +294,15 @@ Verileri Teradata 'a taşırken, Teradata türünden .NET türüne aşağıdaki 
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | Byteınt |Int16 |
-| Decimal |Decimal |
-| Double |Double |
+| Ondalık |Ondalık |
+| çift |çift |
 | Tamsayı |Int32 |
-| Sayı |Double |
-| Smallint |Int16 |
-| Tarih |Tarih Saat |
+| Sayı |çift |
+| Integer |Int16 |
+| Tarih |DateTime |
 | Zaman |TimeSpan |
 | Time With Time Zone |Dize |
-| Zaman damgası |Tarih Saat |
+| Zaman damgası |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |

@@ -13,11 +13,11 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387550"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Salesforce 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -46,12 +46,12 @@ Salesforce, hem toplam API istekleri hem de eşzamanlı API istekleri için sın
 
 Ayrıca, her iki senaryoda da "REQUEST_LIMIT_EXCEEDED" hatasını alabilirsiniz. Ayrıntılar için [Salesforce geliştirici sınırları](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) MAKALESINDEKI "API isteği sınırları" bölümüne bakın.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Verileri Salesforce 'tan farklı araçlar/API 'Ler kullanarak taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -66,7 +66,7 @@ Aşağıdaki bölümler Salesforce 'a özgü Data Factory varlıkları tanımlam
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, Salesforce bağlantılı hizmetine özgü JSON öğelerine yönelik açıklamalar verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **Salesforce**olarak ayarlanmalıdır. |Yes |
 | environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br><br> -Varsayılan: "https:\//login.salesforce.com". <br> -Korumalı verileri veri kopyalamak için "https://test.salesforce.com" belirtin. <br> -Özel etki alanından veri kopyalamak için, örneğin "https://[Domain]. My. Salesforce. com" belirtin. |Hayır |
@@ -79,7 +79,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türünde bir veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tableName |Salesforce 'daki tablonun adı. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
 
@@ -95,7 +95,7 @@ Etkinliğin typeProperties bölümünde bulunan özellikler, diğer yandan her e
 
 Kopyalama etkinliğinde, kaynak **Relationalsource** türünde olduğunda (Salesforce içeren), typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |Bir SQL-92 sorgusu veya [Salesforce nesne sorgulama dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) sorgusu. Örneğin: `select * from MyTable__c`. |Hayır ( **veri kümesinin** **tabloadı** belirtilmişse) |
 
@@ -287,15 +287,15 @@ RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relat
 | --- | --- |
 | Auto Number |Dize |
 | Checkbox |Boole |
-| Para birimi |Decimal |
-| Tarih |Tarih Saat |
-| Tarih/saat |Tarih Saat |
-| E-posta |Dize |
+| Para birimi |Ondalık |
+| Tarih |DateTime |
+| Date/Time |DateTime |
+| Email |Dize |
 | Kimlik |Dize |
 | Lookup Relationship |Dize |
 | Multi-Select Picklist |Dize |
-| Sayı |Decimal |
-| Yüzde |Decimal |
+| Sayı |Ondalık |
+| Yüzde |Ondalık |
 | Telefon |Dize |
 | Picklist |Dize |
 | Metin |Dize |
@@ -303,7 +303,7 @@ RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relat
 | Text Area (Long) |Dize |
 | Text Area (Rich) |Dize |
 | Text (Encrypted) |Dize |
-| URL |Dize |
+| URL'si |Dize |
 
 > [!NOTE]
 > Kaynak veri kümesindeki sütunları havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

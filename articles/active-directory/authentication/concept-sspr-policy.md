@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376943"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve kısıtlamaları
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesap
 
 * Aşağıdaki Azure Yönetici rollerinin tümü etkilenir:
   * Yardım Masası Yöneticisi
-  * Hizmet desteği Yöneticisi
+  * Hizmet desteği yöneticisi
   * Faturalama yöneticisi
   * Partner Tier1 Desteği
   * Partner Tier2 Desteği
@@ -71,7 +71,7 @@ Azure AD 'de oturum açması gereken her kullanıcı hesabının, hesabıyla ili
 
 | Özellik | UserPrincipalName gereksinimleri |
 | --- | --- |
-| İzin verilen karakterler |<ul> <li>A – Z</li> <li>a-z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| İzin verilen karakterler |<ul> <li>A – Z</li> <li>a-z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
 | Karakterlere izin verilmiyor |<ul> <li>Etki alanından Kullanıcı adını ayırmayan herhangi bir "\@\" karakteri.</li> <li>"\@\" simgesinden hemen önce". "nokta karakterini içeremez</li></ul> |
 | Uzunluk kısıtlamaları |<ul> <li>Toplam uzunluk 113 karakterden uzun olmamalıdır</li><li>"\@\" simgesinden önce en fazla 64 karakter olabilir</li><li>"\@\" simgesinden sonra en fazla 48 karakter olabilir</li></ul> |
 

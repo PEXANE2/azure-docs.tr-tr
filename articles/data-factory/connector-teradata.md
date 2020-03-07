@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930913"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355597"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata Vanndan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,7 +33,7 @@ Bu Teradata Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 - [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Teradata Vana 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Teradata Vana 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 Özellikle, bu Teradata Bağlayıcısı şunları destekler:
 
@@ -53,7 +53,7 @@ Integration Runtime, 3,18 sürümünden başlayarak yerleşik bir Teradata sür�
 
 3,18 ' den önceki şirket içinde barındırılan tümleştirme çalışma zamanı sürümü için, tümleştirme çalışma zamanı makinesine Teradata, sürüm 14 veya üzeri [için .net veri sağlayıcısı](https://go.microsoft.com/fwlink/?LinkId=278886)sürümünü yüklemelisiniz. 
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,13 +63,13 @@ Aşağıdaki bölümler, Teradata bağlayıcısına özgü Data Factory varlıkl
 
 Teradata bağlı hizmeti aşağıdaki özellikleri destekler:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Type özelliği **Teradata**olarak ayarlanmalıdır. | Yes |
 | connectionString | Teradata örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Yes |
 | kullanıcı adı | Teradata 'a bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | Hayır |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Ayrıca, [Azure Key Vault depolanan bir gizli dizi başvurusunu](store-credentials-in-key-vault.md)da seçebilirsiniz. <br>Windows kimlik doğrulaması kullandığınızda veya temel kimlik doğrulaması için Key Vault bir parolaya başvurulduğunda geçerlidir. | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Yes |
 
 Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazla bağlantı özelliği:
 
@@ -150,10 +150,10 @@ Bu bölüm, Teradata veri kümesi tarafından desteklenen özelliklerin bir list
 
 Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği `TeradataTable`olarak ayarlanmalıdır. | Yes |
-| veritabanı | Teradata örneğinin adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| database | Teradata örneğinin adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 | table | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek:**
@@ -204,7 +204,7 @@ Bu bölüm, Teradata kaynağı tarafından desteklenen özelliklerin bir listesi
 
 Teradata 'tan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği `TeradataSource`olarak ayarlanmalıdır. | Yes |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır (veri kümesindeki tablo belirtilmişse) |
@@ -304,11 +304,11 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 | Blob |Byte[] |
 | Bayt |Byte[] |
 | Byteınt |Int16 |
-| char |Dize |
+| Char |Dize |
 | CLOB |Dize |
-| Tarih |Tarih Saat |
-| Decimal |Decimal |
-| Double |Double |
+| Tarih |DateTime |
+| Ondalık |Ondalık |
+| çift |çift |
 | Graphic |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Tamsayı |Int32 |
 | Interval Day |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
@@ -324,17 +324,17 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 | Interval Second |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Interval Year |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Interval Year To Month |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Sayı |Double |
+| Sayı |çift |
 | Süre (Tarih) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Süre (saat) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Süre (saat dilimiyle birlikte) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Süre (zaman damgası) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Süre (saat dilimiyle zaman damgası) |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
-| Smallint |Int16 |
+| Integer |Int16 |
 | Zaman |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Zaman damgası |Tarih Saat |
-| Timestamp With Time Zone |Tarih Saat |
+| Zaman damgası |DateTime |
+| Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |Dize |
 | VarGraphic |Desteklenmiyor. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
@@ -347,4 +347,4 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri fabrikasında kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

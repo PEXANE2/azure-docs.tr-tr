@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612638"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390703"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Veri bilimi sanal makinesi veri alma araçları
 
@@ -98,6 +98,6 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Nedir?   | Linux dosya sistemine bir Azure Blob depolama kapsayıcısını bağlamak için bir araç.      |
 | Desteklenen DSVM sürümleri      | Linux      |
 | Tipik kullanımları      | Bir kapsayıcıdaki Blobları okuma ve yazma.      |
-|  Nasıl kullanılır ve çalıştırılır?    |   Çalıştırma _blobfuse_ bir terminal konumunda.    |
-| Örneklere bağlantılar      | [github'da blobfuse](https://github.com/Azure/azure-storage-fuse)      |
+|  Nasıl kullanılır ve çalıştırılır?    |   Bir terminalde _blobsigortası_ çalıştırın.    |
+| Örneklere bağlantılar      | [GitHub 'da blobsigortası](https://github.com/Azure/azure-storage-fuse)      |
 | DSVM 'deki ilgili araçlar      | Azure CLI      |

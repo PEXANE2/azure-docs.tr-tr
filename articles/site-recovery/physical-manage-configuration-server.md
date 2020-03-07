@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084607"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367122"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -20,7 +20,7 @@ Fiziksel sunucuların olağanüstü durum kurtarması için Azure 'a [Azure Site
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önkoşulları özetler.
 
@@ -71,7 +71,7 @@ Yapılandırma sunucusu yükleme dosyasının en son sürümü Site Recovery por
      ![Güvenlik duvarı](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. **Önkoşul Denetimi** menüsünde Kurulum, yüklemenin çalışabildiğinden emin olmak üzere bir denetim gerçekleştirir. **Genel saat eşitleme denetimi** hakkında bir uyarı görünürse, sistem saatindeki zamanın (**Tarih ve Saat** ayarları) saat dilimiyle aynı olduğunu doğrulayın.
 
-    ![Ön koşullar](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Önkoşullar](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. **MySQL Yapılandırması** menüsünde, yüklü MySQL sunucu örneğinde oturum açmak için kimlik bilgileri oluşturun.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -175,7 +175,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 2. Masaüstünüzdeki kısayolu kullanarak Cspsconfigtool. exe ' yi başlatın.
 3. **Kasa kaydı** sekmesine tıklayın.
 4. Portaldan yeni bir kayıt dosyası indirin ve araca giriş olarak sağlayın.
-      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![Register-Configuration-Server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Proxy sunucusu ayrıntılarını girip **Kaydet** düğmesine tıklayın.  
 6. Yönetici PowerShell komut penceresini açın.
 7. Aşağıdaki komutu çalıştırın

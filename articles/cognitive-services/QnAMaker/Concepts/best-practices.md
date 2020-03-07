@@ -4,11 +4,11 @@ description: Bilgi bankanızı artırmak ve uygulama/sohbet Robotu ait son kulla
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370107"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389453"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-cevap Oluşturucu Bilgi Bankası en iyi yöntemleri
 
@@ -102,7 +102,7 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 ### <a name="add-alternate-questions"></a>Diğer sorular ekleyin
 [Alternatif sorular](../How-To/edit-knowledge-base.md) , bir kullanıcı sorgusuyla eşleşme olasılığını artırır. Diğer sorular, aynı soruyu istenebilir birden çok yol olduğunda yararlıdır. Word-style ve cümle yapısı içinde bu değişiklikleri içerebilir.
 
-|Özgün sorgu|Diğer sorgular|Değişiklik|
+|Özgün sorgu|Diğer sorgular|Değiştir|
 |--|--|--|
 |Kullanılabilir park olan?|Araba park var mı?|cümle yapısı|
  |Merhaba|Yo<br>Hey var!|Word stil veya argo kullanımlar|

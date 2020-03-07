@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450156"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395524"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -41,10 +41,10 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |204 Içerik yok     |         |  Hiçbir içerik döndürülmeden Tamam      |
-|202 kabul edildi     |         |     Kabul edildi    |
+|202 kabul edildi     |         |     Eden    |
 
 ##### <a name="example-responses"></a>Örnek yanıtlar
 
@@ -104,9 +104,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-1"></a>Lerinde
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 OK     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       TAMAM |
+|200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       Tamam |
 
 #### <a name="example-responses-1"></a>Örnek yanıtlar
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Korumalı bir öğe oluşturmak için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Korunabilir kaynak özellikleri         |
 
@@ -208,10 +208,10 @@ Korumalı bir öğenin oluşturulması [zaman uyumsuz bir işlemdir](https://doc
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 OK     |    [Korunabilir kaynak](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  TAMAM       |
-|202 kabul edildi     |         |     Kabul edildi    |
+|200 TAMAM     |    [Korunabilir kaynak](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  Tamam       |
+|202 kabul edildi     |         |     Eden    |
 
 ##### <a name="example-responses"></a>Örnek yanıtlar
 
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | [Iaasvmbackuprequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource özellikleri         |
 
@@ -319,9 +319,9 @@ Aşağıdaki istek gövdesi, korumalı bir öğe için bir yedeklemeyi tetikleme
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|202 kabul edildi     |         |     Kabul edildi    |
+|202 kabul edildi     |         |     Eden    |
 
 #### <a name="example-responses-3"></a>Örnek yanıtlar
 
@@ -439,10 +439,10 @@ Korumayı *silme* [işlemi zaman uyumsuz bir işlemdir](https://docs.microsoft.c
 
 Bu, başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 204 (NoContent) olarak iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 kabul edildi     |         |     Kabul edildi    |
+|202 kabul edildi     |         |     Eden    |
 
 > [!IMPORTANT]
 > Yanlışlıkla silme senaryolarına karşı korunmak için, kurtarma hizmetleri Kasası için bir [geçici silme özelliği](use-restapi-update-vault-properties.md#soft-delete-state) bulunur. Kasanın geçici silme durumu etkin olarak ayarlandıysa, silme işlemi verileri hemen silmez. 14 gün boyunca tutulur ve sonra kalıcı olarak temizlenir. Bu 14 günlük dönem için müşteri, depolama için ücretlendirilmez. Silme işlemini geri almak için [geri al-Sil bölümüne](#undo-the-stop-protection-and-delete-data)bakın.

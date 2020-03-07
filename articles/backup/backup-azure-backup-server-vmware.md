@@ -4,11 +4,11 @@ description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM '
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152876"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392053"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -137,7 +137,7 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 | Veri deposu. alt düzey dosya işlemleri                          | Global. Manage özel öznitelikler                           | DataStore. AllocateSpace                     |
 | Veri deposu kümesi. Datatstore kümesi yapılandırma             | Global. set özel özniteliği                               | VirtualMachine. config. ChangeTracking        |
 | Global. Disable yöntemleri                                       | Ana bilgisayar. yerel işlemler. Sanal makine oluştur              | VirtualMachine. State. RemoveSnapshot         |
-| Global. Enable yöntemleri                                        | Ağ. Ağ ata                                   | VirtualMachine. State. CreateSnapshot         |
+| Global. Enable yöntemleri                                        | Network. Ağ ata                                   | VirtualMachine. State. CreateSnapshot         |
 | Küresel. lisanslar                                              | Kaynak. Sanal makineyi kaynak havuzuna ata         | VirtualMachine. sağlama. DiskRandomRead  |
 | Global. log olayı                                             | Sanal makine. Yapılandırma. yeni disk Ekle                | VirtualMachine. etkileşim. PowerOff            |
 | Global. Manage özel öznitelikler                              | Sanal makine. Yapılandırma. Gelişmiş                    | VirtualMachine. Inventory. Create             |
@@ -281,7 +281,7 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 
 1. **Veri koruma yöntemini seçin** sayfasında, koruma grubu için bir ad ve koruma ayarları girin. Azure 'a yedeklemek için, kısa vadeli korumayı **diske** ayarlayın ve çevrimiçi korumayı etkinleştirin. Ardından **İleri**'ye tıklayın.
 
-    ![Veri koruma yöntemini seçme](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Veri koruma yöntemini seçin](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. **Kısa vadeli hedefleri belirtin**bölümünde, verileri diske ne kadar süreyle yedeklenediğinizi belirtin.
    - **Bekletme aralığı**' nda, disk kurtarma noktalarının kaç gün tutulması gerektiğini belirtin.

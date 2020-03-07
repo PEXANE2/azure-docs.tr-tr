@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard hazır ayarlarını özelleştirme | Microsoft Docs
-description: Bu konuda, Media Encoder Standard görev ön Ayarları özelleştirerek Gelişmiş encoding gerçekleştirme gösterilmektedir. Konu, Media Services .NET SDK'sı bir kodlama görevi ve işi oluşturmak için nasıl kullanılacağını gösterir. Ayrıca özel önayarların kullanılmasına kodlama işinin için tedarik işlemini de gösterir.
+title: Media Encoder Standard önayarlarını özelleştirme | Microsoft Docs
+description: Bu konu, Media Encoder Standard görev önayarlarını özelleştirerek gelişmiş kodlamanın nasıl gerçekleştirileceğini gösterir. Bu konuda, bir kodlama görevi ve işi oluşturmak için .NET SDK Media Services nasıl kullanılacağı gösterilmektedir. Ayrıca, kodlama işine özel ön ayarların nasıl alınacağını gösterir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247252"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394752"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Özelleştirme Media Encoder Standard hazır ayarları  
+# <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard önayarlarını özelleştirme  
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, özel önayarın kullanarak medya Kodlayıcı standart (MES ile) Gelişmiş encoding gerçekleştirme gösterilmektedir. Makale, bir kodlama görevi ve bu görevi yürüten bir iş oluşturmak için .NET kullanır.  
+Bu makalede, özel bir ön ayar kullanılarak Media Encoder Standard (MES) ile gelişmiş kodlama gerçekleştirme işlemi gösterilmektedir. Bu makalede, bir kodlama görevi ve bu görevi yürüten bir iş oluşturmak için .NET kullanılır.  
 
-Bu makalede önceden ayarlanmış yararlanarak özelleştirmek gösterilmektedir [H264 Çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) hazır ve katman sayısını azaltır. [Media Encoder Standard özelleştirme önayarlar](media-services-advanced-encoding-with-mes.md) makalede, gelişmiş kodlama görevleri gerçekleştirmek için kullanılan özel önayarların kullanılmasına gösterilmektedir.
+Bu makalede, [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) önayarını gerçekleştirerek ve katman sayısını azaltarak bir önayarı nasıl özelleştireceğiniz gösterilmektedir. [Media Encoder Standard özelleştirmeyi özelleştirme](media-services-advanced-encoding-with-mes.md) makalesinde, gelişmiş kodlama görevlerini gerçekleştirmek için kullanılabilecek özel önayarlar gösterilir.
 
 > [!NOTE]
-> Bu makalede açıklanan özel önayarların kullanılmasına kullanılamaz [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) dönüşümleri veya CLI komutları. Bkz: [v3 v2'den geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) daha fazla ayrıntı için.
+> Bu makalede açıklanan özel ön ayarlar [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) dönüştürmelerde veya CLI komutlarında kullanılamaz. Daha fazla ayrıntı için bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md) .
 
-## <a id="customizing_presets"></a> MES ön ayarı özelleştirme
+## <a id="customizing_presets"></a>MES ön ayarını özelleştirme
 
-### <a name="original-preset"></a>Özgün hazır
+### <a name="original-preset"></a>Özgün önayar
 
-İçinde tanımlanan JSON Kaydet [H264 Çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) makalede bazı dosya .json uzantısına sahip. Örneğin, **CustomPreset_JSON.json**.
+. JSON uzantılı bazı dosyadaki [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) MAKALESINDE tanımlanan JSON 'ı kaydedin. Örneğin, **CustomPreset_JSON. JSON**.
 
-### <a name="customized-preset"></a>Özelleştirilmiş hazır
+### <a name="customized-preset"></a>Özelleştirilmiş önayar
 
-Açık **CustomPreset_JSON.json** dosya ve ilk üç katmanlardan kaldırma **H264Layers** dosyanız şu şekilde görünür.
+**CustomPreset_JSON. JSON** dosyasını açın ve **H264Layers** 'den ilk üç katmanı kaldırarak dosyanızı bunun gibi görünmesini sağlayın.
 
 ```json 
     {  
@@ -115,20 +115,20 @@ Açık **CustomPreset_JSON.json** dosya ve ilk üç katmanlardan kaldırma **H26
 
 ## <a id="encoding_with_dotnet"></a>Media Services .NET SDK ile kodlama
 
-Aşağıdaki kod örneği, aşağıdaki görevleri gerçekleştirmek için Media Services .NET SDK'sını kullanır:
+Aşağıdaki kod örneği aşağıdaki görevleri gerçekleştirmek için Media Services .NET SDK kullanır:
 
 - Bir kodlama işi oluşturun.
-- Medya Kodlayıcısı standart Kodlayıcı bir başvuru alın.
-- Özel JSON yükü önceki bölümde oluşturduğunuz hazır. 
+- Media Encoder Standard Kodlayıcısı için bir başvuru alın.
+- Önceki bölümde oluşturduğunuz özel JSON ön ayarını yükleyin. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Bir kodlama görevi işe ekleyin. 
-- Kodlanacak giriş varlığı belirtin.
-- Kodlanmış varlığı içeren bir çıkış varlık oluşturun.
-- İş ilerleme durumunu denetlemek için bir olay işleyicisi ekleyin.
-- İşi Gönder.
+- İşe bir kodlama görevi ekleyin. 
+- Kodlanacak giriş varlığını belirtin.
+- Kodlanmış varlığı içeren bir çıkış varlığı oluşturun.
+- İşin ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
+- İşi gönder.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
@@ -266,10 +266,10 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [CLI kullanarak özel bir dönüşüm ile kodlama](../latest/custom-preset-cli-howto.md)
+- [CLı kullanarak özel dönüşümle kodlama](../latest/custom-preset-cli-howto.md)
 - [Media Services v3 ile kodlama](../latest/encoding-concept.md)
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma

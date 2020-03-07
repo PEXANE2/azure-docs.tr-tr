@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931877"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387391"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -40,12 +40,12 @@ Aşağıdaki kimlik doğrulama türleri desteklenir:
 * **Cloud** OData akışına erişmek için anonim, temel (Kullanıcı adı ve parola) veya Azure Active Directory tabanlı OAuth kimlik doğrulaması kullanabilirsiniz.
 * **Şirket içi** OData akışına erişmek için anonim, temel (Kullanıcı adı ve parola) veya Windows kimlik doğrulaması kullanabilirsiniz.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak bir OData kaynağından veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -60,7 +60,7 @@ Aşağıdaki bölümler, OData kaynağına özgü Data Factory varlıkları tan�
 ## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 Aşağıdaki tabloda, OData bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **OData** olarak ayarlanmalıdır |Yes |
 | url |OData hizmetinin URL 'si. |Yes |
@@ -145,7 +145,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **ODataResource** türünde veri kümesi Için typeproperties bölümü (OData veri kümesini içerir) aşağıdaki özelliklere sahiptir
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | yol |OData kaynağının yolu |Hayır |
 
@@ -156,7 +156,7 @@ Diğer yandan etkinliğin typeProperties bölümünde bulunan özellikler her et
 
 Kaynak, **Relationalsource** türünde olduğunda (OData içeren), typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | Örnek | Gereklidir |
+| Özellik | Açıklama | Örnek | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |"? $select = ad, açıklama & $top = 5" |Hayır |
 
@@ -168,14 +168,14 @@ Kaynak, **Relationalsource** türünde olduğunda (OData içeren), typepropertie
 
 OData 'ten verileri taşırken, OData türlerinden .NET türüne aşağıdaki eşlemeler kullanılır.
 
-| OData Veri Türü | .NET türü |
+| OData veri türü | .NET türü |
 | --- | --- |
 | EDM.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | EDM.Byte |Byte[] |
-| Edm.DateTime |Tarih Saat |
-| EDM.Decimal |Decimal |
-| Edm.Double |Double |
+| Edm.DateTime |DateTime |
+| EDM.Decimal |Ondalık |
+| Edm.Double |çift |
 | EDM.Single |Tek |
 | EDM.Guid |Guid |
 | EDM.Int16 |Int16 |

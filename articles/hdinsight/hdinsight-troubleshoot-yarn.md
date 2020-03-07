@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395127"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hadoop YARN sorunlarını giderme
 
@@ -24,24 +24,24 @@ Apache Ambari, Apache Hadoop YARN yükü ile çalışırken sık karşılaşıla
 
 Yeni YARN kuyruk oluşturmak için Ambari aşağıdaki adımları kullanın ve ardından kapasite ayırma tüm kuyrukları arasında dengeleme.
 
-Bu örnekte, iki mevcut kuyrukları (**varsayılan** ve **thriftsvr**) hem de % 50 kapasiteden yeni kuyruğu (spark) % 50 kapasitesini sunan % 25 kapasiteye değiştirilir.
+Bu örnekte, iki mevcut kuyruk (**varsayılan** ve **thriftsvr**) her ikisi de %50 kapasitesinden %25 kapasiteye (Spark) %50 kapasiteye sahip olacak şekilde değiştirilmiştir.
 
 | Kuyruk | Kapasite | Maksimum kapasite |
 | --- | --- | --- |
-| default | %25 | %50 |
-| thrftsvr | %25 | %50 |
-| spark | %50 | %50 |
+| default | %25 | 50% |
+| thrftsvr | %25 | 50% |
+| spark | 50% | 50% |
 
-1. Seçin **Ambari görünümleri** simgesi ve Kılavuz düzeni seçin. Ardından, **YARN Kuyruk yöneticisi**.
+1. **Ambarı görünümleri** simgesini seçin ve ardından Kılavuz stilini seçin. Sonra, **Yarn kuyruğu Yöneticisi**' ni seçin.
 
     ![Apache ambarı panosu YARN Kuyruk Yöneticisi](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
-2. Seçin **varsayılan** kuyruk.
+2. **Varsayılan** kuyruğu seçin.
 
     ![Apache ambarı YARN varsayılan kuyruğu seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. İçin **varsayılan** kuyruk, değiştirme **kapasite** 50 %'için % 25. İçin **thriftsvr** kuyruk, değiştirme **kapasite** % 25.
+3. **Varsayılan** sıra için **kapasiteyi** %50 ' dan %25 ' e değiştirin. **Thriftsvr** kuyruğu için **kapasiteyi** %25 olarak değiştirin.
 
     ![Varsayılan ve thriftsvr kuyruklar için % 25'ine kapasitesini değiştirme](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Yeni bir kuyruk oluşturmak için Seç **kuyruk Ekle**.
+4. Yeni bir kuyruk oluşturmak için **kuyruk Ekle**' yi seçin.
 
     ![Apache ambarı YARN Pano ekleme kuyruğu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -49,10 +49,10 @@ Bu örnekte, iki mevcut kuyrukları (**varsayılan** ve **thriftsvr**) hem de % 
 
     ![Apache ambarı YARN Pano adı kuyruğu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Bırakın **kapasite** % 50 tıklayın ve ardından değerlerinde **eylemleri** düğmesi.
+6. **Kapasite** değerlerini %50 ' de bırakın ve sonra **Eylemler** düğmesini seçin.
 
     ![Apache ambarı YARN seçim eylemi](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Seçin **kaydedin ve yenileyin kuyrukları**.
+7. **Kuyrukları Kaydet ve Yenile '** yi seçin.
 
     ![Kaydet'i seçin ve kuyruklarını Yenile](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -66,7 +66,7 @@ Bu değişiklikler hemen YARN Zamanlayıcı UI görülebilir.
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Güvenli Kabuk (SSH) istemcisi kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için [ek okuma](#additional-reading-2).
+1. Güvenli Kabuk (SSH) istemcisi kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için bkz. [ek okuma](#additional-reading-2).
 
 1. Şu anda çalışan YARN uygulamaları tüm uygulama kimliklerini listelemek için aşağıdaki komutu çalıştırın:
 
@@ -74,7 +74,7 @@ Bu değişiklikler hemen YARN Zamanlayıcı UI görülebilir.
     yarn top
     ```
 
-    Kimlikleri listelenen **APPLİCATİONID** sütun. Günlükleri indirebilirsiniz **APPLİCATİONID** sütun.
+    Kimlikler, **ApplicationId** sütununda listelenir. Günlükleri **ApplicationId** sütunundan indirebilirsiniz.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root

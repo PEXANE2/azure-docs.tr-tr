@@ -11,13 +11,13 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460474"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373674"
 ---
-# <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolama'da Eşzamanlılığı Yönetme
+# <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolama eşzamanlılık yönetimi
 
 Modern Internet tabanlı uygulamalarda, verileri eşzamanlı olarak görüntüleyen ve güncelleştiren birden fazla kullanıcı vardır. Bu, özellikle birden çok kullanıcının aynı verileri güncelleştirebileceği senaryolar için, uygulama geliştiricilerinin son kullanıcılara öngörülebilir bir deneyim sağlama konusunda dikkatli bir şekilde karar sağlamasını gerektirir. Geliştiricilerin genellikle göz önünde bulundurulması gereken üç ana veri eşzamanlılık stratejisi vardır:  
 
@@ -90,14 +90,14 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 | İşlem | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| Kapsayıcı oluşturma |Evet |Hayır |
-| Kapsayıcı özelliklerini al |Evet |Hayır |
-| Kapsayıcı meta verilerini al |Evet |Hayır |
-| Kapsayıcı meta verilerini ayarla |Evet |Evet |
-| Kapsayıcı ACL 'sini al |Evet |Hayır |
-| Kapsayıcı ACL 'sini ayarla |Evet |Evet (*) |
-| Kapsayıcıyı Sil |Hayır |Evet |
-| Kira kapsayıcısı |Evet |Evet |
+| Kapsayıcı oluşturma |Yes |Hayır |
+| Kapsayıcı özelliklerini al |Yes |Hayır |
+| Kapsayıcı meta verilerini al |Yes |Hayır |
+| Kapsayıcı meta verilerini ayarla |Yes |Yes |
+| Kapsayıcı ACL 'sini al |Yes |Hayır |
+| Kapsayıcı ACL 'sini ayarla |Yes |Evet (*) |
+| Kapsayıcıyı Sil |Hayır |Yes |
+| Kira kapsayıcısı |Yes |Yes |
 | Blobları Listele |Hayır |Hayır |
 
 (*) SetContainerACL tarafından tanımlanan izinler önbelleğe alınır ve bu izinlere yönelik güncelleştirmeler, zaman içindeki güncelleştirmelerin tutarlı olması garanti edilmediği için 30 saniye sürer.  
@@ -106,22 +106,22 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 | İşlem | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| Blobu koy |Evet |Evet |
-| Blob al |Evet |Evet |
-| Blob özelliklerini al |Evet |Evet |
-| Blob özelliklerini ayarla |Evet |Evet |
-| Blob meta verilerini al |Evet |Evet |
-| Blob meta verilerini ayarla |Evet |Evet |
-| Kira Blobu (*) |Evet |Evet |
-| Anlık görüntü blobu |Evet |Evet |
-| Kopya blob'u |Evet |Evet (kaynak ve hedef blobu için) |
+| Blobu koy |Yes |Yes |
+| Blob al |Yes |Yes |
+| Blob özelliklerini al |Yes |Yes |
+| Blob özelliklerini ayarla |Yes |Yes |
+| Blob meta verilerini al |Yes |Yes |
+| Blob meta verilerini ayarla |Yes |Yes |
+| Kira Blobu (*) |Yes |Yes |
+| Anlık görüntü blobu |Yes |Yes |
+| Kopya blob'u |Yes |Evet (kaynak ve hedef blobu için) |
 | Kopyalama blobu durdur |Hayır |Hayır |
-| BLOB silme |Hayır |Evet |
+| BLOB silme |Hayır |Yes |
 | Yerleştirme bloğu |Hayır |Hayır |
-| Öbek listesini yerleştirme |Evet |Evet |
-| Engelleme listesini al |Evet |Hayır |
-| Yerleştirme sayfası |Evet |Evet |
-| Sayfa aralıklarını al |Evet |Evet |
+| Öbek listesini yerleştirme |Yes |Yes |
+| Engelleme listesini al |Yes |Hayır |
+| Yerleştirme sayfası |Yes |Yes |
+| Sayfa aralıklarını al |Yes |Yes |
 
 (*) Kira blobu blob üzerinde ETag öğesini değiştirmez.  
 
@@ -179,7 +179,7 @@ Aşağıdaki blob işlemleri, Kötümser eşzamanlılık 'yi yönetmek için kir
 * Anlık görüntü blobu-Kiralama KIMLIĞI bir kira varsa isteğe bağlıdır
 * Kopyalama blobu-hedef blobu üzerinde kira varsa, kira KIMLIĞI gereklidir
 * Kopyalama blobu durdur-hedef blobu üzerinde sonsuz bir kira varsa, kira KIMLIĞI gereklidir
-* Blob Kiralama  
+* Kira blobu  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Kapsayıcılar için Kötümser eşzamanlılık
 
@@ -197,9 +197,9 @@ Aşağıdaki kapsayıcı işlemleri, Kötümser eşzamanlılık 'yi yönetmek i�
 
 Daha fazla bilgi için bkz.  
 
-* [Blob Hizmeti İşlemlerinde Koşullu Üst Bilgiler Belirtme](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Blob hizmeti Işlemleri için koşullu üstbilgileri belirtme](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kira kapsayıcısı](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Blob Kiralama](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Kira blobu](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-table-storage"></a>Tablo depolamada eşzamanlılık yönetimi
 
@@ -244,13 +244,13 @@ Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kull
 
 | İşlem | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
 |:--- |:--- |:--- |
-| Sorgu varlıkları |Evet |Hayır |
-| Varlık Ekle |Evet |Hayır |
-| Varlığı Güncelleştir |Evet |Evet |
-| Birleştirme varlığı |Evet |Evet |
-| Varlığı Sil |Hayır |Evet |
-| Varlık Ekle veya Değiştir |Evet |Hayır |
-| Varlık ekleme veya birleştirme |Evet |Hayır |
+| Sorgu varlıkları |Yes |Hayır |
+| Varlık Ekle |Yes |Hayır |
+| Varlığı Güncelleştir |Yes |Yes |
+| Birleştirme varlığı |Yes |Yes |
+| Varlığı Sil |Hayır |Yes |
+| Varlık Ekle veya Değiştir |Yes |Hayır |
+| Varlık ekleme veya birleştirme |Yes |Hayır |
 
 **Varlık Ekle veya Değiştir** ve **Ekle ya da Birleştir** Işlemlerinin tablo hizmetine bir ETag değeri *göndermediğinden hiçbir eşzamanlılık denetimi gerçekleştirmediğini* unutmayın.  
 
@@ -268,7 +268,7 @@ Kuyruk hizmeti iyimser veya Kötümser eşzamanlılık desteğine sahip değil v
 
 Daha fazla bilgi için bkz.  
 
-* [Kuyruk Hizmeti REST API'si](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Kuyruk hizmeti REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Iletileri al](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-azure-files"></a>Azure dosyalarında eşzamanlılık yönetimi

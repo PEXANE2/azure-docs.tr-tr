@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372074"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
@@ -40,7 +40,7 @@ JSON çıktısı parolayı `null`olarak gösterir. `'Conflict'. Details: 409` ha
 
 Azure portal, dağıtım kimlik bilgileri sayfasına erişebilmek için en az bir uygulamanız olması gerekir. Kullanıcı düzeyi kimlik bilgilerinizi yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **\<Any_app** > **Dağıtım Merkezi** > **FTP** > **panosu**' nu seçin.
+1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **\<Any_app** > **Dağıtım Merkezi** > **FTP** > **panosu**' nu seçin. > 
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
@@ -70,7 +70,7 @@ Kullanıcı düzeyi kimlik bilgileri, belirli bir kaynak değil kullanıcıya ba
 ## <a name="appscope"></a>Uygulama düzeyi kimlik bilgilerini edinme ve sıfırlama
 Uygulama düzeyi kimlik bilgilerini almak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **&lt;Any_app** > **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin.
+1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **&lt;Any_app** > **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin. > 
 
 2. **Uygulama kimlik bilgilerini**seçin ve Kullanıcı adını veya parolayı kopyalamak için **Kopyala** bağlantısını seçin.
 
