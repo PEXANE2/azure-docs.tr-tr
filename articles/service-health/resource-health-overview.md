@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu genel bakış
 description: Azure Kaynak Durumu genel bakış
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356788"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925160"
 ---
 # <a name="resource-health-overview"></a>Kaynak Durumu genel bakış
  
@@ -38,7 +38,7 @@ Bir kaynağın sistem durumu aşağıdaki durumlardan biri olarak görüntüleni
 
 #### <a name="platform-events"></a>Platform olayları
 
-Platform olayları, Azure altyapısının birden çok bileşeni tarafından tetiklenir. Hem zamanlanmış eylemler (örneğin, planlı bakım) hem de beklenmeyen olaylar (örneğin, planlanmamış bir konak yeniden başlatması) içerirler.
+Platform olayları, Azure altyapısının birden çok bileşeni tarafından tetiklenir. Zamanlanan eylemleri (örneğin, planlı bakım) ve beklenmeyen olayları (örneğin, belirli bir zaman penceresi sonrasında başarısız olarak tahmin edilen planlanmamış bir ana bilgisayar yeniden başlatma veya düşürülmüş konak donanımı) içerirler.
 
 Kaynak Durumu olay ve kurtarma işlemi hakkında ek ayrıntılar sağlar. Ayrıca etkin bir destek sözleşmeniz olmasa bile Microsoft Desteği ile iletişim kurabilmenizi sağlar.
 
@@ -80,7 +80,7 @@ Kaynak Durumu **sistem durumu geçmişi** bölümünde 14 güne geçmiş bir ge�
 
 ![Son iki hafta içindeki Kaynak Durumu olaylarının listesi](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 Bir kaynak için Kaynak Durumu açmak için:
 

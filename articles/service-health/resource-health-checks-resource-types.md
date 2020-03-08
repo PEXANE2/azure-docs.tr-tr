@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717076"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925889"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -28,7 +28,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |---|
 |<ul><li>Batch hesabı çalışır duruma mi çalışıyor?</li><li>Bu Batch hesabı için havuz kotası aşıldı mi?</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft. Cache/Redsıs
 |Yürütülen denetimler|
 |---|
 |<ul><li>Tüm önbellek düğümleri çalışır duruma mi çalışıyor?</li><li>Veri merkezinde önbellekten ulaşılmış olabilir mi?</li><li>Önbellek en fazla bağlantı sayısına ulaştı mi?</li><li> Önbelleğin kullanılabilir belleği tükendi mi? </li><li>Önbellek çok sayıda sayfa hatası yaşıyor mu?</li><li>Önbellek ağır yük altında mı?</li></ul>|
@@ -41,7 +41,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. classiccompute/virtualmachines
 |Yürütülen denetimler|
 |---|
-|<ul><li>Ana bilgisayar sunucusu çalışır duruma mi çalışıyor?</li><li>Konak işletim sistemi önyüklemesi tamamlandı mı?</li><li>Sanal makine kapsayıcısı sağlanıyor ve destekleniyor mu?</li><li>Ana bilgisayar ve depolama hesabı arasında ağ bağlantısı var mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li></ul>|
+|<ul><li>Ana bilgisayar sunucusu çalışır duruma mi çalışıyor?</li><li>Konak işletim sistemi önyüklemesi tamamlandı mı?</li><li>Sanal makine kapsayıcısı sağlanıyor ve destekleniyor mu?</li><li>Ana bilgisayar ve depolama hesabı arasında ağ bağlantısı var mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. biliveservices/hesapları
 |Yürütülen denetimler|
@@ -51,7 +51,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft. COMPUTE/virtualmachines
 |Yürütülen denetimler|
 |---|
-|<ul><li>Bu sanal makineyi barındıran sunucu çalışır duruma mi çalışıyor?</li><li>Konak işletim sistemi önyüklemesi tamamlandı mı?</li><li>Sanal makine kapsayıcısı sağlanıyor ve destekleniyor mu?</li><li>Ana bilgisayar ve depolama hesabı arasında ağ bağlantısı var mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li></ul>|
+|<ul><li>Bu sanal makineyi barındıran sunucu çalışır duruma mi çalışıyor?</li><li>Konak işletim sistemi önyüklemesi tamamlandı mı?</li><li>Sanal makine kapsayıcısı sağlanıyor ve destekleniyor mu?</li><li>Ana bilgisayar ve depolama hesabı arasında ağ bağlantısı var mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/Factory
 |Yürütülen denetimler|

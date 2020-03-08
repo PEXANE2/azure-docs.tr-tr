@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225552"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668414"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Yazma ve çalışma zamanı kaynak anahtarlarını kullanma
 
@@ -58,7 +58,7 @@ Tahmin uç noktanızı yayımlamaya hazır olduğunuzda, başlangıç anahtar i�
 
     ![Dil anlama kaynağı oluşturma](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Name|Amaç|
+    |Adı|Amaç|
     |--|--|
     |Kaynak adı| Yazma ve tahmin uç noktası sorgularınız için URL 'nin bir parçası olarak kullanılan özel bir ad.|
     |Abonelik adı| kaynak için faturalandırılacak abonelik.|
@@ -81,7 +81,7 @@ Kaynak `kind`:
 
 1. Azure CLı 'da oturum açın:
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ Kaynak `kind`:
 
 1. `westus` bölgesi için `my-resource-group` adlı _mevcut_ kaynak grubunda `my-luis-authoring-resource` adlı `LUIS.Authoring`türünde bir **lusıs yazma kaynağı**oluşturun. 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. `westus` bölgesi için `my-resource-group` adlı _mevcut_ kaynak grubunda `my-luis-prediction-resource` adlı `LUIS`türünde bir **lusıs tahmin uç noktası kaynağı**oluşturun. Ücretsiz katmandan daha yüksek bir aktarım hızı istiyorsanız, `F0` `S0`olarak değiştirin. [Fiyatlandırma katmanları ve verimlilik](luis-boundaries.md#key-limits)hakkında daha fazla bilgi edinin.
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
@@ -134,7 +134,7 @@ CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zaman�
 
     Bu POST API'sini aşağıdaki ayarları gerektirir:
 
-    |Üst bilgi|Value|
+    |Üst bilgi|Değer|
     |--|--|
     |`Authorization`|`Authorization` değeri `Bearer {token}`. Belirteç değerinin önünde `Bearer` ve bir boşluk olması gerektiğini unutmayın.| 
     |`Ocp-Apim-Subscription-Key`|Yazma anahtarınız.|
@@ -145,13 +145,13 @@ CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zaman�
 
     Bu POST API'sini aşağıdaki ayarları gerektirir:
 
-    |Type|Ayar|Value|
+    |Tür|Ayar|Değer|
     |--|--|--|
     |Üst bilgi|`Authorization`|`Authorization` değeri `Bearer {token}`. Belirteç değerinin önünde `Bearer` ve bir boşluk olması gerektiğini unutmayın.|
     |Üst bilgi|`Ocp-Apim-Subscription-Key`|Yazma anahtarınız.|
     |Üst bilgi|`Content-type`|`application/json`|
     |Sorgu dizesi|`appid`|LUIS app kimliği. 
-    |Body||{"Azuresubscriptionıd": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>"ResourceGroup": "resourcegroup-2"<br>"AccountName": "luıs-uswest-S0-2"}|
+    |Gövde||{"Azuresubscriptionıd": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>"ResourceGroup": "resourcegroup-2"<br>"AccountName": "luıs-uswest-S0-2"}|
 
     Bu API, başarılı olduğunda, 201 - oluşturuldu durumuna döndürür. 
 
