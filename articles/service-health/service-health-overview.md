@@ -3,12 +3,12 @@ title: Hizmet durumuna genel bakış | Microsoft Docs
 description: Azure uygulamalarınızın geçerli ve gelecekteki Azure hizmet sorunlarından ve bakımda nasıl etkilendiğine ilişkin kişiselleştirilmiş bilgiler.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654027"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898432"
 ---
 # <a name="service-health-overview"></a>Hizmet durumuna genel bakış
 
@@ -16,11 +16,12 @@ Hizmet durumu size, Azure hizmetlerinizin sistem durumunu kullandığınız böl
 
 ## <a name="service-health-events"></a>Hizmet durumu olayları
 
-Hizmet durumu, kaynaklarınızı etkileyebilecek üç tür sistem durumu olayını izler:
+Hizmet durumu, kaynaklarınızı etkileyebilecek dört sistem durumu olayı türünü izler:
 
 1. **Hizmet sorunları** -Şu anda sizi etkileyen Azure hizmetlerinde sorunlar. 
 2. **Planlı bakım** -gelecekte hizmetlerinizin kullanılabilirliğini etkileyebilecek yaklaşan bakım.  
 3. **Durum Danışma belgeleri** -Azure hizmetlerinde ilgilenmeniz gereken değişiklikler. Azure özelliklerinin kullanım dışı olduğu veya kullanım kotasını aştığınız durumlarda örneklere örnek verilebilir.
+4. **Güvenlik Danışma belgeleri (Önizleme)** -Azure hizmetlerinizin kullanılabilirliğini etkileyebilecek güvenlikle ilgili bildirimler.
 
 > [!NOTE]
 > Hizmet durumu olaylarını görüntülemek için kullanıcılara bir abonelik üzerinde [okuyucu rolü verilmelidir](../role-based-access-control/role-assignments-portal.md) .

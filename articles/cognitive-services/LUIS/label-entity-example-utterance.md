@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448084"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898367"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Makine tarafından öğrenilen varlığı örnek bir mekan etiketleme
 
@@ -86,7 +86,7 @@ Varlık rolleri, varlık paleti kullanılarak etiketlenir.
 1. Amaç ayrıntısı sayfasında bağlam araç çubuğundan **varlık paleti** ' ni seçin.
 1. Varlık paleti açıldıktan sonra varlık listesinden varlığı seçin.
 1. **Varlık denetçisi**' ne gidin ve mevcut bir rol seçin ya da yeni bir rol oluşturun.
-1. Örnek söylenişi metninde, metni varlık rolüyle etiketleyin. 
+1. Örnek söylenişi metninde, metni varlık rolüyle etiketleyin.
 
 ## <a name="unlabel-entities"></a>Varlıkların etiketini kaldır
 
@@ -96,7 +96,7 @@ Bir varlığın etiketini kaldırmak için, metnin altındaki varlık adını se
 
 Etiketleme sırasında bir hata yaparsanız, varlık paleti hızlı düzenlemelere izin veren kolay bir araçtır. Örneğin, bir varlık etiketi yanlışlıkla ek bir sözcüğe yayılmışsa ve zaten alt bileşenleri etiketlenmişse, bu durumda sözcüklerin gerekli daha kısa yayılmasını sağlamak için varlık paletini kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 1. Pizza tür alt bileşeni "Cheese pizza" ile birlikte "birlikte" ek yanlış bir sözcük içerir
 

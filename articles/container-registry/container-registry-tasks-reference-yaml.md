@@ -3,12 +3,12 @@ title: YAML başvurusu-ACR görevleri
 description: Görev özellikleri, adım türleri, adım özellikleri ve yerleşik değişkenler de dahil olmak üzere ACR görevleri için YAML görevlerini tanımlamaya yönelik başvuru.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361384"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669270"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR görevleri başvurusu: YAML
 
@@ -528,7 +528,7 @@ Aşağıdaki görev diğer adları, [çalıştırma değişkenlerinin](#run-vari
 
 Görev adımları ' nda, bu örnekte olduğu gibi `$` yönergesi ile bir diğer addan önce gelmeli:
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
@@ -547,7 +547,7 @@ Aşağıdaki diğer adların her biri Microsoft Container Registry (MCR) içinde
 
 Aşağıdaki örnek görev, çalışma kayıt defterindeki `samples/hello-world`, çalışma kayıt defterindeki 7 günden daha eski olan görüntü etiketlerini [temizlemek](container-registry-auto-purge.md) için birkaç diğer ad kullanır:
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - cmd: acr tag list --registry $RegistryName --repository samples/hello-world

@@ -6,8 +6,8 @@
       href: scheduler-intro.md
 - name: başlarken
   items:
-    - name: İş oluşturma ve yönetme - portal
-      href: scheduler-get-started-portal.md
+    - name: Zamanlama oluşturma ve yönetme - Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: Scheduler'dan Logic Apps'e geçme
       href: migrate-from-scheduler-to-logic-apps.md
 - name: Kavramlar

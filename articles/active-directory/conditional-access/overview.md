@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377601"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671901"
 ---
 # <a name="what-is-conditional-access"></a>Koşullu Erişim nedir?
 
@@ -92,7 +92,7 @@ Diğer kuruluşların otomatik erişim denetimi kararları tanımlamak ve uygula
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-[Microsoft 365 iş lisanslarına](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır. 
+[Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -102,6 +102,6 @@ Ortamınızda Koşullu erişimin nasıl uygulanacağını öğrenmek için, bkz.
 
 [Kimlik koruması hakkında bilgi edinin](../identity-protection/overview-v2.md)
 
-[Microsoft Cloud App Security hakkında bilgi edinin](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[Microsoft Cloud App Security hakkında bilgi edinin](/cloud-app-security/what-is-cloud-app-security)
 
-[Microsoft Intune hakkında bilgi edinin](https://docs.microsoft.com/intune/index)
+[Microsoft Intune hakkında bilgi edinin](/intune/index)

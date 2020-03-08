@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399202"
+ms.locfileid: "78674180"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portalını kullanarak bir VNet-VNet VPN ağ geçidi bağlantısı yapılandırma
 
@@ -127,7 +127,7 @@ Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyu
 ### <a name="to-create-a-virtual-network"></a>Sanal ağ oluşturmak için
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-a-virtual-network-gateway"></a>Sanal ağ geçidi oluşturma
+## <a name="create-the-vnet1-gateway"></a>VNet1 ağ geçidini oluşturma
 Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir. Bu yapılandırmayı bir alıştırma olarak oluşturuyorsanız, bkz. [örnek ayarlar](#example-settings).
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -138,7 +138,7 @@ Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>Ile vnet4 arasında oluşturma ve yapılandırma
-VNet1 yapılandırdıktan sonra, önceki adımları tekrarlayarak ve değerleri Ile vnet4 arasında değerlerle değiştirerek Ile vnet4 arasında oluşturun. Ile vnet4 arasında yapılandırmadan önce VNet1 için sanal ağ geçidi oluşturmayı bitirene kadar beklemeniz gerekmez. Kendi değerlerinizi kullanıyorsanız, tüm bağlanmak istediğiniz sanal ağ adres alanlarının çakışmadığından emin olun.
+VNet1 yapılandırdıktan sonra, önceki adımları tekrarlayarak ve değerleri Ile vnet4 arasında değerleriyle değiştirerek Ile vnet4 arasında ve Ile vnet4 arasında Gateway oluşturun. Ile vnet4 arasında yapılandırmadan önce VNet1 için sanal ağ geçidi oluşturmayı bitirene kadar beklemeniz gerekmez. Kendi değerlerinizi kullanıyorsanız, tüm bağlanmak istediğiniz sanal ağ adres alanlarının çakışmadığından emin olun.
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>VNet1 ağ geçidi bağlantısını yapılandırma
 Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığında, sanal ağ geçidi bağlantılarınızı oluşturabilirsiniz. Bu bölümde VNet1 ile VNet4 arasında bir bağlantı oluşturursunuz. Bu adımlar yalnızca aynı abonelikteki sanal ağlar için geçerlidir. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) kullanmanız gerekir. Sanal ağlarınız aynı Abonelikteki farklı kaynak gruplarında yoksa, ancak, bunları portalını kullanarak bağlanabilirsiniz.
@@ -148,7 +148,7 @@ Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığın
    ![Bağlantılar sayfası](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Bağlantılar sayfası")
 2. **Bağlantı ekle** sayfasını açmak Için **+ Ekle** ' yi seçin.
 
-   ![Bağlantı ekle](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "bağlantı ekleme")
+   ![Bağlantı ekle](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "bağlantı ekleme")
 3. **Bağlantı ekle** sayfasında, bağlantınızın değerlerini girin:
 
    - **Ad**: bağlantınız için bir ad girin. Örneğin, *VNet1toVNet4*.

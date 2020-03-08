@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431642"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851158"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -23,12 +23,12 @@ Bu makale Stream Analytics [gerçek zamanlı sahtekarlık algılama](stream-anal
 Bu senaryoyu gösteren [bir video](https://www.youtube.com/watch?v=SGUpT-a99MA) izleyebilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 * Bir Azure hesabı.
-* Power BI için bir hesap. Bir iş hesabı veya okul hesabı kullanabilirsiniz.
+* Power BI Pro için bir hesap. Bir iş hesabı veya okul hesabı kullanabilirsiniz.
 * [Gerçek zamanlı sahtekarlık algılama](stream-analytics-real-time-fraud-detection.md) öğreticisinin tamamlanmış bir sürümü. Öğretici, kurgusal telefon araması meta verileri üreten bir uygulama içerir. Öğreticide bir olay hub 'ı oluşturur ve akış telefon araması verilerini Olay Hub 'ına gönderirsiniz. Sahte çağrıları algılayan bir sorgu (farklı konumlarda aynı anda aynı sayıdan gelen çağrılar) yazarsınız. 
 
 
@@ -43,7 +43,7 @@ Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob de
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
-   |Çıkış diğer adı  |  CallStream-PowerBI  |
+   |Çıktı diğer adı  |  CallStream-PowerBI  |
    |Veri kümesi adı  |   sa veri kümesi  |
    |Tablo adı |  sahte çağrılar  |
 
@@ -99,7 +99,7 @@ Power BI veri kümeleri hakkında daha fazla bilgi için [Power BI REST API](htt
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **Save (Kaydet)** düğmesine tıklayın.
+4. **Kaydet** düğmesine tıklayın.
 
 
 ## <a name="test-the-query"></a>Sorguyu test etme
@@ -163,7 +163,7 @@ Akış Analizi işiniz, gelen akıştaki sahte çağrılar aramaya başlar. İş
 
     ![Yeni kutucuk için başlık ve alt başlık](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. **Uygula**'ya tıklayın.
+9. **Apply (Uygula)** düğmesine tıklayın.
 
     Artık bir sahtekarlık sayaçından sahipsiniz!
 
@@ -185,7 +185,7 @@ Akış Analizi işiniz, gelen akıştaki sahte çağrılar aramaya başlar. İş
      ![Sahte çağrılar için iki kutucuk gösteren Power BI panosu tamamlandı](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
-## <a name="learn-more-about-power-bi"></a>Power BI hakkında bilgi alın
+## <a name="learn-more-about-power-bi"></a>Power BI hakkında daha fazla bilgi edinin
 
 Bu öğreticide, bir veri kümesi için yalnızca birkaç görselleştirme türü oluşturma gösterilmektedir. Power BI, kuruluşunuz için diğer müşteri iş zekası araçları oluşturmanıza yardımcı olabilir. Daha fazla fikir için aşağıdaki kaynaklara bakın:
 
@@ -201,7 +201,7 @@ Aşağıdaki denklemi, pencerenize saniye cinsinden vermek için değeri hesapla
 
 ![Saniye cinsinden pencere sağlamak için değer hesaplama denklemi](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Örneğin:
+Örnek:
 
 * Tek saniyelik aralıklarla veri gönderen 1.000 cihazlardır.
 * Saat başına 1.000.000 satırı destekleyen Power BI Pro SKU 'SU kullanıyorsunuz.
@@ -235,10 +235,10 @@ Benzer şekilde, bir iş, belirtecin süresi dolduktan sonra başlarsa bir hata 
 Yetkilendirme Power BI ile yenilendikten sonra, sorunun çözümlendiğini yansıtmak için yetkilendirme alanında yeşil bir uyarı belirir.
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

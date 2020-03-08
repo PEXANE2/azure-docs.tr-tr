@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a18715385eca85c199b17f6a675be1a7e60153
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194322"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672361"
 ---
 # <a name="group-policy-and-mdm-settings"></a>grup ilkesi ve MDM ayarları
 
@@ -26,13 +26,13 @@ Kişisel (yönetilmeyen) cihazlar için dolaşımı yönetmek isteyen kuruluşla
 Aşağıdaki tablolarda kullanılabilir ilke ayarları açıklanır.
 
 > [!NOTE]
-> Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
+> Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
 
 ## <a name="mdm-settings"></a>MDM ayarları
 
 MDM ilke ayarları hem Windows 10 hem de Windows 10 Mobile için geçerlidir.  Windows 10 Mobile desteği yalnızca kullanıcının OneDrive hesabı aracılığıyla Microsoft hesabı tabanlı dolaşımda bulunur. Azure AD tabanlı eşitlemede desteklenen cihazların ayrıntılarını görmek için [cihazlar ve uç noktalar](enterprise-state-roaming-windows-settings-reference.md) bölümüne bakın.
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 | --- | --- |
 | Microsoft hesabı bağlantısına izin ver |Kullanıcıların cihazda Microsoft hesabı kullanarak kimlik doğrulaması yapmasına izin verir |
 | Ayarlarımı eşitlemeye izin ver |Kullanıcıların Windows ayarlarını ve uygulama verilerini dolaşımını sağlar; Bu ilkeyi devre dışı bırakmak, eşitlemenin yanı sıra mobil cihazlarda yedeklemeler de devre dışı bırakılır |
@@ -43,7 +43,7 @@ Grup İlkesi ayarları, bir Active Directory etki alanına katılmış Windows 1
 
 Bu ayarlar şurada bulunur: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 | --- | --- |
 | Hesaplar: Microsoft hesaplarını engelleyin |Bu ilke ayarı, kullanıcıların bu bilgisayarda yeni Microsoft hesapları eklemesini engeller |
 | Eşitleme |Kullanıcıların Windows ayarlarını ve uygulama verilerini dolaşımını engeller |

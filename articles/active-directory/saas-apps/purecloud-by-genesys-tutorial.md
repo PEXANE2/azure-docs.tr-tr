@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242430"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897776"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Öğretici: Genesys tarafından Purecg ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -125,8 +125,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
     | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
-    | E-posta | User. userprinicipalname |
-    | © | `Your organization name` |
+    | Email | User. UserPrincipalName |
+    | OrganizationName | `Your organization name` |
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -136,7 +136,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaksınız:
 
@@ -146,9 +146,9 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, Kullanıcı adını şu biçimde girin: username@companydomain.extension. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
-   1. **Oluştur**'u seçin.
+   1. **Oluştur**’u seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu oturum açma 'yı kullanmak için B. Simon 'u ayarlayacaksınız.
 
@@ -156,7 +156,7 @@ Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu o
 1. Uygulamalar listesinde, **Genesys tarafından Purecı**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -172,11 +172,11 @@ Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu o
 
 1. Üstte **yönetici** ' yi seçin ve ardından **tümleştirmeler**altında **Çoklu oturum açma '** ya gidin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![Çoklu Oturum Açma'yı Yapılandır](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. **ADFS/Azure AD (Premium)** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![Çoklu Oturum Açma'yı Yapılandır](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. Azure portal indirdiğiniz Base-64 kodlu sertifikayı **ADFS sertifikasına**yüklemek için **Araştır** ' ı seçin.
 
@@ -186,7 +186,7 @@ Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu o
 
     d. **Bağlı olan taraf tanımlayıcı** değeri için Azure Portal gidin ve **Genesys tarafından poreck** uygulama tümleştirmesi sayfasında, **ÖZELLIKLER** sekmesini seçin ve **uygulama kimliği** değerini kopyalayın. **Bağlı olan taraf tanımlayıcısı** kutusuna yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![Çoklu Oturum Açma'yı Yapılandır](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. **Kaydet**’i seçin.
 
@@ -200,21 +200,21 @@ Azure AD kullanıcılarının Genesys tarafından purecg 'de oturum açmasını 
 
 1. Üstte **yönetici** ' yi seçin ve **kişiler & izinler**' in altındaki **kişilere** gidin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![Çoklu Oturum Açma'yı Yapılandır](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. **Kişiler** sayfasında **kişi ekle**' yi seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![Çoklu Oturum Açma'yı Yapılandır](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. **Kuruluşa kişi ekle** iletişim kutusunda aşağıdaki adımları izleyin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![Çoklu Oturum Açma'yı Yapılandır](./media/purecloud-by-genesys-tutorial/configure05.png)
 
     a. **Tam ad** kutusuna bir kullanıcının adını girin. Örneğin: **B. Simon**.
 
     b. **E-posta** kutusuna kullanıcının e-postasını girin. Örneğin: **b. Simon\@contoso.com**.
 
-    c. **Oluştur**'u seçin.
+    c. **Oluştur**’u seçin.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

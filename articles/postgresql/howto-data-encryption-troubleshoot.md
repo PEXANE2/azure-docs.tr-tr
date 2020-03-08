@@ -1,58 +1,62 @@
 ---
-title: PostgreSQL için Azure veritabanı için veri şifreleme-tek sunuculu sorun giderme
-description: PostgreSQL için Azure veritabanı-tek sunucu için veri şifreleme sorunlarını nasıl giderebileceğinizi öğrenin
+title: PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme-tek sunucu
+description: PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını nasıl giderebileceğinizi öğrenin-tek sunucu
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 6d2e027c47bef3186f95c2183b316b5c15511070
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: bd3303117bae307bb562390cec1fdfb62c01b7c6
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371507"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851086"
 ---
-# <a name="troubleshooting-data-encryption-with-customer-managed-keys-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla veri şifreleme sorunlarını giderme-tek sunucu
-Bu makalede, bir PostgreSQL için Azure veritabanı 'nda oluşan genel sorunların/hataların nasıl tanımlanacağına ve çözümleneceği, müşteri tarafından yönetilen anahtar kullanılarak veri şifrelemesi ile yapılandırılmış tek bir sunucu.
+# <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme-tek sunucu
+
+Bu makale, müşteri tarafından yönetilen anahtar kullanılarak veri şifrelemesi ile yapılandırıldığında PostgreSQL için Azure veritabanı 'nın tek sunuculu dağıtımında oluşabilecek yaygın sorunları belirlemenize ve çözmenize yardımcı olur.
 
 ## <a name="introduction"></a>Giriş
-Veri şifreleme Azure Key Vault bir müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırıldığında, sunucunun kullanılabilir kalması için bu anahtara sürekli erişim gerekir. Sunucu, Azure Key Vault müşterinin yönettiği anahtara erişimi kaybederse, sunucu uygun hata iletisiyle tüm bağlantıları reddetmeye başlar ve Azure portal durumunu ***erişilemez*** olarak değiştirir.
 
-PostgreSQL için erişilemeyen bir Azure veritabanı-tek sunucu artık gerekmiyorsa, maliyetleri durdurmak için hemen silinebilir. Azure Anahtar Kasası 'na erişim geri yüklenene ve sunucu kullanılabilir olana kadar sunucudaki diğer tüm eylemlere izin verilmez. "Evet" (müşteri tarafından yönetilen) seçeneğini, erişilemeyen sunucuda ' Hayır ' (hizmet tarafından yönetilen) olarak değiştirme işlemi, bir sunucu müşteri tarafından yönetildiğinde de mümkün değildir. Sunucuyu yeniden kullanılabilir hale getirmek için anahtarı el ile doğrulamanız gerekir. Bu, müşteri tarafından yönetilen anahtar izinleri iptal edildiğinde verileri yetkisiz erişimden korumak için gereklidir.
+Veri şifrelemesini Azure Key Vault bir müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırdığınızda, sunucu anahtara sürekli erişim gerektirir. Sunucu, Azure Key Vault müşterinin yönettiği anahtara erişimi kaybederse, tüm bağlantıları reddeder, uygun hata iletisini döndürür ve durumunu Azure portal ***erişilemez*** olarak değiştirir.
+
+Artık PostgreSQL için Azure veritabanı 'na erişilemiyor sunucusuna ihtiyacınız yoksa, maliyetleri durdurmak için bunu silebilirsiniz. Anahtar kasasına erişim geri yüklenene ve sunucu kullanılabilir olana kadar sunucuda başka bir eyleme izin verilmez. `Yes`(müşteri tarafından yönetilen), müşteri tarafından yönetilen bir anahtarla şifrelendiğinde erişilemeyen bir sunucuda `No` (hizmet tarafından yönetilen) olarak değişiklik de mümkün değildir. Sunucuya yeniden erişilebilmesi için anahtarı el ile yeniden doğrulamanız gerekecektir. Bu eylem, müşteri tarafından yönetilen anahtar izinleri iptal edilirken verileri yetkisiz erişimden korumak için gereklidir.
 
 ## <a name="common-errors-causing-server-to-become-inaccessible"></a>Sunucunun erişilemez hale gelmesine neden olan yaygın hatalar
 
-Azure Key Vault ile veri şifrelemeyi kullandığınızda oluşan çoğu sorun aşağıdaki yanlış yapılandırma nedeniyle oluşur-
+Aşağıdaki yapılandırma hataları Azure Key Vault anahtarları kullanan veri şifrelemesiyle ilgili birçok soruna neden olur:
 
-Anahtar Kasası kullanılamıyor veya yok
+- Anahtar Kasası kullanılamıyor veya yok:
+  - Anahtar Kasası yanlışlıkla silindi.
+  - Aralıklı bir ağ hatası, anahtar kasasının kullanılamaz olmasına neden olur.
 
-* Anahtar Kasası yanlışlıkla silindi.
-* Aralıklı bir ağ hatası, anahtar kasasının kullanılamaz olmasına neden olur.
-
-Anahtar kasasına erişim izni yok veya anahtar yok
-
-* Anahtar yanlışlıkla silindi, devre dışı bırakıldı veya anahtarın geçerliliği zaman aşımına uğradı.
-* PostgreSQL için Azure veritabanı-tek sunuculu örnek yönetilen kimlik yanlışlıkla silindi.
-* Yönetilmeyen PostgreSQL için Azure veritabanı 'na verilen izinler, anahtarlar için yeterli değildir (Get, Wrap ve Unwrap dahil değildir).
-* PostgreSQL için Azure veritabanı 'nın, tek sunuculu örnek yönetilen kimliğin izinleri iptal edildi veya silindi.
+- Anahtar kasasına erişim izniniz yok veya anahtar yok:
+  - Anahtarın geçerliliği zaman aşımına uğradı veya yanlışlıkla silinmiş veya devre dışı bırakılmış.
+- PostgreSQL için Azure veritabanı örneğinin yönetilen kimliği yanlışlıkla silindi.
+  - PostgreSQL için Azure veritabanı örneği için yönetilen kimliğin anahtar izinleri yetersiz. Örneğin, izinler Get, Wrap ve Unwrap içermemelidir.
+  - PostgreSQL için Azure veritabanı örneği için yönetilen kimlik izinleri iptal edildi veya silindi.
 
 ## <a name="identify-and-resolve-common-errors"></a>Sık karşılaşılan hataları tanımla ve çözümle
+
 ### <a name="errors-on-the-key-vault"></a>Anahtar kasasındaki hatalar
 
 #### <a name="disabled-key-vault"></a>Devre dışı Anahtar Kasası
-* AzureKeyVaultKeyDisabledMessage
-* **Açıklama** : Azure Key Vault anahtarı devre dışı bırakıldığından, işlem sunucuda tamamlanamadı.
+
+- `AzureKeyVaultKeyDisabledMessage`
+- **Açıklama**: Azure Key Vault anahtarı devre dışı bırakıldığından, işlem sunucuda tamamlanamadı.
 
 #### <a name="missing-key-vault-permissions"></a>Anahtar Kasası izinleri eksik
-* AzureKeyVaultMissingPermissionsMessage
-* Sunucu, Azure Key Vault izinleri için gereken get, Wrap ve Unwrap izinlerine sahip değil. Hizmet sorumlusuna KIMLIĞI olan eksik izinleri verin.
+
+- `AzureKeyVaultMissingPermissionsMessage`
+- **Açıklama**: sunucu, Azure Key Vault Için gereken get, Wrap ve Unwrap izinlerine sahip değil. Hizmet sorumlusuna KIMLIĞI olan eksik izinleri verin.
 
 ### <a name="mitigation"></a>Risk azaltma
-* Key Vault müşterinin yönettiği anahtarın mevcut olduğunu onaylayın:
-* Anahtar kasasını belirleyip Azure portal anahtar kasasına gidin.
-* Anahtar URI 'SI tarafından tanımlanan anahtarın mevcut olduğundan emin olun.
 
+- Müşteri tarafından yönetilen anahtarın anahtar kasasında mevcut olduğunu doğrulayın.
+- Anahtar kasasını belirleyip Azure portal anahtar kasasına gidin.
+- Anahtar URI 'sinin mevcut bir anahtarı tanımladığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Portal kullanarak PostgreSQL Için Azure veritabanınız için müşteri tarafından yönetilen bir anahtarla veri şifrelemeyi ayarlayın](howto-data-encryption-portal.md).
+
+[PostgreSQL için Azure veritabanı 'nda müşteri tarafından yönetilen bir anahtarla veri şifrelemeyi ayarlamak için Azure portal kullanın](howto-data-encryption-portal.md)

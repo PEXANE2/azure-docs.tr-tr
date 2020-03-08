@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161883"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851498"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -36,29 +36,34 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   > [!NOTE]
   > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
+  Bunun yerine kullanılacak [sabit bir öbek boyutu belirttiğinizde](#change-chunk-size) , bu Uyarlamalı davranışı geçersiz kılabilirsiniz. Bu boyut 5 MB ile 50 MB arasında değişebilir. Örneğin, 45 MB 'lık bir dosyanız olduğunu ve bu dosya boyutunu gecikme süresi olmadan destekleyebildiğini belirten bir ağ olduğunu varsayalım. Uyarlamalı öbek oluşturma, bir çağrı yerine birkaç çağrıya neden olur. Çağrı sayısını azaltmak için 50 MB 'lık öbek boyutunu ayarlamayı deneyebilirsiniz. Farklı bir senaryoda, mantıksal uygulamanız zaman aşımına uğradıysanız (örneğin, 15 MB 'lık öbekleri kullanırken) boyutu 5 MB ile azaltmayı deneyebilirsiniz.
+
   Öbek boyutu bir bağlantıyla ilişkilendirilir, yani parçalama desteği olan eylemler ve sonra parçalama desteği olmayan eylemler için aynı bağlantıyı kullanabilirsiniz. Bu durumda, öbek oluşturma desteği olmayan eylemler için öbek boyutu 5 MB ile 50 MB arasındadır. Bu tabloda, hangi SFTP-SSH eylemlerinin öbek oluşturma desteği gösterilmektedir:
 
-  | Eylem | Öbek oluşturma desteği |
-  |--------|------------------|
-  | **Dosyayı Kopyala** | Hayır |
-  | **Dosya oluştur** | Yes |
-  | **Klasör oluştur** | Uygulanamaz |
-  | **Dosyayı Sil** | Uygulanamaz |
-  | **Arşivi klasöre Ayıkla** | Uygulanamaz |
-  | **Dosya içeriğini al** | Yes |
-  | **Yolu kullanarak dosya içeriğini al** | Yes |
-  | **Dosya meta verilerini al** | Uygulanamaz |
-  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz |
-  | **Klasördeki dosyaları Listele** | Uygulanamaz |
-  | **Dosyayı yeniden adlandır** | Uygulanamaz |
-  | **Güncelleştirme dosyası** | Hayır |
-  |||
+  | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
+  |--------|------------------|-----------------------------|
+  | **Dosyayı Kopyala** | Hayır | Uygulanamaz |
+  | **Dosya oluştur** | Yes | Yes |
+  | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
+  | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
+  | **Arşivi klasöre Ayıkla** | Uygulanamaz | Uygulanamaz |
+  | **Dosya içeriğini al** | Yes | Yes |
+  | **Yolu kullanarak dosya içeriğini al** | Yes | Yes |
+  | **Dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
+  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
+  | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
+  | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
+  | **Güncelleştirme dosyası** | Hayır | Uygulanamaz |
+  ||||
 
-* SFTP-SSH Tetikleyicileri parçalama desteklemez. Dosya içeriği istenirken Tetikleyiciler yalnızca 15 MB veya daha küçük olan dosyaları seçer. 15 MB 'tan büyük dosyaları almak için, bunun yerine şu modele uyun:
+  > [!NOTE]
+  > Büyük dosyaları karşıya yüklemek için SFTP sunucunuzdaki kök klasör için hem okuma hem de yazma izinlerine sahip olmanız gerekir.
 
-  * Dosya **ekleme veya değiştirme (yalnızca Özellikler)** gibi dosya özelliklerini döndüren bir SFTP-SSH tetikleyicisi kullanın.
+* SFTP-SSH Tetikleyicileri ileti parçalama desteği vermez. Dosya içeriği istenirken Tetikleyiciler yalnızca 15 MB veya daha küçük olan dosyaları seçer. 15 MB 'tan büyük dosyaları almak için, bunun yerine şu modele uyun:
 
-  * Tam dosyayı okuyan ve örtük olarak ileti parçalama kullanan SFTP-SSH **Dosya Içeriğini al** eylemiyle tetikleyiciyi izleyin.
+  1. **Dosya ekleme veya değiştirme (yalnızca Özellikler)** gibi yalnızca dosya özelliklerini döndüren bir SFTP-SSH tetikleyicisi kullanın.
+
+  1. Tam dosyayı okuyan ve örtük olarak ileti parçalama kullanan SFTP-SSH **Dosya Içeriğini al** eylemiyle tetikleyiciyi izleyin.
 
 <a name="comparison"></a>
 
@@ -153,11 +158,11 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak "SFTP SSH" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak `sftp ssh` girin. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak "SFTP SSH" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak `sftp ssh` girin. Eylemler listesi altında istediğiniz eylemi seçin.
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
@@ -180,6 +185,22 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 1. Bağlantı ayrıntılarını girmeyi tamamladığınızda **Oluştur**' u seçin.
 
 1. Şimdi seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>Öbek boyutunu geçersiz kıl
+
+Öbek kullanan varsayılan Uyarlamalı davranışı geçersiz kılmak için 5 MB ile 50 MB arasında bir sabit öbek boyutu belirtebilirsiniz.
+
+1. Eylemin sağ üst köşesinde üç nokta düğmesini ( **...** ) ve ardından **Ayarlar**' ı seçin.
+
+   ![SFTP-SSH ayarlarını aç](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. **Içerik aktarımı**altında, **öbek boyutu** özelliğinde, `50``5` bir tamsayı değeri girin, örneğin: 
+
+   ![Bunun yerine kullanılacak öbek boyutunu belirtin](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. İşiniz bittiğinde **Bitti**'yi seçin.
 
 ## <a name="examples"></a>Örnekler
 

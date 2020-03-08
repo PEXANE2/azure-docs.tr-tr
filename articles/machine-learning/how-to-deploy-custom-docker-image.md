@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396164"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851265"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Bu bölümdeki adımlar, Azure Container Registry özel bir Docker görüntüsü
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > Bu örnekte, `:v1` bir etiketi görüntüye uygulanır. Etiket sağlanmazsa `:latest` bir etiketi uygulanır.
+
     Yapı işlemi sırasında bilgiler komut satırına geri kaydedilir. Yapı başarılı olursa aşağıdaki metne benzer bir ileti alırsınız:
 
     ```text
@@ -170,6 +173,10 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 Özel bir görüntü kullanmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
 * __Görüntü adı__. Örneğin, `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`, Microsoft tarafından sunulan temel bir Docker görüntüsünün yoludur.
+
+    > [!IMPORTANT]
+    > Oluşturduğunuz özel görüntüler için görüntüyle birlikte kullanılan tüm etiketleri eklediğinizden emin olun. Örneğin, görüntünüz `:v1`gibi belirli bir etiketle oluşturulduysa. Görüntüyü oluştururken belirli bir etiket kullanmıyorsanız `:latest` bir etiketi uygulandı.
+
 * Görüntü __özel bir depodadır__, aşağıdaki bilgilere ihtiyacınız vardır:
 
     * Kayıt defteri __adresi__. Örneğin, `myregistry.azureecr.io`.

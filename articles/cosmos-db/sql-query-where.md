@@ -4,14 +4,14 @@ description: Azure Cosmos DB için SQL WHERE yan tümcesi hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982238"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898769"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB WHERE yan tümcesi
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    Hesaplanmasını değeri gösteren ifade. Ayrıntılar için bkz. [skalar ifadeler](sql-query-scalar-expressions.md) .  
   
-
 ## <a name="remarks"></a>Açıklamalar
   
-  Filtre olarak belirtilen bir ifade döndürülecek belge sırada koşul true olarak değerlendirilmelidir. Başka bir değer koşulu, Boole değeri true yerine getirecek yalnızca: tanımsız, null, false, sayı, dizi veya nesne karşılamaz koşul. 
+  Filtre olarak belirtilen bir ifade döndürülecek belge sırada koşul true olarak değerlendirilmelidir. Yalnızca Boolean değeri `true` koşulu karşılar, diğer tüm değerler: tanımsız, null, yanlış, sayı, dizi veya nesne koşulu karşılamıyor.
+
+  Bölüm anahtarınızı bir eşitlik filtresinin parçası olarak `WHERE` yan tümcesine eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre uygulanır.
 
 ## <a name="examples"></a>Örnekler
 
@@ -71,10 +72,10 @@ Aşağıdaki desteklenen ikili işleçleri kullanabilirsiniz:
 |**İşleç türü**  | **Değerler** |
 |---------|---------|
 |Aritmetik | +,-,*,/,% |
-|bit düzeyinde    | \|, &, ^, <<>>,, >>> (sıfır dolgu sağa kaydırma) |
+|bit düzeyinde    | \|, &, ^, < <, > >, > > > (sıfır dolgulu sağa kaydırma) |
 |Mantıksal    | VE, VEYA DEĞİL      |
-|Karşılaştırma | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|Dize     |  \|\| (birleştirme) |
+|Karşılaştırma | =,! =, &lt;, &gt;, &lt;=, &gt;=, < > |
+|Dize     |  \|\| (Birleştir) |
 
 Aşağıdaki sorgular ikili işleçler kullanır:
 

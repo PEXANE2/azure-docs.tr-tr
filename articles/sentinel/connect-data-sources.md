@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392451"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669212"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -56,7 +56,6 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft Web uygulaması güvenlik duvarı](connect-microsoft-waf.md)
-    - [Windows güvenlik olayları](connect-windows-security-events.md) 
     - [Windows Güvenlik Duvarı](connect-windows-firewall.md)
     - [Windows güvenlik olayları](connect-windows-security-events.md)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192148"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671905"
 ---
 # <a name="conditional-access-session"></a>Koşullu erişim: oturum
 
@@ -30,12 +30,12 @@ Kuruluşlar, Azure AD 'nin seçili bulut uygulamalarına cihaz bilgilerini geçm
 
 Uygulama tarafından zorlanan kısıtlamaların kullanımı ve yapılandırılması hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [SharePoint Online ile sınırlı erişimi etkinleştirme](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [SharePoint Online ile sınırlı erişimi etkinleştirme](/sharepoint/control-access-from-unmanaged-devices)
 - [Exchange Online ile sınırlı erişimi etkinleştirme](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>Koşullu erişim uygulama denetimi
 
-Koşullu Erişim Uygulama Denetimi, ters bir ara sunucu mimarisi kullanır ve Azure AD koşullu erişim ile benzersiz şekilde tümleşiktir. Azure AD koşullu erişimi, kuruluşunuzun uygulamalarında belirli koşullara göre erişim denetimleri zorlamanıza olanak sağlar. Koşullar, kimlerin (Kullanıcı veya Kullanıcı grubu) ve ne (bulut uygulamaları) ve koşullu erişim ilkesinin hangi konuma uygulanacağını tanımlar. Koşulları belirledikten sonra, erişim ve oturum denetimleri uygulayarak Koşullu Erişim Uygulama Denetimi verileri koruyabileceğiniz [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) kullanıcıları yönlendirebilirsiniz.
+Koşullu Erişim Uygulama Denetimi, ters bir ara sunucu mimarisi kullanır ve Azure AD koşullu erişim ile benzersiz şekilde tümleşiktir. Azure AD koşullu erişimi, kuruluşunuzun uygulamalarında belirli koşullara göre erişim denetimleri zorlamanıza olanak sağlar. Koşullar, kimlerin (Kullanıcı veya Kullanıcı grubu) ve ne (bulut uygulamaları) ve koşullu erişim ilkesinin hangi konuma uygulanacağını tanımlar. Koşulları belirledikten sonra, erişim ve oturum denetimleri uygulayarak Koşullu Erişim Uygulama Denetimi verileri koruyabileceğiniz [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) kullanıcıları yönlendirebilirsiniz.
 
 Koşullu erişim uygulama denetimi, kullanıcının uygulama erişimi ve gerçek zamanlı olarak erişim ve oturum ilkelere dayalı denetlenen ve izlenen oturumları sağlar. Erişim ve oturum ilkeleri, Cloud App Security portalında, daha fazla filtre daraltın ve bir kullanıcı uygulanacak eylemleri ayarlamak için kullanılır. Erişim ve oturum ilkeleri ile şunları yapabilirsiniz:
 
@@ -46,7 +46,7 @@ Koşullu erişim uygulama denetimi, kullanıcının uygulama erişimi ve gerçek
 - Erişimi engelle: birkaç risk etmenlerine bağlı olarak belirli uygulamalar ve kullanıcılar için erişimi çok fazla engelleyebilirsiniz. Örneğin, istemci sertifikalarını cihaz yönetiminin bir formu olarak kullanıyorsa bunları engelleyebilirsiniz.
 - Özel etkinlikleri engelle: bazı uygulamalarda risk taşıyan benzersiz senaryolar vardır. Örneğin, Microsoft ekipleri veya bolluk gibi uygulamalarda hassas içeriğe sahip iletiler gönderme. Bu tür senaryolarda, hassas içerik için iletileri tarayabilir ve gerçek zamanlı olarak engelleyebilirsiniz.
 
-Daha fazla bilgi için bkz. [öne çıkan uygulamalar için koşullu erişim uygulama denetimi dağıtma](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)makalesi.
+Daha fazla bilgi için bkz. [öne çıkan uygulamalar için koşullu erişim uygulama denetimi dağıtma](/cloud-app-security/proxy-deployment-aad)makalesi.
 
 ## <a name="sign-in-frequency-preview"></a>Oturum açma sıklığı (Önizleme)
 

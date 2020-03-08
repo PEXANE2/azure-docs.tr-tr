@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359740"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669155"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
@@ -29,7 +29,7 @@ Data Lake Storage Gen2, verileri almak, analiz yapmak ve görsel gösterimler ol
 
 [Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md)bölümüne bakın.
 
-## <a name="supported-open-source-platforms"></a>Açık kaynak platformlar desteklenir
+## <a name="supported-open-source-platforms"></a>Desteklenen açık kaynaklı platformlar
 
 Data Lake depolama Gen2'ye birden fazla açık kaynak platformları destekler. Tüm liste için, bkz. [Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar](data-lake-storage-supported-open-source-platforms.md).
 
@@ -102,7 +102,7 @@ Yalnızca `1.6.0` veya üzeri sürümleri kullanın. Şu anda `1.11.0` etkil
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Azure portalında Depolama Gezgini
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure portal Depolama Gezgini
 
 ACL 'Ler henüz desteklenmiyor.
 
@@ -111,6 +111,14 @@ ACL 'Ler henüz desteklenmiyor.
 ## <a name="thirdpartyapplications"></a>Üçüncü taraf uygulamalar
 
 REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri çağıran Data Lake Storage 2. uygulamalarla birlikte kullandığınızda çalışmaya devam edecektir.
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Erişim denetim listeleri (ACL) ve anonim okuma erişimi
+
+Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
+
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure Depolama Blobu (te b) sürücüsü
+
+Şu anda, ıDB sürücüsünü, hiyerarşik bir ad alanı olan hesaplarla birlikte kullanmayla ilişkili birkaç sorun vardır. İş yüklerinizde [Azure blob dosya sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmanızı öneririz. 
 
 
 

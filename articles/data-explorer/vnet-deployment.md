@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812732"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851460"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Sanal ağınıza Azure Veri Gezgini dağıtma (Önizleme)
 
@@ -54,7 +54,7 @@ Toplam IP adresi sayısı:
 | Veri yönetimi hizmeti | 2 |
 | İç yük dengeleyiciler | 2 |
 | Azure ayrılmış adresler | 5 |
-| **Toplam** | **#engine_instances + 9** |
+| **Toplamda** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Azure Veri Gezgini dağıtıldıktan sonra değiştirilemediğinden alt ağ boyutu önceden planlanmalıdır. Bu nedenle gereken alt ağ boyutunu buna göre ayırın.
@@ -75,7 +75,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 #### <a name="inbound-nsg-configuration"></a>Gelen NSG yapılandırması
 
-| **Kullanma**   | **From**   | **Alıcı**   | **Protokol**   |
+| **Kullanma**   | **Kaynak**   | **Alıcı**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Yönetim  |[ADX yönetim adresleri](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (servicetag) | ADX alt ağı: 443  | TCP  |
 | Sistem durumunu izleme  | [ADX sistem durumu izleme adresleri](#health-monitoring-addresses)  | ADX alt ağı: 443  | TCP  |
@@ -84,7 +84,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 #### <a name="outbound-nsg-configuration"></a>Giden NSG yapılandırması
 
-| **Kullanma**   | **From**   | **Alıcı**   | **Protokol**   |
+| **Kullanma**   | **Kaynak**   | **Alıcı**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Azure Storage bağımlılığı  | ADX alt ağı  | Depolama alanı: 443  | TCP  |
 | Azure Data Lake bağımlılığı  | ADX alt ağı  | AzureDataLake: 443  | TCP  |
@@ -130,7 +130,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Güneydoğu Asya | 40.119.203.252 |
 | Güney Hindistan | 40.81.72.110 |
 | Güney Birleşik Krallık | 40.81.154.254 |
-| UK, Batı | 40.81.122.39 |
+| Batı Birleşik Krallık | 40.81.122.39 |
 | Orta Batı ABD | 52.159.55.120 |
 | Batı Avrupa | 51.145.176.215 |
 | Batı Hindistan | 40.81.88.112 |
@@ -169,12 +169,12 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Güney Hindistan | 23.99.5.162 |
 | Güneydoğu Asya | 168.63.173.234 |
 | Güney Birleşik Krallık | 23.97.212.5 |
-| UK, Batı | 23.97.212.5 |
+| Batı Birleşik Krallık | 23.97.212.5 |
 | Orta Batı ABD | 168.61.212.201 |
 | Batı Avrupa | 23.97.212.5 |
 | Batı Hindistan | 23.99.5.162 |
 | Batı ABD | 23.99.5.162 |
-| Batı ABD 2 | 23.99.5.162 | 
+| Batı ABD 2 | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Izleyici yapılandırma uç noktası adresleri
 
@@ -192,7 +192,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | EUAP Orta ABD | 13.90.43.231 |
 | Doğu Asya | 13.75.117.221 |
 | Doğu ABD | 13.90.43.231 |
-| Doğu ABD 2 | 13.68.89.19 | 
+| Doğu ABD 2 | 13.68.89.19 |    
 | EUAP Doğu ABD 2 | 13.68.89.19 |
 | Fransa Orta | 52.174.4.112 |
 | Fransa Güney | 52.174.4.112 |
@@ -263,3 +263,149 @@ Ayrıca, asimetrik yolların sorunlarını engellemek için [Yönetim adresleri]
 Azure Veri Gezgini kümesini sanal ağınıza dağıtmak için, VNet Azure Resource Manager şablonunuzda [azure Veri Gezgini kümesini dağıtma](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) ' yı kullanın.
 
 Bu şablon küme, sanal ağ, alt ağ, ağ güvenlik grubu ve genel IP adreslerini oluşturur.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Bu bölümde, [sanal ağınıza](/azure/virtual-network/virtual-networks-overview)dağıtılan bir küme için bağlantı, işlemsel ve küme oluşturma sorunlarını nasıl giderebileceğinizi öğreneceksiniz.
+
+### <a name="access-issues"></a>Erişim sorunları
+
+Ortak (cluster.region.kusto.windows.net) veya özel (private-cluster.region.kusto.windows.net) uç noktasını kullanarak kümeye erişirken bir sorun yaşıyorsanız ve sanal ağ kurulumuyla ilgili olduğunu düşünüyorsanız, için aşağıdaki adımları gerçekleştirin sorunu giderin.
+
+#### <a name="check-tcp-connectivity"></a>TCP bağlantısını denetle
+
+İlk adım Windows veya Linux işletim sistemi kullanılarak TCP bağlantısının denetlenmesini içerir.
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. Kümeye bağlanan makineye [Tcping](https://www.elifulkerson.com/projects/tcping.php) 'yi indirin.
+   2. Aşağıdaki komutu kullanarak kaynak makineden hedefe ping gönderin:
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. Kümeye bağlanan makineye *netcat* 'yi yükler
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. Aşağıdaki komutu kullanarak kaynak makineden hedefe ping gönderin:
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+Test başarılı olmazsa aşağıdaki adımlarla devam edin. Test başarılı olursa, sorun bir TCP bağlantı sorunu nedeniyle değildir. Sorun gidermek için [İşlemsel sorunlara](#cluster-creation-and-operations-issues) gidin.
+
+#### <a name="check-the-network-security-group-nsg"></a>Ağ güvenlik grubunu (NSG) denetleme
+
+   Kümenin alt ağına bağlı [ağ güvenlik grubu](/azure/virtual-network/security-overview) 'nun (NSG), bağlantı noktası 443 için ISTEMCI makinenin IP 'sinden erişime izin veren bir gelen kuralı olduğunu kontrol edin.
+
+#### <a name="check-route-table"></a>Rota tablosunu denetle
+
+   Kümenin alt ağının güvenlik duvarı (' 0.0.0.0/0 ' varsayılan yolunu içeren bir [yol tablosu](/azure/virtual-network/virtual-networks-udr-overview) ile alt ağ) için Zorlamalı tünel kurulumuna sahip olması durumunda, makine IP adresinin VirtualNetwork/Internet 'e bir [sonraki atlama türü](/azure/virtual-network/virtual-networks-udr-overview) ile bir yol içerdiğinden emin olun. Asimetrik yol sorunlarını engellemek için bu gereklidir.
+
+### <a name="ingestion-issues"></a>Alma sorunları
+
+Alma sorunları yaşıyorsanız ve sanal ağ kurulumuyla ilgili olduğunu düşünüyorsanız, aşağıdaki adımları gerçekleştirin.
+
+#### <a name="check-ingestion-health"></a>Alma durumunu denetle
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>Veri kaynağı kaynaklarında güvenlik kurallarını denetleme
+
+Ölçümler, veri kaynağından (*Işlenen olaylar* (Event/IoT Hub 'ları) ölçüm) hiçbir olayın işlenmediğini gösteriyorsa, veri kaynağı kaynaklarının (Olay Hub 'ı veya depolama alanı), güvenlik duvarı kurallarında veya hizmet uç noktalarında kümenin alt ağından erişime izin verecek şekilde emin olun.
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>Kümenin alt ağında yapılandırılan güvenlik kurallarını denetle
+
+Kümenin alt ağının NSG, UDR ve Güvenlik Duvarı kurallarının düzgün şekilde yapılandırıldığından emin olun. Ayrıca, tüm bağımlı uç noktalar için ağ bağlantısını test edin. 
+
+### <a name="cluster-creation-and-operations-issues"></a>Küme oluşturma ve işlemler sorunları
+
+Küme oluşturma veya işlem sorunları yaşıyorsanız ve sanal ağ kurulumuyla ilgili olduğunu düşünüyorsanız, sorunu gidermek için aşağıdaki adımları izleyin.
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>REST API ile sanal ağı tanılayın
+
+[Armclient](https://chocolatey.org/packages/ARMClient) , REST API PowerShell kullanarak çağırmak için kullanılır. 
+
+1. ARMClient ile oturum açma
+
+   ```powerShell
+   armclient login
+   ```
+
+1. Tanılama işlemini çağır
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. Yanıtı denetleyin
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. İşlemin tamamlanmasını bekle
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   *Durum* özelliği tamamlanana kadar bekleyin, sonra *Özellikler* *alanı şunu göstermelidir*:
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+*Bulmalar* özelliği boş bir sonuç gösteriyorsa, tüm ağ testlerinin geçirildiği ve hiçbir bağlantı kesilmediği anlamına gelir. Şu şekilde bir hata gösteriyorsa: *' {dependencyName}: {Port} ' giden bağımlılığı karşılanmıyor (giden)* , küme bağımlı hizmet uç noktalarına ulaşamıyor. Sorunlarını gidermek için aşağıdaki adımları izleyin.
+
+#### <a name="check-network-security-group-nsg"></a>Ağ güvenlik grubu (NSG) denetimi
+
+[Ağ güvenlik grubunun](/azure/virtual-network/security-overview) , [VNET dağıtımı bağımlılıklarındaki](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment) yönergeler temelinde doğru yapılandırıldığından emin olun
+
+#### <a name="check-route-table"></a>Rota tablosunu denetle
+
+Kümenin alt ağının güvenlik duvarı için zorla (varsayılan yolu ' 0.0.0.0/0 ' olan bir [rota tablosu](/azure/virtual-network/virtual-networks-udr-overview) olan alt ağ), [Yönetim IP adreslerinin](#azure-data-explorer-management-ip-addresses) ve [sistem durumu izleme IP adreslerinin](#health-monitoring-addresses) [sonraki atlama türü](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*'e sahip bir yol içerdiğinden ve *' Yönetim-IP/32 '* ve *' sağlık-izleme-IP/32 '* için [kaynak adresi ön ekine](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) sahip olduğundan emin olun. Asimetrik yol sorunlarını engellemek için bu gereklidir.
+
+#### <a name="check-firewall-rules"></a>Güvenlik duvarı kurallarını denetle
+
+Tünel alt ağına giden trafiği bir güvenlik duvarına zorlarsanız, güvenlik duvarı [ile giden trafiğin güvenliğini sağlama](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)bölümünde açıklandığı gibi, güvenlik duvarı yapılandırmasında tüm bağımlılıklar FQDN 'sine (örneğin, *. blob.Core.Windows.net*) izin verildiğinden emin olun.

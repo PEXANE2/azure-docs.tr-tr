@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917790"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672643"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil yenileme belirteci nedir?
 
@@ -33,7 +33,7 @@ Aşağıdaki Windows bileşenleri, bir PRT isteğinde ve kullanarak bir anahtar 
 * **Azure AD cloudap eklentisi**: Windows oturum açma SıRASıNDA Azure AD ile Kullanıcı kimlik bilgilerini doğrulayan, cloudap çerçevesi üzerine Inşa EDILEN Azure AD 'ye özgü bir eklenti.
 * **Azure AD WAM eklentisi**:, kimlik doğrulaması IÇIN Azure AD 'yi kullanan uygulamalar için SSO 'yu sağlayan, WAM çerçevesi üzerinde oluşturulmuş BIR Azure AD özel eklentisi.
 * **Dsreg**: Windows 10 ' da, tüm cihaz durumları için cihaz kayıt işlemini Işleyen BIR Azure AD 'ye özgü bileşen.
-* **Güvenilir Platform Modülü** (TPM): TPM, Kullanıcı ve cihaz gizli dizileri için donanım tabanlı güvenlik işlevleri sağlayan bir cihaza yerleşik bir donanım bileşenidir. [Güvenilir Platform Modülü teknolojisine genel bakış](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview)makalesinde daha fazla ayrıntı bulabilirsiniz.
+* **Güvenilir Platform Modülü** (TPM): TPM, Kullanıcı ve cihaz gizli dizileri için donanım tabanlı güvenlik işlevleri sağlayan bir cihaza yerleşik bir donanım bileşenidir. [Güvenilir Platform Modülü teknolojisine genel bakış](/windows/security/information-protection/tpm/trusted-platform-module-overview)makalesinde daha fazla ayrıntı bulabilirsiniz.
 
 ## <a name="what-does-the-prt-contain"></a>PRT neleri içerir?
 
@@ -48,7 +48,7 @@ PRT, içeriği hiçbir istemci bileşeni tarafından bilinen Azure AD 'den gönd
 
 ## <a name="how-is-a-prt-issued"></a>PRT nasıl verilir?
 
-Cihaz kaydı, Azure AD 'de cihaz tabanlı kimlik doğrulaması için bir önkoşuldur. Yalnızca kayıtlı cihazlarda kullanıcılara bir PRT verilir. Cihaz kaydı hakkında daha ayrıntılı bilgi için, [iş Için Windows Hello ve cihaz kaydı](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)makalesine bakın. Cihaz kaydı sırasında dsreg bileşeni iki şifreleme anahtarı çifti kümesi oluşturur:
+Cihaz kaydı, Azure AD 'de cihaz tabanlı kimlik doğrulaması için bir önkoşuldur. Yalnızca kayıtlı cihazlarda kullanıcılara bir PRT verilir. Cihaz kaydı hakkında daha ayrıntılı bilgi için, [iş Için Windows Hello ve cihaz kaydı](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)makalesine bakın. Cihaz kaydı sırasında dsreg bileşeni iki şifreleme anahtarı çifti kümesi oluşturur:
 
 * Cihaz anahtarı (dkpub/dkprıv)
 * Aktarım anahtarı (tkpub/tkprıv)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529302"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897910"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -28,12 +28,12 @@ Azure sanal ağları ve bir VPN ağ geçidi kullanarak HDInsight 'ı şirket iç
 
 Birleştirilmiş ağdaki HDInsight ve kaynakların ada göre iletişim kurmasına izin vermek için aşağıdaki eylemleri gerçekleştirmeniz gerekir:
 
-* Azure sanal ağını oluşturun.
-* Azure sanal ağında özel bir DNS sunucusu oluşturun.
-* Sanal ağı varsayılan Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullanacak şekilde yapılandırın.
-* Özel DNS sunucusu ve şirket içi DNS sunucunuz arasında iletmeyi yapılandırın.
+1. Azure sanal ağını oluşturun.
+1. Azure sanal ağında özel bir DNS sunucusu oluşturun.
+1. Sanal ağı varsayılan Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullanacak şekilde yapılandırın.
+1. Özel DNS sunucusu ve şirket içi DNS sunucunuz arasında iletmeyi yapılandırın.
 
-Bu yapılandırma aşağıdaki davranışı sunar:
+Bu yapılandırma aşağıdaki davranışı etkinleştirir:
 
 * __Sanal ağ IÇIN__ DNS sonekine sahip olan tam etki alanı adları ISTEKLERI özel DNS sunucusuna iletilir. Özel DNS sunucusu daha sonra bu istekleri, IP adresini döndüren Azure özyinelemeli çözümleyici 'ye iletir.
 * Diğer tüm istekler şirket içi DNS sunucusuna iletilir. Microsoft.com gibi genel internet kaynaklarına yönelik istekler bile ad çözümlemesi için şirket içi DNS sunucusuna iletilir.
@@ -63,13 +63,15 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 
 Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://portal.azure.com) kullanır. Sanal makine oluşturmanın diğer yolları için bkz. [VM oluşturma-Azure CLI](../virtual-machines/linux/quick-create-cli.md) ve [vm oluşturma-Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  [BIND](https://www.isc.org/downloads/bind/) DNS yazılımını kullanan bir Linux sanal makinesi oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
   
-2. Sol taraftaki menüden **+ kaynak oluştur** ** > ,** **Ubuntu Server 18,04 LTS** >  ' a gidin.
+1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
-    ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
+    ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-3. __Temel bilgiler__ sekmesinde, aşağıdaki bilgileri girin:  
+1. Sanal makine **oluşturma** sayfasına gitmek Için > **işlem** **sanal makinesini** seçin.
+
+1. __Temel bilgiler__ sekmesinde, aşağıdaki bilgileri girin:  
   
     | Alan | Değer |
     | --- | --- |
@@ -114,7 +116,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bağlama (DNS yazılımı) yükleyip yapılandırma
 
-1. Sanal makinenin __genel IP adresine__ bağlanmak için SSH kullanın. @No__t_0, VM oluştururken belirttiğiniz SSH kullanıcı hesabı ile değiştirin. Aşağıdaki örnek, 40.68.254.142 adresindeki bir sanal makineye bağlanır:
+1. Sanal makinenin __genel IP adresine__ bağlanmak için SSH kullanın. `sshuser`, VM oluştururken belirttiğiniz SSH kullanıcı hesabı ile değiştirin. Aşağıdaki örnek, 40.68.254.142 adresindeki bir sanal makineye bağlanır:
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -154,9 +156,9 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
         };
 
     > [!IMPORTANT]  
-    > @No__t_0 bölümündeki değerleri, sanal ağın ve şirket içi ağın IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
+    > `goodclients` bölümündeki değerleri, sanal ağın ve şirket içi ağın IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
     >
-    > @No__t_1 bölümündeki `192.168.0.1` girişi, şirket içi DNS sunucunuzun IP adresi ile değiştirin. Bu giriş, çözümleme için DNS isteklerini şirket içi DNS sunucunuza yönlendirir.
+    > `forwarders` bölümündeki `192.168.0.1` girişi, şirket içi DNS sunucunuzun IP adresi ile değiştirin. Bu giriş, çözümleme için DNS isteklerini şirket içi DNS sunucunuza yönlendirir.
 
     Bu dosyayı düzenlemek için aşağıdaki komutu kullanın:
 
@@ -178,7 +180,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    @No__t_0 metin, bu sanal ağ için __DNS son ekidir__ . Bu değeri kaydedin çünkü daha sonra kullanılacaktır.
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` metin, bu sanal ağ için __DNS son ekidir__ . Daha sonra kullanıldığından bu değeri kaydedin.
 
 5. Sanal ağ içindeki kaynakların DNS adlarını çözümlemek üzere bağlamayı yapılandırmak için, `/etc/bind/named.conf.local` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
@@ -189,7 +191,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
         };
 
     > [!IMPORTANT]  
-    > @No__t_0, daha önce aldığınız DNS soneki ile değiştirmelisiniz.
+    > `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net`, daha önce aldığınız DNS soneki ile değiştirmelisiniz.
 
     Bu dosyayı düzenlemek için aşağıdaki komutu kullanın:
 
@@ -213,9 +215,9 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
     ```
 
     > [!IMPORTANT]  
-    > @No__t_0, şirket içi ağınızdaki bir kaynağın tam etki alanı adı (FQDN) ile değiştirin.
+    > `dns.mynetwork.net`, şirket içi ağınızdaki bir kaynağın tam etki alanı adı (FQDN) ile değiştirin.
     >
-    > @No__t_0, sanal ağdaki özel DNS sunucunuzun __Iç IP adresi__ ile değiştirin.
+    > `10.0.0.4`, sanal ağdaki özel DNS sunucunuzun __Iç IP adresi__ ile değiştirin.
 
     Yanıt aşağıdaki metne benzer şekilde görünür:
 
@@ -232,7 +234,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 Sanal ağı Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullanacak şekilde yapılandırmak için, [Azure Portal](https://portal.azure.com)aşağıdaki adımları kullanın:
 
-1. Sol menüden **tüm hizmetler**  > **ağ**  > **sanal ağlar**' a gidin.
+1. Sol menüden **tüm hizmetler** > **ağ** > **sanal ağlar**' a gidin.
 
 2. Sanal ağınız için varsayılan görünümü açacak olan listeden Sanal ağınızı seçin.  
 
@@ -267,7 +269,7 @@ Aşağıdaki metin, **BIND** DNS yazılımının koşullu iletici yapılandırma
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-Bu örnek, özel DNS sunucusunun adını çözümlemek için 196.168.0.4 adresindeki şirket içi DNS sunucusunu kullanır. IP adresini, şirket içi DNS sunucusu için bir ile değiştirin. @No__t_0 adresini özel DNS sunucusunun tam etki alanı adıyla değiştirin.
+Bu örnek, özel DNS sunucusunun adını çözümlemek için 196.168.0.4 adresindeki şirket içi DNS sunucusunu kullanır. IP adresini, şirket içi DNS sunucusu için bir ile değiştirin. `dnsproxy` adresini özel DNS sunucusunun tam etki alanı adıyla değiştirin.
 
 ## <a name="optional-control-network-traffic"></a>İsteğe bağlı: ağ trafiğini denetleme
 

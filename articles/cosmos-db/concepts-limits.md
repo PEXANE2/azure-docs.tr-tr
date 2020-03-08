@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916515"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674213"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -186,6 +186,20 @@ Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure
 | Hesap başına en fazla toplam depolama alanı | 10 GB |
 
 Cosmos DB, genel dağıtımı yalnızca Orta ABD, Kuzey Avrupa ve Güneydoğu Asya bölgelerinde destekler. Deneme Azure Cosmos DB hesapları için Azure destek biletleri oluşturulamıyor. Ancak, mevcut destek planlarına sahip aboneler için destek sağlanır.
+
+## <a name="free-tier-account-limits"></a>Ücretsiz katman hesap limitleri
+Aşağıdaki tabloda [Azure Cosmos DB ücretsiz katman hesapları](optimize-dev-test.md#azure-cosmos-db-free-tier) için sınırlar listelenmektedir.
+
+| Kaynak | Varsayılan limit |
+| --- | --- |
+| Azure aboneliği başına ücretsiz katman hesabı sayısı | 1 |
+| Serbest katmanlı indirimin süresi | Hesabın kullanım süresi. Hesap oluşturma sırasında kabul etmelidir. |
+| Ücretsiz olarak en fazla RU/sn | 400 RU/sn |
+| En fazla depolama alanı boş | 5 GB |
+| En fazla paylaşılan üretilen iş veritabanı sayısı | 5 |
+| Paylaşılan bir üretilen iş veritabanında en fazla kapsayıcı sayısı | 25 <br>Ücretsiz katman hesaplarında, 25 ' e kadar kapsayıcı içeren paylaşılan bir üretilen iş veritabanı için en az RU/sn 400 RU/sn 'dir. |
+
+  Yukarıdaki ' a ek olarak, [Hesap başına sınırlar](#per-account-limits) ayrıca ücretsiz katman hesapları için de geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

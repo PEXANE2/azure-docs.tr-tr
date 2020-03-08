@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073462"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898892"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile Windows sanal makinesi oluşturma
 
@@ -46,16 +46,15 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnekte *myVM* adlı bir VM oluşturulur. Bu örnek, bir Yönetici Kullanıcı adı için *azureuser* kullanır. 
 
-`--admin-password` değerini değiştirmeniz gerekir veya başarısız olur. [Azure VM 'lerinin parola gereksinimlerini](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)karşılayan bir parolayla değiştirin. SANAL makineye bağlandığınızda Kullanıcı adı ve parola daha sonra kullanılacaktır.
+[Azure VM 'lerinin parola gereksinimlerini](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)karşılayan bir parola sağlamanız gerekir. Aşağıdaki örneği kullanarak komut satırına bir parola girmeniz istenir. Parolanız için bir değerle `--admin-password` parametresini de ekleyebilirsiniz. SANAL makineye bağlandığınızda Kullanıcı adı ve parola daha sonra kullanılacaktır.
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image win2016datacenter \
-    --admin-username azureuser \
-    --admin-password myPassword
+    --admin-username azureuser 
 ```
 
 VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıdaki örnekte VM oluşturma işleminin başarılı olduğu gösterilmektedir.
@@ -101,7 +100,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 İşiniz bittiğinde, RDP’nin sanal makine bağlantısını kapatın.
 
-## <a name="view-the-web-server-in-action"></a>Web sunucusunu iş başında görün
+## <a name="view-the-web-server-in-action"></a>Web sunucusunun çalıştığını görme
 
 Sanal makinenizde İnternet’ten IIS yüklenmiş ve 80 numaralı bağlantı noktası açık olduğunda, varsayılan IIS karşılama sayfasını görüntülemek için tercih ettiğiniz bir web tarayıcısını kullanın. VM’nizin önceki bir adımda edinilen genel IP adresini kullanın. Aşağıdaki örnekte varsayılan IIS web sitesi gösterilir:
 

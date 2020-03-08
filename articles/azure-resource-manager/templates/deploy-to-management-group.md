@@ -2,23 +2,29 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228105"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894886"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
-Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Ancak, kaynakları yönetim grubu düzeyinde de oluşturabilirsiniz. Yönetim grubu düzeyi dağıtımlarını, [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) atama ya da [ilke](../../governance/policy/overview.md)uygulama gibi bu düzeyde anlamlı olan işlemleri gerçekleştirmek için kullanabilirsiniz.
+Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Bununla birlikte, kaynakları da oluşturabilirsiniz:
+
+* [abonelik düzeyi](deploy-to-subscription.md)
+* Yönetim grubu düzeyi (Bu makalede ele alınmıştır)
+* [Kiracı düzeyi](deploy-to-tenant.md)
+
+Yönetim grubu düzeyi dağıtımlarını, [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) atama ya da [ilke](../../governance/policy/overview.md)uygulama gibi bu düzeyde anlamlı olan işlemleri gerçekleştirmek için kullanabilirsiniz.
 
 ## <a name="supported-resources"></a>Desteklenen kaynaklar
 
 Yönetim grubu düzeyinde aşağıdaki kaynak türlerini dağıtabilirsiniz:
 
-* [dağıtımlar](/azure/templates/microsoft.resources/deployments)
+* [dağıtımlar](/azure/templates/microsoft.resources/deployments) -abonelikler veya kaynak gruplarına dağıtan iç içe şablonlar için.
 * [Poliyasatamaları](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)

@@ -1,6 +1,6 @@
 ---
-title: Parola koruma İzleyicisi ve günlüğü-Azure Active Directory
-description: Azure AD parola koruması izlemeyi ve günlüğe kaydetmeyi anlama
+title: Şirket içi Azure AD parola korumasını izleme
+description: Şirket içi Active Directory Domain Services ortamı için Azure AD parola koruması günlüklerini izleme ve gözden geçirme hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847720"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671653"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD parola koruması izleme ve günlüğe kaydetme
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Şirket içi Azure AD parola koruma ortamları için günlükleri izleme ve gözden geçirme
 
 Azure AD parola koruması, izleme ve raporlama dağıtımıyla sonra önemli görevlerdir. Bu makale, her bir hizmetin bilgileri günlüğe kaydettiği ve Azure AD parola korumasının kullanımını nasıl rapor açtığına dahil olmak üzere çeşitli izleme tekniklerini anlamanıza yardımcı olmak için ayrıntılı bir hale geçer.
 

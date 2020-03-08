@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4f7357c79b9a6a57d7ede7342408d519d2278cbe
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f11fdf61bd9382cdf7956426871ce562e2a88038
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262361"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669262"
 ---
 |Adı |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
@@ -22,7 +22,7 @@ ms.locfileid: "78262361"
 |[\[Preview\]: denetim gereksinimlerini desteklemek için PCI v 3.2.1:2018 denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |Bu girişim, PCI v 3.2.1:2018 denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/pciv321-initziyaret edin. |39 |1.0.0-Önizleme |
 |[\[Preview\]: denetim gereksinimlerini desteklemek için SWIFT CSP-CSCF V2020 denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Bu girişim, SWIFT CSP-CSCF V2020 denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/SWIFT-blueprintziyaret edin. |71 |1.0.0-Önizleme |
 |[\[önizleme\]: UK RESMI ve UK NHS 'ler denetimlerini denetleme ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Bu girişim, UK RESMI ve UK NHS denetimlerinin bir alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/ukofficial-blueprint ve https://aka.ms/uknhs-blueprint ziyaret edin |66 |2.0.0-Önizleme |
-|[Azure Güvenlik kıyaslama önerilerini denetleme ve belirli destekleyici VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Bu girişim, Azure Güvenlik kıyaslama önerilerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/azsecbmziyaret edin. |137 |1.0.0-Önizleme |
+|[Azure Güvenlik kıyaslama önerilerini denetleme ve belirli destekleyici VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Bu girişim, Azure Güvenlik kıyaslama önerilerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/azsecbmziyaret edin. |148 |2.0.0-Önizleme |
 |[Denetim gereksinimlerini desteklemek için Fedrampa yüksek denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Bu girişim, Fedrampa H denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/fedramph-blueprintziyaret edin. |80 |2.0.0-Önizleme |
 |[Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Bu girişim, bir HITRUST/HIPAA denetimlerinin alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenecektir. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[America (MPAA) denetimlerinin denetim hareketi resmi Ilişkilendirmesi ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Bu girişim, Amerika (MPAA) güvenlik ve yönergeler denetimlerinin hareketli resim Ilişkilendirmesi alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen https://aka.ms/mpaa-blueprint ziyaret edin |45 |1.0.0-Önizleme |

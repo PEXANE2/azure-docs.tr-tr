@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 76d3be0fc00465c35dbc79a258b57db962969cc8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255010"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672341"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -59,7 +59,7 @@ Karma Azure AD katılımı, çok çeşitli Windows cihazlarını destekler. Wind
 - Windows Server 2016
 - Windows Server 2019
 
-Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürüm, [Windows 10 sürüm bilgileri](https://docs.microsoft.com/windows/release-information/)makalesinde listelenmiştir. En iyi uygulama olarak Microsoft, en son Windows 10 sürümüne yükseltmenizi önerir.
+Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürüm, [Windows 10 sürüm bilgileri](/windows/release-information/)makalesinde listelenmiştir. En iyi uygulama olarak Microsoft, en son Windows 10 sürümüne yükseltmenizi önerir.
 
 ### <a name="windows-down-level-devices"></a>Windows alt düzey cihazlar
 
@@ -87,7 +87,7 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 
 - Ek VM 'Ler oluşturmak için bir sanal makine (VM) anlık görüntüsüne güvenmek istiyorsanız, anlık görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir VM 'den olmadığından emin olun.
 
-- Yeniden başlatma sırasında diskte yapılan değişiklikleri temizleyecek [birleştirilmiş yazma Filtresi](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) ve benzer teknolojiler kullanıyorsanız, cihaz hibrit Azure AD 'ye katılmış olduktan sonra uygulanmaları gerekir. Karma Azure AD JOIN 'in tamamlanmasından önce bu tür teknolojilerin etkinleştirilmesi, cihazın her yeniden başlatmada katılmasına neden olur
+- Yeniden başlatma sırasında diskte yapılan değişiklikleri temizleyecek [birleştirilmiş yazma Filtresi](/windows-hardware/customize/enterprise/unified-write-filter) ve benzer teknolojiler kullanıyorsanız, cihaz hibrit Azure AD 'ye katılmış olduktan sonra uygulanmaları gerekir. Karma Azure AD JOIN 'in tamamlanmasından önce bu tür teknolojilerin etkinleştirilmesi, cihazın her yeniden başlatmada katılmasına neden olur
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Cihazları Azure AD kayıtlı durumuyla işleme
 Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azure AD](overview.md#getting-devices-in-azure-ad) Ise, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazın iki durumuna yol açabilir. Bu senaryoyu otomatik olarak çözmek için Windows 10 1803 ' e (KB4489894 uygulanmış olan) veya üstüne yükseltmeniz önerilir. 1803 öncesi sürümlerde, hibrit Azure AD JOIN 'i etkinleştirmeden önce Azure AD kayıtlı durumunu el ile kaldırmanız gerekecektir. 1803 ve üzeri sürümlerde, bu iki durumdan kaçınmak için aşağıdaki değişiklikler yapılmıştır:
@@ -100,7 +100,7 @@ Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azu
 > Azure AD kayıtlı cihaz, Intune tarafından yönetiliyorsa otomatik olarak kaldırılmaz.
 
 ### <a name="additional-considerations"></a>Diğer konular
-- Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 - Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. Windows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı için kullanılmaz ve bu TPMs 'Leri içeren cihazlar TPM 'ye sahip olmadıkları sürece kabul edilir.
 
@@ -116,7 +116,7 @@ Karma Azure AD katılımı, UPN 'nin yönlendirilebilir veya yönlendirilemeyen 
 
 ### <a name="managed-environment"></a>Yönetilen ortam
 
-Yönetilen bir ortam, [kesintisiz çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)Ile [Parola karması eşitlemesi (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) veya [doğrudan kimlik doğrulama (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) aracılığıyla dağıtılabilir.
+Yönetilen bir ortam, [kesintisiz çoklu oturum açma](/azure/active-directory/hybrid/how-to-connect-sso)Ile [Parola karması eşitlemesi (PHS)](/azure/active-directory/hybrid/whatis-phs) veya [doğrudan kimlik doğrulama (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) aracılığıyla dağıtılabilir.
 
 Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
 
@@ -133,7 +133,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.
@@ -147,9 +147,9 @@ Kimlik altyapınızla eşleşen senaryoya bağlı olarak, bkz:
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin
 
-Bazen, şirket içi AD UPN 'niz Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
+Bazen, şirket içi AD UPN 'niz Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](/azure/security/fundamentals/choose-ad-authn), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
 
-- Yönlendirilebilir UPN: yönlendirilebilir bir UPN, bir etki alanı kaydedicisinde kayıtlı geçerli bir doğrulanmış etki alanı içerir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso.org, şirket içi AD 'de contoso 'ya ait olan ve [Azure AD 'de doğrulanan](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) birincil etki alanıdır.
+- Yönlendirilebilir UPN: yönlendirilebilir bir UPN, bir etki alanı kaydedicisinde kayıtlı geçerli bir doğrulanmış etki alanı içerir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso.org, şirket içi AD 'de contoso 'ya ait olan ve [Azure AD 'de doğrulanan](/azure/active-directory/fundamentals/add-custom-domain) birincil etki alanıdır.
 - Yönlendirilebilir olmayan UPN: yönlendirilemeyen bir UPN 'de doğrulanmış bir etki alanı yoktur. Yalnızca kuruluşunuzun özel ağı dahilinde geçerlidir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso. Local şirket içi AD 'deki birincil etki alanıdır, ancak internet 'te doğrulanabilir bir etki alanı değildir ve yalnızca contoso ağı içinde kullanılır.
 
 Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD UPN 'leri için destek ayrıntıları verilmiştir

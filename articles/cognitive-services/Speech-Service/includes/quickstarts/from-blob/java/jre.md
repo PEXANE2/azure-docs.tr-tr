@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
-ms.translationtype: MT
+ms.openlocfilehash: b58ca353bffb99b21b1049dd23620f575bde687b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942758"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669003"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -32,7 +32,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 ## <a name="add-a-reference-to-gson"></a>Gson 'a başvuru ekleme
 Bu hızlı başlangıçta bir dış JSON seri hale getirici/seri hale getirici kullanacağız. Java için [Gson](https://github.com/google/gson)' a seçtik.
 
-Poz. XML dosyanızı açın ve şu başvuruyu ekleyin: [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
+Poz. XML dosyanızı açın ve aşağıdaki başvuruyu ekleyin.
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB içindeki toplama işlevleri
 description: SQL toplama işlevi sözdizimi, Azure Cosmos DB tarafından desteklenen toplama işlevlerinin türleri hakkında bilgi edinin.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/05/2020
+ms.author: tisande
+ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871848"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897820"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki toplama işlevleri
 
@@ -24,7 +24,7 @@ Toplama işlevleri, SELECT yan tümcesindeki bir dizi değer üzerinde bir hesap
     FROM Families f
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -39,7 +39,7 @@ Ayrıca, VALUE anahtar sözcüğünü kullanarak toplamanın yalnızca skaler de
     FROM Families f
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [ 2 ]
@@ -53,7 +53,7 @@ Toplamaları filtreler ile de birleştirebilirsiniz. Örneğin, aşağıdaki sor
     WHERE f.address.state = "WA"
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [ 1 ]

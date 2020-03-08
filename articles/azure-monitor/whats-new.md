@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657750"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673319"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="march-2020"></a>Mart 2020
+
+### <a name="agents"></a>Aracılar
+Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok güncelleştirme.
+
+- Her bir aracının benzersiz özelliklerini daha iyi netleştirmek için [Azure izleme aracıları](platform/agents-overview.md) -yeniden yapılandırılmış tablolara genel bakış.
+- [Azure tanılama uzantıya genel bakış](platform/diagnostics-extension-overview.md) -yeniden yazmayı doldurun.
+- [Azure izleyici 'de olaylar IÇIN IIS ve tablo depolaması için BLOB depolama kullanın](platform/diagnostics-extension-logs.md) -güncelleştirme ve açıklık için genel yeniden yazma.
+- [Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırın](platform/diagnostics-extension-windows-install.md) -yeni makale. 
+- [Windows Tanılama uzantısı şeması](platform/diagnostics-extension-schema-windows.md) -yeniden düzenlendi.
+- [Windows Azure tanılama uzantısı 'Ndan azure Event Hubs 'a veri gönderin](platform/diagnostics-extension-stream-event-hubs.md) -tamamen yeniden yazıldı ve güncelleştirilir.
+- [Azure depolama 'da tanılama verilerini depolama ve görüntüleme](platform/diagnostics-extension-to-storage.md) -tamamen yeniden yazıldı ve güncelleştirildi.
+- [Windows için sanal makine uzantısı Log Analytics](../virtual-machines/extensions/oms-windows.md) Log Analytics aracısıyla daha iyi açıklığa kavuştura ilişkisi.
+- [Linux Için Azure izleyici sanal makine uzantısı](../virtual-machines/extensions/oms-linux.md) -Log Analytics aracısıyla daha iyi bir ilişki ilişkisi.
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights bağlantı dizeleri](app/sdk-connection-string.md) -yeni makale.
+
+### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
+
+#### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
+- [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirin](../aks/azure-ad-integration.md) bir istemci uygulaması oluşturmak için RBAC özellikli kümeyi desteklemek üzere Azure izleyicisini, kapsayıcılar Için Azure izleyiciyi destekleyecek şekilde tümleştirin.
+
+#### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
+- [VM'ler için Azure izleyici (GA) sık sorulan sorular](insights/vminsights-ga-release-faq.md) -performans verilerinin nasıl depolandığını değiştirin.
+
+#### <a name="office-365"></a>Office 365
+- [Azure 'Da Office 365 yönetim çözümü](insights/solution-office-365.md) -kullanımdan kaldırma tarihi güncelleştirildi.
+
+
+### <a name="logs"></a>Günlükler
+- [Azure izleyici 'de günlük sorgularını iyileştirme](log-query/query-optimization.md) -yeni makale.
+- [Azure Izleyici günlükleri için kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) -kullanımınızın anlaşılmasına yardımcı olmak için geliştirilmiş örnek sorgular.
+
+### <a name="metrics"></a>Ölçümler
+- [Azure izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir](platform/metrics-supported-export-diagnostic-settings.md) -null ve sıfır değerleri için davranış değişikliğine eklenen bölüm.
+
+
+### <a name="visualizations"></a>Görsel öğeler
+Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna yönelik birden çok yeni makale.
+
+- [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](platform/view-designer-conversion-overview.md) -yeni makale.
+- [Azure izleyici Görünüm Tasarımcısı çalışma kitapları dönüştürme seçenekleri](platform/view-designer-conversion-options.md) -yeni makale.
+- [Azure izleyici Görünüm Tasarımcısı çalışma kitapları kutucuk dönüştürmeleri](platform/view-designer-conversion-tiles.md) -yeni makale.
+- [Azure izleyici Görünüm Tasarımcısı çalışma kitapları dönüştürme özeti ve erişim](platform/view-designer-conversion-access.md) -yeni makale.
+- [Azure izleyici Görünüm Tasarımcısı çalışma kitaplarını dönüştürme ortak görevler](platform/view-designer-conversion-tasks.md) -yeni makale.
+- [Azure izleyici Görünüm Tasarımcısı çalışma kitapları dönüştürme örnekleri](platform/view-designer-conversion-examples.md) -yeni makale.
+
+
+
 
 ## <a name="january-2020"></a>Ocak 2020
 
@@ -43,14 +97,14 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 
 #### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
-- [Kapsayıcılar Için Azure Izleyicisini yapılandırma veri toplama](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) -Azure Red Hat OpenShift üzerinde aracı yükseltme ayrıntıları ve aracı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklendi.
-- [Kapsayıcılar Için Azure izleyici için performans uyarıları oluşturma](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) -çalışma alanı-bağlam uyarılarını kullanarak çalışma alanında depolanan performans verilerinde uyarı oluşturmaya yönelik düzeltme bilgileri ve güncelleştirilmiş adımlar.
-- [Kapsayıcılar Için Azure izleyici Ile Kubernetes izleme](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) -hem genel bakış makalesi hem de Windows Kubernetes kümelerinin desteğiyle ilgili çözümleme makalesi güncelleştirildi.
-- Azure Red hat [OpenShift kümelerini kapsayıcı için Azure izleyici Ile yapılandırın](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) -Azure Red Hat OpenShift üzerinde aracı yükseltme için ek ayrıntılar ve aracıyı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklenmiştir.
-- [Karma Kubernetes kümelerini kapsayıcılar Için Azure izleyici Ile yapılandırma](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) -, Kubelet 'In Cadvizörü ile 10250 güvenli bağlantı noktası için eklenen desteği yansıtacak şekilde güncelleştirildi.
-- [Kapsayıcılar Için Azure izleyicisini yönetme](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili, diğer Kubernetes kümelerine kıyasla, ölçüm koruması ile ilgili güncelleştirilmiş ayrıntılar.
-- [Kapsayıcılar Için Azure Izleyicisini yapılandırın Prometheus tümleştirmesi](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili güncelleştirilmiş ayrıntıları, diğer Kubernetes kümeleri ile karşılaştırılır.
-- Azure Red Hat OpenShift ile ölçüm koruması ile ilgili ölçüm ve yapılandırma ile ilgili ölçüm için [Azure izleyicisini güncelleştirme](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) , diğer Kubernetes kümelerine kıyasla.
+- [Kapsayıcılar Için Azure Izleyicisini yapılandırma veri toplama](insights/container-insights-agent-config.md) -Azure Red Hat OpenShift üzerinde aracı yükseltme ayrıntıları ve aracı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklendi.
+- [Kapsayıcılar Için Azure izleyici için performans uyarıları oluşturma](insights/container-insights-alerts.md) -çalışma alanı-bağlam uyarılarını kullanarak çalışma alanında depolanan performans verilerinde uyarı oluşturmaya yönelik düzeltme bilgileri ve güncelleştirilmiş adımlar.
+- [Kapsayıcılar Için Azure izleyici Ile Kubernetes izleme](insights/container-insights-analyze.md) -hem genel bakış makalesi hem de Windows Kubernetes kümelerinin desteğiyle ilgili çözümleme makalesi güncelleştirildi.
+- Azure Red hat [OpenShift kümelerini kapsayıcı için Azure izleyici Ile yapılandırın](insights/container-insights-azure-redhat-setup.md) -Azure Red Hat OpenShift üzerinde aracı yükseltme için ek ayrıntılar ve aracıyı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklenmiştir.
+- [Karma Kubernetes kümelerini kapsayıcılar Için Azure izleyici Ile yapılandırma](insights/container-insights-hybrid-setup.md) -, Kubelet 'In Cadvizörü ile 10250 güvenli bağlantı noktası için eklenen desteği yansıtacak şekilde güncelleştirildi.
+- [Kapsayıcılar Için Azure izleyicisini yönetme](insights/container-insights-manage-agent.md) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili, diğer Kubernetes kümelerine kıyasla, ölçüm koruması ile ilgili güncelleştirilmiş ayrıntılar.
+- [Kapsayıcılar Için Azure Izleyicisini yapılandırın Prometheus tümleştirmesi](insights/container-insights-prometheus-integration.md) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili güncelleştirilmiş ayrıntıları, diğer Kubernetes kümeleri ile karşılaştırılır.
+- Azure Red Hat OpenShift ile ölçüm koruması ile ilgili ölçüm ve yapılandırma ile ilgili ölçüm için [Azure izleyicisini güncelleştirme](insights/container-insights-update-metrics.md) , diğer Kubernetes kümelerine kıyasla.
 
 
 #### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici

@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: d4d5168ee7f2f8c71b3a63fea64873a8dd71658b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 93ee900eb936bdc3f03c96d0b1196227d05dd03f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363824"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668349"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -66,7 +66,7 @@ Aşağıdaki tabloda, Windows Azure VM 'Leri yedeklenirken desteklenen işletim 
 **Senaryo** | **İşletim sistemi desteği**
 --- | ---
 Azure VM Aracısı Uzantısı ile yedekleme | -Windows 10 Istemcisi (yalnızca 64 bit) <br/><br/>-Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)  <br/><br/> -Windows Server 2008 (yalnızca 64 bit)
-MARS Aracısı ile yedekleme | [Desteklenen](backup-support-matrix-mars-agent.md#support-for-direct-backups) işletim sistemleri.
+MARS Aracısı ile yedekleme | [Desteklenen](backup-support-matrix-mars-agent.md#supported-operating-systems) işletim sistemleri.
 DPM/MABS ile yedekleme | [Mabs](backup-mabs-protection-matrix.md) ve [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)ile yedekleme için desteklenen işletim sistemleri.
 
 Azure Backup 32 bit işletim sistemlerini desteklemez.

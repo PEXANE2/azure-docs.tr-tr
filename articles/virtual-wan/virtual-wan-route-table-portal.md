@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612369"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402934"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 'lar için bir sanal WAN hub yol tablosu oluşturma: Azure portal
 
-Bu makalede, sanal WAN hub 'ına bir ağ sanal gereci (NVA) aracılığıyla bağlı olan VNET 'e bağlanan bir daldan (Şirket içi site) giden trafiğin nasıl yapılacağı gösterilir.
+Bu makalede, sanal WAN hub 'ına bir ağ sanal gereci (NVA) üzerinden bir bağlı bileşen sanal ağına (VNet) bağlı bir daldan (Şirket içi site) giden trafiğin nasıl yapılacağı gösterilmektedir.
 
 ![Sanal WAN diyagramı](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -29,15 +29,16 @@ Aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
     * NVA ağ arabirimine özel bir IP adresinin atanması gerekir.
 
-    * NVA sanal hub 'da dağıtılmadı. Ayrı bir sanal ağa dağıtılması gerekir.
+    * NVA sanal hub 'da dağıtılmadı. Ayrı bir sanal ağda dağıtılması gerekir.
 
-    *  NVA VNet 'e bağlı bir veya daha fazla sanal ağ olabilir. Bu makalede, NVA VNet 'e ' dolaylı bağlı bileşen VNet ' olarak başvurduk. VNet eşlemesi kullanılarak bu sanal ağlar NVA VNet 'e bağlanabilir. VNET eşleme bağlantıları, VNET 1, VNET 2 ve NVA VNET arasında yukarıdaki şekilde siyah oklara göre gösterilmiştir.
-*  2 sanal ağ oluşturdunuz. Bunlar, bağlı olan VNET 'ler olarak kullanılacaktır.
+    *  NVA sanal ağında bir veya birden çok sanal ağ bağlantısı olabilir. Bu makalede, NVA sanal ağına ' dolaylı bağlı bileşen VNet ' olarak değineceğiz. Bu sanal ağlar, VNet eşlemesi kullanılarak NVA VNet 'e bağlanabilir. VNet eşleme bağlantıları, VNet 1, VNet 2 ve NVA VNet arasında yukarıdaki şekilde siyah oklara göre gösterilmiştir.
+*  İki sanal ağ oluşturdunuz. Bunlar, bağlı olan VNET 'ler olarak kullanılacaktır.
 
-    * Bu alıştırmada, VNet 'in bağlı olduğu adres alanları şunlardır: VNet1:10.0.2.0/24 ve VNet2:10.0.3.0/24. VNet oluşturma hakkında bilgi için bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md).
+    * VNet bağlı bileşen adres alanları şunlardır: VNet1:10.0.2.0/24 ve VNet2:10.0.3.0/24. Sanal ağ oluşturma hakkında bilgilere ihtiyacınız varsa bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md).
 
     * VNET 'lerden hiçbirinde sanal ağ geçidi olmadığından emin olun.
-    * Bu yapılandırma için bu sanal ağlar bir ağ geçidi alt ağı gerektirmez.
+
+    * VNET 'ler bir ağ geçidi alt ağı gerektirmez.
 
 ## <a name="signin"></a>1. oturum aç
 
@@ -45,7 +46,7 @@ Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure he
 
 ## <a name="vwan"></a>2. sanal WAN oluşturun
 
-Sanal WAN oluşturun. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki değerleri kullanabilirsiniz:
+Sanal WAN oluşturun. Aşağıdaki örnek değerleri kullanın:
 
 * **Sanal WAN adı:** myvirtualwan
 * **Kaynak grubu:** testrg
@@ -55,7 +56,7 @@ Sanal WAN oluşturun. Bu alıştırmanın amaçları doğrultusunda, aşağıdak
 
 ## <a name="hub"></a>3. bir hub oluşturun
 
-Hub 'ı oluşturun. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki değerleri kullanabilirsiniz:
+Hub 'ı oluşturun. Aşağıdaki örnek değerleri kullanın:
 
 * **Konum:** Batı ABD
 * **Ad:** westushub
@@ -65,7 +66,7 @@ Hub 'ı oluşturun. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki 
 
 ## <a name="route"></a>4. bir hub yol tablosu oluşturun ve uygulayın
 
-Hub 'ı bir hub yol tablosuyla güncelleştirin. Bu alıştırmanın amaçları doğrultusunda, aşağıdaki değerleri kullanabilirsiniz:
+Hub 'ı bir hub yol tablosuyla güncelleştirin. Aşağıdaki örnek değerleri kullanın:
 
 * **Bağlı ağ VNET adres alanları:** (VNet1 ve VNet2) 10.0.2.0/24 ve 10.0.3.0/24
 * **DMZ NVA ağ arabirimi özel IP adresi:** 10.0.4.5
@@ -79,17 +80,17 @@ Hub 'ı bir hub yol tablosuyla güncelleştirin. Bu alıştırmanın amaçları 
 
 ## <a name="connections"></a>5. VNet bağlantıları oluşturma
 
-Her bir dolaylı bağlı bileşen VNet 'ten (VNet1 ve VNet2) hub 'a VNet bağlantısı oluşturun. Bu VNET bağlantıları, yukarıdaki şekilde mavi oklara göre gösterilmiştir. Ardından, NVA VNet 'ten hub 'a VNet bağlantısı oluşturun (şekildeki siyah ok tuşuna basın). 
+Her bir dolaylı bağlı bileşen VNet 'ten (VNet1 ve VNet2) hub 'a bir sanal ağ bağlantısı oluşturun. Bu sanal ağ bağlantıları, yukarıdaki şekilde mavi oklara göre gösterilmiştir. Ardından, NVA VNet 'ten hub 'a VNet bağlantısı oluşturun (şekildeki siyah ok tuşuna basın).
 
  Bu adım için aşağıdaki değerleri kullanabilirsiniz:
 
-| VNet adı| Bağlantı adı|
+| Sanal ağ adı| Bağlantı adı|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Bağlanmak istediğiniz her VNet için aşağıdaki yordamı tekrarlayın.
+Bağlanmak istediğiniz her sanal ağ için aşağıdaki yordamı tekrarlayın.
 
 1. Sanal WAN'ınızın sayfasında **Sanal ağ bağlantıları**'na tıklayın.
 2. Sanal ağ bağlantısı sayfasında **+Bağlantı ekle**'ye tıklayın.

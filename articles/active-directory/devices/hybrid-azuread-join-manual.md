@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377075"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672247"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -185,7 +185,7 @@ AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz ge
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 >Şirket içi Federasyon hizmetiniz olarak AD FS yoksa, WS-Trust 1,3 veya 2005 uç noktalarını desteklediklerinden ve bunların meta veri değişim dosyası (MEX) üzerinden yayımlandıklarından emin olmak için satıcınızdan yönergeleri izleyin.
@@ -549,7 +549,7 @@ Windows alt düzey cihazlarını kaydetmek için İndirme Merkezi’nden bir Win
 
 ## <a name="verify-joined-devices"></a>Katılmış cihazları doğrulama
 
-[Azure Active Directory PowerShell modülündeki](/powershell/azure/install-msonlinev1?view=azureadps-2.0) [Get-msoldevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet 'ini kullanarak kuruluşunuzda başarıyla katılmış cihazları kontrol edebilirsiniz.
+[Azure Active Directory PowerShell modülündeki](/powershell/azure/install-msonlinev1?view=azureadps-2.0) [Get-msoldevice](/powershell/msonline/v1/get-msoldevice) cmdlet 'ini kullanarak kuruluşunuzda başarıyla katılmış cihazları kontrol edebilirsiniz.
 
 Bu cmdlet öğesinin çıktısı, Azure AD ile kaydedilmiş ve katılmış cihazları gösterir. Tüm cihazları almak için **-All** parametresini kullanın ve ardından **Devicetrusttype** özelliğini kullanarak bunları filtreleyin. Etki alanına katılmış cihazlarda **etki alanına katılmış**bir değer vardır.
 

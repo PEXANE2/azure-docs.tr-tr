@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647003"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898411"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerini kullanma
 
@@ -38,6 +38,9 @@ DSVM 'yi oluşturduktan sonra, Azure Notebooks projesi panosunda **Çalıştır*
 
 Bir DSVM örneği seçtiğinizde Azure Notebooks, VM 'yi oluştururken kullanılan belirli makine kimlik bilgilerini isteyip istemeyebilir.
 
+> [!Important]
+> Kullanıcı adının jupi Terhub ile kullanılması için küçük harfli olması gerekir.
+
 Koşulların herhangi birine uyulmazsa DSVM 'ye bağlanabilirsiniz. Aşağı açılan listede, bir ad (listede göstermek için), sanal makinenin IP adresi ve bağlantı noktası (genellikle 8000, JupyterHub 'ın dinlediği varsayılan bağlantı noktası) ve VM kimlik bilgilerini isteyen **doğrudan işlem** seçeneğini belirleyin:
 
 ![Doğrudan Işlem seçeneği için sunucu bilgilerini toplamayı isteme](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ Birden çok kullanıcı bir DSVM 'yi paylaşıyorsa, her bir not defteri kullan�
 
 1. [Azure Portal](https://portal.azure.com)sanal makinenize gidin.
 1. Sol kenar boşluğunda **destek + sorun giderme** ' nin altında, **Parolayı Sıfırla**' yı seçin.
-1. Yeni bir Kullanıcı adı ve parola girip **Güncelleştir**' i seçin. (Mevcut kullanıcı adları etkilenmez.)
+1. Yeni bir **Kullanıcı adı**girin. Kullanıcı adının jupi Terhub ile kullanılması için küçük harfli olması gerekir. Bir parola girin. Ardından **Güncelleştir**' i seçin. (Mevcut kullanıcı adları etkilenmez.)
 1. Ek kullanıcılar için önceki adımı yineleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

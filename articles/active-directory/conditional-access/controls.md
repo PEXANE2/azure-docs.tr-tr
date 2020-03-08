@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620706"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671838"
 ---
 # <a name="custom-controls-preview"></a>Özel denetimler (Önizleme)
 
@@ -67,22 +67,10 @@ JSON verilerini kopyalayın ve ilgili metin kutusuna yapıştırın. Yaptığın
 
 Özel bir denetimi düzenlemek için geçerli denetimi silmeniz ve güncelleştirilmiş bilgilerle yeni bir denetim oluşturmanız gerekir.
 
-## <a name="session-controls"></a>Oturum denetimleri
-
-Oturum denetimleri, bulut uygulaması içinde sınırlı deneyimi etkinleştirir. Oturum denetimleri, bulut uygulamaları tarafından zorlanır ve Azure AD tarafından oturum hakkında uygulamaya sunulan ek bilgilere güvenir.
-
-![Denetim](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>Uygulama tarafından zorlanan kısıtlamaları kullan
-
-Bu denetimi, Azure AD 'nin seçili bulut uygulamalarına cihaz bilgilerini geçmesini gerektirmek için kullanabilirsiniz. Cihaz bilgileri, bulut uygulamalarının bir bağlantının uyumlu veya etki alanına katılmış bir cihazdan başlatılıp başlatılmayacağını bilmesini sağlar. Bu denetim yalnızca seçili bulut uygulamaları olarak SharePoint Online ve Exchange Online 'ı destekler. Seçildiğinde, bulut uygulaması, cihaz durumuna bağlı olarak, sınırlı veya tam bir deneyimle, cihaz bilgilerini Kullanıcı sağlamak için kullanır.
-
-Daha fazla bilgi için bkz:
-
-- [SharePoint Online ile sınırlı erişimi etkinleştirme](https://aka.ms/spolimitedaccessdocs)
-- [Exchange Online ile sınırlı erişimi etkinleştirme](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)bakın.
+- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+
+- [Yalnızca rapor modu](concept-conditional-access-report-only.md)
+
+- [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)

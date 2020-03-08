@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888791"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672269"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme 
 
@@ -356,7 +356,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
    - Çözüm: Bu hatayla birlikte cihazlarda TPM 'YI devre dışı bırakın. Windows 1809 TPM başarısızlıklarını otomatik olarak algılar ve karma Azure AD JOIN 'i TPM kullanmadan tamamlar.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Neden: TPM kilitlendi.
-   - Çözüm: geçici hata. Coolazaltma dönemi için bekleyin. Bir süre sonra birleştirme denemesi başarılı olmalıdır. [TPM temelleri](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) makalesinde daha fazla bilgi bulabilirsiniz
+   - Çözüm: geçici hata. Coolazaltma dönemi için bekleyin. Bir süre sonra birleştirme denemesi başarılı olmalıdır. [TPM temelleri](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) makalesinde daha fazla bilgi bulabilirsiniz
 
 ##### <a name="network-errors"></a>Ağ hataları
 
@@ -372,13 +372,13 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 ##### <a name="federated-join-server-errors"></a>Federasyon birleşimi sunucu hataları
 
-| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözünürlük |
+| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
 | --- | --- | --- | --- |
 | DirectoryError | İsteğiniz geçici olarak kısıtlandı. Lütfen 300 saniye sonra yeniden deneyin. | Beklenen hata. Büyük olasılıkla birden çok kayıt isteğinin hemen art arda getirilmesi nedeniyle. | Coolafter döneminden sonra katılmayı yeniden dene |
 
 ##### <a name="sync-join-server-errors"></a>Eşitleme sunucusu hatalarını Eşitle
 
-| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözünürlük |
+| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002: kiracı <UUID> bulunamadı. Kiracı için etkin abonelik yoksa bu hata oluşabilir. Abonelik yöneticinizle görüşün. | SCP nesnesindeki kiracı KIMLIĞI yanlış | SCP nesnesinin doğru Azure AD kiracı KIMLIĞI ve etkin abonelikler ile yapılandırıldığından ve kiracıda mevcut olduğundan emin olun. |
 | DirectoryError | Belirtilen KIMLIĞE göre cihaz nesnesi bulunamadı. | Eşitleme katılımı için beklenen hata. Cihaz nesnesi AD 'den Azure AD 'ye eşitlenmedi | Azure AD Connect eşitlemenin tamamlanmasını bekleyin ve eşitleme tamamlandıktan sonra bir sonraki JOIN denemesi sorunu çözecektir |

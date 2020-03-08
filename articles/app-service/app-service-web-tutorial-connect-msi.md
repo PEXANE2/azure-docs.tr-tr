@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330881"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897682"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -127,6 +127,9 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 
 - `MyDbConnection` adlı bağlantı dizesini bulun ve `connectionString` değerini `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`ile değiştirin. _\<Server-name >_ ve _\<db-name >_ sunucu adınızla ve veritabanı adınızla değiştirin.
 
+> [!NOTE]
+> Az önce kaydettiğiniz SqlAuthenticationProvider, daha önce yüklediğiniz AppAuthentication kitaplığının üzerine dayalıdır. Varsayılan olarak, sistem tarafından atanan bir kimlik kullanır. Kullanıcı tarafından atanan bir kimliğin yararlanmak için ek bir yapılandırma sağlamanız gerekir. Lütfen AppAuthentication kitaplığı için [bağlantı dizesi desteği](../key-vault/service-to-service-authentication.md#connection-string-support) 'ne bakın.
+
 Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı sunucusunu daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız.
 
 Uygulamayı yeniden çalıştırmak için `Ctrl+F5` yazın. Tarayıcınızdaki aynı CRUD uygulaması artık Azure AD kimlik doğrulamasını kullanarak doğrudan Azure SQL veritabanına bağlanıyor. Bu kurulum, Visual Studio 'dan veritabanı geçişleri çalıştırmanızı sağlar.
@@ -189,6 +192,9 @@ Uygulamayı yeniden çalıştırmak için `Ctrl+F5` yazın. Tarayıcınızdaki a
 
 Daha sonra, App Service uygulamanızı, sistem tarafından atanan yönetilen kimlik ile SQL veritabanına bağlanacak şekilde yapılandırırsınız.
 
+> [!NOTE]
+> Bu bölümdeki yönergeler sistem tarafından atanan bir kimlik için olduğunda, Kullanıcı tarafından atanan bir kimlik yalnızca kolayca kullanılabilir. Bunu yapmak için. istenen kullanıcı tarafından atanan kimliği atamak için `az webapp identity assign command` değiştirmeniz gerekir. Ardından, SQL kullanıcısını oluştururken, site adı yerine Kullanıcı tarafından atanan kimlik kaynağının adını kullandığınızdan emin olun.
+
 ### <a name="enable-managed-identity-on-app"></a>Uygulamada yönetilen kimliği etkinleştir
 
 Azure uygulamanızda bir yönetilen kimlik etkinleştirmek için Cloud Shell’de [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) komutunu kullanın. Aşağıdaki komutta *\<app-name >* ' ı değiştirin.
@@ -237,7 +243,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<Identity-name >* , Azure AD 'de yönetilen kimliğin adıdır. Sistem atanmış olduğundan, App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
+*\<Identity-name >* , Azure AD 'de yönetilen kimliğin adıdır. Kimlik sistem tarafından atanmışsa, ad App Service uygulamanızın adı ile her zaman aynıdır. Bir Azure AD grubuna izinler vermek için, bunun yerine grubun görünen adını kullanın (örneğin, *Myazuresqldbaccessgroup*).
 
 Cloud Shell istemine geri dönmek için `EXIT` yazın.
 

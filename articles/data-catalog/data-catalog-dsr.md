@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950272"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898159"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda desteklenen veri kaynakları
 
@@ -71,7 +71,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       </td>
     </tr>
     <tr>
-      <td>HDFS dizini</td>
+      <td>Bir dizin</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -79,7 +79,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>HDFS dosyası</td>
+      <td>Dosyası</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +124,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 ve üzeri sürümler.</td>
     </tr>
     <tr>
       <td>Oracle Database görünümü</td>
@@ -132,7 +132,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 ve üzeri sürümler.</td>
     </tr>
     <tr>
       <td>Diğer (genel varlık)</td>
@@ -195,7 +195,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Browser</td>
+      <td>Tarayıcı</td>
       <td>Yalnızca yerel mod sunucuları. SharePoint modu desteklenmez. Yalnızca SQL Server 2008 ve sonraki sürümler</td>
     </tr>
     <tr>

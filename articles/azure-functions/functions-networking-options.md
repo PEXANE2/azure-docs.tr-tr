@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370343"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892721"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -34,7 +34,7 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 |[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌Hayır|✅Evet (bölgesel)|✅Evet (bölgesel ve ağ geçidi)|Evet ✅|
 |[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌Hayır| Evet ✅ |Evet ✅|Evet ✅|
 |[Karma bağlantılar](#hybrid-connections) (yalnızca Windows)|❌Hayır|Evet ✅|Evet ✅|Evet ✅|
-|[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌Hayır| ❌Hayır|❌Hayır|Evet ✅|
+|[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌Hayır| Evet ✅|Evet ✅|Evet ✅|
 
 ## <a name="inbound-ip-restrictions"></a>Gelen IP kısıtlamaları
 
@@ -57,65 +57,34 @@ Daha fazla bilgi için bkz. [Azure App Service statik erişim kısıtlamaları](
 
 ## <a name="virtual-network-integration"></a>Sanal ağ tümleştirmesi
 
-Sanal Ağ tümleştirmesi, işlev uygulamanızın bir sanal ağ içindeki kaynaklara erişmesine olanak sağlar. Bu özellik hem Premium planda hem de App Service planında kullanılabilir. Uygulamanız bir App Service Ortamı ise, zaten bir sanal ağda bulunur ve sanal ağ tümleştirmesinin aynı sanal ağdaki kaynaklara ulaşması gerekmez.
+Sanal Ağ tümleştirmesi, işlev uygulamanızın bir sanal ağ içindeki kaynaklara erişmesine olanak sağlar. Azure Işlevleri iki tür sanal ağ tümleştirmesini destekler:
 
-Sanal ağ tümleştirmesini, uygulamalardan sanal ağınızda çalışan veritabanlarına ve Web hizmetlerine erişimi etkinleştirmek için kullanabilirsiniz. Sanal ağ tümleştirmesiyle, VM 'inizdeki uygulamalar için genel bir uç nokta kullanıma almanız gerekmez. Bunun yerine internet 'e ait olmayan özel yönlendirilebilen adresler kullanabilirsiniz.
-
-Sanal ağ tümleştirmesinin iki biçimi vardır:
-
-+ **Bölgesel sanal ağ tümleştirmesi (Önizleme)** : aynı bölgedeki sanal ağlarla tümleştirmeyi mümkün bir şekilde sunar. Bu tür bir tümleştirme, aynı bölgedeki bir sanal ağ için bir alt ağ gerektirir. Bu özellik hala önizlemededir, ancak aşağıdaki sorun/çözüm tablosundan sonra açıklanan uyarılar ile Windows üzerinde çalışan işlev uygulamaları için desteklenir.
-+ **Ağ geçidi gereken sanal ağ tümleştirmesi**: uzak bölgelerdeki sanal ağlarla veya klasik sanal ağlarla tümleştirmeyi mümkün. Bu tür bir tümleştirme, sanal ağ geçidinin VNet 'iniz üzerinde dağıtılmasını gerektirir. Bu, yalnızca Windows üzerinde çalışan işlev uygulamaları için desteklenen Noktadan siteye VPN tabanlı bir özelliktir.
-
-Bir uygulama aynı anda yalnızca bir sanal ağ tümleştirme özelliğinin türünü kullanabilir. Her ikisi de birçok senaryo için yararlı olsa da, aşağıdaki tablo her birinin nerede kullanılması gerektiğini göstermektedir:
-
-| Sorun  | Çözüm |
-|----------|----------|
-| Aynı bölgedeki bir RFC 1918 adresine (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ulaşmak ister | Bölgesel sanal ağ tümleştirmesi |
-| Klasik bir sanal ağdaki veya başka bir bölgedeki sanal ağdaki kaynaklara ulaşmak ister | Ağ Geçidi gereken sanal ağ tümleştirmesi |
-| Azure ExpressRoute üzerinden RFC 1918 uç noktalarına erişmek ister misiniz? | Bölgesel sanal ağ tümleştirmesi |
-| Hizmet uç noktaları genelinde kaynaklara ulaşmak ister misiniz? | Bölgesel sanal ağ tümleştirmesi |
-
-Her iki özellik de ExpressRoute üzerinden RFC 1918 olmayan adreslere ulaşmanıza imkan tanır. Bunu yapmak için şu anda bir App Service Ortamı kullanmanız gerekir.
-
-Bölgesel sanal ağ tümleştirmesinin kullanılması, Sanal ağınızı şirket içi uç noktalara bağlama veya hizmet uç noktalarını yapılandırma. Bu, ayrı bir ağ yapılandırması. Bölgesel sanal ağ tümleştirmesi yalnızca uygulamanızın bu bağlantı türleri arasında çağrı yapmasına olanak sağlar.
-
-Sanal Ağ tümleştirmesi, kullanılan sürümden bağımsız olarak, işlev uygulamanızın sanal ağınızdaki kaynaklara erişmesini sağlar, ancak sanal ağdan işlev uygulamanıza özel site erişimi vermez. Özel site erişimi, uygulamanızı yalnızca bir Azure sanal ağı gibi özel bir ağdan erişilebilir hale getirir. Sanal Ağ tümleştirmesi yalnızca uygulamanızdan sanal ağınıza giden çağrılar yapmak içindir.
-
-Sanal ağ tümleştirme özelliği:
-
-* Standart, Premium veya PremiumV2 App Service planı gerektirir
-* TCP ve UDP 'yi destekler
-* App Service uygulamalar ve işlev uygulamalarıyla çalışır
-
-Sanal ağ tümleştirmesinin desteklemediği bazı şeyler vardır, örneğin:
-
-* Sürücü takma
-* Active Directory tümleştirmesi
-* Tanımlaya
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 Azure Işlevlerinde sanal ağ tümleştirmesi App Service Web Apps ile paylaşılan altyapıyı kullanır. İki tür sanal ağ tümleştirmesi hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Bölgesel sanal ağ tümleştirmesi](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Ağ Geçidi gereken sanal ağ tümleştirmesi](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-Sanal ağ tümleştirmesini kullanma hakkında daha fazla bilgi için bkz. [bir işlev uygulamasını bir Azure sanal ağı Ile tümleştirme](functions-create-vnet.md).
+Sanal ağ tümleştirmesini ayarlamayı öğrenmek için bkz. [bir işlev uygulamasını bir Azure sanal ağı Ile tümleştirme](functions-create-vnet.md).
+
+## <a name="regional-virtual-network-integration"></a>Bölgesel sanal ağ tümleştirmesi
+
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>Hizmet uç noktası güvenliği sağlanmış kaynaklara bağlanılıyor
-
-> [!NOTE]
-> Şimdilik, aşağı akış kaynağında erişim kısıtlamalarını yapılandırdıktan sonra yeni hizmet uç noktalarının işlev uygulamanız için kullanılabilir hale gelmesi 12 saate kadar sürebilir. Bu süre boyunca, kaynak uygulamanız için tamamen kullanılamaz olur.
 
 Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kullanarak bir dizi Azure hizmetini bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, kaynak erişimi için işlev uygulamanızı bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm planlarda desteklenir.
 
 [Sanal ağ hizmeti uç noktaları hakkında daha fazla bilgi edinin.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla kısıtlama
+## <a name="restricting-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla kısıtlama
 
 Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Şu anda bu hesapta herhangi bir sanal ağ kısıtlaması kullanamazsınız. İşlev uygulamanız için kullandığınız depolama hesabında bir sanal ağ hizmeti uç noktası yapılandırırsanız, bu, uygulamanızı bozacaktır.
 
 [Depolama hesabı gereksinimleri hakkında daha fazla bilgi edinin.](./functions-create-function-app-portal.md#storage-account-requirements)
 
-### <a name="using-key-vault-references"></a>Key Vault başvurularını kullanma 
+## <a name="using-key-vault-references"></a>Key Vault başvurularını kullanma 
 
 Key Vault başvurular, Azure Işlevleri uygulamanızda herhangi bir kod değişikliğine gerek kalmadan Azure Key Vault gizli dizileri kullanmanıza olanak sağlar. Azure Key Vault, erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
 
@@ -171,9 +140,13 @@ Daha fazla bilgi edinmek için [Karma Bağlantılar App Service belgelerine](../
 
 ## <a name="outbound-ip-restrictions"></a>Giden IP kısıtlamaları
 
-Giden IP kısıtlamaları yalnızca bir App Service Ortamı dağıtılan işlevler için kullanılabilir. App Service Ortamı dağıtıldığı sanal ağın giden kısıtlamalarını yapılandırabilirsiniz.
+Giden IP kısıtlamaları bir Premium planda, App Service planında veya App Service Ortamı kullanılabilir. App Service Ortamı dağıtıldığı sanal ağın giden kısıtlamalarını yapılandırabilirsiniz.
 
-Bir Premium planda veya bir sanal ağ ile App Service planında bir işlev uygulamasını tümleştirdiğinizde, uygulama yine de internet 'e giden çağrılar yapabilir.
+Bir Premium planda veya bir sanal ağla App Service bir planda bir işlev uygulamasını tümleştirdiğinizde, uygulama varsayılan olarak internet 'e giden çağrılar yapmaya devam edebilir. `WEBSITE_VNET_ROUTE_ALL=1`bir uygulama ayarı ekleyerek, trafiği kısıtlamak için ağ güvenlik grubu kurallarının kullanılabileceği sanal ağınıza tüm giden trafiği gönderilmesini zorlarsınız.
+
+## <a name="troubleshooting"></a>Sorun giderme 
+
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

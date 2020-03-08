@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561964"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672653"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Güvenli, Azure tarafından yönetilen iş istasyonlarını anlayın
 
@@ -81,18 +81,18 @@ Kapsama stratejileri, bir saldırganın hassas varlıklara erişim sağlamasın�
 
 Güvenli bir iş istasyonu için temel, ' güven kökü ' adlı güvenilir bir iş istasyonu kullandığınız bir tedarik zinciri çözümüdür. Güven donanımının kökü seçiminde göz önünde bulundurmanız gereken teknoloji, modern dizüstü bilgisayarlarda bulunan aşağıdaki teknolojileri içermelidir: 
 
-* [Güvenilir Platform Modülü (TPM) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [BitLocker Sürücü Şifrelemesi](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [UEFı güvenli önyükleme](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [Windows Update aracılığıyla dağıtılan sürücüler ve bellenim](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [Sanallaştırma ve HVCı etkin](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [Sürücüler ve uygulamalar HVCı-Ready](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [DMA g/ç koruması](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [System Guard](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [Modern bekleme](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [Güvenilir Platform Modülü (TPM) 2,0](/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker Sürücü Şifrelemesi](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFı güvenli önyükleme](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Windows Update aracılığıyla dağıtılan sürücüler ve bellenim](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Sanallaştırma ve HVCı etkin](/windows-hardware/design/device-experiences/oem-vbs)
+* [Sürücüler ve uygulamalar HVCı-Ready](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA g/ç koruması](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [System Guard](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Modern bekleme](/windows-hardware/design/device-experiences/modern-standby)
 
-Bu çözüm için, güven kökü, modern teknik gereksinimleri karşılayan donanımla [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) teknolojisi kullanılarak dağıtılır. Bir iş istasyonunun güvenliğini sağlamak için, Autopilot Microsoft OEM ile iyileştirilmiş Windows 10 cihazlarından yararlanmanızı sağlar. Bu cihazlar, üreticiden bilinen iyi bir durumda gelir. Autopilot, güvenli olmayabilecek bir cihazı yeniden Imaging yerine bir Windows cihazını "iş için kullanılabilir" durumuna dönüştürebilir. Ayarlar ve ilkeler uygular, uygulamalar yüklenir ve hatta Windows 10 sürümünü değiştirir. Örneğin, Autopilot, bir cihazın Windows yüklemesini Windows 10 Pro 'dan Windows 10 Enterprise 'a değiştirerek gelişmiş özellikleri kullanabilir.
+Bu çözüm için, güven kökü, modern teknik gereksinimleri karşılayan donanımla [Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) teknolojisi kullanılarak dağıtılır. Bir iş istasyonunun güvenliğini sağlamak için, Autopilot Microsoft OEM ile iyileştirilmiş Windows 10 cihazlarından yararlanmanızı sağlar. Bu cihazlar, üreticiden bilinen iyi bir durumda gelir. Autopilot, güvenli olmayabilecek bir cihazı yeniden Imaging yerine bir Windows cihazını "iş için kullanılabilir" durumuna dönüştürebilir. Ayarlar ve ilkeler uygular, uygulamalar yüklenir ve hatta Windows 10 sürümünü değiştirir. Örneğin, Autopilot, bir cihazın Windows yüklemesini Windows 10 Pro 'dan Windows 10 Enterprise 'a değiştirerek gelişmiş özellikleri kullanabilir.
 
 ![Güvenli iş istasyonu düzeyleri](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ Güvenli iş istasyonu seviyelerini ![](./media/concept-azure-managed-workstatio
 
 * **Gelişmiş güvenlik** – bu giriş düzeyi, korunan çözüm ev kullanıcıları, küçük işletme kullanıcıları ve genel geliştiriciler için uygundur.
 
-   Gelişmiş iş istasyonu, düşük Güvenlik profilinin güvenliğini artırmanın ilke tabanlı bir yoludur. Ayrıca, e-posta ve Web 'e göz atma gibi üretkenlik araçlarını kullanırken müşteri verileriyle çalışmak için güvenli bir yol sunar. Kullanıcı davranışı ve profil kullanımı için gelişmiş bir iş istasyonunu izlemek üzere denetim ilkelerini ve Intune 'U kullanabilirsiniz. Geliştirilmiş iş istasyonu profilini Windows10 (1809) betiğine dağıtırsınız ve gelişmiş [tehdit koruması (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)kullanan gelişmiş kötü amaçlı yazılımdan koruma özelliğinden yararlanır.
+   Gelişmiş iş istasyonu, düşük Güvenlik profilinin güvenliğini artırmanın ilke tabanlı bir yoludur. Ayrıca, e-posta ve Web 'e göz atma gibi üretkenlik araçlarını kullanırken müşteri verileriyle çalışmak için güvenli bir yol sunar. Kullanıcı davranışı ve profil kullanımı için gelişmiş bir iş istasyonunu izlemek üzere denetim ilkelerini ve Intune 'U kullanabilirsiniz. Geliştirilmiş iş istasyonu profilini Windows10 (1809) betiğine dağıtırsınız ve gelişmiş [tehdit koruması (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)kullanan gelişmiş kötü amaçlı yazılımdan koruma özelliğinden yararlanır.
 
 * **Yüksek güvenlik** : bir iş istasyonunun saldırı yüzeyini azaltmanın en etkili yolu, iş istasyonunun kendini yönetme özelliğini kaldırmaktır. Yerel yönetim haklarının kaldırılması güvenliği artıran bir adımdır, ancak yanlış uygulanırsa üretkenliği etkileyebilir. Yüksek güvenlik profili, gelişmiş güvenlik profilinde önemli bir değişiklik ile oluşturulur: yerel yöneticinin kaldırılması. Bu profil, yüksek profilli kullanıcılar için tasarlanmıştır: Yöneticiler, bordro ve hassas veri kullanıcıları, hizmet ve süreçlerle ilgili onaylayanlar.
 
@@ -121,8 +121,8 @@ Güvenli iş istasyonu seviyelerini ![](./media/concept-azure-managed-workstatio
 
 * **Yalıtılmış** – bu özel, çevrimdışı senaryo, tayfın aşırı sonunu temsil eder. Bu durum için yükleme betikleri sağlanmaz. Desteklenmeyen veya yüklenmemiş eski bir işletim sistemi gerektiren, iş açısından kritik bir işlevi yönetmeniz gerekebilir. Örneğin, yüksek değerli bir üretim satırı veya yaşam destek sistemi. Güvenlik kritik ve bulut hizmetleri kullanılamadığından, bu bilgisayarları el ile veya Gelişmiş Güvenlik yönetici ortamı (ESAE) gibi yalıtılmış bir Active Directory orman mimarisiyle yönetebilir ve güncelleştirebilirsiniz. Bu koşullarda, temel Intune ve ATP sistem durumu denetimleri hariç tüm erişimi kaldırmayı göz önünde bulundurun.
 
-   * [Intune ağ iletişimleri gereksinimi](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [ATP ağ iletişimleri gereksinimi](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Intune ağ iletişimleri gereksinimi](/intune/network-bandwidth-use)
+   * [ATP ağ iletişimleri gereksinimi](/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

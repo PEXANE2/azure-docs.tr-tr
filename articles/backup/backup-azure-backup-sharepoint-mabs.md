@@ -3,12 +3,12 @@ title: MABS ile bir SharePoint grubunu Azure 'a yedekleme
 description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: ba9d79270da839cf99574322d68ccdba27fe2d93
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584260"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673133"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -127,7 +127,7 @@ Daha önce açıklandığı gibi MABS 'ları ve SharePoint grubunu yapılandırd
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS, en son kullanılabilir disk yedekleme noktasından Azure 'a en fazla iki günlük yedek sağlar. Azure Backup Ayrıca, [ağ azaltma Azure Backup](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)kullanarak en yoğun ve yoğun saatlerde yedeklemeler IÇIN kullanılabilen WAN bant genişliği miktarını denetleyebilir.
+    > MABS, en son kullanılabilir disk yedekleme noktasından Azure 'a en fazla iki günlük yedek sağlar. Azure Backup Ayrıca, [ağ azaltma Azure Backup](backup-windows-with-mars-agent.md#enable-network-throttling)kullanarak en yoğun ve yoğun saatlerde yedeklemeler IÇIN kullanılabilen WAN bant genişliği miktarını denetleyebilir.
     >
     >
 11. Seçtiğiniz yedekleme zamanlamalarına bağlı olarak, **çevrimiçi saklama Ilkesini belirtin** sayfasında günlük, haftalık, aylık ve yıllık yedekleme noktaları için bekletme ilkesini seçin.

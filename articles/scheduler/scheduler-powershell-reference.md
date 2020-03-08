@@ -1,29 +1,30 @@
 ---
-title: PowerShell cmdlet 'leri başvurusu-Azure Zamanlayıcı
+title: PowerShell cmdlet 'leri başvurusu
 description: Azure Scheduler için PowerShell cmdlet 'leri hakkında bilgi edinin
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 1ad1d6b9f59fa51b9e27fe5b70ce4e2a5d36f3ad
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300888"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898491"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure Scheduler için PowerShell cmdlet 'leri başvurusu
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa sürede [Azure Logic Apps geçirin](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa sürede [Azure Logic Apps geçirin](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Zamanlayıcı artık Azure portal kullanılamıyor, ancak iş ve iş koleksiyonlarınızı yönetebilmeniz için [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet 'leri](scheduler-powershell-reference.md) Şu anda kullanılabilir durumda kalır.
 
 Zamanlayıcı işleri ve iş koleksiyonları oluşturmak ve yönetmek için betikler yazmak üzere PowerShell cmdlet 'lerini kullanabilirsiniz. Bu makalede, Azure Scheduler için başvuru makaleleriyle bağlantılı ana PowerShell cmdlet 'leri listelenir. Azure aboneliğiniz için Azure PowerShell yüklemek için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). [Azure Resource Manager cmdlet 'leri](/powershell/azure/overview)hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanma](../powershell-azure-resource-manager.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 | Cmdlet | Açıklama |
 |--------|-------------|
@@ -48,15 +49,14 @@ Zamanlayıcı işleri ve iş koleksiyonları oluşturmak ve yönetmek için beti
 
 Daha fazla ayrıntı için şu cmdlet 'lerden herhangi birini çalıştırabilirsiniz: 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Scheduler nedir?](scheduler-intro.md)
-* [Kavramlar, terminoloji ve varlık hiyerarşisi](scheduler-concepts-terms.md)
-* [İlk işinizi oluşturma ve zamanlama-Azure portal](scheduler-get-started-portal.md)
-* [Azure Scheduler REST API başvurusu](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler kavramları, terminolojisi ve varlık hiyerarşisi](scheduler-concepts-terms.md)
+* [Azure Scheduler sınırları, varsayılanları ve hata kodları](scheduler-limits-defaults-errors.md)
+* [Azure Scheduler REST API başvurusu](/rest/api/scheduler)

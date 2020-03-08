@@ -3,12 +3,12 @@ title: Azure Data Box kullanarak çevrimdışı yedekleme
 description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı olan büyük ilk yedekleme verilerini temel alarak Azure Data Box nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196526"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672960"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
 
@@ -124,7 +124,7 @@ MARS Aracısı 'nı kullanarak çevrimdışı yedeklemeyi tetiklemeniz için, MA
 
 1. MARS aracısının önceki tüm yüklemelerini kaldırdığınızdan emin olun.
 1. [Bu Web sitesinden](https://aka.ms/azurebackup_agent)en son Mars aracısını indirin.
-1. *Marsagentınstaller. exe*' yi çalıştırın ve *yalnızca* yedeklemelerin depolanmasını istediğiniz kurtarma hizmetleri kasasında [aracıyı yüklemek ve kaydetmek](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) için yalnızca adımları uygulayın.
+1. *Marsagentınstaller. exe*' yi çalıştırın ve *yalnızca* yedeklemelerin depolanmasını istediğiniz kurtarma hizmetleri kasasında [aracıyı yüklemek ve kaydetmek](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) için yalnızca adımları uygulayın.
 
    > [!NOTE]
    > Kurtarma Hizmetleri Kasası, Azure Data Box işle aynı abonelikte olmalıdır.
@@ -307,7 +307,7 @@ Başka hiçbir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamı�
     >[!NOTE]
     > Azure kullanıcı KIMLIĞINI almak için şu eylemlerden birini gerçekleştirin:
     >
-    >* Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` komutunu çalıştırın.
+    >* Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` komutunu çalıştırın.
     > * *Geçerli Kullanıcı*adı ile *\ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* kayıt defteri yolu sayfasına gidin.
 
 6. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, adım 2 ' de verdiğiniz sertifikanın parmak izini girin. **Tamam**’ı seçin.

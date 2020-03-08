@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291507"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675600"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
 [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) , Azure 'un sağladığı yüksek kullanılabilirliğe sahip özelliklerden biridir. Kullanılabilirlik Alanları kullanmak, Azure üzerinde SAP iş yüklerinin genel kullanılabilirliğini geliştirir. Bu özellik bazı [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)zaten kullanılabilir. Gelecekte, daha fazla bölgede kullanıma sunulacaktır.
@@ -118,6 +118,9 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
 - Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
 - Kritik iş süreçlerine yönelik çalışma süresi tutarlılığı elde etmek için, SAP Batch sunucu grupları, SAP oturum açma grupları veya RFC grupları ' nı kullanarak, belirli toplu işleri ve kullanıcıları, etkin DBMS örneğiyle bölge içinde olan uygulama örneklerine yönlendirmeyi deneyebilirsiniz. Ancak, bir yük devretme durumunda, bu grupları etkin DB VM 'si ile bölgedeki VM 'lerde çalışan örneklere el ile taşımanız gerekir.  
 - Her bölgede etkin olmayan iletişim kutusu örnekleri dağıtmak isteyebilirsiniz. Bu, uygulama örneklerinizin parçası tarafından kullanılan bir bölgenin hizmet dışı olması durumunda eski kaynak kapasitesine anında geri dönüş sağlamak için kullanılır.
+
+> [!IMPORTANT]
+> Bu etkin/etkin senaryoda, bant genişliği için ek ücretler, Microsoft tarafından 04/01/2020 adresinden duyurulur. Belge [bant genişliği fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/bandwidth/)kontrol edin. SAP uygulama katmanı ve SAP DBMS katmanı arasındaki veri aktarımı oldukça yoğun. Bu nedenle, etkin/etkin senaryo maliyetlerde tam olarak bir bit olarak katkıda bulunabilir. Maliyetleri tam olarak almak için bu makaleyi denetlemeye devam edin 
 
 
 ## <a name="activepassive-deployment"></a>Etkin/Pasif dağıtım

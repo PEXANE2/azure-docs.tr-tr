@@ -4,12 +4,12 @@ description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617584"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673124"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -76,7 +76,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 | İşlem | Hata Ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
 | Aracıları korumalı sunuculara iletme | Sunucu için belirtilen kimlik bilgileri geçersiz. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın**: <br> Koruma aracısını üretim sunucusuna [Bu makalede](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)belirtilen şekilde el ile yüklemeyi deneyin.|
-| Azure Backup Aracısı Azure Backup hizmetine bağlanamadı (KIMLIK: 100050) | Azure Backup Aracısı Azure Backup hizmetine bağlanamadı. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın**: <br>1. yükseltilmiş bir komut isteminde şu komutu çalıştırın: **PsExec-i-s "C:\Program Files\Explorer\iexplore.exe**. Bu, Internet Explorer penceresini açar. <br/> 2. **araçlar** > **Internet seçenekleri** > **bağlantı** > **LAN ayarları**' na gidin. <br/> 3. bir proxy sunucu kullanacak şekilde ayarları değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<br/> 4. makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu [URL 'ler](backup-configure-vault.md#verify-internet-access) ve [IP adreslerine](backup-configure-vault.md#verify-internet-access)izin verildiğinden emin olun.|
+| Azure Backup Aracısı Azure Backup hizmetine bağlanamadı (KIMLIK: 100050) | Azure Backup Aracısı Azure Backup hizmetine bağlanamadı. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın**: <br>1. yükseltilmiş bir komut isteminde şu komutu çalıştırın: **PsExec-i-s "C:\Program Files\Explorer\iexplore.exe**. Bu, Internet Explorer penceresini açar. <br/> 2. **araçlar** > **Internet seçenekleri** > **bağlantı** > **LAN ayarları**' na gidin. <br/> 3. bir proxy sunucu kullanacak şekilde ayarları değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<br/> 4. makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu [URL 'ler](install-mars-agent.md#verify-internet-access) ve [IP adreslerine](install-mars-agent.md#verify-internet-access)izin verildiğinden emin olun.|
 | Aracı yüklemesi Azure Backup başarısız oldu | Microsoft Azure Kurtarma Hizmetleri yüklemesi başarısız oldu. Microsoft Azure Kurtarma Hizmetleri yüklemesi tarafından sisteme yapılan tüm değişiklikler geri alındı. (KIMLIK: 4024) | Azure aracısını el ile yükleyebilirsiniz.
 
 ## <a name="configuring-protection-group"></a>Koruma grubu yapılandırılıyor

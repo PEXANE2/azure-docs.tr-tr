@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396371"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669353"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Başvuru-iletişim protokolü seçin
 
@@ -48,7 +48,7 @@ Cihaz tarafı iletişimleri için protokollerinizi seçerken aşağıdaki noktal
 * **Yük boyutu**. MQTT ve AMQP ikili protokollerdir ve bu da HTTPS 'den daha küçük bir yük yükleri oluşmasına neden olur.
 
 > [!WARNING]
-> HTTPS kullanılırken her bir cihaz, her 25 dakikada bir ve daha fazla buluttan cihaza iletileri yoklamalıdır. Ancak, geliştirme sırasında her 25 dakikada bir daha sık yoklama kabul edilebilir.
+> HTTPS kullanılırken her cihaz, her 25 dakikada bir bulut-cihaz iletilerini birden çok kez yoklamalıdır. Geliştirme aşamasında, her cihaz istenirse daha sık yoklama yapabilir.
 
 ## <a name="port-numbers"></a>Bağlantı noktası numaraları
 

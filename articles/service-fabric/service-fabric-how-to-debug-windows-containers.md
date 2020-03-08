@@ -5,17 +5,17 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464577"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899340"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Nasıl yapılır: Visual Studio 2019 kullanarak Azure Service Fabric Windows kapsayıcılarında hata ayıklama
 
 Visual Studio 2019 ile kapsayıcılardaki .NET uygulamalarında Service Fabric Hizmetleri olarak hata ayıklaması yapabilirsiniz. Bu makalede, ortamınızı nasıl yapılandıracağınız ve ardından yerel bir Service Fabric kümesinde çalışan bir kapsayıcıda bir .NET uygulamasında hata ayıklamanın nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Windows 10 ' da Windows 10 ' u Windows [kapsayıcıları çalıştıracak şekilde yapılandırmak](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) için bu hızlı başlangıcı izleyin
 * Windows Server 2016 ' de, Windows 2016 ' yi [Windows kapsayıcıları çalıştıracak şekilde yapılandırmak](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) için bu hızlı başlangıcı izleyin
@@ -61,7 +61,7 @@ Service Fabric ve olası çözünürlüklere yönelik hata ayıklama kapsayıcı
 
 ## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>Service Fabric Docker kapsayıcılarında çalışan bir .NET uygulamasında hata ayıklama
 
-1. Visual Studio'yu yönetici olarak çalıştırın.
+1. Visual Studio 'Yu yönetici olarak çalıştırın.
 
 1. Mevcut bir .NET uygulamasını açın veya yeni bir tane oluşturun.
 

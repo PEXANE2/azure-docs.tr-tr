@@ -1,24 +1,24 @@
 ---
-title: Şirket içi parola koruması hakkında SSS-Azure Active Directory
-description: Şirket içi Azure AD parola koruması hakkında SSS
+title: Şirket içi Azure AD parola koruması hakkında SSS
+description: Şirket içi Active Directory Domain Services ortamda Azure AD parola koruması hakkında sık sorulan soruları gözden geçirin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b4c941272906e7ff5a017c78c8bc7c5084a667
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abef6e52e37cfa2faeb426bc59bb0de5a52a6658
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847839"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671674"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
+# <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD parola koruması şirket içi sık sorulan sorular
 
 Bu bölümde, Azure AD parola koruması hakkında sık sorulan birçok soruya yanıtlar verilmektedir.
 

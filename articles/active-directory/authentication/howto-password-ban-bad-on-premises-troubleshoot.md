@@ -1,6 +1,6 @@
 ---
-title: Parola koruması sorunlarını giderme-Azure Active Directory
-description: Azure AD parola koruması genel sorunlarını anlama
+title: Şirket içi Azure AD parola koruması sorunlarını giderme
+description: Şirket içi Active Directory Domain Services ortamı için Azure AD parola koruması sorunlarını giderme hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377998"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671695"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD parola koruması sorunlarını giderme
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Sorun giderme: şirket içi Azure AD parola koruması
 
 Azure AD parola koruması 'nın dağıtımı sonrasında, sorun giderme gerekebilir. Bu makale, bazı yaygın sorun giderme adımlarını anlamanıza yardımcı olmak için ayrıntılara gider.
 
@@ -82,9 +82,9 @@ Bu sorunun çeşitli nedenleri olabilir.
 
 1. DC aracılarınız bir ilkeyi indiremez veya mevcut ilkelerin şifresini çözemiyor. Yukarıdaki konularda olası nedenleri kontrol edin.
 
-1. Parola ilkesi zorla modu hala denetim olarak ayarlanmıştır. Bu yapılandırma etkin ise, Azure AD parola koruma portalı 'nı kullanmaya zorlamak için yeniden yapılandırın. Bkz. [parola korumasını etkinleştirme](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Parola ilkesi zorla modu hala denetim olarak ayarlanmıştır. Bu yapılandırma etkin ise, Azure AD parola koruma portalı 'nı kullanmaya zorlamak için yeniden yapılandırın. Daha fazla bilgi için bkz. [Işlem modları](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. Parola ilkesi devre dışı bırakıldı. Bu yapılandırma etkin ise, Azure AD parola koruma portalı 'nı kullanarak etkin olarak yeniden yapılandırın. Bkz. [parola korumasını etkinleştirme](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Parola ilkesi devre dışı bırakıldı. Bu yapılandırma etkin ise, Azure AD parola koruma portalı 'nı kullanarak etkin olarak yeniden yapılandırın. Daha fazla bilgi için bkz. [Işlem modları](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 1. Etki alanındaki tüm etki alanı denetleyicilerine DC Aracısı yazılımını yüklememedi. Bu durumda, uzak Windows istemcilerinin parola değiştirme işlemi sırasında belirli bir etki alanı denetleyicisini hedeflemesini sağlamak zordur. DC Aracısı yazılımının yüklü olduğu belirli bir DC 'yi başarıyla hedeflediğinizi düşünüyorsanız, DC Aracısı Yönetici olay günlüğü ' ne iki kez göz ayırarak doğrulayabilirsiniz: sonuca bakılmaksızın, parolanın sonucunu belgelemek için en az bir olay olacaktır doğrulamasına. Parolası değiştirilen Kullanıcı için bir olay yoksa, parola değişikliği muhtemelen farklı bir etki alanı denetleyicisi tarafından işlenir.
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Azure AD parola koruma proxy yazılımı, hiçbir sürümde zaman sınırlı değildir. Microsoft, hem DC 'nin hem de ara sunucu aracılarının yayımlandıklarında en son sürümlere yükseltilmesini öneriyor. `Get-AzureADPasswordProtectionProxy` cmdlet 'i, DC aracıları için yukarıdaki örneğe benzer şekilde yükseltmeler gerektiren proxy aracılarını bulmak için kullanılabilir.
 
-Belirli yükseltme yordamları hakkında daha fazla bilgi için [DC aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) ve [proxy aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) bölümüne bakın.
+Belirli yükseltme yordamları hakkında daha fazla bilgi için [, DC aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) ve [proxy hizmetini yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) bölümüne bakın.
 
 ## <a name="emergency-remediation"></a>Acil durum Düzeltme
 
 DC Aracısı hizmetinin soruna neden olduğu bir durum oluşursa, DC Aracısı hizmeti hemen kapatılabilir. DC aracısı parola filtresi dll 'si hala çalışır durumda olmayan hizmeti çağırmaya çalışır ve uyarı olaylarını günlüğe kaydeder (10012, 10013), ancak tüm gelen parolalar bu süre içinde kabul edilir. Daha sonra DC Aracısı hizmeti, gerektiğinde "devre dışı" başlatma türü ile Windows hizmet denetimi Yöneticisi aracılığıyla da yapılandırılabilir.
 
-Başka bir düzeltme ölçüsü, etkinleştirme modunu Azure AD parola koruma portalında Hayır olarak ayarlamak olacaktır. Güncelleştirilmiş ilke indirildikten sonra, her DC Aracısı hizmeti, tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Daha fazla bilgi için bkz. [zorla modu](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Başka bir düzeltme ölçüsü, etkinleştirme modunu Azure AD parola koruma portalında Hayır olarak ayarlamak olacaktır. Güncelleştirilmiş ilke indirildikten sonra, her DC Aracısı hizmeti, tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Daha fazla bilgi için bkz. [Işlem modları](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 ## <a name="removal"></a>Kaldırılmasını
 

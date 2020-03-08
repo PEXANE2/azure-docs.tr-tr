@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186079"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671854"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma (Önizleme)
 
@@ -48,8 +48,8 @@ Belirli bir oturum açma için yalnızca rapor ilkesinin sonucunu görüntüleme
 
 Koşullu erişim ilkelerinin yeni koşullu erişim öngörüleri çalışma kitabını kullanarak toplam etkisini görüntülemek için Azure Izleyici 'yi Azure AD ile tümleştirmeli ve oturum açma günlüklerini dışarı aktarmanız gerekir. Bu tümleştirmeyi kurmak için iki adım vardır: 
 
-1. [Azure izleyici aboneliğine kaydolun ve bir çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-1. [Azure AD 'de oturum açma günlüklerini Azure izleyici 'ye aktarın](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Azure izleyici aboneliğine kaydolun ve bir çalışma alanı oluşturun](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Azure AD 'de oturum açma günlüklerini Azure izleyici 'ye aktarın](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
 
 Azure Izleyici fiyatlandırması hakkında daha fazla bilgi için [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)bulabilirsiniz. Maliyetleri tahmin etme, günlük üst sınır ayarlama veya veri saklama süresini özelleştirme için kaynaklar, [Azure Izleyici günlükleri ile kullanım ve maliyetleri yönetme](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)makalesinde bulunabilir.
 

@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: 702c03aec1980b12debeef3afeb84e0cbaef55b6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274959"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671579"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>Hızlı başlangıç: uygulama yapılandırmasıyla otomatik VM dağıtımı
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla otomatik VM dağıtımı
 
 Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure uygulama yapılandırma deposu dağıtmak için Azure PowerShell ve Azure Resource Manager şablonlarının nasıl kullanılacağı gösterilmektedir. Daha sonra, bir VM 'yi dağıtmak için depodaki anahtar değerlerini nasıl kullanacağınızı öğrenirsiniz.
 
 Uygulama yapılandırma deposu oluşturmak için önkoşul şablonunu kullanır ve ardından Azure portal veya Azure CLı kullanarak depoya anahtar değerleri ekleyebilirsiniz. Birincil şablon var olan bir yapılandırma deposundan mevcut anahtar-değer yapılandırmalarına başvurur. Alınan değerler, bu örnekteki bir VM gibi, şablon tarafından oluşturulan kaynakların özelliklerini ayarlamak için kullanılır.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

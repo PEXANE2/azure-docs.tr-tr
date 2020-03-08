@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030073"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674052"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP Web kancalarını kullanarak otomatik olay tabanlı iş akışları oluşturun ve çalıştırın
 
@@ -53,7 +53,7 @@ Daha fazla bilgi için şu konulara bakın:
 * [Web kancaları ve abonelikler](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Web kancasını destekleyen özel API 'Ler oluşturma](../logic-apps/logic-apps-create-api-app.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -65,37 +65,49 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="add-an-http-webhook-trigger"></a>HTTP Web kancası tetikleyicisi ekleme
 
-Bu yerleşik tetikleyici, belirtilen hizmetle bir geri çağırma URL 'SI kaydeder ve bu hizmetin bu URL 'ye bir HTTP POST isteği göndermesini bekler. Bu olay gerçekleştiğinde, tetikleyici ateşlenir ve mantıksal uygulamayı hemen çalıştırır.
+Bu yerleşik tetikleyici, hedef hizmette Subscribe uç noktasını çağırır ve hedef hizmete bir geri çağırma URL 'SI kaydeder. Mantıksal uygulamanız daha sonra hedef hizmetin geri çağırma URL 'sine bir `HTTP POST` isteği göndermesini bekler. Bu olay gerçekleştiğinde, tetikleyici ateşlenir ve istekteki tüm verileri iş akışına karşı geçirir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. Tasarımcıda arama kutusuna filtreniz olarak "http Web kancası" yazın. **Tetikleyiciler** listesinden **http Web kancası** tetikleyicisi ' ni seçin.
+1. Tasarımcı 'nın arama kutusuna filtreniz olarak `http webhook` girin. **Tetikleyiciler** listesinden **http Web kancası** tetikleyicisi ' ni seçin.
 
    ![HTTP Web kancası tetikleyicisi seçin](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   Bu örnek, adımın daha açıklayıcı bir ada sahip olması için tetikleyiciyi "HTTP Web kancası tetikleyicisi" olarak yeniden adlandırır. Ayrıca, örnek daha sonra bir HTTP Web kancası eylemi ekler ve her iki ad de benzersiz olmalıdır.
+   Bu örnek, adımın daha açıklayıcı bir ada sahip olması için tetikleyiciyi `HTTP Webhook trigger` olarak yeniden adlandırır. Ayrıca, örnek daha sonra bir HTTP Web kancası eylemi ekler ve her iki ad de benzersiz olmalıdır.
 
-1. Abone ol ve abonelik kaldırma çağrıları için kullanmak istediğiniz [http Web kancası tetikleyici parametrelerinin](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) değerlerini girin, örneğin:
+1. Abone ol ve abonelik kaldırma çağrıları için kullanmak istediğiniz [http Web kancası tetikleyici parametrelerinin](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) değerlerini belirtin.
+
+   Bu örnekte tetikleyici, abone ve abonelik kaldırma işlemleri gerçekleştirilirken kullanılacak yöntemleri, URI 'Leri ve ileti gövdelerini içerir.
 
    ![HTTP Web kancası tetikleyici parametrelerini girin](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-1. Kullanılabilir başka parametreler eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz parametreleri seçin.
+   | Özellik | Gerekli | Açıklama |
+   |----------|----------|-------------|
+   | **Subscription-yöntemi** | Yes | Hedef uç noktaya abone olurken kullanılacak yöntem |
+   | **Abone ol-URI** | Yes | Hedef uç noktaya abone olmak için kullanılacak URL |
+   | **Abone ol-gövde** | Hayır | Abonelik isteğine dahil edilecek herhangi bir ileti gövdesi. Bu örnek, mantıksal uygulamanızın geri arama URL 'sini almak için `@listCallbackUrl()` ifadesini kullanarak mantıksal uygulamanız olan aboneyi benzersiz bir şekilde tanımlayan geri çağırma URL 'sini içerir. |
+   | **Abonelik kaldırma yöntemi** | Hayır | Hedef uç noktadan abone olunurken kullanılacak yöntem |
+   | **Abonelik kaldırma-URI** | Hayır | Hedef uç noktadan abone olunurken kullanılacak URL |
+   | **Abonelik kaldırma-gövde** | Hayır | Abonelik kaldırma isteğine eklenecek isteğe bağlı bir ileti gövdesi <p><p>**Note**: bu özellik `listCallbackUrl()` işlevinin kullanımını desteklemiyor. Ancak tetikleyici, hedef hizmetin aboneyi benzersiz şekilde tanımlamak için kullanabileceği `x-ms-client-tracking-id` ve `x-ms-workflow-operation-name`üst bilgilerini otomatik olarak ekler ve gönderir. |
+   ||||
 
-   HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+1. Başka tetikleyici özellikleri eklemek için **yeni parametre Ekle** listesini açın.
+
+   ![Daha fazla tetikleyici özelliği Ekle](./media/connectors-native-webhook/http-webhook-trigger-add-properties.png)
+
+   Örneğin, kimlik doğrulaması kullanmanız gerekiyorsa, **abone ol-Authentication** ve **abonelikten çıkma-Authentication** özelliklerini ekleyebilirsiniz. HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Tetikleyici tetiklendiğinde çalıştırılan eylemlerle mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
 1. İşiniz bittiğinde, işiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
-   Mantıksal uygulamanızı kaydetmek, abonelik uç noktasını çağırır ve bu mantıksal uygulamayı tetiklemek için geri çağırma URL 'sini kaydeder.
-
-1. Artık, hedef hizmet geri çağırma URL 'sine bir `HTTP POST` isteği gönderdiğinde, mantıksal uygulama ateşlenir ve isteğin üzerinden geçen tüm verileri içerir.
+   Mantıksal uygulamanızı kaydetmek, hedef hizmette abone ol uç noktasını çağırır ve geri çağırma URL 'sini kaydeder. Mantıksal uygulamanız daha sonra hedef hizmetin geri çağırma URL 'sine bir `HTTP POST` isteği göndermesini bekler. Bu olay gerçekleştiğinde, tetikleyici ateşlenir ve istekteki tüm verileri iş akışına karşı geçirir. Bu işlem başarıyla tamamlanırsa, tetikleyici, uç noktadan abone olur ve mantıksal uygulamanız kalan iş akışını sürdürür.
 
 ## <a name="add-an-http-webhook-action"></a>HTTP Web kancası eylemi ekleme
 
-Bu yerleşik eylem, belirtilen hizmetle bir geri çağırma URL 'SI kaydeder, mantıksal uygulamanın iş akışını duraklatır ve bu hizmetin bu URL 'ye bir HTTP POST isteği göndermesini bekler. Bu olay gerçekleştiğinde, eylem mantıksal uygulamayı çalıştırmaya devam eder.
+Bu yerleşik eylem, hedef hizmette abone ol uç noktasını çağırır ve hedef hizmete bir geri çağırma URL 'SI kaydeder. Daha sonra mantıksal uygulamanız duraklatılır ve hedef hizmetin geri çağırma URL 'sine `HTTP POST` isteği göndermesini bekler. Bu olay gerçekleştiğinde eylem, istekteki tüm verileri iş akışına karşı geçirir. İşlem başarıyla tamamlanırsa, eylem uç noktadan aboneliği kaldırır ve mantıksal uygulamanız kalan iş akışını çalıştırmaya devam eder.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek, ilk adım olarak HTTP Web kancası tetikleyicisini kullanır.
 
@@ -103,23 +115,37 @@ Bu yerleşik eylem, belirtilen hizmetle bir geri çağırma URL 'SI kaydeder, ma
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Tasarımcıda arama kutusuna filtreniz olarak "http Web kancası" yazın. **Eylemler** listesinden **http Web kancası** eylemini seçin.
+1. Tasarımcı 'nın arama kutusuna filtreniz olarak `http webhook` girin. **Eylemler** listesinden **http Web kancası** eylemini seçin.
 
    ![HTTP Web kancası eylemini seç](./media/connectors-native-webhook/select-http-webhook-action.png)
 
    Bu örnek, adımın daha açıklayıcı bir ada sahip olması için eylemi "HTTP Web kancası eylemi" olarak yeniden adlandırır.
 
-1. Abone ve abonelik kaldırma çağrıları için kullanmak istediğiniz [http Web kancası tetikleyici parametrelerine](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) benzer http Web kancası eylem parametrelerinin değerlerini sağlayın, örneğin:
+1. Abone ve abonelik kaldırma çağrıları için kullanmak istediğiniz http Web kancası [tetikleyici parametrelerine](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)benzer http Web kancası eylem parametreleri için değerler sağlayın.
+
+   Bu örnekte, eylem abone ve abonelik kaldırma işlemleri gerçekleştirilirken kullanılacak yöntemleri, URI 'Leri ve ileti gövdelerini içerir.
 
    ![HTTP Web kancası eylem parametrelerini girin](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Çalışma zamanı sırasında mantıksal uygulama, bu eylemi çalıştırırken abonelik uç noktasını çağırır. Daha sonra mantıksal uygulamanız iş akışını duraklatır ve hedef hizmetin geri çağırma URL 'sine `HTTP POST` isteği göndermesini bekler. Eylem başarıyla tamamlanırsa, eylem uç noktadan aboneliği kaldırır ve mantıksal uygulamanız iş akışını çalıştırmaya devam eder.
+   | Özellik | Gerekli | Açıklama |
+   |----------|----------|-------------|
+   | **Subscription-yöntemi** | Yes | Hedef uç noktaya abone olurken kullanılacak yöntem |
+   | **Abone ol-URI** | Yes | Hedef uç noktaya abone olmak için kullanılacak URL |
+   | **Abone ol-gövde** | Hayır | Abonelik isteğine dahil edilecek herhangi bir ileti gövdesi. Bu örnek, mantıksal uygulamanızın geri arama URL 'sini almak için `@listCallbackUrl()` ifadesini kullanarak mantıksal uygulamanız olan aboneyi benzersiz bir şekilde tanımlayan geri çağırma URL 'sini içerir. |
+   | **Abonelik kaldırma yöntemi** | Hayır | Hedef uç noktadan abone olunurken kullanılacak yöntem |
+   | **Abonelik kaldırma-URI** | Hayır | Hedef uç noktadan abone olunurken kullanılacak URL |
+   | **Abonelik kaldırma-gövde** | Hayır | Abonelik kaldırma isteğine eklenecek isteğe bağlı bir ileti gövdesi <p><p>**Note**: bu özellik `listCallbackUrl()` işlevinin kullanımını desteklemiyor. Ancak eylem, hedef hizmetin aboneyi benzersiz şekilde tanımlamak için kullanabileceği `x-ms-client-tracking-id` ve `x-ms-workflow-operation-name`üst bilgilerini otomatik olarak ekler ve gönderir. |
+   ||||
 
-1. Kullanılabilir başka parametreler eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz parametreleri seçin.
+1. Başka eylem özellikleri eklemek için **yeni parametre Ekle** listesini açın.
 
-   HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   ![Daha fazla eylem özelliği ekleyin](./media/connectors-native-webhook/http-webhook-action-add-properties.png)
+
+   Örneğin, kimlik doğrulaması kullanmanız gerekiyorsa, **abone ol-Authentication** ve **abonelikten çıkma-Authentication** özelliklerini ekleyebilirsiniz. HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+
+   Bu eylem çalıştırıldığında, mantıksal uygulamanız hedef hizmette abone ol uç noktasını çağırır ve geri arama URL 'sini kaydeder. Mantıksal uygulama daha sonra iş akışını duraklatır ve hedef hizmetin geri çağırma URL 'sine `HTTP POST` isteği göndermesini bekler. Bu olay gerçekleştiğinde eylem, istekteki tüm verileri iş akışına karşı geçirir. İşlem başarıyla tamamlanırsa, eylem uç noktadan aboneliği kaldırır ve mantıksal uygulamanız kalan iş akışını çalıştırmaya devam eder.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
@@ -138,10 +164,10 @@ Bu bilgileri döndüren bir HTTP Web kancası tetikleyicisinden veya eyleminden 
 
 | Durum kodu | Açıklama |
 |-------------|-------------|
-| 200 | TAMAM |
-| 202 | Kabul edildi |
+| 200 | Tamam |
+| 202 | Eden |
 | 400 | Hatalı istek |
-| 401 | Yetkilendirilmemiş |
+| 401 | Yetkisiz |
 | 403 | Yasak |
 | 404 | Bulunamadı |
 | 500 | İç sunucu hatası. Bilinmeyen bir hata oluştu. |

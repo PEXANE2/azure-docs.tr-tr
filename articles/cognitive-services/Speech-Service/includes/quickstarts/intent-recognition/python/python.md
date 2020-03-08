@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445991"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668779"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -74,7 +74,7 @@ Bu kodu `IntentRecognizer`altına ekleyin. `"YourLanguageUnderstandingAppId"`, L
 
 `IntentRecognizer` nesnesinden `recognize_once()` yöntemini çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
 
-Bu kodu modelinizin altına ekleyin:
+Bu kodu modelinizin altına ekleyin.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
@@ -82,11 +82,13 @@ Bu kodu modelinizin altına ekleyin:
 
 Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutmaya ve sonucu konsola yazdıracağız.
 
-`recognize_once()`çağrın altına şu kodu ekleyin: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+`recognize_once()`çağrın altına bu kodu ekleyin.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuzun şöyle görünmesi gerekir:
+Bu noktada, kodunuz şöyle görünmelidir.
 
 > [!NOTE]
 > Bu sürüme bazı açıklamalar ekledik.

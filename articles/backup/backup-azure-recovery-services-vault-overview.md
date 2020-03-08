@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasalarına genel bakış
 description: Kurtarma Hizmetleri kasaları ve Azure Backup kasaları arasında genel bakış ve karşılaştırma.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397038"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673231"
 ---
 # <a name="recovery-services-vaults-overview"></a>Kurtarma Hizmetleri kasaları genel bakış
 
@@ -77,4 +77,4 @@ Aşağıdaki bölümler, her bir etkinlik türünde bir kurtarma hizmetleri kasa
 Aşağıdaki makaleleri kullanın:</br>
 [IaaS VM 'sini yedekleme](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Sunucusu yedekleme](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server yedekleme](backup-configure-vault.md)
+[Windows Server yedekleme](backup-windows-with-mars-agent.md)

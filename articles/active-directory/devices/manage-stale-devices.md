@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538812"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672323"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -53,11 +53,11 @@ Etkinlik zaman damgasının mevcut değeri ile geçerli değer arasındaki Delta
 
 Etkinlik zaman damgasının değerini almak için iki seçeneğiniz vardır:
 
-- Azure portaldaki [cihazlar sayfasının](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) **Etkinlik** sütunu
+- Azure portaldaki **cihazlar sayfasının**[Etkinlik](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) sütunu
 
     ![Etkinlik zaman damgası](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet'i
+- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet'i
 
     ![Etkinlik zaman damgası](./media/manage-stale-devices/02.png)
 
@@ -129,11 +129,11 @@ Eski cihazları Azure portalda temizleyebilirsiniz ama bu işlemi PowerShell bet
 
 Tipik bir yordam aşağıdaki adımlardan oluşur:
 
-1. [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet'ini kullanarak Azure Active Directory'ye bağlanma
+1. [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet'ini kullanarak Azure Active Directory'ye bağlanma
 1. Cihaz listesini alma
-1. [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet'ini kullanarak cihazı devre dışı bırakma. 
+1. [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet'ini kullanarak cihazı devre dışı bırakma. 
 1. Cihazı silmeden önce seçtiğiniz yetkisiz kullanım süresinin tamamlanmasını bekleyin.
-1. [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet'ini kullanarak cihazı kaldırma.
+1. [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet'ini kullanarak cihazı kaldırma.
 
 ### <a name="get-the-list-of-devices"></a>Cihaz listesini alma
 

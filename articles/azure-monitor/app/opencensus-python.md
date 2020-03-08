@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: eb1bde6bb58e3e5299311636f8222e2fc181ec5d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250763"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673312"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python uygulamanız için Azure Izleyicisini ayarlama (Önizleme)
 
@@ -425,13 +425,14 @@ Sorguları ve günlükleri kullanma hakkında daha ayrıntılı bilgi için bkz.
 
 * [GitHub 'da OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
 * [Liş](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [Flask tümleştirmesi](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-flask)
-* [Docgo tümleştirmesi](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-django)
-* [MySQL tümleştirmesi](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
-* [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
+* [GitHub 'da Azure Izleyici dışarı vericiler](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [OpenCensus tümleştirmeleri](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure Izleyici örnek uygulamaları](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Gelen istekleri izleme](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [Devam eden istekleri izleme](./../../azure-monitor/app/opencensus-python-request.md)
 * [Uygulama eşlemesi](./../../azure-monitor/app/app-map.md)
 * [Uçtan uca performans izleme](./../../azure-monitor/learn/tutorial-performance.md)
 

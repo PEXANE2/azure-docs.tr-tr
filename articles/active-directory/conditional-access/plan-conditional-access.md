@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468446"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671824"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Nasıl yapılır: Azure Active Directory 'de koşullu erişim dağıtımınızı planlayın
 
@@ -163,13 +163,13 @@ Test planı, beklenen sonuçlarla gerçek sonuçlar arasında bir karşılaştı
 
 |İlke |Senaryo |Beklenen sonuç | Sonuç |
 |---|---|---|---|
-|[İş olmadığında MFA gerektir](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Güvenilen bir konum/iş sırasında yetkili kullanıcı *uygulama* oturumunu kapatır|Kullanıcıdan MFA istenmez| |
-|[İş olmadığında MFA gerektir](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Yetkili Kullanıcı, güvenilir bir konum/iş üzerinde olmadığı sürece *uygulamada* oturum açar|Kullanıcıdan MFA yapması istenir ve başarıyla oturum açabilir| |
-|[MFA gerektir (yönetici için)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Genel yönetici *uygulamada* oturum açar|Yöneticiye MFA sorulur| |
-|[Riskli oturum açma işlemleri](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Kullanıcı bir [Tor tarayıcısı](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook) kullanarak *uygulamada* oturum açar|Yöneticiye MFA sorulur| |
-|[Cihaz yönetimi](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Yetkili Kullanıcı yetkili bir cihazdan oturum açmaya çalışır|Erişim Izni verildi| |
-|[Cihaz yönetimi](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Yetkili kullanıcı yetkisiz bir cihazdan oturum açmaya çalışır|Erişim engellendi| |
-|[Riskli kullanıcılar için parola değiştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Yetkili Kullanıcı güvenliği tehlikeye giren kimlik bilgileriyle oturum açmaya çalışır (yüksek riskli oturum açma)|İlkenize göre kullanıcıdan parolayı değiştirmesi veya erişimin engellenmesi istenir| |
+|[İş olmadığında MFA gerektir](/azure/active-directory/conditional-access/untrusted-networks)|Güvenilen bir konum/iş sırasında yetkili kullanıcı *uygulama* oturumunu kapatır|Kullanıcıdan MFA istenmez| |
+|[İş olmadığında MFA gerektir](/azure/active-directory/conditional-access/untrusted-networks)|Yetkili Kullanıcı, güvenilir bir konum/iş üzerinde olmadığı sürece *uygulamada* oturum açar|Kullanıcıdan MFA yapması istenir ve başarıyla oturum açabilir| |
+|[MFA gerektir (yönetici için)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Genel yönetici *uygulamada* oturum açar|Yöneticiye MFA sorulur| |
+|[Riskli oturum açma işlemleri](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Kullanıcı bir [Tor tarayıcısı](/azure/active-directory/active-directory-identityprotection-playbook) kullanarak *uygulamada* oturum açar|Yöneticiye MFA sorulur| |
+|[Cihaz yönetimi](/azure/active-directory/conditional-access/require-managed-devices)|Yetkili Kullanıcı yetkili bir cihazdan oturum açmaya çalışır|Erişim Izni verildi| |
+|[Cihaz yönetimi](/azure/active-directory/conditional-access/require-managed-devices)|Yetkili kullanıcı yetkisiz bir cihazdan oturum açmaya çalışır|Erişim engellendi| |
+|[Riskli kullanıcılar için parola değiştirme](/azure/active-directory/identity-protection/howto-user-risk-policy)|Yetkili Kullanıcı güvenliği tehlikeye giren kimlik bilgileriyle oturum açmaya çalışır (yüksek riskli oturum açma)|İlkenize göre kullanıcıdan parolayı değiştirmesi veya erişimin engellenmesi istenir| |
 
 ### <a name="configure-the-policy"></a>İlkeyi yapılandırma
 

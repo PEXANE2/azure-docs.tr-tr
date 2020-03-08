@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251875"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898823"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için Load Balancer oluşturma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-load-balancer"></a>Load Balancer oluşturma
 
-Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Load Balancer oluşturursunuz. Ortak bir Load Balancer veya iç Load Balancer oluşturabilirsiniz. Ortak bir Load Balancer oluşturduğunuzda ve Load Balancer için ön uç olarak yapılandırılmış yeni bir genel IP adresi (varsayılan olarak *Loadbalancerön uç* olarak adlandırılır) oluşturmanız gerekir.
+Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Load Balancer oluşturursunuz. Ortak bir Load Balancer veya iç Load Balancer oluşturabilirsiniz. Ortak bir Load Balancer oluşturduğunuzda, Load Balancer için ön uç (varsayılan olarak *Loadbalancerön uç* olarak adlandırılır) olarak yapılandırılmış yeni BIR genel IP adresi de oluşturmanız gerekir.
 
 1. Ekranın sol üst kısmında, **ağ** > **Load Balancer** > **kaynak oluştur** ' u seçin.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:

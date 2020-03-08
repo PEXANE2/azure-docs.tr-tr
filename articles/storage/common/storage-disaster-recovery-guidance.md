@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905518"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894536"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)
 
@@ -114,22 +114,17 @@ Azure portal, PowerShell, Azure CLı veya Azure depolama kaynak sağlayıcısı 
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
-Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS kullanan tüm müşteriler için önizleme aşamasında kullanılabilir. Genel amaçlı v1, genel amaçlı v2 ve BLOB depolama hesabı türleri desteklenir. Hesap yük devretmesi Şu anda şu bölgelerde kullanılabilir:
-
-- Doğu Asya
-- Güneydoğu Asya
-- Doğu Avustralya
-- Güneydoğu Avustralya
-- ABD Orta
-- ABD Doğu 2
-- ABD Orta Batı
-- ABD Batı 2
+Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS kullanan tüm müşteriler için önizleme aşamasında kullanılabilir. Genel amaçlı v1, genel amaçlı v2 ve BLOB depolama hesabı türleri desteklenir. Hesap yük devretmesi Şu anda tüm genel bölgelerde kullanılabilir. Hesap yük devretmesi Şu anda Sovereign/National bulutlar içinde kullanılamıyor.
 
 Önizleme yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
 
 ### <a name="additional-considerations"></a>Diğer konular
 
 Önizleme dönemi boyunca bir yük devretmeyi zorlarsanız uygulamalarınızın ve hizmetlerinizin nasıl etkilenebileceğini anlamak için bu bölümde açıklanan ek konuları gözden geçirin.
+
+#### <a name="storage-account-containing-archived-blobs"></a>Arşivlenmiş blob 'ları içeren depolama hesabı
+
+Arşivlenmiş blob 'ları içeren depolama hesapları, hesap yük devretmesini destekler. Yük devretme işlemi tamamlandıktan sonra, hesabı GRS 'ye veya RA-GRS ' e geri dönüştürmek için tüm archieved Blobları önce çevrimiçi bir katmana yeniden doldurmanız gerekir.
 
 #### <a name="storage-resource-provider"></a>Depolama kaynak sağlayıcısı
 
@@ -162,8 +157,8 @@ VM kapatılırken geçici bir diskte depolanan tüm verilerin kaybedildiğini ak
 
 Önizleme sürümü için hesap yük devretmesi için aşağıdaki özellikler ve hizmetler desteklenmez:
 
-- Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme'de bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarının bulunduğu depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir.  
-- Arşivlenmiş blob 'ları içeren bir depolama hesabı yük devredilemez. Arşivlenmiş Blobları yük devri planlamadığınız ayrı bir depolama hesabında saklayın.
+- Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme'de bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarının bulunduğu depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir.
+- ADLS 2. depolama hesapları (hiyerarşik ad alanı etkin olan hesaplar) Şu anda desteklenmiyor.
 - Premium blok bloblarını içeren bir depolama hesabı yük devredilemez. Premium blok bloblarını destekleyen depolama hesapları Şu anda coğrafi artıklığı desteklemez.
 - [Solucan ve kullanılabilirlik ilkesi](../blobs/storage-blob-immutable-storage.md) etkinleştirilmiş kapsayıcıları içeren bir depolama hesabı yük devredilemez. Kilitlemeli/kilitlenmiş zamana dayalı saklama veya yasal saklama ilkeleri, uyumluluk sağlamak için yük devretmeyi önler.
 - Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkin olursa çalışmayı durdurabilir: [olay abonelikleri](../blobs/storage-blob-event-overview.md), [değişiklik akışı](../blobs/storage-blob-change-feed.md), [yaşam döngüsü ilkeleri](../blobs/storage-lifecycle-management-concepts.md)ve [depolama Analizi günlüğe kaydetme](storage-analytics-logging.md).

@@ -6,20 +6,22 @@ ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, estfan
 ms.topic: article
-ms.date: 09/23/2019
-ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.date: 02/29/2020
+ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911990"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899044"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps geçirin
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen bu makaleyi izleyerek en kısa sürede Azure Logic Apps taşıyın. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen bu makaleyi izleyerek en kısa sürede Azure Logic Apps geçirin. 
+>
+> Zamanlayıcı artık Azure portal kullanılamıyor, ancak iş ve iş koleksiyonlarınızı yönetebilmeniz için [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet 'leri](scheduler-powershell-reference.md) Şu anda kullanılabilir durumda kalır.
 
 Bu makalede, Azure Scheduler yerine Azure Logic Apps ile otomatik iş akışları oluşturarak tek seferlik ve yinelenen işleri nasıl planlayamazsınız gösterilmektedir. Logic Apps ile zamanlanmış işler oluşturduğunuzda, bu avantajları elde edersiniz:
 
@@ -33,7 +35,7 @@ Bu makalede, Azure Scheduler yerine Azure Logic Apps ile otomatik iş akışlar�
 
 Daha fazla bilgi edinmek için bkz. [nedir? Azure Logic Apps nedir?](../logic-apps/logic-apps-overview.md) veya bu hızlı başlangıçta ilk mantıksal uygulamanızı oluşturmayı deneyin: [Ilk mantıksal uygulamanızı oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -45,19 +47,19 @@ Her Scheduler işi benzersizdir, böylece zamanlayıcı işlerinin Azure Logic A
 
 ## <a name="schedule-one-time-jobs"></a>Tek seferlik işleri zamanlama
 
-Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalıştırabilirsiniz. 
+Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalıştırabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun. 
+1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun.
 
    Temel adımlar için [hızlı başlangıç: ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı izleyin.
 
-1. Arama kutusuna filtreniz olarak "http isteği" yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **BIR http isteği alındığında** 
+1. Arama kutusuna, Istek tetikleyicisini bulmak için `when a http request` girin. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **BIR http isteği alındığında**
 
    !["Istek" tetikleyicisi Ekle](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
-1. Istek tetikleyicisi için isteğe bağlı olarak, mantıksal uygulama Tasarımcısı 'nın gelen istekten gelen girişlerin yapısını anlamasına yardımcı olan bir JSON şeması sağlayabilirsiniz ve daha sonra iş akışınızda daha sonra seçim yapmanız için çıktıları daha kolay hale getirir.
+1. Istek tetikleyicisi için isteğe bağlı olarak bir JSON şeması sağlayabilirsiniz. Bu, mantıksal uygulama Tasarımcısı 'nın, Istek tetikleyicisine gelen çağrıya dahil edilen girişlerin yapısını anlamasına yardımcı olur ve çıkışları iş akışınızda daha sonra seçmeniz için daha kolay hale getirir.
 
-   Bir şema belirtmek için, şemayı **Istek GÖVDESI JSON şemasına** girin, örneğin: 
+   **Istek GÖVDESI JSON şeması** kutusuna şemayı girin, örneğin:
 
    ![İstek şeması](./media/migrate-from-scheduler-to-logic-apps/request-schema.png)
 
@@ -65,27 +67,34 @@ Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalışt�
 
    1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan**' ı seçin.
 
-   1. **Örnek BIR JSON yükü girin veya yapıştırın**, örnek yükünüzü sağlayın ve sonra **bitti**' yi seçin, örneğin:
+   1. **Örnek BIR JSON yükü girin veya yapıştırın**, örnek yükünüzü sağlayın ve **bitti**' yi seçin, örneğin:
 
       ![Örnek yük](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
-1. Tetikleyici altında, **İleri adım**' ı seçin. 
+      ```json
+      {
+         "runat": "2012-08-04T00:00Z",
+         "endpoint": "https://www.bing.com"
+      }
+      ```
 
-1. Arama kutusuna filtreniz olarak "geciktir Until" yazın. Eylemler listesi altında şu eylemi seçin: **gecikme tarihine kadar geciktir**
+1. Tetikleyici altında, **İleri adım**' ı seçin.
+
+1. Arama kutusuna filtreniz olarak `delay until` girin. Eylemler listesi altında şu eylemi seçin: **gecikme tarihine kadar geciktir**
 
    Bu eylem, mantıksal uygulama iş akışınızı belirtilen bir tarih ve saate kadar duraklatır.
 
    !["Gecikme süresi" eylemini Ekle](./media/migrate-from-scheduler-to-logic-apps/delay-until.png)
 
-1. Mantıksal uygulamanın iş akışını başlatmak istediğiniz zaman zaman damgasını girin. 
+1. Mantıksal uygulamanın iş akışını başlatmak istediğiniz zaman zaman damgasını girin.
 
    **Zaman damgası** kutusunun içine tıkladığınızda, isteğe bağlı olarak tetikleyiciden bir çıktı seçebilmeniz için dinamik içerik listesi görüntülenir.
 
    !["Gecikme süresi" ayrıntılarını sağlayın](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. [Yüzlerce kullanıma yönelik kullanılabilir bağlayıcıdan](../connectors/apis-list.md)seçim yaparak çalıştırmak istediğiniz diğer eylemleri ekleyin. 
+1. [Yüzlerce kullanıma yönelik kullanılabilir bağlayıcıdan](../connectors/apis-list.md)seçim yaparak çalıştırmak istediğiniz diğer eylemleri ekleyin.
 
-   Örneğin, bir URL 'ye istek gönderen bir HTTP eylemi veya depolama kuyrukları, Service Bus kuyrukları veya Service Bus konuları ile çalışan eylemler ekleyebilirsiniz: 
+   Örneğin, bir URL 'ye istek gönderen bir HTTP eylemi veya depolama kuyrukları, Service Bus kuyrukları veya Service Bus konuları ile çalışan eylemler ekleyebilirsiniz:
 
    ![HTTP eylemi](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
@@ -93,20 +102,19 @@ Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalışt�
 
    ![Mantıksal uygulamanızı kaydetme](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
-   Mantıksal uygulamanızı ilk kez kaydettiğinizde, mantıksal uygulamanızın Istek tetikleyicisi için uç nokta URL 'SI **http post URL 'si** kutusunda görünür. 
-   Mantıksal uygulamanızı çağırmak ve işlem için mantıksal uygulamanıza giriş göndermek istediğinizde, bu URL 'YI çağrı hedefi olarak kullanın.
+   Mantıksal uygulamanızı ilk kez kaydettiğinizde, mantıksal uygulamanızın Istek tetikleyicisi için uç nokta URL 'SI **http post URL 'si** kutusunda görünür. Mantıksal uygulamanızı çağırmak ve işlem için mantıksal uygulamanıza giriş göndermek istediğinizde, bu URL 'YI çağrı hedefi olarak kullanın.
 
    ![Istek tetikleme uç nokta URL 'sini Kaydet](./media/migrate-from-scheduler-to-logic-apps/request-endpoint-url.png)
 
-1. Daha sonra mantıksal uygulamanızı tetikleyen el ile bir istek gönderebilmeniz için bu uç nokta URL 'sini kopyalayıp kaydedin. 
+1. Daha sonra mantıksal uygulamanızı tetikleyen el ile bir istek gönderebilmeniz için bu uç nokta URL 'sini kopyalayıp kaydedin.
 
 ## <a name="start-a-one-time-job"></a>Tek seferlik bir iş başlatın
 
-Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal uygulamanızın Istek tetikleyicisi için uç nokta URL 'sine bir çağrı gönderin. Bu çağrıda, daha önce bir şema belirterek daha önce açıklandığı gibi, göndermek için giriş veya yük belirtin. 
+Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal uygulamanızın Istek tetikleyicisi için uç nokta URL 'sine bir çağrı gönderin. Bu çağrıda, daha önce bir şema belirterek daha önce açıklandığı gibi, göndermek için giriş veya yük belirtin.
 
 Örneğin, Postman uygulamasını kullanarak bu örneğe benzer ayarlarla bir POST isteği oluşturabilir ve sonra isteği yapmak için **Gönder** ' i seçebilirsiniz.
 
-| İstek yöntemi | URL | Gövde | Üst bilgiler |
+| İstek yöntemi | URL'si | Gövde | Üst bilgiler |
 |----------------|-----|------|---------|
 | **POST** | <*uç noktası-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
 |||||
@@ -129,11 +137,11 @@ Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örn
 
 ## <a name="schedule-recurring-jobs"></a>Yinelenen işleri zamanlama
 
-1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun. 
+1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun.
 
    Temel adımlar için [hızlı başlangıç: ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı izleyin.
 
-1. Arama kutusuna filtreniz olarak "yinelenme" yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **yinelenme** 
+1. Arama kutusuna filtreniz olarak "yinelenme" yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **yinelenme**
 
    !["Yinelenme" tetikleyicisi Ekle](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -145,7 +153,7 @@ Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örn
 
 1. [Yüzlerce kullanıma kullanım](../connectors/apis-list.md)arasından seçerek istediğiniz diğer eylemleri ekleyin. Tetikleyici altında, **İleri adım**' ı seçin. İstediğiniz eylemleri bulun ve seçin.
 
-   Örneğin, bir URL 'ye istek gönderen bir HTTP eylemi veya depolama kuyrukları, Service Bus kuyrukları veya Service Bus konuları ile çalışan eylemler ekleyebilirsiniz: 
+   Örneğin, bir URL 'ye istek gönderen bir HTTP eylemi veya depolama kuyrukları, Service Bus kuyrukları veya Service Bus konuları ile çalışan eylemler ekleyebilirsiniz:
 
    ![HTTP eylemi](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
@@ -169,11 +177,11 @@ Bir eylemin işlem sırasında mantıksal uygulamanızda yeniden çalıştırmay
 
    ![Yeniden deneme ilkesini seçin](./media/migrate-from-scheduler-to-logic-apps/retry-policy.png)
 
-## <a name="handle-exceptions-and-errors"></a>Özel durumları ve hataları işleme
+## <a name="handle-exceptions-and-errors"></a>Özel durumları ve hataları işle
 
 Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan bir alternatif eylem çalıştırabilirsiniz. Azure Logic Apps Ayrıca aynı görevi gerçekleştirebilirsiniz.
 
-1. Mantıksal uygulama Tasarımcısı ' nda, işlemek istediğiniz eylemin üstünde, işaretçinizi adımlar arasındaki oka taşıyın ve **paralel dal Ekle**' yi seçin. 
+1. Mantıksal uygulama Tasarımcısı ' nda, işlemek istediğiniz eylemin üstünde, işaretçinizi adımlar arasındaki oka taşıyın ve **paralel dal Ekle**' yi seçin.
 
    ![Paralel dal Ekle](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -204,15 +212,15 @@ Y **: Azure**Scheduler, 31 Aralık 2019 tarihinde tamamen devre dışı bırakı
 Y **: tüm**zamanlayıcı iş koleksiyonları ve işleri çalışmayı durdurur ve sistemden silinir.
 
 **S**: zamanlayıcı işlerim Logic Apps geçirmeden önce diğer görevleri yedeklemem veya gerçekleştirmem gerekir mi? <br>
-Y **: en**iyi uygulama olarak, her zaman işinizi yedekleyin. Zamanlayıcı İşlerinizi silmeden veya devre dışı bırakmadan önce oluşturduğunuz mantıksal uygulamaların beklendiği gibi çalıştığını denetleyin. 
+Y **: en**iyi uygulama olarak, her zaman işinizi yedekleyin. Zamanlayıcı İşlerinizi silmeden veya devre dışı bırakmadan önce oluşturduğunuz mantıksal uygulamaların beklendiği gibi çalıştığını denetleyin.
 
 **S**: uygulamalarımı Scheduler 'dan Logic Apps geçişe geçirmeye yardımcı olabilecek bir araç var mı? <br>
 Y **: her**Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yok. Bununla birlikte, gereksinimlerinize bağlı olarak, [bu betiği düzenleyerek Azure Scheduler işlerinin Azure Logic Apps 'e geçişini](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)sağlayabilirsiniz.
 
 **S**: Zamanlayıcı işlerinizin geçirilmesi için nereden destek alabilirim? <br>
-Y: destek almanın bazı yolları aşağıda **verilmiştir:** 
+Y: destek almanın bazı yolları aşağıda **verilmiştir:**
 
-**Azure Portal**
+**Azure portalında**
 
 Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik destek isteği oluşturabilirsiniz. Aksi takdirde, farklı bir destek seçeneği belirleyebilirsiniz.
 
@@ -229,7 +237,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 
 1. İstediğiniz destek seçeneğini belirleyin. Ücretli bir destek planınız varsa **İleri**' yi seçin.
 
-**Topluluk**
+**Topluluğundan**
 
 * [Azure Logic Apps Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
@@ -237,4 +245,3 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Logic Apps ile düzenli olarak çalışan görevler ve iş akışları oluşturma](../connectors/connectors-native-recurrence.md)
-* [Öğretici: zamanlama tabanlı mantıksal uygulama ile trafiği denetleme](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

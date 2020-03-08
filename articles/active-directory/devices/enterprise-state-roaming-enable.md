@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6887edacafb4fd4a68cfbe7d97e788c71dc68522
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672405"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory'de Kurumsal Durumda Dolaşımı etkinleştirme
 
@@ -25,13 +25,13 @@ Enterprise State Roaming, Azure AD Premium veya Enterprise Mobility + Security (
 Enterprise State Roaming etkinleştirdiğinizde, kuruluşunuza Azure Rights Management koruması için Azure Information Protection 'ten ücretsiz, sınırlı kullanım lisansı verilir. Bu ücretsiz abonelik, Enterprise State Roaming tarafından eşitlenen kurumsal ayarları ve uygulama verilerini şifrelemek ve şifrelerini çözmek için sınırlıdır. Azure Rights Management hizmetinin tüm yeteneklerini kullanabilmeniz için [ücretli bir aboneliğinizin](https://azure.microsoft.com/pricing/details/information-protection/) olması gerekir.
 
 > [!NOTE]
-> Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
+> Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming etkinleştirmek için
 
 1. [Azure AD Yönetim Merkezi](https://aad.portal.azure.com/)' nde oturum açın.
 1. **Enterprise State Roaming**&gt; **Azure Active Directory** &gt; **cihazları** ' nı seçin.
-1. **Kullanıcılar ayarları ve uygulama verilerini cihazlar arasında eşitleyebilir '** i seçin. Daha fazla bilgi için bkz. [cihaz ayarlarını yapılandırma](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+1. **Kullanıcılar ayarları ve uygulama verilerini cihazlar arasında eşitleyebilir '** i seçin. Daha fazla bilgi için bkz. [cihaz ayarlarını yapılandırma](/azure/active-directory/device-management-azure-portal).
   
    ![Kullanıcılar, cihazlar arasında ayarları ve uygulama verilerini eşitleyebileceği cihaz ayarı görüntüsü](./media/enterprise-state-roaming-enable/device-settings.png)
   
@@ -39,7 +39,7 @@ Windows 10 cihazının Enterprise State Roaming hizmetini kullanabilmesi için c
 
 ## <a name="data-storage"></a>Veri depolama
 
-Enterprise State Roaming veriler, Azure Active Directory örneğinde ayarlanan ülke/bölge değeri ile en iyi şekilde hizalaan bir veya daha fazla [Azure](https://azure.microsoft.com/regions/) bölgesinde barındırılır. Enterprise State Roaming veriler üç önemli coğrafi bölgeye göre bölümlenmiştir: Kuzey Amerika, EMEA ve APAC. Kiracının Enterprise State Roaming verileri, coğrafi bölge ile yerel olarak bulunur ve bölgeler arasında çoğaltılmaz.  Örneğin:
+Enterprise State Roaming veriler, Azure Active Directory örneğinde ayarlanan ülke/bölge değeri ile en iyi şekilde hizalaan bir veya daha fazla [Azure](https://azure.microsoft.com/regions/) bölgesinde barındırılır. Enterprise State Roaming veriler üç önemli coğrafi bölgeye göre bölümlenmiştir: Kuzey Amerika, EMEA ve APAC. Kiracının Enterprise State Roaming verileri, coğrafi bölge ile yerel olarak bulunur ve bölgeler arasında çoğaltılmaz.  Örnek:
 
 | Ülke/bölge değeri | içinde barındırılan verileri vardır |
 | -------------------- | ------------------------ |
@@ -79,7 +79,7 @@ Açık silme, bir Azure Yöneticisi bir kullanıcıyı veya dizini sildiğinde y
 
 ### <a name="stale-data-deletion"></a>Eski veri silme
 
-Bir yıl boyunca erişilmeyen veriler ("Bekletme dönemi") eski olarak değerlendirilir ve Microsoft bulutunda silinebilir. Saklama süresi değişebilir, ancak 90 günden daha az olmayacaktır. Eski veriler belirli bir Windows/uygulama ayarları kümesi veya bir kullanıcıya ait tüm ayarlar olabilir. Örneğin:
+Bir yıl boyunca erişilmeyen veriler ("Bekletme dönemi") eski olarak değerlendirilir ve Microsoft bulutunda silinebilir. Saklama süresi değişebilir, ancak 90 günden daha az olmayacaktır. Eski veriler belirli bir Windows/uygulama ayarları kümesi veya bir kullanıcıya ait tüm ayarlar olabilir. Örnek:
 
 * Hiçbir cihaz belirli bir ayarlar koleksiyonuna erişiyorsa (örneğin, bir uygulama cihazdan kaldırılırsa veya bir kullanıcının aygıtları için "Tema" gibi bir ayar grubu devre dışı bırakılmışsa), bu koleksiyon saklama süresinden sonra eski hale gelir ve silinebilir . 
 * Bir Kullanıcı, tüm cihazlarında ayarları eşitlemeyi kapatmışsa, ayar verilerinin hiçbirine erişilmeyecektir ve bu kullanıcının tüm ayar verileri eskimiş olur ve saklama süresinden sonra silinebilir. 

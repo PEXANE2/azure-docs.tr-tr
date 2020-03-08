@@ -6,22 +6,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369873"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898397"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Örnek verilerle Azure Stream Analytics işi test etme
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda Azure Stream Analytics işi test etme
 
-Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen veriler üzerinde sorguları test edebilir veya Azure portalındaki yerel bir dosyadan örnek verileri karşıya yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](stream-analytics-live-data-local-testing.md) 'daki canlı verilerden veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)yerel olarak da test edebilirsiniz.
+Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Akış kaynaklarınızdaki gelen verilerde bulunan sorguları test edebilir veya Azure portalında yerel bir dosyadan örnek verileri yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](stream-analytics-live-data-local-testing.md) 'daki canlı verilerden veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)yerel olarak da test edebilirsiniz.
 
-## <a name="sample-incoming-data-from-input"></a>Girişten gelen veri örneği
+## <a name="automatically-sample-incoming-data-from-input"></a>Girişten gelen verileri otomatik olarak örnekle
 
-Azure Stream Analytics akış girişinden olayları otomatik olarak getirir. Varsayılan örnekteki sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesini ayarlayabilirsiniz.
+Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getirir. Varsayılan örnekteki sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesini ayarlayabilirsiniz.
 
 1. Azure Portal’da oturum açın.
 
@@ -98,6 +98,7 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 10. Tarayıcıda gösterilen sonuçları doğruladıktan sonra, işi **başlatabilirsiniz** .
 
 ## <a name="next-steps"></a>Sonraki adımlar
+* [Stream Analytics kullanarak bir IoT çözümü oluşturun](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Bu öğretici, ücretsiz olarak trafiği taklit edecek bir veri Oluşturucu ile uçtan uca bir çözüm oluşturmanıza kılavuzluk eder.
 
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 
@@ -105,4 +106,4 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 
 * [Azure Stream Analytics için girişleri anlayın](stream-analytics-add-inputs.md)
 
-* [Azure Stream Analytics çıkışları anlama](stream-analytics-define-outputs.md)
+* [Azure Stream Analytics çıkışlarını anlayın](stream-analytics-define-outputs.md)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cefd8472c23458b94c4da5ae3c239e9d427276bf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 54efe7b5c392ad2b4cc3a0de414e04951b268508
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760190"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674237"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -40,10 +40,12 @@ Bu hızlı başlangıçtaki adımların çoğunu gerçekleştirmek için Azure C
 Azure IoT uzantısını cloud shell örneğine ekleyin.
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Bulut kaynakları:
 
@@ -74,7 +76,7 @@ IoT Edge cihazı:
 >
 > IoT Core çalıştıran cihazlar da dahil olmak üzere kendi Windows cihazınızı IoT Edge yapılandırmaya hazırsanız, [Windows 'a Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge-windows.md)içindeki adımları izleyin.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
@@ -90,14 +92,14 @@ Aşağıdaki kod `IoTEdgeResources`kaynak grubunda ücretsiz bir **F1** hub olu�
 
    Aboneliğinizde zaten bir ücretsiz hub olduğu için hata alırsanız, SKU değerini **S1** olarak değiştirin. IOT hub'ı adı kullanılamıyor, bir hata alırsanız, başka birisi zaten bu ada sahip bir hub'ı olduğu anlamına gelir. Yeni bir ad deneyin.
 
-## <a name="register-an-iot-edge-device"></a>IoT Edge cihazı kaydetme
+## <a name="register-an-iot-edge-device"></a>IoT Edge cihazını kaydetme
 
 Yeni oluşturulan IoT hub'ına bir IoT Edge cihazı kaydedin.
-![Diyagram: bir IOT hub'ı kimlik ile bir cihaz kaydı](./media/quickstart/register-device.png)
+![diyagramı-bir cihazı IoT Hub kimliğiyle kaydetme](./media/quickstart/register-device.png)
 
 IoT hub'ınızla iletişim kurabilmesi amacıyla simülasyon cihazınız için bir cihaz kimliği oluşturun. Cihaz kimliği bulutta kalır ve fiziksel cihazla cihaz kimliği arasında bağlantı kurmak için benzersiz bir bağlantı dizesi kullanılır.
 
-IOT Edge cihazları sınıflardır ve tipik bir IOT cihazlarında farklı yönetilebilir olduğundan, bu kimlik ile IOT Edge cihazı için bildirmek `--edge-enabled` bayrağı.
+IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğinden, bu kimliği `--edge-enabled` bayrağıyla bir IoT Edge cihaz için olacak şekilde bildirin.
 
 1. Azure Cloud Shell'de aşağıdaki komutu girerek hub'ınızda **myEdgeDevice** adlı bir cihaz oluşturun.
 
@@ -105,7 +107,7 @@ IOT Edge cihazları sınıflardır ve tipik bir IOT cihazlarında farklı yönet
    az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
    ```
 
-   İlke anahtarları iothubowner hakkında bir hata alırsanız, cloud shell azure CLI IOT ext uzantısı'nın en son sürümünü çalıştırdığından emin olun.
+   İothubowner ilke anahtarları hakkında bir hata alırsanız, Cloud Shell 'nizin Azure-IoT uzantısının en son sürümünü çalıştırdığından emin olun.
 
 2. Fiziksel cihazınızla IoT Hub'daki kimliği arasında bağlantı oluşturan cihaz bağlantı dizesini alın.
 
@@ -120,7 +122,7 @@ IOT Edge cihazları sınıflardır ve tipik bir IOT cihazlarında farklı yönet
 ## <a name="install-and-start-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükleme ve başlatma
 
 Azure IoT Edge çalışma zamanını IoT Edge cihazınıza yükleyin ve cihaz bağlantı dizesiyle yapılandırın.
-![Diyagram - cihazda çalışma zamanını başlatma](./media/quickstart/start-runtime.png)
+![diyagramı-çalışma zamanını cihazda başlatın](./media/quickstart/start-runtime.png)
 
 IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Üç bileşeni vardır. **IoT Edge güvenlik arka plan programı** , IoT Edge aracısını başlatarak IoT Edge bir cihaz her önyüklendiğinde ve cihazı önyükleme başlatılır. **IoT Edge Aracısı** , IoT Edge hub 'ı da dahil olmak üzere IoT Edge cihazdaki modüllerin dağıtımını ve izlenmesini yönetir. **IoT Edge hub** , IoT Edge cihazdaki modüller arasındaki iletişimleri ve cihaz ile IoT Hub yönetir.
 
@@ -198,7 +200,7 @@ IoT Edge cihazınız yapılandırıldı. Bulutta dağıtılan modülleri çalı�
 ## <a name="deploy-a-module"></a>Modül dağıtma
 
 IoT Hub 'ye telemetri verileri gönderen bir modül dağıtmak için Azure IoT Edge cihazınızı buluttan yönetin.
-![Diyagram - modülü buluttan cihaza dağıtın](./media/quickstart/deploy-module.png)
+![diyagramı-buluttan cihaza modül dağıtma](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 

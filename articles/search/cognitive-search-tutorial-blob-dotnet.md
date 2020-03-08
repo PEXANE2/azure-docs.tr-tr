@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270009"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851144"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure C# Bloblarından aranabilir içerik oluşturmak IÇIN ve AI kullanın
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>İstemci oluşturma
 
-Ana altında `SearchServiceClient` sınıfının bir örneğini oluşturun.
+`Main`altında `SearchServiceClient` sınıfının bir örneğini oluşturun.
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > `SearchServiceClient` sınıfı, arama hizmetinize yönelik bağlantıları yönetir. Çok fazla bağlantı açmayı önlemek için, mümkünse uygulamanızda tek bir `SearchServiceClient` örneği paylaşmaya çalışmanız gerekir. Yöntemlerinin iş parçacığı bu tür paylaşımları etkinleştirmek için güvenlidir.
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>Hata sırasında programdan çıkmak için işlev Ekle
+
+Bu öğretici, dizin oluşturma işlem hattının her adımını anlamanıza yardımcı olmak için tasarlanmıştır. Programın veri kaynağı, Beceri, dizin veya dizin oluşturucuyu oluşturmasını önleyen kritik bir sorun varsa, sorun anlaşılması ve giderilmesi için, program hata iletisini ve çıkış çıkışını çıktı olarak çıkar.
+
+Programın çıkmasına gereken senaryoları işlemek için `Main` `ExitProgram` ekleyin.
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3-işlem hattını oluşturma
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 Başarılı bir istek için, yöntem oluşturulan veri kaynağını döndürür. İstekle ilgili bir sorun varsa (geçersiz parametre gibi), yöntem bir özel durum oluşturur.
 
-Şimdi yeni eklediğiniz `CreateOrUpdateDataSource` işlevini çağırmak için Main 'e bir satır ekleyin.
+Şimdi yeni eklediğiniz `CreateOrUpdateDataSource` işlevini çağırmak için `Main` bir satır ekleyin.
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-Main 'e aşağıdaki satırları ekleyin.
+`Main`için aşağıdaki satırları ekleyin.
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 Sınama sırasında, dizini birden çok kez oluşturmayı denediğinizden emin olabilirsiniz. Bu nedenle, oluşturmak üzere olduğunuz dizinin oluşturmayı denemeden önce zaten var olup olmadığını denetleyin.
 
-Main 'e aşağıdaki satırları ekleyin.
+`Main`için aşağıdaki satırları ekleyin.
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-Main 'e aşağıdaki satırları ekleyin.
+`Main`için aşağıdaki satırları ekleyin.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 Uyarılar bazı kaynak dosya ve beceri birleşimleri için geneldir ve her zaman bir sorunu belirtmez. Bu öğreticide, uyarılar zararsızdır (örneğin, JPEG dosyalarında bir metin girişi yok).
 
-Main 'e aşağıdaki satırları ekleyin.
+`Main`için aşağıdaki satırları ekleyin.
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ Dizin oluşturma işlemi tamamlandıktan sonra, tek tek alanların içeriğini d
 
 Doğrulama adımı olarak, tüm alanlar için dizini sorgulayın.
 
-Main 'e aşağıdaki satırları ekleyin.
+`Main`için aşağıdaki satırları ekleyin.
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Aşağıdaki kodu Main öğesine ekleyin. İlk try-catch, her alanın adı, türü ve öznitelikleri ile dizin tanımını döndürür. İkincisi, `Select` sonuçlara dahil edilecek alanları belirten parametreli bir sorgudur. Örneğin, `organizations`. `"*"` arama dizesi, tek bir alanın tüm içeriğini döndürür.
+`Main`için aşağıdaki kodu ekleyin. İlk try-catch, her alanın adı, türü ve öznitelikleri ile dizin tanımını döndürür. İkincisi, `Select` sonuçlara dahil edilecek alanları belirten parametreli bir sorgudur. Örneğin, `organizations`. `"*"` arama dizesi, tek bir alanın tüm içeriğini döndürür.
 
 ```csharp
 //Verify content is returned after indexing is finished

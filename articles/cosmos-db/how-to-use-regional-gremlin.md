@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 6bce69889910296f5ff28090e62cfe27c0640d95
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755026"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897857"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph hesabının bölgesel uç noktaları
 Azure Cosmos DB Graph veritabanı, uygulamaların birden çok okuma uç noktası kullanabilmesi için [küresel olarak dağıtılır](distribute-data-globally.md) . Birden çok konumda yazma erişimi gerektiren uygulamalar, [çok yöneticili](how-to-multi-master.md) bir özelliği etkinleştirmelidir.

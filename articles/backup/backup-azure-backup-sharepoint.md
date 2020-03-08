@@ -4,12 +4,12 @@ description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sun
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586487"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673278"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -133,7 +133,7 @@ Daha önce açıklandığı gibi DPM 'yi ve SharePoint grubunu yapılandırdıkt
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > DPM, Azure 'a farklı zamanlarda en fazla iki günlük yedekleme sağlar. Azure Backup Ayrıca, [ağ azaltma Azure Backup](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)kullanarak en yoğun ve yoğun saatlerde yedeklemeler IÇIN kullanılabilen WAN bant genişliği miktarını denetleyebilir.
+    > DPM, Azure 'a farklı zamanlarda en fazla iki günlük yedekleme sağlar. Azure Backup Ayrıca, [ağ azaltma Azure Backup](backup-windows-with-mars-agent.md#enable-network-throttling)kullanarak en yoğun ve yoğun saatlerde yedeklemeler IÇIN kullanılabilen WAN bant genişliği miktarını denetleyebilir.
     >
     >
 11. Seçtiğiniz yedekleme zamanlamalarına bağlı olarak, **çevrimiçi saklama Ilkesini belirtin** sayfasında günlük, haftalık, aylık ve yıllık yedekleme noktaları için bekletme ilkesini seçin.

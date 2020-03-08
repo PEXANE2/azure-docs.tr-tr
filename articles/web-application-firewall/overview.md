@@ -4,19 +4,19 @@ description: Bu makalede, Azure Web uygulaması güvenlik duvarı 'na (WAF) gene
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 03/06/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7b43a6bdac254493da8693b55158e15746e76dc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44bc8db5d8ada0378f8f9d0911ed398ba491d289
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502047"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851194"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>Azure Web Uygulaması Güvenlik Duvarı nedir?
 
-Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın yaygın olarak karşılaşılan ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. SQL ekleme ve siteler arası komut dosyası oluşturma en yaygın saldırı arasındadır.
+Web Uygulaması Güvenlik Duvarı (WAF) web uygulamalarınız için yaygın güvenlik açıklarına ve açıklardan yararlanma işlemlerine karşı merkezi bir koruma sağlar. Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. SQL ekleme ve siteler arası komut dosyası oluşturma en yaygın saldırı arasındadır.
 
 ![WAF 'ye Genel Bakış](media/overview/wafoverview.png)
 
@@ -24,7 +24,11 @@ Uygulama kodundaki saldırıların önlenmesi zor olur. Uygulama topolojisinin b
 
 Bir WAF çözümü, her bir Web uygulamasının güvenliğini sağlamak yerine, bilinen bir güvenlik açığına merkezi olarak yama yaparak bir güvenlik tehdidi üzerinde daha hızlı yanıt verebilir.
 
-WAF, Azure Application Gateway ve Azure ön kapılı hizmeti ile dağıtılabilir. Şu anda WAF, her bir hizmet için özelleştirilmiş özellikler içeriyor. Her hizmet için WAF özellikleri hakkında daha fazla bilgi için bkz. her hizmet için genel bakış.
+## <a name="supported-services"></a>Desteklenen hizmetler
+
+WAF, [azure Application Gateway](../application-gateway/overview.md) ve [Azure ön kapılı hizmeti](../frontdoor/front-door-overview.md)ile dağıtılabilir. Her iki hizmet de katman 7 (HTTP/S) yük dengeleyicilerine sahiptir, ancak Application Gateway bölgesel bir hizmettir ve ön kapıdır küresel bir hizmettir. WAF, her belirli hizmet için özelleştirilmiş özelliklere sahiptir.
+
+Daha fazla bilgi için her hizmet için WAF genel bakış bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

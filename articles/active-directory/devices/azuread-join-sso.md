@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773298"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672714"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Şirket içi kaynaklara yönelik SSO, Azure AD 'ye katılmış cihazlarda nasıl çalışacaktır?
 
@@ -24,11 +24,11 @@ Azure Active Directory (Azure AD) katılmış bir cihazın, kiracının bulut uy
 
 Bu makalede bunun nasıl çalıştığı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  Azure AD 'ye katılmış makineler kuruluşunuzun ağına bağlı değilse, bir VPN veya başka bir ağ altyapısı gerekir. Şirket içi SSO, şirket içi AD DS etki alanı denetleyicileriniz ile görüş satırı iletişimi gerektirir.
 
-## <a name="how-it-works"></a>Nasıl çalışır 
+## <a name="how-it-works"></a>Nasıl çalışır? 
 
 Yalnızca tek bir kullanıcı adını ve parolayı hatırlamanız gerektiğinden, SSO kaynaklarınızın erişimini basitleştirir ve ortamınızın güvenliğini geliştirir. Azure AD 'ye katılmış bir cihazla, kullanıcılarınız ortamınızdaki bulut uygulamalarına yönelik SSO deneyimine sahiptir. Ortamınızda bir Azure AD ve şirket içi AD varsa, muhtemelen, SSO deneyiminizin kapsamını şirket içi Iş kolu (LOB) Uygulamalarınız, dosya paylaşımlarınız ve yazıcılar için genişletebilirsiniz.
 
@@ -42,13 +42,13 @@ Hem Azure AD hem de şirket içi AD olan bir ortamda karma ortam de vardır. Kar
 Kullanıcının şirket içi ortamında Kerberos isteyen bir kaynağa erişim denemesi sırasında cihaz:
 
 1. Kullanıcının kimliğinin doğrulanmasını sağlamak için, bulunan DC 'ye şirket içi etki alanı bilgilerini ve Kullanıcı kimlik bilgilerini gönderir.
-1. AD ile Birleşik kaynaklara erişmek için kullanılan bir Kerberos [anahtar verme anahtarı (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) alır. AAD Connect etki alanı için TGT alma girişimi başarısız olursa (ilgili DCLocator zaman aşımı bir gecikmeye neden olabilir), kimlik bilgileri Yöneticisi girişleri denenir veya Kullanıcı hedef kaynak için kimlik bilgileri isteyen bir kimlik doğrulama açılır penceresi alabilir.
+1. AD ile Birleşik kaynaklara erişmek için kullanılan bir Kerberos [anahtar verme anahtarı (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) alır. AAD Connect etki alanı için TGT alma girişimi başarısız olursa (ilgili DCLocator zaman aşımı bir gecikmeye neden olabilir), kimlik bilgileri Yöneticisi girişleri denenir veya Kullanıcı hedef kaynak için kimlik bilgileri isteyen bir kimlik doğrulama açılır penceresi alabilir.
 
 **Windows Ile tümleşik kimlik doğrulaması** için yapılandırılan tüm uygulamalar, bir Kullanıcı ERIŞMEYE çalıştığında SSO 'yu sorunsuz bir şekilde alır.
 
-Iş için Windows Hello, Azure AD 'ye katılmış bir cihazdan şirket içi SSO 'yu etkinleştirmek üzere ek yapılandırma gerektirir. Daha fazla bilgi için bkz. [iş Için Windows Hello 'yu kullanarak şirket Içi çoklu oturum açma Için Azure AD 'ye katılmış cihazları yapılandırma](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
+Iş için Windows Hello, Azure AD 'ye katılmış bir cihazdan şirket içi SSO 'yu etkinleştirmek üzere ek yapılandırma gerektirir. Daha fazla bilgi için bkz. [iş Için Windows Hello 'yu kullanarak şirket Içi çoklu oturum açma Için Azure AD 'ye katılmış cihazları yapılandırma](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Elde edecekleriniz
+## <a name="what-you-get"></a>Ne alacaksınız
 
 SSO ile, bir Azure AD 'ye katılmış cihazda şunları yapabilirsiniz: 
 

@@ -3,12 +3,12 @@ title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
 description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622804"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673186"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
@@ -740,4 +740,4 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 Windows Server/Client Azure Backup hakkında daha fazla bilgi için:
 
 * [Azure Backup'a giriş](backup-introduction-to-azure-backup.md)
-* [Windows sunucularını yedekleme](backup-configure-vault.md)
+* [Windows sunucularını yedekleme](backup-windows-with-mars-agent.md)

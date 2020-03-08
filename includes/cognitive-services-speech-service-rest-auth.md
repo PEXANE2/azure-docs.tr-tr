@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168304"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669235"
 ---
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -20,9 +20,9 @@ Her istek bir yetkilendirme üst bilgisi gerektirir. Bu tablo, hangi üstbilgile
 | Ocp-Apim-Subscription-Key | Yes | Hayır |
 | Yetkilendirme: taşıyıcı | Yes | Yes |
 
-`Ocp-Apim-Subscription-Key` üst bilgisini kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örneğin:
+`Ocp-Apim-Subscription-Key` üst bilgisini kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örnek:
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ Erişim belirteci almak için, `Ocp-Apim-Subscription-Key` ve abonelik anahtarı
 
 `issueToken` uç noktası şu biçimdedir:
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ Yanıtın gövdesi JSON Web Token (JWT) biçimindeki erişim belirtecini içerir
 
 Bu örnek, bir erişim belirteci almak için basit bir PowerShell Betiği verilmiştir. `YOUR_SUBSCRIPTION_KEY`, konuşma hizmeti abonelik anahtarınızla değiştirin. Doğru uç noktaya aboneliğinizi eşleşen bölgeyi kullandığınızdan emin olun. Bu örnek, şu anda Batı ABD için ayarlanmış.
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 cURL Linux (ve Linux için Windows alt sistemi) kullanılabilir komut satırı aracıdır. Bu cURL komutu bir erişim belirteci almak nasıl gösterir. `YOUR_SUBSCRIPTION_KEY`, konuşma hizmeti abonelik anahtarınızla değiştirin. Doğru uç noktaya aboneliğinizi eşleşen bölgeyi kullandığınızdan emin olun. Bu örnek, şu anda Batı ABD için ayarlanmış.
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 Bu C# sınıfı bir erişim belirteci almak nasıl gösterir. Konuşma hizmeti abonelik anahtarınızı sınıfı başlattığınızda geçirin. Aboneliğiniz Batı ABD bölgede değilse, `FetchTokenUri` değerini aboneliğinizin bölgesiyle eşleşecek şekilde değiştirin.
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367259"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894513"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -37,7 +37,7 @@ En yüksek kullanım süresi boyunca iş, her konak havuzu için geçerli çalı
 >[!NOTE]
 >*Sessionthresholdpercpu* , sanal makine üzerindeki oturum sayısını kısıtlamaz. Bu parametre yalnızca yeni VM 'Lerin, bağlantıların yük dengelenmesi için ne zaman başlatılması gerektiğini belirler. Oturum sayısını kısıtlamak için, *Maxsessionlimit* parametresini uygun şekilde yapılandırmak için [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) yönergelerini izlemeniz gerekir.
 
-En yoğun kullanım süresi boyunca, iş, hangi oturum ana bilgisayar VM 'lerinin *Minimumnumberofrdsh* parametresine bağlı olarak kapanması gerektiğini belirler. İş, konaklara bağlanan yeni oturumları engellemek için oturum ana bilgisayarları 'nı boşalt moduna ayarlar. *Limitsecondstoforcelogoffuser* parametresini sıfır olmayan pozitif bir değere ayarlarsanız, betik, şu anda oturum açmış olan kullanıcılar işlerini kaydetmek, yapılandırılan süreyi beklemek ve sonra kullanıcıları oturumu kapatmaya zorlayacaktır. Oturum Ana bilgisayar VM 'si üzerindeki tüm Kullanıcı oturumları oturumu kapatıldıktan sonra, betik sanal makineyi kapatır.
+En yoğun kullanım süresi boyunca, iş, hangi oturum ana bilgisayar VM 'lerinin *Minimumnumberofrdsh* parametresine bağlı olarak kapanması gerektiğini belirler. İş, konaklara bağlanan yeni oturumları engellemek için oturum ana bilgisayarları 'nı boşalt moduna ayarlar. *Limitsecondstoforcelogoffuser* parametresini sıfır olmayan pozitif bir değere ayarlarsanız, iş, oturum açmış olan tüm kullanıcılara, çalışmalarını kaydetmesi, yapılandırılan süreyi beklemesi ve ardından kullanıcıları oturumu kapatmaya zorlayacaktır. Oturum Ana bilgisayar VM 'si üzerindeki tüm Kullanıcı oturumları oturumu kapatıldıktan sonra, iş sanal makineyi kapatır.
 
 *Limitsecondstoforcelogoffuser* parametresini sıfır olarak ayarlarsanız, iş, belirtilen grup ilkelerindeki oturum yapılandırma ayarının kullanıcı oturumlarını kapatmayı işlemesine izin verir. Bu grup ilkelerini görmek için **bilgisayar yapılandırma** > **ilkeleri** ' ne gidin > **Yönetim Şablonları** > **Windows bileşenleri** > **Terminal** **sunucusu** > **oturum zaman sınırları**. >  Bir oturum ana bilgisayar VM 'sinde etkin bir oturum varsa, iş, oturum ana bilgisayar VM 'sini çalışır durumda bırakır. Etkin oturum yoksa, iş, oturum ana bilgisayarı sanal makinesini kapatır.
 

@@ -5,20 +5,20 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449675"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672003"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch işleme kullanma
 
 Azure Batch işleme kullanmanın birkaç yolu vardır:
 
-* API'ler:
+* GetVersionEx
   * Batch API 'Lerinden herhangi birini kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.
 * Komut satırı araçları:
   * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya [PowerShell](https://docs.microsoft.com/powershell/azure/overview) , toplu kullanım betiği için kullanılabilir.
@@ -32,7 +32,7 @@ Azure Batch işleme kullanmanın birkaç yolu vardır:
 
 Geliştirici olmayan ve Azure uzmanlarından sorumlu olmayan son kullanıcılar için Azure Batch işleme ve en basit yolu yapmanın en iyi yolu, doğrudan veya bir istemci uygulaması eklentisiyle çağrılan Batch Explorer uygulamasını kullanmaktır.
 
-## <a name="using-batch-explorer"></a>Batch Gezgini'ni kullanma
+## <a name="using-batch-explorer"></a>Batch Explorer kullanma
 
 İşleme gerçekleştirmek için Batch Explorer kullanmaya yönelik adım adım bir öğretici için, bkz. [blender öğreticisi](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
 
@@ -58,7 +58,8 @@ Batch Explorer 'daki ' Data ' bölümü, dosyaların yerel bir dosya sistemi ve 
 
 Eklentiler, bazı istemci uygulamaları için kullanılabilir.  Eklentiler, havuzların ve işlerin doğrudan uygulamadan oluşturulmasını sağlar veya Batch Explorer çağırır.
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918976"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894559"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Office 365 ' de çok coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
@@ -40,20 +40,20 @@ Office 365 için tüm coğrafyalar 'lar [, verilerinizin nerede bulunduğu](http
 
 Office 365 ' deki coğrafyalar çok coğrafi bölge için kullanılabilir:
 
-| Coğrafi | preferredDataLocation değeri |
+| Coğrafi Bölge | preferredDataLocation değeri |
 | --- | --- |
 | Asya Pasifik | Atlanan |
 | Avustralya | Au |
 | Kanada | ERIŞEBILIRSINIZ |
 | Avrupa Birliği | EUR |
 | Fransa | FRA |
-| Hindistan | IND |
+| Hindistan | BUL |
 | Japonya | JPN |
 | Güney Kore | KOR |
 | Güney Afrika | ZAF |
 | Birleşik Arap Emirlikleri | DEPOLANıR |
 | Birleşik Krallık | GBR |
-| Birleşik Devletler | NAM |
+| Amerika Birleşik Devletleri | NAM |
 
 * Coğrafi bölge bu tabloda listelenmediyse (örneğin, Güney Amerika), birden çok coğrafi bölge için kullanılamaz.
 
@@ -61,7 +61,7 @@ Office 365 ' deki coğrafyalar çok coğrafi bölge için kullanılabilir:
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Eşitleme için Azure AD Connect desteği
 
-Azure AD Connect, 1.1.524.0 ve üzeri sürümlerde **Kullanıcı** nesneleri Için **preferreddatalocation** özniteliği eşitlemesini destekler. Bu avantajlar şunlardır:
+Azure AD Connect, 1.1.524.0 ve üzeri sürümlerde **Kullanıcı** nesneleri Için **preferreddatalocation** özniteliği eşitlemesini destekler. Daha ayrıntılı şekilde belirtmek gerekirse:
 
 * Azure AD Bağlayıcısı 'ndaki nesne türü **Kullanıcı** şeması, **preferreddatalocation** özniteliğini içerecek şekilde genişletilir. Öznitelik türü, tek değerli dize.
 * Meta veri deposundaki **kişinin** nesne türü şeması, **preferreddatalocation** özniteliğini içerecek şekilde genişletilir. Öznitelik türü, tek değerli dize.
@@ -144,7 +144,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Adı | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
     | Açıklama | *Özel bir açıklama sağlayın* |  |
     | Bağlı sistem | *Şirket içi Active Directory bağlayıcısını seçme* |  |
-    | Bağlı sistem nesne türü | **User** |  |
+    | Bağlı sistem nesne türü | **Kullanıcısını** |  |
     | Meta veri deposu nesne türü | **Kişiler** |  |
     | Bağlantı türü | **Birleştir** |  |
     | Öncellik | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
@@ -154,7 +154,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    |Doğrudan | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştir |
+    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştir |
 
 7. Gelen kuralı oluşturmak için **Ekle**' yi seçin.
 
@@ -173,7 +173,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
     | Adı | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
     | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* ||
-    | Bağlı sistem nesne türü | **User** ||
+    | Bağlı sistem nesne türü | **Kullanıcısını** ||
     | Meta veri deposu nesne türü | **Kişiler** ||
     | Bağlantı türü | **Birleştir** ||
     | Öncellik | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
@@ -183,15 +183,15 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
-    | Cloudana kopyalı | Not QUAL | Doğru |
+    | Cloudana kopyalı | Not QUAL | True |
 
-    Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerini uygulanacağını belirler. Bu örnekte, "Azure AD – Kullanıcı kimliği" OOB (kullanıma hazır) eşitleme kuralında aynı kapsam filtresini kullanırız. Eşitleme kuralının şirket içi Active Directory eşitlenmemiş **Kullanıcı** nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
+    Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerini uygulanacağını belirler. Bu örnekte, "Azure AD – Kullanıcı kimliği" OOB (kullanıma hazır) eşitleme kuralında aynı kapsam filtresini kullanırız. Eşitleme kuralının, şirket içi Active Directory eşitlenmemiş **Kullanıcı** nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 
 6. **Dönüştürme** sekmesine gidin ve aşağıdaki dönüştürme kuralını uygulayın:
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Doğrudan | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştir |
+    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye kapatın.
 
@@ -260,7 +260,6 @@ Yerleşik eşitleme zamanlayıcısını yeniden etkinleştirin:
 3. Exchange Online PowerShell 'i kullanarak posta kutusu bölgesinin doğru şekilde ayarlandığını doğrulayın.  
 ![Exchange Online PowerShell ekran görüntüsü](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Kiracınızın bu özelliği kullanabilmesi için işaretlenip işaretlenmediğini varsayarsak, posta kutusu doğru coğrafi bölge 'ye taşınır. Bu, posta kutusunun bulunduğu sunucu adına bakarak doğrulanabilir.
-4. Bu ayarın birçok posta kutusu üzerinde etkili olduğunu doğrulamak için [TechNet galerisinde](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e)betiği kullanın. Bu betik Ayrıca tüm Office 365 veri merkezlerinin sunucu ön eklerinin bir listesini içerir ve hangi coğrafi bölge içinde bulunur. Posta kutusunun konumunu doğrulamak için önceki adımda başvuru olarak kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

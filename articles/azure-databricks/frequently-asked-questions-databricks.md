@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971507"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671571"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks hakkında sık sorulan sorular
 
@@ -88,11 +88,20 @@ Bu soruna yönelik birkaç çözüm aşağıda verilmiştir:
 
 #### <a name="error-message"></a>Hata iletisi
 
-"Bulut sağlayıcısı başlatma hatası: küme ayarlanırken bir bulut sağlayıcısı hatasıyla karşılaşıldı. Daha fazla bilgi için Databricks kılavuzuna bakın. Azure hata kodu: Publicıpcountlimitulaşıldı. Azure hata iletisi: Bu bölgede bu abonelik için 60 taneden fazla genel IP adresi oluşturulamıyor. "
+"Bulut sağlayıcısı başlatma hatası: küme ayarlanırken bir bulut sağlayıcısı hatasıyla karşılaşıldı. Daha fazla bilgi için Databricks kılavuzuna bakın. Azure hata kodu: Publicıpcountlimitulaşıldı. Azure hata iletisi: Bu bölgede bu abonelik için 10 ' dan fazla genel IP adresi oluşturulamaz. "
+
+#### <a name="background"></a>Arka plan
+
+Databricks kümeleri düğüm başına bir genel IP adresi kullanır (sürücü düğümü dahil). Azure aboneliklerinin bölge başına [genel IP adresi limitleri](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) vardır. Bu nedenle, küme oluşturma ve ölçek artırma işlemleri, söz konusu bölgedeki bu aboneliğe ayrılan genel IP adresi sayısının sınırı aşmasına neden olursa başarısız olabilir. Bu sınır Ayrıca, Özel Kullanıcı tanımlı VM 'Ler gibi Databricks kullanımı için ayrılan genel IP adreslerini de içerir.
+
+Genel olarak, kümeler etkin olduklarında yalnızca genel IP adreslerini kullanır. Ancak, diğer kümeler sonlandırıldıktan sonra bile kısa bir süre boyunca `PublicIPCountLimitReached` hatalar gerçekleşmeye devam edebilir. Bunun nedeni, bir küme sonlandırıldığı sırada Databricks 'in Azure kaynaklarını geçici olarak önbelleğe alır. Kaynak önbelleğe alma, birçok yaygın senaryoda küme başlatma ve otomatik ölçeklendirme gecikmesini önemli ölçüde azaldığından, tasarım ile yapılır.
 
 #### <a name="solution"></a>Çözüm
 
-Databricks kümeleri düğüm başına tek bir genel IP adresi kullanır. Aboneliğiniz zaten tüm genel IP 'lerini kullanıyorsa, [kotayı artırmayı istemeniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)gerekir. **Sorun türü**olarak **Kota** ' i ve **Ağ: ARM** ' i **Kota türü**olarak seçin. **Ayrıntılar**' da genel IP adresi kotası artışı isteyin. Örneğin, sınırlarınız Şu anda 60 ise ve 100 düğümlü bir küme oluşturmak istiyorsanız, 160 için bir sınır artışı isteyin.
+Aboneliğiniz, belirli bir bölge için genel IP adresi sınırına zaten ulaştıysa, aşağıdakilerden birini veya birkaçını yapmanız gerekir.
+
+- Farklı bir Databricks çalışma alanında yeni kümeler oluşturun. Diğer çalışma alanının, aboneliğinizin genel IP adresi sınırına ulaştığınız bir bölgede bulunması gerekir.
+- [Genel IP adresi sınırınızı artırma isteği](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). **Sorun türü**olarak **Kota** ' i ve **Ağ: ARM** ' i **Kota türü**olarak seçin. **Ayrıntılar**' da genel IP adresi kotası artışı isteyin. Örneğin, sınırlarınız Şu anda 60 ise ve 100 düğümlü bir küme oluşturmak istiyorsanız, 160 için bir sınır artışı isteyin.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Sorun: küme ayarlanırken ikinci bir bulut sağlayıcısı türü başlatma hatası oluştu (MissingSubscriptionRegistration)
 
@@ -123,4 +132,3 @@ Azure portal genel yönetici olarak oturum açın. Azure Active Directory için 
 
 - [Hızlı başlangıç: Azure Databricks kullanmaya başlayın](quickstart-create-databricks-workspace-portal.md)
 - [Azure Databricks nedir?](what-is-azure-databricks.md)
-

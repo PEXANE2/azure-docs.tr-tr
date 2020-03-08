@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmetinde (aks) birden çok eş zamanlı Pod ile 
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596429"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897702"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Azure dosyaları ile kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
@@ -29,11 +29,13 @@ Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir 
 
 * *Standard_LRS* -standart yerel olarak yedekli depolama (LRS)
 * *Standard_GRS* -standart coğrafi olarak yedekli depolama (GRS)
+* *Standard_ZRS* -standart bölge yedekli depolama (GRS)
 * *Standard_RAGRS* -standart Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)
 * *Premium_LRS* -Premium yerel olarak yedekli depolama (LRS)
+* *Premium_ZRS* -Premium bölge yedekli depolama (GRS)
 
 > [!NOTE]
-> Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerindeki Premium depolamayı destekler.
+> Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerinde Premium depolamayı destekler, en düşük Premium dosya paylaşma 100 GB 'dir
 
 Azure dosyaları için Kubernetes Depolama sınıfları hakkında daha fazla bilgi için bkz. [Kubernetes Depolama sınıfları][kubernetes-storage-classes].
 
@@ -48,11 +50,10 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
@@ -163,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Bağlama seçenekleri
 
-*FileMode* ve *dirmode* Için varsayılan değer, Kubernetes sürüm 1.9.1 ve üzeri için *0755* ' dir. Kuberetes sürüm 1.8.5 veya üzerini içeren bir küme kullanıyorsanız ve kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturursanız, depolama sınıfı nesnesinde bağlama seçenekleri belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
+*FileMode* ve *dirmode* Için varsayılan değer, Kubernetes sürüm 1.13.0 ve üzeri için *0777* ' dir. Kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturduğunuzda, bağlama seçenekleri depolama sınıfı nesnesinde belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
 
 ```yaml
 kind: StorageClass
@@ -174,16 +175,13 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
-
-1\.8.0-1.8.4 sürümünün bir kümesini kullanıyorsanız, *RunAsUser* değeri *0*olarak ayarlanmış bir güvenlik bağlamı belirtilebilir. Pod güvenlik bağlamı hakkında daha fazla bilgi için bkz. [güvenlik bağlamını yapılandırma][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

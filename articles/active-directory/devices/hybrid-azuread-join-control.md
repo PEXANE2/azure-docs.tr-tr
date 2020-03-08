@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512100"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672416"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -82,13 +82,13 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
 AD FS kullanıyorsanız, önce GPO 'YU AD FS sunucularınıza bağlayarak, yukarıda bahsedilen yönergeleri kullanarak istemci tarafı SCP 'yi yapılandırmanız gerekir. SCP nesnesi, cihaz nesneleri için yetki kaynağını tanımlar. Şirket içi veya Azure AD olabilir. İstemci tarafı SCP AD FS için yapılandırıldığında, cihaz nesneleri kaynağı Azure AD olarak oluşturulur.
 
 > [!NOTE]
-> AD FS sunucularınızda istemci tarafı SCP 'YI yapılandıradıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir. ADFS daha sonra, ADFS cihaz kaydının "Maximumınactivedays" özniteliğinde tanımlanan bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır. ADFS cihaz kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet 'i](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)kullanılarak bulunabilir.
+> AD FS sunucularınızda istemci tarafı SCP 'YI yapılandıradıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir. ADFS daha sonra, ADFS cihaz kaydının "Maximumınactivedays" özniteliğinde tanımlanan bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır. ADFS cihaz kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet 'i](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)kullanılarak bulunabilir.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows alt düzey cihazlarda karma Azure AD JOIN 'in denetimli doğrulaması
 
 Windows alt düzey cihazlarını kaydettirmek için kuruluşların Microsoft Indirme Merkezi ' nde [Windows 10 olmayan bilgisayarlar Için microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) yüklemesi gerekir.
 
-Paketi [Microsoft uç noktası Configuration Manager](https://docs.microsoft.com/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, sessiz parametre ile standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
+Paketi [Microsoft uç noktası Configuration Manager](/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, sessiz parametre ile standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
 
 Yükleyici, kullanıcı bağlamında çalışan sistemde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Bu görev, Azure AD ile kimlik doğrulamasından geçtikten sonra, Kullanıcı kimlik bilgileriyle cihazı Azure AD ile sessizce birleştirir.
 

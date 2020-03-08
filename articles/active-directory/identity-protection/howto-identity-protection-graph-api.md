@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b9bae1bd901325efdefeaa4db53df2d6b42b44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275897"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671615"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
 Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan dört API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Dördüncü API, **ıdentityriskevents**, [risk algılamaları](../reports-monitoring/concept-risk-events.md) ve ilgili bilgilerin listesi için Microsoft Graph sorgulamanızı sağlar. Identityriskevents API 'SI 10 Ocak 2020 tarihinde kullanım dışı bırakılacak. Bunun yerine **riskDetections** API 'sini kullanmanızı öneririz. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
 
-* [riskDetection API 'SI](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [riskyUsers API 'SI](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [Oturum açma API 'SI](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-* [ıdentityriskevents API 'si](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta) *10 Ocak 2020 ' de kullanım dışı* bırakılacak
+* [riskDetection API 'SI](/graph/api/resources/riskdetection?view=graph-rest-beta)
+* [riskyUsers API 'SI](/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [Oturum açma API 'SI](/graph/api/resources/signin?view=graph-rest-beta)
+* [ıdentityriskevents API 'si](/graph/api/resources/identityriskevent?view=graph-rest-beta) *10 Ocak 2020 ' de kullanım dışı* bırakılacak
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph 'a bağlanma
 
@@ -74,7 +74,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
    1. **Oturum açma URL 'si** metin kutusuna `http://localhost`yazın.
 
-   1. **Oluştur**’ tıklayın.
+   1. **Oluştur**'a tıklayın.
 1. **Ayarlar** sayfasını açmak için, uygulamalar listesinde, yeni oluşturduğunuz uygulama kaydına tıklayın. 
 1. **Uygulama kimliğini**kopyalayın.
 
@@ -124,7 +124,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
    1. **Anahtar açıklaması** metin kutusuna bir açıklama yazın (örneğin, *Azure AD risk algılama*).
    1. **Süre**olarak **1 yıl içinde**öğesini seçin.
-   1. **Save (Kaydet)** düğmesine tıklayın.
+   1. **Kaydet** düğmesine tıklayın.
    1. Anahtar değerini kopyalayın ve ardından güvenli bir konuma yapıştırın.   
    
    > [!NOTE]
@@ -224,7 +224,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 Tebrikler, Microsoft Graph için ilk çağrdınız yaptınız!  
 Artık kimlik riski algılamalarını sorgulayabilir ve verileri kullanabilirsiniz, ancak bunları kullanın.
 
-Microsoft Graph ve Graph API kullanarak uygulama oluşturma hakkında daha fazla bilgi edinmek için [Microsoft Graph sitesinde](https://developer.microsoft.com/graph) [belgelere](https://docs.microsoft.com/graph/overview) ve çok daha fazlasına göz atın. 
+Microsoft Graph ve Graph API kullanarak uygulama oluşturma hakkında daha fazla bilgi edinmek için [Microsoft Graph sitesinde](https://developer.microsoft.com/graph) [belgelere](/graph/overview) ve çok daha fazlasına göz atın. 
 
 İlgili bilgiler için bkz.:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016043"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672583"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -33,7 +33,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Çok faktörlü kimlik doğrulama
+   - Multi-factor authentication
    - Oturum açma risk denetimi
 - VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 
@@ -103,10 +103,10 @@ Bir kod bloğunun sağ üst köşesinde deneyin öğesini seçin.
 Cloud Shell’i tarayıcınızda açın.
 [Azure Portal](https://portal.azure.com)sağ üst köşesindeki menüdeki Cloud Shell düğmesini seçin.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.31 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 'Yı yüklemeye](https://docs.microsoft.com/cli/azure/install-azure-cli)yönelik makale.
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.31 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli)yönelik makale.
 
-1. [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) ile bir kaynak grubu oluşturun. 
-1. Desteklenen bir bölgede desteklenen bir dağıtım kullanarak [az VM Create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) Ile bir VM oluşturun. 
+1. [az group create](/cli/azure/group#az-group-create) ile bir kaynak grubu oluşturun. 
+1. Desteklenen bir bölgede desteklenen bir dağıtım kullanarak [az VM Create](/cli/azure/vm#az-vm-create) Ile bir VM oluşturun. 
 1. Azure AD oturum açma VM uzantısını yükler. 
 
 Aşağıdaki örnek, Win2019Datacenter kullanan myVM adlı bir VM 'yi, Güneydoğu bölgesinde myResourceGroup adlı bir kaynak grubuna dağıtır. Aşağıdaki örneklerde, gerektiğinde kendi kaynak grubunuzu ve sanal makine adlarınızı sağlayabilirsiniz.
@@ -128,7 +128,7 @@ az vm create \
 
 VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer.
 
-Son olarak, Azure AD oturum açma VM uzantısını yükleyerek Windows VM için Azure AD oturum açma özelliğini etkinleştirin. VM uzantıları, Azure sanal makinelerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. MyResourceGroup kaynak grubundaki myVM adlı VM 'ye AADLoginForWindows uzantısını yüklemek için [az VM Extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set komutunu kullanın:
+Son olarak, Azure AD oturum açma VM uzantısını yükleyerek Windows VM için Azure AD oturum açma özelliğini etkinleştirin. VM uzantıları, Azure sanal makinelerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. MyResourceGroup kaynak grubundaki myVM adlı VM 'ye AADLoginForWindows uzantısını yüklemek için [az VM Extension](/cli/azure/vm/extension#az-vm-extension-set) set komutunu kullanın:
 
 > [!NOTE]
 > Azure AD kimlik doğrulaması için etkinleştirmek üzere, mevcut bir Windows Server 2019 veya Windows 10 1809 ve sonraki bir sanal makineye AADLoginForWindows uzantısını yükleyebilirsiniz. AZ CLı örneği aşağıda gösterilmiştir.
@@ -152,8 +152,7 @@ VM 'yi oluşturduğunuza göre, VM 'de kimlerin oturum Açabili belirleyebilmek 
 
 > [!NOTE]
 > Bir kullanıcının VM 'de RDP üzerinden oturum açmasına izin vermek için, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma rolünü atamanız gerekir. Bir VM için atanan sahip veya katkıda bulunan rollerinin bulunduğu bir Azure kullanıcısının, sanal makinede RDP üzerinden oturum açma ayrıcalıkları otomatik olarak yoktur. Bu, sanal makineleri denetleyen kişi kümesi arasında, sanal makinelere erişebilen kişiler kümesiyle denetlenen ayırma sağlamaktır.
-
-VM için rol atamalarını yapılandırabileceğiniz birçok yol vardır:
+' VM için rol atamalarını yapılandırabileceğiniz birçok yol vardır:
 
 - Azure AD Portal deneyimini kullanma
 - Azure Cloud Shell deneyimini kullanma
@@ -175,9 +174,9 @@ Birkaç dakika sonra, güvenlik sorumlusu seçili kapsamda role atanır.
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Azure Cloud Shell deneyimini kullanma
 
-Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](https://docs.microsoft.com/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimleri](../../virtual-machines/linux/login-using-aad.md).
+Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimleri](../../virtual-machines/linux/login-using-aad.md).
 
-```AzureCLI
+```   zureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -188,14 +187,14 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa, `--assignee`için yalnızca Kullanıcı adını değil, `--assignee-object-id`Kullanıcı hesabınızın nesne KIMLIĞINI belirtmeniz gerekir. Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
+> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa, `--assignee`için yalnızca Kullanıcı adını değil, `--assignee-object-id`Kullanıcı hesabınızın nesne KIMLIĞINI belirtmeniz gerekir. Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
 
 Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [RBAC ve Azure CLı kullanarak Azure kaynaklarına erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetin](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
-
+- [RBAC ve Azure CLı kullanarak Azure kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-cli)
+- [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-portal)
+- [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetin](/azure/role-based-access-control/role-assignments-powershell).
+'
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma
 
 Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Windows VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden "Azure Windows VM oturum açma" uygulamasını seçmeniz ve ardından bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
@@ -212,7 +211,7 @@ Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak içi
 
 1. Azure AD oturum açma özelliği ile etkinleştirilen sanal makinenin genel bakış sayfasına gidin.
 1. **Bağlan** ' ı seçerek sanal makine bağlantısı dikey penceresini açın.
-1. Seçin **RDP dosyasını indir**.
+1. **RDP dosyasını indir**' i seçin.
 1. Uzak Masaüstü Bağlantısı istemcisini başlatmak için **Aç** ' ı seçin.
 1. Windows oturum açma iletişim kutusunu başlatmak için **Bağlan** ' ı seçin.
 1. Azure AD kimlik bilgilerinizi kullanarak oturum açın.
@@ -228,13 +227,12 @@ Artık Windows Server 2019 Azure sanal makinesinde, atanan VM kullanıcısı vey
 
 VM 'nin Azure AD JOIN işlemini tamamlaması için AADLoginForWindows uzantısının başarıyla yüklenmesi gerekir. VM Uzantısı doğru yüklenemediğinde aşağıdaki adımları gerçekleştirin.
 
-1. Yerel yönetici hesabını kullanarak VM 'ye RDP ile ve altındaki CommandExecution. log dosyasını inceleyin.  
+1. Yerel yönetici hesabını kullanarak VM 'ye RDP ile ve altındaki CommandExecuti'n. log dosyasını inceleyin  
    
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > Uzantı ilk hatadan sonra yeniden başlarsa, dağıtım hatasına sahip günlük CommandExecution_YYYYMMDDHHMMSSSSS. log olarak kaydedilir. 
-
+   > Uzantı ilk hatadan sonra yeniden başlarsa, dağıtım hatasına sahip günlük CommandExecution_YYYYMMDDHHMMSSSSS. log olarak kaydedilir. depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"
 1. VM 'de bir komut istemi açın ve Azure ana bilgisayarında çalışan Instance Metadata Service (ıMDS) uç noktasına karşı bu sorguları doğrulayın:
 
    | Çalıştırılacak komut | Beklenen çıkış |
@@ -338,7 +336,7 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 
 ![Kimlik bilgileriniz çalışmadı](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Uzak Masaüstü bağlantısını başlatmak için kullandığınız Windows 10 bilgisayarının Azure AD 'ye katılmış veya karma Azure AD 'nin, sanal makinenizin katıldığı Azure AD dizinine katılmış olduğu bir bağlantı olduğunu doğrulayın. Cihaz kimliği hakkında daha fazla bilgi için, [cihaz kimliği nedir](https://docs.microsoft.com/azure/active-directory/devices/overview)makalesine bakın.
+Uzak Masaüstü bağlantısını başlatmak için kullandığınız Windows 10 bilgisayarının Azure AD 'ye katılmış veya karma Azure AD 'nin, sanal makinenizin katıldığı Azure AD dizinine katılmış olduğu bir bağlantı olduğunu doğrulayın. Cihaz kimliği hakkında daha fazla bilgi için, [cihaz kimliği nedir](/azure/active-directory/devices/overview)makalesine bakın.
 
 > [!NOTE]
 > Windows 10 20 H1, sanal makinenize Uzak Masaüstü bağlantısı başlatmak için Azure AD kayıtlı bılgısayar desteği ekler. Windows 10 ' un yeni özelliklerine göz atın ve yeni özellikleri araştırmak için Windows Insider programı 'na katılarak.
@@ -355,7 +353,7 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 
 Kaynağa erişmeden önce Multi-Factor Authentication (MFA) gerektiren bir koşullu erişim ilkesi yapılandırdıysanız, sanal makinemize Uzak Masaüstü bağlantısı 'nı Başlatan Windows 10 BILGISAYARıN güçlü bir şekilde oturum açtığından emin olmanız gerekir Windows Hello gibi kimlik doğrulama yöntemi. Uzak Masaüstü bağlantınız için güçlü bir kimlik doğrulama yöntemi kullanmıyorsanız, önceki hatayı görürsünüz.
 
-Iş için Windows Hello dağıtmadıysanız ve bu şimdilik bir seçenek değilse, MFA gereksinimini hariç tutmak için "Azure Windows VM oturum açma" uygulamasını dışlayan koşullu erişim ilkesini yapılandırarak MFA gereksinimini hariç kılabilirsiniz. Iş için Windows Hello hakkında daha fazla bilgi edinmek için bkz. [iş Için Windows Hello 'Ya genel bakış](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+Iş için Windows Hello dağıtmadıysanız ve bu şimdilik bir seçenek değilse, MFA gereksinimini hariç tutmak için "Azure Windows VM oturum açma" uygulamasını dışlayan koşullu erişim ilkesini yapılandırarak MFA gereksinimini hariç kılabilirsiniz. Iş için Windows Hello hakkında daha fazla bilgi edinmek için bkz. [iş Için Windows Hello 'Ya genel bakış](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 > [!NOTE]
 > Windows 10 Windows 10 sürüm 1809 ' de RDP ile Iş için Windows Hello PIN kimlik doğrulaması desteklenir, ancak RDP ile biyometrik kimlik doğrulaması desteği eklenmiştir. RDP sırasında Iş için Windows Hello kimlik doğrulaması kullanılması yalnızca sertifika güven modeli kullanan dağıtımlar için kullanılabilir ve şu anda anahtar güven modeli için kullanılamaz.
@@ -365,4 +363,4 @@ Iş için Windows Hello dağıtmadıysanız ve bu şimdilik bir seçenek değils
 Bu önizleme özelliğiyle ilgili geri bildirimlerinizi paylaşabilirsiniz veya [Azure AD geri bildirim forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)kullanarak sorunları bildirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+Azure Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir](/azure/active-directory/fundamentals/active-directory-whatis) '

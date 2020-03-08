@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379655"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672722"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -68,8 +68,8 @@ Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöne
 
 Azure AD, varsayılan olarak, Azure AD JOIN 'in cihazdaki yönetici grubuna eklediği kullanıcıyı ekler. Normal kullanıcıların yerel yönetici haline gelmesini engellemek istiyorsanız aşağıdaki seçeneklere sahipsiniz:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) -Windows Autopilot, birincil kullanıcının bir yerel yönetici haline gelmesini önleyen bir seçenek sunar. Bunu, [bir Autopilot profili oluşturarak](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)gerçekleştirebilirsiniz.
-- [Toplu kayıt](https://docs.microsoft.com/intune/windows-bulk-enroll) -bir toplu kayıt bağlamında gerçekleştirilen BIR Azure AD JOIN, otomatik olarak oluşturulan bir kullanıcı bağlamında gerçekleşir. Bir cihaz birleştirildikten sonra oturum açan kullanıcılar Yöneticiler grubuna eklenmez.   
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) -Windows Autopilot, birincil kullanıcının bir yerel yönetici haline gelmesini önleyen bir seçenek sunar. Bunu, [bir Autopilot profili oluşturarak](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)gerçekleştirebilirsiniz.
+- [Toplu kayıt](/intune/windows-bulk-enroll) -bir toplu kayıt bağlamında gerçekleştirilen BIR Azure AD JOIN, otomatik olarak oluşturulan bir kullanıcı bağlamında gerçekleşir. Bir cihaz birleştirildikten sonra oturum açan kullanıcılar Yöneticiler grubuna eklenmez.   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>Bir cihazdaki kullanıcıyı el ile yükseltme 
 

@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931825"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851437"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
 
@@ -35,6 +35,7 @@ CLı 'yi yerel olarak veya Cloud Shell ' de çalıştırdığınız bağımsız 
 Bu bölümde Azure Cloud Shell bir örneğini başlatın. CLı 'yi yerel olarak kullanırsanız, [ıkı CLI oturumu hazırlama](#prepare-two-cli-sessions)bölümüne atlayın.
 
 Cloud Shell başlatmak için:
+
 1. Azure portal sağ üstteki menü çubuğunda **Cloud Shell** düğmesini seçin. 
 
     ![Azure portal Cloud Shell düğmesi](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ Cloud Shell başlatmak için:
     > [!NOTE]
     > Cloud Shell ilk kez kullandıysanız, Cloud Shell kullanmak için gerekli olan depolama alanı oluşturmanızı ister.  Depolama hesabı ve Microsoft Azure dosyaları paylaşma oluşturmak için bir abonelik seçin. 
 
-1. **Ortam Seç** açılan menüsünde tercıh ettiğiniz CLI ortamınızı seçin. Bu hızlı başlangıç, **Bash** ortamını kullanır. Aşağıdaki CLı komutlarının hepsi PowerShell ortamında da çalışır. 
+2. **Ortam Seç** açılan menüsünde tercıh ettiğiniz CLI ortamınızı seçin. Bu hızlı başlangıç, **Bash** ortamını kullanır. Aşağıdaki CLı komutlarının hepsi PowerShell ortamında da çalışır. 
 
     ![CLı ortamı seçin](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>İki CLı oturumu hazırlama
+
 Bu bölümde, iki Azure CLı oturumu hazırlarsınız. Cloud Shell kullanıyorsanız, iki oturumu ayrı tarayıcı sekmelerinde çalıştıracaksınız. Yerel bir CLı istemcisi kullanıyorsanız, iki ayrı CLı örneği çalıştıracaksınız. İlk oturumu bir sanal cihaz olarak, ikinci oturum ise iletileri izlemek ve göndermek için kullanacaksınız. Bir komut çalıştırmak için, bu hızlı başlangıçta bir kod bloğunu kopyalamak için **Kopyala** ' yı seçin, kabuk oturumunuza yapıştırın ve çalıştırın.
 
 Azure CLı, Azure hesabınızda oturum açmanızı gerektirir. Azure CLı kabuğu oturumunuz ile IoT Hub 'ınız arasındaki tüm iletişimin kimliği doğrulanır ve şifrelenir. Sonuç olarak, bu hızlı başlangıç, bağlantı dizesi gibi gerçek bir cihazla kullanacağınız ek kimlik doğrulamasına gerek kalmaz.
 
-1. CLı kabuğunuzun Azure CLı için Microsoft Azure IoT uzantısını eklemek için [az Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) komutunu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
+*  CLı kabuğunuzun Azure CLı için Microsoft Azure IoT uzantısını eklemek için [az Extension Add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) komutunu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Azure ıOT uzantısını yükledikten sonra, Cloud Shell oturumunda yeniden yüklemeniz gerekmez. 
+   
+   Azure ıOT uzantısını yükledikten sonra, Cloud Shell oturumunda yeniden yüklemeniz gerekmez. 
 
-1. İkinci bir CLı oturumu açın.  Cloud Shell kullanıyorsanız, **yeni oturum aç**' ı seçin. CLı 'yi yerel olarak kullanıyorsanız ikinci bir örnek açın. 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![Yeni Cloud Shell oturumu aç](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  İkinci bir CLı oturumu açın.  Cloud Shell kullanıyorsanız, **yeni oturum aç**' ı seçin. CLı 'yi yerel olarak kullanıyorsanız ikinci bir örnek açın. 
+
+    >[!div class="mx-imgBorder"]
+    >Yeni Cloud Shell oturum ![açın](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub'ı oluşturma
 Bu bölümde, bir kaynak grubu ve bir IoT Hub oluşturmak için Azure CLı 'yi kullanırsınız.  Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. IoT Hub, IoT uygulamanız ve cihazlar arasında çift yönlü iletişim için merkezi bir ileti hub 'ı olarak davranır. 

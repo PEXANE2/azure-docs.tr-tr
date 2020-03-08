@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 11/04/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f155d153ef7af8a83fb86a37cd1b9fa826ad2ff
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533436"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673644"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupi Not defterleri ile Azure Machine Learning araştırma
 
@@ -57,6 +57,6 @@ Veri Bilimi Sanal Makinesi (DSVM), özellikle veri bilimi yapmak için oluşturu
 
 Azure Machine Learning neler yapabileceğini öğrenmek için [örnek not defterlerini](https://aka.ms/aml-notebooks) bulun veya bu öğreticileri deneyin:
 
-- [Eğitmek ve bir görüntü sınıflandırma modeli MNIST ile dağıtma](tutorial-train-models-with-aml.md)
+- [IIST ile görüntü sınıflandırma modeli eğitme ve dağıtma](tutorial-train-models-with-aml.md)
 
-- [Veri hazırlama ve NYC taksi veri kümesiyle bir regresyon modeli eğitmek için otomatik makine öğrenimi kullanıyor](tutorial-auto-train-models.md)
+- [NYC TAXI veri kümesiyle bir regresyon modeli eğitmek için veri hazırlama ve otomatik makine öğrenimi kullanma](tutorial-auto-train-models.md)

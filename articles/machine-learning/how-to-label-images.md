@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772457"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898692"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme
 
@@ -23,7 +23,7 @@ Proje yöneticiniz Azure Machine Learning ' de [bir etiketleme projesi](https://
 > * Etiketleme Araçları
 > * Belirli etiketleme görevleri için araçları kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Çalışan bir veri etiketleme projesi için etiketleme portalı URL 'SI
 * Kuruluş ve proje için bir [Microsoft hesabı](https://account.microsoft.com/account) veya Azure Active Directory hesabı
@@ -58,6 +58,16 @@ Sayfadaki tüm görüntüleri etiketlediyseniz Azure, **Gönder** düğmesine iz
 
 Bir yandan veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyruğundan yeni bir görüntü kümesiyle yeniler.
 
+### <a name="assisted-machine-learning"></a>Yardımlı makine öğrenimi 
+
+Makine öğrenimi algoritmaları, çok sınıf veya çok etiketli bir sınıflandırma görevi sırasında tetiklenebilir. Bu algoritmalar projenizde etkinleştirilirse, aşağıdakileri görebilirsiniz:
+
+* Bazı görüntü miktarı etiketlendikten sonra, ekranın üst kısmında proje adının yanında **kümelenmiş görevler** görebilirsiniz.  Bu, görüntülerin aynı sayfada benzer görüntüleri sunmak için birlikte gruplandırılacağı anlamına gelir.  Bu durumda, gruplamanın avantajlarından yararlanmak için birden çok görüntü görünümünden birine geçin.  
+
+* Daha sonraki bir noktada, proje adının yanında **önceden etiketlenmiş görevler** görebilirsiniz.  Daha sonra görüntüler, bir makine öğrenimi sınıflandırma modelinden gelen önerilen bir etiketle birlikte görüntülenir. Makine öğrenimi modelinde %100 doğruluk yok. Yalnızca modelin kendine ait olduğu görüntüleri kullandığımızda, bu görüntüler hala hatalı olarak önceden etiketlenmiş olabilir.  Bu etiketleri gördüğünüzde, sayfayı göndermeden önce yanlış etiketleri düzeltin.  
+
+Özellikle etiketleme projesinde daha önce, makine öğrenimi modeli yalnızca küçük bir resim alt kümesini etiketlemek için yeterince doğru olabilir. Bu görüntülerin etiketlenmesi halinde etiketleme projesi, model eğitiminin bir sonraki turunda daha fazla veri toplamak için el ile etiketlemeye geri döner. Zamanla, model daha yüksek bir görüntü oranında daha emin olur ve daha sonra projede daha sonra daha fazla etiket görevi elde eder.
+
 ## <a name="tag-images-for-multi-class-classification"></a>Birden çok sınıf sınıflandırması için resimleri etiketleme
 
 Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle**' yi seçin.
@@ -81,6 +91,7 @@ Bir hata düzeltmek için "**X**" düğmesine tıklayarak tek bir etiketi temizl
 ![Bir ekran görüntüsü birden çok seçimi gösterir](./media/how-to-label-images/multiple-deselection.png)
 
 Azure yalnızca, her görüntüye en az bir etiket uyguladıktan sonra **Gönder** düğmesini etkinleştirir. Çalışmanızı kaydetmek için **Gönder** ' i seçin.
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Resimleri etiketleme ve nesne algılaması için sınırlayıcı kutuları belirtme
 
@@ -106,7 +117,7 @@ Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için, **tüm b�
 
 Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
 
-## <a name="finish-up"></a>Bitirme
+## <a name="finish-up"></a>Bitiş
 
 Etiketli verilerin bir sayfasını gönderdiğinizde Azure, bir iş kuyruğundan sizin için etiketlendirilmiş yeni veri atar. Etiketli daha fazla veri yoksa, bunu portal giriş sayfasının bağlantısı ile birlikte gösteren bir ileti alırsınız.
 

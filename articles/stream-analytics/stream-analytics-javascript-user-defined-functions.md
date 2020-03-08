@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426055"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851172"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Öğretici: Azure Stream Analytics JavaScript kullanıcı tanımlı işlevleri
  
 Azure Stream Analytics, JavaScript dilinde yazılmış kullanıcı tanımlı işlevleri destekler. JavaScript’in sağladığı **String**, **RegExp**, **Math**, **Array** ve **Date** yöntemlerinden oluşan zengin küme sayesinde Stream Analytics işleriyle karmaşık veri dönüşümlerini oluşturmak daha kolay hale gelir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * JavaScript kullanıcı tanımlı işlevi tanımlama
@@ -99,10 +99,10 @@ Azure Stream Analytics JavaScript kullanıcı tanımlı işlevleri standart, yer
 
 Stream Analytics sorgu dili ile JavaScript’in desteklediği türler arasında farklılıklar vardır. Bu tabloda ikisi arasındaki dönüştürme eşlemeleri listelenmektedir:
 
-Stream Analytics | JavaScript
+Akış Analizi | JavaScript
 --- | ---
 bigint | Sayı (JavaScript yalnızca tam olarak 2^53’e kadar tamsayıları temsil edebilir)
-Tarih Saat | Tarih (JavaScript yalnızca milisaniye birimini destekler)
+DateTime | Tarih (JavaScript yalnızca milisaniye birimini destekler)
 double | Sayı
 nvarchar(MAX) | Dize
 Kayıt | Nesne
@@ -113,10 +113,10 @@ NULL | Null
 JavaScript’ten Stream Analytics’e dönüşümler aşağıda verilmiştir:
 
 
-JavaScript | Stream Analytics
+JavaScript | Akış Analizi
 --- | ---
 Sayı | Bigint (sayı yuvarlak ve long.MinValue ile long.MaxValue arasındaysa; aksi takdirde iki katıdır)
-Tarih | Tarih Saat
+Tarih | DateTime
 Dize | nvarchar(MAX)
 Nesne | Kayıt
 Dizi | Dizi
@@ -147,7 +147,7 @@ SELECT
     DataString,
     DataValue,
     HexValue,
-    UDF.json_stringify(input) As InputEvent
+    UDF.jsonstringify(input) As InputEvent
 INTO
     output
 FROM

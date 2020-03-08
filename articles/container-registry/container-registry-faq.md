@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252073"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403216"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -241,7 +241,7 @@ Atanan e-, daha sonra kayıt defterindeki görüntülere kimlik doğrulaması ya
 
 * Bir görüntü çekmek için:
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 Örneğin, Fedora 28 sunucusu aşağıdaki Docker Daemon seçeneklerine sahiptir:
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 `--signature-verification=false` eksik olan `docker pull` şuna benzer bir hata ile başarısız olur:
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
 1. `--signature-verification=false` seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker`ekleyin. Örnek:
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. Aşağıdaki komutu çalıştırarak Docker Daemon hizmetini yeniden başlatın:
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 `--signature-verification` ayrıntıları, `man dockerd`çalıştırılarak bulunabilir.
 
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 `az acr build` komutuna yerel bir kaynak klasör geçirirseniz, `.git` klasörü varsayılan olarak karşıya yüklenen paketten çıkarılır. Aşağıdaki ayarla bir `.dockerignore` dosyası oluşturabilirsiniz. Komuta karşıya yüklenen pakette `.git` altındaki tüm dosyaları geri yüklemesini söyler. 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 Bu ayar `az acr run` komutu için de geçerlidir.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187483"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671801"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde JWT belirteci veren için teknik profil tanımlama
 
@@ -56,6 +56,7 @@ Aşağıdaki örnek, `JwtIssuer`için bir teknik profil gösterir:
 | allow_infinite_rolling_refresh_token | Hayır | `true`olarak ayarlanırsa, yenileme belirteci kayan pencere ömrü hiçbir zaman dolmaz. |
 | Issuanceclaımpattern | Hayır | Veren (İSS) talebini denetler. Değerlerden biri:<ul><li>AuthorityAndTenantGuid-ISS talebi, `login.microsoftonline` veya `tenant-name.b2clogin.com`gibi etki alanı adınızı ve kiracı tanımınızı https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp-ISS talebi, `login.microsoftonline` veya `tenant-name.b2clogin.com`, kiracı tanımınız ve bağlı olan taraf ilkesi adı gibi etki alanı adınızı içerir. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Varsayılan değer: AuthorityAndTenantGuid |
 | Authenticationcontextreferenceclaımpattern | Hayır | `acr` talep değerini denetler.<ul><li>Hiçbiri-Azure AD B2C ACR talebini yayınmıyor</li><li>PolicyId-`acr` talebi, ilke adını içerir</li></ul>Bu değeri ayarlama seçenekleri TFP (güven çerçevesi ilkesi) ve ACR (kimlik doğrulama bağlamı başvurusu) ' dir. Bu değerin TFP olarak ayarlanması önerilir, değeri ayarlamak için `Key="AuthenticationContextReferenceClaimPattern"` `<Item>` olduğundan ve değerin `None`olduğundan emin olun. Bağlı olan taraf ilkenizde `<OutputClaims>` öğesi ekleyin, bu öğeyi `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`ekleyin. Ayrıca ilkenizin türünü içerdiğinden da emin olun `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|Refreshtokenusergünneyııd| Hayır | `/token` uç noktasına [erişim belirteci](authorization-code-flow.md#4-refresh-the-token) gönderi isteği yenileme sırasında yürütülmesi gereken bir Kullanıcı yolculuğunun tanımlayıcısı. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 

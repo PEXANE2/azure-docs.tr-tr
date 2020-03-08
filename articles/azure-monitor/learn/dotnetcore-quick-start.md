@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670636"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894825"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
@@ -24,10 +24,10 @@ Bu hızlı başlangıç, var olan bir ASP.NET Core Web uygulamasına Application
 
 Bu hızlı başlangıcı tamamlamak için:
 
-- Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra:
+- Aşağıdaki iş yükleriyle [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) ' i yükledikten sonra:
   - ASP.NET ve web geliştirme
   - Azure geliştirme
-- [.NET Core 2.0 SDK yükleme](https://www.microsoft.com/net/core)
+- [.NET Core 2.0 SDK yükleme](https://dotnet.microsoft.com/download)
 - Bir Azure Aboneliği ve var olan bir .NET Core web uygulaması gerekir.
 
 ASP.NET Core Web uygulamanız yoksa, [ASP.NET Core bir uygulama oluşturmak ve Application Insights eklemek](../../azure-monitor/app/asp-net-core.md) için adım adım kılavuzumuzu kullanabilirsiniz.
@@ -51,11 +51,11 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Ad**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**’ tıklayın.
+2. **Oluştur**'a tıklayın.
 
 
 

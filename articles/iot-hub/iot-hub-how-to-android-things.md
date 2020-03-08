@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883123"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673390"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak Android öğeleri için geliştirme
 
@@ -40,16 +40,16 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 1. Aşağıdaki komutları Azure Cloud Shell'de çalıştırarak IoT Hub CLI uzantısını ekleyin ve cihaz kimliğini oluşturun.
 
-   **Youriothubname** : Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **YourIoTHubName**: Bu yer tutucusunu IoT hub'ınız için seçtiğiniz adla değiştirin.
 
    **Myandroıdthingsdevice** : Bu, kayıtlı cihaz için verilen addır. Gösterildiği gibi Myandroıdthingsdevice kullanın. Cihazınız için farklı bir ad seçerseniz bu makalenin geri kalan bölümünde aynı adı kullanmanız ve örnek uygulamaları çalıştırmadan önce bunlarda da cihaz adını güncelleştirmeniz gerekir.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Yeni kaydettiğiniz cihazın *Cihaz bağlantı dizesini* almak için Azure Cloud Shell ' de aşağıdaki komutları çalıştırın. Aşağıda `YourIoTHubName` , IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+2. Yeni kaydettiğiniz cihazın *Cihaz bağlantı dizesini* almak için Azure Cloud Shell ' de aşağıdaki komutları çalıştırın. Aşağıdaki `YourIoTHubName`, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -79,7 +79,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 4. Android Studio ' de, "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" içinde bulunan Android projesini açın.
 
-5. Gradle. Properties dosyasını açın ve "Device_connection_string" değerini daha önce belirtilen cihaz bağlantı dizenizle değiştirin.
+5. Gradle. Properties dosyasını açın ve "Device_connection_string" öğesini daha önce belirtilen cihaz bağlantı dizenizle değiştirin.
  
 6. Çalıştır-Hata Ayıkla ' ya tıklayın ve bu kodu Android öğeleri cihazlarınıza dağıtmak için cihazınızı seçin.
 

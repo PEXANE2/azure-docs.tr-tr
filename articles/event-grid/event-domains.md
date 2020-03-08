@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511391"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898859"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid yönetmek için olay etki alanlarını anlama
 
@@ -43,13 +43,13 @@ Ayrıca, size tüm müşteri olaylarınızı yayımlayabilmeniz için tek bir u�
 
 Bir etki alanı ile, Azure 'un rol tabanlı erişim denetimi (RBAC) aracılığıyla her konu üzerinde ince bir yetkilendirme ve kimlik doğrulama denetimi edinirsiniz. Uygulamanızdaki her bir kiracıyı yalnızca erişim vermek istediğiniz konularda kısıtlamak için bu rolleri kullanabilirsiniz.
 
-Olay etki alanlarında RBAC, Event Grid ve Azure 'un geri kalanında aynı şekilde [yönetilen erişim denetimi](security-authentication.md#management-access-control) ile çalışmaktadır. Olay etki alanlarında özel rol tanımları oluşturmak ve zorlamak için RBAC kullanın.
+Olay etki alanlarında RBAC, Event Grid ve Azure 'un geri kalanında aynı şekilde [yönetilen erişim denetimi](security-authorization.md) ile çalışmaktadır. Olay etki alanlarında özel rol tanımları oluşturmak ve zorlamak için RBAC kullanın.
 
 ### <a name="built-in-roles"></a>Yerleşik roller
 
 Event Grid, RBAC 'nin olay etki alanlarıyla çalışmaya daha kolay hale getirmek için iki yerleşik rol tanımına sahiptir. Bu roller **Eventgrid Olayaboneliğine katkıda bulunan (Önizleme)** ve **Eventgrid eventsubscription Reader (Önizleme)** . Bu rolleri, olay etki alanındaki konulara abone olmaları gereken kullanıcılara atarsınız. Rol atamasını yalnızca kullanıcıların abone olmaları gereken konuya göre kapsamınız.
 
-Bu roller hakkında daha fazla bilgi için bkz. [Event Grid Için yerleşik roller](security-authentication.md#built-in-roles).
+Bu roller hakkında daha fazla bilgi için bkz. [Event Grid Için yerleşik roller](security-authorization.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Konulara abone olma
 
@@ -101,7 +101,7 @@ Olay etki alanlarıyla ilgili sınırlamalar ve Kotalar aşağıda verilmiştir:
 
 - olay etki alanı başına 100.000 konu 
 - Azure aboneliği başına 100 olay etki alanı 
-- Bir olay etki alanında konu başına 500 olay aboneliği
+- bir olay etki alanındaki Konu başına 500 olay aboneliği
 - 50 etki alanı kapsamı abonelikleri 
 - saniye başına 5.000 olay alma oranı (bir etki alanına)
 

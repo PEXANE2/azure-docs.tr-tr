@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616469"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675621"
 ---
 # <a name="operating-system-upgrade"></a>İşletim sistemi yükseltme
 Bu belgede, HANA büyük örneklerinde işletim sistemi yükseltmeleriyle ilgili ayrıntılar açıklanmaktadır.
@@ -58,11 +58,11 @@ Düzeltme eki uygulama, sistem yükseltmeleri ve müşteriler tarafından yapıl
   Doğru ağ performansına ve sistem kararlılığını sağlamak için, aşağıdaki uyumluluk tablosunda belirtilen eNIC ve Fnıc sürücülerinin işletim sistemine özgü sürümünün yüklendiğinden emin olmanız önerilir. Sunucular, uyumlu sürümlere sahip müşterilere dağıtılır. Bazı durumlarda, işletim sistemi/çekirdek düzeltme eki uygulama sırasında sürücülerin varsayılan sürücü sürümlerine geri alınacağını unutmayın. Uygun sürücü sürümünün işletim sistemi/çekirdek düzeltme eki uygulama işlemlerini çalıştırdığından emin olun.
        
       
-  |  İşletim sistemi satıcısı    |  İşletim sistemi paketi sürümü     |  eNIC sürücüsü  |  Fnıc sürücüsü |
-  |---------------|-------------------------|---------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   2.3.0.39    |   1.6.0.34   |
+  |  İşletim sistemi satıcısı    |  İşletim sistemi paketi sürümü     |  Üretici Yazılımı Sürümü  |  eNIC sürücüsü |  Fnıc sürücüsü | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Sürücü yükseltme ve eski RPM paketlerini Temizleme komutları

@@ -96,8 +96,12 @@
   items:
     - name: Event Grid kavramları
       href: concepts.md
-    - name: Güvenlik ve kimlik doğrulaması
-      href: security-authentication.md
+    - name: Güvenlik
+      items:
+        - name: Kimlik Doğrulaması
+          href: security-authentication.md
+        - name: Yetkilendirme
+          href: security-authorization.md
     - name: Teslim ve yeniden deneme
       href: delivery-and-retry.md
     - name: Olay filtreleme

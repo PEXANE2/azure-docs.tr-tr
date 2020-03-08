@@ -1,67 +1,74 @@
 ---
-title: Parola koruma işlemleri ve raporları-Azure Active Directory
-description: Azure AD parola koruması dağıtım sonrası işlemleri ve raporlama
+title: Şirket içi Azure AD parola korumasını etkinleştirme
+description: Şirket içi Active Directory Domain Services ortamı için Azure AD parola korumasını etkinleştirmeyi öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 03/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 4d4c0b0c6ec68c818f107c7e3e3241e4acc0edb7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377984"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671751"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD parola koruması işlem yordamları
+# <a name="enable-on-premises-azure-active-password-protection"></a>Şirket içi Azure etkin parola korumasını etkinleştir
 
-Şirket içi [Azure AD parola korumasını yüklemeyi](howto-password-ban-bad-on-premises-deploy.md) tamamladıktan sonra, Azure Portal yapılandırılması gereken birkaç öğe vardır.
+Kullanıcılar genellikle okul, spor ekibi veya çok büyük kişi gibi yaygın yerel sözcükleri kullanan parolalar oluşturur. Bu parolalar kolayca tahmin edilir ve sözlük tabanlı saldırılara karşı zayıftır. Kuruluşunuzda güçlü parolalar zorlamak için Azure Active Directory (Azure AD) parola koruması, genel ve özel yasaklanmış parola listesi sağlar. Bu yasaklanmış parola listesinde bir eşleşme varsa parola değiştirme isteği başarısız olur.
 
-## <a name="configure-the-custom-banned-password-list"></a>Özel yasaklanmış parola listesini yapılandırın
+Şirket içi Active Directory Domain Services (AD DS) ortamınızı korumak için Azure AD parola koruması 'nı şirket içi DC 'niz ile çalışacak şekilde yükleyip yapılandırabilirsiniz. Bu makalede, şirket içi ortamınız için Azure AD parola korumasının nasıl etkinleştirileceği gösterilmektedir.
 
-Kuruluşunuzun yasaklanmış parola listesini özelleştirme adımları için [özel yasaklanmış Password listesini yapılandırma](howto-password-ban-bad-configure.md) makalesindeki yönergeleri izleyin.
+Azure AD parola korumasının şirket içi bir ortamda nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Windows Server Için Azure AD parola korumasını zorlama Active Directory](concept-password-ban-bad-on-premises.md).
 
-## <a name="enable-password-protection"></a>Parola korumasını etkinleştir
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Bu makalede, şirket içi ortamınız için Azure AD parola korumasının nasıl etkinleştirileceği gösterilmektedir. Bu makaleyi tamamlamadan önce, [Azure AD parola koruma proxy hizmetini ve DC aracılarını](howto-password-ban-bad-on-premises-deploy.md) şirket içi AD DS ortamınıza yükleyip kaydettirin.
+
+## <a name="enable-on-premises-password-protection"></a>Şirket içi parola korumasını etkinleştir
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** > **güvenlik** > **kimlik doğrulama yöntemlerine** > **parola korumasını**inceleyin.
-1. **Windows Server 'Da parola korumasını etkinleştir Active Directory** **Evet** olarak ayarlayın
-1. [Dağıtım kılavuzunda](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)bahsedildiği gibi, başlangıçta **modunun** **Denetim** olarak ayarlanması önerilir
-   * Özelliği rahatladıktan sonra, **modu** **Zorlanmış** olarak değiştirebilirsiniz
-1. **Kaydet**’e tıklayın
+1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Evet*olarak ayarlayın.
 
-![Azure portal Azure AD parola koruma bileşenlerini etkinleştirme](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+    Bu ayar *Hayır*olarak ayarlandığında, tüm DAĞıTıLAN Azure AD parola koruma DC aracıları tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Doğrulama etkinliği gerçekleştirilmez ve denetim olayları oluşturulmaz.
 
-## <a name="audit-mode"></a>Denetim modu
+1. Başlangıçta **modunun** *Denetim*olarak ayarlanması önerilir. Özelliği ve kuruluşunuzdaki kullanıcılar üzerindeki etkisini rahat hale getiriyorsanız, **modu** *Zorlanmış*olarak geçirebilirsiniz. Daha fazla bilgi için, [işlem modlarında](#modes-of-operation)aşağıdaki bölüme bakın.
+1. Hazırlanıyor, **Kaydet**' i seçin.
 
-Denetim modu, "durum" modunda yazılımı çalıştırmanın bir yolu olarak hazırlanmıştır. Her DC Aracısı hizmeti, geçerli etkin ilkeye göre gelen bir parolayı değerlendirir. Geçerli ilke denetim modunda olacak şekilde yapılandırıldıysa, "kötü" parolalar olay günlüğü iletilerine neden olur ancak kabul edilir. Bu, denetim ve zorlama modu arasındaki tek farktır; diğer tüm işlemler aynı şekilde çalışır.
+    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
-> [!NOTE]
-> Microsoft, ilk dağıtımın ve testin her zaman denetim modunda başlamasını önerir. Daha sonra, var olan bir işlem işleminin zorla modu etkinleştirildikten sonra olumsuz olup olmayacağını tahmin etmek için olay günlüğündeki olayların izlenmesi gerekir.
+## <a name="modes-of-operation"></a>İşlem modları
 
-## <a name="enforce-mode"></a>Zorla modu
+Şirket içi Azure AD parola korumasını etkinleştirdiğinizde, *Denetim* modunu veya *zorlama* modunu kullanabilirsiniz. İlk dağıtımın ve testin her zaman denetim modunda başlamasını öneririz. Daha sonra, var olan bir işlem işleminin *zorla* modu etkinleştirildikten sonra olumsuz olup olmayacağını tahmin etmek için olay günlüğündeki girişlerin izlenmesi gerekir.
 
-Zorla modu, son yapılandırma olarak tasarlanmıştır. Yukarıdaki denetim modunda olduğu gibi, her DC Aracısı hizmeti, gelen parolaları geçerli etkin ilkeye göre değerlendirir. Ancak zorla modu etkinleştirilirse, ilkeye göre güvenli olmayan olarak kabul edilen bir parola reddedilir.
+### <a name="audit-mode"></a>Denetim modu
 
-Azure AD parola koruması DC Aracısı tarafından zorlama modunda bir parola reddedildiğinde, bir son kullanıcı tarafından görülen görünür etki, parolasının geleneksel şirket içi parola karmaşıklığı zorlaması tarafından reddedilip reddedildikleri ile aynıdır. Örneğin, bir Kullanıcı Windows logon\parola değiştirme ekranında aşağıdaki geleneksel hata iletisini görebilir:
+*Denetim* modu, "durum" modunda yazılımı çalıştırmanın bir yolu olarak hazırlanmıştır. Her Azure AD parola koruması DC Aracısı hizmeti, geçerli etkin ilkeye göre gelen bir parolayı değerlendirir.
 
-`Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
+Geçerli ilke denetim modunda olacak şekilde yapılandırıldıysa, "kötü" parolalar olay günlüğü iletilerine neden olur ancak işlenir ve güncelleştirilir. Bu davranış, denetim ve zorlama modu arasındaki tek farktır. Diğer tüm işlemler aynı şekilde çalışır.
+
+### <a name="enforced-mode"></a>Zorlanan mod
+
+*Zorlanan* mod, son yapılandırma olarak tasarlanmıştır. Denetim modunda olduğu gibi, her Azure AD parola koruması DC Aracısı hizmeti, gelen parolaları Şu anda etkin olan ilkeye göre değerlendirir. Ancak, zorlanan mod etkinleştirildiğinde, ilkeye göre güvenli olmayan olarak kabul edilen bir parola reddedilir.
+
+Azure AD parola koruması DC Aracısı tarafından zorlanan modda bir parola reddedildiğinde, Son Kullanıcı, parolasının geleneksel şirket içi parola karmaşıklığı zorlaması tarafından reddedildiğini görmek gibi benzer bir hata görür. Örneğin, bir Kullanıcı Windows oturum açma veya parola değiştirme ekranında aşağıdaki geleneksel hata iletisini görebilir:
+
+*"Parola güncelleştirilemiyor. Yeni parola için girilen değer, etki alanının uzunluk, karmaşıklık veya geçmiş gereksinimlerini karşılamıyor. "*
 
 Bu ileti birkaç olası sonuç için yalnızca bir örnektir. Belirli bir hata iletisi, güvenli olmayan bir parola ayarlamaya çalışan gerçek yazılıma veya senaryoya bağlı olarak değişebilir.
 
-Etkilenen son kullanıcıların, yeni gereksinimleri anlamak ve güvenli parolalar seçebilmeleri için BT personeli ile çalışması gerekebilir.
+Etkilenen son kullanıcıların, yeni gereksinimleri anlamak ve güvenli parolalar seçmek için BT personeli ile çalışması gerekebilir.
 
 > [!NOTE]
 > Zayıf bir parola reddedildiğinde, Azure AD parola korumasının istemci makine tarafından görüntülenmekte olan belirli bir hata iletisi üzerinde denetimi yoktur.
 
-## <a name="enable-mode"></a>Modu etkinleştir
-
-Bu ayar, varsayılan etkin (Evet) durumunda bırakılmalıdır. Bu ayarın devre dışı olarak yapılandırılması (Hayır), tüm dağıtılan Azure AD parola koruma DC aracılarının tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçmesine neden olur ve hiçbir doğrulama etkinliği yürütülecektir (örneğin, hatta denetim olayları). yayılır).
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD parola koruması için izleme](howto-password-ban-bad-on-premises-monitor.md)
+Kuruluşunuzun yasaklanmış parola listesini özelleştirmek için bkz. [Azure AD parola koruması özel yasaklanmış parola listesini yapılandırma](tutorial-configure-custom-password-protection.md).
+
+Şirket içi olayları izlemek için bkz. [on-Prem Azure AD parola korumasını izleme](howto-password-ban-bad-on-premises-monitor.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186242"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671919"
 ---
 # <a name="building-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
@@ -70,7 +70,7 @@ Bu denetim, karma Azure AD 'ye katılmış olan veya Intune 'da uyumlu bir şeki
 
 Koşullu erişim ilkesinin erişim denetimleri bölümü bir ilkenin nasıl uygulanacağını denetler.
 
-### <a name="grant"></a>Semantiği
+### <a name="grant"></a>İzin verme
 
 [Grant](concept-conditional-access-grant.md) , yöneticilere, erişimi engelleyebilecekleri veya izin verebileceği bir ilke zorlamasına yol sunar.
 
@@ -78,7 +78,7 @@ Koşullu erişim ilkesinin erişim denetimleri bölümü bir ilkenin nasıl uygu
 
 Erişimi engelle, yalnızca belirtilen atamalar altındaki erişimi engeller. Blok denetimi güçlüdür ve uygun bilgilerle silinmeli.
 
-#### <a name="grant-access"></a>Erişim izni verin
+#### <a name="grant-access"></a>Erişim verme
 
 İzin denetimi bir veya daha fazla denetimin zorlanmasını tetikleyebilir. 
 
@@ -131,6 +131,6 @@ Koşullu erişim ilkesi, zorlanmak için en azından aşağıdakileri içermelid
 
 [Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md)
 
-[Intune ile cihaz uyumluluğunu yönetme](https://docs.microsoft.com/intune/device-compliance-get-started)
+[Intune ile cihaz uyumluluğunu yönetme](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security ve koşullu erişim](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security ve koşullu erişim](/cloud-app-security/proxy-intro-aad)
