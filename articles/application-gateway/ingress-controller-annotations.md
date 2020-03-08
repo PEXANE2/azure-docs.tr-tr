@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373487"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi için ek açıklamalar 
 
@@ -24,7 +24,7 @@ Kubernetes giriş kaynağına, rastgele anahtar/değer çiftleri ile açıklama 
 
 Bir giriş kaynağının AGIC tarafından gözlenecek olması için `kubernetes.io/ingress.class: azure/application-gateway`ile **açıklanmalıdır** . Bu durumda yalnızca AGIC, söz konusu giriş kaynağıyla birlikte çalışır.
 
-| Ek açıklama anahtarı | Değer türü | Varsayılan değer | İzin Verilen Değerler
+| Ek açıklama anahtarı | Değer türü | Varsayılan Değer | İzin Verilen Değerler
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
 | [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |

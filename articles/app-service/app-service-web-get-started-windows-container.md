@@ -5,11 +5,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922304"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374024"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure'da özel Windows kapsayıcısı çalıştırma (Önizleme)
 
@@ -17,7 +17,7 @@ ms.locfileid: "75922304"
 
 Bu hızlı başlangıçta, bir Windows görüntüsünde ASP.NET uygulamasının Visual Studio 'dan [Docker Hub](https://hub.docker.com/) 'a nasıl dağıtılacağı gösterilmektedir. Uygulamayı Azure App Service bir özel kapsayıcıda çalıştırırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -79,7 +79,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 ## <a name="create-a-windows-container-app"></a>Windows kapsayıcı uygulaması oluşturma
 
-1. [Azure Portal]( https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal]( https://portal.azure.com) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 
@@ -103,7 +103,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 Azure işlemi tamamlandığında bir bildirim kutusu görüntülenir.
 
-![Dağıtım başarılı](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Dağıtım başarılı oldu](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. **Kaynağa git**'e tıklayın.
 

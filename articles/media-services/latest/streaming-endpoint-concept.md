@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562369"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395062"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
@@ -150,7 +150,7 @@ Tek bir akış uç noktası hem canlı hem de isteğe bağlı videoları akışa
 
     Müşterilerinizin temel olarak canlı içerik izlerken, ancak yalnızca isteğe bağlı içerikleri izlerken ve aynı akış uç noktasından sunulduğunda bir senaryoyu düşünün. İsteğe bağlı içeriğin düşük kullanımı, canlı içerik için daha iyi kaydedilecek önbellek alanı kaplar. Bu senaryoda, bir akış uç noktasından canlı içeriği ve başka bir akış uç noktasından uzun kuyruk içeriğini sunduğumuz için önereceğiz. Bu, canlı olay içeriğinin performansını iyileştirir.
     
-## <a name="scaling-streaming-with-cdn"></a>CDN ile akış ölçeklendirme
+## <a name="scaling-streaming-with-cdn"></a>CDN ile akışı ölçeklendirme
 
 Aşağıdaki makalelere bakın:
 

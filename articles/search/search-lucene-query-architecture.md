@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793563"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379736"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Tam metin aramasının Azure 'da nasıl çalıştığı Bilişsel Arama
 
-Bu makale, Lucene tam metin aramasının Azure Bilişsel Arama nasıl çalıştığını daha ayrıntılı olarak anlayabilmek isteyen geliştiricilere yöneliktir. Azure Bilişsel Arama metin sorguları için çoğu senaryoda beklenen sonuçları sorunsuz bir şekilde teslim eder, ancak bazen "kapalı" olarak görünen bir sonuç elde edebilirsiniz. Bu durumlarda, Lucene sorgu yürütme (sorgu ayrıştırma, sözcük analizi, belge eşleştirme, Puanlama) dört aşamasında bir arka plana sahip olmak, Sorgu parametrelerine veya dizin yapılandırmasına yönelik istenen değişiklikleri sunacak şekilde belirlemenize yardımcı olabilir sonucu. 
+Bu makale, Lucene tam metin aramasının Azure Bilişsel Arama nasıl çalıştığını daha ayrıntılı olarak anlayabilmek isteyen geliştiricilere yöneliktir. Metin sorguları için, Azure Bilişsel Arama çoğu senaryoda beklenen sonuçları hiç sorunsuz verecektir ama bazen biraz "konu dışı" görünen sonuçlar alabilirsiniz. Böyle durumlarda Lucene sorgu yürütmesinin dört aşaması (sorgu ayrıştırma, sözcük analizi, belge eşleştirme, puanlama) hakkında arka plan bilgilerine sahip olmak, istenen sonucu verecek belirli sorgu parametresi değişikliklerini ve dizin yapılandırmasını belirlemenize yardımcı olabilir. 
 
 > [!Note] 
 > Azure Bilişsel Arama tam metin araması için Lucene kullanır, ancak Lucene tümleştirmesi ayrıntılı değildir. Azure Bilişsel Arama için önemli olan senaryoları etkinleştirmek üzere Lucene işlevselliğini seçmeli olarak kullanıma sunar ve genişlettik. 
@@ -251,7 +251,7 @@ Bu, arama ve dizin oluşturma işlemlerinde aynı Çözümleyicileri kullanmak i
 
 Örneğimize dönerek, **başlık** alanı için ters dizin şöyle görünür:
 
-| Sözleşme Dönemi | Belge listesi |
+| Süre | Belge listesi |
 |------|---------------|
 | atman | 1 |
 | unun | 2 |
@@ -265,21 +265,21 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 
 **Açıklama** alanı için dizin aşağıdaki gibidir:
 
-| Sözleşme Dönemi | Belge listesi |
+| Süre | Belge listesi |
 |------|---------------|
 | te | 3
-| 'nı ve | 4
+| ile | 4
 | unun | 1
 | Koşullu | 3
 | rahatlıkla | 3
-| Uzaklık | 1
+| distance | 1
 | Adası | 2
 | Kaua ʻ ı | 2
 | kutusunun | 2
 | Kuzeydoğu | 2
 | Hint | 1, 2, 3
 | / | 2
-| dayanır |2
+| üzerinde |2
 | sess | 4
 | Odaları  | 1, 3
 | bölümluded | 4
@@ -289,7 +289,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 | - | 1
 | görünüm | 1, 2, 3
 | İzlenecek | 1
-| kullanılarak | 3
+| şununla değiştirin | 3
 
 
 **Dizinli koşullara göre sorgu koşullarını eşleştirme**
@@ -360,7 +360,7 @@ Bunun ne kadar önemli olduğunu gösteren bir örnek. Önek aramaları dahil ol
 Azure Bilişsel Arama ilgi puanlarını ayarlamaya yönelik iki yol vardır:
 
 1. **Puanlama profilleri** , bir dizi kurala göre dereceli sonuçlar listesindeki belgeleri yükseltir. Örneğimizde, başlık alanında, açıklama alanında eşleşen belgelerden daha alakalı olan belgeleri kabul eteceğiz. Ayrıca, dizinimizin her otel için bir fiyat alanı varsa, belgeleri daha düşük fiyatla yükseltebiliriz. [Arama dizinine Puanlama profilleri ekleme](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) hakkında daha fazla bilgi edinin.
-2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir), sorgu ağacının herhangi bir bölümüne uygulanabilen `^` bir artırma işleci sağlar. Örneğimizde, *Hava durumu*\*ön koşul üzerinde arama yapmak yerine, biri *havayolu koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimiyle eşleşen belgeler, bir süre sorgusuna yükseltme uygulanarak daha yüksek bir şekilde derecelendirilir: * Hava durumu ^ 2 | | Hava durumu * *. [Terim artırma](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
+2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir), sorgu ağacının herhangi bir bölümüne uygulanabilen `^` bir artırma işleci sağlar. Örneğimizde, *Hava durumu*\*ön koşul için arama yapmak yerine, biri *havayolu koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine göre daha yüksek bir şekilde derecelendirilir: * hava koşulu ^ 2 | | Hava durumu * *. [Terim artırma](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Dağıtılmış dizindeki Puanlama
@@ -393,7 +393,7 @@ Bu makale, Azure Bilişsel Arama bağlamında tam metin aramasını araştırmak
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Belgelerde ara REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
 [Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 

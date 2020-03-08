@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: c4f5650e333c209d3b5f342c1f1c61ec1ca5cf47
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264297"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383426"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup için VM anlık görüntüsü Windows uzantısı
 
 Azure Backup, iş yüklerini Şirket içinden buluta yedeklemeye ve bulut kaynaklarını kurtarma hizmetleri kasasına yedeklemeye yönelik destek sağlar. Azure Backup VM 'yi kapatmaya gerek kalmadan Azure sanal makinesinin uygulamayla tutarlı bir yedeklemesini yapmak için VM anlık görüntü uzantısı 'nı kullanır. VM anlık görüntüsü uzantısı, Azure Backup hizmeti kapsamında Microsoft tarafından yayımlanır ve desteklenir. Azure Backup, uzantıyı ilk zamanlanan yedeklemenin bir parçası olarak yükleyecek ve yedeklemeyi etkinleştirmeyecektir. Bu belgede VM anlık görüntüsü uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 Desteklenen işletim sistemlerinin listesi için, [Azure Backup tarafından desteklenen Işletim sistemlerine](../../backup/backup-azure-arm-vms-prepare.md#before-you-start) bakın
@@ -57,7 +57,7 @@ Aşağıdaki JSON, VM Snapshot uzantısı için şemayı gösterir. Uzantı, gö
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü |
+| Adı | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | TaskID | e07354cf-041e-4370-929f-25a319ce8933_1 | string |
@@ -108,4 +108,4 @@ Sorun giderme bilgileri, [Azure VM yedeklemesi sorun giderme kılavuzunda](../..
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/forums/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514162"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380495"
 ---
 ::: zone target="docs"
 
@@ -34,16 +34,16 @@ Diskler bağlanıp kilidi açıldıktan sonra, kaynak veri sunucunuzdaki veriler
 
 Bu öğreticide ana bilgisayarınızdan veri kopyalama ve veri bütünlüğünü doğrulamak için sağlama toplamı oluşturma adımları anlatılmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Verileri Data Box Disk'e kopyalama
 > * Verileri doğrulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
-- [Öğretici: Azure Data Box Disk’i yükleme ve yapılandırma](data-box-disk-deploy-set-up.md)’yı tamamladınız.
+- [Öğretici: Azure Data Box Disk'inizi takma ve yapılandırma](data-box-disk-deploy-set-up.md) adımlarını tamamladınız.
 - Disklerinizin kilitleri açılır ve diskler bir istemci bilgisayara bağlanır.
 - Disklere veri kopyalamak için kullanılan istemci bilgisayar [Desteklenen işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) çalıştırmalıdır.
 - Verileriniz için hedeflenen depolama türünün [Desteklenen depolama türleri](data-box-disk-system-requirements.md#supported-storage-types-for-upload) ile eşleştiğinden emin olun.
@@ -106,8 +106,8 @@ Bilgisayarınızla Data Box Disk arasında bağlantı kurmak ve veri kopyalamak 
     |Hedef       | Hedef dizin yolunu belirtir.        |
     |/E                  | Boş dizinler dahil olmak üzere alt dizinleri kopyalar. |
     |/MT[:N]             | N iş parçacığına sahip çoklu iş parçacıklı kopyalama işlemleri oluşturur ve burada N, 1 ile 128 arasında bir tam sayıdır. <br>N için varsayılan değer 8 olarak belirlenmiştir.        |
-    |/R: \<N>             | Başarısız kopyalama işlemleri için yeniden deneme sayısını belirtir. N için varsayılan değer 1.000.000 (bir milyon yeniden deneme) olarak belirlenmiştir.        |
-    |/W: \<N>             | Yeniden deneme işlemleri arasındaki bekleme süresini saniye cinsinden belirtir. N için varsayılan değer 30 (30 saniyelik bekleme süresi) olarak belirlenmiştir.        |
+    |/R: \<N >             | Başarısız kopyalama işlemleri için yeniden deneme sayısını belirtir. N için varsayılan değer 1.000.000 (bir milyon yeniden deneme) olarak belirlenmiştir.        |
+    |/W: \<N >             | Yeniden deneme işlemleri arasındaki bekleme süresini saniye cinsinden belirtir. N için varsayılan değer 30 (30 saniyelik bekleme süresi) olarak belirlenmiştir.        |
     |/NFL                | Dosya adlarının günlüğü alınmayacağını belirtir.        |
     |/NDL                | Dizin adlarının günlüğü alınmayacağını belirtir.        |
     |/FFT                | FAT dosya sürelerini (iki saniyelik duyarlık) kullanır.        |
@@ -273,7 +273,7 @@ Veri kopyalama işlemi tamamlandıktan sonra verilerinizi doğrulamaya geçebili
 
 Verileri kopyalamak için Split Copy aracını kullanmadıysanız verilerinizi doğrulamanız gerekir. Verileri doğrulamak için aşağıdaki adımları uygulayın.
 
-1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
+1. Sağlama toplamı doğrulaması için sürücünüzün `DataBoxDiskValidation.cmd`DataBoxDiskImport*klasöründe* komutunu çalıştırın.
     
     ![Data Box Diski doğrulama aracı çıktısı](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -332,7 +332,7 @@ Birden fazla disk kullanırken ve tüm disklerde bölünüp kopyalanması gereke
 
 Verilerinizi doğrulamak için aşağıdaki adımları uygulayın.
 
-1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
+1. Sağlama toplamı doğrulaması için sürücünüzün `DataBoxDiskValidation.cmd`DataBoxDiskImport*klasöründe* komutunu çalıştırın.
 2. Dosyalarınızı doğrulamak ve sağlama toplamları oluşturmak için 2. seçeneği kullanın. Bu adım verilerinizin boyutuna bağlı olarak uzun sürebilir. Doğrulama ve sağlama toplamı alma sırasında herhangi bir hata olursa size bildirilir ve hata günlüklerine bir bağlantı sunulur.
 
     Veri doğrulama hakkında daha fazla bilgi için bkz. [Verileri doğrulama](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Doğrulama sırasında hatalarla karşılaşırsanız bkz. [. doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).

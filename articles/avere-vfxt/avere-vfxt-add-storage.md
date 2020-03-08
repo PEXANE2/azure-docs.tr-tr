@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372208"
 ---
 # <a name="configure-storage"></a>Depolama alanını yapılandırma
 
@@ -49,7 +49,7 @@ Bir NAS Core fili eklemek için aşağıdaki adımları izleyin:
 
 1. Sol taraftaki çekirdek **filers 'Yi yönetmek** > **çekirdek filme** ' ye tıklayın.
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 

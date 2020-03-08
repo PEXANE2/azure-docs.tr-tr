@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839472"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361316"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Analytics yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +29,7 @@ Bu makalede, Azure portal kullanılarak Azure Data Lake Analytics hesaplarının
 
 ### <a name="create-an-account"></a>Hesap oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Kaynak oluştur** > **ıntelligence + Analytics** > **Data Lake Analytics**' e tıklayın.
 3. Aşağıdaki öğeler için değerleri seçin: 
    1. **Ad**: Data Lake Analytics hesabının adı.
@@ -60,7 +60,7 @@ Data Lake Analytics aşağıdaki veri kaynaklarını destekler:
 
 Veri kaynaklarına gitmek ve temel dosya yönetimi işlemlerini gerçekleştirmek için Veri Gezgini kullanabilirsiniz. 
 
-### <a name="add-a-data-source"></a>Veri kaynağı ekleme
+### <a name="add-a-data-source"></a>Veri Kaynağı Ekle
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Veri kaynakları**' na tıklayın.
@@ -80,7 +80,7 @@ Azure Data Factory veya VM 'Ler gibi diğer Azure Hizmetleri Data Lake Analytics
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. Soldaki menüden **güvenlik duvarı**' na tıklayın.
 
-## <a name="add-a-new-user"></a>Yeni Kullanıcı Ekle
+## <a name="add-a-new-user"></a>Yeni kullanıcı ekleme
 
 Yeni Data Lake kullanıcılarını kolayca sağlamak için **Kullanıcı ekleme sihirbazını** kullanabilirsiniz.
 

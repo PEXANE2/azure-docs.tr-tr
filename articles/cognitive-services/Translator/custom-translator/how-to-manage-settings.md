@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381799"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
@@ -62,7 +62,7 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 1.  Çalışma alanı "ayarları" sayfasına gidin.
 2.  "Yeni çalışma alanı oluştur" bölümünde "yeni çalışma alanı" düğmesine tıklayın.
 
-    ![Yeni çalışma alanı oluşturma](media/how-to/create-new-workspace.png)
+    ![Yeni çalışma alanı oluştur](media/how-to/create-new-workspace.png)
 
 4.  İletişim kutusunda yeni çalışma alanının adını girin.
 5.  "Oluştur" a tıklayın.
@@ -85,11 +85,11 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
 ## <a name="sharing-permissions"></a>Paylaşım izinleri
 
-1.  **Okuyucu** Çalışma alanındaki bir okuyucu, çalışma alanındaki tüm bilgileri görüntüleyebilecektir.
+1.  **Okuyucu:** Çalışma alanındaki bir okuyucu, çalışma alanındaki tüm bilgileri görüntüleyebilecektir.
 
-2.  **Düzenleyen** Çalışma alanındaki bir düzenleyici belge ekleyebilir, modelleri eğitebilir ve belge ve projeleri silebilir. Abonelik anahtarı ekleyebilirler, ancak çalışma alanının kimlerle paylaşıldığını değiştiremezler, çalışma alanını silebilir veya çalışma alanı adını değiştirebilirsiniz.
+2.  **Düzenleyici:** Çalışma alanındaki bir düzenleyici belge ekleyebilir, modelleri eğitebilir ve belge ve projeleri silebilir. Abonelik anahtarı ekleyebilirler, ancak çalışma alanının kimlerle paylaşıldığını değiştiremezler, çalışma alanını silebilir veya çalışma alanı adını değiştirebilirsiniz.
 
-3.  **İnde** Bir sahibin çalışma alanı üzerinde tam izinleri vardır.
+3.  **Sahip:** Bir sahibin çalışma alanı üzerinde tam izinleri vardır.
 
 ## <a name="change-sharing-permission"></a>Paylaşım iznini Değiştir
 

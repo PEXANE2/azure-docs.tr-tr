@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548637"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358685"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Kendi IoT Edge modüllerinizi geliştirin
 
@@ -31,9 +31,9 @@ IOT Edge hub'ı iki ana işlevleri sağlar: IOT hub'ı ve yerel iletişimler pro
 
 IOT hub'ı öğesine anlamında bir cihaz için bir modül örneğinin görür:
 
-* ayrı ve ayrı olan bir modül ikizi sahip [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) ve bir modül ikizlerini aygıtın;
-* gönderebilmesi [CİHAZDAN buluta iletileri](../iot-hub/iot-hub-devguide-messaging.md);
-* alabileceği [doğrudan yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) kimliğini özel olarak hedeflenen.
+* Bu, farklı bir modül ikizi sahiptir ve [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) ve bu cihazın diğer modül TWINS 'i ile yalıtılmış.
+* [cihazdan buluta iletileri](../iot-hub/iot-hub-devguide-messaging.md)gönderebilir;
+* özellikle kendi kimliğine hedeflenmiş [doğrudan Yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) alabilir.
 
 Şu anda modüller, buluttan cihaza iletileri alamıyor veya karşıya dosya yükleme özelliğini kullanamıyor.
 

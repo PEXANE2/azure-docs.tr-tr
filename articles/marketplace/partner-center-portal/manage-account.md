@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927078"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385518"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -232,7 +232,7 @@ Iş Ortağı Merkezi hesabınıza eklemek için birden fazla grup seçerseniz, b
 
 Var olan bir grubu eklediğinizde, bu grubun üyesi olan her Kullanıcı, Iş Ortağı Merkezi hesabınıza, grubun atanan rolüyle ilişkili izinlerle erişebilecek.
 
-#### <a name="add-a-new-group"></a>Yeni bir grup ekleme
+#### <a name="add-a-new-group"></a>Yeni bir grup ekleyin
 
 Iş Ortağı Merkezi hesabınıza yepyeni bir grup eklemek için:
 
@@ -291,7 +291,7 @@ Azure AD uygulamanız Microsoft Azure AD verileri okuyup yazıyorsa, anahtar ger
 4. **ISTEMCI kimliği** ve **anahtar değerlerini**gösteren bir ekran görürsünüz. Bu sayfadan ayrıldıktan sonra bir daha erişemeyeceksiniz, bu bilgileri yazdırdığınızdan veya kopyalamadığınızdan emin olun.
 5. Daha fazla anahtar oluşturmak istiyorsanız **başka bir anahtar Ekle**' yi seçin.
 
-## <a name="define-user-roles-and-permissions"></a>Kullanıcı rollerini ve izinlerini tanımlama
+## <a name="define-user-roles-and-permissions"></a>Kullanıcı rollerini ve izinleri tanımlama
 
 Şirketinizin kullanıcılarına, Iş Ortağı Merkezi 'nde ticari Market programı için aşağıdaki roller ve izinler atanabilir:
 

@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164402"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377685"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -54,7 +54,7 @@ Bu örnek, Azure AD ile güvenli bir şekilde tek sayfalı uygulamanın nasıl y
 
 Aşağıdaki örneklerde, kullanıcıları imzalayan Web uygulamaları gösterilmektedir. Bu uygulamalardan bazıları Ayrıca, oturum açmış kullanıcının adında Microsoft Graph veya kendi Web API 'nizi de çağırır.
 
- Platform | Yalnızca kullanıcılar oturum açar | Microsoft Graph veya AAD grafiğini çağırır| Başka bir ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
+ Platform | Yalnızca kullanıcılar oturum açar | Çağrılar Microsoft Graph | Başka bir ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
  -------- | ------------------- | --------------------- | -------------------------
 ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WEBAPP-WebApi-Multitenant-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD grafiği) | [DotNet-WebApp-WebApi-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WEBAPP-Wsfederatıon-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-WebApi-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-Multitenant-openıdconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD grafiği) |
@@ -81,7 +81,7 @@ Aşağıdaki örneklerde, bir kullanıcı adına Microsoft Graph veya bir Web AP
 İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | Bir ASP.NET veya ASP.NET Core 2. x Web API 'SI çağırır
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 Masaüstü (WPF)           | ![Bu görüntüde .NET/C# logo gösterilmektedir](media/sample-v2-code/logo-net.png)  | Etkileşimli | [DotNet-Native-MultiTarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 'ın parçası | [DotNet-Yerel Masaüstü](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-yerel-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-WebApi-Manual-JWT-doğrulama](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-Mobil (UWP)            | ziyaret edin.![Bu görüntüde .NET/C#/UWP gösterilmektedir](media/sample-v2-code/logo-windows.png)   | Etkileşimli | [DotNet-yerel-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Bu örnek, [adal.net](https://aka.ms/adalnet) değil, [WAM](/windows/uwp/security/web-account-manager)kullanır|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (tek kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması) </p> [DotNet-WebApi-Multitenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (bir çok kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması)|
+Mobil (UWP)            | arasında yetersiz alanla karşılaştı.![Bu görüntüde .NET/C#/UWP gösterilmektedir](media/sample-v2-code/logo-windows.png)   | Etkileşimli | [DotNet-yerel-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Bu örnek, [adal.net](https://aka.ms/adalnet) değil, [WAM](/windows/uwp/security/web-account-manager)kullanır|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (tek kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması) </p> [DotNet-WebApi-Multitenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (bir çok kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması)|
 Mobil (Android, iOS, UWP)   | ![Bu görüntüde .NET/C# (Xamarin) gösterilmektedir](media/sample-v2-code/logo-xamarin.png) | Etkileşimli | [DotNet-Native-MultiTarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobil (Android)           | ![Bu resimde Android logosu gösterilir](media/sample-v2-code/logo-android.png) | Etkileşimli |   [Android](https://github.com/Azure-Samples/active-directory-android) |
 Mobil (iOS)           | ![Bu görüntüde iOS/amaç C veya Swift gösterilmektedir](media/sample-v2-code/logo-ios.png) | Etkileşimli |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
@@ -125,10 +125,6 @@ Azure AD ile kimlik doğrulaması da dahil olmak üzere Microsoft Graph API 'SI 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Geliştirici Kılavuzu Azure Active Directory](v1-overview.md)
-
-[Azure Active Directory kimlik doğrulama kitaplıkları](active-directory-authentication-libraries.md)
-
-[Azure AD Graph API kavramsal ve başvuru](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Azure AD Graph API Yardımcısı kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Geliştirici Kılavuzu Azure Active Directory](v1-overview.md)
+- [Azure Active Directory kimlik doğrulama kitaplıkları](active-directory-authentication-libraries.md)
+- [Microsoft Graph API kavramsal ve başvuru](https://docs.microsoft.com/graph/use-the-api)

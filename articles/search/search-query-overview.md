@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793211"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379638"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu türleri ve bileşimi
 
@@ -33,7 +33,7 @@ Aşağıdaki örnek, [REST API](https://docs.microsoft.com/rest/api/searchservic
 }
 ```
 
-+ **`queryType`** , [varsayılan basit sorgu ayrıştırıcısı](search-query-simple-examples.md) (tam metin araması için en uygun) veya normal ifadeler, yakınlık araması, bulanık ve gibi gelişmiş sorgu yapıları için kullanılan [tam Lucene sorgu ayrıştırıcısı](search-query-lucene-examples.md) olan ayrıştırıcısı ayarlar. birkaç tane olmak üzere joker karakter arama.
++ **`queryType`** , [varsayılan basit sorgu ayrıştırıcısı](search-query-simple-examples.md) olan (tam metin araması için en uygun) veya normal ifadeler, yakınlık araması, benzer ve joker karakter arama gibi gelişmiş sorgu yapıları için kullanılan [tam Lucene sorgu ayrıştırıcısının](search-query-lucene-examples.md) , birkaç kez ad vermek üzere bu ayrıştırıcısı ayarlar.
 
 + **`search`** , genellikle metin ve genellikle Boolean işleçlere eşlik eden, eşleşme ölçütlerini sağlar. Tek başına terimler, *terim* sorgulardır. Tırnak içine alınmış çok parçalı sorgular *anahtar tümceciği* sorgulardır. Arama, **`search=*`** gibi tanımsız olabilir, ancak büyük olasılıkla örnekte gösterilene benzer hüküm, tümcecik ve işleçlerden oluşur.
 
@@ -144,7 +144,7 @@ Kimi zaman, sonuçların yapısını değil, her zaman için. Sorgu sonuçları 
 + Metin veya sözcük temelli analiz gerekliyse sorgu tekniğini değiştirin, ancak sorgu türü, dil işlemesini önceden halizler. Tam metin aramasında, yazım hataları, tekil çoğul sözcük formları ve hatta düzensiz fiiller ya da isimler için metin veya sözlü analizler oto düzeltir. Benzer veya joker karakter araması gibi bazı sorgular için, metin Analizi sorgu ayrıştırma işlem hattının bir parçası değildir. Bazı senaryolarda, normal ifadeler geçici bir çözüm olarak kullanılmıştır. 
 
 ### <a name="paging-results"></a>Disk belleği sonuçları
-Azure Bilişsel Arama, arama sonuçlarının sayfalama uygulanmasını kolaylaştırır. **@No__t_1** ve **`skip`** parametrelerini kullanarak, iyi arama kullanıcı arabirimi uygulamalarını kolayca etkinleştiren, yönetilebilir, sıralı alt kümeler halinde toplam arama sonucu kümesini almanızı sağlayan arama isteklerini sorunsuz bir şekilde verebilirsiniz. Bu daha küçük sonuç alt kümelerini alırken, tüm arama sonuçları kümesindeki belge sayısını da alabilirsiniz.
+Azure Bilişsel Arama, arama sonuçlarının sayfalama uygulanmasını kolaylaştırır. **`top`** ve **`skip`** parametrelerini kullanarak, iyi arama kullanıcı arabirimi uygulamalarını kolayca etkinleştiren, yönetilebilir, sıralı alt kümeler halinde toplam arama sonucu kümesini almanızı sağlayan arama isteklerini sorunsuz bir şekilde verebilirsiniz. Bu daha küçük sonuç alt kümelerini alırken, tüm arama sonuçları kümesindeki belge sayısını da alabilirsiniz.
 
 Sayfalama arama sonuçları hakkında daha fazla bilgi edinmek [Için bkz. Azure bilişsel arama arama sonuçları sayfası](search-pagination-page-layout.md).
 

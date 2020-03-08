@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384782"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Ediyor</td><td>Doğrulamada</td><td>Doğrulama devam ediyor.</td>
+<td rowspan="2">Devam ediyor</td><td>Doğrulamada</td><td>Doğrulama devam ediyor.</td>
 </tr>
 <td>-</td>
 <td>Etkinlik penceresi işleniyor.</td>
@@ -207,10 +207,10 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 <td>Hazır</td><td>-</td><td>Etkinlik penceresi tüketimine hazırlanıyor.</td>
 </tr>
 <tr>
-<td>Atlanmış</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
+<td>Atlandı</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
+<td>Yok</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
 </tr>
 </table>
 
@@ -222,10 +222,10 @@ Listedeki bir etkinlik penceresine tıkladığınızda, **etkinlik Windows Gezgi
 ### <a name="refresh-activity-windows"></a>Etkinlik pencerelerini Yenile
 Ayrıntılar otomatik olarak yenilenmez. bu nedenle, etkinlik Windows listesini el ile yenilemek için Komut çubuğundaki Yenile düğmesini (ikinci düğme) kullanın.  
 
-### <a name="properties-window"></a>Özellikler penceresi
+### <a name="properties-window"></a>Özellik penceresi
 Özellikler penceresi, Izleme ve yönetim uygulamasının en sağ bölmesidir.
 
-![Özellikler penceresi](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![Özellik penceresi](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 Kaynak Gezgini (ağaç görünümü), Diyagram görünümü veya etkinlik pencereleri listesinde seçtiğiniz öğenin özelliklerini görüntüler.
 
@@ -244,7 +244,7 @@ Seçili Data Factory varlığının (bağlı hizmet, veri kümesi veya işlem ha
 ![Betik sekmesi](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Sistem Görünümlerini kullanma
-Izleme ve yönetim uygulaması, verileriniz için en son/başarısız/devam eden etkinlik pencerelerini görüntülemenize olanak tanıyan önceden oluşturulmuş sistem görünümlerini (**son etkinlik pencereleri**, **başarısız etkinlik pencereleri**, **devam eden etkinlik**pencereleri) içerir Çar.
+Izleme ve yönetim uygulaması, veri fabrikanızın son/başarısız/başarısız olan etkinlik pencerelerini görüntülemenize olanak tanıyan önceden oluşturulmuş sistem görünümlerini (**son etkinlik pencereleri**, **başarısız etkinlik pencereleri**, **devam eden etkinlik**pencereleri) içerir.
 
 Sol taraftaki **Izleme görünümleri** sekmesine tıklayarak bu sekmeye geçin.
 
@@ -270,7 +270,7 @@ Etkinlik pencerelerini filtrelemek için Komut çubuğundaki **Başlangıç saat
 
 ![Etkinlik Windows listesi sütun menüsü](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Şunları yapabilirsiniz:
+Bunu, aşağıdakileri yapabilirsiniz:
 
 * Artan sırada sıralayın.
 * Azalan sırada sıralayın.

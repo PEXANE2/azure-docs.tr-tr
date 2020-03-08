@@ -6,28 +6,28 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650662"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380865"
 ---
 # <a name="createuidefinition-functions"></a>Createuıdefinition işlevleri
 Bu bölüm bir Createuıdefinition 'ın desteklenen tüm işlevlerine yönelik imzaları içerir.
 
-Bir işlevi kullanmak için, bildirimi köşeli ayraçla çevreleyin. Örneğin:
+Bir işlevi kullanmak için, bildirimi köşeli ayraçla çevreleyin. Örnek:
 
 ```json
 "[function()]"
 ```
 
-Dizeler ve diğer işlevlere bir işlev için parametre olarak başvurulabilir, ancak dizeler tek tırnak işaretleri içine alınmalıdır. Örneğin:
+Dizeler ve diğer işlevlere bir işlev için parametre olarak başvurulabilir, ancak dizeler tek tırnak işaretleri içine alınmalıdır. Örnek:
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-Uygun olduğunda, nokta işlecini kullanarak bir işlevin çıktısının özelliklerine başvurabilirsiniz. Örneğin:
+Uygun olduğunda, nokta işlecini kullanarak bir işlevin çıktısının özelliklerine başvurabilirsiniz. Örnek:
 
 ```json
 "[func().prop1]"
@@ -66,7 +66,7 @@ Aşağıdaki örnek `"westus"`döndürebilir:
 ## <a name="string-functions"></a>Dize işlevleri
 Bu işlevler yalnızca JSON dizeleri ile kullanılabilir.
 
-### <a name="concat"></a>concat
+### <a name="concat"></a>Concat
 Bir veya daha fazla dizeyi birleştirir.
 
 Örneğin, `"bar"``element1` çıkış değeri varsa, bu örnek `"foobar!"`dize döndürür:
@@ -102,7 +102,7 @@ Aşağıdaki örnek `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`döndürebilir:
 "[guid()]"
 ```
 
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 Küçük harfe dönüştürülmüş bir dize döndürür.
 
 Aşağıdaki örnek `"foobar"`döndürür:
@@ -111,7 +111,7 @@ Aşağıdaki örnek `"foobar"`döndürür:
 "[toLower('FOOBAR')]"
 ```
 
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 Büyük harfe dönüştürülmüş bir dize döndürür.
 
 Aşağıdaki örnek `"FOOBAR"`döndürür:
@@ -156,7 +156,7 @@ Aşağıdaki örnek `true`döndürür:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>length
+### <a name="length"></a>{1&gt;length&lt;1}
 Bir dizedeki karakter sayısını, bir dizideki değerlerin sayısını veya bir nesnedeki anahtar sayısını döndürür.
 
 #### <a name="example-1-string"></a>Örnek 1: dize
@@ -229,7 +229,7 @@ Aşağıdaki örnek `false`döndürür:
 "[empty(steps('foo').element1)]"
 ```
 
-### <a name="first"></a>adı
+### <a name="first"></a>Adı
 Belirtilen dizenin ilk karakterini döndürür; belirtilen dizinin ilk değeri; veya belirtilen nesnenin ilk anahtarı ve değeri.
 
 #### <a name="example-1-string"></a>Örnek 1: dize
@@ -327,7 +327,7 @@ Aşağıdaki örnek `{"key1": "foobar"}`döndürür:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>Atla
+### <a name="skip"></a>Şimdilik
 Bir koleksiyonda belirtilen sayıda öğeyi atlar ve kalan öğeleri döndürür.
 
 #### <a name="example-1-string"></a>Örnek 1: dize
@@ -398,7 +398,7 @@ Aşağıdaki örnek `false`döndürür:
 "[less('9', '10')]"
 ```
 
-### <a name="lessorequals"></a>lessOrEquals
+### <a name="lessorequals"></a>Lessotalals
 İlk parametre ikinci parametreye eşit veya daha küçükse `true` döndürür. Bu işlev yalnızca number ve String türündeki parametreleri destekler.
 
 Aşağıdaki örnek `true`döndürür:
@@ -407,7 +407,7 @@ Aşağıdaki örnek `true`döndürür:
 "[lessOrEquals(2, 2)]"
 ```
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>ilerisi
 İlk parametre ikinci parametreden kesinlikle daha büyükse `true` döndürür. Bu işlev yalnızca number ve String türündeki parametreleri destekler.
 
 Aşağıdaki örnek `false`döndürür:
@@ -431,7 +431,7 @@ Aşağıdaki örnek `true`döndürür:
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>'nı ve
+### <a name="and"></a>ile
 Tüm parametrelerin `true`değerlendirmesi durumunda `true` döndürür. Bu işlev, yalnızca Boole türünden iki veya daha fazla parametreyi destekler.
 
 Aşağıdaki örnek `true`döndürür:
@@ -446,7 +446,7 @@ Aşağıdaki örnek `false`döndürür:
 "[and(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="or"></a>veya
+### <a name="or"></a>or
 Parametrelerden en az biri `true`olarak değerlendirilirse `true` döndürür. Bu işlev, yalnızca Boole türünden iki veya daha fazla parametreyi destekler.
 
 Aşağıdaki örnek `true`döndürür:
@@ -461,7 +461,7 @@ Aşağıdaki örnek `true`döndürür:
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>değil
+### <a name="not"></a>not
 Parametre `false`değerlendirilirse `true` döndürür. Bu işlev yalnızca Boole türündeki parametreleri destekler.
 
 Aşağıdaki örnek `true`döndürür:
@@ -635,7 +635,7 @@ Aşağıdaki örnek `"https://portal.azure.com/"`döndürür:
 "[decodeUriComponent('https%3A%2F%2Fportal.azure.com%2F')]"
 ```
 
-## <a name="math-functions"></a>Matematik İşlevleri
+## <a name="math-functions"></a>Matematik işlevleri
 ### <a name="add"></a>add
 İki sayı ekler ve sonucu döndürür.
 
@@ -687,7 +687,7 @@ Aşağıdaki örnek `2`döndürür:
 "[mod(6, 4)]"
 ```
 
-### <a name="min"></a>dk
+### <a name="min"></a>en küçük
 İki sayının küçük sayısını döndürür.
 
 Aşağıdaki örnek `1`döndürür:
@@ -705,7 +705,7 @@ Aşağıdaki örnek `2`döndürür:
 "[max(1, 2)]"
 ```
 
-### <a name="range"></a>aralık
+### <a name="range"></a>aralığı
 Belirtilen Aralık içinde bir integral sayı dizisi oluşturur.
 
 Aşağıdaki örnek `[1,2,3]`döndürür:
@@ -714,7 +714,7 @@ Aşağıdaki örnek `[1,2,3]`döndürür:
 "[range(1, 3)]"
 ```
 
-### <a name="rand"></a>rand
+### <a name="rand"></a>ran
 Belirtilen Aralık içinde rastgele bir integral sayı döndürür. Bu işlev, şifreli olarak güvenli rastgele sayılar oluşturmaz.
 
 Aşağıdaki örnek `42`döndürebilir:
@@ -742,7 +742,7 @@ Aşağıdaki örnek `4`döndürür:
 ```
 
 ## <a name="date-functions"></a>Tarih işlevleri
-### <a name="utcnow"></a>UtcNow
+### <a name="utcnow"></a>utcNow
 Yerel bilgisayardaki geçerli tarih ve saatin ISO 8601 biçiminde bir dize döndürür.
 
 Aşağıdaki örnek `"1990-12-31T23:59:59.000Z"`döndürebilir:

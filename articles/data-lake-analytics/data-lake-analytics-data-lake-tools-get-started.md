@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315783"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391828"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme
 
@@ -37,7 +37,7 @@ Bu makalede, Azure Data Lake Analytics hesapları oluşturmak için Visual Studi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Visual Studio**: Express dışındaki tüm sürümler desteklenir.
+* **Visual Studio**: Express dışında tüm sürümler desteklenir.
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -55,11 +55,11 @@ Bu öğretici, Visual Studio için Data Lake Araçları’nın yüklü olmasın�
 
 1. Visual Studio'yu açın.
 
-1. **Sunucu Gezgini** **Sunucu Gezgini** **göster** > ' i seçerek açın.
+1. **Sunucu Gezgini** , > **görüntüle** **Sunucu Gezgini**' i seçerek açın.
 
 1. **Azure**' a sağ tıklayıp **Microsoft Azure aboneliğine Bağlan**' ı seçin. **Hesabınızda oturum açmak için**yönergeleri izleyin.
 
-1. **Sunucu Gezgini**' de **Azure** > **Data Lake Analytics**' nı seçin. Data Lake Analytics hesaplarınızın listesini görürsünüz.
+1. **Sunucu Gezgini** **Azure** > **Data Lake Analytics**' yı seçin. Data Lake Analytics hesaplarınızın listesini görürsünüz.
 
 ## <a name="write-your-first-u-sql-script"></a>İlk U-SQL betiğinizi yazma
 
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics işi gönderme
 
-1. Visual Studio'da **dosya** > **yeni** > **proje**.
+1. Visual Studio 'da **dosya** > **Yeni** > **Proje**' yi seçin.
 
 1. **U-SQL proje** türünü seçin ve ardından **İleri**' yi seçin. **Yeni projenizi yapılandırın**bölümünde **Oluştur**' u seçin.
 
@@ -112,7 +112,7 @@ En son iş durumunu görmek ve ekranı yenilemek için **Yenile**' yi seçin.
 
 ## <a name="check-job-status"></a>İş durumunu kontrol etme
 
-1. **Sunucu Gezgini**' de **Azure** > **Data Lake Analytics**' nı seçin.
+1. **Sunucu Gezgini** **Azure** > **Data Lake Analytics**' yı seçin.
 
 1. Data Lake Analytics hesap adını genişletin.
 

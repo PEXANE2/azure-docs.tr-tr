@@ -7,28 +7,28 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
 ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274899"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381491"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Öğretici: Azure Red Hat OpenShift kümesi oluşturma
 
-Bu öğretici, bir serinin birinci bölümüdür. Azure CLı kullanarak Microsoft Azure Red Hat OpenShift kümesi oluşturmayı öğrenirsiniz, ölçeklendirerek kaynakları temizleyebilirsiniz.
+Bu öğretici, bir dizinin birinci bölümüdür. Azure CLı kullanarak Microsoft Azure Red Hat OpenShift kümesi oluşturmayı öğrenirsiniz, ölçeklendirerek kaynakları temizleyebilirsiniz.
 
 Serinin birinci bölümünde şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift kümesi oluşturun
+> * Azure Red Hat OpenShift kümesi oluşturma
 
 Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift kümesi oluşturun
+> * Azure Red Hat OpenShift kümesi oluşturma
 > * [Azure Red Hat OpenShift kümesini ölçeklendirme](tutorial-scale-cluster.md)
 > * [Azure Red Hat OpenShift kümesini silme](tutorial-delete-cluster.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!IMPORTANT]
 > Bu öğretici, Azure CLı 'nin sürüm 2.0.65 gerektirir.
@@ -229,7 +229,7 @@ Yukarıdaki adımları kullanarak belirteç değerini alamazsanız, belirteç de
 Öğreticinin bu bölümünde, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift kümesi oluşturun
+> * Azure Red Hat OpenShift kümesi oluşturma
 
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]

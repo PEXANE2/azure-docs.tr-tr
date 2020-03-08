@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516809"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365626"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Sanal dizisi dağıtma – Azure portal aracılığıyla bir Iscsı sunucusu olarak ayarlama
 
@@ -38,19 +38,19 @@ Burada açıklanan yordamların tamamlanması yaklaşık 30 dakika ila 1 saat s�
 StorSimple Sanal dizinizi yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
 * Sanal bir dizi sağladınız ve bu ağa bağlı [StorSimple Sanal dizisi dağıtma bölümünde açıklandığı şekilde, Hyper-V ' d e sanal dizi sağlama](storsimple-ova-deploy2-provision-hyperv.md) veya [StorSimple Sanal dizisi dağıtma-VMware 'de bir sanal dizi sağlama](storsimple-virtual-array-deploy2-provision-vmware.md).
-* StorSimple Sanal dizlerinizi yönetmek için oluşturduğunuz StorSimple Aygıt Yöneticisi hizmetinden hizmet kayıt anahtarınız vardır. Daha fazla bilgi için bkz **. 2. Adım:**  [StorSimple Sanal dizisi dağıtma](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)bölümünde hizmet kayıt anahtarını alın-portalı hazırlayın.
+* StorSimple Sanal dizlerinizi yönetmek için oluşturduğunuz StorSimple Aygıt Yöneticisi hizmetinden hizmet kayıt anahtarınız vardır. Daha fazla bilgi için bkz. 2. Adım: [StorSimple Sanal dizisi dağıtma](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)bölümünde **hizmet kayıt anahtarını alın** -portalı hazırlayın.
 * Bu, var olan bir StorSimple Aygıt Yöneticisi hizmetine kaydolduğunuz ikinci veya sonraki sanal diziyse, hizmet veri şifreleme anahtarınız olmalıdır. Bu anahtar, ilk cihaz bu hizmete başarıyla kaydedildiğinde oluşturulmuştur. Bu anahtarı kaybettiyseniz, [StorSimple Sanal dizinizi yönetmek Için Web Kullanıcı arabirimini kullanma](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)bölümündeki **hizmet veri şifreleme anahtarını edinme** bölümüne bakın.
 
 ## <a name="step-by-step-setup"></a>Adım adım kurulum
 
 StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım adım yönergeleri kullanın:
 
-* [1. Adım: Yerel Web Kullanıcı arabirimi kurulumunu tamamlayıp cihazınızı kaydedin](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* 2\. adım: Gerekli cihaz kurulumunu doldurun
-* [Adım 3: Birim ekleme](#step-3-add-a-volume)
-* [4. Adım: Bir birimi bağlama, başlatma ve biçimlendirme](#step-4-mount-initialize-and-format-a-volume)
+* [1. Adım: yerel Web UI kurulumunu doldurun ve cihazınızı kaydedin](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* 2\. Adım: gerekli cihaz kurulumunu doldurun
+* [3. Adım: birim ekleme](#step-3-add-a-volume)
+* [4. Adım: bir birimi bağlama, başlatma ve biçimlendirme](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1\. adım: Yerel Web Kullanıcı arabirimi kurulumunu tamamlayıp cihazınızı kaydedin
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>1\. Adım: yerel Web UI kurulumunu doldurun ve cihazınızı kaydedin
 
 #### <a name="to-complete-the-setup-and-register-the-device"></a>Kurulumu tamamlayıp cihazı kaydetme
 
@@ -61,7 +61,7 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
     Önceki adımda belirtilen bağlantı URL 'sini kullanın. Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu bildiren bir hata görürsünüz. **Bu Web sayfasına devam et ' e**tıklayın.
    
     ![Güvenlik sertifikası hatası](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
-2. Sanal cihazınızın Web Kullanıcı arabiriminde **Storsimpleadmin**olarak oturum açın. Adım 3 ' te değiştirdiğiniz cihaz yönetici parolasını girin: [StorSimple Sanal dizisinde sanal cihaz başlatın-Hyper-V ' d a sanal cihaz sağlayın](storsimple-virtual-array-deploy2-provision-hyperv.md) veya [StorSimple Sanal dizisi dağıtın-VMware 'de bir sanal cihaz sağlayın](storsimple-virtual-array-deploy2-provision-vmware.md).
+2. Sanal cihazınızın Web Kullanıcı arabiriminde **Storsimpleadmin**olarak oturum açın. Adım 3 ' te değiştirdiğiniz cihaz yönetici parolasını girin: [StorSimple Sanal dizisi dağıtma bölümünde sanal cihazı başlatma-Hyper-V ' d a sanal cihaz sağlama](storsimple-virtual-array-deploy2-provision-hyperv.md) veya [StorSimple Sanal dizisi dağıtma-VMware 'de bir sanal cihaz sağlama](storsimple-virtual-array-deploy2-provision-vmware.md).
    
     ![Oturum açma sayfası](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
 3. **Giriş** sayfasına yönlendirilirsiniz. Bu sayfada, sanal cihazı StorSimple Aygıt Yöneticisi hizmetiyle yapılandırmak ve kaydetmek için gereken çeşitli ayarlar açıklanmaktadır. **Ağ ayarları**, **Web proxy ayarları**ve **zaman ayarlarının** isteğe bağlı olduğunu unutmayın. Yalnızca **cihaz ayarları** ve **bulut ayarları**gereklidir.
@@ -77,11 +77,11 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
 5. Cihazınız bulut depolama hizmeti sağlayıcılarınız ile iletişim kurmaya çalıştığında veya bir dosya sunucusu olarak yapılandırıldıysa cihazınızı ada göre çözümlemek için kullanıldığından, DNS sunucuları gereklidir. **Ağ ayarları** sayfasında, **DNS sunucuları**altında:
    
    1. Birincil ve ikincil DNS sunucusu otomatik olarak yapılandırılır. Statik IP adreslerini yapılandırmayı seçerseniz, DNS sunucuları belirtebilirsiniz. Yüksek kullanılabilirlik için, birincil ve ikincil bir DNS sunucusu yapılandırmanızı öneririz.
-   2. **Uygula**'ya tıklayın. Bu, ağ ayarlarını uygular ve doğrular.
+   2. **Apply (Uygula)** düğmesine tıklayın. Bu, ağ ayarlarını uygular ve doğrular.
 6. **Cihaz ayarları** sayfasında:
    
    1. Cihazınıza benzersiz bir **ad** atayın. Bu ad 1-15 karakter olabilir ve harf, rakam ve kısa çizgi içerebilir.
-   2. Oluşturmakta olduğunuz cihaz **türü** için ![ **iSCSI sunucusu** simgesi](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) iSCSI sunucusu simgesine tıklayın. Bir Iscsı sunucusu, blok depolama sağlamanıza olanak tanır.
+   2. Oluşturduğunuz cihaz **türü** için iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) sunucusu simgesine ![**iSCSI** sunucusu simgesine tıklayın. Bir Iscsı sunucusu, blok depolama sağlamanıza olanak tanır.
    3. Bu cihazın etki alanına katılmış olmasını istediğinizi belirtin. Cihazınız bir Iscsı sunucusu ise, etki alanına katılma isteğe bağlıdır. Iscsı sunucunuzu bir etki alanına katmamaya karar verirseniz, **Uygula**' ya tıklayın, ayarların uygulanmasını bekleyin ve sonra bir sonraki adıma atlayın.
       
        Cihazı bir etki alanına katmak istiyorsanız. Bir **etki alanı adı**girin ve ardından **Uygula**' ya tıklayın.
@@ -90,10 +90,10 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
       > Iscsı sunucunuza bir etki alanına katılırken, sanal diziniz Microsoft Azure Active Directory için kendi kuruluş biriminde (OU) olduğundan ve buna hiçbir Grup İlkesi nesnesi (GPO) uygulanmadığından emin olun.
       > 
       > 
-   4. Bir iletişim kutusu görüntülenir. Etki alanı kimlik bilgilerinizi belirtilen biçimde girin. Onay simgesine tıklayın ![onay simgesi](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). Etki alanı kimlik bilgileri doğrulanacak. Kimlik bilgileri yanlışsa bir hata iletisi görürsünüz.
+   4. Bir iletişim kutusu görüntülenir. Etki alanı kimlik bilgilerinizi belirtilen biçimde girin. Onay simgesine tıklayarak ![onay simgesi](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)arasında yetersiz alanla karşılaştı. Etki alanı kimlik bilgileri doğrulanacak. Kimlik bilgileri yanlışsa bir hata iletisi görürsünüz.
       
-       ![kimlik bilgileri](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. **Uygula**'ya tıklayın. Bu işlem cihaz ayarlarını uygular ve doğrular.
+       ![Credentials](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
+   5. **Apply (Uygula)** düğmesine tıklayın. Bu işlem cihaz ayarlarını uygular ve doğrular.
 7. (İsteğe bağlı olarak) Web Proxy sunucunuzu yapılandırın. Web proxy yapılandırması isteğe bağlı olsa da, bir Web proxy 'si kullanıyorsanız, burada yalnızca yapılandırabilirsiniz.
    
     ![Web proxy 'yi yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
@@ -103,31 +103,31 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
    1. **Web proxy URL 'sini** şu biçimde sağlayın: *http:\//Host-IP adresi* veya *FQDN: bağlantı noktası numarası*. HTTPS URL 'Lerinin desteklenmediğini unutmayın.
    2. **Kimlik doğrulamasını** **temel** veya **yok**olarak belirtin.
    3. Kimlik doğrulaması kullanıyorsanız, ayrıca bir **Kullanıcı adı** ve **parola**sağlamanız gerekir.
-   4. **Uygula**'ya tıklayın. Bu, yapılandırılmış Web proxy ayarlarını doğrular ve uygular.
+   4. **Apply (Uygula)** düğmesine tıklayın. Bu, yapılandırılmış Web proxy ayarlarını doğrular ve uygular.
 8. (İsteğe bağlı olarak) cihazınız için saat dilimi ve birincil ve ikincil NTP sunucuları gibi zaman ayarlarını yapılandırın. Cihazınızın bulut hizmeti sağlayıcılarınız ile kimlik doğrulaması yapabilmesi için zaman eşitlemesini gerektiğinden NTP sunucuları gereklidir.
    
-    ![Saat ayarları](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
+    ![Zaman ayarları](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
    
     **Zaman ayarları** sayfasında:
    
    1. Aşağı açılan listeden, cihazın dağıtıldığı coğrafi konuma göre **saat dilimini** seçin. Cihazınızın varsayılan saat dilimi PST ' dir. Cihazınız zamanlanan tüm işlemler için bu saat dilimini kullanır.
    2. Cihazınız için bir **BIRINCIL NTP sunucusu** belirtin veya Time.Windows.com varsayılan değerini kabul edin. Ağınızın, NTP trafiğini veri merkezinizden İnternete geçirilmesine izin vermesini sağlayın.
    3. İsteğe bağlı olarak, cihazınız için bir **IKINCIL NTP sunucusu** belirtin.
-   4. **Uygula**'ya tıklayın. Bu, yapılandırılan zaman ayarlarını doğrular ve uygular.
+   4. **Apply (Uygula)** düğmesine tıklayın. Bu, yapılandırılan zaman ayarlarını doğrular ve uygular.
 9. Cihazınız için bulut ayarlarını yapılandırın. Bu adımda, yerel cihaz yapılandırmasını tamamlayacaksınız ve cihazı StorSimple Aygıt Yöneticisi hizmetinize kaydedecaksınız.
    
-   1. 2\. **adımda aldığınız **hizmet kayıt anahtarını** girin:**  [StorSimple Sanal dizisi dağıtma](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)bölümünde hizmet kayıt anahtarını alın-portalı hazırlayın.
+   1. 2\. adım: [StorSimple Sanal dizisi dağıtma](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)bölümünde **hizmet kayıt anahtarını alın** -portalı hazırlayın.
    2. Bu hizmete kaydolduğunuz ilk cihaz bu değilse, **hizmet veri şifreleme anahtarını**sağlamanız gerekir. Bu anahtar, StorSimple Aygıt Yöneticisi hizmetiyle ek cihazlar kaydetmek için hizmet kayıt anahtarıyla birlikte gereklidir. Daha fazla bilgi için yerel Web Kullanıcı arabiriminizdeki [hizmet veri şifreleme anahtarını edinme](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) bölümüne bakın.
    3. **Kaydol**' a tıklayın. Bu işlem cihazı yeniden başlatacak. Cihaz başarıyla kaydedilmeden önce 2-3 dakika beklemeniz gerekebilir. Cihaz yeniden başlatıldıktan sonra oturum açma sayfasına yönlendirilirsiniz.
       
-      ![Cihazı kaydet](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
+      ![Cihazı Kaydet](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Azure portalına dönün.
 11. Hizmetinizin **cihazlar** dikey penceresine gidin. Çok sayıda kaynağınız varsa **tüm kaynaklar**' a tıklayın, hizmet adı ' na tıklayın (gerekirse arama yapın) ve ardından **cihazlar**' a tıklayın.
 12. **Cihazlar** dikey penceresinde, durum ' u arayarak cihazın hizmete başarıyla bağlandığını doğrulayın. Cihazın durumu **Kuruluma hazır** olmalıdır.
     
-    ![Cihazı kaydet](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Cihazı Kaydet](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>2\. adım: Cihazı Iscsı sunucusu olarak yapılandırma
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>2\. Adım: cihazı Iscsı sunucusu olarak yapılandırma
 
 Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları gerçekleştirin.
 
@@ -154,9 +154,9 @@ Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları g
    
     ![Cihazı Iscsı sunucusu olarak yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
-## <a name="step-3-add-a-volume"></a>3\. adım: Birim ekleme
+## <a name="step-3-add-a-volume"></a>3\. Adım: birim ekleme
 
-1. **Cihazlar** dikey penceresinde, yeni bir iSCSI sunucusu olarak yapılandırdığınız aygıtı seçin. Tıklayın **..** . (alternatif olarak, bu satıra sağ tıklayın) ve bağlam menüsünden **Birim Ekle**' yi seçin. Ayrıca komut çubuğundan **+ Birim Ekle** ' ye de tıklayabilirsiniz. Bu, **Birim Ekle** dikey penceresini açar.
+1. **Cihazlar** dikey penceresinde, yeni bir iSCSI sunucusu olarak yapılandırdığınız aygıtı seçin. **..** . (Alternatif olarak bu satıra sağ tıklayın) ve bağlam menüsünden **Birim Ekle**' yi seçin. Ayrıca komut çubuğundan **+ Birim Ekle** ' ye de tıklayabilirsiniz. Bu, **Birim Ekle** dikey penceresini açar.
    
     ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis10m.png)
 2. **Birim Ekle** dikey penceresinde aşağıdakileri yapın:
@@ -167,11 +167,11 @@ Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları g
      
      Yerel olarak sabitlenmiş bir birim bol alanla sağlandı ve birimdeki birincil verilerin cihazda kalmasını ve buluta taşımamasını sağlar.
      
-     Diğer yandan katmanlı bir birim ölçülü kaynak temin edilir. Katmanlı bir birim oluşturduğunuzda, alanın yaklaşık% 10 ' u yerel katmanda sağlanır ve alanın% 90 ' unun bulutta sağlanması gerekir. Örneğin, 1 TB 'lik bir birim sağladıysanız, 100 GB yerel alanda yer alır ve veri katmanları sırasında bulutta 900 GB kullanılır. Buna karşılık bu, cihazdaki tüm yerel alanı kapatdıysanız katmanlı bir paylaşımın sağlayamayacağı (% 10 ' u kullanılamadığından) Bu da geçerlidir.
+     Diğer yandan katmanlı bir birim ölçülü kaynak temin edilir. Katmanlı bir birim oluşturduğunuzda, alanın yaklaşık %10 ' u yerel katmanda sağlanır ve alanın %90 ' unun bulutta sağlanması gerekir. Örneğin, 1 TB 'lik bir birim sağladıysanız, 100 GB yerel alanda yer alır ve veri katmanları sırasında bulutta 900 GB kullanılır. Buna karşılık bu, cihazdaki tüm yerel alanı kapatdıysanız katmanlı bir paylaşımın sağlayamayacağı (%10 ' u kullanılamadığından) Bu da geçerlidir.
      
      ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * **Bağlı konaklar**' a tıklayın, bu birime bağlamak istediğiniz iSCSI başlatıcısına karşılık gelen bir erişim denetimi kaydı (ACR) seçin ve ardından **Seç**' e tıklayın. <br><br> 
-3. Yeni bir bağlı konak eklemek için **Yeni Ekle**' ye tıklayın, ana bilgisayar ve Iscsı tam adı (IQN) için bir ad girin ve ardından **Ekle**' ye tıklayın. IQN yoksa, ek A 'ya [gidin: Bir Windows Server konağının](#appendix-a-get-the-iqn-of-a-windows-server-host)IQN 'sini alın.
+3. Yeni bir bağlı konak eklemek için **Yeni Ekle**' ye tıklayın, ana bilgisayar ve Iscsı tam adı (IQN) için bir ad girin ve ardından **Ekle**' ye tıklayın. IQN yoksa, [Ek A 'ya gidin: bir Windows Server KONAĞıNıN IQN 'Sini alın](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
       ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Biriminiz yapılandırmayı tamamladığınızda **Tamam**' a tıklayın. Belirtilen ayarlarla bir birim oluşturulur ve bir bildirim görürsünüz. Varsayılan olarak, izleme ve yedekleme birim için etkinleştirilir.
@@ -181,7 +181,7 @@ Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları g
    
    ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
-## <a name="step-4-mount-initialize-and-format-a-volume"></a>4\. Adım: Bir birimi bağlayın, başlatın ve biçimlendirin
+## <a name="step-4-mount-initialize-and-format-a-volume"></a>4\. Adım: bir birimi bağlama, başlatma ve biçimlendirme
 
 Bir Windows Server konağında StorSimple birimlerinizi bağlamak, başlatmak ve biçimlendirmek için aşağıdaki adımları gerçekleştirin.
 
@@ -194,7 +194,7 @@ Bir Windows Server konağında StorSimple birimlerinizi bağlamak, başlatmak ve
 3. **Hedef Portal Bul** iletişim kutusuna iSCSI etkin ağ arabiriminin IP adresini girin ve ardından **Tamam**’a tıklayın.
    
     ![IP adresi](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
-4. **iSCSI Başlatıcısı Özellikleri** penceresinin **Hedefler** sekmesinde **Bulunan hedefler**’i bulun. (Her birim bulunan bir hedef olacaktır.) Cihaz durumu **Etkin Olmayan** olarak görünmelidir.
+4. **iSCSI Başlatıcısı Özellikleri** penceresinin **Hedefler** sekmesinde **Bulunan hedefler**’i bulun. (Her birim bulunan bir hedef olacaktır.) Cihaz durumu **etkin değil**olarak görünmelidir.
    
     ![bulunan hedefler](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
 5. Bir hedef cihaz seçin ve ardından **Bağlan**' a tıklayın. Cihaz bağlandıktan sonra durum **Bağlandı** olarak değişmelidir. (Microsoft Iscsı başlatıcısını kullanma hakkında daha fazla bilgi için bkz. [Microsoft Iscsı Başlatıcısı 'Nı yükleme ve yapılandırma][1].
@@ -217,7 +217,7 @@ Bir Windows Server konağında StorSimple birimlerinizi bağlamak, başlatmak ve
 12. Birime bir sürücü harfi atayın ve ardından **İleri**' ye tıklayın.
     
     ![Yeni Birim Sihirbazı 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. Birimi biçimlendirmek için parametreleri girin. **Windows Server 'da yalnızca NTFS desteklenir.** Ayırma birimi boyutunu 64K olarak ayarlayın. Biriminiz için bir etiket girin. Bu adın, StorSimple Sanal diziniz üzerinde belirttiğiniz birim adıyla aynı olması önerilen en iyi uygulamadır.           **İleri**'ye tıklayın.
+13. Birimi biçimlendirmek için parametreleri girin. **Windows Server 'da yalnızca NTFS desteklenir.** Ayırma birimi boyutunu 64K olarak ayarlayın. Biriminiz için bir etiket girin. Bu adın, StorSimple Sanal diziniz üzerinde belirttiğiniz birim adıyla aynı olması önerilen en iyi uygulamadır. **İleri**’ye tıklayın.
     
     ![Yeni Birim Sihirbazı 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. Biriminizin değerlerini denetleyip **son**' a tıklayın.
@@ -232,7 +232,7 @@ Bir Windows Server konağında StorSimple birimlerinizi bağlamak, başlatmak ve
 
 [StorSimple Sanal dizinizi yönetmek](storsimple-ova-web-ui-admin.md)için yerel Web Kullanıcı arabirimini nasıl kullanacağınızı öğrenin.
 
-## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Ek A: Bir Windows Server konağının IQN’ini alın
+## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Ek A: bir Windows Server konağının ıQN 'sini alın
 
 Windows Server 2012 çalıştıran bir Windows konağının iSCSI Tam Adını (IQN) almak için aşağıdaki adımları gerçekleştirin.
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361183"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS dil ve bölge desteği
 
@@ -98,7 +98,7 @@ Makine öğrenimi yapmak için, Lua, kültürü temel alan [belirteçlere](luis-
 
 Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 
-|Kültür|Sürüm|Amaç|
+|Culture (Kültür)|Sürüm|Amaç|
 |--|--|--|
 |Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, `Ich fahre einen kranken wagen`açıktır. `kranken` ve `wagen` bağımsız olarak farklı varlıklar olarak işaretlemeye izin verme.|
 |Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430706"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380831"
 ---
 # <a name="protect-your-machines-and-applications"></a>Makinelerinizi ve uygulamalarınızı koruyun
 Azure Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızın güvenliğini sağlamak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.

@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893153"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392713"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Nasıl MySQL için Azure veritabanı'nda Azure portalını kullanarak sunucu parametrelerini yapılandırma
 
@@ -20,14 +20,14 @@ MySQL için Azure veritabanı, bazı sunucu parametreleri yapılandırılmasın�
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure portalında sunucu parametrelerini gidin
 
 1. Azure portalında oturum açın, sonra MySQL için Azure veritabanınızı bulun.
-2. Altında **ayarları** bölümünde **sunucu parametreleri** MySQL sunucusu için Azure veritabanı sunucusu parametreleri sayfasını açın.
-![Azure portal sunucusu parametreleri sayfası](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Ayarlamak için gereken herhangi bir ayarı bulun. Gözden geçirme **açıklama** amacı ve izin verilen değerler anlamak için sütun.
-![Aşağı açılan listeleme](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
-![Kaydet veya değişiklikleri at](./media/howto-server-parameters/4-save_parameters.png)
-5. Parametreler için yeni değerler kaydettiyseniz, her zaman varsayılan değerleri dön her şeyi seçerek geri dönebilirsiniz **tümünü Varsayılana Sıfırla**.
-![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
+2. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MySQL için Azure veritabanı sunucusu için sunucu parametreleri sayfasını açın.
+![Azure portal sunucu parametreleri sayfası](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Ayarlamak için gereken herhangi bir ayarı bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
+açılan ![](./media/howto-server-parameters/3-toggle_parameter.png) Sırala
+4. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+değişiklikleri kaydetme veya atma ![](./media/howto-server-parameters/4-save_parameters.png)
+5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
+![tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Yapılandırılabilir sunucu parametrelerinin listesi
 
@@ -55,23 +55,23 @@ InnoDB arabellek havuzu boyutu yapılandırılamaz ve [fiyatlandırma katmanın�
 
 Bu ek sunucu parametreleri sistemde yapılandırılabilir değildir:
 
-|**Parametre**|**Sabit değer**|
+|**Parametresinin**|**Sabit değer**|
 | :------------------------ | :-------- |
 |Temel katmanda innodb_file_per_table|KAPALI|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Burada listelenmeyen diğer sunucu parametreleri sürümleri için MySQL kullanıma hazır varsayılan değerlerine ayarlanmış [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) ve [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
+Burada listelenmeyen diğer sunucu parametreleri, [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) ve [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)sürümleri için MySQL varsayılan değerlerine ayarlanır.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresi ile çalışma
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarını doldurma
 
-Saat dilimi tabloları sunucunuzdaki çağırarak doldurulabilir `az_load_timezone` saklı yordamdan MySQL komut satırı veya MySQL Workbench gibi bir araç.
+Sunucunuzdaki saat dilimi tabloları, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan `az_load_timezone` saklı yordam çağırarak doldurulabilir.
 
 > [!NOTE]
-> Çalıştırıyorsanız `az_load_timezone` ilk güvenli güncelleştirme modunu kapat gerekebilir MySQL Workbench'ten komutunu kullanarak `SET SQL_SAFE_UPDATES=0;`.
+> MySQL çalışma modundan `az_load_timezone` komutunu çalıştırıyorsanız, önce `SET SQL_SAFE_UPDATES=0;`kullanarak güvenli güncelleştirme modunu kapatmanız gerekebilir.
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -88,20 +88,20 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>Genel bir düzeyinde saat dilimi ayarlama
 
-Genel bir düzeyinde saat dilimi ayarlanabilir **sunucu parametreleri** Azure portalında sayfası. Değerine ayarlar genel saat dilimi aşağıda "ABD / Pasifik".
+Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Değerine ayarlar genel saat dilimi aşağıda "ABD / Pasifik".
 
 ![Saat dilimi parametre kümesi](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimi ayarlama
 
-Oturum düzeyi saat dilimi çalıştırarak ayarlanabilir `SET time_zone` MySQL komut satırı veya MySQL Workbench gibi bir araçla komutu. Aşağıdaki örnekte saat dilimini ayarlar **ABD / Pasifik** saat dilimi.
+Oturum düzeyi saat dilimi, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçla `SET time_zone` komutu çalıştırılarak ayarlanabilir. Aşağıdaki örnek saat dilimini **ABD/Pasifik** saati dilimine göre ayarlar.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-MySQL belgeleri için başvurmak [tarih ve saat işlevleri](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+[Tarih ve saat işlevleri](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)için MySQL belgelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [MySQL için Azure veritabanı için bağlantı kitaplıkları](concepts-connection-libraries.md).
+- [MySQL Için Azure veritabanı bağlantı kitaplıkları](concepts-connection-libraries.md).

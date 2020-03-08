@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
 ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525312"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365047"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -26,7 +26,7 @@ Dağıtımlarınızdaki kotalar ve diğer sınırlar hakkında daha fazla bilgi 
 
 Aşağıdaki bölgeler ve en fazla kaynaklar, Linux ve [desteklenen](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 tabanlı kapsayıcılar ile kapsayıcı grupları için kullanılabilir.
 
-| Regions | İşletim Sistemi | En fazla CPU | Maksimum bellek (GB) | Depolama (GB) |
+| Bölgeler | İşletim Sistemi | En Fazla CPU | Maksimum bellek (GB) | Depolama (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Brezilya Güney, Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, Batı Avrupa, Batı ABD, Batı ABD 2 | Linux | 4 | 16 | 50 |
 | Avustralya Doğu, Japonya Doğu | Linux | 2 | 8 | 50 |
@@ -39,7 +39,7 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, Linux ve [desteklenen](container-i
 
 Windows Server 2019 tabanlı kapsayıcılar (Önizleme) ile kapsayıcı grupları için aşağıdaki bölgeler ve en fazla kaynaklar mevcuttur.
 
-| Regions | İşletim Sistemi | En fazla CPU | Maksimum bellek (GB) | Depolama (GB) |
+| Bölgeler | İşletim Sistemi | En Fazla CPU | Maksimum bellek (GB) | Depolama (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Avustralya Doğu, Brezilya Güney, Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD, Japonya Doğu, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, Batı Avrupa | Windows | 4 | 16 | 20 |
 | Doğu ABD 2, Batı ABD 2 | Windows | 2 | 3,5 | 20 |

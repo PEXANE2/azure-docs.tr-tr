@@ -4,11 +4,11 @@ description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672047"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374912"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
+   | **Ad**      | Benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
    | **Konum** | Doğu ABD | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
 

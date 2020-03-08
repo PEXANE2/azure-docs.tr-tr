@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022314"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375853"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Uygulamalarım portalından oturum açın ve uygulamaları başlatın
 
@@ -97,7 +97,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Bilgisayarınızda iş veya okul hesabınızda oturum açın.
 
-2. Desteklenen bir Web tarayıcısında, https://myapps.microsoft.com açın ve ' a gidin veya `https://myapps.microsoft.com/contoso.com` gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
+2. Desteklenen bir Web tarayıcısında, https://myapps.microsoft.comaçın ve ' a gidin veya `https://myapps.microsoft.com/contoso.com`gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
 
     Kuruluşunuzun sahip olduğu, kuruluşunuzun sahip olduğu tüm bulut tabanlı uygulamaları gösteren **uygulamalar** sayfası açılır.
 
@@ -111,7 +111,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Intune Managed Browser uygulamasını [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 'dan ve [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)indirin ve yükleyin.
 
-2. Intune Managed Browser uygulamasını açın, https://myapps.microsoft.com ' a gidin veya https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
+2. Intune Managed Browser uygulamasını açın, https://myapps.microsoft.com' a gidin veya https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -125,7 +125,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Safari gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.com gidin veya https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
+2. https://myapps.microsoft.comgidin veya https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
 
     Kuruluşunuzun sahip olduğu, kuruluşunuzun sahip olduğu tüm bulut tabanlı uygulamaları gösteren **uygulamalar** sayfası açılır.
 
@@ -139,7 +139,7 @@ Android cihazında **My Apps** portalını görüntüleyin ve kullanın.
 
 1. Mobil cihazınızda, Google Chrome gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.com gidin veya https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
+2. https://myapps.microsoft.comgidin veya https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 

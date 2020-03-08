@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379864"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Veri Gezgini veri alımı
 
@@ -88,7 +88,7 @@ Kusto, ile veri almak ve sorgulamak için kullanılabilen istemci SDK 'Sı sunar
 
 **Farklı yöntemlerin gecikmesi**:
 
-| Yöntem | Gecikme |
+| Yöntem | Gecikme süresi |
 | --- | --- |
 | **Satır içi Alım** | Hemen |
 | **Sorgudan al** | Sorgu süresi + işleme süresi |

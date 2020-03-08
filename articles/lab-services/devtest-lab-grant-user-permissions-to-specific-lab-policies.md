@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028443"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380935"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Belirli laboratuvar ilkelerine Kullanıcı izinleri verme
 ## <a name="overview"></a>Genel Bakış
@@ -30,7 +30,7 @@ Bu makalede, PowerShell kullanarak kullanıcılara belirli bir laboratuvar ilkes
 
 DevTest Labs 'de, ilke **Microsoft. DevTestLab/Labs/policySets/policies/** RBAC eylemini sağlayan bir kaynak türüdür. Her laboratuvar ilkesi, Ilke kaynak türündeki bir kaynaktır ve bir RBAC rolüne kapsam olarak atanabilir.
 
-Örneğin, **Izin VERILEN VM boyutları** ilkesine kullanıcılara okuma/yazma izni vermek Için, **Microsoft. devtestlab/Labs/policysets/policies/** Action ile çalışan özel bir rol oluşturursunuz ve ardından uygun kullanıcıları bu kullanıcılara atayabilirsiniz Bu özel rol **Microsoft. DevTestLab/Labs/policySets/policies/AllowedVmSizesInLab**kapsamında.
+Örneğin, **Izin VERILEN VM boyutları** ilkesine kullanıcılara okuma/yazma izni vermek Için, **Microsoft. devtestlab/Labs/policysets/policies/** Action ile çalışan özel bir rol oluşturursunuz ve ardından **Microsoft. Devtestlab/Labs/Policysets/policies/AllowedVmSizesInLab**kapsamındaki bu özel role uygun kullanıcıları atamalısınız.
 
 RBAC 'deki özel roller hakkında daha fazla bilgi edinmek için bkz. [özel roller erişim denetimi](../role-based-access-control/custom-roles.md).
 

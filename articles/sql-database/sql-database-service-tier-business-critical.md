@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380066"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>İş Açısından Kritik katmanı-Azure SQL veritabanı
 
@@ -34,13 +34,13 @@ Azure, son kullanıcılar için en düşük düzeyde çalışan işletim sistemi
 
 Premium kullanılabilirlik, Azure SQL veritabanı 'nın Premium ve İş Açısından Kritik hizmet katmanlarında etkinleştirilmiştir ve devam eden bakım işlemleri nedeniyle herhangi bir performans etkisi için işlem yapmadan yoğun iş yükleri için tasarlanmıştır.
 
-Premium modelde, Azure SQL veritabanı, işlem ve depolamayı tek düğümde tümleştirir. Bu mimari modelde yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları SQL Server benzer teknolojiyi kullanarak, işlem (SQL Server veritabanı altyapısı işlemi) ve depolama (yerel olarak bağlı SSD) ile dört düğüm kümesine dağıtılan depolama (yerel olarak eklenmiş SSD) tarafından sağlanır ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+Premium modelde, Azure SQL veritabanı, işlem ve depolamayı tek düğümde tümleştirir. Bu mimari modelde yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer teknolojiyi kullanarak, işlem (SQL Server veritabanı altyapısı işlemi) ve depolama (yerel olarak bağlı SSD) ile dört düğüm kümesine dağıtılan depolama (yerel olarak eklenmiş SSD) tarafından sağlanır.
 
 ![Veritabanı altyapısı düğümlerinin kümesi](media/sql-database-managed-instance/business-critical-service-tier.png)
 
 Hem SQL veritabanı altyapısı işlemi hem de temel alınan MDF/ldf dosyaları, iş yükünüze düşük gecikme süresi sağlayan yerel olarak eklenmiş SSD depolama ile aynı düğüme yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer teknolojiler kullanılarak uygulanır. Her veritabanı, müşteri iş yükü için erişilebilen tek bir birincil veritabanına sahip bir veritabanı düğümleri kümesi ve verilerin kopyalarını içeren üç ikincil işlem. Birincil düğüm, birincil düğüm herhangi bir nedenden dolayı çöktüğünde, verilerin ikincil çoğaltmalarda kullanılabilir olmasını sağlamak için değişiklikleri ikincil düğümlere sürekli olarak iter. Yük devretme SQL Server veritabanı altyapısı tarafından işlenir – bir ikincil çoğaltma birincil düğüm haline gelir ve kümede yeterli düğüm sağlamak için yeni bir ikincil çoğaltma oluşturulur. İş yükü otomatik olarak yeni birincil düğüme yönlendirilir.
 
-Ayrıca, İş Açısından Kritik kümede, birincil ağınızın performansını etkilememesi gereken salt okuma sorgularını (örneğin, raporlar) çalıştırmak için kullanılabilen, ücretsiz olarak yerleşik salt okunurdur bir düğüm sağlayan yerleşik bir yerleşik [okuma](sql-database-read-scale-out.md) özelliği vardır. yüküne.
+Ayrıca, İş Açısından Kritik kümede, birincil iş yükünüzün performansını etkilememesi gereken salt okuma sorgularını (örneğin, raporlar) çalıştırmak için kullanılabilecek, ücretsiz, yerleşik salt okuma düğümü sağlayan yerleşik [okuma ölçeği](sql-database-read-scale-out.md) özelliği vardır.
 
 ## <a name="when-to-choose-this-service-tier"></a>Bu hizmet katmanını ne zaman seçmelisiniz?
 
@@ -53,7 +53,7 @@ Genel Amaçlı katmanı yerine İş Açısından Kritik hizmet katmanını seçm
 -   Verileri değiştiren uzun süre çalışan işlemler. Daha uzun bir süre açılan işlemler, günlük boyutunu ve [sanal günlük dosyalarının (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)sayısını artırabilecek günlük dosyasının kesilmesini önler. Yük devretmeden sonra, yüksek sayıda VLF veritabanının kurtarılmasını yavaşlatabilir.
 -   Raporlama ve analitik sorguları olan iş yükü, ücretsiz, ikincil salt okuma çoğaltmasına yeniden yönlendirilebilir.
 - Hatalardan daha yüksek dayanıklılık ve daha hızlı kurtarma. Sistem arızası durumunda, birincil örnekteki veritabanı devre dışı bırakılır ve ikincil çoğaltmalardan biri, sorguları işlemeye yönelik yeni okuma-yazma birincil veritabanına anında gönderilir. Veritabanı altyapısının, günlük dosyasındaki işlemleri çözümlemek ve yinelemek ve tüm verileri bellek arabelleğine yüklemesi gerekmez.
-- Gelişmiş veri bozulması koruması-İş Açısından Kritik katmanı, iş sürekliliği açısından arka planda veritabanı Çoğaltmalarından yararlanır ve bu nedenle hizmet, SQL Server veritabanı için kullanılan teknolojiden de otomatik sayfa onarmasını kullanır [yansıtma ve kullanılabilirlik grupları](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Bir veri bütünlüğü sorunu nedeniyle bir çoğaltmanın bir sayfayı okuyamadığında, sayfanın yeni bir kopyası başka bir yinelemeden alınır ve bu da veri kaybı veya müşteri kapalı kalma süresi olmadan okunamaz sayfa değişir. Bu işlev, veritabanının coğrafi ikincil çoğaltma özelliği varsa Genel Amaçlı katmanında geçerlidir.
+- Gelişmiş veri bozulması koruması-İş Açısından Kritik katmanı, iş sürekliliği açısından arka planda veritabanı Çoğaltmalarından yararlanır ve bu nedenle hizmet, SQL Server veritabanı [yansıtma ve kullanılabilirlik grupları](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)için kullanılan teknolojiden de otomatik sayfa onarmasını kullanır. Bir veri bütünlüğü sorunu nedeniyle bir çoğaltmanın bir sayfayı okuyamadığında, sayfanın yeni bir kopyası başka bir yinelemeden alınır ve bu da veri kaybı veya müşteri kapalı kalma süresi olmadan okunamaz sayfa değişir. Bu işlev, veritabanının coğrafi ikincil çoğaltma özelliği varsa Genel Amaçlı katmanında geçerlidir.
 - Multi-AZ Configuration içindeki daha yüksek kullanılabilirlik-İş Açısından Kritik katmanı, Genel Amaçlı katmanının% 99,99 ' i ile karşılaştırıldığında% 99,995 kullanılabilirliği garanti eder.
 - Coğrafi çoğaltma ile yapılandırılan hızlı coğrafi kurtarma-İş Açısından Kritik katmanı, dağıtılan saatlerin %100 ' i için 5 sn ve kurtarma süresi hedefi (RTO) ile 30 sn arasında bir garantili kurtarma noktası hedefi (RPO) sağlar.
 

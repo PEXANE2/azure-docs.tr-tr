@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397278"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure sanal ağı aracılığıyla HDInsight 'ta Apache Kafka bağlanma
 
@@ -38,7 +38,7 @@ HDInsight, genel İnternet üzerinden Kafka 'e doğrudan bağlantıya izin verme
   4. Her ağdaki DNS sunucusu arasında yönlendirmeyi yapılandırın.
   5. Sanal ağda HDInsight kümesi üzerinde bir Kafka oluşturun.
 
-     Daha fazla bilgi için, Şirket [içi bir ağdan Apache Kafka bağlanma](#on-premises) bölümüne bakın. 
+     Daha fazla bilgi için, Şirket [içi bir ağdan Apache Kafka bağlanma](#on-premises) bölümüne bakın.
 
 * VPN ağ geçidi ve VPN istemcisi kullanarak tek tek makineleri sanal ağa bağlayın. Bu yapılandırmayı etkinleştirmek için aşağıdaki görevleri gerçekleştirin:
 
@@ -67,18 +67,18 @@ Bir sanal ağda HDInsight kullanma hakkında daha fazla bilgi için bkz. [Azure 
 
 Bu adımlar aşağıdaki yapılandırmayı oluşturur:
 
-* Azure Sanal Ağı
+* Azure Sanal Ağ
 * Siteden siteye VPN ağ geçidi
 * Azure depolama hesabı (HDInsight tarafından kullanılır)
 * HDInsight üzerinde Kafka
 
-Bir Kafka istemcisinin Şirket içinden kümeye bağlanıp bağlanamadiğini doğrulamak için [örnekteki adımları kullanın: Python istemci](#python-client) bölümü.
+Bir Kafka istemcisinin Şirket içinden kümeye bağlanıp bağlanamadiğini doğrulamak için [örnek: Python istemci](#python-client) bölümündeki adımları kullanın.
 
 ## <a id="vpnclient"></a>VPN istemcisiyle Apache Kafka bağlanma
 
 Aşağıdaki yapılandırmayı oluşturmak için bu bölümdeki adımları kullanın:
 
-* Azure Sanal Ağı
+* Azure Sanal Ağ
 * Noktadan siteye VPN ağ geçidi
 * Azure depolama hesabı (HDInsight tarafından kullanılır)
 * HDInsight üzerinde Kafka
@@ -242,7 +242,7 @@ Aşağıdaki yapılandırmayı oluşturmak için bu bölümdeki adımları kulla
 
 Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı adını döndürür. Bu yapılandırma, sanal ağdaki varlıklar için ad çözümlemesi kullanmadığından VPN yazılım istemcisiyle birlikte çalışmaz. Bu yapılandırma için, Kafka yapılandırmak için aşağıdaki adımları kullanarak etki alanı adları yerine IP adreslerini duyurmayı yapılandırın:
 
-1. Bir Web tarayıcısı kullanarak adresine gidin `https://CLUSTERNAME.azurehdinsight.net`. HDInsight `CLUSTERNAME` kümesindeki Kafka adıyla değiştirin.
+1. Bir Web tarayıcısı kullanarak `https://CLUSTERNAME.azurehdinsight.net`gidin. `CLUSTERNAME`, HDInsight kümesindeki Kafka adıyla değiştirin.
 
     İstendiğinde, küme için HTTPS Kullanıcı adı ve parolasını kullanın. Küme için ambarı Web Kullanıcı arabirimi görüntülenir.
 
@@ -254,7 +254,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
     ![Apache ambarı Hizmetleri Yapılandırması](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki `kafka-env` __filtre__ alanına girin.
+4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki __filtre__ alanına `kafka-env` girin.
 
     ![Kafka-env için Kafka yapılandırması](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,9 +268,9 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Kafka tarafından dinlediği arabirimi yapılandırmak için sağ üst köşedeki `listeners` __filtre__ alanına girin.
+6. Kafka tarafından dinlediği arabirimi yapılandırmak için sağ üst köşedeki __filtre__ alanına `listeners` girin.
 
-7. Kafka 'i tüm ağ arabirimlerini dinlemek üzere yapılandırmak için, __dinleyiciler__ alanındaki değeri olarak `PLAINTEXT://0.0.0.0:9092`değiştirin.
+7. Kafka 'i tüm ağ arabirimlerini dinlemek üzere yapılandırmak için, __dinleyiciler__ alanındaki değeri `PLAINTEXT://0.0.0.0:9092`olarak değiştirin.
 
 8. Yapılandırma değişikliklerini kaydetmek için __Kaydet__ düğmesini kullanın. Değişiklikleri açıklayan bir kısa mesaj girin. Değişiklikler kaydedildikten sonra __Tamam ' ı__ seçin.
 
@@ -290,7 +290,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 VPN ağ geçidine bağlanmak için, [Noktadan siteye bağlantı yapılandırma](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) belgesi ' nin __Azure 'a Bağlan__ bölümünü kullanın.
 
-## <a id="python-client"></a>Örneğinde Python istemcisi
+## <a id="python-client"></a>Örnek: Python istemcisi
 
 Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir Python üreticisi ve tüketicisi oluşturun ve çalıştırın:
 
@@ -316,7 +316,7 @@ Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Bu betik, sanal `$resourceGroupName` ağı içeren Azure Kaynak grubunun adı olduğunu varsayar.
+    Bu betik, `$resourceGroupName` sanal ağı içeren Azure Kaynak grubunun adı olduğunu varsayar.
 
     Sonraki adımlarda kullanılmak üzere döndürülen bilgileri kaydedin.
 
@@ -337,14 +337,14 @@ Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir
       producer.send('testtopic', b'test message')
    ```
 
-    `'kafka_broker'` Girişleri bu bölümdeki 1. adımdan döndürülen adreslerle değiştirin:
+    `'kafka_broker'` girdilerini bu bölümdeki 1. adımdan döndürülen adreslerle değiştirin:
 
-   * __Yazılım VPN istemcisi__kullanıyorsanız, `kafka_broker` girdileri çalışan düğümlerinizin IP adresiyle değiştirin.
+   * __Yazılım VPN istemcisi__kullanıyorsanız, `kafka_broker` girdilerini çalışan DÜĞÜMLERINIZIN IP adresiyle değiştirin.
 
-   * __Özel bir DNS sunucusu aracılığıyla ad çözümlemesini etkinleştirdiyseniz__, `kafka_broker` girdileri çalışan düğümlerinin FQDN 'siyle değiştirin.
+   * __Özel BIR DNS sunucusu aracılığıyla ad çözümlemesini etkinleştirdiyseniz__, `kafka_broker` girdilerini çalışan düğümlerinin FQDN 'siyle değiştirin.
 
      > [!NOTE]
-     > Bu kod, dizeyi `test message` konuya `testtopic`gönderir. HDInsight üzerinde Kafka varsayılan yapılandırması, yoksa konuyu oluşturmaktır.
+     > Bu kod, `testtopic`konuya `test message` dize gönderir. HDInsight üzerinde Kafka varsayılan yapılandırması, yoksa konuyu oluşturmaktır.
 
 4. İletileri Kafka adresinden almak için aşağıdaki python kodunu kullanın:
 
@@ -360,11 +360,11 @@ Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir
      print (msg)
    ```
 
-    `'kafka_broker'` Girişleri bu bölümdeki 1. adımdan döndürülen adreslerle değiştirin:
+    `'kafka_broker'` girdilerini bu bölümdeki 1. adımdan döndürülen adreslerle değiştirin:
 
-    * __Yazılım VPN istemcisi__kullanıyorsanız, `kafka_broker` girdileri çalışan düğümlerinizin IP adresiyle değiştirin.
+    * __Yazılım VPN istemcisi__kullanıyorsanız, `kafka_broker` girdilerini çalışan DÜĞÜMLERINIZIN IP adresiyle değiştirin.
 
-    * __Özel bir DNS sunucusu aracılığıyla ad çözümlemesini etkinleştirdiyseniz__, `kafka_broker` girdileri çalışan düğümlerinin FQDN 'siyle değiştirin.
+    * __Özel BIR DNS sunucusu aracılığıyla ad çözümlemesini etkinleştirdiyseniz__, `kafka_broker` girdilerini çalışan düğümlerinin FQDN 'siyle değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

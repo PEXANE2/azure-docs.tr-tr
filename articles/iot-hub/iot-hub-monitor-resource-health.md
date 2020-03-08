@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929704"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359637"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub sistem durumunu izleyin ve sorunları hızlı bir şekilde tanılayın
 
@@ -540,7 +540,7 @@ Azure IoT Hub, bölgesel düzeyde sistem durumunu gösterir. Bir bölgesel kesin
 
 IoT Hub 'larınızın sistem durumunu denetlemek için şu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Service health** > **kaynak sistem durumu**' na gidin.
 

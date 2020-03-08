@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514785"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360992"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics ölçümleri (klasik)
 
@@ -75,7 +75,7 @@ Depolama Analizi, toplanan işlem istatistiklerini ve bir depolama hizmetine yap
 [Azure Portal](https://portal.azure.com) , depolama hesabınızda dakika ölçümlerini yapılandırmanıza Şu anda izin vermez; PowerShell veya programlı programlama kullanarak dakika ölçümlerini etkinleştirmeniz gerekir.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>PowerShell kullanarak depolama ölçümlerini etkinleştirme  
-Geçerli ayarları ve cmdlet **'i almak Için Get-AzStorageServiceMetricsProperty** **cmdlet 'ini kullanarak Depolama hesabınızdaki depolama ölçümlerini yapılandırmak Için yerel makinenizde PowerShell kullanabilirsiniz Azure PowerShell. Geçerli ayarları değiştirmek için set-AzStorageServiceMetricsProperty** .  
+Geçerli ayarları almak için **Get-AzStorageServiceMetricsProperty** cmdlet 'ini ve geçerli ayarları değiştirmek için **set-azstorageservicemetricsproperty** cmdlet 'ini Azure PowerShell kullanarak Depolama hesabınızdaki depolama ölçümlerini yapılandırmak için yerel makinenizde PowerShell 'i kullanabilirsiniz.  
 
 Depolama ölçümlerini denetleyen cmdlet 'ler şu parametreleri kullanır:  
 
@@ -97,9 +97,9 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
-* @No__t_0 yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
+* `<resource-group-name>` yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
         
-* @No__t_0 yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>` yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
 
 
@@ -114,7 +114,7 @@ Azure PowerShell cmdlet 'lerinin Azure aboneliğinizle çalışacak şekilde nas
 ## <a name="enable-storage-metrics-programmatically"></a>Depolama ölçümlerini programlı olarak etkinleştir  
 Depolama ölçümlerini denetlemek için Azure portal veya Azure PowerShell cmdlet 'lerini kullanmanın yanı sıra Azure Storage API 'Lerinden birini de kullanabilirsiniz. Örneğin, bir .NET dili kullanıyorsanız, depolama Istemci kitaplığını kullanabilirsiniz.  
 
-**Cloudblobclient**, **cloudqueueclient**, **Cloudtableclient**ve **Cloudfileclient** sınıfları, **setserviceproperties** ve **SetServicePropertiesAsync** **gibi yöntemlere sahiptir** Bir parametre olarak ServiceProperties nesnesi. Depolama ölçümlerini yapılandırmak için **Serviceproperties** nesnesini kullanabilirsiniz. Örneğin, aşağıdaki C# kod parçacığında saatlik sıra ölçümleri için ölçüm düzeyinin ve bekletme günlerinin nasıl değiştirileceği gösterilmektedir:  
+**Cloudblobclient**, **cloudqueueclient**, **Cloudtableclient**ve **Cloudfileclient** sınıflarının hepsi, bir **serviceproperties** nesnesini parametre olarak alan **setserviceproperties** ve **SetServicePropertiesAsync** gibi yöntemlere sahiptir. Depolama ölçümlerini yapılandırmak için **Serviceproperties** nesnesini kullanabilirsiniz. Örneğin, aşağıdaki C# kod parçacığında saatlik sıra ölçümleri için ölçüm düzeyinin ve bekletme günlerinin nasıl değiştirileceği gösterilmektedir:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -155,10 +155,10 @@ Bu tablolara yönelik şemaların tüm ayrıntılarını [depolama Analizi ölç
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**İlişkin**|**Toplam Istek sayısı**|**TotalBillableRequests**|**Totalıngress**|**TotalEgress**|**Kullanılabilirlik**|**AverageE2ELatency**|**Averageserverlatency gösteriyor**|**PercentSuccess**|  
-|20140522T1100|kullanıcısını Bütün|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|kullanıcısını Queryenlikler|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
-|20140522T1100|kullanıcısını QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|kullanıcısını UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
+|20140522T1100|kullanıcısını Bütün|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|kullanıcısını Queryenlikler|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|kullanıcısını QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|kullanıcısını UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 Bu örnek dakikalık ölçüm verilerinde, bölüm anahtarı dakika çözünürlüğündeki zamanı kullanır. Satır anahtarı, satırda depolanan bilgilerin türünü tanımlar ve bu iki bilgi parçasını, erişim türünü ve istek türünü oluşur:  
 
@@ -166,7 +166,7 @@ Bu örnek dakikalık ölçüm verilerinde, bölüm anahtarı dakika çözünürl
 
 -   İstek türü **Tümü** bir Özet satırdır ya da **Queryentity** veya **updateentity**gibi belirli API 'yi tanımlar.  
 
-Yukarıdaki örnek veriler, tek bir dakikalık (11 ' den itibaren) tüm kayıtları gösterir. bu nedenle, **Queryentities** isteklerinin sayısı artı **Queryentity** Isteği sayısı artı **updateentity** isteklerinin sayısı en fazla yedi, Kullanıcı için gösterilen toplam **: tüm** satır. Benzer şekilde, Kullanıcı üzerindeki ortalama uçtan uca gecikme 104,4286 ' u türetebilirsiniz **:** ((143,8 * 5) + 3 + 9)/7.  
+Yukarıdaki örnek veriler, tek bir dakikalık (11 ' den başlayarak) tüm kayıtları gösterir. bu nedenle, **Queryentities** isteklerinin sayısı artı **Queryentity** Isteği sayısı artı **updateentity** isteklerinin sayısı, **Kullanıcı** üzerinde gösterilen toplam değer olan yedi ' a kadar. Benzer şekilde, Kullanıcı üzerindeki ortalama uçtan uca gecikme 104,4286 ' u türetebilirsiniz **:** ((143,8 * 5) + 3 + 9)/7.  
 
 ## <a name="metrics-alerts"></a>Ölçüm uyarıları
 [Azure Portal](https://portal.azure.com) uyarı ayarlamayı düşünmelisiniz, böylece depolama hizmetlerinizin davranışındaki önemli değişiklikler konusunda otomatik olarak bildirim verilecektir. Bu ölçüm verilerini ayrılmış bir biçimde indirmek için bir Depolama Gezgini aracı kullanırsanız, verileri çözümlemek için Microsoft Excel 'i kullanabilirsiniz. Kullanılabilir depolama Gezgini araçlarının listesi için bkz. [Azure Storage Istemci araçları](/azure/storage/storage-explorers) . **Uyarı (klasik)** dikey penceresinde, depolama hesabı menü dikey penceresinde **izleme (klasik)** bölümünde erişilebilen uyarıları yapılandırabilirsiniz.

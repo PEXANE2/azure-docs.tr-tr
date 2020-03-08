@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 6970debd3885a513ac0e30d6cc5391b0db66cf9b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047275"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668736"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -264,7 +264,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
     b. **Açıklama**için **Bu ilkenin, AWS hesaplarından rolleri getirmeye izin verilecek şekilde**girin.
 
-    c. **Ilke oluştur**' u seçin.
+    c. **İlke oluştur**'u seçin.
 
 17. AWS ıAM hizmetinde yeni bir kullanıcı hesabı oluşturun.
 
@@ -337,7 +337,10 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
     ![Vurgulanan Ayarlar bölümünün ekran görüntüsü](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> Sağlama Hizmeti, rolleri yalnızca AWS 'den Azure AD 'ye aktarır. Bu hizmet, kullanıcıları ve grupları Azure AD 'den AWS 'ye geri sağlamacaktır.
+> Sağlama hizmeti rolleri yalnızca AWS 'den Azure AD 'ye aktarır. Hizmet, Azure AD 'den AWS 'ye Kullanıcı ve grup sağlamaz.
+
+> [!NOTE]
+> Sağlama kimlik bilgilerini kaydettikten sonra, ilk eşitleme döngüsünün çalışmasını beklemeniz gerekir. Eşitleme genellikle yaklaşık 40 dakika sürer. Durumu **sağlama** sayfasının en altında, **geçerli durum**altında görebilirsiniz.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Amazon Web Services (AWS) test kullanıcısı oluştur
 

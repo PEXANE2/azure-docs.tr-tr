@@ -3,12 +3,12 @@ title: Geliştirici kaynakları-Language Understanding
 description: SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f9d531f800ba0729a1f679c0bf3b11c8958c78ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152695"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391948"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding için SDK, REST ve CLı geliştirici kaynakları (LUSıS)
 
@@ -109,7 +109,7 @@ Bot Framework, aşağıdakiler dahil olmak üzere Language Understanding yardım
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Ortak [http hata kodları](luis-reference-response-codes.md) hakkında bilgi edinin
-* Tüm API 'Ler ve SDK 'Lar için [başvuru belgeleri](https://docs.microsoft.com/azure/index#pivot=sdkstools)
+* Tüm API 'Ler ve SDK 'Lar için [başvuru belgeleri](https://docs.microsoft.com/azure/index)
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) ve [Azure bot hizmeti](https://dev.botframework.com/)
 * [Luaşağı](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Bilişsel kapsayıcılar](../cognitive-services-container-support.md)

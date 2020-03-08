@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185840"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672308"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185840"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>S: cihazı yakın zamanda kaydettiniz. Azure portal cihazı neden Kullanıcı Bilgilerim altında göremiyorum? Ya da cihaz sahibi, karma Azure Active Directory (Azure AD) ile birleştirilmiş cihazlar için N/A olarak işaretlendi mi?
 
 Y **:** Karma Azure AD 'ye katılmış Windows 10 cihazları **Kullanıcı cihazları**altında gösterilmez.
-Azure portal **tüm cihazlar** görünümünü kullanın. PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet 'ini de kullanabilirsiniz.
+Azure portal **tüm cihazlar** görünümünü kullanın. PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet 'ini de kullanabilirsiniz.
 
 Yalnızca aşağıdaki cihazlar **Kullanıcı cihazları**altında listelenir:
 
@@ -62,7 +62,7 @@ Y **:** Azure AD 'ye katılmış veya kayıtlı Windows 10 cihazlarında, kullan
 - Kullanıcı, cihazı uygulamalarım portalından devre dışı bırakır. 
 - Yönetici (veya Kullanıcı) Azure portal veya PowerShell kullanarak cihazı siler veya devre dışı bırakır
 - Karma Azure AD 'ye katılmış: bir yönetici, Azure AD 'den silinmekte olan cihazların, eşitleme kapsamının dışına çıkmasına neden olan cihazları kaldırır
-- Azure AD Connect sürümü 1.4. xx. x sürümüne yükseltiliyor. [Azure AD Connect 1.4. xx. x ve cihaz görünümlerini anlama](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Azure AD Connect sürümü 1.4. xx. x sürümüne yükseltiliyor. [Azure AD Connect 1.4. xx. x ve cihaz görünümlerini anlama](/azure/active-directory/hybrid/reference-connect-device-disappearance).
 
 
 Bu eylemlerin nasıl geri alınacağını aşağıda görebilirsiniz.
@@ -128,7 +128,7 @@ Y **:** Windows 10 cihaz kaydı yalnızca FIPS uyumlu TPM 2,0 için desteklenir 
 Y **:** İptal etme işlemi, Azure AD cihazının devre dışı olarak işaretlenme zamanından itibaren uygulanması için bir saat kadar sürer.
 
 >[!NOTE] 
->Kayıtlı cihazlar için, kullanıcıların kaynaklara erişemese emin olmak için cihazı kaldırmanızı öneririz. Daha fazla bilgi için bkz. [cihaz kaydı nedir?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Kayıtlı cihazlar için, kullanıcıların kaynaklara erişemese emin olmak için cihazı kaldırmanızı öneririz. Daha fazla bilgi için bkz. [cihaz kaydı nedir?](/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
@@ -180,13 +180,13 @@ Y **:** Şu anda, UPN değişiklikleri Azure AD 'ye katılmış cihazlarda tam o
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>S: Kullanıcılarım Azure AD 'ye katılmış cihazlardan yazıcı arayamıyor. Bu cihazlardan yazdırmayı nasıl etkinleştirebilirim?
 
-Y **:** Azure AD 'ye katılmış cihazlara yönelik yazıcıları dağıtmak için bkz. [ön kimlik doğrulama Ile Windows Server hibrit bulut yazdırma](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Hibrit bulut yazdırma dağıtımı için bir şirket içi Windows Server gerekir. Şu anda bulut tabanlı yazdırma hizmeti kullanılamıyor. 
+Y **:** Azure AD 'ye katılmış cihazlara yönelik yazıcıları dağıtmak için bkz. [ön kimlik doğrulama Ile Windows Server hibrit bulut yazdırma](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Hibrit bulut yazdırma dağıtımı için bir şirket içi Windows Server gerekir. Şu anda bulut tabanlı yazdırma hizmeti kullanılamıyor. 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>S: uzak bir Azure AD 'ye katılmış cihazına Nasıl yaparım? mı?
 
-Y **:** Bkz. [uzaktan Azure Active Directory KATıLMıŞ bilgisayara bağlanma](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+Y **:** Bkz. [uzaktan Azure Active Directory KATıLMıŞ bilgisayara bağlanma](/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
@@ -220,7 +220,7 @@ Y **:** Bu senaryonun yaygın nedenleri şunlardır:
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>S: *neden... bir hata oluştu!* Azure AD 'de Bilgisayarıma katılmayı deneydiğimde iletişim kutusu
 
-Y **:** Bu hata, Intune ile Azure Active Directory kayıt ayarladığınızda oluşur. Azure AD katılımaya çalışan kullanıcıya doğru Intune lisansı atandığından emin olun. Daha fazla bilgi için bkz. [Windows cihazları için kayıt ayarlama](https://docs.microsoft.com/intune/windows-enroll).  
+Y **:** Bu hata, Intune ile Azure Active Directory kayıt ayarladığınızda oluşur. Azure AD katılımaya çalışan kullanıcıya doğru Intune lisansı atandığından emin olun. Daha fazla bilgi için bkz. [Windows cihazları için kayıt ayarlama](/intune/windows-enroll).  
 
 ---
 
@@ -307,7 +307,7 @@ Y **:** Evet, ancak yalnızca Azure cihaz kayıt hizmeti ve hibrit müşteriler 
 
 Y **:** Aşağıdaki adımları uygulayın:
 
-1.  [Uyumluluk ilkesi oluşturma](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [Uyumluluk ilkesi oluşturma](/intune/compliance-policy-create-mac-os)
 1.  [MacOS cihazları için koşullu erişim ilkesi tanımlama](../active-directory-conditional-access-azure-portal.md) 
 
 **Açıklamalarının**

@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 64d8481200359b4a4421e3f3c99e4fc5a32ef23f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 88b61b29b1386f461620ad602a88d2d1253aa905
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159550"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375619"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -37,11 +37,10 @@ Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetk
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Office 365 posta API 'SI: `https://outlook.office.com`
-* Azure AD grafiği: `https://graph.windows.net`
 * Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Azure AD Graph, Office 365 mail API vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
+> Office 365 posta API 'SI vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
 
 Aynı değer, Microsoft Identity platformu ile tümleştirilmiş olan tüm üçüncü taraf kaynakları için de geçerlidir. Bu kaynakların herhangi biri aynı zamanda söz konusu kaynağın işlevselliğini daha küçük parçalara bölmek için kullanılabilecek bir izinler kümesi tanımlayabilir. Örnek olarak [Microsoft Graph](https://graph.microsoft.com) , diğerleri arasında aşağıdaki görevleri yapmak için tanımlı izinlere sahiptir:
 
@@ -123,7 +122,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı*kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse veya bir yöneticiye tüm kuruluş adına bu izinlere onay verildiyse, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
 
 > [!NOTE]
-> Şu anda `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("oturumunuzu oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir-`offline_access` uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenileme erişimi sağlarken, `user.read` `sub` talebine erişim sağlarken, istemci veya uygulamanın zaman içinde kullanıcıyı doğru bir şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.  
+>Şu anda `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("oturumunuzu oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir-`offline_access` uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenileme erişimi sağlarken, `user.read` `sub` talebine erişim sağlarken, istemci veya uygulamanın zaman içinde kullanıcıyı doğru bir şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.  
 
 ![İş hesabı onayını gösteren örnek ekran görüntüsü](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -166,16 +165,16 @@ Adımları uygulayan bir kod örneğini görmek için [yönetici tarafından kı
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Uygulama kayıt portalında izinleri isteyin
 
-Uygulamalar, uygulama kayıt portalı 'nda hangi izinleri (hem temsilci olarak hem de uygulama) gerektirdiğini hatırlatamaz.  Bu, `/.default` kapsamının ve Azure portalının "yönetici onayı verme" seçeneğinin kullanımına izin verir.  Genel olarak, belirli bir uygulama için statik olarak tanımlanan izinlerin, dinamik/artımlı olarak istediği izinlerin bir üst kümesi olduğundan emin olmak en iyi uygulamadır.
+Uygulamalar, uygulama kayıt portalı 'nda hangi izinleri (hem temsilci olarak hem de uygulama) gerektirdiğini hatırlatamaz.  Bu, `/.default` kapsamının ve Azure portal "yönetici onayı verme" seçeneğinin kullanılmasına izin verir.  Genel olarak, belirli bir uygulama için statik olarak tanımlanan izinlerin, dinamik/artımlı olarak istediği izinlerin bir üst kümesi olduğundan emin olmak en iyi uygulamadır.
 
 > [!NOTE]
-Uygulama izinleri yalnızca [`/.default`](#the-default-scope) kullanımı aracılığıyla istenebilir. bu nedenle, uygulamanız uygulama izinlerine ihtiyaç duyuyorsa, bunların uygulama kayıt portalı 'nda listelendiğinden emin olun.  
+>Uygulama izinleri yalnızca [`/.default`](#the-default-scope) kullanımı aracılığıyla istenebilir. bu nedenle, uygulamanız uygulama izinlerine ihtiyaç duyuyorsa, bunların uygulama kayıt portalı 'nda listelendiğinden emin olun.
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Bir uygulama için statik olarak istenen izinlerin listesini yapılandırmak için
 
 1. [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde uygulamanıza gidin veya henüz yapmadıysanız [bir uygulama oluşturun](quickstart-register-app.md) .
 2. **API izinleri** bölümünü bulun ve API izinleri Içinde izin Ekle ' ye tıklayın.
-3. Kullanılabilir API 'Ler listesinden tercih ettiğiniz kaynağı (ör. **Microsoft Graph**) seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
+3. Kullanılabilir API 'Ler listesinden **Microsoft Graph** ' yi seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
 3. Uygulama kaydını **kaydedin** .
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
@@ -265,7 +264,7 @@ OAuth 2,0 protokolü ve erişim belirteçleri alma hakkında daha fazla bilgi i�
 
 ## <a name="the-default-scope"></a>/.Exe varsayılan kapsamı
 
-Uygulamalarınızı v 1.0 uç noktasından Microsoft Identity platform uç noktasına geçirmeye yardımcı olması için `/.default` kapsamını kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesine başvuran her uygulama için yerleşik bir kapsamdır. `scope` bir `https://graph.microsoft.com/.default` değeri, v 1.0 uç noktalarıyla aynı şekilde `resource=https://graph.microsoft.com`; Yani, uygulamanın Azure portal kayıt yaptığı Microsoft Graph kapsamlar ile bir belirteç ister.  Kaynak URI + `/.default` kullanılarak oluşturulur (örneğin, kaynak URI 'SI `https://contosoApp.com`, istenen kapsam `https://contosoApp.com/.default`).  Belirteci doğru bir şekilde istemek için ikinci bir eğik çizgi eklemeniz gereken durumlarda, [sonundaki eğik çizgilerin bölümüne](#trailing-slash-and-default) bakın.  
+Uygulamalarınızı v 1.0 uç noktasından Microsoft Identity platform uç noktasına geçirmeye yardımcı olması için `/.default` kapsamını kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesine başvuran her uygulama için yerleşik bir kapsamdır. `scope` bir `https://graph.microsoft.com/.default` değeri, v 1.0 uç noktalarıyla aynı şekilde `resource=https://graph.microsoft.com`; Yani, uygulamanın Azure portal kayıt yaptığı Microsoft Graph kapsamlar ile bir belirteç ister.  Kaynak URI + `/.default` kullanılarak oluşturulur (örneğin, kaynak URI 'SI `https://contosoApp.com`, istenen kapsam `https://contosoApp.com/.default`).  Belirteci doğru bir şekilde istemek için ikinci bir eğik çizgi eklemeniz gereken durumlarda, [sonundaki eğik çizgilerin bölümüne](#trailing-slash-and-default) bakın.
 
 /.Default kapsamı herhangi bir OAuth 2,0 akışında kullanılabilir, ancak uygulama izinleri istemek için v2 yönetici onay uç noktası kullanılırken ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) , [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)gereklidir.  
 
@@ -286,7 +285,7 @@ Bu örnekte, Kullanıcı (veya bir kiracı yöneticisi) istemciye `mail.read` ve
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Örnek 2: kullanıcıya istemci ve kaynak arasında izin verilmemiş
 
-Bu örnekte, istemci ve Microsoft Graph arasında Kullanıcı için hiçbir onay yok. İstemci `user.read` ve `contacts.read` izinlerinin yanı sıra Azure Key Vault kapsam `https://vault.azure.net/user_impersonation`için de kaydoldu. İstemci `scope=https://graph.microsoft.com/.default`için bir belirteç istediğinde, Kullanıcı `user.read`, `contacts.read`ve Key Vault `user_impersonation` kapsamlar için bir onay ekranı görür. Döndürülen belirtecin içinde yalnızca `user.read` ve `contacts.read` kapsamları olacak ve yalnızca Microsoft Graph karşı kullanılabilir. 
+Bu örnekte, istemci ve Microsoft Graph arasında Kullanıcı için hiçbir onay yok. İstemci `user.read` ve `contacts.read` izinlerinin yanı sıra Azure Key Vault kapsam `https://vault.azure.net/user_impersonation`için de kaydoldu. İstemci `scope=https://graph.microsoft.com/.default`için bir belirteç istediğinde, Kullanıcı `user.read`, `contacts.read`ve Key Vault `user_impersonation` kapsamlar için bir onay ekranı görür. Döndürülen belirtecin içinde yalnızca `user.read` ve `contacts.read` kapsamları olacak ve yalnızca Microsoft Graph karşı kullanılabilir.
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Örnek 3: Kullanıcı onaylı ve istemci ek kapsamlar istediğinde
 
@@ -313,7 +312,7 @@ Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `
 
 Bazı kaynak URI 'Lerinin sonunda eğik çizgi (`https://contoso.com/` `https://contoso.com`aksine) vardır ve bu, belirteç doğrulamasında sorun oluşmasına neden olabilir.  Bu, öncelikle kaynak URI 'sinde bir eğik çizgiye sahip olan ve belirteç istendiğinde mevcut olmasını gerektiren Azure Kaynak Yönetimi (`https://management.azure.com/`) için bir belirteç istenirken meydana gelebilir.  Bu nedenle, `https://management.azure.com/` için bir belirteç isteyerek `/.default`kullanarak `https://management.azure.com//.default` istemeniz gerekir! 
 
-Genel olarak, belirtecin verildiğini ve belirtecin kabul etmesi gereken API tarafından reddedildiği doğrulandıktan sonra, ikinci bir eğik çizgi ekleyip yeniden denemeyi düşünün. Bu durum, oturum açma sunucusunun `scope` parametresindeki URI 'Ler ile eşleşen hedef kitle ile bir belirteç yaydığı ve `/.default` uçtan kaldırıldığına göre yapılır.  Bu, sondaki eğik çizgiyi kaldırırsa, oturum açma sunucusu yine de isteği işler ve kaynak URI 'sine karşı doğrular, ancak bu standart değildir ve uygulamanız tarafından güvenilmemelidir. 
+Genel olarak, belirtecin verildiğini ve belirtecin kabul etmesi gereken API tarafından reddedildiği doğrulandıktan sonra, ikinci bir eğik çizgi ekleyip yeniden denemeyi düşünün. Bu durum, oturum açma sunucusunun `scope` parametresindeki URI 'Ler ile eşleşen hedef kitle ile bir belirteç yaydığı ve `/.default` uçtan kaldırıldığına göre yapılır.  Bu, sondaki eğik çizgiyi kaldırırsa, oturum açma sunucusu yine de isteği işler ve kaynak URI 'sine karşı doğrular, ancak bu standart değildir ve uygulamanız tarafından güvenilmemelidir.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>İzinler ve onay sorunlarını giderme
 
