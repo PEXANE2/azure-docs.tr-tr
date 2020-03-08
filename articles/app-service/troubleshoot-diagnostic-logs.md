@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985943"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357025"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -27,7 +27,7 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 |-|-|-|-|
 | Uygulama günlüğüne kaydetme | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti şu kategorilerden birine atanır: **kritik**, **hata**, **Uyarı**, **bilgi**, **hata ayıklama**ve **izleme**. Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
 | Web sunucusu günlüğü| Windows | App Service dosya sistemi veya Azure depolama Blobları| [W3C Genişletilmiş günlük dosyası biçimindeki](/windows/desktop/Http/w3c-logging)ham http istek verileri. Her günlük iletisi HTTP yöntemi, kaynak URI, istemci IP, istemci bağlantı noktası, Kullanıcı Aracısı, yanıt kodu vb. gibi verileri içerir. |
-| Ayrıntılı hata Iletileri| Windows | App Service dosya sistemi | İstemci tarayıcısına gönderilen *. htm* hata sayfalarının kopyaları. Güvenlik nedenleriyle, ayrıntılı hata sayfaları üretimde istemcilere gönderilmemelidir, ancak App Service HTTP kodu 400 veya üzerini içeren bir uygulama hatası oluştuğunda hata sayfasını kaydedebilirler. Sayfa, sunucunun neden hata kodunu döndürdüğünü belirlemede yardımcı olabilecek bilgiler içerebilir. |
+| Ayrıntılı Hata İletileri| Windows | App Service dosya sistemi | İstemci tarayıcısına gönderilen *. htm* hata sayfalarının kopyaları. Güvenlik nedenleriyle, ayrıntılı hata sayfaları üretimde istemcilere gönderilmemelidir, ancak App Service HTTP kodu 400 veya üzerini içeren bir uygulama hatası oluştuğunda hata sayfasını kaydedebilirler. Sayfa, sunucunun neden hata kodunu döndürdüğünü belirlemede yardımcı olabilecek bilgiler içerebilir. |
 | Başarısız istek izleme | Windows | App Service dosya sistemi | İsteği işlemek için kullanılan IIS bileşenlerinin izlenmesi ve her bileşende geçen süre dahil olmak üzere, başarısız istekler hakkında ayrıntılı izleme bilgileri. Site performansını artırmak veya belirli bir HTTP hatasını yalıtmak istiyorsanız yararlı olur. XML günlük dosyasını içeren her başarısız istek için bir klasör oluşturulur ve günlük dosyasını ile görüntülemek için XSL stil sayfası. |
 | Dağıtım günlüğü | Windows, Linux | App Service dosya sistemi | Bir uygulamaya içerik yayımladığınızda günlüğe kaydedilir. Dağıtım günlüğü otomatik olarak gerçekleşir ve dağıtım günlüğü için yapılandırılabilir bir ayar yoktur. Dağıtımın neden başarısız olduğunu belirlemenize yardımcı olur. Örneğin, [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)kullanıyorsanız, betiğin neden başarısız olduğunu anlamak için dağıtım günlüğünü kullanabilirsiniz. |
 
@@ -59,9 +59,9 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
-|**Devre dışı** | Hiçbiri |
-|**Hata:** | Hata, kritik |
-|**Uyarı** | Uyarı, hata, kritik|
+|**Devre dışı** | Yok |
+|**Hatayla** | Hata, kritik |
+|**Warning** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -105,9 +105,9 @@ Her iki günlük türü de App Service dosya sisteminde depolanır. 50 ' e kadar
 
 ## <a name="add-log-messages-in-code"></a>Koda günlük iletileri ekleme
 
-Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örneğin:
+Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örnek:
 
-- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örneğin:
+- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örnek:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ Günlükleri gerçek zamanlı olarak akışa almadan önce istediğiniz günlük
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örneğin:
+Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örneğin:
+HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -184,12 +184,12 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 
 | Günlük türü | Windows desteği | Linux (Docker) desteği | Açıklama |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Evet | Standart çıkış ve standart hata |
-| AppServiceHTTPLogs | Evet | Evet | Web sunucusu günlükleri |
-| AppServiceEnvironmentPlatformLogs | Evet | Evet | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
-| AppServiceAuditLogs | Evet | Evet | FTP ve kudu aracılığıyla oturum açma etkinliği |
-| AppServiceFileAuditLogs | TBA | Evet | FTP ve kudu aracılığıyla dosya değişiklikleri |
-| AppServiceAppLogs | TBA | Java & & Tomcat | Uygulama günlükleri |
+| AppServiceConsoleLogs | TBA dili | Yes | Standart çıkış ve standart hata |
+| AppServiceHTTPLogs | Yes | Yes | Web sunucusu günlükleri |
+| AppServiceEnvironmentPlatformLogs | Yes | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
+| AppServiceAuditLogs | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
+| AppServiceFileAuditLogs | TBA dili | Yes | FTP ve kudu aracılığıyla dosya değişiklikleri |
+| AppServiceAppLogs | TBA dili | Java &AMP; & Tomcat | Uygulama günlükleri |
 
 ## <a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

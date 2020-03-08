@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976307"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363560"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal kullanarak, MariaDB için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
@@ -21,13 +21,13 @@ MariaDB için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmas
 
 1. Azure portal oturum açın ve ardından MariaDB sunucusu için Azure veritabanınızı bulun.
 2. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MariaDB sunucusu için Azure veritabanı için sunucu parametreleri sayfasını açın.
-![Azure portal sunucusu parametreleri sayfası](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Ayarlamak için gereken herhangi bir ayarı bulun. Gözden geçirme **açıklama** amacı ve izin verilen değerler anlamak için sütun.
-![Aşağı açılan listeleme](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
-![Kaydet veya değişiklikleri at](./media/howto-server-parameters/4-save_parameters.png)
-5. Parametreler için yeni değerler kaydettiyseniz, her zaman varsayılan değerleri dön her şeyi seçerek geri dönebilirsiniz **tümünü Varsayılana Sıfırla**.
-![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
+![Azure portal sunucu parametreleri sayfası](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Ayarlamak için gereken herhangi bir ayarı bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
+açılan ![](./media/howto-server-parameters/3-toggle_parameter.png) Sırala
+4. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+değişiklikleri kaydetme veya atma ![](./media/howto-server-parameters/4-save_parameters.png)
+5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
+![tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Yapılandırılabilir sunucu parametrelerinin listesi
 
@@ -35,9 +35,9 @@ Desteklenen sunucu parametrelerinin listesi sürekli olarak artmaktadır. Sunucu
 
 ## <a name="non-configurable-server-parameters"></a>Yapılandırılabilir olmayan sunucu parametreleri
 
-Innodb arabellek havuzu ve en fazla bağlantı olmayan yapılandırılabilir ve bağlı olduğu için [fiyatlandırma katmanı](concepts-pricing-tiers.md).
+InnoDB arabellek havuzu ve maksimum bağlantı yapılandırılabilir değildir ve [fiyatlandırma katmanınıza](concepts-pricing-tiers.md)bağlı değildir.
 
-|**Fiyatlandırma Katmanı**| **Sanal çekirdek**|**Innodb arabellek havuzu (MB)**|
+|**Fiyatlandırma Katmanı**| **Sanal çekirdek**|**InnoDB arabellek havuzu (MB)**|
 |---|---|---|
 |Temel| 1| 1024|
 |Temel| 2| 2560|
@@ -55,7 +55,7 @@ Innodb arabellek havuzu ve en fazla bağlantı olmayan yapılandırılabilir ve 
 
 Bu ek sunucu parametreleri sistemde yapılandırılabilir değildir:
 
-|**Parametre**|**Sabit değer**|
+|**Parametresinin**|**Sabit değer**|
 | :------------------------ | :-------- |
 |Temel katmanda innodb_file_per_table|KAPALI|
 |innodb_flush_log_at_trx_commit|1|
@@ -68,10 +68,10 @@ Burada listelenmeyen diğer sunucu parametreleri, [MariaDB](https://mariadb.com/
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarını doldurma
 
-Saat dilimi tabloları sunucunuzdaki çağırarak doldurulabilir `az_load_timezone` saklı yordamdan MySQL komut satırı veya MySQL Workbench gibi bir araç.
+Sunucunuzdaki saat dilimi tabloları, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan `az_load_timezone` saklı yordam çağırarak doldurulabilir.
 
 > [!NOTE]
-> Çalıştırıyorsanız `az_load_timezone` ilk güvenli güncelleştirme modunu kapat gerekebilir MySQL Workbench'ten komutunu kullanarak `SET SQL_SAFE_UPDATES=0;`.
+> MySQL çalışma modundan `az_load_timezone` komutunu çalıştırıyorsanız, önce `SET SQL_SAFE_UPDATES=0;`kullanarak güvenli güncelleştirme modunu kapatmanız gerekebilir.
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -87,13 +87,13 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>Genel bir düzeyinde saat dilimi ayarlama
 
-Genel bir düzeyinde saat dilimi ayarlanabilir **sunucu parametreleri** Azure portalında sayfası. Değerine ayarlar genel saat dilimi aşağıda "ABD / Pasifik".
+Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Değerine ayarlar genel saat dilimi aşağıda "ABD / Pasifik".
 
 ![Saat dilimi parametre kümesi](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimi ayarlama
 
-Oturum düzeyi saat dilimi çalıştırarak ayarlanabilir `SET time_zone` MySQL komut satırı veya MySQL Workbench gibi bir araçla komutu. Aşağıdaki örnekte saat dilimini ayarlar **ABD / Pasifik** saat dilimi.
+Oturum düzeyi saat dilimi, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçla `SET time_zone` komutu çalıştırılarak ayarlanabilir. Aşağıdaki örnek saat dilimini **ABD/Pasifik** saati dilimine göre ayarlar.
 
 ```sql
 SET time_zone = 'US/Pacific';

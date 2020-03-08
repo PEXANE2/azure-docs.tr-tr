@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
 ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191883"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381733"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Hızlı başlangıç: BACPAC dosyasını Azure SQL veritabanı 'nda bir veritabanına aktarma
 
@@ -51,7 +51,7 @@ Bir veritabanını Azure PowerShell kullanılarak BACPAC dosyasından [yönetile
 
    ![Veritabanı import2](./media/sql-database-import/sql-server-import-database-settings.png)
 
-1. **OK (Tamam)** düğmesine tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 1. İçeri aktarmanın ilerlemesini izlemek için veritabanının sunucu sayfasını açın ve **Ayarlar**altında **Içeri/dışarı aktarma geçmişi**' ni seçin. Başarılı olduğunda, içeri aktarmanın **tamamlandı** durumu vardır.
 

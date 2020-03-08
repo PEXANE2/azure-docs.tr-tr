@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387381"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'Den veri taşıma
 
@@ -41,12 +41,12 @@ Azure Data Factory hizmetinin şirket içi MongoDB veritabanınıza bağlanabilm
     > [!NOTE]
     > Azure IaaS VM 'lerinde barındırıldığından bile MongoDB 'ye bağlanmak için ağ geçidini kullanmanız gerekir. Bulutta barındırılan bir MongoDB örneğine bağlanmaya çalışıyorsanız, ağ geçidi örneğini IaaS VM 'sine de yükleyebilirsiniz.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak şirket içi MongoDB veri deposundaki verileri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -61,7 +61,7 @@ Aşağıdaki bölümler, MongoDB kaynağına özgü Data Factory varlıkları ta
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, **OnPremisesMongoDB** bağlı HIZMETINE özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **OnPremisesMongoDb** olarak ayarlanmalıdır |Yes |
 | sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
@@ -72,14 +72,14 @@ Aşağıdaki tabloda, **OnPremisesMongoDB** bağlı HIZMETINE özgü JSON öğel
 | authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |İsteğe bağlı (temel kimlik doğrulaması kullanılıyorsa). Varsayılan: yönetici hesabını ve databaseName özelliği kullanılarak belirtilen veritabanını kullanır. |
 | Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Yes |
 | gatewayName |Veri deposuna erişen ağ geçidinin adı. |Yes |
-| encryptedCredential |Ağ Geçidi tarafından şifrelenen kimlik bilgileri. |İsteğe Bağlı |
+| encryptedCredential |Ağ Geçidi tarafından şifrelenen kimlik bilgileri. |İsteğe bağlı |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Mongodbcollection** türündeki veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | collectionName |MongoDB veritabanındaki koleksiyonun adı. |Yes |
 
@@ -90,7 +90,7 @@ Diğer yandan etkinliğin **Typeproperties** bölümünde bulunan özellikler he
 
 Kaynak **Mongodbsource** türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL-92 sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **KoleksiyonAdı** belirtilmişse) |
 
@@ -292,13 +292,13 @@ Verileri MongoDB 'ye taşırken, MongoDB türlerinden .NET türlerine aşağıda
 
 | MongoDB türü | .NET Framework türü |
 | --- | --- |
-| Binary |Byte[] |
+| İkili |Byte[] |
 | Boole |Boole |
-| Tarih |Tarih Saat |
-| NumberDouble |Double |
+| Tarih |DateTime |
+| NumberDouble |çift |
 | Numberınt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Dize |
+| Uzantının |Dize |
 | Dize |Dize |
 | EDIN |Guid |
 | Nesne |İç içe ayırıcı olarak "_" ile sütunları düzleştirmek için yeniden Renklendir |
@@ -321,7 +321,7 @@ Sanal tablolar, gerçek tablodaki verilere başvurur ve bu da sürücünün, ver
 ### <a name="example"></a>Örnek
 Örneğin, aşağıdaki "ExampleTable" tablosu, her hücrede bir nesne dizisi olan tek bir sütun içeren bir MongoDB tablosu ve bir sütun skaler türlerden oluşan bir dizi içeren bir sütun içerir.
 
-| _id | Müşteri adı | Faturalar | Hizmet Düzeyi | Derecelendirmeler |
+| _id | Müşteri adı | Faturalar | Hizmet Düzeyi | Lendir |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", öğe: "Toaster", Price: "456", indirim: "0.2"}, {invoice_id: "124", öğe: "oven", Fiyat: "1235", indirim: "0,2"}] |Silver |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", öğe: "Fridge", Price: "12543", indirim: "0,0"}] |Gold |[1,2] |
@@ -341,11 +341,11 @@ Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar 
 
 "ExampleTable_Invoices" tablosu:
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | öğe | price | İndirim |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | maddesinin | price | İndirimin |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |Toaster |456 |0.2 |
 | 1111 |1 |124 |oven |1235 |0.2 |
-| 2222 |0 |135 |buzdolabı |12543 |0.0 |
+| 2222 |0 |135 |buzdolabı |12543 |0,0 |
 
 "ExampleTable_Ratings" tablosu:
 

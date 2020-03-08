@@ -4,11 +4,11 @@ description: Bu makalede, kapsayıcılar için Azure İzleyici tarafından kulla
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843965"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385509"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Azure İzleyici kapsayıcı Aracısı'nı yönetme
 
@@ -18,11 +18,11 @@ Kapsayıcılar için Azure İzleyici, Linux için Log Analytics aracısını kap
 
 Kapsayıcılar için Azure İzleyici, Linux için Log Analytics aracısını kapsayıcı bir sürümünü kullanır. Aracının yeni bir sürümü bırakıldığında, aracı Azure Kubernetes hizmeti (AKS) ve Azure Red Hat OpenShift üzerinde barındırılan yönetilen Kubernetes kümelerinizde otomatik olarak yükseltilir. Karma bir [Kubernetes kümesi](container-insights-hybrid-setup.md) için aracı yönetilmez ve aracıyı el ile yükseltmeniz gerekir.
 
-AKS üzerinde barındırılan bir küme için aracı yükseltmesi başarısız olursa, bu makale aracıyı el ile yükseltme işlemini de açıklar. Yayımlanan sürümleri takip etmek için bkz: [Aracı sürüm duyuruları](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
+AKS üzerinde barındırılan bir küme için aracı yükseltmesi başarısız olursa, bu makale aracıyı el ile yükseltme işlemini de açıklar. Yayınlanan sürümleri izlemek için bkz. [Aracı Sürüm duyuruları](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
 ### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>İzlenen Kubernetes kümesinde aracıyı yükselt
 
-Azure Red Hat OpenShift dışındaki kümeler üzerinde aracıyı yükseltme işlemi, iki düz ileri doğru adımdan oluşur. İlk adım, Azure İzleyici ile Azure CLI kullanarak kapsayıcıları için izleme devre dışı bırakmaktır. İçinde açıklanan adımları izleyin [izlemeyi devre dışı](container-insights-optout.md?#azure-cli) makalesi. Azure CLI kullanarak çözüm ve çalışma alanında depolanan karşılık gelen verileri etkilemeden Kümedeki düğümlerden aracıyı kaldırmak sağlıyor. 
+Azure Red Hat OpenShift dışındaki kümeler üzerinde aracıyı yükseltme işlemi, iki düz ileri doğru adımdan oluşur. İlk adım, Azure İzleyici ile Azure CLI kullanarak kapsayıcıları için izleme devre dışı bırakmaktır. [Izlemeyi devre dışı bırakma](container-insights-optout.md?#azure-cli) makalesinde açıklanan adımları izleyin. Azure CLI kullanarak çözüm ve çalışma alanında depolanan karşılık gelen verileri etkilemeden Kümedeki düğümlerden aracıyı kaldırmak sağlıyor. 
 
 >[!NOTE]
 >Bu bakım etkinliği gerçekleştiriyorsanız, kümedeki düğümler, toplanan verileri ilettiğiniz değil ve performans görünümlerine veri gösterilmez arasındaki zaman aracıyı kaldırın ve ardından yeni sürümü yükleyin. 
@@ -30,9 +30,9 @@ Azure Red Hat OpenShift dışındaki kümeler üzerinde aracıyı yükseltme iş
 
 Aracının yeni sürümünü yüklemek için, bu işlemi gerçekleştirmek için [Azure CLI kullanarak izlemeyi etkinleştirme](container-insights-enable-new-cluster.md#enable-using-azure-cli)bölümünde açıklanan adımları izleyin.  
 
-İzlemeyi yeniden etkinleştirdikten sonra, küme için güncelleştirilmiş sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir. Aracı başarıyla yükseltildi doğrulamak için komutu çalıştırın: `kubectl logs omsagent-484hw --namespace=kube-system`
+İzlemeyi yeniden etkinleştirdikten sonra, küme için güncelleştirilmiş sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir. Aracının başarıyla yükseltildiğini doğrulamak için şu komutu çalıştırın: `kubectl logs omsagent-484hw --namespace=kube-system`
 
-Durum, aşağıdaki örneğe benzemelidir burada değeri *OMI* ve *omsagent* belirtilen en son sürümü ile eşleşmelidir [Aracı sürüm geçmişi](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
+Bu durum, *OMI* ve *omsagent* değerinin [Aracı yayın geçmişinde](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)belirtilen en son sürümle eşleşmesi gereken örneğe benzer.  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -78,7 +78,7 @@ $ helm upgrade --name myrelease-1 \
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Bir kapsayıcı ortam değişkeni koleksiyonunu devre dışı bırakma
 
-Kapsayıcılar için Azure İzleyici, bir pod içinde çalışan kapsayıcılar ortam değişkenlerini toplar ve bunları seçilen kapsayıcı içindeki özellik bölmesinde sunar **kapsayıcıları** görünümü. Bu davranışı, Kubernetes kümesinin dağıtımı sırasında veya *AZMON_COLLECT_ENV*ortam değişkenini ayarlayarak, belirli bir kapsayıcı için koleksiyonu devre dışı bırakarak denetleyebilirsiniz. Bu özellik, aracı sürümü – ciprod11292018 kullanılabilir ve daha yüksek.  
+Kapsayıcılar için Azure Izleyici, Pod içinde çalışan kapsayıcılardan ortam değişkenlerini toplar ve bunları **kapsayıcılar** görünümünde seçilen kapsayıcının Özellik bölmesinde sunar. Bu davranışı, Kubernetes kümesinin dağıtımı sırasında veya *AZMON_COLLECT_ENV*ortam değişkenini ayarlayarak, belirli bir kapsayıcı için koleksiyonu devre dışı bırakarak denetleyebilirsiniz. Bu özellik, aracı sürümü – ciprod11292018 kullanılabilir ve daha yüksek.  
 
 Ortam değişkenlerinin koleksiyonunu yeni veya mevcut bir kapsayıcıda devre dışı bırakmak için, **AZMON_COLLECT_ENV** değişkenini Kubernetes Deployment YAML yapılandırma dosyanızda **false** değeriyle ayarlayın. 
 
@@ -106,4 +106,4 @@ Ortam değişkenlerinin bulunmasını yeniden etkinleştirmek için, aynı işle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aracı yükseltme sırasında sorunlarla karşılaşırsanız, gözden [sorun giderme kılavuzu](container-insights-troubleshoot.md) desteği.
+Aracıyı yükseltirken sorunlarla karşılaşırsanız, destek için [sorun giderme kılavuzunu](container-insights-troubleshoot.md) gözden geçirin.

@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698825"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375649"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
@@ -33,7 +33,7 @@ Azure AD 'de uygulamaların iki gösterimi vardır:
 Uygulama [kayıt](https://aka.ms/appregistrations) deneyimi aracılığıyla Azure Portal [uygulama nesnelerini](app-objects-and-service-principals.md#application-object) yönetebilirsiniz. Uygulama nesneleri, uygulamayı Azure AD 'ye anlatmaktadır ve uygulamanın tanımı olarak düşünülebilir ve bu da hizmetin, ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi sahibi olabilir. Uygulama nesnesi, diğer dizinlerde hizmet sorumlularını destekleyen çok kiracılı bir uygulama olsa bile, yalnızca kendi giriş dizininde bulunur. Uygulama nesnesi aşağıdakilerden herhangi birini (ve burada açıklanmayan ek bilgileri) içerebilir:
 
 * Ad, logo ve Yayımcı
-* Yeniden Yönlendirme URI'leri
+* Yeniden yönlendirme URI 'Leri
 * Gizlilikler (uygulamanın kimliğini doğrulamak için kullanılan simetrik ve/veya asimetrik anahtarlar)
 * API bağımlılıkları (OAuth)
 * Yayımlanan API 'Ler/kaynaklar/kapsamlar (OAuth)
@@ -77,7 +77,7 @@ Uygulama nesneleri gibi, hizmet sorumluları da dahil olmak üzere birden çok y
 * Yönetici, uygulama galerisinden bir uygulama eklediğinde (Ayrıca bu, temel bir uygulama nesnesi oluşturur)
 * [Azure AD uygulama ara sunucusu](/azure/active-directory/manage-apps/application-proxy) kullanmak için uygulama ekleme
 * SAML veya parola kullanarak çoklu oturum açma için bir uygulamayı bağlama çoklu oturum açma (SSO)
-* Azure AD Graph API veya PowerShell aracılığıyla programlama yoluyla
+* Microsoft Graph API veya PowerShell aracılığıyla programlama yoluyla
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Uygulama nesneleri ve hizmet sorumluları birbirleriyle nasıl ilişkilidir?
 
@@ -100,13 +100,13 @@ Kendinize eklediğiniz uygulamalar (diyagramda **uygulama (sizinkiler)** olarak 
 
 ### <a name="notes-and-exceptions"></a>Notlar ve özel durumlar
 
-* Tüm hizmet sorumluları bir uygulama nesnesine geri işaret etmez. Azure AD ilk olarak yapılandırıldığında, uygulamalara sunulan hizmetler daha sınırlıdır ve hizmet sorumlusu bir uygulama kimliği oluşturmak için yeterlidir. Özgün hizmet sorumlusu Windows Server Active Directory hizmet hesabına göre daha yakın. Bu nedenle, önce bir uygulama nesnesi oluşturmadan Azure AD PowerShell kullanma gibi farklı yol yollarla hizmet sorumluları oluşturmak da mümkündür. Azure AD Graph API, bir hizmet sorumlusu oluşturmadan önce bir uygulama nesnesi gerektirir.
+* Tüm hizmet sorumluları bir uygulama nesnesine geri işaret etmez. Azure AD ilk olarak yapılandırıldığında, uygulamalara sunulan hizmetler daha sınırlıdır ve hizmet sorumlusu bir uygulama kimliği oluşturmak için yeterlidir. Özgün hizmet sorumlusu Windows Server Active Directory hizmet hesabına göre daha yakın. Bu nedenle, önce bir uygulama nesnesi oluşturmadan Azure AD PowerShell kullanma gibi farklı yol yollarla hizmet sorumluları oluşturmak da mümkündür. Microsoft Graph API 'SI bir hizmet sorumlusu oluşturmadan önce bir uygulama nesnesi gerektirir.
 * Yukarıda açıklanan bilgilerin hepsi programlı olarak kullanıma sunulmamaktadır. Aşağıdakiler yalnızca Kullanıcı arabiriminde kullanılabilir:
   * Talep dönüştürme kuralları
   * Öznitelik eşlemeleri (Kullanıcı hazırlama)
-* Hizmet sorumlusu ve uygulama nesneleri hakkında daha ayrıntılı bilgi için bkz. Azure AD Graph REST API başvuru belgeleri:
-  * [Uygulama](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Hizmet sorumlusu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* Hizmet sorumlusu ve uygulama nesneleri hakkında daha ayrıntılı bilgi için bkz. Microsoft Graph API başvuru belgeleri:
+  * [Uygulamanızı](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Hizmet sorumlusu](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Uygulamalar neden Azure AD ile tümleştirçalışıyor?
 

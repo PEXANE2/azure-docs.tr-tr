@@ -14,11 +14,11 @@ ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
 ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698025"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377196"
 ---
 # <a name="national-clouds"></a>Ulusal bulutlar
 
@@ -26,7 +26,7 @@ Ulusal bulutlar, Azure 'un fiziksel olarak yalıtılmış örnekleridir. Azure '
 
 Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutlara dağıtılır:  
 
-- Azure Devlet Kurumları
+- Azure Kamu
 - Azure Almanya
 - Azure Çin 21Vianet
 

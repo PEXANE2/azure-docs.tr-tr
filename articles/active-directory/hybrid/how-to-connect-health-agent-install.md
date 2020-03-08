@@ -17,11 +17,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897361"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376032"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -57,7 +57,7 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimle
 | --- | --- |
 | Genel Kullanıma Açık | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Bağlantı Noktası: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 | Azure Almanya | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
-| Azure Devlet Kurumları | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
+| Azure Kamu | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Azure AD Connect Health Aracısını indirme ve yükleme
@@ -140,7 +140,7 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 7. **Eylemler** bölmesinde **Federasyon Hizmeti Özelliklerini Düzenle**'ye tıklayın.
 8. **Federation Service Properties (Federasyon Hizmeti Özellikleri)** iletişim kutusunda **Events (Olaylar)** sekmesine tıklayın.
 9. **Success audits (Başarı denetimleri)** ve **Failure audits (Hata denetimleri)** onay kutularını seçin.
-10. **Tamam**’a tıklayın.
+10. **Tamam** düğmesine tıklayın.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2'de AD FS için denetimi etkinleştirme
 
@@ -373,7 +373,7 @@ Aracı iki saatten uzun bir süre boyunca Azure AD Connect Health hizmetine veri
 Rol parametresi şu anda şu değerleri alır:
 
 * ADFS
-* Eşitleme
+* Sync
 * EKLER
 
 > [!NOTE]

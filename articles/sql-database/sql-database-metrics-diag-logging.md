@@ -12,11 +12,11 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/24/2020
 ms.openlocfilehash: dead8b95446009880c36f97a095aee4aaae0579d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587371"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365456"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL veritabanı ölçümleri ve tanılama günlüğü
 
@@ -49,7 +49,7 @@ Aşağıdaki yöntemlerden birini kullanarak ölçümler ve tanılama telemetri 
 
 - [Azure SQL Analizi](#stream-diagnostic-telemetry-into-sql-analytics)
 - [Azure Event Hubs](#stream-diagnostic-telemetry-into-event-hubs)
-- [Azure depolama alanı](#stream-diagnostic-telemetry-into-azure-storage)
+- [Azure Depolama](#stream-diagnostic-telemetry-into-azure-storage)
 
 Yeni bir Azure kaynağı temin edebilir veya var olan bir kaynağı seçebilirsiniz. **Tanılama ayarları** seçeneğini kullanarak bir kaynak seçtikten sonra toplanacak verileri belirtin.
 
@@ -85,7 +85,7 @@ Tanılama telemetrinin akışını etkinleştirmek ve yapılandırmak için Azur
 > [!IMPORTANT]
 > Tanılama telemetrinin günlüğe kaydedilmesi varsayılan olarak etkin değildir.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portalında](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Esnek havuzlar
 

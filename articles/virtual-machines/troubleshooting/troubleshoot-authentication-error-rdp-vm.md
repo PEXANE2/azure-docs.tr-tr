@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155622"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381657"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure VM 'ye bağlanmak için RDP kullandığınızda kimlik doğrulama hatalarında sorun giderme
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure VM’ye RDP kullanarak bağlandığınızda karşılaştığınız kimlik doğrulaması hatalarını giderme
 
 Bu makale, bir Azure sanal makinesine (VM) bağlanmak üzere Uzak Masaüstü Protokolü (RDP) bağlantısı kullandığınızda oluşan kimlik doğrulama hatalarını gidermenize yardımcı olabilir.
 
@@ -101,7 +101,7 @@ gpupdate /force
 
 Değişiklik geri çevrildiğinden, Active Directory bir ilkenin soruna neden olduğu anlamına gelir. 
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 Bu sorunu geçici olarak çözmek için, NLA 'yı devre dışı bırakmak üzere komut penceresinde aşağıdaki komutları çalıştırın:
 
@@ -202,15 +202,15 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 Kayıt defteri değerine bağlı olarak, aşağıdaki adımları izleyin:
 
-* 4 (FIPS): [FIPS uyumlu algoritma bağlantılarını denetle](#fips-compliant)bölümüne gidin.
+* 4 (FIPS): [FIPS uyumlu algoritmalar bağlantılarını denetleme](#fips-compliant)bölümüne gidin.
 
-* 3 (128 bit şifreleme): Aşağıdaki komutu çalıştırarak önem derecesini **2** olarak ayarlayın:
+* 3 (128 bit şifreleme): aşağıdaki komutu çalıştırarak önem derecesini **2** olarak ayarlayın:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (istemci tarafından dikte edildiği için en yüksek şifreleme mümkündür): Aşağıdaki komutu çalıştırarak şifrelemeyi en düşük **1** değerine ayarlamayı deneyebilirsiniz:
+* 2 (istemci tarafından dikte edildiği için en yüksek şifreleme mümkün): aşağıdaki komutu çalıştırarak şifrelemeyi en düşük **1** değerine ayarlamayı deneyebilirsiniz:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f

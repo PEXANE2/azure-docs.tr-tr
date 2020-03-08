@@ -4,11 +4,11 @@ description: Kaynak Yöneticisi, şemaları ve kullanılabilir API sürümlerini
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478597"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372228"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -29,11 +29,11 @@ Bu adımları Azure portal, Azure PowerShell veya Azure CLı aracılığıyla ya
 
 Kaynak sağlayıcılarını Azure hizmetleriyle eşleyen bir liste için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](azure-services-resource-providers.md).
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portalı
 
 Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure portal menüsünde **tüm hizmetler**' i seçin.
 
     ![abonelikleri Seç](./media/resource-providers-and-types/select-all-services.png)
@@ -50,7 +50,7 @@ Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek 
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure portal menüsünde **tüm hizmetler**' i seçin.
 3. **Tüm hizmetler** kutusunda, **Kaynak Gezgini**' ni girin ve ardından **Kaynak Gezgini**' yi seçin.
 

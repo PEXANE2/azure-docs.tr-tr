@@ -4,11 +4,11 @@ description: Azure Site Recovery ile yük devretmeden sonra VMware VM 'lerinin g
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498234"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363166"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>VMware VM 'lerinin yeniden korunmasına ve yeniden çalışmaya hazırlanma
 

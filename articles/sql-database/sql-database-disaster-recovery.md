@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826580"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359151"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Bir Azure SQL veritabanını veya yük devretmeyi ikincil olarak geri yükleme
 
@@ -89,7 +89,7 @@ Uygulamanızın kapalı kalma süresi iş yükümlülük sonucu içermiyorsa, uy
 
 Bir kesinti durumundan kurtulmak için coğrafi geri yükleme kullanıyorsanız, normal uygulama işlevinin devam edebilmesi için yeni veritabanlarıyla bağlantının doğru şekilde yapılandırıldığından emin olmanız gerekir. Bu, Kurtarılan veritabanı üretimini hazırlamak için bir görev denetim listesi sağlar.
 
-### <a name="update-connection-strings"></a>Bağlantı dizelerini Güncelleştir
+### <a name="update-connection-strings"></a>Bağlantı dizelerini güncelleştir
 
 Kurtarılan veritabanınız farklı bir sunucuda bulunduğundan, bu sunucuyu işaret etmek için uygulamanızın bağlantı dizesini güncelleştirmeniz gerekir.
 

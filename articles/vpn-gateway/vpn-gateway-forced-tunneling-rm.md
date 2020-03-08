@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: fc35654403bbe1375d4188476b11fd0453f74345
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153154"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360281"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak zorlamalı tünel yapılandırma
 
@@ -35,7 +35,7 @@ Bu makalede, Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan san
 
 Aşağıdaki diyagramda zorlamalı tünelin nasıl çalıştığı gösterilmektedir. 
 
-![Zorlamalı Tünel Oluşturma](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
+![Zorlanan Tünel](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
 
 Yukarıdaki örnekte, ön uç alt ağı zorlamalı tünellenmiş değildir. Frontend alt iş yüklerinin kabul etmek ve doğrudan Internet'ten müşteri isteklerine yanıt vermek devam edebilirsiniz. Orta katman ve arka uç alt ağları zorlamalı tünel. Bu iki alt ağa giden tüm bağlantılarından İnternet'e zorlamalı veya bir şirket içi sitede bir S2S VPN tünelleri aracılığıyla yeniden.
 

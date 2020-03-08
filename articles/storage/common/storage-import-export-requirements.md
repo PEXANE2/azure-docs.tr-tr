@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978466"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360942"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure içeri/dışarı aktarma sistem gereksinimleri
 
@@ -21,7 +21,7 @@ Bu makalede, Azure içeri/dışarı aktarma hizmeti için önemli gereksinimler 
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Sabit sürücüleri aşağıdaki WAImportExport aracını kullanarak hazırlamanız **BitLocker Sürücü şifrelemesini destekleyen 64-bit işletim sistemi** desteklenir.
+Waımportexport aracını kullanarak sabit sürücüleri hazırlamak için **BitLocker Sürücü Şifrelemesi destekleyen aşağıdaki 64 bit işletim sistemi** desteklenir.
 
 
 |Platform |Sürüm |
@@ -42,25 +42,25 @@ Sabit sürücüleri aşağıdaki WAImportExport aracını kullanarak hazırlaman
 Azure içeri/dışarı aktarma hizmeti, aşağıdaki türlerde depolama hesapları destekler:
 
 - Standart Genel Amaçlı v2 depolama hesapları (çoğu senaryo için önerilir)
-- Blob Depolama hesapları
+- Blob Depolama Hesapları
 - Genel Amaçlı v1 depolama hesapları (klasik veya Azure Resource Manager dağıtımları),
 
-Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabı genel bakış](storage-account-overview.md).
+Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Storage hesaplarına genel bakış](storage-account-overview.md).
 
-Her iş için veya yalnızca bir depolama hesabından veri aktarmak için kullanılabilir. Diğer bir deyişle, bir tek içeri/dışarı aktarma işi birden çok depolama hesabında yayılamaz. Yeni bir depolama hesabı oluşturma hakkında daha fazla bilgi için bkz. [bir depolama hesabının nasıl oluşturulacağını](storage-account-create.md).
+Her iş için veya yalnızca bir depolama hesabından veri aktarmak için kullanılabilir. Diğer bir deyişle, bir tek içeri/dışarı aktarma işi birden çok depolama hesabında yayılamaz. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 > [!IMPORTANT]
-> Azure içeri dışarı aktarma hizmeti, depolama hesaplarını desteklemiyor burada [sanal ağ hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) özelliği etkinleştirildi. 
+> Azure Içeri aktarma hizmeti, [sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) özelliğinin etkinleştirildiği depolama hesaplarını desteklemez. 
 
 ## <a name="supported-storage-types"></a>Desteklenen depolama türleri
 
 Aşağıdaki listede yer alan depolama türlerinde Azure içeri/dışarı aktarma hizmeti ile desteklenir.
 
 
-|İş  |Depolama hizmeti |Desteklenen  |Desteklenmiyor  |
+|İş  |Depolama hizmeti |Destekleniyor  |Desteklenmiyor  |
 |---------|---------|---------|---------|
 |İçeri Aktarma     |  Azure Blob depolama <br><br> Azure dosya depolama       | Desteklenen blok Blobları ve sayfa blobları <br><br> Desteklenen dosyalar          |
-|Dışarı Aktar     |   Azure Blob depolama       | Blok blobları, sayfa blobları ve ekleme BLOB'ları desteklenir         | Azure dosyaları desteklenmiyor
+|Dışarı Aktarma     |   Azure Blob depolama       | Blok blobları, sayfa blobları ve ekleme BLOB'ları desteklenir         | Azure dosyaları desteklenmiyor
 
 
 ## <a name="supported-hardware"></a>Desteklenen donanım
@@ -72,7 +72,7 @@ Azure içeri/dışarı aktarma hizmeti için veri kopyalamak için desteklenen d
 Aşağıdaki listede yer alan disk, içeri/dışarı aktarma hizmeti ile kullanım için desteklenir.
 
 
-|Disk türü  |Boyut  |Desteklenen |
+|Disk türü  |Boyut  |Destekleniyor |
 |---------|---------|---------|
 |SSD    |   2,5"      |SATA ııı          |
 |HDD     |  2,5"<br>3,5"       |SATA II, SATA III         |
@@ -93,6 +93,6 @@ Zaman sabit sürücüleri hazırlama ve WAImportExport aracını kullanarak veri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [WAImportExport Aracı'nı ayarlama](storage-import-export-tool-how-to.md)
+* [Waımportexport aracını ayarlama](storage-import-export-tool-how-to.md)
 * [AzCopy komut satırı yardımcı programı ile veri aktarımı](storage-use-azcopy.md)
-* [Azure içeri dışarı aktarma REST API örneği](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Azure Içeri aktarma dışarı aktarma REST API örneği](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

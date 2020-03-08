@@ -15,11 +15,11 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161265"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375893"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -69,9 +69,9 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 `NameIdentifier` (veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 |------|-------------|
-| E-posta | Kullanıcının e-posta adresi |
+| Email | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
 | onpremisessamaccount | Şirket içi Azure AD 'den eşitlenmiş SAM hesap adı |
 | uzantının | Azure AD 'de kullanıcının ObjectID |

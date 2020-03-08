@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822007"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397169"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı düzenini kullanarak bir SaaS uygulamasında şemayı yönetme
  
@@ -24,7 +24,7 @@ Veritabanı uygulaması geliştikçe, veritabanı şemasında veya başvuru veri
 
 Bu öğretici iki senaryoyu araştırır-tüm kiracılar için başvuru veri güncelleştirmelerini dağıtma ve başvuru verilerini içeren tablodaki bir dizini yeniden oluşturma. [Elastik işler](elastic-jobs-overview.md) özelliği, bu eylemleri tüm kiracı veritabanlarında ve yeni kiracı veritabanları oluşturmak için kullanılan şablon veritabanında yürütmek için kullanılır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > 
@@ -77,7 +77,7 @@ Wingtip bilet uygulamasında, her kiracı veritabanı desteklenen bir mekan tür
 İlk olarak, her kiracı veritabanına dahil olan mekan türlerini gözden geçirin. SQL Server Management Studio (SSMS) içindeki kiracı veritabanlarından birine bağlanın ve Venuetype tablosunu inceleyin.  Bu tabloyu, veritabanı sayfasından erişilen Azure portal sorgu düzenleyicisinde da sorgulayabilirsiniz. 
 
 1. SSMS 'yi açın ve kiracı sunucusuna bağlanın: *tenants1-DPT-&lt;user&gt;. Database.Windows.net*
-1. *Otocycle yarış* ve *yüzme kulübünün* **Şu anda dahil** edilmediğini onaylamak için *tenants1-DPT-&lt;User&gt;* Server 'daki _contosoconcerthall_ veritabanına gidin ve *venuetype 'ı sorgulayın* tablo.
+1. *Otocycle yarış* ve *yüzme kulübünün* **Şu anda dahil** edilmediğini onaylamak için *tenants1-DPT-&lt;User&gt;* Server 'daki _contosoconcerthall_ veritabanına gidin ve *venuetype* tablosunu sorgulayın.
 
 Şimdi yeni mekan türlerini eklemek için tüm kiracı veritabanlarındaki *Venuetype* tablosunu güncelleştirmek üzere bir iş oluşturalım.
 

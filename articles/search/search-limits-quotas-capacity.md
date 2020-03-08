@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846276"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390358"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama hizmet limitleri
 
@@ -112,7 +112,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 | En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |Yok |10 |10 |
 | En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
 | En fazla becerileri <sup>4</sup> |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
-| Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yok |Sınırsız |Sınırsız |
+| Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yok |Sınır yok |Sınır yok |
 | En düşük zamanlama | 5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika | 5 dakika |
 | Maksimum çalışma süresi <sup>5</sup> | 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
 | Bilişsel arama becerileri için maksimum çalışma süresi veya görüntü analizi ile blob dizin oluşturma <sup>5</sup> | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |

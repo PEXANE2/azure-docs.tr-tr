@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744737"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389805"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
 
@@ -54,10 +54,10 @@ Aşağıdaki tabloda, HDInsight özel bir Azure sanal ağına dağıtıldığın
 
 | Kaynak türü | Sayı var | Ayrıntılar |
 | --- | --- | --- |
-|Baş düğüm | iki |    |
+|Baş düğüm | ikiye |    |
 |Zookeeper düğümü | üç | |
-|Çalışan düğümü | iki | Bu sayı, küme yapılandırmasına ve ölçeklendirilmesine göre farklılık gösterebilir. Apache Kafka için en az üç çalışan düğümü gerekir.  |
-|Ağ geçidi düğümü | iki | Ağ Geçidi düğümleri Azure 'da oluşturulan ancak aboneliğinizde görünmeyen Azure sanal makinelerdir. Bu düğümleri yeniden başlatmanız gerekiyorsa desteğe başvurun. |
+|Çalışan düğümü | ikiye | Bu sayı, küme yapılandırmasına ve ölçeklendirilmesine göre farklılık gösterebilir. Apache Kafka için en az üç çalışan düğümü gerekir.  |
+|Ağ geçidi düğümü | ikiye | Ağ Geçidi düğümleri Azure 'da oluşturulan ancak aboneliğinizde görünmeyen Azure sanal makinelerdir. Bu düğümleri yeniden başlatmanız gerekiyorsa desteğe başvurun. |
 
 Mevcut olan aşağıdaki ağ kaynakları, HDInsight ile kullanılan sanal ağ içinde otomatik olarak oluşturulur:
 
@@ -65,7 +65,7 @@ Mevcut olan aşağıdaki ağ kaynakları, HDInsight ile kullanılan sanal ağ i�
 | --- | --- | --- |
 |Yük dengeleyici | üç | |
 |Ağ Arabirimleri | lusu | Bu değer, her düğümün kendi ağ arabirimine sahip olduğu normal bir kümeyi temel alır. Dokuz arabirim iki baş düğüm, üç Zookeeper düğümü, iki çalışan düğümü ve önceki tabloda belirtilen iki ağ geçidi düğümü içindir. |
-|Genel IP Adresleri | iki |    |
+|Genel IP Adresleri | ikiye |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>HDInsight 'a bağlanmak için uç noktalar
 

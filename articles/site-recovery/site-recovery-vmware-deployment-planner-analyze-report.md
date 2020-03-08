@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495864"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363239"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı raporunu analiz etme
 
-Oluşturulan Microsoft Excel raporu şu sayfaları içerir:
+Oluşturulan Microsoft Excel raporu aşağıdaki sayfaları içerir:
 ## <a name="on-premises-summary"></a>Şirket içi özeti
 Şirket içi özeti çalışma sayfası, profili oluşturulmuş VMware ortamına genel bir bakış sağlar.
 
@@ -122,7 +122,7 @@ Genel önizleme sürümünde rapor, bir toplu işe hangi sanal makinelerin dahil
 ![Önerilen VM toplu iş boyutu](media/site-recovery-vmware-deployment-planner-analyze-report/ir-batching-v2a.png)
 
 ### <a name="cost-estimation"></a>Maliyet tahmini
-Grafta, seçtiğiniz hedef bölgede ve rapor oluşturma için belirttiğiniz para biriminde Azure'a tahmini toplam olağanüstü durum kurtarma (DR) maliyetinin özet görünümü gösterilir.
+Grafta, seçtiğiniz hedef bölgede ve rapor oluşturma için belirttiğiniz para biriminde Azure'a tahmini toplam olağanüstü durum kurtarma (DR) maliyeti gösterilir.
 
 ![Maliyet tahmini özeti](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
 
@@ -178,7 +178,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **VM Adı**: Bir rapor oluşturulurken VMListFile içinde kullanılan VM adı veya IP adresi. Bu sütunda ayrıca sanal makinelere bağlanan diskler (VMDK) listelenir. Yinelenen adlara veya IP adreslerine sahip vCenter sanal makinelerini birbirinden ayırt etmek için, adlar ESXi ana bilgisayar adını içerir. Listelenen ESXi ana bilgisayarı, profil oluşturma sırasında araç keşfettiğinde VM’in yerleştirildiği yerdir.
 
-**VM Uyumluluğu**: Değerler **Evet** ve **Evet\*** şeklindedir. **Evet**\*, VM 'Nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulmuş yüksek değişim sıklığı veya IOPS diski P20 ya da P30 kategorisine uyar, ancak diskin boyutu diskin bir P10 veya P20 ile eşlenmesine neden olur. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir. Örneğin:
+**VM Uyumluluğu**: Değerler **Evet** ve **Evet\*** şeklindedir. **Evet**\*, VM 'Nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulmuş yüksek değişim sıklığı veya IOPS diski P20 ya da P30 kategorisine uyar, ancak diskin boyutu diskin bir P10 veya P20 ile eşlenmesine neden olur. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir. Örnek:
 * <128 GB bir P10’dur.
 * 128 GB ile 256 GB arası P15'tir
 * 256 GB ile 512 GB arası P20'dir.
@@ -186,7 +186,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 * 1025 GB ile 2048 GB arası P40'dır.
 * 2049 GB ile 4095 GB arası P50'dir.
 
-Bir diskin iş yükü özellikleri diski P20 veya P30 kategorisine koyarken boyutu nedeniyle daha düşük bir premium depolama disk türüne eşleniyorsa, araç bu VM’yi **Evet**\* olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
+Örneğin, diskin iş yükü özellikleri diski P20 veya P30 kategorisine koyarken boyutu nedeniyle daha düşük bir premium depolama disk türüne eşleniyorsa, araç bu VM’yi **Evet**\* olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
 
 **Depolama Türü**: Standart veya Premium.
 

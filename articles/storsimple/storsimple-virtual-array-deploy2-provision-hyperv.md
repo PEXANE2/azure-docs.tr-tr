@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516789"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365744"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Sanal dizisi dağıtma-Hyper-V içinde sağlama
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -40,7 +40,7 @@ Burada, Windows Server 2012 R2, Windows Server 2012 veya Windows Server 2008 R2 
 Başlamadan önce aşağıdakilerden emin olun:
 
 * [Portal 'ı StorSimple Sanal dizisi Için hazırlama](storsimple-virtual-array-deploy1-portal-prep.md)bölümündeki tüm adımları tamamladınız.
-* Hyper-V için sanal dizi görüntüsünü Azure portal indirdiniz. Daha fazla bilgi için bkz **. Adım 3:**  [StorSimple Sanal dizisi Kılavuzu için Portal hazırlama](storsimple-virtual-array-deploy1-portal-prep.md)sanal dizi görüntüsünü indirin.
+* Hyper-V için sanal dizi görüntüsünü Azure portal indirdiniz. Daha fazla bilgi için bkz. 3. Adım: [Portal 'ı StorSimple Sanal dizisi Için hazırlama adlı](storsimple-virtual-array-deploy1-portal-prep.md) **Sanal dizi görüntüsünü indirme** .
 
   > [!IMPORTANT]
   > StorSimple Sanal dizisinde çalışan yazılım yalnızca StorSimple Aygıt Yöneticisi hizmeti ile birlikte kullanılabilir.
@@ -70,7 +70,7 @@ Bir sanal diziyi sağlamak ve bu diziye bağlanmak için aşağıdaki adımları
 
 Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 
-## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>1\. adım: Konak sisteminin en düşük sanal dizi gereksinimlerini karşıladığından emin olun
+## <a name="step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements"></a>1\. Adım: konak sisteminin en düşük sanal dizi gereksinimlerini karşıladığından emin olun
 Bir sanal dizi oluşturmak için şunlar gerekir:
 
 * Windows Server 2012 R2, Windows Server 2012 veya Windows Server 2008 R2 SP1 üzerinde yüklü Hyper-V rolü.
@@ -83,7 +83,7 @@ Sanal diziyi oluşturmakta olduğunuz temeldeki donanımın (ana bilgisayar sist
 * Bir ağ arabirimi.
 * Sistem verileri için 500 GB sanal disk.
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. adım: Hiper yöneticide sanal dizi sağlama
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>2\. Adım: Hiper yöneticide sanal dizi sağlama
 Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-provision-a-virtual-array"></a>Bir sanal dizi sağlamak için
@@ -97,7 +97,7 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. Yeni Sanal Makine Sihirbazı'nın **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
-5. **Ad ve konum belirtin** sayfasında, sanal diziniz Için bir **ad** girin.           **İleri**'ye tıklayın.
+5. **Ad ve konum belirtin** sayfasında, sanal diziniz Için bir **ad** girin. **İleri**’ye tıklayın.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. **Üretimi belirle** sayfasında, cihaz görüntüsü türünü seçin ve ardından **İleri**' ye tıklayın. Windows Server 2008 R2 kullanıyorsanız Bu sayfa görünmez.
@@ -121,7 +121,7 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 11. Minimum gereksinimleri karşılamak için 4 çekirdeğe ihtiyacınız vardır. 4 sanal işlemci eklemek için **Hyper-V Yöneticisi** penceresinde ana bilgisayar sisteminizi seçin. Sağ tarafta, **Sanal Makineler** listesinin altında bulunan bölmede az önce oluşturduğunuz sanal makineyi bulun. Makine adına sağ tıklayın ve **Ayarlar**'ı seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. **Ayarlar** sayfasında sol taraftaki bölmeden **İşlemci**'yi seçin. Sağ taraftaki bölmede **sanal işlemci sayısını** 4 (veya üzeri) olarak ayarlayın. **Uygula**'ya tıklayın.
+12. **Ayarlar** sayfasında sol taraftaki bölmeden **İşlemci**'yi seçin. Sağ taraftaki bölmede **sanal işlemci sayısını** 4 (veya üzeri) olarak ayarlayın. **Apply (Uygula)** düğmesine tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. Minimum gereksinimleri karşılamak için, 500 GB sanal veri diski de eklemeniz gerekir. **Ayarlar** sayfasında:
@@ -134,16 +134,16 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. Yeni Sanal Sabit Disk Sihirbazı'nın **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
-16. **Disk Biçimini Seç** sayfasında varsayılan seçenek olan **VHDX** biçimini kabul edin.           **İleri**'ye tıklayın. Windows Server 2008 R2 çalıştırıyorsa bu ekran sunulmaz.
+16. **Disk Biçimini Seç** sayfasında varsayılan seçenek olan **VHDX** biçimini kabul edin. **İleri**’ye tıklayın. Windows Server 2008 R2 çalıştırıyorsa bu ekran sunulmaz.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. **Disk Türünü Seç** sayfasında sanal sabit disk türünü **Dinamik olarak genişletilen** (önerilen) olarak ayarlayın. **Sabit boyutlu** diski de seçebilirsiniz ancak daha uzun süre beklemeniz gerekebilir. **Fark kayıt** seçeneğini kullanmamanızı öneririz.           **İleri**'ye tıklayın. Windows Server 2012 R2 ve Windows Server 2012 ' de **, Windows** Server 2008 R2 ' de varsayılan seçenektir; varsayılan olarak **sabit boyutudur**.
+17. **Disk Türünü Seç** sayfasında sanal sabit disk türünü **Dinamik olarak genişletilen** (önerilen) olarak ayarlayın. **Sabit boyutlu** diski de seçebilirsiniz ancak daha uzun süre beklemeniz gerekebilir. **Fark kayıt** seçeneğini kullanmamanızı öneririz. **İleri**’ye tıklayın. Windows Server 2012 R2 ve Windows Server 2012 ' de **, Windows** Server 2008 R2 ' de varsayılan seçenektir; varsayılan olarak **sabit boyutudur**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. **Ad ve Konum Belirtin** sayfasında veri diski için bir **ad** ve **konum** (göz atabilirsiniz) belirtin.           **İleri**'ye tıklayın.
+18. **Ad ve Konum Belirtin** sayfasında veri diski için bir **ad** ve **konum** (göz atabilirsiniz) belirtin. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. **Diski Yapılandır** sayfasında, **Yeni boş bir sanal sabit disk oluştur** seçeneğini BELIRLEYIN ve boyutu **500 GB** (veya daha fazla) olarak belirtin. 500 GB en düşük gereksinimdir, her zaman daha büyük bir disk sağlayabilirsiniz. Sağlandıktan sonra diski genişletemez veya daraltılamayacağını unutmayın. Sağlanacak disk boyutu hakkında daha fazla bilgi için [en iyi uygulamalar belgesindeki](storsimple-ova-best-practices.md)boyutlandırma bölümünü gözden geçirin.           **İleri**'ye tıklayın.
+19. **Diski Yapılandır** sayfasında, **Yeni boş bir sanal sabit disk oluştur** seçeneğini BELIRLEYIN ve boyutu **500 GB** (veya daha fazla) olarak belirtin. 500 GB en düşük gereksinimdir, her zaman daha büyük bir disk sağlayabilirsiniz. Sağlandıktan sonra diski genişletemez veya daraltılamayacağını unutmayın. Sağlanacak disk boyutu hakkında daha fazla bilgi için [en iyi uygulamalar belgesindeki](storsimple-ova-best-practices.md)boyutlandırma bölümünü gözden geçirin. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. **Özet** sayfasında sanal veri diskinizin ayrıntılarını gözden geçirin ve her şey yolunda görünüyorsa **Son**'a tıklayarak diski oluşturun. Sihirbaz kapanır ve makinenize bir sanal sabit disk eklenir.
@@ -153,7 +153,7 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. adım: Sanal diziyi başlatın ve IP 'yi alın
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>3\. Adım: sanal diziyi başlatın ve IP 'yi alın
 Sanal dizinizi başlatmak ve buna bağlanmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-start-the-virtual-array"></a>Sanal diziyi başlatmak için
@@ -163,7 +163,7 @@ Sanal dizinizi başlatmak ve buna bağlanmak için aşağıdaki adımları gerç
 2. Cihaz çalışmaya başladıktan sonra cihazı ve **Bağlan**'ı seçin.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Cihazın hazırlanmaya yönelik olarak 5-10 dakika beklemeniz gerekebilir. Konsolda ilerleme durumunu gösteren bir durum iletisi görüntülenir. Cihaz hazır olduktan sonra **Eylem** bölümüne gidin. Sanal `Ctrl + Alt + Delete` dizide oturum açmak için tuşuna basın. Varsayılan Kullanıcı *Storsimpleadmin* ' dir ve varsayılan parola *Parola1*' dir.
+3. Cihazın hazırlanmaya yönelik olarak 5-10 dakika beklemeniz gerekebilir. Konsolda ilerleme durumunu gösteren bir durum iletisi görüntülenir. Cihaz hazır olduktan sonra **Eylem** bölümüne gidin. Sanal dizide oturum açmak için `Ctrl + Alt + Delete` tuşuna basın. Varsayılan Kullanıcı *Storsimpleadmin* ' dir ve varsayılan parola *Parola1*' dir.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Güvenlik nedeniyle cihazın yönetici parolasının ilk oturum açma işleminin ardından değiştirilmesi gerekir. Parolayı değiştirmeniz istenir.
@@ -185,7 +185,7 @@ Sanal dizinizi başlatmak ve buna bağlanmak için aşağıdaki adımları gerç
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image28m.png)
 
     Sonra, ağı yapılandırın.
-7. Sanal diziniz üzerinde etkin olan ağ arabirimlerini listelemek için komutunukullanın.`Get-HcsIpAddress` Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
+7. Sanal diziniz üzerinde etkin olan ağ arabirimlerini listelemek için `Get-HcsIpAddress` komutunu kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıdaki örneğe bakın:
@@ -208,7 +208,7 @@ Sanal dizinizi başlatmak ve buna bağlanmak için aşağıdaki adımları gerç
        >
        >
 
-Cihazınız en düşük yapılandırma gereksinimlerini karşılamıyorsa, Başlık metninde aşağıdaki hatayı görürsünüz (aşağıda gösterilmiştir). Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirin. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. Adım 1 ' de en düşük yapılandırma gereksinimlerine bakın: Konak sisteminin en düşük sanal dizi gereksinimlerini karşıladığından emin olun.
+Cihazınız en düşük yapılandırma gereksinimlerini karşılamıyorsa, Başlık metninde aşağıdaki hatayı görürsünüz (aşağıda gösterilmiştir). Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirin. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. 1\. adımda en düşük yapılandırma gereksinimlerine bakın: konak sisteminin en düşük sanal dizi gereksinimlerini karşıladığından emin olun.
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 

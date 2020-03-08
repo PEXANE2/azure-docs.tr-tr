@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616056"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373171"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında başlat/durdur çözümü
 

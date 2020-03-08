@@ -4,11 +4,11 @@ description: Bu hızlı başlangıçta, REST API kullanarak yapıtlar oluşturma
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356052"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 
@@ -410,7 +410,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-### <a name="unassign-a-blueprint"></a>Şema atamasını kaldırma
+### <a name="unassign-a-blueprint"></a>Şemanın atamasını kaldırma
 
 Bir şemayı abonelikten kaldırabilirsiniz. Kaldırma işlemi genellikle yapıt kaynaklarına ihtiyaç duyulmadığında gerçekleştirilir. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Bir şemanın atamasını kaldırmak için aşağıdaki REST API işlemini kullanın:
 
@@ -420,7 +420,7 @@ Bir şemayı abonelikten kaldırabilirsiniz. Kaldırma işlemi genellikle yapıt
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-### <a name="delete-a-blueprint"></a>Şema silme
+### <a name="delete-a-blueprint"></a>Şemayı silme
 
 Bir şemanın kendisini kaldırmak için aşağıdaki REST API işlemini kullanın:
 

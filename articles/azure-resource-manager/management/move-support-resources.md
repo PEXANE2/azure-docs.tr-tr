@@ -4,11 +4,11 @@ description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kayna
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671855"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387697"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
@@ -1326,7 +1326,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | dataconnectorscheckrequirements | Hayır | Hayır |
 > | Varlık | Hayır | Hayır |
 > | entityqueries | Hayır | Hayır |
-> | Olaylara | Hayır | Hayır |
+> | olaylara | Hayır | Hayır |
 > | officeconsents | Hayır | Hayır |
 > | ayarlar | Hayır | Hayır |
 

@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.openlocfilehash: 0981ed30c6bcd9d4246ce1eb047aa66168e3884a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707910"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364530"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Hızlı başlangıç: Azure Cosmos DB SQL API kaynaklarını yönetmek için bir .NET konsol uygulaması oluşturma
 
@@ -123,7 +123,7 @@ dotnet add package Microsoft.Azure.Cosmos
 
 Örnek uygulamanın Azure Cosmos hesabınızda kimlik doğrulaması yapması gerekir. Kimlik doğrulaması yapmak için Azure Cosmos hesabı kimlik bilgilerini uygulamaya geçirmeniz gerekir. Aşağıdaki adımları izleyerek Azure Cosmos hesabı kimlik bilgilerinizi alın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Azure Cosmos hesabınıza gidin.
 
@@ -159,7 +159,7 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 Uygulamayı oluşturmaya başlamadan önce, Azure Cosmos DB içindeki kaynak hiyerarşisine ve bu kaynakları oluşturmak ve bunlara erişmek için kullanılan nesne modeline göz atalım. Azure Cosmos DB, kaynakları aşağıdaki sırayla oluşturur:
 
 * Azure Cosmos hesabı 
-* Veri tabanları 
+* Veritabanları 
 * Kapsayıcılar 
 * Öğeler
 
@@ -302,7 +302,7 @@ public class Program
 }
 ```
 
-### <a name="create-a-database"></a>Veritabanı oluşturun 
+### <a name="create-a-database"></a>Veritabanı oluşturma 
 
 `program.cs` sınıfında `CreateDatabaseAsync` yöntemini tanımlayın. Bu yöntem, zaten yoksa `FamilyDatabase` oluşturur.
 
@@ -330,7 +330,7 @@ private async Task CreateContainerAsync()
 }
 ```
 
-### <a name="create-an-item"></a>Öğe oluşturma
+### <a name="create-an-item"></a>Öğe oluştur
 
 Aşağıdaki kodla `AddItemsToContainerAsync` yöntemini ekleyerek bir aile öğesi oluşturun. `CreateItemAsync` veya `UpsertItemAsync` yöntemlerini kullanarak bir öğe oluşturabilirsiniz:
 

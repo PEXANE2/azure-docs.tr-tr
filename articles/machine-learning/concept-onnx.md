@@ -12,11 +12,11 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541068"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396229"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX ve Azure Machine Learning: ML modellerini oluşturma ve hızlandırma
 
@@ -38,13 +38,13 @@ ONNX çalışma zamanı, Bing, Office ve bilişsel hizmetler gibi yüksek ölçe
 + Azure Machine Learning yeni bir ONNX modeli eğitme (Bu makalenin altındaki örneklere bakın)
 + Varolan modeli başka bir biçimden ONNX 'e Dönüştür ( [öğreticilere](https://github.com/onnx/tutorials)bakın) 
 + [Onnx model Zoo](https://github.com/onnx/models) (Bu makalenin altındaki örneklere bakın) için önceden eğitilen BIR onnx modeli alın
-+ Özelleştirilmiş ONNX modelden üreten [Azure özel görüntü işleme hizmeti](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ [Azure özel görüntü işleme Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 'ten özelleştirilmiş bir onnx modeli oluşturma 
 
 Görüntü sınıflandırması, nesne algılama ve metin işleme gibi birçok model ONNX modelleri olarak temsil edilebilir. Ancak bazı modeller başarıyla dönüştürülemeyebilir. Bu durumla karşılaşırsanız lütfen kullandığınız ilgili dönüştürücünün GitHub 'da bir sorun bildirin. Sorun giderilene kadar mevcut biçim modelinizi kullanmaya devam edebilirsiniz.
 
 ## <a name="deploy-onnx-models-in-azure"></a>Azure'da ONNX modelleri dağıtma
 
-Azure Machine Learning ile ONNX modellerinizi dağıtabilir, yönetebilir ve izleyebilirsiniz. Standart [dağıtımı iş akışı](concept-model-management-and-deployment.md) ve ONNX çalışma zamanı, bulutta barındırılan bir REST uç noktası oluşturabilirsiniz. Kendiniz denemek için bu makalenin sonundaki örnek jupi not defterlerine bakın. 
+Azure Machine Learning ile ONNX modellerinizi dağıtabilir, yönetebilir ve izleyebilirsiniz. Standart [dağıtım iş akışını](concept-model-management-and-deployment.md) ve Onnx çalışma zamanını kullanarak bulutta BARıNDıRıLAN bir REST uç noktası oluşturabilirsiniz. Kendiniz denemek için bu makalenin sonundaki örnek jupi not defterlerine bakın. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>Python ile ONNX çalışma zamanını yükleyip kullanma
 
@@ -62,25 +62,25 @@ import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-Model genellikle eşlik eden belgeleri giriş ve çıkışları için modeli kullanarak söyler. Bir görselleştirme aracı gibi kullanabilirsiniz [Netron](https://github.com/lutzroeder/Netron) modeli görüntülemek için. ONNX çalışma zamanı ayrıca sorgu model meta verilerini, girdileri ve çıktıları sağlar:    
+Model genellikle eşlik eden belgeleri giriş ve çıkışları için modeli kullanarak söyler. Ayrıca, modeli görüntülemek için [netron](https://github.com/lutzroeder/Netron) gibi bir görselleştirme aracı da kullanabilirsiniz. ONNX çalışma zamanı ayrıca sorgu model meta verilerini, girdileri ve çıktıları sağlar:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-Çıkarım için kullanım modelinizi `run` ve döndürülen istediğiniz çıkışları (tümünün istiyorsanız bırakın boş) ve giriş değerleri haritasını listesinde geçirin. Sonuç çıktısı listesidir.  
+Modelinize çıkarmasını sağlamak için `run` kullanın ve döndürülmek istediğiniz çıktılar listesini (tümünün istiyorsanız boş bırakın) ve giriş değerlerinin haritasını geçirin. Sonuç çıktısı listesidir.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Tam Python API Başvurusu için bkz. [ONNX çalışma zamanı başvuru belgeleri](https://aka.ms/onnxruntime-python).    
+Tüm Python API başvurusu için bkz. [Onnx çalışma zamanı başvuru belgeleri](https://aka.ms/onnxruntime-python).    
 
 ## <a name="examples"></a>Örnekler
 
-Bkz: [Yardım-How-to-kullanın-azureml/dağıtım/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) örneğin ONNX modelleri oluşturup Not.
+Bkz. [nasıl yapılır kullanımı-azureml/dağıtım/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) , onnx modellerini oluşturan ve dağıtan Not defterleri.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
@@ -88,7 +88,7 @@ Bkz: [Yardım-How-to-kullanın-azureml/dağıtım/onnx](https://github.com/Azure
 
 ONNX hakkında daha fazla bilgi edinin veya projeye katkıda:
 + [ONNX proje Web sitesi](https://onnx.ai)
-+ [Github'da ONNX kod](https://github.com/onnx/onnx)
++ [GitHub 'da ONNX kodu](https://github.com/onnx/onnx)
 
 ONNX çalışma zamanı hakkında daha fazla bilgi edinin veya projeye katkıda:
 + [ONNX çalışma zamanı GitHub deposu](https://github.com/Microsoft/onnxruntime)

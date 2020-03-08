@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278837"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381880"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 veya üzeri)
 
@@ -112,7 +112,7 @@ StorSimple 8000 serisi cihazınızın dağıtımı sırasında [bir birim oluşt
       
        8100 cihazınızda 8,5 TB boyutunda (izin verilen en yüksek boyut) yerel olarak sabitlenmiş bir birim sağlarsanız, cihazdaki kullanılabilir yerel alanın tümünü kullanmış olursunuz. Katmanlı birimin çalışan kümesinin barındıracak cihazda yerel alan olmadığından, bu noktadan sonra herhangi bir katmanlı birim oluşturamazsınız. Var olan katmanlı birimler kullanılabilir alanı de etkiler. Örneğin, zaten 106 TB boyutunda katmanlı birimlerin bulunduğu bir 8100 cihazınız varsa, yerel olarak sabitlenmiş birimlerin kullanabileceği yalnızca 4 TB’lık alan kalır.
 
-    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN yoksa, bir Windows Server konağının ıQN 'sini almak için gidin. **Oluştur**’a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
+    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN yoksa, bir Windows Server konağının ıQN 'sini almak için gidin. **Oluştur**'a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
 
         ![Oluştur’a tıklayın](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -157,7 +157,7 @@ Bir birimi genişletmeniz veya birime erişen Konakları değiştirmeniz gerekti
 
        ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
+5. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
 
     ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 

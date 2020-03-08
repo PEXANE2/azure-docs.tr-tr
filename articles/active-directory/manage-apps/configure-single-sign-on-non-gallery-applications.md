@@ -13,11 +13,11 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159072"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375855"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Galeri olmayan uygulamalarda SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -32,7 +32,7 @@ SAML dışı bir uygulama için kod yazmadan çoklu oturum açmayı yapılandır
 
 Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama ekleme](add-non-gallery-app.md).
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>1\. Adım Temel SAML yapılandırmasını düzenleme
+## <a name="step-1-edit-the-basic-saml-configuration"></a>1\. Adım. Temel SAML yapılandırmasını düzenleme
 
 1. [Azure Portal](https://portal.azure.com) bir bulut uygulaması Yöneticisi veya Azure AD kiracınız için bir uygulama Yöneticisi olarak oturum açın.
 
@@ -60,7 +60,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama 
 
 Daha fazla bilgi için bkz. [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md).
 
-## <a name="step-2-configure-user-attributes-and-claims"></a>2\. Adım. Kullanıcı özniteliklerini ve taleplerini yapılandırma 
+## <a name="step-2-configure-user-attributes-and-claims"></a>2\. Adım Kullanıcı özniteliklerini ve taleplerini yapılandırma 
 
 Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı benzersiz bir şekilde tanımlayan kullanıcı hakkında bilgi (veya talepler) içeren bir SAML belirteci uygulamayı yayınlar. Varsayılan olarak, bu bilgiler kullanıcının Kullanıcı adı, e-posta adresi, adı ve soyadı bilgilerini içerir. Örneğin, uygulama belirli talep değerleri veya Kullanıcı adı dışında bir **ad** biçimi gerektiriyorsa, bu talepleri özelleştirmeniz gerekebilir. Galeri uygulamaları için gereksinimler [uygulamaya özgü öğreticilerde](../saas-apps/tutorial-list.md)açıklanmıştır veya uygulama satıcısına danışabilirsiniz. Kullanıcı özniteliklerini ve taleplerini yapılandırmaya yönelik genel adımlar aşağıda açıklanmıştır.
 
@@ -85,7 +85,7 @@ Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı ben
    >- Uygulamanız için isteğe bağlı talepler yapılandırmak üzere uygulama bildirimini değiştirmek için bkz. [isteğe bağlı talepler yapılandırma](../develop/active-directory-optional-claims.md).
    >- Belirteç kullanım belirteçleri, erişim belirteçleri, oturum belirteçleri ve KIMLIK belirteçlerine yönelik belirteç ömür ilkelerini ayarlamak için bkz. [belirteç yaşam sürelerini yapılandırma](../develop/active-directory-configurable-token-lifetimes.md). Ya da Azure AD koşullu erişimi aracılığıyla kimlik doğrulaması oturumlarını kısıtlamak için bkz. [kimlik doğrulama oturumu yönetimi özellikleri](https://go.microsoft.com/fwlink/?linkid=2083106).
 
-## <a name="step-3-manage-the-saml-signing-certificate"></a>3\. Adım. SAML imzalama sertifikasını yönetme
+## <a name="step-3-manage-the-saml-signing-certificate"></a>3\. Adım SAML imzalama sertifikasını yönetme
 
 Azure AD, uygulamanın gönderdiği SAML belirteçlerini imzalamak için bir sertifika kullanır. Azure AD ile uygulama arasındaki güveni ayarlamak için bu sertifikaya ihtiyacınız vardır. Sertifika biçimi hakkında daha fazla bilgi için bkz. uygulamanın SAML belgeleri. Daha fazla bilgi için bkz. SAML belirtecindeki [Federasyon çoklu oturum açma](manage-certificates-for-federated-single-sign-on.md) ve [Gelişmiş sertifika imzalama seçenekleri](certificate-signing-options.md)için sertifikaları yönetme.
 

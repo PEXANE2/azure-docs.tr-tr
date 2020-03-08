@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368033"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -565,7 +565,7 @@ az group deployment create \
 
 Daha yeni ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok ölçütü desteklemeyi destekler. Boyut ölçümleri üzerinde daha gelişmiş bir ölçüm uyarısı kuralı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
 
-Bu şekilde, birden çok ölçüt içeren bir uyarı kuralında boyutlar kullanırken aşağıdaki kısıtlamalara göz önünde olun:
+Boyutları birden fazla ölçüt içeren bir uyarı kuralında kullandığınızda aşağıdaki kısıtlamaları göz önünde bulundurun:
 - Her ölçüt içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - Bir boyut değeri olarak "\*" kullanamazsınız.
 - Farklı criterions ' de yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılan bir boyut değeri, bu ölçümler için (ilgili criterions) aynı şekilde açıkça ayarlanmalıdır.

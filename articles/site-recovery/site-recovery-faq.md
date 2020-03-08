@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363230"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -73,13 +73,13 @@ Maliyetlerde ayrıntılı tahmin için, [VMware](https://aka.ms/siterecovery_dep
 
 Hayır, önbellek için ek ücret alınmaz. Standart depolama hesabına çoğaltma yaptığınızda, bu önbellek depolaması aynı hedef depolama hesabının bir parçasıdır.
 
-### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Bir aydan uzun süredir Azure Site Recovery kullanıcısıyım. Yine de korunan her örnek için ilk 31 gün ücretsiz mi olacak?
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Ayda bir Kullanıcı Azure Site Recovery. Her korumalı örnek için yine de ilk 31 gün ücretsiz almaya devam ediyorum mi?
 
-Evet. Korunan örneklerden ilk 31 gün boyunca Azure Site Recovery ücreti alınmaz. Örneğin, son 6 ay boyunca 10 örnek koruyorsanız ve Azure Site Recovery bir 11 örneği bağladığınızda, ilk 31 gün boyunca 11. örnek için ücret alınmaz. İlk 10 örnek 31 günden uzun süredir korunduğundan bu yana Azure Site Recovery ücret almaya devam eder.
+Evet. Her korumalı örnek ilk 31 gün için Azure Site Recovery ücret vermez. Örneğin, son 6 ay boyunca 10 örnek koruyorsanız ve Azure Site Recovery bir 11 örneği bağladığınızda, ilk 31 gün boyunca 11. örnek için ücret alınmaz. İlk 10 örnek 31 günden uzun süredir korunduğundan bu yana Azure Site Recovery ücret almaya devam eder.
 
-### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>İlk 31 gün boyunca başka herhangi bir Azure hizmeti için ücretlendirilir miyim?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>İlk 31 gün boyunca diğer Azure ücretlerine tabi mıyım?
 
-Evet, Site Recovery korunan bir örneğin ilk 31 günü boyunca ücretsiz olsa da Azure depolama, depolama işlemleri ve veri aktarımı için ücret ödemeniz istenebilir. Korunan bir sanal makine için de Azure işlem ücretleri alınabilir.
+Evet, Site Recovery korunan bir örneğin ilk 31 günü boyunca ücretsiz olsa da Azure depolama, depolama işlemleri ve veri aktarımı için ücret ödemeniz istenebilir. Kurtarılan bir sanal makine de Azure işlem ücretlerine neden olabilir.
 
 
 ### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Olağanüstü durum kurtarma detaylarının/test yük devretmesi gerçekleştirmeye ilişkin bir maliyet var mı?
@@ -192,7 +192,7 @@ Evet. Aşağıdaki makalelerde azaltma bant genişliği hakkında daha fazla bil
 
 
 
-## <a name="failover"></a>Yük Devretme
+## <a name="failover"></a>Yük devretme
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure 'a yük devretdiğimde yük devretmeden sonra Azure VM 'lerine nasıl erişebilirim?
 
 Azure VM'lerine güvenli bir İnternet bağlantısı, siteden siteye VPN veya Azure ExpressRoute üzerinden erişebilirsiniz. Bağlanmak için bir dizi şey hazırlamanız gerekir. [Daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
@@ -219,7 +219,7 @@ Evet, Azure 'dan farklı bir konağa yeniden çalışma yapmak için alternatif 
 * [VMware sanal makineleri için](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V sanal makineleri için](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Otomasyon
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Site Recovery senaryolarını bir SDK ile otomatikleştirebilirim miyim?
 Evet. Rest API'si, PowerShell veya Azure SDK kullanarak Site Recovery iş akışlarını otomatikleştirebilirsiniz. PowerShell kullanarak Site Recovery dağıtmaya yönelik Şu anda desteklenen senaryolar:

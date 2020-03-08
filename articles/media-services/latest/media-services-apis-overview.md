@@ -14,11 +14,11 @@ ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359357"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -136,7 +136,7 @@ Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzu
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (amo), Media Services hakkında bilgi edinmek isteyen Windows müşterilerine sunulan bir araçtır. AMO, Media Services ile karşıyaC# yükleme, indirme, kodlama, akış ve canlı içerik akışı yapan bir WinForms/uygulamadır. AMO Aracı, herhangi bir kod yazmadan Media Services test etmek isteyen istemcilere yöneliktir. AMI kodu, Media Services geliştirmek isteyen müşteriler için bir kaynak olarak sağlanır.
 
-AMO, bir açık kaynak projem, topluluk tarafından destek sağlanır (https://github.com/Azure/Azure-Media-Services-Explorer/issues), sorunlar bildirilebilir. Bu proje [Microsoft Açık Kaynak Davranış Kuralları](https://opensource.microsoft.com/codeofconduct/)’nı benimsemiştir. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya diğer soru veya açıklamalarla iletişim opencode@microsoft.com.
+AMO, bir açık kaynak projem, topluluk tarafından destek sağlanır (https://github.com/Azure/Azure-Media-Services-Explorer/issues), sorunlar bildirilebilir. Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya diğer soru veya açıklamalarla iletişim opencode@microsoft.com.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması, sayfalama
 

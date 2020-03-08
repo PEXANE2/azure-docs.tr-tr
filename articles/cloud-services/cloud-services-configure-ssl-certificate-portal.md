@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385378"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure 'da bir uygulama için SSL 'yi yapılandırma
 
-Güvenli Yuva Katmanı (SSL) şifrelemesi, İnternet üzerinden gönderilen verilerin güvenliğini sağlamak için en yaygın kullanılan yöntemdir. Bu yaygın görev bir web rolü için HTTPS uç noktasının nasıl belirtileceğini ve uygulamanızın güvenliğini sağlamak için SSL sertifikasının nasıl yükleneceğini ele alır.
+Güvenli Yuva Katmanı (SSL) şifrelemesi, internet üzerinden gönderilen verilerin güvenliğini sağlamak için en yaygın kullanılan yöntemdir. Bu ortak görev, bir Web rolü için HTTPS uç noktasının nasıl kullanılacağını ve uygulamanızın güvenliğini sağlamak için SSL sertifikasının nasıl yükleneceğini ele alır.
 
 > [!NOTE]
 > Bu görevdeki yordamlar Azure Cloud Services için geçerlidir; Uygulama Hizmetleri için [bkz..](../app-service/configure-ssl-bindings.md)

@@ -4,11 +4,11 @@ description: Service Fabric durum bilgisi olan hizmetlerin nasıl bölümlenece�
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434073"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390206"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Güvenilir hizmetler Service Fabric bölüm
 Bu makalede, Azure Service Fabric güvenilir Hizmetleri bölümlemeye yönelik temel kavramlara giriş sunulmaktadır. Makalede kullanılan kaynak kodu [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)'da da kullanılabilir.
@@ -230,7 +230,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     Bu hizmet, LastName parametresini bir sorgu dizesi parametresi olarak kabul eden basit bir Web arabirimi olarak görev yapar, Bölüm anahtarını belirler ve işlemek için alfabetik. processing hizmetine gönderir.
 11. **Hizmet oluştur** iletişim kutusunda, **durum bilgisi olmayan** hizmet ' i seçin ve aşağıda gösterildiği gibi "alfabe. Web" i çağırın.
     
-    ![Durum bilgisi olmayan hizmet ekran görüntüsü](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+    ![Durum bilgisi olmayan hizmet ekran görüntüsü](./media/service-fabric-concepts-partitioning/createnewstateless.png)arasında yetersiz alanla karşılaştı.
 12. Aşağıda gösterildiği gibi bir bağlantı noktasını açmak için alfabetik. WebApi hizmetinin ServiceManifest. xml dosyasındaki uç nokta bilgilerini güncelleştirin.
     
     ```xml

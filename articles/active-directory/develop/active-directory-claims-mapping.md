@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699079"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375823"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -73,7 +73,7 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | appidadcr |
 | assertion |
 | at_hash |
-| aud |
+| AUD |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -87,7 +87,7 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | cloud_graph_host_name |
 | cloud_instance_name |
 | CNF |
-| kod |
+| code |
 | denetimler |
 | credential_keys |
 | csr |
@@ -100,12 +100,12 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | e-posta |
 | endpoint |
 | enfpolids |
-| exp |
+| poz |
 | expires_on |
 | grant_type |
 | graph |
 | group_sids |
-| grupları |
+| gruplar |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -142,7 +142,7 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| parola |
+| password |
 | platf |
 | siyalar |
 | pop_jwk |
@@ -162,7 +162,7 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | scope |
 | scp |
 | sid |
-| signature |
+| imza |
 | signin_state |
 | src1 |
 | src2 |
@@ -288,8 +288,8 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 |-----|-----|-----|
 | Kullanıcı | Soyadı | Aile Adı |
 | Kullanıcı | givenName | Verilen Ad |
-| Kullanıcı | displayName | Görünen Ad |
-| Kullanıcı | uzantının | ObjectID |
+| Kullanıcı | DisplayName | Görünen Ad |
+| Kullanıcı | uzantının | Uzantının |
 | Kullanıcı | posta | E-posta Adresi |
 | Kullanıcı | userPrincipalName | Kullanıcı Asıl Adı |
 | Kullanıcı | Bölüm|Bölüm|
@@ -297,7 +297,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | NetbiosName| NetBIOS adı |
 | Kullanıcı | DN | DNS etki alanı adı |
 | Kullanıcı | onpremisesecurityidentifier | Şirket içi güvenlik tanımlayıcısı |
-| Kullanıcı | tadı| Kuruluş Adı |
+| Kullanıcı | tadı| Kuruluş adı |
 | Kullanıcı | StreetAddress | Açık adres |
 | Kullanıcı | PostalCode | Posta kodu |
 | Kullanıcı | preferredlanguange | Tercih edilen dil |
@@ -321,12 +321,12 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | diğer posta | Diğer posta |
 | Kullanıcı | ülke | Ülke |
 | Kullanıcı | city | Şehir |
-| Kullanıcı | durum | Eyalet |
+| Kullanıcı | durum | Durum |
 | Kullanıcı | JobTitle | İş Unvanı |
-| Kullanıcı | EmployeeID | Çalışan Kimlik Numarası |
+| Kullanıcı | EmployeeID | Çalışan KIMLIĞI |
 | Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
-| uygulama, kaynak, hedef kitle | displayName | Görünen Ad |
-| uygulama, kaynak, hedef kitle | objected | ObjectID |
+| uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
+| uygulama, kaynak, hedef kitle | objected | Uzantının |
 | uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi |
 
@@ -389,7 +389,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
 | Kullanıcı | onpremisessamaccountname|Şirket Içi Sam hesap adı|
-| Kullanıcı | EmployeeID|Çalışan Kimlik Numarası|
+| Kullanıcı | EmployeeID|Çalışan KIMLIĞI|
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
 | Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
 | Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |
@@ -410,12 +410,12 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 | Dönüştürme Tionmethod | Kısıtlamalar |
 | ----- | ----- |
-| ExtractMailPrefix | Hiçbiri |
+| ExtractMailPrefix | Yok |
 | Birleştir | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı
 
-Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için `new-azureadapplicationkeycredential` Azure PowerShell cmdlet 'ini kullanarak uygulama nesneniz için bir simetrik anahtar kimlik bilgisi oluşturabilirsiniz. Bu Azure PowerShell cmdlet 'i hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)tıklayın.
+Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için, uygulama nesneniz için bir simetrik anahtar kimlik bilgisi oluşturmak üzere `new-azureadapplicationkeycredential` Azure PowerShell cmdlet 'ini kullanabilirsiniz. Bu Azure PowerShell cmdlet 'i hakkında daha fazla bilgi için, bkz. [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Talep eşlemesi etkin olan uygulamalar, `appid={client_id}` [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir: 
 
@@ -435,7 +435,7 @@ Talep eşleme ilkeleri, yalnızca hizmet sorumlusu nesnelerine atanabilir.
 
 Azure AD 'de, belirli hizmet sorumluları için belirteçlerde yayılan talepleri özelleştirebilmeniz için birçok senaryo mümkündür. Bu bölümde, talep eşleme ilkesi türünü nasıl kullanacağınızı belirlemenize yardımcı olabilecek birkaç yaygın senaryoya kılavuzluk ederiz.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki örneklerde, hizmet sorumluları için ilkeleri oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma hakkında bilgi](quickstart-create-new-tenant.md) almanızı öneririz.
 
@@ -469,7 +469,7 @@ Bu örnekte, bağlı hizmet sorumlularına verilen belirteçlerden temel talep k
       Get-AzureADPolicy
       ```
 1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun ObjectID 'sini almanız gerekir.
-   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [Microsoft Graph sorgulayabilirsiniz](/graph/traverse-the-graph). Ya da [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'DA Azure AD hesabınızda oturum açın.
+   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [MICROSOFT Graph API 'sini sorgulayabilirsiniz](/graph/traverse-the-graph). Veya [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)' nde Azure AD hesabınızda oturum açın.
    2. Hizmet sorumlunuz ObjectID 'niz varsa, aşağıdaki komutu çalıştırın:  
      
       ``` powershell
@@ -493,7 +493,7 @@ Bu örnekte, EmployeeID ve TenantCountry ' ı bağlı hizmet sorumlularına veri
       Get-AzureADPolicy
       ```
 1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun ObjectID 'sini almanız gerekir. 
-   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [Microsoft Graph sorgulayabilirsiniz](/graph/traverse-the-graph). Ya da [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'DA Azure AD hesabınızda oturum açın.
+   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [MICROSOFT Graph API 'sini sorgulayabilirsiniz](/graph/traverse-the-graph). Veya [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)' nde Azure AD hesabınızda oturum açın.
    2. Hizmet sorumlunuz ObjectID 'niz varsa, aşağıdaki komutu çalıştırın:  
      
       ``` powershell
@@ -517,7 +517,7 @@ Bu örnekte, bağlantılı hizmet sorumlularına verilen JWTs 'e "JoinedData" ö
       Get-AzureADPolicy
       ```
 1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun ObjectID 'sini almanız gerekir. 
-   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [Microsoft Graph sorgulayabilirsiniz](/graph/traverse-the-graph). Ya da [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'DA Azure AD hesabınızda oturum açın.
+   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [MICROSOFT Graph API 'sini sorgulayabilirsiniz](/graph/traverse-the-graph). Veya [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)' nde Azure AD hesabınızda oturum açın.
    2. Hizmet sorumlunuz ObjectID 'niz varsa, aşağıdaki komutu çalıştırın: 
      
       ``` powershell

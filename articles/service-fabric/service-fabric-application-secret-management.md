@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457544"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385679"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında şifreli gizli dizileri yönetme
 Bu kılavuz, Service Fabric uygulamasında gizli dizileri yönetme adımlarında size yol gösterir. Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir.

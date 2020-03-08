@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371086"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama çıkış bağlaması
 
@@ -20,7 +20,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek bir blob tetikleyicisi ve iki çıkış blobu bağlaması kullanan bir [ C# işlevdir](functions-dotnet-class-library.md) . İşlev, *örnek görüntüler* kapsayıcısında bir görüntü blobu oluşturma işlemi tarafından tetiklenir. Görüntü blobunun küçük ve orta boyutlu kopyalarını oluşturur.
 
@@ -73,7 +73,7 @@ public class ResizeImages
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -171,7 +171,7 @@ module.exports = function(context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -224,7 +224,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
@@ -295,7 +295,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [blobattribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)kullanın.
 
@@ -323,19 +323,19 @@ public static void Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Öznitelikler komut dosyası tarafından C# desteklenmiyor.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 `@BlobOutput` özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanıyorsanız, `dataType` `binary`olarak ayarlayın. Ayrıntılar için [Çıkış örneğine](#example) bakın.
 
@@ -362,19 +362,19 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `Blob` özniteliğinde aya
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 'te `context.bindings.<name from function.json>`kullanarak blob verilerine erişin.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Blob depolamaya yazmak için aşağıdaki türler olarak işlev parametreleri bildirebilirsiniz:
 
@@ -383,7 +383,7 @@ Blob depolamaya yazmak için aşağıdaki türler olarak işlev parametreleri bi
 
 Ayrıntılar için [Çıkış örneğine](#example) bakın.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 `@BlobOutput` özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanıyorsanız, `dataType` `binary`olarak ayarlayın. Ayrıntılar için [Çıkış örneğine](#example) bakın.
 

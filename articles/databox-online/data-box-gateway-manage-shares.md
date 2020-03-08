@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384585"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portalı kullanarak Azure Data Box Gateway paylaşımlarını yönetme 
 
@@ -69,7 +69,7 @@ Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştiri
 
     ![Paylaşımı seçme](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. Tıklayın **Sil**. 
+2. **Sil**'e tıklayın. 
 
     ![Sil'e tıklayın](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -85,7 +85,7 @@ Paylaşım listesi silinen paylaşıma göre güncelleştirilir.
 Yenileme özelliği, şirket içi paylaşımın içeriğini yenilemenizi sağlar. Bir paylaşımı yenilediğinizde bloblar ve dosyalar dahil olmak üzere son yenileme işleminden sonra buluta eklenmiş olan tüm Azure nesnelerini bulmak için bir arama başlatılır. Ardından bu ek dosyalar kullanılarak cihazdaki şirket içi paylaşımın içeriği yenilenir. 
 
 > [!NOTE]
-> İzinler ve erişim denetim listeleri (ACL'ler), bir yenileme işlemi arasında korunmaz. 
+> İzinler ve erişim denetim listeleri (ACL 'Ler) bir yenileme işlemi boyunca korunmaz. 
 
 Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
@@ -110,7 +110,7 @@ Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleşt
 Hata varsa bir uyarı görüntülenir. Uyarıda sorunun nedeni ve düzeltme adımları yer alır. Uyarıda ayrıca güncelleştirme veya silme işleminin başarısız olduğu dosyalar da dahil olmak üzere hatanın ayrıntılı bir özetinin yer aldığı bir dosyaya bağlantı da verilir.
 
 >[!IMPORTANT]
-> Bu sürümde, aynı anda birden çok tek bir paylaşım yenilenmez.
+> Bu sürümde, tek seferde birden fazla paylaşımdan daha fazlasını yenilemeyin.
 
 ## <a name="sync-storage-keys"></a>Depolama anahtarlarını eşitleme
 
@@ -119,7 +119,7 @@ Depolama anahtarlarınız değiştirildiyse eşitlemeniz gerekir. Eşitleme, cih
 Depolama erişim anahtarınızı eşitlemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
 1. Kaynağınızın **Genel bakış** sayfasına gidin. 
-2. Paylaşım listesinden eşitlemek istediğiniz depolama hesabıyla ilişkilendirilmiş olan bir paylaşımı seçin ve üzerine tıklayın. **Depolama anahtarını eşitle**'ye tıklayın. 
+2. Paylaşımlar listesinden, eşitlemeniz gereken depolama hesabıyla ilişkili bir paylaşımı seçin ve tıklayın. **Eşitleme depolama anahtarı**' na tıklayın. 
 
      ![Depolama anahtarını eşitleme 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

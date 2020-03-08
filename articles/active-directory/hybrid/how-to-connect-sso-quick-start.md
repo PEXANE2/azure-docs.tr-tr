@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888677"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376141"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -115,7 +115,7 @@ Varsayılan olarak tarayıcı, doğru bölgeyi Internet veya Intranet ' i belirl
 
 Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol vardır:
 
-| Seçenek | Yönetici değerlendirmesi | Kullanıcı deneyimleri |
+| Seçenek | Yönetici değerlendirmesi | Kullanıcı deneyimi |
 | --- | --- | --- |
 | Grup İlkesi | Yönetici, Intranet bölgesi ayarlarının düzenlemesini kilitler | Kullanıcılar kendi ayarlarını değiştiremezler |
 | Grup İlkesi tercihi |  Yönetici, Intranet bölgesi ayarlarında düzenlenmesine izin veriyor | Kullanıcılar kendi ayarlarını değiştirebilir |
@@ -140,7 +140,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
    > Bazı kullanıcıların sorunsuz SSO 'yu kullanmasını engellemek istiyorsanız (örneğin, bu kullanıcılar paylaşılan kiler 'de oturum açtığında), önceki değerleri **4**olarak ayarlayın. Bu eylem, Azure AD URL 'sini kısıtlanmış bölgeye ekler ve her seferinde sorunsuz SSO başarısız olur.
    >
 
-5. **Tamam**’ı ve ardından tekrar **Tamam**’ı seçin.
+5. **Tamam**' ı ve ardından yeniden **Tamam** ' ı seçin.
 
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso7.png)
 

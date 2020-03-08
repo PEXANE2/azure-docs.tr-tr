@@ -12,16 +12,16 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692816"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383734"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>SQL veri ambarı 'nda saklı yordamları kullanma
 Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik saklı yordamları uygulamaya yönelik ipuçları.
 
-## <a name="what-to-expect"></a>Sizi neler bekliyor
+## <a name="what-to-expect"></a>Bekleneceğiniz
 
 SQL veri ambarı SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
 
@@ -82,9 +82,9 @@ Bunlar:
 * çoğaltma seçeneği
 * tablo değerli parametreler
 * salt okuma parametreleri
-* Varsayılan parametreler
+* varsayılan parametreler
 * Yürütme bağlamları
-* Return ekstresi
+* return deyimi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

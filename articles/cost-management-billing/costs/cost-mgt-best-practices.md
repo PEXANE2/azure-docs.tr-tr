@@ -10,11 +10,11 @@ ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
 ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201076"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383522"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -158,7 +158,7 @@ Harcamalarınızı iyileştirmek için aşağıdaki yöntemleri kullanın.
 
 Azure’da altyapınızı dağıttıktan sonra bu altyapının kullanıldığından emin olmanız önemlidir. Hemen tasarruf yapmaya başlamanın en kolay yolu, kaynaklarınızı gözden geçirmek ve kullanılmayan kaynakları kaldırmaktır. Bu şekilde kaynaklarınızın mümkün olduğunca verimli bir şekilde kullanılıp kullanılmadığını belirlemeniz gerekir.
 
-#### <a name="azure-advisor"></a>Azure Advisor
+#### <a name="azure-advisor"></a>Azure Danışmanı
 
 Azure Danışmanı, CPU ve ağ kullanımı açısından düşük kullanıma sahip olan sanal makineleri tanımlama gibi işlemler gerçekleştiren bir hizmettir. Buradan alacağınız verilerle makineleri çalıştırmaya devam etmenin tahmini maliyetini dikkate alarak makineyi kapatabilir veya yeniden boyutlandırabilirsiniz. Danışman ayrıca ayrılmış örnek satın alma işlemleriyle ilgili önerilerde de bulunur. Öneriler, son 30 gün içindeki sanal makine kullanımınızı temel alır. Gerekli işlemler yapıldığında öneriler, harcamalarınızı azaltmanıza yardımcı olabilir.
 

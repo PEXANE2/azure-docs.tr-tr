@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422596"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376610"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
@@ -84,10 +84,10 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 Ayrıca, atanan bir onaylayan ve bir erişim paketinin istek sahibi de haklara sahiptir, ancak bu roller rol değildir.
 
-| Sağ | Açıklama |
+| {1&gt;Sağ&lt;1} | Açıklama |
 | --- | --- |
 | Kişi | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
-| Requestor | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
+| Sahibinin | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
 
 Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceği görevler listelenmiştir.
 
@@ -122,10 +122,10 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 
 | Azure AD dizin rolü | Yetkilendirme Yönetimi rolü | Güvenlik grubu eklenebilir | Office 365 grubu eklenebilir | Uygulama eklenebilir | SharePoint Online sitesi eklenebilir |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md) | Yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Kullanıcı Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Kullanıcı Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
+| [Exchange Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
 | [Takımlar Hizmet Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
 | [SharePoint Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  |  | :heavy_check_mark: |  |

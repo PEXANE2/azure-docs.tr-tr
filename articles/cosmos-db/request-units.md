@@ -7,29 +7,29 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394232"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB istek birimleri
 
-Azure Cosmos DB, sağladığınız aktarım hızı ve saatlik olarak kullandığınız depolama alanı için ödeme yaparsınız. Azure Cosmos veritabanınız için her zaman yeterli sistem kaynaklarının kullanılabilir olduğundan emin olmak için üretilen iş sağlanmalıdır. [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)'larını karşılamak veya aşmak için yeterli kaynak gereklidir.
+Azure Cosmos DB ile sağladığınız aktarım hızı ve tükettiğiniz depolama için saat temelinde ödeme yaparsınız. Azure Cosmos veritabanında her zaman yeterli sistem kaynaklarının kullanılabildiğinden emin olmak için aktarım hızının sağlanması gerekir. [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)'larını karşılamak veya aşmak için yeterli kaynak gereklidir.
 
 Azure Cosmos DB SQL, MongoDB, Cassandra, Gremlin ve Table gibi birçok API 'yi destekler. Her API 'nin kendi veritabanı işlemleri kümesi vardır. Bu işlemler, karmaşık sorgulardan okuma ve yazma işlemleri için basit noktadan aralığıdır. Her veritabanı işlemi, işlemin karmaşıklığına göre sistem kaynaklarını tüketir. 
 
-Tüm veritabanı işlemlerinin maliyeti Azure Cosmos DB normalleştirilerek, *Istek birimleri* (veya ru) tarafından ifade edilir. Saniye başına, aktarım hızı için para birimi olarak düşünebilirsiniz. Saniyedeki ru, Fiyat tabanlı bir para birimidir. Azure Cosmos DB tarafından desteklenen veritabanı işlemlerini gerçekleştirmek için gereken CPU, ıOPS ve bellek gibi sistem kaynaklarını soyutlar. 
+Tüm veritabanı işlemlerinin maliyeti Azure Cosmos DB normalleştirilerek, *Istek birimleri* (veya ru) tarafından ifade edilir. Saniye başına RU sayısını, aktarım hızının para birimi olarak düşünebilirsiniz. Saniye başına RU sayısı hızı temel alan bir para birimidir. Azure Cosmos DB tarafından desteklenen veritabanı işlemlerini gerçekleştirmek için gereken CPU, IOPS ve bellek gibi sistem kaynaklarının soyutlamasını sağlar. 
 
-1 KB 'lık öğeyi okuma maliyeti 1 Istek birimi (veya 1 RU). Her 1 GB veri depolamak için en az 10 RU/sn gereklidir. Diğer tüm veritabanı işlemlerine aynı şekilde ru kullanılarak maliyet atanır. Azure Cosmos kapsayıcınızda etkileşim kurmak için kullandığınız API 'yi her zaman, maliyetler her zaman RUs ile ölçülür. Veritabanı işleminin yazma, okuma veya sorgulama olup olmadığı, maliyetlerin her zaman RUs cinsinden ölçüldüğü.
+1 KB öğeyi okumanın maliyeti 1 İstek Birimidir (veya 1 RU). Her 1 GB veri depolamak için en az 10 RU/sn gereklidir. Diğer tüm veritabanı işlemlerine RU'lar kullanılarak benzer şekilde maliyet atanır. Azure Cosmos kapsayıcınızla etkileşim kurmak için hangi API'yi kullanırsanız kullanın maliyetler her zaman RU cinsinden ölçülür. Veritabanı işleminin yazma, okuma veya sorgulama olması fark etmez; maliyetler her zaman RU cinsinden ölçülür.
 
-Aşağıdaki görüntüde, RUs 'nin üst düzey fikrini gösterilmektedir:
+Aşağıdaki resimde üst düzey RU yaklaşımı gösterilir:
 
 ![Veritabanı işlemleri Istek birimlerini tüketir](./media/request-units/request-units.png)
 
-Azure Cosmos DB, kapasiteyi yönetmek ve planlamak için, belirli bir veri kümesi üzerinde belirli bir veritabanı işleminin RUs sayısının belirleyici olmasını sağlar. Herhangi bir veritabanı işlemi tarafından tüketilen ru sayısını izlemek için yanıt üst bilgisini inceleyebilirsiniz. RU ücretlerini ve uygulamanızın aktarım hızı gereksinimlerini [etkileyen faktörleri](request-units.md#request-unit-considerations) anladığınızda, uygulama maliyetinizi etkin bir şekilde çalıştırabilirsiniz.
+Kapasiteyi yönetmek ve planlamak için, Azure Cosmos DB belirli bir veri kümesi üzerinde belirli bir veritabanı işleminde RU sayısının belirleyici olmasını sağlar. Herhangi bir veritabanı işleminde tüketilen RU sayısını izlemek için yanıt üst bilgisini inceleyebilirsiniz. RU ücretlerini ve uygulamanızın aktarım hızı gereksinimlerini [etkileyen faktörleri](request-units.md#request-unit-considerations) anladığınızda, uygulama maliyetinizi etkin bir şekilde çalıştırabilirsiniz.
 
-Uygulamanız için ru sayısını saniyede 100 ru 'lik artışlarla saniye başına sağlayabilirsiniz. Uygulamanızın sağlanan aktarım hızını ölçeklendirmek için dilediğiniz zaman ru sayısını artırabilir veya azaltabilirsiniz. 100 ru 'nin artışlarını veya ölçeğini azaltır. Değişikliklerinizi programlama yoluyla veya Azure portal kullanarak yapabilirsiniz. Saatlik olarak faturalandırılırsınız.
+Uygulamanız için RU sayısını saniyede 100 RU'luk artışlarla saniye temelinde sağlarsınız. Uygulamanıza sağlanan aktarım hızını ölçeklendirmek için istediğiniz zaman RU sayısını artırabilir veya azaltabilirsiniz. 100 RU'luk artışlar veya düşüşlerle ölçeklendirme yapabilirsiniz. Değişikliklerinizi program aracılığıyla veya Azure portalını kullanarak yapabilirsiniz. Saat temelinde faturalandırılırsınız.
 
 Aktarım hızını iki ayrı granuya temin edebilirsiniz: 
 
