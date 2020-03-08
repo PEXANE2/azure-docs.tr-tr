@@ -2,17 +2,23 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228126"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924831"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
-Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Ancak, abonelik düzeyinde kaynaklar da oluşturabilirsiniz. Bu düzeyde, kaynak grupları oluşturma veya [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)atama gibi işlemler gerçekleştirmek için abonelik düzeyi dağıtımlarını kullanırsınız.
+Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Bununla birlikte, kaynakları da oluşturabilirsiniz:
+
+* abonelik düzeyi (Bu makalede ele alınmıştır)
+* [Yönetim grubu düzeyi](deploy-to-management-group.md)
+* [Kiracı düzeyi](deploy-to-tenant.md)
+
+Bu düzeyde, kaynak grupları oluşturma veya [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)atama gibi işlemler gerçekleştirmek için abonelik düzeyi dağıtımlarını kullanırsınız.
 
 Şablonları abonelik düzeyinde dağıtmak için Azure CLı, PowerShell veya REST API kullanın. Azure portal, abonelik düzeyinde dağıtımı desteklemez.
 
@@ -21,7 +27,7 @@ Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağ�
 Aşağıdaki kaynak türlerini abonelik düzeyinde dağıtabilirsiniz:
 
 * [bütçelerinin](/azure/templates/microsoft.consumption/budgets)
-* [dağıtımlar](/azure/templates/microsoft.resources/deployments)
+* [dağıtımlar](/azure/templates/microsoft.resources/deployments) -kaynak gruplarına dağıtan iç içe şablonlar için.
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [Poliyasatamaları](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -88,12 +94,12 @@ Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken ba
 
 * [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
 * [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* [RESOURCEID ()](template-functions-resource.md#resourceid) işlevi desteklenir. Abonelik düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Kaynak grubu parametresi için bir değer sağlamamayın.
+* Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [Subscriptionresourceıd ()](template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
 
   Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   Döndürülen kaynak KIMLIĞI şu biçimdedir:
@@ -101,8 +107,6 @@ Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken ba
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  Ya da, abonelik düzeyi kaynağı için kaynak KIMLIĞINI almak üzere [Subscriptionresourceıd ()](template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 

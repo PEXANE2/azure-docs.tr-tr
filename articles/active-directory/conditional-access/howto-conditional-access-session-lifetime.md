@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195071"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671912"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
 
@@ -37,7 +37,7 @@ Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırk
 
 Kullanıcı oturum açma sıklığı için Azure Active Directory (Azure AD) varsayılan yapılandırması, 90 günlük bir toplama penceresidir. Kimlik bilgileri için kullanıcılardan genellikle yapılacak bir şey gibi görünse de, bu durum geri yüklenebilir: kimlik bilgilerini düşünmeden girmek için eğitilen kullanıcılar, bunları istemeden kötü amaçlı bir kimlik bilgisi istemine girebilirler.
 
-Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
+Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
 
 Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte çalışarak. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
 
@@ -72,7 +72,7 @@ Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış veya Azure AD kayıtl�
 
 Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturum açmasına olanak tanır.
 
-Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel cihazlardaki kullanıcıların "oturum açık kal mı?" göstererek oturumu kalıcı olarak belirleyip kapatmayacağını seçmesine olanak sağlar. başarılı kimlik doğrulamasından sonra sor. Tarayıcı kalıcılığı AD FS ' de [Çoklu oturum açma ayarları AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel cihazlardaki kullanıcıların "oturum açık kal mı?" göstererek oturumu kalıcı olarak belirleyip kapatmayacağını seçmesine olanak sağlar. başarılı kimlik doğrulamasından sonra sor. Tarayıcı kalıcılığı AD FS ' de [Çoklu oturum açma ayarları AD FS](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 )makaledeki yönergeler kullanılarak yapılandırılmışsa, bu ilkeye uyum sağlayacak ve Azure AD oturumunun de kalıcı hale getirilecektir. Ayrıca kiracınızdaki kullanıcıların "oturum açmış durumda kal?" i görmesini da yapılandırabilirsiniz. [Azure AD oturum açma sayfanızı özelleştirme](../fundamentals/customize-branding.md)makalesindeki kılavuzu kullanarak Azure Portal içindeki şirket markası bölmesinde uygun ayarı değiştirerek istemde bulun.
 
 ## <a name="configuring-authentication-session-controls"></a>Kimlik doğrulama oturumu denetimlerini yapılandırma

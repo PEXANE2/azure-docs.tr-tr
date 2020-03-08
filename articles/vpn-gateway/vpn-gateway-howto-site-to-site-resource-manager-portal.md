@@ -6,21 +6,21 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391157"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure portalında Siteden Siteye bağlantı oluşturma
 
 Bu makalede, Azure portalını kullanarak şirket içi ağınızdan VNet’e Siteden Siteye VPN ağ geçidi bağlantısı oluşturma işlemi gösterilir. Bu makaledeki adımlar Resource Manager dağıtım modeli için geçerlidir. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portalında](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -51,7 +51,7 @@ Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kul
 * **Alt ağ:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (bu alıştırma için isteğe bağlı)
 * **Ağ geçidi alt ağ adres aralığı:** 10.1.255.0/27
 * **Sanal ağ geçidi adı:** VNet1GW
-* **Genel IP adresi adı:** VNet1GWIP
+* **Genel IP adresi adı:** VNet1GWpip
 * **VPN türü:** Rota tabanlı
 * **Bağlantı türü:** Siteden siteye (IPSec)
 * **Ağ geçidi türü:** VPN
@@ -61,7 +61,7 @@ Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kul
 
 ## <a name="CreatVNet"></a>1. sanal ağ oluşturma
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. VPN Gateway oluşturma
 
@@ -77,7 +77,7 @@ Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ 
 * **Örnek ayrıntıları > ağ geçidi türü:** SANAL
 * **Örnek ayrıntıları > VPN türü:** Rota tabanlı
 * **Sanal ağ > ağ geçidi alt ağ adres aralığı:** 10.1.255.0/27
-* Genel **IP adresi > genel IP adresi adı:** VNet1GWIP
+* Genel **IP adresi > genel IP adresi adı:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 

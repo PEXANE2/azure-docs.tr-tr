@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250305"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898784"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB anahtar sözcükler
 Bu makalede, Azure Cosmos DB SQL sorgularında kullanılabilecek anahtar sözcükler ayrıntılı olarak açıklanır.
@@ -108,7 +108,7 @@ Toplam sistem işlevi olan sorgular ve DISTINCT içeren bir alt sorgu desteklenm
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>'NDAKI
+## <a name="in"></a>IN
 
 Belirtilen değerin listedeki herhangi bir değerle eşleşip eşleşmediğini denetlemek için ın anahtar sözcüğünü kullanın. Örneğin, aşağıdaki sorgu `id` `WakefieldFamily` veya `AndersenFamily`tüm aile öğelerini döndürür.
 
@@ -126,7 +126,9 @@ Aşağıdaki örnek, durumun belirtilen değerlerden herhangi biri olduğu tüm 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 'si, FROM kaynağında ın anahtar sözcüğüyle eklenen yeni bir yapı ile [JSON dizileri üzerinde yineleme](sql-query-object-array.md#Iteration)desteği sağlar. 
+SQL API 'si, FROM kaynağında ın anahtar sözcüğüyle eklenen yeni bir yapı ile [JSON dizileri üzerinde yineleme](sql-query-object-array.md#Iteration)desteği sağlar.
+
+Bölüm anahtarınızı `IN` filtresine eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre uygulanır.
 
 ## <a name="top"></a>Sayfanın Üstü
 

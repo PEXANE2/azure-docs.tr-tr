@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368779"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925699"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
@@ -72,7 +72,7 @@ Azure Active Directory kullanıcı atama Kullanıcı rolü, kullanıcının Azur
 
 TenantCreator uygulama rolünü atamak için:
 
-1. TenantCreator uygulama rolünü yönetmek için [Azure portal](https://portal.azure.com) gidin. **Kurumsal uygulamaları**arayın ve seçin. Birden çok Azure Active Directory kiracılarıyla çalışıyorsanız, özel bir tarayıcı oturumu açmak ve URL 'Leri kopyalayıp Adres çubuğuna yapıştırmak iyi bir uygulamadır.
+1. TenantCreator uygulama rolünü yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Kurumsal uygulamaları**arayın ve seçin. Birden çok Azure Active Directory kiracılarıyla çalışıyorsanız, özel bir tarayıcı oturumu açmak ve URL 'Leri kopyalayıp Adres çubuğuna yapıştırmak iyi bir uygulamadır.
 
    ![Azure portal kurumsal uygulamaları aramanın ekran görüntüsü](media/azure-portal-enterprise-applications.png)
 2. **Kurumsal uygulamalar**Içinde **Windows sanal masaüstü**araması yapın. Önceki bölümde için izin verdiğiniz iki uygulamayı görürsünüz. Bu iki uygulama için **Windows sanal masaüstü**' nü seçin.
