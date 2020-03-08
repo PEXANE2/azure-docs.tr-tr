@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 276de42f2a37a0e48cd323e285760c00e6db9f32
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8ca97be2863bd8e45ac7937c49c464fa2f216b11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818340"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925681"
 ---
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -26,8 +26,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
@@ -55,7 +54,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
 
 1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 

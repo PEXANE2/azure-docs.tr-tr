@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 50b07c9f3cb9f617c141dde48b5c5c49d5527149
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 3481d751aacd4183bf5a999422b9631ec0e21edb
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669099"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925853"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
-* Bu, ilk Java (JRE) projem ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">boş bir örnek <span class="docon docon-navigate-external x-hidden-focus"> </span>proje oluşturmak </a>için bu kılavuzu kullanın.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Geliştirme ortamınız <span class="docon docon-navigate-external x-hidden-focus"> </span>için konuşma SDK 'sını yükler </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje<span class="docon docon-navigate-external x-hidden-focus"></span>oluşturun</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 

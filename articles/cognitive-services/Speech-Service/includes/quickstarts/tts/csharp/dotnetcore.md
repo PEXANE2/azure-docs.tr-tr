@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 6e732237b22bec6e2a66d44f12ac25e5f9adca3f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba6a373f678f8d34b34a669b3fbb3b570c90ed0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818128"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925718"
 ---
 > [!NOTE]
 > .NET Core, [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) teknik özelliklerini gerçekleştiren açık kaynaklı, platformlar arası bir .NET platformudur.
@@ -26,8 +26,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnetcore)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `Program.cs` dosyasını açın ve tüm kodu aşağıdakiyle değiştirin.
@@ -38,11 +38,11 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Ayrıca `YourServiceRegion` dizesini de aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
 
-1. Değişiklikleri projeye kaydedin.
+1. Proje üzerindeki değişiklikleri kaydedin.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulamayı derleyin. Menü çubuğundan **Derle** > **Çözümü Derle**'yi seçin. Kodun hatasız olarak derlenmesi gerekir.
+1. Uygulamayı derleyin. Menü çubuğundan **Derle** > **Çözümü Derle**'yi seçin. Kodun hatasız derlenmesi gerekir.
 
     ![Derleme çözümü seçeneği vurgulanmış şekilde Visual Studio uygulamasının ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Başarılı derleme")
 

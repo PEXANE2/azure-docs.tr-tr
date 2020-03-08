@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d32bb6a0f1428a57f504cb7aca6ca5d89ea4c52
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: c969b5e5daa4c4cfd84695fef70f0a2a5c50ce02
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668715"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924918"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -22,8 +22,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.

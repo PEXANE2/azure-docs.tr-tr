@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: c4a0e37946d98e48ed424ebd7f1a1e520fbbb7c8
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 61119b0c75b7a7c8e243e94a28ee0373f468b389
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445420"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925418"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,8 +23,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 

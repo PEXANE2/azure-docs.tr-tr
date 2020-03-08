@@ -4,19 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: e154eae5e57988c77d9af46c7d236b6c7f52dc46
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 478b1e6fa141d1f31db2c9d4113186869cd77646
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445906"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926089"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=jre)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

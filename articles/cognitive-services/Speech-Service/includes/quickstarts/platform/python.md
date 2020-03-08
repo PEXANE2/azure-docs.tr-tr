@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 9c398c755db78583b93cbba5bdef6c3cf01eb9e5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383968"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925783"
 ---
-Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
+Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlamanızı istiyorsanız `pip install azure-cognitiveservices-speech`çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -59,6 +59,26 @@ Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-service
 - Windows 'ta, platformunuz için [Visual Studio C++ 2019 için Microsoft Visual yeniden dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gereklidir. Bunu ilk kez yüklemek, bu kılavuza devam etmeden önce Windows 'u yeniden başlatmanızı gerektirebilir.
 - Son olarak, [Python 3,5 ile 3,8](https://www.python.org/downloads/)arasında olmalıdır. Yüklemenizi denetlemek için bir komut istemi açın ve komut `python --version` yazın ve sonucu denetleyin. Doğru yüklenmişse, "Python 3.5.1" veya benzer bir yanıt alırsınız.
 
+## <a name="install-the-speech-sdk-from-pypi"></a>Pypı 'den konuşma SDK 'sını yükler
+
+Kendi ortamınızı veya yapı araçlarınızı kullanıyorsanız, [Pypı](https://pypi.org/)'den konuşma SDK 'sını yüklemek için aşağıdaki komutu çalıştırın. Visual Studio Code kullanıcıları için, kılavuzlu yükleme için sonraki alt bölüme atlayın.
+
+```sh
+pip install azure-cognitiveservices-speech
+```
+
+MacOS kullanıyorsanız, yukarıdaki `pip` komutunu almak için aşağıdaki komutu çalıştırmanız gerekebilir:
+
+```sh
+python3 -m pip install --upgrade pip
+```
+
+`azure-cognitiveservices-speech`yüklemek için `pip` başarıyla kullandıysanız, ad alanını Python projelerinize aktararak konuşma SDK 'sını kullanabilirsiniz.
+
+```py
+import azure.cognitiveservices.speech as speechsdk
+```
+
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code kullanarak konuşma SDK 'sını yükler
 
 1. Platformunuz için desteklenen en son [Python](https://www.python.org/downloads/) sürümünü indirip yükleyin, 3,5 3,8.
@@ -72,29 +92,7 @@ Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-service
    1. Bir Terminal açın (açılan menülerden, **terminal** > **Yeni terminalden**)
    1. Açılan terminalde, komutu girin `python -m pip install azure-cognitiveservices-speech`
 
-Bu, Python 'da konuşma SDK 'sına kodlamaya başlamaya hazırsınız ve aşağıdaki [sonraki adımlara](#next-steps) geçebilir. Visual Studio Code yeni kullanıyorsanız, daha kapsamlı [Visual Studio Code belgelerine](https://code.visualstudio.com/docs)bakın. Visual Studio Code ve Python hakkında daha fazla bilgi için bkz. [Visual Studio Code Python öğreticisi](https://code.visualstudio.com/docs/python/python-tutorial).
-
-## <a name="install-the-speech-sdk-using-the-command-line"></a>Komut satırını kullanarak konuşma SDK 'sını yükler
-
-Visual Studio Code kullanmıyorsanız aşağıdaki komut, konuşma SDK 'Sı için [Pypı](https://pypi.org/) 'den Python paketini yüklenir. Visual Studio Code kullanıcıları için, sonraki alt bölüme atlayın.
-
-```sh
-pip install azure-cognitiveservices-speech
-```
-
-MacOS kullanıyorsanız, yukarıdaki `pip` komutunu almak için aşağıdaki komutu çalıştırmanız gerekebilir:
-
-```sh
-python3 -m pip install --upgrade pip
-```
-
-`azure-cognitiveservices-speech`yüklemek için `pip` başarıyla kullandıysanız, ad alanını Python projelerinize aktararak konuşma SDK 'sını kullanabilirsiniz. Örnek:
-
-```py
-import azure.cognitiveservices.speech as speechsdk
-```
-
-Bu, aşağıdaki [sonraki adımlarda](#next-steps) listelenen kod örnekleri içinde daha ayrıntılı olarak gösterilmiştir.
+Visual Studio Code yeni kullanıyorsanız, daha kapsamlı [Visual Studio Code belgelerine](https://code.visualstudio.com/docs)bakın. Visual Studio Code ve Python hakkında daha fazla bilgi için bkz. [Visual Studio Code Python öğreticisi](https://code.visualstudio.com/docs/python/python-tutorial).
 
 ## <a name="support-and-updates"></a>Destek ve güncelleştirmeler
 

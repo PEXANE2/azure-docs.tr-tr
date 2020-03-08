@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 333ed8fa886e351e8a67035ed830f5ad8f24bafd
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: a2d5614aeeedb88cd9b2c41baed317761443d17c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383947"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925914"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,8 +23,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 ## <a name="support-and-updates"></a>Destek ve güncelleştirmeler

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: f121065e710e254bc5e41e72b627e3711d55e324
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 37de11cae72bc884311d925e2b37a00905d790ac
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445542"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926030"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,8 +23,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394335"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926116"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `/etc/fstab`bir giriş oluşturarak `mount` komutuyla isteğe bağlı ve önyükleme.
@@ -276,7 +276,7 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>Geri Bildirim
 Linux kullanıcıları, sizi dinlemek istiyoruz!
 
-Linux kullanıcıları için Azure dosyaları ' grubu, Linux üzerinde dosya depolamayı değerlendirirken ve benimsediğiniz için geri bildirimde bulunacağınız bir forum sağlar. [Azure dosyaları Linux kullanıcılarına](mailto:azurefileslinuxusers@microsoft.com) kullanıcıların grubuna katılması için e-posta gönderin.
+Linux kullanıcıları için Azure dosyaları ' grubu, Linux üzerinde dosya depolamayı değerlendirirken ve benimsediğiniz için geri bildirimde bulunacağınız bir forum sağlar. [Azure dosyaları Linux kullanıcılarına](mailto:azurefiles@microsoft.com) kullanıcıların grubuna katılması için e-posta gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın:

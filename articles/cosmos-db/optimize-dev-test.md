@@ -6,28 +6,37 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 992d165d323aab79bb7b5475aa396d4432691530
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754892"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673357"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB geliştirme ve test maliyetini iyileştirin
 
-Bu makalede, ücretsiz olarak geliştirme ve test için Azure Cosmos DB kullanmanın farklı seçenekleri açıklanmaktadır.
+Bu makalede, geliştirme ve test için Azure Cosmos DB kullanmanın yanı sıra geliştirme veya test hesaplarındaki maliyeti iyileştirmek için kullanabileceğiniz farklı seçenekler açıklanmaktadır.
 
 ## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Azure Cosmos DB öykünücüsü (yerel olarak indirilebilir sürüm)
 
 [Azure Cosmos DB öykünücüsü](local-emulator.md) , Azure Cosmos DB bulut hizmetini taklit eden, yerel olarak indirilebilir bir sürümdür. Ağ bağlantınız olmasa ve herhangi bir ücret ödemeden bile Azure Cosmos DB API 'Leri kullanan kodu yazabilir ve test edebilirsiniz. Azure Cosmos DB öykünücü, bulut hizmeti için yüksek uygunluğa sahip geliştirme amacıyla yerel bir ortam sağlar. Azure aboneliği oluşturmadan uygulamanızı yerel olarak geliştirebilir ve test edebilirsiniz. Uygulamanızı buluta dağıtmaya hazırsanız, bağlantı dizesini buluttaki Azure Cosmos DB uç noktasına bağlanacak şekilde güncelleştirin, başka bir değişiklik yapmanız gerekmez. Ayrıca, testleri çalıştırmak için Azure DevOps 'da [Azure Cosmos DB öykünücü derleme göreviyle BIR CI/CD işlem hattı da ayarlayabilirsiniz](tutorial-setup-ci-cd.md) . [Azure Cosmos DB öykünücü](local-emulator.md) makalesini ziyaret ederek çalışmaya başlayın.
 
+## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB ücretsiz katman 
+Azure Cosmos DB ücretsiz katman sayesinde çalışmaya başlamak, uygulamalarınızı geliştirmek ve test etmek, hatta küçük üretim iş yüklerini ücretsiz olarak çalıştırmak kolaylaşır. Hesapta ücretsiz katman etkinleştirildiğinde, hesapta ücretsiz olarak ilk 400 RU/sn ve 5 GB depolama alanı alırsınız. Ayrıca, ücretsiz katmana (5 paylaşılan üretilen iş veritabanlarını ücretsiz katman hesabında sınırlayın), veritabanı düzeyinde 400 RU/s paylaşan bir paylaşılan verimlilik veritabanı da oluşturabilirsiniz. Ücretsiz katman hesabın kullanım ömrü boyunca süresiz olarak sürer ve sınırsız depolama ve aktarım hızı (RU/s), SLA 'Lar, yüksek kullanılabilirlik, tüm Azure bölgelerinde anahtar genel dağıtım ve daha fazlası dahil olmak üzere normal Azure Cosmos DB hesabının tüm [avantajları ve özellikleriyle](introduction.md#key-benefits) birlikte gelir. Azure aboneliği başına en fazla bir ücretsiz katman hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Başlamak için [Ücretsiz katmanı etkin olan yeni bir hesap oluşturun](create-cosmosdb-resources-portal.md). Daha ayrıntılı bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. 
+
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB’yi ücretsiz deneyin
 
-[Ücretsiz Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) , veritabanı ve koleksiyonlar oluşturmanıza ve Bulutta Azure Cosmos DB denemeye olanak sağlayan ücretsiz bir ücret deneyimidir. Azure 'a kaydolmanız veya herhangi bir maliyet ödemeniz gerekmez. Deneme Azure Cosmos DB hesapları, şu anda 30 gün sınırlı bir süre için kullanılabilir. Bunları dilediğiniz zaman yenileyebilirsiniz. Azure Cosmos DB hesapları, hızlı başlangıçlara veya öğreticilerle bir uygulamayı değerlendirmeyi Azure Cosmos DB, derlemeyi ve test yapmayı kolaylaştırır. Herhangi bir ücret ödemeden bir demo oluşturabilir veya birim testi yapabilirsiniz. Ücretsiz hesaplar için TRY Azure Cosmos DB kullanarak, anahtar genel dağıtım, SLA 'Lar ve tutarlılık modelleri de dahil olmak üzere Azure Cosmos DB Premium yeteneklerini ücretsiz olarak değerlendirebilirsiniz. En fazla 25 Azure Cosmos kapsayıcıyla ve 10.000 RU/sn işleme sahip bir veritabanı oluşturabilirsiniz. Örnek uygulamayı bir Azure hesabına abone olmadan veya kredi kartınızı kullanarak çalıştırabilirsiniz. Deneme Azure Cosmos DB ücretsiz olarak, çok bölgeli bir Azure Cosmos hesabı oluşturabilir ve bir uygulamayı yalnızca birkaç dakikada çalıştırabilirsiniz. Başlamak için bkz. [ücretsiz sayfa için Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
+[Ücretsiz Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) , bir Azure hesabına kaydolmadan veya kredi kartınızı kullanarak bulutta Azure Cosmos DB denemenizi sağlayan ücretsiz bir ücret deneyimidir. Deneme Azure Cosmos DB hesapları, şu anda 30 gün sınırlı bir süre için kullanılabilir. Bunları dilediğiniz zaman yenileyebilirsiniz. Azure Cosmos DB hesaplarını deneyin, bir uygulamayı derlemeyi ve test yapmayı ya da hızlı başlangıçlarını veya öğreticilerini kullanmayı Azure Cosmos DB kolaylaştırır. Ayrıca, bir demo oluşturabilir, birim testi gerçekleştirebilir veya hatta çok bölgeli bir hesap oluşturabilir ve herhangi bir maliyet ödemeden bir uygulama çalıştırabilirsiniz. Deneme Azure Cosmos DB hesabında, en fazla 25 kapsayıcı ve 20.000 RU/sn veya 5000 RU/sn 'ye kadar bir kapsayıcı içeren bir paylaşılan üretilen iş veritabanına sahip olabilirsiniz. Başlamak için bkz. [ücretsiz sayfa için Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
 
-## <a name="azure-free-account"></a>Azure Ücretsiz Hesabı
+## <a name="azure-free-account"></a>Ücretsiz Azure hesabı
 
 Azure Cosmos DB, Azure kredileri ve kaynakları belirli bir süre boyunca ücretsiz olarak sunan [Azure Ücretsiz hesabına](https://azure.microsoft.com/free)dahildir. Özellikle Azure Cosmos DB için bu ücretsiz hesap, tüm yıl boyunca 5 GB depolama ve 400 ru iş hacmi sunmaktadır. Bu deneyim, herhangi bir geliştiricinin Azure Cosmos DB özelliklerini kolayca test etmesini veya diğer Azure hizmetleriyle sıfır maliyetle tümleştirmesini sağlar. Azure Ücretsiz hesabıyla, ilk 30 gün boyunca harcayabileceğiniz bir $200 kredisi alırsınız. Yükseltmeyi seçinceye kadar Hizmetleri kullanmaya başlasanız bile, ücretlendirilmezsiniz. Başlamak için [Azure Ücretsiz hesap](https://azure.microsoft.com/free) sayfasını ziyaret edin.
+
+## <a name="use-shared-throughput-databases"></a>Paylaşılan verimlilik veritabanlarını kullanma
+
+Paylaşılan bir [üretilen iş veritabanında](set-throughput.md#set-throughput-on-a-database), veritabanının içindeki tüm kapsayıcılar, veritabanının sağlanan VERIMINI (ru/s) paylaşır. Örneğin, 400 RU/sn ile bir veritabanı sağlarsanız ve dört kapsayıcı varsa, dört kapsayıcının tamamı 400 RU/s 'yi paylaşır. Her kapsayıcının daha az sıklıkta erişilebilen bir geliştirme veya test ortamında, en az 400 RU/sn 'tan daha düşük bir işlem yapmak için, kapsayıcıları paylaşılan bir üretilen iş veritabanına koymak maliyeti iyileştirmenize yardımcı olabilir. 
+
+Örneğin, geliştirme veya test hesabınızda dört kapsayıcı olduğunu varsayalım. Adanmış aktarım hızı (en az 400 RU/sn) ile dört kapsayıcı oluşturursanız toplam RU/sn, 1600 RU/s olacaktır. Buna karşılık, paylaşılan bir üretilen iş veritabanı (en az 400 RU/sn) oluşturup kapsayıtlarınızı orada yerleştirirseniz, toplam RU/sn yalnızca 400 RU/sn olacaktır. Genel olarak, paylaşılan üretilen iş veritabanları her bir kapsayıcıda garantili aktarım hızı gerektirmeyen senaryolar için idealdir.  [Paylaşılan üretilen iş veritabanları](set-throughput.md#set-throughput-on-a-database) hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

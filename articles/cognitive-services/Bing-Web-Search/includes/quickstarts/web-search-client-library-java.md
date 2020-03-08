@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 38557b31521943147227f7e54617e4730203a5f3
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402562"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925195"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Java uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 * [Apache Maven](https://maven.apache.org/download.cgi) veya favori derleme otomasyonu aracınız
 * Abonelik anahtarı
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Bir proje oluşturun ve pod dosyanızı ayarlayın
 

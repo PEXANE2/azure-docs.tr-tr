@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6612b24b187afc72c4bc2e5ca9ef768cd1b27053
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 019abc79091527b105238ef83bfca1913fae600b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402550"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925946"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Python uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
@@ -27,7 +27,7 @@ Bing Web Araması SDK'sı Python 2.7, 3.3, 3.4, 3.5 ve 3.6 ile uyumludur. Bu hı
 * Python 2.7 için [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * Python 3.x için [venv](https://pypi.python.org/pypi/virtualenv)
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Sanal ortamınızı oluşturma ve yapılandırma
 

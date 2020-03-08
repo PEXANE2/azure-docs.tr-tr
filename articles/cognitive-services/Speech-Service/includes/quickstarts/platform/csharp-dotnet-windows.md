@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466889"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924969"
 ---
-Bu kılavuzda, .NET Framework (Windows) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
+Bu kılavuzda, .NET Framework (Windows) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız NuGet konsolunda `Install-Package Microsoft.CognitiveServices.Speech` çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -71,7 +71,21 @@ Kodunuzda başvurabilmeniz için [konuşma SDK 'Sı NuGet paketini](https://aka.
 
    Paket yüklendikten sonra, **Paket Yöneticisi konsol** penceresinde bir onay görüntülenir.
 
-Şimdi aşağıdaki [adımlara](#next-steps) geçebilirsiniz.
+### <a name="choose-target-architecture"></a>Hedef mimari seçin
+
+Konsol uygulamasını derlemek ve çalıştırmak için bilgisayarınızın mimarisiyle eşleşen bir platform yapılandırması oluşturun.
+
+1. Menü çubuğundan > **Configuration Manager** **Oluştur** ' u seçin. **Configuration Manager** iletişim kutusu görüntülenir.
+
+   ![Configuration Manager iletişim kutusu](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. **Etkin çözüm platformu** açılan kutusunda **Yeni**' yi seçin. **Yeni çözüm platformu** iletişim kutusu görüntülenir.
+
+1. **Yazın veya yeni platform** açılan kutusunu seçin:
+   - 64 bit Windows çalıştırıyorsanız **x64**' ü seçin.
+   - 32 bit Windows çalıştırıyorsanız, **x86**' yı seçin.
+
+1. **Tamam** ' ı ve ardından **Kapat**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

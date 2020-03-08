@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 724f52317ce2afda023ae0514a330da0032e8710
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668779"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924733"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
-* İlk Python projeniz bu ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">boş bir örnek <span class="docon docon-navigate-external x-hidden-focus"> </span>proje oluşturmak </a>için bu kılavuzu kullanın.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Geliştirme ortamınız <span class="docon docon-navigate-external x-hidden-focus"> </span>için konuşma SDK 'sını yükler </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje<span class="docon docon-navigate-external x-hidden-focus"></span>oluşturun</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 

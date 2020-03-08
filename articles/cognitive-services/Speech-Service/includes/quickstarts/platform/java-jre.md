@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383952"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925608"
 ---
-Bu kılavuzda, 64 bit Java 8 JRE için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
+Bu kılavuzda, 64 bit Java 8 JRE için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız, Java SDK 'Sı Maven merkezi deposunda kullanılamaz. Gradle veya `pom.xml` Dependency dosyası kullanıp kullanmayacağınızı, `https://csspeechstorage.blob.core.windows.net/maven/` işaret eden özel bir depo eklemeniz gerekir (paket adı için aşağıya bakın).
 
 > [!NOTE]
 > Konuşma Cihazları SDK’sı ve Roobo cihazı için bkz. [Konuşma Cihazları SDK’sı](~/articles/cognitive-services/speech-service/speech-devices-sdk.md).

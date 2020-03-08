@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391118"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureBackup** |Azure Backup.<br/><br/>*Note:* Bu etiketin **depolama** ve **AzureActiveDirectory** etiketlerine bir bağımlılığı vardır. | Giden | Hayır | Yes |
 | **AzureBotService** | Azure bot hizmeti. | Giden | Hayır | Hayır |
 | **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519). | Giden | Yes | Yes |
-| **Azurecognivesearch** | Azure Bilişsel Arama. <br/><br/>Bu etiket veya bu etiketin kapsadığı IP adresleri, dizin oluşturucularının veri kaynaklarına güvenli erişimini sağlamak için kullanılabilir. Daha fazla ayrıntı için [Dizin Oluşturucu bağlantı belgelerine](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) bakın. | Gelen | Hayır | Hayır |
+| **Azurecognivesearch** | Azure Bilişsel Arama. <br/><br/>Bu etiket veya bu etiketin kapsadığı IP adresleri, dizin oluşturucularının veri kaynaklarına güvenli erişimini sağlamak için kullanılabilir. Daha fazla ayrıntı için [Dizin Oluşturucu bağlantı belgelerine](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) bakın. <br/><br/> *Not*: Arama hizmetinin IP 'si, bu hizmet etıketı için IP aralıkları listesine dahil değildir ve ayrıca VERI kaynaklarının IP güvenlik duvarına **eklenmelidir** . | Gelen | Hayır | Hayır |
 | **AzureConnectors** | Araştırma/arka uç bağlantıları için bağlayıcılar Azure Logic Apps. | Gelen | Yes | Yes |
 | **AzureContainerRegistry** | Azure Container Registry. | Giden | Yes | Yes |
 | **Azu, Smosdb** | Azure Cosmos DB. | Giden | Yes | Yes |

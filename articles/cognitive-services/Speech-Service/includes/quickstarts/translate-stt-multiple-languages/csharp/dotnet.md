@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: bfb272f1d15003fd416efa8655e31034e5276ff3
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 7421d954f5dfd806ab7d41886bff243a51c086a4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156701"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924770"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,10 +23,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **Program.cs**açın ve içindeki tüm kodu aşağıdaki kodla değiştirin.
 
@@ -106,9 +105,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
    }
    ```
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Menü çubuğundan **dosya** > **Tümünü Kaydet**' i seçin.
 

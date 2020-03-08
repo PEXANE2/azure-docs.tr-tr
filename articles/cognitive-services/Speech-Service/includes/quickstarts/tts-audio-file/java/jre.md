@@ -4,19 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 2de8ddbe260fbc68ecddaf00330880116edaf82d
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446007"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925873"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=jre)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 

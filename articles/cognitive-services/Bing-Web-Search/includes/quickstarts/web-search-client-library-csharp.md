@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: dedab3ca330651f892a7dbd42a0201d8145256a8
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402628"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925850"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması C# uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
   * [NuGet Paket Yöneticisi](https://github.com/jmrog/vscode-nuget-package-manager)
 * [.NET Core SDK](https://www.microsoft.com/net/download)
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Proje oluşturma ve bağımlılıkları yükleme
 

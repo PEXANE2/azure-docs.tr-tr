@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı metne çevirme, C# (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
+description: TBD
 services: cognitive-services
 author: lisaweixu
 manager: nitinme
@@ -10,23 +10,22 @@ ms.subservice: speech-service
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.topic: include
-ms.openlocfilehash: 70db4e23aebe2a986c9aa4c85c28ac6529ac3202
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e84c7423e0f061004a827ac45c211d7db9c556df
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76156049"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924989"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
 

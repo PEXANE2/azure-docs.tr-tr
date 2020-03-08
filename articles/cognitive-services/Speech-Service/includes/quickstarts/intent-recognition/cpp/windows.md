@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1c5411778bf2e8ab25ce3e71dba92227b2653c3d
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: bc624197930044575a46666cbb74e5fe452e96ab
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445984"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926124"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
-* Bu ilk C++ projeniz ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">boş bir örnek proje <span class="docon docon-navigate-external x-hidden-focus"> </span>oluşturmak </a>için bu kılavuzu kullanın.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">Geliştirme ortamınız <span class="docon docon-navigate-external x-hidden-focus"> </span>için konuşma SDK 'sını yükler </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje<span class="docon docon-navigate-external x-hidden-focus"></span>oluşturun</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 

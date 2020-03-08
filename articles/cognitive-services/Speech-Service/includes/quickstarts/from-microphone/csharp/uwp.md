@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 447b42fe3fce3baa5b50f8333892a39464b7ee3f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 93a5a29c225912a48cf99ba6126690c298dfef9d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668626"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925816"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -22,8 +22,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 Bunu zaten yaptıysanız harika. Şimdi devam edelim.
