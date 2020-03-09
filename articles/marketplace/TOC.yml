@@ -1,5 +1,5 @@
 - name: Azure Market ve AppSource belgeleri
-  href: index.md
+  href: index.yml
   items:
     - name: Azure Market ve AppSource yol haritası
       href: ./marketplace-roadmap.md
@@ -51,9 +51,6 @@
           items:
             - name: En iyi teklif listeleme deneyimleri
               href: ./gtm-offer-listing-best-practices.md
-              items:
-                - name: Kategoriler
-                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Ürünü öne çıkarma
               href: ./gtm-how-to-get-featured.md
             - name: Market içerik doğrulaması

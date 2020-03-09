@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: fc108b9f49bc88c722ac2462ee82e27b6c6de5c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163947"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377775"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect ve Azure Active Directory kullanarak Web uygulamalarına erişim yetkisi verme
 
@@ -35,7 +35,7 @@ OpenID Connect, sunucuda barındırılan ve bir tarayıcı aracılığıyla eri�
 ## <a name="register-your-application-with-your-ad-tenant"></a>Uygulamanızı AD kiracınıza kaydetme
 İlk olarak, Azure Active Directory (Azure AD) kiracınızı kullanarak uygulamanızı kaydedin. Bu, uygulamanıza bir Uygulama Kimliği verir ve uygulamanızın belirteçleri alabilmesini sağlar.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
    
 1. Sayfanın sağ üst köşesindeki hesabınızı seçerek Azure AD kiracınızı seçin ve ardından **Dizin gezintisini Değiştir** ' i seçip uygun kiracıyı seçin. 
    - Hesabınız kapsamında yalnızca bir Azure AD kiracınız varsa veya uygun Azure AD kiracısını zaten seçtiyseniz bu adımı atlayın.

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974811"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391005"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Sağlama geliştirmeyi basitleştirmek için SDK 'larda sunulan araçları kullanma
 Cihaz sağlama hizmeti IoT Hub, güvenli ve ölçeklenebilir bir şekilde, tam zamanında [Otomatik sağlama](concepts-auto-provisioning.md) sağlayan, sağlama sürecini basitleştirir.  X. 509.440 sertifikası veya Güvenilir Platform Modülü (TPM) biçiminde güvenlik kanıtlama gereklidir.  Microsoft, IoT dağıtımını güvenli hale getirmek için [diğer güvenlik donanımı ortaklarıyla](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) de işbirliği yapıyor. Donanım güvenlik gereksinimini anlamak geliştiriciler için oldukça zor olabilir. Geliştiricilerin sağlama hizmeti ile iletişim kuran istemcileri yazmak için kullanışlı bir katman kullanabilmesi için bir Azure IoT sağlama hizmeti SDK 'Sı kümesi sunulmaktadır. SDK 'lar Ayrıca yaygın senaryolar için örnekler ve geliştirmede güvenlik kanıtlamasını basitleştirecek bir araç kümesi sağlar.

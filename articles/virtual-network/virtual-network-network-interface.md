@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
 ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357881"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Ağ arabirimi oluşturma, değiştirme veya silme
 
@@ -33,7 +33,7 @@ Bir ağ arabirimi için IP adresi eklemeniz, değiştirmeniz veya kaldırmanız 
 Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıdaki görevleri doldurun:
 
 - Henüz bir Azure hesabınız yoksa [ücretsiz deneme hesabı](https://azure.microsoft.com/free)için kaydolun.
-- Portalı kullanıyorsanız, https://portal.azure.com açın ve Azure hesabınızla oturum açın.
+- Portalı kullanıyorsanız, https://portal.azure.comaçın ve Azure hesabınızla oturum açın.
 - Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 - Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.28 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` çalıştırmanız da gerekir.
 
@@ -49,16 +49,16 @@ Azure portal kullanarak bir sanal makine oluştururken, Portal sizin için varsa
 
     |Ayar|Gerekli mi?|Ayrıntılar|
     |---|---|---|
-    |Ad|Evet|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır. Zaman içinde, büyük olasılıkla Azure aboneliğinizde birkaç ağ arabirimine sahip olacaksınız. Birkaç ağ arabirimini yönetmeyi kolaylaştırmak için bir adlandırma kuralı oluşturma konusunda öneriler için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Ağ arabirimi oluşturulduktan sonra ad değiştirilemez.|
-    |Sanal ağ|Evet|Ağ arabirimi için sanal ağı seçin. Ağ arabirimiyle aynı abonelikte ve konumda bulunan bir sanal ağa yalnızca bir ağ arabirimi atayabilirsiniz. Bir ağ arabirimi oluşturulduktan sonra, atandığı sanal ağı değiştiremezsiniz. Ağ arabirimini ekleyeceğiniz sanal makine, ağ arabirimiyle aynı konum ve abonelikte de bulunmalıdır.|
-    |Alt ağ|Evet|Seçtiğiniz sanal ağ içinden bir alt ağ seçin. Ağ arabiriminin oluşturulduktan sonra atandığı alt ağı değiştirebilirsiniz.|
-    |Özel IP adresi ataması|Evet| Bu ayarda, IPv4 adresi için atama yöntemini seçiyoruz. Şu atama yöntemlerinden birini seçin: **dinamik:** bu seçeneği belirlediğinizde, Azure seçtiğiniz alt ağın adres alanından bir sonraki kullanılabilir adresi otomatik olarak atar. **Statik:** Bu seçeneği seçerken, seçtiğiniz alt ağın adres alanından kullanılabilir bir IP adresini el ile atamanız gerekir. Statik ve dinamik adresler, siz değiştirene veya ağ arabirimi silinene kadar değişmez. Ağ arabirimi oluşturulduktan sonra atama yöntemini değiştirebilirsiniz. Azure DHCP sunucusu bu adresi, sanal makinenin işletim sistemi içindeki ağ arabirimine atar.|
+    |Adı|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır. Zaman içinde, büyük olasılıkla Azure aboneliğinizde birkaç ağ arabirimine sahip olacaksınız. Birkaç ağ arabirimini yönetmeyi kolaylaştırmak için bir adlandırma kuralı oluşturma konusunda öneriler için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Ağ arabirimi oluşturulduktan sonra ad değiştirilemez.|
+    |Sanal ağ|Yes|Ağ arabirimi için sanal ağı seçin. Ağ arabirimiyle aynı abonelikte ve konumda bulunan bir sanal ağa yalnızca bir ağ arabirimi atayabilirsiniz. Bir ağ arabirimi oluşturulduktan sonra, atandığı sanal ağı değiştiremezsiniz. Ağ arabirimini ekleyeceğiniz sanal makine, ağ arabirimiyle aynı konum ve abonelikte de bulunmalıdır.|
+    |Alt ağ|Yes|Seçtiğiniz sanal ağ içinden bir alt ağ seçin. Ağ arabiriminin oluşturulduktan sonra atandığı alt ağı değiştirebilirsiniz.|
+    |Özel IP adresi ataması|Yes| Bu ayarda, IPv4 adresi için atama yöntemini seçiyoruz. Şu atama yöntemlerinden birini seçin: **dinamik:** bu seçeneği belirlediğinizde, Azure seçtiğiniz alt ağın adres alanından bir sonraki kullanılabilir adresi otomatik olarak atar. **Statik:** Bu seçeneği seçerken, seçtiğiniz alt ağın adres alanından kullanılabilir bir IP adresini el ile atamanız gerekir. Statik ve dinamik adresler, siz değiştirene veya ağ arabirimi silinene kadar değişmez. Ağ arabirimi oluşturulduktan sonra atama yöntemini değiştirebilirsiniz. Azure DHCP sunucusu bu adresi, sanal makinenin işletim sistemi içindeki ağ arabirimine atar.|
     |Ağ güvenlik grubu|Hayır| **None**olarak ayarlı bırakın, var olan bir [ağ güvenlik grubunu](security-overview.md)seçin veya [bir ağ güvenlik grubu oluşturun](tutorial-filter-network-traffic.md). Ağ güvenlik grupları bir ağ arabiriminden gelen ve giden ağ trafiğini filtrelemenizi sağlar. Bir ağ arabirimine sıfır veya bir ağ güvenlik grubu uygulayabilirsiniz. Ağ arabiriminin atandığı alt ağa sıfır veya bir ağ güvenlik grubu da uygulanabilir. Ağ arabirimine bir ağ güvenlik grubu uygulandığında ve ağ arabiriminin atandığı alt ağ için bazı durumlarda beklenmedik sonuçlar oluşur. Ağ arabirimlerine ve alt ağlara uygulanan ağ güvenlik gruplarının sorunlarını gidermek için bkz. [ağ güvenlik gruplarında sorun giderme](diagnose-network-traffic-filter-problem.md).|
-    |Abonelik|Evet|Azure [aboneliklerinizden](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)birini seçin. Bir ağ arabirimini ve bağlandığınız sanal ağı aynı abonelikte mevcut olması gerekir.|
+    |Abonelik|Yes|Azure [aboneliklerinizden](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)birini seçin. Bir ağ arabirimini ve bağlandığınız sanal ağı aynı abonelikte mevcut olması gerekir.|
     |Özel IP adresi (IPv6)|Hayır| Bu onay kutusunu seçerseniz, ağ arabirimine atanan IPv4 adresine ek olarak ağ arabirimine bir IPv6 adresi atanır. Ağ arabirimleriyle IPv6 kullanımı hakkında önemli bilgiler için bu makalenin IPv6 bölümüne bakın. IPv6 adresi için bir atama yöntemi seçemezsiniz. Bir IPv6 adresi atamayı seçerseniz, bu, dinamik yöntemle atanır.
     |IPv6 adı (yalnızca **özel IP adresi (IPv6)** onay kutusu işaretlendiğinde görüntülenir) |Evet, **özel IP adresi (IPv6)** onay kutusu işaretliyse.| Bu ad, ağ arabirimi için bir ikincil IP yapılandırmasına atanır. IP konfigürasyonları hakkında daha fazla bilgi için bkz. [ağ arabirimi ayarlarını görüntüleme](#view-network-interface-settings).|
-    |Kaynak grubu|Evet|Var olan bir [kaynak grubunu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) seçin veya bir kaynak grubu oluşturun. Bir ağ arabirimi, sizin eklediğiniz sanal makineden veya bağlandığınız sanal makineye göre aynı veya farklı bir kaynak grubunda bulunabilir.|
-    |Konum|Evet|Bir ağ arabirimini ve bağlandığınız sanal ağı, bir bölge olarak da adlandırılan aynı [konumda](https://azure.microsoft.com/regions)bulunmalıdır.|
+    |Kaynak grubu|Yes|Var olan bir [kaynak grubunu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) seçin veya bir kaynak grubu oluşturun. Bir ağ arabirimi, sizin eklediğiniz sanal makineden veya bağlandığınız sanal makineye göre aynı veya farklı bir kaynak grubunda bulunabilir.|
+    |Konum|Yes|Bir ağ arabirimini ve bağlandığınız sanal ağı, bir bölge olarak da adlandırılan aynı [konumda](https://azure.microsoft.com/regions)bulunmalıdır.|
 
 Portal, bir genel IP adresini oluştururken ağ arabirimine atama seçeneğini sağlamaz; ancak Portal, bir genel IP adresi oluşturur ve portalı kullanarak bir sanal makine oluşturduğunuzda ağ arabirimine atar. Oluşturduktan sonra ağ arabirimine genel IP adresi ekleme hakkında bilgi edinmek için bkz. [IP adreslerini yönetme](virtual-network-network-interface-addresses.md). Genel IP adresi olan bir ağ arabirimi oluşturmak istiyorsanız, ağ arabirimini oluşturmak için CLı veya PowerShell kullanmanız gerekir.
 
@@ -251,7 +251,7 @@ Azure ağ Izleyicisi 'nin sonraki atlama özelliği, yolların bir sanal makine 
 
 Ağ arabirimlerinde görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun izinlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                                                     | Ad                                                      |
+| Eylem                                                                     | Adı                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft. Network/NetworkInterfaces/Read                                   | Ağ arabirimi al                                     |
 | Microsoft.Network/networkInterfaces/write                                  | Ağ arabirimi oluştur veya güncelleştir                        |

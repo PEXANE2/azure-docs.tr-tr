@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194509"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357278"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) genel bakış
 
@@ -33,7 +33,7 @@ Microsoft kimlik platformu, Azure Active Directory (Azure AD) geliştirici platf
   - Sosyal veya yerel hesaplar (Azure AD B2C aracılığıyla)
 - **Açık kaynak kitaplıkları**: Microsoft kimlik doğrulama KITAPLıKLARı (msal) ve standartlara uyumlu diğer kitaplıklar için destek
 - **Uygulama Yönetimi Portalı**: Azure Portal yerleşik olarak bulunan ve diğer tüm Azure Yönetim olanaklarınızla birlikte bulunan bir kayıt ve yapılandırma deneyimi.
-- **Uygulama yapılandırma API 'si ve PowerShell**: uygulamalarınızın REST API (Microsoft Graph ve Azure Active Directory Graph 1,6) ve PowerShell aracılığıyla programlı yapılandırılmasına izin verir. böylece DevOps görevlerinizi otomatikleştirebilmenizi sağlayabilirsiniz.
+- **Uygulama yapılandırma API 'si ve PowerShell**: UYGULAMALARıNıZıN Microsoft Graph API ve PowerShell aracılığıyla programlı yapılandırılmasına izin veren, DevOps görevlerinizi otomatikleştirebileceğiniz.
 - **Geliştirici içeriği**: kavramsal ve başvuru belgeleri, hızlı başlangıç örnekleri, kod örnekleri, öğreticiler ve nasıl yapılır kılavuzlarından.
 
 Geliştiriciler için Microsoft Identity platformu, kimlik ve güvenlik alanındaki, passwordless kimlik doğrulaması, adım kimlik doğrulama ve koşullu erişim gibi yeniliklere sorunsuz tümleştirme sunar.  Bu tür işlevselliği kendiniz uygulamanız gerekmez: Microsoft Identity platformu ile tümleştirilmiş uygulamalar, bu tür yeniliklerden yararlanır.
@@ -81,6 +81,6 @@ Uygulamanızı bir **Üretim ortamında**başlatmaya hazırsanız, bu en iyi yö
 - [Proxy 'leri etkinleştirin ve http istemcilerini özelleştirin](msal-net-provide-httpclient.md).
 - [Microsoft Identity platform tümleştirme denetim listesini](identity-platform-integration-checklist.md)izleyerek tümleştirmenizi test edin.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 Sosyal ve yerel kimliklerinizde oturum açan müşterilere yönelik bir uygulama oluşturmayı planlıyorsanız bkz. [Azure AD B2C genel bakış](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

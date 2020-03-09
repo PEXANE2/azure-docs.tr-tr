@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979613"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355682"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Rota tablosu oluşturma, değiştirme veya silme
 
@@ -30,7 +30,7 @@ Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafi
 Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıdaki görevleri doldurun:
 
 * Henüz bir Azure hesabınız yoksa [ücretsiz deneme hesabı](https://azure.microsoft.com/free)için kaydolun.<br>
-* Portalı kullanıyorsanız, https://portal.azure.com açın ve Azure hesabınızla oturum açın.<br>
+* Portalı kullanıyorsanız, https://portal.azure.comaçın ve Azure hesabınızla oturum açın.<br>
 * Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiş ve hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.<br>
 * Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` çalıştırmanız da gerekir.
 
@@ -123,7 +123,7 @@ Bir yol tablosu herhangi bir alt ağ ile ilişkilendirilmişse silinemez. Bir yo
 
 1. Portalın üst kısmındaki arama kutusuna, arama kutusuna *Rota tabloları* ' nı girin. Arama sonuçlarında **yol tabloları** görüntülendiğinde, bunu seçin.
 1. Silmek istediğiniz yol tablosunun sağ tarafında **..** . seçeneğini belirleyin.
-1. **Sil**'i ve sonra da **Evet**'i seçin.
+1. **Sil**' i seçin ve ardından **Evet**' i seçin.
 
 ### <a name="delete-a-route-table---commands"></a>Yol tablosunu silme-komutlar
 
@@ -219,7 +219,7 @@ Bir sanal makineye bağlı her bir ağ arabirimine yönelik etkili rotalar, olu�
 
 Bir sanal makine ile başka bir Azure kaynağının IP adresi, bir şirket içi kaynak veya Internet 'teki bir kaynak arasındaki sonraki atlama türünü belirleyebilirsiniz. Yönlendirme sorunlarını giderirken Azure 'un yönlendirmeyi belirleme yararlı olur. Bu görevi gerçekleştirmek için, var olan bir ağ izleyicisine sahip olmanız gerekir. Mevcut bir ağ izleyicisine sahip değilseniz, [bir Ağ İzleyicisi örneği oluşturma](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)' daki adımları tamamlayarak bir tane oluşturun.
 
-1. Portalın üst kısmındaki arama kutusuna *Ağ İzleyicisi* ' ni arama kutusuna girin. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
+1. Portalın üst kısmındaki arama kutusuna *Ağ İzleyicisi* ' ni arama kutusuna girin. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 1. **Ağ tanılama araçları**altında **Ileri atlama ' yi** seçin.
 1. **Aboneliğinizi** ve yönlendirmeyi doğrulamak istediğiniz kaynak sanal makinenin **kaynak grubunu** seçin.
 1. **Sanal**makineyi, sanal makineye bağlı **ağ arabirimini** ve yönlendirmeyi doğrulamak Istediğiniz ağ arabirimine atanan **kaynak IP adresini** seçin.
@@ -236,7 +236,7 @@ Bir sanal makine ile başka bir Azure kaynağının IP adresi, bir şirket içi 
 
 Rota tablolarında ve rotalarında görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                                          |   Ad                                                  |
+| Eylem                                                          |   Adı                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Rota tablosu okuma                                    |
 | Microsoft. Network/routeTables/Write                             |   Rota tablosu oluşturma veya güncelleştirme                        |

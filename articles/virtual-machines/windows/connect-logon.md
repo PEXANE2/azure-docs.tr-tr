@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 152df830f11cd5a73235559c5c5d65ced44f22fa
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379936"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma
 Bir Windows masaüstü bilgisayarından Uzak Masaüstü (RDP) oturumu başlatmak için Azure portalında **Bağlan** düğmesini kullanırsınız. Önce sanal makineye bağlanın ve ardından oturum açın.
@@ -30,7 +30,7 @@ Mac 'ten bir Windows VM 'sine bağlanmak için, [Microsoft Uzak Masaüstü](http
 1. Bir VM 'ye bağlanmak için [Azure Portal](https://portal.azure.com/) gidin. **Sanal makineleri**arayın ve seçin.
 2. Listeden sanal makineyi seçin.
 3. Sanal makine sayfasının başlangıcında **Bağlan**' ı seçin.
-4. **Sanal makineye bağlan** sayfasında, **RDP**' yi seçin ve ardından uygun **IP adresini** ve **bağlantı noktası numarasını**seçin. Çoğu durumda, varsayılan IP adresi ve bağlantı noktası kullanılmalıdır. Seçin **RDP dosyasını indir**. VM 'nin tam zamanında bir ilke kümesi varsa, RDP dosyasını indirebilmeniz için **önce erişim iste düğmesini seçmeniz** gerekir. Tam zamanında ilkesi hakkında daha fazla bilgi için, bkz. [tam zamanında ilkesini kullanarak sanal makine erişimini yönetme](../../security-center/security-center-just-in-time.md).
+4. **Sanal makineye bağlan** sayfasında, **RDP**' yi seçin ve ardından uygun **IP adresini** ve **bağlantı noktası numarasını**seçin. Çoğu durumda, varsayılan IP adresi ve bağlantı noktası kullanılmalıdır. **RDP dosyasını indir**' i seçin. VM 'nin tam zamanında bir ilke kümesi varsa, RDP dosyasını indirebilmeniz için **önce erişim iste düğmesini seçmeniz** gerekir. Tam zamanında ilkesi hakkında daha fazla bilgi için, bkz. [tam zamanında ilkesini kullanarak sanal makine erişimini yönetme](../../security-center/security-center-just-in-time.md).
 5. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin. `.rdp` dosyasının bilinmeyen bir yayımcıdan olduğunu belirten bir uyarı alacaksınız. Bu beklenen bir durumdur. **Uzak Masaüstü bağlantısı** penceresinde, devam etmek için **Bağlan** ' ı seçin.
    
     ![Bilinmeyen yayımcıya ilişkin uyarı ekran görüntüsü](./media/connect-logon/rdp-warn.png)
@@ -43,7 +43,7 @@ Mac 'ten bir Windows VM 'sine bağlanmak için, [Microsoft Uzak Masaüstü](http
     **Etki alanı denetleyicisi**: VM bir etki alanı denetleyicisiyse, bu etki alanı için bir etki alanı yönetici hesabının kullanıcı adını ve parolasını girin.
 4. Sanal makinenin kimliğini doğrulamak için **Evet** ' i seçin ve oturum açmayı sona erdirin.
    
-   ![VM kimliğini doğrulamaya ilişkin iletiyi gösteren ekran görüntüsü](./media/connect-logon/cert-warning.png)
+   ![VM kimliğini doğrulamaya ilişkin mesajı gösteren ekran görüntüsü](./media/connect-logon/cert-warning.png)
 
 
    > [!TIP]
