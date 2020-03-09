@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
 ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392481"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -123,7 +123,7 @@ Bu sürümde, [güvenlik uyarılarını](../security-center/security-center-mana
 
 ### <a name="how-to-set-up-the-pipeline"></a>İşlem hattını ayarlama
 
-#### <a name="create-an-event-hub"></a>Event Hub'ı oluşturma
+#### <a name="create-an-event-hub"></a>Olay Hub'ı oluşturma
 
 Başlamadan önce, tüm izleme verilerinizin hedefi [olan bir Event Hubs ad alanı oluşturun](../event-hubs/event-hubs-create.md) .
 

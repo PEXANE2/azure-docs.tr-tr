@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612203"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376487"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -59,7 +59,6 @@ Azure AD DS, kullanıcılarınız, uygulamalarınız ve hizmetleriniz tarafında
 
 *AAD DC Administrators* grubunun üyelerine Azure AD DS yönetilen etki alanı üzerinde, bunların gibi görevleri gerçekleştirmesine olanak veren ayrıcalıklar verilir:
 
-* Makineleri yönetilen etki alanına ekleyin.
 * Yönetilen etki alanındaki *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* kapsayıcıları için yerleşik Grup İlkesi nesnesini (GPO) yapılandırın.
 * Yönetilen etki alanında DNS’yi yönetin.
 * Yönetilen etki alanında özel kuruluş birimleri (OU) oluşturun ve yönetin.
