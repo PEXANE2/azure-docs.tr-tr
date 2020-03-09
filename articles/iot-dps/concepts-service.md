@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975610"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378888"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Cihaz sağlama hizmeti kavramlarını IoT Hub
 
@@ -31,7 +31,7 @@ Hizmet işlemleri uç noktası, hizmet ayarlarını yönetmek ve kayıt listesin
 
 Cihaz sağlama uç noktası, tüm cihazların otomatik sağlama için kullanacağı tek uç noktadır. Bu URL, sağlama zinciri senaryolarında yeni bağlantı bilgileriyle Flash cihazları yeniden yazma gereksinimini ortadan kaldırmak için tüm sağlama hizmeti örnekleri için aynıdır. KIMLIK kapsamı, kiracı yalıtımı sağlar.
 
-## <a name="linked-iot-hubs"></a>IoT hub’larına bağlı
+## <a name="linked-iot-hubs"></a>Bağlantılı IoT Hub 'ları
 
 Cihaz sağlama hizmeti cihazları yalnızca onunla bağlantılı olan IoT Hub 'larına sağlayabilir. IoT Hub 'ı cihaz sağlama hizmeti örneğine bağlamak, IoT Hub 'ın cihaz kayıt defterine yönelik okuma/yazma izinleri verir; bağlantıyla birlikte cihaz sağlama hizmeti cihaz KIMLIĞINI kaydedebilir ve cihaz ikizi ilk yapılandırmasını ayarlayabilir. Bağlantılı IoT Hub 'ları herhangi bir Azure bölgesinde olabilir. Diğer aboneliklerdeki hub 'ları, sağlama hizmetinize bağlayabilirsiniz.
 
@@ -73,6 +73,6 @@ Tek bir kayıt, kaydedebilen tek bir cihaz için giriştir. Bireysel kayıtlar, 
 
 Kayıt, cihaz sağlama hizmeti aracılığıyla bir IoT Hub başarıyla kaydolduğunu/sağlamayı sağlayan bir cihazın kaydıdır. Kayıt kayıtları otomatik olarak oluşturulur; Bunlar silinebilir, ancak güncelleştirilemez.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>İşlemler
 
-İşlemler, cihaz sağlama hizmetinin fatura birimidir. Tek bir işlem, hizmete yönelik bir yönergenin başarıyla tamamlanmasıyla aynıdır. Cihaz kayıtları ve yeniden kayıtları işlemlere dahildir. Ayrıca kayıt liste girdilerini ekleme ve güncelleştirme gibi hizmet tarafı değişiklikleri de işlemlere dahildir.
+İşlemler, cihaz sağlama hizmetinin fatura birimidir. Tek bir işlem, hizmete yönelik bir yönergenin başarıyla tamamlanmasıyla aynıdır. İşlemler cihaz kayıtları ve yeniden kayıtlar içerir; işlemler, kayıt listesi girişleri ekleme ve kayıt listesi girişlerini güncelleştirme gibi hizmet tarafı değişiklikleri de içerir.

@@ -4,11 +4,11 @@ description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuz
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972834"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385207"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -111,7 +111,7 @@ _Konuk yapılandırma_ kategorisindeki _Auditınotexists_ ilkeleri için, VM 'de
 
 Ayrıca, VM 'de doğrudan oturum açma erişimi de olmayabilir, ancak VM 'nin neden _uyumlu_olmadığı hakkında rapor etmeniz gerekir.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalı
 
 İlke uyumluluk ayrıntılarını görüntülemek için yukarıdaki bölümde bulunan adımları izleyerek başlayın.
 

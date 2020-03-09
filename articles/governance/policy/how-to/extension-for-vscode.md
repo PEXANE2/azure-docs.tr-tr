@@ -4,11 +4,11 @@ description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Kayn
 ms.date: 11/04/2019
 ms.topic: how-to
 ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873123"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386787"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 

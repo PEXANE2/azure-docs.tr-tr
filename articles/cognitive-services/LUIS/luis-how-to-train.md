@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143685"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361169"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUSıS uygulamasının etkin sürümünü eğitme 
 
 Eğitim, doğal dil anlama geliştirmek için Language Understanding (LUIS) uygulamanızı eğitiminde işlemidir. Ekleme, düzenleme, etiketleme veya varlıkları, amacı veya konuşma silme gibi bir Modeli'ne güncelleştirmelerinden sonra LUIS uygulamanızı eğitin. 
 
-Eğitim ve [test](luis-concept-test.md) uygulama yinelemeli bir işlemdir. LUIS uygulamanızı eğitme sonra varlıkları ve hedefleri doğru olarak tanınır olmadığını görmek için örnek Konuşma ile test edin. Değilseniz, güncelleştirmeleri LUIS uygulaması, eğitin ve test için yeniden yapın. 
+Bir uygulamayı eğitim ve [test etme](luis-concept-test.md) işlemi yinelemeli bir işlemdir. LUIS uygulamanızı eğitme sonra varlıkları ve hedefleri doğru olarak tanınır olmadığını görmek için örnek Konuşma ile test edin. Değilseniz, güncelleştirmeleri LUIS uygulaması, eğitin ve test için yeniden yapın. 
 
 Eğitim LUIS Portalı'nda etkin sürüme uygulanır. 
 
 ## <a name="how-to-train-interactively"></a>Etkileşimli olarak eğitme
 
-İçinde bir süreçtir başlatmak için [LUIS portalı](https://www.luis.ai), ilk LUIS uygulamanızı en az bir kez eğitmek gerekir. Eğitim önce en az bir utterance her hedefi olduğundan emin olun.
+[Luu portalındaki](https://www.luis.ai)yinelemeli işlemi başlatmak için, Ilk olarak lusıs uygulamanızı en az bir kez eğmeniz gerekir. Eğitim önce en az bir utterance her hedefi olduğundan emin olun.
 
-1. Adını seçerek uygulamanıza erişmek **uygulamalarım** sayfası. 
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanıza erişin. 
 
-1. Uygulamanızda seçin **eğitme** üst panelinde. 
+1. Uygulamanızda, üst panelde **eğit** ' i seçin. 
 
 1. Eğitim tamamlandığında tarayıcının en üstünde bir bildirim görüntülenir.
 
@@ -54,7 +54,7 @@ Tek her değişiklikten sonra eğitme gerekmez. Eğitim, sonra bir grup değişi
 
 ## <a name="training-with-the-rest-apis"></a>REST API'leri ile eğitim
 
-LUIS portalında eğitim tuşlarına basarak, tek bir adım olduğunu **eğitme** düğmesi. REST API'leri ile eğitim iki adımlı bir işlemdir. Birincisi [istek eğitim](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) HTTP POST ile. Daha sonra istek [eğitim durumu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) HTTP Get ile. 
+Lua portalındaki eğitim, **eğitme** düğmesine basmanın tek adımından oluşur. REST API'leri ile eğitim iki adımlı bir işlemdir. Birincisi, HTTP POST ile [eğitim isteğidir](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) . Ardından HTTP Get ile [eğitim durumunu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) isteyin. 
 
 Eğitim tamamlandığında öğrenmek için tüm modelleri başarıyla eğitilir kadar durum yoklaması gerekir. 
 

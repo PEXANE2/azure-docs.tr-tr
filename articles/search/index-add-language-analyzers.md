@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539408"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379613"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
@@ -87,7 +87,7 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create &#40;ındex Azu
 |İbranice|BT. Microsoft||  
 |Hintçe|Merhaba. Microsoft|Merhaba. Lucene|  
 |Macarca|Hu. Microsoft|Hu. Lucene|  
-|İzlanda dili|. Microsoft||  
+|İzlandaca|. Microsoft||  
 |Endonezya dili (Bahasa)|kimliği. Microsoft|ID. Lucene|  
 |İrlanda dili||ga. Lucene|  
 |İtalyanca|BT. Microsoft|BT. Lucene|  
@@ -119,7 +119,7 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create &#40;ındex Azu
 |Türkçe|tr. Microsoft|tr. Lucene|  
 |Ukrayna dili|UK. Microsoft||  
 |Urduca|. Microsoft||  
-|Vietnam dili|Vi. Microsoft||  
+|Vietnamca|Vi. Microsoft||  
 
  **Lucene** ile açıklama eklenmiş adlara sahip tüm çözümleyiciler [Apache Lucene 'in dil Çözümleyicileri](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )tarafından desteklenir.
 

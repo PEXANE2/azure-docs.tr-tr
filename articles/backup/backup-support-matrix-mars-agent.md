@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582645"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668379"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -85,7 +85,7 @@ Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili top
 - Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
 - Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
 
-Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Ortak eşleme, yeni devreler için kullanım dışıdır.
@@ -97,7 +97,7 @@ Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https
 Bant genişliği denetimi | Destekleniyor. MARS aracısında, bant genişliğini ayarlamak için **Özellikleri Değiştir** ' i kullanın.
 Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
 
-## <a name="support-for-direct-backups"></a>Doğrudan yedeklemeler için destek
+## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 >[!NOTE]
 > MARS Aracısı Windows Server Core SKU 'Larını desteklemez.
@@ -114,7 +114,6 @@ MARS aracısını aşağıda belirtilen işletim sistemlerinde çalışan Azure 
 Windows 10 (Enterprise, Pro, Home) | Yes | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
 Windows 8.1 (Enterprise, Pro)| Yes |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
 Windows 8 (Enterprise, Pro) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
 Windows Server 2016 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, Foundation) | Yes | Yes |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Yes | Ha
 Windows Server 2019 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
 Daha fazla bilgi için bkz. [desteklenen MABS ve DPM işletim sistemleri](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
+### <a name="operating-systems-at-end-of-support"></a>Destek sonundaki işletim sistemleri
+
+Aşağıdaki işletim sistemleri destek sonunda bulunur ve korunan olmaya devam etmek için işletim sisteminin yükseltilmesi önemle önerilir.
+
+Mevcut taahhütler işletim sisteminin yükseltilmesini engelliyorsa, Windows Server 'ı Azure VM 'lerine geçirmeyi ve korumalı kalmaya devam etmek için Azure VM yedeklemelerine yararlanmanızı göz önünde bulundurun. Windows Server 'ı geçirme hakkında daha fazla bilgi için [buraya geçiş sayfasını](https://azure.microsoft.com/migration/windows-server/) ziyaret edin.
+
+İşletim sistemini yükseltebileceğiniz veya Azure 'a geçiremeyeceğiniz şirket içi veya barındırılan ortamlarda, korunan ve desteklenen makinelere devam etmek için makineler için genişletilmiş güvenlik güncelleştirmelerini etkinleştirin. Yalnızca belirli sürümlerin genişletilmiş güvenlik güncelleştirmelerine uygun olduğuna dikkat edin. Daha fazla bilgi edinmek için [SSS sayfasını](https://www.microsoft.com/cloud-platform/extended-security-updates) ziyaret edin.
+
+| **İşletim Sistemi**                                       | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes               | Hayır                 | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Yes               | Yes                | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) |
+| Windows Server 2008 SP2 (Standard, Datacenter, Foundation)  | Yes               | Hayır                 | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) <br>  -Sanal sunucu 2005 tabanı + KB KB948515 |
 
 ## <a name="backup-limits"></a>Yedekleme limitleri
 
@@ -149,13 +162,13 @@ Windows 7| 1\.700 GB
 Sıkıştırılmış | Destekleniyor.
 Seyrek | Destekleniyor.
 Sıkıştırılmış ve seyrek |Destekleniyor.
-Sabit bağlantılar| Desteklenmez. Atlanmış.
-Yeniden ayrıştırma noktası| Desteklenmez. Atlanmış.
-Şifrelenmiş ve seyrek |Desteklenmez. Atlanmış.
-Sıkıştırılmış akış| Desteklenmez. Atlanmış.
-Aralıklı akış| Desteklenmez. Atlanmış.
-OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmez.
-DFS Çoğaltma etkin olan klasörler | Desteklenmez.
+Sabit bağlantılar| Desteklenmiyor. Atlanmış.
+Yeniden ayrıştırma noktası| Desteklenmiyor. Atlanmış.
+Şifrelenmiş ve seyrek |Desteklenmiyor. Atlanmış.
+Sıkıştırılmış akış| Desteklenmiyor. Atlanmış.
+Aralıklı akış| Desteklenmiyor. Atlanmış.
+OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
+DFS Çoğaltma etkin olan klasörler | Desteklenmiyor.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
 

@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116260"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361044"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portal bir depolama hesabını izleme
 
@@ -138,7 +138,7 @@ Blob, tablo ve kuyruk Hizmetleri için okuma, yazma ve silme istekleri için Azu
 1. **Durumun** **Açık**olarak ayarlandığından emin olun ve günlük kaydını etkinleştirmek istediğiniz **Hizmetleri** seçin.
 
     ![Azure portal günlüğe kaydetmeyi yapılandırın.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 Tanılama günlükleri, depolama hesabınızda *$logs* adlı bir blob kapsayıcısına kaydedilir. Günlük verilerini [Microsoft Depolama Gezgini](https://storageexplorer.com)gibi bir Depolama Gezgini ile veya program aracılığıyla depolama istemci kitaplığı veya PowerShell kullanarak görüntüleyebilirsiniz.
 

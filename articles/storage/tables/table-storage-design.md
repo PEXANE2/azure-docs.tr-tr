@@ -1,5 +1,5 @@
 ---
-title: Azure Tablo depolamada ölçeklenebilir ve performanslı tablolar tasarlayın. | Microsoft Belgeleri
+title: Azure Tablo depolamada ölçeklenebilir ve performanslı tablolar tasarlayın. | Microsoft Docs
 description: Azure Tablo depolamada ölçeklenebilir ve performanslı tablolar tasarlayın.
 services: storage
 author: SnehaGunda
@@ -9,13 +9,13 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351170"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387096"
 ---
-# <a name="design-scalable-and-performant-tables"></a>Ölçeklenebilir ve performansa yönelik tablolar tasarlayın
+# <a name="design-scalable-and-performant-tables"></a>Ölçeklenebilir ve performansa yönelik tablolar tasarlama
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -41,16 +41,16 @@ Aşağıdaki örnek, çalışan ve departman varlıkları depolamak için bir ba
 <th></th>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>Pazarlama</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
 <table>
 <tr>
 <th>FirstName</th>
-<th>Soyadı</th>
+<th>LastName</th>
 <th>Yaş</th>
-<th>E-posta</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -61,16 +61,16 @@ Aşağıdaki örnek, çalışan ve departman varlıkları depolamak için bir ba
 </table>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>Pazarlama</td>
 <td>00002</td>
 <td>2014-08-22T00:50:34Z</td>
 <td>
 <table>
 <tr>
 <th>FirstName</th>
-<th>Soyadı</th>
+<th>LastName</th>
 <th>Yaş</th>
-<th>E-posta</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Haz</td>
@@ -81,7 +81,7 @@ Aşağıdaki örnek, çalışan ve departman varlıkları depolamak için bir ba
 </table>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>Pazarlama</td>
 <td>Bölüm</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
@@ -91,7 +91,7 @@ Aşağıdaki örnek, çalışan ve departman varlıkları depolamak için bir ba
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>Pazarlama</td>
 <td>153</td>
 </tr>
 </table>
@@ -105,9 +105,9 @@ Aşağıdaki örnek, çalışan ve departman varlıkları depolamak için bir ba
 <table>
 <tr>
 <th>FirstName</th>
-<th>Soyadı</th>
+<th>LastName</th>
 <th>Yaş</th>
-<th>E-posta</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -121,18 +121,18 @@ Aşağıdaki örnek, çalışan ve departman varlıkları depolamak için bir ba
 </table>
 
 
-Şimdiye kadar, bu veriler ilişkisel bir veritabanındaki bir tabloya benzer ve anahtar farklılıkları zorunlu sütunlar ve aynı tabloda birden çok varlık türünü depolayabilme özelliği ile benzer şekilde görünür. Ayrıca, **ad** veya **yaş** gibi Kullanıcı tanımlı özelliklerin her biri, ilişkisel veritabanındaki bir sütun gibi bir veri türüne (örneğin, tam sayı veya dize) sahiptir. Farklı ilişkisel bir veritabanında tablo hizmeti şemasız doğasını bir özelliği aynı veri türüne her varlık üzerinde olması gerekmez, ancak. Karmaşık veri türlerini tek bir özellik depolamak için JSON veya XML gibi bir seri hale getirilmiş biçimi kullanmanız gerekir. Tablo hizmeti gibi desteklenen veri türleri, desteklenen bir tarih aralıkları, adlandırma kuralları ve boyutu sınırlaması hakkında daha fazla bilgi için bkz: [tablo hizmeti veri modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Şimdiye kadar, bu veriler ilişkisel bir veritabanındaki bir tabloya benzer ve anahtar farklılıkları zorunlu sütunlar ve aynı tabloda birden çok varlık türünü depolayabilme özelliği ile benzer şekilde görünür. Ayrıca, **ad** veya **yaş** gibi Kullanıcı tanımlı özelliklerin her biri, ilişkisel veritabanındaki bir sütun gibi bir veri türüne (örneğin, tam sayı veya dize) sahiptir. Farklı ilişkisel bir veritabanında tablo hizmeti şemasız doğasını bir özelliği aynı veri türüne her varlık üzerinde olması gerekmez, ancak. Karmaşık veri türlerini tek bir özellik depolamak için JSON veya XML gibi bir seri hale getirilmiş biçimi kullanmanız gerekir. Desteklenen veri türleri, desteklenen tarih aralıkları, adlandırma kuralları ve boyut kısıtlamaları gibi tablo hizmeti hakkında daha fazla bilgi için bkz. [Tablo hizmeti veri modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-**Partitionkey** ve **rowkey** seçiminiz, iyi tablo tasarımı için temel seçenektir. Tabloda depolanan her varlık eşsiz bir bileşimiyle olmalıdır **PartitionKey** ve **RowKey**. İlişkisel bir veritabanı tablosundaki anahtarlarda olduğu gibi, **partitionkey** ve **rowkey** değerleri, hızlı görünümü etkinleştirmek için kümelenmiş bir dizin oluşturmak üzere dizinlenir. Ancak tablo hizmeti ikincil dizinler oluşturmaz, bu nedenle **partitionkey** ve **rowkey** yalnızca dizinli özelliklerdir. [Tablo tasarım desenlerinde](table-storage-design-patterns.md) açıklanan bazı desenler, bu görünür sınırlamayı geçici olarak nasıl çözebileceğinizi göstermektedir.  
+**Partitionkey** ve **rowkey** seçiminiz, iyi tablo tasarımı için temel seçenektir. Bir tabloda depolanan her varlık **partitionkey** ve **rowkey**öğesinin benzersiz bir birleşimine sahip olmalıdır. İlişkisel bir veritabanı tablosundaki anahtarlarda olduğu gibi, **partitionkey** ve **rowkey** değerleri, hızlı görünümü etkinleştirmek için kümelenmiş bir dizin oluşturmak üzere dizinlenir. Ancak tablo hizmeti ikincil dizinler oluşturmaz, bu nedenle **partitionkey** ve **rowkey** yalnızca dizinli özelliklerdir. [Tablo tasarım desenlerinde](table-storage-design-patterns.md) açıklanan bazı desenler, bu görünür sınırlamayı geçici olarak nasıl çözebileceğinizi göstermektedir.  
 
 Bir tablo bir veya daha fazla bölümden oluşur ve yaptığınız tasarım kararlarının birçoğu, çözümünüzü iyileştirmek için uygun bir **partitionkey** ve **rowkey** seçme konusunda olacaktır. Bir çözüm, bölümler halinde düzenlenmiş tüm varlıklarınızı içeren tek bir tablodan oluşabilir, ancak genellikle bir çözümde birden çok tablo vardır. Tablolar, mantıksal olarak varlıklarınızı düzenleyebilir, erişim denetim listeleri kullanarak veri erişimi yönetmenize yardımcı olmak için Yardım ve tek bir depolama işlemi kullanarak tüm bir tabloyu bırakabilirsiniz.  
 
 ## <a name="table-partitions"></a>Tablo bölümleri
-Tablo adı, hesap adı ve **PartitionKey** birlikte depolama hizmetindeki tablo hizmeti, varlık depoladığı bölüm tanımlar. Adres düzeni varlıklar için bir parçası olmanın yanı sıra, bölümler işlemleri için bir kapsam tanımlama (bkz [varlık grubu işlemleri](#entity-group-transactions) aşağıda), ve tablo hizmeti nasıl ölçeklendirilir temeli oluştururlar. Bölümler hakkında daha fazla bilgi için bkz. [Tablo Depolaması Için performans ve ölçeklenebilirlik denetim listesi](storage-performance-checklist.md).  
+Hesap adı, tablo adı ve **Partitionkey** birlikte tablo hizmetinin varlığı depoladığı depolama hizmeti içindeki bölümü belirler. Varlıklar için adresleme şemasının bir parçası olan bölümler, işlemler için bir kapsam tanımlar (aşağıdaki [varlık grubu işlemlerine](#entity-group-transactions) bakın) ve tablo hizmetinin ölçeklendirme temelini oluşturur. Bölümler hakkında daha fazla bilgi için bkz. [Tablo Depolaması Için performans ve ölçeklenebilirlik denetim listesi](storage-performance-checklist.md).  
 
-Tablo hizmetinde, tek bir düğüm bir veya daha fazla tam bölüm hizmetleri ve hizmet, düğümler arasında dinamik olarak yük dengeleme bölümlerine göre ölçeklendirilir. Bir düğümü yük altında ise, tablo hizmeti için *bölme* bölümler çeşitli hizmet, farklı düğümlerde düğüme tarafından; trafiği kısalana hizmet yapabilirsiniz *birleştirme* sessiz düğümlerden bölüm aralığı geri tek bir düğüme.  
+Tablo hizmetinde, tek bir düğüm bir veya daha fazla tam bölüm hizmetleri ve hizmet, düğümler arasında dinamik olarak yük dengeleme bölümlerine göre ölçeklendirilir. Bir düğüm Load altındaysa, tablo hizmeti bu düğüm tarafından hizmet verilen bölümlerin aralığını farklı düğümlere *bölebilir* ; trafik alt taraflarından, hizmet, Bölüm aralıklarını sessiz düğümlerden tek bir düğüme geri *birleştirebilirler* .  
 
-Daha fazla bilgi için iç ayrıntıları tablo hizmeti ve belirli bölümler hizmet yönetir nasıl incelemeye bakın [Microsoft Azure Depolama: yüksek oranda kullanılabilir bulut depolama hizmet güçlü tutarlılıkla](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Tablo hizmetinin iç ayrıntıları ve hizmetin bölümleri nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Microsoft Azure depolama: güçlü tutarlılık Içeren yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Varlık grubu işlemleri
 Tablo hizmeti, varlık grubu işlemleri (EGTs) birden fazla varlıkta atomik güncelleştirmeleri gerçekleştirmek için yalnızca yerleşik mekanizmasıdır. Yumurtları bazen *toplu*işlem olarak da adlandırılır. Yumurtları yalnızca aynı bölümde depolanan varlıklar üzerinde çalışabilir (diğer bir deyişle, belirli bir tabloda aynı bölüm anahtarını paylaşır). Bu nedenle, birden çok varlık genelinde atomik işlem davranışına ihtiyaç duyuyorsanız, bu varlıkların aynı bölümde olduğundan emin olmanız gerekir. Genellikle birden çok varlık türleri aynı tablonun (ve bölüm) tutulması ve birden fazla tablo farklı varlık türleri için kullanmayan bir nedeni de budur. Tek bir EGT en fazla 100 varlık üzerinde çalışabilir.  İşlenmek üzere birden çok eş zamanlı Yumurtları gönderirseniz, bu yumurtların Yumurtları genelinde ortak olan varlıklarda çalışmamaları güvence altına almak önemlidir; Aksi takdirde, işleme gecikebilir.
@@ -147,15 +147,15 @@ Aşağıdaki tabloda, bir tablo hizmeti çözümü tasarlarken farkında olacak 
 | Bir Azure depolama hesabındaki tablolar sayısı |Depolama hesabının kapasite yalnızca sınırlıdır |
 | Bir tablodaki bölümlerin sayısı |Depolama hesabının kapasite yalnızca sınırlıdır |
 | Bir bölümdeki varlıkların sayısı |Depolama hesabının kapasite yalnızca sınırlıdır |
-| Tek bir varlık boyutu |En fazla 255 özelliklerinin en çok 1 MB (dahil olmak üzere **PartitionKey**, **RowKey**, ve **zaman damgası**) |
-| Boyutu **PartitionKey** |Bir dize boyutu 1 KB'a kadar |
-| Boyutu **RowKey** |Bir dize boyutu 1 KB'a kadar |
+| Tek bir varlık boyutu |Maksimum 255 özelliği olan 1 MB 'a kadar ( **Partitionkey**, **Rowkey**ve **timestamp**dahil) |
+| **Partitionkey** boyutu |Bir dize boyutu 1 KB'a kadar |
+| **Rowkey** boyutu |Bir dize boyutu 1 KB'a kadar |
 | Bir varlık grubu işlem boyutu |Bir işlem en fazla 100 varlık içerebilir ve yükü boyutu 4 MB'tan küçük olmalıdır. Bir EGT varlığın yalnızca bir kez güncelleştirebilirsiniz. |
 
 Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ## <a name="cost-considerations"></a>Maliyetle ilgili konular
-Tablo Depolaması nispeten ucuzdur, ancak herhangi bir tablo hizmeti çözümünün değerlendirmesi kapsamında hem kapasite kullanımı hem de işlem miktarı için maliyet tahminleri dahil edilmelidir. Ancak, Çoğu senaryoda, çözümünüzün performansını veya ölçeklenebilirliğini geliştirmek için Normalleştirilmemiş veya yinelenen verilerin depolanması geçerli bir yaklaşımdır. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  
+Tablo Depolaması nispeten ucuzdur, ancak herhangi bir tablo hizmeti çözümünün değerlendirmesi kapsamında hem kapasite kullanımı hem de işlem miktarı için maliyet tahminleri dahil edilmelidir. Ancak, Çoğu senaryoda, çözümünüzün performansını veya ölçeklenebilirliğini geliştirmek için Normalleştirilmemiş veya yinelenen verilerin depolanması geçerli bir yaklaşımdır. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

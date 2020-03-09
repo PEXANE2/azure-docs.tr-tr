@@ -4,11 +4,11 @@ description: Azure geçişi 'nde VMware değerlendirmesi desteği hakkında bilg
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362183"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
