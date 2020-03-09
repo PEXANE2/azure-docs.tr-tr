@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423648"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386825"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema eşleme
 
@@ -237,7 +237,7 @@ MongoDB/REST 'den metin dosyasına kopyalama ve Azure Cosmos DB Oracle 'dan Mong
 
 Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve ortak kök bilgiyle *(numara, tarih ve şehir)* çapraz birleştirmeyi düzleştirerek, bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
-| Sipariş numarası | OrderDate | order_pd | order_price | city |
+| Sipariş numarası | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
 | 01 | 20170122 | P1 | 23 | Seattle |
 | 01 | 20170122 | P2 | 13 | Seattle |

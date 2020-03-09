@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429327"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386100"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portal kullanarak otomatik IoT cihazı ve modül yönetimi
 
@@ -54,7 +54,7 @@ Bir yapılandırma oluşturmadan önce, hangi cihazları veya modülleri etkilen
 
 ## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
-1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
+1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
 2. **IoT cihaz yapılandırması**' nı seçin.
 
@@ -66,7 +66,7 @@ Bir yapılandırma oluşturmak için beş adım vardır. Aşağıdaki bölümler
 
 ### <a name="name-and-label"></a>Ad ve etiket
 
-1. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluk ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+1. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluklardan ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
 
 2. Yapılandırmalarınızı izlemeye yardımcı olmak için Etiketler ekleyin. Etiketler, yapılandırmanızı tanımlayan **ad**ve **değer** çiftleridir. Örneğin, `HostPlatform, Linux` veya `Version, 3.0.1`.
 
@@ -106,7 +106,7 @@ Her yapılandırmanın en fazla beş özel ölçümü olabilir.
 
 2. **Ölçüm ölçütü**için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-Örneğin:
+Örnek:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -121,7 +121,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız `devices.modules``moduleId` seçin. Örneğin:
+Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız `devices.modules``moduleId` seçin. Örnek:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -144,7 +144,7 @@ Birden çok yapılandırma aynı cihazı veya modülü hedefleyebilir, çünkü 
    
    Otomatik modül yapılandırması için, IoT Hub 'ına kayıtlı modüllerdeki etiketleri veya bildirilen özellikleri belirtmek için bir sorgu kullanın. Örneğin, `from devices.modules where tags.environment='test'` veya `from devices.modules where properties.reported.chillerProperties.model='4000x'`. Joker karakter tüm modülleri hedeflemek için kullanılamaz. 
 
-3. Seçin **sonraki** son adıma geçmek için.
+3. Son adıma geçmek için **İleri ' yi** seçin.
 
 ### <a name="review-configuration"></a>Yapılandırmayı gözden geçir
 
@@ -154,7 +154,7 @@ Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin
 
 Bir yapılandırmanın ayrıntılarını görüntülemek ve çalıştıran cihazları izlemek için aşağıdaki adımları kullanın:
 
-1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
+1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
 2. **IoT cihaz yapılandırması**' nı seçin.
 
@@ -198,7 +198,7 @@ Hedef koşul güncelleştirme aşağıdaki güncelleştirmeleri oluşur:
 
 Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın: 
 
-1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
+1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
 2. **IoT cihaz yapılandırması**' nı seçin. 
 
@@ -219,7 +219,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
 
 Bir yapılandırmayı sildiğinizde, her türlü cihaz WINS 'in bir sonraki en yüksek öncelikli yapılandırmasını alır. Cihaz WINS, başka bir yapılandırmanın hedef koşulunu karşılamıyorsa, başka hiçbir ayar uygulanmaz. 
 
-1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
+1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
 2. **IoT cihaz yapılandırması**' nı seçin. 
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902512"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374265"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management erişim kısıtlama ilkeleri
 
@@ -60,19 +60,19 @@ Bir isteğin belirtilen bir HTTP üst bilgisine sahip olmasını zorlamak için 
 
 ### <a name="elements"></a>Öğeler
 
-| Ad         | Açıklama                                                                                                                                   | Gereklidir |
+| Adı         | Açıklama                                                                                                                                   | Gerekli |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| onay üst bilgisi | Kök öğe.                                                                                                                                 | Evet      |
+| onay üst bilgisi | Kök öğe.                                                                                                                                 | Yes      |
 | değer        | İzin verilen HTTP üst bilgisi değeri. Birden çok değer öğesi belirtildiğinde, değerlerden herhangi biri bir eşleşme olduğunda denetim başarı olarak kabul edilir. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                       | Açıklama                                                                                                                                                            | Gereklidir | Varsayılan |
+| Adı                       | Açıklama                                                                                                                                                            | Gerekli | Varsayılan |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| başarısız-denetim-hata-ileti | Üst bilgi yoksa veya geçersiz bir değere sahip değilse, HTTP yanıt gövdesinde döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir. | Evet      | Yok     |
-| başarısız-Check-httpcode      | Üst bilgi yoksa veya geçersiz bir değere sahip değilse döndürülecek HTTP durum kodu.                                                                                        | Evet      | Yok     |
-| üst bilgi adı                | Denetlenecek HTTP üstbilgisinin adı.                                                                                                                                  | Evet      | Yok     |
-| Yoksay-büyük harf                | True veya false olarak ayarlanabilir. Üst bilgi değeri, kabul edilebilir değerler kümesiyle karşılaştırıldığı zaman true olarak ayarlanırsa, bu durum yoksayılır.                                    | Evet      | Yok     |
+| başarısız-denetim-hata-ileti | Üst bilgi yoksa veya geçersiz bir değere sahip değilse, HTTP yanıt gövdesinde döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir. | Yes      | Yok     |
+| başarısız-Check-httpcode      | Üst bilgi yoksa veya geçersiz bir değere sahip değilse döndürülecek HTTP durum kodu.                                                                                        | Yes      | Yok     |
+| üst bilgi adı                | Denetlenecek HTTP üstbilgisinin adı.                                                                                                                                  | Yes      | Yok     |
+| Yoksay-büyük harf                | True veya false olarak ayarlanabilir. Üst bilgi değeri, kabul edilebilir değerler kümesiyle karşılaştırıldığı zaman true olarak ayarlanırsa, bu durum yoksayılır.                                    | Yes      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -120,19 +120,19 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="elements"></a>Öğeler
 
-| Ad       | Açıklama                                                                                                                                                                                                                                                                                              | Gereklidir |
+| Adı       | Açıklama                                                                                                                                                                                                                                                                                              | Gerekli |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| hız limiti | Kök öğe.                                                                                                                                                                                                                                                                                            | Evet      |
-| api        | Ürünün içindeki API 'lerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrısı hız limitleri bağımsız olarak uygulanır. API 'ye `name` ya da `id`aracılığıyla başvurulabilir. Her iki öznitelik de sağlanırsa `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
+| hız limiti | Kök öğe.                                                                                                                                                                                                                                                                                            | Yes      |
+| API        | Ürünün içindeki API 'lerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrısı hız limitleri bağımsız olarak uygulanır. API 'ye `name` ya da `id`aracılığıyla başvurulabilir. Her iki öznitelik de sağlanırsa `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
 | operation  | Bir API içindeki işlemlerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün, API ve işlem çağrısı hız limitleri bağımsız olarak uygulanır. İşleme, `name` veya `id`aracılığıyla başvurulabilir. Her iki öznitelik de sağlanırsa `id` kullanılır ve `name` yok sayılır. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad           | Açıklama                                                                                           | Gereklidir | Varsayılan |
+| Adı           | Açıklama                                                                                           | Gerekli | Varsayılan |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| ad           | Hız sınırının uygulanacağı API 'nin adı.                                                | Evet      | Yok     |
-| çağrılar          | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en fazla toplam çağrı sayısı. | Evet      | Yok     |
-| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Evet      | Yok     |
+| ad           | Hız sınırının uygulanacağı API 'nin adı.                                                | Yes      | Yok     |
+| çağrılar          | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en fazla toplam çağrı sayısı. | Yes      | Yok     |
+| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Yes      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -185,18 +185,18 @@ Aşağıdaki örnekte, hız sınırı arayan IP adresine göre anahtarlanır.
 
 ### <a name="elements"></a>Öğeler
 
-| Ad              | Açıklama   | Gereklidir |
+| Adı              | Açıklama   | Gerekli |
 | ----------------- | ------------- | -------- |
-| rate-limit-by-key | Kök öğe. | Evet      |
+| oran-anahtarla sınırla | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                | Açıklama                                                                                           | Gereklidir | Varsayılan |
+| Adı                | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| çağrılar               | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en fazla toplam çağrı sayısı. | Evet      | Yok     |
-| sayaç anahtarı         | Hız limiti ilkesi için kullanılacak anahtar.                                                             | Evet      | Yok     |
+| çağrılar               | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en fazla toplam çağrı sayısı. | Yes      | Yok     |
+| sayaç anahtarı         | Hız limiti ilkesi için kullanılacak anahtar.                                                             | Yes      | Yok     |
 | artış koşulu | İsteğin kota (`true`) doğrultusunda belirlenmesi gerekip gerekmediğini belirten Boole ifadesi.        | Hayır       | Yok     |
-| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Evet      | Yok     |
+| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Yes      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -232,18 +232,18 @@ Aşağıdaki örnekte, ilke yalnızca tek IP adresinden veya belirtilen IP adres
 
 ### <a name="elements"></a>Öğeler
 
-| Ad                                      | Açıklama                                         | Gereklidir                                                       |
+| Adı                                      | Açıklama                                         | Gerekli                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
-| ip-filter                                 | Kök öğe.                                       | Evet                                                            |
+| IP filtresi                                 | Kök öğe.                                       | Yes                                                            |
 | address                                   | Üzerinde filtreleneceği tek bir IP adresi belirtir.   | En az bir `address` veya `address-range` öğesi gerekiyor. |
 | Adres aralığı = "Address" to = "Address" | Üzerinde süzülecek bir IP adresi aralığı belirtir. | En az bir `address` veya `address-range` öğesi gerekiyor. |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                                      | Açıklama                                                                                 | Gereklidir                                           | Varsayılan |
+| Adı                                      | Açıklama                                                                                 | Gerekli                                           | Varsayılan |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | Adres aralığı = "Address" to = "Address" | Erişimine izin vermek veya erişimi reddetmek için bir IP adresleri aralığı.                                        | `address-range` öğesi kullanıldığında gereklidir. | Yok     |
-| IP-Filter Action = "fordeklarasyonu izin ver &#124; "    | Belirtilen IP adresleri ve aralıkları için çağrılara izin verilip verilmeyeceğini belirtir. | Evet                                                | Yok     |
+| IP-Filter Action = "fordeklarasyonu izin ver &#124; "    | Belirtilen IP adresleri ve aralıkları için çağrılara izin verilip verilmeyeceğini belirtir. | Yes                                                | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -287,20 +287,20 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="elements"></a>Öğeler
 
-| Ad      | Açıklama                                                                                                                                                                                                                                                                                  | Gereklidir |
+| Adı      | Açıklama                                                                                                                                                                                                                                                                                  | Gerekli |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| kota     | Kök öğe.                                                                                                                                                                                                                                                                                | Evet      |
-| api       | Ürün içindeki API 'lerde çağrı kotası uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrı kotaları bağımsız olarak uygulanır. API 'ye `name` ya da `id`aracılığıyla başvurulabilir. Her iki öznitelik de sağlanırsa `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
+| kota     | Kök öğe.                                                                                                                                                                                                                                                                                | Yes      |
+| API       | Ürün içindeki API 'lerde çağrı kotası uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrı kotaları bağımsız olarak uygulanır. API 'ye `name` ya da `id`aracılığıyla başvurulabilir. Her iki öznitelik de sağlanırsa `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
 | operation | API içindeki işlemlere çağrı kotası koymak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün, API ve işlem çağrısı kotaları bağımsız olarak uygulanır. İşleme, `name` veya `id`aracılığıyla başvurulabilir. Her iki öznitelik de sağlanırsa `id` kullanılır ve `name` yok sayılır. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad           | Açıklama                                                                                               | Gereklidir                                                         | Varsayılan |
+| Adı           | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| ad           | Kotanın uygulandığı API veya işlemin adı.                                             | Evet                                                              | Yok     |
+| ad           | Kotanın uygulandığı API veya işlemin adı.                                             | Yes                                                              | Yok     |
 | bant genişliği      | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en büyük toplam kilobayt sayısı. | `calls`, `bandwidth`ya da her ikisi birlikte belirtilmelidir. | Yok     |
 | çağrılar          | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en fazla toplam çağrı sayısı.     | `calls`, `bandwidth`ya da her ikisi birlikte belirtilmelidir. | Yok     |
-| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Evet                                                              | Yok     |
+| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Yes                                                              | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -349,19 +349,19 @@ Aşağıdaki örnekte, kota çağıran IP adresine göre anahtarlanır.
 
 ### <a name="elements"></a>Öğeler
 
-| Ad  | Açıklama   | Gereklidir |
+| Adı  | Açıklama   | Gerekli |
 | ----- | ------------- | -------- |
-| kota | Kök öğe. | Evet      |
+| kota | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                | Açıklama                                                                                               | Gereklidir                                                         | Varsayılan |
+| Adı                | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bant genişliği           | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en büyük toplam kilobayt sayısı. | `calls`, `bandwidth`ya da her ikisi birlikte belirtilmelidir. | Yok     |
 | çağrılar               | `renewal-period`belirtilen zaman aralığı boyunca izin verilen en fazla toplam çağrı sayısı.     | `calls`, `bandwidth`ya da her ikisi birlikte belirtilmelidir. | Yok     |
-| sayaç anahtarı         | Kota ilkesi için kullanılacak anahtar.                                                                      | Evet                                                              | Yok     |
+| sayaç anahtarı         | Kota ilkesi için kullanılacak anahtar.                                                                      | Yes                                                              | Yok     |
 | artış koşulu | İsteğin kota (`true`) olarak sayılmasını belirten Boole ifadesi             | Hayır                                                               | Yok     |
-| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Evet                                                              | Yok     |
+| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Yes                                                              | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -503,9 +503,9 @@ Bu örnek, belirteç talep değerine göre işlemlere erişim yetkisi vermek iç
 
 ### <a name="elements"></a>Öğeler
 
-| Öğe             | Açıklama                                                                                                                                                                                                                                                                                                                                           | Gereklidir |
+| Öğe             | Açıklama                                                                                                                                                                                                                                                                                                                                           | Gerekli |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| Validate-JWT        | Kök öğe.                                                                                                                                                                                                                                                                                                                                         | Evet      |
+| Validate-JWT        | Kök öğe.                                                                                                                                                                                                                                                                                                                                         | Yes      |
 | kitle           | Belirteç üzerinde bulunabilecek kabul edilebilir hedef kitle taleplerinin bir listesini içerir. Birden fazla hedef kitle değeri varsa, her bir değer tümü tükenene kadar (Bu durumda doğrulamanın başarısız olması) veya bir başarılı olana kadar denenir. En az bir hedef kitlesi belirtilmelidir.                                                                     | Hayır       |
 | veren-İmzalama anahtarları | İmzalı belirteçleri doğrulamak için kullanılan Base64 kodlamalı güvenlik anahtarlarının bir listesi. Birden çok güvenlik anahtarı varsa, her anahtar tümü tükenene kadar (Bu durumda doğrulamanın başarısız olması) ya da bir başarılı olana kadar (belirteç geçişi için kullanışlıdır) her anahtar denenir. Anahtar öğelerinin, `kid` talep ile eşleştirmek için kullanılan isteğe bağlı bir `id` özniteliği vardır.               | Hayır       |
 | şifre çözme-anahtarlar     | Belirteçlerin şifresini çözmek için kullanılan Base64 kodlamalı anahtarların listesi. Birden çok güvenlik anahtarı varsa, her anahtar tüm anahtarlar tükenene kadar (Bu durumda doğrulamanın başarısız olması) veya bir anahtar başarılı olana kadar denenir. Anahtar öğelerinin, `kid` talep ile eşleştirmek için kullanılan isteğe bağlı bir `id` özniteliği vardır.                                                 | Hayır       |
@@ -515,7 +515,7 @@ Bu örnek, belirteç talep değerine göre işlemlere erişim yetkisi vermek iç
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                            | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                            | Gereklidir                                                                         | Varsayılan                                                                           |
+| Adı                            | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli                                                                         | Varsayılan                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Saat eğ                      | TimeSpan. Belirteç Verenin ve API Management örneğinin sistem saatleri arasında beklenen en uzun süreyi belirtmek için kullanın.                                                                                                                                                                                                                                                                                                               | Hayır                                                                               | 0 saniye                                                                         |
 | başarısız-doğrulama-hata-ileti | JWT doğrulamadan geçemezse HTTP yanıt gövdesine döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir.                                                                                                                                                                                                                                                                                                 | Hayır                                                                               | Varsayılan hata iletisi, "JWT yok" gibi doğrulama sorununa bağlıdır. |
@@ -524,13 +524,13 @@ Bu örnek, belirteç talep değerine göre işlemlere erişim yetkisi vermek iç
 | sorgu parametresi-adı            | Belirteci tutan sorgu parametresinin adı.                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`, `query-parameter-name` veya `token-value` biri belirtilmelidir. | Yok                                                                               |
 | belirteç değeri                     | JWT belirteci içeren bir dize döndüren ifade                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`, `query-parameter-name` veya `token-value` biri belirtilmelidir. | Yok                                                                               |
 | id                              | `key` öğesindeki `id` özniteliği, imza doğrulaması için kullanılacak uygun anahtarı bulmak için belirteçteki `kid` talebine (varsa) eşleştirilecek dizeyi belirtmenize olanak tanır.                                                                                                                                                                                                                                           | Hayır                                                                               | Yok                                                                               |
-| {1&gt;eşleşme&lt;1}                           | `claim` öğesindeki `match` özniteliği, doğrulamanın başarılı olması için, ilkedeki her talep değerinin belirteçte olması gerekip gerekmediğini belirtir. Olası değerler şunlardır:<br /><br /> - `all`-ilkedeki tüm talep değerleri doğrulamanın başarılı olması için belirteçte mevcut olmalıdır.<br /><br /> - `any`-doğrulamanın başarılı olması için belirteçte en az bir talep değeri bulunması gerekir.                                                       | Hayır                                                                               | tümü                                                                               |
-| gerektir-süre sonu         | Boolean. Belirteçte bir süre sonu talebinin gerekli olup olmadığını belirtir.                                                                                                                                                                                                                                                                                                                                                                               | Hayır                                                                               | doğru                                                                              |
+| Eşleşebilir                           | `claim` öğesindeki `match` özniteliği, doğrulamanın başarılı olması için, ilkedeki her talep değerinin belirteçte olması gerekip gerekmediğini belirtir. Olası değerler şunlardır:<br /><br /> - `all`-ilkedeki tüm talep değerleri doğrulamanın başarılı olması için belirteçte mevcut olmalıdır.<br /><br /> - `any`-doğrulamanın başarılı olması için belirteçte en az bir talep değeri bulunması gerekir.                                                       | Hayır                                                                               | tümü                                                                               |
+| gerektir-süre sonu         | Boolean. Belirteçte bir süre sonu talebinin gerekli olup olmadığını belirtir.                                                                                                                                                                                                                                                                                                                                                                               | Hayır                                                                               | true                                                                              |
 | gerekli-düzen                  | Belirteç şemasının adı, örn. "taşıyıcı". Bu öznitelik ayarlandığında, ilke belirtilen düzenin yetkilendirme üst bilgi değerinde mevcut olduğundan emin olur.                                                                                                                                                                                                                                                                                    | Hayır                                                                               | Yok                                                                               |
-| imzalı belirteçleri gerektir           | Boolean. Bir belirtecin imzalanıp imzalanmayacağını belirtir.                                                                                                                                                                                                                                                                                                                                                                                           | Hayır                                                                               | doğru                                                                              |
-| ayırıcı                       | Dize. Birden çok değerli talepten bir değer kümesini ayıklamak için kullanılacak bir ayırıcı (ör. ",") belirtir.                                                                                                                                                                                                                                                                                                                                          | Hayır                                                                               | Yok                                                                               |
-| url                             | Açık KIMLIK yapılandırma meta verilerinin alınabilmesi için KIMLIK yapılandırma uç noktası URL 'SI açık olmalıdır. Yanıt, URL 'de tanımlandığı şekilde özelliklere göre olmalıdır:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Azure Active Directory için aşağıdaki URL 'YI kullanın: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` Dizin kiracı adınızı değiştirme (örn. `contoso.onmicrosoft.com`. | Evet                                                                              | Yok                                                                               |
-| çıkış-belirteç-değişken-adı      | Dize. Başarılı belirteç doğrulamasından sonra [`Jwt`](api-management-policy-expressions.md) türünde bir nesne olarak belirteç değeri alacak bağlam değişkeninin adı                                                                                                                                                                                                                                                                                     | Hayır                                                                               | Yok                                                                               |
+| imzalı belirteçleri gerektir           | Boolean. Bir belirtecin imzalanıp imzalanmayacağını belirtir.                                                                                                                                                                                                                                                                                                                                                                                           | Hayır                                                                               | true                                                                              |
+| ayırıcı                       | Dizisinde. Birden çok değerli talepten bir değer kümesini ayıklamak için kullanılacak bir ayırıcı (ör. ",") belirtir.                                                                                                                                                                                                                                                                                                                                          | Hayır                                                                               | Yok                                                                               |
+| url                             | Açık KIMLIK yapılandırma meta verilerinin alınabilmesi için KIMLIK yapılandırma uç noktası URL 'SI açık olmalıdır. Yanıt, URL 'de tanımlandığı şekilde özelliklere göre olmalıdır:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Azure Active Directory için aşağıdaki URL 'YI kullanın: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` Dizin kiracı adınızı değiştirme (örn. `contoso.onmicrosoft.com`. | Yes                                                                              | Yok                                                                               |
+| çıkış-belirteç-değişken-adı      | Dizisinde. Başarılı belirteç doğrulamasından sonra [`Jwt`](api-management-policy-expressions.md) türünde bir nesne olarak belirteç değeri alacak bağlam değişkeninin adı                                                                                                                                                                                                                                                                                     | Hayır                                                                               | Yok                                                                               |
 
 ### <a name="usage"></a>Kullanım
 
