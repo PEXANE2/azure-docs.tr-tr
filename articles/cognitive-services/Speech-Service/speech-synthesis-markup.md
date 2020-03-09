@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: dapine
-ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254784"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674448"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -329,7 +329,7 @@ Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üz
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| `alphabet` | `ph` özniteliğinde dizenin okunuşunu senilirken kullanılacak fonetik alfabesini belirtir. Alfabeyi belirten dize küçük harfle belirtilmelidir. Aşağıdakiler, belirtebileceğiniz olası harfler sonuçlardır.<ul><li>ipa &ndash; uluslararası fonetik alfabesi</li><li>sapı &ndash; konuşma API telefon kümesi</li><li>UPS &ndash; Evrensel telefon kümesi</li></ul>Alfabe yalnızca öğedeki Fonem için geçerlidir. Daha fazla bilgi için bkz. [Fonetik alfabe başvurusu](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | İsteğe bağlı |
+| `alphabet` | `ph` özniteliğinde dizenin okunuşunu senilirken kullanılacak fonetik alfabesini belirtir. Alfabeyi belirten dize küçük harfle belirtilmelidir. Aşağıdakiler, belirtebileceğiniz olası harfler sonuçlardır.<ul><li>`ipa` &ndash; uluslararası fonetik alfabesi</li><li>`sapi` &ndash; konuşma hizmeti fonetik alfabesi</li><li>`ups` &ndash; Evrensel telefon kümesi</li></ul><br>Alfabe yalnızca öğesindeki `phoneme` için geçerlidir. Daha fazla bilgi için bkz. [Fonetik alfabe başvurusu](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet). | İsteğe bağlı |
 | `ph` | `phoneme` öğesinde sözcüğün söylenişini belirten telefonları içeren bir dize. Belirtilen dize tanınmayan telefonlar içeriyorsa, metinden konuşmaya (TTS) hizmeti SSML belgesinin tamamını reddeder ve belgede belirtilen konuşma çıktısından hiçbiri üretir. | Phonemes kullanılıyorsa gereklidir. |
 
 **Örnekler**
@@ -418,13 +418,11 @@ Could you help leave a message to Robert Benigni for me?
 - Dosya boyutu: özel sözlük dosyası boyutu üst sınırı 100KB, bu boyuttan daha fazla olursa sensıs isteği başarısız olur.
 - Sözlük önbelleği yenilemesi: özel sözlük, ilk yüklendiğinde TTS hizmetinde anahtar olarak URI ile önbelleğe alınır. Aynı URI 'ye sahip bir sözlük 15 dakika içinde yeniden yüklenmez, bu nedenle özel sözlük değişikliğinin en fazla 15 dakikalık bir geçerlilik yapması gerekir.
 
-**SAPı telefon seti**
+**Konuşma hizmeti fonetik kümeleri**
 
-Yukarıdaki örnekte, uluslararası fonetik Ilişkisi (IPA) telefon kümesini kullanıyoruz. IPA uluslararası standart olduğundan, geliştiricilerin IPA kullanmasını öneririz. 
+Yukarıdaki örnekte, IPA telefon kümesi olarak da bilinen International fonetik alfabesini kullanıyoruz. Uluslararası standart olduğundan, geliştiricilerin IPA kullanmasını öneririz. IPA 'in anımsanması kolay olmadığı düşünüldüğünde, konuşma hizmeti yedi dil (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`ve `zh-TW`) için bir fonetik kümesi tanımlar.
 
-Microsoft 'un anımsanması kolay olmadığı düşünüldüğünde, Microsoft, yedi dil (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`ve `zh-TW`) için SAPı telefon kümesini tanımlar. Daha fazla alfabe bilgisi için bkz. [Fonetik alfabe başvurusu](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx).
-
-SAPı telefon kümesini aşağıda gösterildiği gibi özel lexsimgelerinden birlikte kullanabilirsiniz. Alfabe değerini **sapı**ile ayarlayın.
+`alphabet` özniteliği için `sapi`, aşağıda gösterildiği gibi özel lexsimgelerle değerini özniteliği olarak kullanabilirsiniz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -445,7 +443,7 @@ SAPı telefon kümesini aşağıda gösterildiği gibi özel lexsimgelerinden bi
 </lexicon>
 ```
 
-Ayrıntılı SAPı alfabesi hakkında daha fazla bilgi için bkz. [sapı alfabe başvurusu](sapi-phoneset-usage.md).
+Ayrıntılı konuşma hizmeti fonetik alfabe hakkında daha fazla bilgi için bkz. [konuşma hizmeti fonetik kümeleri](speech-ssml-phonetic-sets.md).
 
 ## <a name="adjust-prosody"></a>Prosody 'ı ayarla
 

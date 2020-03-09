@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394263"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake depolama Gen1 erişim denetimi
 
@@ -27,9 +27,9 @@ Azure Data Lake depolama Gen1 sırayla POSIX erişim denetimi modelinden türeti
 
 İki tür erişim denetim listesi (ACL) vardır: **Erişim ACL’leri** ve **Varsayılan ACL’ler**.
 
-* **Erişim ACL 'leri**: Bu denetim bir nesneye erişim sağlar. Hem dosyalar hem de klasörler Erişim ACL’lerine sahiptir.
+* **Erişim ACL’leri**: Bunlar bir nesneye erişimi denetler. Hem dosyalar hem de klasörler Erişim ACL’lerine sahiptir.
 
-* **Varsayılan ACL 'ler**: Bu klasör altında oluşturulan tüm alt öğelere ilişkin erişim ACL 'Lerini tespit eden bir klasörle ilişkili ACL 'lerin bir "şablonu". Dosyalar Varsayılan ACL’ye sahip değildir.
+* **Varsayılan ACL’ler**: Bir klasör ile ilişkili olan ACL’lerin o klasör altında oluşturulan tüm alt öğelere ilişkin Erişim ACL’lerini belirleyen bir "şablonudur". Dosyalar Varsayılan ACL’ye sahip değildir.
 
 
 Hem Erişim ACL'leri hem de Varsayılan ACL'ler aynı yapıdadır.
@@ -76,7 +76,7 @@ Bir Data Lake depolama Gen1 hesabı üzerinde belirli işlemlerin gerçekleştir
 | Okuma      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Ekleyin | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | Sil    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Oluştur    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Oluşturma    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Liste      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Liste      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Liste      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -108,7 +108,7 @@ Süper kullanıcı Data Lake depolama Gen1 hesaptaki tüm kullanıcılar arasın
 * Herhangi bir dosya veya klasörün izinlerini değiştirebilir.
 * Herhangi bir dosya veya klasörün sahibi olan kullanıcıyı ya da grubu değiştirebilir.
 
-Bir parçası olan tüm kullanıcılar **sahipleri** rol bir Data Lake depolama Gen1 hesap için de otomatik olarak süper kullanıcı.
+Bir Data Lake Storage 1. hesabı için **sahip** rolünün parçası olan tüm kullanıcılar otomatik olarak bir süper kullanıcılardır.
 
 ### <a name="the-owning-user"></a>Sahip olan kullanıcı
 
@@ -130,12 +130,12 @@ POSIX ACL’lerinde her kullanıcı bir "birincil grup" ile ilişkilendirilir. �
 
 "Data Lake depolama Gen1 kullanıcılara ilişkili hiçbir birincil grup" olduğundan, sahip olan grup aşağıdaki gibi atanır.
 
-**Yeni dosya veya klasör için sahip olan grup atama**
+**Yeni bir dosya veya klasör için sahip olan grup atanıyor**
 
-* **Durum 1**: "/" Kök klasörü. Bir Data Lake depolama Gen1 hesabı oluşturulduğunda bu klasör oluşturulur. Bu durumda sahip olan grup için bir tüm sıfır GUID ayarlanır.  Bu değer, erişime izin vermez.  Bir grup atanır bu zamana kadar yer tutucu olduğu.
-* **Durum 2** (Diğer her durum): Yeni bir öğe oluşturulduğunda sahip olan grup üst klasörden kopyalanır.
+* **Olay 1**: Kök klasör "/". Bir Data Lake depolama Gen1 hesabı oluşturulduğunda bu klasör oluşturulur. Bu durumda sahip olan grup için bir tüm sıfır GUID ayarlanır.  Bu değer, erişime izin vermez.  Bir grup atanır bu zamana kadar yer tutucu olduğu.
+* **Olay 2** (Diğer her olay): Yeni bir olay oluşturulduğunda sahip olan grup üst klasörden kopyalanır.
 
-**Sahip olan Grup değiştirme**
+**Sahip olan grubu değiştirme**
 
 Sahip olan grup aşağıdakiler tarafından değiştirilebilir:
 * Herhangi bir süper kullanıcı.
@@ -144,7 +144,7 @@ Sahip olan grup aşağıdakiler tarafından değiştirilebilir:
 > [!NOTE]
 > Sahip olan grup, bir dosya veya klasörün ACL’lerini *değiştiremez*.
 >
-> Kök klasörü söz konusu olduğunda hesabı oluşturan kullanıcıya sahip olan Grup ya da Eylül 2018'den önce oluşturulan hesapları için ayarlanmış **vaka 1**, yukarıdaki.  Tek bir kullanıcı hesabı sahip grup üzerinden izin sağlamak için geçerli değil, bu nedenle hiçbir izinleri bu varsayılan ayarı tarafından verilir. Bu izni geçerli bir kullanıcı grubuna atayabilirsiniz.
+> 2018 Eylül tarihinde veya daha önce oluşturulan hesaplar için, sahip olan Grup, yukarıdaki **1. durum**için kök klasör olması durumunda hesabı oluşturan kullanıcıya ayarlanmıştır.  Tek bir kullanıcı hesabı sahip grup üzerinden izin sağlamak için geçerli değil, bu nedenle hiçbir izinleri bu varsayılan ayarı tarafından verilir. Bu izni geçerli bir kullanıcı grubuna atayabilirsiniz.
 
 
 ## <a name="access-check-algorithm"></a>Erişim denetimi algoritması
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Maskesi
 
-Erişim denetimi algoritması'içinde gösterildiği gibi erişim maskesi sınırlar **adlandırılmış kullanıcılar**, **sahip olan grup**, ve **adlandırılmış gruplar**.  
+Erişim denetimi algoritmasında gösterildiği gibi, maske **adlandırılmış kullanıcılar**, **sahip olan grup**ve **adlandırılmış gruplar**için erişimi sınırlandırır.  
 
 > [!NOTE]
 > Yeni bir Data Lake depolama Gen1 hesabı için kök klasörün ("/") erişim ACL'si için maske varsayılan olarak RWX'tir.
@@ -299,4 +299,4 @@ Hayır, ancak üst klasör altında yeni oluşturulan alt dosyalara ve klasöre 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Data Lake depolama Gen1 genel bakış](data-lake-store-overview.md)
+* [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md)

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394813"
 ---
 # <a name="about-voice-assistants"></a>Sesli yardımcılar hakkında
 
@@ -31,7 +31,7 @@ Uygulamalar, konuşma yazılım geliştirme seti (SDK) ile ses Yardımcısı hiz
 
 Bir ses Yardımcısı oluşturmaya yönelik ilk adım, ne yapacağına karar vermelidir. Konuşma hizmeti, yardımcı etkileşimlerinizi üretmek için birden çok ve tamamlayıcı çözüm sunar. Bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalının sağladığı esneklik ve çok yönlülük, basit senaryolar Için [özel komutların (Önizleme)](custom-commands.md) basitliğini veya basitliğini isteyip istemediğinizi, doğru araçların seçilmesi, çalışmaya başlamanızı sağlar.
 
-| Şunu yapmak istiyorsanız... | Göz önüne alın... | Örneğin... |
+| İsterseniz... | Göz önüne alın... | Örneğin... |
 |-------------------|------------------|----------------|
 |Güçlü beceriler tümleştirmesi ve tam dağıtım denetimi ile açık uçlu konuşma | Bot çerçevesinin [doğrudan hat konuşma](direct-line-speech.md) kanalı | <ul><li>"Seattle 'a gitmem gerekiyor"</li><li>"Ne tür bir pizza düzenleyebilir?"</li></ul>
 |Basitleştirilmiş yazma ve barındırma ile komut ve denetim veya görev odaklı konuşma | [Özel komutlar (Önizleme)](custom-commands.md) | <ul><li>"Ek yük ışığını aç"</li><li>"5 derece çarpıtma yapın"</ul>
@@ -58,9 +58,9 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Göz atma](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Ata](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Ata](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 
