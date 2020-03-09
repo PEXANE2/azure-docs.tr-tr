@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD parola koruması
       items:
-        - name: Şirket içi tümleştirme
-          items:
-            - name: Azure AD parola korumasını dağıtma
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: Azure AD parola korumasını yapılandırma
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: Azure AD parola korumasını izleme
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: Azure AD parola korumasıyla ilgili sorunları çözme
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: Sık sorulan sorular
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: Şirket içi aracı sürüm geçmişi
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: Şirket içi planlama ve dağıtma
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Şirket içi etkinleştirme ve yapılandırma
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Şirket içi dağıtımları izleme
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Şirket içi dağıtımlarda sorun giderme
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Şirket içi hakkında SSS
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Şirket içi aracı sürüm geçmişi
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD akıllı kilitleme
       href: howto-password-smart-lockout.md
     - name: Parolasız

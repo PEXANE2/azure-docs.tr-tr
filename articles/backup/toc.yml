@@ -142,10 +142,16 @@
       items:
         - name: Genel Bakış
           href: backup-azure-about-mars.md
+        - name: Yükleme veya yükseltme
+          items:
+            - name: MARS aracısını yükleme
+              href: install-mars-agent.md
+            - name: MARS aracısını güncelleştirme
+              href: upgrade-mars-agent.md
         - name: Backup
           items:
             - name: Windows Server dosya ve klasörlerini yedekleme
-              href: backup-configure-vault.md
+              href: backup-windows-with-mars-agent.md
             - name: Windows Server Sistem Durumunu yedekleme
               href: backup-azure-system-state.md
         - name: Geri Yükleme

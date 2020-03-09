@@ -34,24 +34,36 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Genel Sanal Ağ eşlemesini yapılandırma
       href: global-peering-vnet.md
-    - name: ExpressRoute şifrelemesini yapılandırma
-      href: vpn-over-expressroute.md
     - name: Sanal WAN SKU'sunu yükseltme
       href: upgrade-virtual-wan.md
     - name: Özel IPsec ilkesini yapılandırma
       href: virtual-wan-custom-ipsec-portal.md
-    - name: Kullanıcı VPN'si (noktadan siteye) için sertifikaları yapılandırma
-      href: certificates-point-to-site.md
-    - name: Kullanıcı VPN’i için Azure AD kiracısı yapılandırma
-      href: openvpn-azure-ad-tenant.md
-    - name: Kullanıcı VPN’i için Çok Faktörlü Kimlik Doğrulamasını Etkinleştirme
-      href: openvpn-azure-ad-mfa.md
-    - name: Kullanıcı VPN’i için Azure AD kimlik doğrulamasını yapılandırma
-      href: virtual-wan-point-to-site-azure-ad.md
-    - name: Kullanıcı VPN’i için çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma
-      href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Genel ve merkez tabanlı VPN profillerini indirme
-      href: global-hub-profile.md
+    - name: ExpressRoute
+      items:
+        - name: ExpressRoute bağlantısı oluşturma
+          href: virtual-wan-expressroute-portal.md
+        - name: ExpressRoute şifrelemesini yapılandırma
+          href: vpn-over-expressroute.md
+    - name: Siteden siteye
+      items:
+        - name: Siteden siteye bağlantı oluşturma
+          href: virtual-wan-site-to-site-portal.md
+    - name: Kullanıcı VPN (noktadan siteye)
+      items:
+        - name: Kullanıcı VPN (noktadan siteye) bağlantıları oluşturma
+          href: virtual-wan-point-to-site-portal.md
+        - name: Kullanıcı VPN’i için sertifikaları yapılandırma
+          href: certificates-point-to-site.md
+        - name: Kullanıcı VPN’i için Azure AD kiracısı yapılandırma
+          href: openvpn-azure-ad-tenant.md
+        - name: Kullanıcı VPN’i için Çok Faktörlü Kimlik Doğrulamasını Etkinleştirme
+          href: openvpn-azure-ad-mfa.md
+        - name: Kullanıcı VPN’i için Azure AD kimlik doğrulamasını yapılandırma
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Kullanıcı VPN’i için çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma
+          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Genel ve merkez tabanlı Kullanıcı VPN’i profillerini indirme
+          href: global-hub-profile.md
     - name: Yönlendirmeyi yapılandırma
       items:
         - name: Sanal hub'dan NVA'ya trafik yönlendirme

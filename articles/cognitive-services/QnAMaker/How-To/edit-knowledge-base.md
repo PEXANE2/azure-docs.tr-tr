@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326795"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668773"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Soru-cevap Oluşturucu, Bilgi Bankası Düzenle
 
@@ -42,8 +42,8 @@ Soru-cevap Oluşturucu, kullanımı kolay bir düzenleme deneyimi sunarak bilgi 
     |URL Sil|Var olan URL'ler Sil simgesini seçerek silebilirsiniz, çöp kutusu.|
     |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
     |Dosya Ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
-    |İçeri Aktarma|Ayrıca, **Ímport Bilgi Bankası** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
-    |Güncelleştirme|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Gerekli olursa yönetim katmanı Azure Portal'dan da güncelleştirebilirsiniz.
+    |İçeri Aktarma|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
+    |Güncelleştir|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Gerekli olursa yönetim katmanı Azure Portal'dan da güncelleştirebilirsiniz.
 
 1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.    
 

@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: İşlem modeli ve sorumluluklar
           href: hana-operations-model.md
+        - name: Uyumlu İşletim Sistemleri
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: Mimari
       items:
         - name: Genel mimari

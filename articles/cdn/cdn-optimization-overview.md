@@ -1,6 +1,6 @@
 ---
-title: Azure CDN, içerik teslim türü için en iyi duruma getirme
-description: Azure CDN, içerik teslim türü için en iyi duruma getirme
+title: İçerik teslimi türü için Azure CDN iyileştirin
+description: İçerik teslimi türü için Azure CDN iyileştirin
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
 ms.openlocfilehash: da8f17da9225da1d2b92bd8515d645bce9a1bbaa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593642"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394375"
 ---
-# <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN, içerik teslim türü için en iyi duruma getirme
+# <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>İçerik teslimi türü için Azure CDN iyileştirin
 
-İçerik için geniş global kullanıcılara dağıtmanıza, içeriğinizi en iyi duruma getirilmiş tesliminin sağlanması önemlidir. [Azure içerik teslim ağı (CDN)](cdn-overview.md) sahip olduğunuz içerik türüne göre deneyiminin en iyi duruma getirebilirsiniz. İçerik, bir Web sitesi, canlı akış, bir video veya büyük boyutlu bir dosyayı indirmek için olabilir. Bir CDN uç noktası oluşturduğunuzda, belirttiğiniz bir senaryoda **için en iyi duruma getirilmiş** seçeneği. Seçiminiz hangi en iyi duruma getirme CDN uç noktasından teslim edilen içeriği uygulanan belirler.
+Büyük küresel bir hedef kitleye içerik sundığınızda, içeriğinizin en iyi şekilde teslim edilmesini sağlamak önemlidir. [Azure Content Delivery Network (CDN)](cdn-overview.md) , sahip olduğunuz içerik türüne göre teslim deneyimini en uygun hale getirebilir. İçerik bir Web sitesi, canlı bir akış, video veya indirmek için büyük bir dosya olabilir. Bir CDN uç noktası oluşturduğunuzda, **en iyileştirilmiş for** seçeneğinde bir senaryo belirlersiniz. Seçtiğiniz, CDN uç noktasından alınan içeriğe hangi iyileştirmenin uygulanacağını belirler.
 
-İyileştirme seçenekleri içerik teslimi performansını artırmak için en iyi yöntem davranışları kullanmak üzere tasarlanmış ve daha iyi kaynak boşaltabilirsiniz. Senaryo seçimlerinizi kısmi önbelleğe alma, nesne Öbekleme ve kaynak hata yeniden deneme ilkesi yapılandırmalarını değiştirerek performansını etkiler. 
+En iyi duruma getirme seçenekleri, içerik teslimi performansını ve daha iyi kaynak boşaltma 'yı iyileştirmek için en iyi uygulama davranışlarını kullanmak üzere tasarlanmıştır Senaryo seçenekleriniz, kısmi önbelleğe alma, nesne parçalama ve kaynak hatası yeniden deneme ilkesi için konfigürasyonları değiştirerek performansı etkiler. 
 
-Bu makalede, en iyi duruma getirme özellikleri ve ne zaman kullanmanız gerektiğine bir genel bakış sağlar. Özellikler ve sınırlamalar hakkında daha fazla bilgi için tek tek her optimizationtype üzerinde ilgili makalelerine bakın.
+Bu makalede, çeşitli iyileştirme özelliklerine ve bunları ne zaman kullanmanız gerektiğine ilişkin bir genel bakış sunulmaktadır. Özellikler ve sınırlamalar hakkında daha fazla bilgi için, her bir iyileştirme türünün ilgili makalelerine bakın.
 
 > [!NOTE]
-> Bir CDN uç noktası oluşturduğunuzda **için en iyi duruma getirilmiş** seçenekleri uç noktası oluşturuldu profilinin türüne göre değişebilir. Azure CDN sağlayıcıları geliştirme senaryoya bağlı olarak farklı şekilde uygulanır. 
+> Bir CDN uç noktası oluşturduğunuzda, Seçenekler **Için iyileştirilmiş** , uç noktanın oluşturulduğu profil türüne göre değişiklik gösterebilir. Azure CDN sağlayıcılar, senaryoya bağlı olarak farklı yollarla geliştirme uygular. 
 
 ## <a name="provider-options"></a>Sağlayıcı seçenekleri
 
-**Azure CDN standart Microsoft gelen** profillerini aşağıdaki iyileştirmeleri destekler:
+**Microsoft profillerinin Azure CDN Standart** aşağıdaki iyileştirmeleri destekler:
 
-* [Genel web teslimatı](#general-web-delivery). Bu iyileştirme, medya akışı için de kullanılır ve büyük dosya indirin.
+* [Genel web teslimi](#general-web-delivery). Bu iyileştirme, medya akışı ve büyük dosya indirme için de kullanılır.
 
 > [!NOTE]
-> Dinamik site hızlandırma Microsoft gelen aracılığıyla sunulanlar [Azure ön kapısı Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
+> Microsoft 'un dinamik site ivmesi, [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview)aracılığıyla sunulur.
 
-**Azure CDN standart Verizon** ve **verizon'dan Azure CDN Premium** profilleri, aşağıdaki iyileştirmeleri destekler:
+**Verizon profillerden Verizon ve Azure CDN Premium** **'dan Azure CDN Standart** aşağıdaki iyileştirmeleri destekler:
 
-* [Genel web teslimatı](#general-web-delivery). Bu iyileştirme, medya akışı için de kullanılır ve büyük dosya indirin.
+* [Genel web teslimi](#general-web-delivery). Bu iyileştirme, medya akışı ve büyük dosya indirme için de kullanılır.
 
 * [Dinamik site hızlandırma](#dynamic-site-acceleration) 
 
 
-**Azure CDN standart Akamai** profilleri, aşağıdaki iyileştirmeleri destekler:
+**Akamai profillerinden Azure CDN Standart** aşağıdaki iyileştirmeleri destekler:
 
-* [Genel web teslimatı](#general-web-delivery) 
+* [Genel web teslimi](#general-web-delivery) 
 
 * [Genel medya akışı](#general-media-streaming)
 
@@ -60,77 +60,77 @@ Bu makalede, en iyi duruma getirme özellikleri ve ne zaman kullanmanız gerekti
 
 * [Dinamik site hızlandırma](#dynamic-site-acceleration) 
 
-Microsoft, teslim için en iyi sağlayıcısı seçmek için farklı sağlayıcılar arasında performans çeşitlemeleri test önerir.
+Microsoft, teslimizin için en uygun sağlayıcıyı seçmek üzere farklı sağlayıcılar arasındaki performans çeşitlemelerini sınamanızı önerir.
 
-## <a name="select-and-configure-optimization-types"></a>Seçin ve iyileştirme türlerini yapılandır
+## <a name="select-and-configure-optimization-types"></a>İyileştirme türlerini seçin ve yapılandırın
 
-Bir CDN uç noktası oluşturduğunuzda senaryo en iyi şekilde eşleşen bir iyileştirme türü ve sunmak için uç nokta istediğiniz içerik türü seçin. **Genel web teslimatı** varsayılan seçim. Mevcut **akamai'den Azure CDN standart** uç noktaları yalnızca iyileştirme seçeneği herhangi bir zamanda güncelleştirebilirsiniz. Bu değişiklik, Azure CDN teslim kesme değil. 
+Bir CDN uç noktası oluşturduğunuzda, son noktanın teslim etmesini istediğiniz senaryoya ve içerik türüne en iyi eşleşen bir iyileştirme türü seçin. **Genel web teslimi** varsayılan seçimdir. Yalnızca Akamai bitiş noktalarından mevcut **Azure CDN Standart** için, iyileştirme seçeneğini dilediğiniz zaman güncelleştirebilirsiniz. Bu değişiklik Azure CDN teslimini kesintiye uğratmaz. 
 
-1. İçinde bir **akamai'den Azure CDN standart** profilini, bir uç nokta seçin.
+1. Akamai profilinden **Azure CDN Standart** bir uç nokta seçin.
 
     ![Uç nokta seçimi](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. Ayarları altında **iyileştirme**. Ardından, bir türden **için en iyi duruma getirilmiş** aşağı açılan listesi.
+2. Ayarlar altında **iyileştirme**' yi seçin. Ardından, **en iyileştirilmiş for** açılan listesinden bir tür seçin.
 
-    ![En iyi duruma getirme ve türü seçimi](./media/cdn-optimization-overview/02_Select.png)
+    ![İyileştirme ve tür seçimi](./media/cdn-optimization-overview/02_Select.png)
 
 ## <a name="optimization-for-specific-scenarios"></a>Belirli senaryolar için iyileştirme
 
-CDN uç noktası bu senaryoları biri için en iyi duruma getirebilirsiniz. 
+Bu senaryolardan biri için CDN uç noktasını iyileştirebilirsiniz. 
 
-### <a name="general-web-delivery"></a>Genel web teslimatı
+### <a name="general-web-delivery"></a>Genel web teslimi
 
-Genel web teslimatı en yaygın bir iyileştirme seçenektir. Web sayfalarını ve web uygulamaları gibi genel web içerik iyileştirme için tasarlanmıştır. Bu iyileştirme, dosya için de kullanılabilir ve videosunu indirir.
+Genel web teslimi en yaygın iyileştirme seçeneğidir. Web sayfaları ve Web uygulamaları gibi genel Web içeriği iyileştirmesi için tasarlanmıştır. Bu iyileştirme, dosya ve video indirmeleri için de kullanılabilir.
 
-Tipik bir Web sitesi, statik ve dinamik içerik içerir. Statik içerik, görüntü, JavaScript kitaplıklarını ve önbelleğe alınmış ve farklı kullanıcılar için teslim stil sayfaları içerir. Dinamik içerik, bir kullanıcı profili için uyarlanmış haber öğelerini gibi bireysel bir kullanıcı için kişiselleştirilmiş. Her kullanıcı için benzersiz olduğundan, alışveriş sepeti içeriği gibi dinamik içerik önbelleğe değil. Genel web teslimatı, tüm Web sitenizin en iyi duruma getirebilirsiniz. 
+Tipik bir Web sitesi statik ve dinamik içerik içerir. Statik içerik, önbelleğe alınıp farklı kullanıcılara teslim edilebilir görüntüler, JavaScript kitaplıkları ve stil sayfaları içerir. Dinamik içerik, Kullanıcı profiline uyarlanmış haber öğeleri gibi bireysel bir kullanıcı için özelleştirilir. Alışveriş sepeti içerikleri gibi dinamik içerik, her bir kullanıcı için benzersiz olduğundan önbelleğe alınmaz. Genel web teslimi, Web sitenizin tamamını iyileştirebilirler. 
 
 > [!NOTE]
-> Kullanıyorsanız bir **akamai'den Azure CDN standart** profilini, ortalama dosyanızın boyutu 10 MB'den küçükse, bu en iyi duruma getirme türünü seçin. Ortalama dosyanızın boyutu 10 MB'den daha büyük ise, aksi takdirde seçin **büyük dosya indirme** gelen **için en iyi duruma getirilmiş** aşağı açılan listesi.
+> **Akamai profilinden Azure CDN Standart** kullanıyorsanız, ortalama dosya BOYUTUNUZ 10 MB 'den küçükse bu en iyi duruma getirme türünü seçin. Aksi takdirde, ortalama dosya boyutunuz 10 MB 'tan büyükse, **en iyileştirilmiş for** açılan listesinden **büyük dosya indir** ' i seçin.
 
 ### <a name="general-media-streaming"></a>Genel medya akışı
 
-Uç nokta kullanmanız gerekiyorsa için canlı akış ve isteğe bağlı video akışı, genel medya akışı iyileştirme türü seçin.
+Canlı akış ve isteğe bağlı video akışı için uç noktayı kullanmanız gerekiyorsa, genel medya akışı iyileştirme türünü seçin.
 
-İstemcide video içeriğinin sık sık arabelleğe alma gibi geç ulaşması paketleri deneyimini neden olabileceği için medya akışı zamana duyarlı. Medya akışı en iyi duruma getirme, medya içeriği teslim gecikme süresini azaltır ve kullanıcılara bir kesintisiz akış deneyimi sunar. 
+Medya akışı zamana duyarlıdır, çünkü istemciye gelen ve video içeriğinin sık belleğe alınması gibi paketler, yoğun bir görüntüleme deneyimine neden olabilir. Medya akışı iyileştirmesi, medya içeriği tesliminin gecikmesini azaltır ve kullanıcılar için sorunsuz bir akış deneyimi sağlar. 
 
-Bu senaryo, Azure media service müşterileri için yaygındır. Azure media services'ı kullandığınızda, canlı ve isteğe bağlı akış için kullanılabilen bir tek akış uç noktasını alın. Bu senaryo ile müşteriler Canlı isteğe bağlı akış için değiştirdiğinden zaman başka bir uç noktaya geçiş gerek yoktur. Bu tür bir senaryo genel medya akışı iyileştirmesi destekler.
+Bu senaryo, Azure Media Service müşterileri için ortaktır. Azure Media Services kullandığınızda hem canlı hem de isteğe bağlı akış için kullanılabilen tek bir akış uç noktası alırsınız. Bu senaryoyla, müşterilerin canlı iken isteğe bağlı akış olarak değiştiklerinde başka bir uç noktaya geçiş yapması gerekmez. Genel medya akışı iyileştirmesi bu tür senaryoyu destekler.
 
-İçin **Azure CDN standart Microsoft gelen**, **verizon'dan Azure CDN standart**, ve **verizon'dan Azure CDN Premium**, genel web teslimi iyileştirme türünü kullanın. Genel akış medya içeriği teslim etme.
+**Microsoft 'tan** **Azure CDN**standart Azure CDN Standart ve Verizon ' den **Premium Azure CDN Premium**, genel akış medya içeriğini sunmak için genel web teslimi iyileştirme türünü kullanın.
 
-Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz: [iyileştirme akış medya](cdn-media-streaming-optimization.md).
+Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz. [medya akışı iyileştirmesi](cdn-media-streaming-optimization.md).
 
 ### <a name="video-on-demand-media-streaming"></a>İsteğe bağlı video medya akışı
 
-İsteğe bağlı video medya akışı iyileştirmesi isteğe bağlı video akış içeriğini artırır. İsteğe bağlı video akışı için bir uç nokta kullanırsanız, bu seçeneği kullanın.
+İsteğe bağlı video medya akışı iyileştirmesi, isteğe bağlı video akış içeriğini geliştirir. İsteğe bağlı video akışı için bir uç nokta kullanırsanız, bu seçeneği kullanın.
 
-İçin **Azure CDN standart Microsoft gelen**, **verizon'dan Azure CDN standart**, ve **verizon'dan Azure CDN Premium** profillerini, genel web teslimatı iyileştirmesi kullanın İsteğe bağlı video akış medya içeriği teslim türü.
+Azure CDN **Microsoft 'tan gelen Azure CDN Standart**, **Verizon 'Ten standart**ve **Verizon profillerden Azure CDN Premium** için, isteğe bağlı video akış medya içeriği sunmak için genel Web teslim iyileştirme türünü kullanın.
 
-Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz: [iyileştirme akış medya](cdn-media-streaming-optimization.md).
+Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz. [medya akışı iyileştirmesi](cdn-media-streaming-optimization.md).
 
 > [!NOTE]
-> CDN uç noktası isteğe bağlı video içeriği öncelikle hizmet veriyorsa, bu en iyi duruma getirme türünü kullanın. Bu iyileştirme türü ve iyileştirme türü akış genel medya arasındaki başlıca fark, bağlantı yeniden deneme zaman aşımı ' dir. Zaman aşımı, canlı akış senaryoları ile çalışmak için çok kısadır.
+> CDN uç noktası öncelikle isteğe bağlı video içeriğine hizmet veriyorsa, bu iyileştirme türünü kullanın. Bu iyileştirme türü ile genel medya akışı iyileştirme türü arasındaki önemli fark, bağlantı yeniden deneme zaman aşımına uğrar. Zaman aşımı, canlı akış senaryolarıyla çalışmanın çok daha kısadır.
 >
 
 ### <a name="large-file-download"></a>Büyük dosya indirme
 
-İçin **akamai'den Azure CDN standart** profilleri, büyük dosya indirme iyileştirilmiş içeriği 10 MB'tan büyük. Ortalama dosyanızın boyutu 10 MB'den küçükse, genel web teslimatı kullanın. Ortalama dosya boyutlarınızın tutarlı bir şekilde 10 MB'den daha büyük ise büyük dosyalar için ayrı bir uç nokta oluşturmak için daha verimli olabilir. Örneğin, üretici yazılımı veya yazılım güncelleştirmeleri genellikle büyük dosyalardır. 1\.8 GB'tan büyük dosyalar sunmak için en büyük dosya indirme iyileştirme gereklidir.
+**Akamai profillerden Azure CDN Standart** için, büyük dosya INDIRMELERI 10 MB 'tan büyük içerik için iyileştirilmiştir. Ortalama dosya boyutunuz 10 MB 'den küçükse genel web teslimi kullanın. Ortalama dosya boyutlarınız 10 MB 'den sürekli olarak büyükse, büyük dosyalar için ayrı bir uç nokta oluşturulması daha verimli olabilir. Örneğin, bellenim veya yazılım güncelleştirmeleri genellikle büyük dosyalardır. 1,8 GB 'tan büyük dosyaları teslim etmek için büyük dosya indirme iyileştirmesi gereklidir.
 
-İçin **Azure CDN standart Microsoft gelen**, **verizon'dan Azure CDN standart**, ve **verizon'dan Azure CDN Premium** profillerini, genel web teslimatı iyileştirmesi kullanın büyük dosya indirme içeriği sunmak için bunu yazın. Dosya indirme boyutu bir sınırlama yoktur.
+Azure CDN **Microsoft 'tan gelen Azure CDN Standart**, **Verizon 'Ten standart**ve **Verizon profillerden Azure CDN Premium** için, büyük dosya indirme içeriği sağlamak için genel Web teslim iyileştirme türünü kullanın. Dosya indirme boyutuyla ilgili bir sınırlama yoktur.
 
-Büyük dosya iyileştirmesi hakkında daha fazla bilgi için bkz: [büyük dosya iyileştirmesi](cdn-large-file-optimization.md).
+Büyük dosya iyileştirmesi hakkında daha fazla bilgi için bkz. [büyük dosya iyileştirmesi](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Dinamik site hızlandırma
 
- Dinamik site Hızlandırma (DSA), kullanılabilir **akamai'den Azure CDN standart**, **verizon'dan Azure CDN standart**, ve **verizon'dan Azure CDN Premium** profilleri. Bu iyileştirme kullanmak için ek bir ücreti gerektirir; Daha fazla bilgi için [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
+ Dinamik site hızlandırma (DSA), Akamai ' dan standart **Azure CDN Standart**, **Verizon 'ten standart Azure CDN**ve **Verizon profillerden Azure CDN Premium** için kullanılabilir. Bu iyileştirme, kullanmak için ek ücret içerir; daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
 
 > [!NOTE]
-> Dinamik site hızlandırma Microsoft gelen aracılığıyla sunulur [Azure ön kapısı hizmet](https://docs.microsoft.com/azure/frontdoor/front-door-overview) genel olduğu [anycast](https://en.wikipedia.org/wiki/Anycast) yararlanarak uygulama iş yüklerinizi sunmak için Microsoft'un özel genel ağ hizmeti.
+> Microsoft 'un dinamik site ivmesi, Microsoft 'un özel küresel ağını kullanarak uygulama iş yüklerinizi sunmaya yönelik küresel bir [her noktaya](https://en.wikipedia.org/wiki/Anycast) hizmet olan [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview) aracılığıyla sunulur.
 
-DSA gecikme süresi ve dinamik içerik performansının yararlanan çeşitli teknikler içerir. Yolun ve ağın en iyi duruma getirme, TCP iyileştirme ve diğer teknikleri içerir. 
+DSA, dinamik içeriğin gecikmesi ve performansına faydalanabilir çeşitli teknikler içerir. Yönlendirme ve ağ iyileştirme, TCP iyileştirmesi ve daha fazlasını içeren teknikler. 
 
-Bu iyileştirme, önbelleğe olmayan çok sayıda yanıtları içeren bir web uygulaması hızlandırmak için kullanabilirsiniz. Arama sonuçları, kullanıma alma işlemleri veya gerçek zamanlı verileri verilebilir. Statik veriler için temel Azure CDN önbelleğe alma özellikleri kullanmaya devam edebilirsiniz. 
+Bu iyileştirmeyi, önbelleğe alınamayan çok sayıda yanıt içeren bir Web uygulamasını hızlandırmak için kullanabilirsiniz. Arama sonuçları, kullanıma alma işlemleri veya gerçek zamanlı veriler örnekleri verilmiştir. Statik veriler için çekirdek Azure CDN önbelleğe alma özelliklerini kullanmaya devam edebilirsiniz. 
 
-Dinamik site hızlandırma hakkında daha fazla bilgi için bkz: [dinamik site hızlandırma](cdn-dynamic-site-acceleration.md).
+Dinamik site hızlandırma hakkında daha fazla bilgi için bkz. [dinamik site hızlandırma](cdn-dynamic-site-acceleration.md).
 
 
 

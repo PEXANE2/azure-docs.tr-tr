@@ -5,11 +5,11 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484715"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358284"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure Işlevleri geliştirme  
 
@@ -184,7 +184,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 Azure Functions Core Tools kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure işlevlerini yerel olarak test](functions-run-local.md)etme.
 
-## <a name="publish-to-azure"></a>Azure’da Yayımlama
+## <a name="publish-to-azure"></a>Azure'a Yayımlama
 
 Visual Studio 'dan yayımlarken, iki dağıtım yönteminden biri kullanılır:
 

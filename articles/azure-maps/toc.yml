@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: A'dan B'ye yönleri gösterme
               href: map-route.md
+        - name: Uzamsal GÇ modülü
+          items:
+            - name: Uzamsal GÇ modülünü kullanma
+              href: how-to-use-spatial-io-module.md
+            - name: Basit bir veri katmanı ekleme
+              href: spatial-io-add-simple-data-layer.md
+            - name: Uzamsal verileri okuma ve yazma
+              href: spatial-io-read-write-spatial-data.md
+            - name: OGC harita katmanı ekleme
+              href: spatial-io-add-ogc-map-layer.md
+            - name: WFS hizmetine bağlanma
+              href: spatial-io-connect-wfs-service.md
+            - name: Çekirdek işlemlerden yararlanma
+              href: spatial-io-core-operations.md
+            - name: Desteklenen veri biçimi ayrıntıları
+              href: spatial-io-supported-data-format-details.md
         - name: Web SDK destekleyen tarayıcılar
           href: supported-browsers.md
     - name: Android SDK ile geliştirme

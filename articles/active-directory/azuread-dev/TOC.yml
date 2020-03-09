@@ -155,8 +155,8 @@
           href: active-directory-acs-migration.md
         - name: Devre dışı bırakılmış Access Control Service ad alanlarını yeniden etkinleştirme
           href: howto-reactivate-disabled-acs-namespaces.md
-    - name: Azure AD Graph API’sini kullanma
-      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API’sini kullanma
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Geliştiriciler için AD FS
       href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
 - name: Başvurular
@@ -164,8 +164,8 @@
     - name: Kimlik doğrulama kitaplıkları
       displayName: ADAL
       href: active-directory-authentication-libraries.md
-    - name: Azure AD Graph API
-      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API’si
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Uygulama bildirimi
       href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Kimlik doğrulaması ve yetkilendirme hata kodları

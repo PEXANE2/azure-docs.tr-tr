@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: TensorFlow ile Machine Learning
       href: functions-machine-learning-tensorflow.md
+    - name: PyTorch ile görüntü sınıflandırması
+      href: machine-learning-pytorch.md
     - name: Özel Linux görüntüsü oluşturma
       href: functions-create-function-linux-custom-image.md
     - name: IoT Edge cihazında işlevler

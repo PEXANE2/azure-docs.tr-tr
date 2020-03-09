@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 3cecb04a4f299051860c45425f0fc4e13c3722ea
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656305"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395797"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure sanal makinelerinizin sistem durumunu anlayın
 
@@ -323,7 +323,7 @@ Uyarıları yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyi
 
 Bir veya birden çok uyarının uyarı durumunu seçip sol üst köşedeki **tüm uyarılar** sayfasında **Durumu Değiştir** ' i seçerek değiştirebilirsiniz. **Uyarı durumunu değiştir** bölmesindeki durumlardan birini seçin, **Açıklama** alanındaki değişikliğin açıklamasını ekleyin ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin. Bilgiler doğrulandığında ve değişiklikler uygulandığında, menüdeki **Bildirimler** altında ilerlemeyi izleyin.
 
-### <a name="configure-alerts"></a>Uyarı yapılandırma
+### <a name="configure-alerts"></a>Uyarıları yapılandırma
 Belirli uyarı yönetimi görevlerini Azure portal yönetemezsiniz. Bu görevlerin [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)kullanılarak gerçekleştirilmesi gerekir. Daha ayrıntılı şekilde belirtmek gerekirse:
 
 - Durum ölçütlerine yönelik bir uyarıyı etkinleştirme veya devre dışı bırakma

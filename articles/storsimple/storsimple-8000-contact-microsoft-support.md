@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384895"
 ---
-# <a name="contact-microsoft-support"></a>Microsoft Destek'e Başvur
+# <a name="contact-microsoft-support"></a>Microsoft Desteği’ne başvurma
 
 StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir destek isteği kaydetme** yeteneği sağlar. StorSimple çözümünüz ile ilgili herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Destek mühendisinize sahip çevrimiçi bir oturumda, StorSimple cihazınızda bir destek oturumu başlatmanız da gerekebilir. Bu makalede izlenecek yol gösterilmektedir:
 
@@ -57,7 +57,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 
    1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
-   3. **Oluştur**’a tıklayın.
+   3. **Oluştur**'a tıklayın.
    
        ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

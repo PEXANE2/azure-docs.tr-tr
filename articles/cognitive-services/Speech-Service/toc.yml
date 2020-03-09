@@ -193,10 +193,8 @@
           items:
             - name: Metin okuma REST API'si
               href: rest-text-to-speech.md
-        - name: Telefon Kümesi Kullanımı
-          items:
-            - name: Konuşma API’si (SAPI) Telefon Kümesi Kullanımı
-              href: sapi-phoneset-usage.md
+        - name: SSML fonetik kümeleri
+          href: speech-ssml-phonetic-sets.md
     - name: Kaynaklar
       items:
         - name: Metin okuma hakkında SSS
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: Konuşma Cihazları SDK’sını edinme
           href: get-speech-devices-sdk.md
-        - name: Sürüm notları
-          href: devices-sdk-release-notes.md
-        - name: Roobo v1 ayrıntıları
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Roobo v2 ayrıntıları
-          href: speech-devices-sdk-roobo-v2.md
-        - name: Mikrofon belirtimi
     - name: Donanım
       items:
         - name: Mikrofon dizisi önerileri
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 seti
+        - name: Roobo v1 ayrıntıları
           href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 ayrıntıları
+          href: speech-devices-sdk-roobo-v2.md
     - name: Hızlı Başlangıç
       items:
         - name: Konuşma Cihazları SDK’sını kullanma

@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Azure Açık Veri Kümeleri
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: Tasarımcı veri kümeleri
+      href: sample-designer-datasets.md
     - name: Uçtan uca MLOps örnekleri
       href: 'https://github.com/microsoft/MLOps'
-    - name: Tasarımcı örnek veri kümeleri
-      href: designer-sample-datasets.md
 - name: Kavramlar
   items:
     - name: Çalışma alanı

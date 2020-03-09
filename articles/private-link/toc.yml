@@ -30,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: Cosmos DB hesabına özel olarak bağlanma
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: Bir Web Uygulamasına özel olarak bağlanma
+      href: create-private-endpoint-webapp-portal.md
     - name: Özel bir uç nokta için ağ ilkelerini devre dışı bırakma
       href: disable-private-endpoint-network-policy.md
     - name: Özel Bağlantı Hizmeti için ağ ilkelerini devre dışı bırakma

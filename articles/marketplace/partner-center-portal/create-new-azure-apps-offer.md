@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760921"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391469"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -125,7 +125,7 @@ Bir Azure uygulaması teklifi oluşturabilmeniz için önce [bir Iş Ortağı Me
 
 **Teklif kurulum** sayfası, aşağıdaki bilgileri ister. Bu alanları tamamladıktan sonra **Kaydet** ' i seçtiğinizden emin olun.
 
-### <a name="test-drive"></a>Test sürüşü
+### <a name="test-drive"></a>Sınama sürücüsü
 
 Test sürücüsü, bu kullanıcılara teklifinizi "satın almadan önce dene" seçeneği sunarak, daha fazla dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olacak şekilde sergilemenin harika bir yoludur. [Sınama sürücüleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -169,7 +169,7 @@ Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görünt�
 > [!NOTE]
 > Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -196,7 +196,7 @@ Tanımlarınızı yazmak için bazı ipuçları:
 - Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
 - Açıklamanızı biçimlendirmek ve daha ilgi çekici hale getirmek için HTML etiketleri kullanmayı düşünün.
 
-### <a name="search-keywords"></a>Anahtar sözcüklerde ara
+### <a name="search-keywords"></a>Anahtar sözcükleri ara
 
 Müşterilerin teklifinizi Market 'te bulmasına yardımcı olmak için isteğe bağlı en fazla üç arama anahtar sözcüğü girebilirsiniz. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanmayı deneyin.
 
@@ -208,7 +208,7 @@ Bu bölüm, müşterilerinizin teklifiniz hakkında daha fazla bilgi sağlaması
 
 Kuruluşunuzun gizlilik ilkesinin URL 'sini girin. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
 
-#### <a name="useful-links"></a>Faydalı bağlantılar
+#### <a name="useful-links"></a>Yararlı bağlantılar
 
 Çözümünüz hakkında isteğe bağlı ek çevrimiçi belgeler sağlayın.  **+ Bağlantı ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
 
@@ -309,7 +309,7 @@ Azure Kamu Hizmetleri, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 v
 
 **Plan listeleme** sekmesi, aynı teklifin farklı planları arasında farklı olabilecek plana özgü liste bilgilerini görüntüler.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Adınızı temel alarak, sizin oluşturduğunuz zaman planınızı atadığınız şekilde önceden doldurulmuş olursunuz.  Bu ad, Market 'te görüntülenen bu "yazılım planı" başlığı olarak görünür.  En fazla 100 karakter içerebilir.
 
@@ -323,7 +323,7 @@ Bu açıklama, bu yazılım planının ne olduğunu ve teklifinizdeki diğer yaz
 
 Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 
 **Kullanılabilirlik** sekmesi yalnızca çözüm şablonu planları için görülebilir.  Planı herkese, yalnızca belirli müşterilere (özel bir hedef kitleye) görünür hale getirebilirsiniz ve planın yalnızca diğer çözüm şablonu veya yönetilen uygulamalar tarafından kullanılması için gizli hale getirme yapıp yapmayacağı.
 
@@ -457,7 +457,7 @@ Cosatm sekmesi hakkında bilgi sağlamak, teklifinizi yayımlamak için tamamen 
 
 Bu sekmeyi tamamlama hakkında daha fazla bilgi için bkz. [Partner Center 'Da ortak satış seçeneği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
 
-## <a name="test-drive"></a>Test sürüşü
+## <a name="test-drive"></a>Sınama sürücüsü
 
 **Test sürücüsü** sekmesi, müşterilerin satın alma işlemine geçmeden önce teklifinizi denemesini sağlayacak bir tanıtım (veya "test sürücüsü") ayarlamanıza olanak sağlar. [Test sürücüsü nedir](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) makalesinde daha fazla bilgi edinin  Teklifiniz için artık bir test sürücüsü sağlamak istemiyorsanız **teklif kurulumu** sayfasına dönün ve **Test sürücüsünü etkinleştir**seçeneğinin işaretini kaldırın.
 

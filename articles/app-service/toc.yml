@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Hizmet uç noktalarıyla Application Gateway
           href: networking/app-gateway-with-service-endpoints.md
+        - name: Özel uç noktalar
+          href: networking/private-endpoint.md
     - name: Gelen ve giden IP’ler
       href: overview-inbound-outbound-ips.md
     - name: Sanal Ağ Tümleştirmesi
