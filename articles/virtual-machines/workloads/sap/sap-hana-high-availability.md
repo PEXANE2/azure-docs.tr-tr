@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2019
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 65ba7c0d8115e7125f1318e7fdca979cfab02474
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565851"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927220"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
 
@@ -514,7 +514,12 @@ Ardından, HANA kaynaklarını oluşturun:
 
 > [!IMPORTANT]
 > En son test, Netcat 'in biriktirme listesi ve yalnızca bir bağlantıyı işleme sınırlaması nedeniyle isteklere yanıt vermeyi durdurduğu ortaya çıkarılan durumlardır. Netcat kaynağı Azure yük dengeleyici isteklerini dinlemeyi durduruyor ve kayan IP kullanılamaz hale gelir.  
-> Mevcut Paceüreticisi kümeleri için, [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)içindeki yönergeleri izleyerek netcat 'i socat ile değiştirmeyi öneririz. Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
+> Mevcut Paceyapıcısı kümelerinde, Netcat 'i socat ile değiştirme konusunda tavsiye ederiz. Şu anda paket kaynak aracılarının bir parçası olan Azure-lb kaynak Aracısı 'nı şu paket sürümü gereksinimleriyle kullanmanızı öneririz:
+> - SLES 12 SP4/SP5 için sürüm en az Resource-Agents-4.3.018. a7fb5035-3.30.1 olmalıdır.  
+> - SLES 15/15 SP1 için sürüm en az Resource-Agents-4.3.0184.6 ee15eb2-4.13.1 olmalıdır.  
+>
+> Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
+> Mevcut pacemaker kümelerinde, yapılandırma zaten [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)bölümünde açıklandığı gibi socat kullanacak şekilde değiştirilmişse Azure-lb Resource Agent 'a hemen geçiş yapmak için bir gereksinim yoktur.
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
@@ -538,9 +543,7 @@ sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> anything \
-  params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:625<b>03</b>,backlog=10,fork,reuseaddr /dev/null" \
-  op monitor timeout=20s interval=10 depth=0
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b>
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -575,7 +578,7 @@ Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emi
 #     Slaves: [ hn1-db-1 ]
 # Resource Group: g_ip_HN1_HDB03
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-#     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
 
 ## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
@@ -619,7 +622,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Stopped: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 
 Failed Actions:
 * rsc_SAPHana_HN1_HDB03_start_0 on hn1-db-0 'not running' (7): call=84, status=complete, exitreason='none',
@@ -661,7 +664,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Slaves: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 </code></pre>
 
 ### <a name="test-the-azure-fencing-agent-not-sbd"></a>Azure ile sınırlama aracısını test etme (SBD değil)
@@ -749,7 +752,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Hn1-DB-0 düğümünde < hanasid\>adm olarak aşağıdaki komutları çalıştırın:
@@ -776,7 +779,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 2: DÜĞÜM 2 ' DE BIRINCIL VERITABANıNı DURDUR
@@ -790,7 +793,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Hn1-DB-1 düğümünde < hanasid\>adm olarak aşağıdaki komutları çalıştırın:
@@ -817,7 +820,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 3: DÜĞÜM ÜZERINDE KILITLENME BIRINCIL VERITABANı
@@ -831,7 +834,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Hn1-DB-0 düğümünde < hanasid\>adm olarak aşağıdaki komutları çalıştırın:
@@ -858,7 +861,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 4: DÜĞÜM 2 ÜZERINDE KILITLENME BIRINCIL VERITABANı
@@ -872,7 +875,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Hn1-DB-1 düğümünde < hanasid\>adm olarak aşağıdaki komutları çalıştırın:
@@ -899,7 +902,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 5: KILITLENME BIRINCIL SITE DÜĞÜMÜ (DÜĞÜM 1)
@@ -913,7 +916,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Hn1-DB-0 düğümünde kök olarak aşağıdaki komutları çalıştırın:
@@ -950,7 +953,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 6: KILITLENME IKINCIL SITE DÜĞÜMÜ (DÜĞÜM 2)
@@ -964,7 +967,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Aşağıdaki komutları hn1-DB-1 düğümünde kök olarak çalıştırın:
@@ -1001,7 +1004,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 7: DÜĞÜM 2 ' DE IKINCIL VERITABANıNı DURDUR
@@ -1015,7 +1018,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Hn1-DB-1 düğümünde < hanasid\>adm olarak aşağıdaki komutları çalıştırın:
@@ -1038,7 +1041,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 8: DÜĞÜM 2 ' DE IKINCIL VERITABANıNı KILITLENME
@@ -1052,7 +1055,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Hn1-DB-1 düğümünde < hanasid\>adm olarak aşağıdaki komutları çalıştırın:
@@ -1075,7 +1078,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 9: IKINCIL HANA VERITABANıNı ÇALıŞTıRAN KILITLENME IKINCIL SITE DÜĞÜMÜ (DÜĞÜM 2)
@@ -1089,7 +1092,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Aşağıdaki komutları hn1-DB-1 düğümünde kök olarak çalıştırın:
@@ -1122,7 +1125,7 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -1130,4 +1133,4 @@ NOTE: aşağıdaki testler sırayla çalıştırılmak üzere tasarlanmıştır 
 * [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
-* Azure 'da SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan (büyük örnekler) oluşturma hakkında bilgi edinmek için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md)
+

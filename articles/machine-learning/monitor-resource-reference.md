@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979715"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927561"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning izleme verileri başvurusu
 
@@ -30,19 +30,19 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | Özellik | Açıklama |
 |:--- |:---|
 | TimeGenerated | Günlük girişinin oluşturulduğu saat |
-| ThrottledRequests | Günlük olayı ile ilişkili işlemin adı |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Günlük olayı ile ilişkili işlemin adı |
 | Kategori | Günlük olayının adı, AmlComputeClusterNodeEvent |
 | JobId | Gönderilen Işin KIMLIĞI |
 | ExperimentId | Deneme KIMLIĞI |
 | ExperimentName | Deneme adı |
 | Customersubscriptionıd | Deneme ve Işin gönderildiği abonelik |
-| WorkspaceName | Machine Learning çalışma alanının adı |
+| workspaceName | Machine Learning çalışma alanının adı |
 | ClusterName | Kümenin adı |
 | ProvisioningState | Iş gönderimi durumu |
 | ResourceGroupName | Kaynak grubunun adı |
 | JobName | Işin adı |
 | Lclusterıd | Kümenin KIMLIĞI |
-| Olay türü | Iş olayının türü, örneğin, Jobgönderildi, JobRunning, JobFailed, JobSucceeded vb. |
+| Türü | Iş olayının türü, örneğin, Jobgönderildi, JobRunning, JobFailed, JobSucceeded vb. |
 | ExecutionState | İşin durumu (çalıştırma), örneğin, sıraya alınmış, çalışıyor, başarılı, başarısız oldu |
 | ErrorDetails | İş hatası ayrıntıları |
 | CreationApiVersion | İşi oluşturmak için kullanılan API sürümü |
@@ -59,11 +59,11 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | Özellik | Açıklama |
 |:--- |:--- |
 | TimeGenerated | Günlük girişinin oluşturulduğu saat |
-| ThrottledRequests | Günlük olayı ile ilişkili işlemin adı |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Günlük olayı ile ilişkili işlemin adı |
 | Kategori | Günlük olayının adı, AmlComputeClusterNodeEvent |
 | ProvisioningState | Kümenin sağlama durumu |
 | ClusterName | Kümenin adı |
-| ClusterType | Kümenin türü |
+| clusterType | Kümenin türü |
 | CreatedBy | Kümeyi oluşturan Kullanıcı |
 | CoreCount | Kümedeki çekirdekler sayısı |
 | VmSize | Kümenin VM boyutu |
@@ -74,14 +74,14 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | MaximumNodeCount | Kümenin en fazla düğüm sayısı |
 | Nodeanlaşlocationoption | Düğümün nasıl serbest bırakılmasının gerektiği |
 | Yayımcı | Küme türü yayımcısı |
-| Teklif | Kümenin oluşturulduğu teklif |
+| Sunduğu | Kümenin oluşturulduğu teklif |
 | Sku | Küme içinde oluşturulan düğüm/VM SKU 'su |
 | Sürüm | Düğüm/VM oluşturulurken kullanılan görüntünün sürümü |
 | SubnetID | Kümenin alt NetID |
 | AllocationState | Küme ayırma durumu |
 | CurrentNodeCount | Kümenin geçerli düğüm sayısı |
 | TargetNodeCount | Ölçek artırma/azaltma sırasında kümenin hedef düğüm sayısı |
-| Olay türü | Küme oluşturma sırasında olay türü. |
+| Türü | Küme oluşturma sırasında olay türü. |
 | NodeIdleTimeSecondsBeforeScaleDown | Kümenin aşağı ölçeklendirilmesi için saniye cinsinden boş süre |
 | PreemptedNodeCount | Kümenin küme dışı düğüm sayısı |
 | Iresizegrow | Kümenin ölçeğini belirten bayrak |
@@ -102,7 +102,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | Özellik | Açıklama |
 |:--- |:--- |
 | TimeGenerated | Günlük girişinin oluşturulduğu saat |
-| ThrottledRequests | Günlük olayı ile ilişkili işlemin adı |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Günlük olayı ile ilişkili işlemin adı |
 | Kategori | Günlük olayının adı, AmlComputeClusterNodeEvent |
 | ClusterName | Kümenin adı |
 | NodeId | Oluşturulan küme düğümünün KIMLIĞI |
@@ -110,7 +110,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | VmFamilyName | Düğümün ait olduğu VM ailesi |
 | VmPriority | Oluşturulan düğümün önceliği/LowPriority |
 | Yayımcı | VM görüntüsünün yayımcısı, ör. Microsoft-dsvm |
-| Teklif | VM oluşturma ile ilişkili teklif |
+| Sunduğu | VM oluşturma ile ilişkili teklif |
 | Sku | Oluşturulan düğüm/VM SKU 'su |
 | Sürüm | Düğüm/VM oluşturulurken kullanılan görüntünün sürümü |
 | ClusterCreationTime | Kümenin oluşturulduğu zaman |
@@ -126,7 +126,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 
 Aşağıdaki tablolarda Azure Machine Learning tüm ölçümler için toplanan platform ölçümleri listelenmektedir **Azure Machine Learning çalışma alanı**ad alanında depolanır.
 
-**Model**
+**Modelinizi**
 
 | Ölçüm | Birim | Açıklama |
 | ----- | ----- | ----- |
@@ -164,7 +164,7 @@ Kota ölçümlerini filtrelemek için kullanılabilen boyutlar aşağıda verilm
 | VM ailesi adı | Kota kullanım yüzdesi | Küme tarafından kullanılan VM ailesi adı. |
 | VM önceliği | Kota kullanım yüzdesi | VM 'nin önceliği.
 
-**Çalıştırma**
+**Çalışmaz**
 
 Eğitim çalıştırmaları hakkında bilgiler.
 

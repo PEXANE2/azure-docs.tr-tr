@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981115"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893362"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
 Media Services ' deki terim kodlaması, dijital video ve/veya ses içeren dosyaları bir standart biçimden diğerine dönüştürme işlemi için geçerlidir. (a), dosyaların boyutunu azaltarak ve/veya (b) çok sayıda cihaz ve uygulama ile uyumlu bir biçim üretir. Bu işlem, video sıkıştırması veya kodlama kodlaması olarak da adlandırılır. Kavramlarla ilgili daha fazla bilgi için [veri sıkıştırmaya](https://en.wikipedia.org/wiki/Data_compression) ve [kodlama ve dönüştürme nedir?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) bölümüne bakın.
 
 Videolar genellikle, [aşamalı indirme](https://en.wikipedia.org/wiki/Progressive_download) ya da [Uyarlamalı bit hızı akışı](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)aracılığıyla cihazlara ve uygulamalara dağıtılır.
+
+> [!IMPORTANT]
+> Media Services, iptal edilen veya hatalı işler için faturalandırılmıyor. Örneğin, %50 ilerleme durumuna ulaşan ve iptal edilen bir iş, iş dakikası %50 ' de faturalandırılmaz. Yalnızca bitmiş işler için ücretlendirilirsiniz.
 
 * Aşamalı indirme ile teslim etmek için Azure Media Services kullanarak bir dijital medya dosyasını (Mezzanine), [H.](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) ve codec bileşeniyle kodlanmış video ve [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) codec ile kodlanan ses içeren bir [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) dosyasına dönüştürebilirsiniz. Bu MP4 dosyası Depolama hesabınızdaki bir varlığa yazılır. Dosyayı doğrudan indirmek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanabilirsiniz. Depolama alanında belirli bir kapsayıcı adıyla çıkış varlığı oluşturduysanız, bu konumu kullanın. Aksi takdirde, [varlık kapsayıcısı URL 'lerini listelemek](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)için Media Services kullanabilirsiniz. 
 * İçeriği Uyarlamalı bit hızı akışı ile teslim etmek üzere hazırlamak için, Mezzanine dosyasının birden çok bitücret (yüksek-düşük) ile kodlanmış olması gerekir. Kaliteyi düzgün şekilde geçişini sağlamak için, bit hızı düşürüldü, videonun çözümlenmesi düşürüldü. Bu, bir çözüm (bkz. [otomatik olarak üretilen Uyarlamalı bit hızı el](autogen-bitrate-ladder.md)ile) adlı bir kodlama. Media Services kullanarak, Mezzanine dosyalarını birden çok bit hızında kodlamak için kullanabilirsiniz. Bunu yaparken, Depolama hesabınızdaki bir varlığa yazılan MP4 dosyaları ve ilişkili akış yapılandırma dosyaları kümesi alacaksınız. Daha sonra, videoyu [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) ve [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)gibi akış protokolleriyle teslim etmek Için Media Services ' de [dinamik paketleme](dynamic-packaging-overview.md) özelliğini kullanabilirsiniz. Bu, bir [akış Bulucu](streaming-locators-concept.md) oluşturmanız ve desteklenen protokollere karşılık gelen akış URL 'leri oluşturmanızı gerektirir. Bu, daha sonra özelliklerine göre cihazlara/uygulamalara devredilebilir.
@@ -41,7 +44,7 @@ Media Services v3 ile kodlamak için bir [dönüşüm](https://docs.microsoft.co
 
 Media Services ile kodlarken Kodlayıcı giriş medya dosyalarını nasıl işlenmesi gerektiğini söylemek için hazır kullanın. Örneğin, kodlanmış içeriği görüntü çözünürlüğünü ve/veya istediğiniz ses kanal sayısını belirtebilirsiniz.
 
-Sektördeki en iyi uygulamalarına göre önerilen yerleşik hazır biri ile hızlıca başlayabilirsiniz veya senaryonuz ya da cihaz belirli gereksinimlerinizi hedeflemek için önceden belirlenmiş bir özel bir yapı seçebilirsiniz. Daha fazla bilgi için [kodla özel dönüştürme](customize-encoder-presets-how-to.md).
+Sektördeki en iyi uygulamalarına göre önerilen yerleşik hazır biri ile hızlıca başlayabilirsiniz veya senaryonuz ya da cihaz belirli gereksinimlerinizi hedeflemek için önceden belirlenmiş bir özel bir yapı seçebilirsiniz. Daha fazla bilgi için bkz. [özel dönüşümle kodlama](customize-encoder-presets-how-to.md).
 
 2019 Ocak 'tan başlayarak, MP4 dosyaları üretmek için Media Encoder Standard ile kodlarken, yeni bir. MPI dosyası oluşturulur ve çıkış varlığına eklenir. Bu MPı dosyası, [dinamik paketleme](dynamic-packaging-overview.md) ve akış senaryoları için performansı iyileştirmeye yöneliktir.
 
@@ -135,6 +138,12 @@ Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş
 ## <a name="scaling-encoding-in-v3"></a>V3 sürümünde kodlama ölçeklendirme
 
 Medya işlemeyi ölçeklendirmek için bkz. [CLI Ile ölçekleme](media-reserved-units-cli-how-to.md).
+
+## <a name="billing"></a>Faturalama
+
+Media Services, iptal edilen veya hatalı işler için faturalandırılmıyor. Örneğin, %50 ilerleme durumuna ulaşan ve iptal edilen bir iş, iş dakikası %50 ' de faturalandırılmaz. Yalnızca bitmiş işler için ücretlendirilirsiniz.
+
+Daha fazla bilgi için bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 

@@ -1,22 +1,14 @@
 ---
 title: Bilgi Bankası - soru-cevap Oluşturucu test etme
-titleSuffix: Azure Cognitive Services
 description: Soru-cevap Oluşturucu bankanızı test etme, verilen yanıtları doğruluğunu artırmak için bir süreçtir önemli bir parçasıdır. Bilgi Bankası düzenlemeler yapmak da sağlayan gelişmiş sohbet arabiriminden test edebilirsiniz.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091764"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927268"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Bilgi tabanınızı Soru-Cevap Oluşturma test edin
 
@@ -49,26 +41,26 @@ Inceleme panelinde test sonucunun ayrıntılarını inceleyebilirsiniz.
 
 ### <a name="correct-the-top-scoring-answer"></a>Yanıt Puanlama üst düzeltin
 
-Yanıt Puanlama üst yanlışsa, doğru yanıtı listesi ve select seçin **kaydedin ve eğitme**.
+En üst Puanlama yanıtı yanlışsa, listeden doğru yanıtı seçin ve **Kaydet ve eğit**' i seçin.
 
 ![Yanıt Puanlama üst düzeltin](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Diğer sorular ekleyin
 
-Belirli bir yanıt soru diğer formlara ekleyebilirsiniz. Diğer tıklayın ve metin kutusu içinde yanıt türü bunları eklemek için enter. Seçin **kaydedin ve eğitme** güncelleştirmeleri depolamak için.
+Belirli bir yanıt soru diğer formlara ekleyebilirsiniz. Diğer tıklayın ve metin kutusu içinde yanıt türü bunları eklemek için enter. Güncelleştirmeleri depolamak için **Kaydet ve eğitme '** yi seçin.
 
 ![Diğer sorular ekleyin](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Yeni bir yanıt Ekle
 
-Yanıt Bilgi Bankası (KB iyi eşleşme bulundu) mevcut değil veya eşleştirilmiş olan mevcut yanıtlar yanlış olan, yeni bir yanıt ekleyebilirsiniz. 
+Yanıt Bilgi Bankası (KB iyi eşleşme bulundu) mevcut değil veya eşleştirilmiş olan mevcut yanıtlar yanlış olan, yeni bir yanıt ekleyebilirsiniz.
 
-Yanıtlar listesinin en altında, yeni bir yanıt girmek için metin kutusunu kullanın ve eklemek için ENTER tuşuna basın. 
+Yanıtlar listesinin en altında, yeni bir yanıt girmek için metin kutusunu kullanın ve eklemek için ENTER tuşuna basın.
 
-Seçin **kaydedin ve eğitme** bu yanıt kalıcı hale getirmek için. Yeni bir soru-cevap çifti şimdi Bilgi Bankası'na eklendi. 
+Bu yanıtı kalıcı hale getirmek için **Kaydet ve eğitme** seçeneğini belirleyin. Yeni bir soru-cevap çifti şimdi Bilgi Bankası'na eklendi.
 
 > [!NOTE]
-> Tuşuna bastığınızda tüm düzenlemeleri bilgi bankanızı yalnızca kaydedileceği **kaydedin ve eğitme** düğmesi.
+> Bilgi bankasındaki tüm düzenlemeler yalnızca **Kaydet ve eğitme** düğmesine bastığınızda kaydedilir.
 
 ### <a name="test-the-published-knowledge-base"></a>Yayınlanan Bilgi Bankası 'nı test etme
 
@@ -83,12 +75,14 @@ Bilgi Bankası 'nın yayımlanmış sürümünü test bölmesinde test edebilirs
 * bir soru kümesinin en iyi yanıtını ve Puanını belirleme
 * soru kümesi için beklenen yanıtı doğrulama
 
-Toplu işlem testi, Batch test aracı ile sağlanır. Bu araç, karşıdan yüklenmek üzere veya [ C# kaynak kodu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)olarak [Sıkıştırılmış bir yürütülebilir dosya](https://aka.ms/qnamakerbatchtestingtool) olarak kullanılabilir. 
+Adım adım yönergeler için Batch test [öğreticisini](../Quickstarts/batch-testing.md) okuyun.
+
+Toplu işlem testi, Batch test aracı ile sağlanır. Bu araç, karşıdan yüklenmek üzere veya [ C# kaynak kodu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)olarak [Sıkıştırılmış bir yürütülebilir dosya](https://aka.ms/qnamakerbatchtestingtool) olarak kullanılabilir.
 
 [Araçla Ilgili başvuru belgeleri](../reference-tsv-format-batch-testing.md) şunları içerir:
 
 * aracın komut satırı örneği
-* TSV giriş ve çıkışdosyası dosyaları için biçim 
+* TSV giriş ve çıkışdosyası dosyaları için biçim
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

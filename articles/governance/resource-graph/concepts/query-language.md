@@ -1,14 +1,14 @@
 ---
 title: Sorgu dilini anlayın
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851222"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927491"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -28,8 +28,12 @@ Kaynak Grafiği Kaynak Yöneticisi kaynak türlerini ve bunların özelliklerini
 |---|---|
 |Kaynaklar |Sorguda tanımlanmazsa varsayılan tablo. Çoğu Kaynak Yöneticisi kaynak türü ve özelliği burada bulunur. |
 |ResourceContainers |Abonelik (Önizleme--`Microsoft.Resources/subscriptions`) ve kaynak grubu (`Microsoft.Resources/subscriptions/resourcegroups`) kaynak türleri ve verileri içerir. |
+|Danışmanlaştırın kaynakları |`Microsoft.Advisor`_ilgili_ kaynakları içerir. |
 |AlertsManagementResources |`Microsoft.AlertsManagement`_ilgili_ kaynakları içerir. |
+|MaintenanceResources |`Microsoft.Maintenance`_ilgili_ kaynakları içerir. |
 |SecurityResources |`Microsoft.Security`_ilgili_ kaynakları içerir. |
+
+Kaynak türleri dahil olmak üzere kapsamlı bir liste için bkz. [Başvuru: desteklenen tablolar ve kaynak türleri](../reference/supported-tables-resources.md).
 
 > [!NOTE]
 > _Kaynaklar_ varsayılan tablodur. _Kaynak_ tablosu sorgulanırken, `join` veya `union` kullanılmadığı sürece tablo adının sağlanması gerekmez. Ancak önerilen uygulama, her zaman sorguya ilk tabloyu dahil etmek için kullanılır.
@@ -79,9 +83,9 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[Proje-dışarıda](/azure/kusto/query/projectawayoperator) |[Sütunları sonuçlardan kaldır](../samples/advanced.md#remove-column) | |
 |[düzenine](/azure/kusto/query/sortoperator) |[Ada göre sıralanmış kaynakları listeleme](../samples/starter.md#list-resources) |`order` eş anlamlı |
 |[ölçütü](/azure/kusto/query/summarizeoperator) |[Azure kaynaklarını sayma](../samples/starter.md#count-resources) |Yalnızca Basitleştirilmiş ilk sayfa |
-|[take](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |`limit` eş anlamlı |
+|[almanız](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |`limit` eş anlamlı |
 |[Sayfanın Üstü](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türüne göre ilk beş sanal makineyi gösterme](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _tablo_. Tek bir sorgudaki 3 `union` Let limiti. `union` bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
+|[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _tablo_. Tek bir sorgudaki 3 `union` Let limiti. `union` bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
 |[olmadığı](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Kaçış karakterleri

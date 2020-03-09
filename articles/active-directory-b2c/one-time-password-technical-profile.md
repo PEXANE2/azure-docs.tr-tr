@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184035"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933075"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -69,7 +69,7 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 ### <a name="metadata"></a>Meta Veriler
 
-Kod oluşturmayı ve bakımını yapılandırmak için aşağıdaki ayarlar kullanılabilir:
+Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ Kod oluşturmayı ve bakımını yapılandırmak için aşağıdaki ayarlar kull
 | Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
 | CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
 | NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değerler: `GenerateCode`veya `VerifyCode`. |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode`. |
 | ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="returning-error-message"></a>Hata iletisi döndürülüyor
@@ -90,22 +90,22 @@ Aşağıdaki örnek `TechnicalProfile` bir kod oluşturmak için kullanılır:
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkı
 
 ### <a name="metadata"></a>Meta Veriler
 
-Aşağıdaki ayarlar, kod doğrulama hatası üzerine görüntülenecek hata iletisini yapılandırmak için kullanılabilir:
+Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode`. |
+
+
+### <a name="error-messages"></a>Hata iletileri
+
+Aşağıdaki ayarlar, kod doğrulama hatası üzerine görüntülenecek hata iletilerini yapılandırmak için kullanılabilir. Meta veriler, [kendi kendine onaylanan](self-asserted-technical-profile.md) teknik profilde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilecek](localization-string-ids.md#one-time-password-error-messages).
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
 | UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
 | Usermessageifınvalidcode | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
-
-### <a name="returning-error-message"></a>Hata iletisi döndürülüyor
-
-[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayara önek olarak bu iletileri daha da yerelleştirebilirsiniz, örneğin:
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|Hayır| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
 
 ### <a name="example"></a>Örnek
 
@@ -154,24 +156,21 @@ Aşağıdaki örnek `TechnicalProfile` bir kodu doğrulamak için kullanılır:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel e-posta doğrulamayla bir kerelik parola technial profili kullanma örneği için aşağıdaki makaleye bakın:
+Özel e-posta doğrulama ile bir kerelik parola teknik profili kullanma örneği için aşağıdaki makaleye bakın:
 
 - [Azure Active Directory B2C özel e-posta doğrulaması](custom-email.md)
 

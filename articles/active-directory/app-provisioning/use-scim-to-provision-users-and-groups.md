@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208721"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926840"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -33,7 +33,7 @@ SCıM iki uç noktanın standartlaştırılmış bir tanımıdır: bir/Users uç
 
 SCıM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) ' de tanımlanan yönetim için standart Kullanıcı nesne şeması ve REST API 'leri, kimlik sağlayıcılarının ve uygulamaların birbirleriyle daha kolay tümleşmesine olanak tanır. Bir SCıM uç noktası oluşturan uygulama geliştiricileri, özel iş yapmak zorunda kalmadan herhangi bir SCıM uyumlu istemcisiyle tümleştirilebilir.
 
-Bir uygulamaya sağlamanın otomatikleştirilmesi, Azure AD SCıM ile uyumlu bir SCıM uç noktası oluşturulmasını ve tümleştirmesini gerektirir. Uygulamanıza Kullanıcı ve grup sağlamaya başlamak için aşağıdaki adımları gerçekleştirin. 
+Bir uygulamaya sağlamanın otomatikleştirilmesi, Azure AD SCıM istemcisiyle bir SCıM uç noktası oluşturulmasını ve tümleştirmesini gerektirir. Uygulamanıza Kullanıcı ve grup sağlamaya başlamak için aşağıdaki adımları gerçekleştirin. 
     
   * **[1. Adım: Kullanıcı ve grup şemanızı tasarlayın.](#step-1-design-your-user-and-group-schema)** Uygulamanız için gereken nesneleri ve öznitelikleri tanımlayabilir ve bunların Azure AD SCıM uygulaması tarafından desteklenen Kullanıcı ve grup şemasına nasıl eşlendiğini saptayın.
 
@@ -63,7 +63,7 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 |Iş posta|E-postalar [tür EQ "iş"]. değer|Mail|
 |Yöneticisi|Yöneticisi|Yöneticisi|
 |tag|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
-|durum|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
+|status|etkin|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
 
 Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken "ID," "externalId" ve "meta" özniteliklerini içerir.
 
@@ -560,7 +560,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 * Grup düzeltme eki isteğine güncelleştirme, yanıtta bir *HTTP 204 içeriği* getirmelidir. Tüm üyelerin listesini içeren bir gövde döndürülmesi önerilmez.
 * Grubun tüm üyelerini döndürmeyi desteklemek gerekli değildir.
 
-#### <a name="create-group"></a>{1&gt;Grup Oluştur&lt;1}
+#### <a name="create-group"></a>Grup Oluşturma
 
 ##### <a name="request-7"></a>İsteyen
 
@@ -752,7 +752,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3\. Adım: SCıM uç noktası oluşturma
 
-Şemanızı öğrendiğinize ve Azure AD SCıM uygulamasını anladığınıza göre, SCıM uç noktanızı geliştirmeye başlamanızı sağlayabilirsiniz. Sıfırdan başlamak ve uygulamayı tamamen kendi kendinize oluşturmak yerine, SCıM commuinty tarafından yayınlanan bir dizi açık kaynaklı SCıM kitaplıklarını kullanabilirsiniz.  
+Şemanızı tasarladıktan ve Azure AD SCıM uygulamasını anladığınıza göre, SCıM uç noktanızı geliştirmeye başlamanızı sağlayabilirsiniz. Sıfırdan başlamak ve uygulamayı tamamen kendi kendinize oluşturmak yerine, SCıM commuinty tarafından yayınlanan bir dizi açık kaynaklı SCıM kitaplıklarını kullanabilirsiniz.  
 Azure AD sağlama ekibi tarafından yayımlanan açık kaynaklı .NET Core [başvuru kodu](https://aka.ms/SCIMReferenceCode) , geliştirmeye başlayabilmenizi sağlayan bir kaynaktır. SCıM uç noktanızı oluşturduktan sonra test etmek isteyeceksiniz. Başvuru kodunun bir parçası olarak verilen [Postman testleri](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) koleksiyonunu kullanabilir veya [yukarıda](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)belirtilen örnek istekler/yanıtlar üzerinden çalıştırabilirsiniz.  
 
 Note: başvuru kodu, SCıM uç noktanızı oluşturmaya başlamanıza yardımcı olmaya yöneliktir ve "olduğu gıbı" sunulmaktadır. Topluluk katkılarına, kodu oluşturmaya ve tutmaya yardımcı olmak için hoş geldiniz. 

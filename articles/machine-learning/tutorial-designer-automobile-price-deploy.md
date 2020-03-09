@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 390655e3caab89425fe3c8623928c584f8bd3324
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933977"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933177"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci
 > * Gerçek zamanlı bitiş noktasını dağıtın.
 > * Gerçek zamanlı uç noktayı test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıralınacağını öğrenmek için [öğreticiden birinin bir kısmını](tutorial-designer-automobile-price-train-score.md) doldurun.
 
@@ -39,7 +39,7 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
 
 1. İşlem hattı tuvalinin üzerinde, **gerçek zamanlı çıkarım işlem hattı** > **çıkarım işlem hattı oluştur** ' u seçin.
 
-    ![Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     İşlem hatlarınız şu şekilde görünmelidir: 
 
@@ -56,7 +56,7 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
     > Varsayılan olarak, **Web hizmeti girişi** , tahmine dayalı işlem hattını oluşturmak için kullanılan eğitim verileriyle aynı veri şemasını bekler. Bu senaryoda, şemaya bir değer dahildir. Ancak, fiyat tahmin sırasında bir faktör olarak kullanılmaz.
     >
 
-1. **Çalıştır**' ı seçin ve aynı işlem hedefini kullanın ve birinci bölümde kullandığınız deneyin.
+1. **Gönder**' i seçin ve aynı işlem hedefini kullanın ve birinci bölümde kullandığınız deneyin.
 
 1. **Dağıt**'ı seçin.
 
@@ -76,7 +76,7 @@ Görüntülenen iletişim kutusunda, modelinizi dağıtmak için mevcut herhangi
     
 1. **Bölge**için kullanılabilen bir yakın bölge seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     > [!NOTE]
     > Yeni bir AKS hizmeti oluşturmak yaklaşık 15 dakika sürer. **Çıkarım kümeleri** sayfasında sağlama durumunu kontrol edebilirsiniz.

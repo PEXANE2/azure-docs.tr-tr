@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389797"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932805"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -56,7 +56,7 @@ Bir küme, farklı depolama hesaplarının birleşimine erişebilir. Tipik örne
 * Veri oluşturmak istediğinizde, küme için kullanılabilir bir blob kapsayıcısına zaten yüklediniz.
 * Güvenliğin nedenlerle depolamanın farklı parçalarını yalıtmak veya yönetimi basitleştirmek istediğinizde.
 
-48 düğümlü bir küme için 4-8 depolama hesabı önerilir. Toplam depolama alanı zaten yeterli olabilir, ancak her depolama hesabı işlem düğümleri için ek ağ bant genişliği sağlar. Birden çok depolama hesabınız olduğunda, ön ek olmadan her depolama hesabı için rastgele bir ad kullanın. Rastgele adlandırma amacı, tüm hesaplarda depolama performans sorunlarını (azaltma) veya genel modlu hataların olasılığını azaltmaktadır. Daha iyi performans için, depolama hesabı başına yalnızca bir kapsayıcı kullanın.
+Daha iyi performans için, depolama hesabı başına yalnızca bir kapsayıcı kullanın.
 
 ## <a name="choose-a-cluster-type"></a>Bir küme türü seçin
 

@@ -1,77 +1,77 @@
 ---
-title: Azure geçişi 'nde sık sorulan sorular-bulma, değerlendirme ve bağımlılık Analizi
+title: Bulma, değerlendirme ve bağımlılık analizi hakkında SSS
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7edc73742b61e4e5e94431c50d14d263bbbea641
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7733213f78452b3f35b835eec847ec837138b8e5
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362253"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932735"
 ---
-# <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan sorular
+# <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
 
-Bu makalede, Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizleri hakkında sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa, şu makaleleri gözden geçirin:
+Bu makalede, Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizleri hakkında sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa şu kaynakları kontrol edin:
 
-- Azure geçişi hakkında [genel sorular](resources-faq.md) .
-- Azure geçişi gereci hakkında [sorular](common-questions-appliance.md) .
-- Sunucu geçişi hakkında [sorular](common-questions-server-migration.md) .
-- [Azure geçişi forumuna](https://aka.ms/AzureMigrateForum) soru gönderin
-
-
+- Azure geçişi hakkında [genel sorular](resources-faq.md)
+- [Azure geçişi](common-questions-appliance.md) gereci hakkında sorular
+- [Sunucu geçişi](common-questions-server-migration.md) hakkında sorular
+- [Azure geçişi forumundaki](https://aka.ms/AzureMigrateForum) soruların yanıtlarını alın
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Bir gereç ile kaç tane VM keşfedebilirim?
 
-En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç ile en fazla 250 fiziksel sunucu bulabilirsiniz. Daha fazla makineniz varsa, [Hyper-V](scale-hyper-v-assessment.md), [VMware](scale-vmware-assessment.md)ve [fiziksel sunucu](scale-physical-assessment.md) değerlendirmesini ölçeklendirmeyle ilgili makaleleri gözden geçirin.
+En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanarak en fazla 250 fiziksel sunucu bulabilirsiniz. Daha fazla makineniz varsa, [Hyper-V değerlendirmesi ölçekleme](scale-hyper-v-assessment.md), [bir VMware değerlendirmesi ölçekleme](scale-vmware-assessment.md)veya [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
 
+## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM 'imin boyutu değişti. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
 
-
-## <a name="vm-size-changed-can-i-run-an-assessment-again"></a>VM boyutu değişti. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
-
-Azure geçişi gereci şirket içi makinelerle ilgili bilgileri sürekli olarak toplar ve bir değerlendirme, bir zaman noktası anlık görüntüsüdür. Değerlendirmek istediğiniz bir VM 'deki ayarları değiştirirseniz, en son değişikliklerle değerlendirmesi güncelleştirmek için yeniden hesapla seçeneğini kullanın.
+Azure geçişi gereci, şirket içi ortam hakkındaki bilgileri sürekli olarak toplar.  Değerlendirme, şirket içi VM 'lerin bir zaman noktası anlık görüntüsüdür. Değerlendirmek istediğiniz bir VM 'deki ayarları değiştirirseniz, en son değişikliklerle değerlendirmesi güncelleştirmek için yeniden hesapla seçeneğini kullanın.
 
 ## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Çok kiracılı bir ortamda VM 'Leri Nasıl yaparım?.
 
-- **VMware**: bir ortam kiracılar arasında paylaşılmışsa ve bir kiracının başka bir kiracının aboneliğindeki VM 'leri keşfetmeniz gerekmiyorsa, yalnızca keşfetmeyi Istediğiniz VM 'lere erişebilen vCenter Server kimlik bilgileri oluşturun. Daha sonra, Azure geçiş gereci 'nda bulmaya başladığınızda bu kimlik bilgilerini kullanın.
+- **VMware**: bir ortam kiracılar arasında paylaşılmışsa ve bir kiracının başka bir kiracının aboneliğindeki VM 'leri keşfetmeniz gerekmiyorsa, yalnızca keşfetmeyi Istediğiniz VM 'lere erişebilen VMware vCenter Server kimlik bilgileri oluşturun. Daha sonra, Azure geçiş gereci 'nda bulmaya başladığınızda bu kimlik bilgilerini kullanın.
 - **Hyper-v**: bulma Işlemi, Hyper-v ana bilgisayar kimlik bilgilerini kullanır. VM 'Ler aynı Hyper-V konağını paylaşıyorsa, şu anda bulmayı ayırmanın bir yolu yoktur.  
-
 
 ## <a name="do-i-need-vcenter-server"></a>VCenter Server ihtiyacım var mı?
 
-Evet, Azure geçişi 'nin bir VMware ortamında bulmayı gerçekleştirmesi vCenter Server gerekir. VCenter Server tarafından yönetilmeyen ESXi konaklarının bulunmasını desteklemez.
+Evet, Azure geçişi, bulma işlemini gerçekleştirmek için bir VMware ortamında vCenter Server gerektirir. Azure geçişi, vCenter Server tarafından yönetilmeyen ESXi konaklarının bulunmasını desteklemez.
 
+## <a name="what-are-the-sizing-options"></a>Boyutlandırma seçenekleri nelerdir?
 
-## <a name="whats-are-the-sizing-options"></a>Boyutlandırma seçenekleri nelerdir?
+Şirket içi olarak boyutlandırılması sayesinde Azure geçişi, değerlendirme için VM performans verilerini kabul etmez. Azure değerlendirir VM boyutlarını şirket içi yapılandırmaya göre geçirin. Performans tabanlı boyutlandırma ile boyutlandırma, kullanım verilerini temel alır.
 
-Şirket içi olarak boyutlandırılması sayesinde Azure geçişi, değerlendirme için VM performans verilerini kabul etmez. Şirket içi yapılandırmaya bağlı olarak VM boyutlarını değerlendirir. Performans tabanlı boyutlandırma ile boyutlandırma, kullanım verilerini temel alır.
+Örneğin, bir şirket içi VM 'nin %50 CPU kullanımı ve %50 bellek kullanımı için dört çekirdeğe ve 8 GB belleğe sahip olması durumunda:
+- Şirket içi boyutlandırma, dört çekirdeğe ve 8 GB belleğe sahip bir Azure VM SKU 'SU önerir.
+- Performans tabanlı boyutlandırma, kullanım yüzdesi kabul edildiği için iki çekirdeğe ve 4 GB belleğe sahip bir VM SKU 'SU önermenizi sağlayacak.
 
-- Örneğin, bir şirket içi VM 'nin %50 CPU kullanımı ve %50 bellek kullanımı için 4 çekirdeğe ve 8 GB belleğe sahip olması durumunda:
-    - Şirket içi boyutlandırma, dört çekirdeğe ve 8 GB belleğe sahip bir Azure VM SKU 'SU önerir.
-    - Kullanım yüzdesi göz önünde bulundurulduğundan, performans tabanlı boyutlandırmanın iki çekirdeği ve 4 GB belleğe sahip bir VM SKU 'SU önerilir.
+Benzer şekilde, disk boyutlandırma, boyutlandırma ölçütlerine ve depolama türüne bağlıdır:
+- Boyutlandırma ölçütü performans tabanlıdır ve depolama türü otomatik ise, Azure geçişi, hedef disk türünü (Standart veya Premium) belirlediğinde, diskin ıOPS ve aktarım hızı değerlerini hesaba göre alır.
+- Boyutlandırma ölçütü performans tabanlıdır ve depolama türü Premium ise, Azure geçişi, şirket içi diskin boyutuna bağlı olarak bir Premium disk SKU 'SU önerir. Aynı mantık, boyutlandırma şirket içinde olduğunda ve depolama türü standart veya Premium olduğunda disk boyutlandırılmasına uygulanır.
 
-- Benzer şekilde, disk boyutlandırma, boyutlandırma ölçütlerine ve depolama türüne bağlıdır.
-    - Boyutlandırma ölçütü performans tabanlıdır ve depolama türü otomatik ise, Azure geçişi, hedef disk türünü (Standart veya Premium) belirlediğinde, diskin ıOPS ve aktarım hızı değerlerini hesaba göre alır.
-    - Boyutlandırma ölçütü performans tabanlıdır ve depolama türü Premium ise, Azure geçişi, şirket içi diskin boyutuna bağlı olarak bir Premium disk SKU 'SU önerir. Aynı mantık disk boyutlandırılmasına, boyutlandırma şirket içi olarak olduğunda ve depolama türü standart veya Premium olduğunda uygulanır.
+## <a name="does-performance-history-and-utilization-affect-sizing"></a>Performans geçmişi ve kullanımı boyutlandırmayı etkiler mi?
 
-## <a name="does-performance-historyutilization-impact-sizing"></a>Performans geçmişi/kullanım etkisi boyutlandırması mi?
+Evet, performans geçmişi ve kullanımı Azure geçişi 'nde boyutlandırmayı etkiler.
 
-Bu özellikler yalnızca performans tabanlı boyutlandırma için geçerlidir.
+### <a name="performance-history"></a>Performans geçmişi
 
-- Azure geçişi, şirket içi makinelerin performans geçmişini toplar ve Azure 'da VM boyutunu ve disk türünü önermek için kullanır.
-- Gereç, her 20 saniyede bir gerçek zamanlı kullanım verileri toplamak için şirket içi ortamı sürekli olarak profillerdir.
-- Gereç, 20 saniyelik örnekleri kaydeder ve 15 dakikada bir tek bir veri noktası oluşturur.
-- Veri noktasını oluşturmak için gereç tüm 20 saniyelik örneklerden tepe değeri seçer.
-- Gereç bu veri noktasını Azure 'a gönderir.
+Yalnızca performans tabanlı boyutlandırma için Azure geçişi, şirket içi makinelerin performans geçmişini toplar ve ardından Azure 'da VM boyutunu ve disk türünü önermek için kullanır:
 
-Azure 'da performans süresi ve performans geçmişi yüzdelik değeri temelinde bir değerlendirme oluşturduğunuzda, Azure geçişi etkin kullanım değerini hesaplar ve boyutlandırmak için kullanır.
+1. Gereç, her 20 saniyede bir gerçek zamanlı kullanım verilerini toplamak için şirket içi ortamı sürekli olarak profillerdir.
+1. Gereç, toplanan 20 saniyelik örnekleri kaydeder ve bunları 15 dakikada bir tek bir veri noktası oluşturmak için kullanır.
+1. Veri noktasını oluşturmak için gereç tüm 20 saniyelik örneklerden tepe değeri seçer.
+1. Gereç, veri noktasını Azure 'a gönderir.
 
-- Örneğin, performans süresini bir güne ve yüzdebirlik değerini 95 yüzdebirlik olarak ayarlarsanız Azure geçişi, son gün için toplayıcı tarafından gönderilen 15 dakikalık örnek noktalarını artan düzende sıralar ve 95. yüzdebirlik değerini etkin olarak seçer kullanımı.
-- 95. yüzdebirlik değerinin kullanılması, aykırı değerlerin yoksayılmasını sağlar. 99. yüzdebirlik 'i kullanırsanız, dış değerler dahil edilebilir. Herhangi bir aykırı değer olmadan dönem için en yoğun kullanımı seçmek istiyorsanız, 99. yüzdebirlik ' u seçin.
+### <a name="utilization"></a>Kullanımı
+
+Azure 'da bir değerlendirme oluşturduğunuzda, performans süresine ve ayarlanan performans geçmişi yüzdebirlik değerine bağlı olarak, Azure geçişi etkin kullanım değerini hesaplar ve ardından boyutlandırmak için kullanır.
+
+Örneğin, performans süresini bir güne ve yüzdebirlik değerini 95. yüzdebirlik olarak ayarlarsanız, Azure geçişi, son gün için toplayıcı tarafından gönderilen 15 dakikalık örnek noktalarını artan düzende sıralar. Etkin kullanım olarak 95. yüzdebirlik değerini seçer.
+
+95. yüzdebirlik değerinin kullanılması, aykırı değerlerin yoksayılmasını sağlar. Azure geçirilmesi 99. yüzdebirlik ' i kullanıyorsa, dış değerler dahil edilebilir. Tüm aykırı değerleri içermeyen dönemin en yoğun kullanımını seçmek için Azure geçişi ' ni 99. yüzdebirlik 'i kullanacak şekilde ayarlayın.
 
 ## <a name="what-is-dependency-visualization"></a>Bağımlılık görselleştirmesi nedir?
 
-Daha fazla güvenle geçiş için VM gruplarını değerlendirmek üzere bağımlılık görselleştirmesini kullanın. Bağımlılık görselleştirmesi, değerlendirme çalıştırmadan önce makine bağımlılıklarını çapraz denetler. Bu, herhangi bir şeyin gerisinde olmamasını sağlamaya yardımcı olur ve bu nedenle Azure 'a geçiş yaparken beklenmedik kesintilerden kaçınmaya yardımcı olur. Azure geçişi, bağımlılık görselleştirmesini etkinleştirmek için Azure Izleyici 'de Hizmet Eşlemesi çözümünü kullanır. [daha fazla bilgi edinin](concepts-dependency-visualization.md).
+Bağımlılık görselleştirmesi, daha fazla güvenle geçirilecek VM gruplarını değerlendirmenize yardımcı olabilir. Bağımlılık görselleştirmesi, değerlendirme çalıştırmadan önce makine bağımlılıklarını çapraz denetler. Bu, herhangi bir şeyin gerisinde kalmasını sağlamaya yardımcı olur ve Azure 'a geçiş yaparken beklenmedik kesintilerden kaçınmaya yardımcı olur. Azure geçişi, bağımlılık görselleştirmesini etkinleştirmek için Azure Izleyici 'de Hizmet Eşlemesi çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
@@ -91,22 +91,19 @@ Veriler | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef maki
 Görselleştirme | Tek bir sunucunun bağımlılık eşlemesi, bir saat ile 30 güne kadar bir süre içinde görüntülenebilir. | Tek bir sunucunun bağımlılık eşlemesi.<br/><br/> Eşleme, yalnızca bir saat boyunca görüntülenebilir.<br/><br/> Bir sunucu grubunun bağımlılık eşlemesi.<br/><br/> Harita görünümünden bir gruptaki sunucuları ekleyin ve kaldırın.
 Veri dışarı aktarma | Şu anda tablolu biçimde indirilemez. | Veriler, Log Analytics ile sorgulanabilir.
 
-
-
-
 ## <a name="do-i-pay-for-dependency-visualization"></a>Bağımlılık görselleştirmesi için ücret ödemem gerekiyor mu?
-Hayır. Azure Geçişi fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/azure-migrate/).
+
+Hayır. [Azure geçişi fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-migrate/)hakkında daha fazla bilgi edinin.
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Aracı tabanlı bağımlılık görselleştirmesi için ne yükleyebilirim?
 
-Aracı tabanlı bağımlılık görselleştirmesini kullanmak için, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklemeniz gerekir.
+Aracı tabanlı bağımlılık görselleştirmesini kullanmak için, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yükleyin:
 
-Her makineye aşağıdaki aracıları yükler:
-- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).
-- [Bağımlılık Aracısı](../azure-monitor/platform/agents-overview.md#dependency-agent).
-- İnternet bağlantısı olmayan makineleriniz varsa Log Analytics ağ geçidini indirip yüklemeniz gerekir.
+- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Bağımlılık Aracısı](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- İnternet bağlantısı olmayan makineleriniz varsa Log Analytics ağ geçidini indirip yükleyin.
 
-Aracı tabanlı bağımlılık görselleştirmesi kullanmadığınız takdirde bu aracılara ihtiyacınız yoktur.
+Bu aracılara yalnızca aracı tabanlı bağımlılık görselleştirmesi kullanıyorsanız ihtiyacınız vardır.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Mevcut bir çalışma alanını kullanabilir miyim?
 
@@ -117,29 +114,28 @@ Evet, aracı tabanlı bağımlılık görselleştirmesi için, var olan bir çal
 Hayır, aracı tabanlı görselleştirmede bağımlılık görselleştirme raporu verilemez. Bununla birlikte, Azure geçişi Hizmet Eşlemesi kullanır ve bağımlılıkları JSON biçiminde almak için [Hizmet Eşlemesi REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) de kullanabilirsiniz.
 
 ## <a name="can-i-automate-agent-installation"></a>Aracı yüklemesini otomatikleştirebilirim miyim?
-Aracı tabanlı bağımlılık görselleştirmesi için aşağıdaki gibi otomatikleştirin:
 
-- [Bağımlılık aracısını yüklemek için bu betiği](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın.
-- MMA için, komut satırını veya Otomasyonu kullanmak için bu [yönergeleri](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) izleyin veya [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
-- Betiklerin yanı sıra, aracıları dağıtmak için Microsoft uç nokta Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını da kullanabilirsiniz.
+Aracı tabanlı bağımlılık görselleştirmesi için:
 
+- [Bağımlılık aracısını yüklemek için bir komut dosyası](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın.
+- MMA için [komut satırını veya Otomasyonu kullanın](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)veya bir [komut dosyası](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
+- Betiklerin yanı sıra, aracıları dağıtmak için Microsoft uç nokta Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını kullanabilirsiniz.
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA hangi işletim sistemlerini destekler?
 
-- [MMA tarafından desteklenen Windows işletim sistemlerinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)listesini görüntüleyin.
-- [MMA tarafından desteklenen Linux işletim sistemlerinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)listesini görüntüleyin.
+- [MMA 'nın desteklediği Windows işletim sistemlerinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)listesini görüntüleyin.
+- [MMA 'nın desteklediği Linux işletim sistemlerinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)listesini görüntüleyin.
 
-## <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>Bir saatten uzun bir süre boyunca bağımlılıkları görselleştirebilir miyim?
-Aracı tabanlı görselleştirme için, bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmiş olarak belirli bir tarihe kadar geri dönerek, bir ay olarak geri dönebilirsiniz, ancak görselleştirme için en uzun süre bir saat olabilir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencerenin bağımlılıklarını görüntüleyebilirsiniz. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.
+## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Bağımlılıkları birden fazla saat için görselleştirebilir miyim?
 
-Aracısız görselleştirme için, tek bir sunucunun bağımlılık haritasını bir saat ile 30 gün arasında bir süre içinde görüntüleyebilirsiniz.
+Aracı tabanlı görselleştirme için, bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmişte belirli bir tarihe kadar bir ay kadar geri dönebilirsiniz, ancak görselleştirme için en uzun süre bir saat olabilir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencerenin bağımlılıklarını görüntüleyebilirsiniz. Ancak, daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) Için Azure izleyici günlüklerini kullanabilirsiniz.
 
+Aracısız görselleştirme için, tek bir sunucunun bağımlılık haritasını bir saat ile 30 gün arasında bir süre izleyebilirsiniz.
 
-## <a name="can-visualize-dependencies-for-groups-of-more-than-10-vms"></a>10 ' dan fazla VM grubu için bağımlılıklar görselleştirebilir mi?
-10 adede kadar VM içeren gruplar için [bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . 10 ' dan fazla VM 'ye sahip bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmenizi öneririz.
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>10 ' dan fazla VM 'nin bağımlılıklarını görselleştirebilir miyim?
 
-
-
+10 adede kadar VM 'ye sahip olan gruplar için [bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . 10 ' dan fazla VM 'ye sahip bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [Azure geçişi 'ne genel bakış](migrate-services-overview.md)konusunu okuyun.

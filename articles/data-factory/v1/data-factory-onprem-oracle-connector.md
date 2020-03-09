@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387625"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Oracle 'a veya şirket içi verileri kopyalama
 
@@ -76,13 +76,13 @@ Bu Oracle Bağlayıcısı iki sürücü sürümünü destekler:
 
 Kopyalama işlem hattını yazmak için kopyalama Sihirbazı 'nı kullanırsanız, sürücü türü tekrar belirlenir. Ağ geçidiniz sürüm 2,7 ' den daha eski veya havuz olarak Oracle ' ı seçmediğiniz sürece Microsoft sürücüsü varsayılan olarak kullanılır.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 Kopyalama etkinliğine sahip bir işlem hattı oluşturabilirsiniz. İşlem hattı, farklı araçları veya API 'Leri kullanarak verileri şirket içi Oracle veritabanına veya sunucudan taşıdıkça.
 
 İşlem hattı oluşturmanın en kolay yolu kopyalama Sihirbazı ' nı kullanmaktır. Veri Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik hızlı bir anlatım için [Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturma öğreticisine](data-factory-copy-data-wizard-tutorial.md) bakın.
 
-Bir işlem hattı oluşturmak için aşağıdaki araçlardan birini de kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**veya **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği içeren işlem hattı oluşturma konusunda adım adım yönergeler için.
+Bir işlem hattı oluşturmak için aşağıdaki araçlardan birini de kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**veya **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturma hakkında adım adım yönergeler için [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) bakın.
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları izleyin:
 
@@ -99,7 +99,7 @@ Aşağıdaki bölümler, Data Factory varlıkları tanımlamak için kullandığ
 
 Aşağıdaki tabloda, Oracle bağlantılı hizmetine özgü JSON öğeleri açıklanmaktadır:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |**Type** özelliği **OnPremisesOracle**olarak ayarlanmalıdır. |Yes |
 | driverType | Bir Oracle veritabanından veri kopyalamak için kullanılacak sürücüyü belirtin. İzin verilen değerler **Microsoft** ve **ODP** (varsayılan). Sürücü ayrıntıları için [desteklenen sürüm ve yükleme](#supported-versions-and-installation) bölümüne bakın. | Hayır |
@@ -150,7 +150,7 @@ Yapı, kullanılabilirlik ve ilke gibi bir veri kümesi JSON dosyasının bölü
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Oracletable** türündeki veri kümesinin **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tableName |Oracle veritabanındaki, bağlı hizmetin başvurduğu tablonun adı. |Hayır ( **oracleReaderQuery** veya **oraclesource** belirtilmişse) |
 
@@ -169,7 +169,7 @@ Etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etki
 
 Kopyalama etkinliğinde, kaynak **Oraclesource** türü olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Verileri okumak için özel sorguyu kullanın. |Bir SQL sorgu dizesi. Örneğin, " **MyTable**içinden \* seçin". <br/><br/>Belirtilmemişse, bu SQL açıklaması yürütülür: " **MyTable**\* seçin" |Hayır<br />( **veri kümesi** **TableName** belirtilmişse) |
 
@@ -177,7 +177,7 @@ Kopyalama etkinliğinde, kaynak **Oraclesource** türü olduğunda, **typeproper
 
 **Oraclesink** aşağıdaki özellikleri destekler:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |**TimeSpan**<br/><br/> Örnek: 00:30:00 (30 dakika) |Hayır |
 | writeBatchSize |Arabellek boyutu **Writebatchsize**değerine ULAŞTıĞıNDA verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 100) |
@@ -563,7 +563,7 @@ Veriler her saat yeni bir bloba alınır (**Sıklık**: **saat**, **Aralık**: *
 * Oracle için .NET Framework Veri Sağlayıcısı yüklenmedi.
 * Oracle için .NET Framework Veri Sağlayıcısı .NET Framework 2,0 ' e yüklenmiştir ve .NET Framework 4,0 klasörlerinde bulunamadı.
 
-**Çözümleme**
+**Çözünürlük**
 
 * Oracle için .NET sağlayıcısını yüklemediyseniz, [uygulamayı yükleyip](https://www.oracle.com/technetwork/topics/dotnet/downloads/)senaryoyu yeniden deneyin.
 * Sağlayıcıyı yükledikten sonra bile hata iletisini görürseniz, aşağıdaki adımları izleyin:
@@ -578,7 +578,7 @@ Veriler her saat yeni bir bloba alınır (**Sıklık**: **saat**, **Aralık**: *
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Çözümleme**
+**Çözünürlük**
 
 Kopyalama etkinliğinizdeki sorgu dizesini, tarihlerin Oracle veritabanınızda nasıl yapılandırıldığına bağlı olarak ayarlamanız gerekebilir. İşte bir örnek ( **to_date** işlevi kullanılarak):
 
@@ -600,7 +600,7 @@ Verileri Oracle 'dan taşıdığınızda, aşağıdaki eşlemeler Oracle veri t�
 | BLOB |Byte[]<br/>(yalnızca Microsoft sürücüsü kullandığınızda Oracle 10G ve sonraki sürümlerinde desteklenir) |
 | CHAR |Dize |
 | CLOB |Dize |
-| DATE |Tarih Saat |
+| DATE |DateTime |
 | FLOAT |Decimal, String (olursa hassasiyet > 28) |
 | INTEGER |Decimal, String (olursa hassasiyet > 28) |
 | ARALıK YıL-AY |Int32 |
@@ -613,9 +613,9 @@ Verileri Oracle 'dan taşıdığınızda, aşağıdaki eşlemeler Oracle veri t�
 | NVARCHAR2 |Dize |
 | RAW |Byte[] |
 | ROWID |Dize |
-| TIMESTAMP |Tarih Saat |
-| TIMESTAMP WITH LOCAL TIME ZONE |Tarih Saat |
-| TIMESTAMP WITH TIME ZONE |Tarih Saat |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | UNSIGNED INTEGER |Sayı |
 | VARCHAR2 |Dize |
 | XML |Dize |

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
-ms.date: 11/22/2019
-ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/06/2020
+ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471950"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927433"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Işlevlerine makine öğrenme modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -148,10 +148,10 @@ print(blob.location)
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
-    az appservice plan create --name myplanname --resource-group myresourcegroup --sku EP1 --is-linux
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Bu örnekte, bir _Linux Premium_ fiyatlandırma katmanı (`--sku EP1`) kullanılır.
+    Bu örnekte, bir _Linux temel_ fiyatlandırma katmanı (`--sku B1`) kullanılır.
 
     > [!IMPORTANT]
     > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
@@ -159,13 +159,13 @@ print(blob.location)
 1. Web işi depolaması için kullanılacak depolama hesabını oluşturun ve bağlantı dizesini alın. `<webjobStorage>`, kullanmak istediğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. İşlev uygulaması oluşturmak için aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagename>`, daha önce döndürülen `package.location` değerlerle değiştirin. Değiştirme `<webjobStorage>`, önceki adımda bulunan depolama hesabının adıyla değiştirin:
+1. İşlev uygulaması oluşturmak için aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagename>`, daha önce döndürülen `package.location` değerlerle değiştirin. `<webjobStorage>`, önceki adımda bulunan depolama hesabının adıyla değiştirin:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -179,7 +179,7 @@ print(blob.location)
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
-    ```azurecli-interactive
+    ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     İşlev uygulamasına sağlamak için bu bağlantı dizesini kaydedin. Daha sonra `<triggerConnectionString>` isteytiğimiz zaman kullanacağız
@@ -205,7 +205,7 @@ print(blob.location)
     ```
     Döndürülen değeri kaydedin, bir sonraki adımda `imagetag` olarak kullanılacaktır.
 
-1. İşlev uygulamasını kapsayıcı kayıt defterine erişmek için gereken kimlik bilgileriyle sağlamak için aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagetag>` değerini önceki adımdaki AZ CLı çağrısındaki değerlerle değiştirin. `<username>` ve `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
+1. İşlev uygulamasını kapsayıcı kayıt defterine erişmek için gereken kimlik bilgileriyle sağlamak için aşağıdaki komutu kullanın. `<app-name>`, işlev uygulamasının adıyla değiştirin. `<acrinstance>` ve `<imagetag>` değerini önceki adımdaki AZ CLı çağrısındaki değerlerle değiştirin. `<username>` ve `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -246,6 +246,52 @@ Bu noktada, işlev uygulaması görüntüyü yüklemeye başlar.
 
 > [!IMPORTANT]
 > Görüntünün yüklenmesi birkaç dakika sürebilir. Azure portalını kullanarak ilerlemeyi izleyebilirsiniz.
+
+## <a name="test-the-deployment"></a>Dağıtımı test etme
+
+Görüntü yüklendikten ve uygulama kullanılabilir olduğunda, uygulamayı tetiklemek için aşağıdaki adımları kullanın:
+
+1. Score.py dosyasının beklediği verileri içeren bir metin dosyası oluşturun. Aşağıdaki örnek, 10 sayıdan oluşan bir dizi bekleyen bir score.py ile çalışır:
+
+    ```json
+    {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+    ```
+
+    > [!IMPORTANT]
+    > Verilerin biçimi, score.py ve modelinizin beklediklerinize bağlıdır.
+
+2. Bu dosyayı daha önce oluşturulan tetikleyici Depolama Blobu içindeki giriş kapsayıcısına yüklemek için aşağıdaki komutu kullanın. `<file>`, verileri içeren dosyanın adıyla değiştirin. `<triggerConnectionString>`, daha önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `input` daha önce oluşturulan giriş kapsayıcısının adıdır. Farklı bir ad kullandıysanız şu değeri değiştirin:
+
+    ```azurecli-interactive
+    az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
+
+    ```json
+    {
+    "etag": "\"0x8D7C21528E08844\"",
+    "lastModified": "2020-03-06T21:27:23+00:00"
+    }
+    ```
+
+3. İşlev tarafından üretilen çıktıyı görüntülemek için, oluşturulan çıkış dosyalarını listelemek için aşağıdaki komutu kullanın. `<triggerConnectionString>`, daha önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `output` daha önce oluşturulan çıkış kapsayıcısının adıdır. Farklı bir ad kullandıysanız şu değeri değiştirin::
+
+    ```azurecli-interactive
+    az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
+    ```
+
+    Bu komutun çıktısı `sample_input_out.json`benzerdir.
+
+4. Dosyayı indirmek ve içerikleri incelemek için aşağıdaki komutu kullanın. `<file>`, önceki komutun döndürdüğü dosya adıyla değiştirin. `<triggerConnectionString>`, daha önce döndürülen bağlantı dizesiyle değiştirin: 
+
+    ```azurecli-interactive
+    az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    Komut tamamlandıktan sonra dosyayı açın. Model tarafından döndürülen verileri içerir.
+
+Blob tetikleyicilerini kullanma hakkında daha fazla bilgi için bkz. [Azure Blob depolama tarafından tetiklenen bir Işlev oluşturma](/azure/azure-functions/functions-create-storage-blob-triggered-function) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

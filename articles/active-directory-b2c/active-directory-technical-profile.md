@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397828"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932990"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -58,13 +58,13 @@ Aşağıdaki örnekte **AAD ortak** teknik profili gösterilmektedir:
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-Aşağıdaki teknik profiller sosyal ve yerel hesaplar için **ınputclaim** içerir:
+Inputclaim öğesi, dizindeki bir hesabı aramak veya yeni bir hesap oluşturmak için kullanılan bir talep içerir. Tüm Azure AD teknik profillerinin giriş talep koleksiyonunda tam olarak bir ınputclaim öğesi olmalıdır. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir.
 
-- Sosyal hesap teknik profilleri **AAD-Userreadusingalternativesecurityıd** ve **AAD-Userwriteusingalternativesecurityıd** , **alternativesecurityıd** talebini içerir. Bu talep, sosyal hesap kullanıcı tanımlayıcısını içerir.
-- Yerel hesap teknik profilleri **AAD-Userreadusıngemapostaadresi** ve **AAD-UserWriteUsingLogonEmail** , **e-posta** talebi içerir. Bu talep, yerel hesabın oturum açma adını içerir.
-- Birleştirilmiş (yerel ve sosyal) Teknik profiller **AAD-Userreadusingobjectıd**, **AAD-Userwritepasswordusingobjectıd**, **AAD-userwriteprofileusingobjectıd**ve AAD- **Userwritephonenumberusingobjectıd** , **ObjectID** talebini içerir. Bir hesabın benzersiz tanımlayıcısı.
+Mevcut bir kullanıcı hesabını okumak, güncelleştirmek veya silmek için, giriş talebi, hesabı Azure AD dizininde benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, **ObjectID**, **userPrincipalName**, **Signınnames. emapostaadı**, **Signınnames. UserName**ya da **alternativesecurityıd**. 
 
-**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya yenilerini oluşturmak Için kullanılan **inputclaimstransreference** öğelerinin bir koleksiyonunu içerebilir.
+Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federasyon hesabını benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, yerel hesap: **Signınnames. Emapostaadı**veya **Signınnames. UserName**. Bir Federasyon hesabı için: **Alternativesecurityıd**.
+
+Inputclaimstransformations öğesi, giriş talebini değiştirmek veya yeni bir tane oluşturmak için kullanılan bir giriş talepleri dönüştürme öğeleri koleksiyonu içerebilir.
 
 ## <a name="output-claims"></a>Çıkış talepleri
 

@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189659"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933041"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -113,7 +113,7 @@ Ardından, Azure AD B2C için SAML onaylama ve yanıt imzalama sertifikasını k
 
 ### <a name="21-create-the-saml-token-issuer"></a>2,1 SAML belirteci veren oluşturma
 
-Şimdi, SAML belirteçleri vermek için kiracınızın özelliğini ekleyin.
+Şimdi, SAML [belirteci veren](saml-issuer-technical-profile.md) ve [SAML oturum sağlayıcısı](custom-policy-reference-sso.md#samlssosessionprovider) teknik profillerini kullanarak SAML belirteçleri vermek için kiracınızın özelliğini ekleyin.
 
 Özel ilke başlangıç paketindeki `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** açın.
 
@@ -297,7 +297,7 @@ Meta veriler, bir hizmet sağlayıcı gibi bir SAML partisi yapılandırmasını
 
 SAML meta veri *URL 'sinde ve* uygulama kaydının bildiriminde belirtilen özellikler varsa, bunlar **birleştirilir**. Meta veri URL 'sinde belirtilen özellikler önce işlenir ve öncelik kazanır.
 
-SAML test uygulamasını kullanan Bu öğreticide `samlMetadataUrl`için aşağıdaki değeri kullanın:
+SAML test uygulamasını kullanan Bu öğretici için `samlMetadataUrl`için aşağıdaki değeri kullanın:
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -324,7 +324,7 @@ SAML test uygulamasını kullandığınız bu öğreticide, `replyUrlsWithType` 
 
 Bu isteğe bağlı özellik `Logout` URL 'sini (bağlı olan taraf meta verilerindeki`SingleLogoutService` URL) temsil eder ve bunun `BindingType` için `Http-Redirect`varsayılır.
 
-SAML test uygulamasını kullanan Bu öğreticide, `logoutUrl` `https://samltestapp2.azurewebsites.net/logout`olarak ayarlı bırakın:
+SAML test uygulamasını kullanan Bu öğreticide, `logoutUrl` `https://samltestapp2.azurewebsites.net/logout`olarak ayarlanmış bırakın:
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668379"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932635"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -158,7 +158,7 @@ Windows 7| 1\.700 GB
 
 **Tür** | **Destek**
 --- | ---
-Şifreli| Destekleniyor.
+Şifrelenmiş<sup>*</sup>| Destekleniyor.
 Sıkıştırılmış | Destekleniyor.
 Seyrek | Destekleniyor.
 Sıkıştırılmış ve seyrek |Destekleniyor.
@@ -169,6 +169,8 @@ Sıkıştırılmış akış| Desteklenmiyor. Atlanmış.
 Aralıklı akış| Desteklenmiyor. Atlanmış.
 OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
 DFS Çoğaltma etkin olan klasörler | Desteklenmiyor.
+
+\*, MARS aracısının şifrelenmiş dosyalara erişmek için gereken sertifikalara erişimi olduğundan emin olun. Erişilemeyen dosyalar atlanacak.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
 

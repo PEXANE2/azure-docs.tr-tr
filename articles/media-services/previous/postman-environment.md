@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services REST çağrılarını Postman ortamını Al
-description: Bu konu Azure Media Services REST çağrıları için Postman ortam tanımını sağlar.
+title: Azure Media Services REST çağrıları için Postman ortamını içeri aktarın
+description: Bu konu, Azure Media Services REST çağrıları için Postman ortamının bir tanımını sağlar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637565"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926706"
 ---
-# <a name="import-the-postman-environment"></a>Postman ortamı alma  
+# <a name="import-the-postman-environment"></a>Postman ortamını içeri aktarma  
 
-Bu makalede bir tanımını içeren **Postman** kullanılan ortam değişkenlerini [Postman koleksiyonu](postman-collection.md) Media Services REST API'lerini çağırma gruplandırılmış HTTP isteklerini içerir. Ortamı ve koleksiyon dosyaları tarafından kullanılan [Postman yapılandırmak için Media Services REST API çağrıları](media-rest-apis-with-postman.md) öğretici.
+Bu makale, Media Services REST API 'Leri çağıran gruplandırılmış HTTP isteklerini içeren [Postman koleksiyonunu](postman-collection.md) kullanan **Postman** ortam değişkenlerinin tanımını içerir. Ortam ve koleksiyon dosyaları, [Media Services REST API çağrıları Için Postman yapılandırma](media-rest-apis-with-postman.md) öğreticisi tarafından kullanılır.
+
+> [!NOTE]
+> `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`değeri. Kiracı KIMLIĞINIZI almak için, farenizi portalda (sağ üst köşede) Kullanıcı adınızın üzerine getirip "Dizin: Microsoft ({{TENANTıD}}) içinde bulabilirsiniz.
 
 ```
 {

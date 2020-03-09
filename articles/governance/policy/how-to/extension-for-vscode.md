@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Kaynak Yöneticisi diğer adları arama hakkında bilgi edinin.
-ms.date: 11/04/2019
+ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386787"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932722"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -82,7 +82,7 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
    - Komut paleti: 
 
-     Menü çubuğundan **görüntüle** > **komut paleti**' ne gidin ve Azure İlkesi ' ni girin **: abonelikler**' i seçin.
+     Menü çubuğundan **görüntüle** > **komut paleti**' ne gidin ve **Azure: abonelikler**' i girin.
 
    - Pencere altbilgisi
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516676"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365593"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için StorSimple Aygıt Yöneticisi hizmetini dağıtma
 
@@ -31,14 +31,14 @@ StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden
 
 StorSimple Aygıt Yöneticisi hizmetiyle ilgili ortak görevler şunlardır:
 
-* Bir hizmet oluşturma
+* Hizmet oluşturma
 * Hizmet silme
 * Hizmet kayıt anahtarı alma
 * Hizmet kayıt anahtarını yeniden üret
 
 Bu öğreticide, önceki görevlerden her birinin nasıl gerçekleştirileceği açıklanmaktadır. Bu makalede yer alan bilgiler yalnızca StorSimple Sanal dizileri için geçerlidir. StorSimple 8000 serisi hakkında daha fazla bilgi için, [StorSimple Yöneticisi hizmetini dağıtma](storsimple-manage-service.md)konusuna gidin.
 
-## <a name="create-a-service"></a>Bir hizmet oluşturma
+## <a name="create-a-service"></a>Hizmet oluşturma
 
 Bir hizmet oluşturmak için şunları yapmanız gerekir:
 
@@ -73,9 +73,9 @@ Bir hizmeti silmek için aşağıdaki adımları gerçekleştirin.
 1. **Tüm kaynaklar**'a gidin. StorSimple Aygıt Yöneticisi hizmetinizi arayın. Silmek istediğiniz hizmeti seçin.
    
     ![Silinecek hizmeti seçin](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Hizmete bağlı bir cihaz olmadığından emin olmak için hizmet panonuza gidin. Bu hizmete kayıtlı cihaz yoksa, efekte bir başlık iletisi de görürsünüz. Tıklayın **Sil**.
+2. Hizmete bağlı bir cihaz olmadığından emin olmak için hizmet panonuza gidin. Bu hizmete kayıtlı cihaz yoksa, efekte bir başlık iletisi de görürsünüz. **Sil**'e tıklayın.
    
-    ![Hizmeti sil](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
+    ![Hizmeti Sil](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
 3. Onay istendiğinde, onay bildiriminde **Evet** ' e tıklayın. 
    
@@ -94,7 +94,7 @@ Bir hizmeti başarıyla oluşturduktan sonra StorSimple cihazınızı hizmete ka
 Hizmet kayıt anahtarını almak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-get-the-service-registration-key"></a>Hizmet kayıt anahtarını almak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde  **&gt; yönetim** **anahtarlar**' a gidin.
+1. **StorSimple aygıt yöneticisi** dikey penceresinde **Yönetim &gt;** **anahtarlar**' a gidin.
    
    ![Anahtarlar dikey penceresi](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde bir hizmet kayıt anahtarı görüntülenir. Kopyala simgesini kullanarak kayıt anahtarını kopyalayın. 
@@ -107,7 +107,7 @@ Anahtar dönüşü yapmanız gerekiyorsa veya hizmet yöneticileri listesi deği
 Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>Hizmet kayıt anahtarını yeniden oluşturmak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde  **&gt; yönetim** **anahtarlar**' a gidin.
+1. **StorSimple aygıt yöneticisi** dikey penceresinde **Yönetim &gt;** **anahtarlar**' a gidin.
    
    ![Anahtarlar dikey penceresi](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde yeniden **Oluştur**' a tıklayın.

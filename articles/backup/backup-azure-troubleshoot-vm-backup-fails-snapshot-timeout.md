@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: beb20518d1350335ceed285f4d5cd9da135132e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393062"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932743"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -50,10 +50,11 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: usererrorvmprovisioningstatefailed<br>
 **Hata iletisi**: VM başarısız sağlama durumunda<br>
 
-Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure portal > VM > ayarları > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin.
+Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure portal > VM > ayarları > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin. Daha fazla bilgi için bkz. [sağlama durumları](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
 
 - VMSnapshot uzantısı hatalı durumdaysa, başarısız olan uzantıya sağ tıklayın ve kaldırın. İsteğe bağlı yedekleme tetikleyin. Bu eylem, uzantıları yeniden yükleyerek yedekleme işini çalıştıracaktır.  <br>
-- Başka herhangi bir uzantı başarısız durumdaysa, yedeklemeyi kesintiye uğratabilirler. Uzantı sorunlarının çözümlendiğinden emin olun ve yedekleme işlemini yeniden deneyin.  
+- Başka herhangi bir uzantı başarısız durumdaysa, yedeklemeyi kesintiye uğratabilirler. Uzantı sorunlarının çözümlendiğinden emin olun ve yedekleme işlemini yeniden deneyin.
+- VM sağlama durumu bir güncelleştirme durumundaysa, yedeklemeyi kesintiye uğratabilirler. Sağlıklı olduğundan emin olun ve yedekleme işlemini yeniden deneyin.
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>Usererrorrpcollectionlimitulaşıldı-geri yükleme noktası koleksiyonu en yüksek sınırına ulaşıldı
 

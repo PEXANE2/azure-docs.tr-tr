@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898245"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927549"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market programı desteği
 
@@ -27,9 +27,9 @@ Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Doğru deste
 
 1. İş hesabınızla iş [Ortağı Merkezi ' nde ticari Market programında](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) oturum açın. (Henüz yapmadıysanız, [bir Iş Ortağı Merkezi hesabı oluşturmanız](./create-account.md)gerekecektir.)
 
-1. Sayfanın sağ tarafındaki menüden **destek** simgesini seçin. 
+2. Sayfanın sağ tarafındaki menüden **destek** simgesini seçin. 
  
-1. **Yardım ve destek** bölmesi sayfanın sağ tarafında görünür. 
+3. **Yardım ve destek** bölmesi sayfanın sağ tarafında görünür. 
  
    ![Destek açılan menüsü](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Doğru deste
 
    ![Giriş sayfasından yardım ve destek](./media/homepage-help-support.png)
 
-1. Soruların ve kaynakların kapsamlı yanıtlarını gözden geçirmek için **[Belgeler](../index.md)** ' i seçin. 
+4. Soruların ve kaynakların kapsamlı yanıtlarını gözden geçirmek için **[Belgeler](../index.yml)** ' i seçin. 
 
-1. Diğer Microsoft yayımcılarından yararlanarak sorularınızı yanıtlamak için **[Market Iş ortağı topluluk Forumu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ' nu seçin. 
+5. Diğer Microsoft yayımcılarından yararlanarak sorularınızı yanıtlamak için **[Market Iş ortağı topluluk Forumu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ' nu seçin. 
 
-1. **Yeni bir destek talebi** bileti açmak için **[ek yardım](https://aka.ms/marketplacepublishersupport)** ' ı seçin.  
+6. **Yeni bir destek talebi** bileti açmak için **[ek yardım](https://aka.ms/marketplacepublishersupport)** ' ı seçin.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Destek bileti açma
 

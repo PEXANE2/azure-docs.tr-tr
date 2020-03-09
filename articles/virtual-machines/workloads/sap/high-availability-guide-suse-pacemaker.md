@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 06c92797f2cab96a9e0c423b0f0f754e57b99b14
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fb73bf6af46ce8303e1be80d1bfc7303f95cda06
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598451"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927339"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>SLES azure'daki SUSE Linux Enterprise Server üzerinde Pacemaker ayarlama
 
@@ -328,6 +328,16 @@ Oluşturmak istediğiniz yeni küme düğümlerinde aşağıdaki komutları çal
    <pre><code>sudo zypper in socat
    </code></pre>
 
+1. **[A]** küme kaynakları için gerekli olan Azure-lb bileşenini yükler
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > Paket kaynak-aracıları sürümünü denetleyin ve en düşük sürüm gereksinimlerinin karşılandığından emin olun:  
+   > - SLES 12 SP4/SP5 için sürüm en az Resource-Agents-4.3.018. a7fb5035-3.30.1 olmalıdır.  
+   > - SLES 15/15 SP1 için sürüm en az Resource-Agents-4.3.0184.6 ee15eb2-4.13.1 olmalıdır.  
+
 1. **[A]** işletim sistemini yapılandırma
 
    Bazı durumlarda, Pacemaker birçok süreçleri oluşturuyor ve böylece izin verilen işlem sayısını tükettiğinde. Böyle bir durumda, küme düğümleri arasında bir sinyal başarısız ve kaynaklarınızı yük devretmesi için neden. En fazla izin verilen işlem aşağıdaki parametresini ayarlayarak artırma öneririz.
@@ -607,9 +617,9 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 Azure, [Zamanlanmış olaylar](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)sunar. Zamanlanan olaylar, meta veri hizmeti aracılığıyla sağlanır ve uygulamanın VM kapatması, VM yeniden dağıtımı vb. gibi olaylara hazırlanması için zaman sağlar. Resource Agent **[Azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** olayları, zamanlanan Azure olayları için izler. Olaylar algılanırsa, aracı etkilenen VM 'deki tüm kaynakları durdurmayı dener ve bunları kümedeki başka bir düğüme taşır. Ek pacemaker kaynaklarının yapılandırılması gerektiğini elde etmek için. 
 
-1. **[A]** **Azure-Events** aracısını yükler. 
+1. **[A]** **Azure-Events** aracısının paketinin zaten yüklü olduğundan ve güncel olduğundan emin olun. 
 
-<pre><code>sudo zypper install resource-agents
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
 2. **[1]** pacemaker 'da kaynakları yapılandırın. 

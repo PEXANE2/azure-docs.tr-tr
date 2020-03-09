@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184460"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933008"
 ---
 # <a name="localization"></a>Yerelleştirme
 
@@ -146,7 +146,7 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Yes | İlkede bir talep türü öğesine veya bir kullanıcı arabirimi öğesine başvuru. Olası değerler: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`veya. `ClaimType` değeri, Strıngıd içinde belirtildiği gibi talep özniteliklerinden birini yerelleştirmek için kullanılır. `UxElement` değeri, Strıngıd içinde belirtilen kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. `ErrorMessage` değeri, Strıngıd içinde belirtilen sistem hatası iletilerinden birini yerelleştirmek için kullanılır. `Predicate` değeri, Strıngıd içinde belirtilen [koşul](predicates.md) hatası iletilerinden birini yerelleştirmek için kullanılır. `InputValidation` değeri, Strıngıd içinde belirtilen tahmine [Atevalidation](predicates.md) Group hata iletilerinden birini yerelleştirmek için kullanılır. |
+| ElementType | Yes | İlkede bir talep türü öğesine veya bir kullanıcı arabirimi öğesine başvuru. Olası değerler: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`veya `GetLocalizedStringsTransformationClaimType`. `ClaimType` değeri, Strıngıd içinde belirtildiği gibi talep özniteliklerinden birini yerelleştirmek için kullanılır. `UxElement` değeri, Strıngıd içinde belirtilen kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. `ErrorMessage` değeri, Strıngıd içinde belirtilen sistem hatası iletilerinden birini yerelleştirmek için kullanılır. `Predicate` değeri, Strıngıd içinde belirtilen [koşul](predicates.md) hatası iletilerinden birini yerelleştirmek için kullanılır. `InputValidation` değeri, Strıngıd içinde belirtilen tahmine [Atevalidation](predicates.md) Group hata iletilerinden birini yerelleştirmek için kullanılır. `GetLocalizedStringsTransformationClaimType` değeri, yerelleştirilmiş dizeleri taleplerine kopyalamak için kullanılır. Daha fazla bilgi için bkz. [Getlocalizedstringstrans, talepler dönüştürmesi](string-transformations.md#getlocalizedstringstransformation)  | 
 | ElementID | Yes | **ElementType** `ClaimType`, `Predicate`veya `InputValidation`olarak ayarlandıysa, bu öğe ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
 | StringID | Yes | **ElementType** `ClaimType`olarak ayarlandıysa, bu öğe bir talep türünün özniteliğine bir başvuru içerir. Olası değerler: `DisplayName`, `AdminHelpText`veya `PatternHelpText`. `DisplayName` değeri, talep görünen adını ayarlamak için kullanılır. `AdminHelpText` değeri, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText` değeri, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** `UxElement`olarak ayarlandıysa, bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** `ErrorMessage`olarak ayarlandıysa, bu öğe bir hata iletisinin tanımlayıcısını belirtir. `UxElement` tanımlayıcılarının tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) .|
 

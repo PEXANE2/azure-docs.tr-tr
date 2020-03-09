@@ -8,20 +8,20 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385121"
 ---
-# <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Azure 'a olağanüstü durum kurtarma için şirket içi Hyper-V sunucuları hazırlama
+# <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Şirket içi Hyper-V sunucularını Azure’a olağanüstü durum kurtarma için hazırlama
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak Hyper-VM 'lerinin olağanüstü durum kurtarmasını ayarlamak istediğinizde şirket içi Hyper-V altyapınızı nasıl hazırlayacağınız açıklanır.
 
 
 Bu, şirket içi Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmanın nasıl ayarlanacağını gösteren bir serinin ikinci öğreticisidir. İlk öğreticide, Hyper-V olağanüstü durum kurtarma için gereken [Azure bileşenlerini ayarladık](tutorial-prepare-azure.md) .
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Hyper-v konaklarınız System Center VMM tarafından yönetiliyorsa, Hyper-V gereksinimlerini ve VMM gereksinimlerini gözden geçirin.

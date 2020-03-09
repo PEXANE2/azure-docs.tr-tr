@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360220"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932601"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -578,16 +578,16 @@ Tüm [Kaynak Yöneticisi şablonu işlevleri](../../../azure-resource-manager/te
 - RESOURCEID ()
 - değişkenler ()
 
-Aşağıdaki işlevler bir ilke kuralında kullanılabilir, ancak Azure Resource Manager şablonunda kullanımı farklıdır:
+Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resource Manager şablonunda kullanımı farklıdır:
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. fffffffZ '
-  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı
 - `utcNow()`-Kaynak Yöneticisi şablonundan farklı olarak, bu, defaultValue dışında kullanılabilir.
   - Universal ISO 8601 DateTime biçimindeki ' yyyy-aa-ddTHH: mm: ss. fffffffZ ' içinde geçerli tarih ve saate ayarlanmış bir dize döndürür
 
 Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. fffffffZ '
+  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı
 - `field(fieldName)`
   - **Alanadı**: [gerekli] dize-alınacak [alanın](#fields) adı
   - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür
