@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483095"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361697"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute ortak eşlemesini oluşturma ve yönetme
 
 > [!div class="op_single_selector"]
 > * [Makale-genel eşleme](about-public-peering.md)
-> * [Video - genel eşdüzey hizmet sağlama](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video-genel eşleme](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Makale-Microsoft eşleme](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
@@ -55,7 +55,7 @@ Bu bölümde, genel eşleme üzerinden kullanılabilen hizmetler gösterilmekted
 
 Belirli bir hizmet için kullanılabilirliği doğrulamak üzere bu hizmetin belgelerini denetleyerek, bu hizmet için yayımlanmış bir Aralık olup olmadığını görebilirsiniz. Ardından, hedef hizmetin IP aralıklarını arayabilir ve [Azure IP aralıkları ve hizmet etiketleri – genel bulut XML dosyasında](https://www.microsoft.com/download/details.aspx?id=56519)listelenen aralıklardan karşılaştırırsınız. Alternatif olarak, açıklama için söz konusu hizmet için bir destek bileti açabilirsiniz.
 
-## <a name="compare"></a>Eşleme karşılaştırma
+## <a name="compare"></a>Eşleme karşılaştırması
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
@@ -65,7 +65,7 @@ Belirli bir hizmet için kullanılabilirliği doğrulamak üzere bu hizmetin bel
 
 ## <a name="custom-route-filters"></a>Özel yol filtreleri
 
-Yalnızca gereksinim duyduğunuz yolları kullanmak için ağınızdaki özel yol filtreleri tanımlayabilirsiniz. Başvurmak [yönlendirme](expressroute-routing.md) sayfasına yönlendirme yapılandırması hakkında ayrıntılı bilgi için.
+Yalnızca gereksinim duyduğunuz yolları kullanmak için ağınızdaki özel yol filtreleri tanımlayabilirsiniz. Yönlendirme yapılandırması hakkında ayrıntılı bilgi için [yönlendirme](expressroute-routing.md) sayfasına bakın.
 
 ## <a name="powershell"></a>Azure PowerShell adımları
 
@@ -109,7 +109,7 @@ Ortak eşleme kullanım dışı olduğundan, yeni bir ExpressRoute devresinde or
 
    * Birincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
-   * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
    * İsteğe bağlı:
    * Kullanmayı seçerseniz bir MD5 karma değeri.
@@ -135,7 +135,7 @@ Ortak eşleme kullanım dışı olduğundan, yeni bir ExpressRoute devresinde or
    > 
    >
 
-### <a name="getpublic"></a>Azure ortak eşleme ayrıntılarını almak için
+### <a name="getpublic"></a>Azure genel eşleme ayrıntılarını almak için
 
 Aşağıdaki cmdlet'i kullanarak yapılandırma ayrıntılarını alabilirsiniz:
 
@@ -210,9 +210,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
    * Birincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
-   * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
-   * **İsteğe bağlı -** kullanmayı seçerseniz bir MD5 karma değeri.
+   * **Isteğe bağlı-** Kullanmayı seçerseniz bir MD5 karma değeri.
 
    Bağlantı hattınız için Azure ortak eşlemesini yapılandırmak üzere aşağıdaki örneği çalıştırın:
 
@@ -229,7 +229,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > [!IMPORTANT]
    > AS numaranızı müşteri ASN’si değil eşleme ASN’si olarak belirttiğinizden emin olun.
 
-### <a name="getpublic"></a>Azure ortak eşleme ayrıntılarını görüntülemek için
+### <a name="getpublic"></a>Azure genel eşleme ayrıntılarını görüntülemek için
 
 Aşağıdaki örneği kullanarak yapılandırma ayrıntılarını alabilirsiniz:
 
@@ -284,7 +284,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 Eşlemeyi yapılandırmak için bu makalede yer alan PowerShell veya CLı adımlarını kullanın. Bir eşlemeyi yönetmek için aşağıdaki bölümleri kullanabilirsiniz. Bu adımlar, başvuru için [portalda Microsoft eşlemesini](expressroute-howto-routing-portal-resource-manager.md#msft)yönetmeye benzer şekilde görünür.
 
-### <a name="get"></a>Azure ortak eşleme ayrıntılarını görüntülemek için
+### <a name="get"></a>Azure genel eşleme ayrıntılarını görüntülemek için
 
 Portalda eşlemeyi seçerek Azure ortak eşleme özelliklerini görüntüleyin.
 

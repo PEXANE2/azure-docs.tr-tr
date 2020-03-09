@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410211"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356754"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
@@ -36,7 +36,7 @@ Komut dosyası dillerinde Orchestrator işlevlerini yazdığınızda (örneğin,
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
 
-### <a name="trigger-behavior"></a>Tetikleyici davranışı
+### <a name="trigger-behavior"></a>Tetikleme davranışı
 
 Düzenleme tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
@@ -143,7 +143,7 @@ Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikley
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir kuyruğu yoklar. Bu kuyruk, uzantının iç uygulama ayrıntısı olduğundan, bağlama özelliklerinde açıkça yapılandırılmamış olabilir.
 
-### <a name="trigger-behavior"></a>Tetikleyici davranışı
+### <a name="trigger-behavior"></a>Tetikleme davranışı
 
 Etkinlik tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
@@ -372,7 +372,7 @@ Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda, varlı
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
 
-### <a name="trigger-behavior"></a>Tetikleyici davranışı
+### <a name="trigger-behavior"></a>Tetikleme davranışı
 
 Varlık tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
@@ -637,7 +637,7 @@ module.exports = async function (context) {
 > Dayanıklı varlıklar, `durable-functions` NPM paketinin sürüm **1.3.0** Ile başlayan JavaScript 'te kullanılabilir.
 
 <a name="host-json"></a>
-## <a name="hostjson-settings"></a>Host.JSON ayarları
+## <a name="hostjson-settings"></a>Host. JSON ayarları
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 

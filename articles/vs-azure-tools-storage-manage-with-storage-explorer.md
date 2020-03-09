@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891189"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356186"
 ---
 # <a name="get-started-with-storage-explorer"></a>Depolama Gezgini ile çalışmaya başlama
 
@@ -23,9 +23,9 @@ Microsoft Azure Depolama Gezgini, Windows, macOS ve Linux 'ta Azure Depolama ver
 
 ![Microsoft Azure Depolama Gezgini][0]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Aşağıdaki Windows destek sürümleri Depolama Gezgini:
 
@@ -35,13 +35,13 @@ Aşağıdaki Windows destek sürümleri Depolama Gezgini:
 
 Tüm Windows sürümleri için Depolama Gezgini .NET Framework 4.6.2 veya üzeri bir sürüm gerektirir.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 MacOS desteğinin aşağıdaki sürümleri Depolama Gezgini:
 
 * macOS 10,12 Sierra ve sonraki sürümleri
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Depolama Gezgini, Linux 'un en yaygın dağıtımları için [ek mağazada](https://snapcraft.io/storage-explorer) kullanılabilir. Bu yükleme için ek depolama önerilir. Depolama Gezgini Snap, yeni sürümler Snap Store 'da yayımlandığında tüm bağımlılıklarını ve güncelleştirmelerini yüklüyor.
 

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176573"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374356"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management ürün şablonları
 
-Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. [Dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
   
  Bu bölümdeki şablonlar, geliştirici portalındaki ürün sayfalarının içeriğini özelleştirmenizi sağlar.  
   
@@ -208,8 +208,8 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 |--------------|----------|-----------------|  
 |Ürün|[Ürünüyle](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
 |IsDeveloperSubscribed|boole|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  
-|SubscriptionState|number|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended` – abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active` – abonelik etkin.<br />-   `2 - expired` – abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted` – abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected` – abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled` – abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
-|Sınırlar|array|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
+|SubscriptionState|sayı|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended` – abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active` – abonelik etkin.<br />-   `2 - expired` – abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted` – abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected` – abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled` – abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
+|Sınırlar|dizi|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
 |DelegatedSubscriptionEnabled|boole|Bu abonelik için [temsilcinin](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) etkin olup olmadığı.|  
 |DelegatedSubscriptionUrl 'Si|string|Temsilci etkin ise, temsil edilen abonelik URL 'SI.|  
 |Isınmış|boole|Ürünün koşulları varsa, geçerli kullanıcının koşulları kabul etmediğini belirtir.|  

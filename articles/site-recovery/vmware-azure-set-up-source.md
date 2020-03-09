@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622202"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391800"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma için kaynak ortamı ayarlama
 
 Bu makalede, VMware VM 'lerini Azure 'a çoğaltmak için kaynak şirket içi ortamınızı ayarlama açıklanmaktadır. Makale, çoğaltma senaryonuzu seçme, Site Recovery yapılandırma sunucusu olarak şirket içi makine ayarlama ve şirket içi VM 'Leri otomatik olarak bulma adımlarını içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Makalesinde zaten sahip olduğunuz varsayılır:
 
@@ -30,7 +30,7 @@ Makalesinde zaten sahip olduğunuz varsayılır:
 ## <a name="choose-your-protection-goals"></a>Koruma hedeflerinizi seçin
 
 1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için**ContosoVMVault**’u kullanıyoruz.
-2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
+2. **Başlarken** bölümünde Site Recovery’yi seçin. Ardından **Altyapıyı Hazırla** seçeneğini belirleyin.
 3. **Koruma hedefi** > **Makineleriniz nerede** bölümünde **Şirket içi** seçeneğini belirleyin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
 5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Sonra **Tamam**’ı seçin.
@@ -75,7 +75,7 @@ Kesintisiz çoğaltma için aşağıdaki klasörleri virüsten koruma yazılım�
 
 Aşağıdaki klasörleri virüsten koruma yazılımından çıkar
 
-1. C:\Program Files\Microsoft Azure kurtarma hizmetleri Aracısı
+1. C:\Program Files\Microsoft Azure Recovery Services Agent
 2. C:\ProgramData\ASR
 3. C:\ProgramData\ASRLogs
 4. C:\ProgramData\ASRSetupLogs
