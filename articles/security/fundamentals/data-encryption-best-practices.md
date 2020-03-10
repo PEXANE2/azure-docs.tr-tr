@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
 ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934741"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389987"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure veri güvenliği ve şifreleme için en iyi yöntemler
 Bu makalede veri güvenliği ve şifreleme için en iyi uygulamalar açıklanmaktadır.
@@ -30,8 +30,8 @@ En iyi uygulamalar, görüşlerden oluşan yarışmaları temel alır ve geçerl
 ## <a name="protect-data"></a>Veri koruma
 Buluttaki verilerin korunmasına yardımcı olmak için, verilerinizin gerçekleşebileceği olası durumları ve bu durum için hangi denetimlerin kullanılabileceğini hesaba getirmeniz gerekir. Azure veri güvenliği ve şifreleme için en iyi uygulamalar aşağıdaki veri durumlarıyla ilgilidir:
 
-- Bekleyen: Bu, manyetik veya optik disk olmasına bakılmaksızın fiziksel medyada statik olarak bulunan tüm bilgi depolama nesnelerini, kapsayıcıları ve türlerini içerir.
-- Aktarım aşamasında: Veriler bileşenler, konumlar veya programlar arasında aktarıldığında aktarım sürecinde olur. Örnekler, bir Service Bus (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar da dahil olmak üzere) üzerinden veya bir giriş/çıkış sürecinde ağ üzerinden aktarım yapılır.
+- Bekleyen: buna, manyetik veya optik disk olmasına bakılmaksızın fiziksel medyada statik olarak bulunan tüm bilgi depolama nesneleri, kapsayıcıları ve türleri dahildir.
+- Aktarım olarak: bileşenler, konumlar veya programlar arasında veriler aktarıldığında aktarım sürecinde olur. Örnekler, bir Service Bus (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar da dahil olmak üzere) üzerinden veya bir giriş/çıkış sürecinde ağ üzerinden aktarım yapılır.
 
 ## <a name="choose-a-key-management-solution"></a>Anahtar yönetimi çözümü seçin
 
@@ -45,19 +45,19 @@ Azure Key Vault, uygulama anahtarlarını ve gizli dizileri desteklemek için ta
 
 Key Vault kullanmak için en iyi güvenlik uygulamaları aşağıda verilmiştir.
 
-**En iyi uygulama**: Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara erişim izni verin.   
+**En iyi yöntem**: belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara erişim izni verin.   
 **Ayrıntı**: RBAC 'nin önceden tanımlanmış rollerini kullanın. Örneğin, anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, önceden tanımlanmış rolü bu kullanıcıya belirli bir kapsamda [katkıda bulunan Key Vault](/azure/role-based-access-control/built-in-roles) atamalısınız. Bu durumda kapsam bir abonelik, kaynak grubu veya yalnızca belirli bir anahtar kasası olabilir. Önceden tanımlanmış roller gereksinimlerinize uygun değilse, [kendi rollerinizi tanımlayabilirsiniz](/azure/role-based-access-control/custom-roles).
 
-**En iyi uygulama**: Kullanıcıların ne erişimi olduğunu denetleyin.   
-**Ayrıntı**: Bir anahtar kasasına erişim, iki ayrı arabirim ile denetlenir: yönetim düzlemi ve veri düzlemi. Yönetim düzlemi ve veri düzlemi erişim denetimleri birbirinden bağımsız olarak çalışır.
+**En iyi yöntem**: kullanıcıların ne erişimi olduğunu denetleyin.   
+**Ayrıntı**: bir anahtar kasasına erişim, iki ayrı arabirim aracılığıyla denetlenir: yönetim düzlemi ve veri düzlemi. Yönetim düzlemi ve veri düzlemi erişim denetimleri birbirinden bağımsız olarak çalışır.
 
 Kullanıcıların ne erişimi olduğunu denetlemek için RBAC kullanın. Örneğin, bir uygulama için anahtar kasasındaki anahtarları kullanmak üzere erişim vermek istiyorsanız, yalnızca Anahtar Kasası erişim ilkelerini kullanarak veri düzlemi erişim izinleri vermeniz gerekir ve bu uygulama için hiçbir yönetim düzlemi erişimi gerekmez. Buna karşılık, bir kullanıcının kasa özelliklerini ve etiketlerini okuyabilmesini, ancak anahtarlar, gizlilikler veya sertifikalara erişimleri yoksa, bu kullanıcıya RBAC kullanarak okuma izni verebilirsiniz ve veri düzlemine erişim gerekmez.
 
-**En iyi uygulama**: Sertifikaları Anahtar Kasanızda depolayın. Sertifikalarınız yüksek değerde. Yanlış ellerde uygulamanızın güvenliği veya verilerinizin güvenliği tehlikeye girebilir.   
-**Ayrıntı**: Azure Resource Manager, VM 'Ler dağıtıldığında Azure Key Vault depolanan sertifikaları Azure VM 'lerine güvenli bir şekilde dağıtabilir. Anahtar Kasası için uygun erişim ilkelerini ayarlayarak, sertifikanıza kimlerin erişebileceğini de kontrol edersiniz. Diğer bir avantaj de Azure Key Vault tüm sertifikalarınızı tek bir yerde yönettiğinizde. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen Key Vault VM 'Lere sertifika dağıtma](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) .
+**En iyi yöntem**: sertifikaları Anahtar Kasanızda depolayın. Sertifikalarınız yüksek değerde. Yanlış ellerde uygulamanızın güvenliği veya verilerinizin güvenliği tehlikeye girebilir.   
+**Ayrıntı**: Azure Resource Manager, VM 'ler dağıtıldığında Azure Key Vault depolanan sertifikaları Azure VM 'lerine güvenli bir şekilde dağıtabilir. Anahtar Kasası için uygun erişim ilkelerini ayarlayarak, sertifikanıza kimlerin erişebileceğini de kontrol edersiniz. Diğer bir avantaj de Azure Key Vault tüm sertifikalarınızı tek bir yerde yönettiğinizde. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen Key Vault VM 'Lere sertifika dağıtma](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) .
 
-**En iyi uygulama**: Anahtar kasalarının veya Anahtar Kasası nesnelerinin silinmesini kurtarabilmeniz için emin olun.   
-**Ayrıntı**: Anahtar kasalarının veya Anahtar Kasası nesnelerinin silinmesi yanlışlıkla veya kötü amaçlı olabilir. Özellikle bekleyen verileri şifrelemek için kullanılan anahtarlar için Key Vault geçici olarak silme ve Temizleme koruma özelliklerini etkinleştirin. Bu anahtarların silinmesi, veri kaybına eşdeğerdir; bu sayede, gerekirse silinen kasaların ve kasa nesnelerinin kurtarılmasını sağlayabilirsiniz. Kurtarma işlemlerini düzenli aralıklarla Key Vault uygulama.
+**En iyi yöntem**: anahtar kasalarını veya Anahtar Kasası nesnelerini silme işlemini kurtarabileceğinizi doğrulayın.   
+**Ayrıntı**: anahtar kasalarını veya Anahtar Kasası nesnelerini silme işlemi yanlışlıkla veya kötü amaçlı olabilir. Özellikle bekleyen verileri şifrelemek için kullanılan anahtarlar için Key Vault geçici olarak silme ve Temizleme koruma özelliklerini etkinleştirin. Bu anahtarların silinmesi, veri kaybına eşdeğerdir; bu sayede, gerekirse silinen kasaların ve kasa nesnelerinin kurtarılmasını sağlayabilirsiniz. Kurtarma işlemlerini düzenli aralıklarla Key Vault uygulama.
 
 > [!NOTE]
 > Bir kullanıcının bir Anahtar Kasası yönetim düzlemine katkıda bulunan izinleri (RBAC) varsa, bir Anahtar Kasası erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. Anahtar kasalarınıza, anahtar kasalarınıza, Anahtarlarınıza, sırlarına ve sertifikalara yalnızca yetkili kişilerin erişebildiğinden ve bunları yönetmesine emin olmak için, anahtar kasalarınıza katkıda bulunan kimlerin erişimi olduğunu sıkı bir şekilde denetlemenizi öneririz.
@@ -73,23 +73,23 @@ Kullanıcıların ne erişimi olduğunu denetlemek için RBAC kullanın. Örneğ
 
 Saldırıların büyük çoğunluğunun son kullanıcıyı hedeflemesini sağladığından, uç nokta birincil saldırı noktalarından biri haline gelir. Uç noktayı kapatan bir saldırgan, kullanıcının kimlik bilgilerini kullanarak kuruluşun verilerine erişim elde edebilir. Çoğu uç nokta saldırısı, kullanıcıların kendi yerel iş istasyonlarında yönetici oldukları gerçeden yararlanır.
 
-**En iyi uygulama**: Hassas hesapları, görevleri ve verileri korumak için güvenli bir yönetim iş istasyonu kullanın.   
+**En iyi yöntem**: hassas hesapları, görevleri ve verileri korumak için güvenli bir yönetim iş istasyonu kullanın.   
 **Ayrıntı**: İş istasyonlarındaki saldırı yüzeyini azaltmak için [ayrıcalıklı erişim iş istasyonu](https://technet.microsoft.com/library/mt634654.aspx) kullanın. Bu güvenli yönetim iş istasyonları, bu saldırıların bazılarını azaltmanıza ve verilerinizin daha güvenli olmasını sağlamanıza yardımcı olabilir.
 
-**En iyi uygulama**: Endpoint Protection 'ı doğrulayın.   
-**Ayrıntı**: Veri konumundan (bulut veya şirket içi) bağımsız olarak verileri tüketmek için kullanılan tüm cihazlarda güvenlik ilkelerini zorunlu tutun.
+**En iyi yöntem**: Endpoint Protection 'ı doğrulayın.   
+**Ayrıntı**: veri konumundan (bulut veya şirket içi) bağımsız olarak verileri tüketmek için kullanılan tüm cihazlarda güvenlik ilkelerini zorunlu tutun.
 
 ## <a name="protect-data-at-rest"></a>Bekleyen verileri koruma
 
 [Bekleyen veri şifrelemesi](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır.
 
-**En iyi uygulama**: Verilerinizin korunmasına yardımcı olmak için disk şifrelemeyi uygulayın.   
+**En iyi yöntem**: verilerinizin korunmasına yardımcı olmak için disk şifrelemeyi uygulayın.   
 **Ayrıntı**: [Azure disk şifrelemesi](/azure/security/azure-security-disk-encryption-overview)'ni kullanın. BT yöneticilerinin Windows ve Linux IaaS VM disklerini şifrelemesini sağlar. Disk şifrelemesi, işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere sektör standardı Windows BitLocker özelliğini ve Linux dm-crypt özelliğini birleştirir.
 
 Azure depolama ve Azure SQL veritabanı, varsayılan olarak bekleyen verileri şifreler ve birçok hizmet şifreleme seçeneğini bir seçenek olarak sunar. Verilerinize erişen ve bunları şifreleyen anahtarların denetimini sürdürmek için Azure Key Vault kullanabilirsiniz. [Daha fazla bilgi edinmek için bkz. Azure kaynak sağlayıcıları şifreleme modeli desteği](encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**En iyi uygulamalar**: Yetkisiz veri erişimiyle ilgili riskleri azaltmaya yardımcı olması için şifrelemeyi kullanın.   
-**Ayrıntı**: Hassas verileri bunlara yazmadan önce sürücülerinizi şifreleyin.
+**En iyi uygulamalar**: yetkisiz veri erişimiyle ilgili riskleri azaltmaya yardımcı olması için şifrelemeyi kullanın.   
+**Ayrıntı**: hassas verileri bunlara yazmadan önce sürücülerinizi şifreleyin.
 
 Veri şifrelemeyi zorlayamayan kuruluşlar, veri gizliliği sorunlarına daha fazla açıktır. Örneğin, yetkisiz veya standart dışı kullanıcılar verileri güvenliği aşılmış hesaplarda çalabilir veya düz biçimde kodlanmış verilere yetkisiz erişim elde edebilir. Şirketler aynı zamanda, sektör düzenlemelerine uymak üzere veri güvenliğini geliştirmek için doğru güvenlik denetimlerini kullandıklarından emin olmalıdır.
 
@@ -101,17 +101,17 @@ Yoldaki verilerin korunması, veri koruma stratejinizin önemli bir parçası ol
 
 Azure VPN Gateway, SSL/TLS ve HTTPS kullanımına özgü en iyi uygulamalar aşağıda verilmiştir.
 
-**En iyi uygulama**: Şirket içinde bulunan birden çok iş istasyonundan Azure sanal ağına güvenli erişim.   
-**Ayrıntı**: [Siteden sıteye VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)kullanın.
+**En iyi yöntem**: şirket içinde bulunan birden çok Iş istasyonundan Azure sanal ağına güvenli erişim.   
+**Ayrıntı**: [siteden siteye VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)kullanın.
 
-**En iyi uygulama**: Şirket içinde bulunan bireysel bir iş istasyonundan Azure sanal ağına güvenli erişim.   
-**Ayrıntı**: [Noktadan sıteye VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)kullanın.
+**En iyi yöntem**: şirket içinde bulunan bireysel bir Iş istasyonundan Azure sanal ağına güvenli erişim.   
+**Ayrıntı**: [Noktadan siteye VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)kullanın.
 
-**En iyi uygulama**: Daha büyük veri kümelerini adanmış bir yüksek hızlı WAN bağlantısı üzerine taşıyın.   
+**En iyi yöntem**: adanmış bir yüksek hızlı WAN bağlantısı üzerine daha büyük veri kümeleri taşıyın.   
 **Ayrıntı**: [ExpressRoute](/azure/expressroute/expressroute-introduction)kullanın. ExpressRoute kullanmayı seçerseniz, ek koruma için [SSL/TLS](https://support.microsoft.com/kb/257591) veya diğer protokolleri kullanarak uygulama düzeyindeki verileri de şifreleyebilirsiniz.
 
-**En iyi uygulama**: Azure portal üzerinden Azure depolama ile etkileşim kurun.   
-**Ayrıntı**: Tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/)ile etkileşim kurmak için [depolama REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) https üzerinden de kullanabilirsiniz.
+**En iyi yöntem**: Azure Portal üzerinden Azure depolama ile etkileşim kurun.   
+**Ayrıntı**: tüm işlemler https üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/)ile etkileşim kurmak için [depolama REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) https üzerinden de kullanabilirsiniz.
 
 Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](https://technet.microsoft.com/library/gg195821.aspx), [gizlice dinleme](https://technet.microsoft.com/library/gg195641.aspx)ve oturum ele geçirme konusunda daha açıktır. Bu saldırılar, gizli verilere erişim kazanmanız için ilk adım olabilir.
 
@@ -128,7 +128,7 @@ Bu bilgi koruma çözümü, diğer kişilerle paylaşıldığında bile verileri
 Şunları yapmanızı öneririz:
 
 - Kuruluşunuz için [Azure Information Protection dağıtın](/azure/information-protection/deployment-roadmap) .
-- İş gereksinimlerinizi yansıtan Etiketler uygulayın. Örneğin: Bu verileri sınıflandırmak ve korumak için en üst düzey verileri içeren tüm belgelere ve e-postalara "çok gizli" adlı bir etiket uygulayın. Daha sonra, yalnızca yetkili kullanıcılar bu verilere, belirttiğiniz tüm kısıtlamalara sahip erişebilir.
+- İş gereksinimlerinizi yansıtan Etiketler uygulayın. Örneğin: bu verileri sınıflandırmak ve korumak için en üst düzey verileri içeren tüm belgelere ve e-postalara "çok gizli" adlı bir etiket uygulayın. Daha sonra, yalnızca yetkili kullanıcılar bu verilere, belirttiğiniz tüm kısıtlamalara sahip erişebilir.
 - Kuruluşunuzun koruma hizmetini nasıl kullandığını izleyebilmeniz [için Azure RMS için kullanım günlüğünü](/azure/information-protection/log-analyze-usage) yapılandırın.
 
 Veri [sınıflandırması](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) ve dosya koruması zayıf kuruluşlar, veri sızıntısı veya veri kötüye kullanımı konusunda daha açıktır. Doğru dosya korumasıyla, işletmenizin içgörüleri sağlamak, riskli davranışları tespit etmek ve düzeltici önlemler almak, belgelere erişimi izlemek vb. için veri akışlarını analiz edebilirsiniz.
@@ -139,4 +139,4 @@ Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve 
 
 Aşağıdaki kaynaklar, Azure güvenliği ve ilgili Microsoft hizmetleri hakkında daha genel bilgiler sağlamak için kullanılabilir:
 * Azure [güvenlik ekibi blogu](https://blogs.msdn.microsoft.com/azuresecurity/) -Azure güvenliği ile ilgili en son bilgiler için
-* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ilesecure@microsoft.com
+* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına secure@microsoft.com bildirilebilir veya e-posta ile gönderebilirsiniz.

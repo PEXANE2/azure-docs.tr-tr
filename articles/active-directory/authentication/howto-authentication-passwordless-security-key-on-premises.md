@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e28403d905a25e9e792b3b1f31b79c39cd7728b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 5b29f84931c169ffe1c2c81d5e32201cbc63fc88
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522109"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942871"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
 
@@ -50,6 +50,7 @@ Kuruluşların Ayrıca aşağıdaki yazılım gereksinimlerini karşılaması ge
 
 - Cihazların Windows 10 Insider Build 18945 veya daha yeni bir sürümü çalıştırması gerekir.
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)sürüm 1.4.32.0 veya sonraki bir sürüme sahip olmanız gerekir.
+  - Kullanılabilir Azure AD karma kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](../../security/fundamentals/choose-ad-authn.md) ve [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](../hybrid/how-to-connect-install-select-installation.md).
 - Windows Server etki alanı denetleyicileriniz aşağıdaki düzeltme eklerini yüklemiş olmalıdır:
     - Windows Server 2016 için https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
     - Windows Server 2019 için https://support.microsoft.com/help/4534321/windows-10-update-kb4534321

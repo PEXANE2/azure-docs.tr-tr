@@ -1,14 +1,14 @@
 ---
 title: Azure geçişi 'nde bağımlılık görselleştirmesini ayarlama
-description: Azure geçişi sunucu değerlendirmesi ' nde bağımlılık görselleştirmesini ayarlamayı açıklar.
+description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde bağımlılık görselleştirmesinin nasıl ayarlanacağı açıklanır.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916294"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942075"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 

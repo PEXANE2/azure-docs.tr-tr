@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: f51038b1e79a699c15ad2fd969d75c09a2530f6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473860"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943552"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
 Bu hızlı başlangıçta, bir kuyruk oluşturmak ve buna ileti eklemek için .NET için Azure depolama istemci kitaplığı sürüm 11 ' i nasıl kullanacağınızı öğrenirsiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -35,7 +35,7 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 ### <a name="linux"></a>Linux
 
 - [Linux için .NET Core](https://www.microsoft.com/net/download/linux) yükleyin
-- İsteğe bağlı olarak [Visual Studio Code](https://www.visualstudio.com/) ve [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068) yükleyin
+- İsteğe bağlı olarak [Visual Studio Code](https://www.visualstudio.com/) ve [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) yükleyin
 
 ### <a name="macos"></a>macOS
 
@@ -46,7 +46,7 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 
 Bu hızlı başlangıçta kullanılan örnek uygulama, temel bir konsol uygulamasıdır. [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) üzerindeki örnek uygulamayı inceleyebilirsiniz.
 
-Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)'i kullanın. 
+Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)’i kullanın. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
@@ -220,7 +220,7 @@ Console.WriteLine("Contents of peeked message '{0}': {1}", peekedMessage.Id, pee
 Console.WriteLine();
 ```
 
-### <a name="dequeue-a-message"></a>Bir iletiyi kuyruktan çıkarma
+### <a name="dequeue-a-message"></a>Bir iletiyi sıradan çıkarma
 
 Örnek ayrıca bir iletinin nasıl sıradan alınacağını gösterir. Bir iletiyi sıradan kaldırdığınızda, iletiyi kuyruğun önünden alır ve diğer istemcilere geçici olarak görünmez olarak işleyebilirsiniz. Varsayılan olarak, bir ileti 30 saniye boyunca görünmez kalır. Bu süre boyunca, kodunuz iletiyi işleyebilir. İletiyi sıradan çıkarmayı son olarak, başka bir istemcinin aynı iletiyi sıradan çıkarmaması için iletiyi işlemeden hemen sonra silersiniz.
 

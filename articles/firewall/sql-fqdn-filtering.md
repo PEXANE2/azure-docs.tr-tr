@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: 239998f29ac9a578174c5dba547bb24ba0755505
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a42d6bcdcec2a5de7432f11216a4d8dd0c1deef9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318182"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942575"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapılandırma
 
@@ -25,7 +25,7 @@ Artık, Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapıl
 
 SQL FQDN 'leri ile trafiği filtreleyebilirsiniz:
 
-- VNET 'ınızdan bir Azure SQL veritabanı veya Azure SQL veri ambarı 'na. Örneğin: Yalnızca *SQL-Server1.Database.Windows.net*erişimine izin verir.
+- VNET 'ınızdan bir Azure SQL veritabanı veya Azure SQL veri ambarı 'na. Örneğin: yalnızca *SQL-Server1.Database.Windows.net*erişimine izin verin.
 - Şirket içinden Azure SQL yönetilen örneklerine veya sanal ağlarınızdaki SQL IaaS 'ye çalışır.
 - Sanal ağlarınız üzerinde çalışan Azure SQL yönetilen örneklerine veya SQL IaaS 'ye bağlı noktadan
 
@@ -37,7 +37,7 @@ SQL FQDN 'leri olan uygulama kuralları şu anda tüm bölgelerde Azure portal, 
 ## <a name="configure-using-azure-cli"></a>Azure CLı kullanarak yapılandırma
 
 1. [Azure CLI kullanarak bir Azure Güvenlik Duvarı](deploy-cli.md)dağıtın.
-2. Trafiği Azure SQL veritabanı, SQL veri ambarı veya SQL yönetilen örneği 'ne filtrelemeniz durumunda SQL bağlantı modunun **Ara sunucu**olarak ayarlandığından emin olun. SQL bağlantı modunu değiştirme hakkında bilgi edinmek için bkz. [Azure SQL bağlantı mimarisi](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#change-azure-sql-database-connection-policy). 
+2. Trafiği Azure SQL veritabanı, SQL veri ambarı veya SQL yönetilen örneği 'ne filtrelemeniz durumunda SQL bağlantı modunun **Ara sunucu**olarak ayarlandığından emin olun. SQL bağlantı modunu değiştirme hakkında bilgi edinmek için bkz. [Azure SQL bağlantı ayarları](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settingse#change-azure-sql-database-connection-policy).
 
    > [!NOTE]
    > SQL *proxy* modu *yeniden yönlendirmeye*kıyasla daha fazla gecikme süresine neden olabilir. Azure 'da bağlanan istemciler için varsayılan olan yeniden yönlendirme modunu kullanmaya devam etmek istiyorsanız, erişimi güvenlik duvarı [ağ KURALLARıNDA](tutorial-firewall-deploy-portal.md#configure-a-network-rule)SQL [hizmeti etiketi](service-tags.md) kullanarak filtreleyebilirsiniz.
@@ -59,12 +59,12 @@ SQL FQDN 'leri olan uygulama kuralları şu anda tüm bölgelerde Azure portal, 
 
 ## <a name="configure-using-the-azure-portal"></a>Azure portal kullanarak yapılandırma
 1. [Azure CLI kullanarak bir Azure Güvenlik Duvarı](deploy-cli.md)dağıtın.
-2. Trafiği Azure SQL veritabanı, SQL veri ambarı veya SQL yönetilen örneği 'ne filtrelemeniz durumunda SQL bağlantı modunun **Ara sunucu**olarak ayarlandığından emin olun. SQL bağlantı modunu değiştirme hakkında bilgi edinmek için bkz. [Azure SQL bağlantı mimarisi](../sql-database/sql-database-connectivity-architecture.md#change-azure-sql-database-connection-policy). 
+2. Trafiği Azure SQL veritabanı, SQL veri ambarı veya SQL yönetilen örneği 'ne filtrelemeniz durumunda SQL bağlantı modunun **Ara sunucu**olarak ayarlandığından emin olun. SQL bağlantı modunu değiştirme hakkında bilgi edinmek için bkz. [Azure SQL bağlantı ayarları](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settingse#change-azure-sql-database-connection-policy).  
 
    > [!NOTE]
    > SQL *proxy* modu *yeniden yönlendirmeye*kıyasla daha fazla gecikme süresine neden olabilir. Azure 'da bağlanan istemciler için varsayılan olan yeniden yönlendirme modunu kullanmaya devam etmek istiyorsanız, erişimi güvenlik duvarı [ağ KURALLARıNDA](tutorial-firewall-deploy-portal.md#configure-a-network-rule)SQL [hizmeti etiketi](service-tags.md) kullanarak filtreleyebilirsiniz.
 3. Uygulama kuralını uygun protokol, bağlantı noktası ve SQL FQDN 'SI ile ekleyin ve ardından **Kaydet**' i seçin.
-   ![SQL FQDN ile uygulama kuralı](media/sql-fqdn-filtering/application-rule-sql.png)
+   SQL FQDN 'SI ile uygulama kuralı ![](media/sql-fqdn-filtering/application-rule-sql.png)
 4. Ağ üzerinden trafiği filtreleyen bir sanal makineden SQL 'e erişin. 
 5. [Azure Güvenlik Duvarı günlüklerinin](log-analytics-samples.md) trafiğe izin verildiğini doğrulayın.
 

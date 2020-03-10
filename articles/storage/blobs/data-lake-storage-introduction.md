@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921003"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942926"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. giriş
 
@@ -25,15 +25,15 @@ Data Lake depolama 2. nesil, kurumsal veri gölleri Azure'da oluşturmaya yönel
 
 Data Lake Storage 2. temel bir parçası, blob depolamaya [hiyerarşik bir ad alanının](data-lake-storage-namespace.md) eklenmesinin bir parçasıdır. Hiyerarşik ad alanı nesneler/dosya dizinleri verimli veri erişimi için bir hiyerarşi halinde düzenler. Ortak bir nesne deposu adlandırma kuralı, bir hiyerarşik dizin yapısını taklit edecek şekilde adlarında eğik çizgi kullanır. Bu yapı ile Data Lake depolama Gen2 gerçek haline gelir. Bir dizini silme veya yeniden adlandırma gibi işlemler atomik meta veri işlemleri dizin yerine numaralandırma ve dizin adı öneki paylaşan tüm nesneleri işleme haline gelir.
 
-Geçmişte, bulut tabanlı analiz performansı, yönetim ve güvenlik alanlarında tehlikeye gerekiyordu. Data Lake depolama Gen2 her biri bu görünüşler aşağıdaki yollarla ele alır:
+Data Lake Storage 2. blob Storage üzerinde yapılar ve aşağıdaki yollarla performansı, yönetimi ve güvenliği geliştirir:
 
--   Verileri Analize bir önkoşul olarak kopyalamanız veya dönüştürmeniz gerekmiyorsa **performans** iyileştirilir. Hiyerarşik ad alanı büyük ölçüde genel iş performansı artıran dizin yönetimi işlemlerini performansını artırır.
+-   Verileri Analize bir önkoşul olarak kopyalamanız veya dönüştürmeniz gerekmiyorsa **performans** iyileştirilir. Blob depolamada düz ad alanı ile karşılaştırıldığında, hiyerarşik ad alanı, genel iş performansını artıran dizin yönetimi işlemlerinin performansını önemli ölçüde artırır.
 
 -   Dosyaları dizinler ve alt dizinler aracılığıyla düzenleyebileceğiniz ve işleyebileceğiniz için **Yönetim** daha kolay hale getirir.
 
 -   Dizinler veya tek dosyalarda POSIX izinleri tanımlayabilmeniz için **güvenlik güvenliği** uygulanabilir.
 
--   Data Lake Storage 2. düşük maliyetli [Azure Blob depolama alanı](storage-blobs-introduction.md)üzerinde oluşturulduğu için **maliyet verimliliği** mümkündür. Ek özellikleri daha düşük maliyetli sahipliği büyük veri analizini Azure'da çalıştırmaya yönelik daha fazla.
+Ayrıca, düşük maliyetli [Azure Blob depolama](storage-blobs-introduction.md)alanının üzerine inşa edildiği için Data Lake Storage 2. çok maliyetli hale gelir. Ek özellikleri daha düşük maliyetli sahipliği büyük veri analizini Azure'da çalıştırmaya yönelik daha fazla.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake depolama Gen2 temel özellikleri
 
@@ -76,7 +76,7 @@ Desteklenen BLOB depolama özelliklerinin bir listesi için, bkz. [Azure Data La
 
 Data Lake Storage Gen2, verileri almak, analiz yapmak ve görsel gösterimler oluşturmak için kullanabileceğiniz çeşitli Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin listesi için bkz. [Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md).
 
-## <a name="supported-open-source-platforms"></a>Açık kaynak platformlar desteklenir
+## <a name="supported-open-source-platforms"></a>Desteklenen açık kaynaklı platformlar
 
 Data Lake depolama Gen2'ye birden fazla açık kaynak platformları destekler. Tüm liste için, bkz. [Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar](data-lake-storage-supported-open-source-platforms.md).
 

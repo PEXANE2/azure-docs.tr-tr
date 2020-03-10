@@ -1,14 +1,15 @@
 ---
 title: Öğretici-Terkform kullanarak Azure Kubernetes Service (AKS) ile bir Kubernetes kümesi oluşturma
-description: Azure Kubernetes Service ve Terraform ile Kubernetes Kümesi oluşturmayı gösteren öğretici
+description: Bu öğreticide, Azure Kubernetes hizmeti ve Terrampaform ile bir Kubernetes kümesi oluşturacaksınız
+keywords: Azure DevOps terrayform aks Kubernetes
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472256"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945305"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Öğretici: Terrayform kullanarak Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturma
 
@@ -71,7 +72,10 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.5"
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
     }
 
     terraform {

@@ -3,19 +3,19 @@ title: Özel Konuşma Tanıma konuşma hizmeti için test verilerini hazırlama
 titleSuffix: Azure Cognitive Services
 description: Microsoft konuşma tanımanın doğruluğunu test ederken veya özel modellerinizi eğitmek için ses ve metin verileri gerekir. Bu sayfada, veri türlerini ve bunların nasıl kullanılacağını ve bunların nasıl yönetileceğini ele aldık.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660418"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942706"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
@@ -27,16 +27,16 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
+| [Müzik](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
 > [!TIP]
 > Hızlı bir şekilde başlamak için örnek verileri kullanmayı göz önünde bulundurun. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Örnek özel konuşma tanıma verileri <span class="docon docon-navigate-external x-hidden-focus"></span> </a> için bu GitHub deposuna bakın
 
-## <a name="upload-data"></a>Verileri karşıya yükleme
+## <a name="upload-data"></a>Karşıya veri yükleme
 
 Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
@@ -55,15 +55,17 @@ Ses verileri, Microsoft 'un temel konuşma konuşmadan metin modelinin veya öze
 
 Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimlendirildiğinden emin olmak için bu tabloyu kullanın:
 
-| Özellik | Değer |
-|----------|-------|
-| Dosya biçimi | RIFF (WAV) |
-| Örnekleme hızı | 8\.000 Hz veya 16.000 Hz |
-| Kanallar | 1 (mono) |
-| Ses başına maksimum uzunluk | 2 saat |
-| Örnek biçim | PCM, 16 bit |
-| Arşiv biçimi | .zip |
-| Maksimum Arşiv boyutu | 2 GB |
+| Özellik                 | Değer                 |
+|--------------------------|-----------------------|
+| Dosya biçimi              | RIFF (WAV)            |
+| Örnek hız              | 8\.000 Hz veya 16.000 Hz |
+| Kanallar                 | 1 (mono)              |
+| Ses başına maksimum uzunluk | 2 saat               |
+| Örnek biçim            | PCM, 16 bit           |
+| Arşiv biçimi           | .zip                  |
+| Maksimum Arşiv boyutu     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Eğitim için daha fazla veri gerekiyorsa, bunu birkaç. zip dosyasına bölün ve ayrı olarak karşıya yükleyin. Daha sonra, *birden çok* veri kümesinden eğiteyi seçebilirsiniz. Ancak yalnızca *tek* bir veri kümesinden test edebilirsiniz.
@@ -79,22 +81,24 @@ Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüşt�
 
 Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için doğruluğu ölçmek amacıyla, karşılaştırma için insan etiketli dökümlere (Word-Word) sağlamanız gerekir. İnsanlar etiketli döküm genellikle zaman alıcı olsa da doğruluğu değerlendirmek ve modeli kullanım durumlarınız için eğitmek gerekir. Göz önünde bulundurmanız durumunda, tanınma iyileştirmeleri yalnızca belirtilen veriler kadar iyi olacaktır. Bu nedenle, yalnızca yüksek kaliteli döküm dosyalarının karşıya yüklenmesi önemlidir.
 
-| Özellik | Değer |
-|----------|-------|
-| Dosya biçimi | RIFF (WAV) |
-| Örnekleme hızı | 8\.000 Hz veya 16.000 Hz |
-| Kanallar | 1 (mono) |
+| Özellik                 | Değer                               |
+|--------------------------|-------------------------------------|
+| Dosya biçimi              | RIFF (WAV)                          |
+| Örnek hız              | 8\.000 Hz veya 16.000 Hz               |
+| Kanallar                 | 1 (mono)                            |
 | Ses başına maksimum uzunluk | 2 saat (test)/60 s (eğitim) |
-| Örnek biçim | PCM, 16 bit |
-| Arşiv biçimi | .zip |
-| En büyük ZIP boyutu | 2 GB |
+| Örnek biçim            | PCM, 16 bit                         |
+| Arşiv biçimi           | .zip                                |
+| En büyük ZIP boyutu         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Uıou yalnızca *tek* bir veri kümesinden test edebilir, bu dosyayı uygun dosya boyutunda tutmaya özen açabilir.
+> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Yalnızca *tek* bir veri kümesinden test edebilirsiniz, bunu uygun dosya boyutunda tutmanız yeterlidir. Ayrıca, her eğitim dosyası 60 saniye aşılamaz, aksi takdirde hata dışarı kalır.
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örneğin:
+  Örnek:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -161,7 +165,7 @@ Konuşulan biçim fonetik bir dizidir. Bu, harf, sözcük, hecelere veya üçün
 
 Özelleştirilmiş telaffuz Ingilizce (`en-US`) ve Almanca (`de-DE`) ile kullanılabilir. Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
 
-| Dil | Yerel ayar | Karakterler |
+| Dil | Yerel Ayar | Karakterler |
 |----------|--------|------------|
 | Türkçe | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | Almanca | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
@@ -178,5 +182,5 @@ Söylenişleri için ilgili veri dosyanızın doğru biçimlendirildiğinden emi
 
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
-* [Modelinizi eğitme](how-to-custom-speech-train-model.md)
+* [Modelinize eğitme](how-to-custom-speech-train-model.md)
 * [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)

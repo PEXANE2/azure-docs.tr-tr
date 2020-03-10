@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227455"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944190"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -219,14 +219,17 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 
 Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../automation-update-management-groups.md) kullanın. Ek olarak:
 
-* Makinenin hala var olduğunu ve erişilebilir olduğunu doğrulayın. Mevcut değilse, dağıtımınızı düzenleyin ve makineyi kaldırın.
+* Makinenin hala var olduğunu ve erişilebilir olduğunu doğrulayın. 
+* Makine yoksa, dağıtımınızı düzenleyin ve makineyi kaldırın.
 * Güncelleştirme Yönetimi için gereken bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve sonra makinenizin bu gereksinimleri karşıladığını doğrulayın.
-* Ortamınızdaki `SourceComputerId` değişmiş olan makineleri bulmak için Log Analytics aşağıdaki sorguyu çalıştırın. Aynı `Computer` değerine sahip bilgisayarları, ancak farklı bir `SourceComputerId` değeri olup olmadığına bakın. 
+* Karma Runbook Worker Aracısı sorun gidericisini kullanarak karma Runbook Worker bağlantısını doğrulayın. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md).
+* Ortamınızdaki `SourceComputerId` değiştiği makineleri bulmak için Log Analytics aşağıdaki sorguyu çalıştırın. Aynı `Computer` değerine sahip bilgisayarları, ancak farklı bir `SourceComputerId` değeri olup olmadığına bakın.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzenleyin ve ardından `SourceComputerId` doğru değeri yansıtması için bunları kaldırın ve yeniden ekleyin.
+
+* Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzenleyin ve ardından `SourceComputerId` doğru değeri yansıtması için bunları kaldırın ve yeniden ekleyin.
 
 ## <a name="updates-nodeployment"></a>Senaryo: güncelleştirmeler dağıtım olmadan yüklenir
 

@@ -2,23 +2,17 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: d63697f3c140b5ad374607f1ecb00dad20e697de
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
-ms.translationtype: MT
+ms.date: 03/09/2020
+ms.openlocfilehash: aa72116c3e6e98293b28b2d4413fd1dafb1372d9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899145"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942733"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
-Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Bununla birlikte, kaynakları da oluşturabilirsiniz:
-
-* [abonelik düzeyi](deploy-to-subscription.md)
-* [Yönetim grubu düzeyi](deploy-to-management-group.md)
-* Kiracı düzeyi (Bu makalede ele alınmıştır)
-
-Bu düzeyde, [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) atama ya da [ilke](../../governance/policy/overview.md)uygulama gibi işlemler gerçekleştirmek için kiracı düzeyinde dağıtımlar kullanırsınız.
+Kuruluşunuz geliştikçe, Azure AD kiracınızda [ilkeler](../../governance/policy/overview.md) veya [rol tabanlı erişim denetimleri](../../role-based-access-control/overview.md) tanımlamanız ve atamanız gerekebilir. Kiracı düzeyinde şablonlar ile genel olarak ilkeleri uygulayabilir ve genel düzeyde roller atayabilirsiniz.
 
 ## <a name="supported-resources"></a>Desteklenen kaynaklar
 
@@ -41,10 +35,10 @@ Kiracı dağıtımları için kullandığınız şema, kaynak grubu dağıtımla
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-Parametre dosyaları için şunu kullanın:
+Bir parametre dosyasının şeması, tüm dağıtım kapsamları için aynıdır. Parametre dosyaları için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="required-access"></a>Gerekli erişim
@@ -181,5 +175,4 @@ Kiracı dağıtımları için, Şablon işlevleri kullanılırken bazı önemli 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Rol atama hakkında bilgi edinmek için bkz. [RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-template.md).
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
-* Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](template-functions.md).
+* Ayrıca, şablonları [abonelik düzeyinde](deploy-to-subscription.md) veya [Yönetim grubu düzeyinde](deploy-to-management-group.md)dağıtabilirsiniz.

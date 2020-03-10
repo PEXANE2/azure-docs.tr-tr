@@ -1,5 +1,5 @@
 ---
-title: DTU 'dan vCore 'a geçiş
+title: DTU'dan Sanal Çekirdeğe geçiş
 description: DTU modelinden vCore modeline geçiş yapın. VCore 'a geçiş, standart ve Premium katmanları arasında yükseltme veya eski sürüme düşürme ile benzerdir.
 services: sql-database
 ms.service: sql-database
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811268"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945412"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden sanal çekirdek tabanlı modele geçiş
 
@@ -45,7 +45,7 @@ Aşağıdaki tablo, belirli geçiş senaryoları için rehberlik sağlar:
 |Genel amaçlı|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
 ||||
 
-Standart katmanda her 100 DTU, en az 1 sanal çekirdek gerektirir ve Premium katmandaki her 125 DTU en az 1 sanal çekirdek gerektirir. \*
+Thumb kuralı olarak \*, standart katmandaki her 100 DTU en az 1 sanal çekirdek gerektirir ve Premium katmanındaki her 125 DTU en az 1 sanal çekirdek gerektirir. Daha fazla bilgi için bkz. [sanal çekirdek tabanlı satın alma modeli](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
 ## <a name="migrate-failover-groups"></a>Yük devretme gruplarını geçirme
 

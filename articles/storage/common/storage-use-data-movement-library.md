@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509011"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942901"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Veri Taşıma kitaplığıyla veri aktarma
 
@@ -32,7 +32,7 @@ Bu belgede, Windows, Linux ve macOS 'ta çalışan bir .NET Core konsol uygulama
 - Dosyayı URL 'den blob depolamaya kopyalayın.
 - Blob depolamadan blob depolamaya kopyalama.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Bir [Azure Storage hesabı](storage-account-create.md)
@@ -42,7 +42,7 @@ Bu belgede, Windows, Linux ve macOS 'ta çalışan bir .NET Core konsol uygulama
 1. .NET Core yüklemek için [.NET Core yükleme kılavuzunu](https://www.microsoft.com/net/core) ziyaret edin. Ortamınızı seçerken komut satırı seçeneğini belirleyin.
 2. Komut satırından projeniz için bir dizin oluşturun. Bu dizine gidin ve `dotnet new console -o <sample-project-name>` yazarak bir C# konsol projesi oluşturun.
 3. Bu dizini Visual Studio Code açın. Bu adım, Windows 'ta `code .` yazarak komut satırı aracılığıyla hızla yapılabilir.
-4. Uzantıyı Visual Studio Code marketi 'nden yüklersiniz. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio Code yeniden başlatın.
+4. Uzantıyı Visual Studio Code marketi 'nden yüklersiniz. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Visual Studio Code yeniden başlatın.
 5. Bu noktada, iki istem görmeniz gerekir. Biri, "derlemek ve hata ayıklamak için gerekli varlıklar" eklemek içindir. "Evet" e tıklayın. Çözümlenmemiş bağımlılıkları geri yüklemek için başka bir istem vardır. "Geri yükle" ye tıklayın.
 6. `.vscode` altındaki `launch.json`, bir konsol olarak dış Terminal kullanmak üzere değiştirin. Bu ayar `"console": "externalTerminal"` olarak okunmalıdır
 7. Visual Studio Code, .NET Core uygulamalarında hata ayıklamanıza olanak tanır. Uygulamanızı çalıştırmak ve kurulumun çalıştığını doğrulamak için `F5` isabet edin. "Merhaba Dünya!" görmeniz gerekir konsola yazdırılır.

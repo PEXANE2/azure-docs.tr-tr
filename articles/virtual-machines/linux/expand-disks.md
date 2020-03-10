@@ -1,18 +1,18 @@
 ---
-title: Azure 'da Linux VM 'de sanal sabit diskler genişletme
-description: Azure CLı ile Linux VM üzerinde sanal sabit diskler genişletmeyi öğrenin
+title: Linux VM 'de sanal sabit diskleri genişletme
+description: Azure CLı ile bir Linux sanal MAKINESININ sanal sabit disklerini genişletmeyi öğrenin.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036201"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945177"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLı ile Linux VM 'de sanal sabit diskler genişletme
 

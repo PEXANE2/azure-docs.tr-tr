@@ -1,25 +1,18 @@
 ---
 title: Azure Active Directory kimlik bilgileriyle Linux VM 'de oturum açma
 description: Azure Active Directory kimlik doğrulaması kullanarak oturum açmak için bir Linux VM oluşturma ve yapılandırma hakkında bilgi edinin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544625"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944804"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-Uzantı VM 'ye başarıyla yüklendikten sonra, *başarılı* olan *provisioningstate* gösterilmektedir.
+Uzantı VM 'ye başarıyla yüklendikten sonra, *başarılı* olan *provisioningstate* gösterilmektedir. VM 'nin uzantıyı yüklemesi için çalışan bir VM aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [VM aracısına genel bakış](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
 
 ## <a name="configure-role-assignments-for-the-vm"></a>VM için rol atamalarını yapılandırma
 

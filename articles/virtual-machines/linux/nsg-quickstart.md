@@ -1,27 +1,22 @@
 ---
-title: Azure CLı ile bir Linux sanal makinesine bağlantı noktaları açma
-description: Azure Resource Manager dağıtım modelini ve Azure CLı 'yı kullanarak Linux VM 'nize bir bağlantı noktası açma/bitiş noktası oluşturma hakkında bilgi edinin
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure CLı ile sanal makineye bağlantı noktaları açma
+description: Azure CLı kullanarak bir bağlantı noktasını açma/sanal makinenize uç nokta oluşturma hakkında bilgi edinin.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354041"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944538"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Azure CLı ile bir Linux VM 'ye bağlantı noktalarını ve uç noktaları açma
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLı ile bir VM 'ye bağlantı noktalarını ve uç noktaları açma
 
 Bir alt ağ veya VM ağı arabiriminde ağ filtresi oluşturarak Azure 'da bir bağlantı noktası Açarsınız veya bir uç nokta oluşturursunuz. Hem gelen hem de giden trafiği denetleyen, trafiği alan kaynağa bağlı bir ağ güvenlik grubundaki bu filtreleri yerleştirebilirsiniz. Bağlantı noktası 80 ' de yaygın bir Web trafiği örneği kullanalım. Bu makalede, Azure CLı ile bir VM 'ye bağlantı noktası açma gösterilmektedir. 
 

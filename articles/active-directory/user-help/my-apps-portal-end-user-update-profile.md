@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022288"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374742"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profilinizi ve hesap bilgilerinizi güncelleştirme
 
@@ -83,7 +83,7 @@ Kuruluşunuzun, **uygulamalarım** portalınızın **profil** sayfasına dahil e
 
     ![Parola değiştirme sayfası](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Seçin **gönderme**.
+3. **Gönder**' i seçin.
 
     Parolanız değiştirildi. İş veya okul hesabınızı kullanarak daha önce oturum açmış olduğunuz tüm uygulamalarda oturum açmanız gerekir.
 
@@ -114,7 +114,7 @@ Kuruluşunuz iki öğeli doğrulama kullanmanızı gerektiriyorsa, **ek güvenli
 
     - **Microsoft Authenticator uygulamasını ayarlayın.** Microsoft Authenticator uygulamasını doğrulama yönteminiz olarak çalışacak şekilde ayarlamayı tercih edebilirsiniz. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md)
 
-3. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.
+3. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Kuruluşunuzun kullanım koşulları ifadesini gözden geçirin
 

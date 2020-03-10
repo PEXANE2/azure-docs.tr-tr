@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 12/12/2019
+ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383124"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943109"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: tek sayfalı Web uygulaması oluşturma
 
-Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber türündeki sonuçları almanızı sağlar. Bu öğreticide, Bing Haber Arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)’da mevcuttur.
+Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber türündeki sonuçları almanızı sağlar. Bu öğreticide, Bing Haber Arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor. Bu örneğin kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)’da mevcuttur.
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -29,7 +29,7 @@ Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber t
 > [!NOTE]
 > Sayfanın en altındaki JSON ve HTTP başlıklarına tıklandığında, JSON yanıt ve HTTP istek bilgileri gösterilir. Bu ayrıntılar hizmeti keşfederken yararlı olabilir.
 
-Öğretici uygulaması şunları gösterir:
+Öğretici uygulamasında aşağıdakilerin nasıl yapılacağı gösterilmektedir:
 > [!div class="checklist"]
 > * JavaScript'te Bing Haber Arama API'sine çağrı yapma
 > * Arama seçeneklerini Bing Haber API'sine geçirme
@@ -40,6 +40,12 @@ Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber t
 
 Öğretici sayfası tamamen bağımsızdır; dışarıdan hiçbir kare, stil sayfası veya resim dosyası kullanmaz. Yalnızca yaygın olarak desteklenen JavaScript dilinin özelliklerini kullanır ve tüm önemli Web tarayıcılarının geçerli sürümlerinde çalışır.
 
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Öğreticiyle birlikte izlemek için Bing Arama API 'SI için abonelik anahtarlarına ihtiyacınız vardır. Bunlar yoksa, [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve [temel Bing Haritalar anahtarını](https://www.microsoft.com/maps/create-a-bing-maps-key)kullanabilirsiniz.
+
+
 ## <a name="app-components"></a>Uygulama bileşenleri
 Tüm tek sayfalı Web uygulamaları gibi bu öğreticinin uygulaması da üç bölümden oluşur:
 
@@ -48,7 +54,7 @@ Tüm tek sayfalı Web uygulamaları gibi bu öğreticinin uygulaması da üç b�
 > * CSS - Sayfanın görünümünü tanımlar
 > * JavaScript - Sayfanın davranışını tanımlar
 
-HTML ile CSS'nin büyük bölümü bilinen şeylerdir, dolayısıyla öğreticide bunlar açıklanmayacak. HTML, kullanıcının sorgu girdiği ve arama seçeneklerini belirttiği bir arama formu içerir. Form, `<form>` etiketinin `onsubmit` özniteliğini kullanarak aramayı gerçekleştiren JavaScript'e bağlanır:
+HTML ile CSS'nin büyük bölümü bilinen şeylerdir, dolayısıyla öğreticide bunlar açıklanmayacak. HTML, kullanıcının sorgu girdiği ve arama seçeneklerini belirttiği bir arama formu içerir. Form, `onsubmit` etiketinin `<form>` özniteliğini kullanarak aramayı gerçekleştiren JavaScript'e bağlanır:
 
 ```html
 <form name="bing" onsubmit="return newBingNewsSearch(this)">
@@ -61,7 +67,7 @@ HTML, arama sonuçlarının gösterildiği bölümleri de (HTML `<div>` etiketle
 
 Bing Arama API'si abonelik anahtarını koda eklemek zorunda kalmamak için, tarayıcının kalıcı depolamasını kullanarak anahtarı depolarız. Anahtar depolanmadan önce, kullanıcıdan anahtarı isteriz. Anahtar daha sonra API tarafından reddedilirse, depolanan anahtarı geçersiz kılarız. Böylelikle kullanıcıdan yeniden anahtar istenir.
 
-`localStorage` nesnesini (tüm tarayıcılar bunu desteklemez) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevi, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+`storeValue` nesnesini (tüm tarayıcılar bunu desteklemez) veya bir tanımlama bilgisi kullanan `retrieveValue` ve `localStorage` işlevlerini tanımlarız. `getSubscriptionKey()` işlevi, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ``` javascript
 // Cookie names for data we store
@@ -271,7 +277,7 @@ function handleBingResponse() {
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
-|Stage|Olası hatalar|İşleyen|
+|Aşama|Olası hatalar|İşleyen|
 |-|-|-|
 |JavaScript istek nesnesi oluşturma|Geçersiz URL|`try`/`catch` bloğu|
 |İstekte bulunma|Ağ hataları, durdurulan bağlantılar|`error` ve `abort` olay işleyicileri|
@@ -317,10 +323,10 @@ Bing Haber Arama API'si, her biri kendi üst düzey nesnesinin içinde olmak üz
 
 |İlişki|Açıklama|
 |-|-|
-|`pivotSuggestions`|Özgün aramadaki pivot sözcüğü, farklı biriyle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir.|
+|`pivotSuggestions`|Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir.|
 |`queryExpansions`|Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.|
 |`relatedSearches`|Özgün aramayı giren diğer kullanıcılar tarafından da girilmiş olan sorgular. Örneğin, "Mount Rainier" araması yaparsanız, ilgili arama "Mt. Saint Helens" olabilir.|
-|`similarTerms`|Özgün aramayla benzer anlamı olan sorgular. Örneğin, "okullar" araması yaparsanız benzer bir terim "eğitim" olabilir.|
+|`similarTerms`|Özgün aramaya yönelik benzer anlamı olan sorgular. Örneğin, "okullar" araması yaparsanız benzer bir terim "eğitim" olabilir.|
 
 `renderSearchResults()` için daha önce gördüğümüz gibi, yalnızca `relatedItems` önerilerini işleriz ve sonuçta elde edilen bağlantıları sayfanın kenar çubuğuna yerleştiririz.
 
@@ -377,14 +383,14 @@ Haber işleyici işlevi:
 > [!div class="checklist"]
 > * Paragraf etiketi oluşturur, bu etiketi `news` sınıfına atar ve html dizisine gönderir.
 > * Resmin küçük resim boyutunu hesaplar (genişlik 60 piksele sabitlenir, yükseklik buna orantılı olarak hesaplanır).
-> * Görüntünün küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur. 
+> * Resmin küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur. 
 > * Görüntüye ve bu görüntüyü içeren sayfaya bağlanan HTML `<a>` etiketlerini oluşturur.
-> * Görüntü ve bu görüntünün bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
+> * Resim ve bu resmin bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
 
 Küçük resim boyutu hem `<img>` etiketinde hem de küçük resmin URL'sindeki `h` ve `w` alanlarında kullanılır. Ardından [Bing küçük resim hizmeti](../bing-web-search/resize-and-crop-thumbnails.md) tam olarak bu boyutta bir küçük resim verir.
 
 ## <a name="persisting-client-id"></a>Kalıcı istemci kimliği
-Bing arama API'lerinden gelen yanıtlar, başarılı isteklerle birlikte API'ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API'si kullanılıyorsa, mümkün olduğunca bu API'lerin tümünde aynı istemci kimliği kullanılmalıdır.
+Bing arama API'lerinden gelen yanıtlar, başarılı isteklerle birlikte API'ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API’si kullanılıyorsa, mümkün olduğunca bu API’lerin tümünde aynı istemci kimliği kullanılmalıdır.
 
 Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcının tüm aramalarını ilişkilendirebilir. Bunun iki önemli avantajı vardır.
 
@@ -395,7 +401,7 @@ Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcı
 Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScript'in kullanımına sunulmasını engelleyebilir. Bu sınırlama, arama sonucunun kaynağı istekte bulunan sayfadan farklı olduğunda ortaya çıkar. Üretim ortamında, Web sayfasıyla aynı etki alanında API çağrısı yapan bir sunucu tarafı betiği barındırarak bu ilkeye uymalısınız. Betiğin kaynağı Web sayfasıyla aynı olduğundan, `X-MSEdge-ClientID` üst bilgisi JavaScript'in kullanımına sunulur.
 
 > [!NOTE]
-> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
+> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API’si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
 Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir proxy 'den gelen yanıtın, yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir `Access-Control-Expose-Headers` üst bilgisi vardır.
 

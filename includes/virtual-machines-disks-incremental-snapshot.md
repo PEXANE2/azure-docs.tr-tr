@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 2316b52115cc23d11dfb26d951a7f1820f2737cc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77520692"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946105"
 ---
 Artımlı anlık görüntüler (Önizleme), alınan yönetilen diskler için zaman içinde son anlık görüntüden bu yana yapılan tüm değişikliklerden oluşur. Artımlı bir anlık görüntüyü indirmeye veya başka bir şekilde kullanmaya çalıştığınızda, tam VHD kullanılır. Yönetilen disk anlık görüntülerinin bu yeni özelliği, siz tercih etmediğiniz müddetçe her bir anlık görüntü ile tüm diski depolamak için artık gerekli olmadığından daha fazla maliyetli olabilir. Düzenli anlık görüntülerle olduğu gibi, artımlı anlık görüntüler tam yönetilen disk oluşturmak için veya düzenli bir anlık görüntü oluşturmak için kullanılabilir.
 
@@ -25,8 +25,7 @@ Artımlı anlık görüntüler, yönetilen diskler için benzersiz olarak kullan
 
 Şu anda yalnızca şu bölgeler desteklenmektedir:
 
-- Orta Batı ABD, Kanada Doğu Kanada Orta bölgelerinde bir GA teklifi olarak sunulmaktadır.
-- Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Güney Doğu Asya bölgelerinde genel önizleme olarak kullanılabilir.
+- Orta Batı ABD, Doğu ABD, Doğu ABD 2, Orta ABD, Kanada Doğu, Kanada Orta, Kuzey Avrupa, Güney Doğu Asya bölgelerinde bir GA teklifi olarak sunulmaktadır.
 
 ## <a name="restrictions"></a>Kısıtlamalar
 - Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz (yalnızca önizleme sırasında).

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905512"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933795"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -81,7 +81,7 @@ Bir SAS belirteci kullanarak tüm dizini karşıya yükleyin:
   
 - AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
 
-veya
+or
 
 - AzCopy CP "/Path/to/dir" "https://[hesap]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true--put-MD5
 
@@ -147,31 +147,31 @@ Bir SAS belirteci kullanarak tüm blob kapsayıcılarını, dizinleri ve bloblar
 
 Bir erişim anahtarı ve SAS belirteci kullanarak Amazon Web Services (AWS) S3 ' den blob depolamaya tek bir nesne kopyalama. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
   
-- AzCopy CP "https://s3.amazonaws.com/ [Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak AWS S3 'ten bir dizinin tamamını blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/ [Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
 
 [Folder] yer tutucusunu daha iyi anlamak için lütfen https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html başvurun.
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak tüm demetleri Amazon Web Services (AWS) ' den blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak, tüm demetleri bir Amazon Web Services (AWS) bölgesinden blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3- [Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3-[Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt kümesini kopyalayın. Önceki örneklerde olduğu gibi, bir erişim anahtarına ve SAS belirtecine ihtiyacınız olacaktır. AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarladığınızdan emin olun.
 
-- AzCopy CP "https://s3.amazonaws.com/ [Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/[Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 ## <a name="options"></a>Seçenekler
 
 **--BLOB türü** dize, hedefteki blob türünü tanımlar. Bu, Blobları karşıya yüklemek için ve hesaplar arasında kopyalama sırasında kullanılır (varsayılan ' Algıla '). Geçerli değerler ' Detect ', ' BlockBlob ', ' PageBlob ' ve ' AppendBlob ' değerleridir. Hesaplar arasında kopyalama yaparken, ' Algıla ' değeri AzCopy 'in hedef Blobun türünü belirlemek için kaynak Blobun türünü kullanmasına neden olur. Bir dosya karşıya yüklenirken, ' Algıla ' dosyanın dosya uzantısına bağlı olarak bir VHD veya VHDX dosyası olup olmadığını belirler. Dosya bir VHD veya VHDX dosyası ile karşılaşırsanız AzCopy dosyayı bir Sayfa Blobu olarak değerlendirir. (varsayılan "Algıla")
 
-**--Block-blob-katman** dizesi bu blob katmanını kullanarak Blok Blobu Azure depolama 'ya yükler. (varsayılan "none")
+**--Block-blob-katmanlı** dize, blok bloblarını doğrudan tercih ettiğiniz [erişim katmanına](../blobs/storage-blob-storage-tiers.md) yükler. (varsayılan ' none '). Geçerli değerler ' none ', ' Hot ', ' cool ' ve ' Archive ' değerleridir. ' None ' veya katman geçirilmemişse, BLOB depolama hesabının katmanını miras alır.
 
 **--blok-boyut-MB** float, Azure depolama 'ya yükleme yaparken ve Azure depolama 'dan indirerek bu blok boyutunu (MIB 'de belirtilir) kullanır. Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (örneğin: 0,25).
 

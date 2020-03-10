@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: b5032d9d39e66435ca4df36081d6acb225e2327b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402639"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943156"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Öğretici: bir Web sayfasında arama önerileri alın
 
@@ -29,7 +29,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Öğreticiyi takip edebilmek için Bing Otomatik Öneri API'si için bir abonelik anahtarına ihtiyacınız olacaktır. Bir aboneliğiniz yoksa [ücretsiz deneme sürümüne kaydolun](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Öğreticiyi takip edebilmek için Bing Otomatik Öneri API'si için bir abonelik anahtarına ihtiyacınız olacaktır. Bir tane yoksa, Azure portal [Bing otomatik öneri bir kaynak oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) . [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/)da kullanabilirsiniz.
 
 ## <a name="create-a-new-web-page"></a>Yeni bir Web sayfası oluşturma
 

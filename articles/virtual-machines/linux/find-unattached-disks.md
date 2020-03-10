@@ -2,19 +2,19 @@
 title: Eklenmemiş Azure tarafından yönetilen ve yönetilmeyen diskleri bulma ve silme
 description: Azure CLı kullanarak eklenmemiş Azure yönetilen ve yönetilmeyen (VHD/sayfa Blobları) disklerini bulma ve silme.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e475fcc5812177366b8c27ae2cca6b45d6c00709
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf48c53e7b5c1cc8537abeda164460de66abddb
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036147"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945157"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Eklenmemiş Azure tarafından yönetilen ve yönetilmeyen diskleri bulma ve silme
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Azure CLı kullanarak eklenmemiş Azure yönetilen ve yönetilmeyen diskleri bulma ve silme
 Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağlı olan tüm diskler silinmez. Bu özellik, VM 'lerin istenmeden silinmesinden dolayı veri kaybını önlemeye yardımcı olur. Bir VM silindikten sonra, eklenmemiş diskler için ödeme yapmaya devam edersiniz. Bu makalede, eklenmemiş disklerin nasıl bulunacağını ve silineceğini ve gereksiz maliyetlerin nasıl azaltalacağı gösterilmektedir. 
 
 

@@ -4,30 +4,26 @@ description: StorSimple 1200 serisi sanal gerecini Azure Dosya Eşitleme 'a geç
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330949"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943605"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 geçişi Azure Dosya Eşitleme
 
-StorSimple 1200 serisi, şirket içi veri merkezinde çalışan bir sanal gereç. Bu gerecten verileri bir Azure Dosya Eşitleme ortamına geçirmek mümkündür. Bu makalede, Azure Dosya Eşitleme başarılı bir geçiş için gereken arka plan bilgisi ve geçiş adımları sağlanmaktadır.
+StorSimple 1200 serisi, şirket içi veri merkezinde çalışan bir sanal gereç. Bu gerecten verileri bir Azure Dosya Eşitleme ortamına geçirmek mümkündür. Azure Dosya Eşitleme, StorSimple gereçlerinin geçirilebilmesi için varsayılan ve stratejik, uzun süreli Azure hizmetidir.
 
-## <a name="storsimple"></a>StorSimple
+StorSimple 1200 serisi, adım 2022 ' de [yaşam sonuna](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series) ulaşacaktır.  Geçişinizi mümkün olan en kısa sürede planlamaya başlamak önemlidir. Bu makalede, Azure Dosya Eşitleme başarılı bir geçiş için gereken arka plan bilgisi ve geçiş adımları sağlanmaktadır. 
 
-StorSimple, kullanımdan kaldırılmıştır bir Microsoft ürünüdür. Bu ürün için genişletilmiş destek ve bulut hizmeti 31 2022 Aralık tarihinde sona erecek. StorSimple 'tan doğrudan geçiş için planlamaya başlamak önemlidir.
-
-Azure Dosya Eşitleme, StorSimple gereçlerinin geçirilebilmesi için varsayılan ve stratejik, uzun süreli Azure hizmetidir.
+## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 > [!IMPORTANT]
 > Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFilesMigration@microsoft. com ve geçiş sırasında yardım.
-
-## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetidir:
 

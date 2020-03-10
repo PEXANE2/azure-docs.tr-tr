@@ -1,25 +1,19 @@
 ---
 title: Azure 'da bir güvenlik duvarı oluşturmak için FreeBSD 'nin paket filtresini kullanma
 description: Azure 'da FreeBSD 'yi kullanarak bir NAT güvenlik duvarı dağıtmayı öğrenin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: KylieLiang
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 5daceeb2c8f2497288c7891dbe3fb3e0771b2ed5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036091"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945101"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Azure 'da güvenli bir güvenlik duvarı oluşturmak için FreeBSD 'nin paket filtresini kullanma
 Bu makalede, ortak Web sunucusu senaryosuna yönelik Azure Resource Manager şablonu aracılığıyla FreeBSD 'nin Packer filtresini kullanarak bir NAT güvenlik duvarının nasıl dağıtılacağı açıklanır.
@@ -27,7 +21,7 @@ Bu makalede, ortak Web sunucusu senaryosuna yönelik Azure Resource Manager şab
 ## <a name="what-is-pf"></a>PF nedir?
 PF (Ayrıca, ara filtre), güvenlik duvarı için merkezi bir yazılım olan bir BSD lisanslı durum bilgisi paket filtresidir. PF, hızlı bir şekilde gelişmiştir ve artık diğer kullanılabilir güvenlik duvarlarından daha fazla avantaj sağlar. Ağ adresi çevirisi (NAT), günde bir günden bu yana, bu durumda, ALTQ tümleştirilerek ve PF 'nin yapılandırması aracılığıyla yapılandırılabilir hale getirerek, Paket Zamanlayıcısı ve etkin kuyruk yönetimi PF ile tümleştirilmiştir. Yük devretme ve artıklık için pfsync ve CARP gibi özellikler, oturum kimlik doğrulaması için authpf ve FTP-proxy, zor FTP protokolünün güvenlik düzeyini hafifletmek için de geniş bir şekilde genişletildi. Kısaca PF, güçlü ve özellik açısından zengin bir güvenlik duvarıdır. 
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>başlarken
 Web sunucularınız için bulutta güvenli bir güvenlik duvarı ayarlamayı ilgileniyorsanız, kullanmaya başlayalım. Ayrıca, ağ topolojinizi ayarlamak için bu Azure Resource Manager şablonunda kullanılan komut dosyalarını da uygulayabilirsiniz.
 Azure Resource Manager şablonu, PF ve NGINX web sunucusu yüklü ve yapılandırılmış iki FreeBSD sanal makinesi kullanarak NAT/yeniden yönlendirme gerçekleştiren bir FreeBSD sanal makinesini ayarlar. İki Web sunucusu çıkış trafiği için NAT gerçekleştirmeye ek olarak, NAT/yeniden yönlendirme sanal makinesi HTTP isteklerini keser ve hepsini bir kez deneme biçiminde iki Web sunucusuna yönlendirir. VNet, özel yönlendirilebilir olmayan IP adresi alanını (10.0.0.2/24) kullanır ve şablonun parametrelerini değiştirebilirsiniz. Azure Resource Manager şablonu, hedef IP adresine bağlı olarak Azure varsayılan yollarını geçersiz kılmak için kullanılan tek tek yolların bir koleksiyonu olan tüm sanal ağ için bir yol tablosu da tanımlar. 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure veri kutusu Edge kullanıcıları yönetme | Microsoft Docs
-description: Azure veri kutusu Ucunuzdaki kullanıcıları yönetmek için Azure portalını kullanmayı açıklar.
+title: Azure Data Box Edge kullanıcıları yönetme | Microsoft Docs
+description: Azure Data Box Edge kullanıcıları yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 68f8ad903f967812c4a416c732b35fa1712404cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756703"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946134"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Azure veri kutusu Ucunuzdaki kullanıcıları yönetmek için Azure portalını kullanma
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Azure Data Box Edge kullanıcıları yönetmek için Azure portal kullanın
 
-Bu makalede, Azure veri kutusu edge'de kullanıcıları nasıl yöneteceğinizi açıklar. Azure veri kutusu Edge Azure portal aracılığıyla yönetmenize veya yerel web kullanıcı Arabirimi. Kullanıcı ekleme, değiştirme ve silme işlemleri için Azure portalı kullanın.
+Bu makalede, Azure Data Box Edge kullanıcıların nasıl yönetileceği açıklanmaktadır. Azure Data Box Edge Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Kullanıcı ekleme, değiştirme ve silme işlemleri için Azure portalı kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -33,30 +33,29 @@ Kullanıcılara salt okunur erişim veya tam ayrıcalık verilebilir. Adından a
  - **Tam ayrıcalıklı kullanıcı**: Tam erişime sahip yerel kullanıcıdır.
  - **Salt okunur kullanıcı**: Salt okunur erişime sahip yerel kullanıcıdır. Bu kullanıcılar yalnızca salt okunur işlemlere izin veren paylaşımlarla ilişkilendirilir.
 
-Kullanıcı izinleri, paylaşım oluşturma sırasında kullanıcı oluşturulurken tanımlanır. Bir kullanıcıya atanan izinler Dosya Gezgini kullanılarak değiştirilebilir. 
-
+Kullanıcı izinleri, paylaşım oluşturma sırasında kullanıcı oluşturulurken tanımlanır. Paylaşma düzeyi izinlerinin değiştirilmesi Şu anda desteklenmiyor.
 
 ## <a name="add-a-user"></a>Kullanıcı ekleme
 
 Kullanıcı eklemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **genel bakış > kullanıcılar**. Seçin **+ Ekle kullanıcı** komut çubuğunda.
+1. Azure portal, Data Box Edge kaynağınız ' ne gidin ve ardından **genel bakış > kullanıcılar**' a gidin. Komut çubuğunda **+ Kullanıcı Ekle** ' yi seçin.
 
-    ![Kullanıcı Ekle'yi seçin](media/data-box-edge-manage-users/add-user-1.png)
+    ![Kullanıcı Ekle ' yi seçin](media/data-box-edge-manage-users/add-user-1.png)
 
-2. Eklemek istediğiniz kullanıcının kullanıcı adını ve parolasını belirtin. Parolayı onaylayın ve seçin **Ekle**.
+2. Eklemek istediğiniz kullanıcının kullanıcı adını ve parolasını belirtin. Parolayı onaylayın ve **Ekle**' yi seçin.
 
-    ![Kullanıcı adı ve parolayı belirtin](media/data-box-edge-manage-users/add-user-2.png)
+    ![Kullanıcı adı ve parola belirtin](media/data-box-edge-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > Bu kullanıcılar, sistem tarafından ayrılmıştır ve kullanılmamalıdır: Yönetici, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, konuk.  
+    > Bu kullanıcılar sistem tarafından ayrılmıştır ve kullanılmamalıdır: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
 
-3. Kullanıcı oluşturma başlar ve olduğunda bir bildirim gösterilir tamamlandı. Komut çubuğundan kullanıcı oluşturulduktan sonra seçin **Yenile** kullanıcıların güncelleştirilmiş listesini görüntülemek için.
+3. Kullanıcı oluşturma başladığında ve tamamlandığında bir bildirim gösterilir. Kullanıcı oluşturulduktan sonra, komut çubuğundan, güncelleştirilmiş Kullanıcı listesini görüntülemek için **Yenile** ' yi seçin.
 
 
 ## <a name="modify-user"></a>Kullanıcıyı değiştirme
 
-Kullanıcı oluşturulduktan sonra parolasını değiştirebilirsiniz. Kullanıcılar listesinden seçin. Girin ve yeni parolayı onaylayın. Değişiklikleri kaydedin.
+Kullanıcı oluşturulduktan sonra parolasını değiştirebilirsiniz. Kullanıcı listesinden seçin. Yeni parolayı girin ve onaylayın. Değişiklikleri kaydedin.
  
 ![Kullanıcıyı değiştirme](media/data-box-edge-manage-users/modify-user-1.png)
 
@@ -66,13 +65,13 @@ Kullanıcı oluşturulduktan sonra parolasını değiştirebilirsiniz. Kullanıc
 Kullanıcı silmek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **genel bakış > kullanıcılar**.
+1. Azure portal, Data Box Edge kaynağınız ' ne gidin ve ardından **genel bakış > kullanıcılar**' a gidin.
 
-    ![Silmek için kullanıcı seçin](media/data-box-edge-manage-users/delete-user-1.png)
+    ![Silinecek kullanıcıyı seçin](media/data-box-edge-manage-users/delete-user-1.png)
 
-2. Kullanıcıların listeden bir kullanıcı seçin ve ardından **Sil**.  
+2. Kullanıcılar listesinden bir kullanıcı seçin ve **Sil**' i seçin.  
 
-   ![Sil'i seçin](media/data-box-edge-manage-users/delete-user-2.png)
+   ![Sil ' i seçin](media/data-box-edge-manage-users/delete-user-2.png)
 
 3. Sorulduğunda silme işlemini onaylayın. 
 

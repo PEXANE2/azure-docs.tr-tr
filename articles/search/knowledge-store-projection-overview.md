@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754532"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942980"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir bilgi deposundaki projeksiyonlar
 
@@ -211,3 +211,8 @@ Bir sonraki adım olarak, örnek verileri ve yönergeleri kullanarak ilk bilgi d
 
 > [!div class="nextstepaction"]
 > [Bekleyen bir bilgi deposu oluşturun](knowledge-store-create-rest.md).
+
+Dilimleme, satır içi şekillendirme ve ilişkiler gibi gelişmiş projeksiyonun kavramlarını kapsayan bir öğreticide, [bir bilgi deposunda projeksiyonları tanımlamaya](knowledge-store-projections-examples.md) başlayın
+
+> [!div class="nextstepaction"]
+> [Bir bilgi deposunda projeksiyonlarını tanımlama](knowledge-store-projections-examples.md)

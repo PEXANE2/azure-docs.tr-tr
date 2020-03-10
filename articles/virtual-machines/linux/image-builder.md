@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695443"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944949"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Linux VM oluşturma
 
@@ -22,7 +22,7 @@ Bu makalede, Azure görüntü Oluşturucu ve Azure CLı kullanarak özelleştiri
 - Kabuk (satır içi)-belirli komutları çalıştırır. Bu örnekte, satır içi komutlar bir dizin oluşturma ve işletim sistemini güncelleştirme içerir.
 - Dosya-GitHub ' [dan bir dosyayı](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) VM 'deki bir dizine kopyalar.
 
-Ayrıca, bir `buildTimeoutInMinutes`de belirtebilirsiniz. Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
+Ayrıca, bir `buildTimeoutInMinutes`belirtebilirsiniz. Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
 
 Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şu şekildedir: [Helloımagetemplatelinux. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
@@ -75,7 +75,7 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`edinebilirsiniz.
+Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -91,7 +91,7 @@ az group create -n $imageResourceGroup -l $location
 ## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarla
 Görüntü Oluşturucu ' katkıda bulunan ' iznini kaynak grubunda oluşturmak için izin verin. Doğru izinler olmadan görüntü oluşturma başarısız olur. 
 
-`--assignee` Değer, görüntü Oluşturucu hizmeti için uygulama kayıt kimliğidir. 
+`--assignee` değeri, görüntü Oluşturucu hizmeti için uygulama kayıt KIMLIĞIDIR. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -114,14 +114,14 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-Bu örnek. JSON öğesini gerektiği şekilde değiştirebilirsiniz. Örneğin, değerini `buildTimeoutInMinutes` daha uzun süre çalışan derlemeler için izin verecek şekilde artırabilirsiniz. Dosyasını, gibi `vi`bir metin düzenleyicisi kullanarak Cloud Shell düzenleyebilirsiniz.
+Bu örnek. JSON öğesini gerektiği şekilde değiştirebilirsiniz. Örneğin, `buildTimeoutInMinutes` değerini daha uzun süre çalışan derlemeler için izin verecek şekilde artırabilirsiniz. `vi`gibi bir metin düzenleyicisini kullanarak Cloud Shell dosyayı düzenleyebilirsiniz.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Kaynak görüntü için, her zaman `latest` [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir.
+> Kaynak görüntü için her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir, `latest`kullanamazsınız.
 >
 > Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, [izinlerin kaynak grubu için ayarlandığından](#set-permissions-on-the-resource-group)emin olmanız gerekir.
 
@@ -203,7 +203,7 @@ Görüntünün, SSH bağlantınız kurulduğu anda günün Iletisiyle özelleşt
 *******************************************************
 ```
 
-SSH `exit` bağlantısını kapatmak için işiniz bittiğinde yazın.
+SSH bağlantısını kapatmak için işiniz bittiğinde `exit` yazın.
 
 ## <a name="check-the-source"></a>Kaynağı denetleyin
 

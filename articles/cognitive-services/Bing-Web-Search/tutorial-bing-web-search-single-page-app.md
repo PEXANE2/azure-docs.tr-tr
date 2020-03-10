@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986670"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943888"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -32,13 +32,12 @@ Bu örnek uygulama şunları yapabilir:
 
 Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uygulamayı çalıştırmak için ihtiyacınız olacak birkaç şey:
 
 * Node.js 8 veya üstü
-* Abonelik anahtarı
-
+* Bing Arama API 'SI için bir abonelik anahtarı. Yoksa, [bir Bing arama v7 kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)da kullanabilirsiniz.
 ## <a name="get-the-source-code-and-install-dependencies"></a>Kaynak kodu alma ve bağımlılıkları yükleme
 
 İlk adım, örnek uygulamanın kaynak koduyla depoyu kopyalamaktır.
@@ -67,7 +66,7 @@ Bu öğretici `scripts.js` dosyasına ve Bing Web Araması API'sini çağırıp 
 
 ## <a name="html-form"></a>HTML formu
 
-`index.html`, kullanıcıların arama yapmasına ve arama seçeneklerini belirtmesine olanak sağlayan bir form içerir. Form gönderilip `scripts.js` dosyasında tanımlanan `bingWebSearch()` yöntemi çağrıldığında, `onsubmit` özniteliği çağrılır. Üç bağımsız değişken alır:
+`index.html`, kullanıcıların arama yapmasına ve arama seçeneklerini belirtmesine olanak sağlayan bir form içerir. Form gönderilip `onsubmit` dosyasında tanımlanan `bingWebSearch()` yöntemi çağrıldığında, `scripts.js` özniteliği çağrılır. Üç bağımsız değişken alır:
 
 * Arama sorgusu
 * Belirtilen seçenekler
@@ -130,7 +129,7 @@ function bingSearchOptions(form) {
 
 `SafeSearch``strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu form, iki durum içeren bir onay kutusu kullanır: `strict` veya `moderate`.
 
-**Yükselt** onay kutularından herhangi bir seçildiyse, sorguya `answerCount` parametresi eklenir. `promote` parametresi kullanıldığında `answerCount` gereklidir. Bu kod parçacığında, tüm kullanılabilir sonuç türlerinin döndürülmesi için değer `9` olarak ayarlanmıştır.
+**Yükselt** onay kutularından herhangi bir seçildiyse, sorguya `answerCount` parametresi eklenir. `answerCount` parametresi kullanıldığında `promote` gereklidir. Bu kod parçacığında, tüm kullanılabilir sonuç türlerinin döndürülmesi için değer `9` olarak ayarlanmıştır.
 > [!NOTE]
 > Sonuç türünün yükseltilmesi, bunun arama sonuçlarına eklenmesini *garanti* etmez. Bunun yerine, yükseltme işlemi bu tür sonuçların derecelendirmesini kendi normal derecelerine göre yükseltir. Aramaları belirli sonuç türleriyle sınırlandırmak için, `responseFilter` sorgu parametresini kullanın ya da Bing Resim Arama veya Bing Haber Arama gibi daha belirgin bir uç noktayı çağırın.
 
@@ -287,7 +286,7 @@ function handleBingResponse() {
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
-| Stage | Olası hatalar | İşleyen |
+| Aşama | Olası hatalar | İşleyen |
 |-------|--------------------|------------|
 | İstek nesnesini oluşturma | Geçersiz URL | `try` / `catch` bloğu |
 | İstekte bulunma | Ağ hataları, durdurulan bağlantılar | `error` ve `abort` olay işleyicileri |
@@ -332,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-`renderResultsItems()` işlevi her `RankingResponse` koleksiyonundaki öğelerde yinelenir, `answerType` ve `resultIndex` değerlerini kullanarak her derecelendirme sonucunu bir arama sonucuna eşler ve HTML'yi oluşturmak için uygun işleme işlevini çağırır. Öğe için `resultIndex` belirtilmediyse, `renderResultsItems()` bu türdeki tüm sonuçlarda yinelenir ve her öğe için işleme işlevini çağırır. Sonuçta elde edilen HTML, `index.html` dosyasındaki uygun `<div>` öğesine eklenir.
+`renderResultsItems()` işlevi her `RankingResponse` koleksiyonundaki öğelerde yinelenir, `answerType` ve `resultIndex` değerlerini kullanarak her derecelendirme sonucunu bir arama sonucuna eşler ve HTML'yi oluşturmak için uygun işleme işlevini çağırır. Öğe için `resultIndex` belirtilmediyse, `renderResultsItems()` bu türdeki tüm sonuçlarda yinelenir ve her öğe için işleme işlevini çağırır. Sonuçta elde edilen HTML, `<div>` dosyasındaki uygun `index.html` öğesine eklenir.
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and
@@ -421,7 +420,7 @@ Görüntü işleyicisi:
 * Görüntünün küçük resim boyutunu hesaplar (genişlik değişiklik gösterir, yükseklik ise 60 piksele sabitlenmiştir).
 * Bağlama göre görüntü sonucunun önüne gelen HTML'yi ekler.
 * Resmi içeren sayfaya bağlanan HTML `<a>` etiketini oluşturur.
-* Görüntünün küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur.
+* Resmin küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur.
 
 Görüntü işleyicisi, bulundukları yere bağlı olarak sonuçları farklı görüntülemek için `section` ve `index` bağımsız değişkenlerini kullanır. Kenar çubuğunda görüntü sonuçlarının arasına satır sonu (`<br>` etiketi) eklenerek, kenar çubuğunun bir görüntü sütunu göstermesi sağlanır. Diğer bölümlerde, ilk görüntü sonucunun (`(index === 0)`) önüne bir `<p>` etiketi gelir.
 

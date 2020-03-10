@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273975"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933761"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>StorSimple Veri Yöneticisi hizmetini Azure portal yönetme
 
@@ -48,7 +48,7 @@ StorSimple Veri Yöneticisi bir hizmet oluşturmak için aşağıdaki adımları
     
    5. Panonuzda bu hizmetin bağlantısını almak için **panoya sabitle**' yi seçin.
     
-   6. **Oluştur**’a tıklayın.
+   6. **Oluştur**'a tıklayın.
 
       ![StorSimple Veri Yöneticisi hizmeti oluşturma 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -102,9 +102,9 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
    3. **Filtre** alt bölümünde, _\Myrootdirectory\data_ biçiminde ilgilendiğiniz verilerinizi içeren kök dizini girin. _\C: \Data_ gibi sürücü harfleri desteklenmez. Ayrıca, buraya dosya filtresi ekleyebilirsiniz.
 
-   4. Veri dönüştürme hizmeti, anlık görüntüler aracılığıyla Azure 'a gönderilen verilerde çalışır. Bu işi çalıştırdığınızda, bu iş her çalıştırıldığında (en son veriler üzerinde çalışmak üzere) bir yedekleme işlemi gerçekleştirebilir veya buluttaki son mevcut yedeklemeyi (bazı arşivlenmiş veriler üzerinde çalışıyorsanız) kullanabilirsiniz.
+   4. Veri dönüştürme hizmeti yalnızca Azure 'a gönderilen verilerin en son anlık görüntüsünde çalışır.
 
-   5. **Tamam**’a tıklayın.
+   5. **Tamam** düğmesine tıklayın.
 
       ![Kaynak veri deposu yapılandırma 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +121,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
     1. Hedef **Hesap adındaki**açılan listeden hedef olarak oluşturduğunuz depoyu seçin.
 
-    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam**’a tıklayın.
+    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam** düğmesine tıklayın.
 
         ![Hedef veri deposu depolama hesabını yapılandırma](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -150,6 +150,11 @@ StorSimple 'tan iş tanımında belirttiğiniz depolama hesabına veri taşıman
 4. Bu işi izlemek için StorSimple Veri Yöneticisi **işlere** gidin. **İşler** dikey penceresinde izlemeye ek olarak, bir dosya StorSimple 'tan depolama hesabına taşındığında bir iletinin eklendiği depolama kuyruğu üzerinde de dinleme yapabilirsiniz.
 
     ![İşi Başlat Çalıştır 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>İş tamamlandıktan sonra günlükleri görüntüle
+
+Bir işi tamamladıktan sonra işin durumunu görüntüleyebilirsiniz. İş durumu **başarılı**, **kısmen başarılı** ve **başarısız**olabilir. Başarıyla kopyalanan dosyaların listesini ve kopyalanamayan dosyaları görüntüleyebilirsiniz. Bu listeler, hedef depolama hesabınızda **"StorSimple-Data-Manager-joblogs"** adlı bir kapsayıcıda mevcuttur. Bu kapsayıcı içinde, iş tanımınızda aynı ada sahip bir klasör arayabilirsiniz. Bunun içinde, listelerinizi içerecek her iş çalıştırması için bir klasör oluşturulur. Bu klasörün adı, iş ayrıntıları sayfasından alabileceğiniz işin GUID 'sidir. Alternatif olarak, çoğu durumda işler sayfasının içinden kopyalama günlüklerinin bağlantısını görürsünüz.
+Bu klasörde göreceğiniz 2 CSV dosyası kümesi vardır. **Copiedfilelist...** ile başlayan tüm dosyalar, başarıyla kopyalanan dosyaların listesini içerecektir. **Failedfilelist..** . ile başlayan tüm dosyalar, bir hata iletisiyle birlikte kopyalanamayacak dosyaları içerir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

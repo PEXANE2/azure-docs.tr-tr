@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649516"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944209"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Özel AKS kümesi oluşturma
 
+### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+
+AKS kümeniz için bir kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın.
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>Varsayılan temel ağ 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ Burada *--Enable-Private-Cluster* , özel bir küme için zorunlu bir bayrak.
 > [!NOTE]
 > Docker Köprüsü CıDR (172.17.0.1/16) alt ağ CıDR ile çakışıyor, Docker köprü adresini uygun şekilde değiştirin.
 
-## <a name="connect-to-the-private-cluster"></a>Özel kümeye Bağlan
+## <a name="options-for-connecting-to-the-private-cluster"></a>Özel kümeye bağlanma seçenekleri
 
-API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağda bir Azure sanal makinesi (VM) oluşturmanız ve API sunucusuna bağlanmanız gerekir. Bunu yapmak için aşağıdakileri yapın:
+API sunucusu uç noktasının genel IP adresi yok. API sunucusunu yönetmek için, AKS kümesinin Azure sanal ağına (VNet) erişimi olan bir VM kullanmanız gerekir. Özel kümeye Ağ bağlantısı kurmak için çeşitli seçenekler vardır.
 
-1. Kümeye bağlanmak için kimlik bilgilerini alın.
+* AKS kümesiyle aynı Azure sanal ağında (VNet) bir VM oluşturun.
+* Ayrı bir ağda bir VM kullanın ve [sanal ağ eşlemesi][virtual-network-peering]ayarlayın.  Bu seçenek hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
+* Bir [Express Route veya VPN][express-route-or-VPN] bağlantısı kullanın.
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+AKS kümesiyle aynı VNET 'te VM oluşturma en kolay seçenektir.  Express Route ve VPN 'Ler maliyet ekler ve ek ağ karmaşıklığı gerektirir.  Sanal ağ eşlemesi, çakışan aralıklar bulunmadığından emin olmak için ağ CıDR aralıklarını planlamanız gerekir.
 
-1. Aşağıdakilerden birini yapın:
-   * AKS kümesiyle aynı sanal ağda bir VM oluşturun.  
-   * Farklı bir sanal ağda VM oluşturun ve bu sanal ağı AKS kümesi sanal ağıyla eşler.
+## <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
-     Farklı bir sanal ağda VM oluşturursanız, bu sanal ağ ile özel DNS bölgesi arasında bir bağlantı kurun. Bunu yapmak için:
+Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet eşlemesini kullanmak için sanal ağ ile özel DNS bölgesi arasında bir bağlantı ayarlamanız gerekir.
     
-     a. Azure portal MC_ * kaynak grubuna gidin.  
-     b. Özel DNS bölgesini seçin.   
-     c. Sol bölmede **sanal ağ** bağlantısını seçin.  
-     d. VM 'nin sanal ağını özel DNS bölgesine eklemek için yeni bir bağlantı oluşturun. DNS bölgesi bağlantısının kullanılabilir olması birkaç dakika sürer.  
-     e. Azure portal MC_ * kaynak grubuna geri dönün.  
-     f. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET-\** biçimindedir.  
-     g. Sol bölmede, eşlemeler ' i **seçin.**  
-     h. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
-     i. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz. [sanal ağ eşlemesi][virtual-network-peering].
-
-1. VM 'ye Secure Shell (SSH) aracılığıyla erişin.
-1. Kubectl aracını yükleyip Kubectl komutlarını çalıştırın.
-
+1. Azure portal MC_ * kaynak grubuna gidin.  
+2. Özel DNS bölgesini seçin.   
+3. Sol bölmede **sanal ağ** bağlantısını seçin.  
+4. VM 'nin sanal ağını özel DNS bölgesine eklemek için yeni bir bağlantı oluşturun. DNS bölgesi bağlantısının kullanılabilir olması birkaç dakika sürer.  
+5. Azure portal MC_ * kaynak grubuna geri dönün.  
+6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET-\** biçimindedir.  
+7. Sol bölmede, eşlemeler ' i **seçin.**  
+8. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
+9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz. [sanal ağ eşlemesi][virtual-network-peering].
 
 ## <a name="dependencies"></a>Bağımlılıklar  
 * Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
@@ -179,6 +181,8 @@ API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağd
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509284"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944309"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
 
@@ -28,7 +28,7 @@ Bu makalede birden çok mimaride birden çok dilde modül geliştirme ve hata ay
 >[!NOTE]
 >Linux ARM64 cihazları için geliştirme ve hata ayıklama desteği [genel önizlemeye](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)sunuldu. Daha fazla bilgi için bkz. [Visual Studio Code IoT Edge modüllerini geliştirme ve hata ayıklama (Önizleme)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makineniz olarak Windows, macOS veya Linux çalıştıran bir bilgisayar veya sanal makine kullanabilirsiniz. Windows bilgisayarlarda, Windows veya Linux modülleri geliştirebilirsiniz. Windows modülleri geliştirmek için 1809/Build 17763 veya daha yeni sürümünü çalıştıran bir Windows bilgisayarı kullanın. Linux modülleri geliştirmek için, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan bir Windows bilgisayarı kullanın.
 
@@ -37,7 +37,7 @@ Geliştirme makineniz olarak Windows, macOS veya Linux çalıştıran bir bilgis
 - [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Docker uzantısı](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Geliştirmekte olduğunuz dile özel Visual Studio uzantıları:
-  - C#Azure işlevleri dahil: [ C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - C#Azure işlevleri dahil: [ C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   - Python: [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   - Java: [Visual Studio Code Için Java Uzantı paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C: [c/C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
@@ -56,7 +56,7 @@ Modül görüntünüzü derlemek ve dağıtmak için, modül görüntüsünü ve
 
 - Geliştirme makinenizde [Docker Community Edition](https://docs.docker.com/install/) .
 
-- [Azure kapsayıcı kayıt defteri](https://docs.microsoft.com/azure/container-registry/) veya [Docker hub'ı](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) veya [Docker Hub 'ı](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > Prototip ve test etme amacıyla bir bulut kayıt defteri yerine yerel bir Docker kayıt defteri kullanabilirsiniz.
@@ -78,9 +78,9 @@ Modülünüzü bir cihazda test etmek için en az bir IoT Edge cihazıyla etkin 
 
 Aşağıdaki adımlarda, Visual Studio Code ve Azure IoT araçları kullanarak tercih ettiğiniz geliştirme dilinizde (Azure Işlevleri de dahil olmak üzere C#) IoT Edge bir modülün nasıl oluşturulacağı gösterilmektedir. Bir çözüm oluşturup sonra bu çözümdeki ilk modülü oluşturarak başlayın. Her çözüm birden çok modül içerebilir.
 
-1. Seçin **görünümü** > **komut paleti**.
+1.  > **komut paletini** **görüntüle** ' yi seçin.
 
-1. Komut Paleti'nde girin ve şu komutu çalıştırın **Azure IOT Edge: IOT Edge çözüm yeni**.
+1. Komut paletinde, **Azure IoT Edge: yeni IoT Edge çözümü**komutunu girin ve çalıştırın.
 
    ![Yeni IoT Edge çözüm Çalıştır](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -121,7 +121,7 @@ Sanal sıcaklık modülünün nasıl çalıştığını görmek için [Simulated
 
 Çözümle birlikte gelen varsayılan modül kodu şu konumda bulunur:
 
-- Azure işlevi (C#): **modülünüzün adını > *&lt;Modüladı&gt;* . > CS olarak  *&lt;adlandırın&gt;***
+- Azure işlevi (C#): **modüller *&lt;* modül adınızı&gt; > modülünüzün *adı* &lt;>. cs**&gt;
 - C#: **modüller > *&lt;modül adınızı&gt;* > program.cs**
 - Python: **modüller > *&lt;modül adınızı&gt;* > Main.py**
 - Node. js: **modüller > *&lt;modül adınızı&gt;* app. js >**
@@ -198,7 +198,7 @@ Simülatörü ayarlamak ve başlatmak için, Visual Studio Code komut paletinden
    > [!NOTE]
    > Windows kullanıyorsanız, Visual Studio Code tümleşik terminalinin kabuğun **Git Bash** veya **WSL Bash**olduğundan emin olun. PowerShell veya komut isteminden `curl` komutunu çalıştıramazsınız.
    > [!TIP]
-   > Ayrıca [PostMan](https://www.getpostman.com/) veya yerine üzerinden ileti göndermek için API araçlara `curl`.
+   > Ayrıca, `curl`yerine ileti göndermek için [Postman](https://www.getpostman.com/) veya diğer API araçlarını da kullanabilirsiniz.
 
 1. Visual Studio Code hata ayıklama görünümünde, sol panelde değişkenleri görürsünüz.
 
@@ -321,7 +321,7 @@ Modülleriniz Visual Studio Code ile aynı makinede çalışıyorsa, kapsayıcı
 
   - Hata ayıklamakta olan makinedeki modülün çalışır durumda olduğundan ve hata ayıklayıcılarına eklemek için, bağlantı noktası 9229 ' nin dışarıdan erişilebilir olduğundan emin olun. Bunu, hata ayıklayıcı makinesinde `http://<target-machine-IP>:9229/json` açarak doğrulayabilirsiniz. Bu URL, Ayıklanacak Node. js modülüyle ilgili bilgileri göstermelidir.
   
-  - Geliştirme makinenizde Visual Studio Code açın ve `launch.json` düzenleyin; böylece modül  ***adı&lt;&gt;* uzak hata ayıklama (node. js)** profili (ya da modül  ***adı&lt;* uzak hata ayıklama (Windows kapsayıcısında Node. js** ) profili, hata ayıklanmakta olan makinenin IP 'si olur.
+  - Geliştirme makinenizde Visual Studio Code açın ve `launch.json` düzenleyin; böylece modül  ***adı&lt;&gt;* uzak hata ayıklama (node. js)** profili (ya da modül  ***adı&lt;* uzak hata ayıklama (Windows kapsayıcısında Node. js** ) profili, hata ayıklanmakta olan makinenin IP 'si olur.&gt;
 
 - **Java**
 
@@ -367,4 +367,4 @@ Daha fazla bilgi ve adım adım yönergeler için bu [IoT Geliştirici blogu gir
 
 Modülünüzü oluşturduktan sonra [Visual Studio Code Azure IoT Edge modüllerin nasıl dağıtılacağını](how-to-deploy-modules-vscode.md)öğrenin.
 
-Cihazlarınızı IOT Edge modülleri geliştirmek için [kavrama ve kullanma Azure IOT Hub SDK'ları](../iot-hub/iot-hub-devguide-sdks.md).
+IoT Edge cihazlarınız için modüller geliştirmek üzere [Azure IoT Hub SDK 'Larını anlayın ve kullanın](../iot-hub/iot-hub-devguide-sdks.md).

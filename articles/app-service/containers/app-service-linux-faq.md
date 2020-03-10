@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443865"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944082"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 'ta Azure App Service SSS
 
@@ -32,7 +32,7 @@ Tüm Docker dosyalarını [GitHub](https://github.com/azure-app-service)üzerind
 
 | Yığın           | Beklenen değer                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java &AMP;         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
+| Java SE         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
 | Tomcat          | gerekli yapılandırmaların gerçekleştirileceği bir betiğin konumu (örneğin, `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | PM2 yapılandırma dosyası veya betik dosyanız                                |
 | .Net Core       | `dotnet <myapp>.dll` olarak derlenmiş DLL adı                                 |
@@ -180,6 +180,10 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 Uygulamanızın çalıştırıldığı saat sayısı için normal Azure App Service fiyatlandırmaya ücretlendirilirsiniz.
 
 ## <a name="other-questions"></a>Diğer sorular
+
+**"Istenen Özellik kaynak grubunda kullanılamıyor" ne anlama geliyor?**
+
+Azure Resource Manager (ARM) kullanarak Web uygulaması oluştururken bu iletiyi görebilirsiniz. Aynı kaynak grubu için geçerli bir sınırlamaya göre, Windows ve Linux uygulamalarını aynı bölgede karıştıramazsınız.
 
 **Uygulama ayarları adlarında desteklenen karakterler nelerdir?**
 

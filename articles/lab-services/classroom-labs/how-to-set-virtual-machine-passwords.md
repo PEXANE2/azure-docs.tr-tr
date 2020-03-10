@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591532"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933829"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Sanal makine havuzunu ayarlama ve yönetme 
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -102,6 +102,13 @@ Aşağıdaki koşullar karşılandığında laboratuvar Oluşturucu (eğitmen/me
 
 > [!NOTE]
 > Mesleme VM 'yi başlatır ve buna bağlanır, öğrenci kotası etkilenmez. 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Sanal makinelerin listesini bir CSV dosyasına aktar
+
+1. **Sanal makine havuzu** sekmesine geçin.
+2. Araç çubuğunda **..** . (üç nokta) simgesini seçin ve ardından **CSV 'yi dışarı aktar**' ı seçin. 
+
+    ![Sanal makinelerin listesini dışarı aktar](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sizin (Laboratuvar sahibi olarak) yapılandırabileceğiniz diğer öğrenci kullanım seçenekleri hakkında bilgi edinmek için şu makaleye bakın: [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).

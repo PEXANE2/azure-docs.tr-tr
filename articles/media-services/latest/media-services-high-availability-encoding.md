@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f5b02376111a3deba33cd5688330018bd7c370d8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899223"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934203"
 ---
 # <a name="media-services-high-availability-encoding"></a>Yüksek kullanılabilirlik kodlaması Media Services 
 
@@ -42,8 +42,8 @@ Makalede açıklanan yönergeleri ve en iyi uygulamaları izleyerek, tek bir bö
     * [Microsoft. Azure. EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (yerel olarak Media Services olaylarını destekler).
 
     Azure Işlevleri aracılığıyla Event Grid olaylarını da kullanabilirsiniz.
-*    Bir [iş](transforms-jobs-concept.md)oluşturduğunuzda:
-    
+* Bir [iş](transforms-jobs-concept.md)oluşturduğunuzda:
+
     * Şu anda kullanılan hesapların listesinden rastgele bir hesap seçin (Bu liste normalde her iki hesabı da içerir, ancak sorunlar algılanırsa yalnızca bir hesap içerebilir). Liste boşsa, bir işlecin bir uyarı oluşturup Araştırabilmesi için bir uyarı yükseltin.
     * Genel rehberlik, [Joi put](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) başına bir [medya ayrılmış birimine](media-reserved-units-cli-how-to.md) Ihtiyacınız vardır (her Joi put [](analyzing-video-audio-files-concept.md) için 3 medya ayrılmış birimi önerilir).
     * Seçilen hesap için medya ayrılmış birimlerinin (MRU) sayısını alır. Geçerli **medya ayrılmış birim** sayısı zaten en büyük değerde değilse, iş Için gereken MRU sayısını ekleyin ve hizmeti güncelleştirin. İş gönderim oranınızı yüksekse ve en yüksek düzeyde olduğunu bulmak için MRU 'yi sık sık sorguladıktan sonra, değer için makul bir zaman aşımı ile dağıtılmış bir önbellek kullanın.

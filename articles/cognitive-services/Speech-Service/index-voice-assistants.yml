@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Sesli yardımcılar belgeleri
+title: Ses yardımcısı belgeleri
 summary: Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar.
 metadata:
   title: Sesli yardımcılar belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: 95cb9fdccac0955f29686ddfa27ca4431e2e3857
-  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/29/2020
-  ms.locfileid: "78196918"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943339"
 landingContent:
 - title: başlarken
   linkLists:
@@ -35,6 +35,16 @@ landingContent:
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Ses yardımcıları hakkında SSS
       url: faq-voice-assistants.md
+- title: Özel anahtar sözcük
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Özel anahtar sözcük
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Özel anahtar sözcük adlandırma yönergeleri
+      url: speech-devices-sdk-kws-guidelines.md
 - title: Özel komutlar
   linkLists:
   - linkListType: quickstart

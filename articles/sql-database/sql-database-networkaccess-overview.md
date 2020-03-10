@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251915"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945388"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251915"
 > [!IMPORTANT]
 > Bu *Makale,* **Azure SQL veritabanı yönetilen örneği**için geçerlidir. ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](sql-database-managed-instance-connect-app.md) .
 
-[Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net*biçimindeki genel bir uç noktadır. Tasarıma göre, genel uç noktaya tüm erişim reddedilir. Daha sonra, genel uç nokta aracılığıyla SQl veritabanı erişimine seçmeli olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz
-- Azure hizmetlerine izin ver:-açık olarak ayarlandığında, Azure sınırının içindeki diğer kaynaklar, örneğin bir Azure sanal makinesi SQL veritabanına erişebilir
+[Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net*biçiminde genel bir uç noktadır.
 
-- IP güvenlik duvarı kuralları:-Bu özelliği, örneğin şirket içi makinelerden gelen belirli bir IP adresinden gelen bağlantılara açıkça izin vermek için kullanın.
+Genel uç nokta aracılığıyla SQl veritabanı erişimine seçmeli olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz:
+- Azure hizmetlerine izin ver: açık olarak ayarlandığında Azure sınırının içindeki diğer kaynaklar, örneğin bir Azure sanal makinesi SQL veritabanına erişebilir
 
-- Sanal ağ güvenlik duvarı kuralları:-Azure sınırları içindeki belirli bir sanal ağdan gelen trafiğe izin vermek için bu özelliği kullanın
+- IP güvenlik duvarı kuralları: belirli bir IP adresinden (örneğin, şirket içi makinelerden) bağlantılara açıkça izin vermek için bu özelliği kullanın
 
+Ayrıca, ile [sanal AĞLARDAN](../virtual-network/virtual-networks-overview.md) SQL veritabanına özel erişime de izin verebilirsiniz:
+- Sanal ağ güvenlik duvarı kuralları: Azure sınırları içindeki belirli bir sanal ağdan gelen trafiğe izin vermek için bu özelliği kullanın
+
+- Özel bağlantı: belirli bir sanal ağ içindeki Azure SQL Server özel bir uç nokta oluşturmak için bu özelliği kullanın
+
+
+
+Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapabilecekleri hakkında daha fazla bilgi için aşağıdaki videoya bakın:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Azure hizmetlerine izin ver 
 [Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturma sırasında, bu ayar işaretsiz bırakılır.
 
- ![Yeni sunucu oluşturma ekranının ekran görüntüsü][1]
+
 
 Bu ayarı, Azure SQL Server aşağıdaki gibi oluşturulduktan sonra güvenlik duvarı bölmesi aracılığıyla da değiştirebilirsiniz.
   
@@ -129,6 +138,9 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 > [!NOTE]
 > Henüz bir alt ağda SQL veritabanınız olamaz. Azure SQL veritabanı sunucunuz, sanal ağınızdaki bir alt ağda bulunan bir düğümse, sanal ağ içindeki tüm düğümler SQL veritabanınıza iletişim kurabilir. Bu durumda, VM 'niz herhangi bir sanal ağ kuralına veya IP kuralına gerek duymadan SQL veritabanı ile iletişim kurabilir.
 
+## <a name="private-link"></a>Özel Bağlantı 
+Özel bağlantı, Azure SQL Server **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel uç nokta, belirli bir [sanal ağ](../virtual-network/virtual-networks-overview.md) ve alt ağ içindeki özel bir IP adresidir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [Azure SQL veritabanı oluşturma](sql-database-single-database-get-started.md).
@@ -146,3 +158,4 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

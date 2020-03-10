@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932990"
+ms.locfileid: "78944220"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -56,7 +56,7 @@ Aşağıdaki örnekte **AAD ortak** teknik profili gösterilmektedir:
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Giriş talepleri
+## <a name="inputclaims"></a>Inputclaims
 
 Inputclaim öğesi, dizindeki bir hesabı aramak veya yeni bir hesap oluşturmak için kullanılan bir talep içerir. Tüm Azure AD teknik profillerinin giriş talep koleksiyonunda tam olarak bir ınputclaim öğesi olmalıdır. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir.
 
@@ -66,7 +66,7 @@ Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federas
 
 Inputclaimstransformations öğesi, giriş talebini değiştirmek veya yeni bir tane oluşturmak için kullanılan bir giriş talepleri dönüştürme öğeleri koleksiyonu içerebilir.
 
-## <a name="output-claims"></a>Çıkış talepleri
+## <a name="outputclaims"></a>Outputclaim
 
 **Outputclaim** öğesi, Azure AD teknik profili tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir. `DefaultValue` özniteliğini ayarladığınız sürece Azure Active Directory tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
 

@@ -8,72 +8,63 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+zone_pivot_groups: programming-languages-set-twelve
+ms.openlocfilehash: 3fab02d3dc567a2c54edad5bfb05abe7d99f7b7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78331119"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943735"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
-Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, sıkıştırılmış ses ' i, pullstream veya PushStream kullanarak konuşma hizmetine akışa almanın bir yolunu sağlar.
+Konuşma hizmeti SDK **sıkıştırılmış ses girişi akış** API 'si, bir `PullStream` veya `PushStream`kullanarak, konuşma hizmetine sıkıştırılmış ses akışını sağlamanın bir yolunu sağlar.
 
 > [!IMPORTANT]
-> Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8) üzerinde, C++ C#, ve Java için akış sıkıştırılmış giriş sesi şu anda desteklenmektedir. Ayrıca iOS platformunda Android ve [Amaç-C ' d a](how-to-use-codec-compressed-audio-input-streams-ios.md) [Java](how-to-use-codec-compressed-audio-input-streams-android.md) için de desteklenir.
+> , Linux üzerinde Java (Ubuntu C#16,04 C++, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8) için şu anda sıkıştırılmış giriş sesi akışı desteklenmektedir. Ayrıca iOS platformunda Android ve amaç-C ' d a Java için de desteklenir.
 > Konuşma SDK sürümü 1.7.0 veya üzeri gereklidir (RHEL 8, CentOS 8 için sürüm 1.10.0 veya üzeri).
 
-WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:
-
-- MP3
-- OPUS/OGG
-- FLAC
-- WAV w kapsayıcısında
-- WAV kapsayıcısında MULAW
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Sıkıştırılmış ses işleme, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedeni için GStreamer ikili dosyaları derlenmez ve konuşma SDK ile bağlantılı değildir. Bu nedenle, Application Developer 'ın sıkıştırılmış giriş sesini kullanabilmesi için 18,04, 16,04 ve de, 9 ' a, aşağıdakileri yüklemesi gerekir.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-```
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/cpp/prerequisites.md)]
+::: zone-end
 
-RHEL/CentOS 8 ' de:
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/java/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
-```
-
-> [!NOTE]
-> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Konuşma hizmetine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream`oluşturun. Sonra akış sınıfınızın bir örneğinden bir `AudioConfig` oluşturun ve akışın sıkıştırma biçimini belirtin.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/examples.md)]
+::: zone-end
 
-`myPushStream` adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/cpp/examples.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/java/examples.md)]
+::: zone-end
 
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-// Create an audio config specifying the compressed audio format and the instance of your input stream class.
-var audioFormat = AudioStreamFormat.GetCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);
-var audioConfig = AudioConfig.FromStreamInput(myPushStream, audioFormat);
-
-var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-var result = await recognizer.RecognizeOnceAsync();
-
-var text = result.GetText();
-```
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/examples.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [Java 'da konuşmayı tanımayı öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+> [!div class="nextstepaction"]
+> [Konuşmayı tanımayı öğrenin](quickstarts/speech-to-text-from-microphone.md)

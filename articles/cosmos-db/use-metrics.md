@@ -1,6 +1,6 @@
 ---
-title: İzleyici ve Azure Cosmos DB'de ölçümlerle hata ayıklama
-description: Ölçümler, sık karşılaşılan sorunları hata ayıklama ve veritabanını izlemek için Azure Cosmos DB'de kullanın.
+title: Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
+description: Ortak sorunları ayıklamak ve veritabanını izlemek için Azure Cosmos DB ölçümleri kullanın.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: sngun
@@ -8,73 +8,73 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.reviewer: sngun
 ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275692"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387940"
 ---
-# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>İzleyici ve Azure Cosmos DB'de ölçümlerle hata ayıklama
+# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
 
-Azure Cosmos DB, aktarım hızı, depolama, tutarlılık, kullanılabilirlik ve gecikme süresi için ölçümler sağlar. Azure portalı, bu ölçütlerin toplu bir görünümünü sağlar. Azure İzleyici API'sinden Azure Cosmos DB ölçümleri de görüntüleyebilirsiniz. Azure İzleyici ölçümleri görüntüleme hakkında bilgi edinmek için [Azure İzleyici'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesi. 
+Azure Cosmos DB işleme hızı, depolama, tutarlılık, kullanılabilirlik ve gecikme süresi ölçümleri sağlar. Azure portalı bu ölçümlerin bir toplu görünümünü sağlar. Azure Cosmos DB ölçümlerini Azure İzleyici API'sinden de görüntüleyebilirsiniz. Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesine bakın. 
 
-Bu makalede, yaygın kullanım örnekleri ve Azure Cosmos DB ölçümleri analiz edin ve bu sorunların hatalarını ayıklamak için nasıl kullanılabileceği gösterilmektedir. Ölçümler, beş dakikada bir toplanan ve yedi gün boyunca tutulur.
+Bu makalede, yaygın kullanım durumları ve bu sorunları çözümlemek ve hatalarını ayıklamak için Azure Cosmos DB ölçümlerinin nasıl kullanılabileceği anlatılmaktadır. Ölçümler her beş dakikada bir toplanır ve yedi gün boyunca tutulur.
 
-## <a name="view-metrics-from-azure-portal"></a>Azure portalından ölçümlerini görüntüleme
+## <a name="view-metrics-from-azure-portal"></a>Azure portal ölçümleri görüntüleme
 
 1. [Azure portalda](https://portal.azure.com/) oturum açın.
 
-1. Açık **ölçümleri** bölmesi. Varsayılan olarak, depolama ölçümleri bölmesi gösterir dizin, Azure Cosmos hesabınızdaki tüm veritabanları için istek birimi ölçümleri. Bu ölçüm veritabanı, kapsayıcı veya bir bölge başına filtreleyebilirsiniz. Ayrıca, belirli bir zaman ayrıntı düzeyi ölçümlere filtreleyebilirsiniz. Ayrı sekmelerde aktarım hızı, depolama, kullanılabilirlik, gecikme süresi ve tutarlılık ölçümleri hakkında daha fazla ayrıntı sağlanır. 
+1. **Ölçümler** bölmesini açın. Varsayılan olarak, ölçümler bölmesi Azure Cosmos hesabınızdaki tüm veritabanları için depolama, dizin, istek birimleri ölçümlerini gösterir. Her veritabanı, kapsayıcı veya bir bölge için bu ölçümleri filtreleyebilirsiniz. Ayrıca ölçümleri belirli bir zaman düzeyinde filtreleyebilirsiniz. Aktarım hızı, depolama, kullanılabilirlik, gecikme süresi ve tutarlılık ölçümleri hakkında daha fazla ayrıntı, ayrı sekmelerde sunulmaktadır. 
 
-   ![Azure portalında cosmos DB performans ölçümleri](./media/use-metrics/performance-metrics.png)
+   ![Azure portal Cosmos DB performans ölçümleri](./media/use-metrics/performance-metrics.png)
 
-Aşağıdaki ölçümler kullanılabilir **ölçümleri** bölmesi: 
+**Ölçümler** bölmesinde aşağıdaki ölçümler mevcuttur: 
 
-* **Verimlilik metriklerini** -kapsayıcısı için sağlanan işleme veya depolama kapasitesinin aştığından bu ölçüm tüketilen veya başarısız istekleri (429 yanıt kodu) sayısını gösterir.
+* **İşleme ölçümleri** -Bu ölçüm, kapsayıcı için sağlanan aktarım hızı veya depolama kapasitesi aşıldığı için tüketilen veya başarısız olan isteklerin (429 yanıt kodu) sayısını gösterir.
 
-* **Depolama ölçümleri** -Bu ölçüm kullanım veri ve dizin boyutunu gösterir.
+* **Depolama ölçümleri** -Bu ölçüm, veri ve Dizin kullanımının boyutunu gösterir.
 
-* **Kullanılabilirlik ölçümlerini** -Bu ölçüm, toplam istek / saat üzerinden başarılı istekler yüzdesini gösterir. Başarı oranı, Azure Cosmos DB SLA'lar ile tanımlanır.
+* **Kullanılabilirlik ölçümleri** -Bu ölçüm, toplam istek üzerindeki başarılı isteklerin yüzdesini saat başına gösterir. Başarı oranı Azure Cosmos DB SLA 'Lar tarafından tanımlanır.
 
-* **Gecikme süresi ölçülerini** -Bu ölçüm hesabınızı çalışıp burada bölgede Azure Cosmos DB tarafından gözlemlenen okuma ve yazma gecikme süresi göstermektedir. Coğrafi olarak çoğaltılmış bir hesap için bölgeler arasında gecikme görselleştirebilirsiniz. Bu ölçüm, uçtan uca istek gecikme süresi temsil etmez.
+* **Gecikme ölçümleri** -Bu ölçüm, hesabınızın çalıştığı bölgedeki Azure Cosmos DB tarafından gözlenen okuma ve yazma gecikmesini gösterir. Coğrafi olarak çoğaltılan bir hesap için bölgeler genelinde gecikme süresini görselleştirebilirsiniz. Bu ölçüm, uçtan uca istek gecikmesini temsil etmez.
 
-* **Tutarlılık ölçümleri** -Bu ölçüm nasıl nihai tutarlılık için seçtiğiniz bir tutarlılık modelini gösterir. Çok bölgeli hesaplar için bu ölçüm, seçtiğiniz bölgeler arasında çoğaltma gecikmesi de gösterir.
+* **Tutarlılık ölçümleri** -Bu ölçüm, seçtiğiniz tutarlılık modeli için ne kadar tutarlılık olduğunu gösterir. Bu ölçüm, çok bölgeli hesaplar için seçtiğiniz bölgeler arasındaki çoğaltma gecikmesini de gösterir.
 
-* **Sistem ölçümlerini** -Bu ölçüm, kaç tane meta veri isteği ana bölüm tarafından sunulan gösterir. Ayrıca daraltılmış istekler belirlemenize yardımcı olur.
+* **Sistem ölçümleri** -Bu ölçüm, ana bölüm tarafından sunulan veri isteklerinin sayısını gösterir. Ayrıca, kısıtlanan istekleri belirlemesine de yardımcı olur.
 
-Aşağıdaki bölümlerde, Azure Cosmos DB ölçümleri kullanabileceğiniz yaygın senaryolar açıklanmaktadır. 
+Aşağıdaki bölümlerde Azure Cosmos DB ölçümlerini kullanabileceğiniz yaygın senaryolar açıklanmaktadır. 
 
-## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Kaç istek doğrulamanın başarılı olması veya hatalara neden anlama
+## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Kaç isteğin başarılı olduğunu veya hatalara neden olduğunu anlayın
 
-Başlamak için head [Azure portalında](https://portal.azure.com) gidin **ölçümleri** dikey penceresi. Dikey pencerede Bul ** istek sayısını 1 dakikalık grafik kapasite aşıldı. Bu grafik, durum kodu ile bölümlenmiş bir dakika tarafından dakika toplam istek gösterir. HTTP durum kodları hakkında daha fazla bilgi için bkz. [Azure Cosmos DB için HTTP durum kodları](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Başlamak için [Azure Portal](https://portal.azure.com) gidin ve **ölçümler** dikey penceresine gidin. Dikey pencerede, * * istek sayısı ' nı 1 dakikalık bir grafik olarak aşmış olan istek sayısını bulun. Bu grafik, durum koduna göre bölünmüş toplam dakikalık isteği gösterir. HTTP durum kodları hakkında daha fazla bilgi için bkz. [Azure Cosmos DB Için http durum kodları](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
-En yaygın hata durum kodu 429 (hızı sınırlama/azaltma) ' dir. Bu hata Azure Cosmos DB'de istekleri birden çok sağlanan aktarım hızı anlamına gelir. Bu sorunun en yaygın çözüm [RU'ları ölçeklendirme](./set-throughput.md) bir koleksiyon için.
+En yaygın hata durum kodu 429 ' dir (hız sınırlandırma/azaltma). Bu hata, Azure Cosmos DB isteklerinin sağlanan aktarım hızına göre daha fazla olduğu anlamına gelir. Bu sorunun en yaygın çözümü, belirtilen koleksiyon için [Rus ölçeğini ölçeklendirmektir](./set-throughput.md) .
 
 ![Dakika başına istek sayısı](media/use-metrics/metrics-12.png)
 
-## <a name="determine-the-throughput-distribution-across-partitions"></a>Bölümler arasında aktarım hızı dağıtım belirleme
+## <a name="determine-the-throughput-distribution-across-partitions"></a>Bölümler arasında üretilen iş dağıtımını belirleme
 
-İyi bir bölüm anahtarlarınızı kardinalitesi sahip, ölçeklenebilir bir uygulama için gereklidir. Bölümler tarafından ayrılmış herhangi bir bölünmüş kapsayıcı aktarım hızı dağıtımını belirlemek için gidin **ölçümler dikey penceresine** içinde [Azure portalında](https://portal.azure.com). İçinde **aktarım hızı** sekmesi, depolama dökümü içinde gösterilmiştir **RU/saniye her bir fiziksel bölüm tarafından kullanılan en fazla** grafiği. Aşağıdaki grafikte, en sol tarafındaki dengesiz bölümü tarafından gösterilen veri düşük bir dağıtım örneği gösterilmektedir.
+Bölüm anahtarlarınızın iyi bir önemliliğine sahip olmak, ölçeklenebilir bir uygulama için gereklidir. Bölümlere göre ayrılmış herhangi bir bölümlenmiş kapsayıcının üretilen iş dağıtımını öğrenmek için [Azure Portal](https://portal.azure.com) **ölçümler dikey penceresine** gidin. **Aktarım hızı** sekmesinde, depolama dökümü **her bir fiziksel bölüm GRAFIĞININ en fazla ru/saniye** cinsinden gösterilir. Aşağıdaki grafik, en soldaki çarpıtılmış bölümde gösterildiği gibi verilerin yanlış dağıtımına ilişkin bir örnek gösterir.
 
-![Tek bölüm 3: 05'te yoğun kullanım görme](media/use-metrics/metrics-17.png)
+![Tek bölüm 3:05 PM 'de ağır kullanımı görüntüleme](media/use-metrics/metrics-17.png)
 
-Düzensiz aktarım hızı dağıtım neden *sık erişimli* daraltılmış istekler neden olabilir ve yeniden bölümlenmesi gerekebilir, bölümler. Azure Cosmos DB'de bölümleme hakkında daha fazla bilgi için bkz. [bölümleme ve ölçeklendirme Azure Cosmos DB'de](./partition-data.md).
+Düzensiz bir üretilen iş dağıtımı, kısıtlanmış isteklere yol açabilecek ve yeniden bölümleme gerektirebilecek *etkin* bölümlere neden olabilir. Azure Cosmos DB bölümlendirme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB bölüm ve ölçek](./partition-data.md).
 
-## <a name="determine-the-storage-distribution-across-partitions"></a>Bölümler arasında depolama dağıtım belirleme
+## <a name="determine-the-storage-distribution-across-partitions"></a>Bölümler arasında depolama dağılımını belirleme
 
-İyi bir kardinalite bölümünüzün sahip, ölçeklenebilir bir uygulama için gereklidir. Bölümler tarafından ayrılmış herhangi bir bölünmüş kapsayıcı depolama dağıtımını belirlemek için ölçümler dikey penceresine gidin [Azure portalında](https://portal.azure.com). Depolama sekmede verilerdeki depolama dökümü gösterilen + dizin üst bölüm anahtarları grafik tarafından kullanılan depolama miktarı. Aşağıdaki grafikte en sol tarafındaki dengesiz bölüm gösterildiği gibi veri depolama, düşük bir dağıtım gösterilmektedir.
+Tüm ölçeklenebilir uygulamalar için bölümünüzün iyi bir önemliliğine sahip olmak önemlidir. Bölümlere göre ayrılmış herhangi bir bölümlenmiş kapsayıcının depolama dağılımını öğrenmek için [Azure Portal](https://portal.azure.com)ölçümler dikey penceresine gidin. Depolama alanı sekmesinde, depolama dökümü üst bölüm anahtarları tarafından tüketilen veri + dizin depolaması bölümünde gösterilir. Aşağıdaki grafik, en soldaki asimetrik bölümde gösterildiği gibi veri depolamanın kötü bir dağıtımını gösterir.
 
-![Zayıf veri dağıtım örneği](media/use-metrics/metrics-07.png)
+![Kötü veri dağıtımı örneği](media/use-metrics/metrics-07.png)
 
-Hangi bölüm anahtarı bölüm grafikte tıklayarak dağıtım eğriltme neden kökü olabilir.
+Grafikteki bölüme tıklayarak, hangi bölüm anahtarının dağıtımı eğriltir.
 
-![Bölüm anahtarı, dağıtım eğme](media/use-metrics/metrics-05.png)
+![Bölüm anahtarı dağılımı eğriltme](media/use-metrics/metrics-05.png)
 
-Hangi bölüm anahtarı tanımlayan eğriltme dağıtımlarında neden olan sonra kapsayıcınızı daha fazla dağıtılmış bir bölüm anahtarıyla yeniden bölmek zorunda kalabilirsiniz. Azure Cosmos DB'de bölümleme hakkında daha fazla bilgi için bkz. [bölümleme ve ölçeklendirme Azure Cosmos DB'de](./partition-data.md).
+Hangi bölüm anahtarının dağıtım içinde eğilmesine neden olduğunu tanımladıktan sonra, kapsayıcınızı daha fazla Dağıtılmış bölüm anahtarıyla yeniden bölümlemeniz gerekebilir. Azure Cosmos DB bölümlendirme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB bölüm ve ölçek](./partition-data.md).
 
-## <a name="compare-data-size-against-index-size"></a>Dizin boyutu karşı veri boyutunu karşılaştırın
+## <a name="compare-data-size-against-index-size"></a>Veri boyutunu Dizin boyutuyla karşılaştırın
 
-Azure Cosmos DB'de toplam tüketilen depolama alanı veri boyutu ve dizin boyutu birleşimidir. Genellikle, dizin boyutu bir veri boyutu bölümüdür. Ölçümler dikey penceresinde [Azure portalında](https://portal.azure.com), depolama sekmesi veri ve dizin göre depolama alanı tüketiminin dökümünü gösterir.
+Azure Cosmos DB, tüketilen toplam depolama alanı, hem veri boyutu hem de dizin boyutunun birleşimidir. Genellikle, dizin boyutu veri boyutunun bir kesiri olur. [Azure Portal](https://portal.azure.com)ölçümler dikey penceresinde, depolama sekmesi verileri ve dizini temel alarak depolama tüketiminin dökümünü alır.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -82,11 +82,11 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
  Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-Dizin alanından tasarruf etmek istiyorsanız, ayarlayabileceğiniz [dizin oluşturma ilkesi](index-policy.md).
+Dizin alanını korumak istiyorsanız, [Dizin oluşturma ilkesini](index-policy.md)ayarlayabilirsiniz.
 
-## <a name="debug-why-queries-are-running-slow"></a>Hata ayıklama neden sorguların yavaş çalışıyor
+## <a name="debug-why-queries-are-running-slow"></a>Sorguların neden yavaş çalıştığını hata ayıkla
 
-SQL API'si SDK'ları Azure Cosmos DB sorgu yürütme istatistikleri sağlar.
+SQL API SDK 'lerinde, Azure Cosmos DB sorgu yürütme istatistikleri sağlar.
 
 ```csharp
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -105,12 +105,12 @@ FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 ```
 
-*QueryMetrics* ne kadar sorgunun her bir bileşeni yürütmeyi sürdüğünü ayrıntılar sağlar. En yaygın kök nedeni taramalar uzun sorguları çalıştırmak için sorgu anlamına gelir, dizinleri yararlanarak başaramadı. Daha iyi bir filtre koşulu ile bu sorun çözülebilir.
+*Queryölçümler* , sorgunun her bileşeninin yürütme için ne kadar süreceğine ilişkin ayrıntılar sağlar. Uzun süre çalışan sorgulara ilişkin en yaygın temel neden, sorgunun dizinlerden yararlanamaz anlamına gelir. Bu sorun, daha iyi bir filtre koşuluyla çözülebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi, izleme ve Azure portalında sağlanan ölçümler kullanarak hata ayıklama sorunlarını öğrendiniz. Aşağıdaki makaleleri okuyarak, veritabanı performansını iyileştirme hakkında daha fazla bilgi isteyebilirsiniz:
+Artık Azure portal belirtilen ölçümleri kullanarak sorunları nasıl izleyip ayıklayacağınız hakkında daha fazla öğrendiniz. Aşağıdaki makaleleri okuyarak veritabanı performansını artırma hakkında daha fazla bilgi edinmek isteyebilirsiniz:
 
-* Azure İzleyici ölçümleri görüntüleme hakkında bilgi edinmek için [Azure İzleyici'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesi. 
-* [Performans ve ölçek testi ile Azure Cosmos DB](performance-testing.md)
+* Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesine bakın. 
+* [Azure Cosmos DB ile performans ve ölçek testi](performance-testing.md)
 * [Azure Cosmos DB için performans ipuçları](performance-tips.md)

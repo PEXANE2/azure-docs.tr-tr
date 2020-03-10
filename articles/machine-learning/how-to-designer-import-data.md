@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138161"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942299"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcı 'ya aktarma (Önizleme)
 
@@ -56,6 +56,8 @@ Verileri içeri aktarmak için veri kümelerini kullanmanızı öneririz, ayrıc
 
 Veri alma modülünü kullanma hakkında ayrıntılı bilgi için bkz. [veri başvurusunu Içeri aktarma sayfası](algorithm-module-reference/import-data.md).
 
+[!NOTE]
+> Veride çok sayıda sütun varsa, verileri Içeri aktarma modülünde "boyut sınırlaması nedeniyle doğrulama başarısız oldu" ile karşılaşabilirsiniz. Bunun nedeni, sütununun kodlama sonrasında maxmıum modülü parametre uzunluğunu dışladığı için. Bu durumda, [veri kümesini veri kümeleri Kullanıcı arabiriminde kaydetmenizi](how-to-create-register-datasets.md#use-the-ui)öneririz, bu da hatayı ortadan kaldırabilirsiniz.  
 
 ## <a name="supported-sources"></a>Desteklenen kaynaklar
 

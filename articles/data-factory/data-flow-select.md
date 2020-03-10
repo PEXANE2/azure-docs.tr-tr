@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930239"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934186"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Eşleme veri akışı dönüşüm seçme
 
@@ -55,6 +55,11 @@ Ancak, özel kurallar eklemek istiyorsanız, "eşleme Ekle" seçeneğine tıklam
 Kural tabanlı eşleme ' yi seçtiğinizde, gelen model kurallarını eşleştirmek ve giden alan adlarını tanımlamak için eşleşen ifadenizi değerlendirmek üzere ADF 'yi öğreneceksiniz. Hem alan hem de kural tabanlı eşlemelerin birleşimini ekleyebilirsiniz. Daha sonra alan adları, kaynaktan gelen meta veriler temelinde ADF tarafından çalışma zamanında oluşturulur. Oluşturulan alanların adlarını hata ayıklama sırasında ve veri önizleme bölmesini kullanarak görüntüleyebilirsiniz.
 
 Model eşleştirme hakkında daha fazla ayrıntı, [sütun deseninin belgelerinde](concepts-data-flow-column-pattern.md)bulunabilir.
+
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Seçim dönüşümünü parametreleştirmek için kural tabanlı eşleme kullanın
+Kural tabanlı eşleme kullanarak, seçim dönüşümünde alan eşlemesini parametreleştirebilirsiniz. Gelen sütun adlarını bir parametreye göre denetlemek için ```name``` anahtar sözcüğünü kullanın. Örneğin, ```mycolumn``` adlı bir veri akışı parametresi varsa, her zaman ```mycolumn``` ayarladığınız herhangi bir sütun adını bu şekilde bir alan adına eşleyen tek bir SELECT dönüşüm kuralı oluşturabilirsiniz:
+
+```name == $mycolumn```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Yeniden adlandırma, yeniden sıralama ve diğer ad Sütunlarını Seç ' i kullandıktan sonra, verileri bir veri deposuna eklemek için [Havuz dönüştürmeyi](data-flow-sink.md) kullanın.

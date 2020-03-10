@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250244"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943062"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Yeni bir sanal cihaz oluşturma ve test etme
 
@@ -82,7 +82,7 @@ Bu nasıl yapılır kılavuzunu izlemek için şunlar gerekir:
 
 * Visual Studio Code. [Mac, Linux ve Windows için Visual Studio Code indirebilirsiniz](https://code.visualstudio.com/download).
 * .NET Core. [Mac, Linux ve Windows için .NET Core 'u](https://www.microsoft.com/net/download)indirebilirsiniz.
-* [Visual Studio Code için C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [Visual Studio Code için C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * Postman. [Mac, Windows veya Linux Için Postman](https://www.getpostman.com/apps)indirebilirsiniz.
 * [Azure aboneliğinize dağıtılan bir IoT Hub 'ı](../../articles/iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlayabilmeniz için IoT Hub 'ın bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
 * SQL API 'sini kullanan ve [güçlü tutarlılık](../../articles/cosmos-db/how-to-manage-database-account.md)için yapılandırılmış Cosmos DB veritabanı. Bu kılavuzdaki adımları tamamlayabilmeniz için Cosmos DB veritabanının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.

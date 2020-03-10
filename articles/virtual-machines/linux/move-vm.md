@@ -1,36 +1,26 @@
 ---
-title: Azure 'da Linux VM taşıma
-description: Bir Linux sanal makinesini Kaynak Yöneticisi dağıtım modelindeki başka bir Azure aboneliğine veya kaynak grubuna taşıyın.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure CLı kullanarak bir VM 'yi taşıma
+description: Azure CLı kullanarak bir VM 'yi başka bir Azure aboneliğine veya kaynak grubuna taşıyın.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979034"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944598"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux VM 'yi başka bir aboneliğe veya kaynak grubuna taşıma
-Bu makalede, bir Linux sanal makinesini (VM) kaynak grupları veya abonelikler arasında taşıma işlemi adım adım gösterilmektedir. Bir VM 'yi abonelikler arasında taşımak, kişisel abonelikte bir VM oluşturduysanız ve şimdi bunu şirketinizin aboneliğine taşımak istiyorsanız yararlı olabilir.
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Bir VM 'yi başka bir aboneliğe veya kaynak grubuna taşıma
+Bu makalede, bir sanal makineyi (VM) kaynak grupları veya abonelikler arasında nasıl taşıyacağınız anlatılmaktadır. Bir VM 'yi abonelikler arasında taşımak, kişisel abonelikte bir VM oluşturduysanız ve şimdi bunu şirketinizin aboneliğine taşımak istiyorsanız yararlı olabilir.
 
 > [!IMPORTANT]
->Şu anda Azure yönetilen disklerini taşıyamazsınız.
->
 >Yeni kaynak kimlikleri taşımanın bir parçası olarak oluşturulur. VM taşındıktan sonra, yeni kaynak kimliklerini kullanmak için araçlarınızı ve betikleri güncelleştirmeniz gerekecektir.
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Azure CLı kullanarak bir VM 'yi taşıma
 

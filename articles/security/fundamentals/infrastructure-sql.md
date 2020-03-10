@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727097"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942966"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL veritabanı güvenlik özellikleri    
 Azure SQL veritabanı, Azure 'da bir ilişkisel veritabanı hizmeti sağlar. Müşteri verilerini korumak ve müşterilerin ilişkisel bir veritabanı hizmetinden beklediği güçlü güvenlik özellikleri sağlamak için, SQL veritabanı 'nın kendi güvenlik özellikleri kümesi vardır. Bu yetenekler, Azure 'dan devralınan denetimleri oluşturur.
@@ -62,9 +62,9 @@ Yapı denetleyicisi (FC), Azure dokusunun merkezi Orchestrator 'ı olduğundan, 
 ### <a name="vlan-isolation"></a>VLAN yalıtımı
 Azure üretim ağı üç birincil VLAN 'a mantıksal olarak ayrılabilir:
 
-- Ana VLAN: Güvenilmeyen Müşteri düğümlerini birbirine bağlar.
-- FC VLAN: Güvenilen FCs ve destekleyici sistemleri içerir.
-- Cihaz VLAN: Güvenilen ağ ve diğer altyapı cihazlarını içerir.
+- Ana VLAN: güvenilmeyen Müşteri düğümlerini birbirine bağlar.
+- FC VLAN: güvenilen FCs ve destekleyici sistemler Içerir.
+- Cihaz VLAN: güvenilen ağ ve diğer altyapı cihazlarını Içerir.
 
 ### <a name="packet-filtering"></a>Paket filtreleme
 Düğümlerin kök işletim sistemi ve konuk işletim sistemi üzerinde uygulanan IPFilter ve yazılım güvenlik duvarları bağlantı kısıtlamalarını zorlar ve VM 'Ler arasında yetkisiz trafiği engeller.
@@ -75,7 +75,7 @@ Konuk VM 'lerden ve konuk VM 'lerden bir diğerinin yalıtımı, hiper yönetici
 ### <a name="types-of-rules-on-firewalls"></a>Güvenlik duvarlarındaki kural türleri
 Bir kural şu şekilde tanımlanır:
 
-{Güvenlik Yanıt Merkezi (src) IP, src bağlantı noktası, hedef IP, hedef bağlantı noktası, hedef protokolü, gelen/giden, durum bilgisi olmayan/durumsuz, durum bilgisi olan Flow zaman aşımı.
+{Src IP, src bağlantı noktası, hedef IP, hedef bağlantı noktası, hedef protokol, gelen/giden, durum bilgisiz/durum bilgisi olan akış zaman aşımı}.
 
 Yalnızca kuralların herhangi biri izin veriyorsa, zaman uyumlu boşta karakter (SYN) paketlerine yalnızca içinde ve dışarı izin verilir. TCP için Azure, ilkenin yalnızca tüm SYN olmayan paketleri VM 'ye veya dışına izin verdiği durum bilgisiz kurallar kullanır. Güvenlik Merkezi, daha önce bir SYN paketi görmeyen bir ana bilgisayar yığınının bir SYN olmayan yok saymakla dayanıklı olması olabilir. TCP protokolünün durumu durum bilgisiz ve durum bilgisi olmayan SYN tabanlı kuralıyla birlikte durum bilgisi olan bir uygulamanın genel davranışına ulaşır.
 
@@ -104,5 +104,3 @@ Microsoft 'un Azure altyapısını güvenli hale getirmeye yönelik daha fazla b
 - [Azure altyapı izleme](infrastructure-monitoring.md)
 - [Azure altyapı bütünlüğü](infrastructure-integrity.md)
 - [Azure müşteri verileri koruması](protection-customer-data.md)
-
-

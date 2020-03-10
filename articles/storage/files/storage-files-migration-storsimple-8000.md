@@ -4,30 +4,26 @@ description: StorSimple 8100 veya 8600 gerecini Azure Dosya Eşitleme 'e geçirm
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330319"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943598"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
-StorSimple 8000 serisi, 8100 ya da 8600 fiziksel, şirket içi Gereç ve bulut hizmeti bileşenleriyle temsil edilir. Bu gereçlerden birindeki verileri bir Azure Dosya Eşitleme ortamına geçirmek mümkündür. Bu makalede, Azure Dosya Eşitleme başarılı bir geçiş için gereken arka plan bilgisi ve geçiş adımları sağlanmaktadır.
+StorSimple 8000 serisi, 8100 ya da 8600 fiziksel, şirket içi gereçlerden ve bulut hizmeti bileşenleriyle temsil edilir. Bu gereçlerden birindeki verileri bir Azure Dosya Eşitleme ortamına geçirmek mümkündür. Azure Dosya Eşitleme, StorSimple gereçlerinin geçirilebilmesi için varsayılan ve stratejik, uzun süreli Azure hizmetidir.
 
-## <a name="storsimple"></a>StorSimple
+StorSimple 8000 serisi, adım 2022 ' de [yaşam sonuna](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) ulaşacaktır. Geçişinizi mümkün olan en kısa sürede planlamaya başlamak önemlidir. Bu makalede, Azure Dosya Eşitleme başarılı bir geçiş için gereken arka plan bilgisi ve geçiş adımları sağlanmaktadır. 
 
-StorSimple, kullanımdan kaldırılmıştır bir Microsoft ürünüdür. Bu ürün için genişletilmiş destek ve bulut hizmeti 31 2022 Aralık tarihinde sona erecek. StorSimple 'tan doğrudan geçiş için planlamaya başlamak önemlidir.
-
-Azure Dosya Eşitleme, StorSimple gereçlerinin geçirilebilmesi için varsayılan ve stratejik, uzun süreli Azure hizmetidir.
+## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 > [!IMPORTANT]
 > Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFilesMigration@microsoft. com ve geçiş sırasında yardım.
-
-## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetidir:
 
@@ -247,10 +243,10 @@ Bu geçiş işlemi sırasında, VM 'nize aynı sürücü harfi altında birkaç 
 > [!IMPORTANT]
 > Bunun çalışması için Azure Dosya Eşitleme yapılandırılmadan önce sunucuda bir kayıt defteri anahtarı ayarlanmalıdır.
 
-1. VM 'nin sistem sürücüsünde yeni bir dizin oluşturun. Azure Dosya Eşitleme bilgilerin bağlı birim klonları yerine bu şekilde kalıcı olması gerekir. Örneğin, `“C:\syncmetadata”`
+1. VM 'nin sistem sürücüsünde yeni bir dizin oluşturun. Azure Dosya Eşitleme bilgilerin bağlı birim klonları yerine bu şekilde kalıcı olması gerekir. Örneğin, `"C:\syncmetadata"`
 2. Regedit ' i açın ve aşağıdaki kayıt defteri kovanını bulun: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Dize türünde, ***Metadatarootpath*** adlı yeni bir anahtar oluşturun
-4. Sistem biriminde oluşturduğunuz dizinin tam yolunu ayarlayın, örneğin: `C:\syncmetadata”`
+4. Sistem biriminde oluşturduğunuz dizinin tam yolunu ayarlayın, örneğin: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure VM 'de Azure Dosya Eşitleme yapılandırma
 

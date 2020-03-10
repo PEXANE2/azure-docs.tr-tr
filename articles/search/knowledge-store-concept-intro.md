@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988643"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942993"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi depolarına giriş
 
@@ -97,7 +97,7 @@ Ancak, -`file` projeksiyonlar `object``table`-birden çok kümesi oluşturmak m�
 
 Bilgi deposu oluşturmak için portalı veya önizleme REST API (`api-version=2019-05-06-Preview`) kullanın.
 
-### <a name="use-the-azure-portal"></a>Azure Portal’ı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 **Veri Içeri aktarma** Sihirbazı, bilgi deposu oluşturma seçeneklerini içerir. İlk araştırma için, [ilk bilgi deponuzu dört adımda oluşturun](knowledge-store-connect-power-bi.md).
 
@@ -147,3 +147,13 @@ Zenginleştirilmiş belgeler oluşturmak için en basit yaklaşım [Portal üzer
 
 > [!div class="nextstepaction"]
 > [Postman ve REST kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md)
+
+Tahminler hakkında daha fazla bilgi edinmek için, bu özellikleri ve [beceri nasıl tanımlacağınızı](knowledge-store-projection-overview.md) öğrenin
+
+> [!div class="nextstepaction"]
+> [Bilgi deposundaki projeksiyonler](knowledge-store-projection-overview.md)
+
+Dilimleme, satır içi şekillendirme ve ilişkiler gibi gelişmiş projeksiyonun kavramlarını kapsayan bir öğreticide, [bir bilgi deposunda projeksiyonları tanımlamaya](knowledge-store-projections-examples.md) başlayın
+
+> [!div class="nextstepaction"]
+> [Bir bilgi deposunda projeksiyonlarını tanımlama](knowledge-store-projections-examples.md)

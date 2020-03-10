@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425336"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942886"
 ---
 # <a name="combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydı (Önizleme)
 
@@ -47,17 +47,18 @@ Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı ola
 
 Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri destekler:
 
-|   | Kaydol | Değiştir | Sil |
+|   | Kaydolma | Değiştir | Sil |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
-| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
-| Donanım belirteci | Hayır | Hayır | Evet |
-| Telefon | Evet | Evet | Evet |
-| Alternatif telefon | Evet | Evet | Evet |
+| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Yes |
+| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Yes |
+| Donanım belirteci | Hayır | Hayır | Yes |
+| Telefon | Yes | Yes | Yes |
+| Alternatif telefon | Yes | Yes | Yes |
 | Ofis telefonu | Hayır | Hayır | Hayır |
-| E-posta | Evet | Evet | Evet |
-| Güvenlik soruları | Evet | Hayır | Evet |
-| Uygulama parolaları | Evet | Hayır | Evet |
+| Email | Yes | Yes | Yes |
+| Güvenlik soruları | Yes | Hayır | Yes |
+| Uygulama parolaları | Yes | Hayır | Yes |
+| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Yes | Yes | Yes |
 
 > [!NOTE]
 > Uygulama parolaları yalnızca Multi-Factor Authentication için zorlanan kullanıcılar tarafından kullanılabilir. Uygulama parolaları, koşullu erişim ilkesi aracılığıyla Multi-Factor Authentication için etkinleştirilen kullanıcılar tarafından kullanılamaz.
@@ -95,7 +96,7 @@ Kullanıcılara güvenlik bilgilerini kaydetmek veya yenilemek için istenen çe
 
 Kayıt zorlandığında, kullanıcılara en az Multi-Factor Authentication ve SSPR ilkeleriyle uyumlu olması için gereken en az sayıda yöntem gösterilir.
 
-Örneğin:
+Örnek:
 
 - Bir Kullanıcı SSPR için etkinleştirilmiştir. SSPR ilkesi, mobil uygulama kodu, e-posta ve telefon 'i sıfırlamak ve etkinleştirmek için iki yöntem gerektirir.
    - Bu kullanıcının iki yöntemi kaydetmesi gerekir.

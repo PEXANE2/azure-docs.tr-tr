@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526731"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933591"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve BLOB Storage ile veri aktarma
 
@@ -73,7 +73,8 @@ Ayrıntılı başvuru belgeleri için bkz. [AzCopy kopyası](storage-ref-azcopy-
 Dosya yolu veya dosya adında herhangi bir yerde joker karakter sembolünü (*) kullanarak da bir dosyayı karşıya yükleyebilirsiniz. Örneğin: `'C:\myDirectory\*.txt'`veya `C:\my*\*.txt`.
 
 > [!NOTE]
-> AzCopy varsayılan olarak blok bloblarına veri yükler. Dosyaları ekleme Blobları olarak yüklemek için veya sayfa Blobları `--blob-type=[BlockBlob|PageBlob|AppendBlob]`bayrağını kullanır.
+> AzCopy varsayılan olarak blok Blobları olarak verileri yükler. Dosyaları ekleme Blobları veya sayfa Blobları olarak yüklemek için `--blob-type=[BlockBlob|PageBlob|AppendBlob]`bayrağını kullanın.
+> AzCopy, varsayılan olarak hesap erişim katmanını devralacak şekilde verilerinizi yükler. Belirli bir [erişim katmanına](../blobs/storage-blob-storage-tiers.md)dosya yüklemek için `--block-blob-tier=[Hot|Cool|Archive]`bayrağını kullanın.
 
 ### <a name="upload-a-directory"></a>Bir dizini karşıya yükle
 

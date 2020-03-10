@@ -1,25 +1,19 @@
 ---
 title: Klasik Azure Resource Manager geçiş teknik derinlemesine bakış
 description: Klasik dağıtım modelinden Azure Resource Manager için, platformdan desteklenen kaynak geçişi hakkında teknik kapsamlı bakış
-services: virtual-machines-linux
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 29267453-f894-4180-bb67-dce2a0e062bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 75732cf58a68948bf225e15e9227a3fa7592e738
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a5277e23d92dd026aa19e278532869747709e646
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914934"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944726"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Klasik 'dan Azure Resource Manager 'a yönelik platform destekli geçiş hakkında teknik kapsamlı bakış
 

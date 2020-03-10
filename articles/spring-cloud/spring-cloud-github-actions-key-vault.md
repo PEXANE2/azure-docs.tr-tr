@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: efe8c1a2726054c54934926f652e338797d4efa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776553"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945478"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub eylemlerinde Key Vault Azure Spring Cloud kimlik doğrulaması yapma
 Anahtar Kasası, anahtarları depolamak için güvenli bir yerdir. Kurumsal kullanıcıların, denetdukları kapsamdaki CI/CD ortamları için kimlik bilgilerini depolaması gerekir. Anahtar kasasındaki kimlik bilgilerini almak için gereken anahtar, kaynak kapsamıyla sınırlı olmalıdır.  Azure kapsamının tamamına değil yalnızca Anahtar Kasası kapsamına erişebilir. Yalnızca bir binadaki tüm kapıları açan bir ana anahtar olmayan güçlü bir kutuyu açan bir anahtar gibidir. Bir CICD iş akışında yararlı olan başka bir anahtarla anahtar almanın bir yoludur. 
@@ -32,7 +32,6 @@ Sonuçlarla:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -49,7 +48,7 @@ Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıkla
 
 Kimlik bilgisi adını kopyalayın, örneğin `azure-cli-2020-01-19-04-39-02`. **Erişim ilkeleri** menüsünü açın, **+ erişim ilkesi Ekle** bağlantısı ' na tıklayın.  **Şablon**için `Secret Management` seçin ve ardından **sorumlu**' ı seçin. Kimlik bilgisi adını **asıl**/yapıştırın giriş kutusunu **seçin** :
 
- ![Seçin](./media/github-actions/key-vault2.png)
+ ![Şunu seçin:](./media/github-actions/key-vault2.png)
 
  **Erişim Ilkesi Ekle** Iletişim kutusunda **Ekle** düğmesine tıklayın ve ardından **Kaydet**' e tıklayın.
 
@@ -69,7 +68,6 @@ Yine, sonuçlar:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"

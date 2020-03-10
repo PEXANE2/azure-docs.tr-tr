@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesi nasıl dağıtıl
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189237"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943196"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure blok zincirini dağıtma çalışma ekranı önizlemesi
 
@@ -51,7 +51,7 @@ Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama ka
 
 Önkoşul adımları tamamlandıktan sonra, blok zinciri çalışma ekranına dağıtmaya hazırlanın. Aşağıdaki bölümler Framework 'ün nasıl dağıtılacağını özetler.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sağ üst köşede hesabınızı seçin ve Azure blok zinciri 'ni dağıtmak istediğiniz Azure AD kiracısına geçiş yapın.
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 1. **Azure blok zinciri çalışma ekranı (Önizleme)**  > **blok zinciri** seçin.
@@ -123,7 +123,7 @@ Dağıtım 90 dakikaya kadar sürebilir. İlerlemeyi izlemek için Azure portal 
 
 Blok zinciri çalışma ekranı dağıtımı tamamlandıktan sonra, yeni bir kaynak grubu blok zinciri çalışma ekranı kaynaklarınızı içerir. Blok zinciri çalışma ekranı hizmetlerine bir Web URL 'SI üzerinden erişilir. Aşağıdaki adımlarda, dağıtılan çerçevenin Web URL 'sini alma yöntemi gösterilmektedir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol taraftaki Gezinti bölmesinde **kaynak grupları**' nı seçin.
 1. Blok zinciri çalışma ekranı dağıtımı sırasında belirttiğiniz kaynak grubu adını seçin.
 1. Listeyi türe göre alfabetik olarak sıralamak için **tür** sütun başlığını seçin.
@@ -135,7 +135,7 @@ Blok zinciri çalışma ekranı dağıtımı tamamlandıktan sonra, yeni bir kay
 
     ![App Service temelleri](media/deploy/app-service.png)
 
-Özel bir etki alanı adını blok zinciri çalışma ekranı ile ilişkilendirmek için, [Traffic Manager kullanarak Azure App Service Web uygulaması için özel etki alanı adı yapılandırma](../../app-service/web-sites-traffic-manager-custom-domain-name.md)konusuna bakın.
+Özel bir etki alanı adını blok zinciri çalışma ekranı ile ilişkilendirmek için, [Traffic Manager kullanarak Azure App Service Web uygulaması için özel etki alanı adı yapılandırma](../../app-service/configure-domain-traffic-manager.md)konusuna bakın.
 
 ## <a name="azure-ad-configuration-script"></a>Azure AD yapılandırma betiği
 
@@ -178,7 +178,7 @@ Dağıtımdan önce Azure AD ayarlarını el ile yapılandırmayı veya doğrula
 Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kaydedilmesini gerektirir. Uygulamayı kaydettirmek için bir Azure Active Directory (Azure AD) kiracısına sahip olmanız gerekir. Mevcut bir kiracıyı kullanabilir veya yeni bir kiracı oluşturabilirsiniz. Mevcut bir Azure AD kiracısı kullanıyorsanız, uygulamaları kaydetmek, Graph API izinleri vermek ve bir Azure AD kiracısı içinde Konuk erişimine izin vermek için yeterli izinlere sahip olmanız gerekir. Mevcut bir Azure AD kiracısında yeterli izinlere sahip değilseniz yeni bir kiracı oluşturun.
 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sağ üst köşede hesabınızı seçin ve istediğiniz Azure AD kiracısına geçiş yapın. Kiracı, Azure blok zinciri çalışma ekranı 'nın dağıtıldığı ve uygulamaları kaydetmek için yeterli izinlere sahip olduğunuz aboneliğin abonelik yöneticisinin kiracı kiracısı olmalıdır.
 1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Yeni kayıt** > **uygulama kayıtları** seçin.
 
@@ -280,7 +280,7 @@ Azure AD kiracınızda Konuk kullanıcılarınız varsa, blok zinciri çalışma
 
 Azure blok zinciri çalışma ekranı dağıtıldıktan sonra, dağıtılan blok zinciri çalışma ekranı web URL 'sinin Azure Active Directory (Azure AD) istemci uygulaması **yanıt URL** 'sini yapılandırmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure AD istemci uygulamasını kaydettiğiniz kiracıda olduğunuzu doğrulayın.
 1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**'nı seçin.
 1. Önkoşul bölümünde kaydettiğiniz Azure AD istemci uygulamasını seçin.

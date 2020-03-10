@@ -3,12 +3,12 @@ title: Azure geçişi sunucu geçişi SSS
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 273ef746e685afcf9f3654963dd9c6bd5b855b24
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927527"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939211"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -74,6 +74,19 @@ Hayır. Azure geçişi yalnızca yönetilen disklere geçişi destekler (Standar
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Aracısız geçiş kullanarak bir seferde kaç sanal makine çoğaltırım?
 
 Şu anda, her vCenter Server örneği için 100 VM 'yi aynı anda geçirebilirsiniz. 10 VM 'lerin toplu işleri halinde geçiş yapın.
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Makineleri fiziksel sunucu olarak ne zaman geçirebilirim?
+
+Makineleri fiziksel sunucu olarak düşünerek, bir dizi senaryoda yararlı olacak şekilde geçirme:
+
+- Şirket içi fiziksel sunucuları geçirdiğinizde.
+- VM 'Leri Xen, KVM gibi platformlar tarafından sanallaştırdıysanız.
+- Hyper-V veya VMware VM 'lerini geçirmek için, bazı nedenlerle [Hyper-v](tutorial-migrate-hyper-v.md)veya [VMware](server-migrate-overview.md) geçişi için standart geçiş işlemini kullanamazsınız. Örneğin, VMware vCenter çalıştırmıyorsanız ve yalnızca ESXi Konakları kullanılıyorsa.
+- Özel bulutlarda çalışmakta olan VM 'Leri Azure 'a geçirmek için
+- Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Leri Azure 'a geçirmek istiyorsanız.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>VMware VM 'lerini geçirmek için VMware vCenter 'a ihtiyacım var mı?
+VMware Aracısı tabanlı veya aracısız geçiş kullanarak [VMware VM 'lerini geçirmek](server-migrate-overview.md) Için, sanal makinelerin bulunduğu ESXi konaklarının vCenter Server tarafından yönetilmesi gerekir. VCenter Server yoksa, VMware VM 'lerini fiziksel sunucu olarak geçirerek geçirebilirsiniz. [Daha fazla bilgi edinin](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

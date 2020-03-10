@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b40415fa78b48d506800049e72c864fb3cab3e29
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191308"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946391"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -34,7 +34,7 @@ AKS kümenizin güvenliğini arttırmak için çıkış trafiğini kısıtlamak 
 
 > [!IMPORTANT]
 > Çıkış trafiğini kısıtlamak ve tüm çıkış trafiğini zorlamak için Kullanıcı tanımlı yol (UDR) oluşturmak üzere Azure Güvenlik Duvarı 'nı kullandığınızda, giriş trafiğine doğru şekilde izin vermek için güvenlik duvarında uygun bir DNAT kuralı oluşturduğunuzdan emin olun. Azure Güvenlik Duvarı 'nı bir UDR ile kullanmak, asimetrik yönlendirme nedeniyle giriş kurulumunu keser. (AKS alt ağının, güvenlik duvarının özel IP adresine giden bir varsayılan yolu varsa, ancak türü: LoadBalancer) ortak yük dengeleyici veya Kubernetes hizmeti kullanıyorsanız bu sorun oluşur. Bu durumda, gelen yük dengeleyici trafiği genel IP adresi aracılığıyla alınır, ancak döndürülen yol güvenlik duvarının özel IP adresinden geçer. Güvenlik duvarı durum bilgisi olduğundan, güvenlik duvarı kurulu bir oturumun farkında olmadığından döndürülen paketi bırakır. Azure Güvenlik duvarını giriş veya hizmet yük dengeleyicinizle tümleştirmeyi öğrenmek için bkz. Azure [güvenlik duvarını azure standart Load Balancer tümleştirme](https://docs.microsoft.com/azure/firewall/integrate-lb).
-> TCP bağlantı noktası 9000 ve TCP bağlantı noktası 22 trafiğini, çıkış çalışan düğümü IP 'leri ve API sunucusunun IP 'si arasında bir ağ kuralı kullanarak azaltabilirsiniz.
+> TCP bağlantı noktası 9000, TCP bağlantı noktası 22 ve UDP bağlantı noktası 1194 trafiğini, çıkış çalışan düğümü IP 'leri ve API sunucusunun IP 'si arasında bir ağ kuralı kullanarak azaltabilirsiniz.
 
 AKS 'de, iki bağlantı noktası ve adres kümesi vardır:
 
@@ -50,7 +50,7 @@ AKS kümesi için aşağıdaki giden bağlantı noktaları/ağ kuralları gerekl
 
 * TCP bağlantı noktası *443*
 * API sunucusuyla iletişim kurmayı gerektiren bir uygulamanız varsa, TCP [ıpaddrofyourapiserver]: 443 gereklidir.  Bu değişiklik küme oluşturulduktan sonra ayarlanabilir.
-* Tünel ön pod için, API sunucusundaki tünel sonuyla iletişim kurmak üzere TCP bağlantı noktası *9000* ve TCP bağlantı noktası *22* .
+* Tünel ön pod için TCP bağlantı noktası *9000*, TCP bağlantı noktası *22* ve UDP bağlantı noktası *1194* , API sunucusundaki tünel sonuyla iletişim kuracak.
     * Daha fazla bilgi almak için aşağıdaki tabloda bulunan * *. HCP.\<location\>. azmk8s.io* ve * *. tun.\<location\>. azmk8s.io* adreslerine bakın.
 * Ağ zaman Protokolü (NTP) zaman eşitleme (Linux düğümleri) için UDP bağlantı noktası *123* .
 * API sunucusuna doğrudan erişiyorsanız, DNS için UDP bağlantı noktası *53* de gereklidir.
@@ -60,29 +60,34 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 > [!IMPORTANT]
 > * **. blob.Core.Windows.net ve aksrepos.azurecr.io** artık çıkış kilidi için gereklı olan FQDN kuralları değildir.  Mevcut kümeler için, bu kuralları kaldırmak üzere `az aks upgrade` komutunu kullanarak [bir küme yükseltme işlemi gerçekleştirin][aks-upgrade] .
 
+> [!IMPORTANT]
+> *. cdn.mscr.io, Azure genel bulut bölgeleri için *. data.mcr.microsoft.com ile değiştirilmiştir. Değişikliklerin etkili olması için lütfen mevcut güvenlik duvarı kurallarınızı yükseltin.
+
 - Azure genel
 
 | FQDN                       | Bağlantı noktası      | Kullanım      |
 |----------------------------|-----------|----------|
-| *. HCP.\<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
-| *. tun.\<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. HCP.\<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. tun.\<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *.cdn.mscr.io       | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
 | mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
-| *.cdn.mscr.io              | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
+| *. data.mcr.microsoft.com             | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | management.azure.com       | HTTPS: 443 | Bu adres, Kubernetes GET/PUT işlemleri için gereklidir. |
 | login.microsoftonline.com  | HTTPS: 443 | Bu adres Azure Active Directory kimlik doğrulaması için gereklidir. |
 | ntp.ubuntu.com             | UDP: 123   | Bu adres, Linux düğümlerinde NTP zaman eşitlemesi için gereklidir. |
 | packages.microsoft.com     | HTTPS: 443 | Bu adres, önbelleğe alınmış *apt-get* işlemleri Için kullanılan Microsoft paketleri deposudur.  Örnek paketlere Moby, PowerShell ve Azure CLı dahildir. |
-| acs-mirror.azureedge.net   | HTTPS: 443 | Bu adres, Kubernetes kullanan ve Azure CNı gibi gerekli ikilileri yüklemek için gereken depoya yöneliktir. |
+| acs-mirror.azureedge.net      | HTTPS: 443 | Bu adres, Kubernetes kullanan ve Azure CNı gibi gerekli ikilileri yüklemek için gereken depoya yöneliktir. |
 
 - Azure Çin 21Vianet
 
 | FQDN                       | Bağlantı noktası      | Kullanım      |
 |----------------------------|-----------|----------|
-| *. HCP.\<location\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
-| *. tun.\<location\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. HCP.\<location\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. tun.\<location\>. cx.prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
 | *. azk8s.cn        | HTTPS: 443 | Gerekli ikili dosyaları ve resimleri indirmek için bu adres gereklidir|
 | mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
-| *.cdn.mscr.io              | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
+| *.cdn.mscr.io       | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
+| *. data.mcr.microsoft.com             | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | management.chinacloudapi.cn       | HTTPS: 443 | Bu adres, Kubernetes GET/PUT işlemleri için gereklidir. |
 | login.chinacloudapi.cn  | HTTPS: 443 | Bu adres Azure Active Directory kimlik doğrulaması için gereklidir. |
 | ntp.ubuntu.com             | UDP: 123   | Bu adres, Linux düğümlerinde NTP zaman eşitlemesi için gereklidir. |
@@ -92,15 +97,16 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 | FQDN                       | Bağlantı noktası      | Kullanım      |
 |----------------------------|-----------|----------|
-| *. HCP.\<location\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
-| *. tun.\<location\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. HCP.\<location\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
+| *. tun.\<location\>. cx.aks.containerservice.azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Bu adres, düğüm < > API sunucusu iletişimi için gereklidir. *\<location\>* aks kümenizin dağıtıldığı bölge ile değiştirin. |
 | mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
-| *.cdn.mscr.io              | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
+|*.cdn.mscr.io              | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolaması için gereklidir. |
+| *. data.mcr.microsoft.com             | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | management.usgovcloudapi.net       | HTTPS: 443 | Bu adres, Kubernetes GET/PUT işlemleri için gereklidir. |
 | login.microsoftonline.us  | HTTPS: 443 | Bu adres Azure Active Directory kimlik doğrulaması için gereklidir. |
 | ntp.ubuntu.com             | UDP: 123   | Bu adres, Linux düğümlerinde NTP zaman eşitlemesi için gereklidir. |
 | packages.microsoft.com     | HTTPS: 443 | Bu adres, önbelleğe alınmış *apt-get* işlemleri Için kullanılan Microsoft paketleri deposudur.  Örnek paketlere Moby, PowerShell ve Azure CLı dahildir. |
-| acs-mirror.azureedge.net   | HTTPS: 443 | Bu adres, Kubernetes kullanan ve Azure CNı gibi gerekli ikilileri yüklemek için gereken depoya yöneliktir. |
+| acs-mirror.azureedge.net      | HTTPS: 443 | Bu adres, Kubernetes kullanan ve Azure CNı gibi gerekli ikilileri yüklemek için gereken depoya yöneliktir. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>AKS kümeleri için isteğe bağlı önerilen adresler ve bağlantı noktaları
 
@@ -128,8 +134,8 @@ Aşağıdaki FQDN/uygulama kuralları, kapsayıcılar için Azure Izleyicisi etk
 
 | FQDN                                    | Bağlantı noktası      | Kullanım      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | HTTPS: 443  | Bu, Azure Izleyici kullanarak doğru ölçümler ve izleme telemetrisine yöneliktir. |
-| *.ods.opinsights.azure.com    | HTTPS: 443 | Bu, Azure Izleyici tarafından günlük analizi verilerini almak için kullanılır. |
+| dc.services.visualstudio.com | HTTPS: 443    | Bu, Azure Izleyici kullanarak doğru ölçümler ve izleme telemetrisine yöneliktir. |
+| *.ods.opinsights.azure.com    | HTTPS: 443    | Bu, Azure Izleyici tarafından günlük analizi verilerini almak için kullanılır. |
 | *.oms.opinsights.azure.com | HTTPS: 443 | Bu adres, Log Analytics hizmetinin kimliğini doğrulamak için kullanılan omsagent tarafından kullanılır. |
 |*.microsoftonline.com | HTTPS: 443 | Bu, Azure Izleyici 'ye yönelik kimlik doğrulaması ve ölçüm göndermek için kullanılır. |
 |*. monitoring.azure.com | HTTPS: 443 | Bu, ölçüm verilerini Azure Izleyici 'ye göndermek için kullanılır. |
@@ -156,7 +162,7 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır. (Şu anda AKS 'deki önizlemededir) |
 | RAW.githubusercontent.com | HTTPS: 443 | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. (Şu anda AKS 'deki önizlemededir) |
-| *. gk.\<location\>. azmk8s.io | HTTPS: 443   | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure ilke eklentisi. |
+| *. gk.\<location\>. azmk8s.io | HTTPS: 443    | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure ilke eklentisi. |
 | dc.services.visualstudio.com | HTTPS: 443 | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure ilke eklentisi. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server tabanlı düğümler için gerekli (genel önizlemede) etkin

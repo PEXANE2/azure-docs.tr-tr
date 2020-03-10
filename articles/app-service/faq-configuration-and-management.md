@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649287"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942942"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -212,7 +212,7 @@ Daha fazla bilgi için bkz. [App Service ortamı oluşturma](environment/app-ser
 Bazen App Service Ortamı oluşturma işlemi başarısız olur. Bu durumda, etkinlik günlüklerinde aşağıdaki hatayı görürsünüz:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 Bu sorunu çözmek için aşağıdaki koşullardan hiçbirinin doğru olmadığından emin olun:
@@ -248,7 +248,7 @@ Sızma testi gerçekleştirmek için [bir istek gönderebilirsiniz](https://port
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Traffic Manager kullanan bir App Service Web uygulaması için özel etki alanı adı Nasıl yaparım? yapılandırmak.
 
-Yük Dengeleme için Azure Traffic Manager kullanan App Service bir uygulamayla özel bir etki alanı adı kullanmayı öğrenmek için bkz. [Traffic Manager ile bir Azure Web uygulaması için özel etki alanı adı yapılandırma](web-sites-traffic-manager-custom-domain-name.md).
+Yük Dengeleme için Azure Traffic Manager kullanan App Service bir uygulamayla özel bir etki alanı adı kullanmayı öğrenmek için bkz. [Traffic Manager ile bir Azure Web uygulaması için özel etki alanı adı yapılandırma](configure-domain-traffic-manager.md).
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>App Service sertifikam sahtekarlık için işaretlendi. Nasıl yaparım? bunu çözmek mi istiyorsunuz?
 

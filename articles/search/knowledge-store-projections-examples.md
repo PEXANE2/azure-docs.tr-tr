@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441978"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943671"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Bilgi deposu projeksiyonları: zenginleştirme ve dışarı aktarma
 
@@ -671,7 +671,13 @@ Projeksiyon tanımlarken, beklenmeyen sonuçlara neden olabilecek bazı yaygın 
 
 Bu makaledeki örneklerde, projeksiyonları oluşturma hakkında genel desenler gösterilmektedir. Kavramların iyi şekilde anlayışınız olduğuna göre, belirli senaryonuz için daha iyi bir geliştirme oluşturmaya daha iyi bir şekilde donatılmış olursunuz.
 
-Bilgi deposu tanımlarını yinelemenize göre, bir sonraki adımınız olarak artımlı zenginleştirme yapmayı düşünün. Artımlı zenginleştirme, daha önce bir beceri değişikliğinden etkilenmeyen tüm zenginler 'i yeniden kullanmanıza imkan tanıyan önbelleğe alma işlemini temel alır. Bu, özellikle OCR ve görüntü analizini içeren işlem hatları için yararlıdır.
+Yeni özellikleri araştırırken, bir sonraki adımınız olarak artımlı zenginleştirme yapmayı düşünün. Artımlı zenginleştirme, daha önce bir beceri değişikliğinden etkilenmeyen tüm zenginler 'i yeniden kullanmanıza imkan tanıyan önbelleğe alma işlemini temel alır. Bu, özellikle OCR ve görüntü analizini içeren işlem hatları için yararlıdır.
 
 > [!div class="nextstepaction"]
 > [Artımlı zenginleştirme ve önbelleğe alma bilgilerine giriş](cognitive-search-incremental-indexing-conceptual.md)
+
+Projeksiyonlar hakkında genel bakış için, gruplar ve dilimleme gibi yetenekler hakkında daha fazla bilgi edinin ve [bunları beceri içinde nasıl tanımlacağınızı](knowledge-store-projection-overview.md) öğrenin
+
+> [!div class="nextstepaction"]
+> [Bilgi deposundaki projeksiyonler](knowledge-store-projection-overview.md)
+

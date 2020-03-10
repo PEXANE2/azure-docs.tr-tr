@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613577"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946417"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında grup ilkesi yönetme
 
@@ -42,7 +42,11 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
 
 > [!NOTE]
-> [Azure AD DS etki alanı denetleyicilerine erişim olmadığından](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), yönetilen bir etki alanında Grup İlkesi Yönetim Şablonları için merkezi bir mağaza oluşturamaz ve kullanamazsınız. [SYSVOL, şirket içi Azure AD Connect eşitlemeye dahil değildir](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), bu nedenle şirket içi merkezi bir mağaza OLUŞTURUP Azure AD aracılığıyla Azure AD DS ile eşitleyemiyorsanız.
+> Yeni şablonları yönetim iş istasyonuna kopyalayarak grup ilkesi Yönetim Şablonları kullanabilirsiniz. *. Admx* dosyalarını `%SYSTEMROOT%\PolicyDefinitions` kopyalayın ve locale 'e özgü *. adml* dosyalarını, `Language-CountryRegion`, *. adml* dosyalarının diliyle ve bölgesiyle eşleşen `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`bir konuma kopyalayın.
+>
+> Örneğin, *. adml* dosyalarının ingilizce, Birleşik Devletler sürümünü `\en-us` klasörüne kopyalayın.
+>
+> Alternatif olarak, grup ilkesi yönetim şablonunuzu Azure AD DS yönetilen etki alanının parçası olan etki alanı denetleyicilerinde merkezi olarak saklayabilirsiniz. Daha fazla bilgi için bkz. [Windows 'da grup ilkesi Yönetim Şablonları Için merkezi mağaza oluşturma ve yönetme](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>grup ilkesi yönetim araçları 'nı yükler
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448779"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943920"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası oluşturma
 
@@ -32,9 +32,9 @@ Ele alınan görevler şunlardır:
 > - Sabitlenmiş girişleri ekleme
 > - Özel aramayı bir web sayfasıyla tümleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Öğreticiyi takip edebilmek için Bing Özel Arama API'si için bir abonelik anahtarına ihtiyacınız olacaktır.  Anahtar alma için bkz: [Bilişsel Hizmetleri Deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Öğreticiyi takip edebilmek için Bing Özel Arama API'si için bir abonelik anahtarına ihtiyacınız olacaktır.  Bir anahtar almak için Azure portal [Bing özel arama bir kaynak oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) . [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services)da kullanabilirsiniz.
 - Visual Studio 2017 veya sonraki bir sürümü yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz.
 
 ## <a name="create-a-custom-search-instance"></a>Özel arama örneği oluşturma
@@ -45,9 +45,9 @@ Bing Özel Arama örneği oluşturmak için:
   
 2. Özel arama [portalına](https://customsearch.ai) gidin.  
   
-3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Hesabınız yoksa **Microsoft hesabı oluşturun**'a tıklayın. Portalı ilk kez kullanıyorsanız verilerinize erişim izni istenir. **Evet**’e tıklayın.  
+3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Bir MSA yoksa **Microsoft hesabı oluştur ' a**tıklayın. Portalı ilk kez kullanıyorsanız, verilerinize erişmek için izin ister. **Evet**'e tıklayın.  
   
-4. Oturum açtıktan sonra **Yeni özel arama**'ya tıklayın. **Yeni özel arama örneği oluştur** penceresinde kolay anlaşılır ve arama tarafından döndürülen içeriğin türüne uygun bir ad girin. Adı dilediğiniz zaman değiştirebilirsiniz.  
+4. Oturum açtıktan sonra **Yeni özel arama**'ya tıklayın. **Yeni bir özel arama örneği oluştur** penceresinde, anlamlı bir ad girin ve aramanın döndürdüğü içerik türünü açıklar. Adı dilediğiniz zaman değiştirebilirsiniz.  
   
    ![Yeni özel arama örneği oluştur kutusunun ekran görüntüsü](../media/newCustomSrch.png)  
   
@@ -60,11 +60,11 @@ Bing Özel Arama örneği oluşturmak için:
 
 Sonuçlara dahil etmek istediğiniz web sitelerini veya URL'leri **Etkin** sekmesine girin.
 
-1.  **Yapılandırma** sayfasında **Etkin** sekmesine tıklayın ve aramanıza dahil etmek istediğiniz bir veya daha fazla web sitesinin URL'sini girin.
+1.       **Yapılandırma** sayfasında **Etkin** sekmesine tıklayın ve aramanıza dahil etmek istediğiniz bir veya daha fazla web sitesinin URL'sini girin.
 
     ![Tanım Düzenleyicisi etkin sekmesinin ekran görüntüsü](../media/customSrchEditor.png)
 
-2.  Örneğinizin sonuç döndürdüğünü doğrulamak için sağ taraftaki önizleme bölmesine bir sorgu girin. Bing yalnızca dizine eklenmiş genel web sitelerinden sonuç döndürür.
+2.       Örneğinizin sonuç döndürdüğünü doğrulamak için sağ taraftaki önizleme bölmesine bir sorgu girin. Bing yalnızca dizine eklenmiş genel web sitelerinden sonuç döndürür.
 
 ## <a name="add-blocked-entries"></a>Engellenen girişleri ekleme
 
@@ -79,7 +79,7 @@ Sonuçlardan hariç tutmak istediğiniz web sitelerini veya URL'leri **Engellend
 
 ## <a name="add-pinned-entries"></a>Sabitlenmiş girişleri ekleme
 
-Belirli bir Web sayfasını arama sonuçlarının en üstüne sabitlemek için, Web sayfasını ve sorgu terimini **sabitlenmiş** sekmeye ekleyin. **Sabitlenmiş** sekme, belirli bir sorgunun en iyi sonucu olarak görünen Web sayfasını belirten Web sayfası ve sorgu terim çiftlerinin bir listesini içerir. Web sayfası yalnızca kullanıcının sorgu dizesinin sabitleme eşleme koşuluna göre sabitlenen sorgu dizesiyle eşleşmesi durumunda sabitlenir. Aramalarda yalnızca dizine alınmış web sayfaları görüntülenir. Daha fazla bilgi için bkz. [Özel görünümünüzü tanımlama](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Belirli bir Web sayfasını arama sonuçlarının en üstüne sabitlemek için, Web sayfasını ve sorgu terimini **sabitlenmiş** sekmeye ekleyin. **Sabitlenmiş** sekme, belirli bir sorgunun en iyi sonucu olarak görünen Web sayfasını belirten Web sayfası ve sorgu terim çiftlerinin bir listesini içerir. Web sayfası, yalnızca kullanıcının sorgu dizesi, PIN 'in eşleşme koşuluna göre pin sorgu dizesiyle eşleşiyorsa sabitlenmiştir. Aramalarda yalnızca dizine alınmış web sayfaları görüntülenir. Daha fazla bilgi için bkz. [Özel görünümünüzü tanımlama](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. **Yapılandırma** sayfasında **Sabitlendi** sekmesine tıklayın ve ilk sırada döndürülmesini istediğiniz web sayfasını ve sorgu terimini girin.  
   

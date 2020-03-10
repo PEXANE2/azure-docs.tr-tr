@@ -1,27 +1,17 @@
 ---
-title: Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırın
-description: Azure kaynakları oluşturmak için Terrayform 'u yüklemeyi ve yapılandırmayı öğrenin
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 74728fb05e900c534580f1c8eaf14dd0e48fc42c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+title: Hızlı başlangıç-Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırın
+description: Bu hızlı başlangıç 'ta Terrayform 'u Azure kaynakları oluşturmak üzere yükleyip yapılandırırsınız
+keywords: Azure DevOps terrayform yüklemesi yapılandırması
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473135"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943514"
 ---
-# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırın
+# <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>Hızlı başlangıç: Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırma
  
 Terrayform [basit bir şablon oluşturma dili](https://www.terraform.io/docs/configuration/syntax.html)kullanarak bulut altyapısını tanımlamaya, önizlemeye ve dağıtmaya yönelik kolay bir yol sağlar. Bu makalede, Azure 'da kaynak sağlamak için Terrayform kullanmak için gereken adımlar açıklanmaktadır.
 
@@ -29,9 +19,9 @@ Azure ile Terrayform kullanma hakkında daha fazla bilgi edinmek için [Terrayfo
 > [!NOTE]
 > Terkform 'a özgü destek için lütfen Topluluk kanallarından birini kullanarak doğrudan Terkform 'a ulaşın:
 >
->   • Topluluk portalının [Terkform bölümü](https://discuss.hashicorp.com/c/terraform-core) , sorular, kullanım örnekleri ve yararlı desenler içerir.
+>    * Topluluk portalının [Terkform bölümü](https://discuss.hashicorp.com/c/terraform-core) , sorular, kullanım örnekleri ve yararlı desenler içerir.
 >
->   • Sağlayıcıyla ilgili sorular için lütfen Topluluk portalının [Terkform sağlayıcıları](https://discuss.hashicorp.com/c/terraform-providers) bölümünü ziyaret edin.
+>    * Sağlayıcıyla ilgili sorular için lütfen Topluluk portalının [Terkform sağlayıcıları](https://discuss.hashicorp.com/c/terraform-providers) bölümünü ziyaret edin.
 
 
 
@@ -104,6 +94,10 @@ Boş bir dizinde `test.tf` bir dosya oluşturun ve aşağıdaki komut dosyasına
 
 ```hcl
 provider "azurerm" {
+  # The "feature" block is required for AzureRM provider 2.x. 
+  # If you are using version 1.x, the "features" block is not allowed.
+  version = "~>2.0"
+  features {}
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"

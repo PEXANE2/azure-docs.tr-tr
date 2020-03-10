@@ -1,14 +1,15 @@
 ---
 title: Öğretici-Terrayform kullanarak Azure dağıtım yuvaları ile altyapı sağlama
-description: Terraform ile Azure sağlayıcısı dağıtım yuvalarını kullanma öğreticisi
+description: Bu öğreticide, Azure sağlayıcı dağıtım yuvaları ile Terrayform kullanacaksınız
+keywords: Azure DevOps terrayform dağıtım Yuvaları
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: 68c790b4fad442d94e6ac82d1a545b8554d2dd4f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 03/09/2020
+ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159188"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943496"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Öğretici: Terrayform kullanarak Azure dağıtım yuvaları ile altyapı sağlama
 
@@ -68,7 +69,12 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     resource "azurerm_resource_group" "slotDemo" {
         name = "slotDemoResourceGroup"
@@ -247,7 +253,12 @@ Bu noktada, üretim yuvasını dağıttık. Hazırlama yuvasını dağıtmak iç
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     # Swap the production slot and the staging slot
     resource "azurerm_app_service_active_slot" "slotDemoActiveSlot" {

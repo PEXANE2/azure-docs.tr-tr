@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315828"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942558"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Dosyaları Data Box Edge C# taşımak için IoT Edge modülünü geliştirme
 
@@ -53,7 +53,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 - Aşağıdaki geliştirme kaynakları:
 
     - [Visual Studio Code](https://code.visualstudio.com/).
-    - [Visual Studio Code için C# (OmniSharp tarafından desteklenen) uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+    - [Visual Studio Code için C# (OmniSharp tarafından desteklenen) uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
     - [Visual Studio Code için Azure IoT Edge uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
     - [.NET Core 2.1 SDK'sı](https://www.microsoft.com/net/download).
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Yazılımı indirmek ve yüklemek için bir hesap oluşturmanız gerekebilir.
@@ -63,7 +63,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**’a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
@@ -92,8 +92,8 @@ Aşağıdaki adımlarda, .NET Core 2,1 SDK temel alınarak bir IoT Edge modülü
 Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu oluşturun.
 
 1. Visual Studio Code ' de, VS Code komut paletini açmak için **> komut paleti görüntüle** ' yi seçin.
-2. Komut paletinde Azure komutunu **girip çalıştırın: Oturum açın** ve Azure hesabınızda oturum açmak için yönergeleri izleyin. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
-3. Komut paletinde, komutunu **girin ve Azure IoT Edge çalıştırın: Yeni IoT Edge çözümü**. Komut paletinde çözümünüzü oluşturmak için aşağıdaki bilgileri girin:
+2. Komut paletinde **Azure: Sign in** komutunu girip çalıştırdıktan sonra yönergeleri izleyerek Azure hesabınızda oturum açın. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
+3. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın. Komut paletinde çözümünüzü oluşturmak için aşağıdaki bilgileri girin:
 
     1. Çözümü oluşturmak istediğiniz klasörü seçin.
     2. Çözümünüz için bir ad girin veya varsayılan **EdgeSolution** adını kabul edin.
@@ -107,7 +107,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     5. Önceki bölümde, ilk modülünüzün görüntü deposu olarak oluşturduğunuz kapsayıcı kayıt defterini belirtin. **localhost:5000** yerine kopyaladığınız oturum açma sunucusu değerini yazın.
 
-        Son dize gibi `<Login server name>/<Module name>`görünür. Bu örnekte, dize: `mycontreg2.azurecr.io/filecopymodule`.
+        Son dize `<Login server name>/<Module name>`gibi görünür. Bu örnekte dize: `mycontreg2.azurecr.io/filecopymodule`.
 
         ![Yeni çözüm oluştur 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -272,7 +272,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     *Program. cs (77, 44): uyarı CS1998: Bu zaman uyumsuz yöntemde ' await ' işleçleri yok ve zaman uyumlu olarak çalışacak. Engelleyici olmayan API çağrılarını beklemek için ' await ' işlecini veya bir arka plan iş parçacığında CPU 'ya bağlı çalışma yapmak için ' await Task. Run (...) ' kullanmayı düşünün.*
 
-4. VS Code tümleşik terminalinde etiketle tam kapsayıcı görüntü adresini görebilirsiniz. Görüntü adresi, Module. JSON dosyasındaki biçimdeki `<repository>:<version>-<platform>`bilgilerden oluşturulur. Bu makalede, şöyle `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`görünmelidir.
+4. VS Code tümleşik terminalinde etiketle tam kapsayıcı görüntü adresini görebilirsiniz. Görüntü adresi, `<repository>:<version>-<platform>`biçimindeki Module. JSON dosyasındaki bilgilerden oluşturulur. Bu makale için `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`şöyle görünmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
