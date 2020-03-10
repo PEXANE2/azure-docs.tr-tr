@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383671"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393861"
 ---
 # <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme 
 
@@ -48,7 +48,7 @@ Her bir varlığın hangi varlıkları oluşturmak veya uygulamaya ekleneceğini
 |Makine tarafından öğrenilen varlık|Varlıklar veya amaç ayrıntısı|
 |Liste varlığı|Varlıklar veya amaç ayrıntısı|
 |Normal ifade varlığı|Varlıklar|
-|Pattern.Any varlık|Varlıklar|
+|Pattern.any varlığı|Varlıklar|
 |Önceden oluşturulmuş varlık|Varlıklar|
 |Önceden oluşturulmuş etki alanı varlığı|Varlıklar|
 
@@ -90,7 +90,7 @@ Aşağıdaki listede kurallı adı ve eş anlamlılar gösterilmektedir.
 |--|--|
 |Kırmızı|Crimson, kan, Apple, Fire-Engine|
 |Mavi|gök, Azure, Cobalt|
-|Yeşil|Kelly, limon sarısı|
+|Renkli|Kelly, limon sarısı|
 
 Bir liste varlığı oluşturmak için yordamını kullanın. Liste varlığı oluşturulduktan sonra, bir amaç için örnek söyleyeni etiketlemenize gerek yoktur. Liste öğeleri ve eş anlamlılar, tam metin kullanılarak eşleştirilir. 
 

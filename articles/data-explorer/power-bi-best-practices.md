@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024026"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395225"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi uygulamalar
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Power BI kullanmak için en iyi uygulamalar 
 
@@ -98,7 +98,7 @@ Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   Örneğin:
+   Örnek:
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])

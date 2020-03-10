@@ -15,30 +15,30 @@ ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
 ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309532"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365398"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs ile ölçeklendirme
 
 Event Hubs ölçeklendirmeyi etkileyen iki etken vardır.
-*   Aktarım hızı birimleri
+*   İşleme birimleri
 *   Bölümler
 
-## <a name="throughput-units"></a>Aktarım hızı birimleri
+## <a name="throughput-units"></a>İşleme birimleri
 
 Event Hubs işleme kapasitesi, *işleme birimleri* tarafından denetlenir. İşleme birimleri önceden satın alınan kapasite birimleridir. Tek bir üretilen iş şunları yapmanızı sağlar:
 
 * Giriş: Kadar ikinci veya 1000 olaya (hangisi önce gerçekleşirse) saniye başına saniyede 1 MB.
 * Çıkış: Saniye başına ikinci veya 4096 olay başına 2 MB'a kadar.
 
-Satın alınan işleme birimlerinin kapasitesi aşıldığında giriş azaltılır ve [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) döndürülür. Çıkış, azaltma özel durumları oluşturmaz, ancak yine de satın alınan işleme birimlerinin kapasitesiyle sınırlıdır. Yayımlama hızı özel durumları alırsanız veya daha yüksek çıkış görmeyi bekliyorsanız ad alanı için kaç tane işleme birimi satın aldığınızı denetlediğinizden emin olun. Üretilen iş birimleri yönetebileceğiniz **ölçek** alanlarının dikey [Azure portalında](https://portal.azure.com). Üretilen iş birimleri program aracılığıyla kullanarak da yönetebilirsiniz [olay hub'ları API](event-hubs-api-overview.md).
+Satın alınan işleme birimlerinin kapasitesi aşıldığında giriş azaltılır ve [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) döndürülür. Çıkış, azaltma özel durumları oluşturmaz, ancak yine de satın alınan işleme birimlerinin kapasitesiyle sınırlıdır. Yayımlama hızı özel durumları alırsanız veya daha yüksek çıkış görmeyi bekliyorsanız ad alanı için kaç tane işleme birimi satın aldığınızı denetlediğinizden emin olun. [Azure Portal](https://portal.azure.com)ad alanlarının **Ölçek** dikey penceresinde üretilen iş birimlerini yönetebilirsiniz. Ayrıca, [Event Hubs API 'lerini](event-hubs-api-overview.md)kullanarak işleme birimlerini programlı bir şekilde yönetebilirsiniz.
 
 İşleme birimleri önceden satın alınır ve saat başına faturalandırılır. Satın alındıktan sonra işleme birimleri en az bir saat için faturalandırılır. En fazla 20 işleme birimi bir Event Hubs ad alanı için satın alınabilir ve bu ad alanındaki tüm event hubs arasında paylaşılır.
 
-**Otomatik şişme** özellik Event Hubs'ın otomatik olarak ölçeklendirilebilir üretilen iş birimi sayısını artırarak, kullanım karşılaması gerekir. Üretilen iş birimleri artırma engeller azaltma senaryoları, burada:
+Event Hubs **Otomatik Şişir** özelliği, kullanım ihtiyaçlarını karşılamak için üretilen iş birimi sayısını artırarak otomatik olarak ölçeklendirilir. Üretilen iş birimleri artırma engeller azaltma senaryoları, burada:
 
 - Veri giriş hızlarını kümesi işleme birimleri en fazla.
 - Veri çıkışı istek hızları kümesi işleme birimleri en fazla.
@@ -61,4 +61,4 @@ Olay yayımcısı yalnızca bölüm anahtarını bilir, olayların yayımlandı�
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 - [İşleme birimlerini otomatik ölçeklendirme](event-hubs-auto-inflate.md)
-- [Event Hubs hizmetine genel bakış](event-hubs-what-is-event-hubs.md)
+- [Event Hubs hizmete genel bakış](event-hubs-what-is-event-hubs.md)

@@ -10,20 +10,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454428"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893192"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
 
 Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi keşfedebileceği, nasıl kullanılacağını ve nasıl erişim isteyeceğini burada bulabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Geliştirici portalının yönetilen sürümüne erişin
@@ -91,7 +91,7 @@ Portalda her değişiklik yaptığınızda, alt kısımdaki menüdeki **Kaydet**
 Portalınızı ziyaretçi tarafından kullanılabilir yapmadan önce, otomatik olarak oluşturulan içeriği kişiselleştirmelisiniz. Önerilen değişiklikler, ana sayfanın düzenlerini, stillerini ve içeriğini içerir.
 
 > [!NOTE]
-> Tümleştirme konuları nedeniyle, aşağıdaki sayfalar farklı bir URL altında kaldırılamaz veya taşınamaz: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso``/signup`.
+> Tümleştirme konuları nedeniyle, aşağıdaki sayfalar farklı bir URL altında kaldırılamaz veya taşınamaz: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Giriş sayfası
 
@@ -101,7 +101,7 @@ Varsayılan **giriş** sayfası, kukla içerikle doldurulmuştur. Tüm bölümle
 
 Gezinti çubuğundaki otomatik olarak oluşturulan logoyu kendi görüntünüz ile değiştirin.
 
-### <a name="styling"></a>Sağlayan
+### <a name="styling"></a>Stil oluşturma
 
 Herhangi bir stili ayarlamanız gerekmez, ancak belirli öğeleri ayarlamayı düşünebilirsiniz. Örneğin, birincil rengi markaınızın rengine uyacak şekilde değiştirin.
 
@@ -125,6 +125,10 @@ Portalınızın ve en son değişikliklerinin ziyaretçi tarafından kullanılab
 ## <a name="visit-the-published-portal"></a>Yayınlanan portalı ziyaret edin
 
 Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebilirsiniz, örneğin `https://contoso-api.developer.azure-api.net`. Bunu, dış ziyaretçi olarak ayrı bir tarayıcı oturumunda (bilito/Private gözatma modu) görüntüleyin.
+
+## <a name="apply-the-cors-policy-on-apis"></a>API 'lerde CORS ilkesini uygulama
+
+Portalınızın ziyaretçilerinin yerleşik etkileşimli konsol aracılığıyla API 'Leri test etmek için API 'lerinizin CORS 'yi (Cross-Origin kaynak paylaşımı) etkinleştirmeniz gerekir. Daha fazla bilgi için [Bu belge makalesine](api-management-howto-developer-portal.md#cors) başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930432"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372295"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu 'nda modülleri yönetme
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. **+ Modül Ekle**' ye tıklayın. Modülünüzü içeren bir **. zip** dosyası seçin ve işlemi içeri aktarmaya başlamak için **Tamam** ' a tıklayın.
 
@@ -62,7 +62,7 @@ Ayrıca, PowerShell Galerisi modülleri doğrudan Otomasyon hesabınızdan de i�
 
 Modülle ilgili sorunlarınız varsa veya bir modülün önceki bir sürümüne geri dönmeniz gerekirse, Otomasyon hesabınızdan silebilirsiniz. Bir Otomasyon hesabı oluşturduğunuzda içeri aktarılan [varsayılan modüllerin](#default-modules) orijinal sürümünü silemezsiniz. Silmek istediğiniz modül yüklü [varsayılan modüllerden](#default-modules) birinin daha yeni bir sürümü Ise, Otomasyon hesabınızla yüklenen sürüme geri gönderilir. Aksi takdirde, Otomasyon hesabınızdan sildiğiniz herhangi bir modül kaldırılır.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. Kaldırmak istediğiniz modülü seçin. **Modül** sayfasında **Sil**' i seçin. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda mevcut olan sürüme geri alınacaktır.
 
@@ -82,7 +82,7 @@ Aşağıda, her Otomasyon hesabına aktarılan iç `Orchestrator.AssetManagement
 >Bu iç cmdlet 'ler bir Windows karma Runbook Worker üzerinde bulunur, Linux karma Runbook Worker üzerinde kullanılamaz. Doğrudan bilgisayarda veya ortamınızdaki kaynaklarda çalışan runbook 'lar için karşılık gelen [Azurerd. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) veya [az modules](../az-modules.md) kullanın. 
 >
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -265,10 +265,10 @@ Aşağıdaki tabloda, bir Automation hesabı oluşturulduğunda varsayılan olar
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
 | GPRegistryPolicyParser | 0.2 |
-| Microsoft. PowerShell. Core | 0 |
-| Microsoft. PowerShell. Diagnostics |  |
-| Microsoft. PowerShell. Management |  |
-| Microsoft. PowerShell. Security |  |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
 | Microsoft. WSMan. Management |  |
 | Orchestrator. AssetManagement. cmdlet 'Leri | 1 |

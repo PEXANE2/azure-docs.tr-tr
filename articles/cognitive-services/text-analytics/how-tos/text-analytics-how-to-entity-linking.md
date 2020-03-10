@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367647"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942636"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -47,7 +47,7 @@ Metin Analizi API'si, adlandırılmış varlık tanıma-v2 ve v3 'in iki sürüm
 Bilgi için bkz. [dil desteği](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 ### <a name="entity-types"></a>Varlık türleri
 
@@ -74,7 +74,7 @@ Varlık bağlama
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 ### <a name="entity-types"></a>Varlık türleri
 
@@ -90,7 +90,7 @@ Varlık bağlama
 | Miktar      | Yüzde    | "%50", "50 yüzdesi"|
 | Miktar      | Numarasını       | "2.", "saniye"     |
 | Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
-| Miktar      | Para Birimi      | "$10,99"     |
+| Miktar      | Para birimi      | "$10,99"     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
 | DateTime      | Yok\*         | "6:12:30 4, 2012"      |
@@ -100,7 +100,7 @@ Varlık bağlama
 | DateTime      | TimeRange     | "6pm-7pm"     |
 | DateTime      | Süre      | "1 dakika ve 45 saniye"   |
 | DateTime      | Ayarla           | "her Salı"     |
-| {1&gt;URL&lt;1}           | Yok\*         | "https:\//www.bing.com"    |
+| URL'si           | Yok\*         | "https:\//www.bing.com"    |
 | Email         | Yok\*         | "support@contoso.com" |
 | ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
 | IP Adresi    | Yok\*         | alana 10.0.0.100 |
@@ -130,7 +130,7 @@ POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek içi
 > [!NOTE]
 > Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 [Adlandırılmış varlık tanıma v3 başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -144,7 +144,7 @@ HI
 Varlık bağlama
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 [Adlandırılmış varlık tanıma (NER) v2 başvurusu](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -185,7 +185,7 @@ Tüm POST istekleri, kimlik ve algılanan varlık özelliklerine sahip JSON biç
 Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Örnek v3 yanıtları
 
@@ -242,7 +242,7 @@ Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki iş
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>Örnek NER v2 yanıtı
 ```json

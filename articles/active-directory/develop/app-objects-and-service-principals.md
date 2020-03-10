@@ -15,13 +15,13 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698433"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370308"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri
 
 Bazen, "uygulama" teriminin anlamı, Azure Active Directory (Azure AD) bağlamında kullanıldığında yanlış anlaşılabilirler. Bu makale, Azure AD uygulama tümleştirmesinin kavramsal ve somut yönlerini, [çok kiracılı bir uygulama](developer-glossary.md#multi-tenant-application)için kayıt ve onay gösterimi ile açıklar.
 
@@ -50,7 +50,7 @@ Aşağıdaki bölümlerde, Azure AD uygulama modelinin tasarım zamanı ve çal�
 
 Bir Azure AD uygulaması, uygulamanın kaydedildiği, uygulamanın "giriş" kiracısı olarak bilinen Azure AD kiracısında bulunan bir ve yalnızca uygulama nesnesi tarafından tanımlanır. Microsoft Graph [uygulama varlığı][MS-Graph-App-Entity] , uygulama nesnesinin özellikleri için şemayı tanımlar.
 
-### <a name="service-principal-object"></a>hizmet sorumlusu nesnesi
+### <a name="service-principal-object"></a>Hizmet sorumlusu nesnesi
 
 Bir Azure AD kiracısı tarafından güvenliği sağlanmış olan kaynaklara erişmek için, erişim gerektiren varlık bir güvenlik sorumlusu tarafından temsil etmelidir. Bu, hem kullanıcılar (Kullanıcı sorumlusu) hem de uygulamalar (hizmet sorumlusu) için geçerlidir.
 
@@ -62,9 +62,9 @@ Bir uygulamaya bir Kiracıdaki kaynaklara erişim izni verildiğinde (kayıt vey
 
 Uygulama nesnesini, tüm kiracılarda kullanılmak üzere uygulamanızın *genel* temsili olarak ve hizmet sorumlusu, belirli bir kiracıda kullanılmak üzere *Yerel* gösterim olarak göz önünde bulundurun.
 
-Uygulama nesnesi, buna karşılık gelen hizmet sorumlusu nesnelerini oluştururken kullanılmak üzere ortak ve varsayılan özelliklerin *türetildiği* şablon görevi görür. Bu nedenle, bir uygulama nesnesi, yazılım uygulamasıyla 1:1 ilişkiye sahiptir ve buna karşılık gelen hizmet sorumlusu nesnesiyle 1: çok ilişki bulunur.
+Uygulama nesnesi, karşılık gelen hizmet sorumlusu nesneleri oluştururken kullanılmak üzere ortak ve varsayılan özelliklerin *türetildiği* şablon görevi görür. Bu nedenle, bir uygulama nesnesi, yazılım uygulamasıyla 1:1 ilişkiye sahiptir ve buna karşılık gelen hizmet sorumlusu nesnesiyle 1: çok ilişki bulunur.
 
-Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalıdır, bu sayede oturum açma ve/veya kiracı tarafından güvenliği sağlanmış kaynaklara erişim için bir kimlik oluşturulmasını sağlar. Tek kiracı uygulamasının (ana kiracısında) uygulama kaydı sırasında kullanılmak için oluşturulan ve onaylanan tek bir hizmet sorumlusu vardır. Çok kiracılı bir Web uygulaması/API 'SI, bu kiracıdan gelen bir kullanıcının kendi kullanımına neden olan her bir kiracıda oluşturulmuş bir hizmet sorumlusu de vardır.
+Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalıdır, bu sayede oturum açma ve/veya kiracı tarafından güvenliği sağlanmış kaynaklara erişim için bir kimlik oluşturulmasını sağlar. Tek kiracılı bir uygulamanın yalnızca bir hizmet sorumlusu vardır (kendi ana kiracısında) ve uygulama kaydı sırasında kullanım için oluşturulur ve kullanıma alınmıştır. Çok kiracılı bir Web uygulaması/API 'SI, bu kiracıdan gelen bir kullanıcının kendi kullanımına neden olan her bir kiracıda oluşturulmuş bir hizmet sorumlusu de vardır.
 
 > [!NOTE]
 > Uygulama nesneniz üzerinde yaptığınız tüm değişiklikler Ayrıca uygulamanın yalnızca giriş kiracısındaki hizmet sorumlusu nesnesine yansıtılır (kayıtlı olan kiracı). Çok kiracılı uygulamalarda, erişim [uygulama erişim paneli](https://myapps.microsoft.com) aracılığıyla kaldırılana ve yeniden verilene kadar, uygulama nesnesi üzerindeki değişiklikler herhangi bir tüketici kiracının hizmet sorumlusu nesnelerinde yansıtılmaz.

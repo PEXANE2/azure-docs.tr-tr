@@ -8,11 +8,11 @@ ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375146"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -24,14 +24,14 @@ Analysis Services Ayrıca, hizmet sorumlularını kullanan yönetilen kimlikler 
 
 ## <a name="create-service-principals"></a>Hizmet sorumlusu oluşturma
  
-Hizmet sorumluları Azure portal veya PowerShell kullanarak oluşturulabilir. Daha fazla bilgi için bkz:
+Hizmet sorumluları Azure portal veya PowerShell kullanarak oluşturulabilir. Daha fazla bilgi için bkz.:
 
 [Hizmet sorumlusu oluşturma-Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Hizmet sorumlusu oluşturma - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini ve sertifika varlıklarını depolayın
 
-Hizmet sorumlusu kimlik bilgileri ve sertifikaları, runbook işlemleri için Azure Otomasyonu 'nda güvenli bir şekilde depolanabilir. Daha fazla bilgi için bkz:
+Hizmet sorumlusu kimlik bilgileri ve sertifikaları, runbook işlemleri için Azure Otomasyonu 'nda güvenli bir şekilde depolanabilir. Daha fazla bilgi için bkz.:
 
 [Azure Automation 'Da kimlik bilgisi varlıkları](../automation/automation-credentials.md)   
 [Azure Otomasyonu'ndaki sertifika varlıkları](../automation/automation-certificates.md)

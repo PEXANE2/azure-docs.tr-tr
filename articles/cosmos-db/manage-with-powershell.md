@@ -8,26 +8,26 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364511"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
-Aşağıdaki kılavuzda hesap, veritabanı, kapsayıcı ve aktarım hızı dahil olmak üzere Azure Cosmos DB kaynaklarının yönetimi ve otomatik hale getirmek için PowerShell 'in nasıl kullanılacağı açıklanmaktadır. Azure Cosmos DB yönetimi, AzResource cmdlet 'i aracılığıyla doğrudan Azure Cosmos DB kaynak sağlayıcısına işlenir. Azure Cosmos DB kaynak sağlayıcısı için PowerShell kullanılarak yönetilebilen tüm özellikleri görüntülemek için, bkz. [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
+Aşağıdaki kılavuzda hesap, veritabanı, kapsayıcı ve aktarım hızı gibi Azure Cosmos DB kaynaklarının yönetimine yönelik betik oluşturmak ve yönetimini otomatikleştirmek için PowerShell’in nasıl kullanılacağı açıklanır. Azure Cosmos DB’nin yönetimi AzResource cmdlet’i üzerinden doğrudan Azure Cosmos DB kaynak sağlayıcısına işlenir. Azure Cosmos DB kaynak sağlayıcısı için PowerShell kullanılarak yönetilebilen tüm özellikleri görüntülemek için, bkz. [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
 
 Azure Cosmos DB platformlar arası yönetimi için [Azure CLI](manage-with-cli.md), [REST API][rp-rest-api]veya [Azure Portal](create-sql-api-dotnet.md#create-account)kullanabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 PowerShell 'de Azure hesabınızda yüklemek ve oturum açmak için [Azure PowerShell yükleyip yapılandırma][powershell-install-configure] konusundaki yönergeleri izleyin.
 
 * Kullanıcı onayı gerekmeden aşağıdaki komutları yürütmek istiyorsanız, komutuna `-Force` bayrağını ekleyin.
-* Aşağıdaki tüm komutlar zaman uyumludur.
+* Aşağıdaki komutlar zaman uyumlu.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos hesapları
 
@@ -243,7 +243,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="list-keys"></a>Hesap anahtarlarını listeleme
 
-Azure Cosmos DB bir hesap oluşturduğunuzda, hizmet Azure Cosmos DB hesabına erişildiğinde kimlik doğrulama için kullanılabilecek iki ana erişim anahtarı oluşturur. Azure Cosmos DB iki erişim anahtarı sunarak, Azure Cosmos DB hesabınıza kesinti olmadan anahtarları yeniden oluşturmanız mümkün. Salt okuma işlemlerine yönelik kimlik doğrulama için salt okunurdur anahtarlar de mevcuttur. İki okuma-yazma anahtarı (birincil ve ikincil) ve iki salt okunurdur (birincil ve ikincil) anahtarlar vardır.
+Azure Cosmos DB hesabı oluşturduğunuzda, hizmet, Azure Cosmos DB hesabına erişim sağlandığında kimlik doğrulaması için kullanılan iki ana erişim anahtarları oluşturur. İki erişim tuşu sağlayarak, Azure Cosmos DB, kesinti olmadan Azure Cosmos DB hesabınız için anahtarları yeniden sağlar. Salt okunur anahtarlar, salt okunur işlemler kimlik doğrulaması için de kullanılabilir. Var. iki okuma-yazma anahtarları (birincil ve ikincil) ve iki salt okunur anahtarlar (birincil ve ikincil)
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -261,7 +261,7 @@ Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 
 ### <a id="list-connection-strings"></a>Bağlantı dizelerini listeleme
 
-MongoDB hesaplarında, MongoDB uygulamanızı veritabanı hesabına bağlamaya yönelik bağlantı dizesi aşağıdaki komut kullanılarak alınabilir.
+MongoDB uygulamanızı hesabınıza veritabanı hesabına bağlanacak bağlantı dizesini, MongoDB hesabı için aşağıdaki komutu kullanarak alınabilir.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359635"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -67,7 +67,7 @@ Hizmet ve IoT Hub ile cihaz ile IoT Hub arasındaki buluttan cihaza ileti alış
 
 | Oluşturan | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
-| Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen iletilerin `To` özelliği hedef cihazın alıcı bağlantı yoluna ayarlı `/devices/<deviceID>/messages/devicebound` ' dir. |
+| Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen iletilerin `To` özelliği hedef cihazın alıcı bağlantı yolu `/devices/<deviceID>/messages/devicebound`olarak ayarlanır. |
 | Hizmet | Alıcı bağlantısı | `/messages/serviceBound/feedback` | Hizmet tarafından bu bağlantıda alınan cihazlardan gelen tamamlama, reddetme ve bırakma geri bildirim iletileri. Geri bildirim iletileri hakkında daha fazla bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Aşağıdaki kod parçacığı, bir buluttan cihaza ileti oluşturmayı ve [Python 'Da Uamqp kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanarak bir cihaza nasıl gönderileceğini gösterir.
@@ -128,11 +128,11 @@ for msg in batch:
 
 Yukarıdaki kodda gösterildiği gibi, buluttan cihaza geri bildirim iletisinde bir tür *Application/vnd. Microsoft. ıothub. feedback. JSON*bulunur. Özgün iletinin teslim durumunu anlamak için iletinin JSON gövdesindeki özellikleri kullanabilirsiniz:
 
-* Geri bildirim gövdesinde anahtar `statusCode` şu değerlerden birine sahip: *Success*, *süresi doldu*, *deliverycountexce,* *reddedildi*veya *temizlendi*.
+* Geri bildirim gövdesindeki anahtar `statusCode` şu değerlerden birine sahip: *başarılı*, *süresi doldu*, *deliverycountexce,* *reddedildi*veya *temizlendi*.
 
-* Geri bildirim gövdesindeki anahtar `deviceId` hedef cihazın KIMLIĞINE sahiptir.
+* Geri bildirim gövdesinde anahtar `deviceId` hedef cihazın KIMLIĞI vardır.
 
-* Geri bildirim gövdesinde anahtar `originalMessageId`, hizmet tarafından gönderilen orijinal buluttan cihaza ileti KIMLIĞINI içerir. Bu teslim durumunu, buluttan cihaza iletilerle geri bildirimde bulunmak için kullanabilirsiniz.
+* Geri bildirim gövdesindeki anahtar `originalMessageId`, hizmet tarafından gönderilen özgün buluttan cihaza ileti KIMLIĞINI içerir. Bu teslim durumunu, buluttan cihaza iletilerle geri bildirimde bulunmak için kullanabilirsiniz.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Telemetri iletileri alma (hizmet istemcisi)
 
@@ -144,7 +144,7 @@ Her adımda, istemcinin aşağıdaki bilgi parçalarını sunması gerekir:
 
 * Geçerli hizmet kimlik bilgileri (hizmet paylaşılan erişim imza belirteci).
 
-* Tüketici grubu bölümünün iletileri almayı amaçladığı, iyi biçimlendirilmiş bir yoldur. Belirli bir tüketici grubu ve bölüm KIMLIĞI için yol şu biçimdedir: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (varsayılan Tüketici grubu `$Default` ' dir).
+* Tüketici grubu bölümünün iletileri almayı amaçladığı, iyi biçimlendirilmiş bir yoldur. Belirli bir tüketici grubu ve bölüm KIMLIĞI için yol şu biçimdedir: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (varsayılan Tüketici grubu `$Default`).
 
 * Bölümde bir başlangıç noktası belirlemek için isteğe bağlı bir filtreleme koşulu. Bu koşul sıra numarası, konum veya sıraya alınmış zaman damgası biçiminde olabilir.
 
@@ -267,7 +267,7 @@ Aşağıdaki bağlantı yolları cihaz işlemleri olarak desteklenir:
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Buluttan cihaza komutları alma (cihaz istemcisi)
 
-Cihazlara gönderilen buluttan cihaza olan komutlar `/devices/<deviceID>/messages/devicebound` bağlantısına ulaşır. Cihazlar bu iletileri toplu işler halinde alabilir ve iletideki ileti veri yükünü, ileti özelliklerini, ek açıklamaları veya uygulama özelliklerini kullanabilir.
+Cihazlara gönderilen buluttan cihaza olan komutlar bir `/devices/<deviceID>/messages/devicebound` bağlantısına ulaşır. Cihazlar bu iletileri toplu işler halinde alabilir ve iletideki ileti veri yükünü, ileti özelliklerini, ek açıklamaları veya uygulama özelliklerini kullanabilir.
 
 Aşağıdaki kod parçacığı, bir cihaz tarafından buluttan cihaza ileti almak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanır.
 

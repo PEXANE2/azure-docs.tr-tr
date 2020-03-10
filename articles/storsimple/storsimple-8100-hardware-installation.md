@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277093"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365899"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
 
@@ -42,7 +42,7 @@ Ardından, cihazınızın paketini açmak için aşağıdaki adımları izleyin.
    
     **Depolama cihazınızın paketi açılmış görünümü**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   1 |Paketleme kutusu |
    |   2 |Alt fohar |
@@ -104,7 +104,7 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
 
     **İç demiryolu slaytlarını kutunun kenarlarına ekleme**
    
-    Etiket | Açıklama
+    Etiketle | Açıklama
     ----- | -----------
     1     | A 3x4 düğme-baş vida
     2     | Kasa slaytları
@@ -118,7 +118,7 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
    
     **Dış demiryolu derlemelerini rafa ekleme**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   1 |Clamping vidalı |
    |   2 |Kare deliği ön dolap gönderisi vidalı |
@@ -144,7 +144,7 @@ Yeni yüklenen raf raylarını kullanarak cihazı rafa bağlamak için aşağıd
    
     **Flanş Cap 'i yükleme**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   1 |Kutu birleşme vidalı |
 
@@ -153,7 +153,7 @@ Bir sonraki adım, cihazınızı güç, ağ ve seri erişim için kablolayın.
 ## <a name="cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızı bağlayın
 Aşağıdaki yordamlarda, StorSimple 8100 cihazınızın güç, ağ ve seri bağlantılar için nasıl kablo olarak kullanılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Cihazınızın kablolarını bağlamaya başlamadan önce şunlara ihtiyacınız olacaktır:
 
 * Depolama cihazınız, tamamen açılmış ve rafa takılı.
@@ -184,7 +184,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    
     **Veri bağlantı noktalarını gösteren cihazın geri dönmesi**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   0,1,4,5 |1 GbE ağ arabirimleri |
    |   2,3 |10 GbE ağ arabirimleri |
@@ -195,14 +195,14 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
 
     **Cihazınız için ağ kablolaması**
 
-   |Etiket | Açıklama |
+   |Etiketle | Açıklama |
    |----- | ----------- |
    | A    | Internet erişimi olan LAN |
    | B    | Denetleyici 0 |
-   | C    | PCM 0 |
+   | Mş    | PCM 0 |
    | D    | Denetleyici 1 |
    | E    | PCM 1 |
-   | F, G | Ana bilgisayarlar |
+   | F, G | Konaklar |
    | 0-5  | Ağ arabirimleri |
 
 

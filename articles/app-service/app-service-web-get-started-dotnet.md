@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382587"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure’da ASP.NET Core web uygulaması oluşturma
 
@@ -45,7 +45,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Core Web uygulaması oluşturun:
 
    ![Web uygulaması projenizi yapılandırma](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. Kimlik doğrulamanın **kimlik doğrulaması yok** olarak ayarlandığından emin olun ve başka bir seçenek seçili değildir. **Oluştur**'u seçin.
+1. Bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. Kimlik doğrulamanın **kimlik doğrulaması yok** olarak ayarlandığından emin olun ve başka bir seçenek seçili değildir. **Oluştur**’u seçin.
 
    ![Bu öğretici için ASP.NET Core Razor Pages seçin](./media/app-service-web-get-started-dotnet/aspnet-razor-pages-app.png)
 
@@ -69,7 +69,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Core Web uygulaması oluşturun:
    > Zaten oturum açtıysanız **Oluştur** öğesini henüz seçmeyin.
    >
 
-   ![Azure'da oturum açın](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
+   ![Azure'da oturum açma](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 

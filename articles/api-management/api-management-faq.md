@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967452"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375400"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
 Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını alın.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="contact-us"></a>Bize ulaşın
+## <a name="contact-us"></a>Bizimle iletişim kurun
 * [Microsoft Azure API Management ekipte soru sorabilirsiniz.](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
@@ -59,7 +59,7 @@ Aşağıdaki seçeneklerden birini kullanarak bizimle iletişim sağlayabilirsin
 Bir özellik önizlemede olduğunda, özelliğin sizin için nasıl çalıştığı konusunda etkin bir şekilde geri bildirimde bulunduğumuz anlamına gelir. Önizlemedeki bir özellik işlevsel olarak tamamlanmıştır, ancak müşteri geri bildirimlerine yanıt olarak bir değişiklik yapacağız olasıdır. Üretim ortamınızda önizlemede olan bir özelliğe bağlı memenizi öneririz. Önizleme özellikleriyle ilgili geri bildiriminiz varsa, lütfen [Microsoft Azure API Management takımına nasıl soru sorabilirim? konusundaki](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)iletişim seçeneklerinden birini öğrenmek için lütfen bize bildirin.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ağ geçidi ve arka uç Hizmetlerim arasındaki bağlantının güvenliğini nasıl giderebilirim?
-API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Yapabilecekleriniz:
+API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Şunları yapabilirsiniz:
 
 * HTTP temel kimlik doğrulaması kullanın. Daha fazla bilgi için bkz. [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md).
 * [Azure API Management 'de istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](api-management-howto-mutual-certificates.md)bölümünde AÇıKLANDıĞı gibi SSL karşılıklı kimlik doğrulaması kullanın.
@@ -67,13 +67,13 @@ API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı 
 * API Management örneğinizi bir Azure sanal ağına bağlayın.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>API Management hizmeti örneğinizi yeni bir örneğe kopyalamak Nasıl yaparım? mı?
-Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Yapabilecekleriniz:
+Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Şunları yapabilirsiniz:
 
 * API Management 'de yedekleme ve geri yükleme işlevini kullanın. Daha fazla bilgi için bkz. [Azure API Management 'de hizmet yedeklemesi ve geri yükleme kullanarak olağanüstü durum kurtarma uygulama](api-management-howto-disaster-recovery-backup-restore.md).
 * [API Management REST API](/rest/api/apimanagement/)kullanarak kendi yedekleme ve geri yükleme özelliğini oluşturun. Varlıkları istediğiniz hizmet örneğinden kaydetmek ve geri yüklemek için REST API kullanın.
 * Git kullanarak hizmet yapılandırmasını indirin ve ardından yeni bir örneğe yükleyin. Daha fazla bilgi için bkz. [Git kullanarak API Management hizmeti yapılandırmanızı kaydetme ve yapılandırma](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>API Management örneğimi programlı bir şekilde yönetebilir miyim?
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>API Management örneğinizi programlı bir şekilde yönetebilir miyim?
 Evet, kullanarak API Management programlı bir şekilde yönetebilirsiniz:
 
 * [API Management REST API](/rest/api/apimanagement/).
@@ -83,7 +83,7 @@ Evet, kullanarak API Management programlı bir şekilde yönetebilirsiniz:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Yöneticiler grubuna kullanıcı eklemek Nasıl yaparım??
 Yöneticiler grubuna bir kullanıcıyı nasıl ekleyebileceğiniz aşağıda bulabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Güncelleştirmek istediğiniz API Management örneğine sahip kaynak grubuna gidin.
 3. API Management, **API Management hizmeti katkıda bulunan** rolünü kullanıcıya atayın.
 
@@ -98,12 +98,12 @@ Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](https://d
 Eklemek istediğiniz ilke, ilke düzenleyicisinde soluk veya gölgeli görünüyorsa, ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması, belirli kapsamlar ve ilke bölümlerinde kullanabilmeniz için tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için, [API Management ilkeleri](/azure/api-management/api-management-policies)' nde ilkenin kullanımı bölümüne bakın.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Tek bir API 'de birden çok ortam ayarlamak Nasıl yaparım??
-Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Yapabilecekleriniz:
+Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Şunları yapabilirsiniz:
 
 * Aynı kiracıda farklı API 'Leri barındırın.
 * Farklı kiracılarda aynı API 'Leri barındırın.
 
-### <a name="can-i-use-soap-with-api-management"></a>API Management ile SOAP kullanabilir miyim?
+### <a name="can-i-use-soap-with-api-management"></a>API Management SOAP kullanabilir miyim?
 [SOAP geçişli geçiş](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) desteği artık kullanılabilir. Yöneticiler SOAP hizmeti WSDL 'sini içeri aktarabilir ve Azure API Management bir SOAP ön ucu oluşturur. Geliştirici portalı belgelerinin, test konsolunun, ilkelerin ve analizlerin hepsi SOAP Hizmetleri için kullanılabilir.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>AD FS güvenliği olan bir OAuth 2,0 yetkilendirme sunucusunu yapılandırabilir miyim?

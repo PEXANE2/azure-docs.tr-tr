@@ -11,11 +11,11 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/07/2020
 ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083125"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382364"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
@@ -214,7 +214,7 @@ Geçerli önizlemede, Elastik İş aracısı oluşturmak için bir Azure SQL ver
 
 |Rol adı  |'jobs' şeması izinleri  |'jobs_internal' şeması izinleri  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Hiçbiri     |
+|**jobs_reader**     |    SELECT     |    Yok     |
 
 > [!IMPORTANT]
 > Veritabanı yöneticisi olarak *İş veritabanına* erişim izni vermeden önce güvenlik durumunu gözden geçirin. İş oluşturma veya düzenleme izinlerine sahip olan kötü niyetli bir kullanıcı, kendi denetimindeki bir veritabanına bağlanmak için kayıtlı kimlik bilgisini kullanan bir iş oluşturarak veya düzenleyerek ilgili kimlik bilgisinin parolasını belirleyebilir.
@@ -259,7 +259,7 @@ Aşağıdaki örneklerde işin çalıştırılacağı veritabanlarının belirle
 
 #### <a name="job"></a>İş
 
-*İş*, bir plan dahilinde veya tek seferlik olarak yürütülen çalışma birimidir. Bir işte bir veya daha fazla *iş adımı* bulunur.
+*İş*, bir zamanlamaya göre veya tek seferlik yürütülen bir çalışma birimidir. Bir işte bir veya daha fazla *iş adımı* bulunur.
 
 ##### <a name="job-step"></a>İş adımı
 
@@ -271,7 +271,7 @@ Her işte yürütülecek bir T-SQL betiği, bu T-SQL betiğinin çalıştırıla
 
 #### <a name="job-history"></a>İş geçmişi
 
-İş yürütme geçmişi, *İş veritabanında* kaydedilir. Sistem temizleme işlemi 45 günden daha eski olan yürütme geçmişi verilerini siler. 45 günden daha yeni olan geçmişi kaldırmak için **İş veritabanında***sp_purge_history* saklı yordamını çağırın.
+İş yürütme geçmişi *İş veritabanında* depolanır. Sistem temizleme işlemi 45 günden daha eski olan yürütme geçmişi verilerini siler. 45 günden daha yeni olan geçmişi kaldırmak için **İş veritabanında***sp_purge_history* saklı yordamını çağırın.
 
 ### <a name="agent-performance-capacity-and-limitations"></a>Aracı performansı, kapasitesi ve sınırlamaları
 

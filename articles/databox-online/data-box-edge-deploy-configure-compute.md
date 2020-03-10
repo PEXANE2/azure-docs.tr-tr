@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277254"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397311"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Öğretici: Azure Data Box Edge ile veri dönüştürme
 
@@ -22,10 +22,10 @@ Bu öğreticide, Azure Data Box Edge cihazınızda bir işlem rolünün nasıl y
 
 Bu yordamın tamamlanması yaklaşık 10 ila 15 dakika sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * İşlemi yapılandırma
+> * İşlem yapılandırma
 > * Paylaşımlar Ekle
 > * İşlem modülü ekleme
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
@@ -38,7 +38,7 @@ Data Box Edge cihazınızda bir işlem rolü ayarlamadan önce şunları yaptı�
 - Data Box Edge cihazınızı [, bağlanma, ayarlama ve etkinleştirme Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md)açıklandığı şekilde etkinleştirdiniz.
 
 
-## <a name="configure-compute"></a>İşlemi yapılandırma
+## <a name="configure-compute"></a>İşlem yapılandırma
 
 Data Box Edge işlem yapılandırmak için bir IoT Hub kaynağı oluşturacaksınız.
 
@@ -50,10 +50,10 @@ Data Box Edge işlem yapılandırmak için bir IoT Hub kaynağı oluşturacaksı
 3. **Uç Işlem yapılandırma** dikey penceresinde aşağıdakileri girin:
 
    
-    |Alan  |Value  |
+    |Alan  |Değer  |
     |---------|---------|
-    |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak, bir IoT kaynağı oluşturmak için standart bir katman (S1) kullanılır. Ücretsiz bir IoT kaynağı kullanmak için, bir tane oluşturun ve ardından mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Data Box Edge kaynak tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Name     |IoT Hub kaynağınız için bir ad girin.         |
+    |IoT Hub’ı     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak, bir IoT kaynağı oluşturmak için standart bir katman (S1) kullanılır. Ücretsiz bir IoT kaynağı kullanmak için, bir tane oluşturun ve ardından mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Data Box Edge kaynak tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+    |Adı     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem ile çalışmaya başlama](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -111,8 +111,8 @@ Bu bölümde, [Data Box Edge için C# modül geliştirme](data-box-edge-create-i
     
     |Alan  |Değer  |
     |---------|---------|
-    |Name     | Modül için benzersiz bir ad. Bu modül, Data Box Edge ilişkili IoT Edge cihaza dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
-    |Görüntü URI'si     | Modülün karşılık gelen kapsayıcı görüntüsü için görüntü URI 'SI.        |
+    |Adı     | Modül için benzersiz bir ad. Bu modül, Data Box Edge ilişkili IoT Edge cihaza dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
+    |Görüntü URI 'SI     | Modülün karşılık gelen kapsayıcı görüntüsü için görüntü URI 'SI.        |
     |Kimlik bilgileri gerekli     | İşaretliyse, Kullanıcı adı ve parola, eşleşen bir URL ile modülleri almak için kullanılır.        |
     |Giriş paylaşma     | Bir giriş paylaşma seçin. Edge Yerel paylaşma, bu durumda giriş paylaşımıdır. Burada kullanılan modül, dosyaları uç yerel paylaşımından buluta yüklendikleri bir kenar paylaşımıyla taşıırlar.        |
     |Çıkış payı     | Bir çıkış payı seçin. Edge paylaşma, bu durumda çıkış paylaşımıdır.        |
@@ -160,7 +160,7 @@ Doğrulama işlemini tamamladınız.
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * İşlemi yapılandırma
+> * İşlem yapılandırma
 > * Paylaşımlar Ekle
 > * İşlem modülü ekleme
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma

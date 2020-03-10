@@ -5,11 +5,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363254"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure 'a yük devretme çalıştırma
 
@@ -46,7 +46,7 @@ Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
 1. Site Recovery kasasında **Kurtarma planlarını** > *recoveryplan_name*' nı seçin.
 2. **Yük devretme**' ye tıklayın.
 
-    ![Yük Devretme](./media/site-recovery-failover/Failover.png)
+    ![Yük devretme](./media/site-recovery-failover/Failover.png)
 
 3. Yük **devretme > yük** **devretme yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
 4. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
@@ -80,7 +80,7 @@ Hyper-V VM 'Leri için planlı bir yük devretme çalıştırabilirsiniz.
 
 Yük devretmeyle ilişkili bir dizi iş vardır.
 
-![Yük Devretme](./media/site-recovery-failover/FailoverJob.png)
+![Yük devretme](./media/site-recovery-failover/FailoverJob.png)
 
 - **Önkoşul denetimi**: yük devretme için gereken tüm koşulların karşılanmasını sağlar.
 - **Yük devretme**: verileri BIR Azure VM 'den oluşturulabilmesi için işler. **En son** kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.

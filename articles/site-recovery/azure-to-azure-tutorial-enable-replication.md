@@ -6,28 +6,28 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759798"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379888"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
 [Azure Site Recovery](site-recovery-overview.md) hizmeti, şirket içi makinelerin ve Azure sanal makinelerinin (VM) çoğaltma, yük devretme ve yeniden çalışma işlemlerini yönetip düzenleyerek olağanüstü durum kurtarma stratejinize katkıda bulunur.
 
-Bu öğreticide, Azure sanal makineleri için bir Azure bölgesinden diğerine çoğaltılarak olağanüstü durum kurtarmayı ayarlama konusu gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide, Azure sanal makineleri için bir Azure bölgesinden diğerine çoğaltılarak olağanüstü durum kurtarmayı ayarlama konusu gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Kurtarma Hizmetleri kasası oluşturma
 > * Hedef kaynak ayarlarını doğrulama
 > * VM 'Ler için giden ağ bağlantısını ayarlama
-> * Sanal makine için çoğaltmayı etkinleştirme
+> * VM için çoğaltmayı etkinleştirme
 
 > [!NOTE]
 > Bu makale, en basit ayarlarla olağanüstü durum kurtarma dağıtımı için yönergeler sağlar. Özelleştirilmiş ayarlar hakkında bilgi edinmek istiyorsanız, [nasıl yapılır bölümündeki](azure-to-azure-how-to-enable-replication.md)makaleleri gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -36,9 +36,9 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-Kasayı, kaynak bölgesi dışında herhangi bir bölgede oluşturun.
+Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. Ardından, **yedekleme ve Site Recovery** > **Yönetim Araçları &** seçin.
 1. **Ad** alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. Kaynak grubu oluşturun veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
@@ -81,8 +81,8 @@ Bir ağ güvenlik grubu (NSG) kullanıyorsanız, Azure depolama, Azure Active Di
 
 Çoğaltmak istediğiniz VM 'Lerin en son kök sertifikalara sahip olup olmadığını denetleyin. Aksi takdirde, güvenlik kısıtlamaları nedeniyle sanal makine Site Recovery kaydedilemez.
 
-- Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
-- Linux VM'lerde, VM’deki en son güvenilen kök sertifikalarını ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri uygulayın.
+- Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
+- Linux VM’ler için, sanal makinedeki en son güvenilir kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri izleyin.
 
 ## <a name="set-permissions-on-the-account"></a>Hesapta izinleri ayarlama
 
@@ -96,7 +96,7 @@ Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için üç y
 
 [Azure RBAC yerleşik rolleri](../role-based-access-control/built-in-roles.md)hakkında daha fazla bilgi edinin.
 
-## <a name="enable-replication-for-a-vm"></a>Sanal makine için çoğaltmayı etkinleştirme
+## <a name="enable-replication-for-a-vm"></a>VM için çoğaltmayı etkinleştirme
 
 Aşağıdaki bölümlerde, çoğaltmanın nasıl etkinleştirileceği açıklanır.
 

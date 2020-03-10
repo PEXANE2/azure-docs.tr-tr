@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: addc7db2aa2f0f9ba16438d2a31d6c7cc6bfa49e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174504"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376491"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketi isteklerini görüntüleme
 
 Azure AD Yetkilendirme Yönetimi 'nde kimin erişim paketleri, ilkeleri ve durumu olduğunu görebilirsiniz. Bu makalede, bir erişim paketleri için isteklerin nasıl görüntüleneceği açıklanır.
 
-## <a name="view-requests"></a>İstekleri görüntüle
+## <a name="view-requests"></a>İstekleri görüntüleme
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963342"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365885"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 serisi yazılım, yüksek kullanılabilirlik ve ağ gereksinimleri
 
@@ -61,15 +61,15 @@ Aşağıdaki yazılım gereksinimleri isteğe bağlı StorSimple bileşenleri i�
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple cihazınız için ağ gereksinimleri
 
-StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim trafiğine izin vermek için güvenlik duvarınızdaki bağlantı noktalarının açılması gerekir. Aşağıdaki tabloda güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* , gelen istemci tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
+StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim trafiğine izin vermek için güvenlik duvarınızdaki bağlantı noktalarının açılması gerekir. Aşağıdaki tabloda güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *, gelen istemci* tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
 
 | Bağlantı noktası No.<sup>1, 2</sup> | Dışarı veya dışarı | Bağlantı noktası kapsamı | Gerekli | Notlar |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Çıkış |WAN |Hayır |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Çıkış |WAN |Evet |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
-| UDP 53 (DNS) |Çıkış |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. |
-| UDP 123 (NTP) |Çıkış |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir. |
-| TCP 9354 |Çıkış |WAN |Evet |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
+| TCP 80 (HTTP)<sup>3</sup> |Dışı |SW |Hayır |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Dışı |SW |Evet |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
+| UDP 53 (DNS) |Dışı |SW |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. |
+| UDP 123 (NTP) |Dışı |SW |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir. |
+| TCP 9354 |Dışı |SW |Evet |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
 | 3260 (Iscsı) |İçinde |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
 | 5985 |İçinde |LAN |Hayır |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
 | 5986 |İçinde |LAN |Hayır |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
@@ -98,7 +98,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 | URL kalıbı | Bileşen/Işlevsellik | Cihaz IP 'Leri |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Cihaz Yöneticisi hizmeti<br>Erişim Denetimi Hizmeti<br>Azure Service Bus<br>Kimlik Doğrulama Hizmeti |Bulut özellikli ağ arabirimleri |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik doğrulama hizmeti |Bulut özellikli ağ arabirimleri |
 | `https://*.backup.windowsazure.com` |Cihaz kaydı |Yalnızca VERI 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Sertifika iptali |Bulut özellikli ağ arabirimleri |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure depolama hesapları ve izleme |Bulut özellikli ağ arabirimleri |
@@ -110,7 +110,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 | URL kalıbı | Bileşen/Işlevsellik | Cihaz IP 'Leri |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Cihaz Yöneticisi hizmeti<br>Erişim Denetimi Hizmeti<br>Azure Service Bus<br>Kimlik Doğrulama Hizmeti |Bulut özellikli ağ arabirimleri |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik doğrulama hizmeti |Bulut özellikli ağ arabirimleri |
 | `https://*.backup.windowsazure.us` |Cihaz kaydı |Yalnızca VERI 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Sertifika iptali |Bulut özellikli ağ arabirimleri |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure depolama hesapları ve izleme |Bulut özellikli ağ arabirimleri |
@@ -122,7 +122,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 Yönlendirme ölçümü, verileri belirtilen ağlara yönlendiren arabirimler ve ağ geçidi ile ilişkilendirilir. Yönlendirme ölçümü, birden çok yolun aynı hedefe varolduğunu öğrenirse, belirli bir hedefin en iyi yolunu hesaplamak için yönlendirme protokolü tarafından kullanılır. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
 
-StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Bununla birlikte, `Get-HcsRoutingTable` StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun gidermeye](storsimple-troubleshoot-deployment.md)yönelik Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
+StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Ancak, StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için `Get-HcsRoutingTable` cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun gidermeye](storsimple-troubleshoot-deployment.md)yönelik Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
 
 Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme ölçüm algoritması aşağıdaki gibi açıklanabilir.
 
@@ -131,7 +131,7 @@ Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme ölçüm
 
     | Ağ arabirimi | Bulutta etkin | Bulut-ağ geçidi ile devre dışı |
     |-----|---------------|---------------------------|
-    | Veri 0  | 1\.            | -                        |
+    | Veri 0  | 1            | -                        |
     | Veri 1  | 2            | 20                       |
     | Veri 2  | 3            | 30                       |
     | Veri 3  | 4            | 40                       |
@@ -157,7 +157,7 @@ Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme ölçüm
 * Bir VIP hatası olduğunda StorSimple cihazınızda da bir uyarı oluşturulur. Daha fazla bilgi için [Uyarı hızlı başvuru](storsimple-8000-manage-alerts.md)' ya gidin.
 * Yeniden denemeler açısından Iscsı, buluta göre önceliklidir.
   
-    Aşağıdaki örnek göz önünde bulundurun: StorSimple cihazında iki ağ arabirimi etkindir, veri 0 ve veri 1. Veri 0 bulutu etkindir, veri 1 hem bulut hem de Iscsı özellikli olur. Bu cihazdaki başka bir ağ arabirimi bulut veya Iscsı için etkin değil.
+    Aşağıdaki örneği göz önünde bulundurun: StorSimple cihazında iki ağ arabirimi etkindir, veri 0 ve veri 1. Veri 0 bulutu etkindir, veri 1 hem bulut hem de Iscsı özellikli olur. Bu cihazdaki başka bir ağ arabirimi bulut veya Iscsı için etkin değil.
   
     Veri 1 başarısız olursa, son Iscsı ağ arabirimi olduğunda, bu, diğer denetleyicideki veri 1 ' e bir denetleyicinin yük devretmesine neden olur.
 
@@ -174,7 +174,7 @@ Yukarıdaki ağ gereksinimlerine ek olarak, StorSimple çözümünüzün en iyi 
 
 StorSimple çözümüne dahil olan donanım platformunun, veri merkezinizde yüksek düzeyde kullanılabilir, hataya dayanıklı bir depolama altyapısı için bir temel sağlayan kullanılabilirlik ve güvenilirlik özellikleri vardır. Ancak, StorSimple çözümünüzün kullanılabilirliğini sağlamaya yardımcı olmak için uymanız gereken gereksinimler ve en iyi uygulamalar vardır. StorSimple 'ı dağıtmadan önce, StorSimple cihazı ve bağlı konak bilgisayarları için aşağıdaki gereksinimleri ve en iyi yöntemleri dikkatle gözden geçirin.
 
-StorSimple cihazınızın donanım bileşenlerinin izlenmesi ve saklanması hakkında daha fazla bilgi için, bkz [. storsimple Aygıt Yöneticisi hizmetini kullanarak donanım bileşenlerini ve durum](storsimple-8000-monitor-hardware-status.md) ve [StorSimple donanım bileşeni değişimini izleyin ](storsimple-8000-hardware-component-replacement.md).
+StorSimple cihazınızın donanım bileşenlerinin izlenmesi ve saklanması hakkında daha fazla bilgi için, bkz. [storsimple Aygıt Yöneticisi hizmetini kullanarak donanım bileşenlerini ve durum](storsimple-8000-monitor-hardware-status.md) ve [StorSimple donanım bileşeni değişimini](storsimple-8000-hardware-component-replacement.md)izleyin.
 
 ### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>StorSimple cihazınız için yüksek kullanılabilirlik gereksinimleri ve yordamları
 
@@ -233,7 +233,7 @@ StorSimple cihaz modeli 8600, birincil kutunun yanı sıra genişletilmiş bir d
 * Hem cbod Kasası denetleyici modüllerinin hem de SAS kablolarının ve tüm sabit disk sürücülerinin her zaman yüklü olduğundan emin olun.
 * Bir EBOD Kasası denetleyicisi modülü başarısız olursa, hemen bir değiştirme isteyin.
 * Bir EBOD Kasası denetleyicisi modülü başarısız olursa, başarısız modülün yerine geçmeden önce diğer denetleyici modülünün etkin olduğundan emin olun. Bir denetleyicinin etkin olduğunu doğrulamak için [cihazınızda etkin denetleyiciyi tanımla](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)' ya gidin.
-* Ebod denetleyicisi modül değişikliği sırasında,**donanım sistem durumunu** **izlemeye** > erişerek StorSimple aygıt yöneticisi hizmetinde bileşenin durumunu sürekli olarak izleyin.
+* EBOD denetleyicisi modül değişikliği sırasında, **izleme** > **donanım sistem durumuna**erişerek StorSimple aygıt yöneticisi hizmetinde bileşenin durumunu sürekli olarak izleyin.
 * SAS kablosu başarısız olursa veya değişiklik gerektiriyorsa (Bu tür bir belirleme yapmak için Microsoft Desteği dahil edilmelidir), yalnızca değiştirme gerektiren SAS kablosunu kaldırdığınızdan emin olun.
 * Her zaman bir noktada, her iki SAS kablolarını sistemden eşzamanlı olarak kaldırmayın.
 

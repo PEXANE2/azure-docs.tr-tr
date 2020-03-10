@@ -4,11 +4,11 @@ description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yed
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528003"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363846"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -128,7 +128,7 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-## <a name="back-up-azure-vms"></a>Azure Sanal Makinelerini yedekleme
+## <a name="back-up-azure-vms"></a>Azure VM'lerini yedekleme
 
 Sanal makinelerinizi korumak için bir kurtarma hizmetleri Kasası kullanın. Korumayı uygulamadan önce, kasa bağlamını ayarlayın (kasada korunan veri türü) ve koruma ilkesini doğrulayın. Koruma ilkesi, yedekleme işlerinin çalıştırıldığı zamanlamanın ve her bir yedek anlık görüntüsünün ne kadar süre korunduğu zamanlamadır.
 
@@ -367,7 +367,7 @@ WorkloadName     Operation            Status               StartTime            
 TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
-### <a name="stop-protection"></a>Korumayı durdurma
+### <a name="stop-protection"></a>Korumayı Durdur
 
 #### <a name="retain-data"></a>Verileri tutma
 

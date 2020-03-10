@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365886"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
 
@@ -42,7 +42,7 @@ Ardından, cihazınızın paketini açmak için aşağıdaki adımları izleyin.
    
     **Depolama cihazınızın paketi açılmış görünümü**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   1 |Paketleme kutusu |
    |   2 |SAS kabloları (aksesuarlar ve kablolar tepsisinde) |
@@ -106,7 +106,7 @@ Bir montaj rayına kümesi, 19 inç raf dolabı ile kullanım için sağlanacakt
    
     **Kıl slaytlarını kutunun kenarlarına ekleme**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |  1 |A 3x4 düğme-baş vida |
    |  2 |Kasa slaytları |
@@ -119,7 +119,7 @@ Bir montaj rayına kümesi, 19 inç raf dolabı ile kullanım için sağlanacakt
    
     **VAIL derlemelerini rafa ekleme**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   1 |Clamping vidalı |
    |   2 |Kare deliği ön dolap gönderisi vidalı |
@@ -145,7 +145,7 @@ Yeni yüklenen raf raylarını kullanarak, raftaki EBOD Muhafazası bağlamak i�
    
     **Flanş Cap 'i yükleme**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   1 |Kutu birleşme vidalı |
 
@@ -164,7 +164,7 @@ Bir sonraki adım, cihazınızı güç, ağ ve seri erişim için kablolayın.
 ## <a name="cable-your-storsimple-8600-device"></a>StorSimple 8600 cihazınızı bağlayın
 Aşağıdaki yordamlarda, StorSimple 8600 cihazınızın güç, ağ ve seri bağlantılar için nasıl kablo olarak kullanılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Cihazınızı kablolu çalışmaya başlamadan önce şunları yapmanız gerekir:
 
 * Birincil kasası ve EBOD Kasası, tamamen paketi açılmış
@@ -198,7 +198,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    
     **Veri bağlantı noktalarını gösteren cihazınızın geri dönmesi**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    | --- | --- |
    |   0,1,4,5 |1 GbE ağ arabirimleri |
    |   2,3 |10 GbE ağ arabirimleri |
@@ -209,15 +209,15 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
 
 **Cihazınız için ağ kablolaması**
 
-| Etiket | Açıklama |
+| Etiketle | Açıklama |
 | --- | --- |
 | A |Internet erişimi olan LAN |
 | B |Denetleyici 0 |
-| C |PCM 0 |
+| Mş |PCM 0 |
 | D |Denetleyici 1 |
 | E |PCM 1 |
 | F |EBOD denetleyicisi 0 |
-| G |EBOD denetleyicisi 1 |
+| Acil |EBOD denetleyicisi 1 |
 | H, ı |Konaklar (örneğin, dosya sunucuları) |
 | 0-5 |Ağ arabirimleri |
 | 6 |Birincil kutu |

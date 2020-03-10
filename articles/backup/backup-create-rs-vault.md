@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 5eac302668c2f322390b38475860c77f1cd40d72
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920119"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945635"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -88,7 +88,15 @@ Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vard�
 >Başlamadan önce:
 >
 >- Desteklenen yönetilen türlerin ve bölgelerin listesi için [destek matrisini](backup-support-matrix.md#cross-region-restore) gözden geçirin.
->- Çapraz bölge geri yükleme (CRR) özelliği şu anda yalnızca şu bölgelerde kullanılabilir: Orta Batı ABD, Batı ABD 2, Avustralya Doğu ve Avustralya Güneydoğu. 
+>- Çapraz bölge geri yükleme (CRR) özelliği şu anda yalnızca şu bölgelerde kullanılabilir: 
+>    - Orta Batı ABD
+>    - Batı ABD 2
+>    - Doğu Avustralya
+>    - Güneydoğu Avustralya
+>    - Doğu Japonya
+>    - Batı Japonya
+>    - Güneydoğu Asya
+>    - Güney Birleşik Krallık
 >- CRR, herhangi bir GRS Kasası için kasa düzeyi katılım özelliğidir (varsayılan olarak kapalıdır).
 >- Aboneliğinizi bu özellik için eklemek üzere lütfen aşağıdaki komutu kullanın:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

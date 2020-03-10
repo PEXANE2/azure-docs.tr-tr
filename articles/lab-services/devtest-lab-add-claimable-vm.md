@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383965"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390956"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs çakışan VM 'Ler oluşturun ve yönetin
 [Özel bir görüntü](devtest-lab-create-template.md), [Formül](devtest-lab-manage-formulas.md)veya [Market görüntüsü](devtest-lab-configure-marketplace-images.md)olan BIR *tabandan* , [Standart bir VM](devtest-lab-add-vm.md) 'yi nasıl ekleyeceğiniz gibi bir laboratuvarya bir laboratuvara bir sanal makine eklersiniz. Bu öğreticide, DevTest Labs içindeki bir laboratuvara çakışmaz bir VM eklemek için Azure portal kullanma ve bir kullanıcının VM 'yi talep etmek ve talep etmek için izlediği süreçler gösterilmektedir.
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara çakışmaz bir VM ekleme adımları
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve **DevOps** bölümünde **DevTest Labs** ' i seçin. DevOps bölümünde, **DevTest Labs** ' in yanındaki * (Star) seçeneğini belirleyin. Bu eylem, bir sonraki sefer kolayca erişebilmek için **DevTest Labs** 'i sol gezinti menüsüne ekler. Ardından, sol gezinti menüsünde **DevTest Labs** ' i seçebilirsiniz.
 
     ![Tüm hizmetler-DevTest Labs seçin](./media/devtest-lab-create-lab/all-services-select.png)

@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861294"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391785"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile Azure 'da VMware VM 'lerinin olağanüstü durum kurtarması ayarlama
 
@@ -31,7 +31,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -118,7 +118,7 @@ Aşağıdaki örnekte, $vault değişkeninden gelen kasa ayrıntıları, PowerSh
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Set-ASRVaultContext cmdlet 'ine alternatif olarak, bir diğeri de kasa bağlamını ayarlamak için Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'ini kullanabilir. Içeri aktarma-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'inin-path parametresi olarak kasa kayıt anahtarı dosyasının bulunduğu yolu belirtin. Örneğin:
+Set-ASRVaultContext cmdlet 'ine alternatif olarak, bir diğeri de kasa bağlamını ayarlamak için Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'ini kullanabilir. Içeri aktarma-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'inin-path parametresi olarak kasa kayıt anahtarı dosyasının bulunduğu yolu belirtin. Örnek:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -342,7 +342,7 @@ Bulunan bir sanal makineyi korumak için aşağıdaki ayrıntılara ihtiyacını
 * Çoğaltılacak korunabilir öğe.
 * Sanal makineyi çoğaltmaya yönelik depolama hesabı (yalnızca depolama hesabına çoğaltma yapıyorsanız). 
 * Bir günlük depolama alanı, sanal makineleri bir Premium depolama hesabına veya yönetilen bir diske karşı korumak için gereklidir.
-* Çoğaltma için kullanılacak Işlem sunucusu. Kullanılabilir işlem sunucularının listesini alınan ve kaydedilen ***$ProcessServers [0]***  *(genişletme dosya)* ve ***$ProcessServers [1]*** *(ConfigurationServer)* değişkenleri.
+* Çoğaltma için kullanılacak Işlem sunucusu. Kullanılabilir işlem sunucularının listesi, ***$ProcessServers [0]***  *(scaleout-processserver)* ve ***$ProcessServers [1]*** *(configurationserver)* değişkenlerine alındı ve kaydedildi.
 * Mobility hizmeti yazılımını makinelere göndermek için kullanılacak hesap. Kullanılabilir hesapların listesi alındı ve ***$AccountHandles*** değişkeninde depolandı.
 * Çoğaltma için kullanılacak çoğaltma ilkesi için koruma kapsayıcısı eşlemesi.
 * Yük devretmede sanal makinelerin oluşturulması gereken kaynak grubu.

@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi cihaz yapılandırmasını değiştirme | Microsoft Docs
-description: StorSimple cihaz Yöneticisi hizmeti zaten dağıtılmış bir StorSimple cihazı yeniden yapılandırmak için kullanmayı açıklar.
+description: Zaten dağıtılmış olan bir StorSimple cihazını yeniden yapılandırmak için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,158 +15,158 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365871"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz Yöneticisi hizmeti, StorSimple cihaz yapılandırmasını değiştirmek için kullanın
+# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure portalında **cihaz ayarları** konusundaki **ayarları** dikey penceresinde, StorSimple cihaz Yöneticisi hizmeti tarafından yönetilen bir StorSimple cihazında yeniden tüm cihaz parametreleri içerir . Bu öğreticide nasıl kullanabileceğinizi açıklar **ayarları** dikey penceresinde aşağıdaki cihaz düzeyinde görevleri gerçekleştirmek için:
+**Ayarlar** dikey penceresindeki Azure Portal **cihaz ayarları** bölümü, StorSimple aygıt yöneticisi hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide, aşağıdaki cihaz düzeyindeki görevleri gerçekleştirmek için **Ayarlar** dikey penceresini nasıl kullanabileceğiniz açıklanmaktadır:
 
-* Cihaz kolay adı değiştirin
-* Cihaz saat ayarlarını değiştirme
-* İkincil DNS atayın
-* Ağ arabirimleri değiştirme
-* Takas veya IP'ler yeniden atama
+* Cihaz kolay adını değiştir
+* Cihaz zaman ayarlarını değiştir
+* İkincil DNS ata
+* Ağ arabirimlerini değiştirme
+* IP 'Leri değiştirme veya yeniden atama
 
-## <a name="modify-device-friendly-name"></a>Cihaz kolay adı değiştirin
+## <a name="modify-device-friendly-name"></a>Cihaz kolay adını değiştir
 
-Cihaz adını değiştirin ve tercih ettiğiniz benzersiz bir kolay ad atamak için Azure portalını kullanabilirsiniz. Kullanım **genel ayarlar** dikey penceresinde cihaz kolay adı değiştirmek için cihaz. Kolay ad, tüm karakterleri içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
+Azure portal kullanarak cihaz adını değiştirebilir ve seçtiğiniz benzersiz bir kolay adı atayabilirsiniz. Cihazın kolay adını değiştirmek için cihazınızdaki **Genel ayarlar** dikey penceresini kullanın. Kolay ad, herhangi bir karakter içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
 
 > [!NOTE] 
-> Cihaz Kurulumu tamamlamadan önce yalnızca Azure portalında cihaz adını değiştirebilirsiniz. En düşük cihaz kurulumu tamamlandıktan sonra cihaz adını değiştiremezsiniz.
+> Cihaz kurulumu tamamlanmadan önce Azure portal yalnızca cihaz adını değiştirebilirsiniz. Minimum cihaz kurulumu tamamlandıktan sonra, cihaz adını değiştiremezsiniz.
 
-![Cihaz adı genel ayarları](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
+![Genel ayarlarda cihaz adı](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
 
-StorSimple cihaz Yöneticisi hizmetine bağlı bir StorSimple cihazı varsayılan bir ad atanır. Varsayılan adı, cihazın seri numarası genellikle yansıtır. Örneğin, 15 karakter uzunluğunda 8600 SHX0991003G44HT gibi bir varsayılan cihaz adı aşağıdaki gösterir:
+StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazına varsayılan ad atanır. Varsayılan ad genellikle cihazın seri numarasını yansıtır. Örneğin, 8600-SHX0991003G44HT gibi 15 karakter uzunluğunda varsayılan bir cihaz adı şunları gösterir:
 
-* **8600** – cihaz modeli gösterir.
-* **SHX** – üretim sitesini belirtir.
-* **0991003** -belirli bir ürün gösterir.
-* **G44HT**-benzersiz seri numaraları oluşturmak için son 5 rakamlı artırılır. Bu, bir sıralı küme olmayabilir.
+* **8600** – cihaz modelini gösterir.
+* **SHX** : üretim sitesini belirtir.
+* **0991003** -belirli bir ürünü gösterir.
+* **G44HT**-son 5 basamak, benzersiz seri numaraları oluşturmak için artırılır. Bu sıralı bir küme olmayabilir.
 
-## <a name="modify-device-description"></a>Cihaz açıklaması değiştirme
+## <a name="modify-device-description"></a>Cihaz açıklamasını değiştir
 
-Kullanım **genel ayarlar** dikey penceresinde cihaz açıklaması değiştirmek için cihaz.
+Cihaz açıklamasını değiştirmek için cihazınızdaki **Genel ayarlar** dikey penceresini kullanın.
 
-![Cihaz açıklaması genel ayarları](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
+![Genel ayarlarda cihaz açıklaması](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
 
-Cihaz açıklaması genellikle sahibi ve cihazın fiziksel konumunu belirlemek de yardımcı olur. Açıklama alanı en fazla 256 karakter içermelidir.
+Bir cihaz açıklaması genellikle cihazın sahibini ve fiziksel konumunu belirlemenize yardımcı olur. Açıklama alanı 256 karakterden daha az karakter içermelidir.
 
-## <a name="modify-time-settings"></a>Saat ayarlarını değiştirme
+## <a name="modify-time-settings"></a>Zaman ayarlarını değiştir
 
-Bulut depolama hizmeti sağlayıcısı ile kimlik doğrulaması için Cihazınızı saati eşitlemesi gerekir. Kullanım **genel ayarlar** dikey penceresinde cihaz saat ayarlarını değiştirmek için cihaz.
+Cihazınızın, bulut depolama hizmeti sağlayıcınızda kimlik doğrulaması için zaman eşitlemesini gerekir. Cihaz saati ayarlarını değiştirmek için cihazınızdaki **Genel ayarlar** dikey penceresini kullanın.
 
-![Cihaz açıklaması genel ayarları](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Genel ayarlarda cihaz açıklaması](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
- Saat diliminizi aşağı açılan listeden seçin. En fazla iki Ağ Saati Protokolü (NTP) sunucuları belirtebilirsiniz:
+ Aşağı açılan listeden saat diliminizi seçin. En fazla iki ağ zaman Protokolü (NTP) sunucusu belirtebilirsiniz:
 
- - **Birincil NTP sunucusu** -yapılandırma gereklidir ve Cihazınızı yapılandırmak için StorSimple için Windows PowerShell kullanırken belirtilir. Windows Server varsayılan belirtebilirsiniz **time.windows.com** NTP sunucunuzla. Birincil NTP sunucusu yapılandırması Azure Portalı aracılığıyla görüntüleyebilirsiniz, ancak bunu değiştirmek için Windows PowerShell arabirimini kullanmanız gerekir. Kullanım `Set-HcsNTPClientServerAddress` cihazınızın birincil NTP sunucusunu değiştirmek için cmdlet'i. Daha fazla bilgi için söz dizimi için Git [kümesi HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet'i.
+ - **BIRINCIL NTP sunucusu** -yapılandırma gereklidir ve cihazınızı yapılandırmak için StorSimple için Windows PowerShell kullandığınızda belirtilir. Varsayılan Windows Server **Time.Windows.com** 'i NTP sunucunuz olarak belirtebilirsiniz. Birincil NTP sunucusu yapılandırmasını Azure portal aracılığıyla görüntüleyebilirsiniz, ancak bunu değiştirmek için Windows PowerShell arabirimini kullanmanız gerekir. Cihazınızın birincil NTP sunucusunu değiştirmek için `Set-HcsNTPClientServerAddress` cmdlet 'ini kullanın. Daha fazla bilgi için, [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
 
-- **İkincil NTP sunucusu** -isteğe bağlı bir yapılandırmadır. İkincil NTP sunucusu yapılandırmak için bu portalı kullanabilirsiniz.
+- **IKINCIL NTP sunucusu** -yapılandırma isteğe bağlıdır. İkincil bir NTP sunucusunu yapılandırmak için portalı kullanabilirsiniz.
 
-NTP sunucusunu yapılandırırken, ağınızın, NTP trafiğini veri merkezinizden İnternete geçirilmesine izin verdiğini emin olun. Genel bir NTP sunucusu belirtirken, ağ güvenlik duvarları ve diğer güvenlik cihazları Ağ dışından gelen ve giden her fırsatta seyahat etmeye NTP trafiğine izin verecek şekilde yapılandırıldığından emin emin olmanız gerekir. Çift yönlü NTP trafiğini izin verilmiyor (Bu işlev bir Windows etki alanı denetleyicisi sağlar), dahili bir NTP sunucusu kullanmanız gerekir. Cihazınızı saati eşitlemesi olamaz, bulut depolama sağlayıcısı ile iletişim kurmak mümkün olmayabilir.
+NTP sunucusunu yapılandırırken ağınızın, NTP trafiğinin veri merkezinizden Internet 'e geçmesine izin verdiğinden emin olun. Genel bir NTP sunucusu belirtirken, ağ güvenlik duvarlarınızın ve diğer güvenlik cihazlarının, NTP trafiğinin dış ağa ve dış ağa gitmesini sağlayacak şekilde yapılandırıldığından emin olmanız gerekir. Çift yönlü NTP trafiğine izin verilmezse, bir iç NTP sunucusu kullanmanız gerekir (bir Windows etki alanı denetleyicisi bu işlevi sağlar). Cihazınız zamandan eşitlenemezse, bulut depolama sağlayıcınızla iletişim kuramamayabilir.
 
-Genel NTP sunucuları listesini görmek için Git [NTP sunucuları Web](https://support.ntp.org/bin/view/Servers/WebHome).
+Genel NTP sunucularının listesini görmek için, [NTP sunucuları Web](https://support.ntp.org/bin/view/Servers/WebHome)sitesine gidin.
 
-### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Farklı bir saat diliminde cihaza dağıtılırsa ne olur?
+### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Cihaz farklı bir saat diliminde dağıtılırsa ne olur?
 
-Farklı bir saat diliminde cihaza dağıtılırsa, cihazın saat dilimini değiştirir. Yedekleme ilkelerini cihazın saat dilimini kullanmasını düşünüldüğünde yedekleme ilkelerini otomatik olarak yeni saat dilimine uygun olarak ayarlayın. Kullanıcı müdahalesi gerekli değildir.
+Cihaz farklı bir saat diliminde dağıtılmışsa, cihaz saat dilimi değişir. Tüm yedekleme ilkelerinin cihaz saat dilimini kullanması durumunda, yedekleme ilkeleri yeni saat dilimine göre otomatik olarak ayarlar. Kullanıcı müdahalesi gerekli değildir.
 
-## <a name="modify-dns-settings"></a>DNS ayarlarını değiştirme
+## <a name="modify-dns-settings"></a>DNS ayarlarını değiştir
 
-Cihazınız, bulut depolama hizmeti sağlayıcısı ile iletişim kurmayı denediğinde bir DNS sunucusu kullanılır. Kullanım **ağ ayarları** dikey penceresinde görüntülemek ve yapılandırılan DNS ayarları değiştirmek için cihaz. 
+Cihazınız bulut depolama hizmeti sağlayıcınızla iletişim kurmaya çalıştığında bir DNS sunucusu kullanılır. Yapılandırılmış DNS ayarlarını görüntülemek ve değiştirmek için cihazınızdaki **ağ ayarları** dikey penceresini kullanın. 
 
-![Ağ ayarlarını, DNS ayarları](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
+![Ağ ayarlarındaki DNS ayarları](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
-Yüksek kullanılabilirlik için ilk cihaz dağıtımı sırasında hem birincil hem de ikincil DNS sunucularını yapılandırmak için gereklidir.
+Yüksek kullanılabilirlik için, ilk cihaz dağıtımı sırasında hem birincil hem de ikincil DNS sunucularını yapılandırmanız gerekir.
 
-**Birincil DNS sunucusu** -ilk ilk kurulum sırasında birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanın. Windows PowerShell arabirimi üzerinden yalnızca birincil DNS sunucusunu yeniden yapılandırabilirsiniz. Kullanım `Set-HcsDNSClientServerAddress` cihazınızın birincil DNS sunucusunu değiştirmek için. Daha fazla bilgi için söz dizimi için Git [kümesi HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet'i.
+**BIRINCIL DNS sunucusu** -ilk kurulum SıRASıNDA birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanırsınız. Birincil DNS sunucusunu yalnızca Windows PowerShell arabirimi aracılığıyla yeniden yapılandırabilirsiniz. Cihazınızın birincil DNS sunucusunu değiştirmek için `Set-HcsDNSClientServerAddress` cmdlet 'ini kullanın. Daha fazla bilgi için [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
 
-**İkincil DNS sunucusu** - ikincil DNS sunucusunu değiştirmek için kullanın `Set-HcsDNSClientServerAddress` cihazın Windows PowerShell arabiriminde cmdlet'ini veya **ağ ayarları** Azure portalında StorSimple cihazınızın dikey penceresi.
+**IKINCIL DNS sunucusu** -ikincil DNS sunucusunu değiştirmek Için Azure Portal StorSimple cihazınızın Windows PowerShell arabirimindeki `Set-HcsDNSClientServerAddress` cmdlet 'ini kullanın.
 
-Azure Portalı'nda ikincil DNS sunucusu değiştirmek için aşağıdaki adımları gerçekleştirin.
+Azure portal ikincil DNS sunucusunu değiştirmek için aşağıdaki adımları gerçekleştirin.
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Cihazlar listesinden seçin ve Cihazınızı tıklayın.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Cihaz listesinden cihazınızı seçin ve tıklatın.
 
-2. İçinde **ayarları** dikey penceresinde, Git **cihaz Ayarları > Ağ**. Bu açılır **ağ ayarları** dikey penceresi. Tıklayın **DNS ayarlarını** Döşe. İkincil DNS sunucusu IP adresini değiştirin.
+2. **Ayarlar** dikey penceresinde **cihaz ayarları > ağ ' a**gidin. Bu, **ağ ayarları** dikey penceresini açar. **DNS ayarları** Kutucuğu ' na tıklayın. İkincil DNS sunucusu IP adresini değiştirin.
 
-    ![İkincil DNS sunucusu IP adresini değiştirme](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
+    ![İkincil DNS sunucusu IP adresini değiştir](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. Komut çubuğundaki **Kaydet** onaylamanız istendiğinde tıklayın **Tamam**.
+4. Komut çubuğundan **Kaydet** ' e tıklayın ve onay sorulduğunda, **Tamam**' a tıklayın.
 
-    ![Kaydet ve değişiklikleri onaylayın](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
+    ![Değişiklikleri kaydetme ve onaylama](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
 
 
-## <a name="modify-network-interfaces"></a>Ağ arabirimleri değiştirme
+## <a name="modify-network-interfaces"></a>Ağ arabirimlerini değiştirme
 
-Dört biri 1 GbE olan ve biri iki 10 GbE altı cihaz ağ arabirimleri, cihazınız vardır. Bu arabirimler DATA 0 – veri 5 etiketlenir. DATA 2 ve DATA 3 10 GbE ağ arabirimleri ise 0, verileri 1, veri 4 ve 5 veri 1 GbE verilerdir.
+Cihazınız, dört/adet 1 GbE ve ikisi de 10 GbE olan altı adet cihaz ağ arabirimine sahiptir. Bu arabirimler VERI 0 – VERI 5 olarak etiketlenir. Veri 0, VERI 1, VERI 4 ve VERI 5, 1 GbE, VERI 2 ve VERI 3 ise 10 GbE ağ arabirimlerdir.
 
-Kullanım **ağ ayarları** her arabirim kullanılmak üzere yapılandırmak için dikey pencere.
+Kullanılacak arabirimlerin her birini yapılandırmak için **ağ ayarları** dikey penceresini kullanın.
 
-![Ağ arabirimleri aracılığıyla ağ ayarlarını yapılandırma](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
+![Ağ ayarları aracılığıyla ağ arabirimlerini yapılandırma](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
-Yüksek kullanılabilirlik sağlamak için Cihazınızda en az iki iSCSI arabirimleri ve bulut özellikli iki arabirim olmasını öneririz. Öneririz ancak bu kullanılmayan arabirimleri devre dışı bırakılmasını gerektirmez.
+Yüksek kullanılabilirlik sağlamak için cihazınızda en az iki Iscsı arabirimi ve bulut özellikli iki arabirim olması önerilir. Kullanılmayan arabirimlerin devre dışı bırakılmalarını öneririz.
 
 Her ağ arabirimi için aşağıdaki parametreler görüntülenir:
 
-* **Hızı** – kullanıcı tarafından yapılandırılabilen bir parametre değil. DATA 2 ve DATA 3 10 GbE arabirimleri ise 0, verileri 1, veri 4 ve 5 veri her zaman 1 GbE verilerdir.
+* **Hız** – Kullanıcı tarafından yapılandırılabilir bir parametre değil. Veri 0, VERI 1, VERI 4 ve VERI 5 her zaman 1 GbE, ancak DATA 2 ve DATA 3 10 GbE arabirimlerdir.
   
   > [!NOTE]
-  > Hız ve çift yönlü her zaman otomatik-belirlenir. Jumbo çerçeveler desteklenmez.
+  > Hız ve çift yönlü her zaman otomatik olarak anlaşma yapılır. Jumbo çerçeveleri desteklenmez.
   
-* **Arabirim durumu** – bir arabirim etkin veya devre dışı. Etkinleştirilirse, cihazın arabirimini kullanma dener. Ağa bağlı ve kullanılan arabirimleri etkin olmasını öneririz. Kullanmadığınız tüm arabirimleri devre dışı bırakın.
-* **Arabirim türü** – iSCSI trafiği bulut depolama trafiğinden yalıtmak bu parametreyi sağlar. Bu parametre, aşağıdakilerden biri olabilir:
+* **Arabirim durumu** – bir arabirim etkinleştirilebilir veya devre dışı bırakılabilir. Etkinleştirilirse, cihaz arabirimini kullanmaya çalışır. Yalnızca ağa bağlı olan ve kullanılan arabirimlerin etkinleştirilmesini öneririz. Kullanmadığınız tüm arabirimleri devre dışı bırakın.
+* **Arabirim türü** – Bu parametre, iSCSI trafiğini bulut depolama trafiğinden ayırmanıza olanak tanır. Bu parametre aşağıdakilerden biri olabilir:
   
-  * **Etkin bulut** – etkin olduğunda, cihazın bu arabirimi bulutla iletişim kurmak için kullanır.
-  * **iSCSI etkin** – etkin olduğunda, cihazın bu arabirimi iSCSI konaklarla iletişim kurmak için kullanır.
+  * **Bulut etkin** – etkinleştirildiğinde, cihaz, bulut ile iletişim kurmak için bu arabirimi kullanır.
+  * **iSCSI etkin** – etkinleştirildiğinde cihaz, iSCSI ana bilgisayarıyla iletişim kurmak için bu arabirimi kullanır.
     
-    İSCSI trafiği bulut depolama trafiğinden yalıtmak öneririz. Ayrıca, ana Cihazınızı aynı alt ağda içindeyse, bir ağ geçidi atayabilirsiniz gerekmez unutmayın; ancak konağınız Cihazınızı daha farklı bir alt ağ içinde ise, bir ağ geçidi atamanız gerekir.
-* **IP adresi** – ağ arabirimlerinin yapılandırdığınızda sanal IP (VIP) yapılandırmanız gerekir. Bu, IPv4 veya IPv6 veya her ikisi de olabilir. IPv4 ve IPv6 adres ailelerinin cihaz ağ arabirimleri için desteklenir. Bir 32-bit IP adresi IPv4 kullanırken belirtin ( *.xxx.xxx*), nokta-ondalık gösteriminde. IPv6 kullanırken, yalnızca 4 basamaklı ön eki girin ve 128-bit adresi bu ön ekini temel alarak, cihaz ağ arabirimi için otomatik olarak oluşturulur.
-* **Alt ağ** – bu alt ağ maskesi için ifade eder ve Windows PowerShell arabirimi üzerinden yapılandırılır.
-* **Ağ geçidi** – (alt ağ) aynı IP adresi alanı içinde olmayan düğümleriyle iletişim kurmayı denediğinde bu arabirim tarafından kullanılan varsayılan ağ geçidini budur. Varsayılan Ağ Geçidi Arabirimi aynı adres alanını (alt ağ) IP adresi alt ağ maskesi tarafından belirlenen şekilde olmalıdır.
-* **IP adresi sabit** – yalnızca DATA 0 yapılandırırken Bu alan kullanılabilir arabirimi. Güncelleştirmeleri veya cihaz sorunlarını giderme gibi işlemler için doğrudan cihaz denetleyiciye bağlanmak gerekebilir. Sabit IP adresini, hem etkin hem de cihaz edilgen denetleyiciye erişmek için kullanılabilir.
+    Iscsı trafiğini bulut depolama trafiğinden ayırmanızı öneririz. Ayrıca, konağınız aygıtınızla aynı alt ağ içinde ise, bir ağ geçidi atamanız gerekmez; Ancak, ana bilgisayarınız cihazından farklı bir alt ağdaysa, bir ağ geçidi atamanız gerekir.
+* **IP adresi** : ağ arabirimlerinden herhangi birini yapılandırırken BIR sanal IP (VIP) yapılandırmanız gerekir. Bu, IPv4 veya IPv6 ya da her ikisi olabilir. Hem IPv4 hem de IPv6 adres aileleri cihaz ağ arabirimleri için desteklenir. IPv4 kullanırken, nokta ondalık gösteriminde 32 bitlik bir IP adresi (*xxx.xxx.xxx.xxx*) belirtin. IPv6 kullanırken, yalnızca 4 basamaklı bir önek sağlamanız yeterlidir ve bu önek temelinde cihaz ağ arabiriminiz için 128 bitlik bir adres otomatik olarak oluşturulur.
+* **Alt ağ** : Bu, alt ağ maskesini belirtir ve Windows PowerShell arabirimi aracılığıyla yapılandırılır.
+* **Ağ geçidi** – bu, aynı IP adresi alanı (alt ağ) içinde olmayan düğümlerle iletişim kurmayı denediğinde bu arabirim tarafından kullanılması gereken varsayılan ağ geçidindir. Varsayılan ağ geçidi, alt ağ maskesi tarafından belirlendiği şekilde, arabirim IP adresi ile aynı adres alanında (alt ağ) olmalıdır.
+* **Sabıt IP adresi** : Bu alan yalnızca veri 0 arabirimini yapılandırırken kullanılabilir. Cihaz güncelleştirmeleri veya sorun giderme gibi işlemler için doğrudan cihaz denetleyicisine bağlanmanız gerekebilir. Sabit IP adresi, cihazınızdaki etkin ve pasif denetleyiciye erişmek için kullanılabilir.
 
 > [!NOTE]
-> * Düzgün çalışmasını sağlamak için arabirim hızı ve çift yönlü her cihaz arabiriminin bağlı olduğu anahtar üzerindeki doğrulayın. Anahtar arabirimleri ile ya da anlaşması gereken veya Gigabit Ethernet için yapılandırılması (1000 MB/sn) ve tam çift yönlü. Daha yavaş veya yarı çift yönlü işletim arabirimleri, performans sorunlarına neden olur.
-> * Kesintileri ve kapalı kalma süresini en aza indirmek için her bir iSCSI ağ arabirimini cihazınızın bağlanma anahtar bağlantı noktalarını portfast etkinleştirmenizi öneririz. Bu işlem, ağ bağlantısı bir yük devretme durumunda hızlı bir şekilde kurulabilir garanti eder.
+> * Doğru işlemi sağlamak için, her bir cihaz arabiriminin bağlandığı anahtardaki arabirim hızını ve çift yönlü olarak doğrulayın. Anahtar arabirimleri, Gigabit Ethernet (1000 Mbps) için anlaşma ya da yapılandırılmış olmalıdır ve tam çift yönlü olmalıdır. Daha yavaş hızlarda veya yarı çift yönlü olarak çalışan arabirimler, performans sorunlarına neden olur.
+> * Kesintilerin ve kapalı kalma süresini en aza indirmek için, cihazınızın Iscsı ağ arabiriminin bağlanacağınız her anahtar bağlantı noktası üzerinde portfast 'yi etkinleştirmenizi öneririz. Bu, yük devretme durumunda ağ bağlantısının hızlı bir şekilde kurulabileceğini güvence altına alacak.
 
-### <a name="configure-data-0"></a>Veri 0'ı yapılandırma
+### <a name="configure-data-0"></a>VERILERI Yapılandır 0
 
-DATA 0 bulut varsayılan olarak etkindir. DATA 0 yapılandırırken iki sabit IP adreslerinin her denetleyici için bir yapılandırma gerekmez. Bu sabit IP adresleri cihaz denetleyicilerinin doğrudan erişmek için kullanılan ve cihazda düzgün çalışması çöp toplama için güncelleştirmeleri yüklediğinizde veya sorun giderme amacıyla denetleyicileri eriştiğinizde yararlıdır.
+VERI 0 varsayılan olarak bulutta etkindir. VERI 0 yapılandırılırken, her bir denetleyici için bir tane olmak üzere iki sabit IP adresi yapılandırmanız da gerekir. Bu sabit IP adresleri, cihaz denetleyicilerine doğrudan erişmek için kullanılabilir ve cihaz üzerine güncelleştirmeler yüklediğinizde, çöp toplamanın düzgün çalışması için veya denetleyicilere sorun giderme amacıyla eriştiğinizde yararlı olabilir.
 
-Veri 0 ayarları dikey penceresi aracılığıyla sabit IP denetleyicileri yeniden yapılandırabilirsiniz.
+VERI 0 ayarları dikey penceresi aracılığıyla sabit IP denetleyicilerini yeniden yapılandırabilirsiniz.
 
-![Ağ arabirimi - veri 0'ı yapılandırma](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
+![Ağ arabirimini yapılandırma-VERILER 0](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
 
 > [!NOTE]
-> Denetleyici sabit IP adresleri ve alan geri kazanma algoritmalar (Çöp toplamada) cihaza güncelleştirmelerin uygulanması için düzgün çalışması için kullanılır. Bu nedenle, sabit IP’lerin yönlendirilebilir ve İnternet’e bağlanabilir olması gerekir.
+> Denetleyiciye yönelik sabit IP adresleri, cihazdaki güncelleştirmelere hizmet vermek için kullanılır ve Space geri kazanma algoritmaları (çöp toplama) düzgün şekilde çalışır. Bu nedenle, sabit IP’lerin yönlendirilebilir ve İnternet’e bağlanabilir olması gerekir.
 
-### <a name="configure-data-1---data-5"></a>VERİLERİ 1 - 5 veri yapılandırma
+### <a name="configure-data-1---data-5"></a>VERI yapılandırma 1-VERI 5
 
-VERİ için 1 - veri 5 ağ arabirimleri, aşağıdaki ekran görüntüsünde gösterildiği gibi tüm ağ ayarlarını yapılandırabilirsiniz:
+DATA 1-DATA 5 Ağ arabirimleri için, aşağıdaki ekran görüntüsünde gösterildiği gibi tüm ağ ayarlarını yapılandırabilirsiniz:
 
-![Ağ arabirimleri verileri 1 - 5 veri yapılandırın](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
+![Ağ arabirimlerini yapılandırma VERI 1-VERI 5](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
 
 
-## <a name="swap-or-reassign-ips"></a>Takas veya IP'ler yeniden atama
+## <a name="swap-or-reassign-ips"></a>IP 'Leri değiştirme veya yeniden atama
 
-Herhangi bir ağ arabirimi denetleyicisi üzerinde kullanımda olan bir VIP (aynı cihaz veya ağdaki başka bir cihaz) atanır, şu anda, ardından denetleyici üzerinde başarısız olur. Değiştirme ya da cihaz ağ arabirimi için VIP'ler yeniden atama, yinelenen bir IP durum oluşturduğunuzda bir uygun bir yordamı izlemeniz gerekir.
+Şu anda denetleyicideki herhangi bir ağ arabirimine kullanımda olan bir VIP atanırsa (aynı cihaz veya ağdaki başka bir cihaz tarafından), denetleyicinin yük devri yapılır. Bir cihaz ağ arabirimi için VIP 'leri takas veya yeniden atarsanız, yinelenen bir IP durumu oluşturabileceğiniz için uygun bir yordamı izlemeniz gerekir.
 
-Değiştirme veya herhangi bir ağ arabirimleri için VIP'ler yeniden atamak için aşağıdaki adımları gerçekleştirin:
+Ağ arabirimlerinin herhangi birine ait VIP 'leri değiştirmek veya yeniden atamak için aşağıdaki adımları gerçekleştirin:
 
-#### <a name="to-reassign-ips"></a>IP'ler yeniden atamak için
+#### <a name="to-reassign-ips"></a>IP 'Leri yeniden atamak için
 
-1. Her iki arabirimleri için IP adresi temizleyin.
-2. IP adreslerini temizlendikten sonra ilgili arabirimler için yeni IP adresleri atayın.
+1. Her iki arabirimin IP adresini temizleyin.
+2. IP adresleri temizlendikten sonra, yeni IP adreslerini ilgili arabirimlere atayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [StorSimple cihazınız için MPIO yapılandırma](storsimple-8000-configure-mpio-windows-server.md).
-* Bilgi edinmek için nasıl [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* [StorSimple cihazınız IÇIN MPIO yapılandırma](storsimple-8000-configure-mpio-windows-server.md)hakkında bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

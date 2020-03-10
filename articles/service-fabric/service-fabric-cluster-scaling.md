@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610089"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386278"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric kümelerini ölçeklendirme
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Kümeler potansiyel binlerce düğüm içerebilir. Service Fabric kümesi oluşturduktan sonra, kümeyi yatay olarak ölçeklendirebilirsiniz (düğüm sayısını değiştirebilir) veya dikey (düğümlerin kaynaklarını değiştirebilirsiniz).  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -26,8 +26,8 @@ Sanal makine ölçek kümeleri, dağıtmak ve sanal makine koleksiyonunu bir kü
 
 Bir Azure kümesini ölçeklendirirken aşağıdaki yönergeleri göz önünde bulundurun:
 - üretim iş yüklerini çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
-- durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
-- durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
+- Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
+- Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 - Altın veya gümüş herhangi bir düğüm [türü, her](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) zaman beş veya daha fazla düğüme sahip olmalıdır.
 - Bir düğüm türünden rastgele VM örnekleri/düğümleri kaldırmayın, her zaman sanal makine ölçek kümesi ölçek azaltma özelliğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sistemin doğru şekilde yük dengeleyebilme yeteneğini olumsuz etkileyebilir.
 - Otomatik ölçeklendirme kuralları kullanıyorsanız, kuralları ölçeklendirmek için (sanal makine örneklerini kaldırma) tek seferde bir düğüm yapılır. Aynı anda birden fazla örneğin ölçeğini azaltma güvenli değildir.

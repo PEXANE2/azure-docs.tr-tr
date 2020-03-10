@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365627"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal hazırlama
 
@@ -30,7 +30,7 @@ Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları 
 
 Bu makalede yayımlanan bilgiler, Azure portal ve Microsoft Azure Kamu bulutta StorSimple Sanal dizilerinin dağıtımına yöneliktir.
 
-### <a name="get-started"></a>Kullanmaya Başlayın
+### <a name="get-started"></a>başlarken
 Dağıtım iş akışı, portalı hazırlamaya, sanallaştırılmış ortamınızda bir sanal dizi sağlamaya ve kurulumu tamamlamaktan oluşur. StorSimple Sanal dizi dağıtımını bir dosya sunucusu veya bir Iscsı sunucusu olarak kullanmaya başlamak için aşağıdaki tablo halinde bulunan kaynaklara başvurmanız gerekir.
 
 #### <a name="deployment-articles"></a>Dağıtım makaleleri
@@ -52,7 +52,7 @@ Yapılandırma denetim listesi, yazılımı StorSimple Sanal diziniz üzerinde y
 * [StorSimple Sanal dizisi dosya sunucusu yapılandırma denetim listesini](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)indirin.
 * [StorSimple Sanal dizisi Iscsı sunucusu yapılandırma denetim listesini](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)indirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Burada, StorSimple Aygıt Yöneticisi hizmetiniz, StorSimple Sanal diziniz ve veri merkezi ağı için yapılandırma önkoşullarını bulabilirsiniz.
 
@@ -127,7 +127,7 @@ Hizmet kayıt anahtarını aldıktan sonra, ana bilgisayar sisteminizde bir sana
 
 #### <a name="to-get-the-virtual-array-image"></a>Sanal dizi görüntüsünü almak için
 
-1. [Azure portal](https://portal.azure.com/) oturum açın. 
+1. [Azure portalında](https://portal.azure.com/) oturum açın. 
 2. Azure portal, **> StorSimple cihaz yöneticilerine gözatıp**' ye tıklayın.
 3. Mevcut bir StorSimple Aygıt Yöneticisi hizmeti seçin. **StorSimple aygıt yöneticisi** dikey penceresinde **hızlı başlangıç**' e tıklayın. 
 4. Microsoft Indirme Merkezi ' nden indirmek istediğiniz görüntüye karşılık gelen bağlantıya tıklayın. Görüntü dosyaları yaklaşık 4,8 GB'tır.

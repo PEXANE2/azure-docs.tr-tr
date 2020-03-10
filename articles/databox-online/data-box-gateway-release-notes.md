@@ -1,6 +1,6 @@
 ---
-title: Azure veri kutusu ağ geçidi genel kullanılabilirlik sürüm notları | Microsoft Docs
-description: Azure veri kutusu genel kullanım sürümünde çalışan ağ geçidi için açık kritik sorunlar ve çözümleri açıklanmaktadır.
+title: Genel kullanılabilirlik sürüm notlarını Azure Data Box Gateway | Microsoft Docs
+description: Genel kullanılabilirlik sürümü çalıştıran Azure Data Box Gateway için kritik açık sorunları ve çözümleri açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,45 +9,45 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754208"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384670"
 ---
-# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure veri kutusu Edge/Azure veri kutusu ağ geçidi genel kullanılabilirlik sürüm notları
+# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway genel kullanılabilirlik sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları kritik açık sorunlar belirlemek ve Azure veri kutusu Edge ve Azure veri kutusu ağ geçidi için çözümlenen sorunlar için genel kullanılabilirlik (GA) bırakın.
+Aşağıdaki sürüm notları, Azure Data Box Edge ve Azure Data Box Gateway için kritik açık sorunları ve genel kullanılabilirlik (GA) sürümü için çözülmüş sorunları belirler.
 
-Sürüm Notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar bulundukça eklenir. Veri kutusu Edge/veri kutusu ağ geçidi dağıtmadan önce bu sürüm notlarında yer alan bilgileri dikkatle gözden geçirin.
+Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Data Box Edge/Data Box Gateway dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
-GA sürümü karşılık gelen yazılım sürümleri için:
+GA sürümü yazılım sürümlerine karşılık gelir:
 
-- **Veri kutusu ağ geçidi 1903 (1.5.814.447)**
+- **Data Box Gateway 1903 (1.5.814.447)**
 - **Data Box Edge 1903 (1.5.814.447)**
 
 
 ## <a name="whats-new"></a>Yenilikler
 
-- **Yeni sanal disk görüntülerini** -yeni VHDX ve VMDK artık Azure portalında kullanılabilir. Bu görüntülerin sağlamanızı, yapılandırmanızı ve yeni veri kutusu ağ geçidi GA cihazlara dağıtma indirin. Önceki Önizleme sürümleri bu sürüme güncelleştirilemez oluşturulan veri kutusu ağ geçidi cihazı. Daha fazla bilgi için Git [Azure veri kutusu ağ geçidi dağıtmaya hazırlanma](data-box-gateway-deploy-prep.md).
-- **NFS Destek** -NFS desteği şu anda Önizleme aşamasındadır ve v3.0 ve v4.1 kullanılabilir veri kutusu Edge ve veri kutusu ağ cihazları erişen istemciler.
-- **Depolama dayanıklılık** -bilgisayarınızı veri kutusu Edge cihazı depolama dayanıklılık özelliği ile bir veri disk hatasını hataya dayanamaz. Bu özellik şu anda önizleme sürümündedir. Depolama dayanıklılık seçerek etkinleştirebilirsiniz **esnek** seçeneğini **depolama ayarlarını** yerel web kullanıcı Arabirimi.
+- **Yeni sanal disk görüntüleri** -Yeni VHDX ve VMDK artık Azure Portal kullanılabilir. Yeni Data Box Gateway GA cihazları sağlamak, yapılandırmak ve dağıtmak için bu görüntüleri indirin. Önceki önizleme sürümlerinde oluşturulan Data Box Gateway cihazları bu sürüme güncelleştirilemez. Daha fazla bilgi için, [Azure Data Box Gateway dağıtmaya hazırlanma](data-box-gateway-deploy-prep.md)bölümüne gidin.
+- **NFS desteği** -NFS desteği şu anda, Data Box Edge ve Data Box Gateway cihazlarına erişen v 3.0 ve v 4.1 istemcilerinde önizleme aşamasındadır ve kullanılabilir.
+- **Depolama dayanıklılığı** -Data Box Edge cihazınız, depolama dayanıklılığı özelliği ile bir veri diskinin başarısızlığını gerçekleştirebilir. Bu özellik şu anda önizleme sürümündedir. Yerel Web Kullanıcı arabirimindeki **depolama ayarları** ' nda **dayanıklı seçeneğini belirleyerek** depolama dayanıklılığı sağlayabilirsiniz.
 
 
 ## <a name="known-issues-in-ga-release"></a>GA sürümündeki bilinen sorunlar
 
-Aşağıdaki tabloda, sürüm çalıştıran, veri kutusu ağ geçidi için bilinen sorunların bir Özet sağlar.
+Aşağıdaki tabloda, sürüm çalıştıran Data Box Gateway için bilinen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamaları |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
-| **1.** |Dosya türleri | Aşağıdaki dosya türlerinde desteklenmez: karakter dosyaları, dosyaları engelleme, yuva, Kanallar, simgesel bağlantılar.  |Bu dosyaları kopyalama NFS oluşturulmakta 0 uzunluklu dosyalar sonuçlarında paylaşın. Bu dosyalar bir hata durumunda kalır ve ayrıca bildirilen *error.xml*. <br> Sembolik bağlantılar dizinler için hiçbir zaman çevrimdışı olarak işaretlenmiş dizinlerde neden. Sonuç olarak, gri arası dizinleri çevrimdışı olduğunu ve tüm ilişkili içeriği tamamen Azure'da yüklenen gösterir dizinlerde göremeyebilirsiniz. |
-| **2.** |Silme | NFS paylaşımını silinirse, bu sürümde bir hata nedeniyle, paylaşım ardından silinemez. Paylaşım durumu *silme*.  |Desteklenmeyen dosya adını kullanarak paylaşıma yalnızca bu gerçekleşir. |
-| **3.** |Kopyala | Veri kopyalama hatasıyla başarısız oluyor:  Bir dosya sistemi sınırlaması nedeniyle istenen işlem tamamlanamadı.  |Dosya boyutu 128 KB boyutundan büyük ile ilişkili diğer veri Stream (REKLAM) desteklenmiyor.   |
+| **1.** |Dosya türleri | Şu dosya türleri desteklenmez: karakter dosyaları, blok dosyaları, yuvalar, kanallar, sembolik bağlantılar.  |Bu dosyaların kopyalanması, NFS paylaşımında oluşturulan 0 uzunluklu dosyalara neden olur. Bu dosyalar hata durumunda kalır ve *hata. xml*içinde de raporlanır. <br> Dizinlerin simgesel bağlantıları, dizinlerde hiçbir şekilde çevrimdışı olarak işaretlenmez. Sonuç olarak, dizinlerin çevrimdışı olduğunu ve ilişkili tüm içeriğin Azure 'a tamamen yüklendiğini gösteren dizinler üzerinde gri bir işlem görmeyebilirsiniz. |
+| **2.** |Silme | Bu sürümdeki bir hata nedeniyle, bir NFS paylaşma silinirse, paylaşma silinmeyebilir. Paylaşma durumu, *silme*öğesini görüntüleyecektir.  |Bu yalnızca, paylaşımın desteklenmeyen bir dosya adı kullandığı zaman gerçekleşir. |
+| **3.** |Kopyala | Veri kopyalama işlemi hata vererek başarısız oldu: istenen işlem bir dosya sistemi sınırlaması nedeniyle tamamlanamadı.  |128 KB 'den büyük dosya boyutuyla ilişkili alternatif veri akışı (ADS) desteklenmiyor.   |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure veri kutusu ağ geçidi dağıtmaya hazırlanma](data-box-gateway-deploy-prep.md).
-- [Azure veri kutusu Edge dağıtmaya hazırlanma](data-box-edge-deploy-prep.md).
+- [Azure Data Box Gateway dağıtmaya hazırlanın](data-box-gateway-deploy-prep.md).
+- [Azure Data Box Edge dağıtmaya hazırlanın](data-box-edge-deploy-prep.md).

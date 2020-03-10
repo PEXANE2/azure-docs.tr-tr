@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249095"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893295"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -35,7 +35,7 @@ Blok, uygun bilgilerle silinmeli güçlü bir denetimdir. Bir yönetici, etkinle
 Yöneticiler, erişim izni verirken bir veya daha fazla denetimi zorlamayı tercih edebilir. Bu denetimler aşağıdaki seçenekleri içerir: 
 
 - [Multi-Factor Authentication gerektir (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
-- [Cihazın uyumlu olarak işaretlenmesini gerektir (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [Cihazın uyumlu olarak işaretlenmesini gerektir (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Karma Azure AD 'ye katılmış cihaz gerektir](../devices/concept-azure-ad-join-hybrid.md)
 - [Onaylanan istemci uygulaması gerektir](app-based-conditional-access.md)
 - [Uygulama koruma ilkesi gerektir](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ Bu onay kutusunun belirlenmesi, kullanıcıların Azure Multi-Factor Authenticat
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Cihazın uyumlu olarak işaretlenmesini gerektir
 
-Microsoft Intune dağıtılan kuruluşlar, belirli uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir. Bu ilke uyumluluk bilgileri, Intune 'dan Azure AD 'ye iletilir ve Koşullu erişimin kaynaklara erişim izni vermek veya erişimi engellemek için kararlar verebilecekleri bir karardır. Uyumluluk ilkeleri hakkında daha fazla bilgi için, [Intune kullanarak kuruluşunuzdaki kaynaklara erişime izin vermek üzere cihazlarda kuralları ayarlama](https://docs.microsoft.com/intune/protect/device-compliance-get-started)makalesine bakın.
+Microsoft Intune dağıtılan kuruluşlar, belirli uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir. Bu ilke uyumluluk bilgileri, Intune 'dan Azure AD 'ye iletilir ve Koşullu erişimin kaynaklara erişim izni vermek veya erişimi engellemek için kararlar verebilecekleri bir karardır. Uyumluluk ilkeleri hakkında daha fazla bilgi için, [Intune kullanarak kuruluşunuzdaki kaynaklara erişime izin vermek üzere cihazlarda kuralları ayarlama](/intune/protect/device-compliance-get-started)makalesine bakın.
 
 Bir cihaz, Intune (herhangi bir cihaz işletim sistemi için) veya Windows 10 cihazları için üçüncü taraf MDM sistemi tarafından uyumlu olarak işaretlenebilir. JAMF Pro yalnızca desteklenen üçüncü taraf MDM sistemidir. Tümleştirme hakkında daha fazla bilgi için bkz. Bu makalede, [Uyumluluk Için JAMF Pro 'Yu Intune Ile tümleştirin](/intune/protect/conditional-access-integrate-jamf).
 
@@ -67,7 +67,35 @@ Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini ku
 
 Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci uygulamaları, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
-Desteklenen uygulamalar Microsoft Intune makalesinde, [korumalı uygulamalar](/intune/apps/apps-supported-intune-apps)' ı bulabilirsiniz.
+Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
+
+- Microsoft Azure Information Protection
+- Microsoft kayıtları
+- Microsoft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft faturalama
+- Microsoft Kaizala
+- Microsoft Başlatıcısı
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Skype Kurumsal
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Microsoft Yammer
 
 **Açıklamalar**
 
@@ -76,17 +104,26 @@ Desteklenen uygulamalar Microsoft Intune makalesinde, [korumalı uygulamalar](/i
    - Yalnızca iOS ve Android for Device platform koşulunu destekler.
 - Koşullu erişim, onaylanan bir istemci uygulamasında Microsoft Edge 'i InPrivate modunda kabul edemez.
 
+Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: Cloud App Access için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md) .
+
 ### <a name="require-app-protection-policy"></a>Uygulama koruma ilkesi gerektir
 
 Koşullu erişim ilkenizde, seçili bulut uygulamalarına erişim izni vermeden önce istemci uygulamada bir [Intune uygulama koruma ilkesinin](/intune/app-protection-policy) mevcut olmasını zorunlu kılabilirsiniz. 
 
-Desteklenen uygulamalar Microsoft Intune makalesinde, [korumalı uygulamalar](/intune/apps/apps-supported-intune-apps)' ı bulabilirsiniz.
+Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
+
+- Microsoft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Microsoft Planner
 
 **Açıklamalar**
 
 - Uygulama koruma ilkesi için uygulamalar, ilke korumasıyla Intune mobil uygulama yönetimi özelliğini destekler.
 - **Uygulama koruma ilkesi gereksinimlerini gerektir** :
     - Yalnızca iOS ve Android for Device platform koşulunu destekler.
+
+Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: uygulama koruma Ilkesi gerektirme ve bulut uygulaması erişimi için onaylanan bir istemci uygulaması](app-protection-based-conditional-access.md) .
 
 ### <a name="terms-of-use"></a>Kullanım koşulları
 

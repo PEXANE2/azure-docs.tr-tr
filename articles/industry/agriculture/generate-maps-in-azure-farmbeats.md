@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385171"
 ---
 # <a name="generate-maps"></a>Haritalar oluşturma
 
@@ -51,7 +51,7 @@ Bu bölümde, algılayıcı yerleştirme haritaları oluşturma yordamları ayr�
 > [!NOTE]
 > **Haritalar** sayfasından veya **Grup ayrıntıları** sayfasındaki **duyarlık haritaları oluştur** açılır menüsünden bir algılayıcı yerleştirme Haritası başlatabilirsiniz.
 
-Şu adımları izleyin.
+Bu adımları izleyin.
 
 1. Giriş sayfasında sol gezinti menüsünden **haritalar** ' a gidin.
 2. **Haritalar oluştur**' u seçin ve açılan menüden **algılayıcı yerleşimi** ' nı seçin.
@@ -75,7 +75,7 @@ Bu bölümde, algılayıcı yerleştirme haritaları oluşturma yordamları ayr�
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>Bir algılayıcı yerleşimi haritasını görüntüleyin ve indirin
 
-Şu adımları izleyin.
+Bu adımları izleyin.
 
 1. Giriş sayfasında sol gezinti menüsünden **haritalar** ' a gidin.
 
@@ -110,7 +110,7 @@ Farmpts, gruplar için NDVı, gelişmiş vegetation dizini (EVI) ve normalleşti
 
 ## <a name="create-a-satellite-indices-map"></a>Uydu dizinleri eşlemesi oluşturma
 
-Şu adımları izleyin.
+Bu adımları izleyin.
 
 1. Giriş sayfasında sol gezinti menüsünden **haritalar** ' a gidin.
 2. **Haritalar oluştur**' u seçin ve açılan menüden **uydu dizinleri** ' ni seçin.
@@ -136,7 +136,7 @@ Farmpts, gruplar için NDVı, gelişmiş vegetation dizini (EVI) ve normalleşti
 
 ### <a name="view-and-download-a-map"></a>Harita görüntüleme ve indirme
 
-Şu adımları izleyin.
+Bu adımları izleyin.
 
 1. Giriş sayfasında sol gezinti menüsünden **haritalar** ' a gidin.
 
@@ -175,7 +175,7 @@ SOIL Moisture heatmap oluşturmayı denemeden önce aşağıdaki önkoşulları 
 
 ## <a name="create-a-soil-moisture-heatmap"></a>SOIL Moisture ısı haritasını oluşturma
 
-Şu adımları izleyin.
+Bu adımları izleyin.
 
 1. Giriş sayfasında, **haritalar** sayfasını görüntülemek için sol gezinti menüsünden **haritalar** ' a gidin.
 2. **Haritalar oluştur**' u seçin ve açılan menüden **SOIL Moisture** ' i seçin.
@@ -203,7 +203,7 @@ Algılayıcı ölçüsünü bulmak için **sensörler**' e gidin ve herhangi bir
 
 ### <a name="view-and-download-a-map"></a>Harita görüntüleme ve indirme
 
-Şu adımları izleyin.
+Bu adımları izleyin.
 
 1. Giriş sayfasında sol gezinti menüsünden **haritalar** ' a gidin.
 

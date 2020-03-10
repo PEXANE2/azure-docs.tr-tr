@@ -15,13 +15,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933951"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387810"
 ---
-# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler’de SQL Server için yüksek kullanılabilirlik ve olağanüstü durum kurtarma
+# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
 SQL Server ile sanal makineler (VM) Microsoft Azure yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) veritabanı çözümünün maliyetini düşürmenize yardımcı olabilir. SQL Server HADR çözümlerinin çoğu Azure sanal makinelerinde, hem Azure hem de hibrit çözümler olarak desteklenir. Yalnızca bir Azure çözümünde, tüm HADR sistemleri Azure 'da çalışır. Karma yapılandırmasında, çözümün bir parçası Azure 'da çalışır ve diğer bölüm, kuruluşunuzda şirket içinde çalışır. Azure ortamının esnekliği, SQL Server veritabanı sistemlerinizin bütçesini ve HADR gereksinimlerini karşılamak üzere Azure 'a kısmen veya tamamen geçiş yapmanızı sağlar.
 

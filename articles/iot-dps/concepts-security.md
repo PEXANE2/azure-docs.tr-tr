@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973467"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378910"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Cihaz sağlama hizmeti güvenlik kavramlarını IoT Hub 
 

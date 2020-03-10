@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Sonraki adımlar ve Azure AD Connect'i yönetme | Microsoft Docs"
-description: Azure AD Connect için işletimsel görevler ve varsayılan yapılandırmayı genişletmeyi öğrenin.
+title: 'Azure AD Connect: sonraki adımlar ve Azure AD Connect yönetme | Microsoft Docs'
+description: Azure AD Connect için varsayılan yapılandırmayı ve işletimsel görevleri genişletmeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,72 +17,72 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571339"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377109"
 ---
-# <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Sonraki adımlar ve Azure AD Connect'i yönetme
-İşletimsel yordamları bu makalede, Azure Active Directory (Azure AD) Connect kuruluşunuzun ihtiyaçları ve gereksinimleri karşılayacak şekilde özelleştirmek için kullanın.  
+# <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Sonraki adımlar ve Azure AD Connect yönetme
+Kuruluşunuzun gereksinimlerini ve gereksinimlerini karşılamak üzere Azure Active Directory (Azure AD) ile bağlantı kurmak için bu makaledeki işletimsel yordamları kullanın.  
 
-## <a name="add-additional-sync-admins"></a>Ek eşitleme yöneticileri ekleyin
-Varsayılan olarak, yükleme ve yerel yönetici kullanıcı yüklü eşitleme altyapısı yönetebilir. Erişmek ve eşitleme altyapısını yönetmek ek kişiler için yerel sunucuda ADSyncAdmins adlı grubunu bulun ve onları bu gruba ekleyin.
+## <a name="add-additional-sync-admins"></a>Ek eşitleme yöneticileri ekleme
+Varsayılan olarak, yalnızca yüklemeyi ve yerel yöneticileri yapan Kullanıcı yüklü eşitleme altyapısını yönetebilir. Daha fazla kişinin eşitleme altyapısına erişip yönetebilmesi için, yerel sunucuda ADSyncAdmins adlı grubu bulun ve bu gruba ekleyin.
 
-## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Azure AD Premium ve Enterprise Mobility Suite kullanıcılara lisans atama
-Kullanıcılarınız için bulut eşitlendikten sonra kullanıcılar Office 365 gibi bulut uygulamaları ile kullanmaya başlayabilirsiniz şekilde bunları bir lisans atamanız gerekir.
+## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Azure AD Premium ve Enterprise Mobility Suite kullanıcılarına lisans atama
+Kullanıcılarınız buluta eşitlenene kadar, Office 365 gibi bulut uygulamalarına ulaşmak için onlara bir lisans atamanız gerekir.
 
-### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Bir Azure AD Premium veya Enterprise Mobility Suite lisansı atamak için
+### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Azure AD Premium veya Enterprise Mobility Suite lisansı atamak için
 
-1. Azure portalında bir yönetici olarak oturum açın
+1. Azure portal yönetici olarak oturum açın.
 2. Sol taraftaki **Active Directory** öğesini seçin.
-3. Üzerinde **Active Directory** sayfasında, ayarlamak istediğiniz kullanıcıları içeren dizine çift tıklayın.
+3. **Active Directory** sayfasında, kurmak istediğiniz kullanıcıları içeren dizine çift tıklayın.
 4. Dizin sayfasının en üst kısmındaki **Lisanslar** öğesini seçin.
-5. Üzerinde **lisansları** sayfasında **Active Directory Premium** veya **Enterprise Mobility Suite**ve ardından **atama**.
+5. **Lisanslar** sayfasında, Premium veya **Enterprise Mobility Suite** **Active Directory** seçin ve ardından **ata**' ya tıklayın.
 6. İletişim kutusunda, lisans atamak istediğiniz kullanıcıları seçin ve ardından değişiklikleri kaydetmek için onay işareti simgesine tıklayın.
 
-## <a name="verify-the-scheduled-synchronization-task"></a>Zamanlanan eşitleme görevi doğrulayın
-Bir eşitleme durumunu denetlemek için Azure portalını kullanın.
+## <a name="verify-the-scheduled-synchronization-task"></a>Zamanlanan eşitleme görevini doğrulama
+Bir eşitlemenin durumunu denetlemek için Azure portal kullanın.
 
-### <a name="to-verify-the-scheduled-synchronization-task"></a>Zamanlanan eşitleme görevi doğrulamak için
-1. Azure portalında bir yönetici olarak oturum açın
+### <a name="to-verify-the-scheduled-synchronization-task"></a>Zamanlanan eşitleme görevini doğrulamak için
+1. Azure portal yönetici olarak oturum açın.
 2. Sol taraftaki **Active Directory** öğesini seçin.
-3. Sol tarafta, seçin **Azure AD Connect**
-4. Sayfanın üst kısmında, son eşitlemeden unutmayın.
+3. Sol tarafta **Azure AD Connect** ' yi seçin.
+4. Sayfanın üst kısmında, son eşitlemeye göz önünde.
 
-![Dizin eşitleme zamanı](./media/how-to-connect-post-installation/verify2.png)
+![Dizin eşitleme süresi](./media/how-to-connect-post-installation/verify2.png)
 
-## <a name="start-a-scheduled-synchronization-task"></a>Zamanlanan eşitleme görevi Başlat
-Bir eşitleme görevi çalıştırmak ihtiyacınız varsa, bunu yapabilirsiniz:
+## <a name="start-a-scheduled-synchronization-task"></a>Zamanlanmış bir eşitleme görevi başlatma
+Bir eşitleme görevi çalıştırmanız gerekiyorsa bunu şu şekilde yapabilirsiniz:
 
-1. Sihirbazı başlatmak için Azure AD Connect masaüstü kısayolu çift tıklayın.
-2. **Yapılandır**'a tıklayın.
-3. Görevleri ekranında seçin **eşitleme seçeneklerini özelleştirme** tıklatıp **İleri**
+1. Sihirbazı başlatmak için Azure AD Connect masaüstü kısayoluna çift tıklayın.
+2. **Yapılandır**'ı tıklayın.
+3. Görevler ekranında **eşitleme özelleştirme seçeneklerini** belirleyin ve **İleri** ' ye tıklayın.
 4. Azure AD kimlik bilgilerinizi girin
 5. **İleri**’ye tıklayın. **İleri**’ye tıklayın.  **İleri**’ye tıklayın.
-5.  Üzerinde **yapılandırmaya hazır** ekranında, emin **Yapılandırma tamamlandığında eşitleme işlemini başlatmak** kutusu seçilidir.
-6.  **Yapılandır**'a tıklayın.
+5.  **Yapılandırmaya hazırlanma** ekranında, **yapılandırma tamamlandığında eşitleme işlemini başlat** kutusunun seçili olduğundan emin olun.
+6.  **Yapılandır**'ı tıklayın.
 
-Azure AD Connect Eşitleme Zamanlayıcısı hakkında daha fazla bilgi için bkz. [Azure AD Connect Zamanlayıcı](how-to-connect-sync-feature-scheduler.md).
+Azure AD Connect eşitleme Zamanlayıcısı hakkında daha fazla bilgi için bkz. [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 
-## <a name="additional-tasks-available-in-azure-ad-connect"></a>Azure AD Connect kullanılabilir ek görevler
-Azure AD Connect, ilk yüklemeden sonra size her zaman yeniden Azure AD Connect başlangıç sayfası ya da Masaüstü kısayoldan başlatabilirsiniz.  Sihirbazda yeniden giderek ek görevler şeklinde bazı yeni seçenekler sağlar fark edeceksiniz.  
+## <a name="additional-tasks-available-in-azure-ad-connect"></a>Azure AD Connect ek görevler var
+Azure AD Connect ilk yüklemesinden sonra, Azure AD Connect başlangıç sayfasından veya masaüstü kısayolundan Sihirbazı dilediğiniz zaman yeniden başlatabilirsiniz.  Sihirbazın daha sonra ek görevler biçiminde bazı yeni seçenekler sağladığını fark edersiniz.  
 
-Aşağıdaki tabloda, bu görevlerin bir özeti bulunur ve her bir görevin kısa bir açıklamasını sağlar.
+Aşağıdaki tabloda, bu görevlerin bir özeti ve her görevin kısa bir açıklaması verilmiştir.
 
-![Ek görevler listesi](./media/how-to-connect-post-installation/addtasks2.png)
+![Ek görevlerin listesi](./media/how-to-connect-post-installation/addtasks2.png)
 
 | Ek görev | Açıklama |
 | --- | --- |
-|**Gizlilik ayarları**|Hangi telemetri verilerini Microsoft ile paylaşılacağını görüntüleyin.|
-|**Geçerli yapılandırmayı görüntüleme**|Geçerli Azure AD Connect çözümünüzü görüntüleyin.  Bu eşitlenmiş genel ayarlar içeren dizinler ve eşitleme ayarları. |
-| **Eşitleme seçeneklerini özelleştirme** |Ek Active Directory ormanı yapılandırmasına ekleme veya eşitleme seçeneklerini gibi kullanıcı, Grup, cihaz veya parola geri yazma özelliğini etkinleştirme gibi geçerli yapılandırmasını değiştirin. |
+|**Gizlilik ayarları**|Microsoft ile hangi Telemetri verilerinin paylaşıldığını görüntüleyin.|
+|**Geçerli yapılandırmayı görüntüle**|Geçerli Azure AD Connect çözümünüzü görüntüleyin.  Bu, genel ayarları, eşitlenen dizinleri ve eşitleme ayarlarını içerir. |
+| **Eşitleme seçeneklerini özelleştirme** |Yapılandırmaya ek Active Directory ormanları ekleme veya Kullanıcı, Grup, cihaz veya parola geri yazma gibi eşitleme seçeneklerinin etkinleştirilmesi gibi geçerli yapılandırmayı değiştirin. |
 |**Cihaz seçeneklerini yapılandır**|Eşitleme için kullanılabilir cihaz seçenekleri|
-|**Dizin şemasını Yenile**|Eşitleme için yeni şirket içi dizin nesnelerini eklemenizi sağlar|
-|**Hazırlama modunu yapılandırma** |Hemen eşitlenmez ve Azure AD'ye aktarılan değil veya şirket içi Active Directory'nin aşama bilgileri.  Bu özellik ile ortaya çıkmadan önce eşitlemeleri önizlemesini görebilirsiniz. |
-|**Kullanıcı oturum açma**|Kullanıcılar oturum açmak için kullandığınız kimlik doğrulama yöntemini değiştirme|
-|**Federasyon yönetme**|AD FS altyapınızı yönetin, sertifikaları yenileme ve AD FS sunucuları ekleyin|
-|**Sorun giderme**|Azure AD Connect sorunlarını gidermeye yardım|
+|**Dizin şemasını Yenile**|Eşitleme için yeni şirket içi dizin nesneleri eklemenize olanak tanır|
+|**Hazırlama modunu Yapılandır** |Hemen eşitlenmemiş ve Azure AD 'ye veya şirket içi Active Directory aktarılmayan aşama bilgileri.  Bu özellikle, eşitlemelere başlamadan önce önizleme yapabilirsiniz. |
+|**Kullanıcı oturum açma değiştirme**|Kullanıcıların oturum açmak için kullandığı kimlik doğrulama yöntemini değiştirme|
+|**Federasyonu yönetme**|AD FS altyapınızı yönetin, sertifikaları yenileyin ve AD FS sunucuları ekleyin|
+|**Sorun giderme**|Sorunları gidermeye yönelik yardım Azure AD Connect|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi edinin [şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md).
+[Şirket içi kimliklerinizi Azure Active Directory tümleştirme](whatis-hybrid-identity.md)hakkında daha fazla bilgi edinin.

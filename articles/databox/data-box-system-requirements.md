@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box sistem gereksinimleri | Microsoft Docs
+title: Data Box sistem gereksinimlerini Microsoft Azure | Microsoft Docs
 description: Azure Data Box'ınızın yazılım ve ağ gereksinimleri hakkında bilgi edinin
 services: databox
 author: alkohli
@@ -9,25 +9,25 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380595"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box sistem gereksinimleri
 
-Bu makalede Data Box için istemcilerin ve Microsoft Azure Data Box'ınızı için önemli sistem gereksinimlerini açıklar. Data Box'ınızı dağıtın ve ardından geri gerekirse dağıtım ve sonraki işlemi sırasında başvurduğu önce bilgileri dikkatle gözden geçirmeniz önerilir.
+Bu makalede, Microsoft Azure Data Box ve Data Box bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
 
-Sistem gereksinimleri şunlardır:
+Sistem gereksinimleri şunları içerir:
 
-* **Data Box bağlanma ana bilgisayarları için yazılım gereksinimleri** -desteklenen platformlar, yerel web kullanıcı Arabirimi için tarayıcılar, SMB istemcileri ve Data Box için bağlanabilir konaklar için tüm ek gereksinimleri açıklanmaktadır.
-* **Data Box için ağ gereksinimleri** -Data Box'ın en iyi işlemi için ağ gereksinimleri hakkında bilgi sağlar.
+* **Data Box bağlanan konaklar Için yazılım gereksinimleri** -desteklenen platformları, yerel Web Kullanıcı arabirimine yönelik TARAYıCıLARı, SMB istemcilerini ve Data Box bağlanabilecek konaklara yönelik ek gereksinimleri açıklar.
+* **Data Box Için ağ gereksinimleri** -Data Box en iyi işlem için ağ gereksinimleri hakkında bilgi sağlar.
 
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
 
-Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel web kullanıcı Arabirimi ile desteklenen tarayıcılar ve SMB istemcileri hakkında bilgi içerir.
+Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel Web Kullanıcı arabirimi için desteklenen tarayıcılar ve SMB istemcileri hakkındaki bilgileri içerir.
 
 ### <a name="supported-operating-systems-for-clients"></a>İstemciler için desteklenen işletim sistemleri
 
@@ -51,15 +51,15 @@ Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel web kullanıcı
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
-Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı kullanılabilir değilse, 1 GbE veri bağlantısı, veri ancak hızı etkilenir kopyalama kopyalamak için kullanılabilir.
+Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10-GbE bağlantı kullanılamıyorsa, verileri kopyalamak için 1-GbE veri bağlantısı kullanılabilir ancak kopyalama hızları bundan etkilenir.
 
 ### <a name="port-requirements"></a>Bağlantı noktası gereksinimleri
 
-Aşağıdaki tablo için SMB veya NFS trafiğine izin vermek için güvenlik duvarını açılması gereken bağlantı noktalarını listeler. Bu tabloda *içinde* veya *gelen* hangi gelen istemci istekleri erişimden Cihazınızı yönü belirtir. *Çıkış* veya *giden* , Data Box cihazınız gönderir dışarıdan, veri dağıtımı dışında yön ifade eder: Örneğin, Internet'e giden.
+Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *içinde* , gelen istemci, cihazınıza erişim talep ettiği yöne başvurur. *Out* veya *Outbound* , dağıtım ötesinde Data Box cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, Internet 'e giden.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Box'ınızı dağıtın](data-box-deploy-ordered.md)
+* [Azure Data Box dağıtın](data-box-deploy-ordered.md)

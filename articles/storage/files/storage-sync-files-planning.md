@@ -8,11 +8,11 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598264"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362421"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -313,17 +313,17 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 | Genel | BAE | BAE Kuzey | `uaenorth` |
 | Genel | UK | Güney Birleşik Krallık | `uksouth` |
 | Genel | UK | Batı Birleşik Krallık | `ukwest` |
-| Genel | ABD | Orta ABD | `centralus` |
-| Genel | ABD | Doğu ABD | `eastus` |
-| Genel | ABD | Doğu ABD 2 | `eastus2` |
-| Genel | ABD | Orta Kuzey ABD | `northcentralus` |
-| Genel | ABD | Orta Güney ABD | `southcentralus` |
-| Genel | ABD | Orta Batı ABD | `westcentralus` |
-| Genel | ABD | Batı ABD | `westus` |
-| Genel | ABD | Batı ABD 2 | `westus2` |
-| US Gov | ABD | US Gov Arizona | `usgovarizona` |
-| US Gov | ABD | US Gov Texas | `usgovtexas` |
-| US Gov | ABD | US Gov Virginia | `usgovvirginia` |
+| Genel | US | Orta ABD | `centralus` |
+| Genel | US | Doğu ABD | `eastus` |
+| Genel | US | Doğu ABD 2 | `eastus2` |
+| Genel | US | Orta Kuzey ABD | `northcentralus` |
+| Genel | US | Orta Güney ABD | `southcentralus` |
+| Genel | US | Orta Batı ABD | `westcentralus` |
+| Genel | US | Batı ABD | `westus` |
+| Genel | US | Batı ABD 2 | `westus2` |
+| US Gov | US | US Gov Arizona | `usgovarizona` |
+| US Gov | US | US Gov Texas | `usgovtexas` |
+| US Gov | US | US Gov Virginia | `usgovvirginia` |
 
 Azure Dosya Eşitleme, yalnızca depolama eşitleme hizmeti ile aynı bölgedeki bir Azure dosya paylaşımıyla eşitlemeyi destekler.
 

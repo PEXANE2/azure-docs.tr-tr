@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153868"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381700"
 ---
 # <a name="azure-serial-console"></a>Azure seri konsol
 
@@ -45,7 +45,7 @@ VM 'Lerin ve sanal makine ölçek kümesinin seri konsoluna yalnızca Azure port
 
 ### <a name="serial-console-for-virtual-machines"></a>Sanal makineler için seri konsol
 VM 'Ler için seri konsol, Azure portal **destek + sorun giderme** bölümündeki **seri konsol** tıklamakla açıktır.
-  1. [Azure portalı](https://portal.azure.com) açın.
+  1. [Azure portalını](https://portal.azure.com) açın.
 
   1. **Tüm kaynaklara** gidin ve bir sanal makine seçin. VM 'nin genel bakış sayfası açılır.
 
@@ -55,7 +55,7 @@ VM 'Ler için seri konsol, Azure portal **destek + sorun giderme** bölümündek
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için seri konsol
 Seri konsol, ölçek kümesi içindeki her bir örnek üzerinde erişilebilir olan sanal makine ölçek kümeleri için kullanılabilir. **Seri konsol** düğmesini görmeden önce bir sanal makine ölçek kümesinin tek örneğine gitmeniz gerekir. Sanal makine ölçek kümesinde önyükleme tanılaması etkinleştirilmemişse, sanal makine ölçek kümesi modelinizi önyükleme tanılamayı etkinleştirecek şekilde güncelleştirdiğinizden emin olun ve ardından seri konsoluna erişmek için tüm örnekleri yeni modele yükseltin.
-  1. [Azure portalı](https://portal.azure.com) açın.
+  1. [Azure portalını](https://portal.azure.com) açın.
 
   1. **Tüm kaynaklara** gidin ve bir sanal makine ölçek kümesi seçin. Sanal makine ölçek kümesi için genel bakış sayfası açılır.
 

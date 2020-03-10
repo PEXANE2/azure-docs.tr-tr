@@ -7,11 +7,11 @@ ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226332"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358080"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -324,7 +324,7 @@ Yenileme işlemi tamamlandıktan sonra **Eşitle**' ye tıklayın. Eşitleme iş
 > [!NOTE]
 > **Eşitle**' yi tıklamıyorsanız, App Service sertifikanızı otomatik olarak 48 saat içinde eşitler.
 
-### <a name="export-certificate"></a>Sertifikayı dışarı aktarma
+### <a name="export-certificate"></a>Sertifikayı ver
 
 Bir App Service Sertifikası [Key Vault gizli](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)dizi olduğundan, bunun bir PFX kopyasını dışarı aktarabilir ve diğer Azure hizmetleri veya Azure dışında kullanabilirsiniz.
 

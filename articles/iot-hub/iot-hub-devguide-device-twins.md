@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
-ms.translationtype: MT
+ms.date: 02/01/2020
+ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807043"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355740"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub cihaz ikizlerini anlama ve kullanma
 
@@ -119,7 +119,7 @@ Kök nesnede, cihaz kimliği özellikleri ve `tags` için kapsayıcı nesneler v
 
 ### <a name="desired-property-example"></a>İstenen özellik örneği
 
-Önceki örnekte, `telemetryConfig` cihaz ikizi istenen ve bildirilen özellikler, çözüm arka ucu ve cihaz uygulaması tarafından bu cihazın telemetri yapılandırmasını eşitleyecek şekilde kullanılır. Örnek:
+Önceki örnekte, `telemetryConfig` cihaz ikizi istenen ve bildirilen özellikler, çözüm arka ucu ve cihaz uygulaması tarafından bu cihazın telemetri yapılandırmasını eşitleyecek şekilde kullanılır. Örneğin:
 
 1. Çözüm arka ucu istenen özelliği istenen yapılandırma değeriyle ayarlar. Belge, istenen özellik kümesine sahip olan bölümüdür:
 
@@ -245,11 +245,15 @@ Cihaz uygulaması, aşağıdaki atomik işlemleri kullanarak cihaz ikizi üzerin
 
 Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve aşağıdaki kısıtlamalara sahiptir:
 
-* JSON nesnelerindeki tüm anahtarlar UTF-8 kodlamalı, büyük/küçük harfe duyarlıdır ve uzunluğu 1 KB 'tır. İzin verilen karakterler UNICODE denetim karakterlerini (C0 ve C1 kesimleri) ve `.`, `$`ve SP 'yi dışarıda bırakır.
+* **Anahtarlar**: JSON nesnelerindeki tüm anahtarlar UTF-8 kodlamalı, büyük/küçük harfe duyarlıdır ve uzunluğu 1 KB 'tır. İzin verilen karakterler UNICODE denetim karakterlerini (C0 ve C1 kesimleri) ve `.`, `$`ve SP 'yi dışarıda bırakır.
 
-* JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor. Tamsayılar için maksimum değer 4503599627370495, tamsayıların en küçük değeri ise-4503599627370496 ' dir.
+* **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor.
 
-* Etiketler, istenen ve raporlanan özelliklerin tüm JSON nesneleri en fazla 10 derinliğine sahip olabilir. Örneğin, aşağıdaki nesne geçerlidir:
+    * Tamsayılar en az-4503599627370496 ve en yüksek değer olan 4503599627370495 değerine sahip olabilir.
+
+    * Dize değerleri UTF-8 kodlardır ve en fazla 4 KB olabilir.
+
+* **Derinlik**: etiket, istenen özellikler ve bildirilen ÖZELLIKLER içindeki JSON nesnelerinin maksimum derinliği 10 ' dur. Örneğin, aşağıdaki nesne geçerli olur:
 
    ```json
    {
@@ -281,21 +285,29 @@ Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve a
    }
    ```
 
-* Tüm dize değerleri en fazla 4 KB olabilir.
-
 ## <a name="device-twin-size"></a>Cihaz ikizi boyutu
 
-IoT Hub, `tags`değerinde 8 KB boyutunda bir boyut sınırı ve `properties/desired` ve `properties/reported`değeri üzerinde her biri 32 KB boyutunda bir boyut sınırlaması uygular. Bu toplamlar salt okunurdur öğeleri dışlıyor.
+IoT Hub, `tags`değerinde 8 KB boyutunda bir boyut sınırı ve `properties/desired` ve `properties/reported`değeri üzerinde her biri 32 KB boyutunda bir boyut sınırlaması uygular. Bu toplamlar `$etag`, `$version`ve `$metadata/$lastUpdated`gibi salt yazılır öğelerin dışlanmalıdır.
 
-Boyut, UNICODE denetim karakterleri (segment C0 ve C1) ve dize sabitleri dışında kalan boşluklar hariç olmak üzere tüm karakterlerin sayılarak hesaplanır.
+İkizi boyutu şu şekilde hesaplanır:
 
-IoT Hub, sınırın üzerinde bu belgelerin boyutunu arttırabilecek tüm işlemleri bir hata ile reddeder.
+* JSON belgesindeki her bir özellik için, IoT Hub üst üste hesaplar ve özelliğin anahtar ve değerinin uzunluğunu ekler.
+
+* Özellik anahtarları UTF8 kodlu dizeler olarak değerlendirilir.
+
+* Basit özellik değerleri, UTF8 kodlu dizeler, sayısal değerler (8 bayt) veya Boole değerleri (4 bayt) olarak değerlendirilir.
+
+* UTF8 kodlu dizelerin boyutu, UNICODE denetim karakterleri (segment C0 ve C1) hariç tüm karakterlerin sayılarak hesaplanır.
+
+* Karmaşık özellik değerleri (iç içe geçmiş nesneler), içerdikleri özellik anahtarlarının ve özellik değerlerinin toplam boyutu temel alınarak hesaplanır.
+
+IoT Hub, sınırın üzerindeki `tags`, `properties/desired`veya `properties/reported` belgelerin boyutunu artıracak tüm işlemler hata vererek reddeder.
 
 ## <a name="device-twin-metadata"></a>Cihaz ikizi meta verileri
 
 IoT Hub, cihazdaki her bir JSON nesnesi için son güncelleştirme zaman damgasını korur, ikizi istenen ve raporlanan Özellikler. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde kodlanır `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Örnek:
+Örneğin:
 
 ```json
 {

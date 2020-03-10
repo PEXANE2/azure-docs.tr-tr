@@ -7,11 +7,11 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 8de245dc6307890c872bfc4b8b66371775e1ad12
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532881"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358235"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI Örnekleri
 
@@ -26,7 +26,7 @@ Aşağıdaki tablo, Azure CLI kullanan Azure İşlevleri için bash betiklerine 
 | [Ölçeklenebilir Premium planında bir işlev uygulaması oluşturma](scripts/functions-cli-create-premium-plan.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
 | [Adanmış (App Service) bir planda bir işlev uygulaması oluşturma](scripts/functions-cli-create-app-service-plan.md) | Ayrılmış App Service planında bir işlev uygulaması oluşturur. |
 
-| Tümleştirin | Açıklama|
+| Tümleştirme | Açıklama|
 |---|---|
 | [İşlev uygulaması oluşturma ve depolama hesabına bağlama](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Bir işlev uygulaması oluşturur ve bunu bir depolama hesabına bağlar. |
 | [İşlev uygulaması oluşturma ve Azure Cosmos DB'ye bağlama](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Bir işlev uygulaması oluşturur ve Azure Cosmos DB'ye bağlar. |

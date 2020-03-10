@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: db4e48a7bff9127810b051a9ab63bbe9d78cf6da
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022435"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394151"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central kurallarında Web kancası eylemleri oluşturma
 
@@ -39,7 +39,7 @@ Bu örnekte, kurallar Web kancaları kullanılarak başlatıldığında bildirim
 
 Artık kural tetiklendiğinde RequestBin ' de yeni bir istek göründüğünü görürsünüz.
 
-## <a name="payload"></a>te
+## <a name="payload"></a>Te
 
 Bir kural tetiklendiğinde Telemetriyi, cihazı, kuralı ve uygulama ayrıntılarını içeren bir JSON yükü içeren geri çağırma URL 'SI için HTTP POST isteği yapılır. Yük aşağıdaki gibi görünebilir:
 

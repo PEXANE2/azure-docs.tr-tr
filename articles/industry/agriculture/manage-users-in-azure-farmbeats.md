@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482302"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392725"
 ---
 # <a name="manage-users"></a>Kullanıcıları yönetme
 
 Azure Farmtts, Azure Active Directory (Azure AD) örneğinin parçası olan kişilerin Kullanıcı yönetimini içerir. API 'Lere erişmek, oluşturulan haritaları görüntülemek ve grup algılayıcısı telemetrisine erişmek için Azure Farmtts örneğinize kullanıcı ekleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Farmtts yüklemesi gerekiyor. Daha fazla bilgi için bkz. [Azure Farmtts 'Yi yüklemeyin](install-azure-farmbeats.md).
 - Azure Farmtts örneğinden eklemek veya kaldırmak istediğiniz kullanıcıların e-posta kimlikleri.
@@ -67,7 +67,7 @@ Kullanıcıları Azure Farmtts sisteminden kaldırmak için:
 
 Azure AD 'ye Kullanıcı eklemek için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Sağ üst köşedeki hesabınızı seçin ve ardından Farmtts ile ilişkili Azure AD kiracıya geçin.
 3. **Azure Active Directory** > **kullanıcıları**' nı seçin.
 

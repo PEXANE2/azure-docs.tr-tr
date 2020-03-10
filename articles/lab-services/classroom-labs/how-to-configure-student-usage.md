@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539236"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945579"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapılacağı, VM 'nin kullanabileceği saat sayısını denetleme ve daha fazla bilgi edinebilirsiniz. 
@@ -144,7 +144,7 @@ Bunu yapmak için aşağıdaki adımları izleyin:
 ## <a name="student-accounts"></a>Öğrenci hesapları
 Bir sınıf laboratuvarına öğrenci eklemek için e-posta hesaplarını kullanın. Aşağıdaki e-posta hesabı türleri kullanılabilir:
 
-- University in Office 365 Azure Active Directory (AAD) tarafından sunulan bir öğrenci e-posta hesabı. 
+- University in Office 365 Azure Active Directory tarafından sunulan bir öğrenci e-posta hesabı. 
 - `@outlook.com`, `@hotmail.com`, `@msn.com`veya `@live.com`gibi bir Microsoft e-posta hesabı.
 - Microsoft olmayan bir e-posta hesabı, örneğin, Yahoo veya Google tarafından sağlanmamıştır. Ancak, bu tür hesapların bir Microsoft hesabı bağlantılı olması gerekir.
 - GitHub hesabı. Bu hesabın bir Microsoft hesabı ile bağlantılı olması gerekir.
@@ -173,6 +173,14 @@ Microsoft hesabı kaydolmak için öğrenciler [http://signup.live.com](http://s
 ![GitHub bağlantısıyla oturum açın](../media/how-to-configure-student-usage/signin-github.png)
 
 Son olarak, bunlara GitHub hesaplarına bağlı bir Microsoft hesabı oluşturması istenir. Öğrenci bir **Sonrakini**seçtiğinde otomatik olarak gerçekleşir.  Daha sonra öğrenci hemen oturum açtı ve derslik laboratuvarına bağlanır.
+
+## <a name="export-list-of-users-to-a-csv-file"></a>Kullanıcıların listesini bir CSV dosyasına aktar
+
+1. **Kullanıcılar** sekmesine geçin.
+2. Araç çubuğunda **..** . (üç nokta) simgesini seçin ve ardından **CSV 'yi dışarı aktar**' ı seçin. 
+
+    ![Kullanıcı listesini dışarı aktarma](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

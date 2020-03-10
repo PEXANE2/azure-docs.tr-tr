@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176544"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374447"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management şablonu veri modeli başvurusu
 Bu konu başlığı altında, Azure API Management geliştirici portalı şablonlarının veri modellerinde kullanılan ortak öğelerin varlık ve tür gösterimleri açıklanmaktadır.  
@@ -61,7 +61,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`id`|string|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{id}` bir API tanımlayıcısı olduğu `apis/{id}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunurdur.|  
+|`id`|string|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{id}` bir API tanımlayıcısı olduğu `apis/{id}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
 |`name`|string|API 'nin adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`description`|string|API 'nin açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`serviceUrl`|string|Bu API 'YI uygulayan arka uç hizmetinin mutlak URL 'SI.|  
@@ -75,7 +75,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`id`|string|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{id}` bir API tanımlayıcısı olduğu `apis/{id}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunurdur.|  
+|`id`|string|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{id}` bir API tanımlayıcısı olduğu `apis/{id}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
 |`name`|string|API 'nin adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`description`|string|API 'nin açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
   
@@ -87,12 +87,12 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`Id`|string|Uygulamanın benzersiz tanımlayıcısı.|  
 |`Title`|string|Uygulamanın başlığı.|  
 |`Description`|string|Uygulamanın açıklaması.|  
-|`Url`|KULLANıLMAMıŞSA|Uygulamanın URI 'SI.|  
+|`Url`|URI|Uygulamanın URI 'SI.|  
 |`Version`|string|Uygulamanın sürüm bilgileri.|  
 |`Requirements`|string|Uygulama gereksinimlerinin açıklaması.|  
-|`State`|number|Uygulamanın geçerli durumu.<br /><br /> -0-kayıtlı<br /><br /> -1-gönderildi<br /><br /> -2-yayımlandı<br /><br /> -3-reddedildi<br /><br /> -4-yayımdan kaldırıldı|  
-|`RegistrationDate`|Tarih Saat|Uygulamanın kaydedildiği tarih ve saat.|  
-|`CategoryId`|number|Uygulamanın kategorisi (Finans, eğlence, vb.)|  
+|`State`|sayı|Uygulamanın geçerli durumu.<br /><br /> -0-kayıtlı<br /><br /> -1-gönderildi<br /><br /> -2-yayımlandı<br /><br /> -3-reddedildi<br /><br /> -4-yayımdan kaldırıldı|  
+|`RegistrationDate`|DateTime|Uygulamanın kaydedildiği tarih ve saat.|  
+|`CategoryId`|sayı|Uygulamanın kategorisi (Finans, eğlence, vb.)|  
 |`DeveloperId`|string|Uygulamayı gönderen geliştiricinin benzersiz tanıtıcısı.|  
 |`Attachments`|[Ek](#Attachment) varlıkların koleksiyonu.|Uygulamanın ekran görüntüleri veya simgeleri gibi ekleri.|  
 |`Icon`|[Ekindeki](#Attachment)|Uygulamanın simgesi.|  
@@ -129,10 +129,10 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Id`|number|Açıklamanın KIMLIĞI.|  
+|`Id`|sayı|Açıklamanın KIMLIĞI.|  
 |`CommentText`|string|Açıklamanın gövdesi. HTML içerebilir.|  
 |`DeveloperCompany`|string|Geliştiricinin şirket adı.|  
-|`PostedOn`|Tarih Saat|Yorumun gönderildiği tarih ve saat.|  
+|`PostedOn`|DateTime|Yorumun gönderildiği tarih ve saat.|  
   
 ##  <a name="Issue"></a>Konuda  
  `issue` varlığı aşağıdaki özelliklere sahiptir.  
@@ -145,7 +145,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`Description`|string|Sorunun açıklaması.|  
 |`SubscriptionDeveloperName`|string|Sorunu bildiren geliştiricinin ilk adı.|  
 |`IssueState`|string|Sorunun geçerli durumu. Olası değerler önerilir, açılır, kapalıdır.|  
-|`ReportedOn`|Tarih Saat|Sorunun bildirildiği tarih ve saat.|  
+|`ReportedOn`|DateTime|Sorunun bildirildiği tarih ve saat.|  
 |`Comments`|[Açıklama](#Comment) varlıkları koleksiyonu.|Bu sorunla ilgili açıklamalar.|  
 |`Attachments`|[Ek](api-management-template-data-model-reference.md#Attachment) varlıkların koleksiyonu.|Sorunun ekleri.|  
 |`Services`|[API](#API) varlıkları koleksiyonu.|API 'Ler, sorunu dosyalayan Kullanıcı tarafından abone oldu.|  
@@ -195,7 +195,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`id`|string|Kaynak tanımlayıcısı. İşlemi geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{aid}` bir API tanımlayıcısı olduğu ve `{id}` bir işlem tanımlayıcısı olduğu `apis/{aid}/operations/{id}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunurdur.|  
+|`id`|string|Kaynak tanımlayıcısı. İşlemi geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{aid}` bir API tanımlayıcısı olduğu ve `{id}` bir işlem tanımlayıcısı olduğu `apis/{aid}/operations/{id}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
 |`name`|string|İşlemin adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`description`|string|İşlemin açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`scheme`|string|Bu API 'deki işlemlerin hangi protokolde çağrılabileceğini açıklar. İzin verilen değerler `http`, `https`veya `http` ve `https`.|  
@@ -220,7 +220,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Id`|string|İşlemin KIMLIĞI.|  
+|`Id`|string|İşlemin kimliği.|  
 |`Title`|string|İşlemin açıklaması.|  
 |`HttpMethod`|string|İşlemin http yöntemi.|  
   
@@ -229,11 +229,11 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Page`|number|Geçerli sayfa numarası.|  
-|`PageSize`|number|Tek bir sayfada görüntülenecek en fazla sonuç.|  
-|`TotalItemCount`|number|Görüntülenecek öğe sayısı.|  
+|`Page`|sayı|Geçerli sayfa numarası.|  
+|`PageSize`|sayı|Tek bir sayfada görüntülenecek en fazla sonuç.|  
+|`TotalItemCount`|sayı|Görüntülenecek öğe sayısı.|  
 |`ShowAll`|boole|Tüm sonuçların tek bir sayfada gösterilip gösterilmeyeceğini belirtir.|  
-|`PageCount`|number|Sonuçların sayfa sayısı.|  
+|`PageCount`|sayı|Sonuçların sayfa sayısı.|  
   
 ##  <a name="Parameter"></a>Parametresinin  
  Bu bölümde `parameter` temsili açıklanmaktadır.  
@@ -245,7 +245,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`value`|string|Parametre değeri.|  
 |`options`|dize dizisi|Sorgu parametresi değerleri için tanımlanan değerler.|  
 |`required`|boole|Parametrenin gerekli olup olmadığını belirtir.|  
-|`kind`|number|Bu parametrenin bir yol parametresi (1) veya QueryString parametresi (2) olup olmadığı.|  
+|`kind`|sayı|Bu parametrenin bir yol parametresi (1) veya QueryString parametresi (2) olup olmadığı.|  
 |`typeName`|string|Parametre türü.|  
   
 ##  <a name="Product"></a>Ürünüyle  
@@ -253,13 +253,13 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Id`|string|Kaynak tanımlayıcısı. Ürünü geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{pid}` bir ürün tanımlayıcısı olduğu `products/{pid}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunurdur.|  
+|`Id`|string|Kaynak tanımlayıcısı. Ürünü geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `{pid}` bir ürün tanımlayıcısı olduğu `products/{pid}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
 |`Title`|string|Ürünün adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`Description`|string|Ürünün açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`Terms`|string|Ürün kullanım koşulları. Ürüne abone olmayı deneyen geliştiriciler, abonelik işlemini tamamlayabilmeleri için önce bu koşulları kabul etmek üzere sunulacaktır ve gerekli olacaktır.|  
-|`ProductState`|number|Ürünün yayınlanıp yayımlanmadığını belirtir. Yayımlanan ürünler geliştirici portalındaki geliştiriciler tarafından bulunabilir. Yayımlanmamış ürünler yalnızca yöneticiler tarafından görülebilir.<br /><br /> Ürün durumu için izin verilen değerler şunlardır:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|`ProductState`|sayı|Ürünün yayınlanıp yayımlanmadığını belirtir. Yayımlanan ürünler geliştirici portalındaki geliştiriciler tarafından bulunabilir. Yayımlanmamış ürünler yalnızca yöneticiler tarafından görülebilir.<br /><br /> Ürün durumu için izin verilen değerler şunlardır:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |`AllowMultipleSubscriptions`|boole|Bir kullanıcının aynı anda bu ürüne birden fazla aboneliğine sahip olup olmayacağını belirtir.|  
-|`MultipleSubscriptionsCount`|number|Bu ürüne bir kullanıcının aynı anda sahip olmasına izin verilen maksimum abonelik sayısı.|  
+|`MultipleSubscriptionsCount`|sayı|Bu ürüne bir kullanıcının aynı anda sahip olmasına izin verilen maksimum abonelik sayısı.|  
   
 ##  <a name="Provider"></a>Sağlayıcısını  
  `provider` varlığı aşağıdaki özelliklere sahiptir:  
@@ -283,19 +283,19 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Id`|string|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `{sid}` bir abonelik tanımlayıcısı olduğu `subscriptions/{sid}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunurdur.|  
+|`Id`|string|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `{sid}` bir abonelik tanımlayıcısı olduğu `subscriptions/{sid}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
 |`ProductId`|string|Abone olunan ürünün ürün kaynak tanımlayıcısı. Değer, `{pid}` bir ürün tanımlayıcısı olduğu `products/{pid}` biçiminde geçerli bir göreli URL 'dir.|  
 |`ProductTitle`|string|Ürünün adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`ProductDescription`|string|Ürünün açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`ProductDetailsUrl`|string|Ürün ayrıntılarının göreli URL 'SI.|  
 |`state`|string|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> - `0 - suspended` – abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br /><br /> - `1 - active` – abonelik etkin.<br /><br /> - `2 - expired` – abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br /><br /> - `3 - submitted` – abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br /><br /> - `4 - rejected` – abonelik isteği bir yönetici tarafından reddedildi.<br /><br /> - `5 - cancelled` – abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
 |`DisplayName`|string|Aboneliğin görünen adı.|  
-|`CreatedDate`|Hem|Aboneliğin oluşturulduğu tarih, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
+|`CreatedDate`|Tarih/saat|Aboneliğin oluşturulduğu tarih, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
 |`CanBeCancelled`|boole|Aboneliğin geçerli kullanıcı tarafından iptal edilip edilmeyeceğini belirtir.|  
 |`IsAwaitingApproval`|boole|Aboneliğin onay bekliyor olup olmadığı.|  
-|`StartDate`|Hem|Aboneliğin başlangıç tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
-|`ExpirationDate`|Hem|Abonelik için son kullanma tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
-|`NotificationDate`|Hem|Abonelik için bildirim tarihi ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
+|`StartDate`|Tarih/saat|Aboneliğin başlangıç tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
+|`ExpirationDate`|Tarih/saat|Abonelik için son kullanma tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
+|`NotificationDate`|Tarih/saat|Abonelik için bildirim tarihi ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
 |`primaryKey`|string|Birincil abonelik anahtarı. Maksimum uzunluk 256 karakterdir.|  
 |`secondaryKey`|string|İkincil abonelik anahtarı. Maksimum uzunluk 256 karakterdir.|  
 |`CanBeRenewed`|boole|Aboneliğin geçerli kullanıcı tarafından yenilenebilir olup olmadığı.|  
@@ -309,7 +309,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Id`|string|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `{sid}` bir abonelik tanımlayıcısı olduğu `subscriptions/{sid}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunurdur.|  
+|`Id`|string|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `{sid}` bir abonelik tanımlayıcısı olduğu `subscriptions/{sid}` biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
 |`DisplayName`|string|Aboneliğin görünen adı|  
   
 ##  <a name="UserAccountInfo"></a>Kullanıcı hesabı bilgileri  
@@ -350,9 +350,9 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Password`|string|Kullanıcı hesabı parolası.|  
-|`PasswordVerdictLevel`|number|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
+|`PasswordVerdictLevel`|sayı|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`UserRegistrationTerms`|string|Kullanıcının oturum açmadan önce kabul etmesi gereken koşullar.|  
-|`UserRegistrationTermsOptions`|number|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
+|`UserRegistrationTermsOptions`|sayı|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`ConsentAccepted`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Email`|string|E-posta adresi. Boş olmamalı ve hizmet örneği içinde benzersiz olmalıdır. Maksimum uzunluk 254 karakterdir.|  
 |`FirstName`|string|Ad. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  

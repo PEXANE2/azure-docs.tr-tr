@@ -4,11 +4,11 @@ description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritaba
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382494"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -32,7 +32,7 @@ Bu portalda gördüğünüz işler veritabanı bulma ve kaydetme, yedekleme ve g
 
 Uyarılar SAP HANA veritabanlarının yedeklerini izlemenin kolay bir yöntemidir. Uyarılar, bir yedeklemenin oluşturduğu çok sayıda olayın kaybedilmesi gerekmeden en iyi şekilde ilgilendiğiniz olaylara odaklanmaya yardımcı olur. Azure Backup, uyarıları ayarlamanıza olanak sağlar ve aşağıdaki gibi izlenebilir:
 
-* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 * Kasa panosunda **yedekleme uyarıları**' nı seçin.
 
   ![Kasa panosunda yedekleme uyarıları](./media/sap-hana-db-manage/backup-alerts-dashboard.png)

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
 ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359283"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid içindeki olay kaynakları
 
@@ -72,7 +72,7 @@ Yakalama dosyası olaylarına yanıt vermek için Event Hubs olaylarına abone o
 
 İşleyici olarak Event Hubs örnekleri için bkz. [Event Hubs Handler](event-handlers.md#event-hubs).
 
-## <a name="iot-hub"></a>IoT Hub
+## <a name="iot-hub"></a>IOT hub'ı
 
 Oluşturulan, silinen, bağlı, bağlantısı kesilen ve telemetri olaylarına yanıt vermek için IoT Hub olaylarına abone olun.
 
@@ -95,7 +95,7 @@ Bir parolanın süresi dolduğunda, gizli dizi süresinin dolması veya gizli di
 | [Öğretici: Event Grid ile Key Vault olayları oluşturma ve izleme](../key-vault/event-grid-tutorial.md) | Key Vault için Event Grid bildirimleri ayarlamayı öğrenin. |
 | [Olay şeması](event-schema-key-vault.md) | Key Vault olaylardaki alanları gösterir. |
 
-## <a name="media-services"></a>Media Services
+## <a name="media-services"></a>Medya Hizmetleri
 
 İş durumu olaylarına yanıt vermek için Media Services olaylara abone olun.
 
@@ -119,7 +119,7 @@ Kaynak grubu üzerinde kaynaklardaki değişikliklere yanıt vermek için kaynak
 | [Kaynak Yöneticisi şablonu: kaynak aboneliği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Bir Azure aboneliği veya kaynak grubu için olaylara abone olur. Olayları bir Web kancasına gönderir. |
 | [Olay Şeması](event-schema-resource-groups.md) | Kaynak grubu olaylardaki alanları gösterir. |
 
-## <a name="service-bus"></a>Service Bus
+## <a name="service-bus"></a>Hizmet Veri Yolu
 
 Etkin bir dinleyici olmadan iletilere yanıt vermek için Service Bus olaylarına abone olun.
 

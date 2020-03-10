@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875793"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363167"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Sunucuları kaldırma ve korumayı devre dışı bırakma
 
@@ -30,10 +30,10 @@ VMware VM 'lerini veya Windows/Linux fiziksel sunucularını Azure 'a çoğaltd�
 ## <a name="unregister-a-vmm-server"></a>VMM sunucusunun kaydını silme
 
 1. Kaldırmak istediğiniz VMM sunucusundaki bulutlardaki sanal makinelerin çoğaltılmasını durdurun.
-2. Silmek istediğiniz VMM sunucusunda bulutlar tarafından kullanılan tüm ağ eşlemelerini silin. **System Center VMM** >   Ağ > **eşlemesi**için Site Recovery altyapısında, ağ eşleme > Sil ' e sağ tıklayın.
+2. Silmek istediğiniz VMM sunucusunda bulutlar tarafından kullanılan tüm ağ eşlemelerini silin. **System Center VMM** > **ağ eşlemesi**için **Site Recovery altyapı** > , ağ eşleme > **Sil**' e sağ tıklayın.
 3. VMM sunucusunun KIMLIĞINI aklınızda edin.
-4. Kaldırmak istediğiniz VMM sunucusundaki bulutlardan çoğaltma ilkelerinin ilişkisini kaldırın.  **System Center VMM** >  çoğaltmailkeleriiçinSiteRecoveryaltyapısında,ilişkili >  ilkeye çift tıklayın. Buluta sağ tıklayın > **Ilişkiyi kaldırın**.
-5. VMM sunucusunu veya etkin düğümü silin. **System Center VMM** >   VMM > **sunucuları**için Site Recovery altyapısı ' nda, Sil > sunucuya sağ tıklayın.
+4. Kaldırmak istediğiniz VMM sunucusundaki bulutlardan çoğaltma ilkelerinin ilişkisini kaldırın.  **System Center VMM** >  **çoğaltma Ilkeleri**için **Site Recovery altyapı** > , ilişkili ilkeye çift tıklayın. Buluta sağ tıklayın > **Ilişkiyi kaldırın**.
+5. VMM sunucusunu veya etkin düğümü silin. **System Center vmm** > **vmm sunucuları**için **Site Recovery altyapı** > , > **Sil**' e sağ tıklayın.
 6. VMM sunucunuz bağlantısı kesik durumdaysa, [Temizleme BETIĞINI](https://aka.ms/asr-cleanup-script-vmm) VMM sunucusunda indirip çalıştırın. Varsayılan (LocalMachine) kapsamının Yürütme ilkesini değiştirmek için PowerShell 'i **yönetici olarak çalıştır** seçeneğiyle açın. Komut dosyasında, kaldırmak istediğiniz VMM sunucusunun KIMLIĞINI belirtin. Betik kaydı ve bulut eşleştirme bilgilerini sunucudan kaldırır.
 5. Temizleme betiğini herhangi bir ikincil VMM sunucusunda çalıştırın.
 6. Temizleme betiğini, sağlayıcının yüklü olduğu diğer tüm pasif VMM küme düğümlerinde çalıştırın.
@@ -45,9 +45,9 @@ VMware VM 'lerini veya Windows/Linux fiziksel sunucularını Azure 'a çoğaltd�
 VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır. Hyper-V sitesindeki bir konağı aşağıdaki gibi kaldırın:
 
 1. Konakta bulunan Hyper-V VM 'lerinin çoğaltmasını devre dışı bırakın.
-2. Hyper-V sitesi için ilkelerin ilişkisini kaldırın.  > **Hyper-V siteleri** >  **çoğaltma ilkeleri**için **Site Recovery altyapısında**, ilişkili ilkeye çift tıklayın. **Ilişkiyi kaldırmak**> siteye sağ tıklayın.
-3. Hyper-V konaklarınızı silin.  > **Hyper-v siteleri**   > **Hyper-v Konakları**için Site Recovery altyapısında, Sil > sunucuya sağ tıklayın.
-4. Hyper-V sitesini, tüm Konakları kaldırıldıktan sonra silin.  > **Hyper-v siteleri**   > **Hyper-v siteleri**için Site Recovery altyapısında, Sil > siteye sağ tıklayın.
+2. Hyper-V sitesi için ilkelerin ilişkisini kaldırın. **Hyper-V siteleri** >  **çoğaltma Ilkeleri**için **Site Recovery altyapı** > , ilişkili ilkeye çift tıklayın. **Ilişkiyi kaldırmak**> siteye sağ tıklayın.
+3. Hyper-V konaklarınızı silin. Hyper-v **konakları** > Hyper-v **siteleri için** **Site Recovery altyapı** > , > **Sil**' e sağ tıklayın.
+4. Hyper-V sitesini, tüm Konakları kaldırıldıktan sonra silin. Hyper **-v siteleri > ** Hyper-v siteleri **için** **Site Recovery altyapı** > , siteye sağ tıklayıp **Sil**>.
 5. Hyper-V konağınız **bağlantısı kesik** durumdaysa, kaldırdığınız her Hyper-v konağında aşağıdaki betiği çalıştırın. Betik, sunucudaki ayarları temizler ve kasanın kaydını siler.
 
 
@@ -143,10 +143,10 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
 
 ## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>VMware VM veya fiziksel sunucu için korumayı devre dışı bırakma (VMware 'den Azure 'a)
 
-1. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
+1. **Çoğaltılmış**öğeler > **korunan öğeler** ' de, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
 2. **Çoğaltmayı devre dışı bırak** sayfasında, şu seçeneklerden birini seçin:
     - **Çoğaltmayı devre dışı bırak ve Kaldır (önerilir)** -Bu seçenek, çoğaltılan öğeyi Azure Site Recovery kaldırır ve makinenin çoğaltması durdurulur. Yapılandırma sunucusundaki çoğaltma yapılandırması temizlenir ve bu korumalı sunucu için faturalandırma Site Recovery durdurulur. Bu seçeneğin yalnızca yapılandırma sunucusu bağlı durumdayken kullanılabileceğini unutmayın.
-    - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Yapılandırma **sunucusundaki çoğaltma** yapılandırması temizlenmeyecektir. 
+    - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Yapılandırma **sunucusundaki çoğaltma yapılandırması temizlenmeyecektir.** 
 
 > [!NOTE]
 > Her iki seçenek de Mobility hizmeti korunan sunuculardan kaldırılmayacak, el ile kaldırmanız gerekir. Sunucuyu aynı yapılandırma sunucusunu kullanarak yeniden korumayı planlıyorsanız Mobility hizmetini kaldırmayı atlayabilirsiniz.
@@ -155,7 +155,7 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
 > Zaten bir VM yük devretiyorsa ve Azure 'da çalışıyorsa, korumayı devre dışı bırakma işlemi yük devredilen VM 'nin kaldırılmasını/etkilenmeyeceğini unutmayın.
 ## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Azure VM için korumayı devre dışı bırakma (Azure 'dan Azure 'a)
 
--  **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
+-  **Çoğaltılmış**öğeler > **korunan öğeler** ' de, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
 > [!NOTE]
 > Mobility hizmeti korumalı sunuculardan kaldırılmaz, el ile kaldırmanız gerekir. Sunucuyu yeniden korumayı planlıyorsanız Mobility hizmetini kaldırmayı atlayabilirsiniz.
 
@@ -164,10 +164,10 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
 > [!NOTE]
 > Hyper-V VM 'lerini VMM sunucusu olmadan Azure 'a çoğaltırken bu yordamı kullanın. **System Center VMM 'Den Azure 'a** sanal makinelerinizi çoğaltmanız durumunda, System Center VMM 'den Azure 'a çoğaltma senaryosunu kullanarak Hyper-V sanal makinesi Için korumayı devre dışı bırakma yönergelerini izleyin.
 
-1. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
+1. **Çoğaltılmış**öğeler > **korunan öğeler** ' de, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
 2. **Çoğaltmayı devre dışı bırak**' da, aşağıdaki seçenekleri belirleyebilirsiniz:
    - **Çoğaltmayı devre dışı bırak ve Kaldır (önerilir)** -Bu seçenek, çoğaltılan öğeyi Azure Site Recovery kaldırır ve makinenin çoğaltması durdurulur. Şirket içi sanal makinedeki çoğaltma yapılandırması temizlenir ve bu korumalı sunucu için faturalandırma Site Recovery durdurulur.
-   - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma** yapılandırması temizlenmeyecektir. 
+   - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma yapılandırması temizlenmeyecektir.** 
 
  > [!NOTE]
      > **Kaldır** seçeneğini belirlediyseniz, şirket içi Hyper-V Server çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyası kümesini çalıştırın.
@@ -186,11 +186,11 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>System Center VMM 'den Azure 'a çoğaltma için bir Hyper-V sanal makinesi için korumayı devre dışı bırakma
 
-1. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
+1. **Çoğaltılmış**öğeler > **korunan öğeler** ' de, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
 2. **Çoğaltmayı devre dışı bırak**' da şu seçeneklerden birini seçin:
 
    - **Çoğaltmayı devre dışı bırak ve Kaldır (önerilir)** -Bu seçenek, çoğaltılan öğeyi Azure Site Recovery kaldırır ve makinenin çoğaltması durdurulur. Şirket içi sanal makinede çoğaltma yapılandırması temizlenir ve bu korumalı sunucu için faturalandırma Site Recovery durdurulur.
-   - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma** yapılandırması temizlenmeyecektir. 
+   - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma yapılandırması temizlenmeyecektir.** 
 
      > [!NOTE]
      > Kaldır seçeneğini belirlediyseniz, şirket içi VMM sunucusu çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyalarını tun altına **çıkarın** .
@@ -210,11 +210,11 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>System Center VMM 'den VMM 'ye kullanarak ikincil VMM sunucusuna çoğaltılan bir Hyper-V sanal makinesi için korumayı devre dışı bırakma
 
-1. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
+1. **Çoğaltılmış**öğeler > **korunan öğeler** ' de, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
 2. **Çoğaltmayı devre dışı bırak**' da şu seçeneklerden birini seçin:
 
    - **Çoğaltmayı devre dışı bırak ve Kaldır (önerilir)** -Bu seçenek, çoğaltılan öğeyi Azure Site Recovery kaldırır ve makinenin çoğaltması durdurulur. Şirket içi sanal makinede çoğaltma yapılandırması temizlenir ve bu korumalı sunucu için faturalandırma Site Recovery durdurulur.
-   - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma** yapılandırması temizlenmeyecektir. Şirket içi sanal makineleri çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyası kümesini çalıştırın.
+   - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma yapılandırması temizlenmeyecektir.** Şirket içi sanal makineleri çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyası kümesini çalıştırın.
      > [!NOTE]
      > Kaldır seçeneğini belirlediyseniz, şirket içi VMM sunucusu çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyalarını tun altına **çıkarın** .
 

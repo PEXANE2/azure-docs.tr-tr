@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887147"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395124"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 'ta bölge sunucularıyla ilgili sorunlar
 
@@ -34,7 +34,7 @@ Apache HBase Master kullanıcı arabiriminden, tüm bölge sunucularında denges
 
 Boşluklar, çevrimdışı bölgelerin sonucu olabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Atamaları düzeltir. Atanmamış bölgeleri normal duruma geri getirmek için aşağıdaki adımları izleyin:
 
@@ -66,7 +66,7 @@ Birden çok bölme dizini.
 
 1. `wals.out` dosyasını inceleyin. Çok fazla sayıda bölme dizini varsa (*-bölme ile başlayarak), bu dizinler nedeniyle bölge sunucusu muhtemelen başarısız olur.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Ambarı portalından HBase 'i durdurun.
 

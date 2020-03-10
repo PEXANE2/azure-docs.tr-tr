@@ -11,17 +11,22 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 07/02/2019
-ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/09/2020
+ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647688"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945865"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
+> [!NOTE]
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
 
-Bu makalede, Azure SQL veritabanı ve SQL veri ambarı bağlantı mimarisinin yanı sıra farklı bileşenlerin Azure SQL örneğinize trafiği nasıl yönlendirdiği açıklanmaktadır. Bu bağlantı bileşenleri, Azure içinden ve Azure dışından bağlanan istemcilerle bağlantı kurarak Azure SQL veritabanı veya SQL veri ambarı 'na ağ trafiğini yönlendirmek için işlev sağlar. Bu makalede ayrıca bağlantının nasıl gerçekleştiği ve varsayılan bağlantı ayarlarını değiştirmekle ilgili önemli noktalar yer almaktadır.
+> [!IMPORTANT]
+> Bu *Makale,* **Azure SQL veritabanı yönetilen örneği**için geçerlidir. [Yönetilen bir örnek Için bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md)' ne bakın.
+
+Bu makalede, ağ trafiğini Azure SQL veritabanı veya SQL veri ambarı 'na yönlendirdiği çeşitli bileşenlerin mimarisi açıklanmaktadır. Ayrıca, farklı bağlantı ilkelerini ve Azure içinden bağlanan istemcileri ve Azure dışından bağlanan istemcileri nasıl etkilediğini açıklar. 
 
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
 
@@ -39,13 +44,13 @@ Aşağıdaki adımlarda, bir bağlantının Azure SQL veritabanına nasıl kurul
 
 Azure SQL veritabanı, SQL veritabanı sunucusunun bağlantı ilkesi ayarı için aşağıdaki üç seçeneği destekler:
 
-- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar, azaltılmış gecikme süresi ve geliştirilmiş işleme için önde gelen bir işlem sağlar. Bu modu kullanmak için istemciler gerekir
-   - İstemciden gelen ve giden iletişimin, 11000 11999 aralığındaki bağlantı noktalarında bulunan bölgedeki tüm Azure IP adreslerine izin verin.  
-   - 1433 numaralı bağlantı noktasındaki istemciden Azure SQL veritabanı ağ geçidi IP adreslerine gelen ve giden iletişime izin verin.
+- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar, azaltılmış gecikme süresi ve geliştirilmiş işleme için önde gelen bir işlem sağlar. Bu modu kullanmak için istemcilerin şunları yapması gerekir:
+   - İstemciden giden iletişimin, 11000 11999 aralığındaki bağlantı noktalarında bulunan bölgedeki tüm Azure IP adreslerine erişmesine izin verin. Daha kolay yönetilmesini sağlamak için SQL için hizmet etiketlerini kullanın.  
+   - Bağlantı noktası 1433 üzerinde istemciden Azure SQL veritabanı ağ geçidi IP adreslerine giden iletişime izin verin.
 
-- **Proxy:** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla, artan gecikme süresi ve düşük aktarım hızı için önde gelen aracılardır. Bu modu kullanmak için istemciler, istemciden gelen ve giden iletişimin bağlantı noktası 1433 ' deki Azure SQL veritabanı ağ geçidi IP adreslerine izin vermek için gerekir.
+- **Proxy:** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla, artan gecikme süresi ve düşük aktarım hızı için önde gelen aracılardır. Bu modu kullanma bağlantıları için istemcilerin, bağlantı noktası 1433 üzerinde istemciden Azure SQL veritabanı ağ geçidi IP adreslerine giden iletişime izin vermek gerekir.
 
-- **Varsayılan:** Bu, bağlantı ilkesini açıkça `Proxy` veya `Redirect`olarak değiştirmediğiniz takdirde, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. Varsayılan ilke, Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) kaynaklanan tüm istemci bağlantıları için`Redirect` ve dış kaynaklı tüm istemci bağlantıları için `Proxy`(örneğin, yerel iş istasyonunuzdan gelen bağlantılar).
+- **Varsayılan:** Bu, bağlantı ilkesini açıkça `Proxy` veya `Redirect`olarak değiştirmediğiniz takdirde, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. Varsayılan ilke, Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) kaynaklanan tüm istemci bağlantıları için`Redirect` ve dış kaynaklı tüm istemci bağlantıları için (örneğin, yerel iş istasyonunuzdan gelen bağlantılar) `Proxy`.
 
  En düşük gecikme süresi ve en yüksek aktarım hızı için `Proxy` bağlantı ilkesi üzerinde `Redirect` bağlantı ilkesini kesinlikle öneririz. Ancak, yukarıda özetlenen ağ trafiğine izin vermek için ek gereksinimleri karşılamanız gerekecektir. İstemci bir Azure sanal makinedir, bunu [hizmet etiketleriyle](../virtual-network/security-overview.md#service-tags)ağ güvenlik grupları (NSG) kullanarak gerçekleştirebilirsiniz. İstemci Şirket içindeki bir iş istasyonundan bağlanıyorsa, şirket güvenlik duvarınız üzerinden ağ trafiğine izin vermek için ağ yöneticinizle birlikte çalışmanız gerekebilir.
 
@@ -101,6 +106,8 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Güney Kore - Güney          | 52.231.200.86      |
 | Orta Kuzey ABD     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Kuzey Avrupa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| Norveç Doğu          | 51.120.96.0        |
+| Norveç Batı          | 51.120.216.0       |
 | Güney Afrika Kuzey   | 102.133.152.0      |
 | Güney Afrika Batı    | 102.133.24.0       |
 | Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
@@ -108,85 +115,14 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | BAE Orta          | 20.37.72.64        |
 | BAE Kuzey            | 65.52.248.0        |
 | Güney Birleşik Krallık             | 51.140.184.11      |
-| UK, Batı              | 51.141.8.11        |
+| Batı Birleşik Krallık              | 51.141.8.11        |
 | Orta Batı ABD      | 13.78.145.25       |
 | Batı Avrupa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Batı ABD              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | Batı ABD 2            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL veritabanı bağlantı ilkesini değiştirme
 
-Azure SQL veritabanı sunucusu için Azure SQL veritabanı bağlantı ilkesini değiştirmek için, [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) komutunu kullanın.
-
-- Bağlantı ilkeniz `Proxy`olarak ayarlandıysa, tüm ağ paketleri Azure SQL veritabanı ağ geçidi aracılığıyla akar. Bu ayar için, yalnızca Azure SQL veritabanı ağ geçidi IP 'ye giden erişime izin vermeniz gerekir. `Proxy` ayarının kullanılması `Redirect`ayarından daha fazla gecikme süresine sahiptir.
-- Bağlantı ilkeniz `Redirect`ayaralıyorsa, tüm ağ paketleri doğrudan veritabanı kümesine akar. Bu ayar için, birden çok IP 'ye giden bir erişime izin vermeniz gerekir.
-
-## <a name="script-to-change-connection-settings-via-powershell"></a>PowerShell aracılığıyla bağlantı ayarlarını değiştirme betiği
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki betik [Azure PowerShell modülünü](/powershell/azure/install-az-ps)gerektiriyor.
-
-Aşağıdaki PowerShell betiği, bağlantı ilkesinin nasıl değiştirileceğini gösterir.
-
-```powershell
-# Get SQL Server ID
-$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
-
-# Set URI
-$id="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-(Get-AzResource -ResourceId $id).Properties.connectionType
-
-# Update connection policy
-Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
-```
-
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>Azure CLı aracılığıyla bağlantı ayarlarını değiştirme betiği
-
-> [!IMPORTANT]
-> Bu betik için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gereklidir.
-
-### <a name="azure-cli-in-a-bash-shell"></a>Bash kabuğu 'nda Azure CLı
-
-> [!IMPORTANT]
-> Bu betik için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gereklidir.
-
-Aşağıdaki CLı betiği, bir bash kabuğu 'nda bağlantı ilkesinin nasıl değiştirileceğini gösterir.
-
-```azurecli-interactive
-# Get SQL Server ID
-sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
-
-# Set URI
-ids="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-az resource show --ids $ids
-
-# Update connection policy
-az resource update --ids $ids --set properties.connectionType=Proxy
-```
-
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Windows komut isteminden Azure CLı
-
-> [!IMPORTANT]
-> Bu betik için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gereklidir.
-
-Aşağıdaki CLı betiği, bir Windows komut isteminden (Azure CLı yüklü) bağlantı ilkesinin nasıl değiştirileceğini gösterir.
-
-```azurecli
-# Get SQL Server ID and set URI
-FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
-
-# Get current connection policy
-az resource show --ids %sqlserverid%
-
-# Update connection policy
-az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

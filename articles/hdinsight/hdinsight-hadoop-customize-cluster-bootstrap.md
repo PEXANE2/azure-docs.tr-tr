@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931412"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389494"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Önyükleme kullanarak HDInsight kümelerini özelleştirme
 
@@ -21,9 +21,9 @@ ms.locfileid: "75931412"
 
 HDInsight kümeniz oluşturulurken yapılandırma dosyası ayarlarını ayarlamak için üç yaklaşım vardır:
 
-* Azure PowerShell’i kullanma
+* Azure PowerShell kullanma
 * .NET SDK kullanma
-* Azure Resource Manager şablonu kullanma
+* Azure Resource Manager şablonu kullan
 
 Örneğin, bu programlama yöntemlerini kullanarak bu dosyalardaki seçenekleri yapılandırabilirsiniz:
 
@@ -46,11 +46,11 @@ HDInsight kümeniz oluşturulurken yapılandırma dosyası ayarlarını ayarlama
 
 Oluşturma süresi boyunca HDInsight kümesine ek bileşenler yükleme hakkında bilgi için bkz. [betik eylemi kullanarak HDInsight kümelerini özelleştirme (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
 
-## <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
 Aşağıdaki PowerShell kodu bir [Apache Hive](https://hive.apache.org/) yapılandırmasını özelleştirir:
 

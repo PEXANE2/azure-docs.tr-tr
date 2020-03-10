@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368167"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378316"
 ---
 # <a name="what-is-password-writeback"></a>Parola geri yazma nedir?
 
@@ -63,7 +63,7 @@ Parola geri yazma özelliğini kullanmak için kiracınızda aşağıdaki lisans
 > [!WARNING]
 > Tek başına Office 365 lisans planları, *"Şirket içi geri yazma Ile self servis parola sıfırlama/değiştirme/kilit açma" desteği vermez* ve bu işlevin çalışması için önceki planlardan birine sahip olmanızı gerektirir.
 
-## <a name="how-password-writeback-works"></a>Parola geri yazma nasıl kullanılır
+## <a name="how-password-writeback-works"></a>Parola geri yazma nasıl çalışır?
 
 Bir Federasyon veya parola karması eşitlendiğinde Kullanıcı, bulutta parolalarını sıfırlamayı veya değiştirmeyi denediğinde aşağıdaki eylemler gerçekleşir:
 

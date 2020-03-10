@@ -4,11 +4,11 @@ description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlam
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153171"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391186"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -36,15 +36,15 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | hizmet | global | 1-50 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 > | hizmet/API 'ler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/sorunlar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/sorunlar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/ekler | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/açıklamalar | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/işlemler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/işlemler | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/işlemler/Etiketler | operation | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/yayınlar | api | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
-> | hizmet/API 'ler/şemalar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API/tagDescriptions | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/Etiketler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/yayınlar | API | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
+> | hizmet/API 'ler/şemalar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API/tagDescriptions | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/Etiketler | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API-sürüm-ayarlar | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/authorizationServers | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/arka uçlar | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
@@ -140,7 +140,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | profiles | kaynak grubu | 1-260 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | profiller | kaynak grubu | 1-260 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Profiller/uç noktalar | global | 1-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -482,7 +482,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | dnsZones | kaynak grubu | 1-63 karakter<br><br>2-34 etiketleri<br><br>Her etiket bir noktayla ayrılmış bir karakter kümesidir. Örneğin, **contoso.com** 2 etikete sahiptir. | Her etiket alfasayısal, alt çizgi ve kısa çizgi içerebilir.<br><br>Her etiket bir noktayla ayrılır. |
 > | Expressroutedevreleri | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | firewallPolicies | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
-> | firewallPolicies/ruleGroups | güvenlik duvarı ilkesi | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
+> | firewallPolicies/ruleGroups | Güvenlik duvarı ilkesi | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | Frontkapıların | global | 5-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | loadBalancers | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | loadBalancers/ınboundnatrules | yük dengeleyici | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
@@ -577,7 +577,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | dağıtımlar | kaynak grubu | 1-64 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |
 > | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
 > | tagNames | resource | 1-512 | Şu kullanılamıyor:<br>`<>%&\?/` |
-> | tagNames/tagValues | etiket adı | 1-256 | Tüm karakterler. |
+> | tagNames/tagValues | Etiket adı | 1-256 | Tüm karakterler. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -635,7 +635,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | storageAccounts/managementPolicies | depolama hesabı |  | `default`olmalıdır. |
 > | blob | kapsayıcı | 1-1024 | Herhangi bir URL karakteri, büyük/küçük harfe duyarlı |
 > | kuyruk | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
-> | table | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | tablo | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
